@@ -24,6 +24,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
+        id: set_up_python
         with:
           python-version: ${{ matrix.python-version }}
           check-latest: true
@@ -33,6 +34,11 @@ jobs:
           python -m pip install --upgrade tox tox-gh-actions
       - name: Run tox
         run: tox -v
+      - uses: actions/upload-artifact@v3
+        if: '!cancelled()'
+        with:
+          name: artifact_${{ set_up_python.python-version }}_tests_and_linting
+          path: .results_*/**
   # Quick testing with coverage (no linting)
   test-fast:
     runs-on: ${{ matrix.os_name }}-latest
@@ -44,6 +50,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v4
+        id: set_up_python
         with:
           python-version: x  # any version
           check-latest: true
@@ -53,6 +60,12 @@ jobs:
           python -m pip install --upgrade tox
       - name: Test
         run: tox -ve tests
+      - uses: actions/upload-artifact@v3
+        if: '!cancelled()'
+        with:
+          name: artifact_${{ set_up_python.python-version }}_tests
+          path: .results_*/**
+      # TODO: look into using https://github.com/mikepenz/action-junit-report for a junit report
 #      - name: Upload coverage to Codecov
 #        uses: codecov/codecov-action@v3
 #        with:
