@@ -7,7 +7,7 @@
 <a href="https://github.com/pre-commit/pre-commit"><img alt="pre-commit enabled" src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit"></a>
 <a href="https://results.pre-commit.ci/latest/github/tektronix/tm_devices/main"><img alt="pre-commit status" src="https://results.pre-commit.ci/badge/github/tektronix/tm_devices/main.svg"></a>
 <a href="https://tm_devices.readthedocs.io/en/stable/?badge=stable"><img alt="Documentation status" src="https://readthedocs.org/projects/tm_devices/badge/?version=stable"></a>
-<a href="https://github.com/tektronix/tm_devices/blob/main/LICENSE.md"><img alt="License: Apache 2.0" src="https://img.shields.io/hexpm/l/tm_devices"></a>
+<a href="https://github.com/tektronix/tm_devices/blob/main/LICENSE.md"><img alt="License: Apache 2.0" src="https://img.shields.io/github/license/tektronix/tm_devices"></a>
 <a href="https://pypi.org/project/tm_devices/"><img alt="PyPI: Package status" src="https://img.shields.io/pypi/status/tm_devices?logo=pypi"></a>
 <a href="https://pypi.org/project/tm_devices/"><img alt="PyPI: Latest release version" src="https://img.shields.io/pypi/v/tm_devices?logo=pypi"></a>
 <a href="https://pypi.org/project/tm_devices/"><img alt="PyPI: Supported Python versions" src="https://img.shields.io/pypi/pyversions/tm_devices?logo=python"></a>
