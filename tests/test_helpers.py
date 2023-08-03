@@ -43,7 +43,7 @@ MODEL_SERIES_LIST = SupportedModels.list_values()
 
 def test_create_ping_command() -> None:
     """Test the creation of the ping command."""
-    # pylint: disable=import-outside-toplevel
+    # pylint: disable=import-outside-toplevel,import-private-name,useless-suppression
     from tm_devices.helpers.functions import _create_ping_command
 
     with mock.patch("platform.system", mock.MagicMock(return_value="Windows")):
