@@ -57,7 +57,7 @@ def test_all_device_drivers(
         ("SCOPE", "DPO4K-HOSTNAME", None, None, None),
         ("SCOPE", "DPO4KB-HOSTNAME", None, None, None),
         ("SCOPE", "192.168.0.101", None, None, None),
-        ("SCOPE", "127.0.0.2", None, None, None),
+        ("SCOPE", "127.0.0.1", None, None, None),
         ("SCOPE", "MSO70KDX-HOSTNAME", None, None, None),
         ("SMU", "SMU-HOSTNAME", None, None, None),  # smu2612b
         ("SMU", "SMU2450-HOSTNAME", None, None, None),

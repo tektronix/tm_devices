@@ -36,7 +36,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         if: '!cancelled()'
         with:
-          name: artifact_${{ matrix.os_name }}_${{ matrix.python-version }}_tests_and_linting
+          name: artifact_${{ matrix.platform }}_${{ matrix.python-version }}_tests_and_linting
           path: .results_*/**
   # Quick testing with coverage (no linting)
   test-fast:

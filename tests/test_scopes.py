@@ -262,9 +262,8 @@ def test_tekscope70k(device_manager: DeviceManager, capsys: pytest.CaptureFixtur
         device_manager: The DeviceManager object.
         capsys: The captured stdout and stderr.
     """
-    # Assert 7 series device was added and aliased properly
-    scope = device_manager.add_scope("127.0.0.2")
-    assert scope.ip_address == "127.0.0.2"
+    scope = device_manager.add_scope("127.0.0.1")
+    assert scope.ip_address == "127.0.0.1"
     assert scope.hostname == ""
     # Test some generic device functionality
     assert scope.wait_for_network_connection(

@@ -239,7 +239,7 @@ resources:
     device: dpo7kc
     filename: scope/dpo7kc.yaml
   #   mso70k
-  TCPIP::127.0.0.2::INSTR:
+  TCPIP::127.0.0.1::INSTR:
     device: mso70k
     filename: scope/mso70k.yaml
   TCPIP::MSO70KC-HOSTNAME::INSTR:
