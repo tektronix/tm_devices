@@ -1,0 +1,35 @@
+---
+spec: '1.1'
+devices:
+  smu2601a:
+    dialogues:
+      - q: '*IDN?'
+        r: Keithley Instruments Inc., Model 2601A, 4498311, 3.3.5
+      - q: errorqueue.clear()
+      - q: status.reset()
+      - q: status.standard.enable = 1
+      - q: print(status.standard.enable)
+        r: 1
+      - q: opc()
+      - q: print([[1]])
+        r: 1
+      - q: reset()
+      - q: status.request_enable = 1
+      - q: print(status.request_enable)
+        r: 1
+      - q: print(status.condition)
+        r: 1
+      - q: print([[0]])
+        r: 0
+      - q: waitcomplete()
+    error:
+      status_register:
+        - q: print(status.standard.event)
+          command_error: 32
+      error_queue:
+        - q: print(errorqueue.count)
+          default: 0
+          command_error: 2
+        - q: print(errorqueue.next())
+          default: No Error
+          command_error: Command error

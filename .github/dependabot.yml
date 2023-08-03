@@ -1,0 +1,19 @@
+---
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    labels: [gh-actions, dependencies]
+    commit-message:
+      prefix: gh-actions
+      include: scope
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: monthly
+    labels: [python, dependencies]
+    commit-message:
+      prefix: python-deps
+      include: scope

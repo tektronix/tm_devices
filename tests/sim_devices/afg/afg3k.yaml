@@ -1,0 +1,30 @@
+---
+spec: '1.1'
+devices:
+  afg3252:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AFG3252,C022738,SCPI:99.0 FV:3.2.3
+      - q: '*OPC?'
+        r: '1'
+      - q: '*RST'
+      - q: '*CLS'
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: SYSTEM:ERROR?
+          default: 0,"No error"
+          command_error: 1, Command error

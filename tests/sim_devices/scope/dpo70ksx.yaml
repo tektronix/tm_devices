@@ -1,0 +1,30 @@
+---
+spec: '1.1'
+devices:
+  dpo75002sx:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,DPO75002SX,999999,CF:91.1CT FV:10.99.1 Build 20
+      - q: '*OPC?'
+        r: '1'
+      - q: '*RST'
+      - q: '*CLS'
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: :ALLev?
+          default: 0,"No events to report - queue empty"
+          command_error: 113,"Undefined header; Command not found; EXAMPLE_COMMAND"

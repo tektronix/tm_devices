@@ -1,0 +1,436 @@
+---
+spec: '1.1'
+devices:
+  mso56:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,MSO56,SERIAL1,CF:91.1CT FV:1.99.11.1268
+      - q: HEADER OFF
+      - q: :ETHERNET:NAME?
+        r: MSO56
+      - q: '*OPC'
+      - q: '*OPC?'
+        r: '1'
+      - q: '*RST'
+      - q: '*CLS'
+      - q: :FILESystem:LDIR?
+        r: 'E:,F:,G:,H:,I:,J:,K:'
+      - q: :FILESystem:CWD "E:"
+      - q: :FILESystem:CWD "F:"
+      - q: :FILESystem:CWD "G:"
+      - q: :FILESystem:CWD "H:"
+      - q: :FILESystem:CWD "I:"
+      - q: :FILESystem:CWD "J:"
+      - q: :FILESystem:CWD "K:"
+      - q: :FILESystem:CWD?
+        r: '"E:"'
+      - q: MEASURE:MEAS1:TYPE MAXIMUM
+      - q: MEASURE:MEAS1:TYPE?
+        r: MAXIMUM
+      - q: :PLOT:PLOT1:TYPE TIMETREND
+      - q: :PLOT:PLOT1:TYPE?
+        r: TIMETREND
+      - q: :PLOT:PLOT1:TYPE TIMETREND
+      - q: :PLOT:PLOT1:TYPE?
+        r: TIMETREND
+      - q: :BUS:B1:TYPE I3C
+      - q: :BUS:B1:TYPE?
+        r: I3C
+      - q: MEASURE:MEAS1:SOURCE REF1
+      - q: MEASURE:MEAS1:SOURCE?
+        r: REF1
+      - q: HEADER OFF
+      - q: :LICENSE:APPID?
+        r: LIC5,LIC4
+      - q: RECALL:WAVEFORM "temp.wfm", REF1
+      - q: :RECALL:WAVEFORM "REF1.wfm",REF1
+      - q: :SAVE:WAVEFORM temp.wfm,"REF1.wfm"
+      - q: :RECALL:SESSION "session"
+      - q: :SCOPEAPP REBOOT
+      - q: AFG:BURST:TRIGGER
+      - q: :BUS:DELete "B1"
+      - q: :HISTOGRAM:DELete "HIST1"
+      - q: :MATH:DELete "MATH1"
+      - q: :MEASUREMENT:DELete "MEAS1"
+      - q: :MEASTABLE:DELete "TABLE1"
+      - q: :PLOT:DELete "PLOT1"
+      - q: :POWER:DELete "POWER1"
+      - q: :REF:DELete "REF1"
+      - q: :SEARCH:DELete "SEARCH1"
+      - q: EMPTY:STRING?
+        r: ''
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: :ALLev?
+          default: 0,"No events to report - queue empty"
+          command_error: 113,"Undefined header; Command not found; EXAMPLE_COMMAND"
+    properties:
+      sre:
+        default: 0
+        getter:
+          q: '*SRE?'
+          r: '{:d}'
+        setter:
+          q: '*SRE {:d}'
+        specs:
+          min: 0
+          max: 255
+          type: int
+      afg_burst_cnt:
+        default: '1'
+        getter:
+          q: AFG:BURST:CCOUNT?
+          r: '{:s}'
+        setter:
+          q: AFG:BURST:CCOUNT {:s}
+      afg_output_mode:
+        default: BURST
+        getter:
+          q: AFG:OUTPUT:MODE?
+          r: '{:s}'
+        setter:
+          q: AFG:OUTPUT:MODE {:s}
+      chan_1_probenum:
+        default: N/A
+        getter:
+          q: CH1:PROBE:ID:SERNUMBER?
+          r: '{:s}'
+      chan_1_probeIDtype:
+        default: 1X
+        getter:
+          q: CH1:PROBE:ID:TYPE?
+          r: '{:s}'
+      chan_1_probetype:
+        default: ANALOG
+        getter:
+          q: CH1:PROBETYPE?
+          r: '{:s}'
+      chan_1_state:
+        default: '1'
+        getter:
+          q: :DISPLAY:WAVEVIEW:CH1:STATE?
+          r: '{:s}'
+        setter:
+          q: :DISPLAY:WAVEVIEW:CH1:STATE {:s}
+      chan_2_probenum:
+        default: '"C01234"'
+        getter:
+          q: CH2:PROBE:ID:SERNUMBER?
+          r: '{:s}'
+      chan_2_probeIDtype:
+        default: '"TLP058"'
+        getter:
+          q: CH2:PROBE:ID:TYPE?
+          r: '{:s}'
+      chan_2_probetype:
+        default: DIGITAL
+        getter:
+          q: CH2:PROBETYPE?
+          r: '{:s}'
+      chan_2_state:
+        default: '1'
+        getter:
+          q: :DISPLAY:WAVEVIEW:CH2_DALL:STATE?
+          r: '{:s}'
+        setter:
+          q: :DISPLAY:WAVEVIEW:CH2_DALL:STATE {:s}
+      chan_3_probenum:
+        default: '"C56789"'
+        getter:
+          q: CH3:PROBE:ID:SERNUMBER?
+          r: '{:s}'
+      chan_3_probeIDtype:
+        default: TPP0500B
+        getter:
+          q: CH3:PROBE:ID:TYPE?
+          r: '{:s}'
+      chan_3_probetype:
+        default: ANALOG
+        getter:
+          q: CH3:PROBETYPE?
+          r: '{:s}'
+      chan_3_state:
+        default: '1'
+        getter:
+          q: :DISPLAY:WAVEVIEW:CH3:STATE?
+          r: '{:s}'
+        setter:
+          q: :DISPLAY:WAVEVIEW:CH3:STATE {:s}
+      chan_4_probenum:
+        default: N/A
+        getter:
+          q: CH4:PROBE:ID:SERNUMBER?
+          r: '{:s}'
+      chan_4_probeIDtype:
+        default: 1X
+        getter:
+          q: CH4:PROBE:ID:TYPE?
+          r: '{:s}'
+      chan_4_probetype:
+        default: ANALOG
+        getter:
+          q: CH4:PROBETYPE?
+          r: '{:s}'
+      chan_4_state:
+        default: '1'
+        getter:
+          q: :DISPLAY:WAVEVIEW:CH4:STATE?
+          r: '{:s}'
+        setter:
+          q: :DISPLAY:WAVEVIEW:CH4:STATE {:s}
+      chan_5_probenum:
+        default: N/A
+        getter:
+          q: CH5:PROBE:ID:SERNUMBER?
+          r: '{:s}'
+      chan_5_probeIDtype:
+        default: N/A
+        getter:
+          q: CH5:PROBE:ID:TYPE?
+          r: '{:s}'
+      chan_5_probetype:
+        default: ANALOG
+        getter:
+          q: CH5:PROBETYPE?
+          r: '{:s}'
+      chan_5_state:
+        default: '1'
+        getter:
+          q: :DISPLAY:WAVEVIEW:CH5:STATE?
+          r: '{:s}'
+        setter:
+          q: :DISPLAY:WAVEVIEW:CH5:STATE {:s}
+      chan_6_probenum:
+        default: N/A
+        getter:
+          q: CH6:PROBE:ID:SERNUMBER?
+          r: '{:s}'
+      chan_6_probeIDtype:
+        default: N/A
+        getter:
+          q: CH6:PROBE:ID:TYPE?
+          r: '{:s}'
+      chan_6_probetype:
+        default: ANALOG
+        getter:
+          q: CH6:PROBETYPE?
+          r: '{:s}'
+      chan_6_state:
+        default: '1'
+        getter:
+          q: :DISPLAY:WAVEVIEW:CH6:STATE?
+          r: '{:s}'
+        setter:
+          q: :DISPLAY:WAVEVIEW:CH6:STATE {:s}
+      acq_state:
+        default: '0'
+        getter:
+          q: ACQuire:STATE?
+          r: '{:s}'
+        setter:
+          q: ACQuire:STATE {:s}
+      acqs_mode:
+        default: RUNSTOP
+        getter:
+          q: ACQuire:STOPAfter?
+          r: '{:s}'
+        setter:
+          q: ACQuire:STOPAfter {:s}
+      curve:
+        default: 1;0;1;0;1
+        getter:
+          q: :CURVE?
+          r: '{:s}'
+        setter:
+          q: :CURVE {:s}
+      data_src_avail:
+        default: CH1,CH1_D0,CH1_SV_BASEBAND_IQ,CH1_SV_NORMAL,CH1_FREQ_VS_TIME,CH1_MAG_VS_TIME
+        getter:
+          q: :DATA:SOURCE:AVAIL?
+          r: '{:s}'
+        setter:
+          q: :DATA:SOURCE:AVAIL {:s}
+      data_enc:
+        default: ASCII
+        getter:
+          q: :DATA:ENC?
+          r: '{:s}'
+        setter:
+          q: :DATA:ENC {:s}
+      data_source:
+        default: CH1
+        getter:
+          q: DATA:SOURCE?
+          r: '{:s}'
+        setter:
+          q: DATA:SOURCE {:s}
+      meas_table:
+        default: TABLE1
+        getter:
+          q: :MEASTABLE:LIST?
+          r: '{:s}'
+        setter:
+          q: :MEASTABLE:ADDNew {:s}
+      table:
+        default: TABLE1
+        getter:
+          q: :MEASTABLE:LIST?
+          r: '{:s}'
+        setter:
+          q: :TABLE:ADDNew {:s}
+      histogram:
+        default: HIST1
+        getter:
+          q: :HISTOGRAM:LIST?
+          r: '{:s}'
+        setter:
+          q: :HISTOGRAM:ADDNew {:s}
+      measurement:
+        default: MEAS1
+        getter:
+          q: :MEASUREMENT:LIST?
+          r: '{:s}'
+        setter:
+          q: :MEASUREMENT:ADDNew {:s}
+      meas:
+        default: MEAS1
+        getter:
+          q: :MEASUREMENT:LIST?
+          r: '{:s}'
+        setter:
+          q: :MEAS:ADDNew {:s}
+      math_define:
+        default: LOG10
+        getter:
+          q: :MATH:MATH1:DEFINE?
+          r: '{:s}'
+        setter:
+          q: :MATH:MATH1:DEFINE {:s}
+      plot:
+        default: PLOT1
+        getter:
+          q: :PLOT:LIST?
+          r: '{:s}'
+        setter:
+          q: :PLOT:ADDNew {:s}
+      math:
+        default: MATH1
+        getter:
+          q: :MATH:LIST?
+          r: '{:s}'
+        setter:
+          q: :MATH:ADDNew {:s}
+      power:
+        default: POWER
+        getter:
+          q: :POWER:LIST?
+          r: INVALID{:s}
+        setter:
+          q: :POWER:ADDNew {:s}
+      ref:
+        default: REF1
+        getter:
+          q: :REF:LIST?
+          r: '{:s}'
+        setter:
+          q: :REF:ADDNew {:s}
+      search:
+        default: SEARCH1
+        getter:
+          q: :SEARCH:LIST?
+          r: '{:s}'
+        setter:
+          q: :SEARCH:ADDNew {:s}
+      bus:
+        default: B1
+        getter:
+          q: :BUS:LIST?
+          r: '{:s}'
+        setter:
+          q: :BUS:ADDNew {:s}
+      afg_state:
+        default: 0
+        getter:
+          q: AFG:OUTPUT:STATE?
+          r: '{:d}'
+        setter:
+          q: AFG:OUTPUT:STATE {:d}
+        specs:
+          type: int
+      afg_freq:
+        default: 0
+        getter:
+          q: AFG:FREQUENCY?
+          r: '{:f}'
+        setter:
+          q: AFG:FREQUENCY {:f}
+        specs:
+          type: float
+      afg_offset:
+        default: 0
+        getter:
+          q: AFG:OFFSET?
+          r: '{:f}'
+        setter:
+          q: AFG:OFFSET {:f}
+        specs:
+          type: float
+      afg_amplitude:
+        default: 0
+        getter:
+          q: AFG:AMPLITUDE?
+          r: '{:f}'
+        setter:
+          q: AFG:AMPLITUDE {:f}
+        specs:
+          type: float
+      afg_duty:
+        default: 0
+        getter:
+          q: AFG:SQUARE:DUTY?
+          r: '{:f}'
+        setter:
+          q: AFG:SQUARE:DUTY {:f}
+        specs:
+          type: float
+      afg_function:
+        default: SIN
+        getter:
+          q: AFG:FUNCTION?
+          r: '{:s}'
+        setter:
+          q: AFG:FUNCTION {:s}
+        specs:
+          type: str
+      afg_symmetry:
+        default: 100
+        getter:
+          q: AFG:RAMP:SYMMETRY?
+          r: '{:f}'
+        setter:
+          q: AFG:RAMP:SYMMETRY {:f}
+        specs:
+          type: float
+      afg_impedance:
+        default: FIFTY
+        getter:
+          q: AFG:OUTPUT:LOAD:IMPEDANCE?
+          r: '{:s}'
+        setter:
+          q: AFG:OUTPUT:LOAD:IMPEDANCE {:s}
+        specs:
+          type: str

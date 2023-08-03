@@ -1,0 +1,355 @@
+---
+spec: '1.1'
+devices:
+  afg3kc:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AFG3252C,SERIAL1,SCPI:99.0 FV:3.2.3
+      - q: '*OPC'
+      - q: '*WAI'
+      - q: '*OPC?'
+        r: '1'
+      - q: '*RST'
+      - q: '*CLS'
+      - q: '*TRG'
+      - q: SOURCE1:PHASE:INITIATE
+      - q: '*TST?'
+        r: '1'
+      - q: '*STB?'
+        r: '4'
+      - q: '*OPT?'
+        r: '0'
+      - q: '*LRN?'
+        r: '*RST;'
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: SYSTEM:ERROR?
+          default: 0,"No error"
+          command_error: 1, Command error
+    properties:
+      output_1_state:
+        default: 0
+        getter:
+          q: OUTPUT1:STATE?
+          r: '{:d}'
+        setter:
+          q: OUTPUT1:STATE {:d}
+        specs:
+          min: 0
+          max: 1
+          type: int
+      output_1_impedance:
+        default: 50
+        getter:
+          q: OUTPUT1:IMPEDANCE?
+          r: '{:s}'
+        setter:
+          q: OUTPUT1:IMPEDANCE {:s}
+      source_1_frequency:
+        default: 1e6
+        getter:
+          q: SOURCE1:FREQUENCY:FIXED?
+          r: '{:f}'
+        setter:
+          q: SOURCE1:FREQUENCY:FIXED {:f}
+        specs:
+          type: float
+      source_1_voltage_offset:
+        default: 0.0
+        getter:
+          q: SOURCE1:VOLTAGE:OFFSET?
+          r: '{:f}'
+        setter:
+          q: SOURCE1:VOLTAGE:OFFSET {:f}
+        specs:
+          type: float
+      source_1_pulse_dcycle:
+        default: 50.0
+        getter:
+          q: SOURCE1:PULSE:DCYCLE?
+          r: '{:f}'
+        setter:
+          q: SOURCE1:PULSE:DCYCLE {:f}
+        specs:
+          type: float
+      output_1_polarity:
+        default: NORM
+        getter:
+          q: OUTPUT1:POLARITY?
+          r: '{:s}'
+        setter:
+          q: OUTPUT1:POLARITY {:s}
+        specs:
+          type: str
+          valid: [NORM, INV]
+      source_1_function:
+        default: SIN
+        getter:
+          q: SOURCE1:FUNCTION?
+          r: '{:s}'
+        setter:
+          q: SOURCE1:FUNCTION {:s}
+        specs:
+          type: str
+          valid: [SIN, SQU, RAMP, DC, PULS]
+      source_1_function_ramp_symmetry:
+        default: 50.0
+        getter:
+          q: SOURCE1:FUNCTION:RAMP:SYMMETRY?
+          r: '{:f}'
+        setter:
+          q: SOURCE1:FUNCTION:RAMP:SYMMETRY {:f}
+        specs:
+          type: float
+      source_1_voltage_amplitude:
+        default: 50.0
+        getter:
+          q: SOURCE1:VOLTAGE:AMPLITUDE?
+          r: '{:f}'
+        setter:
+          q: SOURCE1:VOLTAGE:AMPLITUDE {:f}
+        specs:
+          type: float
+      source_1_burst_state:
+        default: 0
+        getter:
+          q: SOURCE1:BURST:STATE?
+          r: '{:d}'
+        setter:
+          q: SOURCE1:BURST:STATE {:d}
+        specs:
+          min: 0
+          max: 1
+          type: int
+      source_1_burst_mode:
+        default: TRIG
+        getter:
+          q: SOURCE1:BURST:MODE?
+          r: '{:s}'
+        setter:
+          q: SOURCE1:BURST:MODE {:s}
+        specs:
+          type: str
+          valid: [TRIG]
+      source_1_burst_ncycles:
+        default: 0
+        getter:
+          q: SOURCE1:BURST:NCYCLES?
+          r: '{:d}'
+        setter:
+          q: SOURCE1:BURST:NCYCLES {:d}
+        specs:
+          min: 0
+          max: 100
+          type: int
+      output_2_state:
+        default: 0
+        getter:
+          q: OUTPUT2:STATE?
+          r: '{:d}'
+        setter:
+          q: OUTPUT2:STATE {:d}
+        specs:
+          min: 0
+          max: 1
+          type: int
+      output_2_impedance:
+        default: 50
+        getter:
+          q: OUTPUT2:IMPEDANCE?
+          r: '{:s}'
+        setter:
+          q: OUTPUT2:IMPEDANCE {:s}
+      source_2_frequency:
+        default: 1e6
+        getter:
+          q: SOURCE2:FREQUENCY:FIXED?
+          r: '{:f}'
+        setter:
+          q: SOURCE2:FREQUENCY:FIXED {:f}
+        specs:
+          type: float
+      source_2_voltage_offset:
+        default: 0.0
+        getter:
+          q: SOURCE2:VOLTAGE:OFFSET?
+          r: '{:f}'
+        setter:
+          q: SOURCE2:VOLTAGE:OFFSET {:f}
+        specs:
+          type: float
+      source_2_pulse_dcycle:
+        default: 50.0
+        getter:
+          q: SOURCE2:PULSE:DCYCLE?
+          r: '{:f}'
+        setter:
+          q: SOURCE2:PULSE:DCYCLE {:f}
+        specs:
+          type: float
+      output_2_polarity:
+        default: NORM
+        getter:
+          q: OUTPUT2:POLARITY?
+          r: '{:s}'
+        setter:
+          q: OUTPUT2:POLARITY {:s}
+        specs:
+          type: str
+          valid: [NORM, INV]
+      source_2_function:
+        default: SIN
+        getter:
+          q: SOURCE2:FUNCTION?
+          r: '{:s}'
+        setter:
+          q: SOURCE2:FUNCTION {:s}
+        specs:
+          type: str
+          valid: [SIN, SQU, RAMP, DC, PULS]
+      source_2_function_ramp_symmetry:
+        default: 50.0
+        getter:
+          q: SOURCE2:FUNCTION:RAMP:SYMMETRY?
+          r: '{:f}'
+        setter:
+          q: SOURCE2:FUNCTION:RAMP:SYMMETRY {:f}
+        specs:
+          type: float
+      source_2_voltage_amplitude:
+        default: 50.0
+        getter:
+          q: SOURCE2:VOLTAGE:AMPLITUDE?
+          r: '{:f}'
+        setter:
+          q: SOURCE2:VOLTAGE:AMPLITUDE {:f}
+        specs:
+          type: float
+      ese:
+        default: 0
+        getter:
+          q: '*ESE?'
+          r: '{:d}'
+        setter:
+          q: '*ESE {:d}'
+        specs:
+          min: 0
+          max: 255
+          type: int
+      sre:
+        default: 0
+        getter:
+          q: '*SRE?'
+          r: '{:d}'
+        setter:
+          q: '*SRE {:d}'
+        specs:
+          min: 0
+          max: 255
+          type: int
+      psc:
+        default: 1
+        getter:
+          q: '*PSC?'
+          r: '{:d}'
+        setter:
+          q: '*PSC {:d}'
+        specs:
+          min: 0
+          max: 1
+          type: int
+      trigger_sequence_source:
+        default: EXT
+        getter:
+          q: TRIGGER:SEQUENCE:SOURCE?
+          r: '{:s}'
+        setter:
+          q: TRIGGER:SEQUENCE:SOURCE {:s}
+        specs:
+          type: str
+          valid: [EXT]
+  afg3kc-timeout:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AFG3252C,SERIAL2,SCPI:99.0 FV:3.2.3
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: SYSTEM:ERROR?
+          default: 0,"No error"
+          command_error: 1, Command error
+  afg3kc-1ch:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AFG3151C,SERIAL3,SCPI:99.0 FV:3.2.3
+      - q: '*OPC?'
+        r: '1'
+  afg3051c:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AFG3051C,SERIAL4,SCPI:99.0 FV:3.2.3
+      - q: '*OPC?'
+        r: '1'
+  afg3021c:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AFG3021C,SERIAL,SCPI:99.0 FV:3.2.3
+      - q: '*OPC?'
+        r: '1'

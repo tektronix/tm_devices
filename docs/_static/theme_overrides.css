@@ -1,0 +1,78 @@
+.custom-table-center-cells td, .custom-table-center-cells th {
+    text-align: center;
+}
+.device-support-table thead, .device-support-table tbody {
+    border: 2px solid black
+}
+.rst-content table.device-support-table.docutils:not(.field-list) tr:not(:has(th:empty)) td,
+.rst-content table.device-support-table.docutils tbody th:not(:empty),
+.device-support-table tbody tr:not(:has(th:empty)) th,
+.device-support-table tbody tr:not(:has(th:empty)) tr,
+.device-support-table tbody tr:not(:has(th:empty)) td
+{
+    border-top-width: 2px;
+    border-top-color: black;
+    border-top-style: solid;
+}
+
+/** No icon for admonitions with no-icon class */
+div.admonition.no-icon > .admonition-title::before {
+    content: "";
+}
+div.admonition.no-icon > .admonition-title {
+    padding-left: .6rem;
+}
+
+/** Fix admonition symbols */
+div.hint.admonition > .admonition-title::before {
+    content: "\f0eb";
+}
+div.note.admonition > .admonition-title::before {
+    content: "\f05a";
+}
+
+/** Fix Tippy pop-up colors */
+.tippy-box {
+    min-width: fit-content;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+/** Format list pop-ups */
+.tippy-content ul {
+    margin-left: 20px;
+}
+.tippy-content li {
+    list-style-type: circle;
+}
+.tippy-content li > p {
+    margin: 1px 0;
+}
+
+/** Format glossary pop-ups */
+.tippy-content dt {
+    text-align: left;
+    font-weight: bolder;
+}
+.tippy-content dd {
+    text-align: left;
+    font-weight: normal;
+    margin-left: 20px;
+}
+
+/** Customize the API reference */
+span.apisummarylabel {
+    background-color: lightslategray;
+    color: black;
+    font-size: 70%;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 3px;
+    vertical-align: 15%;
+    padding-bottom: 2px;
+    filter: opacity(40%);
+}
+table.apisummarytable {
+    width: 100%;
+}

@@ -1,0 +1,12 @@
+graphviz
+jinja2
+myst-parser
+sphinx
+sphinx-autoapi
+sphinx-copybutton
+sphinx-rtd-theme
+sphinx-tippy
+sphinx-togglebutton
+sphinxcontrib-jquery
+sphinxcontrib-mermaid
+urllib3

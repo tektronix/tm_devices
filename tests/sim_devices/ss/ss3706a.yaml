@@ -1,0 +1,45 @@
+---
+spec: '1.1'
+devices:
+  ss3706a:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: KEITHLEY INSTRUMENTS,MODEL 3706A,04089762,1.6.3
+      - q: errorqueue.clear()
+      - q: status.reset()
+      - q: status.standard.enable = 1
+      - q: print(status.standard.enable)
+        r: 1
+      - q: opc()
+      - q: print([[1]])
+        r: 1
+      - q: reset()
+      - q: status.request_enable = 1
+      - q: print(status.request_enable)
+        r: 1
+      - q: print(status.condition)
+        r: 1
+      - q: print([[0]])
+        r: 0
+      - q: waitcomplete()
+    error:
+      status_register:
+        - q: print(status.standard.event)
+          command_error: 32
+      error_queue:
+        - q: print(errorqueue.count)
+          default: 0
+          command_error: 2
+        - q: print(errorqueue.next())
+          default: No Error
+          command_error: Command error

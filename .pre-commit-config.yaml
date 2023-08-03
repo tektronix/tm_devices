@@ -1,0 +1,127 @@
+---
+default_install_hook_types: [pre-commit, commit-msg]
+default_stages: [pre-commit]
+ci:
+  autofix_prs: false
+  autoupdate_schedule: quarterly
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: requirements-txt-fixer
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: [--maxkb=3000, --enforce-all]
+      - id: forbid-new-submodules
+      - id: pretty-format-json
+        args: [--autofix, --indent=4]
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.5.1
+    hooks:
+      - id: remove-tabs
+      - id: forbid-tabs
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.23.3
+    hooks:
+      - id: check-readthedocs
+      - id: check-dependabot
+      - id: check-github-actions
+      - id: check-github-workflows
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: 3.6.0
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
+  - repo: https://github.com/asottile/blacken-docs
+    rev: 1.15.0
+    hooks:
+      - id: blacken-docs
+  - repo: https://github.com/lyz-code/yamlfix/
+    rev: 1.13.0
+    hooks:
+      - id: yamlfix
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.16
+    hooks:
+      - id: mdformat
+        args: [--number, --end-of-line, keep]
+        additional_dependencies:
+          - mdformat-myst
+          - mdformat-toc
+          - mdformat-frontmatter
+          - mdformat-beautysh
+          - mdformat-black
+          - mdformat-config
+          - mdformat-shfmt
+          - mdformat-web
+# Currently rstcheck doesn't work with the templates
+#  - repo: https://github.com/rstcheck/rstcheck
+#    rev: v6.1.2
+#    hooks:
+#      - id: rstcheck
+#        additional_dependencies: [tomli, sphinx]
+# TODO: enable this, will require configuration
+#  - repo: https://github.com/jackdewinter/pymarkdown
+#    rev: v0.9.11
+#    hooks:
+#      - id: pymarkdown
+  - repo: https://gitlab.com/smop/pre-commit-hooks
+    rev: v1.0.0
+    hooks:
+      - id: check-poetry
+  - repo: local
+    hooks:
+      - id: toml-sort
+        name: toml-sort
+        entry: toml-sort
+        language: system
+        types: [toml]
+        pass_filenames: true
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        pass_filenames: true
+        args: [-sn]
+      - id: pyright
+        name: pyright
+        entry: pyright
+        language: system
+        types: [python]
+        pass_filenames: false
+      - id: pyright-verifytypes
+        name: pyright-verifytypes
+        entry: pyright
+        language: system
+        types: [python]
+        pass_filenames: false
+        args: [--verifytypes, tm_devices, --ignoreexternal]
+      - id: pyroma
+        name: pyroma
+        entry: pyroma
+        language: system
+        types: [python]
+        pass_filenames: false
+        always_run: true
+        args: [., --min=10]
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.282
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+  - repo: https://github.com/psf/black
+    rev: 23.7.0
+    hooks:
+      - id: black
+  - repo: https://github.com/PyCQA/docformatter
+    rev: v1.7.0  # can't update due to https://github.com/PyCQA/docformatter/issues/174
+    hooks:
+      - id: docformatter
+        additional_dependencies: [tomli]

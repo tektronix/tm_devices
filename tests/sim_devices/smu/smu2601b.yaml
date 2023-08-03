@@ -1,0 +1,54 @@
+---
+spec: '1.1'
+devices:
+  smu2601b:
+    dialogues:
+      - q: '*IDN?'
+        r: Keithley Instruments Inc., Model 2601B, 4498311, 3.3.5
+      - q: print(available(gpib))
+        r: 'true'
+      - q: loadscript loadfuncs
+      - q: loadscript tsp_function
+      - q: print("TEK")
+      - q: '"""Sample script used in test_smu.py."""'
+      - q: endscript
+      - q: loadfuncs.save()
+      - q: loadfuncs()
+      - q: errorqueue.clear()
+      - q: status.reset()
+      - q: status.standard.enable = 1
+      - q: print(status.standard.enable)
+        r: 1
+      - q: opc()
+      - q: print([[1]])
+        r: 1
+      - q: reset()
+      - q: status.request_enable = 1
+      - q: status.request_enable = 2
+      - q: print(status.request_enable)
+        r: 1
+      - q: print(status.condition)
+        r: 1
+      - q: print([[0]])
+        r: 0
+      - q: waitcomplete()
+      - q: status.node_enable = 1
+      - q: print(status.node_enable)
+        r: 1
+      - q: if loadfuncs ~= nil then script.delete('loadfuncs') end
+      - q: if tsp_function ~= nil then script.delete('tsp_function') end
+      - q: printbuffer(1, smua.nvbuffer1.n, smua.nvbuffer1)
+        r: 1, 2, 3, 4, 5
+      - q: printbuffer(1, smua.nvbuffer1.n, smua.nvbuffer1.timestamps)
+        r: 2, 4, 6, 8, 10
+    error:
+      status_register:
+        - q: print(status.standard.event)
+          command_error: 32
+      error_queue:
+        - q: print(errorqueue.count)
+          default: 0
+          command_error: 2
+        - q: print(errorqueue.next())
+          default: No Error
+          command_error: Command error

@@ -1,0 +1,20 @@
+---
+spec: '1.1'
+devices:
+  psu2220:
+    dialogues:
+      - q: '*IDN?'
+        r: Keithley instruments, 2220G-30-6, 0123456789AF, 1.04-1.06
+      - q: '*OPC?'
+        r: '1'
+      - q: '*RST'
+      - q: '*CLS'
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: SYSTEM:ERROR?
+          default: 0,"No error"
+          command_error: 1, Command error

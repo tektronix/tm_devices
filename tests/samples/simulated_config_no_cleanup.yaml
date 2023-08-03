@@ -1,0 +1,12 @@
+---
+devices:
+  - address: AFG3KC-HOSTNAME
+    device_type: AFG
+  - address: MSO58B-HOSTNAME
+    alias: MSO58B
+    device_type: SCOPE
+  - address: 1
+    device_type: SMU
+    connection_type: GPIB
+options:
+  setup_cleanup: false

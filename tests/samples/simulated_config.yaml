@@ -1,0 +1,10 @@
+---
+devices:
+  - address: AFG3KC-HOSTNAME
+    device_type: AFG
+  - address: MSO58B-HOSTNAME
+    alias: MSO58B
+    device_type: SCOPE
+options:
+  setup_cleanup: true
+  teardown_cleanup: true
