@@ -50,6 +50,8 @@ def test_create_ping_command() -> None:
         assert _create_ping_command("127.0.0.1") == "ping 127.0.0.1 -n 1 -w 2000"
     with mock.patch("platform.system", mock.MagicMock(return_value="Linux")):
         assert _create_ping_command("localhost") == "ping localhost -c 1 -w 2"
+    with mock.patch("platform.system", mock.MagicMock(return_value="Darwin")):
+        assert _create_ping_command("localhost") == "ping localhost -c 1 -W 2"
 
     # Invalid addresses
     with pytest.raises(
