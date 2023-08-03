@@ -324,6 +324,15 @@ order-by-type = false
   "S105",  # Possible hardcoded password
   "TID252"  # Relative imports from parent modules are banned
 ]
+"src/tm_devices/drivers/api/__init__.py" = [
+  "D104"  # Missing docstring in public package
+]
+"src/tm_devices/drivers/api/rest_api/__init__.py" = [
+  "D104"  # Missing docstring in public package
+]
+"src/tm_devices/drivers/pi/__init__.py" = [
+  "D104"  # Missing docstring in public package
+]
 "tests/**" = [
   "PLC1901",  # compare-to-empty-string
   "PLR2004",  # Magic value used in comparison
