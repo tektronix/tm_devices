@@ -1,0 +1,46 @@
+---
+spec: '1.1'
+devices:
+  awg70002b:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AWG70002B,SERIAL1,FV:6.3.0080.0
+      - q: '*OPC'
+      - q: '*OPC?'
+        r: '1'
+      - q: '*RST'
+      - q: '*CLS'
+      - q: AWGControl:CONFigure:CNUMber?
+        r: '2'
+      - q: 'MMEMory:IMPort '
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: SYSTEM:ERROR?
+          default: 0,"No error"
+          command_error: 1, "Command error"
+    properties:
+      sre:
+        default: 0
+        getter:
+          q: '*SRE?'
+          r: '{:d}'
+        setter:
+          q: '*SRE {:d}'
+        specs:
+          min: 0
+          max: 255
+          type: int

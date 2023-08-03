@@ -1,0 +1,77 @@
+---
+spec: '1.1'
+devices:
+  longNameInstrument:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,LONGNAMEINSTRUMENT,NO_SERIAL,CF:91.1CT FV:1.41.55.993
+      - q: HEADER OFF
+      - q: :ETHERNET:NAME?
+        r: LONGNAMEINSTRUMENT
+      - q: :FILESystem:LDIR?
+        r: 'E:,F:,G:,H:,I:,J:,K:'
+      - q: :FILESystem:CWD "E:"
+      - q: :FILESystem:CWD "F:"
+      - q: :FILESystem:CWD "G:"
+      - q: :FILESystem:CWD "H:"
+      - q: :FILESystem:CWD "I:"
+      - q: :FILESystem:CWD "J:"
+      - q: :FILESystem:CWD "K:"
+      - q: :FILESystem:CWD?
+        r: '"E:"'
+      - q: CURVE?
+        r: "#14\0\0\0\0"
+      - q: EMPTYBIN?
+        r: '#0'
+      - q: FACTORY
+      - q: '*OPC?'
+        r: '1'
+      - q: EMPTY?
+        r: ''
+      - q: '*RST'
+      - q: '*CLS'
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: :ALLev?
+          default: 0,"No events to report - queue empty"
+          command_error: 113,"Undefined header; Command not found; EXAMPLE_COMMAND"
+    properties:
+      sre:
+        default: 0
+        getter:
+          q: '*SRE?'
+          r: '{:d}'
+        setter:
+          q: '*SRE {:d}'
+        specs:
+          min: 0
+          max: 255
+          type: int
+      chan_1_state:
+        default: '1'
+        getter:
+          q: :DISPLAY:WAVEVIEW:CH1:STATE?
+          r: '{:s}'
+        setter:
+          q: :DISPLAY:WAVEVIEW:CH1:STATE {:s}
+      chan_2_state:
+        default: '1'
+        getter:
+          q: :DISPLAY:WAVEVIEW:CH2:STATE?
+          r: '{:s}'
+        setter:
+          q: :DISPLAY:WAVEVIEW:CH2:STATE {:s}

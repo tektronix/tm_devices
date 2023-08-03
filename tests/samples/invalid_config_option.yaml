@@ -1,0 +1,4 @@
+---
+options:
+  invalid_option: true
+  setup_cleanup: true

@@ -1,0 +1,221 @@
+"""The d commands module.
+
+These commands are used in the following models:
+DPO2K, DPO2KB, MSO2K, MSO2KB
+
+THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
+
+Please report an issue if one is found.
+
+Commands and Queries:
+
+::
+
+    - D<x>
+    - D<x>:LABel <Qstring>
+    - D<x>:LABel?
+    - D<x>:POSition <NR3>
+    - D<x>:POSition?
+    - D<x>:THREshold {ECL|TTL|<NR3>}
+    - D<x>:THREshold?
+"""
+from typing import Optional, TYPE_CHECKING
+
+from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments, ValidatedDigitalBit
+
+if TYPE_CHECKING:
+    from tm_devices.drivers.pi.pi_device import PIDevice
+
+
+class DigitalBitThreshold(SCPICmdWrite, SCPICmdRead):
+    """The ``D<x>:THREshold`` command.
+
+    **Description:**
+        - Sets or returns the logical threshold for digital channel <x>, where x is the channel
+          number.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``D<x>:THREshold?`` query.
+        - Using the ``.verify(value)`` method will send the ``D<x>:THREshold?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``D<x>:THREshold value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - D<x>:THREshold {ECL|TTL|<NR3>}
+        - D<x>:THREshold?
+
+    **Info:**
+        - ``ECL`` sets the digital threshold for channel <x> to a preset ECL high level of -1.3V.
+        - ``TTL`` sets the digital threshold for channel <x> to a preset TTL high level of 1.4V.
+        - ``<NR3>`` specifies the digital threshold for channel <x> in volts.
+    """
+
+
+class DigitalBitPosition(SCPICmdWrite, SCPICmdRead):
+    """The ``D<x>:POSition`` command.
+
+    **Description:**
+        - This command specifies the vertical position for digital channel <x>, where x is the
+          channel number.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``D<x>:POSition?`` query.
+        - Using the ``.verify(value)`` method will send the ``D<x>:POSition?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``D<x>:POSition value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - D<x>:POSition <NR3>
+        - D<x>:POSition?
+
+    **Info:**
+        - ``<NR3>`` is a floating point number that specifies the position of the digital channel,
+          in slot units. Use the oscilloscope front-panel controls to place the channel; then query
+          the channel to obtain an exact value for the position.
+    """
+
+
+class DigitalBitLabel(SCPICmdWrite, SCPICmdRead):
+    """The ``D<x>:LABel`` command.
+
+    **Description:**
+        - This command specifies the waveform label for digital channel <x>, where x is the channel
+          number.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``D<x>:LABel?`` query.
+        - Using the ``.verify(value)`` method will send the ``D<x>:LABel?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``D<x>:LABel value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - D<x>:LABel <Qstring>
+        - D<x>:LABel?
+
+    **Info:**
+        - ``<Qstring>`` is an alphanumeric string of text, enclosed in quotes, that contains the
+          text label information for the digital channel <x> waveform. The text string is limited to
+          30 characters.
+    """
+
+
+class DigitalBit(ValidatedDigitalBit, SCPICmdWriteNoArguments, SCPICmdRead):
+    """The ``D<x>`` command.
+
+    **Description:**
+        - This command specifies parameters for digital channel <x>, where x is the channel number.
+
+    **Usage:**
+        - Using the ``.write()`` method will send the ``D<x>`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - D<x>
+
+    Properties:
+        - ``.label``: The ``D<x>:LABel`` command.
+        - ``.position``: The ``D<x>:POSition`` command.
+        - ``.threshold``: The ``D<x>:THREshold`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "D<x>") -> None:
+        super().__init__(device, cmd_syntax)
+        self._label = DigitalBitLabel(device, f"{self._cmd_syntax}:LABel")
+        self._position = DigitalBitPosition(device, f"{self._cmd_syntax}:POSition")
+        self._threshold = DigitalBitThreshold(device, f"{self._cmd_syntax}:THREshold")
+
+    @property
+    def label(self) -> DigitalBitLabel:
+        """Return the ``D<x>:LABel`` command.
+
+        **Description:**
+            - This command specifies the waveform label for digital channel <x>, where x is the
+              channel number.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``D<x>:LABel?`` query.
+            - Using the ``.verify(value)`` method will send the ``D<x>:LABel?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``D<x>:LABel value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - D<x>:LABel <Qstring>
+            - D<x>:LABel?
+
+        **Info:**
+            - ``<Qstring>`` is an alphanumeric string of text, enclosed in quotes, that contains the
+              text label information for the digital channel <x> waveform. The text string is
+              limited to 30 characters.
+        """
+        return self._label
+
+    @property
+    def position(self) -> DigitalBitPosition:
+        """Return the ``D<x>:POSition`` command.
+
+        **Description:**
+            - This command specifies the vertical position for digital channel <x>, where x is the
+              channel number.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``D<x>:POSition?`` query.
+            - Using the ``.verify(value)`` method will send the ``D<x>:POSition?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``D<x>:POSition value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - D<x>:POSition <NR3>
+            - D<x>:POSition?
+
+        **Info:**
+            - ``<NR3>`` is a floating point number that specifies the position of the digital
+              channel, in slot units. Use the oscilloscope front-panel controls to place the
+              channel; then query the channel to obtain an exact value for the position.
+        """
+        return self._position
+
+    @property
+    def threshold(self) -> DigitalBitThreshold:
+        """Return the ``D<x>:THREshold`` command.
+
+        **Description:**
+            - Sets or returns the logical threshold for digital channel <x>, where x is the channel
+              number.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``D<x>:THREshold?`` query.
+            - Using the ``.verify(value)`` method will send the ``D<x>:THREshold?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``D<x>:THREshold value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - D<x>:THREshold {ECL|TTL|<NR3>}
+            - D<x>:THREshold?
+
+        **Info:**
+            - ``ECL`` sets the digital threshold for channel <x> to a preset ECL high level of
+              -1.3V.
+            - ``TTL`` sets the digital threshold for channel <x> to a preset TTL high level of 1.4V.
+            - ``<NR3>`` specifies the digital threshold for channel <x> in volts.
+        """
+        return self._threshold

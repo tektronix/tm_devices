@@ -1,0 +1,21 @@
+---
+# Required
+version: 2
+# Image to use
+build:
+  os: ubuntu-22.04
+  tools:
+    python: '3.11'  # This needs to stay in sync with pyproject.toml and any CI scripts
+    nodejs: '18'  # This needs to stay in sync with any CI scripts
+  jobs:
+    post_install:
+      - npm install -g @mermaid-js/mermaid-cli
+# Configuration
+python:
+  install:
+    - requirements: docs/requirements.txt
+    - method: pip
+      path: .
+sphinx:
+  fail_on_warning: true
+formats: [pdf]

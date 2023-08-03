@@ -1,0 +1,44 @@
+---
+spec: '1.1'
+devices:
+  smu2657a:
+    dialogues:
+      - q: '*IDN?'
+        r: Keithley Instruments Inc., Model 2657A, 4498311, 1.2.0
+      - q: print(available(gpib))
+        r: 'true'
+      - q: loadscript tsp_script
+      - q: loadscript tsp_function
+      - q: print("TEK")
+      - q: '"""Sample script used in test_smu.py."""'
+      - q: endscript
+      - q: tsp_script.save()
+      - q: tsp_script()
+      - q: errorqueue.clear()
+      - q: status.reset()
+      - q: status.standard.enable = 1
+      - q: print(status.standard.enable)
+        r: 1
+      - q: opc()
+      - q: print([[1]])
+        r: 1
+      - q: reset()
+      - q: status.request_enable = 1
+      - q: print(status.request_enable)
+        r: 1
+      - q: print(status.condition)
+        r: 1
+      - q: print([[0]])
+        r: 0
+      - q: waitcomplete()
+    error:
+      status_register:
+        - q: print(status.standard.event)
+          command_error: 32
+      error_queue:
+        - q: print(errorqueue.count)
+          default: 0
+          command_error: 2
+        - q: print(errorqueue.next())
+          default: No Error
+          command_error: Command error

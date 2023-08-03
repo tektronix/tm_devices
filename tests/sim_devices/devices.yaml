@@ -1,0 +1,441 @@
+---
+spec: '1.1'
+devices:
+  unknown:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,UNKNOWN,SERIAL,FV:0.0.0
+  unknown-smu:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: Keithley Instruments Inc., Model 2600012, 4498311, 3.3.5
+  bad-idn:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: 1
+resources:
+  # --- bad inputs ---
+  TCPIP::UNKNOWN::INSTR:
+    device: unknown
+  TCPIP::UNKNOWN-SMU::INSTR:
+    device: unknown-smu
+  TCPIP::BAD-IDN::INSTR:
+    device: bad-idn
+  TCPIP::LONGNAMEINSTRUMENT-HOSTNAME::INSTR:
+    device: longNameInstrument
+    filename: scope/longNameInstrument.yaml
+
+  # --- afg ---
+  #   afg3k
+  TCPIP::AFG3K-HOSTNAME::INSTR:
+    device: afg3252
+    filename: afg/afg3k.yaml
+  TCPIP::AFG3KB-HOSTNAME::INSTR:
+    device: afg3kb
+    filename: afg/afg3kb.yaml
+  TCPIP::AFG3KC-HOSTNAME::INSTR:
+    device: afg3kc
+    filename: afg/afg3kc.yaml
+  TCPIP::AFG3KC-HOSTNAME::10001::SOCKET:
+    device: afg3kc
+    filename: afg/afg3kc.yaml
+  TCPIP::AFG3KC-TIMEOUT::INSTR:
+    device: afg3kc-timeout
+    filename: afg/afg3kc.yaml
+  TCPIP::AFG3KC-1CH::INSTR:
+    device: afg3kc-1ch
+    filename: afg/afg3kc.yaml
+  TCPIP::AFG3051C::INSTR:
+    device: afg3051c
+    filename: afg/afg3kc.yaml
+  TCPIP::AFG3021C::INSTR:
+    device: afg3021c
+    filename: afg/afg3kc.yaml
+  #   afg31k
+  TCPIP::AFG31K-HOSTNAME::INSTR:
+    device: afg31021
+    filename: afg/afg31k.yaml
+
+  # --- awg ---
+  #   awg5200
+  TCPIP::AWG5200-HOSTNAME::INSTR:
+    device: awg5200
+    filename: awg/awg5200.yaml
+  #   awg5k
+  TCPIP::AWG5K-HOSTNAME::INSTR:
+    device: awg5012
+    filename: awg/awg5k.yaml
+  TCPIP::AWG5KC-HOSTNAME::INSTR:
+    device: awg5012c
+    filename: awg/awg5kc.yaml
+  #   awg7k
+  TCPIP::AWG7K-HOSTNAME::INSTR:
+    device: awg7122
+    filename: awg/awg7k.yaml
+  TCPIP::AWG7KC-HOSTNAME::INSTR:
+    device: awg7122c
+    filename: awg/awg7kc.yaml
+  #   awg70k
+  TCPIP::AWG70KB-HOSTNAME::INSTR:
+    device: awg70002b
+    filename: awg/awg70kb.yaml
+  TCPIP::AWG70KA-HOSTNAME::INSTR:
+    device: awg70001a
+    filename: awg/awg70ka.yaml
+
+  # --- TekScope ---
+  #   lpd6
+  TCPIP::LPD64-HOSTNAME::INSTR:
+    device: lpd64
+    filename: scope/lpd6.yaml
+  #   mso2
+  TCPIP::MSO22-HOSTNAME::INSTR:
+    device: mso22
+    filename: scope/mso2.yaml
+  TCPIP::MSO22-TIMEOUT::INSTR:
+    device: mso22-timeout
+    filename: scope/mso2.yaml
+  #   mso4
+  TCPIP::MSO44-HOSTNAME::INSTR:
+    device: mso44
+    filename: scope/mso4.yaml
+  #   mso5
+  USB0::0x0699::0x0522::SERIAL1::INSTR:
+    device: mso56
+    filename: scope/mso5.yaml
+  TCPIP::MSO56-HOSTNAME::INSTR:
+    device: mso56
+    filename: scope/mso5.yaml
+  TCPIP::MSO58B-HOSTNAME::INSTR:
+    device: mso58b
+    filename: scope/mso5b.yaml
+  USB0::0x0699::0x0522::200201::INSTR:
+    device: mso58b
+    filename: scope/mso5b.yaml
+  TCPIP::MSO58LP-HOSTNAME::INSTR:
+    device: mso58lp
+    filename: scope/mso5lp.yaml
+  #   mso6
+  TCPIP::MSO64-HOSTNAME::INSTR:
+    device: mso64
+    filename: scope/mso6.yaml
+  TCPIP::MSO68B-HOSTNAME::INSTR:
+    device: mso68b
+    filename: scope/mso6b.yaml
+
+  # --- TekScopeSW ---
+  TCPIP::TEKSCOPESW-HOSTNAME::INSTR:
+    device: tekscopesw
+    filename: scope/tekscopesw.yaml
+
+  # --- TSOvu---
+  TCPIP::TSOVU-HOSTNAME::INSTR:
+    device: tsovu
+    filename: scope/tsovu.yaml
+
+  # --- TekScope2k ---
+  #   mso2k
+  TCPIP::MSO2K-HOSTNAME::INSTR:
+    device: mso2k
+    filename: scope/mso2k.yaml
+  TCPIP::MSO2KB-HOSTNAME::INSTR:
+    device: mso2kb
+    filename: scope/mso2kb.yaml
+  #   dpo2k
+  TCPIP::DPO2K-HOSTNAME::INSTR:
+    device: dpo2k
+    filename: scope/dpo2k.yaml
+  TCPIP::DPO2KB-HOSTNAME::INSTR:
+    device: dpo2kb
+    filename: scope/dpo2kb.yaml
+
+  # --- TekScope3k4k ---
+  #   mso3
+  TCPIP::MDO3-HOSTNAME::INSTR:
+    device: mdo3
+    filename: scope/mdo3.yaml
+  #   mdo3k
+  TCPIP::192.168.0.101::INSTR:
+    device: mdo3k
+    filename: scope/mdo3k.yaml
+  TCPIP::MDO3K-HOSTNAME::INSTR:
+    device: mdo3k
+    filename: scope/mdo3k.yaml
+  #   mdo4k
+  TCPIP::MDO4K-HOSTNAME::INSTR:
+    device: mdo4k
+    filename: scope/mdo4k.yaml
+  TCPIP::MDO4KB-HOSTNAME::INSTR:
+    device: mdo4kb
+    filename: scope/mdo4kb.yaml
+  TCPIP::MDO4KC-HOSTNAME::INSTR:
+    device: mdo4kc
+    filename: scope/mdo4kc.yaml
+  #   mso4k
+  TCPIP::MSO4K-HOSTNAME::INSTR:
+    device: mso4k
+    filename: scope/mso4k.yaml
+  TCPIP::MSO4KB-HOSTNAME::INSTR:
+    device: mso4kb
+    filename: scope/mso4kb.yaml
+  #   dpo4k
+  TCPIP::DPO4K-HOSTNAME::INSTR:
+    device: dpo4k
+    filename: scope/dpo4k.yaml
+  TCPIP::DPO4KB-HOSTNAME::INSTR:
+    device: dpo4kb
+    filename: scope/dpo4kb.yaml
+
+  # --- TekScope5k7k70k ---
+  #   mso5k
+  TCPIP::MSO5K-HOSTNAME::INSTR:
+    device: mso5k
+    filename: scope/mso5k.yaml
+  TCPIP::MSO5KB-HOSTNAME::INSTR:
+    device: mso5kb
+    filename: scope/mso5kb.yaml
+  #   dpo5k
+  TCPIP::DPO5K-HOSTNAME::INSTR:
+    device: dpo5k
+    filename: scope/dpo5k.yaml
+  TCPIP::DPO5KB-HOSTNAME::INSTR:
+    device: dpo5kb
+    filename: scope/dpo5kb.yaml
+  #   dpo7k
+  TCPIP::DPO7K-HOSTNAME::INSTR:
+    device: dpo7k
+    filename: scope/dpo7k.yaml
+  TCPIP::DPO7KC-HOSTNAME::INSTR:
+    device: dpo7kc
+    filename: scope/dpo7kc.yaml
+  #   mso70k
+  TCPIP::127.0.0.2::INSTR:
+    device: mso70k
+    filename: scope/mso70k.yaml
+  TCPIP::MSO70KC-HOSTNAME::INSTR:
+    device: mso70kc
+    filename: scope/mso70kc.yaml
+  TCPIP::MSO70KDX-HOSTNAME::INSTR:
+    device: mso72004dx
+    filename: scope/mso70kdx.yaml
+  #   dsa70k
+  TCPIP::DSA70K-HOSTNAME::INSTR:
+    device: dsa70k
+    filename: scope/dsa70k.yaml
+  TCPIP::DSA70KC-HOSTNAME::INSTR:
+    device: dsa70kc
+    filename: scope/dsa70kc.yaml
+  TCPIP::DSA70KD-HOSTNAME::INSTR:
+    device: dsa70kd
+    filename: scope/dsa70kd.yaml
+  #   dpo70k
+  TCPIP::DPO70K-HOSTNAME::INSTR:
+    device: dpo70104
+    filename: scope/dpo70k.yaml
+  TCPIP::DPO70KDX-HOSTNAME::INSTR:
+    device: dpo73304dx
+    filename: scope/dpo70kdx.yaml
+  TCPIP::DPO70KSX-HOSTNAME::INSTR:
+    device: dpo75002sx
+    filename: scope/dpo70ksx.yaml
+  TCPIP::DPO70KC-HOSTNAME::INSTR:
+    device: dpo70kc
+    filename: scope/dpo70kc.yaml
+  TCPIP::DPO70KD-HOSTNAME::INSTR:
+    device: dpo70kd
+    filename: scope/dpo70kd.yaml
+
+  # --- smu ---
+  #   smu24xx
+  TCPIP::SMU2400-HOSTNAME::INSTR:
+    device: smu2400
+    filename: smu/smu2400.yaml
+  TCPIP::SMU2401-HOSTNAME::INSTR:
+    device: smu2401
+    filename: smu/smu2401.yaml
+  TCPIP::SMU2410-HOSTNAME::INSTR:
+    device: smu2410
+    filename: smu/smu2410.yaml
+
+  #   smu24xx graphical
+  TCPIP::SMU2450-HOSTNAME::INSTR:
+    device: smu2450
+    filename: smu/smu2450.yaml
+  TCPIP::127.0.0.9::inst0::INSTR:
+    device: smu2450
+    filename: smu/smu2450.yaml
+  USB0::0x05E6::0x2450::01419964::INSTR:
+    device: smu2450
+    filename: smu/smu2450.yaml
+  TCPIP::SMU2460-HOSTNAME::INSTR:
+    device: smu2460
+    filename: smu/smu2460.yaml
+  TCPIP::SMU2461-HOSTNAME::INSTR:
+    device: smu2461
+    filename: smu/smu2461.yaml
+  TCPIP::SMU2470-HOSTNAME::INSTR:
+    device: smu2470
+    filename: smu/smu2470.yaml
+  #   smu26xxa
+  TCPIP::SMU2601A-HOSTNAME::INSTR:
+    device: smu2601a
+    filename: smu/smu2601a.yaml
+  TCPIP::SMU2602A-HOSTNAME::INSTR:
+    device: smu2602a
+    filename: smu/smu2602a.yaml
+  TCPIP::SMU2604A-HOSTNAME::INSTR:
+    device: smu2604a
+    filename: smu/smu2604a.yaml
+  TCPIP::SMU2611A-HOSTNAME::INSTR:
+    device: smu2611a
+    filename: smu/smu2611a.yaml
+  TCPIP::SMU2612A-HOSTNAME::INSTR:
+    device: smu2612a
+    filename: smu/smu2612a.yaml
+  TCPIP::SMU2614A-HOSTNAME::INSTR:
+    device: smu2614a
+    filename: smu/smu2614a.yaml
+  TCPIP::SMU2634A-HOSTNAME::INSTR:
+    device: smu2634a
+    filename: smu/smu2634a.yaml
+  TCPIP::SMU2635A-HOSTNAME::INSTR:
+    device: smu2635a
+    filename: smu/smu2635a.yaml
+  TCPIP::SMU2636A-HOSTNAME::INSTR:
+    device: smu2636a
+    filename: smu/smu2636a.yaml
+  #   smu26xxb
+  TCPIP::SMU2601B-HOSTNAME::INSTR:
+    device: smu2601b
+    filename: smu/smu2601b.yaml
+  TCPIP::SMU2601B-PULSE-HOSTNAME::INSTR:
+    device: smu2601b_pulse
+    filename: smu/smu2601b_pulse.yaml
+  TCPIP::SMU2602B-HOSTNAME::INSTR:
+    device: smu2602b
+    filename: smu/smu2602b.yaml
+  TCPIP::SMU2604B-HOSTNAME::INSTR:
+    device: smu2604b
+    filename: smu/smu2604b.yaml
+  TCPIP::SMU2606B-HOSTNAME::INSTR:
+    device: smu2606b
+    filename: smu/smu2606b.yaml
+  TCPIP::SMU2611B-HOSTNAME::INSTR:
+    device: smu2611b
+    filename: smu/smu2611b.yaml
+  TCPIP::SMU-HOSTNAME::INSTR:
+    device: smu
+    filename: smu/smu2612b.yaml
+  TCPIP::SMU2614B-HOSTNAME::INSTR:
+    device: smu2614b
+    filename: smu/smu2614b.yaml
+  ASRL1::INSTR:
+    device: smu2614b
+    filename: smu/smu2614b.yaml
+  TCPIP::SMU2634B-HOSTNAME::INSTR:
+    device: smu2634b
+    filename: smu/smu2634b.yaml
+  TCPIP::SMU2635B-HOSTNAME::INSTR:
+    device: smu2635b
+    filename: smu/smu2635b.yaml
+  TCPIP::SMU2636B-HOSTNAME::INSTR:
+    device: smu2636b
+    filename: smu/smu2636b.yaml
+  GPIB::1::INSTR:
+    device: smu2636b
+    filename: smu/smu2636b.yaml
+  #   smu265xa
+  TCPIP::SMU2651A-HOSTNAME::INSTR:
+    device: smu2651a
+    filename: smu/smu2651a.yaml
+  TCPIP::SMU2657A-HOSTNAME::INSTR:
+    device: smu2657a
+    filename: smu/smu2657a.yaml
+  #   smu6xxx
+  TCPIP::SMU6430-HOSTNAME::INSTR:
+    device: smu6430
+    filename: smu/smu6430.yaml
+  TCPIP::SMU6514-HOSTNAME::INSTR:
+    device: smu6514
+    filename: smu/smu6514.yaml
+  TCPIP::SMU6517B-HOSTNAME::INSTR:
+    device: smu6517b
+    filename: smu/smu6517b.yaml
+
+  # --- ss ---
+  TCPIP::SS3706A-HOSTNAME::INSTR:
+    device: ss3706a
+    filename: ss/ss3706a.yaml
+
+  # --- daq ---
+  TCPIP::DAQ6510-HOSTNAME::INSTR:
+    device: daq6510
+    filename: daq/daq6510.yaml
+
+  # --- dmm ---
+  TCPIP::DMM6500-HOSTNAME::INSTR:
+    device: dmm6500
+    filename: dmm/dmm6500.yaml
+  TCPIP::DMM7510-HOSTNAME::INSTR:
+    device: dmm7510
+    filename: dmm/dmm7510.yaml
+  TCPIP::DMM7512-HOSTNAME::INSTR:
+    device: dmm7512
+    filename: dmm/dmm7512.yaml
+
+  # --- psu ---
+  #   psu2200
+  TCPIP::PSU2200-HOSTNAME::INSTR:
+    device: psu2200
+    filename: psu/psu2200.yaml
+  #   psu2220
+  TCPIP::PSU2220-HOSTNAME::INSTR:
+    device: psu2220
+    filename: psu/psu2220.yaml
+  #   psu223x
+  TCPIP::PSU-HOSTNAME::INSTR:
+    device: psu
+    filename: psu/psu2230.yaml
+  TCPIP::PSU2231-HOSTNAME::INSTR:
+    device: psu2231
+    filename: psu/psu2231.yaml
+  TCPIP::PSU2231A-HOSTNAME::INSTR:
+    device: psu2231a
+    filename: psu/psu2231a.yaml
+  #   psu228x
+  TCPIP::PSU2280-HOSTNAME::INSTR:
+    device: psu2280
+    filename: psu/psu2280.yaml
+  TCPIP::PSU2281-HOSTNAME::INSTR:
+    device: psu2281
+    filename: psu/psu2281.yaml

@@ -1,0 +1,25 @@
+---
+spec: '1.1'
+devices:
+  dmm7510:
+    dialogues:
+      - q: '*IDN?'
+        r: KEITHLEY INSTRUMENTS,MODEL DMM7510,00000170,1.0.0
+      - q: waitcomplete()
+      - q: opc()
+      - q: print([[1]])
+        r: 1
+      - q: eventlog.clear()
+      - q: status.clear()
+      - q: reset()
+    error:
+      status_register:
+        - q: print(status.standard.event)
+          command_error: 32
+      error_queue:
+        - q: print(eventlog.getcount(eventlog.SEV_ERROR))
+          default: 0
+          command_error: 2
+        - q: print(eventlog.next())
+          default: No Error
+          command_error: Command error

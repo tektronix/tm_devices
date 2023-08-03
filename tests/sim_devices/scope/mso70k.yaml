@@ -1,0 +1,44 @@
+---
+spec: '1.1'
+devices:
+  mso70k:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,MSO70604,SERIAL1,CF:91.1CT FV:1.99.11.1268
+      - q: '*OPC?'
+        r: '1'
+      - q: '*RST'
+      - q: '*CLS'
+      - q: EMPTY?
+        r: ''
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: :ALLev?
+          default: 0,"No events to report - queue empty"
+          command_error: 113,"Undefined header; Command not found; EXAMPLE_COMMAND"
+    properties:
+      sre:
+        default: 0
+        getter:
+          q: '*SRE?'
+          r: '{:d}'
+        setter:
+          q: '*SRE {:d}'
+        specs:
+          min: 0
+          max: 255
+          type: int
