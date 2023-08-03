@@ -25,6 +25,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+          check-latest: true
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -35,6 +36,7 @@ jobs:
   test-fast:
     runs-on: ${{ matrix.os_name }}-latest
     strategy:
+      fail-fast: false
       matrix:
         os_name: [ubuntu, macos, windows]
     steps:
@@ -42,6 +44,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: x  # any version
+          check-latest: true
       - name: Install tox
         run: |
           python -m pip install --upgrade pip
@@ -49,7 +52,8 @@ jobs:
       - name: Test
         run: tox -ve tests
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v3
         with:
+          files: ./.coverage.tests
           name: codecov-${{ matrix.os_name }}
           fail_ci_if_error: true
