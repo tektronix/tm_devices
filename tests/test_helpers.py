@@ -74,6 +74,7 @@ def test_create_ping_command() -> None:
         ("MSO70604", "MSO70K"),
         ("AWG5204", "AWG5200"),
         ("AWG5012C", "AWG5KC"),
+        ("AWG5012B", "AWG5KB"),
         ("AWG5012", "AWG5K"),
         ("AWG70002B", "AWG70KB"),
         ("AFG3252", "AFG3K"),

@@ -10,8 +10,8 @@ This guide will walk through the steps needed to add a new device driver.
     [add a new device type](./add_new_device_type.md) subpackage
 02. Create the new device driver python file and class that inherits the
     appropriate device type/series base class
-    1. If the new device(s) are part of a series, add a new series subpackage
-       for theme (e.g. `power_supplies/psu2200/`)
+    1. If the new device(s) are part of a series (also referred to as a family),
+       add a new series subpackage for them (e.g. `power_supplies/psu2200/`)
     2. Create the device driver python file, create a class that inherits from
        the abstracted device type (or series) base class, see
        [example](#example-of-adding-a-new-device-series-parent-driver-class).
@@ -63,7 +63,7 @@ from tm_devices.drivers.pi.power_supplies.power_supply import PowerSupplyUnit
 from tm_devices.drivers.device import family_base_class
 
 
-@family_base_class
+@family_base_class  # Mark the base class for the new family of devices
 class BaseFancyPSU(PowerSupplyUnit, ABC):
     """Base Fancy PSU device driver."""
 

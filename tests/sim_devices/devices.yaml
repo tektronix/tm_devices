@@ -95,6 +95,9 @@ resources:
   TCPIP::AWG5K-HOSTNAME::INSTR:
     device: awg5012
     filename: awg/awg5k.yaml
+  TCPIP::AWG5KB-HOSTNAME::INSTR:
+    device: awg5012b
+    filename: awg/awg5kb.yaml
   TCPIP::AWG5KC-HOSTNAME::INSTR:
     device: awg5012c
     filename: awg/awg5kc.yaml

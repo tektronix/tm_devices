@@ -63,6 +63,13 @@ devices:
           min: 0
           max: 255
           type: int
+      verbosity:
+        default: 0
+        getter:
+          q: :VERBose?
+          r: '{:s}'
+        setter:
+          q: :VERBose {:s}
       chan_1_state:
         default: '1'
         getter:

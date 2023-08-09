@@ -130,6 +130,10 @@ class TekScope(
         with self.temporary_verbose(False) and self.temporary_visa_timeout(
             500 if not bool(os.environ.get("TM_DEVICES_UNIT_TESTS_RUNNING")) else UNIT_TEST_TIMEOUT
         ):
+            # Set scope PI to be verbose
+            old_pi_verbosity = self.query(":VERBose?")
+            self.set_and_check(":VERBose", 1)
+
             # CH1, CH2, ..., CH<n>[, DCH<n>]
             for channel in self.all_channel_names_list:
                 try:
@@ -161,6 +165,9 @@ class TekScope(
                     raise AssertionError(msg)
                 # create the probe dataclass
                 channel_map[channel] = TekScopeChannel(name=channel, probe=probe)
+
+            # Set scope PI verbosity back to previous value
+            self.set_and_check(":VERBose", old_pi_verbosity)
         return MappingProxyType(channel_map)
 
     @property

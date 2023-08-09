@@ -22,12 +22,12 @@ repos:
       - id: pretty-format-json
         args: [--autofix, --indent=4]
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.5.1
+    rev: v1.5.3
     hooks:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.23.3
+    rev: 0.24.0
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
@@ -112,7 +112,7 @@ repos:
         always_run: true
         args: [., --min=10]
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.282
+    rev: v0.0.283
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]

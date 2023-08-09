@@ -29,6 +29,7 @@ def test_all_device_drivers(
         ("AWG", "AWG7K-HOSTNAME", None, None, None),
         ("AWG", "AWG7KC-HOSTNAME", None, None, None),
         ("AWG", "AWG5KC-HOSTNAME", None, None, None),
+        ("AWG", "AWG5KB-HOSTNAME", None, None, None),
         ("AWG", "AWG70KB-HOSTNAME", None, None, None),
         ("AWG", "AWG70KA-HOSTNAME", None, None, None),
         ("SCOPE", "MSO22-HOSTNAME", None, None, None),
