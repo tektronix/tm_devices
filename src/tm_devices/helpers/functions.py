@@ -534,14 +534,14 @@ def _create_ping_command(address: str, timeout: int = 2) -> str:
     """
     validate_address(address)
     # Create the ping command
-    if platform.system().lower() == "windows":
+    if (platform_system := platform.system().lower()) == "windows":
         count_arg = "-n"
         timeout_arg = "-w"
         timeout_val = timeout * 1000  # Windows uses milliseconds
     else:
         count_arg = "-c"
-        timeout_arg = "-w"
-        timeout_val = timeout  # Linux uses seconds
+        timeout_arg = "-W" if platform_system == "darwin" else "-w"
+        timeout_val = timeout  # Linux/MacOS uses seconds
     return f"ping {address} {count_arg} 1 {timeout_arg} {timeout_val}"
 
 

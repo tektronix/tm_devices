@@ -99,3 +99,7 @@ class AliasDict(ParentDictClass):
                 break  # this skips over the else clause
         else:
             super().__setitem__(key, value)
+
+    def __len__(self) -> int:  # pylint: disable=useless-parent-delegation
+        """Return the length of the dictionary."""
+        return super().__len__()

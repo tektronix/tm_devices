@@ -22,12 +22,12 @@ repos:
       - id: pretty-format-json
         args: [--autofix, --indent=4]
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.5.1
+    rev: v1.5.4
     hooks:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.23.3
+    rev: 0.24.1
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
@@ -39,7 +39,7 @@ repos:
       - id: commitizen
         stages: [commit-msg]
   - repo: https://github.com/asottile/blacken-docs
-    rev: 1.15.0
+    rev: 1.16.0
     hooks:
       - id: blacken-docs
   - repo: https://github.com/lyz-code/yamlfix/
@@ -112,7 +112,7 @@ repos:
         always_run: true
         args: [., --min=10]
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.282
+    rev: v0.0.285
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]

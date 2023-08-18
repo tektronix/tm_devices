@@ -8,21 +8,24 @@ device drivers.
 Because of the inheritance structure of the device drivers (see the
 [architecture diagrams](../advanced/architecture.md#main-device-types)), new
 methods should be added to the highest applicable class in the tree. All methods
-for each type of device (Scope, AFG, SMU, etc.) need to be defined in that
-device type's abstract class, or higher up the tree, to enable accurate type
-hinting for each different device type tree. Unless the implementation is the
-same for all subclasses of that device type, the abstract class's implementation
-should simply `raise NotImplementedError`.
+for each family of device (TekScope, SMU2600, PSU2200, etc.) need to be defined in that
+device family's abstract class, or higher up the tree, to enable accurate type
+hinting for each different device family tree. Unless the implementation is the
+same for all subclasses of that device family, the abstract class's implementation
+should be decorated as an `@abstractmethod`.
 
 ## New method addition example
 
 ```python
+from abc import abstractmethod
+
+
 # scope.py
 # Abstract class
 class Scope(...):
+    @abstractmethod
     def new_method(self):
-        # Abstract class raises an error.
-        raise NotImplementedError
+        """Abstract class raises an error."""
 
 
 # tekscope.py

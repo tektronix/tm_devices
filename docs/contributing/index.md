@@ -20,4 +20,5 @@ maxdepth: 1
 add_driver_methods.md
 add_new_driver.md
 add_new_device_type.md
+unit_tests.md
 ```

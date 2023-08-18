@@ -29,6 +29,7 @@ def test_all_device_drivers(
         ("AWG", "AWG7K-HOSTNAME", None, None, None),
         ("AWG", "AWG7KC-HOSTNAME", None, None, None),
         ("AWG", "AWG5KC-HOSTNAME", None, None, None),
+        ("AWG", "AWG5KB-HOSTNAME", None, None, None),
         ("AWG", "AWG70KB-HOSTNAME", None, None, None),
         ("AWG", "AWG70KA-HOSTNAME", None, None, None),
         ("SCOPE", "MSO22-HOSTNAME", None, None, None),
@@ -57,7 +58,7 @@ def test_all_device_drivers(
         ("SCOPE", "DPO4K-HOSTNAME", None, None, None),
         ("SCOPE", "DPO4KB-HOSTNAME", None, None, None),
         ("SCOPE", "192.168.0.101", None, None, None),
-        ("SCOPE", "127.0.0.2", None, None, None),
+        ("SCOPE", "127.0.0.1", None, None, None),
         ("SCOPE", "MSO70KDX-HOSTNAME", None, None, None),
         ("SMU", "SMU-HOSTNAME", None, None, None),  # smu2612b
         ("SMU", "SMU2450-HOSTNAME", None, None, None),

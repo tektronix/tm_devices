@@ -56,6 +56,7 @@ classifiers = [
   "Topic :: System :: Hardware :: Hardware Drivers"
 ]
 description = "Manage connections and interactions with Test & Measurement devices."
+documentation = "https://tm_devices.readthedocs.io/en/stable/"
 homepage = "https://pypi.org/project/tm_devices/"
 keywords = [
   "REST API",
@@ -72,7 +73,8 @@ maintainers = [
 ]
 name = "tm_devices"
 readme = "README.md"
-version = "0.1.7"
+repository = "https://github.com/tektronix/tm_devices"
+version = "0.1.8"
 
 [tool.poetry.dependencies]
 check4updates = ">=0.0.2"
@@ -138,6 +140,10 @@ types-pyyaml = ">=6.0"
 types-requests = ">=2.28.8"
 urllib3 = ">=1.26.14"
 wheel = ">=0.37.1"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/tektronix/tm_devices/issues"
+"Changelog" = "https://tm_devices.readthedocs.io/en/stable/CHANGELOG.html"
 
 [tool.pylint.basic]
 good-names = ["_"]
@@ -323,6 +329,15 @@ order-by-type = false
   "ERA001",  # Found commented-out code
   "S105",  # Possible hardcoded password
   "TID252"  # Relative imports from parent modules are banned
+]
+"src/tm_devices/drivers/api/__init__.py" = [
+  "D104"  # Missing docstring in public package
+]
+"src/tm_devices/drivers/api/rest_api/__init__.py" = [
+  "D104"  # Missing docstring in public package
+]
+"src/tm_devices/drivers/pi/__init__.py" = [
+  "D104"  # Missing docstring in public package
 ]
 "tests/**" = [
   "PLC1901",  # compare-to-empty-string

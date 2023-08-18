@@ -75,6 +75,6 @@ class SMU2400Interactive(SourceMeasureUnit, ABC):
     def _reboot(self) -> None:
         """Perform the actual rebooting code."""
         # TODO: implement
-        raise NotImplementedError(  # noqa: TRY003
+        raise NotImplementedError(
             f"``.reboot()`` is not yet implemented for the {self.__class__.__name__} driver"
         )

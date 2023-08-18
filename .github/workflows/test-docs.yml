@@ -10,6 +10,7 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+# IMPORTANT: Any new jobs need to be added to the check-docs-passed job to ensure they correctly gate code changes
 jobs:
   # Test building the docs (html, linkcheck, doctest, coverage)
   test-docs:
@@ -35,3 +36,18 @@ jobs:
           python -m pip install --upgrade tox
       - name: Test
         run: tox -ve ${{ matrix.tox_env }}
+      - uses: actions/upload-artifact@v3
+        if: '!cancelled()'
+        with:
+          name: artifact_${{ matrix.tox_env }}
+          path: .results_${{ matrix.tox_env }}/**
+  # Check that all jobs passed
+  check-docs-passed:
+    if: always()
+    needs: [test-docs]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}

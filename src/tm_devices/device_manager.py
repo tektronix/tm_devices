@@ -19,6 +19,7 @@ from tm_devices.drivers import (
     AFG3KC,
     AFG31K,
     AWG5K,
+    AWG5KB,
     AWG5KC,
     AWG7K,
     AWG7KC,
@@ -139,16 +140,16 @@ from traceback_with_variables import activate_by_import  # noqa: F401  # type: i
 
 if TYPE_CHECKING:
     from pyvisa.resources import MessageBasedResource
-    from typing_extensions import TypeAlias
+    from typing_extensions import Self, TypeAlias
 
     from tm_devices.drivers.device import Device
 
 ####################################################################################################
 # Type Aliases
 ####################################################################################################
-# TODO: this is temporary until python3.12 which will support typvar with defaults
+# TODO: this is temporary until python3.12 which will support TypeVar with defaults
 AFGAlias: TypeAlias = Union[AFG3K, AFG3KB, AFG3KC, AFG31K]
-AWGAlias: TypeAlias = Union[AWG5K, AWG5KC, AWG7K, AWG7KC, AWG5200, AWG70KA, AWG70KB]
+AWGAlias: TypeAlias = Union[AWG5K, AWG5KB, AWG5KC, AWG7K, AWG7KC, AWG5200, AWG70KA, AWG70KB]
 DataAcquisitionSystemAlias: TypeAlias = Union[DAQ6510]  # pyright: ignore
 DigitalMultimeterAlias: TypeAlias = Union[DMM6500, DMM7510, DMM7512]
 ScopeAlias: TypeAlias = Union[
@@ -296,7 +297,7 @@ class DeviceManager(metaclass=Singleton):
         if self.__is_open:
             self.close()
 
-    def __enter__(self) -> DeviceManager:
+    def __enter__(self) -> Self:
         """Provide access to the DeviceManager class instance.
 
         This and the __exit__ method allow this class to be used as a Context Manager.
@@ -307,8 +308,8 @@ class DeviceManager(metaclass=Singleton):
 
     def __exit__(
         self,
-        exc_type: Optional[Type[Exception]],
-        exc_val: Optional[Exception],
+        exc_type: Optional[Type[BaseException]],
+        exc_val: Optional[BaseException],
         exc_tb: Optional[TracebackType],
     ) -> None:
         """Handle exiting the context by closing down the DeviceManager.

@@ -7,6 +7,7 @@ on:
     branches: [main]
   release:
   workflow_dispatch:
+# IMPORTANT: Any new jobs need to be added to the check-repo-lint-passed job to ensure they correctly gate code changes
 jobs:
   check-for-codeowners-file:
     runs-on: ubuntu-latest
@@ -98,3 +99,18 @@ jobs:
       - name: codeql-analysis file does not exist
         if: steps.codeql-analysis_file.outputs.file_exists == 'false'
         run: echo codeql-analysis file does not exist!
+  # Check that all jobs passed
+  check-repo-lint-passed:
+    if: always()
+    needs:
+      - check-for-codeowners-file
+      - check-for-readme-file
+      - check-for-license
+      - check-for-dependabot-file
+      - check-for-codeql-file
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}

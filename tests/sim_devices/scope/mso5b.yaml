@@ -42,3 +42,11 @@ devices:
         - q: :ALLev?
           default: 0,"No events to report - queue empty"
           command_error: 113,"Undefined header; Command not found; EXAMPLE_COMMAND"
+    properties:
+      verbosity:
+        default: 0
+        getter:
+          q: :VERBose?
+          r: '{:s}'
+        setter:
+          q: :VERBose {:s}

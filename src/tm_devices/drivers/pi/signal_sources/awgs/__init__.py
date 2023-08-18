@@ -1,6 +1,7 @@
 """AWG package init file."""
 from tm_devices.drivers.pi.signal_sources.awgs.awg import AWG
 from tm_devices.drivers.pi.signal_sources.awgs.awg5k import AWG5K
+from tm_devices.drivers.pi.signal_sources.awgs.awg5kb import AWG5KB
 from tm_devices.drivers.pi.signal_sources.awgs.awg5kc import AWG5KC
 from tm_devices.drivers.pi.signal_sources.awgs.awg7k import AWG7K
 from tm_devices.drivers.pi.signal_sources.awgs.awg7kc import AWG7KC
@@ -12,6 +13,7 @@ __all__ = [
     "AWG",
     "AWG5200",
     "AWG5K",
+    "AWG5KB",
     "AWG5KC",
     "AWG7K",
     "AWG7KC",
