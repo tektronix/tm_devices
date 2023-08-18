@@ -80,7 +80,7 @@ class BaseCmd:
         self._cmd_syntax = cmd_syntax
         self._device = device
 
-    def __eq__(self, other: Any) -> bool:
+    def __eq__(self, other: object) -> bool:
         """Compare equality by comparing the syntax of two commands."""
         if not isinstance(other, BaseCmd):
             return NotImplemented

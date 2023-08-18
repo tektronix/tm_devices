@@ -61,6 +61,7 @@ from tm_devices.drivers.pi.signal_sources.afgs.afg3kb import AFG3KB
 from tm_devices.drivers.pi.signal_sources.afgs.afg3kc import AFG3KC
 from tm_devices.drivers.pi.signal_sources.afgs.afg31k import AFG31K
 from tm_devices.drivers.pi.signal_sources.awgs.awg5k import AWG5K
+from tm_devices.drivers.pi.signal_sources.awgs.awg5kb import AWG5KB
 from tm_devices.drivers.pi.signal_sources.awgs.awg5kc import AWG5KC
 from tm_devices.drivers.pi.signal_sources.awgs.awg7k import AWG7K
 from tm_devices.drivers.pi.signal_sources.awgs.awg7kc import AWG7KC
@@ -112,6 +113,7 @@ DEVICE_DRIVER_MODEL_MAPPING: Mapping[str, Type[Device]] = MappingProxyType(
         # AWGs
         SupportedModels.AWG5200.value: AWG5200,
         SupportedModels.AWG5K.value: AWG5K,
+        SupportedModels.AWG5KB.value: AWG5KB,
         SupportedModels.AWG5KC.value: AWG5KC,
         SupportedModels.AWG7K.value: AWG7K,
         SupportedModels.AWG7KC.value: AWG7KC,
@@ -227,6 +229,7 @@ __all__ = [
     "AFG31K",
     "AWG5200",
     "AWG5K",
+    "AWG5KB",
     "AWG5KC",
     "AWG7K",
     "AWG7KC",

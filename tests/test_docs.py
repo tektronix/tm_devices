@@ -35,6 +35,7 @@ def _use_docs_directory() -> Generator[None, None, None]:  # pyright: ignore [re
 class TestDocs:  # pylint: disable=no-self-use
     """A collection of documentation tests."""
 
+    @pytest.mark.xfail(reason="tm_devices GitHub links don't work currently")
     @pytest.mark.order(1)
     def test_docs_linkcheck(self) -> None:
         """Run the linkcheck test for the documentation."""

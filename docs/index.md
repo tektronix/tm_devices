@@ -11,10 +11,10 @@ basic_usage.md
 configuration.md
 CHANGELOG.md
 advanced/index.md
-contributing/index.md
 troubleshooting/index.md
 glossary.md
 CODE_OF_CONDUCT.md
+contributing/index.md
 LICENSE.md
 _autoapi/index
 ```

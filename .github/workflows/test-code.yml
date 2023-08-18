@@ -10,6 +10,7 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+# IMPORTANT: Any new jobs need to be added to the check-tests-passed job to ensure they correctly gate code changes
 jobs:
   # Basic testing & linting
   test-general:
@@ -25,31 +26,57 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+          check-latest: true
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install --upgrade tox tox-gh-actions
       - name: Run tox
         run: tox -v
+      - uses: actions/upload-artifact@v3
+        if: '!cancelled()'
+        with:
+          name: artifact_${{ matrix.platform }}_${{ matrix.python-version }}_tests_and_linting
+          path: .results_*/**
   # Quick testing with coverage (no linting)
   test-fast:
     runs-on: ${{ matrix.os_name }}-latest
     strategy:
+      fail-fast: false
       matrix:
         os_name: [ubuntu, macos, windows]
     steps:
+      - uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: x  # any version
+          check-latest: true
       - name: Install tox
         run: |
           python -m pip install --upgrade pip
           python -m pip install --upgrade tox
       - name: Test
         run: tox -ve tests
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
+      - uses: actions/upload-artifact@v3
+        if: '!cancelled()'
         with:
-          name: codecov-${{ matrix.os_name }}
-          fail_ci_if_error: true
+          name: artifact_${{ matrix.os_name }}_tests
+          path: .results_*/**
+      # TODO: look into using https://github.com/mikepenz/action-junit-report for a junit report
+#      - name: Upload coverage to Codecov
+#        uses: codecov/codecov-action@v3
+#        with:
+#          files: ./.coverage.tests
+#          name: codecov-${{ matrix.os_name }}
+#          fail_ci_if_error: true
+  # Check that all jobs passed
+  check-tests-passed:
+    if: always()
+    needs: [test-general, test-fast]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}

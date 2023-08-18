@@ -97,6 +97,7 @@ class SupportedModels(CustomStrEnum):
     # AWGs
     AWG5200 = "AWG5200"
     AWG5K = "AWG5K"
+    AWG5KB = "AWG5KB"
     AWG5KC = "AWG5KC"
     AWG7K = "AWG7K"
     AWG7KC = "AWG7KC"
@@ -216,6 +217,7 @@ class SignalSourceFunctionsAWG(SignalSourceFunctionBase):
     SIN = "Sine"
     SQUARE = "Square"
     RAMP = "Ramp"
+    TRIANGLE = "Triangle"
     CLOCK = "Clock"
     DC = "DC"
 
@@ -235,6 +237,7 @@ class SignalSourceFunctionsAFG(SignalSourceFunctionBase):
     ERISE = "ERIS"
     EDECAY = "EDEC"
     HAVERSINE = "HAV"
+    ARBITRARY = "ARB"
 
 
 class SignalSourceFunctionsIAFG(SignalSourceFunctionBase):
@@ -252,4 +255,5 @@ class SignalSourceFunctionsIAFG(SignalSourceFunctionBase):
     EDECAY = "EDECAY"
     HAVERSINE = "HAVERSINE"
     CARDIAC = "CARDIAC"
+    NOISE = "NOISE"
     ARBITRARY = "ARBITRARY"

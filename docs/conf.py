@@ -69,7 +69,7 @@ nitpicky = False  # TODO: change this to `True`
 extlinks_detect_hardcoded_links = True
 extlinks = {
     "repo_url": (
-        ("https://github.com/tektronix/tm_devices/blob/main/%s"),
+        "https://github.com/tektronix/tm_devices/blob/main/%s",
         "%s",
     )
 }
@@ -170,6 +170,9 @@ tippy_rtd_urls = [
     "https://pyvisa.readthedocs.io/projects/pyvisa-py/en/latest/",
     "https://pyvisa.readthedocs.io/en/latest/",
     "https://python-semantic-release.readthedocs.io/en/latest/",
+    "https://docs.pytest.org/en/latest/",
+    "https://pytest-cov.readthedocs.io/en/latest/",
+    "https://pyvisa.readthedocs.io/projects/pyvisa-sim/en/latest/",
 ]
 tippy_anchor_parent_selector = "div.document"
 

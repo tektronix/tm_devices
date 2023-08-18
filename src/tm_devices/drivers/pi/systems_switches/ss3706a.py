@@ -77,7 +77,7 @@ class SS3706A(SS3706AMixin, SystemsSwitch):
             NotImplementedError: Indicates the current driver has not implemented this method.
         """
         # TODO: implement
-        raise NotImplementedError(  # noqa: TRY003
+        raise NotImplementedError(
             f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )

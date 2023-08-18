@@ -118,13 +118,13 @@ recommended IDE for package development is
    ````
 
    - To run full static code analysis, tests, and documentation validation
-     (running this prior to opening a pull request is highly recommended, but it is very slow):
+     (running this prior to opening a pull request is highly recommended, but it is **very slow**):
 
      ```console
      tox -p
      ```
 
-   - To run just the tests and static code analysis (much quicker):
+   - To run just the tests and static code analysis (**much quicker**):
 
      ```console
      tox -p -m basic

@@ -95,6 +95,9 @@ resources:
   TCPIP::AWG5K-HOSTNAME::INSTR:
     device: awg5012
     filename: awg/awg5k.yaml
+  TCPIP::AWG5KB-HOSTNAME::INSTR:
+    device: awg5012b
+    filename: awg/awg5kb.yaml
   TCPIP::AWG5KC-HOSTNAME::INSTR:
     device: awg5012c
     filename: awg/awg5kc.yaml
@@ -239,7 +242,7 @@ resources:
     device: dpo7kc
     filename: scope/dpo7kc.yaml
   #   mso70k
-  TCPIP::127.0.0.2::INSTR:
+  TCPIP::127.0.0.1::INSTR:
     device: mso70k
     filename: scope/mso70k.yaml
   TCPIP::MSO70KC-HOSTNAME::INSTR:
