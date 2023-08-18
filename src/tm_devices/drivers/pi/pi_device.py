@@ -121,7 +121,7 @@ class PIDevice(Device, ABC):
             NotImplementedError: Indicates the current driver has not implemented this method.
         """
         # TODO: implement for all driver subclasses then remove this blanket NotImplementedError
-        raise NotImplementedError(  # noqa: TRY003
+        raise NotImplementedError(
             f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )
@@ -136,7 +136,7 @@ class PIDevice(Device, ABC):
             NotImplementedError: Indicates the current driver has not implemented this method.
         """
         # TODO: implement for all driver subclasses then remove this blanket NotImplementedError
-        raise NotImplementedError(  # noqa: TRY003
+        raise NotImplementedError(
             f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )
@@ -862,7 +862,7 @@ class PIDevice(Device, ABC):
                         # If it does, it most certainly did not reboot.
                         opened = False
                     break
-                except ConnectionError:  # noqa: PERF203
+                except ConnectionError:
                     # raised by the create_visa_connection() function
                     pass
 

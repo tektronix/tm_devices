@@ -23,7 +23,7 @@ class Scope(PIDevice, ABC):
             NotImplementedError: Indicates the current driver has not implemented this method.
         """
         # TODO: implement for all driver subclasses then convert to abstractmethod
-        raise NotImplementedError(  # noqa: TRY003
+        raise NotImplementedError(
             f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )
@@ -55,7 +55,7 @@ class Scope(PIDevice, ABC):
         Raises:
             NotImplementedError: Indicates the current driver has not implemented this method.
         """
-        raise NotImplementedError(  # noqa: TRY003
+        raise NotImplementedError(
             f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )

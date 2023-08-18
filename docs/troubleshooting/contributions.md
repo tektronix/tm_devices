@@ -125,3 +125,101 @@ proper development dependencies installed.
 
 See the [contributing guide](../CONTRIBUTING.md) for details on how to properly set up
 and test changes using a virtual environment.
+
+______________________________________________________________________
+
+## Executable not found during `pre-commit`
+
+Pre-commit is failing with "Executable not found" errors.
+
+### Problem:
+
+When running pre-commit, in either an Integrated Development Environment (IDE) or through
+the command line, the virtual environment must be used so that all necessary
+executables can be found.
+
+`tm_devices` uses a few [local pre-commit hooks](https://pre-commit.com/#repository-local-hooks),
+so if the environment is not correctly enabled, those hooks will fail.
+
+```console
+pre-commit run --all
+check yaml...............................................................Passed
+check toml...............................................................Passed
+check json...............................................................Passed
+fix requirements.txt.....................................................Passed
+trim trailing whitespace.................................................Passed
+fix end of files.........................................................Passed
+check for case conflicts.................................................Passed
+check for merge conflicts................................................Passed
+check for added large files..............................................Passed
+forbid new submodules................................(no files to check)Skipped
+pretty format json.......................................................Passed
+Tabs remover.............................................................Passed
+No-tabs checker..........................................................Passed
+Validate ReadTheDocs Config..............................................Passed
+Validate Dependabot Config (v2)..........................................Passed
+Validate GitHub Actions..............................(no files to check)Skipped
+Validate GitHub Workflows................................................Passed
+blacken-docs.............................................................Passed
+yamlfix..................................................................Passed
+mdformat.................................................................Passed
+Poetry check.............................................................Failed
+- hook id: check-poetry
+- exit code: 1
+
+Executable `poetry` not found
+
+toml-sort................................................................Failed
+- hook id: toml-sort
+- exit code: 1
+
+Executable `toml-sort` not found
+
+pylint...................................................................Failed
+- hook id: pylint
+- exit code: 1
+
+Executable `pylint` not found
+
+pyright..................................................................Failed
+- hook id: pyright
+- exit code: 1
+
+Executable `pyright` not found
+
+pyright-verifytypes......................................................Failed
+- hook id: pyright-verifytypes
+- exit code: 1
+
+Executable `pyright` not found
+
+pyroma...................................................................Failed
+- hook id: pyroma
+- exit code: 1
+
+Executable `pyroma` not found
+
+ruff.....................................................................Passed
+black....................................................................Passed
+docformatter.............................................................Passed
+```
+
+### Solution:
+
+In order to fix this issue, first activate the virtual environment
+(or set your IDE to use the correct Python interpreter for pre-commit hooks),
+then update the installed dependencies,
+then retry the command.
+
+```console
+# Linux
+source .env/bin/activate
+
+# Windows
+.env\Scripts\activate.bat
+
+# Update installed dependencies
+python -m poetry update
+
+# Re-run original, failing command
+```

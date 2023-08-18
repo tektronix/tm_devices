@@ -153,7 +153,7 @@ class Device(ExtendableMixin, ABC):
     @abstractmethod
     def _reboot(self) -> None:
         """Perform the actual rebooting code."""
-        raise NotImplementedError(  # noqa: TRY003
+        raise NotImplementedError(
             f"``._reboot()`` is not yet implemented for the {self.__class__.__name__} driver"
         )
 
