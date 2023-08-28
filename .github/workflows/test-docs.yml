@@ -19,6 +19,10 @@ jobs:
       fail-fast: false
       matrix:
         tox_env: [docs, doctests]
+    env:
+      # This environment variable is temporarily set to allow the documentation to build during the GitHub workflow.
+      # TODO: remove API generation skip variable
+      SKIP_TM_DEVICES_API_GENERATION: 'true'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
