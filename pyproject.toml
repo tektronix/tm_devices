@@ -425,8 +425,9 @@ deps =
     -rdocs/requirements.txt
 commands_pre =
 commands =
+    python -c "import os; print(os.getenv('SKIP_TM_DEVICES_API_GENERATION'))"
     python -c "import shutil; shutil.rmtree('.results_{envname}', ignore_errors=True)"
-    sphinx-build -b html -a -W --keep-going -j 3 docs .results_{envname}/html
+    sphinx-build -b html -a -W --keep-going -j auto docs .results_{envname}/html
 
 [testenv:doctests]
 basepython = {env:DOC_PYTHON_VERSION}
