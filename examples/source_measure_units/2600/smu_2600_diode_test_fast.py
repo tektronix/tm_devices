@@ -165,7 +165,7 @@ def diode_test(inst: SMU2602B) -> None:
 
     inst.commands.smu["a"].source.output = inst.commands.smu["a"].OUTPUT_ON
 
-    for index in range(0, NDIODES):
+    for index in range(NDIODES):
         # Perform Forward Voltage Test #1 (Vf1)
         vf1_test_volt[index], vf1_test_curr[index] = vfwd_vrev(
             inst, VF1_ISRC_RNG, VF1_ISRC_LEV, VF1_SRC_DEL, VF1_VCMPL
@@ -410,7 +410,7 @@ def display_bins_status() -> None:
     """Used to display the counts for each bin."""
     print("Bin Counts: ")
     display_str = ""
-    for index in range(0, 7):
+    for index in range(7):
         display_str += str(bins[index]) + " "
     print(display_str)
 

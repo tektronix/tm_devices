@@ -293,7 +293,7 @@ def display_results(sep: str = "\t") -> None:
     print("")
     print("BJT Slow Complete. Results: ")
     print("VCEO", "VCEsat", "VBEsat", "BETA1", "STATUS", sep=sep)
-    for index in range(0, NUM_PARTS):
+    for index in range(NUM_PARTS):
         status_str = "Pass" if status_data[index] else "Fail"
         print(
             f"{vceo_data[index]:.2e}",

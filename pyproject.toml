@@ -396,6 +396,9 @@ setenv =
     COVERAGE_FILE = .coverage.{envname}
     # Skip pre-commit checks that are explicitly performed by tox
     SKIP = black,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma
+# TODO: remove passenv section
+passenv =
+    SKIP_TM_DEVICES_API_GENERATION
 commands_pre =
     poetry install --no-root
 commands =
