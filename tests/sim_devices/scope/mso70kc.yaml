@@ -15,6 +15,7 @@ devices:
     dialogues:
       - q: '*IDN?'
         r: TEKTRONIX,MSO71604C,SERIAL1,CF:91.1CT FV:1.99.11.1268
+      - q: HEADER OFF
       - q: '*OPC?'
         r: '1'
       - q: '*RST'

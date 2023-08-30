@@ -31,3 +31,4 @@ def test_awg5200(device_manager: DeviceManager, capsys: pytest.CaptureFixture[st
         memory_max_record_length=16200000,
         memory_min_record_length=1,
     )
+    assert awg5200.opt_string == "0"

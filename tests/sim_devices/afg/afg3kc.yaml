@@ -19,6 +19,8 @@ devices:
       - q: '*WAI'
       - q: '*OPC?'
         r: '1'
+      - q: '*OPT?'
+        r: '0'
       - q: '*RST'
       - q: '*CLS'
       - q: '*TRG'
@@ -27,8 +29,6 @@ devices:
         r: '1'
       - q: '*STB?'
         r: '4'
-      - q: '*OPT?'
-        r: '0'
       - q: '*LRN?'
         r: '*RST;'
     error:

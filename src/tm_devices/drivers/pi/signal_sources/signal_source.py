@@ -3,6 +3,7 @@
 Sources include PI devices such as AFGs and AWGs.
 """
 from abc import ABC, abstractmethod
+from functools import cached_property
 from typing import Tuple, Union
 
 from tm_devices.driver_mixins.signal_generator_mixin import SignalGeneratorMixin
@@ -20,6 +21,11 @@ class SignalSource(PIDevice, SignalGeneratorMixin, ABC):
     def all_channel_names_list(self) -> Tuple[str, ...]:
         """Return a tuple containing all the channel names."""
         return tuple(f"SOURCE{x+1}" for x in range(self.total_channels))
+
+    @cached_property
+    def opt_string(self) -> str:
+        r"""Return the string returned from the ``*OPT?`` query when the device was created."""
+        return self.ieee_cmds.opt()
 
     ################################################################################################
     # Public Methods

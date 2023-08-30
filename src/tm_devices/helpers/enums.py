@@ -100,6 +100,7 @@ class SupportedModels(CustomStrEnum):
     AWG5KB = "AWG5KB"
     AWG5KC = "AWG5KC"
     AWG7K = "AWG7K"
+    AWG7KB = "AWG7KB"
     AWG7KC = "AWG7KC"
     AWG70KA = "AWG70KA"
     AWG70KB = "AWG70KB"

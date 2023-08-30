@@ -15,6 +15,7 @@ devices:
     dialogues:
       - q: '*IDN?'
         r: TEKTRONIX,DPO75002SX,999999,CF:91.1CT FV:10.99.1 Build 20
+      - q: HEADER OFF
       - q: '*OPC?'
         r: '1'
       - q: '*RST'

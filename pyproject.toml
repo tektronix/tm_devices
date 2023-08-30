@@ -74,7 +74,7 @@ maintainers = [
 name = "tm_devices"
 readme = "README.md"
 repository = "https://github.com/tektronix/tm_devices"
-version = "0.1.8"
+version = "0.1.11"
 
 [tool.poetry.dependencies]
 check4updates = ">=0.0.2"
@@ -396,9 +396,6 @@ setenv =
     COVERAGE_FILE = .coverage.{envname}
     # Skip pre-commit checks that are explicitly performed by tox
     SKIP = black,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma
-# TODO: remove passenv section
-passenv =
-    SKIP_TM_DEVICES_API_GENERATION
 commands_pre =
     poetry install --no-root
 commands =
@@ -425,9 +422,8 @@ deps =
     -rdocs/requirements.txt
 commands_pre =
 commands =
-    python -c "import os; print(os.getenv('SKIP_TM_DEVICES_API_GENERATION'))"
     python -c "import shutil; shutil.rmtree('.results_{envname}', ignore_errors=True)"
-    sphinx-build -b html -a -W --keep-going -j auto docs .results_{envname}/html
+    sphinx-build -b html -a -W --keep-going -j 3 docs .results_{envname}/html
 
 [testenv:doctests]
 basepython = {env:DOC_PYTHON_VERSION}
