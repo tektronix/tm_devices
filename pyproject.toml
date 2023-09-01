@@ -368,7 +368,7 @@ overrides."tool.poetry.*".inline_arrays = false
 overrides."tool.pylint.*".table_keys = false
 
 # Tox configuration
-[tool.tox]  # TODO: remove the ignored vulnerabilities in the safety check
+[tool.tox]
 legacy_tox_ini = """
 [tox]
 requires = tox>4
@@ -399,7 +399,7 @@ setenv =
 commands_pre =
     poetry install --no-root
 commands =
-    !tests: safety check --ignore=51457
+    !tests: safety check
     !tests: black --check --diff --color .
     !tests: docformatter --check --diff .
     !tests: ruff check .

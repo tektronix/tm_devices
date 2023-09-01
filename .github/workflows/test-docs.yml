@@ -40,13 +40,13 @@ jobs:
         if: '!cancelled()'
         with:
           type: zip
-          filename: temp_results_${{ matrix.tox_env }}.zip
+          filename: ${{ matrix.tox_env }}_results.zip
           path: .results_${{ matrix.tox_env }}/
       - uses: actions/upload-artifact@v3
         if: '!cancelled()'
         with:
           name: artifact_${{ matrix.tox_env }}
-          path: temp_results_${{ matrix.tox_env }}.zip
+          path: ${{ matrix.tox_env }}_results.zip
   # Check that all jobs passed
   check-docs-passed:
     if: always()

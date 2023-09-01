@@ -114,7 +114,7 @@ repos:
         always_run: true
         args: [., --min=10]
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.286
+    rev: v0.0.287
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
