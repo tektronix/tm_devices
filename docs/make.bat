@@ -13,7 +13,7 @@ if "%BUILDDIR%" == "" (
 )
 set SPHINXPROJ=tm_devices
 if "%SPHINXOPTS%" == "" (
-    set SPHINXOPTS=-W --keep-going -j auto
+    set SPHINXOPTS=-W --keep-going -j 3
 )
 
 if "%1" == "" goto help

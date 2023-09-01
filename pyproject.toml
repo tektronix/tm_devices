@@ -96,7 +96,7 @@ tomli = ">=2.0.1"
 tomli-w = ">=1.0.0"
 traceback-with-variables = ">=2.0.4"
 typing-extensions = ">=4.4.0"
-urllib3 = "^1.26.15"  # can't upgrade to 2.0, it causes issues with Poetry
+urllib3 = ">=2.0"
 zeroconf = ">=0.54.0"
 
 # Development dependencies
