@@ -431,6 +431,8 @@ deps =
     -rdocs/requirements.txt
     -rtests/requirements.txt
 commands_pre =
+allowlist_externals =
+    make
 set_env =
     SOURCEDIR=docs
     BUILDDIR=.results_{envname}
