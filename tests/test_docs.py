@@ -10,6 +10,8 @@ from typing import Generator, List
 
 import pytest
 
+import tm_devices
+
 from conftest import PROJECT_ROOT_DIR
 
 
@@ -20,13 +22,14 @@ def create_sphinx_build_cmd(build_type: str) -> List[str]:
         build_type: The type of sphinx build to perform.
 
     Returns:
-        The sphinx build command
+        The sphinx build command.
     """
+    os.environ["SPHINXPROJ"] = tm_devices.__name__
     source_dir = "."
     build_dir = "_build"
     num_processors = os.getenv("SPHINX_PROC_COUNT", "auto")
     return shlex.split(
-        f'python -msphinx -M {build_type} "{source_dir}" "{build_dir}" '
+        f'sphinx-build -b {build_type} "{source_dir}" "{build_dir}" '
         f"-W --keep-going -j {num_processors}"
     )
 
