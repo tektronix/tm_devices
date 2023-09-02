@@ -120,7 +120,7 @@ pyright = ">=1.1.298"
 pyroma = ">=4.2"
 pytest = ">=7.1.2"
 pytest-cov = ">=3.0.0"
-pytest-html = ">=3.1.1"
+pytest-html = ">=3.1.1,<4.0"  # 4.0.0 doesn't work, causes tests to crash
 pytest-order = ">=1.0.1"
 pytest-profiling = ">=1.7.0"
 python-semantic-release = ">=7.31.2"
@@ -395,7 +395,6 @@ deps =
     poetry
 setenv =
     DOC_PYTHON_VERSION = python3.11  # Keep this in sync with .readthedocs.yml and any CI scripts
-    SPHINX_PROC_COUNT = auto
     COVERAGE_FILE = .coverage.{envname}
     # Skip pre-commit checks that are explicitly performed by tox
     SKIP = black,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma
