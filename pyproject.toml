@@ -431,15 +431,10 @@ deps =
     -rdocs/requirements.txt
     -rtests/requirements.txt
 commands_pre =
-allowlist_externals =
-    make
-change_dir = docs
-set_env =
-    BUILDDIR=../.results_{envname}
 commands =
 #    pytest -v -k "test_docs and not test_docs_html" --showlocals --junitxml=.results_{envname}/results.xml --self-contained-html --html=.results_{envname}/results.html
-    make html
-    make linkcheck
-    make coverage
-    make doctest
+    sphinx-build -b html -a -W --keep-going -j auto docs .results_{envname}
+    sphinx-build -b linkcheck -a -W --keep-going -j auto docs .results_{envname}
+    sphinx-build -b coverage -a -W --keep-going -j auto docs .results_{envname}
+    sphinx-build -b doctest -a -W --keep-going -j auto docs .results_{envname}
 """
