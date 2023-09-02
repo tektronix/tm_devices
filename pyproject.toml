@@ -432,5 +432,6 @@ deps =
     -rtests/requirements.txt
 commands_pre =
 commands =
-    pytest -v -k "test_docs and not test_docs_html" --showlocals --junitxml=.results_{envname}/results.xml --self-contained-html --html=.results_{envname}/results.html
+#    pytest -v -k "test_docs and not test_docs_html" --showlocals --junitxml=.results_{envname}/results.xml --self-contained-html --html=.results_{envname}/results.html
+    pytest -v -k "test_docs" --showlocals --junitxml=.results_{envname}/results.xml --self-contained-html --html=.results_{envname}/results.html
 """
