@@ -35,16 +35,16 @@ def _use_docs_directory() -> Generator[None, None, None]:  # pyright: ignore [re
 class TestDocs:  # pylint: disable=no-self-use
     """A collection of documentation tests."""
 
-    @pytest.mark.xfail(reason="tm_devices GitHub links don't work currently")
     @pytest.mark.order(1)
-    def test_docs_linkcheck(self) -> None:
-        """Run the linkcheck test for the documentation."""
-        subprocess.check_call(shlex.split("make linkcheck"))  # noqa: S603
-
-    @pytest.mark.order(2)
     def test_docs_html(self) -> None:
         """Test creating html documentation."""
         subprocess.check_call(shlex.split("make html"))  # noqa: S603
+
+    @pytest.mark.xfail(reason="tm_devices GitHub links don't work currently")
+    @pytest.mark.order(2)
+    def test_docs_linkcheck(self) -> None:
+        """Run the linkcheck test for the documentation."""
+        subprocess.check_call(shlex.split("make linkcheck"))  # noqa: S603
 
     @pytest.mark.order(3)
     def test_docs_coverage(self) -> None:
