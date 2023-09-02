@@ -120,7 +120,7 @@ pyright = ">=1.1.298"
 pyroma = ">=4.2"
 pytest = ">=7.1.2"
 pytest-cov = ">=3.0.0"
-pytest-html = ">=3.1.1,<4.0"  # 4.0.0 doesn't work, causes tests to crash
+pytest-html = ">=4.0"
 pytest-order = ">=1.0.1"
 pytest-profiling = ">=1.7.0"
 python-semantic-release = ">=7.31.2"
@@ -434,6 +434,6 @@ deps =
     -rtests/requirements.txt
 commands_pre =
 commands =
-    pytest -v -k "test_docs" --showlocals --junitxml=.results_{envname}/results.xml --self-contained-html --html=.results_{envname}/results.html
+    pytest -v -k "test_docs" --showlocals -s
 #    pytest -v -k "test_docs and not test_docs_html" --showlocals --junitxml=.results_{envname}/results.xml --self-contained-html --html=.results_{envname}/results.html
 """
