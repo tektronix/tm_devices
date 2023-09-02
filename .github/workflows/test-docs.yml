@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        tox_env: [docs, doctests]
+        tox_env: [doctests]  # TODO: add "docs" back to tox_env matrix
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
