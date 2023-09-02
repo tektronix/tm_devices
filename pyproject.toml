@@ -255,6 +255,7 @@ filterwarnings = [
 ]
 junit_logging = "all"
 markers = [
+  'docs',
   'order',
   'slow'
 ]

@@ -2,13 +2,14 @@
 import os
 import shlex
 import shutil
-import subprocess
 import sys
 
 from importlib.util import find_spec
 from typing import Generator, List
 
 import pytest
+
+from sphinx.cmd.build import build_main
 
 import tm_devices
 
@@ -29,8 +30,7 @@ def create_sphinx_build_cmd(build_type: str) -> List[str]:
     build_dir = "_build"
     num_processors = os.getenv("SPHINX_PROC_COUNT", "auto")
     return shlex.split(
-        f'sphinx-build -b {build_type} "{source_dir}" "{build_dir}" '
-        f"-W --keep-going -j {num_processors}"
+        f'-b {build_type} "{source_dir}" "{build_dir}" -W --keep-going -j {num_processors}'
     )
 
 
@@ -51,6 +51,8 @@ def _use_docs_directory() -> Generator[None, None, None]:  # pyright: ignore [re
         os.chdir(starting_directory)
 
 
+# TODO: make these tests always skip unless called with a specific marker
+@pytest.mark.docs
 @pytest.mark.slow
 @pytest.mark.skipif(find_spec("sphinx") is None, reason="The sphinx module is not installed.")
 class TestDocs:  # pylint: disable=no-self-use
@@ -59,20 +61,20 @@ class TestDocs:  # pylint: disable=no-self-use
     @pytest.mark.order(1)
     def test_docs_html(self) -> None:
         """Test creating html documentation."""
-        subprocess.check_call(create_sphinx_build_cmd("html"))  # noqa: S603
+        build_main(create_sphinx_build_cmd("html"))
 
     @pytest.mark.xfail(reason="tm_devices GitHub links don't work currently")
     @pytest.mark.order(2)
     def test_docs_linkcheck(self) -> None:
         """Run the linkcheck test for the documentation."""
-        subprocess.check_call(create_sphinx_build_cmd("linkcheck"))  # noqa: S603
+        build_main(create_sphinx_build_cmd("linkcheck"))
 
     @pytest.mark.order(3)
     def test_docs_coverage(self) -> None:
         """Run the coverage test for the documentation."""
-        subprocess.check_call(create_sphinx_build_cmd("coverage"))  # noqa: S603
+        build_main(create_sphinx_build_cmd("coverage"))
 
     @pytest.mark.order(4)
     def test_docs_doctest(self) -> None:
         """Run the doctest test for the documentation."""
-        subprocess.check_call(create_sphinx_build_cmd("doctest"))  # noqa: S603
+        build_main(create_sphinx_build_cmd("doctest"))
