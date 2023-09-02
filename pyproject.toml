@@ -433,9 +433,9 @@ deps =
 commands_pre =
 allowlist_externals =
     make
+change_dir = docs
 set_env =
-    SOURCEDIR=docs
-    BUILDDIR=.results_{envname}
+    BUILDDIR=../.results_{envname}
 commands =
 #    pytest -v -k "test_docs and not test_docs_html" --showlocals --junitxml=.results_{envname}/results.xml --self-contained-html --html=.results_{envname}/results.html
     make html
