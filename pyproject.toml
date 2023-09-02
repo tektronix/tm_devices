@@ -393,6 +393,7 @@ deps =
     poetry
 setenv =
     DOC_PYTHON_VERSION = python3.11  # Keep this in sync with .readthedocs.yml and any CI scripts
+    SPHINX_PROC_COUNT = auto
     COVERAGE_FILE = .coverage.{envname}
     # Skip pre-commit checks that are explicitly performed by tox
     SKIP = black,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma
@@ -432,9 +433,6 @@ deps =
     -rtests/requirements.txt
 commands_pre =
 commands =
+    pytest -v -k "test_docs" --showlocals --junitxml=.results_{envname}/results.xml --self-contained-html --html=.results_{envname}/results.html
 #    pytest -v -k "test_docs and not test_docs_html" --showlocals --junitxml=.results_{envname}/results.xml --self-contained-html --html=.results_{envname}/results.html
-    sphinx-build -b html -a -W --keep-going -j auto docs .results_{envname}
-    sphinx-build -b linkcheck -a -W --keep-going -j auto docs .results_{envname}
-    sphinx-build -b coverage -a -W --keep-going -j auto docs .results_{envname}
-    sphinx-build -b doctest -a -W --keep-going -j auto docs .results_{envname}
 """
