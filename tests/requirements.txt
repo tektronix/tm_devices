@@ -2,7 +2,7 @@ black
 coverage[toml]>=7.2.2
 http_server_mock
 pytest-cov
-pytest-html
+pytest-html==3.2.0  # 4.0.0 causes issues with the test_docs.py test
 pytest-order
 pytest-profiling
 ruff>=0.0.267
