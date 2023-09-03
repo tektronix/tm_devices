@@ -425,7 +425,7 @@ deps =
 commands_pre =
 commands =
     python -c "import shutil; shutil.rmtree('.results_{envname}', ignore_errors=True)"
-    sphinx-build -b html -a -W --keep-going -j 2 docs .results_{envname}/html
+    sphinx-build -b html -a -W --keep-going -j 4 docs .results_{envname}/html
 
 [testenv:doctests]
 basepython = {env:DOC_PYTHON_VERSION}
@@ -434,6 +434,5 @@ deps =
     -rtests/requirements.txt
 commands_pre =
 commands =
-    pytest -v -k "test_docs" --showlocals -s
-#    pytest -v -k "test_docs and not test_docs_html" --showlocals --junitxml=.results_{envname}/results.xml --self-contained-html --html=.results_{envname}/results.html
+    pytest -v -k "test_docs and not test_docs_html" --showlocals --junitxml=.results_{envname}/results.xml --self-contained-html --html=.results_{envname}/results.html
 """

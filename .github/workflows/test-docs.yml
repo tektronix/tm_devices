@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        tox_env: [doctests]  # TODO: add "docs" back to tox_env matrix
+        tox_env: [docs, doctests]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -36,17 +36,6 @@ jobs:
           python -m pip install --upgrade tox
       - name: Test
         run: tox -ve ${{ matrix.tox_env }}
-
-      # TODO: remove this section once builds are passing
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: sphinx_logs
-          path: /tmp/*.log
-      - name: cat logs
-        if: always()
-        run: cat /tmp/sphinx-*.log
-      # TODO: remove the above section once builds are passing
       - uses: thedoctor0/zip-release@0.7.1
         if: '!cancelled()'
         with:
