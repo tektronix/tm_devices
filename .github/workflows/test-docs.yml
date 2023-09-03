@@ -39,10 +39,14 @@ jobs:
 
       # TODO: remove this section once builds are passing
       - uses: actions/upload-artifact@v3
-        if: cancelled()
+        if: always()
         with:
           name: sphinx_logs
           path: /tmp/*.log
+      - name: cat logs
+        if: always()
+        run: cat /tmp/sphinx-*.log
+      # TODO: remove the above section once builds are passing
       - uses: thedoctor0/zip-release@0.7.1
         if: '!cancelled()'
         with:
