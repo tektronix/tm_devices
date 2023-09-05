@@ -74,7 +74,7 @@ maintainers = [
 name = "tm_devices"
 readme = "README.md"
 repository = "https://github.com/tektronix/tm_devices"
-version = "0.1.8"
+version = "0.1.11"
 
 [tool.poetry.dependencies]
 check4updates = ">=0.0.2"
@@ -96,7 +96,7 @@ tomli = ">=2.0.1"
 tomli-w = ">=1.0.0"
 traceback-with-variables = ">=2.0.4"
 typing-extensions = ">=4.4.0"
-urllib3 = "^1.26.15"  # can't upgrade to 2.0, it causes issues with Poetry
+urllib3 = ">=2.0"
 zeroconf = ">=0.54.0"
 
 # Development dependencies
@@ -120,7 +120,7 @@ pyright = ">=1.1.298"
 pyroma = ">=4.2"
 pytest = ">=7.1.2"
 pytest-cov = ">=3.0.0"
-pytest-html = ">=3.1.1"
+pytest-html = ">=4.0"
 pytest-order = ">=1.0.1"
 pytest-profiling = ">=1.7.0"
 python-semantic-release = ">=7.31.2"
@@ -208,7 +208,8 @@ disable = [
   "too-many-statements",  # caught by ruff
   "unused-argument",  # caught by ruff
   "unused-import",  # caught by ruff
-  "while-used"  # using while loops in example scripts
+  "while-used",  # using while loops in example scripts
+  "wrong-import-order"  # caught by ruff
 ]
 
 [tool.pylint.reports]
@@ -254,6 +255,7 @@ filterwarnings = [
 ]
 junit_logging = "all"
 markers = [
+  'docs',
   'order',
   'slow'
 ]
@@ -368,7 +370,7 @@ overrides."tool.poetry.*".inline_arrays = false
 overrides."tool.pylint.*".table_keys = false
 
 # Tox configuration
-[tool.tox]  # TODO: remove the ignored vulnerabilities in the safety check
+[tool.tox]
 legacy_tox_ini = """
 [tox]
 requires = tox>4
@@ -399,7 +401,7 @@ setenv =
 commands_pre =
     poetry install --no-root
 commands =
-    !tests: safety check --ignore=51457
+    !tests: safety check
     !tests: black --check --diff --color .
     !tests: docformatter --check --diff .
     !tests: ruff check .
@@ -408,7 +410,7 @@ commands =
     !tests: pyright --verifytypes tm_devices --ignoreexternal
     !tests: pyroma .
     !tests: pre-commit run --all-files --show-diff-on-failure
-    pytest -vv -k "not test_docs" --showlocals --cov --junitxml=.results_{envname}/results.xml --cov-report=term --cov-report=html:.results_{envname}/html --self-contained-html --html=.results_{envname}/results.html
+    pytest -vv -k "not test_docs" --showlocals --cov --junitxml={tox_root}/.results_{envname}/results.xml --cov-report=term --cov-report=html:{tox_root}/.results_{envname}/html --self-contained-html --html={tox_root}/.results_{envname}/results.html
 
 [testenv:tests]
 basepython = python
@@ -432,5 +434,5 @@ deps =
     -rtests/requirements.txt
 commands_pre =
 commands =
-    pytest -v -k "test_docs and not test_docs_html" --showlocals --junitxml=.results_{envname}/results.xml --self-contained-html --html=.results_{envname}/results.html
+    pytest -v -k "test_docs and not test_docs_html" --showlocals --junitxml={tox_root}/.results_{envname}/results.xml --self-contained-html --html={tox_root}/.results_{envname}/results.html
 """

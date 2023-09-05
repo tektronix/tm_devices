@@ -15,6 +15,7 @@ devices:
     dialogues:
       - q: '*IDN?'
         r: TEKTRONIX,DPO7104,10000001,CF:91.1CT FV:01.00.912
+      - q: HEADER OFF
       - q: '*OPC?'
         r: '1'
       - q: '*RST'

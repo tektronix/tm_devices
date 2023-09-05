@@ -39,6 +39,7 @@ def test_afg3kc(device_manager: DeviceManager) -> None:
     assert afg3kc.check_visa_connection()
     afg3kc.write("*OPC?")
     assert afg3kc.read() == "1"
+    assert afg3kc.opt_string == "0"
     assert afg3kc.query("SYSTEM:ERROR?") == '0,"No error"'
     assert afg3kc.query("SYSTEM:ERROR?", remove_quotes=True) == "0,No error"
     assert afg3kc.expect_esr(0)[0]

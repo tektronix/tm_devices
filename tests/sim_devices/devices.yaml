@@ -105,6 +105,9 @@ resources:
   TCPIP::AWG7K-HOSTNAME::INSTR:
     device: awg7122
     filename: awg/awg7k.yaml
+  TCPIP::AWG7KB-HOSTNAME::INSTR:
+    device: awg7122b
+    filename: awg/awg7kb.yaml
   TCPIP::AWG7KC-HOSTNAME::INSTR:
     device: awg7122c
     filename: awg/awg7kc.yaml

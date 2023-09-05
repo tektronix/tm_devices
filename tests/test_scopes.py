@@ -13,7 +13,7 @@ import pyvisa as visa
 from packaging.version import Version
 
 from tm_devices import DeviceManager
-from tm_devices.drivers import MSO2, MSO5, TekScopeSW
+from tm_devices.drivers import MSO2, MSO5, MSO70KDX, TekScopeSW
 from tm_devices.drivers.pi.scopes.tekscope.tekscope import TekProbeData, TekScope, TekScopeChannel
 
 
@@ -50,6 +50,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     assert scope.all_channel_names_list == ("CH1", "CH2", "CH3", "CH4", "CH5", "CH6")
     assert scope.usb_drives == ("E:",)
     assert scope.ip_address == ""
+    assert scope.opt_string == "0"
     assert scope.channel["CH1"].probe == TekProbeData(
         probetype="ANALOG",
         probe_id_sernumber="N/A",
@@ -303,8 +304,15 @@ def test_tekscope70k(device_manager: DeviceManager, capsys: pytest.CaptureFixtur
     assert str(error.value.args[0]) == "``.reboot()`` is not yet implemented for the MSO70K driver"
 
     # get coverage for different IDN format
-    scope_70k = device_manager.add_scope("MSO70KDX-HOSTNAME")
+    scope_70k: MSO70KDX = cast(
+        MSO70KDX, device_manager.add_scope("MSO70KDX-HOSTNAME", alias="mso70k")
+    )
     assert scope_70k.sw_version == Version("10.99.1")
+
+    # Assert the total number of analog channels.
+    assert scope_70k.total_channels == 4
+    # Assert the total number of digital channels.
+    assert scope_70k.num_dig_bits_in_ch == 16
 
 
 def test_long_device_name(device_manager: DeviceManager) -> None:

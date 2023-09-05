@@ -1,7 +1,7 @@
 ---
 spec: '1.1'
 devices:
-  mso72004dx:
+  awg7122b:
     eom:
       USB INSTR:
         q: "\n"
@@ -14,23 +14,24 @@ devices:
         r: "\n"
     dialogues:
       - q: '*IDN?'
-        r: TEKTRONIX,MSO72004DX,SERIAL1,CF:91.1CT FV:10.99.1 Build 20
-      - q: HEADER OFF
+        r: TEKTRONIX,AWG7122B,B010123,SCPI:99.0 FW:3.0.136.602
+      - q: '*OPC'
       - q: '*OPC?'
         r: '1'
       - q: '*RST'
       - q: '*CLS'
-      - q: EMPTY?
-        r: ''
+      - q: AWGControl:CONFigure:CNUMber?
+        r: '2'
+      - q: 'MMEMory:IMPort '
     error:
       status_register:
         - q: '*ESR?'
           command_error: 32
           query_error: 4
       error_queue:
-        - q: :ALLev?
-          default: 0,"No events to report - queue empty"
-          command_error: 113,"Undefined header; Command not found; EXAMPLE_COMMAND"
+        - q: SYSTEM:ERROR?
+          default: 0,"No error"
+          command_error: 1, "Command error"
     properties:
       sre:
         default: 0

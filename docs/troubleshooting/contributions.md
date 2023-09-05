@@ -223,3 +223,113 @@ python -m poetry update
 
 # Re-run original, failing command
 ```
+
+______________________________________________________________________
+
+## `FileNotFoundError` when running tests
+
+### Problem:
+
+When running tests with a specified html output file, sometimes an internal error
+can be raised causing the test run to crash.
+
+```console
+> pytest -k "test_docs" --self-contained-html --html=.results_doctests/results.html
+
+platform win32 -- Python 3.11.4, pytest-7.4.1, pluggy-1.3.0 -- .env\Scripts\python.exe
+cachedir: .pytest_cache
+metadata: {'Python': '3.11.4', 'Platform': 'Windows-10-10.0.19045-SP0', 'Packages': {'pytest': '7.4.1', 'pluggy': '1.3.0'}, 'Plugins': {'cov': '4.1.0', 'html': '4.0.0', 'metadata': '3.0.0', 'order': '1.1.0', 'profiling': '1.7.0'}}
+configfile: pyproject.toml
+plugins: cov-4.1.0, html-4.0.0, metadata-3.0.0, order-1.1.0, profiling-1.7.0
+collected 177 items / 174 deselected / 3 selected
+
+tests/test_docs.py::TestDocs::test_docs_linkcheck                                                                                                                                                                                                   [ 33%]
+INTERNALERROR> Traceback (most recent call last):
+INTERNALERROR>   File ".env\Lib\site-packages\_pytest\main.py", line 270, in wrap_session
+INTERNALERROR>     session.exitstatus = doit(config, session) or 0
+INTERNALERROR>                          ^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File ".env\Lib\site-packages\_pytest\main.py", line 324, in _main
+INTERNALERROR>     config.hook.pytest_runtestloop(session=session)
+INTERNALERROR>   File ".env\Lib\site-packages\pluggy\_hooks.py", line 493, in __call__
+INTERNALERROR>     return self._hookexec(self.name, self._hookimpls, kwargs, firstresult)
+INTERNALERROR>            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File ".env\Lib\site-packages\pluggy\_manager.py", line 115, in _hookexec
+INTERNALERROR>     return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+INTERNALERROR>            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File ".env\Lib\site-packages\pluggy\_callers.py", line 152, in _multicall
+INTERNALERROR>     return outcome.get_result()
+INTERNALERROR>            ^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File ".env\Lib\site-packages\pluggy\_result.py", line 114, in get_result
+INTERNALERROR>     raise exc.with_traceback(exc.__traceback__)
+INTERNALERROR>   File ".env\Lib\site-packages\pluggy\_callers.py", line 77, in _multicall
+INTERNALERROR>     res = hook_impl.function(*args)
+INTERNALERROR>           ^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File ".env\Lib\site-packages\_pytest\main.py", line 349, in pytest_runtestloop
+INTERNALERROR>     item.config.hook.pytest_runtest_protocol(item=item, nextitem=nextitem)
+INTERNALERROR>   File ".env\Lib\site-packages\pluggy\_hooks.py", line 493, in __call__
+INTERNALERROR>     return self._hookexec(self.name, self._hookimpls, kwargs, firstresult)
+INTERNALERROR>            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File ".env\Lib\site-packages\pluggy\_manager.py", line 115, in _hookexec
+INTERNALERROR>     return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+INTERNALERROR>            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File ".env\Lib\site-packages\pluggy\_callers.py", line 152, in _multicall
+INTERNALERROR>     return outcome.get_result()
+INTERNALERROR>            ^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File ".env\Lib\site-packages\pluggy\_result.py", line 114, in get_result
+INTERNALERROR>     raise exc.with_traceback(exc.__traceback__)
+INTERNALERROR>   File ".env\Lib\site-packages\pluggy\_callers.py", line 77, in _multicall
+INTERNALERROR>     res = hook_impl.function(*args)
+INTERNALERROR>           ^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File ".env\Lib\site-packages\_pytest\runner.py", line 114, in pytest_runtest_protocol
+INTERNALERROR>     runtestprotocol(item, nextitem=nextitem)
+INTERNALERROR>   File ".env\Lib\site-packages\_pytest\runner.py", line 133, in runtestprotocol
+INTERNALERROR>     reports.append(call_and_report(item, "call", log))
+INTERNALERROR>                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File ".env\Lib\site-packages\_pytest\runner.py", line 226, in call_and_report
+INTERNALERROR>     hook.pytest_runtest_logreport(report=report)
+INTERNALERROR>   File ".env\Lib\site-packages\pluggy\_hooks.py", line 493, in __call__
+INTERNALERROR>     return self._hookexec(self.name, self._hookimpls, kwargs, firstresult)
+INTERNALERROR>            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File ".env\Lib\site-packages\pluggy\_manager.py", line 115, in _hookexec
+INTERNALERROR>     return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+INTERNALERROR>            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File ".env\Lib\site-packages\pluggy\_callers.py", line 113, in _multicall
+INTERNALERROR>     raise exception.with_traceback(exception.__traceback__)
+INTERNALERROR>   File ".env\Lib\site-packages\pluggy\_callers.py", line 77, in _multicall
+INTERNALERROR>     res = hook_impl.function(*args)
+INTERNALERROR>           ^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File ".env\Lib\site-packages\pytest_html\basereport.py", line 251, in pytest_runtest_logreport
+INTERNALERROR>     self._generate_report()
+INTERNALERROR>   File ".env\Lib\site-packages\pytest_html\selfcontained_report.py", line 39, in _generate_report
+INTERNALERROR>     super()._generate_report(self_contained=True)
+INTERNALERROR>   File ".env\Lib\site-packages\pytest_html\basereport.py", line 65, in _generate_report
+INTERNALERROR>     self._write_report(rendered_report)
+INTERNALERROR>   File ".env\Lib\site-packages\pytest_html\basereport.py", line 134, in _write_report
+INTERNALERROR>     with self._report_path.open("w", encoding="utf-8") as f:
+INTERNALERROR>          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "C:\Python311_64bit\Lib\pathlib.py", line 1044, in open
+INTERNALERROR>     return io.open(self, mode, buffering, encoding, errors, newline)
+INTERNALERROR>            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR> FileNotFoundError: [Errno 2] No such file or directory: '.results_doctests\\results.html'
+
+```
+
+### Solution:
+
+This is caused by passing in a relative path to the html output file via the `--html` flag. Some
+versions of [`pytest-html`](https://pytest-html.readthedocs.io/en/latest/index.html) don't convert
+the path to an absolute path, so if a test changes the current working directory the html
+reporter plugin will raise a `FileNotFoundError`.
+
+In order to prevent this issue from occurring, simply pass in the full path to the html output
+file when running pytest.
+
+```console
+# Linux
+source .env/bin/activate
+pytest -k "test_docs" --self-contained-html --html=$(pwd)/.results_doctests/results.html
+
+# Windows
+.env\Scripts\activate.bat
+pytest -k "test_docs" --self-contained-html --html=%CD%\.results_doctests\results.html
+```

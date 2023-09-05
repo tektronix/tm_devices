@@ -22,6 +22,7 @@ from tm_devices.drivers import (
     AWG5KB,
     AWG5KC,
     AWG7K,
+    AWG7KB,
     AWG7KC,
     AWG70KA,
     AWG70KB,
@@ -149,7 +150,7 @@ if TYPE_CHECKING:
 ####################################################################################################
 # TODO: this is temporary until python3.12 which will support TypeVar with defaults
 AFGAlias: TypeAlias = Union[AFG3K, AFG3KB, AFG3KC, AFG31K]
-AWGAlias: TypeAlias = Union[AWG5K, AWG5KB, AWG5KC, AWG7K, AWG7KC, AWG5200, AWG70KA, AWG70KB]
+AWGAlias: TypeAlias = Union[AWG5K, AWG5KB, AWG5KC, AWG7K, AWG7KB, AWG7KC, AWG5200, AWG70KA, AWG70KB]
 DataAcquisitionSystemAlias: TypeAlias = Union[DAQ6510]  # pyright: ignore
 DigitalMultimeterAlias: TypeAlias = Union[DMM6500, DMM7510, DMM7512]
 ScopeAlias: TypeAlias = Union[

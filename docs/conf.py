@@ -172,6 +172,7 @@ tippy_rtd_urls = [
     "https://python-semantic-release.readthedocs.io/en/latest/",
     "https://docs.pytest.org/en/latest/",
     "https://pytest-cov.readthedocs.io/en/latest/",
+    "https://pytest-html.readthedocs.io/en/latest/",
     "https://pyvisa.readthedocs.io/projects/pyvisa-sim/en/latest/",
 ]
 tippy_anchor_parent_selector = "div.document"

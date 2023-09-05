@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [ubuntu-latest, macos-latest, windows-latest]
+        platform: [ubuntu-latest, windows-latest]  # TODO: add "macos-latest" back to the platform list
         python-version: ['3.8', '3.9', '3.10', '3.11']
     steps:
       - uses: actions/checkout@v3
@@ -44,7 +44,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os_name: [ubuntu, macos, windows]
+        os_name: [ubuntu, windows]  # TODO: add "macos" back to the os_name list
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python

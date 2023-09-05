@@ -7,13 +7,15 @@ REM Command file for Sphinx documentation
 if "%SPHINXBUILD%" == "" (
     set SPHINXBUILD=python -msphinx
 )
-set SOURCEDIR=.
+if "%SOURCEDIR%" == "" (
+    set SOURCEDIR=.
+)
 if "%BUILDDIR%" == "" (
     set BUILDDIR=_build
 )
 set SPHINXPROJ=tm_devices
 if "%SPHINXOPTS%" == "" (
-    set SPHINXOPTS=-W --keep-going -j 3
+    set SPHINXOPTS=-W --keep-going -j 2
 )
 
 if "%1" == "" goto help

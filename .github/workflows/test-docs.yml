@@ -14,7 +14,7 @@ concurrency:
 jobs:
   # Test building the docs (html, linkcheck, doctest, coverage)
   test-docs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-4-cores
     strategy:
       fail-fast: false
       matrix:
@@ -36,11 +36,17 @@ jobs:
           python -m pip install --upgrade tox
       - name: Test
         run: tox -ve ${{ matrix.tox_env }}
+      - uses: thedoctor0/zip-release@0.7.1
+        if: '!cancelled()'
+        with:
+          type: zip
+          filename: ${{ matrix.tox_env }}_results.zip
+          path: .results_${{ matrix.tox_env }}/
       - uses: actions/upload-artifact@v3
         if: '!cancelled()'
         with:
           name: artifact_${{ matrix.tox_env }}
-          path: .results_${{ matrix.tox_env }}/**
+          path: ${{ matrix.tox_env }}_results.zip
   # Check that all jobs passed
   check-docs-passed:
     if: always()
