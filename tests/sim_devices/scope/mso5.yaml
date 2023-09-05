@@ -21,6 +21,8 @@ devices:
       - q: '*OPC'
       - q: '*OPC?'
         r: '1'
+      - q: '*OPT?'
+        r: '0'
       - q: '*RST'
       - q: '*CLS'
       - q: :FILESystem:LDIR?

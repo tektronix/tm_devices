@@ -1,7 +1,7 @@
 # Minimal makefile for Sphinx documentation
 
 # You can set these variables from the command line.
-SPHINXOPTS    = -W --keep-going -j 3
+SPHINXOPTS    = -W --keep-going -j 2
 SPHINXBUILD   = python -msphinx
 SPHINXPROJ    = tm_devices
 SOURCEDIR     = .
