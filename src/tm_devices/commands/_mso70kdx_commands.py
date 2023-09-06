@@ -61,6 +61,7 @@ from ._5y90wx_dpodsamso.data import Data
 from ._5y90wx_dpodsamso.delete import Delete
 from ._5y90wx_dpodsamso.diag import Diag
 from ._5y90wx_dpodsamso.display import Display
+from ._5y90wx_dpodsamso.dpojet import Dpojet
 from ._5y90wx_dpodsamso.email import Email
 from ._5y90wx_dpodsamso.export import Export
 from ._5y90wx_dpodsamso.fastacq import Fastacq
@@ -812,6 +813,7 @@ class MSO70KDXCommands:
         - ``.dese``: The ``DESE`` command.
         - ``.diag``: The ``DIAg`` command tree.
         - ``.display``: The ``DISplay`` command.
+        - ``.dpojet``: The ``DPOJET`` command tree.
         - ``.email``: The ``EMail`` command.
         - ``.errordetector``: The ``ERRORDetector`` command tree.
         - ``.ese``: The ``*ESE`` command.
@@ -929,6 +931,7 @@ class MSO70KDXCommands:
         self._dese = Dese(device)
         self._diag = Diag(device)
         self._display = Display(device)
+        self._dpojet = Dpojet(device)
         self._email = Email(device)
         self._errordetector = Errordetector(device)
         self._ese = Ese(device)
@@ -1850,6 +1853,70 @@ class MSO70KDXCommands:
             - ``.waveform``: The ``DISplay:WAVEform`` command.
         """
         return self._display
+
+    @property
+    def dpojet(self) -> Dpojet:
+        """Return the ``DPOJET`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``DPOJET?`` query.
+            - Using the ``.verify(value)`` method will send the ``DPOJET?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.activate``: The ``DPOJET:ACTIVATE`` command.
+            - ``.addmeas``: The ``DPOJET:ADDMeas`` command.
+            - ``.addplot``: The ``DPOJET:ADDPlot`` command.
+            - ``.analysismethod``: The ``DPOJET:ANALYSISMETHOD`` command.
+            - ``.applyall``: The ``DPOJET:APPLYAll`` command.
+            - ``.bitratestate``: The ``DPOJET:BITRatestate`` command.
+            - ``.clearallmeas``: The ``DPOJET:CLEARALLMeas`` command.
+            - ``.clearallplots``: The ``DPOJET:CLEARALLPlots`` command.
+            - ``.dataratelimits``: The ``DPOJET:DATAratelimits`` command.
+            - ``.deskew``: The ``DPOJET:DESKEW`` command.
+            - ``.diracmodel``: The ``DPOJET:DIRacmodel`` command.
+            - ``.export``: The ``DPOJET:EXPORT`` command.
+            - ``.exportraw``: The ``DPOJET:EXPORTRaw`` command.
+            - ``.gating``: The ``DPOJET:GATING`` command.
+            - ``.haltfreerunonlimfail``: The ``DPOJET:HALTFreerunonlimfail`` command.
+            - ``.highperfrendering``: The ``DPOJET:HIGHPerfrendering`` command.
+            - ``.interp``: The ``DPOJET:INTERp`` command.
+            - ``.jittermode``: The ``DPOJET:JITtermode`` command.
+            - ``.jittermodel``: The ``DPOJET:JITtermodel`` command.
+            - ``.lasterror``: The ``DPOJET:LASTError`` command.
+            - ``.limitrise``: The ``DPOJET:LIMITRise`` command.
+            - ``.limits``: The ``DPOJET:LIMits`` command tree.
+            - ``.lockrj``: The ``DPOJET:LOCKRJ`` command.
+            - ``.lockrjvalue``: The ``DPOJET:LOCKRJValue`` command.
+            - ``.logging``: The ``DPOJET:LOGging`` command tree.
+            - ``.meas``: The ``DPOJET:MEAS<x>`` command tree.
+            - ``.minbujui``: The ``DPOJET:MINBUJUI`` command.
+            - ``.noiseenabled``: The ``DPOJET:NOISEENABLED`` command.
+            - ``.nummeas``: The ``DPOJET:NUMMeas`` command.
+            - ``.numplot``: The ``DPOJET:NUMPlot`` command.
+            - ``.opticalunittype``: The ``DPOJET:OPTICALUNITType`` command.
+            - ``.plot``: The ``DPOJET:PLOT<x>`` command tree.
+            - ``.population``: The ``DPOJET:POPULATION`` command tree.
+            - ``.qualify``: The ``DPOJET:QUALify`` command tree.
+            - ``.reflevel``: The ``DPOJET:REFLevel`` command tree.
+            - ``.reflevels``: The ``DPOJET:REFLevels`` command tree.
+            - ``.report``: The ``DPOJET:REPORT`` command.
+            - ``.results``: The ``DPOJET:RESULts`` command tree.
+            - ``.save``: The ``DPOJET:SAVE`` command.
+            - ``.saveallplots``: The ``DPOJET:SAVEALLPLOTS`` command.
+            - ``.setimagetpath``: The ``DPOJET:SETIMAGETPath`` command.
+            - ``.setloggingpath``: The ``DPOJET:SETLOGGINGPath`` command.
+            - ``.setreportpath``: The ``DPOJET:SETREPORTPath`` command.
+            - ``.showmeaswarning``: The ``DPOJET:SHOWMEASWARNing`` command.
+            - ``.snc``: The ``DPOJET:SNC`` command tree.
+            - ``.sourceautoset``: The ``DPOJET:SOURCEAutoset`` command.
+            - ``.state``: The ``DPOJET:STATE`` command.
+            - ``.tdcompensation``: The ``DPOJET:TDCOMPensation`` command.
+            - ``.unittype``: The ``DPOJET:UNITType`` command.
+            - ``.vertunittype``: The ``DPOJET:VERTUNITType`` command.
+            - ``.version``: The ``DPOJET:VERsion`` command.
+        """
+        return self._dpojet
 
     @property
     def email(self) -> Email:
@@ -3915,6 +3982,7 @@ class MSO70KDXMixin:
             - ``.dese``: The ``DESE`` command.
             - ``.diag``: The ``DIAg`` command tree.
             - ``.display``: The ``DISplay`` command.
+            - ``.dpojet``: The ``DPOJET`` command tree.
             - ``.email``: The ``EMail`` command.
             - ``.errordetector``: The ``ERRORDetector`` command tree.
             - ``.ese``: The ``*ESE`` command.
