@@ -4,6 +4,7 @@ default_stages: [pre-commit]
 ci:
   autofix_prs: false
   autoupdate_schedule: quarterly
+  skip: [toml-sort, pylint, pyright, pyright-verifytypes, pyroma]
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
