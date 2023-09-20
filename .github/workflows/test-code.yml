@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [ubuntu-latest, windows-latest]  # TODO: add "macos-latest" back to the platform list
+        platform: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ['3.8', '3.9', '3.10', '3.11']
     steps:
       - uses: actions/checkout@v3
@@ -44,7 +44,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os_name: [ubuntu, windows]  # TODO: add "macos" back to the os_name list
+        os_name: [ubuntu, windows, macos]
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
@@ -64,12 +64,12 @@ jobs:
           name: artifact_${{ matrix.os_name }}_tests
           path: .results_*/**
       # TODO: look into using https://github.com/mikepenz/action-junit-report for a junit report
-#      - name: Upload coverage to Codecov
-#        uses: codecov/codecov-action@v3
-#        with:
-#          files: ./.coverage.tests
-#          name: codecov-${{ matrix.os_name }}
-#          fail_ci_if_error: true
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./.coverage.tests
+          name: codecov-${{ matrix.os_name }}
+          fail_ci_if_error: true
   # Check that all jobs passed
   check-tests-passed:
     if: always()

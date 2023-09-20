@@ -117,6 +117,7 @@ from tm_devices.drivers.api.rest_api.rest_api_device import RESTAPIDevice
 from tm_devices.drivers.pi.pi_device import PIDevice
 from tm_devices.helpers import (
     AliasDict,
+    check_for_update,
     ConnectionTypes,
     create_visa_connection,
     detect_visa_resource_expression,
@@ -272,7 +273,7 @@ class DeviceManager(metaclass=Singleton):
                 (updates the current configuration options).
             external_device_drivers: An optional dict for passing in additional device drivers.
         """
-        # TODO: # check_for_update()  # import and uncomment this helper once the package is on PyPI
+        check_for_update()
         self._suppress_protection = False
         # Set up the DeviceManager
         self.__is_open = False
