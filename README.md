@@ -2,7 +2,7 @@
 <a href="https://github.com/tektronix/tm_devices/actions/workflows/test-code.yml"><img alt="Code testing status" src="https://github.com/tektronix/tm_devices/actions/workflows/test-code.yml/badge.svg?branch=main"></a>
 <a href="https://github.com/tektronix/tm_devices/actions/workflows/test-docs.yml"><img alt="Docs testing status" src="https://github.com/tektronix/tm_devices/actions/workflows/test-docs.yml/badge.svg?branch=main"></a>
 <a href="https://github.com/tektronix/tm_devices/actions/workflows/package-build.yml"><img alt="Package build status" src="https://github.com/tektronix/tm_devices/actions/workflows/package-build.yml/badge.svg?branch=main"></a>
-<a href="https://codecov.io/gh/tm_devices"><img alt="Coverage status" src="https://codecov.io/gh/tm_devices/branch/main/graph/badge.svg"></a>
+<a href="https://codecov.io/gh/tektronix/tm_devices"><img alt="Coverage status" src="https://codecov.io/gh/tektronix/tm_devices/branch/main/graph/badge.svg"></a>
 <a href="https://github.com/tektronix/tm_devices/actions/workflows/codeql-analysis.yml"><img alt="CodeQL status" src="https://github.com/tektronix/tm_devices/actions/workflows/codeql-analysis.yml/badge.svg?branch=main"></a>
 <a href="https://github.com/pre-commit/pre-commit"><img alt="pre-commit enabled" src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit"></a>
 <a href="https://results.pre-commit.ci/latest/github/tektronix/tm_devices/main"><img alt="pre-commit status" src="https://results.pre-commit.ci/badge/github/tektronix/tm_devices/main.svg"></a>
