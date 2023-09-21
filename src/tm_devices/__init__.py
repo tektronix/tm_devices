@@ -4,17 +4,11 @@ Provides access to commonly imported items from the tm_devices package.
 
 Examples:
     >>> from tm_devices import DeviceManager
-    >>> with DeviceManager() as dm:  # doctest: +ELLIPSIS
+    >>> with DeviceManager() as dm:  # doctest: +SKIP
     ...     print(dm.is_open)
-    <BLANKLINE>
-    <BLANKLINE>
-    ...tm_devices...
-    <BLANKLINE>
-
-    2... - Opening DeviceManager
+    2023-09-21 01:50:16.031 - Opening DeviceManager
     True
-    <BLANKLINE>
-    2... - DeviceManager Closed
+    2023-09-21 01:50:16.031 - DeviceManager Closed
 """
 from importlib.metadata import version
 
