@@ -6,6 +6,11 @@ Examples:
     >>> from tm_devices import DeviceManager
     >>> with DeviceManager() as dm:  # doctest: +ELLIPSIS
     ...     print(dm.is_open)
+    <BLANKLINE>
+    <BLANKLINE>
+    ...tm_devices...
+    <BLANKLINE>
+
     2... - Opening DeviceManager
     True
     <BLANKLINE>
