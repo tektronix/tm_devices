@@ -1,5 +1,5 @@
 ---
-name: Package build & Upload
+name: Package Build & Upload
 on:
   push:
     branches: [main]
