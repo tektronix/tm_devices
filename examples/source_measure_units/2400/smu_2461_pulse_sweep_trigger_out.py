@@ -185,7 +185,7 @@ with DeviceManager() as device_manager:
     wait = 1  # pylint: disable=invalid-name
     smu2461.commands.trigger.model.initiate()
     # Wait for the measurements to complete. waitcomplete()
-    garbage = smu2461.commands.status.operation.condition  # throw away first read of status byte
+    _ = smu2461.commands.status.operation.condition  # throw away first read of status byte
 
     while is_sweeping:
         sleep(wait := wait * 1.1)

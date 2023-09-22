@@ -503,7 +503,6 @@ enum as well.
 # USBTMC configuration defines
 _TEKTRONIX_USBTMC_VENDOR_ID: Final = "0x0699"
 _KEITHLEY_USBTMC_VENDOR_ID: Final = "0x05E6"
-_USBTMC_UNKNOWN_MODEL: Final = "Unknown"
 USB_MODEL_ID_LOOKUP: Final[Mapping[str, USBTMCConfiguration]] = MappingProxyType(
     {
         SupportedModels.MDO3K.value: USBTMCConfiguration(

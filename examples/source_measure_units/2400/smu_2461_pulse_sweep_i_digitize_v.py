@@ -84,7 +84,7 @@ with DeviceManager() as device_manager:
     # Run trigger model and wait for it to complete
     smu2461.commands.trigger.model.initiate()
     # waitcomplete
-    garbage = smu2461.commands.status.operation.condition  # throw away first read of status byte
+    _ = smu2461.commands.status.operation.condition  # throw away first read of status byte
 
     while is_sweeping:
         operation_condition_register = int(smu2461.commands.status.operation.condition.rstrip())
