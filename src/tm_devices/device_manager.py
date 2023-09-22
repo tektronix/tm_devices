@@ -1426,6 +1426,4 @@ class DeviceManager(metaclass=Singleton):
                 self.__visa_library = visa_library
             else:
                 self.__visa_library = ""
-        else:
-            self.__visa_library = self.__visa_library
         self.verbose_visa = bool(self.__config.options.verbose_visa)
