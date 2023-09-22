@@ -29,9 +29,6 @@ jobs:
   # Upload to Test PyPI on every push to main
   test-pypi:
     name: Publish package to test.pypi.org
-    environment:
-      name: test-pypi
-      url: https://test.pypi.org/p/tm_devices
     if: github.repository == 'tektronix/tm_devices' && github.event_name == 'push'
       && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -40,7 +37,7 @@ jobs:
       - name: Download built package
         uses: actions/download-artifact@v3
         with:
-          name: Package
+          name: Packages
           path: dist
       - name: Upload package to Test PyPI
         uses: pypa/gh-action-pypi-publish@v1.8.8
@@ -50,9 +47,6 @@ jobs:
   # Upload to PyPI and create a tag in the repo after a GitHub Release is published
   pypi:
     name: Publish released package to pypi.org and create new tag in repo
-    environment:
-      name: pypi
-      url: https://pypi.org/p/tm_devices
     if: github.repository == 'tektronix/tm_devices' && github.event_name == 'release'
       && github.event.action == 'published'
     runs-on: ubuntu-latest
@@ -64,7 +58,7 @@ jobs:
       - name: Download built package
         uses: actions/download-artifact@v3
         with:
-          name: Package
+          name: Packages
           path: dist
       - name: Upload package to PyPI
         uses: pypa/gh-action-pypi-publish@v1.8.8
