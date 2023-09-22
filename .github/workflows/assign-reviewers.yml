@@ -1,0 +1,14 @@
+---
+name: Assign Reviewers to Pull Requests
+on:
+  pull_request:
+    types: [opened, ready_for_review, reopened]
+jobs:
+  assign-reviewers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign Reviewers
+        uses: rowi1de/auto-assign-review-teams@v1.1.3
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          teams: tm-devices-maintainers
