@@ -1,0 +1,8 @@
+---
+addReviewers: true
+addAssignees: author
+reviewers:
+  - tektronix/tm-devices-maintainers
+# Number of reviewers has no impact on GitHub teams
+# Set 0 to add all the reviewers (default: 0)
+numberOfReviewers: 0
