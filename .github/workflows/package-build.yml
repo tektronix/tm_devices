@@ -37,7 +37,7 @@ jobs:
       - name: Download built package
         uses: actions/download-artifact@v3
         with:
-          name: Package
+          name: Packages
           path: dist
       - name: Upload package to Test PyPI
         uses: pypa/gh-action-pypi-publish@v1.8.8
@@ -58,7 +58,7 @@ jobs:
       - name: Download built package
         uses: actions/download-artifact@v3
         with:
-          name: Package
+          name: Packages
           path: dist
       - name: Upload package to PyPI
         uses: pypa/gh-action-pypi-publish@v1.8.8
