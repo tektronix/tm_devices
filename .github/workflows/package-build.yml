@@ -1,5 +1,5 @@
 ---
-name: Package build & Upload
+name: Package Build & Upload
 on:
   push:
     branches: [main]
@@ -25,47 +25,50 @@ jobs:
         with:
           fetch-depth: 0
       - uses: hynek/build-and-inspect-python-package@v1.5
-#  # Upload to Test PyPI on every push to main
-#  test-pypi:
-#    name: Publish package to test.pypi.org
-#    environment:
-#      name: test-pypi
-#      url: https://test.pypi.org/p/tm_devices
-#    if: github.repository == 'tektronix/tm_devices' && github.event_name == 'push' && github.ref == 'refs/heads/main'
-#    runs-on: ubuntu-latest
-#    needs: build-package
-#    steps:
-#      - name: Download built package
-#        uses: actions/download-artifact@v3
-#        with:
-#          name: Package
-#          path: dist
-#      - name: Upload package to Test PyPI
-#        uses: pypa/gh-action-pypi-publish@v1.8.8
-#        with:
-#          repository-url: https://test.pypi.org/legacy/
-#
-#  # Upload to PyPI and create a tag in the repo after a GitHub Release is published
-#  pypi:
-#    name: Publish released package to pypi.org and create new tag in repo
-#    environment:
-#      name: pypi
-#      url: https://pypi.org/p/tm_devices
-#    if: github.repository == 'tektronix/tm_devices' && github.event.action == 'published'
-#    runs-on: ubuntu-latest
-#    needs: build-package
-#    permissions:
-#      contents: write
-#    steps:
-#      - uses: actions/checkout@v3
-#      - name: Download built package
-#        uses: actions/download-artifact@v3
-#        with:
-#          name: Package
-#          path: dist
-#      - name: Upload package to PyPI
-#        uses: pypa/gh-action-pypi-publish@v1.8.8
-#      - name: Create and push tag
-#        run: |-
-#          git tag --annotate v${{ github.event.release.tag_name }} --message="${{ github.event.release.name }}"
-#          git push --tags
+
+  # Upload to Test PyPI on every push to main
+  test-pypi:
+    name: Publish package to test.pypi.org
+    environment:
+      name: test-pypi
+      url: https://test.pypi.org/p/tm_devices
+    if: github.repository == 'tektronix/tm_devices' && github.event_name == 'push'
+      && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: build-package
+    steps:
+      - name: Download built package
+        uses: actions/download-artifact@v3
+        with:
+          name: Package
+          path: dist
+      - name: Upload package to Test PyPI
+        uses: pypa/gh-action-pypi-publish@v1.8.8
+        with:
+          repository-url: https://test.pypi.org/legacy/
+
+  # Upload to PyPI and create a tag in the repo after a GitHub Release is published
+  pypi:
+    name: Publish released package to pypi.org and create new tag in repo
+    environment:
+      name: pypi
+      url: https://pypi.org/p/tm_devices
+    if: github.repository == 'tektronix/tm_devices' && github.event_name == 'release'
+      && github.event.action == 'published'
+    runs-on: ubuntu-latest
+    needs: build-package
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download built package
+        uses: actions/download-artifact@v3
+        with:
+          name: Package
+          path: dist
+      - name: Upload package to PyPI
+        uses: pypa/gh-action-pypi-publish@v1.8.8
+      - name: Create and push tag
+        run: |-
+          git tag --annotate v${{ github.event.release.tag_name }} --message="${{ github.event.release.name }}"
+          git push --tags

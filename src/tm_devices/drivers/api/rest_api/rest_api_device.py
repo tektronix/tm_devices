@@ -412,7 +412,9 @@ class RESTAPIDevice(APIDevice, ABC):
                 status_code = response.status_code
             except AttributeError:
                 try:
-                    status_code = error.response.status_code
+                    status_code = (
+                        error.response.status_code  # pyright: ignore[reportOptionalMemberAccess]
+                    )
                 except AttributeError:
                     status_code = 503
             return False, retval, status_code, error
