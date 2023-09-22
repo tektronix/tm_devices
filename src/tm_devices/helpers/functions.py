@@ -10,7 +10,6 @@ import subprocess  # nosec
 import time
 import warnings
 
-from contextlib import redirect_stderr, redirect_stdout
 from enum import EnumMeta
 from typing import Any, Dict, Optional, Tuple, Type
 
@@ -65,7 +64,7 @@ def check_for_update(package_name: str = PACKAGE_NAME) -> None:
     starting_dir = os.getcwd()
     try:
         # Check for package updates, set the interval to zero to always check.
-        with redirect_stdout(None), redirect_stderr(None):
+        with contextlib.redirect_stdout(None), contextlib.redirect_stderr(None):
             result = check_and_prompt(
                 package_name, remind_delay=0, online_check_interval=0, mock_user_input="2"
             )
