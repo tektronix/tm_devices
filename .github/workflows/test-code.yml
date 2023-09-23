@@ -66,12 +66,11 @@ jobs:
       # TODO: look into using https://github.com/mikepenz/action-junit-report for a junit report
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
-#          files: ./.coverage.tests
+          files: ./.coverage.tests
           name: codecov-${{ matrix.os_name }}
           fail_ci_if_error: true
+          verbose: true
   # Check that all jobs passed
   check-tests-passed:
     if: always()
