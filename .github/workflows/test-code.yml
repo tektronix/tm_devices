@@ -69,7 +69,7 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
-          files: ./.coverage.tests
+#          files: ./.coverage.tests
           name: codecov-${{ matrix.os_name }}
           fail_ci_if_error: true
   # Check that all jobs passed
