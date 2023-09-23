@@ -10,5 +10,5 @@ jobs:
       - name: Assign Reviewers
         uses: rowi1de/auto-assign-review-teams@v1.1.3
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.ASSIGN_REVIEWERS_TOKEN }}
           teams: tm-devices-maintainers
