@@ -67,10 +67,9 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
-          files: ./.coverage.tests
+          files: ./.coverage.tests.xml
           name: codecov-${{ matrix.os_name }}
           fail_ci_if_error: true
-          verbose: true
   # Check that all jobs passed
   check-tests-passed:
     if: always()
