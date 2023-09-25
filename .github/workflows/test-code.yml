@@ -37,7 +37,9 @@ jobs:
         if: '!cancelled()'
         with:
           name: artifact_${{ matrix.platform }}_${{ matrix.python-version }}_tests_and_linting
-          path: .results_*/**
+          path: |
+            .results_*/**
+            .coverage*
   # Quick testing with coverage (no linting)
   test-fast:
     runs-on: ${{ matrix.os_name }}-latest
@@ -62,12 +64,14 @@ jobs:
         if: '!cancelled()'
         with:
           name: artifact_${{ matrix.os_name }}_tests
-          path: .results_*/**
+          path: |
+            .results_*/**
+            .coverage*
       # TODO: look into using https://github.com/mikepenz/action-junit-report for a junit report
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
-          files: ./.coverage.tests
+          files: ./.coverage_tests.xml
           name: codecov-${{ matrix.os_name }}
           fail_ci_if_error: true
   # Check that all jobs passed

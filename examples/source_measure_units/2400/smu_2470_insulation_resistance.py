@@ -38,7 +38,7 @@ with DeviceManager(verbose=False) as device_manager:
 
     smu2470.commands.trigger.model.initiate()
     # Wait for the measurements to complete. waitcomplete()
-    garbage = smu2470.commands.status.operation.condition  # throw away first read of status byte
+    _ = smu2470.commands.status.operation.condition  # throw away first read of status byte
 
     while is_sweeping:
         operation_condition_register = int(smu2470.commands.status.operation.condition.rstrip())
