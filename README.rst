@@ -227,10 +227,13 @@ Maintainers
 Contributing
 ------------
 
-Interested in contributing? Check out the :doc:`contributing
-guidelines <CONTRIBUTING>`. Please note that this project is
-released with a :doc:`Code of Conduct <CODE_OF_CONDUCT>`. By
+Interested in contributing? Check out the `contributing guidelines`_.
+Please note that this project is released with a `Code of Conduct`_. By
 contributing to this project, you agree to abide by its terms.
+
+.. _contributing guidelines: CONTRIBUTING.md
+
+.. _Code of Conduct: CODE_OF_CONDUCT.md
 
 License
 -------
@@ -239,10 +242,6 @@ License
 of the `Apache License 2.0`_.
 
 .. _Apache License 2.0: LICENSE.md
-
-`MIT`_ © 2010 Read the Docs, Inc. & contributors
-
-.. _MIT: LICENSE.md
 
 Credits
 -------
