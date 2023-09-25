@@ -97,7 +97,7 @@ Supported Devices
 .. csv-table:: Device Support Levels
    :name: device-support-table
    :align: center
-   :header: Type, Series/Model, Command |br| Type, Basic |br| Control, Individual |br| Command |br| Python API
+   :header: Type, Series/Model, Command |br| Type, Basic |br| Control, Python API |br| Validation |br| Status
    :widths: auto
    :stub-columns: 1
    :class: custom-table-center-cells device-support-table
