@@ -144,7 +144,7 @@ Supported Devices
    ❌          Not Supported
    =========== ================
 
-   See the :doc:`glossary` for information on abbreviations.
+   See the `Glossary <#glossary>`__ for information on abbreviations.
 
 .. csv-table:: Device Support Levels
    :name: device-support-table
