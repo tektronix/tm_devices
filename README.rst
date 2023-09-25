@@ -144,7 +144,7 @@ Supported Devices
    ❌          Not Supported
    =========== ================
 
-   See the :doc:`Glossary <glossary>` for information on abbreviations.
+   See the :doc:`glossary` for information on abbreviations.
 
 .. csv-table:: Device Support Levels
    :name: device-support-table
@@ -227,21 +227,16 @@ Maintainers
 Contributing
 ------------
 
-Interested in contributing? Check out the `contributing guidelines`_.
-Please note that this project is released with a `Code of Conduct`_. By
+Interested in contributing? Check out the `contributing
+guidelines <CONTRIBUTING.md>`__. Please note that this project is
+released with a `Code of Conduct <CODE_OF_CONDUCT.md>`__. By
 contributing to this project, you agree to abide by its terms.
-
-.. _contributing guidelines: CONTRIBUTING.md
-
-.. _Code of Conduct: CODE_OF_CONDUCT.md
 
 License
 -------
 
 ``tm_devices`` was created by Tektronix. It is licensed under the terms
-of the `Apache License 2.0`_.
-
-.. _Apache License 2.0: LICENSE.md
+of the `Apache License 2.0 <LICENSE.md>`__.
 
 Credits
 -------
