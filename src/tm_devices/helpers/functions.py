@@ -10,9 +10,8 @@ import subprocess  # nosec
 import time
 import warnings
 
-from contextlib import redirect_stderr, redirect_stdout
 from enum import EnumMeta
-from typing import Any, Dict, Optional, Set, Tuple, Type
+from typing import Any, Dict, Optional, Tuple, Type
 
 from check4updates import check_and_prompt  # type: ignore
 from packaging.version import InvalidVersion, Version
@@ -41,10 +40,6 @@ with warnings.catch_warnings():
 ####################################################################################################
 # Private Constants
 ####################################################################################################
-_HOSTNAME_REGEX = re.compile(
-    r"^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*"
-    r"([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$"
-)
 _VISA_SYSTEM_DETAILS: Dict[str, Any] = pyvisa_util.get_system_details()
 _KEITHLEY_2_CHAR_MODEL_LOOKUP = {
     "24": "SMU",
@@ -55,8 +50,6 @@ _KEITHLEY_2_CHAR_MODEL_LOOKUP = {
     "65": "SMU",
     "37": "SS",
 }
-_MODEL_BEGINNINGS_TO_COMBINE: Set[str] = set()
-_SPECIFIC_DRIVER_SET: Set[str] = set()
 
 
 ####################################################################################################
@@ -71,7 +64,7 @@ def check_for_update(package_name: str = PACKAGE_NAME) -> None:
     starting_dir = os.getcwd()
     try:
         # Check for package updates, set the interval to zero to always check.
-        with redirect_stdout(None), redirect_stderr(None):
+        with contextlib.redirect_stdout(None), contextlib.redirect_stderr(None):
             result = check_and_prompt(
                 package_name, remind_delay=0, online_check_interval=0, mock_user_input="2"
             )
