@@ -1,35 +1,87 @@
-<p style="text-align: center;">
-<a href="https://github.com/tektronix/tm_devices/actions/workflows/test-code.yml"><img alt="Code testing status" src="https://github.com/tektronix/tm_devices/actions/workflows/test-code.yml/badge.svg?branch=main"></a>
-<a href="https://github.com/tektronix/tm_devices/actions/workflows/test-docs.yml"><img alt="Docs testing status" src="https://github.com/tektronix/tm_devices/actions/workflows/test-docs.yml/badge.svg?branch=main"></a>
-<a href="https://github.com/tektronix/tm_devices/actions/workflows/package-build.yml"><img alt="Package build status" src="https://github.com/tektronix/tm_devices/actions/workflows/package-build.yml/badge.svg?branch=main"></a>
-<a href="https://codecov.io/gh/tektronix/tm_devices"><img alt="Coverage status" src="https://codecov.io/gh/tektronix/tm_devices/branch/main/graph/badge.svg"></a>
-<a href="https://www.codefactor.io/repository/github/tektronix/tm_devices"><img alt="CodeFactor grade" src="https://www.codefactor.io/repository/github/tektronix/tm_devices/badge" /></a>
-<a href="https://github.com/tektronix/tm_devices/actions/workflows/codeql-analysis.yml"><img alt="CodeQL status" src="https://github.com/tektronix/tm_devices/actions/workflows/codeql-analysis.yml/badge.svg?branch=main"></a>
-<a href="https://github.com/pre-commit/pre-commit"><img alt="pre-commit enabled" src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit"></a>
-<a href="https://results.pre-commit.ci/latest/github/tektronix/tm_devices/main"><img alt="pre-commit status" src="https://results.pre-commit.ci/badge/github/tektronix/tm_devices/main.svg"></a>
-<a href="https://tm_devices.readthedocs.io/en/stable/?badge=stable"><img alt="Documentation status" src="https://readthedocs.org/projects/tm_devices/badge/?version=stable"></a>
-<a href="https://github.com/tektronix/tm_devices/blob/main/LICENSE.md"><img alt="License: Apache 2.0" src="https://img.shields.io/pypi/l/tm_devices"></a>
-<a href="https://pypi.org/project/tm_devices/"><img alt="PyPI: Package status" src="https://img.shields.io/pypi/status/tm_devices?logo=pypi"></a>
-<a href="https://pypi.org/project/tm_devices/"><img alt="PyPI: Latest release version" src="https://img.shields.io/pypi/v/tm_devices?logo=pypi"></a>
-<a href="https://pypi.org/project/tm_devices/"><img alt="PyPI: Supported Python versions" src="https://img.shields.io/pypi/pyversions/tm_devices?logo=python"></a>
-<a href="https://pepy.tech/project/tm_devices"><img alt="PyPI: Downloads" src="https://pepy.tech/badge/tm_devices"></a>
-<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-black"></a>
-<a href="https://pycqa.github.io/isort/"><img alt="Imports: isort" src="https://img.shields.io/badge/imports-isort-black"></a>
-<a href="https://github.com/PyCQA/docformatter"><img alt="Docstring formatter: docformatter" src="https://img.shields.io/badge/docstring%20formatter-docformatter-tan"></a>
-<a href="https://google.github.io/styleguide/pyguide.html"><img alt="Docstring style: google" src="https://img.shields.io/badge/docstring%20style-google-tan"></a>
-<a href="https://github.com/pytest-dev/pytest"><img alt="Test style: pytest" src="https://img.shields.io/badge/test%20style-pytest-blue"></a>
-<a href="https://github.com/RobertCraigie/pyright-python"><img alt="Type Checker: pyright" src="https://img.shields.io/badge/type%20checker-pyright-yellowgreen"></a>
-<a href="https://github.com/pylint-dev/pylint"><img alt="Linter: pylint" src="https://img.shields.io/badge/linter-pylint-purple"></a>
-<a href="https://github.com/charliermarsh/ruff"><img alt="Linter: Ruff" src="https://img.shields.io/badge/linter-ruff-purple"></a>
-</p>
-
-.. Custom roles and substitutions are defined below and can be used in this document.
+.. start-custom-roles
+   Custom roles and substitutions are defined below and can be used in this document.
 
 .. |br| raw:: html
 
    <br/>
 
 .. role:: term
+
+.. role:: doc
+
+.. end-custom-roles
+
+.. start-badges
+
+|Code testing status| |Docs testing status| |Package build status| |Coverage status| |CodeFactor grade| |CodeQL status| |pre-commit enabled| |pre-commit status| |Documentation status| |License: Apache 2.0| |PyPI: Package status| |PyPI: Latest release version| |PyPI: Supported Python versions| |PyPI: Downloads| |Code style: black| |Imports: isort| |Docstring formatter: docformatter| |Docstring style: google| |Test style: pytest| |Type Checker: pyright| |Linter: pylint| |Linter: Ruff|
+
+.. |Code testing status| image:: https://github.com/tektronix/tm_devices/actions/workflows/test-code.yml/badge.svg?branch=main
+   :target: https://github.com/tektronix/tm_devices/actions/workflows/test-code.yml
+
+.. |Docs testing status| image:: https://github.com/tektronix/tm_devices/actions/workflows/test-docs.yml/badge.svg?branch=main
+   :target: https://github.com/tektronix/tm_devices/actions/workflows/test-docs.yml
+
+.. |Package build status| image:: https://github.com/tektronix/tm_devices/actions/workflows/package-build.yml/badge.svg?branch=main
+   :target: https://github.com/tektronix/tm_devices/actions/workflows/package-build.yml
+
+.. |Coverage status| image:: https://codecov.io/gh/tektronix/tm_devices/branch/main/graph/badge.svg
+   :target: https://codecov.io/gh/tektronix/tm_devices
+
+.. |CodeFactor grade| image:: https://www.codefactor.io/repository/github/tektronix/tm_devices/badge
+   :target: https://www.codefactor.io/repository/github/tektronix/tm_devices
+
+.. |CodeQL status| image:: https://github.com/tektronix/tm_devices/actions/workflows/codeql-analysis.yml/badge.svg?branch=main
+   :target: https://github.com/tektronix/tm_devices/actions/workflows/codeql-analysis.yml
+
+.. |pre-commit enabled| image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit
+   :target: https://github.com/pre-commit/pre-commit
+
+.. |pre-commit status| image:: https://results.pre-commit.ci/badge/github/tektronix/tm_devices/main.svg
+   :target: https://results.pre-commit.ci/latest/github/tektronix/tm_devices/main
+
+.. |Documentation status| image:: https://readthedocs.org/projects/tm_devices/badge/?version=stable
+   :target: https://tm_devices.readthedocs.io/en/stable/?badge=stable
+
+.. |License: Apache 2.0| image:: https://img.shields.io/pypi/l/tm_devices
+   :target: https://github.com/tektronix/tm_devices/blob/main/LICENSE.md
+
+.. |PyPI: Package status| image:: https://img.shields.io/pypi/status/tm_devices?logo=pypi
+   :target: https://pypi.org/project/tm_devices/
+
+.. |PyPI: Latest release version| image:: https://img.shields.io/pypi/v/tm_devices?logo=pypi
+   :target: https://pypi.org/project/tm_devices/
+
+.. |PyPI: Supported Python versions| image:: https://img.shields.io/pypi/pyversions/tm_devices?logo=python
+   :target: https://pypi.org/project/tm_devices/
+
+.. |PyPI: Downloads| image:: https://pepy.tech/badge/tm_devices
+   :target: https://pepy.tech/project/tm_devices
+
+.. |Code style: black| image:: https://img.shields.io/badge/code%20style-black-black
+   :target: https://github.com/psf/black
+
+.. |Imports: isort| image:: https://img.shields.io/badge/imports-isort-black
+   :target: https://pycqa.github.io/isort/
+
+.. |Docstring formatter: docformatter| image:: https://img.shields.io/badge/docstring%20formatter-docformatter-tan
+   :target: https://github.com/PyCQA/docformatter
+
+.. |Docstring style: google| image:: https://img.shields.io/badge/docstring%20style-google-tan
+   :target: https://google.github.io/styleguide/pyguide.html
+
+.. |Test style: pytest| image:: https://img.shields.io/badge/test%20style-pytest-blue
+   :target: https://github.com/pytest-dev/pytest
+
+.. |Type Checker: pyright| image:: https://img.shields.io/badge/type%20checker-pyright-yellowgreen
+   :target: https://github.com/RobertCraigie/pyright-python
+
+.. |Linter: pylint| image:: https://img.shields.io/badge/linter-pylint-purple
+   :target: https://github.com/pylint-dev/pylint
+
+.. |Linter: Ruff| image:: https://img.shields.io/badge/linter-ruff-purple
+   :target: https://github.com/charliermarsh/ruff
+
+.. end-badges
 
 --------------
 
@@ -92,7 +144,7 @@ Supported Devices
    ❌          Not Supported
    =========== ================
 
-   See the `Glossary <#glossary>`__ for information on abbreviations.
+   See the :doc:`Glossary <glossary>` for information on abbreviations.
 
 .. csv-table:: Device Support Levels
    :name: device-support-table
@@ -175,16 +227,16 @@ Maintainers
 Contributing
 ------------
 
-Interested in contributing? Check out the `contributing
-guidelines <CONTRIBUTING.md>`__. Please note that this project is
-released with a `Code of Conduct <CODE_OF_CONDUCT.md>`__. By
+Interested in contributing? Check out the :doc:`contributing
+guidelines <CONTRIBUTING>`. Please note that this project is
+released with a :doc:`Code of Conduct <CODE_OF_CONDUCT>`. By
 contributing to this project, you agree to abide by its terms.
 
 License
 -------
 
 ``tm_devices`` was created by Tektronix. It is licensed under the terms
-of the `Apache License 2.0 <LICENSE.md>`__.
+of the :doc:`Apache License 2.0 <LICENSE>`.
 
 Credits
 -------
