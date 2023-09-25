@@ -45,6 +45,7 @@ extensions = [
     "sphinx.ext.inheritance_diagram",
     "sphinx.ext.graphviz",
     "sphinxcontrib.jquery",
+    "sphinxcontrib.relative-link-corrector",
     "sphinxcontrib.mermaid",
     "sphinx_togglebutton",
     "sphinx_copybutton",

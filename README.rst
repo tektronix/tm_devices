@@ -43,7 +43,7 @@
    :target: https://tm_devices.readthedocs.io/en/stable/?badge=stable
 
 .. |License: Apache 2.0| image:: https://img.shields.io/pypi/l/tm_devices
-   :target: https://github.com/tektronix/tm_devices/blob/main/LICENSE
+   :target: https://tinyurl.com/tek-tm-devices/LICENSE.md
 
 .. |PyPI: Package status| image:: https://img.shields.io/pypi/status/tm_devices?logo=pypi
    :target: https://pypi.org/project/tm_devices/
@@ -144,7 +144,7 @@ Supported Devices
    ❌          Not Supported
    =========== ================
 
-   See the `Glossary <#glossary>`__ for information on abbreviations.
+   See the :doc:`glossary` for information on abbreviations.
 
 .. csv-table:: Device Support Levels
    :name: device-support-table
@@ -228,15 +228,15 @@ Contributing
 ------------
 
 Interested in contributing? Check out the `contributing
-guidelines <#contributing-guidelines>`__. Please note that this project is
-released with a `Code of Conduct <CODE_OF_CONDUCT>`__. By
+guidelines <CONTRIBUTING.md>`_. Please note that this project is
+released with a `Code of Conduct <CODE_OF_CONDUCT.md>`_. By
 contributing to this project, you agree to abide by its terms.
 
 License
 -------
 
 ``tm_devices`` was created by Tektronix. It is licensed under the terms
-of the `Apache License 2.0 <LICENSE>`__.
+of the `Apache License 2.0 <LICENSE.md>`_.
 
 Credits
 -------
