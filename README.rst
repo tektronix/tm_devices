@@ -228,8 +228,8 @@ Contributing
 ------------
 
 Interested in contributing? Check out the `contributing
-guidelines <CONTRIBUTING.md>`__. Please note that this project is
-released with a `Code of Conduct <CODE_OF_CONDUCT.md>`__. By
+guidelines <#contributing-guidelines>`__. Please note that this project is
+released with a `Code of Conduct <CODE_OF_CONDUCT>`__. By
 contributing to this project, you agree to abide by its terms.
 
 License
