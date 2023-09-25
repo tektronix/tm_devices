@@ -13,7 +13,21 @@
 
 .. start-badges
 
-|Code testing status| |Docs testing status| |Package build status| |Coverage status| |CodeFactor grade| |CodeQL status| |pre-commit enabled| |pre-commit status| |Documentation status| |License: Apache 2.0| |PyPI: Package status| |PyPI: Latest release version| |PyPI: Supported Python versions| |PyPI: Downloads| |Code style: black| |Imports: isort| |Docstring formatter: docformatter| |Docstring style: google| |Test style: pytest| |Type Checker: pyright| |Linter: pylint| |Linter: Ruff|
+.. list-table::
+    :stub-columns: 1
+
+    * - Testing
+      - |Code testing status| |Docs testing status| |Coverage status|
+    * - Code Quality
+      - |CodeQL status| |CodeFactor grade| |pre-commit status|
+    * - Package
+      - |Package build status| |License: Apache 2.0| |PyPI: Package status| |PyPI: Latest release version| |PyPI: Supported Python versions| |PyPI: Downloads|
+    * - Documentation
+      - |Documentation status|
+    * - Code Style
+      - |Code style: black| |Imports: isort| |Docstring style: google| |Test style: pytest|
+    * - Linting
+      - |pre-commit enabled| |Docstring formatter: docformatter| |Type Checker: pyright| |Linter: pylint| |Linter: Ruff|
 
 .. |Code testing status| image:: https://github.com/tektronix/tm_devices/actions/workflows/test-code.yml/badge.svg?branch=main
    :target: https://github.com/tektronix/tm_devices/actions/workflows/test-code.yml
@@ -217,6 +231,11 @@ Supported Connections
    -  SOCKET
    -  USBTMC *(no PyVISA-py support)*
    -  GPIB *(no PyVISA-py support)*
+
+Documentation
+-------------
+
+See the full documentation at https://tm_devices.readthedocs.io
 
 Maintainers
 -----------
