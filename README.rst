@@ -236,7 +236,9 @@ License
 -------
 
 ``tm_devices`` was created by Tektronix. It is licensed under the terms
-of the `Apache License 2.0 <License.md>`_.
+of the `Apache License 2.0 <APACHE_2>`_.
+
+.. _APACHE_2: LICENSE
 
 Credits
 -------
