@@ -13,5 +13,5 @@
    glossary.md
    CODE_OF_CONDUCT.md
    contributing/index.md
-   LICENSE.md
+   LICENSE
    _autoapi/index

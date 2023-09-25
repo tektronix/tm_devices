@@ -43,7 +43,7 @@
    :target: https://tm_devices.readthedocs.io/en/stable/?badge=stable
 
 .. |License: Apache 2.0| image:: https://img.shields.io/pypi/l/tm_devices
-   :target: https://github.com/tektronix/tm_devices/blob/main/LICENSE.md
+   :target: https://github.com/tektronix/tm_devices/blob/main/LICENSE
 
 .. |PyPI: Package status| image:: https://img.shields.io/pypi/status/tm_devices?logo=pypi
    :target: https://pypi.org/project/tm_devices/
@@ -236,7 +236,7 @@ License
 -------
 
 ``tm_devices`` was created by Tektronix. It is licensed under the terms
-of the `Apache License 2.0 <LICENSE.md>`__.
+of the `Apache License 2.0 <LICENSE>`__.
 
 Credits
 -------
