@@ -23,8 +23,13 @@
 <a href="https://github.com/charliermarsh/ruff"><img alt="Linter: Ruff" src="https://img.shields.io/badge/linter-ruff-purple"></a>
 </p>
 
-.. role:: raw-html(raw)
-   :format: html
+.. Custom roles and substitutions are defined below and can be used in this document.
+
+.. |br| raw:: html
+
+   <br/>
+
+.. role:: term
 
 --------------
 
@@ -92,7 +97,7 @@ Supported Devices
 .. csv-table:: Device Support Levels
    :name: device-support-table
    :align: center
-   :header: Type, Series/Model, Command|br|Type, Basic|br|Control, Individual|br|Command|br|Python API
+   :header: Type, Series/Model, Command |br| Type, Basic |br| Control, Individual |br| Command |br| Python API
    :widths: auto
    :stub-columns: 1
    :class: custom-table-center-cells device-support-table
@@ -179,7 +184,7 @@ License
 -------
 
 ``tm_devices`` was created by Tektronix. It is licensed under the terms
-of the `Apache License 2.0 license <LICENSE.md>`__.
+of the `Apache License 2.0 <LICENSE.md>`__.
 
 Credits
 -------
@@ -188,7 +193,3 @@ Credits
 `cookiecutter <https://cookiecutter.readthedocs.io/en/latest/README.html>`__
 and the ``py-pkgs-cookiecutter``
 `template <https://py-pkgs-cookiecutter.readthedocs.io/en/latest/>`__.
-
-.. |br| raw:: html
-
-  <br/>
