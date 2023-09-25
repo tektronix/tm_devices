@@ -72,7 +72,7 @@ maintainers = [
   "Nicholas Felt <nicholas.felt@tektronix.com>"
 ]
 name = "tm_devices"
-readme = "README.md"
+readme = "README.rst"
 repository = "https://github.com/tektronix/tm_devices"
 version = "0.1.12"
 

@@ -1,5 +1,3 @@
-# License
-
 Apache Software License 2.0
 
 Copyright (c) 2022, Tektronix
