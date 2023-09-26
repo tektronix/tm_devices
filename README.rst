@@ -161,8 +161,6 @@ Supported Devices
    See the :doc:`glossary` for information on abbreviations.
 
 
-.. TODO convert this csv table into a grid style table to try to get the formatting correct
-
 .. csv-table:: Device Support Levels
    :name: device-support-table
    :align: center
