@@ -14,20 +14,20 @@
 .. start-badges
 
 .. list-table::
-    :stub-columns: 1
+   :stub-columns: 1
 
-    * - Testing
-      - |Code testing status| |Docs testing status| |Coverage status|
-    * - Code Quality
-      - |CodeQL status| |CodeFactor grade| |pre-commit status|
-    * - Package
-      - |Package build status| |License: Apache 2.0| |PyPI: Package status| |PyPI: Latest release version| |PyPI: Supported Python versions| |PyPI: Downloads|
-    * - Documentation
-      - |Documentation status|
-    * - Code Style
-      - |Code style: black| |Imports: isort| |Docstring style: google| |Test style: pytest|
-    * - Linting
-      - |pre-commit enabled| |Docstring formatter: docformatter| |Type Checker: pyright| |Linter: pylint| |Linter: Ruff|
+   * - Testing
+     - |Code testing status| |Docs testing status| |Coverage status|
+   * - Code Quality
+     - |CodeQL status| |CodeFactor grade| |pre-commit status|
+   * - Package
+     - |PyPI: Package status| |PyPI: Latest release version| |PyPI: Supported Python versions| |License: Apache 2.0| |PyPI: Downloads| |Package build status|
+   * - Documentation
+     - |Documentation status|
+   * - Code Style
+     - |Code style: black| |Test style: pytest| |Imports: isort| |Docstring style: google|
+   * - Linting
+     - |pre-commit enabled| |Docstring formatter: docformatter| |Type Checker: pyright| |Linter: pylint| |Linter: Ruff|
 
 .. |Code testing status| image:: https://github.com/tektronix/tm_devices/actions/workflows/test-code.yml/badge.svg?branch=main
    :target: https://github.com/tektronix/tm_devices/actions/workflows/test-code.yml
@@ -159,6 +159,9 @@ Supported Devices
    =========== ================
 
    See the :doc:`glossary` for information on abbreviations.
+
+
+.. TODO convert this csv table into a grid style table to try to get the formatting correct
 
 .. csv-table:: Device Support Levels
    :name: device-support-table

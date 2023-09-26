@@ -23,6 +23,11 @@ div.admonition.no-icon > .admonition-title {
     padding-left: .6rem;
 }
 
+/** Modify class that enables auto-wrap in tables */
+.wy-table-responsive table td, .wy-table-responsive table th {
+    white-space: inherit !important;
+}
+
 /** Fix admonition symbols */
 div.hint.admonition > .admonition-title::before {
     content: "\f0eb";
