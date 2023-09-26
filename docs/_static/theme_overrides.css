@@ -4,15 +4,15 @@
 .device-support-table thead, .device-support-table tbody {
     border: 2px solid black
 }
-.rst-content table.device-support-table.docutils:not(.field-list) tr:not(:has(th:empty)) td,
-.rst-content table.device-support-table.docutils tbody th:not(:empty),
-.device-support-table tbody tr:not(:has(th:empty)) th,
-.device-support-table tbody tr:not(:has(th:empty)) tr,
-.device-support-table tbody tr:not(:has(th:empty)) td
+.rst-content table.device-support-table.docutils tbody tr:has(th p)
 {
     border-top-width: 2px;
     border-top-color: black;
     border-top-style: solid;
+}
+.device-support-table tbody td[rowspan]
+{
+   background-color: transparent !important;
 }
 
 /** No icon for admonitions with no-icon class */
