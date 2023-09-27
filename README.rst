@@ -1,10 +1,6 @@
 .. start-custom-roles
    Custom roles and substitutions are defined below and can be used in this document.
 
-.. |br| raw:: html
-
-   <br/>
-
 .. role:: term
 
 .. role:: doc
@@ -164,11 +160,16 @@ Supported Devices
 .. csv-table:: Device Support Levels
    :name: device-support-table
    :align: center
-   :header: Type, Series/Model, Command |br| Type, Basic |br| Control, Python API |br| Validation |br| Status
+   :header-rows: 1
    :widths: auto
    :stub-columns: 1
    :class: custom-table-center-cells device-support-table
 
+   "| Type", "| Series/Model", "| Command
+   | Type", "| Basic
+   | Control", "| Python API
+   | Validation
+   | Status"
    :term:`AFGs <AFG>`, **AFG3000**, :term:`PI`, ✅, 🚧
    , **AFG31xxx**, :term:`PI`, ✅,
    :term:`AWGs <AWG>`, **AWG5000**, :term:`PI`, ✅, 🚧
