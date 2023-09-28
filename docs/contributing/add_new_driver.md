@@ -33,7 +33,7 @@ This guide will walk through the steps needed to add a new device driver.
     Aliases")
 08. If the device supports VISA USBTMC communication, update the
     `USB_MODEL_ID_LOOKUP` lookup exposed in `tm_devices/helpers/__init__.py`
-09. Update the Supported Devices section in `README.md` to include the new model
+09. Update the Supported Devices section in `README.rst` to include the new model
 10. Update unit tests (and simulated device files)
     1. Add a new simulated device driver in the correct folder within
        `tests/sim_devices`

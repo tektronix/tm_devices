@@ -32,7 +32,7 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-      - name: Check for README.md
+      - name: Check for README
         id: readme_file
         uses: initialstate/file-check-action@v1
         with:
@@ -50,7 +50,7 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-      - name: Check for LICENSE.md
+      - name: Check for LICENSE
         id: license_file
         uses: initialstate/file-check-action@v1
         with:

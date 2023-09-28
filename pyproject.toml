@@ -72,7 +72,7 @@ maintainers = [
   "Nicholas Felt <nicholas.felt@tektronix.com>"
 ]
 name = "tm_devices"
-readme = "README.md"
+readme = "README.rst"
 repository = "https://github.com/tektronix/tm_devices"
 version = "0.1.12"
 
@@ -132,9 +132,11 @@ sphinx-rtd-theme = ">=1.0.0"
 sphinx-tippy = ">=0.4.1"
 sphinx-togglebutton = ">=0.3.2"
 sphinxcontrib-mermaid = ">=0.7.1"
+sphinxcontrib-relative-link-corrector = ">=0.0.5"
 toml-sort = ">=0.23.0"
 tox = ">=4.0"
 tox-gh-actions = ">=3.1.0"
+twine = ">=4.0.2"
 types-python-dateutil = ">=2.8.19"
 types-pyyaml = ">=6.0"
 types-requests = ">=2.28.8"
@@ -408,6 +410,8 @@ commands =
     !tests: pyright .
     !tests: pyright --verifytypes tm_devices --ignoreexternal
     !tests: pyroma .
+    !tests: poetry build
+    !tests: twine check --strict dist/*
     !tests: pre-commit run --all-files --show-diff-on-failure
     pytest -vv -k "not test_docs" --showlocals --cov --junitxml={tox_root}/.results_{envname}/results.xml --cov-report=term --cov-report=xml:{tox_root}/.coverage_{envname}.xml --cov-report=html:{tox_root}/.results_{envname}/html --self-contained-html --html={tox_root}/.results_{envname}/results.html
 
