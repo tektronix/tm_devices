@@ -25,6 +25,20 @@ jobs:
         with:
           fetch-depth: 0
       - uses: hynek/build-and-inspect-python-package@v1.5
+        id: build-pkg
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: x  # any version
+          check-latest: true
+      - name: Test installing wheel
+        run: |
+          pip install ${{ steps.build-pkg.outputs.dist }}/*.whl
+          pip uninstall --yes tm_devices
+      - name: Test installing tarball
+        run: |
+          pip install ${{ steps.build-pkg.outputs.dist }}/*.tar.gz
+          pip uninstall --yes tm_devices
 
   # Upload to Test PyPI on every push to main
   test-pypi:
