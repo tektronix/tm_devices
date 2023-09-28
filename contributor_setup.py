@@ -109,7 +109,7 @@ def main() -> None:
             msg = "Unable to set up the environment. Please use a 64-bit Python version."
             raise SystemExit(msg)
         # Create the virtual environment
-        virtual_env_dir = os.path.sep.join([starting_dir, ".env"])
+        virtual_env_dir = os.path.sep.join([starting_dir, ".venv"])
         create_virtual_environment(virtual_env_dir, args.reset)
         os.environ["VIRTUAL_ENV"] = virtual_env_dir
 
