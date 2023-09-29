@@ -289,7 +289,7 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
 
 
 # pylint: disable=too-many-branches
-def get_model_series(model: str) -> str:  # noqa: PLR0912,C901
+def get_model_series(model: str) -> str:  # noqa: PLR0912,C901,PLR0915
     """Get the series string from the full model number.
 
     Args:
@@ -306,10 +306,12 @@ def get_model_series(model: str) -> str:  # noqa: PLR0912,C901
     elif len(model_parts) == 3:  # noqa: PLR2004
         model = "MODEL" + model_parts[0]
 
+    # find the model postscript if it exists and format it correctly
     model_postscript = ""
     if len(model_parts) > 1:
-        for part in model_parts:
-            if len(part) > 1 and all(x.isalpha() for x in part):
+        for count, part in enumerate(model_parts):
+            # avoid first model part as a postscript will likely never be in the beginning
+            if count and len(part) > 1 and all(x.isalpha() for x in part):
                 model_postscript = part.capitalize()
 
     if model.replace("MODEL", "").strip() in {x.upper() for x in SupportedModels.list_values()}:
@@ -319,7 +321,10 @@ def get_model_series(model: str) -> str:  # noqa: PLR0912,C901
         model_end = ""
     else:
         # Get any characters at the end of the model, e.g. 'B', 'LP', 'C'
-        model_end = re.split(r"\d+", model)[-1]
+        model_beginning = ""
+        model_end = ""
+        if re.search("[0-9]", model):  # if the model contains numbers
+            model_end = re.split(r"\d+", model)[-1]  # split on the occurence of each number
         if len(model_end) == 1 and model_end not in valid_model_endings:
             model_end = ""
         model_beginning = ""
@@ -361,6 +366,11 @@ def get_model_series(model: str) -> str:  # noqa: PLR0912,C901
                 model_beginning += model[:4] + "K"
             else:
                 model_beginning += model[:4]
+        elif len(model_parts) >= 2:  # noqa: PLR2004
+            model_beginning = model.capitalize()
+            model_beginning += model_parts[1]
+        else:
+            model_beginning = model_parts[0]
 
     model_series = model_beginning + model_end + model_postscript
 

@@ -98,6 +98,7 @@ def test_create_ping_command() -> None:
         ("DMM6500", "DMM6500"),
         ("MODEL 6517B", "SMU6517B"),
         ("2231A-30-3", "PSU2231A"),
+        ("Tester-100", "Tester100"),
     ],
 )
 def test_get_model_series(input_string: str, expected_abbrev_model: str) -> None:

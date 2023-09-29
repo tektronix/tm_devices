@@ -239,6 +239,17 @@ devices:
           q: SOURCE2:VOLTAGE:AMPLITUDE {:f}
         specs:
           type: float
+      source_2_burst_state:
+        default: 0
+        getter:
+          q: SOURCE2:BURST:STATE?
+          r: '{:d}'
+        setter:
+          q: SOURCE2:BURST:STATE {:d}
+        specs:
+          min: 0
+          max: 1
+          type: int
       ese:
         default: 0
         getter:

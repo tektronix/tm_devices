@@ -7,6 +7,14 @@ project adheres to [Semantic Versioning](https://semver.org).
 
 ______________________________________________________________________
 
+## v0.1.13 (2023-09-21)
+
+### Fixed
+
+- Fixed bug when generating a waveform using Burst Mode on an AFG.
+
+______________________________________________________________________
+
 ## v0.1.12 (2023-09-06)
 
 ### Added

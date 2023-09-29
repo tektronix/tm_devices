@@ -43,7 +43,8 @@ class AFG(SignalSource, ABC):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def generate_waveform(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
+    # pylint: disable=too-many-locals,line-too-long
+    def generate_waveform(  # noqa: C901,E501,PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
         self,
         frequency: float,
         function: SignalSourceFunctionsAFG,
@@ -113,10 +114,21 @@ class AFG(SignalSource, ABC):
                 self.set_and_check(f"SOURCE{channel_num}:BURST:NCYCLES", burst)
             # Turn on the channel
             self.set_and_check(f"OUTPUT{channel_num}:STATE", 1)
+
+            # Check if burst is enabled on any channel of the AFG
+            burst_state = False
+            for burst_channel in range(1, self.total_channels + 1):
+                if self.query(f"SOURCE{burst_channel}:BURST:STATE?") == "1":
+                    burst_state = True
+
             if burst > 0:
                 self.write("*TRG")
             # Initiate a phase sync (between CH 1 and CH 2 output waveforms on two channel AFGs)
-            if self.total_channels > 1 and function != SignalSourceFunctionsAFG.DC:
+            elif (
+                self.total_channels > 1
+                and function != SignalSourceFunctionsAFG.DC
+                and not burst_state
+            ):
                 self.write("SOURCE1:PHASE:INITIATE")
             # Check for system errors
             self.expect_esr(0)
