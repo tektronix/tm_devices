@@ -70,6 +70,7 @@ jobs:
       # TODO: look into using https://github.com/mikepenz/action-junit-report for a junit report
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
+        if: '!cancelled()'
         with:
           files: ./.coverage_tests.xml
           name: codecov-${{ matrix.os_name }}
