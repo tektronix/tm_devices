@@ -21,7 +21,7 @@
    * - Documentation
      - |Documentation status|
    * - Code Style
-     - |Code style: black| |Test style: pytest| |Imports: isort| |Docstring style: google|
+     - |Test style: pytest| |Code style: black| |Imports: isort| |Docstring style: google|
    * - Linting
      - |pre-commit enabled| |Docstring formatter: docformatter| |Type Checker: pyright| |Linter: pylint| |Linter: Ruff|
 
@@ -237,12 +237,12 @@ Supported Connections
 Documentation
 -------------
 
-See the full documentation at https://tm_devices.readthedocs.io
+See the full documentation at `<https://tm_devices.readthedocs.io>`__
 
 Maintainers
 -----------
 
--  Tektronix https://pypi.org/user/Tektronix/
+-  Tektronix opensource@tektronix.com
 -  Nicholas Felt nicholas.felt@tektronix.com
 
 Contributing

@@ -43,7 +43,7 @@ mypy_path = "./src/"
 
 [tool.poetry]
 authors = [
-  "Tektronix <https://pypi.org/user/Tektronix/>",
+  "Tektronix <opensource@tektronix.com>",
   "Nicholas Felt <nicholas.felt@tektronix.com>"
 ]
 classifiers = [
@@ -68,7 +68,7 @@ keywords = [
 ]
 license = "Apache License 2.0"
 maintainers = [
-  "Tektronix <https://pypi.org/user/Tektronix/>",
+  "Tektronix <opensource@tektronix.com>",
   "Nicholas Felt <nicholas.felt@tektronix.com>"
 ]
 name = "tm_devices"

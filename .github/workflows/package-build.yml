@@ -25,6 +25,20 @@ jobs:
         with:
           fetch-depth: 0
       - uses: hynek/build-and-inspect-python-package@v1.5
+        id: build-pkg
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: x  # any version
+          check-latest: true
+      - name: Test installing wheel
+        run: |
+          pip install ${{ steps.build-pkg.outputs.dist }}/*.whl
+          pip uninstall --yes tm_devices
+      - name: Test installing tarball
+        run: |
+          pip install ${{ steps.build-pkg.outputs.dist }}/*.tar.gz
+          pip uninstall --yes tm_devices
 
   # Upload to Test PyPI on every push to main
   test-pypi:
@@ -43,6 +57,14 @@ jobs:
         uses: pypa/gh-action-pypi-publish@v1.8.8
         with:
           repository-url: https://test.pypi.org/legacy/
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: x  # any version
+          check-latest: true
+      - name: Test installing from test.pypi.org
+        run: pip install --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple
+          tm_devices
 
   # Upload to PyPI and create a tag in the repo after a GitHub Release is published
   pypi:
@@ -66,3 +88,10 @@ jobs:
         run: |-
           git tag --annotate v${{ github.event.release.tag_name }} --message="${{ github.event.release.name }}"
           git push --tags
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: x  # any version
+          check-latest: true
+      - name: Test installing from pypi.org
+        run: pip install tm_devices
