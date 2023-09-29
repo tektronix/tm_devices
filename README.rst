@@ -242,7 +242,7 @@ See the full documentation at `<https://tm_devices.readthedocs.io>`__
 Maintainers
 -----------
 
--  Tektronix https://pypi.org/user/Tektronix/
+-  Tektronix opensource@tektronix.com
 -  Nicholas Felt nicholas.felt@tektronix.com
 
 Contributing
