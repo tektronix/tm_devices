@@ -3002,7 +3002,6 @@ class SearchSearchItemTriggerASetholdLogicpatternChannel(
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, SearchSearchItemTriggerASetholdLogicpatternChannelDigitalBit]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>`` command.
@@ -3078,7 +3077,6 @@ class SearchSearchItemTriggerASetholdLogicpattern(SCPICmdRead):
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, SearchSearchItemTriggerASetholdLogicpatternChannel]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>`` command.
@@ -3313,7 +3311,6 @@ class SearchSearchItemTriggerASetholdLevel(SCPICmdRead):
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, SearchSearchItemTriggerASetholdLevelChannel]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LEVel:CH<x>`` command.
@@ -5011,7 +5008,6 @@ class SearchSearchItemTriggerALogicLogicpatternChannel(ValidatedChannel, SCPICmd
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, SearchSearchItemTriggerALogicLogicpatternChannelDigitalBit]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:LOGICPattern:CH<x>_D<x>`` command.
@@ -5086,7 +5082,6 @@ class SearchSearchItemTriggerALogicLogicpattern(SCPICmdRead):
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, SearchSearchItemTriggerALogicLogicpatternChannel]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:LOGICPattern:CH<x>`` command.
@@ -5316,7 +5311,6 @@ class SearchSearchItemTriggerALogicLevel(SCPICmdRead):
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, SearchSearchItemTriggerALogicLevelChannel]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:LEVel:CH<x>`` command.
@@ -13425,7 +13419,6 @@ class SearchSearchItemTriggerABusUsbSplit(SCPICmdRead):
         self._sc = SearchSearchItemTriggerABusUsbSplitSc(device, f"{self._cmd_syntax}:SC")
         self._se = SearchSearchItemTriggerABusUsbSplitSe(device, f"{self._cmd_syntax}:SE")
 
-    # pylint: disable=invalid-name
     @property
     def et(self) -> SearchSearchItemTriggerABusUsbSplitEt:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SPLIT:ET`` command tree.
@@ -13474,7 +13467,6 @@ class SearchSearchItemTriggerABusUsbSplit(SCPICmdRead):
         """
         return self._port
 
-    # pylint: disable=invalid-name
     @property
     def sc(self) -> SearchSearchItemTriggerABusUsbSplitSc:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SPLIT:SC`` command tree.
@@ -13491,7 +13483,6 @@ class SearchSearchItemTriggerABusUsbSplit(SCPICmdRead):
         """
         return self._sc
 
-    # pylint: disable=invalid-name
     @property
     def se(self) -> SearchSearchItemTriggerABusUsbSplitSe:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SPLIT:SE`` command tree.
@@ -23102,7 +23093,6 @@ class SearchSearchItemTriggerABusMil1553bStatusBit(SCPICmdRead):
         """
         return self._instr
 
-    # pylint: disable=invalid-name
     @property
     def me(self) -> SearchSearchItemTriggerABusMil1553bStatusBitMe:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:STATus:BIT:ME`` command.
@@ -23200,7 +23190,6 @@ class SearchSearchItemTriggerABusMil1553bStatusBit(SCPICmdRead):
         """
         return self._subsf
 
-    # pylint: disable=invalid-name
     @property
     def tf(self) -> SearchSearchItemTriggerABusMil1553bStatusBitTf:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:STATus:BIT:TF`` command.
@@ -29389,7 +29378,6 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
         """
         return self._gsmsb
 
-    # pylint: disable=invalid-name
     @property
     def id(self) -> SearchSearchItemTriggerABusI3cId:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:ID`` command tree.
@@ -32433,7 +32421,6 @@ class SearchSearchItemTriggerABusEusbSplit(SCPICmdRead):
         self._sc = SearchSearchItemTriggerABusEusbSplitSc(device, f"{self._cmd_syntax}:SC")
         self._se = SearchSearchItemTriggerABusEusbSplitSe(device, f"{self._cmd_syntax}:SE")
 
-    # pylint: disable=invalid-name
     @property
     def et(self) -> SearchSearchItemTriggerABusEusbSplitEt:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:SPLit:ET`` command tree.
@@ -32482,7 +32469,6 @@ class SearchSearchItemTriggerABusEusbSplit(SCPICmdRead):
         """
         return self._port
 
-    # pylint: disable=invalid-name
     @property
     def sc(self) -> SearchSearchItemTriggerABusEusbSplitSc:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:SPLit:SC`` command tree.
@@ -32499,7 +32485,6 @@ class SearchSearchItemTriggerABusEusbSplit(SCPICmdRead):
         """
         return self._sc
 
-    # pylint: disable=invalid-name
     @property
     def se(self) -> SearchSearchItemTriggerABusEusbSplitSe:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:SPLit:SE`` command tree.
@@ -43081,7 +43066,6 @@ class SearchSearchItemTriggerABusDphyYuv(SCPICmdRead):
         self._v = SearchSearchItemTriggerABusDphyYuvV(device, f"{self._cmd_syntax}:V")
         self._y = SearchSearchItemTriggerABusDphyYuvY(device, f"{self._cmd_syntax}:Y")
 
-    # pylint: disable=invalid-name
     @property
     def u(self) -> SearchSearchItemTriggerABusDphyYuvU:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:DPHY:YUV:U`` command.
@@ -43111,7 +43095,6 @@ class SearchSearchItemTriggerABusDphyYuv(SCPICmdRead):
         """
         return self._u
 
-    # pylint: disable=invalid-name
     @property
     def v(self) -> SearchSearchItemTriggerABusDphyYuvV:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:DPHY:YUV:V`` command.
@@ -43141,7 +43124,6 @@ class SearchSearchItemTriggerABusDphyYuv(SCPICmdRead):
         """
         return self._v
 
-    # pylint: disable=invalid-name
     @property
     def y(self) -> SearchSearchItemTriggerABusDphyYuvY:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:DPHY:YUV:Y`` command.
@@ -43284,7 +43266,6 @@ class SearchSearchItemTriggerABusDphyYcbcr(SCPICmdRead):
         self._cr = SearchSearchItemTriggerABusDphyYcbcrCr(device, f"{self._cmd_syntax}:CR")
         self._y = SearchSearchItemTriggerABusDphyYcbcrY(device, f"{self._cmd_syntax}:Y")
 
-    # pylint: disable=invalid-name
     @property
     def cb(self) -> SearchSearchItemTriggerABusDphyYcbcrCb:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:DPHY:YCBCR:CB`` command.
@@ -43315,7 +43296,6 @@ class SearchSearchItemTriggerABusDphyYcbcr(SCPICmdRead):
         """
         return self._cb
 
-    # pylint: disable=invalid-name
     @property
     def cr(self) -> SearchSearchItemTriggerABusDphyYcbcrCr:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:DPHY:YCBCR:CR`` command.
@@ -43346,7 +43326,6 @@ class SearchSearchItemTriggerABusDphyYcbcr(SCPICmdRead):
         """
         return self._cr
 
-    # pylint: disable=invalid-name
     @property
     def y(self) -> SearchSearchItemTriggerABusDphyYcbcrY:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:DPHY:YCBCR:Y`` command.
@@ -45965,7 +45944,6 @@ class SearchSearchItemTriggerABusCphyYuv(SCPICmdRead):
         self._v = SearchSearchItemTriggerABusCphyYuvV(device, f"{self._cmd_syntax}:V")
         self._y = SearchSearchItemTriggerABusCphyYuvY(device, f"{self._cmd_syntax}:Y")
 
-    # pylint: disable=invalid-name
     @property
     def u(self) -> SearchSearchItemTriggerABusCphyYuvU:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CPHY:YUV:U`` command.
@@ -45995,7 +45973,6 @@ class SearchSearchItemTriggerABusCphyYuv(SCPICmdRead):
         """
         return self._u
 
-    # pylint: disable=invalid-name
     @property
     def v(self) -> SearchSearchItemTriggerABusCphyYuvV:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CPHY:YUV:V`` command.
@@ -46025,7 +46002,6 @@ class SearchSearchItemTriggerABusCphyYuv(SCPICmdRead):
         """
         return self._v
 
-    # pylint: disable=invalid-name
     @property
     def y(self) -> SearchSearchItemTriggerABusCphyYuvY:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CPHY:YUV:Y`` command.
@@ -46168,7 +46144,6 @@ class SearchSearchItemTriggerABusCphyYcbcr(SCPICmdRead):
         self._cr = SearchSearchItemTriggerABusCphyYcbcrCr(device, f"{self._cmd_syntax}:CR")
         self._y = SearchSearchItemTriggerABusCphyYcbcrY(device, f"{self._cmd_syntax}:Y")
 
-    # pylint: disable=invalid-name
     @property
     def cb(self) -> SearchSearchItemTriggerABusCphyYcbcrCb:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CPHY:YCBCR:CB`` command.
@@ -46199,7 +46174,6 @@ class SearchSearchItemTriggerABusCphyYcbcr(SCPICmdRead):
         """
         return self._cb
 
-    # pylint: disable=invalid-name
     @property
     def cr(self) -> SearchSearchItemTriggerABusCphyYcbcrCr:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CPHY:YCBCR:CR`` command.
@@ -46230,7 +46204,6 @@ class SearchSearchItemTriggerABusCphyYcbcr(SCPICmdRead):
         """
         return self._cr
 
-    # pylint: disable=invalid-name
     @property
     def y(self) -> SearchSearchItemTriggerABusCphyYcbcrY:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CPHY:YCBCR:Y`` command.
@@ -48885,7 +48858,6 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
         """
         return self._errtype
 
-    # pylint: disable=invalid-name
     @property
     def fd(self) -> SearchSearchItemTriggerABusCanFd:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FD`` command tree.
@@ -49727,7 +49699,6 @@ class SearchSearchItemTriggerABusBPsifiveDataRegion(SCPICmdRead):
         self._a = SearchSearchItemTriggerABusBPsifiveDataRegionA(device, f"{self._cmd_syntax}:A")
         self._b = SearchSearchItemTriggerABusBPsifiveDataRegionB(device, f"{self._cmd_syntax}:B")
 
-    # pylint: disable=invalid-name
     @property
     def a(self) -> SearchSearchItemTriggerABusBPsifiveDataRegionA:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A`` command tree.
@@ -49745,7 +49716,6 @@ class SearchSearchItemTriggerABusBPsifiveDataRegion(SCPICmdRead):
         """
         return self._a
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> SearchSearchItemTriggerABusBPsifiveDataRegionB:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B`` command tree.
@@ -54122,7 +54092,6 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
         """
         return self._autoethernet
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> SearchSearchItemTriggerABusB:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B`` command tree.
@@ -55392,7 +55361,6 @@ class SearchSearchItemTrigger(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._a = SearchSearchItemTriggerA(device, f"{self._cmd_syntax}:A")
 
-    # pylint: disable=invalid-name
     @property
     def a(self) -> SearchSearchItemTriggerA:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A`` command tree.

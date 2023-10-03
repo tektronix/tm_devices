@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         platform: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ['3.8', '3.9', '3.10', '3.11']
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
@@ -72,6 +72,7 @@ jobs:
         uses: codecov/codecov-action@v3
         if: '!cancelled()'
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: ./.coverage_tests.xml
           name: codecov-${{ matrix.os_name }}
           fail_ci_if_error: true

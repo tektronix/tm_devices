@@ -4772,7 +4772,6 @@ class MeasurementAnnotation(SCPICmdRead):
         """
         return self._type
 
-    # pylint: disable=invalid-name
     @property
     def x(self) -> Dict[int, MeasurementAnnotationXItem]:
         """Return the ``MEASUrement:ANNOTation:X<x>`` command.
@@ -4795,7 +4794,6 @@ class MeasurementAnnotation(SCPICmdRead):
         """
         return self._x
 
-    # pylint: disable=invalid-name
     @property
     def y(self) -> Dict[int, MeasurementAnnotationYItem]:
         """Return the ``MEASUrement:ANNOTation:Y<x>`` command.

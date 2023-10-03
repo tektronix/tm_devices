@@ -1119,7 +1119,6 @@ class MDO3Commands:
         """
         return self._calibrate
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, Channel]:
         """Return the ``CH<x>`` command.
@@ -1324,7 +1323,6 @@ class MDO3Commands:
         """
         return self._curve
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, DigitalBit]:
         """Return the ``D<x>`` command.
@@ -1982,7 +1980,6 @@ class MDO3Commands:
         """
         return self._horizontal
 
-    # pylint: disable=invalid-name
     @property
     def id(self) -> Id:
         """Return the ``ID`` command.
@@ -2630,7 +2627,6 @@ class MDO3Commands:
         """
         return self._rem
 
-    # pylint: disable=invalid-name
     @property
     def rf(self) -> Rf:
         """Return the ``RF`` command tree.

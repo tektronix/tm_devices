@@ -1792,7 +1792,6 @@ class MSO5BCommands:
         """
         return self._callouts
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, Channel]:
         """Return the ``CH<x>`` command.
@@ -2547,7 +2546,6 @@ class MSO5BCommands:
         """
         return self._horizontal
 
-    # pylint: disable=invalid-name
     @property
     def id(self) -> Id:
         """Return the ``ID`` command.
@@ -3378,7 +3376,6 @@ class MSO5BCommands:
         """
         return self._stb
 
-    # pylint: disable=invalid-name
     @property
     def sv(self) -> Sv:
         """Return the ``SV`` command tree.

@@ -771,7 +771,6 @@ class Tsplink(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.writeprotect`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def readbit(self, n: int) -> str:
         """Run the ``tsplink.readbit()`` function.
 
@@ -860,7 +859,6 @@ class Tsplink(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def writebit(self, n: int, data: int) -> None:
         """Run the ``tsplink.writebit()`` function.
 

@@ -212,7 +212,6 @@ class AwgcontrolTimerInterval(SCPICmdRead):
         self._hz = AwgcontrolTimerIntervalHz(device, f"{self._cmd_syntax}:HZ")
         self._seconds = AwgcontrolTimerIntervalSeconds(device, f"{self._cmd_syntax}:SEConds")
 
-    # pylint: disable=invalid-name
     @property
     def hz(self) -> AwgcontrolTimerIntervalHz:
         """Return the ``AWGControl:TIMer:INTerval:HZ`` command.

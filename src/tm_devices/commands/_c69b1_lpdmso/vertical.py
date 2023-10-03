@@ -364,7 +364,6 @@ class VerticalDeskew(SCPICmdRead):
         """
         return self._static
 
-    # pylint: disable=invalid-name
     @property
     def to(self) -> VerticalDeskewTo:
         """Return the ``VERTical:DESKew:TO`` command tree.

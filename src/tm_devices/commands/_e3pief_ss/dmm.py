@@ -1158,7 +1158,6 @@ class DmmCalibration(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.password`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def ac(self, step: str, value: Optional[str] = None) -> None:
         """Run the ``dmm.calibration.ac()`` function.
 
@@ -1195,7 +1194,6 @@ class DmmCalibration(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.ac()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def dc(self, step: str, value: Optional[str] = None) -> None:
         """Run the ``dmm.calibration.dc()`` function.
 

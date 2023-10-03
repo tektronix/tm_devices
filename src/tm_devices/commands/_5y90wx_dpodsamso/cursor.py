@@ -2213,7 +2213,6 @@ class Cursor(SCPICmdRead):
         """
         return self._waveform
 
-    # pylint: disable=invalid-name
     @property
     def xy(self) -> CursorXy:
         """Return the ``CURSor:XY`` command.

@@ -657,7 +657,6 @@ class DchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             lambda x: DchItemDigitalBit(device, f"{self._cmd_syntax}_D{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, DchItemDigitalBit]:
         """Return the ``DCH<x>_D<x>`` command tree.

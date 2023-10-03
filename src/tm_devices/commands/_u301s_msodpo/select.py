@@ -283,7 +283,6 @@ class Select(SCPICmdWrite, SCPICmdRead):
         """
         return self._bus
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, SelectChannel]:
         """Return the ``SELect:CH<x>`` command.
@@ -348,7 +347,6 @@ class Select(SCPICmdWrite, SCPICmdRead):
         """
         return self._control
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, SelectDigitalBit]:
         """Return the ``SELect:D<x>`` command.

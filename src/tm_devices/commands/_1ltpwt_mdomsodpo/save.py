@@ -635,7 +635,6 @@ class SaveEventtable(SCPICmdRead):
         """
         return self._bus
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> Dict[int, SaveEventtableBItem]:
         """Return the ``SAVe:EVENTtable:B<x>`` command.

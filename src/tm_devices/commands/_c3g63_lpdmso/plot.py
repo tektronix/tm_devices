@@ -467,7 +467,6 @@ class PlotPlotItemMaskoffsetPercentui(SCPICmdRead):
         """
         return self._from
 
-    # pylint: disable=invalid-name
     @property
     def to(self) -> PlotPlotItemMaskoffsetPercentuiTo:
         """Return the ``PLOT:PLOT<x>:MASKOffset:PERCENTui:TO`` command.

@@ -139,7 +139,6 @@ class Trig(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._a = TrigA(device, f"{self._cmd_syntax}:A")
 
-    # pylint: disable=invalid-name
     @property
     def a(self) -> TrigA:
         """Return the ``TRIG:A`` command tree.

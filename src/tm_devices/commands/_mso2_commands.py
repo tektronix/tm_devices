@@ -1012,7 +1012,6 @@ class MSO2Commands:
         """
         return self._callouts
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, Channel]:
         """Return the ``CH<x>`` command.
@@ -1697,7 +1696,6 @@ class MSO2Commands:
         """
         return self._horizontal
 
-    # pylint: disable=invalid-name
     @property
     def id(self) -> Id:
         """Return the ``ID`` command.
@@ -2073,7 +2071,6 @@ class MSO2Commands:
         """
         return self._pause
 
-    # pylint: disable=invalid-name
     @property
     def pg(self) -> Pg:
         """Return the ``PG`` command tree.

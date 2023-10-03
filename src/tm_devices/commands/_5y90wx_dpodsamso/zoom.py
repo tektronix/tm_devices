@@ -1572,7 +1572,6 @@ class ZoomZoom1(SCPICmdWrite, SCPICmdRead):
         """
         return self._state
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, ZoomZoom1Channel]:
         """Return the ``ZOOm:ZOOM1:CH<x>`` command tree.
@@ -1605,7 +1604,6 @@ class ZoomZoom1(SCPICmdWrite, SCPICmdRead):
         """
         return self._ref
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, ZoomZoom1DigitalBit]:
         """Return the ``ZOOm:ZOOM1:D<x>`` command tree.

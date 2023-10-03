@@ -632,7 +632,6 @@ class ConfigurationBuswaveformsUsb(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._hs = ConfigurationBuswaveformsUsbHs(device, f"{self._cmd_syntax}:HS")
 
-    # pylint: disable=invalid-name
     @property
     def hs(self) -> ConfigurationBuswaveformsUsbHs:
         """Return the ``CONFIGuration:BUSWAVEFORMS:USB:HS`` command.
@@ -2271,7 +2270,6 @@ class Configuration(SCPICmdRead):
         """
         return self._refs
 
-    # pylint: disable=invalid-name
     @property
     def rf(self) -> ConfigurationRf:
         """Return the ``CONFIGuration:RF`` command tree.

@@ -57,7 +57,6 @@ class Gpibusb(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._id = GpibusbId(device, f"{self._cmd_syntax}:ID")
 
-    # pylint: disable=invalid-name
     @property
     def id(self) -> GpibusbId:
         """Return the ``GPIBUsb:ID`` command.

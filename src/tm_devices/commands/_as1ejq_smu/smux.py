@@ -749,7 +749,6 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def i(self, rbuffer: str) -> None:
         """Run the ``smuX.trigger.measure.i()`` function.
 
@@ -775,7 +774,6 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.i()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def iv(self, ibuffer: str, vbuffer: str) -> None:
         """Run the ``smuX.trigger.measure.iv()`` function.
 
@@ -804,7 +802,6 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.iv()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def p(self, rbuffer: str) -> None:
         """Run the ``smuX.trigger.measure.p()`` function.
 
@@ -830,7 +827,6 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.p()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def r(self, rbuffer: str) -> None:
         """Run the ``smuX.trigger.measure.r()`` function.
 
@@ -856,7 +852,6 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.r()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def v(self, rbuffer: str) -> None:
         """Run the ``smuX.trigger.measure.v()`` function.
 
@@ -4911,7 +4906,6 @@ class SmuxItemMeasure(BaseTSPCmd):
         """
         return self._rel
 
-    # pylint: disable=invalid-name
     def i(self, reading_buffer: Optional[str] = None) -> str:
         """Run the ``smuX.measure.i()`` function.
 
@@ -4942,7 +4936,6 @@ class SmuxItemMeasure(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.i()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def iv(
         self, i_reading_buffer: Optional[str] = None, v_reading_buffer: Optional[str] = None
     ) -> str:
@@ -4984,7 +4977,6 @@ class SmuxItemMeasure(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.iv()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def p(self, reading_buffer: Optional[str] = None) -> str:
         """Run the ``smuX.measure.p()`` function.
 
@@ -5015,7 +5007,6 @@ class SmuxItemMeasure(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.p()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def r(self, reading_buffer: Optional[str] = None) -> str:
         """Run the ``smuX.measure.r()`` function.
 
@@ -5046,7 +5037,6 @@ class SmuxItemMeasure(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.r()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def v(self, reading_buffer: Optional[str] = None) -> str:
         """Run the ``smuX.measure.v()`` function.
 
@@ -5529,7 +5519,6 @@ class SmuxItemContact(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.check()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def r(self) -> str:
         """Run the ``smuX.contact.r()`` function.
 
@@ -6861,7 +6850,6 @@ reading at index bufferVar.fillcount."""
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def savebuffer(self, y: str) -> None:
         """Run the ``smuX.savebuffer()`` function.
 

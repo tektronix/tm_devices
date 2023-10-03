@@ -10374,9 +10374,9 @@ class StatusMeasurementVoltageLimit(BaseTSPCmd):
     """
 
     SMUA = "status.measurement.voltage_limit.SMUA"
-    """str: B1. Set bit indicates the enabled VLMT bit for the SMU A measurement register is set."""  # noqa: E501
+    """str: B1. Set bit indicates the enabled VLMT bit for the SMU A measurement register is set."""
     SMUB = "status.measurement.voltage_limit.SMUB"
-    """str: B2. Set bit indicates the enabled VLMT bit for the SMU B measurement register is set."""  # noqa: E501
+    """str: B2. Set bit indicates the enabled VLMT bit for the SMU B measurement register is set."""
 
     @property
     def condition(self) -> str:
@@ -12666,11 +12666,11 @@ class Status(BaseTSPCmd):
     MASTER_SUMMARY_STATUS = "status.MASTER_SUMMARY_STATUS"
     """str: B6. Request Service (RQS)/Master Summary Status (MSS). Depending on how it is used, bit B6 of the status byte register is either the Request for Service (RQS) bit or the Master Summary Status (MSS) bit."""  # noqa: E501
     MAV = "status.MAV"
-    """str: B4. Set summary bit indicates that a response message is present in the Output Queue."""  # noqa: E501
+    """str: B4. Set summary bit indicates that a response message is present in the Output Queue."""
     MEASUREMENT_SUMMARY_BIT = "status.MEASUREMENT_SUMMARY_BIT"
     """str: B0. Set summary bit indicates that an enabled measurement event has occurred."""
     MESSAGE_AVAILABLE = "status.MESSAGE_AVAILABLE"
-    """str: B4. Set summary bit indicates that a response message is present in the Output Queue."""  # noqa: E501
+    """str: B4. Set summary bit indicates that a response message is present in the Output Queue."""
     MSB = "status.MSB"
     """str: B0. Set summary bit indicates that an enabled measurement event has occurred."""
     MSS = "status.MSS"

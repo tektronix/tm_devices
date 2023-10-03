@@ -144,7 +144,6 @@ class Idnmultiscope(SCPICmdRead):
         self._c = IdnmultiscopeC(device, f"{self._cmd_syntax}:C")
         self._d = IdnmultiscopeDigitalBit(device, f"{self._cmd_syntax}:D")
 
-    # pylint: disable=invalid-name
     @property
     def a(self) -> IdnmultiscopeA:
         """Return the ``IDNMultiscope:A`` command.
@@ -167,7 +166,6 @@ class Idnmultiscope(SCPICmdRead):
         """
         return self._a
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> IdnmultiscopeB:
         """Return the ``IDNMultiscope:B`` command.
@@ -190,7 +188,6 @@ class Idnmultiscope(SCPICmdRead):
         """
         return self._b
 
-    # pylint: disable=invalid-name
     @property
     def c(self) -> IdnmultiscopeC:
         """Return the ``IDNMultiscope:C`` command.
@@ -213,7 +210,6 @@ class Idnmultiscope(SCPICmdRead):
         """
         return self._c
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> IdnmultiscopeDigitalBit:
         """Return the ``IDNMultiscope:D`` command.

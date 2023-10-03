@@ -373,7 +373,6 @@ class Select(SCPICmdRead):
             lambda x: SelectDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> Dict[int, SelectBItem]:
         """Return the ``SELect:B<x>`` command.
@@ -480,7 +479,6 @@ class Select(SCPICmdRead):
         """
         return self._digtraces
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, SelectChannel]:
         """Return the ``SELect:CH<x>`` command.
@@ -542,7 +540,6 @@ class Select(SCPICmdRead):
         """
         return self._ref
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, SelectDigitalBit]:
         """Return the ``SELect:D<x>`` command.

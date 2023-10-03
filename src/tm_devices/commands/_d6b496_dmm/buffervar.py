@@ -560,7 +560,6 @@ class Buffervar(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.logstate`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     @property
     def n(self) -> str:
         """Access the ``bufferVar.n`` attribute.

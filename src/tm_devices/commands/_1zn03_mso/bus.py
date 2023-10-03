@@ -5631,7 +5631,6 @@ class BusBItemCan(SCPICmdRead):
         """  # noqa: E501
         return self._bitrate
 
-    # pylint: disable=invalid-name
     @property
     def fd(self) -> BusBItemCanFd:
         """Return the ``BUS:B<x>:CAN:FD`` command tree.
@@ -6137,7 +6136,6 @@ class Bus(SCPICmdRead):
         """
         return self._addnew
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> Dict[int, BusBItem]:
         """Return the ``BUS:B<x>`` command tree.

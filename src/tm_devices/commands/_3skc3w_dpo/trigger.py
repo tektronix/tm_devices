@@ -2275,7 +2275,6 @@ class TriggerBUpperthreshold(SCPICmdRead):
             lambda x: TriggerBUpperthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBUpperthresholdChannel]:
         """Return the ``TRIGger:B:UPPerthreshold:CH<x>`` command.
@@ -3985,7 +3984,6 @@ class TriggerBPulseWindowPolarity(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerBPulseWindowPolarityChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBPulseWindowPolarityChannel]:
         """Return the ``TRIGger:B:PULse:WINdow:POLarity:CH<x>`` command.
@@ -4417,7 +4415,6 @@ class TriggerBPulseWidthPolarity(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerBPulseWidthPolarityChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBPulseWidthPolarityChannel]:
         """Return the ``TRIGger:B:PULse:WIDth:POLarity:CH<x>`` command.
@@ -5088,7 +5085,6 @@ class TriggerBPulseTransitionPolarity(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerBPulseTransitionPolarityChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBPulseTransitionPolarityChannel]:
         """Return the ``TRIGger:B:PULse:TRANsition:POLarity:CH<x>`` command.
@@ -5486,7 +5482,6 @@ class TriggerBPulseTimeoutPolarity(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerBPulseTimeoutPolarityChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBPulseTimeoutPolarityChannel]:
         """Return the ``TRIGger:B:PULse:TIMEOut:POLarity:CH<x>`` command.
@@ -6108,7 +6103,6 @@ class TriggerBPulseRuntPolarity(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerBPulseRuntPolarityChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBPulseRuntPolarityChannel]:
         """Return the ``TRIGger:B:PULse:RUNT:POLarity:CH<x>`` command.
@@ -6939,7 +6933,6 @@ class TriggerBPulseGlitchPolarity(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerBPulseGlitchPolarityChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBPulseGlitchPolarityChannel]:
         """Return the ``TRIGger:B:PULse:GLItch:POLarity:CH<x>`` command.
@@ -7664,7 +7657,6 @@ class TriggerBLowerthreshold(SCPICmdRead):
             lambda x: TriggerBLowerthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBLowerthresholdChannel]:
         """Return the ``TRIGger:B:LOWerthreshold:CH<x>`` command.
@@ -7754,7 +7746,6 @@ class TriggerBLogicThreshold(SCPICmdRead):
             lambda x: TriggerBLogicThresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBLogicThresholdChannel]:
         """Return the ``TRIGger:B:LOGIc:THReshold:CH<x>`` command.
@@ -7864,7 +7855,6 @@ class TriggerBLogicStateInput(SCPICmdRead):
             lambda x: TriggerBLogicStateInputChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBLogicStateInputChannel]:
         """Return the ``TRIGger:B:LOGIc:STATE:INPut:CH<x>`` command.
@@ -8129,7 +8119,6 @@ class TriggerBLogicSetholdDataThreshold(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerBLogicSetholdDataThresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBLogicSetholdDataThresholdChannel]:
         """Return the ``TRIGger:B:LOGIc:SETHold:DATa:THReshold:CH<x>`` command.
@@ -8421,7 +8410,6 @@ class TriggerBLogicSetholdClockThreshold(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerBLogicSetholdClockThresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBLogicSetholdClockThresholdChannel]:
         """Return the ``TRIGger:B:LOGIc:SETHold:CLOCk:THReshold:CH<x>`` command.
@@ -9112,7 +9100,6 @@ class TriggerBLogicPatternInput(SCPICmdRead):
             lambda x: TriggerBLogicPatternInputChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBLogicPatternInputChannel]:
         """Return the ``TRIGger:B:LOGIc:PATtern:INPut:CH<x>`` command.
@@ -9378,7 +9365,6 @@ class TriggerBLogicInput(SCPICmdRead):
         """
         return self._all
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBLogicInputChannel]:
         """Return the ``TRIGger:B:LOGIc:INPut:CH<x>`` command.
@@ -9809,7 +9795,6 @@ class TriggerBLevel(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerBLevelChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBLevelChannel]:
         """Return the ``TRIGger:B:LEVel:CH<x>`` command.
@@ -10084,7 +10069,6 @@ class TriggerBEdgeSlope(SCPICmdWrite, SCPICmdRead):
         """
         return self._aux
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBEdgeSlopeChannel]:
         """Return the ``TRIGger:B:EDGE:SLOpe:CH<x>`` command.
@@ -10196,7 +10180,6 @@ class TriggerBEdgeCoupling(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerBEdgeCouplingChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBEdgeCouplingChannel]:
         """Return the ``TRIGger:B:EDGE:COUPling:CH<x>`` command.
@@ -10517,7 +10500,6 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
         self._type = TriggerBType(device, f"{self._cmd_syntax}:TYPe")
         self._upperthreshold = TriggerBUpperthreshold(device, f"{self._cmd_syntax}:UPPerthreshold")
 
-    # pylint: disable=invalid-name
     @property
     def by(self) -> TriggerBBy:
         """Return the ``TRIGger:B:BY`` command.
@@ -11864,7 +11846,6 @@ class TriggerAUpperthreshold(SCPICmdRead):
             lambda x: TriggerAUpperthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerAUpperthresholdChannel]:
         """Return the ``TRIGger:A:UPPerthreshold:CH<x>`` command.
@@ -13105,7 +13086,6 @@ class TriggerASpi(SCPICmdRead):
         """
         return self._sclk
 
-    # pylint: disable=invalid-name
     @property
     def ss(self) -> TriggerASpiSs:
         """Return the ``TRIGger:A:SPI:SS`` command tree.
@@ -14976,7 +14956,6 @@ class TriggerAPulseWindowPolarity(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerAPulseWindowPolarityChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerAPulseWindowPolarityChannel]:
         """Return the ``TRIGger:A:PULse:WINdow:POLarity:CH<x>`` command.
@@ -15064,7 +15043,6 @@ class TriggerAPulseWindowLogicThreshold(SCPICmdRead):
             lambda x: TriggerAPulseWindowLogicThresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerAPulseWindowLogicThresholdChannel]:
         """Return the ``TRIGger:A:PULse:WINdow:LOGIc:THReshold:CH<x>`` command.
@@ -15162,7 +15140,6 @@ class TriggerAPulseWindowLogicInput(SCPICmdReadWithArguments):
             lambda x: TriggerAPulseWindowLogicInputChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerAPulseWindowLogicInputChannel]:
         r"""Return the ``TRIGger:A:PULse:WINdow:LOGIc:INPUT:CH<x>`` command.
@@ -15709,7 +15686,6 @@ class TriggerAPulseWidthPolarity(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerAPulseWidthPolarityChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerAPulseWidthPolarityChannel]:
         """Return the ``TRIGger:A:PULse:WIDth:POLarity:CH<x>`` command.
@@ -16380,7 +16356,6 @@ class TriggerAPulseTransitionPolarity(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerAPulseTransitionPolarityChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerAPulseTransitionPolarityChannel]:
         """Return the ``TRIGger:A:PULse:TRANsition:POLarity:CH<x>`` command.
@@ -16778,7 +16753,6 @@ class TriggerAPulseTimeoutPolarity(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerAPulseTimeoutPolarityChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerAPulseTimeoutPolarityChannel]:
         """Return the ``TRIGger:A:PULse:TIMEOut:POLarity:CH<x>`` command.
@@ -17400,7 +17374,6 @@ class TriggerAPulseRuntPolarity(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerAPulseRuntPolarityChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerAPulseRuntPolarityChannel]:
         """Return the ``TRIGger:A:PULse:RUNT:POLarity:CH<x>`` command.
@@ -17487,7 +17460,6 @@ class TriggerAPulseRuntLogicThreshold(SCPICmdRead):
             lambda x: TriggerAPulseRuntLogicThresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerAPulseRuntLogicThresholdChannel]:
         """Return the ``TRIGger:A:PULse:RUNT:LOGIc:THReshold:CH<x>`` command.
@@ -17585,7 +17557,6 @@ class TriggerAPulseRuntLogicInput(SCPICmdReadWithArguments):
             lambda x: TriggerAPulseRuntLogicInputChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerAPulseRuntLogicInputChannel]:
         """Return the ``TRIGger:A:PULse:RUNT:LOGIc:INPUT:CH<x>`` command.
@@ -18507,7 +18478,6 @@ class TriggerAPulseGlitchPolarity(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerAPulseGlitchPolarityChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerAPulseGlitchPolarityChannel]:
         """Return the ``TRIGger:A:PULse:GLItch:POLarity:CH<x>`` command.
@@ -19431,7 +19401,6 @@ class TriggerALowerthreshold(SCPICmdRead):
             lambda x: TriggerALowerthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerALowerthresholdChannel]:
         """Return the ``TRIGger:A:LOWerthreshold:CH<x>`` command.
@@ -19521,7 +19490,6 @@ class TriggerALogicThreshold(SCPICmdRead):
             lambda x: TriggerALogicThresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerALogicThresholdChannel]:
         """Return the ``TRIGger:A:LOGIc:THReshold:CH<x>`` command.
@@ -19631,7 +19599,6 @@ class TriggerALogicStateInput(SCPICmdRead):
             lambda x: TriggerALogicStateInputChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerALogicStateInputChannel]:
         """Return the ``TRIGger:A:LOGIc:STATE:INPut:CH<x>`` command.
@@ -19896,7 +19863,6 @@ class TriggerALogicSetholdDataThreshold(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerALogicSetholdDataThresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerALogicSetholdDataThresholdChannel]:
         """Return the ``TRIGger:A:LOGIc:SETHold:DATa:THReshold:CH<x>`` command.
@@ -20188,7 +20154,6 @@ class TriggerALogicSetholdClockThreshold(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerALogicSetholdClockThresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerALogicSetholdClockThresholdChannel]:
         """Return the ``TRIGger:A:LOGIc:SETHold:CLOCk:THReshold:CH<x>`` command.
@@ -20879,7 +20844,6 @@ class TriggerALogicPatternInput(SCPICmdRead):
             lambda x: TriggerALogicPatternInputChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerALogicPatternInputChannel]:
         """Return the ``TRIGger:A:LOGIc:PATtern:INPut:CH<x>`` command.
@@ -21145,7 +21109,6 @@ class TriggerALogicInput(SCPICmdRead):
         """
         return self._all
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerALogicInputChannel]:
         """Return the ``TRIGger:A:LOGIc:INPut:CH<x>`` command.
@@ -21576,7 +21539,6 @@ class TriggerALevel(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerALevelChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerALevelChannel]:
         """Return the ``TRIGger:A:LEVel:CH<x>`` command.
@@ -22601,7 +22563,6 @@ class TriggerAHoldoff(SCPICmdRead):
         """
         return self._actual
 
-    # pylint: disable=invalid-name
     @property
     def by(self) -> TriggerAHoldoffBy:
         """Return the ``TRIGger:A:HOLDoff:BY`` command.
@@ -22834,7 +22795,6 @@ class TriggerAEdgeSlope(SCPICmdWrite, SCPICmdRead):
         """
         return self._aux
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerAEdgeSlopeChannel]:
         """Return the ``TRIGger:A:EDGE:SLOpe:CH<x>`` command.
@@ -22946,7 +22906,6 @@ class TriggerAEdgeCoupling(SCPICmdWrite, SCPICmdRead):
             lambda x: TriggerAEdgeCouplingChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerAEdgeCouplingChannel]:
         """Return the ``TRIGger:A:EDGE:COUPling:CH<x>`` command.
@@ -26179,7 +26138,6 @@ class TriggerABusUsbSplit(SCPICmdRead):
         self._sc = TriggerABusUsbSplitSc(device, f"{self._cmd_syntax}:SC")
         self._se = TriggerABusUsbSplitSe(device, f"{self._cmd_syntax}:SE")
 
-    # pylint: disable=invalid-name
     @property
     def et(self) -> TriggerABusUsbSplitEt:
         """Return the ``TRIGger:A:BUS:USB:SPLIT:ET`` command tree.
@@ -26224,7 +26182,6 @@ class TriggerABusUsbSplit(SCPICmdRead):
         """
         return self._port
 
-    # pylint: disable=invalid-name
     @property
     def sc(self) -> TriggerABusUsbSplitSc:
         """Return the ``TRIGger:A:BUS:USB:SPLIT:SC`` command tree.
@@ -26239,7 +26196,6 @@ class TriggerABusUsbSplit(SCPICmdRead):
         """
         return self._sc
 
-    # pylint: disable=invalid-name
     @property
     def se(self) -> TriggerABusUsbSplitSe:
         """Return the ``TRIGger:A:BUS:USB:SPLIT:SE`` command tree.
@@ -31987,7 +31943,6 @@ class TriggerABusMil1553bStatusBit(SCPICmdRead):
         """
         return self._instr
 
-    # pylint: disable=invalid-name
     @property
     def me(self) -> TriggerABusMil1553bStatusBitMe:
         """Return the ``TRIGger:A:BUS:MIL1553B:STATUS:BIT:ME`` command.
@@ -32124,7 +32079,6 @@ class TriggerABusMil1553bStatusBit(SCPICmdRead):
         """
         return self._subsf
 
-    # pylint: disable=invalid-name
     @property
     def tf(self) -> TriggerABusMil1553bStatusBitTf:
         """Return the ``TRIGger:A:BUS:MIL1553B:STATUS:BIT:TF`` command.
@@ -38311,7 +38265,6 @@ class Trigger(SCPICmdWrite, SCPICmdRead):
         """
         return self._state
 
-    # pylint: disable=invalid-name
     @property
     def a(self) -> TriggerA:
         """Return the ``TRIGger:A`` command.
@@ -38363,7 +38316,6 @@ class Trigger(SCPICmdWrite, SCPICmdRead):
         """
         return self._a
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> TriggerB:
         """Return the ``TRIGger:B`` command.

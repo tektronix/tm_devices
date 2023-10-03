@@ -180,7 +180,6 @@ class SystemSid(SCPICmdRead):
         """
         return self._gateway
 
-    # pylint: disable=invalid-name
     @property
     def ip(self) -> SystemSidIp:
         """Return the ``SYSTem:SID:IP`` command.
