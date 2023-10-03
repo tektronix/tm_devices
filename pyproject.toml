@@ -126,7 +126,6 @@ pytest-profiling = ">=1.7.0"
 python-semantic-release = ">=7.31.2"
 ruff = ">=0.0.292"
 safety = ">=2.1.1"
-setuptools = {python = ">=3.12", version = ">=68.2.2"}
 sphinx-autoapi = ">=2.0.0"
 sphinx-copybutton = ">=0.5.1"
 sphinx-rtd-theme = ">=1.0.0"
@@ -403,6 +402,7 @@ setenv =
     # Skip pre-commit checks that are explicitly performed by tox
     SKIP = black,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma
     PYRIGHT_PYTHON_DEBUG = true
+    PYRIGHT_PYTHON_GLOBAL_NODE = False
 commands_pre =
     poetry install --no-root
 commands =
