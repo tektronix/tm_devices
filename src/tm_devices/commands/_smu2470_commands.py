@@ -703,7 +703,6 @@ class SMU2470Commands:
         """
         return self._format
 
-    # pylint: disable=invalid-name
     @property
     def fs(self) -> Fs:
         """Return the ``fs`` command tree.
@@ -1115,7 +1114,7 @@ class SMU2470Commands:
                 f"print(available({functionality}))"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``available()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``available()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def createconfigscript(self, script_name: str) -> None:
@@ -1164,7 +1163,7 @@ class SMU2470Commands:
         try:
             self._device.write(f"delay({seconds})")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``delay()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``delay()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def exit(self) -> None:
@@ -1185,7 +1184,7 @@ class SMU2470Commands:
         try:
             self._device.write("exit()")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``exit()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``exit()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def opc(self) -> None:
@@ -1207,7 +1206,7 @@ class SMU2470Commands:
         try:
             self._device.write("opc()")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``opc()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``opc()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def print(self, value: str) -> None:
@@ -1231,7 +1230,7 @@ class SMU2470Commands:
         try:
             self._device.write(f"print({value})")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``print()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``print()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def printbuffer(self, start_index: int, end_index: int, buffer_var: str) -> str:
@@ -1265,7 +1264,7 @@ class SMU2470Commands:
                 f"printbuffer({start_index}, {end_index}, {buffer_var})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``printbuffer()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``printbuffer()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def printnumber(self, value: str) -> str:
@@ -1292,7 +1291,7 @@ class SMU2470Commands:
         try:
             return self._device.query(f"printnumber({value})")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``printnumber()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``printnumber()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def reset(self, system: Optional[str] = None) -> None:
@@ -1317,7 +1316,7 @@ class SMU2470Commands:
             function_args = ", ".join(str(x) for x in (system,) if x is not None)
             self._device.write(f"reset({function_args})")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``reset()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``reset()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def waitcomplete(self, group: Optional[str] = None) -> None:
@@ -1342,7 +1341,7 @@ class SMU2470Commands:
             function_args = ", ".join(str(x) for x in (group,) if x is not None)
             self._device.write(f"waitcomplete({function_args})")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``waitcomplete()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``waitcomplete()`` function."
             raise NoDeviceProvidedError(msg) from error
 
 

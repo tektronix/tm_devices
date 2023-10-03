@@ -134,7 +134,6 @@ class AuxinVtermDual(SCPICmdRead):
         self._a = AuxinVtermDualA(device, f"{self._cmd_syntax}:A")
         self._b = AuxinVtermDualB(device, f"{self._cmd_syntax}:B")
 
-    # pylint: disable=invalid-name
     @property
     def a(self) -> AuxinVtermDualA:
         """Return the ``AUXIn:VTERm:DUAL:A`` command.
@@ -161,7 +160,6 @@ class AuxinVtermDual(SCPICmdRead):
         """
         return self._a
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> AuxinVtermDualB:
         """Return the ``AUXIn:VTERm:DUAL:B`` command.
@@ -999,7 +997,6 @@ class AuxinProbe(SCPICmdRead):
         """
         return self._gain
 
-    # pylint: disable=invalid-name
     @property
     def id(self) -> AuxinProbeId:
         """Return the ``AUXIn:PRObe:ID`` command tree.

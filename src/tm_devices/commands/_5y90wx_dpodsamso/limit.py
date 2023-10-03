@@ -942,7 +942,6 @@ class LimitCompare(SCPICmdWrite, SCPICmdRead):
             lambda x: LimitCompareRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, LimitCompareChannel]:
         """Return the ``LIMit:COMpare:CH<x>`` command.

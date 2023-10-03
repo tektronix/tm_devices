@@ -697,7 +697,6 @@ class OutputItemAttenuator(SCPICmdRead):
         self._a3 = OutputItemAttenuatorA3(device, f"{self._cmd_syntax}:A3")
         self._dac = OutputItemAttenuatorDac(device, f"{self._cmd_syntax}:DAC")
 
-    # pylint: disable=invalid-name
     @property
     def a1(self) -> OutputItemAttenuatorA1:
         """Return the ``OUTPut[n]:ATTenuator:A1`` command.
@@ -725,7 +724,6 @@ class OutputItemAttenuator(SCPICmdRead):
         """
         return self._a1
 
-    # pylint: disable=invalid-name
     @property
     def a2(self) -> OutputItemAttenuatorA2:
         """Return the ``OUTPut[n]:ATTenuator:A2`` command.
@@ -753,7 +751,6 @@ class OutputItemAttenuator(SCPICmdRead):
         """
         return self._a2
 
-    # pylint: disable=invalid-name
     @property
     def a3(self) -> OutputItemAttenuatorA3:
         """Return the ``OUTPut[n]:ATTenuator:A3`` command.

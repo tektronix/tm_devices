@@ -3221,7 +3221,6 @@ class Source2Frequency(SCPICmdRead):
         """
         return self._stop
 
-    # pylint: disable=invalid-name
     @property
     def cw(self) -> Source2FrequencyCw:
         """Return the ``SOURce2:FREQuency:CW`` command.
@@ -4392,7 +4391,6 @@ class Source2(SCPICmdRead):
         self._sweep = Source2Sweep(device, f"{self._cmd_syntax}:SWEep")
         self._voltage = Source2Voltage(device, f"{self._cmd_syntax}:VOLTage")
 
-    # pylint: disable=invalid-name
     @property
     def am(self) -> Source2Am:
         """Return the ``SOURce2:AM`` command tree.
@@ -4441,7 +4439,6 @@ class Source2(SCPICmdRead):
         """
         return self._combine
 
-    # pylint: disable=invalid-name
     @property
     def fm(self) -> Source2Fm:
         """Return the ``SOURce2:FM`` command tree.
@@ -4528,7 +4525,6 @@ class Source2(SCPICmdRead):
         """
         return self._phase
 
-    # pylint: disable=invalid-name
     @property
     def pm(self) -> Source2Pm:
         """Return the ``SOURce2:PM`` command tree.

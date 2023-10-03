@@ -202,7 +202,6 @@ class HorizontalTimestamp(SCPICmdRead):
             lambda x: HorizontalTimestampRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, HorizontalTimestampChannel]:
         """Return the ``HORizontal:TIMEStamp:CH<x>`` command.
@@ -1094,7 +1093,6 @@ class HorizontalFastframeXzeroSelected(SCPICmdRead):
             lambda x: HorizontalFastframeXzeroSelectedRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, HorizontalFastframeXzeroSelectedChannel]:
         """Return the ``HORizontal:FASTframe:XZEro:SELECTED:CH<x>`` command.
@@ -1236,7 +1234,6 @@ class HorizontalFastframeXzeroFrame(SCPICmdRead):
             lambda x: HorizontalFastframeXzeroFrameRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, HorizontalFastframeXzeroFrameChannel]:
         """Return the ``HORizontal:FASTframe:XZEro:FRAme:CH<x>`` command.
@@ -1362,7 +1359,6 @@ class HorizontalFastframeXzeroAll(SCPICmdRead):
             lambda x: HorizontalFastframeXzeroAllRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, HorizontalFastframeXzeroAllChannel]:
         """Return the ``HORizontal:FASTframe:XZEro:ALL:CH<x>`` command.
@@ -1669,7 +1665,6 @@ class HorizontalFastframeTimestampSelected(SCPICmdRead):
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, HorizontalFastframeTimestampSelectedChannel]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:SELECTED:CH<x>`` command.
@@ -1724,7 +1719,6 @@ class HorizontalFastframeTimestampSelected(SCPICmdRead):
         """
         return self._ref
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, HorizontalFastframeTimestampSelectedDigitalBit]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:SELECTED:D<x>`` command.
@@ -1884,7 +1878,6 @@ class HorizontalFastframeTimestampFrame(SCPICmdRead):
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, HorizontalFastframeTimestampFrameChannel]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:FRAMe:CH<x>`` command.
@@ -1939,7 +1932,6 @@ class HorizontalFastframeTimestampFrame(SCPICmdRead):
         """
         return self._ref
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, HorizontalFastframeTimestampFrameDigitalBit]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:FRAMe:D<x>`` command.
@@ -2080,7 +2072,6 @@ class HorizontalFastframeTimestampDelta(SCPICmdRead):
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, HorizontalFastframeTimestampDeltaChannel]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:DELTa:CH<x>`` command.
@@ -2135,7 +2126,6 @@ class HorizontalFastframeTimestampDelta(SCPICmdRead):
         """
         return self._ref
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, HorizontalFastframeTimestampDeltaDigitalBit]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:DELTa:D<x>`` command.
@@ -2281,7 +2271,6 @@ class HorizontalFastframeTimestampBetween(SCPICmdRead):
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, HorizontalFastframeTimestampBetweenChannel]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:BETWeen:CH<x>`` command.
@@ -2336,7 +2325,6 @@ class HorizontalFastframeTimestampBetween(SCPICmdRead):
         """
         return self._ref
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, HorizontalFastframeTimestampBetweenDigitalBit]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:BETWeen:D<x>`` command.
@@ -2469,7 +2457,6 @@ class HorizontalFastframeTimestampAll(SCPICmdRead):
             lambda x: HorizontalFastframeTimestampAllDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, HorizontalFastframeTimestampAllChannel]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:ALL:CH<x>`` command.
@@ -2526,7 +2513,6 @@ class HorizontalFastframeTimestampAll(SCPICmdRead):
         """
         return self._ref
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, HorizontalFastframeTimestampAllDigitalBit]:
         """Return the ``HORizontal:FASTframe:TIMEStamp:ALL:D<x>`` command.
@@ -2989,7 +2975,6 @@ class HorizontalFastframeSelected(SCPICmdRead):
         )
         self._source = HorizontalFastframeSelectedSource(device, f"{self._cmd_syntax}:SOUrce")
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, HorizontalFastframeSelectedChannel]:
         """Return the ``HORizontal:FASTframe:SELECTED:CH<x>`` command.
@@ -3373,7 +3358,6 @@ class HorizontalFastframeMultipleframesNumframes(SCPICmdRead):
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, HorizontalFastframeMultipleframesNumframesChannel]:
         """Return the ``HORizontal:FASTframe:MULtipleframes:NUMFRames:CH<x>`` command.
@@ -3436,7 +3420,6 @@ class HorizontalFastframeMultipleframesNumframes(SCPICmdRead):
         """
         return self._ref
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, HorizontalFastframeMultipleframesNumframesDigitalBit]:
         """Return the ``HORizontal:FASTframe:MULtipleframes:NUMFRames:D<x>`` command.
@@ -3634,7 +3617,6 @@ class HorizontalFastframeMultipleframesFramestart(SCPICmdRead):
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, HorizontalFastframeMultipleframesFramestartChannel]:
         """Return the ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:CH<x>`` command.
@@ -3697,7 +3679,6 @@ class HorizontalFastframeMultipleframesFramestart(SCPICmdRead):
         """
         return self._ref
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, HorizontalFastframeMultipleframesFramestartDigitalBit]:
         """Return the ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:D<x>`` command.

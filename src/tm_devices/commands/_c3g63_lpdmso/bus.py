@@ -17054,7 +17054,6 @@ class BusBItemDphy(SCPICmdRead):
         """
         return self._dplus
 
-    # pylint: disable=invalid-name
     @property
     def lp(self) -> BusBItemDphyLp:
         """Return the ``BUS:B<x>:DPHY:LP`` command tree.
@@ -18110,7 +18109,6 @@ class BusBItemCphyC(SCPICmdRead):
         """
         return self._data
 
-    # pylint: disable=invalid-name
     @property
     def lp(self) -> BusBItemCphyCLp:
         """Return the ``BUS:B<x>:CPHY:C:LP`` command tree.
@@ -18996,7 +18994,6 @@ class BusBItemCphyA(SCPICmdRead):
         """
         return self._data
 
-    # pylint: disable=invalid-name
     @property
     def lp(self) -> BusBItemCphyALp:
         """Return the ``BUS:B<x>:CPHY:A:LP`` command tree.
@@ -19087,7 +19084,6 @@ class BusBItemCphy(SCPICmdRead):
         self._signaltype = BusBItemCphySignaltype(device, f"{self._cmd_syntax}:SIGNALTYpe")
         self._subtype = BusBItemCphySubtype(device, f"{self._cmd_syntax}:SUBTYPe")
 
-    # pylint: disable=invalid-name
     @property
     def a(self) -> BusBItemCphyA:
         """Return the ``BUS:B<x>:CPHY:A`` command tree.
@@ -19107,7 +19103,6 @@ class BusBItemCphy(SCPICmdRead):
         """
         return self._a
 
-    # pylint: disable=invalid-name
     @property
     def ab(self) -> BusBItemCphyAb:
         """Return the ``BUS:B<x>:CPHY:AB`` command tree.
@@ -19144,7 +19139,6 @@ class BusBItemCphy(SCPICmdRead):
         """
         return self._agnd
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> BusBItemCphyB:
         """Return the ``BUS:B<x>:CPHY:B`` command tree.
@@ -19163,7 +19157,6 @@ class BusBItemCphy(SCPICmdRead):
         """
         return self._b
 
-    # pylint: disable=invalid-name
     @property
     def bc(self) -> BusBItemCphyBc:
         """Return the ``BUS:B<x>:CPHY:BC`` command tree.
@@ -19211,7 +19204,6 @@ class BusBItemCphy(SCPICmdRead):
         """
         return self._bitrate
 
-    # pylint: disable=invalid-name
     @property
     def c(self) -> BusBItemCphyC:
         """Return the ``BUS:B<x>:CPHY:C`` command tree.
@@ -19231,7 +19223,6 @@ class BusBItemCphy(SCPICmdRead):
         """
         return self._c
 
-    # pylint: disable=invalid-name
     @property
     def ca(self) -> BusBItemCphyCa:
         """Return the ``BUS:B<x>:CPHY:CA`` command tree.
@@ -19268,7 +19259,6 @@ class BusBItemCphy(SCPICmdRead):
         """
         return self._cgnd
 
-    # pylint: disable=invalid-name
     @property
     def lp(self) -> BusBItemCphyLp:
         """Return the ``BUS:B<x>:CPHY:LP`` command tree.
@@ -19766,7 +19756,6 @@ class BusBItemCan(SCPICmdRead):
         """  # noqa: E501
         return self._bitrate
 
-    # pylint: disable=invalid-name
     @property
     def fd(self) -> BusBItemCanFd:
         """Return the ``BUS:B<x>:CAN:FD`` command tree.
@@ -23151,7 +23140,6 @@ class Bus(SCPICmdRead):
         """
         return self._addnew
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> Dict[int, BusBItem]:
         """Return the ``BUS:B<x>`` command tree.

@@ -1314,7 +1314,6 @@ class DPO7KCCommands:
         """
         return self._calibrate
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, Channel]:
         """Return the ``CH<x>`` command.
@@ -1449,7 +1448,6 @@ class DPO7KCCommands:
         """
         return self._counter
 
-    # pylint: disable=invalid-name
     @property
     def cq(self) -> Dict[int, CqItem]:
         """Return the ``CQ<x>`` command tree.
@@ -1623,7 +1621,6 @@ class DPO7KCCommands:
         """
         return self._custom
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, DigitalBit]:
         """Return the ``D<x>`` command tree.
@@ -2425,7 +2422,6 @@ class DPO7KCCommands:
         """
         return self._horizontal
 
-    # pylint: disable=invalid-name
     @property
     def id(self) -> Id:
         """Return the ``ID`` command.

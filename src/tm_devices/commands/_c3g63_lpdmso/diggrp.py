@@ -127,7 +127,6 @@ class DiggrpItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             lambda x: DiggrpItemDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, DiggrpItemDigitalBit]:
         """Return the ``DIGGRP<x>:D<x>`` command tree.

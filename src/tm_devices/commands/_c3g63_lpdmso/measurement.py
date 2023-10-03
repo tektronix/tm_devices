@@ -11435,7 +11435,6 @@ class MeasurementMeasItemJittersummary(SCPICmdRead):
         """
         return self._npj
 
-    # pylint: disable=invalid-name
     @property
     def pj(self) -> MeasurementMeasItemJittersummaryPj:
         """Return the ``MEASUrement:MEAS<x>:JITTERSummary:PJ`` command.
@@ -14519,7 +14518,6 @@ class MeasurementMeasItemEdges(SCPICmdRead):
         """
         return self._lowerfrequency
 
-    # pylint: disable=invalid-name
     @property
     def n(self) -> MeasurementMeasItemEdgesN:
         """Return the ``MEASUrement:MEAS<x>:EDGES:N`` command.
@@ -28753,7 +28751,6 @@ class Measurement(SCPICmdRead):
         """
         return self._autoset
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, MeasurementChannel]:
         """Return the ``MEASUrement:CH<x>`` command tree.

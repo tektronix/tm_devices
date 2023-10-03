@@ -472,7 +472,6 @@ class Select(SCPICmdRead):
         self._math = SelectMath(device, f"{self._cmd_syntax}:MATH")
         self._math1 = SelectMath1(device, f"{self._cmd_syntax}:MATH1")
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, SelectChannel]:
         """Return the ``SELect:CH<x>`` command.
@@ -545,7 +544,6 @@ class Select(SCPICmdRead):
         """  # noqa: E501
         return self._control
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, SelectDigitalBit]:
         """Return the ``SELect:D<x>`` command.
@@ -762,7 +760,6 @@ class Select(SCPICmdRead):
         """
         return self._bus
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> Dict[int, SelectBItem]:
         """Return the ``SELect:B<x>`` command.

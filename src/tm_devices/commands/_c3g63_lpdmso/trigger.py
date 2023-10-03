@@ -1523,7 +1523,6 @@ class TriggerBUpperthreshold(SCPICmdRead):
             lambda x: TriggerBUpperthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBUpperthresholdChannel]:
         """Return the ``TRIGger:B:UPPerthreshold:CH<x>`` command.
@@ -2545,7 +2544,6 @@ class TriggerBSetholdlogicval(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._b = TriggerBSetholdlogicvalB(device, f"{self._cmd_syntax}:B")
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> TriggerBSetholdlogicvalB:
         """Return the ``TRIGger:B:SETHOLDLogicval:B`` command.
@@ -3755,7 +3753,6 @@ class TriggerBLowerthreshold(SCPICmdRead):
             lambda x: TriggerBLowerthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBLowerthresholdChannel]:
         """Return the ``TRIGger:B:LOWerthreshold:CH<x>`` command.
@@ -4272,7 +4269,6 @@ class TriggerBLogicpattern(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._b = TriggerBLogicpatternB(device, f"{self._cmd_syntax}:B")
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> TriggerBLogicpatternB:
         """Return the ``TRIGger:B:LOGICPattern:B`` command.
@@ -4348,7 +4344,6 @@ class TriggerBLevel(SCPICmdRead):
             lambda x: TriggerBLevelChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerBLevelChannel]:
         """Return the ``TRIGger:B:LEVel:CH<x>`` command.
@@ -5175,7 +5170,6 @@ class TriggerBBusBItemUsbSplit(SCPICmdRead):
         self._sc = TriggerBBusBItemUsbSplitSc(device, f"{self._cmd_syntax}:SC")
         self._se = TriggerBBusBItemUsbSplitSe(device, f"{self._cmd_syntax}:SE")
 
-    # pylint: disable=invalid-name
     @property
     def et(self) -> TriggerBBusBItemUsbSplitEt:
         """Return the ``TRIGger:B:BUS:B<x>:USB:SPLit:ET`` command tree.
@@ -5223,7 +5217,6 @@ class TriggerBBusBItemUsbSplit(SCPICmdRead):
         """
         return self._port
 
-    # pylint: disable=invalid-name
     @property
     def sc(self) -> TriggerBBusBItemUsbSplitSc:
         """Return the ``TRIGger:B:BUS:B<x>:USB:SPLit:SC`` command tree.
@@ -5239,7 +5232,6 @@ class TriggerBBusBItemUsbSplit(SCPICmdRead):
         """
         return self._sc
 
-    # pylint: disable=invalid-name
     @property
     def se(self) -> TriggerBBusBItemUsbSplitSe:
         """Return the ``TRIGger:B:BUS:B<x>:USB:SPLit:SE`` command tree.
@@ -10577,7 +10569,6 @@ class TriggerBBusBItemMil1553bStatusBit(SCPICmdRead):
         """
         return self._instr
 
-    # pylint: disable=invalid-name
     @property
     def me(self) -> TriggerBBusBItemMil1553bStatusBitMe:
         """Return the ``TRIGger:B:BUS:B<x>:MIL1553B:STATus:BIT:ME`` command.
@@ -10675,7 +10666,6 @@ class TriggerBBusBItemMil1553bStatusBit(SCPICmdRead):
         """
         return self._subsf
 
-    # pylint: disable=invalid-name
     @property
     def tf(self) -> TriggerBBusBItemMil1553bStatusBitTf:
         """Return the ``TRIGger:B:BUS:B<x>:MIL1553B:STATus:BIT:TF`` command.
@@ -17961,7 +17951,6 @@ class TriggerBBusBItemCan(SCPICmdRead):
         """
         return self._errtype
 
-    # pylint: disable=invalid-name
     @property
     def fd(self) -> TriggerBBusBItemCanFd:
         """Return the ``TRIGger:B:BUS:B<x>:CAN:FD`` command tree.
@@ -19782,7 +19771,6 @@ class TriggerBBus(SCPICmdRead):
         )
         self._source = TriggerBBusSource(device, f"{self._cmd_syntax}:SOUrce")
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> Dict[int, TriggerBBusBItem]:
         """Return the ``TRIGger:B:BUS:B<x>`` command tree.
@@ -19896,7 +19884,6 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
         self._upperthreshold = TriggerBUpperthreshold(device, f"{self._cmd_syntax}:UPPerthreshold")
         self._window = TriggerBWindow(device, f"{self._cmd_syntax}:WINdow")
 
-    # pylint: disable=invalid-name
     @property
     def by(self) -> TriggerBBy:
         """Return the ``TRIGger:B:BY`` command.
@@ -20711,7 +20698,6 @@ class TriggerAUpperthreshold(SCPICmdRead):
             lambda x: TriggerAUpperthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerAUpperthresholdChannel]:
         """Return the ``TRIGger:A:UPPerthreshold:CH<x>`` command.
@@ -21678,7 +21664,6 @@ class TriggerASetholdlogicval(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._a = TriggerASetholdlogicvalA(device, f"{self._cmd_syntax}:A")
 
-    # pylint: disable=invalid-name
     @property
     def a(self) -> TriggerASetholdlogicvalA:
         """Return the ``TRIGger:A:SETHOLDLogicval:A`` command.
@@ -22479,7 +22464,6 @@ class TriggerALowerthreshold(SCPICmdRead):
             lambda x: TriggerALowerthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerALowerthresholdChannel]:
         """Return the ``TRIGger:A:LOWerthreshold:CH<x>`` command.
@@ -23024,7 +23008,6 @@ class TriggerALogicpattern(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._a = TriggerALogicpatternA(device, f"{self._cmd_syntax}:A")
 
-    # pylint: disable=invalid-name
     @property
     def a(self) -> TriggerALogicpatternA:
         """Return the ``TRIGger:A:LOGICPattern:A`` command.
@@ -23100,7 +23083,6 @@ class TriggerALevel(SCPICmdRead):
             lambda x: TriggerALevelChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerALevelChannel]:
         """Return the ``TRIGger:A:LEVel:CH<x>`` command.
@@ -23204,7 +23186,6 @@ class TriggerAHoldoff(SCPICmdRead):
         self._by = TriggerAHoldoffBy(device, f"{self._cmd_syntax}:BY")
         self._time = TriggerAHoldoffTime(device, f"{self._cmd_syntax}:TIMe")
 
-    # pylint: disable=invalid-name
     @property
     def by(self) -> TriggerAHoldoffBy:
         """Return the ``TRIGger:A:HOLDoff:BY`` command.
@@ -23965,7 +23946,6 @@ class TriggerABusBItemUsbSplit(SCPICmdRead):
         self._sc = TriggerABusBItemUsbSplitSc(device, f"{self._cmd_syntax}:SC")
         self._se = TriggerABusBItemUsbSplitSe(device, f"{self._cmd_syntax}:SE")
 
-    # pylint: disable=invalid-name
     @property
     def et(self) -> TriggerABusBItemUsbSplitEt:
         """Return the ``TRIGger:A:BUS:B<x>:USB:SPLit:ET`` command tree.
@@ -24013,7 +23993,6 @@ class TriggerABusBItemUsbSplit(SCPICmdRead):
         """
         return self._port
 
-    # pylint: disable=invalid-name
     @property
     def sc(self) -> TriggerABusBItemUsbSplitSc:
         """Return the ``TRIGger:A:BUS:B<x>:USB:SPLit:SC`` command tree.
@@ -24029,7 +24008,6 @@ class TriggerABusBItemUsbSplit(SCPICmdRead):
         """
         return self._sc
 
-    # pylint: disable=invalid-name
     @property
     def se(self) -> TriggerABusBItemUsbSplitSe:
         """Return the ``TRIGger:A:BUS:B<x>:USB:SPLit:SE`` command tree.
@@ -29367,7 +29345,6 @@ class TriggerABusBItemMil1553bStatusBit(SCPICmdRead):
         """
         return self._instr
 
-    # pylint: disable=invalid-name
     @property
     def me(self) -> TriggerABusBItemMil1553bStatusBitMe:
         """Return the ``TRIGger:A:BUS:B<x>:MIL1553B:STATus:BIT:ME`` command.
@@ -29465,7 +29442,6 @@ class TriggerABusBItemMil1553bStatusBit(SCPICmdRead):
         """
         return self._subsf
 
-    # pylint: disable=invalid-name
     @property
     def tf(self) -> TriggerABusBItemMil1553bStatusBitTf:
         """Return the ``TRIGger:A:BUS:B<x>:MIL1553B:STATus:BIT:TF`` command.
@@ -36751,7 +36727,6 @@ class TriggerABusBItemCan(SCPICmdRead):
         """
         return self._errtype
 
-    # pylint: disable=invalid-name
     @property
     def fd(self) -> TriggerABusBItemCanFd:
         """Return the ``TRIGger:A:BUS:B<x>:CAN:FD`` command tree.
@@ -38572,7 +38547,6 @@ class TriggerABus(SCPICmdRead):
         )
         self._source = TriggerABusSource(device, f"{self._cmd_syntax}:SOUrce")
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> Dict[int, TriggerABusBItem]:
         """Return the ``TRIGger:A:BUS:B<x>`` command tree.
@@ -39126,7 +39100,6 @@ class Trigger(SCPICmdWrite, SCPICmdRead):
         """
         return self._state
 
-    # pylint: disable=invalid-name
     @property
     def a(self) -> TriggerA:
         """Return the ``TRIGger:A`` command tree.
@@ -39158,7 +39131,6 @@ class Trigger(SCPICmdWrite, SCPICmdRead):
         """
         return self._a
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> TriggerB:
         """Return the ``TRIGger:B`` command tree.

@@ -79,7 +79,7 @@ version = "0.1.13"
 [tool.poetry.dependencies]
 check4updates = ">=0.0.2"
 gpib-ctypes = ">=0.3.0"
-libusb-package = ">=1.0.26.0"
+libusb-package = ">=1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.12
 packaging = ">=21.3"
 psutil = ">=5.9.2"
 pyserial = ">=3.5"
@@ -164,6 +164,7 @@ ignore-patterns = [
   "^\\.idea",
   "^\\.results.*",
   "^\\.tox",
+  "^\\.venv.*",
   "^\\.vscode",
   "^temp_.*\\..*"
 ]
@@ -171,7 +172,6 @@ jobs = 0
 load-plugins = """
 pylint.extensions.check_elif,
 pylint.extensions.code_style,
-pylint.extensions.comparetozero,
 pylint.extensions.comparison_placement,
 pylint.extensions.consider_refactoring_into_while_condition,
 pylint.extensions.dict_init_mutate,
@@ -210,6 +210,7 @@ disable = [
   "too-many-statements",  # caught by ruff
   "unused-argument",  # caught by ruff
   "unused-import",  # caught by ruff
+  "use-implicit-booleaness-not-comparison-to-string",  # caught by ruff
   "while-used",  # using while loops in example scripts
   "wrong-import-order"  # caught by ruff
 ]
@@ -377,10 +378,10 @@ legacy_tox_ini = """
 [tox]
 requires = tox>4
 isolated_build = True
-envlist = py38,py39,py310,py311,tests,docs,doctests
+envlist = py38,py39,py310,py311,py312,tests,docs,doctests
 skip_missing_interpreters = True
 labels =
-  basic = py38,py39,py310,py311,tests
+  basic = py38,py39,py310,py311,py312,tests
   documentation = docs,doctests
 
 [gh-actions]
@@ -389,6 +390,7 @@ python =
     3.9: py39
     3.10: py310
     3.11: py311
+    3.12: py312
 
 [testenv]
 package = wheel

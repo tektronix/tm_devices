@@ -6711,7 +6711,6 @@ class MeasurementMeasItemEdges(SCPICmdRead):
         """
         return self._level
 
-    # pylint: disable=invalid-name
     @property
     def n(self) -> MeasurementMeasItemEdgesN:
         """Return the ``MEASUrement:MEAS<x>:EDGES:N`` command.
@@ -12542,7 +12541,6 @@ class Measurement(SCPICmdRead):
         """
         return self._annotate
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, MeasurementChannel]:
         """Return the ``MEASUrement:CH<x>`` command tree.

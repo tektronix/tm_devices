@@ -7021,7 +7021,6 @@ class Bus(SCPICmdRead):
             lambda x: BusRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def b1(self) -> Dict[int, BusB1Item]:
         """Return the ``BUS:B1<x>`` command tree.
@@ -7037,7 +7036,6 @@ class Bus(SCPICmdRead):
         """
         return self._b1
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> Dict[int, BusBItem]:
         """Return the ``BUS:B<x>`` command tree.
@@ -7070,7 +7068,6 @@ class Bus(SCPICmdRead):
         """
         return self._b
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, BusChannel]:
         """Return the ``BUS:CH<x>`` command tree.

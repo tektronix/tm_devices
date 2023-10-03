@@ -146,7 +146,6 @@ class Ptp(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.domain`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     @property
     def ds(self) -> PtpDs:
         """Return the ``ptp.ds`` command tree.

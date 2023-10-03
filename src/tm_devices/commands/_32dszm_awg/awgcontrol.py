@@ -2072,7 +2072,6 @@ class Awgcontrol(SCPICmdRead):
         """
         return self._configure
 
-    # pylint: disable=invalid-name
     @property
     def dc(self) -> Dict[int, AwgcontrolDcItem]:
         """Return the ``AWGControl:DC[n]`` command tree.

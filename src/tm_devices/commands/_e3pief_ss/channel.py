@@ -353,7 +353,6 @@ class ChannelCalibration(BaseTSPCmd):
         - ``.verifydate()``: The ``channel.calibration.verifydate()`` function.
     """
 
-    # pylint: disable=invalid-name
     def adjustcount(self, x: str) -> str:
         """Run the ``channel.calibration.adjustcount()`` function.
 
@@ -383,7 +382,6 @@ class ChannelCalibration(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.adjustcount()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def adjustdate(self, x: str, date: Optional[str] = None) -> str:
         """Run the ``channel.calibration.adjustdate()`` function.
 
@@ -529,7 +527,6 @@ class ChannelCalibration(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.step()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def unlock(self, x: str, password: str) -> None:
         """Run the ``channel.calibration.unlock()`` function.
 
@@ -558,7 +555,6 @@ class ChannelCalibration(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.unlock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def verifydate(self, x: str, date: Optional[str] = None) -> str:
         """Run the ``channel.calibration.verifydate()`` function.
 

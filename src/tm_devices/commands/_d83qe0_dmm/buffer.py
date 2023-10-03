@@ -149,7 +149,7 @@ class Buffer(BaseTSPCmd):
     COL_CSV_CHAN_COLS = "buffer.COL_CSV_CHAN_COLS"
     """str: Ignore other columns and use a special format with a column  per channel."""
     COL_CSV_EASY_GRAPH = "buffer.COL_CSV_EASY_GRAPH"
-    """str: Ignore other columns and use special format that is easy to graph in Microsoft Excel."""  # noqa: E501
+    """str: Ignore other columns and use special format that is easy to graph in Microsoft Excel."""
     COL_DISPLAY_DIGITS = "buffer.COL_DISPLAY_DIGITS"
     """str: Save display digits from the specified reading buffer."""
     COL_EXTRA = "buffer.COL_EXTRA"

@@ -1123,7 +1123,6 @@ class RefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         )
         self._dall = RefItemDall(device, f"{self._cmd_syntax}_DALL")
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, RefItemDigitalBit]:
         """Return the ``REF<x>_D<x>`` command tree.

@@ -2363,7 +2363,6 @@ class DisplayWaveview1DchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         )
         self._dall = DisplayWaveview1DchItemDall(device, f"{self._cmd_syntax}_DALL")
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, DisplayWaveview1DchItemDigitalBit]:
         """Return the ``DISplay:WAVEView1:DCH<x>_D<x>`` command tree.
@@ -4628,7 +4627,6 @@ class DisplayWaveview1Bus(SCPICmdRead):
             lambda x: DisplayWaveview1BusBItem(device, f"{self._cmd_syntax}:B{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> Dict[int, DisplayWaveview1BusBItem]:
         """Return the ``DISplay:WAVEView1:BUS:B<x>`` command tree.
@@ -4706,7 +4704,6 @@ class DisplayWaveview1(SCPICmdRead):
         """
         return self._bus
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, DisplayWaveview1Channel]:
         """Return the ``DISplay:WAVEView1:CH<x>`` command tree.
@@ -5511,7 +5508,6 @@ class DisplayReffftviewItemZoomYaxis(SCPICmdRead):
         """
         return self._from
 
-    # pylint: disable=invalid-name
     @property
     def to(self) -> DisplayReffftviewItemZoomYaxisTo:
         """Return the ``DISplay:REFFFTView<x>:ZOOM:YAXIS:TO`` command.
@@ -5642,7 +5638,6 @@ class DisplayReffftviewItemZoomXaxis(SCPICmdRead):
         """
         return self._from
 
-    # pylint: disable=invalid-name
     @property
     def to(self) -> DisplayReffftviewItemZoomXaxisTo:
         """Return the ``DISplay:REFFFTView<x>:ZOOM:XAXIS:TO`` command.
@@ -8244,7 +8239,6 @@ class DisplayPlotview1ZoomYaxis(SCPICmdRead):
         """
         return self._from
 
-    # pylint: disable=invalid-name
     @property
     def to(self) -> DisplayPlotview1ZoomYaxisTo:
         """Return the ``DISplay:PLOTView1:ZOOM:YAXIS:TO`` command.
@@ -8374,7 +8368,6 @@ class DisplayPlotview1ZoomXaxis(SCPICmdRead):
         """
         return self._from
 
-    # pylint: disable=invalid-name
     @property
     def to(self) -> DisplayPlotview1ZoomXaxisTo:
         """Return the ``DISplay:PLOTView1:ZOOM:XAXIS:TO`` command.
@@ -10688,7 +10681,6 @@ class DisplayMathfftview1ZoomYaxis(SCPICmdRead):
         """
         return self._from
 
-    # pylint: disable=invalid-name
     @property
     def to(self) -> DisplayMathfftview1ZoomYaxisTo:
         """Return the ``DISplay:MATHFFTView1:ZOOM:YAXIS:TO`` command.
@@ -10820,7 +10812,6 @@ class DisplayMathfftview1ZoomXaxis(SCPICmdRead):
         """
         return self._from
 
-    # pylint: disable=invalid-name
     @property
     def to(self) -> DisplayMathfftview1ZoomXaxisTo:
         """Return the ``DISplay:MATHFFTView1:ZOOM:XAXIS:TO`` command.
@@ -13621,7 +13612,6 @@ class DisplayGlobal(SCPICmdRead):
             lambda x: DisplayGlobalRefItem(device, f"{self._cmd_syntax}:REF{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> Dict[int, DisplayGlobalBItem]:
         """Return the ``DISplay:GLObal:B<x>`` command tree.
@@ -13636,7 +13626,6 @@ class DisplayGlobal(SCPICmdRead):
         """
         return self._b
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, DisplayGlobalChannel]:
         """Return the ``DISplay:GLObal:CH<x>`` command tree.
@@ -14234,7 +14223,6 @@ class Display(SCPICmdRead):
         """
         return self._waveform
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, DisplayChannel]:
         """Return the ``DISplay:CH<x>`` command tree.

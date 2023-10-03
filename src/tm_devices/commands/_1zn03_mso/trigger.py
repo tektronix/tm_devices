@@ -462,7 +462,6 @@ class TriggerAUpperthreshold(SCPICmdRead):
             lambda x: TriggerAUpperthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerAUpperthresholdChannel]:
         """Return the ``TRIGger:A:UPPerthreshold:CH<x>`` command.
@@ -1060,7 +1059,6 @@ class TriggerASetholdlogicvalDchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             lambda x: TriggerASetholdlogicvalDchItemDigitalBit(device, f"{self._cmd_syntax}_D{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, TriggerASetholdlogicvalDchItemDigitalBit]:
         """Return the ``TRIGger:A:SETHOLDLOGICVAL:DCH<x>_D<x>`` command.
@@ -1790,7 +1788,6 @@ class TriggerALowerthreshold(SCPICmdRead):
             lambda x: TriggerALowerthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerALowerthresholdChannel]:
         """Return the ``TRIGger:A:LOWerthreshold:CH<x>`` command.
@@ -2324,7 +2321,6 @@ class TriggerALogicpatternDchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             lambda x: TriggerALogicpatternDchItemDigitalBit(device, f"{self._cmd_syntax}_D{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, TriggerALogicpatternDchItemDigitalBit]:
         """Return the ``TRIGger:A:LOGICPattern:DCH<x>_D<x>`` command.
@@ -2412,7 +2408,6 @@ class TriggerALogicpattern(SCPICmdRead):
             lambda x: TriggerALogicpatternDchItem(device, f"{self._cmd_syntax}:DCH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerALogicpatternChannel]:
         """Return the ``TRIGger:A:LOGICPattern:CH<x>`` command.
@@ -2504,7 +2499,6 @@ class TriggerALevel(SCPICmdRead):
             lambda x: TriggerALevelChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, TriggerALevelChannel]:
         """Return the ``TRIGger:A:LEVel:CH<x>`` command.
@@ -6822,7 +6816,6 @@ class TriggerABusBItemCan(SCPICmdRead):
         """
         return self._errtype
 
-    # pylint: disable=invalid-name
     @property
     def fd(self) -> TriggerABusBItemCanFd:
         """Return the ``TRIGger:A:BUS:B<x>:CAN:FD`` command tree.
@@ -7056,7 +7049,6 @@ class TriggerABus(SCPICmdRead):
         )
         self._source = TriggerABusSource(device, f"{self._cmd_syntax}:SOUrce")
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> Dict[int, TriggerABusBItem]:
         """Return the ``TRIGger:A:BUS:B<x>`` command tree.
@@ -7482,7 +7474,6 @@ class Trigger(SCPICmdWrite, SCPICmdRead):
         self._hysteresis = TriggerHysteresis(device, f"{self._cmd_syntax}:HYSTeresis")
         self._state = TriggerState(device, f"{self._cmd_syntax}:STATE")
 
-    # pylint: disable=invalid-name
     @property
     def a(self) -> TriggerA:
         """Return the ``TRIGger:A`` command.

@@ -1898,7 +1898,6 @@ class SourceItemFrequency(SCPICmdRead):
         self._cw = SourceItemFrequencyCw(device, f"{self._cmd_syntax}:CW")
         self._fixed = SourceItemFrequencyFixed(device, f"{self._cmd_syntax}:FIXed")
 
-    # pylint: disable=invalid-name
     @property
     def cw(self) -> SourceItemFrequencyCw:
         """Return the ``SOURce[n]:FREQuency:CW`` command.

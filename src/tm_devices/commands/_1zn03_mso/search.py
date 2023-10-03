@@ -870,7 +870,6 @@ class SearchSearchItemTriggerASetholdLogicpattern(SCPICmdRead):
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, SearchSearchItemTriggerASetholdLogicpatternChannel]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>`` command.
@@ -1102,7 +1101,6 @@ class SearchSearchItemTriggerASetholdLevel(SCPICmdRead):
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, SearchSearchItemTriggerASetholdLevelChannel]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LEVel:CH<x>`` command.
@@ -2780,7 +2778,6 @@ class SearchSearchItemTriggerALogicLogicpatternDchItem(ValidatedDynamicNumberCmd
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, SearchSearchItemTriggerALogicLogicpatternDchItemDigitalBit]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:LOGICPattern:DCH<x>_D<x>`` command.
@@ -2895,7 +2892,6 @@ class SearchSearchItemTriggerALogicLogicpattern(SCPICmdRead):
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, SearchSearchItemTriggerALogicLogicpatternChannel]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:LOGICPattern:CH<x>`` command.
@@ -3138,7 +3134,6 @@ class SearchSearchItemTriggerALogicLevel(SCPICmdRead):
             )
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, SearchSearchItemTriggerALogicLevelChannel]:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:LEVel:CH<x>`` command.
@@ -8443,7 +8438,6 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
         """
         return self._errtype
 
-    # pylint: disable=invalid-name
     @property
     def fd(self) -> SearchSearchItemTriggerABusCanFd:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FD`` command tree.
@@ -9012,7 +9006,6 @@ class SearchSearchItemTrigger(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._a = SearchSearchItemTriggerA(device, f"{self._cmd_syntax}:A")
 
-    # pylint: disable=invalid-name
     @property
     def a(self) -> SearchSearchItemTriggerA:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A`` command tree.

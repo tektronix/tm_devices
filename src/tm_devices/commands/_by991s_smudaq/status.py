@@ -607,7 +607,7 @@ class Status(BaseTSPCmd):
     ESB = "status.ESB"
     """str: B5. Set summary bit indicates that an enabled standard event has occurred."""
     MAV = "status.MAV"
-    """str: B4. Set summary bit indicates that a response message is present in the Output Queue."""  # noqa: E501
+    """str: B4. Set summary bit indicates that a response message is present in the Output Queue."""
     MSB = "status.MSB"
     """str: B0. Set summary bit indicates that an enabled measurement event has occurred."""
     MSS = "status.MSS"
