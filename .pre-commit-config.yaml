@@ -34,14 +34,14 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.26.3
+    rev: 0.27.0
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
       - id: check-github-actions
       - id: check-github-workflows
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 3.9.0
+    rev: 3.10.0
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -121,7 +121,7 @@ repos:
         always_run: true
         args: [., --min=10]
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.290
+    rev: v0.0.292
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]

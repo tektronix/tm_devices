@@ -44,7 +44,7 @@ class AFG(SignalSource, ABC):
     # Public Methods
     ################################################################################################
     # pylint: disable=too-many-locals,line-too-long
-    def generate_waveform(  # noqa: C901,E501,PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
+    def generate_waveform(  # noqa: C901, PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
         self,
         frequency: float,
         function: SignalSourceFunctionsAFG,
