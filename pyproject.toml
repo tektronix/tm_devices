@@ -401,6 +401,7 @@ setenv =
     DOC_PYTHON_VERSION = python3.11  # Keep this in sync with .readthedocs.yml and any CI scripts
     # Skip pre-commit checks that are explicitly performed by tox
     SKIP = black,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma
+    PYRIGHT_PYTHON_DEBUG = true
 commands_pre =
     poetry install --no-root
 commands =
