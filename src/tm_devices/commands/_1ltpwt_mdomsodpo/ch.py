@@ -965,7 +965,6 @@ class ChannelProbe(SCPICmdRead):
         """
         return self._gain
 
-    # pylint: disable=invalid-name
     @property
     def id(self) -> ChannelProbeId:
         """Return the ``CH<x>:PRObe:ID`` command.

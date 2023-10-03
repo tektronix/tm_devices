@@ -142,7 +142,6 @@ class CalibrateProbestate(SCPICmdRead):
             lambda x: CalibrateProbestateChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, CalibrateProbestateChannel]:
         """Return the ``CALibrate:PRObestate:CH<x>`` command.
@@ -313,7 +312,6 @@ class CalibrateCalprobe(SCPICmdRead):
             lambda x: CalibrateCalprobeChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, CalibrateCalprobeChannel]:
         """Return the ``CALibrate:CALProbe:CH<x>`` command.

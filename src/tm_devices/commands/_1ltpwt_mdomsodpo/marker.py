@@ -913,7 +913,6 @@ class Marker(SCPICmdRead):
         self._reference = MarkerReference(device, f"{self._cmd_syntax}:REFERence")
         self._type = MarkerType(device, f"{self._cmd_syntax}:TYPe")
 
-    # pylint: disable=invalid-name
     @property
     def m(self) -> Dict[int, MarkerMItem]:
         """Return the ``MARKER:M<x>`` command tree.

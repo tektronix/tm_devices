@@ -646,7 +646,6 @@ class Buffervar(BaseTSPCmd):
         """
         return self._fractionalseconds
 
-    # pylint: disable=invalid-name
     @property
     def n(self) -> str:
         """Access the ``bufferVar.n`` attribute.

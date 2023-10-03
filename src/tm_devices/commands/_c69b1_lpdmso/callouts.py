@@ -474,7 +474,6 @@ class CalloutsCalloutItemDisplayposition(SCPICmdRead):
         self._x = CalloutsCalloutItemDisplaypositionX(device, f"{self._cmd_syntax}:X")
         self._y = CalloutsCalloutItemDisplaypositionY(device, f"{self._cmd_syntax}:Y")
 
-    # pylint: disable=invalid-name
     @property
     def x(self) -> CalloutsCalloutItemDisplaypositionX:
         """Return the ``CALLOUTS:CALLOUT<x>:DISPLAYPOSition:X`` command.
@@ -503,7 +502,6 @@ class CalloutsCalloutItemDisplayposition(SCPICmdRead):
         """
         return self._x
 
-    # pylint: disable=invalid-name
     @property
     def y(self) -> CalloutsCalloutItemDisplaypositionY:
         """Return the ``CALLOUTS:CALLOUT<x>:DISPLAYPOSition:Y`` command.

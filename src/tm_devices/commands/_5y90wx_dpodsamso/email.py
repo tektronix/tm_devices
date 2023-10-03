@@ -1042,7 +1042,6 @@ class Email(SCPICmdWrite, SCPICmdRead):
         """
         return self._timeout
 
-    # pylint: disable=invalid-name
     @property
     def to(self) -> EmailTo:
         """Return the ``EMail:TO`` command.

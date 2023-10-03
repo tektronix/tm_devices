@@ -1118,7 +1118,6 @@ class Display(SCPICmdRead):
         """
         return self._trigfrequency
 
-    # pylint: disable=invalid-name
     @property
     def xy(self) -> DisplayXy:
         """Return the ``DISplay:XY`` command.

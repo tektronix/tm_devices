@@ -3324,7 +3324,6 @@ class DpojetReflevels(SCPICmdRead):
         """
         return self._autoset
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, DpojetReflevelsChannel]:
         """Return the ``DPOJET:REFLevels:CH<x>`` command tree.
@@ -3423,7 +3422,6 @@ class DpojetReflevel(SCPICmdRead):
             lambda x: DpojetReflevelChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, DpojetReflevelChannel]:
         """Return the ``DPOJET:REFLevel:CH<x>`` command tree.
@@ -6931,7 +6929,6 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
         """
         return self._ddnzero
 
-    # pylint: disable=invalid-name
     @property
     def pj(self) -> DpojetPlotItemDataYdataPj:
         """Return the ``DPOJET:PLOT<x>:DATA:YDATa:PJ`` command.
@@ -6957,7 +6954,6 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
         """
         return self._pj
 
-    # pylint: disable=invalid-name
     @property
     def pn(self) -> DpojetPlotItemDataYdataPn:
         """Return the ``DPOJET:PLOT<x>:DATA:YDATa:PN`` command.
@@ -7035,7 +7031,6 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
         """
         return self._rnnpn
 
-    # pylint: disable=invalid-name
     @property
     def tj(self) -> DpojetPlotItemDataYdataTj:
         """Return the ``DPOJET:PLOT<x>:DATA:YDATa:TJ`` command.
@@ -7061,7 +7056,6 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
         """
         return self._tj
 
-    # pylint: disable=invalid-name
     @property
     def tn(self) -> DpojetPlotItemDataYdataTn:
         """Return the ``DPOJET:PLOT<x>:DATA:YDATa:TN`` command.
@@ -7425,7 +7419,6 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
         """
         return self._ddnzero
 
-    # pylint: disable=invalid-name
     @property
     def pj(self) -> DpojetPlotItemDataXdataPj:
         """Return the ``DPOJET:PLOT<x>:DATA:XDATa:PJ`` command.
@@ -7451,7 +7444,6 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
         """
         return self._pj
 
-    # pylint: disable=invalid-name
     @property
     def pn(self) -> DpojetPlotItemDataXdataPn:
         """Return the ``DPOJET:PLOT<x>:DATA:XDATa:PN`` command.
@@ -7527,7 +7519,6 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
         """
         return self._rnnpn
 
-    # pylint: disable=invalid-name
     @property
     def tj(self) -> DpojetPlotItemDataXdataTj:
         """Return the ``DPOJET:PLOT<x>:DATA:XDATa:TJ`` command.
@@ -7552,7 +7543,6 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
         """
         return self._tj
 
-    # pylint: disable=invalid-name
     @property
     def tn(self) -> DpojetPlotItemDataXdataTn:
         """Return the ``DPOJET:PLOT<x>:DATA:XDATa:TN`` command.
@@ -8466,7 +8456,6 @@ class DpojetPlotItemCompositenoisehist(SCPICmdRead):
         """  # noqa: E501
         return self._numbins
 
-    # pylint: disable=invalid-name
     @property
     def pn(self) -> DpojetPlotItemCompositenoisehistPn:
         """Return the ``DPOJET:PLOT<x>:COMPOSITENoisehist:PN`` command.
@@ -8517,7 +8506,6 @@ class DpojetPlotItemCompositenoisehist(SCPICmdRead):
         """
         return self._rnnpn
 
-    # pylint: disable=invalid-name
     @property
     def tn(self) -> DpojetPlotItemCompositenoisehistTn:
         """Return the ``DPOJET:PLOT<x>:COMPOSITENoisehist:TN`` command.
@@ -8823,7 +8811,6 @@ class DpojetPlotItemCompositejitterhist(SCPICmdRead):
         """  # noqa: E501
         return self._numbins
 
-    # pylint: disable=invalid-name
     @property
     def pj(self) -> DpojetPlotItemCompositejitterhistPj:
         """Return the ``DPOJET:PLOT<x>:COMPOSITEJitterhist:PJ`` command.
@@ -8876,7 +8863,6 @@ class DpojetPlotItemCompositejitterhist(SCPICmdRead):
         """
         return self._rjnpj
 
-    # pylint: disable=invalid-name
     @property
     def tj(self) -> DpojetPlotItemCompositejitterhistTj:
         """Return the ``DPOJET:PLOT<x>:COMPOSITEJitterhist:TJ`` command.
@@ -20566,7 +20552,6 @@ class DpojetMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         """
         return self._measstart
 
-    # pylint: disable=invalid-name
     @property
     def n(self) -> DpojetMeasItemN:
         """Return the ``DPOJET:MEAS<x>:N`` command.

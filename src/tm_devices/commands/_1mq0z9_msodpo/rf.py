@@ -2236,7 +2236,6 @@ class RfProbe(SCPICmdRead):
         """
         return self._gain
 
-    # pylint: disable=invalid-name
     @property
     def id(self) -> RfProbeId:
         """Return the ``RF:PRObe:ID`` command tree.
@@ -3379,7 +3378,6 @@ class RfMeasure(SCPICmdRead):
         """
         return self._acpr
 
-    # pylint: disable=invalid-name
     @property
     def cp(self) -> RfMeasureCp:
         """Return the ``RF:MEASUre:CP`` command tree.

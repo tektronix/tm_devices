@@ -2447,7 +2447,6 @@ class ChannelProbe(SCPICmdRead):
         """
         return self._gain
 
-    # pylint: disable=invalid-name
     @property
     def id(self) -> ChannelProbeId:
         """Return the ``CH<x>:PRObe:ID`` command.
@@ -4292,7 +4291,6 @@ class Channel(ValidatedChannel, SCPICmdRead):
         """
         return self._scale
 
-    # pylint: disable=invalid-name
     @property
     def sv(self) -> ChannelSv:
         """Return the ``CH<x>:SV`` command tree.
@@ -4361,7 +4359,6 @@ class Channel(ValidatedChannel, SCPICmdRead):
         """
         return self._vterm
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, ChannelDigitalBit]:
         """Return the ``CH<x>_D<x>`` command tree.

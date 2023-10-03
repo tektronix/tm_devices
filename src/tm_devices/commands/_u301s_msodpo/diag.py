@@ -349,7 +349,6 @@ class DiagSelect(SCPICmdWrite, SCPICmdRead):
         """
         return self._fpanel
 
-    # pylint: disable=invalid-name
     @property
     def io(self) -> DiagSelectIo:
         """Return the ``DIAg:SELect:IO`` command.

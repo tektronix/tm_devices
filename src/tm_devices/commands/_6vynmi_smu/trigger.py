@@ -2700,7 +2700,6 @@ class TriggerModel(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def setblock_trigger_block_notify(self, block_number: int, n: str) -> None:
         """Run the ``trigger.model.setblock() - trigger.BLOCK_NOTIFY`` function.
 

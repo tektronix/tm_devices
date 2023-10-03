@@ -756,7 +756,6 @@ class WlistWaveformData(SCPICmdRead):
         self._q = WlistWaveformDataQ(device, f"{self._cmd_syntax}:Q")
         self._i = WlistWaveformDataI(device, f"{self._cmd_syntax}:I")
 
-    # pylint: disable=invalid-name
     @property
     def q(self) -> WlistWaveformDataQ:
         """Return the ``WLISt:WAVeform:DATA:Q`` command.
@@ -787,7 +786,6 @@ class WlistWaveformData(SCPICmdRead):
         """  # noqa: E501
         return self._q
 
-    # pylint: disable=invalid-name
     @property
     def i(self) -> WlistWaveformDataI:
         """Return the ``WLISt:WAVeform:DATA:I`` command.
@@ -2570,7 +2568,6 @@ class WlistSparameterNcascading(SCPICmdRead):
         """
         return self._layout
 
-    # pylint: disable=invalid-name
     @property
     def rx(self) -> Dict[int, WlistSparameterNcascadingRxItem]:
         """Return the ``WLISt:SPARameter:NCAScading:RX[n]`` command.
@@ -2650,7 +2647,6 @@ class WlistSparameterNcascading(SCPICmdRead):
         """
         return self._stype
 
-    # pylint: disable=invalid-name
     @property
     def tx(self) -> Dict[int, WlistSparameterNcascadingTxItem]:
         """Return the ``WLISt:SPARameter:NCAScading:TX[n]`` command.
@@ -3090,7 +3086,6 @@ class WlistSparameterCascadingStageItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         """
         return self._file
 
-    # pylint: disable=invalid-name
     @property
     def rx(self) -> Dict[int, WlistSparameterCascadingStageItemRxItem]:
         """Return the ``WLISt:SPARameter:CASCading:STAGe[m]:RX[n]`` command.
@@ -3144,7 +3139,6 @@ class WlistSparameterCascadingStageItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         """
         return self._sscheme
 
-    # pylint: disable=invalid-name
     @property
     def tx(self) -> Dict[int, WlistSparameterCascadingStageItemTxItem]:
         """Return the ``WLISt:SPARameter:CASCading:STAGe[m]:TX[n]`` command.

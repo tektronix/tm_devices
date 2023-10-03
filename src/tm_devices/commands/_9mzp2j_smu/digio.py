@@ -571,7 +571,6 @@ class Digio(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.writeprotect`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def readbit(self, n: int) -> str:
         """Run the ``digio.readbit()`` function.
 
@@ -629,7 +628,6 @@ class Digio(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.readport()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    # pylint: disable=invalid-name
     def writebit(self, n: int, data: int) -> None:
         """Run the ``digio.writebit()`` function.
 

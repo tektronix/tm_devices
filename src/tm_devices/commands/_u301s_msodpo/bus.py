@@ -199,7 +199,6 @@ class BusUpperthreshold(SCPICmdRead):
             lambda x: BusUpperthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, BusUpperthresholdChannel]:
         """Return the ``BUS:UPPerthreshold:CH<x>`` command.
@@ -307,7 +306,6 @@ class BusThreshold(SCPICmdRead):
             lambda x: BusThresholdDigitalBit(device, f"{self._cmd_syntax}:D{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, BusThresholdChannel]:
         """Return the ``BUS:THReshold:CH<x>`` command.
@@ -337,7 +335,6 @@ class BusThreshold(SCPICmdRead):
         """
         return self._ch
 
-    # pylint: disable=invalid-name
     @property
     def d(self) -> Dict[int, BusThresholdDigitalBit]:
         """Return the ``BUS:THReshold:D<x>`` command.
@@ -414,7 +411,6 @@ class BusLowerthreshold(SCPICmdRead):
             lambda x: BusLowerthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, BusLowerthresholdChannel]:
         """Return the ``BUS:LOWerthreshold:CH<x>`` command.
@@ -1921,7 +1917,6 @@ class BusBItemSpi(SCPICmdRead):
         """
         return self._select
 
-    # pylint: disable=invalid-name
     @property
     def ss(self) -> BusBItemSpiSs:
         """Return the ``BUS:B<x>:SPI:SS`` command tree.
@@ -2452,7 +2447,6 @@ class BusBItemRs232c(SCPICmdRead):
         """
         return self._polarity
 
-    # pylint: disable=invalid-name
     @property
     def rx(self) -> BusBItemRs232cRx:
         """Return the ``BUS:B<x>:RS232C:RX`` command tree.
@@ -2467,7 +2461,6 @@ class BusBItemRs232c(SCPICmdRead):
         """
         return self._rx
 
-    # pylint: disable=invalid-name
     @property
     def tx(self) -> BusBItemRs232cTx:
         """Return the ``BUS:B<x>:RS232C:TX`` command tree.
@@ -4660,7 +4653,6 @@ class Bus(SCPICmdWriteNoArguments, SCPICmdRead):
         self._threshold = BusThreshold(device, f"{self._cmd_syntax}:THReshold")
         self._upperthreshold = BusUpperthreshold(device, f"{self._cmd_syntax}:UPPerthreshold")
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> Dict[int, BusBItem]:
         """Return the ``BUS:B<x>`` command tree.

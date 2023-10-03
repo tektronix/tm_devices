@@ -218,7 +218,6 @@ class SvSpectrogramCursor(SCPICmdRead):
         self._a = SvSpectrogramCursorA(device, f"{self._cmd_syntax}:A")
         self._b = SvSpectrogramCursorB(device, f"{self._cmd_syntax}:B")
 
-    # pylint: disable=invalid-name
     @property
     def a(self) -> SvSpectrogramCursorA:
         """Return the ``SV:SPECtrogram:CURSor:A`` command.
@@ -249,7 +248,6 @@ class SvSpectrogramCursor(SCPICmdRead):
         """
         return self._a
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> SvSpectrogramCursorB:
         """Return the ``SV:SPECtrogram:CURSor:B`` command.
@@ -2931,7 +2929,6 @@ class Sv(SCPICmdRead):
         self._spectrogram = SvSpectrogram(device, f"{self._cmd_syntax}:SPECtrogram")
         self._window = SvWindow(device, f"{self._cmd_syntax}:WINDOW")
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, SvChannel]:
         """Return the ``SV:CH<x>`` command tree.

@@ -899,7 +899,6 @@ class SMU2635BCommands:
         """
         return self._format
 
-    # pylint: disable=invalid-name
     @property
     def fs(self) -> Fs:
         """Return the ``fs`` command tree.
@@ -924,7 +923,6 @@ class SMU2635BCommands:
         """
         return self._gpib
 
-    # pylint: disable=invalid-name
     @property
     def io(self) -> Io:
         """Return the ``io`` command tree.
@@ -1031,7 +1029,6 @@ class SMU2635BCommands:
         """
         return self._node
 
-    # pylint: disable=invalid-name
     @property
     def os(self) -> Os:
         """Return the ``os`` command tree.
@@ -2249,7 +2246,7 @@ class SMU2635BCommands:
         try:
             self._device.write(f"delay({seconds})")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``delay()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``delay()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def exit(self) -> None:
@@ -2270,7 +2267,7 @@ class SMU2635BCommands:
         try:
             self._device.write("exit()")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``exit()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``exit()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def gettimezone(self) -> str:
@@ -2294,7 +2291,7 @@ class SMU2635BCommands:
         try:
             return self._device.query("print(gettimezone())")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``gettimezone()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``gettimezone()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def gm_isweep(self, smu: str, start_i: str, stop_i: str, points: str) -> str:
@@ -2327,7 +2324,7 @@ class SMU2635BCommands:
                 f"print(gm_isweep({smu}, {start_i}, {stop_i}, {points}))"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``gm_isweep()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``gm_isweep()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def gm_vsweep(self, smu: str, start_v: str, stop_v: str, points: str) -> str:
@@ -2360,7 +2357,7 @@ class SMU2635BCommands:
                 f"print(gm_vsweep({smu}, {start_v}, {stop_v}, {points}))"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``gm_vsweep()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``gm_vsweep()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def i_leakage_measure(
@@ -2498,7 +2495,7 @@ class SMU2635BCommands:
                 f'print(makegetter({table}, "{attribute_name}"))'
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``makegetter()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``makegetter()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def makesetter(self, table: str, attribute_name: str) -> str:
@@ -2528,7 +2525,7 @@ class SMU2635BCommands:
                 f'print(makesetter({table}, "{attribute_name}"))'
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``makesetter()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``makesetter()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def meminfo(self) -> str:
@@ -2553,7 +2550,7 @@ class SMU2635BCommands:
         try:
             return self._device.query("print(meminfo())")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``meminfo()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``meminfo()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def opc(self) -> None:
@@ -2575,7 +2572,7 @@ class SMU2635BCommands:
         try:
             self._device.write("opc()")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``opc()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``opc()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def print(self, value: str) -> None:
@@ -2599,7 +2596,7 @@ class SMU2635BCommands:
         try:
             self._device.write(f"print({value})")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``print()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``print()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def printbuffer(self, start_index: int, end_index: int, buffer_var: str) -> str:
@@ -2632,7 +2629,7 @@ class SMU2635BCommands:
                 f"printbuffer({start_index}, {end_index}, {buffer_var})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``printbuffer()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``printbuffer()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def printnumber(self, value: str) -> str:
@@ -2659,7 +2656,7 @@ class SMU2635BCommands:
         try:
             return self._device.query(f"printnumber({value})")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``printnumber()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``printnumber()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def reset(self, system: Optional[str] = None) -> None:
@@ -2684,7 +2681,7 @@ class SMU2635BCommands:
             function_args = ", ".join(str(x) for x in (system,) if x is not None)
             self._device.write(f"reset({function_args})")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``reset()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``reset()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def savebuffer(self, buffer: str, format_type: str, file_name: str) -> None:
@@ -2713,7 +2710,7 @@ class SMU2635BCommands:
                 f'savebuffer({buffer}, "{format_type}", "{file_name}")'
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``savebuffer()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``savebuffer()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def settime(self, time: str) -> None:
@@ -2737,7 +2734,7 @@ class SMU2635BCommands:
         try:
             self._device.write(f"settime({time})")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``settime()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``settime()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def settimezone(
@@ -2780,7 +2777,7 @@ class SMU2635BCommands:
             )
             self._device.write(f"settimezone({function_args})")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``settimezone()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``settimezone()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def waitcomplete(self, group: Optional[str] = None) -> None:
@@ -2805,7 +2802,7 @@ class SMU2635BCommands:
             function_args = ", ".join(str(x) for x in (group,) if x is not None)
             self._device.write(f"waitcomplete({function_args})")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``waitcomplete()`` function."  # noqa: E501
+            msg = "No TSPDevice object was provided, unable to run the ``waitcomplete()`` function."
             raise NoDeviceProvidedError(msg) from error
 
 

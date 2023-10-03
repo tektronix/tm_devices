@@ -32,7 +32,6 @@ class TimerMeasure(BaseTSPCmd):
         - ``.t()``: The ``timer.measure.t()`` function.
     """
 
-    # pylint: disable=invalid-name
     def t(self) -> str:
         """Run the ``timer.measure.t()`` function.
 

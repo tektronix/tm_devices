@@ -184,7 +184,6 @@ class ChannelVtermDual(SCPICmdRead):
         self._a = ChannelVtermDualA(device, f"{self._cmd_syntax}:A")
         self._b = ChannelVtermDualB(device, f"{self._cmd_syntax}:B")
 
-    # pylint: disable=invalid-name
     @property
     def a(self) -> ChannelVtermDualA:
         """Return the ``CH<x>:VTERm:DUAL:A`` command.
@@ -211,7 +210,6 @@ class ChannelVtermDual(SCPICmdRead):
         """
         return self._a
 
-    # pylint: disable=invalid-name
     @property
     def b(self) -> ChannelVtermDualB:
         """Return the ``CH<x>:VTERm:DUAL:B`` command.
@@ -1335,7 +1333,6 @@ class ChannelProbe(SCPICmdRead):
         """
         return self._autozero
 
-    # pylint: disable=invalid-name
     @property
     def dc(self) -> ChannelProbeDc:
         """Return the ``CH<x>:PRObe:DC`` command tree.
@@ -1438,7 +1435,6 @@ class ChannelProbe(SCPICmdRead):
         """
         return self._gain
 
-    # pylint: disable=invalid-name
     @property
     def id(self) -> ChannelProbeId:
         """Return the ``CH<x>:PRObe:ID`` command.

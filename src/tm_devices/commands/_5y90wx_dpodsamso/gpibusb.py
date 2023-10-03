@@ -148,7 +148,6 @@ class Gpibusb(SCPICmdRead):
         """
         return self._hwversion
 
-    # pylint: disable=invalid-name
     @property
     def id(self) -> GpibusbId:
         """Return the ``GPIBUsb:ID`` command.

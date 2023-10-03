@@ -405,7 +405,6 @@ class CursorXyRectangular(SCPICmdRead):
         self._x = CursorXyRectangularX(device, f"{self._cmd_syntax}:X")
         self._y = CursorXyRectangularY(device, f"{self._cmd_syntax}:Y")
 
-    # pylint: disable=invalid-name
     @property
     def x(self) -> CursorXyRectangularX:
         """Return the ``CURSor:XY:RECTangular:X`` command tree.
@@ -422,7 +421,6 @@ class CursorXyRectangular(SCPICmdRead):
         """
         return self._x
 
-    # pylint: disable=invalid-name
     @property
     def y(self) -> CursorXyRectangularY:
         """Return the ``CURSor:XY:RECTangular:Y`` command tree.
@@ -2180,7 +2178,6 @@ class Cursor(SCPICmdRead):
         """
         return self._vbars
 
-    # pylint: disable=invalid-name
     @property
     def xy(self) -> CursorXy:
         """Return the ``CURSor:XY`` command tree.

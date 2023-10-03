@@ -2193,7 +2193,6 @@ class DisplayColorPaletteUser(SCPICmdWrite, SCPICmdRead):
         """
         return self._caret
 
-    # pylint: disable=invalid-name
     @property
     def ch(self) -> Dict[int, DisplayColorPaletteUserChannel]:
         """Return the ``DISplay:COLOr:PALEtte:USEr:CH<x>`` command.

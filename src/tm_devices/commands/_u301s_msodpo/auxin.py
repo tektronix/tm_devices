@@ -539,7 +539,6 @@ class AuxinProbe(SCPICmdWriteNoArguments, SCPICmdRead):
         """
         return self._gain
 
-    # pylint: disable=invalid-name
     @property
     def id(self) -> AuxinProbeId:
         """Return the ``AUXin:PRObe:ID`` command tree.

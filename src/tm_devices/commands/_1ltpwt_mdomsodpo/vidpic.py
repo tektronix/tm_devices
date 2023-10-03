@@ -437,7 +437,6 @@ class VidpicLocation(SCPICmdRead):
         """
         return self._width
 
-    # pylint: disable=invalid-name
     @property
     def x(self) -> VidpicLocationX:
         """Return the ``VIDPic:LOCation:X`` command.
@@ -460,7 +459,6 @@ class VidpicLocation(SCPICmdRead):
         """
         return self._x
 
-    # pylint: disable=invalid-name
     @property
     def y(self) -> VidpicLocationY:
         """Return the ``VIDPic:LOCation:Y`` command.

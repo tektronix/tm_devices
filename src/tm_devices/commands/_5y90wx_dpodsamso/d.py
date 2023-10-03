@@ -168,7 +168,6 @@ class DigitalBitProbe(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._id = DigitalBitProbeId(device, f"{self._cmd_syntax}:ID")
 
-    # pylint: disable=invalid-name
     @property
     def id(self) -> DigitalBitProbeId:
         """Return the ``D<x>:PROBE:ID`` command tree.

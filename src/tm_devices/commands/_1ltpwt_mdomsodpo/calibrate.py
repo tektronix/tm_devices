@@ -234,7 +234,6 @@ class CalibrateResultsSpc(SCPICmdRead):
         self._rf = CalibrateResultsSpcRf(device, f"{self._cmd_syntax}:RF")
         self._scope = CalibrateResultsSpcScope(device, f"{self._cmd_syntax}:SCOPE")
 
-    # pylint: disable=invalid-name
     @property
     def rf(self) -> CalibrateResultsSpcRf:
         """Return the ``CALibrate:RESults:SPC:RF`` command.
@@ -394,7 +393,6 @@ class CalibrateResultsFactory(SCPICmdRead):
         """
         return self._afg
 
-    # pylint: disable=invalid-name
     @property
     def rf(self) -> CalibrateResultsFactoryRf:
         """Return the ``CALibrate:RESults:FACtory:RF`` command.
@@ -613,7 +611,6 @@ class CalibrateInternalStatus(SCPICmdRead):
         self._rf = CalibrateInternalStatusRf(device, f"{self._cmd_syntax}:RF")
         self._scope = CalibrateInternalStatusScope(device, f"{self._cmd_syntax}:SCOPE")
 
-    # pylint: disable=invalid-name
     @property
     def rf(self) -> CalibrateInternalStatusRf:
         """Return the ``CALibrate:INTERNal:STATus:RF`` command.
@@ -868,7 +865,6 @@ class CalibrateFactoryStatus(SCPICmdRead):
         """
         return self._afg
 
-    # pylint: disable=invalid-name
     @property
     def rf(self) -> CalibrateFactoryStatusRf:
         """Return the ``CALibrate:FACtory:STATus:RF`` command.
@@ -1143,7 +1139,6 @@ class Calibrate(SCPICmdRead):
         """
         return self._results
 
-    # pylint: disable=invalid-name
     @property
     def rf(self) -> CalibrateRf:
         """Return the ``CALibrate:RF`` command.
