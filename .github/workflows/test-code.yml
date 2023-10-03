@@ -72,6 +72,7 @@ jobs:
         uses: codecov/codecov-action@v3
         if: '!cancelled()'
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: ./.coverage_tests.xml
           name: codecov-${{ matrix.os_name }}
           fail_ci_if_error: true
