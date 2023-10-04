@@ -50,7 +50,7 @@
    :target: https://results.pre-commit.ci/latest/github/tektronix/tm_devices/main
 
 .. |Documentation status| image:: https://readthedocs.org/projects/tm_devices/badge/?version=stable
-   :target: https://tm_devices.readthedocs.io/en/latest/?badge=latest
+   :target: https://tm-devices.readthedocs.io/en/latest/?badge=latest
 
 .. |License: Apache 2.0| image:: https://img.shields.io/pypi/l/tm_devices
    :target: https://tinyurl.com/tek-tm-devices/LICENSE.md
