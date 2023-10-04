@@ -62,6 +62,7 @@ jobs:
         uses: pypa/gh-action-pypi-publish@v1.8.8
         with:
           repository-url: https://test.pypi.org/legacy/
+          skip-existing: true
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
