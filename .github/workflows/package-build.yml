@@ -43,15 +43,13 @@ jobs:
   # Upload to Test PyPI on every push to main
   test-pypi:
     name: Publish package to test.pypi.org
-#    if: github.repository == 'tektronix/tm_devices' && github.event_name == 'push'
-#      && github.ref == 'refs/heads/main'
+    if: github.repository == 'tektronix/tm_devices' && github.event_name == 'push'
+      && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: testing
-        run: echo "dev.$(git rev-parse --short ${{ github.sha }})"
       - name: Create unique dev package version
         uses: python-semantic-release/python-semantic-release@v8.0.0
         with:
