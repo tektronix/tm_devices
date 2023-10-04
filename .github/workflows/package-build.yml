@@ -47,6 +47,8 @@ jobs:
 #      && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
+      - name: testing
+        run: echo "dev.$(git rev-parse --short ${{ github.sha }})"
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
