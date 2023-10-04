@@ -47,6 +47,9 @@ jobs:
 #      && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Create unique dev package version
         uses: python-semantic-release/python-semantic-release@v8.0.0
         with:
