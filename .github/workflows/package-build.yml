@@ -46,18 +46,15 @@ jobs:
     if: github.repository == 'tektronix/tm_devices' && github.event_name == 'push'
       && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    needs: build-package
     steps:
-      - name: Download built package
-        uses: actions/download-artifact@v3
-        with:
-          name: Packages
-          path: dist
+      - name: Create unique package version
+        run: semantic-release version --no-changelog --no-commit --build-metadata=dev.$(git
+          rev-parse --short ${{ github.sha }})
+      - uses: hynek/build-and-inspect-python-package@v1.5
       - name: Upload package to Test PyPI
         uses: pypa/gh-action-pypi-publish@v1.8.8
         with:
           repository-url: https://test.pypi.org/legacy/
-          skip-existing: true
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
