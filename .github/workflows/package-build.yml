@@ -47,9 +47,13 @@ jobs:
       && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
-      - name: Create unique package version
-        run: semantic-release version --no-changelog --no-commit --build-metadata=dev.$(git
-          rev-parse --short ${{ github.sha }})
+      - name: Create unique dev package version
+        uses: python-semantic-release/python-semantic-release@v8.0.0
+        with:
+          changelog: 'false'
+          commit: 'false'
+          vcs_release: 'false'
+          build_metadata: dev.$(git rev-parse --short ${{ github.sha }})
       - uses: hynek/build-and-inspect-python-package@v1.5
       - name: Upload package to Test PyPI
         uses: pypa/gh-action-pypi-publish@v1.8.8
