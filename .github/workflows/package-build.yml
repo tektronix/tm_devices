@@ -43,8 +43,8 @@ jobs:
   # Upload to Test PyPI on every push to main
   test-pypi:
     name: Publish package to test.pypi.org
-    if: github.repository == 'tektronix/tm_devices' && github.event_name == 'push'
-      && github.ref == 'refs/heads/main'
+#    if: github.repository == 'tektronix/tm_devices' && github.event_name == 'push'
+#      && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
