@@ -1,4 +1,4 @@
-"""This script modifies the current project version in the pyproject.toml file."""
+"""This script modifies or gets the current project version in the pyproject.toml file."""
 import argparse
 import os.path
 import pathlib
@@ -19,11 +19,11 @@ def parse_arguments() -> argparse.Namespace:
     """
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--version",
-        required=True,
+        "--set-version",
+        required=False,
         type=Version.parse,
         action="store",
-        dest="version",
+        dest="set_version",
         help="Provide the version to write to the pyproject.toml file",
     )
 
@@ -31,20 +31,23 @@ def parse_arguments() -> argparse.Namespace:
 
 
 def main() -> None:
-    """Modify the project version."""
+    """Modify or get the project version."""
     args = parse_arguments()
-    new_version: Version = args.version
+    new_version: Version = args.set_version
 
     # Read in the current data
     with open(PYPROJECT_FILE, "rb") as file_handle:
         pyproject_data = tomli.load(file_handle)
 
-    # Modify the version value
-    pyproject_data["tool"]["poetry"]["version"] = new_version.to_string()
+    if new_version:
+        # Modify the version value
+        pyproject_data["tool"]["poetry"]["version"] = new_version.to_string()
 
-    # Write back the data to the file
-    with open(PYPROJECT_FILE, "wb") as file_handle:
-        tomli_w.dump(pyproject_data, file_handle)
+        # Write back the data to the file
+        with open(PYPROJECT_FILE, "wb") as file_handle:
+            tomli_w.dump(pyproject_data, file_handle)
+    else:
+        print(pyproject_data["tool"]["poetry"]["version"])
 
 
 if __name__ == "__main__":
