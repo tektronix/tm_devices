@@ -17,7 +17,7 @@
    * - Code Quality
      - |CodeQL status| |CodeFactor grade| |pre-commit status|
    * - Package
-     - |PyPI: Package status| |PyPI: Latest release version| |PyPI: Supported Python versions| |License: Apache 2.0| |PyPI: Downloads| |Package build status|
+     - |PyPI: Package status| |PyPI: Latest release version| |PyPI: Supported Python versions| |License: Apache 2.0| |PyPI: Downloads| |Package build status| |TestPyPI upload status|
    * - Documentation
      - |Documentation status|
    * - Code Style
@@ -33,6 +33,9 @@
 
 .. |Package build status| image:: https://github.com/tektronix/tm_devices/actions/workflows/package-build.yml/badge.svg?branch=main
    :target: https://github.com/tektronix/tm_devices/actions/workflows/package-build.yml
+
+.. |TestPyPI upload status| image:: https://github.com/tektronix/tm_devices/actions/workflows/package-testpypi.yml/badge.svg?branch=main
+   :target: https://github.com/tektronix/tm_devices/actions/workflows/package-testpypi.yml
 
 .. |Coverage status| image:: https://codecov.io/gh/tektronix/tm_devices/branch/main/graph/badge.svg
    :target: https://codecov.io/gh/tektronix/tm_devices
