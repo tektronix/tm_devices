@@ -67,7 +67,6 @@ jobs:
           path: |
             .results_*/**
             .coverage*
-      # TODO: look into using https://github.com/mikepenz/action-junit-report for a junit report
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         if: '!cancelled()'

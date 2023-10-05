@@ -11,7 +11,8 @@ _Put an `x` in the boxes that apply_
 - [ ] New feature (non-breaking change which adds functionality)
 - [ ] Functionality update (non-breaking change which updates or changes existing functionality)
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] Documentation update (if none of the other choices apply)
+- [ ] CI/CD update (an update to the CI/CD workflows, scripts, and/or configurations)
+- [ ] Documentation update (an update to enhance the user experience when reading through the docs)
 
 ## Checklist
 
