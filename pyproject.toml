@@ -367,6 +367,12 @@ version_toml = [
   "pyproject.toml:tool.poetry.version"
 ]
 
+[tool.semantic_release.commit_parser_options]
+# These settings allow python-semantic-release to be used without triggering on any commits
+allowed_tags = []
+minor_tags = []
+patch_tags = []
+
 [tool.tomlsort]
 all = true
 in_place = true
