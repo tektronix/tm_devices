@@ -36,7 +36,7 @@ jobs:
       - uses: hynek/build-and-inspect-python-package@v1.5
         id: build-pkg
       - name: Copy package to dist/ folder
-        run: cp ${{ steps.build-pkg.outputs.dist }}/ dist/
+        run: cp -r ${{ steps.build-pkg.outputs.dist }}/ dist/
       - name: Upload package to Test PyPI
         uses: pypa/gh-action-pypi-publish@v1.8.8
         with:
