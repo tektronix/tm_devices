@@ -35,10 +35,11 @@ jobs:
 #          build_metadata: ${{ env.VERSION }}
       - uses: hynek/build-and-inspect-python-package@v1.5
         id: build-pkg
+      - name: Copy package to dist/ folder
+        run: cp ${{ steps.build-pkg.outputs.dist }}/ dist/
       - name: Upload package to Test PyPI
         uses: pypa/gh-action-pypi-publish@v1.8.8
         with:
-          packages_dir: ${{ steps.build-pkg.outputs.dist }}
           repository-url: https://test.pypi.org/legacy/
       - name: Set up Python
         uses: actions/setup-python@v4
