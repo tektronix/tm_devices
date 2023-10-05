@@ -363,7 +363,9 @@ convention = "google"
 max-args = 7
 
 [tool.semantic_release]
-version_variable = "pyproject.toml:version"
+version_toml = [
+  "pyproject.toml:tool.poetry.version"
+]
 
 [tool.tomlsort]
 all = true
