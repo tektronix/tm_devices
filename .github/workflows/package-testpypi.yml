@@ -1,0 +1,46 @@
+---
+name: Publish package to test.pypi.org
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+  id-token: write
+concurrency:
+  group: test-pypi-upload
+jobs:
+  # Upload to Test PyPI on every push to main
+  test-pypi:
+    name: Publish package to test.pypi.org
+    if: github.repository == 'tektronix/tm_devices'
+    runs-on: ubuntu-latest
+    environment: package-testpypi
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Create dev version metadata
+        run: |
+          VERSION=dev.$(git rev-parse --short ${{ github.sha }})
+          echo Version: $VERSION
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+      - name: Create unique dev package version
+        uses: python-semantic-release/python-semantic-release@v8.0.0
+        with:
+          changelog: 'false'
+          commit: 'false'
+          vcs_release: 'false'
+          build_metadata: ${{ env.VERSION }})
+      - uses: hynek/build-and-inspect-python-package@v1.5
+      - name: Upload package to Test PyPI
+        uses: pypa/gh-action-pypi-publish@v1.8.8
+        with:
+          repository-url: https://test.pypi.org/legacy/
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: x  # any version
+          check-latest: true
+      - name: Test installing from test.pypi.org
+        run: pip install --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple
+          tm_devices
