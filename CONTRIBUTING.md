@@ -5,10 +5,6 @@ and credit will always be given.
 
 ## Commit Guidelines
 
-This project uses
-[`python-semantic-release`](https://python-semantic-release.readthedocs.io/en/latest/index.html)
-to help automatically bump its version.
-
 - Commit messages should follow the
   [Angular style](https://python-semantic-release.readthedocs.io/en/latest/commit-parsing.html#semantic-release-commit-parser-angularcommitparser).
 
