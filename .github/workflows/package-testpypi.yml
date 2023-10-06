@@ -27,12 +27,13 @@ jobs:
         with:
           python-version: x  # any version
           check-latest: true
-      - name: Create unique dev package version
+      - name: Install workflow dependencies
+        run: pip install poetry tomli tomli_w requests
+      - name: Create unique package version
         run: |
-          pip install poetry tomli tomli_w requests
           CURRENT_VERSION=$(python scripts/project_version.py)
           echo CURRENT_VERSION: $CURRENT_VERSION
-          NEW_VERSION=`echo $CURRENT_VERSION |grep -Po '^\d+\.\d+\.\d+'`.post$((`echo $CURRENT_VERSION |grep -Po '(?<=post)([0-9]*)$'` + 1))
+          NEW_VERSION=$(echo $CURRENT_VERSION |grep -Po '^\d+\.\d+\.\d+').post$(($(echo $CURRENT_VERSION |grep -Po '(?<=post)([0-9]*)$') + 1))
           echo NEW_VERSION: $NEW_VERSION
           python scripts/project_version.py --set-version=$NEW_VERSION
       - uses: hynek/build-and-inspect-python-package@v1.5
