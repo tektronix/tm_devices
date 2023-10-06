@@ -50,7 +50,7 @@ jobs:
         with:
           repository-url: https://test.pypi.org/legacy/
       - name: Wait for package to be available
-        run: sleep 60
+        run: sleep 30
       - name: Test installing from test.pypi.org
         run: pip install --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple
           tm_devices==${{ env.NEW_VERSION }}
