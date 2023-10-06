@@ -34,6 +34,7 @@ jobs:
           NEW_VERSION=$(python scripts/create_post_version_for_testpypi.py --version=$CURRENT_VERSION)
           echo NEW_VERSION: $NEW_VERSION
           python scripts/project_version.py --set-version=$NEW_VERSION
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
       - uses: hynek/build-and-inspect-python-package@v1.5
         id: build-pkg
       - name: Copy package to dist/ folder
@@ -46,4 +47,4 @@ jobs:
           repository-url: https://test.pypi.org/legacy/
       - name: Test installing from test.pypi.org
         run: pip install --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple
-          tm_devices
+          tm_devices==${{ env.NEW_VERSION }}
