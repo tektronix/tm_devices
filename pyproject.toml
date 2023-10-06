@@ -300,12 +300,12 @@ ignore = [
   "UP037"  # Remove quotes from type annotation
 ]
 line-length = 100
-namespace-packages = ["examples/**", "tests/**"]
+namespace-packages = ["examples/**", "scripts/**", "tests/**"]
 # https://beta.ruff.rs/docs/rules/
 select = [
   "ALL"
 ]
-src = ["docs", "examples", "src", "tests"]
+src = ["docs", "examples", "scripts", "src", "tests"]
 target-version = "py38"  # always generate Python 3.8 compatible code
 task-tags = ["FIXME", "FUTURE", "RELIC", "TODO"]
 

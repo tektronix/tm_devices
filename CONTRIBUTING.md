@@ -72,7 +72,7 @@ recommended IDE for package development is
 
    - Using the helper script (recommended):
      ```console
-     python contributor_setup.py
+     python scripts/contributor_setup.py
      ```
    - Or manually:
      ```console
