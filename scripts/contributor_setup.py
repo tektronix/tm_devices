@@ -62,8 +62,6 @@ def create_virtual_environment(virtual_env_dir: str, reset_env: bool) -> None:
             print("")
         print(f"Removing virtualenv located at '{virtual_env_dir}'")
         shutil.rmtree(virtual_env_dir)
-        if os.path.exists("poetry.lock"):
-            os.remove("poetry.lock")
     if not os.path.exists(virtual_env_dir) and not running_in_virtualenv():
         if not added_newline:
             print("")
