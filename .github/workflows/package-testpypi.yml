@@ -1,20 +1,16 @@
 ---
+# Upload to Test PyPI on every push to main
 name: Publish package to test.pypi.org
 on:
   push:
     branches: [main]
-permissions:
-  contents: write
-  id-token: write
 concurrency:
-  group: test-pypi-upload
+  group: pypi
 jobs:
-  # Upload to Test PyPI on every push to main
-  test-pypi:
-    name: Publish package to test.pypi.org
+  test-pypi-build:
+    name: Build package with unique version for test.pypi.org
     if: github.repository == 'tektronix/tm_devices'
     runs-on: ubuntu-latest
-    environment: package-testpypi
     steps:
       - uses: actions/checkout@v3
         with:
@@ -26,27 +22,56 @@ jobs:
           python-version: 3.11
           check-latest: true
       - name: Install workflow dependencies
-        run: pip install poetry tomli tomli_w requests
+        run: pip install poetry-core tomli tomli_w requests
       - name: Create unique package version
+        id: create-version
         run: |
           CURRENT_VERSION=$(python scripts/pypi_latest_version.py --package=tm_devices --index=test.pypi)
           echo CURRENT_VERSION: $CURRENT_VERSION
           NEW_VERSION=$(python scripts/create_post_version_for_testpypi.py --version=$CURRENT_VERSION)
           echo NEW_VERSION: $NEW_VERSION
           python scripts/project_version.py --set-version=$NEW_VERSION
-          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
-      - uses: hynek/build-and-inspect-python-package@v1.5
-        id: build-pkg
-      - name: Copy package to dist/ folder
-        run: |
-          mkdir -p dist/
-          cp ${{ steps.build-pkg.outputs.dist }}/*.whl ${{ steps.build-pkg.outputs.dist }}/*.tar.gz dist/
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
+      - name: Build package
+        uses: hynek/build-and-inspect-python-package@v1.5
+    outputs:
+      built-version: ${{ steps.create-version.outputs.NEW_VERSION }}
+  test-pypi-upload:
+    name: Upload package to test.pypi.org
+    needs: test-pypi-build
+    if: github.repository == 'tektronix/tm_devices'
+    runs-on: ubuntu-latest
+    environment: package-testpypi
+    permissions:
+      id-token: write
+    steps:
+      - name: Download built packages
+        uses: actions/download-artifact@v3
+        with:
+          name: Packages
+          path: dist
       - name: Upload package to Test PyPI
         uses: pypa/gh-action-pypi-publish@v1.8.8
         with:
           repository-url: https://test.pypi.org/legacy/
-      - name: Wait for package to be available
-        run: sleep 30
+  test-pypi-install:
+    name: Install package from test.pypi.org
+    needs: [test-pypi-build, test-pypi-upload]
+    if: github.repository == 'tektronix/tm_devices'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: x
+          check-latest: true
       - name: Test installing from test.pypi.org
-        run: pip install --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple
-          tm_devices==${{ env.NEW_VERSION }}
+        # A retry is used to allow for some downtime before the package is installable
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 2
+          max_attempts: 5
+          retry_wait_seconds: 30
+          warning_on_retry: false
+          command: pip install --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple
+            tm_devices==${{ needs.test-pypi-build.outputs.built-version }}
