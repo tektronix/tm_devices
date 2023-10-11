@@ -69,8 +69,6 @@ jobs:
         with:
           python-version: x
           check-latest: true
-      - name: Wait for package to be available
-        run: sleep 60
       - name: Test installing from test.pypi.org
         # A retry is used to allow for some downtime before the package is installable
         uses: nick-fields/retry@v2
