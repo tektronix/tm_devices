@@ -72,5 +72,11 @@ jobs:
       - name: Wait for package to be available
         run: sleep 60
       - name: Test installing from test.pypi.org
-        run: pip install --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple
-          tm_devices==${{ needs.test-pypi-build.outputs.built-version }}
+        # A retry is used to allow for some downtime before the package is installable
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 2
+          max_attempts: 5
+          retry_wait_seconds: 30
+          command: pip install --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple
+            tm_devices==${{ needs.test-pypi-build.outputs.built-version }}
