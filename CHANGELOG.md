@@ -7,6 +7,14 @@ project adheres to [Semantic Versioning](https://semver.org).
 
 ______________________________________________________________________
 
+## Unreleased
+
+### Added
+
+- A command-line script to list all available VISA resources, `list-visa-resources`
+
+______________________________________________________________________
+
 ## v0.1.14 (2023-10-03)
 
 ### Added
