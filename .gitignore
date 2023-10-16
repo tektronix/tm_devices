@@ -68,10 +68,6 @@ _readthedocs/
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# IPython
-profile_default/
-ipython_config.py
-
 # pyenv
 .python-version
 
@@ -87,20 +83,8 @@ ENV*/
 env.bak/
 venv.bak/
 
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
 # ruff
 .ruff_cache/
-
-# Pyre type checker
-.pyre/
-**__pycache__
 
 # PyCharm
 .idea/
