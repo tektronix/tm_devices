@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import contextlib
 import inspect
+import json
 import os
 import pathlib
 import socket
@@ -1427,3 +1428,10 @@ class DeviceManager(metaclass=Singleton):
             else:
                 self.__visa_library = ""
         self.verbose_visa = bool(self.__config.options.verbose_visa)
+
+
+def print_available_visa_devices() -> None:  # pragma: no cover
+    """Print all available VISA devices to the console."""
+    with contextlib.redirect_stdout(None), contextlib.redirect_stderr(None), DeviceManager() as dm:
+        available_devices = dm.get_available_devices()
+    print(json.dumps(available_devices["local"], indent=2))

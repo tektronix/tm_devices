@@ -133,6 +133,20 @@ Installation
 Basic Usage
 -----------
 
+Print Available VISA Devices
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   $ list-visa-resources
+   [
+     "TCPIP0::192.168.0.100::inst0::INSTR",
+     "ASRL4::INSTR"
+   ]
+
+Basic Script
+~~~~~~~~~~~~
+
 .. code-block:: python
 
    from tm_devices import DeviceManager

@@ -12,7 +12,7 @@ Examples:
 """
 from importlib.metadata import version
 
-from tm_devices.device_manager import DeviceManager
+from tm_devices.device_manager import DeviceManager, print_available_visa_devices
 from tm_devices.helpers.constants_and_dataclasses import (
     PACKAGE_NAME,
     PYVISA_PY_BACKEND,
@@ -25,6 +25,7 @@ __version__ = version(PACKAGE_NAME)
 
 __all__ = [
     "DeviceManager",
+    "print_available_visa_devices",
     "PYVISA_PY_BACKEND",
     "SupportedModels",
     "SYSTEM_DEFAULT_VISA_BACKEND",

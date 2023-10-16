@@ -3,6 +3,18 @@
 A collection of examples showing the basics of how to use `tm_devices` in a
 project.
 
+## List available VISA devices
+
+This will print the available VISA devices to the console when run from a shell terminal.
+
+```console
+> list-visa-resources
+[
+  "TCPIP0::192.168.0.100::inst0::INSTR",
+  "ASRL4::INSTR"
+]
+```
+
 ## Adding devices
 
 ```{literalinclude} ../examples/miscellaneous/adding_devices.py
