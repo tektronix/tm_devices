@@ -5,7 +5,6 @@ This file only contains a selection of the most common options. For a full list 
 documentation: https://www.sphinx-doc.org/en/master/usage/configuration.html
 """
 import os
-import shutil
 import sys
 
 from importlib.metadata import metadata
@@ -124,8 +123,8 @@ autoapi_python_class_content = "class"
 autoclass_content = "class"
 autoapi_generate_api_docs = True
 # This requires Graphviz to be installed, https://graphviz.org/
-if shutil.which("dot"):
-    autoapi_options.append("show-inheritance-diagram")
+# FUTURE # if shutil.which("dot"):
+# FUTURE #     autoapi_options.append("show-inheritance-diagram")
 
 # -- Options for HTML output -------------------------------------------------
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -210,7 +209,7 @@ def skip_member(
     _ = name
     _ = options
     if (
-        what == "module"  # pylint: disable=too-many-boolean-expressions
+        what == "module"
         or (
             what == "package"
             and obj.short_name not in _package_set  # pyright: ignore [reportUnknownMemberType]
@@ -218,7 +217,6 @@ def skip_member(
         or (
             f"{os.path.sep}commands{os.path.sep}" in obj.pathname
             or obj.pathname.endswith(f"{os.path.sep}commands")
-            or "_commands" in name
         )
     ):
         skip = True
