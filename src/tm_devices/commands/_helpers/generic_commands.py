@@ -61,12 +61,6 @@ class BaseCmd:
     """A class defining the base syntax of a command class.
 
     The syntax is accessible through the ``.cmd_syntax`` property.
-
-    Examples:
-        >>> class Command(BaseCmd):
-        ...     '''A basic command.'''
-        >>> command = Command(None, "cmd")
-        >>> assert command.cmd_syntax == "cmd"
     """
 
     def __init__(self, device: Optional["Device"], cmd_syntax: str) -> None:
