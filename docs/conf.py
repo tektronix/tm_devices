@@ -45,6 +45,7 @@ extensions = [
     "sphinx.ext.todo",
     "sphinx.ext.inheritance_diagram",
     "sphinx.ext.graphviz",
+    "sphinx.ext.githubpages",
     "sphinxcontrib.jquery",
     "sphinxcontrib.mermaid",
     "sphinx_togglebutton",
