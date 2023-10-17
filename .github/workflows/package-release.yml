@@ -41,7 +41,7 @@ jobs:
         uses: python-semantic-release/python-semantic-release@v8.0.0
         with:
           root_options: --verbose --strict
-          force: inputs.release_level
+          force: ${{ inputs.release_level }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
     outputs:
       built-version: ${{ steps.release.outputs.version }}
