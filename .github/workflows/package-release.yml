@@ -15,11 +15,11 @@ on:
 concurrency:
   group: pypi
 jobs:
-  pypi-build-and-upload:
-    name: Build package, create release, and upload package
+  pypi-version:
+    name: Update package version
     if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    environment: package-release
+    environment: package-release-gate
     permissions:
       id-token: write
     steps:
@@ -29,8 +29,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          # TODO: update to just "x", currently there appears to be a bug in hynek/build-and-inspect-python-package, where it uses an outdated version of typing_extensions.
-          python-version: 3.11
+          python-version: x
           check-latest: true
       - name: Check for unreleased entries in the Changelog
         run: python scripts/check_unreleased_changelog_items.py
@@ -43,8 +42,28 @@ jobs:
           root_options: --verbose --strict
           force: inputs.release_level
           github_token: ${{ secrets.GITHUB_TOKEN }}
+    outputs:
+      built-version: ${{ steps.release.outputs.version }}
+  pypi-build:
+    name: Build package
+    needs: [pypi-version]
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Build package
         uses: hynek/build-and-inspect-python-package@v1.5
+  upload-testpypi:
+    name: Upload package to TestPyPI
+    needs: [pypi-build]
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: package-testpypi
+    permissions:
+      id-token: write
+    steps:
       - name: Download built packages
         uses: actions/download-artifact@v3
         with:
@@ -54,17 +73,47 @@ jobs:
         uses: pypa/gh-action-pypi-publish@v1.8.8
         with:
           repository-url: https://test.pypi.org/legacy/
+  upload-pypi:
+    name: Upload package to PyPI
+    needs: [upload-testpypi]
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: package-release
+    permissions:
+      id-token: write
+    steps:
+      - name: Download built packages
+        uses: actions/download-artifact@v3
+        with:
+          name: Packages
+          path: dist
       - name: Upload package to PyPI
         uses: pypa/gh-action-pypi-publish@v1.8.8
+  upload-github:
+    name: Upload package to GitHub Release
+    needs: [upload-pypi]
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - name: Download built packages
+        uses: actions/download-artifact@v3
+        with:
+          name: Packages
+          path: dist
       - name: Publish package distributions to GitHub Releases
         uses: python-semantic-release/upload-to-gh-release@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-    outputs:
-      built-version: ${{ steps.release.outputs.version }}
   pypi-install:
     name: Install package
-    needs: [pypi-build-and-upload]
+    needs:
+      - pypi-version
+      - pypi-build
+      - upload-testpypi
+      - upload-pypi
+      - upload-github
     if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     strategy:
@@ -87,4 +136,4 @@ jobs:
           max_attempts: 5
           retry_wait_seconds: 30
           warning_on_retry: false
-          command: pip install${{ matrix.index_urls }} tm_devices==${{ needs.pypi-build-and-upload.outputs.built-version }}
+          command: pip install${{ matrix.index_urls }} tm_devices==${{ needs.pypi-version.outputs.built-version }}
