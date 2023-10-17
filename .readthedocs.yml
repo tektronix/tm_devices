@@ -7,9 +7,19 @@ build:
   tools:
     python: '3.11'  # This needs to stay in sync with pyproject.toml and any CI scripts
     nodejs: '18'  # This needs to stay in sync with any CI scripts
-  jobs:
-    post_install: [npm install -g @mermaid-js/mermaid-cli]
+# The jobs key doesn't work with the commands key.
+#  jobs:
+#    post_install: [npm install -g @mermaid-js/mermaid-cli]
   commands:
+    - cat .readthedocs.yml
+    - python -m virtualenv $READTHEDOCS_VIRTUALENV_PATH
+    - python -m pip install --upgrade --no-cache-dir pip setuptools
+    - python -m pip install --upgrade --no-cache-dir sphinx readthedocs-sphinx-ext
+    - python -m pip install --exists-action=w --no-cache-dir -r docs/requirements.txt
+    - python -m pip install --upgrade --upgrade-strategy only-if-needed --no-cache-dir
+      .
+    - npm install -g @mermaid-js/mermaid-cli
+    - cat docs/conf.py
     - python -m sphinx --jobs auto -T -E -W --keep-going -b html -d _build/doctrees
       -D language=en . $READTHEDOCS_OUTPUT/html
 # Configuration
