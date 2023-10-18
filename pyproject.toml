@@ -123,7 +123,7 @@ pytest-cov = ">=3.0.0"
 pytest-html = ">=4.0"
 pytest-order = ">=1.0.1"
 pytest-profiling = ">=1.7.0"
-python-semantic-release = ">=7.31.2"
+python-semantic-release = ">=8.0"
 ruff = ">=0.0.292"
 safety = ">=2.1.1"
 sphinx-autoapi = ">=2.0.0"
@@ -369,6 +369,13 @@ max-args = 7
 version_toml = [
   "pyproject.toml:tool.poetry.version"
 ]
+
+[tool.semantic_release.changelog]
+exclude_commit_patterns = []
+template_dir = "python_semantic_release_templates"
+
+[tool.semantic_release.changelog.environment]
+extensions = ["jinja2.ext.do"]
 
 [tool.semantic_release.commit_parser_options]
 # These settings allow python-semantic-release to be used without triggering on any commits

@@ -3,7 +3,14 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this
 project adheres to [Semantic Versioning](https://semver.org).
 
-<!--next-version-placeholder-->
+Valid subsections within a version are:
+
+- Added
+- Changed
+- Deprecated
+- Removed
+- Fixed
+- Security
 
 ______________________________________________________________________
 
@@ -15,7 +22,7 @@ ______________________________________________________________________
 
 ______________________________________________________________________
 
-## v0.1.14 (2023-10-03)
+## v0.1.14 (2023-10-05)
 
 ### Added
 

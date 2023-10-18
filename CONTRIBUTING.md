@@ -80,10 +80,10 @@ recommended IDE for package development is
      ```
      ```console
      # Linux
-     source .env/bin/activate
+     source .venv/bin/activate
 
      # Windows
-     .env\Scripts\activate.bat
+     .venv\Scripts\activate.bat
      ```
      ```console
      python -m pip install -U pip poetry
@@ -97,7 +97,7 @@ recommended IDE for package development is
    git checkout -b name-of-your-bugfix-or-feature
    ```
 
-4. Update the [CHANGELOG](CHANGELOG.md) using the proper format.
+4. Update the **Unreleased** section in the [CHANGELOG](CHANGELOG.md) using the proper format.
 
 5. When you're done making changes, check that your changes conform to any code
    formatting requirements and pass any tests.
@@ -106,10 +106,10 @@ recommended IDE for package development is
       Always remember to activate the virtual environment before attempting to run tests or other code.
       ```console
       # Linux
-      source .env/bin/activate
+      source .venv/bin/activate
 
       # Windows
-      .env\Scripts\activate.bat
+      .venv\Scripts\activate.bat
       ```
    ````
 
@@ -171,10 +171,10 @@ commands:
 Always remember to activate the virtual environment before attempting to run tests or other code.
 ```console
 # Linux
-source .env/bin/activate
+source .venv/bin/activate
 
 # Windows
-.env\Scripts\activate.bat
+.venv\Scripts\activate.bat
 ```
 ````
 
@@ -194,7 +194,7 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the pull request adds functionality, the docs should be updated.
 3. The pull request should work for all currently supported operating systems
    and versions of Python.
-4. The [Changelog](CHANGELOG.md) should be updated.
+4. The **Unreleased** section in the [Changelog](CHANGELOG.md) should be updated.
 
 ## Project Test Plan
 
