@@ -27,8 +27,6 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Modify Git configuration
-        run: git config advice.addIgnoredFile false
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -37,7 +35,7 @@ jobs:
       - name: Check for unreleased entries in the Changelog
         run: python scripts/check_unreleased_changelog_items.py
       - name: Copy Changelog to template directory
-        run: cp CHANGELOG.md python_semantic_release_templates/temp_CHANGELOG_copy.md
+        run: cp CHANGELOG.md python_semantic_release_templates/.previous_changelog_for_template.md
       - name: Python Semantic Release
         id: release
         uses: python-semantic-release/python-semantic-release@v8.0.0
