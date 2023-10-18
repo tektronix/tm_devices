@@ -1,0 +1,140 @@
+---
+name: Create package release and publish binaries to pypi.org
+on:
+  workflow_dispatch:
+    inputs:
+      release_level:
+        type: choice
+        required: true
+        description: |
+          Select the release level,
+          patch for backward compatible minor changes and bug fixes,
+          minor for backward compatible larger changes,
+          major for non-backward compatible changes.
+        options: [patch, minor, major]
+concurrency:
+  group: pypi
+jobs:
+  pypi-version:
+    name: Update package version
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: package-release-gate
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: x
+          check-latest: true
+      - name: Check for unreleased entries in the Changelog
+        run: python scripts/check_unreleased_changelog_items.py
+      - name: Copy Changelog to template directory
+        run: cp CHANGELOG.md python_semantic_release_templates/temp_CHANGELOG_copy.md
+      - name: Python Semantic Release
+        id: release
+        uses: python-semantic-release/python-semantic-release@v8.0.0
+        with:
+          root_options: --verbose --strict
+          force: ${{ inputs.release_level }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+    outputs:
+      built-version: ${{ steps.release.outputs.version }}
+  pypi-build:
+    name: Build package
+    needs: [pypi-version]
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Build package
+        uses: hynek/build-and-inspect-python-package@v1.5
+  upload-testpypi:
+    name: Upload package to TestPyPI
+    needs: [pypi-build]
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: package-testpypi
+    permissions:
+      id-token: write
+    steps:
+      - name: Download built packages
+        uses: actions/download-artifact@v3
+        with:
+          name: Packages
+          path: dist
+      - name: Upload package to Test PyPI
+        uses: pypa/gh-action-pypi-publish@v1.8.8
+        with:
+          repository-url: https://test.pypi.org/legacy/
+  upload-pypi:
+    name: Upload package to PyPI
+    needs: [upload-testpypi]
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: package-release
+    permissions:
+      id-token: write
+    steps:
+      - name: Download built packages
+        uses: actions/download-artifact@v3
+        with:
+          name: Packages
+          path: dist
+      - name: Upload package to PyPI
+        uses: pypa/gh-action-pypi-publish@v1.8.8
+  upload-github:
+    name: Upload package to GitHub Release
+    needs: [upload-pypi]
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - name: Download built packages
+        uses: actions/download-artifact@v3
+        with:
+          name: Packages
+          path: dist
+      - name: Publish package distributions to GitHub Releases
+        uses: python-semantic-release/upload-to-gh-release@main
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+  pypi-install:
+    name: Install package
+    needs:
+      - pypi-version
+      - pypi-build
+      - upload-testpypi
+      - upload-pypi
+      - upload-github
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        index_urls:
+          - ''
+          - ' --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple'
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: x
+          check-latest: true
+      - name: Test installing package
+        # A retry is used to allow for some downtime before the package is installable
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 2
+          max_attempts: 5
+          retry_wait_seconds: 30
+          warning_on_retry: false
+          command: pip install${{ matrix.index_urls }} tm_devices==${{ needs.pypi-version.outputs.built-version }}

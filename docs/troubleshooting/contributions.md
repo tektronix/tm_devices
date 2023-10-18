@@ -213,10 +213,10 @@ then retry the command.
 
 ```console
 # Linux
-source .env/bin/activate
+source .venv/bin/activate
 
 # Windows
-.env\Scripts\activate.bat
+.venv\Scripts\activate.bat
 
 # Update installed dependencies
 python -m poetry update
@@ -326,10 +326,10 @@ file when running pytest.
 
 ```console
 # Linux
-source .env/bin/activate
+source .venv/bin/activate
 pytest -k "test_docs" --self-contained-html --html=$(pwd)/.results_doctests/results.html
 
 # Windows
-.env\Scripts\activate.bat
+.venv\Scripts\activate.bat
 pytest -k "test_docs" --self-contained-html --html=%CD%\.results_doctests\results.html
 ```
