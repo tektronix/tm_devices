@@ -1,5 +1,5 @@
 ---
-name: Create package release and publish binaries to pypi.org
+name: Publish package
 on:
   workflow_dispatch:
     inputs:
