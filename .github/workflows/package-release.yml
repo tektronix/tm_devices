@@ -28,6 +28,7 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
+          persist-credentials: false
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
