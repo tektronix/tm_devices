@@ -27,6 +27,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          token: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -43,6 +44,10 @@ jobs:
           root_options: --verbose --strict
           force: ${{ inputs.release_level }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          git_committer_name: Tektronix
+          git_committer_email: opensource@tektronix.com
+          ssh_public_signing_key: ${{ secrets.TEK_OPENSOURCE_PUBLIC_KEY }}
+          ssh_private_signing_key: ${{ secrets.TEK_OPENSOURCE_PRIVATE_KEY }}
     outputs:
       built-version: ${{ steps.release.outputs.version }}
   pypi-build:
