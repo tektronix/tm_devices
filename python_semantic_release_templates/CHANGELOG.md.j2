@@ -19,5 +19,5 @@
 
 
 {%-  filter replace("## Unreleased", "## Unreleased\n\n______________________________________________________________________\n\n## " + latest_version_number + " (" + latest_version_date + ")" + merged_prs_text) %}
-    {%-  include "previous_changelog_for_template.md" %}
+    {%-  include ".previous_changelog_for_template.md" %}
 {% endfilter %}
