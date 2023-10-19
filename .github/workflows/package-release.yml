@@ -54,7 +54,7 @@ jobs:
         run: cp CHANGELOG.md python_semantic_release_templates/.previous_changelog_for_template.md
       - name: Python Semantic Release
         id: release
-        run: python -m semantic_release --verbose --strict --${{ inputs.release_level }}
+        run: python -m semantic_release --verbose --strict version --${{ inputs.release_level }}
           --commit --push --changelog --vcs-release
         env:
           GH_TOKEN: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
