@@ -44,7 +44,7 @@ jobs:
         with:
           root_options: --verbose --strict
           force: ${{ inputs.release_level }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
           git_committer_name: Tektronix
           git_committer_email: opensource@tektronix.com
           ssh_public_signing_key: ${{ secrets.TEK_OPENSOURCE_PUBLIC_KEY }}
