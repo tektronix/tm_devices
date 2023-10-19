@@ -57,6 +57,7 @@ jobs:
         run: python -m semantic_release --verbose --strict --${{ inputs.release_level }}
           --commit --push --changelog --vcs-release
         env:
+          GH_TOKEN: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
           GIT_AUTHOR_NAME: ${{ steps.import-gpg.outputs.name }}
           GIT_AUTHOR_EMAIL: ${{ steps.import-gpg.outputs.email }}
