@@ -15,6 +15,9 @@ on:
 concurrency:
   group: pypi
 jobs:
+  # This job requires a Personal Access Token (Classic) with
+  # the public_repo permission. It also needs secrets with GPG
+  # signing key information for the same account that the token is from.
   pypi-version:
     name: Update package version
     if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
@@ -31,7 +34,7 @@ jobs:
           persist-credentials: false
       - name: Import GPG key for signing commits
         id: import-gpg
-        uses: crazy-max/ghaction-import-gpg@v4
+        uses: crazy-max/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.TEK_OPENSOURCE_GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.TEK_OPENSOURCE_GPG_PASSPHRASE }}
@@ -43,19 +46,22 @@ jobs:
         with:
           python-version: x
           check-latest: true
+      - name: Install dependencies
+        run: pip install python-semantic-release
       - name: Check for unreleased entries in the Changelog
         run: python scripts/check_unreleased_changelog_items.py
       - name: Copy Changelog to template directory
         run: cp CHANGELOG.md python_semantic_release_templates/.previous_changelog_for_template.md
       - name: Python Semantic Release
         id: release
-        uses: python-semantic-release/python-semantic-release@v8.1.2
-        with:
-          root_options: --verbose --strict
-          force: ${{ inputs.release_level }}
-          github_token: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
-          git_committer_name: ${{ steps.import-gpg.outputs.name }}
-          git_committer_email: ${{ steps.import-gpg.outputs.email }}
+        run: python -m semantic_release --verbose --strict --${{ inputs.release_level }}
+          --commit --push --changelog --vcs-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
+          GIT_AUTHOR_NAME: ${{ steps.import-gpg.outputs.name }}
+          GIT_AUTHOR_EMAIL: ${{ steps.import-gpg.outputs.email }}
+          GIT_COMMITTER_NAME: ${{ steps.import-gpg.outputs.name }}
+          GIT_COMMITTER_EMAIL: ${{ steps.import-gpg.outputs.email }}
     outputs:
       built-version: ${{ steps.release.outputs.version }}
   pypi-build:
