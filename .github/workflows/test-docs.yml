@@ -5,10 +5,6 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-# Cancel running jobs for the same workflow and branch.
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
 # IMPORTANT: Any new jobs need to be added to the check-docs-passed job to ensure they correctly gate code changes
 jobs:
   # Test building the docs (html, linkcheck, doctest, coverage)
