@@ -18,6 +18,14 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v0.1.17 (2023-10-20)
+
+### Merged Pull Requests
+
+- Fix readme links and release workflow ([#39](https://github.com/tektronix/tm_devices/issues/39))
+
 ### Fixed
 
 - Updated links in the README to properly redirect to GitHub when accessed from PyPI
