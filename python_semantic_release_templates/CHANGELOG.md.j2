@@ -6,7 +6,7 @@
     {%- for commit in commits %}
         {%- set pr_num = commit.commit.message.rstrip().rsplit("(#", 1)[-1].rsplit(")", 1)[0]|int %}
         {%- if pr_num %}
-            {%- do recently_merged_prs.update({commit.commit.message.split("\n")[0].rsplit("(#", 1)[0]: pr_num}) %}
+            {%- do recently_merged_prs.update({commit.commit.message.split("\n")[0].rsplit("(#", 1)[0]|safe: pr_num}) %}
         {%- endif %}
     {%- endfor %}
 {%- endfor %}
