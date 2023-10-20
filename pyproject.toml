@@ -56,7 +56,7 @@ classifiers = [
   "Topic :: System :: Hardware :: Hardware Drivers"
 ]
 description = "Manage connections and interactions with Test & Measurement devices."
-documentation = "https://tm_devices.readthedocs.io/en/stable/"
+documentation = "https://tm-devices.readthedocs.io/en/latest/"
 homepage = "https://pypi.org/project/tm_devices/"
 keywords = [
   "REST API",
