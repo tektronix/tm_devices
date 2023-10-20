@@ -40,7 +40,9 @@ jobs:
       - name: Check for unreleased entries in the Changelog
         run: python scripts/check_unreleased_changelog_items.py
       - name: Copy Changelog to template directory
-        run: cp CHANGELOG.md python_semantic_release_templates/.previous_changelog_for_template.md
+        run: |
+          cp CHANGELOG.md python_semantic_release_templates/.previous_changelog_for_template.md
+          git add python_semantic_release_templates/.previous_changelog_for_template.md
       - name: Python Semantic Release
         uses: python-semantic-release/python-semantic-release@v8.1.2
         id: release
