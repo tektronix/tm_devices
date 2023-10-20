@@ -16,6 +16,14 @@ ______________________________________________________________________
 
 ## Unreleased
 
+______________________________________________________________________
+
+## v0.1.16 (2023-10-20)
+
+### Merged Pull Requests
+
+- Update package release workflow to build correct version ([#38](https://github.com/tektronix/tm_devices/issues/38))
+
 ### Fixed
 
 - Updated the release workflow to properly build the latest version after `python-semantic-release` updates the main branch
