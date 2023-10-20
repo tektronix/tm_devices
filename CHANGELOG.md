@@ -16,6 +16,11 @@ ______________________________________________________________________
 
 ## Unreleased
 
+### Fixed
+
+- Updated links in the README to properly redirect to GitHub when accessed from PyPI
+- Updated the release workflow to be able to upload artifacts to the GitHub Release page
+
 ______________________________________________________________________
 
 ## v0.1.16 (2023-10-20)
