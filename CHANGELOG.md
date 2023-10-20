@@ -16,6 +16,10 @@ ______________________________________________________________________
 
 ## Unreleased
 
+### Fixed
+
+- Updated the release workflow to properly build the latest version after `python-semantic-release` updates the main branch
+
 ______________________________________________________________________
 
 ## v0.1.15 (2023-10-20)
@@ -30,7 +34,7 @@ ______________________________________________________________________
 - docs: Update links in readme. Also add badge for project publish workflow. ([#32](https://github.com/tektronix/tm_devices/issues/32))
 - Update changelog update process ([#31](https://github.com/tektronix/tm_devices/issues/31))
 - ci: Update git config during package release. ([#30](https://github.com/tektronix/tm_devices/issues/30))
-- ci: Added a workflow and necessary support scripts/templates to enable automated released via GitHub&#39;s workflow_dispatch trigger. ([#29](https://github.com/tektronix/tm_devices/issues/29))
+- ci: Added a workflow and necessary support scripts/templates to enable automated released via GitHub's workflow_dispatch trigger. ([#29](https://github.com/tektronix/tm_devices/issues/29))
 - Added a command-line script to print the available VISA resources. ([#26](https://github.com/tektronix/tm_devices/issues/26))
 - Update test.pypi.org upload workflow ([#25](https://github.com/tektronix/tm_devices/issues/25))
 - Add a wait time to allow for the package to be available to install. ([#24](https://github.com/tektronix/tm_devices/issues/24))
