@@ -16,6 +16,8 @@ ______________________________________________________________________
 
 ## Unreleased
 
+Things to be included in the next release go here.
+
 ### Fixed
 
 - Updated links in the README to properly redirect to GitHub when accessed from PyPI
