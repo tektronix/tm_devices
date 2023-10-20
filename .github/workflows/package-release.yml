@@ -62,11 +62,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          ref: main  # Make sure to check out the latest commit on main, not the original commit that triggered the workflow
           fetch-depth: 0
-      - name: Pull latest code
-        run: |
-          sleep 15
-          git pull
       - name: Build package
         uses: hynek/build-and-inspect-python-package@v1.5
   upload-testpypi:
