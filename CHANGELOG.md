@@ -18,6 +18,10 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- Updated permissions for the release workflow to allow it to upload the distribution files to the GitHub Release
+
 ______________________________________________________________________
 
 ## v0.1.17 (2023-10-20)
