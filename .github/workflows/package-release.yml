@@ -63,6 +63,10 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Pull latest code
+        run: |
+          sleep 15
+          git pull
       - name: Build package
         uses: hynek/build-and-inspect-python-package@v1.5
   upload-testpypi:
