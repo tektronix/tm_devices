@@ -11,11 +11,15 @@
     {%- endfor %}
 {%- endfor %}
 
-{%- set merged_prs_text_list = ["\n\n### Merged Pull Requests\n\n"] %}
-{%- for message, number in recently_merged_prs.items() %}
-    {%- do merged_prs_text_list.append("- " ~ message ~ "([#" + number|string ~ "](" ~ number|string|pull_request_url ~ "))\n") %}
-{%- endfor %}
-{%- set merged_prs_text = (merged_prs_text_list|join).rstrip() %}
+{%- if recently_merged_prs %}
+   {%- set merged_prs_text_list = ["\n\n### Merged Pull Requests\n\n"] %}
+   {%- for message, number in recently_merged_prs.items() %}
+       {%- do merged_prs_text_list.append("- " ~ message ~ "([#" + number|string ~ "](" ~ number|string|pull_request_url ~ "))\n") %}
+   {%- endfor %}
+   {%- set merged_prs_text = (merged_prs_text_list|join).rstrip() %}
+{%- else %}
+   {%- set merged_prs_text = "" %}
+{%- endif %}
 
 
 {%-  filter replace("## Unreleased", "## Unreleased\n\n______________________________________________________________________\n\n## " + latest_version_number + " (" + latest_version_date + ")" + merged_prs_text) %}

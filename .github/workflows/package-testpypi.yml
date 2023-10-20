@@ -1,6 +1,6 @@
 ---
 # Upload to Test PyPI on every push to main
-name: Publish package to test.pypi.org
+name: Publish to TestPyPI
 on:
   push:
     branches: [main]
