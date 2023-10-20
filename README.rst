@@ -269,15 +269,15 @@ Contributing
 ------------
 
 Interested in contributing? Check out the `contributing
-guidelines <CONTRIBUTING.md>`_. Please note that this project is
-released with a `Code of Conduct <CODE_OF_CONDUCT.md>`_. By
+guidelines <https://tinyurl.com/tek-tm-devices/CONTRIBUTING.md>`__. Please note that this project is
+released with a `Code of Conduct <https://tinyurl.com/tek-tm-devices/CODE_OF_CONDUCT.md>`__. By
 contributing to this project, you agree to abide by its terms.
 
 License
 -------
 
 ``tm_devices`` was created by Tektronix. It is licensed under the terms
-of the `Apache License 2.0 <LICENSE.md>`_.
+of the `Apache License 2.0 <https://tinyurl.com/tek-tm-devices/LICENSE.md>`__.
 
 Credits
 -------
