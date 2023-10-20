@@ -48,8 +48,8 @@ jobs:
           force: ${{ inputs.release_level }}
           root_options: -v --strict
           github_token: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
-          git_committer_email: nicholas.felt@tektronix.com
-          git_committer_name: Nicholas Felt
+          git_committer_email: ${{ vars.TEK_OPENSOURCE_EMAIL }}
+          git_committer_name: ${{ vars.TEK_OPENSOURCE_NAME }}
           ssh_public_signing_key: ${{ secrets.TEK_OPENSOURCE_SSH_SIGNING_KEY_PUBLIC }}
           ssh_private_signing_key: ${{ secrets.TEK_OPENSOURCE_SSH_SIGNING_KEY_PRIVATE }}
     outputs:
