@@ -8,7 +8,7 @@ on:
 # Cancel running jobs for the same workflow and branch.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 # IMPORTANT: Any new jobs need to be added to the check-tests-passed job to ensure they correctly gate code changes
 jobs:
   # Basic testing & linting
@@ -33,7 +33,7 @@ jobs:
       - name: Run tox
         run: tox -v
       - uses: actions/upload-artifact@v3
-        if: '!cancelled()'
+        if: ${{ !cancelled() }}
         with:
           name: artifact_${{ matrix.platform }}_${{ matrix.python-version }}_tests_and_linting
           path: |
@@ -60,7 +60,7 @@ jobs:
       - name: Test
         run: tox -ve tests
       - uses: actions/upload-artifact@v3
-        if: '!cancelled()'
+        if: ${{ !cancelled() }}
         with:
           name: artifact_${{ matrix.os_name }}_tests
           path: |
@@ -68,7 +68,7 @@ jobs:
             .coverage*
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
-        if: '!cancelled()'
+        if: ${{ !cancelled() }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./.coverage_tests.xml
@@ -76,7 +76,7 @@ jobs:
           fail_ci_if_error: true
   # Check that all jobs passed
   check-tests-passed:
-    if: always()
+    if: ${{ !cancelled() }}
     needs: [test-general, test-fast]
     runs-on: ubuntu-latest
     steps:

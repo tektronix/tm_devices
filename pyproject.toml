@@ -56,7 +56,7 @@ classifiers = [
   "Topic :: System :: Hardware :: Hardware Drivers"
 ]
 description = "Manage connections and interactions with Test & Measurement devices."
-documentation = "https://tm_devices.readthedocs.io/en/stable/"
+documentation = "https://tm-devices.readthedocs.io/en/latest/"
 homepage = "https://pypi.org/project/tm_devices/"
 keywords = [
   "REST API",
@@ -148,7 +148,7 @@ list-visa-resources = "tm_devices:print_available_visa_devices"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/tektronix/tm_devices/issues"
-"Changelog" = "https://tm_devices.readthedocs.io/en/stable/CHANGELOG.html"
+"Changelog" = "https://github.com/tektronix/tm_devices/blob/main/CHANGELOG.md"
 
 [tool.pylint.basic]
 good-names = ["_"]
