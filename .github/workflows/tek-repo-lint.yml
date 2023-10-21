@@ -100,7 +100,7 @@ jobs:
         run: echo codeql-analysis file does not exist!
   # Check that all jobs passed
   check-repo-lint-passed:
-    if: always()
+    if: ${{ !cancelled() }}
     needs:
       - check-for-codeowners-file
       - check-for-readme-file
