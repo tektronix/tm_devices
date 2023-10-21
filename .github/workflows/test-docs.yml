@@ -5,6 +5,10 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+# Cancel running jobs for the same workflow and branch.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 # IMPORTANT: Any new jobs need to be added to the check-docs-passed job to ensure they correctly gate code changes
 jobs:
   # Test building the docs (html, linkcheck, doctest, coverage)
@@ -32,19 +36,19 @@ jobs:
       - name: Test
         run: tox -ve ${{ matrix.tox_env }}
       - uses: thedoctor0/zip-release@0.7.1
-        if: '!cancelled()'
+        if: ${{ !cancelled() }}
         with:
           type: zip
           filename: ${{ matrix.tox_env }}_results.zip
           path: .results_${{ matrix.tox_env }}/
       - uses: actions/upload-artifact@v3
-        if: '!cancelled()'
+        if: ${{ !cancelled() }}
         with:
           name: artifact_${{ matrix.tox_env }}
           path: ${{ matrix.tox_env }}_results.zip
   # Check that all jobs passed
   check-docs-passed:
-    if: always()
+    if: ${{ !cancelled() }}
     needs: [test-docs]
     runs-on: ubuntu-latest
     steps:
