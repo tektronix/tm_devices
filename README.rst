@@ -17,7 +17,7 @@
    * - Code Quality
      - |CodeQL status| |CodeFactor grade| |pre-commit status|
    * - Package
-     - |PyPI: Package status| |PyPI: Latest release version| |PyPI: Supported Python versions| |License: Apache 2.0| |PyPI: Downloads| |Package build status| |PyPI upload status| |TestPyPI upload status|
+     - |PyPI: Package status| |PyPI: Latest release version| |PyPI: Supported Python versions| |PyPI: Downloads| |License: Apache 2.0| |Package build status| |PyPI upload status| |TestPyPI upload status|
    * - Documentation
      - |Documentation status|
    * - Code Style
@@ -70,7 +70,7 @@
 .. |PyPI: Supported Python versions| image:: https://img.shields.io/pypi/pyversions/tm_devices?logo=python
    :target: https://pypi.org/project/tm_devices/
 
-.. |PyPI: Downloads| image:: https://pepy.tech/badge/tm_devices
+.. |PyPI: Downloads| image:: https://pepy.tech/badge/tm-devices
    :target: https://pepy.tech/project/tm_devices
 
 .. |Code style: black| image:: https://img.shields.io/badge/code%20style-black-black

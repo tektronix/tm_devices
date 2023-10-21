@@ -21,6 +21,7 @@ Things to be included in the next release go here.
 ### Fixed
 
 - Updated permissions for the release workflow to allow it to upload the distribution files to the GitHub Release
+- Updated the README to include the correct link to the badge displaying the total number of package downloads
 
 ______________________________________________________________________
 
