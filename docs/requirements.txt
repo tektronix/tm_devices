@@ -4,6 +4,7 @@ myst-parser
 sphinx
 sphinx-autoapi
 sphinx-copybutton
+sphinx-material
 sphinx-rtd-theme
 sphinx-tippy
 sphinx-togglebutton
