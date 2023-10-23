@@ -10,4 +10,5 @@ sphinx-togglebutton
 sphinxcontrib-jquery
 sphinxcontrib-mermaid
 sphinxcontrib-relative-link-corrector
+sphinxjp-themes-basicstrap
 urllib3
