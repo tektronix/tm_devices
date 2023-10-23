@@ -1,6 +1,7 @@
 graphviz
 jinja2
 myst-parser
+renku-sphinx-theme
 sphinx
 sphinx-autoapi
 sphinx-copybutton
