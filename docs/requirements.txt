@@ -1,3 +1,4 @@
+furo
 graphviz
 jinja2
 myst-parser
