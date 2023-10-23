@@ -5,6 +5,7 @@ sphinx
 sphinx-autoapi
 sphinx-copybutton
 sphinx-rtd-theme
+sphinx-sizzle-theme
 sphinx-tippy
 sphinx-togglebutton
 sphinxcontrib-jquery
