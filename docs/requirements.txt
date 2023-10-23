@@ -1,3 +1,4 @@
+cloud-sptheme
 graphviz
 jinja2
 myst-parser
