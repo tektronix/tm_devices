@@ -123,6 +123,7 @@ jobs:
       - name: Publish package distributions to GitHub Releases
         uses: python-semantic-release/upload-to-gh-release@main
         with:
+          root_options: -v --strict
           github_token: ${{ secrets.GITHUB_TOKEN }}
   pypi-install:
     name: Install package
