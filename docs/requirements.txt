@@ -3,6 +3,7 @@ jinja2
 myst-parser
 sphinx
 sphinx-autoapi
+sphinx-better-theme
 sphinx-copybutton
 sphinx-rtd-theme
 sphinx-tippy
