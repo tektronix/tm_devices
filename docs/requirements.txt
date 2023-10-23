@@ -1,5 +1,6 @@
 graphviz
 jinja2
+karma-sphinx-theme
 myst-parser
 sphinx
 sphinx-autoapi
