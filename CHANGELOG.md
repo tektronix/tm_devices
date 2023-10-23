@@ -18,6 +18,15 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v0.1.18 (2023-10-23)
+
+### Merged Pull Requests
+
+- Update badge displaying total number of downloads ([#41](https://github.com/tektronix/tm_devices/issues/41))
+- ci: Update permissions to allow the workflow to modify GitHub Releases. ([#40](https://github.com/tektronix/tm_devices/issues/40))
+
 ### Fixed
 
 - Updated permissions for the release workflow to allow it to upload the distribution files to the GitHub Release
