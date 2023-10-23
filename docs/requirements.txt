@@ -1,4 +1,5 @@
 graphviz
+insipid-sphinx-theme
 jinja2
 myst-parser
 sphinx
