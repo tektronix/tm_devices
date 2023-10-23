@@ -11,6 +11,8 @@ import sys
 from importlib.metadata import metadata
 from typing import Any, List, Sequence
 
+import sphinx_readable_theme  # type: ignore
+
 from autoapi.mappers.python.objects import PythonPythonMapper  # type: ignore[import]
 from jinja2.environment import Environment as JinjaEnvironment
 from sphinx.application import Sphinx
@@ -131,7 +133,8 @@ if shutil.which("dot"):
 # -- Options for HTML output -------------------------------------------------
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = "sphinx_rtd_theme"
+html_theme = "readable"
+html_theme_path = [sphinx_readable_theme.get_html_theme_path()]
 html_static_path = ["_static"]
 html_css_files = ["theme_overrides.css"]
 html_theme_options = {
