@@ -10,9 +10,12 @@ import pyvisa.constants
 
 from mock_server import mocker_server, PORT
 from tm_devices import DeviceManager
+from tm_devices.components import DMConfigParser
 from tm_devices.helpers import validate_address
 
 os.environ["TM_DEVICES_UNIT_TESTS_RUNNING"] = "true"
+# Make sure to not use any local config files
+os.environ[DMConfigParser.CONFIG_FILE_PATH_ENV_VARIABLE] = ""
 
 PROJECT_ROOT_DIR = f"{os.path.dirname(os.path.dirname(__file__))}"
 SIMULATED_VISA_LIB = f"{os.path.dirname(__file__)}/sim_devices/devices.yaml@sim"

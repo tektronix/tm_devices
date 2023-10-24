@@ -274,7 +274,6 @@ class DeviceManager(metaclass=Singleton):
                 (updates the current configuration options).
             external_device_drivers: An optional dict for passing in additional device drivers.
         """
-        check_for_update()
         self._suppress_protection = False
         # Set up the DeviceManager
         self.__is_open = False
@@ -284,6 +283,8 @@ class DeviceManager(metaclass=Singleton):
         self.__config = DMConfigParser()
         if config_options is not None:
             self.__config.update_options(config_options)
+        if self.__config.options.check_for_updates:  # pragma: no cover
+            check_for_update()
 
         # initialize for __set_options
         self.__verbose: bool = NotImplemented

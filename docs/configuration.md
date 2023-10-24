@@ -216,6 +216,7 @@ options:
   setup_cleanup: false
   teardown_cleanup: false
   retry_visa_connection: false
+  check_for_updates: false
 ```
 
 These are all `false` by default if not defined, set to `true` to modify the
@@ -239,6 +240,9 @@ runtime behavior configuration.
 - `retry_visa_connection`
   - This config option will enable a second attempt when creating VISA connections,
     the second attempt is made after waiting, to allow the device time to become available.
+- `check_for_updates`
+  - This config option will enable a check for any available updates on pypi.org for the
+    package when the `DeviceManager` is instantiated.
 
 ### Sample Config File
 
@@ -293,6 +297,7 @@ options:
   verbose_mode: false
   verbose_visa: false
   retry_visa_connection: false
+  check_for_updates: false
 ```
 
 #### TOML
@@ -358,6 +363,7 @@ standalone = false
 verbose_mode = false
 verbose_visa = false
 retry_visa_connection = false
+check_for_updates = false
 ```
 
 ______________________________________________________________________
