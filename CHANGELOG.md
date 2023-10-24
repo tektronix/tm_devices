@@ -18,6 +18,14 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v0.1.20 (2023-10-24)
+
+### Merged Pull Requests
+
+- Add template for GitHub Releases ([#67](https://github.com/tektronix/tm_devices/issues/67))
+
 ### Added
 
 - Added a template for rendering custom Release Notes for GitHub Releases
@@ -250,3 +258,4 @@ ______________________________________________________________________
 ### Added
 
 - First release of `tm_devices`!
+    
