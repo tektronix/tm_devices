@@ -18,6 +18,14 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v0.1.19 (2023-10-24)
+
+### Merged Pull Requests
+
+- Update the code that checks for package updates ([#66](https://github.com/tektronix/tm_devices/issues/66))
+
 ### Fixed
 
 - Fixed a potential `PermissionsError` crash that occurred when trying to check for any available package updates
