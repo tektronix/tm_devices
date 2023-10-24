@@ -7,7 +7,7 @@
         {%- for commit in commits %}
             {%- set pr_num = commit.commit.message.rstrip().rsplit("(#", 1)[-1].rsplit(")", 1)[0]|int %}
             {%- if pr_num %}
-                {%- do recently_merged_prs.update({commit.commit.message.split("\n")[0].rsplit("(#", 1)[0]|safe: pr_num}) %}
+                {{- recently_merged_prs.update({commit.commit.message.split("\n")[0].rsplit("(#", 1)[0]|safe: pr_num})|replace("None", "") }}
             {%- endif %}
         {%- endfor %}
     {%- endfor %}
@@ -15,7 +15,7 @@
     {%- if recently_merged_prs %}
        {%- set merged_prs_text_list = ["\n\n### Merged Pull Requests\n\n"] %}
        {%- for message, number in recently_merged_prs.items() %}
-           {%- do merged_prs_text_list.append("- " ~ message ~ "([#" + number|string ~ "](" ~ number|string|pull_request_url ~ "))\n") %}
+           {{- merged_prs_text_list.append("- " ~ message ~ "([#" + number|string ~ "](" ~ number|string|pull_request_url ~ "))\n")|replace("None", "") }}
        {%- endfor %}
        {%- set merged_prs_text = (merged_prs_text_list|join).rstrip() %}
     {%- else %}
