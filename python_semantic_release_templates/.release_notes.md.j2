@@ -3,5 +3,5 @@
 {%- call(output) macros.populate_variables() %}
     {%-  filter replace("Things to be included in the next release go here.", "# " + output[0] + " (" + output[1] + ")" + output[2])|replace("##", "#") %}
         {%-  include ".previous_release_notes_for_template.md" %}
-    {% endfilter %}
-{%- endcall %}
+    {%- endfilter %}
+{% endcall %}

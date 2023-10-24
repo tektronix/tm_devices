@@ -374,7 +374,7 @@ exclude_commit_patterns = []
 template_dir = "python_semantic_release_templates"
 
 [tool.semantic_release.changelog.environment]
-extensions = ["jinja2.ext.do"]
+extensions = []
 
 [tool.semantic_release.commit_parser_options]
 # These settings allow python-semantic-release to be used without triggering on any commits
