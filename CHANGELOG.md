@@ -18,6 +18,10 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- Fixed the package release workflow to use a version of the `python-semantic-release` GitHub action that doesn't have any bugs
+
 ______________________________________________________________________
 
 ## v0.1.21 (2023-10-24)
