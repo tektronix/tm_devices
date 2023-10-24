@@ -18,6 +18,14 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v0.1.21 (2023-10-24)
+
+### Merged Pull Requests
+
+- ci: Update macro to enable GitHub Release template to function properly. ([#68](https://github.com/tektronix/tm_devices/issues/68))
+
 ### Fixed
 
 - Fixed the GitHub Release template generation
