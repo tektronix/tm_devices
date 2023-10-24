@@ -377,6 +377,8 @@ class DMConfigOptions(AsDictionaryMixin):
     """Optional[bool]: A verbosity flag to enable extremely verbose VISA logging to stdout."""
     retry_visa_connection: Optional[bool] = None
     """Optional[bool]: A flag to enable retrying the first VISA connection attempt."""
+    check_for_updates: Optional[bool] = None
+    """Optional[bool]: A flag indicating if a check for updates for the package should be performed on creation of the DeviceManager."""  # noqa: E501
 
     def __str__(self) -> str:
         """Complete config entry line for an environment variable."""
