@@ -18,6 +18,10 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added a template for rendering custom Release Notes for GitHub Releases
+
 ______________________________________________________________________
 
 ## v0.1.19 (2023-10-24)

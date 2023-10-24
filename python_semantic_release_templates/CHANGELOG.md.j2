@@ -1,27 +1,7 @@
-{%- set latest_release_dict_entry = (context.history.released.items()|list)[0] %}
-{%- set latest_version_number = latest_release_dict_entry[0].as_tag() %}
-{%- set latest_version_date = latest_release_dict_entry[1].tagged_date.strftime("%Y-%m-%d") %}
-{%- set recently_merged_prs = {} %}
-{%- for type_, commits in latest_release_dict_entry[1]["elements"] | dictsort %}
-    {%- for commit in commits %}
-        {%- set pr_num = commit.commit.message.rstrip().rsplit("(#", 1)[-1].rsplit(")", 1)[0]|int %}
-        {%- if pr_num %}
-            {%- do recently_merged_prs.update({commit.commit.message.split("\n")[0].rsplit("(#", 1)[0]|safe: pr_num}) %}
-        {%- endif %}
-    {%- endfor %}
-{%- endfor %}
+{%- import ".macros.j2" as macros %}
 
-{%- if recently_merged_prs %}
-   {%- set merged_prs_text_list = ["\n\n### Merged Pull Requests\n\n"] %}
-   {%- for message, number in recently_merged_prs.items() %}
-       {%- do merged_prs_text_list.append("- " ~ message ~ "([#" + number|string ~ "](" ~ number|string|pull_request_url ~ "))\n") %}
-   {%- endfor %}
-   {%- set merged_prs_text = (merged_prs_text_list|join).rstrip() %}
-{%- else %}
-   {%- set merged_prs_text = "" %}
-{%- endif %}
-
-
-{%-  filter replace("Things to be included in the next release go here.", "Things to be included in the next release go here.\n\n______________________________________________________________________\n\n## " + latest_version_number + " (" + latest_version_date + ")" + merged_prs_text) %}
-    {%-  include ".previous_changelog_for_template.md" %}
-{% endfilter %}
+{%- call(output) macros.populate_variables() %}
+    {%-  filter replace("Things to be included in the next release go here.", "Things to be included in the next release go here.\n\n______________________________________________________________________\n\n## " + output[0] + " (" + output[1] + ")" + output[2]) %}
+        {%-  include ".previous_changelog_for_template.md" %}
+    {% endfilter %}
+{%- endcall %}
