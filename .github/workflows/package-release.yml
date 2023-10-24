@@ -42,7 +42,7 @@ jobs:
           python scripts/check_unreleased_changelog_items.py
           git add python_semantic_release_templates
       - name: Python Semantic Release
-        uses: python-semantic-release/python-semantic-release@v8.1.2
+        uses: python-semantic-release/python-semantic-release@v8.3.0
         id: release
         with:
           force: ${{ inputs.release_level }}
