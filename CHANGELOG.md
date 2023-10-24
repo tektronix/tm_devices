@@ -18,6 +18,14 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v0.1.22 (2023-10-24)
+
+### Merged Pull Requests
+
+- fix: Update the version of the semantic release action used to fix a bug with the output version. ([#69](https://github.com/tektronix/tm_devices/issues/69))
+
 ### Fixed
 
 - Fixed the package release workflow to use a version of the `python-semantic-release` GitHub action that doesn't have any bugs
