@@ -18,6 +18,18 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- Fixed a potential `PermissionsError` crash that occurred when trying to check for any available package updates
+
+### Added
+
+- A config flag to enable checking for updates when creating a new instance of the `DeviceManager`
+
+### Changed
+
+- The default behavior of the `DeviceManager` is changed to **not** check for updates
+
 ______________________________________________________________________
 
 ## v0.1.18 (2023-10-23)

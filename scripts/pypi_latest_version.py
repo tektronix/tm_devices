@@ -26,6 +26,7 @@ def parse_arguments() -> argparse.Namespace:
         action="store",
         dest="index",
         choices=["pypi", "test.pypi"],
+        default="pypi",
         help="Provide the index to query for the latest version, one of (pypi|test.pypi)",
     )
 
@@ -42,6 +43,8 @@ def main() -> None:
     package = args.package
     index = args.index
 
+    # This code mirrors code found in src/tm_devices/helpers/functions.py.
+    # If this code is updated, the helper function should be updated too.
     url = f"https://{index}.org/pypi/{package}/json"
     try:
         response = requests.get(url, timeout=10)

@@ -286,21 +286,21 @@ def test_check_for_update(capsys: pytest.CaptureFixture[str]) -> None:
     with mock.patch("requests.get", mock.MagicMock(return_value=response)):
         check_for_update("pytest")
     stdout = capsys.readouterr().out
-    assert "pytest is not available on PyPI, unable to check for updates." in stdout
+    assert "pytest is not available on pypi.org, unable to check for updates." in stdout
 
     # Test when an update is available
     response = Response()
-    response._content = b">pytest-0.0.0.tar.gz<"  # noqa: SLF001
+    response._content = b'{"releases": {"0.0.0": []}}'  # noqa: SLF001
     with mock.patch("requests.get", mock.MagicMock(return_value=response)):
         check_for_update("pytest")
     stdout = capsys.readouterr().out
-    assert "Version 0.0.0 of pytest is available on PyPI." in stdout
+    assert "Version 0.0.0 of pytest is available on pypi.org." in stdout
     assert f"Version {pytest.__version__} of pytest is currently installed." in stdout
     assert "To upgrade pytest run the following command: python -m pip install -U pytest" in stdout
 
     # Test when the versions match
     response = Response()
-    response._content = f">pytest-{pytest.__version__}.tar.gz<".encode()  # noqa: SLF001
+    response._content = f'{{"releases": {{"{pytest.__version__}": []}}}}'.encode()  # noqa: SLF001
     with mock.patch("requests.get", mock.MagicMock(return_value=response)):
         check_for_update("pytest")
     stdout = capsys.readouterr().out

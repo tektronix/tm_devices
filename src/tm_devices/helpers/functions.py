@@ -1,7 +1,8 @@
 """Module containing helpers for the tm_devices package."""
 import contextlib
 import datetime
-import os
+import importlib.metadata
+import json
 import platform
 import re
 import shlex
@@ -13,7 +14,8 @@ import warnings
 from enum import EnumMeta
 from typing import Any, Dict, Optional, Tuple, Type
 
-from check4updates import check_and_prompt  # type: ignore
+import requests
+
 from packaging.version import InvalidVersion, Version
 
 from tm_devices.helpers.constants_and_dataclasses import (
@@ -55,41 +57,45 @@ _KEITHLEY_2_CHAR_MODEL_LOOKUP = {
 ####################################################################################################
 # Public Functions
 ####################################################################################################
-def check_for_update(package_name: str = PACKAGE_NAME) -> None:
+def check_for_update(package_name: str = PACKAGE_NAME, index_name: str = "pypi") -> None:
     """Check for an update for the provided package.
 
     Args:
         package_name: Check for an update for the provided package.
+        index_name: The name of the index (pypi|test.pypi) to check for the package.
     """
-    starting_dir = os.getcwd()
     try:
-        # Check for package updates, set the interval to zero to always check.
-        with contextlib.redirect_stdout(None), contextlib.redirect_stderr(None):
-            result = check_and_prompt(
-                package_name, remind_delay=0, online_check_interval=0, mock_user_input="2"
-            )
-        if result.installed_version != result.pypi_version:
+        # Get the version from the local installation
+        installed_version = importlib.metadata.version(package_name)
+
+        # Get the version from the index
+        # This code mirrors code found in scripts/pypi_latest_version.py.
+        # If this code is updated, the helper function should be updated too.
+        url = f"https://{index_name}.org/pypi/{package_name}/json"
+        response = requests.get(url, timeout=10)
+        releases = json.loads(response.text)["releases"]
+        version_list = sorted(releases, key=Version, reverse=True)
+        latest_version = version_list[0]
+
+        if installed_version != latest_version:
             print(
-                f"\n\n\033[91mVersion {result.pypi_version} of "
-                f"{package_name} is available on PyPI.\n"
-                f"Version {result.installed_version} of "
+                f"\n\n\033[91mVersion {latest_version} of "
+                f"{package_name} is available on {index_name}.org.\n"
+                f"Version {installed_version} of "
                 f"{package_name} is currently installed.\n\n"
                 f"To upgrade {package_name} run the following command: "
                 f"python -m pip install -U {package_name}\n\n\033[0m"
             )
-    except FileNotFoundError:
+    except ModuleNotFoundError:
         print(
             f"\n\n\033[91m{package_name} is not installed, "
             f"unable to check for updates.\n\n\033[0m"
         )
-    except IndexError:
+    except (IndexError, ValueError):
         print(
-            f"\n\n\033[91m{package_name} is not available on PyPI, "
+            f"\n\n\033[91m{package_name} is not available on {index_name}.org, "
             f"unable to check for updates.\n\n\033[0m"
         )
-    finally:
-        # Reset the current working directory, the third-party package call changes it.
-        os.chdir(starting_dir)
 
 
 def check_network_connection(
