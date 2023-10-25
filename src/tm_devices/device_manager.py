@@ -280,17 +280,18 @@ class DeviceManager(metaclass=Singleton):
         self.__verbose_visa = False
         self.__devices: Dict[str, Union[PIDevice, RESTAPIDevice]] = AliasDict()
         self._external_device_drivers = external_device_drivers
+        # initialize for __set_options()
+        self.__verbose: bool = NotImplemented
+        self.__teardown_cleanup_enabled: bool = NotImplemented
+        self.__setup_cleanup_enabled: bool = NotImplemented
+        self.__visa_library: str = NotImplemented
+
+        # Create the config
         self.__config = DMConfigParser()
         if config_options is not None:
             self.__config.update_options(config_options)
         if self.__config.options.check_for_updates:  # pragma: no cover
             check_for_update()
-
-        # initialize for __set_options
-        self.__verbose: bool = NotImplemented
-        self.__teardown_cleanup_enabled: bool = NotImplemented
-        self.__setup_cleanup_enabled: bool = NotImplemented
-        self.__visa_library: str = NotImplemented
         # actually populate the options
         self.__set_options(verbose)
 
