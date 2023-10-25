@@ -295,7 +295,7 @@ class PIDevice(Device, ABC):
         """Return the VISA status byte."""
         return self._visa_resource.read_stb()
 
-    def poll_query(  # noqa: PLR0913, pylint: disable=too-many-locals
+    def poll_query(  # noqa: PLR0913
         self,
         number_of_polls: int,
         query: str,
@@ -304,7 +304,6 @@ class PIDevice(Device, ABC):
         tolerance: float = 0,
         percentage: bool = False,
         invert_range: bool = False,
-        ignore_errors: bool = True,
         invalid_values: Union[List[Union[float, str]], None] = None,
     ) -> None:
         """Poll the query until the wanted value appears.
@@ -321,7 +320,6 @@ class PIDevice(Device, ABC):
             invert_range: A boolean indicating when to stop polling.
                  False means polling until the wanted value appears.
                  True means polling until a different value from the wanted value appears.
-            ignore_errors: A boolean indicating if ...
             invalid_values: A list of values that should never be received when polling.
 
         Raises:
@@ -336,7 +334,7 @@ class PIDevice(Device, ABC):
         while poll_number < number_of_polls:
             queried_value = self.query(query)
             query_list += f"\t{poll_number} - {queried_value}\n"
-            if ignore_errors:
+            if invalid_values:
                 self.ieee_cmds.cls()
                 error_check = (
                     float(queried_value) not in invalid_values
