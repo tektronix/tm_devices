@@ -8,7 +8,7 @@ import time
 from abc import ABC, abstractmethod
 from contextlib import contextmanager
 from functools import cached_property
-from typing import final, Generator, Optional, Sequence, Tuple, Union
+from typing import final, Generator, List, Optional, Sequence, Tuple, Union
 
 import pyvisa as visa
 
@@ -294,6 +294,78 @@ class PIDevice(Device, ABC):
     def get_visa_stb(self) -> int:  # pragma: no cover
         """Return the VISA status byte."""
         return self._visa_resource.read_stb()
+
+    def poll_query(  # noqa: PLR0913, pylint: disable=too-many-locals
+        self,
+        number_of_polls: int,
+        query: str,
+        wanted_val: Union[float, str],
+        sleep_time: float = 0.4,
+        tolerance: float = 0,
+        percentage: bool = False,
+        invert_range: bool = False,
+        ignore_errors: bool = True,
+        invalid_values: Union[List[Union[float, str]], None] = None,
+    ) -> None:
+        """Poll the query until the wanted value appears.
+
+        Args:
+            number_of_polls: The number of times to poll the query.
+            query: The query to poll.
+            wanted_val: The desired value to poll for.
+            sleep_time: The time to wait between polls (in seconds).
+            tolerance: The acceptable difference between two floating point values.
+            percentage: A boolean indicating what kind of tolerance check to perform.
+                 False means absolute tolerance: +/- tolerance.
+                 True means percent tolerance: +/- (tolerance / 100) * value.
+            invert_range: A boolean indicating when to stop polling.
+                 False means polling until the wanted value appears.
+                 True means polling until a different value from the wanted value appears.
+            ignore_errors: A boolean indicating if ...
+            invalid_values: A list of values that should never be received when polling.
+
+        Raises:
+            AssertionError: Indicating that the device never reached the wanted value.
+        """
+        if invalid_values is None:
+            invalid_values = []
+        poll_number: int = 0
+        query_list = ""
+        if isinstance(wanted_val, float):
+            tolerance = abs(tolerance * 0.01 * wanted_val if percentage else tolerance)
+        while poll_number < number_of_polls:
+            queried_value = self.query(query)
+            query_list += f"\t{poll_number} - {queried_value}\n"
+            if ignore_errors:
+                self.ieee_cmds.cls()
+                error_check = (
+                    float(queried_value) not in invalid_values
+                    if isinstance(wanted_val, (float, int))
+                    else queried_value not in invalid_values
+                )
+            else:
+                error_check = True
+            if error_check:
+                float_comparison = (
+                    isinstance(wanted_val, (float, int))
+                    and wanted_val - tolerance
+                    <= float(queried_value)
+                    <= float(wanted_val) + tolerance
+                )
+                str_comparison = isinstance(wanted_val, str) and queried_value == wanted_val
+                if (
+                    not invert_range
+                    and (float_comparison or str_comparison)
+                    or invert_range
+                    and not (float_comparison or str_comparison)
+                ):
+                    return
+            time.sleep(sleep_time)
+            poll_number += 1
+        raise AssertionError(  # noqa: TRY003
+            f"{query} {'never' if not invert_range else 'always'} "
+            f"returned {wanted_val}, received:\n{query_list}"
+        )
 
     def query(
         self,
@@ -627,6 +699,53 @@ class PIDevice(Device, ABC):
         else:
             check = ""
         return check
+
+    def set_if_needed(  # noqa: PLR0913
+        self,
+        command: str,
+        value: Union[str, float],
+        tolerance: float = 0,
+        percentage: bool = False,
+        remove_quotes: bool = False,
+        custom_message_prefix: str = "",
+        *,
+        expected_value: Optional[Union[str, float]] = None,
+    ) -> Tuple[bool, str]:
+        """Set the given command if the given value is different from the current value.
+
+        Args:
+            command: The command to send.
+                For example: ``:AFG:FUNCTION``
+            value: The value being set by the command.
+                For example: ``SINE``
+            tolerance: The acceptable difference between two floating point values.
+            percentage: A boolean indicating what kind of tolerance check to perform.
+                 False means absolute tolerance: +/- tolerance.
+                 True means percent tolerance: +/- (tolerance / 100) * value.
+            remove_quotes: Set this to True to remove all double quotes from the returned value.
+            custom_message_prefix: A custom message to be prepended to the failure message.
+            expected_value: An optional, alternative value expected to be returned.
+
+        Returns:
+            Tuple containing the boolean value indicating if the command needed to be set and
+            the value returned from the query.
+        """
+        try:
+            query_passed, actual_value = self.query_response(
+                command + "?", value, tolerance, percentage, remove_quotes, custom_message_prefix
+            )
+        except AssertionError:
+            query_passed = False
+            actual_value = self.set_and_check(
+                command,
+                value,
+                tolerance,
+                percentage,
+                remove_quotes,
+                custom_message_prefix,
+                expected_value=expected_value,
+            )
+        return not query_passed, actual_value
 
     @final
     def turn_all_channels_off(self) -> None:
