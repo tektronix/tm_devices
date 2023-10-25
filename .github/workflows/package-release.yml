@@ -1,5 +1,5 @@
 ---
-name: Publish package
+name: Publish to GitHub & PyPI
 on:
   workflow_dispatch:
     inputs:
