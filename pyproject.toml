@@ -53,7 +53,8 @@ classifiers = [
   "Operating System :: OS Independent",
   "Topic :: Scientific/Engineering :: Interface Engine/Protocol Translator",
   "Topic :: Scientific/Engineering",
-  "Topic :: System :: Hardware :: Hardware Drivers"
+  "Topic :: System :: Hardware :: Hardware Drivers",
+  "Programming Language :: Python :: 3.12"  # TODO: remove this once poetry automatically adds it
 ]
 description = "Manage connections and interactions with Test & Measurement devices."
 documentation = "https://tm-devices.readthedocs.io/en/latest/"
