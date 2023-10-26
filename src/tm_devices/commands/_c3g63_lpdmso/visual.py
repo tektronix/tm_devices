@@ -352,7 +352,8 @@ class VisualAreaItemSource(SCPICmdWrite, SCPICmdRead):
 
     **Info:**
         - ``Area<x>`` specifies the integer number of a Visual Trigger area.
-        - ``CH1`` through CH8 sets the source channel number for the specified area.
+        - ``CH<x>`` sets the source channel number for the specified area. The channel number is
+          specified by <x>.
     """
 
 
@@ -885,7 +886,8 @@ class VisualAreaItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         **Info:**
             - ``Area<x>`` specifies the integer number of a Visual Trigger area.
-            - ``CH1`` through CH8 sets the source channel number for the specified area.
+            - ``CH<x>`` sets the source channel number for the specified area. The channel number is
+              specified by <x>.
         """
         return self._source
 

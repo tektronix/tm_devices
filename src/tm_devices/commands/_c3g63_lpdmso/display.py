@@ -20,10 +20,15 @@ Commands and Queries:
     - DISplay:COLors {NORMal|INVERTed}
     - DISplay:COLors?
     - DISplay:GLObal:B<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:GLObal:B<x>:STATE?
     - DISplay:GLObal:CH<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:GLObal:CH<x>:STATE?
     - DISplay:GLObal:MATH<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:GLObal:MATH<x>:STATE?
     - DISplay:GLObal:PLOT<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:GLObal:PLOT<x>:STATE?
     - DISplay:GLObal:REF<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:GLObal:REF<x>:STATE?
     - DISplay:INTENSITy:BACKLight {LOW|MEDium|HIGH}
     - DISplay:INTENSITy:BACKLight:AUTODim:ENAble {ON|OFF}
     - DISplay:INTENSITy:BACKLight:AUTODim:ENAble?
@@ -15841,7 +15846,7 @@ class DisplayIntensity(SCPICmdRead):
         return self._backlight
 
 
-class DisplayGlobalRefItemState(SCPICmdWrite):
+class DisplayGlobalRefItemState(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:GLObal:REF<x>:STATE`` command.
 
     **Description:**
@@ -15852,6 +15857,9 @@ class DisplayGlobalRefItemState(SCPICmdWrite):
           already.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:GLObal:REF<x>:STATE?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:REF<x>:STATE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DISplay:GLObal:REF<x>:STATE value``
           command.
 
@@ -15860,6 +15868,7 @@ class DisplayGlobalRefItemState(SCPICmdWrite):
     ::
 
         - DISplay:GLObal:REF<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:GLObal:REF<x>:STATE?
 
     **Info:**
         - ``REF<x>`` is the Reference waveform number.
@@ -15901,6 +15910,9 @@ class DisplayGlobalRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               waveform is added already.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:GLObal:REF<x>:STATE?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:REF<x>:STATE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DISplay:GLObal:REF<x>:STATE value``
               command.
 
@@ -15909,6 +15921,7 @@ class DisplayGlobalRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         ::
 
             - DISplay:GLObal:REF<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:GLObal:REF<x>:STATE?
 
         **Info:**
             - ``REF<x>`` is the Reference waveform number.
@@ -15920,7 +15933,7 @@ class DisplayGlobalRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._state
 
 
-class DisplayGlobalPlotItemState(SCPICmdWrite):
+class DisplayGlobalPlotItemState(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:GLObal:PLOT<x>:STATE`` command.
 
     **Description:**
@@ -15930,6 +15943,9 @@ class DisplayGlobalPlotItemState(SCPICmdWrite):
           waveform view. This command only works if the specified plot is added already.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:GLObal:PLOT<x>:STATE?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:PLOT<x>:STATE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DISplay:GLObal:PLOT<x>:STATE value``
           command.
 
@@ -15938,6 +15954,7 @@ class DisplayGlobalPlotItemState(SCPICmdWrite):
     ::
 
         - DISplay:GLObal:PLOT<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:GLObal:PLOT<x>:STATE?
 
     **Info:**
         - ``PLOT<x>`` is the plot number.
@@ -15979,6 +15996,9 @@ class DisplayGlobalPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               already.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:GLObal:PLOT<x>:STATE?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:PLOT<x>:STATE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``DISplay:GLObal:PLOT<x>:STATE value`` command.
 
@@ -15987,6 +16007,7 @@ class DisplayGlobalPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         ::
 
             - DISplay:GLObal:PLOT<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:GLObal:PLOT<x>:STATE?
 
         **Info:**
             - ``PLOT<x>`` is the plot number.
@@ -15998,7 +16019,7 @@ class DisplayGlobalPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._state
 
 
-class DisplayGlobalMathItemState(SCPICmdWrite):
+class DisplayGlobalMathItemState(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:GLObal:MATH<x>:STATE`` command.
 
     **Description:**
@@ -16008,6 +16029,9 @@ class DisplayGlobalMathItemState(SCPICmdWrite):
           command only works if the specified math waveform is added already.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:GLObal:MATH<x>:STATE?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:MATH<x>:STATE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DISplay:GLObal:MATH<x>:STATE value``
           command.
 
@@ -16016,6 +16040,7 @@ class DisplayGlobalMathItemState(SCPICmdWrite):
     ::
 
         - DISplay:GLObal:MATH<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:GLObal:MATH<x>:STATE?
 
     **Info:**
         - ``<NR1>`` = 0 disables the display of the specified math; any other value enables display
@@ -16053,6 +16078,9 @@ class DisplayGlobalMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               already.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:GLObal:MATH<x>:STATE?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:MATH<x>:STATE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``DISplay:GLObal:MATH<x>:STATE value`` command.
 
@@ -16061,6 +16089,7 @@ class DisplayGlobalMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         ::
 
             - DISplay:GLObal:MATH<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:GLObal:MATH<x>:STATE?
 
         **Info:**
             - ``<NR1>`` = 0 disables the display of the specified math; any other value enables
@@ -16071,7 +16100,7 @@ class DisplayGlobalMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._state
 
 
-class DisplayGlobalChannelState(SCPICmdWrite):
+class DisplayGlobalChannelState(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:GLObal:CH<x>:STATE`` command.
 
     **Description:**
@@ -16082,6 +16111,9 @@ class DisplayGlobalChannelState(SCPICmdWrite):
           already.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:GLObal:CH<x>:STATE?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:CH<x>:STATE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DISplay:GLObal:CH<x>:STATE value``
           command.
 
@@ -16090,6 +16122,7 @@ class DisplayGlobalChannelState(SCPICmdWrite):
     ::
 
         - DISplay:GLObal:CH<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:GLObal:CH<x>:STATE?
 
     **Info:**
         - ``<NR1>`` = 0 disables the display of the specified channel; any other value enables
@@ -16127,6 +16160,9 @@ class DisplayGlobalChannel(ValidatedChannel, SCPICmdRead):
               channel is added already.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:GLObal:CH<x>:STATE?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:CH<x>:STATE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DISplay:GLObal:CH<x>:STATE value``
               command.
 
@@ -16135,6 +16171,7 @@ class DisplayGlobalChannel(ValidatedChannel, SCPICmdRead):
         ::
 
             - DISplay:GLObal:CH<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:GLObal:CH<x>:STATE?
 
         **Info:**
             - ``<NR1>`` = 0 disables the display of the specified channel; any other value enables
@@ -16145,7 +16182,7 @@ class DisplayGlobalChannel(ValidatedChannel, SCPICmdRead):
         return self._state
 
 
-class DisplayGlobalBItemState(SCPICmdWrite):
+class DisplayGlobalBItemState(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:GLObal:B<x>:STATE`` command.
 
     **Description:**
@@ -16155,6 +16192,9 @@ class DisplayGlobalBItemState(SCPICmdWrite):
           command only works if the specified bus is added already.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:GLObal:B<x>:STATE?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:B<x>:STATE?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DISplay:GLObal:B<x>:STATE value``
           command.
 
@@ -16163,6 +16203,7 @@ class DisplayGlobalBItemState(SCPICmdWrite):
     ::
 
         - DISplay:GLObal:B<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:GLObal:B<x>:STATE?
 
     **Info:**
         - ``<NR1>`` = 0 disables the display of the specified bus; any other value enables display
@@ -16199,6 +16240,9 @@ class DisplayGlobalBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               waveform view. This command only works if the specified bus is added already.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:GLObal:B<x>:STATE?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:B<x>:STATE?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DISplay:GLObal:B<x>:STATE value``
               command.
 
@@ -16207,6 +16251,7 @@ class DisplayGlobalBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         ::
 
             - DISplay:GLObal:B<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:GLObal:B<x>:STATE?
 
         **Info:**
             - ``<NR1>`` = 0 disables the display of the specified bus; any other value enables

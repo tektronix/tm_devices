@@ -78,10 +78,37 @@ class SMU2651ACommandConstants:
     DISPLAY_ANNUNCIATOR_STAR = "display.ANNUNCIATOR_STAR"
     DISPLAY_ANNUNCIATOR_TALK = "display.ANNUNCIATOR_TALK"
     DISPLAY_ANNUNCIATOR_TRIGGER = "display.ANNUNCIATOR_TRIGGER"
+    DISPLAY_DIGITS_4_5 = "display.DIGITS_4_5"
+    DISPLAY_DIGITS_5_5 = "display.DIGITS_5_5"
+    DISPLAY_DIGITS_6_5 = "display.DIGITS_6_5"
     DISPLAY_DISABLE = "display.DISABLE"
     DISPLAY_DONT_SAVE = "display.DONT_SAVE"
     DISPLAY_ENABLE = "display.ENABLE"
+    DISPLAY_KEY_AUTO = "display.KEY_AUTO"
+    DISPLAY_KEY_CONFIG = "display.KEY_CONFIG"
+    DISPLAY_KEY_DIGITSA = "display.KEY_DIGITSA"
+    DISPLAY_KEY_DISPLAY = "display.KEY_DISPLAY"
+    DISPLAY_KEY_ENTER = "display.KEY_ENTER"
+    DISPLAY_KEY_EXIT = "display.KEY_EXIT"
+    DISPLAY_KEY_FILTERA = "display.KEY_FILTERA"
+    DISPLAY_KEY_LEFT = "display.KEY_LEFT"
+    DISPLAY_KEY_LIMITA = "display.KEY_LIMITA"
+    DISPLAY_KEY_LOAD = "display.KEY_LOAD"
+    DISPLAY_KEY_MEASA = "display.KEY_MEASA"
+    DISPLAY_KEY_MENU = "display.KEY_MENU"
+    DISPLAY_KEY_MODEA = "display.KEY_MODEA"
     DISPLAY_KEY_NONE = "display.KEY_NONE"
+    DISPLAY_KEY_OUTPUTA = "display.KEY_OUTPUTA"
+    DISPLAY_KEY_RANGEDOWN = "display.KEY_RANGEDOWN"
+    DISPLAY_KEY_RANGEUP = "display.KEY_RANGEUP"
+    DISPLAY_KEY_RECALL = "display.KEY_RECALL"
+    DISPLAY_KEY_RELA = "display.KEY_RELA"
+    DISPLAY_KEY_RIGHT = "display.KEY_RIGHT"
+    DISPLAY_KEY_RUN = "display.KEY_RUN"
+    DISPLAY_KEY_SPEEDA = "display.KEY_SPEEDA"
+    DISPLAY_KEY_SRCA = "display.KEY_SRCA"
+    DISPLAY_KEY_STORE = "display.KEY_STORE"
+    DISPLAY_KEY_TRIG = "display.KEY_TRIG"
     DISPLAY_LIMIT_IV = "display.LIMIT_IV"
     DISPLAY_LIMIT_P = "display.LIMIT_P"
     DISPLAY_LOCK = "display.LOCK"
@@ -94,6 +121,9 @@ class SMU2651ACommandConstants:
     DISPLAY_TRIGGER_EVENT_ID = "display.trigger.EVENT_ID"
     DISPLAY_UNLOCK = "display.UNLOCK"
     DISPLAY_USER = "display.USER"
+    DISPLAY_WHEEL_ENTER = "display.WHEEL_ENTER"
+    DISPLAY_WHEEL_LEFT = "display.WHEEL_LEFT"
+    DISPLAY_WHEEL_RIGHT = "display.WHEEL_RIGHT"
     EVENTLOG_DISABLE = "eventlog.DISABLE"
     EVENTLOG_DISCARD_NEWEST = "eventlog.DISCARD_NEWEST"
     EVENTLOG_DISCARD_OLDEST = "eventlog.DISCARD_OLDEST"
@@ -856,10 +886,46 @@ class SMU2651ACommands:
             - ``.ANNUNCIATOR_STAR``: * (asterisk) indicator on.
             - ``.ANNUNCIATOR_TALK``: TALK indicator on.
             - ``.ANNUNCIATOR_TRIGGER``: TRIG indicator on.
+            - ``.DIGITS_4_5``: Set the front-panel display resolution to 4.5 digits.
+            - ``.DIGITS_5_5``: Set the front-panel display resolution to 5.5 digits.
+            - ``.DIGITS_6_5``: Set the front-panel display resolution to 6.5 digits.
             - ``.DISABLE``: Disable the front-panel keys for numeric entry when entering a value.
             - ``.DONT_SAVE``: Do not save code to nonvolatile memory.
             - ``.ENABLE``: Enable the front-panel keys for numeric entry when entering a value.
+            - ``.KEY_AUTO``: Represents the range AUTO key.
+            - ``.KEY_CONFIG``: Represents the CONFIG key.
+            - ``.KEY_DIGITSA``: Represents the DIGITS (display resolution) key.
+              For two-channel products, this is the DIGITS key for Channel A.
+            - ``.KEY_DISPLAY``: Represents the DISPLAY key.
+            - ``.KEY_ENTER``: Represents the ENTER key.
+            - ``.KEY_EXIT``: Represents the EXIT key.
+            - ``.KEY_FILTERA``: Represents the FILTER key.
+              For two-channel products, this is the FILTER key for Channel A.
+            - ``.KEY_LEFT``: Represents the left CURSOR key.
+            - ``.KEY_LIMITA``: Represents the LIMIT key.
+              For two-channel products, this is the LIMIT key for Channel A.
+            - ``.KEY_LOAD``: Represents the LOAD (load test) key.
+            - ``.KEY_MEASA``: Represents the MEAS (Measure) key.
+              For two-channel products, this is the MEAS key for Channel A.
+            - ``.KEY_MENU``: Represents the MENU key.
+            - ``.KEY_MODEA``: Represents the MODE (meter mode) key
+              For two-channel products, this is the MODE key for Channel A.
             - ``.KEY_NONE``: No key was pressed.
+            - ``.KEY_OUTPUTA``: Represents the OUTPUT ON/OFF key.
+              For two-channel products, this is the OUTPUT ON/OFF key for Channel A.
+            - ``.KEY_RANGEDOWN``: Represents the RANGE down key.
+            - ``.KEY_RANGEUP``: Represents the RANGE up key.
+            - ``.KEY_RECALL``: Represents the RECALL key.
+            - ``.KEY_RELA``: Represents the REL key.
+              For two-channel products, this is the REL key for Channel A.
+            - ``.KEY_RIGHT``: Represents the right CURSOR key.
+            - ``.KEY_RUN``: Represents the RUN key.
+            - ``.KEY_SPEEDA``: Represents the SPEED key.
+              For two-channel products, this is the SPEED key for Channel A.
+            - ``.KEY_SRCA``: Represents the SRC (Source) key.
+              For two-channel products, this is the SRC key for Channel A.
+            - ``.KEY_STORE``: Represents the STORE key.
+            - ``.KEY_TRIG``: Represents the TRIG key.
             - ``.LIMIT_IV``: Display the primary limit value.
             - ``.LIMIT_P``: Display the power limit value.
             - ``.LOCK``: Unlock the EXIT (LOCAL) key.
@@ -871,6 +937,9 @@ class SMU2651ACommands:
             - ``.SMUA``: Displays source-measure and compliance screen for SMU A.
             - ``.UNLOCK``: Lock out the EXIT (LOCAL) key.
             - ``.USER``: Displays the user screen.
+            - ``.WHEEL_ENTER``: Represents pressing the navigation wheel.
+            - ``.WHEEL_LEFT``: Represents turning the Navigation wheel left.
+            - ``.WHEEL_RIGHT``: Represents turning the Navigation wheel right.
 
         Sub-properties/methods:
             - ``.clear()``: The ``display.clear()`` function.

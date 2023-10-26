@@ -18,6 +18,10 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- Updated the auto-generated commands for a handful of models to fix various issues
+
 ______________________________________________________________________
 
 ## v0.1.22 (2023-10-24)

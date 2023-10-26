@@ -23,6 +23,8 @@ Commands and Queries:
     - SELect:DIGTraces:COMbination <nr1>
     - SELect:DIGTraces:LISt <Dx>
     - SELect:DIGTraces:LISt?
+    - SELect:MATH<x> {ON|OFF|<NR1>}
+    - SELect:MATH<x>?
     - SELect:REF<x> {ON|OFF|<NR1>}
     - SELect:REF<x>?
     - SELect?
@@ -62,6 +64,36 @@ class SelectRefItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
 
         - SELect:REF<x> {ON|OFF|<NR1>}
         - SELect:REF<x>?
+
+    **Info:**
+        - ``ON`` turns on the display of the specified waveform. This waveform also becomes the
+          selected waveform.
+        - ``OFF`` turns off the display of the specified waveform.
+        - ``<NR1>`` = 0 turns off the display of the specified waveform; any other value turns on
+          the display of the specified waveform.
+    """
+
+
+class SelectMathItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
+    """The ``SELect:MATH<x>`` command.
+
+    **Description:**
+        - This command turns on the display of a specified waveform and also resets the acquisition.
+          The query returns whether the channel is on or off but does not indicate whether it is the
+          selected waveform. WFM can be a channel, math, or reference waveform.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``SELect:MATH<x>?`` query.
+        - Using the ``.verify(value)`` method will send the ``SELect:MATH<x>?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``SELect:MATH<x> value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SELect:MATH<x> {ON|OFF|<NR1>}
+        - SELect:MATH<x>?
 
     **Info:**
         - ``ON`` turns on the display of the specified waveform. This waveform also becomes the
@@ -328,6 +360,7 @@ class SelectBItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
     """
 
 
+#  pylint: disable=too-many-instance-attributes
 class Select(SCPICmdRead):
     """The ``SELect`` command.
 
@@ -352,6 +385,7 @@ class Select(SCPICmdRead):
         - ``.d``: The ``SELect:D<x>`` command.
         - ``.dall``: The ``SELect:DALL`` command.
         - ``.digtraces``: The ``SELect:DIGTraces`` command tree.
+        - ``.math``: The ``SELect:MATH<x>`` command.
         - ``.ref``: The ``SELect:REF<x>`` command.
     """
 
@@ -365,6 +399,9 @@ class Select(SCPICmdRead):
         self._digtraces = SelectDigtraces(device, f"{self._cmd_syntax}:DIGTraces")
         self._ch: Dict[int, SelectChannel] = DefaultDictPassKeyToFactory(
             lambda x: SelectChannel(device, f"{self._cmd_syntax}:CH{x}")
+        )
+        self._math: Dict[int, SelectMathItem] = DefaultDictPassKeyToFactory(
+            lambda x: SelectMathItem(device, f"{self._cmd_syntax}:MATH{x}")
         )
         self._ref: Dict[int, SelectRefItem] = DefaultDictPassKeyToFactory(
             lambda x: SelectRefItem(device, f"{self._cmd_syntax}:REF{x}")
@@ -507,6 +544,38 @@ class Select(SCPICmdRead):
             - ``ON`` displays the indicated channel waveform.
         """
         return self._ch
+
+    @property
+    def math(self) -> Dict[int, SelectMathItem]:
+        """Return the ``SELect:MATH<x>`` command.
+
+        **Description:**
+            - This command turns on the display of a specified waveform and also resets the
+              acquisition. The query returns whether the channel is on or off but does not indicate
+              whether it is the selected waveform. WFM can be a channel, math, or reference
+              waveform.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``SELect:MATH<x>?`` query.
+            - Using the ``.verify(value)`` method will send the ``SELect:MATH<x>?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``SELect:MATH<x> value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SELect:MATH<x> {ON|OFF|<NR1>}
+            - SELect:MATH<x>?
+
+        **Info:**
+            - ``ON`` turns on the display of the specified waveform. This waveform also becomes the
+              selected waveform.
+            - ``OFF`` turns off the display of the specified waveform.
+            - ``<NR1>`` = 0 turns off the display of the specified waveform; any other value turns
+              on the display of the specified waveform.
+        """
+        return self._math
 
     @property
     def ref(self) -> Dict[int, SelectRefItem]:

@@ -18,6 +18,8 @@ Attributes and Functions:
     - buffer.getstats()
     - buffer.make()
     - buffer.save()
+    - buffer.saveappend()
+    - buffer.write.format()
     - buffer.write.reading()
 """
 from typing import Any, Dict, Optional, TYPE_CHECKING
@@ -32,8 +34,62 @@ class BufferWrite(BaseTSPCmd):
     """The ``buffer.write`` command tree.
 
     Properties/methods:
+        - ``.format()``: The ``buffer.write.format()`` function.
         - ``.reading()``: The ``buffer.write.reading()`` function.
     """
+
+    def format(
+        self,
+        buffer_var: str,
+        units: str,
+        display_digits: int,
+        extra_units: Optional[str] = None,
+        extra_digits: Optional[int] = None,
+    ) -> None:
+        """Run the ``buffer.write.format()`` function.
+
+        **Description:**
+            - This function sets the units and number of digits of the readings that are written
+              into the reading buffer.
+
+        **TSP Syntax:**
+
+        ::
+
+            - buffer.write.format()
+
+        Args:
+            buffer_var: The name of the buffer.
+            units: The units for the first measurement in the buffer index.
+            display_digits: The number of digits to use for the first measurement.
+            extra_units (optional): The units for the second measurement in the buffer index; the
+                selections are the same as units (only valid for buffer style WRITABLE_FULL); if not
+                specified, uses the value for units.
+            extra_digits (optional): The number of digits to use for the second measurement; the
+                selections are the same as displayDigits (only valid for buffer style
+                WRITABLE_FULL); if not specified, uses the value for displayDigits.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            function_args = ", ".join(
+                str(x)
+                for x in (
+                    buffer_var,
+                    units,
+                    display_digits,
+                    extra_units,
+                    extra_digits,
+                )
+                if x is not None
+            )
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.format({function_args})"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.format()`` function."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
 
     def reading(
         self,
@@ -171,6 +227,11 @@ class Buffer(BaseTSPCmd):
         - ``.STAT_TERMINAL``: Measure terminal, front is 1, rear is 0.
         - ``.STYLE_COMPACT``: Store readings with reduced accuracy (6.5 digits) with no formatting
           information, 1 μs accurate timestamp.
+        - ``.STYLE_FULL``: Store the same information with full accuracy with formatting, plus
+          additional information.
+        - ``.STYLE_STANDARD``: Store readings with full accuracy with formatting.
+        - ``.STYLE_WRITABLE``: Store external reading buffer data.
+        - ``.STYLE_WRITABLE_FULL``: Store external reading buffer data with two reading values.
         - ``.UNIT_AMP``: Set units of measure to dc current.
         - ``.UNIT_AMP_AC``: Set units of measure to ac current.
         - ``.UNIT_CELSIUS``: Set units of measure to Celsius.
@@ -203,6 +264,7 @@ class Buffer(BaseTSPCmd):
         - ``.getstats()``: The ``buffer.getstats()`` function.
         - ``.make()``: The ``buffer.make()`` function.
         - ``.save()``: The ``buffer.save()`` function.
+        - ``.saveappend()``: The ``buffer.saveappend()`` function.
         - ``.write``: The ``buffer.write`` command tree.
     """
 
@@ -342,6 +404,14 @@ class Buffer(BaseTSPCmd):
     """str: Measure terminal, front is 1, rear is 0."""
     STYLE_COMPACT = "buffer.STYLE_COMPACT"
     """str: Store readings with reduced accuracy (6.5 digits) with no formatting information, 1 μs accurate timestamp."""  # noqa: E501
+    STYLE_FULL = "buffer.STYLE_FULL"
+    """str: Store the same information with full accuracy with formatting, plus additional information."""  # noqa: E501
+    STYLE_STANDARD = "buffer.STYLE_STANDARD"
+    """str: Store readings with full accuracy with formatting."""
+    STYLE_WRITABLE = "buffer.STYLE_WRITABLE"
+    """str: Store external reading buffer data."""
+    STYLE_WRITABLE_FULL = "buffer.STYLE_WRITABLE_FULL"
+    """str: Store external reading buffer data with two reading values."""
     UNIT_AMP = "buffer.UNIT_AMP"
     """str: Set units of measure to dc current."""
     UNIT_AMP_AC = "buffer.UNIT_AMP_AC"
@@ -402,6 +472,7 @@ class Buffer(BaseTSPCmd):
         """Return the ``buffer.write`` command tree.
 
         Sub-properties/methods:
+            - ``.format()``: The ``buffer.write.format()`` function.
             - ``.reading()``: The ``buffer.write.reading()`` function.
         """
         return self._write
@@ -513,7 +584,7 @@ class Buffer(BaseTSPCmd):
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getstats()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
-    def make(self, buffer_size: str, style: Optional[str] = None) -> str:
+    def make(self, buffer_size: int, style: Optional[str] = None) -> str:
         """Run the ``buffer.make()`` function.
 
         **Description:**
@@ -600,4 +671,56 @@ class Buffer(BaseTSPCmd):
             )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.save()`` function."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    def saveappend(
+        self,
+        buffer_var: str,
+        file_name: str,
+        time_format: Optional[str] = None,
+        start: Optional[str] = None,
+        end: Optional[str] = None,
+    ) -> None:
+        """Run the ``buffer.saveappend()`` function.
+
+        **Description:**
+            - This function appends data from the reading buffer to a file on the USB flash drive.
+
+        **TSP Syntax:**
+
+        ::
+
+            - buffer.saveappend()
+
+        Args:
+            buffer_var: Indicates the reading buffer to use; the default buffers (defbuffer1 or
+                defbuffer2) or the name of a user-defined buffer; if no buffer is specified,
+                defbuffer1 is used.
+            file_name: A string that indicates the name of the file on the USB flash drive in which
+                to save the reading buffer.
+            time_format (optional): Indicates how date and time information from the buffer is saved
+                in the file on the USB flash drive; the options are.
+            start (optional): Defines the starting point in the buffer to start saving data.
+            end (optional): Defines the ending point in the buffer to stop saving data.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            function_args = ", ".join(
+                str(x)
+                for x in (
+                    buffer_var,
+                    f'"{file_name}"',
+                    time_format,
+                    start,
+                    end,
+                )
+                if x is not None
+            )
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.saveappend({function_args})"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.saveappend()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

@@ -36,6 +36,10 @@ class Lan(BaseTSPCmd):
           close the DST port to close all open LAN connections. By turning DST protection ON, you
           are protecting LAN connections from being inadvertently closed by your IT department doing
           a port scan across the corporate network.
+        - ``.PROTOCOL_MULTICAST``: Sets the LAN protocol to use for sending trigger messages to
+          multicast.
+        - ``.PROTOCOL_TCP``: Sets the LAN protocol to use for sending trigger messages to TCP.
+        - ``.PROTOCOL_UDP``: Sets the LAN protocol to use for sending trigger messages to UDP.
 
     Properties/methods:
         - ``.ipconfig()``: The ``lan.ipconfig()`` function.
@@ -51,6 +55,12 @@ class Lan(BaseTSPCmd):
     """str: An open and close on the DST port (5030) closes all open LAN connections."""
     ON = "lan.ON"
     """str: The DST port needs to be opened, receive the login + <system password>, then close the DST port to close all open LAN connections.  By turning DST protection ON, you are protecting LAN connections from being inadvertently closed by your IT department doing a port scan across the corporate network."""  # noqa: E501
+    PROTOCOL_MULTICAST = "lan.PROTOCOL_MULTICAST"
+    """str: Sets the LAN protocol to use for sending trigger messages to multicast."""
+    PROTOCOL_TCP = "lan.PROTOCOL_TCP"
+    """str: Sets the LAN protocol to use for sending trigger messages to TCP."""
+    PROTOCOL_UDP = "lan.PROTOCOL_UDP"
+    """str: Sets the LAN protocol to use for sending trigger messages to UDP."""
 
     def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "lan") -> None:
         super().__init__(device, cmd_syntax)

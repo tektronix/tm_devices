@@ -33,6 +33,8 @@ Commands and Queries:
     - HORizontal:FASTframe:MULtipleframes:FRAMESTart:CH<x>?
     - HORizontal:FASTframe:MULtipleframes:FRAMESTart:D<x> <NR1>
     - HORizontal:FASTframe:MULtipleframes:FRAMESTart:D<x>?
+    - HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x> <NR1>
+    - HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x>?
     - HORizontal:FASTframe:MULtipleframes:FRAMESTart:REF<x> <NR1>
     - HORizontal:FASTframe:MULtipleframes:FRAMESTart:REF<x>?
     - HORizontal:FASTframe:MULtipleframes:MODe {OFF|OVERlay|ONLYOVERlay}
@@ -41,6 +43,8 @@ Commands and Queries:
     - HORizontal:FASTframe:MULtipleframes:NUMFRames:CH<x>?
     - HORizontal:FASTframe:MULtipleframes:NUMFRames:D<x> <NR1>
     - HORizontal:FASTframe:MULtipleframes:NUMFRames:D<x>?
+    - HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x> <NR1>
+    - HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x>?
     - HORizontal:FASTframe:MULtipleframes:NUMFRames:REF<x> <NR1>
     - HORizontal:FASTframe:MULtipleframes:NUMFRames:REF<x>?
     - HORizontal:FASTframe:REF:FRAme <NR1>
@@ -67,19 +71,24 @@ Commands and Queries:
     - HORizontal:FASTframe:SUMFrame?
     - HORizontal:FASTframe:TIMEStamp:ALL:CH<x>? <NR1>, <NR1>
     - HORizontal:FASTframe:TIMEStamp:ALL:D<x>? <NR1>, <NR1>
+    - HORizontal:FASTframe:TIMEStamp:ALL:MATH<x>? <NR1>, <NR1>
     - HORizontal:FASTframe:TIMEStamp:ALL:REF<x>? <NR1>, <NR1>
     - HORizontal:FASTframe:TIMEStamp:BETWeen:CH<x>? <NR1>, <NR1>
     - HORizontal:FASTframe:TIMEStamp:BETWeen:D<x>? <NR1>, <NR1>
+    - HORizontal:FASTframe:TIMEStamp:BETWeen:MATH<x>? <NR1>, <NR1>
     - HORizontal:FASTframe:TIMEStamp:BETWeen:REF<x>? <NR1>, <NR1>
     - HORizontal:FASTframe:TIMEStamp:DELTa:CH<x>?
     - HORizontal:FASTframe:TIMEStamp:DELTa:D<x>?
+    - HORizontal:FASTframe:TIMEStamp:DELTa:MATH<x>?
     - HORizontal:FASTframe:TIMEStamp:DELTa:REF<x>?
     - HORizontal:FASTframe:TIMEStamp:FRAMe:CH<x>? <NR1>
     - HORizontal:FASTframe:TIMEStamp:FRAMe:D<x>? <NR1>
+    - HORizontal:FASTframe:TIMEStamp:FRAMe:MATH<x>? <NR1>
     - HORizontal:FASTframe:TIMEStamp:FRAMe:REF<x>? <NR1>
     - HORizontal:FASTframe:TIMEStamp:REF?
     - HORizontal:FASTframe:TIMEStamp:SELECTED:CH<x>?
     - HORizontal:FASTframe:TIMEStamp:SELECTED:D<x>?
+    - HORizontal:FASTframe:TIMEStamp:SELECTED:MATH<x>?
     - HORizontal:FASTframe:TIMEStamp:SELECTED:REF<x>?
     - HORizontal:FASTframe:TRACk {LIVE|ALL}
     - HORizontal:FASTframe:TRACk?
@@ -1573,6 +1582,32 @@ class HorizontalFastframeTimestampSelectedRefItem(ValidatedDynamicNumberCmd, SCP
     """
 
 
+class HorizontalFastframeTimestampSelectedMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
+    """The ``HORizontal:FASTframe:TIMEStamp:SELECTED:MATH<x>`` command.
+
+    **Description:**
+        - This query-only command returns the absolute trigger date and time for the FastFrame
+          Selected, within the specified waveform. Valid waveforms include CH<x>, MATH<x> and
+          REF<x>. The x variable can be expressed as an integer ranging from 1 through 4. The format
+          of the output is as follows: DD MON YYYY ``HH:MM:SS``.xxx xxx xxx xxx DD MON YYYY is day,
+          month, and year ``HH:MM:SS`` is hours, minutes, and seconds .xxx xxx xxx xxx is fractions
+          of a second to picoseconds
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``HORizontal:FASTframe:TIMEStamp:SELECTED:MATH<x>?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``HORizontal:FASTframe:TIMEStamp:SELECTED:MATH<x>?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - HORizontal:FASTframe:TIMEStamp:SELECTED:MATH<x>?
+    """
+
+
 class HorizontalFastframeTimestampSelectedDigitalBit(ValidatedDigitalBit, SCPICmdRead):
     """The ``HORizontal:FASTframe:TIMEStamp:SELECTED:D<x>`` command.
 
@@ -1637,6 +1672,7 @@ class HorizontalFastframeTimestampSelected(SCPICmdRead):
 
     Properties:
         - ``.ch``: The ``HORizontal:FASTframe:TIMEStamp:SELECTED:CH<x>`` command.
+        - ``.math``: The ``HORizontal:FASTframe:TIMEStamp:SELECTED:MATH<x>`` command.
         - ``.ref``: The ``HORizontal:FASTframe:TIMEStamp:SELECTED:REF<x>`` command.
         - ``.d``: The ``HORizontal:FASTframe:TIMEStamp:SELECTED:D<x>`` command.
     """
@@ -1648,6 +1684,13 @@ class HorizontalFastframeTimestampSelected(SCPICmdRead):
         ] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampSelectedChannel(
                 device, f"{self._cmd_syntax}:CH{x}"
+            )
+        )
+        self._math: Dict[
+            int, HorizontalFastframeTimestampSelectedMathItem
+        ] = DefaultDictPassKeyToFactory(
+            lambda x: HorizontalFastframeTimestampSelectedMathItem(
+                device, f"{self._cmd_syntax}:MATH{x}"
             )
         )
         self._ref: Dict[
@@ -1691,6 +1734,33 @@ class HorizontalFastframeTimestampSelected(SCPICmdRead):
             - HORizontal:FASTframe:TIMEStamp:SELECTED:CH<x>?
         """
         return self._ch
+
+    @property
+    def math(self) -> Dict[int, HorizontalFastframeTimestampSelectedMathItem]:
+        """Return the ``HORizontal:FASTframe:TIMEStamp:SELECTED:MATH<x>`` command.
+
+        **Description:**
+            - This query-only command returns the absolute trigger date and time for the FastFrame
+              Selected, within the specified waveform. Valid waveforms include CH<x>, MATH<x> and
+              REF<x>. The x variable can be expressed as an integer ranging from 1 through 4. The
+              format of the output is as follows: DD MON YYYY ``HH:MM:SS``.xxx xxx xxx xxx DD MON
+              YYYY is day, month, and year ``HH:MM:SS`` is hours, minutes, and seconds .xxx xxx xxx
+              xxx is fractions of a second to picoseconds
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``HORizontal:FASTframe:TIMEStamp:SELECTED:MATH<x>?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``HORizontal:FASTframe:TIMEStamp:SELECTED:MATH<x>?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - HORizontal:FASTframe:TIMEStamp:SELECTED:MATH<x>?
+        """
+        return self._math
 
     @property
     def ref(self) -> Dict[int, HorizontalFastframeTimestampSelectedRefItem]:
@@ -1794,6 +1864,33 @@ class HorizontalFastframeTimestampFrameRefItem(ValidatedDynamicNumberCmd, SCPICm
     """
 
 
+class HorizontalFastframeTimestampFrameMathItem(
+    ValidatedDynamicNumberCmd, SCPICmdReadWithArguments
+):
+    """The ``HORizontal:FASTframe:TIMEStamp:FRAMe:MATH<x>`` command.
+
+    **Description:**
+        - This query-only command returns the absolute trigger date and time for the specified frame
+          and waveform. Valid waveforms include CH<x>, MATH<x> and REF<x>. The x variable can be
+          expressed as an integer ranging from 1 through 4. The format of the output is as follows:
+          DD MON YYYY ``HH:MM:SS``.xxx xxx xxx xxx DD MON YYYY is day, month, and year ``HH:MM:SS``
+          is hours, minutes, and seconds .xxx xxx xxx xxx is fractions of a second to picoseconds
+
+    **Usage:**
+        - Using the ``.query(argument)`` method will send the
+          ``HORizontal:FASTframe:TIMEStamp:FRAMe:MATH<x>? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``HORizontal:FASTframe:TIMEStamp:FRAMe:MATH<x>? argument`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - HORizontal:FASTframe:TIMEStamp:FRAMe:MATH<x>? <NR1>
+    """
+
+
 class HorizontalFastframeTimestampFrameDigitalBit(ValidatedDigitalBit, SCPICmdReadWithArguments):
     """The ``HORizontal:FASTframe:TIMEStamp:FRAMe:D<x>`` command.
 
@@ -1856,6 +1953,7 @@ class HorizontalFastframeTimestampFrame(SCPICmdRead):
 
     Properties:
         - ``.ch``: The ``HORizontal:FASTframe:TIMEStamp:FRAMe:CH<x>`` command.
+        - ``.math``: The ``HORizontal:FASTframe:TIMEStamp:FRAMe:MATH<x>`` command.
         - ``.ref``: The ``HORizontal:FASTframe:TIMEStamp:FRAMe:REF<x>`` command.
         - ``.d``: The ``HORizontal:FASTframe:TIMEStamp:FRAMe:D<x>`` command.
     """
@@ -1864,6 +1962,13 @@ class HorizontalFastframeTimestampFrame(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, HorizontalFastframeTimestampFrameChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampFrameChannel(device, f"{self._cmd_syntax}:CH{x}")
+        )
+        self._math: Dict[
+            int, HorizontalFastframeTimestampFrameMathItem
+        ] = DefaultDictPassKeyToFactory(
+            lambda x: HorizontalFastframeTimestampFrameMathItem(
+                device, f"{self._cmd_syntax}:MATH{x}"
+            )
         )
         self._ref: Dict[
             int, HorizontalFastframeTimestampFrameRefItem
@@ -1904,6 +2009,33 @@ class HorizontalFastframeTimestampFrame(SCPICmdRead):
             - HORizontal:FASTframe:TIMEStamp:FRAMe:CH<x>? <NR1>
         """
         return self._ch
+
+    @property
+    def math(self) -> Dict[int, HorizontalFastframeTimestampFrameMathItem]:
+        """Return the ``HORizontal:FASTframe:TIMEStamp:FRAMe:MATH<x>`` command.
+
+        **Description:**
+            - This query-only command returns the absolute trigger date and time for the specified
+              frame and waveform. Valid waveforms include CH<x>, MATH<x> and REF<x>. The x variable
+              can be expressed as an integer ranging from 1 through 4. The format of the output is
+              as follows: DD MON YYYY ``HH:MM:SS``.xxx xxx xxx xxx DD MON YYYY is day, month, and
+              year ``HH:MM:SS`` is hours, minutes, and seconds .xxx xxx xxx xxx is fractions of a
+              second to picoseconds
+
+        **Usage:**
+            - Using the ``.query(argument)`` method will send the
+              ``HORizontal:FASTframe:TIMEStamp:FRAMe:MATH<x>? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``HORizontal:FASTframe:TIMEStamp:FRAMe:MATH<x>? argument`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - HORizontal:FASTframe:TIMEStamp:FRAMe:MATH<x>? <NR1>
+        """
+        return self._math
 
     @property
     def ref(self) -> Dict[int, HorizontalFastframeTimestampFrameRefItem]:
@@ -1986,6 +2118,32 @@ class HorizontalFastframeTimestampDeltaRefItem(ValidatedDynamicNumberCmd, SCPICm
     """
 
 
+class HorizontalFastframeTimestampDeltaMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
+    """The ``HORizontal:FASTframe:TIMEStamp:DELTa:MATH<x>`` command.
+
+    **Description:**
+        - This query-only command returns the relative time between the triggers of the FastFrame
+          Selected and the FastFrame Reference, within the specified waveform. Valid waveforms
+          include CH<x>, MATH<x>, and REF<x>. The x variable can be expressed as an integer ranging
+          from 1 through 4. The format of the output is as follows: ``HH:MM:SS``.xxx xxx xxx xxx
+          ``HH:MM:SS`` is hours, minutes, and seconds .xxx xxx xxx xxx is fractions of a second to
+          picoseconds
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``HORizontal:FASTframe:TIMEStamp:DELTa:MATH<x>?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``HORizontal:FASTframe:TIMEStamp:DELTa:MATH<x>?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - HORizontal:FASTframe:TIMEStamp:DELTa:MATH<x>?
+    """
+
+
 class HorizontalFastframeTimestampDeltaDigitalBit(ValidatedDigitalBit, SCPICmdRead):
     """The ``HORizontal:FASTframe:TIMEStamp:DELTa:D<x>`` command.
 
@@ -2050,6 +2208,7 @@ class HorizontalFastframeTimestampDelta(SCPICmdRead):
 
     Properties:
         - ``.ch``: The ``HORizontal:FASTframe:TIMEStamp:DELTa:CH<x>`` command.
+        - ``.math``: The ``HORizontal:FASTframe:TIMEStamp:DELTa:MATH<x>`` command.
         - ``.ref``: The ``HORizontal:FASTframe:TIMEStamp:DELTa:REF<x>`` command.
         - ``.d``: The ``HORizontal:FASTframe:TIMEStamp:DELTa:D<x>`` command.
     """
@@ -2058,6 +2217,13 @@ class HorizontalFastframeTimestampDelta(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, HorizontalFastframeTimestampDeltaChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampDeltaChannel(device, f"{self._cmd_syntax}:CH{x}")
+        )
+        self._math: Dict[
+            int, HorizontalFastframeTimestampDeltaMathItem
+        ] = DefaultDictPassKeyToFactory(
+            lambda x: HorizontalFastframeTimestampDeltaMathItem(
+                device, f"{self._cmd_syntax}:MATH{x}"
+            )
         )
         self._ref: Dict[
             int, HorizontalFastframeTimestampDeltaRefItem
@@ -2098,6 +2264,33 @@ class HorizontalFastframeTimestampDelta(SCPICmdRead):
             - HORizontal:FASTframe:TIMEStamp:DELTa:CH<x>?
         """
         return self._ch
+
+    @property
+    def math(self) -> Dict[int, HorizontalFastframeTimestampDeltaMathItem]:
+        """Return the ``HORizontal:FASTframe:TIMEStamp:DELTa:MATH<x>`` command.
+
+        **Description:**
+            - This query-only command returns the relative time between the triggers of the
+              FastFrame Selected and the FastFrame Reference, within the specified waveform. Valid
+              waveforms include CH<x>, MATH<x>, and REF<x>. The x variable can be expressed as an
+              integer ranging from 1 through 4. The format of the output is as follows:
+              ``HH:MM:SS``.xxx xxx xxx xxx ``HH:MM:SS`` is hours, minutes, and seconds .xxx xxx xxx
+              xxx is fractions of a second to picoseconds
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``HORizontal:FASTframe:TIMEStamp:DELTa:MATH<x>?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``HORizontal:FASTframe:TIMEStamp:DELTa:MATH<x>?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - HORizontal:FASTframe:TIMEStamp:DELTa:MATH<x>?
+        """
+        return self._math
 
     @property
     def ref(self) -> Dict[int, HorizontalFastframeTimestampDeltaRefItem]:
@@ -2181,6 +2374,33 @@ class HorizontalFastframeTimestampBetweenRefItem(
     """
 
 
+class HorizontalFastframeTimestampBetweenMathItem(
+    ValidatedDynamicNumberCmd, SCPICmdReadWithArguments
+):
+    """The ``HORizontal:FASTframe:TIMEStamp:BETWeen:MATH<x>`` command.
+
+    **Description:**
+        - This query-only command returns the relative trigger for the delta time between the
+          specified frames, within the specified waveform. Valid waveforms include CH<x>, MATH<x>
+          and REF<x>. The x variable can be expressed as an integer ranging from 1 through 4. The
+          format of the delta time output is as follows: ``HH:MM:SS``.xxx xxx xxx xxx ``HH:MM:SS``
+          is hours, minutes, and seconds .xxx xxx xxx xxx is fractions of a second to picoseconds
+
+    **Usage:**
+        - Using the ``.query(argument)`` method will send the
+          ``HORizontal:FASTframe:TIMEStamp:BETWeen:MATH<x>? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``HORizontal:FASTframe:TIMEStamp:BETWeen:MATH<x>? argument`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - HORizontal:FASTframe:TIMEStamp:BETWeen:MATH<x>? <NR1>, <NR1>
+    """
+
+
 class HorizontalFastframeTimestampBetweenDigitalBit(ValidatedDigitalBit, SCPICmdReadWithArguments):
     """The ``HORizontal:FASTframe:TIMEStamp:BETWeen:D<x>`` command.
 
@@ -2243,6 +2463,7 @@ class HorizontalFastframeTimestampBetween(SCPICmdRead):
 
     Properties:
         - ``.ch``: The ``HORizontal:FASTframe:TIMEStamp:BETWeen:CH<x>`` command.
+        - ``.math``: The ``HORizontal:FASTframe:TIMEStamp:BETWeen:MATH<x>`` command.
         - ``.ref``: The ``HORizontal:FASTframe:TIMEStamp:BETWeen:REF<x>`` command.
         - ``.d``: The ``HORizontal:FASTframe:TIMEStamp:BETWeen:D<x>`` command.
     """
@@ -2254,6 +2475,13 @@ class HorizontalFastframeTimestampBetween(SCPICmdRead):
         ] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampBetweenChannel(
                 device, f"{self._cmd_syntax}:CH{x}"
+            )
+        )
+        self._math: Dict[
+            int, HorizontalFastframeTimestampBetweenMathItem
+        ] = DefaultDictPassKeyToFactory(
+            lambda x: HorizontalFastframeTimestampBetweenMathItem(
+                device, f"{self._cmd_syntax}:MATH{x}"
             )
         )
         self._ref: Dict[
@@ -2297,6 +2525,33 @@ class HorizontalFastframeTimestampBetween(SCPICmdRead):
             - HORizontal:FASTframe:TIMEStamp:BETWeen:CH<x>? <NR1>, <NR1>
         """
         return self._ch
+
+    @property
+    def math(self) -> Dict[int, HorizontalFastframeTimestampBetweenMathItem]:
+        """Return the ``HORizontal:FASTframe:TIMEStamp:BETWeen:MATH<x>`` command.
+
+        **Description:**
+            - This query-only command returns the relative trigger for the delta time between the
+              specified frames, within the specified waveform. Valid waveforms include CH<x>,
+              MATH<x> and REF<x>. The x variable can be expressed as an integer ranging from 1
+              through 4. The format of the delta time output is as follows: ``HH:MM:SS``.xxx xxx xxx
+              xxx ``HH:MM:SS`` is hours, minutes, and seconds .xxx xxx xxx xxx is fractions of a
+              second to picoseconds
+
+        **Usage:**
+            - Using the ``.query(argument)`` method will send the
+              ``HORizontal:FASTframe:TIMEStamp:BETWeen:MATH<x>? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``HORizontal:FASTframe:TIMEStamp:BETWeen:MATH<x>? argument`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - HORizontal:FASTframe:TIMEStamp:BETWeen:MATH<x>? <NR1>, <NR1>
+        """
+        return self._math
 
     @property
     def ref(self) -> Dict[int, HorizontalFastframeTimestampBetweenRefItem]:
@@ -2379,6 +2634,32 @@ class HorizontalFastframeTimestampAllRefItem(ValidatedDynamicNumberCmd, SCPICmdR
     """
 
 
+class HorizontalFastframeTimestampAllMathItem(ValidatedDynamicNumberCmd, SCPICmdReadWithArguments):
+    """The ``HORizontal:FASTframe:TIMEStamp:ALL:MATH<x>`` command.
+
+    **Description:**
+        - This query-only command returns the frame number and time stamp for each frame between
+          requested frames, inclusive, within the specified waveform. Argument order is unimportant.
+          Valid waveforms include CH<x>, MATH<x> and REF<x>. The x variable can be expressed as an
+          integer ranging from 1 through 4. The format of the output is as follows: DD MON YYYY
+          ``HH:MM:SS``.xxx xxx xxx xxx DD MON YYYY is day, month, and year ``HH:MM:SS`` is hours,
+          minutes, and seconds .xxx xxx xxx xxx is fractions of a second to picoseconds
+
+    **Usage:**
+        - Using the ``.query(argument)`` method will send the
+          ``HORizontal:FASTframe:TIMEStamp:ALL:MATH<x>? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``HORizontal:FASTframe:TIMEStamp:ALL:MATH<x>? argument`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - HORizontal:FASTframe:TIMEStamp:ALL:MATH<x>? <NR1>, <NR1>
+    """
+
+
 class HorizontalFastframeTimestampAllDigitalBit(ValidatedDigitalBit, SCPICmdReadWithArguments):
     """The ``HORizontal:FASTframe:TIMEStamp:ALL:D<x>`` command.
 
@@ -2441,6 +2722,7 @@ class HorizontalFastframeTimestampAll(SCPICmdRead):
 
     Properties:
         - ``.ch``: The ``HORizontal:FASTframe:TIMEStamp:ALL:CH<x>`` command.
+        - ``.math``: The ``HORizontal:FASTframe:TIMEStamp:ALL:MATH<x>`` command.
         - ``.ref``: The ``HORizontal:FASTframe:TIMEStamp:ALL:REF<x>`` command.
         - ``.d``: The ``HORizontal:FASTframe:TIMEStamp:ALL:D<x>`` command.
     """
@@ -2449,6 +2731,11 @@ class HorizontalFastframeTimestampAll(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, HorizontalFastframeTimestampAllChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampAllChannel(device, f"{self._cmd_syntax}:CH{x}")
+        )
+        self._math: Dict[
+            int, HorizontalFastframeTimestampAllMathItem
+        ] = DefaultDictPassKeyToFactory(
+            lambda x: HorizontalFastframeTimestampAllMathItem(device, f"{self._cmd_syntax}:MATH{x}")
         )
         self._ref: Dict[int, HorizontalFastframeTimestampAllRefItem] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampAllRefItem(device, f"{self._cmd_syntax}:REF{x}")
@@ -2484,6 +2771,34 @@ class HorizontalFastframeTimestampAll(SCPICmdRead):
             - HORizontal:FASTframe:TIMEStamp:ALL:CH<x>? <NR1>, <NR1>
         """
         return self._ch
+
+    @property
+    def math(self) -> Dict[int, HorizontalFastframeTimestampAllMathItem]:
+        """Return the ``HORizontal:FASTframe:TIMEStamp:ALL:MATH<x>`` command.
+
+        **Description:**
+            - This query-only command returns the frame number and time stamp for each frame between
+              requested frames, inclusive, within the specified waveform. Argument order is
+              unimportant. Valid waveforms include CH<x>, MATH<x> and REF<x>. The x variable can be
+              expressed as an integer ranging from 1 through 4. The format of the output is as
+              follows: DD MON YYYY ``HH:MM:SS``.xxx xxx xxx xxx DD MON YYYY is day, month, and year
+              ``HH:MM:SS`` is hours, minutes, and seconds .xxx xxx xxx xxx is fractions of a second
+              to picoseconds
+
+        **Usage:**
+            - Using the ``.query(argument)`` method will send the
+              ``HORizontal:FASTframe:TIMEStamp:ALL:MATH<x>? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``HORizontal:FASTframe:TIMEStamp:ALL:MATH<x>? argument`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - HORizontal:FASTframe:TIMEStamp:ALL:MATH<x>? <NR1>, <NR1>
+        """
+        return self._math
 
     @property
     def ref(self) -> Dict[int, HorizontalFastframeTimestampAllRefItem]:
@@ -2583,6 +2898,7 @@ class HorizontalFastframeTimestamp(SCPICmdRead):
 
         Sub-properties:
             - ``.ch``: The ``HORizontal:FASTframe:TIMEStamp:ALL:CH<x>`` command.
+            - ``.math``: The ``HORizontal:FASTframe:TIMEStamp:ALL:MATH<x>`` command.
             - ``.ref``: The ``HORizontal:FASTframe:TIMEStamp:ALL:REF<x>`` command.
             - ``.d``: The ``HORizontal:FASTframe:TIMEStamp:ALL:D<x>`` command.
         """
@@ -2601,6 +2917,7 @@ class HorizontalFastframeTimestamp(SCPICmdRead):
 
         Sub-properties:
             - ``.ch``: The ``HORizontal:FASTframe:TIMEStamp:BETWeen:CH<x>`` command.
+            - ``.math``: The ``HORizontal:FASTframe:TIMEStamp:BETWeen:MATH<x>`` command.
             - ``.ref``: The ``HORizontal:FASTframe:TIMEStamp:BETWeen:REF<x>`` command.
             - ``.d``: The ``HORizontal:FASTframe:TIMEStamp:BETWeen:D<x>`` command.
         """
@@ -2619,6 +2936,7 @@ class HorizontalFastframeTimestamp(SCPICmdRead):
 
         Sub-properties:
             - ``.ch``: The ``HORizontal:FASTframe:TIMEStamp:DELTa:CH<x>`` command.
+            - ``.math``: The ``HORizontal:FASTframe:TIMEStamp:DELTa:MATH<x>`` command.
             - ``.ref``: The ``HORizontal:FASTframe:TIMEStamp:DELTa:REF<x>`` command.
             - ``.d``: The ``HORizontal:FASTframe:TIMEStamp:DELTa:D<x>`` command.
         """
@@ -2637,6 +2955,7 @@ class HorizontalFastframeTimestamp(SCPICmdRead):
 
         Sub-properties:
             - ``.ch``: The ``HORizontal:FASTframe:TIMEStamp:FRAMe:CH<x>`` command.
+            - ``.math``: The ``HORizontal:FASTframe:TIMEStamp:FRAMe:MATH<x>`` command.
             - ``.ref``: The ``HORizontal:FASTframe:TIMEStamp:FRAMe:REF<x>`` command.
             - ``.d``: The ``HORizontal:FASTframe:TIMEStamp:FRAMe:D<x>`` command.
         """
@@ -2680,6 +2999,7 @@ class HorizontalFastframeTimestamp(SCPICmdRead):
 
         Sub-properties:
             - ``.ch``: The ``HORizontal:FASTframe:TIMEStamp:SELECTED:CH<x>`` command.
+            - ``.math``: The ``HORizontal:FASTframe:TIMEStamp:SELECTED:MATH<x>`` command.
             - ``.ref``: The ``HORizontal:FASTframe:TIMEStamp:SELECTED:REF<x>`` command.
             - ``.d``: The ``HORizontal:FASTframe:TIMEStamp:SELECTED:D<x>`` command.
         """
@@ -2690,11 +3010,10 @@ class HorizontalFastframeSumframe(SCPICmdWrite, SCPICmdRead):
     """The ``HORizontal:FASTframe:SUMFrame`` command.
 
     **Description:**
-        - This command sets or queries the summary frame mode. When ENVelope is selected, the last
-          frame in a FastFrame acquisition is an envelope of all the prior frames in the
-          acquisition. When AVErage is selected, the last frame is replaced with a frame that is the
-          computed average of all the prior frames in the acquisition. For the summary frame control
-          to be active, the number of frames must be two or greater.
+        - This command sets or returns the summary frame type. Turning on Summary Frame does not
+          adjust the numberFrames value as long as there is room for an additional frame. If there
+          is not enough room then numberFrames will be reduced by 1. The numberFrames value is
+          always the number of frames to acquire.
 
     **Usage:**
         - Using the ``.query()`` method will send the ``HORizontal:FASTframe:SUMFrame?`` query.
@@ -2711,11 +3030,9 @@ class HorizontalFastframeSumframe(SCPICmdWrite, SCPICmdRead):
         - HORizontal:FASTframe:SUMFrame?
 
     **Info:**
-        - ``NONE`` turns off the summary mode for FastFrame. This is the default setting.
-        - ``AVErage`` argument displays the last frame in a FastFrame acquisition as a frame that is
-          the computed average of all the prior frames in the acquisition.
-        - ``ENVelope`` argument displays the last frame in a FastFrame acquisition as an envelope of
-          all the prior frames in the acquisition.
+        - ``NONe`` sets the Summary frame to off.
+        - ``AVErage`` sets the Summary frame to average of all acquired frames.
+        - ``ENVelope`` sets the Summary frame to envelope of all acquired frames.
     """
 
 
@@ -3254,6 +3571,38 @@ class HorizontalFastframeMultipleframesNumframesRefItem(
     """
 
 
+class HorizontalFastframeMultipleframesNumframesMathItem(
+    ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead
+):
+    """The ``HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x>`` command.
+
+    **Description:**
+        - This command sets or queries the number of frames on the specified waveform for the
+          FastFrame multiple frames feature. The multiple frames feature supports displaying
+          multiple frames in an overlaid manner. Valid waveforms include CH<x>, MATH<x> and REF<x>.
+          The x variable can be expressed as an integer ranging from 1 through 4.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x>?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x>?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x> value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x> <NR1>
+        - HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x>?
+
+    **Info:**
+        - ``<NR1>`` represents the number of frames on the specified waveform.
+    """
+
+
 class HorizontalFastframeMultipleframesNumframesDigitalBit(
     ValidatedDigitalBit, SCPICmdWrite, SCPICmdRead
 ):
@@ -3330,6 +3679,7 @@ class HorizontalFastframeMultipleframesNumframes(SCPICmdRead):
 
     Properties:
         - ``.ch``: The ``HORizontal:FASTframe:MULtipleframes:NUMFRames:CH<x>`` command.
+        - ``.math``: The ``HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x>`` command.
         - ``.ref``: The ``HORizontal:FASTframe:MULtipleframes:NUMFRames:REF<x>`` command.
         - ``.d``: The ``HORizontal:FASTframe:MULtipleframes:NUMFRames:D<x>`` command.
     """
@@ -3341,6 +3691,13 @@ class HorizontalFastframeMultipleframesNumframes(SCPICmdRead):
         ] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeMultipleframesNumframesChannel(
                 device, f"{self._cmd_syntax}:CH{x}"
+            )
+        )
+        self._math: Dict[
+            int, HorizontalFastframeMultipleframesNumframesMathItem
+        ] = DefaultDictPassKeyToFactory(
+            lambda x: HorizontalFastframeMultipleframesNumframesMathItem(
+                device, f"{self._cmd_syntax}:MATH{x}"
             )
         )
         self._ref: Dict[
@@ -3388,6 +3745,37 @@ class HorizontalFastframeMultipleframesNumframes(SCPICmdRead):
             - ``<NR1>`` represents the number of frames on the specified waveform.
         """
         return self._ch
+
+    @property
+    def math(self) -> Dict[int, HorizontalFastframeMultipleframesNumframesMathItem]:
+        """Return the ``HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x>`` command.
+
+        **Description:**
+            - This command sets or queries the number of frames on the specified waveform for the
+              FastFrame multiple frames feature. The multiple frames feature supports displaying
+              multiple frames in an overlaid manner. Valid waveforms include CH<x>, MATH<x> and
+              REF<x>. The x variable can be expressed as an integer ranging from 1 through 4.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x>?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x>?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x> value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x> <NR1>
+            - HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x>?
+
+        **Info:**
+            - ``<NR1>`` represents the number of frames on the specified waveform.
+        """
+        return self._math
 
     @property
     def ref(self) -> Dict[int, HorizontalFastframeMultipleframesNumframesRefItem]:
@@ -3513,6 +3901,38 @@ class HorizontalFastframeMultipleframesFramestartRefItem(
     """
 
 
+class HorizontalFastframeMultipleframesFramestartMathItem(
+    ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead
+):
+    """The ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x>`` command.
+
+    **Description:**
+        - This command sets or queries the start frame number on the specified waveform for the
+          FastFrame multiple frames feature. Valid waveforms include CH<x>, MATH<x>, and REF<x>. The
+          value of x can be an integer ranging from 1 through 4. The multiple frames feature
+          supports displaying multiple frames in an overlaid manner.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x>?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x>?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x> value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x> <NR1>
+        - HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x>?
+
+    **Info:**
+        - ``<NR1>`` specifies the start frame number on the specified waveform.
+    """
+
+
 class HorizontalFastframeMultipleframesFramestartDigitalBit(
     ValidatedDigitalBit, SCPICmdWrite, SCPICmdRead
 ):
@@ -3589,6 +4009,7 @@ class HorizontalFastframeMultipleframesFramestart(SCPICmdRead):
 
     Properties:
         - ``.ch``: The ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:CH<x>`` command.
+        - ``.math``: The ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x>`` command.
         - ``.ref``: The ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:REF<x>`` command.
         - ``.d``: The ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:D<x>`` command.
     """
@@ -3600,6 +4021,13 @@ class HorizontalFastframeMultipleframesFramestart(SCPICmdRead):
         ] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeMultipleframesFramestartChannel(
                 device, f"{self._cmd_syntax}:CH{x}"
+            )
+        )
+        self._math: Dict[
+            int, HorizontalFastframeMultipleframesFramestartMathItem
+        ] = DefaultDictPassKeyToFactory(
+            lambda x: HorizontalFastframeMultipleframesFramestartMathItem(
+                device, f"{self._cmd_syntax}:MATH{x}"
             )
         )
         self._ref: Dict[
@@ -3647,6 +4075,37 @@ class HorizontalFastframeMultipleframesFramestart(SCPICmdRead):
             - ``<NR1>`` specifies the start frame number on the specified waveform.
         """
         return self._ch
+
+    @property
+    def math(self) -> Dict[int, HorizontalFastframeMultipleframesFramestartMathItem]:
+        """Return the ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x>`` command.
+
+        **Description:**
+            - This command sets or queries the start frame number on the specified waveform for the
+              FastFrame multiple frames feature. Valid waveforms include CH<x>, MATH<x>, and REF<x>.
+              The value of x can be an integer ranging from 1 through 4. The multiple frames feature
+              supports displaying multiple frames in an overlaid manner.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x>?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x>?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x> value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x> <NR1>
+            - HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x>?
+
+        **Info:**
+            - ``<NR1>`` specifies the start frame number on the specified waveform.
+        """
+        return self._math
 
     @property
     def ref(self) -> Dict[int, HorizontalFastframeMultipleframesFramestartRefItem]:
@@ -3749,6 +4208,7 @@ class HorizontalFastframeMultipleframes(SCPICmdRead):
 
         Sub-properties:
             - ``.ch``: The ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:CH<x>`` command.
+            - ``.math``: The ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:MATH<x>`` command.
             - ``.ref``: The ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:REF<x>`` command.
             - ``.d``: The ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:D<x>`` command.
         """
@@ -3797,6 +4257,7 @@ class HorizontalFastframeMultipleframes(SCPICmdRead):
 
         Sub-properties:
             - ``.ch``: The ``HORizontal:FASTframe:MULtipleframes:NUMFRames:CH<x>`` command.
+            - ``.math``: The ``HORizontal:FASTframe:MULtipleframes:NUMFRames:MATH<x>`` command.
             - ``.ref``: The ``HORizontal:FASTframe:MULtipleframes:NUMFRames:REF<x>`` command.
             - ``.d``: The ``HORizontal:FASTframe:MULtipleframes:NUMFRames:D<x>`` command.
         """
@@ -4242,11 +4703,10 @@ class HorizontalFastframe(SCPICmdRead):
         """Return the ``HORizontal:FASTframe:SUMFrame`` command.
 
         **Description:**
-            - This command sets or queries the summary frame mode. When ENVelope is selected, the
-              last frame in a FastFrame acquisition is an envelope of all the prior frames in the
-              acquisition. When AVErage is selected, the last frame is replaced with a frame that is
-              the computed average of all the prior frames in the acquisition. For the summary frame
-              control to be active, the number of frames must be two or greater.
+            - This command sets or returns the summary frame type. Turning on Summary Frame does not
+              adjust the numberFrames value as long as there is room for an additional frame. If
+              there is not enough room then numberFrames will be reduced by 1. The numberFrames
+              value is always the number of frames to acquire.
 
         **Usage:**
             - Using the ``.query()`` method will send the ``HORizontal:FASTframe:SUMFrame?`` query.
@@ -4263,11 +4723,9 @@ class HorizontalFastframe(SCPICmdRead):
             - HORizontal:FASTframe:SUMFrame?
 
         **Info:**
-            - ``NONE`` turns off the summary mode for FastFrame. This is the default setting.
-            - ``AVErage`` argument displays the last frame in a FastFrame acquisition as a frame
-              that is the computed average of all the prior frames in the acquisition.
-            - ``ENVelope`` argument displays the last frame in a FastFrame acquisition as an
-              envelope of all the prior frames in the acquisition.
+            - ``NONe`` sets the Summary frame to off.
+            - ``AVErage`` sets the Summary frame to average of all acquired frames.
+            - ``ENVelope`` sets the Summary frame to envelope of all acquired frames.
         """
         return self._sumframe
 

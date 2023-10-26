@@ -4191,17 +4191,159 @@ class Trigger(BaseTSPCmd):
     """The ``trigger`` command tree.
 
     Constants:
+        - ``.BLOCK_BRANCH_ALWAYS``: Defines a trigger model block that always goes to a specific
+          block.
+        - ``.BLOCK_BRANCH_COUNTER``: Defines a trigger model block that branches to a specified
+          block a specified number of times.
+        - ``.BLOCK_BRANCH_DELTA``: Defines a trigger model block that goes to a specified block if
+          the difference of two measurements meets preset criteria.
+        - ``.BLOCK_BRANCH_LIMIT_CONSTANT``: Defines a trigger model block that goes to a specified
+          block if a measurement meets preset criteria.
+        - ``.BLOCK_BRANCH_LIMIT_DYNAMIC``: Defines a trigger model block that goes to a specified
+          block in the trigger model if a measurement meets user-defined criteria.
+        - ``.BLOCK_BRANCH_ONCE``: Causes the trigger model to branch to a specified building block
+          the first time it is encountered in the trigger model.
+        - ``.BLOCK_BRANCH_ONCE_EXCLUDED``: Causes the trigger model to go to a specified building
+          block every time the trigger model encounters it, except for the first time.
+        - ``.BLOCK_BRANCH_ON_EVENT``: Branches to a specified block when a specified trigger event
+          occurs.
+        - ``.BLOCK_BUFFER_CLEAR``: Defines a trigger model block that clears the reading buffer.
+        - ``.BLOCK_CONFIG_NEXT``: Recalls the settings at the next index of a configuration list.
+        - ``.BLOCK_CONFIG_PREV``: Recalls the settings stored at the previous  index of a
+          configuration list.
         - ``.BLOCK_CONFIG_RECALL``: Recalls the system settings that are stored in a source or
           measure configuration list, or both a source and measure configuration list.
+        - ``.BLOCK_DELAY_CONSTANT``: Adds a constant delay to the execution of a trigger model.
+        - ``.BLOCK_DELAY_DYNAMIC``: Adds a user delay to the execution of the trigger model.
+        - ``.BLOCK_DIGITAL_IO``: Defines a trigger model block that sets the lines on the digital
+          I/O port high or low.
+        - ``.BLOCK_LOG_EVENT``: Allows you to log an event in the event log when the trigger model
+          is running.
+        - ``.BLOCK_MEASURE``: Deprecated; use trigger.BLOCK_MEASURE_DIGITIZE instead.
+        - ``.BLOCK_MEASURE_DIGITIZE``: defines a trigger block that makes or digitizes a
+          measurement.
+        - ``.BLOCK_NOP``: Creates a placeholder that performs no action in the trigger model.
+        - ``.BLOCK_NOTIFY``: Defines a trigger-model block that generates a trigger event and
+          immediately continues to the next block.
+        - ``.BLOCK_RESET_BRANCH_COUNT``: Creates a block in the trigger model that resets a branch
+          counter to 0.
         - ``.BLOCK_SOURCE_OUTPUT``: Defines a trigger block that turns the output source on or off.
+        - ``.BLOCK_WAIT``: Defines a trigger model block that waits for an event before allowing the
+          trigger model to continue.
         - ``.CLEAR_ENTER``: Clear previously detected trigger events when entering the wait block.
         - ``.CLEAR_NEVER``: Immediately act on any previously detected triggers and not clear them
           (default).
+        - ``.CONT_AUTO``: Start continuous measurements after boot.
+        - ``.CONT_OFF``: Do not start continuous measurements after boot.
+        - ``.CONT_RESTART``: Place the instrument into local control and start continuous
+          measurements after boot.
+        - ``.COUNT_AUTO``: Use most recent count value.
+        - ``.COUNT_INFINITE``: Infinite (run continuously until stopped).
+        - ``.COUNT_STOP``: Stop infinite to stop the block.
+        - ``.EDGE_EITHER``: Sets the selected trigger line to detect either rising-edge or
+          falling-edge triggers as input when the line is configured as an input or open drain.
+        - ``.EDGE_FALLING``: Sets the selected trigger line to detect falling-edge triggers as input
+          when the line is configured as an input or open drain.
+        - ``.EDGE_RISING``: Sets the selected trigger line to detect rising-edge triggers as input
+          when the line is configured as an input or open drain.
+        - ``.EVENT_BLENDER1``: Trigger event blender1, which combines trigger events.
+        - ``.EVENT_BLENDER2``: Trigger event blender2, which combines trigger events.
+        - ``.EVENT_COMMAND``: A command interface trigger.
+        - ``.EVENT_DIGIO1``: Digital input line edge (either rising, falling, or either based on the
+          configuration of the line) detected on digital input line 1.
+        - ``.EVENT_DIGIO2``: Digital input line edge (either rising, falling, or either based on the
+          configuration of the line) detected on digital input line 2.
+        - ``.EVENT_DIGIO3``: Digital input line edge (either rising, falling, or either based on the
+          configuration of the line) detected on digital input line 3.
+        - ``.EVENT_DIGIO4``: Digital input line edge (either rising, falling, or either based on the
+          configuration of the line) detected on digital input line 4.
+        - ``.EVENT_DIGIO5``: Digital input line edge (either rising, falling, or either based on the
+          configuration of the line) detected on digital input line 5.
+        - ``.EVENT_DIGIO6``: Digital input line edge (either rising, falling, or either based on the
+          configuration of the line) detected on digital input line 6.
+        - ``.EVENT_DIGION``: Line edge (either rising, falling, or either based on the configuration
+          of the line) detected on digital input line N (1 to 6).
         - ``.EVENT_DISPLAY``: Front-panel TRIGGER key press.
+        - ``.EVENT_LANN``: Appropriate LXI trigger packet is received on LAN trigger object N (1 to
+          8).
+        - ``.EVENT_NONE``: No trigger event.
+        - ``.EVENT_NOTIFY1``: Notify trigger block1  generates a trigger event when the trigger
+          model executes it.
+        - ``.EVENT_NOTIFY2``: Notify trigger block2  generates a trigger event when the trigger
+          model executes it.
+        - ``.EVENT_NOTIFY3``: Notify trigger block3 generates a trigger event when the trigger model
+          executes it.
+        - ``.EVENT_NOTIFY4``: Notify trigger block4 generates a trigger event when the trigger model
+          executes it.
+        - ``.EVENT_NOTIFY5``: Notify trigger block5 generates a trigger event when the trigger model
+          executes it.
+        - ``.EVENT_NOTIFY6``: Notify trigger block6 generates a trigger event when the trigger model
+          executes it.
+        - ``.EVENT_NOTIFY7``: Notify trigger block7 generates a trigger event when the trigger model
+          executes it.
+        - ``.EVENT_NOTIFY8``: Notify trigger block8 generates a trigger event when the trigger model
+          executes it.
         - ``.EVENT_NOTIFYN``: Notify trigger block N (1 to 3) generates a trigger event when the
           trigger model executes it.
         - ``.EVENT_SOURCE_LIMIT``: Before asserting a trigger on the selected digital output line,
           wait until a source limit condition occurs.
+        - ``.EVENT_TIMER1``: Trigger timer 1 expired.
+        - ``.EVENT_TIMER2``: Trigger timer 2 expired.
+        - ``.EVENT_TIMER3``: Trigger timer 3 expired.
+        - ``.EVENT_TIMER4``: Trigger timer 4 expired.
+        - ``.EVENT_TSPLINK1``: Line edge detected on TSP-Link synchronization line 1.
+        - ``.EVENT_TSPLINK2``: Line edge detected on TSP-Link synchronization line 2.
+        - ``.EVENT_TSPLINK3``: Line edge detected on TSP-Link synchronization line 3.
+        - ``.EVENT_TSPLINKN``: Line edge detected on TSP-Link synchronization line N (1 to 3).
+        - ``.LIMIT_ABOVE``: The measurement is above the value set by limit B; limit A must be set,
+          but is ignored when this type is selected.
+        - ``.LIMIT_BELOW``: The measurement is below the value set by limit A; limit B must be set,
+          but is ignored when this type is selected.
+        - ``.LIMIT_INSIDE``: The measurement is inside the values set by limits A and B; limit A
+          must be the low value and Limit B must be the high value.
+        - ``.LIMIT_OUTSIDE``: The measurement is outside the values set by limits A and B; limit A
+          must be the low value and Limit B must be the high value.
+        - ``.LOGIC_NEGATIVE``: Asserts a TTL-low pulse for the output logic of the trigger event
+          generator for the specified line.
+        - ``.LOGIC_POSITIVE``: Asserts a TTL-high pulse for the output logic of the trigger event
+          generator for the specified line.
+        - ``.LOG_ERROR1``: Log error event 1 in the event log when trigger model execution reaches
+          this block.
+        - ``.LOG_ERROR2``: Log error event 2 in the event log when trigger model execution reaches
+          this block.
+        - ``.LOG_ERROR3``: Log error event 3 in the event log when trigger model execution reaches
+          this block.
+        - ``.LOG_ERROR4``: Log error event 4 in the event log when trigger model execution reaches
+          this block.
+        - ``.LOG_INFO1``: Log information event 1 in the event log when trigger model execution
+          reaches this block.
+        - ``.LOG_INFO2``: Log information event 2 in the event log when trigger model execution
+          reaches this block.
+        - ``.LOG_INFO3``: Log information event 3 in the event log when trigger model execution
+          reaches this block.
+        - ``.LOG_INFO4``: Log information event 4 in the event log when trigger model execution
+          reaches this block.
+        - ``.LOG_WARN1``: Log warning event 1 in the event log when trigger model execution reaches
+          this block.
+        - ``.LOG_WARN2``: Log warning event 2 in the event log when trigger model execution reaches
+          this block.
+        - ``.LOG_WARN3``: Log warning event 3 in the event log when trigger model execution reaches
+          this block.
+        - ``.LOG_WARN4``: Log warning event 4 in the event log when trigger model execution reaches
+          this block.
+        - ``.LOG_WARN_ABORT``: Abort the trigger model immediately and post a warning event log
+          message.
+        - ``.OFF``: Disable the trigger timer.
+        - ``.ON``: Enable the trigger timer.
+        - ``.STATE_ABORTED``: The trigger model is stopped.
+        - ``.STATE_ABORTING``: The trigger model is stopping.
+        - ``.STATE_BUILDING``: Blocks have been added.
+        - ``.STATE_EMPTY``: The trigger model is selected, but no blocks are defined.
+        - ``.STATE_FAILED``: The trigger model is stopped because of an error.
+        - ``.STATE_IDLE``: The trigger model is stopped.
+        - ``.STATE_RUNNING``: The trigger model is running.
+        - ``.STATE_WAITING``: The trigger model has been in the same wait block for more than 100
+          ms.
         - ``.USER_DELAY_M1``: trigger.USER_DELAY_M1, where the user delay 1 is set by
           smu.measure.userdelay[N].
         - ``.USER_DELAY_M2``: trigger.USER_DELAY_M2, where the user delay 2 is set by
@@ -4212,6 +4354,8 @@ class Trigger(BaseTSPCmd):
           smu.measure.userdelay[N].
         - ``.USER_DELAY_M5``: trigger.USER_DELAY_M5, where the user delay 5 is set by
           smu.measure.userdelay[N].
+        - ``.WAIT_AND``: Each event must occur before the trigger model continues.
+        - ``.WAIT_OR``: At least one of the events must occur before the trigger model continues.
 
     Properties/methods:
         - ``.blender``: The ``trigger.blender[N]`` command tree.
@@ -4228,20 +4372,194 @@ class Trigger(BaseTSPCmd):
         - ``.wait()``: The ``trigger.wait()`` function.
     """
 
+    BLOCK_BRANCH_ALWAYS = "trigger.BLOCK_BRANCH_ALWAYS"
+    """str: Defines a trigger model block that always goes to a specific block."""
+    BLOCK_BRANCH_COUNTER = "trigger.BLOCK_BRANCH_COUNTER"
+    """str: Defines a trigger model block that branches to a specified block a specified number of times."""  # noqa: E501
+    BLOCK_BRANCH_DELTA = "trigger.BLOCK_BRANCH_DELTA"
+    """str: Defines a trigger model block that goes to a specified block if the difference of two measurements meets preset criteria."""  # noqa: E501
+    BLOCK_BRANCH_LIMIT_CONSTANT = "trigger.BLOCK_BRANCH_LIMIT_CONSTANT"
+    """str: Defines a trigger model block that goes to a specified block if a measurement meets preset criteria."""  # noqa: E501
+    BLOCK_BRANCH_LIMIT_DYNAMIC = "trigger.BLOCK_BRANCH_LIMIT_DYNAMIC"
+    """str: Defines a trigger model block that goes to a specified block in the trigger model if a measurement meets user-defined criteria."""  # noqa: E501
+    BLOCK_BRANCH_ONCE = "trigger.BLOCK_BRANCH_ONCE"
+    """str: Causes the trigger model to branch to a specified building block the first time it is encountered in the trigger model."""  # noqa: E501
+    BLOCK_BRANCH_ONCE_EXCLUDED = "trigger.BLOCK_BRANCH_ONCE_EXCLUDED"
+    """str: Causes the trigger model to go to a specified building block every time the trigger model encounters it, except for the first time."""  # noqa: E501
+    BLOCK_BRANCH_ON_EVENT = "trigger.BLOCK_BRANCH_ON_EVENT"
+    """str: Branches to a specified block when a specified trigger event occurs."""
+    BLOCK_BUFFER_CLEAR = "trigger.BLOCK_BUFFER_CLEAR"
+    """str: Defines a trigger model block that clears the reading buffer."""
+    BLOCK_CONFIG_NEXT = "trigger.BLOCK_CONFIG_NEXT"
+    """str: Recalls the settings at the next index of a configuration list."""
+    BLOCK_CONFIG_PREV = "trigger.BLOCK_CONFIG_PREV"
+    """str: Recalls the settings stored at the previous  index of a configuration list."""
     BLOCK_CONFIG_RECALL = "trigger.BLOCK_CONFIG_RECALL"
     """str: Recalls the system settings that are stored in a source or measure configuration list, or both a source and measure configuration list."""  # noqa: E501
+    BLOCK_DELAY_CONSTANT = "trigger.BLOCK_DELAY_CONSTANT"
+    """str: Adds a constant delay to the execution of a trigger model."""
+    BLOCK_DELAY_DYNAMIC = "trigger.BLOCK_DELAY_DYNAMIC"
+    """str: Adds a user delay to the execution of the trigger model."""
+    BLOCK_DIGITAL_IO = "trigger.BLOCK_DIGITAL_IO"
+    """str: Defines a trigger model block that sets the lines on the digital I/O port high or low."""  # noqa: E501
+    BLOCK_LOG_EVENT = "trigger.BLOCK_LOG_EVENT"
+    """str: Allows you to log an event in the event log when the trigger model is running."""
+    BLOCK_MEASURE = "trigger.BLOCK_MEASURE"
+    """str: Deprecated; use trigger.BLOCK_MEASURE_DIGITIZE instead."""
+    BLOCK_MEASURE_DIGITIZE = "trigger.BLOCK_MEASURE_DIGITIZE"
+    """str: defines a trigger block that makes or digitizes a measurement."""
+    BLOCK_NOP = "trigger.BLOCK_NOP"
+    """str: Creates a placeholder that performs no action in the trigger model."""
+    BLOCK_NOTIFY = "trigger.BLOCK_NOTIFY"
+    """str: Defines a trigger-model block that generates a trigger event and immediately continues to the next block."""  # noqa: E501
+    BLOCK_RESET_BRANCH_COUNT = "trigger.BLOCK_RESET_BRANCH_COUNT"
+    """str: Creates a block in the trigger model that resets a branch counter to 0."""
     BLOCK_SOURCE_OUTPUT = "trigger.BLOCK_SOURCE_OUTPUT"
     """str: Defines a trigger block that turns the output source on or off."""
+    BLOCK_WAIT = "trigger.BLOCK_WAIT"
+    """str: Defines a trigger model block that waits for an event before allowing the trigger model to continue."""  # noqa: E501
     CLEAR_ENTER = "trigger.CLEAR_ENTER"
     """str: Clear previously detected trigger events when entering the wait block."""
     CLEAR_NEVER = "trigger.CLEAR_NEVER"
     """str: Immediately act on any previously detected triggers and not clear them (default)."""
+    CONT_AUTO = "trigger.CONT_AUTO"
+    """str: Start continuous measurements after boot."""
+    CONT_OFF = "trigger.CONT_OFF"
+    """str: Do not start continuous measurements after boot."""
+    CONT_RESTART = "trigger.CONT_RESTART"
+    """str: Place the instrument into local control and start continuous measurements after boot."""
+    COUNT_AUTO = "trigger.COUNT_AUTO"
+    """str: Use most recent count value."""
+    COUNT_INFINITE = "trigger.COUNT_INFINITE"
+    """str: Infinite (run continuously until stopped)."""
+    COUNT_STOP = "trigger.COUNT_STOP"
+    """str: Stop infinite to stop the block."""
+    EDGE_EITHER = "trigger.EDGE_EITHER"
+    """str: Sets the selected trigger line to detect either rising-edge or falling-edge triggers as input when the line is configured as an input or open drain."""  # noqa: E501
+    EDGE_FALLING = "trigger.EDGE_FALLING"
+    """str: Sets the selected trigger line to detect falling-edge triggers as input when the line is configured as an input or open drain."""  # noqa: E501
+    EDGE_RISING = "trigger.EDGE_RISING"
+    """str: Sets the selected trigger line to detect rising-edge triggers as input when the line is configured as an input or open drain."""  # noqa: E501
+    EVENT_BLENDER1 = "trigger.EVENT_BLENDER1"
+    """str: Trigger event blender1, which combines trigger events."""
+    EVENT_BLENDER2 = "trigger.EVENT_BLENDER2"
+    """str: Trigger event blender2, which combines trigger events."""
+    EVENT_COMMAND = "trigger.EVENT_COMMAND"
+    """str: A command interface trigger."""
+    EVENT_DIGIO1 = "trigger.EVENT_DIGIO1"
+    """str: Digital input line edge (either rising, falling, or either based on the configuration of the line) detected on digital input line 1."""  # noqa: E501
+    EVENT_DIGIO2 = "trigger.EVENT_DIGIO2"
+    """str: Digital input line edge (either rising, falling, or either based on the configuration of the line) detected on digital input line 2."""  # noqa: E501
+    EVENT_DIGIO3 = "trigger.EVENT_DIGIO3"
+    """str: Digital input line edge (either rising, falling, or either based on the configuration of the line) detected on digital input line 3."""  # noqa: E501
+    EVENT_DIGIO4 = "trigger.EVENT_DIGIO4"
+    """str: Digital input line edge (either rising, falling, or either based on the configuration of the line) detected on digital input line 4."""  # noqa: E501
+    EVENT_DIGIO5 = "trigger.EVENT_DIGIO5"
+    """str: Digital input line edge (either rising, falling, or either based on the configuration of the line) detected on digital input line 5."""  # noqa: E501
+    EVENT_DIGIO6 = "trigger.EVENT_DIGIO6"
+    """str: Digital input line edge (either rising, falling, or either based on the configuration of the line) detected on digital input line 6."""  # noqa: E501
+    EVENT_DIGION = "trigger.EVENT_DIGION"
+    """str: Line edge (either rising, falling, or either based on the configuration of the line) detected on digital input line N (1 to 6)."""  # noqa: E501
     EVENT_DISPLAY = "trigger.EVENT_DISPLAY"
     """str: Front-panel TRIGGER key press."""
+    EVENT_LANN = "trigger.EVENT_LANN"
+    """str: Appropriate LXI trigger packet is received on LAN trigger object N (1 to 8)."""
+    EVENT_NONE = "trigger.EVENT_NONE"
+    """str: No trigger event."""
+    EVENT_NOTIFY1 = "trigger.EVENT_NOTIFY1"
+    """str: Notify trigger block1  generates a trigger event when the trigger model executes it."""
+    EVENT_NOTIFY2 = "trigger.EVENT_NOTIFY2"
+    """str: Notify trigger block2  generates a trigger event when the trigger model executes it."""
+    EVENT_NOTIFY3 = "trigger.EVENT_NOTIFY3"
+    """str: Notify trigger block3 generates a trigger event when the trigger model executes it."""
+    EVENT_NOTIFY4 = "trigger.EVENT_NOTIFY4"
+    """str: Notify trigger block4 generates a trigger event when the trigger model executes it."""
+    EVENT_NOTIFY5 = "trigger.EVENT_NOTIFY5"
+    """str: Notify trigger block5 generates a trigger event when the trigger model executes it."""
+    EVENT_NOTIFY6 = "trigger.EVENT_NOTIFY6"
+    """str: Notify trigger block6 generates a trigger event when the trigger model executes it."""
+    EVENT_NOTIFY7 = "trigger.EVENT_NOTIFY7"
+    """str: Notify trigger block7 generates a trigger event when the trigger model executes it."""
+    EVENT_NOTIFY8 = "trigger.EVENT_NOTIFY8"
+    """str: Notify trigger block8 generates a trigger event when the trigger model executes it."""
     EVENT_NOTIFYN = "trigger.EVENT_NOTIFYN"
     """str: Notify trigger block N (1 to 3) generates a trigger event when the trigger model executes it."""  # noqa: E501
     EVENT_SOURCE_LIMIT = "trigger.EVENT_SOURCE_LIMIT"
     """str: Before asserting a trigger on the selected digital output line, wait until a source limit condition occurs."""  # noqa: E501
+    EVENT_TIMER1 = "trigger.EVENT_TIMER1"
+    """str: Trigger timer 1 expired."""
+    EVENT_TIMER2 = "trigger.EVENT_TIMER2"
+    """str: Trigger timer 2 expired."""
+    EVENT_TIMER3 = "trigger.EVENT_TIMER3"
+    """str: Trigger timer 3 expired."""
+    EVENT_TIMER4 = "trigger.EVENT_TIMER4"
+    """str: Trigger timer 4 expired."""
+    EVENT_TSPLINK1 = "trigger.EVENT_TSPLINK1"
+    """str: Line edge detected on TSP-Link synchronization line 1."""
+    EVENT_TSPLINK2 = "trigger.EVENT_TSPLINK2"
+    """str: Line edge detected on TSP-Link synchronization line 2."""
+    EVENT_TSPLINK3 = "trigger.EVENT_TSPLINK3"
+    """str: Line edge detected on TSP-Link synchronization line 3."""
+    EVENT_TSPLINKN = "trigger.EVENT_TSPLINKN"
+    """str: Line edge detected on TSP-Link synchronization line N (1 to 3)."""
+    LIMIT_ABOVE = "trigger.LIMIT_ABOVE"
+    """str: The measurement is above the value set by limit B; limit A must be set, but is ignored when this type is selected."""  # noqa: E501
+    LIMIT_BELOW = "trigger.LIMIT_BELOW"
+    """str: The measurement is below the value set by limit A; limit B must be set, but is ignored when this type is selected."""  # noqa: E501
+    LIMIT_INSIDE = "trigger.LIMIT_INSIDE"
+    """str: The measurement is inside the values set by limits A and B; limit A must be the low value and Limit B must be the high value."""  # noqa: E501
+    LIMIT_OUTSIDE = "trigger.LIMIT_OUTSIDE"
+    """str: The measurement is outside the values set by limits A and B; limit A must be the low value and Limit B must be the high value."""  # noqa: E501
+    LOGIC_NEGATIVE = "trigger.LOGIC_NEGATIVE"
+    """str: Asserts a TTL-low pulse for the output logic of the trigger event generator for the specified line."""  # noqa: E501
+    LOGIC_POSITIVE = "trigger.LOGIC_POSITIVE"
+    """str: Asserts a TTL-high pulse for the output logic of the trigger event generator for the specified line."""  # noqa: E501
+    LOG_ERROR1 = "trigger.LOG_ERROR1"
+    """str: Log error event 1 in the event log when trigger model execution reaches this block."""
+    LOG_ERROR2 = "trigger.LOG_ERROR2"
+    """str: Log error event 2 in the event log when trigger model execution reaches this block."""
+    LOG_ERROR3 = "trigger.LOG_ERROR3"
+    """str: Log error event 3 in the event log when trigger model execution reaches this block."""
+    LOG_ERROR4 = "trigger.LOG_ERROR4"
+    """str: Log error event 4 in the event log when trigger model execution reaches this block."""
+    LOG_INFO1 = "trigger.LOG_INFO1"
+    """str: Log information event 1 in the event log when trigger model execution reaches this block."""  # noqa: E501
+    LOG_INFO2 = "trigger.LOG_INFO2"
+    """str: Log information event 2 in the event log when trigger model execution reaches this block."""  # noqa: E501
+    LOG_INFO3 = "trigger.LOG_INFO3"
+    """str: Log information event 3 in the event log when trigger model execution reaches this block."""  # noqa: E501
+    LOG_INFO4 = "trigger.LOG_INFO4"
+    """str: Log information event 4 in the event log when trigger model execution reaches this block."""  # noqa: E501
+    LOG_WARN1 = "trigger.LOG_WARN1"
+    """str: Log warning event 1 in the event log when trigger model execution reaches this block."""
+    LOG_WARN2 = "trigger.LOG_WARN2"
+    """str: Log warning event 2 in the event log when trigger model execution reaches this block."""
+    LOG_WARN3 = "trigger.LOG_WARN3"
+    """str: Log warning event 3 in the event log when trigger model execution reaches this block."""
+    LOG_WARN4 = "trigger.LOG_WARN4"
+    """str: Log warning event 4 in the event log when trigger model execution reaches this block."""
+    LOG_WARN_ABORT = "trigger.LOG_WARN_ABORT"
+    """str: Abort the trigger model immediately and post a warning event log message."""
+    OFF = "trigger.OFF"
+    """str: Disable the trigger timer."""
+    ON = "trigger.ON"
+    """str: Enable the trigger timer."""
+    STATE_ABORTED = "trigger.STATE_ABORTED"
+    """str: The trigger model is stopped."""
+    STATE_ABORTING = "trigger.STATE_ABORTING"
+    """str: The trigger model is stopping."""
+    STATE_BUILDING = "trigger.STATE_BUILDING"
+    """str: Blocks have been added."""
+    STATE_EMPTY = "trigger.STATE_EMPTY"
+    """str: The trigger model is selected, but no blocks are defined."""
+    STATE_FAILED = "trigger.STATE_FAILED"
+    """str: The trigger model is stopped because of an error."""
+    STATE_IDLE = "trigger.STATE_IDLE"
+    """str: The trigger model is stopped."""
+    STATE_RUNNING = "trigger.STATE_RUNNING"
+    """str: The trigger model is running."""
+    STATE_WAITING = "trigger.STATE_WAITING"
+    """str: The trigger model has been in the same wait block for more than 100 ms."""
     USER_DELAY_M1 = "trigger.USER_DELAY_M1"
     """str: trigger.USER_DELAY_M1, where the user delay 1 is set by smu.measure.userdelay[N]."""
     USER_DELAY_M2 = "trigger.USER_DELAY_M2"
@@ -4252,6 +4570,10 @@ class Trigger(BaseTSPCmd):
     """str: trigger.USER_DELAY_M4, where the user delay 4 is set by smu.measure.userdelay[N]."""
     USER_DELAY_M5 = "trigger.USER_DELAY_M5"
     """str: trigger.USER_DELAY_M5, where the user delay 5 is set by smu.measure.userdelay[N]."""
+    WAIT_AND = "trigger.WAIT_AND"
+    """str: Each event must occur before the trigger model continues."""
+    WAIT_OR = "trigger.WAIT_OR"
+    """str: At least one of the events must occur before the trigger model continues."""
 
     def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "trigger") -> None:
         super().__init__(device, cmd_syntax)

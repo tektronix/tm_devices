@@ -176,9 +176,9 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:I3C:DATa:VALue?
     - TRIGger:A:BUS:B<x>:I3C:ERRORTYPe {NACK|TBIT|BADDr}
     - TRIGger:A:BUS:B<x>:I3C:ERRORTYPe?
-    - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa}
+    - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
     - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket?
-    - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime}
+    - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime| GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
     - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket?
     - TRIGger:A:BUS:B<x>:I3C:TBIT:DIREction {READ|WRITe}
     - TRIGger:A:BUS:B<x>:I3C:TBIT:DIREction?
@@ -293,6 +293,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue <Qstring>
     - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue?
     - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue <Qstring>
+    - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?
     - TRIGger:A:BUS:B<x>:SPI:CONDition {SS|STARTofframe|DATa}
     - TRIGger:A:BUS:B<x>:SPI:CONDition?
     - TRIGger:A:BUS:B<x>:SPI:DATa:SIZe <NR1>
@@ -457,7 +458,18 @@ Commands and Queries:
     - TRIGger:A:TYPe?
     - TRIGger:A:UPPerthreshold:CH<x> <NR3>
     - TRIGger:A:UPPerthreshold:CH<x>?
+    - TRIGger:A:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN| ALLFields}
+    - TRIGger:A:VIDeo:FIELD?
+    - TRIGger:A:VIDeo:LINE <NR1>
+    - TRIGger:A:VIDeo:LINE?
+    - TRIGger:A:VIDeo:POLarity {POSitive|NEGative}
+    - TRIGger:A:VIDeo:POLarity?
+    - TRIGger:A:VIDeo:SOUrce {CH<x>}
+    - TRIGger:A:VIDeo:SOUrce?
+    - TRIGger:A:VIDeo:STANdard {NTSc|PAL|SECAM}
+    - TRIGger:A:VIDeo:STANdard?
     - TRIGger:A:WINdow:CROSSIng {UPPer|LOWer|EITher|NONe}
+    - TRIGger:A:WINdow:CROSSIng?
     - TRIGger:A:WINdow:LOGICQUALification {ON|OFF}
     - TRIGger:A:WINdow:LOGICQUALification?
     - TRIGger:A:WINdow:SOUrce {CH<x>}
@@ -465,6 +477,7 @@ Commands and Queries:
     - TRIGger:A:WINdow:WHEn {ENTERSWindow|EXITSWindow| INSIDEGreater|OUTSIDEGreater}
     - TRIGger:A:WINdow:WHEn?
     - TRIGger:A:WINdow:WIDth <NR3>
+    - TRIGger:A:WINdow:WIDth?
     - TRIGger:AUXLevel {<NR3>|ECL|TTL}
     - TRIGger:AUXLevel?
     - TRIGger:B:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA |EOW|ERRor}
@@ -629,9 +642,9 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:I3C:DATa:VALue?
     - TRIGger:B:BUS:B<x>:I3C:ERRORTYPe {NACK|TBIT|BADDr}
     - TRIGger:B:BUS:B<x>:I3C:ERRORTYPe?
-    - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa}
+    - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
     - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket?
-    - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime}
+    - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime| GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
     - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket?
     - TRIGger:B:BUS:B<x>:I3C:TBIT:DIREction {READ|WRITe}
     - TRIGger:B:BUS:B<x>:I3C:TBIT:DIREction?
@@ -746,6 +759,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:VALue <Qstring>
     - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:VALue?
     - TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue <Qstring>
+    - TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue?
     - TRIGger:B:BUS:B<x>:SPI:CONDition {SS|STARTofframe|DATa}
     - TRIGger:B:BUS:B<x>:SPI:CONDition?
     - TRIGger:B:BUS:B<x>:SPI:DATa:SIZe <NR1>
@@ -922,7 +936,18 @@ Commands and Queries:
     - TRIGger:B:TYPe?
     - TRIGger:B:UPPerthreshold:CH<x> <NR3>
     - TRIGger:B:UPPerthreshold:CH<x>?
+    - TRIGger:B:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN| ALLFields}
+    - TRIGger:B:VIDeo:FIELD?
+    - TRIGger:B:VIDeo:LINE <NR1>
+    - TRIGger:B:VIDeo:LINE?
+    - TRIGger:B:VIDeo:POLarity {POSitive|NEGative}
+    - TRIGger:B:VIDeo:POLarity?
+    - TRIGger:B:VIDeo:SOUrce {CH<x>}
+    - TRIGger:B:VIDeo:SOUrce?
+    - TRIGger:B:VIDeo:STANdard {NTSc|PAL|SECAM}
+    - TRIGger:B:VIDeo:STANdard?
     - TRIGger:B:WINdow:CROSSIng {UPPer|LOWer|EITher|NONe}
+    - TRIGger:B:WINdow:CROSSIng?
     - TRIGger:B:WINdow:LOGICQUALification {ON|OFF}
     - TRIGger:B:WINdow:LOGICQUALification?
     - TRIGger:B:WINdow:SOUrce {CH<x>}
@@ -930,6 +955,7 @@ Commands and Queries:
     - TRIGger:B:WINdow:WHEn {ENTERSWindow|EXITSWindow| INSIDEGreater|OUTSIDEGreater}
     - TRIGger:B:WINdow:WHEn?
     - TRIGger:B:WINdow:WIDth <NR3>
+    - TRIGger:B:WINdow:WIDth?
     - TRIGger:HYSTeresis:USER:STATe {ON|OFF|1|0}
     - TRIGger:HYSTeresis:USER:STATe?
     - TRIGger:HYSTeresis:USER:VALue <NR1>
@@ -1131,7 +1157,7 @@ class TriggerHysteresis(SCPICmdRead):
         return self._user
 
 
-class TriggerBWindowWidth(SCPICmdWrite):
+class TriggerBWindowWidth(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B:WINdow:WIDth`` command.
 
     **Description:**
@@ -1140,6 +1166,9 @@ class TriggerBWindowWidth(SCPICmdWrite):
           Outside > Limit in the Trigger When box, and setting the Time Limit.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:B:WINdow:WIDth?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:B:WINdow:WIDth?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``TRIGger:B:WINdow:WIDth value`` command.
 
     **SCPI Syntax:**
@@ -1147,6 +1176,7 @@ class TriggerBWindowWidth(SCPICmdWrite):
     ::
 
         - TRIGger:B:WINdow:WIDth <NR3>
+        - TRIGger:B:WINdow:WIDth?
 
     **Info:**
         - ``<NR3>`` is the minimum width for a window violation.
@@ -1237,7 +1267,7 @@ class TriggerBWindowLogicqualification(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class TriggerBWindowCrossing(SCPICmdWrite):
+class TriggerBWindowCrossing(SCPICmdWrite, SCPICmdRead):
     r"""The ``TRIGger:B:WINdow:CROSSIng`` command.
 
     **Description:**
@@ -1246,6 +1276,9 @@ class TriggerBWindowCrossing(SCPICmdWrite):
           ``:TRIGger``:{A|B}``:WINdow:WHEn`` is INSIDEGreater or OUTSIDEGreater.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:B:WINdow:CROSSIng?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:B:WINdow:CROSSIng?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``TRIGger:B:WINdow:CROSSIng value``
           command.
 
@@ -1254,6 +1287,7 @@ class TriggerBWindowCrossing(SCPICmdWrite):
     ::
 
         - TRIGger:B:WINdow:CROSSIng {UPPer|LOWer|EITher|NONe}
+        - TRIGger:B:WINdow:CROSSIng?
 
     **Info:**
         - ``UPPer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument triggers
@@ -1323,6 +1357,9 @@ class TriggerBWindow(SCPICmdRead):
               ``:TRIGger``:{A|B}``:WINdow:WHEn`` is INSIDEGreater or OUTSIDEGreater.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:B:WINdow:CROSSIng?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:B:WINdow:CROSSIng?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``TRIGger:B:WINdow:CROSSIng value``
               command.
 
@@ -1331,6 +1368,7 @@ class TriggerBWindow(SCPICmdRead):
         ::
 
             - TRIGger:B:WINdow:CROSSIng {UPPer|LOWer|EITher|NONe}
+            - TRIGger:B:WINdow:CROSSIng?
 
         **Info:**
             - ``UPPer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument
@@ -1464,6 +1502,9 @@ class TriggerBWindow(SCPICmdRead):
               Outside > Limit in the Trigger When box, and setting the Time Limit.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:B:WINdow:WIDth?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:B:WINdow:WIDth?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``TRIGger:B:WINdow:WIDth value``
               command.
 
@@ -1472,11 +1513,305 @@ class TriggerBWindow(SCPICmdRead):
         ::
 
             - TRIGger:B:WINdow:WIDth <NR3>
+            - TRIGger:B:WINdow:WIDth?
 
         **Info:**
             - ``<NR3>`` is the minimum width for a window violation.
         """
         return self._width
+
+
+class TriggerBVideoStandard(SCPICmdWrite, SCPICmdRead):
+    """The ``TRIGger:B:VIDeo:STANdard`` command.
+
+    **Description:**
+        - This command specifies the standard/format for a video trigger.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:B:VIDeo:STANdard?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:B:VIDeo:STANdard?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``TRIGger:B:VIDeo:STANdard value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - TRIGger:B:VIDeo:STANdard {NTSc|PAL|SECAM}
+        - TRIGger:B:VIDeo:STANdard?
+
+    **Info:**
+        - ``NTSc`` specifies 525i/NTSC as the video standard.
+        - ``PAL`` specifies 625i/PAL as the video standard.
+        - ``SECAM`` specifies SECAM as the video standard.
+    """
+
+
+class TriggerBVideoSource(SCPICmdWrite, SCPICmdRead):
+    """The ``TRIGger:B:VIDeo:SOUrce`` command.
+
+    **Description:**
+        - This command specifies the source waveform for a video trigger.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:B:VIDeo:SOUrce?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:B:VIDeo:SOUrce?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``TRIGger:B:VIDeo:SOUrce value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - TRIGger:B:VIDeo:SOUrce {CH<x>}
+        - TRIGger:B:VIDeo:SOUrce?
+
+    **Info:**
+        - ``CH<x>`` specifies the analog channel to use as the video trigger source waveform.
+    """
+
+
+class TriggerBVideoPolarity(SCPICmdWrite, SCPICmdRead):
+    """The ``TRIGger:B:VIDeo:POLarity`` command.
+
+    **Description:**
+        - This command specifies the polarity for a video trigger.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:B:VIDeo:POLarity?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:B:VIDeo:POLarity?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``TRIGger:B:VIDeo:POLarity value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - TRIGger:B:VIDeo:POLarity {POSitive|NEGative}
+        - TRIGger:B:VIDeo:POLarity?
+
+    **Info:**
+        - ``POSitive`` specifies a positive polarity for the video trigger.
+        - ``NEGative`` specifies a negative polarity for the video trigger.
+    """
+
+
+class TriggerBVideoLine(SCPICmdWrite, SCPICmdRead):
+    """The ``TRIGger:B:VIDeo:LINE`` command.
+
+    **Description:**
+        - This command specifies the line number value for a video line number trigger.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:B:VIDeo:LINE?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:B:VIDeo:LINE?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``TRIGger:B:VIDeo:LINE value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - TRIGger:B:VIDeo:LINE <NR1>
+        - TRIGger:B:VIDeo:LINE?
+
+    **Info:**
+        - ``<NR1>`` is the line number to trigger on, which can range from 1 to 625.
+    """
+
+
+class TriggerBVideoField(SCPICmdWrite, SCPICmdRead):
+    r"""The ``TRIGger:B:VIDeo:FIELD`` command.
+
+    **Description:**
+        - This command specifies the trigger condition for a video trigger.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:B:VIDeo:FIELD?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:B:VIDeo:FIELD?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``TRIGger:B:VIDeo:FIELD value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - TRIGger:B:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN| ALLFields}
+        - TRIGger:B:VIDeo:FIELD?
+
+    **Info:**
+        - ``ALLLines`` specifies to trigger on all lines.
+        - ``NUMERic`` specifies to trigger on a particular line, which can be set via the
+          TRIGger:{A\|B}``:VIDeo:LINE`` command.
+        - ``ODD`` specifies to trigger on odd lines.
+        - ``EVEN`` specifies to trigger on even lines.
+        - ``ALLFields`` specifies to trigger on any video field.
+    """
+
+
+class TriggerBVideo(SCPICmdRead):
+    """The ``TRIGger:B:VIDeo`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:B:VIDeo?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:B:VIDeo?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    Properties:
+        - ``.field``: The ``TRIGger:B:VIDeo:FIELD`` command.
+        - ``.line``: The ``TRIGger:B:VIDeo:LINE`` command.
+        - ``.polarity``: The ``TRIGger:B:VIDeo:POLarity`` command.
+        - ``.source``: The ``TRIGger:B:VIDeo:SOUrce`` command.
+        - ``.standard``: The ``TRIGger:B:VIDeo:STANdard`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._field = TriggerBVideoField(device, f"{self._cmd_syntax}:FIELD")
+        self._line = TriggerBVideoLine(device, f"{self._cmd_syntax}:LINE")
+        self._polarity = TriggerBVideoPolarity(device, f"{self._cmd_syntax}:POLarity")
+        self._source = TriggerBVideoSource(device, f"{self._cmd_syntax}:SOUrce")
+        self._standard = TriggerBVideoStandard(device, f"{self._cmd_syntax}:STANdard")
+
+    @property
+    def field(self) -> TriggerBVideoField:
+        r"""Return the ``TRIGger:B:VIDeo:FIELD`` command.
+
+        **Description:**
+            - This command specifies the trigger condition for a video trigger.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:B:VIDeo:FIELD?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:B:VIDeo:FIELD?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``TRIGger:B:VIDeo:FIELD value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - TRIGger:B:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN| ALLFields}
+            - TRIGger:B:VIDeo:FIELD?
+
+        **Info:**
+            - ``ALLLines`` specifies to trigger on all lines.
+            - ``NUMERic`` specifies to trigger on a particular line, which can be set via the
+              TRIGger:{A\|B}``:VIDeo:LINE`` command.
+            - ``ODD`` specifies to trigger on odd lines.
+            - ``EVEN`` specifies to trigger on even lines.
+            - ``ALLFields`` specifies to trigger on any video field.
+        """
+        return self._field
+
+    @property
+    def line(self) -> TriggerBVideoLine:
+        """Return the ``TRIGger:B:VIDeo:LINE`` command.
+
+        **Description:**
+            - This command specifies the line number value for a video line number trigger.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:B:VIDeo:LINE?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:B:VIDeo:LINE?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``TRIGger:B:VIDeo:LINE value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - TRIGger:B:VIDeo:LINE <NR1>
+            - TRIGger:B:VIDeo:LINE?
+
+        **Info:**
+            - ``<NR1>`` is the line number to trigger on, which can range from 1 to 625.
+        """
+        return self._line
+
+    @property
+    def polarity(self) -> TriggerBVideoPolarity:
+        """Return the ``TRIGger:B:VIDeo:POLarity`` command.
+
+        **Description:**
+            - This command specifies the polarity for a video trigger.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:B:VIDeo:POLarity?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:B:VIDeo:POLarity?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``TRIGger:B:VIDeo:POLarity value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - TRIGger:B:VIDeo:POLarity {POSitive|NEGative}
+            - TRIGger:B:VIDeo:POLarity?
+
+        **Info:**
+            - ``POSitive`` specifies a positive polarity for the video trigger.
+            - ``NEGative`` specifies a negative polarity for the video trigger.
+        """
+        return self._polarity
+
+    @property
+    def source(self) -> TriggerBVideoSource:
+        """Return the ``TRIGger:B:VIDeo:SOUrce`` command.
+
+        **Description:**
+            - This command specifies the source waveform for a video trigger.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:B:VIDeo:SOUrce?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:B:VIDeo:SOUrce?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``TRIGger:B:VIDeo:SOUrce value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - TRIGger:B:VIDeo:SOUrce {CH<x>}
+            - TRIGger:B:VIDeo:SOUrce?
+
+        **Info:**
+            - ``CH<x>`` specifies the analog channel to use as the video trigger source waveform.
+        """
+        return self._source
+
+    @property
+    def standard(self) -> TriggerBVideoStandard:
+        """Return the ``TRIGger:B:VIDeo:STANdard`` command.
+
+        **Description:**
+            - This command specifies the standard/format for a video trigger.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:B:VIDeo:STANdard?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:B:VIDeo:STANdard?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``TRIGger:B:VIDeo:STANdard value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - TRIGger:B:VIDeo:STANdard {NTSc|PAL|SECAM}
+            - TRIGger:B:VIDeo:STANdard?
+
+        **Info:**
+            - ``NTSc`` specifies 525i/NTSC as the video standard.
+            - ``PAL`` specifies 625i/PAL as the video standard.
+            - ``SECAM`` specifies SECAM as the video standard.
+        """
+        return self._standard
 
 
 class TriggerBUpperthresholdChannel(ValidatedChannel, SCPICmdWrite, SCPICmdRead):
@@ -7938,7 +8273,7 @@ class TriggerBBusBItemSpi(SCPICmdRead):
         return self._data
 
 
-class TriggerBBusBItemSentSlowIdentifierValue(SCPICmdWrite):
+class TriggerBBusBItemSentSlowIdentifierValue(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue`` command.
 
     **Description:**
@@ -7946,6 +8281,11 @@ class TriggerBBusBItemSentSlowIdentifierValue(SCPICmdWrite):
           data.
 
     **Usage:**
+        - Using the ``.query()`` method will send the
+          ``TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue value`` command.
 
@@ -7954,6 +8294,7 @@ class TriggerBBusBItemSentSlowIdentifierValue(SCPICmdWrite):
     ::
 
         - TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue <Qstring>
+        - TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue?
 
     **Info:**
         - ``B<x>`` is the bus identifier number.
@@ -7991,6 +8332,11 @@ class TriggerBBusBItemSentSlowIdentifier(SCPICmdRead):
               bus data.
 
         **Usage:**
+            - Using the ``.query()`` method will send the
+              ``TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue value`` command.
 
@@ -7999,6 +8345,7 @@ class TriggerBBusBItemSentSlowIdentifier(SCPICmdRead):
         ::
 
             - TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue <Qstring>
+            - TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue?
 
         **Info:**
             - ``B<x>`` is the bus identifier number.
@@ -12534,7 +12881,7 @@ class TriggerBBusBItemI3cSdrDirectpacket(SCPICmdWrite, SCPICmdRead):
 
     ::
 
-        - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime}
+        - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime| GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
         - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket?
 
     **Info:**
@@ -12558,6 +12905,13 @@ class TriggerBBusBItemI3cSdrDirectpacket(SCPICmdWrite, SCPICmdRead):
         - ``MDATASpeed`` sets the trigger condition to Get Max Data Speed.
         - ``HDRCapability`` sets the trigger condition to Get HDR Capability.
         - ``GETXTime`` sets the trigger condition to Get Exchange Time.
+        - ``GETCAPS`` sets the trigger condition to Get Optional Feature Capabilities.
+        - ``ENDXFER`` sets the trigger condition to Data Transfer Ending Procedure Control.
+        - ``SETGRPa`` sets the trigger condition to Set Group Address.
+        - ``RSTACT`` sets the trigger condition to Slave Reset Action.
+        - ``DEFGRPa`` sets the trigger condition to Define List of Group Addresses.
+        - ``RSTGRPa`` sets the trigger condition to Reset Group Address.
+        - ``MLANe`` sets the trigger condition to Multi-Lane Data Transfer Control.
     """  # noqa: E501
 
 
@@ -12581,7 +12935,7 @@ class TriggerBBusBItemI3cSdrBroadcastpacket(SCPICmdWrite, SCPICmdRead):
 
     ::
 
-        - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa}
+        - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
         - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket?
 
     **Info:**
@@ -12596,6 +12950,13 @@ class TriggerBBusBItemI3cSdrBroadcastpacket(SCPICmdWrite, SCPICmdRead):
         - ``ENTRTSTMode`` sets the trigger condition to Enter Test Mode.
         - ``EXTime`` sets the trigger condition to Set Exchange Time.
         - ``SETaasa`` sets the trigger condition to Set Static As Dynamic Address.
+        - ``ENDXFER`` sets the trigger condition to Data Transfer Ending Procedure Control.
+        - ``SETGRPa`` sets the trigger condition to Set Group Address.
+        - ``RSTACT`` sets the trigger condition to Slave Reset Action.
+        - ``DEFGRPa`` sets the trigger condition to Define List of Group Addresses.
+        - ``RSTGRPa`` sets the trigger condition to Reset Group Address.
+        - ``MLANe`` sets the trigger condition to Multi-Lane Data Transfer Control.
+        - ``SETBUSCON`` sets the trigger condition to Set Bus Context.
     """  # noqa: E501
 
 
@@ -12642,7 +13003,7 @@ class TriggerBBusBItemI3cSdr(SCPICmdRead):
 
         ::
 
-            - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa}
+            - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
             - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket?
 
         **Info:**
@@ -12657,6 +13018,13 @@ class TriggerBBusBItemI3cSdr(SCPICmdRead):
             - ``ENTRTSTMode`` sets the trigger condition to Enter Test Mode.
             - ``EXTime`` sets the trigger condition to Set Exchange Time.
             - ``SETaasa`` sets the trigger condition to Set Static As Dynamic Address.
+            - ``ENDXFER`` sets the trigger condition to Data Transfer Ending Procedure Control.
+            - ``SETGRPa`` sets the trigger condition to Set Group Address.
+            - ``RSTACT`` sets the trigger condition to Slave Reset Action.
+            - ``DEFGRPa`` sets the trigger condition to Define List of Group Addresses.
+            - ``RSTGRPa`` sets the trigger condition to Reset Group Address.
+            - ``MLANe`` sets the trigger condition to Multi-Lane Data Transfer Control.
+            - ``SETBUSCON`` sets the trigger condition to Set Bus Context.
         """  # noqa: E501
         return self._broadcastpacket
 
@@ -12681,7 +13049,7 @@ class TriggerBBusBItemI3cSdr(SCPICmdRead):
 
         ::
 
-            - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime}
+            - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime| GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
             - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket?
 
         **Info:**
@@ -12705,6 +13073,13 @@ class TriggerBBusBItemI3cSdr(SCPICmdRead):
             - ``MDATASpeed`` sets the trigger condition to Get Max Data Speed.
             - ``HDRCapability`` sets the trigger condition to Get HDR Capability.
             - ``GETXTime`` sets the trigger condition to Get Exchange Time.
+            - ``GETCAPS`` sets the trigger condition to Get Optional Feature Capabilities.
+            - ``ENDXFER`` sets the trigger condition to Data Transfer Ending Procedure Control.
+            - ``SETGRPa`` sets the trigger condition to Set Group Address.
+            - ``RSTACT`` sets the trigger condition to Slave Reset Action.
+            - ``DEFGRPa`` sets the trigger condition to Define List of Group Addresses.
+            - ``RSTGRPa`` sets the trigger condition to Reset Group Address.
+            - ``MLANe`` sets the trigger condition to Multi-Lane Data Transfer Control.
         """  # noqa: E501
         return self._directpacket
 
@@ -19827,7 +20202,7 @@ class TriggerBBus(SCPICmdRead):
         return self._source
 
 
-#  pylint: disable=too-many-instance-attributes
+#  pylint: disable=too-many-instance-attributes,too-many-public-methods
 class TriggerB(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B`` command tree.
 
@@ -19856,6 +20231,7 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
         - ``.transition``: The ``TRIGger:B:TRANsition`` command tree.
         - ``.type``: The ``TRIGger:B:TYPe`` command.
         - ``.upperthreshold``: The ``TRIGger:B:UPPerthreshold`` command tree.
+        - ``.video``: The ``TRIGger:B:VIDeo`` command tree.
         - ``.window``: The ``TRIGger:B:WINdow`` command tree.
     """
 
@@ -19882,6 +20258,7 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
         self._transition = TriggerBTransition(device, f"{self._cmd_syntax}:TRANsition")
         self._type = TriggerBType(device, f"{self._cmd_syntax}:TYPe")
         self._upperthreshold = TriggerBUpperthreshold(device, f"{self._cmd_syntax}:UPPerthreshold")
+        self._video = TriggerBVideo(device, f"{self._cmd_syntax}:VIDeo")
         self._window = TriggerBWindow(device, f"{self._cmd_syntax}:WINdow")
 
     @property
@@ -20261,6 +20638,24 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
         return self._upperthreshold
 
     @property
+    def video(self) -> TriggerBVideo:
+        """Return the ``TRIGger:B:VIDeo`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:B:VIDeo?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:B:VIDeo?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.field``: The ``TRIGger:B:VIDeo:FIELD`` command.
+            - ``.line``: The ``TRIGger:B:VIDeo:LINE`` command.
+            - ``.polarity``: The ``TRIGger:B:VIDeo:POLarity`` command.
+            - ``.source``: The ``TRIGger:B:VIDeo:SOUrce`` command.
+            - ``.standard``: The ``TRIGger:B:VIDeo:STANdard`` command.
+        """
+        return self._video
+
+    @property
     def window(self) -> TriggerBWindow:
         """Return the ``TRIGger:B:WINdow`` command tree.
 
@@ -20306,7 +20701,7 @@ class TriggerAuxlevel(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class TriggerAWindowWidth(SCPICmdWrite):
+class TriggerAWindowWidth(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:A:WINdow:WIDth`` command.
 
     **Description:**
@@ -20315,6 +20710,9 @@ class TriggerAWindowWidth(SCPICmdWrite):
           Outside > Limit in the Trigger When box, and setting the Time Limit.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:A:WINdow:WIDth?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:A:WINdow:WIDth?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``TRIGger:A:WINdow:WIDth value`` command.
 
     **SCPI Syntax:**
@@ -20322,6 +20720,7 @@ class TriggerAWindowWidth(SCPICmdWrite):
     ::
 
         - TRIGger:A:WINdow:WIDth <NR3>
+        - TRIGger:A:WINdow:WIDth?
 
     **Info:**
         - ``<NR3>`` is the minimum width for a window violation.
@@ -20412,7 +20811,7 @@ class TriggerAWindowLogicqualification(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class TriggerAWindowCrossing(SCPICmdWrite):
+class TriggerAWindowCrossing(SCPICmdWrite, SCPICmdRead):
     r"""The ``TRIGger:A:WINdow:CROSSIng`` command.
 
     **Description:**
@@ -20421,6 +20820,9 @@ class TriggerAWindowCrossing(SCPICmdWrite):
           ``:TRIGger``:{A|B}``:WINdow:WHEn`` is INSIDEGreater or OUTSIDEGreater.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:A:WINdow:CROSSIng?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:A:WINdow:CROSSIng?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``TRIGger:A:WINdow:CROSSIng value``
           command.
 
@@ -20429,6 +20831,7 @@ class TriggerAWindowCrossing(SCPICmdWrite):
     ::
 
         - TRIGger:A:WINdow:CROSSIng {UPPer|LOWer|EITher|NONe}
+        - TRIGger:A:WINdow:CROSSIng?
 
     **Info:**
         - ``UPPer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument triggers
@@ -20498,6 +20901,9 @@ class TriggerAWindow(SCPICmdRead):
               ``:TRIGger``:{A|B}``:WINdow:WHEn`` is INSIDEGreater or OUTSIDEGreater.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:A:WINdow:CROSSIng?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:A:WINdow:CROSSIng?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``TRIGger:A:WINdow:CROSSIng value``
               command.
 
@@ -20506,6 +20912,7 @@ class TriggerAWindow(SCPICmdRead):
         ::
 
             - TRIGger:A:WINdow:CROSSIng {UPPer|LOWer|EITher|NONe}
+            - TRIGger:A:WINdow:CROSSIng?
 
         **Info:**
             - ``UPPer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument
@@ -20639,6 +21046,9 @@ class TriggerAWindow(SCPICmdRead):
               Outside > Limit in the Trigger When box, and setting the Time Limit.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:A:WINdow:WIDth?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:A:WINdow:WIDth?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``TRIGger:A:WINdow:WIDth value``
               command.
 
@@ -20647,11 +21057,305 @@ class TriggerAWindow(SCPICmdRead):
         ::
 
             - TRIGger:A:WINdow:WIDth <NR3>
+            - TRIGger:A:WINdow:WIDth?
 
         **Info:**
             - ``<NR3>`` is the minimum width for a window violation.
         """
         return self._width
+
+
+class TriggerAVideoStandard(SCPICmdWrite, SCPICmdRead):
+    """The ``TRIGger:A:VIDeo:STANdard`` command.
+
+    **Description:**
+        - This command specifies the standard/format for a video trigger.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:A:VIDeo:STANdard?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:A:VIDeo:STANdard?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``TRIGger:A:VIDeo:STANdard value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - TRIGger:A:VIDeo:STANdard {NTSc|PAL|SECAM}
+        - TRIGger:A:VIDeo:STANdard?
+
+    **Info:**
+        - ``NTSc`` specifies 525i/NTSC as the video standard.
+        - ``PAL`` specifies 625i/PAL as the video standard.
+        - ``SECAM`` specifies SECAM as the video standard.
+    """
+
+
+class TriggerAVideoSource(SCPICmdWrite, SCPICmdRead):
+    """The ``TRIGger:A:VIDeo:SOUrce`` command.
+
+    **Description:**
+        - This command specifies the source waveform for a video trigger.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:A:VIDeo:SOUrce?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:A:VIDeo:SOUrce?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``TRIGger:A:VIDeo:SOUrce value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - TRIGger:A:VIDeo:SOUrce {CH<x>}
+        - TRIGger:A:VIDeo:SOUrce?
+
+    **Info:**
+        - ``CH<x>`` specifies the analog channel to use as the video trigger source waveform.
+    """
+
+
+class TriggerAVideoPolarity(SCPICmdWrite, SCPICmdRead):
+    """The ``TRIGger:A:VIDeo:POLarity`` command.
+
+    **Description:**
+        - This command specifies the polarity for a video trigger.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:A:VIDeo:POLarity?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:A:VIDeo:POLarity?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``TRIGger:A:VIDeo:POLarity value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - TRIGger:A:VIDeo:POLarity {POSitive|NEGative}
+        - TRIGger:A:VIDeo:POLarity?
+
+    **Info:**
+        - ``POSitive`` specifies a positive polarity for the video trigger.
+        - ``NEGative`` specifies a negative polarity for the video trigger.
+    """
+
+
+class TriggerAVideoLine(SCPICmdWrite, SCPICmdRead):
+    """The ``TRIGger:A:VIDeo:LINE`` command.
+
+    **Description:**
+        - This command specifies the line number value for a video line number trigger.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:A:VIDeo:LINE?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:A:VIDeo:LINE?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``TRIGger:A:VIDeo:LINE value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - TRIGger:A:VIDeo:LINE <NR1>
+        - TRIGger:A:VIDeo:LINE?
+
+    **Info:**
+        - ``<NR1>`` is the line number to trigger on, which can range from 1 to 625.
+    """
+
+
+class TriggerAVideoField(SCPICmdWrite, SCPICmdRead):
+    r"""The ``TRIGger:A:VIDeo:FIELD`` command.
+
+    **Description:**
+        - This command specifies the trigger condition for a video trigger.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:A:VIDeo:FIELD?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:A:VIDeo:FIELD?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``TRIGger:A:VIDeo:FIELD value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - TRIGger:A:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN| ALLFields}
+        - TRIGger:A:VIDeo:FIELD?
+
+    **Info:**
+        - ``ALLLines`` specifies to trigger on all lines.
+        - ``NUMERic`` specifies to trigger on a particular line, which can be set via the
+          TRIGger:{A\|B}``:VIDeo:LINE`` command.
+        - ``ODD`` specifies to trigger on odd lines.
+        - ``EVEN`` specifies to trigger on even lines.
+        - ``ALLFields`` specifies to trigger on any video field.
+    """
+
+
+class TriggerAVideo(SCPICmdRead):
+    """The ``TRIGger:A:VIDeo`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:A:VIDeo?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:A:VIDeo?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    Properties:
+        - ``.field``: The ``TRIGger:A:VIDeo:FIELD`` command.
+        - ``.line``: The ``TRIGger:A:VIDeo:LINE`` command.
+        - ``.polarity``: The ``TRIGger:A:VIDeo:POLarity`` command.
+        - ``.source``: The ``TRIGger:A:VIDeo:SOUrce`` command.
+        - ``.standard``: The ``TRIGger:A:VIDeo:STANdard`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._field = TriggerAVideoField(device, f"{self._cmd_syntax}:FIELD")
+        self._line = TriggerAVideoLine(device, f"{self._cmd_syntax}:LINE")
+        self._polarity = TriggerAVideoPolarity(device, f"{self._cmd_syntax}:POLarity")
+        self._source = TriggerAVideoSource(device, f"{self._cmd_syntax}:SOUrce")
+        self._standard = TriggerAVideoStandard(device, f"{self._cmd_syntax}:STANdard")
+
+    @property
+    def field(self) -> TriggerAVideoField:
+        r"""Return the ``TRIGger:A:VIDeo:FIELD`` command.
+
+        **Description:**
+            - This command specifies the trigger condition for a video trigger.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:A:VIDeo:FIELD?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:A:VIDeo:FIELD?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``TRIGger:A:VIDeo:FIELD value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - TRIGger:A:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN| ALLFields}
+            - TRIGger:A:VIDeo:FIELD?
+
+        **Info:**
+            - ``ALLLines`` specifies to trigger on all lines.
+            - ``NUMERic`` specifies to trigger on a particular line, which can be set via the
+              TRIGger:{A\|B}``:VIDeo:LINE`` command.
+            - ``ODD`` specifies to trigger on odd lines.
+            - ``EVEN`` specifies to trigger on even lines.
+            - ``ALLFields`` specifies to trigger on any video field.
+        """
+        return self._field
+
+    @property
+    def line(self) -> TriggerAVideoLine:
+        """Return the ``TRIGger:A:VIDeo:LINE`` command.
+
+        **Description:**
+            - This command specifies the line number value for a video line number trigger.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:A:VIDeo:LINE?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:A:VIDeo:LINE?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``TRIGger:A:VIDeo:LINE value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - TRIGger:A:VIDeo:LINE <NR1>
+            - TRIGger:A:VIDeo:LINE?
+
+        **Info:**
+            - ``<NR1>`` is the line number to trigger on, which can range from 1 to 625.
+        """
+        return self._line
+
+    @property
+    def polarity(self) -> TriggerAVideoPolarity:
+        """Return the ``TRIGger:A:VIDeo:POLarity`` command.
+
+        **Description:**
+            - This command specifies the polarity for a video trigger.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:A:VIDeo:POLarity?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:A:VIDeo:POLarity?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``TRIGger:A:VIDeo:POLarity value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - TRIGger:A:VIDeo:POLarity {POSitive|NEGative}
+            - TRIGger:A:VIDeo:POLarity?
+
+        **Info:**
+            - ``POSitive`` specifies a positive polarity for the video trigger.
+            - ``NEGative`` specifies a negative polarity for the video trigger.
+        """
+        return self._polarity
+
+    @property
+    def source(self) -> TriggerAVideoSource:
+        """Return the ``TRIGger:A:VIDeo:SOUrce`` command.
+
+        **Description:**
+            - This command specifies the source waveform for a video trigger.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:A:VIDeo:SOUrce?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:A:VIDeo:SOUrce?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``TRIGger:A:VIDeo:SOUrce value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - TRIGger:A:VIDeo:SOUrce {CH<x>}
+            - TRIGger:A:VIDeo:SOUrce?
+
+        **Info:**
+            - ``CH<x>`` specifies the analog channel to use as the video trigger source waveform.
+        """
+        return self._source
+
+    @property
+    def standard(self) -> TriggerAVideoStandard:
+        """Return the ``TRIGger:A:VIDeo:STANdard`` command.
+
+        **Description:**
+            - This command specifies the standard/format for a video trigger.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:A:VIDeo:STANdard?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:A:VIDeo:STANdard?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``TRIGger:A:VIDeo:STANdard value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - TRIGger:A:VIDeo:STANdard {NTSc|PAL|SECAM}
+            - TRIGger:A:VIDeo:STANdard?
+
+        **Info:**
+            - ``NTSc`` specifies 525i/NTSC as the video standard.
+            - ``PAL`` specifies 625i/PAL as the video standard.
+            - ``SECAM`` specifies SECAM as the video standard.
+        """
+        return self._standard
 
 
 class TriggerAUpperthresholdChannel(ValidatedChannel, SCPICmdWrite, SCPICmdRead):
@@ -26714,7 +27418,7 @@ class TriggerABusBItemSpi(SCPICmdRead):
         return self._data
 
 
-class TriggerABusBItemSentSlowIdentifierValue(SCPICmdWrite):
+class TriggerABusBItemSentSlowIdentifierValue(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue`` command.
 
     **Description:**
@@ -26722,6 +27426,11 @@ class TriggerABusBItemSentSlowIdentifierValue(SCPICmdWrite):
           data.
 
     **Usage:**
+        - Using the ``.query()`` method will send the
+          ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue value`` command.
 
@@ -26730,6 +27439,7 @@ class TriggerABusBItemSentSlowIdentifierValue(SCPICmdWrite):
     ::
 
         - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue <Qstring>
+        - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?
 
     **Info:**
         - ``B<x>`` is the bus identifier number.
@@ -26767,6 +27477,11 @@ class TriggerABusBItemSentSlowIdentifier(SCPICmdRead):
               bus data.
 
         **Usage:**
+            - Using the ``.query()`` method will send the
+              ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue value`` command.
 
@@ -26775,6 +27490,7 @@ class TriggerABusBItemSentSlowIdentifier(SCPICmdRead):
         ::
 
             - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue <Qstring>
+            - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?
 
         **Info:**
             - ``B<x>`` is the bus identifier number.
@@ -31310,7 +32026,7 @@ class TriggerABusBItemI3cSdrDirectpacket(SCPICmdWrite, SCPICmdRead):
 
     ::
 
-        - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime}
+        - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime| GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
         - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket?
 
     **Info:**
@@ -31334,6 +32050,13 @@ class TriggerABusBItemI3cSdrDirectpacket(SCPICmdWrite, SCPICmdRead):
         - ``MDATASpeed`` sets the trigger condition to Get Max Data Speed.
         - ``HDRCapability`` sets the trigger condition to Get HDR Capability.
         - ``GETXTime`` sets the trigger condition to Get Exchange Time.
+        - ``GETCAPS`` sets the trigger condition to Get Optional Feature Capabilities.
+        - ``ENDXFER`` sets the trigger condition to Data Transfer Ending Procedure Control.
+        - ``SETGRPa`` sets the trigger condition to Set Group Address.
+        - ``RSTACT`` sets the trigger condition to Slave Reset Action.
+        - ``DEFGRPa`` sets the trigger condition to Define List of Group Addresses.
+        - ``RSTGRPa`` sets the trigger condition to Reset Group Address.
+        - ``MLANe`` sets the trigger condition to Multi-Lane Data Transfer Control.
     """  # noqa: E501
 
 
@@ -31357,7 +32080,7 @@ class TriggerABusBItemI3cSdrBroadcastpacket(SCPICmdWrite, SCPICmdRead):
 
     ::
 
-        - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa}
+        - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
         - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket?
 
     **Info:**
@@ -31372,6 +32095,13 @@ class TriggerABusBItemI3cSdrBroadcastpacket(SCPICmdWrite, SCPICmdRead):
         - ``ENTRTSTMode`` sets the trigger condition to Enter Test Mode.
         - ``EXTime`` sets the trigger condition to Set Exchange Time.
         - ``SETaasa`` sets the trigger condition to Set Static As Dynamic Address.
+        - ``ENDXFER`` sets the trigger condition to Data Transfer Ending Procedure Control.
+        - ``SETGRPa`` sets the trigger condition to Set Group Address.
+        - ``RSTACT`` sets the trigger condition to Slave Reset Action.
+        - ``DEFGRPa`` sets the trigger condition to Define List of Group Addresses.
+        - ``RSTGRPa`` sets the trigger condition to Reset Group Address.
+        - ``MLANe`` sets the trigger condition to Multi-Lane Data Transfer Control.
+        - ``SETBUSCON`` sets the trigger condition to Set Bus Context.
     """  # noqa: E501
 
 
@@ -31418,7 +32148,7 @@ class TriggerABusBItemI3cSdr(SCPICmdRead):
 
         ::
 
-            - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa}
+            - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
             - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket?
 
         **Info:**
@@ -31433,6 +32163,13 @@ class TriggerABusBItemI3cSdr(SCPICmdRead):
             - ``ENTRTSTMode`` sets the trigger condition to Enter Test Mode.
             - ``EXTime`` sets the trigger condition to Set Exchange Time.
             - ``SETaasa`` sets the trigger condition to Set Static As Dynamic Address.
+            - ``ENDXFER`` sets the trigger condition to Data Transfer Ending Procedure Control.
+            - ``SETGRPa`` sets the trigger condition to Set Group Address.
+            - ``RSTACT`` sets the trigger condition to Slave Reset Action.
+            - ``DEFGRPa`` sets the trigger condition to Define List of Group Addresses.
+            - ``RSTGRPa`` sets the trigger condition to Reset Group Address.
+            - ``MLANe`` sets the trigger condition to Multi-Lane Data Transfer Control.
+            - ``SETBUSCON`` sets the trigger condition to Set Bus Context.
         """  # noqa: E501
         return self._broadcastpacket
 
@@ -31457,7 +32194,7 @@ class TriggerABusBItemI3cSdr(SCPICmdRead):
 
         ::
 
-            - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime}
+            - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime| GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
             - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket?
 
         **Info:**
@@ -31481,6 +32218,13 @@ class TriggerABusBItemI3cSdr(SCPICmdRead):
             - ``MDATASpeed`` sets the trigger condition to Get Max Data Speed.
             - ``HDRCapability`` sets the trigger condition to Get HDR Capability.
             - ``GETXTime`` sets the trigger condition to Get Exchange Time.
+            - ``GETCAPS`` sets the trigger condition to Get Optional Feature Capabilities.
+            - ``ENDXFER`` sets the trigger condition to Data Transfer Ending Procedure Control.
+            - ``SETGRPa`` sets the trigger condition to Set Group Address.
+            - ``RSTACT`` sets the trigger condition to Slave Reset Action.
+            - ``DEFGRPa`` sets the trigger condition to Define List of Group Addresses.
+            - ``RSTGRPa`` sets the trigger condition to Reset Group Address.
+            - ``MLANe`` sets the trigger condition to Multi-Lane Data Transfer Control.
         """  # noqa: E501
         return self._directpacket
 
@@ -38630,6 +39374,7 @@ class TriggerA(SCPICmdWrite, SCPICmdRead):
         - ``.transition``: The ``TRIGger:A:TRANsition`` command tree.
         - ``.type``: The ``TRIGger:A:TYPe`` command.
         - ``.upperthreshold``: The ``TRIGger:A:UPPerthreshold`` command tree.
+        - ``.video``: The ``TRIGger:A:VIDeo`` command tree.
         - ``.window``: The ``TRIGger:A:WINdow`` command tree.
     """
 
@@ -38656,6 +39401,7 @@ class TriggerA(SCPICmdWrite, SCPICmdRead):
         self._transition = TriggerATransition(device, f"{self._cmd_syntax}:TRANsition")
         self._type = TriggerAType(device, f"{self._cmd_syntax}:TYPe")
         self._upperthreshold = TriggerAUpperthreshold(device, f"{self._cmd_syntax}:UPPerthreshold")
+        self._video = TriggerAVideo(device, f"{self._cmd_syntax}:VIDeo")
         self._window = TriggerAWindow(device, f"{self._cmd_syntax}:WINdow")
 
     @property
@@ -38979,6 +39725,24 @@ class TriggerA(SCPICmdWrite, SCPICmdRead):
         return self._upperthreshold
 
     @property
+    def video(self) -> TriggerAVideo:
+        """Return the ``TRIGger:A:VIDeo`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:A:VIDeo?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:A:VIDeo?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.field``: The ``TRIGger:A:VIDeo:FIELD`` command.
+            - ``.line``: The ``TRIGger:A:VIDeo:LINE`` command.
+            - ``.polarity``: The ``TRIGger:A:VIDeo:POLarity`` command.
+            - ``.source``: The ``TRIGger:A:VIDeo:SOUrce`` command.
+            - ``.standard``: The ``TRIGger:A:VIDeo:STANdard`` command.
+        """
+        return self._video
+
+    @property
     def window(self) -> TriggerAWindow:
         """Return the ``TRIGger:A:WINdow`` command tree.
 
@@ -39127,6 +39891,7 @@ class Trigger(SCPICmdWrite, SCPICmdRead):
             - ``.transition``: The ``TRIGger:A:TRANsition`` command tree.
             - ``.type``: The ``TRIGger:A:TYPe`` command.
             - ``.upperthreshold``: The ``TRIGger:A:UPPerthreshold`` command tree.
+            - ``.video``: The ``TRIGger:A:VIDeo`` command tree.
             - ``.window``: The ``TRIGger:A:WINdow`` command tree.
         """
         return self._a
@@ -39160,6 +39925,7 @@ class Trigger(SCPICmdWrite, SCPICmdRead):
             - ``.transition``: The ``TRIGger:B:TRANsition`` command tree.
             - ``.type``: The ``TRIGger:B:TYPe`` command.
             - ``.upperthreshold``: The ``TRIGger:B:UPPerthreshold`` command tree.
+            - ``.video``: The ``TRIGger:B:VIDeo`` command tree.
             - ``.window``: The ``TRIGger:B:WINdow`` command tree.
         """
         return self._b

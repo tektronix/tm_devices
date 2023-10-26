@@ -255,6 +255,8 @@ class Display(BaseTSPCmd):
         - ``.STATE_LCD_50``: Set display to 50% brightness.
         - ``.STATE_LCD_75``: Set display to 75% brightness.
         - ``.STATE_LCD_OFF``: Set display to off.
+        - ``.TEXT1``: display text line for Line 1.
+        - ``.TEXT2``: display text line for Line 2.
 
     Properties/methods:
         - ``.activebuffer``: The ``display.activebuffer`` attribute.
@@ -345,6 +347,10 @@ the instrument."""  # noqa: E501
     """str: Set display to 75% brightness."""
     STATE_LCD_OFF = "display.STATE_LCD_OFF"
     """str: Set display to off."""
+    TEXT1 = "display.TEXT1"
+    """str: display text line for Line 1."""
+    TEXT2 = "display.TEXT2"
+    """str: display text line for Line 2."""
 
     def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "display") -> None:
         super().__init__(device, cmd_syntax)
