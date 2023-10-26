@@ -31,9 +31,10 @@ Commands and Queries:
     - HORizontal:FASTframe:SELECTED?
     - HORizontal:FASTframe:STATE {<NR1>|OFF|ON}
     - HORizontal:FASTframe:STATE?
+    - HORizontal:FASTframe:SUMFrame {NONe|AVErage|ENVelope}
     - HORizontal:FASTframe:SUMFrame:STATE {<NR1>|OFF|ON}
     - HORizontal:FASTframe:SUMFrame:STATE?
-    - HORizontal:FASTframe:SUMFrame? {NONe|AVErage|ENVelope}
+    - HORizontal:FASTframe:SUMFrame?
     - HORizontal:FASTframe:TIMEStamp:ALL?
     - HORizontal:FASTframe:TIMEStamp:DELTa?
     - HORizontal:FASTframe:TIMEStamp:REFerence?
@@ -52,7 +53,7 @@ Commands and Queries:
     - HORizontal:HISTory:REF:INClude?
     - HORizontal:HISTory:SELected <NR1>
     - HORizontal:HISTory:SELected?
-    - HORizontal:HISTory:STATe {OFF|ON}
+    - HORizontal:HISTory:STATe {OFF|ON|1|0}
     - HORizontal:HISTory:STATe?
     - HORizontal:HISTory:TIMEStamp:DELTa?
     - HORizontal:HISTory:TIMEStamp:REFerence?
@@ -90,7 +91,7 @@ Commands and Queries:
 """
 from typing import Optional, TYPE_CHECKING
 
-from .._helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
+from .._helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
@@ -1228,7 +1229,7 @@ class HorizontalHistoryState(SCPICmdWrite, SCPICmdRead):
 
     ::
 
-        - HORizontal:HISTory:STATe {OFF|ON}
+        - HORizontal:HISTory:STATe {OFF|ON|1|0}
         - HORizontal:HISTory:STATe?
 
     **Info:**
@@ -1604,7 +1605,7 @@ class HorizontalHistory(SCPICmdRead):
 
         ::
 
-            - HORizontal:HISTory:STATe {OFF|ON}
+            - HORizontal:HISTory:STATe {OFF|ON|1|0}
             - HORizontal:HISTory:STATe?
 
         **Info:**
@@ -2024,7 +2025,7 @@ class HorizontalFastframeSumframeState(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class HorizontalFastframeSumframe(SCPICmdReadWithArguments):
+class HorizontalFastframeSumframe(SCPICmdWrite, SCPICmdRead):
     """The ``HORizontal:FASTframe:SUMFrame`` command.
 
     **Description:**
@@ -2034,17 +2035,18 @@ class HorizontalFastframeSumframe(SCPICmdReadWithArguments):
           always the number of frames to acquire.
 
     **Usage:**
-        - Using the ``.query(argument)`` method will send the
-          ``HORizontal:FASTframe:SUMFrame? argument`` query.
-        - Using the ``.verify(argument, value)`` method will send the
-          ``HORizontal:FASTframe:SUMFrame? argument`` query and raise an AssertionError if the
-          returned value does not match ``value``.
+        - Using the ``.query()`` method will send the ``HORizontal:FASTframe:SUMFrame?`` query.
+        - Using the ``.verify(value)`` method will send the ``HORizontal:FASTframe:SUMFrame?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``HORizontal:FASTframe:SUMFrame value``
+          command.
 
     **SCPI Syntax:**
 
     ::
 
-        - HORizontal:FASTframe:SUMFrame? {NONe|AVErage|ENVelope}
+        - HORizontal:FASTframe:SUMFrame {NONe|AVErage|ENVelope}
+        - HORizontal:FASTframe:SUMFrame?
 
     **Info:**
         - ``NONe`` sets the Summary frame to off.
@@ -2593,17 +2595,18 @@ class HorizontalFastframe(SCPICmdRead):
               value is always the number of frames to acquire.
 
         **Usage:**
-            - Using the ``.query(argument)`` method will send the
-              ``HORizontal:FASTframe:SUMFrame? argument`` query.
-            - Using the ``.verify(argument, value)`` method will send the
-              ``HORizontal:FASTframe:SUMFrame? argument`` query and raise an AssertionError if the
-              returned value does not match ``value``.
+            - Using the ``.query()`` method will send the ``HORizontal:FASTframe:SUMFrame?`` query.
+            - Using the ``.verify(value)`` method will send the ``HORizontal:FASTframe:SUMFrame?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``HORizontal:FASTframe:SUMFrame value`` command.
 
         **SCPI Syntax:**
 
         ::
 
-            - HORizontal:FASTframe:SUMFrame? {NONe|AVErage|ENVelope}
+            - HORizontal:FASTframe:SUMFrame {NONe|AVErage|ENVelope}
+            - HORizontal:FASTframe:SUMFrame?
 
         **Info:**
             - ``NONe`` sets the Summary frame to off.

@@ -505,6 +505,10 @@ Commands and Queries:
     - POWer:POWer<x>:TURNONtime:TYPE?
     - POWer:POWer<x>:TYPe <Measurement Type>
     - POWer:POWer<x>:TYPe?
+    - POWer:POWer<x>:WRAP:DEGrees NR3
+    - POWer:POWer<x>:WRAP:DEGrees?
+    - POWer:POWer<x>:WRAP:STATE {ON|OFF}
+    - POWer:POWer<x>:WRAP:STATE?
 """  # noqa: E501
 from typing import Dict, Optional, TYPE_CHECKING
 
@@ -519,6 +523,137 @@ from .._helpers import (
 
 if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
+
+
+class PowerPowerItemWrapState(SCPICmdWrite, SCPICmdRead):
+    """The ``POWer:POWer<x>:WRAP:STATE`` command.
+
+    **Description:**
+        - This command sets or returns the phase wrap status for FRA measurements.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``POWer:POWer<x>:WRAP:STATE?`` query.
+        - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:WRAP:STATE?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``POWer:POWer<x>:WRAP:STATE value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - POWer:POWer<x>:WRAP:STATE {ON|OFF}
+        - POWer:POWer<x>:WRAP:STATE?
+
+    **Info:**
+        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
+        - ``ON`` specifies that phase wrap has been turned on for FRA measurements.
+        - ``OFF`` specifies that phase wrap has been turned off for FRA measurements.
+    """
+
+
+class PowerPowerItemWrapDegrees(SCPICmdWrite, SCPICmdRead):
+    """The ``POWer:POWer<x>:WRAP:DEGrees`` command.
+
+    **Description:**
+        - This command sets or returns the phase wrap value for FRA measurements.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``POWer:POWer<x>:WRAP:DEGrees?`` query.
+        - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:WRAP:DEGrees?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``POWer:POWer<x>:WRAP:DEGrees value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - POWer:POWer<x>:WRAP:DEGrees NR3
+        - POWer:POWer<x>:WRAP:DEGrees?
+
+    **Info:**
+        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
+        - ``NR3`` specifies the phase wrap value for FRA measurements.
+    """
+
+
+class PowerPowerItemWrap(SCPICmdRead):
+    """The ``POWer:POWer<x>:WRAP`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``POWer:POWer<x>:WRAP?`` query.
+        - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:WRAP?`` query and raise
+          an AssertionError if the returned value does not match ``value``.
+
+    Properties:
+        - ``.degrees``: The ``POWer:POWer<x>:WRAP:DEGrees`` command.
+        - ``.state``: The ``POWer:POWer<x>:WRAP:STATE`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._degrees = PowerPowerItemWrapDegrees(device, f"{self._cmd_syntax}:DEGrees")
+        self._state = PowerPowerItemWrapState(device, f"{self._cmd_syntax}:STATE")
+
+    @property
+    def degrees(self) -> PowerPowerItemWrapDegrees:
+        """Return the ``POWer:POWer<x>:WRAP:DEGrees`` command.
+
+        **Description:**
+            - This command sets or returns the phase wrap value for FRA measurements.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``POWer:POWer<x>:WRAP:DEGrees?`` query.
+            - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:WRAP:DEGrees?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``POWer:POWer<x>:WRAP:DEGrees value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - POWer:POWer<x>:WRAP:DEGrees NR3
+            - POWer:POWer<x>:WRAP:DEGrees?
+
+        **Info:**
+            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+            - ``NR3`` specifies the phase wrap value for FRA measurements.
+        """
+        return self._degrees
+
+    @property
+    def state(self) -> PowerPowerItemWrapState:
+        """Return the ``POWer:POWer<x>:WRAP:STATE`` command.
+
+        **Description:**
+            - This command sets or returns the phase wrap status for FRA measurements.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``POWer:POWer<x>:WRAP:STATE?`` query.
+            - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:WRAP:STATE?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``POWer:POWer<x>:WRAP:STATE value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - POWer:POWer<x>:WRAP:STATE {ON|OFF}
+            - POWer:POWer<x>:WRAP:STATE?
+
+        **Info:**
+            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+            - ``ON`` specifies that phase wrap has been turned on for FRA measurements.
+            - ``OFF`` specifies that phase wrap has been turned off for FRA measurements.
+        """
+        return self._state
 
 
 class PowerPowerItemType(SCPICmdWrite, SCPICmdRead):
@@ -4736,7 +4871,7 @@ class PowerPowerItemSoaRecallmaskFilename(SCPICmdWriteNoArguments, SCPICmdRead):
     """The ``POWer:POWer<x>:SOA:RECAllmask:FILEName`` command.
 
     **Description:**
-        - This command sets or queries the file name for saving SOA mask file name in the specified
+        - This command  sets or queries the file name for saving SOA mask file name in the specified
           power measurement number. The power measurement number is specified by x.
 
     **Usage:**
@@ -4790,7 +4925,7 @@ class PowerPowerItemSoaRecallmask(SCPICmdWriteNoArguments, SCPICmdRead):
         """Return the ``POWer:POWer<x>:SOA:RECAllmask:FILEName`` command.
 
         **Description:**
-            - This command sets or queries the file name for saving SOA mask file name in the
+            - This command  sets or queries the file name for saving SOA mask file name in the
               specified power measurement number. The power measurement number is specified by x.
 
         **Usage:**
@@ -7266,8 +7401,8 @@ class PowerPowerItemReflevelsAbsoluteType(SCPICmdWrite, SCPICmdRead):
     """The ``POWer:POWer<x>:REFLevels:ABSolute:TYPE`` command.
 
     **Description:**
-        - This command sets or queries the type of measurement levels when reference level is set to
-          absolute for the specified power measurement number.
+        - This  command sets or queries the type of measurement levels when reference level is set
+          to absolute for the specified power measurement number.
 
     **Usage:**
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:REFLevels:ABSolute:TYPE?``
@@ -7770,7 +7905,7 @@ class PowerPowerItemReflevelsAbsolute(SCPICmdRead):
         """Return the ``POWer:POWer<x>:REFLevels:ABSolute:TYPE`` command.
 
         **Description:**
-            - This command sets or queries the type of measurement levels when reference level is
+            - This  command sets or queries the type of measurement levels when reference level is
               set to absolute for the specified power measurement number.
 
         **Usage:**
@@ -13066,7 +13201,7 @@ class PowerPowerItemImpedanceAnalysismethod(SCPICmdWrite, SCPICmdRead):
     """The ``POWer:POWer<x>:IMPEDANCE:ANALYSISMethod`` command.
 
     **Description:**
-        - This command sets or queries the Analysis Method for Impedance measurements.
+        - This command sets or queries the Analysis Method for  Impedance measurements.
 
     **Usage:**
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:IMPEDANCE:ANALYSISMethod?``
@@ -13289,7 +13424,7 @@ class PowerPowerItemImpedance(SCPICmdRead):
         """Return the ``POWer:POWer<x>:IMPEDANCE:ANALYSISMethod`` command.
 
         **Description:**
-            - This command sets or queries the Analysis Method for Impedance measurements.
+            - This command sets or queries the Analysis Method for  Impedance measurements.
 
         **Usage:**
             - Using the ``.query()`` method will send the
@@ -17945,6 +18080,7 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.turnofftime``: The ``POWer:POWer<x>:TURNOFFtime`` command tree.
         - ``.turnontime``: The ``POWer:POWer<x>:TURNONtime`` command tree.
         - ``.type``: The ``POWer:POWer<x>:TYPe`` command.
+        - ``.wrap``: The ``POWer:POWer<x>:WRAP`` command tree.
     """
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
@@ -17997,6 +18133,7 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._turnofftime = PowerPowerItemTurnofftime(device, f"{self._cmd_syntax}:TURNOFFtime")
         self._turnontime = PowerPowerItemTurnontime(device, f"{self._cmd_syntax}:TURNONtime")
         self._type = PowerPowerItemType(device, f"{self._cmd_syntax}:TYPe")
+        self._wrap = PowerPowerItemWrap(device, f"{self._cmd_syntax}:WRAP")
 
     @property
     def autoset(self) -> PowerPowerItemAutoset:
@@ -18874,6 +19011,21 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         """
         return self._type
 
+    @property
+    def wrap(self) -> PowerPowerItemWrap:
+        """Return the ``POWer:POWer<x>:WRAP`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``POWer:POWer<x>:WRAP?`` query.
+            - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:WRAP?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.degrees``: The ``POWer:POWer<x>:WRAP:DEGrees`` command.
+            - ``.state``: The ``POWer:POWer<x>:WRAP:STATE`` command.
+        """
+        return self._wrap
+
 
 class PowerDelete(SCPICmdWrite):
     """The ``POWer:DELete`` command.
@@ -19023,5 +19175,6 @@ class Power(SCPICmdRead):
             - ``.turnofftime``: The ``POWer:POWer<x>:TURNOFFtime`` command tree.
             - ``.turnontime``: The ``POWer:POWer<x>:TURNONtime`` command tree.
             - ``.type``: The ``POWer:POWer<x>:TYPe`` command.
+            - ``.wrap``: The ``POWer:POWer<x>:WRAP`` command tree.
         """
         return self._power

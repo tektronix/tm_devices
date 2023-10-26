@@ -22,22 +22,36 @@ Commands and Queries:
     - PLOT:PLOT<x>:BATHtub:XAXISUnits?
     - PLOT:PLOT<x>:BITType {ALLBits|TRANSition|NONTRANsition}
     - PLOT:PLOT<x>:BITType?
+    - PLOT:PLOT<x>:EINTerpolation {ON|OFF}
+    - PLOT:PLOT<x>:EINTerpolation?
     - PLOT:PLOT<x>:EXPORTRaw?
     - PLOT:PLOT<x>:EXTENDuis <NR1>
     - PLOT:PLOT<x>:EXTENDuis?
     - PLOT:PLOT<x>:EYERender {FAst|COMPlete}
     - PLOT:PLOT<x>:EYERender?
     - PLOT:PLOT<x>:IMDA:MEAS {VRMS |IRMS |PHASE |FREQuency |TRPWR |REPWR |APPPWR |TRPWRSUM |REPWRSUM |APPPWRSUM |DCPWR |INPWR |OUTPWR |EFFiciency |TOTALEFFiciency |INPWRSUM |OUTPWRSUM}
+    - PLOT:PLOT<x>:IMDA:MEAS?
     - PLOT:PLOT<x>:IMDAPLOTDisplay {ALL |ONEPAIRVI |ONEPAIRV |ONEPAIRI |PHASEONE |PHASETWO |PHASETHREE |ABC |DQ0}
+    - PLOT:PLOT<x>:IMDAPLOTDisplay?
+    - PLOT:PLOT<x>:INTerpolate {ON|OFF}
+    - PLOT:PLOT<x>:INTerpolate?
     - PLOT:PLOT<x>:LABel:COLor <QString>
+    - PLOT:PLOT<x>:LABel:COLor?
     - PLOT:PLOT<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+    - PLOT:PLOT<x>:LABel:FONT:BOLD?
     - PLOT:PLOT<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+    - PLOT:PLOT<x>:LABel:FONT:ITALic?
     - PLOT:PLOT<x>:LABel:FONT:SIZE <NR1>
     - PLOT:PLOT<x>:LABel:FONT:TYPE <QString>
+    - PLOT:PLOT<x>:LABel:FONT:TYPE?
     - PLOT:PLOT<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+    - PLOT:PLOT<x>:LABel:FONT:UNDERline?
     - PLOT:PLOT<x>:LABel:NAMe <QString>
+    - PLOT:PLOT<x>:LABel:NAMe?
     - PLOT:PLOT<x>:LABel:XPOS <NR3>
+    - PLOT:PLOT<x>:LABel:XPOS?
     - PLOT:PLOT<x>:LABel:YPOS <NR3>
+    - PLOT:PLOT<x>:LABel:YPOS?
     - PLOT:PLOT<x>:MASK?
     - PLOT:PLOT<x>:MASKOffset:HORizontal:AUTOfit {ON|OFF}
     - PLOT:PLOT<x>:MASKOffset:HORizontal:AUTOfit?
@@ -46,8 +60,11 @@ Commands and Queries:
     - PLOT:PLOT<x>:MASKOffset:PERCENTui:TO <NR3>
     - PLOT:PLOT<x>:MASKOffset:PERCENTui:TO?
     - PLOT:PLOT<x>:NUMBins {TWENtyfive| FIFTY| HUNdred| TWOFifty| FIVEHundred| TWOThousand| MAXimum}
+    - PLOT:PLOT<x>:NUMBins?
     - PLOT:PLOT<x>:PREGion {SELECTED|ALL}
+    - PLOT:PLOT<x>:PREGion?
     - PLOT:PLOT<x>:PTYPe {RMS|MAGNITUDE}
+    - PLOT:PLOT<x>:PTYPe?
     - PLOT:PLOT<x>:RAILNUM RAIL<x>
     - PLOT:PLOT<x>:RAILNUM?
     - PLOT:PLOT<x>:SOUrce1 MEAS<x>
@@ -56,7 +73,9 @@ Commands and Queries:
     - PLOT:PLOT<x>:SPECtrum:BASE?
     - PLOT:PLOT<x>:SPECtrum:DYNRange <NR3>
     - PLOT:PLOT<x>:SPECtrum:DYNRange?
-    - PLOT:PLOT<x>:TYPe {NONE |BATHTUB |EYEDIAGRAM |HARMONICS |HISTOGRAM |IMDATIMETREND|IMDAACQTREND |INDUCTANCE |IVSINTEGRALV |MAGPROPERTY |PHASENOISE |PHASOR |RECOVERY |SOA |SPECTRUM |SSCPROFILE |SWL |TIEHISTOGRAM |TIETIMETREND |TIESPECTRUM |TIMETREND |XY |XYZ}
+    - PLOT:PLOT<x>:TRESponse:RTYPe {PHASE| GRPDELAY| GDELAY}
+    - PLOT:PLOT<x>:TRESponse:RTYPe?
+    - PLOT:PLOT<x>:TYPe {NONE |BATHTUB |EYEDIAGRAM |HARMONICS |HISTOGRAM |IMDATIMETREND|IMDAACQTREND |INDUCTANCE |IVSINTEGRALV |MAGPROPERTY |PHASENOISE |PHASOR |RECOVERY |SOA |SPECTRUM |SSCPROFILE |SWL |TIEHISTOGRAM |TIETIMETREND |TIESPECTRUM |TIMETREND |TRESPONSE |XY |XYZ}
 """  # noqa: E501
 from typing import Dict, Optional, TYPE_CHECKING
 
@@ -84,7 +103,7 @@ class PlotPlotItemType(SCPICmdWrite):
 
     ::
 
-        - PLOT:PLOT<x>:TYPe {NONE |BATHTUB |EYEDIAGRAM |HARMONICS |HISTOGRAM |IMDATIMETREND|IMDAACQTREND |INDUCTANCE |IVSINTEGRALV |MAGPROPERTY |PHASENOISE |PHASOR |RECOVERY |SOA |SPECTRUM |SSCPROFILE |SWL |TIEHISTOGRAM |TIETIMETREND |TIESPECTRUM |TIMETREND |XY |XYZ}
+        - PLOT:PLOT<x>:TYPe {NONE |BATHTUB |EYEDIAGRAM |HARMONICS |HISTOGRAM |IMDATIMETREND|IMDAACQTREND |INDUCTANCE |IVSINTEGRALV |MAGPROPERTY |PHASENOISE |PHASOR |RECOVERY |SOA |SPECTRUM |SSCPROFILE |SWL |TIEHISTOGRAM |TIETIMETREND |TIESPECTRUM |TIMETREND |TRESPONSE |XY |XYZ}
 
     **Info:**
         - ``<x>`` is the plot number. This is the equivalent of the number shown on a plot heading
@@ -112,9 +131,90 @@ class PlotPlotItemType(SCPICmdWrite):
         - ``TIESPECTRUM`` creates a TIE spectrum plot.
         - ``TIETIMETREND`` creates a TIE time trend plot.
         - ``TIMETREND`` creates a time trend plot.
+        - ``TRESPONSE`` creates a response plot.
         - ``XY`` creates a XY plot.
         - ``XYZ`` creates a XYZ plot.
     """  # noqa: E501
+
+
+class PlotPlotItemTresponseRtype(SCPICmdWrite, SCPICmdRead):
+    """The ``PLOT:PLOT<x>:TRESponse:RTYPe`` command.
+
+    **Description:**
+        - This command sets the plot response type.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:TRESponse:RTYPe?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:TRESponse:RTYPe?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:TRESponse:RTYPe value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - PLOT:PLOT<x>:TRESponse:RTYPe {PHASE| GRPDELAY| GDELAY}
+        - PLOT:PLOT<x>:TRESponse:RTYPe?
+
+    **Info:**
+        - ``PLOT<x>`` sets the plot measurement number. This is the equivalent of the number shown
+          on a plot heading in the UI.
+        - ``PHASE`` sets the plot response type to phase.
+        - ``GRPDELAY`` sets the plot response type to GRPDELAY.
+        - ``GDELAY`` sets the plot response type to GDELAY.
+    """
+
+
+class PlotPlotItemTresponse(SCPICmdRead):
+    """The ``PLOT:PLOT<x>:TRESponse`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:TRESponse?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:TRESponse?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+
+    **Info:**
+        - ``PLOT<x>`` sets the plot measurement number. This is the equivalent of the number shown
+          on a plot heading in the UI.
+
+    Properties:
+        - ``.rtype``: The ``PLOT:PLOT<x>:TRESponse:RTYPe`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._rtype = PlotPlotItemTresponseRtype(device, f"{self._cmd_syntax}:RTYPe")
+
+    @property
+    def rtype(self) -> PlotPlotItemTresponseRtype:
+        """Return the ``PLOT:PLOT<x>:TRESponse:RTYPe`` command.
+
+        **Description:**
+            - This command sets the plot response type.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:TRESponse:RTYPe?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:TRESponse:RTYPe?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``PLOT:PLOT<x>:TRESponse:RTYPe value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - PLOT:PLOT<x>:TRESponse:RTYPe {PHASE| GRPDELAY| GDELAY}
+            - PLOT:PLOT<x>:TRESponse:RTYPe?
+
+        **Info:**
+            - ``PLOT<x>`` sets the plot measurement number. This is the equivalent of the number
+              shown on a plot heading in the UI.
+            - ``PHASE`` sets the plot response type to phase.
+            - ``GRPDELAY`` sets the plot response type to GRPDELAY.
+            - ``GDELAY`` sets the plot response type to GDELAY.
+        """
+        return self._rtype
 
 
 class PlotPlotItemSpectrumDynrange(SCPICmdWrite, SCPICmdRead):
@@ -287,13 +387,16 @@ class PlotPlotItemRailnum(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class PlotPlotItemPtype(SCPICmdWrite):
+class PlotPlotItemPtype(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:PTYPe`` command.
 
     **Description:**
         - This command sets or returns the phasor type of the phasor diagram plot.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:PTYPe?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:PTYPe?`` query and raise
+          an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:PTYPe value`` command.
 
     **SCPI Syntax:**
@@ -301,6 +404,7 @@ class PlotPlotItemPtype(SCPICmdWrite):
     ::
 
         - PLOT:PLOT<x>:PTYPe {RMS|MAGNITUDE}
+        - PLOT:PLOT<x>:PTYPe?
 
     **Info:**
         - ``PLOT<x>`` is the plot number.
@@ -309,13 +413,16 @@ class PlotPlotItemPtype(SCPICmdWrite):
     """
 
 
-class PlotPlotItemPregion(SCPICmdWrite):
+class PlotPlotItemPregion(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:PREGion`` command.
 
     **Description:**
         - This command sets or returns the pulse region for recovery plot.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:PREGion?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:PREGion?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:PREGion value`` command.
 
     **SCPI Syntax:**
@@ -323,6 +430,7 @@ class PlotPlotItemPregion(SCPICmdWrite):
     ::
 
         - PLOT:PLOT<x>:PREGion {SELECTED|ALL}
+        - PLOT:PLOT<x>:PREGion?
 
     **Info:**
         - ``PLOT<x>`` is the plot number.
@@ -331,13 +439,16 @@ class PlotPlotItemPregion(SCPICmdWrite):
     """
 
 
-class PlotPlotItemNumbins(SCPICmdWrite):
+class PlotPlotItemNumbins(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:NUMBins`` command.
 
     **Description:**
         - This command sets or queries the current histogram resolution.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:NUMBins?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:NUMBins?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:NUMBins value`` command.
 
     **SCPI Syntax:**
@@ -345,6 +456,7 @@ class PlotPlotItemNumbins(SCPICmdWrite):
     ::
 
         - PLOT:PLOT<x>:NUMBins {TWENtyfive| FIFTY| HUNdred| TWOFifty| FIVEHundred| TWOThousand| MAXimum}
+        - PLOT:PLOT<x>:NUMBins?
 
     **Info:**
         - ``TWENtyfive`` sets the number of bins to 25.
@@ -666,7 +778,7 @@ class PlotPlotItemMask(SCPICmdRead):
     """
 
 
-class PlotPlotItemLabelYpos(SCPICmdWrite):
+class PlotPlotItemLabelYpos(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:LABel:YPOS`` command.
 
     **Description:**
@@ -674,6 +786,9 @@ class PlotPlotItemLabelYpos(SCPICmdWrite):
           command/query only applies to Time Trend plots.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:YPOS?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:YPOS?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:LABel:YPOS value``
           command.
 
@@ -682,6 +797,7 @@ class PlotPlotItemLabelYpos(SCPICmdWrite):
     ::
 
         - PLOT:PLOT<x>:LABel:YPOS <NR3>
+        - PLOT:PLOT<x>:LABel:YPOS?
 
     **Info:**
         - ``<NR3>`` is the x-position, in pixels relative to the baseline of the waveform, of the
@@ -689,7 +805,7 @@ class PlotPlotItemLabelYpos(SCPICmdWrite):
     """
 
 
-class PlotPlotItemLabelXpos(SCPICmdWrite):
+class PlotPlotItemLabelXpos(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:LABel:XPOS`` command.
 
     **Description:**
@@ -697,6 +813,9 @@ class PlotPlotItemLabelXpos(SCPICmdWrite):
           command/query only applies to Time Trend plots.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:XPOS?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:XPOS?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:LABel:XPOS value``
           command.
 
@@ -705,6 +824,7 @@ class PlotPlotItemLabelXpos(SCPICmdWrite):
     ::
 
         - PLOT:PLOT<x>:LABel:XPOS <NR3>
+        - PLOT:PLOT<x>:LABel:XPOS?
 
     **Info:**
         - ``<NR3>`` is the y-position, in pixels relative to the left edge of the display, of the
@@ -712,7 +832,7 @@ class PlotPlotItemLabelXpos(SCPICmdWrite):
     """
 
 
-class PlotPlotItemLabelName(SCPICmdWrite):
+class PlotPlotItemLabelName(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:LABel:NAMe`` command.
 
     **Description:**
@@ -720,6 +840,9 @@ class PlotPlotItemLabelName(SCPICmdWrite):
           to Time Trend plots.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:NAMe?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:NAMe?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:LABel:NAMe value``
           command.
 
@@ -728,6 +851,7 @@ class PlotPlotItemLabelName(SCPICmdWrite):
     ::
 
         - PLOT:PLOT<x>:LABel:NAMe <QString>
+        - PLOT:PLOT<x>:LABel:NAMe?
 
     **Info:**
         - ``<QString>`` is the label.
@@ -736,7 +860,7 @@ class PlotPlotItemLabelName(SCPICmdWrite):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class PlotPlotItemLabelFontUnderline(SCPICmdWrite):
+class PlotPlotItemLabelFontUnderline(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:LABel:FONT:UNDERline`` command.
 
     **Description:**
@@ -744,6 +868,9 @@ class PlotPlotItemLabelFontUnderline(SCPICmdWrite):
           command/query only applies to Time Trend plots.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:FONT:UNDERline?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:FONT:UNDERline?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``PLOT:PLOT<x>:LABel:FONT:UNDERline value`` command.
 
@@ -752,6 +879,7 @@ class PlotPlotItemLabelFontUnderline(SCPICmdWrite):
     ::
 
         - PLOT:PLOT<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+        - PLOT:PLOT<x>:LABel:FONT:UNDERline?
 
     **Info:**
         - ``<NR1>`` = 0 disables underline font; any other value turns this feature on.
@@ -760,7 +888,7 @@ class PlotPlotItemLabelFontUnderline(SCPICmdWrite):
     """
 
 
-class PlotPlotItemLabelFontType(SCPICmdWrite):
+class PlotPlotItemLabelFontType(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:LABel:FONT:TYPE`` command.
 
     **Description:**
@@ -768,6 +896,9 @@ class PlotPlotItemLabelFontType(SCPICmdWrite):
           Times New Roman. This command/query only applies to Time Trend plots.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:FONT:TYPE?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:FONT:TYPE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:LABel:FONT:TYPE value``
           command.
 
@@ -776,6 +907,7 @@ class PlotPlotItemLabelFontType(SCPICmdWrite):
     ::
 
         - PLOT:PLOT<x>:LABel:FONT:TYPE <QString>
+        - PLOT:PLOT<x>:LABel:FONT:TYPE?
 
     **Info:**
         - ``<QString>`` is the font type: Times New Roman, Arial, Frutiger LT Std 55 Roman, DejaVu
@@ -808,7 +940,7 @@ class PlotPlotItemLabelFontSize(SCPICmdWrite):
     """
 
 
-class PlotPlotItemLabelFontItalic(SCPICmdWrite):
+class PlotPlotItemLabelFontItalic(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:LABel:FONT:ITALic`` command.
 
     **Description:**
@@ -816,6 +948,9 @@ class PlotPlotItemLabelFontItalic(SCPICmdWrite):
           command/query only applies to Time Trend plots.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:FONT:ITALic?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:FONT:ITALic?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:LABel:FONT:ITALic value``
           command.
 
@@ -824,6 +959,7 @@ class PlotPlotItemLabelFontItalic(SCPICmdWrite):
     ::
 
         - PLOT:PLOT<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+        - PLOT:PLOT<x>:LABel:FONT:ITALic?
 
     **Info:**
         - ``<NR1>`` = 0 disables italic font; any other value turns this feature on.
@@ -832,7 +968,7 @@ class PlotPlotItemLabelFontItalic(SCPICmdWrite):
     """
 
 
-class PlotPlotItemLabelFontBold(SCPICmdWrite):
+class PlotPlotItemLabelFontBold(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:LABel:FONT:BOLD`` command.
 
     **Description:**
@@ -840,6 +976,9 @@ class PlotPlotItemLabelFontBold(SCPICmdWrite):
           command/query only applies to Time Trend plots.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:FONT:BOLD?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:FONT:BOLD?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:LABel:FONT:BOLD value``
           command.
 
@@ -848,6 +987,7 @@ class PlotPlotItemLabelFontBold(SCPICmdWrite):
     ::
 
         - PLOT:PLOT<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+        - PLOT:PLOT<x>:LABel:FONT:BOLD?
 
     **Info:**
         - ``<NR1>`` = 0 disables bold font; any other value turns this feature on.
@@ -889,6 +1029,9 @@ class PlotPlotItemLabelFont(SCPICmdRead):
               command/query only applies to Time Trend plots.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:FONT:BOLD?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:FONT:BOLD?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``PLOT:PLOT<x>:LABel:FONT:BOLD value`` command.
 
@@ -897,6 +1040,7 @@ class PlotPlotItemLabelFont(SCPICmdRead):
         ::
 
             - PLOT:PLOT<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+            - PLOT:PLOT<x>:LABel:FONT:BOLD?
 
         **Info:**
             - ``<NR1>`` = 0 disables bold font; any other value turns this feature on.
@@ -914,6 +1058,9 @@ class PlotPlotItemLabelFont(SCPICmdRead):
               command/query only applies to Time Trend plots.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:FONT:ITALic?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:FONT:ITALic?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``PLOT:PLOT<x>:LABel:FONT:ITALic value`` command.
 
@@ -922,6 +1069,7 @@ class PlotPlotItemLabelFont(SCPICmdRead):
         ::
 
             - PLOT:PLOT<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+            - PLOT:PLOT<x>:LABel:FONT:ITALic?
 
         **Info:**
             - ``<NR1>`` = 0 disables italic font; any other value turns this feature on.
@@ -962,6 +1110,9 @@ class PlotPlotItemLabelFont(SCPICmdRead):
               or Times New Roman. This command/query only applies to Time Trend plots.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:FONT:TYPE?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:FONT:TYPE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``PLOT:PLOT<x>:LABel:FONT:TYPE value`` command.
 
@@ -970,6 +1121,7 @@ class PlotPlotItemLabelFont(SCPICmdRead):
         ::
 
             - PLOT:PLOT<x>:LABel:FONT:TYPE <QString>
+            - PLOT:PLOT<x>:LABel:FONT:TYPE?
 
         **Info:**
             - ``<QString>`` is the font type: Times New Roman, Arial, Frutiger LT Std 55 Roman,
@@ -987,6 +1139,11 @@ class PlotPlotItemLabelFont(SCPICmdRead):
               command/query only applies to Time Trend plots.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:FONT:UNDERline?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``PLOT:PLOT<x>:LABel:FONT:UNDERline?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``PLOT:PLOT<x>:LABel:FONT:UNDERline value`` command.
 
@@ -995,6 +1152,7 @@ class PlotPlotItemLabelFont(SCPICmdRead):
         ::
 
             - PLOT:PLOT<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+            - PLOT:PLOT<x>:LABel:FONT:UNDERline?
 
         **Info:**
             - ``<NR1>`` = 0 disables underline font; any other value turns this feature on.
@@ -1004,7 +1162,7 @@ class PlotPlotItemLabelFont(SCPICmdRead):
         return self._underline
 
 
-class PlotPlotItemLabelColor(SCPICmdWrite):
+class PlotPlotItemLabelColor(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:LABel:COLor`` command.
 
     **Description:**
@@ -1012,6 +1170,9 @@ class PlotPlotItemLabelColor(SCPICmdWrite):
           only applies to Time Trend plots.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:COLor?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:COLor?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:LABel:COLor value``
           command.
 
@@ -1020,6 +1181,7 @@ class PlotPlotItemLabelColor(SCPICmdWrite):
     ::
 
         - PLOT:PLOT<x>:LABel:COLor <QString>
+        - PLOT:PLOT<x>:LABel:COLor?
 
     **Info:**
         - ``<QString>`` is the label color. The default color is specified by a quoted empty string,
@@ -1062,6 +1224,9 @@ class PlotPlotItemLabel(SCPICmdRead):
               command/query only applies to Time Trend plots.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:COLor?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:COLor?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:LABel:COLor value``
               command.
 
@@ -1070,6 +1235,7 @@ class PlotPlotItemLabel(SCPICmdRead):
         ::
 
             - PLOT:PLOT<x>:LABel:COLor <QString>
+            - PLOT:PLOT<x>:LABel:COLor?
 
         **Info:**
             - ``<QString>`` is the label color. The default color is specified by a quoted empty
@@ -1104,6 +1270,9 @@ class PlotPlotItemLabel(SCPICmdRead):
               applies to Time Trend plots.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:NAMe?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:NAMe?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:LABel:NAMe value``
               command.
 
@@ -1112,6 +1281,7 @@ class PlotPlotItemLabel(SCPICmdRead):
         ::
 
             - PLOT:PLOT<x>:LABel:NAMe <QString>
+            - PLOT:PLOT<x>:LABel:NAMe?
 
         **Info:**
             - ``<QString>`` is the label.
@@ -1127,6 +1297,9 @@ class PlotPlotItemLabel(SCPICmdRead):
               command/query only applies to Time Trend plots.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:XPOS?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:XPOS?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:LABel:XPOS value``
               command.
 
@@ -1135,6 +1308,7 @@ class PlotPlotItemLabel(SCPICmdRead):
         ::
 
             - PLOT:PLOT<x>:LABel:XPOS <NR3>
+            - PLOT:PLOT<x>:LABel:XPOS?
 
         **Info:**
             - ``<NR3>`` is the y-position, in pixels relative to the left edge of the display, of
@@ -1151,6 +1325,9 @@ class PlotPlotItemLabel(SCPICmdRead):
               command/query only applies to Time Trend plots.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:YPOS?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:YPOS?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:LABel:YPOS value``
               command.
 
@@ -1159,6 +1336,7 @@ class PlotPlotItemLabel(SCPICmdRead):
         ::
 
             - PLOT:PLOT<x>:LABel:YPOS <NR3>
+            - PLOT:PLOT<x>:LABel:YPOS?
 
         **Info:**
             - ``<NR3>`` is the x-position, in pixels relative to the baseline of the waveform, of
@@ -1167,13 +1345,43 @@ class PlotPlotItemLabel(SCPICmdRead):
         return self._ypos
 
 
-class PlotPlotItemImdaplotdisplay(SCPICmdWrite):
+class PlotPlotItemInterpolate(SCPICmdWrite, SCPICmdRead):
+    """The ``PLOT:PLOT<x>:INTerpolate`` command.
+
+    **Description:**
+        - This command turns on or off the interpolation state for SOA plot.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:INTerpolate?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:INTerpolate?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:INTerpolate value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - PLOT:PLOT<x>:INTerpolate {ON|OFF}
+        - PLOT:PLOT<x>:INTerpolate?
+
+    **Info:**
+        - ``PLOT<x>`` is the plot number.
+        - ``ON`` specifies the interpolation state has been turned on for SOA plot.
+        - ``OFF`` specifies the interpolation state has been turned off for SOA plot.
+    """
+
+
+class PlotPlotItemImdaplotdisplay(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:IMDAPLOTDisplay`` command.
 
     **Description:**
         - This command sets or returns the IMDA time trend and acq trend plot display configuration.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:IMDAPLOTDisplay?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:IMDAPLOTDisplay?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:IMDAPLOTDisplay value``
           command.
 
@@ -1182,6 +1390,7 @@ class PlotPlotItemImdaplotdisplay(SCPICmdWrite):
     ::
 
         - PLOT:PLOT<x>:IMDAPLOTDisplay {ALL |ONEPAIRVI |ONEPAIRV |ONEPAIRI |PHASEONE |PHASETWO |PHASETHREE |ABC |DQ0}
+        - PLOT:PLOT<x>:IMDAPLOTDisplay?
 
     **Info:**
         - ``PLOT<x>`` is the plot number.
@@ -1203,13 +1412,16 @@ class PlotPlotItemImdaplotdisplay(SCPICmdWrite):
     """  # noqa: E501
 
 
-class PlotPlotItemImdaMeas(SCPICmdWrite):
+class PlotPlotItemImdaMeas(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:IMDA:MEAS`` command.
 
     **Description:**
         - This command sets or returns the measurement selection of trend plot and acq trend plot.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:IMDA:MEAS?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:IMDA:MEAS?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:IMDA:MEAS value`` command.
 
     **SCPI Syntax:**
@@ -1217,6 +1429,7 @@ class PlotPlotItemImdaMeas(SCPICmdWrite):
     ::
 
         - PLOT:PLOT<x>:IMDA:MEAS {VRMS |IRMS |PHASE |FREQuency |TRPWR |REPWR |APPPWR |TRPWRSUM |REPWRSUM |APPPWRSUM |DCPWR |INPWR |OUTPWR |EFFiciency |TOTALEFFiciency |INPWRSUM |OUTPWRSUM}
+        - PLOT:PLOT<x>:IMDA:MEAS?
 
     **Info:**
         - ``PLOT<x>`` is the plot number.
@@ -1274,6 +1487,9 @@ class PlotPlotItemImda(SCPICmdRead):
               plot.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:IMDA:MEAS?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:IMDA:MEAS?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:IMDA:MEAS value``
               command.
 
@@ -1282,6 +1498,7 @@ class PlotPlotItemImda(SCPICmdRead):
         ::
 
             - PLOT:PLOT<x>:IMDA:MEAS {VRMS |IRMS |PHASE |FREQuency |TRPWR |REPWR |APPPWR |TRPWRSUM |REPWRSUM |APPPWRSUM |DCPWR |INPWR |OUTPWR |EFFiciency |TOTALEFFiciency |INPWRSUM |OUTPWRSUM}
+            - PLOT:PLOT<x>:IMDA:MEAS?
 
         **Info:**
             - ``PLOT<x>`` is the plot number.
@@ -1370,7 +1587,7 @@ class PlotPlotItemExportraw(SCPICmdRead):
     **Description:**
         - This command returns a binary stream of double values containing the x,y and hits value.
           Use this command along with ``MEASUREMENT:ADDMEAS TIE``, ``PLOT:PLOT1:TYPE EYEDIAGRAM``,
-          ``DISplay:SELect:VIEW`` plotview1 to export the eye diagram plot data.
+          ``DISplay:SELect:VIEW``  plotview1 to export the eye diagram plot data.
 
     **Usage:**
         - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:EXPORTRaw?`` query.
@@ -1382,6 +1599,33 @@ class PlotPlotItemExportraw(SCPICmdRead):
     ::
 
         - PLOT:PLOT<x>:EXPORTRaw?
+    """
+
+
+class PlotPlotItemEinterpolation(SCPICmdWrite, SCPICmdRead):
+    """The ``PLOT:PLOT<x>:EINTerpolation`` command.
+
+    **Description:**
+        - This command sets or queries whether dot mode eye diagram is enabled.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:EINTerpolation?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:EINTerpolation?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:EINTerpolation value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - PLOT:PLOT<x>:EINTerpolation {ON|OFF}
+        - PLOT:PLOT<x>:EINTerpolation?
+
+    **Info:**
+        - ``PLOT<x>`` is the plot number.
+        - ``ON`` enables interpolation between samples .
+        - ``OFF`` disables interpolation between samples .
     """
 
 
@@ -1550,11 +1794,13 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
     Properties:
         - ``.bathtub``: The ``PLOT:PLOT<x>:BATHtub`` command tree.
         - ``.bittype``: The ``PLOT:PLOT<x>:BITType`` command.
+        - ``.einterpolation``: The ``PLOT:PLOT<x>:EINTerpolation`` command.
         - ``.exportraw``: The ``PLOT:PLOT<x>:EXPORTRaw`` command.
         - ``.extenduis``: The ``PLOT:PLOT<x>:EXTENDuis`` command.
         - ``.eyerender``: The ``PLOT:PLOT<x>:EYERender`` command.
         - ``.imda``: The ``PLOT:PLOT<x>:IMDA`` command tree.
         - ``.imdaplotdisplay``: The ``PLOT:PLOT<x>:IMDAPLOTDisplay`` command.
+        - ``.interpolate``: The ``PLOT:PLOT<x>:INTerpolate`` command.
         - ``.label``: The ``PLOT:PLOT<x>:LABel`` command tree.
         - ``.mask``: The ``PLOT:PLOT<x>:MASK`` command.
         - ``.maskoffset``: The ``PLOT:PLOT<x>:MASKOffset`` command tree.
@@ -1564,6 +1810,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.railnum``: The ``PLOT:PLOT<x>:RAILNUM`` command.
         - ``.source1``: The ``PLOT:PLOT<x>:SOUrce1`` command.
         - ``.spectrum``: The ``PLOT:PLOT<x>:SPECtrum`` command tree.
+        - ``.tresponse``: The ``PLOT:PLOT<x>:TRESponse`` command tree.
         - ``.type``: The ``PLOT:PLOT<x>:TYPe`` command.
     """
 
@@ -1571,6 +1818,9 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._bathtub = PlotPlotItemBathtub(device, f"{self._cmd_syntax}:BATHtub")
         self._bittype = PlotPlotItemBittype(device, f"{self._cmd_syntax}:BITType")
+        self._einterpolation = PlotPlotItemEinterpolation(
+            device, f"{self._cmd_syntax}:EINTerpolation"
+        )
         self._exportraw = PlotPlotItemExportraw(device, f"{self._cmd_syntax}:EXPORTRaw")
         self._extenduis = PlotPlotItemExtenduis(device, f"{self._cmd_syntax}:EXTENDuis")
         self._eyerender = PlotPlotItemEyerender(device, f"{self._cmd_syntax}:EYERender")
@@ -1578,6 +1828,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._imdaplotdisplay = PlotPlotItemImdaplotdisplay(
             device, f"{self._cmd_syntax}:IMDAPLOTDisplay"
         )
+        self._interpolate = PlotPlotItemInterpolate(device, f"{self._cmd_syntax}:INTerpolate")
         self._label = PlotPlotItemLabel(device, f"{self._cmd_syntax}:LABel")
         self._mask = PlotPlotItemMask(device, f"{self._cmd_syntax}:MASK")
         self._maskoffset = PlotPlotItemMaskoffset(device, f"{self._cmd_syntax}:MASKOffset")
@@ -1587,6 +1838,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._railnum = PlotPlotItemRailnum(device, f"{self._cmd_syntax}:RAILNUM")
         self._source1 = PlotPlotItemSource1(device, f"{self._cmd_syntax}:SOUrce1")
         self._spectrum = PlotPlotItemSpectrum(device, f"{self._cmd_syntax}:SPECtrum")
+        self._tresponse = PlotPlotItemTresponse(device, f"{self._cmd_syntax}:TRESponse")
         self._type = PlotPlotItemType(device, f"{self._cmd_syntax}:TYPe")
 
     @property
@@ -1637,13 +1889,41 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._bittype
 
     @property
+    def einterpolation(self) -> PlotPlotItemEinterpolation:
+        """Return the ``PLOT:PLOT<x>:EINTerpolation`` command.
+
+        **Description:**
+            - This command sets or queries whether dot mode eye diagram is enabled.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:EINTerpolation?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:EINTerpolation?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:EINTerpolation value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - PLOT:PLOT<x>:EINTerpolation {ON|OFF}
+            - PLOT:PLOT<x>:EINTerpolation?
+
+        **Info:**
+            - ``PLOT<x>`` is the plot number.
+            - ``ON`` enables interpolation between samples .
+            - ``OFF`` disables interpolation between samples .
+        """
+        return self._einterpolation
+
+    @property
     def exportraw(self) -> PlotPlotItemExportraw:
         """Return the ``PLOT:PLOT<x>:EXPORTRaw`` command.
 
         **Description:**
             - This command returns a binary stream of double values containing the x,y and hits
               value. Use this command along with ``MEASUREMENT:ADDMEAS TIE``,
-              ``PLOT:PLOT1:TYPE EYEDIAGRAM``, ``DISplay:SELect:VIEW`` plotview1 to export the eye
+              ``PLOT:PLOT1:TYPE EYEDIAGRAM``, ``DISplay:SELect:VIEW``  plotview1 to export the eye
               diagram plot data.
 
         **Usage:**
@@ -1741,6 +2021,9 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               configuration.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:IMDAPLOTDisplay?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:IMDAPLOTDisplay?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``PLOT:PLOT<x>:IMDAPLOTDisplay value`` command.
 
@@ -1749,6 +2032,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         ::
 
             - PLOT:PLOT<x>:IMDAPLOTDisplay {ALL |ONEPAIRVI |ONEPAIRV |ONEPAIRI |PHASEONE |PHASETWO |PHASETHREE |ABC |DQ0}
+            - PLOT:PLOT<x>:IMDAPLOTDisplay?
 
         **Info:**
             - ``PLOT<x>`` is the plot number.
@@ -1769,6 +2053,34 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``DQ0`` sets the IMDA time trend plot display to DQ0.
         """  # noqa: E501
         return self._imdaplotdisplay
+
+    @property
+    def interpolate(self) -> PlotPlotItemInterpolate:
+        """Return the ``PLOT:PLOT<x>:INTerpolate`` command.
+
+        **Description:**
+            - This command turns on or off the interpolation state for SOA plot.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:INTerpolate?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:INTerpolate?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:INTerpolate value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - PLOT:PLOT<x>:INTerpolate {ON|OFF}
+            - PLOT:PLOT<x>:INTerpolate?
+
+        **Info:**
+            - ``PLOT<x>`` is the plot number.
+            - ``ON`` specifies the interpolation state has been turned on for SOA plot.
+            - ``OFF`` specifies the interpolation state has been turned off for SOA plot.
+        """
+        return self._interpolate
 
     @property
     def label(self) -> PlotPlotItemLabel:
@@ -1838,6 +2150,9 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - This command sets or queries the current histogram resolution.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:NUMBins?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:NUMBins?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:NUMBins value``
               command.
 
@@ -1846,6 +2161,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         ::
 
             - PLOT:PLOT<x>:NUMBins {TWENtyfive| FIFTY| HUNdred| TWOFifty| FIVEHundred| TWOThousand| MAXimum}
+            - PLOT:PLOT<x>:NUMBins?
 
         **Info:**
             - ``TWENtyfive`` sets the number of bins to 25.
@@ -1866,6 +2182,9 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - This command sets or returns the pulse region for recovery plot.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:PREGion?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:PREGion?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:PREGion value``
               command.
 
@@ -1874,6 +2193,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         ::
 
             - PLOT:PLOT<x>:PREGion {SELECTED|ALL}
+            - PLOT:PLOT<x>:PREGion?
 
         **Info:**
             - ``PLOT<x>`` is the plot number.
@@ -1890,6 +2210,9 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - This command sets or returns the phasor type of the phasor diagram plot.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:PTYPe?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:PTYPe?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:PTYPe value`` command.
 
         **SCPI Syntax:**
@@ -1897,6 +2220,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         ::
 
             - PLOT:PLOT<x>:PTYPe {RMS|MAGNITUDE}
+            - PLOT:PLOT<x>:PTYPe?
 
         **Info:**
             - ``PLOT<x>`` is the plot number.
@@ -1974,6 +2298,24 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._spectrum
 
     @property
+    def tresponse(self) -> PlotPlotItemTresponse:
+        """Return the ``PLOT:PLOT<x>:TRESponse`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:TRESponse?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:TRESponse?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+
+        **Info:**
+            - ``PLOT<x>`` sets the plot measurement number. This is the equivalent of the number
+              shown on a plot heading in the UI.
+
+        Sub-properties:
+            - ``.rtype``: The ``PLOT:PLOT<x>:TRESponse:RTYPe`` command.
+        """
+        return self._tresponse
+
+    @property
     def type(self) -> PlotPlotItemType:
         """Return the ``PLOT:PLOT<x>:TYPe`` command.
 
@@ -1987,7 +2329,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         ::
 
-            - PLOT:PLOT<x>:TYPe {NONE |BATHTUB |EYEDIAGRAM |HARMONICS |HISTOGRAM |IMDATIMETREND|IMDAACQTREND |INDUCTANCE |IVSINTEGRALV |MAGPROPERTY |PHASENOISE |PHASOR |RECOVERY |SOA |SPECTRUM |SSCPROFILE |SWL |TIEHISTOGRAM |TIETIMETREND |TIESPECTRUM |TIMETREND |XY |XYZ}
+            - PLOT:PLOT<x>:TYPe {NONE |BATHTUB |EYEDIAGRAM |HARMONICS |HISTOGRAM |IMDATIMETREND|IMDAACQTREND |INDUCTANCE |IVSINTEGRALV |MAGPROPERTY |PHASENOISE |PHASOR |RECOVERY |SOA |SPECTRUM |SSCPROFILE |SWL |TIEHISTOGRAM |TIETIMETREND |TIESPECTRUM |TIMETREND |TRESPONSE |XY |XYZ}
 
         **Info:**
             - ``<x>`` is the plot number. This is the equivalent of the number shown on a plot
@@ -2015,6 +2357,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``TIESPECTRUM`` creates a TIE spectrum plot.
             - ``TIETIMETREND`` creates a TIE time trend plot.
             - ``TIMETREND`` creates a time trend plot.
+            - ``TRESPONSE`` creates a response plot.
             - ``XY`` creates a XY plot.
             - ``XYZ`` creates a XYZ plot.
         """  # noqa: E501
@@ -2186,11 +2529,13 @@ class Plot(SCPICmdRead):
         Sub-properties:
             - ``.bathtub``: The ``PLOT:PLOT<x>:BATHtub`` command tree.
             - ``.bittype``: The ``PLOT:PLOT<x>:BITType`` command.
+            - ``.einterpolation``: The ``PLOT:PLOT<x>:EINTerpolation`` command.
             - ``.exportraw``: The ``PLOT:PLOT<x>:EXPORTRaw`` command.
             - ``.extenduis``: The ``PLOT:PLOT<x>:EXTENDuis`` command.
             - ``.eyerender``: The ``PLOT:PLOT<x>:EYERender`` command.
             - ``.imda``: The ``PLOT:PLOT<x>:IMDA`` command tree.
             - ``.imdaplotdisplay``: The ``PLOT:PLOT<x>:IMDAPLOTDisplay`` command.
+            - ``.interpolate``: The ``PLOT:PLOT<x>:INTerpolate`` command.
             - ``.label``: The ``PLOT:PLOT<x>:LABel`` command tree.
             - ``.mask``: The ``PLOT:PLOT<x>:MASK`` command.
             - ``.maskoffset``: The ``PLOT:PLOT<x>:MASKOffset`` command tree.
@@ -2200,6 +2545,7 @@ class Plot(SCPICmdRead):
             - ``.railnum``: The ``PLOT:PLOT<x>:RAILNUM`` command.
             - ``.source1``: The ``PLOT:PLOT<x>:SOUrce1`` command.
             - ``.spectrum``: The ``PLOT:PLOT<x>:SPECtrum`` command tree.
+            - ``.tresponse``: The ``PLOT:PLOT<x>:TRESponse`` command tree.
             - ``.type``: The ``PLOT:PLOT<x>:TYPe`` command.
         """
         return self._plot

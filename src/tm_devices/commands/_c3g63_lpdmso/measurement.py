@@ -13,11 +13,11 @@ Commands and Queries:
 
 ::
 
-    - MEASUrement:ADDMEAS {ACCOMMONMODE |ACPR |ACRMS |AMPlITUDE |AREA |BASE |BITAMPLITUDE |BITHIGH |BITLOW |BURSTWIDTH |CCJITTER |COMMONMODE |CPOWER |DATARATE |DCD |DDJ |DDRAOS |DDRAOSPERTCK |DDRAOSPERUI |DDRAUS |DDRAUSPERTCK |DDRAUSPERUI |DDRHOLDDIFF |DDRSETUPDIFF |DDRTCHABS |DDRTCHAVERAGE |DDRTCKAVERAGE |DDRTCLABS |DDRTCLAVERAGE |DDRTERRMN |DDRTERRN |DDRTJITCC |DDRTJITDUTY |DDRTJITPER |DDRTPST |DDRTRPRE |DDRTWPRE |DDRVIXAC |DDRTDQSCK |DELAY |DJ |DJDIRAC |EYEHIGH |EYELOW |FALLSLEWRATE |FALLTIME |FREQUENCY |F2 |F4 |F8 |HEIGHT |HEIGHTBER |HIGH |HIGHTIME |HOLD |IMDAANGLE |IMDADIRECTION |IMDADQ0 |IMDAEFFICIENCY |IMDAHARMONICS |IMDAMECHPWR |IMDAPOWERQUALITY |IMDASPEED |IMDASYSEFF |IMDATORQUE |JITTERSUMMARY |J2 |J9 |LOW |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUty |NOVERSHOOT |NPERIOD |NPJ |NWIDTH |OBW |PDUTY |PERIOD |PHASE |PHASENOISE |PJ |PK2Pk |POVERSHOOT |PWIDTH |QFACTOR |RISESLEWRATE |RISETIME |RJ |RJDIRAC |RMS |SETUP |SKEW |SRJ |SSCFREQDEV |SSCMODRATE |TIE |TIMEOUTSIDELEVEL |TIMETOMAX |TIMETOMIN |TJBER |TNTRATIO |TOP |UNITINTERVAL |VDIFFXOVR |WBGDDT |WBGDIODEDDT |WBGEOFF |WBGEON |WBGERR |WBGIPEAK |WBGIRRM |WBGQRR |WBGTDOFF |WBGTDON |WBGTF |WBGTON |WBGTOFF |WBGTR |WBGTRR |WBGVPEAK |WIDTH |WIDTHBER}
+    - MEASUrement:ADDMEAS {ACCOMMONMODE |ACPR |ACRMS |AMPlITUDE |AREA |BASE |BITAMPLITUDE |BITHIGH |BITLOW |BURSTWIDTH |CCJITTER |COMMONMODE |CPOWER |DATARATE |DCD |DDJ |DDRAOS |DDRAOSPERTCK |DDRAOSPERUI |DDRAUS |DDRAUSPERTCK |DDRAUSPERUI |DDRHOLDDIFF |DDRSETUPDIFF |DDRTCHABS |DDRTCHAVERAGE |DDRTCKAVERAGE |DDRTCLABS |DDRTCLAVERAGE |DDRTERRMN |DDRTERRN |DDRTJITCC |DDRTJITDUTY |DDRTJITPER |DDRTPST |DDRTRPRE |DDRTWPRE |DDRVIXAC |DDRTDQSCK |DELAY |DJ |DJDIRAC |DPMPSIJ |EYEHIGH |EYELOW |FALLSLEWRATE |FALLTIME |FREQUENCY |F2 |F4 |F8 |HEIGHT |HEIGHTBER |HIGH |HIGHTIME |HOLD |IMDAANGLE |IMDADIRECTION |IMDADQ0 |IMDAEFFICIENCY |IMDAHARMONICS |IMDAMECHPWR |IMDAPOWERQUALITY |IMDASPEED |IMDASYSEFF |IMDATORQUE |JITTERSUMMARY |J2 |J9 |LOW |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUty |NOVERSHOOT |NPERIOD |NPJ |NWIDTH |OBW |PDUTY |PERIOD |PHASE |PHASENOISE |PJ |PK2Pk |POVERSHOOT |PWIDTH |QFACTOR |RISESLEWRATE |RISETIME |RJ |RJDIRAC |RMS |SETUP |SKEW |SRJ |SSCFREQDEV |SSCMODRATE |TIE |TIMEOUTSIDELEVEL |TIMETOMAX |TIMETOMIN |TJBER |TNTRATIO |TOP |UNITINTERVAL |VDIFFXOVR |WBGDDT |WBGDIODEDDT |WBGEOFF |WBGEON |WBGERR |WBGIPEAK |WBGIRRM |WBGQOSS |WBGQRR |WBGTDOFF |WBGTDON |WBGTF |WBGTON |WBGTOFF |WBGTR |WBGTRR |WBGVPEAK |WIDTH |WIDTHBER}
     - MEASUrement:ADDNew 'QString'
     - MEASUrement:ANNOTate {OFF|AUTO}
     - MEASUrement:ANNOTate?
-    - MEASUrement:AUTOset {EXECute |THREEPHASEAUTOset |WBGPREset}
+    - MEASUrement:AUTOset {DPMAutoset |DPMPReset |EXECute |THREEPHASEAUTOset |WBGDeskewexec |WBGPREset |WBGGSTIM}
     - MEASUrement:CH<x>:REFLevels:ABSolute:FALLHigh <NR3>
     - MEASUrement:CH<x>:REFLevels:ABSolute:FALLHigh?
     - MEASUrement:CH<x>:REFLevels:ABSolute:FALLLow <NR3>
@@ -86,11 +86,14 @@ Commands and Queries:
     - MEASUrement:CLOCKRecovery:NOMINALOFFset?
     - MEASUrement:CLOCKRecovery:STAndard {CUSTom| ENET100| FW1394BS400B| FW1394BS800B| FW1394BS1600B| FBD1| FBD2| FBD3| FC133| FC266| FC531| FC1063| FC2125| FC4250| FC8500| ENET1000| IBA2500| IBA_GEN2| OC1| OC3| OC12| OC48| PCIE_GEN1| PCIE_GEN2| PCIE_GEN3| RIO125| RIO250| RIO3125| SAS15_NOSSC| SAS3_NOSSC| SAS6_NOSSC| SAS12_NOSSC| SAS15_SSC| SAS3_SSC| SAS6_SSC| SAS12_SSC| SATA_GEN1| SATA_GEN2| SATA_GEN3| USB3| XAUI| XAUI_GEN2}
     - MEASUrement:CLOCKRecovery:STAndard?
+    - MEASUrement:CLOCKRecovery:TDCOMPensation {1|0}
+    - MEASUrement:CLOCKRecovery:TDCOMPensation?
     - MEASUrement:DELETEALL
     - MEASUrement:DELete <QString>
     - MEASUrement:DIRacmodel {PCIExpress|FIBREchannel}
     - MEASUrement:DIRacmodel?
     - MEASUrement:DISPLAYUnits {SEConds|UNITINtervals}
+    - MEASUrement:DISPLAYUnits?
     - MEASUrement:EDGE<x> {RISE|FALL|BOTH}
     - MEASUrement:EYERENDER {<NR1>|OFF|ON}
     - MEASUrement:EYERENDER?
@@ -146,7 +149,7 @@ Commands and Queries:
     - MEASUrement:HIGHLEVel:OUTLOWPass:SPEC?
     - MEASUrement:HIGHLEVel:OUTSOURCE {CH<x>|MATH<x>|REF<x>}
     - MEASUrement:HIGHLEVel:OUTSOURCE?
-    - MEASUrement:HIGHLEVel:OUTWIRing {P1W2V1I1|P1W3V2I2|P3W3V2I2|P3W3V3I3|P3W4|DCP1W2}
+    - MEASUrement:HIGHLEVel:OUTWIRing {P1W2V1I1|P3W3V2I2|P3W3V3I3|P3W4|DCP1W2}
     - MEASUrement:HIGHLEVel:OUTWIRing?
     - MEASUrement:HIGHLEVel:SOURCE {CH<x>|MATH<x>|REF<x>}
     - MEASUrement:HIGHLEVel:SOURCE?
@@ -201,12 +204,16 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:ABANdwidth?
     - MEASUrement:MEAS<x>:ACHANnels <NR3>
     - MEASUrement:MEAS<x>:ACHANnels?
+    - MEASUrement:MEAS<x>:AMEThod {PARAmetric|HISTogram}
+    - MEASUrement:MEAS<x>:AMEThod?
     - MEASUrement:MEAS<x>:BER <NR3>
     - MEASUrement:MEAS<x>:BER:TARGETBER <NR3>
     - MEASUrement:MEAS<x>:BER:TARGETBER?
     - MEASUrement:MEAS<x>:BER?
     - MEASUrement:MEAS<x>:BIN <NR3>
     - MEASUrement:MEAS<x>:BIN?
+    - MEASUrement:MEAS<x>:BITAbsolute <NR3>
+    - MEASUrement:MEAS<x>:BITAbsolute?
     - MEASUrement:MEAS<x>:BITCfgmode {MEAN|MODE}
     - MEASUrement:MEAS<x>:BITCfgmode?
     - MEASUrement:MEAS<x>:BITEnd <NR3>
@@ -219,6 +226,8 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:BITType?
     - MEASUrement:MEAS<x>:BURSTEDGTYPe {RISE|FALL}
     - MEASUrement:MEAS<x>:BURSTEDGTYPe?
+    - MEASUrement:MEAS<x>:BVOLTage <NR3>
+    - MEASUrement:MEAS<x>:BVOLTage?
     - MEASUrement:MEAS<x>:CCRESUlts:ALLAcqs:MAXimum?
     - MEASUrement:MEAS<x>:CCRESUlts:ALLAcqs:MEAN?
     - MEASUrement:MEAS<x>:CCRESUlts:ALLAcqs:MINimum?
@@ -263,6 +272,8 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:CLOCKRecovery:NOMINALOFFset:SELECTIONtype?
     - MEASUrement:MEAS<x>:CLOCKRecovery:NOMINALOFFset?
     - MEASUrement:MEAS<x>:CLOCKRecovery:STAndard {CUSTom| ENET100|FW1394BS400B|FW1394BS800B|FW1394BS1600B|FBD1| FBD2|FBD3|FC133|FC266|FC531|FC1063|FC2125|FC4250| FC8500|ENET1000|IBA2500|IBA_GEN2|OC1|OC3|OC12|OC48| PCIE_GEN1|PCIE_GEN2|PCIE_GEN3|RIO125|RIO250|RIO3125| SAS15_NOSSC|SAS3_NOSSC|SAS6_NOSSC|SAS12_NOSSC|SAS15_SSC| SAS3_SSC|SAS6_SSC|SAS12_SSC|SATA_GEN1|SATA_GEN2| SATA_GEN3|USB3|XAUI|XAUI_GEN2}
+    - MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation {0|1}
+    - MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation?
     - MEASUrement:MEAS<x>:COMMONMode:FILTers:STATE {OFF|ON|0|1}
     - MEASUrement:MEAS<x>:COMMONMode:FILTers:STATE?
     - MEASUrement:MEAS<x>:COMMONMode:SOURCEs {SINGLE|DOUBLE}
@@ -275,7 +286,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:CSPACing?
     - MEASUrement:MEAS<x>:CUSTOMLIMITSFile <Qstring>
     - MEASUrement:MEAS<x>:CUSTOMLIMITSFile?
-    - MEASUrement:MEAS<x>:CYCLemode {RECORD|CYCLE}
+    - MEASUrement:MEAS<x>:CYCLemode {RECORD|CYCLE|ROTATION}
     - MEASUrement:MEAS<x>:CYCLemode?
     - MEASUrement:MEAS<x>:DBDown <NR3>
     - MEASUrement:MEAS<x>:DBDown?
@@ -308,6 +319,14 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:EDGES:UPPERFREQuency?
     - MEASUrement:MEAS<x>:EEQUal {ON|OFF}
     - MEASUrement:MEAS<x>:EEQUal?
+    - MEASUrement:MEAS<x>:EINDuctance <NR3>
+    - MEASUrement:MEAS<x>:EINDuctance?
+    - MEASUrement:MEAS<x>:EINTerpolation {ON|OFF}
+    - MEASUrement:MEAS<x>:EINTerpolation?
+    - MEASUrement:MEAS<x>:EXTENDuis <NR1>
+    - MEASUrement:MEAS<x>:EXTENDuis?
+    - MEASUrement:MEAS<x>:EYERender {FAst|COMPlete}
+    - MEASUrement:MEAS<x>:EYERender?
     - MEASUrement:MEAS<x>:FAILCount?
     - MEASUrement:MEAS<x>:FILTERRANGEFROM <NR3>
     - MEASUrement:MEAS<x>:FILTERRANGEFROM?
@@ -327,6 +346,8 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:FILTers:LOWPass:SPEC?
     - MEASUrement:MEAS<x>:FILTers:RAMPtime <NR3>
     - MEASUrement:MEAS<x>:FILTers:RAMPtime?
+    - MEASUrement:MEAS<x>:FORDer <NR3>
+    - MEASUrement:MEAS<x>:FORDer?
     - MEASUrement:MEAS<x>:FPARAmeter <NR3>
     - MEASUrement:MEAS<x>:FPARAmeter?
     - MEASUrement:MEAS<x>:FREQ <NR3>
@@ -371,7 +392,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:HARMONICSCLass?
     - MEASUrement:MEAS<x>:HARMONICSSOURce {CURRENT|VOLTAGE}
     - MEASUrement:MEAS<x>:HARMONICSSOURce?
-    - MEASUrement:MEAS<x>:HARMONICSStd {NONE|IEC|IEEE519|CUSTOM}
+    - MEASUrement:MEAS<x>:HARMONICSStd {NONE| IEC| IEEE519| CUSTOM| REVIEEE5192022}
     - MEASUrement:MEAS<x>:HARMONICSStd?
     - MEASUrement:MEAS<x>:HARMONICSUNits {LOGARITHM|LINEAR}
     - MEASUrement:MEAS<x>:HARMONICSUNits?
@@ -503,6 +524,8 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:PCOUNt <NR3>
     - MEASUrement:MEAS<x>:PCOUNt?
     - MEASUrement:MEAS<x>:PERFREQ:EDGE {FIRST|RISE|FALL}
+    - MEASUrement:MEAS<x>:PFREquency <NR3>
+    - MEASUrement:MEAS<x>:PFREquency?
     - MEASUrement:MEAS<x>:POLarity {NORMal|INVerted}
     - MEASUrement:MEAS<x>:POLarity?
     - MEASUrement:MEAS<x>:POPUlation:GLOBal {OFF|ON|0|1}
@@ -517,6 +540,10 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:POWERFACtor?
     - MEASUrement:MEAS<x>:PREGion {FPULse|SPULse|MPULse}
     - MEASUrement:MEAS<x>:PREGion?
+    - MEASUrement:MEAS<x>:PRESistance <NR3>
+    - MEASUrement:MEAS<x>:PRESistance?
+    - MEASUrement:MEAS<x>:PTHReshold <NR3>
+    - MEASUrement:MEAS<x>:PTHReshold?
     - MEASUrement:MEAS<x>:PWIDth <NR3>
     - MEASUrement:MEAS<x>:PWIDth?
     - MEASUrement:MEAS<x>:REDGe {ON|OFF}
@@ -581,8 +608,12 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:RESUlts:HISTory:PK2PK?
     - MEASUrement:MEAS<x>:RESUlts:HISTory:POPUlation?
     - MEASUrement:MEAS<x>:RESUlts:HISTory:STDDev?
+    - MEASUrement:MEAS<x>:RFREquency <NR3>
+    - MEASUrement:MEAS<x>:RFREquency?
     - MEASUrement:MEAS<x>:RIPPLEFREQ<x>Val <NR3>
     - MEASUrement:MEAS<x>:RIPPLEFREQ<x>Val?
+    - MEASUrement:MEAS<x>:RRANGE <NR3>
+    - MEASUrement:MEAS<x>:RRANGE?
     - MEASUrement:MEAS<x>:SEQuence {ABC|ACB}
     - MEASUrement:MEAS<x>:SEQuence?
     - MEASUrement:MEAS<x>:SIGNALFREQUEncy {AUTO|FIFTYHZ|SIXTYHZ|FOURHUNDREDHZ|CUSTOM}
@@ -618,6 +649,18 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:STSDirection?
     - MEASUrement:MEAS<x>:STYPe {VOLTage|CURRent}
     - MEASUrement:MEAS<x>:STYPe?
+    - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MAXimum? <Qstring>
+    - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MEAN? <Qstring>
+    - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MINimum? <Qstring>
+    - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:PK2PK? <Qstring>
+    - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:POPUlation? <Qstring>
+    - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:STDDev? <Qstring>
+    - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MAXimum? <Qstring>
+    - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MEAN? <Qstring>
+    - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MINimum? <Qstring>
+    - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:PK2PK? <Qstring>
+    - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:POPUlation? <Qstring>
+    - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:STDDev? <Qstring>
     - MEASUrement:MEAS<x>:SUNits {RPM|HZ}
     - MEASUrement:MEAS<x>:SUNits?
     - MEASUrement:MEAS<x>:TCKAVG <NR3>
@@ -626,6 +669,8 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:TCONstant?
     - MEASUrement:MEAS<x>:TIMINGMode {EACHCLOCKCYCLE|TWOCLOCKCYCLES}
     - MEASUrement:MEAS<x>:TIMINGMode?
+    - MEASUrement:MEAS<x>:TLEVel {PERCent|ABSolute}
+    - MEASUrement:MEAS<x>:TLEVel?
     - MEASUrement:MEAS<x>:TMEThod {SENSOR|CURRENT}
     - MEASUrement:MEAS<x>:TMEThod?
     - MEASUrement:MEAS<x>:TOEDGESEARCHDIRect {FORWard|BACKWard}
@@ -643,10 +688,34 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:TOSYmbol:MEASUREAT {Start|Stop|ClockEdge}
     - MEASUrement:MEAS<x>:TOSYmbol:MEASUREAT?
     - MEASUrement:MEAS<x>:TRANSition {<NR1>|OFF|ON}
-    - MEASUrement:MEAS<x>:TYPe {ACCOMMONMODE |ACPR |ACRMS |AMPlITUDE |AREA |BASE |BITAMPLITUDE |BITHIGH | BITLOW |BURSTWIDTH |COMMONMODE |CPOWER |DATARATE |DCD |DDJ |DDRAOS |DDRAOSPERTCK |DDRAOSPERUI |DDRAUS |DDRAUSPERTCK |DDRAUSPERUI |DDRHOLDDIFF |DDRSETUPDIFF |DDRTCHABS |DDRTCHAVERAGE |DDRTCKAVERAGE |DDRTCLABS |DDRTCLAVERAGE |DDRTERRMN |DDRTERRN |DDRTJITCC |DDRTJITDUTY |DDRTJITPER |DDRTPST |DDRTRPRE |DDRTWPRE |DDRVIXAC |DDRTDQSCK |DELAY |DJ |DJDIRAC |DPMOVERSHOOT |DPMUNDERSHOOT |DPMRIPPLE |DPMTURNOFFTIME |DPMTURNONTIME |EYEHIGH |EYELOW |FALLSLEWRATE |FALLTIME |FREQUENCY |F2 |F4 |F8 |HIGH |HEIGHT |HEIGHTBER |HIGHTIME |HOLD |IMDAANGLE |IMDADIRECTION |IMDADQ0 |IMDAEFFICIENCY |IMDAHARMONICS |IMDAMECHPWR |IMDAPOWERQUALITY |IMDASPEED |IMDASYSEFF |IMDATORQUE |JITTERSUMMARY |J2 |J9 |LOW |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUtY |NPERIOD |NPJ |NOVERSHOOT |NWIDTH |OBW |PDUTTY |PERIOD |PHASE |PHASENOISE |PJ |PK2Pk |POVERSHOOT |PWIDTH |QFACTOR |RISESLEWRATE |RISETIME |RJ |RJDIRAC |RMS |SRJ |SSCFREQDEV |SSCMODRATE |SETUP |SKEW |TIE |TIMEOUTSIDELEVEL |TJBER |TNTRATIO |TOP |UNITINTERVAL |VDIFFXOVR |WBGDDT |WBGDIODEDDT |WBGEOFF |WBGEON |WBGERR |WBGIPEAK |WBGIRRM |WBGQRR |WBGTDOFF |WBGTDON |WBGTF |WBGTON |WBGTOFF |WBGTR |WBGTRR |WBGVPEAK |WIDTH |WIDTHBER}
+    - MEASUrement:MEAS<x>:TYPe {ACCOMMONMODE |ACPR |ACRMS |AMPlITUDE |AREA |BASE |BITAMPLITUDE |BITHIGH | BITLOW |BURSTWIDTH |COMMONMODE |CPOWER |DATARATE |DCD |DDJ |DDRAOS |DDRAOSPERTCK |DDRAOSPERUI |DDRAUS |DDRAUSPERTCK |DDRAUSPERUI |DDRHOLDDIFF |DDRSETUPDIFF |DDRTCHABS |DDRTCHAVERAGE |DDRTCKAVERAGE |DDRTCLABS |DDRTCLAVERAGE |DDRTERRMN |DDRTERRN |DDRTJITCC |DDRTJITDUTY |DDRTJITPER |DDRTPST |DDRTRPRE |DDRTWPRE |DDRVIXAC |DDRTDQSCK |DELAY |DJ |DJDIRAC |DPMOVERSHOOT |DPMPSIJ |DPMUNDERSHOOT |DPMRIPPLE |DPMTURNOFFTIME |DPMTURNONTIME |EYEHIGH |EYELOW |FALLSLEWRATE |FALLTIME |FREQUENCY |F2 |F4 |F8 |HIGH |HEIGHT |HEIGHTBER |HIGHTIME |HOLD |IMDAANGLE |IMDADIRECTION |IMDADQ0 |IMDAEFFICIENCY |IMDAHARMONICS |IMDAMECHPWR |IMDAPOWERQUALITY |IMDASPEED |IMDASYSEFF |IMDATORQUE |JITTERSUMMARY |J2 |J9 |LOW |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUtY |NPERIOD |NPJ |NOVERSHOOT |NWIDTH |OBW |PDUTTY |PERIOD |PHASE |PHASENOISE |PJ |PK2Pk |POVERSHOOT |PWIDTH |QFACTOR |RISESLEWRATE |RISETIME |RJ |RJDIRAC |RMS |SRJ |SSCFREQDEV |SSCMODRATE |SETUP |SKEW |TIE |TIMEOUTSIDELEVEL |TJBER |TNTRATIO |TOP |UNITINTERVAL |VDIFFXOVR |WBGDDT |WBGDIODEDDT |WBGEOFF |WBGEON |WBGERR |WBGIPEAK |WBGIRRM |WBGQOSS |WBGQRR |WBGTDOFF |WBGTDON |WBGTF |WBGTON |WBGTOFF |WBGTR |WBGTRR |WBGVPEAK |WIDTH |WIDTHBER}
     - MEASUrement:MEAS<x>:TYPe?
+    - MEASUrement:MEAS<x>:VLEVel {PERCent|ABSolute}
+    - MEASUrement:MEAS<x>:VLEVel?
     - MEASUrement:MEAS<x>:WAITTime <NR2>
     - MEASUrement:MEAS<x>:WAITTime?
+    - MEASUrement:MEAS<x>:WBG:AFGSetup {CONNECT|RUN}
+    - MEASUrement:MEAS<x>:WBG:AFGaddress <QString>
+    - MEASUrement:MEAS<x>:WBG:AFGaddress?
+    - MEASUrement:MEAS<x>:WBG:CSTatus?
+    - MEASUrement:MEAS<x>:WBG:GTYPe {AFG31000|OTHER}
+    - MEASUrement:MEAS<x>:WBG:GTYPe?
+    - MEASUrement:MEAS<x>:WBG:HIGH <NR3>
+    - MEASUrement:MEAS<x>:WBG:HIGH?
+    - MEASUrement:MEAS<x>:WBG:LOAD {FIFTY|HIGHZ}
+    - MEASUrement:MEAS<x>:WBG:LOAD?
+    - MEASUrement:MEAS<x>:WBG:LOW <NR3>
+    - MEASUrement:MEAS<x>:WBG:LOW?
+    - MEASUrement:MEAS<x>:WBG:NPULs <NR1>
+    - MEASUrement:MEAS<x>:WBG:NPULs?
+    - MEASUrement:MEAS<x>:WBG:PG<x>Val <NR3>
+    - MEASUrement:MEAS<x>:WBG:PG<x>Val?
+    - MEASUrement:MEAS<x>:WBG:PW<x>Val <NR3>
+    - MEASUrement:MEAS<x>:WBG:PW<x>Val?
+    - MEASUrement:MEAS<x>:WBG:TIMer <NR3>
+    - MEASUrement:MEAS<x>:WBG:TIMer?
+    - MEASUrement:MEAS<x>:WIDTh <NR1>
+    - MEASUrement:MEAS<x>:WIDTh?
     - MEASUrement:MEAS<x>:WINDOWLENgth <NR3>
     - MEASUrement:MEAS<x>:WINDOWLENgth?
     - MEASUrement:MEAS<x>:XUNIT?
@@ -769,6 +838,7 @@ from typing import Dict, Optional, TYPE_CHECKING
 from .._helpers import (
     DefaultDictPassKeyToFactory,
     SCPICmdRead,
+    SCPICmdReadWithArguments,
     SCPICmdWrite,
     SCPICmdWriteNoArguments,
     ValidatedChannel,
@@ -1161,7 +1231,7 @@ class MeasurementReflevelsPercentRisemid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevels:PERCent:RISEMid`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the mid reference level of the rising edge when the measurement's
           ref level method is set to percent.
 
@@ -1190,7 +1260,7 @@ class MeasurementReflevelsPercentRiselow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevels:PERCent:RISELow`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the low reference level of the rising edge when the measurement's
           ref level method is set to percent.
 
@@ -1219,7 +1289,7 @@ class MeasurementReflevelsPercentRisehigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevels:PERCent:RISEHigh`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the high reference level of the rising edge when the measurement's
           ref level method is set to percent.
 
@@ -1248,7 +1318,7 @@ class MeasurementReflevelsPercentHysteresis(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevels:PERCent:HYSTeresis`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to MAX and 0% is equal to
+        - This command sets or queries the percentage (where 100% is equal to MAX and 1% is equal to
           MIN) used to calculate the hysteresis of the reference level when the measurement's ref
           level method is set to percent.
 
@@ -1277,7 +1347,7 @@ class MeasurementReflevelsPercentFallmid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevels:PERCent:FALLMid`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the mid reference level of the falling edge when the measurement's
           ref level method is set to percent.
 
@@ -1306,7 +1376,7 @@ class MeasurementReflevelsPercentFalllow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevels:PERCent:FALLLow`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the mid reference level of the falling edge when the measurement's
           ref level method is set to percent.
 
@@ -1335,7 +1405,7 @@ class MeasurementReflevelsPercentFallhigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevels:PERCent:FALLHigh`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the high reference level of the falling edge when the
           measurement's ref level method is set to percent.
 
@@ -1399,8 +1469,8 @@ class MeasurementReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REFLevels:PERCent:FALLHigh`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the high reference level of the falling edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the high reference level of the falling edge when the
               measurement's ref level method is set to percent.
 
         **Usage:**
@@ -1430,8 +1500,8 @@ class MeasurementReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REFLevels:PERCent:FALLLow`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the mid reference level of the falling edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the mid reference level of the falling edge when the
               measurement's ref level method is set to percent.
 
         **Usage:**
@@ -1461,8 +1531,8 @@ class MeasurementReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REFLevels:PERCent:FALLMid`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the mid reference level of the falling edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the mid reference level of the falling edge when the
               measurement's ref level method is set to percent.
 
         **Usage:**
@@ -1492,7 +1562,7 @@ class MeasurementReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REFLevels:PERCent:HYSTeresis`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to MAX and 0% is
+            - This command sets or queries the percentage (where 100% is equal to MAX and 1% is
               equal to MIN) used to calculate the hysteresis of the reference level when the
               measurement's ref level method is set to percent.
 
@@ -1522,8 +1592,8 @@ class MeasurementReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REFLevels:PERCent:RISEHigh`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the high reference level of the rising edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the high reference level of the rising edge when the
               measurement's ref level method is set to percent.
 
         **Usage:**
@@ -1553,8 +1623,8 @@ class MeasurementReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REFLevels:PERCent:RISELow`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the low reference level of the rising edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the low reference level of the rising edge when the
               measurement's ref level method is set to percent.
 
         **Usage:**
@@ -1584,8 +1654,8 @@ class MeasurementReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REFLevels:PERCent:RISEMid`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the mid reference level of the rising edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the mid reference level of the rising edge when the
               measurement's ref level method is set to percent.
 
         **Usage:**
@@ -2513,7 +2583,7 @@ class MeasurementRefItemReflevelsPercentRisemid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REF<x>:REFLevels:PERCent:RISEMid`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the mid reference level of the rising edge when the measurement's
           ref level method is set to percent.
 
@@ -2542,7 +2612,7 @@ class MeasurementRefItemReflevelsPercentRiselow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REF<x>:REFLevels:PERCent:RISELow`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the low reference level of the rising edge when the measurement's
           ref level method is set to percent.
 
@@ -2571,7 +2641,7 @@ class MeasurementRefItemReflevelsPercentRisehigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REF<x>:REFLevels:PERCent:RISEHigh`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the high reference level of the rising edge when the measurement's
           ref level method is set to percent.
 
@@ -2600,7 +2670,7 @@ class MeasurementRefItemReflevelsPercentHysteresis(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REF<x>:REFLevels:PERCent:HYSTeresis`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to MAX and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to MAX and 1% is equal to
           MIN) used to calculate the hysteresis of the reference level when the measurement's ref
           level method is set to percent.
 
@@ -2629,7 +2699,7 @@ class MeasurementRefItemReflevelsPercentFallmid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REF<x>:REFLevels:PERCent:FALLMid`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the mid reference level of the falling edge when the measurement's
           ref level method is set to percent.
 
@@ -2658,7 +2728,7 @@ class MeasurementRefItemReflevelsPercentFalllow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REF<x>:REFLevels:PERCent:FALLLow`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the low reference level of the falling edge when the measurement's
           ref level method is set to percent.
 
@@ -2687,7 +2757,7 @@ class MeasurementRefItemReflevelsPercentFallhigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REF<x>:REFLevels:PERCent:FALLHigh`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the high reference level of the falling edge when the
           measurement's ref level method is set to percent.
 
@@ -2765,8 +2835,8 @@ class MeasurementRefItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REF<x>:REFLevels:PERCent:FALLHigh`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the high reference level of the falling edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the high reference level of the falling edge when the
               measurement's ref level method is set to percent.
 
         **Usage:**
@@ -2796,8 +2866,8 @@ class MeasurementRefItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REF<x>:REFLevels:PERCent:FALLLow`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the low reference level of the falling edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the low reference level of the falling edge when the
               measurement's ref level method is set to percent.
 
         **Usage:**
@@ -2826,8 +2896,8 @@ class MeasurementRefItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REF<x>:REFLevels:PERCent:FALLMid`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the mid reference level of the falling edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the mid reference level of the falling edge when the
               measurement's ref level method is set to percent.
 
         **Usage:**
@@ -2857,9 +2927,9 @@ class MeasurementRefItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REF<x>:REFLevels:PERCent:HYSTeresis`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to MAX and 0% is
-              equal to MIN) used to calculate the hysteresis of the reference level when the
-              measurement's ref level method is set to percent.
+            - This command sets or queries the percentage (where 99% is equal to MAX and 1% is equal
+              to MIN) used to calculate the hysteresis of the reference level when the measurement's
+              ref level method is set to percent.
 
         **Usage:**
             - Using the ``.query()`` method will send the
@@ -2887,8 +2957,8 @@ class MeasurementRefItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REF<x>:REFLevels:PERCent:RISEHigh`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the high reference level of the rising edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the high reference level of the rising edge when the
               measurement's ref level method is set to percent.
 
         **Usage:**
@@ -2918,8 +2988,8 @@ class MeasurementRefItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REF<x>:REFLevels:PERCent:RISELow`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the low reference level of the rising edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the low reference level of the rising edge when the
               measurement's ref level method is set to percent.
 
         **Usage:**
@@ -2949,8 +3019,8 @@ class MeasurementRefItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REF<x>:REFLevels:PERCent:RISEMid`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the mid reference level of the rising edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the mid reference level of the rising edge when the
               measurement's ref level method is set to percent.
 
         **Usage:**
@@ -4615,6 +4685,672 @@ class MeasurementMeasItemWindowlength(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class MeasurementMeasItemWidth(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:WIDTh`` command.
+
+    **Description:**
+        - This command sets or queries the histogram width in terms of percentage.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WIDTh?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WIDTh?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:WIDTh value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:WIDTh <NR1>
+        - MEASUrement:MEAS<x>:WIDTh?
+
+    **Info:**
+        - ``MEAS<x>`` is the measurement number.
+        - ``<NR1>`` is the value for the width.
+    """
+
+
+class MeasurementMeasItemWbgTimer(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:WBG:TIMer`` command.
+
+    **Description:**
+        - This command sets or returns the trigger interval of AFG for WBG measurements.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:TIMer?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:TIMer?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:TIMer value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:WBG:TIMer <NR3>
+        - MEASUrement:MEAS<x>:WBG:TIMer?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR3>`` specifies the trigger interval of AFG for WBG measurements.
+    """
+
+
+class MeasurementMeasItemWbgPwvalItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:WBG:PW<x>Val`` command.
+
+    **Description:**
+        - This command sets or returns the pulse width of AFG for WBG measurements.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:PW<x>Val?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:PW<x>Val?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``MEASUrement:MEAS<x>:WBG:PW<x>Val value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:WBG:PW<x>Val <NR3>
+        - MEASUrement:MEAS<x>:WBG:PW<x>Val?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``PW<x>`` specifies the pulse width number. The valid values are 1 to 8.
+        - ``<NR3>`` specifies the pulse width of AFG for WBG measurements.
+    """
+
+
+class MeasurementMeasItemWbgPgvalItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:WBG:PG<x>Val`` command.
+
+    **Description:**
+        - This command sets or returns the pulse gap of AFG for WBG measurements.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:PG<x>Val?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:PG<x>Val?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``MEASUrement:MEAS<x>:WBG:PG<x>Val value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:WBG:PG<x>Val <NR3>
+        - MEASUrement:MEAS<x>:WBG:PG<x>Val?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``PG<x>`` specifies the number of pulse. The valid values are 1 to 8.
+        - ``<NR3>`` specifies the pulse gap of AFG for WBG measurements.
+    """
+
+
+class MeasurementMeasItemWbgNpuls(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:WBG:NPULs`` command.
+
+    **Description:**
+        - This command sets or returns the number of pulse of AFG for WBG measurements.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:NPULs?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:NPULs?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:NPULs value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:WBG:NPULs <NR1>
+        - MEASUrement:MEAS<x>:WBG:NPULs?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR1>`` specifies the number of pulse of AFG to generate pulse signal for WBG
+          measurements.
+    """
+
+
+class MeasurementMeasItemWbgLow(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:WBG:LOW`` command.
+
+    **Description:**
+        - This command sets or returns the low voltage value of AFG for WBG measurements.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:LOW?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:LOW?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:LOW value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:WBG:LOW <NR3>
+        - MEASUrement:MEAS<x>:WBG:LOW?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR3>`` specifies the low voltage of AFG for WBG measurements.
+    """
+
+
+class MeasurementMeasItemWbgLoad(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:WBG:LOAD`` command.
+
+    **Description:**
+        - This command sets or returns the load type of AFG for WBG measurements.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:LOAD?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:LOAD?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:LOAD value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:WBG:LOAD {FIFTY|HIGHZ}
+        - MEASUrement:MEAS<x>:WBG:LOAD?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``FIFTY`` specifies the load type of AFG as Fifty for WBG measurements.
+        - ``HIGHZ`` specifies the load type of AFG as High Z for WBG measurements.
+    """
+
+
+class MeasurementMeasItemWbgHigh(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:WBG:HIGH`` command.
+
+    **Description:**
+        - This command sets or returns the high voltage value of AFG for WBG measurements.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:HIGH?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:HIGH?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:HIGH value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:WBG:HIGH <NR3>
+        - MEASUrement:MEAS<x>:WBG:HIGH?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR3>`` specifies the high voltage of AFG for WBG measurements.
+    """
+
+
+class MeasurementMeasItemWbgGtype(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:WBG:GTYPe`` command.
+
+    **Description:**
+        - This command sets or returns the generator type for WBG measurements.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:GTYPe?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:GTYPe?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:GTYPe value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:WBG:GTYPe {AFG31000|OTHER}
+        - MEASUrement:MEAS<x>:WBG:GTYPe?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``AFG31000`` specifies the generator type for WBG measurement as AFG31000.
+        - ``OTHER`` specifies the generator type for WBG measurement as OTHER.
+    """
+
+
+class MeasurementMeasItemWbgCstatus(SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:WBG:CSTatus`` command.
+
+    **Description:**
+        - This command queries the AFG test connection status.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:CSTatus?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:CSTatus?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:WBG:CSTatus?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+    """
+
+
+class MeasurementMeasItemWbgAfgaddress(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:WBG:AFGaddress`` command.
+
+    **Description:**
+        - This command sets or returns the AFG address of external AFG connected for WBG
+          measurement.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:AFGaddress?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:AFGaddress?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``MEASUrement:MEAS<x>:WBG:AFGaddress value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:WBG:AFGaddress <QString>
+        - MEASUrement:MEAS<x>:WBG:AFGaddress?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<QString>`` specifies the AFG IP address to connect external AFG for WBG measurements.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class MeasurementMeasItemWbgAfgsetup(SCPICmdWrite):
+    """The ``MEASUrement:MEAS<x>:WBG:AFGSetup`` command.
+
+    **Description:**
+        - This command executes AFG test connection or once AFG connection succeeded, Run will setup
+          configuration on connected AFG.
+
+    **Usage:**
+        - Using the ``.write(value)`` method will send the
+          ``MEASUrement:MEAS<x>:WBG:AFGSetup value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:WBG:AFGSetup {CONNECT|RUN}
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``CONNECT`` executes AFG test connection.
+        - ``RUN`` will setup AFG configuration.
+    """
+
+
+#  pylint: disable=too-many-instance-attributes
+class MeasurementMeasItemWbg(SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:WBG`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+
+    Properties:
+        - ``.afgsetup``: The ``MEASUrement:MEAS<x>:WBG:AFGSetup`` command.
+        - ``.afgaddress``: The ``MEASUrement:MEAS<x>:WBG:AFGaddress`` command.
+        - ``.cstatus``: The ``MEASUrement:MEAS<x>:WBG:CSTatus`` command.
+        - ``.gtype``: The ``MEASUrement:MEAS<x>:WBG:GTYPe`` command.
+        - ``.high``: The ``MEASUrement:MEAS<x>:WBG:HIGH`` command.
+        - ``.load``: The ``MEASUrement:MEAS<x>:WBG:LOAD`` command.
+        - ``.low``: The ``MEASUrement:MEAS<x>:WBG:LOW`` command.
+        - ``.npuls``: The ``MEASUrement:MEAS<x>:WBG:NPULs`` command.
+        - ``.pgval``: The ``MEASUrement:MEAS<x>:WBG:PG<x>Val`` command.
+        - ``.pwval``: The ``MEASUrement:MEAS<x>:WBG:PW<x>Val`` command.
+        - ``.timer``: The ``MEASUrement:MEAS<x>:WBG:TIMer`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._afgsetup = MeasurementMeasItemWbgAfgsetup(device, f"{self._cmd_syntax}:AFGSetup")
+        self._afgaddress = MeasurementMeasItemWbgAfgaddress(
+            device, f"{self._cmd_syntax}:AFGaddress"
+        )
+        self._cstatus = MeasurementMeasItemWbgCstatus(device, f"{self._cmd_syntax}:CSTatus")
+        self._gtype = MeasurementMeasItemWbgGtype(device, f"{self._cmd_syntax}:GTYPe")
+        self._high = MeasurementMeasItemWbgHigh(device, f"{self._cmd_syntax}:HIGH")
+        self._load = MeasurementMeasItemWbgLoad(device, f"{self._cmd_syntax}:LOAD")
+        self._low = MeasurementMeasItemWbgLow(device, f"{self._cmd_syntax}:LOW")
+        self._npuls = MeasurementMeasItemWbgNpuls(device, f"{self._cmd_syntax}:NPULs")
+        self._pgval: Dict[int, MeasurementMeasItemWbgPgvalItem] = DefaultDictPassKeyToFactory(
+            lambda x: MeasurementMeasItemWbgPgvalItem(device, f"{self._cmd_syntax}:PG{x}Val")
+        )
+        self._pwval: Dict[int, MeasurementMeasItemWbgPwvalItem] = DefaultDictPassKeyToFactory(
+            lambda x: MeasurementMeasItemWbgPwvalItem(device, f"{self._cmd_syntax}:PW{x}Val")
+        )
+        self._timer = MeasurementMeasItemWbgTimer(device, f"{self._cmd_syntax}:TIMer")
+
+    @property
+    def afgsetup(self) -> MeasurementMeasItemWbgAfgsetup:
+        """Return the ``MEASUrement:MEAS<x>:WBG:AFGSetup`` command.
+
+        **Description:**
+            - This command executes AFG test connection or once AFG connection succeeded, Run will
+              setup configuration on connected AFG.
+
+        **Usage:**
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:WBG:AFGSetup value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:WBG:AFGSetup {CONNECT|RUN}
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``CONNECT`` executes AFG test connection.
+            - ``RUN`` will setup AFG configuration.
+        """
+        return self._afgsetup
+
+    @property
+    def afgaddress(self) -> MeasurementMeasItemWbgAfgaddress:
+        """Return the ``MEASUrement:MEAS<x>:WBG:AFGaddress`` command.
+
+        **Description:**
+            - This command sets or returns the AFG address of external AFG connected for WBG
+              measurement.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:AFGaddress?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MEASUrement:MEAS<x>:WBG:AFGaddress?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:WBG:AFGaddress value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:WBG:AFGaddress <QString>
+            - MEASUrement:MEAS<x>:WBG:AFGaddress?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<QString>`` specifies the AFG IP address to connect external AFG for WBG
+              measurements.
+        """
+        return self._afgaddress
+
+    @property
+    def cstatus(self) -> MeasurementMeasItemWbgCstatus:
+        """Return the ``MEASUrement:MEAS<x>:WBG:CSTatus`` command.
+
+        **Description:**
+            - This command queries the AFG test connection status.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:CSTatus?``
+              query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:CSTatus?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:WBG:CSTatus?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+        """
+        return self._cstatus
+
+    @property
+    def gtype(self) -> MeasurementMeasItemWbgGtype:
+        """Return the ``MEASUrement:MEAS<x>:WBG:GTYPe`` command.
+
+        **Description:**
+            - This command sets or returns the generator type for WBG measurements.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:GTYPe?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:GTYPe?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:WBG:GTYPe value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:WBG:GTYPe {AFG31000|OTHER}
+            - MEASUrement:MEAS<x>:WBG:GTYPe?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``AFG31000`` specifies the generator type for WBG measurement as AFG31000.
+            - ``OTHER`` specifies the generator type for WBG measurement as OTHER.
+        """
+        return self._gtype
+
+    @property
+    def high(self) -> MeasurementMeasItemWbgHigh:
+        """Return the ``MEASUrement:MEAS<x>:WBG:HIGH`` command.
+
+        **Description:**
+            - This command sets or returns the high voltage value of AFG for WBG measurements.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:HIGH?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:HIGH?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:WBG:HIGH value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:WBG:HIGH <NR3>
+            - MEASUrement:MEAS<x>:WBG:HIGH?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR3>`` specifies the high voltage of AFG for WBG measurements.
+        """
+        return self._high
+
+    @property
+    def load(self) -> MeasurementMeasItemWbgLoad:
+        """Return the ``MEASUrement:MEAS<x>:WBG:LOAD`` command.
+
+        **Description:**
+            - This command sets or returns the load type of AFG for WBG measurements.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:LOAD?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:LOAD?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:WBG:LOAD value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:WBG:LOAD {FIFTY|HIGHZ}
+            - MEASUrement:MEAS<x>:WBG:LOAD?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``FIFTY`` specifies the load type of AFG as Fifty for WBG measurements.
+            - ``HIGHZ`` specifies the load type of AFG as High Z for WBG measurements.
+        """
+        return self._load
+
+    @property
+    def low(self) -> MeasurementMeasItemWbgLow:
+        """Return the ``MEASUrement:MEAS<x>:WBG:LOW`` command.
+
+        **Description:**
+            - This command sets or returns the low voltage value of AFG for WBG measurements.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:LOW?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:LOW?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:LOW value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:WBG:LOW <NR3>
+            - MEASUrement:MEAS<x>:WBG:LOW?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR3>`` specifies the low voltage of AFG for WBG measurements.
+        """
+        return self._low
+
+    @property
+    def npuls(self) -> MeasurementMeasItemWbgNpuls:
+        """Return the ``MEASUrement:MEAS<x>:WBG:NPULs`` command.
+
+        **Description:**
+            - This command sets or returns the number of pulse of AFG for WBG measurements.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:NPULs?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:NPULs?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:WBG:NPULs value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:WBG:NPULs <NR1>
+            - MEASUrement:MEAS<x>:WBG:NPULs?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR1>`` specifies the number of pulse of AFG to generate pulse signal for WBG
+              measurements.
+        """
+        return self._npuls
+
+    @property
+    def pgval(self) -> Dict[int, MeasurementMeasItemWbgPgvalItem]:
+        """Return the ``MEASUrement:MEAS<x>:WBG:PG<x>Val`` command.
+
+        **Description:**
+            - This command sets or returns the pulse gap of AFG for WBG measurements.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:PG<x>Val?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MEASUrement:MEAS<x>:WBG:PG<x>Val?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:WBG:PG<x>Val value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:WBG:PG<x>Val <NR3>
+            - MEASUrement:MEAS<x>:WBG:PG<x>Val?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``PG<x>`` specifies the number of pulse. The valid values are 1 to 8.
+            - ``<NR3>`` specifies the pulse gap of AFG for WBG measurements.
+        """
+        return self._pgval
+
+    @property
+    def pwval(self) -> Dict[int, MeasurementMeasItemWbgPwvalItem]:
+        """Return the ``MEASUrement:MEAS<x>:WBG:PW<x>Val`` command.
+
+        **Description:**
+            - This command sets or returns the pulse width of AFG for WBG measurements.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:PW<x>Val?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MEASUrement:MEAS<x>:WBG:PW<x>Val?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:WBG:PW<x>Val value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:WBG:PW<x>Val <NR3>
+            - MEASUrement:MEAS<x>:WBG:PW<x>Val?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``PW<x>`` specifies the pulse width number. The valid values are 1 to 8.
+            - ``<NR3>`` specifies the pulse width of AFG for WBG measurements.
+        """
+        return self._pwval
+
+    @property
+    def timer(self) -> MeasurementMeasItemWbgTimer:
+        """Return the ``MEASUrement:MEAS<x>:WBG:TIMer`` command.
+
+        **Description:**
+            - This command sets or returns the trigger interval of AFG for WBG measurements.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG:TIMer?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG:TIMer?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:WBG:TIMer value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:WBG:TIMer <NR3>
+            - MEASUrement:MEAS<x>:WBG:TIMer?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR3>`` specifies the trigger interval of AFG for WBG measurements.
+        """
+        return self._timer
+
+
 class MeasurementMeasItemWaittime(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:WAITTime`` command.
 
@@ -4641,6 +5377,34 @@ class MeasurementMeasItemWaittime(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class MeasurementMeasItemVlevel(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:VLEVel`` command.
+
+    **Description:**
+        - This command sets or queries whether histogram center is percentage relative to unit
+          interval or an absolute value for eye width measurement.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:VLEVel?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:VLEVel?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:VLEVel value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:VLEVel {PERCent|ABSolute}
+        - MEASUrement:MEAS<x>:VLEVel?
+
+    **Info:**
+        - ``MEAS<x>`` is the measurement number.
+        - ``PERCent`` sets the histogram center as a percentage relative to unit interval.
+        - ``ABSolute`` sets the histogram center as an absolute value.
+    """
+
+
 class MeasurementMeasItemType(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:TYPe`` command.
 
@@ -4658,7 +5422,7 @@ class MeasurementMeasItemType(SCPICmdWrite, SCPICmdRead):
 
     ::
 
-        - MEASUrement:MEAS<x>:TYPe {ACCOMMONMODE |ACPR |ACRMS |AMPlITUDE |AREA |BASE |BITAMPLITUDE |BITHIGH | BITLOW |BURSTWIDTH |COMMONMODE |CPOWER |DATARATE |DCD |DDJ |DDRAOS |DDRAOSPERTCK |DDRAOSPERUI |DDRAUS |DDRAUSPERTCK |DDRAUSPERUI |DDRHOLDDIFF |DDRSETUPDIFF |DDRTCHABS |DDRTCHAVERAGE |DDRTCKAVERAGE |DDRTCLABS |DDRTCLAVERAGE |DDRTERRMN |DDRTERRN |DDRTJITCC |DDRTJITDUTY |DDRTJITPER |DDRTPST |DDRTRPRE |DDRTWPRE |DDRVIXAC |DDRTDQSCK |DELAY |DJ |DJDIRAC |DPMOVERSHOOT |DPMUNDERSHOOT |DPMRIPPLE |DPMTURNOFFTIME |DPMTURNONTIME |EYEHIGH |EYELOW |FALLSLEWRATE |FALLTIME |FREQUENCY |F2 |F4 |F8 |HIGH |HEIGHT |HEIGHTBER |HIGHTIME |HOLD |IMDAANGLE |IMDADIRECTION |IMDADQ0 |IMDAEFFICIENCY |IMDAHARMONICS |IMDAMECHPWR |IMDAPOWERQUALITY |IMDASPEED |IMDASYSEFF |IMDATORQUE |JITTERSUMMARY |J2 |J9 |LOW |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUtY |NPERIOD |NPJ |NOVERSHOOT |NWIDTH |OBW |PDUTTY |PERIOD |PHASE |PHASENOISE |PJ |PK2Pk |POVERSHOOT |PWIDTH |QFACTOR |RISESLEWRATE |RISETIME |RJ |RJDIRAC |RMS |SRJ |SSCFREQDEV |SSCMODRATE |SETUP |SKEW |TIE |TIMEOUTSIDELEVEL |TJBER |TNTRATIO |TOP |UNITINTERVAL |VDIFFXOVR |WBGDDT |WBGDIODEDDT |WBGEOFF |WBGEON |WBGERR |WBGIPEAK |WBGIRRM |WBGQRR |WBGTDOFF |WBGTDON |WBGTF |WBGTON |WBGTOFF |WBGTR |WBGTRR |WBGVPEAK |WIDTH |WIDTHBER}
+        - MEASUrement:MEAS<x>:TYPe {ACCOMMONMODE |ACPR |ACRMS |AMPlITUDE |AREA |BASE |BITAMPLITUDE |BITHIGH | BITLOW |BURSTWIDTH |COMMONMODE |CPOWER |DATARATE |DCD |DDJ |DDRAOS |DDRAOSPERTCK |DDRAOSPERUI |DDRAUS |DDRAUSPERTCK |DDRAUSPERUI |DDRHOLDDIFF |DDRSETUPDIFF |DDRTCHABS |DDRTCHAVERAGE |DDRTCKAVERAGE |DDRTCLABS |DDRTCLAVERAGE |DDRTERRMN |DDRTERRN |DDRTJITCC |DDRTJITDUTY |DDRTJITPER |DDRTPST |DDRTRPRE |DDRTWPRE |DDRVIXAC |DDRTDQSCK |DELAY |DJ |DJDIRAC |DPMOVERSHOOT |DPMPSIJ |DPMUNDERSHOOT |DPMRIPPLE |DPMTURNOFFTIME |DPMTURNONTIME |EYEHIGH |EYELOW |FALLSLEWRATE |FALLTIME |FREQUENCY |F2 |F4 |F8 |HIGH |HEIGHT |HEIGHTBER |HIGHTIME |HOLD |IMDAANGLE |IMDADIRECTION |IMDADQ0 |IMDAEFFICIENCY |IMDAHARMONICS |IMDAMECHPWR |IMDAPOWERQUALITY |IMDASPEED |IMDASYSEFF |IMDATORQUE |JITTERSUMMARY |J2 |J9 |LOW |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUtY |NPERIOD |NPJ |NOVERSHOOT |NWIDTH |OBW |PDUTTY |PERIOD |PHASE |PHASENOISE |PJ |PK2Pk |POVERSHOOT |PWIDTH |QFACTOR |RISESLEWRATE |RISETIME |RJ |RJDIRAC |RMS |SRJ |SSCFREQDEV |SSCMODRATE |SETUP |SKEW |TIE |TIMEOUTSIDELEVEL |TJBER |TNTRATIO |TOP |UNITINTERVAL |VDIFFXOVR |WBGDDT |WBGDIODEDDT |WBGEOFF |WBGEON |WBGERR |WBGIPEAK |WBGIRRM |WBGQOSS |WBGQRR |WBGTDOFF |WBGTDON |WBGTF |WBGTON |WBGTOFF |WBGTR |WBGTRR |WBGVPEAK |WIDTH |WIDTHBER}
         - MEASUrement:MEAS<x>:TYPe?
 
     **Info:**
@@ -4673,7 +5437,6 @@ class MeasurementMeasItemType(SCPICmdWrite, SCPICmdRead):
           measurement can be made across the entire record, or on each cycle in the record.
         - ``AMPLITUDE`` is the difference between the Top value and the Base value. This measurement
           can be made across the entire record, or on each cycle in the record.
-        - ``Amplitude = High - Low``
         - ``AREA`` is the area under the curve, calculated by integrating the data points. The area
           measured above ground is positive. The area measured below ground is negative. This
           measurement can be made across the entire record, or on each cycle in the record.
@@ -4788,6 +5551,8 @@ class MeasurementMeasItemType(SCPICmdWrite, SCPICmdRead):
         - ``DPMOVERSHOOT`` is the difference between Maximum and Top, divided by the amplitude. This
           measurement can be made across the entire record or on each cycle in the record at the
           specified reference voltage.
+        - ``DPMPSIJ`` is the Power Supply Induced Jitter. This measurement helps in suppressing the
+          jitter in high speed signals (victim) induced from power rail signals (aggressor).
         - ``DPMUNDERSHOOT`` is the difference between Minimum and Base, divided by the amplitude.
           This measurement can be made across the entire record or on each cycle in the record at
           the specified reference voltage.
@@ -4885,7 +5650,6 @@ class MeasurementMeasItemType(SCPICmdWrite, SCPICmdRead):
           record, or on each cycle in the record.
         - ``NDUty`` (Negative Duty Cycle) is the ratio of the Negative Pulse Width to the Period.
           This measurement is made on each cycle in the record.
-        - ``Negative Duty Cycle = (Negative Width) / Period × 100%``
         - ``NPERIOD`` (Duration N-Periods) is the time required to complete N cycles. A cycle is the
           time between two adjacent (same direction) crossings of the Mid reference level (RM). This
           measurement is made on each cycle in the record.
@@ -4896,7 +5660,6 @@ class MeasurementMeasItemType(SCPICmdWrite, SCPICmdRead):
         - ``NOVershoot`` (Negative Overshoot) is the difference between Minimum and Base, divided by
           the Amplitude. This measurement can be made across the entire record, or on each cycle in
           the record.
-        - ``Negative Overshoot = (Base - Minimum) / Amplitude × 100%)``
         - ``NWIdth`` (Negative Pulse Width) is the time the signal remains below the Mid reference
           level (RM). This measurement is made on each cycle in the record.
         - ``OBW`` (Occupied Bandwidth) refers to the bandwidth, including energy of a certain
@@ -4904,7 +5667,6 @@ class MeasurementMeasItemType(SCPICmdWrite, SCPICmdRead):
           channel as the center.
         - ``PDUTY`` (Positive Duty Cycle) is the ratio of the Positive Pulse Width to the Period.
           This measurement is made on each cycle in the record.
-        - ``Positive Duty Cycle = (Positive Width)/Period × 100%``
         - ``PERIOD`` is the time required to complete a cycle. A cycle is the time between two
           adjacent (same direction) crossings of the Mid reference level (RM). This measurement is
           made on each cycle in the record.
@@ -4922,7 +5684,6 @@ class MeasurementMeasItemType(SCPICmdWrite, SCPICmdRead):
         - ``POVERSHOOT`` (Positive Overshoot) is the difference between Maximum and Top, divided by
           the Amplitude. This measurement can be made across the entire record, or on each cycle in
           the record.
-        - ``Positive Overshoot = (Maximum - Top) / Amplitude ×100%``
         - ``PWIDTH`` (Positive Pulse Width) is the time the signal remains above the Mid reference
           level (RM). This measurement is made on each cycle in the record.
         - ``QFACTOR`` (Q-Factor) is the ratio of the vertical eye opening to RMS vertical noise
@@ -5000,6 +5761,8 @@ class MeasurementMeasItemType(SCPICmdWrite, SCPICmdRead):
           Requires a WBG-DPT License.
         - ``WBGIRRM`` (Irrm) measures the maximum current dissipated in the Power Device in the
           reverse recovery region. Requires a WBG-DPT License.
+        - ``WBGQOSS`` (Qoss) is the charge that must be supplied to the output capacitance of the
+          power device during a specified time interval. Requires a WBG-DPT License.
         - ``WBGQRR`` (Qrr) measures the reverse recovery charge in the Power Device using the
           configured levels. Requires a WBG-DPT License.
         - ``WBGTDOFF`` (Td(off)) measures the turn off delay time of the Power Device in the off
@@ -5488,6 +6251,34 @@ class MeasurementMeasItemTmethod(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class MeasurementMeasItemTlevel(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:TLEVel`` command.
+
+    **Description:**
+        - This command sets or queries whether histogram center is percentage relative to unit
+          amplitude or an absolute value, for eye height measurement.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:TLEVel?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:TLEVel?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:TLEVel value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:TLEVel {PERCent|ABSolute}
+        - MEASUrement:MEAS<x>:TLEVel?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``PERCent`` sets the histogram center as a percentage relative to unit amplitude.
+        - ``ABSolute`` sets the histogram center as an absolute value.
+    """
+
+
 class MeasurementMeasItemTimingmode(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:TIMINGMode`` command.
 
@@ -5594,6 +6385,1035 @@ class MeasurementMeasItemSunits(SCPICmdWrite, SCPICmdRead):
         - ``RPM`` defines the speed measurement units as RPM.
         - ``HZ`` defines the speed measurement units as HZ.
     """
+
+
+class MeasurementMeasItemSubgroupResultsCurrentacqStddev(SCPICmdReadWithArguments):
+    r"""The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:STDDev`` command.
+
+    **Description:**
+        - This query returns the standard deviation value of the measurement specified by the
+          string, for the current acquisition.
+
+    **Usage:**
+        - Using the ``.query(argument)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:STDDev? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:STDDev? argument`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:STDDev? <Qstring>
+
+    **Info:**
+        - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\| OUTPUT6\|OUTPUT7\|
+          RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK \|RAIL1RMS
+          \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL \|RAIL3FREQUENCY
+          \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK \|RAIL4RMS
+          \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL \|RAIL6FREQUENCY
+          \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT \|RAIL7DPMUNDERSHOOT
+          \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+    """
+
+
+class MeasurementMeasItemSubgroupResultsCurrentacqPopulation(SCPICmdReadWithArguments):
+    r"""The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:POPUlation`` command.
+
+    **Description:**
+        - This query returns the population value of the measurement specified by the string, for
+          the current acquisition.
+
+    **Usage:**
+        - Using the ``.query(argument)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:POPUlation? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:POPUlation? argument`` query and raise
+          an AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:POPUlation? <Qstring>
+
+    **Info:**
+        - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\| OUTPUT6\|OUTPUT7\|
+          RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK \|RAIL1RMS
+          \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL \|RAIL3FREQUENCY
+          \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK \|RAIL4RMS
+          \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL \|RAIL6FREQUENCY
+          \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT \|RAIL7DPMUNDERSHOOT
+          \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+    """
+
+
+class MeasurementMeasItemSubgroupResultsCurrentacqPk2pk(SCPICmdReadWithArguments):
+    r"""The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:PK2PK`` command.
+
+    **Description:**
+        - This query returns the peak-to-peak value of the measurement specified by the string, for
+          the current acquisition.
+
+    **Usage:**
+        - Using the ``.query(argument)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:PK2PK? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:PK2PK? argument`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:PK2PK? <Qstring>
+
+    **Info:**
+        - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\| OUTPUT6\|OUTPUT7\|
+          RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK \|RAIL1RMS
+          \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL \|RAIL3FREQUENCY
+          \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK \|RAIL4RMS
+          \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL \|RAIL6FREQUENCY
+          \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT \|RAIL7DPMUNDERSHOOT
+          \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+    """
+
+
+class MeasurementMeasItemSubgroupResultsCurrentacqMinimum(SCPICmdReadWithArguments):
+    r"""The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MINimum`` command.
+
+    **Description:**
+        - This query returns the minimum value of the measurement specified by the string, for the
+          current acquisition.
+
+    **Usage:**
+        - Using the ``.query(argument)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MINimum? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MINimum? argument`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MINimum? <Qstring>
+
+    **Info:**
+        - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\| OUTPUT6\|OUTPUT7\|
+          RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK \|RAIL1RMS
+          \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL \|RAIL3FREQUENCY
+          \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK \|RAIL4RMS
+          \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL \|RAIL6FREQUENCY
+          \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT \|RAIL7DPMUNDERSHOOT
+          \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL \|SPEED \|ACCELERATION \|DIRECTION
+          \|ANGLE \|TORQUE \|POWER \|ELECPWR \|MECHPWR \|SYSTEMEFFICIENCY \|EON \|EOFF \|TDON
+          \|TDOFF \|startlevel \|stoplevel \|TRR \|QRR \|TA \|TB \|RSF \|VPEAK \|IPEAK \|TR \|ERR
+          \|TF \|TON \|TOFF \|IRRM \|DBYDT \|fft \|tiespectra \|subspectra \|beforetie \|beforepj
+          \|beforeeyeheight \|beforeeyewidth \|reconst \|aftertie \|afterpj \|aftereyeheight
+          \|aftereyewidth \|freq \|qoss \|PH1TDD \|PH2TDD \|PH3TDD.
+    """
+
+
+class MeasurementMeasItemSubgroupResultsCurrentacqMean(SCPICmdReadWithArguments):
+    r"""The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MEAN`` command.
+
+    **Description:**
+        - This query returns the mean value of the measurement specified by the string, for the
+          current acquisition.
+
+    **Usage:**
+        - Using the ``.query(argument)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MEAN? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MEAN? argument`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MEAN? <Qstring>
+
+    **Info:**
+        - ``<Qstring>`` = INPUT \|OUTPUT1 \|OUTPUT2 \|OUTPUT3 \|OUTPUT4 \|OUTPUT5 \|OUTPUT6
+          \|OUTPUT7 \|RAIL1DPMOVERSHOOT \|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK
+          \|RAIL1RMS \|RAIL1RMSFULL \|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL
+          \|RAIL3FREQUENCY \|RAIL3PK2PK \|RAIL3RMS \|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK
+          \|RAIL4RMS \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK \|RAIL5RMS \|RAIL5RMSFULL
+          \|RAIL6FREQUENCY \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT
+          \|RAIL7DPMUNDERSHOOT \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL \|L2LPH1VRMS
+          \|L2LPH1VCFactor \|L2LPH1TruePwr \|L2LPH1RePwr \|L2LPH1AppPwr \|L2LPH1PwrFactor
+          \|L2LPH1PhaseDiff \|L2LPH1VPhase \|L2LPH2VRMS \|L2LPH2VCFactor \|L2LPH2TruePwr
+          \|L2LPH2RePwr \|L2LPH2AppPwr \|L2LPH2PwrFactor \|L2LPH2PhaseDiff \|L2LPH2VPhase
+          \|L2LPH3VRMS \|L2LPH3VCFactor \|L2LPH3TruePwr \|L2LPH3RePwr \|L2LPH3AppPwr
+          \|L2LPH3PwrFactor \|L2LPH3PhaseDiff \|L2LPH3VPhase \|L2NPH1VRMS \|L2NPH1VCFactor
+          \|L2NPH1TruePwr \|L2NPH1RePwr \|L2NPH1AppPwr \|L2NPH1PwrFactor \|L2NPH1PhaseDiff
+          \|L2NPH1VPhase \|L2NPH2VRMS \|L2NPH2VCFactor \|L2NPH2TruePwr \|L2NPH2RePwr \|L2NPH2AppPwr
+          \|L2NPH2PwrFactor \|L2NPH2PhaseDiff \|L2NPH2VPhase \|L2NPH3VRMS \|L2NPH3VCFactor
+          \|L2NPH3TruePwr \|L2NPH3RePwr \|L2NPH3AppPwr \|L2NPH3PwrFactor \|L2NPH3PhaseDiff
+          \|L2NPH3VPhase \|PH1IRMS \|PH1IPhase \|PH1ICFactor \|PH2IRMS \|PH2IPhase \|PH2ICFactor
+          \|PH3IRMS \|PH3IPhase \|PH3ICFactor \|Frequency \|L2LPH1F1Mag \|L2LPH1F3Mag \|L2LPH1THDF
+          \|L2LPH1THDR \|L2LPH1RMS \|L2LPH1IRMS \|L2LPH1Status \|L2LPH1HarmonicsNumber
+          \|L2LPH1Frequency \|L2LPH1MagnitudeAbs \|L2LPH1MagnitudePct \|L2LPH1Phase \|L2LPH1Limits
+          \|L2LPH1PassFail \|L2LPH1Margin \|L2LPH2F1Mag \|L2LPH2F3Mag \|L2LPH2THDF \|L2LPH2THDR
+          \|L2LPH2RMS \|L2LPH2IRMS \|L2LPH2Status \|L2LPH2HarmonicsNumber \|L2LPH2Frequency
+          \|L2LPH2MagnitudeAbs \|L2LPH2MagnitudePct \|L2LPH2Phase \|L2LPH2Limits \|L2LPH2PassFail
+          \|L2LPH2Margin \|L2LPH3F1Mag \|L2LPH3F3Mag \|L2LPH3THDF \|L2LPH3THDR \|L2LPH3RMS
+          \|L2LPH3IRMS \|L2LPH3Status \|L2LPH3HarmonicsNumber \|L2LPH3Frequency \|L2LPH3MagnitudeAbs
+          \|L2LPH3MagnitudePct \|L2LPH3Phase \|L2LPH3Limits \|L2LPH3PassFail \|L2LPH3Margin
+          \|L2NPH1F1Mag \|L2NPH1F3Mag \|L2NPH1THDF \|L2NPH1THDR \|L2NPH1RMS \|L2NPH1IRMS
+          \|L2NPH1Status \|L2NPH1HarmonicsNumber \|L2NPH1Frequency \|L2NPH1MagnitudeAbs
+          \|L2NPH1MagnitudePct \|L2NPH1Phase\|L2NPH1Limits \|L2NPH1PassFail\|L2NPH1Margin
+          \|L2NPH2F1Mag\|L2NPH2F3Mag \|L2NPH2THDF\|L2NPH2THDR \|L2NPH2RMS\|L2NPH2IRMS \|L2NPH2Status
+          \|L2NPH2HarmonicsNumber \|L2NPH2Frequency \|L2NPH2MagnitudeAbs \|L2NPH2MagnitudePct
+          \|L2NPH2Phase\|L2NPH2Limits \|L2NPH2PassFail\|L2NPH2Margin \|L2NPH3F1Mag \|L2NPH3F3Mag
+          \|L2NPH3THDF \|L2NPH3THDR \|L2NPH3RMS \|L2NPH3IRMS \|L2NPH3Status \|L2NPH3HarmonicsNumber
+          \|L2NPH3Frequency \|L2NPH3MagnitudeAbs \|L2NPH3MagnitudePct \|L2NPH3Phase \|L2NPH3Limits
+          \|L2NPH3PassFail \|L2NPH3Margin \|ORDER\|PH1INPwr \|PH1OUTPwr \|PH1Efficiency \|PH2INPwr
+          \|PH2OUTPwr \|PH2Efficiency \|TotalEfficiency \|PH1LRIPRMS \|PH1LRIPPK2PK \|PH2LRIPRMS
+          \|PH2LRIPPK2PK \|PH3LRIPRMS \|PH3LRIPPK2PK \|PH1SWRIPRMS \|PH1SWRIPPK2PK \|PH2SWRIPRMS
+          \|PH2SWRIPPK2PK \|PH3SWRIPRMS \|PH3SWRIPPK2PK \|TruePwrSum \|RePwrSum \|AppPwrSum
+          \|InPwrSum \|OutPwrSum \|SPEED \|ACCELERATION \|DIRECTION \|ANGLE \|TORQUE \|POWER
+          \|ELECPWR \|MECHPWR \|SYSTEMEFFICIENCY \|EON \|EOFF \|TDON \|TDOFF \|startlevel
+          \|stoplevel \|TRR \|QRR \|TA \|TB \|RSF \|VPEAK \|IPEAK \|TR \|ERR \|TF \|TON \|TOFF
+          \|IRRM \|DBYDT \|fft \|tiespectra \|subspectra \|beforetie \|beforepj \|beforeeyeheight
+          \|beforeeyewidth \|reconst \|aftertie \|afterpj \|aftereyeheight \|aftereyewidth \|freq
+          \|qoss \|PH1TDD \|PH2TDD \|PH3TDD.
+    """
+
+
+class MeasurementMeasItemSubgroupResultsCurrentacqMaximum(SCPICmdReadWithArguments):
+    r"""The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MAXimum`` command.
+
+    **Description:**
+        - This query returns the maximum value of the measurement specified by the string, for the
+          current acquisition.
+
+    **Usage:**
+        - Using the ``.query(argument)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MAXimum? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MAXimum? argument`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MAXimum? <Qstring>
+
+    **Info:**
+        - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\| OUTPUT6\|OUTPUT7\|
+          RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK \|RAIL1RMS
+          \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL \|RAIL3FREQUENCY
+          \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK \|RAIL4RMS
+          \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL \|RAIL6FREQUENCY
+          \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT \|RAIL7DPMUNDERSHOOT
+          \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+    """
+
+
+class MeasurementMeasItemSubgroupResultsCurrentacq(SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+
+    Properties:
+        - ``.maximum``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MAXimum`` command.
+        - ``.mean``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MEAN`` command.
+        - ``.minimum``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MINimum`` command.
+        - ``.pk2pk``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:PK2PK`` command.
+        - ``.population``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:POPUlation``
+          command.
+        - ``.stddev``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:STDDev`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._maximum = MeasurementMeasItemSubgroupResultsCurrentacqMaximum(
+            device, f"{self._cmd_syntax}:MAXimum"
+        )
+        self._mean = MeasurementMeasItemSubgroupResultsCurrentacqMean(
+            device, f"{self._cmd_syntax}:MEAN"
+        )
+        self._minimum = MeasurementMeasItemSubgroupResultsCurrentacqMinimum(
+            device, f"{self._cmd_syntax}:MINimum"
+        )
+        self._pk2pk = MeasurementMeasItemSubgroupResultsCurrentacqPk2pk(
+            device, f"{self._cmd_syntax}:PK2PK"
+        )
+        self._population = MeasurementMeasItemSubgroupResultsCurrentacqPopulation(
+            device, f"{self._cmd_syntax}:POPUlation"
+        )
+        self._stddev = MeasurementMeasItemSubgroupResultsCurrentacqStddev(
+            device, f"{self._cmd_syntax}:STDDev"
+        )
+
+    @property
+    def maximum(self) -> MeasurementMeasItemSubgroupResultsCurrentacqMaximum:
+        r"""Return the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MAXimum`` command.
+
+        **Description:**
+            - This query returns the maximum value of the measurement specified by the string, for
+              the current acquisition.
+
+        **Usage:**
+            - Using the ``.query(argument)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MAXimum? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MAXimum? argument`` query and raise
+              an AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MAXimum? <Qstring>
+
+        **Info:**
+            - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\|
+              OUTPUT6\|OUTPUT7\| RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK
+              \|RAIL1RMS \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL
+              \|RAIL3FREQUENCY \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK
+              \|RAIL4RMS \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL
+              \|RAIL6FREQUENCY \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT
+              \|RAIL7DPMUNDERSHOOT \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+        """
+        return self._maximum
+
+    @property
+    def mean(self) -> MeasurementMeasItemSubgroupResultsCurrentacqMean:
+        r"""Return the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MEAN`` command.
+
+        **Description:**
+            - This query returns the mean value of the measurement specified by the string, for the
+              current acquisition.
+
+        **Usage:**
+            - Using the ``.query(argument)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MEAN? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MEAN? argument`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MEAN? <Qstring>
+
+        **Info:**
+            - ``<Qstring>`` = INPUT \|OUTPUT1 \|OUTPUT2 \|OUTPUT3 \|OUTPUT4 \|OUTPUT5 \|OUTPUT6
+              \|OUTPUT7 \|RAIL1DPMOVERSHOOT \|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK
+              \|RAIL1RMS \|RAIL1RMSFULL \|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL
+              \|RAIL3FREQUENCY \|RAIL3PK2PK \|RAIL3RMS \|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK
+              \|RAIL4RMS \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK \|RAIL5RMS \|RAIL5RMSFULL
+              \|RAIL6FREQUENCY \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT
+              \|RAIL7DPMUNDERSHOOT \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL
+              \|L2LPH1VRMS \|L2LPH1VCFactor \|L2LPH1TruePwr \|L2LPH1RePwr \|L2LPH1AppPwr
+              \|L2LPH1PwrFactor \|L2LPH1PhaseDiff \|L2LPH1VPhase \|L2LPH2VRMS \|L2LPH2VCFactor
+              \|L2LPH2TruePwr \|L2LPH2RePwr \|L2LPH2AppPwr \|L2LPH2PwrFactor \|L2LPH2PhaseDiff
+              \|L2LPH2VPhase \|L2LPH3VRMS \|L2LPH3VCFactor \|L2LPH3TruePwr \|L2LPH3RePwr
+              \|L2LPH3AppPwr \|L2LPH3PwrFactor \|L2LPH3PhaseDiff \|L2LPH3VPhase \|L2NPH1VRMS
+              \|L2NPH1VCFactor \|L2NPH1TruePwr \|L2NPH1RePwr \|L2NPH1AppPwr \|L2NPH1PwrFactor
+              \|L2NPH1PhaseDiff \|L2NPH1VPhase \|L2NPH2VRMS \|L2NPH2VCFactor \|L2NPH2TruePwr
+              \|L2NPH2RePwr \|L2NPH2AppPwr \|L2NPH2PwrFactor \|L2NPH2PhaseDiff \|L2NPH2VPhase
+              \|L2NPH3VRMS \|L2NPH3VCFactor \|L2NPH3TruePwr \|L2NPH3RePwr \|L2NPH3AppPwr
+              \|L2NPH3PwrFactor \|L2NPH3PhaseDiff \|L2NPH3VPhase \|PH1IRMS \|PH1IPhase \|PH1ICFactor
+              \|PH2IRMS \|PH2IPhase \|PH2ICFactor \|PH3IRMS \|PH3IPhase \|PH3ICFactor \|Frequency
+              \|L2LPH1F1Mag \|L2LPH1F3Mag \|L2LPH1THDF \|L2LPH1THDR \|L2LPH1RMS \|L2LPH1IRMS
+              \|L2LPH1Status \|L2LPH1HarmonicsNumber \|L2LPH1Frequency \|L2LPH1MagnitudeAbs
+              \|L2LPH1MagnitudePct \|L2LPH1Phase \|L2LPH1Limits \|L2LPH1PassFail \|L2LPH1Margin
+              \|L2LPH2F1Mag \|L2LPH2F3Mag \|L2LPH2THDF \|L2LPH2THDR \|L2LPH2RMS \|L2LPH2IRMS
+              \|L2LPH2Status \|L2LPH2HarmonicsNumber \|L2LPH2Frequency \|L2LPH2MagnitudeAbs
+              \|L2LPH2MagnitudePct \|L2LPH2Phase \|L2LPH2Limits \|L2LPH2PassFail \|L2LPH2Margin
+              \|L2LPH3F1Mag \|L2LPH3F3Mag \|L2LPH3THDF \|L2LPH3THDR \|L2LPH3RMS \|L2LPH3IRMS
+              \|L2LPH3Status \|L2LPH3HarmonicsNumber \|L2LPH3Frequency \|L2LPH3MagnitudeAbs
+              \|L2LPH3MagnitudePct \|L2LPH3Phase \|L2LPH3Limits \|L2LPH3PassFail \|L2LPH3Margin
+              \|L2NPH1F1Mag \|L2NPH1F3Mag \|L2NPH1THDF \|L2NPH1THDR \|L2NPH1RMS \|L2NPH1IRMS
+              \|L2NPH1Status \|L2NPH1HarmonicsNumber \|L2NPH1Frequency \|L2NPH1MagnitudeAbs
+              \|L2NPH1MagnitudePct \|L2NPH1Phase\|L2NPH1Limits \|L2NPH1PassFail\|L2NPH1Margin
+              \|L2NPH2F1Mag\|L2NPH2F3Mag \|L2NPH2THDF\|L2NPH2THDR \|L2NPH2RMS\|L2NPH2IRMS
+              \|L2NPH2Status \|L2NPH2HarmonicsNumber \|L2NPH2Frequency \|L2NPH2MagnitudeAbs
+              \|L2NPH2MagnitudePct \|L2NPH2Phase\|L2NPH2Limits \|L2NPH2PassFail\|L2NPH2Margin
+              \|L2NPH3F1Mag \|L2NPH3F3Mag \|L2NPH3THDF \|L2NPH3THDR \|L2NPH3RMS \|L2NPH3IRMS
+              \|L2NPH3Status \|L2NPH3HarmonicsNumber \|L2NPH3Frequency \|L2NPH3MagnitudeAbs
+              \|L2NPH3MagnitudePct \|L2NPH3Phase \|L2NPH3Limits \|L2NPH3PassFail \|L2NPH3Margin
+              \|ORDER\|PH1INPwr \|PH1OUTPwr \|PH1Efficiency \|PH2INPwr \|PH2OUTPwr \|PH2Efficiency
+              \|TotalEfficiency \|PH1LRIPRMS \|PH1LRIPPK2PK \|PH2LRIPRMS \|PH2LRIPPK2PK \|PH3LRIPRMS
+              \|PH3LRIPPK2PK \|PH1SWRIPRMS \|PH1SWRIPPK2PK \|PH2SWRIPRMS \|PH2SWRIPPK2PK
+              \|PH3SWRIPRMS \|PH3SWRIPPK2PK \|TruePwrSum \|RePwrSum \|AppPwrSum \|InPwrSum
+              \|OutPwrSum \|SPEED \|ACCELERATION \|DIRECTION \|ANGLE \|TORQUE \|POWER \|ELECPWR
+              \|MECHPWR \|SYSTEMEFFICIENCY \|EON \|EOFF \|TDON \|TDOFF \|startlevel \|stoplevel
+              \|TRR \|QRR \|TA \|TB \|RSF \|VPEAK \|IPEAK \|TR \|ERR \|TF \|TON \|TOFF \|IRRM
+              \|DBYDT \|fft \|tiespectra \|subspectra \|beforetie \|beforepj \|beforeeyeheight
+              \|beforeeyewidth \|reconst \|aftertie \|afterpj \|aftereyeheight \|aftereyewidth
+              \|freq \|qoss \|PH1TDD \|PH2TDD \|PH3TDD.
+        """
+        return self._mean
+
+    @property
+    def minimum(self) -> MeasurementMeasItemSubgroupResultsCurrentacqMinimum:
+        r"""Return the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MINimum`` command.
+
+        **Description:**
+            - This query returns the minimum value of the measurement specified by the string, for
+              the current acquisition.
+
+        **Usage:**
+            - Using the ``.query(argument)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MINimum? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MINimum? argument`` query and raise
+              an AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MINimum? <Qstring>
+
+        **Info:**
+            - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\|
+              OUTPUT6\|OUTPUT7\| RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK
+              \|RAIL1RMS \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL
+              \|RAIL3FREQUENCY \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK
+              \|RAIL4RMS \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL
+              \|RAIL6FREQUENCY \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT
+              \|RAIL7DPMUNDERSHOOT \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL \|SPEED
+              \|ACCELERATION \|DIRECTION \|ANGLE \|TORQUE \|POWER \|ELECPWR \|MECHPWR
+              \|SYSTEMEFFICIENCY \|EON \|EOFF \|TDON \|TDOFF \|startlevel \|stoplevel \|TRR \|QRR
+              \|TA \|TB \|RSF \|VPEAK \|IPEAK \|TR \|ERR \|TF \|TON \|TOFF \|IRRM \|DBYDT \|fft
+              \|tiespectra \|subspectra \|beforetie \|beforepj \|beforeeyeheight \|beforeeyewidth
+              \|reconst \|aftertie \|afterpj \|aftereyeheight \|aftereyewidth \|freq \|qoss \|PH1TDD
+              \|PH2TDD \|PH3TDD.
+        """
+        return self._minimum
+
+    @property
+    def pk2pk(self) -> MeasurementMeasItemSubgroupResultsCurrentacqPk2pk:
+        r"""Return the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:PK2PK`` command.
+
+        **Description:**
+            - This query returns the peak-to-peak value of the measurement specified by the string,
+              for the current acquisition.
+
+        **Usage:**
+            - Using the ``.query(argument)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:PK2PK? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:PK2PK? argument`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:PK2PK? <Qstring>
+
+        **Info:**
+            - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\|
+              OUTPUT6\|OUTPUT7\| RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK
+              \|RAIL1RMS \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL
+              \|RAIL3FREQUENCY \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK
+              \|RAIL4RMS \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL
+              \|RAIL6FREQUENCY \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT
+              \|RAIL7DPMUNDERSHOOT \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+        """
+        return self._pk2pk
+
+    @property
+    def population(self) -> MeasurementMeasItemSubgroupResultsCurrentacqPopulation:
+        r"""Return the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:POPUlation`` command.
+
+        **Description:**
+            - This query returns the population value of the measurement specified by the string,
+              for the current acquisition.
+
+        **Usage:**
+            - Using the ``.query(argument)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:POPUlation? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:POPUlation? argument`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:POPUlation? <Qstring>
+
+        **Info:**
+            - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\|
+              OUTPUT6\|OUTPUT7\| RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK
+              \|RAIL1RMS \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL
+              \|RAIL3FREQUENCY \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK
+              \|RAIL4RMS \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL
+              \|RAIL6FREQUENCY \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT
+              \|RAIL7DPMUNDERSHOOT \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+        """
+        return self._population
+
+    @property
+    def stddev(self) -> MeasurementMeasItemSubgroupResultsCurrentacqStddev:
+        r"""Return the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:STDDev`` command.
+
+        **Description:**
+            - This query returns the standard deviation value of the measurement specified by the
+              string, for the current acquisition.
+
+        **Usage:**
+            - Using the ``.query(argument)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:STDDev? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:STDDev? argument`` query and raise
+              an AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:STDDev? <Qstring>
+
+        **Info:**
+            - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\|
+              OUTPUT6\|OUTPUT7\| RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK
+              \|RAIL1RMS \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL
+              \|RAIL3FREQUENCY \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK
+              \|RAIL4RMS \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL
+              \|RAIL6FREQUENCY \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT
+              \|RAIL7DPMUNDERSHOOT \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+        """
+        return self._stddev
+
+
+class MeasurementMeasItemSubgroupResultsAllacqsStddev(SCPICmdReadWithArguments):
+    r"""The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:STDDev`` command.
+
+    **Description:**
+        - This query returns the standard deviation value of the measurement specified by the
+          string, for all acquisitions.
+
+    **Usage:**
+        - Using the ``.query(argument)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:STDDev? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:STDDev? argument`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:STDDev? <Qstring>
+
+    **Info:**
+        - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\| OUTPUT6\|OUTPUT7\|
+          RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK \|RAIL1RMS
+          \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL \|RAIL3FREQUENCY
+          \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK \|RAIL4RMS
+          \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL \|RAIL6FREQUENCY
+          \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT \|RAIL7DPMUNDERSHOOT
+          \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+    """
+
+
+class MeasurementMeasItemSubgroupResultsAllacqsPopulation(SCPICmdReadWithArguments):
+    r"""The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:POPUlation`` command.
+
+    **Description:**
+        - This query returns the population value of the measurement specified by the string, for
+          all acquisitions.
+
+    **Usage:**
+        - Using the ``.query(argument)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:POPUlation? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:POPUlation? argument`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:POPUlation? <Qstring>
+
+    **Info:**
+        - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\| OUTPUT6\|OUTPUT7\|
+          RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK \|RAIL1RMS
+          \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL \|RAIL3FREQUENCY
+          \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK \|RAIL4RMS
+          \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL \|RAIL6FREQUENCY
+          \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT \|RAIL7DPMUNDERSHOOT
+          \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+    """
+
+
+class MeasurementMeasItemSubgroupResultsAllacqsPk2pk(SCPICmdReadWithArguments):
+    r"""The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:PK2PK`` command.
+
+    **Description:**
+        - This query returns the peak-to-peak value of the measurement specified by the string, for
+          all acquisitions.
+
+    **Usage:**
+        - Using the ``.query(argument)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:PK2PK? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:PK2PK? argument`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:PK2PK? <Qstring>
+
+    **Info:**
+        - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\| OUTPUT6\|OUTPUT7\|
+          RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK \|RAIL1RMS
+          \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL \|RAIL3FREQUENCY
+          \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK \|RAIL4RMS
+          \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL \|RAIL6FREQUENCY
+          \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT \|RAIL7DPMUNDERSHOOT
+          \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+    """
+
+
+class MeasurementMeasItemSubgroupResultsAllacqsMinimum(SCPICmdReadWithArguments):
+    r"""The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MINimum`` command.
+
+    **Description:**
+        - This query returns the minimum value of the measurement specified by the string, for all
+          acquisitions.
+
+    **Usage:**
+        - Using the ``.query(argument)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MINimum? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MINimum? argument`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MINimum? <Qstring>
+
+    **Info:**
+        - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\| OUTPUT6\|OUTPUT7\|
+          RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK \|RAIL1RMS
+          \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL \|RAIL3FREQUENCY
+          \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK \|RAIL4RMS
+          \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL \|RAIL6FREQUENCY
+          \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT \|RAIL7DPMUNDERSHOOT
+          \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+    """
+
+
+class MeasurementMeasItemSubgroupResultsAllacqsMean(SCPICmdReadWithArguments):
+    r"""The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MEAN`` command.
+
+    **Description:**
+        - This query returns the mean value of the measurement specified by the string, for all
+          acquisitions.
+
+    **Usage:**
+        - Using the ``.query(argument)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MEAN? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MEAN? argument`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MEAN? <Qstring>
+
+    **Info:**
+        - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\| OUTPUT6\|OUTPUT7\|
+          RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK \|RAIL1RMS
+          \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL \|RAIL3FREQUENCY
+          \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK \|RAIL4RMS
+          \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL \|RAIL6FREQUENCY
+          \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT \|RAIL7DPMUNDERSHOOT
+          \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+    """
+
+
+class MeasurementMeasItemSubgroupResultsAllacqsMaximum(SCPICmdReadWithArguments):
+    r"""The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MAXimum`` command.
+
+    **Description:**
+        - This query returns the maximum value of the measurement specified by the string, for all
+          acquisitions.
+
+    **Usage:**
+        - Using the ``.query(argument)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MAXimum? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MAXimum? argument`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MAXimum? <Qstring>
+
+    **Info:**
+        - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\| OUTPUT6\|OUTPUT7\|
+          RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK \|RAIL1RMS
+          \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL \|RAIL3FREQUENCY
+          \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK \|RAIL4RMS
+          \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL \|RAIL6FREQUENCY
+          \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT \|RAIL7DPMUNDERSHOOT
+          \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+    """
+
+
+class MeasurementMeasItemSubgroupResultsAllacqs(SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Properties:
+        - ``.maximum``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MAXimum`` command.
+        - ``.mean``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MEAN`` command.
+        - ``.minimum``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MINimum`` command.
+        - ``.pk2pk``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:PK2PK`` command.
+        - ``.population``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:POPUlation`` command.
+        - ``.stddev``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:STDDev`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._maximum = MeasurementMeasItemSubgroupResultsAllacqsMaximum(
+            device, f"{self._cmd_syntax}:MAXimum"
+        )
+        self._mean = MeasurementMeasItemSubgroupResultsAllacqsMean(
+            device, f"{self._cmd_syntax}:MEAN"
+        )
+        self._minimum = MeasurementMeasItemSubgroupResultsAllacqsMinimum(
+            device, f"{self._cmd_syntax}:MINimum"
+        )
+        self._pk2pk = MeasurementMeasItemSubgroupResultsAllacqsPk2pk(
+            device, f"{self._cmd_syntax}:PK2PK"
+        )
+        self._population = MeasurementMeasItemSubgroupResultsAllacqsPopulation(
+            device, f"{self._cmd_syntax}:POPUlation"
+        )
+        self._stddev = MeasurementMeasItemSubgroupResultsAllacqsStddev(
+            device, f"{self._cmd_syntax}:STDDev"
+        )
+
+    @property
+    def maximum(self) -> MeasurementMeasItemSubgroupResultsAllacqsMaximum:
+        r"""Return the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MAXimum`` command.
+
+        **Description:**
+            - This query returns the maximum value of the measurement specified by the string, for
+              all acquisitions.
+
+        **Usage:**
+            - Using the ``.query(argument)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MAXimum? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MAXimum? argument`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MAXimum? <Qstring>
+
+        **Info:**
+            - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\|
+              OUTPUT6\|OUTPUT7\| RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK
+              \|RAIL1RMS \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL
+              \|RAIL3FREQUENCY \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK
+              \|RAIL4RMS \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL
+              \|RAIL6FREQUENCY \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT
+              \|RAIL7DPMUNDERSHOOT \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+        """
+        return self._maximum
+
+    @property
+    def mean(self) -> MeasurementMeasItemSubgroupResultsAllacqsMean:
+        r"""Return the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MEAN`` command.
+
+        **Description:**
+            - This query returns the mean value of the measurement specified by the string, for all
+              acquisitions.
+
+        **Usage:**
+            - Using the ``.query(argument)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MEAN? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MEAN? argument`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MEAN? <Qstring>
+
+        **Info:**
+            - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\|
+              OUTPUT6\|OUTPUT7\| RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK
+              \|RAIL1RMS \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL
+              \|RAIL3FREQUENCY \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK
+              \|RAIL4RMS \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL
+              \|RAIL6FREQUENCY \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT
+              \|RAIL7DPMUNDERSHOOT \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+        """
+        return self._mean
+
+    @property
+    def minimum(self) -> MeasurementMeasItemSubgroupResultsAllacqsMinimum:
+        r"""Return the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MINimum`` command.
+
+        **Description:**
+            - This query returns the minimum value of the measurement specified by the string, for
+              all acquisitions.
+
+        **Usage:**
+            - Using the ``.query(argument)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MINimum? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MINimum? argument`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MINimum? <Qstring>
+
+        **Info:**
+            - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\|
+              OUTPUT6\|OUTPUT7\| RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK
+              \|RAIL1RMS \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL
+              \|RAIL3FREQUENCY \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK
+              \|RAIL4RMS \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL
+              \|RAIL6FREQUENCY \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT
+              \|RAIL7DPMUNDERSHOOT \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+        """
+        return self._minimum
+
+    @property
+    def pk2pk(self) -> MeasurementMeasItemSubgroupResultsAllacqsPk2pk:
+        r"""Return the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:PK2PK`` command.
+
+        **Description:**
+            - This query returns the peak-to-peak value of the measurement specified by the string,
+              for all acquisitions.
+
+        **Usage:**
+            - Using the ``.query(argument)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:PK2PK? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:PK2PK? argument`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:PK2PK? <Qstring>
+
+        **Info:**
+            - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\|
+              OUTPUT6\|OUTPUT7\| RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK
+              \|RAIL1RMS \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL
+              \|RAIL3FREQUENCY \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK
+              \|RAIL4RMS \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL
+              \|RAIL6FREQUENCY \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT
+              \|RAIL7DPMUNDERSHOOT \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+        """
+        return self._pk2pk
+
+    @property
+    def population(self) -> MeasurementMeasItemSubgroupResultsAllacqsPopulation:
+        r"""Return the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:POPUlation`` command.
+
+        **Description:**
+            - This query returns the population value of the measurement specified by the string,
+              for all acquisitions.
+
+        **Usage:**
+            - Using the ``.query(argument)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:POPUlation? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:POPUlation? argument`` query and raise
+              an AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:POPUlation? <Qstring>
+
+        **Info:**
+            - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\|
+              OUTPUT6\|OUTPUT7\| RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK
+              \|RAIL1RMS \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL
+              \|RAIL3FREQUENCY \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK
+              \|RAIL4RMS \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL
+              \|RAIL6FREQUENCY \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT
+              \|RAIL7DPMUNDERSHOOT \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+        """
+        return self._population
+
+    @property
+    def stddev(self) -> MeasurementMeasItemSubgroupResultsAllacqsStddev:
+        r"""Return the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:STDDev`` command.
+
+        **Description:**
+            - This query returns the standard deviation value of the measurement specified by the
+              string, for all acquisitions.
+
+        **Usage:**
+            - Using the ``.query(argument)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:STDDev? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:STDDev? argument`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:STDDev? <Qstring>
+
+        **Info:**
+            - ``<Qstring>`` = INPUT\|OUTPUT1\|OUTPUT2\|OUTPUT3\|OUTPUT4\|OUTPUT5\|
+              OUTPUT6\|OUTPUT7\| RAIL1DPMOVERSHOOT\|RAIL1DPMUNDERSHOOT \|RAIL1FREQUENCY \|RAIL1PK2PK
+              \|RAIL1RMS \|RAIL1RMSFULL\|RAIL2FREQUENCY \|RAIL2PK2PK \|RAIL2RMS \|RAIL2RMSFULL
+              \|RAIL3FREQUENCY \|RAIL3PK2PK \|RAIL3RMS\|RAIL3RMSFULL \|RAIL4FREQUENCY \|RAIL4PK2PK
+              \|RAIL4RMS \|RAIL4RMSFULL \|RAIL5FREQUENCY \|RAIL5PK2PK\|RAIL5RMS \|RAIL5RMSFULL
+              \|RAIL6FREQUENCY \|RAIL6PK2PK \|RAIL6RMS \|RAIL6RMSFULL \|RAIL7DPMOVERSHOOT
+              \|RAIL7DPMUNDERSHOOT \|RAIL7FREQUENCY \|RAIL7PK2PK \|RAIL7RMS \|RAIL7RMSFULL.
+        """
+        return self._stddev
+
+
+class MeasurementMeasItemSubgroupResults(SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Properties:
+        - ``.allacqs``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs`` command tree.
+        - ``.currentacq``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._allacqs = MeasurementMeasItemSubgroupResultsAllacqs(
+            device, f"{self._cmd_syntax}:ALLAcqs"
+        )
+        self._currentacq = MeasurementMeasItemSubgroupResultsCurrentacq(
+            device, f"{self._cmd_syntax}:CURRentacq"
+        )
+
+    @property
+    def allacqs(self) -> MeasurementMeasItemSubgroupResultsAllacqs:
+        """Return the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.maximum``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MAXimum`` command.
+            - ``.mean``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MEAN`` command.
+            - ``.minimum``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:MINimum`` command.
+            - ``.pk2pk``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:PK2PK`` command.
+            - ``.population``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:POPUlation``
+              command.
+            - ``.stddev``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs:STDDev`` command.
+        """
+        return self._allacqs
+
+    @property
+    def currentacq(self) -> MeasurementMeasItemSubgroupResultsCurrentacq:
+        """Return the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.maximum``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MAXimum`` command.
+            - ``.mean``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MEAN`` command.
+            - ``.minimum``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:MINimum`` command.
+            - ``.pk2pk``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:PK2PK`` command.
+            - ``.population``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:POPUlation``
+              command.
+            - ``.stddev``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq:STDDev`` command.
+        """
+        return self._currentacq
+
+
+class MeasurementMeasItemSubgroup(SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:SUBGROUP`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:SUBGROUP?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:SUBGROUP?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+
+    Properties:
+        - ``.results``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._results = MeasurementMeasItemSubgroupResults(device, f"{self._cmd_syntax}:RESUlts")
+
+    @property
+    def results(self) -> MeasurementMeasItemSubgroupResults:
+        """Return the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.allacqs``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:ALLAcqs`` command tree.
+            - ``.currentacq``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts:CURRentacq`` command tree.
+        """
+        return self._results
 
 
 class MeasurementMeasItemStype(SCPICmdWrite, SCPICmdRead):
@@ -6203,6 +8023,32 @@ class MeasurementMeasItemSequence(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class MeasurementMeasItemRrange(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:RRANGE`` command.
+
+    **Description:**
+        - This command sets or returns the span value of PSIJ measurement.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:RRANGE?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:RRANGE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:RRANGE value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:RRANGE <NR3>
+        - MEASUrement:MEAS<x>:RRANGE?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR3>`` specifies the value of span for PSIJ measurement.
+    """
+
+
 class MeasurementMeasItemRipplefreqvalItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:RIPPLEFREQ<x>Val`` command.
 
@@ -6229,6 +8075,32 @@ class MeasurementMeasItemRipplefreqvalItem(ValidatedDynamicNumberCmd, SCPICmdWri
         - ``MEAS<x>`` is the measurement number.
         - ``RIPPLEFREQ<x>`` is the rail number.
         - ``<NR3>`` is the frequency, in the range of 1 Hz to 4 GHz.
+    """
+
+
+class MeasurementMeasItemRfrequency(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:RFREquency`` command.
+
+    **Description:**
+        - This command sets or returns the center frequency value of PSIJ measurement.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:RFREquency?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:RFREquency?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:RFREquency value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:RFREquency <NR3>
+        - MEASUrement:MEAS<x>:RFREquency?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR3>`` specifies the value of center frequency for PSIJ measurement.
     """
 
 
@@ -7439,7 +9311,7 @@ class MeasurementMeasItemReflevels1PercentRisemid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:REFLevels1:PERCent:RISEMid`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the mid reference level of the rising edge when the measurement's
           ref level method is set to percent. The measurement number is specified by x.
 
@@ -7470,7 +9342,7 @@ class MeasurementMeasItemReflevels1PercentRiselow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:REFLevels1:PERCent:RISELow`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the low reference level of the rising edge when the measurement's
           ref level method is set to percent. The measurement number is specified by x.
 
@@ -7492,7 +9364,7 @@ class MeasurementMeasItemReflevels1PercentRiselow(SCPICmdWrite, SCPICmdRead):
 
     **Info:**
         - ``MEAS<x>`` specifies the measurement number.
-        - ``<NR3>`` is the percentage (where 100% is equal to TOP) used to calculate the mid
+        - ``<NR3>`` is the percentage (where 99% is equal to TOP) used to calculate the mid
           reference level when the measurement's Ref level method is set to Percent.
     """
 
@@ -7501,7 +9373,7 @@ class MeasurementMeasItemReflevels1PercentRisehigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:REFLevels1:PERCent:RISEHigh`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the high reference level of the rising edge when the measurement's
           ref level method is set to percent. The measurement number is specified by x.
 
@@ -7523,7 +9395,7 @@ class MeasurementMeasItemReflevels1PercentRisehigh(SCPICmdWrite, SCPICmdRead):
 
     **Info:**
         - ``MEAS<x>`` specifies the measurement number.
-        - ``<NR3>`` is the percentage (where 100% is equal to TOP) used to calculate the high
+        - ``<NR3>`` is the percentage (where 99% is equal to TOP) used to calculate the high
           reference level when the measurement's Ref level method is set to Percent.
     """
 
@@ -7532,7 +9404,7 @@ class MeasurementMeasItemReflevels1PercentHysteresis(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:REFLevels1:PERCent:HYSTeresis`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to MAX and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to MAX and 1% is equal to
           MIN) used to calculate the hysteresis of the reference level when the measurement's ref
           level method is set to percent. The measurement number is specified by x.
 
@@ -7562,7 +9434,7 @@ class MeasurementMeasItemReflevels1PercentFallmid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLMid`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the mid reference level of the falling edge when the measurement's
           ref level method is set to percent. The measurement number is specified by x.
 
@@ -7593,7 +9465,7 @@ class MeasurementMeasItemReflevels1PercentFalllow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLLow`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the low reference level of the falling edge when the measurement's
           ref level method is set to percent. The measurement number is specified by x.
 
@@ -7624,7 +9496,7 @@ class MeasurementMeasItemReflevels1PercentFallhigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLHigh`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the high reference level of the falling edge when the
           measurement's ref level method is set to percent. The measurement number is specified by
           x.
@@ -7707,8 +9579,8 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLHigh`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the high reference level of the falling edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the high reference level of the falling edge when the
               measurement's ref level method is set to percent. The measurement number is specified
               by x.
 
@@ -7740,8 +9612,8 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLLow`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the low reference level of the falling edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the low reference level of the falling edge when the
               measurement's ref level method is set to percent. The measurement number is specified
               by x.
 
@@ -7773,8 +9645,8 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLMid`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the mid reference level of the falling edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the mid reference level of the falling edge when the
               measurement's ref level method is set to percent. The measurement number is specified
               by x.
 
@@ -7806,10 +9678,9 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:REFLevels1:PERCent:HYSTeresis`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to MAX and 0% is
-              equal to MIN) used to calculate the hysteresis of the reference level when the
-              measurement's ref level method is set to percent. The measurement number is specified
-              by x.
+            - This command sets or queries the percentage (where 99% is equal to MAX and 1% is equal
+              to MIN) used to calculate the hysteresis of the reference level when the measurement's
+              ref level method is set to percent. The measurement number is specified by x.
 
         **Usage:**
             - Using the ``.query()`` method will send the
@@ -7838,8 +9709,8 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:REFLevels1:PERCent:RISEHigh`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the high reference level of the rising edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the high reference level of the rising edge when the
               measurement's ref level method is set to percent. The measurement number is specified
               by x.
 
@@ -7861,7 +9732,7 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
 
         **Info:**
             - ``MEAS<x>`` specifies the measurement number.
-            - ``<NR3>`` is the percentage (where 100% is equal to TOP) used to calculate the high
+            - ``<NR3>`` is the percentage (where 99% is equal to TOP) used to calculate the high
               reference level when the measurement's Ref level method is set to Percent.
         """
         return self._risehigh
@@ -7871,8 +9742,8 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:REFLevels1:PERCent:RISELow`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the low reference level of the rising edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the low reference level of the rising edge when the
               measurement's ref level method is set to percent. The measurement number is specified
               by x.
 
@@ -7894,7 +9765,7 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
 
         **Info:**
             - ``MEAS<x>`` specifies the measurement number.
-            - ``<NR3>`` is the percentage (where 100% is equal to TOP) used to calculate the mid
+            - ``<NR3>`` is the percentage (where 99% is equal to TOP) used to calculate the mid
               reference level when the measurement's Ref level method is set to Percent.
         """
         return self._riselow
@@ -7904,8 +9775,8 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:REFLevels1:PERCent:RISEMid`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the mid reference level of the rising edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the mid reference level of the rising edge when the
               measurement's ref level method is set to percent. The measurement number is specified
               by x.
 
@@ -8762,6 +10633,58 @@ class MeasurementMeasItemPwidth(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class MeasurementMeasItemPthreshold(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:PTHReshold`` command.
+
+    **Description:**
+        - This command sets or returns the PJ threshold value of PSIJ measurement.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:PTHReshold?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:PTHReshold?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:PTHReshold value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:PTHReshold <NR3>
+        - MEASUrement:MEAS<x>:PTHReshold?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR3>`` specifies the value of PJ threshold for PSIJ measurement.
+    """
+
+
+class MeasurementMeasItemPresistance(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:PRESistance`` command.
+
+    **Description:**
+        - This command sets or returns the probe resistance for WBG measurement.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:PRESistance?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:PRESistance?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:PRESistance value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:PRESistance <NR3>
+        - MEASUrement:MEAS<x>:PRESistance?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR3>`` specifies the value for probe resistance of the WBG measurement.
+    """
+
+
 class MeasurementMeasItemPregion(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:PREGion`` command.
 
@@ -9131,6 +11054,32 @@ class MeasurementMeasItemPolarity(SCPICmdWrite, SCPICmdRead):
         - ``MEAS<x>`` specifies the measurement number.
         - ``NORMal`` specifies normal polarity.
         - ``INVerted`` specifies inverted polarity.
+    """
+
+
+class MeasurementMeasItemPfrequency(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:PFREquency`` command.
+
+    **Description:**
+        - This command sets or returns the PJ max frequency value of PSIJ measurement.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:PFREquency?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:PFREquency?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:PFREquency value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:PFREquency <NR3>
+        - MEASUrement:MEAS<x>:PFREquency?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR3>`` specifies the value of PJ max frequency for PSIJ measurement.
     """
 
 
@@ -11697,7 +13646,7 @@ class MeasurementMeasItemHlevelOutputUglobal(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:HLEVel:OUTPut:UGLobal`` command.
 
     **Description:**
-        - This command turns on or off output global settings for measurement. Measurements are
+        - This command turns on or off  output global settings for measurement. Measurements are
           specified by x.
 
     **Usage:**
@@ -11745,7 +13694,7 @@ class MeasurementMeasItemHlevelOutput(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:HLEVel:OUTPut:UGLobal`` command.
 
         **Description:**
-            - This command turns on or off output global settings for measurement. Measurements are
+            - This command turns on or off  output global settings for measurement. Measurements are
               specified by x.
 
         **Usage:**
@@ -11920,7 +13869,7 @@ class MeasurementMeasItemHighlevelOutwiring(SCPICmdWrite, SCPICmdRead):
     **Info:**
         - ``MEAS<x>`` specifies the measurement number.
         - ``P1W2V1I1`` specifies P1W2V1I1 as the local output wiring.
-        - ``P1W3V2I2`` specifies P1W3V2I2 as the local output wiring.
+        - ``P3W3V2I2`` specifies P3W3V2I2 as the local output wiring.
         - ``P3W3V3I3`` specifies P3W3V3I3 as the local output wiring.
         - ``P3W4`` specifies P3W4 as the local output wiring.
         - ``DCP1W2`` specifies DCP1W2 as the local output wiring.
@@ -12288,7 +14237,7 @@ class MeasurementMeasItemHighlevel(SCPICmdRead):
         **Info:**
             - ``MEAS<x>`` specifies the measurement number.
             - ``P1W2V1I1`` specifies P1W2V1I1 as the local output wiring.
-            - ``P1W3V2I2`` specifies P1W3V2I2 as the local output wiring.
+            - ``P3W3V2I2`` specifies P3W3V2I2 as the local output wiring.
             - ``P3W3V3I3`` specifies P3W3V3I3 as the local output wiring.
             - ``P3W4`` specifies P3W4 as the local output wiring.
             - ``DCP1W2`` specifies DCP1W2 as the local output wiring.
@@ -12406,7 +14355,7 @@ class MeasurementMeasItemHarmonicsstd(SCPICmdWrite, SCPICmdRead):
 
     ::
 
-        - MEASUrement:MEAS<x>:HARMONICSStd {NONE|IEC|IEEE519|CUSTOM}
+        - MEASUrement:MEAS<x>:HARMONICSStd {NONE| IEC| IEEE519| CUSTOM| REVIEEE5192022}
         - MEASUrement:MEAS<x>:HARMONICSStd?
 
     **Info:**
@@ -12414,6 +14363,7 @@ class MeasurementMeasItemHarmonicsstd(SCPICmdWrite, SCPICmdRead):
         - ``NONE`` specifies none as the harmonics test standard.
         - ``IEC`` specifies IEC as the harmonics test standard.
         - ``IEEE519`` specifies IEEE519 as the harmonics test standard.
+        - ``REVIEEE5192022`` specifies REVIEEE5192022 as the harmonics test standard.
         - ``CUSTOM`` specifies that there is a custom harmonics test standard.
     """
 
@@ -13533,6 +15483,32 @@ class MeasurementMeasItemFparameter(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class MeasurementMeasItemForder(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:FORDer`` command.
+
+    **Description:**
+        - This command sets or returns the differential filter order for WBG measurement.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:FORDer?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:FORDer?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:FORDer value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:FORDer <NR3>
+        - MEASUrement:MEAS<x>:FORDer?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR3>`` specifies the differential filter order of the WBG measurement.
+    """
+
+
 class MeasurementMeasItemFiltersRamptime(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:FILTers:RAMPtime`` command.
 
@@ -14157,6 +16133,113 @@ class MeasurementMeasItemFailcount(SCPICmdRead):
     """
 
 
+class MeasurementMeasItemEyerender(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:EYERender`` command.
+
+    **Description:**
+        - This command sets or queries the eye rendering method.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:EYERender?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:EYERender?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:EYERender value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:EYERender {FAst|COMPlete}
+        - MEASUrement:MEAS<x>:EYERender?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``FAst`` sets the eye rendering method to fast.
+        - ``COMPlete`` sets the eye rendering method to complete.
+    """
+
+
+class MeasurementMeasItemExtenduis(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:EXTENDuis`` command.
+
+    **Description:**
+        - This command sets or returns number of UIs considered for analysis of eye width or eye
+          height measurement.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:EXTENDuis?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:EXTENDuis?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:EXTENDuis value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:EXTENDuis <NR1>
+        - MEASUrement:MEAS<x>:EXTENDuis?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR1>`` is the number of UIs considered for analysis.
+    """
+
+
+class MeasurementMeasItemEinterpolation(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:EINTerpolation`` command.
+
+    **Description:**
+        - This command sets or queries whether dot mode eye diagram is enabled.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:EINTerpolation?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:EINTerpolation?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``MEASUrement:MEAS<x>:EINTerpolation value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:EINTerpolation {ON|OFF}
+        - MEASUrement:MEAS<x>:EINTerpolation?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``ON`` enables interpolation between samples.
+        - ``OFF`` disables interpolation between samples.
+    """
+
+
+class MeasurementMeasItemEinductance(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:EINDuctance`` command.
+
+    **Description:**
+        - This command sets or returns the effective inductance for WBG measurement.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:EINDuctance?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:EINDuctance?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:EINDuctance value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:EINDuctance <NR3>
+        - MEASUrement:MEAS<x>:EINDuctance?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR3>`` specifies the value for effective inductance of the WBG measurement.
+    """
+
+
 class MeasurementMeasItemEequal(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:EEQUal`` command.
 
@@ -14179,6 +16262,7 @@ class MeasurementMeasItemEequal(SCPICmdWrite, SCPICmdRead):
         - MEASUrement:MEAS<x>:EEQUal?
 
     **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
         - ``ON`` specifies the edge qualifier settings has been turned on.
         - ``OFF`` specifies the edge qualifier settings has been turned off.
     """
@@ -14996,13 +17080,14 @@ class MeasurementMeasItemCyclemode(SCPICmdWrite, SCPICmdRead):
 
     ::
 
-        - MEASUrement:MEAS<x>:CYCLemode {RECORD|CYCLE}
+        - MEASUrement:MEAS<x>:CYCLemode {RECORD|CYCLE|ROTATION}
         - MEASUrement:MEAS<x>:CYCLemode?
 
     **Info:**
         - ``MEAS<x>`` specifies the measurement number.
         - ``RECORD`` specifies that the measurement is taken over the whole record.
         - ``CYCLE`` specifies that measurements are taken on each cycle of the source.
+        - ``ROTATION`` specifies that measurements are taken on a rotation of the source.
     """
 
 
@@ -15303,6 +17388,37 @@ class MeasurementMeasItemCommonmode(SCPICmdRead):
             - ``DOUBLE`` specifies double sources.
         """
         return self._sources
+
+
+class MeasurementMeasItemClockrecoveryTdcompensation(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation`` command.
+
+    **Description:**
+        - This command sets the PLL clock recovery loop feedback time-constants such that the actual
+          transfer function matches closely to a mathematical filter polynomial. This will affect
+          measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 0.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation {0|1}
+        - MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``0`` specifies automatic transition density compensation is off.
+        - ``1`` specifies automatic transition density compensation is on.
+    """
 
 
 class MeasurementMeasItemClockrecoveryStandard(SCPICmdWrite):
@@ -15932,6 +18048,7 @@ class MeasurementMeasItemClockrecovery(SCPICmdRead):
         - ``.model``: The ``MEASUrement:MEAS<x>:CLOCKRecovery:MODel`` command.
         - ``.nominaloffset``: The ``MEASUrement:MEAS<x>:CLOCKRecovery:NOMINALOFFset`` command.
         - ``.standard``: The ``MEASUrement:MEAS<x>:CLOCKRecovery:STAndard`` command.
+        - ``.tdcompensation``: The ``MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation`` command.
     """
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
@@ -15977,6 +18094,9 @@ class MeasurementMeasItemClockrecovery(SCPICmdRead):
         )
         self._standard = MeasurementMeasItemClockrecoveryStandard(
             device, f"{self._cmd_syntax}:STAndard"
+        )
+        self._tdcompensation = MeasurementMeasItemClockrecoveryTdcompensation(
+            device, f"{self._cmd_syntax}:TDCOMPensation"
         )
 
     @property
@@ -16454,6 +18574,39 @@ class MeasurementMeasItemClockrecovery(SCPICmdRead):
             - ``MEAS<x>`` specifies the measurement number.
         """  # noqa: E501
         return self._standard
+
+    @property
+    def tdcompensation(self) -> MeasurementMeasItemClockrecoveryTdcompensation:
+        """Return the ``MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation`` command.
+
+        **Description:**
+            - This command sets the PLL clock recovery loop feedback time-constants such that the
+              actual transfer function matches closely to a mathematical filter polynomial. This
+              will affect measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is
+              set to 0.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation {0|1}
+            - MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``0`` specifies automatic transition density compensation is off.
+            - ``1`` specifies automatic transition density compensation is on.
+        """
+        return self._tdcompensation
 
 
 class MeasurementMeasItemCcresultsCurrentacqStddev(SCPICmdRead):
@@ -17137,6 +19290,32 @@ class MeasurementMeasItemCcresults(SCPICmdRead):
         return self._currentacq
 
 
+class MeasurementMeasItemBvoltage(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:BVOLTage`` command.
+
+    **Description:**
+        - This command sets or returns the bias voltage for WBG measurement.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:BVOLTage?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:BVOLTage?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:BVOLTage value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:BVOLTage <NR3>
+        - MEASUrement:MEAS<x>:BVOLTage?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR3>`` specifies the value for bias voltage of the WBG measurement.
+    """
+
+
 class MeasurementMeasItemBurstedgtype(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:BURSTEDGTYPe`` command.
 
@@ -17305,6 +19484,32 @@ class MeasurementMeasItemBitcfgmode(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class MeasurementMeasItemBitabsolute(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:BITAbsolute`` command.
+
+    **Description:**
+        - This command sets or queries the bit center as an absolute value.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:BITAbsolute?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:BITAbsolute?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:BITAbsolute value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:BITAbsolute <NR3>
+        - MEASUrement:MEAS<x>:BITAbsolute?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR3>`` is the value for the bit center.
+    """
+
+
 class MeasurementMeasItemBin(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:BIN`` command.
 
@@ -17423,6 +19628,33 @@ class MeasurementMeasItemBer(SCPICmdWrite, SCPICmdRead):
         return self._targetber
 
 
+class MeasurementMeasItemAmethod(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:AMEThod`` command.
+
+    **Description:**
+        - This command sets or queries the analysis method used to compute eye width or eye height.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:AMEThod?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:AMEThod?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:AMEThod value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:MEAS<x>:AMEThod {PARAmetric|HISTogram}
+        - MEASUrement:MEAS<x>:AMEThod?
+
+    **Info:**
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``PARAmetric`` sets the analysis method to parametric.
+        - ``HISTogram`` sets the analysis method to histogram.
+    """
+
+
 class MeasurementMeasItemAchannels(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:ACHANnels`` command.
 
@@ -17494,14 +19726,17 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
     Properties:
         - ``.abandwidth``: The ``MEASUrement:MEAS<x>:ABANdwidth`` command.
         - ``.achannels``: The ``MEASUrement:MEAS<x>:ACHANnels`` command.
+        - ``.amethod``: The ``MEASUrement:MEAS<x>:AMEThod`` command.
         - ``.ber``: The ``MEASUrement:MEAS<x>:BER`` command.
         - ``.bin``: The ``MEASUrement:MEAS<x>:BIN`` command.
+        - ``.bitabsolute``: The ``MEASUrement:MEAS<x>:BITAbsolute`` command.
         - ``.bitcfgmode``: The ``MEASUrement:MEAS<x>:BITCfgmode`` command.
         - ``.bitend``: The ``MEASUrement:MEAS<x>:BITEnd`` command.
         - ``.bitpcnt``: The ``MEASUrement:MEAS<x>:BITPcnt`` command.
         - ``.bitstart``: The ``MEASUrement:MEAS<x>:BITSTart`` command.
         - ``.bittype``: The ``MEASUrement:MEAS<x>:BITType`` command.
         - ``.burstedgtype``: The ``MEASUrement:MEAS<x>:BURSTEDGTYPe`` command.
+        - ``.bvoltage``: The ``MEASUrement:MEAS<x>:BVOLTage`` command.
         - ``.ccresults``: The ``MEASUrement:MEAS<x>:CCRESUlts`` command tree.
         - ``.clockrecovery``: The ``MEASUrement:MEAS<x>:CLOCKRecovery`` command tree.
         - ``.commonmode``: The ``MEASUrement:MEAS<x>:COMMONMode`` command tree.
@@ -17520,10 +19755,15 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.edgequalifier``: The ``MEASUrement:MEAS<x>:EDGEQUALifier`` command.
         - ``.edges``: The ``MEASUrement:MEAS<x>:EDGES`` command tree.
         - ``.eequal``: The ``MEASUrement:MEAS<x>:EEQUal`` command.
+        - ``.einductance``: The ``MEASUrement:MEAS<x>:EINDuctance`` command.
+        - ``.einterpolation``: The ``MEASUrement:MEAS<x>:EINTerpolation`` command.
+        - ``.extenduis``: The ``MEASUrement:MEAS<x>:EXTENDuis`` command.
+        - ``.eyerender``: The ``MEASUrement:MEAS<x>:EYERender`` command.
         - ``.failcount``: The ``MEASUrement:MEAS<x>:FAILCount`` command.
         - ``.filterrangefrom``: The ``MEASUrement:MEAS<x>:FILTERRANGEFROM`` command.
         - ``.filterrangeto``: The ``MEASUrement:MEAS<x>:FILTERRANGETO`` command.
         - ``.filters``: The ``MEASUrement:MEAS<x>:FILTers`` command tree.
+        - ``.forder``: The ``MEASUrement:MEAS<x>:FORDer`` command.
         - ``.fparameter``: The ``MEASUrement:MEAS<x>:FPARAmeter`` command.
         - ``.freq``: The ``MEASUrement:MEAS<x>:FREQ`` command.
         - ``.fromedgesearchdirect``: The ``MEASUrement:MEAS<x>:FROMEDGESEARCHDIRect`` command.
@@ -17578,11 +19818,14 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.patterntype``: The ``MEASUrement:MEAS<x>:PATTERNTYPe`` command.
         - ``.pcount``: The ``MEASUrement:MEAS<x>:PCOUNt`` command.
         - ``.perfreq``: The ``MEASUrement:MEAS<x>:PERFREQ`` command tree.
+        - ``.pfrequency``: The ``MEASUrement:MEAS<x>:PFREquency`` command.
         - ``.polarity``: The ``MEASUrement:MEAS<x>:POLarity`` command.
         - ``.population``: The ``MEASUrement:MEAS<x>:POPUlation`` command tree.
         - ``.popower``: The ``MEASUrement:MEAS<x>:POPower`` command.
         - ``.powerfactor``: The ``MEASUrement:MEAS<x>:POWERFACtor`` command.
         - ``.pregion``: The ``MEASUrement:MEAS<x>:PREGion`` command.
+        - ``.presistance``: The ``MEASUrement:MEAS<x>:PRESistance`` command.
+        - ``.pthreshold``: The ``MEASUrement:MEAS<x>:PTHReshold`` command.
         - ``.pwidth``: The ``MEASUrement:MEAS<x>:PWIDth`` command.
         - ``.redge``: The ``MEASUrement:MEAS<x>:REDGe`` command.
         - ``.reflevels``: The ``MEASUrement:MEAS<x>:REFLevels`` command tree.
@@ -17591,7 +19834,9 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.refvoltageval``: The ``MEASUrement:MEAS<x>:REFVOLTAGE<x>Val`` command.
         - ``.refvoltage``: The ``MEASUrement:MEAS<x>:REFVoltage`` command.
         - ``.results``: The ``MEASUrement:MEAS<x>:RESUlts`` command tree.
+        - ``.rfrequency``: The ``MEASUrement:MEAS<x>:RFREquency`` command.
         - ``.ripplefreqval``: The ``MEASUrement:MEAS<x>:RIPPLEFREQ<x>Val`` command.
+        - ``.rrange``: The ``MEASUrement:MEAS<x>:RRANGE`` command.
         - ``.sequence``: The ``MEASUrement:MEAS<x>:SEQuence`` command.
         - ``.signalfrequency``: The ``MEASUrement:MEAS<x>:SIGNALFREQUEncy`` command.
         - ``.signaltype``: The ``MEASUrement:MEAS<x>:SIGNALType`` command.
@@ -17610,17 +19855,22 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.stltype``: The ``MEASUrement:MEAS<x>:STLTYpe`` command.
         - ``.stsdirection``: The ``MEASUrement:MEAS<x>:STSDirection`` command.
         - ``.stype``: The ``MEASUrement:MEAS<x>:STYPe`` command.
+        - ``.subgroup``: The ``MEASUrement:MEAS<x>:SUBGROUP`` command tree.
         - ``.sunits``: The ``MEASUrement:MEAS<x>:SUNits`` command.
         - ``.tckavg``: The ``MEASUrement:MEAS<x>:TCKAVG`` command.
         - ``.tconstant``: The ``MEASUrement:MEAS<x>:TCONstant`` command.
         - ``.timingmode``: The ``MEASUrement:MEAS<x>:TIMINGMode`` command.
+        - ``.tlevel``: The ``MEASUrement:MEAS<x>:TLEVel`` command.
         - ``.tmethod``: The ``MEASUrement:MEAS<x>:TMEThod`` command.
         - ``.toedgesearchdirect``: The ``MEASUrement:MEAS<x>:TOEDGESEARCHDIRect`` command.
         - ``.toedge``: The ``MEASUrement:MEAS<x>:TOEdge`` command.
         - ``.tosymbol``: The ``MEASUrement:MEAS<x>:TOSYmbol`` command tree.
         - ``.transition``: The ``MEASUrement:MEAS<x>:TRANSition`` command.
         - ``.type``: The ``MEASUrement:MEAS<x>:TYPe`` command.
+        - ``.vlevel``: The ``MEASUrement:MEAS<x>:VLEVel`` command.
         - ``.waittime``: The ``MEASUrement:MEAS<x>:WAITTime`` command.
+        - ``.wbg``: The ``MEASUrement:MEAS<x>:WBG`` command tree.
+        - ``.width``: The ``MEASUrement:MEAS<x>:WIDTh`` command.
         - ``.windowlength``: The ``MEASUrement:MEAS<x>:WINDOWLENgth`` command.
         - ``.xunit``: The ``MEASUrement:MEAS<x>:XUNIT`` command.
         - ``.yunit``: The ``MEASUrement:MEAS<x>:YUNIT`` command.
@@ -17631,8 +19881,12 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._abandwidth = MeasurementMeasItemAbandwidth(device, f"{self._cmd_syntax}:ABANdwidth")
         self._achannels = MeasurementMeasItemAchannels(device, f"{self._cmd_syntax}:ACHANnels")
+        self._amethod = MeasurementMeasItemAmethod(device, f"{self._cmd_syntax}:AMEThod")
         self._ber = MeasurementMeasItemBer(device, f"{self._cmd_syntax}:BER")
         self._bin = MeasurementMeasItemBin(device, f"{self._cmd_syntax}:BIN")
+        self._bitabsolute = MeasurementMeasItemBitabsolute(
+            device, f"{self._cmd_syntax}:BITAbsolute"
+        )
         self._bitcfgmode = MeasurementMeasItemBitcfgmode(device, f"{self._cmd_syntax}:BITCfgmode")
         self._bitend = MeasurementMeasItemBitend(device, f"{self._cmd_syntax}:BITEnd")
         self._bitpcnt = MeasurementMeasItemBitpcnt(device, f"{self._cmd_syntax}:BITPcnt")
@@ -17641,6 +19895,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._burstedgtype = MeasurementMeasItemBurstedgtype(
             device, f"{self._cmd_syntax}:BURSTEDGTYPe"
         )
+        self._bvoltage = MeasurementMeasItemBvoltage(device, f"{self._cmd_syntax}:BVOLTage")
         self._ccresults = MeasurementMeasItemCcresults(device, f"{self._cmd_syntax}:CCRESUlts")
         self._clockrecovery = MeasurementMeasItemClockrecovery(
             device, f"{self._cmd_syntax}:CLOCKRecovery"
@@ -17673,6 +19928,14 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         )
         self._edges = MeasurementMeasItemEdges(device, f"{self._cmd_syntax}:EDGES")
         self._eequal = MeasurementMeasItemEequal(device, f"{self._cmd_syntax}:EEQUal")
+        self._einductance = MeasurementMeasItemEinductance(
+            device, f"{self._cmd_syntax}:EINDuctance"
+        )
+        self._einterpolation = MeasurementMeasItemEinterpolation(
+            device, f"{self._cmd_syntax}:EINTerpolation"
+        )
+        self._extenduis = MeasurementMeasItemExtenduis(device, f"{self._cmd_syntax}:EXTENDuis")
+        self._eyerender = MeasurementMeasItemEyerender(device, f"{self._cmd_syntax}:EYERender")
         self._failcount = MeasurementMeasItemFailcount(device, f"{self._cmd_syntax}:FAILCount")
         self._filterrangefrom = MeasurementMeasItemFilterrangefrom(
             device, f"{self._cmd_syntax}:FILTERRANGEFROM"
@@ -17681,6 +19944,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             device, f"{self._cmd_syntax}:FILTERRANGETO"
         )
         self._filters = MeasurementMeasItemFilters(device, f"{self._cmd_syntax}:FILTers")
+        self._forder = MeasurementMeasItemForder(device, f"{self._cmd_syntax}:FORDer")
         self._fparameter = MeasurementMeasItemFparameter(device, f"{self._cmd_syntax}:FPARAmeter")
         self._freq = MeasurementMeasItemFreq(device, f"{self._cmd_syntax}:FREQ")
         self._fromedgesearchdirect = MeasurementMeasItemFromedgesearchdirect(
@@ -17783,6 +20047,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         )
         self._pcount = MeasurementMeasItemPcount(device, f"{self._cmd_syntax}:PCOUNt")
         self._perfreq = MeasurementMeasItemPerfreq(device, f"{self._cmd_syntax}:PERFREQ")
+        self._pfrequency = MeasurementMeasItemPfrequency(device, f"{self._cmd_syntax}:PFREquency")
         self._polarity = MeasurementMeasItemPolarity(device, f"{self._cmd_syntax}:POLarity")
         self._population = MeasurementMeasItemPopulation(device, f"{self._cmd_syntax}:POPUlation")
         self._popower = MeasurementMeasItemPopower(device, f"{self._cmd_syntax}:POPower")
@@ -17790,6 +20055,10 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             device, f"{self._cmd_syntax}:POWERFACtor"
         )
         self._pregion = MeasurementMeasItemPregion(device, f"{self._cmd_syntax}:PREGion")
+        self._presistance = MeasurementMeasItemPresistance(
+            device, f"{self._cmd_syntax}:PRESistance"
+        )
+        self._pthreshold = MeasurementMeasItemPthreshold(device, f"{self._cmd_syntax}:PTHReshold")
         self._pwidth = MeasurementMeasItemPwidth(device, f"{self._cmd_syntax}:PWIDth")
         self._redge = MeasurementMeasItemRedge(device, f"{self._cmd_syntax}:REDGe")
         self._reflevels = MeasurementMeasItemReflevels(device, f"{self._cmd_syntax}:REFLevels")
@@ -17804,6 +20073,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         )
         self._refvoltage = MeasurementMeasItemRefvoltage(device, f"{self._cmd_syntax}:REFVoltage")
         self._results = MeasurementMeasItemResults(device, f"{self._cmd_syntax}:RESUlts")
+        self._rfrequency = MeasurementMeasItemRfrequency(device, f"{self._cmd_syntax}:RFREquency")
         self._ripplefreqval: Dict[
             int, MeasurementMeasItemRipplefreqvalItem
         ] = DefaultDictPassKeyToFactory(
@@ -17811,6 +20081,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
                 device, f"{self._cmd_syntax}:RIPPLEFREQ{x}Val"
             )
         )
+        self._rrange = MeasurementMeasItemRrange(device, f"{self._cmd_syntax}:RRANGE")
         self._sequence = MeasurementMeasItemSequence(device, f"{self._cmd_syntax}:SEQuence")
         self._signalfrequency = MeasurementMeasItemSignalfrequency(
             device, f"{self._cmd_syntax}:SIGNALFREQUEncy"
@@ -17837,10 +20108,12 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             device, f"{self._cmd_syntax}:STSDirection"
         )
         self._stype = MeasurementMeasItemStype(device, f"{self._cmd_syntax}:STYPe")
+        self._subgroup = MeasurementMeasItemSubgroup(device, f"{self._cmd_syntax}:SUBGROUP")
         self._sunits = MeasurementMeasItemSunits(device, f"{self._cmd_syntax}:SUNits")
         self._tckavg = MeasurementMeasItemTckavg(device, f"{self._cmd_syntax}:TCKAVG")
         self._tconstant = MeasurementMeasItemTconstant(device, f"{self._cmd_syntax}:TCONstant")
         self._timingmode = MeasurementMeasItemTimingmode(device, f"{self._cmd_syntax}:TIMINGMode")
+        self._tlevel = MeasurementMeasItemTlevel(device, f"{self._cmd_syntax}:TLEVel")
         self._tmethod = MeasurementMeasItemTmethod(device, f"{self._cmd_syntax}:TMEThod")
         self._toedgesearchdirect = MeasurementMeasItemToedgesearchdirect(
             device, f"{self._cmd_syntax}:TOEDGESEARCHDIRect"
@@ -17849,7 +20122,10 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._tosymbol = MeasurementMeasItemTosymbol(device, f"{self._cmd_syntax}:TOSYmbol")
         self._transition = MeasurementMeasItemTransition(device, f"{self._cmd_syntax}:TRANSition")
         self._type = MeasurementMeasItemType(device, f"{self._cmd_syntax}:TYPe")
+        self._vlevel = MeasurementMeasItemVlevel(device, f"{self._cmd_syntax}:VLEVel")
         self._waittime = MeasurementMeasItemWaittime(device, f"{self._cmd_syntax}:WAITTime")
+        self._wbg = MeasurementMeasItemWbg(device, f"{self._cmd_syntax}:WBG")
+        self._width = MeasurementMeasItemWidth(device, f"{self._cmd_syntax}:WIDTh")
         self._windowlength = MeasurementMeasItemWindowlength(
             device, f"{self._cmd_syntax}:WINDOWLENgth"
         )
@@ -17915,6 +20191,35 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._achannels
 
     @property
+    def amethod(self) -> MeasurementMeasItemAmethod:
+        """Return the ``MEASUrement:MEAS<x>:AMEThod`` command.
+
+        **Description:**
+            - This command sets or queries the analysis method used to compute eye width or eye
+              height.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:AMEThod?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:AMEThod?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:AMEThod value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:AMEThod {PARAmetric|HISTogram}
+            - MEASUrement:MEAS<x>:AMEThod?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``PARAmetric`` sets the analysis method to parametric.
+            - ``HISTogram`` sets the analysis method to histogram.
+        """
+        return self._amethod
+
+    @property
     def ber(self) -> MeasurementMeasItemBer:
         """Return the ``MEASUrement:MEAS<x>:BER`` command.
 
@@ -17972,6 +20277,34 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``<NR3>`` is the bin count.
         """
         return self._bin
+
+    @property
+    def bitabsolute(self) -> MeasurementMeasItemBitabsolute:
+        """Return the ``MEASUrement:MEAS<x>:BITAbsolute`` command.
+
+        **Description:**
+            - This command sets or queries the bit center as an absolute value.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:BITAbsolute?``
+              query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:BITAbsolute?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:BITAbsolute value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:BITAbsolute <NR3>
+            - MEASUrement:MEAS<x>:BITAbsolute?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR3>`` is the value for the bit center.
+        """
+        return self._bitabsolute
 
     @property
     def bitcfgmode(self) -> MeasurementMeasItemBitcfgmode:
@@ -18151,6 +20484,33 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._burstedgtype
 
     @property
+    def bvoltage(self) -> MeasurementMeasItemBvoltage:
+        """Return the ``MEASUrement:MEAS<x>:BVOLTage`` command.
+
+        **Description:**
+            - This command sets or returns the bias voltage for WBG measurement.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:BVOLTage?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:BVOLTage?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:BVOLTage value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:BVOLTage <NR3>
+            - MEASUrement:MEAS<x>:BVOLTage?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR3>`` specifies the value for bias voltage of the WBG measurement.
+        """
+        return self._bvoltage
+
+    @property
     def ccresults(self) -> MeasurementMeasItemCcresults:
         """Return the ``MEASUrement:MEAS<x>:CCRESUlts`` command tree.
 
@@ -18199,6 +20559,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``.model``: The ``MEASUrement:MEAS<x>:CLOCKRecovery:MODel`` command.
             - ``.nominaloffset``: The ``MEASUrement:MEAS<x>:CLOCKRecovery:NOMINALOFFset`` command.
             - ``.standard``: The ``MEASUrement:MEAS<x>:CLOCKRecovery:STAndard`` command.
+            - ``.tdcompensation``: The ``MEASUrement:MEAS<x>:CLOCKRecovery:TDCOMPensation`` command.
         """
         return self._clockrecovery
 
@@ -18353,13 +20714,14 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         ::
 
-            - MEASUrement:MEAS<x>:CYCLemode {RECORD|CYCLE}
+            - MEASUrement:MEAS<x>:CYCLemode {RECORD|CYCLE|ROTATION}
             - MEASUrement:MEAS<x>:CYCLemode?
 
         **Info:**
             - ``MEAS<x>`` specifies the measurement number.
             - ``RECORD`` specifies that the measurement is taken over the whole record.
             - ``CYCLE`` specifies that measurements are taken on each cycle of the source.
+            - ``ROTATION`` specifies that measurements are taken on a rotation of the source.
         """
         return self._cyclemode
 
@@ -18616,10 +20978,125 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - MEASUrement:MEAS<x>:EEQUal?
 
         **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
             - ``ON`` specifies the edge qualifier settings has been turned on.
             - ``OFF`` specifies the edge qualifier settings has been turned off.
         """
         return self._eequal
+
+    @property
+    def einductance(self) -> MeasurementMeasItemEinductance:
+        """Return the ``MEASUrement:MEAS<x>:EINDuctance`` command.
+
+        **Description:**
+            - This command sets or returns the effective inductance for WBG measurement.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:EINDuctance?``
+              query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:EINDuctance?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:EINDuctance value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:EINDuctance <NR3>
+            - MEASUrement:MEAS<x>:EINDuctance?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR3>`` specifies the value for effective inductance of the WBG measurement.
+        """
+        return self._einductance
+
+    @property
+    def einterpolation(self) -> MeasurementMeasItemEinterpolation:
+        """Return the ``MEASUrement:MEAS<x>:EINTerpolation`` command.
+
+        **Description:**
+            - This command sets or queries whether dot mode eye diagram is enabled.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:EINTerpolation?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MEASUrement:MEAS<x>:EINTerpolation?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:EINTerpolation value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:EINTerpolation {ON|OFF}
+            - MEASUrement:MEAS<x>:EINTerpolation?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``ON`` enables interpolation between samples.
+            - ``OFF`` disables interpolation between samples.
+        """
+        return self._einterpolation
+
+    @property
+    def extenduis(self) -> MeasurementMeasItemExtenduis:
+        """Return the ``MEASUrement:MEAS<x>:EXTENDuis`` command.
+
+        **Description:**
+            - This command sets or returns number of UIs considered for analysis of eye width or eye
+              height measurement.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:EXTENDuis?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:EXTENDuis?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:EXTENDuis value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:EXTENDuis <NR1>
+            - MEASUrement:MEAS<x>:EXTENDuis?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR1>`` is the number of UIs considered for analysis.
+        """
+        return self._extenduis
+
+    @property
+    def eyerender(self) -> MeasurementMeasItemEyerender:
+        """Return the ``MEASUrement:MEAS<x>:EYERender`` command.
+
+        **Description:**
+            - This command sets or queries the eye rendering method.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:EYERender?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:EYERender?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:EYERender value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:EYERender {FAst|COMPlete}
+            - MEASUrement:MEAS<x>:EYERender?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``FAst`` sets the eye rendering method to fast.
+            - ``COMPlete`` sets the eye rendering method to complete.
+        """
+        return self._eyerender
 
     @property
     def failcount(self) -> MeasurementMeasItemFailcount:
@@ -18722,6 +21199,33 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``.ramptime``: The ``MEASUrement:MEAS<x>:FILTers:RAMPtime`` command.
         """
         return self._filters
+
+    @property
+    def forder(self) -> MeasurementMeasItemForder:
+        """Return the ``MEASUrement:MEAS<x>:FORDer`` command.
+
+        **Description:**
+            - This command sets or returns the differential filter order for WBG measurement.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:FORDer?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:FORDer?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:FORDer value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:FORDer <NR3>
+            - MEASUrement:MEAS<x>:FORDer?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR3>`` specifies the differential filter order of the WBG measurement.
+        """
+        return self._forder
 
     @property
     def fparameter(self) -> MeasurementMeasItemFparameter:
@@ -19081,7 +21585,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         ::
 
-            - MEASUrement:MEAS<x>:HARMONICSStd {NONE|IEC|IEEE519|CUSTOM}
+            - MEASUrement:MEAS<x>:HARMONICSStd {NONE| IEC| IEEE519| CUSTOM| REVIEEE5192022}
             - MEASUrement:MEAS<x>:HARMONICSStd?
 
         **Info:**
@@ -19089,6 +21593,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``NONE`` specifies none as the harmonics test standard.
             - ``IEC`` specifies IEC as the harmonics test standard.
             - ``IEEE519`` specifies IEEE519 as the harmonics test standard.
+            - ``REVIEEE5192022`` specifies REVIEEE5192022 as the harmonics test standard.
             - ``CUSTOM`` specifies that there is a custom harmonics test standard.
         """
         return self._harmonicsstd
@@ -20222,6 +22727,33 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._perfreq
 
     @property
+    def pfrequency(self) -> MeasurementMeasItemPfrequency:
+        """Return the ``MEASUrement:MEAS<x>:PFREquency`` command.
+
+        **Description:**
+            - This command sets or returns the PJ max frequency value of PSIJ measurement.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:PFREquency?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:PFREquency?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:PFREquency value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:PFREquency <NR3>
+            - MEASUrement:MEAS<x>:PFREquency?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR3>`` specifies the value of PJ max frequency for PSIJ measurement.
+        """
+        return self._pfrequency
+
+    @property
     def polarity(self) -> MeasurementMeasItemPolarity:
         """Return the ``MEASUrement:MEAS<x>:POLarity`` command.
 
@@ -20353,6 +22885,61 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``MPULse`` is the pulse region as Mpulse.
         """
         return self._pregion
+
+    @property
+    def presistance(self) -> MeasurementMeasItemPresistance:
+        """Return the ``MEASUrement:MEAS<x>:PRESistance`` command.
+
+        **Description:**
+            - This command sets or returns the probe resistance for WBG measurement.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:PRESistance?``
+              query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:PRESistance?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:PRESistance value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:PRESistance <NR3>
+            - MEASUrement:MEAS<x>:PRESistance?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR3>`` specifies the value for probe resistance of the WBG measurement.
+        """
+        return self._presistance
+
+    @property
+    def pthreshold(self) -> MeasurementMeasItemPthreshold:
+        """Return the ``MEASUrement:MEAS<x>:PTHReshold`` command.
+
+        **Description:**
+            - This command sets or returns the PJ threshold value of PSIJ measurement.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:PTHReshold?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:PTHReshold?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:PTHReshold value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:PTHReshold <NR3>
+            - MEASUrement:MEAS<x>:PTHReshold?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR3>`` specifies the value of PJ threshold for PSIJ measurement.
+        """
+        return self._pthreshold
 
     @property
     def pwidth(self) -> MeasurementMeasItemPwidth:
@@ -20550,6 +23137,33 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._results
 
     @property
+    def rfrequency(self) -> MeasurementMeasItemRfrequency:
+        """Return the ``MEASUrement:MEAS<x>:RFREquency`` command.
+
+        **Description:**
+            - This command sets or returns the center frequency value of PSIJ measurement.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:RFREquency?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:RFREquency?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:RFREquency value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:RFREquency <NR3>
+            - MEASUrement:MEAS<x>:RFREquency?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR3>`` specifies the value of center frequency for PSIJ measurement.
+        """
+        return self._rfrequency
+
+    @property
     def ripplefreqval(self) -> Dict[int, MeasurementMeasItemRipplefreqvalItem]:
         """Return the ``MEASUrement:MEAS<x>:RIPPLEFREQ<x>Val`` command.
 
@@ -20578,6 +23192,33 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``<NR3>`` is the frequency, in the range of 1 Hz to 4 GHz.
         """
         return self._ripplefreqval
+
+    @property
+    def rrange(self) -> MeasurementMeasItemRrange:
+        """Return the ``MEASUrement:MEAS<x>:RRANGE`` command.
+
+        **Description:**
+            - This command sets or returns the span value of PSIJ measurement.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:RRANGE?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:RRANGE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:RRANGE value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:RRANGE <NR3>
+            - MEASUrement:MEAS<x>:RRANGE?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR3>`` specifies the value of span for PSIJ measurement.
+        """
+        return self._rrange
 
     @property
     def sequence(self) -> MeasurementMeasItemSequence:
@@ -21073,6 +23714,20 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._stype
 
     @property
+    def subgroup(self) -> MeasurementMeasItemSubgroup:
+        """Return the ``MEASUrement:MEAS<x>:SUBGROUP`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:SUBGROUP?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:SUBGROUP?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.results``: The ``MEASUrement:MEAS<x>:SUBGROUP:RESUlts`` command tree.
+        """
+        return self._subgroup
+
+    @property
     def sunits(self) -> MeasurementMeasItemSunits:
         """Return the ``MEASUrement:MEAS<x>:SUNits`` command.
 
@@ -21183,6 +23838,35 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``TWOCLOCKCYCLES`` sets the DDR Timing Mode to use two cycles at a time.
         """
         return self._timingmode
+
+    @property
+    def tlevel(self) -> MeasurementMeasItemTlevel:
+        """Return the ``MEASUrement:MEAS<x>:TLEVel`` command.
+
+        **Description:**
+            - This command sets or queries whether histogram center is percentage relative to unit
+              amplitude or an absolute value, for eye height measurement.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:TLEVel?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:TLEVel?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:TLEVel value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:TLEVel {PERCent|ABSolute}
+            - MEASUrement:MEAS<x>:TLEVel?
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``PERCent`` sets the histogram center as a percentage relative to unit amplitude.
+            - ``ABSolute`` sets the histogram center as an absolute value.
+        """
+        return self._tlevel
 
     @property
     def tmethod(self) -> MeasurementMeasItemTmethod:
@@ -21344,7 +24028,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         ::
 
-            - MEASUrement:MEAS<x>:TYPe {ACCOMMONMODE |ACPR |ACRMS |AMPlITUDE |AREA |BASE |BITAMPLITUDE |BITHIGH | BITLOW |BURSTWIDTH |COMMONMODE |CPOWER |DATARATE |DCD |DDJ |DDRAOS |DDRAOSPERTCK |DDRAOSPERUI |DDRAUS |DDRAUSPERTCK |DDRAUSPERUI |DDRHOLDDIFF |DDRSETUPDIFF |DDRTCHABS |DDRTCHAVERAGE |DDRTCKAVERAGE |DDRTCLABS |DDRTCLAVERAGE |DDRTERRMN |DDRTERRN |DDRTJITCC |DDRTJITDUTY |DDRTJITPER |DDRTPST |DDRTRPRE |DDRTWPRE |DDRVIXAC |DDRTDQSCK |DELAY |DJ |DJDIRAC |DPMOVERSHOOT |DPMUNDERSHOOT |DPMRIPPLE |DPMTURNOFFTIME |DPMTURNONTIME |EYEHIGH |EYELOW |FALLSLEWRATE |FALLTIME |FREQUENCY |F2 |F4 |F8 |HIGH |HEIGHT |HEIGHTBER |HIGHTIME |HOLD |IMDAANGLE |IMDADIRECTION |IMDADQ0 |IMDAEFFICIENCY |IMDAHARMONICS |IMDAMECHPWR |IMDAPOWERQUALITY |IMDASPEED |IMDASYSEFF |IMDATORQUE |JITTERSUMMARY |J2 |J9 |LOW |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUtY |NPERIOD |NPJ |NOVERSHOOT |NWIDTH |OBW |PDUTTY |PERIOD |PHASE |PHASENOISE |PJ |PK2Pk |POVERSHOOT |PWIDTH |QFACTOR |RISESLEWRATE |RISETIME |RJ |RJDIRAC |RMS |SRJ |SSCFREQDEV |SSCMODRATE |SETUP |SKEW |TIE |TIMEOUTSIDELEVEL |TJBER |TNTRATIO |TOP |UNITINTERVAL |VDIFFXOVR |WBGDDT |WBGDIODEDDT |WBGEOFF |WBGEON |WBGERR |WBGIPEAK |WBGIRRM |WBGQRR |WBGTDOFF |WBGTDON |WBGTF |WBGTON |WBGTOFF |WBGTR |WBGTRR |WBGVPEAK |WIDTH |WIDTHBER}
+            - MEASUrement:MEAS<x>:TYPe {ACCOMMONMODE |ACPR |ACRMS |AMPlITUDE |AREA |BASE |BITAMPLITUDE |BITHIGH | BITLOW |BURSTWIDTH |COMMONMODE |CPOWER |DATARATE |DCD |DDJ |DDRAOS |DDRAOSPERTCK |DDRAOSPERUI |DDRAUS |DDRAUSPERTCK |DDRAUSPERUI |DDRHOLDDIFF |DDRSETUPDIFF |DDRTCHABS |DDRTCHAVERAGE |DDRTCKAVERAGE |DDRTCLABS |DDRTCLAVERAGE |DDRTERRMN |DDRTERRN |DDRTJITCC |DDRTJITDUTY |DDRTJITPER |DDRTPST |DDRTRPRE |DDRTWPRE |DDRVIXAC |DDRTDQSCK |DELAY |DJ |DJDIRAC |DPMOVERSHOOT |DPMPSIJ |DPMUNDERSHOOT |DPMRIPPLE |DPMTURNOFFTIME |DPMTURNONTIME |EYEHIGH |EYELOW |FALLSLEWRATE |FALLTIME |FREQUENCY |F2 |F4 |F8 |HIGH |HEIGHT |HEIGHTBER |HIGHTIME |HOLD |IMDAANGLE |IMDADIRECTION |IMDADQ0 |IMDAEFFICIENCY |IMDAHARMONICS |IMDAMECHPWR |IMDAPOWERQUALITY |IMDASPEED |IMDASYSEFF |IMDATORQUE |JITTERSUMMARY |J2 |J9 |LOW |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUtY |NPERIOD |NPJ |NOVERSHOOT |NWIDTH |OBW |PDUTTY |PERIOD |PHASE |PHASENOISE |PJ |PK2Pk |POVERSHOOT |PWIDTH |QFACTOR |RISESLEWRATE |RISETIME |RJ |RJDIRAC |RMS |SRJ |SSCFREQDEV |SSCMODRATE |SETUP |SKEW |TIE |TIMEOUTSIDELEVEL |TJBER |TNTRATIO |TOP |UNITINTERVAL |VDIFFXOVR |WBGDDT |WBGDIODEDDT |WBGEOFF |WBGEON |WBGERR |WBGIPEAK |WBGIRRM |WBGQOSS |WBGQRR |WBGTDOFF |WBGTDON |WBGTF |WBGTON |WBGTOFF |WBGTR |WBGTRR |WBGVPEAK |WIDTH |WIDTHBER}
             - MEASUrement:MEAS<x>:TYPe?
 
         **Info:**
@@ -21359,7 +24043,6 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               This measurement can be made across the entire record, or on each cycle in the record.
             - ``AMPLITUDE`` is the difference between the Top value and the Base value. This
               measurement can be made across the entire record, or on each cycle in the record.
-            - ``Amplitude = High - Low``
             - ``AREA`` is the area under the curve, calculated by integrating the data points. The
               area measured above ground is positive. The area measured below ground is negative.
               This measurement can be made across the entire record, or on each cycle in the record.
@@ -21479,6 +24162,8 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``DPMOVERSHOOT`` is the difference between Maximum and Top, divided by the amplitude.
               This measurement can be made across the entire record or on each cycle in the record
               at the specified reference voltage.
+            - ``DPMPSIJ`` is the Power Supply Induced Jitter. This measurement helps in suppressing
+              the jitter in high speed signals (victim) induced from power rail signals (aggressor).
             - ``DPMUNDERSHOOT`` is the difference between Minimum and Base, divided by the
               amplitude. This measurement can be made across the entire record or on each cycle in
               the record at the specified reference voltage.
@@ -21577,7 +24262,6 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               record, or on each cycle in the record.
             - ``NDUty`` (Negative Duty Cycle) is the ratio of the Negative Pulse Width to the
               Period. This measurement is made on each cycle in the record.
-            - ``Negative Duty Cycle = (Negative Width) / Period × 100%``
             - ``NPERIOD`` (Duration N-Periods) is the time required to complete N cycles. A cycle is
               the time between two adjacent (same direction) crossings of the Mid reference level
               (RM). This measurement is made on each cycle in the record.
@@ -21588,7 +24272,6 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``NOVershoot`` (Negative Overshoot) is the difference between Minimum and Base,
               divided by the Amplitude. This measurement can be made across the entire record, or on
               each cycle in the record.
-            - ``Negative Overshoot = (Base - Minimum) / Amplitude × 100%)``
             - ``NWIdth`` (Negative Pulse Width) is the time the signal remains below the Mid
               reference level (RM). This measurement is made on each cycle in the record.
             - ``OBW`` (Occupied Bandwidth) refers to the bandwidth, including energy of a certain
@@ -21596,7 +24279,6 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               channel as the center.
             - ``PDUTY`` (Positive Duty Cycle) is the ratio of the Positive Pulse Width to the
               Period. This measurement is made on each cycle in the record.
-            - ``Positive Duty Cycle = (Positive Width)/Period × 100%``
             - ``PERIOD`` is the time required to complete a cycle. A cycle is the time between two
               adjacent (same direction) crossings of the Mid reference level (RM). This measurement
               is made on each cycle in the record.
@@ -21615,7 +24297,6 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``POVERSHOOT`` (Positive Overshoot) is the difference between Maximum and Top, divided
               by the Amplitude. This measurement can be made across the entire record, or on each
               cycle in the record.
-            - ``Positive Overshoot = (Maximum - Top) / Amplitude ×100%``
             - ``PWIDTH`` (Positive Pulse Width) is the time the signal remains above the Mid
               reference level (RM). This measurement is made on each cycle in the record.
             - ``QFACTOR`` (Q-Factor) is the ratio of the vertical eye opening to RMS vertical noise
@@ -21695,6 +24376,8 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               Requires a WBG-DPT License.
             - ``WBGIRRM`` (Irrm) measures the maximum current dissipated in the Power Device in the
               reverse recovery region. Requires a WBG-DPT License.
+            - ``WBGQOSS`` (Qoss) is the charge that must be supplied to the output capacitance of
+              the power device during a specified time interval. Requires a WBG-DPT License.
             - ``WBGQRR`` (Qrr) measures the reverse recovery charge in the Power Device using the
               configured levels. Requires a WBG-DPT License.
             - ``WBGTDOFF`` (Td(off)) measures the turn off delay time of the Power Device in the off
@@ -21724,6 +24407,35 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._type
 
     @property
+    def vlevel(self) -> MeasurementMeasItemVlevel:
+        """Return the ``MEASUrement:MEAS<x>:VLEVel`` command.
+
+        **Description:**
+            - This command sets or queries whether histogram center is percentage relative to unit
+              interval or an absolute value for eye width measurement.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:VLEVel?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:VLEVel?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:VLEVel value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:VLEVel {PERCent|ABSolute}
+            - MEASUrement:MEAS<x>:VLEVel?
+
+        **Info:**
+            - ``MEAS<x>`` is the measurement number.
+            - ``PERCent`` sets the histogram center as a percentage relative to unit interval.
+            - ``ABSolute`` sets the histogram center as an absolute value.
+        """
+        return self._vlevel
+
+    @property
     def waittime(self) -> MeasurementMeasItemWaittime:
         """Return the ``MEASUrement:MEAS<x>:WAITTime`` command.
 
@@ -21749,6 +24461,60 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``<NR2>`` is the wait time, in the range of 1 s to 500 s.
         """
         return self._waittime
+
+    @property
+    def wbg(self) -> MeasurementMeasItemWbg:
+        """Return the ``MEASUrement:MEAS<x>:WBG`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WBG?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WBG?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+
+        **Info:**
+            - ``MEAS<x>`` specifies the measurement number.
+
+        Sub-properties:
+            - ``.afgsetup``: The ``MEASUrement:MEAS<x>:WBG:AFGSetup`` command.
+            - ``.afgaddress``: The ``MEASUrement:MEAS<x>:WBG:AFGaddress`` command.
+            - ``.cstatus``: The ``MEASUrement:MEAS<x>:WBG:CSTatus`` command.
+            - ``.gtype``: The ``MEASUrement:MEAS<x>:WBG:GTYPe`` command.
+            - ``.high``: The ``MEASUrement:MEAS<x>:WBG:HIGH`` command.
+            - ``.load``: The ``MEASUrement:MEAS<x>:WBG:LOAD`` command.
+            - ``.low``: The ``MEASUrement:MEAS<x>:WBG:LOW`` command.
+            - ``.npuls``: The ``MEASUrement:MEAS<x>:WBG:NPULs`` command.
+            - ``.pgval``: The ``MEASUrement:MEAS<x>:WBG:PG<x>Val`` command.
+            - ``.pwval``: The ``MEASUrement:MEAS<x>:WBG:PW<x>Val`` command.
+            - ``.timer``: The ``MEASUrement:MEAS<x>:WBG:TIMer`` command.
+        """
+        return self._wbg
+
+    @property
+    def width(self) -> MeasurementMeasItemWidth:
+        """Return the ``MEASUrement:MEAS<x>:WIDTh`` command.
+
+        **Description:**
+            - This command sets or queries the histogram width in terms of percentage.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:WIDTh?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:WIDTh?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:WIDTh value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:MEAS<x>:WIDTh <NR1>
+            - MEASUrement:MEAS<x>:WIDTh?
+
+        **Info:**
+            - ``MEAS<x>`` is the measurement number.
+            - ``<NR1>`` is the value for the width.
+        """
+        return self._width
 
     @property
     def windowlength(self) -> MeasurementMeasItemWindowlength:
@@ -21862,7 +24628,7 @@ class MeasurementMathItemReflevelsPercentRisemid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MATH<x>:REFLevels:PERCent:RISEMid`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the mid reference level of the rising edge when the measurement
           ref level method is set to percent. The math number is specified by x.
 
@@ -21893,7 +24659,7 @@ class MeasurementMathItemReflevelsPercentRiselow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MATH<x>:REFLevels:PERCent:RISELow`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the low reference level of the rising edge when the measurement
           ref level method is set to percent. The math number is specified by x.
 
@@ -21924,7 +24690,7 @@ class MeasurementMathItemReflevelsPercentRisehigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MATH<x>:REFLevels:PERCent:RISEHigh`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the high reference level of the rising edge when the measurement
           ref level method is set to percent. The math number is specified by x. The measurement
           number is specified by x.
@@ -21986,7 +24752,7 @@ class MeasurementMathItemReflevelsPercentFallmid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MATH<x>:REFLevels:PERCent:FALLMid`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the mid reference level of the falling edge when the measurement
           ref level method is set to percent. The math number is specified by x.
 
@@ -22017,7 +24783,7 @@ class MeasurementMathItemReflevelsPercentFalllow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MATH<x>:REFLevels:PERCent:FALLLow`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the low reference level of the falling edge when the measurement
           ref level method is set to percent. The math number is specified by x.
 
@@ -22048,7 +24814,7 @@ class MeasurementMathItemReflevelsPercentFallhigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MATH<x>:REFLevels:PERCent:FALLHigh`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the high reference level of the falling edge when the measurement
           ref level method is set to percent. The math number is specified by x.
 
@@ -22130,8 +24896,8 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:MATH<x>:REFLevels:PERCent:FALLHigh`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the high reference level of the falling edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the high reference level of the falling edge when the
               measurement ref level method is set to percent. The math number is specified by x.
 
         **Usage:**
@@ -22162,8 +24928,8 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:MATH<x>:REFLevels:PERCent:FALLLow`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the low reference level of the falling edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the low reference level of the falling edge when the
               measurement ref level method is set to percent. The math number is specified by x.
 
         **Usage:**
@@ -22194,8 +24960,8 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:MATH<x>:REFLevels:PERCent:FALLMid`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the mid reference level of the falling edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the mid reference level of the falling edge when the
               measurement ref level method is set to percent. The math number is specified by x.
 
         **Usage:**
@@ -22257,8 +25023,8 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:MATH<x>:REFLevels:PERCent:RISEHigh`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the high reference level of the rising edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the high reference level of the rising edge when the
               measurement ref level method is set to percent. The math number is specified by x. The
               measurement number is specified by x.
 
@@ -22290,8 +25056,8 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:MATH<x>:REFLevels:PERCent:RISELow`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the low reference level of the rising edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the low reference level of the rising edge when the
               measurement ref level method is set to percent. The math number is specified by x.
 
         **Usage:**
@@ -22322,8 +25088,8 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:MATH<x>:REFLevels:PERCent:RISEMid`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the mid reference level of the rising edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the mid reference level of the rising edge when the
               measurement ref level method is set to percent. The math number is specified by x.
 
         **Usage:**
@@ -23400,13 +26166,11 @@ class MeasurementHighlevelOutwiring(SCPICmdWrite, SCPICmdRead):
 
     ::
 
-        - MEASUrement:HIGHLEVel:OUTWIRing {P1W2V1I1|P1W3V2I2|P3W3V2I2|P3W3V3I3|P3W4|DCP1W2}
+        - MEASUrement:HIGHLEVel:OUTWIRing {P1W2V1I1|P3W3V2I2|P3W3V3I3|P3W4|DCP1W2}
         - MEASUrement:HIGHLEVel:OUTWIRing?
 
     **Info:**
         - ``P1W2V1I1`` specifies 1 phase- 2 wire (with 1 voltage and 1 current sources) wiring
-          configuration.
-        - ``P1W3V2I2`` specifies 1 phase- 3 wire (with 2 voltage and 2 current sources) wiring
           configuration.
         - ``P3W3V2I2`` specifies 3 phase- 3 wire (with 2 voltage and 2 current sources) wiring
           configuration.
@@ -24245,13 +27009,11 @@ class MeasurementHighlevel(SCPICmdRead):
 
         ::
 
-            - MEASUrement:HIGHLEVel:OUTWIRing {P1W2V1I1|P1W3V2I2|P3W3V2I2|P3W3V3I3|P3W4|DCP1W2}
+            - MEASUrement:HIGHLEVel:OUTWIRing {P1W2V1I1|P3W3V2I2|P3W3V3I3|P3W4|DCP1W2}
             - MEASUrement:HIGHLEVel:OUTWIRing?
 
         **Info:**
             - ``P1W2V1I1`` specifies 1 phase- 2 wire (with 1 voltage and 1 current sources) wiring
-              configuration.
-            - ``P1W3V2I2`` specifies 1 phase- 3 wire (with 2 voltage and 2 current sources) wiring
               configuration.
             - ``P3W3V2I2`` specifies 3 phase- 3 wire (with 2 voltage and 2 current sources) wiring
               configuration.
@@ -25223,13 +27985,16 @@ class MeasurementEdgeItem(ValidatedDynamicNumberCmd, SCPICmdWrite):
     """
 
 
-class MeasurementDisplayunits(SCPICmdWrite):
+class MeasurementDisplayunits(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:DISPLAYUnits`` command.
 
     **Description:**
         - This command sets or queries the display units used for jitter summary measurements.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:DISPLAYUnits?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:DISPLAYUnits?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MEASUrement:DISPLAYUnits value``
           command.
 
@@ -25238,6 +28003,7 @@ class MeasurementDisplayunits(SCPICmdWrite):
     ::
 
         - MEASUrement:DISPLAYUnits {SEConds|UNITINtervals}
+        - MEASUrement:DISPLAYUnits?
 
     **Info:**
         - ``SEConds`` set the display units to seconds.
@@ -25309,6 +28075,36 @@ class MeasurementDeleteall(SCPICmdWriteNoArguments):
     ::
 
         - MEASUrement:DELETEALL
+    """
+
+
+class MeasurementClockrecoveryTdcompensation(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:CLOCKRecovery:TDCOMPensation`` command.
+
+    **Description:**
+        - This command sets the PLL clock recovery loop feedback time-constants such that the actual
+          transfer function matches closely to a mathematical filter polynomial. This will affect
+          measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:TDCOMPensation?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``MEASUrement:CLOCKRecovery:TDCOMPensation?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``MEASUrement:CLOCKRecovery:TDCOMPensation value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MEASUrement:CLOCKRecovery:TDCOMPensation {1|0}
+        - MEASUrement:CLOCKRecovery:TDCOMPensation?
+
+    **Info:**
+        - ``1`` specifies automatic transition density compensation is on.
+        - ``0`` specifies automatic transition density compensation is off.
     """
 
 
@@ -25932,6 +28728,7 @@ class MeasurementClockrecovery(SCPICmdRead):
         - ``.model``: The ``MEASUrement:CLOCKRecovery:MODel`` command.
         - ``.nominaloffset``: The ``MEASUrement:CLOCKRecovery:NOMINALOFFset`` command.
         - ``.standard``: The ``MEASUrement:CLOCKRecovery:STAndard`` command.
+        - ``.tdcompensation``: The ``MEASUrement:CLOCKRecovery:TDCOMPensation`` command.
     """
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
@@ -25967,6 +28764,9 @@ class MeasurementClockrecovery(SCPICmdRead):
             device, f"{self._cmd_syntax}:NOMINALOFFset"
         )
         self._standard = MeasurementClockrecoveryStandard(device, f"{self._cmd_syntax}:STAndard")
+        self._tdcompensation = MeasurementClockrecoveryTdcompensation(
+            device, f"{self._cmd_syntax}:TDCOMPensation"
+        )
 
     @property
     def advanced(self) -> MeasurementClockrecoveryAdvanced:
@@ -26457,6 +29257,38 @@ class MeasurementClockrecovery(SCPICmdRead):
         """  # noqa: E501
         return self._standard
 
+    @property
+    def tdcompensation(self) -> MeasurementClockrecoveryTdcompensation:
+        """Return the ``MEASUrement:CLOCKRecovery:TDCOMPensation`` command.
+
+        **Description:**
+            - This command sets the PLL clock recovery loop feedback time-constants such that the
+              actual transfer function matches closely to a mathematical filter polynomial. This
+              will affect measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is
+              set to 1.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``MEASUrement:CLOCKRecovery:TDCOMPensation?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``MEASUrement:CLOCKRecovery:TDCOMPensation?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:CLOCKRecovery:TDCOMPensation value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MEASUrement:CLOCKRecovery:TDCOMPensation {1|0}
+            - MEASUrement:CLOCKRecovery:TDCOMPensation?
+
+        **Info:**
+            - ``1`` specifies automatic transition density compensation is on.
+            - ``0`` specifies automatic transition density compensation is off.
+        """
+        return self._tdcompensation
+
 
 class MeasurementChannelReflevelsPercentType(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:CH<x>:REFLevels:PERCent:TYPE`` command.
@@ -26492,7 +29324,7 @@ class MeasurementChannelReflevelsPercentRisemid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:CH<x>:REFLevels:PERCent:RISEMid`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the mid reference level of the rising edge when the measurement
           ref level method is set to percent. The channel number is specified by x.
 
@@ -26522,7 +29354,7 @@ class MeasurementChannelReflevelsPercentRiselow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:CH<x>:REFLevels:PERCent:RISELow`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the low reference level of the rising edge when the measurement
           ref level method is set to percent. The channel number is specified by x.
 
@@ -26552,7 +29384,7 @@ class MeasurementChannelReflevelsPercentRisehigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:CH<x>:REFLevels:PERCent:RISEHigh`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the high reference level of the rising edge when the measurement
           ref level method is set to percent. The channel number is specified by x.
 
@@ -26611,7 +29443,7 @@ class MeasurementChannelReflevelsPercentFallmid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:CH<x>:REFLevels:PERCent:FALLMid`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the mid reference level of the falling edge when the source ref
           level method is set to percent. The channel number is specified by x.
 
@@ -26641,7 +29473,7 @@ class MeasurementChannelReflevelsPercentFalllow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:CH<x>:REFLevels:PERCent:FALLLow`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the low reference level of the falling edge when the source ref
           level method is set to percent. The channel number is specified by x.
 
@@ -26671,7 +29503,7 @@ class MeasurementChannelReflevelsPercentFallhigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:CH<x>:REFLevels:PERCent:FALLHigh`` command.
 
     **Description:**
-        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
+        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
           BASE) used to calculate the high reference level of the falling edge when the source ref
           level method is set to percent. The channel number is specified by x.
 
@@ -26748,8 +29580,8 @@ class MeasurementChannelReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:CH<x>:REFLevels:PERCent:FALLHigh`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the high reference level of the falling edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the high reference level of the falling edge when the
               source ref level method is set to percent. The channel number is specified by x.
 
         **Usage:**
@@ -26779,9 +29611,9 @@ class MeasurementChannelReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:CH<x>:REFLevels:PERCent:FALLLow`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the low reference level of the falling edge when the
-              source ref level method is set to percent. The channel number is specified by x.
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the low reference level of the falling edge when the source
+              ref level method is set to percent. The channel number is specified by x.
 
         **Usage:**
             - Using the ``.query()`` method will send the
@@ -26810,9 +29642,9 @@ class MeasurementChannelReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:CH<x>:REFLevels:PERCent:FALLMid`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the mid reference level of the falling edge when the
-              source ref level method is set to percent. The channel number is specified by x.
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the mid reference level of the falling edge when the source
+              ref level method is set to percent. The channel number is specified by x.
 
         **Usage:**
             - Using the ``.query()`` method will send the
@@ -26871,8 +29703,8 @@ class MeasurementChannelReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:CH<x>:REFLevels:PERCent:RISEHigh`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the high reference level of the rising edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the high reference level of the rising edge when the
               measurement ref level method is set to percent. The channel number is specified by x.
 
         **Usage:**
@@ -26902,8 +29734,8 @@ class MeasurementChannelReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:CH<x>:REFLevels:PERCent:RISELow`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the low reference level of the rising edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the low reference level of the rising edge when the
               measurement ref level method is set to percent. The channel number is specified by x.
 
         **Usage:**
@@ -26933,8 +29765,8 @@ class MeasurementChannelReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:CH<x>:REFLevels:PERCent:RISEMid`` command.
 
         **Description:**
-            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
-              equal to BASE) used to calculate the mid reference level of the rising edge when the
+            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
+              to BASE) used to calculate the mid reference level of the rising edge when the
               measurement ref level method is set to percent. The channel number is specified by x.
 
         **Usage:**
@@ -27755,7 +30587,7 @@ class MeasurementAutoset(SCPICmdWrite):
     """The ``MEASUrement:AUTOset`` command.
 
     **Description:**
-        - This command performs an analysis jitter autoset.
+        - This command performs a specified autoset.
 
     **Usage:**
         - Using the ``.write(value)`` method will send the ``MEASUrement:AUTOset value`` command.
@@ -27764,13 +30596,18 @@ class MeasurementAutoset(SCPICmdWrite):
 
     ::
 
-        - MEASUrement:AUTOset {EXECute |THREEPHASEAUTOset |WBGPREset}
+        - MEASUrement:AUTOset {DPMAutoset |DPMPReset |EXECute |THREEPHASEAUTOset |WBGDeskewexec |WBGPREset |WBGGSTIM}
 
     **Info:**
+        - ``DPMAutoset`` performs a power rail autoset operation. Requires a DPM license.
+        - ``DPMPReset`` performs a power rail preset operation. Requires a DPM license.
         - ``EXECute`` performs an analysis jitter autoset.
         - ``THREEPHASEAUTOset`` performs an IMDA 3 phase autoset.
+        - ``WBGDeskewexec`` performs WBG deskew on specific measurements. Requires a WBG-DPT
+          license.
         - ``WBGPREset`` performs a measurement specific preset. Requires a WBG-DPT license.
-    """
+        - ``WBGGSTIM`` performs gate stimulus for WBG measurement. Requires a WBG-DPT license.
+    """  # noqa: E501
 
 
 class MeasurementAnnotate(SCPICmdWrite, SCPICmdRead):
@@ -27832,7 +30669,7 @@ class MeasurementAddmeas(SCPICmdWrite):
 
     ::
 
-        - MEASUrement:ADDMEAS {ACCOMMONMODE |ACPR |ACRMS |AMPlITUDE |AREA |BASE |BITAMPLITUDE |BITHIGH |BITLOW |BURSTWIDTH |CCJITTER |COMMONMODE |CPOWER |DATARATE |DCD |DDJ |DDRAOS |DDRAOSPERTCK |DDRAOSPERUI |DDRAUS |DDRAUSPERTCK |DDRAUSPERUI |DDRHOLDDIFF |DDRSETUPDIFF |DDRTCHABS |DDRTCHAVERAGE |DDRTCKAVERAGE |DDRTCLABS |DDRTCLAVERAGE |DDRTERRMN |DDRTERRN |DDRTJITCC |DDRTJITDUTY |DDRTJITPER |DDRTPST |DDRTRPRE |DDRTWPRE |DDRVIXAC |DDRTDQSCK |DELAY |DJ |DJDIRAC |EYEHIGH |EYELOW |FALLSLEWRATE |FALLTIME |FREQUENCY |F2 |F4 |F8 |HEIGHT |HEIGHTBER |HIGH |HIGHTIME |HOLD |IMDAANGLE |IMDADIRECTION |IMDADQ0 |IMDAEFFICIENCY |IMDAHARMONICS |IMDAMECHPWR |IMDAPOWERQUALITY |IMDASPEED |IMDASYSEFF |IMDATORQUE |JITTERSUMMARY |J2 |J9 |LOW |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUty |NOVERSHOOT |NPERIOD |NPJ |NWIDTH |OBW |PDUTY |PERIOD |PHASE |PHASENOISE |PJ |PK2Pk |POVERSHOOT |PWIDTH |QFACTOR |RISESLEWRATE |RISETIME |RJ |RJDIRAC |RMS |SETUP |SKEW |SRJ |SSCFREQDEV |SSCMODRATE |TIE |TIMEOUTSIDELEVEL |TIMETOMAX |TIMETOMIN |TJBER |TNTRATIO |TOP |UNITINTERVAL |VDIFFXOVR |WBGDDT |WBGDIODEDDT |WBGEOFF |WBGEON |WBGERR |WBGIPEAK |WBGIRRM |WBGQRR |WBGTDOFF |WBGTDON |WBGTF |WBGTON |WBGTOFF |WBGTR |WBGTRR |WBGVPEAK |WIDTH |WIDTHBER}
+        - MEASUrement:ADDMEAS {ACCOMMONMODE |ACPR |ACRMS |AMPlITUDE |AREA |BASE |BITAMPLITUDE |BITHIGH |BITLOW |BURSTWIDTH |CCJITTER |COMMONMODE |CPOWER |DATARATE |DCD |DDJ |DDRAOS |DDRAOSPERTCK |DDRAOSPERUI |DDRAUS |DDRAUSPERTCK |DDRAUSPERUI |DDRHOLDDIFF |DDRSETUPDIFF |DDRTCHABS |DDRTCHAVERAGE |DDRTCKAVERAGE |DDRTCLABS |DDRTCLAVERAGE |DDRTERRMN |DDRTERRN |DDRTJITCC |DDRTJITDUTY |DDRTJITPER |DDRTPST |DDRTRPRE |DDRTWPRE |DDRVIXAC |DDRTDQSCK |DELAY |DJ |DJDIRAC |DPMPSIJ |EYEHIGH |EYELOW |FALLSLEWRATE |FALLTIME |FREQUENCY |F2 |F4 |F8 |HEIGHT |HEIGHTBER |HIGH |HIGHTIME |HOLD |IMDAANGLE |IMDADIRECTION |IMDADQ0 |IMDAEFFICIENCY |IMDAHARMONICS |IMDAMECHPWR |IMDAPOWERQUALITY |IMDASPEED |IMDASYSEFF |IMDATORQUE |JITTERSUMMARY |J2 |J9 |LOW |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUty |NOVERSHOOT |NPERIOD |NPJ |NWIDTH |OBW |PDUTY |PERIOD |PHASE |PHASENOISE |PJ |PK2Pk |POVERSHOOT |PWIDTH |QFACTOR |RISESLEWRATE |RISETIME |RJ |RJDIRAC |RMS |SETUP |SKEW |SRJ |SSCFREQDEV |SSCMODRATE |TIE |TIMEOUTSIDELEVEL |TIMETOMAX |TIMETOMIN |TJBER |TNTRATIO |TOP |UNITINTERVAL |VDIFFXOVR |WBGDDT |WBGDIODEDDT |WBGEOFF |WBGEON |WBGERR |WBGIPEAK |WBGIRRM |WBGQOSS |WBGQRR |WBGTDOFF |WBGTDON |WBGTF |WBGTON |WBGTOFF |WBGTR |WBGTRR |WBGVPEAK |WIDTH |WIDTHBER}
 
     **Info:**
         - ``ACCOMMONMODE`` AC Common Mode (Pk-Pk) is the peak-to-peak of the common mode voltage of
@@ -27960,6 +30797,8 @@ class MeasurementAddmeas(SCPICmdWrite):
           pair of equal-magnitude Dirac functions. This measurement is made across the entire
           record. This measurement requires the DJA option and is not available on a 4 Series MSO
           instrument.
+        - ``DPMPSIJ`` is the Power Supply Induced Jitter. This measurement helps in suppressing the
+          jitter in high speed signals (victim) induced from power rail signals (aggressor).
         - ``EYEHIGH`` (Eye High) is the amplitude of a high (1) bit measured at a user specified
           location within the recovered unit interval. This measurement is made on each high bit in
           the record. This measurement requires the DJA option and is not available on a 4 Series
@@ -28166,6 +31005,8 @@ class MeasurementAddmeas(SCPICmdWrite):
           Requires a WBG-DPT License.
         - ``WBGIRRM`` (Irrm) measures the maximum current dissipated in the Power Device in the
           reverse recovery region. Requires a WBG-DPT License.
+        - ``WBGQOSS`` (Qoss) is the charge that must be supplied to the output capacitance of the
+          power device during a specified time interval. Requires a WBG-DPT License.
         - ``WBGQRR`` (Qrr) measures the reverse recovery charge in the Power Device using the
           configured levels. Requires a WBG-DPT License.
         - ``WBGTDOFF`` (Td(off)) measures the turn off delay time of the Power Device in the off
@@ -28307,7 +31148,7 @@ class Measurement(SCPICmdRead):
 
         ::
 
-            - MEASUrement:ADDMEAS {ACCOMMONMODE |ACPR |ACRMS |AMPlITUDE |AREA |BASE |BITAMPLITUDE |BITHIGH |BITLOW |BURSTWIDTH |CCJITTER |COMMONMODE |CPOWER |DATARATE |DCD |DDJ |DDRAOS |DDRAOSPERTCK |DDRAOSPERUI |DDRAUS |DDRAUSPERTCK |DDRAUSPERUI |DDRHOLDDIFF |DDRSETUPDIFF |DDRTCHABS |DDRTCHAVERAGE |DDRTCKAVERAGE |DDRTCLABS |DDRTCLAVERAGE |DDRTERRMN |DDRTERRN |DDRTJITCC |DDRTJITDUTY |DDRTJITPER |DDRTPST |DDRTRPRE |DDRTWPRE |DDRVIXAC |DDRTDQSCK |DELAY |DJ |DJDIRAC |EYEHIGH |EYELOW |FALLSLEWRATE |FALLTIME |FREQUENCY |F2 |F4 |F8 |HEIGHT |HEIGHTBER |HIGH |HIGHTIME |HOLD |IMDAANGLE |IMDADIRECTION |IMDADQ0 |IMDAEFFICIENCY |IMDAHARMONICS |IMDAMECHPWR |IMDAPOWERQUALITY |IMDASPEED |IMDASYSEFF |IMDATORQUE |JITTERSUMMARY |J2 |J9 |LOW |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUty |NOVERSHOOT |NPERIOD |NPJ |NWIDTH |OBW |PDUTY |PERIOD |PHASE |PHASENOISE |PJ |PK2Pk |POVERSHOOT |PWIDTH |QFACTOR |RISESLEWRATE |RISETIME |RJ |RJDIRAC |RMS |SETUP |SKEW |SRJ |SSCFREQDEV |SSCMODRATE |TIE |TIMEOUTSIDELEVEL |TIMETOMAX |TIMETOMIN |TJBER |TNTRATIO |TOP |UNITINTERVAL |VDIFFXOVR |WBGDDT |WBGDIODEDDT |WBGEOFF |WBGEON |WBGERR |WBGIPEAK |WBGIRRM |WBGQRR |WBGTDOFF |WBGTDON |WBGTF |WBGTON |WBGTOFF |WBGTR |WBGTRR |WBGVPEAK |WIDTH |WIDTHBER}
+            - MEASUrement:ADDMEAS {ACCOMMONMODE |ACPR |ACRMS |AMPlITUDE |AREA |BASE |BITAMPLITUDE |BITHIGH |BITLOW |BURSTWIDTH |CCJITTER |COMMONMODE |CPOWER |DATARATE |DCD |DDJ |DDRAOS |DDRAOSPERTCK |DDRAOSPERUI |DDRAUS |DDRAUSPERTCK |DDRAUSPERUI |DDRHOLDDIFF |DDRSETUPDIFF |DDRTCHABS |DDRTCHAVERAGE |DDRTCKAVERAGE |DDRTCLABS |DDRTCLAVERAGE |DDRTERRMN |DDRTERRN |DDRTJITCC |DDRTJITDUTY |DDRTJITPER |DDRTPST |DDRTRPRE |DDRTWPRE |DDRVIXAC |DDRTDQSCK |DELAY |DJ |DJDIRAC |DPMPSIJ |EYEHIGH |EYELOW |FALLSLEWRATE |FALLTIME |FREQUENCY |F2 |F4 |F8 |HEIGHT |HEIGHTBER |HIGH |HIGHTIME |HOLD |IMDAANGLE |IMDADIRECTION |IMDADQ0 |IMDAEFFICIENCY |IMDAHARMONICS |IMDAMECHPWR |IMDAPOWERQUALITY |IMDASPEED |IMDASYSEFF |IMDATORQUE |JITTERSUMMARY |J2 |J9 |LOW |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUty |NOVERSHOOT |NPERIOD |NPJ |NWIDTH |OBW |PDUTY |PERIOD |PHASE |PHASENOISE |PJ |PK2Pk |POVERSHOOT |PWIDTH |QFACTOR |RISESLEWRATE |RISETIME |RJ |RJDIRAC |RMS |SETUP |SKEW |SRJ |SSCFREQDEV |SSCMODRATE |TIE |TIMEOUTSIDELEVEL |TIMETOMAX |TIMETOMIN |TJBER |TNTRATIO |TOP |UNITINTERVAL |VDIFFXOVR |WBGDDT |WBGDIODEDDT |WBGEOFF |WBGEON |WBGERR |WBGIPEAK |WBGIRRM |WBGQOSS |WBGQRR |WBGTDOFF |WBGTDON |WBGTF |WBGTON |WBGTOFF |WBGTR |WBGTRR |WBGVPEAK |WIDTH |WIDTHBER}
 
         **Info:**
             - ``ACCOMMONMODE`` AC Common Mode (Pk-Pk) is the peak-to-peak of the common mode voltage
@@ -28440,6 +31281,8 @@ class Measurement(SCPICmdRead):
               as a pair of equal-magnitude Dirac functions. This measurement is made across the
               entire record. This measurement requires the DJA option and is not available on a 4
               Series MSO instrument.
+            - ``DPMPSIJ`` is the Power Supply Induced Jitter. This measurement helps in suppressing
+              the jitter in high speed signals (victim) induced from power rail signals (aggressor).
             - ``EYEHIGH`` (Eye High) is the amplitude of a high (1) bit measured at a user specified
               location within the recovered unit interval. This measurement is made on each high bit
               in the record. This measurement requires the DJA option and is not available on a 4
@@ -28650,6 +31493,8 @@ class Measurement(SCPICmdRead):
               Requires a WBG-DPT License.
             - ``WBGIRRM`` (Irrm) measures the maximum current dissipated in the Power Device in the
               reverse recovery region. Requires a WBG-DPT License.
+            - ``WBGQOSS`` (Qoss) is the charge that must be supplied to the output capacitance of
+              the power device during a specified time interval. Requires a WBG-DPT License.
             - ``WBGQRR`` (Qrr) measures the reverse recovery charge in the Power Device using the
               configured levels. Requires a WBG-DPT License.
             - ``WBGTDOFF`` (Td(off)) measures the turn off delay time of the Power Device in the off
@@ -28732,7 +31577,7 @@ class Measurement(SCPICmdRead):
         """Return the ``MEASUrement:AUTOset`` command.
 
         **Description:**
-            - This command performs an analysis jitter autoset.
+            - This command performs a specified autoset.
 
         **Usage:**
             - Using the ``.write(value)`` method will send the ``MEASUrement:AUTOset value``
@@ -28742,13 +31587,18 @@ class Measurement(SCPICmdRead):
 
         ::
 
-            - MEASUrement:AUTOset {EXECute |THREEPHASEAUTOset |WBGPREset}
+            - MEASUrement:AUTOset {DPMAutoset |DPMPReset |EXECute |THREEPHASEAUTOset |WBGDeskewexec |WBGPREset |WBGGSTIM}
 
         **Info:**
+            - ``DPMAutoset`` performs a power rail autoset operation. Requires a DPM license.
+            - ``DPMPReset`` performs a power rail preset operation. Requires a DPM license.
             - ``EXECute`` performs an analysis jitter autoset.
             - ``THREEPHASEAUTOset`` performs an IMDA 3 phase autoset.
+            - ``WBGDeskewexec`` performs WBG deskew on specific measurements. Requires a WBG-DPT
+              license.
             - ``WBGPREset`` performs a measurement specific preset. Requires a WBG-DPT license.
-        """
+            - ``WBGGSTIM`` performs gate stimulus for WBG measurement. Requires a WBG-DPT license.
+        """  # noqa: E501
         return self._autoset
 
     @property
@@ -28790,6 +31640,7 @@ class Measurement(SCPICmdRead):
             - ``.model``: The ``MEASUrement:CLOCKRecovery:MODel`` command.
             - ``.nominaloffset``: The ``MEASUrement:CLOCKRecovery:NOMINALOFFset`` command.
             - ``.standard``: The ``MEASUrement:CLOCKRecovery:STAndard`` command.
+            - ``.tdcompensation``: The ``MEASUrement:CLOCKRecovery:TDCOMPensation`` command.
         """
         return self._clockrecovery
 
@@ -28870,6 +31721,9 @@ class Measurement(SCPICmdRead):
             - This command sets or queries the display units used for jitter summary measurements.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MEASUrement:DISPLAYUnits?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:DISPLAYUnits?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MEASUrement:DISPLAYUnits value``
               command.
 
@@ -28878,6 +31732,7 @@ class Measurement(SCPICmdRead):
         ::
 
             - MEASUrement:DISPLAYUnits {SEConds|UNITINtervals}
+            - MEASUrement:DISPLAYUnits?
 
         **Info:**
             - ``SEConds`` set the display units to seconds.
@@ -29186,14 +32041,17 @@ class Measurement(SCPICmdRead):
         Sub-properties:
             - ``.abandwidth``: The ``MEASUrement:MEAS<x>:ABANdwidth`` command.
             - ``.achannels``: The ``MEASUrement:MEAS<x>:ACHANnels`` command.
+            - ``.amethod``: The ``MEASUrement:MEAS<x>:AMEThod`` command.
             - ``.ber``: The ``MEASUrement:MEAS<x>:BER`` command.
             - ``.bin``: The ``MEASUrement:MEAS<x>:BIN`` command.
+            - ``.bitabsolute``: The ``MEASUrement:MEAS<x>:BITAbsolute`` command.
             - ``.bitcfgmode``: The ``MEASUrement:MEAS<x>:BITCfgmode`` command.
             - ``.bitend``: The ``MEASUrement:MEAS<x>:BITEnd`` command.
             - ``.bitpcnt``: The ``MEASUrement:MEAS<x>:BITPcnt`` command.
             - ``.bitstart``: The ``MEASUrement:MEAS<x>:BITSTart`` command.
             - ``.bittype``: The ``MEASUrement:MEAS<x>:BITType`` command.
             - ``.burstedgtype``: The ``MEASUrement:MEAS<x>:BURSTEDGTYPe`` command.
+            - ``.bvoltage``: The ``MEASUrement:MEAS<x>:BVOLTage`` command.
             - ``.ccresults``: The ``MEASUrement:MEAS<x>:CCRESUlts`` command tree.
             - ``.clockrecovery``: The ``MEASUrement:MEAS<x>:CLOCKRecovery`` command tree.
             - ``.commonmode``: The ``MEASUrement:MEAS<x>:COMMONMode`` command tree.
@@ -29212,10 +32070,15 @@ class Measurement(SCPICmdRead):
             - ``.edgequalifier``: The ``MEASUrement:MEAS<x>:EDGEQUALifier`` command.
             - ``.edges``: The ``MEASUrement:MEAS<x>:EDGES`` command tree.
             - ``.eequal``: The ``MEASUrement:MEAS<x>:EEQUal`` command.
+            - ``.einductance``: The ``MEASUrement:MEAS<x>:EINDuctance`` command.
+            - ``.einterpolation``: The ``MEASUrement:MEAS<x>:EINTerpolation`` command.
+            - ``.extenduis``: The ``MEASUrement:MEAS<x>:EXTENDuis`` command.
+            - ``.eyerender``: The ``MEASUrement:MEAS<x>:EYERender`` command.
             - ``.failcount``: The ``MEASUrement:MEAS<x>:FAILCount`` command.
             - ``.filterrangefrom``: The ``MEASUrement:MEAS<x>:FILTERRANGEFROM`` command.
             - ``.filterrangeto``: The ``MEASUrement:MEAS<x>:FILTERRANGETO`` command.
             - ``.filters``: The ``MEASUrement:MEAS<x>:FILTers`` command tree.
+            - ``.forder``: The ``MEASUrement:MEAS<x>:FORDer`` command.
             - ``.fparameter``: The ``MEASUrement:MEAS<x>:FPARAmeter`` command.
             - ``.freq``: The ``MEASUrement:MEAS<x>:FREQ`` command.
             - ``.fromedgesearchdirect``: The ``MEASUrement:MEAS<x>:FROMEDGESEARCHDIRect`` command.
@@ -29270,11 +32133,14 @@ class Measurement(SCPICmdRead):
             - ``.patterntype``: The ``MEASUrement:MEAS<x>:PATTERNTYPe`` command.
             - ``.pcount``: The ``MEASUrement:MEAS<x>:PCOUNt`` command.
             - ``.perfreq``: The ``MEASUrement:MEAS<x>:PERFREQ`` command tree.
+            - ``.pfrequency``: The ``MEASUrement:MEAS<x>:PFREquency`` command.
             - ``.polarity``: The ``MEASUrement:MEAS<x>:POLarity`` command.
             - ``.population``: The ``MEASUrement:MEAS<x>:POPUlation`` command tree.
             - ``.popower``: The ``MEASUrement:MEAS<x>:POPower`` command.
             - ``.powerfactor``: The ``MEASUrement:MEAS<x>:POWERFACtor`` command.
             - ``.pregion``: The ``MEASUrement:MEAS<x>:PREGion`` command.
+            - ``.presistance``: The ``MEASUrement:MEAS<x>:PRESistance`` command.
+            - ``.pthreshold``: The ``MEASUrement:MEAS<x>:PTHReshold`` command.
             - ``.pwidth``: The ``MEASUrement:MEAS<x>:PWIDth`` command.
             - ``.redge``: The ``MEASUrement:MEAS<x>:REDGe`` command.
             - ``.reflevels``: The ``MEASUrement:MEAS<x>:REFLevels`` command tree.
@@ -29283,7 +32149,9 @@ class Measurement(SCPICmdRead):
             - ``.refvoltageval``: The ``MEASUrement:MEAS<x>:REFVOLTAGE<x>Val`` command.
             - ``.refvoltage``: The ``MEASUrement:MEAS<x>:REFVoltage`` command.
             - ``.results``: The ``MEASUrement:MEAS<x>:RESUlts`` command tree.
+            - ``.rfrequency``: The ``MEASUrement:MEAS<x>:RFREquency`` command.
             - ``.ripplefreqval``: The ``MEASUrement:MEAS<x>:RIPPLEFREQ<x>Val`` command.
+            - ``.rrange``: The ``MEASUrement:MEAS<x>:RRANGE`` command.
             - ``.sequence``: The ``MEASUrement:MEAS<x>:SEQuence`` command.
             - ``.signalfrequency``: The ``MEASUrement:MEAS<x>:SIGNALFREQUEncy`` command.
             - ``.signaltype``: The ``MEASUrement:MEAS<x>:SIGNALType`` command.
@@ -29302,17 +32170,22 @@ class Measurement(SCPICmdRead):
             - ``.stltype``: The ``MEASUrement:MEAS<x>:STLTYpe`` command.
             - ``.stsdirection``: The ``MEASUrement:MEAS<x>:STSDirection`` command.
             - ``.stype``: The ``MEASUrement:MEAS<x>:STYPe`` command.
+            - ``.subgroup``: The ``MEASUrement:MEAS<x>:SUBGROUP`` command tree.
             - ``.sunits``: The ``MEASUrement:MEAS<x>:SUNits`` command.
             - ``.tckavg``: The ``MEASUrement:MEAS<x>:TCKAVG`` command.
             - ``.tconstant``: The ``MEASUrement:MEAS<x>:TCONstant`` command.
             - ``.timingmode``: The ``MEASUrement:MEAS<x>:TIMINGMode`` command.
+            - ``.tlevel``: The ``MEASUrement:MEAS<x>:TLEVel`` command.
             - ``.tmethod``: The ``MEASUrement:MEAS<x>:TMEThod`` command.
             - ``.toedgesearchdirect``: The ``MEASUrement:MEAS<x>:TOEDGESEARCHDIRect`` command.
             - ``.toedge``: The ``MEASUrement:MEAS<x>:TOEdge`` command.
             - ``.tosymbol``: The ``MEASUrement:MEAS<x>:TOSYmbol`` command tree.
             - ``.transition``: The ``MEASUrement:MEAS<x>:TRANSition`` command.
             - ``.type``: The ``MEASUrement:MEAS<x>:TYPe`` command.
+            - ``.vlevel``: The ``MEASUrement:MEAS<x>:VLEVel`` command.
             - ``.waittime``: The ``MEASUrement:MEAS<x>:WAITTime`` command.
+            - ``.wbg``: The ``MEASUrement:MEAS<x>:WBG`` command tree.
+            - ``.width``: The ``MEASUrement:MEAS<x>:WIDTh`` command.
             - ``.windowlength``: The ``MEASUrement:MEAS<x>:WINDOWLENgth`` command.
             - ``.xunit``: The ``MEASUrement:MEAS<x>:XUNIT`` command.
             - ``.yunit``: The ``MEASUrement:MEAS<x>:YUNIT`` command.

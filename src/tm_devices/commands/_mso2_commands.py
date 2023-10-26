@@ -13,12 +13,15 @@ from ._1mn7uh_lpdmsomdodpo.pause import Pause
 from ._1mn7uh_lpdmsomdodpo.rosc import Rosc
 from ._1nrybj_lpdmsodpomdo.totaluptime import Totaluptime
 from ._1zn03_mso.acquire import Acquire
+from ._1zn03_mso.actonevent import Actonevent
 from ._1zn03_mso.auxout import Auxout
 from ._1zn03_mso.battery import Battery
 from ._1zn03_mso.bus import Bus
+from ._1zn03_mso.callouts import Callouts
 from ._1zn03_mso.ch import Channel
 from ._1zn03_mso.data import Data
 from ._1zn03_mso.dch import DchItem
+from ._1zn03_mso.diag import Diag
 from ._1zn03_mso.display import Display
 from ._1zn03_mso.fpanel import Fpanel
 from ._1zn03_mso.horizontal import Horizontal
@@ -29,6 +32,7 @@ from ._1zn03_mso.math import Math
 from ._1zn03_mso.measurement import Measurement
 from ._1zn03_mso.pg import Pg
 from ._1zn03_mso.plot import Plot
+from ._1zn03_mso.ref import Ref
 from ._1zn03_mso.save import Save
 from ._1zn03_mso.saveon import Saveon
 from ._1zn03_mso.saveonevent import Saveonevent
@@ -63,26 +67,22 @@ from ._5ylo0x_lpdmsodpomdoawgdsa.status_and_error import Ese, Sre
 from ._5z14a1_lpdmsodpomdoafgawgdsa.calibration import Cal
 from ._5z14a1_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
 from ._5z14a1_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
-from ._c69b1_lpdmso.actonevent import Actonevent
 from ._c69b1_lpdmso.afg import Afg
 from ._c69b1_lpdmso.autosavepitimeout import Autosavepitimeout
 from ._c69b1_lpdmso.autosaveuitimeout import Autosaveuitimeout
 from ._c69b1_lpdmso.autoset import Autoset
 from ._c69b1_lpdmso.bustable import Bustable
 from ._c69b1_lpdmso.calibrate import Calibrate
-from ._c69b1_lpdmso.callouts import Callouts
 from ._c69b1_lpdmso.configuration import Configuration
 from ._c69b1_lpdmso.connected import Connected
 from ._c69b1_lpdmso.curve import Curve
 from ._c69b1_lpdmso.curvestream import Curvestream
 from ._c69b1_lpdmso.date import Date
-from ._c69b1_lpdmso.diag import Diag
 from ._c69b1_lpdmso.ethernet import Ethernet
 from ._c69b1_lpdmso.filesystem import Filesystem
 from ._c69b1_lpdmso.mainwindow import Mainwindow
 from ._c69b1_lpdmso.meastable import Meastable
 from ._c69b1_lpdmso.recall import Recall
-from ._c69b1_lpdmso.ref import Ref
 from ._c69b1_lpdmso.socketserver import Socketserver
 from ._c69b1_lpdmso.time import Time
 from ._c69b1_lpdmso.undo import Undo
@@ -105,7 +105,6 @@ class MSO2CommandConstants:
     ABSOLUTE = "ABSOLUTE"  # ABSolute
     AC = "AC"
     ACKMISS = "ACKMISS"
-    ACQ = "ACQ"
     ACRMS = "ACRMS"
     ADD = "ADD"
     ADDR10 = "ADDR10"
@@ -114,7 +113,6 @@ class MSO2CommandConstants:
     ADDRESS = "ADDRESS"  # ADDRess
     ADVANCED = "ADVANCED"  # ADVanced
     ALL = "ALL"
-    ANALOG = "ANALOG"
     AND = "AND"
     ANYERROR = "ANYERROR"  # ANYERRor
     AREA = "AREA"
@@ -122,7 +120,6 @@ class MSO2CommandConstants:
     ASCII = "ASCII"
     # ASCII = "ASCIi"
     # ASCII = "ASCii"
-    ASIC = "ASIC"
     ATRIGGER = "ATRIGGER"  # ATRIGger
     AUTO = "AUTO"
     AUTOMATIC = "AUTOMATIC"  # AUTOmatic
@@ -249,7 +246,6 @@ class MSO2CommandConstants:
     INVERTED = "INVERTED"  # INVERTed
     # INVERTED = "INVErted"
     # INVERTED = "INVerted"
-    IO = "IO"
     JPG = "JPG"
     KAISERBESSEL = "KAISERBESSEL"  # KAISERBessel
     L = "L"
@@ -272,7 +268,6 @@ class MSO2CommandConstants:
     MEAN = "MEAN"
     MEANHISTOGRAM = "MEANHISTOGRAM"  # MEANhistogram
     MEDIUM = "MEDIUM"  # MEDium
-    MEMORY = "MEMORY"
     MID = "MID"
     MINMAX = "MINMAX"  # MINMax
     MISO = "MISO"  # MISo
@@ -379,7 +374,6 @@ class MSO2CommandConstants:
     SETTO50 = "SETTO50"
     SETUP = "SETUP"
     SFPBINARY = "SFPBINARY"  # SFPbinary
-    SIGNAL = "SIGNAL"
     SINC = "SINC"
     SINGLESEQ = "SINGLESEQ"  # SINGleseq
     SINX = "SINX"
@@ -407,7 +401,6 @@ class MSO2CommandConstants:
     SUBTRACT = "SUBTRACT"  # SUBtract
     SYNC = "SYNC"
     SYNCFIELD = "SYNCFIELD"  # SYNCfield
-    SYSTEM = "SYSTEM"
     TEKEXPONENTIAL = "TEKEXPONENTIAL"  # TEKEXPonential
     TENNINETY = "TENNINETY"  # TENNinety
     THREE = "THREE"
@@ -1054,7 +1047,7 @@ class MSO2Commands:
         """Return the ``CLEAR`` command.
 
         **Description:**
-            - This command clears acquisitions, measurements, and waveforms.
+            - This command  clears acquisitions, measurements, and waveforms.
 
         **Usage:**
             - Using the ``.write()`` method will send the ``CLEAR`` command.

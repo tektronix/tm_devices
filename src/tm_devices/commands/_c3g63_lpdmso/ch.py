@@ -97,19 +97,33 @@ Commands and Queries:
     - CH<x>:VTERm:BIAS?
     - CH<x>?
     - CH<x>_D<x>:LABel:COLor <QString>
+    - CH<x>_D<x>:LABel:COLor?
     - CH<x>_D<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
+    - CH<x>_D<x>:LABel:FONT:BOLD?
     - CH<x>_D<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
+    - CH<x>_D<x>:LABel:FONT:ITALic?
     - CH<x>_D<x>:LABel:FONT:SIZE <NR1>
+    - CH<x>_D<x>:LABel:FONT:SIZE?
     - CH<x>_D<x>:LABel:FONT:TYPE <QString>
+    - CH<x>_D<x>:LABel:FONT:TYPE?
     - CH<x>_D<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
+    - CH<x>_D<x>:LABel:FONT:UNDERline?
     - CH<x>_D<x>:LABel:NAMe <QString>
+    - CH<x>_D<x>:LABel:NAMe?
     - CH<x>_DALL:LABel:COLor <QString>
+    - CH<x>_DALL:LABel:COLor?
     - CH<x>_DALL:LABel:FONT:BOLD {ON|OFF|<NR1>}
+    - CH<x>_DALL:LABel:FONT:BOLD?
     - CH<x>_DALL:LABel:FONT:ITALic {ON|OFF|<NR1>}
+    - CH<x>_DALL:LABel:FONT:ITALic?
     - CH<x>_DALL:LABel:FONT:SIZE <NR1>
+    - CH<x>_DALL:LABel:FONT:SIZE?
     - CH<x>_DALL:LABel:FONT:TYPE <QString>
+    - CH<x>_DALL:LABel:FONT:TYPE?
     - CH<x>_DALL:LABel:FONT:UNDERline {ON|OFF|<NR1>}
+    - CH<x>_DALL:LABel:FONT:UNDERline?
     - CH<x>_DALL:LABel:NAMe <QString>
+    - CH<x>_DALL:LABel:NAMe?
 """
 from typing import Dict, Optional, TYPE_CHECKING
 
@@ -127,7 +141,7 @@ if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
 
 
-class ChannelDallLabelName(SCPICmdWrite):
+class ChannelDallLabelName(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>_DALL:LABel:NAMe`` command.
 
     **Description:**
@@ -135,6 +149,9 @@ class ChannelDallLabelName(SCPICmdWrite):
           specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:NAMe?`` query.
+        - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:NAMe?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``CH<x>_DALL:LABel:NAMe value`` command.
 
     **SCPI Syntax:**
@@ -142,6 +159,7 @@ class ChannelDallLabelName(SCPICmdWrite):
     ::
 
         - CH<x>_DALL:LABel:NAMe <QString>
+        - CH<x>_DALL:LABel:NAMe?
 
     **Info:**
         - ``CH<x>`` is the channel number.
@@ -151,7 +169,7 @@ class ChannelDallLabelName(SCPICmdWrite):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class ChannelDallLabelFontUnderline(SCPICmdWrite):
+class ChannelDallLabelFontUnderline(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>_DALL:LABel:FONT:UNDERline`` command.
 
     **Description:**
@@ -159,6 +177,9 @@ class ChannelDallLabelFontUnderline(SCPICmdWrite):
           channel is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:FONT:UNDERline?`` query.
+        - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:FONT:UNDERline?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``CH<x>_DALL:LABel:FONT:UNDERline value``
           command.
 
@@ -167,6 +188,7 @@ class ChannelDallLabelFontUnderline(SCPICmdWrite):
     ::
 
         - CH<x>_DALL:LABel:FONT:UNDERline {ON|OFF|<NR1>}
+        - CH<x>_DALL:LABel:FONT:UNDERline?
 
     **Info:**
         - ``CH<x>`` is the channel number.
@@ -176,7 +198,7 @@ class ChannelDallLabelFontUnderline(SCPICmdWrite):
     """
 
 
-class ChannelDallLabelFontType(SCPICmdWrite):
+class ChannelDallLabelFontType(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>_DALL:LABel:FONT:TYPE`` command.
 
     **Description:**
@@ -184,6 +206,9 @@ class ChannelDallLabelFontType(SCPICmdWrite):
           or Times New Roman. The channel is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:FONT:TYPE?`` query.
+        - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:FONT:TYPE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``CH<x>_DALL:LABel:FONT:TYPE value``
           command.
 
@@ -192,6 +217,7 @@ class ChannelDallLabelFontType(SCPICmdWrite):
     ::
 
         - CH<x>_DALL:LABel:FONT:TYPE <QString>
+        - CH<x>_DALL:LABel:FONT:TYPE?
 
     **Info:**
         - ``CH<x>`` is the channel number.
@@ -201,7 +227,7 @@ class ChannelDallLabelFontType(SCPICmdWrite):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class ChannelDallLabelFontSize(SCPICmdWrite):
+class ChannelDallLabelFontSize(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>_DALL:LABel:FONT:SIZE`` command.
 
     **Description:**
@@ -209,6 +235,9 @@ class ChannelDallLabelFontSize(SCPICmdWrite):
           specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:FONT:SIZE?`` query.
+        - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:FONT:SIZE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``CH<x>_DALL:LABel:FONT:SIZE value``
           command.
 
@@ -217,6 +246,7 @@ class ChannelDallLabelFontSize(SCPICmdWrite):
     ::
 
         - CH<x>_DALL:LABel:FONT:SIZE <NR1>
+        - CH<x>_DALL:LABel:FONT:SIZE?
 
     **Info:**
         - ``CH<x>`` is the channel number.
@@ -224,7 +254,7 @@ class ChannelDallLabelFontSize(SCPICmdWrite):
     """
 
 
-class ChannelDallLabelFontItalic(SCPICmdWrite):
+class ChannelDallLabelFontItalic(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>_DALL:LABel:FONT:ITALic`` command.
 
     **Description:**
@@ -232,6 +262,9 @@ class ChannelDallLabelFontItalic(SCPICmdWrite):
           is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:FONT:ITALic?`` query.
+        - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:FONT:ITALic?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``CH<x>_DALL:LABel:FONT:ITALic value``
           command.
 
@@ -240,6 +273,7 @@ class ChannelDallLabelFontItalic(SCPICmdWrite):
     ::
 
         - CH<x>_DALL:LABel:FONT:ITALic {ON|OFF|<NR1>}
+        - CH<x>_DALL:LABel:FONT:ITALic?
 
     **Info:**
         - ``CH<x>`` is the channel number.
@@ -249,7 +283,7 @@ class ChannelDallLabelFontItalic(SCPICmdWrite):
     """
 
 
-class ChannelDallLabelFontBold(SCPICmdWrite):
+class ChannelDallLabelFontBold(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>_DALL:LABel:FONT:BOLD`` command.
 
     **Description:**
@@ -257,6 +291,9 @@ class ChannelDallLabelFontBold(SCPICmdWrite):
           specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:FONT:BOLD?`` query.
+        - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:FONT:BOLD?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``CH<x>_DALL:LABel:FONT:BOLD value``
           command.
 
@@ -265,6 +302,7 @@ class ChannelDallLabelFontBold(SCPICmdWrite):
     ::
 
         - CH<x>_DALL:LABel:FONT:BOLD {ON|OFF|<NR1>}
+        - CH<x>_DALL:LABel:FONT:BOLD?
 
     **Info:**
         - ``CH<x>`` is the channel number.
@@ -310,6 +348,9 @@ class ChannelDallLabelFont(SCPICmdRead):
               channel is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:FONT:BOLD?`` query.
+            - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:FONT:BOLD?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``CH<x>_DALL:LABel:FONT:BOLD value``
               command.
 
@@ -318,6 +359,7 @@ class ChannelDallLabelFont(SCPICmdRead):
         ::
 
             - CH<x>_DALL:LABel:FONT:BOLD {ON|OFF|<NR1>}
+            - CH<x>_DALL:LABel:FONT:BOLD?
 
         **Info:**
             - ``CH<x>`` is the channel number.
@@ -336,6 +378,9 @@ class ChannelDallLabelFont(SCPICmdRead):
               channel is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:FONT:ITALic?`` query.
+            - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:FONT:ITALic?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``CH<x>_DALL:LABel:FONT:ITALic value`` command.
 
@@ -344,6 +389,7 @@ class ChannelDallLabelFont(SCPICmdRead):
         ::
 
             - CH<x>_DALL:LABel:FONT:ITALic {ON|OFF|<NR1>}
+            - CH<x>_DALL:LABel:FONT:ITALic?
 
         **Info:**
             - ``CH<x>`` is the channel number.
@@ -362,6 +408,9 @@ class ChannelDallLabelFont(SCPICmdRead):
               is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:FONT:SIZE?`` query.
+            - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:FONT:SIZE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``CH<x>_DALL:LABel:FONT:SIZE value``
               command.
 
@@ -370,6 +419,7 @@ class ChannelDallLabelFont(SCPICmdRead):
         ::
 
             - CH<x>_DALL:LABel:FONT:SIZE <NR1>
+            - CH<x>_DALL:LABel:FONT:SIZE?
 
         **Info:**
             - ``CH<x>`` is the channel number.
@@ -386,6 +436,9 @@ class ChannelDallLabelFont(SCPICmdRead):
               Arial or Times New Roman. The channel is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:FONT:TYPE?`` query.
+            - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:FONT:TYPE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``CH<x>_DALL:LABel:FONT:TYPE value``
               command.
 
@@ -394,6 +447,7 @@ class ChannelDallLabelFont(SCPICmdRead):
         ::
 
             - CH<x>_DALL:LABel:FONT:TYPE <QString>
+            - CH<x>_DALL:LABel:FONT:TYPE?
 
         **Info:**
             - ``CH<x>`` is the channel number.
@@ -410,6 +464,10 @@ class ChannelDallLabelFont(SCPICmdRead):
               channel is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:FONT:UNDERline?``
+              query.
+            - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:FONT:UNDERline?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``CH<x>_DALL:LABel:FONT:UNDERline value`` command.
 
@@ -418,6 +476,7 @@ class ChannelDallLabelFont(SCPICmdRead):
         ::
 
             - CH<x>_DALL:LABel:FONT:UNDERline {ON|OFF|<NR1>}
+            - CH<x>_DALL:LABel:FONT:UNDERline?
 
         **Info:**
             - ``CH<x>`` is the channel number.
@@ -428,7 +487,7 @@ class ChannelDallLabelFont(SCPICmdRead):
         return self._underline
 
 
-class ChannelDallLabelColor(SCPICmdWrite):
+class ChannelDallLabelColor(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>_DALL:LABel:COLor`` command.
 
     **Description:**
@@ -436,6 +495,9 @@ class ChannelDallLabelColor(SCPICmdWrite):
           is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:COLor?`` query.
+        - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:COLor?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``CH<x>_DALL:LABel:COLor value`` command.
 
     **SCPI Syntax:**
@@ -443,6 +505,7 @@ class ChannelDallLabelColor(SCPICmdWrite):
     ::
 
         - CH<x>_DALL:LABel:COLor <QString>
+        - CH<x>_DALL:LABel:COLor?
 
     **Info:**
         - ``CH<x>`` is the channel number.
@@ -485,6 +548,9 @@ class ChannelDallLabel(SCPICmdRead):
               channel is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:COLor?`` query.
+            - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:COLor?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``CH<x>_DALL:LABel:COLor value``
               command.
 
@@ -493,6 +559,7 @@ class ChannelDallLabel(SCPICmdRead):
         ::
 
             - CH<x>_DALL:LABel:COLor <QString>
+            - CH<x>_DALL:LABel:COLor?
 
         **Info:**
             - ``CH<x>`` is the channel number.
@@ -531,6 +598,9 @@ class ChannelDallLabel(SCPICmdRead):
               specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:NAMe?`` query.
+            - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:NAMe?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``CH<x>_DALL:LABel:NAMe value``
               command.
 
@@ -539,6 +609,7 @@ class ChannelDallLabel(SCPICmdRead):
         ::
 
             - CH<x>_DALL:LABel:NAMe <QString>
+            - CH<x>_DALL:LABel:NAMe?
 
         **Info:**
             - ``CH<x>`` is the channel number.
@@ -586,13 +657,16 @@ class ChannelDall(SCPICmdRead):
         return self._label
 
 
-class ChannelDigitalBitLabelName(SCPICmdWrite):
+class ChannelDigitalBitLabelName(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>_D<x>:LABel:NAMe`` command.
 
     **Description:**
         - Sets or queries the label of the specified digital bit. The channel is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:NAMe?`` query.
+        - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:NAMe?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``CH<x>_D<x>:LABel:NAMe value`` command.
 
     **SCPI Syntax:**
@@ -600,6 +674,7 @@ class ChannelDigitalBitLabelName(SCPICmdWrite):
     ::
 
         - CH<x>_D<x>:LABel:NAMe <QString>
+        - CH<x>_D<x>:LABel:NAMe?
 
     **Info:**
         - ``CH<x>`` is the channel number.
@@ -609,7 +684,7 @@ class ChannelDigitalBitLabelName(SCPICmdWrite):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class ChannelDigitalBitLabelFontUnderline(SCPICmdWrite):
+class ChannelDigitalBitLabelFontUnderline(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>_D<x>:LABel:FONT:UNDERline`` command.
 
     **Description:**
@@ -617,6 +692,9 @@ class ChannelDigitalBitLabelFontUnderline(SCPICmdWrite):
           bit. The channel is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:FONT:UNDERline?`` query.
+        - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:UNDERline?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:UNDERline value``
           command.
 
@@ -625,6 +703,7 @@ class ChannelDigitalBitLabelFontUnderline(SCPICmdWrite):
     ::
 
         - CH<x>_D<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
+        - CH<x>_D<x>:LABel:FONT:UNDERline?
 
     **Info:**
         - ``CH<x>`` is the channel number.
@@ -634,7 +713,7 @@ class ChannelDigitalBitLabelFontUnderline(SCPICmdWrite):
     """
 
 
-class ChannelDigitalBitLabelFontType(SCPICmdWrite):
+class ChannelDigitalBitLabelFontType(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>_D<x>:LABel:FONT:TYPE`` command.
 
     **Description:**
@@ -642,6 +721,9 @@ class ChannelDigitalBitLabelFontType(SCPICmdWrite):
           as Arial or Times New Roman. The channel is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:FONT:TYPE?`` query.
+        - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:TYPE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:TYPE value``
           command.
 
@@ -650,6 +732,7 @@ class ChannelDigitalBitLabelFontType(SCPICmdWrite):
     ::
 
         - CH<x>_D<x>:LABel:FONT:TYPE <QString>
+        - CH<x>_D<x>:LABel:FONT:TYPE?
 
     **Info:**
         - ``CH<x>`` is the channel number.
@@ -659,7 +742,7 @@ class ChannelDigitalBitLabelFontType(SCPICmdWrite):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class ChannelDigitalBitLabelFontSize(SCPICmdWrite):
+class ChannelDigitalBitLabelFontSize(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>_D<x>:LABel:FONT:SIZE`` command.
 
     **Description:**
@@ -667,6 +750,9 @@ class ChannelDigitalBitLabelFontSize(SCPICmdWrite):
           channel is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:FONT:SIZE?`` query.
+        - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:SIZE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:SIZE value``
           command.
 
@@ -675,6 +761,7 @@ class ChannelDigitalBitLabelFontSize(SCPICmdWrite):
     ::
 
         - CH<x>_D<x>:LABel:FONT:SIZE <NR1>
+        - CH<x>_D<x>:LABel:FONT:SIZE?
 
     **Info:**
         - ``CH<x>`` is the channel number.
@@ -682,7 +769,7 @@ class ChannelDigitalBitLabelFontSize(SCPICmdWrite):
     """
 
 
-class ChannelDigitalBitLabelFontItalic(SCPICmdWrite):
+class ChannelDigitalBitLabelFontItalic(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>_D<x>:LABel:FONT:ITALic`` command.
 
     **Description:**
@@ -690,6 +777,9 @@ class ChannelDigitalBitLabelFontItalic(SCPICmdWrite):
           The channel is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:FONT:ITALic?`` query.
+        - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:ITALic?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:ITALic value``
           command.
 
@@ -698,6 +788,7 @@ class ChannelDigitalBitLabelFontItalic(SCPICmdWrite):
     ::
 
         - CH<x>_D<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
+        - CH<x>_D<x>:LABel:FONT:ITALic?
 
     **Info:**
         - ``CH<x>`` is the channel number.
@@ -707,7 +798,7 @@ class ChannelDigitalBitLabelFontItalic(SCPICmdWrite):
     """
 
 
-class ChannelDigitalBitLabelFontBold(SCPICmdWrite):
+class ChannelDigitalBitLabelFontBold(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>_D<x>:LABel:FONT:BOLD`` command.
 
     **Description:**
@@ -715,6 +806,9 @@ class ChannelDigitalBitLabelFontBold(SCPICmdWrite):
           channel is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:FONT:BOLD?`` query.
+        - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:BOLD?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:BOLD value``
           command.
 
@@ -723,6 +817,7 @@ class ChannelDigitalBitLabelFontBold(SCPICmdWrite):
     ::
 
         - CH<x>_D<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
+        - CH<x>_D<x>:LABel:FONT:BOLD?
 
     **Info:**
         - ``CH<x>`` is the channel number.
@@ -770,6 +865,9 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
               The channel is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:FONT:BOLD?`` query.
+            - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:BOLD?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:BOLD value``
               command.
 
@@ -778,6 +876,7 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
         ::
 
             - CH<x>_D<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
+            - CH<x>_D<x>:LABel:FONT:BOLD?
 
         **Info:**
             - ``CH<x>`` is the channel number.
@@ -796,6 +895,9 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
               bit. The channel is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:FONT:ITALic?`` query.
+            - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:ITALic?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``CH<x>_D<x>:LABel:FONT:ITALic value`` command.
 
@@ -804,6 +906,7 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
         ::
 
             - CH<x>_D<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
+            - CH<x>_D<x>:LABel:FONT:ITALic?
 
         **Info:**
             - ``CH<x>`` is the channel number.
@@ -822,6 +925,9 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
               The channel is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:FONT:SIZE?`` query.
+            - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:SIZE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:SIZE value``
               command.
 
@@ -830,6 +936,7 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
         ::
 
             - CH<x>_D<x>:LABel:FONT:SIZE <NR1>
+            - CH<x>_D<x>:LABel:FONT:SIZE?
 
         **Info:**
             - ``CH<x>`` is the channel number.
@@ -846,6 +953,9 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
               such as Arial or Times New Roman. The channel is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:FONT:TYPE?`` query.
+            - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:TYPE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:TYPE value``
               command.
 
@@ -854,6 +964,7 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
         ::
 
             - CH<x>_D<x>:LABel:FONT:TYPE <QString>
+            - CH<x>_D<x>:LABel:FONT:TYPE?
 
         **Info:**
             - ``CH<x>`` is the channel number.
@@ -870,6 +981,10 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
               bit. The channel is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:FONT:UNDERline?``
+              query.
+            - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:FONT:UNDERline?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``CH<x>_D<x>:LABel:FONT:UNDERline value`` command.
 
@@ -878,6 +993,7 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
         ::
 
             - CH<x>_D<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
+            - CH<x>_D<x>:LABel:FONT:UNDERline?
 
         **Info:**
             - ``CH<x>`` is the channel number.
@@ -888,7 +1004,7 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
         return self._underline
 
 
-class ChannelDigitalBitLabelColor(SCPICmdWrite):
+class ChannelDigitalBitLabelColor(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>_D<x>:LABel:COLor`` command.
 
     **Description:**
@@ -896,6 +1012,9 @@ class ChannelDigitalBitLabelColor(SCPICmdWrite):
           channel is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:COLor?`` query.
+        - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:COLor?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``CH<x>_D<x>:LABel:COLor value`` command.
 
     **SCPI Syntax:**
@@ -903,6 +1022,7 @@ class ChannelDigitalBitLabelColor(SCPICmdWrite):
     ::
 
         - CH<x>_D<x>:LABel:COLor <QString>
+        - CH<x>_D<x>:LABel:COLor?
 
     **Info:**
         - ``CH<x>`` is the channel number.
@@ -945,6 +1065,9 @@ class ChannelDigitalBitLabel(SCPICmdRead):
               channel is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:COLor?`` query.
+            - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:COLor?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``CH<x>_D<x>:LABel:COLor value``
               command.
 
@@ -953,6 +1076,7 @@ class ChannelDigitalBitLabel(SCPICmdRead):
         ::
 
             - CH<x>_D<x>:LABel:COLor <QString>
+            - CH<x>_D<x>:LABel:COLor?
 
         **Info:**
             - ``CH<x>`` is the channel number.
@@ -990,6 +1114,9 @@ class ChannelDigitalBitLabel(SCPICmdRead):
             - Sets or queries the label of the specified digital bit. The channel is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:NAMe?`` query.
+            - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:NAMe?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``CH<x>_D<x>:LABel:NAMe value``
               command.
 
@@ -998,6 +1125,7 @@ class ChannelDigitalBitLabel(SCPICmdRead):
         ::
 
             - CH<x>_D<x>:LABel:NAMe <QString>
+            - CH<x>_D<x>:LABel:NAMe?
 
         **Info:**
             - ``CH<x>`` is the channel number.

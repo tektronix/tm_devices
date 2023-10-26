@@ -13810,8 +13810,8 @@ class SearchSearchItemTriggerABusRs232cDataSize(SCPICmdWrite, SCPICmdRead):
 
     **Description:**
         - This command sets or queries the length of the data string in bytes to be used for an
-          RS232 bus search to determine where to place a mark when the search condition is Data. The
-          search number is specified by x.
+          RS232 bus search  to determine where to place a mark when the search condition is Data.
+          The search number is specified by x.
 
     **Usage:**
         - Using the ``.query()`` method will send the
@@ -13925,8 +13925,8 @@ class SearchSearchItemTriggerABusRs232cData(SCPICmdRead):
 
         **Description:**
             - This command sets or queries the length of the data string in bytes to be used for an
-              RS232 bus search to determine where to place a mark when the search condition is Data.
-              The search number is specified by x.
+              RS232 bus search  to determine where to place a mark when the search condition is
+              Data. The search number is specified by x.
 
         **Usage:**
             - Using the ``.query()`` method will send the
