@@ -3314,6 +3314,7 @@ class DPO7KCCommands:
             - ``.d``: The ``SELect:D<x>`` command.
             - ``.dall``: The ``SELect:DALL`` command.
             - ``.digtraces``: The ``SELect:DIGTraces`` command tree.
+            - ``.math``: The ``SELect:MATH<x>`` command.
             - ``.ref``: The ``SELect:REF<x>`` command.
         """
         return self._select

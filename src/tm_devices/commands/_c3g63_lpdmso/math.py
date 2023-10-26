@@ -39,26 +39,43 @@ Commands and Queries:
     - MATH:MATH<x>:EUSB:SUPPortedfields {DATa|DDATa}
     - MATH:MATH<x>:EUSB:SUPPortedfields?
     - MATH:MATH<x>:FILTer:CFReq <NR3>
+    - MATH:MATH<x>:FILTer:CFReq?
     - MATH:MATH<x>:FILTer:DELay <NR3>
+    - MATH:MATH<x>:FILTer:DELay?
     - MATH:MATH<x>:FILTer:DESIgn {EXECUTE|ABORT|APPLY}
     - MATH:MATH<x>:FILTer:HCFReq <NR3>
+    - MATH:MATH<x>:FILTer:HCFReq?
     - MATH:MATH<x>:FILTer:INFo?
     - MATH:MATH<x>:FILTer:LCFReq <NR3>
+    - MATH:MATH<x>:FILTer:LCFReq?
     - MATH:MATH<x>:FILTer:LOAD <QString>
     - MATH:MATH<x>:FILTer:LOAD:RESPonse {1|0}
+    - MATH:MATH<x>:FILTer:LOAD:RESPonse?
     - MATH:MATH<x>:FILTer:ORDer <NR1>
+    - MATH:MATH<x>:FILTer:ORDer?
     - MATH:MATH<x>:FILTer:PRIPple <NR3>
+    - MATH:MATH<x>:FILTer:PRIPple?
     - MATH:MATH<x>:FILTer:RESPonse {BUTTerworth| CHEBYONe| CHEBYTWo| ELLiptical| GAUSsian| BESSelCUSTom}
+    - MATH:MATH<x>:FILTer:RESPonse?
     - MATH:MATH<x>:FILTer:ROFactor <NR1>
+    - MATH:MATH<x>:FILTer:ROFactor?
     - MATH:MATH<x>:FILTer:SATTenuation <NR3>
+    - MATH:MATH<x>:FILTer:SATTenuation?
     - MATH:MATH<x>:FILTer:SAVe <QString>
     - MATH:MATH<x>:FILTer:SAVe:RESPonse {1|0}
+    - MATH:MATH<x>:FILTer:SAVe:RESPonse?
     - MATH:MATH<x>:FILTer:SDEViation <NR3>
+    - MATH:MATH<x>:FILTer:SDEViation?
     - MATH:MATH<x>:FILTer:SDURation <NR3>
+    - MATH:MATH<x>:FILTer:SDURation?
     - MATH:MATH<x>:FILTer:SOURce {CH<x>|MATH<x>|REF<x>}
+    - MATH:MATH<x>:FILTer:SOURce?
     - MATH:MATH<x>:FILTer:SYMBols <NR1>
+    - MATH:MATH<x>:FILTer:SYMBols?
     - MATH:MATH<x>:FILTer:TWIDth <NR3>
+    - MATH:MATH<x>:FILTer:TWIDth?
     - MATH:MATH<x>:FILTer:TYPe {LPASs| HPASs| BPASs| BSTop| APASs| HILBert| DIFFerentiator| RC| RRC}
+    - MATH:MATH<x>:FILTer:TYPe?
     - MATH:MATH<x>:FLEXray:SUPPortedfields {DATa}
     - MATH:MATH<x>:FLEXray:SUPPortedfields?
     - MATH:MATH<x>:FUNCtion {ADD|SUBtract|MULTiply|DIVide}
@@ -107,6 +124,7 @@ Commands and Queries:
     - MATH:MATH<x>:SPACEWIRe:SUPPortedfields {DATa}
     - MATH:MATH<x>:SPACEWIRe:SUPPortedfields?
     - MATH:MATH<x>:SPECTral:HORZ {LOG|LINEAr}
+    - MATH:MATH<x>:SPECTral:HORZ?
     - MATH:MATH<x>:SPECTral:MAG {LINEAr|DBM}
     - MATH:MATH<x>:SPECTral:MAG?
     - MATH:MATH<x>:SPECTral:PHASE {DEGrees|RADians|GROUPDelay}
@@ -854,7 +872,7 @@ class MathMathItemSpectralMag(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class MathMathItemSpectralHorz(SCPICmdWrite):
+class MathMathItemSpectralHorz(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:SPECTral:HORZ`` command.
 
     **Description:**
@@ -862,6 +880,9 @@ class MathMathItemSpectralHorz(SCPICmdWrite):
           The math waveform is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:SPECTral:HORZ?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:SPECTral:HORZ?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:SPECTral:HORZ value``
           command.
 
@@ -870,6 +891,7 @@ class MathMathItemSpectralHorz(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:SPECTral:HORZ {LOG|LINEAr}
+        - MATH:MATH<x>:SPECTral:HORZ?
 
     **Info:**
         - ``LINEAr`` sets the SpectralMag units to linear.
@@ -917,6 +939,9 @@ class MathMathItemSpectral(SCPICmdRead):
               waveform. The math waveform is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:SPECTral:HORZ?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:SPECTral:HORZ?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:SPECTral:HORZ value``
               command.
 
@@ -925,6 +950,7 @@ class MathMathItemSpectral(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:SPECTral:HORZ {LOG|LINEAr}
+            - MATH:MATH<x>:SPECTral:HORZ?
 
         **Info:**
             - ``LINEAr`` sets the SpectralMag units to linear.
@@ -2890,13 +2916,16 @@ class MathMathItemFlexray(SCPICmdRead):
         return self._supportedfields
 
 
-class MathMathItemFilterType(SCPICmdWrite):
+class MathMathItemFilterType(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:TYPe`` command.
 
     **Description:**
         - This command specifies or queries the filter type. The math waveform is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:TYPe?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:TYPe?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:TYPe value``
           command.
 
@@ -2905,6 +2934,7 @@ class MathMathItemFilterType(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:TYPe {LPASs| HPASs| BPASs| BSTop| APASs| HILBert| DIFFerentiator| RC| RRC}
+        - MATH:MATH<x>:FILTer:TYPe?
 
     **Info:**
         - ``LPASs`` specifies the filter type as LPASs.
@@ -2919,7 +2949,7 @@ class MathMathItemFilterType(SCPICmdWrite):
     """  # noqa: E501
 
 
-class MathMathItemFilterTwidth(SCPICmdWrite):
+class MathMathItemFilterTwidth(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:TWIDth`` command.
 
     **Description:**
@@ -2927,6 +2957,9 @@ class MathMathItemFilterTwidth(SCPICmdWrite):
           math waveform is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:TWIDth?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:TWIDth?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:TWIDth value``
           command.
 
@@ -2935,13 +2968,14 @@ class MathMathItemFilterTwidth(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:TWIDth <NR3>
+        - MATH:MATH<x>:FILTer:TWIDth?
 
     **Info:**
         - ``<NR3>`` specifies the Transition Width for Custom filter response.
     """
 
 
-class MathMathItemFilterSymbols(SCPICmdWrite):
+class MathMathItemFilterSymbols(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:SYMBols`` command.
 
     **Description:**
@@ -2949,6 +2983,9 @@ class MathMathItemFilterSymbols(SCPICmdWrite):
           The math waveform is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:SYMBols?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:SYMBols?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:SYMBols value``
           command.
 
@@ -2957,13 +2994,14 @@ class MathMathItemFilterSymbols(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:SYMBols <NR1>
+        - MATH:MATH<x>:FILTer:SYMBols?
 
     **Info:**
         - ``<NR1>`` specifies the number of symbols for Raised-Cosine (RC) filter type.
     """
 
 
-class MathMathItemFilterSource(SCPICmdWrite):
+class MathMathItemFilterSource(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:SOURce`` command.
 
     **Description:**
@@ -2971,6 +3009,9 @@ class MathMathItemFilterSource(SCPICmdWrite):
           are specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:SOURce?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:SOURce?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:SOURce value``
           command.
 
@@ -2979,6 +3020,7 @@ class MathMathItemFilterSource(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:SOURce {CH<x>|MATH<x>|REF<x>}
+        - MATH:MATH<x>:FILTer:SOURce?
 
     **Info:**
         - ``CH<x>`` specifies an analog channel as source.
@@ -2987,7 +3029,7 @@ class MathMathItemFilterSource(SCPICmdWrite):
     """
 
 
-class MathMathItemFilterSduration(SCPICmdWrite):
+class MathMathItemFilterSduration(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:SDURation`` command.
 
     **Description:**
@@ -2995,6 +3037,9 @@ class MathMathItemFilterSduration(SCPICmdWrite):
           filter. The math waveform is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:SDURation?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:SDURation?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:SDURation value``
           command.
 
@@ -3003,6 +3048,7 @@ class MathMathItemFilterSduration(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:SDURation <NR3>
+        - MATH:MATH<x>:FILTer:SDURation?
 
     **Info:**
         - ``<NR3>`` specifies the number of symbol duration for Root-Raised-Cosine (RRC) filter
@@ -3010,7 +3056,7 @@ class MathMathItemFilterSduration(SCPICmdWrite):
     """
 
 
-class MathMathItemFilterSdeviation(SCPICmdWrite):
+class MathMathItemFilterSdeviation(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:SDEViation`` command.
 
     **Description:**
@@ -3018,6 +3064,9 @@ class MathMathItemFilterSdeviation(SCPICmdWrite):
           is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:SDEViation?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:SDEViation?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:SDEViation value``
           command.
 
@@ -3026,13 +3075,14 @@ class MathMathItemFilterSdeviation(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:SDEViation <NR3>
+        - MATH:MATH<x>:FILTer:SDEViation?
 
     **Info:**
         - ``<NR3>`` sets the standard deviation in gaussian filter.
     """
 
 
-class MathMathItemFilterSaveResponse(SCPICmdWrite):
+class MathMathItemFilterSaveResponse(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:SAVe:RESPonse`` command.
 
     **Description:**
@@ -3040,6 +3090,9 @@ class MathMathItemFilterSaveResponse(SCPICmdWrite):
           math waveform is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:SAVe:RESPonse?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:SAVe:RESPonse?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``MATH:MATH<x>:FILTer:SAVe:RESPonse value`` command.
 
@@ -3048,6 +3101,7 @@ class MathMathItemFilterSaveResponse(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:SAVe:RESPonse {1|0}
+        - MATH:MATH<x>:FILTer:SAVe:RESPonse?
 
     **Info:**
         - ``1`` enables the save of the filter response image.
@@ -3093,6 +3147,11 @@ class MathMathItemFilterSave(SCPICmdWrite, SCPICmdRead):
               The math waveform is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:SAVe:RESPonse?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MATH:MATH<x>:FILTer:SAVe:RESPonse?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``MATH:MATH<x>:FILTer:SAVe:RESPonse value`` command.
 
@@ -3101,6 +3160,7 @@ class MathMathItemFilterSave(SCPICmdWrite, SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:SAVe:RESPonse {1|0}
+            - MATH:MATH<x>:FILTer:SAVe:RESPonse?
 
         **Info:**
             - ``1`` enables the save of the filter response image.
@@ -3109,7 +3169,7 @@ class MathMathItemFilterSave(SCPICmdWrite, SCPICmdRead):
         return self._response
 
 
-class MathMathItemFilterSattenuation(SCPICmdWrite):
+class MathMathItemFilterSattenuation(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:SATTenuation`` command.
 
     **Description:**
@@ -3117,6 +3177,9 @@ class MathMathItemFilterSattenuation(SCPICmdWrite):
           waveform is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:SATTenuation?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:SATTenuation?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``MATH:MATH<x>:FILTer:SATTenuation value`` command.
 
@@ -3125,13 +3188,14 @@ class MathMathItemFilterSattenuation(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:SATTenuation <NR3>
+        - MATH:MATH<x>:FILTer:SATTenuation?
 
     **Info:**
         - ``<NR3>`` sets the stop band attenuation in the filter response.
     """
 
 
-class MathMathItemFilterRofactor(SCPICmdWrite):
+class MathMathItemFilterRofactor(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:ROFactor`` command.
 
     **Description:**
@@ -3139,6 +3203,9 @@ class MathMathItemFilterRofactor(SCPICmdWrite):
           filter. The math waveform is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:ROFactor?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:ROFactor?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:ROFactor value``
           command.
 
@@ -3147,13 +3214,14 @@ class MathMathItemFilterRofactor(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:ROFactor <NR1>
+        - MATH:MATH<x>:FILTer:ROFactor?
 
     **Info:**
         - ``<NR1>`` specifies the Roll-off Factor value for Rasied-Cosine(RC) filter type.
     """
 
 
-class MathMathItemFilterResponse(SCPICmdWrite):
+class MathMathItemFilterResponse(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:RESPonse`` command.
 
     **Description:**
@@ -3161,6 +3229,9 @@ class MathMathItemFilterResponse(SCPICmdWrite):
           math waveform is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:RESPonse?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:RESPonse?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:RESPonse value``
           command.
 
@@ -3169,6 +3240,7 @@ class MathMathItemFilterResponse(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:RESPonse {BUTTerworth| CHEBYONe| CHEBYTWo| ELLiptical| GAUSsian| BESSelCUSTom}
+        - MATH:MATH<x>:FILTer:RESPonse?
 
     **Info:**
         - ``BUTTerworth`` specifies the filter response as BUTTerworth.
@@ -3180,7 +3252,7 @@ class MathMathItemFilterResponse(SCPICmdWrite):
     """  # noqa: E501
 
 
-class MathMathItemFilterPripple(SCPICmdWrite):
+class MathMathItemFilterPripple(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:PRIPple`` command.
 
     **Description:**
@@ -3188,6 +3260,9 @@ class MathMathItemFilterPripple(SCPICmdWrite):
           waveform is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:PRIPple?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:PRIPple?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:PRIPple value``
           command.
 
@@ -3196,19 +3271,23 @@ class MathMathItemFilterPripple(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:PRIPple <NR3>
+        - MATH:MATH<x>:FILTer:PRIPple?
 
     **Info:**
         - ``<NR3>`` sets the pass band ripple in the filter response.
     """
 
 
-class MathMathItemFilterOrder(SCPICmdWrite):
+class MathMathItemFilterOrder(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:ORDer`` command.
 
     **Description:**
         - This command sets or queries the filter order. The math waveform is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:ORDer?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:ORDer?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:ORDer value``
           command.
 
@@ -3217,13 +3296,14 @@ class MathMathItemFilterOrder(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:ORDer <NR1>
+        - MATH:MATH<x>:FILTer:ORDer?
 
     **Info:**
         - ``<NR1>`` sets the filter order.
     """
 
 
-class MathMathItemFilterLoadResponse(SCPICmdWrite):
+class MathMathItemFilterLoadResponse(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:LOAD:RESPonse`` command.
 
     **Description:**
@@ -3231,6 +3311,9 @@ class MathMathItemFilterLoadResponse(SCPICmdWrite):
           math waveform is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:LOAD:RESPonse?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:LOAD:RESPonse?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``MATH:MATH<x>:FILTer:LOAD:RESPonse value`` command.
 
@@ -3239,6 +3322,7 @@ class MathMathItemFilterLoadResponse(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:LOAD:RESPonse {1|0}
+        - MATH:MATH<x>:FILTer:LOAD:RESPonse?
 
     **Info:**
         - ``1`` enables recall of filter response image.
@@ -3285,6 +3369,11 @@ class MathMathItemFilterLoad(SCPICmdWrite, SCPICmdRead):
               math waveform is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:LOAD:RESPonse?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MATH:MATH<x>:FILTer:LOAD:RESPonse?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``MATH:MATH<x>:FILTer:LOAD:RESPonse value`` command.
 
@@ -3293,6 +3382,7 @@ class MathMathItemFilterLoad(SCPICmdWrite, SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:LOAD:RESPonse {1|0}
+            - MATH:MATH<x>:FILTer:LOAD:RESPonse?
 
         **Info:**
             - ``1`` enables recall of filter response image.
@@ -3301,7 +3391,7 @@ class MathMathItemFilterLoad(SCPICmdWrite, SCPICmdRead):
         return self._response
 
 
-class MathMathItemFilterLcfreq(SCPICmdWrite):
+class MathMathItemFilterLcfreq(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:LCFReq`` command.
 
     **Description:**
@@ -3309,6 +3399,9 @@ class MathMathItemFilterLcfreq(SCPICmdWrite):
           The math waveform is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:LCFReq?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:LCFReq?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:LCFReq value``
           command.
 
@@ -3317,6 +3410,7 @@ class MathMathItemFilterLcfreq(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:LCFReq <NR3>
+        - MATH:MATH<x>:FILTer:LCFReq?
 
     **Info:**
         - ``<NR3>`` sets the low cutoff frequency for bandpass or band stop filter.
@@ -3343,7 +3437,7 @@ class MathMathItemFilterInfo(SCPICmdRead):
     """
 
 
-class MathMathItemFilterHcfreq(SCPICmdWrite):
+class MathMathItemFilterHcfreq(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:HCFReq`` command.
 
     **Description:**
@@ -3351,6 +3445,9 @@ class MathMathItemFilterHcfreq(SCPICmdWrite):
           The math waveform is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:HCFReq?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:HCFReq?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:HCFReq value``
           command.
 
@@ -3359,6 +3456,7 @@ class MathMathItemFilterHcfreq(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:HCFReq <NR3>
+        - MATH:MATH<x>:FILTer:HCFReq?
 
     **Info:**
         - ``<NR3>`` sets the high cutoff frequency for bandpass or band stop filter.
@@ -3389,7 +3487,7 @@ class MathMathItemFilterDesign(SCPICmdWrite):
     """
 
 
-class MathMathItemFilterDelay(SCPICmdWrite):
+class MathMathItemFilterDelay(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:DELay`` command.
 
     **Description:**
@@ -3397,6 +3495,9 @@ class MathMathItemFilterDelay(SCPICmdWrite):
           by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:DELay?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:DELay?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:DELay value``
           command.
 
@@ -3405,13 +3506,14 @@ class MathMathItemFilterDelay(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:DELay <NR3>
+        - MATH:MATH<x>:FILTer:DELay?
 
     **Info:**
         - ``<NR3>`` sets the delay for all pass filter.
     """
 
 
-class MathMathItemFilterCfreq(SCPICmdWrite):
+class MathMathItemFilterCfreq(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FILTer:CFReq`` command.
 
     **Description:**
@@ -3419,6 +3521,9 @@ class MathMathItemFilterCfreq(SCPICmdWrite):
           by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:CFReq?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:CFReq?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:CFReq value``
           command.
 
@@ -3427,6 +3532,7 @@ class MathMathItemFilterCfreq(SCPICmdWrite):
     ::
 
         - MATH:MATH<x>:FILTer:CFReq <NR3>
+        - MATH:MATH<x>:FILTer:CFReq?
 
     **Info:**
         - ``<NR3>`` sets the filter cutoff frequency.
@@ -3497,6 +3603,9 @@ class MathMathItemFilter(SCPICmdRead):
               specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:CFReq?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:CFReq?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:CFReq value``
               command.
 
@@ -3505,6 +3614,7 @@ class MathMathItemFilter(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:CFReq <NR3>
+            - MATH:MATH<x>:FILTer:CFReq?
 
         **Info:**
             - ``<NR3>`` sets the filter cutoff frequency.
@@ -3520,6 +3630,9 @@ class MathMathItemFilter(SCPICmdRead):
               specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:DELay?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:DELay?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:DELay value``
               command.
 
@@ -3528,6 +3641,7 @@ class MathMathItemFilter(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:DELay <NR3>
+            - MATH:MATH<x>:FILTer:DELay?
 
         **Info:**
             - ``<NR3>`` sets the delay for all pass filter.
@@ -3568,6 +3682,9 @@ class MathMathItemFilter(SCPICmdRead):
               filter. The math waveform is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:HCFReq?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:HCFReq?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:HCFReq value``
               command.
 
@@ -3576,6 +3693,7 @@ class MathMathItemFilter(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:HCFReq <NR3>
+            - MATH:MATH<x>:FILTer:HCFReq?
 
         **Info:**
             - ``<NR3>`` sets the high cutoff frequency for bandpass or band stop filter.
@@ -3612,6 +3730,9 @@ class MathMathItemFilter(SCPICmdRead):
               filter. The math waveform is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:LCFReq?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:LCFReq?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:LCFReq value``
               command.
 
@@ -3620,6 +3741,7 @@ class MathMathItemFilter(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:LCFReq <NR3>
+            - MATH:MATH<x>:FILTer:LCFReq?
 
         **Info:**
             - ``<NR3>`` sets the low cutoff frequency for bandpass or band stop filter.
@@ -3660,6 +3782,9 @@ class MathMathItemFilter(SCPICmdRead):
             - This command sets or queries the filter order. The math waveform is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:ORDer?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:ORDer?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:ORDer value``
               command.
 
@@ -3668,6 +3793,7 @@ class MathMathItemFilter(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:ORDer <NR1>
+            - MATH:MATH<x>:FILTer:ORDer?
 
         **Info:**
             - ``<NR1>`` sets the filter order.
@@ -3683,6 +3809,9 @@ class MathMathItemFilter(SCPICmdRead):
               waveform is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:PRIPple?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:PRIPple?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:PRIPple value``
               command.
 
@@ -3691,6 +3820,7 @@ class MathMathItemFilter(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:PRIPple <NR3>
+            - MATH:MATH<x>:FILTer:PRIPple?
 
         **Info:**
             - ``<NR3>`` sets the pass band ripple in the filter response.
@@ -3706,6 +3836,9 @@ class MathMathItemFilter(SCPICmdRead):
               math waveform is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:RESPonse?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:RESPonse?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``MATH:MATH<x>:FILTer:RESPonse value`` command.
 
@@ -3714,6 +3847,7 @@ class MathMathItemFilter(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:RESPonse {BUTTerworth| CHEBYONe| CHEBYTWo| ELLiptical| GAUSsian| BESSelCUSTom}
+            - MATH:MATH<x>:FILTer:RESPonse?
 
         **Info:**
             - ``BUTTerworth`` specifies the filter response as BUTTerworth.
@@ -3734,6 +3868,9 @@ class MathMathItemFilter(SCPICmdRead):
               filter. The math waveform is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:ROFactor?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:ROFactor?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``MATH:MATH<x>:FILTer:ROFactor value`` command.
 
@@ -3742,6 +3879,7 @@ class MathMathItemFilter(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:ROFactor <NR1>
+            - MATH:MATH<x>:FILTer:ROFactor?
 
         **Info:**
             - ``<NR1>`` specifies the Roll-off Factor value for Rasied-Cosine(RC) filter type.
@@ -3757,6 +3895,11 @@ class MathMathItemFilter(SCPICmdRead):
               math waveform is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:SATTenuation?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MATH:MATH<x>:FILTer:SATTenuation?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``MATH:MATH<x>:FILTer:SATTenuation value`` command.
 
@@ -3765,6 +3908,7 @@ class MathMathItemFilter(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:SATTenuation <NR3>
+            - MATH:MATH<x>:FILTer:SATTenuation?
 
         **Info:**
             - ``<NR3>`` sets the stop band attenuation in the filter response.
@@ -3805,6 +3949,9 @@ class MathMathItemFilter(SCPICmdRead):
               waveform is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:SDEViation?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:SDEViation?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``MATH:MATH<x>:FILTer:SDEViation value`` command.
 
@@ -3813,6 +3960,7 @@ class MathMathItemFilter(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:SDEViation <NR3>
+            - MATH:MATH<x>:FILTer:SDEViation?
 
         **Info:**
             - ``<NR3>`` sets the standard deviation in gaussian filter.
@@ -3828,6 +3976,9 @@ class MathMathItemFilter(SCPICmdRead):
               cosine filter. The math waveform is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:SDURation?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:SDURation?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``MATH:MATH<x>:FILTer:SDURation value`` command.
 
@@ -3836,6 +3987,7 @@ class MathMathItemFilter(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:SDURation <NR3>
+            - MATH:MATH<x>:FILTer:SDURation?
 
         **Info:**
             - ``<NR3>`` specifies the number of symbol duration for Root-Raised-Cosine (RRC) filter
@@ -3852,6 +4004,9 @@ class MathMathItemFilter(SCPICmdRead):
               source are specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:SOURce?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:SOURce?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:SOURce value``
               command.
 
@@ -3860,6 +4015,7 @@ class MathMathItemFilter(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:SOURce {CH<x>|MATH<x>|REF<x>}
+            - MATH:MATH<x>:FILTer:SOURce?
 
         **Info:**
             - ``CH<x>`` specifies an analog channel as source.
@@ -3877,6 +4033,9 @@ class MathMathItemFilter(SCPICmdRead):
               filter. The math waveform is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:SYMBols?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:SYMBols?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:SYMBols value``
               command.
 
@@ -3885,6 +4044,7 @@ class MathMathItemFilter(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:SYMBols <NR1>
+            - MATH:MATH<x>:FILTer:SYMBols?
 
         **Info:**
             - ``<NR1>`` specifies the number of symbols for Raised-Cosine (RC) filter type.
@@ -3900,6 +4060,9 @@ class MathMathItemFilter(SCPICmdRead):
               The math waveform is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:TWIDth?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:TWIDth?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:TWIDth value``
               command.
 
@@ -3908,6 +4071,7 @@ class MathMathItemFilter(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:TWIDth <NR3>
+            - MATH:MATH<x>:FILTer:TWIDth?
 
         **Info:**
             - ``<NR3>`` specifies the Transition Width for Custom filter response.
@@ -3923,6 +4087,9 @@ class MathMathItemFilter(SCPICmdRead):
               x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FILTer:TYPe?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FILTer:TYPe?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FILTer:TYPe value``
               command.
 
@@ -3931,6 +4098,7 @@ class MathMathItemFilter(SCPICmdRead):
         ::
 
             - MATH:MATH<x>:FILTer:TYPe {LPASs| HPASs| BPASs| BSTop| APASs| HILBert| DIFFerentiator| RC| RRC}
+            - MATH:MATH<x>:FILTer:TYPe?
 
         **Info:**
             - ``LPASs`` specifies the filter type as LPASs.

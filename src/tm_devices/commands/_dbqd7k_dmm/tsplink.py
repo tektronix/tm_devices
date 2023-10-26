@@ -149,6 +149,14 @@ class TsplinkLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 class Tsplink(BaseTSPCmd):
     """The ``tsplink`` command tree.
 
+    Constants:
+        - ``.MODE_DIGITAL_OPEN_DRAIN``: TSP-Link digital open drain line.
+        - ``.MODE_SYNCHRONOUS_ACCEPTOR``: TSP-Link trigger synchronous acceptor.
+        - ``.MODE_SYNCHRONOUS_MASTER``: TSP-Link trigger synchronous master.
+        - ``.MODE_TRIGGER_OPEN_DRAIN``: TSP-Link trigger open drain line.
+        - ``.STATE_HIGH``: High state of the synchronization line.
+        - ``.STATE_LOW``: Low state of the synchronization line.
+
     Properties/methods:
         - ``.group``: The ``tsplink.group`` attribute.
         - ``.initialize()``: The ``tsplink.initialize()`` function.
@@ -159,6 +167,19 @@ class Tsplink(BaseTSPCmd):
         - ``.state``: The ``tsplink.state`` attribute.
         - ``.writeport()``: The ``tsplink.writeport()`` function.
     """
+
+    MODE_DIGITAL_OPEN_DRAIN = "tsplink.MODE_DIGITAL_OPEN_DRAIN"
+    """str: TSP-Link digital open drain line."""
+    MODE_SYNCHRONOUS_ACCEPTOR = "tsplink.MODE_SYNCHRONOUS_ACCEPTOR"
+    """str: TSP-Link trigger synchronous acceptor."""
+    MODE_SYNCHRONOUS_MASTER = "tsplink.MODE_SYNCHRONOUS_MASTER"
+    """str: TSP-Link trigger synchronous master."""
+    MODE_TRIGGER_OPEN_DRAIN = "tsplink.MODE_TRIGGER_OPEN_DRAIN"
+    """str: TSP-Link trigger open drain line."""
+    STATE_HIGH = "tsplink.STATE_HIGH"
+    """str: High state of the synchronization line."""
+    STATE_LOW = "tsplink.STATE_LOW"
+    """str: Low state of the synchronization line."""
 
     def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "tsplink") -> None:
         super().__init__(device, cmd_syntax)

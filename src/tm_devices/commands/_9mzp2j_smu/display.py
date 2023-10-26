@@ -529,10 +529,58 @@ class Display(BaseTSPCmd):
         - ``.ANNUNCIATOR_STAR``: * (asterisk) indicator on.
         - ``.ANNUNCIATOR_TALK``: TALK indicator on.
         - ``.ANNUNCIATOR_TRIGGER``: TRIG indicator on.
+        - ``.DIGITS_4_5``: Set the front-panel display resolution to 4.5 digits.
+        - ``.DIGITS_5_5``: Set the front-panel display resolution to 5.5 digits.
+        - ``.DIGITS_6_5``: Set the front-panel display resolution to 6.5 digits.
         - ``.DISABLE``: Disable the front-panel keys for numeric entry when entering a value.
         - ``.DONT_SAVE``: Do not save code to nonvolatile memory.
         - ``.ENABLE``: Enable the front-panel keys for numeric entry when entering a value.
+        - ``.KEY_AUTO``: Represents the range AUTO key.
+        - ``.KEY_CONFIG``: Represents the CONFIG key.
+        - ``.KEY_DIGITSA``: Represents the DIGITS (display resolution) key.
+          For two-channel products, this is the DIGITS key for Channel A.
+        - ``.KEY_DIGITSB``: Represents the DIGITS (display resolution) key for Channel B.
+        - ``.KEY_DISPLAY``: Represents the DISPLAY key.
+        - ``.KEY_ENTER``: Represents the ENTER key.
+        - ``.KEY_EXIT``: Represents the EXIT key.
+        - ``.KEY_FILTERA``: Represents the FILTER key.
+          For two-channel products, this is the FILTER key for Channel A.
+        - ``.KEY_FILTERB``: Represents the FILTER key for Channel B.
+        - ``.KEY_LEFT``: Represents the left CURSOR key.
+        - ``.KEY_LIMITA``: Represents the LIMIT key.
+          For two-channel products, this is the LIMIT key for Channel A.
+        - ``.KEY_LIMITB``: Represents the LIMIT key.
+          For two-channel products, this is the LIMIT key for Channel B.
+        - ``.KEY_LOAD``: Represents the LOAD (load test) key.
+        - ``.KEY_MEASA``: Represents the MEAS (Measure) key.
+          For two-channel products, this is the MEAS key for Channel A.
+        - ``.KEY_MEASB``: Represents the MEAS (Measure) key for Channel B.
+        - ``.KEY_MENU``: Represents the MENU key.
+        - ``.KEY_MODEA``: Represents the MODE (meter mode) key
+          For two-channel products, this is the MODE key for Channel A.
+        - ``.KEY_MODEB``: Represents the MODE (meter mode) key for Channel B.
         - ``.KEY_NONE``: No key was pressed.
+        - ``.KEY_OUTPUTA``: Represents the OUTPUT ON/OFF key.
+          For two-channel products, this is the OUTPUT ON/OFF key for Channel A.
+        - ``.KEY_OUTPUTB``: Represents the OUTPUT ON/OFF key.
+          For two-channel products, this is the OUTPUT ON/OFF key for Channel B.
+        - ``.KEY_RANGEDOWN``: Represents the RANGE down key.
+        - ``.KEY_RANGEUP``: Represents the RANGE up key.
+        - ``.KEY_RECALL``: Represents the RECALL key.
+        - ``.KEY_RELA``: Represents the REL key.
+          For two-channel products, this is the REL key for Channel A.
+        - ``.KEY_RELB``: Represents the REL key for Channel B.
+        - ``.KEY_RIGHT``: Represents the right CURSOR key.
+        - ``.KEY_RUN``: Represents the RUN key.
+        - ``.KEY_SPEEDA``: Represents the SPEED key.
+          For two-channel products, this is the SPEED key for Channel A.
+        - ``.KEY_SPEEDB``: Represents the SPEED key.
+          For two-channel products, this is the SPEED key for Channel B.
+        - ``.KEY_SRCA``: Represents the SRC (Source) key.
+          For two-channel products, this is the SRC key for Channel A.
+        - ``.KEY_SRCB``: Represents the SRC (Source) key for Channel B.
+        - ``.KEY_STORE``: Represents the STORE key.
+        - ``.KEY_TRIG``: Represents the TRIG key.
         - ``.LIMIT_IV``: Display the primary limit value.
         - ``.LIMIT_P``: Display the power limit value.
         - ``.LOCK``: Unlock the EXIT (LOCAL) key.
@@ -544,6 +592,9 @@ class Display(BaseTSPCmd):
         - ``.SMUA_SMUB``: Displays source-measure screen for SMU A and SMU B.
         - ``.SMUB``: Displays source-measure and compliance screen for SMU B.
         - ``.UNLOCK``: Lock out the EXIT (LOCAL) key.
+        - ``.WHEEL_ENTER``: Represents pressing the navigation wheel.
+        - ``.WHEEL_LEFT``: Represents turning the Navigation wheel left.
+        - ``.WHEEL_RIGHT``: Represents turning the Navigation wheel right.
 
     Properties/methods:
         - ``.clear()``: The ``display.clear()`` function.
@@ -598,14 +649,98 @@ class Display(BaseTSPCmd):
     """str: TALK indicator on."""
     ANNUNCIATOR_TRIGGER = "display.ANNUNCIATOR_TRIGGER"
     """str: TRIG indicator on."""
+    DIGITS_4_5 = "display.DIGITS_4_5"
+    """str: Set the front-panel display resolution to 4.5 digits."""
+    DIGITS_5_5 = "display.DIGITS_5_5"
+    """str: Set the front-panel display resolution to 5.5 digits."""
+    DIGITS_6_5 = "display.DIGITS_6_5"
+    """str: Set the front-panel display resolution to 6.5 digits."""
     DISABLE = "display.DISABLE"
     """str: Disable the front-panel keys for numeric entry when entering a value."""
     DONT_SAVE = "display.DONT_SAVE"
     """str: Do not save code to nonvolatile memory."""
     ENABLE = "display.ENABLE"
     """str: Enable the front-panel keys for numeric entry when entering a value."""
+    KEY_AUTO = "display.KEY_AUTO"
+    """str: Represents the range AUTO key."""
+    KEY_CONFIG = "display.KEY_CONFIG"
+    """str: Represents the CONFIG key."""
+    KEY_DIGITSA = "display.KEY_DIGITSA"
+    """str: Represents the DIGITS (display resolution) key.
+For two-channel products, this is the DIGITS key for Channel A."""
+    KEY_DIGITSB = "display.KEY_DIGITSB"
+    """str: Represents the DIGITS (display resolution) key for Channel B."""
+    KEY_DISPLAY = "display.KEY_DISPLAY"
+    """str: Represents the DISPLAY key."""
+    KEY_ENTER = "display.KEY_ENTER"
+    """str: Represents the ENTER key."""
+    KEY_EXIT = "display.KEY_EXIT"
+    """str: Represents the EXIT key."""
+    KEY_FILTERA = "display.KEY_FILTERA"
+    """str: Represents the FILTER key.
+For two-channel products, this is the FILTER key for Channel A."""
+    KEY_FILTERB = "display.KEY_FILTERB"
+    """str: Represents the FILTER key for Channel B."""
+    KEY_LEFT = "display.KEY_LEFT"
+    """str: Represents the left CURSOR key."""
+    KEY_LIMITA = "display.KEY_LIMITA"
+    """str: Represents the LIMIT key.
+For two-channel products, this is the LIMIT key for Channel A."""
+    KEY_LIMITB = "display.KEY_LIMITB"
+    """str: Represents the LIMIT key.
+For two-channel products, this is the LIMIT key for Channel B."""
+    KEY_LOAD = "display.KEY_LOAD"
+    """str: Represents the LOAD (load test) key."""
+    KEY_MEASA = "display.KEY_MEASA"
+    """str: Represents the MEAS (Measure) key.
+For two-channel products, this is the MEAS key for Channel A."""
+    KEY_MEASB = "display.KEY_MEASB"
+    """str: Represents the MEAS (Measure) key for Channel B."""
+    KEY_MENU = "display.KEY_MENU"
+    """str: Represents the MENU key."""
+    KEY_MODEA = "display.KEY_MODEA"
+    """str: Represents the MODE (meter mode) key
+For two-channel products, this is the MODE key for Channel A."""
+    KEY_MODEB = "display.KEY_MODEB"
+    """str: Represents the MODE (meter mode) key for Channel B."""
     KEY_NONE = "display.KEY_NONE"
     """str: No key was pressed."""
+    KEY_OUTPUTA = "display.KEY_OUTPUTA"
+    """str: Represents the OUTPUT ON/OFF key.
+For two-channel products, this is the OUTPUT ON/OFF key for Channel A."""
+    KEY_OUTPUTB = "display.KEY_OUTPUTB"
+    """str: Represents the OUTPUT ON/OFF key.
+For two-channel products, this is the OUTPUT ON/OFF key for Channel B."""
+    KEY_RANGEDOWN = "display.KEY_RANGEDOWN"
+    """str: Represents the RANGE down key."""
+    KEY_RANGEUP = "display.KEY_RANGEUP"
+    """str: Represents the RANGE up key."""
+    KEY_RECALL = "display.KEY_RECALL"
+    """str: Represents the RECALL key."""
+    KEY_RELA = "display.KEY_RELA"
+    """str: Represents the REL key.
+For two-channel products, this is the REL key for Channel A."""
+    KEY_RELB = "display.KEY_RELB"
+    """str: Represents the REL key for Channel B."""
+    KEY_RIGHT = "display.KEY_RIGHT"
+    """str: Represents the right CURSOR key."""
+    KEY_RUN = "display.KEY_RUN"
+    """str: Represents the RUN key."""
+    KEY_SPEEDA = "display.KEY_SPEEDA"
+    """str: Represents the SPEED key.
+For two-channel products, this is the SPEED key for Channel A."""
+    KEY_SPEEDB = "display.KEY_SPEEDB"
+    """str: Represents the SPEED key.
+For two-channel products, this is the SPEED key for Channel B."""
+    KEY_SRCA = "display.KEY_SRCA"
+    """str: Represents the SRC (Source) key.
+For two-channel products, this is the SRC key for Channel A."""
+    KEY_SRCB = "display.KEY_SRCB"
+    """str: Represents the SRC (Source) key for Channel B."""
+    KEY_STORE = "display.KEY_STORE"
+    """str: Represents the STORE key."""
+    KEY_TRIG = "display.KEY_TRIG"
+    """str: Represents the TRIG key."""
     LIMIT_IV = "display.LIMIT_IV"
     """str: Display the primary limit value."""
     LIMIT_P = "display.LIMIT_P"
@@ -628,6 +763,12 @@ class Display(BaseTSPCmd):
     """str: Displays source-measure and compliance screen for SMU B."""
     UNLOCK = "display.UNLOCK"
     """str: Lock out the EXIT (LOCAL) key."""
+    WHEEL_ENTER = "display.WHEEL_ENTER"
+    """str: Represents pressing the navigation wheel."""
+    WHEEL_LEFT = "display.WHEEL_LEFT"
+    """str: Represents turning the Navigation wheel left."""
+    WHEEL_RIGHT = "display.WHEEL_RIGHT"
+    """str: Represents turning the Navigation wheel right."""
 
     def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "display") -> None:
         super().__init__(device, cmd_syntax)

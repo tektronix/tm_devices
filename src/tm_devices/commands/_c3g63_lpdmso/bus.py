@@ -280,6 +280,7 @@ Commands and Queries:
     - BUS:B<x>:FLEXray:SIGnal?
     - BUS:B<x>:FLEXray:SOUrce {CH<x>|MATH<x>|REF<x>}
     - BUS:B<x>:FLEXray:SOUrce:TXRX {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
+    - BUS:B<x>:FLEXray:SOUrce:TXRX?
     - BUS:B<x>:FLEXray:SOUrce?
     - BUS:B<x>:FLEXray:THRESHold <NR3>
     - BUS:B<x>:FLEXray:THRESHold?
@@ -303,6 +304,8 @@ Commands and Queries:
     - BUS:B<x>:I3C:DATa:SOUrce?
     - BUS:B<x>:I3C:DATa:THReshold <NR3>
     - BUS:B<x>:I3C:DATa:THReshold?
+    - BUS:B<x>:I3C:VERSion {VR1<x>}
+    - BUS:B<x>:I3C:VERSion?
     - BUS:B<x>:LABel:COLor <QString>
     - BUS:B<x>:LABel:COLor?
     - BUS:B<x>:LABel:FONT:BOLD {ON|OFF|1|0}
@@ -373,7 +376,9 @@ Commands and Queries:
     - BUS:B<x>:MDIO:DATA:SOUrce {CH<x>|MATH<x>|REF<x>}
     - BUS:B<x>:MDIO:DATA:SOUrce?
     - BUS:B<x>:MDIO:DATA:THReshold <NR3>
+    - BUS:B<x>:MDIO:DATA:THReshold?
     - BUS:B<x>:MIL1553B:LOWTHRESHold <NR3>
+    - BUS:B<x>:MIL1553B:LOWTHRESHold?
     - BUS:B<x>:MIL1553B:POLarity {NORMal|INVERTed}
     - BUS:B<x>:MIL1553B:POLarity?
     - BUS:B<x>:MIL1553B:RESPonsetime:MAXimum <NR3>
@@ -383,9 +388,36 @@ Commands and Queries:
     - BUS:B<x>:MIL1553B:SOUrce {CH<x>|MATH<x>|REF<x>}
     - BUS:B<x>:MIL1553B:SOUrce?
     - BUS:B<x>:MIL1553B:THRESHold <NR3>
+    - BUS:B<x>:MIL1553B:THRESHold?
+    - BUS:B<x>:NFC:APPLYDEMod {1|0}
+    - BUS:B<x>:NFC:APPLYDEMod?
+    - BUS:B<x>:NFC:BITRate <NR1>
+    - BUS:B<x>:NFC:BITRate?
+    - BUS:B<x>:NFC:CMD:STARTINDex <NR1>
+    - BUS:B<x>:NFC:CMD:STARTINDex?
+    - BUS:B<x>:NFC:CMD:THReshold <NR3>
+    - BUS:B<x>:NFC:CMD:THReshold?
+    - BUS:B<x>:NFC:CMD:TRANsition:ZERo {RISing| FALLing}
+    - BUS:B<x>:NFC:CMD:TRANsition:ZERo?
+    - BUS:B<x>:NFC:COMMand:POLarity {NORMal|INVerted}
+    - BUS:B<x>:NFC:COMMand:POLarity?
+    - BUS:B<x>:NFC:RESPonse:POLarity {NORMal|INVerted}
+    - BUS:B<x>:NFC:RESPonse:POLarity?
+    - BUS:B<x>:NFC:RSP:THReshold <NR3>
+    - BUS:B<x>:NFC:RSP:THReshold?
+    - BUS:B<x>:NFC:SOUrce {CH<x>}
+    - BUS:B<x>:NFC:SOUrce?
+    - BUS:B<x>:NFC:START:INDex <NR1>
+    - BUS:B<x>:NFC:START:INDex?
+    - BUS:B<x>:NFC:STD {NFC15693| NFC14443A| NFC14443B| NFCFELica}
+    - BUS:B<x>:NFC:STD?
+    - BUS:B<x>:NFC:TOLerance <NR3>
+    - BUS:B<x>:NFC:TOLerance?
+    - BUS:B<x>:NFC:TRANsition:ZERo {ge|ieee}
+    - BUS:B<x>:NFC:TRANsition:ZERo?
     - BUS:B<x>:NRZ:BITOrder {LSB|MSB}
     - BUS:B<x>:NRZ:BITOrder?
-    - BUS:B<x>:NRZ:BITRate
+    - BUS:B<x>:NRZ:BITRate <NR1>
     - BUS:B<x>:NRZ:BITRate?
     - BUS:B<x>:NRZ:POLarity {INVerted|NORmal}
     - BUS:B<x>:NRZ:POLarity?
@@ -413,8 +445,12 @@ Commands and Queries:
     - BUS:B<x>:PARallel:CLOCk:EDGE?
     - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {OFF|ON|<NR1>}
     - BUS:B<x>:PARallel:CLOCk:ISCLOCKED?
+    - BUS:B<x>:PSIFIVe:BITPERiod <NR1>
+    - BUS:B<x>:PSIFIVe:BITPERiod?
     - BUS:B<x>:PSIFIVe:BITRate {RATE125K|RATE189K|RATE83K}
     - BUS:B<x>:PSIFIVe:BITRate?
+    - BUS:B<x>:PSIFIVe:COMM:DIRection {SENSORECU|ECUSENSor}
+    - BUS:B<x>:PSIFIVe:COMM:DIRection?
     - BUS:B<x>:PSIFIVe:DATAA <NR1>
     - BUS:B<x>:PSIFIVe:DATAA?
     - BUS:B<x>:PSIFIVe:DATAB <NR1>
@@ -437,6 +473,8 @@ Commands and Queries:
     - BUS:B<x>:PSIFIVe:SYNCTHRESHold?
     - BUS:B<x>:PSIFIVe:THRESHold <NR3>
     - BUS:B<x>:PSIFIVe:THRESHold?
+    - BUS:B<x>:RS232C:BITORDer {LSB|MSB}
+    - BUS:B<x>:RS232C:BITORDer?
     - BUS:B<x>:RS232C:BITRate {CUSTOM|RATE300|RATE1K|RATE2K|RATE9K| RATE19K|RATE38K|RATE115K|RATE921K}
     - BUS:B<x>:RS232C:BITRate:CUSTom <NR1>
     - BUS:B<x>:RS232C:BITRate:CUSTom?
@@ -562,9 +600,11 @@ Commands and Queries:
     - BUS:B<x>:SPI:SELect:THReshold <NR3>
     - BUS:B<x>:SPI:SELect:THReshold?
     - BUS:B<x>:SPMI:SCLk:SOUrce {CH<x>|CH<x>_Dx>| MATH<x>|REF<x>|REF<x>_D<x>}
+    - BUS:B<x>:SPMI:SCLk:SOUrce?
     - BUS:B<x>:SPMI:SCLk:THReshold <NR3>
     - BUS:B<x>:SPMI:SCLk:THReshold?
     - BUS:B<x>:SPMI:SDATa:SOUrce {CH<x>|CH<x>_Dx>| MATH<x>|REF<x>|REF<x>_D<x>}
+    - BUS:B<x>:SPMI:SDATa:SOUrce?
     - BUS:B<x>:SPMI:SDATa:THReshold <NR3>
     - BUS:B<x>:SPMI:SDATa:THReshold?
     - BUS:B<x>:SVID:ALERT:SOUrce {CH<x>|MATH<x>|REF<x>}
@@ -599,10 +639,6 @@ Commands and Queries:
     - BUS:B<x>:USB:SOUrce?
     - BUS:B<x>:USB:THRESHold <NR3>
     - BUS:B<x>:USB:THRESHold?
-    - BUS:B<x>PSIFIVe:BITPERiod <NR1>
-    - BUS:B<x>PSIFIVe:BITPERiod?
-    - BUS:B<x>PSIFIVe:COMM:DIRection {SENSORECU|ECUSENSor}
-    - BUS:B<x>PSIFIVe:COMM:DIRection?
     - BUS:DELete <QString>
     - BUS:LIST?
 """  # noqa: E501
@@ -659,177 +695,6 @@ class BusDelete(SCPICmdWrite):
     """
 
     _WRAP_ARG_WITH_QUOTES = True
-
-
-class BusBpsifiveItemCommDirection(SCPICmdWrite, SCPICmdRead):
-    """The ``BUS:B<x>PSIFIVe:COMM:DIRection`` command.
-
-    **Description:**
-        - This command sets or queries the PSI5 bus communication direction. Communication direction
-          by default is set to Sensor to ECU.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the ``BUS:B<x>PSIFIVe:COMM:DIRection?`` query.
-        - Using the ``.verify(value)`` method will send the ``BUS:B<x>PSIFIVe:COMM:DIRection?``
-          query and raise an AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the ``BUS:B<x>PSIFIVe:COMM:DIRection value``
-          command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - BUS:B<x>PSIFIVe:COMM:DIRection {SENSORECU|ECUSENSor}
-        - BUS:B<x>PSIFIVe:COMM:DIRection?
-
-    **Info:**
-        - ``B<x>`` is the number of the bus.
-        - ``SENSORECU`` specifies the communication direction to Sensor to ECU. This is the default
-          value.
-        - ``ECUSENSor`` specifies the communication direction to ECU to Sensor.
-    """
-
-
-class BusBpsifiveItemComm(SCPICmdRead):
-    """The ``BUS:B<x>PSIFIVe:COMM`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the ``BUS:B<x>PSIFIVe:COMM?`` query.
-        - Using the ``.verify(value)`` method will send the ``BUS:B<x>PSIFIVe:COMM?`` query and
-          raise an AssertionError if the returned value does not match ``value``.
-
-    **Info:**
-        - ``B<x>`` is the number of the bus.
-
-    Properties:
-        - ``.direction``: The ``BUS:B<x>PSIFIVe:COMM:DIRection`` command.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._direction = BusBpsifiveItemCommDirection(device, f"{self._cmd_syntax}:DIRection")
-
-    @property
-    def direction(self) -> BusBpsifiveItemCommDirection:
-        """Return the ``BUS:B<x>PSIFIVe:COMM:DIRection`` command.
-
-        **Description:**
-            - This command sets or queries the PSI5 bus communication direction. Communication
-              direction by default is set to Sensor to ECU.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the ``BUS:B<x>PSIFIVe:COMM:DIRection?`` query.
-            - Using the ``.verify(value)`` method will send the ``BUS:B<x>PSIFIVe:COMM:DIRection?``
-              query and raise an AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``BUS:B<x>PSIFIVe:COMM:DIRection value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - BUS:B<x>PSIFIVe:COMM:DIRection {SENSORECU|ECUSENSor}
-            - BUS:B<x>PSIFIVe:COMM:DIRection?
-
-        **Info:**
-            - ``B<x>`` is the number of the bus.
-            - ``SENSORECU`` specifies the communication direction to Sensor to ECU. This is the
-              default value.
-            - ``ECUSENSor`` specifies the communication direction to ECU to Sensor.
-        """
-        return self._direction
-
-
-class BusBpsifiveItemBitperiod(SCPICmdWrite, SCPICmdRead):
-    """The ``BUS:B<x>PSIFIVe:BITPERiod`` command.
-
-    **Description:**
-        - This command sets or queries the PSI5 Bit period bus parameter.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the ``BUS:B<x>PSIFIVe:BITPERiod?`` query.
-        - Using the ``.verify(value)`` method will send the ``BUS:B<x>PSIFIVe:BITPERiod?`` query and
-          raise an AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the ``BUS:B<x>PSIFIVe:BITPERiod value``
-          command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - BUS:B<x>PSIFIVe:BITPERiod <NR1>
-        - BUS:B<x>PSIFIVe:BITPERiod?
-
-    **Info:**
-        - ``B<x>`` is the number of the bus.
-        - ``<NR1>`` specifies the bit period. The default bit period is 60 Micro seconds.
-    """
-
-
-class BusBpsifiveItem(ValidatedDynamicNumberCmd, SCPICmdRead):
-    """The ``BUS:B<x>PSIFIVe`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the ``BUS:B<x>PSIFIVe?`` query.
-        - Using the ``.verify(value)`` method will send the ``BUS:B<x>PSIFIVe?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-
-    **Info:**
-        - ``B<x>`` is the number of the bus.
-
-    Properties:
-        - ``.bitperiod``: The ``BUS:B<x>PSIFIVe:BITPERiod`` command.
-        - ``.comm``: The ``BUS:B<x>PSIFIVe:COMM`` command tree.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._bitperiod = BusBpsifiveItemBitperiod(device, f"{self._cmd_syntax}:BITPERiod")
-        self._comm = BusBpsifiveItemComm(device, f"{self._cmd_syntax}:COMM")
-
-    @property
-    def bitperiod(self) -> BusBpsifiveItemBitperiod:
-        """Return the ``BUS:B<x>PSIFIVe:BITPERiod`` command.
-
-        **Description:**
-            - This command sets or queries the PSI5 Bit period bus parameter.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the ``BUS:B<x>PSIFIVe:BITPERiod?`` query.
-            - Using the ``.verify(value)`` method will send the ``BUS:B<x>PSIFIVe:BITPERiod?`` query
-              and raise an AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the ``BUS:B<x>PSIFIVe:BITPERiod value``
-              command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - BUS:B<x>PSIFIVe:BITPERiod <NR1>
-            - BUS:B<x>PSIFIVe:BITPERiod?
-
-        **Info:**
-            - ``B<x>`` is the number of the bus.
-            - ``<NR1>`` specifies the bit period. The default bit period is 60 Micro seconds.
-        """
-        return self._bitperiod
-
-    @property
-    def comm(self) -> BusBpsifiveItemComm:
-        """Return the ``BUS:B<x>PSIFIVe:COMM`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the ``BUS:B<x>PSIFIVe:COMM?`` query.
-            - Using the ``.verify(value)`` method will send the ``BUS:B<x>PSIFIVe:COMM?`` query and
-              raise an AssertionError if the returned value does not match ``value``.
-
-        **Info:**
-            - ``B<x>`` is the number of the bus.
-
-        Sub-properties:
-            - ``.direction``: The ``BUS:B<x>PSIFIVe:COMM:DIRection`` command.
-        """
-        return self._comm
 
 
 class BusBItemUsbThreshold(SCPICmdWrite, SCPICmdRead):
@@ -1966,13 +1831,16 @@ class BusBItemSpmiSdataThreshold(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class BusBItemSpmiSdataSource(SCPICmdWrite):
+class BusBItemSpmiSdataSource(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:SPMI:SDATa:SOUrce`` command.
 
     **Description:**
         - This command sets or queries the SPMI Data (SDATA) source for the specified bus.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:SPMI:SDATa:SOUrce?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:SPMI:SDATa:SOUrce?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BUS:B<x>:SPMI:SDATa:SOUrce value``
           command.
 
@@ -1981,6 +1849,7 @@ class BusBItemSpmiSdataSource(SCPICmdWrite):
     ::
 
         - BUS:B<x>:SPMI:SDATa:SOUrce {CH<x>|CH<x>_Dx>| MATH<x>|REF<x>|REF<x>_D<x>}
+        - BUS:B<x>:SPMI:SDATa:SOUrce?
 
     **Info:**
         - ``B<x>`` is the number of the bus waveform.
@@ -2025,6 +1894,9 @@ class BusBItemSpmiSdata(SCPICmdRead):
             - This command sets or queries the SPMI Data (SDATA) source for the specified bus.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:SPMI:SDATa:SOUrce?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:SPMI:SDATa:SOUrce?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``BUS:B<x>:SPMI:SDATa:SOUrce value``
               command.
 
@@ -2033,6 +1905,7 @@ class BusBItemSpmiSdata(SCPICmdRead):
         ::
 
             - BUS:B<x>:SPMI:SDATa:SOUrce {CH<x>|CH<x>_Dx>| MATH<x>|REF<x>|REF<x>_D<x>}
+            - BUS:B<x>:SPMI:SDATa:SOUrce?
 
         **Info:**
             - ``B<x>`` is the number of the bus waveform.
@@ -2103,13 +1976,16 @@ class BusBItemSpmiSclkThreshold(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class BusBItemSpmiSclkSource(SCPICmdWrite):
+class BusBItemSpmiSclkSource(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:SPMI:SCLk:SOUrce`` command.
 
     **Description:**
         - This command sets or queries the SPMI Clock (SCLK) source for the specified bus.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:SPMI:SCLk:SOUrce?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:SPMI:SCLk:SOUrce?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BUS:B<x>:SPMI:SCLk:SOUrce value``
           command.
 
@@ -2118,6 +1994,7 @@ class BusBItemSpmiSclkSource(SCPICmdWrite):
     ::
 
         - BUS:B<x>:SPMI:SCLk:SOUrce {CH<x>|CH<x>_Dx>| MATH<x>|REF<x>|REF<x>_D<x>}
+        - BUS:B<x>:SPMI:SCLk:SOUrce?
 
     **Info:**
         - ``B<x>`` is the number of the bus waveform.
@@ -2162,6 +2039,9 @@ class BusBItemSpmiSclk(SCPICmdRead):
             - This command sets or queries the SPMI Clock (SCLK) source for the specified bus.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:SPMI:SCLk:SOUrce?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:SPMI:SCLk:SOUrce?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``BUS:B<x>:SPMI:SCLk:SOUrce value``
               command.
 
@@ -2170,6 +2050,7 @@ class BusBItemSpmiSclk(SCPICmdRead):
         ::
 
             - BUS:B<x>:SPMI:SCLk:SOUrce {CH<x>|CH<x>_Dx>| MATH<x>|REF<x>|REF<x>_D<x>}
+            - BUS:B<x>:SPMI:SCLk:SOUrce?
 
         **Info:**
             - ``B<x>`` is the number of the bus waveform.
@@ -6437,6 +6318,34 @@ class BusBItemRs232cBitrate(SCPICmdWrite, SCPICmdRead):
         return self._custom
 
 
+class BusBItemRs232cBitorder(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:RS232C:BITORDer`` command.
+
+    **Description:**
+        - This command sets or queries the bit order for the specified RS-232 bus.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:RS232C:BITORDer?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:RS232C:BITORDer?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:RS232C:BITORDer value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:RS232C:BITORDer {LSB|MSB}
+        - BUS:B<x>:RS232C:BITORDer?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``LSB`` sets the bit order to LSB. This is the default value.
+        - ``MSB`` sets the bit order to MSB.
+    """
+
+
+#  pylint: disable=too-many-instance-attributes
 class BusBItemRs232c(SCPICmdRead):
     """The ``BUS:B<x>:RS232C`` command tree.
 
@@ -6449,6 +6358,7 @@ class BusBItemRs232c(SCPICmdRead):
         - ``B<x>`` is the number of the bus.
 
     Properties:
+        - ``.bitorder``: The ``BUS:B<x>:RS232C:BITORDer`` command.
         - ``.bitrate``: The ``BUS:B<x>:RS232C:BITRate`` command.
         - ``.databits``: The ``BUS:B<x>:RS232C:DATABits`` command.
         - ``.delimiter``: The ``BUS:B<x>:RS232C:DELIMiter`` command.
@@ -6460,6 +6370,7 @@ class BusBItemRs232c(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
+        self._bitorder = BusBItemRs232cBitorder(device, f"{self._cmd_syntax}:BITORDer")
         self._bitrate = BusBItemRs232cBitrate(device, f"{self._cmd_syntax}:BITRate")
         self._databits = BusBItemRs232cDatabits(device, f"{self._cmd_syntax}:DATABits")
         self._delimiter = BusBItemRs232cDelimiter(device, f"{self._cmd_syntax}:DELIMiter")
@@ -6467,6 +6378,34 @@ class BusBItemRs232c(SCPICmdRead):
         self._parity = BusBItemRs232cParity(device, f"{self._cmd_syntax}:PARity")
         self._polarity = BusBItemRs232cPolarity(device, f"{self._cmd_syntax}:POLarity")
         self._source = BusBItemRs232cSource(device, f"{self._cmd_syntax}:SOUrce")
+
+    @property
+    def bitorder(self) -> BusBItemRs232cBitorder:
+        """Return the ``BUS:B<x>:RS232C:BITORDer`` command.
+
+        **Description:**
+            - This command sets or queries the bit order for the specified RS-232 bus.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:RS232C:BITORDer?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:RS232C:BITORDer?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:RS232C:BITORDer value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:RS232C:BITORDer {LSB|MSB}
+            - BUS:B<x>:RS232C:BITORDer?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``LSB`` sets the bit order to LSB. This is the default value.
+            - ``MSB`` sets the bit order to MSB.
+        """
+        return self._bitorder
 
     @property
     def bitrate(self) -> BusBItemRs232cBitrate:
@@ -6985,6 +6924,86 @@ class BusBItemPsifiveDataa(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class BusBItemPsifiveCommDirection(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:PSIFIVe:COMM:DIRection`` command.
+
+    **Description:**
+        - This command sets or queries the PSI5 bus communication direction. Communication direction
+          by default is set to Sensor to ECU.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PSIFIVe:COMM:DIRection?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PSIFIVe:COMM:DIRection?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:PSIFIVe:COMM:DIRection value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:PSIFIVe:COMM:DIRection {SENSORECU|ECUSENSor}
+        - BUS:B<x>:PSIFIVe:COMM:DIRection?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``SENSORECU`` specifies the communication direction to Sensor to ECU. This is the default
+          value.
+        - ``ECUSENSor`` specifies the communication direction to ECU to Sensor.
+    """
+
+
+class BusBItemPsifiveComm(SCPICmdRead):
+    """The ``BUS:B<x>:PSIFIVe:COMM`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PSIFIVe:COMM?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PSIFIVe:COMM?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+
+    Properties:
+        - ``.direction``: The ``BUS:B<x>:PSIFIVe:COMM:DIRection`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._direction = BusBItemPsifiveCommDirection(device, f"{self._cmd_syntax}:DIRection")
+
+    @property
+    def direction(self) -> BusBItemPsifiveCommDirection:
+        """Return the ``BUS:B<x>:PSIFIVe:COMM:DIRection`` command.
+
+        **Description:**
+            - This command sets or queries the PSI5 bus communication direction. Communication
+              direction by default is set to Sensor to ECU.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PSIFIVe:COMM:DIRection?``
+              query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PSIFIVe:COMM:DIRection?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``BUS:B<x>:PSIFIVe:COMM:DIRection value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:PSIFIVe:COMM:DIRection {SENSORECU|ECUSENSor}
+            - BUS:B<x>:PSIFIVe:COMM:DIRection?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``SENSORECU`` specifies the communication direction to Sensor to ECU. This is the
+              default value.
+            - ``ECUSENSor`` specifies the communication direction to ECU to Sensor.
+        """
+        return self._direction
+
+
 class BusBItemPsifiveBitrate(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:PSIFIVe:BITRate`` command.
 
@@ -7010,6 +7029,32 @@ class BusBItemPsifiveBitrate(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class BusBItemPsifiveBitperiod(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:PSIFIVe:BITPERiod`` command.
+
+    **Description:**
+        - This command sets or queries the PSI5 Bit period bus parameter.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PSIFIVe:BITPERiod?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PSIFIVe:BITPERiod?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:PSIFIVe:BITPERiod value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:PSIFIVe:BITPERiod <NR1>
+        - BUS:B<x>:PSIFIVe:BITPERiod?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` specifies the bit period. The default bit period is 60 Micro seconds.
+    """
+
+
 #  pylint: disable=too-many-instance-attributes
 class BusBItemPsifive(SCPICmdRead):
     """The ``BUS:B<x>:PSIFIVe`` command tree.
@@ -7023,7 +7068,9 @@ class BusBItemPsifive(SCPICmdRead):
         - ``B<x>`` is the number of the bus.
 
     Properties:
+        - ``.bitperiod``: The ``BUS:B<x>:PSIFIVe:BITPERiod`` command.
         - ``.bitrate``: The ``BUS:B<x>:PSIFIVe:BITRate`` command.
+        - ``.comm``: The ``BUS:B<x>:PSIFIVe:COMM`` command tree.
         - ``.dataa``: The ``BUS:B<x>:PSIFIVe:DATAA`` command.
         - ``.datab``: The ``BUS:B<x>:PSIFIVe:DATAB`` command.
         - ``.dataformat``: The ``BUS:B<x>:PSIFIVe:DATAFORMat`` command.
@@ -7039,7 +7086,9 @@ class BusBItemPsifive(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
+        self._bitperiod = BusBItemPsifiveBitperiod(device, f"{self._cmd_syntax}:BITPERiod")
         self._bitrate = BusBItemPsifiveBitrate(device, f"{self._cmd_syntax}:BITRate")
+        self._comm = BusBItemPsifiveComm(device, f"{self._cmd_syntax}:COMM")
         self._dataa = BusBItemPsifiveDataa(device, f"{self._cmd_syntax}:DATAA")
         self._datab = BusBItemPsifiveDatab(device, f"{self._cmd_syntax}:DATAB")
         self._dataformat = BusBItemPsifiveDataformat(device, f"{self._cmd_syntax}:DATAFORMat")
@@ -7053,6 +7102,33 @@ class BusBItemPsifive(SCPICmdRead):
             device, f"{self._cmd_syntax}:SYNCTHRESHold"
         )
         self._threshold = BusBItemPsifiveThreshold(device, f"{self._cmd_syntax}:THRESHold")
+
+    @property
+    def bitperiod(self) -> BusBItemPsifiveBitperiod:
+        """Return the ``BUS:B<x>:PSIFIVe:BITPERiod`` command.
+
+        **Description:**
+            - This command sets or queries the PSI5 Bit period bus parameter.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PSIFIVe:BITPERiod?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PSIFIVe:BITPERiod?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:PSIFIVe:BITPERiod value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:PSIFIVe:BITPERiod <NR1>
+            - BUS:B<x>:PSIFIVe:BITPERiod?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` specifies the bit period. The default bit period is 60 Micro seconds.
+        """
+        return self._bitperiod
 
     @property
     def bitrate(self) -> BusBItemPsifiveBitrate:
@@ -7079,6 +7155,23 @@ class BusBItemPsifive(SCPICmdRead):
             - ``B<x>`` is the number of the bus.
         """
         return self._bitrate
+
+    @property
+    def comm(self) -> BusBItemPsifiveComm:
+        """Return the ``BUS:B<x>:PSIFIVe:COMM`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PSIFIVe:COMM?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PSIFIVe:COMM?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+
+        Sub-properties:
+            - ``.direction``: The ``BUS:B<x>:PSIFIVe:COMM:DIRection`` command.
+        """
+        return self._comm
 
     @property
     def dataa(self) -> BusBItemPsifiveDataa:
@@ -8341,7 +8434,7 @@ class BusBItemNrzPolarity(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class BusBItemNrzBitrate(SCPICmdWriteNoArguments, SCPICmdRead):
+class BusBItemNrzBitrate(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:NRZ:BITRate`` command.
 
     **Description:**
@@ -8351,17 +8444,18 @@ class BusBItemNrzBitrate(SCPICmdWriteNoArguments, SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:NRZ:BITRate?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NRZ:BITRate?`` query and
           raise an AssertionError if the returned value does not match ``value``.
-        - Using the ``.write()`` method will send the ``BUS:B<x>:NRZ:BITRate`` command.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:NRZ:BITRate value`` command.
 
     **SCPI Syntax:**
 
     ::
 
-        - BUS:B<x>:NRZ:BITRate
+        - BUS:B<x>:NRZ:BITRate <NR1>
         - BUS:B<x>:NRZ:BITRate?
 
     **Info:**
         - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the bit rate up to 1 G.
     """
 
 
@@ -8467,17 +8561,19 @@ class BusBItemNrz(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:NRZ:BITRate?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NRZ:BITRate?`` query and
               raise an AssertionError if the returned value does not match ``value``.
-            - Using the ``.write()`` method will send the ``BUS:B<x>:NRZ:BITRate`` command.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:NRZ:BITRate value``
+              command.
 
         **SCPI Syntax:**
 
         ::
 
-            - BUS:B<x>:NRZ:BITRate
+            - BUS:B<x>:NRZ:BITRate <NR1>
             - BUS:B<x>:NRZ:BITRate?
 
         **Info:**
             - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the bit rate up to 1 G.
         """
         return self._bitrate
 
@@ -8587,7 +8683,1038 @@ class BusBItemNrz(SCPICmdRead):
         return self._threshold
 
 
-class BusBItemMil1553bThreshold(SCPICmdWrite):
+class BusBItemNfcTransitionZero(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:NFC:TRANsition:ZERo`` command.
+
+    **Description:**
+        - The command sets or queries the Manchester standard convention for the specified NFC bus
+          on the response lane.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:TRANsition:ZERo?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:TRANsition:ZERo?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:TRANsition:ZERo value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:NFC:TRANsition:ZERo {ge|ieee}
+        - BUS:B<x>:NFC:TRANsition:ZERo?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``ge`` sets the transition type to Manchester G.E thomas convention.
+        - ``ieee`` sets the transition type to Manchester IEEE convention.
+    """
+
+
+class BusBItemNfcTransition(SCPICmdRead):
+    """The ``BUS:B<x>:NFC:TRANsition`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:TRANsition?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:TRANsition?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+
+    Properties:
+        - ``.zero``: The ``BUS:B<x>:NFC:TRANsition:ZERo`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._zero = BusBItemNfcTransitionZero(device, f"{self._cmd_syntax}:ZERo")
+
+    @property
+    def zero(self) -> BusBItemNfcTransitionZero:
+        """Return the ``BUS:B<x>:NFC:TRANsition:ZERo`` command.
+
+        **Description:**
+            - The command sets or queries the Manchester standard convention for the specified NFC
+              bus on the response lane.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:TRANsition:ZERo?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:TRANsition:ZERo?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``BUS:B<x>:NFC:TRANsition:ZERo value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:NFC:TRANsition:ZERo {ge|ieee}
+            - BUS:B<x>:NFC:TRANsition:ZERo?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``ge`` sets the transition type to Manchester G.E thomas convention.
+            - ``ieee`` sets the transition type to Manchester IEEE convention.
+        """
+        return self._zero
+
+
+class BusBItemNfcTolerance(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:NFC:TOLerance`` command.
+
+    **Description:**
+        - This command sets or queries the tolerance for the specified NFC bus.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:TOLerance?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:TOLerance?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:TOLerance value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:NFC:TOLerance <NR3>
+        - BUS:B<x>:NFC:TOLerance?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` sets the tolerance. The default tolerance value is 10%. The minimum value is 1%
+          and the maximum is 50%.
+    """
+
+
+class BusBItemNfcStd(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:NFC:STD`` command.
+
+    **Description:**
+        - This command sets or queries the standard for the specified NFC bus.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:STD?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:STD?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:STD value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:NFC:STD {NFC15693| NFC14443A| NFC14443B| NFCFELica}
+        - BUS:B<x>:NFC:STD?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``NFC15693`` sets the standard to 15693.
+        - ``NFC14443A`` sets the standard to 14443A.
+        - ``NFC14443B`` sets the standard to 14443B.
+        - ``NFCFELica`` sets the standard to Felica.
+    """
+
+
+class BusBItemNfcStartIndex(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:NFC:START:INDex`` command.
+
+    **Description:**
+        - This command sets or queries the start index for the specified NFC bus on the response
+          lane.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:START:INDex?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:START:INDex?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:START:INDex value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:NFC:START:INDex <NR1>
+        - BUS:B<x>:NFC:START:INDex?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the index. The default value is 1. The minimum value is 1 and the maximum
+          is 8.
+    """
+
+
+class BusBItemNfcStart(SCPICmdRead):
+    """The ``BUS:B<x>:NFC:START`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:START?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:START?`` query and raise
+          an AssertionError if the returned value does not match ``value``.
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+
+    Properties:
+        - ``.index``: The ``BUS:B<x>:NFC:START:INDex`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._index = BusBItemNfcStartIndex(device, f"{self._cmd_syntax}:INDex")
+
+    @property
+    def index(self) -> BusBItemNfcStartIndex:
+        """Return the ``BUS:B<x>:NFC:START:INDex`` command.
+
+        **Description:**
+            - This command sets or queries the start index for the specified NFC bus on the response
+              lane.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:START:INDex?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:START:INDex?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:START:INDex value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:NFC:START:INDex <NR1>
+            - BUS:B<x>:NFC:START:INDex?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the index. The default value is 1. The minimum value is 1 and the
+              maximum is 8.
+        """
+        return self._index
+
+
+class BusBItemNfcSource(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:NFC:SOUrce`` command.
+
+    **Description:**
+        - This command sets or queries the source for the specified NFC bus.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:SOUrce?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:SOUrce?`` query and raise
+          an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:SOUrce value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:NFC:SOUrce {CH<x>}
+        - BUS:B<x>:NFC:SOUrce?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the source.
+    """
+
+
+class BusBItemNfcRspThreshold(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:NFC:RSP:THReshold`` command.
+
+    **Description:**
+        - This command sets or queries the response threshold for the specified NFC bus.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:RSP:THReshold?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:RSP:THReshold?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:RSP:THReshold value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:NFC:RSP:THReshold <NR3>
+        - BUS:B<x>:NFC:RSP:THReshold?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` sets the threshold. The default value is 1.0 V. The minimum value is -8.0 V and
+          the maximum is 8.0 V.
+    """
+
+
+class BusBItemNfcRsp(SCPICmdRead):
+    """The ``BUS:B<x>:NFC:RSP`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:RSP?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:RSP?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+
+    Properties:
+        - ``.threshold``: The ``BUS:B<x>:NFC:RSP:THReshold`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._threshold = BusBItemNfcRspThreshold(device, f"{self._cmd_syntax}:THReshold")
+
+    @property
+    def threshold(self) -> BusBItemNfcRspThreshold:
+        """Return the ``BUS:B<x>:NFC:RSP:THReshold`` command.
+
+        **Description:**
+            - This command sets or queries the response threshold for the specified NFC bus.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:RSP:THReshold?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:RSP:THReshold?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:RSP:THReshold value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:NFC:RSP:THReshold <NR3>
+            - BUS:B<x>:NFC:RSP:THReshold?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` sets the threshold. The default value is 1.0 V. The minimum value is -8.0 V
+              and the maximum is 8.0 V.
+        """
+        return self._threshold
+
+
+class BusBItemNfcResponsePolarity(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:NFC:RESPonse:POLarity`` command.
+
+    **Description:**
+        - This command sets or queries the polarity for NFC Type B response signal type for the
+          specified bus.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:RESPonse:POLarity?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:RESPonse:POLarity?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:RESPonse:POLarity value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:NFC:RESPonse:POLarity {NORMal|INVerted}
+        - BUS:B<x>:NFC:RESPonse:POLarity?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``NORMal`` sets the polarity of command to Normal.
+        - ``INVerted`` sets the polarity of command to Inverted.
+    """
+
+
+class BusBItemNfcResponse(SCPICmdRead):
+    """The ``BUS:B<x>:NFC:RESPonse`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:RESPonse?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:RESPonse?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+
+    Properties:
+        - ``.polarity``: The ``BUS:B<x>:NFC:RESPonse:POLarity`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._polarity = BusBItemNfcResponsePolarity(device, f"{self._cmd_syntax}:POLarity")
+
+    @property
+    def polarity(self) -> BusBItemNfcResponsePolarity:
+        """Return the ``BUS:B<x>:NFC:RESPonse:POLarity`` command.
+
+        **Description:**
+            - This command sets or queries the polarity for NFC Type B response signal type for the
+              specified bus.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:RESPonse:POLarity?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:RESPonse:POLarity?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``BUS:B<x>:NFC:RESPonse:POLarity value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:NFC:RESPonse:POLarity {NORMal|INVerted}
+            - BUS:B<x>:NFC:RESPonse:POLarity?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``NORMal`` sets the polarity of command to Normal.
+            - ``INVerted`` sets the polarity of command to Inverted.
+        """
+        return self._polarity
+
+
+class BusBItemNfcCommandPolarity(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:NFC:COMMand:POLarity`` command.
+
+    **Description:**
+        - This command sets or queries the polarity for NFC Type B command signal type for the
+          specified bus.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:COMMand:POLarity?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:COMMand:POLarity?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:COMMand:POLarity value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:NFC:COMMand:POLarity {NORMal|INVerted}
+        - BUS:B<x>:NFC:COMMand:POLarity?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``NORMal`` sets the polarity of command to Normal.
+        - ``INVerted`` sets the polarity of command to Inverted.
+    """
+
+
+class BusBItemNfcCommand(SCPICmdRead):
+    """The ``BUS:B<x>:NFC:COMMand`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:COMMand?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:COMMand?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+
+    Properties:
+        - ``.polarity``: The ``BUS:B<x>:NFC:COMMand:POLarity`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._polarity = BusBItemNfcCommandPolarity(device, f"{self._cmd_syntax}:POLarity")
+
+    @property
+    def polarity(self) -> BusBItemNfcCommandPolarity:
+        """Return the ``BUS:B<x>:NFC:COMMand:POLarity`` command.
+
+        **Description:**
+            - This command sets or queries the polarity for NFC Type B command signal type for the
+              specified bus.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:COMMand:POLarity?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:COMMand:POLarity?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``BUS:B<x>:NFC:COMMand:POLarity value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:NFC:COMMand:POLarity {NORMal|INVerted}
+            - BUS:B<x>:NFC:COMMand:POLarity?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``NORMal`` sets the polarity of command to Normal.
+            - ``INVerted`` sets the polarity of command to Inverted.
+        """
+        return self._polarity
+
+
+class BusBItemNfcCmdTransitionZero(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:NFC:CMD:TRANsition:ZERo`` command.
+
+    **Description:**
+        - This command sets or queries the Manchester type for NFC command signal type for the
+          specified bus.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:CMD:TRANsition:ZERo?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:CMD:TRANsition:ZERo?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``BUS:B<x>:NFC:CMD:TRANsition:ZERo value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:NFC:CMD:TRANsition:ZERo {RISing| FALLing}
+        - BUS:B<x>:NFC:CMD:TRANsition:ZERo?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``RISing`` sets the Manchester type to G.E thomas. This is the default value.
+        - ``FALLing`` sets the Manchester type to IEEE.
+    """
+
+
+class BusBItemNfcCmdTransition(SCPICmdRead):
+    """The ``BUS:B<x>:NFC:CMD:TRANsition`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:CMD:TRANsition?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:CMD:TRANsition?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+
+    Properties:
+        - ``.zero``: The ``BUS:B<x>:NFC:CMD:TRANsition:ZERo`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._zero = BusBItemNfcCmdTransitionZero(device, f"{self._cmd_syntax}:ZERo")
+
+    @property
+    def zero(self) -> BusBItemNfcCmdTransitionZero:
+        """Return the ``BUS:B<x>:NFC:CMD:TRANsition:ZERo`` command.
+
+        **Description:**
+            - This command sets or queries the Manchester type for NFC command signal type for the
+              specified bus.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:CMD:TRANsition:ZERo?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``BUS:B<x>:NFC:CMD:TRANsition:ZERo?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``BUS:B<x>:NFC:CMD:TRANsition:ZERo value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:NFC:CMD:TRANsition:ZERo {RISing| FALLing}
+            - BUS:B<x>:NFC:CMD:TRANsition:ZERo?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``RISing`` sets the Manchester type to G.E thomas. This is the default value.
+            - ``FALLing`` sets the Manchester type to IEEE.
+        """
+        return self._zero
+
+
+class BusBItemNfcCmdThreshold(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:NFC:CMD:THReshold`` command.
+
+    **Description:**
+        - This command sets or queries the command threshold for the specified NFC bus.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:CMD:THReshold?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:CMD:THReshold?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:CMD:THReshold value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:NFC:CMD:THReshold <NR3>
+        - BUS:B<x>:NFC:CMD:THReshold?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` sets the threshold. The default bit rate value is 1.0 V. The minimum value is
+          -8.0 V and the maximum is 8.0 V.
+    """
+
+
+class BusBItemNfcCmdStartindex(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:NFC:CMD:STARTINDex`` command.
+
+    **Description:**
+        - This command sets or queries the Manchester start index for NFC command signal type for
+          the specified bus
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:CMD:STARTINDex?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:CMD:STARTINDex?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:CMD:STARTINDex value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:NFC:CMD:STARTINDex <NR1>
+        - BUS:B<x>:NFC:CMD:STARTINDex?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the Manchester start index. The default value is 1. The minimum value is 1
+          and the maximum is 8.
+    """
+
+
+class BusBItemNfcCmd(SCPICmdRead):
+    """The ``BUS:B<x>:NFC:CMD`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:CMD?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:CMD?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+
+    Properties:
+        - ``.startindex``: The ``BUS:B<x>:NFC:CMD:STARTINDex`` command.
+        - ``.threshold``: The ``BUS:B<x>:NFC:CMD:THReshold`` command.
+        - ``.transition``: The ``BUS:B<x>:NFC:CMD:TRANsition`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._startindex = BusBItemNfcCmdStartindex(device, f"{self._cmd_syntax}:STARTINDex")
+        self._threshold = BusBItemNfcCmdThreshold(device, f"{self._cmd_syntax}:THReshold")
+        self._transition = BusBItemNfcCmdTransition(device, f"{self._cmd_syntax}:TRANsition")
+
+    @property
+    def startindex(self) -> BusBItemNfcCmdStartindex:
+        """Return the ``BUS:B<x>:NFC:CMD:STARTINDex`` command.
+
+        **Description:**
+            - This command sets or queries the Manchester start index for NFC command signal type
+              for the specified bus
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:CMD:STARTINDex?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:CMD:STARTINDex?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:CMD:STARTINDex value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:NFC:CMD:STARTINDex <NR1>
+            - BUS:B<x>:NFC:CMD:STARTINDex?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the Manchester start index. The default value is 1. The minimum value
+              is 1 and the maximum is 8.
+        """
+        return self._startindex
+
+    @property
+    def threshold(self) -> BusBItemNfcCmdThreshold:
+        """Return the ``BUS:B<x>:NFC:CMD:THReshold`` command.
+
+        **Description:**
+            - This command sets or queries the command threshold for the specified NFC bus.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:CMD:THReshold?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:CMD:THReshold?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:CMD:THReshold value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:NFC:CMD:THReshold <NR3>
+            - BUS:B<x>:NFC:CMD:THReshold?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` sets the threshold. The default bit rate value is 1.0 V. The minimum value
+              is -8.0 V and the maximum is 8.0 V.
+        """
+        return self._threshold
+
+    @property
+    def transition(self) -> BusBItemNfcCmdTransition:
+        """Return the ``BUS:B<x>:NFC:CMD:TRANsition`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:CMD:TRANsition?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:CMD:TRANsition?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+
+        Sub-properties:
+            - ``.zero``: The ``BUS:B<x>:NFC:CMD:TRANsition:ZERo`` command.
+        """
+        return self._transition
+
+
+class BusBItemNfcBitrate(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:NFC:BITRate`` command.
+
+    **Description:**
+        - This command sets or queries the bit rate for the specified NFC bus on the response lane.
+          The bus number is specified by <x>.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:BITRate?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:BITRate?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:BITRate value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:NFC:BITRate <NR1>
+        - BUS:B<x>:NFC:BITRate?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the bit rate. The default bit rate value is 106000 bps. The minimum value
+          is 1 and the maximum is 1000000000.
+    """
+
+
+class BusBItemNfcApplydemod(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:NFC:APPLYDEMod`` command.
+
+    **Description:**
+        - This command sets or queries if the load modulation is applied on the response for the
+          specified bus. The bus number is specified by <x>.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:APPLYDEMod?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:APPLYDEMod?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:APPLYDEMod value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:NFC:APPLYDEMod {1|0}
+        - BUS:B<x>:NFC:APPLYDEMod?
+
+    **Info:**
+        - ``1`` sets the demodulation application as true. This is the default value.
+        - ``0`` sets the demodulation application as false.
+    """
+
+
+#  pylint: disable=too-many-instance-attributes
+class BusBItemNfc(SCPICmdRead):
+    """The ``BUS:B<x>:NFC`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:NFC?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    Properties:
+        - ``.applydemod``: The ``BUS:B<x>:NFC:APPLYDEMod`` command.
+        - ``.bitrate``: The ``BUS:B<x>:NFC:BITRate`` command.
+        - ``.cmd``: The ``BUS:B<x>:NFC:CMD`` command tree.
+        - ``.command``: The ``BUS:B<x>:NFC:COMMand`` command tree.
+        - ``.response``: The ``BUS:B<x>:NFC:RESPonse`` command tree.
+        - ``.rsp``: The ``BUS:B<x>:NFC:RSP`` command tree.
+        - ``.source``: The ``BUS:B<x>:NFC:SOUrce`` command.
+        - ``.start``: The ``BUS:B<x>:NFC:START`` command tree.
+        - ``.std``: The ``BUS:B<x>:NFC:STD`` command.
+        - ``.tolerance``: The ``BUS:B<x>:NFC:TOLerance`` command.
+        - ``.transition``: The ``BUS:B<x>:NFC:TRANsition`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._applydemod = BusBItemNfcApplydemod(device, f"{self._cmd_syntax}:APPLYDEMod")
+        self._bitrate = BusBItemNfcBitrate(device, f"{self._cmd_syntax}:BITRate")
+        self._cmd = BusBItemNfcCmd(device, f"{self._cmd_syntax}:CMD")
+        self._command = BusBItemNfcCommand(device, f"{self._cmd_syntax}:COMMand")
+        self._response = BusBItemNfcResponse(device, f"{self._cmd_syntax}:RESPonse")
+        self._rsp = BusBItemNfcRsp(device, f"{self._cmd_syntax}:RSP")
+        self._source = BusBItemNfcSource(device, f"{self._cmd_syntax}:SOUrce")
+        self._start = BusBItemNfcStart(device, f"{self._cmd_syntax}:START")
+        self._std = BusBItemNfcStd(device, f"{self._cmd_syntax}:STD")
+        self._tolerance = BusBItemNfcTolerance(device, f"{self._cmd_syntax}:TOLerance")
+        self._transition = BusBItemNfcTransition(device, f"{self._cmd_syntax}:TRANsition")
+
+    @property
+    def applydemod(self) -> BusBItemNfcApplydemod:
+        """Return the ``BUS:B<x>:NFC:APPLYDEMod`` command.
+
+        **Description:**
+            - This command sets or queries if the load modulation is applied on the response for the
+              specified bus. The bus number is specified by <x>.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:APPLYDEMod?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:APPLYDEMod?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:APPLYDEMod value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:NFC:APPLYDEMod {1|0}
+            - BUS:B<x>:NFC:APPLYDEMod?
+
+        **Info:**
+            - ``1`` sets the demodulation application as true. This is the default value.
+            - ``0`` sets the demodulation application as false.
+        """
+        return self._applydemod
+
+    @property
+    def bitrate(self) -> BusBItemNfcBitrate:
+        """Return the ``BUS:B<x>:NFC:BITRate`` command.
+
+        **Description:**
+            - This command sets or queries the bit rate for the specified NFC bus on the response
+              lane. The bus number is specified by <x>.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:BITRate?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:BITRate?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:BITRate value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:NFC:BITRate <NR1>
+            - BUS:B<x>:NFC:BITRate?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the bit rate. The default bit rate value is 106000 bps. The minimum
+              value is 1 and the maximum is 1000000000.
+        """
+        return self._bitrate
+
+    @property
+    def cmd(self) -> BusBItemNfcCmd:
+        """Return the ``BUS:B<x>:NFC:CMD`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:CMD?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:CMD?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+
+        Sub-properties:
+            - ``.startindex``: The ``BUS:B<x>:NFC:CMD:STARTINDex`` command.
+            - ``.threshold``: The ``BUS:B<x>:NFC:CMD:THReshold`` command.
+            - ``.transition``: The ``BUS:B<x>:NFC:CMD:TRANsition`` command tree.
+        """
+        return self._cmd
+
+    @property
+    def command(self) -> BusBItemNfcCommand:
+        """Return the ``BUS:B<x>:NFC:COMMand`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:COMMand?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:COMMand?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+
+        Sub-properties:
+            - ``.polarity``: The ``BUS:B<x>:NFC:COMMand:POLarity`` command.
+        """
+        return self._command
+
+    @property
+    def response(self) -> BusBItemNfcResponse:
+        """Return the ``BUS:B<x>:NFC:RESPonse`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:RESPonse?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:RESPonse?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+
+        Sub-properties:
+            - ``.polarity``: The ``BUS:B<x>:NFC:RESPonse:POLarity`` command.
+        """
+        return self._response
+
+    @property
+    def rsp(self) -> BusBItemNfcRsp:
+        """Return the ``BUS:B<x>:NFC:RSP`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:RSP?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:RSP?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+
+        Sub-properties:
+            - ``.threshold``: The ``BUS:B<x>:NFC:RSP:THReshold`` command.
+        """
+        return self._rsp
+
+    @property
+    def source(self) -> BusBItemNfcSource:
+        """Return the ``BUS:B<x>:NFC:SOUrce`` command.
+
+        **Description:**
+            - This command sets or queries the source for the specified NFC bus.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:SOUrce?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:SOUrce?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:SOUrce value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:NFC:SOUrce {CH<x>}
+            - BUS:B<x>:NFC:SOUrce?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the source.
+        """
+        return self._source
+
+    @property
+    def start(self) -> BusBItemNfcStart:
+        """Return the ``BUS:B<x>:NFC:START`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:START?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:START?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+
+        Sub-properties:
+            - ``.index``: The ``BUS:B<x>:NFC:START:INDex`` command.
+        """
+        return self._start
+
+    @property
+    def std(self) -> BusBItemNfcStd:
+        """Return the ``BUS:B<x>:NFC:STD`` command.
+
+        **Description:**
+            - This command sets or queries the standard for the specified NFC bus.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:STD?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:STD?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:STD value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:NFC:STD {NFC15693| NFC14443A| NFC14443B| NFCFELica}
+            - BUS:B<x>:NFC:STD?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``NFC15693`` sets the standard to 15693.
+            - ``NFC14443A`` sets the standard to 14443A.
+            - ``NFC14443B`` sets the standard to 14443B.
+            - ``NFCFELica`` sets the standard to Felica.
+        """
+        return self._std
+
+    @property
+    def tolerance(self) -> BusBItemNfcTolerance:
+        """Return the ``BUS:B<x>:NFC:TOLerance`` command.
+
+        **Description:**
+            - This command sets or queries the tolerance for the specified NFC bus.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:TOLerance?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:TOLerance?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:NFC:TOLerance value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:NFC:TOLerance <NR3>
+            - BUS:B<x>:NFC:TOLerance?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` sets the tolerance. The default tolerance value is 10%. The minimum value is
+              1% and the maximum is 50%.
+        """
+        return self._tolerance
+
+    @property
+    def transition(self) -> BusBItemNfcTransition:
+        """Return the ``BUS:B<x>:NFC:TRANsition`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:TRANsition?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:TRANsition?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+
+        Sub-properties:
+            - ``.zero``: The ``BUS:B<x>:NFC:TRANsition:ZERo`` command.
+        """
+        return self._transition
+
+
+class BusBItemMil1553bThreshold(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:MIL1553B:THRESHold`` command.
 
     **Description:**
@@ -8595,6 +9722,9 @@ class BusBItemMil1553bThreshold(SCPICmdWrite):
           bus is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:THRESHold?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B:THRESHold?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BUS:B<x>:MIL1553B:THRESHold value``
           command.
 
@@ -8603,6 +9733,7 @@ class BusBItemMil1553bThreshold(SCPICmdWrite):
     ::
 
         - BUS:B<x>:MIL1553B:THRESHold <NR3>
+        - BUS:B<x>:MIL1553B:THRESHold?
 
     **Info:**
         - ``B<x>`` is the number of the bus.
@@ -8809,7 +9940,7 @@ class BusBItemMil1553bPolarity(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class BusBItemMil1553bLowthreshold(SCPICmdWrite):
+class BusBItemMil1553bLowthreshold(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:MIL1553B:LOWTHRESHold`` command.
 
     **Description:**
@@ -8817,6 +9948,9 @@ class BusBItemMil1553bLowthreshold(SCPICmdWrite):
           bus is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:LOWTHRESHold?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B:LOWTHRESHold?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BUS:B<x>:MIL1553B:LOWTHRESHold value``
           command.
 
@@ -8825,6 +9959,7 @@ class BusBItemMil1553bLowthreshold(SCPICmdWrite):
     ::
 
         - BUS:B<x>:MIL1553B:LOWTHRESHold <NR3>
+        - BUS:B<x>:MIL1553B:LOWTHRESHold?
 
     **Info:**
         - ``B<x>`` is the number of the bus.
@@ -8872,6 +10007,9 @@ class BusBItemMil1553b(SCPICmdRead):
               The bus is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:LOWTHRESHold?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B:LOWTHRESHold?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``BUS:B<x>:MIL1553B:LOWTHRESHold value`` command.
 
@@ -8880,6 +10018,7 @@ class BusBItemMil1553b(SCPICmdRead):
         ::
 
             - BUS:B<x>:MIL1553B:LOWTHRESHold <NR3>
+            - BUS:B<x>:MIL1553B:LOWTHRESHold?
 
         **Info:**
             - ``B<x>`` is the number of the bus.
@@ -8974,6 +10113,9 @@ class BusBItemMil1553b(SCPICmdRead):
               The bus is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:THRESHold?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B:THRESHold?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``BUS:B<x>:MIL1553B:THRESHold value``
               command.
 
@@ -8982,6 +10124,7 @@ class BusBItemMil1553b(SCPICmdRead):
         ::
 
             - BUS:B<x>:MIL1553B:THRESHold <NR3>
+            - BUS:B<x>:MIL1553B:THRESHold?
 
         **Info:**
             - ``B<x>`` is the number of the bus.
@@ -8990,7 +10133,7 @@ class BusBItemMil1553b(SCPICmdRead):
         return self._threshold
 
 
-class BusBItemMdioDataThreshold(SCPICmdWrite):
+class BusBItemMdioDataThreshold(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:MDIO:DATA:THReshold`` command.
 
     **Description:**
@@ -8998,6 +10141,9 @@ class BusBItemMdioDataThreshold(SCPICmdWrite):
           is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:MDIO:DATA:THReshold?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MDIO:DATA:THReshold?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BUS:B<x>:MDIO:DATA:THReshold value``
           command.
 
@@ -9006,6 +10152,7 @@ class BusBItemMdioDataThreshold(SCPICmdWrite):
     ::
 
         - BUS:B<x>:MDIO:DATA:THReshold <NR3>
+        - BUS:B<x>:MDIO:DATA:THReshold?
 
     **Info:**
         - ``B<x>`` is the number of the bus.
@@ -9102,6 +10249,9 @@ class BusBItemMdioData(SCPICmdRead):
               bus is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:MDIO:DATA:THReshold?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MDIO:DATA:THReshold?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``BUS:B<x>:MDIO:DATA:THReshold value`` command.
 
@@ -9110,6 +10260,7 @@ class BusBItemMdioData(SCPICmdRead):
         ::
 
             - BUS:B<x>:MDIO:DATA:THReshold <NR3>
+            - BUS:B<x>:MDIO:DATA:THReshold?
 
         **Info:**
             - ``B<x>`` is the number of the bus.
@@ -11545,6 +12696,32 @@ class BusBItemLabel(SCPICmdRead):
         return self._name
 
 
+class BusBItemI3cVersion(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:I3C:VERSion`` command.
+
+    **Description:**
+        - This command sets or queries the version for the specified bus.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:I3C:VERSion?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:I3C:VERSion?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:I3C:VERSion value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:I3C:VERSion {VR1<x>}
+        - BUS:B<x>:I3C:VERSion?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``VR10`` sets the version to Version 1.0. This is the default version.
+        - ``VR11`` sets the version to Version 1.1.
+    """
+
+
 class BusBItemI3cDataThreshold(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:I3C:DATa:THReshold`` command.
 
@@ -11840,12 +13017,14 @@ class BusBItemI3c(SCPICmdRead):
     Properties:
         - ``.clock``: The ``BUS:B<x>:I3C:CLOCk`` command tree.
         - ``.data``: The ``BUS:B<x>:I3C:DATa`` command tree.
+        - ``.version``: The ``BUS:B<x>:I3C:VERSion`` command.
     """
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._clock = BusBItemI3cClock(device, f"{self._cmd_syntax}:CLOCk")
         self._data = BusBItemI3cData(device, f"{self._cmd_syntax}:DATa")
+        self._version = BusBItemI3cVersion(device, f"{self._cmd_syntax}:VERSion")
 
     @property
     def clock(self) -> BusBItemI3cClock:
@@ -11882,6 +13061,34 @@ class BusBItemI3c(SCPICmdRead):
             - ``.threshold``: The ``BUS:B<x>:I3C:DATa:THReshold`` command.
         """
         return self._data
+
+    @property
+    def version(self) -> BusBItemI3cVersion:
+        """Return the ``BUS:B<x>:I3C:VERSion`` command.
+
+        **Description:**
+            - This command sets or queries the version for the specified bus.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:I3C:VERSion?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:I3C:VERSion?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``BUS:B<x>:I3C:VERSion value``
+              command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:I3C:VERSion {VR1<x>}
+            - BUS:B<x>:I3C:VERSion?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``VR10`` sets the version to Version 1.0. This is the default version.
+            - ``VR11`` sets the version to Version 1.1.
+        """
+        return self._version
 
 
 class BusBItemI2cRwinaddr(SCPICmdWrite, SCPICmdRead):
@@ -12346,7 +13553,7 @@ class BusBItemFlexrayThreshold(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class BusBItemFlexraySourceTxrx(SCPICmdWrite):
+class BusBItemFlexraySourceTxrx(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:FLEXray:SOUrce:TXRX`` command.
 
     **Description:**
@@ -12354,6 +13561,9 @@ class BusBItemFlexraySourceTxrx(SCPICmdWrite):
           signal type is TXRX. The bus is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:FLEXray:SOUrce:TXRX?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:FLEXray:SOUrce:TXRX?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BUS:B<x>:FLEXray:SOUrce:TXRX value``
           command.
 
@@ -12362,6 +13572,7 @@ class BusBItemFlexraySourceTxrx(SCPICmdWrite):
     ::
 
         - BUS:B<x>:FLEXray:SOUrce:TXRX {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
+        - BUS:B<x>:FLEXray:SOUrce:TXRX?
 
     **Info:**
         - ``B<x>`` is the number of the bus.
@@ -12409,6 +13620,9 @@ class BusBItemFlexraySource(SCPICmdWrite, SCPICmdRead):
               the signal type is TXRX. The bus is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:FLEXray:SOUrce:TXRX?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:FLEXray:SOUrce:TXRX?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``BUS:B<x>:FLEXray:SOUrce:TXRX value`` command.
 
@@ -12417,6 +13631,7 @@ class BusBItemFlexraySource(SCPICmdWrite, SCPICmdRead):
         ::
 
             - BUS:B<x>:FLEXray:SOUrce:TXRX {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
+            - BUS:B<x>:FLEXray:SOUrce:TXRX?
 
         **Info:**
             - ``B<x>`` is the number of the bus.
@@ -15044,7 +16259,7 @@ class BusBItemEspiDatatwoPolarity(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:ESPI:DATATWO:POLarity`` command.
 
     **Description:**
-        - This command sets or queries the ESPI response (single mode)/ IO[1] (dual mode) polarity
+        - This command sets or queries the ESPI  response (single mode)/ IO[1] (dual mode) polarity
           for the specified bus. The bus is specified by x.
 
     **Usage:**
@@ -15096,7 +16311,7 @@ class BusBItemEspiDatatwo(SCPICmdRead):
         """Return the ``BUS:B<x>:ESPI:DATATWO:POLarity`` command.
 
         **Description:**
-            - This command sets or queries the ESPI response (single mode)/ IO[1] (dual mode)
+            - This command sets or queries the ESPI  response (single mode)/ IO[1] (dual mode)
               polarity for the specified bus. The bus is specified by x.
 
         **Usage:**
@@ -22219,6 +23434,7 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.manchester``: The ``BUS:B<x>:MANChester`` command tree.
         - ``.mdio``: The ``BUS:B<x>:MDIO`` command tree.
         - ``.mil1553b``: The ``BUS:B<x>:MIL1553B`` command tree.
+        - ``.nfc``: The ``BUS:B<x>:NFC`` command tree.
         - ``.nrz``: The ``BUS:B<x>:NRZ`` command tree.
         - ``.onewire``: The ``BUS:B<x>:ONEWIRe`` command tree.
         - ``.parallel``: The ``BUS:B<x>:PARallel`` command tree.
@@ -22258,6 +23474,7 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._manchester = BusBItemManchester(device, f"{self._cmd_syntax}:MANChester")
         self._mdio = BusBItemMdio(device, f"{self._cmd_syntax}:MDIO")
         self._mil1553b = BusBItemMil1553b(device, f"{self._cmd_syntax}:MIL1553B")
+        self._nfc = BusBItemNfc(device, f"{self._cmd_syntax}:NFC")
         self._nrz = BusBItemNrz(device, f"{self._cmd_syntax}:NRZ")
         self._onewire = BusBItemOnewire(device, f"{self._cmd_syntax}:ONEWIRe")
         self._parallel = BusBItemParallel(device, f"{self._cmd_syntax}:PARallel")
@@ -22602,6 +23819,7 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         Sub-properties:
             - ``.clock``: The ``BUS:B<x>:I3C:CLOCk`` command tree.
             - ``.data``: The ``BUS:B<x>:I3C:DATa`` command tree.
+            - ``.version``: The ``BUS:B<x>:I3C:VERSion`` command.
         """
         return self._i3c
 
@@ -22719,6 +23937,30 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._mil1553b
 
     @property
+    def nfc(self) -> BusBItemNfc:
+        """Return the ``BUS:B<x>:NFC`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:NFC?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.applydemod``: The ``BUS:B<x>:NFC:APPLYDEMod`` command.
+            - ``.bitrate``: The ``BUS:B<x>:NFC:BITRate`` command.
+            - ``.cmd``: The ``BUS:B<x>:NFC:CMD`` command tree.
+            - ``.command``: The ``BUS:B<x>:NFC:COMMand`` command tree.
+            - ``.response``: The ``BUS:B<x>:NFC:RESPonse`` command tree.
+            - ``.rsp``: The ``BUS:B<x>:NFC:RSP`` command tree.
+            - ``.source``: The ``BUS:B<x>:NFC:SOUrce`` command.
+            - ``.start``: The ``BUS:B<x>:NFC:START`` command tree.
+            - ``.std``: The ``BUS:B<x>:NFC:STD`` command.
+            - ``.tolerance``: The ``BUS:B<x>:NFC:TOLerance`` command.
+            - ``.transition``: The ``BUS:B<x>:NFC:TRANsition`` command tree.
+        """
+        return self._nfc
+
+    @property
     def nrz(self) -> BusBItemNrz:
         """Return the ``BUS:B<x>:NRZ`` command tree.
 
@@ -22791,7 +24033,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``B<x>`` is the number of the bus.
 
         Sub-properties:
+            - ``.bitperiod``: The ``BUS:B<x>:PSIFIVe:BITPERiod`` command.
             - ``.bitrate``: The ``BUS:B<x>:PSIFIVe:BITRate`` command.
+            - ``.comm``: The ``BUS:B<x>:PSIFIVe:COMM`` command tree.
             - ``.dataa``: The ``BUS:B<x>:PSIFIVe:DATAA`` command.
             - ``.datab``: The ``BUS:B<x>:PSIFIVe:DATAB`` command.
             - ``.dataformat``: The ``BUS:B<x>:PSIFIVe:DATAFORMat`` command.
@@ -22819,6 +24063,7 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``B<x>`` is the number of the bus.
 
         Sub-properties:
+            - ``.bitorder``: The ``BUS:B<x>:RS232C:BITORDer`` command.
             - ``.bitrate``: The ``BUS:B<x>:RS232C:BITRate`` command.
             - ``.databits``: The ``BUS:B<x>:RS232C:DATABits`` command.
             - ``.delimiter``: The ``BUS:B<x>:RS232C:DELIMiter`` command.
@@ -23100,7 +24345,6 @@ class Bus(SCPICmdRead):
     Properties:
         - ``.addnew``: The ``BUS:ADDNew`` command.
         - ``.b``: The ``BUS:B<x>`` command tree.
-        - ``.bpsifive``: The ``BUS:B<x>PSIFIVe`` command tree.
         - ``.delete``: The ``BUS:DELete`` command.
         - ``.list``: The ``BUS:LIST`` command.
     """
@@ -23110,9 +24354,6 @@ class Bus(SCPICmdRead):
         self._addnew = BusAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._b: Dict[int, BusBItem] = DefaultDictPassKeyToFactory(
             lambda x: BusBItem(device, f"{self._cmd_syntax}:B{x}")
-        )
-        self._bpsifive: Dict[int, BusBpsifiveItem] = DefaultDictPassKeyToFactory(
-            lambda x: BusBpsifiveItem(device, f"{self._cmd_syntax}:B{x}PSIFIVe")
         )
         self._delete = BusDelete(device, f"{self._cmd_syntax}:DELete")
         self._list = BusList(device, f"{self._cmd_syntax}:LIST")
@@ -23173,6 +24414,7 @@ class Bus(SCPICmdRead):
             - ``.manchester``: The ``BUS:B<x>:MANChester`` command tree.
             - ``.mdio``: The ``BUS:B<x>:MDIO`` command tree.
             - ``.mil1553b``: The ``BUS:B<x>:MIL1553B`` command tree.
+            - ``.nfc``: The ``BUS:B<x>:NFC`` command tree.
             - ``.nrz``: The ``BUS:B<x>:NRZ`` command tree.
             - ``.onewire``: The ``BUS:B<x>:ONEWIRe`` command tree.
             - ``.parallel``: The ``BUS:B<x>:PARallel`` command tree.
@@ -23190,24 +24432,6 @@ class Bus(SCPICmdRead):
             - ``.usb``: The ``BUS:B<x>:USB`` command tree.
         """
         return self._b
-
-    @property
-    def bpsifive(self) -> Dict[int, BusBpsifiveItem]:
-        """Return the ``BUS:B<x>PSIFIVe`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the ``BUS:B<x>PSIFIVe?`` query.
-            - Using the ``.verify(value)`` method will send the ``BUS:B<x>PSIFIVe?`` query and raise
-              an AssertionError if the returned value does not match ``value``.
-
-        **Info:**
-            - ``B<x>`` is the number of the bus.
-
-        Sub-properties:
-            - ``.bitperiod``: The ``BUS:B<x>PSIFIVe:BITPERiod`` command.
-            - ``.comm``: The ``BUS:B<x>PSIFIVe:COMM`` command tree.
-        """
-        return self._bpsifive
 
     @property
     def delete(self) -> BusDelete:

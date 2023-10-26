@@ -18,6 +18,7 @@ Commands and Queries:
     - SAVe:EVENTtable:CUSTom:COMMents <Qstring>
     - SAVe:EVENTtable:CUSTom:COMMents?
     - SAVe:EVENTtable:CUSTom:DATAFormat [SCIentific|ENGineering]
+    - SAVe:EVENTtable:CUSTom:DATAFormat?
     - SAVe:EVENTtable:CUSTom:INCLUDEREFs {1|0}
     - SAVe:EVENTtable:CUSTom:INCLUDEREFs?
     - SAVe:EVENTtable:MEASUrement <QString>
@@ -28,6 +29,7 @@ Commands and Queries:
     - SAVe:IMAGe:COMPosition?
     - SAVe:IMAGe:VIEWTYpe {FULLScreen}
     - SAVe:IMAGe:VIEWTYpe?
+    - SAVe:MASK <Qstring>
     - SAVe:PLOTData <Qstring>
     - SAVe:REPOrt <QString>
     - SAVe:REPOrt:COMMents <QString>
@@ -36,7 +38,7 @@ Commands and Queries:
     - SAVe:SETUp <QString>
     - SAVe:SETUp:INCLUDEREFs {OFF|ON|0|1}
     - SAVe:SETUp:INCLUDEREFs?
-    - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold| _SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME]|MATH<x>|REF<x>|ALL| },<QString>
+    - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold| _SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME| _SV_BASEBAND_IQ]|MATH<x>|REF<x>|ALL| },<QString>
     - SAVe:WAVEform:GATing {NONe|CURSors|SCREEN|RESAMPLE|SELected}
     - SAVe:WAVEform:GATing:RESAMPLErate <NR1>
     - SAVe:WAVEform:GATing:RESAMPLErate?
@@ -180,7 +182,7 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
 
     ::
 
-        - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold| _SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME]|MATH<x>|REF<x>|ALL| },<QString>
+        - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold| _SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME| _SV_BASEBAND_IQ]|MATH<x>|REF<x>|ALL| },<QString>
 
     **Info:**
         - ``CH<x>`` is the number of the analog channel waveform source used to save the waveform
@@ -476,7 +478,15 @@ class SavePlotdata(SCPICmdWrite):
 
     **Description:**
         - Saves the plot data of the currently selected plot to a specified file. Supported file
-          format is CSV.
+          format is CSV. When specifying the file name with this command, use the correct file
+          extension (.CSV). If a file name or path is specified, the file is expected to be located
+          in a directory relative to the current working directory (specified by ``FILESYSTEM:CWD``)
+          unless a complete path is specified. If the file argument begins with a drive designator
+          (such as C:), then the file name is interpreted as a full path. If the file argument
+          begins with '.' or '', or has a file path separator appearing anywhere other than the
+          first character position, then the file name is treated as a path that is relative to the
+          current working directory. To export an eye diagram plot data to a .csv file, the
+          prerequisite command is ``MEASUrement:ADDMEAS TIE``
 
     **Usage:**
         - Using the ``.write(value)`` method will send the ``SAVe:PLOTData value`` command.
@@ -488,13 +498,40 @@ class SavePlotdata(SCPICmdWrite):
         - SAVe:PLOTData <Qstring>
 
     **Info:**
-        - ``<Qstring>`` sets the file name and location used to store the plot data. When specifying
-          the file name with this command, use the correct file extension (.CSV). If a file name or
-          path is specified, the file is expected to be located in a directory relative to the
-          current working directory (specified by ``FILESYSTEM:CWD``) unless a complete path is
-          specified.
-        - ``MEASUrement:ADDMEAS TIE`` To export an eye diagram plot data to a .csv file, the
-          prerequisite command is.
+        - ``<Qstring>`` sets the file name and location used to store the plot data.
+    """
+
+
+class SaveMask(SCPICmdWrite):
+    """The ``SAVe:MASK`` command.
+
+    **Description:**
+        - Saves the given Waveview Mask to the specified file. Use the format
+          [<path>]'<filename><.ext>' for the argument. Specifying a path is optional. If no path is
+          entered, the file is saved to the current working directory set by ``FILESystem:CWD``.
+          <path> ues the form '<drive>/<dir>.../'. You can specify a relative path or a complete
+          path: Relative path specification: If the file argument begins with '.' or '..' or has a
+          file path separator appearing anywhere other than the first character position, then the
+          file name is treated as a path that is relative to the current working directory. Complete
+          path specification: If the file argument begins with a file path separator (forward slash
+          character) or a drive designator (such as C:), then the file name is interpreted as a full
+          path from the specified drive. <filename> sets the file name to use to create the file. A
+          file can have up to 125 characters. <.ext> sets the file format for saving the mask data.
+          Segment-based masks must be saved with a .xml extension, while tolerance masks must be
+          saved with a .tol extension.
+
+    **Usage:**
+        - Using the ``.write(value)`` method will send the ``SAVe:MASK value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SAVe:MASK <Qstring>
+
+    **Info:**
+        - ``<Qstring>`` is a quoted string that defines the path and file name used to save the
+          specified file, in the format [<path>]'<filename><.ext>'.
     """
 
 
@@ -736,13 +773,16 @@ class SaveEventtableCustomIncluderefs(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class SaveEventtableCustomDataformat(SCPICmdWrite):
+class SaveEventtableCustomDataformat(SCPICmdWrite, SCPICmdRead):
     """The ``SAVe:EVENTtable:CUSTom:DATAFormat`` command.
 
     **Description:**
         - This command sets or queries the data format to use for saving results table data.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``SAVe:EVENTtable:CUSTom:DATAFormat?`` query.
+        - Using the ``.verify(value)`` method will send the ``SAVe:EVENTtable:CUSTom:DATAFormat?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``SAVe:EVENTtable:CUSTom:DATAFormat value`` command.
 
@@ -751,6 +791,7 @@ class SaveEventtableCustomDataformat(SCPICmdWrite):
     ::
 
         - SAVe:EVENTtable:CUSTom:DATAFormat [SCIentific|ENGineering]
+        - SAVe:EVENTtable:CUSTom:DATAFormat?
 
     **Info:**
         - ``SCIentific`` sets the instrument to save results tables data in scientific notation (for
@@ -858,6 +899,11 @@ class SaveEventtableCustom(SCPICmdWrite, SCPICmdRead):
             - This command sets or queries the data format to use for saving results table data.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``SAVe:EVENTtable:CUSTom:DATAFormat?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``SAVe:EVENTtable:CUSTom:DATAFormat?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``SAVe:EVENTtable:CUSTom:DATAFormat value`` command.
 
@@ -866,6 +912,7 @@ class SaveEventtableCustom(SCPICmdWrite, SCPICmdRead):
         ::
 
             - SAVe:EVENTtable:CUSTom:DATAFormat [SCIentific|ENGineering]
+            - SAVe:EVENTtable:CUSTom:DATAFormat?
 
         **Info:**
             - ``SCIentific`` sets the instrument to save results tables data in scientific notation
@@ -1082,6 +1129,7 @@ class SaveEventtable(SCPICmdRead):
         return self._searchtable
 
 
+#  pylint: disable=too-many-instance-attributes
 class Save(SCPICmdRead):
     """The ``SAVe`` command tree.
 
@@ -1093,6 +1141,7 @@ class Save(SCPICmdRead):
     Properties:
         - ``.eventtable``: The ``SAVe:EVENTtable`` command tree.
         - ``.image``: The ``SAVe:IMAGe`` command.
+        - ``.mask``: The ``SAVe:MASK`` command.
         - ``.plotdata``: The ``SAVe:PLOTData`` command.
         - ``.report``: The ``SAVe:REPOrt`` command.
         - ``.session``: The ``SAVe:SESsion`` command.
@@ -1104,6 +1153,7 @@ class Save(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._eventtable = SaveEventtable(device, f"{self._cmd_syntax}:EVENTtable")
         self._image = SaveImage(device, f"{self._cmd_syntax}:IMAGe")
+        self._mask = SaveMask(device, f"{self._cmd_syntax}:MASK")
         self._plotdata = SavePlotdata(device, f"{self._cmd_syntax}:PLOTData")
         self._report = SaveReport(device, f"{self._cmd_syntax}:REPOrt")
         self._session = SaveSession(device, f"{self._cmd_syntax}:SESsion")
@@ -1155,12 +1205,56 @@ class Save(SCPICmdRead):
         return self._image
 
     @property
+    def mask(self) -> SaveMask:
+        """Return the ``SAVe:MASK`` command.
+
+        **Description:**
+            - Saves the given Waveview Mask to the specified file. Use the format
+              [<path>]'<filename><.ext>' for the argument. Specifying a path is optional. If no path
+              is entered, the file is saved to the current working directory set by
+              ``FILESystem:CWD``. <path> ues the form '<drive>/<dir>.../'. You can specify a
+              relative path or a complete path: Relative path specification: If the file argument
+              begins with '.' or '..' or has a file path separator appearing anywhere other than the
+              first character position, then the file name is treated as a path that is relative to
+              the current working directory. Complete path specification: If the file argument
+              begins with a file path separator (forward slash character) or a drive designator
+              (such as C:), then the file name is interpreted as a full path from the specified
+              drive. <filename> sets the file name to use to create the file. A file can have up to
+              125 characters. <.ext> sets the file format for saving the mask data. Segment-based
+              masks must be saved with a .xml extension, while tolerance masks must be saved with a
+              .tol extension.
+
+        **Usage:**
+            - Using the ``.write(value)`` method will send the ``SAVe:MASK value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SAVe:MASK <Qstring>
+
+        **Info:**
+            - ``<Qstring>`` is a quoted string that defines the path and file name used to save the
+              specified file, in the format [<path>]'<filename><.ext>'.
+        """
+        return self._mask
+
+    @property
     def plotdata(self) -> SavePlotdata:
         """Return the ``SAVe:PLOTData`` command.
 
         **Description:**
             - Saves the plot data of the currently selected plot to a specified file. Supported file
-              format is CSV.
+              format is CSV. When specifying the file name with this command, use the correct file
+              extension (.CSV). If a file name or path is specified, the file is expected to be
+              located in a directory relative to the current working directory (specified by
+              ``FILESYSTEM:CWD``) unless a complete path is specified. If the file argument begins
+              with a drive designator (such as C:), then the file name is interpreted as a full
+              path. If the file argument begins with '.' or '', or has a file path separator
+              appearing anywhere other than the first character position, then the file name is
+              treated as a path that is relative to the current working directory. To export an eye
+              diagram plot data to a .csv file, the prerequisite command is
+              ``MEASUrement:ADDMEAS TIE``
 
         **Usage:**
             - Using the ``.write(value)`` method will send the ``SAVe:PLOTData value`` command.
@@ -1172,13 +1266,7 @@ class Save(SCPICmdRead):
             - SAVe:PLOTData <Qstring>
 
         **Info:**
-            - ``<Qstring>`` sets the file name and location used to store the plot data. When
-              specifying the file name with this command, use the correct file extension (.CSV). If
-              a file name or path is specified, the file is expected to be located in a directory
-              relative to the current working directory (specified by ``FILESYSTEM:CWD``) unless a
-              complete path is specified.
-            - ``MEASUrement:ADDMEAS TIE`` To export an eye diagram plot data to a .csv file, the
-              prerequisite command is.
+            - ``<Qstring>`` sets the file name and location used to store the plot data.
         """
         return self._plotdata
 
@@ -1274,7 +1362,7 @@ class Save(SCPICmdRead):
 
         ::
 
-            - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold| _SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME]|MATH<x>|REF<x>|ALL| },<QString>
+            - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold| _SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME| _SV_BASEBAND_IQ]|MATH<x>|REF<x>|ALL| },<QString>
 
         **Info:**
             - ``CH<x>`` is the number of the analog channel waveform source used to save the

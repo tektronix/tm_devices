@@ -590,10 +590,6 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:PACKets?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SADDress:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SADDress:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya| ENTRDya|SETMwrl|SETMrdl|LSLave|ENTRTSTMode|EXTime>}
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya| SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl| GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt| MDATASpeed|HDRCapability}
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe:VALue <Qstring>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic:ADDRess <Qstring>
@@ -2862,7 +2858,7 @@ class SearchSearchItemTriggerASetholdLogicpatternRefItem(
 
     **Description:**
         - This command sets and returns the conditions used for generating an A logic pattern, with
-          respect to the defined input pattern, and identifies the time that the selected pattern
+          respect to the defined input pattern,  and identifies the time that the selected pattern
           may be true and still generate the trigger. The search number is specified by x.
 
     **Usage:**
@@ -3154,7 +3150,7 @@ class SearchSearchItemTriggerASetholdLogicpattern(SCPICmdRead):
 
         **Description:**
             - This command sets and returns the conditions used for generating an A logic pattern,
-              with respect to the defined input pattern, and identifies the time that the selected
+              with respect to the defined input pattern,  and identifies the time that the selected
               pattern may be true and still generate the trigger. The search number is specified by
               x.
 
@@ -21120,8 +21116,8 @@ class SearchSearchItemTriggerABusRs232cDataSize(SCPICmdWrite, SCPICmdRead):
 
     **Description:**
         - This command sets or queries the length of the data string in bytes to be used for an
-          RS232 bus search to determine where to place a mark when the search condition is Data. The
-          search number is specified by x.
+          RS232 bus search  to determine where to place a mark when the search condition is Data.
+          The search number is specified by x.
 
     **Usage:**
         - Using the ``.query()`` method will send the
@@ -21172,8 +21168,8 @@ class SearchSearchItemTriggerABusRs232cData(SCPICmdRead):
 
         **Description:**
             - This command sets or queries the length of the data string in bytes to be used for an
-              RS232 bus search to determine where to place a mark when the search condition is Data.
-              The search number is specified by x.
+              RS232 bus search  to determine where to place a mark when the search condition is
+              Data. The search number is specified by x.
 
         **Usage:**
             - Using the ``.query()`` method will send the
@@ -26871,208 +26867,6 @@ class SearchSearchItemTriggerABusI3cStatebyte(SCPICmdRead):
         return self._value
 
 
-class SearchSearchItemTriggerABusI3cSdrDirectpacket(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket`` command.
-
-    **Description:**
-        - This command sets or queries the SDR direct packet types for the specified I3C bus trigger
-          search to determine where to place a mark. Requires purchase and installation of option
-          SRI3C.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket?`` query and raise an AssertionError
-          if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya| SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl| GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt| MDATASpeed|HDRCapability}
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket?
-
-    **Info:**
-        - ``Search<x>`` specifies the search number.
-        - ``ENSLave`` specifies the trigger condition as Enable Slave.
-        - ``DISLave`` specifies the trigger condition as Disable Slave.
-        - ``ENTasx`` specifies the trigger condition as Enter Activity State.
-        - ``RSTDya`` specifies the trigger condition as Reset Dynamic Address.
-        - ``SETMwrl`` specifies the trigger condition as Set Max Write Length.
-        - ``SETMrdl`` specifies the trigger condition as Set Max Read Length.
-        - ``SEText`` specifies the trigger condition as Set Exchange Time.
-        - ``SETDya`` specifies the trigger condition as Set Dynamic Address.
-        - ``SETNdya`` specifies the trigger condition as Set New Dynamic Address.
-        - ``GETMWrl`` specifies the trigger condition as Get Max Write Length.
-        - ``GETMRdl`` specifies the trigger condition as Get Max Read Length.
-        - ``GETPrid`` specifies the trigger condition as Get Provisional ID.
-        - ``GETBusch`` specifies the trigger condition as Get Provisional ID.
-        - ``GETDevch`` specifies the trigger condition as Get Dev Characteristics.
-        - ``GETSlave`` specifies the trigger condition as Get Slave Current Status.
-        - ``ACCM`` specifies the trigger condition as Get Accept Mastership.
-        - ``SETBrt`` specifies the trigger condition as Set Bridge Direct Target.
-        - ``MDATASpeed`` specifies the trigger condition as Get Max Data Speed.
-        - ``HDRCapability`` specifies the trigger condition as Get HDR Capability.
-    """  # noqa: E501
-
-
-class SearchSearchItemTriggerABusI3cSdrBroadcastpacket(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket`` command.
-
-    **Description:**
-        - This command sets or queries the SDR broadcast packets for the specified I3C bus trigger
-          search to determine where to place a mark. Requires purchase and installation of option
-          SRI3C.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya| ENTRDya|SETMwrl|SETMrdl|LSLave|ENTRTSTMode|EXTime>}
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket?
-
-    **Info:**
-        - ``Search<x>`` specifies the search number.
-        - ``ENSLave`` specifies the I3C broadcast packet type as Enable Slave.
-        - ``DISLave`` specifies the I3C broadcast packet type as Disable Slave.
-        - ``ENTasx`` specifies the I3C broadcast packet type as Enter Activity Stat.
-        - ``RSTDya`` specifies the I3C broadcast packet type as Reset Dynamic Address.
-        - ``ENTRDya`` specifies the I3C broadcast packet type as Reset Dynamic Address.
-        - ``SETMwrl`` specifies the I3C broadcast packet type as Set Max Write Length.
-        - ``SETMrdl`` specifies the I3C broadcast packet type as Set Max Read Length.
-        - ``LSLave`` specifies the I3C broadcast packet type as Define List of Slaves.
-        - ``ENTRTSTMode`` specifies the I3C broadcast packet type as Enter Test Mode Broadcast.
-        - ``EXTime`` specifies the I3C broadcast packet type as Set Exchange Time.
-    """  # noqa: E501
-
-
-class SearchSearchItemTriggerABusI3cSdr(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR?``
-          query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR?`` query and raise an AssertionError if the
-          returned value does not match ``value``.
-
-    Properties:
-        - ``.broadcastpacket``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket``
-          command.
-        - ``.directpacket``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket`` command.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._broadcastpacket = SearchSearchItemTriggerABusI3cSdrBroadcastpacket(
-            device, f"{self._cmd_syntax}:BROADCASTPacket"
-        )
-        self._directpacket = SearchSearchItemTriggerABusI3cSdrDirectpacket(
-            device, f"{self._cmd_syntax}:DIRECTPacket"
-        )
-
-    @property
-    def broadcastpacket(self) -> SearchSearchItemTriggerABusI3cSdrBroadcastpacket:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket`` command.
-
-        **Description:**
-            - This command sets or queries the SDR broadcast packets for the specified I3C bus
-              trigger search to determine where to place a mark. Requires purchase and installation
-              of option SRI3C.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya| ENTRDya|SETMwrl|SETMrdl|LSLave|ENTRTSTMode|EXTime>}
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket?
-
-        **Info:**
-            - ``Search<x>`` specifies the search number.
-            - ``ENSLave`` specifies the I3C broadcast packet type as Enable Slave.
-            - ``DISLave`` specifies the I3C broadcast packet type as Disable Slave.
-            - ``ENTasx`` specifies the I3C broadcast packet type as Enter Activity Stat.
-            - ``RSTDya`` specifies the I3C broadcast packet type as Reset Dynamic Address.
-            - ``ENTRDya`` specifies the I3C broadcast packet type as Reset Dynamic Address.
-            - ``SETMwrl`` specifies the I3C broadcast packet type as Set Max Write Length.
-            - ``SETMrdl`` specifies the I3C broadcast packet type as Set Max Read Length.
-            - ``LSLave`` specifies the I3C broadcast packet type as Define List of Slaves.
-            - ``ENTRTSTMode`` specifies the I3C broadcast packet type as Enter Test Mode Broadcast.
-            - ``EXTime`` specifies the I3C broadcast packet type as Set Exchange Time.
-        """  # noqa: E501
-        return self._broadcastpacket
-
-    @property
-    def directpacket(self) -> SearchSearchItemTriggerABusI3cSdrDirectpacket:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket`` command.
-
-        **Description:**
-            - This command sets or queries the SDR direct packet types for the specified I3C bus
-              trigger search to determine where to place a mark. Requires purchase and installation
-              of option SRI3C.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya| SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl| GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt| MDATASpeed|HDRCapability}
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket?
-
-        **Info:**
-            - ``Search<x>`` specifies the search number.
-            - ``ENSLave`` specifies the trigger condition as Enable Slave.
-            - ``DISLave`` specifies the trigger condition as Disable Slave.
-            - ``ENTasx`` specifies the trigger condition as Enter Activity State.
-            - ``RSTDya`` specifies the trigger condition as Reset Dynamic Address.
-            - ``SETMwrl`` specifies the trigger condition as Set Max Write Length.
-            - ``SETMrdl`` specifies the trigger condition as Set Max Read Length.
-            - ``SEText`` specifies the trigger condition as Set Exchange Time.
-            - ``SETDya`` specifies the trigger condition as Set Dynamic Address.
-            - ``SETNdya`` specifies the trigger condition as Set New Dynamic Address.
-            - ``GETMWrl`` specifies the trigger condition as Get Max Write Length.
-            - ``GETMRdl`` specifies the trigger condition as Get Max Read Length.
-            - ``GETPrid`` specifies the trigger condition as Get Provisional ID.
-            - ``GETBusch`` specifies the trigger condition as Get Provisional ID.
-            - ``GETDevch`` specifies the trigger condition as Get Dev Characteristics.
-            - ``GETSlave`` specifies the trigger condition as Get Slave Current Status.
-            - ``ACCM`` specifies the trigger condition as Get Accept Mastership.
-            - ``SETBrt`` specifies the trigger condition as Set Bridge Direct Target.
-            - ``MDATASpeed`` specifies the trigger condition as Get Max Data Speed.
-            - ``HDRCapability`` specifies the trigger condition as Get HDR Capability.
-        """  # noqa: E501
-        return self._directpacket
-
-
 class SearchSearchItemTriggerABusI3cSaddressValue(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SADDress:VALue`` command.
 
@@ -28994,7 +28788,6 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
         - ``.maxwrite``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe`` command tree.
         - ``.packets``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:PACKets`` command.
         - ``.saddress``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SADDress`` command tree.
-        - ``.sdr``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR`` command tree.
         - ``.statebyte``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe`` command tree.
         - ``.static``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic`` command tree.
         - ``.supportbyte``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe`` command tree.
@@ -29044,7 +28837,6 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
         self._saddress = SearchSearchItemTriggerABusI3cSaddress(
             device, f"{self._cmd_syntax}:SADDress"
         )
-        self._sdr = SearchSearchItemTriggerABusI3cSdr(device, f"{self._cmd_syntax}:SDR")
         self._statebyte = SearchSearchItemTriggerABusI3cStatebyte(
             device, f"{self._cmd_syntax}:STATEBYTe"
         )
@@ -29504,25 +29296,6 @@ class SearchSearchItemTriggerABusI3c(SCPICmdRead):
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SADDress:VALue`` command.
         """
         return self._saddress
-
-    @property
-    def sdr(self) -> SearchSearchItemTriggerABusI3cSdr:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR?`` query and raise an AssertionError if the
-              returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.broadcastpacket``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:BROADCASTPacket``
-              command.
-            - ``.directpacket``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR:DIRECTPacket``
-              command.
-        """
-        return self._sdr
 
     @property
     def statebyte(self) -> SearchSearchItemTriggerABusI3cStatebyte:
@@ -31663,7 +31436,7 @@ class SearchSearchItemTriggerABusEusbSyncbitsMinSize(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:SYNCBITS:MIN:SIZe`` command.
 
     **Description:**
-        - This command sets the number of sync bits, in bits, to be used when triggering on a eUSB
+        - This command sets the number of  sync bits, in bits, to be used when triggering on a eUSB
           bus signal. The trigger condition must be set to SYNC. The search number is specified by
           x.
 
@@ -31714,7 +31487,7 @@ class SearchSearchItemTriggerABusEusbSyncbitsMin(SCPICmdRead):
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:SYNCBITS:MIN:SIZe`` command.
 
         **Description:**
-            - This command sets the number of sync bits, in bits, to be used when triggering on a
+            - This command sets the number of  sync bits, in bits, to be used when triggering on a
               eUSB bus signal. The trigger condition must be set to SYNC. The search number is
               specified by x.
 
@@ -31745,7 +31518,7 @@ class SearchSearchItemTriggerABusEusbSyncbitsMaxSize(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:SYNCBITS:MAX:SIZe`` command.
 
     **Description:**
-        - This command sets the number of sync bits, to be used when triggering on a eUSB bus
+        - This command sets the number of  sync bits, to be used when triggering on a eUSB bus
           signal. The trigger condition must be set to SYNC. The search number is specified by x.
 
     **Usage:**
@@ -31795,7 +31568,7 @@ class SearchSearchItemTriggerABusEusbSyncbitsMax(SCPICmdRead):
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:SYNCBITS:MAX:SIZe`` command.
 
         **Description:**
-            - This command sets the number of sync bits, to be used when triggering on a eUSB bus
+            - This command sets the number of  sync bits, to be used when triggering on a eUSB bus
               signal. The trigger condition must be set to SYNC. The search number is specified by
               x.
 
@@ -32991,7 +32764,7 @@ class SearchSearchItemTriggerABusEusbEopbitsMinSize(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:EOPBITS:MIN:SIZe`` command.
 
     **Description:**
-        - This command sets the number of EOP bits to be used when triggering on a eUSB bus signal.
+        - This command sets the number of  EOP bits to be used when triggering on a eUSB bus signal.
           The trigger condition must be set to EOP. The search number is specified by x.
 
     **Usage:**
@@ -33041,7 +32814,7 @@ class SearchSearchItemTriggerABusEusbEopbitsMin(SCPICmdRead):
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:EOPBITS:MIN:SIZe`` command.
 
         **Description:**
-            - This command sets the number of EOP bits to be used when triggering on a eUSB bus
+            - This command sets the number of  EOP bits to be used when triggering on a eUSB bus
               signal. The trigger condition must be set to EOP. The search number is specified by x.
 
         **Usage:**
@@ -33071,7 +32844,7 @@ class SearchSearchItemTriggerABusEusbEopbitsMaxSize(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:EOPBITS:MAX:SIZe`` command.
 
     **Description:**
-        - This command sets the number of EOP bits to be used when triggering on a eUSB bus signal.
+        - This command sets the number of  EOP bits to be used when triggering on a eUSB bus signal.
           The trigger condition must be set to EOP. The search number is specified by x.
 
     **Usage:**
@@ -33121,7 +32894,7 @@ class SearchSearchItemTriggerABusEusbEopbitsMax(SCPICmdRead):
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:EOPBITS:MAX:SIZe`` command.
 
         **Description:**
-            - This command sets the number of EOP bits to be used when triggering on a eUSB bus
+            - This command sets the number of  EOP bits to be used when triggering on a eUSB bus
               signal. The trigger condition must be set to EOP. The search number is specified by x.
 
         **Usage:**
@@ -33239,7 +33012,7 @@ class SearchSearchItemTriggerABusEusbEopDatabitsSize(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:EOP:DATABITS:SIZe`` command.
 
     **Description:**
-        - This command sets the number of EOP bits, in bytes, to be used when triggering on a eUSB
+        - This command sets the number of  EOP bits, in bytes, to be used when triggering on a eUSB
           bus signal. The trigger condition must be set to EOP. The search number is specified by x.
 
     **Usage:**
@@ -33289,7 +33062,7 @@ class SearchSearchItemTriggerABusEusbEopDatabits(SCPICmdRead):
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:EOP:DATABITS:SIZe`` command.
 
         **Description:**
-            - This command sets the number of EOP bits, in bytes, to be used when triggering on a
+            - This command sets the number of  EOP bits, in bytes, to be used when triggering on a
               eUSB bus signal. The trigger condition must be set to EOP. The search number is
               specified by x.
 
@@ -33927,7 +33700,7 @@ class SearchSearchItemTriggerABusEusbDatabitsSize(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATABITS:SIZe`` command.
 
     **Description:**
-        - This command sets the number of Sync bits, in bytes, to be used when triggering on a eUSB
+        - This command sets the number of  Sync bits, in bytes, to be used when triggering on a eUSB
           bus signal. The trigger condition must be set to SYNC. The search number is specified by
           x.
 
@@ -33976,7 +33749,7 @@ class SearchSearchItemTriggerABusEusbDatabits(SCPICmdRead):
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATABITS:SIZe`` command.
 
         **Description:**
-            - This command sets the number of Sync bits, in bytes, to be used when triggering on a
+            - This command sets the number of  Sync bits, in bytes, to be used when triggering on a
               eUSB bus signal. The trigger condition must be set to SYNC. The search number is
               specified by x.
 
@@ -46240,7 +46013,7 @@ class SearchSearchItemTriggerABusCphyWordcountValue(SCPICmdWrite, SCPICmdRead):
 
     **Description:**
         - This command specifies the word count data string used for CPHY triggering if the trigger
-          condition is on any rgb/ycbcr/yuv packet. The search number is specified by x.
+          condition is on any rgb/ycbcr/yuv  packet. The search number is specified by x.
 
     **Usage:**
         - Using the ``.query()`` method will send the
@@ -46292,7 +46065,8 @@ class SearchSearchItemTriggerABusCphyWordcount(SCPICmdRead):
 
         **Description:**
             - This command specifies the word count data string used for CPHY triggering if the
-              trigger condition is on any rgb/ycbcr/yuv packet. The search number is specified by x.
+              trigger condition is on any rgb/ycbcr/yuv  packet. The search number is specified by
+              x.
 
         **Usage:**
             - Using the ``.query()`` method will send the
@@ -54434,7 +54208,6 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
             - ``.maxwrite``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:MAXWRITe`` command tree.
             - ``.packets``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:PACKets`` command.
             - ``.saddress``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SADDress`` command tree.
-            - ``.sdr``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SDR`` command tree.
             - ``.statebyte``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATEBYTe`` command tree.
             - ``.static``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:STATic`` command tree.
             - ``.supportbyte``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I3C:SUPPORTBYTe`` command tree.

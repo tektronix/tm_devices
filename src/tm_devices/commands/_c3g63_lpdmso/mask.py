@@ -32,11 +32,17 @@ Commands and Queries:
     - MASK:MASK<x>:TESt:STATUS?
     - MASK:MASK<x>:TESt:THReshold <NR1>
     - MASK:MASK<x>:TESt:THReshold?
+    - MASK:MASK<x>:TOLerance:HABSolute <NR3>
+    - MASK:MASK<x>:TOLerance:HABSolute?
     - MASK:MASK<x>:TOLerance:HORizontal <NR3>
     - MASK:MASK<x>:TOLerance:HORizontal?
     - MASK:MASK<x>:TOLerance:UPDatenow
+    - MASK:MASK<x>:TOLerance:VABSolute <NR3>
+    - MASK:MASK<x>:TOLerance:VABSolute?
     - MASK:MASK<x>:TOLerance:VERTical <NR3>
     - MASK:MASK<x>:TOLerance:VERTical?
+    - MASK:MASK<x>:TTYPe {SCReen|ABSolute}
+    - MASK:MASK<x>:TTYPe?
     - MASK:TESt:WAVEforms <NR1>
     - MASK:TESt:WAVEforms?
 """
@@ -123,6 +129,41 @@ class MaskTest(SCPICmdRead):
         return self._waveforms
 
 
+class MaskMaskItemTtype(SCPICmdWrite, SCPICmdRead):
+    """The ``MASK:MASK<x>:TTYPe`` command.
+
+    **Description:**
+        - This command sets or queries the type of tolerance values used when defining a tolerance
+          mask.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MASK:MASK<x>:TTYPe?`` query.
+        - Using the ``.verify(value)`` method will send the ``MASK:MASK<x>:TTYPe?`` query and raise
+          an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MASK:MASK<x>:TTYPe value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MASK:MASK<x>:TTYPe {SCReen|ABSolute}
+        - MASK:MASK<x>:TTYPe?
+
+    **Info:**
+        - ``MASK<x>`` specifies the mask number.
+        - ``SCReen`` indicates that the horizontal and vertical mask tolerances are defined in
+          relative units of graticule divisions. There are always 10 horizontal divisions and 10
+          vertical divisions on the scope waveform display. When the tolerance type is SCReen, the
+          tolerance values set by the HORizontal and VERTical commands are used to define the
+          tolerance mask when an UPDatenow command is sent.
+        - ``ABSolute`` indicates that the horizontal and vertical mask tolerances are defined in the
+          absolute units of the mask source waveform. These units are normally seconds and volts
+          respectively. When the tolerance type is ABSolute, the tolerance values set by the
+          HABSolute and VABSolute commands are used to define the tolerance mask when an UPDatenow
+          command is sent.
+    """
+
+
 class MaskMaskItemToleranceVertical(SCPICmdWrite, SCPICmdRead):
     """The ``MASK:MASK<x>:TOLerance:VERTical`` command.
 
@@ -146,6 +187,36 @@ class MaskMaskItemToleranceVertical(SCPICmdWrite, SCPICmdRead):
     **Info:**
         - ``MASK<x>`` specifies the mask number.
         - ``<NR3>`` is the tolerance in units of graticule divisions. The maximum is 1 division.
+    """
+
+
+class MaskMaskItemToleranceVabsolute(SCPICmdWrite, SCPICmdRead):
+    """The ``MASK:MASK<x>:TOLerance:VABSolute`` command.
+
+    **Description:**
+        - This command sets or queries the mask vertical tolerance in absolute units of the mask
+          source (generally volts). This value is used when the mask TTYPe is set to ABSolute and
+          the UPDatenow command is sent.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MASK:MASK<x>:TOLerance:VABSolute?`` query.
+        - Using the ``.verify(value)`` method will send the ``MASK:MASK<x>:TOLerance:VABSolute?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``MASK:MASK<x>:TOLerance:VABSolute value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MASK:MASK<x>:TOLerance:VABSolute <NR3>
+        - MASK:MASK<x>:TOLerance:VABSolute?
+
+    **Info:**
+        - ``MASK<x>`` specifies the mask number.
+        - ``<NR3>`` is the tolerance in units of the mask source. Most traces in the waveform window
+          have vertical units of volts, but other units such as amps or degrees are possible. The
+          maximum value is the equivalent of one vertical graticule division.
     """
 
 
@@ -196,6 +267,35 @@ class MaskMaskItemToleranceHorizontal(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class MaskMaskItemToleranceHabsolute(SCPICmdWrite, SCPICmdRead):
+    """The ``MASK:MASK<x>:TOLerance:HABSolute`` command.
+
+    **Description:**
+        - This command sets or queries the mask horizontal tolerance in absolute units of seconds.
+          This value is used when the mask TTYPe is set to ABSolute and the UPDatenow command is
+          sent.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``MASK:MASK<x>:TOLerance:HABSolute?`` query.
+        - Using the ``.verify(value)`` method will send the ``MASK:MASK<x>:TOLerance:HABSolute?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``MASK:MASK<x>:TOLerance:HABSolute value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - MASK:MASK<x>:TOLerance:HABSolute <NR3>
+        - MASK:MASK<x>:TOLerance:HABSolute?
+
+    **Info:**
+        - ``MASK<x>`` specifies the mask number.
+        - ``<NR3>`` is the tolerance in units of seconds. The maximum time is the equivalent of one
+          horizontal graticule division.
+    """
+
+
 class MaskMaskItemTolerance(SCPICmdRead):
     """The ``MASK:MASK<x>:TOLerance`` command tree.
 
@@ -208,16 +308,52 @@ class MaskMaskItemTolerance(SCPICmdRead):
         - ``MASK<x>`` specifies the mask number.
 
     Properties:
+        - ``.habsolute``: The ``MASK:MASK<x>:TOLerance:HABSolute`` command.
         - ``.horizontal``: The ``MASK:MASK<x>:TOLerance:HORizontal`` command.
         - ``.updatenow``: The ``MASK:MASK<x>:TOLerance:UPDatenow`` command.
+        - ``.vabsolute``: The ``MASK:MASK<x>:TOLerance:VABSolute`` command.
         - ``.vertical``: The ``MASK:MASK<x>:TOLerance:VERTical`` command.
     """
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
+        self._habsolute = MaskMaskItemToleranceHabsolute(device, f"{self._cmd_syntax}:HABSolute")
         self._horizontal = MaskMaskItemToleranceHorizontal(device, f"{self._cmd_syntax}:HORizontal")
         self._updatenow = MaskMaskItemToleranceUpdatenow(device, f"{self._cmd_syntax}:UPDatenow")
+        self._vabsolute = MaskMaskItemToleranceVabsolute(device, f"{self._cmd_syntax}:VABSolute")
         self._vertical = MaskMaskItemToleranceVertical(device, f"{self._cmd_syntax}:VERTical")
+
+    @property
+    def habsolute(self) -> MaskMaskItemToleranceHabsolute:
+        """Return the ``MASK:MASK<x>:TOLerance:HABSolute`` command.
+
+        **Description:**
+            - This command sets or queries the mask horizontal tolerance in absolute units of
+              seconds. This value is used when the mask TTYPe is set to ABSolute and the UPDatenow
+              command is sent.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MASK:MASK<x>:TOLerance:HABSolute?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MASK:MASK<x>:TOLerance:HABSolute?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MASK:MASK<x>:TOLerance:HABSolute value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MASK:MASK<x>:TOLerance:HABSolute <NR3>
+            - MASK:MASK<x>:TOLerance:HABSolute?
+
+        **Info:**
+            - ``MASK<x>`` specifies the mask number.
+            - ``<NR3>`` is the tolerance in units of seconds. The maximum time is the equivalent of
+              one horizontal graticule division.
+        """
+        return self._habsolute
 
     @property
     def horizontal(self) -> MaskMaskItemToleranceHorizontal:
@@ -270,6 +406,39 @@ class MaskMaskItemTolerance(SCPICmdRead):
             - ``MASK<x>`` specifies the mask number.
         """
         return self._updatenow
+
+    @property
+    def vabsolute(self) -> MaskMaskItemToleranceVabsolute:
+        """Return the ``MASK:MASK<x>:TOLerance:VABSolute`` command.
+
+        **Description:**
+            - This command sets or queries the mask vertical tolerance in absolute units of the mask
+              source (generally volts). This value is used when the mask TTYPe is set to ABSolute
+              and the UPDatenow command is sent.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MASK:MASK<x>:TOLerance:VABSolute?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MASK:MASK<x>:TOLerance:VABSolute?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MASK:MASK<x>:TOLerance:VABSolute value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MASK:MASK<x>:TOLerance:VABSolute <NR3>
+            - MASK:MASK<x>:TOLerance:VABSolute?
+
+        **Info:**
+            - ``MASK<x>`` specifies the mask number.
+            - ``<NR3>`` is the tolerance in units of the mask source. Most traces in the waveform
+              window have vertical units of volts, but other units such as amps or degrees are
+              possible. The maximum value is the equivalent of one vertical graticule division.
+        """
+        return self._vabsolute
 
     @property
     def vertical(self) -> MaskMaskItemToleranceVertical:
@@ -890,6 +1059,7 @@ class MaskMaskItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.source``: The ``MASK:MASK<x>:SOUrce`` command.
         - ``.test``: The ``MASK:MASK<x>:TESt`` command tree.
         - ``.tolerance``: The ``MASK:MASK<x>:TOLerance`` command tree.
+        - ``.ttype``: The ``MASK:MASK<x>:TTYPe`` command.
     """
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
@@ -907,6 +1077,7 @@ class MaskMaskItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._source = MaskMaskItemSource(device, f"{self._cmd_syntax}:SOUrce")
         self._test = MaskMaskItemTest(device, f"{self._cmd_syntax}:TESt")
         self._tolerance = MaskMaskItemTolerance(device, f"{self._cmd_syntax}:TOLerance")
+        self._ttype = MaskMaskItemTtype(device, f"{self._cmd_syntax}:TTYPe")
 
     @property
     def count(self) -> MaskMaskItemCount:
@@ -1117,11 +1288,49 @@ class MaskMaskItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``MASK<x>`` specifies the mask number.
 
         Sub-properties:
+            - ``.habsolute``: The ``MASK:MASK<x>:TOLerance:HABSolute`` command.
             - ``.horizontal``: The ``MASK:MASK<x>:TOLerance:HORizontal`` command.
             - ``.updatenow``: The ``MASK:MASK<x>:TOLerance:UPDatenow`` command.
+            - ``.vabsolute``: The ``MASK:MASK<x>:TOLerance:VABSolute`` command.
             - ``.vertical``: The ``MASK:MASK<x>:TOLerance:VERTical`` command.
         """
         return self._tolerance
+
+    @property
+    def ttype(self) -> MaskMaskItemTtype:
+        """Return the ``MASK:MASK<x>:TTYPe`` command.
+
+        **Description:**
+            - This command sets or queries the type of tolerance values used when defining a
+              tolerance mask.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``MASK:MASK<x>:TTYPe?`` query.
+            - Using the ``.verify(value)`` method will send the ``MASK:MASK<x>:TTYPe?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``MASK:MASK<x>:TTYPe value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - MASK:MASK<x>:TTYPe {SCReen|ABSolute}
+            - MASK:MASK<x>:TTYPe?
+
+        **Info:**
+            - ``MASK<x>`` specifies the mask number.
+            - ``SCReen`` indicates that the horizontal and vertical mask tolerances are defined in
+              relative units of graticule divisions. There are always 10 horizontal divisions and 10
+              vertical divisions on the scope waveform display. When the tolerance type is SCReen,
+              the tolerance values set by the HORizontal and VERTical commands are used to define
+              the tolerance mask when an UPDatenow command is sent.
+            - ``ABSolute`` indicates that the horizontal and vertical mask tolerances are defined in
+              the absolute units of the mask source waveform. These units are normally seconds and
+              volts respectively. When the tolerance type is ABSolute, the tolerance values set by
+              the HABSolute and VABSolute commands are used to define the tolerance mask when an
+              UPDatenow command is sent.
+        """
+        return self._ttype
 
 
 class MaskDelete(SCPICmdWrite):
@@ -1209,6 +1418,7 @@ class Mask(SCPICmdRead):
             - ``.source``: The ``MASK:MASK<x>:SOUrce`` command.
             - ``.test``: The ``MASK:MASK<x>:TESt`` command tree.
             - ``.tolerance``: The ``MASK:MASK<x>:TOLerance`` command tree.
+            - ``.ttype``: The ``MASK:MASK<x>:TTYPe`` command.
         """
         return self._mask
 
