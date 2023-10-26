@@ -9,5 +9,4 @@ sphinx-tippy
 sphinx-togglebutton
 sphinxcontrib-jquery
 sphinxcontrib-mermaid
-sphinxcontrib-relative-link-corrector
 urllib3
