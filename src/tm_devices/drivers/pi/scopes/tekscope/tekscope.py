@@ -226,7 +226,6 @@ class TekScope(
         # These drive letter hosts are hard coded to the front and back usb ports.
         available_hosts = ["E:", "F:", "G:", "H:", "I:", "J:", "K:"]
         with self.temporary_verbose(False):
-            # Only going up to I to compensate for network mounts in CI
             original_dir = self.query(":FILESystem:CWD?")
             for working_dir in available_hosts:
                 self.write(f':FILESystem:CWD "{working_dir}"')
