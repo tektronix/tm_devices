@@ -63,6 +63,7 @@ exclude_patterns = [
 templates_path = ["_templates"]
 tls_verify = False
 nitpicky = False  # TODO: change this to `True`
+# FUTURE # toc_object_entries = False  # Setting this to `False` may help reduce build time/size
 # rst_prolog = """
 # .. role:: apisummarylabel
 # """
@@ -115,15 +116,16 @@ autoapi_options = [
     "imported-members",
     # "inherited-members",  # commenting this out significantly reduces documentation build time
 ]
+# This requires Graphviz to be installed, https://graphviz.org/
+if shutil.which("dot"):
+    autoapi_options.append("show-inheritance-diagram")
+
 autodoc_typehints = "both"
 autodoc_typehints_format = "short"
 autodoc_class_signature = "separated"
 autoapi_python_class_content = "class"
 autoclass_content = "class"
 autoapi_generate_api_docs = True
-# This requires Graphviz to be installed, https://graphviz.org/
-if shutil.which("dot"):
-    autoapi_options.append("show-inheritance-diagram")
 
 # -- Options for HTML output -------------------------------------------------
 # The theme to use for HTML and HTML Help pages.  See the documentation for
