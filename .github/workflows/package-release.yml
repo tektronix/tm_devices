@@ -64,14 +64,8 @@ jobs:
         with:
           ref: main  # Make sure to check out the latest commit on main, not the original commit that triggered the workflow
           fetch-depth: 0
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          # TODO: remove this step, currently there appears to be a bug in hynek/build-and-inspect-python-package, where it uses an outdated version of typing_extensions.
-          python-version: 3.11
-          check-latest: true
       - name: Build package
-        uses: hynek/build-and-inspect-python-package@v1.5
+        uses: hynek/build-and-inspect-python-package@v1.5.2
   upload-testpypi:
     name: Upload package to TestPyPI
     needs: [pypi-build]

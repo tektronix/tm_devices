@@ -31,12 +31,12 @@ copyright = f"2022, {author}"  # noqa: A001
 extensions = [
     "myst_parser",
     "autoapi.extension",
-    # "sphinx.ext.intersphinx",
+    # FUTURE # "sphinx.ext.intersphinx", # TODO: enable this
     "sphinx.ext.napoleon",
     # FUTURE # "sphinx.ext.viewcode", # TODO: enable this
     "sphinx.ext.extlinks",
-    # "sphinx.ext.autodoc",
-    # "sphinx.ext.autodoc.typehints",
+    # FUTURE # "sphinx.ext.autodoc", # TODO: enable this
+    # FUTURE # "sphinx.ext.autodoc.typehints", # TODO: enable this
     "sphinx.ext.coverage",
     "sphinx.ext.doctest",
     # FUTURE # "sphinx.ext.duration", # TODO: enable this
