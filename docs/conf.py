@@ -115,8 +115,7 @@ autoapi_options = [
     "imported-members",
     # "inherited-members",  # commenting this out significantly reduces documentation build time
 ]
-# This requires Graphviz to be installed, https://graphviz.org/
-# TODO: enable the inheritance diagrams
+# This requires Graphviz to be installed, https://graphviz.org/  # TODO: enable inheritance diagrams
 # FUTURE # if shutil.which("dot"):
 # FUTURE #     autoapi_options.append("show-inheritance-diagram")
 
@@ -134,7 +133,7 @@ html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
 html_css_files = ["theme_overrides.css"]
 html_theme_options = {
-    "navigation_depth": 4,
+    "navigation_depth": 2,
     "collapse_navigation": True,
 }
 intersphinx_mapping = {  # pylint: disable=consider-using-namedtuple-or-dataclass
@@ -152,7 +151,7 @@ coverage_ignore_modules = [
 ]
 
 # -- Options for MyST --------------------------------------------------------
-myst_heading_anchors = 4
+myst_heading_anchors = 2
 myst_enable_extensions = [
     "attrs_block",
     "attrs_inline",
