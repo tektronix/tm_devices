@@ -31,12 +31,12 @@ copyright = f"2022, {author}"  # noqa: A001
 extensions = [
     "myst_parser",
     "autoapi.extension",
-    "sphinx.ext.intersphinx",
+    # "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
     # FUTURE # "sphinx.ext.viewcode", # TODO: enable this
     "sphinx.ext.extlinks",
-    "sphinx.ext.autodoc",
-    "sphinx.ext.autodoc.typehints",
+    # "sphinx.ext.autodoc",
+    # "sphinx.ext.autodoc.typehints",
     "sphinx.ext.coverage",
     "sphinx.ext.doctest",
     # FUTURE # "sphinx.ext.duration", # TODO: enable this
@@ -110,7 +110,7 @@ autoapi_options = [
     "members",
     "undoc-members",
     "special_members",
-    "show-inheritance",
+    # "show-inheritance",
     "show-module-summary",
     "imported-members",
     # "inherited-members",  # commenting this out significantly reduces documentation build time
