@@ -65,7 +65,7 @@ jobs:
           ref: main  # Make sure to check out the latest commit on main, not the original commit that triggered the workflow
           fetch-depth: 0
       - name: Build package
-        uses: hynek/build-and-inspect-python-package@v1.5
+        uses: hynek/build-and-inspect-python-package@v1.5.3
   upload-testpypi:
     name: Upload package to TestPyPI
     needs: [pypi-build]
