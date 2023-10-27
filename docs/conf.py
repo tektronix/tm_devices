@@ -5,7 +5,6 @@ This file only contains a selection of the most common options. For a full list 
 documentation: https://www.sphinx-doc.org/en/master/usage/configuration.html
 """
 import os
-import shutil
 
 from importlib.metadata import metadata
 from typing import Any, List, Sequence
@@ -34,22 +33,22 @@ extensions = [
     "autoapi.extension",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
-    "sphinx.ext.viewcode",
+    # FUTURE # "sphinx.ext.viewcode", # TODO: enable this
     "sphinx.ext.extlinks",
     "sphinx.ext.autodoc",
     "sphinx.ext.autodoc.typehints",
     "sphinx.ext.coverage",
     "sphinx.ext.doctest",
-    "sphinx.ext.duration",
-    "sphinx.ext.todo",
-    "sphinx.ext.inheritance_diagram",
-    "sphinx.ext.graphviz",
+    # FUTURE # "sphinx.ext.duration", # TODO: enable this
+    # FUTURE # "sphinx.ext.todo",  # not required currently, enable later
+    # FUTURE # "sphinx.ext.inheritance_diagram", # TODO: enable this
+    # FUTURE # "sphinx.ext.graphviz", # TODO: enable this
     "sphinx.ext.githubpages",
-    "sphinxcontrib.jquery",
+    # FUTURE # "sphinxcontrib.jquery", # TODO: enable this
     "sphinxcontrib.mermaid",
-    "sphinx_togglebutton",
-    "sphinx_copybutton",
-    "sphinx_tippy",
+    # FUTURE # "sphinx_togglebutton", # TODO: enable this
+    # FUTURE # "sphinx_copybutton", # TODO: enable this
+    # FUTURE # "sphinx_tippy", # TODO: enable this
 ]
 
 # List of patterns, relative to source directory, that match files and
@@ -63,7 +62,7 @@ exclude_patterns = [
 templates_path = ["_templates"]
 tls_verify = False
 nitpicky = False  # TODO: change this to `True`
-# FUTURE # toc_object_entries = False  # Setting this to `False` may help reduce build time/size
+toc_object_entries = False  # Setting this to `False` may help reduce build time/size
 # rst_prolog = """
 # .. role:: apisummarylabel
 # """
@@ -117,8 +116,9 @@ autoapi_options = [
     # "inherited-members",  # commenting this out significantly reduces documentation build time
 ]
 # This requires Graphviz to be installed, https://graphviz.org/
-if shutil.which("dot"):
-    autoapi_options.append("show-inheritance-diagram")
+# TODO: enable the inheritance diagrams
+# FUTURE # if shutil.which("dot"):
+# FUTURE #     autoapi_options.append("show-inheritance-diagram")
 
 autodoc_typehints = "both"
 autodoc_typehints_format = "short"
