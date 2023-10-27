@@ -204,7 +204,14 @@ def skip_member(
     Returns:
         A boolean indicating if the member should be skipped.
     """
-    _package_set = {"tm_devices", "commands", "components", "driver_mixins", "drivers", "helpers"}
+    _package_set = {
+        "tm_devices",
+        # "commands",  # commented out to reduce build resource usage
+        "components",
+        "driver_mixins",
+        "drivers",
+        "helpers",
+    }
     _ = app
     _ = name
     _ = options
