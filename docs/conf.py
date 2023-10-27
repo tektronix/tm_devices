@@ -32,24 +32,24 @@ copyright = f"2022, {author}"  # noqa: A001
 extensions = [
     "myst_parser",
     "autoapi.extension",
-    # FUTURE # "sphinx.ext.intersphinx", # TODO: enable this
+    "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
-    # FUTURE # "sphinx.ext.viewcode", # TODO: enable this
+    "sphinx.ext.viewcode",
     "sphinx.ext.extlinks",
-    # FUTURE # "sphinx.ext.autodoc", # TODO: enable this
-    # FUTURE # "sphinx.ext.autodoc.typehints", # TODO: enable this
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autodoc.typehints",
     "sphinx.ext.coverage",
     "sphinx.ext.doctest",
-    # FUTURE # "sphinx.ext.duration", # TODO: enable this
-    # FUTURE # "sphinx.ext.todo",  # not required currently, enable later
-    # FUTURE # "sphinx.ext.inheritance_diagram", # TODO: enable this
-    # FUTURE # "sphinx.ext.graphviz", # TODO: enable this
+    "sphinx.ext.duration",
+    "sphinx.ext.todo",
+    # FUTURE # "sphinx.ext.inheritance_diagram",  # TODO: enable this
+    # FUTURE # "sphinx.ext.graphviz",  # TODO: enable this
     "sphinx.ext.githubpages",
-    # FUTURE # "sphinxcontrib.jquery", # TODO: enable this
+    "sphinxcontrib.jquery",
     "sphinxcontrib.mermaid",
-    # FUTURE # "sphinx_togglebutton", # TODO: enable this
-    # FUTURE # "sphinx_copybutton", # TODO: enable this
-    # FUTURE # "sphinx_tippy", # TODO: enable this
+    "sphinx_togglebutton",
+    "sphinx_copybutton",
+    "sphinx_tippy",
 ]
 
 # List of patterns, relative to source directory, that match files and
@@ -111,7 +111,7 @@ autoapi_options = [
     "members",
     "undoc-members",
     "special_members",
-    # "show-inheritance",
+    # FUTURE # "show-inheritance",  # TODO: enable this
     "show-module-summary",
     "imported-members",
     # "inherited-members",  # commenting this out significantly reduces documentation build time
@@ -153,7 +153,7 @@ coverage_ignore_modules = [
 ]
 
 # -- Options for MyST --------------------------------------------------------
-myst_heading_anchors = 3
+myst_heading_anchors = 4
 myst_enable_extensions = [
     "attrs_block",
     "attrs_inline",
