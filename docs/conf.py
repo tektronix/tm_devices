@@ -151,7 +151,7 @@ coverage_ignore_modules = [
 ]
 
 # -- Options for MyST --------------------------------------------------------
-myst_heading_anchors = 2
+myst_heading_anchors = 3
 myst_enable_extensions = [
     "attrs_block",
     "attrs_inline",
