@@ -18,8 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          # TODO: update to just "x", currently there appears to be a bug in hynek/build-and-inspect-python-package, where it uses an outdated version of typing_extensions.
-          python-version: 3.11
+          python-version: x
           check-latest: true
       - name: Install workflow dependencies
         run: pip install poetry-core tomli tomli_w requests
@@ -33,7 +32,7 @@ jobs:
           python scripts/project_version.py --set-version=$NEW_VERSION
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
       - name: Build package
-        uses: hynek/build-and-inspect-python-package@v1.5
+        uses: hynek/build-and-inspect-python-package@v1.5.3
     outputs:
       built-version: ${{ steps.create-version.outputs.NEW_VERSION }}
   test-pypi-upload:
