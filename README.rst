@@ -262,6 +262,12 @@ See the full documentation at `<https://tm-devices.readthedocs.io>`__
 Maintainers
 -----------
 
+Before reaching out to any maintainers directly, please first check if your issue or question is already
+covered by any `open issues <https://github.com/tektronix/tm_devices/issues>`__. If the issue or
+question you have is not already covered, please
+`file a new issue <https://github.com/tektronix/tm_devices/issues/new/choose>`__ and the
+maintainers will review and respond there.
+
 -  Tektronix opensource@tektronix.com
 -  Nicholas Felt nicholas.felt@tektronix.com
 
