@@ -10,16 +10,14 @@ from typing import Any, cast, List, Literal, Optional, Tuple, Type, Union
 
 import pyvisa as visa
 
-from tm_devices.commands import (
-    LPD6Commands,
-    MSO2Commands,
-    MSO4Commands,
-    MSO5BCommands,
-    MSO5Commands,
-    MSO5LPCommands,
-    MSO6BCommands,
-    MSO6Commands,
-)
+from tm_devices.commands._lpd6_commands import LPD6Commands
+from tm_devices.commands._mso2_commands import MSO2Commands
+from tm_devices.commands._mso4_commands import MSO4Commands
+from tm_devices.commands._mso5_commands import MSO5Commands
+from tm_devices.commands._mso5b_commands import MSO5BCommands
+from tm_devices.commands._mso5lp_commands import MSO5LPCommands
+from tm_devices.commands._mso6_commands import MSO6Commands
+from tm_devices.commands._mso6b_commands import MSO6BCommands
 from tm_devices.driver_mixins.analysis_object_mixins import (
     BusMixin,
     HistogramMixin,
