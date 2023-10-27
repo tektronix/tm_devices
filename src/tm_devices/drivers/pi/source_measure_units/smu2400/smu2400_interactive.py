@@ -4,12 +4,10 @@ from abc import ABC
 from functools import cached_property
 from typing import Tuple, Union
 
-from tm_devices.commands import (
-    SMU2450Commands,
-    SMU2460Commands,
-    SMU2461Commands,
-    SMU2470Commands,
-)
+from tm_devices.commands._smu2450_commands import SMU2450Commands
+from tm_devices.commands._smu2460_commands import SMU2460Commands
+from tm_devices.commands._smu2461_commands import SMU2461Commands
+from tm_devices.commands._smu2470_commands import SMU2470Commands
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi._ieee488_2_commands import LegacyTSPIEEE4882Commands
 from tm_devices.drivers.pi.source_measure_units.source_measure_unit import SourceMeasureUnit
