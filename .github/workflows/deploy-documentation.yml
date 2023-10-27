@@ -1,0 +1,39 @@
+---
+name: Deploy Docs to Github Pages
+on:
+  workflow_run:
+    branches: [main]
+    workflows: [Test docs]
+    types: [completed]
+concurrency:
+  group: publish-docs
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }} && github.ref ==
+      'refs/heads/main'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download Artifact
+        uses: dawidd6/action-download-artifact@v2.28.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          run_id: ${{ github.event.workflow_run.id }}
+          workflow_conclusion: success
+          name: artifact_docs
+      - name: Unzip Documentation Results
+        run: |
+          unzip docs_results.zip
+          rm -r docs_results/.results_docs/html/.doctrees
+      - name: Upload To Pages
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: docs_results/.results_docs/html
+      - name: Deploy To Pages
+        uses: actions/deploy-pages@v2
+        id: deployment

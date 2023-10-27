@@ -19,7 +19,7 @@
    * - Package
      - |PyPI: Package status| |PyPI: Latest release version| |PyPI: Supported Python versions| |PyPI: Downloads| |License: Apache 2.0| |Package build status| |PyPI upload status| |TestPyPI upload status|
    * - Documentation
-     - |Documentation status|
+     - |GitHub Pages status|
    * - Code Style
      - |Test style: pytest| |Code style: black| |Imports: isort| |Docstring style: google|
    * - Linting
@@ -55,8 +55,11 @@
 .. |pre-commit status| image:: https://results.pre-commit.ci/badge/github/tektronix/tm_devices/main.svg
    :target: https://results.pre-commit.ci/latest/github/tektronix/tm_devices/main
 
-.. |Documentation status| image:: https://readthedocs.org/projects/tm-devices/badge/?version=latest
+.. |ReadTheDocs status| image:: https://readthedocs.org/projects/tm-devices/badge/?version=latest
    :target: https://tm-devices.readthedocs.io/en/latest/?badge=latest
+
+.. |GitHub Pages status| image:: https://github.com/tektronix/tm_devices/actions/workflows/deploy-documentation.yml/badge.svg?branch=main
+   :target: https://github.com/tektronix/tm_devices/actions/workflows/deploy-documentation.yml
 
 .. |License: Apache 2.0| image:: https://img.shields.io/pypi/l/tm_devices
    :target: https://tinyurl.com/tek-tm-devices/LICENSE.md
@@ -257,7 +260,7 @@ Supported Connections
 Documentation
 -------------
 
-See the full documentation at `<https://tm-devices.readthedocs.io>`__
+See the full documentation at `<https://tektronix.github.io/tm_devices/>`__
 
 Maintainers
 -----------
