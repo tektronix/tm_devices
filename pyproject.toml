@@ -57,7 +57,7 @@ classifiers = [
   "Programming Language :: Python :: 3.12"  # TODO: remove this once poetry automatically adds it
 ]
 description = "Manage connections and interactions with Test & Measurement devices."
-documentation = "https://tm-devices.readthedocs.io/en/latest/"
+documentation = "https://tektronix.github.io/tm_devices/"
 homepage = "https://pypi.org/project/tm_devices/"
 keywords = [
   "REST API",
