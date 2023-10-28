@@ -31,24 +31,24 @@ copyright = f"2022, {author}"  # noqa: A001
 extensions = [
     "myst_parser",
     "autoapi.extension",
-    "sphinx.ext.intersphinx",
+    # FUTURE # "sphinx.ext.intersphinx",  # TODO: enable this
     "sphinx.ext.napoleon",
-    "sphinx.ext.viewcode",
+    # FUTURE # "sphinx.ext.viewcode",  # TODO: enable this
     "sphinx.ext.extlinks",
-    "sphinx.ext.autodoc",
-    "sphinx.ext.autodoc.typehints",
-    "sphinx.ext.coverage",
-    "sphinx.ext.doctest",
-    "sphinx.ext.duration",
-    "sphinx.ext.todo",
+    # FUTURE # "sphinx.ext.autodoc",  # TODO: enable this
+    # FUTURE # "sphinx.ext.autodoc.typehints",  # TODO: enable this
+    # FUTURE # "sphinx.ext.coverage",  # TODO: enable this -------------------------
+    # FUTURE # "sphinx.ext.doctest",  # TODO: enable this -------------------------
+    # FUTURE # "sphinx.ext.duration",  # TODO: enable this
+    # FUTURE # "sphinx.ext.todo",  # TODO: enable this
     # FUTURE # "sphinx.ext.inheritance_diagram",  # TODO: enable this
     # FUTURE # "sphinx.ext.graphviz",  # TODO: enable this
     "sphinx.ext.githubpages",
-    "sphinxcontrib.jquery",
+    # FUTURE # "sphinxcontrib.jquery",  # TODO: enable this
     "sphinxcontrib.mermaid",
-    "sphinx_togglebutton",
-    "sphinx_copybutton",
-    "sphinx_tippy",
+    # FUTURE # "sphinx_togglebutton",  # TODO: enable this
+    # FUTURE # "sphinx_copybutton",  # TODO: enable this
+    # FUTURE # "sphinx_tippy",  # TODO: enable this
 ]
 
 # List of patterns, relative to source directory, that match files and
@@ -62,6 +62,7 @@ exclude_patterns = [
 templates_path = ["_templates"]
 tls_verify = False
 nitpicky = False  # TODO: change this to `True`
+todo_include_todos = False
 toc_object_entries = False  # Setting this to `False` may help reduce build time/size
 # rst_prolog = """
 # .. role:: apisummarylabel
@@ -91,28 +92,23 @@ def prep_jinja_env(jinja_env: JinjaEnvironment) -> None:
     jinja_env.tests["contains"] = item_in_sequence  # pyright: ignore
 
 
-# FUTURE: # autoapi_prepare_jinja_env = prep_jinja_env
-# FUTURE: # autoapi_template_dir = "_templates/autoapi"
+autoapi_prepare_jinja_env = prep_jinja_env
+autoapi_template_dir = "_templates/autoapi"
 autoapi_root = "_autoapi"
 autoapi_keep_files = True
 autoapi_dirs = ["../src"]
-autoapi_member_order = "alphabetical"
-autodoc_member_order = "alphabetical"
+autoapi_member_order = "bysource"
+autodoc_member_order = "bysource"
 autoapi_ignore = [
     "*migrations*",
 ]
-autoapi_modules = {
-    "tm_devices": {
-        "prune": True,
-    }
-}
 autoapi_options = [
     "members",
-    "undoc-members",
-    "special_members",
+    # FUTURE # "undoc-members",  # TODO: enable this
+    # FUTURE # "special_members",  # TODO: enable this
     # FUTURE # "show-inheritance",  # TODO: enable this
-    "show-module-summary",
-    "imported-members",
+    # FUTURE # "show-module-summary",  # TODO: enable this
+    # FUTURE # "imported-members",  # TODO: enable this
     # "inherited-members",  # commenting this out significantly reduces documentation build time
 ]
 # This requires Graphviz to be installed, https://graphviz.org/  # TODO: enable inheritance diagrams
