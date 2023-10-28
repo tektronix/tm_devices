@@ -29,11 +29,11 @@ jobs:
       - name: Unzip Documentation Results
         run: |
           unzip docs_results.zip
-          rm -r docs_results/.results_docs/html/.doctrees
+          rm -r .results_docs/html/.doctrees
       - name: Upload To Pages
         uses: actions/upload-pages-artifact@v2
         with:
-          path: docs_results/.results_docs/html
+          path: .results_docs/html
       - name: Deploy To Pages
         uses: actions/deploy-pages@v2
         id: deployment
