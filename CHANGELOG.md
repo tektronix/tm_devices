@@ -18,6 +18,14 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v0.1.24 (2023-10-30)
+
+### Merged Pull Requests
+
+- fix: Build docs without parallelization to fix pop-up issues with sphinx-tippy ([#80](https://github.com/tektronix/tm_devices/issues/80))
+
 ### Fixed
 
 - Fixed the `tippy.js` pop-ups in the documentation
