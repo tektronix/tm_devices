@@ -18,6 +18,10 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- Fixed the `tippy.js` pop-ups in the documentation
+
 ______________________________________________________________________
 
 ## v0.1.23 (2023-10-30)
