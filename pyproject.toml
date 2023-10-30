@@ -75,7 +75,7 @@ maintainers = [
 name = "tm_devices"
 readme = "README.rst"
 repository = "https://github.com/tektronix/tm_devices"
-version = "0.1.22"
+version = "0.1.23"
 
 [tool.poetry.dependencies]
 gpib-ctypes = ">=0.3.0"
