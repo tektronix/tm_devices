@@ -13,7 +13,7 @@ concurrency:
 jobs:
   # Test building the docs (html, linkcheck, doctest, coverage)
   test-docs:
-    runs-on: ubuntu-latest-4-cores
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: 18  # The node version needs to stay in sync with .readthedocs.yml
       - run: npm install -g @mermaid-js/mermaid-cli
-      - run: sudo apt install --no-install-recommends --assume-yes graphviz
+      - run: brew install graphviz
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
