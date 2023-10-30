@@ -18,6 +18,21 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v0.1.23 (2023-10-30)
+
+### Merged Pull Requests
+
+- fix: Handle non-standard software versions with alpha characters in the last part of the version. ([#81](https://github.com/tektronix/tm_devices/issues/81))
+- docs: Updated the custom styling for the badge table in the readme to make sure the badges are spaced vertically properly. ([#79](https://github.com/tektronix/tm_devices/issues/79))
+- Update contribution guide and documentation publishing workflow ([#78](https://github.com/tektronix/tm_devices/issues/78))
+- docs: Added new workflow which can deploy the documentation to GitHub Pages ([#76](https://github.com/tektronix/tm_devices/issues/76))
+- Update version of GitHub action used to build the package ([#75](https://github.com/tektronix/tm_devices/issues/75))
+- fix: Update auto-generated command API files to fix various issues. ([#72](https://github.com/tektronix/tm_devices/issues/72))
+- fix: Remove outdated comment. ([#71](https://github.com/tektronix/tm_devices/issues/71))
+- ci: Update workflow name and add Python 3.12 classifier ([#70](https://github.com/tektronix/tm_devices/issues/70))
+
 ### Fixed
 
 - Updated the auto-generated commands for a handful of models to fix various issues
