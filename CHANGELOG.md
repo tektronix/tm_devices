@@ -21,6 +21,7 @@ Things to be included in the next release go here.
 ### Fixed
 
 - Updated the auto-generated commands for a handful of models to fix various issues
+- Updated the function responsible for converting version strings into `Version` objects to be able to handle software versions with non-standard formats.
 
 ______________________________________________________________________
 

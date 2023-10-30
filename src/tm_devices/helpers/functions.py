@@ -403,6 +403,7 @@ def get_version(version_string: str) -> Version:
         The Version object.
     """
     version_parts = version_string.split(".")
+    found_alpha = False
     try:
         version = Version(version_string)
     except InvalidVersion:
@@ -413,7 +414,14 @@ def get_version(version_string: str) -> Version:
                 version_string.replace("." + version_parts[-1], "+" + version_parts[-1])
             )
         else:
-            raise
+            output_str = ""
+            for char in version_parts[-1]:
+                if char.isalpha() and not found_alpha:
+                    output_str += "+" + char
+                    found_alpha = True
+                else:
+                    output_str += char
+            version = Version(version_string.replace(version_parts[-1], output_str))
     return version
 
 
