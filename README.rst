@@ -11,6 +11,7 @@
 
 .. list-table::
    :stub-columns: 1
+   :class: custom-badge-table
 
    * - Testing
      - |Code testing status| |Docs testing status| |Coverage status|

@@ -31,8 +31,9 @@ div.admonition.no-icon > .admonition-title {
 }
 
 /** Modify class that enables auto-wrap in tables */
-.wy-table-responsive table td, .wy-table-responsive table th {
+.custom-badge-table tbody td, .custom-badge-table tbody th, .custom-badge-table tbody td>p {
     white-space: inherit;
+    line-height: 1.5rem !important;
 }
 
 /** Fix admonition symbols */
