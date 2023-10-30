@@ -408,7 +408,9 @@ def test_detect_visa_resource_expression(
         ("1.2.3", Version("1.2.3")),
         ("1.265.301", Version("1.265.301")),
         ("1.2.3.abc", Version("1.2.3+abc")),
+        ("1.2.3.4abc", Version("1.2.3.4+abc")),
         ("1.20.345.abc", Version("1.20.345+abc")),
+        ("1.20.345.4abc123", Version("1.20.345.4+abc123")),
     ],
 )
 def test_get_version(version_string: str, expected_result: Version) -> None:
