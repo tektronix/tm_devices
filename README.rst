@@ -56,8 +56,8 @@
 .. |pre-commit status| image:: https://results.pre-commit.ci/badge/github/tektronix/tm_devices/main.svg
    :target: https://results.pre-commit.ci/latest/github/tektronix/tm_devices/main
 
-.. |ReadTheDocs status| image:: https://readthedocs.org/projects/tm-devices/badge/?version=latest
-   :target: https://tm-devices.readthedocs.io/en/latest/?badge=latest
+.. .. |ReadTheDocs status| image:: https://readthedocs.org/projects/tm-devices/badge/?version=latest
+..   :target: https://tm-devices.readthedocs.io/en/latest/?badge=latest
 
 .. |GitHub Pages status| image:: https://github.com/tektronix/tm_devices/actions/workflows/deploy-documentation.yml/badge.svg?branch=main
    :target: https://github.com/tektronix/tm_devices/actions/workflows/deploy-documentation.yml

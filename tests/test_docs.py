@@ -41,7 +41,6 @@ class TestDocs:  # pylint: disable=no-self-use
         """Test creating html documentation."""
         subprocess.check_call(shlex.split("make html"))  # noqa: S603
 
-    @pytest.mark.xfail(reason="package is not yet on pypi.org")
     @pytest.mark.order(2)
     def test_docs_linkcheck(self) -> None:
         """Run the linkcheck test for the documentation."""
