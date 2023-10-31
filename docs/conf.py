@@ -135,6 +135,7 @@ html_theme_options = {
     "navigation_depth": 4,
     "collapse_navigation": True,
 }
+html_favicon = "_static/favicon_readthedocs.png"
 intersphinx_mapping = {  # pylint: disable=consider-using-namedtuple-or-dataclass
     "python": ("https://docs.python.org/3/", None),
     "pyvisa": ("https://pyvisa.readthedocs.io/en/latest/", None),
