@@ -18,6 +18,10 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Removed
+
+- Removed some outdated and broken API files
+
 ______________________________________________________________________
 
 ## v0.1.24 (2023-10-30)
