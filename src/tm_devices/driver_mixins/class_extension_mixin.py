@@ -114,7 +114,7 @@ class ExtendableMixin:
 
         # Handle being called as @add_property() with parens.
         if method is None:
-            return wrap
+            return wrap  # pyright: ignore[reportUnknownVariableType]
 
         # called as @add_property without parens.
         return wrap(method)

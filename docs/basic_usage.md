@@ -17,6 +17,13 @@ This will print the available VISA devices to the console when run from a shell 
 
 ## Adding devices
 
+Configure device connections as needed using the
+[config file](configuration.md#config-file), an
+[environment variable](configuration.md#environment-variable), or
+via [Python code](configuration.md#python-code) (shown here). See the
+[Configuration guide](configuration.md) for more information on how to
+configure devices to connect with.
+
 ```{literalinclude} ../examples/miscellaneous/adding_devices.py
 ---
 language: python
@@ -35,9 +42,10 @@ language: python
 
 ## Adding devices with environment variables
 
-Configure device environment variables as needed using the config file or
-[Python](#adding-devices). See the [Configuration guide](configuration.md) for
-more information on how to do that.
+Device configuration information can be defined in an
+[environment variable](configuration.md#environment-variable), usually done
+outside the Python code for ease of automation
+(shown inside the Python code here for demonstration purposes).
 
 ```{literalinclude} ../examples/miscellaneous/adding_devices_with_env_var.py
 ---
@@ -148,6 +156,6 @@ In order to do this a few things will need to be created:
 ```{literalinclude} ../examples/miscellaneous/custom_device_driver_support.py
 ---
 language: python
-emphasize-lines: 9-14,21-23,26
+emphasize-lines: 7-12,19-21,28-30
 ---
 ```
