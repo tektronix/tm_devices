@@ -18,6 +18,9 @@ DAQ
 DMM
 : Digital Multimeter
 
+DPOJET
+:  A jitter, noise, timing, and eye diagram analysis tool for Tektronix Performance Digital Oscilloscopes
+
 LP
 : Low Profile
 
