@@ -164,8 +164,8 @@ Basic Script
        print(scope)
 
 
-Supported Devices
-~~~~~~~~~~~~~~~~~
+Supported Devices & Software Solutions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. admonition:: Legend
    :class: hint
@@ -194,33 +194,33 @@ Supported Devices
    | Control", "| Python API
    | Validation
    | Status"
-   :term:`AFGs <AFG>`, **AFG3000**, :term:`PI`, ✅, 🚧
+   :term:`AFGs <AFG>`, **AFG3000**, :term:`PI`, ✅,
    , **AFG31xxx**, :term:`PI`, ✅,
-   :term:`AWGs <AWG>`, **AWG5000**, :term:`PI`, ✅, 🚧
-   , **AWG5200**, :term:`PI`, ✅, 🚧
-   , **AWG7000**, :term:`PI`, ✅, 🚧
-   , **AWG70000**, :term:`PI`, ✅, 🚧
-   :term:`Scopes <Scope>`, **2 Series MSO**, :term:`PI`, ✅, 🚧
-   , **3 Series MDO**, :term:`PI`, ✅, 🚧
-   , **4 Series MSO**, :term:`PI`, ✅, 🚧
-   , **5 Series MSO**, :term:`PI`, ✅, 🚧
-   , **5 Series B MSO**, :term:`PI`, ✅, 🚧
-   , **5 Series MSO (LP)**, :term:`PI`, ✅, 🚧
-   , **6 Series MSO**, :term:`PI`, ✅, 🚧
-   , **6 Series B MSO**, :term:`PI`, ✅, 🚧
-   , **6 Series LPD**, :term:`PI`, ✅, 🚧
-   , **MSO2000/B**, :term:`PI`, ✅, 🚧
-   , **DPO2000/B**, :term:`PI`, ✅, 🚧
-   , **MDO3000**, :term:`PI`, ✅, 🚧
-   , **MDO4000/B/C**, :term:`PI`, ✅, 🚧
-   , **MSO4000/B**, :term:`PI`, ✅, 🚧
-   , **DPO4000/B**, :term:`PI`, ✅, 🚧
-   , **MSO5000/B**, :term:`PI`, ✅, 🚧
-   , **DPO5000/B**, :term:`PI`, ✅, 🚧
-   , **DPO7000/C**, :term:`PI`, ✅, 🚧
+   :term:`AWGs <AWG>`, **AWG5000**, :term:`PI`, ✅,
+   , **AWG5200**, :term:`PI`, ✅,
+   , **AWG7000**, :term:`PI`, ✅,
+   , **AWG70000**, :term:`PI`, ✅,
+   :term:`Scopes <Scope>`, **2 Series MSO**, :term:`PI`, ✅, ✅
+   , **3 Series MDO**, :term:`PI`, ✅,
+   , **4 Series MSO**, :term:`PI`, ✅, ✅
+   , **5 Series MSO**, :term:`PI`, ✅, ✅
+   , **5 Series B MSO**, :term:`PI`, ✅, ✅
+   , **5 Series MSO (LP)**, :term:`PI`, ✅, ✅
+   , **6 Series MSO**, :term:`PI`, ✅, ✅
+   , **6 Series B MSO**, :term:`PI`, ✅, ✅
+   , **6 Series LPD**, :term:`PI`, ✅, ✅
+   , **MSO2000/B**, :term:`PI`, ✅,
+   , **DPO2000/B**, :term:`PI`, ✅,
+   , **MDO3000**, :term:`PI`, ✅,
+   , **MDO4000/B/C**, :term:`PI`, ✅,
+   , **MSO4000/B**, :term:`PI`, ✅,
+   , **DPO4000/B**, :term:`PI`, ✅,
+   , **MSO5000/B**, :term:`PI`, ✅,
+   , **DPO5000/B**, :term:`PI`, ✅, ✅
+   , **DPO7000/C**, :term:`PI`, ✅, ✅
    , **DPO70000/C/D/DX/SX**, :term:`PI`, ✅, 🚧
    , **DSA70000/C/D**, :term:`PI`, ✅, 🚧
-   , **MSO70000/C/DX**, :term:`PI`, ✅, 🚧
+   , **MSO70000/C/DX**, :term:`PI`, ✅, ✅
    , **TSOVu**, :term:`PI`, ✅,
    , **TekScope**, :term:`PI`, ✅,
    :term:`PSUs <PSU>`, **2200**, :term:`PI`, ✅,
@@ -230,21 +230,37 @@ Supported Devices
    , **2280S**, :term:`PI`, ✅,
    , **2281S**, :term:`PI`, ✅,
    :term:`SMUs <SMU>`, **24xx Standard**, :term:`PI`, ✅,
-   , **24xx Interactive**, :term:`TSP`, ✅, 🚧
-   , **26xxB**, :term:`TSP`, ✅, 🚧
-   , **Model 2601B-PULSE**, :term:`TSP`, ✅, 🚧
+   , **24xx Interactive**, :term:`TSP`, ✅, ✅
+   , **26xxB**, :term:`TSP`, ✅, ✅
+   , **Model 2601B-PULSE**, :term:`TSP`, ✅,
    , **Model 2606B**, :term:`TSP`, ✅, 🚧
-   , **2651A**, :term:`TSP`, ✅, 🚧
-   , **2657A**, :term:`TSP`, ✅, 🚧
+   , **2651A**, :term:`TSP`, ✅,
+   , **2657A**, :term:`TSP`, ✅,
    , **6430 (electrometer)**, :term:`PI`, ✅,
    , **6514 (electrometer)**, :term:`PI`, ✅,
    , **6517B (electrometer)**, :term:`PI`, ✅,
    :term:`MTs <MT>`, **TMT4**, :term:`API`, ✅,
-   :term:`DMMs <DMM>`, **DMM6500**, :term:`TSP`, ✅, 🚧
-   , **DMM7510**, :term:`TSP`, ✅, 🚧
+   :term:`DMMs <DMM>`, **DMM6500**, :term:`TSP`, ✅,
+   , **DMM7510**, :term:`TSP`, ✅,
    , **DMM7512**, :term:`TSP`, ✅,
-   :term:`DAQs <DAQ>`, **DAQ6510**, :term:`TSP`, ✅, 🚧
-   :term:`SSs <SS>`, **3706A**, :term:`TSP`, ✅, 🚧
+   :term:`DAQs <DAQ>`, **DAQ6510**, :term:`TSP`, ✅,
+   :term:`SSs <SS>`, **3706A**, :term:`TSP`, ✅,
+
+.. csv-table:: Software Solution Support Levels
+   :name: software-solution-support-table
+   :align: center
+   :header-rows: 1
+   :widths: auto
+   :stub-columns: 1
+   :class: custom-table-center-cells device-support-table
+
+   "| Software
+   | Solution", "| Command
+   | Type", "| Basic
+   | Control", "| Python API
+   | Validation
+   | Status"
+   :term:`DPOJET`, :term:`PI`, ✅, ✅
 
 Supported Connections
 ~~~~~~~~~~~~~~~~~~~~~

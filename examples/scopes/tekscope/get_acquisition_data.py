@@ -43,6 +43,6 @@ with DeviceManager(verbose=True) as device_manager:
     # Get the measurements values
     scope.commands.acquire.state.write("ON")
 
-    if (response := int(scope.commands.opc.query())) == 1:
+    if int(scope.commands.opc.query()) == 1:
         scope.commands.measurement.meas[1].results.currentacq.mean.query()
         scope.commands.measurement.meas[2].results.currentacq.maximum.query()
