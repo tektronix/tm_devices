@@ -30,6 +30,16 @@ language: python
 ---
 ```
 
+## VISA backend selection
+
+The `DeviceManager` can be configured to use VISA backends from different VISA implementations.
+
+```{literalinclude} ../examples/miscellaneous/visa_connection_selectivity.py
+---
+language: python
+---
+```
+
 ## Alias usage
 
 Devices can be given custom alias names and can be referenced by that alias.
@@ -100,6 +110,28 @@ The same can be done for scope sessions, sessions are essentially a snapshot of
 the current state of our scope.
 
 ```{literalinclude} ../examples/scopes/tekscope/basic_save_recall.py
+---
+language: python
+---
+```
+
+## Configuring a measurement on a single sequence
+
+A scope can be configured for a measurement on a single acquisition by setting the appropriate acquisition parameters
+and adding the desired measurement on the selected channel.
+
+```{literalinclude} ../examples/scopes/tekscope/get_acquisition_data.py
+---
+language: python
+---
+```
+
+## Adding DPOJET measurements and plots
+
+DPOJET measurements and plots can be added on a DPO70KSX/C/7KC/DPO5KB scope.
+Measurements report can be saved in a `.pdf` format.
+
+```{literalinclude} ../examples/scopes/tekscope_70k/dpojet/adding_dpojet_measurements.py
 ---
 language: python
 ---
