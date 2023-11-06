@@ -1,5 +1,4 @@
 """An example of adding dpojet measurements and plots."""
-
 from tm_devices import DeviceManager
 from tm_devices.drivers import MSO70KDX
 from tm_devices.helpers import PYVISA_PY_BACKEND
@@ -24,13 +23,13 @@ with DeviceManager(verbose=True) as device_manager:
     # CLear all measurements
     scope.commands.dpojet.clearallmeas.write()
 
-    # Add few DPOJET measurements
+    # Add a few DPOJET measurements
     scope.commands.dpojet.addmeas.write("Period")
     scope.commands.dpojet.addmeas.write("Pduty")
     scope.commands.dpojet.addmeas.write("RiseTime")
     scope.commands.dpojet.addmeas.write("acrms")
 
-    # Add few DPOJET plots for these measurements
+    # Add a few DPOJET plots for the measurements
     scope.commands.dpojet.addplot.write("spectrum, MEAS1")
     scope.commands.dpojet.addplot.write("dataarray, MEAS2")
     scope.commands.dpojet.addplot.write("TimeTrend, MEAS3")
