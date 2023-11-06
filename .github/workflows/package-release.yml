@@ -28,7 +28,7 @@ jobs:
       id-token: write
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
@@ -61,12 +61,12 @@ jobs:
     if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: main  # Make sure to check out the latest commit on main, not the original commit that triggered the workflow
           fetch-depth: 0
       - name: Build package
-        uses: hynek/build-and-inspect-python-package@v1.5.3
+        uses: hynek/build-and-inspect-python-package@v1.5.4
   upload-testpypi:
     name: Upload package to TestPyPI
     needs: [pypi-build]
@@ -82,7 +82,7 @@ jobs:
           name: Packages
           path: dist
       - name: Upload package to Test PyPI
-        uses: pypa/gh-action-pypi-publish@v1.8.8
+        uses: pypa/gh-action-pypi-publish@v1.8.10
         with:
           repository-url: https://test.pypi.org/legacy/
   upload-pypi:
@@ -100,7 +100,7 @@ jobs:
           name: Packages
           path: dist
       - name: Upload package to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.8.8
+        uses: pypa/gh-action-pypi-publish@v1.8.10
   upload-github:
     name: Upload package to GitHub Release
     needs: [upload-pypi]
@@ -110,7 +110,7 @@ jobs:
       id-token: write
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: main  # Make sure to check out the latest commit on main, not the original commit that triggered the workflow
           fetch-depth: 0
