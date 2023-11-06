@@ -18,6 +18,16 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Added
+
+- New examples added to the basic usage guide showing how to use the commands for some scope drivers
+- Added an example showing how to change the VISA backend that is used for connecting to devices
+- Added a new support table in the Readme showing the API support for Software Solutions
+
+### Changed
+
+- Updated the support level tables in the Readme
+
 ### Removed
 
 - Removed some outdated and broken API files
