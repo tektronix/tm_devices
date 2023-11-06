@@ -1,7 +1,6 @@
 ---
 name: Pull Request Dependency Review
 on:
-  push:
   pull_request:
     branches: [main]
 permissions:
