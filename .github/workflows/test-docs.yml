@@ -19,8 +19,8 @@ jobs:
       matrix:
         tox_env: [docs, doctests]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 18  # The node version needs to stay in sync with .readthedocs.yml
       - run: npm install -g @mermaid-js/mermaid-cli
@@ -35,7 +35,7 @@ jobs:
           python -m pip install --upgrade tox
       - name: Test
         run: tox -ve ${{ matrix.tox_env }}
-      - uses: thedoctor0/zip-release@0.7.1
+      - uses: thedoctor0/zip-release@0.7.6
         if: ${{ !cancelled() }}
         with:
           type: zip
