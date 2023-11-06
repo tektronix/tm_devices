@@ -14,4 +14,4 @@ jobs:
       - uses: actions/dependency-review-action@v3
         with:
           fail-on-severity: low
-          comment-summary-in-pr: failure
+          comment-summary-in-pr: on-failure
