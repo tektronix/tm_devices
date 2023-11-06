@@ -4,7 +4,10 @@ updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: monthly
+      interval: weekly
+    groups:
+      gh-actions-dependencies:
+        patterns: ['*']
     labels: [gh-actions, dependencies]
     commit-message:
       prefix: gh-actions
@@ -12,7 +15,10 @@ updates:
   - package-ecosystem: pip
     directory: /
     schedule:
-      interval: monthly
+      interval: weekly
+    groups:
+      python-dependencies:
+        patterns: ['*']
     labels: [python, dependencies]
     commit-message:
       prefix: python-deps
