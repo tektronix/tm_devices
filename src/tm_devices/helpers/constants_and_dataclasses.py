@@ -110,7 +110,8 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
     flow_control: Optional[FlowControl] = None
     """Optional[FlowControl]: Control for pausing/resuming data stream between slower devices.
 
-    One of ``SerialConfig.FlowControl.[none|xon_xoff|dtr_dsr|rts_cts]``."""
+    One of ``SerialConfig.FlowControl.[none|xon_xoff|dtr_dsr|rts_cts]``.
+    """
     parity: Optional[Parity] = None
     """Optional[Parity]: Parity adds a checksum bit to each data character.
      Checksum bit enables the target device to determine whether the data was received correctly.

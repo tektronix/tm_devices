@@ -285,11 +285,12 @@ Maintainers
 Before reaching out to any maintainers directly, please first check if your issue or question is already
 covered by any `open issues <https://github.com/tektronix/tm_devices/issues>`__. If the issue or
 question you have is not already covered, please
-`file a new issue <https://github.com/tektronix/tm_devices/issues/new/choose>`__ and the
+`file a new issue <https://github.com/tektronix/tm_devices/issues/new/choose>`__ or
+start a `discussion <https://github.com/tektronix/tm_devices/discussions>`__ and the
 maintainers will review and respond there.
 
--  Tektronix opensource@tektronix.com
--  Nicholas Felt nicholas.felt@tektronix.com
+-  tmdevicessupport@tektronix.com - For technical support and questions.
+-  opensource@tektronix.com - For open-source policy and license questions.
 
 Contributing
 ------------
