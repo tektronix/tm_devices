@@ -23,6 +23,8 @@ Things to be included in the next release go here.
 - New examples added to the basic usage guide showing how to use the commands for some scope drivers
 - Added an example showing how to change the VISA backend that is used for connecting to devices
 - Added a new support table in the Readme showing the API support for Software Solutions
+- Added an option to bypass SSL certificate verification for RESTful API devices
+- Added an option to allow URL redirects for RESTful API devices
 
 ### Changed
 
