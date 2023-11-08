@@ -44,7 +44,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     del scope.hostname
 
     # Assert 5 series device was added and aliased properly (USB)
-    assert scope.hostname == "MSO56"
+    assert scope.hostname == "MSO56"  # pyright: ignore[reportUnknownMemberType]
     assert id(device_manager.get_scope(number_or_alias="mso56")) == id(scope)
     assert id(device_manager.get_scope(number_or_alias=scope.device_number)) == id(scope)
     assert scope.all_channel_names_list == ("CH1", "CH2", "CH3", "CH4", "CH5", "CH6")
