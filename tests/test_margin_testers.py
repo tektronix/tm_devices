@@ -69,8 +69,8 @@ def test_margin_tester(tmt4: MarginTester, device_manager: DeviceManager) -> Non
         del tmt4.fpga_version
     # should be same as mocked version
     assert tmt4.sw_version == Version("1.0.0.0")
-    assert tmt4.fw_version == Version("1.0.0.1")
-    assert tmt4.fpga_version == Version("1")
+    assert tmt4.fw_version == Version("1.0.0.1")  # pyright: ignore[reportUnknownMemberType]
+    assert tmt4.fpga_version == Version("1")  # pyright: ignore[reportUnknownMemberType]
     assert tmt4.manufacturer == "UNIT_TEST manufacturer"
     assert tmt4.model == "UNIT_TEST model"
     assert tmt4.serial == "UNIT_TEST serialNumber"
