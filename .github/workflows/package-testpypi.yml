@@ -68,7 +68,7 @@ jobs:
         # A retry is used to allow for some downtime before the package is installable
         uses: nick-fields/retry@v2
         with:
-          timeout_minutes: 2
+          timeout_minutes: 10
           max_attempts: 5
           retry_wait_seconds: 30
           warning_on_retry: false
