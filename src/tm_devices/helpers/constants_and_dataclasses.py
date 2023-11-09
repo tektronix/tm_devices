@@ -637,6 +637,9 @@ USB_MODEL_ID_LOOKUP: Final[Mapping[str, USBTMCConfiguration]] = MappingProxyType
         SupportedModels.AWG70KB.value: USBTMCConfiguration(
             vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0503"
         ),
+        SupportedModels.SS3706A.value: USBTMCConfiguration(
+            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x3706"
+        ),
     }
 )
 """Dict[str, tm_devices.helpers.USBTMCConfiguration]: Mapping of model USBTMC info."""
