@@ -25,6 +25,7 @@ Things to be included in the next release go here.
 - Added a new support table in the Readme showing the API support for Software Solutions
 - Added an option to bypass SSL certificate verification for RESTful API devices
 - Added an option to allow URL redirects for RESTful API devices
+- Added the 3706a to the list of supported usb devices
 
 ### Changed
 
