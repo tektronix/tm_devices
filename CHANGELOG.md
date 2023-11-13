@@ -18,6 +18,25 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v1.0.0 (2023-11-13)
+
+### Merged Pull Requests
+
+- docs: Remove the TestPyPI badge from the readme, it is not important. ([#105](https://github.com/tektronix/tm_devices/issues/105))
+- Update the Readme ([#100](https://github.com/tektronix/tm_devices/issues/100))
+- ci: Increase timeout when installing tm_devices from pypi servers to avoid issues caused by long wheel build times for packages that tm_devices depends on (such as zeroconf). ([#98](https://github.com/tektronix/tm_devices/issues/98))
+- feat: Add USBTMC support for the 3706A device. ([#97](https://github.com/tektronix/tm_devices/issues/97))
+- Add new options for REST API devices ([#96](https://github.com/tektronix/tm_devices/issues/96))
+- ci: Update how the changelog generation macro selects PR numbers. ([#95](https://github.com/tektronix/tm_devices/issues/95))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 5 updates ([#93](https://github.com/tektronix/tm_devices/issues/93))
+- ci: Added a workflow to scan for security issues in dependencies on all PRs. ([#91](https://github.com/tektronix/tm_devices/issues/91))
+- fix: Update a few comments to have better wording. ([#85](https://github.com/tektronix/tm_devices/issues/85))
+- Update the basic usage docs and Readme ([#84](https://github.com/tektronix/tm_devices/issues/84))
+- docs: Update basic usage with better wording for examples. ([#83](https://github.com/tektronix/tm_devices/issues/83))
+- refactor: Removed some API files that are no longer needed (outdated/broken) ([#82](https://github.com/tektronix/tm_devices/issues/82))
+
 ### Added
 
 - New examples added to the basic usage guide showing how to use the commands for some scope drivers
