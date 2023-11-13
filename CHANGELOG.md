@@ -18,6 +18,10 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Changed
+
+- Updated the package classifiers for PyPI
+
 ______________________________________________________________________
 
 ## v1.0.0 (2023-11-13)
