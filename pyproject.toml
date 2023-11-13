@@ -47,14 +47,13 @@ authors = [
   "Nicholas Felt <nicholas.felt@tektronix.com>"
 ]
 classifiers = [
-  "Development Status :: 4 - Beta",
+  "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Developers",
   "Intended Audience :: Science/Research",
   "Operating System :: OS Independent",
   "Topic :: Scientific/Engineering :: Interface Engine/Protocol Translator",
   "Topic :: Scientific/Engineering",
-  "Topic :: System :: Hardware :: Hardware Drivers",
-  "Programming Language :: Python :: 3.12"  # TODO: remove this once poetry automatically adds it
+  "Topic :: System :: Hardware :: Hardware Drivers"
 ]
 description = "Manage connections and interactions with Test & Measurement devices."
 documentation = "https://tektronix.github.io/tm_devices/"
