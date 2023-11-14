@@ -18,6 +18,10 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added an option to send raw data for RESTful API devices
+
 ### Changed
 
 - Updated the package classifiers for PyPI
