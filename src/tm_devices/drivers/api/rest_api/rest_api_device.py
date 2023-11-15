@@ -140,7 +140,8 @@ class RESTAPIDevice(APIDevice, ABC):
     def patch(  # noqa: PLR0913
         self,
         url: str,
-        json_body: Dict[str, Any],
+        json_body: Optional[Dict[str, Any]] = None,
+        data_body: Optional[str] = None,
         headers: Optional[Mapping[str, str]] = None,
         auth: Optional[Tuple[str, str]] = None,
         timeout: Optional[float] = None,
@@ -154,7 +155,11 @@ class RESTAPIDevice(APIDevice, ABC):
 
         Args:
             url: The url to PATCH.
-            json_body: Any data to send to the url.
+            json_body: Any data to serialize and send to the url.
+                The "Content-Type" header is set to "application/json".
+            data_body: Any raw data to send to the url. "Content-Type" must be set manually.
+                The data is not serialized. WARNING: IF DATA IS PASSED USING THIS ARGUMENT
+                THEN ANY DATA PASSED USING THE ``json_body`` ARGUMENT WILL BE IGNORED.
             headers: The headers to use during the request.
             auth: A tuple containing the username and password to use in the request.
             timeout: How many seconds to wait for the server to send data before giving up.
@@ -172,6 +177,7 @@ class RESTAPIDevice(APIDevice, ABC):
             SupportedRequestTypes.PATCH,
             url,
             json_body=json_body,
+            data_body=data_body,
             headers=headers,
             auth=auth,
             timeout=timeout,
@@ -187,6 +193,7 @@ class RESTAPIDevice(APIDevice, ABC):
         self,
         url: str,
         json_body: Optional[Dict[str, Any]] = None,
+        data_body: Optional[str] = None,
         headers: Optional[Mapping[str, str]] = None,
         auth: Optional[Tuple[str, str]] = None,
         timeout: Optional[float] = None,
@@ -200,7 +207,11 @@ class RESTAPIDevice(APIDevice, ABC):
 
         Args:
             url: The url to POST.
-            json_body: Any data to send to the url.
+            json_body: Any data to serialize and send to the url.
+                The "Content-Type" header is set to "application/json".
+            data_body: Any raw data to send to the url. "Content-Type" must be set manually.
+                The data is not serialized. WARNING: IF DATA IS PASSED USING THIS ARGUMENT
+                THEN ANY DATA PASSED USING THE ``json_body`` ARGUMENT WILL BE IGNORED.
             headers: The headers to use during the request.
             auth: A tuple containing the username and password to use in the request.
             timeout: How many seconds to wait for the server to send data before giving up.
@@ -218,6 +229,7 @@ class RESTAPIDevice(APIDevice, ABC):
             SupportedRequestTypes.POST,
             url,
             json_body=json_body,
+            data_body=data_body,
             headers=headers,
             auth=auth,
             timeout=timeout,
@@ -232,7 +244,8 @@ class RESTAPIDevice(APIDevice, ABC):
     def put(  # noqa: PLR0913
         self,
         url: str,
-        json_body: Dict[str, Any],
+        json_body: Optional[Dict[str, Any]] = None,
+        data_body: Optional[str] = None,
         headers: Optional[Mapping[str, str]] = None,
         auth: Optional[Tuple[str, str]] = None,
         timeout: Optional[float] = None,
@@ -246,7 +259,11 @@ class RESTAPIDevice(APIDevice, ABC):
 
         Args:
             url: The url to PUT.
-            json_body: Any data to send to the url.
+            json_body: Any data to serialize and send to the url.
+                The "Content-Type" header is set to "application/json".
+            data_body: Any raw data to send to the url. "Content-Type" must be set manually.
+                The data is not serialized. WARNING: IF DATA IS PASSED USING THIS ARGUMENT
+                THEN ANY DATA PASSED USING THE ``json_body`` ARGUMENT WILL BE IGNORED.
             headers: The headers to use during the request.
             auth: A tuple containing the username and password to use in the request.
             timeout: How many seconds to wait for the server to send data before giving up.
@@ -264,6 +281,7 @@ class RESTAPIDevice(APIDevice, ABC):
             SupportedRequestTypes.PUT,
             url,
             json_body=json_body,
+            data_body=data_body,
             headers=headers,
             auth=auth,
             timeout=timeout,
@@ -362,6 +380,7 @@ class RESTAPIDevice(APIDevice, ABC):
         request_type: SupportedRequestTypes,
         url: str,
         json_body: Optional[Dict[str, Any]] = None,
+        data_body: Optional[str] = None,
         headers: Optional[Mapping[str, str]] = None,
         auth: Optional[Tuple[str, str]] = None,
         timeout: Optional[float] = None,
@@ -376,7 +395,11 @@ class RESTAPIDevice(APIDevice, ABC):
         Args:
             request_type: The type of request to send.
             url: The url to use.
-            json_body: Any data to send to the url.
+            json_body: Any data to serialize and send to the url.
+                The "Content-Type" header is set to "application/json".
+            data_body: Any raw data to send to the url. "Content-Type" must be set manually.
+                The data is not serialized. WARNING: IF DATA IS PASSED USING THIS ARGUMENT
+                THEN ANY DATA PASSED USING THE ``json_body`` ARGUMENT WILL BE IGNORED.
             headers: The headers to use during the request.
             auth: A tuple containing the username and password to use in the request.
             timeout: How many seconds to wait for the server to send data before giving up.
@@ -435,6 +458,7 @@ class RESTAPIDevice(APIDevice, ABC):
                     headers=headers,
                     auth=auth,
                     json=json_body,
+                    data=data_body,
                     timeout=timeout,
                     verify=verify_ssl,
                     allow_redirects=allow_redirects,
@@ -445,6 +469,7 @@ class RESTAPIDevice(APIDevice, ABC):
                     headers=headers,
                     auth=auth,
                     json=json_body,
+                    data=data_body,
                     timeout=timeout,
                     verify=verify_ssl,
                     allow_redirects=allow_redirects,
@@ -455,6 +480,7 @@ class RESTAPIDevice(APIDevice, ABC):
                     headers=headers,
                     auth=auth,
                     json=json_body,
+                    data=data_body,
                     timeout=timeout,
                     verify=verify_ssl,
                     allow_redirects=allow_redirects,
