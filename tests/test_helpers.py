@@ -2,12 +2,11 @@
 """Tests for the helpers subpackage."""
 import datetime
 import socket
-import subprocess
 
 from collections import OrderedDict
 from contextlib import redirect_stdout
 from io import StringIO
-from subprocess import CalledProcessError
+from subprocess import CalledProcessError, SubprocessError
 from typing import Any, Dict, Optional, Tuple
 from unittest import mock
 
@@ -363,43 +362,50 @@ def test_get_visa_backend() -> None:
         ),
     }
 
-    with mock.patch(
-        "tm_devices.helpers.functions._get_system_visa_info",
-        mock.MagicMock(return_value=testing_system_details),
-    ):
-        assert get_visa_backend("tests/sim_devices/devices.yaml") == "PyVISA-sim"
-        assert get_visa_backend("py") == "PyVISA-py"
-        assert get_visa_backend("C:\\WINDOWS\\system32\\visa32.dll") == "NI-VISA"
-        assert get_visa_backend("C:\\WINDOWS\\system32\\visa.dll") == "Custom Vendor VISA"
-        assert get_visa_backend("nothing") == ""
-
-    with mock.patch(
-        "platform.system",
-        mock.MagicMock(return_value="darwin"),
-    ):
+    try:
         _get_system_visa_info.cache_clear()
         with mock.patch(
-            "subprocess.check_output",
-            mock.MagicMock(return_value=b"System Integrity Protection status: enabled."),
-        ):
-            assert get_visa_backend("tests/sim_devices/devices.yaml") == ""
-            assert get_visa_backend("py") == "PyVISA-py"
-
-        _get_system_visa_info.cache_clear()
-        with mock.patch(
-            "subprocess.check_output",
-            mock.MagicMock(return_value=b"System Integrity Protection status: disabled."),
+            "pyvisa.util.get_system_details",
+            mock.MagicMock(return_value=testing_system_details),
+        ), mock.patch(
+            "platform.system",
+            mock.MagicMock(return_value="windows"),
         ):
             assert get_visa_backend("tests/sim_devices/devices.yaml") == "PyVISA-sim"
             assert get_visa_backend("py") == "PyVISA-py"
+            assert get_visa_backend("C:\\WINDOWS\\system32\\visa32.dll") == "NI-VISA"
+            assert get_visa_backend("C:\\WINDOWS\\system32\\visa.dll") == "Custom Vendor VISA"
+            assert get_visa_backend("nothing") == ""
 
-        _get_system_visa_info.cache_clear()
         with mock.patch(
-            "subprocess.check_output",
-            mock.MagicMock(side_effect=subprocess.SubprocessError()),
+            "platform.system",
+            mock.MagicMock(return_value="darwin"),
         ):
-            assert get_visa_backend("tests/sim_devices/devices.yaml") == "PyVISA-sim"
-            assert get_visa_backend("py") == "PyVISA-py"
+            _get_system_visa_info.cache_clear()
+            with mock.patch(
+                "subprocess.check_output",
+                mock.MagicMock(return_value=b"System Integrity Protection status: enabled."),
+            ):
+                assert get_visa_backend("tests/sim_devices/devices.yaml") == ""
+                assert get_visa_backend("py") == "PyVISA-py"
+
+            _get_system_visa_info.cache_clear()
+            with mock.patch(
+                "subprocess.check_output",
+                mock.MagicMock(return_value=b"System Integrity Protection status: disabled."),
+            ):
+                assert get_visa_backend("tests/sim_devices/devices.yaml") == "PyVISA-sim"
+                assert get_visa_backend("py") == "PyVISA-py"
+
+            _get_system_visa_info.cache_clear()
+            with mock.patch(
+                "subprocess.check_output",
+                mock.MagicMock(side_effect=SubprocessError()),
+            ):
+                assert get_visa_backend("tests/sim_devices/devices.yaml") == "PyVISA-sim"
+                assert get_visa_backend("py") == "PyVISA-py"
+    finally:
+        _get_system_visa_info.cache_clear()
 
 
 @pytest.mark.parametrize(
