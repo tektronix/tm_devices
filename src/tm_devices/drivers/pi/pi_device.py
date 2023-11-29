@@ -30,7 +30,7 @@ from tm_devices.helpers import (
 from tm_devices.helpers.constants_and_dataclasses import UNIT_TEST_TIMEOUT
 
 
-# pylint: disable=too-many-instance-attributes,too-many-public-methods
+# pylint: disable=too-many-public-methods
 class PIDevice(Device, ABC):
     """Base Programmable Interface (PI) device driver."""
 
@@ -64,7 +64,6 @@ class PIDevice(Device, ABC):
         elif self._visa_library_path.endswith(".yaml"):  # pragma: no cover
             # Mark this as a simulated VISA backend
             self._visa_library_path += "@sim"
-        self._visa_backend = self._get_visa_backend()
         # Use a default timeout of 30 seconds, if running unit tests use a smaller amount.
         self._default_visa_timeout = (
             30000
@@ -160,11 +159,6 @@ class PIDevice(Device, ABC):
         return self._resource_expression
 
     @property
-    def visa_backend(self) -> str:
-        """Return the VISA backend in use."""
-        return self._visa_backend
-
-    @property
     def visa_timeout(self) -> float:
         """Return the current VISA timeout of the device in milliseconds."""
         return self._visa_resource.timeout
@@ -236,6 +230,11 @@ class PIDevice(Device, ABC):
             The series of the device, e.g. MSO5, TSOVu, TEKSCOPE, AFG3K, AWG5200
         """
         return get_model_series(self.model)
+
+    @cached_property
+    def visa_backend(self) -> str:
+        """Return the VISA backend in use."""
+        return get_visa_backend(self._visa_resource.visalib.library_path.path)
 
     ################################################################################################
     # Context Manager Methods
@@ -818,14 +817,6 @@ class PIDevice(Device, ABC):
         self._visa_resource.close()
         self._visa_resource = None  # type: ignore
         self._is_open = False
-
-    def _get_visa_backend(self) -> str:
-        """Determine what the VISA backend is for this device.
-
-        Returns:
-            A string containing the VISA backend.
-        """
-        return get_visa_backend(self._visa_resource.visalib.library_path.path)
 
     def _has_errors(self) -> bool:
         """Check if the device has any errors.
