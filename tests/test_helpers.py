@@ -5,9 +5,8 @@ import socket
 
 from collections import OrderedDict
 from contextlib import redirect_stdout
-from copy import deepcopy
 from io import StringIO
-from subprocess import CalledProcessError
+from subprocess import CalledProcessError, SubprocessError
 from typing import Any, Dict, Optional, Tuple
 from unittest import mock
 
@@ -309,9 +308,9 @@ def test_check_for_update(capsys: pytest.CaptureFixture[str]) -> None:
 
 def test_get_visa_backend() -> None:
     """Verify that the VISA backend can be determined properly."""
-    import tm_devices.helpers.functions  # pylint: disable=import-outside-toplevel
-
-    old_system_details = deepcopy(tm_devices.helpers.functions._VISA_SYSTEM_DETAILS)  # noqa: SLF001
+    from tm_devices.helpers.functions import (  # pylint: disable=import-outside-toplevel
+        _get_system_visa_info,
+    )
 
     testing_system_details: Dict[Any, Any] = {
         "pyvisa": "1.12.0",
@@ -363,18 +362,50 @@ def test_get_visa_backend() -> None:
         ),
     }
 
-    # Modify the constant for testing purposes
-    tm_devices.helpers.functions._VISA_SYSTEM_DETAILS = testing_system_details  # noqa: SLF001
-
     try:
-        assert get_visa_backend("tests/sim_devices/devices.yaml") == "PyVISA-sim"
-        assert get_visa_backend("py") == "PyVISA-py"
-        assert get_visa_backend("C:\\WINDOWS\\system32\\visa32.dll") == "NI-VISA"
-        assert get_visa_backend("C:\\WINDOWS\\system32\\visa.dll") == "Custom Vendor VISA"
-        assert get_visa_backend("nothing") == ""
+        _get_system_visa_info.cache_clear()
+        with mock.patch(
+            "pyvisa.util.get_system_details",
+            mock.MagicMock(return_value=testing_system_details),
+        ), mock.patch(
+            "platform.system",
+            mock.MagicMock(return_value="windows"),
+        ):
+            assert get_visa_backend("tests/sim_devices/devices.yaml") == "PyVISA-sim"
+            assert get_visa_backend("py") == "PyVISA-py"
+            assert get_visa_backend("C:\\WINDOWS\\system32\\visa32.dll") == "NI-VISA"
+            assert get_visa_backend("C:\\WINDOWS\\system32\\visa.dll") == "Custom Vendor VISA"
+            assert get_visa_backend("nothing") == ""
+
+        with mock.patch(
+            "platform.system",
+            mock.MagicMock(return_value="darwin"),
+        ):
+            _get_system_visa_info.cache_clear()
+            with mock.patch(
+                "subprocess.check_output",
+                mock.MagicMock(return_value=b"System Integrity Protection status: enabled."),
+            ):
+                assert get_visa_backend("tests/sim_devices/devices.yaml") == ""
+                assert get_visa_backend("py") == "PyVISA-py"
+
+            _get_system_visa_info.cache_clear()
+            with mock.patch(
+                "subprocess.check_output",
+                mock.MagicMock(return_value=b"System Integrity Protection status: disabled."),
+            ):
+                assert get_visa_backend("tests/sim_devices/devices.yaml") == "PyVISA-sim"
+                assert get_visa_backend("py") == "PyVISA-py"
+
+            _get_system_visa_info.cache_clear()
+            with mock.patch(
+                "subprocess.check_output",
+                mock.MagicMock(side_effect=SubprocessError()),
+            ):
+                assert get_visa_backend("tests/sim_devices/devices.yaml") == "PyVISA-sim"
+                assert get_visa_backend("py") == "PyVISA-py"
     finally:
-        # Reset the constant
-        tm_devices.helpers.functions._VISA_SYSTEM_DETAILS = old_system_details  # noqa: SLF001
+        _get_system_visa_info.cache_clear()
 
 
 @pytest.mark.parametrize(

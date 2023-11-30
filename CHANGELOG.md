@@ -26,6 +26,10 @@ Things to be included in the next release go here.
 
 - Updated the package classifiers for PyPI
 
+### Fixed
+
+- Fixed a crash observed on macOS when importing `tm_devices`, issue [#108](https://github.com/tektronix/tm_devices/issues/108)
+
 ______________________________________________________________________
 
 ## v1.0.0 (2023-11-13)

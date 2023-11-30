@@ -339,7 +339,7 @@ class DMConfigParser:
         retval: List[Dict[str, Any]] = []
         msg: List[str] = []
         for dev_entry in devices_str_list:
-            temp_dict = {}
+            temp_dict: Dict[str, Any] = {}
             for dev_arg in dev_entry.split(","):
                 try:
                     dev_key, dev_val = dev_arg.split("=", 1)
