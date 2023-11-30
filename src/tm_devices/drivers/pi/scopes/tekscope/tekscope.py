@@ -6,7 +6,7 @@ from abc import ABC
 from dataclasses import dataclass
 from functools import cached_property
 from types import MappingProxyType
-from typing import Any, cast, List, Literal, Optional, Tuple, Type, Union
+from typing import Any, cast, Dict, List, Literal, Optional, Tuple, Type, Union
 
 import pyvisa as visa
 
@@ -125,7 +125,7 @@ class TekScope(
     def channel(self) -> "MappingProxyType[str, TekScopeChannel]":
         """Mapping of channel names to any detectable properties, attributes, and settings."""
         # TODO: overwrite in MSO2 driver, would remove need for try-except
-        channel_map = {}
+        channel_map: Dict[str, TekScopeChannel] = {}
 
         with self.temporary_verbose(False) and self.temporary_visa_timeout(
             500 if not bool(os.environ.get("TM_DEVICES_UNIT_TESTS_RUNNING")) else UNIT_TEST_TIMEOUT
