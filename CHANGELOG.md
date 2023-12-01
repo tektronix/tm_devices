@@ -18,6 +18,16 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v1.0.1 (2023-12-01)
+
+### Merged Pull Requests
+
+- Fix import error on mac with system integrity protection ([#109](https://github.com/tektronix/tm_devices/issues/109))
+- feat(rest_api_device): Enable sending raw data for restful api devices. ([#107](https://github.com/tektronix/tm_devices/issues/107))
+- build: Update package classifiers. ([#106](https://github.com/tektronix/tm_devices/issues/106))
+
 ### Added
 
 - Added an option to send raw data for RESTful API devices
