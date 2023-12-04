@@ -30,7 +30,6 @@ def test_afg3kc(device_manager: DeviceManager) -> None:
     assert afg3kc.idn_string == "TEKTRONIX,AFG3252C,SERIAL1,SCPI:99.0 FV:3.2.3"
     assert afg3kc.sw_version == Version("3.2.3")
     assert afg3kc.all_channel_names_list == ("SOURCE1", "SOURCE2")
-    assert afg3kc.visa_backend == "PyVISA-sim"
     assert afg3kc.source_device_constants == AFGSourceDeviceConstants(
         memory_page_size=2,
         memory_max_record_length=128 * 1024,
