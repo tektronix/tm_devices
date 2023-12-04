@@ -15,4 +15,4 @@ jobs:
           # public_repo and read:org permissions. It also needs to be from an account that is
           # part of the tektronix GitHub organization.
           repo-token: ${{ secrets.ASSIGN_REVIEWERS_TOKEN }}
-          teams: tm-devices-maintainers
+          teams: tm-devices-maintainers,tm-devices-admin
