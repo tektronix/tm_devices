@@ -15,12 +15,20 @@ on:
 concurrency:
   group: pypi
 jobs:
+  print-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create summary of workflow inputs
+        run: |
+          echo "### inputs" >> $GITHUB_STEP_SUMMARY
+          echo "- release_level: ${{ inputs.release_level }}" >> $GITHUB_STEP_SUMMARY
   # This job requires a Personal Access Token (Classic) with
   # the public_repo permission. It also needs a private/public
   # ssh key pair that can be used for signing. The public key must
   # be attached to the account as an SSH signing key.
   pypi-version:
     name: Update package version
+    needs: [print-inputs]
     if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: package-release-gate
@@ -82,7 +90,7 @@ jobs:
           name: Packages
           path: dist
       - name: Upload package to Test PyPI
-        uses: pypa/gh-action-pypi-publish@v1.8.10
+        uses: pypa/gh-action-pypi-publish@v1.8.11
         with:
           repository-url: https://test.pypi.org/legacy/
   upload-pypi:
@@ -100,7 +108,7 @@ jobs:
           name: Packages
           path: dist
       - name: Upload package to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.8.10
+        uses: pypa/gh-action-pypi-publish@v1.8.11
   upload-github:
     name: Upload package to GitHub Release
     needs: [upload-pypi]

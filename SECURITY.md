@@ -8,5 +8,5 @@
 
 ## Reporting a Vulnerability
 
-Please reach out directly to the maintainers to report a
+Please reach out directly to the maintainers at tmdevicessupport@tektronix.com to report a
 potential vulnerability. **Do not file a public issue.**
