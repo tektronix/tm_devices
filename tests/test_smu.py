@@ -150,7 +150,7 @@ def test_smu(  # noqa: PLR0915
     sw_version=<Version('3.3.5')>
     total_channels=1
     verbose=True
-    visa_backend='PyVISA-sim'
+    visa_backend='{smu.visa_backend}'
     visa_resource=<'TCPIPInstrument'('TCPIP0::SMU2601B-HOSTNAME::inst0::INSTR')>
     visa_timeout={UNIT_TEST_TIMEOUT}
 {'=' * (97 + (1 if smu.device_number >= 10 else 0))}
