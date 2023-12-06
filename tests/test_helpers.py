@@ -308,7 +308,8 @@ def test_check_for_update(capsys: pytest.CaptureFixture[str]) -> None:
 
 def test_get_visa_backend() -> None:
     """Verify that the VISA backend can be determined properly."""
-    from tm_devices.helpers.functions import (  # pylint: disable=import-outside-toplevel
+    # pylint: disable=import-outside-toplevel,import-private-name,useless-suppression
+    from tm_devices.helpers.functions import (
         _get_system_visa_info,
     )
 

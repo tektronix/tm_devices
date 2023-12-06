@@ -40,6 +40,7 @@ from ._mso2_commands import MSO2CommandConstants, MSO2Commands, MSO2Mixin
 from ._mso2k_commands import MSO2KCommandConstants, MSO2KCommands, MSO2KMixin
 from ._mso2kb_commands import MSO2KBCommandConstants, MSO2KBCommands, MSO2KBMixin
 from ._mso4_commands import MSO4CommandConstants, MSO4Commands, MSO4Mixin
+from ._mso4b_commands import MSO4BCommandConstants, MSO4BCommands, MSO4BMixin
 from ._mso4k_commands import MSO4KCommandConstants, MSO4KCommands, MSO4KMixin
 from ._mso4kb_commands import MSO4KBCommandConstants, MSO4KBCommands, MSO4KBMixin
 from ._mso5_commands import MSO5CommandConstants, MSO5Commands, MSO5Mixin
@@ -176,6 +177,9 @@ __all__ = [
     "MSO2KCommands",
     "MSO2KMixin",
     "MSO2Mixin",
+    "MSO4BCommandConstants",
+    "MSO4BCommands",
+    "MSO4BMixin",
     "MSO4CommandConstants",
     "MSO4Commands",
     "MSO4KBCommandConstants",

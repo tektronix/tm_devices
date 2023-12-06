@@ -120,6 +120,7 @@ class SupportedModels(CustomStrEnum):
     LPD6 = "LPD6"
     MSO2 = "MSO2"
     MSO4 = "MSO4"
+    MSO4B = "MSO4B"
     MSO5 = "MSO5"
     MSO5B = "MSO5B"
     MSO5LP = "MSO5LP"
