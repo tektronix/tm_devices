@@ -1,4 +1,2 @@
 ---
-addReviewers: true
 addAssignees: author
-reviewers: [tektronix/tm-devices-maintainers]
