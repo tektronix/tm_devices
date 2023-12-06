@@ -135,6 +135,12 @@ resources:
   TCPIP::MSO44-HOSTNAME::INSTR:
     device: mso44
     filename: scope/mso4.yaml
+  TCPIP::MSO44B-HOSTNAME::INSTR:
+    device: mso44b
+    filename: scope/mso4b.yaml
+  USB0::0x0699::0x0527::200201::INSTR:
+    device: mso44b
+    filename: scope/mso4b.yaml
   #   mso5
   USB0::0x0699::0x0522::SERIAL1::INSTR:
     device: mso56

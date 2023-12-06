@@ -36,6 +36,7 @@ def test_all_device_drivers(
         ("SCOPE", "MSO22-HOSTNAME", None, None, None),
         ("SCOPE", "MSO56-SERIAL1", None, "USB", None),
         ("SCOPE", "MSO44-HOSTNAME", None, None, None),
+        ("SCOPE", "MSO44B-HOSTNAME", None, None, None),
         ("SCOPE", "MSO58B-HOSTNAME", None, None, None),
         ("SCOPE", "MSO58LP-HOSTNAME", None, None, None),
         ("SCOPE", "LPD64-HOSTNAME", None, None, None),
