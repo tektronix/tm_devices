@@ -18,6 +18,18 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v1.1.0 (2023-12-07)
+
+### Merged Pull Requests
+
+- feat: Added support for MSO4B device ([#115](https://github.com/tektronix/tm_devices/issues/115))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 1 update ([#112](https://github.com/tektronix/tm_devices/issues/112))
+- test: Update tests to try to eliminate false failures when running tests on macOS. ([#114](https://github.com/tektronix/tm_devices/issues/114))
+- ci: Add the admin team as reviewers to all Pull Requests. ([#113](https://github.com/tektronix/tm_devices/issues/113))
+- Update config docs and release workflow ([#111](https://github.com/tektronix/tm_devices/issues/111))
+
 ### Added
 
 - Added support for MSO4B device.
