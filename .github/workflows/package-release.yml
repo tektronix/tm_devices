@@ -41,7 +41,7 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: x
           check-latest: true
@@ -51,7 +51,7 @@ jobs:
           git add python_semantic_release_templates
           git config --global tag.gpgSign true
       - name: Python Semantic Release
-        uses: python-semantic-release/python-semantic-release@v8.2.0  # 8.3.0 has a bug in the version output variable
+        uses: python-semantic-release/python-semantic-release@v8.5.0
         id: release
         with:
           force: ${{ inputs.release_level }}
@@ -150,7 +150,7 @@ jobs:
           - ' --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple'
     steps:
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: x
           check-latest: true
