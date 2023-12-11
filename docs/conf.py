@@ -211,8 +211,7 @@ def skip_member(
     if (
         what == "module"  # pylint: disable=too-many-boolean-expressions
         or (
-            what == "package"
-            and obj.short_name not in _package_set  # pyright: ignore [reportUnknownMemberType]
+            what == "package" and obj.short_name not in _package_set  # pyright: ignore [reportUnknownMemberType]
         )
         or f"{os.path.sep}commands{os.path.sep}" in obj.pathname
         or obj.pathname.endswith(f"{os.path.sep}commands")

@@ -79,9 +79,7 @@ def fixture_device_manager() -> Generator[DeviceManager, None, None]:
     ), mock.patch(
         "pyvisa.resources.messagebased.MessageBasedResource.clear",
         mock.MagicMock(return_value=pyvisa.constants.StatusCode.success),
-    ), DeviceManager(
-        verbose=True
-    ) as dev_manager:
+    ), DeviceManager(verbose=True) as dev_manager:
         dev_manager.visa_library = SIMULATED_VISA_LIB
         yield dev_manager
 
