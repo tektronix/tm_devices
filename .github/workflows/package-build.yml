@@ -19,7 +19,7 @@ jobs:
       - uses: hynek/build-and-inspect-python-package@v1.5.4
         id: build-pkg
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: x  # any version
           check-latest: true
