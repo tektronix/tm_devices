@@ -124,8 +124,18 @@ def test_afg31k(device_manager: DeviceManager, capsys: pytest.CaptureFixture[str
     afg31k = device_manager.add_afg("afg31k-hostname")
 
     _ = capsys.readouterr().out  # throw away stdout
+
+    # Check hostname
+    assert afg31k.hostname == "AFG31K-HOSTNAME"
+    # Change hostname to test the reset of cached properties
+    afg31k.hostname = "temp-hostname"
+    assert afg31k.hostname == "temp-hostname"
+
     # simulate a reboot
     afg31k.reboot()
+
+    # Test that the cached property was reset
+    assert afg31k.hostname == "AFG31K-HOSTNAME"
 
     stdout = capsys.readouterr().out
     assert "SYSTem:RESTart" in stdout

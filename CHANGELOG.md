@@ -18,6 +18,10 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added a step during a device reboot that will reset all the cached properties in the event that one of them changed.
+
 ### Changed
 
 - Switched to ruff's formatter instead of black's formatter for python code
