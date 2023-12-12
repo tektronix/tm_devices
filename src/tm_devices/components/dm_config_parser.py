@@ -356,7 +356,7 @@ class DMConfigParser:
 
     @staticmethod
     def __parse_config_file(
-        config_file_path: Union[str, os.PathLike[str]]
+        config_file_path: Union[str, os.PathLike[str]],
     ) -> Tuple[DMConfigOptions, List[Dict[str, Any]]]:
         """Parse config file for the options flags and list of device configuration dictionaries.
 

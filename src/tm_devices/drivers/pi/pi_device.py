@@ -281,13 +281,15 @@ class PIDevice(Device, ABC):
     def disable_srq_events(self) -> None:  # pragma: no cover
         """Disable the service request event for the device."""
         self._visa_resource.disable_event(
-            visa_constants.VI_EVENT_SERVICE_REQ, visa_constants.VI_QUEUE  # type: ignore
+            visa_constants.VI_EVENT_SERVICE_REQ,  # type: ignore
+            visa_constants.VI_QUEUE,  # type: ignore
         )
 
     def enable_srq_events(self) -> None:  # pragma: no cover
         """Enable the service request event for the device."""
         self._visa_resource.enable_event(
-            visa_constants.VI_EVENT_SERVICE_REQ, visa_constants.VI_QUEUE  # type: ignore
+            visa_constants.VI_EVENT_SERVICE_REQ,  # type: ignore
+            visa_constants.VI_QUEUE,  # type: ignore
         )
 
     def get_visa_stb(self) -> int:  # pragma: no cover

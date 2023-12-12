@@ -1,8 +1,7 @@
-black
 coverage[toml]>=7.2.2
 http_server_mock
 pytest-cov
 pytest-html
 pytest-order
 pytest-profiling
-ruff>=0.0.267
+ruff>=0.1.7

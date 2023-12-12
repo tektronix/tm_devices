@@ -78,7 +78,8 @@ with DeviceManager(verbose=True) as dm:
     inst.commands.trigger.model.setblock_trigger_block_wait(3, "trigger.EVENT_TIMER1")
     inst.commands.trigger.model.setblock_trigger_block_config_recall(4, "OutputList")
     inst.commands.trigger.model.setblock_trigger_block_delay_constant(
-        5, MEASURE_DELAY  # type: ignore
+        5,
+        MEASURE_DELAY,  # type: ignore
     )
     inst.commands.trigger.model.setblock_trigger_block_measure_digitize(6)
     inst.commands.trigger.model.setblock_trigger_block_wait(7, "trigger.EVENT_TIMER2")
