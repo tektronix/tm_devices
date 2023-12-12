@@ -3,7 +3,7 @@ import socket
 import time
 
 from abc import ABC, abstractmethod
-from contextlib import contextmanager
+from contextlib import contextmanager, suppress
 from functools import cached_property
 from typing import (
     Any,
@@ -89,13 +89,9 @@ class Device(ExtendableMixin, ABC):
         retval = f"{'=' * (line_break_length // 2)} {self.name} {'=' * (line_break_length // 2)}\n"
         retval += f"  {self.__class__} object at {id(self)}"
 
-        for prop in [
-            p
-            for p in dir(self.__class__)
-            if isinstance(getattr(self.__class__, p), (cached_property, property))
-            and not p.startswith("_")
-        ]:
-            retval += f"\n    {prop}={self.__getattribute__(prop)!r}"
+        for prop in self._get_self_properties():
+            if not prop.startswith("_"):
+                retval += f"\n    {prop}={self.__getattribute__(prop)!r}"
 
         retval += f"\n{'=' * (line_break_length + 2 + len(self.name))}"
         return retval
@@ -472,6 +468,16 @@ class Device(ExtendableMixin, ABC):
         Returns:
             A boolean representing the status of the reboot.
         """
+        # Reset the cached properties
+        for prop in self._get_self_properties():
+            if isinstance(getattr(self.__class__, prop), cached_property):
+                # Try to delete the cached_property, if it raises an AttributeError,
+                # that means that it has not previously been accessed and
+                # there is no need to delete the cached_property.
+                with suppress(AttributeError):
+                    self.__delattr__(prop)  # pylint: disable=unnecessary-dunder-call
+
+        # Reboot the device
         print_with_timestamp(f"Rebooting {self._name_and_alias}")
         self._reboot()
         self.close()
@@ -676,6 +682,14 @@ class Device(ExtendableMixin, ABC):
     ################################################################################################
     # Private Methods
     ################################################################################################
+
+    def _get_self_properties(self) -> Tuple[str, ...]:
+        """Get a complete list of all the properties of the device."""
+        return tuple(
+            p
+            for p in dir(self.__class__)
+            if isinstance(getattr(self.__class__, p), (cached_property, property))
+        )
 
     @staticmethod
     @final
