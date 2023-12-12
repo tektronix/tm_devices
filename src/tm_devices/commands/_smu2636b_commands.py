@@ -2134,7 +2134,9 @@ class SMU2636BCommands:
                 f"PulseIMeasureV({smu}, {bias}, {level}, {ton}, {toff}, {points})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``PulseIMeasureV()`` function."  # noqa: E501
+            msg = (
+                "No TSPDevice object was provided, unable to run the ``PulseIMeasureV()`` function."
+            )
             raise NoDeviceProvidedError(msg) from error
 
     def pulse_v_measure_i(
@@ -2168,7 +2170,9 @@ class SMU2636BCommands:
                 f"PulseVMeasureI({smu}, {bias}, {level}, {ton}, {toff}, {points})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``PulseVMeasureI()`` function."  # noqa: E501
+            msg = (
+                "No TSPDevice object was provided, unable to run the ``PulseVMeasureI()`` function."
+            )
             raise NoDeviceProvidedError(msg) from error
 
     def query_pulse_config(self, tag: int) -> str:

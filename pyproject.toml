@@ -4,15 +4,6 @@ requires = ["poetry-core>=1.0.0"]
 
 [tool]
 
-[tool.bandit]
-skips = [
-  'B101',  # allow the use of raw asserts, we don't compile to optimized byte code
-  'B404'  # allow the use of the subprocess module
-]
-
-[tool.black]
-line-length = 100
-
 [tool.coverage.report]
 exclude_lines = [
   "if TYPE_CHECKING:",
@@ -37,9 +28,6 @@ in-place = true
 recursive = true
 wrap-descriptions = 100
 wrap-summaries = 0
-
-[tool.mypy]
-mypy_path = "./src/"
 
 [tool.poetry]
 authors = [
@@ -100,7 +88,6 @@ zeroconf = ">=0.54.0"
 
 # Development dependencies
 [tool.poetry.group.dev.dependencies]
-black = ">=22.6.0"
 coverage = {extras = ["toml"], version = ">=7.2.2"}
 docformatter = {extras = ["tomli"], version = ">=1.6.5,<1.7.1"}  # upper bound is due to https://github.com/PyCQA/docformatter/issues/174
 flask = ">=2.2.2"
@@ -123,7 +110,7 @@ pytest-html = ">=4.0"
 pytest-order = ">=1.0.1"
 pytest-profiling = ">=1.7.0"
 python-semantic-release = ">=8.0"
-ruff = ">=0.1.4"
+ruff = ">=0.1.7"
 safety = ">=2.1.1"
 sphinx-autoapi = ">=2.0.0"
 sphinx-copybutton = ">=0.5.1"
@@ -288,6 +275,7 @@ ignore = [
   "FA100",  # Missing `from __future__ import annotations`, but uses ...  # TODO: enable this later
   "FBT",  # flake8-boolean-trap
   "FIX002",  # Line contains TODO
+  "ISC001",  # single-line-implicit-string-concatenation (handled by formatter)
   "PGH003",  # Use specific rule codes when ignoring type issues  # TODO: enable this later
   "PTH",  # flake8-use-pathlib  # TODO: enable this later
   "PYI021",  # Docstrings should not be included in stubs
@@ -416,13 +404,13 @@ deps =
 setenv =
     DOC_PYTHON_VERSION = python3.11  # Keep this in sync with .readthedocs.yml and any CI scripts
     # Skip pre-commit checks that are explicitly performed by tox
-    SKIP = black,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma
+    SKIP = ruff-format,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma
     PYRIGHT_PYTHON_GLOBAL_NODE = False  # This will cause python-pyright to use nodeenv to install node rather than use the system node
 commands_pre =
     poetry install --no-root
 commands =
     !tests: safety check
-    !tests: black --check --diff --color .
+    !tests: ruff format --check --diff .
     !tests: docformatter --check --diff .
     !tests: ruff check .
     !tests: pylint --report=y .

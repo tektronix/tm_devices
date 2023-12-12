@@ -18,6 +18,10 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Changed
+
+- Switched to ruff's formatter instead of black's formatter for python code
+
 ______________________________________________________________________
 
 ## v1.1.0 (2023-12-07)

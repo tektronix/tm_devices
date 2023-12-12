@@ -353,7 +353,8 @@ class Device(ABC, metaclass=abc.ABCMeta):
                 [  # noqa: S603
                     sys.executable,
                     "-m",
-                    "black",
+                    "ruff",
+                    "format",
                     "--quiet",
                     os.path.basename(generated_stub_file),
                 ]
