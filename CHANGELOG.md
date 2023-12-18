@@ -25,6 +25,7 @@ Things to be included in the next release go here.
 ### Changed
 
 - Switched to ruff's formatter instead of black's formatter for python code
+- Updated the version of `python-semantic-release` that is used to avoid needing to store a copy of the previous changelog in the repo
 
 ______________________________________________________________________
 

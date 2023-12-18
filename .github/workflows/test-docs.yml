@@ -41,7 +41,7 @@ jobs:
           type: zip
           filename: ${{ matrix.tox_env }}_results.zip
           path: .results_${{ matrix.tox_env }}/
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: artifact_${{ matrix.tox_env }}
