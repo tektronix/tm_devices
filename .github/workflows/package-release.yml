@@ -48,10 +48,9 @@ jobs:
       - name: Check for unreleased entries in the Changelog and copy files to templates
         run: |
           python scripts/check_unreleased_changelog_items.py
-          git add python_semantic_release_templates
           git config --global tag.gpgSign true
       - name: Python Semantic Release
-        uses: python-semantic-release/python-semantic-release@v8.5.0
+        uses: python-semantic-release/python-semantic-release@v8.5.1
         id: release
         with:
           force: ${{ inputs.release_level }}
@@ -74,7 +73,7 @@ jobs:
           ref: main  # Make sure to check out the latest commit on main, not the original commit that triggered the workflow
           fetch-depth: 0
       - name: Build package
-        uses: hynek/build-and-inspect-python-package@v1.5.4
+        uses: hynek/build-and-inspect-python-package@v2.0.0
   upload-testpypi:
     name: Upload package to TestPyPI
     needs: [pypi-build]
@@ -85,7 +84,7 @@ jobs:
       id-token: write
     steps:
       - name: Download built packages
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Packages
           path: dist
@@ -103,7 +102,7 @@ jobs:
       id-token: write
     steps:
       - name: Download built packages
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Packages
           path: dist
@@ -123,7 +122,7 @@ jobs:
           ref: main  # Make sure to check out the latest commit on main, not the original commit that triggered the workflow
           fetch-depth: 0
       - name: Download built packages
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Packages
           path: dist

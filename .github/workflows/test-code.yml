@@ -32,7 +32,7 @@ jobs:
           python -m pip install --upgrade tox tox-gh-actions
       - name: Run tox
         run: tox -v
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: artifact_${{ matrix.platform }}_${{ matrix.python-version }}_tests_and_linting
@@ -59,7 +59,7 @@ jobs:
           python -m pip install --upgrade tox
       - name: Test
         run: tox -ve tests
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: artifact_${{ matrix.os_name }}_tests

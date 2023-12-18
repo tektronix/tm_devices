@@ -36,6 +36,8 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+python_semantic_release_templates/.previous_changelog_for_template.md
+python_semantic_release_templates/.previous_release_notes_for_template.md
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
