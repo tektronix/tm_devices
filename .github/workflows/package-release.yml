@@ -29,7 +29,7 @@ jobs:
   pypi-version:
     name: Update package version
     needs: [print-inputs]
-#    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: package-release-gate
     permissions:
@@ -65,7 +65,7 @@ jobs:
   pypi-build:
     name: Build package
     needs: [pypi-version]
-#    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -77,7 +77,7 @@ jobs:
   upload-testpypi:
     name: Upload package to TestPyPI
     needs: [pypi-build]
-#    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: package-testpypi
     permissions:
@@ -88,14 +88,14 @@ jobs:
         with:
           name: Packages
           path: dist
-#      - name: Upload package to Test PyPI
-#        uses: pypa/gh-action-pypi-publish@v1.8.11
-#        with:
-#          repository-url: https://test.pypi.org/legacy/
+      - name: Upload package to Test PyPI
+        uses: pypa/gh-action-pypi-publish@v1.8.11
+        with:
+          repository-url: https://test.pypi.org/legacy/
   upload-pypi:
     name: Upload package to PyPI
     needs: [upload-testpypi]
-#    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: package-release
     permissions:
@@ -106,12 +106,12 @@ jobs:
         with:
           name: Packages
           path: dist
-#      - name: Upload package to PyPI
-#        uses: pypa/gh-action-pypi-publish@v1.8.11
+      - name: Upload package to PyPI
+        uses: pypa/gh-action-pypi-publish@v1.8.11
   upload-github:
     name: Upload package to GitHub Release
     needs: [upload-pypi]
-#    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -139,7 +139,7 @@ jobs:
       - upload-testpypi
       - upload-pypi
       - upload-github
-#    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
