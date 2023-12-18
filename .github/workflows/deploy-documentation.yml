@@ -10,8 +10,8 @@ concurrency:
 jobs:
   publish-docs:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }} && github.ref ==
-      'refs/heads/main'
+    if: github.repository == 'tektronix/tm_devices' && github.event.workflow_run.conclusion
+      == 'success' && github.ref == 'refs/heads/main'
     permissions:
       pages: write
       id-token: write
