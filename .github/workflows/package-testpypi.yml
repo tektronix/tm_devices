@@ -32,7 +32,7 @@ jobs:
           python scripts/project_version.py --set-version=$NEW_VERSION
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
       - name: Build package
-        uses: hynek/build-and-inspect-python-package@v1.5.4
+        uses: hynek/build-and-inspect-python-package@v2.0.0
     outputs:
       built-version: ${{ steps.create-version.outputs.NEW_VERSION }}
   test-pypi-upload:
@@ -45,7 +45,7 @@ jobs:
       id-token: write
     steps:
       - name: Download built packages
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Packages
           path: dist
