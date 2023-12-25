@@ -31,9 +31,9 @@ jobs:
           unzip docs_results.zip
           rm -r .results_docs/html/.doctrees
       - name: Upload To Pages
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: .results_docs/html
       - name: Deploy To Pages
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4
         id: deployment
