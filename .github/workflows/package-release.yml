@@ -50,7 +50,7 @@ jobs:
           python scripts/check_unreleased_changelog_items.py
           git config --global tag.gpgSign true
       - name: Python Semantic Release
-        uses: python-semantic-release/python-semantic-release@v8.7.0
+        uses: python-semantic-release/python-semantic-release@v8.7.2
         id: release
         with:
           force: ${{ inputs.release_level }}
