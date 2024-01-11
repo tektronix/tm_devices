@@ -1407,7 +1407,9 @@ class SMU2470Commands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f'createconfigscript("{script_name}")')  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f'createconfigscript("{script_name}")'
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``createconfigscript()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1431,7 +1433,9 @@ class SMU2470Commands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"delay({seconds})")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"delay({seconds})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``delay()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -1452,7 +1456,9 @@ class SMU2470Commands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write("exit()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                "exit()"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``exit()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -1474,7 +1480,9 @@ class SMU2470Commands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write("opc()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                "opc()"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``opc()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -1498,7 +1506,9 @@ class SMU2470Commands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"print({value})")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"print({value})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``print()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -1559,7 +1569,9 @@ class SMU2470Commands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            return self._device.query(f"printnumber({value})")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"printnumber({value})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``printnumber()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -1584,7 +1596,9 @@ class SMU2470Commands:
         """
         try:
             function_args = ", ".join(str(x) for x in (system,) if x is not None)
-            self._device.write(f"reset({function_args})")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"reset({function_args})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``reset()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -1609,7 +1623,9 @@ class SMU2470Commands:
         """
         try:
             function_args = ", ".join(str(x) for x in (group,) if x is not None)
-            self._device.write(f"waitcomplete({function_args})")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"waitcomplete({function_args})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``waitcomplete()`` function."
             raise NoDeviceProvidedError(msg) from error

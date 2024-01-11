@@ -222,7 +222,9 @@ class Format(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".data"
-            return self._device.query(f"print({self._cmd_syntax}.data)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.data)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.data`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -255,7 +257,9 @@ class Format(BaseTSPCmd):
                     self._cmd_syntax + ".data", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.data = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.data = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.data`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

@@ -131,7 +131,9 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".idn"
-            return self._device.query(f"print({self._cmd_syntax}.idn)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.idn)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.idn`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

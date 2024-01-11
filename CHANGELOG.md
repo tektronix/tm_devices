@@ -21,6 +21,7 @@ Things to be included in the next release go here.
 ### Added
 
 - Added a step during a device reboot that will reset all the cached properties in the event that one of them changed.
+- Added command API support for MSO5K, DPO5K, and DPO7K models.
 
 ### Changed
 
