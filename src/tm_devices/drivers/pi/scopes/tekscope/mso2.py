@@ -1,12 +1,11 @@
 """MSO2 device driver module."""
-from functools import cached_property
 from typing import Tuple
 
 import pyvisa as visa
 
 from tm_devices.commands import MSO2Mixin
 from tm_devices.drivers.pi.scopes.tekscope.tekscope import TekScope
-from tm_devices.helpers import DeviceConfigEntry
+from tm_devices.helpers import DeviceConfigEntry, ReadOnlyCachedProperty
 
 
 class MSO2(MSO2Mixin, TekScope):
@@ -50,7 +49,7 @@ class MSO2(MSO2Mixin, TekScope):
             retval = (*retval[:-1], "DCH1")
         return retval
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         retval = super().total_channels

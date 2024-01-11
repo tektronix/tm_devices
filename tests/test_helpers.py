@@ -1,13 +1,14 @@
 # pyright: reportPrivateUsage=none
 """Tests for the helpers subpackage."""
 import datetime
+import random
 import socket
 
 from collections import OrderedDict
 from contextlib import redirect_stdout
 from io import StringIO
 from subprocess import CalledProcessError, SubprocessError
-from typing import Any, Dict, Optional, Tuple
+from typing import Any, ClassVar, Dict, List, Optional, Tuple
 from unittest import mock
 
 import pytest
@@ -32,6 +33,7 @@ from tm_devices.helpers import (
     get_visa_backend,
     ping_address,
     print_with_timestamp,
+    ReadOnlyCachedProperty,
     sanitize_enum,
     SupportedModels,
     VALID_DEVICE_CONNECTION_TYPES,
@@ -456,3 +458,35 @@ def test_get_version_error() -> None:
         get_version("1a.2.3.abc")
     with pytest.raises(InvalidVersion):
         get_version("invalid-version")
+
+
+def test_read_only_cached_property() -> None:
+    """Verify the implementation of the read-only cached_property decorator."""
+
+    # pylint: disable=missing-class-docstring,missing-function-docstring,too-few-public-methods
+    class ClassWithReadOnlyCachedProperty:
+        counter = 0
+        previous_values: ClassVar[List[int]] = []
+
+        @ReadOnlyCachedProperty
+        def c(self) -> int:
+            self.counter += 1
+            while True:
+                if (val := random.randint(1, 1_000_000)) not in self.previous_values:  # noqa: S311
+                    self.previous_values.append(val)
+                    return val
+
+    instance = ClassWithReadOnlyCachedProperty()
+    val_1 = instance.c
+    assert instance.counter == 1
+    val_2 = instance.c
+    assert instance.counter == 1
+    assert val_1 == val_2
+
+    with pytest.raises(AttributeError):
+        instance.c = -1234
+    assert instance.c == val_1
+    assert instance.counter == 1
+    del instance.c
+    assert instance.c != val_1
+    assert instance.counter == 2

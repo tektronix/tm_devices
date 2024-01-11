@@ -4,6 +4,10 @@ requires = ["poetry-core>=1.0.0"]
 
 [tool]
 
+[tool.coverage.coverage_conditional_plugin.rules]
+py-gte-39 = "sys_version_info >= (3, 9)"
+py-lt-39 = "sys_version_info < (3, 9)"
+
 [tool.coverage.report]
 exclude_lines = [
   "if TYPE_CHECKING:",
@@ -20,6 +24,7 @@ skip_empty = true
 [tool.coverage.run]
 branch = true
 cover_pylib = false
+plugins = ["coverage_conditional_plugin"]
 source = ["tm_devices"]
 
 [tool.docformatter]
@@ -89,6 +94,7 @@ zeroconf = ">=0.54.0"
 # Development dependencies
 [tool.poetry.group.dev.dependencies]
 coverage = {extras = ["toml"], version = ">=7.2.2"}
+coverage-conditional-plugin = ">=0.9.0"
 docformatter = {extras = ["tomli"], version = ">=1.6.5,<1.7.1"}  # upper bound is due to https://github.com/PyCQA/docformatter/issues/174
 flask = ">=2.2.2"
 graphviz = ">=0.20.1"

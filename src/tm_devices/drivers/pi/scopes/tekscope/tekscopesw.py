@@ -1,11 +1,10 @@
 """TEKSCOPESW device driver module."""
-from functools import cached_property
 from typing import Any
 
 import pyvisa as visa
 
 from tm_devices.drivers.pi.scopes.tekscope.tekscope import TekScope
-from tm_devices.helpers import DeviceConfigEntry
+from tm_devices.helpers import DeviceConfigEntry, ReadOnlyCachedProperty
 
 
 class TekScopeSW(TekScope):
@@ -48,7 +47,7 @@ class TekScopeSW(TekScope):
         """Return the device commands."""
         return self._commands
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         return 0
