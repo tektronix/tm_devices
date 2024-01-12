@@ -24,11 +24,11 @@ from ._32dszm_awg.trigger import Trigger
 from ._32dszm_awg.wlist import Wlist
 from ._33ijgq_afgawg.abort import Abort
 from ._33ijgq_afgawg.calibration import Calibration
-from ._e9znur_lpdmsomdodpoafgawgdsa.status_and_error import Opt
-from ._ea3vk0_lpdmsodpomdoafgawgdsa.calibration import Cal
-from ._ea3vk0_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
-from ._ea3vk0_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
-from ._ecer2i_lpdmsodpomdoawgdsa.status_and_error import Ese, Sre
+from ._ft5uww_lpdmsodpomdoafgawgdsa.calibration import Cal
+from ._ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
+from ._ft5uww_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
+from ._fteabn_lpdmsomdodpoafgawgdsa.status_and_error import Opt
+from ._fug7nl_lpdmsodpomdoawgdsa.status_and_error import Ese, Sre
 from ._helpers import DefaultDictPassKeyToFactory
 
 

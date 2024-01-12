@@ -2,7 +2,6 @@
 import string
 
 from abc import ABC
-from functools import cached_property
 from typing import Tuple, Union
 
 from tm_devices.commands import (
@@ -22,6 +21,7 @@ from tm_devices.commands import (
 )
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.source_measure_units.source_measure_unit import SourceMeasureUnit
+from tm_devices.helpers import ReadOnlyCachedProperty
 
 
 @family_base_class
@@ -38,9 +38,9 @@ class SMU2600(SourceMeasureUnit, ABC):
     @property
     def all_channel_names_list(self) -> Tuple[str, ...]:
         """Return a tuple containing all the channel names."""
-        return tuple(string.ascii_lowercase[: self.total_channels])
+        return tuple(string.ascii_lowercase[: self.total_channels])  # pylint: disable=invalid-slice-index
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         # Grab the total channel count based on whether the last digit in the model is even/odd

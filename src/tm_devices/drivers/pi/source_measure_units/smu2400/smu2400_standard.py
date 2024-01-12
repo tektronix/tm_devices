@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from abc import ABC
-from functools import cached_property
 from typing import Optional, Tuple, TYPE_CHECKING, Union
 
 from tm_devices.drivers.device import family_base_class
@@ -10,6 +9,7 @@ from tm_devices.drivers.pi._ieee488_2_commands import IEEE4882Commands
 from tm_devices.drivers.pi.pi_device import PIDevice
 from tm_devices.drivers.pi.signal_sources.signal_source import SignalSource
 from tm_devices.drivers.pi.source_measure_units.source_measure_unit import SourceMeasureUnit
+from tm_devices.helpers import ReadOnlyCachedProperty
 
 if TYPE_CHECKING:
     import os
@@ -38,7 +38,7 @@ class SMU2400Standard(SourceMeasureUnit, ABC):
         """Return an internal class containing methods for the standard IEEE 488.2 command set."""
         return self._ieee_cmds
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         return 1

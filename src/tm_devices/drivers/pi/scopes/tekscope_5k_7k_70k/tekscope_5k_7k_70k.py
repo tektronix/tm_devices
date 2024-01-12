@@ -1,12 +1,11 @@
 """Base TekScope5k7k70k scope device driver module."""
 from abc import ABC
-from functools import cached_property
 
 import pyvisa as visa
 
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.scopes.scope import Scope
-from tm_devices.helpers import DeviceConfigEntry
+from tm_devices.helpers import DeviceConfigEntry, ReadOnlyCachedProperty
 
 
 @family_base_class
@@ -50,7 +49,7 @@ class TekScope5k7k70k(Scope, ABC):
         # TODO: should be part of self.channel
         return self._num_dig_bits_in_ch
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         return self._total_channels

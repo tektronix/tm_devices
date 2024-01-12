@@ -3,10 +3,12 @@ import sys
 
 from typing import Any, Dict, MutableMapping, Type
 
+# TODO: Once Python 3.8 is no longer supported, the dynamic parent class can be removed
 # pylint: disable=unsubscriptable-object,useless-suppression
 ParentDictClass: Type[Dict[Any, Any]] = dict if sys.version_info < (3, 9) else dict[Any, Any]
 
 
+# TODO: Once Python 3.8 is no longer supported, replace the parent class with `dict[Any, Any]`
 class AliasDict(ParentDictClass):
     """A custom dictionary class that supports aliases as secondary keys.
 

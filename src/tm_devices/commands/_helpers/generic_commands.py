@@ -53,7 +53,7 @@ class DefaultDictPassKeyToFactory(defaultdict):  # type: ignore
             # noinspection PyArgumentList  # pylint: disable=not-callable
             dict.__setitem__(self, key, self.default_factory(key))  # type: ignore
             return cast(Any, self[key])
-        return cast(Any, super().__missing__(key))  # pyright: ignore[reportUnknownMemberType]
+        return cast(Any, super().__missing__(key))  # pyright: ignore [reportUnknownMemberType]
 
 
 @total_ordering  # If comparisons are slowing down the code, implementing the rest would speed it up

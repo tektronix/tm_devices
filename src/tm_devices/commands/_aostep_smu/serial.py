@@ -86,7 +86,9 @@ class Serial(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".baud"
-            return self._device.query(f"print({self._cmd_syntax}.baud)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.baud)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.baud`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -118,7 +120,9 @@ class Serial(BaseTSPCmd):
                     self._cmd_syntax + ".baud", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.baud = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.baud = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.baud`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -372,7 +376,9 @@ class Serial(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f'{self._cmd_syntax}.write("{data}")')  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f'{self._cmd_syntax}.write("{data}")'
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.write()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

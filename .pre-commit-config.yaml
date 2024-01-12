@@ -49,6 +49,7 @@ repos:
     rev: 1.16.0
     hooks:
       - id: blacken-docs
+        files: \.(rst|md|markdown|tex)$
   - repo: https://github.com/lyz-code/yamlfix/
     rev: 1.16.0
     hooks:
@@ -122,7 +123,7 @@ repos:
         always_run: true
         args: [., --min=10]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.1.8
+    rev: v0.1.11
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]

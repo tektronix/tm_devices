@@ -5,13 +5,12 @@ import struct
 
 from abc import ABC
 from dataclasses import dataclass
-from functools import cached_property
 from typing import Literal, Type
 
 from tm_devices.driver_mixins.signal_generator_mixin import SourceDeviceConstants
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.signal_sources.signal_source import SignalSource
-from tm_devices.helpers import DeviceTypes, SignalSourceFunctionsAWG
+from tm_devices.helpers import DeviceTypes, ReadOnlyCachedProperty, SignalSourceFunctionsAWG
 
 
 @dataclass(frozen=True)
@@ -39,7 +38,7 @@ class AWG(SignalSource, ABC):
         """Return the device constants."""
         return self._DEVICE_CONSTANTS  # type: ignore
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         return int(self.query("AWGControl:CONFigure:CNUMber?", verbose=False))
