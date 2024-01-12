@@ -123,7 +123,7 @@ repos:
         always_run: true
         args: [., --min=10]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.1.11
+    rev: v0.1.12
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
