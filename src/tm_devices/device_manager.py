@@ -1075,7 +1075,7 @@ class DeviceManager(metaclass=Singleton):
                 if device_name not in self.__devices:
                     self.__create_device(device_name, device_config)
 
-    def open(self) -> bool:  # noqa: A003
+    def open(self) -> bool:
         """Reopen all devices if the DeviceManager has been previously closed.
 
         Returns:
