@@ -38,6 +38,7 @@ from tm_devices.helpers.functions import (
     print_with_timestamp,
     sanitize_enum,
 )
+from tm_devices.helpers.read_only_cached_property import ReadOnlyCachedProperty
 from tm_devices.helpers.singleton_metaclass import Singleton
 from tm_devices.helpers.standalone_functions import validate_address
 
@@ -73,6 +74,7 @@ __all__ = [
     "VALID_DEVICE_CONNECTION_TYPES",
     "validate_address",
     "VISA_RESOURCE_EXPRESSION_REGEX",
+    "ReadOnlyCachedProperty",
     "SignalSourceFunctionBase",
     "SignalSourceFunctionsAWG",
     "SignalSourceFunctionsAFG",

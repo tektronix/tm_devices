@@ -19877,7 +19877,9 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
     """
 
     # pylint: disable=too-many-statements
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:  # noqa: PLR0915
+    def __init__(  # noqa: PLR0915
+        self, device: Optional["PIDevice"], cmd_syntax: str
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._abandwidth = MeasurementMeasItemAbandwidth(device, f"{self._cmd_syntax}:ABANdwidth")
         self._achannels = MeasurementMeasItemAchannels(device, f"{self._cmd_syntax}:ACHANnels")

@@ -21,6 +21,8 @@ Things to be included in the next release go here.
 ### Added
 
 - Added a step during a device reboot that will reset all the cached properties in the event that one of them changed.
+- Added command API support for MSO5K, DPO5K, and DPO7K models.
+- Added a custom, read-only implementation of the [`cached_property`](https://docs.python.org/3/library/functools.html#functools.cached_property) decorator.
 
 ### Changed
 

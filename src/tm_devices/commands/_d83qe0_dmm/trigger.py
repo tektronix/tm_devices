@@ -378,7 +378,9 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.assert()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.assert()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.assert()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -402,7 +404,9 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.release()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.release()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.release()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -450,7 +454,9 @@ class TriggerTsplinkinItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".edge"
-            return self._device.query(f"print({self._cmd_syntax}.edge)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.edge)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -487,7 +493,9 @@ class TriggerTsplinkinItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     self._cmd_syntax + ".edge", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.edge = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.edge = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -544,7 +552,9 @@ class TriggerTsplinkinItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1279,7 +1289,9 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1303,7 +1315,9 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.reset()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.reset()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1408,7 +1422,9 @@ class TriggerModel(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.abort()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.abort()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.abort()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1484,7 +1500,9 @@ class TriggerModel(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.initiate()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.initiate()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.initiate()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1548,7 +1566,9 @@ class TriggerModel(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.load()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.load()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1724,7 +1744,9 @@ class TriggerModel(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.pause()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.pause()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.pause()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1745,7 +1767,9 @@ class TriggerModel(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.resume()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.resume()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.resume()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2790,7 +2814,9 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.assert()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.assert()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.assert()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2814,7 +2840,9 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.connect()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.connect()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.connect()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2838,7 +2866,9 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.disconnect()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.disconnect()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.disconnect()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2886,7 +2916,9 @@ class TriggerLaninItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".edge"
-            return self._device.query(f"print({self._cmd_syntax}.edge)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.edge)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2923,7 +2955,9 @@ class TriggerLaninItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     self._cmd_syntax + ".edge", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.edge = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.edge = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2979,7 +3013,9 @@ class TriggerLaninItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -3177,7 +3213,9 @@ class TriggerExtout(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.assert()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.assert()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.assert()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -3218,7 +3256,9 @@ class TriggerExtin(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".edge"
-            return self._device.query(f"print({self._cmd_syntax}.edge)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.edge)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -3251,7 +3291,9 @@ class TriggerExtin(BaseTSPCmd):
                     self._cmd_syntax + ".edge", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.edge = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.edge = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -3302,7 +3344,9 @@ class TriggerExtin(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -3361,7 +3405,9 @@ class TriggerExt(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.reset()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.reset()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -3633,7 +3679,9 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.assert()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.assert()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.assert()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -3657,7 +3705,9 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.release()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.release()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.release()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -3705,7 +3755,9 @@ class TriggerDiginItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".edge"
-            return self._device.query(f"print({self._cmd_syntax}.edge)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.edge)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -3742,7 +3794,9 @@ class TriggerDiginItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     self._cmd_syntax + ".edge", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.edge = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.edge = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -3802,7 +3856,9 @@ class TriggerDiginItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -4016,7 +4072,9 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -4040,7 +4098,9 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.reset()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.reset()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -4699,7 +4759,9 @@ class Trigger(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

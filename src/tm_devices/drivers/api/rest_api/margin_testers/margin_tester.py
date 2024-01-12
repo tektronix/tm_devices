@@ -3,7 +3,6 @@ import os
 import time
 
 from abc import ABC, abstractmethod
-from functools import cached_property
 from typing import Any, Dict, Mapping, MutableMapping, Tuple
 
 from packaging.version import Version
@@ -11,7 +10,7 @@ from requests.structures import CaseInsensitiveDict
 
 from tm_devices.drivers.api.rest_api.rest_api_device import RESTAPIDevice
 from tm_devices.drivers.device import family_base_class
-from tm_devices.helpers import DeviceConfigEntry, DeviceTypes
+from tm_devices.helpers import DeviceConfigEntry, DeviceTypes, ReadOnlyCachedProperty
 
 
 @family_base_class
@@ -37,22 +36,22 @@ class MarginTester(RESTAPIDevice, ABC):
     ################################################################################################
     # Abstract Cached Properties
     ################################################################################################
-    @cached_property
+    @ReadOnlyCachedProperty
     @abstractmethod
     def adapter(self) -> str:
         """Return the device's connected adapter."""
 
-    @cached_property
+    @ReadOnlyCachedProperty
     @abstractmethod
     def fpga_version(self) -> Version:
         """Return the fpga version of the device."""
 
-    @cached_property
+    @ReadOnlyCachedProperty
     @abstractmethod
     def fw_version(self) -> Version:
         """Return the firmware version of the device."""
 
-    @cached_property
+    @ReadOnlyCachedProperty
     @abstractmethod
     def supported_technologies(self) -> Tuple[str, ...]:
         """Return the device's supported technologies."""

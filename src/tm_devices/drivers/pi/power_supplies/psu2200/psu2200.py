@@ -1,12 +1,11 @@
 """2200 Base device driver for the 22xx family of power supplies."""
-from functools import cached_property
 from typing import Tuple
 
 from packaging.version import Version
 
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.power_supplies.power_supply import PowerSupplyUnit
-from tm_devices.helpers import get_version
+from tm_devices.helpers import get_version, ReadOnlyCachedProperty
 
 
 @family_base_class
@@ -25,7 +24,7 @@ class PSU2200(PowerSupplyUnit):
         """Return a tuple containing all the channel names."""
         return tuple(f"SOURCE{x+1}" for x in range(self.total_channels))
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         return max(1, int(self.model[2])) if self.model[2].isdecimal() else 1
@@ -33,7 +32,7 @@ class PSU2200(PowerSupplyUnit):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    @cached_property
+    @ReadOnlyCachedProperty
     def fpga_version(self) -> Version:
         """Return the fpga version of the device."""
         id_string_parts = self.idn_string.split(",")

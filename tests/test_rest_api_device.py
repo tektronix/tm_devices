@@ -1,6 +1,5 @@
 # pyright: reportPrivateUsage=none
 """Unit tests for rest_api_device.py."""
-from functools import cached_property
 from types import MappingProxyType
 from unittest import mock
 
@@ -12,6 +11,7 @@ from packaging.version import Version
 from mock_server import INDEX_RESPONSE, PORT
 from tm_devices.drivers.api.rest_api.rest_api_device import RESTAPIDevice, SupportedRequestTypes
 from tm_devices.drivers.device import family_base_class
+from tm_devices.helpers import ReadOnlyCachedProperty
 from tm_devices.helpers.constants_and_dataclasses import DeviceConfigEntry
 from tm_devices.helpers.enums import ConnectionTypes, DeviceTypes
 
@@ -47,22 +47,22 @@ class CustomRestApiDevice(RESTAPIDevice):
     def _reboot(self) -> None:
         """Perform the actual rebooting code."""
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def manufacturer(self) -> str:
         """Return the manufacturer of the device."""
         return "foo"
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def model(self) -> str:
         """Return the full model of the device."""
         return "bar"
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def serial(self) -> str:
         """Return the serial number of the device."""
         return "123"
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def sw_version(self) -> Version:
         """Return the software version of the device."""
         return Version("0")

@@ -145,7 +145,9 @@ class ScanTriggerSequence(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -166,7 +168,9 @@ class ScanTriggerSequence(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.set()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.set()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.set()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -264,7 +268,9 @@ class ScanTriggerMeasure(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -285,7 +291,9 @@ class ScanTriggerMeasure(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.set()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.set()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.set()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -383,7 +391,9 @@ class ScanTriggerChannel(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -404,7 +414,9 @@ class ScanTriggerChannel(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.set()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.set()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.set()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -502,7 +514,9 @@ class ScanTriggerArm(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -523,7 +537,9 @@ class ScanTriggerArm(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.set()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.set()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.set()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -607,7 +623,9 @@ class ScanTrigger(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -805,7 +823,9 @@ class Scan(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".mode"
-            return self._device.query(f"print({self._cmd_syntax}.mode)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.mode)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -837,7 +857,9 @@ class Scan(BaseTSPCmd):
                     self._cmd_syntax + ".mode", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.mode = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.mode = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -965,7 +987,9 @@ class Scan(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.abort()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.abort()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.abort()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1248,7 +1272,9 @@ class Scan(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.nobufferexecute()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.nobufferexecute()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.nobufferexecute()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1270,7 +1296,9 @@ class Scan(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.reset()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.reset()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

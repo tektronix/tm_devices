@@ -25,6 +25,7 @@ from tm_devices.helpers import (
     DeviceConfigEntry,
     get_timestamp_string,
     print_with_timestamp,
+    ReadOnlyCachedProperty,
 )
 
 _T = TypeVar("_T")
@@ -99,22 +100,22 @@ class Device(ExtendableMixin, ABC):
     ################################################################################################
     # Abstract Cached Properties
     ################################################################################################
-    @cached_property
+    @ReadOnlyCachedProperty
     @abstractmethod
     def manufacturer(self) -> str:
         """Return the manufacturer of the device."""
 
-    @cached_property
+    @ReadOnlyCachedProperty
     @abstractmethod
     def model(self) -> str:
         """Return the full model of the device."""
 
-    @cached_property
+    @ReadOnlyCachedProperty
     @abstractmethod
     def serial(self) -> str:
         """Return the serial number of the device."""
 
-    @cached_property
+    @ReadOnlyCachedProperty
     @abstractmethod
     def sw_version(self) -> Version:
         """Return the software version of the device."""
@@ -266,7 +267,7 @@ class Device(ExtendableMixin, ABC):
         """Return the device port, or None if the device doesn't have a port."""
         return self._config_entry.lan_port
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def series(self) -> str:
         """Return the series of the device.
 
@@ -283,7 +284,7 @@ class Device(ExtendableMixin, ABC):
     ################################################################################################
     # Cached Properties
     ################################################################################################
-    @cached_property
+    @ReadOnlyCachedProperty
     def hostname(self) -> str:
         """Return the hostname of the device or an empty string if unable to fetch that."""
         if self._config_entry.connection_type not in {ConnectionTypes.USB}:
@@ -294,7 +295,7 @@ class Device(ExtendableMixin, ABC):
                 pass
         return ""
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def ip_address(self) -> str:
         """Return the IPv4 address of the device or an empty string if unable to fetch that."""
         if self._config_entry.connection_type not in {ConnectionTypes.USB}:
