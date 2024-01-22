@@ -4,7 +4,7 @@ from tm_devices.drivers import MSO6B
 
 with DeviceManager(verbose=True) as dm:
     # Get a scope
-    scope: MSO6B = dm.add_scope("192.168.1.177")  # pyright: ignore[reportGeneralTypeIssues]
+    scope: MSO6B = dm.add_scope("192.168.1.177")  # pyright: ignore[reportAssignmentType]
 
     # Send some commands
     scope.add_new_math("MATH1", "CH1")  # add MATH1 to CH1

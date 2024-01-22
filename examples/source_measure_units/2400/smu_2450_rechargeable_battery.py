@@ -19,7 +19,7 @@ from tm_devices.drivers import SMU2450
 with DeviceManager() as device_manager:
     print(device_manager.get_available_devices())
 
-    inst: SMU2450 = device_manager.add_smu("192.168.4.74", alias="my2450")  # pyright: ignore[reportGeneralTypeIssues]
+    inst: SMU2450 = device_manager.add_smu("192.168.4.74", alias="my2450")  # pyright: ignore[reportAssignmentType]
 
     # Clear the buffer.
     inst.commands.buffer_var["defbuffer1"].clear()

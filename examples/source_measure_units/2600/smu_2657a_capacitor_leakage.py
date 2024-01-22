@@ -92,5 +92,5 @@ def capacitor_leakage(inst: SMU2657A) -> None:
 
 
 with DeviceManager() as DM:
-    smu_driver: SMU2657A = DM.add_smu(RESOURCE_ID)  # pyright: ignore[reportGeneralTypeIssues]
+    smu_driver: SMU2657A = DM.add_smu(RESOURCE_ID)  # pyright: ignore[reportAssignmentType]
     capacitor_leakage(smu_driver)

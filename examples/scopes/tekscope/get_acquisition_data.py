@@ -12,7 +12,7 @@ with DeviceManager(verbose=True) as device_manager:
     device_manager.visa_library = PYVISA_PY_BACKEND
 
     # Creating Scope driver object by providing ip address.
-    scope: MSO6B = device_manager.add_scope("127.0.0.1")  # pyright: ignore[reportGeneralTypeIssues]
+    scope: MSO6B = device_manager.add_scope("127.0.0.1")  # pyright: ignore[reportAssignmentType]
 
     # Turn on channel 1
     scope.commands.display.waveview1.ch[1].state.write("ON")

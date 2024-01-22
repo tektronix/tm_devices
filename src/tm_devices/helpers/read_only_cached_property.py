@@ -9,7 +9,7 @@ _T = TypeVar("_T")
 # TODO: Remove the pragmas and exception block when support for Python 3.8 is dropped
 try:  # pragma: py-lt-39
     # pylint: disable=unsubscriptable-object,useless-suppression
-    class ReadOnlyCachedProperty(cached_property[_T]):  # pyright: ignore[reportGeneralTypeIssues]
+    class ReadOnlyCachedProperty(cached_property[_T]):  # pyright: ignore[reportRedeclaration]
         """An implementation of cached_property that is read-only.
 
         Examples:
@@ -35,7 +35,7 @@ try:  # pragma: py-lt-39
             # Delete the attribute from the cache, ignoring KeyErrors since that just means the
             # attribute already doesn't exist and therefore doesn't need to be deleted.
             with contextlib.suppress(KeyError):
-                del cache[self.attrname]  # pyright: ignore[reportGeneralTypeIssues]
+                del cache[self.attrname]  # pyright: ignore[reportArgumentType]
 
 except TypeError:  # pragma: py-gte-39
     # pylint: disable=unsubscriptable-object,useless-suppression
@@ -65,4 +65,4 @@ except TypeError:  # pragma: py-gte-39
             # Delete the attribute from the cache, ignoring KeyErrors since that just means the
             # attribute already doesn't exist and therefore doesn't need to be deleted.
             with contextlib.suppress(KeyError):
-                del cache[self.attrname]  # pyright: ignore[reportGeneralTypeIssues]
+                del cache[self.attrname]  # pyright: ignore[reportArgumentType]
