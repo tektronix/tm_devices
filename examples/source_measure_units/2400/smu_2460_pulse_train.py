@@ -24,7 +24,7 @@ POINTS = 10
 LIMIT = 7
 
 with DeviceManager(verbose=True) as dm:
-    inst: SMU2460 = dm.add_smu(RESOURCE_ID)  # pyright: ignore[reportGeneralTypeIssues]
+    inst: SMU2460 = dm.add_smu(RESOURCE_ID)  # pyright: ignore[reportAssignmentType]
 
     # Set to current source and set up source config list
     inst.commands.smu.source.configlist.create("OutputList")

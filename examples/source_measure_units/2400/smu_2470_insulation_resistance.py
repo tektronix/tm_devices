@@ -9,7 +9,7 @@ from tm_devices import DeviceManager
 from tm_devices.drivers import SMU2470
 
 with DeviceManager(verbose=False) as device_manager:
-    smu2470: SMU2470 = device_manager.add_smu(  # pyright: ignore[reportGeneralTypeIssues]
+    smu2470: SMU2470 = device_manager.add_smu(  # pyright: ignore[reportAssignmentType]
         "TCPIP::0.0.0.0::inst0::INSTR", alias="my2470"
     )  # 192.168.0.2
 
