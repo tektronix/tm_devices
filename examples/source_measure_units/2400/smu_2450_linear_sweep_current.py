@@ -16,7 +16,7 @@ from tm_devices import DeviceManager
 from tm_devices.drivers import SMU2450
 
 with DeviceManager() as device_manager:
-    smu2450: SMU2450 = device_manager.add_smu(  # pyright: ignore[reportGeneralTypeIssues]
+    smu2450: SMU2450 = device_manager.add_smu(  # pyright: ignore[reportAssignmentType]
         "USB0::0x05E6::0x2450::01419969::INSTR", alias="my2450"
     )
 

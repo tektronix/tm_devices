@@ -217,7 +217,7 @@ def capture_pulse_v(inst: SMU2651A) -> None:
 
 # RUN TEST
 with DeviceManager() as DM:
-    inst_driver: SMU2651A = DM.add_smu(RESOURCE_ID)  # pyright: ignore[reportGeneralTypeIssues]
+    inst_driver: SMU2651A = DM.add_smu(RESOURCE_ID)  # pyright: ignore[reportAssignmentType]
 
     capture_pulse_i(inst_driver)
     capture_pulse_v(inst_driver)
