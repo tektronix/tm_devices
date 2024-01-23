@@ -26,8 +26,9 @@ Things to be included in the next release go here.
 
 ### Changed
 
-- Switched to ruff's formatter instead of black's formatter for python code
-- Updated the version of `python-semantic-release` that is used to avoid needing to store a copy of the previous changelog in the repo
+- Switched to ruff's formatter instead of black's formatter for python code.
+- Updated the version of `python-semantic-release` that is used to avoid needing to store a copy of the previous changelog in the repo.
+- Pinned the linters (ruff, pyright, pylint, docformatter) to specific versions to reduce failures when updates are released that add new rules or break existing rules.
 
 ______________________________________________________________________
 

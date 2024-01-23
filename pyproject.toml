@@ -95,7 +95,7 @@ zeroconf = ">=0.54.0"
 [tool.poetry.group.dev.dependencies]
 coverage = {extras = ["toml"], version = ">=7.2.2"}
 coverage-conditional-plugin = ">=0.9.0"
-docformatter = {extras = ["tomli"], version = ">=1.6.5,<1.7.1"}  # upper bound is due to https://github.com/PyCQA/docformatter/issues/174
+docformatter = {extras = ["tomli"], version = "==1.7.0"}  # can't update due to https://github.com/PyCQA/docformatter/issues/174
 flask = ">=2.2.2"
 graphviz = ">=0.20.1"
 http-server-mock = ">=1.7"
@@ -107,8 +107,9 @@ myst-parser = ">=0.19.1"
 pip = ">=22.0"
 poetry = ">=1.5.1"
 pre-commit = ">=2.20.0"
-pylint = {extras = ["spelling"], version = ">=3.0"}
-pyright = ">=1.1.334"
+pre-commit-update = ">=0.1.3"
+pylint = {extras = ["spelling"], version = "3.0.3"}  # Update this by running scripts/update_development_dependencies.py
+pyright = "1.1.348"  # Update this by running scripts/update_development_dependencies.py
 pyroma = ">=4.2"
 pytest = ">=7.1.2"
 pytest-cov = ">=3.0.0"
@@ -116,7 +117,7 @@ pytest-html = ">=4.0"
 pytest-order = ">=1.0.1"
 pytest-profiling = ">=1.7.0"
 python-semantic-release = ">=8.5.1"
-ruff = ">=0.1.7"
+ruff = "0.1.14"  # Update this by running scripts/update_development_dependencies.py
 safety = ">=2.1.1"
 sphinx-autoapi = ">=2.0.0"
 sphinx-copybutton = ">=0.5.1"
@@ -133,6 +134,7 @@ types-pyyaml = ">=6.0"
 types-requests = ">=2.28.8"
 urllib3 = ">=1.26.14"
 wheel = ">=0.37.1"
+yamlfix = ">=1.16.0"
 
 [tool.poetry.scripts]
 list-visa-resources = "tm_devices:print_available_visa_devices"
@@ -140,6 +142,10 @@ list-visa-resources = "tm_devices:print_available_visa_devices"
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/tektronix/tm_devices/issues"
 "Changelog" = "https://github.com/tektronix/tm_devices/blob/main/CHANGELOG.md"
+
+[tool.pre-commit-update]
+keep = ["docformatter"]
+verbose = true
 
 [tool.pylint.basic]
 good-names = ["_"]
