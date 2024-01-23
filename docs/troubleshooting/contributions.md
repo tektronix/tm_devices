@@ -219,7 +219,7 @@ source .venv/bin/activate
 .venv\Scripts\activate.bat
 
 # Update installed dependencies
-python -m poetry update
+python scripts/update_development_dependencies.py
 
 # Re-run original, failing command
 ```

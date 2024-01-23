@@ -186,11 +186,7 @@ source .venv/bin/activate
 ````
 
 ```console
-python -m poetry self update
-
-python -m poetry update
-
-pre-commit autoupdate
+python scripts/update_development_dependencies.py
 ```
 
 ## Pull Request Guidelines
