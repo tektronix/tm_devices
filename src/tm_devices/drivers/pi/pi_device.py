@@ -70,7 +70,7 @@ class PIDevice(Device, ABC):
             if not bool(os.environ.get("TM_DEVICES_UNIT_TESTS_RUNNING"))
             else UNIT_TEST_TIMEOUT
         )
-        self._ieee_cmds = self._IEEE_COMMANDS_CLASS(self)  # type: ignore
+        self._ieee_cmds = self._IEEE_COMMANDS_CLASS(self)
         self.reset_visa_timeout()
 
     ################################################################################################
@@ -121,7 +121,7 @@ class PIDevice(Device, ABC):
         """
         # TODO: implement for all driver subclasses then remove this blanket NotImplementedError
         raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
+            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )
 
@@ -136,7 +136,7 @@ class PIDevice(Device, ABC):
         """
         # TODO: implement for all driver subclasses then remove this blanket NotImplementedError
         raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
+            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )
 
@@ -281,15 +281,15 @@ class PIDevice(Device, ABC):
     def disable_srq_events(self) -> None:  # pragma: no cover
         """Disable the service request event for the device."""
         self._visa_resource.disable_event(
-            visa_constants.VI_EVENT_SERVICE_REQ,  # type: ignore
-            visa_constants.VI_QUEUE,  # type: ignore
+            visa_constants.VI_EVENT_SERVICE_REQ,  # pyright: ignore[reportArgumentType]
+            visa_constants.VI_QUEUE,  # pyright: ignore[reportArgumentType]
         )
 
     def enable_srq_events(self) -> None:  # pragma: no cover
         """Enable the service request event for the device."""
         self._visa_resource.enable_event(
-            visa_constants.VI_EVENT_SERVICE_REQ,  # type: ignore
-            visa_constants.VI_QUEUE,  # type: ignore
+            visa_constants.VI_EVENT_SERVICE_REQ,  # pyright: ignore[reportArgumentType]
+            visa_constants.VI_QUEUE,  # pyright: ignore[reportArgumentType]
         )
 
     def get_visa_stb(self) -> int:  # pragma: no cover
@@ -361,7 +361,7 @@ class PIDevice(Device, ABC):
             print_with_timestamp(f"({self._name_and_alias}) Query Binary Values >>  {query!r}")
 
         try:
-            response = self._visa_resource.query_binary_values(query)  # pyright: ignore
+            response = self._visa_resource.query_binary_values(query)  # pyright: ignore[reportUnknownMemberType]
         except (visa.VisaIOError, socket.error) as error:
             pi_cmd_repr = f" for {query!r} " if self._verbose and verbose else " "
             msg = f"The query{pi_cmd_repr}failed with the following message: {error!r}"
@@ -652,7 +652,7 @@ class PIDevice(Device, ABC):
         """
         # The timeout value is multiplied by 1000 because the function expects milliseconds.
         return self._visa_resource.wait_on_event(
-            visa_constants.VI_EVENT_SERVICE_REQ,  # type: ignore
+            visa_constants.VI_EVENT_SERVICE_REQ,  # pyright: ignore[reportArgumentType]
             timeout * 1000,
         )
 
@@ -817,7 +817,7 @@ class PIDevice(Device, ABC):
     def _close(self) -> None:
         """Close this device and all its used resources and components."""
         self._visa_resource.close()
-        self._visa_resource = None  # type: ignore
+        self._visa_resource = None  # pyright: ignore[reportAttributeAccessIssue]
         self._is_open = False
 
     def _has_errors(self) -> bool:
@@ -831,7 +831,7 @@ class PIDevice(Device, ABC):
     def _open(self) -> bool:
         """Open necessary resources and components and return a boolean indicating success."""
         opened = True
-        if self._visa_resource is None:  # type: ignore
+        if self._visa_resource is None:  # pyright: ignore[reportUnnecessaryComparison]
             opened = False
             # 5 seconds when running unit tests, else 600 seconds (10 minutes)
             num_seconds_to_attempt_reconnection = (

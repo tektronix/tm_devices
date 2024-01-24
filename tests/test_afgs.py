@@ -107,7 +107,7 @@ def test_afg3kc(device_manager: DeviceManager) -> None:
     ):
         afg3kc.generate_waveform(
             25e6,
-            afg3kc.source_device_constants.functions.PULSE.value,  # type: ignore
+            afg3kc.source_device_constants.functions.PULSE.value,  # pyright: ignore[reportArgumentType]
             1.0,
             0.0,
             "all",

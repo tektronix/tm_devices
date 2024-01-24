@@ -1,6 +1,5 @@
 """This script modifies or gets the current project version in the pyproject.toml file."""
 import argparse
-import os.path
 import pathlib
 
 import tomli
@@ -8,7 +7,7 @@ import tomli_w
 
 from poetry.core.constraints.version import Version
 
-PYPROJECT_FILE = pathlib.Path(f"{os.path.dirname(__file__)}/../pyproject.toml")
+PYPROJECT_FILE = pathlib.Path(f"{pathlib.Path(__file__).parent}/../pyproject.toml")
 
 
 def parse_arguments() -> argparse.Namespace:

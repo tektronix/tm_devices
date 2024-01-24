@@ -17,6 +17,7 @@ from typing import Any, Dict, Optional, Tuple, Type
 
 import requests
 
+from dateutil.tz import tzlocal
 from packaging.version import InvalidVersion, Version
 
 from tm_devices.helpers.constants_and_dataclasses import (
@@ -34,7 +35,7 @@ with warnings.catch_warnings():
     warnings.simplefilter("ignore", UserWarning)
     import pyvisa as visa
 
-    from gpib_ctypes import make_default_gpib  # type: ignore
+    from gpib_ctypes import make_default_gpib  # pyright: ignore[reportMissingTypeStubs]
     from pyvisa import util as pyvisa_util
     from pyvisa.resources import MessageBasedResource
 
@@ -216,7 +217,7 @@ def create_visa_connection(
     resource_expression = device_config_entry.get_visa_resource_expression()
     try:
         # noinspection PyTypeChecker
-        visa_object: MessageBasedResource = visa.ResourceManager(  # type: ignore
+        visa_object: MessageBasedResource = visa.ResourceManager(  # pyright: ignore[reportAssignmentType]
             visa_library
         ).open_resource(resource_expression)
         # Print a warning if PyVISA-py is used when the user didn't specify STANDALONE
@@ -237,7 +238,7 @@ def create_visa_connection(
         time.sleep(60)  # wait 60 seconds and try again
         try:
             # noinspection PyTypeChecker
-            visa_object: MessageBasedResource = visa.ResourceManager(  # type: ignore
+            visa_object: MessageBasedResource = visa.ResourceManager(  # pyright: ignore[reportAssignmentType]
                 visa_library
             ).open_resource(resource_expression)
         # The broad except is because pyvisa_py can throw a base exception in the tcpip.py file
@@ -390,7 +391,7 @@ def get_model_series(model: str) -> str:  # noqa: PLR0912,C901,PLR0915
 
 def get_timestamp_string() -> str:
     """Return a string containing the current timestamp."""
-    return str(datetime.datetime.now())[:-3]
+    return str(datetime.datetime.now(tz=tzlocal()))[:-3]
 
 
 def get_version(version_string: str) -> Version:

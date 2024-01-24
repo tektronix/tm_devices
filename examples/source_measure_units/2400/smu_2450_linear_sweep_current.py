@@ -64,9 +64,9 @@ with DeviceManager() as device_manager:
     READING_COUNT = int(float(smu2450.commands.buffer_var["defbuffer1"].n))
     for x in range(1, READING_COUNT + 1):
         # Voltage readings are in defbuffer1.
-        timestamp_data.append(  # type: ignore
+        timestamp_data.append(  # pyright: ignore[reportUnknownMemberType]
             smu2450.commands.buffer_var["defbuffer1"].timestamps[x]
         )
-        buffer1_data.append(smu2450.commands.buffer_var["defbuffer1"].readings[x])  # type: ignore
+        buffer1_data.append(smu2450.commands.buffer_var["defbuffer1"].readings[x])  # pyright: ignore[reportUnknownMemberType]
 
         print(f"{timestamp_data[x-1]}, {buffer1_data[x-1]}")

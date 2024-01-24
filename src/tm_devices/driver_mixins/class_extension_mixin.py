@@ -68,7 +68,7 @@ class ExtendableMixin:
         ...  # pragma: no cover
 
     @classmethod
-    def add_property(  # type: ignore
+    def add_property(  # pyright: ignore[reportInconsistentOverload]
         cls: Type[_EM],
         method: Optional[Callable[[_EM], _T]] = None,
         /,

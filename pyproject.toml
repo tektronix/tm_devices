@@ -233,6 +233,7 @@ ignore = [
 pythonPlatform = "All"
 pythonVersion = "3.8"
 reportCallInDefaultInitializer = "error"
+reportImplicitOverride = "none"  # this check is not needed
 # TODO: turn on the check for implicit string concatenation
 reportImplicitStringConcatenation = "none"  # this is allowed by this project's formatting standard
 reportImportCycles = "none"  # other analysis tools catch these more effectively
@@ -282,21 +283,21 @@ ignore = [
   "ANN102",  # Missing type annotation for cls in method
   "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in *args and **kwargs
   "COM812",  # Trailing comma missing
-  "DTZ",  # flake8-datetimez  # TODO: enable this later
   "EM102",  # Exception must not use an f-string literal, assign to variable first
-  "FA100",  # Missing `from __future__ import annotations`, but uses ...  # TODO: enable this later
+  "FA100",  # Missing `from __future__ import annotations`, but uses ...
   "FBT",  # flake8-boolean-trap
-  "FIX002",  # Line contains TODO
+  "FIX002",  # Line contains TO DO
   "ISC001",  # single-line-implicit-string-concatenation (handled by formatter)
-  "PGH003",  # Use specific rule codes when ignoring type issues  # TODO: enable this later
-  "PTH",  # flake8-use-pathlib  # TODO: enable this later
+  "PTH109",  # `os.getcwd()` should be replaced by `Path.cwd()`
+  "PTH123",  # `open()` should be replaced by `Path.open()`
+  "PTH207",  # Replace `iglob` with `Path.glob` or `Path.rglob`
   "PYI021",  # Docstrings should not be included in stubs
   "T20",  # flake8-print
-  "TD002",  # Missing author in TODO; try: `# TODO(<author_name>): ...`  # TODO: enable this later
-  "TD003",  # Missing issue link on the line following this TODO  # TODO: enable this later
+  "TD002",  # Missing author in TO DO
+  "TD003",  # Missing issue link on the line following this TO DO
   "TRY301",  # Abstract raise to an inner function
-  "UP006",  # Use {to} instead of {from} for type annotation  # TODO: enable this later
-  "UP007",  # Use `X | Y` for type annotations  # TODO: enable this later
+  "UP006",  # Use {to} instead of {from} for type annotation
+  "UP007",  # Use `X | Y` for type annotations
   "UP024",  # Replace aliased errors with `OSError`
   "UP037"  # Remove quotes from type annotation
 ]
@@ -348,6 +349,7 @@ order-by-type = false
 "tests/**" = [
   "PLC1901",  # compare-to-empty-string
   "PLR2004",  # Magic value used in comparison
+  "PTH107",  # `os.remove()` should be replaced by `Path.unlink()`
   "S101"  # Use of assert detected
 ]
 "tests/samples/golden_stubs/**" = [

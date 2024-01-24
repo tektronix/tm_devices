@@ -4,6 +4,7 @@ import os
 import socket
 import sys
 
+from pathlib import Path
 from typing import cast
 from unittest import mock
 
@@ -47,7 +48,7 @@ def test_smu(  # noqa: PLR0915
         assert "Query" in stdout
 
     smu.load_script(
-        file_path=f"{os.path.dirname(os.path.realpath(__file__))}/samples/tsp_script.py",
+        file_path=f"{Path(os.path.realpath(__file__)).parent}/samples/tsp_script.py",
         run_script=True,
         to_nv_memory=True,
     )
@@ -59,7 +60,7 @@ def test_smu(  # noqa: PLR0915
     assert "loadfuncs()" in stdout
     smu.expect_esr(0)
     smu.load_script(
-        file_path=f"{os.path.dirname(os.path.realpath(__file__))}/samples/tsp_script.py",
+        file_path=f"{Path(os.path.realpath(__file__)).parent}/samples/tsp_script.py",
         script_name="tsp_function",
     )
     stdout = capsys.readouterr().out
@@ -214,7 +215,7 @@ def test_smu(  # noqa: PLR0915
     filepath = f"./temp_test_{sys.version_info.major}{sys.version_info.minor}.csv"
     try:
         smu.write_buffers(filepath, "smua.nvbuffer1")
-        assert os.path.exists(filepath)
+        assert os.path.exists(filepath)  # noqa: PTH110
         with open(filepath, encoding="utf-8") as file:
             lines = file.readlines()
             for index, value in enumerate(["smua.nvbuffer1", "1.0", "2.0", "3.0", "4.0", "5.0"]):

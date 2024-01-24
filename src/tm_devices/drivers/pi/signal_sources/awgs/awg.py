@@ -1,10 +1,10 @@
 """Base AWG device driver module."""
 import inspect
-import os
 import struct
 
 from abc import ABC
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Literal, Type
 
 from tm_devices.driver_mixins.signal_generator_mixin import SourceDeviceConstants
@@ -36,7 +36,7 @@ class AWG(SignalSource, ABC):
     @property
     def source_device_constants(self) -> AWGSourceDeviceConstants:
         """Return the device constants."""
-        return self._DEVICE_CONSTANTS  # type: ignore
+        return self._DEVICE_CONSTANTS  # type: ignore[attr-defined]
 
     @ReadOnlyCachedProperty
     def total_channels(self) -> int:
@@ -93,7 +93,7 @@ class AWG(SignalSource, ABC):
         """
         # TODO: implement
         raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
+            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )
 
@@ -122,7 +122,7 @@ class AWG(SignalSource, ABC):
             bin_waveform = struct.unpack(">" + str(info_len) + "H", waveform_data)
 
             # Turn "path/to/stuff.wfm" into "stuff.wfm".
-            filename_target = os.path.basename(target_file)
+            filename_target = Path(target_file).name
             # Write the waveform data to the AWG memory.
             string_to_send = 'MMEMORY:DATA "' + filename_target + '",'
             self._visa_resource.write_binary_values(
