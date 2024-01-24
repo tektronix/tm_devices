@@ -11,9 +11,11 @@ from subprocess import CalledProcessError, SubprocessError
 from typing import Any, ClassVar, Dict, List, Optional, Tuple
 from unittest import mock
 
+import dateutil.parser
 import pytest
 import pyvisa as visa
 
+from dateutil.tz import tzlocal
 from packaging.version import InvalidVersion, Version
 from requests import Response
 
@@ -166,14 +168,14 @@ def test_print_with_timestamp() -> None:
     """Test the print_with_timestamp helper function."""
     stdout = StringIO()
     with redirect_stdout(stdout):
-        now = datetime.datetime.now()
+        now = datetime.datetime.now(tz=tzlocal())
         print_with_timestamp("message")
 
     message = stdout.getvalue()
     message_parts = message.split(" - ")
     assert len(message_parts) == 2
     assert message_parts[1] == "message\n"
-    parsed_datetime = datetime.datetime.strptime(message_parts[0].strip(), "%Y-%m-%d %H:%M:%S.%f")
+    parsed_datetime = dateutil.parser.parse(message_parts[0].strip())
     allowed_difference = datetime.timedelta(
         days=0,
         hours=0,

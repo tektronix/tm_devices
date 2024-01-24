@@ -2,6 +2,8 @@
 
 This script will run through the commands listed in the CONTRIBUTING.md file.
 """
+from __future__ import annotations
+
 import argparse
 import glob
 import os
@@ -43,18 +45,21 @@ def running_in_virtualenv() -> bool:
     return sys.prefix != sys.base_prefix
 
 
-def create_virtual_environment(virtual_env_dir: str, reset_env: bool) -> None:
+def create_virtual_environment(
+    virtual_env_dir: Union[str, os.PathLike[str]], reset_env: bool
+) -> None:
     """Create a virtual environment.
 
     Args:
         virtual_env_dir: The directory where the virtual environment should be created
         reset_env: Indicate if the virtual environment should be completely reset
     """
+    virtual_env_dir = Path(virtual_env_dir)
     added_newline = False
     if (
         reset_env
-        and os.path.exists(virtual_env_dir)
-        and not sys.prefix.startswith(virtual_env_dir)
+        and virtual_env_dir.exists()
+        and not sys.prefix.startswith(str(virtual_env_dir.resolve()))
         and not running_in_virtualenv()
     ):
         if not added_newline:
@@ -62,7 +67,7 @@ def create_virtual_environment(virtual_env_dir: str, reset_env: bool) -> None:
             print("")
         print(f"Removing virtualenv located at '{virtual_env_dir}'")
         shutil.rmtree(virtual_env_dir)
-    if not os.path.exists(virtual_env_dir) and not running_in_virtualenv():
+    if not virtual_env_dir.exists() and not running_in_virtualenv():
         if not added_newline:
             print("")
         print(f"Creating virtualenv located at '{virtual_env_dir}'")
@@ -113,8 +118,8 @@ def main() -> None:
 
         # Delete the previous poetry lock file
         lock_file = Path(starting_dir) / "poetry.lock"
-        if os.path.exists(lock_file):
-            os.remove(lock_file)
+        if lock_file.exists():
+            lock_file.unlink()
 
         # Find the python executable from the new virtual environment
         files = list(

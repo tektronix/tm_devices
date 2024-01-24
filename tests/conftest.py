@@ -2,6 +2,7 @@
 import os
 import socket
 
+from pathlib import Path
 from typing import Generator, List, Tuple
 from unittest import mock
 
@@ -17,8 +18,8 @@ os.environ["TM_DEVICES_UNIT_TESTS_RUNNING"] = "true"
 # Make sure to not use any local config files
 os.environ[DMConfigParser.CONFIG_FILE_PATH_ENV_VARIABLE] = ""
 
-PROJECT_ROOT_DIR = f"{os.path.dirname(os.path.dirname(__file__))}"
-SIMULATED_VISA_LIB = f"{os.path.dirname(__file__)}/sim_devices/devices.yaml@sim"
+PROJECT_ROOT_DIR = Path(__file__).parent.parent
+SIMULATED_VISA_LIB = str(Path(__file__).parent / "sim_devices/devices.yaml@sim")
 
 
 def mock_gethostbyname(address: str) -> str:
@@ -93,5 +94,5 @@ def _fixture_mock_http_server() -> (  # pyright: ignore [reportUnusedFunction]
     Yields:
         The HTTP server instance.
     """
-    with mocker_server.run("127.0.0.1", PORT):  # pyright: ignore
+    with mocker_server.run("127.0.0.1", PORT):  # pyright: ignore[reportUnknownMemberType]
         yield

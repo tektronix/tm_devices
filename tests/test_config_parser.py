@@ -1,7 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Tests for the config_parser.py file."""
-import os
-
+from pathlib import Path
 from types import MappingProxyType
 from typing import Dict, Mapping, Optional, Type
 from unittest import mock
@@ -166,7 +165,7 @@ options:
         ),
     }
     with mock.patch.dict("os.environ", {}, clear=True), mock.patch(
-        "os.path.isfile", mock.MagicMock(return_value=True)
+        "pathlib.Path.is_file", mock.MagicMock(return_value=True)
     ), mock.patch("builtins.open", mock.mock_open(read_data=file_contents)):
         config = DMConfigParser()
 
@@ -181,18 +180,12 @@ options:
     [
         # test with toml
         (
-            {
-                "TM_DEVICES_CONFIG": f"{os.path.dirname(os.path.abspath(__file__))}/"
-                f"samples/sample_devices.toml"
-            },
+            {"TM_DEVICES_CONFIG": str(Path(__file__).parent / "samples/sample_devices.toml")},
             DMConfigParser.FileType.TOML,
         ),
         # test with yaml
         (
-            {
-                "TM_DEVICES_CONFIG": f"{os.path.dirname(os.path.abspath(__file__))}/"
-                f"samples/sample_devices.yaml"
-            },
+            {"TM_DEVICES_CONFIG": str(Path(__file__).parent / "samples/sample_devices.yaml")},
             DMConfigParser.FileType.YAML,
         ),
     ],
@@ -366,12 +359,7 @@ def test_invalid_config_creation_from_file() -> None:
     """Test loading a config file with an invalid option."""
     with mock.patch.dict(
         "os.environ",
-        {
-            "TM_DEVICES_CONFIG": (
-                f"{os.path.dirname(os.path.abspath(__file__))}/"
-                f"samples/invalid_config_option.yaml"
-            )
-        },
+        {"TM_DEVICES_CONFIG": str(Path(__file__).parent / "samples/invalid_config_option.yaml")},
         clear=True,
     ):
         with pytest.raises(KeyError) as error:

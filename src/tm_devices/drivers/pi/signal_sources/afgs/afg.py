@@ -30,7 +30,7 @@ class AFG(SignalSource, ABC):
     @property
     def source_device_constants(self) -> AFGSourceDeviceConstants:
         """Return the device constants."""
-        return self._DEVICE_CONSTANTS  # type: ignore
+        return self._DEVICE_CONSTANTS  # type: ignore[attr-defined]
 
     @ReadOnlyCachedProperty
     def total_channels(self) -> int:

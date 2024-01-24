@@ -83,7 +83,7 @@ with DeviceManager() as device_manager:
         reading = inst.commands.buffer_var["defbuffer1"].readings[i]
         source_value = inst.commands.buffer_var["defbuffer1"].sourcevalues[i]
         timestamp = float(
-            inst.commands.buffer_var["defbuffer1"].relativetimestamps.get[i]  # type: ignore
+            inst.commands.buffer_var["defbuffer1"].relativetimestamps.get(i)  # pyright: ignore[reportArgumentType]
         )
         print(i, reading, source_value, timestamp)
 

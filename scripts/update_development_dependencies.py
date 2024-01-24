@@ -11,7 +11,7 @@ import warnings
 from pathlib import Path
 from typing import List
 
-from yamlfix import fix_files  # pyright: ignore
+from yamlfix import fix_files  # pyright: ignore[reportUnknownVariableType]
 
 from pypi_latest_version import get_latest_version
 

@@ -371,7 +371,7 @@ class DMConfigParser:
             KeyError: Indicates unrecognized option name.
         """
         config_path = pathlib.Path(config_file_path)  # normalize the path
-        if not os.path.isfile(config_path):
+        if not config_path.is_file():
             raise FileNotFoundError(config_path)
         # read in data
         with open(config_path, encoding="utf-8") as config_file:
