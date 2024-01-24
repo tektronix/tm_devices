@@ -2,6 +2,8 @@
 
 This script will run through the commands listed in the CONTRIBUTING.md file.
 """
+from __future__ import annotations
+
 import argparse
 import glob
 import os
