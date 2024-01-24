@@ -266,7 +266,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         )
         generated_stub_file = generated_stub_dir / sub_filepath
         golden_stub_dir = Path(__file__).parent / "samples" / "golden_stubs"
-        generated_stub_file.parent.mkdir(exist_ok=True)
+        generated_stub_file.parent.mkdir(parents=True, exist_ok=True)
         with open(generated_stub_file, "w", encoding="utf-8") as generated_file:
             generated_file.write(initial_input)
         with mock.patch.dict("os.environ", {"TM_DEVICES_STUB_DIR": str(generated_stub_dir)}):
@@ -397,7 +397,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
 
         # Test the custom added methods
         # noinspection PyUnresolvedReferences
-        assert afg.custom_model_getter("a", "b", "c", 0.1) == ("Device AFG3252C a b c 0.1")
+        assert afg.custom_model_getter("a", "b", "c", 0.1) == "Device AFG3252C a b c 0.1"
         # noinspection PyUnresolvedReferences
         assert afg.custom_model_getter_ss("hello") == "SignalSource AFG3252C hello"
         # noinspection PyUnresolvedReferences
