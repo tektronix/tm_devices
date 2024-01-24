@@ -184,16 +184,16 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         # (this is the correct way to edit the frozen data)
         if self.lan_port is not None and isinstance(self.lan_port, str):
             object.__setattr__(self, "lan_port", int(self.lan_port))
-        if not isinstance(self.address, str):  # pyright: ignore
+        if not isinstance(self.address, str):  # pyright: ignore[reportUnnecessaryIsInstance]
             object.__setattr__(self, "address", str(self.address))
 
         # Validate the connection and interface types
         try:
             # device and connections are inside this try clause to raise a TypeError on bad values.
             # Convert them from strings (parsed from config/env) to appropriate enum value.
-            if not isinstance(self.device_type, DeviceTypes):  # pyright: ignore
+            if not isinstance(self.device_type, DeviceTypes):  # pyright: ignore[reportUnnecessaryIsInstance]
                 object.__setattr__(self, "device_type", DeviceTypes(self.device_type))
-            if not isinstance(self.connection_type, ConnectionTypes):  # pyright: ignore
+            if not isinstance(self.connection_type, ConnectionTypes):  # pyright: ignore[reportUnnecessaryIsInstance]
                 object.__setattr__(self, "connection_type", ConnectionTypes(self.connection_type))
 
             # While a SerialConfig is not frozen, if not created here then it cannot be added later.

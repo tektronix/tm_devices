@@ -27,7 +27,7 @@ class NoDeviceProvidedError(Exception):
 ####################################################################################################
 # Classes
 ####################################################################################################
-class DefaultDictPassKeyToFactory(defaultdict):  # type: ignore
+class DefaultDictPassKeyToFactory(defaultdict):  # pyright: ignore[reportMissingTypeArgument]
     """A custom defaultdict.
 
     This custom defaultdict passes the key used to access a missing value into the stored
@@ -41,7 +41,7 @@ class DefaultDictPassKeyToFactory(defaultdict):  # type: ignore
             default_factory: The factory function used to create new values in the dictionary.
             kwargs: The keyword arguments.
         """
-        super().__init__(default_factory, **kwargs)  # type: ignore
+        super().__init__(default_factory, **kwargs)  # type: ignore[arg-type]
 
     def __missing__(self, key: Any) -> Any:
         """Call the ``default_factory()`` function and pass the key as the only parameter.
@@ -51,7 +51,7 @@ class DefaultDictPassKeyToFactory(defaultdict):  # type: ignore
         """
         if self.default_factory:
             # noinspection PyArgumentList  # pylint: disable=not-callable
-            dict.__setitem__(self, key, self.default_factory(key))  # type: ignore
+            dict.__setitem__(self, key, self.default_factory(key))  # type: ignore[arg-type]
             return cast(Any, self[key])
         return cast(Any, super().__missing__(key))  # pyright: ignore [reportUnknownMemberType]
 

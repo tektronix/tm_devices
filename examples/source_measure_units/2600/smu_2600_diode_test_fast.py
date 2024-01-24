@@ -156,9 +156,9 @@ def diode_test(inst: SMU2602B) -> None:
 
     if SPEED == "FAST":
         inst.commands.display.clear()
-        inst.commands.display.setcursor(1, 1)  # type: ignore
+        inst.commands.display.setcursor(1, 1)  # type: ignore[arg-type]
         inst.commands.display.settext("Test In Progress")
-        inst.commands.display.setcursor(2, 1)  # type: ignore
+        inst.commands.display.setcursor(2, 1)  # type: ignore[arg-type]
         inst.commands.display.settext(f"Testing {NDIODES} Parts")
 
     start_time = time.time()

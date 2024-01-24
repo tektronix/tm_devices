@@ -45,7 +45,7 @@ class DAQ6510(DAQ6510Mixin, DataAcquisitionSystem):
     @property
     def ieee_cmds(self) -> LegacyTSPIEEE4882Commands:
         """Return an internal class containing methods for the standard IEEE 488.2 command set."""
-        return self._ieee_cmds  # type: ignore
+        return self._ieee_cmds  # pyright: ignore[reportReturnType]
 
     @ReadOnlyCachedProperty
     def total_channels(self) -> int:

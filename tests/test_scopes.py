@@ -132,7 +132,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     ):
         scope.generate_waveform(
             25e6,
-            scope.source_device_constants.functions.PULSE.value,  # type: ignore
+            scope.source_device_constants.functions.PULSE.value,  # pyright: ignore[reportArgumentType]
             1.0,
             0.0,
             "all",
@@ -334,7 +334,7 @@ def test_long_device_name(device_manager: DeviceManager) -> None:
         assert scope.all_channel_names_list == ()
 
         # noinspection PyUnresolvedReferences
-        assert scope.custom_mso5_method("test-value") == (  # type: ignore
+        assert scope.custom_mso5_method("test-value") == (  # pyright: ignore[reportUnknownMemberType,reportAttributeAccessIssue]
             "This is a custom method for the LONGNAMEINSTRUMENT device. value='test-value'"
         )
 

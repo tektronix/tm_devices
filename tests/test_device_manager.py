@@ -1,10 +1,15 @@
 # pyright: reportUnusedFunction=none
+# pyright: reportUnknownMemberType=none
+# pyright: reportAttributeAccessIssue=none
+# pyright: reportUnknownVariableType=none
+# pyright: reportArgumentType=none
 """Tests for the device_manager.py file."""
 import contextlib
 import os
 import subprocess
 import sys
 
+from pathlib import Path
 from typing import Generator, Iterator, List
 from unittest import mock
 
@@ -253,20 +258,18 @@ class Device(ABC, metaclass=abc.ABCMeta):
     def already_exists(self) -> None:
         """Return nothing."""
 '''
-        sub_filepath = os.path.join("drivers", "device.pyi")
-        generated_stub_dir = os.path.join(
-            os.path.dirname(__file__),
-            "samples",
-            "generated_stubs",
-            f"output_{sys.version_info.major}{sys.version_info.minor}",
-            "tm_devices",
+        sub_filepath = Path("drivers/device.pyi")
+        generated_stub_dir = (
+            Path(__file__).parent
+            / "samples/generated_stubs"
+            / f"output_{sys.version_info.major}{sys.version_info.minor}/tm_devices"
         )
-        generated_stub_file = os.path.join(generated_stub_dir, sub_filepath)
-        golden_stub_dir = os.path.join(os.path.dirname(__file__), "samples", "golden_stubs")
-        os.makedirs(os.path.dirname(generated_stub_file), exist_ok=True)
+        generated_stub_file = generated_stub_dir / sub_filepath
+        golden_stub_dir = Path(__file__).parent / "samples" / "golden_stubs"
+        generated_stub_file.parent.mkdir(parents=True, exist_ok=True)
         with open(generated_stub_file, "w", encoding="utf-8") as generated_file:
             generated_file.write(initial_input)
-        with mock.patch.dict("os.environ", {"TM_DEVICES_STUB_DIR": generated_stub_dir}):
+        with mock.patch.dict("os.environ", {"TM_DEVICES_STUB_DIR": str(generated_stub_dir)}):
             # noinspection PyUnusedLocal,PyShadowingNames
             @Device.add_property(is_cached=True)
             def inc_cached_count(self: Device) -> int:  # noqa: ARG001
@@ -303,20 +306,20 @@ class Device(ABC, metaclass=abc.ABCMeta):
                 """Return the model and serial in a list."""
                 return [self.model, self.serial]
 
-            @Device.add_method  # type: ignore
+            @Device.add_method
             def custom_return_none() -> None:
                 """Return nothing.
 
                 This has a multi-line description.
                 """
 
-            @Device.add_method  # type: ignore
+            @Device.add_method
             def already_exists() -> None:
                 """Return nothing."""
 
             with pytest.raises(AssertionError):
 
-                @Scope.add_method  # type: ignore
+                @Scope.add_method
                 def custom_return() -> None:
                     """Return nothing."""
 
@@ -348,7 +351,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         ############################################################################################
         start_dir = os.getcwd()
         try:
-            os.chdir(os.path.dirname(generated_stub_file))
+            os.chdir(generated_stub_file.parent)
             subprocess.check_call(
                 [  # noqa: S603
                     sys.executable,
@@ -356,7 +359,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
                     "ruff",
                     "format",
                     "--quiet",
-                    os.path.basename(generated_stub_file),
+                    generated_stub_file.name,
                 ]
             )
             subprocess.check_call(
@@ -368,12 +371,12 @@ class Device(ABC, metaclass=abc.ABCMeta):
                     "check",
                     "--select=I",
                     "--fix",
-                    os.path.basename(generated_stub_file),
+                    generated_stub_file.name,
                 ]
             )
         finally:
             os.chdir(start_dir)
-        with open(os.path.join(golden_stub_dir, sub_filepath), encoding="utf-8") as golden_file:
+        with open(golden_stub_dir / sub_filepath, encoding="utf-8") as golden_file:
             golden_contents = golden_file.read()
         with open(generated_stub_file, encoding="utf-8") as generated_file:
             generated_contents = generated_file.read()
@@ -382,32 +385,30 @@ class Device(ABC, metaclass=abc.ABCMeta):
         # Test the custom added properties
         afg = device_manager.add_afg("afg3kc-hostname", alias="testing")
         # noinspection PyUnresolvedReferences
-        assert afg.class_name == "AFG3KC"  # type: ignore
+        assert afg.class_name == "AFG3KC"
         # noinspection PyUnresolvedReferences
-        _ = afg.inc_cached_count  # type: ignore
+        _ = afg.inc_cached_count
         # noinspection PyUnresolvedReferences
-        assert afg.inc_cached_count == 1, "cached property is not working"  # type: ignore
+        assert afg.inc_cached_count == 1, "cached property is not working"
         # noinspection PyUnresolvedReferences
-        _ = afg.inc_count  # type: ignore
+        _ = afg.inc_count
         # noinspection PyUnresolvedReferences
-        assert afg.inc_count == 3, "uncached property is not working"  # type: ignore
+        assert afg.inc_count == 3, "uncached property is not working"
 
         # Test the custom added methods
         # noinspection PyUnresolvedReferences
-        assert afg.custom_model_getter("a", "b", "c", 0.1) == (  # type: ignore
-            "Device AFG3252C a b c 0.1"
-        )
+        assert afg.custom_model_getter("a", "b", "c", 0.1) == "Device AFG3252C a b c 0.1"
         # noinspection PyUnresolvedReferences
-        assert afg.custom_model_getter_ss("hello") == "SignalSource AFG3252C hello"  # type: ignore
+        assert afg.custom_model_getter_ss("hello") == "SignalSource AFG3252C hello"
         # noinspection PyUnresolvedReferences
-        assert afg.custom_model_getter_afg("hello") == "AFG AFG3252C hello"  # type: ignore
+        assert afg.custom_model_getter_afg("hello") == "AFG AFG3252C hello"
         # noinspection PyUnresolvedReferences
-        assert afg.custom_model_getter_afg3k("hello") == "AFG3K AFG3252C hello"  # type: ignore
+        assert afg.custom_model_getter_afg3k("hello") == "AFG3K AFG3252C hello"
         # noinspection PyUnresolvedReferences
-        assert afg.custom_model_getter_afg3kc("hello") == "AFG3KC AFG3252C hello"  # type: ignore
+        assert afg.custom_model_getter_afg3kc("hello") == "AFG3KC AFG3252C hello"
         with pytest.raises(AttributeError):
             # noinspection PyUnresolvedReferences
-            afg.custom_model_getter_scope("hello")  # type: ignore
+            afg.custom_model_getter_scope("hello")
 
         # Test VISA methods
         assert afg.set_and_check("OUTPUT1:STATE", "1", custom_message_prefix="Custom prefix") == "1"
@@ -618,7 +619,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         num_closes = 3
         args = [
             sys.executable,
-            f"{os.path.dirname(__file__)}/validate_device_manager_delete.py",
+            str(Path(__file__).parent / "validate_device_manager_delete.py"),
         ]
         stdout = subprocess.check_output(args).decode("utf-8")  # noqa: S603
 
@@ -643,9 +644,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         assert len(device_manager.devices) == 1
         _ = capsys.readouterr()  # clear the output
 
-        device_manager.load_config_file(
-            f"{os.path.dirname(os.path.abspath(__file__))}/samples/simulated_config.yaml"
-        )
+        device_manager.load_config_file(Path(__file__).parent / "samples/simulated_config.yaml")
         assert len(device_manager.devices) == 3
         stdout = capsys.readouterr().out
         assert "Beginning Device Cleanup on AFG " in stdout
@@ -655,7 +654,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         device_manager.remove_all_devices()
         _ = capsys.readouterr()  # clear the output
         device_manager.load_config_file(
-            f"{os.path.dirname(os.path.abspath(__file__))}/samples/simulated_config_no_cleanup.yaml"
+            Path(__file__).parent / "samples/simulated_config_no_cleanup.yaml"
         )
         assert len(device_manager.devices) == 3
         stdout = capsys.readouterr().out
@@ -666,7 +665,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         device_manager.remove_all_devices()
         _ = capsys.readouterr()  # clear the output
         device_manager.load_config_file(
-            f"{os.path.dirname(os.path.abspath(__file__))}/samples/simulated_config_no_devices.yaml"
+            Path(__file__).parent / "samples/simulated_config_no_devices.yaml"
         )
         assert not device_manager.devices
         stdout = capsys.readouterr().out

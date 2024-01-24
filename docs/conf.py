@@ -88,7 +88,7 @@ def prep_jinja_env(jinja_env: JinjaEnvironment) -> None:
     Args:
         jinja_env: The Jinja environment.
     """
-    jinja_env.tests["contains"] = item_in_sequence  # pyright: ignore
+    jinja_env.tests["contains"] = item_in_sequence  # pyright: ignore[reportArgumentType,reportUnknownMemberType]
 
 
 # FUTURE: # autoapi_prepare_jinja_env = prep_jinja_env
@@ -228,4 +228,4 @@ def setup(sphinx: Sphinx) -> None:
     Args:
         sphinx: The sphinx object.
     """
-    sphinx.connect("autoapi-skip-member", skip_member)  # pyright: ignore
+    sphinx.connect("autoapi-skip-member", skip_member)  # pyright: ignore[reportUnknownMemberType]

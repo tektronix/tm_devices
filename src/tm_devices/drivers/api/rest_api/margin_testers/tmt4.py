@@ -127,7 +127,7 @@ class TMT4(MarginTester):
         start = time.time()
         while time.time() < start + timeout:
             _, res_json, _, _ = self.get("/device/status", allow_errors=True)
-            if res_json["usage"] == "NOT LOCKED":  # type: ignore
+            if res_json["usage"] == "NOT LOCKED":  # pyright: ignore[reportArgumentType,reportCallIssue]
                 return
             time.sleep(1)
         msg = f"waited more than {timeout} seconds for {self.name} to unlock"
