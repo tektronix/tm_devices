@@ -50,7 +50,7 @@ repos:
     hooks:
       - id: blacken-docs
         files: \.(rst|md|markdown|tex)$
-        additional_dependencies: [black==23.12.1]
+        additional_dependencies: [black==23.12.1]  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
   - repo: https://github.com/lyz-code/yamlfix
     rev: 1.16.0
     hooks:
@@ -67,6 +67,7 @@ repos:
           - mdformat-frontmatter
           - mdformat-beautysh
           - mdformat-black
+          - black==23.12.1  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
           - mdformat-config
           - mdformat-shfmt
           - mdformat-web
