@@ -50,6 +50,7 @@ repos:
     hooks:
       - id: blacken-docs
         files: \.(rst|md|markdown|tex)$
+        additional_dependencies: [black==23.12.1]
   - repo: https://github.com/lyz-code/yamlfix
     rev: 1.16.0
     hooks:
