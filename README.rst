@@ -22,7 +22,7 @@
    * - Documentation
      - |GitHub Pages status|
    * - Code Style
-     - |Test style: pytest| |Code style: ruff| |Imports: isort| |Docstring style: google|
+     - |Test style: pytest| |Code style: ruff| |Docstring style: google|
    * - Linting
      - |pre-commit enabled| |Docstring formatter: docformatter| |Type Checker: pyright| |Linter: pylint| |Linter: Ruff|
 
@@ -76,9 +76,6 @@
 
 .. |Code style: ruff| image:: https://img.shields.io/badge/code%20style-ruff-black
    :target: https://docs.astral.sh/ruff/formatter/
-
-.. |Imports: isort| image:: https://img.shields.io/badge/imports-isort-black
-   :target: https://pycqa.github.io/isort/
 
 .. |Docstring formatter: docformatter| image:: https://img.shields.io/badge/docstring%20formatter-docformatter-tan
    :target: https://github.com/PyCQA/docformatter
