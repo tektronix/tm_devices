@@ -429,6 +429,10 @@ def test_get_visa_backend() -> None:
         ("TCPIP0::127.0.0.9::inst0::INSTR", ("TCPIP", "127.0.0.9")),
         ("TCPIP::127.0.0.9::inst::INST", ("TCPIP", "127.0.0.9")),
         ("USB0::0x0699::0x0522::SERIAL1::INSTR", ("USB", "MSO5-SERIAL1")),
+        ("TCPIP0::127.0.0.9::4000::SOCKET", ("SOCKET", "127.0.0.9:4000")),
+        ("GPIB0::1::INSTR", ("GPIB", "1")),
+        ("ASRL1::INSTR", ("SERIAL", "1")),
+        ("MOCK0::127.0.0.9::INSTR", ("MOCK", "127.0.0.9")),
     ],
 )
 def test_detect_visa_resource_expression(
