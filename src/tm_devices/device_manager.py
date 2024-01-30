@@ -1196,6 +1196,12 @@ class DeviceManager(metaclass=Singleton):
         if (visa_resource_parts := detect_visa_resource_expression(address)) is not None:
             connection_type = visa_resource_parts[0]
             address = visa_resource_parts[1]
+            if (
+                connection_type == ConnectionTypes.SOCKET.value
+                and len(address_parts := address.split(":", maxsplit=1)) > 1
+            ):
+                address = address_parts[0]
+                port = int(address_parts[1])
 
         # Device Manager uses all caps for key mappings to device drivers and aliases
         config_dict: dict[str, Optional[Union[str, int, SerialConfig]]] = {

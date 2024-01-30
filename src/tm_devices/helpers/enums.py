@@ -1,6 +1,5 @@
 """Module containing Enums for the tm_devices package."""
 from enum import Enum
-from types import DynamicClassAttribute
 from typing import cast, List
 
 
@@ -10,13 +9,13 @@ class CustomStrEnum(Enum):
     This class provides better type hinting for the value property.
     """
 
-    @DynamicClassAttribute
-    def name(self) -> str:  # pylint: disable=function-redefined
+    @property
+    def name(self) -> str:  # pylint: disable=function-redefined,invalid-overridden-method
         """Return the name of the Enum member."""
         return self._name_  # pylint: disable=no-member
 
-    @DynamicClassAttribute
-    def value(self) -> str:
+    @property
+    def value(self) -> str:  # pylint: disable=invalid-overridden-method
         """Return the value of the Enum member."""
         return cast(str, self._value_)  # pylint: disable=no-member
 

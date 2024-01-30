@@ -108,6 +108,12 @@ from tm_devices import DeviceManager
             None,
             ("SERIAL", "SMU2614B", "Model 2614B", "4498311"),
         ),
+        (
+            "TCPIP::AFG3KC-HOSTNAME::10001::SOCKET",
+            "AFG",
+            None,
+            ("SOCKET", "AFG3KC", "AFG3252C", "SERIAL1"),
+        ),
     ],
 )
 def test_alternative_connection_methods(
