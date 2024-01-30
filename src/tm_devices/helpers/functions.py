@@ -303,7 +303,7 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
 
 
 # pylint: disable=too-many-branches
-def get_model_series(model: str) -> str:  # noqa: PLR0912, C901
+def get_model_series(model: str) -> str:  # noqa: PLR0912,C901
     """Get the series string from the full model number.
 
     Args:
