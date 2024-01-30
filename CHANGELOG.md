@@ -30,6 +30,10 @@ Things to be included in the next release go here.
 - Updated the version of `python-semantic-release` that is used to avoid needing to store a copy of the previous changelog in the repo.
 - Pinned the linters (ruff, pyright, pylint, docformatter) to specific versions to reduce failures when updates are released that add new rules or break existing rules.
 
+### Fixed
+
+- Fixed the code that detects VISA resource expressions to be able to detect SOCKET resource expressions properly.
+
 ______________________________________________________________________
 
 ## v1.1.0 (2023-12-07)

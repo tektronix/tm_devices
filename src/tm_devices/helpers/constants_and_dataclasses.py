@@ -430,7 +430,7 @@ PACKAGE_NAME: Final = "tm_devices"
 """str: Constant string with the name of this package."""
 
 VISA_RESOURCE_EXPRESSION_REGEX: Final = re.compile(
-    r"^(\w+)(?:::0X\w+)?::([-.\w]+)(?:::(\w+))?(?:::INST0?)?::INSTR?$"
+    r"^(\w+)(?:::0X\w+)?::([-.\w]+)(?:::(\w+))?(?:::INST0?)?::(INSTR?|SOCKET)$"
 )
 """re.Pattern[str]: A regex pattern used to capture pieces of VISA resource expressions."""
 

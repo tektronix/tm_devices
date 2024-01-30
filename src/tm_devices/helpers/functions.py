@@ -265,7 +265,8 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
 
     The pieces consist of:
         - The connection type, e.g. TCPIP.
-        - The address of the device, an IP address, hostname, or
+        - The address of the device, an IP address
+          (with port separated by a colon for SOCKET connections), hostname, or
           string in the format ``model-serial``.
 
     Args:
@@ -276,11 +277,11 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
     """
     retval: Optional[Tuple[str, str]] = None
     if input_str.upper().startswith("ASRL"):
-        retval = ("SERIAL", input_str[4:].split("::", 1)[0])
+        retval = (ConnectionTypes.SERIAL.value, input_str[4:].split("::", 1)[0])
     elif (match := VISA_RESOURCE_EXPRESSION_REGEX.search(input_str.upper())) is not None:
         match_groups_list = list(filter(None, match.groups()))
-        for unneeded_part in ("INST", "INST0"):
-            if unneeded_part in match_groups_list:
+        for unneeded_part in ("INST", "INST0", "INSTR"):
+            while unneeded_part in match_groups_list:
                 match_groups_list.remove(unneeded_part)
         # Check if the model is in the USB model lookup
         filtered_usb_model_keys = [
@@ -291,12 +292,18 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
         if filtered_usb_model_keys:
             # SMU and PSU need to be removed from the string to prevent issues
             match_groups_list[1] = filtered_usb_model_keys[0].replace("SMU", "").replace("PSU", "")
-        retval = (match_groups_list[0].rstrip("0"), "-".join(match_groups_list[1:]).lstrip("0X"))
+        if match_groups_list[-1] == ConnectionTypes.SOCKET.value:
+            retval = (match_groups_list[-1], ":".join(match_groups_list[1:3]))
+        else:
+            retval = (
+                match_groups_list[0].rstrip("0"),
+                "-".join(match_groups_list[1:]).lstrip("0X"),
+            )
     return retval
 
 
 # pylint: disable=too-many-branches
-def get_model_series(model: str) -> str:  # noqa: PLR0912,C901,PLR0915
+def get_model_series(model: str) -> str:  # noqa: PLR0912, C901
     """Get the series string from the full model number.
 
     Args:
@@ -331,10 +338,9 @@ def get_model_series(model: str) -> str:  # noqa: PLR0912,C901,PLR0915
         model_beginning = ""
         model_end = ""
         if re.search("[0-9]", model):  # if the model contains numbers
-            model_end = re.split(r"\d+", model)[-1]  # split on the occurence of each number
+            model_end = re.split(r"\d+", model)[-1]  # split on the occurrence of each number
         if len(model_end) == 1 and model_end not in valid_model_endings:
             model_end = ""
-        model_beginning = ""
         if model_numbers := re.findall(r"\d+", model):
             model_number = int(model_numbers[0])
             if model.startswith("MODEL") or all(x.isdigit() for x in model.rstrip(model_end)):
