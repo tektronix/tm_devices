@@ -113,7 +113,7 @@ pytest-html = ">=4.0"
 pytest-order = ">=1.0.1"
 pytest-profiling = ">=1.7.0"
 python-semantic-release = ">=8.5.1"
-ruff = "0.1.14"  # Update this by running scripts/update_development_dependencies.py
+ruff = "0.1.15"  # Update this by running scripts/update_development_dependencies.py
 safety = ">=2.1.1"
 sphinx-autoapi = ">=2.0.0"
 sphinx-copybutton = ">=0.5.1"

@@ -40,6 +40,8 @@ def main() -> None:
     """Run the script to update the development dependencies."""
     script_location = Path(__file__)
     python_executable = sys.executable
+    python_script_location = Path(python_executable).parent
+    repository_root_directory = script_location.parent.parent
     latest_dependency_versions: List[str] = []
 
     # Get the latest versions for each of the dependencies to update
@@ -49,18 +51,23 @@ def main() -> None:
 
     # Update dependencies in pyproject.toml using poetry
     dependencies = " ".join(f'"{x}"' for x in latest_dependency_versions)
-    _run_cmd_in_subprocess(f"{python_executable} -m poetry add --group=dev {dependencies}")
+    _run_cmd_in_subprocess(f'"{python_executable}" -m poetry add --group=dev {dependencies}')
 
     # Run poetry update
-    _run_cmd_in_subprocess(f"{python_executable} -m poetry update")
+    _run_cmd_in_subprocess(f'"{python_executable}" -m poetry update')
 
     # Update pre-commit config file
-    _run_cmd_in_subprocess(python_executable.rsplit("python", maxsplit=1)[-0] + "pre-commit-update")
+    _run_cmd_in_subprocess(f'"{python_script_location}/pre-commit-update"')
 
     # Fix the formatting of the pre-commit config file
     with warnings.catch_warnings():
         warnings.simplefilter("ignore", UserWarning)
-        fix_files([f"{script_location.parent.parent}/.pre-commit-config.yaml"])
+        fix_files([f"{repository_root_directory}/.pre-commit-config.yaml"])
+
+    # Fix the formatting of the pyproject.toml file
+    _run_cmd_in_subprocess(
+        f'"{python_script_location}/toml-sort" "{repository_root_directory}/pyproject.toml"'
+    )
 
 
 if __name__ == "__main__":
