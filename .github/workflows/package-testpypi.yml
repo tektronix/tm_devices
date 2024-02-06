@@ -66,7 +66,7 @@ jobs:
           check-latest: true
       - name: Test installing from test.pypi.org
         # A retry is used to allow for some downtime before the package is installable
-        uses: nick-fields/retry@v2
+        uses: nick-fields/retry@v3
         with:
           timeout_minutes: 10
           max_attempts: 5
