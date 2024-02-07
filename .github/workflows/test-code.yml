@@ -72,6 +72,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           plugin: pycoverage
+          directory: .
           name: codecov-${{ matrix.os_name }}
           fail_ci_if_error: true
           verbose: true
