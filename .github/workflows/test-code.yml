@@ -71,8 +71,7 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: .coverage_tests.xml
-          disable_search: true
+          plugin: pycoverage
           name: codecov-${{ matrix.os_name }}
           fail_ci_if_error: true
           verbose: true
