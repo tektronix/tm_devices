@@ -110,7 +110,8 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
     flow_control: Optional[FlowControl] = None
     """Optional[FlowControl]: Control for pausing/resuming data stream between slower devices.
 
-    One of ``SerialConfig.FlowControl.[none|xon_xoff|dtr_dsr|rts_cts]``."""
+    One of ``SerialConfig.FlowControl.[none|xon_xoff|dtr_dsr|rts_cts]``.
+    """
     parity: Optional[Parity] = None
     """Optional[Parity]: Parity adds a checksum bit to each data character.
      Checksum bit enables the target device to determine whether the data was received correctly.
@@ -183,16 +184,16 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         # (this is the correct way to edit the frozen data)
         if self.lan_port is not None and isinstance(self.lan_port, str):
             object.__setattr__(self, "lan_port", int(self.lan_port))
-        if not isinstance(self.address, str):  # pyright: ignore
+        if not isinstance(self.address, str):  # pyright: ignore[reportUnnecessaryIsInstance]
             object.__setattr__(self, "address", str(self.address))
 
         # Validate the connection and interface types
         try:
             # device and connections are inside this try clause to raise a TypeError on bad values.
             # Convert them from strings (parsed from config/env) to appropriate enum value.
-            if not isinstance(self.device_type, DeviceTypes):  # pyright: ignore
+            if not isinstance(self.device_type, DeviceTypes):  # pyright: ignore[reportUnnecessaryIsInstance]
                 object.__setattr__(self, "device_type", DeviceTypes(self.device_type))
-            if not isinstance(self.connection_type, ConnectionTypes):  # pyright: ignore
+            if not isinstance(self.connection_type, ConnectionTypes):  # pyright: ignore[reportUnnecessaryIsInstance]
                 object.__setattr__(self, "connection_type", ConnectionTypes(self.connection_type))
 
             # While a SerialConfig is not frozen, if not created here then it cannot be added later.
@@ -429,7 +430,7 @@ PACKAGE_NAME: Final = "tm_devices"
 """str: Constant string with the name of this package."""
 
 VISA_RESOURCE_EXPRESSION_REGEX: Final = re.compile(
-    r"^(\w+)(?:::0X\w+)?::([-.\w]+)(?:::(\w+))?(?:::INST0?)?::INSTR?$"
+    r"^(\w+)(?:::0X\w+)?::([-.\w]+)(?:::(\w+))?(?:::INST0?)?::(INSTR?|SOCKET)$"
 )
 """re.Pattern[str]: A regex pattern used to capture pieces of VISA resource expressions."""
 
@@ -514,6 +515,9 @@ USB_MODEL_ID_LOOKUP: Final[Mapping[str, USBTMCConfiguration]] = MappingProxyType
             vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0105"
         ),
         SupportedModels.MSO4.value: USBTMCConfiguration(
+            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0527"
+        ),
+        SupportedModels.MSO4B.value: USBTMCConfiguration(
             vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0527"
         ),
         SupportedModels.MSO5.value: USBTMCConfiguration(
@@ -635,6 +639,9 @@ USB_MODEL_ID_LOOKUP: Final[Mapping[str, USBTMCConfiguration]] = MappingProxyType
         ),
         SupportedModels.AWG70KB.value: USBTMCConfiguration(
             vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0503"
+        ),
+        SupportedModels.SS3706A.value: USBTMCConfiguration(
+            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x3706"
         ),
     }
 )

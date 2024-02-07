@@ -6,10 +6,12 @@ format.
 """
 import os
 
+from pathlib import Path
+
 from tm_devices import DeviceManager
 
 if __name__ == "__main__":
-    os.environ["TM_DEVICES_CONFIG"] = f"{os.path.dirname(__file__)}/verify_devices.yaml"
+    os.environ["TM_DEVICES_CONFIG"] = f"{Path(__file__).parent}/verify_devices.yaml"
 
     with DeviceManager(verbose=False) as device_manager:
         device_manager.setup_cleanup_enabled = False

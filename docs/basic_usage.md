@@ -17,7 +17,24 @@ This will print the available VISA devices to the console when run from a shell 
 
 ## Adding devices
 
+Configure device connections as needed using the
+[config file](configuration.md#config-file), an
+[environment variable](configuration.md#environment-variable), or
+via [Python code](configuration.md#python-code) (shown here). See the
+[Configuration guide](configuration.md) for more information on how to
+configure devices to connect with.
+
 ```{literalinclude} ../examples/miscellaneous/adding_devices.py
+---
+language: python
+---
+```
+
+## VISA backend selection
+
+The `DeviceManager` can be configured to use VISA backends from different VISA implementations.
+
+```{literalinclude} ../examples/miscellaneous/visa_connection_selectivity.py
 ---
 language: python
 ---
@@ -35,9 +52,10 @@ language: python
 
 ## Adding devices with environment variables
 
-Configure device environment variables as needed using the config file or
-[Python](#adding-devices). See the [Configuration guide](configuration.md) for
-more information on how to do that.
+Device configuration information can be defined in an
+[environment variable](configuration.md#environment-variable), usually done
+outside the Python code for ease of automation
+(shown inside the Python code here for demonstration purposes).
 
 ```{literalinclude} ../examples/miscellaneous/adding_devices_with_env_var.py
 ---
@@ -97,6 +115,28 @@ language: python
 ---
 ```
 
+## Configuring a measurement on a single sequence
+
+A scope can be configured for a measurement on a single acquisition by setting the appropriate acquisition parameters
+and adding the desired measurement on the selected channel.
+
+```{literalinclude} ../examples/scopes/tekscope/get_acquisition_data.py
+---
+language: python
+---
+```
+
+## Adding DPOJET measurements and plots
+
+DPOJET measurements and plots can be added on a DPO70KSX/C/7KC/DPO5KB scope.
+Measurements report can be saved in a `.pdf` format.
+
+```{literalinclude} ../examples/scopes/tekscope_70k/dpojet/adding_dpojet_measurements.py
+---
+language: python
+---
+```
+
 ## Directly accessing the PyVISA resource object
 
 The [PyVISA](https://pyvisa.readthedocs.io/en/latest/) resource object can be directly
@@ -148,6 +188,6 @@ In order to do this a few things will need to be created:
 ```{literalinclude} ../examples/miscellaneous/custom_device_driver_support.py
 ---
 language: python
-emphasize-lines: 9-14,21-23,26
+emphasize-lines: 7-12,19-21,28-30
 ---
 ```

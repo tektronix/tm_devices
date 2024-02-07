@@ -33,28 +33,41 @@ def parse_arguments() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def main() -> None:
+def get_latest_version(package_name: str, index: str) -> str:
     """Get the latest version of the provided package.
+
+    Args:
+        package_name: The name of the package to get the latest version of.
+        index: The index to check for the package, one of (pypi|test.pypi).
+
+    Returns:
+        A string containing the latest version of the package from the given index.
 
     Raises:
         SystemExit: Indicates there were no versions for the package.
     """
-    args = parse_arguments()
-    package = args.package
-    index = args.index
-
-    # This code mirrors code found in src/tm_devices/helpers/functions.py.
+    # This code mirrors code found in src/tm_devices/helpers/functions.py,
+    # in the check_for_update() function.
     # If this code is updated, the helper function should be updated too.
-    url = f"https://{index}.org/pypi/{package}/json"
+    url = f"https://{index}.org/pypi/{package_name}/json"
     try:
         response = requests.get(url, timeout=10)
         releases = json.loads(response.text)["releases"]
         version_list = sorted(releases, key=Version.parse, reverse=True)
         latest_version = version_list[0]
     except (IndexError, json.decoder.JSONDecodeError) as error:
-        msg = f"There were no versions found for the {package} package."
+        msg = f"There were no versions found for the {package_name} package."
         raise SystemExit(msg) from error
 
+    return latest_version
+
+
+def main() -> None:
+    """Get the latest version of the provided package."""
+    args = parse_arguments()
+    package = args.package
+    index = args.index
+    latest_version = get_latest_version(package, index)
     print(latest_version)
 
 

@@ -1,8 +1,25 @@
 """An example of adding devices via Python code."""
 from tm_devices import DeviceManager
-from tm_devices.helpers import PYVISA_PY_BACKEND, SerialConfig, SYSTEM_DEFAULT_VISA_BACKEND
+from tm_devices.helpers import (
+    DMConfigOptions,
+    PYVISA_PY_BACKEND,
+    SerialConfig,
+    SYSTEM_DEFAULT_VISA_BACKEND,
+)
 
-with DeviceManager(verbose=True) as device_manager:
+# Specific config options can optionally be passed in when creating
+# the DeviceManager via a dataclass, they are used to update any existing
+# configuration options from a config file.
+CONFIG_OPTIONS = DMConfigOptions(
+    setup_cleanup=True,  # update the value for this option, all other options will remain untouched
+)
+
+
+# Create the DeviceManager, turning on verbosity and passing in some specific configuration values.
+with DeviceManager(
+    verbose=True,  # optional argument
+    config_options=CONFIG_OPTIONS,  # optional argument
+) as device_manager:
     # Explicitly specify to use the system VISA backend, this is the default,
     # **this code is not required** to use the system default.
     device_manager.visa_library = SYSTEM_DEFAULT_VISA_BACKEND

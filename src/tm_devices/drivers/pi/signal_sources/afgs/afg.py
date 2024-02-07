@@ -3,13 +3,12 @@ import re
 
 from abc import ABC
 from dataclasses import dataclass
-from functools import cached_property
 from typing import Literal, Type
 
 from tm_devices.driver_mixins.signal_generator_mixin import SourceDeviceConstants
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.signal_sources.signal_source import SignalSource
-from tm_devices.helpers import DeviceTypes, SignalSourceFunctionsAFG
+from tm_devices.helpers import DeviceTypes, ReadOnlyCachedProperty, SignalSourceFunctionsAFG
 
 
 @dataclass(frozen=True)
@@ -31,9 +30,9 @@ class AFG(SignalSource, ABC):
     @property
     def source_device_constants(self) -> AFGSourceDeviceConstants:
         """Return the device constants."""
-        return self._DEVICE_CONSTANTS  # type: ignore
+        return self._DEVICE_CONSTANTS  # type: ignore[attr-defined]
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         if match := re.match(r"AFG\d+(\d)", self.model):
@@ -80,6 +79,7 @@ class AFG(SignalSource, ABC):
         # Generate the waveform on the given channel
         for channel_name in self._validate_channels(channel):
             # grab the number(s) in the channel name
+            # noinspection PyTypeChecker
             channel_num = "".join(filter(str.isdigit, channel_name))
             # Temporarily turn off this channel
             self.set_and_check(f"OUTPUT{channel_num}:STATE", 0)
@@ -125,7 +125,7 @@ class AFG(SignalSource, ABC):
                 self.write("*TRG")
             # Initiate a phase sync (between CH 1 and CH 2 output waveforms on two channel AFGs)
             elif (
-                self.total_channels > 1
+                self.total_channels > 1  # pylint: disable=comparison-with-callable
                 and function != SignalSourceFunctionsAFG.DC
                 and not burst_state
             ):

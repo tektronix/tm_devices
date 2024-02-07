@@ -18,6 +18,128 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added a step during a device reboot that will reset all the cached properties in the event that one of them changed.
+- Added command API support for MSO5K, DPO5K, and DPO7K models.
+- Added a custom, read-only implementation of the [`cached_property`](https://docs.python.org/3/library/functools.html#functools.cached_property) decorator.
+
+### Changed
+
+- Switched to ruff's formatter instead of black's formatter for python code.
+- Updated the version of `python-semantic-release` that is used to avoid needing to store a copy of the previous changelog in the repo.
+- Pinned the linters (ruff, pyright, pylint, docformatter) to specific versions to reduce failures when updates are released that add new rules or break existing rules.
+
+### Fixed
+
+- Fixed the code that detects VISA resource expressions to be able to detect SOCKET resource expressions properly.
+
+______________________________________________________________________
+
+## v1.1.0 (2023-12-07)
+
+### Merged Pull Requests
+
+- feat: Added support for MSO4B device ([#115](https://github.com/tektronix/tm_devices/issues/115))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 1 update ([#112](https://github.com/tektronix/tm_devices/issues/112))
+- test: Update tests to try to eliminate false failures when running tests on macOS. ([#114](https://github.com/tektronix/tm_devices/issues/114))
+- ci: Add the admin team as reviewers to all Pull Requests. ([#113](https://github.com/tektronix/tm_devices/issues/113))
+- Update config docs and release workflow ([#111](https://github.com/tektronix/tm_devices/issues/111))
+
+### Added
+
+- Added support for MSO4B device.
+
+______________________________________________________________________
+
+## v1.0.1 (2023-12-01)
+
+### Merged Pull Requests
+
+- Fix import error on mac with system integrity protection ([#109](https://github.com/tektronix/tm_devices/issues/109))
+- feat(rest_api_device): Enable sending raw data for restful api devices. ([#107](https://github.com/tektronix/tm_devices/issues/107))
+- build: Update package classifiers. ([#106](https://github.com/tektronix/tm_devices/issues/106))
+
+### Added
+
+- Added an option to send raw data for RESTful API devices
+
+### Changed
+
+- Updated the package classifiers for PyPI
+
+### Fixed
+
+- Fixed a crash observed on macOS when importing `tm_devices`, issue [#108](https://github.com/tektronix/tm_devices/issues/108)
+
+______________________________________________________________________
+
+## v1.0.0 (2023-11-13)
+
+### Merged Pull Requests
+
+- docs: Remove the TestPyPI badge from the readme, it is not important. ([#105](https://github.com/tektronix/tm_devices/issues/105))
+- Update the Readme ([#100](https://github.com/tektronix/tm_devices/issues/100))
+- ci: Increase timeout when installing tm_devices from pypi servers to avoid issues caused by long wheel build times for packages that tm_devices depends on (such as zeroconf). ([#98](https://github.com/tektronix/tm_devices/issues/98))
+- feat: Add USBTMC support for the 3706A device. ([#97](https://github.com/tektronix/tm_devices/issues/97))
+- Add new options for REST API devices ([#96](https://github.com/tektronix/tm_devices/issues/96))
+- ci: Update how the changelog generation macro selects PR numbers. ([#95](https://github.com/tektronix/tm_devices/issues/95))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 5 updates ([#93](https://github.com/tektronix/tm_devices/issues/93))
+- ci: Added a workflow to scan for security issues in dependencies on all PRs. ([#91](https://github.com/tektronix/tm_devices/issues/91))
+- fix: Update a few comments to have better wording. ([#85](https://github.com/tektronix/tm_devices/issues/85))
+- Update the basic usage docs and Readme ([#84](https://github.com/tektronix/tm_devices/issues/84))
+- docs: Update basic usage with better wording for examples. ([#83](https://github.com/tektronix/tm_devices/issues/83))
+- refactor: Removed some API files that are no longer needed (outdated/broken) ([#82](https://github.com/tektronix/tm_devices/issues/82))
+
+### Added
+
+- New examples added to the basic usage guide showing how to use the commands for some scope drivers
+- Added an example showing how to change the VISA backend that is used for connecting to devices
+- Added a new support table in the Readme showing the API support for Software Solutions
+- Added an option to bypass SSL certificate verification for RESTful API devices
+- Added an option to allow URL redirects for RESTful API devices
+- Added the 3706a to the list of supported usb devices
+
+### Changed
+
+- Updated the support level tables in the Readme
+
+### Removed
+
+- Removed some outdated and broken API files
+
+______________________________________________________________________
+
+## v0.1.24 (2023-10-30)
+
+### Merged Pull Requests
+
+- fix: Build docs without parallelization to fix pop-up issues with sphinx-tippy ([#80](https://github.com/tektronix/tm_devices/issues/80))
+
+### Fixed
+
+- Fixed the `tippy.js` pop-ups in the documentation
+
+______________________________________________________________________
+
+## v0.1.23 (2023-10-30)
+
+### Merged Pull Requests
+
+- fix: Handle non-standard software versions with alpha characters in the last part of the version. ([#81](https://github.com/tektronix/tm_devices/issues/81))
+- docs: Updated the custom styling for the badge table in the readme to make sure the badges are spaced vertically properly. ([#79](https://github.com/tektronix/tm_devices/issues/79))
+- Update contribution guide and documentation publishing workflow ([#78](https://github.com/tektronix/tm_devices/issues/78))
+- docs: Added new workflow which can deploy the documentation to GitHub Pages ([#76](https://github.com/tektronix/tm_devices/issues/76))
+- Update version of GitHub action used to build the package ([#75](https://github.com/tektronix/tm_devices/issues/75))
+- fix: Update auto-generated command API files to fix various issues. ([#72](https://github.com/tektronix/tm_devices/issues/72))
+- fix: Remove outdated comment. ([#71](https://github.com/tektronix/tm_devices/issues/71))
+- ci: Update workflow name and add Python 3.12 classifier ([#70](https://github.com/tektronix/tm_devices/issues/70))
+
+### Fixed
+
+- Updated the auto-generated commands for a handful of models to fix various issues
+- Updated the function responsible for converting version strings into `Version` objects to be able to handle software versions with non-standard formats.
+
 ______________________________________________________________________
 
 ## v0.1.22 (2023-10-24)

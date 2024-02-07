@@ -27,7 +27,7 @@ class TSPDevice(PIDevice, ABC):
     @property
     def ieee_cmds(self) -> TSPIEEE4882Commands:
         """Return an internal class containing methods for the standard IEEE 488.2 command set."""
-        return self._ieee_cmds  # type: ignore
+        return self._ieee_cmds  # pyright: ignore[reportReturnType]
 
     ################################################################################################
     # Public Methods

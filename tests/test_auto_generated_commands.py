@@ -11,14 +11,14 @@ import pytest
 
 from tm_devices import commands
 
-with open(os.path.dirname(__file__) + "/auto_gen_cmds_list.json", encoding="utf-8") as file_pointer:
+with open(Path(__file__).parent / "auto_gen_cmds_list.json", encoding="utf-8") as file_pointer:
     json_dict = json.load(file_pointer)
 MASTER_COMMAND_SET: Set[str] = set(json_dict["commands"])
 
 
 def get_driver_command_list() -> List[str]:
     """Return a list of all auto-generated files with command definitions."""
-    commands_dir = os.path.dirname(commands.__file__)
+    commands_dir = Path(commands.__file__).parent
     auto_generated_file_list = [Path(x) for x in glob.glob(f"{commands_dir}/**", recursive=True)]
     auto_generated_file_list = list(
         filter(

@@ -11,17 +11,18 @@
 
 .. list-table::
    :stub-columns: 1
+   :class: custom-badge-table
 
    * - Testing
      - |Code testing status| |Docs testing status| |Coverage status|
    * - Code Quality
      - |CodeQL status| |CodeFactor grade| |pre-commit status|
    * - Package
-     - |PyPI: Package status| |PyPI: Latest release version| |PyPI: Supported Python versions| |PyPI: Downloads| |License: Apache 2.0| |Package build status| |PyPI upload status| |TestPyPI upload status|
+     - |PyPI: Package status| |PyPI: Latest release version| |PyPI: Supported Python versions| |PyPI: Downloads| |License: Apache 2.0| |Package build status| |PyPI upload status|
    * - Documentation
-     - |Documentation status|
+     - |GitHub Pages status|
    * - Code Style
-     - |Test style: pytest| |Code style: black| |Imports: isort| |Docstring style: google|
+     - |Test style: pytest| |Code style: ruff| |Docstring style: google|
    * - Linting
      - |pre-commit enabled| |Docstring formatter: docformatter| |Type Checker: pyright| |Linter: pylint| |Linter: Ruff|
 
@@ -36,9 +37,6 @@
 
 .. |PyPI upload status| image:: https://github.com/tektronix/tm_devices/actions/workflows/package-release.yml/badge.svg?branch=main
    :target: https://github.com/tektronix/tm_devices/actions/workflows/package-release.yml
-
-.. |TestPyPI upload status| image:: https://github.com/tektronix/tm_devices/actions/workflows/package-testpypi.yml/badge.svg?branch=main
-   :target: https://github.com/tektronix/tm_devices/actions/workflows/package-testpypi.yml
 
 .. |Coverage status| image:: https://codecov.io/gh/tektronix/tm_devices/branch/main/graph/badge.svg
    :target: https://codecov.io/gh/tektronix/tm_devices
@@ -55,8 +53,11 @@
 .. |pre-commit status| image:: https://results.pre-commit.ci/badge/github/tektronix/tm_devices/main.svg
    :target: https://results.pre-commit.ci/latest/github/tektronix/tm_devices/main
 
-.. |Documentation status| image:: https://readthedocs.org/projects/tm-devices/badge/?version=latest
-   :target: https://tm-devices.readthedocs.io/en/latest/?badge=latest
+.. .. |ReadTheDocs status| image:: https://readthedocs.org/projects/tm-devices/badge/?version=latest
+..   :target: https://tm-devices.readthedocs.io/en/latest/?badge=latest
+
+.. |GitHub Pages status| image:: https://github.com/tektronix/tm_devices/actions/workflows/deploy-documentation.yml/badge.svg?branch=main
+   :target: https://github.com/tektronix/tm_devices/actions/workflows/deploy-documentation.yml
 
 .. |License: Apache 2.0| image:: https://img.shields.io/pypi/l/tm_devices
    :target: https://tinyurl.com/tek-tm-devices/LICENSE.md
@@ -73,11 +74,8 @@
 .. |PyPI: Downloads| image:: https://pepy.tech/badge/tm-devices
    :target: https://pepy.tech/project/tm_devices
 
-.. |Code style: black| image:: https://img.shields.io/badge/code%20style-black-black
-   :target: https://github.com/psf/black
-
-.. |Imports: isort| image:: https://img.shields.io/badge/imports-isort-black
-   :target: https://pycqa.github.io/isort/
+.. |Code style: ruff| image:: https://img.shields.io/badge/code%20style-ruff-black
+   :target: https://docs.astral.sh/ruff/formatter/
 
 .. |Docstring formatter: docformatter| image:: https://img.shields.io/badge/docstring%20formatter-docformatter-tan
    :target: https://github.com/PyCQA/docformatter
@@ -160,8 +158,8 @@ Basic Script
        print(scope)
 
 
-Supported Devices
-~~~~~~~~~~~~~~~~~
+Supported Devices & Software Solutions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. admonition:: Legend
    :class: hint
@@ -190,33 +188,34 @@ Supported Devices
    | Control", "| Python API
    | Validation
    | Status"
-   :term:`AFGs <AFG>`, **AFG3000**, :term:`PI`, ✅, 🚧
+   :term:`AFGs <AFG>`, **AFG3000**, :term:`PI`, ✅,
    , **AFG31xxx**, :term:`PI`, ✅,
-   :term:`AWGs <AWG>`, **AWG5000**, :term:`PI`, ✅, 🚧
-   , **AWG5200**, :term:`PI`, ✅, 🚧
-   , **AWG7000**, :term:`PI`, ✅, 🚧
-   , **AWG70000**, :term:`PI`, ✅, 🚧
-   :term:`Scopes <Scope>`, **2 Series MSO**, :term:`PI`, ✅, 🚧
-   , **3 Series MDO**, :term:`PI`, ✅, 🚧
-   , **4 Series MSO**, :term:`PI`, ✅, 🚧
-   , **5 Series MSO**, :term:`PI`, ✅, 🚧
-   , **5 Series B MSO**, :term:`PI`, ✅, 🚧
-   , **5 Series MSO (LP)**, :term:`PI`, ✅, 🚧
-   , **6 Series MSO**, :term:`PI`, ✅, 🚧
-   , **6 Series B MSO**, :term:`PI`, ✅, 🚧
-   , **6 Series LPD**, :term:`PI`, ✅, 🚧
-   , **MSO2000/B**, :term:`PI`, ✅, 🚧
-   , **DPO2000/B**, :term:`PI`, ✅, 🚧
-   , **MDO3000**, :term:`PI`, ✅, 🚧
-   , **MDO4000/B/C**, :term:`PI`, ✅, 🚧
-   , **MSO4000/B**, :term:`PI`, ✅, 🚧
-   , **DPO4000/B**, :term:`PI`, ✅, 🚧
-   , **MSO5000/B**, :term:`PI`, ✅, 🚧
+   :term:`AWGs <AWG>`, **AWG5000**, :term:`PI`, ✅,
+   , **AWG5200**, :term:`PI`, ✅,
+   , **AWG7000**, :term:`PI`, ✅,
+   , **AWG70000**, :term:`PI`, ✅,
+   :term:`Scopes <Scope>`, **2 Series MSO**, :term:`PI`, ✅, ✅
+   , **3 Series MDO**, :term:`PI`, ✅,
+   , **4 Series MSO**, :term:`PI`, ✅, ✅
+   , **4 Series B MSO**, :term:`PI`, ✅, ✅
+   , **5 Series MSO**, :term:`PI`, ✅, ✅
+   , **5 Series B MSO**, :term:`PI`, ✅, ✅
+   , **5 Series MSO (LP)**, :term:`PI`, ✅, ✅
+   , **6 Series MSO**, :term:`PI`, ✅, ✅
+   , **6 Series B MSO**, :term:`PI`, ✅, ✅
+   , **6 Series LPD**, :term:`PI`, ✅, ✅
+   , **MSO2000/B**, :term:`PI`, ✅,
+   , **DPO2000/B**, :term:`PI`, ✅,
+   , **MDO3000**, :term:`PI`, ✅,
+   , **MDO4000/B/C**, :term:`PI`, ✅,
+   , **MSO4000/B**, :term:`PI`, ✅,
+   , **DPO4000/B**, :term:`PI`, ✅,
+   , **MSO5000/B**, :term:`PI`, ✅,
    , **DPO5000/B**, :term:`PI`, ✅, 🚧
    , **DPO7000/C**, :term:`PI`, ✅, 🚧
-   , **DPO70000/C/D/DX/SX**, :term:`PI`, ✅, 🚧
-   , **DSA70000/C/D**, :term:`PI`, ✅, 🚧
-   , **MSO70000/C/DX**, :term:`PI`, ✅, 🚧
+   , **DPO70000/C/D/DX/SX**, :term:`PI`, ✅, ✅
+   , **DSA70000/C/D**, :term:`PI`, ✅, ✅
+   , **MSO70000/C/DX**, :term:`PI`, ✅, ✅
    , **TSOVu**, :term:`PI`, ✅,
    , **TekScope**, :term:`PI`, ✅,
    :term:`PSUs <PSU>`, **2200**, :term:`PI`, ✅,
@@ -226,21 +225,37 @@ Supported Devices
    , **2280S**, :term:`PI`, ✅,
    , **2281S**, :term:`PI`, ✅,
    :term:`SMUs <SMU>`, **24xx Standard**, :term:`PI`, ✅,
-   , **24xx Interactive**, :term:`TSP`, ✅, 🚧
+   , **24xx Interactive**, :term:`TSP`, ✅, ✅
    , **26xxB**, :term:`TSP`, ✅, 🚧
-   , **Model 2601B-PULSE**, :term:`TSP`, ✅, 🚧
+   , **Model 2601B-PULSE**, :term:`TSP`, ✅,
    , **Model 2606B**, :term:`TSP`, ✅, 🚧
-   , **2651A**, :term:`TSP`, ✅, 🚧
-   , **2657A**, :term:`TSP`, ✅, 🚧
+   , **2651A**, :term:`TSP`, ✅,
+   , **2657A**, :term:`TSP`, ✅,
    , **6430 (electrometer)**, :term:`PI`, ✅,
    , **6514 (electrometer)**, :term:`PI`, ✅,
    , **6517B (electrometer)**, :term:`PI`, ✅,
    :term:`MTs <MT>`, **TMT4**, :term:`API`, ✅,
-   :term:`DMMs <DMM>`, **DMM6500**, :term:`TSP`, ✅, 🚧
-   , **DMM7510**, :term:`TSP`, ✅, 🚧
+   :term:`DMMs <DMM>`, **DMM6500**, :term:`TSP`, ✅,
+   , **DMM7510**, :term:`TSP`, ✅,
    , **DMM7512**, :term:`TSP`, ✅,
-   :term:`DAQs <DAQ>`, **DAQ6510**, :term:`TSP`, ✅, 🚧
-   :term:`SSs <SS>`, **3706A**, :term:`TSP`, ✅, 🚧
+   :term:`DAQs <DAQ>`, **DAQ6510**, :term:`TSP`, ✅,
+   :term:`SSs <SS>`, **3706A**, :term:`TSP`, ✅,
+
+.. csv-table:: Software Solution Support Levels
+   :name: software-solution-support-table
+   :align: center
+   :header-rows: 1
+   :widths: auto
+   :stub-columns: 1
+   :class: custom-table-center-cells device-support-table
+
+   "| Software
+   | Solution", "| Command
+   | Type", "| Basic
+   | Control", "| Python API
+   | Validation
+   | Status"
+   :term:`DPOJET`, :term:`PI`, ✅, ✅
 
 Supported Connections
 ~~~~~~~~~~~~~~~~~~~~~
@@ -257,13 +272,20 @@ Supported Connections
 Documentation
 -------------
 
-See the full documentation at `<https://tm-devices.readthedocs.io>`__
+See the full documentation at `<https://tektronix.github.io/tm_devices/>`__
 
 Maintainers
 -----------
 
--  Tektronix opensource@tektronix.com
--  Nicholas Felt nicholas.felt@tektronix.com
+Before reaching out to any maintainers directly, please first check if your issue or question is already
+covered by any `open issues <https://github.com/tektronix/tm_devices/issues>`__. If the issue or
+question you have is not already covered, please
+`file a new issue <https://github.com/tektronix/tm_devices/issues/new/choose>`__ or
+start a `discussion <https://github.com/tektronix/tm_devices/discussions>`__ and the
+maintainers will review and respond there.
+
+-  tmdevicessupport@tektronix.com - For technical support and questions.
+-  opensource@tektronix.com - For open-source policy and license questions.
 
 Contributing
 ------------

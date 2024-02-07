@@ -1,7 +1,5 @@
 """SMU2400Interactive device driver module."""
-
 from abc import ABC
-from functools import cached_property
 from typing import Tuple, Union
 
 from tm_devices.commands import (
@@ -13,6 +11,7 @@ from tm_devices.commands import (
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi._ieee488_2_commands import LegacyTSPIEEE4882Commands
 from tm_devices.drivers.pi.source_measure_units.source_measure_unit import SourceMeasureUnit
+from tm_devices.helpers import ReadOnlyCachedProperty
 
 
 @family_base_class
@@ -43,9 +42,9 @@ class SMU2400Interactive(SourceMeasureUnit, ABC):
     @property
     def ieee_cmds(self) -> LegacyTSPIEEE4882Commands:
         """Return an internal class containing methods for the standard IEEE 488.2 command set."""
-        return self._ieee_cmds  # type: ignore
+        return self._ieee_cmds  # pyright: ignore[reportReturnType]
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         return 1

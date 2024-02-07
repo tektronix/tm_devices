@@ -30,11 +30,11 @@ from ._3rs8qy_awg.synchronize import Synchronize
 from ._3rs8qy_awg.system import System
 from ._3rs8qy_awg.trigger import Trigger
 from ._3rs8qy_awg.wlist import Wlist
-from ._5y90wz_lpdmsomdodpoafgawgdsa.status_and_error import Opt
-from ._5ylo0x_lpdmsodpomdoawgdsa.status_and_error import Ese, Sre
-from ._5z14a1_lpdmsodpomdoafgawgdsa.calibration import Cal
-from ._5z14a1_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
-from ._5z14a1_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
+from ._ft5uww_lpdmsodpomdoafgawgdsa.calibration import Cal
+from ._ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
+from ._ft5uww_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
+from ._fteabn_lpdmsomdodpoafgawgdsa.status_and_error import Opt
+from ._fug7nl_lpdmsodpomdoawgdsa.status_and_error import Ese, Sre
 from ._helpers import DefaultDictPassKeyToFactory
 
 

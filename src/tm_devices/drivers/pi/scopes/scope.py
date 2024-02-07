@@ -2,11 +2,10 @@
 import inspect
 
 from abc import ABC
-from functools import cached_property
 from typing import Any, List, Optional, Tuple, Union
 
 from tm_devices.drivers.pi.pi_device import PIDevice
-from tm_devices.helpers import DeviceTypes
+from tm_devices.helpers import DeviceTypes, ReadOnlyCachedProperty
 
 
 class Scope(PIDevice, ABC):
@@ -25,7 +24,7 @@ class Scope(PIDevice, ABC):
         """
         # TODO: implement for all driver subclasses then convert to abstractmethod
         raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
+            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )
 
@@ -37,7 +36,7 @@ class Scope(PIDevice, ABC):
         """Return a tuple containing all the channel names."""
         return tuple(f"CH{x+1}" for x in range(self.total_channels))
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def opt_string(self) -> str:
         r"""Return the string returned from the ``*OPT?`` query when the device was created."""
         return self.ieee_cmds.opt()
@@ -62,7 +61,7 @@ class Scope(PIDevice, ABC):
             NotImplementedError: Indicates the current driver has not implemented this method.
         """
         raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
+            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )
 

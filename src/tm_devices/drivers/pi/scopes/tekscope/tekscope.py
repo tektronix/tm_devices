@@ -4,9 +4,8 @@ import warnings
 
 from abc import ABC
 from dataclasses import dataclass
-from functools import cached_property
 from types import MappingProxyType
-from typing import Any, cast, List, Literal, Optional, Tuple, Type, Union
+from typing import Any, cast, Dict, List, Literal, Optional, Tuple, Type, Union
 
 import pyvisa as visa
 
@@ -38,7 +37,7 @@ from tm_devices.driver_mixins.signal_generator_mixin import (
 from tm_devices.driver_mixins.usb_drives_mixin import USBDrivesMixin
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.scopes.scope import Scope
-from tm_devices.helpers import DeviceConfigEntry, SignalSourceFunctionsIAFG
+from tm_devices.helpers import DeviceConfigEntry, ReadOnlyCachedProperty, SignalSourceFunctionsIAFG
 from tm_devices.helpers.constants_and_dataclasses import UNIT_TEST_TIMEOUT
 
 
@@ -121,11 +120,11 @@ class TekScope(
     ################################################################################################
     # Properties
     ################################################################################################
-    @cached_property
+    @ReadOnlyCachedProperty
     def channel(self) -> "MappingProxyType[str, TekScopeChannel]":
         """Mapping of channel names to any detectable properties, attributes, and settings."""
         # TODO: overwrite in MSO2 driver, would remove need for try-except
-        channel_map = {}
+        channel_map: Dict[str, TekScopeChannel] = {}
 
         with self.temporary_verbose(False) and self.temporary_visa_timeout(
             500 if not bool(os.environ.get("TM_DEVICES_UNIT_TESTS_RUNNING")) else UNIT_TEST_TIMEOUT
@@ -168,7 +167,7 @@ class TekScope(
 
             # Set scope PI verbosity back to previous value
             self.set_and_check(":VERBose", old_pi_verbosity)
-        return MappingProxyType(channel_map)  # pyright: ignore[reportUnknownVariableType]
+        return MappingProxyType(channel_map)
 
     @property
     def commands(
@@ -186,12 +185,12 @@ class TekScope(
         """Return the device commands."""
         return self._commands  # pragma: no cover
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def hostname(self) -> str:
         """Return the hostname of the device or an empty string if unable to fetch that."""
         return self.query(":ETHERNET:NAME?", verbose=False, remove_quotes=True)
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def license_list(self) -> Tuple[str, ...]:
         """Return the list of license AppIDs installed on the scope."""
         license_list = self.query(
@@ -210,7 +209,7 @@ class TekScope(
         """Return the device constants."""
         return self._DEVICE_CONSTANTS
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         try:
@@ -218,7 +217,7 @@ class TekScope(
         except ValueError:
             return 0
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def usb_drives(self) -> Tuple[str, ...]:
         """Return a list of all connected USB drives."""
         # Find all USB drives connected to the device

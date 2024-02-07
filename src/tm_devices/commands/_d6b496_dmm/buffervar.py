@@ -586,7 +586,9 @@ class Buffervar(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".n"
-            return self._device.query(f"print({self._cmd_syntax}.n)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.n)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.n`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -841,7 +843,9 @@ class Buffervar(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

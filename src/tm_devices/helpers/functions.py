@@ -12,10 +12,12 @@ import time
 import warnings
 
 from enum import EnumMeta
+from functools import lru_cache
 from typing import Any, Dict, Optional, Tuple, Type
 
 import requests
 
+from dateutil.tz import tzlocal
 from packaging.version import InvalidVersion, Version
 
 from tm_devices.helpers.constants_and_dataclasses import (
@@ -33,7 +35,7 @@ with warnings.catch_warnings():
     warnings.simplefilter("ignore", UserWarning)
     import pyvisa as visa
 
-    from gpib_ctypes import make_default_gpib  # type: ignore
+    from gpib_ctypes import make_default_gpib  # pyright: ignore[reportMissingTypeStubs]
     from pyvisa import util as pyvisa_util
     from pyvisa.resources import MessageBasedResource
 
@@ -42,7 +44,6 @@ with warnings.catch_warnings():
 ####################################################################################################
 # Private Constants
 ####################################################################################################
-_VISA_SYSTEM_DETAILS: Dict[str, Any] = pyvisa_util.get_system_details()
 _KEITHLEY_2_CHAR_MODEL_LOOKUP = {
     "24": "SMU",
     "26": "SMU",
@@ -216,7 +217,7 @@ def create_visa_connection(
     resource_expression = device_config_entry.get_visa_resource_expression()
     try:
         # noinspection PyTypeChecker
-        visa_object: MessageBasedResource = visa.ResourceManager(  # type: ignore
+        visa_object: MessageBasedResource = visa.ResourceManager(  # pyright: ignore[reportAssignmentType]
             visa_library
         ).open_resource(resource_expression)
         # Print a warning if PyVISA-py is used when the user didn't specify STANDALONE
@@ -237,7 +238,7 @@ def create_visa_connection(
         time.sleep(60)  # wait 60 seconds and try again
         try:
             # noinspection PyTypeChecker
-            visa_object: MessageBasedResource = visa.ResourceManager(  # type: ignore
+            visa_object: MessageBasedResource = visa.ResourceManager(  # pyright: ignore[reportAssignmentType]
                 visa_library
             ).open_resource(resource_expression)
         # The broad except is because pyvisa_py can throw a base exception in the tcpip.py file
@@ -264,7 +265,8 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
 
     The pieces consist of:
         - The connection type, e.g. TCPIP.
-        - The address of the device, an IP address, hostname, or
+        - The address of the device, an IP address
+          (with port separated by a colon for SOCKET connections), hostname, or
           string in the format ``model-serial``.
 
     Args:
@@ -275,11 +277,11 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
     """
     retval: Optional[Tuple[str, str]] = None
     if input_str.upper().startswith("ASRL"):
-        retval = ("SERIAL", input_str[4:].split("::", 1)[0])
+        retval = (ConnectionTypes.SERIAL.value, input_str[4:].split("::", 1)[0])
     elif (match := VISA_RESOURCE_EXPRESSION_REGEX.search(input_str.upper())) is not None:
         match_groups_list = list(filter(None, match.groups()))
-        for unneeded_part in ("INST", "INST0"):
-            if unneeded_part in match_groups_list:
+        for unneeded_part in ("INST", "INST0", "INSTR"):
+            while unneeded_part in match_groups_list:
                 match_groups_list.remove(unneeded_part)
         # Check if the model is in the USB model lookup
         filtered_usb_model_keys = [
@@ -290,12 +292,18 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
         if filtered_usb_model_keys:
             # SMU and PSU need to be removed from the string to prevent issues
             match_groups_list[1] = filtered_usb_model_keys[0].replace("SMU", "").replace("PSU", "")
-        retval = (match_groups_list[0].rstrip("0"), "-".join(match_groups_list[1:]).lstrip("0X"))
+        if match_groups_list[-1] == ConnectionTypes.SOCKET.value:
+            retval = (match_groups_list[-1], ":".join(match_groups_list[1:3]))
+        else:
+            retval = (
+                match_groups_list[0].rstrip("0"),
+                "-".join(match_groups_list[1:]).lstrip("0X"),
+            )
     return retval
 
 
 # pylint: disable=too-many-branches
-def get_model_series(model: str) -> str:  # noqa: PLR0912,C901,PLR0915
+def get_model_series(model: str) -> str:  # noqa: PLR0912,C901
     """Get the series string from the full model number.
 
     Args:
@@ -330,10 +338,9 @@ def get_model_series(model: str) -> str:  # noqa: PLR0912,C901,PLR0915
         model_beginning = ""
         model_end = ""
         if re.search("[0-9]", model):  # if the model contains numbers
-            model_end = re.split(r"\d+", model)[-1]  # split on the occurence of each number
+            model_end = re.split(r"\d+", model)[-1]  # split on the occurrence of each number
         if len(model_end) == 1 and model_end not in valid_model_endings:
             model_end = ""
-        model_beginning = ""
         if model_numbers := re.findall(r"\d+", model):
             model_number = int(model_numbers[0])
             if model.startswith("MODEL") or all(x.isdigit() for x in model.rstrip(model_end)):
@@ -390,7 +397,7 @@ def get_model_series(model: str) -> str:  # noqa: PLR0912,C901,PLR0915
 
 def get_timestamp_string() -> str:
     """Return a string containing the current timestamp."""
-    return str(datetime.datetime.now())[:-3]
+    return str(datetime.datetime.now(tz=tzlocal()))[:-3]
 
 
 def get_version(version_string: str) -> Version:
@@ -403,6 +410,7 @@ def get_version(version_string: str) -> Version:
         The Version object.
     """
     version_parts = version_string.split(".")
+    found_alpha = False
     try:
         version = Version(version_string)
     except InvalidVersion:
@@ -413,7 +421,14 @@ def get_version(version_string: str) -> Version:
                 version_string.replace("." + version_parts[-1], "+" + version_parts[-1])
             )
         else:
-            raise
+            output_str = ""
+            for char in version_parts[-1]:
+                if char.isalpha() and not found_alpha:
+                    output_str += "+" + char
+                    found_alpha = True
+                else:
+                    output_str += char
+            version = Version(version_string.replace(version_parts[-1], output_str))
     return version
 
 
@@ -428,7 +443,7 @@ def get_visa_backend(visa_lib_path: str) -> str:
     """
     visa_name = ""
 
-    system_visa_info = _VISA_SYSTEM_DETAILS
+    system_visa_info = _get_system_visa_info()
     # noinspection PyTypeChecker
     visa_backends: Dict[str, Any] = system_visa_info["backends"]
 
@@ -595,3 +610,25 @@ def _configure_visa_object(
                 setattr(serial_config, name, getattr(visa_object, name))
 
     return visa_object
+
+
+@lru_cache(maxsize=None)
+def _get_system_visa_info() -> Dict[str, Any]:
+    """Get the VISA information for the current system.
+
+    Returns:
+        A dictionary with the VISA info for the system.
+    """
+    fetch_backend_info = True
+
+    if platform.system().lower() == "darwin":
+        try:
+            output = subprocess.check_output(shlex.split("csrutil status")).decode(  # noqa: S603
+                "utf-8"
+            )
+        except subprocess.SubprocessError:
+            output = ""
+        if "System Integrity Protection status: enabled" in output:
+            fetch_backend_info = False
+
+    return pyvisa_util.get_system_details(backends=fetch_backend_info)

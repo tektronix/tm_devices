@@ -1,14 +1,13 @@
 """TMT4 series device driver module."""
 import time
 
-from functools import cached_property
 from types import MappingProxyType
 from typing import Any, cast, Dict, Optional, Tuple
 
 from packaging.version import Version
 
 from tm_devices.drivers.api.rest_api.margin_testers.margin_tester import MarginTester
-from tm_devices.helpers import DeviceConfigEntry
+from tm_devices.helpers import DeviceConfigEntry, ReadOnlyCachedProperty
 
 
 class TMT4(MarginTester):
@@ -43,12 +42,12 @@ class TMT4(MarginTester):
     ################################################################################################
     # Properties
     ################################################################################################
-    @cached_property
+    @ReadOnlyCachedProperty
     def adapter(self) -> str:
         """Return the device's connected adapter."""
         return self._about_info["adapter"]
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def fpga_version(self) -> Version:
         """Return the fpga version of the device."""
         # This key can return strings indicating a reboot is needed instead of Versions.
@@ -57,7 +56,7 @@ class TMT4(MarginTester):
         except ValueError:
             return Version("0")
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def fw_version(self) -> Version:
         """Return the firmware version of the device."""
         # This key can (also) return strings indicating a reboot is needed instead of Versions.
@@ -66,12 +65,12 @@ class TMT4(MarginTester):
         except ValueError:
             return Version("0")
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def manufacturer(self) -> str:
         """Return the manufacturer of the device."""
         return self._about_info["manufacturer"]
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def model(self) -> str:
         """Return the full model of the device."""
         return self._about_info["model"]
@@ -81,17 +80,17 @@ class TMT4(MarginTester):
         """Return the configured device port, defaults to 5000."""
         return super().port or 5000
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def serial(self) -> str:
         """Return the serial number of the device."""
         return self._about_info["serialNumber"]
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def supported_technologies(self) -> Tuple[str, ...]:
         """Return the device's supported technologies."""
         return tuple(self._about_info["supportedTechnologies"].split(","))
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def sw_version(self) -> Version:
         """Return the software version of the device."""
         return Version(self._about_info["sw_version"])
@@ -128,7 +127,7 @@ class TMT4(MarginTester):
         start = time.time()
         while time.time() < start + timeout:
             _, res_json, _, _ = self.get("/device/status", allow_errors=True)
-            if res_json["usage"] == "NOT LOCKED":  # type: ignore
+            if res_json["usage"] == "NOT LOCKED":  # pyright: ignore[reportArgumentType,reportCallIssue]
                 return
             time.sleep(1)
         msg = f"waited more than {timeout} seconds for {self.name} to unlock"

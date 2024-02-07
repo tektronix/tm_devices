@@ -11,14 +11,17 @@ Equipment Needed:
 
 Converted to Python tm_devices script. DCA 4.12.23
 """
-from datetime import date
+from datetime import datetime
+
+from dateutil.tz import tzlocal
 
 from tm_devices import DeviceManager
 from tm_devices.drivers import SMU2651A
 
+TODAY_DATE = datetime.now(tz=tzlocal()).date()
 RESOURCE_ID = "192.168.0.1"
-V_FILENAME = "CapturePulseV_" + str(date.today()) + ".csv"
-I_FILENAME = "CapturePulseI_" + str(date.today()) + ".csv"
+V_FILENAME = "CapturePulseV_" + str(TODAY_DATE) + ".csv"
+I_FILENAME = "CapturePulseI_" + str(TODAY_DATE) + ".csv"
 
 # TEST CONSTANTS
 NUM_PULSES = 5
@@ -217,7 +220,7 @@ def capture_pulse_v(inst: SMU2651A) -> None:
 
 # RUN TEST
 with DeviceManager() as DM:
-    inst_driver: SMU2651A = DM.add_smu(RESOURCE_ID)  # pyright: ignore[reportGeneralTypeIssues]
+    inst_driver: SMU2651A = DM.add_smu(RESOURCE_ID)  # pyright: ignore[reportAssignmentType]
 
     capture_pulse_i(inst_driver)
     capture_pulse_v(inst_driver)

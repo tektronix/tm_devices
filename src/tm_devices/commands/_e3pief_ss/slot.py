@@ -165,7 +165,9 @@ class SlotItemPoles(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".four"
-            return self._device.query(f"print({self._cmd_syntax}.four)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.four)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.four`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -196,7 +198,9 @@ class SlotItemPoles(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".one"
-            return self._device.query(f"print({self._cmd_syntax}.one)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.one)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.one`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -227,7 +231,9 @@ class SlotItemPoles(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".two"
-            return self._device.query(f"print({self._cmd_syntax}.two)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.two)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.two`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -590,7 +596,9 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".idn"
-            return self._device.query(f"print({self._cmd_syntax}.idn)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.idn)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.idn`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

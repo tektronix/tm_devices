@@ -66,9 +66,16 @@ recommended IDE for package development is
 
 ### Setup steps for package development
 
-1. Fork `tm_devices` into a new repository.
+1. Set up commit signing, see [GitHub's documentation](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification) for details.
 
-2. Set up a virtual environment and install the project with its dependencies:
+   ```{hint}
+      All commits going into the main repository are required to be signed, so make sure
+      to set up commit signing before starting to make changes.
+   ```
+
+2. Fork `tm_devices` into a new repository.
+
+3. Set up a virtual environment and install the project with its dependencies:
 
    - Using the helper script (recommended):
      ```console
@@ -91,15 +98,15 @@ recommended IDE for package development is
      pre-commit install
      ```
 
-3. Use `git` to create a branch for local development and make your changes:
+4. Use `git` to create a branch for local development and make your changes:
 
    ```console
    git checkout -b name-of-your-bugfix-or-feature
    ```
 
-4. Update the **Unreleased** section in the [CHANGELOG](CHANGELOG.md) using the proper format.
+5. Update the **Unreleased** section in the [CHANGELOG](CHANGELOG.md) using the proper format.
 
-5. When you're done making changes, check that your changes conform to any code
+6. When you're done making changes, check that your changes conform to any code
    formatting requirements and pass any tests.
 
    ````{note}
@@ -145,7 +152,7 @@ recommended IDE for package development is
       - Test results: `.results_tests/results.html`
    ```
 
-6. Commit and push your changes, then open a pull request from
+7. Commit and push your changes, then open a pull request from
    the fork back into the main repository.
 
    - Commit messages must be structured as follows:
@@ -179,11 +186,7 @@ source .venv/bin/activate
 ````
 
 ```console
-python -m poetry self update
-
-python -m poetry update
-
-pre-commit autoupdate
+python scripts/update_development_dependencies.py
 ```
 
 ## Pull Request Guidelines

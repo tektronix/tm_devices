@@ -3,7 +3,7 @@ import socket
 import time
 
 from abc import ABC, abstractmethod
-from contextlib import contextmanager
+from contextlib import contextmanager, suppress
 from functools import cached_property
 from typing import (
     Any,
@@ -25,6 +25,7 @@ from tm_devices.helpers import (
     DeviceConfigEntry,
     get_timestamp_string,
     print_with_timestamp,
+    ReadOnlyCachedProperty,
 )
 
 _T = TypeVar("_T")
@@ -89,13 +90,9 @@ class Device(ExtendableMixin, ABC):
         retval = f"{'=' * (line_break_length // 2)} {self.name} {'=' * (line_break_length // 2)}\n"
         retval += f"  {self.__class__} object at {id(self)}"
 
-        for prop in [
-            p
-            for p in dir(self.__class__)
-            if isinstance(getattr(self.__class__, p), (cached_property, property))
-            and not p.startswith("_")
-        ]:
-            retval += f"\n    {prop}={self.__getattribute__(prop)!r}"
+        for prop in self._get_self_properties():
+            if not prop.startswith("_"):
+                retval += f"\n    {prop}={self.__getattribute__(prop)!r}"
 
         retval += f"\n{'=' * (line_break_length + 2 + len(self.name))}"
         return retval
@@ -103,22 +100,22 @@ class Device(ExtendableMixin, ABC):
     ################################################################################################
     # Abstract Cached Properties
     ################################################################################################
-    @cached_property
+    @ReadOnlyCachedProperty
     @abstractmethod
     def manufacturer(self) -> str:
         """Return the manufacturer of the device."""
 
-    @cached_property
+    @ReadOnlyCachedProperty
     @abstractmethod
     def model(self) -> str:
         """Return the full model of the device."""
 
-    @cached_property
+    @ReadOnlyCachedProperty
     @abstractmethod
     def serial(self) -> str:
         """Return the serial number of the device."""
 
-    @cached_property
+    @ReadOnlyCachedProperty
     @abstractmethod
     def sw_version(self) -> Version:
         """Return the software version of the device."""
@@ -270,7 +267,7 @@ class Device(ExtendableMixin, ABC):
         """Return the device port, or None if the device doesn't have a port."""
         return self._config_entry.lan_port
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def series(self) -> str:
         """Return the series of the device.
 
@@ -287,7 +284,7 @@ class Device(ExtendableMixin, ABC):
     ################################################################################################
     # Cached Properties
     ################################################################################################
-    @cached_property
+    @ReadOnlyCachedProperty
     def hostname(self) -> str:
         """Return the hostname of the device or an empty string if unable to fetch that."""
         if self._config_entry.connection_type not in {ConnectionTypes.USB}:
@@ -298,7 +295,7 @@ class Device(ExtendableMixin, ABC):
                 pass
         return ""
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def ip_address(self) -> str:
         """Return the IPv4 address of the device or an empty string if unable to fetch that."""
         if self._config_entry.connection_type not in {ConnectionTypes.USB}:
@@ -472,6 +469,16 @@ class Device(ExtendableMixin, ABC):
         Returns:
             A boolean representing the status of the reboot.
         """
+        # Reset the cached properties
+        for prop in self._get_self_properties():
+            if isinstance(getattr(self.__class__, prop), cached_property):
+                # Try to delete the cached_property, if it raises an AttributeError,
+                # that means that it has not previously been accessed and
+                # there is no need to delete the cached_property.
+                with suppress(AttributeError):
+                    self.__delattr__(prop)  # pylint: disable=unnecessary-dunder-call
+
+        # Reboot the device
         print_with_timestamp(f"Rebooting {self._name_and_alias}")
         self._reboot()
         self.close()
@@ -676,6 +683,14 @@ class Device(ExtendableMixin, ABC):
     ################################################################################################
     # Private Methods
     ################################################################################################
+
+    def _get_self_properties(self) -> Tuple[str, ...]:
+        """Get a complete list of all the properties of the device."""
+        return tuple(
+            p
+            for p in dir(self.__class__)
+            if isinstance(getattr(self.__class__, p), (cached_property, property))
+        )
 
     @staticmethod
     @final

@@ -4,7 +4,6 @@ from __future__ import annotations
 import inspect
 
 from abc import ABC
-from functools import cached_property
 from typing import Optional, Tuple, TYPE_CHECKING, Union
 
 from tm_devices.drivers.device import family_base_class
@@ -12,6 +11,7 @@ from tm_devices.drivers.pi._ieee488_2_commands import IEEE4882Commands
 from tm_devices.drivers.pi.pi_device import PIDevice
 from tm_devices.drivers.pi.signal_sources.signal_source import SignalSource
 from tm_devices.drivers.pi.source_measure_units.source_measure_unit import SourceMeasureUnit
+from tm_devices.helpers import ReadOnlyCachedProperty
 
 if TYPE_CHECKING:
     import os
@@ -40,7 +40,7 @@ class SMU6000(SourceMeasureUnit, ABC):
         """Return an internal class containing methods for the standard IEEE 488.2 command set."""
         return self._ieee_cmds
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         return 1
@@ -61,7 +61,7 @@ class SMU6000(SourceMeasureUnit, ABC):
         Returns:
             Boolean indicating if the check passed or failed and a string with the results.
         """
-        return SignalSource.expect_esr(self, esr, error_string)  # type: ignore
+        return SignalSource.expect_esr(self, esr, error_string)  # type: ignore[arg-type]
 
     def get_eventlog_status(self) -> Tuple[bool, str]:
         """Help function for getting the eventlog status.
@@ -69,7 +69,7 @@ class SMU6000(SourceMeasureUnit, ABC):
         Returns:
             Boolean indicating no error, String containing concatenated contents of event log.
         """
-        return SignalSource.get_eventlog_status(self)  # type: ignore
+        return SignalSource.get_eventlog_status(self)  # type: ignore[arg-type]
 
     def run_script(self, script_name: str) -> None:  # noqa: ARG002
         """Not Implemented."""
@@ -139,6 +139,6 @@ class SMU6000(SourceMeasureUnit, ABC):
         """
         # TODO: implement
         raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
+            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )

@@ -88,7 +88,7 @@ def pulse_delay_calc(pulse_width: str) -> float:
 with DeviceManager() as device_manager:
     print(device_manager.get_available_devices())
 
-    smu2461: SMU2461 = device_manager.add_smu(  # pyright: ignore[reportGeneralTypeIssues]
+    smu2461: SMU2461 = device_manager.add_smu(  # pyright: ignore[reportAssignmentType]
         "TCPIP::0.0.0.0::inst0::INSTR", alias="my2461"
     )  # 192.168.0.2
 

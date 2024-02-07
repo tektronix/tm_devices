@@ -1,8 +1,9 @@
 """DPO7K device driver module."""
+from tm_devices.commands import DPO7KMixin
 from tm_devices.drivers.pi.scopes.tekscope_5k_7k_70k.tekscope_5k_7k_70k import TekScope5k7k70k
 
 
-class DPO7K(TekScope5k7k70k):
+class DPO7K(DPO7KMixin, TekScope5k7k70k):
     """DPO7K device driver."""
 
     ################################################################################################

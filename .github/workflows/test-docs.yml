@@ -13,20 +13,20 @@ concurrency:
 jobs:
   # Test building the docs (html, linkcheck, doctest, coverage)
   test-docs:
-    runs-on: ubuntu-latest-4-cores
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         tox_env: [docs, doctests]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 18  # The node version needs to stay in sync with .readthedocs.yml
       - run: npm install -g @mermaid-js/mermaid-cli
       - run: sudo apt install --no-install-recommends --assume-yes graphviz
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'  # This needs to stay in sync with .readthedocs.yml and pyproject.toml
       - name: Install tox
@@ -35,13 +35,13 @@ jobs:
           python -m pip install --upgrade tox
       - name: Test
         run: tox -ve ${{ matrix.tox_env }}
-      - uses: thedoctor0/zip-release@0.7.1
+      - uses: thedoctor0/zip-release@0.7.6
         if: ${{ !cancelled() }}
         with:
           type: zip
           filename: ${{ matrix.tox_env }}_results.zip
           path: .results_${{ matrix.tox_env }}/
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: artifact_${{ matrix.tox_env }}

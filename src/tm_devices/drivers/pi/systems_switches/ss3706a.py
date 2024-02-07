@@ -1,7 +1,6 @@
 """SS3706A device driver module."""
 import inspect
 
-from functools import cached_property
 from typing import Tuple
 
 import pyvisa as visa
@@ -9,7 +8,7 @@ import pyvisa as visa
 from tm_devices.commands import SS3706AMixin
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.systems_switches.systems_switch import SystemsSwitch
-from tm_devices.helpers import DeviceConfigEntry
+from tm_devices.helpers import DeviceConfigEntry, ReadOnlyCachedProperty
 
 
 @family_base_class
@@ -42,7 +41,7 @@ class SS3706A(SS3706AMixin, SystemsSwitch):
         """Return a tuple containing all the channel names."""
         return tuple(f"{x+1}" for x in range(self.total_channels))
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         return 576
@@ -78,6 +77,6 @@ class SS3706A(SS3706AMixin, SystemsSwitch):
         """
         # TODO: implement
         raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
+            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )

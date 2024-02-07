@@ -30,7 +30,6 @@ def test_afg3kc(device_manager: DeviceManager) -> None:
     assert afg3kc.idn_string == "TEKTRONIX,AFG3252C,SERIAL1,SCPI:99.0 FV:3.2.3"
     assert afg3kc.sw_version == Version("3.2.3")
     assert afg3kc.all_channel_names_list == ("SOURCE1", "SOURCE2")
-    assert afg3kc.visa_backend == "PyVISA-sim"
     assert afg3kc.source_device_constants == AFGSourceDeviceConstants(
         memory_page_size=2,
         memory_max_record_length=128 * 1024,
@@ -108,7 +107,7 @@ def test_afg3kc(device_manager: DeviceManager) -> None:
     ):
         afg3kc.generate_waveform(
             25e6,
-            afg3kc.source_device_constants.functions.PULSE.value,  # type: ignore
+            afg3kc.source_device_constants.functions.PULSE.value,  # pyright: ignore[reportArgumentType]
             1.0,
             0.0,
             "all",
@@ -125,6 +124,10 @@ def test_afg31k(device_manager: DeviceManager, capsys: pytest.CaptureFixture[str
     afg31k = device_manager.add_afg("afg31k-hostname")
 
     _ = capsys.readouterr().out  # throw away stdout
+
+    # Check hostname
+    assert afg31k.hostname == "AFG31K-HOSTNAME"
+
     # simulate a reboot
     afg31k.reboot()
 

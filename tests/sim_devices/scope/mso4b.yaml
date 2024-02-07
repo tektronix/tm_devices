@@ -1,0 +1,52 @@
+---
+spec: '1.1'
+devices:
+  mso44b:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,MSO44B,200201,CF:91.1CT FV:2.6.38.1348
+      - q: HEADER OFF
+      - q: :ETHERNET:NAME?
+        r: MSO44B-200201
+      - q: :FILESystem:LDIR?
+        r: 'E:,F:,G:,H:,I:,J:,K:'
+      - q: :FILESystem:CWD "E:"
+      - q: :FILESystem:CWD "F:"
+      - q: :FILESystem:CWD "G:"
+      - q: :FILESystem:CWD "H:"
+      - q: :FILESystem:CWD "I:"
+      - q: :FILESystem:CWD "J:"
+      - q: :FILESystem:CWD "K:"
+      - q: :FILESystem:CWD?
+        r: '"E:"'
+      - q: '*OPC?'
+        r: '1'
+      - q: '*RST'
+      - q: '*CLS'
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: :ALLev?
+          default: 0,"No events to report - queue empty"
+          command_error: 113,"Undefined header; Command not found; EXAMPLE_COMMAND"
+    properties:
+      verbosity:
+        default: 0
+        getter:
+          q: :VERBose?
+          r: '{:s}'
+        setter:
+          q: :VERBose {:s}

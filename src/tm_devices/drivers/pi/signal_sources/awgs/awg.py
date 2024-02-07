@@ -1,17 +1,16 @@
 """Base AWG device driver module."""
 import inspect
-import os
 import struct
 
 from abc import ABC
 from dataclasses import dataclass
-from functools import cached_property
+from pathlib import Path
 from typing import Literal, Type
 
 from tm_devices.driver_mixins.signal_generator_mixin import SourceDeviceConstants
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.signal_sources.signal_source import SignalSource
-from tm_devices.helpers import DeviceTypes, SignalSourceFunctionsAWG
+from tm_devices.helpers import DeviceTypes, ReadOnlyCachedProperty, SignalSourceFunctionsAWG
 
 
 @dataclass(frozen=True)
@@ -37,9 +36,9 @@ class AWG(SignalSource, ABC):
     @property
     def source_device_constants(self) -> AWGSourceDeviceConstants:
         """Return the device constants."""
-        return self._DEVICE_CONSTANTS  # type: ignore
+        return self._DEVICE_CONSTANTS  # type: ignore[attr-defined]
 
-    @cached_property
+    @ReadOnlyCachedProperty
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         return int(self.query("AWGControl:CONFigure:CNUMber?", verbose=False))
@@ -94,7 +93,7 @@ class AWG(SignalSource, ABC):
         """
         # TODO: implement
         raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
+            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )
 
@@ -123,7 +122,7 @@ class AWG(SignalSource, ABC):
             bin_waveform = struct.unpack(">" + str(info_len) + "H", waveform_data)
 
             # Turn "path/to/stuff.wfm" into "stuff.wfm".
-            filename_target = os.path.basename(target_file)
+            filename_target = Path(target_file).name
             # Write the waveform data to the AWG memory.
             string_to_send = 'MMEMORY:DATA "' + filename_target + '",'
             self._visa_resource.write_binary_values(
