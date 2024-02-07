@@ -33,6 +33,7 @@ Things to be included in the next release go here.
 ### Fixed
 
 - Fixed the code that detects VISA resource expressions to be able to detect SOCKET resource expressions properly.
+- Fixed PI device close method to catch VisaIOErrors and throw a warning closing a PI device connection.
 
 ______________________________________________________________________
 
