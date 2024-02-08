@@ -113,3 +113,16 @@ def test_pi_device(  # noqa: PLR0915
     stdout = capsys.readouterr().out
     assert f"VISA timeout set to: {old_timeout}ms" in stdout
     assert scope.visa_timeout == old_timeout
+
+    # Test closing a device that is powered off
+    with mock.patch(
+        "pyvisa.resources.resource.Resource.close",
+        mock.MagicMock(side_effect=visa.VisaIOError(123)),
+    ), pytest.warns(Warning):
+        scope._close()  # noqa: SLF001
+        assert scope._visa_resource is None  # noqa: SLF001
+        assert not scope._is_open  # noqa: SLF001
+
+    # Re-open the device for device manager teardown
+    with mock.patch.dict("os.environ", {"TM_DEVICES_UNIT_TESTS_REBOOT_ALLOW": "true"}, clear=True):
+        assert scope._open()  # noqa: SLF001

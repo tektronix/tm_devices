@@ -4,6 +4,7 @@ import inspect
 import os
 import socket
 import time
+import warnings
 
 from abc import ABC, abstractmethod
 from contextlib import contextmanager
@@ -13,6 +14,7 @@ import pyvisa as visa
 
 from packaging.version import Version
 from pyvisa import constants as visa_constants
+from pyvisa import VisaIOError
 
 from tm_devices.drivers.device import Device
 from tm_devices.drivers.pi._ieee488_2_commands import IEEE4882Commands
@@ -816,7 +818,12 @@ class PIDevice(Device, ABC):
 
     def _close(self) -> None:
         """Close this device and all its used resources and components."""
-        self._visa_resource.close()
+        try:
+            self._visa_resource.close()
+        except VisaIOError as error:
+            warnings.warn(
+                f"Error encountered while closing the visa resource:\n{error}", stacklevel=2
+            )
         self._visa_resource = None  # pyright: ignore[reportAttributeAccessIssue]
         self._is_open = False
 
