@@ -63,6 +63,8 @@ Attributes and Functions:
     - smuX.measure.rel.levelr
     - smuX.measure.rel.levelv
     - smuX.measureYandstep()
+    - smuX.nvbuffer1
+    - smuX.nvbuffer2
     - smuX.pulser.enable
     - smuX.pulser.measure.aperture
     - smuX.pulser.measure.calibrateY()
@@ -6896,6 +6898,8 @@ class SmuxItem(ValidatedChannel, BaseTSPCmd):
         - ``.measurepandstep()``: The ``smuX.measurepandstep()`` function.
         - ``.measurerandstep()``: The ``smuX.measurerandstep()`` function.
         - ``.measurevandstep()``: The ``smuX.measurevandstep()`` function.
+        - ``.nvbuffer1``: The ``smuX.nvbuffer1`` attribute.
+        - ``.nvbuffer2``: The ``smuX.nvbuffer2`` attribute.
         - ``.pulser``: The ``smuX.pulser`` command tree.
         - ``.reset()``: The ``smuX.reset()`` function.
         - ``.savebuffer()``: The ``smuX.savebuffer()`` function.
@@ -7217,6 +7221,64 @@ reading at index bufferVar.fillcount."""
             - ``.rel``: The ``smuX.measure.rel`` command tree.
         """
         return self._measure
+
+    @property
+    def nvbuffer1(self) -> str:
+        """Access the ``smuX.nvbuffer1`` attribute.
+
+        **Description:**
+            - This attribute contains a dedicated reading buffer. (1 = default buffer1)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smuX.nvbuffer1)`` query.
+
+        **TSP Syntax:**
+
+        ::
+
+            - print(smuX.nvbuffer1)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".nvbuffer1"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.nvbuffer1)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.nvbuffer1`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def nvbuffer2(self) -> str:
+        """Access the ``smuX.nvbuffer2`` attribute.
+
+        **Description:**
+            - This attribute contains a dedicated reading buffer. (2 = default buffer2)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smuX.nvbuffer2)`` query.
+
+        **TSP Syntax:**
+
+        ::
+
+            - print(smuX.nvbuffer2)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".nvbuffer2"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.nvbuffer2)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.nvbuffer2`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
 
     @property
     def pulser(self) -> SmuxItemPulser:

@@ -1326,6 +1326,8 @@ class SMU2651ACommands:
             - ``.measurepandstep()``: The ``smuX.measurepandstep()`` function.
             - ``.measurerandstep()``: The ``smuX.measurerandstep()`` function.
             - ``.measurevandstep()``: The ``smuX.measurevandstep()`` function.
+            - ``.nvbuffer1``: The ``smuX.nvbuffer1`` attribute.
+            - ``.nvbuffer2``: The ``smuX.nvbuffer2`` attribute.
             - ``.reset()``: The ``smuX.reset()`` function.
             - ``.savebuffer()``: The ``smuX.savebuffer()`` function.
             - ``.sense``: The ``smuX.sense`` attribute.

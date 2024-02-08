@@ -15,12 +15,19 @@ Commands and Queries:
     - REF:DELete <QString>
     - REF:LIST?
     - REF:REF<x>:DESKew <NR3>
+    - REF:REF<x>:DESKew?
     - REF:REF<x>:LABel:COLor <QString>
+    - REF:REF<x>:LABel:COLor?
     - REF:REF<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+    - REF:REF<x>:LABel:FONT:BOLD?
     - REF:REF<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+    - REF:REF<x>:LABel:FONT:ITALic?
     - REF:REF<x>:LABel:FONT:SIZE <NR1>
+    - REF:REF<x>:LABel:FONT:SIZE?
     - REF:REF<x>:LABel:FONT:TYPE <QString>
+    - REF:REF<x>:LABel:FONT:TYPE?
     - REF:REF<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+    - REF:REF<x>:LABel:FONT:UNDERline?
     - REF:REF<x>:LABel:NAMe <QString>
     - REF:REF<x>:LABel:NAMe?
     - REF:REF<x>:LABel:XPOS <NR1>
@@ -28,6 +35,7 @@ Commands and Queries:
     - REF:REF<x>:LABel:YPOS <NR1>
     - REF:REF<x>:LABel:YPOS?
     - REF:REF<x>:SOUrce <QString>
+    - REF:REF<x>:SOUrce?
 """
 from typing import Dict, Optional, TYPE_CHECKING
 
@@ -42,13 +50,16 @@ if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
 
 
-class RefRefItemSource(SCPICmdWrite):
+class RefRefItemSource(SCPICmdWrite, SCPICmdRead):
     """The ``REF:REF<x>:SOUrce`` command.
 
     **Description:**
         - This command sets or queries the filename used by the given reference.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``REF:REF<x>:SOUrce?`` query.
+        - Using the ``.verify(value)`` method will send the ``REF:REF<x>:SOUrce?`` query and raise
+          an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``REF:REF<x>:SOUrce value`` command.
 
     **SCPI Syntax:**
@@ -56,6 +67,7 @@ class RefRefItemSource(SCPICmdWrite):
     ::
 
         - REF:REF<x>:SOUrce <QString>
+        - REF:REF<x>:SOUrce?
 
     **Info:**
         - ``<QString>`` is the reference file name.
@@ -146,13 +158,16 @@ class RefRefItemLabelName(SCPICmdWrite, SCPICmdRead):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class RefRefItemLabelFontUnderline(SCPICmdWrite):
+class RefRefItemLabelFontUnderline(SCPICmdWrite, SCPICmdRead):
     """The ``REF:REF<x>:LABel:FONT:UNDERline`` command.
 
     **Description:**
         - This command sets or queries the underline state of the specified reference label.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``REF:REF<x>:LABel:FONT:UNDERline?`` query.
+        - Using the ``.verify(value)`` method will send the ``REF:REF<x>:LABel:FONT:UNDERline?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``REF:REF<x>:LABel:FONT:UNDERline value``
           command.
 
@@ -161,6 +176,7 @@ class RefRefItemLabelFontUnderline(SCPICmdWrite):
     ::
 
         - REF:REF<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+        - REF:REF<x>:LABel:FONT:UNDERline?
 
     **Info:**
         - ``<NR1>`` = 0 disables underline font; any other value turns this feature on.
@@ -169,7 +185,7 @@ class RefRefItemLabelFontUnderline(SCPICmdWrite):
     """
 
 
-class RefRefItemLabelFontType(SCPICmdWrite):
+class RefRefItemLabelFontType(SCPICmdWrite, SCPICmdRead):
     """The ``REF:REF<x>:LABel:FONT:TYPE`` command.
 
     **Description:**
@@ -177,6 +193,9 @@ class RefRefItemLabelFontType(SCPICmdWrite):
           or Times New Roman.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``REF:REF<x>:LABel:FONT:TYPE?`` query.
+        - Using the ``.verify(value)`` method will send the ``REF:REF<x>:LABel:FONT:TYPE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``REF:REF<x>:LABel:FONT:TYPE value``
           command.
 
@@ -185,6 +204,7 @@ class RefRefItemLabelFontType(SCPICmdWrite):
     ::
 
         - REF:REF<x>:LABel:FONT:TYPE <QString>
+        - REF:REF<x>:LABel:FONT:TYPE?
 
     **Info:**
         - ``<QString>`` is the font type.
@@ -193,13 +213,16 @@ class RefRefItemLabelFontType(SCPICmdWrite):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class RefRefItemLabelFontSize(SCPICmdWrite):
+class RefRefItemLabelFontSize(SCPICmdWrite, SCPICmdRead):
     """The ``REF:REF<x>:LABel:FONT:SIZE`` command.
 
     **Description:**
         - This command sets or queries the font size of the specified reference label.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``REF:REF<x>:LABel:FONT:SIZE?`` query.
+        - Using the ``.verify(value)`` method will send the ``REF:REF<x>:LABel:FONT:SIZE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``REF:REF<x>:LABel:FONT:SIZE value``
           command.
 
@@ -208,19 +231,23 @@ class RefRefItemLabelFontSize(SCPICmdWrite):
     ::
 
         - REF:REF<x>:LABel:FONT:SIZE <NR1>
+        - REF:REF<x>:LABel:FONT:SIZE?
 
     **Info:**
         - ``<NR1>`` is the font size of the label.
     """
 
 
-class RefRefItemLabelFontItalic(SCPICmdWrite):
+class RefRefItemLabelFontItalic(SCPICmdWrite, SCPICmdRead):
     """The ``REF:REF<x>:LABel:FONT:ITALic`` command.
 
     **Description:**
         - This command sets or queries the italic state of the specified reference label.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``REF:REF<x>:LABel:FONT:ITALic?`` query.
+        - Using the ``.verify(value)`` method will send the ``REF:REF<x>:LABel:FONT:ITALic?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``REF:REF<x>:LABel:FONT:ITALic value``
           command.
 
@@ -229,6 +256,7 @@ class RefRefItemLabelFontItalic(SCPICmdWrite):
     ::
 
         - REF:REF<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+        - REF:REF<x>:LABel:FONT:ITALic?
 
     **Info:**
         - ``<NR1>`` = 0 disables italic font; any other value turns this feature on.
@@ -237,13 +265,16 @@ class RefRefItemLabelFontItalic(SCPICmdWrite):
     """
 
 
-class RefRefItemLabelFontBold(SCPICmdWrite):
+class RefRefItemLabelFontBold(SCPICmdWrite, SCPICmdRead):
     """The ``REF:REF<x>:LABel:FONT:BOLD`` command.
 
     **Description:**
         - This command sets or queries the bold state of the specified reference label.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``REF:REF<x>:LABel:FONT:BOLD?`` query.
+        - Using the ``.verify(value)`` method will send the ``REF:REF<x>:LABel:FONT:BOLD?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``REF:REF<x>:LABel:FONT:BOLD value``
           command.
 
@@ -252,6 +283,7 @@ class RefRefItemLabelFontBold(SCPICmdWrite):
     ::
 
         - REF:REF<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+        - REF:REF<x>:LABel:FONT:BOLD?
 
     **Info:**
         - ``<NR1>`` = 0 disables bold font; any other value turns this feature on.
@@ -292,6 +324,9 @@ class RefRefItemLabelFont(SCPICmdRead):
             - This command sets or queries the bold state of the specified reference label.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``REF:REF<x>:LABel:FONT:BOLD?`` query.
+            - Using the ``.verify(value)`` method will send the ``REF:REF<x>:LABel:FONT:BOLD?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``REF:REF<x>:LABel:FONT:BOLD value``
               command.
 
@@ -300,6 +335,7 @@ class RefRefItemLabelFont(SCPICmdRead):
         ::
 
             - REF:REF<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+            - REF:REF<x>:LABel:FONT:BOLD?
 
         **Info:**
             - ``<NR1>`` = 0 disables bold font; any other value turns this feature on.
@@ -316,6 +352,9 @@ class RefRefItemLabelFont(SCPICmdRead):
             - This command sets or queries the italic state of the specified reference label.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``REF:REF<x>:LABel:FONT:ITALic?`` query.
+            - Using the ``.verify(value)`` method will send the ``REF:REF<x>:LABel:FONT:ITALic?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``REF:REF<x>:LABel:FONT:ITALic value`` command.
 
@@ -324,6 +363,7 @@ class RefRefItemLabelFont(SCPICmdRead):
         ::
 
             - REF:REF<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+            - REF:REF<x>:LABel:FONT:ITALic?
 
         **Info:**
             - ``<NR1>`` = 0 disables italic font; any other value turns this feature on.
@@ -340,6 +380,9 @@ class RefRefItemLabelFont(SCPICmdRead):
             - This command sets or queries the font size of the specified reference label.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``REF:REF<x>:LABel:FONT:SIZE?`` query.
+            - Using the ``.verify(value)`` method will send the ``REF:REF<x>:LABel:FONT:SIZE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``REF:REF<x>:LABel:FONT:SIZE value``
               command.
 
@@ -348,6 +391,7 @@ class RefRefItemLabelFont(SCPICmdRead):
         ::
 
             - REF:REF<x>:LABel:FONT:SIZE <NR1>
+            - REF:REF<x>:LABel:FONT:SIZE?
 
         **Info:**
             - ``<NR1>`` is the font size of the label.
@@ -363,6 +407,9 @@ class RefRefItemLabelFont(SCPICmdRead):
               Arial or Times New Roman.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``REF:REF<x>:LABel:FONT:TYPE?`` query.
+            - Using the ``.verify(value)`` method will send the ``REF:REF<x>:LABel:FONT:TYPE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``REF:REF<x>:LABel:FONT:TYPE value``
               command.
 
@@ -371,6 +418,7 @@ class RefRefItemLabelFont(SCPICmdRead):
         ::
 
             - REF:REF<x>:LABel:FONT:TYPE <QString>
+            - REF:REF<x>:LABel:FONT:TYPE?
 
         **Info:**
             - ``<QString>`` is the font type.
@@ -385,6 +433,10 @@ class RefRefItemLabelFont(SCPICmdRead):
             - This command sets or queries the underline state of the specified reference label.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``REF:REF<x>:LABel:FONT:UNDERline?``
+              query.
+            - Using the ``.verify(value)`` method will send the ``REF:REF<x>:LABel:FONT:UNDERline?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``REF:REF<x>:LABel:FONT:UNDERline value`` command.
 
@@ -393,6 +445,7 @@ class RefRefItemLabelFont(SCPICmdRead):
         ::
 
             - REF:REF<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+            - REF:REF<x>:LABel:FONT:UNDERline?
 
         **Info:**
             - ``<NR1>`` = 0 disables underline font; any other value turns this feature on.
@@ -402,13 +455,16 @@ class RefRefItemLabelFont(SCPICmdRead):
         return self._underline
 
 
-class RefRefItemLabelColor(SCPICmdWrite):
+class RefRefItemLabelColor(SCPICmdWrite, SCPICmdRead):
     """The ``REF:REF<x>:LABel:COLor`` command.
 
     **Description:**
         - This command sets or queries the color of the specified ref label.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``REF:REF<x>:LABel:COLor?`` query.
+        - Using the ``.verify(value)`` method will send the ``REF:REF<x>:LABel:COLor?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``REF:REF<x>:LABel:COLor value`` command.
 
     **SCPI Syntax:**
@@ -416,6 +472,7 @@ class RefRefItemLabelColor(SCPICmdWrite):
     ::
 
         - REF:REF<x>:LABel:COLor <QString>
+        - REF:REF<x>:LABel:COLor?
 
     **Info:**
         - ``<QString>`` is the label. To return the color to the default color, send an empty string
@@ -457,6 +514,9 @@ class RefRefItemLabel(SCPICmdRead):
             - This command sets or queries the color of the specified ref label.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``REF:REF<x>:LABel:COLor?`` query.
+            - Using the ``.verify(value)`` method will send the ``REF:REF<x>:LABel:COLor?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``REF:REF<x>:LABel:COLor value``
               command.
 
@@ -465,6 +525,7 @@ class RefRefItemLabel(SCPICmdRead):
         ::
 
             - REF:REF<x>:LABel:COLor <QString>
+            - REF:REF<x>:LABel:COLor?
 
         **Info:**
             - ``<QString>`` is the label. To return the color to the default color, send an empty
@@ -577,13 +638,16 @@ class RefRefItemLabel(SCPICmdRead):
         return self._ypos
 
 
-class RefRefItemDeskew(SCPICmdWrite):
+class RefRefItemDeskew(SCPICmdWrite, SCPICmdRead):
     """The ``REF:REF<x>:DESKew`` command.
 
     **Description:**
         - This command sets or queries the deskew value used for the specified reference.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``REF:REF<x>:DESKew?`` query.
+        - Using the ``.verify(value)`` method will send the ``REF:REF<x>:DESKew?`` query and raise
+          an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``REF:REF<x>:DESKew value`` command.
 
     **SCPI Syntax:**
@@ -591,6 +655,7 @@ class RefRefItemDeskew(SCPICmdWrite):
     ::
 
         - REF:REF<x>:DESKew <NR3>
+        - REF:REF<x>:DESKew?
 
     **Info:**
         - ``<NR3>`` is the deskew value used for the specified reference.
@@ -625,6 +690,9 @@ class RefRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - This command sets or queries the deskew value used for the specified reference.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``REF:REF<x>:DESKew?`` query.
+            - Using the ``.verify(value)`` method will send the ``REF:REF<x>:DESKew?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``REF:REF<x>:DESKew value`` command.
 
         **SCPI Syntax:**
@@ -632,6 +700,7 @@ class RefRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         ::
 
             - REF:REF<x>:DESKew <NR3>
+            - REF:REF<x>:DESKew?
 
         **Info:**
             - ``<NR3>`` is the deskew value used for the specified reference.
@@ -664,6 +733,9 @@ class RefRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - This command sets or queries the filename used by the given reference.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``REF:REF<x>:SOUrce?`` query.
+            - Using the ``.verify(value)`` method will send the ``REF:REF<x>:SOUrce?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``REF:REF<x>:SOUrce value`` command.
 
         **SCPI Syntax:**
@@ -671,6 +743,7 @@ class RefRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         ::
 
             - REF:REF<x>:SOUrce <QString>
+            - REF:REF<x>:SOUrce?
 
         **Info:**
             - ``<QString>`` is the reference file name.

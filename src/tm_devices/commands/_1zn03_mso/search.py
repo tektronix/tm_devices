@@ -31,6 +31,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:SIZe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType {ACKMISS|BITSTUFFing|FORMERRor |ANYERRor}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FD:BRSBit {ONE|ZERo|NOCARE}
@@ -107,7 +108,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:QUALifier?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:VALue <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:VALue?
@@ -206,6 +207,8 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LEVel:REF<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x> {INCLude|DONTInclude}
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>?
+    - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x> {INCLude|DONTInclude}
+    - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:MATH<x> {INCLude|DONTInclude}
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:MATH<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:REF<x> {INCLude|DONTInclude}
@@ -213,6 +216,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:SETTime <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:SETTime?
     - SEARCH:SEARCH<x>:TRIGger:A:STATE {<NR1>|OFF|ON}
+    - SEARCH:SEARCH<x>:TRIGger:A:STATE?
     - SEARCH:SEARCH<x>:TRIGger:A:STOPAcq {<NR1>|OFF|ON}
     - SEARCH:SEARCH<x>:TRIGger:A:STOPAcq?
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:LOGICQUALification {ON|OFF}
@@ -228,6 +232,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:TYPe {EDGE| RUNT| TRANsition| PULSEWidth| TIMEOut| LOGIc| SETHold| Bus}
     - SEARCH:SEARCH<x>:TRIGger:A:TYPe?
     - SEARCH:SELected SEARCH1
+    - SEARCH:SELected?
 """  # noqa: E501
 from typing import Dict, Optional, TYPE_CHECKING
 
@@ -245,7 +250,7 @@ if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
 
 
-class SearchSelected(SCPICmdWrite):
+class SearchSelected(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SELected`` command.
 
     **Description:**
@@ -253,6 +258,9 @@ class SearchSelected(SCPICmdWrite):
           is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``SEARCH:SELected?`` query.
+        - Using the ``.verify(value)`` method will send the ``SEARCH:SELected?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``SEARCH:SELected value`` command.
 
     **SCPI Syntax:**
@@ -260,6 +268,7 @@ class SearchSelected(SCPICmdWrite):
     ::
 
         - SEARCH:SELected SEARCH1
+        - SEARCH:SELected?
 
     **Info:**
         - ``SEARCH1`` is the specified search.
@@ -677,7 +686,7 @@ class SearchSearchItemTriggerAStopacq(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class SearchSearchItemTriggerAState(SCPICmdWrite):
+class SearchSearchItemTriggerAState(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:STATE`` command.
 
     **Description:**
@@ -685,6 +694,9 @@ class SearchSearchItemTriggerAState(SCPICmdWrite):
           specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:STATE?`` query.
+        - Using the ``.verify(value)`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:STATE?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:STATE value`` command.
 
@@ -693,6 +705,7 @@ class SearchSearchItemTriggerAState(SCPICmdWrite):
     ::
 
         - SEARCH:SEARCH<x>:TRIGger:A:STATE {<NR1>|OFF|ON}
+        - SEARCH:SEARCH<x>:TRIGger:A:STATE?
 
     **Info:**
         - ``<NR1>`` = 1 enables the search. Any other character disables the search.
@@ -796,6 +809,101 @@ class SearchSearchItemTriggerASetholdLogicpatternMathItem(
     """
 
 
+class SearchSearchItemTriggerASetholdLogicpatternDchItemDigitalBit(
+    ValidatedDigitalBit, SCPICmdWrite, SCPICmdRead
+):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x>`` command.
+
+    **Description:**
+        - This command sets or queries the conditions used for generating an A logic pattern, with
+          respect to the defined input pattern, and identifies the time that the selected pattern
+          may be true and still generate the trigger. The search number is specified by x. The
+          supported digital channel value is 1. The supported digital bit values are 0 to 15.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x>?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x>?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x> value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x> {INCLude|DONTInclude}
+        - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x>?
+
+    **Info:**
+        - ``INCLude`` specifies including the specified channel SETHOLD inputs in the specified
+          search.
+        - ``DONTInclude`` specifies not including the specified channel SETHOLD inputs in the
+          specified search.
+    """
+
+
+class SearchSearchItemTriggerASetholdLogicpatternDchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    Properties:
+        - ``.d``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x>`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._d: Dict[
+            int, SearchSearchItemTriggerASetholdLogicpatternDchItemDigitalBit
+        ] = DefaultDictPassKeyToFactory(
+            lambda x: SearchSearchItemTriggerASetholdLogicpatternDchItemDigitalBit(
+                device, f"{self._cmd_syntax}_D{x}"
+            )
+        )
+
+    @property
+    def d(self) -> Dict[int, SearchSearchItemTriggerASetholdLogicpatternDchItemDigitalBit]:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x>`` command.
+
+        **Description:**
+            - This command sets or queries the conditions used for generating an A logic pattern,
+              with respect to the defined input pattern, and identifies the time that the selected
+              pattern may be true and still generate the trigger. The search number is specified by
+              x. The supported digital channel value is 1. The supported digital bit values are 0 to
+              15.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x>?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x>?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x> value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x> {INCLude|DONTInclude}
+            - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x>?
+
+        **Info:**
+            - ``INCLude`` specifies including the specified channel SETHOLD inputs in the specified
+              search.
+            - ``DONTInclude`` specifies not including the specified channel SETHOLD inputs in the
+              specified search.
+        """
+        return self._d
+
+
 class SearchSearchItemTriggerASetholdLogicpatternChannel(
     ValidatedChannel, SCPICmdWrite, SCPICmdRead
 ):
@@ -842,6 +950,7 @@ class SearchSearchItemTriggerASetholdLogicpattern(SCPICmdRead):
 
     Properties:
         - ``.ch``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>`` command.
+        - ``.dch``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>`` command tree.
         - ``.math``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:MATH<x>`` command.
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:REF<x>`` command.
     """
@@ -853,6 +962,13 @@ class SearchSearchItemTriggerASetholdLogicpattern(SCPICmdRead):
         ] = DefaultDictPassKeyToFactory(
             lambda x: SearchSearchItemTriggerASetholdLogicpatternChannel(
                 device, f"{self._cmd_syntax}:CH{x}"
+            )
+        )
+        self._dch: Dict[
+            int, SearchSearchItemTriggerASetholdLogicpatternDchItem
+        ] = DefaultDictPassKeyToFactory(
+            lambda x: SearchSearchItemTriggerASetholdLogicpatternDchItem(
+                device, f"{self._cmd_syntax}:DCH{x}"
             )
         )
         self._math: Dict[
@@ -903,6 +1019,22 @@ class SearchSearchItemTriggerASetholdLogicpattern(SCPICmdRead):
               specified search.
         """
         return self._ch
+
+    @property
+    def dch(self) -> Dict[int, SearchSearchItemTriggerASetholdLogicpatternDchItem]:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.d``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>_D<x>`` command.
+        """
+        return self._dch
 
     @property
     def math(self) -> Dict[int, SearchSearchItemTriggerASetholdLogicpatternMathItem]:
@@ -1543,6 +1675,7 @@ class SearchSearchItemTriggerASethold(SCPICmdRead):
 
         Sub-properties:
             - ``.ch``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>`` command.
+            - ``.dch``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:DCH<x>`` command tree.
             - ``.math``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:MATH<x>`` command.
             - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:REF<x>`` command.
         """
@@ -4715,7 +4848,7 @@ class SearchSearchItemTriggerABusSentPauseTicksValue(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class SearchSearchItemTriggerABusSentPauseTicksHivalue(SCPICmdWriteNoArguments, SCPICmdRead):
+class SearchSearchItemTriggerABusSentPauseTicksHivalue(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue`` command.
 
     **Description:**
@@ -4728,14 +4861,14 @@ class SearchSearchItemTriggerABusSentPauseTicksHivalue(SCPICmdWriteNoArguments, 
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue?`` query and raise an
           AssertionError if the returned value does not match ``value``.
-        - Using the ``.write()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue`` command.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue value`` command.
 
     **SCPI Syntax:**
 
     ::
 
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue <NR1>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue?
 
     **Info:**
@@ -4782,14 +4915,14 @@ class SearchSearchItemTriggerABusSentPauseTicks(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue?`` query and raise an
               AssertionError if the returned value does not match ``value``.
-            - Using the ``.write()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue`` command.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue value`` command.
 
         **SCPI Syntax:**
 
         ::
 
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue <NR1>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue?
 
         **Info:**
@@ -7943,7 +8076,7 @@ class SearchSearchItemTriggerABusCanErrtype(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class SearchSearchItemTriggerABusCanDataValue(SCPICmdWrite):
+class SearchSearchItemTriggerABusCanDataValue(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue`` command.
 
     **Description:**
@@ -7951,6 +8084,11 @@ class SearchSearchItemTriggerABusCanDataValue(SCPICmdWrite):
           signal. The search condition must be set to IDANDDATA OR DATA.
 
     **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue value`` command.
 
@@ -7959,6 +8097,7 @@ class SearchSearchItemTriggerABusCanDataValue(SCPICmdWrite):
     ::
 
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue?
 
     **Info:**
         - ``<QString>``
@@ -8267,6 +8406,11 @@ class SearchSearchItemTriggerABusCanData(SCPICmdRead):
               bus signal. The search condition must be set to IDANDDATA OR DATA.
 
         **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue value`` command.
 
@@ -8275,6 +8419,7 @@ class SearchSearchItemTriggerABusCanData(SCPICmdRead):
         ::
 
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue?
 
         **Info:**
             - ``<QString>``
@@ -8870,6 +9015,11 @@ class SearchSearchItemTriggerA(SCPICmdRead):
               specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:STATE?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:STATE?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:STATE value`` command.
 
@@ -8878,6 +9028,7 @@ class SearchSearchItemTriggerA(SCPICmdRead):
         ::
 
             - SEARCH:SEARCH<x>:TRIGger:A:STATE {<NR1>|OFF|ON}
+            - SEARCH:SEARCH<x>:TRIGger:A:STATE?
 
         **Info:**
             - ``<NR1>`` = 1 enables the search. Any other character disables the search.
@@ -9433,6 +9584,9 @@ class Search(SCPICmdRead):
               number is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``SEARCH:SELected?`` query.
+            - Using the ``.verify(value)`` method will send the ``SEARCH:SELected?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``SEARCH:SELected value`` command.
 
         **SCPI Syntax:**
@@ -9440,6 +9594,7 @@ class Search(SCPICmdRead):
         ::
 
             - SEARCH:SELected SEARCH1
+            - SEARCH:SELected?
 
         **Info:**
             - ``SEARCH1`` is the specified search.
