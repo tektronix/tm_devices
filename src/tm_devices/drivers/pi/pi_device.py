@@ -822,7 +822,7 @@ class PIDevice(Device, ABC):
             self._visa_resource.close()
         except VisaIOError as error:
             warnings.warn(
-                f"Error encountered while closing the visa resource: \n {error}", stacklevel=2
+                f"Error encountered while closing the visa resource:\n{error}", stacklevel=2
             )
         self._visa_resource = None  # pyright: ignore[reportAttributeAccessIssue]
         self._is_open = False
