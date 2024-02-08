@@ -34,7 +34,6 @@ Commands and Queries:
     - HORizontal:FASTframe:SUMFrame {NONe|AVErage|ENVelope}
     - HORizontal:FASTframe:SUMFrame:STATE {<NR1>|OFF|ON}
     - HORizontal:FASTframe:SUMFrame:STATE?
-    - HORizontal:FASTframe:SUMFrame?
     - HORizontal:FASTframe:TIMEStamp:ALL?
     - HORizontal:FASTframe:TIMEStamp:DELTa?
     - HORizontal:FASTframe:TIMEStamp:REFerence?
@@ -2035,9 +2034,6 @@ class HorizontalFastframeSumframe(SCPICmdWrite, SCPICmdRead):
           always the number of frames to acquire.
 
     **Usage:**
-        - Using the ``.query()`` method will send the ``HORizontal:FASTframe:SUMFrame?`` query.
-        - Using the ``.verify(value)`` method will send the ``HORizontal:FASTframe:SUMFrame?`` query
-          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``HORizontal:FASTframe:SUMFrame value``
           command.
 
@@ -2046,7 +2042,6 @@ class HorizontalFastframeSumframe(SCPICmdWrite, SCPICmdRead):
     ::
 
         - HORizontal:FASTframe:SUMFrame {NONe|AVErage|ENVelope}
-        - HORizontal:FASTframe:SUMFrame?
 
     **Info:**
         - ``NONe`` sets the Summary frame to off.
@@ -2595,9 +2590,6 @@ class HorizontalFastframe(SCPICmdRead):
               value is always the number of frames to acquire.
 
         **Usage:**
-            - Using the ``.query()`` method will send the ``HORizontal:FASTframe:SUMFrame?`` query.
-            - Using the ``.verify(value)`` method will send the ``HORizontal:FASTframe:SUMFrame?``
-              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``HORizontal:FASTframe:SUMFrame value`` command.
 
@@ -2606,7 +2598,6 @@ class HorizontalFastframe(SCPICmdRead):
         ::
 
             - HORizontal:FASTframe:SUMFrame {NONe|AVErage|ENVelope}
-            - HORizontal:FASTframe:SUMFrame?
 
         **Info:**
             - ``NONe`` sets the Summary frame to off.

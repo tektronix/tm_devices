@@ -961,6 +961,7 @@ Commands and Queries:
     - TRIGger:HYSTeresis:USER:VALue <NR1>
     - TRIGger:HYSTeresis:USER:VALue?
     - TRIGger:STATE?
+    - TRIGger:STATUs?
     - TRIGger?
 """  # noqa: E501
 from typing import Dict, Optional, TYPE_CHECKING
@@ -975,6 +976,25 @@ from .._helpers import (
 
 if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
+
+
+class TriggerStatus(SCPICmdRead):
+    """The ``TRIGger:STATUs`` command.
+
+    **Description:**
+        - This query-only command returns the current status of the triggering system.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``TRIGger:STATUs?`` query.
+        - Using the ``.verify(value)`` method will send the ``TRIGger:STATUs?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - TRIGger:STATUs?
+    """
 
 
 class TriggerState(SCPICmdRead):
@@ -39792,6 +39812,7 @@ class Trigger(SCPICmdWrite, SCPICmdRead):
         - ``.b``: The ``TRIGger:B`` command tree.
         - ``.hysteresis``: The ``TRIGger:HYSTeresis`` command tree.
         - ``.state``: The ``TRIGger:STATE`` command.
+        - ``.status``: The ``TRIGger:STATUs`` command.
     """
 
     def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "TRIGger") -> None:
@@ -39799,6 +39820,7 @@ class Trigger(SCPICmdWrite, SCPICmdRead):
         self._auxlevel = TriggerAuxlevel(device, f"{self._cmd_syntax}:AUXLevel")
         self._hysteresis = TriggerHysteresis(device, f"{self._cmd_syntax}:HYSTeresis")
         self._state = TriggerState(device, f"{self._cmd_syntax}:STATE")
+        self._status = TriggerStatus(device, f"{self._cmd_syntax}:STATUs")
         self._a = TriggerA(device, f"{self._cmd_syntax}:A")
         self._b = TriggerB(device, f"{self._cmd_syntax}:B")
 
@@ -39863,6 +39885,26 @@ class Trigger(SCPICmdWrite, SCPICmdRead):
             - TRIGger:STATE?
         """
         return self._state
+
+    @property
+    def status(self) -> TriggerStatus:
+        """Return the ``TRIGger:STATUs`` command.
+
+        **Description:**
+            - This query-only command returns the current status of the triggering system.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``TRIGger:STATUs?`` query.
+            - Using the ``.verify(value)`` method will send the ``TRIGger:STATUs?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - TRIGger:STATUs?
+        """
+        return self._status
 
     @property
     def a(self) -> TriggerA:

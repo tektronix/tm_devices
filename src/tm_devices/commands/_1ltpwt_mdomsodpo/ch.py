@@ -169,12 +169,8 @@ class ChannelScale(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>:SCAle`` command.
 
     **Description:**
-        - This command specifies the vertical scale for the channel specified by <x>, where x is the
-          channel number. This setting controls the vertical size of the acquisition window as well
-          as the display scale. The range and resolution of scale values depends on the probe
-          attached and any other external factors you have specified. For a signal with constant
-          amplitude, increasing the scale causes the waveform to be displayed smaller. Decreasing
-          the scale causes the waveform to be displayed larger.
+        - This command sets or returns the vertical scale for the specified analog channel. The
+          channel is specified by x.
 
     **Usage:**
         - Using the ``.query()`` method will send the ``CH<x>:SCAle?`` query.
@@ -190,8 +186,8 @@ class ChannelScale(SCPICmdWrite, SCPICmdRead):
         - CH<x>:SCAle?
 
     **Info:**
-        - ``<NR3>`` is a floating point number that specifies the vertical channel scale in
-          units-per-division. The value entered here is truncated to three significant digits.
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` is the vertical scale for the specified analog channel.
     """
 
 
@@ -1840,12 +1836,8 @@ class Channel(ValidatedChannel, SCPICmdRead):
         """Return the ``CH<x>:SCAle`` command.
 
         **Description:**
-            - This command specifies the vertical scale for the channel specified by <x>, where x is
-              the channel number. This setting controls the vertical size of the acquisition window
-              as well as the display scale. The range and resolution of scale values depends on the
-              probe attached and any other external factors you have specified. For a signal with
-              constant amplitude, increasing the scale causes the waveform to be displayed smaller.
-              Decreasing the scale causes the waveform to be displayed larger.
+            - This command sets or returns the vertical scale for the specified analog channel. The
+              channel is specified by x.
 
         **Usage:**
             - Using the ``.query()`` method will send the ``CH<x>:SCAle?`` query.
@@ -1861,8 +1853,8 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - CH<x>:SCAle?
 
         **Info:**
-            - ``<NR3>`` is a floating point number that specifies the vertical channel scale in
-              units-per-division. The value entered here is truncated to three significant digits.
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` is the vertical scale for the specified analog channel.
         """
         return self._scale
 

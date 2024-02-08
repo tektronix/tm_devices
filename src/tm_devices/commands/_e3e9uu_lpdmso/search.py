@@ -35,6 +35,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:LABel:QUALifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:LABel:VALue <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:LABel:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:SDI:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:SDI:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:SSM:VALue <QString>
@@ -91,36 +92,6 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:SEQnum:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:SOUrceport:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:SOUrceport:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition {DATa}
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue <QString>
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition {STARt| STATus| DATa| BLOCkid| ERRors| STARTBIT| FUNCTIONCODe| ECUDATa| SENSORADDRess| REGISTERADDRess| SENSORSTATus|CRCERRor}
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs {FOURBIT|EIGHTBIT|TWENTYBIT}
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue <QString>
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue <QString>
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue <QString>
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe {ANY|PARity|CRC|RESPONSECODe}
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe <QString>
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess {TWOBIT|SIXBIT|EIGHTBIT}
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue <QString>
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe {READy|BUSY|DEFect|SERVICEMODe|UNLocked}
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue <QString>
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue <QString>
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition {SYMbols|ERRors}
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CONDition {SOF| FRAMEtype| IDentifier| DATa| IDANDDATA| EOF| ERRor| FDBITS}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:DIRection {READ|WRITE|NOCARE}
@@ -690,6 +661,8 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:STATus:BIT:TF?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:STATus:PARity {ONE|ZERo|NOCARE}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:STATus:PARity?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition {DATa}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:DATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:DATa:SIZe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:DATa:VALue <QString>
@@ -718,12 +691,40 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:SEARCHROM:ROMCODe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PARallel:DATa:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PARallel:DATa:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition {STARt| STATus| DATa| BLOCkid| ERRors| STARTBIT| FUNCTIONCODe| ECUDATa| SENSORADDRess| REGISTERADDRess| SENSORSTATus|CRCERRor}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs {FOURBIT|EIGHTBIT|TWENTYBIT}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe {ANY|PARity|CRC|RESPONSECODe}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess {TWOBIT|SIXBIT|EIGHTBIT}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe {READy|BUSY|DEFect|SERVICEMODe|UNLocked}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue <QString>
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C:CONDition {DATa|EOp|PARItyerror|STARt}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C:DATa:SIZe <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C:DATa:SIZe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C:DATa:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C:DATa:VALue?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition {SYMbols|ERRors}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:DISParity {POSITIVe|NEGAtive|EITHer}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:DISParity?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERRor {SYMBol|DISParity}
@@ -883,6 +884,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:OFFSet <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:OFFSet?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:QUALifier {EQual|UNEQual| LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:QUALifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:SIZe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:TYPe {ANY|DATA<x>|MDATA}
@@ -1200,6 +1202,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:TYPe {EDGE|RUNT|TRANsition|PULSEWidth|TIMEOut|LOGIc| SETHold|WINdow|Bus|DDRRead|DDRREADWrite|DDRWrite}
     - SEARCH:SEARCH<x>:TRIGger:A:TYPe?
     - SEARCH:SEARCH<x>:TRIGger:A:WINdow:CROSSIng {UPPer|LOWer|EITher|NONe}
+    - SEARCH:SEARCH<x>:TRIGger:A:WINdow:CROSSIng?
     - SEARCH:SEARCH<x>:TRIGger:A:WINdow:LOGICQUALification {ON|OFF}
     - SEARCH:SEARCH<x>:TRIGger:A:WINdow:LOGICQUALification?
     - SEARCH:SEARCH<x>:TRIGger:A:WINdow:POLarity {UPPer|LOWer|EITher|NONe}
@@ -1549,7 +1552,7 @@ class SearchSearchItemTriggerAWindowLogicqualification(SCPICmdWrite, SCPICmdRead
     """
 
 
-class SearchSearchItemTriggerAWindowCrossing(SCPICmdWrite):
+class SearchSearchItemTriggerAWindowCrossing(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:WINdow:CROSSIng`` command.
 
     **Description:**
@@ -1558,6 +1561,11 @@ class SearchSearchItemTriggerAWindowCrossing(SCPICmdWrite):
           is INSIDEGreater or OUTSIDEGreater. The search number is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:WINdow:CROSSIng?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:WINdow:CROSSIng?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:WINdow:CROSSIng value`` command.
 
@@ -1566,6 +1574,7 @@ class SearchSearchItemTriggerAWindowCrossing(SCPICmdWrite):
     ::
 
         - SEARCH:SEARCH<x>:TRIGger:A:WINdow:CROSSIng {UPPer|LOWer|EITher|NONe}
+        - SEARCH:SEARCH<x>:TRIGger:A:WINdow:CROSSIng?
 
     **Info:**
         - ``UPPer`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater, the instrument triggers when the
@@ -1644,6 +1653,11 @@ class SearchSearchItemTriggerAWindow(SCPICmdRead):
               specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:WINdow:CROSSIng?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:WINdow:CROSSIng?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:WINdow:CROSSIng value`` command.
 
@@ -1652,6 +1666,7 @@ class SearchSearchItemTriggerAWindow(SCPICmdRead):
         ::
 
             - SEARCH:SEARCH<x>:TRIGger:A:WINdow:CROSSIng {UPPer|LOWer|EITher|NONe}
+            - SEARCH:SEARCH<x>:TRIGger:A:WINdow:CROSSIng?
 
         **Info:**
             - ``UPPer`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater, the instrument triggers when
@@ -13801,7 +13816,7 @@ class SearchSearchItemTriggerABusUsbDataSize(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class SearchSearchItemTriggerABusUsbDataQualifier(SCPICmdWrite):
+class SearchSearchItemTriggerABusUsbDataQualifier(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:QUALifier`` command.
 
     **Description:**
@@ -13810,6 +13825,11 @@ class SearchSearchItemTriggerABusUsbDataQualifier(SCPICmdWrite):
           x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:QUALifier?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:QUALifier?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:QUALifier value`` command.
 
@@ -13818,6 +13838,7 @@ class SearchSearchItemTriggerABusUsbDataQualifier(SCPICmdWrite):
     ::
 
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:QUALifier {EQual|UNEQual| LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:QUALifier?
 
     **Info:**
         - ``EQUal`` specifies the qualifier as Equal.
@@ -13997,6 +14018,11 @@ class SearchSearchItemTriggerABusUsbData(SCPICmdRead):
               specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:QUALifier?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:QUALifier?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:QUALifier value`` command.
 
@@ -14005,6 +14031,7 @@ class SearchSearchItemTriggerABusUsbData(SCPICmdRead):
         ::
 
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:QUALifier {EQual|UNEQual| LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:QUALifier?
 
         **Info:**
             - ``EQUal`` specifies the qualifier as Equal.
@@ -20964,6 +20991,36 @@ class SearchSearchItemTriggerABusS8b10bDisparity(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class SearchSearchItemTriggerABusS8b10bCondition(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition`` command.
+
+    **Description:**
+        - This command sets or queries the type of data search for an 8B10B bus. The search number
+          is specified by x.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition {SYMbols|ERRors}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition?
+
+    **Info:**
+        - ``Search<x>`` is the number of the search.
+        - ``SYMbols`` specifies the search condition as data or control.
+        - ``ERRors`` specifies the search condition as Symbol error or disparity error.
+    """
+
+
 class SearchSearchItemTriggerABusS8b10b(SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B`` command tree.
 
@@ -20975,6 +21032,7 @@ class SearchSearchItemTriggerABusS8b10b(SCPICmdRead):
           returned value does not match ``value``.
 
     Properties:
+        - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition`` command.
         - ``.disparity``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:DISParity`` command.
         - ``.error``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERRor`` command.
         - ``.symbol``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:SYMbol`` command tree.
@@ -20982,11 +21040,45 @@ class SearchSearchItemTriggerABusS8b10b(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
+        self._condition = SearchSearchItemTriggerABusS8b10bCondition(
+            device, f"{self._cmd_syntax}:CONDition"
+        )
         self._disparity = SearchSearchItemTriggerABusS8b10bDisparity(
             device, f"{self._cmd_syntax}:DISParity"
         )
         self._error = SearchSearchItemTriggerABusS8b10bError(device, f"{self._cmd_syntax}:ERRor")
         self._symbol = SearchSearchItemTriggerABusS8b10bSymbol(device, f"{self._cmd_syntax}:SYMbol")
+
+    @property
+    def condition(self) -> SearchSearchItemTriggerABusS8b10bCondition:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition`` command.
+
+        **Description:**
+            - This command sets or queries the type of data search for an 8B10B bus. The search
+              number is specified by x.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition {SYMbols|ERRors}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition?
+
+        **Info:**
+            - ``Search<x>`` is the number of the search.
+            - ``SYMbols`` specifies the search condition as data or control.
+            - ``ERRors`` specifies the search condition as Symbol error or disparity error.
+        """
+        return self._condition
 
     @property
     def disparity(self) -> SearchSearchItemTriggerABusS8b10bDisparity:
@@ -21326,6 +21418,1388 @@ class SearchSearchItemTriggerABusRs232c(SCPICmdRead):
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C:DATa:VALue`` command.
         """
         return self._data
+
+
+class SearchSearchItemTriggerABusPsifiveStatusValue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue`` command.
+
+    **Description:**
+        - This command sets or queries the binary status string used for PSI5 triggering if the
+          trigger condition is status.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue?
+
+    **Info:**
+        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1, and X
+          for values in binary format; and A-F, 0-9, and X for values in hexadecimal format.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPsifiveStatus(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+
+    Properties:
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._value = SearchSearchItemTriggerABusPsifiveStatusValue(
+            device, f"{self._cmd_syntax}:VALue"
+        )
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusPsifiveStatusValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue`` command.
+
+        **Description:**
+            - This command sets or queries the binary status string used for PSI5 triggering if the
+              trigger condition is status.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue?
+
+        **Info:**
+            - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,
+              and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
+              format.
+        """
+        return self._value
+
+
+class SearchSearchItemTriggerABusPsifiveSensorAddressValue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue`` command.
+
+    **Description:**
+        - This command sets or queries the binary sensor address string used for PSI5 triggering if
+          the trigger condition is Sensor Address. The search number is specified by x.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue?
+
+    **Info:**
+        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1, and X
+          for values in binary format; and A-F, 0-9, and X for values in hexadecimal format.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPsifiveSensorAddress(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    Properties:
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._value = SearchSearchItemTriggerABusPsifiveSensorAddressValue(
+            device, f"{self._cmd_syntax}:VALue"
+        )
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusPsifiveSensorAddressValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue`` command.
+
+        **Description:**
+            - This command sets or queries the binary sensor address string used for PSI5 triggering
+              if the trigger condition is Sensor Address. The search number is specified by x.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue?
+
+        **Info:**
+            - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,
+              and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
+              format.
+        """
+        return self._value
+
+
+class SearchSearchItemTriggerABusPsifiveSensor(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+
+    Properties:
+        - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._address = SearchSearchItemTriggerABusPsifiveSensorAddress(
+            device, f"{self._cmd_syntax}:ADDRess"
+        )
+
+    @property
+    def address(self) -> SearchSearchItemTriggerABusPsifiveSensorAddress:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess:VALue``
+              command.
+        """
+        return self._address
+
+
+class SearchSearchItemTriggerABusPsifiveSensorstatusType(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe`` command.
+
+    **Description:**
+        - This command sets or queries the sensor status for PSI5 bus.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe {READy|BUSY|DEFect|SERVICEMODe|UNLocked}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe?
+
+    **Info:**
+        - ``READy`` specifies the sensor status as ready. This is the default value.
+        - ``BUSY`` specifies the sensor status as busy.
+        - ``DEFect`` specifies the sensor status as defect.
+        - ``SERVICEMODe`` specifies the sensor status as service mode.
+        - ``UNLocked`` specifies the sensor status as unlocked.
+    """  # noqa: E501
+
+
+class SearchSearchItemTriggerABusPsifiveSensorstatus(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+
+    Properties:
+        - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._type = SearchSearchItemTriggerABusPsifiveSensorstatusType(
+            device, f"{self._cmd_syntax}:TYPe"
+        )
+
+    @property
+    def type(self) -> SearchSearchItemTriggerABusPsifiveSensorstatusType:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe`` command.
+
+        **Description:**
+            - This command sets or queries the sensor status for PSI5 bus.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe {READy|BUSY|DEFect|SERVICEMODe|UNLocked}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe?
+
+        **Info:**
+            - ``READy`` specifies the sensor status as ready. This is the default value.
+            - ``BUSY`` specifies the sensor status as busy.
+            - ``DEFect`` specifies the sensor status as defect.
+            - ``SERVICEMODe`` specifies the sensor status as service mode.
+            - ``UNLocked`` specifies the sensor status as unlocked.
+        """  # noqa: E501
+        return self._type
+
+
+class SearchSearchItemTriggerABusPsifiveRegisterAddressValue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue`` command.
+
+    **Description:**
+        - This command sets or queries the binary register address string used for PSI5 triggering
+          if the trigger condition is Register Address. The search number is specified by x.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue?
+
+    **Info:**
+        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1, and X
+          for values in binary format; and A-F, 0-9, and X for values in hexadecimal format.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPsifiveRegisterAddress(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    Properties:
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._value = SearchSearchItemTriggerABusPsifiveRegisterAddressValue(
+            device, f"{self._cmd_syntax}:VALue"
+        )
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusPsifiveRegisterAddressValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue`` command.
+
+        **Description:**
+            - This command sets or queries the binary register address string used for PSI5
+              triggering if the trigger condition is Register Address. The search number is
+              specified by x.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue?
+
+        **Info:**
+            - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,
+              and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
+              format.
+        """
+        return self._value
+
+
+class SearchSearchItemTriggerABusPsifiveRegister(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+
+    Properties:
+        - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess`` command
+          tree.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._address = SearchSearchItemTriggerABusPsifiveRegisterAddress(
+            device, f"{self._cmd_syntax}:ADDRess"
+        )
+
+    @property
+    def address(self) -> SearchSearchItemTriggerABusPsifiveRegisterAddress:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess:VALue``
+              command.
+        """
+        return self._address
+
+
+class SearchSearchItemTriggerABusPsifiveRegisteraddress(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess`` command.
+
+    **Description:**
+        - This command sets or queries the register address for PSI5 bus. The search number is
+          specified by x.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess {TWOBIT|SIXBIT|EIGHTBIT}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess?
+
+    **Info:**
+        - ``TWOBIT`` specifies the register address value as 2 bit. This is the default value.
+        - ``SIXBIT`` specifies the register address value as 6 bit.
+        - ``EIGHTBIT`` specifies the register address value as 8 bit.
+    """
+
+
+class SearchSearchItemTriggerABusPsifiveFunctioncodetype(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe`` command.
+
+    **Description:**
+        - This command sets or queries the binary data string used for PSI5 triggering if the
+          trigger condition is a Function Code. The search number is specified by x.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe?
+
+    **Info:**
+        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1, and X
+          for values in binary format; and A-F, 0-9, and X for values in hexadecimal format.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPsifiveErrortype(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe`` command.
+
+    **Description:**
+        - This command sets or queries the error type for an PSI5 bus. The search number is
+          specified by x.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe {ANY|PARity|CRC|RESPONSECODe}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe?
+
+    **Info:**
+        - ``ANY`` specifies the error type value as any. This is the default value.
+        - ``PARity`` specifies the error type value as parity.
+        - ``CRC`` specifies the error type value as CRC.
+        - ``RESPONSECODe`` specifies the error type value as response code.
+    """
+
+
+class SearchSearchItemTriggerABusPsifiveDataRegionBValue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue`` command.
+
+    **Description:**
+        - This command sets or queries the binary data string used for PSI5 triggering if the
+          trigger condition is data region B. The search number is specified by x.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue?
+
+    **Info:**
+        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1, and X
+          for values in binary format; and A-F, 0-9, and X for values in hexadecimal format.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPsifiveDataRegionB(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    Properties:
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._value = SearchSearchItemTriggerABusPsifiveDataRegionBValue(
+            device, f"{self._cmd_syntax}:VALue"
+        )
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusPsifiveDataRegionBValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue`` command.
+
+        **Description:**
+            - This command sets or queries the binary data string used for PSI5 triggering if the
+              trigger condition is data region B. The search number is specified by x.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue?
+
+        **Info:**
+            - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,
+              and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
+              format.
+        """
+        return self._value
+
+
+class SearchSearchItemTriggerABusPsifiveDataRegionAValue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue`` command.
+
+    **Description:**
+        - This command sets or queries the binary data string used for PSI5 triggering if the
+          trigger condition is data region A. The search number is specified by x.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue?
+
+    **Info:**
+        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1, and X
+          for values in binary format; and A-F, 0-9, and X for values in hexadecimal format.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPsifiveDataRegionA(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    Properties:
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._value = SearchSearchItemTriggerABusPsifiveDataRegionAValue(
+            device, f"{self._cmd_syntax}:VALue"
+        )
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusPsifiveDataRegionAValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue`` command.
+
+        **Description:**
+            - This command sets or queries the binary data string used for PSI5 triggering if the
+              trigger condition is data region A. The search number is specified by x.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue?
+
+        **Info:**
+            - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,
+              and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
+              format.
+        """
+        return self._value
+
+
+class SearchSearchItemTriggerABusPsifiveDataRegion(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion?`` query and raise an AssertionError
+          if the returned value does not match ``value``.
+
+    Properties:
+        - ``.a``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A`` command tree.
+        - ``.b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._a = SearchSearchItemTriggerABusPsifiveDataRegionA(device, f"{self._cmd_syntax}:A")
+        self._b = SearchSearchItemTriggerABusPsifiveDataRegionB(device, f"{self._cmd_syntax}:B")
+
+    @property
+    def a(self) -> SearchSearchItemTriggerABusPsifiveDataRegionA:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A:VALue``
+              command.
+        """
+        return self._a
+
+    @property
+    def b(self) -> SearchSearchItemTriggerABusPsifiveDataRegionB:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B:VALue``
+              command.
+        """
+        return self._b
+
+
+class SearchSearchItemTriggerABusPsifiveDataEcuSensorValue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue`` command.
+
+    **Description:**
+        - This command sets or queries the binary Data string used for PSI5 triggering if the
+          trigger condition is Data in ECU to Sensor communication mode. The search number is
+          specified by x.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue?
+
+    **Info:**
+        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1, and X
+          for values in binary format; and A-F, 0-9, and X for values in hexadecimal format.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPsifiveDataEcuSensor(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    Properties:
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._value = SearchSearchItemTriggerABusPsifiveDataEcuSensorValue(
+            device, f"{self._cmd_syntax}:VALue"
+        )
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusPsifiveDataEcuSensorValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue`` command.
+
+        **Description:**
+            - This command sets or queries the binary Data string used for PSI5 triggering if the
+              trigger condition is Data in ECU to Sensor communication mode. The search number is
+              specified by x.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue?
+
+        **Info:**
+            - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,
+              and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
+              format.
+        """
+        return self._value
+
+
+class SearchSearchItemTriggerABusPsifiveDataEcu(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+
+    Properties:
+        - ``.sensor``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._sensor = SearchSearchItemTriggerABusPsifiveDataEcuSensor(
+            device, f"{self._cmd_syntax}:SENSor"
+        )
+
+    @property
+    def sensor(self) -> SearchSearchItemTriggerABusPsifiveDataEcuSensor:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor:VALue``
+              command.
+        """
+        return self._sensor
+
+
+class SearchSearchItemTriggerABusPsifiveData(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Properties:
+        - ``.ecu``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU`` command tree.
+        - ``.region``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._ecu = SearchSearchItemTriggerABusPsifiveDataEcu(device, f"{self._cmd_syntax}:ECU")
+        self._region = SearchSearchItemTriggerABusPsifiveDataRegion(
+            device, f"{self._cmd_syntax}:REGion"
+        )
+
+    @property
+    def ecu(self) -> SearchSearchItemTriggerABusPsifiveDataEcu:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.sensor``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU:SENSor`` command
+              tree.
+        """
+        return self._ecu
+
+    @property
+    def region(self) -> SearchSearchItemTriggerABusPsifiveDataRegion:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.a``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:A`` command tree.
+            - ``.b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion:B`` command tree.
+        """
+        return self._region
+
+
+class SearchSearchItemTriggerABusPsifiveDatabits(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs`` command.
+
+    **Description:**
+        - This command sets or queries the binary register address string used for PSI5 triggering
+          if the trigger condition is Data in ECU to Sensor communication mode. The search number is
+          specified by x.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs {FOURBIT|EIGHTBIT|TWENTYBIT}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs?
+
+    **Info:**
+        - ``FOURBIT`` specifies the data bit value as 4 bit.
+        - ``EIGHTBIT`` specifies the data bit value as 8 bit.
+        - ``TWENTYBIT`` specifies the data bit value as 20 bit.
+    """
+
+
+class SearchSearchItemTriggerABusPsifiveCondition(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition`` command.
+
+    **Description:**
+        - This command sets or queries the trigger condition for an PSI5 bus. The search number is
+          specified by x.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition {STARt| STATus| DATa| BLOCkid| ERRors| STARTBIT| FUNCTIONCODe| ECUDATa| SENSORADDRess| REGISTERADDRess| SENSORSTATus|CRCERRor}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition?
+
+    **Info:**
+        - ``STARt`` specifies the search condition as Start. This is the default trigger.
+        - ``STATus`` specifies the search condition as Status.
+        - ``DATa`` specifies the search condition as Data.
+        - ``BLOCkid`` specifies the search condition as Block ID.
+        - ``ERRors`` specifies the search condition as Errors.
+        - ``STARTBIT`` specifies the search condition as Start Bit.
+        - ``FUNCTIONCODe`` specifies the search condition as Function Code.
+        - ``ECUDATa`` specifies the search condition as ECU Data.
+        - ``SENSORADDRess`` specifies the search condition as Sensor Address.
+        - ``REGISTERADDRess`` specifies the search condition as Register Address.
+        - ``SENSORSTATus`` specifies the search condition as Sensor Status.
+        - ``CRCERRor`` specifies the search condition as CRC Error.
+    """  # noqa: E501
+
+
+class SearchSearchItemTriggerABusPsifiveBlockdataValue(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue`` command.
+
+    **Description:**
+        - This command sets or queries the binary block data string used for PSI5 triggering if the
+          trigger condition is block id.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue?
+
+    **Info:**
+        - ``<QString>`` specifies the binary block data string.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
+
+
+class SearchSearchItemTriggerABusPsifiveBlockdata(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
+
+    Properties:
+        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._value = SearchSearchItemTriggerABusPsifiveBlockdataValue(
+            device, f"{self._cmd_syntax}:VALue"
+        )
+
+    @property
+    def value(self) -> SearchSearchItemTriggerABusPsifiveBlockdataValue:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue`` command.
+
+        **Description:**
+            - This command sets or queries the binary block data string used for PSI5 triggering if
+              the trigger condition is block id.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue?
+
+        **Info:**
+            - ``<QString>`` specifies the binary block data string.
+        """
+        return self._value
+
+
+#  pylint: disable=too-many-instance-attributes
+class SearchSearchItemTriggerABusPsifive(SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+
+    Properties:
+        - ``.blockdata``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa`` command tree.
+        - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition`` command.
+        - ``.databits``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs`` command.
+        - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa`` command tree.
+        - ``.errortype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe`` command.
+        - ``.functioncodetype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe``
+          command.
+        - ``.registeraddress``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess``
+          command.
+        - ``.register``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister`` command tree.
+        - ``.sensorstatus``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus`` command
+          tree.
+        - ``.sensor``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor`` command tree.
+        - ``.status``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus`` command tree.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._blockdata = SearchSearchItemTriggerABusPsifiveBlockdata(
+            device, f"{self._cmd_syntax}:BLOCKDATa"
+        )
+        self._condition = SearchSearchItemTriggerABusPsifiveCondition(
+            device, f"{self._cmd_syntax}:CONDition"
+        )
+        self._databits = SearchSearchItemTriggerABusPsifiveDatabits(
+            device, f"{self._cmd_syntax}:DATABITs"
+        )
+        self._data = SearchSearchItemTriggerABusPsifiveData(device, f"{self._cmd_syntax}:DATa")
+        self._errortype = SearchSearchItemTriggerABusPsifiveErrortype(
+            device, f"{self._cmd_syntax}:ERRORTYPe"
+        )
+        self._functioncodetype = SearchSearchItemTriggerABusPsifiveFunctioncodetype(
+            device, f"{self._cmd_syntax}:FUNCTIONCODETYPe"
+        )
+        self._registeraddress = SearchSearchItemTriggerABusPsifiveRegisteraddress(
+            device, f"{self._cmd_syntax}:REGISTERADDRess"
+        )
+        self._register = SearchSearchItemTriggerABusPsifiveRegister(
+            device, f"{self._cmd_syntax}:REGister"
+        )
+        self._sensorstatus = SearchSearchItemTriggerABusPsifiveSensorstatus(
+            device, f"{self._cmd_syntax}:SENSORSTATus"
+        )
+        self._sensor = SearchSearchItemTriggerABusPsifiveSensor(
+            device, f"{self._cmd_syntax}:SENSor"
+        )
+        self._status = SearchSearchItemTriggerABusPsifiveStatus(
+            device, f"{self._cmd_syntax}:STATus"
+        )
+
+    @property
+    def blockdata(self) -> SearchSearchItemTriggerABusPsifiveBlockdata:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa:VALue`` command.
+        """
+        return self._blockdata
+
+    @property
+    def condition(self) -> SearchSearchItemTriggerABusPsifiveCondition:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition`` command.
+
+        **Description:**
+            - This command sets or queries the trigger condition for an PSI5 bus. The search number
+              is specified by x.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition {STARt| STATus| DATa| BLOCkid| ERRors| STARTBIT| FUNCTIONCODe| ECUDATa| SENSORADDRess| REGISTERADDRess| SENSORSTATus|CRCERRor}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition?
+
+        **Info:**
+            - ``STARt`` specifies the search condition as Start. This is the default trigger.
+            - ``STATus`` specifies the search condition as Status.
+            - ``DATa`` specifies the search condition as Data.
+            - ``BLOCkid`` specifies the search condition as Block ID.
+            - ``ERRors`` specifies the search condition as Errors.
+            - ``STARTBIT`` specifies the search condition as Start Bit.
+            - ``FUNCTIONCODe`` specifies the search condition as Function Code.
+            - ``ECUDATa`` specifies the search condition as ECU Data.
+            - ``SENSORADDRess`` specifies the search condition as Sensor Address.
+            - ``REGISTERADDRess`` specifies the search condition as Register Address.
+            - ``SENSORSTATus`` specifies the search condition as Sensor Status.
+            - ``CRCERRor`` specifies the search condition as CRC Error.
+        """  # noqa: E501
+        return self._condition
+
+    @property
+    def databits(self) -> SearchSearchItemTriggerABusPsifiveDatabits:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs`` command.
+
+        **Description:**
+            - This command sets or queries the binary register address string used for PSI5
+              triggering if the trigger condition is Data in ECU to Sensor communication mode. The
+              search number is specified by x.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs {FOURBIT|EIGHTBIT|TWENTYBIT}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs?
+
+        **Info:**
+            - ``FOURBIT`` specifies the data bit value as 4 bit.
+            - ``EIGHTBIT`` specifies the data bit value as 8 bit.
+            - ``TWENTYBIT`` specifies the data bit value as 20 bit.
+        """
+        return self._databits
+
+    @property
+    def data(self) -> SearchSearchItemTriggerABusPsifiveData:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.ecu``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:ECU`` command tree.
+            - ``.region``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa:REGion`` command tree.
+        """
+        return self._data
+
+    @property
+    def errortype(self) -> SearchSearchItemTriggerABusPsifiveErrortype:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe`` command.
+
+        **Description:**
+            - This command sets or queries the error type for an PSI5 bus. The search number is
+              specified by x.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe {ANY|PARity|CRC|RESPONSECODe}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe?
+
+        **Info:**
+            - ``ANY`` specifies the error type value as any. This is the default value.
+            - ``PARity`` specifies the error type value as parity.
+            - ``CRC`` specifies the error type value as CRC.
+            - ``RESPONSECODe`` specifies the error type value as response code.
+        """
+        return self._errortype
+
+    @property
+    def functioncodetype(self) -> SearchSearchItemTriggerABusPsifiveFunctioncodetype:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe`` command.
+
+        **Description:**
+            - This command sets or queries the binary data string used for PSI5 triggering if the
+              trigger condition is a Function Code. The search number is specified by x.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe?
+
+        **Info:**
+            - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,
+              and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
+              format.
+        """
+        return self._functioncodetype
+
+    @property
+    def registeraddress(self) -> SearchSearchItemTriggerABusPsifiveRegisteraddress:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess`` command.
+
+        **Description:**
+            - This command sets or queries the register address for PSI5 bus. The search number is
+              specified by x.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess {TWOBIT|SIXBIT|EIGHTBIT}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess?
+
+        **Info:**
+            - ``TWOBIT`` specifies the register address value as 2 bit. This is the default value.
+            - ``SIXBIT`` specifies the register address value as 6 bit.
+            - ``EIGHTBIT`` specifies the register address value as 8 bit.
+        """
+        return self._registeraddress
+
+    @property
+    def register(self) -> SearchSearchItemTriggerABusPsifiveRegister:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister:ADDRess`` command
+              tree.
+        """
+        return self._register
+
+    @property
+    def sensorstatus(self) -> SearchSearchItemTriggerABusPsifiveSensorstatus:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus:TYPe`` command.
+        """
+        return self._sensorstatus
+
+    @property
+    def sensor(self) -> SearchSearchItemTriggerABusPsifiveSensor:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor:ADDRess`` command
+              tree.
+        """
+        return self._sensor
+
+    @property
+    def status(self) -> SearchSearchItemTriggerABusPsifiveStatus:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus:VALue`` command.
+        """
+        return self._status
 
 
 class SearchSearchItemTriggerABusParallelDataValue(SCPICmdWrite, SCPICmdRead):
@@ -22602,6 +24076,35 @@ class SearchSearchItemTriggerABusNrzData(SCPICmdRead):
         return self._value
 
 
+class SearchSearchItemTriggerABusNrzCondition(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition`` command.
+
+    **Description:**
+        - This command specifies a field or condition for an NRZ bus to search on. The search number
+          is specified by x.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition {DATa}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition?
+
+    **Info:**
+        - ``Search<x>`` is the number of the search.
+        - ``DATa`` specifies the search condition as Data Characters.
+    """
+
+
 class SearchSearchItemTriggerABusNrz(SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ`` command tree.
 
@@ -22611,12 +24114,46 @@ class SearchSearchItemTriggerABusNrz(SCPICmdRead):
           query and raise an AssertionError if the returned value does not match ``value``.
 
     Properties:
+        - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition`` command.
         - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:DATa`` command tree.
     """
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
+        self._condition = SearchSearchItemTriggerABusNrzCondition(
+            device, f"{self._cmd_syntax}:CONDition"
+        )
         self._data = SearchSearchItemTriggerABusNrzData(device, f"{self._cmd_syntax}:DATa")
+
+    @property
+    def condition(self) -> SearchSearchItemTriggerABusNrzCondition:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition`` command.
+
+        **Description:**
+            - This command specifies a field or condition for an NRZ bus to search on. The search
+              number is specified by x.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition {DATa}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition?
+
+        **Info:**
+            - ``Search<x>`` is the number of the search.
+            - ``DATa`` specifies the search condition as Data Characters.
+        """
+        return self._condition
 
     @property
     def data(self) -> SearchSearchItemTriggerABusNrzData:
@@ -48700,1638 +50237,6 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
         return self._identifier
 
 
-class SearchSearchItemTriggerABusBS8b10bCondition(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition`` command.
-
-    **Description:**
-        - This command sets or queries the type of data search for an 8B10B bus. The search number
-          is specified by x.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition?`` query and raise an AssertionError
-          if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition {SYMbols|ERRors}
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition?
-
-    **Info:**
-        - ``Search<x>`` is the number of the search.
-        - ``SYMbols`` specifies the search condition as data or control.
-        - ``ERRors`` specifies the search condition as Symbol error or disparity error.
-    """
-
-
-class SearchSearchItemTriggerABusBS8b10b(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B?``
-          query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B?`` query and raise an AssertionError if the
-          returned value does not match ``value``.
-
-    Properties:
-        - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition`` command.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._condition = SearchSearchItemTriggerABusBS8b10bCondition(
-            device, f"{self._cmd_syntax}:CONDition"
-        )
-
-    @property
-    def condition(self) -> SearchSearchItemTriggerABusBS8b10bCondition:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition`` command.
-
-        **Description:**
-            - This command sets or queries the type of data search for an 8B10B bus. The search
-              number is specified by x.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition {SYMbols|ERRors}
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition?
-
-        **Info:**
-            - ``Search<x>`` is the number of the search.
-            - ``SYMbols`` specifies the search condition as data or control.
-            - ``ERRors`` specifies the search condition as Symbol error or disparity error.
-        """
-        return self._condition
-
-
-class SearchSearchItemTriggerABusBPsifiveStatusValue(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue`` command.
-
-    **Description:**
-        - This command sets or queries the binary status string used for PSI5 triggering if the
-          trigger condition is status.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue <QString>
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue?
-
-    **Info:**
-        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1, and X
-          for values in binary format; and A-F, 0-9, and X for values in hexadecimal format.
-    """
-
-    _WRAP_ARG_WITH_QUOTES = True
-
-
-class SearchSearchItemTriggerABusBPsifiveStatus(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus?`` query and raise an AssertionError if
-          the returned value does not match ``value``.
-
-    Properties:
-        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue`` command.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._value = SearchSearchItemTriggerABusBPsifiveStatusValue(
-            device, f"{self._cmd_syntax}:VALue"
-        )
-
-    @property
-    def value(self) -> SearchSearchItemTriggerABusBPsifiveStatusValue:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue`` command.
-
-        **Description:**
-            - This command sets or queries the binary status string used for PSI5 triggering if the
-              trigger condition is status.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue <QString>
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue?
-
-        **Info:**
-            - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,
-              and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
-              format.
-        """
-        return self._value
-
-
-class SearchSearchItemTriggerABusBPsifiveSensorAddressValue(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue`` command.
-
-    **Description:**
-        - This command sets or queries the binary sensor address string used for PSI5 triggering if
-          the trigger condition is Sensor Address. The search number is specified by x.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue <QString>
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue?
-
-    **Info:**
-        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1, and X
-          for values in binary format; and A-F, 0-9, and X for values in hexadecimal format.
-    """
-
-    _WRAP_ARG_WITH_QUOTES = True
-
-
-class SearchSearchItemTriggerABusBPsifiveSensorAddress(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-
-    Properties:
-        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue`` command.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._value = SearchSearchItemTriggerABusBPsifiveSensorAddressValue(
-            device, f"{self._cmd_syntax}:VALue"
-        )
-
-    @property
-    def value(self) -> SearchSearchItemTriggerABusBPsifiveSensorAddressValue:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue`` command.
-
-        **Description:**
-            - This command sets or queries the binary sensor address string used for PSI5 triggering
-              if the trigger condition is Sensor Address. The search number is specified by x.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue <QString>
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue?
-
-        **Info:**
-            - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,
-              and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
-              format.
-        """
-        return self._value
-
-
-class SearchSearchItemTriggerABusBPsifiveSensor(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor?`` query and raise an AssertionError if
-          the returned value does not match ``value``.
-
-    Properties:
-        - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess`` command
-          tree.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._address = SearchSearchItemTriggerABusBPsifiveSensorAddress(
-            device, f"{self._cmd_syntax}:ADDRess"
-        )
-
-    @property
-    def address(self) -> SearchSearchItemTriggerABusBPsifiveSensorAddress:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess:VALue``
-              command.
-        """
-        return self._address
-
-
-class SearchSearchItemTriggerABusBPsifiveSensorstatusType(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe`` command.
-
-    **Description:**
-        - This command sets or queries the sensor status for PSI5 bus.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe {READy|BUSY|DEFect|SERVICEMODe|UNLocked}
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe?
-
-    **Info:**
-        - ``READy`` specifies the sensor status as ready. This is the default value.
-        - ``BUSY`` specifies the sensor status as busy.
-        - ``DEFect`` specifies the sensor status as defect.
-        - ``SERVICEMODe`` specifies the sensor status as service mode.
-        - ``UNLocked`` specifies the sensor status as unlocked.
-    """  # noqa: E501
-
-
-class SearchSearchItemTriggerABusBPsifiveSensorstatus(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-
-    Properties:
-        - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe`` command.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._type = SearchSearchItemTriggerABusBPsifiveSensorstatusType(
-            device, f"{self._cmd_syntax}:TYPe"
-        )
-
-    @property
-    def type(self) -> SearchSearchItemTriggerABusBPsifiveSensorstatusType:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe`` command.
-
-        **Description:**
-            - This command sets or queries the sensor status for PSI5 bus.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe {READy|BUSY|DEFect|SERVICEMODe|UNLocked}
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe?
-
-        **Info:**
-            - ``READy`` specifies the sensor status as ready. This is the default value.
-            - ``BUSY`` specifies the sensor status as busy.
-            - ``DEFect`` specifies the sensor status as defect.
-            - ``SERVICEMODe`` specifies the sensor status as service mode.
-            - ``UNLocked`` specifies the sensor status as unlocked.
-        """  # noqa: E501
-        return self._type
-
-
-class SearchSearchItemTriggerABusBPsifiveRegisterAddressValue(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue`` command.
-
-    **Description:**
-        - This command sets or queries the binary register address string used for PSI5 triggering
-          if the trigger condition is Register Address. The search number is specified by x.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue <QString>
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue?
-
-    **Info:**
-        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1, and X
-          for values in binary format; and A-F, 0-9, and X for values in hexadecimal format.
-    """
-
-    _WRAP_ARG_WITH_QUOTES = True
-
-
-class SearchSearchItemTriggerABusBPsifiveRegisterAddress(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-
-    Properties:
-        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue``
-          command.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._value = SearchSearchItemTriggerABusBPsifiveRegisterAddressValue(
-            device, f"{self._cmd_syntax}:VALue"
-        )
-
-    @property
-    def value(self) -> SearchSearchItemTriggerABusBPsifiveRegisterAddressValue:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue`` command.
-
-        **Description:**
-            - This command sets or queries the binary register address string used for PSI5
-              triggering if the trigger condition is Register Address. The search number is
-              specified by x.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue?`` query and raise
-              an AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue <QString>
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue?
-
-        **Info:**
-            - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,
-              and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
-              format.
-        """
-        return self._value
-
-
-class SearchSearchItemTriggerABusBPsifiveRegister(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister?`` query and raise an AssertionError
-          if the returned value does not match ``value``.
-
-    Properties:
-        - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess`` command
-          tree.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._address = SearchSearchItemTriggerABusBPsifiveRegisterAddress(
-            device, f"{self._cmd_syntax}:ADDRess"
-        )
-
-    @property
-    def address(self) -> SearchSearchItemTriggerABusBPsifiveRegisterAddress:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess:VALue``
-              command.
-        """
-        return self._address
-
-
-class SearchSearchItemTriggerABusBPsifiveRegisteraddress(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess`` command.
-
-    **Description:**
-        - This command sets or queries the register address for PSI5 bus. The search number is
-          specified by x.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess {TWOBIT|SIXBIT|EIGHTBIT}
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess?
-
-    **Info:**
-        - ``TWOBIT`` specifies the register address value as 2 bit. This is the default value.
-        - ``SIXBIT`` specifies the register address value as 6 bit.
-        - ``EIGHTBIT`` specifies the register address value as 8 bit.
-    """
-
-
-class SearchSearchItemTriggerABusBPsifiveFunctioncodetype(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe`` command.
-
-    **Description:**
-        - This command sets or queries the binary data string used for PSI5 triggering if the
-          trigger condition is a Function Code. The search number is specified by x.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe <QString>
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe?
-
-    **Info:**
-        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1, and X
-          for values in binary format; and A-F, 0-9, and X for values in hexadecimal format.
-    """
-
-    _WRAP_ARG_WITH_QUOTES = True
-
-
-class SearchSearchItemTriggerABusBPsifiveErrortype(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe`` command.
-
-    **Description:**
-        - This command sets or queries the error type for an PSI5 bus. The search number is
-          specified by x.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe?`` query and raise an AssertionError
-          if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe {ANY|PARity|CRC|RESPONSECODe}
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe?
-
-    **Info:**
-        - ``ANY`` specifies the error type value as any. This is the default value.
-        - ``PARity`` specifies the error type value as parity.
-        - ``CRC`` specifies the error type value as CRC.
-        - ``RESPONSECODe`` specifies the error type value as response code.
-    """
-
-
-class SearchSearchItemTriggerABusBPsifiveDataRegionBValue(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue`` command.
-
-    **Description:**
-        - This command sets or queries the binary data string used for PSI5 triggering if the
-          trigger condition is data region B. The search number is specified by x.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue <QString>
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue?
-
-    **Info:**
-        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1, and X
-          for values in binary format; and A-F, 0-9, and X for values in hexadecimal format.
-    """
-
-    _WRAP_ARG_WITH_QUOTES = True
-
-
-class SearchSearchItemTriggerABusBPsifiveDataRegionB(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-
-    Properties:
-        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue`` command.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._value = SearchSearchItemTriggerABusBPsifiveDataRegionBValue(
-            device, f"{self._cmd_syntax}:VALue"
-        )
-
-    @property
-    def value(self) -> SearchSearchItemTriggerABusBPsifiveDataRegionBValue:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue`` command.
-
-        **Description:**
-            - This command sets or queries the binary data string used for PSI5 triggering if the
-              trigger condition is data region B. The search number is specified by x.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue <QString>
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue?
-
-        **Info:**
-            - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,
-              and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
-              format.
-        """
-        return self._value
-
-
-class SearchSearchItemTriggerABusBPsifiveDataRegionAValue(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue`` command.
-
-    **Description:**
-        - This command sets or queries the binary data string used for PSI5 triggering if the
-          trigger condition is data region A. The search number is specified by x.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue <QString>
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue?
-
-    **Info:**
-        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1, and X
-          for values in binary format; and A-F, 0-9, and X for values in hexadecimal format.
-    """
-
-    _WRAP_ARG_WITH_QUOTES = True
-
-
-class SearchSearchItemTriggerABusBPsifiveDataRegionA(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-
-    Properties:
-        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue`` command.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._value = SearchSearchItemTriggerABusBPsifiveDataRegionAValue(
-            device, f"{self._cmd_syntax}:VALue"
-        )
-
-    @property
-    def value(self) -> SearchSearchItemTriggerABusBPsifiveDataRegionAValue:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue`` command.
-
-        **Description:**
-            - This command sets or queries the binary data string used for PSI5 triggering if the
-              trigger condition is data region A. The search number is specified by x.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue <QString>
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue?
-
-        **Info:**
-            - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,
-              and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
-              format.
-        """
-        return self._value
-
-
-class SearchSearchItemTriggerABusBPsifiveDataRegion(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-
-    Properties:
-        - ``.a``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A`` command tree.
-        - ``.b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B`` command tree.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._a = SearchSearchItemTriggerABusBPsifiveDataRegionA(device, f"{self._cmd_syntax}:A")
-        self._b = SearchSearchItemTriggerABusBPsifiveDataRegionB(device, f"{self._cmd_syntax}:B")
-
-    @property
-    def a(self) -> SearchSearchItemTriggerABusBPsifiveDataRegionA:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A:VALue``
-              command.
-        """
-        return self._a
-
-    @property
-    def b(self) -> SearchSearchItemTriggerABusBPsifiveDataRegionB:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B:VALue``
-              command.
-        """
-        return self._b
-
-
-class SearchSearchItemTriggerABusBPsifiveDataEcuSensorValue(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue`` command.
-
-    **Description:**
-        - This command sets or queries the binary Data string used for PSI5 triggering if the
-          trigger condition is Data in ECU to Sensor communication mode. The search number is
-          specified by x.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue <QString>
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue?
-
-    **Info:**
-        - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1, and X
-          for values in binary format; and A-F, 0-9, and X for values in hexadecimal format.
-    """
-
-    _WRAP_ARG_WITH_QUOTES = True
-
-
-class SearchSearchItemTriggerABusBPsifiveDataEcuSensor(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-
-    Properties:
-        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue``
-          command.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._value = SearchSearchItemTriggerABusBPsifiveDataEcuSensorValue(
-            device, f"{self._cmd_syntax}:VALue"
-        )
-
-    @property
-    def value(self) -> SearchSearchItemTriggerABusBPsifiveDataEcuSensorValue:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue`` command.
-
-        **Description:**
-            - This command sets or queries the binary Data string used for PSI5 triggering if the
-              trigger condition is Data in ECU to Sensor communication mode. The search number is
-              specified by x.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue <QString>
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue?
-
-        **Info:**
-            - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,
-              and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
-              format.
-        """
-        return self._value
-
-
-class SearchSearchItemTriggerABusBPsifiveDataEcu(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU?`` query and raise an AssertionError
-          if the returned value does not match ``value``.
-
-    Properties:
-        - ``.sensor``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor`` command
-          tree.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._sensor = SearchSearchItemTriggerABusBPsifiveDataEcuSensor(
-            device, f"{self._cmd_syntax}:SENSor"
-        )
-
-    @property
-    def sensor(self) -> SearchSearchItemTriggerABusBPsifiveDataEcuSensor:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor:VALue``
-              command.
-        """
-        return self._sensor
-
-
-class SearchSearchItemTriggerABusBPsifiveData(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa?`` query and raise an AssertionError if
-          the returned value does not match ``value``.
-
-    Properties:
-        - ``.ecu``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU`` command tree.
-        - ``.region``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion`` command tree.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._ecu = SearchSearchItemTriggerABusBPsifiveDataEcu(device, f"{self._cmd_syntax}:ECU")
-        self._region = SearchSearchItemTriggerABusBPsifiveDataRegion(
-            device, f"{self._cmd_syntax}:REGion"
-        )
-
-    @property
-    def ecu(self) -> SearchSearchItemTriggerABusBPsifiveDataEcu:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.sensor``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU:SENSor`` command
-              tree.
-        """
-        return self._ecu
-
-    @property
-    def region(self) -> SearchSearchItemTriggerABusBPsifiveDataRegion:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.a``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:A`` command tree.
-            - ``.b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion:B`` command tree.
-        """
-        return self._region
-
-
-class SearchSearchItemTriggerABusBPsifiveDatabits(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs`` command.
-
-    **Description:**
-        - This command sets or queries the binary register address string used for PSI5 triggering
-          if the trigger condition is Data in ECU to Sensor communication mode. The search number is
-          specified by x.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs?`` query and raise an AssertionError
-          if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs {FOURBIT|EIGHTBIT|TWENTYBIT}
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs?
-
-    **Info:**
-        - ``FOURBIT`` specifies the data bit value as 4 bit.
-        - ``EIGHTBIT`` specifies the data bit value as 8 bit.
-        - ``TWENTYBIT`` specifies the data bit value as 20 bit.
-    """
-
-
-class SearchSearchItemTriggerABusBPsifiveCondition(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition`` command.
-
-    **Description:**
-        - This command sets or queries the trigger condition for an PSI5 bus. The search number is
-          specified by x.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition?`` query and raise an AssertionError
-          if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition {STARt| STATus| DATa| BLOCkid| ERRors| STARTBIT| FUNCTIONCODe| ECUDATa| SENSORADDRess| REGISTERADDRess| SENSORSTATus|CRCERRor}
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition?
-
-    **Info:**
-        - ``STARt`` specifies the search condition as Start. This is the default trigger.
-        - ``STATus`` specifies the search condition as Status.
-        - ``DATa`` specifies the search condition as Data.
-        - ``BLOCkid`` specifies the search condition as Block ID.
-        - ``ERRors`` specifies the search condition as Errors.
-        - ``STARTBIT`` specifies the search condition as Start Bit.
-        - ``FUNCTIONCODe`` specifies the search condition as Function Code.
-        - ``ECUDATa`` specifies the search condition as ECU Data.
-        - ``SENSORADDRess`` specifies the search condition as Sensor Address.
-        - ``REGISTERADDRess`` specifies the search condition as Register Address.
-        - ``SENSORSTATus`` specifies the search condition as Sensor Status.
-        - ``CRCERRor`` specifies the search condition as CRC Error.
-    """  # noqa: E501
-
-
-class SearchSearchItemTriggerABusBPsifiveBlockdataValue(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue`` command.
-
-    **Description:**
-        - This command sets or queries the binary block data string used for PSI5 triggering if the
-          trigger condition is block id.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue <QString>
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue?
-
-    **Info:**
-        - ``<QString>`` specifies the binary block data string.
-    """
-
-    _WRAP_ARG_WITH_QUOTES = True
-
-
-class SearchSearchItemTriggerABusBPsifiveBlockdata(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa?`` query and raise an AssertionError
-          if the returned value does not match ``value``.
-
-    Properties:
-        - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue`` command.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._value = SearchSearchItemTriggerABusBPsifiveBlockdataValue(
-            device, f"{self._cmd_syntax}:VALue"
-        )
-
-    @property
-    def value(self) -> SearchSearchItemTriggerABusBPsifiveBlockdataValue:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue`` command.
-
-        **Description:**
-            - This command sets or queries the binary block data string used for PSI5 triggering if
-              the trigger condition is block id.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue <QString>
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue?
-
-        **Info:**
-            - ``<QString>`` specifies the binary block data string.
-        """
-        return self._value
-
-
-#  pylint: disable=too-many-instance-attributes
-class SearchSearchItemTriggerABusBPsifive(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe?``
-          query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe?`` query and raise an AssertionError if the
-          returned value does not match ``value``.
-
-    Properties:
-        - ``.blockdata``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa`` command tree.
-        - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition`` command.
-        - ``.databits``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs`` command.
-        - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa`` command tree.
-        - ``.errortype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe`` command.
-        - ``.functioncodetype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe``
-          command.
-        - ``.registeraddress``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess``
-          command.
-        - ``.register``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister`` command tree.
-        - ``.sensorstatus``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus`` command
-          tree.
-        - ``.sensor``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor`` command tree.
-        - ``.status``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus`` command tree.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._blockdata = SearchSearchItemTriggerABusBPsifiveBlockdata(
-            device, f"{self._cmd_syntax}:BLOCKDATa"
-        )
-        self._condition = SearchSearchItemTriggerABusBPsifiveCondition(
-            device, f"{self._cmd_syntax}:CONDition"
-        )
-        self._databits = SearchSearchItemTriggerABusBPsifiveDatabits(
-            device, f"{self._cmd_syntax}:DATABITs"
-        )
-        self._data = SearchSearchItemTriggerABusBPsifiveData(device, f"{self._cmd_syntax}:DATa")
-        self._errortype = SearchSearchItemTriggerABusBPsifiveErrortype(
-            device, f"{self._cmd_syntax}:ERRORTYPe"
-        )
-        self._functioncodetype = SearchSearchItemTriggerABusBPsifiveFunctioncodetype(
-            device, f"{self._cmd_syntax}:FUNCTIONCODETYPe"
-        )
-        self._registeraddress = SearchSearchItemTriggerABusBPsifiveRegisteraddress(
-            device, f"{self._cmd_syntax}:REGISTERADDRess"
-        )
-        self._register = SearchSearchItemTriggerABusBPsifiveRegister(
-            device, f"{self._cmd_syntax}:REGister"
-        )
-        self._sensorstatus = SearchSearchItemTriggerABusBPsifiveSensorstatus(
-            device, f"{self._cmd_syntax}:SENSORSTATus"
-        )
-        self._sensor = SearchSearchItemTriggerABusBPsifiveSensor(
-            device, f"{self._cmd_syntax}:SENSor"
-        )
-        self._status = SearchSearchItemTriggerABusBPsifiveStatus(
-            device, f"{self._cmd_syntax}:STATus"
-        )
-
-    @property
-    def blockdata(self) -> SearchSearchItemTriggerABusBPsifiveBlockdata:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue`` command.
-        """
-        return self._blockdata
-
-    @property
-    def condition(self) -> SearchSearchItemTriggerABusBPsifiveCondition:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition`` command.
-
-        **Description:**
-            - This command sets or queries the trigger condition for an PSI5 bus. The search number
-              is specified by x.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition {STARt| STATus| DATa| BLOCkid| ERRors| STARTBIT| FUNCTIONCODe| ECUDATa| SENSORADDRess| REGISTERADDRess| SENSORSTATus|CRCERRor}
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition?
-
-        **Info:**
-            - ``STARt`` specifies the search condition as Start. This is the default trigger.
-            - ``STATus`` specifies the search condition as Status.
-            - ``DATa`` specifies the search condition as Data.
-            - ``BLOCkid`` specifies the search condition as Block ID.
-            - ``ERRors`` specifies the search condition as Errors.
-            - ``STARTBIT`` specifies the search condition as Start Bit.
-            - ``FUNCTIONCODe`` specifies the search condition as Function Code.
-            - ``ECUDATa`` specifies the search condition as ECU Data.
-            - ``SENSORADDRess`` specifies the search condition as Sensor Address.
-            - ``REGISTERADDRess`` specifies the search condition as Register Address.
-            - ``SENSORSTATus`` specifies the search condition as Sensor Status.
-            - ``CRCERRor`` specifies the search condition as CRC Error.
-        """  # noqa: E501
-        return self._condition
-
-    @property
-    def databits(self) -> SearchSearchItemTriggerABusBPsifiveDatabits:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs`` command.
-
-        **Description:**
-            - This command sets or queries the binary register address string used for PSI5
-              triggering if the trigger condition is Data in ECU to Sensor communication mode. The
-              search number is specified by x.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs {FOURBIT|EIGHTBIT|TWENTYBIT}
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs?
-
-        **Info:**
-            - ``FOURBIT`` specifies the data bit value as 4 bit.
-            - ``EIGHTBIT`` specifies the data bit value as 8 bit.
-            - ``TWENTYBIT`` specifies the data bit value as 20 bit.
-        """
-        return self._databits
-
-    @property
-    def data(self) -> SearchSearchItemTriggerABusBPsifiveData:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa?`` query and raise an AssertionError
-              if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.ecu``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:ECU`` command tree.
-            - ``.region``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa:REGion`` command
-              tree.
-        """
-        return self._data
-
-    @property
-    def errortype(self) -> SearchSearchItemTriggerABusBPsifiveErrortype:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe`` command.
-
-        **Description:**
-            - This command sets or queries the error type for an PSI5 bus. The search number is
-              specified by x.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe {ANY|PARity|CRC|RESPONSECODe}
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe?
-
-        **Info:**
-            - ``ANY`` specifies the error type value as any. This is the default value.
-            - ``PARity`` specifies the error type value as parity.
-            - ``CRC`` specifies the error type value as CRC.
-            - ``RESPONSECODe`` specifies the error type value as response code.
-        """
-        return self._errortype
-
-    @property
-    def functioncodetype(self) -> SearchSearchItemTriggerABusBPsifiveFunctioncodetype:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe`` command.
-
-        **Description:**
-            - This command sets or queries the binary data string used for PSI5 triggering if the
-              trigger condition is a Function Code. The search number is specified by x.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe <QString>
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe?
-
-        **Info:**
-            - ``<QString>`` specifies the value of the data string. The valid characters are 0, 1,
-              and X for values in binary format; and A-F, 0-9, and X for values in hexadecimal
-              format.
-        """
-        return self._functioncodetype
-
-    @property
-    def registeraddress(self) -> SearchSearchItemTriggerABusBPsifiveRegisteraddress:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess`` command.
-
-        **Description:**
-            - This command sets or queries the register address for PSI5 bus. The search number is
-              specified by x.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess {TWOBIT|SIXBIT|EIGHTBIT}
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess?
-
-        **Info:**
-            - ``TWOBIT`` specifies the register address value as 2 bit. This is the default value.
-            - ``SIXBIT`` specifies the register address value as 6 bit.
-            - ``EIGHTBIT`` specifies the register address value as 8 bit.
-        """
-        return self._registeraddress
-
-    @property
-    def register(self) -> SearchSearchItemTriggerABusBPsifiveRegister:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister:ADDRess``
-              command tree.
-        """
-        return self._register
-
-    @property
-    def sensorstatus(self) -> SearchSearchItemTriggerABusBPsifiveSensorstatus:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus:TYPe`` command.
-        """
-        return self._sensorstatus
-
-    @property
-    def sensor(self) -> SearchSearchItemTriggerABusBPsifiveSensor:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor?`` query and raise an AssertionError
-              if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor:ADDRess`` command
-              tree.
-        """
-        return self._sensor
-
-    @property
-    def status(self) -> SearchSearchItemTriggerABusBPsifiveStatus:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus?`` query and raise an AssertionError
-              if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus:VALue`` command.
-        """
-        return self._status
-
-
-class SearchSearchItemTriggerABusBNrzCondition(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition`` command.
-
-    **Description:**
-        - This command specifies a field or condition for an NRZ bus to search on. The search number
-          is specified by x.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition?`` query and raise an AssertionError if
-          the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition {DATa}
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition?
-
-    **Info:**
-        - ``Search<x>`` is the number of the search.
-        - ``DATa`` specifies the search condition as Data Characters.
-    """
-
-
-class SearchSearchItemTriggerABusBNrz(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ?``
-          query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ?`` query and raise an AssertionError if the
-          returned value does not match ``value``.
-
-    Properties:
-        - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition`` command.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._condition = SearchSearchItemTriggerABusBNrzCondition(
-            device, f"{self._cmd_syntax}:CONDition"
-        )
-
-    @property
-    def condition(self) -> SearchSearchItemTriggerABusBNrzCondition:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition`` command.
-
-        **Description:**
-            - This command specifies a field or condition for an NRZ bus to search on. The search
-              number is specified by x.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition?`` query and raise an AssertionError
-              if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition {DATa}
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition?
-
-        **Info:**
-            - ``Search<x>`` is the number of the search.
-            - ``DATa`` specifies the search condition as Data Characters.
-        """
-        return self._condition
-
-
-class SearchSearchItemTriggerABusB(SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B?`` query.
-        - Using the ``.verify(value)`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B?``
-          query and raise an AssertionError if the returned value does not match ``value``.
-
-    Properties:
-        - ``.nrz``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ`` command tree.
-        - ``.psifive``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe`` command tree.
-        - ``.s8b10b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B`` command tree.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._nrz = SearchSearchItemTriggerABusBNrz(device, f"{self._cmd_syntax}:NRZ")
-        self._psifive = SearchSearchItemTriggerABusBPsifive(device, f"{self._cmd_syntax}:PSIFIVe")
-        self._s8b10b = SearchSearchItemTriggerABusBS8b10b(device, f"{self._cmd_syntax}:S8B10B")
-
-    @property
-    def nrz(self) -> SearchSearchItemTriggerABusBNrz:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ?``
-              query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ?`` query and raise an AssertionError if the
-              returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition`` command.
-        """
-        return self._nrz
-
-    @property
-    def psifive(self) -> SearchSearchItemTriggerABusBPsifive:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe?`` query and raise an AssertionError if the
-              returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.blockdata``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa`` command
-              tree.
-            - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition`` command.
-            - ``.databits``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs`` command.
-            - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATa`` command tree.
-            - ``.errortype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:ERRORTYPe`` command.
-            - ``.functioncodetype``: The
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:FUNCTIONCODETYPe`` command.
-            - ``.registeraddress``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGISTERADDRess``
-              command.
-            - ``.register``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:REGister`` command tree.
-            - ``.sensorstatus``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSORSTATus``
-              command tree.
-            - ``.sensor``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:SENSor`` command tree.
-            - ``.status``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:STATus`` command tree.
-        """
-        return self._psifive
-
-    @property
-    def s8b10b(self) -> SearchSearchItemTriggerABusBS8b10b:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B?`` query and raise an AssertionError if the
-              returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B:CONDition`` command.
-        """
-        return self._s8b10b
-
-
 class SearchSearchItemTriggerABusAutoethernetTcpheaderSourceportValue(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TCPHeader:SOUrceport:VALue`` command.
 
@@ -53039,7 +52944,7 @@ class SearchSearchItemTriggerABusArinc429aSdi(SCPICmdRead):
         return self._value
 
 
-class SearchSearchItemTriggerABusArinc429aLabelValue(SCPICmdWrite):
+class SearchSearchItemTriggerABusArinc429aLabelValue(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:LABel:VALue`` command.
 
     **Description:**
@@ -53048,6 +52953,11 @@ class SearchSearchItemTriggerABusArinc429aLabelValue(SCPICmdWrite):
           LABELANDDATA.
 
     **Usage:**
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:LABel:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:LABel:VALue?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:LABel:VALue value`` command.
 
@@ -53056,6 +52966,7 @@ class SearchSearchItemTriggerABusArinc429aLabelValue(SCPICmdWrite):
     ::
 
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:LABel:VALue <QString>
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:LABel:VALue?
 
     **Info:**
         - ``<QString>`` is the label value.
@@ -53236,6 +53147,11 @@ class SearchSearchItemTriggerABusArinc429aLabel(SCPICmdRead):
               LABELANDDATA.
 
         **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:LABel:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:LABel:VALue?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:LABel:VALue value`` command.
 
@@ -53244,6 +53160,7 @@ class SearchSearchItemTriggerABusArinc429aLabel(SCPICmdRead):
         ::
 
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:LABel:VALue <QString>
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:LABel:VALue?
 
         **Info:**
             - ``<QString>`` is the label value.
@@ -53728,7 +53645,6 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
         - ``.arinc429a``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A`` command tree.
         - ``.audio``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio`` command tree.
         - ``.autoethernet``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet`` command tree.
-        - ``.b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B`` command tree.
         - ``.can``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN`` command tree.
         - ``.cphy``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CPHY`` command tree.
         - ``.cxpi``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CXPI`` command tree.
@@ -53747,6 +53663,7 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
         - ``.nrz``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ`` command tree.
         - ``.onewire``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe`` command tree.
         - ``.parallel``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PARallel`` command tree.
+        - ``.psifive``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe`` command tree.
         - ``.rs232c``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C`` command tree.
         - ``.s8b10b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B`` command tree.
         - ``.sdlc``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC`` command tree.
@@ -53769,7 +53686,6 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
         self._autoethernet = SearchSearchItemTriggerABusAutoethernet(
             device, f"{self._cmd_syntax}:AUTOETHERnet"
         )
-        self._b = SearchSearchItemTriggerABusB(device, f"{self._cmd_syntax}:B")
         self._can = SearchSearchItemTriggerABusCan(device, f"{self._cmd_syntax}:CAN")
         self._cphy = SearchSearchItemTriggerABusCphy(device, f"{self._cmd_syntax}:CPHY")
         self._cxpi = SearchSearchItemTriggerABusCxpi(device, f"{self._cmd_syntax}:CXPI")
@@ -53790,6 +53706,7 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
         self._nrz = SearchSearchItemTriggerABusNrz(device, f"{self._cmd_syntax}:NRZ")
         self._onewire = SearchSearchItemTriggerABusOnewire(device, f"{self._cmd_syntax}:ONEWIRe")
         self._parallel = SearchSearchItemTriggerABusParallel(device, f"{self._cmd_syntax}:PARallel")
+        self._psifive = SearchSearchItemTriggerABusPsifive(device, f"{self._cmd_syntax}:PSIFIVe")
         self._rs232c = SearchSearchItemTriggerABusRs232c(device, f"{self._cmd_syntax}:RS232C")
         self._s8b10b = SearchSearchItemTriggerABusS8b10b(device, f"{self._cmd_syntax}:S8B10B")
         self._sdlc = SearchSearchItemTriggerABusSdlc(device, f"{self._cmd_syntax}:SDLC")
@@ -53865,24 +53782,6 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
               tree.
         """
         return self._autoethernet
-
-    @property
-    def b(self) -> SearchSearchItemTriggerABusB:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B?``
-              query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B?`` query and raise an AssertionError if the
-              returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.nrz``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ`` command tree.
-            - ``.psifive``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe`` command tree.
-            - ``.s8b10b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B:S8B10B`` command tree.
-        """
-        return self._b
 
     @property
     def can(self) -> SearchSearchItemTriggerABusCan:
@@ -54314,6 +54213,7 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
               returned value does not match ``value``.
 
         Sub-properties:
+            - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:CONDition`` command.
             - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ:DATa`` command tree.
         """
         return self._nrz
@@ -54357,6 +54257,35 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
         return self._parallel
 
     @property
+    def psifive(self) -> SearchSearchItemTriggerABusPsifive:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.blockdata``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:BLOCKDATa`` command tree.
+            - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:CONDition`` command.
+            - ``.databits``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATABITs`` command.
+            - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:DATa`` command tree.
+            - ``.errortype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:ERRORTYPe`` command.
+            - ``.functioncodetype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:FUNCTIONCODETYPe``
+              command.
+            - ``.registeraddress``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGISTERADDRess``
+              command.
+            - ``.register``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:REGister`` command tree.
+            - ``.sensorstatus``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSORSTATus`` command
+              tree.
+            - ``.sensor``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:SENSor`` command tree.
+            - ``.status``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe:STATus`` command tree.
+        """
+        return self._psifive
+
+    @property
     def rs232c(self) -> SearchSearchItemTriggerABusRs232c:
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C`` command tree.
 
@@ -54385,6 +54314,7 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
               returned value does not match ``value``.
 
         Sub-properties:
+            - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition`` command.
             - ``.disparity``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:DISParity`` command.
             - ``.error``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERRor`` command.
             - ``.symbol``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:SYMbol`` command tree.
@@ -54664,7 +54594,6 @@ class SearchSearchItemTriggerA(SCPICmdRead):
             - ``.arinc429a``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A`` command tree.
             - ``.audio``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio`` command tree.
             - ``.autoethernet``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet`` command tree.
-            - ``.b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B`` command tree.
             - ``.can``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN`` command tree.
             - ``.cphy``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CPHY`` command tree.
             - ``.cxpi``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CXPI`` command tree.
@@ -54683,6 +54612,7 @@ class SearchSearchItemTriggerA(SCPICmdRead):
             - ``.nrz``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:NRZ`` command tree.
             - ``.onewire``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe`` command tree.
             - ``.parallel``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PARallel`` command tree.
+            - ``.psifive``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PSIFIVe`` command tree.
             - ``.rs232c``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C`` command tree.
             - ``.s8b10b``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B`` command tree.
             - ``.sdlc``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SDLC`` command tree.
