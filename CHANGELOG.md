@@ -37,7 +37,6 @@ Things to be included in the next release go here.
 - Fixed PI device close method to catch VisaIOErrors and throw a warning, rather than an exception, when closing a PI device connection.
 - Fixed APIs with query attributes missing under MSO4, MSO5, MSO6 and MSO2 model drivers.
 
-
 ______________________________________________________________________
 
 ## v1.1.0 (2023-12-07)
