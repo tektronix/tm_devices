@@ -46,6 +46,7 @@ from ._1ltpwt_mdomsodpo.vidpic import Vidpic
 from ._1ltpwt_mdomsodpo.wfminpre import Wfminpre
 from ._1ltpwt_mdomsodpo.wfmoutpre import Wfmoutpre
 from ._1ltpwt_mdomsodpo.zoom import Zoom
+from ._1lwj1r_msomdodpo.rosc import Rosc
 from ._1nmc1o_msodpomdo.clearmenu import Clearmenu
 from ._1nmc1o_msodpomdo.errlog import Errlog
 from ._1nmc1o_msodpomdo.header import Header
@@ -57,7 +58,6 @@ from ._1nmc1o_msodpomdo.verbose import Verbose
 from ._e4de2d_lpdmsomdo.clear import Clear
 from ._e6lgg1_lpdmsodpomdo.totaluptime import Totaluptime
 from ._e6606z_lpdmsomdodpo.pause import Pause
-from ._e6606z_lpdmsomdodpo.rosc import Rosc
 from ._fhrp27_msodpomdodsa.curve import Curve
 from ._fhrp27_msodpomdodsa.date import Date
 from ._fhrp27_msodpomdodsa.mathvar import Mathvar

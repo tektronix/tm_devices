@@ -31,7 +31,7 @@ Commands and Queries:
     - POWer:POWer<x>:CLRESPONSE:FREQ<x>Val?
     - POWer:POWer<x>:CLRESPONSE:GENIPADDress <NR2>
     - POWer:POWer<x>:CLRESPONSE:GENIPADDress?
-    - POWer:POWer<x>:CLRESPONSE:GENerator {INTernal|EXTernal}
+    - POWer:POWer<x>:CLRESPONSE:GENerator {INTernal}
     - POWer:POWer<x>:CLRESPONSE:GENerator?
     - POWer:POWer<x>:CLRESPONSE:IMPEDance {FIFTy|HIGHZ}
     - POWer:POWer<x>:CLRESPONSE:IMPEDance?
@@ -17143,8 +17143,8 @@ class PowerPowerItemClresponseGenerator(SCPICmdWrite, SCPICmdRead):
     """The ``POWer:POWer<x>:CLRESPONSE:GENerator`` command.
 
     **Description:**
-        - Sets or queries the generator source for the specified Control Loop Response power
-          measurement.
+        - This command sets or queries the generator source used to send stimulus signals to the
+          DUT, for the Control Loop Response power measurement.
 
     **Usage:**
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:CLRESPONSE:GENerator?``
@@ -17158,14 +17158,13 @@ class PowerPowerItemClresponseGenerator(SCPICmdWrite, SCPICmdRead):
 
     ::
 
-        - POWer:POWer<x>:CLRESPONSE:GENerator {INTernal|EXTernal}
+        - POWer:POWer<x>:CLRESPONSE:GENerator {INTernal}
         - POWer:POWer<x>:CLRESPONSE:GENerator?
 
     **Info:**
-        - ``POWer<x>`` is the number of the power measurement.INTernal sets the internal generator
-          as the source for the Control Loop Response power measurement.
-        - ``EXTernal`` sets the external generator as the source for the Control Loop Response power
-          measurement.
+        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
+        - ``INTernal`` sets the generator to the instrument AFG. This is the only valid argument.
     """
 
 
@@ -17737,8 +17736,8 @@ class PowerPowerItemClresponse(SCPICmdRead):
         """Return the ``POWer:POWer<x>:CLRESPONSE:GENerator`` command.
 
         **Description:**
-            - Sets or queries the generator source for the specified Control Loop Response power
-              measurement.
+            - This command sets or queries the generator source used to send stimulus signals to the
+              DUT, for the Control Loop Response power measurement.
 
         **Usage:**
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:CLRESPONSE:GENerator?``
@@ -17753,14 +17752,14 @@ class PowerPowerItemClresponse(SCPICmdRead):
 
         ::
 
-            - POWer:POWer<x>:CLRESPONSE:GENerator {INTernal|EXTernal}
+            - POWer:POWer<x>:CLRESPONSE:GENerator {INTernal}
             - POWer:POWer<x>:CLRESPONSE:GENerator?
 
         **Info:**
-            - ``POWer<x>`` is the number of the power measurement.INTernal sets the internal
-              generator as the source for the Control Loop Response power measurement.
-            - ``EXTernal`` sets the external generator as the source for the Control Loop Response
-              power measurement.
+            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+            - ``INTernal`` sets the generator to the instrument AFG. This is the only valid
+              argument.
         """
         return self._generator
 

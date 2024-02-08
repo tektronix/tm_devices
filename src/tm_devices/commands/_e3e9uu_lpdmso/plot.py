@@ -42,6 +42,7 @@ Commands and Queries:
     - PLOT:PLOT<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
     - PLOT:PLOT<x>:LABel:FONT:ITALic?
     - PLOT:PLOT<x>:LABel:FONT:SIZE <NR1>
+    - PLOT:PLOT<x>:LABel:FONT:SIZE?
     - PLOT:PLOT<x>:LABel:FONT:TYPE <QString>
     - PLOT:PLOT<x>:LABel:FONT:TYPE?
     - PLOT:PLOT<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
@@ -918,7 +919,7 @@ class PlotPlotItemLabelFontType(SCPICmdWrite, SCPICmdRead):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class PlotPlotItemLabelFontSize(SCPICmdWrite):
+class PlotPlotItemLabelFontSize(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:LABel:FONT:SIZE`` command.
 
     **Description:**
@@ -926,6 +927,9 @@ class PlotPlotItemLabelFontSize(SCPICmdWrite):
           command/query only applies to Time Trend plots.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:FONT:SIZE?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:FONT:SIZE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:LABel:FONT:SIZE value``
           command.
 
@@ -934,6 +938,7 @@ class PlotPlotItemLabelFontSize(SCPICmdWrite):
     ::
 
         - PLOT:PLOT<x>:LABel:FONT:SIZE <NR1>
+        - PLOT:PLOT<x>:LABel:FONT:SIZE?
 
     **Info:**
         - ``<NR1>`` is the font size.
@@ -1087,6 +1092,9 @@ class PlotPlotItemLabelFont(SCPICmdRead):
               command/query only applies to Time Trend plots.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:LABel:FONT:SIZE?`` query.
+            - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:LABel:FONT:SIZE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``PLOT:PLOT<x>:LABel:FONT:SIZE value`` command.
 
@@ -1095,6 +1103,7 @@ class PlotPlotItemLabelFont(SCPICmdRead):
         ::
 
             - PLOT:PLOT<x>:LABel:FONT:SIZE <NR1>
+            - PLOT:PLOT<x>:LABel:FONT:SIZE?
 
         **Info:**
             - ``<NR1>`` is the font size.

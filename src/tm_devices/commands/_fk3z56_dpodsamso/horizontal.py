@@ -3011,10 +3011,11 @@ class HorizontalFastframeSumframe(SCPICmdWrite, SCPICmdRead):
     """The ``HORizontal:FASTframe:SUMFrame`` command.
 
     **Description:**
-        - This command sets or returns the summary frame type. Turning on Summary Frame does not
-          adjust the numberFrames value as long as there is room for an additional frame. If there
-          is not enough room then numberFrames will be reduced by 1. The numberFrames value is
-          always the number of frames to acquire.
+        - This command sets or queries the summary frame mode. When ENVelope is selected, the last
+          frame in a FastFrame acquisition is an envelope of all the prior frames in the
+          acquisition. When AVErage is selected, the last frame is replaced with a frame that is the
+          computed average of all the prior frames in the acquisition. For the summary frame control
+          to be active, the number of frames must be two or greater.
 
     **Usage:**
         - Using the ``.query()`` method will send the ``HORizontal:FASTframe:SUMFrame?`` query.
@@ -3031,9 +3032,11 @@ class HorizontalFastframeSumframe(SCPICmdWrite, SCPICmdRead):
         - HORizontal:FASTframe:SUMFrame?
 
     **Info:**
-        - ``NONe`` sets the Summary frame to off.
-        - ``AVErage`` sets the Summary frame to average of all acquired frames.
-        - ``ENVelope`` sets the Summary frame to envelope of all acquired frames.
+        - ``NONE`` turns off the summary mode for FastFrame. This is the default setting.
+        - ``AVErage`` argument displays the last frame in a FastFrame acquisition as a frame that is
+          the computed average of all the prior frames in the acquisition.
+        - ``ENVelope`` argument displays the last frame in a FastFrame acquisition as an envelope of
+          all the prior frames in the acquisition.
     """
 
 
@@ -4704,10 +4707,11 @@ class HorizontalFastframe(SCPICmdRead):
         """Return the ``HORizontal:FASTframe:SUMFrame`` command.
 
         **Description:**
-            - This command sets or returns the summary frame type. Turning on Summary Frame does not
-              adjust the numberFrames value as long as there is room for an additional frame. If
-              there is not enough room then numberFrames will be reduced by 1. The numberFrames
-              value is always the number of frames to acquire.
+            - This command sets or queries the summary frame mode. When ENVelope is selected, the
+              last frame in a FastFrame acquisition is an envelope of all the prior frames in the
+              acquisition. When AVErage is selected, the last frame is replaced with a frame that is
+              the computed average of all the prior frames in the acquisition. For the summary frame
+              control to be active, the number of frames must be two or greater.
 
         **Usage:**
             - Using the ``.query()`` method will send the ``HORizontal:FASTframe:SUMFrame?`` query.
@@ -4724,9 +4728,11 @@ class HorizontalFastframe(SCPICmdRead):
             - HORizontal:FASTframe:SUMFrame?
 
         **Info:**
-            - ``NONe`` sets the Summary frame to off.
-            - ``AVErage`` sets the Summary frame to average of all acquired frames.
-            - ``ENVelope`` sets the Summary frame to envelope of all acquired frames.
+            - ``NONE`` turns off the summary mode for FastFrame. This is the default setting.
+            - ``AVErage`` argument displays the last frame in a FastFrame acquisition as a frame
+              that is the computed average of all the prior frames in the acquisition.
+            - ``ENVelope`` argument displays the last frame in a FastFrame acquisition as an
+              envelope of all the prior frames in the acquisition.
         """
         return self._sumframe
 

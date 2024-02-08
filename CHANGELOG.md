@@ -23,6 +23,7 @@ Things to be included in the next release go here.
 - Added a step during a device reboot that will reset all the cached properties in the event that one of them changed.
 - Added command API support for MSO5K, DPO5K, and DPO7K models.
 - Added a custom, read-only implementation of the [`cached_property`](https://docs.python.org/3/library/functools.html#functools.cached_property) decorator.
+- Added default buffer API for SMU 26xx series models.
 
 ### Changed
 
@@ -34,6 +35,7 @@ Things to be included in the next release go here.
 
 - Fixed the code that detects VISA resource expressions to be able to detect SOCKET resource expressions properly.
 - Fixed PI device close method to catch VisaIOErrors and throw a warning, rather than an exception, when closing a PI device connection.
+- Fixed APIs with query attributes missing under MSO4, MSO5, MSO6 and MSO2 model drivers.
 
 ______________________________________________________________________
 

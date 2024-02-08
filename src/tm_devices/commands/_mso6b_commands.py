@@ -16,7 +16,6 @@ from ._e3e9uu_lpdmso.auxout import Auxout
 from ._e3e9uu_lpdmso.bus import Bus
 from ._e3e9uu_lpdmso.callouts import Callouts
 from ._e3e9uu_lpdmso.ch import Channel
-from ._e3e9uu_lpdmso.customtable import Customtable
 from ._e3e9uu_lpdmso.data import Data
 from ._e3e9uu_lpdmso.diag import Diag
 from ._e3e9uu_lpdmso.diggrp import DiggrpItem
@@ -36,6 +35,7 @@ from ._e3e9uu_lpdmso.pilogger import Pilogger
 from ._e3e9uu_lpdmso.plot import Plot
 from ._e3e9uu_lpdmso.power import Power
 from ._e3e9uu_lpdmso.ref import Ref, RefItem
+from ._e3e9uu_lpdmso.rosc import Rosc
 from ._e3e9uu_lpdmso.save import Save
 from ._e3e9uu_lpdmso.saveon import Saveon
 from ._e3e9uu_lpdmso.saveonevent import Saveonevent
@@ -57,6 +57,7 @@ from ._e3h2zs_lpdmso.configuration import Configuration
 from ._e3h2zs_lpdmso.connected import Connected
 from ._e3h2zs_lpdmso.curve import Curve
 from ._e3h2zs_lpdmso.curvestream import Curvestream
+from ._e3h2zs_lpdmso.customtable import Customtable
 from ._e3h2zs_lpdmso.date import Date
 from ._e3h2zs_lpdmso.ethernet import Ethernet
 from ._e3h2zs_lpdmso.filesystem import Filesystem
@@ -72,7 +73,6 @@ from ._e3h2zs_lpdmso.wfmoutpre import Wfmoutpre
 from ._e4de2d_lpdmsomdo.clear import Clear
 from ._e6lgg1_lpdmsodpomdo.totaluptime import Totaluptime
 from ._e6606z_lpdmsomdodpo.pause import Pause
-from ._e6606z_lpdmsomdodpo.rosc import Rosc
 from ._ft5uww_lpdmsodpomdoafgawgdsa.calibration import Cal
 from ._ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
 from ._ft5uww_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
@@ -3609,6 +3609,7 @@ class MSO6BCommands:
             - ``.b``: The ``TRIGger:B`` command tree.
             - ``.hysteresis``: The ``TRIGger:HYSTeresis`` command tree.
             - ``.state``: The ``TRIGger:STATE`` command.
+            - ``.status``: The ``TRIGger:STATUs`` command.
         """
         return self._trigger
 

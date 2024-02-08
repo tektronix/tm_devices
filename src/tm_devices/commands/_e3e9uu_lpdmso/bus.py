@@ -373,6 +373,7 @@ Commands and Queries:
     - BUS:B<x>:MDIO:CLOCk:SOUrce {CH<x>|MATH<x>|REF<x>}
     - BUS:B<x>:MDIO:CLOCk:SOUrce?
     - BUS:B<x>:MDIO:CLOCk:THReshold <NR3>
+    - BUS:B<x>:MDIO:CLOCk:THReshold?
     - BUS:B<x>:MDIO:DATA:SOUrce {CH<x>|MATH<x>|REF<x>}
     - BUS:B<x>:MDIO:DATA:SOUrce?
     - BUS:B<x>:MDIO:DATA:THReshold <NR3>
@@ -10270,7 +10271,7 @@ class BusBItemMdioData(SCPICmdRead):
         return self._threshold
 
 
-class BusBItemMdioClockThreshold(SCPICmdWrite):
+class BusBItemMdioClockThreshold(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:MDIO:CLOCk:THReshold`` command.
 
     **Description:**
@@ -10278,6 +10279,9 @@ class BusBItemMdioClockThreshold(SCPICmdWrite):
           bus is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:MDIO:CLOCk:THReshold?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MDIO:CLOCk:THReshold?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BUS:B<x>:MDIO:CLOCk:THReshold value``
           command.
 
@@ -10286,6 +10290,7 @@ class BusBItemMdioClockThreshold(SCPICmdWrite):
     ::
 
         - BUS:B<x>:MDIO:CLOCk:THReshold <NR3>
+        - BUS:B<x>:MDIO:CLOCk:THReshold?
 
     **Info:**
         - ``B<x>`` is the number of the bus.
@@ -10383,6 +10388,9 @@ class BusBItemMdioClock(SCPICmdRead):
               The bus is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:MDIO:CLOCk:THReshold?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MDIO:CLOCk:THReshold?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``BUS:B<x>:MDIO:CLOCk:THReshold value`` command.
 
@@ -10391,6 +10399,7 @@ class BusBItemMdioClock(SCPICmdRead):
         ::
 
             - BUS:B<x>:MDIO:CLOCk:THReshold <NR3>
+            - BUS:B<x>:MDIO:CLOCk:THReshold?
 
         **Info:**
             - ``B<x>`` is the number of the bus.
