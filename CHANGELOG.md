@@ -18,6 +18,10 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Changed
+
+- Updated the `get_model_series()` function to use a regex mapping instead of complicated logic to reduce maintenance costs.
+
 ______________________________________________________________________
 
 ## v1.2.0 (2024-02-09)
