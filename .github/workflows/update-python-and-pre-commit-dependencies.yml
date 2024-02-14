@@ -7,8 +7,8 @@ jobs:
   update-python-and-pre-commit-deps:
     name: Update python linters and pre-commit dependencies
     runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'dependabot' && contains(github.head_ref,
-      "/pip/")
+    if: contains(github.head_ref, "/pip/") && github.event.pull_request.user.login
+      == 'dependabot'
     permissions:
       contents: write
     steps:
