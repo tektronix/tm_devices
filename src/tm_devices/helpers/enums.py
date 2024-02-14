@@ -188,7 +188,7 @@ class SupportedModels(CustomStrEnum):
     PSU2231A = "PSU2231A"
     PSU2280 = "PSU2280"
     PSU2281 = "PSU2281"
-    # DAQ
+    # DAQs
     DAQ6510 = "DAQ6510"
     # DMMs
     DMM6500 = "DMM6500"

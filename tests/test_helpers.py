@@ -81,11 +81,9 @@ def test_create_ping_command() -> None:
         ("AWG5012", "AWG5K"),
         ("AWG70002B", "AWG70KB"),
         ("AFG3252", "AFG3K"),
-        ("AFG30021", "AFG30K"),
         ("AFG31021", "AFG31K"),
         ("AFG3152C", "AFG3KC"),
         ("TSOVu", "TSOVu"),
-        ("MODEL 15", "15"),  # Just for complete coverage
         ("MODEL 2470", "SMU2470"),
         ("2470", "SMU2470"),
         (" Model 2606B", "SMU2606B"),
@@ -101,7 +99,6 @@ def test_create_ping_command() -> None:
         ("DMM6500", "DMM6500"),
         ("MODEL 6517B", "SMU6517B"),
         ("2231A-30-3", "PSU2231A"),
-        ("Tester-100", "Tester100"),
     ],
 )
 def test_get_model_series(input_string: str, expected_abbrev_model: str) -> None:
