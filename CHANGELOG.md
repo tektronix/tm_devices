@@ -22,6 +22,10 @@ Things to be included in the next release go here.
 
 - Updated the `get_model_series()` function to use a regex mapping instead of complicated logic to reduce maintenance costs.
 
+### Fixed
+
+- Updated import statements for the `ReadOnlyCachedProperty` decorator to allow PyCharm auto-complete to work properly.
+
 ______________________________________________________________________
 
 ## v1.2.0 (2024-02-09)

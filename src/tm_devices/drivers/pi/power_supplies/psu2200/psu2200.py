@@ -5,7 +5,10 @@ from packaging.version import Version
 
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.power_supplies.power_supply import PowerSupplyUnit
-from tm_devices.helpers import get_version, ReadOnlyCachedProperty
+from tm_devices.helpers import get_version
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 @family_base_class
@@ -24,7 +27,7 @@ class PSU2200(PowerSupplyUnit):
         """Return a tuple containing all the channel names."""
         return tuple(f"SOURCE{x+1}" for x in range(self.total_channels))
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         return max(1, int(self.model[2])) if self.model[2].isdecimal() else 1
@@ -32,7 +35,7 @@ class PSU2200(PowerSupplyUnit):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    @ReadOnlyCachedProperty
+    @cached_property
     def fpga_version(self) -> Version:
         """Return the fpga version of the device."""
         id_string_parts = self.idn_string.split(",")

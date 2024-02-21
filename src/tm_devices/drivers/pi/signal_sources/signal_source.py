@@ -7,7 +7,10 @@ from typing import Tuple, Union
 
 from tm_devices.driver_mixins.signal_generator_mixin import SignalGeneratorMixin
 from tm_devices.drivers.pi.pi_device import PIDevice
-from tm_devices.helpers import print_with_timestamp, ReadOnlyCachedProperty
+from tm_devices.helpers import print_with_timestamp
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 class SignalSource(PIDevice, SignalGeneratorMixin, ABC):
@@ -21,7 +24,7 @@ class SignalSource(PIDevice, SignalGeneratorMixin, ABC):
         """Return a tuple containing all the channel names."""
         return tuple(f"SOURCE{x+1}" for x in range(self.total_channels))
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def opt_string(self) -> str:
         r"""Return the string returned from the ``*OPT?`` query when the device was created."""
         return self.ieee_cmds.opt()

@@ -21,7 +21,9 @@ from tm_devices.commands import (
 )
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.source_measure_units.source_measure_unit import SourceMeasureUnit
-from tm_devices.helpers import ReadOnlyCachedProperty
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 @family_base_class
@@ -40,7 +42,7 @@ class SMU2600(SourceMeasureUnit, ABC):
         """Return a tuple containing all the channel names."""
         return tuple(string.ascii_lowercase[: self.total_channels])  # pylint: disable=invalid-slice-index
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         # Grab the total channel count based on whether the last digit in the model is even/odd

@@ -5,7 +5,10 @@ import pyvisa as visa
 
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.scopes.scope import Scope
-from tm_devices.helpers import DeviceConfigEntry, ReadOnlyCachedProperty
+from tm_devices.helpers import DeviceConfigEntry
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 @family_base_class
@@ -49,7 +52,7 @@ class TekScope5k7k70k(Scope, ABC):
         # TODO: should be part of self.channel
         return self._num_dig_bits_in_ch
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         return self._total_channels
