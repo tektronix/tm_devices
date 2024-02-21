@@ -44,9 +44,7 @@ with warnings.catch_warnings():
 ####################################################################################################
 # Private Constants
 ####################################################################################################
-# NOTE: This regex will show as having a bunch of errors in the PyCharm IDE due to an
-# open bug affecting f-strings in regex: https://youtrack.jetbrains.com/issue/PY-52140
-_SUPPORTED_MODEL_REGEX_MAPPING = re.compile(
+__SUPPORTED_MODEL_REGEX_STRING = (
     # AFGs
     rf"(?P<{SupportedModels.AFG3K.value}>^AFG3\d\d\d$)"
     rf"|(?P<{SupportedModels.AFG3KB.value}>^AFG3\d\d\dB$)"
@@ -155,6 +153,10 @@ _SUPPORTED_MODEL_REGEX_MAPPING = re.compile(
     # SSs
     rf"|(?P<{SupportedModels.SS3706A.value}>^3706A$)"
 )
+# NOTE: This regex would show as having a bunch of errors in the PyCharm IDE due to an
+# open bug affecting f-strings in regex: https://youtrack.jetbrains.com/issue/PY-52140.
+# For this reason, the regex string itself is stored in a separate, private constant.
+_SUPPORTED_MODEL_REGEX_MAPPING = re.compile(__SUPPORTED_MODEL_REGEX_STRING)
 
 
 ####################################################################################################
