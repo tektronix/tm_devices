@@ -11,7 +11,9 @@ from tm_devices.drivers.pi._ieee488_2_commands import IEEE4882Commands
 from tm_devices.drivers.pi.pi_device import PIDevice
 from tm_devices.drivers.pi.signal_sources.signal_source import SignalSource
 from tm_devices.drivers.pi.source_measure_units.source_measure_unit import SourceMeasureUnit
-from tm_devices.helpers import ReadOnlyCachedProperty
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 if TYPE_CHECKING:
     import os
@@ -40,7 +42,7 @@ class SMU6000(SourceMeasureUnit, ABC):
         """Return an internal class containing methods for the standard IEEE 488.2 command set."""
         return self._ieee_cmds
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         return 1

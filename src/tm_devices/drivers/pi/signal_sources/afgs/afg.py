@@ -8,7 +8,10 @@ from typing import Literal, Type
 from tm_devices.driver_mixins.signal_generator_mixin import SourceDeviceConstants
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.signal_sources.signal_source import SignalSource
-from tm_devices.helpers import DeviceTypes, ReadOnlyCachedProperty, SignalSourceFunctionsAFG
+from tm_devices.helpers import DeviceTypes, SignalSourceFunctionsAFG
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 @dataclass(frozen=True)
@@ -32,7 +35,7 @@ class AFG(SignalSource, ABC):
         """Return the device constants."""
         return self._DEVICE_CONSTANTS  # type: ignore[attr-defined]
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         if match := re.match(r"AFG\d+(\d)", self.model):

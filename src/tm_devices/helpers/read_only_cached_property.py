@@ -12,6 +12,11 @@ try:  # pragma: py-lt-39
     class ReadOnlyCachedProperty(cached_property[_T]):  # pyright: ignore[reportRedeclaration]
         """An implementation of cached_property that is read-only.
 
+        Notes:
+            In order for the PyCharm IDE to properly provide auto-complete hints, this class must be
+            imported in the following way:
+            ``from tm_devices.helpers import ReadOnlyCachedProperty as cached_property``.
+
         Examples:
             >>> from tm_devices.helpers import ReadOnlyCachedProperty
             >>> class ClassWithReadOnlyCachedProperty:
@@ -41,6 +46,11 @@ except TypeError:  # pragma: py-gte-39
     # pylint: disable=unsubscriptable-object,useless-suppression
     class ReadOnlyCachedProperty(cached_property):  # pyright: ignore[reportMissingTypeArgument]
         """An implementation of cached_property that is read-only.
+
+        Notes:
+            In order for the PyCharm IDE to properly provide auto-complete hints, this class must be
+            imported in the following way:
+            ``from tm_devices.helpers import ReadOnlyCachedProperty as cached_property``.
 
         Examples:
             >>> from tm_devices.helpers import ReadOnlyCachedProperty

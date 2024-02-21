@@ -35,11 +35,13 @@ from tm_devices.helpers import (
     get_visa_backend,
     ping_address,
     print_with_timestamp,
-    ReadOnlyCachedProperty,
     sanitize_enum,
     SupportedModels,
     VALID_DEVICE_CONNECTION_TYPES,
 )
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 MODEL_SERIES_LIST = SupportedModels.list_values()
 
@@ -471,7 +473,7 @@ def test_read_only_cached_property() -> None:
         counter = 0
         previous_values: ClassVar[List[int]] = []
 
-        @ReadOnlyCachedProperty
+        @cached_property
         def c(self) -> int:
             self.counter += 1
             while True:
@@ -487,9 +489,11 @@ def test_read_only_cached_property() -> None:
     assert val_1 == val_2
 
     with pytest.raises(AttributeError):
+        # noinspection PyPropertyAccess
         instance.c = -1234
     assert instance.c == val_1
     assert instance.counter == 1
+    # noinspection PyPropertyAccess
     del instance.c
     assert instance.c != val_1
     assert instance.counter == 2

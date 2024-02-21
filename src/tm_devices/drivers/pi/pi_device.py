@@ -27,8 +27,10 @@ from tm_devices.helpers import (
     get_visa_backend,
     print_with_timestamp,
     PYVISA_PY_BACKEND,
-    ReadOnlyCachedProperty,
 )
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 from tm_devices.helpers.constants_and_dataclasses import UNIT_TEST_TIMEOUT
 
 
@@ -83,7 +85,7 @@ class PIDevice(Device, ABC):
     def all_channel_names_list(self) -> Tuple[str, ...]:
         """Return a tuple containing all the channel names."""
 
-    @ReadOnlyCachedProperty
+    @cached_property
     @abstractmethod
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
@@ -187,7 +189,7 @@ class PIDevice(Device, ABC):
     ################################################################################################
     # Cached Properties
     ################################################################################################
-    @ReadOnlyCachedProperty
+    @cached_property
     def sw_version(self) -> Version:
         """Return the software version of the device."""
         id_string_parts = self.idn_string.split(",")
@@ -204,27 +206,27 @@ class PIDevice(Device, ABC):
             retval = get_version(sw_version)
         return retval
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def idn_string(self) -> str:
         r"""Return the string returned from the ``*IDN?`` query when the device was created."""
         return self.ieee_cmds.idn()
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def manufacturer(self) -> str:
         """Return the manufacturer of the device."""
         return self.idn_string.split(",")[0].strip()
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def model(self) -> str:
         """Return the full model of the device."""
         return self.idn_string.split(",")[1].strip()
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def serial(self) -> str:
         """Return the serial number of the device."""
         return self.idn_string.split(",")[2].strip()
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def series(self) -> str:
         """Return the series of the device.
 
@@ -233,7 +235,7 @@ class PIDevice(Device, ABC):
         """
         return get_model_series(self.model)
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def visa_backend(self) -> str:
         """Return the VISA backend in use."""
         return get_visa_backend(self._visa_resource.visalib.library_path.path)
