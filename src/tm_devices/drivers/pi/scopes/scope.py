@@ -5,7 +5,10 @@ from abc import ABC
 from typing import Any, List, Optional, Tuple, Union
 
 from tm_devices.drivers.pi.pi_device import PIDevice
-from tm_devices.helpers import DeviceTypes, ReadOnlyCachedProperty
+from tm_devices.helpers import DeviceTypes
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 class Scope(PIDevice, ABC):
@@ -36,7 +39,7 @@ class Scope(PIDevice, ABC):
         """Return a tuple containing all the channel names."""
         return tuple(f"CH{x+1}" for x in range(self.total_channels))
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def opt_string(self) -> str:
         r"""Return the string returned from the ``*OPT?`` query when the device was created."""
         return self.ieee_cmds.opt()

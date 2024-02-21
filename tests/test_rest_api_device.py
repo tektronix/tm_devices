@@ -11,7 +11,9 @@ from packaging.version import Version
 from mock_server import INDEX_RESPONSE, PORT
 from tm_devices.drivers.api.rest_api.rest_api_device import RESTAPIDevice, SupportedRequestTypes
 from tm_devices.drivers.device import family_base_class
-from tm_devices.helpers import ReadOnlyCachedProperty
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 from tm_devices.helpers.constants_and_dataclasses import DeviceConfigEntry
 from tm_devices.helpers.enums import ConnectionTypes, DeviceTypes
 
@@ -47,22 +49,22 @@ class CustomRestApiDevice(RESTAPIDevice):
     def _reboot(self) -> None:
         """Perform the actual rebooting code."""
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def manufacturer(self) -> str:
         """Return the manufacturer of the device."""
         return "foo"
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def model(self) -> str:
         """Return the full model of the device."""
         return "bar"
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def serial(self) -> str:
         """Return the serial number of the device."""
         return "123"
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def sw_version(self) -> Version:
         """Return the software version of the device."""
         return Version("0")

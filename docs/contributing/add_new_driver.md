@@ -25,7 +25,7 @@ This guide will walk through the steps needed to add a new device driver.
     - See other `__init__.py` files for examples
 04. Update the `SupportedModels` enum exposed in
     `tm_devices/helpers/__init__.py`
-05. Update the `_SUPPORTED_MODEL_REGEX_MAPPING` regex constant inside
+05. Update the `___SUPPORTED_MODEL_REGEX_STRING` regex constant inside
     `tm_devices/helpers/functions.py` to include a mapping of the new driver name (model series)
     to a regex string matching the appropriate model strings
 06. Update the `DEVICE_DRIVER_MODEL_MAPPING` lookup inside

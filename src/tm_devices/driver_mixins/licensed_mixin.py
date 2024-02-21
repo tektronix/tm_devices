@@ -2,13 +2,14 @@
 from abc import ABC, abstractmethod
 from typing import final, Tuple
 
-from tm_devices.helpers import ReadOnlyCachedProperty
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 class LicensedMixin(ABC):
     """A mixin class which adds methods and properties for handling licenses."""
 
-    @ReadOnlyCachedProperty
+    @cached_property
     @abstractmethod
     def license_list(self) -> Tuple[str, ...]:
         """Return the list of licenses installed on the device."""

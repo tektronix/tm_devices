@@ -7,7 +7,10 @@ from typing import Any, cast, Dict, Optional, Tuple
 from packaging.version import Version
 
 from tm_devices.drivers.api.rest_api.margin_testers.margin_tester import MarginTester
-from tm_devices.helpers import DeviceConfigEntry, ReadOnlyCachedProperty
+from tm_devices.helpers import DeviceConfigEntry
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 class TMT4(MarginTester):
@@ -42,12 +45,12 @@ class TMT4(MarginTester):
     ################################################################################################
     # Properties
     ################################################################################################
-    @ReadOnlyCachedProperty
+    @cached_property
     def adapter(self) -> str:
         """Return the device's connected adapter."""
         return self._about_info["adapter"]
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def fpga_version(self) -> Version:
         """Return the fpga version of the device."""
         # This key can return strings indicating a reboot is needed instead of Versions.
@@ -56,7 +59,7 @@ class TMT4(MarginTester):
         except ValueError:
             return Version("0")
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def fw_version(self) -> Version:
         """Return the firmware version of the device."""
         # This key can (also) return strings indicating a reboot is needed instead of Versions.
@@ -65,12 +68,12 @@ class TMT4(MarginTester):
         except ValueError:
             return Version("0")
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def manufacturer(self) -> str:
         """Return the manufacturer of the device."""
         return self._about_info["manufacturer"]
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def model(self) -> str:
         """Return the full model of the device."""
         return self._about_info["model"]
@@ -80,17 +83,17 @@ class TMT4(MarginTester):
         """Return the configured device port, defaults to 5000."""
         return super().port or 5000
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def serial(self) -> str:
         """Return the serial number of the device."""
         return self._about_info["serialNumber"]
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def supported_technologies(self) -> Tuple[str, ...]:
         """Return the device's supported technologies."""
         return tuple(self._about_info["supportedTechnologies"].split(","))
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def sw_version(self) -> Version:
         """Return the software version of the device."""
         return Version(self._about_info["sw_version"])

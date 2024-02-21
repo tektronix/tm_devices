@@ -10,7 +10,10 @@ from requests.structures import CaseInsensitiveDict
 
 from tm_devices.drivers.api.rest_api.rest_api_device import RESTAPIDevice
 from tm_devices.drivers.device import family_base_class
-from tm_devices.helpers import DeviceConfigEntry, DeviceTypes, ReadOnlyCachedProperty
+from tm_devices.helpers import DeviceConfigEntry, DeviceTypes
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 @family_base_class
@@ -36,22 +39,22 @@ class MarginTester(RESTAPIDevice, ABC):
     ################################################################################################
     # Abstract Cached Properties
     ################################################################################################
-    @ReadOnlyCachedProperty
+    @cached_property
     @abstractmethod
     def adapter(self) -> str:
         """Return the device's connected adapter."""
 
-    @ReadOnlyCachedProperty
+    @cached_property
     @abstractmethod
     def fpga_version(self) -> Version:
         """Return the fpga version of the device."""
 
-    @ReadOnlyCachedProperty
+    @cached_property
     @abstractmethod
     def fw_version(self) -> Version:
         """Return the firmware version of the device."""
 
-    @ReadOnlyCachedProperty
+    @cached_property
     @abstractmethod
     def supported_technologies(self) -> Tuple[str, ...]:
         """Return the device's supported technologies."""

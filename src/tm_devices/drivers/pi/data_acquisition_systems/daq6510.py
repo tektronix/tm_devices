@@ -8,7 +8,10 @@ from tm_devices.drivers.pi._ieee488_2_commands import LegacyTSPIEEE4882Commands
 from tm_devices.drivers.pi.data_acquisition_systems.data_acquisition_system import (
     DataAcquisitionSystem,
 )
-from tm_devices.helpers import DeviceConfigEntry, ReadOnlyCachedProperty
+from tm_devices.helpers import DeviceConfigEntry
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 class DAQ6510(DAQ6510Mixin, DataAcquisitionSystem):
@@ -47,7 +50,7 @@ class DAQ6510(DAQ6510Mixin, DataAcquisitionSystem):
         """Return an internal class containing methods for the standard IEEE 488.2 command set."""
         return self._ieee_cmds  # pyright: ignore[reportReturnType]
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
         return 1

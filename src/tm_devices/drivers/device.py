@@ -4,7 +4,7 @@ import time
 
 from abc import ABC, abstractmethod
 from contextlib import contextmanager, suppress
-from functools import cached_property
+from functools import cached_property as functools_cached_property
 from typing import (
     Any,
     final,
@@ -25,8 +25,10 @@ from tm_devices.helpers import (
     DeviceConfigEntry,
     get_timestamp_string,
     print_with_timestamp,
-    ReadOnlyCachedProperty,
 )
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 _T = TypeVar("_T")
 _FAMILY_BASE_CLASS_PROPERTY_NAME = "_product_family_base_class"
@@ -100,22 +102,22 @@ class Device(ExtendableMixin, ABC):
     ################################################################################################
     # Abstract Cached Properties
     ################################################################################################
-    @ReadOnlyCachedProperty
+    @cached_property
     @abstractmethod
     def manufacturer(self) -> str:
         """Return the manufacturer of the device."""
 
-    @ReadOnlyCachedProperty
+    @cached_property
     @abstractmethod
     def model(self) -> str:
         """Return the full model of the device."""
 
-    @ReadOnlyCachedProperty
+    @cached_property
     @abstractmethod
     def serial(self) -> str:
         """Return the serial number of the device."""
 
-    @ReadOnlyCachedProperty
+    @cached_property
     @abstractmethod
     def sw_version(self) -> Version:
         """Return the software version of the device."""
@@ -267,7 +269,7 @@ class Device(ExtendableMixin, ABC):
         """Return the device port, or None if the device doesn't have a port."""
         return self._config_entry.lan_port
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def series(self) -> str:
         """Return the series of the device.
 
@@ -284,7 +286,7 @@ class Device(ExtendableMixin, ABC):
     ################################################################################################
     # Cached Properties
     ################################################################################################
-    @ReadOnlyCachedProperty
+    @cached_property
     def hostname(self) -> str:
         """Return the hostname of the device or an empty string if unable to fetch that."""
         if self._config_entry.connection_type not in {ConnectionTypes.USB}:
@@ -295,7 +297,7 @@ class Device(ExtendableMixin, ABC):
                 pass
         return ""
 
-    @ReadOnlyCachedProperty
+    @cached_property
     def ip_address(self) -> str:
         """Return the IPv4 address of the device or an empty string if unable to fetch that."""
         if self._config_entry.connection_type not in {ConnectionTypes.USB}:
@@ -471,7 +473,7 @@ class Device(ExtendableMixin, ABC):
         """
         # Reset the cached properties
         for prop in self._get_self_properties():
-            if isinstance(getattr(self.__class__, prop), cached_property):
+            if isinstance(getattr(self.__class__, prop), functools_cached_property):
                 # Try to delete the cached_property, if it raises an AttributeError,
                 # that means that it has not previously been accessed and
                 # there is no need to delete the cached_property.
@@ -689,7 +691,7 @@ class Device(ExtendableMixin, ABC):
         return tuple(
             p
             for p in dir(self.__class__)
-            if isinstance(getattr(self.__class__, p), (cached_property, property))
+            if isinstance(getattr(self.__class__, p), (functools_cached_property, property))
         )
 
     @staticmethod
