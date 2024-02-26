@@ -20,7 +20,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Download Artifact
-        uses: dawidd6/action-download-artifact@v3.1.1
+        uses: dawidd6/action-download-artifact@v3.1.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           run_id: ${{ github.event.workflow_run.id }}
