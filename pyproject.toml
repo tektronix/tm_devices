@@ -195,6 +195,8 @@ disable = [
   "global-statement",  # caught by ruff
   "line-too-long",  # caught by ruff
   "locally-disabled",  # allowed
+  "missing-class-docstring",  # caught by ruff
+  "missing-module-docstring",  # caught by ruff
   "no-member",  # caught by pyright
   "protected-access",  # caught by ruff
   "raise-missing-from",  # caught by ruff
