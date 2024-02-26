@@ -69,12 +69,9 @@ with DeviceManager() as device_manager:
         power = voltage * current
         print("Voltage: ", voltage, "Current: ", current, "Power: ", power)
 
-        if current > imax:
-            imax = current
-        if power > pmax:
-            pmax = power
-        if voltage > vmax:
-            vmax = voltage
+        imax = max(imax, current)
+        pmax = max(pmax, power)
+        vmax = max(vmax, voltage)
 
         if abs(current) < abs(MIN_CURR):
             voc = voltage
