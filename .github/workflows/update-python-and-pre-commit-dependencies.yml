@@ -4,6 +4,13 @@ on:
   pull_request:
     branches: [main]
 jobs:
+  print-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print data for workflow
+        run: |
+          echo "${{ github.event.pull_request.user.login }}"
+          echo "${{ github.head_ref }}"
   update-python-and-pre-commit-deps:
     name: Update python linters and pre-commit dependencies
     runs-on: ubuntu-latest
