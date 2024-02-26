@@ -58,7 +58,7 @@ __SUPPORTED_MODEL_REGEX_STRING = (
     rf"|(?P<{SupportedModels.AWG7K.value}>^AWG7\d\d\d$)"
     rf"|(?P<{SupportedModels.AWG7KB.value}>^AWG7\d\d\dB$)"
     rf"|(?P<{SupportedModels.AWG7KC.value}>^AWG7\d\d\dC$)"
-    rf"|(?P<{SupportedModels.AWG70KA.value}>^AWG70\d\d\dA$)"
+    rf"|(?P<{SupportedModels.AWG70KA.value}>^AWG70\d\d\dA?$)"
     rf"|(?P<{SupportedModels.AWG70KB.value}>^AWG70\d\d\dB$)"
     # Scopes
     rf"|(?P<{SupportedModels.DPO5K.value}>^DPO5\d\d\d$)"
