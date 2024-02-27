@@ -18,6 +18,20 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v1.2.1 (2024-02-27)
+
+### Merged Pull Requests
+
+- python-deps(deps-dev): Bump the python-dependencies group with 1 update ([#151](https://github.com/tektronix/tm_devices/issues/151))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 2 updates ([#147](https://github.com/tektronix/tm_devices/issues/147))
+- Update read only cached property for PyCharm auto-complete support ([#149](https://github.com/tektronix/tm_devices/issues/149))
+- Update release workflow to print out incoming changes in job summary for easy review ([#148](https://github.com/tektronix/tm_devices/issues/148))
+- ci: Created a workflow to update python linting dependencies and pre-commit hook versions inside of a PR. ([#146](https://github.com/tektronix/tm_devices/issues/146))
+- refactor: Updated the `get_model_series()` function to make it simpler for future maintenance and additions. ([#145](https://github.com/tektronix/tm_devices/issues/145))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 1 update ([#144](https://github.com/tektronix/tm_devices/issues/144))
+
 ### Changed
 
 - Updated the `get_model_series()` function to use a regex mapping instead of complicated logic to reduce maintenance costs.
