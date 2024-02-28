@@ -13,6 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
+        with:
+          python-version: x  # any version
       - name: Create lockfile
         run: |
           pip install poetry
@@ -29,8 +31,9 @@ jobs:
           sbom: ${{ github.event.repository.name }}-sbom.spdx.json
           fail-build: true
           severity-cutoff: low
-      - name: Upload SBOM scan SARIF report
-        if: ${{ github.event_name != 'pull_request' }}
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: ${{ steps.scan.outputs.sarif }}
+          output-format: table
+#      - name: Upload SBOM scan SARIF report
+#        if: ${{ github.event_name != 'pull_request' }}
+#        uses: github/codeql-action/upload-sarif@v3
+#        with:
+#          sarif_file: ${{ steps.scan.outputs.sarif }}
