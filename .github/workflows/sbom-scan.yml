@@ -26,7 +26,7 @@ jobs:
           fail-build: true
           severity-cutoff: low
       - name: Upload SBOM scan SARIF report
-        if: github.event_name != "pull_request"
+        if: ${{ github.event_name != 'pull_request' }}
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: ${{ steps.scan.outputs.sarif }}
