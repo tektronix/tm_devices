@@ -1,0 +1,32 @@
+---
+name: Create & Scan SBOM
+on:
+  push:
+    branches: [main]
+    tags: ['*']
+  pull_request:
+    branches: [main]
+  release:
+    types: [published]
+jobs:
+  create-and-scan-sbom:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          format: spdx-json
+          output-file: ${{ github.event.repository.name }}-sbom.spdx.json
+      - name: Scan SBOM
+        uses: anchore/scan-action@v3
+        id: scan
+        with:
+          sbom: ${{ github.event.repository.name }}-sbom.spdx.json
+          fail-build: true
+          severity-cutoff: low
+      - name: Upload SBOM scan SARIF report
+        if: github.event_name != "pull_request"
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ${{ steps.scan.outputs.sarif }}
