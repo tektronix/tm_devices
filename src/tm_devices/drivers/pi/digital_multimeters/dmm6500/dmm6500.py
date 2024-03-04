@@ -1,4 +1,5 @@
 """DMM6500 device driver module."""
+
 from typing import Tuple
 
 from tm_devices.commands import DMM6500Mixin

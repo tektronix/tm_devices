@@ -28,6 +28,7 @@ Commands and Queries:
     - DVM:SOUrce {CH<x>}
     - DVM:SOUrce?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

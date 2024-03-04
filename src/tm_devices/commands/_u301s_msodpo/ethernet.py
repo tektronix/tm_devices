@@ -33,6 +33,7 @@ Commands and Queries:
     - ETHERnet:SUBNETMask <QString>
     - ETHERnet:SUBNETMask?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

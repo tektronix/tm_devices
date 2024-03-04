@@ -16,6 +16,7 @@ Attributes and Functions:
     - bufferVar.capacity
     - bufferVar.statuses[N]
 """
+
 from typing import Dict, Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, DefaultDictDeviceCommunication, NoDeviceProvidedError

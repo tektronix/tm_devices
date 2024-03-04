@@ -112,6 +112,7 @@ Attributes and Functions:
     - status.request_enable
     - status.request_event
 """
+
 from typing import Dict, Optional, TYPE_CHECKING, Union
 
 from .._helpers import (

@@ -1,4 +1,5 @@
 """Base TekScope5k7k70k scope device driver module."""
+
 from abc import ABC
 
 import pyvisa as visa

@@ -20,6 +20,7 @@ Attributes and Functions:
     - comm.lan.vxi11.enable
     - comm.lan.web.enable
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

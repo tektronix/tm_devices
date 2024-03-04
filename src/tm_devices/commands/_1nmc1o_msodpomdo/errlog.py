@@ -16,6 +16,7 @@ Commands and Queries:
     - ERRlog:NEXt?
     - ERRlog:NUMENTries?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

@@ -3,6 +3,7 @@
 This is a test that should be run in isolation from the standard test suite. The standard test suite
 runs this script via a subprocess to avoid interactions with the test of the tests.
 """
+
 from contextlib import redirect_stdout
 from io import StringIO
 from unittest import mock

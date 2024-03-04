@@ -27,6 +27,7 @@ Attributes and Functions:
     - display.settext()
     - display.waitevent()
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

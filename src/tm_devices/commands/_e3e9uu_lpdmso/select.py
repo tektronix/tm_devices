@@ -14,6 +14,7 @@ Commands and Queries:
     - SELect:CH<x> {ON|OFF|1|0}
     - SELect:CH<x>?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import DefaultDictPassKeyToFactory, SCPICmdRead, SCPICmdWrite, ValidatedChannel

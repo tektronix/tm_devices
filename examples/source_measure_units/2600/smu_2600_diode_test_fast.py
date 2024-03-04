@@ -11,6 +11,7 @@ Engineering (Al Ivons) on 08 Apr 2005
 
 Converted to Python tm_devices script. DCA 4.12.23
 """
+
 import time
 
 from typing import Dict, Tuple

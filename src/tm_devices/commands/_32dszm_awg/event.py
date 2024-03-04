@@ -21,6 +21,7 @@ Commands and Queries:
     - EVENt:POLarity {POSitive|NEGative}
     - EVENt:POLarity?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

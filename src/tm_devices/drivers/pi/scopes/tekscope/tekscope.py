@@ -1,4 +1,5 @@
 """Base TekScope scope device driver module."""
+
 import os
 import warnings
 

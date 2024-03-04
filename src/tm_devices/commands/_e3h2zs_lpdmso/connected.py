@@ -16,6 +16,7 @@ Commands and Queries:
     - CONNected:USAGe:TRack:REQUested:STATus <NR1>
     - CONNected:USAGe:TRack:STATus?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

@@ -291,6 +291,7 @@ Commands and Queries:
     - TRIGger:STATE?
     - TRIGger?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

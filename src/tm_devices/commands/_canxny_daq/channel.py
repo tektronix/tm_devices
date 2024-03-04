@@ -43,6 +43,7 @@ Attributes and Functions:
     - channel.setwidth()
     - channel.write()
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

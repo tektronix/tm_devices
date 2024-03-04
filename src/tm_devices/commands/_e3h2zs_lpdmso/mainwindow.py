@@ -15,6 +15,7 @@ Commands and Queries:
     - MAINWindow:FONTSize <NR1>
     - MAINWindow:RRBDisplaystate {1|ON|0|OFF}
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

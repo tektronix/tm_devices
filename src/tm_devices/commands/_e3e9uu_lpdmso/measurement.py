@@ -833,6 +833,7 @@ Commands and Queries:
     - MEASUrement:WBG:PDEVice?
     - MEASUrement?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -20013,11 +20014,11 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             device, f"{self._cmd_syntax}:OUTEDGEQUALifier"
         )
         self._outfilters = MeasurementMeasItemOutfilters(device, f"{self._cmd_syntax}:OUTFILTers")
-        self._outputvoltage: Dict[
-            int, MeasurementMeasItemOutputvoltageItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: MeasurementMeasItemOutputvoltageItem(
-                device, f"{self._cmd_syntax}:OUTPUT{x}VOLTage"
+        self._outputvoltage: Dict[int, MeasurementMeasItemOutputvoltageItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: MeasurementMeasItemOutputvoltageItem(
+                    device, f"{self._cmd_syntax}:OUTPUT{x}VOLTage"
+                )
             )
         )
         self._passfailenabled = MeasurementMeasItemPassfailenabled(
@@ -20066,21 +20067,21 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._reflevels = MeasurementMeasItemReflevels(device, f"{self._cmd_syntax}:REFLevels")
         self._reflevels1 = MeasurementMeasItemReflevels1(device, f"{self._cmd_syntax}:REFLevels1")
         self._refmode = MeasurementMeasItemRefmode(device, f"{self._cmd_syntax}:REFMode")
-        self._refvoltageval: Dict[
-            int, MeasurementMeasItemRefvoltagevalItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: MeasurementMeasItemRefvoltagevalItem(
-                device, f"{self._cmd_syntax}:REFVOLTAGE{x}Val"
+        self._refvoltageval: Dict[int, MeasurementMeasItemRefvoltagevalItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: MeasurementMeasItemRefvoltagevalItem(
+                    device, f"{self._cmd_syntax}:REFVOLTAGE{x}Val"
+                )
             )
         )
         self._refvoltage = MeasurementMeasItemRefvoltage(device, f"{self._cmd_syntax}:REFVoltage")
         self._results = MeasurementMeasItemResults(device, f"{self._cmd_syntax}:RESUlts")
         self._rfrequency = MeasurementMeasItemRfrequency(device, f"{self._cmd_syntax}:RFREquency")
-        self._ripplefreqval: Dict[
-            int, MeasurementMeasItemRipplefreqvalItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: MeasurementMeasItemRipplefreqvalItem(
-                device, f"{self._cmd_syntax}:RIPPLEFREQ{x}Val"
+        self._ripplefreqval: Dict[int, MeasurementMeasItemRipplefreqvalItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: MeasurementMeasItemRipplefreqvalItem(
+                    device, f"{self._cmd_syntax}:RIPPLEFREQ{x}Val"
+                )
             )
         )
         self._rrange = MeasurementMeasItemRrange(device, f"{self._cmd_syntax}:RRANGE")

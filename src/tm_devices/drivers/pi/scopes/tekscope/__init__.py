@@ -1,4 +1,5 @@
 """TekScope package init file."""
+
 from tm_devices.drivers.pi.scopes.tekscope.lpd6 import LPD6
 from tm_devices.drivers.pi.scopes.tekscope.mso2 import MSO2
 from tm_devices.drivers.pi.scopes.tekscope.mso4 import MSO4

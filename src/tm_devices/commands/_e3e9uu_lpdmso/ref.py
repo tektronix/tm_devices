@@ -72,6 +72,7 @@ Commands and Queries:
     - REF<x>_DALL:LABel:YPOS <NR3>
     - REF<x>_DALL:LABel:YPOS?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

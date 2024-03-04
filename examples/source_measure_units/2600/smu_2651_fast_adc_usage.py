@@ -11,6 +11,7 @@ Equipment Needed:
 
 Converted to Python tm_devices script. DCA 4.12.23
 """
+
 from datetime import datetime
 
 from dateutil.tz import tzlocal

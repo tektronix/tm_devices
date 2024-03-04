@@ -1,4 +1,5 @@
 """Base Scope device driver module."""
+
 import inspect
 
 from abc import ABC

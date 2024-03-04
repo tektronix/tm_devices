@@ -1,5 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Tests for various methods of connecting to devices."""
+
 from typing import Optional, Tuple
 
 import pytest

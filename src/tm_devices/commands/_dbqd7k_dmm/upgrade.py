@@ -16,6 +16,7 @@ Attributes and Functions:
     - upgrade.previous()
     - upgrade.unit()
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

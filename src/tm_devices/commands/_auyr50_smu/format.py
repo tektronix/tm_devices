@@ -17,6 +17,7 @@ Attributes and Functions:
     - format.byteorder
     - format.data
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

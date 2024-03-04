@@ -1,5 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Test the SMUs."""
+
 import os
 import socket
 import sys

@@ -25,6 +25,7 @@ Commands and Queries:
     - DIAg:SELect?
     - DIAg:STATE {EXECute|ABOrt}
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

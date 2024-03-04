@@ -28,6 +28,7 @@ Commands and Queries:
     - MESSage:STATE?
     - MESSage?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

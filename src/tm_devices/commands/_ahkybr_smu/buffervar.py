@@ -37,6 +37,7 @@ Attributes and Functions:
     - bufferVar.timestampresolution
     - bufferVar.timestamps[N]
 """
+
 from typing import Dict, Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, DefaultDictDeviceCommunication, NoDeviceProvidedError

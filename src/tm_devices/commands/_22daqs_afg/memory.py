@@ -19,6 +19,7 @@ Commands and Queries:
     - MEMory:STATe:RECall:AUTo?
     - MEMory:STATe:VALid? {0|1|2|3|4}
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite

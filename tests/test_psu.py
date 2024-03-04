@@ -1,4 +1,5 @@
 """Test the PSUs."""
+
 from packaging.version import Version
 
 from tm_devices import DeviceManager

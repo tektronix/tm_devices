@@ -3,6 +3,7 @@
 It does this by sourcing 300 V and measuring the resistance. The Simple Loop trigger model template
 is used to make 10 measurements at 100 ms intervals.
 """
+
 from typing import List
 
 from tm_devices import DeviceManager

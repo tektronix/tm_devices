@@ -1,4 +1,5 @@
 """TEKSCOPESW device driver module."""
+
 from typing import Any
 
 import pyvisa as visa

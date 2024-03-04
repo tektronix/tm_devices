@@ -36,6 +36,7 @@ Commands and Queries:
     - SAVe:WAVEform:GATing?
     - SAVe:WAVEform:SOURCELIst?
 """  # noqa: E501
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

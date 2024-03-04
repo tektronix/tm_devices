@@ -144,6 +144,7 @@ Commands and Queries:
     - SOURce1:VOLTage:UNIT {VPP|VRMS|DBM}
     - SOURce1:VOLTage:UNIT?
 """  # noqa: E501
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

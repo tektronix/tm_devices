@@ -18,6 +18,7 @@ Commands and Queries:
     - TIMe:ZONe?
     - TIMe?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

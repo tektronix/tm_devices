@@ -1,4 +1,5 @@
 """Module containing Enums for the tm_devices package."""
+
 from enum import Enum
 from typing import cast, List
 

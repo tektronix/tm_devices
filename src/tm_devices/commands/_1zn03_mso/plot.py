@@ -18,6 +18,7 @@ Commands and Queries:
     - PLOT:PLOT<x>:SOUrce1?
     - PLOT:PLOT<x>:TYPe {NONE|XY}
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

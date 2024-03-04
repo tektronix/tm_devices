@@ -15,6 +15,7 @@ Commands and Queries:
     - DESkew:DISplay {OFF|ON|0|1}
     - DESkew:DISplay?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

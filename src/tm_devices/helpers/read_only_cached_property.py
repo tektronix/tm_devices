@@ -1,4 +1,5 @@
 """A read-only version of functools.cached_property."""
+
 import contextlib
 
 from functools import cached_property

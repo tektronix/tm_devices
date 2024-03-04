@@ -389,6 +389,7 @@ Commands and Queries:
     - DISplay:WAVEform?
     - DISplay?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -5701,15 +5702,19 @@ class DisplayWaveview1(SCPICmdRead):
         self._intensity = DisplayWaveview1Intensity(device, f"{self._cmd_syntax}:INTENSITy")
         self._math = DisplayWaveview1Math(device, f"{self._cmd_syntax}:MATH")
         self._plot = DisplayWaveview1Plot(device, f"{self._cmd_syntax}:PLOT")
-        self._rf_frequency: Dict[
-            int, DisplayWaveview1RfFrequencyItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: DisplayWaveview1RfFrequencyItem(device, f"{self._cmd_syntax}:RF_FREQuency{x}")
+        self._rf_frequency: Dict[int, DisplayWaveview1RfFrequencyItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: DisplayWaveview1RfFrequencyItem(
+                    device, f"{self._cmd_syntax}:RF_FREQuency{x}"
+                )
+            )
         )
-        self._rf_magnitude: Dict[
-            int, DisplayWaveview1RfMagnitudeItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: DisplayWaveview1RfMagnitudeItem(device, f"{self._cmd_syntax}:RF_MAGnitude{x}")
+        self._rf_magnitude: Dict[int, DisplayWaveview1RfMagnitudeItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: DisplayWaveview1RfMagnitudeItem(
+                    device, f"{self._cmd_syntax}:RF_MAGnitude{x}"
+                )
+            )
         )
         self._rf_phase: Dict[int, DisplayWaveview1RfPhaseItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayWaveview1RfPhaseItem(device, f"{self._cmd_syntax}:RF_PHASe{x}")

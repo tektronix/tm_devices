@@ -1,4 +1,5 @@
 """A module with all the main device type classes."""
+
 from typing import Final
 
 from tm_devices.drivers.api.rest_api.margin_testers.margin_tester import MarginTester

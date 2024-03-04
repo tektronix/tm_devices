@@ -23,6 +23,7 @@ Commands and Queries:
     - EYEMASK:MASK<x>:TESt:SAMple:THReshold?
     - EYEMASK:MASK<x>:TESt:STATUS?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

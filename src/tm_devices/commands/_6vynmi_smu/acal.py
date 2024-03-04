@@ -19,6 +19,7 @@ Attributes and Functions:
     - acal.lastrun.time
     - acal.run()
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

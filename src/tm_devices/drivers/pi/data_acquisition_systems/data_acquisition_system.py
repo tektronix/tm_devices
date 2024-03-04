@@ -1,4 +1,5 @@
 """Base Data Acquisition (DAQ) device driver module."""
+
 import inspect
 
 from abc import ABC

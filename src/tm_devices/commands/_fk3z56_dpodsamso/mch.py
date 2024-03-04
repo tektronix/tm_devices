@@ -15,6 +15,7 @@ Commands and Queries:
     - MCH<x>:MAXAMPLitude <NR3>
     - MCH<x>:MINAMPLitude <NR3>
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, ValidatedDynamicNumberCmd

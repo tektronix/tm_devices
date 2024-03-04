@@ -1,4 +1,5 @@
 """TSOVu device driver module."""
+
 import inspect
 
 import pyvisa as visa

@@ -1,4 +1,5 @@
 """SMU2400Interactive device driver module."""
+
 from abc import ABC
 from typing import Tuple, Union
 

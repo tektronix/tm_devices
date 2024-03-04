@@ -16,6 +16,7 @@ Commands and Queries:
     - INSTrument:MODE {AWG|FGEN}
     - INSTrument:MODE?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

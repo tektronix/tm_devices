@@ -22,6 +22,7 @@ Commands and Queries:
     - LICense:VALidate? <QString>
     - LICense?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite

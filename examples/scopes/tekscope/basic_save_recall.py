@@ -1,4 +1,5 @@
 """An example of saving and recalling a waveform and session file."""
+
 from tm_devices import DeviceManager
 from tm_devices.drivers import MSO6B
 

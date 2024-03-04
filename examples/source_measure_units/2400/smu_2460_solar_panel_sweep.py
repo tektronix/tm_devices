@@ -8,6 +8,7 @@ Description:
 
 Converted to Python tm_devices script. DCA 4.7.23
 """
+
 import time
 
 from tm_devices import DeviceManager

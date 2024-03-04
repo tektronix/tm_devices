@@ -1,4 +1,5 @@
 """TekScope3k4k package init file."""
+
 from tm_devices.drivers.pi.scopes.tekscope_3k_4k.dpo4k import DPO4K
 from tm_devices.drivers.pi.scopes.tekscope_3k_4k.dpo4kb import DPO4KB
 from tm_devices.drivers.pi.scopes.tekscope_3k_4k.mdo3 import MDO3

@@ -1,4 +1,5 @@
 """Pytest configuration file."""
+
 import os
 import socket
 

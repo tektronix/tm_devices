@@ -23,6 +23,7 @@ Commands and Queries:
     - HARDCopy:PRINTer:LIST?
     - HARDCopy:PRINTer:REName <name>,<new_name>,<new_server>,<new_address>
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

@@ -1,4 +1,5 @@
 """An example showing a basic curve query."""
+
 from tm_devices import DeviceManager
 
 EXAMPLE_CSV_FILE = "example_curve_query.csv"

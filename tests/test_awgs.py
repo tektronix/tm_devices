@@ -1,5 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Test the AWGs."""
+
 import pytest
 
 from tm_devices import DeviceManager

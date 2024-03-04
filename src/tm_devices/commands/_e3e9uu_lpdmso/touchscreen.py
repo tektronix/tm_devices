@@ -15,6 +15,7 @@ Commands and Queries:
     - TOUCHSCReen:STATe {0|1|OFF|ON}
     - TOUCHSCReen:STATe?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

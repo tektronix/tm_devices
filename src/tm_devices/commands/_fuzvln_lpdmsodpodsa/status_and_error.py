@@ -15,6 +15,7 @@ Commands and Queries:
     - *PSC {<NR1>|OFF|ON}
     - *PSC?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

@@ -32,6 +32,7 @@ Commands and Queries:
     - SEQuence:LENGth <NR1>
     - SEQuence:LENGth?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

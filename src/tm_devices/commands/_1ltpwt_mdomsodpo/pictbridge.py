@@ -26,6 +26,7 @@ Commands and Queries:
     - PICTBridge:PRINTQual {DEFLT|NRMAL|FINE|DRAFT}
     - PICTBridge:PRINTQual?
 """  # noqa: E501
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

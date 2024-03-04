@@ -1,4 +1,5 @@
 """PSU2200 package init file."""
+
 from tm_devices.drivers.pi.power_supplies.psu2200.psu2200 import PSU2200
 from tm_devices.drivers.pi.power_supplies.psu2200.psu2220 import PSU2220
 from tm_devices.drivers.pi.power_supplies.psu2200.psu2230 import PSU2230

@@ -14,6 +14,7 @@ Commands and Queries:
 
     - *SDS <NR1>
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdWrite

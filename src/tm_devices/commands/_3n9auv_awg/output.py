@@ -14,6 +14,7 @@ Commands and Queries:
     - OUTPut:OFF {0|1|OFF|ON}
     - OUTPut:OFF?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

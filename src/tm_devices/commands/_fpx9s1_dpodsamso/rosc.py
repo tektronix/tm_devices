@@ -20,6 +20,7 @@ Commands and Queries:
     - ROSc:TRACking {STABle|FAST}
     - ROSc:TRACking?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

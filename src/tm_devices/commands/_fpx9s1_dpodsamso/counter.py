@@ -20,6 +20,7 @@ Commands and Queries:
     - COUnter:RESULTs:VALue?
     - COUnter:RESULTs?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead

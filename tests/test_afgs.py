@@ -1,5 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Test the AFGs."""
+
 from unittest import mock
 
 import pytest

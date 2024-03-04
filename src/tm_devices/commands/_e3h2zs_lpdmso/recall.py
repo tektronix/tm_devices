@@ -16,6 +16,7 @@ Commands and Queries:
     - RECAll:SETUp {FACtory|<file_path>}
     - RECAll:WAVEform <source file>,<destination>
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

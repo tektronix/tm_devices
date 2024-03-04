@@ -1,4 +1,5 @@
 """Base REST Application Programming Interface (API) device driver module."""
+
 import json
 import time
 

@@ -1,4 +1,5 @@
 """SS3706A device driver module."""
+
 import inspect
 
 from typing import Tuple
