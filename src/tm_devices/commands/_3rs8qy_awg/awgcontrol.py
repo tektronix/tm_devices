@@ -56,6 +56,7 @@ Commands and Queries:
     - AWGControl:TIMer:SOPLay?
     - AWGControl:TIMer:STOP
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

@@ -9,6 +9,7 @@ the source and measure settings are configured before the pulse command
 (smu.source.pulsesweeplinear) is sent to the instrument. The pulse command accepts a lot of
 arguments so the the arguments are stored in variables to make them easier to read.
 """
+
 from typing import cast, List
 
 from tm_devices import DeviceManager

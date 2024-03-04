@@ -1,4 +1,5 @@
 """An example script for connecting and configuring scope for acquisition."""
+
 from tm_devices import DeviceManager
 from tm_devices.drivers import MSO6B
 from tm_devices.helpers import PYVISA_PY_BACKEND

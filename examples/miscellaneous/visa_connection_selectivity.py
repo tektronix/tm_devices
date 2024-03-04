@@ -1,4 +1,5 @@
 """An example script to choose visa from different visa resources."""
+
 from tm_devices import DeviceManager
 from tm_devices.helpers import PYVISA_PY_BACKEND, SYSTEM_DEFAULT_VISA_BACKEND
 

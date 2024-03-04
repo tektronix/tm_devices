@@ -21,6 +21,7 @@ Attributes and Functions:
     - schedule.alarm[N].seconds
     - schedule.disable()
 """
+
 from typing import Dict, Optional, TYPE_CHECKING, Union
 
 from .._helpers import (

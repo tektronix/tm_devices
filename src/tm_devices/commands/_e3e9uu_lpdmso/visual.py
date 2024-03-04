@@ -48,6 +48,7 @@ Commands and Queries:
     - VISual:SHOWEQuation {ON|OFF|<NR1>}
     - VISual:SHOWEQuation?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

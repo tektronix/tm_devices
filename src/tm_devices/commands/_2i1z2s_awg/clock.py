@@ -41,6 +41,7 @@ Commands and Queries:
     - CLOCk:SRATe <NRf>
     - CLOCk:SRATe?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

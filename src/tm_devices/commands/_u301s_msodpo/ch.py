@@ -54,6 +54,7 @@ Commands and Queries:
     - CH<x>:YUNits?
     - CH<x>?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments, ValidatedChannel

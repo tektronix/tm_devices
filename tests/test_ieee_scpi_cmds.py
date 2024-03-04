@@ -1,4 +1,5 @@
 """Test the IEEE 488.2 SCPI commands."""
+
 import pytest
 
 from tm_devices import DeviceManager

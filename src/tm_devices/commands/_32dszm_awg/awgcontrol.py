@@ -58,6 +58,7 @@ Commands and Queries:
     - AWGControl:SSAVe <file_name>[,<msus>]
     - AWGControl:STOP:IMMediate
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

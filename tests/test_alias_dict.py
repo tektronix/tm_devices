@@ -1,4 +1,5 @@
 """Test for the AliasDict class."""
+
 import pytest
 
 from tm_devices.helpers.alias_dict import AliasDict

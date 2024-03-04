@@ -1,4 +1,5 @@
 """Base Systems Switch (SS) device driver module."""
+
 from abc import ABC
 
 from tm_devices.drivers.pi.tsp_device import TSPDevice

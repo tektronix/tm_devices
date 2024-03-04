@@ -1,4 +1,5 @@
 """Base SMU 6000 device driver module."""
+
 from __future__ import annotations
 
 import inspect

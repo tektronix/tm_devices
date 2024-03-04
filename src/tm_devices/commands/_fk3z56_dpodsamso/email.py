@@ -50,6 +50,7 @@ Commands and Queries:
     - EMail:WAVEform {<NR1>|ON|OFF}
     - EMail:WAVEform?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

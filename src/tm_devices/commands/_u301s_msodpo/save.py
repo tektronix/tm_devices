@@ -29,6 +29,7 @@ Commands and Queries:
     - SAVe:WAVEform:SPREADSheet:RESOlution {FULL|REDUced}
     - SAVe:WAVEform:SPREADSheet:RESOlution?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

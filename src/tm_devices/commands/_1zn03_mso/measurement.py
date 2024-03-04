@@ -340,6 +340,7 @@ Commands and Queries:
     - MEASUrement:STATIstics:CYCLEMode?
     - MEASUrement?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

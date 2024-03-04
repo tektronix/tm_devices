@@ -47,6 +47,7 @@ Commands and Queries:
     - DISplay:XY?
     - DISplay?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

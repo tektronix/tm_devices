@@ -1,5 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Test the SMUs."""
+
 import os
 import socket
 import sys
@@ -48,7 +49,7 @@ def test_smu(  # noqa: PLR0915
         assert "Query" in stdout
 
     smu.load_script(
-        file_path=f"{Path(os.path.realpath(__file__)).parent}/samples/tsp_script.py",
+        file_path=f"{Path(os.path.realpath(__file__)).parent}/samples/tsp_script.tsp",
         run_script=True,
         to_nv_memory=True,
     )
@@ -60,7 +61,7 @@ def test_smu(  # noqa: PLR0915
     assert "loadfuncs()" in stdout
     smu.expect_esr(0)
     smu.load_script(
-        file_path=f"{Path(os.path.realpath(__file__)).parent}/samples/tsp_script.py",
+        file_path=f"{Path(os.path.realpath(__file__)).parent}/samples/tsp_script.tsp",
         script_name="tsp_function",
     )
     stdout = capsys.readouterr().out

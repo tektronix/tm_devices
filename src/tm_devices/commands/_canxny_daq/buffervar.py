@@ -35,6 +35,7 @@ Attributes and Functions:
     - bufferVar.timestamps[N]
     - bufferVar.units[N]
 """
+
 from typing import Dict, Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, DefaultDictDeviceCommunication, NoDeviceProvidedError

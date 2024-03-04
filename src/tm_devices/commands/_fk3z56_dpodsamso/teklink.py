@@ -16,6 +16,7 @@ Commands and Queries:
     - TEKLink:REFClk {ON|OFF|PENDING}
     - TEKLink:REFClk?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

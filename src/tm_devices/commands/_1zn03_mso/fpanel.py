@@ -15,6 +15,7 @@ Commands and Queries:
     - FPAnel:PRESS {AUTOset| BUS| CH1<x>| CLEAR| DEFaultsetup| FORCetrig| GPKNOB1| GPKNOB2| HORZPOS| MATh| REF| RUNSTop| SETTO50| SINGleseq| TOUCHSCReen| TRIGMode| USER| VERTPOS| VERTSCALE}
     - FPAnel:TURN {GPKNOB1| GPKNOB2| HORZPOS| HORZScale| TRIGLevel| VERTPOS| VERTSCALE} [,<NR1>]
 """  # noqa: E501
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

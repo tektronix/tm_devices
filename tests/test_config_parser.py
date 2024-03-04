@@ -1,5 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Tests for the config_parser.py file."""
+
 from pathlib import Path
 from types import MappingProxyType
 from typing import Dict, Mapping, Optional, Type

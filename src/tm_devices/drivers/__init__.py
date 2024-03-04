@@ -1,4 +1,5 @@
 """Full list of available device drivers."""
+
 from types import MappingProxyType
 from typing import Mapping, Type
 

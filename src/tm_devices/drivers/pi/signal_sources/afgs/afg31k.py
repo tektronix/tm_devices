@@ -1,4 +1,5 @@
 """AFG31K device driver module."""
+
 from tm_devices.drivers.pi.signal_sources.afgs.afg import AFG, AFGSourceDeviceConstants
 
 

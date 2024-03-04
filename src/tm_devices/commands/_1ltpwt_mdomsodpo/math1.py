@@ -35,6 +35,7 @@ Commands and Queries:
     - MATH1:VERTical:UNIts?
     - MATH1?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

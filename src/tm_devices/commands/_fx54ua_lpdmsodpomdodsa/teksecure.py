@@ -15,6 +15,7 @@ Commands and Queries:
 
     - TEKSecure
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdWriteNoArguments

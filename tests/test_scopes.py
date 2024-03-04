@@ -1,5 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Test the Scopes."""
+
 import os
 import subprocess
 import sys

@@ -21,6 +21,7 @@ Commands and Queries:
     - CALibrate:RESults?
     - CALibrate?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

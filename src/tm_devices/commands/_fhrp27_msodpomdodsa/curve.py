@@ -16,6 +16,7 @@ Commands and Queries:
     - CURVe {<Block>|<asc curve>}
     - CURVe?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

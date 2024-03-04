@@ -16,6 +16,7 @@ Commands and Queries:
     - AUTOSet:OVErlay {ON | OFF}
     - AUTOSet:PERcent <NR3>
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

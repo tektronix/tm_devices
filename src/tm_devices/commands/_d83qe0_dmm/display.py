@@ -28,6 +28,7 @@ Attributes and Functions:
     - display.waitevent()
     - display.watchchannels
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

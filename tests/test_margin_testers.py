@@ -1,5 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Unit tests for tmt4.py."""
+
 from pathlib import Path
 from unittest import mock
 

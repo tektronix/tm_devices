@@ -15,6 +15,7 @@ Commands and Queries:
     - CQ<x>:THRESHold <NR3>
     - CQ<x>:THRESHold?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, ValidatedDynamicNumberCmd

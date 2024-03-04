@@ -125,6 +125,7 @@ Commands and Queries:
     - CH<x>_DALL:LABel:NAMe <QString>
     - CH<x>_DALL:LABel:NAMe?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

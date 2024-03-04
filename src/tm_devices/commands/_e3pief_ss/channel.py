@@ -68,6 +68,7 @@ Attributes and Functions:
     - channel.trigger[N].wait()
     - channel.write()
 """
+
 from typing import Dict, Optional, TYPE_CHECKING, Union
 
 from .._helpers import (

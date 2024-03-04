@@ -1,4 +1,5 @@
 """Base TekScope2k scope device driver module."""
+
 from abc import ABC
 
 from tm_devices.drivers.device import family_base_class

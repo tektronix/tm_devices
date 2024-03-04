@@ -23,6 +23,7 @@ Attributes and Functions:
     - io.type()
     - io.write()
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

@@ -387,6 +387,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:UPPerthreshold:REF<x>?
     - SEARCH?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -512,19 +513,19 @@ class SearchSearchItemTriggerAUpperthreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[
-            int, SearchSearchItemTriggerAUpperthresholdChannel
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerAUpperthresholdChannel(
-                device, f"{self._cmd_syntax}:CH{x}"
+        self._ch: Dict[int, SearchSearchItemTriggerAUpperthresholdChannel] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerAUpperthresholdChannel(
+                    device, f"{self._cmd_syntax}:CH{x}"
+                )
             )
         )
         self._math = SearchSearchItemTriggerAUpperthresholdMath(device, f"{self._cmd_syntax}:MATH")
-        self._ref: Dict[
-            int, SearchSearchItemTriggerAUpperthresholdRefItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerAUpperthresholdRefItem(
-                device, f"{self._cmd_syntax}:REF{x}"
+        self._ref: Dict[int, SearchSearchItemTriggerAUpperthresholdRefItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerAUpperthresholdRefItem(
+                    device, f"{self._cmd_syntax}:REF{x}"
+                )
             )
         )
 
@@ -1273,11 +1274,11 @@ class SearchSearchItemTriggerASetholdThreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ref: Dict[
-            int, SearchSearchItemTriggerASetholdThresholdRefItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerASetholdThresholdRefItem(
-                device, f"{self._cmd_syntax}:REF{x}"
+        self._ref: Dict[int, SearchSearchItemTriggerASetholdThresholdRefItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerASetholdThresholdRefItem(
+                    device, f"{self._cmd_syntax}:REF{x}"
+                )
             )
         )
         self._math = SearchSearchItemTriggerASetholdThresholdMath(
@@ -3153,19 +3154,19 @@ class SearchSearchItemTriggerALowerthreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[
-            int, SearchSearchItemTriggerALowerthresholdChannel
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerALowerthresholdChannel(
-                device, f"{self._cmd_syntax}:CH{x}"
+        self._ch: Dict[int, SearchSearchItemTriggerALowerthresholdChannel] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerALowerthresholdChannel(
+                    device, f"{self._cmd_syntax}:CH{x}"
+                )
             )
         )
         self._math = SearchSearchItemTriggerALowerthresholdMath(device, f"{self._cmd_syntax}:MATH")
-        self._ref: Dict[
-            int, SearchSearchItemTriggerALowerthresholdRefItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerALowerthresholdRefItem(
-                device, f"{self._cmd_syntax}:REF{x}"
+        self._ref: Dict[int, SearchSearchItemTriggerALowerthresholdRefItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerALowerthresholdRefItem(
+                    device, f"{self._cmd_syntax}:REF{x}"
+                )
             )
         )
         self._rf_frequency = SearchSearchItemTriggerALowerthresholdRfFrequency(
@@ -3441,19 +3442,19 @@ class SearchSearchItemTriggerALogicThreshold(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[
-            int, SearchSearchItemTriggerALogicThresholdChannel
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerALogicThresholdChannel(
-                device, f"{self._cmd_syntax}:CH{x}"
+        self._ch: Dict[int, SearchSearchItemTriggerALogicThresholdChannel] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerALogicThresholdChannel(
+                    device, f"{self._cmd_syntax}:CH{x}"
+                )
             )
         )
         self._math = SearchSearchItemTriggerALogicThresholdMath(device, f"{self._cmd_syntax}:MATH")
-        self._ref: Dict[
-            int, SearchSearchItemTriggerALogicThresholdRefItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerALogicThresholdRefItem(
-                device, f"{self._cmd_syntax}:REF{x}"
+        self._ref: Dict[int, SearchSearchItemTriggerALogicThresholdRefItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerALogicThresholdRefItem(
+                    device, f"{self._cmd_syntax}:REF{x}"
+                )
             )
         )
 
@@ -3771,11 +3772,11 @@ class SearchSearchItemTriggerALogicPatternInput(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[
-            int, SearchSearchItemTriggerALogicPatternInputChannel
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerALogicPatternInputChannel(
-                device, f"{self._cmd_syntax}:CH{x}"
+        self._ch: Dict[int, SearchSearchItemTriggerALogicPatternInputChannel] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerALogicPatternInputChannel(
+                    device, f"{self._cmd_syntax}:CH{x}"
+                )
             )
         )
 
@@ -4198,25 +4199,27 @@ class SearchSearchItemTriggerALogicInput(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[
-            int, SearchSearchItemTriggerALogicInputChannel
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerALogicInputChannel(device, f"{self._cmd_syntax}:CH{x}")
+        self._ch: Dict[int, SearchSearchItemTriggerALogicInputChannel] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerALogicInputChannel(
+                    device, f"{self._cmd_syntax}:CH{x}"
+                )
+            )
         )
         self._clock = SearchSearchItemTriggerALogicInputClock(device, f"{self._cmd_syntax}:CLOCk")
-        self._d: Dict[
-            int, SearchSearchItemTriggerALogicInputDigitalBit
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerALogicInputDigitalBit(
-                device, f"{self._cmd_syntax}:D{x}"
+        self._d: Dict[int, SearchSearchItemTriggerALogicInputDigitalBit] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerALogicInputDigitalBit(
+                    device, f"{self._cmd_syntax}:D{x}"
+                )
             )
         )
         self._math = SearchSearchItemTriggerALogicInputMath(device, f"{self._cmd_syntax}:MATH")
-        self._ref: Dict[
-            int, SearchSearchItemTriggerALogicInputRefItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerALogicInputRefItem(
-                device, f"{self._cmd_syntax}:REF{x}"
+        self._ref: Dict[int, SearchSearchItemTriggerALogicInputRefItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerALogicInputRefItem(
+                    device, f"{self._cmd_syntax}:REF{x}"
+                )
             )
         )
 

@@ -21,6 +21,7 @@ Commands and Queries:
     - PICTBridge:PAPERType {DEFLT|PLAIN|PHOTO|FASTPHOTO}
     - PICTBridge:PRINTQual {DEFLT|NRMAL|FINE|DRAFT}
 """  # noqa: E501
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

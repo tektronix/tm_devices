@@ -18,6 +18,7 @@ Commands and Queries:
     - TRIGger:SEQuence:SOURce?
     - TRIGger:SEQuence:TIMer <seconds>
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

@@ -19,6 +19,7 @@ Attributes and Functions:
     - slot[1].voltage.endchannel
     - slot[1].voltage.startchannel
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedDynamicNumberCmd

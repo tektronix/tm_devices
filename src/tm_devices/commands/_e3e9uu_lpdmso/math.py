@@ -154,6 +154,7 @@ Commands and Queries:
     - MATH:MATH<x>:USB:SUPPortedfields?
     - MATH:MATH<x>:VUNIT <QString>
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

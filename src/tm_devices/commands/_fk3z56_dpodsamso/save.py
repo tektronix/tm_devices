@@ -25,6 +25,7 @@ Commands and Queries:
     - SAVe:WAVEform:FORCESAMEFilesize {<NR1>|OFF|ON}
     - SAVe:WAVEform:FORCESAMEFilesize?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

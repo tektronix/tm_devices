@@ -1,4 +1,5 @@
 """Base Margin Tester device driver module."""
+
 import os
 import time
 

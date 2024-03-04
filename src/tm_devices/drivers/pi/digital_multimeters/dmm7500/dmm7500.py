@@ -1,4 +1,5 @@
 """Base DMM7500 device driver module."""
+
 from abc import ABC
 from typing import Tuple
 

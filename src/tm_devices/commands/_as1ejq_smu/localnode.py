@@ -26,6 +26,7 @@ Attributes and Functions:
     - localnode.serialno
     - localnode.showerrors
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

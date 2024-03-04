@@ -23,6 +23,7 @@ Commands and Queries:
     - TRIGger:WVALue {FIRSt}
     - TRIGger:WVALue?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

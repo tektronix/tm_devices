@@ -17,6 +17,7 @@ Commands and Queries:
     - IDNMultiscope:D?
     - IDNMultiscope?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead

@@ -1,4 +1,5 @@
 """A Module containing a metaclass that converts any class into a Singleton."""
+
 import warnings
 
 from typing import Any, MutableMapping

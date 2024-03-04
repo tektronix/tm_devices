@@ -4,6 +4,7 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
 Please report an issue if one is found.
 """
+
 from ._afg3k_commands import AFG3KCommandConstants, AFG3KCommands, AFG3KMixin
 from ._afg3kb_commands import AFG3KBCommandConstants, AFG3KBCommands, AFG3KBMixin
 from ._afg3kc_commands import AFG3KCCommandConstants, AFG3KCCommands, AFG3KCMixin

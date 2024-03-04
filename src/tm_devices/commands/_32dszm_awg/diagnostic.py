@@ -18,6 +18,7 @@ Commands and Queries:
     - DIAGnostic:SELect {ALL|FPANel|AREGister|DTIMing|A1Memory|A2Memory|A3Memory|A4Memory|CREGister|CPLock|O1Register|O1ALevel|O1MLevel|O2Register|O2ALevel|O2MLevel}
     - DIAGnostic:SELect?
 """  # noqa: E501
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

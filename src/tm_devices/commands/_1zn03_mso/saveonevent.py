@@ -22,6 +22,7 @@ Commands and Queries:
     - SAVEONEVent:WAVEform:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| ALL}
     - SAVEONEVent:WAVEform:SOUrce?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

@@ -510,6 +510,7 @@ Commands and Queries:
     - POWer:POWer<x>:WRAP:STATE {ON|OFF}
     - POWer:POWer<x>:WRAP:STATE?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

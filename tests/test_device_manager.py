@@ -4,6 +4,7 @@
 # pyright: reportUnknownVariableType=none
 # pyright: reportArgumentType=none
 """Tests for the device_manager.py file."""
+
 import contextlib
 import os
 import subprocess

@@ -1,4 +1,5 @@
 """An example of adding devices via Python code."""
+
 from tm_devices import DeviceManager
 from tm_devices.helpers import (
     DMConfigOptions,

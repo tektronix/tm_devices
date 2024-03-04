@@ -21,6 +21,7 @@ Commands and Queries:
     - DISPlay:WINDow:TEXT:DATA <string>
     - DISPlay:WINDow:TEXT:DATA?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

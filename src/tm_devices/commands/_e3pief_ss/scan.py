@@ -45,6 +45,7 @@ Attributes and Functions:
     - scan.trigger.sequence.set()
     - scan.trigger.sequence.stimulus
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

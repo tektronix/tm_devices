@@ -38,6 +38,7 @@ Commands and Queries:
     - ACQuire:SYNcsamples {ON | OFF}
     - ACQuire:SYNcsamples?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

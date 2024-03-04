@@ -130,6 +130,7 @@ Commands and Queries:
     - MEASUrement:STATIstics:WEIghting?
     - MEASUrement?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -1497,11 +1498,11 @@ class MeasurementMeasItemReflevelPercent(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._high = MeasurementMeasItemReflevelPercentHigh(device, f"{self._cmd_syntax}:HIGH")
         self._low = MeasurementMeasItemReflevelPercentLow(device, f"{self._cmd_syntax}:LOW")
-        self._mid: Dict[
-            int, MeasurementMeasItemReflevelPercentMidItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: MeasurementMeasItemReflevelPercentMidItem(
-                device, f"{self._cmd_syntax}:MID{x}"
+        self._mid: Dict[int, MeasurementMeasItemReflevelPercentMidItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: MeasurementMeasItemReflevelPercentMidItem(
+                    device, f"{self._cmd_syntax}:MID{x}"
+                )
             )
         )
 
@@ -1749,11 +1750,11 @@ class MeasurementMeasItemReflevelAbsolute(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._high = MeasurementMeasItemReflevelAbsoluteHigh(device, f"{self._cmd_syntax}:HIGH")
         self._low = MeasurementMeasItemReflevelAbsoluteLow(device, f"{self._cmd_syntax}:LOW")
-        self._mid: Dict[
-            int, MeasurementMeasItemReflevelAbsoluteMidItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: MeasurementMeasItemReflevelAbsoluteMidItem(
-                device, f"{self._cmd_syntax}:MID{x}"
+        self._mid: Dict[int, MeasurementMeasItemReflevelAbsoluteMidItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: MeasurementMeasItemReflevelAbsoluteMidItem(
+                    device, f"{self._cmd_syntax}:MID{x}"
+                )
             )
         )
 

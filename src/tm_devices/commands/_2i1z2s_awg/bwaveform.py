@@ -34,6 +34,7 @@ Commands and Queries:
     - BWAVeform:RESet
     - BWAVeform:SRATe <sample_rate>
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

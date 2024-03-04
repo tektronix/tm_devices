@@ -38,6 +38,7 @@ Attributes and Functions:
     - display.trigger.wait()
     - display.waitkey()
 """
+
 from typing import Dict, Optional, TYPE_CHECKING, Union
 
 from .._helpers import (

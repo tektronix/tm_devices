@@ -36,6 +36,7 @@ Attributes and Functions:
     - scan.start.stimulus
     - scan.stepcount
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

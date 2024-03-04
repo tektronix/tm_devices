@@ -1,4 +1,5 @@
 """Module containing helpers for the tm_devices package."""
+
 import contextlib
 import datetime
 import importlib.metadata

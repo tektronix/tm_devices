@@ -24,6 +24,7 @@ Commands and Queries:
     - FILESystem:WRITEFile <file path>,<data>
     - FILESystem?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

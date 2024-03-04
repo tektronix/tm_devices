@@ -28,6 +28,7 @@ Commands and Queries:
     - REF<x>:VERTical:SCAle <NR3>
     - REF<x>:VERTical:SCAle?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, ValidatedDynamicNumberCmd

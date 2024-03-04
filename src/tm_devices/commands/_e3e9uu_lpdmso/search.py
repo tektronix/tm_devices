@@ -1219,6 +1219,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:WINdow:WIDth?
     - SEARCH:SELected SEARCH1
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -3005,11 +3006,11 @@ class SearchSearchItemTriggerASetholdLogicpatternChannel(
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._d: Dict[
-            int, SearchSearchItemTriggerASetholdLogicpatternChannelDigitalBit
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerASetholdLogicpatternChannelDigitalBit(
-                device, f"{self._cmd_syntax}_D{x}"
+        self._d: Dict[int, SearchSearchItemTriggerASetholdLogicpatternChannelDigitalBit] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerASetholdLogicpatternChannelDigitalBit(
+                    device, f"{self._cmd_syntax}_D{x}"
+                )
             )
         )
 
@@ -3066,25 +3067,25 @@ class SearchSearchItemTriggerASetholdLogicpattern(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[
-            int, SearchSearchItemTriggerASetholdLogicpatternChannel
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerASetholdLogicpatternChannel(
-                device, f"{self._cmd_syntax}:CH{x}"
+        self._ch: Dict[int, SearchSearchItemTriggerASetholdLogicpatternChannel] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerASetholdLogicpatternChannel(
+                    device, f"{self._cmd_syntax}:CH{x}"
+                )
             )
         )
-        self._math: Dict[
-            int, SearchSearchItemTriggerASetholdLogicpatternMathItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerASetholdLogicpatternMathItem(
-                device, f"{self._cmd_syntax}:MATH{x}"
+        self._math: Dict[int, SearchSearchItemTriggerASetholdLogicpatternMathItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerASetholdLogicpatternMathItem(
+                    device, f"{self._cmd_syntax}:MATH{x}"
+                )
             )
         )
-        self._ref: Dict[
-            int, SearchSearchItemTriggerASetholdLogicpatternRefItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerASetholdLogicpatternRefItem(
-                device, f"{self._cmd_syntax}:REF{x}"
+        self._ref: Dict[int, SearchSearchItemTriggerASetholdLogicpatternRefItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerASetholdLogicpatternRefItem(
+                    device, f"{self._cmd_syntax}:REF{x}"
+                )
             )
         )
 
@@ -3300,25 +3301,25 @@ class SearchSearchItemTriggerASetholdLevel(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[
-            int, SearchSearchItemTriggerASetholdLevelChannel
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerASetholdLevelChannel(
-                device, f"{self._cmd_syntax}:CH{x}"
+        self._ch: Dict[int, SearchSearchItemTriggerASetholdLevelChannel] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerASetholdLevelChannel(
+                    device, f"{self._cmd_syntax}:CH{x}"
+                )
             )
         )
-        self._math: Dict[
-            int, SearchSearchItemTriggerASetholdLevelMathItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerASetholdLevelMathItem(
-                device, f"{self._cmd_syntax}:MATH{x}"
+        self._math: Dict[int, SearchSearchItemTriggerASetholdLevelMathItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerASetholdLevelMathItem(
+                    device, f"{self._cmd_syntax}:MATH{x}"
+                )
             )
         )
-        self._ref: Dict[
-            int, SearchSearchItemTriggerASetholdLevelRefItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerASetholdLevelRefItem(
-                device, f"{self._cmd_syntax}:REF{x}"
+        self._ref: Dict[int, SearchSearchItemTriggerASetholdLevelRefItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerASetholdLevelRefItem(
+                    device, f"{self._cmd_syntax}:REF{x}"
+                )
             )
         )
 
@@ -5011,11 +5012,11 @@ class SearchSearchItemTriggerALogicLogicpatternChannel(ValidatedChannel, SCPICmd
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._d: Dict[
-            int, SearchSearchItemTriggerALogicLogicpatternChannelDigitalBit
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerALogicLogicpatternChannelDigitalBit(
-                device, f"{self._cmd_syntax}_D{x}"
+        self._d: Dict[int, SearchSearchItemTriggerALogicLogicpatternChannelDigitalBit] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerALogicLogicpatternChannelDigitalBit(
+                    device, f"{self._cmd_syntax}_D{x}"
+                )
             )
         )
 
@@ -5071,25 +5072,25 @@ class SearchSearchItemTriggerALogicLogicpattern(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[
-            int, SearchSearchItemTriggerALogicLogicpatternChannel
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerALogicLogicpatternChannel(
-                device, f"{self._cmd_syntax}:CH{x}"
+        self._ch: Dict[int, SearchSearchItemTriggerALogicLogicpatternChannel] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerALogicLogicpatternChannel(
+                    device, f"{self._cmd_syntax}:CH{x}"
+                )
             )
         )
-        self._math: Dict[
-            int, SearchSearchItemTriggerALogicLogicpatternMathItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerALogicLogicpatternMathItem(
-                device, f"{self._cmd_syntax}:MATH{x}"
+        self._math: Dict[int, SearchSearchItemTriggerALogicLogicpatternMathItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerALogicLogicpatternMathItem(
+                    device, f"{self._cmd_syntax}:MATH{x}"
+                )
             )
         )
-        self._ref: Dict[
-            int, SearchSearchItemTriggerALogicLogicpatternRefItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerALogicLogicpatternRefItem(
-                device, f"{self._cmd_syntax}:REF{x}"
+        self._ref: Dict[int, SearchSearchItemTriggerALogicLogicpatternRefItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerALogicLogicpatternRefItem(
+                    device, f"{self._cmd_syntax}:REF{x}"
+                )
             )
         )
 
@@ -5302,23 +5303,25 @@ class SearchSearchItemTriggerALogicLevel(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[
-            int, SearchSearchItemTriggerALogicLevelChannel
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerALogicLevelChannel(device, f"{self._cmd_syntax}:CH{x}")
-        )
-        self._math: Dict[
-            int, SearchSearchItemTriggerALogicLevelMathItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerALogicLevelMathItem(
-                device, f"{self._cmd_syntax}:MATH{x}"
+        self._ch: Dict[int, SearchSearchItemTriggerALogicLevelChannel] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerALogicLevelChannel(
+                    device, f"{self._cmd_syntax}:CH{x}"
+                )
             )
         )
-        self._ref: Dict[
-            int, SearchSearchItemTriggerALogicLevelRefItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SearchSearchItemTriggerALogicLevelRefItem(
-                device, f"{self._cmd_syntax}:REF{x}"
+        self._math: Dict[int, SearchSearchItemTriggerALogicLevelMathItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerALogicLevelMathItem(
+                    device, f"{self._cmd_syntax}:MATH{x}"
+                )
+            )
+        )
+        self._ref: Dict[int, SearchSearchItemTriggerALogicLevelRefItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerALogicLevelRefItem(
+                    device, f"{self._cmd_syntax}:REF{x}"
+                )
             )
         )
 

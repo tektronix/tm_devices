@@ -15,6 +15,7 @@ Commands and Queries:
     - DELEte:SETUp {ALL|<NR1>}
     - DELEte:WAVEform {ALL|REF<x>}
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

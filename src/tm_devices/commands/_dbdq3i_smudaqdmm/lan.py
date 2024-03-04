@@ -17,6 +17,7 @@ Attributes and Functions:
     - lan.lxidomain
     - lan.macaddress
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

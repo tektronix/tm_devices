@@ -1,4 +1,5 @@
 """An example of external device support via a custom driver."""
+
 from tm_devices import DeviceManager
 from tm_devices.drivers import MSO5
 from tm_devices.drivers.pi.scopes.scope import Scope

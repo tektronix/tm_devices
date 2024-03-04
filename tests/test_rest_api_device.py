@@ -1,5 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Unit tests for rest_api_device.py."""
+
 from types import MappingProxyType
 from unittest import mock
 

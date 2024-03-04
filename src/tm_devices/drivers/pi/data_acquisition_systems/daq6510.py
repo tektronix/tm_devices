@@ -1,4 +1,5 @@
 """DAQ6510 device driver module."""
+
 from typing import Tuple
 
 import pyvisa as visa

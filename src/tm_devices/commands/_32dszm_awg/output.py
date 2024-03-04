@@ -16,6 +16,7 @@ Commands and Queries:
     - OUTPut[n]:STATe <output_state>
     - OUTPut[n]:STATe?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, ValidatedDynamicNumberCmd

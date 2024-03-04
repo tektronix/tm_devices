@@ -15,6 +15,7 @@ Commands and Queries:
     - SYSTem:SETup <Data Block>
     - SYSTem:SETup?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

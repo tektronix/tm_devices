@@ -1,4 +1,5 @@
 """A mixin class providing common methods and attributes for devices with usb ports."""
+
 from abc import ABC, abstractmethod
 from typing import Tuple
 

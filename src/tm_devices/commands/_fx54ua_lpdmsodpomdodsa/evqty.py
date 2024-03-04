@@ -15,6 +15,7 @@ Commands and Queries:
 
     - EVQty?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead

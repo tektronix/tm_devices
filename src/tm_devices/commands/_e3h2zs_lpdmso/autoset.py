@@ -25,6 +25,7 @@ Commands and Queries:
     - AUTOSet:VERTical:OPTIMize {RESOlution|VISIBility}
     - AUTOSet:VERTical:OPTIMize?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

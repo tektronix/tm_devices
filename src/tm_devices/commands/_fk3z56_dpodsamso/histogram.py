@@ -32,6 +32,7 @@ Commands and Queries:
     - HIStogram:STATE?
     - HIStogram?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

@@ -30,6 +30,7 @@ Attributes and Functions:
     - display.settext()
     - display.waitkey()
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

@@ -1,4 +1,5 @@
 """MSO2 device driver module."""
+
 from typing import Tuple
 
 import pyvisa as visa

@@ -15,6 +15,7 @@ Commands and Queries:
     - PCENable OFF | ON
     - PCENable?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

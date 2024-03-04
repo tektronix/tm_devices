@@ -10,6 +10,7 @@ Required equipment:
 
 Converted to Python tm_devices script. DCA 4.11.23
 """
+
 import time
 
 from typing import Dict, Tuple

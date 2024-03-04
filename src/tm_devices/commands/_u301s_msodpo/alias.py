@@ -21,6 +21,7 @@ Commands and Queries:
     - ALIas:STATE?
     - ALIas?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
