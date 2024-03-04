@@ -16,6 +16,7 @@ Commands and Queries:
     - DISPlay:WINDow2:STATe <display_state>
     - DISPlay:WINDow2:STATe?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

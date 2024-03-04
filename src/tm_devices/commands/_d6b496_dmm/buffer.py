@@ -20,6 +20,7 @@ Attributes and Functions:
     - buffer.saveappend()
     - buffer.write.format()
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

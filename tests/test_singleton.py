@@ -1,4 +1,5 @@
 """Unit tests for the decorators package."""
+
 import pytest
 
 from tm_devices.helpers import Singleton

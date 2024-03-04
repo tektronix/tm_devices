@@ -20,6 +20,7 @@ Commands and Queries:
     - VERTical:DESKew:TO:SOUrce CH<x>
     - VERTical:DESKew:TO:SOUrce?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

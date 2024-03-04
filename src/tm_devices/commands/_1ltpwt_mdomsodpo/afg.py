@@ -60,6 +60,7 @@ Commands and Queries:
     - AFG:SQUare:DUty <NR3>
     - AFG:SQUare:DUty?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

@@ -63,6 +63,7 @@ Commands and Queries:
     - HISTogram:HISTogram<x>:TRANsparency?
     - HISTogram:LIST?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

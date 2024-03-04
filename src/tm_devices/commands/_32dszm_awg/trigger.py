@@ -29,6 +29,7 @@ Commands and Queries:
     - TRIGger:SEQuence:WVALue {FIRSt|LAST}
     - TRIGger:SEQuence:WVALue?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

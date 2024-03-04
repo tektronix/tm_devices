@@ -17,6 +17,7 @@ Commands and Queries:
     - PEAKSTABle:TABle<x>:FRESolution {AUTO|PRECISE}
     - PEAKSTABle:TABle<x>:FRESolution?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

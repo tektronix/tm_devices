@@ -3,6 +3,7 @@
 These environment variables are settable outside Python code, usually they are set in the shell used
 to execute the Python script.
 """
+
 import os
 
 from tm_devices import DeviceManager

@@ -14,6 +14,7 @@ Commands and Queries:
 
     - SETUp:NAMe <NR1>,<QString>? <NR1>
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

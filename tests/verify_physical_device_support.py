@@ -4,6 +4,7 @@ Any devices that need to be verified must be defined in a file called "verify_de
 in the same folder as this module. See the configuration documentation for details on the file
 format.
 """
+
 import os
 
 from pathlib import Path

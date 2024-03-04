@@ -27,6 +27,7 @@ Commands and Queries:
     - DATa:WIDth?
     - DATa?
 """  # noqa: E501
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

@@ -4,6 +4,7 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
 Please report an issue if one is found.
 """
+
 from typing import Any, Dict, Optional, TYPE_CHECKING
 
 from .generic_commands import BaseCmd

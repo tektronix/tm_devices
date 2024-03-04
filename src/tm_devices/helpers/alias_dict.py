@@ -1,4 +1,5 @@
 """A Module containing a custom dictionary class that works with alias keys."""
+
 import sys
 
 from typing import Any, Dict, MutableMapping, Type

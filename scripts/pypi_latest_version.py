@@ -1,4 +1,5 @@
 """Get the latest version from the index server."""
+
 import argparse
 import json
 

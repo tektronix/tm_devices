@@ -25,6 +25,7 @@ Commands and Queries:
     - SELect:REF<x> {ON|OFF|<NR1>}
     - SELect:REF<x>?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

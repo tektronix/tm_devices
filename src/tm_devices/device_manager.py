@@ -1,5 +1,6 @@
 # pylint: disable=too-many-lines
 """Device manager module."""
+
 from __future__ import annotations
 
 import contextlib

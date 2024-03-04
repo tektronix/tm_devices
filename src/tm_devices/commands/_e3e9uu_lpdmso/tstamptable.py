@@ -15,6 +15,7 @@ Commands and Queries:
     - TSTamptable:DELETE <Qstring>
     - TSTamptable:LIST?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

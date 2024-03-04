@@ -22,6 +22,7 @@ Commands and Queries:
     - DIAg:SELect {ALL|APPKey|CPU|DISplay|FPAnel|IO|ROM|ACQ|RF|AFG}
     - DIAg:STATE {EXECute|ABORt}
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

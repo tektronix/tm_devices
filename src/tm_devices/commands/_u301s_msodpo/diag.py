@@ -29,6 +29,7 @@ Commands and Queries:
     - DIAg:SELect:ROM
     - DIAg:STATE {EXECute|ABORt}
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

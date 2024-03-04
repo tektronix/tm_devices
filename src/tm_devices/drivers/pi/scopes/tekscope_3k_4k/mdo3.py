@@ -1,4 +1,5 @@
 """MDO3 device driver module."""
+
 import pyvisa as visa
 
 from tm_devices.commands import MDO3Mixin

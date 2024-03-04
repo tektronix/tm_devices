@@ -1,4 +1,5 @@
 """This script modifies or gets the current project version in the pyproject.toml file."""
+
 import argparse
 import pathlib
 

@@ -16,6 +16,7 @@ Commands and Queries:
     - MATHArbflt<x>:FILepath?
     - MATHArbflt<x>:READFile FORCe
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, ValidatedDynamicNumberCmd

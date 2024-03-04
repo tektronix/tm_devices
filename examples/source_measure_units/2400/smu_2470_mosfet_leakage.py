@@ -4,6 +4,7 @@ It does this by sourcing 600 V and measuring the resulting leakage current. The 
 trigger model template applies the voltage for 60 seconds and makes measurements at 200 ms
 intervals.
 """
+
 from typing import List
 
 from tm_devices import DeviceManager

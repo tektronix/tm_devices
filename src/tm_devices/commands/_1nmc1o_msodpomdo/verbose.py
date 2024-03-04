@@ -13,6 +13,7 @@ Commands and Queries:
 
     - VERBose {OFF|ON|<NR1>}
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdWrite

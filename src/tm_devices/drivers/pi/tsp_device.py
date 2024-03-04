@@ -1,4 +1,5 @@
 """Base Test Script Processing (TSP) device driver module."""
+
 from __future__ import annotations
 
 from abc import ABC

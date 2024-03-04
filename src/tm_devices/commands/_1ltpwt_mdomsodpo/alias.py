@@ -18,6 +18,7 @@ Commands and Queries:
     - ALIas:STATE {<NR1>|OFF|ON}
     - ALIas:STATE?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

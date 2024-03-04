@@ -28,6 +28,7 @@ Commands and Queries:
     - DCH<x>_D<x>:THReshold <NR3>
     - DCH<x>_D<x>:THReshold?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

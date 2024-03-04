@@ -1,4 +1,5 @@
 """Helper functions for adding to previously generated stub files."""
+
 import inspect
 import os
 import re

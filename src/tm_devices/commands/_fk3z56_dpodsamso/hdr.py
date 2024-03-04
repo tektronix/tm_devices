@@ -15,6 +15,7 @@ Commands and Queries:
     - HDR {<NR1>|OFF|ON}
     - HDR?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

@@ -1,4 +1,5 @@
 """AFG package init file."""
+
 from tm_devices.drivers.pi.signal_sources.afgs.afg import AFG
 from tm_devices.drivers.pi.signal_sources.afgs.afg3k import AFG3K
 from tm_devices.drivers.pi.signal_sources.afgs.afg3kb import AFG3KB

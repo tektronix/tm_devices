@@ -18,6 +18,7 @@ Commands and Queries:
     - TEST:STOP
     - TEST?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

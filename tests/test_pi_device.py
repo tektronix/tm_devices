@@ -1,5 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Test generic PIDevice functionality."""
+
 from unittest import mock
 
 import pytest

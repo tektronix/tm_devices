@@ -202,6 +202,7 @@ Commands and Queries:
     - BUS:REF<x>:THRESHold <NR3>
     - BUS:REF<x>:THRESHold?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

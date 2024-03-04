@@ -20,6 +20,7 @@ Commands and Queries:
     - LOCk:TOUCHscreen {LOCKed|UNLOCKed}
     - LOCk:TOUCHscreen?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

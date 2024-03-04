@@ -3,6 +3,7 @@
 This script will update the development dependencies that are pinned in the pyproject.toml and .pre-
 commit-config.yaml files.
 """
+
 import argparse
 import shlex
 import subprocess

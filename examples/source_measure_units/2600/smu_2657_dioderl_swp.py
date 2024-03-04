@@ -1,4 +1,5 @@
 """Linear voltage sweep to measure the reverse leakage of a diode."""
+
 import math
 
 from time import sleep

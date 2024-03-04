@@ -1,4 +1,5 @@
 """An example of adding dpojet measurements and plots."""
+
 from tm_devices import DeviceManager
 from tm_devices.drivers import MSO70KDX
 from tm_devices.helpers import PYVISA_PY_BACKEND

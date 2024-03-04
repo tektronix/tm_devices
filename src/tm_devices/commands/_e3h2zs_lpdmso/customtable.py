@@ -15,6 +15,7 @@ Commands and Queries:
     - CUSTOMTABle:DELete <Qstring>
     - CUSTOMTABle:LIST? <Qstring>
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite

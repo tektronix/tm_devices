@@ -1,5 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Verify that all device drivers and connection types can be used."""
+
 from collections import Counter
 from typing import List
 

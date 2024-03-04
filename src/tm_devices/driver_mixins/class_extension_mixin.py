@@ -1,5 +1,6 @@
 # pyright: reportInvalidTypeVarUse=none
 """A mixin class providing class methods for expanding a class with decorators."""
+
 from functools import cached_property, wraps
 from typing import Callable, Optional, overload, Type, TypeVar, Union
 
@@ -53,8 +54,7 @@ class ExtendableMixin:
     def add_property(
         cls: Type[_EM],
         method: Callable[Concatenate[_EM, _P], _T],
-    ) -> None:
-        ...  # pragma: no cover
+    ) -> None: ...  # pragma: no cover
 
     @classmethod
     @overload
@@ -64,8 +64,7 @@ class ExtendableMixin:
         /,
         *,
         is_cached: bool = False,
-    ) -> Callable[[Callable[Concatenate[_EM, _P], _T]], None]:
-        ...  # pragma: no cover
+    ) -> Callable[[Callable[Concatenate[_EM, _P], _T]], None]: ...  # pragma: no cover
 
     @classmethod
     def add_property(  # pyright: ignore[reportInconsistentOverload]

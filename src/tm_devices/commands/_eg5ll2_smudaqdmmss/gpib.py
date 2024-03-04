@@ -16,6 +16,7 @@ Attributes and Functions:
 
     - gpib.address
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

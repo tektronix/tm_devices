@@ -23,6 +23,7 @@ Attributes and Functions:
     - buffer.write.format()
     - buffer.write.reading()
 """
+
 from typing import Any, Dict, Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

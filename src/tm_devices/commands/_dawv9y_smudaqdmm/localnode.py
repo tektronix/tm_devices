@@ -25,6 +25,7 @@ Attributes and Functions:
     - localnode.showevents
     - localnode.version
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

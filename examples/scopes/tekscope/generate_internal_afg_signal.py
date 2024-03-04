@@ -1,4 +1,5 @@
 """An example showing how to generate a signal using the scope's internal AFG."""
+
 from tm_devices import DeviceManager
 from tm_devices.drivers import MSO5
 

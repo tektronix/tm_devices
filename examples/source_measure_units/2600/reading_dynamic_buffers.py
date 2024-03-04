@@ -1,4 +1,5 @@
 """An example of creating and reading from a dynamic buffer."""
+
 from tm_devices import DeviceManager
 from tm_devices.drivers import SMU2601B
 

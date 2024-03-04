@@ -2,6 +2,7 @@
 
 This script creates pulses on the model 2461.
 """
+
 from time import sleep
 
 from tm_devices import DeviceManager

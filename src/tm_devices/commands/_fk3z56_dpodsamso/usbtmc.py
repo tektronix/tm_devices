@@ -18,6 +18,7 @@ Commands and Queries:
     - USBTMC:VENDORID:DECimal?
     - USBTMC:VENDORID:HEXadecimal?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead

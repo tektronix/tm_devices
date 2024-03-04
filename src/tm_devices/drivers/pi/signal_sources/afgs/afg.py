@@ -1,4 +1,5 @@
 """Base AFG device driver module."""
+
 import re
 
 from abc import ABC

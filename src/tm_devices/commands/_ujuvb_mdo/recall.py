@@ -16,6 +16,7 @@ Commands and Queries:
     - RECAll:SETUp:DEMO3<x>
     - RECAll:WAVEform <Source>, <Destination>
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

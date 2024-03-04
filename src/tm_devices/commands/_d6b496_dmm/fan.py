@@ -15,6 +15,7 @@ Attributes and Functions:
 
     - fan.level
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

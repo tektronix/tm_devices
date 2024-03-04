@@ -28,6 +28,7 @@ Commands and Queries:
     - SAVEON:WAVEform:SOURce?
     - SAVEON:WAVEform?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

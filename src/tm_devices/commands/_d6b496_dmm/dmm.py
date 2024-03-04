@@ -99,6 +99,7 @@ Attributes and Functions:
     - dmm.trigger.digitize.stimulus
     - dmm.trigger.measure.stimulus
 """
+
 from typing import Dict, Optional, TYPE_CHECKING, Union
 
 from .._helpers import (

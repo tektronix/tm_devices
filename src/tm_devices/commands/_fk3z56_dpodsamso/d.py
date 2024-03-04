@@ -21,6 +21,7 @@ Commands and Queries:
     - D<x>:THRESHold <NR3>
     - D<x>:THRESHold?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, ValidatedDigitalBit

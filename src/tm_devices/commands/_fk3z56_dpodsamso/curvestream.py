@@ -15,6 +15,7 @@ Commands and Queries:
     - CURVEStream {<Block>|<asc curve>}
     - CURVEStream?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

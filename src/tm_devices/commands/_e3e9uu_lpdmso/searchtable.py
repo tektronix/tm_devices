@@ -15,6 +15,7 @@ Commands and Queries:
     - SEARCHTABle:DELete <qstring>
     - SEARCHTABle:list?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

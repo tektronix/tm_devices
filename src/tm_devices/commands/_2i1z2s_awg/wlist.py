@@ -126,6 +126,7 @@ Commands and Queries:
     - WLISt:WAVeform:TSTamp? <wfm_name>
     - WLISt:WAVeform:TYPE? <wfm_name>
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -2226,11 +2227,11 @@ class WlistSparameterNcascading(SCPICmdRead):
         self._aggressor2 = WlistSparameterNcascadingAggressor2(
             device, f"{self._cmd_syntax}:AGGRessor2"
         )
-        self._aggressor: Dict[
-            int, WlistSparameterNcascadingAggressorItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: WlistSparameterNcascadingAggressorItem(
-                device, f"{self._cmd_syntax}:AGGRessor{x}"
+        self._aggressor: Dict[int, WlistSparameterNcascadingAggressorItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: WlistSparameterNcascadingAggressorItem(
+                    device, f"{self._cmd_syntax}:AGGRessor{x}"
+                )
             )
         )
         self._deembed = WlistSparameterNcascadingDeembed(device, f"{self._cmd_syntax}:DEEMbed")
@@ -2809,15 +2810,19 @@ class WlistSparameterCascadingStageItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._drx: Dict[
-            int, WlistSparameterCascadingStageItemDrxItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: WlistSparameterCascadingStageItemDrxItem(device, f"{self._cmd_syntax}:DRX{x}")
+        self._drx: Dict[int, WlistSparameterCascadingStageItemDrxItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: WlistSparameterCascadingStageItemDrxItem(
+                    device, f"{self._cmd_syntax}:DRX{x}"
+                )
+            )
         )
-        self._dtx: Dict[
-            int, WlistSparameterCascadingStageItemDtxItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: WlistSparameterCascadingStageItemDtxItem(device, f"{self._cmd_syntax}:DTX{x}")
+        self._dtx: Dict[int, WlistSparameterCascadingStageItemDtxItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: WlistSparameterCascadingStageItemDtxItem(
+                    device, f"{self._cmd_syntax}:DTX{x}"
+                )
+            )
         )
         self._enable = WlistSparameterCascadingStageItemEnable(device, f"{self._cmd_syntax}:ENABle")
         self._file = WlistSparameterCascadingStageItemFile(device, f"{self._cmd_syntax}:FILE")
@@ -3480,11 +3485,11 @@ class WlistSparameterCascading(SCPICmdRead):
         self._aggressor2 = WlistSparameterCascadingAggressor2(
             device, f"{self._cmd_syntax}:AGGRessor2"
         )
-        self._aggressor: Dict[
-            int, WlistSparameterCascadingAggressorItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: WlistSparameterCascadingAggressorItem(
-                device, f"{self._cmd_syntax}:AGGRessor{x}"
+        self._aggressor: Dict[int, WlistSparameterCascadingAggressorItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: WlistSparameterCascadingAggressorItem(
+                    device, f"{self._cmd_syntax}:AGGRessor{x}"
+                )
             )
         )
         self._deembed = WlistSparameterCascadingDeembed(device, f"{self._cmd_syntax}:DEEMbed")

@@ -35,6 +35,7 @@ Commands and Queries:
     - MARKER:TYPe {DELTa|ABSolute}
     - MARKER:TYPe?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

@@ -1,4 +1,5 @@
 """An example of alias usage."""
+
 from tm_devices import DeviceManager
 
 with DeviceManager(verbose=True) as dm:

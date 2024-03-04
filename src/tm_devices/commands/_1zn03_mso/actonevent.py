@@ -67,6 +67,7 @@ Commands and Queries:
     - ACTONEVent:TRIGger:ACTION:STOPACQ:STATE {ON|OFF|<NR1>}
     - ACTONEVent:TRIGger:ACTION:STOPACQ:STATE?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

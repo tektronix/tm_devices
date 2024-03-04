@@ -17,6 +17,7 @@ Attributes and Functions:
     - timer.measure.t()
     - timer.reset()
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

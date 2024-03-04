@@ -48,6 +48,7 @@ Commands and Queries:
     - DIAg:STATE?
     - DIAg:STOP
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite, SCPICmdWriteNoArguments

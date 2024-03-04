@@ -47,6 +47,7 @@ Commands and Queries:
     - WFMInpre:YZEro?
     - WFMInpre?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

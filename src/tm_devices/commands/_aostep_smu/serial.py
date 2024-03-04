@@ -21,6 +21,7 @@ Attributes and Functions:
     - serial.read()
     - serial.write()
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

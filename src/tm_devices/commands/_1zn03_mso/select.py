@@ -16,6 +16,7 @@ Commands and Queries:
     - SELect:DCH<x>:DAll {ON|OFF|<NR1>}
     - SELect:DCH<x>:DAll?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

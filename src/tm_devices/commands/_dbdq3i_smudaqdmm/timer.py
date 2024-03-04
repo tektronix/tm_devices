@@ -16,6 +16,7 @@ Attributes and Functions:
     - timer.cleartime()
     - timer.gettime()
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

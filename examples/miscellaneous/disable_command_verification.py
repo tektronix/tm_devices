@@ -1,4 +1,5 @@
 """An example showing how to disable the verification portion of the ``.set_and_check()`` method."""
+
 from tm_devices import DeviceManager
 from tm_devices.drivers import MSO5, SMU2601B
 

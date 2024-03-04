@@ -25,6 +25,7 @@ Commands and Queries:
     - WLISt:WAVeform:TSTamp? <wfm_name>
     - WLISt:WAVeform:TYPE? <wfm_name>
 """  # noqa: E501
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite

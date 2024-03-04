@@ -13,6 +13,7 @@ Commands and Queries:
 
     - CLEAR
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdWriteNoArguments

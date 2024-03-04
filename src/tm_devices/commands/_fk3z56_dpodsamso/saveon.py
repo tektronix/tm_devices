@@ -41,6 +41,7 @@ Commands and Queries:
     - SAVEON:WAVEform {<NR1>|ON|OFF}
     - SAVEON:WAVEform?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

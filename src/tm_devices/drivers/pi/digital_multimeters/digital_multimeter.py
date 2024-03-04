@@ -1,4 +1,5 @@
 """Base Digital Multimeter (DMM) device driver module."""
+
 import inspect
 
 from abc import ABC

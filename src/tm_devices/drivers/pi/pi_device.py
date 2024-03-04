@@ -1,5 +1,6 @@
 # pyright: reportUnnecessaryTypeIgnoreComment=none
 """Base Programmable Interface (PI) device driver module."""
+
 import inspect
 import os
 import socket

@@ -51,6 +51,7 @@ Commands and Queries:
     - VISual:FILE:SAVE <string>
     - VISual?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

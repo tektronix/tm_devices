@@ -101,6 +101,7 @@ Commands and Queries:
     - ZOOm:ZOOM1?
     - ZOOm?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

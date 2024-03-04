@@ -133,6 +133,7 @@ Commands and Queries:
     - HORizontal:TIMEStamp:REF<x>?
     - HORizontal?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -1680,32 +1681,32 @@ class HorizontalFastframeTimestampSelected(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[
-            int, HorizontalFastframeTimestampSelectedChannel
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeTimestampSelectedChannel(
-                device, f"{self._cmd_syntax}:CH{x}"
+        self._ch: Dict[int, HorizontalFastframeTimestampSelectedChannel] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeTimestampSelectedChannel(
+                    device, f"{self._cmd_syntax}:CH{x}"
+                )
             )
         )
-        self._math: Dict[
-            int, HorizontalFastframeTimestampSelectedMathItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeTimestampSelectedMathItem(
-                device, f"{self._cmd_syntax}:MATH{x}"
+        self._math: Dict[int, HorizontalFastframeTimestampSelectedMathItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeTimestampSelectedMathItem(
+                    device, f"{self._cmd_syntax}:MATH{x}"
+                )
             )
         )
-        self._ref: Dict[
-            int, HorizontalFastframeTimestampSelectedRefItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeTimestampSelectedRefItem(
-                device, f"{self._cmd_syntax}:REF{x}"
+        self._ref: Dict[int, HorizontalFastframeTimestampSelectedRefItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeTimestampSelectedRefItem(
+                    device, f"{self._cmd_syntax}:REF{x}"
+                )
             )
         )
-        self._d: Dict[
-            int, HorizontalFastframeTimestampSelectedDigitalBit
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeTimestampSelectedDigitalBit(
-                device, f"{self._cmd_syntax}:D{x}"
+        self._d: Dict[int, HorizontalFastframeTimestampSelectedDigitalBit] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeTimestampSelectedDigitalBit(
+                    device, f"{self._cmd_syntax}:D{x}"
+                )
             )
         )
 
@@ -1964,23 +1965,25 @@ class HorizontalFastframeTimestampFrame(SCPICmdRead):
         self._ch: Dict[int, HorizontalFastframeTimestampFrameChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampFrameChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._math: Dict[
-            int, HorizontalFastframeTimestampFrameMathItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeTimestampFrameMathItem(
-                device, f"{self._cmd_syntax}:MATH{x}"
+        self._math: Dict[int, HorizontalFastframeTimestampFrameMathItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeTimestampFrameMathItem(
+                    device, f"{self._cmd_syntax}:MATH{x}"
+                )
             )
         )
-        self._ref: Dict[
-            int, HorizontalFastframeTimestampFrameRefItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeTimestampFrameRefItem(device, f"{self._cmd_syntax}:REF{x}")
+        self._ref: Dict[int, HorizontalFastframeTimestampFrameRefItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeTimestampFrameRefItem(
+                    device, f"{self._cmd_syntax}:REF{x}"
+                )
+            )
         )
-        self._d: Dict[
-            int, HorizontalFastframeTimestampFrameDigitalBit
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeTimestampFrameDigitalBit(
-                device, f"{self._cmd_syntax}:D{x}"
+        self._d: Dict[int, HorizontalFastframeTimestampFrameDigitalBit] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeTimestampFrameDigitalBit(
+                    device, f"{self._cmd_syntax}:D{x}"
+                )
             )
         )
 
@@ -2219,23 +2222,25 @@ class HorizontalFastframeTimestampDelta(SCPICmdRead):
         self._ch: Dict[int, HorizontalFastframeTimestampDeltaChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampDeltaChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._math: Dict[
-            int, HorizontalFastframeTimestampDeltaMathItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeTimestampDeltaMathItem(
-                device, f"{self._cmd_syntax}:MATH{x}"
+        self._math: Dict[int, HorizontalFastframeTimestampDeltaMathItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeTimestampDeltaMathItem(
+                    device, f"{self._cmd_syntax}:MATH{x}"
+                )
             )
         )
-        self._ref: Dict[
-            int, HorizontalFastframeTimestampDeltaRefItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeTimestampDeltaRefItem(device, f"{self._cmd_syntax}:REF{x}")
+        self._ref: Dict[int, HorizontalFastframeTimestampDeltaRefItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeTimestampDeltaRefItem(
+                    device, f"{self._cmd_syntax}:REF{x}"
+                )
+            )
         )
-        self._d: Dict[
-            int, HorizontalFastframeTimestampDeltaDigitalBit
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeTimestampDeltaDigitalBit(
-                device, f"{self._cmd_syntax}:D{x}"
+        self._d: Dict[int, HorizontalFastframeTimestampDeltaDigitalBit] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeTimestampDeltaDigitalBit(
+                    device, f"{self._cmd_syntax}:D{x}"
+                )
             )
         )
 
@@ -2471,32 +2476,32 @@ class HorizontalFastframeTimestampBetween(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[
-            int, HorizontalFastframeTimestampBetweenChannel
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeTimestampBetweenChannel(
-                device, f"{self._cmd_syntax}:CH{x}"
+        self._ch: Dict[int, HorizontalFastframeTimestampBetweenChannel] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeTimestampBetweenChannel(
+                    device, f"{self._cmd_syntax}:CH{x}"
+                )
             )
         )
-        self._math: Dict[
-            int, HorizontalFastframeTimestampBetweenMathItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeTimestampBetweenMathItem(
-                device, f"{self._cmd_syntax}:MATH{x}"
+        self._math: Dict[int, HorizontalFastframeTimestampBetweenMathItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeTimestampBetweenMathItem(
+                    device, f"{self._cmd_syntax}:MATH{x}"
+                )
             )
         )
-        self._ref: Dict[
-            int, HorizontalFastframeTimestampBetweenRefItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeTimestampBetweenRefItem(
-                device, f"{self._cmd_syntax}:REF{x}"
+        self._ref: Dict[int, HorizontalFastframeTimestampBetweenRefItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeTimestampBetweenRefItem(
+                    device, f"{self._cmd_syntax}:REF{x}"
+                )
             )
         )
-        self._d: Dict[
-            int, HorizontalFastframeTimestampBetweenDigitalBit
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeTimestampBetweenDigitalBit(
-                device, f"{self._cmd_syntax}:D{x}"
+        self._d: Dict[int, HorizontalFastframeTimestampBetweenDigitalBit] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeTimestampBetweenDigitalBit(
+                    device, f"{self._cmd_syntax}:D{x}"
+                )
             )
         )
 
@@ -2733,10 +2738,12 @@ class HorizontalFastframeTimestampAll(SCPICmdRead):
         self._ch: Dict[int, HorizontalFastframeTimestampAllChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampAllChannel(device, f"{self._cmd_syntax}:CH{x}")
         )
-        self._math: Dict[
-            int, HorizontalFastframeTimestampAllMathItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeTimestampAllMathItem(device, f"{self._cmd_syntax}:MATH{x}")
+        self._math: Dict[int, HorizontalFastframeTimestampAllMathItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeTimestampAllMathItem(
+                    device, f"{self._cmd_syntax}:MATH{x}"
+                )
+            )
         )
         self._ref: Dict[int, HorizontalFastframeTimestampAllRefItem] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampAllRefItem(device, f"{self._cmd_syntax}:REF{x}")
@@ -3690,32 +3697,32 @@ class HorizontalFastframeMultipleframesNumframes(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[
-            int, HorizontalFastframeMultipleframesNumframesChannel
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeMultipleframesNumframesChannel(
-                device, f"{self._cmd_syntax}:CH{x}"
+        self._ch: Dict[int, HorizontalFastframeMultipleframesNumframesChannel] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeMultipleframesNumframesChannel(
+                    device, f"{self._cmd_syntax}:CH{x}"
+                )
             )
         )
-        self._math: Dict[
-            int, HorizontalFastframeMultipleframesNumframesMathItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeMultipleframesNumframesMathItem(
-                device, f"{self._cmd_syntax}:MATH{x}"
+        self._math: Dict[int, HorizontalFastframeMultipleframesNumframesMathItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeMultipleframesNumframesMathItem(
+                    device, f"{self._cmd_syntax}:MATH{x}"
+                )
             )
         )
-        self._ref: Dict[
-            int, HorizontalFastframeMultipleframesNumframesRefItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeMultipleframesNumframesRefItem(
-                device, f"{self._cmd_syntax}:REF{x}"
+        self._ref: Dict[int, HorizontalFastframeMultipleframesNumframesRefItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeMultipleframesNumframesRefItem(
+                    device, f"{self._cmd_syntax}:REF{x}"
+                )
             )
         )
-        self._d: Dict[
-            int, HorizontalFastframeMultipleframesNumframesDigitalBit
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeMultipleframesNumframesDigitalBit(
-                device, f"{self._cmd_syntax}:D{x}"
+        self._d: Dict[int, HorizontalFastframeMultipleframesNumframesDigitalBit] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeMultipleframesNumframesDigitalBit(
+                    device, f"{self._cmd_syntax}:D{x}"
+                )
             )
         )
 
@@ -4020,32 +4027,32 @@ class HorizontalFastframeMultipleframesFramestart(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[
-            int, HorizontalFastframeMultipleframesFramestartChannel
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeMultipleframesFramestartChannel(
-                device, f"{self._cmd_syntax}:CH{x}"
+        self._ch: Dict[int, HorizontalFastframeMultipleframesFramestartChannel] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeMultipleframesFramestartChannel(
+                    device, f"{self._cmd_syntax}:CH{x}"
+                )
             )
         )
-        self._math: Dict[
-            int, HorizontalFastframeMultipleframesFramestartMathItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeMultipleframesFramestartMathItem(
-                device, f"{self._cmd_syntax}:MATH{x}"
+        self._math: Dict[int, HorizontalFastframeMultipleframesFramestartMathItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeMultipleframesFramestartMathItem(
+                    device, f"{self._cmd_syntax}:MATH{x}"
+                )
             )
         )
-        self._ref: Dict[
-            int, HorizontalFastframeMultipleframesFramestartRefItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeMultipleframesFramestartRefItem(
-                device, f"{self._cmd_syntax}:REF{x}"
+        self._ref: Dict[int, HorizontalFastframeMultipleframesFramestartRefItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeMultipleframesFramestartRefItem(
+                    device, f"{self._cmd_syntax}:REF{x}"
+                )
             )
         )
-        self._d: Dict[
-            int, HorizontalFastframeMultipleframesFramestartDigitalBit
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: HorizontalFastframeMultipleframesFramestartDigitalBit(
-                device, f"{self._cmd_syntax}:D{x}"
+        self._d: Dict[int, HorizontalFastframeMultipleframesFramestartDigitalBit] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: HorizontalFastframeMultipleframesFramestartDigitalBit(
+                    device, f"{self._cmd_syntax}:D{x}"
+                )
             )
         )
 

@@ -1,4 +1,5 @@
 """Base AWG device driver module."""
+
 import inspect
 import struct
 

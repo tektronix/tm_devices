@@ -16,6 +16,7 @@ Commands and Queries:
     - SYNChronize:TYPE {MASTer|SLAVe}
     - SYNChronize:TYPE?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

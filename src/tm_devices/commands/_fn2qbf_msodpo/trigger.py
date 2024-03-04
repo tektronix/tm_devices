@@ -982,6 +982,7 @@ Commands and Queries:
     - TRIGger:STATE?
     - TRIGger?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -8269,10 +8270,12 @@ class TriggerBLogicSetholdClockThreshold(SCPICmdWrite, SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[
-            int, TriggerBLogicSetholdClockThresholdChannel
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: TriggerBLogicSetholdClockThresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
+        self._ch: Dict[int, TriggerBLogicSetholdClockThresholdChannel] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: TriggerBLogicSetholdClockThresholdChannel(
+                    device, f"{self._cmd_syntax}:CH{x}"
+                )
+            )
         )
 
     @property
@@ -19422,10 +19425,12 @@ class TriggerALogicSetholdClockThreshold(SCPICmdWrite, SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._ch: Dict[
-            int, TriggerALogicSetholdClockThresholdChannel
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: TriggerALogicSetholdClockThresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
+        self._ch: Dict[int, TriggerALogicSetholdClockThresholdChannel] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: TriggerALogicSetholdClockThresholdChannel(
+                    device, f"{self._cmd_syntax}:CH{x}"
+                )
+            )
         )
 
     @property
@@ -27074,11 +27079,11 @@ class TriggerABusS8b10bPatternSymbol(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._minus: Dict[
-            int, TriggerABusS8b10bPatternSymbolMinusItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: TriggerABusS8b10bPatternSymbolMinusItem(
-                device, f"{self._cmd_syntax}:MINus{x}"
+        self._minus: Dict[int, TriggerABusS8b10bPatternSymbolMinusItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: TriggerABusS8b10bPatternSymbolMinusItem(
+                    device, f"{self._cmd_syntax}:MINus{x}"
+                )
             )
         )
         self._plus: Dict[int, TriggerABusS8b10bPatternSymbolPlusItem] = DefaultDictPassKeyToFactory(

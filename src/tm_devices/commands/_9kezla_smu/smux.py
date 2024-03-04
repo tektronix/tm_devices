@@ -115,6 +115,7 @@ Attributes and Functions:
     - smuX.trigger.source.set()
     - smuX.trigger.source.stimulus
 """
+
 from typing import Any, Dict, Optional, Sequence, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedChannel

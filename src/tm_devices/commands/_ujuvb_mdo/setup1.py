@@ -15,6 +15,7 @@ Commands and Queries:
     - SETUP1<x>:LABel <Qstring>
     - SETUP1<x>:TIMe?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, ValidatedDynamicNumberCmd

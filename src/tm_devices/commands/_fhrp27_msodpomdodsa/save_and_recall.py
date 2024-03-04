@@ -16,6 +16,7 @@ Commands and Queries:
     - *RCL <NR1>
     - *SAV <NR1>
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdWrite

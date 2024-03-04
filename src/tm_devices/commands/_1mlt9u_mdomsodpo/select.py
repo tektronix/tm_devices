@@ -46,6 +46,7 @@ Commands and Queries:
     - SELect:RF_PHASe?
     - SELect?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

@@ -28,6 +28,7 @@ Commands and Queries:
     - DVM:TRIGger:FREQuency:COUNTer {0|1|OFF|ON}
     - DVM:TRIGger:FREQuency:COUNTer?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

@@ -18,6 +18,7 @@ Commands and Queries:
     - CUSTOM:GATE<x>:WIDth <NR3>
     - CUSTOM:SELECT:GATE<x> {1 | 0 | ON | OFF}
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

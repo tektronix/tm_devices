@@ -5,6 +5,7 @@ It will exit with a non-zero exit code if there are no unreleased entries.
 It will also copy the necessary files into the template directory to properly render the CHANGELOG
 and Release Notes.
 """
+
 import pathlib
 import re
 import shutil
