@@ -308,6 +308,6 @@ def display_results(sep: str = "\t") -> None:
 
 # Connect to instrument and begin testing.
 with DeviceManager(verbose=False) as DM:
-    smu_driver: SMU2602B = DM.add_smu(RESOURCE_ID)  # pyright: ignore[reportAssignmentType]
+    smu_driver: SMU2602B = DM.add_smu(RESOURCE_ID)
 
     bjt_slow(smu_driver)
