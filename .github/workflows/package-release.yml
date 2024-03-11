@@ -98,7 +98,7 @@ jobs:
           name: Packages
           path: dist
       - name: Upload package to Test PyPI
-        uses: pypa/gh-action-pypi-publish@v1.8.12
+        uses: pypa/gh-action-pypi-publish@v1.8.14
         with:
           repository-url: https://test.pypi.org/legacy/
   upload-pypi:
@@ -116,7 +116,7 @@ jobs:
           name: Packages
           path: dist
       - name: Upload package to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.8.12
+        uses: pypa/gh-action-pypi-publish@v1.8.14
   upload-github:
     name: Upload package to GitHub Release
     needs: [upload-pypi]
