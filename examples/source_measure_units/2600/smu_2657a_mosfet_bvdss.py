@@ -34,8 +34,8 @@ MEAS_DELAY = 0.01
 
 with DeviceManager(verbose=False) as DM:
     # Replace the SMU2636B class with the instrument you are using for this test.
-    smu2657a: SMU2657A = DM.add_smu(SMU1_ID)  # pyright: ignore[reportAssignmentType]
-    smu26xx: SMU2636B = DM.add_smu(SMU2_ID)  # pyright: ignore[reportAssignmentType]
+    smu2657a: SMU2657A = DM.add_smu(SMU1_ID)
+    smu26xx: SMU2636B = DM.add_smu(SMU2_ID)
 
     smua1 = smu2657a.commands.smu["a"]
     smua2 = smu26xx.commands.smu["a"]
