@@ -26,7 +26,7 @@ POINTS = 115
 S_DELAY = 0.05
 
 with DeviceManager(verbose=False) as dm:
-    inst: SMU2460 = dm.add_smu(RESOURCE_ID)  # pyright: ignore[reportAssignmentType]
+    inst: SMU2460 = dm.add_smu(RESOURCE_ID)
 
     # Reset the Model 2460 and clear its buffer.
     inst.commands.reset()

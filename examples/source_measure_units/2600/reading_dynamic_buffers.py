@@ -5,7 +5,7 @@ from tm_devices.drivers import SMU2601B
 
 with DeviceManager() as device_manager:
     # Create a SMU and type hint it as a 2601B
-    smu: SMU2601B = device_manager.add_smu("192.168.0.1")  # pyright: ignore[reportAssignmentType]
+    smu: SMU2601B = device_manager.add_smu("192.168.0.1")
 
     # Create a buffer
     BUFFER_NAME = "mybuffer"

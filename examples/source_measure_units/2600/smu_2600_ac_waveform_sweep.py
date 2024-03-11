@@ -109,5 +109,5 @@ def waveform_sweep(inst: SMU2602B) -> None:
 
 # RUN TEST
 with DeviceManager(verbose=False) as DM:
-    inst_driver: SMU2602B = DM.add_smu(RESOURCE_ID)  # pyright: ignore[reportAssignmentType]
+    inst_driver: SMU2602B = DM.add_smu(RESOURCE_ID)
     waveform_sweep(inst_driver)
