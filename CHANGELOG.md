@@ -22,6 +22,10 @@ Things to be included in the next release go here.
 
 - Updated the `get_model_series()` function to only warn the user if the model is not found in the `SupportedModels` enumeration. This also eliminates false warnings during unit tests.
 
+### Added
+
+- Added TekVISA as one of the VISA backend support.
+
 ______________________________________________________________________
 
 ## v1.2.1 (2024-02-27)
