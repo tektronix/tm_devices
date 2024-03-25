@@ -1091,8 +1091,8 @@ class DeviceManager(metaclass=Singleton):
             visa_resource.clear()
         except visa.VisaIOError as e:
             warnings.warn(
-                f"A visa IO error occurred when attempting to read the status byte or clear the "
-                f"ouptut buffer of the resource `{visa_resource.resource_info.resource_name}`.\n"
+                f"A VISA IO error occurred when attempting to read the status byte or clear the "
+                f"output buffer of the resource `{visa_resource.resource_info.resource_name}`.\n"
                 f"Error: {e}",
                 stacklevel=1,
             )
