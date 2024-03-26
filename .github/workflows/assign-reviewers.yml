@@ -1,15 +1,18 @@
 ---
 name: Assign Reviewers to Pull Requests
 on:
-  pull_request:
+  pull_request_target:
+    types: [opened, ready_for_review, reopened]
 jobs:
   assign-reviewers:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
     steps:
       - name: Assign Reviewers
-        uses: ryaugusta/pr-add-reviewers-action@v1
+        uses: rowi1de/auto-assign-review-teams@v1.1.3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          team_reviewers: tm-devices-maintainers,tm-devices-admin
+          # If this job ever starts failing, the most likely reason is that this secret is no
+          # longer valid. This secret needs to be a Personal Access Token (Classic) with the
+          # public_repo and read:org permissions. It also needs to be from an account that is
+          # part of the tektronix GitHub organization.
+          repo-token: ${{ secrets.ASSIGN_REVIEWERS_TOKEN }}
+          teams: tm-devices-maintainers,tm-devices-admin
