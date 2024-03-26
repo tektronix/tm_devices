@@ -24,7 +24,7 @@ Things to be included in the next release go here.
 
 ### Added
 
-- Added TekVISA as one of the VISA backend support.
+- Added TekVISA as one of the VISA backends supported.
 
 ______________________________________________________________________
 
