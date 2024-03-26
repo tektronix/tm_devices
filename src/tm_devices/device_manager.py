@@ -1072,20 +1072,30 @@ class DeviceManager(metaclass=Singleton):
         Raises:
             SystemError: Indicates that the buffer was unable to be cleared.
         """
-        if 16 & visa_resource.read_stb():
-            # 16 is the MAV bit (Message Available) from the Status Byte register
-            # MAV flag is only one bit and turns off after a single response is successfully read,
-            # even if there's more in the buffer
+        # use a try-except block to avoid any errors caused by Visa instruments that may not
+        # respond correctly to the read_stb or clear functions.
+        try:
+            if 16 & visa_resource.read_stb():
+                # 16 is the MAV bit (Message Available) from the Status Byte register
+                # MAV flag is only one bit and turns off after a single response is
+                # successfully read, even if there is more in the buffer.
+                warnings.warn(
+                    f"\nThe device `{visa_resource.resource_info.resource_name}` had data "
+                    "sitting in the VISA Output Buffer on first connection. "
+                    "\nDetected data in the buffer via the Status Byte register. "
+                    "\nThe device_clear() will be called so VISA I/O buffers get flushed.",
+                    stacklevel=1,
+                )
+            # always flush the VISA I/O Buffers on the device to clean up any stale data.
+            # (note: the Events are kept in different buffers, so *ESR? is not impacted)
+            visa_resource.clear()
+        except visa.VisaIOError as e:
             warnings.warn(
-                f"\nThe device `{visa_resource.resource_info.resource_name}` had data "
-                "sitting in the VISA Output Buffer on first connection. "
-                "\nDetected data in the buffer via the Status Byte register. "
-                "\nThe device_clear() will be called so VISA I/O buffers get flushed.",
+                f"A VISA IO error occurred when attempting to read the status byte or clear the "
+                f"output buffer of the resource `{visa_resource.resource_info.resource_name}`.\n"
+                f"Error: {e}",
                 stacklevel=1,
             )
-        # always flush the VISA I/O Buffers on the device to clean up any stale data.
-        # (note: the Events are kept in different buffers, so *ESR? is not impacted)
-        visa_resource.clear()
         visa_resource.write("*IDN?")
         idn_response = ""
         error_msg = None
