@@ -6,9 +6,11 @@ on:
 jobs:
   assign-reviewers:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: Assign Reviewers
-        uses: rowi1de/auto-assign-review-teams@v1.1.3
+        uses: ryaugusta/pr-add-reviewers-action@v1
         with:
-          repo-token: ${{ secrets.ASSIGN_REVIEWERS_TOKEN }}
-          teams: tm-devices-maintainers,tm-devices-admin
+          token: ${{ secrets.GITHUB_TOKEN }}
+          team_reviewers: tm-devices-maintainers,tm-devices-admin
