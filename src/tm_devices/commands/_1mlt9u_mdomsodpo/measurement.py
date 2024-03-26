@@ -44,7 +44,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:MAXimum?
     - MEASUrement:MEAS<x>:MEAN?
     - MEASUrement:MEAS<x>:MINImum?
-    - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>|HIStogram|RF_AMPlitude| RF_FREQuency|RF_PHASe}
+    - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>|HIStogram|RF_AMPlitude|RF_FREQuency|RF_PHASe}
     - MEASUrement:MEAS<x>:SOUrce1?
     - MEASUrement:MEAS<x>:STATE {OFF|ON|<NR1>}
     - MEASUrement:MEAS<x>:STATE?
@@ -2376,14 +2376,10 @@ class MeasurementMeasItemSource1(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:SOUrce1`` command.
 
     **Description:**
-        - For SOURce1: This command specifies the source for all single channel measurements. For
-          delay or phase measurements, This command specifies the waveform to measure 'from'. This
-          is equivalent to setting the 'From:' waveform in the 'Measure Delay' side menu or the
-          'Measure Phase' side menu. SOUrce is equivalent to SOURCE1. For SOUrce2: This command
-          specifies the waveform to measure 'to' when taking a delay measurement or phase
-          measurement. This is equivalent to setting the 'To:' waveform in the 'Measure Delay' side
-          menu or the 'Measure Phase' side menu. Measurements are specified by <x>, which ranges
-          from 1 to 8.
+        - This command sets or queries the measurement source. The measurement number
+          and source are specified by x. For delay or phase measurements, This command
+          specifies the waveform to measure 'from'. This is equivalent to setting the
+          'From:' waveform in the 'Measure Delay' side menu or the 'Measure Phase' side menu.
 
     **Usage:**
         - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:SOUrce1?`` query.
@@ -2396,7 +2392,7 @@ class MeasurementMeasItemSource1(SCPICmdWrite, SCPICmdRead):
 
     ::
 
-        - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>|HIStogram|RF_AMPlitude| RF_FREQuency|RF_PHASe}
+        - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>|HIStogram|RF_AMPlitude|RF_FREQuency|RF_PHASe}
         - MEASUrement:MEAS<x>:SOUrce1?
 
     **Info:**
@@ -2820,14 +2816,10 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:SOUrce1`` command.
 
         **Description:**
-            - For SOURce1: This command specifies the source for all single channel measurements.
-              For delay or phase measurements, This command specifies the waveform to measure
-              'from'. This is equivalent to setting the 'From:' waveform in the 'Measure Delay' side
-              menu or the 'Measure Phase' side menu. SOUrce is equivalent to SOURCE1. For SOUrce2:
-              This command specifies the waveform to measure 'to' when taking a delay measurement or
-              phase measurement. This is equivalent to setting the 'To:' waveform in the 'Measure
-              Delay' side menu or the 'Measure Phase' side menu. Measurements are specified by <x>,
-              which ranges from 1 to 8.
+            - This command sets or queries the measurement source. The measurement number
+              and source are specified by x. For delay or phase measurements, This command
+              specifies the waveform to measure 'from'. This is equivalent to setting the
+              'From:' waveform in the 'Measure Delay' side menu or the 'Measure Phase' side menu.
 
         **Usage:**
             - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:SOUrce1?`` query.
@@ -2840,7 +2832,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         ::
 
-            - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>|HIStogram|RF_AMPlitude| RF_FREQuency|RF_PHASe}
+            - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>|HIStogram|RF_AMPlitude|RF_FREQuency|RF_PHASe}
             - MEASUrement:MEAS<x>:SOUrce1?
 
         **Info:**
