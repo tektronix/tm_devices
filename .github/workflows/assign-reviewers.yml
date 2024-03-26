@@ -1,8 +1,8 @@
 ---
 name: Assign Reviewers to Pull Requests
 on:
-  pull_request_target:
-    types: [opened, ready_for_review, reopened]
+  pull_request:
+#    types: [opened, ready_for_review, reopened]
 jobs:
   assign-reviewers:
     runs-on: ubuntu-latest
