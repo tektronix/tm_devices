@@ -66,9 +66,6 @@ jobs:
           path: |
             .results_*/**
             .coverage*
-      - name: Print cwd contents
-        run: |
-          ls -la
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         if: ${{ !cancelled() }}
