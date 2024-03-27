@@ -119,10 +119,10 @@ dependencies on any operating system thanks to the
 VISA backend. However, in order to use any VISA functionality that
 PyVISA-py does not implement, a third-party VISA backend such as
 `TekVISA <https://www.tek.com/en/search?keywords=tekvisa&facets=_templatename%3dsoftware%26parsedsoftwaretype%3dDriver&sort=>`__
-(`v4.2.0<https://www.tek.com/en/support/software/driver/tekvisa-connectivity-software-v420>`__ or above)
 or
 `NI-VISA <https://www.ni.com/en-us/support/downloads/drivers/download.ni-visa.html>`__
-can be installed. ``tm_devices`` will use an available VISA backend if
+can be installed. v4.2.0 is the TekVISA version supported by ``tm_devices``.
+``tm_devices`` will use an available VISA backend if
 one is found and will fall back to using PyVISA-py if no other VISA
 backends are installed.
 
