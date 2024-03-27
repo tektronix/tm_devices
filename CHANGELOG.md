@@ -22,6 +22,10 @@ Things to be included in the next release go here.
 
 - Updated the `get_model_series()` function to only warn the user if the model is not found in the `SupportedModels` enumeration. This also eliminates false warnings during unit tests.
 
+### Fixed
+
+- fix: Updated the measurement source selection command for the MDO 3K, MDO4K , MSO4K and DPO4K models to work properly.
+
 ______________________________________________________________________
 
 ## v1.2.1 (2024-02-27)
