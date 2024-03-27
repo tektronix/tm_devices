@@ -2404,8 +2404,7 @@ class MeasurementMeasItemSource1(SCPICmdWrite, SCPICmdRead):
         - ``D<x>`` is a digital channel to use as the source waveform. (MSO/MDO4000/B models only as
           well as MDO3000 and MDO400C models with option MDO3MSO or MDO4MSO installed.) x has a
           minimum of 0 and a maximum of 15.
-        - ``HIStogram`` indicates the histogram is the object to be measured. HIStogram only applies
-          to SOUrce1; it is not allowed on SOUrce2.
+        - ``HIStogram`` indicates the histogram is the object to be measured.
         - ``RF_AMPlitude`` are the RF time domain traces. (MDO4000/B/C models only.).
         - ``RF_FREQuency`` are the RF time domain traces. (MDO4000/B/C models only.).
         - ``RF_PHASe`` are the RF time domain traces. (MDO4000/B/C models only.).
@@ -2844,8 +2843,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``D<x>`` is a digital channel to use as the source waveform. (MSO/MDO4000/B models
               only as well as MDO3000 and MDO400C models with option MDO3MSO or MDO4MSO installed.)
               x has a minimum of 0 and a maximum of 15.
-            - ``HIStogram`` indicates the histogram is the object to be measured. HIStogram only
-              applies to SOUrce1; it is not allowed on SOUrce2.
+            - ``HIStogram`` indicates the histogram is the object to be measured.
             - ``RF_AMPlitude`` are the RF time domain traces. (MDO4000/B/C models only.).
             - ``RF_FREQuency`` are the RF time domain traces. (MDO4000/B/C models only.).
             - ``RF_PHASe`` are the RF time domain traces. (MDO4000/B/C models only.).
@@ -3502,13 +3500,10 @@ class MeasurementImmedSource1(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:IMMed:SOUrce1`` command.
 
     **Description:**
-        - For SOURce1: This command specifies the source for all single channel measurements. For
+        - This command specifies the source for all single channel measurements. For
           delay or phase measurements, this command specifies the waveform to measure 'from'. This
           is equivalent to setting the 'From:' waveform in the 'Measure Delay' side menu or the
-          'Measure Phase' side menu. SOUrce is equivalent to SOURCE1. For SOUrce2: This command
-          specifies the waveform to measure 'to' when taking a delay measurement or phase
-          measurement. This is equivalent to setting the 'To:' waveform in the 'Measure Delay' side
-          menu or the 'Measure Phase' side menu.
+          'Measure Phase' side menu.
 
     **Usage:**
         - Using the ``.query()`` method will send the ``MEASUrement:IMMed:SOUrce1?`` query.
@@ -3530,8 +3525,7 @@ class MeasurementImmedSource1(SCPICmdWrite, SCPICmdRead):
         - ``MATH`` is the math waveform.
         - ``D0 - D15`` is the digital waveform to use as the source waveform. (On models with option
           3-MSO installed.).
-        - ``HIStogram`` indicates the histogram as the object to be measured. HIStogram only applies
-          to SOUrce1; it is not available for SOUrce2.
+        - ``HIStogram`` indicates the histogram as the object to be measured.
     """
 
 
@@ -3750,13 +3744,10 @@ class MeasurementImmed(SCPICmdRead):
         """Return the ``MEASUrement:IMMed:SOUrce1`` command.
 
         **Description:**
-            - For SOURce1: This command specifies the source for all single channel measurements.
+            - This command specifies the source for all single channel measurements.
               For delay or phase measurements, this command specifies the waveform to measure
               'from'. This is equivalent to setting the 'From:' waveform in the 'Measure Delay' side
-              menu or the 'Measure Phase' side menu. SOUrce is equivalent to SOURCE1. For SOUrce2:
-              This command specifies the waveform to measure 'to' when taking a delay measurement or
-              phase measurement. This is equivalent to setting the 'To:' waveform in the 'Measure
-              Delay' side menu or the 'Measure Phase' side menu.
+              menu or the 'Measure Phase' side menu.
 
         **Usage:**
             - Using the ``.query()`` method will send the ``MEASUrement:IMMed:SOUrce1?`` query.
@@ -3778,8 +3769,7 @@ class MeasurementImmed(SCPICmdRead):
             - ``MATH`` is the math waveform.
             - ``D0 - D15`` is the digital waveform to use as the source waveform. (On models with
               option 3-MSO installed.).
-            - ``HIStogram`` indicates the histogram as the object to be measured. HIStogram only
-              applies to SOUrce1; it is not available for SOUrce2.
+            - ``HIStogram`` indicates the histogram as the object to be measured.
         """  # noqa: E501
         return self._source1
 
