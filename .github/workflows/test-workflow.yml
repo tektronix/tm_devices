@@ -7,3 +7,5 @@ jobs:
   # Verify the package builds fine
   build-package-test:
     uses: ./.github/workflows/package-build.yml
+    with:
+      package-name: requests
