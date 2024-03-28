@@ -1,4 +1,5 @@
 """SMU2400Standard device driver module."""
+
 from __future__ import annotations
 
 from abc import ABC

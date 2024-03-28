@@ -102,6 +102,7 @@ Attributes and Functions:
     - trigger.tsplinkout[N].stimulus
     - trigger.wait()
 """
+
 from typing import Dict, Optional, TYPE_CHECKING, Union
 
 from .._helpers import (

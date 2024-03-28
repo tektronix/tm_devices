@@ -14,6 +14,7 @@ Commands and Queries:
     - OUTPut:TRIGger:MODE {TRIGger|SYNC}
     - OUTPut:TRIGger:MODE?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

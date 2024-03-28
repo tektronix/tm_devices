@@ -1,4 +1,5 @@
 """2200 Base device driver for the 22xx family of power supplies."""
+
 from typing import Tuple
 
 from packaging.version import Version

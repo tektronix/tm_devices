@@ -15,6 +15,7 @@ Commands and Queries:
     - HEADer {<NR1>|OFF|ON}
     - HEADer?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

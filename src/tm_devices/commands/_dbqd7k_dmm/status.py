@@ -30,6 +30,7 @@ Attributes and Functions:
     - status.standard.enable
     - status.standard.event
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

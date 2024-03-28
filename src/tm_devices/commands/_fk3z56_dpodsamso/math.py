@@ -67,6 +67,7 @@ Commands and Queries:
     - MATH<x>:VERTical:SCAle?
     - MATH<x>?
 """  # noqa: E501
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, ValidatedDynamicNumberCmd

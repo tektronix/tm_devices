@@ -1,4 +1,5 @@
 """TMT4 series device driver module."""
+
 import time
 
 from types import MappingProxyType

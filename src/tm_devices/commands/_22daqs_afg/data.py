@@ -23,6 +23,7 @@ Commands and Queries:
     - DATA:LOCK:STATe {USER[1]|USER2|USER3|USER4},{ON|OFF|<NR1>}?{USER[1]|USER2|USER3|USER4}
     - DATA:POINts {EMEMory|EMEMory1|EMEMory2}[,<points>|MINimum|MAXimum]?{EMEMory[1]|EMEMory2}{,MIN|MAX}
 """  # noqa: E501
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

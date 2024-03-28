@@ -16,6 +16,7 @@ Commands and Queries:
     - PILOGger:STATE {<NR1>|OFF|ON}
     - PILOGger:STATE?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

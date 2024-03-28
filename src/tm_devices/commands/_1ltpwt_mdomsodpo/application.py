@@ -17,6 +17,7 @@ Commands and Queries:
     - APPLication:TYPe {POWer|LIMITMask|VIDPic|ACTONEVent|NONe}
     - APPLication:TYPe?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

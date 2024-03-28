@@ -1,4 +1,5 @@
 """Get a complete list of all auto-generated commands."""
+
 import glob
 import importlib
 import json

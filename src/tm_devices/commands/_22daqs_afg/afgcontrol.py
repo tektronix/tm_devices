@@ -13,6 +13,7 @@ Commands and Queries:
 
     - AFGControl:CSCopy {CH1|CH2},{CH1|CH2}
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

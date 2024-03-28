@@ -1,4 +1,5 @@
 """TekScope5k7k70k package init file."""
+
 from tm_devices.drivers.pi.scopes.tekscope_5k_7k_70k.dpo5k import DPO5K
 from tm_devices.drivers.pi.scopes.tekscope_5k_7k_70k.dpo5kb import DPO5KB
 from tm_devices.drivers.pi.scopes.tekscope_5k_7k_70k.dpo7k import DPO7K

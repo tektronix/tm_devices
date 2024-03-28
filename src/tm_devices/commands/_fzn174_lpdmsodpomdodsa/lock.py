@@ -16,6 +16,7 @@ Commands and Queries:
     - LOCk {ALL|NONe}
     - LOCk?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

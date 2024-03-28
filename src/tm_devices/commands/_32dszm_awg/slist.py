@@ -20,6 +20,7 @@ Commands and Queries:
     - SLISt:SUBSequence:NEW <subseq_name>,<length>
     - SLISt:SUBSequence:TSTamp? <subseq_name>
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -198,11 +199,11 @@ class SlistSubsequenceElementItem(ValidatedDynamicNumberCmd, SCPICmdRead):
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._loop = SlistSubsequenceElementItemLoop(device, f"{self._cmd_syntax}:LOOP")
-        self._waveform: Dict[
-            int, SlistSubsequenceElementItemWaveformItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: SlistSubsequenceElementItemWaveformItem(
-                device, f"{self._cmd_syntax}:WAVeform{x}"
+        self._waveform: Dict[int, SlistSubsequenceElementItemWaveformItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SlistSubsequenceElementItemWaveformItem(
+                    device, f"{self._cmd_syntax}:WAVeform{x}"
+                )
             )
         )
 

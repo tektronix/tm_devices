@@ -32,6 +32,7 @@ Attributes and Functions:
     - slot[slot].tempsensor
     - slot[slot].thermal.state
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedDynamicNumberCmd

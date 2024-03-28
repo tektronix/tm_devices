@@ -14,6 +14,7 @@ Commands and Queries:
 
     - TOTaluptime?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead

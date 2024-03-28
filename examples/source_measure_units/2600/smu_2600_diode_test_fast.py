@@ -11,6 +11,7 @@ Engineering (Al Ivons) on 08 Apr 2005
 
 Converted to Python tm_devices script. DCA 4.12.23
 """
+
 import time
 
 from typing import Dict, Tuple
@@ -417,7 +418,7 @@ def display_bins_status() -> None:
 
 # Connect to instrument and begin testing
 with DeviceManager(verbose=False) as DM:
-    smu_driver: SMU2602B = DM.add_smu(RESOURCE_ID)  # pyright: ignore[reportAssignmentType]
+    smu_driver: SMU2602B = DM.add_smu(RESOURCE_ID)
 
     # Save settings in temporary variables so they can be restored after completion.
     s_func = smu_driver.commands.smu["a"].source.func

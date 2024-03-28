@@ -22,6 +22,7 @@ Commands and Queries:
     - MMEMory:STORe:STATe {0|1|2|3|4},<file_name>
     - MMEMory:STORe:TRACe EMEMory[1]|EMEMory2,<file_name>
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

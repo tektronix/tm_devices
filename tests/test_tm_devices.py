@@ -1,4 +1,5 @@
 """Temporary test file to get to 100% coverage."""
+
 import inspect
 import itertools
 import operator

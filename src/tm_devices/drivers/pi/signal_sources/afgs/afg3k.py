@@ -1,4 +1,5 @@
 """AFG3K device driver module."""
+
 from tm_devices.commands import AFG3KMixin
 from tm_devices.drivers.pi.signal_sources.afgs.afg import AFG, AFGSourceDeviceConstants
 

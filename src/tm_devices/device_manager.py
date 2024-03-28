@@ -1,5 +1,6 @@
 # pylint: disable=too-many-lines
 """Device manager module."""
+
 from __future__ import annotations
 
 import contextlib
@@ -13,110 +14,22 @@ import warnings
 from types import FrameType, MappingProxyType, TracebackType
 from typing import cast, Dict, Mapping, Optional, Tuple, Type, TYPE_CHECKING, Union
 
+from typing_extensions import TypeVar
+
 from tm_devices.components import DMConfigParser
-from tm_devices.drivers import (
-    AFG3K,
-    AFG3KB,
-    AFG3KC,
-    AFG31K,
-    AWG5K,
-    AWG5KB,
-    AWG5KC,
-    AWG7K,
-    AWG7KB,
-    AWG7KC,
-    AWG70KA,
-    AWG70KB,
-    AWG5200,
-    DAQ6510,
-    DMM6500,
-    DMM7510,
-    DMM7512,
-    DPO2K,
-    DPO2KB,
-    DPO4K,
-    DPO4KB,
-    DPO5K,
-    DPO5KB,
-    DPO7K,
-    DPO7KC,
-    DPO70K,
-    DPO70KC,
-    DPO70KD,
-    DPO70KDX,
-    DPO70KSX,
-    DSA70K,
-    DSA70KC,
-    DSA70KD,
-    LPD6,
-    MDO3,
-    MDO3K,
-    MDO4K,
-    MDO4KB,
-    MDO4KC,
-    MSO2,
-    MSO2K,
-    MSO2KB,
-    MSO4,
-    MSO4B,
-    MSO4K,
-    MSO4KB,
-    MSO5,
-    MSO5B,
-    MSO5K,
-    MSO5KB,
-    MSO5LP,
-    MSO6,
-    MSO6B,
-    MSO70K,
-    MSO70KC,
-    MSO70KDX,
-    PSU2200,
-    PSU2220,
-    PSU2230,
-    PSU2231,
-    PSU2231A,
-    PSU2280,
-    PSU2281,
-    SMU2400,
-    SMU2401,
-    SMU2410,
-    SMU2450,
-    SMU2460,
-    SMU2461,
-    SMU2470,
-    SMU2601A,
-    SMU2601B,
-    SMU2601BPulse,
-    SMU2602A,
-    SMU2602B,
-    SMU2604A,
-    SMU2604B,
-    SMU2606B,
-    SMU2611A,
-    SMU2611B,
-    SMU2612A,
-    SMU2612B,
-    SMU2614A,
-    SMU2614B,
-    SMU2634A,
-    SMU2634B,
-    SMU2635A,
-    SMU2635B,
-    SMU2636A,
-    SMU2636B,
-    SMU2651A,
-    SMU2657A,
-    SMU6430,
-    SMU6514,
-    SMU6517B,
-    SS3706A,
-    TekScopeSW,
-    TMT4,
-    TSOVu,
-)
+from tm_devices.drivers.api.rest_api.margin_testers.margin_tester import MarginTester
 from tm_devices.drivers.api.rest_api.rest_api_device import RESTAPIDevice
+from tm_devices.drivers.pi.data_acquisition_systems.data_acquisition_system import (
+    DataAcquisitionSystem,
+)
+from tm_devices.drivers.pi.digital_multimeters.digital_multimeter import DigitalMultimeter
 from tm_devices.drivers.pi.pi_device import PIDevice
+from tm_devices.drivers.pi.power_supplies.power_supply import PowerSupplyUnit
+from tm_devices.drivers.pi.scopes.scope import Scope
+from tm_devices.drivers.pi.signal_sources.afgs.afg import AFG
+from tm_devices.drivers.pi.signal_sources.awgs.awg import AWG
+from tm_devices.drivers.pi.source_measure_units.source_measure_unit import SourceMeasureUnit
+from tm_devices.drivers.pi.systems_switches.systems_switch import SystemsSwitch
 from tm_devices.helpers import (
     AliasDict,
     check_for_update,
@@ -147,106 +60,30 @@ from traceback_with_variables import (  # pyright: ignore[reportMissingTypeStubs
 
 if TYPE_CHECKING:
     from pyvisa.resources import MessageBasedResource
-    from typing_extensions import Self, TypeAlias
+    from typing_extensions import Self
 
     from tm_devices.drivers.device import Device
 
 ####################################################################################################
 # Type Aliases
 ####################################################################################################
-# TODO: this is temporary until python3.12 which will support TypeVar with defaults
-AFGAlias: TypeAlias = Union[AFG3K, AFG3KB, AFG3KC, AFG31K]
-AWGAlias: TypeAlias = Union[AWG5K, AWG5KB, AWG5KC, AWG7K, AWG7KB, AWG7KC, AWG5200, AWG70KA, AWG70KB]
-DataAcquisitionSystemAlias: TypeAlias = Union[DAQ6510]  # pyright: ignore[reportInvalidTypeArguments]
-DigitalMultimeterAlias: TypeAlias = Union[DMM6500, DMM7510, DMM7512]
-ScopeAlias: TypeAlias = Union[
-    DPO5K,
-    DPO5KB,
-    DPO7K,
-    DPO7KC,
-    DPO70K,
-    DPO70KC,
-    DPO70KD,
-    DPO70KDX,
-    DPO70KSX,
-    DSA70K,
-    DSA70KC,
-    DSA70KD,
-    LPD6,
-    MSO5,
-    MSO6,
-    MSO4,
-    MSO4B,
-    MSO2,
-    MSO6B,
-    MSO5B,
-    MSO5LP,
-    TekScopeSW,
-    TSOVu,
-    MSO2K,
-    MSO2KB,
-    DPO2K,
-    DPO2KB,
-    MDO3,
-    MDO3K,
-    MDO4K,
-    MDO4KB,
-    MDO4KC,
-    MSO4K,
-    MSO4KB,
-    DPO4K,
-    DPO4KB,
-    MSO5K,
-    MSO5KB,
-    MSO70K,
-    MSO70KC,
-    MSO70KDX,
-]
-MarginTesterAlias: TypeAlias = Union[TMT4]  # pyright: ignore[reportInvalidTypeArguments]
-PowerSupplyUnitAlias: TypeAlias = Union[
-    PSU2200,
-    PSU2220,
-    PSU2230,
-    PSU2231,
-    PSU2231A,
-    PSU2280,
-    PSU2281,
-]
-SourceMeasureUnitAlias: TypeAlias = Union[
-    SMU2400,
-    SMU2401,
-    SMU2410,
-    SMU2450,
-    SMU2460,
-    SMU2461,
-    SMU2470,
-    SMU2601B,
-    SMU2601BPulse,
-    SMU2602B,
-    SMU2604B,
-    SMU2606B,
-    SMU2611B,
-    SMU2612B,
-    SMU2614B,
-    SMU2634B,
-    SMU2635B,
-    SMU2636B,
-    SMU2651A,
-    SMU2657A,
-    SMU2601A,
-    SMU2602A,
-    SMU2604A,
-    SMU2611A,
-    SMU2612A,
-    SMU2614A,
-    SMU2634A,
-    SMU2635A,
-    SMU2636A,
-    SMU6430,
-    SMU6514,
-    SMU6517B,
-]
-SystemsSwitchAlias: TypeAlias = Union[SS3706A]  # pyright: ignore[reportInvalidTypeArguments]
+AFGAlias = TypeVar("AFGAlias", bound=AFG, default=AFG)
+AWGAlias = TypeVar("AWGAlias", bound=AWG, default=AWG)
+DataAcquisitionSystemAlias = TypeVar(
+    "DataAcquisitionSystemAlias", bound=DataAcquisitionSystem, default=DataAcquisitionSystem
+)
+DigitalMultimeterAlias = TypeVar(
+    "DigitalMultimeterAlias", bound=DigitalMultimeter, default=DigitalMultimeter
+)
+ScopeAlias = TypeVar("ScopeAlias", bound=Scope, default=Scope)
+MarginTesterAlias = TypeVar("MarginTesterAlias", bound=MarginTester, default=MarginTester)
+PowerSupplyUnitAlias = TypeVar(
+    "PowerSupplyUnitAlias", bound=PowerSupplyUnit, default=PowerSupplyUnit
+)
+SourceMeasureUnitAlias = TypeVar(
+    "SourceMeasureUnitAlias", bound=SourceMeasureUnit, default=SourceMeasureUnit
+)
+SystemsSwitchAlias = TypeVar("SystemsSwitchAlias", bound=SystemsSwitch, default=SystemsSwitch)
 
 
 ####################################################################################################
@@ -1235,20 +1072,30 @@ class DeviceManager(metaclass=Singleton):
         Raises:
             SystemError: Indicates that the buffer was unable to be cleared.
         """
-        if 16 & visa_resource.read_stb():
-            # 16 is the MAV bit (Message Available) from the Status Byte register
-            # MAV flag is only one bit and turns off after a single response is successfully read,
-            # even if there's more in the buffer
+        # use a try-except block to avoid any errors caused by Visa instruments that may not
+        # respond correctly to the read_stb or clear functions.
+        try:
+            if 16 & visa_resource.read_stb():
+                # 16 is the MAV bit (Message Available) from the Status Byte register
+                # MAV flag is only one bit and turns off after a single response is
+                # successfully read, even if there is more in the buffer.
+                warnings.warn(
+                    f"\nThe device `{visa_resource.resource_info.resource_name}` had data "
+                    "sitting in the VISA Output Buffer on first connection. "
+                    "\nDetected data in the buffer via the Status Byte register. "
+                    "\nThe device_clear() will be called so VISA I/O buffers get flushed.",
+                    stacklevel=1,
+                )
+            # always flush the VISA I/O Buffers on the device to clean up any stale data.
+            # (note: the Events are kept in different buffers, so *ESR? is not impacted)
+            visa_resource.clear()
+        except visa.VisaIOError as e:
             warnings.warn(
-                f"\nThe device `{visa_resource.resource_info.resource_name}` had data "
-                "sitting in the VISA Output Buffer on first connection. "
-                "\nDetected data in the buffer via the Status Byte register. "
-                "\nThe device_clear() will be called so VISA I/O buffers get flushed.",
+                f"A VISA IO error occurred when attempting to read the status byte or clear the "
+                f"output buffer of the resource `{visa_resource.resource_info.resource_name}`.\n"
+                f"Error: {e}",
                 stacklevel=1,
             )
-        # always flush the VISA I/O Buffers on the device to clean up any stale data.
-        # (note: the Events are kept in different buffers, so *ESR? is not impacted)
-        visa_resource.clear()
         visa_resource.write("*IDN?")
         idn_response = ""
         error_msg = None

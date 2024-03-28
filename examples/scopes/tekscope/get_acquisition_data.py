@@ -1,4 +1,5 @@
 """An example script for connecting and configuring scope for acquisition."""
+
 from tm_devices import DeviceManager
 from tm_devices.drivers import MSO6B
 from tm_devices.helpers import PYVISA_PY_BACKEND
@@ -12,7 +13,7 @@ with DeviceManager(verbose=True) as device_manager:
     device_manager.visa_library = PYVISA_PY_BACKEND
 
     # Creating Scope driver object by providing ip address.
-    scope: MSO6B = device_manager.add_scope("127.0.0.1")  # pyright: ignore[reportAssignmentType]
+    scope: MSO6B = device_manager.add_scope("127.0.0.1")
 
     # Turn on channel 1
     scope.commands.display.waveview1.ch[1].state.write("ON")

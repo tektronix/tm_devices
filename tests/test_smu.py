@@ -1,11 +1,12 @@
 # pyright: reportPrivateUsage=none
 """Test the SMUs."""
+
 import os
 import socket
 import sys
 
 from pathlib import Path
-from typing import cast
+from typing import TYPE_CHECKING
 from unittest import mock
 
 import pytest
@@ -14,8 +15,10 @@ import pyvisa as visa
 from packaging.version import Version
 
 from tm_devices import DeviceManager
-from tm_devices.drivers import SMU2460, SMU2601B
 from tm_devices.helpers.constants_and_dataclasses import UNIT_TEST_TIMEOUT
+
+if TYPE_CHECKING:
+    from tm_devices.drivers import SMU2460, SMU2601B
 
 
 # pylint: disable=too-many-locals
@@ -28,7 +31,7 @@ def test_smu(  # noqa: PLR0915
         device_manager: The DeviceManager object.
         capsys: The captured stdout and stderr.
     """
-    smu: SMU2601B = cast(SMU2601B, device_manager.add_smu("smu2601b-hostname", alias="smu-device"))
+    smu: SMU2601B = device_manager.add_smu("smu2601b-hostname", alias="smu-device")
     assert id(device_manager.get_smu(number_or_alias="smu-device")) == id(smu)
     assert id(device_manager.get_smu(number_or_alias=smu.device_number)) == id(smu)
 
@@ -48,7 +51,7 @@ def test_smu(  # noqa: PLR0915
         assert "Query" in stdout
 
     smu.load_script(
-        file_path=f"{Path(os.path.realpath(__file__)).parent}/samples/tsp_script.py",
+        file_path=f"{Path(os.path.realpath(__file__)).parent}/samples/tsp_script.tsp",
         run_script=True,
         to_nv_memory=True,
     )
@@ -60,7 +63,7 @@ def test_smu(  # noqa: PLR0915
     assert "loadfuncs()" in stdout
     smu.expect_esr(0)
     smu.load_script(
-        file_path=f"{Path(os.path.realpath(__file__)).parent}/samples/tsp_script.py",
+        file_path=f"{Path(os.path.realpath(__file__)).parent}/samples/tsp_script.tsp",
         script_name="tsp_function",
     )
     stdout = capsys.readouterr().out
@@ -247,7 +250,7 @@ def test_smu2450(device_manager: DeviceManager, capsys: pytest.CaptureFixture[st
         device_manager: The DeviceManager object.
         capsys: The captured stdout and stderr.
     """
-    smu: SMU2460 = cast(SMU2460, device_manager.add_smu("SMU2460-HOSTNAME"))
+    smu: SMU2460 = device_manager.add_smu("SMU2460-HOSTNAME")
     smu.expect_esr(0)
 
     smu.commands.smu.source.sweeplinear("SolarCell", 0, 0.53, 56, 0.1)

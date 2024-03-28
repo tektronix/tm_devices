@@ -17,6 +17,7 @@ Attributes and Functions:
     - node[N].getglobal()
     - node[N].setglobal()
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedDynamicNumberCmd

@@ -1,4 +1,5 @@
 """An example of adding dpojet measurements and plots."""
+
 from tm_devices import DeviceManager
 from tm_devices.drivers import MSO70KDX
 from tm_devices.helpers import PYVISA_PY_BACKEND
@@ -12,7 +13,7 @@ with DeviceManager(verbose=True) as device_manager:
     device_manager.visa_library = PYVISA_PY_BACKEND
 
     # Creating one 7K/70K/SX Scope driver object by providing ip address.
-    scope: MSO70KDX = device_manager.add_scope("127.0.0.1")  # pyright: ignore[reportAssignmentType]
+    scope: MSO70KDX = device_manager.add_scope("127.0.0.1")
 
     # Starting DPOJET
     scope.commands.dpojet.activate.write()

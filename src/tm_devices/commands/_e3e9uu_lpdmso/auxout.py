@@ -16,6 +16,7 @@ Commands and Queries:
     - AUXout:SOUrce {ATRIGger|REFOUT|AFG}
     - AUXout:SOUrce?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

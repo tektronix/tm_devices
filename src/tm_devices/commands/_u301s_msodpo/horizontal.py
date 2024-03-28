@@ -43,6 +43,7 @@ Commands and Queries:
     - HORizontal:TRIGger:POSition?
     - HORizontal?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

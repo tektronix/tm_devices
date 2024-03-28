@@ -47,6 +47,7 @@ Commands and Queries:
     - POWer:POWer<x>:RESUlts:CURRentacq:MEAN? {PM| GAINCROSSOVERFREQ| GM| PHASECROSSOVERFREQ}
     - POWer:POWer<x>:RESUlts:CURRentacq:MINimum? {PM| GAINCROSSOVERFREQ| GM| PHASECROSSOVERFREQ}
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

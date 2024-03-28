@@ -18,6 +18,7 @@ Attributes and Functions:
     - errorqueue.count
     - errorqueue.next()
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

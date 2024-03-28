@@ -14,6 +14,7 @@ Commands and Queries:
     - DISPlay:PLOT:STATe {0|1|OFF|ON}
     - DISPlay:PLOT:STATe?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

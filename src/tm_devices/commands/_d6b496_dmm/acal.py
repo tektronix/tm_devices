@@ -22,6 +22,7 @@ Attributes and Functions:
     - acal.run()
     - acal.schedule()
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

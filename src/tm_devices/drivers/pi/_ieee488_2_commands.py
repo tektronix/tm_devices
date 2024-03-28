@@ -1,4 +1,5 @@
 """Module containing an inner class to use for an API for IEEE 488.2 commands."""
+
 from typing import Optional, TYPE_CHECKING
 
 if TYPE_CHECKING:

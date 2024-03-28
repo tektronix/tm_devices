@@ -29,6 +29,7 @@ Commands and Queries:
     - STATus:QUEStionable:PTRansition <bit_value>
     - STATus:QUEStionable:PTRansition?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

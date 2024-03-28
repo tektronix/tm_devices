@@ -16,6 +16,7 @@ Commands and Queries:
     - *PUD {<Block>|<QString>}
     - *PUD?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

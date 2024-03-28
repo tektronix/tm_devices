@@ -15,6 +15,7 @@ Commands and Queries:
     - CMDBatch {<NR1>OFF|ON}
     - CMDBatch?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

@@ -1,4 +1,5 @@
 """Base device driver module."""
+
 import socket
 import time
 

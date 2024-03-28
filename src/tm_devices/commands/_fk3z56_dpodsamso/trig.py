@@ -15,6 +15,7 @@ Commands and Queries:
     - TRIG:A:PLOCK:STANDARD {<STANDARD>}
     - TRIG:A:PLOCK:STANDARD?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

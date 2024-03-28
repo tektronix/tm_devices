@@ -27,6 +27,7 @@ Commands and Queries:
     - HARDCopy:VIEW?
     - HARDCopy?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

@@ -71,6 +71,7 @@ Attributes and Functions:
     - status.system5.ntr
     - status.system5.ptr
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

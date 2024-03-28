@@ -87,7 +87,7 @@ requests = ">=2.28.1"
 tomli = ">=2.0.1"
 tomli-w = ">=1.0.0"
 traceback-with-variables = ">=2.0.4"
-typing-extensions = ">=4.4.0"
+typing-extensions = ">=4.10.0"
 urllib3 = ">=2.0"
 zeroconf = ">=0.54.0"
 
@@ -101,11 +101,11 @@ graphviz = ">=0.20.1"
 http-server-mock = ">=1.7"
 myst-parser = ">=0.19.1"
 pip = ">=22.0"
-poetry = ">=1.5.1"
+poetry = ">=1.8.0"
 pre-commit = ">=2.20.0"
 pre-commit-update = ">=0.1.3"
 pylint = {extras = ["spelling"], version = "3.1.0"}  # Update this by running scripts/update_development_dependencies.py
-pyright = "1.1.351"  # Update this by running scripts/update_development_dependencies.py
+pyright = "1.1.355"  # Update this by running scripts/update_development_dependencies.py
 pyroma = ">=4.2"
 pytest = ">=7.1.2"
 pytest-cov = ">=3.0.0"
@@ -113,7 +113,7 @@ pytest-html = ">=4.0"
 pytest-order = ">=1.0.1"
 pytest-profiling = ">=1.7.0"
 python-semantic-release = ">=8.5.1"
-ruff = "0.2.2"  # Update this by running scripts/update_development_dependencies.py
+ruff = "0.3.4"  # Update this by running scripts/update_development_dependencies.py
 safety = ">=2.1.1"
 sphinx-autoapi = ">=2.0.0"
 sphinx-copybutton = ">=0.5.1"
@@ -423,8 +423,8 @@ commands =
     !tests: pyright .
     !tests: pyright --verifytypes tm_devices --ignoreexternal
     !tests: pyroma .
-    !tests: poetry build
-    !tests: twine check --strict dist/*
+    !tests: poetry build --output=dist_{envname}
+    !tests: twine check --strict dist_{envname}/*
     !tests: pre-commit run --all-files --show-diff-on-failure
     pytest -vv -k "not test_docs" --showlocals --cov --junitxml={tox_root}/.results_{envname}/results.xml --cov-report=term --cov-report=xml:{tox_root}/.coverage_{envname}.xml --cov-report=html:{tox_root}/.results_{envname}/html --self-contained-html --html={tox_root}/.results_{envname}/results.html
 

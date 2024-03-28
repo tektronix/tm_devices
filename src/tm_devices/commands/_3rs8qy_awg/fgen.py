@@ -35,6 +35,7 @@ Commands and Queries:
     - FGEN:CHANnel[n]:TYPE {SINE|SQUare|TRIangle|NOISe|DC|GAUSsian|EXPRise|EXPDecay|NONE}
     - FGEN:CHANnel[n]:TYPE?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import DefaultDictPassKeyToFactory, SCPICmdRead, SCPICmdWrite, ValidatedChannel

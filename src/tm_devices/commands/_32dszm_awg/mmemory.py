@@ -37,6 +37,7 @@ Commands and Queries:
     - MMEMory:MSIS [<msus>]
     - MMEMory:MSIS?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite

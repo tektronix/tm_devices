@@ -18,6 +18,7 @@ Attributes and Functions:
     - os.rename()
     - os.time()
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

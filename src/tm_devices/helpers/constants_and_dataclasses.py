@@ -1,4 +1,5 @@
 """Module containing constants and dataclasses for the tm_devices package."""
+
 import re
 
 from dataclasses import dataclass

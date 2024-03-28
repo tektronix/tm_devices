@@ -43,6 +43,7 @@ Commands and Queries:
     - WFMOutpre:YZEro?
     - WFMOutpre?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

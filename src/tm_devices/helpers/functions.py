@@ -1,4 +1,5 @@
 """Module containing helpers for the tm_devices package."""
+
 import contextlib
 import datetime
 import importlib.metadata
@@ -444,9 +445,11 @@ def get_model_series(model: str) -> str:
         with contextlib.suppress(StopIteration):
             model_series = next(iter(filtered_dict.keys()))
 
-    # Warn the user if the model is not in the regex mapping, and therefore not officially supported
+    # Warn the user if the model is not in the regex mapping or list of supported models,
+    # and therefore not officially supported.
     if not model_series:
-        warnings.warn(f'The "{model}" model is not supported by {PACKAGE_NAME}', stacklevel=2)
+        if model not in SupportedModels.list_values():
+            warnings.warn(f'The "{model}" model is not supported by {PACKAGE_NAME}', stacklevel=2)
         model_series = model
     return model_series
 

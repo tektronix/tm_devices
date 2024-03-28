@@ -1,4 +1,5 @@
 """AWG70KA device driver module."""
+
 from tm_devices.commands import AWG70KAMixin
 from tm_devices.drivers.pi.signal_sources.awgs.awg import AWG, AWGSourceDeviceConstants
 

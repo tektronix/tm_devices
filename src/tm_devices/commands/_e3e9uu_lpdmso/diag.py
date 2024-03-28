@@ -24,6 +24,7 @@ Commands and Queries:
     - DIAg:SELect {ALL|IO|ANALOG|SYSTEM|ASIC|ACQ|SIGNAL|MEMORY}
     - DIAg:STATE {EXECute|ABOrt}
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

@@ -14,6 +14,7 @@ Commands and Queries:
 
     - ALLOcate:WAVEform:REF<x>?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import DefaultDictPassKeyToFactory, SCPICmdRead, ValidatedDynamicNumberCmd

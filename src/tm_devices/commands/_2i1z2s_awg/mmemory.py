@@ -42,6 +42,7 @@ Commands and Queries:
     - MMEMory:SAVE:WAVeform:WFM <wfm_name>,<filepath>[,<IQ Component>]
     - MMEMory:SAVE:WAVeform:WFMX <wfm_name>,<filepath>
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite

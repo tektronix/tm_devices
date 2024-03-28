@@ -14,6 +14,7 @@ Commands and Queries:
     - USBDevice:CONFigure {DISabled|IMAge|USBTmc}
     - USBDevice:CONFigure?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

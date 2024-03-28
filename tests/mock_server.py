@@ -1,4 +1,5 @@
 """The mock server used during unit tests."""
+
 import sys
 
 from typing import Any, Dict

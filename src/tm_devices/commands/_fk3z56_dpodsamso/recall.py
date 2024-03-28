@@ -18,6 +18,7 @@ Commands and Queries:
     - RECAll:SETUp:DESKew?
     - RECAll:WAVEform <file path>,REF<x>
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

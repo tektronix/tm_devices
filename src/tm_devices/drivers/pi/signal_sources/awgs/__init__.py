@@ -1,4 +1,5 @@
 """AWG package init file."""
+
 from tm_devices.drivers.pi.signal_sources.awgs.awg import AWG
 from tm_devices.drivers.pi.signal_sources.awgs.awg5k import AWG5K
 from tm_devices.drivers.pi.signal_sources.awgs.awg5kb import AWG5KB

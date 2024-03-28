@@ -13,6 +13,7 @@ Commands and Queries:
 
     - ABORt [{ATRigger|BTRigger}]
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdWrite

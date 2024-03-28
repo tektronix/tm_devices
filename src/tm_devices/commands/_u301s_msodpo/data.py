@@ -31,6 +31,7 @@ Commands and Queries:
     - DATa:WIDth?
     - DATa?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

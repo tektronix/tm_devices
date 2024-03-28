@@ -1,4 +1,5 @@
 """AWG5K device driver module."""
+
 from tm_devices.commands import AWG5KMixin
 from tm_devices.drivers.pi.signal_sources.awgs.awg import AWG, AWGSourceDeviceConstants
 

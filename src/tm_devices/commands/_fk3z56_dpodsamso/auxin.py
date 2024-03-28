@@ -59,6 +59,7 @@ Commands and Queries:
     - AUXIn:VTERm:DUAL:B <NR3>
     - AUXIn:VTERm:DUAL:B?
 """  # noqa: E501
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

@@ -17,6 +17,7 @@ Commands and Queries:
     - MULTiscope:RESTART
     - MULTiscope:STATUS?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

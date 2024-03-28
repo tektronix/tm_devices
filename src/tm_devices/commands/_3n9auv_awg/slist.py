@@ -48,6 +48,7 @@ Commands and Queries:
     - SLISt:SEQuence:WMUSage? <sequence_name>,<track_number>
     - SLISt:SIZE?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

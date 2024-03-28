@@ -1,4 +1,5 @@
 """SMU Model 2600 device driver module."""
+
 import string
 
 from abc import ABC

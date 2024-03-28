@@ -17,6 +17,7 @@ Commands and Queries:
     - GPIBUsb:HWVersion?
     - GPIBUsb:ID?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWriteNoArguments

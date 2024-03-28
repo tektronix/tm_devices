@@ -36,6 +36,7 @@ Commands and Queries:
     - OUTPut[n]:WVALue:MARKer[m] {FIRSt|LOW|HIGH}
     - OUTPut[n]:WVALue:MARKer[m]?
 """
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

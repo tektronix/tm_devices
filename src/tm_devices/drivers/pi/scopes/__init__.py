@@ -1,4 +1,5 @@
 """Scopes package init file."""
+
 from tm_devices.drivers.pi.scopes.scope import Scope
 from tm_devices.drivers.pi.scopes.tekscope.tekscope import TekScope
 from tm_devices.drivers.pi.scopes.tekscope_2k.tekscope_2k import TekScope2k

@@ -15,6 +15,7 @@ Commands and Queries:
     - OPCEXtended {<NR1>|OFF|ON}
     - OPCEXtended?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite
