@@ -120,7 +120,7 @@ VISA backend. However, in order to use any VISA functionality that
 PyVISA-py does not implement, a third-party VISA backend such as
 `TekVISA <https://www.tek.com/en/search?keywords=tekvisa&facets=_templatename%3dsoftware%26parsedsoftwaretype%3dDriver&sort=>`__ (>=4.2.0) or
 `NI-VISA <https://www.ni.com/en-us/support/downloads/drivers/download.ni-visa.html>`__
-can be installed. v4.2.0 is the TekVISA version supported by ``tm_devices``.
+can be installed.
 ``tm_devices`` will use an available VISA backend if
 one is found and will fall back to using PyVISA-py if no other VISA
 backends are installed.
