@@ -90,7 +90,7 @@ jobs:
             .coverage*
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
-        if: ${{ github.repository == join(['tektronix', env.REPO_NAME], '/') && !cancelled() }}
+        if: ${{ github.repository == join(fromJSON('[''tektronix'', env.REPO_NAME]'), '/') && !cancelled() }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./.coverage_tests.xml
