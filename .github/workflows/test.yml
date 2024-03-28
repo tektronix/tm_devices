@@ -1,0 +1,9 @@
+---
+name: Publish Test Results Testing
+on:
+  workflow_run:
+    workflows: [Test code]
+    types: [completed]
+jobs:
+  publish-test-results:
+    uses: ./.github/workflows/publish-test-results.yml
