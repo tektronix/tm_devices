@@ -5,6 +5,17 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_call:
+    inputs:
+      repo-name:
+        description: The name of the repository to use to gate Codecov uploads.
+        required: true
+        type: string
+      node-version:  # The node version needs to stay in sync with .readthedocs.yml
+        description: The version of Node.js to install; if set, mermaid-cli will be
+          installed via npm and graphviz will be installed via apt.
+        required: false
+        type: number
 # Cancel running jobs for the same workflow and branch.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -42,12 +53,23 @@ jobs:
   # Quick testing with coverage (no linting)
   test-fast:
     runs-on: ${{ matrix.os_name }}-latest
+    env:
+      REPO_NAME: ${{ inputs.repo-name || 'tm_devices' }}
     strategy:
       fail-fast: false
       matrix:
         os_name: [ubuntu, windows, macos]
     steps:
       - uses: actions/checkout@v4
+      - if: ${{ inputs.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+      - if: ${{ inputs.node-version }}
+        name: Install non-python documentation dependencies
+        run: |
+          npm install -g @mermaid-js/mermaid-cli
+          sudo apt install --no-install-recommends --assume-yes graphviz
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -68,7 +90,7 @@ jobs:
             .coverage*
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
-        if: ${{ github.repository == 'tektronix/tm_devices' && !cancelled() }}
+        if: ${{ github.repository == '${{ env.REPO_NAME }}' && !cancelled() }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./.coverage_tests.xml

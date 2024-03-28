@@ -23,8 +23,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20  # The node version needs to stay in sync with .readthedocs.yml
-      - run: npm install -g @mermaid-js/mermaid-cli
-      - run: sudo apt install --no-install-recommends --assume-yes graphviz
+      - name: Install non-python documentation dependencies
+        run: |
+          npm install -g @mermaid-js/mermaid-cli
+          sudo apt install --no-install-recommends --assume-yes graphviz
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
