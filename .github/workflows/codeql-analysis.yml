@@ -8,6 +8,7 @@ on:
     branches: [main]
   schedule:
     - cron: 17 16 * * 4
+  workflow_call:
 jobs:
   analyze:
     name: Analyze
