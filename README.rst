@@ -118,8 +118,10 @@ dependencies on any operating system thanks to the
 `PyVISA-py <https://pyvisa.readthedocs.io/projects/pyvisa-py/en/latest/>`__
 VISA backend. However, in order to use any VISA functionality that
 PyVISA-py does not implement, a third-party VISA backend such as
+`TekVISA <https://www.tek.com/en/search?keywords=tekvisa&facets=_templatename%3dsoftware%26parsedsoftwaretype%3dDriver&sort=>`__ (>=4.2.0) or
 `NI-VISA <https://www.ni.com/en-us/support/downloads/drivers/download.ni-visa.html>`__
-can be installed. ``tm_devices`` will use an available VISA backend if
+can be installed.
+``tm_devices`` will use an available VISA backend if
 one is found and will fall back to using PyVISA-py if no other VISA
 backends are installed.
 
@@ -206,13 +208,13 @@ Supported Devices & Software Solutions
    , **6 Series LPD**, :term:`PI`, ✅, ✅
    , **MSO2000/B**, :term:`PI`, ✅,
    , **DPO2000/B**, :term:`PI`, ✅,
-   , **MDO3000**, :term:`PI`, ✅,
-   , **MDO4000/B/C**, :term:`PI`, ✅,
-   , **MSO4000/B**, :term:`PI`, ✅,
-   , **DPO4000/B**, :term:`PI`, ✅,
-   , **MSO5000/B**, :term:`PI`, ✅,
-   , **DPO5000/B**, :term:`PI`, ✅, 🚧
-   , **DPO7000/C**, :term:`PI`, ✅, 🚧
+   , **MDO3000**, :term:`PI`, ✅, ✅
+   , **MDO4000/B/C**, :term:`PI`, ✅, ✅
+   , **MSO4000/B**, :term:`PI`, ✅, ✅
+   , **DPO4000/B**, :term:`PI`, ✅, ✅
+   , **MSO5000/B**, :term:`PI`, ✅, ✅
+   , **DPO5000/B**, :term:`PI`, ✅, ✅
+   , **DPO7000/C**, :term:`PI`, ✅, ✅
    , **DPO70000/C/D/DX/SX**, :term:`PI`, ✅, ✅
    , **DSA70000/C/D**, :term:`PI`, ✅, ✅
    , **MSO70000/C/DX**, :term:`PI`, ✅, ✅
@@ -227,9 +229,10 @@ Supported Devices & Software Solutions
    :term:`SMUs <SMU>`, **24xx Standard**, :term:`PI`, ✅,
    , **24xx Interactive**, :term:`TSP`, ✅, ✅
    , **26xxB**, :term:`TSP`, ✅, 🚧
+   , **2636B**, :term:`TSP`, ✅, ✅
    , **Model 2601B-PULSE**, :term:`TSP`, ✅,
    , **Model 2606B**, :term:`TSP`, ✅, 🚧
-   , **2651A**, :term:`TSP`, ✅,
+   , **2651A**, :term:`TSP`, ✅, ✅
    , **2657A**, :term:`TSP`, ✅,
    , **6430 (electrometer)**, :term:`PI`, ✅,
    , **6514 (electrometer)**, :term:`PI`, ✅,
@@ -261,7 +264,7 @@ Supported Connections
 ~~~~~~~~~~~~~~~~~~~~~
 
 -  REST API
--  VISA *(NI-VISA and PyVISA-py)*
+-  VISA *(TekVISA, NI-VISA and PyVISA-py)*
 
    -  TCPIP
    -  ASRL / Serial / RS-232 / RS-485
