@@ -5,9 +5,9 @@ on:
     branches: [main]
   workflow_call:
     inputs:
-      python-dependencies:
-        description: A space-separated list of python dependencies to install using
-          pip.
+      workflow-python-dependencies:
+        description: A space-separated list of python dependencies needed for this
+          workflow.
         required: false
         type: string
       pre-commit-hook-skip-list:
@@ -35,7 +35,7 @@ jobs:
           check-latest: true
       - name: Install workflow dependencies
         env:
-          PYTHON_DEPENDENCIES: ${{ inputs.python-dependencies || 'poetry yamlfix toml-sort requests pre-commit-update pre-commit' }}
+          PYTHON_DEPENDENCIES: ${{ inputs.workflow-python-dependencies || 'poetry yamlfix toml-sort requests pre-commit-update pre-commit' }}
         run: pip install ${{ env.PYTHON_DEPENDENCIES }}
       - uses: crazy-max/ghaction-import-gpg@v6
         with:
