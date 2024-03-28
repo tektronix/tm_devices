@@ -13,7 +13,6 @@ from tm_devices.drivers.pi.pi_device import PIDevice
 
 from ._1jzp7o_mdodpo.trigger import Trigger
 from ._1kozfv_dpo.search import Search
-from ._1l5u97_mdomsodpo.measurement import Measurement
 from ._1lcv3a_msodpomdo.message import Message
 from ._1lcv3a_msodpomdo.setup_1 import SetupItem
 from ._1ltpwt_mdomsodpo.actonevent import Actonevent
@@ -59,6 +58,7 @@ from ._1mlt9u_mdomsodpo.configuration import Configuration
 from ._1mlt9u_mdomsodpo.deskew import Deskew
 from ._1mlt9u_mdomsodpo.display import Display
 from ._1mlt9u_mdomsodpo.mask import Mask
+from ._1mlt9u_mdomsodpo.measurement import Measurement
 from ._1mlt9u_mdomsodpo.recall import Recall
 from ._1mlt9u_mdomsodpo.select import Select
 from ._1mq0z9_msodpo.rf import Rf
