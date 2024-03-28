@@ -18,13 +18,17 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added TekVISA as one of the VISA backends supported.
+
 ### Changed
 
 - Updated the `get_model_series()` function to only warn the user if the model is not found in the `SupportedModels` enumeration. This also eliminates false warnings during unit tests.
 
-### Added
+### Fixed
 
-- Added TekVISA as one of the VISA backends supported.
+- Updated the measurement source selection command for the MDO3K, MDO4K, MSO4K and DPO4K models to work properly.
 
 ______________________________________________________________________
 
