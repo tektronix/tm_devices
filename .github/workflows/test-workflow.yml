@@ -1,0 +1,9 @@
+---
+name: Package Build Testing
+on:
+  push:
+    branches: [main]
+jobs:
+  # Verify the package builds fine
+  build-package-test:
+    uses: ./.github/workflows/package-build.yml
