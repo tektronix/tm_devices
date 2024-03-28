@@ -164,13 +164,13 @@ Supported Devices & Software Solutions
 .. admonition:: Legend
    :class: hint
 
-   =========== ================
+   =========== ==================
    Symbol/Term Definition
-   =========== ================
-   🚧          Work in progress
-   ✅          Implemented
-   ❌          Not Supported
-   =========== ================
+   =========== ==================
+   🚧           Work in progress
+   ✅           Implemented
+   ❌           Not Supported
+   =========== ==================
 
    See the :doc:`glossary` for information on abbreviations.
 
