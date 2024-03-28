@@ -8,7 +8,7 @@ on:
 jobs:
   publish-test-results:
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.conclusion != 'skipped'
+    if: ${{ !contains(fromJSON('["skipped", "cancelled"]'), github.event.workflow_run.conclusion) }}
     permissions:
       checks: write
       pull-requests: write
