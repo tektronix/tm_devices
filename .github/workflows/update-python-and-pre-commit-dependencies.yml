@@ -3,6 +3,18 @@ name: Update python linting dependencies in-sync with pre-commit
 on:
   pull_request:
     branches: [main]
+  workflow_call:
+    inputs:
+      python-dependencies:
+        description: A space-separated list of python dependencies to install using
+          pip
+        required: false
+        type: string
+      pre-commit-hook-skip-list:
+        description: A comma-separated list of pre-commit hooks to skip during this
+          job
+        required: false
+        type: string
 jobs:
   update-python-and-pre-commit-deps:
     name: Update python linters and pre-commit dependencies
@@ -22,7 +34,9 @@ jobs:
           python-version: x  # any version
           check-latest: true
       - name: Install workflow dependencies
-        run: pip install poetry yamlfix toml-sort requests pre-commit-update pre-commit
+        env:
+          PYTHON_DEPENDENCIES: ${{ inputs.python-dependencies || 'poetry yamlfix toml-sort requests pre-commit-update pre-commit' }}
+        run: pip install ${{ env.PYTHON_DEPENDENCIES }}
       - uses: crazy-max/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.TEK_OPENSOURCE_GPG_SIGNING_KEY_PRIVATE }}
@@ -33,7 +47,7 @@ jobs:
         run: python scripts/update_development_dependencies.py --no-install
       - name: Run pre-commit
         env:
-          SKIP: pylint,pyright,pyright-verifytypes,pyroma
+          SKIP: ${{ inputs.pre-commit-hook-skip-list || 'pylint,pyright,pyright-verifytypes,pyroma' }}
         run: python -m pre_commit run --all
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
