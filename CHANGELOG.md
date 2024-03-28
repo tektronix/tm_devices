@@ -24,7 +24,7 @@ Things to be included in the next release go here.
 
 ### Fixed
 
-- fix: Updated the measurement source selection command for the MDO3K, MDO4K, MSO4K and DPO4K models to work properly.
+- Updated the measurement source selection command for the MDO3K, MDO4K, MSO4K and DPO4K models to work properly.
 
 ______________________________________________________________________
 
