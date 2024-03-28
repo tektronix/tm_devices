@@ -7,12 +7,12 @@ on:
     inputs:
       python-dependencies:
         description: A space-separated list of python dependencies to install using
-          pip
+          pip.
         required: false
         type: string
       pre-commit-hook-skip-list:
         description: A comma-separated list of pre-commit hooks to skip during this
-          job
+          job.
         required: false
         type: string
 jobs:

@@ -6,7 +6,7 @@ on:
   workflow_call:
     inputs:
       reviewer-teams-list:
-        description: A comma-separated list of team names to add as reviewers
+        description: A comma-separated list of team names to add as reviewers.
         required: true
         type: string
 jobs:

@@ -9,7 +9,7 @@ on:
   workflow_call:
     inputs:
       package-name:
-        description: The name of the package being installed
+        description: The name of the package being installed.
         required: true
         type: string
 jobs:
