@@ -94,28 +94,10 @@ jobs:
           files: ./.coverage_tests.xml
           name: codecov-${{ matrix.os_name }}
           fail_ci_if_error: true
-  publish-test-results:
-    if: ${{ !cancelled() }}
-    needs: test-fast
-    runs-on: ubuntu-latest
-    permissions:
-      checks: write
-      pull-requests: write
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          path: artifacts
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        with:
-          files: artifacts/**/.results_tests/results.xml
-          large_files: true
-          report_individual_runs: true
-          action_fail_on_inconclusive: true
   # Check that all jobs passed
   check-tests-passed:
     if: ${{ !cancelled() }}
-    needs: [test-general, test-fast, publish-test-results]
+    needs: [test-general, test-fast]
     runs-on: ubuntu-latest
     steps:
       - name: Decide whether the needed jobs succeeded or failed
