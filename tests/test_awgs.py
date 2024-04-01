@@ -314,7 +314,7 @@ def test_awg7k(device_manager: DeviceManager) -> None:  # pylint: disable=too-ma
             else:
                 offset_range = ParameterBounds(lower=-0.0, upper=0.0)
 
-            ampl_range = ParameterBounds(lower=50.0e-3, upper=1.0)
+            ampl_range = ParameterBounds(lower=50.0e-3, upper=2.0)
 
         constraints = awg.get_waveform_constraints(
             SignalGeneratorFunctionsAWG.TRIANGLE,
@@ -363,7 +363,6 @@ def test_awg5k(device_manager: DeviceManager) -> None:
     )
     sample_range = ParameterBounds(lower=10.0e6, upper=int(awg5k.model[5]) * 600.0e6 + 600.0e6)
     offset_range = ParameterBounds(lower=0, upper=0)
-    ampl_range = ParameterBounds(lower=50e-3, upper=1.0)
     check_constraints(
         constraints,
         sample_range,

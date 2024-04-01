@@ -98,7 +98,7 @@ class AWG7K(AWG7KMixin, AWG):
             amplitude_range = ParameterBounds(lower=500.0e-3, upper=1.0)
             offset_range = ParameterBounds(lower=-0.0, upper=0.0)
         elif output_signal_path == self.OutputSignalPath.DCA:
-            amplitude_range = ParameterBounds(lower=50e-3, upper=1.0)
+            amplitude_range = ParameterBounds(lower=50e-3, upper=2.0)
             offset_range = ParameterBounds(lower=-0.5, upper=0.5)
         # if the DIR path is connected
         else:
