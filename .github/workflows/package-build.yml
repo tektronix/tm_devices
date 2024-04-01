@@ -34,8 +34,8 @@ jobs:
       - name: Test installing wheel
         run: |
           pip install ${{ steps.build-pkg.outputs.dist }}/*.whl
-          pip uninstall --yes "${{ env.PACKAGE_NAME }}"
+          pip uninstall --yes "$PACKAGE_NAME"
       - name: Test installing tarball
         run: |-
           pip install ${{ steps.build-pkg.outputs.dist }}/*.tar.gz
-          pip uninstall --yes "${{ env.PACKAGE_NAME }}"
+          pip uninstall --yes "$PACKAGE_NAME"

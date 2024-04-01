@@ -5,11 +5,6 @@ on:
     branches: [main]
   workflow_call:
     inputs:
-      workflow-python-dependencies:
-        description: A space-separated list of python dependencies needed for this
-          workflow.
-        required: false
-        type: string
       pre-commit-hook-skip-list:
         description: A comma-separated list of pre-commit hooks to skip during this
           job.
@@ -34,9 +29,7 @@ jobs:
           python-version: x  # any version
           check-latest: true
       - name: Install workflow dependencies
-        env:
-          PYTHON_DEPENDENCIES: ${{ inputs.workflow-python-dependencies || 'poetry yamlfix toml-sort requests pre-commit-update pre-commit' }}
-        run: pip install ${{ env.PYTHON_DEPENDENCIES }}
+        run: pip install -r scripts/requirements.txt
       - uses: crazy-max/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.TEK_OPENSOURCE_GPG_SIGNING_KEY_PRIVATE }}

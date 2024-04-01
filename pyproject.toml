@@ -255,6 +255,7 @@ filterwarnings = [
   "ignore:GPIB library not found:UserWarning",
   "ignore:pkg_resources is deprecated:DeprecationWarning"
 ]
+junit_family = "xunit2"
 junit_logging = "all"
 markers = [
   'docs',
