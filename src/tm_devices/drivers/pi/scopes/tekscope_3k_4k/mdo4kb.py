@@ -1,4 +1,5 @@
 """MDO4KB device driver module."""
+
 from tm_devices.commands import MDO4KBMixin
 from tm_devices.drivers.pi.scopes.tekscope_3k_4k.mdo4k import MDO4K
 

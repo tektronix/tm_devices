@@ -1,4 +1,5 @@
 """Linear voltage sweep to measure the reverse leakage of a diode."""
+
 import math
 
 from time import sleep
@@ -30,7 +31,7 @@ def dioderl_swp(  # noqa: PLR0915
         source_delay: The delay between the start of source and the source complete event.
     """
     with DeviceManager() as dev_man:
-        smu2657a: SMU2657A = dev_man.add_smu(  # pyright: ignore[reportGeneralTypeIssues]
+        smu2657a: SMU2657A = dev_man.add_smu(  # pyright: ignore[reportAssignmentType]
             address="TCPIP::0.0.0.0::inst0::INSTR", alias="my2657a"
         )  # 192.168.0.2
         # Reset and initialize instrument

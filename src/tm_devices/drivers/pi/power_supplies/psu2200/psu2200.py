@@ -1,5 +1,5 @@
 """2200 Base device driver for the 22xx family of power supplies."""
-from functools import cached_property
+
 from typing import Tuple
 
 from packaging.version import Version
@@ -7,6 +7,9 @@ from packaging.version import Version
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.power_supplies.power_supply import PowerSupplyUnit
 from tm_devices.helpers import get_version
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 @family_base_class

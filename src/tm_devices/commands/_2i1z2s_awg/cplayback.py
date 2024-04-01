@@ -38,6 +38,7 @@ Commands and Queries:
     - CPLayback:COMPile:SRATe:AUTO?
     - CPLayback:COMPile:SRATe?
 """  # noqa: E501
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite, SCPICmdWriteNoArguments

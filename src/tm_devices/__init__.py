@@ -10,6 +10,7 @@ Examples:
     True
     2023-09-21 01:50:16.031 - DeviceManager Closed
 """
+
 from importlib.metadata import version
 
 from tm_devices.device_manager import DeviceManager, print_available_visa_devices

@@ -20,9 +20,9 @@ jobs:
         platform: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           check-latest: true
@@ -32,7 +32,7 @@ jobs:
           python -m pip install --upgrade tox tox-gh-actions
       - name: Run tox
         run: tox -v
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: artifact_${{ matrix.platform }}_${{ matrix.python-version }}_tests_and_linting
@@ -47,9 +47,9 @@ jobs:
       matrix:
         os_name: [ubuntu, windows, macos]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: x  # any version
           check-latest: true
@@ -59,7 +59,7 @@ jobs:
           python -m pip install --upgrade tox
       - name: Test
         run: tox -ve tests
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: artifact_${{ matrix.os_name }}_tests

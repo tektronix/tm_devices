@@ -198,6 +198,7 @@ Commands and Queries:
     - ERRORDetector:TYPe {BIT | FRAME | SYMBOL | CHARACTER | PRBS7 | PRBS9}
     - ERRORDetector:TYPe?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -1610,20 +1611,22 @@ class ErrordetectorSkipsetprimitive(SCPICmdRead):
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._minus: Dict[
-            int, ErrordetectorSkipsetprimitiveMinusItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: ErrordetectorSkipsetprimitiveMinusItem(device, f"{self._cmd_syntax}:MINus{x}")
+        self._minus: Dict[int, ErrordetectorSkipsetprimitiveMinusItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: ErrordetectorSkipsetprimitiveMinusItem(
+                    device, f"{self._cmd_syntax}:MINus{x}"
+                )
+            )
         )
         self._plus: Dict[int, ErrordetectorSkipsetprimitivePlusItem] = DefaultDictPassKeyToFactory(
             lambda x: ErrordetectorSkipsetprimitivePlusItem(device, f"{self._cmd_syntax}:PLUS{x}")
         )
         self._state = ErrordetectorSkipsetprimitiveState(device, f"{self._cmd_syntax}:STATE")
-        self._symbol: Dict[
-            int, ErrordetectorSkipsetprimitiveSymbolItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: ErrordetectorSkipsetprimitiveSymbolItem(
-                device, f"{self._cmd_syntax}:SYMBOL{x}"
+        self._symbol: Dict[int, ErrordetectorSkipsetprimitiveSymbolItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: ErrordetectorSkipsetprimitiveSymbolItem(
+                    device, f"{self._cmd_syntax}:SYMBOL{x}"
+                )
             )
         )
         self._symbols = ErrordetectorSkipsetprimitiveSymbols(device, f"{self._cmd_syntax}:SYMBOLS")
@@ -5786,11 +5789,11 @@ class ErrordetectorBitSyncpattern(SCPICmdRead):
         self._bitstring = ErrordetectorBitSyncpatternBitstring(
             device, f"{self._cmd_syntax}:BITString"
         )
-        self._disparity: Dict[
-            int, ErrordetectorBitSyncpatternDisparityItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: ErrordetectorBitSyncpatternDisparityItem(
-                device, f"{self._cmd_syntax}:DISParity{x}"
+        self._disparity: Dict[int, ErrordetectorBitSyncpatternDisparityItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: ErrordetectorBitSyncpatternDisparityItem(
+                    device, f"{self._cmd_syntax}:DISParity{x}"
+                )
             )
         )
         self._minus: Dict[int, ErrordetectorBitSyncpatternMinusItem] = DefaultDictPassKeyToFactory(
@@ -5799,10 +5802,12 @@ class ErrordetectorBitSyncpattern(SCPICmdRead):
         self._plus: Dict[int, ErrordetectorBitSyncpatternPlusItem] = DefaultDictPassKeyToFactory(
             lambda x: ErrordetectorBitSyncpatternPlusItem(device, f"{self._cmd_syntax}:PLUS{x}")
         )
-        self._symbol: Dict[
-            int, ErrordetectorBitSyncpatternSymbolItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: ErrordetectorBitSyncpatternSymbolItem(device, f"{self._cmd_syntax}:SYMBOL{x}")
+        self._symbol: Dict[int, ErrordetectorBitSyncpatternSymbolItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: ErrordetectorBitSyncpatternSymbolItem(
+                    device, f"{self._cmd_syntax}:SYMBOL{x}"
+                )
+            )
         )
         self._symbols = ErrordetectorBitSyncpatternSymbols(device, f"{self._cmd_syntax}:SYMBOLS")
 
@@ -6360,10 +6365,12 @@ class ErrordetectorAlignprimitive(SCPICmdRead):
             lambda x: ErrordetectorAlignprimitivePlusItem(device, f"{self._cmd_syntax}:PLUS{x}")
         )
         self._state = ErrordetectorAlignprimitiveState(device, f"{self._cmd_syntax}:STATE")
-        self._symbol: Dict[
-            int, ErrordetectorAlignprimitiveSymbolItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: ErrordetectorAlignprimitiveSymbolItem(device, f"{self._cmd_syntax}:SYMBOL{x}")
+        self._symbol: Dict[int, ErrordetectorAlignprimitiveSymbolItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: ErrordetectorAlignprimitiveSymbolItem(
+                    device, f"{self._cmd_syntax}:SYMBOL{x}"
+                )
+            )
         )
         self._symbols = ErrordetectorAlignprimitiveSymbols(device, f"{self._cmd_syntax}:SYMBOLS")
 

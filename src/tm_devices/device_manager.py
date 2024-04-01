@@ -1,5 +1,6 @@
 # pylint: disable=too-many-lines
 """Device manager module."""
+
 from __future__ import annotations
 
 import contextlib
@@ -58,6 +59,7 @@ from tm_devices.drivers import (
     MSO2K,
     MSO2KB,
     MSO4,
+    MSO4B,
     MSO4K,
     MSO4KB,
     MSO5,
@@ -136,10 +138,13 @@ with warnings.catch_warnings():
     warnings.simplefilter("ignore", UserWarning)
     import pyvisa as visa
 
-    from pyvisa_py.protocols.rpc import RPCError  # type: ignore
+    from pyvisa_py.protocols.rpc import RPCError  # pyright: ignore[reportMissingTypeStubs]
 
-# noinspection PyUnresolvedReferences  # pylint: disable=unused-import,wrong-import-order
-from traceback_with_variables import activate_by_import  # noqa: F401  # type: ignore
+# pylint: disable=unused-import,wrong-import-order
+# noinspection PyUnresolvedReferences
+from traceback_with_variables import (  # pyright: ignore[reportMissingTypeStubs]
+    activate_by_import,  # noqa: F401  # pyright: ignore[reportUnusedImport]
+)
 
 if TYPE_CHECKING:
     from pyvisa.resources import MessageBasedResource
@@ -153,7 +158,7 @@ if TYPE_CHECKING:
 # TODO: this is temporary until python3.12 which will support TypeVar with defaults
 AFGAlias: TypeAlias = Union[AFG3K, AFG3KB, AFG3KC, AFG31K]
 AWGAlias: TypeAlias = Union[AWG5K, AWG5KB, AWG5KC, AWG7K, AWG7KB, AWG7KC, AWG5200, AWG70KA, AWG70KB]
-DataAcquisitionSystemAlias: TypeAlias = Union[DAQ6510]  # pyright: ignore
+DataAcquisitionSystemAlias: TypeAlias = Union[DAQ6510]  # pyright: ignore[reportInvalidTypeArguments]
 DigitalMultimeterAlias: TypeAlias = Union[DMM6500, DMM7510, DMM7512]
 ScopeAlias: TypeAlias = Union[
     DPO5K,
@@ -172,6 +177,7 @@ ScopeAlias: TypeAlias = Union[
     MSO5,
     MSO6,
     MSO4,
+    MSO4B,
     MSO2,
     MSO6B,
     MSO5B,
@@ -197,7 +203,7 @@ ScopeAlias: TypeAlias = Union[
     MSO70KC,
     MSO70KDX,
 ]
-MarginTesterAlias: TypeAlias = Union[TMT4]  # pyright: ignore
+MarginTesterAlias: TypeAlias = Union[TMT4]  # pyright: ignore[reportInvalidTypeArguments]
 PowerSupplyUnitAlias: TypeAlias = Union[
     PSU2200,
     PSU2220,
@@ -241,7 +247,7 @@ SourceMeasureUnitAlias: TypeAlias = Union[
     SMU6514,
     SMU6517B,
 ]
-SystemsSwitchAlias: TypeAlias = Union[SS3706A]  # pyright: ignore
+SystemsSwitchAlias: TypeAlias = Union[SS3706A]  # pyright: ignore[reportInvalidTypeArguments]
 
 
 ####################################################################################################
@@ -1073,7 +1079,7 @@ class DeviceManager(metaclass=Singleton):
                 if device_name not in self.__devices:
                     self.__create_device(device_name, device_config)
 
-    def open(self) -> bool:  # noqa: A003
+    def open(self) -> bool:
         """Reopen all devices if the DeviceManager has been previously closed.
 
         Returns:
@@ -1191,6 +1197,12 @@ class DeviceManager(metaclass=Singleton):
         if (visa_resource_parts := detect_visa_resource_expression(address)) is not None:
             connection_type = visa_resource_parts[0]
             address = visa_resource_parts[1]
+            if (
+                connection_type == ConnectionTypes.SOCKET.value
+                and len(address_parts := address.split(":", maxsplit=1)) > 1
+            ):
+                address = address_parts[0]
+                port = int(address_parts[1])
 
         # Device Manager uses all caps for key mappings to device drivers and aliases
         config_dict: dict[str, Optional[Union[str, int, SerialConfig]]] = {
@@ -1207,7 +1219,7 @@ class DeviceManager(metaclass=Singleton):
             config_dict["serial_config"] = serial_config
         if device_driver:
             config_dict["device_driver"] = device_driver
-        new_device_name, new_device_config = self.__config.add_device(**config_dict)  # type: ignore
+        new_device_name, new_device_config = self.__config.add_device(**config_dict)  # pyright: ignore[reportArgumentType]
 
         return self.__create_device(new_device_name, new_device_config)
 
@@ -1359,7 +1371,7 @@ class DeviceManager(metaclass=Singleton):
             AttributeError: Indicates that the calling method should not have been used.
         """
         if not self.__is_open and not self._suppress_protection:
-            previous_frame = cast(FrameType, inspect.currentframe().f_back.f_back)  # type: ignore
+            previous_frame = cast(FrameType, inspect.currentframe().f_back.f_back)  # pyright: ignore[reportOptionalMemberAccess]
             message = (
                 f"The {self.__class__.__name__} is closed, please use the .open() "
                 f"method before continuing to use the {self.__class__.__name__}.\n"

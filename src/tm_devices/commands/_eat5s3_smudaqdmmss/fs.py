@@ -22,6 +22,7 @@ Attributes and Functions:
     - fs.readdir()
     - fs.rmdir()
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError
@@ -236,7 +237,9 @@ class Fs(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f'{self._cmd_syntax}.rmdir("{path}")')  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f'{self._cmd_syntax}.rmdir("{path}")'
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.rmdir()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

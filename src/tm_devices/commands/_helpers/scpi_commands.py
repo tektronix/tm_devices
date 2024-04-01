@@ -4,6 +4,7 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
 Please report an issue if one is found.
 """
+
 import re
 import string
 
@@ -265,7 +266,7 @@ class ValidatedChannel(BaseCmd):  # pylint: disable=too-few-public-methods
             raise ValueError(msg)
 
 
-class DefaultDictDeviceCommunication(defaultdict):  # type: ignore
+class DefaultDictDeviceCommunication(defaultdict):  # pyright: ignore[reportMissingTypeArgument]
     """A custom default dictionary that can be used to send/receive commands to/from a device.
 
     The ``.query()`` method is used when ``__getitem__()`` is called and the result of the query is

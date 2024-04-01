@@ -19,9 +19,7 @@ from tm_devices.drivers import SMU2450
 with DeviceManager() as device_manager:
     print(device_manager.get_available_devices())
 
-    inst: SMU2450 = device_manager.add_smu(
-        "192.168.4.74", alias="my2450"
-    )  # pyright: ignore[reportGeneralTypeIssues]
+    inst: SMU2450 = device_manager.add_smu("192.168.4.74", alias="my2450")  # pyright: ignore[reportAssignmentType]
 
     # Clear the buffer.
     inst.commands.buffer_var["defbuffer1"].clear()
@@ -85,7 +83,7 @@ with DeviceManager() as device_manager:
         reading = inst.commands.buffer_var["defbuffer1"].readings[i]
         source_value = inst.commands.buffer_var["defbuffer1"].sourcevalues[i]
         timestamp = float(
-            inst.commands.buffer_var["defbuffer1"].relativetimestamps.get[i]  # type: ignore
+            inst.commands.buffer_var["defbuffer1"].relativetimestamps.get(i)  # pyright: ignore[reportArgumentType]
         )
         print(i, reading, source_value, timestamp)
 

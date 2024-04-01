@@ -1,8 +1,10 @@
 """A mixin class providing common methods and attributes for devices with usb ports."""
 
 from abc import ABC, abstractmethod
-from functools import cached_property
 from typing import Tuple
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 # pylint: disable=too-few-public-methods

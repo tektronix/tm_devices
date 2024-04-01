@@ -28,6 +28,7 @@ Commands and Queries:
     - ZOOm:ZOOM1?
     - ZOOm?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

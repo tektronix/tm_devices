@@ -1,12 +1,15 @@
 """Base Scope device driver module."""
+
 import inspect
 
 from abc import ABC
-from functools import cached_property
 from typing import Any, List, Optional, Tuple, Union
 
 from tm_devices.drivers.pi.pi_device import PIDevice
 from tm_devices.helpers import DeviceTypes
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 class Scope(PIDevice, ABC):
@@ -25,7 +28,7 @@ class Scope(PIDevice, ABC):
         """
         # TODO: implement for all driver subclasses then convert to abstractmethod
         raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
+            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )
 
@@ -62,7 +65,7 @@ class Scope(PIDevice, ABC):
             NotImplementedError: Indicates the current driver has not implemented this method.
         """
         raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
+            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )
 

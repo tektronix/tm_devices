@@ -18,6 +18,7 @@ Commands and Queries:
     - OUTPut1:STATe {ON|OFF|<NR1>}
     - OUTPut1:STATe?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

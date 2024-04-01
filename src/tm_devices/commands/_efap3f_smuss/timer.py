@@ -17,6 +17,7 @@ Attributes and Functions:
     - timer.measure.t()
     - timer.reset()
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError
@@ -51,7 +52,9 @@ class TimerMeasure(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            return self._device.query(f"print({self._cmd_syntax}.t())")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.t())"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.t()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -94,7 +97,9 @@ class Timer(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.reset()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.reset()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

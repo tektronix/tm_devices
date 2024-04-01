@@ -71,6 +71,7 @@ Attributes and Functions:
     - status.system5.ntr
     - status.system5.ptr
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError
@@ -244,7 +245,9 @@ class StatusSystem5(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ntr"
-            return self._device.query(f"print({self._cmd_syntax}.ntr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ntr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -277,7 +280,9 @@ class StatusSystem5(BaseTSPCmd):
                     self._cmd_syntax + ".ntr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ntr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ntr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -307,7 +312,9 @@ class StatusSystem5(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ptr"
-            return self._device.query(f"print({self._cmd_syntax}.ptr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ptr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -340,7 +347,9 @@ class StatusSystem5(BaseTSPCmd):
                     self._cmd_syntax + ".ptr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ptr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ptr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -511,7 +520,9 @@ class StatusSystem4(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ntr"
-            return self._device.query(f"print({self._cmd_syntax}.ntr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ntr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -544,7 +555,9 @@ class StatusSystem4(BaseTSPCmd):
                     self._cmd_syntax + ".ntr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ntr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ntr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -574,7 +587,9 @@ class StatusSystem4(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ptr"
-            return self._device.query(f"print({self._cmd_syntax}.ptr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ptr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -607,7 +622,9 @@ class StatusSystem4(BaseTSPCmd):
                     self._cmd_syntax + ".ptr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ptr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ptr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -778,7 +795,9 @@ class StatusSystem3(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ntr"
-            return self._device.query(f"print({self._cmd_syntax}.ntr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ntr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -811,7 +830,9 @@ class StatusSystem3(BaseTSPCmd):
                     self._cmd_syntax + ".ntr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ntr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ntr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -841,7 +862,9 @@ class StatusSystem3(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ptr"
-            return self._device.query(f"print({self._cmd_syntax}.ptr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ptr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -874,7 +897,9 @@ class StatusSystem3(BaseTSPCmd):
                     self._cmd_syntax + ".ptr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ptr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ptr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1045,7 +1070,9 @@ class StatusSystem2(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ntr"
-            return self._device.query(f"print({self._cmd_syntax}.ntr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ntr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1078,7 +1105,9 @@ class StatusSystem2(BaseTSPCmd):
                     self._cmd_syntax + ".ntr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ntr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ntr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1108,7 +1137,9 @@ class StatusSystem2(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ptr"
-            return self._device.query(f"print({self._cmd_syntax}.ptr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ptr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1141,7 +1172,9 @@ class StatusSystem2(BaseTSPCmd):
                     self._cmd_syntax + ".ptr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ptr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ptr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1312,7 +1345,9 @@ class StatusSystem(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ntr"
-            return self._device.query(f"print({self._cmd_syntax}.ntr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ntr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1345,7 +1380,9 @@ class StatusSystem(BaseTSPCmd):
                     self._cmd_syntax + ".ntr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ntr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ntr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1375,7 +1412,9 @@ class StatusSystem(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ptr"
-            return self._device.query(f"print({self._cmd_syntax}.ptr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ptr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1408,7 +1447,9 @@ class StatusSystem(BaseTSPCmd):
                     self._cmd_syntax + ".ptr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ptr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ptr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1578,7 +1619,9 @@ class StatusStandard(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ntr"
-            return self._device.query(f"print({self._cmd_syntax}.ntr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ntr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1611,7 +1654,9 @@ class StatusStandard(BaseTSPCmd):
                     self._cmd_syntax + ".ntr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ntr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ntr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1641,7 +1686,9 @@ class StatusStandard(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ptr"
-            return self._device.query(f"print({self._cmd_syntax}.ptr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ptr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1674,7 +1721,9 @@ class StatusStandard(BaseTSPCmd):
                     self._cmd_syntax + ".ptr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ptr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ptr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1841,7 +1890,9 @@ class StatusQuestionable(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ntr"
-            return self._device.query(f"print({self._cmd_syntax}.ntr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ntr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1874,7 +1925,9 @@ class StatusQuestionable(BaseTSPCmd):
                     self._cmd_syntax + ".ntr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ntr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ntr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1904,7 +1957,9 @@ class StatusQuestionable(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ptr"
-            return self._device.query(f"print({self._cmd_syntax}.ptr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ptr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1937,7 +1992,9 @@ class StatusQuestionable(BaseTSPCmd):
                     self._cmd_syntax + ".ptr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ptr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ptr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2144,7 +2201,9 @@ class StatusOperationUser(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ntr"
-            return self._device.query(f"print({self._cmd_syntax}.ntr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ntr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2177,7 +2236,9 @@ class StatusOperationUser(BaseTSPCmd):
                     self._cmd_syntax + ".ntr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ntr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ntr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2207,7 +2268,9 @@ class StatusOperationUser(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ptr"
-            return self._device.query(f"print({self._cmd_syntax}.ptr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ptr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2240,7 +2303,9 @@ class StatusOperationUser(BaseTSPCmd):
                     self._cmd_syntax + ".ptr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ptr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ptr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2414,7 +2479,9 @@ class StatusOperation(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ntr"
-            return self._device.query(f"print({self._cmd_syntax}.ntr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ntr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2447,7 +2514,9 @@ class StatusOperation(BaseTSPCmd):
                     self._cmd_syntax + ".ntr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ntr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ntr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2477,7 +2546,9 @@ class StatusOperation(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ptr"
-            return self._device.query(f"print({self._cmd_syntax}.ptr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ptr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2510,7 +2581,9 @@ class StatusOperation(BaseTSPCmd):
                     self._cmd_syntax + ".ptr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ptr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ptr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2690,7 +2763,9 @@ class StatusMeasurement(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ntr"
-            return self._device.query(f"print({self._cmd_syntax}.ntr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ntr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2723,7 +2798,9 @@ class StatusMeasurement(BaseTSPCmd):
                     self._cmd_syntax + ".ntr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ntr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ntr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ntr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2753,7 +2830,9 @@ class StatusMeasurement(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".ptr"
-            return self._device.query(f"print({self._cmd_syntax}.ptr)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.ptr)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2786,7 +2865,9 @@ class StatusMeasurement(BaseTSPCmd):
                     self._cmd_syntax + ".ptr", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.ptr = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.ptr = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ptr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -3179,7 +3260,9 @@ class Status(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.reset()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.reset()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

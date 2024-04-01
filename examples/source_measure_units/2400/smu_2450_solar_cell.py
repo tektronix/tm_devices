@@ -15,9 +15,7 @@ from tm_devices.drivers import SMU2450
 with DeviceManager() as device_manager:
     print(device_manager.get_available_devices())
 
-    inst: SMU2450 = device_manager.add_smu(
-        "192.168.4.74", alias="my2450"
-    )  # pyright: ignore[reportGeneralTypeIssues]
+    inst: SMU2450 = device_manager.add_smu("192.168.4.74", alias="my2450")  # pyright: ignore[reportAssignmentType]
 
     # Define the number of points in the sweep.
     POINTS = 56
@@ -71,12 +69,9 @@ with DeviceManager() as device_manager:
         power = voltage * current
         print("Voltage: ", voltage, "Current: ", current, "Power: ", power)
 
-        if current > imax:
-            imax = current
-        if power > pmax:
-            pmax = power
-        if voltage > vmax:
-            vmax = voltage
+        imax = max(imax, current)
+        pmax = max(pmax, power)
+        vmax = max(vmax, voltage)
 
         if abs(current) < abs(MIN_CURR):
             voc = voltage

@@ -14,6 +14,7 @@ Commands and Queries:
     - INSTrument:COUPle:SOURce <state>
     - INSTrument:COUPle:SOURce?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

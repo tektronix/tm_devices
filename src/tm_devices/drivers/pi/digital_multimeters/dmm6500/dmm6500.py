@@ -1,4 +1,5 @@
 """DMM6500 device driver module."""
+
 from typing import Tuple
 
 from tm_devices.commands import DMM6500Mixin
@@ -28,7 +29,7 @@ class DMM6500(DMM6500Mixin, DigitalMultimeter):
     @property
     def ieee_cmds(self) -> LegacyTSPIEEE4882Commands:
         """Return an internal class containing methods for the standard IEEE 488.2 command set."""
-        return self._ieee_cmds  # type: ignore
+        return self._ieee_cmds  # pyright: ignore[reportReturnType]
 
     ################################################################################################
     # Public Methods

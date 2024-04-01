@@ -1,8 +1,10 @@
 """A mixin class providing common methods and attributes for devices with installable licenses."""
 
 from abc import ABC, abstractmethod
-from functools import cached_property
 from typing import final, Tuple
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 class LicensedMixin(ABC):

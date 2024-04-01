@@ -16,6 +16,7 @@ Commands and Queries:
     - AUXoutput[n]:SOURce:CMAPping?
     - AUXoutput[n]:SOURce?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, ValidatedDynamicNumberCmd

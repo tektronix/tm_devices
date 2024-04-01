@@ -19,6 +19,7 @@ Commands and Queries:
     - D<x>:THReshold {ECL|TTL|<NR3>}
     - D<x>:THReshold?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments, ValidatedDigitalBit

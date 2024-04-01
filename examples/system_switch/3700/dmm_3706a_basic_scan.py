@@ -54,6 +54,7 @@ Multiplexer Switch Card
 Rev: 1-EEB
     1.1-Update Function Names-EEB
 """
+
 from tm_devices import DeviceManager
 from tm_devices.drivers import SS3706A
 

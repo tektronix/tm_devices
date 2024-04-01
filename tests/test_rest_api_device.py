@@ -1,6 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Unit tests for rest_api_device.py."""
-from functools import cached_property
+
 from types import MappingProxyType
 from unittest import mock
 
@@ -12,6 +12,9 @@ from packaging.version import Version
 from mock_server import INDEX_RESPONSE, PORT
 from tm_devices.drivers.api.rest_api.rest_api_device import RESTAPIDevice, SupportedRequestTypes
 from tm_devices.drivers.device import family_base_class
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 from tm_devices.helpers.constants_and_dataclasses import DeviceConfigEntry
 from tm_devices.helpers.enums import ConnectionTypes, DeviceTypes
 
@@ -160,7 +163,8 @@ def test_unsupported_request_type(rest_api_device: CustomRestApiDevice) -> None:
     """
     with pytest.raises(ValueError, match="UNSUPPORTED is an unsupported request type."):
         rest_api_device._send_request(  # noqa: SLF001
-            request_type="UNSUPPORTED", url="/api"  # type: ignore
+            request_type="UNSUPPORTED",  # type: ignore[arg-type]
+            url="/api",
         )
 
 

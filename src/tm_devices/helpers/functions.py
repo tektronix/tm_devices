@@ -1,4 +1,5 @@
 """Module containing helpers for the tm_devices package."""
+
 import contextlib
 import datetime
 import importlib.metadata
@@ -12,10 +13,12 @@ import time
 import warnings
 
 from enum import EnumMeta
+from functools import lru_cache
 from typing import Any, Dict, Optional, Tuple, Type
 
 import requests
 
+from dateutil.tz import tzlocal
 from packaging.version import InvalidVersion, Version
 
 from tm_devices.helpers.constants_and_dataclasses import (
@@ -33,7 +36,7 @@ with warnings.catch_warnings():
     warnings.simplefilter("ignore", UserWarning)
     import pyvisa as visa
 
-    from gpib_ctypes import make_default_gpib  # type: ignore
+    from gpib_ctypes import make_default_gpib  # pyright: ignore[reportMissingTypeStubs]
     from pyvisa import util as pyvisa_util
     from pyvisa.resources import MessageBasedResource
 
@@ -42,16 +45,119 @@ with warnings.catch_warnings():
 ####################################################################################################
 # Private Constants
 ####################################################################################################
-_VISA_SYSTEM_DETAILS: Dict[str, Any] = pyvisa_util.get_system_details()
-_KEITHLEY_2_CHAR_MODEL_LOOKUP = {
-    "24": "SMU",
-    "26": "SMU",
-    "22": "PSU",
-    "75": "DMM",
-    "64": "SMU",
-    "65": "SMU",
-    "37": "SS",
-}
+__SUPPORTED_MODEL_REGEX_STRING = (
+    # AFGs
+    rf"(?P<{SupportedModels.AFG3K.value}>^AFG3\d\d\d$)"
+    rf"|(?P<{SupportedModels.AFG3KB.value}>^AFG3\d\d\dB$)"
+    rf"|(?P<{SupportedModels.AFG3KC.value}>^AFG3\d\d\dC$)"
+    rf"|(?P<{SupportedModels.AFG31K.value}>^AFG31\d\d\d$)"
+    # AWGs
+    rf"|(?P<{SupportedModels.AWG5200.value}>^AWG52\d\d$)"
+    rf"|(?P<{SupportedModels.AWG5K.value}>^AWG5\d\d\d$)"
+    rf"|(?P<{SupportedModels.AWG5KB.value}>^AWG5\d\d\dB$)"
+    rf"|(?P<{SupportedModels.AWG5KC.value}>^AWG5\d\d\dC$)"
+    rf"|(?P<{SupportedModels.AWG7K.value}>^AWG7\d\d\d$)"
+    rf"|(?P<{SupportedModels.AWG7KB.value}>^AWG7\d\d\dB$)"
+    rf"|(?P<{SupportedModels.AWG7KC.value}>^AWG7\d\d\dC$)"
+    rf"|(?P<{SupportedModels.AWG70KA.value}>^AWG70\d\d\dA?$)"
+    rf"|(?P<{SupportedModels.AWG70KB.value}>^AWG70\d\d\dB$)"
+    # Scopes
+    rf"|(?P<{SupportedModels.DPO5K.value}>^DPO5\d\d\d$)"
+    rf"|(?P<{SupportedModels.DPO5KB.value}>^DPO5\d\d\dB$)"
+    rf"|(?P<{SupportedModels.DPO7K.value}>^DPO7\d\d\d$)"
+    rf"|(?P<{SupportedModels.DPO7KC.value}>^DPO7\d\d\dC$)"
+    rf"|(?P<{SupportedModels.DPO70K.value}>^DPO7\d\d\d\d$)"
+    rf"|(?P<{SupportedModels.DPO70KC.value}>^DPO7\d\d\d\dC$)"
+    rf"|(?P<{SupportedModels.DPO70KD.value}>^DPO7\d\d\d\dD$)"
+    rf"|(?P<{SupportedModels.DPO70KDX.value}>^DPO7\d\d\d\dDX$)"
+    rf"|(?P<{SupportedModels.DPO70KSX.value}>^DPO7\d\d\d\dSX$)"
+    rf"|(?P<{SupportedModels.DSA70K.value}>^DSA7\d\d\d\d$)"
+    rf"|(?P<{SupportedModels.DSA70KC.value}>^DSA7\d\d\d\dC$)"
+    rf"|(?P<{SupportedModels.DSA70KD.value}>^DSA7\d\d\d\dD$)"
+    rf"|(?P<{SupportedModels.LPD6.value}>^LPD6\d$)"
+    rf"|(?P<{SupportedModels.MSO2.value}>^MSO2\d$)"
+    rf"|(?P<{SupportedModels.MSO4.value}>^MSO4\d$)"
+    rf"|(?P<{SupportedModels.MSO4B.value}>^MSO4\dB$)"
+    rf"|(?P<{SupportedModels.MSO5.value}>^MSO5\d$)"
+    rf"|(?P<{SupportedModels.MSO5B.value}>^MSO5\dB$)"
+    rf"|(?P<{SupportedModels.MSO5LP.value}>^MSO5\dLP$)"
+    rf"|(?P<{SupportedModels.MSO6.value}>^MSO6\d$)"
+    rf"|(?P<{SupportedModels.MSO6B.value}>^MSO6\dB$)"
+    rf"|(?P<{SupportedModels.MSO2K.value}>^MSO2\d\d\d$)"
+    rf"|(?P<{SupportedModels.MSO2KB.value}>^MSO2\d\d\dB$)"
+    rf"|(?P<{SupportedModels.DPO2K.value}>^DPO2\d\d\d$)"
+    rf"|(?P<{SupportedModels.DPO2KB.value}>^DPO2\d\d\dB$)"
+    rf"|(?P<{SupportedModels.MDO3.value}>^MDO3\d$)"
+    rf"|(?P<{SupportedModels.MDO3K.value}>^MDO3\d\d\d$)"
+    rf"|(?P<{SupportedModels.MSO4K.value}>^MSO4\d\d\d$)"
+    rf"|(?P<{SupportedModels.MSO4KB.value}>^MSO4\d\d\dB$)"
+    rf"|(?P<{SupportedModels.MDO4K.value}>^MDO4\d\d\d$)"
+    rf"|(?P<{SupportedModels.MDO4KB.value}>^MDO4\d\d\dB$)"
+    rf"|(?P<{SupportedModels.MDO4KC.value}>^MDO4\d\d\dC$)"
+    rf"|(?P<{SupportedModels.DPO4K.value}>^DPO4\d\d\d$)"
+    rf"|(?P<{SupportedModels.DPO4KB.value}>^DPO4\d\d\dB$)"
+    rf"|(?P<{SupportedModels.MSO5K.value}>^MSO5\d\d\d$)"
+    rf"|(?P<{SupportedModels.MSO5KB.value}>^MSO5\d\d\dB$)"
+    rf"|(?P<{SupportedModels.MSO70K.value}>^MSO7\d\d\d\d$)"
+    rf"|(?P<{SupportedModels.MSO70KC.value}>^MSO7\d\d\d\dC$)"
+    rf"|(?P<{SupportedModels.MSO70KDX.value}>^MSO7\d\d\d\dDX$)"
+    rf"|(?P<{SupportedModels.TEKSCOPESW.value}>^TEKSCOPESW$)"
+    rf"|(?P<{SupportedModels.TSOVU.value}>^TSOVU$)"
+    rf"|(?P<{SupportedModels.TMT4.value}>^TMT4$)"
+    # SMUs
+    rf"|(?P<{SupportedModels.SMU2400.value}>^2400$)"
+    rf"|(?P<{SupportedModels.SMU2401.value}>^2401$)"
+    rf"|(?P<{SupportedModels.SMU2410.value}>^2410$)"
+    rf"|(?P<{SupportedModels.SMU2450.value}>^2450$)"
+    rf"|(?P<{SupportedModels.SMU2460.value}>^2460$)"
+    rf"|(?P<{SupportedModels.SMU2461.value}>^2461$)"
+    rf"|(?P<{SupportedModels.SMU2470.value}>^2470$)"
+    rf"|(?P<{SupportedModels.SMU2601B_PULSE.value}>^2601B-PULSE$)"
+    rf"|(?P<{SupportedModels.SMU2601B.value}>^2601B$)"
+    rf"|(?P<{SupportedModels.SMU2602B.value}>^2602B$)"
+    rf"|(?P<{SupportedModels.SMU2604B.value}>^2604B$)"
+    rf"|(?P<{SupportedModels.SMU2606B.value}>^2606B$)"
+    rf"|(?P<{SupportedModels.SMU2611B.value}>^2611B$)"
+    rf"|(?P<{SupportedModels.SMU2612B.value}>^2612B$)"
+    rf"|(?P<{SupportedModels.SMU2614B.value}>^2614B$)"
+    rf"|(?P<{SupportedModels.SMU2634B.value}>^2634B$)"
+    rf"|(?P<{SupportedModels.SMU2635B.value}>^2635B$)"
+    rf"|(?P<{SupportedModels.SMU2636B.value}>^2636B$)"
+    rf"|(?P<{SupportedModels.SMU2651A.value}>^2651A$)"
+    rf"|(?P<{SupportedModels.SMU2657A.value}>^2657A$)"
+    rf"|(?P<{SupportedModels.SMU2601A.value}>^2601A$)"
+    rf"|(?P<{SupportedModels.SMU2602A.value}>^2602A$)"
+    rf"|(?P<{SupportedModels.SMU2604A.value}>^2604A$)"
+    rf"|(?P<{SupportedModels.SMU2611A.value}>^2611A$)"
+    rf"|(?P<{SupportedModels.SMU2612A.value}>^2612A$)"
+    rf"|(?P<{SupportedModels.SMU2614A.value}>^2614A$)"
+    rf"|(?P<{SupportedModels.SMU2634A.value}>^2634A$)"
+    rf"|(?P<{SupportedModels.SMU2635A.value}>^2635A$)"
+    rf"|(?P<{SupportedModels.SMU2636A.value}>^2636A$)"
+    rf"|(?P<{SupportedModels.SMU6430.value}>^6430$)"
+    rf"|(?P<{SupportedModels.SMU6514.value}>^6514$)"
+    rf"|(?P<{SupportedModels.SMU6517B.value}>^6517B$)"
+    # PSUs
+    rf"|(?P<{SupportedModels.PSU2200.value}>^2200$)"
+    rf"|(?P<{SupportedModels.PSU2220.value}>^2220$)"
+    rf"|(?P<{SupportedModels.PSU2230.value}>^2230$)"
+    rf"|(?P<{SupportedModels.PSU2231.value}>^2231$)"
+    rf"|(?P<{SupportedModels.PSU2231A.value}>^2231A$)"
+    rf"|(?P<{SupportedModels.PSU2280.value}>^2280$)"
+    rf"|(?P<{SupportedModels.PSU2281.value}>^2281$)"
+    # DAQs
+    rf"|(?P<{SupportedModels.DAQ6510.value}>^DAQ6510$)"
+    # DMMs
+    rf"|(?P<{SupportedModels.DMM6500.value}>^DMM6500$)"
+    rf"|(?P<{SupportedModels.DMM7510.value}>^DMM7510$)"
+    rf"|(?P<{SupportedModels.DMM7512.value}>^DMM7512$)"
+    # SSs
+    rf"|(?P<{SupportedModels.SS3706A.value}>^3706A$)"
+)
+# NOTE: This regex would show as having a bunch of errors in the PyCharm IDE due to an
+# open bug affecting f-strings in regex: https://youtrack.jetbrains.com/issue/PY-52140.
+# For this reason, the regex string itself is stored in a separate, private constant.
+_SUPPORTED_MODEL_REGEX_MAPPING = re.compile(__SUPPORTED_MODEL_REGEX_STRING)
 
 
 ####################################################################################################
@@ -216,7 +322,7 @@ def create_visa_connection(
     resource_expression = device_config_entry.get_visa_resource_expression()
     try:
         # noinspection PyTypeChecker
-        visa_object: MessageBasedResource = visa.ResourceManager(  # type: ignore
+        visa_object: MessageBasedResource = visa.ResourceManager(  # pyright: ignore[reportAssignmentType]
             visa_library
         ).open_resource(resource_expression)
         # Print a warning if PyVISA-py is used when the user didn't specify STANDALONE
@@ -237,7 +343,7 @@ def create_visa_connection(
         time.sleep(60)  # wait 60 seconds and try again
         try:
             # noinspection PyTypeChecker
-            visa_object: MessageBasedResource = visa.ResourceManager(  # type: ignore
+            visa_object: MessageBasedResource = visa.ResourceManager(  # pyright: ignore[reportAssignmentType]
                 visa_library
             ).open_resource(resource_expression)
         # The broad except is because pyvisa_py can throw a base exception in the tcpip.py file
@@ -264,7 +370,8 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
 
     The pieces consist of:
         - The connection type, e.g. TCPIP.
-        - The address of the device, an IP address, hostname, or
+        - The address of the device, an IP address
+          (with port separated by a colon for SOCKET connections), hostname, or
           string in the format ``model-serial``.
 
     Args:
@@ -275,11 +382,11 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
     """
     retval: Optional[Tuple[str, str]] = None
     if input_str.upper().startswith("ASRL"):
-        retval = ("SERIAL", input_str[4:].split("::", 1)[0])
+        retval = (ConnectionTypes.SERIAL.value, input_str[4:].split("::", 1)[0])
     elif (match := VISA_RESOURCE_EXPRESSION_REGEX.search(input_str.upper())) is not None:
         match_groups_list = list(filter(None, match.groups()))
-        for unneeded_part in ("INST", "INST0"):
-            if unneeded_part in match_groups_list:
+        for unneeded_part in ("INST", "INST0", "INSTR"):
+            while unneeded_part in match_groups_list:
                 match_groups_list.remove(unneeded_part)
         # Check if the model is in the USB model lookup
         filtered_usb_model_keys = [
@@ -290,12 +397,17 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
         if filtered_usb_model_keys:
             # SMU and PSU need to be removed from the string to prevent issues
             match_groups_list[1] = filtered_usb_model_keys[0].replace("SMU", "").replace("PSU", "")
-        retval = (match_groups_list[0].rstrip("0"), "-".join(match_groups_list[1:]).lstrip("0X"))
+        if match_groups_list[-1] == ConnectionTypes.SOCKET.value:
+            retval = (match_groups_list[-1], ":".join(match_groups_list[1:3]))
+        else:
+            retval = (
+                match_groups_list[0].rstrip("0"),
+                "-".join(match_groups_list[1:]).lstrip("0X"),
+            )
     return retval
 
 
-# pylint: disable=too-many-branches
-def get_model_series(model: str) -> str:  # noqa: PLR0912,C901,PLR0915
+def get_model_series(model: str) -> str:
     """Get the series string from the full model number.
 
     Args:
@@ -304,93 +416,47 @@ def get_model_series(model: str) -> str:  # noqa: PLR0912,C901,PLR0915
     Returns:
         The model series string (ex. MSO5, LPD6).
     """
-    valid_model_endings = {"A", "B", "C", "D", "LP"}
-    model = model.strip().upper()
-    model_parts = model.split("-")
-    if len(model_parts) == 2:  # noqa: PLR2004
-        model = model_parts[0]
-    elif len(model_parts) == 3:  # noqa: PLR2004
-        model = "MODEL" + model_parts[0]
+    model_parts = model.strip().upper().split("-")
+    simplified_model = model_parts[0].replace("MODEL", "").strip()
 
-    # find the model postscript if it exists and format it correctly
-    model_postscript = ""
+    # Remove ending characters from the model string that doesn't
+    # contribute to determining the correct series.
+    valid_model_endings = {"A", "B", "C", "D", "LP"}
+    model_end = ""
+    if re.search("[0-9]", simplified_model):  # if the model contains numbers
+        model_end = re.split(r"\d+", simplified_model)[-1]  # split on the occurrence of each number
+    if len(model_end) == 1 and model_end not in valid_model_endings:
+        simplified_model = simplified_model.rstrip(model_end)
+
+    # Check for any postscripts, e.g. 2601B-Pulse where "Pulse" is the postscript, which are a
+    # necessary part of determining the correct series and add them back to the model string
+    # to use to determine the series.
     if len(model_parts) > 1:
         for count, part in enumerate(model_parts):
             # avoid first model part as a postscript will likely never be in the beginning
             if count and len(part) > 1 and all(x.isalpha() for x in part):
-                model_postscript = part.capitalize()
+                simplified_model += f"-{part}"
 
-    if model.replace("MODEL", "").strip() in {x.upper() for x in SupportedModels.list_values()}:
-        # These are special models that don't have differences between the
-        # full model number and the model series.
-        model_beginning = SupportedModels[model.replace("MODEL", "").strip()].value
-        model_end = ""
-    else:
-        # Get any characters at the end of the model, e.g. 'B', 'LP', 'C'
-        model_beginning = ""
-        model_end = ""
-        if re.search("[0-9]", model):  # if the model contains numbers
-            model_end = re.split(r"\d+", model)[-1]  # split on the occurence of each number
-        if len(model_end) == 1 and model_end not in valid_model_endings:
-            model_end = ""
-        model_beginning = ""
-        if model_numbers := re.findall(r"\d+", model):
-            model_number = int(model_numbers[0])
-            if model.startswith("MODEL") or all(x.isdigit() for x in model.rstrip(model_end)):
-                model_beginning_idx = model.find(model_numbers[0])
-                model_beginning = model[model_beginning_idx:]
-                if model_beginning[-1].isalpha():
-                    model_beginning = model_beginning[:-1]
-                # Convert the model into more specific driver names
-                with contextlib.suppress(KeyError):
-                    model_beginning = (
-                        _KEITHLEY_2_CHAR_MODEL_LOOKUP[model_beginning[:2]] + model_beginning
-                    )
+    # Find the series by checking against the regex mapping
+    model_series = ""
+    if match := _SUPPORTED_MODEL_REGEX_MAPPING.match(simplified_model):
+        match_dict = match.groupdict()
+        filtered_dict = dict(filter(lambda item: item[1] is not None, match_dict.items()))
+        with contextlib.suppress(StopIteration):
+            model_series = next(iter(filtered_dict.keys()))
 
-                # This block of code can be enabled in the future if specific models need
-                # to be combined, e.g. SMU2601B -> SMU2600B
-                # Check if this is a specific, unique model series or if it needs to be a
-                # more generic driver.
-                # RELIC # if not model_postscript and (
-                # RELIC #     any(
-                # RELIC #         model_beginning.startswith(x)
-                # RELIC #         for x in _MODEL_BEGINNINGS_TO_COMBINE
-                # RELIC #     )
-                # RELIC #     and model_beginning not in _SPECIFIC_DRIVER_SET
-                # RELIC # ):
-                # RELIC #     # Models without a postscript or which are not part of a
-                # RELIC #     # specific driver need to use a more generic driver.
-                # RELIC #     model_beginning = model_beginning[:-2] + "00"
-            elif model.startswith("AWG52"):
-                model_beginning += model[:-1] + "0"
-            elif model_number >= 10_000:  # noqa: PLR2004
-                if model.startswith("AFG"):
-                    model_beginning += model[:5] + "K"
-                else:
-                    model_beginning += model[:4] + "0K"
-            elif 1_000 <= model_number < 10_000:  # noqa: PLR2004
-                model_beginning += model[:4] + "K"
-            else:
-                model_beginning += model[:4]
-        elif len(model_parts) >= 2:  # noqa: PLR2004
-            model_beginning = model.capitalize()
-            model_beginning += model_parts[1]
-        else:
-            model_beginning = model_parts[0]
-
-    model_series = model_beginning + model_end + model_postscript
-
-    if model_series not in SupportedModels.list_values():
-        warnings.warn(
-            f'The "{model_series}" model series is not supported by {PACKAGE_NAME}', stacklevel=2
-        )
-
+    # Warn the user if the model is not in the regex mapping or list of supported models,
+    # and therefore not officially supported.
+    if not model_series:
+        if model not in SupportedModels.list_values():
+            warnings.warn(f'The "{model}" model is not supported by {PACKAGE_NAME}', stacklevel=2)
+        model_series = model
     return model_series
 
 
 def get_timestamp_string() -> str:
     """Return a string containing the current timestamp."""
-    return str(datetime.datetime.now())[:-3]
+    return str(datetime.datetime.now(tz=tzlocal()))[:-3]
 
 
 def get_version(version_string: str) -> Version:
@@ -403,6 +469,7 @@ def get_version(version_string: str) -> Version:
         The Version object.
     """
     version_parts = version_string.split(".")
+    found_alpha = False
     try:
         version = Version(version_string)
     except InvalidVersion:
@@ -413,7 +480,14 @@ def get_version(version_string: str) -> Version:
                 version_string.replace("." + version_parts[-1], "+" + version_parts[-1])
             )
         else:
-            raise
+            output_str = ""
+            for char in version_parts[-1]:
+                if char.isalpha() and not found_alpha:
+                    output_str += "+" + char
+                    found_alpha = True
+                else:
+                    output_str += char
+            version = Version(version_string.replace(version_parts[-1], output_str))
     return version
 
 
@@ -428,7 +502,7 @@ def get_visa_backend(visa_lib_path: str) -> str:
     """
     visa_name = ""
 
-    system_visa_info = _VISA_SYSTEM_DETAILS
+    system_visa_info = _get_system_visa_info()
     # noinspection PyTypeChecker
     visa_backends: Dict[str, Any] = system_visa_info["backends"]
 
@@ -595,3 +669,25 @@ def _configure_visa_object(
                 setattr(serial_config, name, getattr(visa_object, name))
 
     return visa_object
+
+
+@lru_cache(maxsize=None)
+def _get_system_visa_info() -> Dict[str, Any]:
+    """Get the VISA information for the current system.
+
+    Returns:
+        A dictionary with the VISA info for the system.
+    """
+    fetch_backend_info = True
+
+    if platform.system().lower() == "darwin":
+        try:
+            output = subprocess.check_output(shlex.split("csrutil status")).decode(  # noqa: S603
+                "utf-8"
+            )
+        except subprocess.SubprocessError:
+            output = ""
+        if "System Integrity Protection status: enabled" in output:
+            fetch_backend_info = False
+
+    return pyvisa_util.get_system_details(backends=fetch_backend_info)

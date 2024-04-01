@@ -1,0 +1,46 @@
+---
+name: Create & Scan SBOM
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  release:
+    types: [published]
+jobs:
+  create-and-scan-sbom:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: x  # any version
+      - name: Create lockfile
+        run: |
+          pip install poetry
+          poetry lock
+      - name: Create SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          format: spdx-json
+          output-file: ${{ github.event.repository.name }}-sbom.spdx.json
+      - name: Scan SBOM
+        uses: anchore/scan-action@v3
+        id: scan
+        with:
+          sbom: ${{ github.event.repository.name }}-sbom.spdx.json
+          fail-build: true
+          severity-cutoff: low
+      - name: Upload SBOM scan SARIF report as a workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sarif_artifact
+          path: ${{ steps.scan.outputs.sarif }}
+          if-no-files-found: error
+      - name: Upload SBOM scan SARIF report to GitHub UI Security tab
+        if: ${{ github.event_name != 'pull_request' }}
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: ${{ steps.scan.outputs.sarif }}

@@ -1,4 +1,5 @@
 """Test the SSs."""
+
 from unittest import mock
 
 import pytest

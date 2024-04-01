@@ -1,7 +1,7 @@
 """TMT4 series device driver module."""
+
 import time
 
-from functools import cached_property
 from types import MappingProxyType
 from typing import Any, cast, Dict, Optional, Tuple
 
@@ -9,6 +9,9 @@ from packaging.version import Version
 
 from tm_devices.drivers.api.rest_api.margin_testers.margin_tester import MarginTester
 from tm_devices.helpers import DeviceConfigEntry
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 class TMT4(MarginTester):
@@ -128,7 +131,7 @@ class TMT4(MarginTester):
         start = time.time()
         while time.time() < start + timeout:
             _, res_json, _, _ = self.get("/device/status", allow_errors=True)
-            if res_json["usage"] == "NOT LOCKED":  # type: ignore
+            if res_json["usage"] == "NOT LOCKED":  # pyright: ignore[reportArgumentType,reportCallIssue]
                 return
             time.sleep(1)
         msg = f"waited more than {timeout} seconds for {self.name} to unlock"

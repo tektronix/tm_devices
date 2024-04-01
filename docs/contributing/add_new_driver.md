@@ -25,23 +25,26 @@ This guide will walk through the steps needed to add a new device driver.
     - See other `__init__.py` files for examples
 04. Update the `SupportedModels` enum exposed in
     `tm_devices/helpers/__init__.py`
-05. Update the `DEVICE_DRIVER_MODEL_MAPPING` lookup inside
+05. Update the `___SUPPORTED_MODEL_REGEX_STRING` regex constant inside
+    `tm_devices/helpers/functions.py` to include a mapping of the new driver name (model series)
+    to a regex string matching the appropriate model strings
+06. Update the `DEVICE_DRIVER_MODEL_MAPPING` lookup inside
     `tm_devices/drivers/__init__.py`
-06. Update the `__all__` variable inside `tm_devices/drivers/__init__.py` to
+07. Update the `__all__` variable inside `tm_devices/drivers/__init__.py` to
     include the new device driver
-07. Update the appropriate Type Alias in `device_manager.py` (search for "Type
+08. Update the appropriate Type Alias in `device_manager.py` (search for "Type
     Aliases")
-08. If the device supports VISA USBTMC communication, update the
+09. If the device supports VISA USBTMC communication, update the
     `USB_MODEL_ID_LOOKUP` lookup exposed in `tm_devices/helpers/__init__.py`
-09. Update the Supported Devices section in `README.rst` to include the new model
-10. Update unit tests (and simulated device files)
+10. Update the Supported Devices section in `README.rst` to include the new model
+11. Update unit tests (and simulated device files)
     1. Add a new simulated device driver in the correct folder within
        `tests/sim_devices`
     2. Update `tests/sim_devices/devices.yaml` with a new resource for the new
        driver (Make sure the device name is correct in the `devices.yaml` and in
        the corresponding simulated device file)
     3. Update `tests/test_all_device_drivers.py` with the new simulated resource
-11. Run the `tests/verify_physical_device_support.py` script targeting a
+12. Run the `tests/verify_physical_device_support.py` script targeting a
     physical device that will use the newly created driver to verify it is
     working properly.
 
@@ -100,6 +103,7 @@ the filepath would be `tm_devices/drivers/pi/power_supplies/psu2200/new_psu.py`
 
 ```python
 """NewPSU device driver."""
+
 from tm_devices.drivers.pi.power_supplies.psu2200.psu2200 import PSU2200
 
 

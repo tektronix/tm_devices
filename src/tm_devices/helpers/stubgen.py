@@ -1,8 +1,10 @@
 """Helper functions for adding to previously generated stub files."""
+
 import inspect
 import os
 import re
 
+from pathlib import Path
 from typing import Any, List
 
 _TYPING_IMPORT_REGEX = re.compile(r"typing\.([a-zA-Z]+)")
@@ -43,16 +45,15 @@ def add_info_to_stub(cls: Any, method: Any, is_property: bool = False) -> None: 
     """
     if stub_dir := os.getenv("TM_DEVICES_STUB_DIR"):
         method_filepath = inspect.getfile(cls)
-        stub_dir = (
-            os.path.join(stub_dir, "tm_devices")
-            if not stub_dir.endswith("tm_devices")
-            else stub_dir
+        stub_dir = str(
+            Path(stub_dir) / "tm_devices" if not stub_dir.endswith("tm_devices") else stub_dir
         )
-        method_filepath = os.path.join(
-            stub_dir, method_filepath.rsplit("tm_devices", maxsplit=1)[-1].lstrip(os.path.sep)
+        method_filepath = str(
+            Path(stub_dir)
+            / method_filepath.rsplit("tm_devices", maxsplit=1)[-1].lstrip(os.path.sep)
         )
         method_filepath += "i"  # stub files have the .pyi extension
-        if not os.path.exists(method_filepath):
+        if not os.path.exists(method_filepath):  # noqa: PTH110
             msg = (
                 f'The stub file "{method_filepath}" must already exist in order to use this '
                 f"functionality to add method stubs."

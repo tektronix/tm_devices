@@ -14,6 +14,7 @@ Commands and Queries:
     - WPLugin:ACTive <plugin_name>
     - WPLugin:PLUGins?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

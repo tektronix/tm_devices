@@ -4,9 +4,9 @@
 This file only contains a selection of the most common options. For a full list see the
 documentation: https://www.sphinx-doc.org/en/master/usage/configuration.html
 """
+
 import os
 import shutil
-import sys
 
 from importlib.metadata import metadata
 from typing import Any, List, Sequence
@@ -52,8 +52,6 @@ extensions = [
     "sphinx_copybutton",
     "sphinx_tippy",
 ]
-if not any(x in " ".join(sys.argv) for x in ("linkcheck", "coverage", "doctest")):
-    extensions.append("sphinxcontrib.relative-link-corrector")
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -91,7 +89,7 @@ def prep_jinja_env(jinja_env: JinjaEnvironment) -> None:
     Args:
         jinja_env: The Jinja environment.
     """
-    jinja_env.tests["contains"] = item_in_sequence  # pyright: ignore
+    jinja_env.tests["contains"] = item_in_sequence  # pyright: ignore[reportArgumentType,reportUnknownMemberType]
 
 
 # FUTURE: # autoapi_prepare_jinja_env = prep_jinja_env
@@ -138,6 +136,7 @@ html_theme_options = {
     "navigation_depth": 4,
     "collapse_navigation": True,
 }
+html_favicon = "_static/favicon_readthedocs.png"
 intersphinx_mapping = {  # pylint: disable=consider-using-namedtuple-or-dataclass
     "python": ("https://docs.python.org/3/", None),
     "pyvisa": ("https://pyvisa.readthedocs.io/en/latest/", None),
@@ -213,8 +212,7 @@ def skip_member(
     if (
         what == "module"  # pylint: disable=too-many-boolean-expressions
         or (
-            what == "package"
-            and obj.short_name not in _package_set  # pyright: ignore [reportUnknownMemberType]
+            what == "package" and obj.short_name not in _package_set  # pyright: ignore [reportUnknownMemberType]
         )
         or f"{os.path.sep}commands{os.path.sep}" in obj.pathname
         or obj.pathname.endswith(f"{os.path.sep}commands")
@@ -231,4 +229,4 @@ def setup(sphinx: Sphinx) -> None:
     Args:
         sphinx: The sphinx object.
     """
-    sphinx.connect("autoapi-skip-member", skip_member)  # pyright: ignore
+    sphinx.connect("autoapi-skip-member", skip_member)  # pyright: ignore[reportUnknownMemberType]

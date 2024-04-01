@@ -1,5 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Verify that all device drivers and connection types can be used."""
+
 from collections import Counter
 from typing import List
 
@@ -21,21 +22,23 @@ def test_all_device_drivers(
     """
     # A list of entries containing: (device_type, address, port, connection_type, device_driver)
     simulated_device_list = (
-        ("AFG", "AFG3KC-HOSTNAME", 10001, "SOCKET", None),
-        ("AFG", "AFG3K-HOSTNAME", None, None, None),
-        ("AFG", "AFG31K-HOSTNAME", None, None, None),
-        ("AWG", "AWG5200-HOSTNAME", None, None, None),
-        ("AWG", "AWG5K-HOSTNAME", None, None, None),
-        ("AWG", "AWG7K-HOSTNAME", None, None, None),
-        ("AWG", "AWG7KB-HOSTNAME", None, None, None),
-        ("AWG", "AWG7KC-HOSTNAME", None, None, None),
-        ("AWG", "AWG5KC-HOSTNAME", None, None, None),
-        ("AWG", "AWG5KB-HOSTNAME", None, None, None),
-        ("AWG", "AWG70KB-HOSTNAME", None, None, None),
-        ("AWG", "AWG70KA-HOSTNAME", None, None, None),
+        ("AFG", "AFG3051-HOSTNAME", None, None, None),
+        ("AFG", "AFG3022B-HOSTNAME", None, None, None),
+        ("AFG", "AFG3252C-HOSTNAME", 10001, "SOCKET", None),
+        ("AFG", "AFG31021-HOSTNAME", None, None, None),
+        ("AWG", "AWG5200OPT50-HOSTNAME", None, None, None),
+        ("AWG", "AWG5012-HOSTNAME", None, None, None),
+        ("AWG", "AWG5002B-HOSTNAME", None, None, None),
+        ("AWG", "AWG5012C-HOSTNAME", None, None, None),
+        ("AWG", "AWG7051OPT01-HOSTNAME", None, None, None),
+        ("AWG", "AWG7062BOPT02-HOSTNAME", None, None, None),
+        ("AWG", "AWG7082COPT01-HOSTNAME", None, None, None),
+        ("AWG", "AWG70001AOPT150-HOSTNAME", None, None, None),
+        ("AWG", "AWG70002BOPT208-HOSTNAME", None, None, None),
         ("SCOPE", "MSO22-HOSTNAME", None, None, None),
         ("SCOPE", "MSO56-SERIAL1", None, "USB", None),
         ("SCOPE", "MSO44-HOSTNAME", None, None, None),
+        ("SCOPE", "MSO44B-HOSTNAME", None, None, None),
         ("SCOPE", "MSO58B-HOSTNAME", None, None, None),
         ("SCOPE", "MSO58LP-HOSTNAME", None, None, None),
         ("SCOPE", "LPD64-HOSTNAME", None, None, None),
@@ -99,7 +102,6 @@ def test_all_device_drivers(
         ("SMU", "SMU2401-HOSTNAME", None, None, None),
         ("SMU", "SMU2410-HOSTNAME", None, None, None),
         ("SS", "SS3706A-HOSTNAME", None, None, None),
-        ("AFG", "AFG3KB-HOSTNAME", None, None, None),
         ("PSU", "PSU2200-HOSTNAME", None, None, None),
         ("PSU", "PSU2231-HOSTNAME", None, None, None),
         ("PSU", "PSU2231A-HOSTNAME", None, None, None),

@@ -1,19 +1,21 @@
-# pyright: reportUnnecessaryTypeIgnoreComment=none
+# pylint: disable=too-many-lines  # pyright: reportUnnecessaryTypeIgnoreComment=none
 """Base Programmable Interface (PI) device driver module."""
+
 import inspect
 import os
 import socket
 import time
+import warnings
 
 from abc import ABC, abstractmethod
 from contextlib import contextmanager
-from functools import cached_property
 from typing import final, Generator, List, Optional, Sequence, Tuple, Union
 
 import pyvisa as visa
 
 from packaging.version import Version
 from pyvisa import constants as visa_constants
+from pyvisa import VisaIOError
 
 from tm_devices.drivers.device import Device
 from tm_devices.drivers.pi._ieee488_2_commands import IEEE4882Commands
@@ -27,11 +29,13 @@ from tm_devices.helpers import (
     print_with_timestamp,
     PYVISA_PY_BACKEND,
 )
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 from tm_devices.helpers.constants_and_dataclasses import UNIT_TEST_TIMEOUT
 
 
-# pylint: disable=too-many-instance-attributes,too-many-public-methods
-class PIDevice(Device, ABC):
+class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
     """Base Programmable Interface (PI) device driver."""
 
     # This is a class constant that can be overwritten by children which defines
@@ -64,14 +68,13 @@ class PIDevice(Device, ABC):
         elif self._visa_library_path.endswith(".yaml"):  # pragma: no cover
             # Mark this as a simulated VISA backend
             self._visa_library_path += "@sim"
-        self._visa_backend = self._get_visa_backend()
         # Use a default timeout of 30 seconds, if running unit tests use a smaller amount.
         self._default_visa_timeout = (
             30000
             if not bool(os.environ.get("TM_DEVICES_UNIT_TESTS_RUNNING"))
             else UNIT_TEST_TIMEOUT
         )
-        self._ieee_cmds = self._IEEE_COMMANDS_CLASS(self)  # type: ignore
+        self._ieee_cmds = self._IEEE_COMMANDS_CLASS(self)
         self.reset_visa_timeout()
 
     ################################################################################################
@@ -122,7 +125,7 @@ class PIDevice(Device, ABC):
         """
         # TODO: implement for all driver subclasses then remove this blanket NotImplementedError
         raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
+            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )
 
@@ -137,7 +140,7 @@ class PIDevice(Device, ABC):
         """
         # TODO: implement for all driver subclasses then remove this blanket NotImplementedError
         raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
+            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )
 
@@ -158,11 +161,6 @@ class PIDevice(Device, ABC):
     def resource_expression(self) -> str:
         """Return the VISA resource expression."""
         return self._resource_expression
-
-    @property
-    def visa_backend(self) -> str:
-        """Return the VISA backend in use."""
-        return self._visa_backend
 
     @property
     def visa_timeout(self) -> float:
@@ -237,6 +235,11 @@ class PIDevice(Device, ABC):
         """
         return get_model_series(self.model)
 
+    @cached_property
+    def visa_backend(self) -> str:
+        """Return the VISA backend in use."""
+        return get_visa_backend(self._visa_resource.visalib.library_path.path)
+
     ################################################################################################
     # Context Manager Methods
     ################################################################################################
@@ -282,13 +285,15 @@ class PIDevice(Device, ABC):
     def disable_srq_events(self) -> None:  # pragma: no cover
         """Disable the service request event for the device."""
         self._visa_resource.disable_event(
-            visa_constants.VI_EVENT_SERVICE_REQ, visa_constants.VI_QUEUE  # type: ignore
+            visa_constants.VI_EVENT_SERVICE_REQ,  # pyright: ignore[reportArgumentType]
+            visa_constants.VI_QUEUE,  # pyright: ignore[reportArgumentType]
         )
 
     def enable_srq_events(self) -> None:  # pragma: no cover
         """Enable the service request event for the device."""
         self._visa_resource.enable_event(
-            visa_constants.VI_EVENT_SERVICE_REQ, visa_constants.VI_QUEUE  # type: ignore
+            visa_constants.VI_EVENT_SERVICE_REQ,  # pyright: ignore[reportArgumentType]
+            visa_constants.VI_QUEUE,  # pyright: ignore[reportArgumentType]
         )
 
     def get_visa_stb(self) -> int:  # pragma: no cover
@@ -430,7 +435,7 @@ class PIDevice(Device, ABC):
             print_with_timestamp(f"({self._name_and_alias}) Query Binary Values >>  {query!r}")
 
         try:
-            response = self._visa_resource.query_binary_values(query)  # pyright: ignore
+            response = self._visa_resource.query_binary_values(query)  # pyright: ignore[reportUnknownMemberType]
         except (visa.VisaIOError, socket.error) as error:
             pi_cmd_repr = f" for {query!r} " if self._verbose and verbose else " "
             msg = f"The query{pi_cmd_repr}failed with the following message: {error!r}"
@@ -572,7 +577,7 @@ class PIDevice(Device, ABC):
 
         return response
 
-    def query_response(
+    def query_response(  # noqa: PLR0913
         self,
         query: str,
         value: Union[str, float],
@@ -580,6 +585,7 @@ class PIDevice(Device, ABC):
         percentage: bool = False,
         remove_quotes: bool = False,
         custom_message_prefix: str = "",
+        allow_empty: bool = False,
     ) -> Tuple[bool, str]:
         """Query the and verify the result.
 
@@ -592,11 +598,12 @@ class PIDevice(Device, ABC):
                  True means percent tolerance: +/- (tolerance / 100) * value.
             remove_quotes: Set this to True to remove all double quotes from the returned value.
             custom_message_prefix: A custom message to be prepended to the failure message.
+            allow_empty: Set this to True if an empty return string is permitted.
 
         Returns:
             Tuple containing the boolean verification result and the value returned from the query.
         """
-        actual_value = self.query(query, remove_quotes=remove_quotes)
+        actual_value = self.query(query, remove_quotes=remove_quotes, allow_empty=allow_empty)
         message_prefix = f"query_response failed for query: {query}"
         if custom_message_prefix:
             message_prefix = f"{custom_message_prefix}\n{message_prefix}"
@@ -661,6 +668,7 @@ class PIDevice(Device, ABC):
         custom_message_prefix: str = "",
         *,
         expected_value: Optional[Union[str, float]] = None,
+        opc: Optional[bool] = None,
     ) -> str:
         """Send the given command with the given value and then verify the results.
 
@@ -676,11 +684,12 @@ class PIDevice(Device, ABC):
             remove_quotes: Set this to True to remove all double quotes from the returned value.
             custom_message_prefix: A custom message to be prepended to the failure message.
             expected_value: An optional, alternative value expected to be returned.
+            opc: Boolean indicating if ``*OPC?`` should be queried after sending the command.
 
         Returns:
             The output of the query portion of the method.
         """
-        self.write(f"{command} {value}")
+        self.write(f"{command} {value}", opc=bool(opc))
         if self._enable_verification:
             check = self.query(command + "?", remove_quotes=remove_quotes)
             message_prefix = f"Failed to set {command} to {value}"
@@ -708,8 +717,11 @@ class PIDevice(Device, ABC):
         custom_message_prefix: str = "",
         *,
         expected_value: Optional[Union[str, float]] = None,
+        opc: Optional[bool] = None,
+        allow_empty: Optional[bool] = None,
+        verify_value: Optional[bool] = None,
     ) -> Tuple[bool, str]:
-        """Set the given command if the given value is different from the current value.
+        """Query the command's field and update it if the value does not match the input.
 
         Args:
             command: The command to send.
@@ -723,6 +735,9 @@ class PIDevice(Device, ABC):
             remove_quotes: Set this to True to remove all double quotes from the returned value.
             custom_message_prefix: A custom message to be prepended to the failure message.
             expected_value: An optional, alternative value expected to be returned.
+            opc: Boolean indicating if ``*OPC?`` should be queried after sending the command.
+            allow_empty: Set this to True if an empty return string is permitted.
+            verify_value: Boolean indicating to verify value after write.
 
         Returns:
             Tuple containing the boolean value indicating if the command needed to be set and
@@ -730,19 +745,30 @@ class PIDevice(Device, ABC):
         """
         try:
             query_passed, actual_value = self.query_response(
-                command + "?", value, tolerance, percentage, remove_quotes, custom_message_prefix
+                query=command + "?",
+                value=value,
+                tolerance=tolerance,
+                percentage=percentage,
+                remove_quotes=remove_quotes,
+                custom_message_prefix=custom_message_prefix,
+                allow_empty=bool(allow_empty),
             )
         except AssertionError:
             query_passed = False
-            actual_value = self.set_and_check(
-                command,
-                value,
-                tolerance,
-                percentage,
-                remove_quotes,
-                custom_message_prefix,
-                expected_value=expected_value,
-            )
+            if verify_value or verify_value is None:
+                actual_value = self.set_and_check(
+                    command,
+                    value,
+                    tolerance,
+                    percentage,
+                    remove_quotes,
+                    custom_message_prefix,
+                    expected_value=expected_value,
+                    opc=opc,
+                )
+            else:
+                self.write(f"{command} {value}", opc=bool(opc))
+                actual_value = ""
         return not query_passed, actual_value
 
     @final
@@ -768,7 +794,7 @@ class PIDevice(Device, ABC):
         """
         # The timeout value is multiplied by 1000 because the function expects milliseconds.
         return self._visa_resource.wait_on_event(
-            visa_constants.VI_EVENT_SERVICE_REQ,  # type: ignore
+            visa_constants.VI_EVENT_SERVICE_REQ,  # pyright: ignore[reportArgumentType]
             timeout * 1000,
         )
 
@@ -932,17 +958,14 @@ class PIDevice(Device, ABC):
 
     def _close(self) -> None:
         """Close this device and all its used resources and components."""
-        self._visa_resource.close()
-        self._visa_resource = None  # type: ignore
+        try:
+            self._visa_resource.close()
+        except VisaIOError as error:
+            warnings.warn(
+                f"Error encountered while closing the visa resource:\n{error}", stacklevel=2
+            )
+        self._visa_resource = None  # pyright: ignore[reportAttributeAccessIssue]
         self._is_open = False
-
-    def _get_visa_backend(self) -> str:
-        """Determine what the VISA backend is for this device.
-
-        Returns:
-            A string containing the VISA backend.
-        """
-        return get_visa_backend(self._visa_resource.visalib.library_path.path)
 
     def _has_errors(self) -> bool:
         """Check if the device has any errors.
@@ -955,7 +978,7 @@ class PIDevice(Device, ABC):
     def _open(self) -> bool:
         """Open necessary resources and components and return a boolean indicating success."""
         opened = True
-        if self._visa_resource is None:  # type: ignore
+        if self._visa_resource is None:  # pyright: ignore[reportUnnecessaryComparison]
             opened = False
             # 5 seconds when running unit tests, else 600 seconds (10 minutes)
             num_seconds_to_attempt_reconnection = (

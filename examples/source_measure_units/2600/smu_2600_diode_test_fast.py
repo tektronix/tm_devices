@@ -11,6 +11,7 @@ Engineering (Al Ivons) on 08 Apr 2005
 
 Converted to Python tm_devices script. DCA 4.12.23
 """
+
 import time
 
 from typing import Dict, Tuple
@@ -156,9 +157,9 @@ def diode_test(inst: SMU2602B) -> None:
 
     if SPEED == "FAST":
         inst.commands.display.clear()
-        inst.commands.display.setcursor(1, 1)  # type: ignore
+        inst.commands.display.setcursor(1, 1)  # type: ignore[arg-type]
         inst.commands.display.settext("Test In Progress")
-        inst.commands.display.setcursor(2, 1)  # type: ignore
+        inst.commands.display.setcursor(2, 1)  # type: ignore[arg-type]
         inst.commands.display.settext(f"Testing {NDIODES} Parts")
 
     start_time = time.time()
@@ -417,7 +418,7 @@ def display_bins_status() -> None:
 
 # Connect to instrument and begin testing
 with DeviceManager(verbose=False) as DM:
-    smu_driver: SMU2602B = DM.add_smu(RESOURCE_ID)  # pyright: ignore[reportGeneralTypeIssues]
+    smu_driver: SMU2602B = DM.add_smu(RESOURCE_ID)  # pyright: ignore[reportAssignmentType]
 
     # Save settings in temporary variables so they can be restored after completion.
     s_func = smu_driver.commands.smu["a"].source.func

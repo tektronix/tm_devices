@@ -275,6 +275,7 @@ Commands and Queries:
     - DPOJET:MEAS<x>:OPTIcal:SCOPERN  <NR3>
     - DPOJET:MEAS<x>:OPTIcal:SCOPERN?
     - DPOJET:MEAS<x>:OPTIcal:TARGETBer  <NR3>
+    - DPOJET:MEAS<x>:OPTIcal:TARGETBer?
     - DPOJET:MEAS<x>:OPTIcal:WFMTYpe {CONTINUOUS | MODULATED}
     - DPOJET:MEAS<x>:OPTIcal:WFMTYpe?
     - DPOJET:MEAS<x>:PHASENoise:HIGHLimit  <NR3>
@@ -468,7 +469,9 @@ Commands and Queries:
     - DPOJET:PLOT<x>:CORRELATEDEye:BER1E6V?
     - DPOJET:PLOT<x>:CORRELATEDEye:BER1E9V {1 | 0}
     - DPOJET:PLOT<x>:CORRELATEDEye:BER1E9V?
+    - DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT  <NR2>
     - DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT?
+    - DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH  <NR2>
     - DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH?
     - DPOJET:PLOT<x>:CORRELATEDEye:TARGETBER {1 | 0}
     - DPOJET:PLOT<x>:CORRELATEDEye:TARGETBER?
@@ -703,6 +706,7 @@ Commands and Queries:
     - DPOJET:VERTUNITType?
     - DPOJET:VERsion?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -7723,7 +7727,7 @@ class DpojetPlotItemCorrelatedeyeTargetber(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class DpojetPlotItemCorrelatedeyeEyewidth(SCPICmdRead):
+class DpojetPlotItemCorrelatedeyeEyewidth(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH`` command.
 
     **Description:**
@@ -7735,16 +7739,19 @@ class DpojetPlotItemCorrelatedeyeEyewidth(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH value`` command.
 
     **SCPI Syntax:**
 
     ::
 
+        - DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH  <NR2>
         - DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH?
     """
 
 
-class DpojetPlotItemCorrelatedeyeEyeheight(SCPICmdRead):
+class DpojetPlotItemCorrelatedeyeEyeheight(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT`` command.
 
     **Description:**
@@ -7756,11 +7763,14 @@ class DpojetPlotItemCorrelatedeyeEyeheight(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT value`` command.
 
     **SCPI Syntax:**
 
     ::
 
+        - DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT  <NR2>
         - DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT?
     """
 
@@ -8058,11 +8068,14 @@ class DpojetPlotItemCorrelatedeye(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT value`` command.
 
         **SCPI Syntax:**
 
         ::
 
+            - DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT  <NR2>
             - DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT?
         """
         return self._eyeheight
@@ -8080,11 +8093,14 @@ class DpojetPlotItemCorrelatedeye(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH value`` command.
 
         **SCPI Syntax:**
 
         ::
 
+            - DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH  <NR2>
             - DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH?
         """
         return self._eyewidth
@@ -14793,13 +14809,16 @@ class DpojetMeasItemOpticalWfmtype(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class DpojetMeasItemOpticalTargetber(SCPICmdWrite):
+class DpojetMeasItemOpticalTargetber(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:MEAS<x>:OPTIcal:TARGETBer`` command.
 
     **Description:**
         - This command sets or queries the Target BER value display. The 1E-Value = 10-Value
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DPOJET:MEAS<x>:OPTIcal:TARGETBer?`` query.
+        - Using the ``.verify(value)`` method will send the ``DPOJET:MEAS<x>:OPTIcal:TARGETBer?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``DPOJET:MEAS<x>:OPTIcal:TARGETBer value`` command.
 
@@ -14808,6 +14827,7 @@ class DpojetMeasItemOpticalTargetber(SCPICmdWrite):
     ::
 
         - DPOJET:MEAS<x>:OPTIcal:TARGETBer  <NR3>
+        - DPOJET:MEAS<x>:OPTIcal:TARGETBer?
     """
 
 
@@ -15028,6 +15048,11 @@ class DpojetMeasItemOptical(SCPICmdRead):
             - This command sets or queries the Target BER value display. The 1E-Value = 10-Value
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DPOJET:MEAS<x>:OPTIcal:TARGETBer?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``DPOJET:MEAS<x>:OPTIcal:TARGETBer?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``DPOJET:MEAS<x>:OPTIcal:TARGETBer value`` command.
 
@@ -15036,6 +15061,7 @@ class DpojetMeasItemOptical(SCPICmdRead):
         ::
 
             - DPOJET:MEAS<x>:OPTIcal:TARGETBer  <NR3>
+            - DPOJET:MEAS<x>:OPTIcal:TARGETBer?
         """
         return self._targetber
 

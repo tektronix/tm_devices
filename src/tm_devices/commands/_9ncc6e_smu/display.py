@@ -38,6 +38,7 @@ Attributes and Functions:
     - display.trigger.wait()
     - display.waitkey()
 """
+
 from typing import Dict, Optional, TYPE_CHECKING, Union
 
 from .._helpers import (
@@ -112,7 +113,9 @@ class DisplayTrigger(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -187,7 +190,9 @@ class DisplaySmuxItemMeasure(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".func"
-            return self._device.query(f"print({self._cmd_syntax}.func)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.func)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -224,7 +229,9 @@ class DisplaySmuxItemMeasure(BaseTSPCmd):
                     self._cmd_syntax + ".func", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.func = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.func = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -271,7 +278,9 @@ class DisplaySmuxItemLimit(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".func"
-            return self._device.query(f"print({self._cmd_syntax}.func)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.func)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -309,7 +318,9 @@ class DisplaySmuxItemLimit(BaseTSPCmd):
                     self._cmd_syntax + ".func", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.func = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.func = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -513,7 +524,43 @@ class Display(BaseTSPCmd):
     """The ``display`` command tree.
 
     Constants:
+        - ``.DIGITS_4_5``: Set the front-panel display resolution to 4.5 digits.
+        - ``.DIGITS_5_5``: Set the front-panel display resolution to 5.5 digits.
+        - ``.DIGITS_6_5``: Set the front-panel display resolution to 6.5 digits.
+        - ``.KEY_AUTO``: Represents the range AUTO key.
+        - ``.KEY_CONFIG``: Represents the CONFIG key.
+        - ``.KEY_DIGITSA``: Represents the DIGITS (display resolution) key.
+          For two-channel products, this is the DIGITS key for Channel A.
+        - ``.KEY_DISPLAY``: Represents the DISPLAY key.
+        - ``.KEY_ENTER``: Represents the ENTER key.
+        - ``.KEY_EXIT``: Represents the EXIT key.
+        - ``.KEY_FILTERA``: Represents the FILTER key.
+          For two-channel products, this is the FILTER key for Channel A.
+        - ``.KEY_LEFT``: Represents the left CURSOR key.
+        - ``.KEY_LIMITA``: Represents the LIMIT key.
+          For two-channel products, this is the LIMIT key for Channel A.
+        - ``.KEY_LOAD``: Represents the LOAD (load test) key.
+        - ``.KEY_MEASA``: Represents the MEAS (Measure) key.
+          For two-channel products, this is the MEAS key for Channel A.
+        - ``.KEY_MENU``: Represents the MENU key.
+        - ``.KEY_MODEA``: Represents the MODE (meter mode) key
+          For two-channel products, this is the MODE key for Channel A.
         - ``.KEY_NONE``: No key was pressed.
+        - ``.KEY_OUTPUTA``: Represents the OUTPUT ON/OFF key.
+          For two-channel products, this is the OUTPUT ON/OFF key for Channel A.
+        - ``.KEY_RANGEDOWN``: Represents the RANGE down key.
+        - ``.KEY_RANGEUP``: Represents the RANGE up key.
+        - ``.KEY_RECALL``: Represents the RECALL key.
+        - ``.KEY_RELA``: Represents the REL key.
+          For two-channel products, this is the REL key for Channel A.
+        - ``.KEY_RIGHT``: Represents the right CURSOR key.
+        - ``.KEY_RUN``: Represents the RUN key.
+        - ``.KEY_SPEEDA``: Represents the SPEED key.
+          For two-channel products, this is the SPEED key for Channel A.
+        - ``.KEY_SRCA``: Represents the SRC (Source) key.
+          For two-channel products, this is the SRC key for Channel A.
+        - ``.KEY_STORE``: Represents the STORE key.
+        - ``.KEY_TRIG``: Represents the TRIG key.
         - ``.LIMIT_IV``: Display the primary limit value.
         - ``.LIMIT_P``: Display the power limit value.
         - ``.MEASURE_DCAMPS``: Display the current measurement function.
@@ -522,6 +569,9 @@ class Display(BaseTSPCmd):
         - ``.MEASURE_WATTS``: Display the power measurement function.
         - ``.SMUA``: Displays source-measure and compliance screen for SMU A.
         - ``.USER``: Displays the user screen.
+        - ``.WHEEL_ENTER``: Represents pressing the navigation wheel.
+        - ``.WHEEL_LEFT``: Represents turning the Navigation wheel left.
+        - ``.WHEEL_RIGHT``: Represents turning the Navigation wheel right.
 
     Properties/methods:
         - ``.clear()``: The ``display.clear()`` function.
@@ -544,8 +594,71 @@ class Display(BaseTSPCmd):
         - ``.waitkey()``: The ``display.waitkey()`` function.
     """
 
+    DIGITS_4_5 = "display.DIGITS_4_5"
+    """str: Set the front-panel display resolution to 4.5 digits."""
+    DIGITS_5_5 = "display.DIGITS_5_5"
+    """str: Set the front-panel display resolution to 5.5 digits."""
+    DIGITS_6_5 = "display.DIGITS_6_5"
+    """str: Set the front-panel display resolution to 6.5 digits."""
+    KEY_AUTO = "display.KEY_AUTO"
+    """str: Represents the range AUTO key."""
+    KEY_CONFIG = "display.KEY_CONFIG"
+    """str: Represents the CONFIG key."""
+    KEY_DIGITSA = "display.KEY_DIGITSA"
+    """str: Represents the DIGITS (display resolution) key.
+For two-channel products, this is the DIGITS key for Channel A."""
+    KEY_DISPLAY = "display.KEY_DISPLAY"
+    """str: Represents the DISPLAY key."""
+    KEY_ENTER = "display.KEY_ENTER"
+    """str: Represents the ENTER key."""
+    KEY_EXIT = "display.KEY_EXIT"
+    """str: Represents the EXIT key."""
+    KEY_FILTERA = "display.KEY_FILTERA"
+    """str: Represents the FILTER key.
+For two-channel products, this is the FILTER key for Channel A."""
+    KEY_LEFT = "display.KEY_LEFT"
+    """str: Represents the left CURSOR key."""
+    KEY_LIMITA = "display.KEY_LIMITA"
+    """str: Represents the LIMIT key.
+For two-channel products, this is the LIMIT key for Channel A."""
+    KEY_LOAD = "display.KEY_LOAD"
+    """str: Represents the LOAD (load test) key."""
+    KEY_MEASA = "display.KEY_MEASA"
+    """str: Represents the MEAS (Measure) key.
+For two-channel products, this is the MEAS key for Channel A."""
+    KEY_MENU = "display.KEY_MENU"
+    """str: Represents the MENU key."""
+    KEY_MODEA = "display.KEY_MODEA"
+    """str: Represents the MODE (meter mode) key
+For two-channel products, this is the MODE key for Channel A."""
     KEY_NONE = "display.KEY_NONE"
     """str: No key was pressed."""
+    KEY_OUTPUTA = "display.KEY_OUTPUTA"
+    """str: Represents the OUTPUT ON/OFF key.
+For two-channel products, this is the OUTPUT ON/OFF key for Channel A."""
+    KEY_RANGEDOWN = "display.KEY_RANGEDOWN"
+    """str: Represents the RANGE down key."""
+    KEY_RANGEUP = "display.KEY_RANGEUP"
+    """str: Represents the RANGE up key."""
+    KEY_RECALL = "display.KEY_RECALL"
+    """str: Represents the RECALL key."""
+    KEY_RELA = "display.KEY_RELA"
+    """str: Represents the REL key.
+For two-channel products, this is the REL key for Channel A."""
+    KEY_RIGHT = "display.KEY_RIGHT"
+    """str: Represents the right CURSOR key."""
+    KEY_RUN = "display.KEY_RUN"
+    """str: Represents the RUN key."""
+    KEY_SPEEDA = "display.KEY_SPEEDA"
+    """str: Represents the SPEED key.
+For two-channel products, this is the SPEED key for Channel A."""
+    KEY_SRCA = "display.KEY_SRCA"
+    """str: Represents the SRC (Source) key.
+For two-channel products, this is the SRC key for Channel A."""
+    KEY_STORE = "display.KEY_STORE"
+    """str: Represents the STORE key."""
+    KEY_TRIG = "display.KEY_TRIG"
+    """str: Represents the TRIG key."""
     LIMIT_IV = "display.LIMIT_IV"
     """str: Display the primary limit value."""
     LIMIT_P = "display.LIMIT_P"
@@ -562,6 +675,12 @@ class Display(BaseTSPCmd):
     """str: Displays source-measure and compliance screen for SMU A."""
     USER = "display.USER"
     """str: Displays the user screen."""
+    WHEEL_ENTER = "display.WHEEL_ENTER"
+    """str: Represents pressing the navigation wheel."""
+    WHEEL_LEFT = "display.WHEEL_LEFT"
+    """str: Represents turning the Navigation wheel left."""
+    WHEEL_RIGHT = "display.WHEEL_RIGHT"
+    """str: Represents turning the Navigation wheel right."""
 
     def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "display") -> None:
         super().__init__(device, cmd_syntax)
@@ -836,7 +955,9 @@ class Display(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1193,7 +1314,9 @@ class Display(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f'{self._cmd_syntax}.settext("{text}")')  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f'{self._cmd_syntax}.settext("{text}")'
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.settext()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

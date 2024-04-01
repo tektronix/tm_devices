@@ -2,6 +2,7 @@
 
 Examples include MATH, SEARCH, BUS, PLOT,...etc.
 """
+
 from abc import ABC, abstractmethod
 from typing import Optional, Union
 

@@ -24,6 +24,7 @@ Attributes and Functions:
     - tsplink.state
     - tsplink.writeport()
 """
+
 from typing import Dict, Optional, TYPE_CHECKING, Union
 
 from .._helpers import (
@@ -77,7 +78,9 @@ class TsplinkLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".mode"
-            return self._device.query(f"print({self._cmd_syntax}.mode)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.mode)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -113,7 +116,9 @@ class TsplinkLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     self._cmd_syntax + ".mode", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.mode = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.mode = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -211,7 +216,9 @@ class TsplinkLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.reset()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.reset()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -219,6 +226,14 @@ class TsplinkLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
 class Tsplink(BaseTSPCmd):
     """The ``tsplink`` command tree.
+
+    Constants:
+        - ``.MODE_DIGITAL_OPEN_DRAIN``: TSP-Link digital open drain line.
+        - ``.MODE_SYNCHRONOUS_ACCEPTOR``: TSP-Link trigger synchronous acceptor.
+        - ``.MODE_SYNCHRONOUS_MASTER``: TSP-Link trigger synchronous master.
+        - ``.MODE_TRIGGER_OPEN_DRAIN``: TSP-Link trigger open drain line.
+        - ``.STATE_HIGH``: High state of the synchronization line.
+        - ``.STATE_LOW``: Low state of the synchronization line.
 
     Properties/methods:
         - ``.group``: The ``tsplink.group`` attribute.
@@ -230,6 +245,19 @@ class Tsplink(BaseTSPCmd):
         - ``.state``: The ``tsplink.state`` attribute.
         - ``.writeport()``: The ``tsplink.writeport()`` function.
     """
+
+    MODE_DIGITAL_OPEN_DRAIN = "tsplink.MODE_DIGITAL_OPEN_DRAIN"
+    """str: TSP-Link digital open drain line."""
+    MODE_SYNCHRONOUS_ACCEPTOR = "tsplink.MODE_SYNCHRONOUS_ACCEPTOR"
+    """str: TSP-Link trigger synchronous acceptor."""
+    MODE_SYNCHRONOUS_MASTER = "tsplink.MODE_SYNCHRONOUS_MASTER"
+    """str: TSP-Link trigger synchronous master."""
+    MODE_TRIGGER_OPEN_DRAIN = "tsplink.MODE_TRIGGER_OPEN_DRAIN"
+    """str: TSP-Link trigger open drain line."""
+    STATE_HIGH = "tsplink.STATE_HIGH"
+    """str: High state of the synchronization line."""
+    STATE_LOW = "tsplink.STATE_LOW"
+    """str: Low state of the synchronization line."""
 
     def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "tsplink") -> None:
         super().__init__(device, cmd_syntax)
@@ -369,7 +397,9 @@ class Tsplink(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".node"
-            return self._device.query(f"print({self._cmd_syntax}.node)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.node)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.node`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -401,7 +431,9 @@ class Tsplink(BaseTSPCmd):
                     self._cmd_syntax + ".node", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.node = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.node = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.node`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -510,7 +542,9 @@ class Tsplink(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.writeport({data})")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.writeport({data})"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.writeport()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

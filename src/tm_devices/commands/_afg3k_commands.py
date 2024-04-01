@@ -4,14 +4,11 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
 Please report an issue if one is found.
 """
+
 from typing import Any, Optional
 
 from tm_devices.drivers.pi.pi_device import PIDevice
 
-from ._5y90wz_lpdmsomdodpoafgawgdsa.status_and_error import Opt
-from ._5z14a1_lpdmsodpomdoafgawgdsa.calibration import Cal
-from ._5z14a1_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
-from ._5z14a1_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
 from ._22daqs_afg.afgcontrol import Afgcontrol
 from ._22daqs_afg.data import Data
 from ._22daqs_afg.diagnostic import Diagnostic
@@ -32,6 +29,10 @@ from ._22daqs_afg.system import System
 from ._22daqs_afg.trigger import Trigger
 from ._33ijgq_afgawg.abort import Abort
 from ._33ijgq_afgawg.calibration import Calibration
+from ._ft5uww_lpdmsodpomdoafgawgdsa.calibration import Cal
+from ._ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
+from ._ft5uww_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
+from ._fteabn_lpdmsomdodpoafgawgdsa.status_and_error import Opt
 
 
 # pylint: disable=too-few-public-methods

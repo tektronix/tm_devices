@@ -2,6 +2,7 @@
 
 This script creates pulses on the model 2461.
 """
+
 from time import sleep
 
 from tm_devices import DeviceManager
@@ -10,9 +11,7 @@ from tm_devices.drivers import SMU2461
 with DeviceManager() as device_manager:
     print(device_manager.get_available_devices())
 
-    smu2461: SMU2461 = device_manager.add_smu(
-        "TCPIP::0.0.0.0::inst0::INSTR", alias="my2461"
-    )  # pyright: ignore[reportGeneralTypeIssues]
+    smu2461: SMU2461 = device_manager.add_smu("TCPIP::0.0.0.0::inst0::INSTR", alias="my2461")  # pyright: ignore[reportAssignmentType]
 
     # Reset the instrument
     smu2461.commands.reset()

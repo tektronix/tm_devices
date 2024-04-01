@@ -1,0 +1,42 @@
+---
+name: Upload Artifact
+on:
+  workflow_run:
+    branches: [main]
+    workflows: [Create Temp HTML]
+    types:
+      - completed
+# Cancel running jobs for the same workflow and branch.
+concurrency:
+  group: publish-docs
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }} && github.ref ==
+      'refs/heads/main'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - run: echo 'The Test docs workflow passed'
+      - name: download-artifact
+        uses: dawidd6/action-download-artifact@v2.28.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          run_id: ${{ github.event.workflow_run.id }}
+          workflow_conclusion: success
+          name: artifact_docs
+      - name: unzip-artifact
+        run: |
+          unzip test3.zip
+          rm -r docs_results/.results_docs/html/.doctrees
+      - name: upload-pages-artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: docs_results/.results_docs/html
+      - name: deploy-to-github-pages
+        uses: actions/deploy-pages@v2
+        id: deployment

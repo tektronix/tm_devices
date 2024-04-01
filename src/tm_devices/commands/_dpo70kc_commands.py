@@ -5,108 +5,109 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
 Please report an issue if one is found.
 """
+
 from typing import Any, Dict, Optional
 
 from tm_devices.drivers.pi.pi_device import PIDevice
 
-from ._5uw825_msodpomdodsa.curve import Curve
-from ._5uw825_msodpomdodsa.date import Date
-from ._5uw825_msodpomdodsa.mathvar import Mathvar
-from ._5uw825_msodpomdodsa.save_and_recall import Rcl, Sav
-from ._5v6218_lpdmsodpomdodsa.lock import Lock
-from ._5v6218_lpdmsodpomdodsa.unlock import Unlock
 from ._5vmwut_dpodsamso.trigger import Trigger
-from ._5vppzt_lpdmsodpomdodsa.allev import Allev
-from ._5vppzt_lpdmsodpomdodsa.busy import Busy
-from ._5vppzt_lpdmsodpomdodsa.dese import Dese
-from ._5vppzt_lpdmsodpomdodsa.event import Event
-from ._5vppzt_lpdmsodpomdodsa.evmsg import Evmsg
-from ._5vppzt_lpdmsodpomdodsa.evqty import Evqty
-from ._5vppzt_lpdmsodpomdodsa.factory import Factory
-from ._5vppzt_lpdmsodpomdodsa.id import Id
-from ._5vppzt_lpdmsodpomdodsa.miscellaneous import Ddt, Lrn
-from ._5vppzt_lpdmsodpomdodsa.newpass import Newpass
-from ._5vppzt_lpdmsodpomdodsa.password import Password
-from ._5vppzt_lpdmsodpomdodsa.rem import Rem
-from ._5vppzt_lpdmsodpomdodsa.set import Set
-from ._5vppzt_lpdmsodpomdodsa.status_and_error import Pud
-from ._5vppzt_lpdmsodpomdodsa.teksecure import Teksecure
-from ._5vppzt_lpdmsodpomdodsa.wavfrm import Wavfrm
-from ._5x02qd_msodpodsa.time import Time
-from ._5xwdsk_dpodsamso.counter import Counter
 from ._5xwdsk_dpodsamso.errordetector import Errordetector
-from ._5xwdsk_dpodsamso.linktraining import Linktraining
-from ._5xwdsk_dpodsamso.rosc import Rosc
-from ._5y3emz_lpdmsodpodsa.alias import Alias
-from ._5y3emz_lpdmsodpodsa.header import Header
-from ._5y3emz_lpdmsodpodsa.status_and_error import Psc
-from ._5y3emz_lpdmsodpodsa.verbose import Verbose
-from ._5y90wx_dpodsamso.acquire import Acquire
-from ._5y90wx_dpodsamso.allocate import Allocate
-from ._5y90wx_dpodsamso.application import Application
-from ._5y90wx_dpodsamso.autoset import Autoset
-from ._5y90wx_dpodsamso.auxin import Auxin
-from ._5y90wx_dpodsamso.auxout import Auxout
-from ._5y90wx_dpodsamso.bell import Bell
-from ._5y90wx_dpodsamso.calibrate import Calibrate
-from ._5y90wx_dpodsamso.ch import Channel
-from ._5y90wx_dpodsamso.clear import Clear
-from ._5y90wx_dpodsamso.cmdbatch import Cmdbatch
-from ._5y90wx_dpodsamso.cq import CqItem
-from ._5y90wx_dpodsamso.cursor import Cursor
-from ._5y90wx_dpodsamso.curvenext import Curvenext
-from ._5y90wx_dpodsamso.curvestream import Curvestream
-from ._5y90wx_dpodsamso.custom import Custom
-from ._5y90wx_dpodsamso.d import DigitalBit
-from ._5y90wx_dpodsamso.data import Data
-from ._5y90wx_dpodsamso.delete import Delete
-from ._5y90wx_dpodsamso.diag import Diag
-from ._5y90wx_dpodsamso.display import Display
 from ._5y90wx_dpodsamso.dpojet import Dpojet
-from ._5y90wx_dpodsamso.email import Email
-from ._5y90wx_dpodsamso.export import Export
-from ._5y90wx_dpodsamso.fastacq import Fastacq
-from ._5y90wx_dpodsamso.filesystem import Filesystem
-from ._5y90wx_dpodsamso.gpibusb import Gpibusb
-from ._5y90wx_dpodsamso.hardcopy import Hardcopy
-from ._5y90wx_dpodsamso.hdr import Hdr
-from ._5y90wx_dpodsamso.histogram import Histogram
-from ._5y90wx_dpodsamso.horizontal import Horizontal
-from ._5y90wx_dpodsamso.limit import Limit
-from ._5y90wx_dpodsamso.mark import Mark
-from ._5y90wx_dpodsamso.mask import Mask
-from ._5y90wx_dpodsamso.math import MathItem
-from ._5y90wx_dpodsamso.matharbflt import MatharbfltItem
-from ._5y90wx_dpodsamso.mch import MchItem
-from ._5y90wx_dpodsamso.measurement import Measurement
-from ._5y90wx_dpodsamso.multiscope import Multiscope
-from ._5y90wx_dpodsamso.opcextended import Opcextended
-from ._5y90wx_dpodsamso.pcenable import Pcenable
-from ._5y90wx_dpodsamso.recall import Recall
-from ._5y90wx_dpodsamso.ref import RefItem
-from ._5y90wx_dpodsamso.save import Save
-from ._5y90wx_dpodsamso.save_and_recall import Sds
-from ._5y90wx_dpodsamso.saveon import Saveon
-from ._5y90wx_dpodsamso.search import Search
-from ._5y90wx_dpodsamso.select import Select
-from ._5y90wx_dpodsamso.setup_1 import Setup
-from ._5y90wx_dpodsamso.system import System
-from ._5y90wx_dpodsamso.teklink import Teklink
-from ._5y90wx_dpodsamso.test import Test
-from ._5y90wx_dpodsamso.trig import Trig
-from ._5y90wx_dpodsamso.usbtmc import Usbtmc
-from ._5y90wx_dpodsamso.visual import Visual
-from ._5y90wx_dpodsamso.wavfrmstream import Wavfrmstream
-from ._5y90wx_dpodsamso.wfminpre import Wfminpre
-from ._5y90wx_dpodsamso.wfmoutpre import Wfmoutpre
-from ._5y90wx_dpodsamso.wfmpre import Wfmpre
-from ._5y90wx_dpodsamso.zoom import Zoom
-from ._5y90wz_lpdmsomdodpoafgawgdsa.status_and_error import Opt
-from ._5ylo0x_lpdmsodpomdoawgdsa.status_and_error import Ese, Sre
-from ._5z14a1_lpdmsodpomdoafgawgdsa.calibration import Cal
-from ._5z14a1_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
-from ._5z14a1_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
-from ._60ea5c_dpodsamso.bus import Bus
+from ._ffz2xs_dpodsamso.bus import Bus
+from ._fhrp27_msodpomdodsa.curve import Curve
+from ._fhrp27_msodpomdodsa.date import Date
+from ._fhrp27_msodpomdodsa.mathvar import Mathvar
+from ._fhrp27_msodpomdodsa.save_and_recall import Rcl, Sav
+from ._fk3z56_dpodsamso.acquire import Acquire
+from ._fk3z56_dpodsamso.allocate import Allocate
+from ._fk3z56_dpodsamso.application import Application
+from ._fk3z56_dpodsamso.autoset import Autoset
+from ._fk3z56_dpodsamso.auxin import Auxin
+from ._fk3z56_dpodsamso.auxout import Auxout
+from ._fk3z56_dpodsamso.bell import Bell
+from ._fk3z56_dpodsamso.calibrate import Calibrate
+from ._fk3z56_dpodsamso.ch import Channel
+from ._fk3z56_dpodsamso.clear import Clear
+from ._fk3z56_dpodsamso.cmdbatch import Cmdbatch
+from ._fk3z56_dpodsamso.cq import CqItem
+from ._fk3z56_dpodsamso.cursor import Cursor
+from ._fk3z56_dpodsamso.curvenext import Curvenext
+from ._fk3z56_dpodsamso.curvestream import Curvestream
+from ._fk3z56_dpodsamso.custom import Custom
+from ._fk3z56_dpodsamso.d import DigitalBit
+from ._fk3z56_dpodsamso.data import Data
+from ._fk3z56_dpodsamso.delete import Delete
+from ._fk3z56_dpodsamso.diag import Diag
+from ._fk3z56_dpodsamso.display import Display
+from ._fk3z56_dpodsamso.email import Email
+from ._fk3z56_dpodsamso.export import Export
+from ._fk3z56_dpodsamso.fastacq import Fastacq
+from ._fk3z56_dpodsamso.filesystem import Filesystem
+from ._fk3z56_dpodsamso.gpibusb import Gpibusb
+from ._fk3z56_dpodsamso.hardcopy import Hardcopy
+from ._fk3z56_dpodsamso.hdr import Hdr
+from ._fk3z56_dpodsamso.histogram import Histogram
+from ._fk3z56_dpodsamso.horizontal import Horizontal
+from ._fk3z56_dpodsamso.limit import Limit
+from ._fk3z56_dpodsamso.mark import Mark
+from ._fk3z56_dpodsamso.mask import Mask
+from ._fk3z56_dpodsamso.math import MathItem
+from ._fk3z56_dpodsamso.matharbflt import MatharbfltItem
+from ._fk3z56_dpodsamso.mch import MchItem
+from ._fk3z56_dpodsamso.measurement import Measurement
+from ._fk3z56_dpodsamso.multiscope import Multiscope
+from ._fk3z56_dpodsamso.opcextended import Opcextended
+from ._fk3z56_dpodsamso.pcenable import Pcenable
+from ._fk3z56_dpodsamso.recall import Recall
+from ._fk3z56_dpodsamso.ref import RefItem
+from ._fk3z56_dpodsamso.save import Save
+from ._fk3z56_dpodsamso.save_and_recall import Sds
+from ._fk3z56_dpodsamso.saveon import Saveon
+from ._fk3z56_dpodsamso.search import Search
+from ._fk3z56_dpodsamso.select import Select
+from ._fk3z56_dpodsamso.setup_1 import Setup
+from ._fk3z56_dpodsamso.system import System
+from ._fk3z56_dpodsamso.teklink import Teklink
+from ._fk3z56_dpodsamso.test import Test
+from ._fk3z56_dpodsamso.trig import Trig
+from ._fk3z56_dpodsamso.usbtmc import Usbtmc
+from ._fk3z56_dpodsamso.visual import Visual
+from ._fk3z56_dpodsamso.wavfrmstream import Wavfrmstream
+from ._fk3z56_dpodsamso.wfminpre import Wfminpre
+from ._fk3z56_dpodsamso.wfmoutpre import Wfmoutpre
+from ._fk3z56_dpodsamso.wfmpre import Wfmpre
+from ._fk3z56_dpodsamso.zoom import Zoom
+from ._fkjfe8_msodpodsa.time import Time
+from ._fpx9s1_dpodsamso.counter import Counter
+from ._fpx9s1_dpodsamso.linktraining import Linktraining
+from ._fpx9s1_dpodsamso.rosc import Rosc
+from ._ft5uww_lpdmsodpomdoafgawgdsa.calibration import Cal
+from ._ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
+from ._ft5uww_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
+from ._fteabn_lpdmsomdodpoafgawgdsa.status_and_error import Opt
+from ._fug7nl_lpdmsodpomdoawgdsa.status_and_error import Ese, Sre
+from ._fuzvln_lpdmsodpodsa.alias import Alias
+from ._fuzvln_lpdmsodpodsa.header import Header
+from ._fuzvln_lpdmsodpodsa.status_and_error import Psc
+from ._fuzvln_lpdmsodpodsa.verbose import Verbose
+from ._fx54ua_lpdmsodpomdodsa.allev import Allev
+from ._fx54ua_lpdmsodpomdodsa.busy import Busy
+from ._fx54ua_lpdmsodpomdodsa.dese import Dese
+from ._fx54ua_lpdmsodpomdodsa.event import Event
+from ._fx54ua_lpdmsodpomdodsa.evmsg import Evmsg
+from ._fx54ua_lpdmsodpomdodsa.evqty import Evqty
+from ._fx54ua_lpdmsodpomdodsa.factory import Factory
+from ._fx54ua_lpdmsodpomdodsa.id import Id
+from ._fx54ua_lpdmsodpomdodsa.miscellaneous import Ddt, Lrn
+from ._fx54ua_lpdmsodpomdodsa.newpass import Newpass
+from ._fx54ua_lpdmsodpomdodsa.password import Password
+from ._fx54ua_lpdmsodpomdodsa.rem import Rem
+from ._fx54ua_lpdmsodpomdodsa.set import Set
+from ._fx54ua_lpdmsodpomdodsa.status_and_error import Pud
+from ._fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
+from ._fx54ua_lpdmsodpomdodsa.wavfrm import Wavfrm
+from ._fzn174_lpdmsodpomdodsa.lock import Lock
+from ._fzn174_lpdmsodpomdodsa.unlock import Unlock
 from ._helpers import DefaultDictPassKeyToFactory
 
 
@@ -3313,6 +3314,7 @@ class DPO70KCCommands:
             - ``.d``: The ``SELect:D<x>`` command.
             - ``.dall``: The ``SELect:DALL`` command.
             - ``.digtraces``: The ``SELect:DIGTraces`` command tree.
+            - ``.math``: The ``SELect:MATH<x>`` command.
             - ``.ref``: The ``SELect:REF<x>`` command.
         """
         return self._select

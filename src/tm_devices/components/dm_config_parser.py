@@ -1,4 +1,5 @@
 """Config parser module."""
+
 from __future__ import annotations
 
 import contextlib
@@ -339,7 +340,7 @@ class DMConfigParser:
         retval: List[Dict[str, Any]] = []
         msg: List[str] = []
         for dev_entry in devices_str_list:
-            temp_dict = {}
+            temp_dict: Dict[str, Any] = {}
             for dev_arg in dev_entry.split(","):
                 try:
                     dev_key, dev_val = dev_arg.split("=", 1)
@@ -356,7 +357,7 @@ class DMConfigParser:
 
     @staticmethod
     def __parse_config_file(
-        config_file_path: Union[str, os.PathLike[str]]
+        config_file_path: Union[str, os.PathLike[str]],
     ) -> Tuple[DMConfigOptions, List[Dict[str, Any]]]:
         """Parse config file for the options flags and list of device configuration dictionaries.
 
@@ -371,7 +372,7 @@ class DMConfigParser:
             KeyError: Indicates unrecognized option name.
         """
         config_path = pathlib.Path(config_file_path)  # normalize the path
-        if not os.path.isfile(config_path):
+        if not config_path.is_file():
             raise FileNotFoundError(config_path)
         # read in data
         with open(config_path, encoding="utf-8") as config_file:

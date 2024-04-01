@@ -1,4 +1,5 @@
 """Helpers used by the tm_devices package."""
+
 from tm_devices.helpers.alias_dict import AliasDict
 from tm_devices.helpers.constants_and_dataclasses import (
     DeviceConfigEntry,
@@ -16,10 +17,15 @@ from tm_devices.helpers.enums import (
     ConfigFileType,
     ConnectionTypes,
     DeviceTypes,
-    SignalSourceFunctionBase,
-    SignalSourceFunctionsAFG,
-    SignalSourceFunctionsAWG,
-    SignalSourceFunctionsIAFG,
+    LoadImpedanceAFG,
+    SASSetWaveformFileTypes,
+    SignalGeneratorFunctionBase,
+    SignalGeneratorFunctionsAFG,
+    SignalGeneratorFunctionsAWG,
+    SignalGeneratorFunctionsIAFG,
+    SignalGeneratorOutputPaths5200,
+    SignalGeneratorOutputPathsBase,
+    SignalGeneratorOutputPathsNon5200,
     SupportedModels,
     SupportedRequestTypes,
 )
@@ -38,6 +44,7 @@ from tm_devices.helpers.functions import (
     print_with_timestamp,
     sanitize_enum,
 )
+from tm_devices.helpers.read_only_cached_property import ReadOnlyCachedProperty
 from tm_devices.helpers.singleton_metaclass import Singleton
 from tm_devices.helpers.standalone_functions import validate_address
 
@@ -73,8 +80,14 @@ __all__ = [
     "VALID_DEVICE_CONNECTION_TYPES",
     "validate_address",
     "VISA_RESOURCE_EXPRESSION_REGEX",
-    "SignalSourceFunctionBase",
-    "SignalSourceFunctionsAWG",
-    "SignalSourceFunctionsAFG",
-    "SignalSourceFunctionsIAFG",
+    "ReadOnlyCachedProperty",
+    "SignalGeneratorFunctionBase",
+    "SignalGeneratorFunctionsAWG",
+    "SignalGeneratorFunctionsAFG",
+    "SignalGeneratorFunctionsIAFG",
+    "SignalGeneratorOutputPathsBase",
+    "SignalGeneratorOutputPaths5200",
+    "SignalGeneratorOutputPathsNon5200",
+    "SASSetWaveformFileTypes",
+    "LoadImpedanceAFG",
 ]

@@ -1,4 +1,5 @@
 """Base Test Script Processing (TSP) device driver module."""
+
 from __future__ import annotations
 
 from abc import ABC
@@ -27,7 +28,7 @@ class TSPDevice(PIDevice, ABC):
     @property
     def ieee_cmds(self) -> TSPIEEE4882Commands:
         """Return an internal class containing methods for the standard IEEE 488.2 command set."""
-        return self._ieee_cmds  # type: ignore
+        return self._ieee_cmds  # pyright: ignore[reportReturnType]
 
     ################################################################################################
     # Public Methods
@@ -202,6 +203,7 @@ class TSPDevice(PIDevice, ABC):
         custom_message_prefix: str = "",
         *,
         expected_value: Optional[Union[str, float]] = None,
+        opc: Optional[bool] = None,
     ) -> str:
         """Send the given command with the given value and then verify the results.
 
@@ -217,11 +219,12 @@ class TSPDevice(PIDevice, ABC):
             remove_quotes: Set this to True to remove all double quotes from the returned value.
             custom_message_prefix: A custom message to be prepended to the failure message.
             expected_value: An optional, alternative value expected to be returned.
+            opc: Boolean indicating if ``*OPC?`` should be queried after sending the command.
 
         Returns:
             The output of the query portion of the method.
         """
-        self.write(f"{command} = {value}")
+        self.write(f"{command} = {value}", opc=bool(opc))
         if self._enable_verification:
             check = self.query("print(" + command + ")", remove_quotes=remove_quotes)
             message_prefix = f"Failed to set {command} to {value}"

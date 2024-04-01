@@ -1,4 +1,5 @@
 """Directly access the PyVISA resource object."""
+
 from tm_devices import DeviceManager
 
 with DeviceManager() as device_manager:

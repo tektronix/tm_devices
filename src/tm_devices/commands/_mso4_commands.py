@@ -5,101 +5,103 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
 Please report an issue if one is found.
 """
+
 from typing import Any, Dict, Optional
 
 from tm_devices.drivers.pi.pi_device import PIDevice
 
-from ._1mn7uh_lpdmsomdodpo.pause import Pause
-from ._1mn7uh_lpdmsomdodpo.rosc import Rosc
-from ._1nrybj_lpdmsodpomdo.totaluptime import Totaluptime
-from ._5v6218_lpdmsodpomdodsa.lock import Lock
-from ._5v6218_lpdmsodpomdodsa.unlock import Unlock
-from ._5vppzt_lpdmsodpomdodsa.allev import Allev
-from ._5vppzt_lpdmsodpomdodsa.busy import Busy
-from ._5vppzt_lpdmsodpomdodsa.dese import Dese
-from ._5vppzt_lpdmsodpomdodsa.event import Event
-from ._5vppzt_lpdmsodpomdodsa.evmsg import Evmsg
-from ._5vppzt_lpdmsodpomdodsa.evqty import Evqty
-from ._5vppzt_lpdmsodpomdodsa.factory import Factory
-from ._5vppzt_lpdmsodpomdodsa.id import Id
-from ._5vppzt_lpdmsodpomdodsa.miscellaneous import Ddt, Lrn
-from ._5vppzt_lpdmsodpomdodsa.newpass import Newpass
-from ._5vppzt_lpdmsodpomdodsa.password import Password
-from ._5vppzt_lpdmsodpomdodsa.rem import Rem
-from ._5vppzt_lpdmsodpomdodsa.set import Set
-from ._5vppzt_lpdmsodpomdodsa.status_and_error import Pud
-from ._5vppzt_lpdmsodpomdodsa.teksecure import Teksecure
-from ._5vppzt_lpdmsodpomdodsa.wavfrm import Wavfrm
-from ._5y3emz_lpdmsodpodsa.alias import Alias
-from ._5y3emz_lpdmsodpodsa.header import Header
-from ._5y3emz_lpdmsodpodsa.status_and_error import Psc
-from ._5y3emz_lpdmsodpodsa.verbose import Verbose
-from ._5y90wz_lpdmsomdodpoafgawgdsa.status_and_error import Opt
-from ._5ylo0x_lpdmsodpomdoawgdsa.status_and_error import Ese, Sre
-from ._5z14a1_lpdmsodpomdoafgawgdsa.calibration import Cal
-from ._5z14a1_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
-from ._5z14a1_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
-from ._c3g63_lpdmso.acquire import Acquire
-from ._c3g63_lpdmso.application import Application
-from ._c3g63_lpdmso.auxout import Auxout
-from ._c3g63_lpdmso.bus import Bus
-from ._c3g63_lpdmso.ch import Channel
-from ._c3g63_lpdmso.customtable import Customtable
-from ._c3g63_lpdmso.data import Data
-from ._c3g63_lpdmso.diggrp import DiggrpItem
-from ._c3g63_lpdmso.display import Display
-from ._c3g63_lpdmso.dvm import Dvm
-from ._c3g63_lpdmso.eyemask import Eyemask
-from ._c3g63_lpdmso.fpanel import Fpanel
-from ._c3g63_lpdmso.horizontal import Horizontal
-from ._c3g63_lpdmso.license import License
-from ._c3g63_lpdmso.mask import Mask
-from ._c3g63_lpdmso.math import Math
-from ._c3g63_lpdmso.matharbflt import MatharbfltItem
-from ._c3g63_lpdmso.measu import Measu
-from ._c3g63_lpdmso.measurement import Measurement
-from ._c3g63_lpdmso.peakstable import Peakstable
-from ._c3g63_lpdmso.plot import Plot
-from ._c3g63_lpdmso.power import Power
-from ._c3g63_lpdmso.ref import RefItem
-from ._c3g63_lpdmso.save import Save
-from ._c3g63_lpdmso.saveon import Saveon
-from ._c3g63_lpdmso.saveonevent import Saveonevent
-from ._c3g63_lpdmso.search import Search
-from ._c3g63_lpdmso.searchtable import Searchtable
-from ._c3g63_lpdmso.sv import Sv
-from ._c3g63_lpdmso.touchscreen import Touchscreen
-from ._c3g63_lpdmso.trigger import Trigger
-from ._c3g63_lpdmso.tstamptable import Tstamptable
-from ._c3g63_lpdmso.visual import Visual
-from ._c69b1_lpdmso.actonevent import Actonevent
-from ._c69b1_lpdmso.afg import Afg
-from ._c69b1_lpdmso.autosavepitimeout import Autosavepitimeout
-from ._c69b1_lpdmso.autosaveuitimeout import Autosaveuitimeout
-from ._c69b1_lpdmso.autoset import Autoset
-from ._c69b1_lpdmso.bustable import Bustable
-from ._c69b1_lpdmso.calibrate import Calibrate
-from ._c69b1_lpdmso.callouts import Callouts
-from ._c69b1_lpdmso.configuration import Configuration
-from ._c69b1_lpdmso.connected import Connected
-from ._c69b1_lpdmso.curve import Curve
-from ._c69b1_lpdmso.curvestream import Curvestream
-from ._c69b1_lpdmso.date import Date
-from ._c69b1_lpdmso.diag import Diag
-from ._c69b1_lpdmso.ethernet import Ethernet
-from ._c69b1_lpdmso.filesystem import Filesystem
-from ._c69b1_lpdmso.mainwindow import Mainwindow
-from ._c69b1_lpdmso.meastable import Meastable
-from ._c69b1_lpdmso.recall import Recall
-from ._c69b1_lpdmso.ref import Ref
-from ._c69b1_lpdmso.socketserver import Socketserver
-from ._c69b1_lpdmso.time import Time
-from ._c69b1_lpdmso.undo import Undo
-from ._c69b1_lpdmso.usbdevice import Usbdevice
-from ._c69b1_lpdmso.vertical import Vertical
-from ._c69b1_lpdmso.wfmoutpre import Wfmoutpre
+from ._e3e9uu_lpdmso.acquire import Acquire
+from ._e3e9uu_lpdmso.actonevent import Actonevent
+from ._e3e9uu_lpdmso.application import Application
+from ._e3e9uu_lpdmso.auxout import Auxout
+from ._e3e9uu_lpdmso.bus import Bus
+from ._e3e9uu_lpdmso.callouts import Callouts
+from ._e3e9uu_lpdmso.ch import Channel
+from ._e3e9uu_lpdmso.data import Data
+from ._e3e9uu_lpdmso.diag import Diag
+from ._e3e9uu_lpdmso.diggrp import DiggrpItem
+from ._e3e9uu_lpdmso.display import Display
+from ._e3e9uu_lpdmso.dvm import Dvm
+from ._e3e9uu_lpdmso.eyemask import Eyemask
+from ._e3e9uu_lpdmso.fpanel import Fpanel
+from ._e3e9uu_lpdmso.histogram import Histogram
+from ._e3e9uu_lpdmso.horizontal import Horizontal
+from ._e3e9uu_lpdmso.license import License
+from ._e3e9uu_lpdmso.mask import Mask
+from ._e3e9uu_lpdmso.math import Math
+from ._e3e9uu_lpdmso.matharbflt import MatharbfltItem
+from ._e3e9uu_lpdmso.measurement import Measurement
+from ._e3e9uu_lpdmso.peakstable import Peakstable
+from ._e3e9uu_lpdmso.pilogger import Pilogger
+from ._e3e9uu_lpdmso.plot import Plot
+from ._e3e9uu_lpdmso.power import Power
+from ._e3e9uu_lpdmso.ref import Ref, RefItem
+from ._e3e9uu_lpdmso.rosc import Rosc
+from ._e3e9uu_lpdmso.save import Save
+from ._e3e9uu_lpdmso.saveon import Saveon
+from ._e3e9uu_lpdmso.saveonevent import Saveonevent
+from ._e3e9uu_lpdmso.search import Search
+from ._e3e9uu_lpdmso.searchtable import Searchtable
+from ._e3e9uu_lpdmso.select import Select
+from ._e3e9uu_lpdmso.sv import Sv
+from ._e3e9uu_lpdmso.touchscreen import Touchscreen
+from ._e3e9uu_lpdmso.trigger import Trigger
+from ._e3e9uu_lpdmso.tstamptable import Tstamptable
+from ._e3e9uu_lpdmso.visual import Visual
+from ._e3h2zs_lpdmso.afg import Afg
+from ._e3h2zs_lpdmso.autosavepitimeout import Autosavepitimeout
+from ._e3h2zs_lpdmso.autosaveuitimeout import Autosaveuitimeout
+from ._e3h2zs_lpdmso.autoset import Autoset
+from ._e3h2zs_lpdmso.bustable import Bustable
+from ._e3h2zs_lpdmso.calibrate import Calibrate
+from ._e3h2zs_lpdmso.configuration import Configuration
+from ._e3h2zs_lpdmso.connected import Connected
+from ._e3h2zs_lpdmso.curve import Curve
+from ._e3h2zs_lpdmso.curvestream import Curvestream
+from ._e3h2zs_lpdmso.customtable import Customtable
+from ._e3h2zs_lpdmso.date import Date
+from ._e3h2zs_lpdmso.ethernet import Ethernet
+from ._e3h2zs_lpdmso.filesystem import Filesystem
+from ._e3h2zs_lpdmso.mainwindow import Mainwindow
+from ._e3h2zs_lpdmso.meastable import Meastable
+from ._e3h2zs_lpdmso.recall import Recall
+from ._e3h2zs_lpdmso.socketserver import Socketserver
+from ._e3h2zs_lpdmso.time import Time
+from ._e3h2zs_lpdmso.undo import Undo
+from ._e3h2zs_lpdmso.usbdevice import Usbdevice
+from ._e3h2zs_lpdmso.vertical import Vertical
+from ._e3h2zs_lpdmso.wfmoutpre import Wfmoutpre
+from ._e4de2d_lpdmsomdo.clear import Clear
+from ._e6lgg1_lpdmsodpomdo.totaluptime import Totaluptime
+from ._e6606z_lpdmsomdodpo.pause import Pause
+from ._ft5uww_lpdmsodpomdoafgawgdsa.calibration import Cal
+from ._ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
+from ._ft5uww_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
+from ._fteabn_lpdmsomdodpoafgawgdsa.status_and_error import Opt
+from ._fug7nl_lpdmsodpomdoawgdsa.status_and_error import Ese, Sre
+from ._fuzvln_lpdmsodpodsa.alias import Alias
+from ._fuzvln_lpdmsodpodsa.header import Header
+from ._fuzvln_lpdmsodpodsa.status_and_error import Psc
+from ._fuzvln_lpdmsodpodsa.verbose import Verbose
+from ._fx54ua_lpdmsodpomdodsa.allev import Allev
+from ._fx54ua_lpdmsodpomdodsa.busy import Busy
+from ._fx54ua_lpdmsodpomdodsa.dese import Dese
+from ._fx54ua_lpdmsodpomdodsa.event import Event
+from ._fx54ua_lpdmsodpomdodsa.evmsg import Evmsg
+from ._fx54ua_lpdmsodpomdodsa.evqty import Evqty
+from ._fx54ua_lpdmsodpomdodsa.factory import Factory
+from ._fx54ua_lpdmsodpomdodsa.id import Id
+from ._fx54ua_lpdmsodpomdodsa.miscellaneous import Ddt, Lrn
+from ._fx54ua_lpdmsodpomdodsa.newpass import Newpass
+from ._fx54ua_lpdmsodpomdodsa.password import Password
+from ._fx54ua_lpdmsodpomdodsa.rem import Rem
+from ._fx54ua_lpdmsodpomdodsa.set import Set
+from ._fx54ua_lpdmsodpomdodsa.status_and_error import Pud
+from ._fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
+from ._fx54ua_lpdmsodpomdodsa.wavfrm import Wavfrm
+from ._fzn174_lpdmsodpomdodsa.lock import Lock
+from ._fzn174_lpdmsodpomdodsa.unlock import Unlock
 from ._helpers import DefaultDictPassKeyToFactory
-from ._uph56_lpdmsomdo.clear import Clear
 
 
 # pylint: disable=too-few-public-methods
@@ -136,10 +138,13 @@ class MSO4CommandConstants:
     ADDRESS = "ADDRESS"  # ADDRess
     ADVANCED = "ADVANCED"  # ADVanced
     AFG = "AFG"
+    AFG31000 = "AFG31000"
     AFREQUENCIES = "AFREQUENCIES"  # AFREQuencies
     ALARMSEARCH = "ALARMSEARCH"  # ALARMSEARch
     ALL = "ALL"
     ALLBITS = "ALLBITS"  # ALLBits
+    ALLFIELDS = "ALLFIELDS"  # ALLFields
+    ALLLINES = "ALLLINES"  # ALLLines
     AMPLINEAR = "AMPLINEAR"  # AMPLINear
     AN = "AN"
     ANALOG = "ANALOG"
@@ -236,7 +241,8 @@ class MSO4CommandConstants:
     COMPLETE = "COMPLETE"  # COMPlete
     COMPRESSION = "COMPRESSION"  # COMPression
     CONFIGURE = "CONFIGURE"  # CONFigure
-    CONNECT = "CONNECT"  # CONNect
+    CONNECT = "CONNECT"
+    # CONNECT = "CONNect"
     CONSTANT = "CONSTANT"  # CONSTant
     CONSTANTCLOCK = "CONSTANTCLOCK"
     CONTINUOUS = "CONTINUOUS"  # CONTinuous
@@ -294,6 +300,7 @@ class MSO4CommandConstants:
     DEFAULTSETUP = "DEFAULTSETUP"  # DEFaultsetup
     DEFECT = "DEFECT"  # DEFect
     DEFER = "DEFER"  # DEFer
+    DEFGRPA = "DEFGRPA"  # DEFGRPa
     DEGREES = "DEGREES"
     DELTA = "DELTA"
     DETAIL = "DETAIL"  # DETail
@@ -321,6 +328,8 @@ class MSO4CommandConstants:
     DONTINCLUDE = "DONTINCLUDE"  # DONTInclude
     DOTS = "DOTS"  # DOTs
     DOUBLE = "DOUBLE"
+    DPMAUTOSET = "DPMAUTOSET"  # DPMAutoset
+    DPMPRESET = "DPMPRESET"  # DPMPReset
     DQ0 = "DQ0"
     DQDQS = "DQDQS"
     DRA = "DRA"
@@ -347,6 +356,7 @@ class MSO4CommandConstants:
     ELLIPTICAL = "ELLIPTICAL"  # ELLiptical
     END = "END"
     ENDOFPACKET = "ENDOFPACKET"  # ENDOFPACKet
+    ENDXFER = "ENDXFER"
     ENET100 = "ENET100"
     ENET1000 = "ENET1000"
     ENGINEERING = "ENGINEERING"  # ENGineering
@@ -488,8 +498,11 @@ class MSO4CommandConstants:
     GAP = "GAP"
     GAUSSIAN = "GAUSSIAN"  # GAUSSian
     # GAUSSIAN = "GAUSsian"
+    GDELAY = "GDELAY"
+    GE = "GE"  # ge
     GET = "GET"
     GETBUSCH = "GETBUSCH"  # GETBusch
+    GETCAPS = "GETCAPS"
     GETCONFIG = "GETCONFIG"  # GETCONFig
     GETDEVCH = "GETDEVCH"  # GETDevch
     GETFLASHNP = "GETFLASHNP"
@@ -522,6 +535,7 @@ class MSO4CommandConstants:
     GPKNOB2 = "GPKNOB2"
     GRATICULE = "GRATICULE"
     GREATERTHAN = "GREATERTHAN"  # GREATERthan
+    GRPDELAY = "GRPDELAY"
     H = "H"
     HAMMING = "HAMMING"  # HAMMing
     HANDSHAKEPACKET = "HANDSHAKEPACKET"  # HANDSHAKEPacket
@@ -541,6 +555,7 @@ class MSO4CommandConstants:
     HIGHZ = "HIGHZ"
     HILBERT = "HILBERT"  # HILBert
     HIRES = "HIRES"  # HIRes
+    HISTOGRAM = "HISTOGRAM"  # HISTogram
     HONLY = "HONLY"  # HONLy
     HORIZONTAL = "HORIZONTAL"  # HORizontal
     HORIZONTALSCALE = "HORIZONTALSCALE"  # HORIZontalscale
@@ -569,6 +584,7 @@ class MSO4CommandConstants:
     IDLE = "IDLE"
     # IDLE = "IDLe"
     IDX = "IDX"
+    IEEE = "IEEE"  # ieee
     IGBT = "IGBT"
     IMAGINARY = "IMAGINARY"  # IMAGinary
     IN = "IN"
@@ -639,7 +655,6 @@ class MSO4CommandConstants:
     LRD = "LRD"
     LRW = "LRW"
     LSB = "LSB"
-    LSLAVE = "LSLAVE"  # LSLave
     LTR = "LTR"
     LWR = "LWR"
     MACADDRESS = "MACADDRESS"  # MACADDRess
@@ -687,6 +702,7 @@ class MSO4CommandConstants:
     # MIXED = "MIXed"
     MIXEDASCII = "MIXEDASCII"
     MIXEDHEX = "MIXEDHEX"
+    MLANE = "MLANE"  # MLANe
     MODE = "MODE"
     # MODE = "MODe"
     MODEHISTOGRAM = "MODEHISTOGRAM"  # MODEhistogram
@@ -712,6 +728,10 @@ class MSO4CommandConstants:
     NETWORKVARIABLE = "NETWORKVARIABLE"  # NETWORKVARiable
     NETWORKVARIABLES = "NETWORKVARIABLES"  # NETWORKVARiables
     NEXT = "NEXT"  # NEXt
+    NFC14443A = "NFC14443A"
+    NFC14443B = "NFC14443B"
+    NFC15693 = "NFC15693"
+    NFCFELICA = "NFCFELICA"  # NFCFELica
     NIBBLE = "NIBBLE"  # NIBBLe
     NINE = "NINE"  # NINe
     NM = "NM"
@@ -731,11 +751,14 @@ class MSO4CommandConstants:
     NOTE = "NOTE"
     NOTEQUAL = "NOTEQUAL"  # NOTEQual
     NOTEQUALS = "NOTEQUALS"  # NOTEQuals
+    NR3 = "NR3"
+    NTSC = "NTSC"  # NTSc
     NULL = "NULL"
     # NULL = "NULl"
     NULLFRDYNAMIC = "NULLFRDYNAMIC"  # NULLFRDynamic
     NULLFRSTATIC = "NULLFRSTATIC"  # NULLFRStatic
     NUMACQS = "NUMACQS"  # NUMACQs
+    NUMERIC = "NUMERIC"  # NUMERic
     NUMERICORDER = "NUMERICORDER"  # NUMERICORDer
     NVDATA = "NVDATA"  # NVDATa
     NVHEADER = "NVHEADER"  # NVHEADer
@@ -762,6 +785,7 @@ class MSO4CommandConstants:
     OPTIONAL = "OPTIONAL"  # OPTional
     OPTIONALPARAM = "OPTIONALPARAM"  # OPTIONALPARam
     OR = "OR"
+    OTHER = "OTHER"
     OUT = "OUT"
     OUTPUT = "OUTPUT"
     OUTPWR = "OUTPWR"
@@ -784,7 +808,9 @@ class MSO4CommandConstants:
     PACKET = "PACKET"
     PACKETOFFDATA = "PACKETOFFDATA"  # packetOffData
     PACKETS = "PACKETS"  # PACKets
+    PAL = "PAL"
     PARALLEL = "PARALLEL"  # PARallel
+    PARAMETRIC = "PARAMETRIC"  # PARAmetric
     PARITY = "PARITY"  # PARity
     PARITYERROR = "PARITYERROR"  # PARItyerror
     PAUSE = "PAUSE"
@@ -920,13 +946,16 @@ class MSO4CommandConstants:
     RJ = "RJ"
     RMS = "RMS"
     RNR = "RNR"
+    ROTATION = "ROTATION"
     RP = "RP"
     RPBINARY = "RPBINARY"  # RPBinary
     RPM = "RPM"
     RR = "RR"
     RRC = "RRC"
     RS232C = "RS232C"
+    RSTACT = "RSTACT"
     RSTDYA = "RSTDYA"  # RSTDya
+    RSTGRPA = "RSTGRPA"  # RSTGRPa
     RUN = "RUN"
     RUNSTOP = "RUNSTOP"  # RUNSTop
     RUNT = "RUNT"
@@ -951,6 +980,7 @@ class MSO4CommandConstants:
     SCIENTIFIC = "SCIENTIFIC"  # SCIentific
     SCRAMBLING = "SCRAMBLING"  # SCRambling
     SCREEN = "SCREEN"
+    # SCREEN = "SCReen"
     SDATA = "SDATA"  # SDATa
     SDIDATA = "SDIDATA"
     SDIDATASSM = "SDIDATASSM"
@@ -959,6 +989,7 @@ class MSO4CommandConstants:
     SEARCH1 = "SEARCH1"
     SEARCHROM = "SEARCHROM"
     SEARCHTOTRIGGER = "SEARCHTOTRIGGER"  # SEARCHtotrigger
+    SECAM = "SECAM"
     SEGMENTS = "SEGMENTS"  # SEGments
     SELECTED = "SELECTED"
     SENSOR = "SENSOR"
@@ -973,11 +1004,13 @@ class MSO4CommandConstants:
     SET = "SET"
     SETAASA = "SETAASA"  # SETaasa
     SETBRT = "SETBRT"  # SETBrt
+    SETBUSCON = "SETBUSCON"
     SETCONFIG = "SETCONFIG"  # SETCONFig
     SETDECAY = "SETDECAY"  # SETDecay
     SETDYA = "SETDYA"  # SETDya
     SETEXT = "SETEXT"  # SEText
     SETFAST = "SETFAST"  # SETFast
+    SETGRPA = "SETGRPA"  # SETGRPa
     SETHOLD = "SETHOLD"  # SETHold
     SETLEVEL = "SETLEVEL"  # SETLevel
     SETMRDL = "SETMRDL"  # SETMrdl
@@ -1184,6 +1217,8 @@ class MSO4CommandConstants:
     WAVEFORM = "WAVEFORM"
     # WAVEFORM = "WAVEform"
     WAVEVIEW1 = "WAVEVIEW1"
+    WBGDESKEWEXEC = "WBGDESKEWEXEC"  # WBGDeskewexec
+    WBGGSTIM = "WBGGSTIM"
     WBGPRESET = "WBGPRESET"  # WBGPREset
     WIDTH = "WIDTH"  # WIDth
     WINDOW = "WINDOW"  # WINdow
@@ -1260,6 +1295,7 @@ class MSO4Commands:
         - ``.filesystem``: The ``FILESystem`` command.
         - ``.fpanel``: The ``FPAnel`` command tree.
         - ``.header``: The ``HEADer`` command.
+        - ``.histogram``: The ``HISTogram`` command tree.
         - ``.horizontal``: The ``HORizontal`` command.
         - ``.id``: The ``ID`` command.
         - ``.idn``: The ``*IDN`` command.
@@ -1271,7 +1307,6 @@ class MSO4Commands:
         - ``.math``: The ``MATH`` command tree.
         - ``.matharbflt``: The ``MATHArbflt<x>`` command tree.
         - ``.meastable``: The ``MEASTABle`` command tree.
-        - ``.measu``: The ``MEASU`` command tree.
         - ``.measurement``: The ``MEASUrement`` command.
         - ``.newpass``: The ``NEWpass`` command.
         - ``.opc``: The ``*OPC`` command.
@@ -1279,6 +1314,7 @@ class MSO4Commands:
         - ``.password``: The ``PASSWord`` command.
         - ``.pause``: The ``PAUSe`` command.
         - ``.peakstable``: The ``PEAKSTABle`` command tree.
+        - ``.pilogger``: The ``PILOGger`` command tree.
         - ``.plot``: The ``PLOT`` command tree.
         - ``.power``: The ``POWer`` command tree.
         - ``.psc``: The ``*PSC`` command.
@@ -1294,6 +1330,7 @@ class MSO4Commands:
         - ``.saveonevent``: The ``SAVEONEVent`` command tree.
         - ``.search``: The ``SEARCH`` command tree.
         - ``.searchtable``: The ``SEARCHTABle`` command tree.
+        - ``.select``: The ``SELect`` command tree.
         - ``.set``: The ``SET`` command.
         - ``.socketserver``: The ``SOCKETServer`` command tree.
         - ``.sre``: The ``*SRE`` command.
@@ -1367,6 +1404,7 @@ class MSO4Commands:
         self._filesystem = Filesystem(device)
         self._fpanel = Fpanel(device)
         self._header = Header(device)
+        self._histogram = Histogram(device)
         self._horizontal = Horizontal(device)
         self._id = Id(device)
         self._idn = Idn(device)
@@ -1380,7 +1418,6 @@ class MSO4Commands:
             lambda x: MatharbfltItem(device, f"MATHArbflt{x}")
         )
         self._meastable = Meastable(device)
-        self._measu = Measu(device)
         self._measurement = Measurement(device)
         self._newpass = Newpass(device)
         self._opc = Opc(device)
@@ -1388,6 +1425,7 @@ class MSO4Commands:
         self._password = Password(device)
         self._pause = Pause(device)
         self._peakstable = Peakstable(device)
+        self._pilogger = Pilogger(device)
         self._plot = Plot(device)
         self._power = Power(device)
         self._psc = Psc(device)
@@ -1405,6 +1443,7 @@ class MSO4Commands:
         self._saveonevent = Saveonevent(device)
         self._search = Search(device)
         self._searchtable = Searchtable(device)
+        self._select = Select(device)
         self._set = Set(device)
         self._socketserver = Socketserver(device)
         self._sre = Sre(device)
@@ -1690,7 +1729,6 @@ class MSO4Commands:
         Sub-properties:
             - ``.addnew``: The ``BUS:ADDNew`` command.
             - ``.b``: The ``BUS:B<x>`` command tree.
-            - ``.bpsifive``: The ``BUS:B<x>PSIFIVe`` command tree.
             - ``.delete``: The ``BUS:DELete`` command.
             - ``.list``: The ``BUS:LIST`` command.
         """
@@ -1788,7 +1826,8 @@ class MSO4Commands:
               AssertionError if the returned value does not match ``value``.
 
         Sub-properties:
-            - ``.callout``: The ``CALLOUTS:CALLOUT<x>`` command.
+            - ``.addnew``: The ``CALLOUTS:ADDNew`` command.
+            - ``.callout``: The ``CALLOUTS:CALLOUT<x>`` command tree.
         """
         return self._callouts
 
@@ -1841,7 +1880,7 @@ class MSO4Commands:
         """Return the ``CLEAR`` command.
 
         **Description:**
-            - This command clears acquisitions, measurements, and waveforms.
+            - This command  clears acquisitions, measurements, and waveforms.
 
         **Usage:**
             - Using the ``.write()`` method will send the ``CLEAR`` command.
@@ -2512,6 +2551,24 @@ class MSO4Commands:
         return self._header
 
     @property
+    def histogram(self) -> Histogram:
+        """Return the ``HISTogram`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``HISTogram?`` query.
+            - Using the ``.verify(value)`` method will send the ``HISTogram?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.addnew``: The ``HISTogram:ADDNew`` command.
+            - ``.deleteall``: The ``HISTogram:DELETEALL`` command.
+            - ``.delete``: The ``HISTogram:DELete`` command.
+            - ``.histogram``: The ``HISTogram:HISTogram<x>`` command tree.
+            - ``.list``: The ``HISTogram:LIST`` command.
+        """
+        return self._histogram
+
+    @property
     def horizontal(self) -> Horizontal:
         """Return the ``HORizontal`` command.
 
@@ -2757,20 +2814,6 @@ class MSO4Commands:
         return self._meastable
 
     @property
-    def measu(self) -> Measu:
-        """Return the ``MEASU`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the ``MEASU?`` query.
-            - Using the ``.verify(value)`` method will send the ``MEASU?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.meas1``: The ``MEASU:MEAS1`` command tree.
-        """
-        return self._measu
-
-    @property
     def measurement(self) -> Measurement:
         """Return the ``MEASUrement`` command.
 
@@ -2968,6 +3011,21 @@ class MSO4Commands:
             - ``.table``: The ``PEAKSTABle:TABle<x>`` command tree.
         """
         return self._peakstable
+
+    @property
+    def pilogger(self) -> Pilogger:
+        """Return the ``PILOGger`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``PILOGger?`` query.
+            - Using the ``.verify(value)`` method will send the ``PILOGger?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.filename``: The ``PILOGger:FILEName`` command.
+            - ``.state``: The ``PILOGger:STATE`` command.
+        """
+        return self._pilogger
 
     @property
     def plot(self) -> Plot:
@@ -3205,6 +3263,7 @@ class MSO4Commands:
         Sub-properties:
             - ``.eventtable``: The ``SAVe:EVENTtable`` command tree.
             - ``.image``: The ``SAVe:IMAGe`` command.
+            - ``.mask``: The ``SAVe:MASK`` command.
             - ``.plotdata``: The ``SAVe:PLOTData`` command.
             - ``.report``: The ``SAVe:REPOrt`` command.
             - ``.session``: The ``SAVe:SESsion`` command.
@@ -3281,6 +3340,20 @@ class MSO4Commands:
             - ``.list``: The ``SEARCHTABle:list`` command.
         """
         return self._searchtable
+
+    @property
+    def select(self) -> Select:
+        """Return the ``SELect`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``SELect?`` query.
+            - Using the ``.verify(value)`` method will send the ``SELect?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.ch``: The ``SELect:CH<x>`` command.
+        """
+        return self._select
 
     @property
     def set_(self) -> Set:
@@ -3537,6 +3610,7 @@ class MSO4Commands:
             - ``.b``: The ``TRIGger:B`` command tree.
             - ``.hysteresis``: The ``TRIGger:HYSTeresis`` command tree.
             - ``.state``: The ``TRIGger:STATE`` command.
+            - ``.status``: The ``TRIGger:STATUs`` command.
         """
         return self._trigger
 
@@ -3859,6 +3933,7 @@ class MSO4Mixin:
             - ``.filesystem``: The ``FILESystem`` command.
             - ``.fpanel``: The ``FPAnel`` command tree.
             - ``.header``: The ``HEADer`` command.
+            - ``.histogram``: The ``HISTogram`` command tree.
             - ``.horizontal``: The ``HORizontal`` command.
             - ``.id``: The ``ID`` command.
             - ``.idn``: The ``*IDN`` command.
@@ -3870,7 +3945,6 @@ class MSO4Mixin:
             - ``.math``: The ``MATH`` command tree.
             - ``.matharbflt``: The ``MATHArbflt<x>`` command tree.
             - ``.meastable``: The ``MEASTABle`` command tree.
-            - ``.measu``: The ``MEASU`` command tree.
             - ``.measurement``: The ``MEASUrement`` command.
             - ``.newpass``: The ``NEWpass`` command.
             - ``.opc``: The ``*OPC`` command.
@@ -3878,6 +3952,7 @@ class MSO4Mixin:
             - ``.password``: The ``PASSWord`` command.
             - ``.pause``: The ``PAUSe`` command.
             - ``.peakstable``: The ``PEAKSTABle`` command tree.
+            - ``.pilogger``: The ``PILOGger`` command tree.
             - ``.plot``: The ``PLOT`` command tree.
             - ``.power``: The ``POWer`` command tree.
             - ``.psc``: The ``*PSC`` command.
@@ -3893,6 +3968,7 @@ class MSO4Mixin:
             - ``.saveonevent``: The ``SAVEONEVent`` command tree.
             - ``.search``: The ``SEARCH`` command tree.
             - ``.searchtable``: The ``SEARCHTABle`` command tree.
+            - ``.select``: The ``SELect`` command tree.
             - ``.set``: The ``SET`` command.
             - ``.socketserver``: The ``SOCKETServer`` command tree.
             - ``.sre``: The ``*SRE`` command.

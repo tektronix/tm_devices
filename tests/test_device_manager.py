@@ -1,10 +1,16 @@
 # pyright: reportUnusedFunction=none
+# pyright: reportUnknownMemberType=none
+# pyright: reportAttributeAccessIssue=none
+# pyright: reportUnknownVariableType=none
+# pyright: reportArgumentType=none
 """Tests for the device_manager.py file."""
+
 import contextlib
 import os
 import subprocess
 import sys
 
+from pathlib import Path
 from typing import Generator, Iterator, List
 from unittest import mock
 
@@ -17,8 +23,8 @@ from tm_devices import DeviceManager
 from tm_devices.drivers import AFG3K, AFG3KC
 from tm_devices.drivers.device import Device
 from tm_devices.drivers.pi.scopes.scope import Scope
-from tm_devices.drivers.pi.signal_sources.afgs.afg import AFG
-from tm_devices.drivers.pi.signal_sources.signal_source import SignalSource
+from tm_devices.drivers.pi.signal_generators.afgs.afg import AFG
+from tm_devices.drivers.pi.signal_generators.signal_generator import SignalGenerator
 from tm_devices.helpers import ConnectionTypes, DeviceTypes, PYVISA_PY_BACKEND, SerialConfig
 
 
@@ -36,7 +42,7 @@ def _remove_added_methods() -> Iterator[None]:
         (Device, "already_exists"),
         (Scope, "custom_model_getter_scope"),
         (Scope, "custom_return"),
-        (SignalSource, "custom_model_getter_ss"),
+        (SignalGenerator, "custom_model_getter_ss"),
         (AFG, "custom_model_getter_afg"),
         (AFG3K, "custom_model_getter_afg3k"),
         (AFG3KC, "custom_model_getter_afg3kc"),
@@ -253,20 +259,18 @@ class Device(ABC, metaclass=abc.ABCMeta):
     def already_exists(self) -> None:
         """Return nothing."""
 '''
-        sub_filepath = os.path.join("drivers", "device.pyi")
-        generated_stub_dir = os.path.join(
-            os.path.dirname(__file__),
-            "samples",
-            "generated_stubs",
-            f"output_{sys.version_info.major}{sys.version_info.minor}",
-            "tm_devices",
+        sub_filepath = Path("drivers/device.pyi")
+        generated_stub_dir = (
+            Path(__file__).parent
+            / "samples/generated_stubs"
+            / f"output_{sys.version_info.major}{sys.version_info.minor}/tm_devices"
         )
-        generated_stub_file = os.path.join(generated_stub_dir, sub_filepath)
-        golden_stub_dir = os.path.join(os.path.dirname(__file__), "samples", "golden_stubs")
-        os.makedirs(os.path.dirname(generated_stub_file), exist_ok=True)
+        generated_stub_file = generated_stub_dir / sub_filepath
+        golden_stub_dir = Path(__file__).parent / "samples" / "golden_stubs"
+        generated_stub_file.parent.mkdir(parents=True, exist_ok=True)
         with open(generated_stub_file, "w", encoding="utf-8") as generated_file:
             generated_file.write(initial_input)
-        with mock.patch.dict("os.environ", {"TM_DEVICES_STUB_DIR": generated_stub_dir}):
+        with mock.patch.dict("os.environ", {"TM_DEVICES_STUB_DIR": str(generated_stub_dir)}):
             # noinspection PyUnusedLocal,PyShadowingNames
             @Device.add_property(is_cached=True)
             def inc_cached_count(self: Device) -> int:  # noqa: ARG001
@@ -303,20 +307,20 @@ class Device(ABC, metaclass=abc.ABCMeta):
                 """Return the model and serial in a list."""
                 return [self.model, self.serial]
 
-            @Device.add_method  # type: ignore
+            @Device.add_method
             def custom_return_none() -> None:
                 """Return nothing.
 
                 This has a multi-line description.
                 """
 
-            @Device.add_method  # type: ignore
+            @Device.add_method
             def already_exists() -> None:
                 """Return nothing."""
 
             with pytest.raises(AssertionError):
 
-                @Scope.add_method  # type: ignore
+                @Scope.add_method
                 def custom_return() -> None:
                     """Return nothing."""
 
@@ -325,10 +329,10 @@ class Device(ABC, metaclass=abc.ABCMeta):
             """Return the model."""
             return f"Scope {device.model} {value}"
 
-        @SignalSource.add_method
-        def custom_model_getter_ss(device: SignalSource, value: str) -> str:
+        @SignalGenerator.add_method
+        def custom_model_getter_ss(device: SignalGenerator, value: str) -> str:
             """Return the model."""
-            return f"SignalSource {device.model} {value}"
+            return f"SignalGenerator {device.model} {value}"
 
         @AFG.add_method
         def custom_model_getter_afg(device: AFG, value: str) -> str:
@@ -348,14 +352,15 @@ class Device(ABC, metaclass=abc.ABCMeta):
         ############################################################################################
         start_dir = os.getcwd()
         try:
-            os.chdir(os.path.dirname(generated_stub_file))
+            os.chdir(generated_stub_file.parent)
             subprocess.check_call(
                 [  # noqa: S603
                     sys.executable,
                     "-m",
-                    "black",
+                    "ruff",
+                    "format",
                     "--quiet",
-                    os.path.basename(generated_stub_file),
+                    generated_stub_file.name,
                 ]
             )
             subprocess.check_call(
@@ -367,46 +372,44 @@ class Device(ABC, metaclass=abc.ABCMeta):
                     "check",
                     "--select=I",
                     "--fix",
-                    os.path.basename(generated_stub_file),
+                    generated_stub_file.name,
                 ]
             )
         finally:
             os.chdir(start_dir)
-        with open(os.path.join(golden_stub_dir, sub_filepath), encoding="utf-8") as golden_file:
+        with open(golden_stub_dir / sub_filepath, encoding="utf-8") as golden_file:
             golden_contents = golden_file.read()
         with open(generated_stub_file, encoding="utf-8") as generated_file:
             generated_contents = generated_file.read()
         assert generated_contents == golden_contents
 
         # Test the custom added properties
-        afg = device_manager.add_afg("afg3kc-hostname", alias="testing")
+        afg = device_manager.add_afg("afg3252c-hostname", alias="testing")
         # noinspection PyUnresolvedReferences
-        assert afg.class_name == "AFG3KC"  # type: ignore
+        assert afg.class_name == "AFG3KC"
         # noinspection PyUnresolvedReferences
-        _ = afg.inc_cached_count  # type: ignore
+        _ = afg.inc_cached_count
         # noinspection PyUnresolvedReferences
-        assert afg.inc_cached_count == 1, "cached property is not working"  # type: ignore
+        assert afg.inc_cached_count == 1, "cached property is not working"
         # noinspection PyUnresolvedReferences
-        _ = afg.inc_count  # type: ignore
+        _ = afg.inc_count
         # noinspection PyUnresolvedReferences
-        assert afg.inc_count == 3, "uncached property is not working"  # type: ignore
+        assert afg.inc_count == 3, "uncached property is not working"
 
         # Test the custom added methods
         # noinspection PyUnresolvedReferences
-        assert afg.custom_model_getter("a", "b", "c", 0.1) == (  # type: ignore
-            "Device AFG3252C a b c 0.1"
-        )
+        assert afg.custom_model_getter("a", "b", "c", 0.1) == "Device AFG3252C a b c 0.1"
         # noinspection PyUnresolvedReferences
-        assert afg.custom_model_getter_ss("hello") == "SignalSource AFG3252C hello"  # type: ignore
+        assert afg.custom_model_getter_ss("hello") == "SignalGenerator AFG3252C hello"
         # noinspection PyUnresolvedReferences
-        assert afg.custom_model_getter_afg("hello") == "AFG AFG3252C hello"  # type: ignore
+        assert afg.custom_model_getter_afg("hello") == "AFG AFG3252C hello"
         # noinspection PyUnresolvedReferences
-        assert afg.custom_model_getter_afg3k("hello") == "AFG3K AFG3252C hello"  # type: ignore
+        assert afg.custom_model_getter_afg3k("hello") == "AFG3K AFG3252C hello"
         # noinspection PyUnresolvedReferences
-        assert afg.custom_model_getter_afg3kc("hello") == "AFG3KC AFG3252C hello"  # type: ignore
+        assert afg.custom_model_getter_afg3kc("hello") == "AFG3KC AFG3252C hello"
         with pytest.raises(AttributeError):
             # noinspection PyUnresolvedReferences
-            afg.custom_model_getter_scope("hello")  # type: ignore
+            afg.custom_model_getter_scope("hello")
 
         # Test VISA methods
         assert afg.set_and_check("OUTPUT1:STATE", "1", custom_message_prefix="Custom prefix") == "1"
@@ -465,7 +468,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         device_manager.remove_all_devices()
 
         # Test getting a device type that was not the specified type
-        device_manager.add_afg("afg3kc-hostname", alias="my-device")
+        device_manager.add_afg("afg3252c-hostname", alias="my-device")
         with pytest.raises(TypeError):
             device_manager.get_scope("my-device")
         device_manager.remove_all_devices()
@@ -483,10 +486,10 @@ class Device(ABC, metaclass=abc.ABCMeta):
             mock.MagicMock(return_value="data"),
         ):
             with pytest.warns(UserWarning), pytest.raises(SystemError) as error:
-                device_manager.add_afg("afg3kc-hostname")
+                device_manager.add_afg("afg3252c-hostname")
             assert str(error.value) == (
                 "Unable to read *IDN? response.\n"
-                "\tThe device `TCPIP0::AFG3KC-HOSTNAME::inst0::INSTR` likely has data sitting "
+                "\tThe device `TCPIP0::AFG3252C-HOSTNAME::inst0::INSTR` likely has data sitting "
                 "in the VISA Output Buffer that survived device_clear()."
             )
 
@@ -503,7 +506,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         ):
             # patched the stb to return 16 (message available)
             with pytest.warns(UserWarning), pytest.raises(SystemError) as error:
-                device_manager.add_afg("afg3kc-hostname")
+                device_manager.add_afg("afg3252c-hostname")
             assert str(error.value) == (
                 "VI_ERROR_TMO (-1073807339): Timeout expired before operation completed.\n"
                 "\tUnable to read data after 2s.\n"
@@ -520,7 +523,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
             mock.MagicMock(return_value="bad IDN"),
         ):
             with pytest.raises(SystemError) as error:
-                device_manager.add_afg("afg3kc-hostname")
+                device_manager.add_afg("afg3252c-hostname")
             assert (
                 str(error.value)
                 == "Unable to determine which device driver to use. *IDN? returned 'bad IDN'"
@@ -554,7 +557,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
             device_manager.get_available_devices()
 
         with pytest.raises(TypeError):
-            device_manager.add_awg("afg3kc-hostname", alias="mismatch")
+            device_manager.add_awg("afg3252c-hostname", alias="mismatch")
 
         device_manager.close()
         with pytest.raises(AttributeError):
@@ -587,7 +590,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         local_rm.close()
 
         device_manager.remove_all_devices()
-        afg = device_manager.add_afg("afg3kc-hostname")
+        afg = device_manager.add_afg("afg3252c-hostname")
         assert afg.query("*IDN?") == "TEKTRONIX,AFG3252C,SERIAL1,SCPI:99.0 FV:3.2.3"
 
         available_devices = device_manager.get_available_devices(
@@ -605,7 +608,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         assert afg.query("*IDN?") == "TEKTRONIX,AFG3252C,SERIAL1,SCPI:99.0 FV:3.2.3"
         assert available_devices["local"] == device_tuple
         assert available_devices["configured"] == (
-            "address=AFG3KC-HOSTNAME,connection_type=TCPIP,device_type=AFG",
+            "address=AFG3252C-HOSTNAME,connection_type=TCPIP,device_type=AFG",
         )
 
     def test_deleting_device_manager(self) -> None:
@@ -617,7 +620,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         num_closes = 3
         args = [
             sys.executable,
-            f"{os.path.dirname(__file__)}/validate_device_manager_delete.py",
+            str(Path(__file__).parent / "validate_device_manager_delete.py"),
         ]
         stdout = subprocess.check_output(args).decode("utf-8")  # noqa: S603
 
@@ -642,9 +645,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         assert len(device_manager.devices) == 1
         _ = capsys.readouterr()  # clear the output
 
-        device_manager.load_config_file(
-            f"{os.path.dirname(os.path.abspath(__file__))}/samples/simulated_config.yaml"
-        )
+        device_manager.load_config_file(Path(__file__).parent / "samples/simulated_config.yaml")
         assert len(device_manager.devices) == 3
         stdout = capsys.readouterr().out
         assert "Beginning Device Cleanup on AFG " in stdout
@@ -654,7 +655,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         device_manager.remove_all_devices()
         _ = capsys.readouterr()  # clear the output
         device_manager.load_config_file(
-            f"{os.path.dirname(os.path.abspath(__file__))}/samples/simulated_config_no_cleanup.yaml"
+            Path(__file__).parent / "samples/simulated_config_no_cleanup.yaml"
         )
         assert len(device_manager.devices) == 3
         stdout = capsys.readouterr().out
@@ -665,7 +666,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         device_manager.remove_all_devices()
         _ = capsys.readouterr()  # clear the output
         device_manager.load_config_file(
-            f"{os.path.dirname(os.path.abspath(__file__))}/samples/simulated_config_no_devices.yaml"
+            Path(__file__).parent / "samples/simulated_config_no_devices.yaml"
         )
         assert not device_manager.devices
         stdout = capsys.readouterr().out

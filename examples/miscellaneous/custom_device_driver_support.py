@@ -1,4 +1,5 @@
 """An example of external device support via a custom driver."""
+
 from tm_devices import DeviceManager
 from tm_devices.drivers import MSO5
 from tm_devices.drivers.pi.scopes.scope import Scope
@@ -23,11 +24,9 @@ CUSTOM_DEVICE_DRIVERS = {  # A mapping of custom model series strings to Python 
 
 with DeviceManager(external_device_drivers=CUSTOM_DEVICE_DRIVERS) as device_manager:
     # Add a scope that is currently supported by the package
-    mso5: MSO5 = device_manager.add_scope("192.168.0.1")  # pyright: ignore[reportGeneralTypeIssues]
+    mso5: MSO5 = device_manager.add_scope("192.168.0.1")  # pyright: ignore[reportAssignmentType]
     # Add the custom scope
-    custom_scope: CustomScope = device_manager.add_scope(
-        "192.168.0.2"
-    )  # pyright: ignore[reportGeneralTypeIssues]
+    custom_scope: CustomScope = device_manager.add_scope("192.168.0.2")  # pyright: ignore[reportAssignmentType]
 
     # Custom drivers inherit all methods
     custom_scope.expect_esr(0)  # check for no errors

@@ -1,4 +1,5 @@
 """Base REST Application Programming Interface (API) device driver module."""
+
 import json
 import time
 
@@ -50,6 +51,7 @@ class RESTAPIDevice(APIDevice, ABC):
     ################################################################################################
     # Public Methods
     ################################################################################################
+    # pylint: disable=too-many-arguments
     def delete(  # noqa: PLR0913
         self,
         url: str,
@@ -58,6 +60,8 @@ class RESTAPIDevice(APIDevice, ABC):
         timeout: Optional[float] = None,
         return_bytes: bool = False,
         allow_errors: bool = False,
+        verify_ssl: bool = True,
+        allow_redirects: bool = False,
         verbose: bool = True,
     ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, Optional[requests.RequestException]]:
         """Perform a DELETE request with the given url and headers.
@@ -69,6 +73,8 @@ class RESTAPIDevice(APIDevice, ABC):
             timeout: How many seconds to wait for the server to send data before giving up.
             return_bytes: A boolean indicating if the response content should be returned
                 instead of the response json.
+            verify_ssl: A bool that indicates if the SSL certificate should be verified.
+            allow_redirects: A bool that indicates if URL redirects should be allowed.
             allow_errors: A boolean indicating if errors are allowed.
             verbose: Set this to False in order to disable printouts.
 
@@ -83,9 +89,12 @@ class RESTAPIDevice(APIDevice, ABC):
             timeout=timeout,
             return_bytes=return_bytes,
             allow_errors=allow_errors,
+            verify_ssl=verify_ssl,
+            allow_redirects=allow_redirects,
             verbose=verbose,
         )
 
+    # pylint: disable=too-many-arguments
     def get(  # noqa: PLR0913
         self,
         url: str,
@@ -94,6 +103,8 @@ class RESTAPIDevice(APIDevice, ABC):
         timeout: Optional[float] = None,
         return_bytes: bool = False,
         allow_errors: bool = False,
+        verify_ssl: bool = True,
+        allow_redirects: bool = False,
         verbose: bool = True,
     ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, Optional[requests.RequestException]]:
         """Perform a GET request with the given url and headers.
@@ -105,6 +116,8 @@ class RESTAPIDevice(APIDevice, ABC):
             timeout: How many seconds to wait for the server to send data before giving up.
             return_bytes: A boolean indicating if the response content should be returned
                 instead of the response json.
+            verify_ssl: A bool that indicates if the SSL certificate should be verified.
+            allow_redirects: A bool that indicates if URL redirects should be allowed.
             allow_errors: A boolean indicating if errors are allowed.
             verbose: Set this to False in order to disable printouts.
 
@@ -119,30 +132,42 @@ class RESTAPIDevice(APIDevice, ABC):
             timeout=timeout,
             return_bytes=return_bytes,
             allow_errors=allow_errors,
+            verify_ssl=verify_ssl,
+            allow_redirects=allow_redirects,
             verbose=verbose,
         )
 
+    # pylint: disable=too-many-arguments
     def patch(  # noqa: PLR0913
         self,
         url: str,
-        json_body: Dict[str, Any],
+        json_body: Optional[Dict[str, Any]] = None,
+        data_body: Optional[str] = None,
         headers: Optional[Mapping[str, str]] = None,
         auth: Optional[Tuple[str, str]] = None,
         timeout: Optional[float] = None,
         return_bytes: bool = False,
         allow_errors: bool = False,
+        verify_ssl: bool = True,
+        allow_redirects: bool = False,
         verbose: bool = True,
     ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, Optional[requests.RequestException]]:
         """Perform a PATCH request with the given url and headers.
 
         Args:
             url: The url to PATCH.
-            json_body: Any data to send to the url.
+            json_body: Any data to serialize and send to the url.
+                The "Content-Type" header is set to "application/json".
+            data_body: Any raw data to send to the url. "Content-Type" must be set manually.
+                The data is not serialized. WARNING: IF DATA IS PASSED USING THIS ARGUMENT
+                THEN ANY DATA PASSED USING THE ``json_body`` ARGUMENT WILL BE IGNORED.
             headers: The headers to use during the request.
             auth: A tuple containing the username and password to use in the request.
             timeout: How many seconds to wait for the server to send data before giving up.
             return_bytes: A boolean indicating if the response content should be returned
                 instead of the response json.
+            verify_ssl: A bool that indicates if the SSL certificate should be verified.
+            allow_redirects: A bool that indicates if URL redirects should be allowed.
             allow_errors: A boolean indicating if errors are allowed.
             verbose: Set this to False in order to disable printouts.
 
@@ -153,35 +178,48 @@ class RESTAPIDevice(APIDevice, ABC):
             SupportedRequestTypes.PATCH,
             url,
             json_body=json_body,
+            data_body=data_body,
             headers=headers,
             auth=auth,
             timeout=timeout,
             return_bytes=return_bytes,
             allow_errors=allow_errors,
+            verify_ssl=verify_ssl,
+            allow_redirects=allow_redirects,
             verbose=verbose,
         )
 
+    # pylint: disable=too-many-arguments
     def post(  # noqa: PLR0913
         self,
         url: str,
         json_body: Optional[Dict[str, Any]] = None,
+        data_body: Optional[str] = None,
         headers: Optional[Mapping[str, str]] = None,
         auth: Optional[Tuple[str, str]] = None,
         timeout: Optional[float] = None,
         return_bytes: bool = False,
         allow_errors: bool = False,
+        verify_ssl: bool = True,
+        allow_redirects: bool = False,
         verbose: bool = True,
     ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, Optional[requests.RequestException]]:
         """Perform a POST request with the given url and headers.
 
         Args:
             url: The url to POST.
-            json_body: Any data to send to the url.
+            json_body: Any data to serialize and send to the url.
+                The "Content-Type" header is set to "application/json".
+            data_body: Any raw data to send to the url. "Content-Type" must be set manually.
+                The data is not serialized. WARNING: IF DATA IS PASSED USING THIS ARGUMENT
+                THEN ANY DATA PASSED USING THE ``json_body`` ARGUMENT WILL BE IGNORED.
             headers: The headers to use during the request.
             auth: A tuple containing the username and password to use in the request.
             timeout: How many seconds to wait for the server to send data before giving up.
             return_bytes: A boolean indicating if the response content should be returned
                 instead of the response json.
+            verify_ssl: A bool that indicates if the SSL certificate should be verified.
+            allow_redirects: A bool that indicates if URL redirects should be allowed.
             allow_errors: A boolean indicating if errors are allowed.
             verbose: Set this to False in order to disable printouts.
 
@@ -192,35 +230,48 @@ class RESTAPIDevice(APIDevice, ABC):
             SupportedRequestTypes.POST,
             url,
             json_body=json_body,
+            data_body=data_body,
             headers=headers,
             auth=auth,
             timeout=timeout,
             return_bytes=return_bytes,
             allow_errors=allow_errors,
+            verify_ssl=verify_ssl,
+            allow_redirects=allow_redirects,
             verbose=verbose,
         )
 
+    # pylint: disable=too-many-arguments
     def put(  # noqa: PLR0913
         self,
         url: str,
-        json_body: Dict[str, Any],
+        json_body: Optional[Dict[str, Any]] = None,
+        data_body: Optional[str] = None,
         headers: Optional[Mapping[str, str]] = None,
         auth: Optional[Tuple[str, str]] = None,
         timeout: Optional[float] = None,
         return_bytes: bool = False,
         allow_errors: bool = False,
+        verify_ssl: bool = True,
+        allow_redirects: bool = False,
         verbose: bool = True,
     ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, Optional[requests.RequestException]]:
         """Perform a PUT request with the given url and headers.
 
         Args:
             url: The url to PUT.
-            json_body: Any data to send to the url.
+            json_body: Any data to serialize and send to the url.
+                The "Content-Type" header is set to "application/json".
+            data_body: Any raw data to send to the url. "Content-Type" must be set manually.
+                The data is not serialized. WARNING: IF DATA IS PASSED USING THIS ARGUMENT
+                THEN ANY DATA PASSED USING THE ``json_body`` ARGUMENT WILL BE IGNORED.
             headers: The headers to use during the request.
             auth: A tuple containing the username and password to use in the request.
             timeout: How many seconds to wait for the server to send data before giving up.
             return_bytes: A boolean indicating if the response content should be returned
                 instead of the response json.
+            verify_ssl: A bool that indicates if the SSL certificate should be verified.
+            allow_redirects: A bool that indicates if URL redirects should be allowed.
             allow_errors: A boolean indicating if errors are allowed.
             verbose: Set this to False in order to disable printouts.
 
@@ -231,11 +282,14 @@ class RESTAPIDevice(APIDevice, ABC):
             SupportedRequestTypes.PUT,
             url,
             json_body=json_body,
+            data_body=data_body,
             headers=headers,
             auth=auth,
             timeout=timeout,
             return_bytes=return_bytes,
             allow_errors=allow_errors,
+            verify_ssl=verify_ssl,
+            allow_redirects=allow_redirects,
             verbose=verbose,
         )
 
@@ -281,7 +335,7 @@ class RESTAPIDevice(APIDevice, ABC):
         start_time = time.perf_counter()
         while (time.perf_counter() - start_time) <= wait_time:
             if api_connection := self._check_api_connection():
-                # pylint: disable=compare-to-zero
+                # pylint: disable=use-implicit-booleaness-not-comparison-to-zero
                 if attempt_num != 0 or accept_immediate_connection:
                     break
                 msg = (
@@ -321,17 +375,20 @@ class RESTAPIDevice(APIDevice, ABC):
         """
         raise NotImplementedError
 
-    # pylint: disable=too-many-branches
+    # pylint: disable=too-many-branches,too-many-arguments,too-many-locals
     def _send_request(  # noqa: PLR0913,PLR0912,C901
         self,
         request_type: SupportedRequestTypes,
         url: str,
         json_body: Optional[Dict[str, Any]] = None,
+        data_body: Optional[str] = None,
         headers: Optional[Mapping[str, str]] = None,
         auth: Optional[Tuple[str, str]] = None,
         timeout: Optional[float] = None,
         return_bytes: bool = False,
         allow_errors: bool = False,
+        verify_ssl: bool = True,
+        allow_redirects: bool = False,
         verbose: bool = True,
     ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, Optional[requests.RequestException]]:
         """Perform a request with the given url and headers.
@@ -339,12 +396,18 @@ class RESTAPIDevice(APIDevice, ABC):
         Args:
             request_type: The type of request to send.
             url: The url to use.
-            json_body: Any data to send to the url.
+            json_body: Any data to serialize and send to the url.
+                The "Content-Type" header is set to "application/json".
+            data_body: Any raw data to send to the url. "Content-Type" must be set manually.
+                The data is not serialized. WARNING: IF DATA IS PASSED USING THIS ARGUMENT
+                THEN ANY DATA PASSED USING THE ``json_body`` ARGUMENT WILL BE IGNORED.
             headers: The headers to use during the request.
             auth: A tuple containing the username and password to use in the request.
             timeout: How many seconds to wait for the server to send data before giving up.
             return_bytes: A boolean indicating if the response content should be returned
                 instead of the response json.
+            verify_ssl: A bool that indicates if the SSL certificate should be verified.
+            allow_redirects: A bool that indicates if URL redirects should be allowed.
             allow_errors: A boolean indicating if errors are allowed.
             verbose: Set this to False in order to disable printouts.
 
@@ -362,7 +425,6 @@ class RESTAPIDevice(APIDevice, ABC):
                 url = self._base_url + url
             else:
                 url = self._api_url + url
-
         response = cast(requests.Response, None)
         retval: Union[Dict[str, Any], bytes] = {}
         if self._verbose and verbose:
@@ -372,23 +434,57 @@ class RESTAPIDevice(APIDevice, ABC):
             if json_body:
                 print(f", {json_body=}", end="")
             print("")
-
         try:
             if request_type == SupportedRequestTypes.DELETE:
-                response = requests.delete(url, headers=headers, auth=auth, timeout=timeout)
+                response = requests.delete(
+                    url,
+                    headers=headers,
+                    auth=auth,
+                    timeout=timeout,
+                    verify=verify_ssl,
+                    allow_redirects=allow_redirects,
+                )
             elif request_type == SupportedRequestTypes.GET:
-                response = requests.get(url, headers=headers, auth=auth, timeout=timeout)
+                response = requests.get(
+                    url,
+                    headers=headers,
+                    auth=auth,
+                    timeout=timeout,
+                    verify=verify_ssl,
+                    allow_redirects=allow_redirects,
+                )
             elif request_type == SupportedRequestTypes.PATCH:
                 response = requests.patch(
-                    url, headers=headers, auth=auth, json=json_body, timeout=timeout
+                    url,
+                    headers=headers,
+                    auth=auth,
+                    json=json_body,
+                    data=data_body,
+                    timeout=timeout,
+                    verify=verify_ssl,
+                    allow_redirects=allow_redirects,
                 )
             elif request_type == SupportedRequestTypes.POST:
                 response = requests.post(
-                    url, headers=headers, auth=auth, json=json_body, timeout=timeout
+                    url,
+                    headers=headers,
+                    auth=auth,
+                    json=json_body,
+                    data=data_body,
+                    timeout=timeout,
+                    verify=verify_ssl,
+                    allow_redirects=allow_redirects,
                 )
             elif request_type == SupportedRequestTypes.PUT:
                 response = requests.put(
-                    url, headers=headers, auth=auth, json=json_body, timeout=timeout
+                    url,
+                    headers=headers,
+                    auth=auth,
+                    json=json_body,
+                    data=data_body,
+                    timeout=timeout,
+                    verify=verify_ssl,
+                    allow_redirects=allow_redirects,
                 )
             else:
                 msg = f"{request_type} is an unsupported request type."

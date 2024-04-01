@@ -15,12 +15,29 @@ on:
 concurrency:
   group: pypi
 jobs:
+  print-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: x
+      - name: Check for unreleased entries in the Changelog
+        run: python scripts/check_unreleased_changelog_items.py
+      - name: Create summary of workflow inputs and incoming changes
+        run: |
+          echo "## Workflow Inputs" >> $GITHUB_STEP_SUMMARY
+          echo "- release_level: ${{ inputs.release_level }}" >> $GITHUB_STEP_SUMMARY
+          echo "## Incoming Changes" >> $GITHUB_STEP_SUMMARY
+          cat python_semantic_release_templates/.previous_release_notes_for_template.md >> $GITHUB_STEP_SUMMARY
   # This job requires a Personal Access Token (Classic) with
   # the public_repo permission. It also needs a private/public
   # ssh key pair that can be used for signing. The public key must
   # be attached to the account as an SSH signing key.
   pypi-version:
     name: Update package version
+    needs: [print-inputs]
     if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: package-release-gate
@@ -28,21 +45,21 @@ jobs:
       id-token: write
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: x
           check-latest: true
       - name: Check for unreleased entries in the Changelog and copy files to templates
         run: |
           python scripts/check_unreleased_changelog_items.py
-          git add python_semantic_release_templates
+          git config --global tag.gpgSign true
       - name: Python Semantic Release
-        uses: python-semantic-release/python-semantic-release@v8.2.0  # 8.3.0 has a bug in the version output variable
+        uses: python-semantic-release/python-semantic-release@v9.1.1
         id: release
         with:
           force: ${{ inputs.release_level }}
@@ -60,12 +77,12 @@ jobs:
     if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: main  # Make sure to check out the latest commit on main, not the original commit that triggered the workflow
           fetch-depth: 0
       - name: Build package
-        uses: hynek/build-and-inspect-python-package@v1.5
+        uses: hynek/build-and-inspect-python-package@v2.0.1
   upload-testpypi:
     name: Upload package to TestPyPI
     needs: [pypi-build]
@@ -76,12 +93,12 @@ jobs:
       id-token: write
     steps:
       - name: Download built packages
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Packages
           path: dist
       - name: Upload package to Test PyPI
-        uses: pypa/gh-action-pypi-publish@v1.8.8
+        uses: pypa/gh-action-pypi-publish@v1.8.12
         with:
           repository-url: https://test.pypi.org/legacy/
   upload-pypi:
@@ -94,12 +111,12 @@ jobs:
       id-token: write
     steps:
       - name: Download built packages
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Packages
           path: dist
       - name: Upload package to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.8.8
+        uses: pypa/gh-action-pypi-publish@v1.8.12
   upload-github:
     name: Upload package to GitHub Release
     needs: [upload-pypi]
@@ -109,12 +126,12 @@ jobs:
       id-token: write
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: main  # Make sure to check out the latest commit on main, not the original commit that triggered the workflow
           fetch-depth: 0
       - name: Download built packages
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Packages
           path: dist
@@ -141,15 +158,15 @@ jobs:
           - ' --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple'
     steps:
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: x
           check-latest: true
       - name: Test installing package
         # A retry is used to allow for some downtime before the package is installable
-        uses: nick-fields/retry@v2
+        uses: nick-fields/retry@v3
         with:
-          timeout_minutes: 2
+          timeout_minutes: 10
           max_attempts: 5
           retry_wait_seconds: 30
           warning_on_retry: false

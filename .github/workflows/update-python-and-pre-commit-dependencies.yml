@@ -1,0 +1,43 @@
+---
+name: Update python linting dependencies in-sync with pre-commit
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  update-python-and-pre-commit-deps:
+    name: Update python linters and pre-commit dependencies
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' && contains(github.head_ref, '/pip/') }}
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: x  # any version
+          check-latest: true
+      - name: Install workflow dependencies
+        run: pip install poetry yamlfix toml-sort requests pre-commit-update pre-commit
+      - uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.TEK_OPENSOURCE_GPG_SIGNING_KEY_PRIVATE }}
+          passphrase: ${{ secrets.TEK_OPENSOURCE_GPG_SIGNING_KEY_PASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+      - name: Run updater script
+        run: python scripts/update_development_dependencies.py --no-install
+      - name: Run pre-commit
+        env:
+          SKIP: pylint,pyright,pyright-verifytypes,pyroma
+        run: python -m pre_commit run --all
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'ci: Update python linters and pre-commit dependencies.'
+          commit_user_name: ${{ vars.TEK_OPENSOURCE_NAME }}
+          commit_user_email: ${{ vars.TEK_OPENSOURCE_EMAIL }}
+          commit_author: ${{ vars.TEK_OPENSOURCE_NAME }} <${{ vars.TEK_OPENSOURCE_EMAIL }}>

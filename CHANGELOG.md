@@ -18,6 +18,209 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Changed
+
+- Updated the `get_model_series()` function to only warn the user if the model is not found in the `SupportedModels` enumeration. This also eliminates false warnings during unit tests.
+
+______________________________________________________________________
+
+## v1.2.1 (2024-02-27)
+
+### Merged Pull Requests
+
+- python-deps(deps-dev): Bump the python-dependencies group with 1 update ([#151](https://github.com/tektronix/tm_devices/issues/151))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 2 updates ([#147](https://github.com/tektronix/tm_devices/issues/147))
+- Update read only cached property for PyCharm auto-complete support ([#149](https://github.com/tektronix/tm_devices/issues/149))
+- Update release workflow to print out incoming changes in job summary for easy review ([#148](https://github.com/tektronix/tm_devices/issues/148))
+- ci: Created a workflow to update python linting dependencies and pre-commit hook versions inside of a PR. ([#146](https://github.com/tektronix/tm_devices/issues/146))
+- refactor: Updated the `get_model_series()` function to make it simpler for future maintenance and additions. ([#145](https://github.com/tektronix/tm_devices/issues/145))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 1 update ([#144](https://github.com/tektronix/tm_devices/issues/144))
+
+### Changed
+
+- Updated the `get_model_series()` function to use a regex mapping instead of complicated logic to reduce maintenance costs.
+
+### Fixed
+
+- Updated import statements for the `ReadOnlyCachedProperty` decorator to allow PyCharm auto-complete to work properly.
+
+______________________________________________________________________
+
+## v1.2.0 (2024-02-09)
+
+### Merged Pull Requests
+
+- fix: Removed unused command files. ([#143](https://github.com/tektronix/tm_devices/issues/143))
+- fix: modified API under MSO 2,4,5,6 modules  ([#142](https://github.com/tektronix/tm_devices/issues/142))
+- Update PI Device close method to catch VisaIOErrors ([#141](https://github.com/tektronix/tm_devices/issues/141))
+- ci: Update pre-commit hooks and linter versions. ([#139](https://github.com/tektronix/tm_devices/issues/139))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 1 update ([#123](https://github.com/tektronix/tm_devices/issues/123))
+- python-deps(deps): Bump the python-dependencies group with 1 update ([#136](https://github.com/tektronix/tm_devices/issues/136))
+- fix: Update the function that detects a VISA resource expression to work properly for SOCKET resource expressions. ([#134](https://github.com/tektronix/tm_devices/issues/134))
+- style: Update linting rules. ([#132](https://github.com/tektronix/tm_devices/issues/132))
+- Pin the linters used (ruff, pyright, pylint) to specific versions ([#131](https://github.com/tektronix/tm_devices/issues/131))
+- Update doc workflow runners ([#128](https://github.com/tektronix/tm_devices/issues/128))
+- build: Update version of ruff for pre-commit. Remove unused noqa comment. ([#126](https://github.com/tektronix/tm_devices/issues/126))
+- MSO5k, DPO5k, and DPO7k full driver support ([#125](https://github.com/tektronix/tm_devices/issues/125))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 3 updates ([#121](https://github.com/tektronix/tm_devices/issues/121))
+- Update GitHub action versions used in workflows ([#120](https://github.com/tektronix/tm_devices/issues/120))
+- feat: Added a mechanism to reset cached properties whenever a device is rebooted. ([#118](https://github.com/tektronix/tm_devices/issues/118))
+- refactor(code-style): Switch to `ruff format` instead of `black` for code formatting. ([#117](https://github.com/tektronix/tm_devices/issues/117))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 2 updates ([#116](https://github.com/tektronix/tm_devices/issues/116))
+
+### Added
+
+- Added a step during a device reboot that will reset all the cached properties in the event that one of them changed.
+- Added command API support for MSO5K, DPO5K, and DPO7K models.
+- Added a custom, read-only implementation of the [`cached_property`](https://docs.python.org/3/library/functools.html#functools.cached_property) decorator.
+- Added default buffer API for SMU 26xx series models.
+
+### Changed
+
+- Switched to ruff's formatter instead of black's formatter for python code.
+- Updated the version of `python-semantic-release` that is used to avoid needing to store a copy of the previous changelog in the repo.
+- Pinned the linters (ruff, pyright, pylint, docformatter) to specific versions to reduce failures when updates are released that add new rules or break existing rules.
+
+### Fixed
+
+- Fixed the code that detects VISA resource expressions to be able to detect SOCKET resource expressions properly.
+- Fixed PI device close method to catch VisaIOErrors and throw a warning, rather than an exception, when closing a PI device connection.
+- Fixed APIs with query attributes missing under MSO4, MSO5, MSO6 and MSO2 model drivers.
+
+______________________________________________________________________
+
+## v2.0.0 (2024-02-12)
+
+### Merged Pull Requests
+
+- feat: AWG Generate Function and Waveform Constraints
+
+### Added
+
+- Added drivers for AWG and AFG channels
+- Added a property named `source_channel` in AWG's and AFG's.
+- Added drivers for internal AFG in TekScopes.
+- Added a property named `internal_afg` in TekScope.
+- Added implementation of `generate_function` for all AWG models.
+- Added two burst functions to SignalGeneratorMixin: one to set up burst and one to generate the burst by forcing trigger.
+  - NOTE: Only the AFG's and internal AFG have these functions implemented.
+- Added `OutputSignalPath` enum attribute in AWG's representing output signal path options.
+- Added two functions for loading waveform set files in the AWG70k's and AWG5200: one for loading a waveform set file and another for loading a specific waveform from a waveform set file.
+- Added `sample_waveform_set_file` attribute in AWG70k's and AWG5200 to define the default waveform set file.
+
+### Changed
+
+- Changed the term "signal source" to "signal generator".
+- Changed the function name of `generate_waveform` to `generate_function`.
+- Changed the `generate_function` function by removing burst functionality.
+- Updated AWG's such that the `family_base_class` is at the model level.
+
+______________________________________________________________________
+
+## v1.1.0 (2023-12-07)
+
+### Merged Pull Requests
+
+- feat: Added support for MSO4B device ([#115](https://github.com/tektronix/tm_devices/issues/115))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 1 update ([#112](https://github.com/tektronix/tm_devices/issues/112))
+- test: Update tests to try to eliminate false failures when running tests on macOS. ([#114](https://github.com/tektronix/tm_devices/issues/114))
+- ci: Add the admin team as reviewers to all Pull Requests. ([#113](https://github.com/tektronix/tm_devices/issues/113))
+- Update config docs and release workflow ([#111](https://github.com/tektronix/tm_devices/issues/111))
+
+### Added
+
+- Added support for MSO4B device.
+
+______________________________________________________________________
+
+## v1.0.1 (2023-12-01)
+
+### Merged Pull Requests
+
+- Fix import error on mac with system integrity protection ([#109](https://github.com/tektronix/tm_devices/issues/109))
+- feat(rest_api_device): Enable sending raw data for restful api devices. ([#107](https://github.com/tektronix/tm_devices/issues/107))
+- build: Update package classifiers. ([#106](https://github.com/tektronix/tm_devices/issues/106))
+
+### Added
+
+- Added an option to send raw data for RESTful API devices
+
+### Changed
+
+- Updated the package classifiers for PyPI
+
+### Fixed
+
+- Fixed a crash observed on macOS when importing `tm_devices`, issue [#108](https://github.com/tektronix/tm_devices/issues/108)
+
+______________________________________________________________________
+
+## v1.0.0 (2023-11-13)
+
+### Merged Pull Requests
+
+- docs: Remove the TestPyPI badge from the readme, it is not important. ([#105](https://github.com/tektronix/tm_devices/issues/105))
+- Update the Readme ([#100](https://github.com/tektronix/tm_devices/issues/100))
+- ci: Increase timeout when installing tm_devices from pypi servers to avoid issues caused by long wheel build times for packages that tm_devices depends on (such as zeroconf). ([#98](https://github.com/tektronix/tm_devices/issues/98))
+- feat: Add USBTMC support for the 3706A device. ([#97](https://github.com/tektronix/tm_devices/issues/97))
+- Add new options for REST API devices ([#96](https://github.com/tektronix/tm_devices/issues/96))
+- ci: Update how the changelog generation macro selects PR numbers. ([#95](https://github.com/tektronix/tm_devices/issues/95))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 5 updates ([#93](https://github.com/tektronix/tm_devices/issues/93))
+- ci: Added a workflow to scan for security issues in dependencies on all PRs. ([#91](https://github.com/tektronix/tm_devices/issues/91))
+- fix: Update a few comments to have better wording. ([#85](https://github.com/tektronix/tm_devices/issues/85))
+- Update the basic usage docs and Readme ([#84](https://github.com/tektronix/tm_devices/issues/84))
+- docs: Update basic usage with better wording for examples. ([#83](https://github.com/tektronix/tm_devices/issues/83))
+- refactor: Removed some API files that are no longer needed (outdated/broken) ([#82](https://github.com/tektronix/tm_devices/issues/82))
+
+### Added
+
+- New examples added to the basic usage guide showing how to use the commands for some scope drivers
+- Added an example showing how to change the VISA backend that is used for connecting to devices
+- Added a new support table in the Readme showing the API support for Software Solutions
+- Added an option to bypass SSL certificate verification for RESTful API devices
+- Added an option to allow URL redirects for RESTful API devices
+- Added the 3706a to the list of supported usb devices
+
+### Changed
+
+- Updated the support level tables in the Readme
+
+### Removed
+
+- Removed some outdated and broken API files
+
+______________________________________________________________________
+
+## v0.1.24 (2023-10-30)
+
+### Merged Pull Requests
+
+- fix: Build docs without parallelization to fix pop-up issues with sphinx-tippy ([#80](https://github.com/tektronix/tm_devices/issues/80))
+
+### Fixed
+
+- Fixed the `tippy.js` pop-ups in the documentation
+
+______________________________________________________________________
+
+## v0.1.23 (2023-10-30)
+
+### Merged Pull Requests
+
+- fix: Handle non-standard software versions with alpha characters in the last part of the version. ([#81](https://github.com/tektronix/tm_devices/issues/81))
+- docs: Updated the custom styling for the badge table in the readme to make sure the badges are spaced vertically properly. ([#79](https://github.com/tektronix/tm_devices/issues/79))
+- Update contribution guide and documentation publishing workflow ([#78](https://github.com/tektronix/tm_devices/issues/78))
+- docs: Added new workflow which can deploy the documentation to GitHub Pages ([#76](https://github.com/tektronix/tm_devices/issues/76))
+- Update version of GitHub action used to build the package ([#75](https://github.com/tektronix/tm_devices/issues/75))
+- fix: Update auto-generated command API files to fix various issues. ([#72](https://github.com/tektronix/tm_devices/issues/72))
+- fix: Remove outdated comment. ([#71](https://github.com/tektronix/tm_devices/issues/71))
+- ci: Update workflow name and add Python 3.12 classifier ([#70](https://github.com/tektronix/tm_devices/issues/70))
+
+### Fixed
+
+- Updated the auto-generated commands for a handful of models to fix various issues
+- Updated the function responsible for converting version strings into `Version` objects to be able to handle software versions with non-standard formats.
+
 ______________________________________________________________________
 
 ## v0.1.22 (2023-10-24)

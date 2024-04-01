@@ -105,6 +105,7 @@ Commands and Queries:
     - MASK:USER:WIDth <NR3>
     - MASK:USER:WIDth?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (

@@ -6,6 +6,7 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
 Please report an issue if one is found.
 """
+
 from typing import Any, Dict, Optional
 
 from tm_devices.drivers.pi.pi_device import PIDevice
@@ -51,6 +52,7 @@ from ._1ltpwt_mdomsodpo.vidpic import Vidpic
 from ._1ltpwt_mdomsodpo.wfminpre import Wfminpre
 from ._1ltpwt_mdomsodpo.wfmoutpre import Wfmoutpre
 from ._1ltpwt_mdomsodpo.zoom import Zoom
+from ._1lwj1r_msomdodpo.rosc import Rosc
 from ._1lxxm9_msomdodpo.cursor import Cursor
 from ._1mlt9u_mdomsodpo.acquire import Acquire
 from ._1mlt9u_mdomsodpo.configuration import Configuration
@@ -59,8 +61,6 @@ from ._1mlt9u_mdomsodpo.display import Display
 from ._1mlt9u_mdomsodpo.mask import Mask
 from ._1mlt9u_mdomsodpo.recall import Recall
 from ._1mlt9u_mdomsodpo.select import Select
-from ._1mn7uh_lpdmsomdodpo.pause import Pause
-from ._1mn7uh_lpdmsomdodpo.rosc import Rosc
 from ._1mq0z9_msodpo.rf import Rf
 from ._1nmc1o_msodpomdo.clearmenu import Clearmenu
 from ._1nmc1o_msodpomdo.errlog import Errlog
@@ -70,34 +70,35 @@ from ._1nmc1o_msodpomdo.status_and_error import Psc
 from ._1nmc1o_msodpomdo.usbdevice import Usbdevice
 from ._1nmc1o_msodpomdo.usbtmc import Usbtmc
 from ._1nmc1o_msodpomdo.verbose import Verbose
-from ._1nrybj_lpdmsodpomdo.totaluptime import Totaluptime
-from ._5uw825_msodpomdodsa.curve import Curve
-from ._5uw825_msodpomdodsa.date import Date
-from ._5uw825_msodpomdodsa.mathvar import Mathvar
-from ._5uw825_msodpomdodsa.save_and_recall import Rcl, Sav
-from ._5v6218_lpdmsodpomdodsa.lock import Lock
-from ._5v6218_lpdmsodpomdodsa.unlock import Unlock
-from ._5vppzt_lpdmsodpomdodsa.allev import Allev
-from ._5vppzt_lpdmsodpomdodsa.busy import Busy
-from ._5vppzt_lpdmsodpomdodsa.dese import Dese
-from ._5vppzt_lpdmsodpomdodsa.event import Event
-from ._5vppzt_lpdmsodpomdodsa.evmsg import Evmsg
-from ._5vppzt_lpdmsodpomdodsa.evqty import Evqty
-from ._5vppzt_lpdmsodpomdodsa.factory import Factory
-from ._5vppzt_lpdmsodpomdodsa.id import Id
-from ._5vppzt_lpdmsodpomdodsa.miscellaneous import Ddt, Lrn
-from ._5vppzt_lpdmsodpomdodsa.newpass import Newpass
-from ._5vppzt_lpdmsodpomdodsa.password import Password
-from ._5vppzt_lpdmsodpomdodsa.rem import Rem
-from ._5vppzt_lpdmsodpomdodsa.set import Set
-from ._5vppzt_lpdmsodpomdodsa.status_and_error import Pud
-from ._5vppzt_lpdmsodpomdodsa.teksecure import Teksecure
-from ._5vppzt_lpdmsodpomdodsa.wavfrm import Wavfrm
-from ._5y90wz_lpdmsomdodpoafgawgdsa.status_and_error import Opt
-from ._5ylo0x_lpdmsodpomdoawgdsa.status_and_error import Ese, Sre
-from ._5z14a1_lpdmsodpomdoafgawgdsa.calibration import Cal
-from ._5z14a1_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
-from ._5z14a1_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
+from ._e6lgg1_lpdmsodpomdo.totaluptime import Totaluptime
+from ._e6606z_lpdmsomdodpo.pause import Pause
+from ._fhrp27_msodpomdodsa.curve import Curve
+from ._fhrp27_msodpomdodsa.date import Date
+from ._fhrp27_msodpomdodsa.mathvar import Mathvar
+from ._fhrp27_msodpomdodsa.save_and_recall import Rcl, Sav
+from ._ft5uww_lpdmsodpomdoafgawgdsa.calibration import Cal
+from ._ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
+from ._ft5uww_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
+from ._fteabn_lpdmsomdodpoafgawgdsa.status_and_error import Opt
+from ._fug7nl_lpdmsodpomdoawgdsa.status_and_error import Ese, Sre
+from ._fx54ua_lpdmsodpomdodsa.allev import Allev
+from ._fx54ua_lpdmsodpomdodsa.busy import Busy
+from ._fx54ua_lpdmsodpomdodsa.dese import Dese
+from ._fx54ua_lpdmsodpomdodsa.event import Event
+from ._fx54ua_lpdmsodpomdodsa.evmsg import Evmsg
+from ._fx54ua_lpdmsodpomdodsa.evqty import Evqty
+from ._fx54ua_lpdmsodpomdodsa.factory import Factory
+from ._fx54ua_lpdmsodpomdodsa.id import Id
+from ._fx54ua_lpdmsodpomdodsa.miscellaneous import Ddt, Lrn
+from ._fx54ua_lpdmsodpomdodsa.newpass import Newpass
+from ._fx54ua_lpdmsodpomdodsa.password import Password
+from ._fx54ua_lpdmsodpomdodsa.rem import Rem
+from ._fx54ua_lpdmsodpomdodsa.set import Set
+from ._fx54ua_lpdmsodpomdodsa.status_and_error import Pud
+from ._fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
+from ._fx54ua_lpdmsodpomdodsa.wavfrm import Wavfrm
+from ._fzn174_lpdmsodpomdodsa.lock import Lock
+from ._fzn174_lpdmsodpomdodsa.unlock import Unlock
 from ._helpers import DefaultDictPassKeyToFactory
 
 

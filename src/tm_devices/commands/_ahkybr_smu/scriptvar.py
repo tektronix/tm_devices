@@ -21,6 +21,7 @@ Attributes and Functions:
     - scriptVar.save()
     - scriptVar.source
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError
@@ -145,7 +146,9 @@ class Scriptvar(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".name"
-            return self._device.query(f"print({self._cmd_syntax}.name)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.name)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.name`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -180,7 +183,9 @@ class Scriptvar(BaseTSPCmd):
                     self._cmd_syntax + ".name", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.name = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.name = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.name`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -277,7 +282,9 @@ class Scriptvar(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.list()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.list()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.list()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -301,7 +308,9 @@ class Scriptvar(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.run()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.run()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.run()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

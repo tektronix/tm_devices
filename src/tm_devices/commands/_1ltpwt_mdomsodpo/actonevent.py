@@ -37,6 +37,7 @@ Commands and Queries:
     - ACTONEVent:REPEATCount <NR1>
     - ACTONEVent:REPEATCount?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

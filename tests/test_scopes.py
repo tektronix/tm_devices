@@ -1,5 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Test the Scopes."""
+
 import os
 import subprocess
 import sys
@@ -13,8 +14,15 @@ import pyvisa as visa
 from packaging.version import Version
 
 from tm_devices import DeviceManager
-from tm_devices.drivers import MSO2, MSO5, MSO70KDX, TekScopeSW
-from tm_devices.drivers.pi.scopes.tekscope.tekscope import TekProbeData, TekScope, TekScopeChannel
+from tm_devices.drivers import MSO2, MSO5, MSO5B, MSO6, MSO70KDX, TekScopeSW
+from tm_devices.drivers.pi.scopes.tekscope.tekscope import (
+    ExtendedSourceDeviceConstants,
+    ParameterBounds,
+    SignalGeneratorFunctionsIAFG,
+    TekProbeData,
+    TekScope,
+    TekScopeChannel,
+)
 
 
 class TmDevicesUnitTestOnlyCustomMSO5(MSO5):
@@ -120,19 +128,19 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
         scope.query("EMPTY:STRING?")
 
     # Test generating waveform functionality
-    scope.generate_waveform(10e3, scope.source_device_constants.functions.SIN, 0.5, 0.0)
-    scope.generate_waveform(
+    scope.generate_function(10e3, scope.source_device_constants.functions.SIN, 0.5, 0.0)
+    scope.generate_function(
         10e3, scope.source_device_constants.functions.SIN, 0.5, 0.0, termination="HIGHZ"
     )
-    scope.generate_waveform(10e3, scope.source_device_constants.functions.RAMP, 0.5, 0.0, burst=1)
+    scope.setup_burst(10e3, scope.source_device_constants.functions.RAMP, 0.5, 0.0, burst_count=1)
     with pytest.raises(
         TypeError,
         match="Generate Waveform does not accept functions as non Enums. "
         "Please use 'source_device_constants.functions'.",
     ):
-        scope.generate_waveform(
+        scope.generate_function(
             25e6,
-            scope.source_device_constants.functions.PULSE.value,  # type: ignore
+            scope.source_device_constants.functions.PULSE.value,  # pyright: ignore[reportArgumentType]
             1.0,
             0.0,
             "all",
@@ -241,6 +249,107 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
         )
 
 
+def test_iafg(device_manager: DeviceManager) -> None:
+    """Test the IAFG.
+
+    Args:
+        device_manager: The DeviceManager object.
+    """
+    mso64: MSO6 = cast(MSO6, device_manager.add_scope("MSO64-HOSTNAME", alias="mso64"))
+    mso64_constraints = mso64.get_waveform_constraints(
+        SignalGeneratorFunctionsIAFG.SIN,
+        frequency=25.0e6,
+    )
+
+    assert mso64_constraints == ExtendedSourceDeviceConstants(
+        amplitude_range=ParameterBounds(lower=20.0e-3, upper=5.0),
+        offset_range=ParameterBounds(lower=-2.5, upper=2.5),
+        frequency_range=ParameterBounds(lower=100.0e-3, upper=50.0e6),
+        sample_rate_range=ParameterBounds(lower=250.0e6, upper=250.0e6),
+        square_duty_cycle_range=ParameterBounds(lower=25.0, upper=75.0),
+        pulse_width_range=ParameterBounds(lower=1.0e-8, upper=3.0e-8),
+        ramp_symmetry_range=ParameterBounds(lower=0.0, upper=100.0),
+    )
+
+    mso64_constraints = mso64.get_waveform_constraints(
+        SignalGeneratorFunctionsIAFG.SQUARE,
+        frequency=5.0e6,
+    )
+
+    assert mso64_constraints == ExtendedSourceDeviceConstants(
+        amplitude_range=ParameterBounds(lower=20.0e-3, upper=5.0),
+        offset_range=ParameterBounds(lower=-2.5, upper=2.5),
+        frequency_range=ParameterBounds(lower=100.0e-3, upper=25.0e6),
+        sample_rate_range=ParameterBounds(lower=250.0e6, upper=250.0e6),
+        square_duty_cycle_range=ParameterBounds(lower=10.0, upper=90.0),
+        pulse_width_range=ParameterBounds(lower=2.0e-08, upper=1.8e-07),
+        ramp_symmetry_range=ParameterBounds(lower=0.0, upper=100.0),
+    )
+
+    mso64_constraints = mso64.get_waveform_constraints(
+        SignalGeneratorFunctionsIAFG.RAMP,
+    )
+
+    assert mso64_constraints == ExtendedSourceDeviceConstants(
+        amplitude_range=ParameterBounds(lower=20.0e-3, upper=5.0),
+        offset_range=ParameterBounds(lower=-2.5, upper=2.5),
+        frequency_range=ParameterBounds(lower=100.0e-3, upper=500.0e3),
+        sample_rate_range=ParameterBounds(lower=250.0e6, upper=250.0e6),
+        square_duty_cycle_range=ParameterBounds(lower=10.0, upper=90.0),
+        pulse_width_range=None,
+        ramp_symmetry_range=ParameterBounds(lower=0.0, upper=100.0),
+    )
+
+    mso64_constraints = mso64.get_waveform_constraints(
+        SignalGeneratorFunctionsIAFG.SINC,
+    )
+
+    assert mso64_constraints == ExtendedSourceDeviceConstants(
+        amplitude_range=ParameterBounds(lower=20.0e-3, upper=3.0),
+        offset_range=ParameterBounds(lower=-2.5, upper=2.5),
+        frequency_range=ParameterBounds(lower=100.0e-3, upper=2.0e6),
+        sample_rate_range=ParameterBounds(lower=250.0e6, upper=250.0e6),
+        square_duty_cycle_range=ParameterBounds(lower=10.0, upper=90.0),
+        pulse_width_range=None,
+        ramp_symmetry_range=ParameterBounds(lower=0.0, upper=100.0),
+    )
+
+    mso64_constraints = mso64.get_waveform_constraints(
+        SignalGeneratorFunctionsIAFG.HAVERSINE,
+    )
+
+    assert mso64_constraints == ExtendedSourceDeviceConstants(
+        amplitude_range=ParameterBounds(lower=20.0e-3, upper=2.5),
+        offset_range=ParameterBounds(lower=-2.5, upper=2.5),
+        frequency_range=ParameterBounds(lower=100.0e-3, upper=5.0e6),
+        sample_rate_range=ParameterBounds(lower=250.0e6, upper=250.0e6),
+        square_duty_cycle_range=ParameterBounds(lower=10.0, upper=90.0),
+        pulse_width_range=None,
+        ramp_symmetry_range=ParameterBounds(lower=0.0, upper=100.0),
+    )
+
+    mso56b: MSO5 = cast(MSO5B, device_manager.add_scope("MSO58B-HOSTNAME", alias="mso56b"))
+    mso56b_constraints = mso56b.get_waveform_constraints(
+        SignalGeneratorFunctionsIAFG.SIN,
+    )
+
+    assert mso56b_constraints == ExtendedSourceDeviceConstants(
+        amplitude_range=ParameterBounds(lower=20.0e-3, upper=5.0),
+        offset_range=ParameterBounds(lower=-2.5, upper=2.5),
+        frequency_range=ParameterBounds(lower=100.0e-3, upper=100.0e6),
+        sample_rate_range=ParameterBounds(lower=250.0e6, upper=250.0e6),
+        square_duty_cycle_range=ParameterBounds(lower=10.0, upper=90.0),
+        pulse_width_range=None,
+        ramp_symmetry_range=ParameterBounds(lower=0.0, upper=100.0),
+    )
+
+    with pytest.raises(ValueError, match="IAFGs must have a waveform defined."):
+        mso64.get_waveform_constraints()
+
+    with pytest.raises(ValueError, match=r"Output state value must be 1 \(ON\) or 0 \(OFF\)\."):
+        mso64.internal_afg.set_state(-1)
+
+
 def test_exceptions(device_manager: DeviceManager) -> None:
     """Test visa error handling within tekscope.
 
@@ -334,7 +443,7 @@ def test_long_device_name(device_manager: DeviceManager) -> None:
         assert scope.all_channel_names_list == ()
 
         # noinspection PyUnresolvedReferences
-        assert scope.custom_mso5_method("test-value") == (  # type: ignore
+        assert scope.custom_mso5_method("test-value") == (  # pyright: ignore[reportUnknownMemberType,reportAttributeAccessIssue]
             "This is a custom method for the LONGNAMEINSTRUMENT device. value='test-value'"
         )
 

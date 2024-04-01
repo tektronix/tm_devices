@@ -117,6 +117,7 @@ Commands and Queries:
     - RF:WINdow {RECTangular|HAMming|HANning|BLAckmanharris|KAIser|FLATtop}
     - RF:WINdow?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments

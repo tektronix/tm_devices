@@ -4,14 +4,9 @@ requires = ["poetry-core>=1.0.0"]
 
 [tool]
 
-[tool.bandit]
-skips = [
-  'B101',  # allow the use of raw asserts, we don't compile to optimized byte code
-  'B404'  # allow the use of the subprocess module
-]
-
-[tool.black]
-line-length = 100
+[tool.coverage.coverage_conditional_plugin.rules]
+py-gte-39 = "sys_version_info >= (3, 9)"
+py-lt-39 = "sys_version_info < (3, 9)"
 
 [tool.coverage.report]
 exclude_lines = [
@@ -29,6 +24,7 @@ skip_empty = true
 [tool.coverage.run]
 branch = true
 cover_pylib = false
+plugins = ["coverage_conditional_plugin"]
 source = ["tm_devices"]
 
 [tool.docformatter]
@@ -38,26 +34,22 @@ recursive = true
 wrap-descriptions = 100
 wrap-summaries = 0
 
-[tool.mypy]
-mypy_path = "./src/"
-
 [tool.poetry]
 authors = [
   "Tektronix <opensource@tektronix.com>",
   "Nicholas Felt <nicholas.felt@tektronix.com>"
 ]
 classifiers = [
-  "Development Status :: 4 - Beta",
+  "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Developers",
   "Intended Audience :: Science/Research",
   "Operating System :: OS Independent",
   "Topic :: Scientific/Engineering :: Interface Engine/Protocol Translator",
   "Topic :: Scientific/Engineering",
-  "Topic :: System :: Hardware :: Hardware Drivers",
-  "Programming Language :: Python :: 3.12"  # TODO: remove this once poetry automatically adds it
+  "Topic :: System :: Hardware :: Hardware Drivers"
 ]
 description = "Manage connections and interactions with Test & Measurement devices."
-documentation = "https://tm-devices.readthedocs.io/en/latest/"
+documentation = "https://tektronix.github.io/tm_devices/"
 homepage = "https://pypi.org/project/tm_devices/"
 keywords = [
   "REST API",
@@ -75,7 +67,7 @@ maintainers = [
 name = "tm_devices"
 readme = "README.rst"
 repository = "https://github.com/tektronix/tm_devices"
-version = "0.1.22"
+version = "1.2.1"
 
 [tool.poetry.dependencies]
 gpib-ctypes = ">=0.3.0"
@@ -101,30 +93,27 @@ zeroconf = ">=0.54.0"
 
 # Development dependencies
 [tool.poetry.group.dev.dependencies]
-black = ">=22.6.0"
 coverage = {extras = ["toml"], version = ">=7.2.2"}
-docformatter = {extras = ["tomli"], version = ">=1.6.5,<1.7.1"}  # upper bound is due to https://github.com/PyCQA/docformatter/issues/174
+coverage-conditional-plugin = ">=0.9.0"
+docformatter = {extras = ["tomli"], version = "==1.7.0"}  # can't update due to https://github.com/PyCQA/docformatter/issues/174
 flask = ">=2.2.2"
 graphviz = ">=0.20.1"
 http-server-mock = ">=1.7"
-isort = ">=5.12.0"
-mdformat-black = ">=0.1.1"
-mdformat-myst = ">=0.1.5"
-mdformat-toc = ">=0.3.0"
 myst-parser = ">=0.19.1"
 pip = ">=22.0"
-poetry = ">=1.5.1"
+poetry = ">=1.8.0"
 pre-commit = ">=2.20.0"
-pylint = {extras = ["spelling"], version = ">=3.0"}
-pyright = ">=1.1.329"
+pre-commit-update = ">=0.1.3"
+pylint = {extras = ["spelling"], version = "3.1.0"}  # Update this by running scripts/update_development_dependencies.py
+pyright = "1.1.353"  # Update this by running scripts/update_development_dependencies.py
 pyroma = ">=4.2"
 pytest = ">=7.1.2"
 pytest-cov = ">=3.0.0"
 pytest-html = ">=4.0"
 pytest-order = ">=1.0.1"
 pytest-profiling = ">=1.7.0"
-python-semantic-release = ">=8.0"
-ruff = ">=0.0.292"
+python-semantic-release = ">=8.5.1"
+ruff = "0.3.2"  # Update this by running scripts/update_development_dependencies.py
 safety = ">=2.1.1"
 sphinx-autoapi = ">=2.0.0"
 sphinx-copybutton = ">=0.5.1"
@@ -132,7 +121,6 @@ sphinx-rtd-theme = ">=1.0.0"
 sphinx-tippy = ">=0.4.1"
 sphinx-togglebutton = ">=0.3.2"
 sphinxcontrib-mermaid = ">=0.7.1"
-sphinxcontrib-relative-link-corrector = ">=0.0.5"
 toml-sort = ">=0.23.0"
 tox = ">=4.0"
 tox-gh-actions = ">=3.1.0"
@@ -142,6 +130,7 @@ types-pyyaml = ">=6.0"
 types-requests = ">=2.28.8"
 urllib3 = ">=1.26.14"
 wheel = ">=0.37.1"
+yamlfix = ">=1.16.0"
 
 [tool.poetry.scripts]
 list-visa-resources = "tm_devices:print_available_visa_devices"
@@ -149,6 +138,10 @@ list-visa-resources = "tm_devices:print_available_visa_devices"
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/tektronix/tm_devices/issues"
 "Changelog" = "https://github.com/tektronix/tm_devices/blob/main/CHANGELOG.md"
+
+[tool.pre-commit-update]
+keep = ["docformatter"]
+verbose = true
 
 [tool.pylint.basic]
 good-names = ["_"]
@@ -202,6 +195,8 @@ disable = [
   "global-statement",  # caught by ruff
   "line-too-long",  # caught by ruff
   "locally-disabled",  # allowed
+  "missing-class-docstring",  # caught by ruff
+  "missing-module-docstring",  # caught by ruff
   "no-member",  # caught by pyright
   "protected-access",  # caught by ruff
   "raise-missing-from",  # caught by ruff
@@ -236,6 +231,7 @@ ignore = [
 pythonPlatform = "All"
 pythonVersion = "3.8"
 reportCallInDefaultInitializer = "error"
+reportImplicitOverride = "none"  # this check is not needed
 # TODO: turn on the check for implicit string concatenation
 reportImplicitStringConcatenation = "none"  # this is allowed by this project's formatting standard
 reportImportCycles = "none"  # other analysis tools catch these more effectively
@@ -273,6 +269,12 @@ ignore_directives = [
 ]
 
 [tool.ruff]
+line-length = 100
+namespace-packages = ["examples/**", "scripts/**", "tests/**"]
+src = ["docs", "examples", "scripts", "src", "tests"]
+target-version = "py38"  # always generate Python 3.8 compatible code
+
+[tool.ruff.lint]
 allowed-confusables = ["¸", "×"]
 fixable = [
   "F401",
@@ -280,45 +282,40 @@ fixable = [
   "I",
   "RUF100"
 ]
+flake8-pytest-style = {mark-parentheses = false}
+flake8-quotes = {docstring-quotes = "double"}
 ignore = [
   "ANN101",  # Missing type annotation for self in method
   "ANN102",  # Missing type annotation for cls in method
   "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in *args and **kwargs
   "COM812",  # Trailing comma missing
-  "DTZ",  # flake8-datetimez  # TODO: enable this later
   "EM102",  # Exception must not use an f-string literal, assign to variable first
-  "FA100",  # Missing `from __future__ import annotations`, but uses ...  # TODO: enable this later
+  "FA100",  # Missing `from __future__ import annotations`, but uses ...
   "FBT",  # flake8-boolean-trap
-  "FIX002",  # Line contains TODO
-  "PGH003",  # Use specific rule codes when ignoring type issues  # TODO: enable this later
-  "PTH",  # flake8-use-pathlib  # TODO: enable this later
+  "FIX002",  # Line contains TO DO
+  "ISC001",  # single-line-implicit-string-concatenation (handled by formatter)
+  "PTH109",  # `os.getcwd()` should be replaced by `Path.cwd()`
+  "PTH123",  # `open()` should be replaced by `Path.open()`
+  "PTH207",  # Replace `iglob` with `Path.glob` or `Path.rglob`
   "PYI021",  # Docstrings should not be included in stubs
   "T20",  # flake8-print
-  "TD002",  # Missing author in TODO; try: `# TODO(<author_name>): ...`  # TODO: enable this later
-  "TD003",  # Missing issue link on the line following this TODO  # TODO: enable this later
+  "TD002",  # Missing author in TO DO
+  "TD003",  # Missing issue link on the line following this TO DO
   "TRY301",  # Abstract raise to an inner function
-  "UP006",  # Use {to} instead of {from} for type annotation  # TODO: enable this later
-  "UP007",  # Use `X | Y` for type annotations  # TODO: enable this later
+  "UP006",  # Use {to} instead of {from} for type annotation
+  "UP007",  # Use `X | Y` for type annotations
   "UP024",  # Replace aliased errors with `OSError`
   "UP037"  # Remove quotes from type annotation
 ]
-line-length = 100
-namespace-packages = ["examples/**", "scripts/**", "tests/**"]
+pydocstyle = {convention = "google"}
+pylint = {max-args = 7}
 # https://beta.ruff.rs/docs/rules/
 select = [
   "ALL"
 ]
-src = ["docs", "examples", "scripts", "src", "tests"]
-target-version = "py38"  # always generate Python 3.8 compatible code
 task-tags = ["FIXME", "FUTURE", "RELIC", "TODO"]
 
-[tool.ruff.flake8-pytest-style]
-mark-parentheses = false
-
-[tool.ruff.flake8-quotes]
-docstring-quotes = "double"
-
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 force-sort-within-sections = false
 known-first-party = [
   "conftest",
@@ -328,7 +325,7 @@ known-first-party = [
 lines-between-types = 1
 order-by-type = false
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "examples/**" = [
   "S101"  # Use of assert detected
 ]
@@ -350,6 +347,7 @@ order-by-type = false
 "tests/**" = [
   "PLC1901",  # compare-to-empty-string
   "PLR2004",  # Magic value used in comparison
+  "PTH107",  # `os.remove()` should be replaced by `Path.unlink()`
   "S101"  # Use of assert detected
 ]
 "tests/samples/golden_stubs/**" = [
@@ -358,12 +356,6 @@ order-by-type = false
   "D107",  # Missing docstring in `__init__`
   "PYI053"  # String and bytes literals longer than 50 characters are not permitted
 ]
-
-[tool.ruff.pydocstyle]
-convention = "google"
-
-[tool.ruff.pylint]
-max-args = 7
 
 [tool.semantic_release]
 version_toml = [
@@ -418,21 +410,21 @@ deps =
 setenv =
     DOC_PYTHON_VERSION = python3.11  # Keep this in sync with .readthedocs.yml and any CI scripts
     # Skip pre-commit checks that are explicitly performed by tox
-    SKIP = black,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma
+    SKIP = ruff-format,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma
     PYRIGHT_PYTHON_GLOBAL_NODE = False  # This will cause python-pyright to use nodeenv to install node rather than use the system node
 commands_pre =
     poetry install --no-root
 commands =
     !tests: safety check
-    !tests: black --check --diff --color .
+    !tests: ruff format --check --diff .
     !tests: docformatter --check --diff .
     !tests: ruff check .
     !tests: pylint --report=y .
     !tests: pyright .
     !tests: pyright --verifytypes tm_devices --ignoreexternal
     !tests: pyroma .
-    !tests: poetry build
-    !tests: twine check --strict dist/*
+    !tests: poetry build --output=dist_{envname}
+    !tests: twine check --strict dist_{envname}/*
     !tests: pre-commit run --all-files --show-diff-on-failure
     pytest -vv -k "not test_docs" --showlocals --cov --junitxml={tox_root}/.results_{envname}/results.xml --cov-report=term --cov-report=xml:{tox_root}/.coverage_{envname}.xml --cov-report=html:{tox_root}/.results_{envname}/html --self-contained-html --html={tox_root}/.results_{envname}/results.html
 
@@ -449,7 +441,7 @@ deps =
 commands_pre =
 commands =
     python -c "import shutil; shutil.rmtree('.results_{envname}', ignore_errors=True)"
-    sphinx-build -b html -a -W --keep-going -j 3 docs .results_{envname}/html
+    sphinx-build -b html -a -W --keep-going docs .results_{envname}/html
 
 [testenv:doctests]
 basepython = {env:DOC_PYTHON_VERSION}

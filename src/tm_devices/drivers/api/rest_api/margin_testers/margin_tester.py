@@ -1,9 +1,9 @@
 """Base Margin Tester device driver module."""
+
 import os
 import time
 
 from abc import ABC, abstractmethod
-from functools import cached_property
 from typing import Any, Dict, Mapping, MutableMapping, Tuple
 
 from packaging.version import Version
@@ -12,6 +12,9 @@ from requests.structures import CaseInsensitiveDict
 from tm_devices.drivers.api.rest_api.rest_api_device import RESTAPIDevice
 from tm_devices.drivers.device import family_base_class
 from tm_devices.helpers import DeviceConfigEntry, DeviceTypes
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 @family_base_class

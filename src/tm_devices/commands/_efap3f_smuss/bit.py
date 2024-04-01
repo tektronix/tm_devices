@@ -25,6 +25,7 @@ Attributes and Functions:
     - bit.test()
     - bit.toggle()
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

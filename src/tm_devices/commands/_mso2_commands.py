@@ -5,20 +5,22 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
 Please report an issue if one is found.
 """
+
 from typing import Any, Dict, Optional
 
 from tm_devices.drivers.pi.pi_device import PIDevice
 
-from ._1mn7uh_lpdmsomdodpo.pause import Pause
-from ._1mn7uh_lpdmsomdodpo.rosc import Rosc
-from ._1nrybj_lpdmsodpomdo.totaluptime import Totaluptime
+from ._1lwj1r_msomdodpo.rosc import Rosc
 from ._1zn03_mso.acquire import Acquire
+from ._1zn03_mso.actonevent import Actonevent
 from ._1zn03_mso.auxout import Auxout
 from ._1zn03_mso.battery import Battery
 from ._1zn03_mso.bus import Bus
+from ._1zn03_mso.callouts import Callouts
 from ._1zn03_mso.ch import Channel
 from ._1zn03_mso.data import Data
 from ._1zn03_mso.dch import DchItem
+from ._1zn03_mso.diag import Diag
 from ._1zn03_mso.display import Display
 from ._1zn03_mso.fpanel import Fpanel
 from ._1zn03_mso.horizontal import Horizontal
@@ -29,6 +31,8 @@ from ._1zn03_mso.math import Math
 from ._1zn03_mso.measurement import Measurement
 from ._1zn03_mso.pg import Pg
 from ._1zn03_mso.plot import Plot
+from ._1zn03_mso.power import Power
+from ._1zn03_mso.ref import Ref
 from ._1zn03_mso.save import Save
 from ._1zn03_mso.saveon import Saveon
 from ._1zn03_mso.saveonevent import Saveonevent
@@ -36,61 +40,60 @@ from ._1zn03_mso.search import Search
 from ._1zn03_mso.select import Select
 from ._1zn03_mso.touchscreen import Touchscreen
 from ._1zn03_mso.trigger import Trigger
-from ._5v6218_lpdmsodpomdodsa.lock import Lock
-from ._5v6218_lpdmsodpomdodsa.unlock import Unlock
-from ._5vppzt_lpdmsodpomdodsa.allev import Allev
-from ._5vppzt_lpdmsodpomdodsa.busy import Busy
-from ._5vppzt_lpdmsodpomdodsa.dese import Dese
-from ._5vppzt_lpdmsodpomdodsa.event import Event
-from ._5vppzt_lpdmsodpomdodsa.evmsg import Evmsg
-from ._5vppzt_lpdmsodpomdodsa.evqty import Evqty
-from ._5vppzt_lpdmsodpomdodsa.factory import Factory
-from ._5vppzt_lpdmsodpomdodsa.id import Id
-from ._5vppzt_lpdmsodpomdodsa.miscellaneous import Ddt, Lrn
-from ._5vppzt_lpdmsodpomdodsa.newpass import Newpass
-from ._5vppzt_lpdmsodpomdodsa.password import Password
-from ._5vppzt_lpdmsodpomdodsa.rem import Rem
-from ._5vppzt_lpdmsodpomdodsa.set import Set
-from ._5vppzt_lpdmsodpomdodsa.status_and_error import Pud
-from ._5vppzt_lpdmsodpomdodsa.teksecure import Teksecure
-from ._5vppzt_lpdmsodpomdodsa.wavfrm import Wavfrm
-from ._5y3emz_lpdmsodpodsa.alias import Alias
-from ._5y3emz_lpdmsodpodsa.header import Header
-from ._5y3emz_lpdmsodpodsa.status_and_error import Psc
-from ._5y3emz_lpdmsodpodsa.verbose import Verbose
-from ._5y90wz_lpdmsomdodpoafgawgdsa.status_and_error import Opt
-from ._5ylo0x_lpdmsodpomdoawgdsa.status_and_error import Ese, Sre
-from ._5z14a1_lpdmsodpomdoafgawgdsa.calibration import Cal
-from ._5z14a1_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
-from ._5z14a1_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
-from ._c69b1_lpdmso.actonevent import Actonevent
-from ._c69b1_lpdmso.afg import Afg
-from ._c69b1_lpdmso.autosavepitimeout import Autosavepitimeout
-from ._c69b1_lpdmso.autosaveuitimeout import Autosaveuitimeout
-from ._c69b1_lpdmso.autoset import Autoset
-from ._c69b1_lpdmso.bustable import Bustable
-from ._c69b1_lpdmso.calibrate import Calibrate
-from ._c69b1_lpdmso.callouts import Callouts
-from ._c69b1_lpdmso.configuration import Configuration
-from ._c69b1_lpdmso.connected import Connected
-from ._c69b1_lpdmso.curve import Curve
-from ._c69b1_lpdmso.curvestream import Curvestream
-from ._c69b1_lpdmso.date import Date
-from ._c69b1_lpdmso.diag import Diag
-from ._c69b1_lpdmso.ethernet import Ethernet
-from ._c69b1_lpdmso.filesystem import Filesystem
-from ._c69b1_lpdmso.mainwindow import Mainwindow
-from ._c69b1_lpdmso.meastable import Meastable
-from ._c69b1_lpdmso.recall import Recall
-from ._c69b1_lpdmso.ref import Ref
-from ._c69b1_lpdmso.socketserver import Socketserver
-from ._c69b1_lpdmso.time import Time
-from ._c69b1_lpdmso.undo import Undo
-from ._c69b1_lpdmso.usbdevice import Usbdevice
-from ._c69b1_lpdmso.vertical import Vertical
-from ._c69b1_lpdmso.wfmoutpre import Wfmoutpre
+from ._e3h2zs_lpdmso.afg import Afg
+from ._e3h2zs_lpdmso.autosavepitimeout import Autosavepitimeout
+from ._e3h2zs_lpdmso.autosaveuitimeout import Autosaveuitimeout
+from ._e3h2zs_lpdmso.autoset import Autoset
+from ._e3h2zs_lpdmso.bustable import Bustable
+from ._e3h2zs_lpdmso.calibrate import Calibrate
+from ._e3h2zs_lpdmso.configuration import Configuration
+from ._e3h2zs_lpdmso.connected import Connected
+from ._e3h2zs_lpdmso.curve import Curve
+from ._e3h2zs_lpdmso.curvestream import Curvestream
+from ._e3h2zs_lpdmso.customtable import Customtable
+from ._e3h2zs_lpdmso.date import Date
+from ._e3h2zs_lpdmso.ethernet import Ethernet
+from ._e3h2zs_lpdmso.filesystem import Filesystem
+from ._e3h2zs_lpdmso.mainwindow import Mainwindow
+from ._e3h2zs_lpdmso.meastable import Meastable
+from ._e3h2zs_lpdmso.recall import Recall
+from ._e3h2zs_lpdmso.socketserver import Socketserver
+from ._e3h2zs_lpdmso.time import Time
+from ._e3h2zs_lpdmso.undo import Undo
+from ._e3h2zs_lpdmso.usbdevice import Usbdevice
+from ._e3h2zs_lpdmso.vertical import Vertical
+from ._e3h2zs_lpdmso.wfmoutpre import Wfmoutpre
+from ._e4de2d_lpdmsomdo.clear import Clear
+from ._e6lgg1_lpdmsodpomdo.totaluptime import Totaluptime
+from ._e6606z_lpdmsomdodpo.pause import Pause
+from ._ft5uww_lpdmsodpomdoafgawgdsa.calibration import Cal
+from ._ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
+from ._ft5uww_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
+from ._fteabn_lpdmsomdodpoafgawgdsa.status_and_error import Opt
+from ._fug7nl_lpdmsodpomdoawgdsa.status_and_error import Ese, Sre
+from ._fuzvln_lpdmsodpodsa.alias import Alias
+from ._fuzvln_lpdmsodpodsa.header import Header
+from ._fuzvln_lpdmsodpodsa.status_and_error import Psc
+from ._fuzvln_lpdmsodpodsa.verbose import Verbose
+from ._fx54ua_lpdmsodpomdodsa.allev import Allev
+from ._fx54ua_lpdmsodpomdodsa.busy import Busy
+from ._fx54ua_lpdmsodpomdodsa.dese import Dese
+from ._fx54ua_lpdmsodpomdodsa.event import Event
+from ._fx54ua_lpdmsodpomdodsa.evmsg import Evmsg
+from ._fx54ua_lpdmsodpomdodsa.evqty import Evqty
+from ._fx54ua_lpdmsodpomdodsa.factory import Factory
+from ._fx54ua_lpdmsodpomdodsa.id import Id
+from ._fx54ua_lpdmsodpomdodsa.miscellaneous import Ddt, Lrn
+from ._fx54ua_lpdmsodpomdodsa.newpass import Newpass
+from ._fx54ua_lpdmsodpomdodsa.password import Password
+from ._fx54ua_lpdmsodpomdodsa.rem import Rem
+from ._fx54ua_lpdmsodpomdodsa.set import Set
+from ._fx54ua_lpdmsodpomdodsa.status_and_error import Pud
+from ._fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
+from ._fx54ua_lpdmsodpomdodsa.wavfrm import Wavfrm
+from ._fzn174_lpdmsodpomdodsa.lock import Lock
+from ._fzn174_lpdmsodpomdodsa.unlock import Unlock
 from ._helpers import DefaultDictPassKeyToFactory
-from ._uph56_lpdmsomdo.clear import Clear
 
 
 # pylint: disable=too-few-public-methods
@@ -105,7 +108,6 @@ class MSO2CommandConstants:
     ABSOLUTE = "ABSOLUTE"  # ABSolute
     AC = "AC"
     ACKMISS = "ACKMISS"
-    ACQ = "ACQ"
     ACRMS = "ACRMS"
     ADD = "ADD"
     ADDR10 = "ADDR10"
@@ -114,7 +116,6 @@ class MSO2CommandConstants:
     ADDRESS = "ADDRESS"  # ADDRess
     ADVANCED = "ADVANCED"  # ADVanced
     ALL = "ALL"
-    ANALOG = "ANALOG"
     AND = "AND"
     ANYERROR = "ANYERROR"  # ANYERRor
     AREA = "AREA"
@@ -122,7 +123,6 @@ class MSO2CommandConstants:
     ASCII = "ASCII"
     # ASCII = "ASCIi"
     # ASCII = "ASCii"
-    ASIC = "ASIC"
     ATRIGGER = "ATRIGGER"  # ATRIGger
     AUTO = "AUTO"
     AUTOMATIC = "AUTOMATIC"  # AUTOmatic
@@ -149,6 +149,7 @@ class MSO2CommandConstants:
     CHECKSUM = "CHECKSUM"  # CHecksum
     CLEAR = "CLEAR"
     CLOCK = "CLOCK"
+    CONSTANT = "CONSTANT"  # CONSTant
     CONTINUOUS = "CONTINUOUS"  # CONTinuous
     CR = "CR"
     CRC = "CRC"
@@ -196,7 +197,8 @@ class MSO2CommandConstants:
     FDISO = "FDISO"
     FDNONISO = "FDNONISO"
     FFT = "FFT"
-    FIFTY = "FIFTY"  # FIFty
+    FIFTY = "FIFTY"  # FIFTy
+    # FIFTY = "FIFty"
     FILE = "FILE"
     FIRST = "FIRST"
     FIXED = "FIXED"
@@ -249,7 +251,6 @@ class MSO2CommandConstants:
     INVERTED = "INVERTED"  # INVERTed
     # INVERTED = "INVErted"
     # INVERTED = "INVerted"
-    IO = "IO"
     JPG = "JPG"
     KAISERBESSEL = "KAISERBESSEL"  # KAISERBessel
     L = "L"
@@ -272,7 +273,6 @@ class MSO2CommandConstants:
     MEAN = "MEAN"
     MEANHISTOGRAM = "MEANHISTOGRAM"  # MEANhistogram
     MEDIUM = "MEDIUM"  # MEDium
-    MEMORY = "MEMORY"
     MID = "MID"
     MINMAX = "MINMAX"  # MINMax
     MISO = "MISO"  # MISo
@@ -336,6 +336,7 @@ class MSO2CommandConstants:
     POSITIVE = "POSITIVE"  # POSitive
     POST = "POST"
     POVERSHOOT = "POVERSHOOT"
+    PROFILE = "PROFILE"  # PROFile
     PULSEWIDTH = "PULSEWIDTH"  # PULSEWidth
     PWIDTH = "PWIDTH"
     READ = "READ"
@@ -379,7 +380,6 @@ class MSO2CommandConstants:
     SETTO50 = "SETTO50"
     SETUP = "SETUP"
     SFPBINARY = "SFPBINARY"  # SFPbinary
-    SIGNAL = "SIGNAL"
     SINC = "SINC"
     SINGLESEQ = "SINGLESEQ"  # SINGleseq
     SINX = "SINX"
@@ -407,7 +407,6 @@ class MSO2CommandConstants:
     SUBTRACT = "SUBTRACT"  # SUBtract
     SYNC = "SYNC"
     SYNCFIELD = "SYNCFIELD"  # SYNCfield
-    SYSTEM = "SYSTEM"
     TEKEXPONENTIAL = "TEKEXPONENTIAL"  # TEKEXPonential
     TENNINETY = "TENNINETY"  # TENNinety
     THREE = "THREE"
@@ -444,7 +443,6 @@ class MSO2CommandConstants:
     WAKEUP = "WAKEUP"  # WAKEup
     WAVEFORM = "WAVEFORM"
     # WAVEFORM = "WAVEform"
-    WAVEVIEW1 = "WAVEVIEW1"
     WIDTH = "WIDTH"  # WIDth
     WITHIN = "WITHIN"  # WIThin
     WRITE = "WRITE"
@@ -485,6 +483,7 @@ class MSO2Commands:
         - ``.connected``: The ``CONNected`` command tree.
         - ``.curve``: The ``CURVe`` command.
         - ``.curvestream``: The ``CURVEStream`` command.
+        - ``.customtable``: The ``CUSTOMTABle`` command tree.
         - ``.data``: The ``DATa`` command.
         - ``.date``: The ``DATE`` command.
         - ``.dch``: The ``DCH<x>`` command tree.
@@ -521,6 +520,7 @@ class MSO2Commands:
         - ``.pause``: The ``PAUSe`` command.
         - ``.pg``: The ``PG`` command tree.
         - ``.plot``: The ``PLOT`` command tree.
+        - ``.power``: The ``POWer`` command tree.
         - ``.psc``: The ``*PSC`` command.
         - ``.pud``: The ``*PUD`` command.
         - ``.recall``: The ``RECAll`` command tree.
@@ -581,6 +581,7 @@ class MSO2Commands:
         self._connected = Connected(device)
         self._curve = Curve(device)
         self._curvestream = Curvestream(device)
+        self._customtable = Customtable(device)
         self._data = Data(device)
         self._date = Date(device)
         self._dch: Dict[int, DchItem] = DefaultDictPassKeyToFactory(
@@ -619,6 +620,7 @@ class MSO2Commands:
         self._pause = Pause(device)
         self._pg = Pg(device)
         self._plot = Plot(device)
+        self._power = Power(device)
         self._psc = Psc(device)
         self._pud = Pud(device)
         self._recall = Recall(device)
@@ -1008,7 +1010,9 @@ class MSO2Commands:
               AssertionError if the returned value does not match ``value``.
 
         Sub-properties:
-            - ``.callout``: The ``CALLOUTS:CALLOUT<x>`` command.
+            - ``.addnew``: The ``CALLOUTS:ADDNew`` command.
+            - ``.callout``: The ``CALLOUTS:CALLOUT<x>`` command tree.
+            - ``.delete``: The ``CALLOUTS:DELete`` command.
         """
         return self._callouts
 
@@ -1054,7 +1058,7 @@ class MSO2Commands:
         """Return the ``CLEAR`` command.
 
         **Description:**
-            - This command clears acquisitions, measurements, and waveforms.
+            - This command  clears acquisitions, measurements, and waveforms.
 
         **Usage:**
             - Using the ``.write()`` method will send the ``CLEAR`` command.
@@ -1215,6 +1219,22 @@ class MSO2Commands:
             - CURVEStream?
         """
         return self._curvestream
+
+    @property
+    def customtable(self) -> Customtable:
+        """Return the ``CUSTOMTABle`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``CUSTOMTABle?`` query.
+            - Using the ``.verify(value)`` method will send the ``CUSTOMTABle?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.addnew``: The ``CUSTOMTABle:ADDNew`` command.
+            - ``.delete``: The ``CUSTOMTABle:DELete`` command.
+            - ``.list``: The ``CUSTOMTABle:LIST`` command.
+        """
+        return self._customtable
 
     @property
     def data(self) -> Data:
@@ -1399,13 +1419,12 @@ class MSO2Commands:
             - ``.intensity``: The ``DISplay:INTENSITy`` command.
             - ``.mathfftview1``: The ``DISplay:MATHFFTView1`` command tree.
             - ``.persistence``: The ``DISplay:PERSistence`` command.
-            - ``.plotview``: The ``DISplay:PLOTVIEW<x>`` command tree.
             - ``.plotview1``: The ``DISplay:PLOTView1`` command tree.
             - ``.reffftview``: The ``DISplay:REFFFTView<x>`` command tree.
             - ``.select``: The ``DISplay:SELect`` command tree.
             - ``.varpersist``: The ``DISplay:VARpersist`` command.
-            - ``.waveview1``: The ``DISplay:WAVEView1`` command tree.
             - ``.waveview``: The ``DISplay:WAVEView`` command tree.
+            - ``.waveview1``: The ``DISplay:WAVEView1`` command tree.
             - ``.waveform``: The ``DISplay:WAVEform`` command.
             - ``.ch``: The ``DISplay:CH<x>`` command tree.
             - ``.math``: The ``DISplay:Math<x>`` command tree.
@@ -2109,6 +2128,22 @@ class MSO2Commands:
         return self._plot
 
     @property
+    def power(self) -> Power:
+        """Return the ``POWer`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``POWer?`` query.
+            - Using the ``.verify(value)`` method will send the ``POWer?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.addnew``: The ``POWer:ADDNew`` command.
+            - ``.delete``: The ``POWer:DELete`` command.
+            - ``.power``: The ``POWer:POWer<x>`` command tree.
+        """
+        return self._power
+
+    @property
     def psc(self) -> Psc:
         """Return the ``*PSC`` command.
 
@@ -2367,6 +2402,7 @@ class MSO2Commands:
               AssertionError if the returned value does not match ``value``.
 
         Sub-properties:
+            - ``.ch``: The ``SELect:CH<x>`` command.
             - ``.dch``: The ``SELect:DCH<x>`` command tree.
         """
         return self._select
@@ -2866,6 +2902,7 @@ class MSO2Mixin:
             - ``.connected``: The ``CONNected`` command tree.
             - ``.curve``: The ``CURVe`` command.
             - ``.curvestream``: The ``CURVEStream`` command.
+            - ``.customtable``: The ``CUSTOMTABle`` command tree.
             - ``.data``: The ``DATa`` command.
             - ``.date``: The ``DATE`` command.
             - ``.dch``: The ``DCH<x>`` command tree.
@@ -2902,6 +2939,7 @@ class MSO2Mixin:
             - ``.pause``: The ``PAUSe`` command.
             - ``.pg``: The ``PG`` command tree.
             - ``.plot``: The ``PLOT`` command tree.
+            - ``.power``: The ``POWer`` command tree.
             - ``.psc``: The ``*PSC`` command.
             - ``.pud``: The ``*PUD`` command.
             - ``.recall``: The ``RECAll`` command tree.

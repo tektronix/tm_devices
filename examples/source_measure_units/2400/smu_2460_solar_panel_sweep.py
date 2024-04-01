@@ -8,6 +8,7 @@ Description:
 
 Converted to Python tm_devices script. DCA 4.7.23
 """
+
 import time
 
 from tm_devices import DeviceManager
@@ -25,7 +26,7 @@ POINTS = 115
 S_DELAY = 0.05
 
 with DeviceManager(verbose=False) as dm:
-    inst: SMU2460 = dm.add_smu(RESOURCE_ID)  # pyright: ignore[reportGeneralTypeIssues]
+    inst: SMU2460 = dm.add_smu(RESOURCE_ID)  # pyright: ignore[reportAssignmentType]
 
     # Reset the Model 2460 and clear its buffer.
     inst.commands.reset()

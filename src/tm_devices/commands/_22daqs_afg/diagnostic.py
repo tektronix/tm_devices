@@ -14,6 +14,7 @@ Commands and Queries:
     - DIAGnostic:ALL
     - DIAGnostic:ALL?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWriteNoArguments

@@ -1,4 +1,5 @@
 """SMU Model 2650A device driver module."""
+
 from abc import ABC
 from typing import Union
 

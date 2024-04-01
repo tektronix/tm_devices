@@ -14,6 +14,7 @@ Commands and Queries:
     - SOURce4:POWer:LEVel:IMMediate:AMPLitude {<percent>|MINimum|MAXimum}
     - SOURce4:POWer:LEVel:IMMediate:AMPLitude?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite

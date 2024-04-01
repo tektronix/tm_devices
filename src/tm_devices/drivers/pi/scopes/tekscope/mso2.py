@@ -1,5 +1,5 @@
 """MSO2 device driver module."""
-from functools import cached_property
+
 from typing import Tuple
 
 import pyvisa as visa
@@ -7,6 +7,9 @@ import pyvisa as visa
 from tm_devices.commands import MSO2Mixin
 from tm_devices.drivers.pi.scopes.tekscope.tekscope import TekScope
 from tm_devices.helpers import DeviceConfigEntry
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 class MSO2(MSO2Mixin, TekScope):

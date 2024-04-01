@@ -1,7 +1,7 @@
 # pyright: reportPrivateUsage=none
 """Unit tests for tmt4.py."""
-import os
 
+from pathlib import Path
 from unittest import mock
 
 import pytest
@@ -12,9 +12,7 @@ from mock_server import MOCK_ABOUT_INFO, PORT
 from tm_devices import DeviceManager
 from tm_devices.drivers.api.rest_api.margin_testers.margin_tester import MarginTester
 
-AUTH_TOKEN_FILE_PATH = (
-    f"{os.path.dirname(os.path.abspath(__file__))}/samples/token.auth_token_file_path"  # nosec
-)
+AUTH_TOKEN_FILE_PATH = f"{Path(__file__).parent}/samples/token.auth_token_file_path"  # nosec
 
 
 ################################################################################################
@@ -57,7 +55,7 @@ def test_margin_tester(tmt4: MarginTester, device_manager: DeviceManager) -> Non
 
     # cover what happens when there is a string in the fw_version/fpga_version field
     with mock.patch.dict(
-        tmt4._about_info,  # noqa: SLF001  # pyright: ignore
+        tmt4._about_info,  # type: ignore[attr-defined]  # noqa: SLF001
         {"fpga_version": "UNIT TEST STRING", "fw_version": "UNIT TEST STRING"},
     ):
         assert tmt4.fw_version == Version("0")

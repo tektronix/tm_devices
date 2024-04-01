@@ -17,6 +17,7 @@ Attributes and Functions:
     - beeper.beep()
     - beeper.enable
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError

@@ -46,6 +46,7 @@ Commands and Queries:
     - SELect:RF_PHASe?
     - SELect?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -419,9 +420,9 @@ class SelectChannel(ValidatedChannel, SCPICmdWrite, SCPICmdRead):
     """The ``SELect:CH<x>`` command.
 
     **Description:**
-        - Turns the display of the channel <x> waveform on or off, where <x > is the channel number,
-          which can be 1-4. This command also resets the acquisition. The query returns whether the
-          channel is on or off but does not indicate whether it is the specified waveform.
+        - Turns the display of the channel <x> waveform on or off, where <x > is the channel number.
+          This command also resets the acquisition. The query returns whether the channel is on or
+          off but does not indicate whether it is the specified waveform.
 
     **Usage:**
         - Using the ``.query()`` method will send the ``SELect:CH<x>?`` query.
@@ -437,9 +438,12 @@ class SelectChannel(ValidatedChannel, SCPICmdWrite, SCPICmdRead):
         - SELect:CH<x>?
 
     **Info:**
-        - ``ON`` or 1 turns on the display of the specified waveform. This waveform also becomes the
+        - ``ON`` turns on the display of the specified waveform. This waveform also becomes the
           selected waveform.
-        - ``OFF`` or 0 turns off the display of the specified waveform.
+        - ``OFF`` turns off the display of the specified waveform.
+        - ``1`` turns on the display of the specified waveform. This waveform also becomes the
+          selected waveform.
+        - ``0`` turns off the display of the specified waveform.
     """
 
 
@@ -569,9 +573,8 @@ class Select(SCPICmdRead):
 
         **Description:**
             - Turns the display of the channel <x> waveform on or off, where <x > is the channel
-              number, which can be 1-4. This command also resets the acquisition. The query returns
-              whether the channel is on or off but does not indicate whether it is the specified
-              waveform.
+              number. This command also resets the acquisition. The query returns whether the
+              channel is on or off but does not indicate whether it is the specified waveform.
 
         **Usage:**
             - Using the ``.query()`` method will send the ``SELect:CH<x>?`` query.
@@ -587,9 +590,12 @@ class Select(SCPICmdRead):
             - SELect:CH<x>?
 
         **Info:**
-            - ``ON`` or 1 turns on the display of the specified waveform. This waveform also becomes
-              the selected waveform.
-            - ``OFF`` or 0 turns off the display of the specified waveform.
+            - ``ON`` turns on the display of the specified waveform. This waveform also becomes the
+              selected waveform.
+            - ``OFF`` turns off the display of the specified waveform.
+            - ``1`` turns on the display of the specified waveform. This waveform also becomes the
+              selected waveform.
+            - ``0`` turns off the display of the specified waveform.
         """
         return self._ch
 

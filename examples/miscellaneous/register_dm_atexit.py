@@ -1,4 +1,5 @@
 """An example showing how to register the DeviceManager to close on program exit."""
+
 import atexit
 
 from tm_devices import DeviceManager

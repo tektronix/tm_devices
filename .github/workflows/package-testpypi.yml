@@ -12,14 +12,13 @@ jobs:
     if: github.repository == 'tektronix/tm_devices'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          # TODO: update to just "x", currently there appears to be a bug in hynek/build-and-inspect-python-package, where it uses an outdated version of typing_extensions.
-          python-version: 3.11
+          python-version: x
           check-latest: true
       - name: Install workflow dependencies
         run: pip install poetry-core tomli tomli_w requests
@@ -33,7 +32,7 @@ jobs:
           python scripts/project_version.py --set-version=$NEW_VERSION
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
       - name: Build package
-        uses: hynek/build-and-inspect-python-package@v1.5
+        uses: hynek/build-and-inspect-python-package@v2.0.1
     outputs:
       built-version: ${{ steps.create-version.outputs.NEW_VERSION }}
   test-pypi-upload:
@@ -46,12 +45,12 @@ jobs:
       id-token: write
     steps:
       - name: Download built packages
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Packages
           path: dist
       - name: Upload package to Test PyPI
-        uses: pypa/gh-action-pypi-publish@v1.8.8
+        uses: pypa/gh-action-pypi-publish@v1.8.12
         with:
           repository-url: https://test.pypi.org/legacy/
   test-pypi-install:
@@ -61,15 +60,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: x
           check-latest: true
       - name: Test installing from test.pypi.org
         # A retry is used to allow for some downtime before the package is installable
-        uses: nick-fields/retry@v2
+        uses: nick-fields/retry@v3
         with:
-          timeout_minutes: 2
+          timeout_minutes: 10
           max_attempts: 5
           retry_wait_seconds: 30
           warning_on_retry: false

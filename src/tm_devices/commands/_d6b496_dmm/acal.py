@@ -22,6 +22,7 @@ Attributes and Functions:
     - acal.run()
     - acal.schedule()
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError
@@ -60,7 +61,9 @@ class AcalNextrun(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".time"
-            return self._device.query(f"print({self._cmd_syntax}.time)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.time)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.time`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -157,7 +160,9 @@ class AcalLastrun(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".time"
-            return self._device.query(f"print({self._cmd_syntax}.time)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.time)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.time`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -271,7 +276,9 @@ class Acal(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.run()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.run()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.run()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

@@ -3,5 +3,10 @@
 # will be requested for review when someone opens a pull request.
 *                            @tektronix/tm-devices-admin
 
+/docs/                       @tektronix/tm-devices-maintainers
+/examples/                   @tektronix/tm-devices-maintainers
+/src/                        @tektronix/tm-devices-maintainers
+/tests/                      @tektronix/tm-devices-maintainers
+
 # Protect the configuration files
 .github/                     @tektronix/tm-devices-admin

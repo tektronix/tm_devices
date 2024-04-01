@@ -110,6 +110,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue <Qstring>
     - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue?
     - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue <Qstring>
+    - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?
     - TRIGger:A:BUS:B<x>:SPI:CONDition {SS|STARTofframe|DATa}
     - TRIGger:A:BUS:B<x>:SPI:CONDition?
     - TRIGger:A:BUS:B<x>:SPI:DATa:SIZe <NR1>
@@ -196,6 +197,7 @@ Commands and Queries:
     - TRIGger:STATE?
     - TRIGger?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -3068,7 +3070,7 @@ class TriggerABusBItemSpi(SCPICmdRead):
         return self._data
 
 
-class TriggerABusBItemSentSlowIdentifierValue(SCPICmdWrite):
+class TriggerABusBItemSentSlowIdentifierValue(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue`` command.
 
     **Description:**
@@ -3076,6 +3078,11 @@ class TriggerABusBItemSentSlowIdentifierValue(SCPICmdWrite):
           data. B<x> is the specified bus number.
 
     **Usage:**
+        - Using the ``.query()`` method will send the
+          ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue value`` command.
 
@@ -3084,6 +3091,7 @@ class TriggerABusBItemSentSlowIdentifierValue(SCPICmdWrite):
     ::
 
         - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue <Qstring>
+        - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?
 
     **Info:**
         - ``<Qstring>`` is the binary identifier value.
@@ -3117,6 +3125,11 @@ class TriggerABusBItemSentSlowIdentifier(SCPICmdRead):
               bus data. B<x> is the specified bus number.
 
         **Usage:**
+            - Using the ``.query()`` method will send the
+              ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue value`` command.
 
@@ -3125,6 +3138,7 @@ class TriggerABusBItemSentSlowIdentifier(SCPICmdRead):
         ::
 
             - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue <Qstring>
+            - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?
 
         **Info:**
             - ``<Qstring>`` is the binary identifier value.

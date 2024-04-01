@@ -1,11 +1,14 @@
 """TEKSCOPESW device driver module."""
-from functools import cached_property
+
 from typing import Any
 
 import pyvisa as visa
 
 from tm_devices.drivers.pi.scopes.tekscope.tekscope import TekScope
 from tm_devices.helpers import DeviceConfigEntry
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 class TekScopeSW(TekScope):

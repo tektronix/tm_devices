@@ -22,6 +22,13 @@ Attributes and Functions:
     - smu.digitize.count
     - smu.digitize.displaydigits
     - smu.digitize.func
+    - smu.digitize.limit[Y].clear()
+    - smu.digitize.limit[r].audible
+    - smu.digitize.limit[r].autoclear
+    - smu.digitize.limit[r].enable
+    - smu.digitize.limit[r].fail
+    - smu.digitize.limit[r].high.value
+    - smu.digitize.limit[r].low.value
     - smu.digitize.math.enable
     - smu.digitize.math.format
     - smu.digitize.math.mxb.bfactor
@@ -61,6 +68,13 @@ Attributes and Functions:
     - smu.measure.filter.type
     - smu.measure.func
     - smu.measure.getattribute()
+    - smu.measure.limit[Y].clear()
+    - smu.measure.limit[r].audible
+    - smu.measure.limit[r].autoclear
+    - smu.measure.limit[r].enable
+    - smu.measure.limit[r].fail
+    - smu.measure.limit[r].high.value
+    - smu.measure.limit[r].low.value
     - smu.measure.math.enable
     - smu.measure.math.format
     - smu.measure.math.mxb.bfactor
@@ -121,9 +135,16 @@ Attributes and Functions:
     - smu.source.vlimit.tripped
     - smu.terminals
 """
+
 from typing import Dict, Optional, TYPE_CHECKING, Union
 
-from .._helpers import BaseTSPCmd, DefaultDictDeviceCommunication, NoDeviceProvidedError
+from .._helpers import (
+    BaseTSPCmd,
+    DefaultDictDeviceCommunication,
+    DefaultDictPassKeyToFactory,
+    NoDeviceProvidedError,
+    ValidatedDynamicNumberCmd,
+)
 
 if TYPE_CHECKING:
     from tm_devices.drivers.pi.tsp_device import TSPDevice
@@ -1294,7 +1315,9 @@ class SmuSource(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".func"
-            return self._device.query(f"print({self._cmd_syntax}.func)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.func)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -1326,7 +1349,9 @@ class SmuSource(BaseTSPCmd):
                     self._cmd_syntax + ".func", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.func = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.func = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -3088,6 +3113,455 @@ class SmuMeasureMath(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
 
+class SmuMeasureLimitItemLow(BaseTSPCmd):
+    """The ``smu.measure.limit[r].low`` command tree.
+
+    Properties/methods:
+        - ``.value``: The ``smu.measure.limit[r].low.value`` attribute.
+    """
+
+    @property
+    def value(self) -> str:
+        """Access the ``smu.measure.limit[r].low.value`` attribute.
+
+        **Description:**
+            - This attribute specifies the lower limit for a limit test. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.measure.limit[r].low.value)`` query.
+            - Setting this property to a value will send the
+              ``smu.measure.limit[r].low.value = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.measure.limit[r].low.value = value
+            - print(smu.measure.limit[r].low.value)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".value"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.value)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @value.setter
+    def value(self, value: Union[str, float]) -> None:
+        """Access the ``smu.measure.limit[r].low.value`` attribute.
+
+        **Description:**
+            - This attribute specifies the lower limit for a limit test. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.measure.limit[r].low.value)`` query.
+            - Setting this property to a value will send the
+              ``smu.measure.limit[r].low.value = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.measure.limit[r].low.value = value
+            - print(smu.measure.limit[r].low.value)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".value", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.value = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+
+class SmuMeasureLimitItemHigh(BaseTSPCmd):
+    """The ``smu.measure.limit[r].high`` command tree.
+
+    Properties/methods:
+        - ``.value``: The ``smu.measure.limit[r].high.value`` attribute.
+    """
+
+    @property
+    def value(self) -> str:
+        """Access the ``smu.measure.limit[r].high.value`` attribute.
+
+        **Description:**
+            - This attribute specifies the upper limit for a limit test. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.measure.limit[r].high.value)``
+              query.
+            - Setting this property to a value will send the
+              ``smu.measure.limit[r].high.value = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.measure.limit[r].high.value = value
+            - print(smu.measure.limit[r].high.value)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".value"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.value)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @value.setter
+    def value(self, value: Union[str, float]) -> None:
+        """Access the ``smu.measure.limit[r].high.value`` attribute.
+
+        **Description:**
+            - This attribute specifies the upper limit for a limit test. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.measure.limit[r].high.value)``
+              query.
+            - Setting this property to a value will send the
+              ``smu.measure.limit[r].high.value = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.measure.limit[r].high.value = value
+            - print(smu.measure.limit[r].high.value)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".value", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.value = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+
+class SmuMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
+    """The ``smu.measure.limit[r]`` command tree.
+
+    Properties/methods:
+        - ``.audible``: The ``smu.measure.limit[r].audible`` attribute.
+        - ``.autoclear``: The ``smu.measure.limit[r].autoclear`` attribute.
+        - ``.clear()``: The ``smu.measure.limit[r].clear()`` function.
+        - ``.enable``: The ``smu.measure.limit[r].enable`` attribute.
+        - ``.fail``: The ``smu.measure.limit[r].fail`` attribute.
+        - ``.high``: The ``smu.measure.limit[r].high`` command tree.
+        - ``.low``: The ``smu.measure.limit[r].low`` command tree.
+    """
+
+    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._high = SmuMeasureLimitItemHigh(device, f"{self._cmd_syntax}.high")
+        self._low = SmuMeasureLimitItemLow(device, f"{self._cmd_syntax}.low")
+
+    @property
+    def audible(self) -> str:
+        """Access the ``smu.measure.limit[r].audible`` attribute.
+
+        **Description:**
+            - This attribute determines if the instrument beeper sounds when a limit test passes or
+              fails. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.measure.limit[r].audible)`` query.
+            - Setting this property to a value will send the
+              ``smu.measure.limit[r].audible = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.measure.limit[r].audible = value
+            - print(smu.measure.limit[r].audible)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".audible"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.audible)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.audible`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @audible.setter
+    def audible(self, value: Union[str, float]) -> None:
+        """Access the ``smu.measure.limit[r].audible`` attribute.
+
+        **Description:**
+            - This attribute determines if the instrument beeper sounds when a limit test passes or
+              fails. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.measure.limit[r].audible)`` query.
+            - Setting this property to a value will send the
+              ``smu.measure.limit[r].audible = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.measure.limit[r].audible = value
+            - print(smu.measure.limit[r].audible)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".audible", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.audible = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.audible`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def autoclear(self) -> str:
+        """Access the ``smu.measure.limit[r].autoclear`` attribute.
+
+        **Description:**
+            - This attribute indicates if the test result for limit Y should be cleared
+              automatically or not. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.measure.limit[r].autoclear)`` query.
+            - Setting this property to a value will send the
+              ``smu.measure.limit[r].autoclear = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.measure.limit[r].autoclear = value
+            - print(smu.measure.limit[r].autoclear)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".autoclear"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.autoclear)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autoclear`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @autoclear.setter
+    def autoclear(self, value: Union[str, float]) -> None:
+        """Access the ``smu.measure.limit[r].autoclear`` attribute.
+
+        **Description:**
+            - This attribute indicates if the test result for limit Y should be cleared
+              automatically or not. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.measure.limit[r].autoclear)`` query.
+            - Setting this property to a value will send the
+              ``smu.measure.limit[r].autoclear = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.measure.limit[r].autoclear = value
+            - print(smu.measure.limit[r].autoclear)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".autoclear", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.autoclear = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autoclear`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def enable(self) -> str:
+        """Access the ``smu.measure.limit[r].enable`` attribute.
+
+        **Description:**
+            - This attribute enables or disables a limit test on the measurement from the selected
+              measure function. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.measure.limit[r].enable)`` query.
+            - Setting this property to a value will send the ``smu.measure.limit[r].enable = value``
+              command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.measure.limit[r].enable = value
+            - print(smu.measure.limit[r].enable)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".enable"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.enable)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @enable.setter
+    def enable(self, value: Union[str, float]) -> None:
+        """Access the ``smu.measure.limit[r].enable`` attribute.
+
+        **Description:**
+            - This attribute enables or disables a limit test on the measurement from the selected
+              measure function. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.measure.limit[r].enable)`` query.
+            - Setting this property to a value will send the ``smu.measure.limit[r].enable = value``
+              command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.measure.limit[r].enable = value
+            - print(smu.measure.limit[r].enable)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".enable", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.enable = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def fail(self) -> str:
+        """Access the ``smu.measure.limit[r].fail`` attribute.
+
+        **Description:**
+            - This attribute queries the results of a limit test. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.measure.limit[r].fail)`` query.
+
+        **TSP Syntax:**
+
+        ::
+
+            - print(smu.measure.limit[r].fail)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".fail"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.fail)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.fail`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def high(self) -> SmuMeasureLimitItemHigh:
+        """Return the ``smu.measure.limit[r].high`` command tree.
+
+        Sub-properties/methods:
+            - ``.value``: The ``smu.measure.limit[r].high.value`` attribute.
+        """
+        return self._high
+
+    @property
+    def low(self) -> SmuMeasureLimitItemLow:
+        """Return the ``smu.measure.limit[r].low`` command tree.
+
+        Sub-properties/methods:
+            - ``.value``: The ``smu.measure.limit[r].low.value`` attribute.
+        """
+        return self._low
+
+    def clear(self) -> None:
+        """Run the ``smu.measure.limit[r].clear()`` function.
+
+        **Description:**
+            - This function clears the results of the limit test defined by Y for the selected
+              measurement function. (r = resistance in ohms)
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.measure.limit[r].clear()
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+
 class SmuMeasureFilter(BaseTSPCmd):
     """The ``smu.measure.filter`` command tree.
 
@@ -3261,7 +3735,9 @@ class SmuMeasureFilter(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".type"
-            return self._device.query(f"print({self._cmd_syntax}.type)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.type)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.type`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -3295,7 +3771,9 @@ class SmuMeasureFilter(BaseTSPCmd):
                     self._cmd_syntax + ".type", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.type = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.type = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.type`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -3696,7 +4174,9 @@ class SmuMeasureAutozero(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.once()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.once()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.once()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -3718,6 +4198,7 @@ class SmuMeasure(BaseTSPCmd):
         - ``.filter``: The ``smu.measure.filter`` command tree.
         - ``.func``: The ``smu.measure.func`` attribute.
         - ``.getattribute()``: The ``smu.measure.getattribute()`` function.
+        - ``.limit``: The ``smu.measure.limit[r]`` command tree.
         - ``.math``: The ``smu.measure.math`` command tree.
         - ``.nplc``: The ``smu.measure.nplc`` attribute.
         - ``.offsetcompensation``: The ``smu.measure.offsetcompensation`` attribute.
@@ -3736,6 +4217,9 @@ class SmuMeasure(BaseTSPCmd):
         self._autozero = SmuMeasureAutozero(device, f"{self._cmd_syntax}.autozero")
         self._configlist = SmuMeasureConfiglist(device, f"{self._cmd_syntax}.configlist")
         self._filter = SmuMeasureFilter(device, f"{self._cmd_syntax}.filter")
+        self._limit: Dict[int, SmuMeasureLimitItem] = DefaultDictPassKeyToFactory(
+            lambda x: SmuMeasureLimitItem(device, f"{self._cmd_syntax}.limit[{x}]")
+        )
         self._math = SmuMeasureMath(device, f"{self._cmd_syntax}.math")
         self._rel = SmuMeasureRel(device, f"{self._cmd_syntax}.rel")
         self._userdelay: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
@@ -4230,7 +4714,9 @@ class SmuMeasure(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".func"
-            return self._device.query(f"print({self._cmd_syntax}.func)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.func)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -4262,10 +4748,27 @@ class SmuMeasure(BaseTSPCmd):
                     self._cmd_syntax + ".func", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.func = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.func = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def limit(self) -> Dict[int, SmuMeasureLimitItem]:
+        """Return the ``smu.measure.limit[r]`` command tree.
+
+        Sub-properties/methods:
+            - ``.audible``: The ``smu.measure.limit[r].audible`` attribute.
+            - ``.autoclear``: The ``smu.measure.limit[r].autoclear`` attribute.
+            - ``.clear()``: The ``smu.measure.limit[r].clear()`` function.
+            - ``.enable``: The ``smu.measure.limit[r].enable`` attribute.
+            - ``.fail``: The ``smu.measure.limit[r].fail`` attribute.
+            - ``.high``: The ``smu.measure.limit[r].high`` command tree.
+            - ``.low``: The ``smu.measure.limit[r].low`` command tree.
+        """
+        return self._limit
 
     @property
     def math(self) -> SmuMeasureMath:
@@ -4304,7 +4807,9 @@ class SmuMeasure(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".nplc"
-            return self._device.query(f"print({self._cmd_syntax}.nplc)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.nplc)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.nplc`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -4337,7 +4842,9 @@ class SmuMeasure(BaseTSPCmd):
                     self._cmd_syntax + ".nplc", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.nplc = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.nplc = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.nplc`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -4575,7 +5082,9 @@ class SmuMeasure(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".unit"
-            return self._device.query(f"print({self._cmd_syntax}.unit)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.unit)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.unit`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -4608,7 +5117,9 @@ class SmuMeasure(BaseTSPCmd):
                     self._cmd_syntax + ".unit", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.unit = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.unit = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.unit`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -5424,6 +5935,459 @@ class SmuDigitizeMath(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
 
+class SmuDigitizeLimitItemLow(BaseTSPCmd):
+    """The ``smu.digitize.limit[r].low`` command tree.
+
+    Properties/methods:
+        - ``.value``: The ``smu.digitize.limit[r].low.value`` attribute.
+    """
+
+    @property
+    def value(self) -> str:
+        """Access the ``smu.digitize.limit[r].low.value`` attribute.
+
+        **Description:**
+            - This attribute specifies the lower limit for a limit test. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.digitize.limit[r].low.value)``
+              query.
+            - Setting this property to a value will send the
+              ``smu.digitize.limit[r].low.value = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.digitize.limit[r].low.value = value
+            - print(smu.digitize.limit[r].low.value)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".value"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.value)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @value.setter
+    def value(self, value: Union[str, float]) -> None:
+        """Access the ``smu.digitize.limit[r].low.value`` attribute.
+
+        **Description:**
+            - This attribute specifies the lower limit for a limit test. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.digitize.limit[r].low.value)``
+              query.
+            - Setting this property to a value will send the
+              ``smu.digitize.limit[r].low.value = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.digitize.limit[r].low.value = value
+            - print(smu.digitize.limit[r].low.value)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".value", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.value = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+
+class SmuDigitizeLimitItemHigh(BaseTSPCmd):
+    """The ``smu.digitize.limit[r].high`` command tree.
+
+    Properties/methods:
+        - ``.value``: The ``smu.digitize.limit[r].high.value`` attribute.
+    """
+
+    @property
+    def value(self) -> str:
+        """Access the ``smu.digitize.limit[r].high.value`` attribute.
+
+        **Description:**
+            - This attribute specifies the upper limit for a limit test. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.digitize.limit[r].high.value)``
+              query.
+            - Setting this property to a value will send the
+              ``smu.digitize.limit[r].high.value = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.digitize.limit[r].high.value = value
+            - print(smu.digitize.limit[r].high.value)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".value"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.value)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @value.setter
+    def value(self, value: Union[str, float]) -> None:
+        """Access the ``smu.digitize.limit[r].high.value`` attribute.
+
+        **Description:**
+            - This attribute specifies the upper limit for a limit test. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.digitize.limit[r].high.value)``
+              query.
+            - Setting this property to a value will send the
+              ``smu.digitize.limit[r].high.value = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.digitize.limit[r].high.value = value
+            - print(smu.digitize.limit[r].high.value)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".value", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.value = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+
+class SmuDigitizeLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
+    """The ``smu.digitize.limit[r]`` command tree.
+
+    Properties/methods:
+        - ``.audible``: The ``smu.digitize.limit[r].audible`` attribute.
+        - ``.autoclear``: The ``smu.digitize.limit[r].autoclear`` attribute.
+        - ``.clear()``: The ``smu.digitize.limit[r].clear()`` function.
+        - ``.enable``: The ``smu.digitize.limit[r].enable`` attribute.
+        - ``.fail``: The ``smu.digitize.limit[r].fail`` attribute.
+        - ``.high``: The ``smu.digitize.limit[r].high`` command tree.
+        - ``.low``: The ``smu.digitize.limit[r].low`` command tree.
+    """
+
+    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._high = SmuDigitizeLimitItemHigh(device, f"{self._cmd_syntax}.high")
+        self._low = SmuDigitizeLimitItemLow(device, f"{self._cmd_syntax}.low")
+
+    @property
+    def audible(self) -> str:
+        """Access the ``smu.digitize.limit[r].audible`` attribute.
+
+        **Description:**
+            - This attribute determines if the instrument beeper sounds when a limit test passes or
+              fails. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.digitize.limit[r].audible)`` query.
+            - Setting this property to a value will send the
+              ``smu.digitize.limit[r].audible = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.digitize.limit[r].audible = value
+            - print(smu.digitize.limit[r].audible)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".audible"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.audible)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.audible`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @audible.setter
+    def audible(self, value: Union[str, float]) -> None:
+        """Access the ``smu.digitize.limit[r].audible`` attribute.
+
+        **Description:**
+            - This attribute determines if the instrument beeper sounds when a limit test passes or
+              fails. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.digitize.limit[r].audible)`` query.
+            - Setting this property to a value will send the
+              ``smu.digitize.limit[r].audible = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.digitize.limit[r].audible = value
+            - print(smu.digitize.limit[r].audible)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".audible", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.audible = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.audible`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def autoclear(self) -> str:
+        """Access the ``smu.digitize.limit[r].autoclear`` attribute.
+
+        **Description:**
+            - This attribute indicates if the test result for limit Y should be cleared
+              automatically or not. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.digitize.limit[r].autoclear)``
+              query.
+            - Setting this property to a value will send the
+              ``smu.digitize.limit[r].autoclear = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.digitize.limit[r].autoclear = value
+            - print(smu.digitize.limit[r].autoclear)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".autoclear"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.autoclear)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autoclear`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @autoclear.setter
+    def autoclear(self, value: Union[str, float]) -> None:
+        """Access the ``smu.digitize.limit[r].autoclear`` attribute.
+
+        **Description:**
+            - This attribute indicates if the test result for limit Y should be cleared
+              automatically or not. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.digitize.limit[r].autoclear)``
+              query.
+            - Setting this property to a value will send the
+              ``smu.digitize.limit[r].autoclear = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.digitize.limit[r].autoclear = value
+            - print(smu.digitize.limit[r].autoclear)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".autoclear", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.autoclear = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autoclear`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def enable(self) -> str:
+        """Access the ``smu.digitize.limit[r].enable`` attribute.
+
+        **Description:**
+            - This attribute enables or disables a limit test on the measurement from the selected
+              digitize function. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.digitize.limit[r].enable)`` query.
+            - Setting this property to a value will send the
+              ``smu.digitize.limit[r].enable = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.digitize.limit[r].enable = value
+            - print(smu.digitize.limit[r].enable)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".enable"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.enable)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @enable.setter
+    def enable(self, value: Union[str, float]) -> None:
+        """Access the ``smu.digitize.limit[r].enable`` attribute.
+
+        **Description:**
+            - This attribute enables or disables a limit test on the measurement from the selected
+              digitize function. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.digitize.limit[r].enable)`` query.
+            - Setting this property to a value will send the
+              ``smu.digitize.limit[r].enable = value`` command.
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.digitize.limit[r].enable = value
+            - print(smu.digitize.limit[r].enable)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".enable", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.enable = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def fail(self) -> str:
+        """Access the ``smu.digitize.limit[r].fail`` attribute.
+
+        **Description:**
+            - This attribute queries the results of a limit test. (r = resistance in ohms)
+
+        **Usage:**
+            - Accessing this property will send the ``print(smu.digitize.limit[r].fail)`` query.
+
+        **TSP Syntax:**
+
+        ::
+
+            - print(smu.digitize.limit[r].fail)
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".fail"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.fail)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.fail`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def high(self) -> SmuDigitizeLimitItemHigh:
+        """Return the ``smu.digitize.limit[r].high`` command tree.
+
+        Sub-properties/methods:
+            - ``.value``: The ``smu.digitize.limit[r].high.value`` attribute.
+        """
+        return self._high
+
+    @property
+    def low(self) -> SmuDigitizeLimitItemLow:
+        """Return the ``smu.digitize.limit[r].low`` command tree.
+
+        Sub-properties/methods:
+            - ``.value``: The ``smu.digitize.limit[r].low.value`` attribute.
+        """
+        return self._low
+
+    def clear(self) -> None:
+        """Run the ``smu.digitize.limit[r].clear()`` function.
+
+        **Description:**
+            - This attribute clears the results of the limit test defined by Y. (r = resistance in
+              ohms)
+
+        **TSP Syntax:**
+
+        ::
+
+            - smu.digitize.limit[r].clear()
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
+        except AttributeError as error:
+            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+
 class SmuDigitize(BaseTSPCmd):
     """The ``smu.digitize`` command tree.
 
@@ -5432,6 +6396,7 @@ class SmuDigitize(BaseTSPCmd):
         - ``.count``: The ``smu.digitize.count`` attribute.
         - ``.displaydigits``: The ``smu.digitize.displaydigits`` attribute.
         - ``.func``: The ``smu.digitize.func`` attribute.
+        - ``.limit``: The ``smu.digitize.limit[r]`` command tree.
         - ``.math``: The ``smu.digitize.math`` command tree.
         - ``.range``: The ``smu.digitize.range`` attribute.
         - ``.read()``: The ``smu.digitize.read()`` function.
@@ -5445,6 +6410,9 @@ class SmuDigitize(BaseTSPCmd):
 
     def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
+        self._limit: Dict[int, SmuDigitizeLimitItem] = DefaultDictPassKeyToFactory(
+            lambda x: SmuDigitizeLimitItem(device, f"{self._cmd_syntax}.limit[{x}]")
+        )
         self._math = SmuDigitizeMath(device, f"{self._cmd_syntax}.math")
         self._rel = SmuDigitizeRel(device, f"{self._cmd_syntax}.rel")
         self._userdelay: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
@@ -5681,7 +6649,9 @@ class SmuDigitize(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".func"
-            return self._device.query(f"print({self._cmd_syntax}.func)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.func)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -5713,10 +6683,27 @@ class SmuDigitize(BaseTSPCmd):
                     self._cmd_syntax + ".func", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.func = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.func = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def limit(self) -> Dict[int, SmuDigitizeLimitItem]:
+        """Return the ``smu.digitize.limit[r]`` command tree.
+
+        Sub-properties/methods:
+            - ``.audible``: The ``smu.digitize.limit[r].audible`` attribute.
+            - ``.autoclear``: The ``smu.digitize.limit[r].autoclear`` attribute.
+            - ``.clear()``: The ``smu.digitize.limit[r].clear()`` function.
+            - ``.enable``: The ``smu.digitize.limit[r].enable`` attribute.
+            - ``.fail``: The ``smu.digitize.limit[r].fail`` attribute.
+            - ``.high``: The ``smu.digitize.limit[r].high`` command tree.
+            - ``.low``: The ``smu.digitize.limit[r].low`` command tree.
+        """
+        return self._limit
 
     @property
     def math(self) -> SmuDigitizeMath:
@@ -5969,7 +6956,9 @@ class SmuDigitize(BaseTSPCmd):
         try:
             if self._device.command_syntax_enabled:  # type: ignore[union-attr]
                 return self._cmd_syntax + ".unit"
-            return self._device.query(f"print({self._cmd_syntax}.unit)")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.unit)"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.unit`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -6002,7 +6991,9 @@ class SmuDigitize(BaseTSPCmd):
                     self._cmd_syntax + ".unit", value
                 )
             else:
-                self._device.write(f"{self._cmd_syntax}.unit = {value}")  # type: ignore[union-attr]
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.unit = {value}"
+                )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.unit`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -6655,6 +7646,7 @@ class Smu(BaseTSPCmd):
             - ``.count``: The ``smu.digitize.count`` attribute.
             - ``.displaydigits``: The ``smu.digitize.displaydigits`` attribute.
             - ``.func``: The ``smu.digitize.func`` attribute.
+            - ``.limit``: The ``smu.digitize.limit[r]`` command tree.
             - ``.math``: The ``smu.digitize.math`` command tree.
             - ``.range``: The ``smu.digitize.range`` attribute.
             - ``.read()``: The ``smu.digitize.read()`` function.
@@ -6762,6 +7754,7 @@ class Smu(BaseTSPCmd):
             - ``.filter``: The ``smu.measure.filter`` command tree.
             - ``.func``: The ``smu.measure.func`` attribute.
             - ``.getattribute()``: The ``smu.measure.getattribute()`` function.
+            - ``.limit``: The ``smu.measure.limit[r]`` command tree.
             - ``.math``: The ``smu.measure.math`` command tree.
             - ``.nplc``: The ``smu.measure.nplc`` attribute.
             - ``.offsetcompensation``: The ``smu.measure.offsetcompensation`` attribute.
@@ -6964,7 +7957,9 @@ class Smu(BaseTSPCmd):
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.reset()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.reset()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

@@ -12,6 +12,7 @@ Equipment Needed:
 
 Converted to Python tm_devices script. DCA 4.12.23
 """
+
 import math
 
 from tm_devices import DeviceManager
@@ -108,5 +109,5 @@ def waveform_sweep(inst: SMU2602B) -> None:
 
 # RUN TEST
 with DeviceManager(verbose=False) as DM:
-    inst_driver: SMU2602B = DM.add_smu(RESOURCE_ID)  # pyright: ignore[reportGeneralTypeIssues]
+    inst_driver: SMU2602B = DM.add_smu(RESOURCE_ID)  # pyright: ignore[reportAssignmentType]
     waveform_sweep(inst_driver)

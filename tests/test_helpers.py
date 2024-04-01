@@ -1,19 +1,22 @@
 # pyright: reportPrivateUsage=none
 """Tests for the helpers subpackage."""
+
 import datetime
+import random
 import socket
 
 from collections import OrderedDict
 from contextlib import redirect_stdout
-from copy import deepcopy
 from io import StringIO
-from subprocess import CalledProcessError
-from typing import Any, Dict, Optional, Tuple
+from subprocess import CalledProcessError, SubprocessError
+from typing import Any, ClassVar, Dict, List, Optional, Tuple
 from unittest import mock
 
+import dateutil.parser
 import pytest
 import pyvisa as visa
 
+from dateutil.tz import tzlocal
 from packaging.version import InvalidVersion, Version
 from requests import Response
 
@@ -37,6 +40,9 @@ from tm_devices.helpers import (
     SupportedModels,
     VALID_DEVICE_CONNECTION_TYPES,
 )
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 MODEL_SERIES_LIST = SupportedModels.list_values()
 
@@ -78,11 +84,9 @@ def test_create_ping_command() -> None:
         ("AWG5012", "AWG5K"),
         ("AWG70002B", "AWG70KB"),
         ("AFG3252", "AFG3K"),
-        ("AFG30021", "AFG30K"),
         ("AFG31021", "AFG31K"),
         ("AFG3152C", "AFG3KC"),
         ("TSOVu", "TSOVu"),
-        ("MODEL 15", "15"),  # Just for complete coverage
         ("MODEL 2470", "SMU2470"),
         ("2470", "SMU2470"),
         (" Model 2606B", "SMU2606B"),
@@ -98,7 +102,6 @@ def test_create_ping_command() -> None:
         ("DMM6500", "DMM6500"),
         ("MODEL 6517B", "SMU6517B"),
         ("2231A-30-3", "PSU2231A"),
-        ("Tester-100", "Tester100"),
     ],
 )
 def test_get_model_series(input_string: str, expected_abbrev_model: str) -> None:
@@ -165,14 +168,14 @@ def test_print_with_timestamp() -> None:
     """Test the print_with_timestamp helper function."""
     stdout = StringIO()
     with redirect_stdout(stdout):
-        now = datetime.datetime.now()
+        now = datetime.datetime.now(tz=tzlocal())
         print_with_timestamp("message")
 
     message = stdout.getvalue()
     message_parts = message.split(" - ")
     assert len(message_parts) == 2
     assert message_parts[1] == "message\n"
-    parsed_datetime = datetime.datetime.strptime(message_parts[0].strip(), "%Y-%m-%d %H:%M:%S.%f")
+    parsed_datetime = dateutil.parser.parse(message_parts[0].strip())
     allowed_difference = datetime.timedelta(
         days=0,
         hours=0,
@@ -246,7 +249,7 @@ def test_create_and_check_visa_connection(capsys: pytest.CaptureFixture[str]) ->
     dev_config_3 = DeviceConfigEntry(
         device_type=DeviceTypes.AFG,
         connection_type=ConnectionTypes.SOCKET,
-        address="AFG3KC-HOSTNAME",
+        address="AFG3252C-HOSTNAME",
         lan_port=10001,
     )
     visa_obj = create_visa_connection(dev_config_3, SIMULATED_VISA_LIB)
@@ -309,9 +312,10 @@ def test_check_for_update(capsys: pytest.CaptureFixture[str]) -> None:
 
 def test_get_visa_backend() -> None:
     """Verify that the VISA backend can be determined properly."""
-    import tm_devices.helpers.functions  # pylint: disable=import-outside-toplevel
-
-    old_system_details = deepcopy(tm_devices.helpers.functions._VISA_SYSTEM_DETAILS)  # noqa: SLF001
+    # pylint: disable=import-outside-toplevel,import-private-name,useless-suppression
+    from tm_devices.helpers.functions import (
+        _get_system_visa_info,
+    )
 
     testing_system_details: Dict[Any, Any] = {
         "pyvisa": "1.12.0",
@@ -363,18 +367,50 @@ def test_get_visa_backend() -> None:
         ),
     }
 
-    # Modify the constant for testing purposes
-    tm_devices.helpers.functions._VISA_SYSTEM_DETAILS = testing_system_details  # noqa: SLF001
-
     try:
-        assert get_visa_backend("tests/sim_devices/devices.yaml") == "PyVISA-sim"
-        assert get_visa_backend("py") == "PyVISA-py"
-        assert get_visa_backend("C:\\WINDOWS\\system32\\visa32.dll") == "NI-VISA"
-        assert get_visa_backend("C:\\WINDOWS\\system32\\visa.dll") == "Custom Vendor VISA"
-        assert get_visa_backend("nothing") == ""
+        _get_system_visa_info.cache_clear()
+        with mock.patch(
+            "pyvisa.util.get_system_details",
+            mock.MagicMock(return_value=testing_system_details),
+        ), mock.patch(
+            "platform.system",
+            mock.MagicMock(return_value="windows"),
+        ):
+            assert get_visa_backend("tests/sim_devices/devices.yaml") == "PyVISA-sim"
+            assert get_visa_backend("py") == "PyVISA-py"
+            assert get_visa_backend("C:\\WINDOWS\\system32\\visa32.dll") == "NI-VISA"
+            assert get_visa_backend("C:\\WINDOWS\\system32\\visa.dll") == "Custom Vendor VISA"
+            assert get_visa_backend("nothing") == ""
+
+        with mock.patch(
+            "platform.system",
+            mock.MagicMock(return_value="darwin"),
+        ):
+            _get_system_visa_info.cache_clear()
+            with mock.patch(
+                "subprocess.check_output",
+                mock.MagicMock(return_value=b"System Integrity Protection status: enabled."),
+            ):
+                assert get_visa_backend("tests/sim_devices/devices.yaml") == ""
+                assert get_visa_backend("py") == "PyVISA-py"
+
+            _get_system_visa_info.cache_clear()
+            with mock.patch(
+                "subprocess.check_output",
+                mock.MagicMock(return_value=b"System Integrity Protection status: disabled."),
+            ):
+                assert get_visa_backend("tests/sim_devices/devices.yaml") == "PyVISA-sim"
+                assert get_visa_backend("py") == "PyVISA-py"
+
+            _get_system_visa_info.cache_clear()
+            with mock.patch(
+                "subprocess.check_output",
+                mock.MagicMock(side_effect=SubprocessError()),
+            ):
+                assert get_visa_backend("tests/sim_devices/devices.yaml") == "PyVISA-sim"
+                assert get_visa_backend("py") == "PyVISA-py"
     finally:
-        # Reset the constant
-        tm_devices.helpers.functions._VISA_SYSTEM_DETAILS = old_system_details  # noqa: SLF001
+        _get_system_visa_info.cache_clear()
 
 
 @pytest.mark.parametrize(
@@ -393,6 +429,10 @@ def test_get_visa_backend() -> None:
         ("TCPIP0::127.0.0.9::inst0::INSTR", ("TCPIP", "127.0.0.9")),
         ("TCPIP::127.0.0.9::inst::INST", ("TCPIP", "127.0.0.9")),
         ("USB0::0x0699::0x0522::SERIAL1::INSTR", ("USB", "MSO5-SERIAL1")),
+        ("TCPIP0::127.0.0.9::4000::SOCKET", ("SOCKET", "127.0.0.9:4000")),
+        ("GPIB0::1::INSTR", ("GPIB", "1")),
+        ("ASRL1::INSTR", ("SERIAL", "1")),
+        ("MOCK0::127.0.0.9::INSTR", ("MOCK", "127.0.0.9")),
     ],
 )
 def test_detect_visa_resource_expression(
@@ -408,7 +448,9 @@ def test_detect_visa_resource_expression(
         ("1.2.3", Version("1.2.3")),
         ("1.265.301", Version("1.265.301")),
         ("1.2.3.abc", Version("1.2.3+abc")),
+        ("1.2.3.4abc", Version("1.2.3.4+abc")),
         ("1.20.345.abc", Version("1.20.345+abc")),
+        ("1.20.345.4abc123", Version("1.20.345.4+abc123")),
     ],
 )
 def test_get_version(version_string: str, expected_result: Version) -> None:
@@ -422,3 +464,37 @@ def test_get_version_error() -> None:
         get_version("1a.2.3.abc")
     with pytest.raises(InvalidVersion):
         get_version("invalid-version")
+
+
+def test_read_only_cached_property() -> None:
+    """Verify the implementation of the read-only cached_property decorator."""
+
+    # pylint: disable=missing-class-docstring,missing-function-docstring,too-few-public-methods
+    class ClassWithReadOnlyCachedProperty:
+        counter = 0
+        previous_values: ClassVar[List[int]] = []
+
+        @cached_property
+        def c(self) -> int:
+            self.counter += 1
+            while True:
+                if (val := random.randint(1, 1_000_000)) not in self.previous_values:  # noqa: S311
+                    self.previous_values.append(val)
+                    return val
+
+    instance = ClassWithReadOnlyCachedProperty()
+    val_1 = instance.c
+    assert instance.counter == 1
+    val_2 = instance.c
+    assert instance.counter == 1
+    assert val_1 == val_2
+
+    with pytest.raises(AttributeError):
+        # noinspection PyPropertyAccess
+        instance.c = -1234
+    assert instance.c == val_1
+    assert instance.counter == 1
+    # noinspection PyPropertyAccess
+    del instance.c
+    assert instance.c != val_1
+    assert instance.counter == 2

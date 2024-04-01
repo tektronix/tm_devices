@@ -7,6 +7,7 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
 Please report an issue if one is found.
 """
+
 from typing import Any, Dict, Optional
 
 from tm_devices.drivers.pi.tsp_device import TSPDevice
@@ -76,10 +77,46 @@ class SMU2606BCommandConstants:
     DISPLAY_ANNUNCIATOR_STAR = "display.ANNUNCIATOR_STAR"
     DISPLAY_ANNUNCIATOR_TALK = "display.ANNUNCIATOR_TALK"
     DISPLAY_ANNUNCIATOR_TRIGGER = "display.ANNUNCIATOR_TRIGGER"
+    DISPLAY_DIGITS_4_5 = "display.DIGITS_4_5"
+    DISPLAY_DIGITS_5_5 = "display.DIGITS_5_5"
+    DISPLAY_DIGITS_6_5 = "display.DIGITS_6_5"
     DISPLAY_DISABLE = "display.DISABLE"
     DISPLAY_DONT_SAVE = "display.DONT_SAVE"
     DISPLAY_ENABLE = "display.ENABLE"
+    DISPLAY_KEY_AUTO = "display.KEY_AUTO"
+    DISPLAY_KEY_CONFIG = "display.KEY_CONFIG"
+    DISPLAY_KEY_DIGITSA = "display.KEY_DIGITSA"
+    DISPLAY_KEY_DIGITSB = "display.KEY_DIGITSB"
+    DISPLAY_KEY_DISPLAY = "display.KEY_DISPLAY"
+    DISPLAY_KEY_ENTER = "display.KEY_ENTER"
+    DISPLAY_KEY_EXIT = "display.KEY_EXIT"
+    DISPLAY_KEY_FILTERA = "display.KEY_FILTERA"
+    DISPLAY_KEY_FILTERB = "display.KEY_FILTERB"
+    DISPLAY_KEY_LEFT = "display.KEY_LEFT"
+    DISPLAY_KEY_LIMITA = "display.KEY_LIMITA"
+    DISPLAY_KEY_LIMITB = "display.KEY_LIMITB"
+    DISPLAY_KEY_LOAD = "display.KEY_LOAD"
+    DISPLAY_KEY_MEASA = "display.KEY_MEASA"
+    DISPLAY_KEY_MEASB = "display.KEY_MEASB"
+    DISPLAY_KEY_MENU = "display.KEY_MENU"
+    DISPLAY_KEY_MODEA = "display.KEY_MODEA"
+    DISPLAY_KEY_MODEB = "display.KEY_MODEB"
     DISPLAY_KEY_NONE = "display.KEY_NONE"
+    DISPLAY_KEY_OUTPUTA = "display.KEY_OUTPUTA"
+    DISPLAY_KEY_OUTPUTB = "display.KEY_OUTPUTB"
+    DISPLAY_KEY_RANGEDOWN = "display.KEY_RANGEDOWN"
+    DISPLAY_KEY_RANGEUP = "display.KEY_RANGEUP"
+    DISPLAY_KEY_RECALL = "display.KEY_RECALL"
+    DISPLAY_KEY_RELA = "display.KEY_RELA"
+    DISPLAY_KEY_RELB = "display.KEY_RELB"
+    DISPLAY_KEY_RIGHT = "display.KEY_RIGHT"
+    DISPLAY_KEY_RUN = "display.KEY_RUN"
+    DISPLAY_KEY_SPEEDA = "display.KEY_SPEEDA"
+    DISPLAY_KEY_SPEEDB = "display.KEY_SPEEDB"
+    DISPLAY_KEY_SRCA = "display.KEY_SRCA"
+    DISPLAY_KEY_SRCB = "display.KEY_SRCB"
+    DISPLAY_KEY_STORE = "display.KEY_STORE"
+    DISPLAY_KEY_TRIG = "display.KEY_TRIG"
     DISPLAY_LIMIT_IV = "display.LIMIT_IV"
     DISPLAY_LIMIT_P = "display.LIMIT_P"
     DISPLAY_LOCK = "display.LOCK"
@@ -94,6 +131,9 @@ class SMU2606BCommandConstants:
     DISPLAY_TRIGGER_EVENT_ID = "display.trigger.EVENT_ID"
     DISPLAY_UNLOCK = "display.UNLOCK"
     DISPLAY_USER = "display.USER"
+    DISPLAY_WHEEL_ENTER = "display.WHEEL_ENTER"
+    DISPLAY_WHEEL_LEFT = "display.WHEEL_LEFT"
+    DISPLAY_WHEEL_RIGHT = "display.WHEEL_RIGHT"
     EVENTLOG_DISABLE = "eventlog.DISABLE"
     EVENTLOG_DISCARD_NEWEST = "eventlog.DISCARD_NEWEST"
     EVENTLOG_DISCARD_OLDEST = "eventlog.DISCARD_OLDEST"
@@ -870,10 +910,58 @@ class SMU2606BCommands:
             - ``.ANNUNCIATOR_STAR``: * (asterisk) indicator on.
             - ``.ANNUNCIATOR_TALK``: TALK indicator on.
             - ``.ANNUNCIATOR_TRIGGER``: TRIG indicator on.
+            - ``.DIGITS_4_5``: Set the front-panel display resolution to 4.5 digits.
+            - ``.DIGITS_5_5``: Set the front-panel display resolution to 5.5 digits.
+            - ``.DIGITS_6_5``: Set the front-panel display resolution to 6.5 digits.
             - ``.DISABLE``: Disable the front-panel keys for numeric entry when entering a value.
             - ``.DONT_SAVE``: Do not save code to nonvolatile memory.
             - ``.ENABLE``: Enable the front-panel keys for numeric entry when entering a value.
+            - ``.KEY_AUTO``: Represents the range AUTO key.
+            - ``.KEY_CONFIG``: Represents the CONFIG key.
+            - ``.KEY_DIGITSA``: Represents the DIGITS (display resolution) key.
+              For two-channel products, this is the DIGITS key for Channel A.
+            - ``.KEY_DIGITSB``: Represents the DIGITS (display resolution) key for Channel B.
+            - ``.KEY_DISPLAY``: Represents the DISPLAY key.
+            - ``.KEY_ENTER``: Represents the ENTER key.
+            - ``.KEY_EXIT``: Represents the EXIT key.
+            - ``.KEY_FILTERA``: Represents the FILTER key.
+              For two-channel products, this is the FILTER key for Channel A.
+            - ``.KEY_FILTERB``: Represents the FILTER key for Channel B.
+            - ``.KEY_LEFT``: Represents the left CURSOR key.
+            - ``.KEY_LIMITA``: Represents the LIMIT key.
+              For two-channel products, this is the LIMIT key for Channel A.
+            - ``.KEY_LIMITB``: Represents the LIMIT key.
+              For two-channel products, this is the LIMIT key for Channel B.
+            - ``.KEY_LOAD``: Represents the LOAD (load test) key.
+            - ``.KEY_MEASA``: Represents the MEAS (Measure) key.
+              For two-channel products, this is the MEAS key for Channel A.
+            - ``.KEY_MEASB``: Represents the MEAS (Measure) key for Channel B.
+            - ``.KEY_MENU``: Represents the MENU key.
+            - ``.KEY_MODEA``: Represents the MODE (meter mode) key
+              For two-channel products, this is the MODE key for Channel A.
+            - ``.KEY_MODEB``: Represents the MODE (meter mode) key for Channel B.
             - ``.KEY_NONE``: No key was pressed.
+            - ``.KEY_OUTPUTA``: Represents the OUTPUT ON/OFF key.
+              For two-channel products, this is the OUTPUT ON/OFF key for Channel A.
+            - ``.KEY_OUTPUTB``: Represents the OUTPUT ON/OFF key.
+              For two-channel products, this is the OUTPUT ON/OFF key for Channel B.
+            - ``.KEY_RANGEDOWN``: Represents the RANGE down key.
+            - ``.KEY_RANGEUP``: Represents the RANGE up key.
+            - ``.KEY_RECALL``: Represents the RECALL key.
+            - ``.KEY_RELA``: Represents the REL key.
+              For two-channel products, this is the REL key for Channel A.
+            - ``.KEY_RELB``: Represents the REL key for Channel B.
+            - ``.KEY_RIGHT``: Represents the right CURSOR key.
+            - ``.KEY_RUN``: Represents the RUN key.
+            - ``.KEY_SPEEDA``: Represents the SPEED key.
+              For two-channel products, this is the SPEED key for Channel A.
+            - ``.KEY_SPEEDB``: Represents the SPEED key.
+              For two-channel products, this is the SPEED key for Channel B.
+            - ``.KEY_SRCA``: Represents the SRC (Source) key.
+              For two-channel products, this is the SRC key for Channel A.
+            - ``.KEY_SRCB``: Represents the SRC (Source) key for Channel B.
+            - ``.KEY_STORE``: Represents the STORE key.
+            - ``.KEY_TRIG``: Represents the TRIG key.
             - ``.LIMIT_IV``: Display the primary limit value.
             - ``.LIMIT_P``: Display the power limit value.
             - ``.LOCK``: Unlock the EXIT (LOCAL) key.
@@ -887,6 +975,9 @@ class SMU2606BCommands:
             - ``.SMUB``: Displays source-measure and compliance screen for SMU B.
             - ``.UNLOCK``: Lock out the EXIT (LOCAL) key.
             - ``.USER``: Displays the user screen.
+            - ``.WHEEL_ENTER``: Represents pressing the navigation wheel.
+            - ``.WHEEL_LEFT``: Represents turning the Navigation wheel left.
+            - ``.WHEEL_RIGHT``: Represents turning the Navigation wheel right.
 
         Sub-properties/methods:
             - ``.clear()``: The ``display.clear()`` function.
@@ -1243,6 +1334,8 @@ class SMU2606BCommands:
             - ``.measurepandstep()``: The ``smuX.measurepandstep()`` function.
             - ``.measurerandstep()``: The ``smuX.measurerandstep()`` function.
             - ``.measurevandstep()``: The ``smuX.measurevandstep()`` function.
+            - ``.nvbuffer1``: The ``smuX.nvbuffer1`` attribute.
+            - ``.nvbuffer2``: The ``smuX.nvbuffer2`` attribute.
             - ``.reset()``: The ``smuX.reset()`` function.
             - ``.savebuffer()``: The ``smuX.savebuffer()`` function.
             - ``.sense``: The ``smuX.sense`` attribute.
@@ -2012,7 +2105,9 @@ class SMU2606BCommands:
                 f"PulseIMeasureV({smu}, {bias}, {level}, {ton}, {toff}, {points})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``PulseIMeasureV()`` function."  # noqa: E501
+            msg = (
+                "No TSPDevice object was provided, unable to run the ``PulseIMeasureV()`` function."
+            )
             raise NoDeviceProvidedError(msg) from error
 
     def pulse_v_measure_i(
@@ -2046,7 +2141,9 @@ class SMU2606BCommands:
                 f"PulseVMeasureI({smu}, {bias}, {level}, {ton}, {toff}, {points})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``PulseVMeasureI()`` function."  # noqa: E501
+            msg = (
+                "No TSPDevice object was provided, unable to run the ``PulseVMeasureI()`` function."
+            )
             raise NoDeviceProvidedError(msg) from error
 
     def query_pulse_config(self, tag: int) -> str:
@@ -2072,7 +2169,9 @@ class SMU2606BCommands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            return self._device.query(f"print(QueryPulseConfig({tag}))")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"print(QueryPulseConfig({tag}))"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``QueryPulseConfig()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -2297,7 +2396,9 @@ class SMU2606BCommands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"delay({seconds})")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"delay({seconds})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``delay()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -2318,7 +2419,9 @@ class SMU2606BCommands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write("exit()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                "exit()"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``exit()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -2342,7 +2445,9 @@ class SMU2606BCommands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            return self._device.query("print(gettimezone())")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                "print(gettimezone())"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``gettimezone()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -2601,7 +2706,9 @@ class SMU2606BCommands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            return self._device.query("print(meminfo())")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                "print(meminfo())"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``meminfo()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -2623,7 +2730,9 @@ class SMU2606BCommands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write("opc()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                "opc()"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``opc()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -2647,7 +2756,9 @@ class SMU2606BCommands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"print({value})")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"print({value})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``print()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -2707,7 +2818,9 @@ class SMU2606BCommands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            return self._device.query(f"printnumber({value})")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"printnumber({value})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``printnumber()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -2732,7 +2845,9 @@ class SMU2606BCommands:
         """
         try:
             function_args = ", ".join(str(x) for x in (system,) if x is not None)
-            self._device.write(f"reset({function_args})")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"reset({function_args})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``reset()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -2785,7 +2900,9 @@ class SMU2606BCommands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"settime({time})")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"settime({time})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``settime()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -2828,7 +2945,9 @@ class SMU2606BCommands:
                 )
                 if x is not None
             )
-            self._device.write(f"settimezone({function_args})")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"settimezone({function_args})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``settimezone()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -2853,7 +2972,9 @@ class SMU2606BCommands:
         """
         try:
             function_args = ", ".join(str(x) for x in (group,) if x is not None)
-            self._device.write(f"waitcomplete({function_args})")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"waitcomplete({function_args})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``waitcomplete()`` function."
             raise NoDeviceProvidedError(msg) from error

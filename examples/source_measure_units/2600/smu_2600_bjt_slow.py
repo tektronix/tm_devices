@@ -10,6 +10,7 @@ Required equipment:
 
 Converted to Python tm_devices script. DCA 4.11.23
 """
+
 import time
 
 from typing import Dict, Tuple
@@ -307,6 +308,6 @@ def display_results(sep: str = "\t") -> None:
 
 # Connect to instrument and begin testing.
 with DeviceManager(verbose=False) as DM:
-    smu_driver: SMU2602B = DM.add_smu(RESOURCE_ID)  # pyright: ignore[reportGeneralTypeIssues]
+    smu_driver: SMU2602B = DM.add_smu(RESOURCE_ID)  # pyright: ignore[reportAssignmentType]
 
     bjt_slow(smu_driver)

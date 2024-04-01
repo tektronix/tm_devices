@@ -28,6 +28,7 @@ Attributes and Functions:
     - display.waitevent()
     - display.watchchannels
 """
+
 from typing import Optional, TYPE_CHECKING, Union
 
 from .._helpers import BaseTSPCmd, NoDeviceProvidedError
@@ -222,6 +223,9 @@ class Display(BaseTSPCmd):
         - ``.BUTTON_NO``: Return if NO selected.
         - ``.BUTTON_OK``: Return if OK selected.
         - ``.BUTTON_YES``: Return if YES selected.
+        - ``.DIGITS_4_5``: Set the front-panel display resolution to 4.5 digits.
+        - ``.DIGITS_5_5``: Set the front-panel display resolution to 5.5 digits.
+        - ``.DIGITS_6_5``: Set the front-panel display resolution to 6.5 digits.
         - ``.FORMAT_EXPONENT``: Use exponent format to display measurement readings on the
           front-panel display of
           the instrument.
@@ -301,6 +305,12 @@ class Display(BaseTSPCmd):
     """str: Return if OK selected."""
     BUTTON_YES = "display.BUTTON_YES"
     """str: Return if YES selected."""
+    DIGITS_4_5 = "display.DIGITS_4_5"
+    """str: Set the front-panel display resolution to 4.5 digits."""
+    DIGITS_5_5 = "display.DIGITS_5_5"
+    """str: Set the front-panel display resolution to 5.5 digits."""
+    DIGITS_6_5 = "display.DIGITS_6_5"
+    """str: Set the front-panel display resolution to 6.5 digits."""
     FORMAT_EXPONENT = "display.FORMAT_EXPONENT"
     """str: Use exponent format to display measurement readings on the front-panel display of
 the instrument."""
@@ -710,7 +720,9 @@ the instrument."""  # noqa: E501
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"{self._cmd_syntax}.clear()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"{self._cmd_syntax}.clear()"
+            )
         except AttributeError as error:
             msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

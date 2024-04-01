@@ -11,7 +11,8 @@ Commands and Queries:
 
 ::
 
-    - SAVEONEVent:FILEDest ? <Qstring>
+    - SAVEONEVent:FILEDest <Qstring>
+    - SAVEONEVent:FILEDest?
     - SAVEONEVent:FILEName <QString>
     - SAVEONEVent:FILEName?
     - SAVEONEVent:IMAGe:FILEFormat {PNG|BMP|JPG}
@@ -21,6 +22,7 @@ Commands and Queries:
     - SAVEONEVent:WAVEform:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| ALL}
     - SAVEONEVent:WAVEform:SOUrce?
 """
+
 from typing import Optional, TYPE_CHECKING
 
 from .._helpers import SCPICmdRead, SCPICmdWrite
@@ -280,7 +282,7 @@ class SaveoneventFilename(SCPICmdWrite, SCPICmdRead):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class SaveoneventFiledest(SCPICmdWrite):
+class SaveoneventFiledest(SCPICmdWrite, SCPICmdRead):
     """The ``SAVEONEVent:FILEDest`` command.
 
     **Description:**
@@ -288,13 +290,17 @@ class SaveoneventFiledest(SCPICmdWrite):
           ``SAVEON:FILE:DEST`` (still valid command, but only an alias for this new command).
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``SAVEONEVent:FILEDest?`` query.
+        - Using the ``.verify(value)`` method will send the ``SAVEONEVent:FILEDest?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``SAVEONEVent:FILEDest value`` command.
 
     **SCPI Syntax:**
 
     ::
 
-        - SAVEONEVent:FILEDest ? <Qstring>
+        - SAVEONEVent:FILEDest <Qstring>
+        - SAVEONEVent:FILEDest?
 
     **Info:**
         - ``<QString>`` specifies the location to store files.
@@ -334,6 +340,9 @@ class Saveonevent(SCPICmdRead):
               ``SAVEON:FILE:DEST`` (still valid command, but only an alias for this new command).
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``SAVEONEVent:FILEDest?`` query.
+            - Using the ``.verify(value)`` method will send the ``SAVEONEVent:FILEDest?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``SAVEONEVent:FILEDest value``
               command.
 
@@ -341,7 +350,8 @@ class Saveonevent(SCPICmdRead):
 
         ::
 
-            - SAVEONEVent:FILEDest ? <Qstring>
+            - SAVEONEVent:FILEDest <Qstring>
+            - SAVEONEVent:FILEDest?
 
         **Info:**
             - ``<QString>`` specifies the location to store files.

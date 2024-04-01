@@ -82,16 +82,19 @@ Commands and Queries:
     - BUS:B<x>:LIN:STANDard?
     - BUS:B<x>:PARallel:ALLTHResholds <NR3>
     - BUS:B<x>:PARallel:ALLTHResholds:APPly
+    - BUS:B<x>:PARallel:ALLTHResholds?
     - BUS:B<x>:PARallel:BIT<x>SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>| NONE}
     - BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold <NR3>
-    - BUS:B<x>:PARallel:CLOCKSOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>| NONE}
-    - BUS:B<x>:PARallel:CLOCKSOUrce:THReshold <NR3>
-    - BUS:B<x>:PARallel:CLOCKSOUrce:THReshold?
-    - BUS:B<x>:PARallel:CLOCKSOUrce?
+    - BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold?
+    - BUS:B<x>:PARallel:BIT<x>SOUrce?
     - BUS:B<x>:PARallel:CLOCk:EDGE {FALLING|RISING|EITHER}
     - BUS:B<x>:PARallel:CLOCk:EDGE?
     - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {OFF|ON|<NR1>}
     - BUS:B<x>:PARallel:CLOCk:ISCLOCKED?
+    - BUS:B<x>:PARallel:CLOCkSOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>| NONE}
+    - BUS:B<x>:PARallel:CLOCkSOUrce:THReshold <NR3>
+    - BUS:B<x>:PARallel:CLOCkSOUrce:THReshold?
+    - BUS:B<x>:PARallel:CLOCkSOUrce?
     - BUS:B<x>:RS232C:BITRate {CUSTOM|RATE300|RATE1K|RATE2K|RATE9K| RATE19K|RATE38K|RATE115K|RATE921K}
     - BUS:B<x>:RS232C:BITRate:CUSTom <NR1>
     - BUS:B<x>:RS232C:BITRate:CUSTom?
@@ -175,6 +178,7 @@ Commands and Queries:
     - BUS:DELete <QString>
     - BUS:LIST?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -2985,6 +2989,107 @@ class BusBItemRs232c(SCPICmdRead):
         return self._source
 
 
+class BusBItemParallelClocksourceThreshold(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:PARallel:CLOCkSOUrce:THReshold`` command.
+
+    **Description:**
+        - This command sets or queries the clock source threshold for the parallel bus. The bus is
+          specified by x.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel:CLOCkSOUrce:THReshold?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``BUS:B<x>:PARallel:CLOCkSOUrce:THReshold?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``BUS:B<x>:PARallel:CLOCkSOUrce:THReshold value`` command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:PARallel:CLOCkSOUrce:THReshold <NR3>
+        - BUS:B<x>:PARallel:CLOCkSOUrce:THReshold?
+
+    **Info:**
+        - ``<NR3>`` is the clock bit source threshold for the parallel bus.
+    """
+
+
+class BusBItemParallelClocksource(SCPICmdWrite, SCPICmdRead):
+    """The ``BUS:B<x>:PARallel:CLOCkSOUrce`` command.
+
+    **Description:**
+        - This command sets or queries the Parallel clock bit source for the specified bus. The bus
+          is specified by x.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel:CLOCkSOUrce?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PARallel:CLOCkSOUrce?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``BUS:B<x>:PARallel:CLOCkSOUrce value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - BUS:B<x>:PARallel:CLOCkSOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>| NONE}
+        - BUS:B<x>:PARallel:CLOCkSOUrce?
+
+    **Info:**
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog FlexChannel to use as the bus clock source.
+        - ``DCH<x>_D<x>`` specifies a digital channel on a specified digital channel to use as the
+          bus clock source. The supported digital channel value is 1. The supported digital bit
+          values are 0 to 15.
+        - ``MATH<x>`` specifies the math channel to use as the bus clock source.
+        - ``REF<x>`` specifies the reference channel to use as the bus clock source.
+        - ``REF<x>_D<x>`` specifies a digital reference waveform as the clock source waveform for
+          the specified parallel bus.
+        - ``NONE`` specifies the reference channel to use as the bus clock source.
+
+    Properties:
+        - ``.threshold``: The ``BUS:B<x>:PARallel:CLOCkSOUrce:THReshold`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._threshold = BusBItemParallelClocksourceThreshold(
+            device, f"{self._cmd_syntax}:THReshold"
+        )
+
+    @property
+    def threshold(self) -> BusBItemParallelClocksourceThreshold:
+        """Return the ``BUS:B<x>:PARallel:CLOCkSOUrce:THReshold`` command.
+
+        **Description:**
+            - This command sets or queries the clock source threshold for the parallel bus. The bus
+              is specified by x.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the
+              ``BUS:B<x>:PARallel:CLOCkSOUrce:THReshold?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``BUS:B<x>:PARallel:CLOCkSOUrce:THReshold?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``BUS:B<x>:PARallel:CLOCkSOUrce:THReshold value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:PARallel:CLOCkSOUrce:THReshold <NR3>
+            - BUS:B<x>:PARallel:CLOCkSOUrce:THReshold?
+
+        **Info:**
+            - ``<NR3>`` is the clock bit source threshold for the parallel bus.
+        """
+        return self._threshold
+
+
 class BusBItemParallelClockIsclocked(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:PARallel:CLOCk:ISCLOCKED`` command.
 
@@ -3127,117 +3232,20 @@ class BusBItemParallelClock(SCPICmdRead):
         return self._isclocked
 
 
-class BusBItemParallelClocksourceThreshold(SCPICmdWrite, SCPICmdRead):
-    """The ``BUS:B<x>:PARallel:CLOCKSOUrce:THReshold`` command.
-
-    **Description:**
-        - This command sets or queries the clock source threshold for the parallel bus. The bus is
-          specified by x.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel:CLOCKSOUrce:THReshold?``
-          query.
-        - Using the ``.verify(value)`` method will send the
-          ``BUS:B<x>:PARallel:CLOCKSOUrce:THReshold?`` query and raise an AssertionError if the
-          returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``BUS:B<x>:PARallel:CLOCKSOUrce:THReshold value`` command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - BUS:B<x>:PARallel:CLOCKSOUrce:THReshold <NR3>
-        - BUS:B<x>:PARallel:CLOCKSOUrce:THReshold?
-
-    **Info:**
-        - ``B<x>`` is the Bus number.
-        - ``<NR3>`` is the clock bit source threshold for the parallel bus.
-    """
-
-
-class BusBItemParallelClocksource(SCPICmdWrite, SCPICmdRead):
-    """The ``BUS:B<x>:PARallel:CLOCKSOUrce`` command.
-
-    **Description:**
-        - This command sets or queries the Parallel clock bit source for the specified bus. The bus
-          is specified by x.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel:CLOCKSOUrce?`` query.
-        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PARallel:CLOCKSOUrce?`` query
-          and raise an AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the ``BUS:B<x>:PARallel:CLOCKSOUrce value``
-          command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - BUS:B<x>:PARallel:CLOCKSOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>| NONE}
-        - BUS:B<x>:PARallel:CLOCKSOUrce?
-
-    **Info:**
-        - ``B<x>`` is the number of the bus.
-        - ``CH<x>`` specifies an analog FlexChannel to use as the bus clock source.
-        - ``DCH<x>_D<x>`` specifies a digital channel on a specified digital channel to use as the
-          bus clock source. The supported digital channel value is 1. The supported digital bit
-          values are 0 to 15.
-        - ``MATH<x>`` specifies the math channel to use as the bus clock source.
-        - ``REF<x>`` specifies the reference channel to use as the bus clock source.
-        - ``REF<x>_D<x>`` specifies a digital reference waveform as the clock source waveform for
-          the specified parallel bus.
-        - ``NONE`` specifies the reference channel to use as the bus clock source.
-
-    Properties:
-        - ``.threshold``: The ``BUS:B<x>:PARallel:CLOCKSOUrce:THReshold`` command.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._threshold = BusBItemParallelClocksourceThreshold(
-            device, f"{self._cmd_syntax}:THReshold"
-        )
-
-    @property
-    def threshold(self) -> BusBItemParallelClocksourceThreshold:
-        """Return the ``BUS:B<x>:PARallel:CLOCKSOUrce:THReshold`` command.
-
-        **Description:**
-            - This command sets or queries the clock source threshold for the parallel bus. The bus
-              is specified by x.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the
-              ``BUS:B<x>:PARallel:CLOCKSOUrce:THReshold?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``BUS:B<x>:PARallel:CLOCKSOUrce:THReshold?`` query and raise an AssertionError if the
-              returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``BUS:B<x>:PARallel:CLOCKSOUrce:THReshold value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - BUS:B<x>:PARallel:CLOCKSOUrce:THReshold <NR3>
-            - BUS:B<x>:PARallel:CLOCKSOUrce:THReshold?
-
-        **Info:**
-            - ``B<x>`` is the Bus number.
-            - ``<NR3>`` is the clock bit source threshold for the parallel bus.
-        """
-        return self._threshold
-
-
-class BusBItemParallelBitsourceItemThreshold(SCPICmdWrite):
+class BusBItemParallelBitsourceItemThreshold(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold`` command.
 
     **Description:**
         - This command sets or queries the specified bit source threshold for the specified parallel
-          bus.
+          bus. The bus is specified by x. The bit is specified by x and is an integer in the range
+          of 1 to 64.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold value`` command.
 
@@ -3246,10 +3254,11 @@ class BusBItemParallelBitsourceItemThreshold(SCPICmdWrite):
     ::
 
         - BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold <NR3>
+        - BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold?
 
     **Info:**
         - ``B<x>`` is the number of the bus.
-        - ``BIT<x>`` is the number of the bit and is an integer in the range of 1 to 64.
+        - ``BIT<x>`` is the number of the bit source.
         - ``<NR3>`` is the specified bit source threshold for the specified parallel bus.
     """
 
@@ -3259,9 +3268,12 @@ class BusBItemParallelBitsourceItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCP
 
     **Description:**
         - This command sets or queries the specified bit source for specified parallel bus. The bus
-          is specified by x. The bit is specified by n and is an integer in the range of 1 to 64.
+          is specified by x. The bit is specified by x and is an integer in the range of 1 to 64.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel:BIT<x>SOUrce?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PARallel:BIT<x>SOUrce?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BUS:B<x>:PARallel:BIT<x>SOUrce value``
           command.
 
@@ -3270,9 +3282,11 @@ class BusBItemParallelBitsourceItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCP
     ::
 
         - BUS:B<x>:PARallel:BIT<x>SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>| NONE}
+        - BUS:B<x>:PARallel:BIT<x>SOUrce?
 
     **Info:**
         - ``B<x>`` is the number of the bus.
+        - ``BIT<x>`` is the number of the bit source.
         - ``CH<x>`` is the specified bit source.
         - ``DCH<x>_D<x>`` specifies a digital channel to use as the source. The supported digital
           channel value is 1. The supported digital bit values are 0 to 15.
@@ -3298,9 +3312,15 @@ class BusBItemParallelBitsourceItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCP
 
         **Description:**
             - This command sets or queries the specified bit source threshold for the specified
-              parallel bus.
+              parallel bus. The bus is specified by x. The bit is specified by x and is an integer
+              in the range of 1 to 64.
 
         **Usage:**
+            - Using the ``.query()`` method will send the
+              ``BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold value`` command.
 
@@ -3309,10 +3329,11 @@ class BusBItemParallelBitsourceItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCP
         ::
 
             - BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold <NR3>
+            - BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold?
 
         **Info:**
             - ``B<x>`` is the number of the bus.
-            - ``BIT<x>`` is the number of the bit and is an integer in the range of 1 to 64.
+            - ``BIT<x>`` is the number of the bit source.
             - ``<NR3>`` is the specified bit source threshold for the specified parallel bus.
         """
         return self._threshold
@@ -3349,6 +3370,9 @@ class BusBItemParallelAllthresholds(SCPICmdWrite, SCPICmdRead):
           bus is specified by x.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel:ALLTHResholds?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PARallel:ALLTHResholds?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BUS:B<x>:PARallel:ALLTHResholds value``
           command.
 
@@ -3357,6 +3381,7 @@ class BusBItemParallelAllthresholds(SCPICmdWrite, SCPICmdRead):
     ::
 
         - BUS:B<x>:PARallel:ALLTHResholds <NR3>
+        - BUS:B<x>:PARallel:ALLTHResholds?
 
     **Info:**
         - ``B<x>`` is the number of the bus.
@@ -3408,8 +3433,8 @@ class BusBItemParallel(SCPICmdRead):
     Properties:
         - ``.allthresholds``: The ``BUS:B<x>:PARallel:ALLTHResholds`` command.
         - ``.bitsource``: The ``BUS:B<x>:PARallel:BIT<x>SOUrce`` command.
-        - ``.clocksource``: The ``BUS:B<x>:PARallel:CLOCKSOUrce`` command.
         - ``.clock``: The ``BUS:B<x>:PARallel:CLOCk`` command tree.
+        - ``.clocksource``: The ``BUS:B<x>:PARallel:CLOCkSOUrce`` command.
     """
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
@@ -3420,8 +3445,8 @@ class BusBItemParallel(SCPICmdRead):
         self._bitsource: Dict[int, BusBItemParallelBitsourceItem] = DefaultDictPassKeyToFactory(
             lambda x: BusBItemParallelBitsourceItem(device, f"{self._cmd_syntax}:BIT{x}SOUrce")
         )
-        self._clocksource = BusBItemParallelClocksource(device, f"{self._cmd_syntax}:CLOCKSOUrce")
         self._clock = BusBItemParallelClock(device, f"{self._cmd_syntax}:CLOCk")
+        self._clocksource = BusBItemParallelClocksource(device, f"{self._cmd_syntax}:CLOCkSOUrce")
 
     @property
     def allthresholds(self) -> BusBItemParallelAllthresholds:
@@ -3433,6 +3458,10 @@ class BusBItemParallel(SCPICmdRead):
               value. The bus is specified by x.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel:ALLTHResholds?``
+              query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PARallel:ALLTHResholds?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``BUS:B<x>:PARallel:ALLTHResholds value`` command.
 
@@ -3441,6 +3470,7 @@ class BusBItemParallel(SCPICmdRead):
         ::
 
             - BUS:B<x>:PARallel:ALLTHResholds <NR3>
+            - BUS:B<x>:PARallel:ALLTHResholds?
 
         **Info:**
             - ``B<x>`` is the number of the bus.
@@ -3457,10 +3487,13 @@ class BusBItemParallel(SCPICmdRead):
 
         **Description:**
             - This command sets or queries the specified bit source for specified parallel bus. The
-              bus is specified by x. The bit is specified by n and is an integer in the range of 1
+              bus is specified by x. The bit is specified by x and is an integer in the range of 1
               to 64.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel:BIT<x>SOUrce?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PARallel:BIT<x>SOUrce?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``BUS:B<x>:PARallel:BIT<x>SOUrce value`` command.
 
@@ -3469,9 +3502,11 @@ class BusBItemParallel(SCPICmdRead):
         ::
 
             - BUS:B<x>:PARallel:BIT<x>SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>| NONE}
+            - BUS:B<x>:PARallel:BIT<x>SOUrce?
 
         **Info:**
             - ``B<x>`` is the number of the bus.
+            - ``BIT<x>`` is the number of the bit source.
             - ``CH<x>`` is the specified bit source.
             - ``DCH<x>_D<x>`` specifies a digital channel to use as the source. The supported
               digital channel value is 1. The supported digital bit values are 0 to 15.
@@ -3485,45 +3520,6 @@ class BusBItemParallel(SCPICmdRead):
             - ``.threshold``: The ``BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold`` command.
         """  # noqa: E501
         return self._bitsource
-
-    @property
-    def clocksource(self) -> BusBItemParallelClocksource:
-        """Return the ``BUS:B<x>:PARallel:CLOCKSOUrce`` command.
-
-        **Description:**
-            - This command sets or queries the Parallel clock bit source for the specified bus. The
-              bus is specified by x.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel:CLOCKSOUrce?`` query.
-            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PARallel:CLOCKSOUrce?``
-              query and raise an AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``BUS:B<x>:PARallel:CLOCKSOUrce value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - BUS:B<x>:PARallel:CLOCKSOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>| NONE}
-            - BUS:B<x>:PARallel:CLOCKSOUrce?
-
-        **Info:**
-            - ``B<x>`` is the number of the bus.
-            - ``CH<x>`` specifies an analog FlexChannel to use as the bus clock source.
-            - ``DCH<x>_D<x>`` specifies a digital channel on a specified digital channel to use as
-              the bus clock source. The supported digital channel value is 1. The supported digital
-              bit values are 0 to 15.
-            - ``MATH<x>`` specifies the math channel to use as the bus clock source.
-            - ``REF<x>`` specifies the reference channel to use as the bus clock source.
-            - ``REF<x>_D<x>`` specifies a digital reference waveform as the clock source waveform
-              for the specified parallel bus.
-            - ``NONE`` specifies the reference channel to use as the bus clock source.
-
-        Sub-properties:
-            - ``.threshold``: The ``BUS:B<x>:PARallel:CLOCKSOUrce:THReshold`` command.
-        """
-        return self._clocksource
 
     @property
     def clock(self) -> BusBItemParallelClock:
@@ -3542,6 +3538,45 @@ class BusBItemParallel(SCPICmdRead):
             - ``.isclocked``: The ``BUS:B<x>:PARallel:CLOCk:ISCLOCKED`` command.
         """
         return self._clock
+
+    @property
+    def clocksource(self) -> BusBItemParallelClocksource:
+        """Return the ``BUS:B<x>:PARallel:CLOCkSOUrce`` command.
+
+        **Description:**
+            - This command sets or queries the Parallel clock bit source for the specified bus. The
+              bus is specified by x.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel:CLOCkSOUrce?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PARallel:CLOCkSOUrce?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``BUS:B<x>:PARallel:CLOCkSOUrce value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - BUS:B<x>:PARallel:CLOCkSOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>| NONE}
+            - BUS:B<x>:PARallel:CLOCkSOUrce?
+
+        **Info:**
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog FlexChannel to use as the bus clock source.
+            - ``DCH<x>_D<x>`` specifies a digital channel on a specified digital channel to use as
+              the bus clock source. The supported digital channel value is 1. The supported digital
+              bit values are 0 to 15.
+            - ``MATH<x>`` specifies the math channel to use as the bus clock source.
+            - ``REF<x>`` specifies the reference channel to use as the bus clock source.
+            - ``REF<x>_D<x>`` specifies a digital reference waveform as the clock source waveform
+              for the specified parallel bus.
+            - ``NONE`` specifies the reference channel to use as the bus clock source.
+
+        Sub-properties:
+            - ``.threshold``: The ``BUS:B<x>:PARallel:CLOCkSOUrce:THReshold`` command.
+        """
+        return self._clocksource
 
 
 class BusBItemLinStandard(SCPICmdWrite, SCPICmdRead):
@@ -5951,8 +5986,8 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         Sub-properties:
             - ``.allthresholds``: The ``BUS:B<x>:PARallel:ALLTHResholds`` command.
             - ``.bitsource``: The ``BUS:B<x>:PARallel:BIT<x>SOUrce`` command.
-            - ``.clocksource``: The ``BUS:B<x>:PARallel:CLOCKSOUrce`` command.
             - ``.clock``: The ``BUS:B<x>:PARallel:CLOCk`` command tree.
+            - ``.clocksource``: The ``BUS:B<x>:PARallel:CLOCkSOUrce`` command.
         """
         return self._parallel
 

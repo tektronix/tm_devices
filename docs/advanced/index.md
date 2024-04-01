@@ -9,6 +9,7 @@ Advanced information about the `tm_devices` package.
 maxdepth: 2
 ---
 architecture.md
+signal_generators.md
 ```
 
 ## Advanced Usage and Examples

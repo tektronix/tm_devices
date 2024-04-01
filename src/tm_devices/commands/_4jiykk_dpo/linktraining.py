@@ -30,6 +30,7 @@ Commands and Queries:
     - LINKTRaining:STAte?
     - LINKTRaining:TRIGgeron <FIRst_frame | LASt_frame | ALL_frames>
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -448,11 +449,11 @@ class Linktraining(SCPICmdRead):
         self._acqtime = LinktrainingAcqtime(device, f"{self._cmd_syntax}:ACQTime")
         self._armscope = LinktrainingArmscope(device, f"{self._cmd_syntax}:ARMscope")
         self._decode = LinktrainingDecode(device, f"{self._cmd_syntax}:DECOde")
-        self._equalizationch: Dict[
-            int, LinktrainingEqualizationchItem
-        ] = DefaultDictPassKeyToFactory(
-            lambda x: LinktrainingEqualizationchItem(
-                device, f"{self._cmd_syntax}:EQUalizationCH{x}"
+        self._equalizationch: Dict[int, LinktrainingEqualizationchItem] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: LinktrainingEqualizationchItem(
+                    device, f"{self._cmd_syntax}:EQUalizationCH{x}"
+                )
             )
         )
         self._lane = LinktrainingLane(device, f"{self._cmd_syntax}:LANE")

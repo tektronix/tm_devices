@@ -13,9 +13,7 @@ from tm_devices import DeviceManager
 from tm_devices.drivers import SMU2450
 
 with DeviceManager(verbose=False) as device_manager:
-    inst: SMU2450 = device_manager.add_smu(
-        "192.168.1.4", alias="my2450"
-    )  # pyright: ignore[reportGeneralTypeIssues]
+    inst: SMU2450 = device_manager.add_smu("192.168.1.4", alias="my2450")  # pyright: ignore[reportAssignmentType]
 
     # Reset the instrument, which also clears the buffer.
     inst.commands.reset()
@@ -64,9 +62,9 @@ with DeviceManager(verbose=False) as device_manager:
     READING_COUNT = int(float(inst.commands.buffer_var["defbuffer1"].n))
     for x in range(1, READING_COUNT + 1):
         # Voltage readings are in defbuffer1.
-        timestamp_data.append(  # type: ignore
+        timestamp_data.append(  # pyright: ignore[reportUnknownMemberType]
             inst.commands.buffer_var["defbuffer1"].relativetimestamps[x]
         )
-        buffer1_data.append(inst.commands.buffer_var["defbuffer1"].readings[x])  # type: ignore
+        buffer1_data.append(inst.commands.buffer_var["defbuffer1"].readings[x])  # pyright: ignore[reportUnknownMemberType]
 
         print(f"{x}, {timestamp_data[x-1]}, {buffer1_data[x-1]}")

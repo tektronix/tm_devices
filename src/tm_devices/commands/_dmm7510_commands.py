@@ -6,6 +6,7 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
 Please report an issue if one is found.
 """
+
 from typing import Any, Dict, Optional
 
 from tm_devices.drivers.pi.tsp_device import TSPDevice
@@ -110,6 +111,10 @@ class DMM7510CommandConstants:
     BUFFER_STAT_START_GROUP = "buffer.STAT_START_GROUP"
     BUFFER_STAT_TERMINAL = "buffer.STAT_TERMINAL"
     BUFFER_STYLE_COMPACT = "buffer.STYLE_COMPACT"
+    BUFFER_STYLE_FULL = "buffer.STYLE_FULL"
+    BUFFER_STYLE_STANDARD = "buffer.STYLE_STANDARD"
+    BUFFER_STYLE_WRITABLE = "buffer.STYLE_WRITABLE"
+    BUFFER_STYLE_WRITABLE_FULL = "buffer.STYLE_WRITABLE_FULL"
     BUFFER_UNIT_AMP = "buffer.UNIT_AMP"
     BUFFER_UNIT_AMP_AC = "buffer.UNIT_AMP_AC"
     BUFFER_UNIT_CELSIUS = "buffer.UNIT_CELSIUS"
@@ -156,6 +161,9 @@ class DMM7510CommandConstants:
     DISPLAY_BUTTON_NO = "display.BUTTON_NO"
     DISPLAY_BUTTON_OK = "display.BUTTON_OK"
     DISPLAY_BUTTON_YES = "display.BUTTON_YES"
+    DISPLAY_DIGITS_4_5 = "display.DIGITS_4_5"
+    DISPLAY_DIGITS_5_5 = "display.DIGITS_5_5"
+    DISPLAY_DIGITS_6_5 = "display.DIGITS_6_5"
     DISPLAY_FORMAT_EXPONENT = "display.FORMAT_EXPONENT"
     DISPLAY_FORMAT_PREFIX = "display.FORMAT_PREFIX"
     DISPLAY_NFORMAT_DECIMAL = "display.NFORMAT_DECIMAL"
@@ -203,6 +211,9 @@ class DMM7510CommandConstants:
     LAN_MODE_MANUAL = "lan.MODE_MANUAL"
     LAN_OFF = "lan.OFF"
     LAN_ON = "lan.ON"
+    LAN_PROTOCOL_MULTICAST = "lan.PROTOCOL_MULTICAST"
+    LAN_PROTOCOL_TCP = "lan.PROTOCOL_TCP"
+    LAN_PROTOCOL_UDP = "lan.PROTOCOL_UDP"
     LOCALNODE_ACCESS_EXCLUSIVE = "localnode.ACCESS_EXCLUSIVE"
     LOCALNODE_ACCESS_FULL = "localnode.ACCESS_FULL"
     LOCALNODE_ACCESS_LOCKOUT = "localnode.ACCESS_LOCKOUT"
@@ -214,6 +225,87 @@ class DMM7510CommandConstants:
     SMU_AUDIBLE_PASS = "smu.AUDIBLE_PASS"
     SMU_OFF = "smu.OFF"
     SMU_ON = "smu.ON"
+    TRIGGER_BLOCK_BRANCH_ALWAYS = "trigger.BLOCK_BRANCH_ALWAYS"
+    TRIGGER_BLOCK_BRANCH_COUNTER = "trigger.BLOCK_BRANCH_COUNTER"
+    TRIGGER_BLOCK_BRANCH_DELTA = "trigger.BLOCK_BRANCH_DELTA"
+    TRIGGER_BLOCK_BRANCH_LIMIT_CONSTANT = "trigger.BLOCK_BRANCH_LIMIT_CONSTANT"
+    TRIGGER_BLOCK_BRANCH_LIMIT_DYNAMIC = "trigger.BLOCK_BRANCH_LIMIT_DYNAMIC"
+    TRIGGER_BLOCK_BRANCH_ONCE = "trigger.BLOCK_BRANCH_ONCE"
+    TRIGGER_BLOCK_BRANCH_ONCE_EXCLUDED = "trigger.BLOCK_BRANCH_ONCE_EXCLUDED"
+    TRIGGER_BLOCK_BRANCH_ON_EVENT = "trigger.BLOCK_BRANCH_ON_EVENT"
+    TRIGGER_BLOCK_BUFFER_CLEAR = "trigger.BLOCK_BUFFER_CLEAR"
+    TRIGGER_BLOCK_CONFIG_NEXT = "trigger.BLOCK_CONFIG_NEXT"
+    TRIGGER_BLOCK_CONFIG_PREV = "trigger.BLOCK_CONFIG_PREV"
+    TRIGGER_BLOCK_DELAY_CONSTANT = "trigger.BLOCK_DELAY_CONSTANT"
+    TRIGGER_BLOCK_DELAY_DYNAMIC = "trigger.BLOCK_DELAY_DYNAMIC"
+    TRIGGER_BLOCK_DIGITAL_IO = "trigger.BLOCK_DIGITAL_IO"
+    TRIGGER_BLOCK_LOG_EVENT = "trigger.BLOCK_LOG_EVENT"
+    TRIGGER_BLOCK_MEASURE = "trigger.BLOCK_MEASURE"
+    TRIGGER_BLOCK_MEASURE_DIGITIZE = "trigger.BLOCK_MEASURE_DIGITIZE"
+    TRIGGER_BLOCK_NOP = "trigger.BLOCK_NOP"
+    TRIGGER_BLOCK_NOTIFY = "trigger.BLOCK_NOTIFY"
+    TRIGGER_BLOCK_RESET_BRANCH_COUNT = "trigger.BLOCK_RESET_BRANCH_COUNT"
+    TRIGGER_BLOCK_WAIT = "trigger.BLOCK_WAIT"
+    TRIGGER_CLEAR_ENTER = "trigger.CLEAR_ENTER"
+    TRIGGER_CLEAR_NEVER = "trigger.CLEAR_NEVER"
+    TRIGGER_CONT_AUTO = "trigger.CONT_AUTO"
+    TRIGGER_CONT_OFF = "trigger.CONT_OFF"
+    TRIGGER_CONT_RESTART = "trigger.CONT_RESTART"
+    TRIGGER_COUNT_AUTO = "trigger.COUNT_AUTO"
+    TRIGGER_COUNT_INFINITE = "trigger.COUNT_INFINITE"
+    TRIGGER_COUNT_STOP = "trigger.COUNT_STOP"
+    TRIGGER_EDGE_EITHER = "trigger.EDGE_EITHER"
+    TRIGGER_EDGE_FALLING = "trigger.EDGE_FALLING"
+    TRIGGER_EDGE_RISING = "trigger.EDGE_RISING"
+    TRIGGER_EVENT_BLENDERN = "trigger.EVENT_BLENDERN"
+    TRIGGER_EVENT_COMMAND = "trigger.EVENT_COMMAND"
+    TRIGGER_EVENT_DIGION = "trigger.EVENT_DIGION"
+    TRIGGER_EVENT_DISPLAY = "trigger.EVENT_DISPLAY"
+    TRIGGER_EVENT_LANN = "trigger.EVENT_LANN"
+    TRIGGER_EVENT_NONE = "trigger.EVENT_NONE"
+    TRIGGER_EVENT_NOTIFYN = "trigger.EVENT_NOTIFYN"
+    TRIGGER_EVENT_TIMER1 = "trigger.EVENT_TIMER1"
+    TRIGGER_EVENT_TIMER2 = "trigger.EVENT_TIMER2"
+    TRIGGER_EVENT_TIMER3 = "trigger.EVENT_TIMER3"
+    TRIGGER_EVENT_TIMER4 = "trigger.EVENT_TIMER4"
+    TRIGGER_EVENT_TSPLINKN = "trigger.EVENT_TSPLINKN"
+    TRIGGER_LIMIT_ABOVE = "trigger.LIMIT_ABOVE"
+    TRIGGER_LIMIT_BELOW = "trigger.LIMIT_BELOW"
+    TRIGGER_LIMIT_INSIDE = "trigger.LIMIT_INSIDE"
+    TRIGGER_LIMIT_OUTSIDE = "trigger.LIMIT_OUTSIDE"
+    TRIGGER_LOGIC_NEGATIVE = "trigger.LOGIC_NEGATIVE"
+    TRIGGER_LOGIC_POSITIVE = "trigger.LOGIC_POSITIVE"
+    TRIGGER_LOG_ERROR1 = "trigger.LOG_ERROR1"
+    TRIGGER_LOG_ERROR2 = "trigger.LOG_ERROR2"
+    TRIGGER_LOG_ERROR3 = "trigger.LOG_ERROR3"
+    TRIGGER_LOG_ERROR4 = "trigger.LOG_ERROR4"
+    TRIGGER_LOG_INFO1 = "trigger.LOG_INFO1"
+    TRIGGER_LOG_INFO2 = "trigger.LOG_INFO2"
+    TRIGGER_LOG_INFO3 = "trigger.LOG_INFO3"
+    TRIGGER_LOG_INFO4 = "trigger.LOG_INFO4"
+    TRIGGER_LOG_WARN1 = "trigger.LOG_WARN1"
+    TRIGGER_LOG_WARN2 = "trigger.LOG_WARN2"
+    TRIGGER_LOG_WARN3 = "trigger.LOG_WARN3"
+    TRIGGER_LOG_WARN4 = "trigger.LOG_WARN4"
+    TRIGGER_LOG_WARN_ABORT = "trigger.LOG_WARN_ABORT"
+    TRIGGER_OFF = "trigger.OFF"
+    TRIGGER_ON = "trigger.ON"
+    TRIGGER_STATE_ABORTED = "trigger.STATE_ABORTED"
+    TRIGGER_STATE_ABORTING = "trigger.STATE_ABORTING"
+    TRIGGER_STATE_BUILDING = "trigger.STATE_BUILDING"
+    TRIGGER_STATE_EMPTY = "trigger.STATE_EMPTY"
+    TRIGGER_STATE_FAILED = "trigger.STATE_FAILED"
+    TRIGGER_STATE_IDLE = "trigger.STATE_IDLE"
+    TRIGGER_STATE_RUNNING = "trigger.STATE_RUNNING"
+    TRIGGER_STATE_WAITING = "trigger.STATE_WAITING"
+    TRIGGER_WAIT_AND = "trigger.WAIT_AND"
+    TRIGGER_WAIT_OR = "trigger.WAIT_OR"
+    TSPLINK_MODE_DIGITAL_OPEN_DRAIN = "tsplink.MODE_DIGITAL_OPEN_DRAIN"
+    TSPLINK_MODE_SYNCHRONOUS_ACCEPTOR = "tsplink.MODE_SYNCHRONOUS_ACCEPTOR"
+    TSPLINK_MODE_SYNCHRONOUS_MASTER = "tsplink.MODE_SYNCHRONOUS_MASTER"
+    TSPLINK_MODE_TRIGGER_OPEN_DRAIN = "tsplink.MODE_TRIGGER_OPEN_DRAIN"
+    TSPLINK_STATE_HIGH = "tsplink.STATE_HIGH"
+    TSPLINK_STATE_LOW = "tsplink.STATE_LOW"
 
 
 #  pylint: disable=too-many-instance-attributes,too-many-public-methods
@@ -401,6 +493,11 @@ class DMM7510Commands:
             - ``.STAT_TERMINAL``: Measure terminal, front is 1, rear is 0.
             - ``.STYLE_COMPACT``: Store readings with reduced accuracy (6.5 digits) with no
               formatting information, 1 μs accurate timestamp.
+            - ``.STYLE_FULL``: Store the same information with full accuracy with formatting, plus
+              additional information.
+            - ``.STYLE_STANDARD``: Store readings with full accuracy with formatting.
+            - ``.STYLE_WRITABLE``: Store external reading buffer data.
+            - ``.STYLE_WRITABLE_FULL``: Store external reading buffer data with two reading values.
             - ``.UNIT_AMP``: Set units of measure to dc current.
             - ``.UNIT_AMP_AC``: Set units of measure to ac current.
             - ``.UNIT_CELSIUS``: Set units of measure to Celsius.
@@ -432,6 +529,8 @@ class DMM7510Commands:
             - ``.delete()``: The ``buffer.delete()`` function.
             - ``.make()``: The ``buffer.make()`` function.
             - ``.save()``: The ``buffer.save()`` function.
+            - ``.saveappend()``: The ``buffer.saveappend()`` function.
+            - ``.write``: The ``buffer.write`` command tree.
         """
         return self._buffer
 
@@ -520,6 +619,9 @@ class DMM7510Commands:
             - ``.BUTTON_NO``: Return if NO selected.
             - ``.BUTTON_OK``: Return if OK selected.
             - ``.BUTTON_YES``: Return if YES selected.
+            - ``.DIGITS_4_5``: Set the front-panel display resolution to 4.5 digits.
+            - ``.DIGITS_5_5``: Set the front-panel display resolution to 5.5 digits.
+            - ``.DIGITS_6_5``: Set the front-panel display resolution to 6.5 digits.
             - ``.FORMAT_EXPONENT``: Use exponent format to display measurement readings on the
               front-panel display of
               the instrument.
@@ -701,6 +803,10 @@ class DMM7510Commands:
               close the DST port to close all open LAN connections. By turning DST protection ON,
               you are protecting LAN connections from being inadvertently closed by your IT
               department doing a port scan across the corporate network.
+            - ``.PROTOCOL_MULTICAST``: Sets the LAN protocol to use for sending trigger messages to
+              multicast.
+            - ``.PROTOCOL_TCP``: Sets the LAN protocol to use for sending trigger messages to TCP.
+            - ``.PROTOCOL_UDP``: Sets the LAN protocol to use for sending trigger messages to UDP.
 
         Sub-properties/methods:
             - ``.ipconfig()``: The ``lan.ipconfig()`` function.
@@ -820,6 +926,129 @@ class DMM7510Commands:
     def trigger(self) -> Trigger:
         """Return the ``trigger`` command tree.
 
+        Constants:
+            - ``.BLOCK_BRANCH_ALWAYS``: Defines a trigger model block that always goes to a specific
+              block.
+            - ``.BLOCK_BRANCH_COUNTER``: Defines a trigger model block that branches to a specified
+              block a specified number of times.
+            - ``.BLOCK_BRANCH_DELTA``: Defines a trigger model block that goes to a specified block
+              if the difference of two measurements meets preset criteria.
+            - ``.BLOCK_BRANCH_LIMIT_CONSTANT``: Defines a trigger model block that goes to a
+              specified block if a measurement meets preset criteria.
+            - ``.BLOCK_BRANCH_LIMIT_DYNAMIC``: Defines a trigger model block that goes to a
+              specified block in the trigger model if a measurement meets user-defined criteria.
+            - ``.BLOCK_BRANCH_ONCE``: Causes the trigger model to branch to a specified building
+              block the first time it is encountered in the trigger model.
+            - ``.BLOCK_BRANCH_ONCE_EXCLUDED``: Causes the trigger model to go to a specified
+              building block every time the trigger model encounters it, except for the first time.
+            - ``.BLOCK_BRANCH_ON_EVENT``: Branches to a specified block when a specified trigger
+              event occurs.
+            - ``.BLOCK_BUFFER_CLEAR``: Defines a trigger model block that clears the reading buffer.
+            - ``.BLOCK_CONFIG_NEXT``: Recalls the settings at the next index of a configuration
+              list.
+            - ``.BLOCK_CONFIG_PREV``: Recalls the settings stored at the previous  index of a
+              configuration list.
+            - ``.BLOCK_DELAY_CONSTANT``: Adds a constant delay to the execution of a trigger model.
+            - ``.BLOCK_DELAY_DYNAMIC``: Adds a user delay to the execution of the trigger model.
+            - ``.BLOCK_DIGITAL_IO``: Defines a trigger model block that sets the lines on the
+              digital I/O port high or low.
+            - ``.BLOCK_LOG_EVENT``: Allows you to log an event in the event log when the trigger
+              model is running.
+            - ``.BLOCK_MEASURE``: Deprecated; use trigger.BLOCK_MEASURE_DIGITIZE instead.
+            - ``.BLOCK_MEASURE_DIGITIZE``: defines a trigger block that makes or digitizes a
+              measurement.
+            - ``.BLOCK_NOP``: Creates a placeholder that performs no action in the trigger model.
+            - ``.BLOCK_NOTIFY``: Defines a trigger-model block that generates a trigger event and
+              immediately continues to the next block.
+            - ``.BLOCK_RESET_BRANCH_COUNT``: Creates a block in the trigger model that resets a
+              branch counter to 0.
+            - ``.BLOCK_WAIT``: Defines a trigger model block that waits for an event before allowing
+              the trigger model to continue.
+            - ``.CLEAR_ENTER``: Clear previously detected trigger events when entering the wait
+              block.
+            - ``.CLEAR_NEVER``: Immediately act on any previously detected triggers and not clear
+              them (default).
+            - ``.CONT_AUTO``: Start continuous measurements after boot.
+            - ``.CONT_OFF``: Do not start continuous measurements after boot.
+            - ``.CONT_RESTART``: Place the instrument into local control and start continuous
+              measurements after boot.
+            - ``.COUNT_AUTO``: Use most recent count value.
+            - ``.COUNT_INFINITE``: Infinite (run continuously until stopped).
+            - ``.COUNT_STOP``: Stop infinite to stop the block.
+            - ``.EDGE_EITHER``: Sets the selected trigger line to detect either rising-edge or
+              falling-edge triggers as input when the line is configured as an input or open drain.
+            - ``.EDGE_FALLING``: Sets the selected trigger line to detect falling-edge triggers as
+              input when the line is configured as an input or open drain.
+            - ``.EDGE_RISING``: Sets the selected trigger line to detect rising-edge triggers as
+              input when the line is configured as an input or open drain.
+            - ``.EVENT_BLENDERN``: Trigger event blender N (1 to 2), which combines trigger events.
+            - ``.EVENT_COMMAND``: A command interface trigger.
+            - ``.EVENT_DIGION``: Line edge (either rising, falling, or either based on the
+              configuration of the line) detected on digital input line N (1 to 6).
+            - ``.EVENT_DISPLAY``: Front-panel TRIGGER key press.
+            - ``.EVENT_LANN``: Appropriate LXI trigger packet is received on LAN trigger object N (1
+              to 8).
+            - ``.EVENT_NONE``: No trigger event.
+            - ``.EVENT_NOTIFYN``: Notify trigger block N (1 to 3) generates a trigger event when the
+              trigger model executes it.
+            - ``.EVENT_TIMER1``: Trigger timer 1 expired.
+            - ``.EVENT_TIMER2``: Trigger timer 2 expired.
+            - ``.EVENT_TIMER3``: Trigger timer 3 expired.
+            - ``.EVENT_TIMER4``: Trigger timer 4 expired.
+            - ``.EVENT_TSPLINKN``: Line edge detected on TSP-Link synchronization line N (1 to 3).
+            - ``.LIMIT_ABOVE``: The measurement is above the value set by limit B; limit A must be
+              set, but is ignored when this type is selected.
+            - ``.LIMIT_BELOW``: The measurement is below the value set by limit A; limit B must be
+              set, but is ignored when this type is selected.
+            - ``.LIMIT_INSIDE``: The measurement is inside the values set by limits A and B; limit A
+              must be the low value and Limit B must be the high value.
+            - ``.LIMIT_OUTSIDE``: The measurement is outside the values set by limits A and B; limit
+              A must be the low value and Limit B must be the high value.
+            - ``.LOGIC_NEGATIVE``: Asserts a TTL-low pulse for the output logic of the trigger event
+              generator for the specified line.
+            - ``.LOGIC_POSITIVE``: Asserts a TTL-high pulse for the output logic of the trigger
+              event generator for the specified line.
+            - ``.LOG_ERROR1``: Log error event 1 in the event log when trigger model execution
+              reaches this block.
+            - ``.LOG_ERROR2``: Log error event 2 in the event log when trigger model execution
+              reaches this block.
+            - ``.LOG_ERROR3``: Log error event 3 in the event log when trigger model execution
+              reaches this block.
+            - ``.LOG_ERROR4``: Log error event 4 in the event log when trigger model execution
+              reaches this block.
+            - ``.LOG_INFO1``: Log information event 1 in the event log when trigger model execution
+              reaches this block.
+            - ``.LOG_INFO2``: Log information event 2 in the event log when trigger model execution
+              reaches this block.
+            - ``.LOG_INFO3``: Log information event 3 in the event log when trigger model execution
+              reaches this block.
+            - ``.LOG_INFO4``: Log information event 4 in the event log when trigger model execution
+              reaches this block.
+            - ``.LOG_WARN1``: Log warning event 1 in the event log when trigger model execution
+              reaches this block.
+            - ``.LOG_WARN2``: Log warning event 2 in the event log when trigger model execution
+              reaches this block.
+            - ``.LOG_WARN3``: Log warning event 3 in the event log when trigger model execution
+              reaches this block.
+            - ``.LOG_WARN4``: Log warning event 4 in the event log when trigger model execution
+              reaches this block.
+            - ``.LOG_WARN_ABORT``: Abort the trigger model immediately and post a warning event log
+              message.
+            - ``.OFF``: Disable the trigger timer.
+            - ``.ON``: Enable the trigger timer.
+            - ``.STATE_ABORTED``: The trigger model is stopped.
+            - ``.STATE_ABORTING``: The trigger model is stopping.
+            - ``.STATE_BUILDING``: Blocks have been added.
+            - ``.STATE_EMPTY``: The trigger model is selected, but no blocks are defined.
+            - ``.STATE_FAILED``: The trigger model is stopped because of an error.
+            - ``.STATE_IDLE``: The trigger model is stopped.
+            - ``.STATE_RUNNING``: The trigger model is running.
+            - ``.STATE_WAITING``: The trigger model has been in the same wait block for more than
+              100 ms.
+            - ``.WAIT_AND``: Each event must occur before the trigger model continues.
+            - ``.WAIT_OR``: At least one of the events must occur before the trigger model
+              continues.
+
         Sub-properties/methods:
             - ``.blender``: The ``trigger.blender[N]`` command tree.
             - ``.clear()``: The ``trigger.clear()`` function.
@@ -842,6 +1071,14 @@ class DMM7510Commands:
     @property
     def tsplink(self) -> Tsplink:
         """Return the ``tsplink`` command tree.
+
+        Constants:
+            - ``.MODE_DIGITAL_OPEN_DRAIN``: TSP-Link digital open drain line.
+            - ``.MODE_SYNCHRONOUS_ACCEPTOR``: TSP-Link trigger synchronous acceptor.
+            - ``.MODE_SYNCHRONOUS_MASTER``: TSP-Link trigger synchronous master.
+            - ``.MODE_TRIGGER_OPEN_DRAIN``: TSP-Link trigger open drain line.
+            - ``.STATE_HIGH``: High state of the synchronization line.
+            - ``.STATE_LOW``: Low state of the synchronization line.
 
         Sub-properties/methods:
             - ``.group``: The ``tsplink.group`` attribute.
@@ -945,7 +1182,9 @@ class DMM7510Commands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f'createconfigscript("{script_name}")')  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f'createconfigscript("{script_name}")'
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``createconfigscript()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
@@ -969,7 +1208,9 @@ class DMM7510Commands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"delay({seconds})")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"delay({seconds})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``delay()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -990,7 +1231,9 @@ class DMM7510Commands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write("exit()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                "exit()"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``exit()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -1012,7 +1255,9 @@ class DMM7510Commands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write("opc()")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                "opc()"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``opc()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -1036,7 +1281,9 @@ class DMM7510Commands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            self._device.write(f"print({value})")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"print({value})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``print()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -1097,7 +1344,9 @@ class DMM7510Commands:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
         """
         try:
-            return self._device.query(f"printnumber({value})")  # type: ignore[union-attr]
+            return self._device.query(  # type: ignore[union-attr]
+                f"printnumber({value})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``printnumber()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -1122,7 +1371,9 @@ class DMM7510Commands:
         """
         try:
             function_args = ", ".join(str(x) for x in (system,) if x is not None)
-            self._device.write(f"reset({function_args})")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"reset({function_args})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``reset()`` function."
             raise NoDeviceProvidedError(msg) from error
@@ -1147,7 +1398,9 @@ class DMM7510Commands:
         """
         try:
             function_args = ", ".join(str(x) for x in (group,) if x is not None)
-            self._device.write(f"waitcomplete({function_args})")  # type: ignore[union-attr]
+            self._device.write(  # type: ignore[union-attr]
+                f"waitcomplete({function_args})"
+            )
         except AttributeError as error:
             msg = "No TSPDevice object was provided, unable to run the ``waitcomplete()`` function."
             raise NoDeviceProvidedError(msg) from error

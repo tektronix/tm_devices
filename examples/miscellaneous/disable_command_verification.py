@@ -1,11 +1,12 @@
 """An example showing how to disable the verification portion of the ``.set_and_check()`` method."""
+
 from tm_devices import DeviceManager
 from tm_devices.drivers import MSO5, SMU2601B
 
 with DeviceManager(verbose=True) as dm:
     # Add some devices
-    scope: MSO5 = dm.add_scope("192.168.0.1")  # pyright: ignore[reportGeneralTypeIssues]
-    smu: SMU2601B = dm.add_smu("192.168.0.2")  # pyright: ignore[reportGeneralTypeIssues]
+    scope: MSO5 = dm.add_scope("192.168.0.1")  # pyright: ignore[reportAssignmentType]
+    smu: SMU2601B = dm.add_smu("192.168.0.2")  # pyright: ignore[reportAssignmentType]
 
     #
     # Set some values and use verification to verify they were set properly.

@@ -1,7 +1,7 @@
 """SS3706A device driver module."""
+
 import inspect
 
-from functools import cached_property
 from typing import Tuple
 
 import pyvisa as visa
@@ -10,6 +10,9 @@ from tm_devices.commands import SS3706AMixin
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.systems_switches.systems_switch import SystemsSwitch
 from tm_devices.helpers import DeviceConfigEntry
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 @family_base_class
@@ -78,6 +81,6 @@ class SS3706A(SS3706AMixin, SystemsSwitch):
         """
         # TODO: implement
         raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
+            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )

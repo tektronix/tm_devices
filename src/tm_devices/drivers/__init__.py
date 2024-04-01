@@ -1,4 +1,5 @@
 """Full list of available device drivers."""
+
 from types import MappingProxyType
 from typing import Mapping, Type
 
@@ -19,6 +20,7 @@ from tm_devices.drivers.pi.power_supplies.psu2200.psu2281 import PSU2281
 from tm_devices.drivers.pi.scopes.tekscope.lpd6 import LPD6
 from tm_devices.drivers.pi.scopes.tekscope.mso2 import MSO2
 from tm_devices.drivers.pi.scopes.tekscope.mso4 import MSO4
+from tm_devices.drivers.pi.scopes.tekscope.mso4b import MSO4B
 from tm_devices.drivers.pi.scopes.tekscope.mso5 import MSO5
 from tm_devices.drivers.pi.scopes.tekscope.mso5b import MSO5B
 from tm_devices.drivers.pi.scopes.tekscope.mso5lp import MSO5LP
@@ -56,19 +58,19 @@ from tm_devices.drivers.pi.scopes.tekscope_5k_7k_70k.mso70k import MSO70K
 from tm_devices.drivers.pi.scopes.tekscope_5k_7k_70k.mso70kc import MSO70KC
 from tm_devices.drivers.pi.scopes.tekscope_5k_7k_70k.mso70kdx import MSO70KDX
 from tm_devices.drivers.pi.scopes.tso.tsovu import TSOVu
-from tm_devices.drivers.pi.signal_sources.afgs.afg3k import AFG3K
-from tm_devices.drivers.pi.signal_sources.afgs.afg3kb import AFG3KB
-from tm_devices.drivers.pi.signal_sources.afgs.afg3kc import AFG3KC
-from tm_devices.drivers.pi.signal_sources.afgs.afg31k import AFG31K
-from tm_devices.drivers.pi.signal_sources.awgs.awg5k import AWG5K
-from tm_devices.drivers.pi.signal_sources.awgs.awg5kb import AWG5KB
-from tm_devices.drivers.pi.signal_sources.awgs.awg5kc import AWG5KC
-from tm_devices.drivers.pi.signal_sources.awgs.awg7k import AWG7K
-from tm_devices.drivers.pi.signal_sources.awgs.awg7kb import AWG7KB
-from tm_devices.drivers.pi.signal_sources.awgs.awg7kc import AWG7KC
-from tm_devices.drivers.pi.signal_sources.awgs.awg70ka import AWG70KA
-from tm_devices.drivers.pi.signal_sources.awgs.awg70kb import AWG70KB
-from tm_devices.drivers.pi.signal_sources.awgs.awg5200 import AWG5200
+from tm_devices.drivers.pi.signal_generators.afgs.afg3k import AFG3K
+from tm_devices.drivers.pi.signal_generators.afgs.afg3kb import AFG3KB
+from tm_devices.drivers.pi.signal_generators.afgs.afg3kc import AFG3KC
+from tm_devices.drivers.pi.signal_generators.afgs.afg31k import AFG31K
+from tm_devices.drivers.pi.signal_generators.awgs.awg5k import AWG5K
+from tm_devices.drivers.pi.signal_generators.awgs.awg5kb import AWG5KB
+from tm_devices.drivers.pi.signal_generators.awgs.awg5kc import AWG5KC
+from tm_devices.drivers.pi.signal_generators.awgs.awg7k import AWG7K
+from tm_devices.drivers.pi.signal_generators.awgs.awg7kb import AWG7KB
+from tm_devices.drivers.pi.signal_generators.awgs.awg7kc import AWG7KC
+from tm_devices.drivers.pi.signal_generators.awgs.awg70ka import AWG70KA
+from tm_devices.drivers.pi.signal_generators.awgs.awg70kb import AWG70KB
+from tm_devices.drivers.pi.signal_generators.awgs.awg5200 import AWG5200
 from tm_devices.drivers.pi.source_measure_units.smu2400.smu2400 import SMU2400
 from tm_devices.drivers.pi.source_measure_units.smu2400.smu2401 import SMU2401
 from tm_devices.drivers.pi.source_measure_units.smu2400.smu2410 import SMU2410
@@ -150,6 +152,7 @@ DEVICE_DRIVER_MODEL_MAPPING: Mapping[str, Type[Device]] = MappingProxyType(
         SupportedModels.DPO4KB.value: DPO4KB,
         SupportedModels.MSO2.value: MSO2,
         SupportedModels.MSO4.value: MSO4,
+        SupportedModels.MSO4B.value: MSO4B,
         SupportedModels.MSO5.value: MSO5,
         SupportedModels.MSO5B.value: MSO5B,
         SupportedModels.MSO5LP.value: MSO5LP,
@@ -254,6 +257,7 @@ __all__ = [
     "LPD6",
     "MSO2",
     "MSO4",
+    "MSO4B",
     "MSO5",
     "MSO5B",
     "MSO5LP",

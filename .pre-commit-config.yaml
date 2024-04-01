@@ -29,28 +29,30 @@ repos:
       - id: pretty-format-json
         args: [--autofix, --indent=4]
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.5.4
+    rev: v1.5.5
     hooks:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.27.0
+    rev: 0.28.0
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
       - id: check-github-actions
       - id: check-github-workflows
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 3.12.0
+    rev: v3.18.2
     hooks:
       - id: commitizen
         stages: [commit-msg]
-  - repo: https://github.com/asottile/blacken-docs
+  - repo: https://github.com/adamchainz/blacken-docs
     rev: 1.16.0
     hooks:
       - id: blacken-docs
-  - repo: https://github.com/lyz-code/yamlfix/
-    rev: 1.13.0
+        files: \.(rst|md|markdown|tex)$
+        additional_dependencies: [black==23.12.1]  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
+  - repo: https://github.com/lyz-code/yamlfix
+    rev: 1.16.0
     hooks:
       - id: yamlfix
   - repo: https://github.com/executablebooks/mdformat
@@ -60,16 +62,20 @@ repos:
         args: [--number, --end-of-line, keep]
         additional_dependencies:
           - setuptools  # This is required since Python 3.12 no longer installs setuptools by default in virtual environments
-          - mdformat-myst
-          - mdformat-toc
-          - mdformat-frontmatter
+          - black==23.12.1  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
           - mdformat-beautysh
           - mdformat-black
           - mdformat-config
           - mdformat-shfmt
           - mdformat-web
+#          - mdformat-admon  # covered by mdformat-myst
+#          - mdformat-deflist  # covered by mdformat-myst
+#          - mdformat-footnote  # covered by mdformat-myst
+#          - mdformat-frontmatter  # covered by mdformat-myst
           - mdformat-gfm
-          - mdformat-footnote
+          - mdformat-myst
+#          - mdformat-tables  # covered by mdformat-myst
+          - mdformat-toc
 # Currently rstcheck doesn't work with the templates
 #  - repo: https://github.com/rstcheck/rstcheck
 #    rev: v6.1.2
@@ -121,15 +127,12 @@ repos:
         pass_filenames: false
         always_run: true
         args: [., --min=10]
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.1.1
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.3.2
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
-  - repo: https://github.com/psf/black
-    rev: 23.10.0
-    hooks:
-      - id: black
+      - id: ruff-format
   - repo: https://github.com/PyCQA/docformatter
     rev: v1.7.0  # can't update due to https://github.com/PyCQA/docformatter/issues/174
     hooks:

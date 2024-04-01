@@ -20,9 +20,7 @@ from tm_devices.drivers import SMU2450
 
 # Main code starts here with instantiation of the device manager and the SMU instrument connection.
 devmgr = DeviceManager(verbose=True)
-smu2400: SMU2450 = devmgr.add_smu(
-    "192.168.0.1", alias="my2450"
-)  # pyright: ignore[reportGeneralTypeIssues]
+smu2400: SMU2450 = devmgr.add_smu("192.168.0.1", alias="my2450")  # pyright: ignore[reportAssignmentType]
 smu2400.enable_verification = False
 
 # Capture the path to the script file and load it to working memory.

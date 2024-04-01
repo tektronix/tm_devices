@@ -57,67 +57,104 @@ resources:
 
   # --- afg ---
   #   afg3k
-  TCPIP::AFG3K-HOSTNAME::INSTR:
-    device: afg3252
+  TCPIP::AFG3051-HOSTNAME::INSTR:
+    device: afg3051
     filename: afg/afg3k.yaml
-  TCPIP::AFG3KB-HOSTNAME::INSTR:
-    device: afg3kb
+  TCPIP::AFG3022B-HOSTNAME::INSTR:
+    device: afg3022b
     filename: afg/afg3kb.yaml
-  TCPIP::AFG3KC-HOSTNAME::INSTR:
-    device: afg3kc
-    filename: afg/afg3kc.yaml
-  TCPIP::AFG3KC-HOSTNAME::10001::SOCKET:
-    device: afg3kc
-    filename: afg/afg3kc.yaml
   TCPIP::AFG3KC-TIMEOUT::INSTR:
     device: afg3kc-timeout
     filename: afg/afg3kc.yaml
-  TCPIP::AFG3KC-1CH::INSTR:
-    device: afg3kc-1ch
+  TCPIP::AFG3011C-HOSTNAME::INSTR:
+    device: afg3011c
     filename: afg/afg3kc.yaml
-  TCPIP::AFG3051C::INSTR:
-    device: afg3051c
-    filename: afg/afg3kc.yaml
-  TCPIP::AFG3021C::INSTR:
+  TCPIP::AFG3021C-HOSTNAME::INSTR:
     device: afg3021c
     filename: afg/afg3kc.yaml
+  TCPIP::AFG3052C-HOSTNAME::INSTR:
+    device: afg3052c
+    filename: afg/afg3kc.yaml
+  TCPIP::AFG3101C-HOSTNAME::INSTR:
+    device: afg3101c
+    filename: afg/afg3kc.yaml
+  TCPIP::AFG3151C-HOSTNAME::INSTR:
+    device: afg3151c
+    filename: afg/afg3kc.yaml
+  TCPIP::AFG3252C-HOSTNAME::INSTR:
+    device: afg3252c
+    filename: afg/afg3kc.yaml
+  TCPIP::AFG3252C-HOSTNAME::10001::SOCKET:
+    device: afg3252c
+    filename: afg/afg3kc.yaml
+
   #   afg31k
-  TCPIP::AFG31K-HOSTNAME::INSTR:
+  TCPIP::AFG31021-HOSTNAME::INSTR:
     device: afg31021
+    filename: afg/afg31k.yaml
+  TCPIP::AFG31051-HOSTNAME::INSTR:
+    device: afg31051
+    filename: afg/afg31k.yaml
+  TCPIP::AFG31101-HOSTNAME::INSTR:
+    device: afg31101
+    filename: afg/afg31k.yaml
+  TCPIP::AFG31152-HOSTNAME::INSTR:
+    device: afg31152
+    filename: afg/afg31k.yaml
+  TCPIP::AFG31251-HOSTNAME::INSTR:
+    device: afg31251
     filename: afg/afg31k.yaml
 
   # --- awg ---
   #   awg5200
-  TCPIP::AWG5200-HOSTNAME::INSTR:
-    device: awg5200
+  TCPIP::AWG5200OPT50-HOSTNAME::INSTR:
+    device: awg5200opt50
+    filename: awg/awg5200.yaml
+  TCPIP::AWG5200OPT25-HOSTNAME::INSTR:
+    device: awg5200opt25
     filename: awg/awg5200.yaml
   #   awg5k
-  TCPIP::AWG5K-HOSTNAME::INSTR:
+  TCPIP::AWG5012-HOSTNAME::INSTR:
     device: awg5012
     filename: awg/awg5k.yaml
-  TCPIP::AWG5KB-HOSTNAME::INSTR:
-    device: awg5012b
+  TCPIP::AWG5002B-HOSTNAME::INSTR:
+    device: awg5002b
     filename: awg/awg5kb.yaml
-  TCPIP::AWG5KC-HOSTNAME::INSTR:
+  TCPIP::AWG5012C-HOSTNAME::INSTR:
     device: awg5012c
     filename: awg/awg5kc.yaml
   #   awg7k
-  TCPIP::AWG7K-HOSTNAME::INSTR:
-    device: awg7122
+  TCPIP::AWG7051OPT01-HOSTNAME::INSTR:
+    device: awg7051opt01
     filename: awg/awg7k.yaml
-  TCPIP::AWG7KB-HOSTNAME::INSTR:
-    device: awg7122b
+  TCPIP::AWG7102OPT06-HOSTNAME::INSTR:
+    device: awg7102opt06
+    filename: awg/awg7k.yaml
+  TCPIP::AWG7062BOPT02-HOSTNAME::INSTR:
+    device: awg7062bopt02
     filename: awg/awg7kb.yaml
-  TCPIP::AWG7KC-HOSTNAME::INSTR:
-    device: awg7122c
+  TCPIP::AWG7121BOPT01-HOSTNAME::INSTR:
+    device: awg7121bopt01
+    filename: awg/awg7kb.yaml
+  TCPIP::AWG7082COPT01-HOSTNAME::INSTR:
+    device: awg7082copt01
+    filename: awg/awg7kc.yaml
+  TCPIP::AWG7122COPT06-HOSTNAME::INSTR:
+    device: awg7122copt06
     filename: awg/awg7kc.yaml
   #   awg70k
-  TCPIP::AWG70KB-HOSTNAME::INSTR:
-    device: awg70002b
-    filename: awg/awg70kb.yaml
-  TCPIP::AWG70KA-HOSTNAME::INSTR:
-    device: awg70001a
+  TCPIP::AWG70001AOPT150-HOSTNAME::INSTR:
+    device: awg70001aopt150
     filename: awg/awg70ka.yaml
+  TCPIP::AWG70002AOPT225-HOSTNAME::INSTR:
+    device: awg70002aopt225
+    filename: awg/awg70ka.yaml
+  TCPIP::AWG70002AOPT216-HOSTNAME::INSTR:
+    device: awg70002aopt216
+    filename: awg/awg70ka.yaml
+  TCPIP::AWG70002BOPT208-HOSTNAME::INSTR:
+    device: awg70002bopt208
+    filename: awg/awg70kb.yaml
 
   # --- TekScope ---
   #   lpd6
@@ -135,6 +172,12 @@ resources:
   TCPIP::MSO44-HOSTNAME::INSTR:
     device: mso44
     filename: scope/mso4.yaml
+  TCPIP::MSO44B-HOSTNAME::INSTR:
+    device: mso44b
+    filename: scope/mso4b.yaml
+  USB0::0x0699::0x0527::200201::INSTR:
+    device: mso44b
+    filename: scope/mso4b.yaml
   #   mso5
   USB0::0x0699::0x0522::SERIAL1::INSTR:
     device: mso56

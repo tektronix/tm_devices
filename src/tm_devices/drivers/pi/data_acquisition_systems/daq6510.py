@@ -1,5 +1,5 @@
 """DAQ6510 device driver module."""
-from functools import cached_property
+
 from typing import Tuple
 
 import pyvisa as visa
@@ -10,6 +10,9 @@ from tm_devices.drivers.pi.data_acquisition_systems.data_acquisition_system impo
     DataAcquisitionSystem,
 )
 from tm_devices.helpers import DeviceConfigEntry
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 class DAQ6510(DAQ6510Mixin, DataAcquisitionSystem):
@@ -46,7 +49,7 @@ class DAQ6510(DAQ6510Mixin, DataAcquisitionSystem):
     @property
     def ieee_cmds(self) -> LegacyTSPIEEE4882Commands:
         """Return an internal class containing methods for the standard IEEE 488.2 command set."""
-        return self._ieee_cmds  # type: ignore
+        return self._ieee_cmds  # pyright: ignore[reportReturnType]
 
     @cached_property
     def total_channels(self) -> int:

@@ -1,4 +1,5 @@
 """Base Data Acquisition (DAQ) device driver module."""
+
 import inspect
 
 from abc import ABC
@@ -25,6 +26,6 @@ class DataAcquisitionSystem(TSPDevice, ABC):
         """
         # TODO: implement
         raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore
+            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
             f" is not yet implemented for the {self.__class__.__name__} driver"
         )

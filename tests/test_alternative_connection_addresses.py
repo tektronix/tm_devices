@@ -1,5 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Tests for various methods of connecting to devices."""
+
 from typing import Optional, Tuple
 
 import pytest
@@ -107,6 +108,12 @@ from tm_devices import DeviceManager
             "SMU",
             None,
             ("SERIAL", "SMU2614B", "Model 2614B", "4498311"),
+        ),
+        (
+            "TCPIP::AFG3252C-HOSTNAME::10001::SOCKET",
+            "AFG",
+            None,
+            ("SOCKET", "AFG3KC", "AFG3252C", "SERIAL1"),
         ),
     ],
 )

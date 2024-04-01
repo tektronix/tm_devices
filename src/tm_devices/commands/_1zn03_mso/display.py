@@ -20,10 +20,15 @@ Commands and Queries:
     - DISplay:COLors {NORMal|INVERTed}
     - DISplay:COLors?
     - DISplay:GLObal:B<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:GLObal:B<x>:STATE?
     - DISplay:GLObal:CH<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:GLObal:CH<x>:STATE?
     - DISplay:GLObal:DCH<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:GLObal:DCH<x>:STATE?
     - DISplay:GLObal:MATH<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:GLObal:MATH<x>:STATE?
     - DISplay:GLObal:REF<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:GLObal:REF<x>:STATE?
     - DISplay:INTENSITy:BACKLight {LOW|MEDium|HIGH}
     - DISplay:INTENSITy:BACKLight:AUTODim:ENAble {ON|OFF}
     - DISplay:INTENSITy:BACKLight:AUTODim:ENAble?
@@ -73,6 +78,7 @@ Commands and Queries:
     - DISplay:MATHFFTView1:GRIDlines {HORizontal|VERTical|BOTH}
     - DISplay:MATHFFTView1:GRIDlines?
     - DISplay:MATHFFTView1:MATH:MATH<x>:STATE {OFF|ON|<NR1>}
+    - DISplay:MATHFFTView1:MATH:MATH<x>:STATE?
     - DISplay:MATHFFTView1:XAXIS:SCALE {LINEAr|LOG}
     - DISplay:MATHFFTView1:XAXIS:SCALE?
     - DISplay:MATHFFTView1:YAXIS:SCALE {LINEAr|DBM}
@@ -80,6 +86,7 @@ Commands and Queries:
     - DISplay:MATHFFTView1:ZOOM:XAXIS:FROM <NR3>
     - DISplay:MATHFFTView1:ZOOM:XAXIS:FROM?
     - DISplay:MATHFFTView1:ZOOM:XAXIS:TO <NR3>
+    - DISplay:MATHFFTView1:ZOOM:XAXIS:TO?
     - DISplay:MATHFFTView1:ZOOM:YAXIS:FROM <NR3>
     - DISplay:MATHFFTView1:ZOOM:YAXIS:FROM?
     - DISplay:MATHFFTView1:ZOOM:YAXIS:TO <NR3>
@@ -91,8 +98,6 @@ Commands and Queries:
     - DISplay:PERSistence {OFF|AUTO|INFPersist|INFInite|VARpersist|CLEAR}
     - DISplay:PERSistence:RESET
     - DISplay:PERSistence?
-    - DISplay:PLOTVIEW<x>:XAXIS:SCALE {LINEAR|LOG}
-    - DISplay:PLOTVIEW<x>:YAXIS:SCALE {LINEAR|LOG}
     - DISplay:PLOTView1:AUTOScale {OFF|ON|<NR1>}
     - DISplay:PLOTView1:AUTOScale?
     - DISplay:PLOTView1:CURSor:ASOUrce?
@@ -136,6 +141,10 @@ Commands and Queries:
     - DISplay:PLOTView1:CURSor:WAVEform:BPOSition?
     - DISplay:PLOTView1:GRIDlines {HORizontal|VERTical|BOTH}
     - DISplay:PLOTView1:GRIDlines?
+    - DISplay:PLOTView1:XAXIS:SCALE {LINEAR|LOG}
+    - DISplay:PLOTView1:XAXIS:SCALE?
+    - DISplay:PLOTView1:YAXIS:SCALE {LINEAR|LOG}
+    - DISplay:PLOTView1:YAXIS:SCALE?
     - DISplay:PLOTView1:ZOOM:XAXIS:FROM <NR3>
     - DISplay:PLOTView1:ZOOM:XAXIS:FROM?
     - DISplay:PLOTView1:ZOOM:XAXIS:TO <NR3>
@@ -212,9 +221,13 @@ Commands and Queries:
     - DISplay:SELect:MATH MATH<x>
     - DISplay:SELect:MATH?
     - DISplay:SELect:REFerence {NONE|REF<x>}
+    - DISplay:SELect:REFerence?
     - DISplay:SELect:SOUrce {NONE |CH<x> |DCH<x> |BUS<x> |MATH<x> |PLOT<x> |REF<x>}
+    - DISplay:SELect:SOUrce?
     - DISplay:SELect:VIEW {WAVEVIEW1|MATHFFT<x>|PLOTVIEW<x>|REFFFT<x>}
+    - DISplay:SELect:VIEW?
     - DISplay:SELect:WAVEView1:SOUrce {CH<x>|MATH<x>|BUS<x>|REF<x>|PLOT<x>}
+    - DISplay:SELect:WAVEView1:SOUrce?
     - DISplay:VARpersist <NR3>
     - DISplay:VARpersist?
     - DISplay:WAVEView1:BUS:B<x>:STATE {OFF|ON|0|1}
@@ -326,6 +339,7 @@ Commands and Queries:
     - DISplay:WAVEform?
     - DISplay?
 """  # noqa: E501
+
 from typing import Dict, Optional, TYPE_CHECKING
 
 from .._helpers import (
@@ -2158,8 +2172,8 @@ class DisplayWaveview1DchItemDallDigorder(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:WAVEView1:DCH<x>_DALL:DIGORDER`` command.
 
     **Description:**
-        - This command sets or queries the order of the digital channels. WAVEView<x> is the
-          specified Waveform View and must be WAVEView1.
+        - This command sets or queries the order of the digital channels. 1 is the specified
+          Waveform View and must be WAVEView1.
 
     **Usage:**
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:DCH<x>_DALL:DIGORDER?``
@@ -2211,8 +2225,8 @@ class DisplayWaveview1DchItemDall(SCPICmdRead):
         """Return the ``DISplay:WAVEView1:DCH<x>_DALL:DIGORDER`` command.
 
         **Description:**
-            - This command sets or queries the order of the digital channels. WAVEView<x> is the
-              specified Waveform View and must be WAVEView1.
+            - This command sets or queries the order of the digital channels. 1 is the specified
+              Waveform View and must be WAVEView1.
 
         **Usage:**
             - Using the ``.query()`` method will send the
@@ -2348,12 +2362,9 @@ class DisplayWaveview1DchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - Using the ``.verify(value)`` method will send the ``DISplay:WAVEView1:DCH<x>?`` query and
           raise an AssertionError if the returned value does not match ``value``.
 
-    **Info:**
-        - ``DCH<x>`` specifies the digital channel. The supported digital channel value is 1.
-
     Properties:
-        - ``.dall``: The ``DISplay:WAVEView1:DCH<x>_DALL`` command tree.
         - ``.d``: The ``DISplay:WAVEView1:DCH<x>_D<x>`` command tree.
+        - ``.dall``: The ``DISplay:WAVEView1:DCH<x>_DALL`` command tree.
     """
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
@@ -4653,10 +4664,10 @@ class DisplayWaveview1(SCPICmdRead):
           an AssertionError if the returned value does not match ``value``.
 
     Properties:
-        - ``.dch``: The ``DISplay:WAVEView1:DCH<x>`` command tree.
         - ``.bus``: The ``DISplay:WAVEView1:BUS`` command tree.
         - ``.ch``: The ``DISplay:WAVEView1:CH<x>`` command tree.
         - ``.cursor``: The ``DISplay:WAVEView1:CURSor`` command.
+        - ``.dch``: The ``DISplay:WAVEView1:DCH<x>`` command tree.
         - ``.filter``: The ``DISplay:WAVEView1:FILTer`` command.
         - ``.graticule``: The ``DISplay:WAVEView1:GRAticule`` command.
         - ``.intensity``: The ``DISplay:WAVEView1:INTENSITy`` command tree.
@@ -4752,12 +4763,9 @@ class DisplayWaveview1(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``DISplay:WAVEView1:DCH<x>?`` query
               and raise an AssertionError if the returned value does not match ``value``.
 
-        **Info:**
-            - ``DCH<x>`` specifies the digital channel. The supported digital channel value is 1.
-
         Sub-properties:
-            - ``.dall``: The ``DISplay:WAVEView1:DCH<x>_DALL`` command tree.
             - ``.d``: The ``DISplay:WAVEView1:DCH<x>_D<x>`` command tree.
+            - ``.dall``: The ``DISplay:WAVEView1:DCH<x>_DALL`` command tree.
         """
         return self._dch
 
@@ -5038,13 +5046,16 @@ class DisplayVarpersist(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class DisplaySelectWaveview1Source(SCPICmdWrite):
+class DisplaySelectWaveview1Source(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:SELect:WAVEView1:SOUrce`` command.
 
     **Description:**
         - This command sets or queries the selected source in the given waveview.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:SELect:WAVEView1:SOUrce?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:SELect:WAVEView1:SOUrce?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DISplay:SELect:WAVEView1:SOUrce value``
           command.
 
@@ -5053,13 +5064,14 @@ class DisplaySelectWaveview1Source(SCPICmdWrite):
     ::
 
         - DISplay:SELect:WAVEView1:SOUrce {CH<x>|MATH<x>|BUS<x>|REF<x>|PLOT<x>}
+        - DISplay:SELect:WAVEView1:SOUrce?
 
     **Info:**
-        - ``CH<x>`` specifies an analog channel as source.
-        - ``MATH<x>`` specifies a math channel as source.
-        - ``BUS<x>`` specifies a bus as source.
-        - ``REF<x>`` specifies a reference waveform as the source.
-        - ``PLOT<x>`` specifies a plot as the source.
+        - ``CH<x>``
+        - ``MATH<x>``
+        - ``BUS<x>``
+        - ``REF<x>``
+        - ``PLOT<x>``
     """
 
 
@@ -5087,6 +5099,10 @@ class DisplaySelectWaveview1(SCPICmdRead):
             - This command sets or queries the selected source in the given waveview.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:SELect:WAVEView1:SOUrce?``
+              query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:SELect:WAVEView1:SOUrce?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``DISplay:SELect:WAVEView1:SOUrce value`` command.
 
@@ -5095,24 +5111,28 @@ class DisplaySelectWaveview1(SCPICmdRead):
         ::
 
             - DISplay:SELect:WAVEView1:SOUrce {CH<x>|MATH<x>|BUS<x>|REF<x>|PLOT<x>}
+            - DISplay:SELect:WAVEView1:SOUrce?
 
         **Info:**
-            - ``CH<x>`` specifies an analog channel as source.
-            - ``MATH<x>`` specifies a math channel as source.
-            - ``BUS<x>`` specifies a bus as source.
-            - ``REF<x>`` specifies a reference waveform as the source.
-            - ``PLOT<x>`` specifies a plot as the source.
+            - ``CH<x>``
+            - ``MATH<x>``
+            - ``BUS<x>``
+            - ``REF<x>``
+            - ``PLOT<x>``
         """
         return self._source
 
 
-class DisplaySelectView(SCPICmdWrite):
+class DisplaySelectView(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:SELect:VIEW`` command.
 
     **Description:**
         - This command sets or queries the selected view.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:SELect:VIEW?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:SELect:VIEW?`` query and raise
+          an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DISplay:SELect:VIEW value`` command.
 
     **SCPI Syntax:**
@@ -5120,16 +5140,17 @@ class DisplaySelectView(SCPICmdWrite):
     ::
 
         - DISplay:SELect:VIEW {WAVEVIEW1|MATHFFT<x>|PLOTVIEW<x>|REFFFT<x>}
+        - DISplay:SELect:VIEW?
 
     **Info:**
-        - ``WAVEVIEW1`` sets WAVEVIEW as the selected view.
-        - ``MATHFFT<x>`` sets MATHFFT as the selected view.
-        - ``PLOTVIEW<x>`` sets PLOTVIEW as the selected view.
-        - ``REFFFT<x>`` sets REFFFT as the selected view.
+        - ``WAVEVIEW1``
+        - ``MATHFFT<x>``
+        - ``PLOTVIEW<x>``
+        - ``REFFFT<x>``
     """
 
 
-class DisplaySelectSource(SCPICmdWrite):
+class DisplaySelectSource(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:SELect:SOUrce`` command.
 
     **Description:**
@@ -5137,6 +5158,9 @@ class DisplaySelectSource(SCPICmdWrite):
           that contain the source and the selected view is changed.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:SELect:SOUrce?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:SELect:SOUrce?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DISplay:SELect:SOUrce value`` command.
 
     **SCPI Syntax:**
@@ -5144,6 +5168,7 @@ class DisplaySelectSource(SCPICmdWrite):
     ::
 
         - DISplay:SELect:SOUrce {NONE |CH<x> |DCH<x> |BUS<x> |MATH<x> |PLOT<x> |REF<x>}
+        - DISplay:SELect:SOUrce?
 
     **Info:**
         - ``NONE`` disables the selected source.
@@ -5157,7 +5182,7 @@ class DisplaySelectSource(SCPICmdWrite):
     """
 
 
-class DisplaySelectReference(SCPICmdWrite):
+class DisplaySelectReference(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:SELect:REFerence`` command.
 
     **Description:**
@@ -5165,6 +5190,9 @@ class DisplaySelectReference(SCPICmdWrite):
           all views that contain the source and the selected view is changed.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:SELect:REFerence?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:SELect:REFerence?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DISplay:SELect:REFerence value``
           command.
 
@@ -5173,10 +5201,11 @@ class DisplaySelectReference(SCPICmdWrite):
     ::
 
         - DISplay:SELect:REFerence {NONE|REF<x>}
+        - DISplay:SELect:REFerence?
 
     **Info:**
-        - ``NONE`` specifies no reference waveforms.
-        - ``REF<x>`` specifies the reference waveform.
+        - ``NONE``
+        - ``REF<x>`` where x is the specified reference waveform.
     """
 
 
@@ -5322,6 +5351,9 @@ class DisplaySelect(SCPICmdRead):
               to all views that contain the source and the selected view is changed.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:SELect:REFerence?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:SELect:REFerence?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DISplay:SELect:REFerence value``
               command.
 
@@ -5330,10 +5362,11 @@ class DisplaySelect(SCPICmdRead):
         ::
 
             - DISplay:SELect:REFerence {NONE|REF<x>}
+            - DISplay:SELect:REFerence?
 
         **Info:**
-            - ``NONE`` specifies no reference waveforms.
-            - ``REF<x>`` specifies the reference waveform.
+            - ``NONE``
+            - ``REF<x>`` where x is the specified reference waveform.
         """
         return self._reference
 
@@ -5346,6 +5379,9 @@ class DisplaySelect(SCPICmdRead):
               views that contain the source and the selected view is changed.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:SELect:SOUrce?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:SELect:SOUrce?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DISplay:SELect:SOUrce value``
               command.
 
@@ -5354,6 +5390,7 @@ class DisplaySelect(SCPICmdRead):
         ::
 
             - DISplay:SELect:SOUrce {NONE |CH<x> |DCH<x> |BUS<x> |MATH<x> |PLOT<x> |REF<x>}
+            - DISplay:SELect:SOUrce?
 
         **Info:**
             - ``NONE`` disables the selected source.
@@ -5375,6 +5412,9 @@ class DisplaySelect(SCPICmdRead):
             - This command sets or queries the selected view.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:SELect:VIEW?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:SELect:VIEW?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DISplay:SELect:VIEW value``
               command.
 
@@ -5383,12 +5423,13 @@ class DisplaySelect(SCPICmdRead):
         ::
 
             - DISplay:SELect:VIEW {WAVEVIEW1|MATHFFT<x>|PLOTVIEW<x>|REFFFT<x>}
+            - DISplay:SELect:VIEW?
 
         **Info:**
-            - ``WAVEVIEW1`` sets WAVEVIEW as the selected view.
-            - ``MATHFFT<x>`` sets MATHFFT as the selected view.
-            - ``PLOTVIEW<x>`` sets PLOTVIEW as the selected view.
-            - ``REFFFT<x>`` sets REFFFT as the selected view.
+            - ``WAVEVIEW1``
+            - ``MATHFFT<x>``
+            - ``PLOTVIEW<x>``
+            - ``REFFFT<x>``
         """
         return self._view
 
@@ -8446,6 +8487,154 @@ class DisplayPlotview1Zoom(SCPICmdRead):
         return self._yaxis
 
 
+class DisplayPlotview1YaxisScale(SCPICmdWrite, SCPICmdRead):
+    """The ``DISplay:PLOTView1:YAXIS:SCALE`` command.
+
+    **Description:**
+        - This command sets or queries the vertical scale setting for applicable plots (Linear or
+          Log) in the specified plot view.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:PLOTView1:YAXIS:SCALE?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:PLOTView1:YAXIS:SCALE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``DISplay:PLOTView1:YAXIS:SCALE value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - DISplay:PLOTView1:YAXIS:SCALE {LINEAR|LOG}
+        - DISplay:PLOTView1:YAXIS:SCALE?
+
+    **Info:**
+        - ``1`` is the Plot waveform number.
+        - ``LINEAR`` specifies a linear vertical scale.
+        - ``LOG`` specifies a logarithmic vertical scale.
+    """
+
+
+class DisplayPlotview1Yaxis(SCPICmdRead):
+    """The ``DISplay:PLOTView1:YAXIS`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:PLOTView1:YAXIS?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:PLOTView1:YAXIS?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+
+    Properties:
+        - ``.scale``: The ``DISplay:PLOTView1:YAXIS:SCALE`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._scale = DisplayPlotview1YaxisScale(device, f"{self._cmd_syntax}:SCALE")
+
+    @property
+    def scale(self) -> DisplayPlotview1YaxisScale:
+        """Return the ``DISplay:PLOTView1:YAXIS:SCALE`` command.
+
+        **Description:**
+            - This command sets or queries the vertical scale setting for applicable plots (Linear
+              or Log) in the specified plot view.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:PLOTView1:YAXIS:SCALE?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:PLOTView1:YAXIS:SCALE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``DISplay:PLOTView1:YAXIS:SCALE value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - DISplay:PLOTView1:YAXIS:SCALE {LINEAR|LOG}
+            - DISplay:PLOTView1:YAXIS:SCALE?
+
+        **Info:**
+            - ``1`` is the Plot waveform number.
+            - ``LINEAR`` specifies a linear vertical scale.
+            - ``LOG`` specifies a logarithmic vertical scale.
+        """
+        return self._scale
+
+
+class DisplayPlotview1XaxisScale(SCPICmdWrite, SCPICmdRead):
+    """The ``DISplay:PLOTView1:XAXIS:SCALE`` command.
+
+    **Description:**
+        - This command sets or queries the horizontal scale setting for applicable plots (Linear or
+          Log) for the specified plot view.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:PLOTView1:XAXIS:SCALE?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:PLOTView1:XAXIS:SCALE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``DISplay:PLOTView1:XAXIS:SCALE value``
+          command.
+
+    **SCPI Syntax:**
+
+    ::
+
+        - DISplay:PLOTView1:XAXIS:SCALE {LINEAR|LOG}
+        - DISplay:PLOTView1:XAXIS:SCALE?
+
+    **Info:**
+        - ``1`` is the Plot waveform number.
+        - ``LINEAR`` creates a plot with linear scales.
+        - ``LOG`` creates a plot with logarithmic scales.
+    """
+
+
+class DisplayPlotview1Xaxis(SCPICmdRead):
+    """The ``DISplay:PLOTView1:XAXIS`` command tree.
+
+    **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:PLOTView1:XAXIS?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:PLOTView1:XAXIS?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+
+    Properties:
+        - ``.scale``: The ``DISplay:PLOTView1:XAXIS:SCALE`` command.
+    """
+
+    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._scale = DisplayPlotview1XaxisScale(device, f"{self._cmd_syntax}:SCALE")
+
+    @property
+    def scale(self) -> DisplayPlotview1XaxisScale:
+        """Return the ``DISplay:PLOTView1:XAXIS:SCALE`` command.
+
+        **Description:**
+            - This command sets or queries the horizontal scale setting for applicable plots (Linear
+              or Log) for the specified plot view.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:PLOTView1:XAXIS:SCALE?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:PLOTView1:XAXIS:SCALE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``DISplay:PLOTView1:XAXIS:SCALE value`` command.
+
+        **SCPI Syntax:**
+
+        ::
+
+            - DISplay:PLOTView1:XAXIS:SCALE {LINEAR|LOG}
+            - DISplay:PLOTView1:XAXIS:SCALE?
+
+        **Info:**
+            - ``1`` is the Plot waveform number.
+            - ``LINEAR`` creates a plot with linear scales.
+            - ``LOG`` creates a plot with logarithmic scales.
+        """
+        return self._scale
+
+
 class DisplayPlotview1Gridlines(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:PLOTView1:GRIDlines`` command.
 
@@ -10074,6 +10263,8 @@ class DisplayPlotview1(SCPICmdRead):
         - ``.autoscale``: The ``DISplay:PLOTView1:AUTOScale`` command.
         - ``.cursor``: The ``DISplay:PLOTView1:CURSor`` command tree.
         - ``.gridlines``: The ``DISplay:PLOTView1:GRIDlines`` command.
+        - ``.xaxis``: The ``DISplay:PLOTView1:XAXIS`` command tree.
+        - ``.yaxis``: The ``DISplay:PLOTView1:YAXIS`` command tree.
         - ``.zoom``: The ``DISplay:PLOTView1:ZOOM`` command tree.
     """
 
@@ -10082,6 +10273,8 @@ class DisplayPlotview1(SCPICmdRead):
         self._autoscale = DisplayPlotview1Autoscale(device, f"{self._cmd_syntax}:AUTOScale")
         self._cursor = DisplayPlotview1Cursor(device, f"{self._cmd_syntax}:CURSor")
         self._gridlines = DisplayPlotview1Gridlines(device, f"{self._cmd_syntax}:GRIDlines")
+        self._xaxis = DisplayPlotview1Xaxis(device, f"{self._cmd_syntax}:XAXIS")
+        self._yaxis = DisplayPlotview1Yaxis(device, f"{self._cmd_syntax}:YAXIS")
         self._zoom = DisplayPlotview1Zoom(device, f"{self._cmd_syntax}:ZOOM")
 
     @property
@@ -10172,6 +10365,34 @@ class DisplayPlotview1(SCPICmdRead):
         return self._gridlines
 
     @property
+    def xaxis(self) -> DisplayPlotview1Xaxis:
+        """Return the ``DISplay:PLOTView1:XAXIS`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:PLOTView1:XAXIS?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:PLOTView1:XAXIS?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.scale``: The ``DISplay:PLOTView1:XAXIS:SCALE`` command.
+        """
+        return self._xaxis
+
+    @property
+    def yaxis(self) -> DisplayPlotview1Yaxis:
+        """Return the ``DISplay:PLOTView1:YAXIS`` command tree.
+
+        **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:PLOTView1:YAXIS?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:PLOTView1:YAXIS?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.scale``: The ``DISplay:PLOTView1:YAXIS:SCALE`` command.
+        """
+        return self._yaxis
+
+    @property
     def zoom(self) -> DisplayPlotview1Zoom:
         """Return the ``DISplay:PLOTView1:ZOOM`` command tree.
 
@@ -10185,185 +10406,6 @@ class DisplayPlotview1(SCPICmdRead):
             - ``.yaxis``: The ``DISplay:PLOTView1:ZOOM:YAXIS`` command tree.
         """
         return self._zoom
-
-
-class DisplayPlotviewItemYaxisScale(SCPICmdWrite):
-    """The ``DISplay:PLOTVIEW<x>:YAXIS:SCALE`` command.
-
-    **Description:**
-        - This command sets or queries the vertical scale setting for applicable plots (Linear or
-          Log) in the specified plot view.
-
-    **Usage:**
-        - Using the ``.write(value)`` method will send the ``DISplay:PLOTVIEW<x>:YAXIS:SCALE value``
-          command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - DISplay:PLOTVIEW<x>:YAXIS:SCALE {LINEAR|LOG}
-
-    **Info:**
-        - ``PLOTView<x>`` is the Plot waveform number.
-        - ``LINEAR`` specifies a linear vertical scale.
-        - ``LOG`` specifies a logarithmic vertical scale.
-    """
-
-
-class DisplayPlotviewItemYaxis(SCPICmdRead):
-    """The ``DISplay:PLOTVIEW<x>:YAXIS`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the ``DISplay:PLOTVIEW<x>:YAXIS?`` query.
-        - Using the ``.verify(value)`` method will send the ``DISplay:PLOTVIEW<x>:YAXIS?`` query and
-          raise an AssertionError if the returned value does not match ``value``.
-
-    Properties:
-        - ``.scale``: The ``DISplay:PLOTVIEW<x>:YAXIS:SCALE`` command.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._scale = DisplayPlotviewItemYaxisScale(device, f"{self._cmd_syntax}:SCALE")
-
-    @property
-    def scale(self) -> DisplayPlotviewItemYaxisScale:
-        """Return the ``DISplay:PLOTVIEW<x>:YAXIS:SCALE`` command.
-
-        **Description:**
-            - This command sets or queries the vertical scale setting for applicable plots (Linear
-              or Log) in the specified plot view.
-
-        **Usage:**
-            - Using the ``.write(value)`` method will send the
-              ``DISplay:PLOTVIEW<x>:YAXIS:SCALE value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - DISplay:PLOTVIEW<x>:YAXIS:SCALE {LINEAR|LOG}
-
-        **Info:**
-            - ``PLOTView<x>`` is the Plot waveform number.
-            - ``LINEAR`` specifies a linear vertical scale.
-            - ``LOG`` specifies a logarithmic vertical scale.
-        """
-        return self._scale
-
-
-class DisplayPlotviewItemXaxisScale(SCPICmdWrite):
-    """The ``DISplay:PLOTVIEW<x>:XAXIS:SCALE`` command.
-
-    **Description:**
-        - This command sets or queries the horizontal scale setting for applicable plots (Linear or
-          Log) for the specified plot view.
-
-    **Usage:**
-        - Using the ``.write(value)`` method will send the ``DISplay:PLOTVIEW<x>:XAXIS:SCALE value``
-          command.
-
-    **SCPI Syntax:**
-
-    ::
-
-        - DISplay:PLOTVIEW<x>:XAXIS:SCALE {LINEAR|LOG}
-
-    **Info:**
-        - ``PLOTView<x>`` is the Plot waveform number.
-        - ``LINEAR`` creates a plot with linear scales.
-        - ``LOG`` creates a plot with logarithmic scales.
-    """
-
-
-class DisplayPlotviewItemXaxis(SCPICmdRead):
-    """The ``DISplay:PLOTVIEW<x>:XAXIS`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the ``DISplay:PLOTVIEW<x>:XAXIS?`` query.
-        - Using the ``.verify(value)`` method will send the ``DISplay:PLOTVIEW<x>:XAXIS?`` query and
-          raise an AssertionError if the returned value does not match ``value``.
-
-    Properties:
-        - ``.scale``: The ``DISplay:PLOTVIEW<x>:XAXIS:SCALE`` command.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._scale = DisplayPlotviewItemXaxisScale(device, f"{self._cmd_syntax}:SCALE")
-
-    @property
-    def scale(self) -> DisplayPlotviewItemXaxisScale:
-        """Return the ``DISplay:PLOTVIEW<x>:XAXIS:SCALE`` command.
-
-        **Description:**
-            - This command sets or queries the horizontal scale setting for applicable plots (Linear
-              or Log) for the specified plot view.
-
-        **Usage:**
-            - Using the ``.write(value)`` method will send the
-              ``DISplay:PLOTVIEW<x>:XAXIS:SCALE value`` command.
-
-        **SCPI Syntax:**
-
-        ::
-
-            - DISplay:PLOTVIEW<x>:XAXIS:SCALE {LINEAR|LOG}
-
-        **Info:**
-            - ``PLOTView<x>`` is the Plot waveform number.
-            - ``LINEAR`` creates a plot with linear scales.
-            - ``LOG`` creates a plot with logarithmic scales.
-        """
-        return self._scale
-
-
-class DisplayPlotviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
-    """The ``DISplay:PLOTVIEW<x>`` command tree.
-
-    **Usage:**
-        - Using the ``.query()`` method will send the ``DISplay:PLOTVIEW<x>?`` query.
-        - Using the ``.verify(value)`` method will send the ``DISplay:PLOTVIEW<x>?`` query and raise
-          an AssertionError if the returned value does not match ``value``.
-
-    Properties:
-        - ``.xaxis``: The ``DISplay:PLOTVIEW<x>:XAXIS`` command tree.
-        - ``.yaxis``: The ``DISplay:PLOTVIEW<x>:YAXIS`` command tree.
-    """
-
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._xaxis = DisplayPlotviewItemXaxis(device, f"{self._cmd_syntax}:XAXIS")
-        self._yaxis = DisplayPlotviewItemYaxis(device, f"{self._cmd_syntax}:YAXIS")
-
-    @property
-    def xaxis(self) -> DisplayPlotviewItemXaxis:
-        """Return the ``DISplay:PLOTVIEW<x>:XAXIS`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the ``DISplay:PLOTVIEW<x>:XAXIS?`` query.
-            - Using the ``.verify(value)`` method will send the ``DISplay:PLOTVIEW<x>:XAXIS?`` query
-              and raise an AssertionError if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.scale``: The ``DISplay:PLOTVIEW<x>:XAXIS:SCALE`` command.
-        """
-        return self._xaxis
-
-    @property
-    def yaxis(self) -> DisplayPlotviewItemYaxis:
-        """Return the ``DISplay:PLOTVIEW<x>:YAXIS`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the ``DISplay:PLOTVIEW<x>:YAXIS?`` query.
-            - Using the ``.verify(value)`` method will send the ``DISplay:PLOTVIEW<x>:YAXIS?`` query
-              and raise an AssertionError if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.scale``: The ``DISplay:PLOTVIEW<x>:YAXIS:SCALE`` command.
-        """
-        return self._yaxis
 
 
 class DisplayPersistenceReset(SCPICmdWriteNoArguments):
@@ -10712,7 +10754,7 @@ class DisplayMathfftview1ZoomYaxis(SCPICmdRead):
         return self._to
 
 
-class DisplayMathfftview1ZoomXaxisTo(SCPICmdWrite):
+class DisplayMathfftview1ZoomXaxisTo(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:MATHFFTView1:ZOOM:XAXIS:TO`` command.
 
     **Description:**
@@ -10720,6 +10762,9 @@ class DisplayMathfftview1ZoomXaxisTo(SCPICmdWrite):
           specified Math-FFT view.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:MATHFFTView1:ZOOM:XAXIS:TO?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:MATHFFTView1:ZOOM:XAXIS:TO?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``DISplay:MATHFFTView1:ZOOM:XAXIS:TO value`` command.
 
@@ -10728,6 +10773,7 @@ class DisplayMathfftview1ZoomXaxisTo(SCPICmdWrite):
     ::
 
         - DISplay:MATHFFTView1:ZOOM:XAXIS:TO <NR3>
+        - DISplay:MATHFFTView1:ZOOM:XAXIS:TO?
 
     **Info:**
         - ``1`` is the Math-FFT waveform number.
@@ -10821,6 +10867,11 @@ class DisplayMathfftview1ZoomXaxis(SCPICmdRead):
               the specified Math-FFT view.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:MATHFFTView1:ZOOM:XAXIS:TO?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``DISplay:MATHFFTView1:ZOOM:XAXIS:TO?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``DISplay:MATHFFTView1:ZOOM:XAXIS:TO value`` command.
 
@@ -10829,6 +10880,7 @@ class DisplayMathfftview1ZoomXaxis(SCPICmdRead):
         ::
 
             - DISplay:MATHFFTView1:ZOOM:XAXIS:TO <NR3>
+            - DISplay:MATHFFTView1:ZOOM:XAXIS:TO?
 
         **Info:**
             - ``1`` is the Math-FFT waveform number.
@@ -11041,7 +11093,7 @@ class DisplayMathfftview1Xaxis(SCPICmdRead):
         return self._scale
 
 
-class DisplayMathfftview1MathMathItemState(SCPICmdWrite):
+class DisplayMathfftview1MathMathItemState(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:MATHFFTView1:MATH:MATH<x>:STATE`` command.
 
     **Description:**
@@ -11049,6 +11101,11 @@ class DisplayMathfftview1MathMathItemState(SCPICmdWrite):
           specified Math-FFT view.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:MATHFFTView1:MATH:MATH<x>:STATE?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``DISplay:MATHFFTView1:MATH:MATH<x>:STATE?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``DISplay:MATHFFTView1:MATH:MATH<x>:STATE value`` command.
 
@@ -11057,6 +11114,7 @@ class DisplayMathfftview1MathMathItemState(SCPICmdWrite):
     ::
 
         - DISplay:MATHFFTView1:MATH:MATH<x>:STATE {OFF|ON|<NR1>}
+        - DISplay:MATHFFTView1:MATH:MATH<x>:STATE?
 
     **Info:**
         - ``1`` is the Math-FFT waveform number.
@@ -11092,6 +11150,11 @@ class DisplayMathfftview1MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               specified Math-FFT view.
 
         **Usage:**
+            - Using the ``.query()`` method will send the
+              ``DISplay:MATHFFTView1:MATH:MATH<x>:STATE?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``DISplay:MATHFFTView1:MATH:MATH<x>:STATE?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``DISplay:MATHFFTView1:MATH:MATH<x>:STATE value`` command.
 
@@ -11100,6 +11163,7 @@ class DisplayMathfftview1MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         ::
 
             - DISplay:MATHFFTView1:MATH:MATH<x>:STATE {OFF|ON|<NR1>}
+            - DISplay:MATHFFTView1:MATH:MATH<x>:STATE?
 
         **Info:**
             - ``1`` is the Math-FFT waveform number.
@@ -13202,7 +13266,7 @@ class DisplayIntensity(SCPICmdRead):
         return self._backlight
 
 
-class DisplayGlobalRefItemState(SCPICmdWrite):
+class DisplayGlobalRefItemState(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:GLObal:REF<x>:STATE`` command.
 
     **Description:**
@@ -13213,6 +13277,9 @@ class DisplayGlobalRefItemState(SCPICmdWrite):
           already.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:GLObal:REF<x>:STATE?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:REF<x>:STATE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DISplay:GLObal:REF<x>:STATE value``
           command.
 
@@ -13221,6 +13288,7 @@ class DisplayGlobalRefItemState(SCPICmdWrite):
     ::
 
         - DISplay:GLObal:REF<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:GLObal:REF<x>:STATE?
 
     **Info:**
         - ``REF<x>`` is the Reference waveform number.
@@ -13262,6 +13330,9 @@ class DisplayGlobalRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               waveform is added already.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:GLObal:REF<x>:STATE?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:REF<x>:STATE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DISplay:GLObal:REF<x>:STATE value``
               command.
 
@@ -13270,6 +13341,7 @@ class DisplayGlobalRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         ::
 
             - DISplay:GLObal:REF<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:GLObal:REF<x>:STATE?
 
         **Info:**
             - ``REF<x>`` is the Reference waveform number.
@@ -13281,7 +13353,7 @@ class DisplayGlobalRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._state
 
 
-class DisplayGlobalMathItemState(SCPICmdWrite):
+class DisplayGlobalMathItemState(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:GLObal:MATH<x>:STATE`` command.
 
     **Description:**
@@ -13291,6 +13363,9 @@ class DisplayGlobalMathItemState(SCPICmdWrite):
           command only works if the specified math waveform is added already.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:GLObal:MATH<x>:STATE?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:MATH<x>:STATE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DISplay:GLObal:MATH<x>:STATE value``
           command.
 
@@ -13299,6 +13374,7 @@ class DisplayGlobalMathItemState(SCPICmdWrite):
     ::
 
         - DISplay:GLObal:MATH<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:GLObal:MATH<x>:STATE?
 
     **Info:**
         - ``<NR1>`` = 0 disables the display of the specified math; any other value enables display
@@ -13336,6 +13412,9 @@ class DisplayGlobalMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               already.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:GLObal:MATH<x>:STATE?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:MATH<x>:STATE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``DISplay:GLObal:MATH<x>:STATE value`` command.
 
@@ -13344,6 +13423,7 @@ class DisplayGlobalMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         ::
 
             - DISplay:GLObal:MATH<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:GLObal:MATH<x>:STATE?
 
         **Info:**
             - ``<NR1>`` = 0 disables the display of the specified math; any other value enables
@@ -13354,7 +13434,7 @@ class DisplayGlobalMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._state
 
 
-class DisplayGlobalDchItemState(SCPICmdWrite):
+class DisplayGlobalDchItemState(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:GLObal:DCH<x>:STATE`` command.
 
     **Description:**
@@ -13364,6 +13444,9 @@ class DisplayGlobalDchItemState(SCPICmdWrite):
           waveform view. This command only works if the specified channel is added already.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:GLObal:DCH<x>:STATE?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:DCH<x>:STATE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DISplay:GLObal:DCH<x>:STATE value``
           command.
 
@@ -13372,6 +13455,7 @@ class DisplayGlobalDchItemState(SCPICmdWrite):
     ::
 
         - DISplay:GLObal:DCH<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:GLObal:DCH<x>:STATE?
 
     **Info:**
         - ``DCH<x>`` = specifies the digital channel. The supported value is 1.
@@ -13413,6 +13497,9 @@ class DisplayGlobalDchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               already.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:GLObal:DCH<x>:STATE?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:DCH<x>:STATE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DISplay:GLObal:DCH<x>:STATE value``
               command.
 
@@ -13421,6 +13508,7 @@ class DisplayGlobalDchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         ::
 
             - DISplay:GLObal:DCH<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:GLObal:DCH<x>:STATE?
 
         **Info:**
             - ``DCH<x>`` = specifies the digital channel. The supported value is 1.
@@ -13432,7 +13520,7 @@ class DisplayGlobalDchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._state
 
 
-class DisplayGlobalChannelState(SCPICmdWrite):
+class DisplayGlobalChannelState(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:GLObal:CH<x>:STATE`` command.
 
     **Description:**
@@ -13443,6 +13531,9 @@ class DisplayGlobalChannelState(SCPICmdWrite):
           already.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:GLObal:CH<x>:STATE?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:CH<x>:STATE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DISplay:GLObal:CH<x>:STATE value``
           command.
 
@@ -13451,6 +13542,7 @@ class DisplayGlobalChannelState(SCPICmdWrite):
     ::
 
         - DISplay:GLObal:CH<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:GLObal:CH<x>:STATE?
 
     **Info:**
         - ``<NR1>`` = 0 disables the display of the specified channel; any other value enables
@@ -13488,6 +13580,9 @@ class DisplayGlobalChannel(ValidatedChannel, SCPICmdRead):
               channel is added already.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:GLObal:CH<x>:STATE?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:CH<x>:STATE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DISplay:GLObal:CH<x>:STATE value``
               command.
 
@@ -13496,6 +13591,7 @@ class DisplayGlobalChannel(ValidatedChannel, SCPICmdRead):
         ::
 
             - DISplay:GLObal:CH<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:GLObal:CH<x>:STATE?
 
         **Info:**
             - ``<NR1>`` = 0 disables the display of the specified channel; any other value enables
@@ -13506,7 +13602,7 @@ class DisplayGlobalChannel(ValidatedChannel, SCPICmdRead):
         return self._state
 
 
-class DisplayGlobalBItemState(SCPICmdWrite):
+class DisplayGlobalBItemState(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:GLObal:B<x>:STATE`` command.
 
     **Description:**
@@ -13516,6 +13612,9 @@ class DisplayGlobalBItemState(SCPICmdWrite):
           command only works if the specified bus is added already.
 
     **Usage:**
+        - Using the ``.query()`` method will send the ``DISplay:GLObal:B<x>:STATE?`` query.
+        - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:B<x>:STATE?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DISplay:GLObal:B<x>:STATE value``
           command.
 
@@ -13524,6 +13623,7 @@ class DisplayGlobalBItemState(SCPICmdWrite):
     ::
 
         - DISplay:GLObal:B<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:GLObal:B<x>:STATE?
 
     **Info:**
         - ``<NR1>`` = 0 disables the display of the specified bus; any other value enables display
@@ -13560,6 +13660,9 @@ class DisplayGlobalBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               waveform view. This command only works if the specified bus is added already.
 
         **Usage:**
+            - Using the ``.query()`` method will send the ``DISplay:GLObal:B<x>:STATE?`` query.
+            - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:B<x>:STATE?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DISplay:GLObal:B<x>:STATE value``
               command.
 
@@ -13568,6 +13671,7 @@ class DisplayGlobalBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         ::
 
             - DISplay:GLObal:B<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:GLObal:B<x>:STATE?
 
         **Info:**
             - ``<NR1>`` = 0 disables the display of the specified bus; any other value enables
@@ -13885,13 +13989,12 @@ class Display(SCPICmdRead):
         - ``.intensity``: The ``DISplay:INTENSITy`` command.
         - ``.mathfftview1``: The ``DISplay:MATHFFTView1`` command tree.
         - ``.persistence``: The ``DISplay:PERSistence`` command.
-        - ``.plotview``: The ``DISplay:PLOTVIEW<x>`` command tree.
         - ``.plotview1``: The ``DISplay:PLOTView1`` command tree.
         - ``.reffftview``: The ``DISplay:REFFFTView<x>`` command tree.
         - ``.select``: The ``DISplay:SELect`` command tree.
         - ``.varpersist``: The ``DISplay:VARpersist`` command.
-        - ``.waveview1``: The ``DISplay:WAVEView1`` command tree.
         - ``.waveview``: The ``DISplay:WAVEView`` command tree.
+        - ``.waveview1``: The ``DISplay:WAVEView1`` command tree.
         - ``.waveform``: The ``DISplay:WAVEform`` command.
         - ``.ch``: The ``DISplay:CH<x>`` command tree.
         - ``.math``: The ``DISplay:Math<x>`` command tree.
@@ -13905,9 +14008,6 @@ class Display(SCPICmdRead):
         self._intensity = DisplayIntensity(device, f"{self._cmd_syntax}:INTENSITy")
         self._mathfftview1 = DisplayMathfftview1(device, f"{self._cmd_syntax}:MATHFFTView1")
         self._persistence = DisplayPersistence(device, f"{self._cmd_syntax}:PERSistence")
-        self._plotview: Dict[int, DisplayPlotviewItem] = DefaultDictPassKeyToFactory(
-            lambda x: DisplayPlotviewItem(device, f"{self._cmd_syntax}:PLOTVIEW{x}")
-        )
         self._plotview1 = DisplayPlotview1(device, f"{self._cmd_syntax}:PLOTView1")
         self._reffftview: Dict[int, DisplayReffftviewItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayReffftviewItem(device, f"{self._cmd_syntax}:REFFFTView{x}")
@@ -14054,21 +14154,6 @@ class Display(SCPICmdRead):
         return self._persistence
 
     @property
-    def plotview(self) -> Dict[int, DisplayPlotviewItem]:
-        """Return the ``DISplay:PLOTVIEW<x>`` command tree.
-
-        **Usage:**
-            - Using the ``.query()`` method will send the ``DISplay:PLOTVIEW<x>?`` query.
-            - Using the ``.verify(value)`` method will send the ``DISplay:PLOTVIEW<x>?`` query and
-              raise an AssertionError if the returned value does not match ``value``.
-
-        Sub-properties:
-            - ``.xaxis``: The ``DISplay:PLOTVIEW<x>:XAXIS`` command tree.
-            - ``.yaxis``: The ``DISplay:PLOTVIEW<x>:YAXIS`` command tree.
-        """
-        return self._plotview
-
-    @property
     def plotview1(self) -> DisplayPlotview1:
         """Return the ``DISplay:PLOTView1`` command tree.
 
@@ -14081,6 +14166,8 @@ class Display(SCPICmdRead):
             - ``.autoscale``: The ``DISplay:PLOTView1:AUTOScale`` command.
             - ``.cursor``: The ``DISplay:PLOTView1:CURSor`` command tree.
             - ``.gridlines``: The ``DISplay:PLOTView1:GRIDlines`` command.
+            - ``.xaxis``: The ``DISplay:PLOTView1:XAXIS`` command tree.
+            - ``.yaxis``: The ``DISplay:PLOTView1:YAXIS`` command tree.
             - ``.zoom``: The ``DISplay:PLOTView1:ZOOM`` command tree.
         """
         return self._plotview1
@@ -14177,10 +14264,10 @@ class Display(SCPICmdRead):
               raise an AssertionError if the returned value does not match ``value``.
 
         Sub-properties:
-            - ``.dch``: The ``DISplay:WAVEView1:DCH<x>`` command tree.
             - ``.bus``: The ``DISplay:WAVEView1:BUS`` command tree.
             - ``.ch``: The ``DISplay:WAVEView1:CH<x>`` command tree.
             - ``.cursor``: The ``DISplay:WAVEView1:CURSor`` command.
+            - ``.dch``: The ``DISplay:WAVEView1:DCH<x>`` command tree.
             - ``.filter``: The ``DISplay:WAVEView1:FILTer`` command.
             - ``.graticule``: The ``DISplay:WAVEView1:GRAticule`` command.
             - ``.intensity``: The ``DISplay:WAVEView1:INTENSITy`` command tree.

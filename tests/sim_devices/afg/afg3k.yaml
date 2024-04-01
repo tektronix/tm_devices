@@ -1,7 +1,7 @@
 ---
 spec: '1.1'
 devices:
-  afg3252:
+  afg3051:
     eom:
       USB INSTR:
         q: "\n"
@@ -14,7 +14,7 @@ devices:
         r: "\n"
     dialogues:
       - q: '*IDN?'
-        r: TEKTRONIX,AFG3252,C022738,SCPI:99.0 FV:3.2.3
+        r: TEKTRONIX,AFG3051,C022738,SCPI:99.0 FV:3.2.3
       - q: '*OPC?'
         r: '1'
       - q: '*RST'

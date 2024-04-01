@@ -7,6 +7,7 @@ Description:
 
 Converted to Python tm_devices script. DCA 4.7.23
 """
+
 import time
 
 from tm_devices import DeviceManager
@@ -24,7 +25,7 @@ POINTS = 10
 LIMIT = 7
 
 with DeviceManager(verbose=True) as dm:
-    inst: SMU2460 = dm.add_smu(RESOURCE_ID)  # pyright: ignore[reportGeneralTypeIssues]
+    inst: SMU2460 = dm.add_smu(RESOURCE_ID)  # pyright: ignore[reportAssignmentType]
 
     # Set to current source and set up source config list
     inst.commands.smu.source.configlist.create("OutputList")
@@ -78,12 +79,13 @@ with DeviceManager(verbose=True) as dm:
     inst.commands.trigger.model.setblock_trigger_block_wait(3, "trigger.EVENT_TIMER1")
     inst.commands.trigger.model.setblock_trigger_block_config_recall(4, "OutputList")
     inst.commands.trigger.model.setblock_trigger_block_delay_constant(
-        5, MEASURE_DELAY  # type: ignore
+        5,
+        MEASURE_DELAY,  # type: ignore[arg-type]
     )
     inst.commands.trigger.model.setblock_trigger_block_measure_digitize(6)
     inst.commands.trigger.model.setblock_trigger_block_wait(7, "trigger.EVENT_TIMER2")
     inst.commands.trigger.model.setblock_trigger_block_config_next(8, "OutputList")
-    inst.commands.trigger.model.setblock_trigger_block_branch_counter(9, POINTS, 3)  # type: ignore
+    inst.commands.trigger.model.setblock_trigger_block_branch_counter(9, POINTS, 3)  # type: ignore[arg-type]
     inst.commands.trigger.model.setblock_trigger_block_source_output(10, inst.commands.smu.OFF)
 
     # Start the trigger model

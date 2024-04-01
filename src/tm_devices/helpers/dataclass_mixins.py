@@ -1,4 +1,5 @@
 """Module containing helper mixins for dataclasses."""
+
 import operator
 
 from enum import Enum
