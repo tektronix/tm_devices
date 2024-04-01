@@ -459,12 +459,44 @@ class Device(ABC, metaclass=abc.ABCMeta):
             device_manager.cleanup_all_devices()
         device_manager.remove_device(alias="bad-afg")
 
+    def test_warnings(self, device_manager: DeviceManager) -> None:
+        """Verify some of the warning printouts that the DeviceManager can log.
+
+        Args:
+            device_manager: The DeviceManager object.
+        """
+        # Remove all previous devices
+        device_manager.remove_all_devices()
+        # Test the warning logged with bad read_stb() call
+        with mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read_stb",
+            mock.MagicMock(side_effect=visa.VisaIOError(pyvisa.constants.VI_ERROR_INV_SETUP)),
+        ), pytest.warns(
+            UserWarning,
+            match="A VISA IO error occurred when attempting to read the status byte or "
+            "clear the output buffer of the resource",
+        ):
+            device_manager.add_afg("afg3kc-hostname", alias="warning_bad_read_stb")
+        device_manager.remove_device(alias="warning_bad_read_stb")
+
+        # Test the warning logged with message available (MAV) bit set
+        # patched the stb to return 16 (message available)
+        with mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read_stb",
+            mock.MagicMock(return_value=16),
+        ), pytest.warns(
+            UserWarning, match="had data sitting in the VISA Output Buffer on first connection."
+        ):
+            device_manager.add_afg("afg3kc-hostname", alias="warning_mav")
+        device_manager.remove_device(alias="warning_mav")
+
     def test_exceptions(self, device_manager: DeviceManager) -> None:
         """Verify some of the exceptions that the DeviceManager can raise.
 
         Args:
             device_manager: The DeviceManager object.
         """
+        # Remove all previous devices
         device_manager.remove_all_devices()
 
         # Test getting a device type that was not the specified type
@@ -502,7 +534,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
             mock.MagicMock(return_value=5),
         ), mock.patch(
             "pyvisa.resources.messagebased.MessageBasedResource.read",
-            mock.MagicMock(side_effect=visa.VisaIOError(pyvisa.constants.StatusCode.error_timeout)),
+            mock.MagicMock(side_effect=visa.VisaIOError(pyvisa.constants.VI_ERROR_TMO)),
         ):
             # patched the stb to return 16 (message available)
             with pytest.warns(UserWarning), pytest.raises(SystemError) as error:

@@ -5,7 +5,7 @@ from tm_devices.drivers import AWG5K
 
 with DeviceManager(verbose=True) as dm:
     # Create a connection to the scope and indicate that it is an AWG5K for type hinting.
-    awg5k: AWG5K = dm.add_awg("192.168.0.1")  # pyright: ignore[reportAssignmentType]
+    awg5k: AWG5K = dm.add_awg("192.168.0.1")
 
     # Set the offset to 0.5 on SOURCE1 of the AWG5K
     awg5k.source_channel["SOURCE1"].set_offset(0.5)

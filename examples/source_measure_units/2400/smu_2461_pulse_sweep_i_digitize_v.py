@@ -4,13 +4,13 @@ It starts at -10mA and stop at 10mA The Model 2461 current source creates 201 pu
 constantly taking digitizer readings at a rate of 500,000 samples per second. The application is set
 up to make 500us pulses with 500us of off time after each pulse.
 
-The Model 2461's pulse commands are used to generate the trigger model necessary for pulsing. All of
+The Model 2461's pulse commands are used to generate the trigger model necessary for pulsing. All
 the source and measure settings are configured before the pulse command
 (smu.source.pulsesweeplinear) is sent to the instrument. The pulse command accepts a lot of
-arguments so the the arguments are stored in variables to make them easier to read.
+arguments so the arguments are stored in variables to make them easier to read.
 """
 
-from typing import cast, List
+from typing import List
 
 from tm_devices import DeviceManager
 from tm_devices.drivers import SMU2461
@@ -18,9 +18,7 @@ from tm_devices.drivers import SMU2461
 with DeviceManager() as device_manager:
     print(device_manager.get_available_devices())
 
-    smu2461: SMU2461 = cast(
-        SMU2461, device_manager.add_smu("TCPIP::0.0.0.0::inst0::INSTR", alias="my2461")
-    )  # 192.168.0.2
+    smu2461: SMU2461 = device_manager.add_smu("TCPIP::0.0.0.0::inst0::INSTR", alias="my2461")
 
     # Reset the instrument
     smu2461.commands.reset()

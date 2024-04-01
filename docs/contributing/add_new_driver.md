@@ -32,19 +32,17 @@ This guide will walk through the steps needed to add a new device driver.
     `tm_devices/drivers/__init__.py`
 07. Update the `__all__` variable inside `tm_devices/drivers/__init__.py` to
     include the new device driver
-08. Update the appropriate Type Alias in `device_manager.py` (search for "Type
-    Aliases")
-09. If the device supports VISA USBTMC communication, update the
+08. If the device supports VISA USBTMC communication, update the
     `USB_MODEL_ID_LOOKUP` lookup exposed in `tm_devices/helpers/__init__.py`
-10. Update the Supported Devices section in `README.rst` to include the new model
-11. Update unit tests (and simulated device files)
+09. Update the Supported Devices section in `README.rst` to include the new model
+10. Update unit tests (and simulated device files)
     1. Add a new simulated device driver in the correct folder within
        `tests/sim_devices`
     2. Update `tests/sim_devices/devices.yaml` with a new resource for the new
        driver (Make sure the device name is correct in the `devices.yaml` and in
        the corresponding simulated device file)
     3. Update `tests/test_all_device_drivers.py` with the new simulated resource
-12. Run the `tests/verify_physical_device_support.py` script targeting a
+11. Run the `tests/verify_physical_device_support.py` script targeting a
     physical device that will use the newly created driver to verify it is
     working properly.
 

@@ -5,7 +5,7 @@ from tm_devices.drivers import MSO5
 
 with DeviceManager(verbose=True) as dm:
     # Create a connection to the scope and indicate that it is a MSO5 scope for type hinting
-    scope: MSO5 = dm.add_scope("192.168.1.102")  # pyright: ignore[reportAssignmentType]
+    scope: MSO5 = dm.add_scope("192.168.1.102")
 
     # Generate the signal using individual PI commands.
     scope.commands.afg.frequency.write(10e6)  # set frequency

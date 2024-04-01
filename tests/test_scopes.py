@@ -41,9 +41,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     """
     device_manager.remove_all_devices()
     # Verify hostname can be determined when only the IP is provided
-    scope: MSO5 = cast(
-        MSO5, device_manager.add_scope("MSO56-SERIAL1", alias="mso56", connection_type="USB")
-    )
+    scope: MSO5 = device_manager.add_scope("MSO56-SERIAL1", alias="mso56", connection_type="USB")
 
     # cheeky super() call for coverage of USB connection type on Device's hostname implementation
     assert super(TekScope, scope).hostname == ""
@@ -221,9 +219,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     assert scope.get_eventlog_status() == (True, '0,"No events to report - queue empty"')
 
     # MSO2 overridden channel names implementation
-    mso2_scope: MSO2 = cast(
-        MSO2, device_manager.add_scope("MSO22-HOSTNAME", connection_type="TCPIP")
-    )
+    mso2_scope: MSO2 = device_manager.add_scope("MSO22-HOSTNAME", connection_type="TCPIP")
     # Assert 2 series device was added and aliased properly (TCPIP)
     assert mso2_scope.hostname == "MSO22-200201"
     assert id(device_manager.get_scope(number_or_alias=mso2_scope.device_number)) == id(mso2_scope)
@@ -413,9 +409,7 @@ def test_tekscope70k(device_manager: DeviceManager, capsys: pytest.CaptureFixtur
     assert str(error.value.args[0]) == "``.reboot()`` is not yet implemented for the MSO70K driver"
 
     # get coverage for different IDN format
-    scope_70k: MSO70KDX = cast(
-        MSO70KDX, device_manager.add_scope("MSO70KDX-HOSTNAME", alias="mso70k")
-    )
+    scope_70k: MSO70KDX = device_manager.add_scope("MSO70KDX-HOSTNAME", alias="mso70k")
     assert scope_70k.sw_version == Version("10.99.1")
 
     # Assert the total number of analog channels.
@@ -483,7 +477,7 @@ def test_tekscopesw(device_manager: DeviceManager) -> None:
     Args:
         device_manager: The DeviceManager object.
     """
-    scope: TekScopeSW = cast(TekScopeSW, device_manager.add_scope("TEKSCOPESW-HOSTNAME"))
+    scope: TekScopeSW = device_manager.add_scope("TEKSCOPESW-HOSTNAME")
     # Assert TekScopeSW device was added and aliased properly
     assert scope.hostname == "hostname"
     assert id(device_manager.get_scope(number_or_alias=scope.device_number)) == id(scope)

@@ -36,7 +36,7 @@ FORMAT_ERROR_MESSAGE_WAVEFORM_LENGTH = (
 
 with DeviceManager(verbose=True) as dm:
     # Create a connection to the scope and indicate that it is an AWG5K for type hinting.
-    awg5k: AWG5K = dm.add_awg("192.168.0.1")  # pyright: ignore[reportAssignmentType]
+    awg5k: AWG5K = dm.add_awg("192.168.0.1")
 
     # Get the device constraints for generating the desired function on an AWG5K.
     awg5k_constraints_function = awg5k.get_waveform_constraints(function=DESIRED_FUNCTION)

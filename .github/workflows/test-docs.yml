@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 18  # The node version needs to stay in sync with .readthedocs.yml
+          node-version: 20  # The node version needs to stay in sync with .readthedocs.yml
       - run: npm install -g @mermaid-js/mermaid-cli
       - run: sudo apt install --no-install-recommends --assume-yes graphviz
       - name: Set up Python

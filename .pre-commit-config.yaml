@@ -34,14 +34,14 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.28.0
+    rev: 0.28.1
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
       - id: check-github-actions
       - id: check-github-workflows
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.18.2
+    rev: v3.21.3
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -68,13 +68,8 @@ repos:
           - mdformat-config
           - mdformat-shfmt
           - mdformat-web
-#          - mdformat-admon  # covered by mdformat-myst
-#          - mdformat-deflist  # covered by mdformat-myst
-#          - mdformat-footnote  # covered by mdformat-myst
-#          - mdformat-frontmatter  # covered by mdformat-myst
           - mdformat-gfm
           - mdformat-myst
-#          - mdformat-tables  # covered by mdformat-myst
           - mdformat-toc
 # Currently rstcheck doesn't work with the templates
 #  - repo: https://github.com/rstcheck/rstcheck
@@ -128,7 +123,7 @@ repos:
         always_run: true
         args: [., --min=10]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.3.2
+    rev: v0.3.4
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
