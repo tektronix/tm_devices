@@ -26,6 +26,7 @@ jobs:
           - .github/dependabot.yml
           - .github/workflows/codeql-analysis.yml
     steps:
+      - uses: actions/checkout@v4
       - name: Ensure ${{ matrix.filename }} exists
         uses: andstor/file-existence-action@v3
         with:
