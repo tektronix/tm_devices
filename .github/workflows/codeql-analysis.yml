@@ -8,6 +8,7 @@ on:
     branches: [main]
   schedule:
     - cron: 17 16 * * 4
+  workflow_call:
 jobs:
   analyze:
     name: Analyze
@@ -19,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [python]
+        language: [python, javascript]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

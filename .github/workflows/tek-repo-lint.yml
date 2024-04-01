@@ -6,6 +6,7 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+  workflow_call:
 # IMPORTANT: Any new jobs need to be added to the check-repo-lint-passed job to ensure they correctly gate code changes
 jobs:
   enforce-community-standards:

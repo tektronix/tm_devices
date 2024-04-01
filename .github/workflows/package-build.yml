@@ -6,12 +6,20 @@ on:
     tags: ['*']
   pull_request:
     branches: [main]
+  workflow_call:
+    inputs:
+      package-name:
+        description: The name of the package being installed.
+        required: true
+        type: string
 jobs:
   # Verify the package builds fine
   build-package:
     name: Build package
     runs-on: ubuntu-latest
     environment: package-build
+    env:
+      PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -26,8 +34,8 @@ jobs:
       - name: Test installing wheel
         run: |
           pip install ${{ steps.build-pkg.outputs.dist }}/*.whl
-          pip uninstall --yes tm_devices
+          pip uninstall --yes "$PACKAGE_NAME"
       - name: Test installing tarball
         run: |-
           pip install ${{ steps.build-pkg.outputs.dist }}/*.tar.gz
-          pip uninstall --yes tm_devices
+          pip uninstall --yes "$PACKAGE_NAME"
