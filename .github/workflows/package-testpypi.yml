@@ -21,7 +21,7 @@ jobs:
           python-version: x
           check-latest: true
       - name: Install workflow dependencies
-        run: pip install poetry-core tomli tomli_w requests
+        run: pip install -r scripts/requirements.txt
       - name: Create unique package version
         id: create-version
         run: |
@@ -32,7 +32,7 @@ jobs:
           python scripts/project_version.py --set-version=$NEW_VERSION
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
       - name: Build package
-        uses: hynek/build-and-inspect-python-package@v2.0.2
+        uses: hynek/build-and-inspect-python-package@v2.2.0
     outputs:
       built-version: ${{ steps.create-version.outputs.NEW_VERSION }}
   test-pypi-upload:

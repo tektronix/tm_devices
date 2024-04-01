@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: hynek/build-and-inspect-python-package@v2.0.2
+      - uses: hynek/build-and-inspect-python-package@v2.2.0
         id: build-pkg
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -34,8 +34,8 @@ jobs:
       - name: Test installing wheel
         run: |
           pip install ${{ steps.build-pkg.outputs.dist }}/*.whl
-          pip uninstall --yes "${{ env.PACKAGE_NAME }}"
+          pip uninstall --yes "$PACKAGE_NAME"
       - name: Test installing tarball
         run: |-
           pip install ${{ steps.build-pkg.outputs.dist }}/*.tar.gz
-          pip uninstall --yes "${{ env.PACKAGE_NAME }}"
+          pip uninstall --yes "$PACKAGE_NAME"
