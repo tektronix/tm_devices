@@ -1,0 +1,9 @@
+poetry
+poetry-core
+pre-commit
+pre-commit-update
+requests
+toml-sort
+tomli
+tomli_w
+yamlfix

@@ -21,7 +21,7 @@ jobs:
           python-version: x
           check-latest: true
       - name: Install workflow dependencies
-        run: pip install poetry-core tomli tomli_w requests
+        run: pip install -r scripts/requirements.txt
       - name: Create unique package version
         id: create-version
         run: |
