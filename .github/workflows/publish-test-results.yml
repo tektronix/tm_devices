@@ -14,7 +14,7 @@ jobs:
           echo ${{ github.event.workflow_run.event }}
   publish-test-results:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.event.name == 'pull_request' && !contains(fromJSON('["skipped", "cancelled"]'), github.event.workflow_run.conclusion) }}
+    if: ${{ github.event.workflow_run.event == 'pull_request' && !contains(fromJSON('["skipped", "cancelled"]'), github.event.workflow_run.conclusion) }}
     strategy:
       fail-fast: false
       matrix:
