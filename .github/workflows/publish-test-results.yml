@@ -31,6 +31,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v3.1.4
         with:
           run_id: ${{ github.event.workflow_run.id }}
+          name: artifact_${{ matrix.os_name }}_tests
           path: artifacts
       - name: Fetch PR number
         id: pr
