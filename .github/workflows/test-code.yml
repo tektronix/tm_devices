@@ -55,6 +55,7 @@ jobs:
     runs-on: ${{ matrix.os_name }}-latest
     env:
       REPO_NAME: tektronix/${{ inputs.repo-name || 'tm_devices' }}
+      pytest_report_title: Test Results (${{ matrix.os_name }})
     strategy:
       fail-fast: false
       matrix:
@@ -94,10 +95,30 @@ jobs:
           files: ./.coverage_tests.xml
           name: codecov-${{ matrix.os_name }}
           fail_ci_if_error: true
+  create-job-summary:
+    name: Test Results
+    if: ${{ !cancelled() }}
+    needs: test-fast
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Generate Summary
+        uses: phoenix-actions/test-reporting@v13
+        with:
+          name: Test Results
+          only-summary: false
+          output-to: step-summary
+          path: artifacts/**/.results_tests/results.xml
+          reporter: java-junit
+          fail-on-error: false
+          max-annotations: 0
   # Check that all jobs passed
   check-tests-passed:
     if: ${{ !cancelled() }}
-    needs: [test-general, test-fast]
+    needs: [test-general, test-fast, create-job-summary]
     runs-on: ubuntu-latest
     steps:
       - name: Decide whether the needed jobs succeeded or failed
