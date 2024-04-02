@@ -4,12 +4,21 @@ name: Publish to TestPyPI
 on:
   push:
     branches: [main]
+  workflow_call:
+    inputs:
+      package-name:
+        description: The name of the package to use to gate uploads.
+        required: true
+        type: string
 concurrency:
   group: pypi
+env:
+  REPO_NAME: tektronix/${{ inputs.package-name || 'tm_devices' }}
+  PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
 jobs:
   test-pypi-build:
     name: Build package with unique version for test.pypi.org
-    if: github.repository == 'tektronix/tm_devices'
+    if: github.repository == env.REPO_NAME
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,7 +34,7 @@ jobs:
       - name: Create unique package version
         id: create-version
         run: |
-          CURRENT_VERSION=$(python scripts/pypi_latest_version.py --package=tm_devices --index=test.pypi)
+          CURRENT_VERSION=$(python scripts/pypi_latest_version.py --package="$PACKAGE_NAME" --index=test.pypi)
           echo CURRENT_VERSION: $CURRENT_VERSION
           NEW_VERSION=$(python scripts/create_post_version_for_testpypi.py --version=$CURRENT_VERSION)
           echo NEW_VERSION: $NEW_VERSION
@@ -38,7 +47,7 @@ jobs:
   test-pypi-upload:
     name: Upload package to test.pypi.org
     needs: test-pypi-build
-    if: github.repository == 'tektronix/tm_devices'
+    if: github.repository == env.REPO_NAME
     runs-on: ubuntu-latest
     environment: package-testpypi
     permissions:
@@ -56,7 +65,7 @@ jobs:
   test-pypi-install:
     name: Install package from test.pypi.org
     needs: [test-pypi-build, test-pypi-upload]
-    if: github.repository == 'tektronix/tm_devices'
+    if: github.repository == env.REPO_NAME
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python
@@ -73,4 +82,4 @@ jobs:
           retry_wait_seconds: 30
           warning_on_retry: false
           command: pip install --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple
-            tm_devices==${{ needs.test-pypi-build.outputs.built-version }}
+            "$PACKAGE_NAME==${{ needs.test-pypi-build.outputs.built-version }}"
