@@ -109,6 +109,7 @@ pyright = "1.1.356"  # Update this by running scripts/update_development_depende
 pyroma = ">=4.2"
 pytest = ">=7.1.2"
 pytest-cov = ">=3.0.0"
+pytest-github-report = ">=0.0.1"
 pytest-html = ">=4.0"
 pytest-order = ">=1.0.1"
 pytest-profiling = ">=1.7.0"
@@ -433,6 +434,12 @@ commands =
 basepython = python
 deps =
     -rtests/requirements.txt
+passenv =
+    pytest_report_title
+setenv =
+    pytest_github_report = true
+    pytest_use_blanks = true
+    GITHUB_STEP_SUMMARY = {tox_root}/.results_{envname}/github_report.md
 commands_pre =
 
 [testenv:docs]
