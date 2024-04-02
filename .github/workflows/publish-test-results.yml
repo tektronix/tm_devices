@@ -19,6 +19,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
+          pattern: '*artifact_${{ matrix.os_name }}_tests*'
           path: artifacts
       - name: Publish Test Results
         uses: marocchino/sticky-pull-request-comment@v2
