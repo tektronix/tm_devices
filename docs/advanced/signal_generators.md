@@ -387,7 +387,7 @@ All waveforms must be of the same length on requesting AWGCONTROL:RUN.
 #### Constraints:
 
 The AWG5K series offers a upper sample rate range from 600 MS/s to 1.2 GS/s dependent on the model number. The amplitude range is dependent on
-the signal output path, and if the direct option is selected, it will reduce the amplitude range to 50mV to 1 V and the
+the signal output path, and if the direct option is selected, it will reduce the amplitude range to 20mV to 0.6 V and the
 offset to 0. Otherwise, the amplitude ranges from 20 mV to 2.25 V and an offset range of plus or minus 2.25 V.
 
 ```{table} AWG5K Constraints
@@ -396,11 +396,11 @@ widths: auto
 width: 50%
 align: center
 ---
-|                   | 500x/B/C   | AWG501x/B/C |
-| ----------------- | ---------- | ----------- |
-| Sample Rate (S/s) | 10M–600M   | 10M–1.2M    |
-| Amplitude (V)     | 20m–2.25   | 20m–2.25    |
-| Offset (V)        | -2.25–2.25 | -2.25–2.25  |
+|                   | 500x/B/C   | 501x/B/C    | 5xxx/B/C DIR |
+| ----------------- | ---------- | ----------- | ------------ |
+| Sample Rate (S/s) | 10M–600M   | 10M–1.2M    | "            |
+| Amplitude (V)     | 20m–2.25   | 20m–2.25    | 20m-0.6      |
+| Offset (V)        | -2.25–2.25 | -2.25–2.25  | N/A          |
 
 ```
 
@@ -437,11 +437,11 @@ widths: auto
 width: 50%
 align: center
 ---
-|                   | 7102 OPT 06  | 7122B/C OPT 06 | 7xxx OPT 02 |
-| ----------------- | ------------ | -------------- | ----------- |
-| Sample Rate (S/s) | 10M–20G[^SA] | 10M–24G[^SA]   | "           |
-| Amplitude (V)     | 0.5–1.0      | 0.5–1.0        | 0.5–1.0     |
-| Offset (V)        | N/A          | N/A            | N/A         |
+|                   | 7102 OPT 06  | 7122B/C OPT 06 | 7xxx/B/C OPT 02 | 7xxx/B/C DIR  |
+| ----------------- | ------------ | -------------- | --------------- | ------------- |
+| Sample Rate (S/s) | 10M–20G[^SA] | 10M–24G[^SA]   | "               | "             |
+| Amplitude (V)     | 0.5–1.0      | 0.5–1.0        | 0.5–1.0         | 50m-1.0       |
+| Offset (V)        | N/A          | N/A            | N/A             | N/A           |
 
 [^SA]: Samples rates higher than 10GS/S(12GS/s for B/C) can only be done through Interleave.
 
@@ -468,11 +468,11 @@ widths: auto
 width: 50%
 align: center
 ---
-|                   | OPT 25      | OPT 50      | OPT DC         |
-| ----------------- | ----------- | ----------- | -------------- |
-| Sample Rate (S/s) | 0.298k–2.5G | 0.298k–5.0G | "              |
-| Amplitude (V)     | 25m–0.75    | 25m–0.75    | 25m–1.5        |
-| Offset (V)        | -2–2        | -2–2        | -2–2           |
+|                   | OPT 25      | OPT 50      | OPT DC         | 52xx DCHV |
+| ----------------- | ----------- | ----------- | -------------- | --------- |
+| Sample Rate (S/s) | 0.298k–2.5G | 0.298k–5.0G | "              | "         |
+| Amplitude (V)     | 25m–0.75    | 25m–0.75    | 25m–1.5        | 10m-5.0   |
+| Offset (V)        | -2–2        | -2–2        | -2–2           | -2-2      |
 
 ```
 

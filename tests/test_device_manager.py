@@ -476,7 +476,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
             match="A VISA IO error occurred when attempting to read the status byte or "
             "clear the output buffer of the resource",
         ):
-            device_manager.add_afg("afg3kc-hostname", alias="warning_bad_read_stb")
+            device_manager.add_afg("afg3252c-hostname", alias="warning_bad_read_stb")
         device_manager.remove_device(alias="warning_bad_read_stb")
 
         # Test the warning logged with message available (MAV) bit set
@@ -487,7 +487,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         ), pytest.warns(
             UserWarning, match="had data sitting in the VISA Output Buffer on first connection."
         ):
-            device_manager.add_afg("afg3kc-hostname", alias="warning_mav")
+            device_manager.add_afg("afg3252c-hostname", alias="warning_mav")
         device_manager.remove_device(alias="warning_mav")
 
     def test_exceptions(self, device_manager: DeviceManager) -> None:

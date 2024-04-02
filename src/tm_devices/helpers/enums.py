@@ -279,7 +279,7 @@ class SignalGeneratorOutputPaths5200(SignalGeneratorOutputPathsBase):
     DCHV = "DCHV"
 
 
-class SASSetWaveformFileTypes(Enum):
+class SASSetWaveformFileTypes(CustomStrEnum):
     """Supported file types for the command ``MMEMory:OPEN:SASSet[:WAVeform]``."""
 
     AWG = ".awg"
