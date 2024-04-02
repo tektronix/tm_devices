@@ -56,7 +56,7 @@ jobs:
           header: test-results-${{ matrix.os_name }}
           number: ${{ steps.pr.outputs.result }}
           recreate: true
-          path: artifacts/artifact_${{ matrix.os_name }}_tests/.results_tests/github_report.md
+          path: artifacts/.results_tests/github_report.md
       - name: Add workflow link to comment
         uses: marocchino/sticky-pull-request-comment@v2
         with:
