@@ -27,9 +27,11 @@ jobs:
       checks: write
       pull-requests: write
     steps:
-      - uses: actions/download-artifact@v4
+      - name: Download and Extract Artifacts
+        uses: dawidd6/action-download-artifact@v3.1.4
         with:
-          pattern: '*artifact_${{ matrix.os_name }}_tests*'
+          run_id: ${{ github.event.workflow_run.id }}
+          name: artifact_${{ matrix.os_name }}_tests
           path: artifacts
       - name: Publish Test Results
         uses: marocchino/sticky-pull-request-comment@v2
