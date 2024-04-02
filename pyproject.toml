@@ -95,7 +95,7 @@ zeroconf = ">=0.54.0"
 [tool.poetry.group.dev.dependencies]
 coverage = {extras = ["toml"], version = ">=7.2.2"}
 coverage-conditional-plugin = ">=0.9.0"
-docformatter = {extras = ["tomli"], version = "==1.7.0"}  # can't update due to https://github.com/PyCQA/docformatter/issues/174
+docformatter = {extras = ["tomli"], version = "1.7.5"}  # Update this by running scripts/update_development_dependencies.py
 flask = ">=2.2.2"
 graphviz = ">=0.20.1"
 http-server-mock = ">=1.7"
@@ -114,7 +114,7 @@ pytest-html = ">=4.0"
 pytest-order = ">=1.0.1"
 pytest-profiling = ">=1.7.0"
 python-semantic-release = ">=8.5.1"
-ruff = "0.3.4"  # Update this by running scripts/update_development_dependencies.py
+ruff = "0.3.5"  # Update this by running scripts/update_development_dependencies.py
 safety = ">=2.1.1"
 sphinx-autoapi = ">=2.0.0"
 sphinx-copybutton = ">=0.5.1"
@@ -141,7 +141,7 @@ list-visa-resources = "tm_devices:print_available_visa_devices"
 "Changelog" = "https://github.com/tektronix/tm_devices/blob/main/CHANGELOG.md"
 
 [tool.pre-commit-update]
-keep = ["docformatter"]
+keep = []
 verbose = true
 
 [tool.pylint.basic]
