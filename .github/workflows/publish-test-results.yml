@@ -6,16 +6,6 @@ on:
     types: [completed]
   workflow_call:
 jobs:
-  print-info:
-    runs-on: ubuntu-latest
-    env:
-      EVENT_OBJ: ${{ toJson(github.event) }}
-    steps:
-      - run: |
-          echo ${{ github.event.workflow_run.event }}
-          echo ${{ github.event.workflow_run.event.number }}
-          echo ${{ github.event.workflow_run.event.pull_request.number }}
-          echo $EVENT_OBJ
   publish-test-results:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.event == 'pull_request' && !contains(fromJSON('["skipped", "cancelled"]'), github.event.workflow_run.conclusion) }}
