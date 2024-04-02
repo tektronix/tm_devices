@@ -17,10 +17,8 @@ from yamlfix import fix_files  # pyright: ignore[reportUnknownVariableType]
 
 from pypi_latest_version import get_latest_version
 
-# NOTE: When docformatter is uncommented from this list, be sure to
-# remove the 'keep' key from the '[tool.pre-commit-update]' section in ``pyproject.toml``.
 DEPENDENCIES_TO_UPDATE = (
-    # FUTURE # "docformatter[tomli]",  # can't update due to https://github.com/PyCQA/docformatter/issues/174
+    "docformatter[tomli]",
     "pylint[spelling]",
     "pyright",
     "ruff",
