@@ -37,7 +37,7 @@ jobs:
         run: |
           JSON=$(cat ./event-file/event.json)
           echo $JSON
-          echo "number=${{ fromJson(JSON).event }}" >> $GITHUB_OUTPUT
+          echo "number=${{ fromJson(env.JSON).event }}" >> $GITHUB_OUTPUT
       - name: Publish Test Results
         uses: marocchino/sticky-pull-request-comment@v2
         with:
