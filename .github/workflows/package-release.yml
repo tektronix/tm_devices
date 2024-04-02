@@ -12,8 +12,25 @@ on:
           minor for backward compatible larger changes,
           major for non-backward compatible changes.
         options: [patch, minor, major]
+  workflow_call:
+    inputs:
+      package-name:
+        description: The name of the package to use to gate uploads.
+        required: true
+        type: string
+      release_level:
+        description: |
+          Select the release level,
+          patch for backward compatible minor changes and bug fixes,
+          minor for backward compatible larger changes,
+          major for non-backward compatible changes.
+        required: true
+        type: string
 concurrency:
   group: pypi
+env:
+  REPO_NAME: tektronix/${{ inputs.package-name || 'tm_devices' }}
+  PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
 jobs:
   print-inputs:
     runs-on: ubuntu-latest
@@ -38,7 +55,7 @@ jobs:
   pypi-version:
     name: Update package version
     needs: [print-inputs]
-    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    if: github.repository == env.REPO_NAME && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: package-release-gate
     permissions:
@@ -74,7 +91,7 @@ jobs:
   pypi-build:
     name: Build package
     needs: [pypi-version]
-    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    if: github.repository == env.REPO_NAME && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -86,7 +103,7 @@ jobs:
   upload-testpypi:
     name: Upload package to TestPyPI
     needs: [pypi-build]
-    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    if: github.repository == env.REPO_NAME && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: package-testpypi
     permissions:
@@ -104,7 +121,7 @@ jobs:
   upload-pypi:
     name: Upload package to PyPI
     needs: [upload-testpypi]
-    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    if: github.repository == env.REPO_NAME && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: package-release
     permissions:
@@ -120,7 +137,7 @@ jobs:
   upload-github:
     name: Upload package to GitHub Release
     needs: [upload-pypi]
-    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    if: github.repository == env.REPO_NAME && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -148,7 +165,7 @@ jobs:
       - upload-testpypi
       - upload-pypi
       - upload-github
-    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    if: github.repository == env.REPO_NAME && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -170,4 +187,4 @@ jobs:
           max_attempts: 5
           retry_wait_seconds: 30
           warning_on_retry: false
-          command: pip install${{ matrix.index_urls }} tm_devices==${{ needs.pypi-version.outputs.built-version }}
+          command: pip install${{ matrix.index_urls }} "$PACKAGE_NAME==${{ needs.pypi-version.outputs.built-version }}"
