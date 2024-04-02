@@ -31,20 +31,25 @@ jobs:
         uses: dawidd6/action-download-artifact@v3.1.4
         with:
           run_id: ${{ github.event.workflow_run.id }}
-          name: artifact_${{ matrix.os_name }}_tests
           path: artifacts
+      - name: Fetch PR number
+        id: fetch-pr
+        run: |
+          JSON=$(cat ./event-file/event.json)
+          echo $JSON
+          echo "number=${{ fromJson(JSON).event }}" >> $GITHUB_OUTPUT
       - name: Publish Test Results
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           header: test-results-${{ matrix.os_name }}
-          number: ${{ github.event.workflow_run.event.number }}
+          number: ${{ steps.fetch-pr.number }}
           recreate: true
           path: artifacts/artifact_${{ matrix.os_name }}_tests/.results_tests/github_report.md
       - name: Add workflow link to comment
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           header: test-results-${{ matrix.os_name }}
-          number: ${{ github.event.workflow_run.event.number }}
+          number: ${{ steps.fetch-pr.number }}
           append: true
           message: |-
             <p><a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.event.workflow_run.id }}">Link to workflow run</a></p>
