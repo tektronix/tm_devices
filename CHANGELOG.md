@@ -18,6 +18,14 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v1.2.3 (2024-04-03)
+
+### Merged Pull Requests
+
+- Update SBOM scanning workflow to be able to upload artifacts to GitHub releases ([#186](https://github.com/tektronix/tm_devices/issues/186))
+
 ### Security
 
 - Updated the workflow that creates SBOMs to be able to upload the SBOM as an artifact to a GitHub release.
