@@ -32,15 +32,22 @@ jobs:
         python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
     steps:
       - uses: actions/checkout@v4
+      - if: ${{ inputs.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+      - if: ${{ inputs.node-version }}
+        name: Install non-python documentation dependencies
+        run: |
+          npm install -g @mermaid-js/mermaid-cli
+          sudo apt install --no-install-recommends --assume-yes graphviz
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           check-latest: true
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install --upgrade tox tox-gh-actions
+        run: python -m pip install tox tox-gh-actions
       - name: Run tox
         run: tox -v
       - uses: actions/upload-artifact@v4
