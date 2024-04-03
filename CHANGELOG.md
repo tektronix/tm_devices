@@ -18,6 +18,10 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Security
+
+- Updated the workflow that creates SBOMs to be able to upload the SBOM as an artifact to a GitHub release.
+
 ______________________________________________________________________
 
 ## v1.2.2 (2024-04-03)
