@@ -10,7 +10,7 @@ on:
         required: true
         type: string
 env:
-  REPO_NAME: tektronix/${{ inputs.package-name || 'tm_devices' }}
+  REPO_NAME: nfelt14/${{ inputs.package-name || 'tm_devices' }}
   PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
 jobs:
   job-variables:
