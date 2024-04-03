@@ -16,9 +16,19 @@ env:
   REPO_NAME: tektronix/${{ inputs.package-name || 'tm_devices' }}
   PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
 jobs:
+  job-variables:
+    name: Set variables for other jobs to use
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set variables
+        id: variables
+        run: echo "repo-name=$REPO_NAME" >> $GITHUB_OUTPUT
+    outputs:
+      repo-name: ${{ steps.variables.outputs.repo-name }}
   test-pypi-build:
     name: Build package with unique version for test.pypi.org
-    if: github.repository == env.REPO_NAME
+    needs: [job-variables]
+    if: github.repository == needs.job-variables.outputs.repo-name
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -46,8 +56,8 @@ jobs:
       built-version: ${{ steps.create-version.outputs.NEW_VERSION }}
   test-pypi-upload:
     name: Upload package to test.pypi.org
-    needs: test-pypi-build
-    if: github.repository == env.REPO_NAME
+    needs: [job-variables, test-pypi-build]
+    if: github.repository == needs.job-variables.outputs.repo-name
     runs-on: ubuntu-latest
     environment: package-testpypi
     permissions:
@@ -64,8 +74,8 @@ jobs:
           repository-url: https://test.pypi.org/legacy/
   test-pypi-install:
     name: Install package from test.pypi.org
-    needs: [test-pypi-build, test-pypi-upload]
-    if: github.repository == env.REPO_NAME
+    needs: [job-variables, test-pypi-build, test-pypi-upload]
+    if: github.repository == needs.job-variables.outputs.repo-name
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python

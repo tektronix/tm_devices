@@ -48,6 +48,11 @@ jobs:
           echo "- release_level: ${{ inputs.release_level }}" >> $GITHUB_STEP_SUMMARY
           echo "## Incoming Changes" >> $GITHUB_STEP_SUMMARY
           cat python_semantic_release_templates/.previous_release_notes_for_template.md >> $GITHUB_STEP_SUMMARY
+      - name: Set outputs
+        id: variables
+        run: echo "repo-name=$REPO_NAME" >> $GITHUB_OUTPUT
+    outputs:
+      repo-name: ${{ steps.variables.outputs.repo-name }}
   # This job requires a Personal Access Token (Classic) with
   # the public_repo permission. It also needs a private/public
   # ssh key pair that can be used for signing. The public key must
@@ -55,7 +60,8 @@ jobs:
   pypi-version:
     name: Update package version
     needs: [print-inputs]
-    if: github.repository == env.REPO_NAME && github.ref == 'refs/heads/main'
+    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
+      'refs/heads/main'
     runs-on: ubuntu-latest
     environment: package-release-gate
     permissions:
@@ -90,8 +96,9 @@ jobs:
       built-version: ${{ steps.release.outputs.version }}
   pypi-build:
     name: Build package
-    needs: [pypi-version]
-    if: github.repository == env.REPO_NAME && github.ref == 'refs/heads/main'
+    needs: [print-inputs, pypi-version]
+    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
+      'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -102,8 +109,9 @@ jobs:
         uses: hynek/build-and-inspect-python-package@v2.2.0
   upload-testpypi:
     name: Upload package to TestPyPI
-    needs: [pypi-build]
-    if: github.repository == env.REPO_NAME && github.ref == 'refs/heads/main'
+    needs: [print-inputs, pypi-build]
+    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
+      'refs/heads/main'
     runs-on: ubuntu-latest
     environment: package-testpypi
     permissions:
@@ -120,8 +128,9 @@ jobs:
           repository-url: https://test.pypi.org/legacy/
   upload-pypi:
     name: Upload package to PyPI
-    needs: [upload-testpypi]
-    if: github.repository == env.REPO_NAME && github.ref == 'refs/heads/main'
+    needs: [print-inputs, upload-testpypi]
+    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
+      'refs/heads/main'
     runs-on: ubuntu-latest
     environment: package-release
     permissions:
@@ -136,8 +145,9 @@ jobs:
         uses: pypa/gh-action-pypi-publish@v1.8.14
   upload-github:
     name: Upload package to GitHub Release
-    needs: [upload-pypi]
-    if: github.repository == env.REPO_NAME && github.ref == 'refs/heads/main'
+    needs: [print-inputs, upload-pypi]
+    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
+      'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -160,12 +170,14 @@ jobs:
   pypi-install:
     name: Install package
     needs:
+      - print-inputs
       - pypi-version
       - pypi-build
       - upload-testpypi
       - upload-pypi
       - upload-github
-    if: github.repository == env.REPO_NAME && github.ref == 'refs/heads/main'
+    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
+      'refs/heads/main'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
