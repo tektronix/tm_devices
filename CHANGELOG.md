@@ -18,6 +18,37 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v1.2.2 (2024-04-03)
+
+### Merged Pull Requests
+
+- Fix packaging workflows to correctly gate on the repo name. ([#185](https://github.com/tektronix/tm_devices/issues/185))
+- Convert PyPI upload workflows into reusable workflows. ([#184](https://github.com/tektronix/tm_devices/issues/184))
+- ci: Update docformatter version, it no longer causes issues. ([#182](https://github.com/tektronix/tm_devices/issues/182))
+- Add test results to job summary and pull request comments ([#181](https://github.com/tektronix/tm_devices/issues/181))
+- Convert workflows into reusable workflows ([#178](https://github.com/tektronix/tm_devices/issues/178))
+- Update file checker workflow ([#179](https://github.com/tektronix/tm_devices/issues/179))
+- gh-actions(deps): bump the gh-actions-dependencies group with 2 updates ([#177](https://github.com/tektronix/tm_devices/issues/177))
+- python-deps(deps-dev): bump the python-dependencies group with 1 update ([#176](https://github.com/tektronix/tm_devices/issues/176))
+- Update admonition in readme to fix a glitch/bug in GitHub web UI ([#174](https://github.com/tektronix/tm_devices/issues/174))
+- Update supported devices and VISA backends in the readme ([#170](https://github.com/tektronix/tm_devices/issues/170))
+- fix: Updated the measurement source selection command for the MDO3K, MDO4K, MSO4K and DPO4K models to work properly. ([#173](https://github.com/tektronix/tm_devices/issues/173))
+- ci: Update codecov-action to v4. ([#140](https://github.com/tektronix/tm_devices/issues/140))
+- Handle Visa IO Error on first connection ([#172](https://github.com/tektronix/tm_devices/issues/172))
+- Misc. workflow updates ([#171](https://github.com/tektronix/tm_devices/issues/171))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 1 update ([#158](https://github.com/tektronix/tm_devices/issues/158))
+- python-deps(deps): Bump the python-dependencies group with 2 updates ([#159](https://github.com/tektronix/tm_devices/issues/159))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 2 updates ([#166](https://github.com/tektronix/tm_devices/issues/166))
+- ci: Update documentation builds to use node.js version 20. ([#163](https://github.com/tektronix/tm_devices/issues/163))
+- refactor: Update the type aliases used by the `DeviceManager` add/get methods to return `TypeVar`s with default values that are bound to the appropriate device type. ([#162](https://github.com/tektronix/tm_devices/issues/162))
+- ci: Add a step to upload the sarif file as a workflow artifact. ([#157](https://github.com/tektronix/tm_devices/issues/157))
+- refactor: Update the get_model_series() method to only warn the user if the model isn't contained in the list of supported models. ([#156](https://github.com/tektronix/tm_devices/issues/156))
+- test: Update tox to test building the package in a unique environment to prevent race conditions when running tox environments in parallel. ([#155](https://github.com/tektronix/tm_devices/issues/155))
+- ci: Add permissions to write security events for the SBOM scan. ([#154](https://github.com/tektronix/tm_devices/issues/154))
+- Add SBOM generation and scanning workflow ([#153](https://github.com/tektronix/tm_devices/issues/153))
+
 ### Added
 
 - Added TekVISA as one of the VISA backends supported.
