@@ -26,7 +26,7 @@ jobs:
   build-package:
     name: Build package
     needs: [job-variables]
-    if: github.repository == needs.job-variables.repo-name
+    if: github.repository == needs.job-variables.outputs.repo-name
     runs-on: ubuntu-latest
     environment: package-build
     env:

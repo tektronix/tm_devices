@@ -28,7 +28,7 @@ jobs:
   test-pypi-build:
     name: Build package with unique version for test.pypi.org
     needs: [job-variables]
-    if: github.repository == needs.job-variables.repo-name
+    if: github.repository == needs.job-variables.outputs.repo-name
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -57,7 +57,7 @@ jobs:
   test-pypi-upload:
     name: Upload package to test.pypi.org
     needs: [job-variables, test-pypi-build]
-    if: github.repository == needs.job-variables.repo-name
+    if: github.repository == needs.job-variables.outputs.repo-name
     runs-on: ubuntu-latest
     environment: package-testpypi
     permissions:
@@ -75,7 +75,7 @@ jobs:
   test-pypi-install:
     name: Install package from test.pypi.org
     needs: [job-variables, test-pypi-build, test-pypi-upload]
-    if: github.repository == needs.job-variables.repo-name
+    if: github.repository == needs.job-variables.outputs.repo-name
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python
