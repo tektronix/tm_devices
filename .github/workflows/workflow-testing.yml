@@ -1,0 +1,52 @@
+---
+name: Workflow Testing
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      package-name:
+        description: The name of the package to use to gate uploads.
+        required: true
+        type: string
+env:
+  REPO_NAME: tektronix/${{ inputs.package-name || 'tm_devices' }}
+  PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
+jobs:
+  job-variables:
+    name: Set variables for other jobs to use
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set variables
+        id: variables
+        run: echo "repo-name=$REPO_NAME" >> $GITHUB_OUTPUT
+    outputs:
+      repo-name: ${{ steps.variables.outputs.repo-name }}
+  # Verify the package builds fine
+  build-package:
+    name: Build package
+    needs: [job-variables]
+    if: github.repository == needs.job-variables.repo-name
+    runs-on: ubuntu-latest
+    environment: package-build
+    env:
+      PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: hynek/build-and-inspect-python-package@v2.2.0
+        id: build-pkg
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: x  # any version
+          check-latest: true
+      - name: Test installing wheel
+        run: |
+          pip install ${{ steps.build-pkg.outputs.dist }}/*.whl
+          pip uninstall --yes "$PACKAGE_NAME"
+      - name: Test installing tarball
+        run: |-
+          pip install ${{ steps.build-pkg.outputs.dist }}/*.tar.gz
+          pip uninstall --yes "$PACKAGE_NAME"
