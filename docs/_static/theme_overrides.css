@@ -12,12 +12,12 @@
 }
 
 .device-support-table thead, .device-support-table tbody {
-    border: 3px solid black
+    border: 2px solid black
 }
 
 .rst-content table.device-support-table.docutils tbody tr:has(th p),
 .device-support-table tr:has(td:first-child p:not(:empty)) {
-    border-top-width: 3px;
+    border-top-width: 2px;
     border-top-color: black;
     border-top-style: solid;
 }
