@@ -12,7 +12,7 @@
 }
 
 .device-support-table thead, .device-support-table tbody {
-    border: 3px solid black
+    border: 2px solid black
 }
 
 .device-support-table tr:has(td:first-child p:not(:empty)),
