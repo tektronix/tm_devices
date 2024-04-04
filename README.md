@@ -72,13 +72,23 @@ with DeviceManager() as device_manager:
 ---
 class: hint
 ---
-| Symbol/Term | Definition       |
-| ----------- | ---------------- |
-| 🚧          | Work in progress |
-| ✅          | Implemented      |
-| ❌          | Not Supported    |
+| Symbol/Term | Definition                   |
+| ----------- | ---------------------------- |
+| 🚧          | Work in progress             |
+| ✅          | Implemented                  |
+| ❌          | Not Supported                |
+| **AFG**     | Abitrary Function Generator  |
+| **AWG**     | Arbitrary Waveform Generator |
+| **Scope**   | Oscilloscope                 |
+| **PSU**     | Power Supply Unit            |
+| **SMU**     | Source Measure Unit          |
+| **MT**      | Margin Tester                |
+| **DMM**     | Digital Multimeter           |
+| **DAQ**     | Digital Acquisition System   |
+| **SS**      | System Switch                |
+| **PI**      | Programmable Interface       |
 
-See the {doc}`glossary` for more information on abbreviations.
+See the Glossary for information on these and other abbreviations.
 ```
 
 <div class="custom-table-center-cells device-support-table" title="Device Support Levels">
@@ -89,61 +99,61 @@ _Device Support Levels_
 
 </div>
 
-| Type                   | Series/Model             | Command<br>Type | Basic<br>Control | Python API<br>Validation<br>Status |
-| ---------------------- | ------------------------ | --------------- | ---------------- | ---------------------------------- |
-| {term}`AFGs <AFG>`     | **AFG3000**              | {term}`PI`      | ✅                |                                    |
-|                        | **AFG31xxx**             | {term}`PI`      | ✅                |                                    |
-| {term}`AWGs <AWG>`     | **AWG5000**              | {term}`PI`      | ✅                |                                    |
-|                        | **AWG5200**              | {term}`PI`      | ✅                |                                    |
-|                        | **AWG7000**              | {term}`PI`      | ✅                |                                    |
-|                        | **AWG70000**             | {term}`PI`      | ✅                |                                    |
-| {term}`Scopes <Scope>` | **2 Series MSO**         | {term}`PI`      | ✅                | ✅                                  |
-|                        | **3 Series MDO**         | {term}`PI`      | ✅                |                                    |
-|                        | **4 Series MSO**         | {term}`PI`      | ✅                | ✅                                  |
-|                        | **4 Series B MSO**       | {term}`PI`      | ✅                | ✅                                  |
-|                        | **5 Series MSO**         | {term}`PI`      | ✅                | ✅                                  |
-|                        | **5 Series B MSO**       | {term}`PI`      | ✅                | ✅                                  |
-|                        | **5 Series MSO (LP)**    | {term}`PI`      | ✅                | ✅                                  |
-|                        | **6 Series MSO**         | {term}`PI`      | ✅                | ✅                                  |
-|                        | **6 Series B MSO**       | {term}`PI`      | ✅                | ✅                                  |
-|                        | **6 Series LPD**         | {term}`PI`      | ✅                | ✅                                  |
-|                        | **MSO2000/B**            | {term}`PI`      | ✅                |                                    |
-|                        | **DPO2000/B**            | {term}`PI`      | ✅                |                                    |
-|                        | **MDO3000**              | {term}`PI`      | ✅                | ✅                                  |
-|                        | **MDO4000/B/C**          | {term}`PI`      | ✅                | ✅                                  |
-|                        | **MSO4000/B**            | {term}`PI`      | ✅                | ✅                                  |
-|                        | **DPO4000/B**            | {term}`PI`      | ✅                | ✅                                  |
-|                        | **MSO5000/B**            | {term}`PI`      | ✅                | ✅                                  |
-|                        | **DPO5000/B**            | {term}`PI`      | ✅                | ✅                                  |
-|                        | **DPO7000/C**            | {term}`PI`      | ✅                | ✅                                  |
-|                        | **DPO70000/C/D/DX/SX**   | {term}`PI`      | ✅                | ✅                                  |
-|                        | **DSA70000/C/D**         | {term}`PI`      | ✅                | ✅                                  |
-|                        | **MSO70000/C/DX**        | {term}`PI`      | ✅                | ✅                                  |
-|                        | **TSOVu**                | {term}`PI`      | ✅                |                                    |
-|                        | **TekScope**             | {term}`PI`      | ✅                |                                    |
-| {term}`PSUs <PSU>`     | **2200**                 | {term}`PI`      | ✅                |                                    |
-|                        | **2220**                 | {term}`PI`      | ✅                |                                    |
-|                        | **2230**                 | {term}`PI`      | ✅                |                                    |
-|                        | **2231**                 | {term}`PI`      | ✅                |                                    |
-|                        | **2280S**                | {term}`PI`      | ✅                |                                    |
-|                        | **2281S**                | {term}`PI`      | ✅                |                                    |
-| {term}`SMUs <SMU>`     | **24xx Standard**        | {term}`PI`      | ✅                |                                    |
-|                        | **24xx Interactive**     | {term}`PI`      | ✅                | ✅                                  |
-|                        | **26xxB**                | {term}`PI`      | ✅                | 🚧                                  |
-|                        | **2636B**                | {term}`PI`      | ✅                | ✅                                  |
-|                        | **Model 2601B-PULSE**    | {term}`PI`      | ✅                |                                    |
-|                        | **Model 2606B**          | {term}`PI`      | ✅                | 🚧                                  |
-|                        | **2651A**                | {term}`PI`      | ✅                | ✅                                  |
-|                        | **2657A**                | {term}`PI`      | ✅                |                                    |
-|                        | **6430 (electrometer)**  | {term}`PI`      | ✅                |                                    |
-|                        | **6514 (electrometer)**  | {term}`PI`      | ✅                |                                    |
-|                        | **6517B (electrometer)** | {term}`PI`      | ✅                |                                    |
-| {term}`MTs <MT>`       | **TMT4**                 | {term}`PI`      | ✅                |                                    |
-| {term}`DMMs <DMM>`     | **DMM6500**              | {term}`PI`      | ✅                |                                    |
-|                        | **DMM7510**              | {term}`PI`      | ✅                |                                    |
-|                        | **DMM7512**              | {term}`PI`      | ✅                |                                    |
-| {term}`DAQs <DAQ>`     | **DAQ6510**              | {term}`PI`      | ✅                |                                    |
-| {term}`SSs <SS>`       | **3706A**                | {term}`PI`      | ✅                |                                    |
+| Type   | Series/Model             | Command<br>Type | Basic<br>Control | Python API<br>Validation<br>Status |
+| ------ | ------------------------ | --------------- | ---------------- | ---------------------------------- |
+| AFGs   | **AFG3000**              | PI              | ✅                |                                    |
+|        | **AFG31xxx**             | PI              | ✅                |                                    |
+| AWGs   | **AWG5000**              | PI              | ✅                |                                    |
+|        | **AWG5200**              | PI              | ✅                |                                    |
+|        | **AWG7000**              | PI              | ✅                |                                    |
+|        | **AWG70000**             | PI              | ✅                |                                    |
+| Scopes | **2 Series MSO**         | PI              | ✅                | ✅                                  |
+|        | **3 Series MDO**         | PI              | ✅                |                                    |
+|        | **4 Series MSO**         | PI              | ✅                | ✅                                  |
+|        | **4 Series B MSO**       | PI              | ✅                | ✅                                  |
+|        | **5 Series MSO**         | PI              | ✅                | ✅                                  |
+|        | **5 Series B MSO**       | PI              | ✅                | ✅                                  |
+|        | **5 Series MSO (LP)**    | PI              | ✅                | ✅                                  |
+|        | **6 Series MSO**         | PI              | ✅                | ✅                                  |
+|        | **6 Series B MSO**       | PI              | ✅                | ✅                                  |
+|        | **6 Series LPD**         | PI              | ✅                | ✅                                  |
+|        | **MSO2000/B**            | PI              | ✅                |                                    |
+|        | **DPO2000/B**            | PI              | ✅                |                                    |
+|        | **MDO3000**              | PI              | ✅                | ✅                                  |
+|        | **MDO4000/B/C**          | PI              | ✅                | ✅                                  |
+|        | **MSO4000/B**            | PI              | ✅                | ✅                                  |
+|        | **DPO4000/B**            | PI              | ✅                | ✅                                  |
+|        | **MSO5000/B**            | PI              | ✅                | ✅                                  |
+|        | **DPO5000/B**            | PI              | ✅                | ✅                                  |
+|        | **DPO7000/C**            | PI              | ✅                | ✅                                  |
+|        | **DPO70000/C/D/DX/SX**   | PI              | ✅                | ✅                                  |
+|        | **DSA70000/C/D**         | PI              | ✅                | ✅                                  |
+|        | **MSO70000/C/DX**        | PI              | ✅                | ✅                                  |
+|        | **TSOVu**                | PI              | ✅                |                                    |
+|        | **TekScope**             | PI              | ✅                |                                    |
+| PSUs   | **2200**                 | PI              | ✅                |                                    |
+|        | **2220**                 | PI              | ✅                |                                    |
+|        | **2230**                 | PI              | ✅                |                                    |
+|        | **2231**                 | PI              | ✅                |                                    |
+|        | **2280S**                | PI              | ✅                |                                    |
+|        | **2281S**                | PI              | ✅                |                                    |
+| SMUs   | **24xx Standard**        | PI              | ✅                |                                    |
+|        | **24xx Interactive**     | PI              | ✅                | ✅                                  |
+|        | **26xxB**                | PI              | ✅                | 🚧                                  |
+|        | **2636B**                | PI              | ✅                | ✅                                  |
+|        | **Model 2601B-PULSE**    | PI              | ✅                |                                    |
+|        | **Model 2606B**          | PI              | ✅                | 🚧                                  |
+|        | **2651A**                | PI              | ✅                | ✅                                  |
+|        | **2657A**                | PI              | ✅                |                                    |
+|        | **6430 (electrometer)**  | PI              | ✅                |                                    |
+|        | **6514 (electrometer)**  | PI              | ✅                |                                    |
+|        | **6517B (electrometer)** | PI              | ✅                |                                    |
+| MTs    | **TMT4**                 | PI              | ✅                |                                    |
+| DMMs   | **DMM6500**              | PI              | ✅                |                                    |
+|        | **DMM7510**              | PI              | ✅                |                                    |
+|        | **DMM7512**              | PI              | ✅                |                                    |
+| DAQs   | **DAQ6510**              | PI              | ✅                |                                    |
+| SSs    | **3706A**                | PI              | ✅                |                                    |
 
 </div>
 
@@ -157,7 +167,7 @@ _Software Solution Support Levels_
 
 | Software<br>Solution | Command<br>Type | Basic<br>Control | Python API<br>Validation<br>Status |
 | -------------------- | --------------- | ---------------- | ---------------------------------- |
-| {term}`DPOJET`       | {term}`PI`      | ✅                | ✅                                  |
+| DPOJET               | PI              | ✅                | ✅                                  |
 
 </div>
 
