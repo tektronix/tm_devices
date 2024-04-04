@@ -7,7 +7,10 @@ import pytest
 
 from tm_devices import DeviceManager
 from tm_devices.drivers import AWG5K, AWG7K, AWG70KA, AWG5200, MSO5
-from tm_devices.helpers import SignalGeneratorOutputPaths5200, SignalGeneratorOutputPathsNon5200
+from tm_devices.helpers.enums import (
+    SignalGeneratorOutputPaths5200,
+    SignalGeneratorOutputPathsNon5200,
+)
 
 
 def test_awg5200_gen_waveform(

@@ -18,11 +18,11 @@ from tm_devices.drivers import MSO2, MSO5, MSO5B, MSO6, MSO70KDX, TekScopeSW
 from tm_devices.drivers.pi.scopes.tekscope.tekscope import (
     ExtendedSourceDeviceConstants,
     ParameterBounds,
-    SignalGeneratorFunctionsIAFG,
     TekProbeData,
     TekScope,
     TekScopeChannel,
 )
+from tm_devices.helpers.enums import SignalGeneratorFunctionsIAFG
 
 
 class TmDevicesUnitTestOnlyCustomMSO5(MSO5):
@@ -339,7 +339,7 @@ def test_iafg(device_manager: DeviceManager) -> None:
         ramp_symmetry_range=ParameterBounds(lower=0.0, upper=100.0),
     )
 
-    with pytest.raises(ValueError, match="IAFGs must have a waveform defined."):
+    with pytest.raises(ValueError, match="IAFGs must have a function defined."):
         mso64.get_waveform_constraints()
 
     with pytest.raises(ValueError, match=r"Output state value must be 1 \(ON\) or 0 \(OFF\)\."):

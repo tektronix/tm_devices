@@ -15,15 +15,14 @@ from tm_devices.driver_mixins.signal_generator_mixin import (
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi._base_afg_source_channel import BaseAFGSourceChannel
 from tm_devices.drivers.pi.signal_generators.signal_generator import SignalGenerator
-from tm_devices.helpers import (
-    DeviceTypes,
-    LoadImpedanceAFG,
-    SignalGeneratorFunctionsAFG,
-    SignalGeneratorOutputPathsBase,
-)
+from tm_devices.helpers import DeviceTypes, LoadImpedanceAFG
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
+from tm_devices.helpers.enums import (
+    SignalGeneratorFunctionsAFG,
+    SignalGeneratorOutputPathsBase,
+)
 
 
 @dataclass(frozen=True)
@@ -34,7 +33,7 @@ class AFGSourceDeviceConstants(SourceDeviceConstants):
 
 
 class AFGSourceChannel(BaseAFGSourceChannel):
-    """AFG source channel driver."""
+    """AFG signal source channel composite."""
 
     def __init__(self, afg: "AFG", channel_name: str) -> None:
         """Create an AFG source channel.
@@ -420,7 +419,7 @@ class AFG(SignalGenerator, ABC):
         del output_signal_path
 
         if not function:
-            msg = "AFGs must have a waveform defined."
+            msg = "AFGs must have a function defined."
             raise ValueError(msg)
         (
             amplitude_range,

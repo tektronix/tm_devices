@@ -203,7 +203,7 @@ class TSPDevice(PIDevice, ABC):
         custom_message_prefix: str = "",
         *,
         expected_value: Optional[Union[str, float]] = None,
-        opc: Optional[bool] = None,
+        opc: bool = False,
     ) -> str:
         """Send the given command with the given value and then verify the results.
 
@@ -224,7 +224,7 @@ class TSPDevice(PIDevice, ABC):
         Returns:
             The output of the query portion of the method.
         """
-        self.write(f"{command} = {value}", opc=bool(opc))
+        self.write(f"{command} = {value}", opc=opc)
         if self._enable_verification:
             check = self.query("print(" + command + ")", remove_quotes=remove_quotes)
             message_prefix = f"Failed to set {command} to {value}"

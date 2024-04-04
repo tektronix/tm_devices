@@ -17,16 +17,15 @@ from tm_devices.driver_mixins.signal_generator_mixin import (
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi._base_source_channel import BaseSourceChannel
 from tm_devices.drivers.pi.signal_generators.signal_generator import SignalGenerator
-from tm_devices.helpers import (
-    DeviceTypes,
-    LoadImpedanceAFG,
+from tm_devices.helpers import DeviceTypes, LoadImpedanceAFG
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
+from tm_devices.helpers.enums import (
     SignalGeneratorFunctionsAWG,
     SignalGeneratorOutputPathsBase,
     SignalGeneratorOutputPathsNon5200,
 )
-
-# noinspection PyPep8Naming
-from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 @dataclass(frozen=True)
@@ -38,7 +37,7 @@ class AWGSourceDeviceConstants(SourceDeviceConstants):
 
 @family_base_class
 class AWGSourceChannel(BaseSourceChannel, ExtendableMixin):
-    """AWG source channel driver."""
+    """AWG signal source channel composite."""
 
     def __init__(self, awg: "AWG", channel_name: str) -> None:
         """Create an AWG source channel.
@@ -158,7 +157,11 @@ class AWG(SignalGenerator, ABC):
     ################################################################################################
     @cached_property
     def source_channel(self) -> "MappingProxyType[str, AWGSourceChannel]":  # pragma: no cover
-        """Mapping of channel names to AWGSourceChannel objects."""
+        """Mapping of channel names to AWGSourceChannel objects.
+
+        Returns:
+            The dictionary of channel string to the source channel object.
+        """
         channel_map: Dict[str, AWGSourceChannel] = {}
         for channel_name in self.all_channel_names_list:
             channel_map[channel_name] = AWGSourceChannel(self, channel_name)
@@ -327,6 +330,9 @@ class AWG(SignalGenerator, ABC):
             frequency: The frequency of the waveform that needs to be generated.
             output_signal_path: The output signal path that was set on the channel.
             load_impedance: The suggested impedance on the source.
+
+        Returns:
+            A Named Tuple containing a set of parameters and their restricted bounds.
         """
         del frequency, load_impedance
 
@@ -399,6 +405,9 @@ class AWG(SignalGenerator, ABC):
             function: The waveform shape to generate.
             output_signal_path: The output signal path of the specified channel.
             symmetry: The symmetry to set the signal to, only applicable to certain functions.
+
+        Returns:
+            A tuple containing the best waveform from the predefined files and the sample rate.
         """
         if function == function.RAMP and symmetry == 50:  # noqa: PLR2004
             function = function.TRIANGLE

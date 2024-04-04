@@ -13,14 +13,12 @@ from tm_devices.drivers.pi.signal_generators.awgs.awg import (
     ParameterBounds,
 )
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
-from tm_devices.helpers import (
-    SASSetWaveformFileTypes,
-    SignalGeneratorOutputPathsBase,
-)
+from tm_devices.helpers import SASSetWaveformFileTypes
+from tm_devices.helpers.enums import SignalGeneratorOutputPathsBase
 
 
 class AWG70KASourceChannel(AWGSourceChannel):
-    """AWG70KA source channel driver."""
+    """AWG70KA signal source channel composite."""
 
     def set_output_signal_path(
         self, value: Optional[SignalGeneratorOutputPathsBase] = None
@@ -30,7 +28,7 @@ class AWG70KASourceChannel(AWGSourceChannel):
         Can only set the output signal path to DCA when an MDC4500 is connected to the AWG70K.
 
         Args:
-            value: The output signal path
+            value: The output signal path.
                 (The default is to attempt to set output signal path to DCA and falling back to DIR)
         """
         if not value:
@@ -174,7 +172,14 @@ class AWG70KA(AWG70KAMixin, AWG):
         self,
         output_signal_path: Optional[SignalGeneratorOutputPathsBase],
     ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
-        """Get constraints which are dependent on the model series."""
+        """Get constraints which are dependent on the model series and parameters.
+
+        Args:
+            output_signal_path: The signal path that the output is taking.
+
+        Returns:
+            Ranges for amplitude, offset and sample rate.
+        """
         if not output_signal_path:
             output_signal_path = self.OutputSignalPath.DIR
 

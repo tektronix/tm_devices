@@ -13,8 +13,8 @@ from tm_devices.drivers.pi.signal_generators.awgs.awg import (
     ParameterBounds,
 )
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
-from tm_devices.helpers import (
-    SASSetWaveformFileTypes,
+from tm_devices.helpers import SASSetWaveformFileTypes
+from tm_devices.helpers.enums import (
     SignalGeneratorFunctionsAWG,
     SignalGeneratorOutputPaths5200,
     SignalGeneratorOutputPathsBase,
@@ -22,7 +22,7 @@ from tm_devices.helpers import (
 
 
 class AWG5200SourceChannel(AWGSourceChannel):
-    """AWG5200 source channel driver."""
+    """AWG5200 signal source channel composite."""
 
     def __init__(self, awg: "AWG5200", channel_name: str) -> None:
         """Create an AWG5200 source channel.
@@ -243,7 +243,14 @@ class AWG5200(AWG5200Mixin, AWG):
         self,
         output_signal_path: Optional[SignalGeneratorOutputPathsBase],
     ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
-        """Get constraints which are dependent on the model series."""
+        """Get constraints which are dependent on the model series and parameters.
+
+        Args:
+            output_signal_path: The signal path that the output is taking.
+
+        Returns:
+            Ranges for amplitude, offset and sample rate.
+        """
         if not output_signal_path:
             output_signal_path = self.OutputSignalPath.DCHB
         # Direct Current High Bandwidth with the DC options has 1.5 V amplitude

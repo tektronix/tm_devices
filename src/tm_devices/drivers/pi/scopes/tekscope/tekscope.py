@@ -43,16 +43,15 @@ from tm_devices.driver_mixins.usb_drives_mixin import USBDrivesMixin
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi._base_afg_source_channel import BaseAFGSourceChannel
 from tm_devices.drivers.pi.scopes.scope import Scope
-from tm_devices.helpers import (
-    DeviceConfigEntry,
-    LoadImpedanceAFG,
-    SignalGeneratorFunctionsIAFG,
-    SignalGeneratorOutputPathsBase,
-)
+from tm_devices.helpers import DeviceConfigEntry, LoadImpedanceAFG
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 from tm_devices.helpers.constants_and_dataclasses import UNIT_TEST_TIMEOUT
+from tm_devices.helpers.enums import (
+    SignalGeneratorFunctionsIAFG,
+    SignalGeneratorOutputPathsBase,
+)
 
 
 @dataclass(frozen=True)
@@ -680,7 +679,7 @@ class TekScope(
         del output_signal_path
 
         if not function:
-            msg = "IAFGs must have a waveform defined."
+            msg = "IAFGs must have a function defined."
             raise ValueError(msg)
 
         del waveform_length
@@ -1035,7 +1034,7 @@ class TekScope(
 
     @staticmethod
     def _get_driver_specific_multipliers() -> float:
-        """Get constraints for specific drivers."""
+        """Return a value to multiply the original Tekscope frequency by."""
         return 1.0
 
     def _set_channel_display_state(

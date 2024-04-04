@@ -23,7 +23,10 @@ from tm_devices.drivers.pi.signal_generators.awgs.awg import (
     ParameterBounds,
     SignalGeneratorFunctionsAWG,
 )
-from tm_devices.helpers import SignalGeneratorOutputPaths5200, SignalGeneratorOutputPathsNon5200
+from tm_devices.helpers.enums import (
+    SignalGeneratorOutputPaths5200,
+    SignalGeneratorOutputPathsNon5200,
+)
 
 
 def check_constraints(

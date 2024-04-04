@@ -14,11 +14,11 @@ from tm_devices.drivers.pi.signal_generators.awgs.awg import (
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
-from tm_devices.helpers import SignalGeneratorOutputPathsBase
+from tm_devices.helpers.enums import SignalGeneratorOutputPathsBase
 
 
 class AWG5KSourceChannel(AWGSourceChannel):
-    """AWG5K source channel driver."""
+    """AWG5K signal source channel composite."""
 
     def set_offset(self, value: float, absolute_tolerance: float = 0) -> None:
         """Set the offset on the source channel.
@@ -94,7 +94,14 @@ class AWG5K(AWG5KMixin, AWG):
         self,
         output_signal_path: Optional[SignalGeneratorOutputPathsBase],
     ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
-        """Get constraints which are dependent on the model series."""
+        """Get constraints which are dependent on the model series and parameters.
+
+        Args:
+            output_signal_path: The signal path that the output is taking.
+
+        Returns:
+            Ranges for amplitude, offset and sample rate.
+        """
         if not output_signal_path:
             output_signal_path = self.OutputSignalPath.DCA
 

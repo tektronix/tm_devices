@@ -2,7 +2,7 @@
 
 from tm_devices import DeviceManager
 from tm_devices.drivers import AWG5K
-from tm_devices.helpers import SignalGeneratorFunctionsAWG
+from tm_devices.helpers.enums import SignalGeneratorFunctionsAWG
 
 # The desired frequency.
 DESIRED_FREQUENCY = 10e18

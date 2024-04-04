@@ -268,15 +268,15 @@ class SignalGeneratorOutputPathsBase(CustomStrEnum):
 class SignalGeneratorOutputPathsNon5200(SignalGeneratorOutputPathsBase):
     """Output signal path types for non-AWG5200's."""
 
-    DCA = "DCA"
-    DIR = "DIR"
+    DCA = "DCA"  # Direct Coupled Amplifier, signal enters an amplifier before the output (+/-)
+    DIR = "DIR"  # DIRect output, bypasses the amplifier and filter directly to the output (+/-)
 
 
 class SignalGeneratorOutputPaths5200(SignalGeneratorOutputPathsBase):
     """Output signal path types for AWG5200's."""
 
-    DCHB = "DCHB"
-    DCHV = "DCHV"
+    DCHB = "DCHB"  # DC High Bandwidth, goes directly to the differential output (+/-)
+    DCHV = "DCHV"  # DC High Voltage, enters another amplifier before going to the output (+/-)
 
 
 class SASSetWaveformFileTypes(CustomStrEnum):
@@ -291,5 +291,5 @@ class SASSetWaveformFileTypes(CustomStrEnum):
 class LoadImpedanceAFG(Enum):
     """AFG/IAFG Impedance Values."""
 
-    HIGHZ = "HIGHZ"
-    FIFTY = "FIFTY"
+    HIGHZ = "HIGHZ"  # High Impedance (1 Mega Ohm) termination
+    FIFTY = "FIFTY"  # 50 Ohm termination

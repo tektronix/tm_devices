@@ -668,7 +668,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
         custom_message_prefix: str = "",
         *,
         expected_value: Optional[Union[str, float]] = None,
-        opc: Optional[bool] = None,
+        opc: bool = False,
     ) -> str:
         """Send the given command with the given value and then verify the results.
 
@@ -689,7 +689,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
         Returns:
             The output of the query portion of the method.
         """
-        self.write(f"{command} {value}", opc=bool(opc))
+        self.write(f"{command} {value}", opc=opc)
         if self._enable_verification:
             check = self.query(command + "?", remove_quotes=remove_quotes)
             message_prefix = f"Failed to set {command} to {value}"
@@ -717,7 +717,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
         custom_message_prefix: str = "",
         *,
         expected_value: Optional[Union[str, float]] = None,
-        opc: Optional[bool] = None,
+        opc: bool = False,
         allow_empty: Optional[bool] = None,
         verify_value: Optional[bool] = None,
     ) -> Tuple[bool, str]:
