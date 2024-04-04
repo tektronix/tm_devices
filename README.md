@@ -71,7 +71,7 @@ with DeviceManager() as device_manager:
 > \[!TIP\]
 > Hover over an item to see its definition, or visit the Glossary to see definitions for all symbols and abbreviations.
 
-<div class="custom-table-center-cells device-support-table" title="Device Support Levels">
+<div class="custom-table-center-cells device-support-table">
 
 <div class="custom-table-title">
 
@@ -137,7 +137,7 @@ _Device Support Levels_
 
 </div>
 
-<div class="custom-table-center-cells device-support-table" title="Software Solution Support Levels">
+<div class="custom-table-center-cells device-support-table">
 
 <div class="custom-table-title">
 
