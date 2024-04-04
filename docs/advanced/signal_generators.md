@@ -419,7 +419,7 @@ AWG5K's have digitized outputs on the rear of the device.
 
 ###### Constraints:
 
-The AWG7K series instruments functions identically to the [AWG5K](#awg5k-awg5kb-awg5kc) series,
+The AWG7K series instruments functions identically to the AWG5K series,
 excluding the higher sample rate and lower amplitude and offset range.
 The model number conveys information about the unit, with the second and third number indicating
 the maximum sample rate in gigahertz allowed on the unit.
@@ -572,4 +572,5 @@ align: center
 
 ##### Sequential, Blocking and Overlapping Commands:
 
-The AWG70K also supports [Sequential, Blocking and Overlapping commands](#sequential-blocking-and-overlapping-commands).
+The AWG70K also supports the [Sequential, Blocking and Overlapping commands](#awg5200) mentioned in
+the AWG5200 section.
