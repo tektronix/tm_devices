@@ -69,7 +69,7 @@ with DeviceManager() as device_manager:
 ### Supported Devices & Software Solutions
 
 > \[!TIP\]
-> See the Glossary for definitions of symbols and abbreviations.
+> Hover over an item to see its definition, or visit the Glossary to see definitions for all symbols and abbreviations.
 
 <div class="custom-table-center-cells device-support-table" title="Device Support Levels">
 
@@ -118,22 +118,22 @@ _Device Support Levels_
 |        | **2280S**                | PI              | ✅                |                                    |
 |        | **2281S**                | PI              | ✅                |                                    |
 | SMUs   | **24xx Standard**        | PI              | ✅                |                                    |
-|        | **24xx Interactive**     | PI              | ✅                | ✅                                  |
-|        | **26xxB**                | PI              | ✅                | 🚧                                  |
-|        | **2636B**                | PI              | ✅                | ✅                                  |
-|        | **Model 2601B-PULSE**    | PI              | ✅                |                                    |
-|        | **Model 2606B**          | PI              | ✅                | 🚧                                  |
-|        | **2651A**                | PI              | ✅                | ✅                                  |
-|        | **2657A**                | PI              | ✅                |                                    |
+|        | **24xx Interactive**     | TSP             | ✅                | ✅                                  |
+|        | **26xxB**                | TSP             | ✅                | 🚧                                  |
+|        | **2636B**                | TSP             | ✅                | ✅                                  |
+|        | **Model 2601B-PULSE**    | TSP             | ✅                |                                    |
+|        | **Model 2606B**          | TSP             | ✅                | 🚧                                  |
+|        | **2651A**                | TSP             | ✅                | ✅                                  |
+|        | **2657A**                | TSP             | ✅                |                                    |
 |        | **6430 (electrometer)**  | PI              | ✅                |                                    |
 |        | **6514 (electrometer)**  | PI              | ✅                |                                    |
 |        | **6517B (electrometer)** | PI              | ✅                |                                    |
-| MTs    | **TMT4**                 | PI              | ✅                |                                    |
-| DMMs   | **DMM6500**              | PI              | ✅                |                                    |
-|        | **DMM7510**              | PI              | ✅                |                                    |
-|        | **DMM7512**              | PI              | ✅                |                                    |
-| DAQs   | **DAQ6510**              | PI              | ✅                |                                    |
-| SSs    | **3706A**                | PI              | ✅                |                                    |
+| MTs    | **TMT4**                 | API             | ✅                |                                    |
+| DMMs   | **DMM6500**              | TSP             | ✅                |                                    |
+|        | **DMM7510**              | TSP             | ✅                |                                    |
+|        | **DMM7512**              | TSP             | ✅                |                                    |
+| DAQs   | **DAQ6510**              | TSP             | ✅                |                                    |
+| SSs    | **3706A**                | TSP             | ✅                |                                    |
 
 </div>
 
