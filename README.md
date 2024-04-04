@@ -69,13 +69,14 @@ with DeviceManager() as device_manager:
 ### Supported Devices & Software Solutions
 
 ```{admonition} Legend
-:class: hint
-
+---
+class: hint
+---
 | Symbol/Term | Definition       |
 | ----------- | ---------------- |
-| &#x1F6A7;   | Work in progress |
-| &#x2705;    | Implemented      |
-| &#x274C;    | Not Supported    |
+| 🚧          | Work in progress |
+| ✅          | Implemented      |
+| ❌          | Not Supported    |
 
 See the {doc}`glossary` for more information on abbreviations.
 ```
@@ -88,38 +89,61 @@ _Device Support Levels_
 
 </div>
 
-| Type                   | Series/Model           | Command<br>Type | Basic<br>Control | Python API<br>Validation<br>Status |
-|------------------------|------------------------|-----------------|------------------|------------------------------------|
-| {term}`AFGs <AFG>`     | **AFG3000**            | {term}`PI`      | &#x2705;         |                                    |
-|                        | **AFG31xxx**           | {term}`PI`      | &#x2705;         |                                    |
-| {term}`AWGs <AWG>`     | **AWG5000**            | {term}`PI`      | &#x2705;         |                                    |
-|                        | **AWG5200**            | {term}`PI`      | &#x2705;         |                                    |
-|                        | **AWG7000**            | {term}`PI`      | &#x2705;         |                                    |
-|                        | **AWG70000**           | {term}`PI`      | &#x2705;         |                                    |
-| {term}`Scopes <Scope>` | **2 Series MSO**       | {term}`PI`      | &#x2705;         | &#x2705;                           |
-|                        | **3 Series MDO**       | {term}`PI`      | &#x2705;         |                                    |
-|                        | **4 Series MSO**       | {term}`PI`      | &#x2705;         | &#x2705;                           |
-|                        | **4 Series B MSO**     | {term}`PI`      | &#x2705;         | &#x2705;                           |
-|                        | **5 Series MSO**       | {term}`PI`      | &#x2705;         | &#x2705;                           |
-|                        | **5 Series B MSO**     | {term}`PI`      | &#x2705;         | &#x2705;                           |
-|                        | **5 Series MSO (LP)**  | {term}`PI`      | &#x2705;         | &#x2705;                           |
-|                        | **6 Series MSO**       | {term}`PI`      | &#x2705;         | &#x2705;                           |
-|                        | **6 Series B MSO**     | {term}`PI`      | &#x2705;         | &#x2705;                           |
-|                        | **6 Series LPD**       | {term}`PI`      | &#x2705;         | &#x2705;                           |
-|                        | **MSO2000/B**          | {term}`PI`      | &#x2705;         |                                    |
-|                        | **DPO2000/B**          | {term}`PI`      | &#x2705;         |                                    |
-|                        | **MDO3000**            | {term}`PI`      | &#x2705;         |                                    |
-|                        | **MDO4000/B/C**        | {term}`PI`      | &#x2705;         |                                    |
-|                        | **MSO4000/B**          | {term}`PI`      | &#x2705;         |                                    |
-|                        | **DPO4000/B**          | {term}`PI`      | &#x2705;         |                                    |
-|                        | **MSO5000/B**          | {term}`PI`      | &#x2705;         |                                    |
-|                        | **DPO5000/B**          | {term}`PI`      | &#x2705;         |                                    |
-|                        | **DPO7000/C**          | {term}`PI`      | &#x2705;         |                                    |
-|                        | **DPO70000/C/D/DX/SX** | {term}`PI`      | &#x2705;         |                                    |
-|                        | **DSA70000/C/D**       | {term}`PI`      | &#x2705;         |                                    |
-|                        | **MSO70000/C/DX**      | {term}`PI`      | &#x2705;         |                                    |
-|                        | **TSOVu**              | {term}`PI`      | &#x2705;         |                                    |
-|                        | **TekScope**           | {term}`PI`      | &#x2705;         |                                    |
+| Type                   | Series/Model             | Command<br>Type | Basic<br>Control | Python API<br>Validation<br>Status |
+| ---------------------- | ------------------------ | --------------- | ---------------- | ---------------------------------- |
+| {term}`AFGs <AFG>`     | **AFG3000**              | {term}`PI`      | ✅                |                                    |
+|                        | **AFG31xxx**             | {term}`PI`      | ✅                |                                    |
+| {term}`AWGs <AWG>`     | **AWG5000**              | {term}`PI`      | ✅                |                                    |
+|                        | **AWG5200**              | {term}`PI`      | ✅                |                                    |
+|                        | **AWG7000**              | {term}`PI`      | ✅                |                                    |
+|                        | **AWG70000**             | {term}`PI`      | ✅                |                                    |
+| {term}`Scopes <Scope>` | **2 Series MSO**         | {term}`PI`      | ✅                | ✅                                  |
+|                        | **3 Series MDO**         | {term}`PI`      | ✅                |                                    |
+|                        | **4 Series MSO**         | {term}`PI`      | ✅                | ✅                                  |
+|                        | **4 Series B MSO**       | {term}`PI`      | ✅                | ✅                                  |
+|                        | **5 Series MSO**         | {term}`PI`      | ✅                | ✅                                  |
+|                        | **5 Series B MSO**       | {term}`PI`      | ✅                | ✅                                  |
+|                        | **5 Series MSO (LP)**    | {term}`PI`      | ✅                | ✅                                  |
+|                        | **6 Series MSO**         | {term}`PI`      | ✅                | ✅                                  |
+|                        | **6 Series B MSO**       | {term}`PI`      | ✅                | ✅                                  |
+|                        | **6 Series LPD**         | {term}`PI`      | ✅                | ✅                                  |
+|                        | **MSO2000/B**            | {term}`PI`      | ✅                |                                    |
+|                        | **DPO2000/B**            | {term}`PI`      | ✅                |                                    |
+|                        | **MDO3000**              | {term}`PI`      | ✅                | ✅                                  |
+|                        | **MDO4000/B/C**          | {term}`PI`      | ✅                | ✅                                  |
+|                        | **MSO4000/B**            | {term}`PI`      | ✅                | ✅                                  |
+|                        | **DPO4000/B**            | {term}`PI`      | ✅                | ✅                                  |
+|                        | **MSO5000/B**            | {term}`PI`      | ✅                | ✅                                  |
+|                        | **DPO5000/B**            | {term}`PI`      | ✅                | ✅                                  |
+|                        | **DPO7000/C**            | {term}`PI`      | ✅                | ✅                                  |
+|                        | **DPO70000/C/D/DX/SX**   | {term}`PI`      | ✅                | ✅                                  |
+|                        | **DSA70000/C/D**         | {term}`PI`      | ✅                | ✅                                  |
+|                        | **MSO70000/C/DX**        | {term}`PI`      | ✅                | ✅                                  |
+|                        | **TSOVu**                | {term}`PI`      | ✅                |                                    |
+|                        | **TekScope**             | {term}`PI`      | ✅                |                                    |
+| {term}`PSUs <PSU>`     | **2200**                 | {term}`PI`      | ✅                |                                    |
+|                        | **2220**                 | {term}`PI`      | ✅                |                                    |
+|                        | **2230**                 | {term}`PI`      | ✅                |                                    |
+|                        | **2231**                 | {term}`PI`      | ✅                |                                    |
+|                        | **2280S**                | {term}`PI`      | ✅                |                                    |
+|                        | **2281S**                | {term}`PI`      | ✅                |                                    |
+| {term}`SMUs <SMU>`     | **24xx Standard**        | {term}`PI`      | ✅                |                                    |
+|                        | **24xx Interactive**     | {term}`PI`      | ✅                | ✅                                  |
+|                        | **26xxB**                | {term}`PI`      | ✅                | 🚧                                  |
+|                        | **2636B**                | {term}`PI`      | ✅                | ✅                                  |
+|                        | **Model 2601B-PULSE**    | {term}`PI`      | ✅                |                                    |
+|                        | **Model 2606B**          | {term}`PI`      | ✅                | 🚧                                  |
+|                        | **2651A**                | {term}`PI`      | ✅                | ✅                                  |
+|                        | **2657A**                | {term}`PI`      | ✅                |                                    |
+|                        | **6430 (electrometer)**  | {term}`PI`      | ✅                |                                    |
+|                        | **6514 (electrometer)**  | {term}`PI`      | ✅                |                                    |
+|                        | **6517B (electrometer)** | {term}`PI`      | ✅                |                                    |
+| {term}`MTs <MT>`       | **TMT4**                 | {term}`PI`      | ✅                |                                    |
+| {term}`DMMs <DMM>`     | **DMM6500**              | {term}`PI`      | ✅                |                                    |
+|                        | **DMM7510**              | {term}`PI`      | ✅                |                                    |
+|                        | **DMM7512**              | {term}`PI`      | ✅                |                                    |
+| {term}`DAQs <DAQ>`     | **DAQ6510**              | {term}`PI`      | ✅                |                                    |
+| {term}`SSs <SS>`       | **3706A**                | {term}`PI`      | ✅                |                                    |
 
 </div>
 
@@ -132,8 +156,8 @@ _Software Solution Support Levels_
 </div>
 
 | Software<br>Solution | Command<br>Type | Basic<br>Control | Python API<br>Validation<br>Status |
-|----------------------|-----------------|------------------|------------------------------------|
-| {term}`DPOJET`       | {term}`PI`      | &#x2705;         | &#x2705;                           |
+| -------------------- | --------------- | ---------------- | ---------------------------------- |
+| {term}`DPOJET`       | {term}`PI`      | ✅                | ✅                                  |
 
 </div>
 

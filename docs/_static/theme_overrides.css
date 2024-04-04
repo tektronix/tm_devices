@@ -2,29 +2,36 @@
     text-align: center;
     white-space: nowrap !important;
 }
+
 .rst-content table.device-support-table.docutils thead {
     vertical-align: middle;
+
     .line-block {
-      margin-bottom: 0;
+        margin-bottom: 0;
     }
 }
+
 .device-support-table thead, .device-support-table tbody {
-    border: 2px solid black
+    border: 3px solid black
 }
-.device-support-table tr:has(td:first-child p:not(:empty))
-{
-    border-top-width: 2px;
+
+.rst-content table.device-support-table.docutils tbody tr:has(th p),
+.device-support-table tr:has(td:first-child p:not(:empty)) {
+    border-top-width: 3px;
     border-top-color: black;
     border-top-style: solid;
 }
-.device-support-table tbody td[rowspan]
-{
-   background-color: transparent !important;
+
+.device-support-table tbody td[rowspan] {
+    background-color: transparent !important;
 }
+
 .device-support-table table td:first-child,
 .device-support-table table th:first-child {
-   background-color: transparent !important;
+    font-weight: bolder;
+    background-color: transparent !important;
 }
+
 .device-support-table table {
     margin-left: auto;
     margin-right: auto;
@@ -42,18 +49,21 @@
 div.admonition.no-icon > .admonition-title::before {
     content: "";
 }
+
 div.admonition.no-icon > .admonition-title {
     padding-left: .6rem;
 }
 
 /** Modify the custom badge table */
-.custom-badge-table tbody td, .custom-badge-table tbody th, .custom-badge-table tbody td>p {
+.custom-badge-table tbody td, .custom-badge-table tbody th, .custom-badge-table tbody td > p {
     white-space: inherit;
     line-height: 1.5rem !important;
 }
+
 .custom-badge-table thead {
     display: none;
 }
+
 .custom-badge-table table td:first-child,
 .custom-badge-table table th:first-child {
     text-align: center;
@@ -64,6 +74,7 @@ div.admonition.no-icon > .admonition-title {
 div.hint.admonition > .admonition-title::before {
     content: "\f0eb";
 }
+
 div.note.admonition > .admonition-title::before {
     content: "\f05a";
 }
@@ -80,9 +91,11 @@ div.note.admonition > .admonition-title::before {
 .tippy-content ul {
     margin-left: 20px;
 }
+
 .tippy-content li {
     list-style-type: circle;
 }
+
 .tippy-content li > p {
     margin: 1px 0;
 }
@@ -92,6 +105,7 @@ div.note.admonition > .admonition-title::before {
     text-align: left;
     font-weight: bolder;
 }
+
 .tippy-content dd {
     text-align: left;
     font-weight: normal;
@@ -110,6 +124,7 @@ span.apisummarylabel {
     padding-bottom: 2px;
     filter: opacity(40%);
 }
+
 table.apisummarytable {
     width: 100%;
 }
