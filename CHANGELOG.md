@@ -18,6 +18,14 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v1.3.0 (2024-04-04)
+
+### Merged Pull Requests
+
+- Updated the get_acquisition_data example to select source for the measurement. ([#187](https://github.com/tektronix/tm_devices/issues/187))
+
 ### Changed
 
 - Updated get_acquisition_data example to select source for the measurement.
