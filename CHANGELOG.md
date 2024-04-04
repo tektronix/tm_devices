@@ -18,7 +18,7 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
-### Fixed
+### Changed
 
 - Updated get_acquisition_data example to select source for the measurement.
 
