@@ -69,7 +69,7 @@ with DeviceManager() as device_manager:
 ### Supported Devices & Software Solutions
 
 > \[!TIP\]
-> See the Glossary for information on these and other abbreviations.
+> See the Glossary for definitions of symbols and abbreviations.
 
 <div class="custom-table-center-cells device-support-table" title="Device Support Levels">
 
