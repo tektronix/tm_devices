@@ -6,9 +6,11 @@ documentation: https://www.sphinx-doc.org/en/master/usage/configuration.html
 """
 
 import os
+import re
 import shutil
 
 from importlib.metadata import metadata
+from pathlib import Path
 from typing import Any, List, Sequence
 
 from autoapi.mappers.python.objects import PythonPythonMapper  # type: ignore[import]
@@ -186,6 +188,35 @@ mermaid_params = ["-p", "puppeteer-config.json"]
 
 
 # -- Sphinx setup functions --------------------------------------------------
+README = Path(__file__).parents[1] / "README.md"
+ORIGINAL_README_CONTENT = README.read_text(encoding="utf-8")
+FILES_WITH_GFM_ALERTS = ((README, ORIGINAL_README_CONTENT),)
+
+
+def pre_process_gfm_alerts(app: Sphinx) -> None:
+    """Pre-process GitHub Flavored Markdown style alerts into MyST admonitions."""
+    _ = app
+    for file, original_contents in FILES_WITH_GFM_ALERTS:
+        modified_file_contents = ""
+        for line in original_contents.splitlines():
+            new_line = line
+            if new_line.startswith("> \\["):
+                new_line = re.sub(r"> \\\[!([A-Z]+)\\]", r":::{\1}", new_line).lower()
+            elif new_line.startswith("> "):
+                new_line = new_line.lstrip("> ") + "\n:::"
+
+            modified_file_contents += new_line + "\n"
+
+        file.write_text(modified_file_contents, encoding="utf-8")
+
+
+def post_process_gfm_alerts(app: Sphinx, exception: Any) -> None:
+    """Restore GitHub Flavored Markdown alerts."""
+    _ = app, exception
+    for file, original_contents in FILES_WITH_GFM_ALERTS:
+        file.write_text(original_contents, encoding="utf-8")
+
+
 def skip_member(
     app: Sphinx, what: str, name: str, obj: PythonPythonMapper, skip: bool, options: List[str]
 ) -> bool:
@@ -231,3 +262,5 @@ def setup(sphinx: Sphinx) -> None:
         sphinx: The sphinx object.
     """
     sphinx.connect("autoapi-skip-member", skip_member)  # pyright: ignore[reportUnknownMemberType]
+    sphinx.connect("builder-inited", pre_process_gfm_alerts)  # pyright: ignore[reportUnknownMemberType]
+    sphinx.connect("build-finished", post_process_gfm_alerts)  # pyright: ignore[reportUnknownMemberType]
