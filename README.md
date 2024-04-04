@@ -39,8 +39,8 @@ are installed.
 
 ## Installation
 
-```console
-$ pip install tm_devices
+```shell
+pip install tm_devices
 ```
 
 ## Basic Usage
