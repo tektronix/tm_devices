@@ -68,28 +68,8 @@ with DeviceManager() as device_manager:
 
 ### Supported Devices & Software Solutions
 
-```{admonition} Legend
----
-class: hint
----
-| Symbol/Term | Definition                   |
-| ----------- | ---------------------------- |
-| 🚧          | Work in progress             |
-| ✅          | Implemented                  |
-| ❌          | Not Supported                |
-| **AFG**     | Abitrary Function Generator  |
-| **AWG**     | Arbitrary Waveform Generator |
-| **Scope**   | Oscilloscope                 |
-| **PSU**     | Power Supply Unit            |
-| **SMU**     | Source Measure Unit          |
-| **MT**      | Margin Tester                |
-| **DMM**     | Digital Multimeter           |
-| **DAQ**     | Digital Acquisition System   |
-| **SS**      | System Switch                |
-| **PI**      | Programmable Interface       |
-
-See the Glossary for information on these and other abbreviations.
-```
+> \[!TIP\]
+> See the Glossary for information on these and other abbreviations.
 
 <div class="custom-table-center-cells device-support-table" title="Device Support Levels">
 
