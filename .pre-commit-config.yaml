@@ -62,17 +62,15 @@ repos:
         args: [--number, --end-of-line, keep]
         additional_dependencies:
           - setuptools  # This is required since Python 3.12 no longer installs setuptools by default in virtual environments
-          - mdformat-myst
-          - mdformat-toc
-          - mdformat-frontmatter
+          - black==23.12.1  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
           - mdformat-beautysh
           - mdformat-black
-          - black==23.12.1  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
           - mdformat-config
           - mdformat-shfmt
           - mdformat-web
           - mdformat-gfm
-          - mdformat-footnote
+          - mdformat-myst
+          - mdformat-toc
 # TODO: enable this, will require configuration
 #  - repo: https://github.com/jackdewinter/pymarkdown
 #    rev: v0.9.11
