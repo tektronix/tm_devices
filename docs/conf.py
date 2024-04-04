@@ -9,9 +9,10 @@ import os
 import re
 import shutil
 
+from dataclasses import dataclass
 from importlib.metadata import metadata
 from pathlib import Path
-from typing import Any, List, Sequence
+from typing import Any, Dict, List, Sequence
 
 from autoapi.mappers.python.objects import PythonPythonMapper  # type: ignore[import]
 from jinja2.environment import Environment as JinjaEnvironment
@@ -188,17 +189,46 @@ mermaid_params = ["-p", "puppeteer-config.json"]
 
 
 # -- Sphinx setup functions --------------------------------------------------
+@dataclass(frozen=True)
+class GFMFileData:  # noqa: D101
+    original_contents: str
+    search_and_replace_pairs: Dict[str, str]
+
+
 README = Path(__file__).parents[1] / "README.md"
 ORIGINAL_README_CONTENT = README.read_text(encoding="utf-8")
-FILES_WITH_GFM_ALERTS = ((README, ORIGINAL_README_CONTENT),)
+FILES_WITH_GFM = {
+    README: GFMFileData(
+        ORIGINAL_README_CONTENT,
+        {
+            "Glossary": "{doc}`glossary`",
+            "AFGs": "{term}`AFGs <AFG>`",
+            "AWGs": "{term}`AWGs <AWG>`",
+            "Scopes": "{term}`Scopes <Scope>`",
+            "PSUs": "{term}`PSUs <PSU>`",
+            "SMUs": "{term}`SMUs <SMU>`",
+            "MTs": "{term}`MTs <MT>`",
+            "DMMs": "{term}`DMMs <DMM>`",
+            "DAQs": "{term}`DAQs <DAQ>`",
+            "SSs": "{term}`SSs <SS>`",
+            "DPOJET": "{term}`DPOJET`",
+            " PI ": " {term}`PI` ",
+            " TSP ": " {term}`TSP` ",
+            " API ": " {term}`API` ",
+            " ✅ ": " {term}`✅` ",
+            " 🚧 ": " {term}`🚧` ",
+            " ❌ ": " {term}`❌` ",
+        },
+    ),
+}
 
 
-def pre_process_gfm_alerts(app: Sphinx) -> None:
-    """Pre-process GitHub Flavored Markdown style alerts into MyST admonitions."""
+def pre_process_gfm(app: Sphinx) -> None:
+    """Pre-process GitHub Flavored Markdown style files into MyST style files."""
     _ = app
-    for file, original_contents in FILES_WITH_GFM_ALERTS:
+    for file, gfm_file_data in FILES_WITH_GFM.items():
         modified_file_contents = ""
-        for line in original_contents.splitlines():
+        for line in gfm_file_data.original_contents.splitlines():
             new_line = line
             if new_line.startswith("> \\["):
                 new_line = re.sub(r"> \\\[!([A-Z]+)\\]", r":::{\1}", new_line).lower()
@@ -207,14 +237,17 @@ def pre_process_gfm_alerts(app: Sphinx) -> None:
 
             modified_file_contents += new_line + "\n"
 
+        for search, replace in gfm_file_data.search_and_replace_pairs.items():
+            modified_file_contents = modified_file_contents.replace(search, replace)
+
         file.write_text(modified_file_contents, encoding="utf-8")
 
 
-def post_process_gfm_alerts(app: Sphinx, exception: Any) -> None:
-    """Restore GitHub Flavored Markdown alerts."""
+def post_process_gfm(app: Sphinx, exception: Any) -> None:
+    """Restore GitHub Flavored Markdown files."""
     _ = app, exception
-    for file, original_contents in FILES_WITH_GFM_ALERTS:
-        file.write_text(original_contents, encoding="utf-8")
+    for file, gfm_file_data in FILES_WITH_GFM.items():
+        file.write_text(gfm_file_data.original_contents, encoding="utf-8")
 
 
 def skip_member(
@@ -261,6 +294,6 @@ def setup(sphinx: Sphinx) -> None:
     Args:
         sphinx: The sphinx object.
     """
+    sphinx.connect("build-finished", post_process_gfm, priority=1)  # pyright: ignore[reportUnknownMemberType]
+    sphinx.connect("builder-inited", pre_process_gfm, priority=1)  # pyright: ignore[reportUnknownMemberType]
     sphinx.connect("autoapi-skip-member", skip_member)  # pyright: ignore[reportUnknownMemberType]
-    sphinx.connect("builder-inited", pre_process_gfm_alerts)  # pyright: ignore[reportUnknownMemberType]
-    sphinx.connect("build-finished", post_process_gfm_alerts)  # pyright: ignore[reportUnknownMemberType]
