@@ -5,13 +5,13 @@
 .rst-content table.device-support-table.docutils thead {
     vertical-align: middle;
     .line-block {
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
 }
 .device-support-table thead, .device-support-table tbody {
     border: 2px solid black
 }
-.rst-content table.device-support-table.docutils tbody tr:has(th p)
+.device-support-table tr:has(td:first-child p:not(:empty))
 {
     border-top-width: 2px;
     border-top-color: black;
@@ -20,6 +20,22 @@
 .device-support-table tbody td[rowspan]
 {
    background-color: transparent !important;
+}
+.device-support-table table td:first-child,
+.device-support-table table th:first-child {
+   background-color: transparent !important;
+}
+.device-support-table table {
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+
+/** Styling for custom table titles */
+.custom-table-title p {
+    text-align: center;
+    font-size: 0.9em;
+    margin-bottom: 0;
 }
 
 /** No icon for admonitions with no-icon class */
@@ -30,10 +46,18 @@ div.admonition.no-icon > .admonition-title {
     padding-left: .6rem;
 }
 
-/** Modify class that enables auto-wrap in tables */
+/** Modify the custom badge table */
 .custom-badge-table tbody td, .custom-badge-table tbody th, .custom-badge-table tbody td>p {
     white-space: inherit;
     line-height: 1.5rem !important;
+}
+.custom-badge-table thead {
+    display: none;
+}
+.custom-badge-table table td:first-child,
+.custom-badge-table table th:first-child {
+    text-align: center;
+    background-color: transparent !important;
 }
 
 /** Fix admonition symbols */
