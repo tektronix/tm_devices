@@ -69,6 +69,7 @@ repos:
           - mdformat-shfmt
           - mdformat-web
           - mdformat-gfm
+          - mdformat-footnote
           - mdformat-myst
           - mdformat-toc
 # TODO: enable this, will require configuration
