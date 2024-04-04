@@ -15,8 +15,9 @@ with DeviceManager(verbose=True) as device_manager:
     # Creating Scope driver object by providing ip address.
     scope: MSO6B = device_manager.add_scope("127.0.0.1")
 
-    # Turn on channel 1
+    # Turn on channel 1 and channel 2
     scope.commands.display.waveview1.ch[1].state.write("ON")
+    scope.commands.display.waveview1.ch[2].state.write("ON")
 
     # Set channel 1 vertical scale to 10mV
     scope.commands.ch[1].scale.write(10e-3)
@@ -38,8 +39,10 @@ with DeviceManager(verbose=True) as device_manager:
     # Adding measurements
     scope.commands.measurement.addmeas.write("AMPLitude")
     scope.commands.measurement.addmeas.write("PK2PK")
+    scope.commands.measurement.addmeas.write("MAXIMUM")
     scope.commands.measurement.meas[1].source.write("CH1")
     scope.commands.measurement.meas[2].source.write("CH1")
+    scope.commands.measurement.meas[3].source.write("CH2")
 
     # Get the measurement values
     scope.commands.acquire.state.write("ON")

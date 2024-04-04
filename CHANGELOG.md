@@ -18,6 +18,10 @@ ______________________________________________________________________
 
 Things to be included in the next release go here.
 
+### Changed
+
+- Updated get_acquisition_data example to select source for the measurement.
+
 ______________________________________________________________________
 
 ## v1.2.3 (2024-04-03)
