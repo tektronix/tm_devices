@@ -146,8 +146,8 @@ _Software Solution Support Levels_
 </div>
 
 | Software<br>Solution | Command<br>Type | Basic<br>Control | Python API<br>Validation<br>Status |
-|----------------------|-----------------|------------------|------------------------------------|
-| DPOJET               | PI              | &#x2705;         | &#x2705;                           |
+| -------------------- | --------------- | ---------------- | ---------------------------------- |
+| DPOJET               | PI              | ✅                | ✅                                  |
 
 </div>
 

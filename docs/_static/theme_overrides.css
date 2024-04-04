@@ -12,7 +12,7 @@
 }
 
 .device-support-table thead, .device-support-table tbody {
-    border: 2px solid black
+    border: 3px solid black
 }
 
 .device-support-table tr:has(td:first-child p:not(:empty)),
@@ -31,10 +31,13 @@
     font-weight: bolder;
     background-color: transparent !important;
 }
+
 .device-support-table table td:first-child,
 .device-support-table table th:first-child {
-   background-color: transparent !important;
+    font-weight: bolder;
+    background-color: transparent !important;
 }
+
 .device-support-table table {
     margin-left: auto;
     margin-right: auto;
@@ -75,9 +78,11 @@ div.admonition.no-icon > .admonition-title {
     white-space: inherit;
     line-height: 1.5rem !important;
 }
+
 .custom-badge-table thead {
     display: none;
 }
+
 .custom-badge-table table td:first-child,
 .custom-badge-table table th:first-child {
     text-align: center;
