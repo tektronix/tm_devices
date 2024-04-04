@@ -40,7 +40,7 @@ are installed.
 ## Installation
 
 ```console
-pip install tm_devices
+$ pip install tm_devices
 ```
 
 ## Basic Usage
