@@ -6,7 +6,10 @@ replace: Visit the [Glossary->Hover over a link or icon to see its definition, o
   ; MTs -> {term}`MTs <MT>` ; DMMs -> {term}`DMMs <DMM>` ; DAQs -> {term}`DAQs <DAQ>`
   ; SSs -> {term}`SSs <SS>` ; DPOJET -> {term}`DPOJET` ; PI -> {term}`PI` ; TSP ->
   {term}`TSP` ; API -> {term}`API` ; ✅ -> {term}`✅` ; 🚧 -> {term}`🚧` ; ❌ -> {term}`❌`
-  ;[Glossary](https://tinyurl.com/tek-tm-devices/docs/glossary.md)->{doc}`glossary`;https://tinyurl.com/tek-tm-devices/->./
+  ;[Code of Conduct](https://tinyurl.com/tek-tm-devices/CODE_OF_CONDUCT.md)-> {doc}`CODE_OF_CONDUCT`
+  ;[contributing guidelines](https://tinyurl.com/tek-tm-devices/CONTRIBUTING.md)->
+  {doc}`contributing guidelines <CONTRIBUTING>`;[Apache License 2.0](https://tinyurl.com/tek-tm-devices/LICENSE.md)->{doc}`LICENSE`
+  ;[Glossary](https://tinyurl.com/tek-tm-devices/docs/glossary.md)->{doc}`glossary`
 ---
 ```
 
