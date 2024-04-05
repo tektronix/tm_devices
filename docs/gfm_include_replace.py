@@ -50,15 +50,21 @@ class GFMIncludeReplaceDirective(Directive):
                 original_content = file.read()
                 content = ""
 
-                # Replace GFM annotations with MyST admonitions
+                # Replace GFM admonitions with MyST admonitions
                 # - https://github.com/orgs/community/discussions/16925
                 # - https://myst-parser.readthedocs.io/en/latest/syntax/admonitions.html
+                tracking_admonition = False
                 for line in original_content.splitlines():
                     new_line = line
                     if new_line.startswith("> \\["):
+                        tracking_admonition = True
                         new_line = re.sub(r"> \\\[!([A-Z]+)\\]", r"```{\1}", new_line).lower()
                     elif new_line.startswith("> "):
-                        new_line = new_line.lstrip("> ") + "\n```"
+                        new_line = new_line.lstrip("> ")
+                    else:
+                        if tracking_admonition:
+                            new_line += "```\n"
+                        tracking_admonition = False
                     content += new_line + "\n"
 
                 # Perform the search and replace
