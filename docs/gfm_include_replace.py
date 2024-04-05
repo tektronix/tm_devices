@@ -75,10 +75,14 @@ class GFMIncludeReplaceDirective(Directive):
                 if len(rule) == 2:  # noqa: PLR2004
                     content = content.replace(rule[0], rule[1])
 
+            del file
+            del original_content
+
             # Use the custom parser specified in the directive options
             document = utils.new_document(filename, settings)
             parser = Parser()
             parser.parse(content, document)
+            del content
             # clean up doctree and complete parsing
             document.transformer.populate_from_components((parser,))
             document.transformer.apply_transforms()
