@@ -183,10 +183,8 @@ the maintainers will review and respond there.
 
 ## Contributing
 
-Interested in contributing? Check out the [contributing
-guidelines](https://tinyurl.com/tek-tm-devices/CONTRIBUTING.md). Please
-note that this project is released with a [Code of
-Conduct](https://tinyurl.com/tek-tm-devices/CODE_OF_CONDUCT.md). By
+Interested in contributing? Check out the [contributing guidelines](https://tinyurl.com/tek-tm-devices/CONTRIBUTING.md). Please
+note that this project is released with a [Code of Conduct](https://tinyurl.com/tek-tm-devices/CODE_OF_CONDUCT.md). By
 contributing to this project, you agree to abide by its terms.
 
 ## License
