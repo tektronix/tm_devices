@@ -3,6 +3,7 @@
 A collection of terms and symbols used throughout the documentation and their definitions.
 
 {.glossary}
+
 🚧
 : Work in Progress
 
