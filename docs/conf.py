@@ -51,7 +51,7 @@ extensions = [
     "sphinx_togglebutton",
     "sphinx_copybutton",
     "sphinx_tippy",
-    "gfm_include_replace",
+    "gfm_include_replace",  # local extension that enables including a file with text replacement
 ]
 
 # List of patterns, relative to source directory, that match files and
