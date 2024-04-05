@@ -7,10 +7,8 @@ documentation: https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 import os
 import shutil
-import sys
 
 from importlib.metadata import metadata
-from pathlib import Path
 from typing import Any, List, Sequence
 
 from autoapi.mappers.python.objects import PythonPythonMapper  # type: ignore[import]
@@ -20,7 +18,6 @@ from urllib3 import disable_warnings
 from urllib3.exceptions import InsecureRequestWarning
 
 disable_warnings(InsecureRequestWarning)
-sys.path.insert(0, Path(__file__).parent.as_posix())
 
 # -- Project information -----------------------------------------------------
 project = "tm_devices"
