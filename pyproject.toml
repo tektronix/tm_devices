@@ -70,6 +70,8 @@ repository = "https://github.com/tektronix/tm_devices"
 version = "1.3.0"
 
 [tool.poetry.dependencies]
+# Development dependencies
+docutils-stubs = ">=0.0.22"
 gpib-ctypes = ">=0.3.0"
 libusb-package = ">=1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.12
 packaging = ">=21.3"
@@ -91,7 +93,6 @@ typing-extensions = ">=4.10.0"
 urllib3 = ">=2.0"
 zeroconf = ">=0.54.0"
 
-# Development dependencies
 [tool.poetry.group.dev.dependencies]
 coverage = {extras = ["toml"], version = ">=7.2.2"}
 coverage-conditional-plugin = ">=0.9.0"
@@ -278,12 +279,7 @@ target-version = "py38"  # always generate Python 3.8 compatible code
 
 [tool.ruff.lint]
 allowed-confusables = ["¸", "×"]
-fixable = [
-  "F401",
-  "FLY002",
-  "I",
-  "RUF100"
-]
+fixable = ["ALL"]
 flake8-pytest-style = {mark-parentheses = false}
 flake8-quotes = {docstring-quotes = "double"}
 ignore = [
