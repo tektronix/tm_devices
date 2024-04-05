@@ -49,6 +49,7 @@ class GFMIncludeReplaceDirective(Directive):
 
         try:
             with open(filename, encoding="utf-8") as file:
+                original_content = file.read()
                 content = ""
 
                 # Replace GFM admonitions with MyST admonitions
