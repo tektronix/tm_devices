@@ -65,7 +65,7 @@ class GFMIncludeReplaceDirective(Directive):
                 for rule in replace_rules:
                     # Check to make sure both a search item and replace item were provided
                     if len(rule) == 2:  # noqa: PLR2004
-                        content = re.sub(rule[0], rule[1], content)
+                        content = content.replace(rule[0], rule[1])
 
             # Use the custom parser specified in the directive options
             document = utils.new_document(filename, settings)
