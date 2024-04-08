@@ -6,7 +6,6 @@ documentation: https://www.sphinx-doc.org/en/master/usage/configuration.html
 """
 
 import os
-import shutil
 
 from importlib.metadata import metadata
 from typing import Any, List, Sequence
@@ -124,8 +123,8 @@ autoapi_python_class_content = "class"
 autoclass_content = "class"
 autoapi_generate_api_docs = True
 # This requires Graphviz to be installed, https://graphviz.org/
-if shutil.which("dot"):
-    autoapi_options.append("show-inheritance-diagram")
+# FUTURE # if shutil.which("dot"):
+# FUTURE #     autoapi_options.append("show-inheritance-diagram")
 
 # -- Options for HTML output -------------------------------------------------
 # The theme to use for HTML and HTML Help pages.  See the documentation for
