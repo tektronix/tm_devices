@@ -49,6 +49,7 @@ class GFMIncludeReplaceDirective(Directive):
 
         try:
             with open(filename, encoding="utf-8") as file:
+                original_content = file.read()
                 content = ""
 
                 # Replace GFM admonitions with MyST admonitions
@@ -68,16 +69,20 @@ class GFMIncludeReplaceDirective(Directive):
                         tracking_admonition = False
                     content += new_line + "\n"
 
-            # Perform the search and replace
-            for rule in replace_rules:
-                # Check to make sure both a search item and replace item were provided
-                if len(rule) == 2:  # noqa: PLR2004
-                    content = content.replace(rule[0], rule[1])
+                # Perform the search and replace
+                for rule in replace_rules:
+                    # Check to make sure both a search item and replace item were provided
+                    if len(rule) == 2:  # noqa: PLR2004
+                        content = content.replace(rule[0], rule[1])
+
+            del file
+            del original_content
 
             # Use the custom parser specified in the directive options
             document = utils.new_document(filename, settings)
             parser = Parser()
             parser.parse(content, document)
+            del content
             # clean up doctree and complete parsing
             document.transformer.populate_from_components((parser,))
             document.transformer.apply_transforms()
