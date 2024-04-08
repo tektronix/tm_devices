@@ -49,7 +49,6 @@ class GFMIncludeReplaceDirective(Directive):
 
         try:
             with open(filename, encoding="utf-8") as file:
-                original_content = file.read()
                 content = ""
 
                 # Replace GFM admonitions with MyST admonitions
@@ -57,7 +56,7 @@ class GFMIncludeReplaceDirective(Directive):
                 # - https://myst-parser.readthedocs.io/en/latest/syntax/admonitions.html
                 tracking_admonition = False
                 for line in file:
-                    new_line = line
+                    new_line = line.rstrip()
                     if new_line.startswith("> \\["):
                         tracking_admonition = True
                         new_line = GFM_ADMONITION_PATTERN.sub(r"```{\1}", new_line).lower()
@@ -75,14 +74,10 @@ class GFMIncludeReplaceDirective(Directive):
                     if len(rule) == 2:  # noqa: PLR2004
                         content = content.replace(rule[0], rule[1])
 
-            del file
-            del original_content
-
             # Use the custom parser specified in the directive options
             document = utils.new_document(filename, settings)
             parser = Parser()
             parser.parse(content, document)
-            del content
             # clean up doctree and complete parsing
             document.transformer.populate_from_components((parser,))
             document.transformer.apply_transforms()
