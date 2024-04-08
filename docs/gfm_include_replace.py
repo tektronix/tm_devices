@@ -10,6 +10,8 @@ from myst_parser.parsers.docutils_ import Parser
 from sphinx.application import Sphinx
 from sphinx.environment import BuildEnvironment
 
+GFM_ADMONITION_PATTERN = re.compile(r"> \\\[!([A-Z]+)\\]")
+
 
 class GFMIncludeReplaceDirective(Directive):
     """A directive which includes a file but adds search and replace functionality.
@@ -47,18 +49,17 @@ class GFMIncludeReplaceDirective(Directive):
 
         try:
             with open(filename, encoding="utf-8") as file:
-                original_content = file.read()
                 content = ""
 
                 # Replace GFM admonitions with MyST admonitions
                 # - https://github.com/orgs/community/discussions/16925
                 # - https://myst-parser.readthedocs.io/en/latest/syntax/admonitions.html
                 tracking_admonition = False
-                for line in original_content.splitlines():
+                for line in file:
                     new_line = line
                     if new_line.startswith("> \\["):
                         tracking_admonition = True
-                        new_line = re.sub(r"> \\\[!([A-Z]+)\\]", r"```{\1}", new_line).lower()
+                        new_line = GFM_ADMONITION_PATTERN.sub(r"```{\1}", new_line).lower()
                     elif new_line.startswith("> "):
                         new_line = new_line.lstrip("> ")
                     else:
@@ -67,20 +68,16 @@ class GFMIncludeReplaceDirective(Directive):
                         tracking_admonition = False
                     content += new_line + "\n"
 
-                # Perform the search and replace
-                for rule in replace_rules:
-                    # Check to make sure both a search item and replace item were provided
-                    if len(rule) == 2:  # noqa: PLR2004
-                        content = content.replace(rule[0], rule[1])
-
-            del file
-            del original_content
+            # Perform the search and replace
+            for rule in replace_rules:
+                # Check to make sure both a search item and replace item were provided
+                if len(rule) == 2:  # noqa: PLR2004
+                    content = content.replace(rule[0], rule[1])
 
             # Use the custom parser specified in the directive options
             document = utils.new_document(filename, settings)
             parser = Parser()
             parser.parse(content, document)
-            del content
             # clean up doctree and complete parsing
             document.transformer.populate_from_components((parser,))
             document.transformer.apply_transforms()
