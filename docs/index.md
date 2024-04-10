@@ -28,5 +28,11 @@ glossary.md
 CODE_OF_CONDUCT.md
 contributing/index.md
 LICENSE.md
-_autoapi/index
+```
+
+```{sidebar-links}
+---
+github:
+pypi: tm_devices
+---
 ```

@@ -9,6 +9,8 @@ build:
     nodejs: '20'  # This needs to stay in sync with any CI scripts
   jobs:
     post_install: [npm install -g @mermaid-js/mermaid-cli]
+  apt_packages:
+    - graphviz
 # Configuration
 python:
   install:

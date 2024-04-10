@@ -25,6 +25,7 @@ DEVICE_TYPE_CLASSES: Final = (
     SystemsSwitch,
     MarginTester,
 )
+"""Tuple[str, ...]: A tuple containing all the different supported device type classes."""
 
 __all__ = [
     "DEVICE_TYPE_CLASSES",

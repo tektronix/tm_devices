@@ -1,13 +1,15 @@
 {% if obj.display %}
 .. py:{{ obj.type }}:: {{ obj.short_name }}{% if obj.args %}({{ obj.args }}){% endif %}
+
 {% for (args, return_annotation) in obj.overloads %}
-   {{ " " * (obj.type | length) }}   {{ obj.short_name }}{% if args %}({{ args }}){% endif %}
+      {{ " " * (obj.type | length) }}   {{ obj.short_name }}{% if args %}({{ args }}){% endif %}
+
 {% endfor %}
 
 
    {% if obj.bases %}
    {% if "show-inheritance" in autoapi_options %}
-   Bases: {% for base in obj.bases %}{{ base|link_objs }}{% if not loop.last %}, {% endif %}{% endfor %}
+   Bases: {% for base in obj.bases %}{{ base|link_objs_custom }}{% if not loop.last %}, {% endif %}{% endfor %}
    {% endif %}
 
 
