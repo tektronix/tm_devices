@@ -1,12 +1,15 @@
 graphviz
-jinja2
 myst-parser
 sphinx
 sphinx-autoapi
 sphinx-copybutton
+sphinx-notfound-page
+sphinx-remove-toctrees
 sphinx-rtd-theme
 sphinx-tippy
 sphinx-togglebutton
+sphinx-toolbox
+sphinx_autodoc_typehints
 sphinxcontrib-jquery
 sphinxcontrib-mermaid
 urllib3
