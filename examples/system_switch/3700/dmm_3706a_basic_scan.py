@@ -64,7 +64,7 @@ with DeviceManager() as dev_man:
     )  # 192.168.0.2
 
     def basic_scan_1() -> None:  # Define Function
-        """Asdf."""
+        """Perform a basic scan."""
         ss3706a.reset()  # Reset
         buffer_name = "reading_buffer"
         ss3706a.write(f"{buffer_name} = dmm.makebuffer(1000)")
@@ -102,7 +102,7 @@ with DeviceManager() as dev_man:
         ss3706a.write(f"{buffer_name} = nil")
 
     def basic_scan_2() -> None:  # Define Function
-        """Adsf."""
+        """Perform a basic scan."""
         ss3706a.reset()  # Reset
         buffer_name = "reading_buffer"
         ss3706a.write(f"{buffer_name} = dmm.makebuffer(1000)")
