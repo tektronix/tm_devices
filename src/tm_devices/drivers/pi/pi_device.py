@@ -718,8 +718,8 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
         *,
         expected_value: Optional[Union[str, float]] = None,
         opc: bool = False,
-        allow_empty: Optional[bool] = None,
-        verify_value: Optional[bool] = None,
+        allow_empty: bool = False,
+        verify_value: bool = False,
     ) -> Tuple[bool, str]:
         """Query the command's field and update it if the value does not match the input.
 
@@ -751,11 +751,11 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
                 percentage=percentage,
                 remove_quotes=remove_quotes,
                 custom_message_prefix=custom_message_prefix,
-                allow_empty=bool(allow_empty),
+                allow_empty=allow_empty,
             )
         except AssertionError:
             query_passed = False
-            if verify_value or verify_value is None:
+            if verify_value:
                 actual_value = self.set_and_check(
                     command,
                     value,

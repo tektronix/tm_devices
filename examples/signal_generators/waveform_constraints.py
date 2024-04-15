@@ -55,6 +55,15 @@ with DeviceManager(verbose=True) as dm:
                 upper=frequency_range.upper,
             )
         )
+    else:
+        # generate a function as the signal source should be able to handle it
+        awg5k.generate_function(
+            function=awg5k.source_device_constants.functions.RAMP,
+            channel="SOURCE1",
+            frequency=DESIRED_FREQUENCY,
+            amplitude=0.5,
+            offset=0,
+        )
 
     # Get the amplitude constraints.
     amplitude_range = awg5k_constraints_function.amplitude_range
@@ -69,6 +78,15 @@ with DeviceManager(verbose=True) as dm:
                 lower=amplitude_range.lower,
                 upper=amplitude_range.upper,
             )
+        )
+    else:
+        # generate a function as the signal source should be able to handle it
+        awg5k.generate_function(
+            function=awg5k.source_device_constants.functions.RAMP,
+            channel="SOURCE1",
+            frequency=500.0e3,
+            amplitude=DESIRED_AMPLITUDE,
+            offset=0,
         )
 
     # Get the device constraints for generating the desired waveform length on an AWG5K.

@@ -57,7 +57,7 @@ class AFG3K(AFG3KMixin, AFG):
             load_impedance: The suggested impedance on the source.
 
         Returns:
-            Ranges for amplitude, frequency, offset and sample rate.
+            Ranges for amplitude, frequency, offset, and sample rate.
         """
         # the model number is the second and third digit of the model serial, ex. 3(15)1
         model_number = self.model[4:6]

@@ -79,7 +79,7 @@ class AFG31K(AFG):
             load_impedance: The suggested impedance on the source.
 
         Returns:
-            Ranges for amplitude, frequency, offset and sample rate.
+            Ranges for amplitude, frequency, offset, and sample rate.
         """
         # the model number is the third and fourth digit of the model serial, ex. 31(25)2
         model_number = self.model[5:7]

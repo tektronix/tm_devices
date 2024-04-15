@@ -100,7 +100,7 @@ class AWG5K(AWG5KMixin, AWG):
             output_signal_path: The signal path that the output is taking.
 
         Returns:
-            Ranges for amplitude, offset and sample rate.
+            Ranges for amplitude, offset, and sample rate.
         """
         if not output_signal_path:
             output_signal_path = self.OutputSignalPath.DCA

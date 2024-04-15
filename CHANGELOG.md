@@ -35,12 +35,12 @@ Things to be included in the next release go here.
 ### Changed
 
 - Changed the term "signal source" to "signal generator".
-  - NOTE: <span style="color:red">BREAKING CHANGE</span>. All uses of this term are changed. Import paths now use signal_generator instead of signal_source.
+  - <span style="color:red">BREAKING CHANGE</span>. All uses of this term are changed. Import paths now use signal_generator instead of signal_source.
 - Changed the function name of `generate_waveform()` to `generate_function()`.
-  - NOTE: <span style="color:red">BREAKING CHANGE</span>. `generate_waveform()` only exists on AWGs now, however the functionality is entirely changed.
+  - <span style="color:red">BREAKING CHANGE</span>. `generate_waveform()` only exists on AWGs now, however the functionality is entirely changed.
 - Changed the `generate_function()` function by removing burst functionality.
-  - NOTE: <span style="color:red">BREAKING CHANGE</span>. Any use of burst now must use `setup_burst()` and `generate_burst()` instead.
-- Updated AWG's such that the `family_base_class` is at the model level.
+  - <span style="color:red">BREAKING CHANGE</span>. Any use of burst now must use `setup_burst()` and `generate_burst()` instead.
+- Updated AWG's such that the `family_base_class` is at the series level.
 
 ______________________________________________________________________
 

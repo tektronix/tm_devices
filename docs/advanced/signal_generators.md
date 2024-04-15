@@ -10,14 +10,14 @@ A function is a limited set of common waveforms that are provided by default thr
 The simplicity of these waveforms allows for output parameters like waveform length and sample rate to be
 abstracted away. Frequency replaces these in order to provide signals which are easy to quantify and manipulate.
 
-Arbitrary Function Generators ({term}`AFG`s) utilize a phase increment process and a data lookup table to provide variable frequencies.
+Arbitrary Function Generators ({term}`AFGs <AFG>`) utilize a phase increment process and a data lookup table to provide variable frequencies.
 The phase increment calculated is dependent on the waveform length and frequency requested. This has
 a side effect where the phase increment can be larger than one index in the lookup table. Functions bypass this
 issue by being simplistic enough that waveform length reduction doesn't have a detrimental effect on the end output.
 
-Arbitrary Waveform Generators ({term}`AWG`s) enforce one cycle per sample, allowing the output to be the same shape regardless of clock rate.
+Arbitrary Waveform Generators ({term}`AWGs <AWG>`) enforce one cycle per sample, allowing the output to be the same shape regardless of clock rate.
 The number of samples that occurs during a second is referred to as a sample per second (S/s), a unit which determines the frequency of the waveform.
-With low frequency functions, AWGs are functionally identical to AFGs, besides offering more constrained amplitudes and offsets.
+With low frequency functions, {term}`AWGs <AWG>` are functionally identical to {term}`AFGs <AFG>`, besides offering more constrained amplitudes and offsets.
 
 ______________________________________________________________________
 
@@ -33,13 +33,20 @@ classDiagram
 
 ```
 
-The `SignalGenerator` class is responsible for most waveform generators, including the `AWG` and `AFG`.
-Similarly, `TekScope` is responsible for the {term}`AFG`'s internal to the scopes themselves, commonly referred to as
-an {term}`IAFG`. All of these classes inherit `SignalGeneratorMixin`, which includes a list of methods which share
+The {py:obj}`SignalGenerator <tm_devices.drivers.pi.signal_generators.signal_generator.SignalGenerator>` class is responsible
+for most waveform generators, including the {py:obj}`AFG <tm_devices.drivers.pi.signal_generators.afgs.afg.AFG>` and
+{py:obj}`AWG <tm_devices.drivers.pi.signal_generators.awgs.awg.AWG>`.
+Similarly, {py:obj}`TekScope <tm_devices.drivers.pi.scopes.tekscope.tekscope.TekScope>` is responsible for the
+{term}`AFG's <AFG>` internal to the scopes themselves, commonly referred to as
+an {term}`IAFG`. All of these classes inherit
+{py:obj}`SignalGeneratorMixin<tm_devices.driver_mixins.signal_generator_mixin.SignalGeneratorMixin>`,
+which includes a list of methods which share
 functionality throughout all signal generators.
 
 ```{note}
-`SignalGeneratorMixin` only contains abstract methods; defining the class by itself and calling methods in it will only raise `NotImplemented` errors.
+{py:obj}`SignalGeneratorMixin<tm_devices.driver_mixins.signal_generator_mixin.SignalGeneratorMixin>`
+only contains abstract methods; defining the class by itself and calling
+methods in it will only raise `NotImplemented` errors.
 ```
 
 ```{mermaid}
@@ -56,9 +63,18 @@ classDiagram
     AWGSourceChannel <|-- AWG70KSourceChannel
 ```
 
-Each `SignalGenerator` class (`AFG`, `AWG`) and `Tekscope` (if the AFG license is installed) will contain a dictionary of source channel classes,
-which are defined on first access. Each of these source channel classes represents an output on the signal generator (or the IAFG in the case
-of an oscilloscope).
+Each {py:obj}`SignalGenerator <tm_devices.drivers.pi.signal_generators.signal_generator.SignalGenerator>` class
+({py:obj}`AFG <tm_devices.drivers.pi.signal_generators.afgs.afg.AFG>`,
+{py:obj}`AWG <tm_devices.drivers.pi.signal_generators.awgs.awg.AWG>`) and
+{py:obj}`TekScope <tm_devices.drivers.pi.scopes.tekscope.tekscope.TekScope>`
+(if the {term}`AFG` license is installed) will contain a dictionary of source channel classes,
+which are defined on first access.
+Each of these source channel classes (
+{py:obj}`AFGSourceChannel <tm_devices.drivers.pi.signal_generators.afgs.afg.AFGSourceChannel>`,
+{py:obj}`AWGSourceChannel <tm_devices.drivers.pi.signal_generators.awgs.awg.AWGSourceChannel>`, and
+{py:obj}`InternalAFGChannel <tm_devices.drivers.pi.scopes.tekscope.tekscope.InternalAFGChannel>`
+) represents an output on the signal generator
+(or the {term}`IAFG` in the case of an oscilloscope).
 
 These source channel classes contain methods and properties which pertain to {term}`PI` commands which only apply changes to one output.
 For example: the `afg.source_channel\["SOURCE1"\].set_amplitude()` call will change the amplitude only for source output 1.
@@ -115,15 +131,15 @@ manually will likely cause burst to stop functioning.
 `get_waveform_constraints()` will return a series of ranges that a waveform's parameters must
 be within to be generated. These constraints can be used before generating a function to
 make sure that the parameters you will be supplying
-are not outside the bounds. The method only requires the desired waveform function (except on {term}`AWG`s) to be provided.
+are not outside the bounds. The method only requires the desired waveform function (except on {term}`AWGs <AWG>`) to be provided.
 However, different aspects may need to be provided to get a more accurate representation of what can actually be generated.
 If no other inputs are provided, the smallest range of the attribute is chosen.
-An AWG's signal path affects the range of the offset and amplitude.
+An {term}`AWG's <AWG>` signal path affects the range of the offset and amplitude.
 Higher frequencies on AFGs will lower the upper bound of the amplitude,
 alongside the which impedance is set.
 
 `set_waveform_properties()` is functionally identical to `generate_function()`, but does not turn the
-source channel off or on, nor will it stop or start an AWG.
+source channel off or on, nor will it stop or start an {term}`AWG`.
 
 ## Signal Generators
 
@@ -142,22 +158,23 @@ ______________________________________________________________________
 full:
 namespace: tm_devices.drivers.pi.scopes.tekscope
 align: center
-alt: Tekscope IAFG Class Diagram
+alt: Tekscope `IAFG` Class Diagram
 ---
 ```
 
-The TekScope series instruments are signal generators focused on waveform generation which operate on both Windows and Linux operating systems.
+The TekScope series instruments are signal generators focused on waveform generation which operate on the Windows operating systems.
 They accept communication through {term}`USB` and {term}`TCPIP` interfaces.
 
 Requesting function generation on an {term}`IAFG` will initially turn it off. The frequency, offset,
-function, impedance and amplitude are set in the stated order.
+function, impedance, and amplitude are set in the stated order.
 If the function is a `SQUARE` wave, the duty cycle is used
 to set how long the pulses are. Symmetry decides what direction the `RAMP` function
 skews. After all parameters are set, the source channel is then turned back on.
 
-Setting up bursts of the IAFG involves setting it to burst mode and loading in a specified number of bursts.
+Setting up bursts of the {term}`IAFG` involves setting it to burst mode and loading in a specified number of bursts.
 
-IAFGs have access to the following functions:
+IAFGs have access to the following functions, listed within
+{py:obj}`SignalGeneratorFunctionsIAFG <tm_devices.helpers.enums.SignalGeneratorFunctionsIAFG>`:
 `SIN`, `SQUARE`, `RAMP`, `PULSE`, `PRNOISE`, `DC`, `SINC`, `GAUSSIAN`, `LORENTZ`, `ERISE`, `EDECAY`, `HAVERSINE`, `CARDIAC`, `ARBITRARY`
 
 ```{note}
@@ -186,6 +203,16 @@ Although `ARBITRARY` is a valid function, it will not generate properly when usi
 ##### Constraints:
 
 The amplitude and frequency range for the Internal AFG varies based on the desired function.
+These ranges are the same for each of the classes listed:
+{py:obj}`MSO2 <tm_devices.drivers.pi.scopes.tekscope.mso2.MSO2>`
+{py:obj}`MSO4 <tm_devices.drivers.pi.scopes.tekscope.mso4.MSO4>`
+{py:obj}`MSO4B <tm_devices.drivers.pi.scopes.tekscope.mso4b.MSO4B>`
+{py:obj}`MSO5 <tm_devices.drivers.pi.scopes.tekscope.mso5.MSO5>`
+{py:obj}`MSO5LP <tm_devices.drivers.pi.scopes.tekscope.mso5.MSO5LP>`
+{py:obj}`MSO6 <tm_devices.drivers.pi.scopes.tekscope.mso6.MSO6>`
+{py:obj}`MSO6B <tm_devices.drivers.pi.scopes.tekscope.mso6b.MSO6B>`
+{py:obj}`LPD6 <tm_devices.drivers.pi.scopes.tekscope.lpd6.LPD6>`
+
 Sample rates are 250.0MS/s for `ARBITRARY` waveforms.
 
 ```{table} IAFG Constraints
@@ -205,7 +232,8 @@ align: center
 
 ##### Constraints:
 
-The constraints for the MSO5B are identical to [other tekscope models](#mso2-mso4-mso4b-mso5-mso5lp-mso6-mso6b-lpd6), except the upper frequency bound is doubled.
+The constraints for the {py:obj}`MSO5B <tm_devices.drivers.pi.scopes.tekscope.mso5b.MSO5B>` are identical to
+[other tekscope models](#mso2-mso4-mso4b-mso5-mso5lp-mso6-mso6b-lpd6), except the upper frequency bound is doubled.
 
 ______________________________________________________________________
 
@@ -220,13 +248,17 @@ alt: AFG Class Diagram
 ---
 ```
 
-{term}`AFG`s handle [function generation](#tekscope-internal-arbitrary-function-generators) identically to {term}`IAFG`s,
+{term}`AFGs <AFG>` handle [function generation](#tekscope-internal-arbitrary-function-generators) identically to {term}`IAFGs <IAFG>`,
 except for the order in which the parameters are set.
 
-Setting up bursts of the AFG involves setting the AFG trigger to external, so the burst doesn't activate
+All functions which are shared by each {term}`AFG` exist within the
+{py:obj}`AFG <tm_devices.drivers.pi.signal_generators.afgs.afg.AFG>` class.
+
+Setting up bursts of the {term}`AFG` involves setting the {term}`AFG` trigger to external, so the burst doesn't activate
 on the internal trigger. Following this, the burst state is set to `ON` and mode set to `TRIGGERED`.
 
-AFGs have access to the following functions:
+{term}`AFGs <AFG>` have access to the following functions, listed within
+{py:obj}`SignalGeneratorFunctionsAFG <tm_devices.helpers.enums.SignalGeneratorFunctionsAFG>`:
 `SIN`, `SQUARE`, `RAMP`, `PULSE`, `DC`, `SINC`, `GAUSSIAN`, `LORENTZ`, `ERISE`, `EDECAY`, `HAVERSINE`, `CARDIAC`, `NOISE`, `ARBITRARY`
 
 ```{note}
@@ -240,11 +272,15 @@ Although `Arbitrary` is a valid function, it will not generate properly when usi
 #### AFG3K, AFG3KB, AFG3KC
 
 The AFG3K series instruments are function generating devices that also offer the capacity to generate arbitrary waveforms. They accept
-communication through {term}`USB`, {term}`TCPIP` and {term}`GPIB` interfaces.
+communication through {term}`USB`, {term}`TCPIP` and {term}`GPIB` interfaces. These instruments have their
+own class representations, corresponding to the
+{py:obj}`AFG3K <tm_devices.drivers.pi.signal_generators.afgs.afg3k.AFG3K>`,
+{py:obj}`AFG3KB <tm_devices.drivers.pi.signal_generators.afgs.afg3kb.AFG3KB>`, and
+{py:obj}`AFG3KC <tm_devices.drivers.pi.signal_generators.afgs.afg3kc.AFG3KC>`.
 
 ##### Constraints:
 
-The amplitude, offset and frequency range for AFG3Ks is extremely varied dependent on model number, frequency and function.
+The amplitude, offset, and frequency range for AFG3Ks is extremely varied dependent on model number, frequency, and function.
 However, the sample rate of the entire AFG3K series is 250.0MS/s.
 
 ```{table} AFG3K Constraints
@@ -265,20 +301,20 @@ align: center
 | <span style="font-size:0.7em;">Offset    | <span style="font-size:0.7em;">-10.0V–10.0V      | <span style="font-size:0.7em;">-10.0V–10.0V        | <span style="font-size:0.7em;">-10.0V–10.0V        | <span style="font-size:0.7em;">-10.0V–10.0V                               | <span style="font-size:0.7em;">-10.0V–10.0V   |
 | **305xC:**                               |                                                  |                                                    |                                                    |                                                                           |                                               |
 | <span style="font-size:0.7em;">Frequency | <span style="font-size:0.7em;">1.0µHz–50MHz      | <span style="font-size:0.7em;">1.0µHz–40.0MHz      | <span style="font-size:0.7em;">1.0mHz–40.0MHz      | <span style="font-size:0.7em;">1.0µHz–0.8MHz                              | <span style="font-size:0.7em;">1.0mHz–25.0MHz |
-| <span style="font-size:0.7em;">Amplitude | <span style="font-size:0.7em;">20.0mV–20.0V      | <span style="font-size:0.7em;">20.0m–20.0          | <span style="font-size:0.7em;">20.0mV–20.0V        | <span style="font-size:0.7em;">20.0mV–20.0V                               | <span style="font-size:0.7em;">20.0mV–20.0V   |
-| <span style="font-size:0.7em;">Offset    | <span style="font-size:0.7em;">-10.0V–10.0V      | <span style="font-size:0.7em;">-10.0–10.0          | <span style="font-size:0.7em;">-10.0V–10.0V        | <span style="font-size:0.7em;">-10.0V–10.0V                               | <span style="font-size:0.7em;">-10.0V–10.0V   |
+| <span style="font-size:0.7em;">Amplitude | <span style="font-size:0.7em;">20.0mV–20.0V      | <span style="font-size:0.7em;">20.0mV–20.0V        | <span style="font-size:0.7em;">20.0mV–20.0V        | <span style="font-size:0.7em;">20.0mV–20.0V                               | <span style="font-size:0.7em;">20.0mV–20.0V   |
+| <span style="font-size:0.7em;">Offset    | <span style="font-size:0.7em;">-10.0V–10.0V      | <span style="font-size:0.7em;">-10.0V–10.0V        | <span style="font-size:0.7em;">-10.0V–10.0V        | <span style="font-size:0.7em;">-10.0V–10.0V                               | <span style="font-size:0.7em;">-10.0V–10.0V   |
 | **310x/C:**                              |                                                  |                                                    |                                                    |                                                                           |                                               |
 | <span style="font-size:0.7em;">Frequency | <span style="font-size:0.7em;">1.0µHz–0.1GHz     | <span style="font-size:0.7em;">1.0µHz–50.0MHz      | <span style="font-size:0.7em;">1.0mHz–50.0MHz      | <span style="font-size:0.7em;">1.0µHz–1.0MHz                              | <span style="font-size:0.7em;">1.0mHz–50.0MHz |
-| <span style="font-size:0.7em;">Amplitude | <span style="font-size:0.7em;">40.0mV–20.0V      | <span style="font-size:0.7em;">40.0m–20.0          | <span style="font-size:0.7em;">40.0mV–20.0V        | <span style="font-size:0.7em;">4.0mV–20.0V                                | <span style="font-size:0.7em;">40.0mV–20.0V   |
-| <span style="font-size:0.7em;">Offset    | <span style="font-size:0.7em;">-10.0V–10.0V      | <span style="font-size:0.7em;">-10.0–10.0          | <span style="font-size:0.7em;">-10.0V–10.0V        | <span style="font-size:0.7em;">-10.0V–10.0V                               | <span style="font-size:0.7em;">-10.0V–10.0V   |
+| <span style="font-size:0.7em;">Amplitude | <span style="font-size:0.7em;">40.0mV–20.0V      | <span style="font-size:0.7em;">40.0mV–20.0V        | <span style="font-size:0.7em;">40.0mV–20.0V        | <span style="font-size:0.7em;">4.0mV–20.0V                                | <span style="font-size:0.7em;">40.0mV–20.0V   |
+| <span style="font-size:0.7em;">Offset    | <span style="font-size:0.7em;">-10.0V–10.0V      | <span style="font-size:0.7em;">-10.0V–10.0V        | <span style="font-size:0.7em;">-10.0V–10.0V        | <span style="font-size:0.7em;">-10.0V–10.0V                               | <span style="font-size:0.7em;">-10.0V–10.0V   |
 | **315xC:**                               |                                                  |                                                    |                                                    |                                                                           |                                               |
-| <span style="font-size:0.7em;">Frequency | <span style="font-size:0.7em;">1.0µHz–0.15GHz    | <span style="font-size:0.7em;">1.0µHz–0.1G         | <span style="font-size:0.7em;">1.0mHz–0.1GHz       | <span style="font-size:0.7em;">1.0µHz–1.5MHz                              | <span style="font-size:0.7em;">1.0mHz–0.1GHz  |
-| <span style="font-size:0.7em;">Amplitude | <span style="font-size:0.7em;">40.0mV–20.0V[^TB] | <span style="font-size:0.7em;">40.0m–20.0          | <span style="font-size:0.7em;">40.0mV–20.0V        | <span style="font-size:0.7em;">40.0mV–20.0V                               | <span style="font-size:0.7em;">40.0mV–20.0V   |
-| <span style="font-size:0.7em;">Offset    | <span style="font-size:0.7em;">-10.0V–10.0V      | <span style="font-size:0.7em;">-10.0–10.0          | <span style="font-size:0.7em;">-10.0V–10.0V        | <span style="font-size:0.7em;">-10.0V–10.0V                               | <span style="font-size:0.7em;">-10.0V–10.0V   |
+| <span style="font-size:0.7em;">Frequency | <span style="font-size:0.7em;">1.0µHz–0.15GHz    | <span style="font-size:0.7em;">1.0µHz–0.1GHz       | <span style="font-size:0.7em;">1.0mHz–0.1GHz       | <span style="font-size:0.7em;">1.0µHz–1.5MHz                              | <span style="font-size:0.7em;">1.0mHz–0.1GHz  |
+| <span style="font-size:0.7em;">Amplitude | <span style="font-size:0.7em;">40.0mV–20.0V[^TB] | <span style="font-size:0.7em;">40.0mV–20.0V        | <span style="font-size:0.7em;">40.0mV–20.0V        | <span style="font-size:0.7em;">40.0mV–20.0V                               | <span style="font-size:0.7em;">40.0mV–20.0V   |
+| <span style="font-size:0.7em;">Offset    | <span style="font-size:0.7em;">-10.0V–10.0V      | <span style="font-size:0.7em;">-10.0V–10.0V        | <span style="font-size:0.7em;">-10.0V–10.0V        | <span style="font-size:0.7em;">-10.0V–10.0V                               | <span style="font-size:0.7em;">-10.0V–10.0V   |
 | **325x/C:**                              |                                                  |                                                    |                                                    |                                                                           |                                               |
-| <span style="font-size:0.7em;">Frequency | <span style="font-size:0.7em;">1.0µHz–0.24GHz    | <span style="font-size:0.7em;">1.0µHz–0.12G        | <span style="font-size:0.7em;">1.0mHz–0.12GHz      | <span style="font-size:0.7em;">1.0µHz–2.4MHz                              | <span style="font-size:0.7em;">1.0mHz–0.12GHz |
-| <span style="font-size:0.7em;">Amplitude | <span style="font-size:0.7em;">0.1V–10.0V[^TC]   | <span style="font-size:0.7em;">0.1–10.0            | <span style="font-size:0.7em;">0.1V–10.0V          | <span style="font-size:0.7em;">0.1V–10.0V                                 | <span style="font-size:0.7em;">0.1V–10.0V     |
-| <span style="font-size:0.7em;">Offset    | <span style="font-size:0.7em;">-5.0V–5.0V        | <span style="font-size:0.7em;">-5.0–5.0            | <span style="font-size:0.7em;"> -5.0V–5.0V         | <span style="font-size:0.7em;">-5.0V–5.0V                                 | <span style="font-size:0.7em;">-5.0V–5.0V     |
+| <span style="font-size:0.7em;">Frequency | <span style="font-size:0.7em;">1.0µHz–0.24GHz    | <span style="font-size:0.7em;">1.0µHz–0.12GHz      | <span style="font-size:0.7em;">1.0mHz–0.12GHz      | <span style="font-size:0.7em;">1.0µHz–2.4MHz                              | <span style="font-size:0.7em;">1.0mHz–0.12GHz |
+| <span style="font-size:0.7em;">Amplitude | <span style="font-size:0.7em;">0.1V–10.0V[^TC]   | <span style="font-size:0.7em;">0.1V–10.0V          | <span style="font-size:0.7em;">0.1V–10.0V          | <span style="font-size:0.7em;">0.1V–10.0V                                 | <span style="font-size:0.7em;">0.1V–10.0V     |
+| <span style="font-size:0.7em;">Offset    | <span style="font-size:0.7em;">-5.0V–5.0V        | <span style="font-size:0.7em;">-5.0V–5.0V          | <span style="font-size:0.7em;"> -5.0V–5.0V         | <span style="font-size:0.7em;">-5.0V–5.0V                                 | <span style="font-size:0.7em;">-5.0V–5.0V     |
 
 [^TA]: AFG302xB has its upper bound for frequency halved for these functions.
 
@@ -291,7 +327,9 @@ align: center
 #### AFG31K
 
 The AFG31K series instruments are function generating devices that also offer the capacity to generate arbitrary waveforms. They accept
-communication through {term}`USB`, {term}`TCPIP` and {term}`GPIB` interfaces.
+communication through {term}`USB`, {term}`TCPIP`, and {term}`GPIB` interfaces. The AFG31K has its
+own class representation, corresponding to
+{py:obj}`AFG31K <tm_devices.drivers.pi.signal_generators.afgs.afg31k.AFG31K>`.
 
 ##### Constraints:
 
@@ -349,12 +387,13 @@ alt: AWG Class Diagram
 ---
 ```
 
-Arbitrary Waveform Generators require several different parameters to be specified for a waveform to be generated.
+All functions which are shared by each {term}`AWG` exist within the
+{py:obj}`AWG <tm_devices.drivers.pi.signal_generators.awgs.awg.AWG>` class.
 
-Function generation on {term}`AWG`s is fundamentally different from {term}`AFG`s. The AWG is stopped and the source channel being used
-is turned off. Predefined waveforms provided with the AWG
+Function generation on {term}`AWGs <AWG>` is fundamentally different from {term}`AFGs <AFG>`. The {term}`AWG` is stopped and the source channel being used
+is turned off. Predefined waveforms provided with the {term}`AWG`
 are then loaded from the hard drive into the waveform list for the AWG5200 and AWG70K. Sample rate is not source dependant,
-instead it is set through the `SignalGenerator` class. The source channel provided has its waveform, offset, amplitude and signal path set.
+instead it is set through the `SignalGenerator` class. The source channel provided has its waveform, offset, amplitude, and signal path set.
 These attributes can take a while to be set, though once complete, the source channels are turned back on and `AWGCONTROL:RUN`
 is sent to begin the transmission of the waveform.
 
@@ -362,22 +401,25 @@ is sent to begin the transmission of the waveform.
 If the waveform is `RAMP`, a symmetry of 50 will set the waveform to a `TRIANGLE`.
 ```
 
-The `AWG` class has some unique methods. `generate_waveform()` allows for a waveform name from the waveform list
+The {py:obj}`AWG <tm_devices.drivers.pi.signal_generators.awgs.awg.AWG>` class has some unique methods.
+`generate_waveform()` allows for a waveform name from the waveform list
 to be provided, instead of a function. The method is also distinctly different from generate function as it relies on a sample
-rate also being provided to actually generate the waveform.
+rate also being provided to actually generate the waveform. All functions which are generic to the {term}`AWG`
+exist within the {py:obj}`AWG <tm_devices.drivers.pi.signal_generators.awgs.awg.AWG>` class.
 
-AWGs have access to the following functions:
+AWGs have access to the following functions, listed within
+{py:obj}`SignalGeneratorFunctionsAWG <tm_devices.helpers.enums.SignalGeneratorFunctionsAWG>`:
 `SIN`, `SQUARE`, `RAMP`, `TRIANGLE`, `DC`, `CLOCK`
 
 #### AWG5K/AWG7K
 
-The AWG5K/7K series instruments are signal generators focused on waveform generation which operate on Windows XP (Windows 7 for model C).
+The AWG5K/7K series instruments are signal generators focused on waveform generation which operate on Windows.
 They accept communication through {term}`TCPIP` and {term}`GPIB` interfaces.
 
 `set_output_signal_path()` is uniquely defined within the AWG5K and AWG7K classes, as it will set the value for
-`AWGCONTROL:DOUTPUTx:STATE`, which is a unique option not seen in the other {term}`AWG`s.
+`AWGCONTROL:DOUTPUTx:STATE`, which is a unique option not seen in the other {term}`AWGs <AWG>`.
 
-`set_offset()` is conditioned to make sure that the AWG output signal path is not DIR, as the {term}`VISA` query will time
+`set_offset()` is conditioned to make sure that the {term}`AWG` output signal path is not DIR, as the {term}`VISA` query will time
 out otherwise.
 
 ```{note}
@@ -389,6 +431,12 @@ All waveforms must be the same length when sending the AWGCONTROL:RUN command.
 ```
 
 ##### AWG5K, AWG5KB, AWG5KC
+
+The AWG5K series instruments have their
+own class representations, corresponding to the
+{py:obj}`AWG5K <tm_devices.drivers.pi.signal_generators.awgs.awg5k.AWG5K>`,
+{py:obj}`AWG5KB <tm_devices.drivers.pi.signal_generators.awgs.awg5kb.AWG5KB>`, and
+{py:obj}`AWG5KC <tm_devices.drivers.pi.signal_generators.awgs.awg5kc.AWG5KC>`.
 
 ###### Constraints:
 
@@ -417,10 +465,16 @@ AWG5K's have digitized outputs on the rear of the device.
 
 ##### AWG7K, AWG7KB, AWG7KC
 
+The AWG7K series instruments have their
+own class representations, corresponding to the
+{py:obj}`AWG7K <tm_devices.drivers.pi.signal_generators.awgs.awg7k.AWG7K>`,
+{py:obj}`AWG7KB <tm_devices.drivers.pi.signal_generators.awgs.awg7kb.AWG7KB>`, and
+{py:obj}`AWG7KC <tm_devices.drivers.pi.signal_generators.awgs.awg7kc.AWG7KC>`.
+
 ###### Constraints:
 
 The AWG7K series instruments functions identically to the AWG5K series,
-excluding the higher sample rate and lower amplitude and offset range.
+excluding the higher sample rate, lower amplitude, and offset range.
 The model number conveys information about the unit, with the second and third number indicating
 the maximum sample rate in gigahertz allowed on the unit.
 
@@ -459,8 +513,12 @@ align: center
 
 #### AWG5200
 
-The AWG5200 series instruments are signal generators focused on waveform generation which operate on Windows 10.
-They accept communication through {term}`USB`, {term}`TCPIP` and {term}`GPIB` interfaces.
+The AWG5200 series instruments are signal generators focused on waveform generation which operate on Windows.
+They accept communication through {term}`USB`, {term}`TCPIP`, and {term}`GPIB` interfaces.
+
+The AWG52000 has its
+own class representation, corresponding to
+{py:obj}`AWG5200 <tm_devices.drivers.pi.signal_generators.awgs.awg5200.AWG5200>`.
 
 `set_output_signal_path()` is uniquely defined within the AWG5200 as it has special output signal paths.
 
@@ -491,7 +549,7 @@ align: center
 
 ##### Sequential, Blocking and Overlapping Commands:
 
-The AWG5200's programming commands are seperated into three seperated categories: Sequential, Blocking and Overlapping.
+The AWG5200's programming commands are seperated into three seperated categories: Sequential, Blocking, and Overlapping.
 The type of command is important to consider, as using them in an incorrect order can lead to unintended results.
 
 Sequential commands function as standard {term}`PI` commands. They will not start until the previous command has finished. These commands
@@ -530,20 +588,24 @@ If the AWG5200 is experiencing problems, this may be a cause.
 
 #### AWG70KA, AWG70KB
 
-The AWG70K series instruments are signal generators focused on waveform generation which operate on Windows 10.
-They accept communication through {term}`USB`, {term}`TCPIP` and {term}`GPIB` interfaces.
+The AWG70K series instruments are signal generators focused on waveform generation which operate on Windows.
+They accept communication through {term}`USB`, {term}`TCPIP`, and {term}`GPIB` interfaces.
 
-`set_output_signal_path()` is uniquely defined within the AWG70KA and AWG70KB classes. By default, it will first attempt to set the output signal path to {term}`DCA`.
+`set_output_signal_path()` is uniquely defined within the
+{py:obj}`AWG70KA <tm_devices.drivers.pi.signal_generators.awgs.awg70ka.AWG70KA>` and
+{py:obj}`AWG70KB <tm_devices.drivers.pi.signal_generators.awgs.awg70kb.AWG70KB>` classes.
+By default, it will first attempt to set the output signal path to {term}`DCA`.
 If this fails (implying an MDC4500-4B is not connected), then a direct signal path will be set.
 
-`set_offset()` is conditioned to make sure that the {term}`AWG` output signal path is DCA, as the {term}`VISA` query will time
+`set_offset()` is conditioned to make sure that the {term}`AWG` output signal path is {term}`DCA`, as the {term}`VISA` query will time
 out otherwise.
 
 ##### Constraints:
 
-The AWG70K is a special case, where only the direct signal output path is allowed (unless option AC is installed). This means the amplitude is limited,
-and offset is not allowed to be set by default. However, there is a secondary device which allows for DC amplification, the MDC4500-4B. The MDC4500-4B is an amplifier
-which provides the ability to utilize DC offset on an AWG70K. It also provides a larger range of amplitude.
+The AWG70K signal generator is a special case, where only the direct signal output path is allowed
+(unless option AC is installed). This means the amplitude is limited,
+and offset is not allowed to be set by default. However, there is a secondary device which allows for DC amplification, the MDC4500-4B.
+The MDC4500-4B is an amplifier which provides the ability to utilize DC offset on an AWG70K. It also provides a larger range of amplitude.
 
 Just like the AWG5200, the frequency is dependent on the option installed (150, 225, 216, 208).
 The first numbers in the option provides the number of source channels the AWG70K has, the next two numbers
@@ -572,5 +634,5 @@ align: center
 
 ##### Sequential, Blocking and Overlapping Commands:
 
-The AWG70K also supports the [Sequential, Blocking and Overlapping commands](#awg5200) mentioned in
+The AWG70K also supports the [Sequential, Blocking, and Overlapping commands](#awg5200) mentioned in
 the AWG5200 section.

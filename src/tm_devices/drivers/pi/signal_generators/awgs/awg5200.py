@@ -249,7 +249,7 @@ class AWG5200(AWG5200Mixin, AWG):
             output_signal_path: The signal path that the output is taking.
 
         Returns:
-            Ranges for amplitude, offset and sample rate.
+            Ranges for amplitude, offset, and sample rate.
         """
         if not output_signal_path:
             output_signal_path = self.OutputSignalPath.DCHB

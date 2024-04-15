@@ -70,189 +70,6 @@ class TekProbeData:
     probe_id_type: str = "1X"
 
 
-@dataclass
-class TekScopeChannel:
-    """Scope channel information."""
-
-    name: str
-    """Name of the channel."""
-    probe: TekProbeData
-    """Details about channel setup and any connected probe."""
-    termination: Optional[Literal[50, 250_000, 1_000_000]] = None
-    """Defines impedance at channel port."""
-
-
-class InternalAFGChannel(BaseAFGSourceChannel):
-    """Internal AFG channel driver."""
-
-    def __init__(self, tekscope: "TekScope") -> None:
-        """Create an Internal AFG channel.
-
-        Args:
-            tekscope: A TekScope.
-        """
-        super().__init__(pi_device=tekscope, channel_name="AFG")
-        self._tekscope = tekscope
-
-    def set_function_properties(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
-        self,
-        frequency: float,
-        function: SignalGeneratorFunctionsIAFG,
-        amplitude: float,
-        offset: float,
-        burst_count: int = 0,
-        termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
-        duty_cycle: float = 50.0,
-        polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
-        symmetry: float = 50.0,
-    ) -> None:
-        """Set the given parameters on the internal AFG.
-
-        Args:
-            frequency: The frequency of the waveform to generate.
-            function: The waveform shape to generate.
-            amplitude: The amplitude of the signal to generate.
-            offset: The offset of the signal to generate.
-            burst_count: The number of wavelengths to be generated.
-            termination: The impedance this device's ``channel`` expects to see at the received end.
-            duty_cycle: The duty cycle percentage within [10.0, 90.0].
-            polarity: The polarity to set the signal to.
-            symmetry: The symmetry to set the signal to, only applicable to certain functions.
-        """
-        del polarity
-        if burst_count > 0:
-            self.setup_burst_waveform(burst_count)
-        # Generate the waveform from the Internal AFG
-        # Frequency
-        self.set_frequency(frequency)
-        # Offset
-        self.set_offset(offset)
-        # Function
-        self.set_function(function)
-        # Duty Cycle
-        if function == SignalGeneratorFunctionsIAFG.SQUARE:
-            self.set_square_duty_cycle(duty_cycle)
-        # Symmetry
-        if function == SignalGeneratorFunctionsIAFG.RAMP:
-            self.set_ramp_symmetry(symmetry)
-        # Termination impedance
-        self.set_impedance(termination)
-        # Amplitude, needs to be after termination so that the amplitude is properly adjusted
-        self.set_amplitude(amplitude)
-
-    def set_amplitude(self, value: float, absolute_tolerance: float = 0) -> None:
-        """Set the amplitude on the internal AFG.
-
-        Args:
-            value: The amplitude value to set.
-            absolute_tolerance: The acceptable difference between two floating point values.
-        """
-        self._tekscope.set_if_needed(
-            f"{self.name}:AMPLITUDE",
-            value,
-            tolerance=absolute_tolerance,
-        )
-
-    def set_burst_count(self, value: int) -> None:
-        """Set the number of wavelengths to be generated when the internal AFG is set to burst.
-
-        Args:
-            value: The number of wavelengths to be generated within [1, 1000000].
-        """
-        self._tekscope.set_if_needed(f"{self.name}:BURST:CCOUNT", f"{value}")
-
-    def set_frequency(self, value: float, absolute_tolerance: float = 0) -> None:
-        """Set the frequency on the internal AFG.
-
-        Args:
-            value: The frequency value to set.
-            absolute_tolerance: The acceptable difference between two floating point values.
-        """
-        self._tekscope.set_if_needed(
-            f"{self.name}:FREQUENCY",
-            value,
-            tolerance=absolute_tolerance,
-        )
-
-    def set_function(self, value: SignalGeneratorFunctionsIAFG) -> None:  # pyright: ignore[reportIncompatibleMethodOverride]
-        """Set the function to output on the internal AFG.
-
-        Args:
-            value: The name of the function to output.
-        """
-        self._tekscope.set_if_needed(f"{self.name}:FUNCTION", str(value.value))
-
-    def set_impedance(self, value: Literal["FIFTY", "HIGHZ"]) -> None:
-        """Set the output load impedance on the internal AFG.
-
-        Args:
-            value: The impedance value to set (Options: "FIFTY", "HIGHZ").
-        """
-        self._tekscope.set_if_needed(f"{self.name}:OUTPUT:LOAD:IMPEDANCE", value)
-
-    def set_offset(self, value: float, absolute_tolerance: float = 0) -> None:
-        """Set the offset on the internal AFG.
-
-        Args:
-            value: The offset value to set.
-            absolute_tolerance: The acceptable difference between two floating point values.
-        """
-        self._tekscope.set_if_needed(
-            f"{self.name}:OFFSET",
-            value,
-            tolerance=absolute_tolerance,
-        )
-
-    def set_output_mode(self, value: Literal["OFF", "CONTINUOUS", "BURST"]) -> None:
-        """Set the output mode on the internal AFG.
-
-        Args:
-            value: The output mode to set (Options: "OFF", "CONTINUOUS", "BURST").
-        """
-        self._tekscope.set_if_needed(f"{self.name}:OUTPUT:MODE", value)
-
-    def set_ramp_symmetry(self, value: float) -> None:
-        """Set the symmetry of the ramp waveform on the internal AFG.
-
-        Args:
-            value: The symmetry percentage within [0, 100].
-        """
-        self._tekscope.set_if_needed(f"{self.name}:RAMP:SYMMETRY", value)
-
-    def set_state(self, value: int) -> None:
-        """Set the output state to ON/OFF (1/0) on the internal AFG.
-
-        Args:
-            value: The output state.
-        """
-        if value not in [0, 1]:
-            error_message = "Output state value must be 1 (ON) or 0 (OFF)."
-            raise ValueError(error_message)
-        self._tekscope.set_if_needed(f"{self.name}:OUTPUT:STATE", value)
-
-    def set_square_duty_cycle(self, value: float) -> None:
-        """Set the duty cycle of the square waveform on the internal AFG.
-
-        Args:
-            value: The duty cycle percentage within [10.0, 90.0].
-        """
-        self._tekscope.set_if_needed(f"{self.name}:SQUARE:DUTY", value)
-
-    def setup_burst_waveform(self, burst_count: int) -> None:
-        """Prepare the internal AFG for a burst waveform.
-
-        Args:
-            burst_count: The number of wavelengths to be generated.
-        """
-        # set to external as to not burst every millisecond
-        self.set_output_mode("BURST")
-        self.set_burst_count(burst_count)
-
-    def trigger_burst(self) -> None:
-        """Trigger a burst on the internal AFG."""
-        self._tekscope.write(f"{self.name}:BURST:TRIGGER")
-
-
 # pylint: disable=too-many-public-methods
 # TODO: Move signal generator mixin to different abstract class, so that tekscope software
 #   does not inherit the IAFG.
@@ -356,7 +173,7 @@ class TekScope(
         return MappingProxyType(channel_map)
 
     @cached_property
-    def internal_afg(self) -> InternalAFGChannel:
+    def internal_afg(self) -> "InternalAFGChannel":
         """The scope's internal AFG."""
         return InternalAFGChannel(self)
 
@@ -675,6 +492,9 @@ class TekScope(
             frequency: The frequency of the waveform that needs to be generated.
             output_signal_path: The output signal path that was set on the channel.
             load_impedance: The suggested impedance on the source.
+
+        Returns:
+            A Named Tuple containing a set of parameters and their restricted bounds.
         """
         del output_signal_path
 
@@ -1034,7 +854,7 @@ class TekScope(
 
     @staticmethod
     def _get_driver_specific_multipliers() -> float:
-        """Return a value to multiply the original Tekscope frequency by."""
+        """Return a value to multiply the original Tekscope IAFG frequency by."""
         return 1.0
 
     def _set_channel_display_state(
@@ -1059,3 +879,198 @@ class TekScope(
         ):
             channel_str = channel_str_base + "_DALL"
         self.set_and_check(f":DISPLAY:WAVEVIEW:{channel_str}:STATE", int(state))
+
+
+@dataclass
+class TekScopeChannel:
+    """Scope channel information."""
+
+    name: str
+    """Name of the channel."""
+    probe: TekProbeData
+    """Details about channel setup and any connected probe."""
+    termination: Optional[Literal[50, 250_000, 1_000_000]] = None
+    """Defines impedance at channel port."""
+
+
+class InternalAFGChannel(BaseAFGSourceChannel):
+    """Internal AFG channel driver."""
+
+    def __init__(self, tekscope: TekScope) -> None:
+        """Create an Internal AFG channel.
+
+        Args:
+            tekscope: A TekScope.
+        """
+        super().__init__(pi_device=tekscope, channel_name="AFG")
+        self._tekscope = tekscope
+
+    def __getattribute__(self, item: Any) -> Any:
+        """Get a class attribute.
+
+        Args:
+            item: The attribute to access.
+        """
+        obj: TekScope = super().__getattribute__("_tekscope")
+        if obj.has_license("AFG"):
+            return super().__getattribute__(item)
+        msg = "No AFG License, the class instance attributes are not accessible."
+        raise AttributeError(msg)
+
+    def set_function_properties(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
+        self,
+        frequency: float,
+        function: SignalGeneratorFunctionsIAFG,
+        amplitude: float,
+        offset: float,
+        burst_count: int = 0,
+        termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
+        duty_cycle: float = 50.0,
+        polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
+        symmetry: float = 50.0,
+    ) -> None:
+        """Set the given parameters on the internal AFG.
+
+        Args:
+            frequency: The frequency of the waveform to generate.
+            function: The waveform shape to generate.
+            amplitude: The amplitude of the signal to generate.
+            offset: The offset of the signal to generate.
+            burst_count: The number of wavelengths to be generated.
+            termination: The impedance this device's ``channel`` expects to see at the received end.
+            duty_cycle: The duty cycle percentage within [10.0, 90.0].
+            polarity: The polarity to set the signal to.
+            symmetry: The symmetry to set the signal to, only applicable to certain functions.
+        """
+        del polarity
+        if burst_count > 0:
+            self.setup_burst_waveform(burst_count)
+        # Generate the waveform from the Internal AFG
+        # Frequency
+        self.set_frequency(frequency)
+        # Offset
+        self.set_offset(offset)
+        # Function
+        self.set_function(function)
+        # Duty Cycle
+        if function == SignalGeneratorFunctionsIAFG.SQUARE:
+            self.set_square_duty_cycle(duty_cycle)
+        # Symmetry
+        if function == SignalGeneratorFunctionsIAFG.RAMP:
+            self.set_ramp_symmetry(symmetry)
+        # Termination impedance
+        self.set_impedance(termination)
+        # Amplitude, needs to be after termination so that the amplitude is properly adjusted
+        self.set_amplitude(amplitude)
+
+    def set_amplitude(self, value: float, absolute_tolerance: float = 0) -> None:
+        """Set the amplitude on the internal AFG.
+
+        Args:
+            value: The amplitude value to set.
+            absolute_tolerance: The acceptable difference between two floating point values.
+        """
+        self._tekscope.set_if_needed(
+            f"{self.name}:AMPLITUDE",
+            value,
+            tolerance=absolute_tolerance,
+        )
+
+    def set_burst_count(self, value: int) -> None:
+        """Set the number of wavelengths to be generated when the internal AFG is set to burst.
+
+        Args:
+            value: The number of wavelengths to be generated within [1, 1000000].
+        """
+        self._tekscope.set_if_needed(f"{self.name}:BURST:CCOUNT", f"{value}")
+
+    def set_frequency(self, value: float, absolute_tolerance: float = 0) -> None:
+        """Set the frequency on the internal AFG.
+
+        Args:
+            value: The frequency value to set.
+            absolute_tolerance: The acceptable difference between two floating point values.
+        """
+        self._tekscope.set_if_needed(
+            f"{self.name}:FREQUENCY",
+            value,
+            tolerance=absolute_tolerance,
+        )
+
+    def set_function(self, value: SignalGeneratorFunctionsIAFG) -> None:  # pyright: ignore[reportIncompatibleMethodOverride]
+        """Set the function to output on the internal AFG.
+
+        Args:
+            value: The name of the function to output.
+        """
+        self._tekscope.set_if_needed(f"{self.name}:FUNCTION", str(value.value))
+
+    def set_impedance(self, value: Literal["FIFTY", "HIGHZ"]) -> None:
+        """Set the output load impedance on the internal AFG.
+
+        Args:
+            value: The impedance value to set (Options: "FIFTY", "HIGHZ").
+        """
+        self._tekscope.set_if_needed(f"{self.name}:OUTPUT:LOAD:IMPEDANCE", value)
+
+    def set_offset(self, value: float, absolute_tolerance: float = 0) -> None:
+        """Set the offset on the internal AFG.
+
+        Args:
+            value: The offset value to set.
+            absolute_tolerance: The acceptable difference between two floating point values.
+        """
+        self._tekscope.set_if_needed(
+            f"{self.name}:OFFSET",
+            value,
+            tolerance=absolute_tolerance,
+        )
+
+    def set_output_mode(self, value: Literal["OFF", "CONTINUOUS", "BURST"]) -> None:
+        """Set the output mode on the internal AFG.
+
+        Args:
+            value: The output mode to set (Options: "OFF", "CONTINUOUS", "BURST").
+        """
+        self._tekscope.set_if_needed(f"{self.name}:OUTPUT:MODE", value)
+
+    def set_ramp_symmetry(self, value: float) -> None:
+        """Set the symmetry of the ramp waveform on the internal AFG.
+
+        Args:
+            value: The symmetry percentage within [0, 100].
+        """
+        self._tekscope.set_if_needed(f"{self.name}:RAMP:SYMMETRY", value)
+
+    def set_state(self, value: int) -> None:
+        """Set the output state to ON/OFF (1/0) on the internal AFG.
+
+        Args:
+            value: The output state.
+        """
+        if value not in [0, 1]:
+            error_message = "Output state value must be 1 (ON) or 0 (OFF)."
+            raise ValueError(error_message)
+        self._tekscope.set_if_needed(f"{self.name}:OUTPUT:STATE", value)
+
+    def set_square_duty_cycle(self, value: float) -> None:
+        """Set the duty cycle of the square waveform on the internal AFG.
+
+        Args:
+            value: The duty cycle percentage within [10.0, 90.0].
+        """
+        self._tekscope.set_if_needed(f"{self.name}:SQUARE:DUTY", value)
+
+    def setup_burst_waveform(self, burst_count: int) -> None:
+        """Prepare the internal AFG for a burst waveform.
+
+        Args:
+            burst_count: The number of wavelengths to be generated.
+        """
+        # set to external as to not burst every millisecond
+        self.set_output_mode("BURST")
+        self.set_burst_count(burst_count)
+
+    def trigger_burst(self) -> None:
+        """Trigger a burst on the internal AFG."""
+        self._tekscope.write(f"{self.name}:BURST:TRIGGER")
