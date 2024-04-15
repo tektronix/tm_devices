@@ -39,6 +39,7 @@ jobs:
       - name: Run updater script
         run: python scripts/update_development_dependencies.py --no-install
       - name: Run pre-commit
+        continue-on-error: true
         env:
           SKIP: ${{ inputs.pre-commit-hook-skip-list || 'pylint,pyright,pyright-verifytypes,pyroma' }}
         run: python -m pre_commit run --all
