@@ -17,45 +17,6 @@ from tm_devices.helpers import SASSetWaveformFileTypes
 from tm_devices.helpers.enums import SignalGeneratorOutputPathsBase
 
 
-class AWG70KASourceChannel(AWGSourceChannel):
-    """AWG70KA signal source channel composite."""
-
-    def set_output_signal_path(
-        self, value: Optional[SignalGeneratorOutputPathsBase] = None
-    ) -> None:
-        """Set the output signal path on the source channel.
-
-        Can only set the output signal path to DCA when an MDC4500 is connected to the AWG70K.
-
-        Args:
-            value: The output signal path.
-                (The default is to attempt to set output signal path to DCA and falling back to DIR)
-        """
-        if not value:
-            # Attempt to set the output signal path to DCA.
-            try:
-                self._awg.set_and_check(
-                    f"OUTPUT{self.num}:PATH", self._awg.OutputSignalPath.DCA.value
-                )
-            except AssertionError:  # pragma: no cover
-                # If error, set output signal path to DIR.
-                expected_esr_message = (
-                    '-222,"Data out of range;Data Out of Range - '
-                    f'OUTPUT{self.num}:PATH DCA\r\n"\n0,"No error"'
-                )
-                self._awg.expect_esr("16", expected_esr_message)
-                self._awg.set_and_check(
-                    f"OUTPUT{self.num}:PATH", self._awg.OutputSignalPath.DIR.value
-                )
-        elif value in self._awg.OutputSignalPath:
-            self._awg.set_if_needed(f"OUTPUT{self.num}:PATH", value.value)
-        else:
-            output_signal_path_error = (
-                f"{value.value} is an invalid output signal path for {self._awg.model}."
-            )
-            raise ValueError(output_signal_path_error)
-
-
 @family_base_class
 class AWG70KA(AWG70KAMixin, AWG):
     """AWG70KA device driver."""
@@ -235,3 +196,52 @@ class AWG70KA(AWG70KAMixin, AWG):
             raise ValueError(waveform_file_type_error) from err
 
         self.expect_esr(0)
+
+
+class AWG70KASourceChannel(AWGSourceChannel):
+    """AWG70KA signal source channel composite."""
+
+    def __init__(self, awg: AWG70KA, channel_name: str) -> None:
+        """Create an AWG5200 source channel.
+
+        Args:
+            awg: An AWG.
+            channel_name: The channel name for the AWG source channel.
+        """
+        super().__init__(awg=awg, channel_name=channel_name)
+        self._awg = awg
+
+    def set_output_signal_path(
+        self, value: Optional[SignalGeneratorOutputPathsBase] = None
+    ) -> None:
+        """Set the output signal path on the source channel.
+
+        Can only set the output signal path to DCA when an MDC4500 is connected to the AWG70K.
+
+        Args:
+            value: The output signal path.
+                (The default is to attempt to set output signal path to DCA and falling back to DIR)
+        """
+        if not value:
+            # Attempt to set the output signal path to DCA.
+            try:
+                self._awg.set_and_check(
+                    f"OUTPUT{self.num}:PATH", self._awg.OutputSignalPath.DCA.value
+                )
+            except AssertionError:  # pragma: no cover
+                # If error, set output signal path to DIR.
+                expected_esr_message = (
+                    '-222,"Data out of range;Data Out of Range - '
+                    f'OUTPUT{self.num}:PATH DCA\r\n"\n0,"No error"'
+                )
+                self._awg.expect_esr("16", expected_esr_message)
+                self._awg.set_and_check(
+                    f"OUTPUT{self.num}:PATH", self._awg.OutputSignalPath.DIR.value
+                )
+        elif value in self._awg.OutputSignalPath:
+            self._awg.set_if_needed(f"OUTPUT{self.num}:PATH", value.value)
+        else:
+            output_signal_path_error = (
+                f"{value.value} is an invalid output signal path for {self._awg.model}."
+            )
+            raise ValueError(output_signal_path_error)

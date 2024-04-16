@@ -17,55 +17,6 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 from tm_devices.helpers.enums import SignalGeneratorOutputPathsBase
 
 
-class AWG5KSourceChannel(AWGSourceChannel):
-    """AWG5K signal source channel composite."""
-
-    def set_offset(self, value: float, absolute_tolerance: float = 0) -> None:
-        """Set the offset on the source channel.
-
-        Args:
-            value: The offset value to set.
-            absolute_tolerance: The acceptable difference between two floating point values.
-        """
-        if not float(self._awg.query(f"AWGCONTROL:DOUTPUT{self.num}:STATE?")):
-            # Can only set offset when then output state is 0.
-            self._awg.set_if_needed(
-                f"{self.name}:VOLTAGE:OFFSET",
-                value,
-                tolerance=absolute_tolerance,
-            )
-        elif value:
-            # No error is raised when 0 is the offset value and the output signal path
-            # is in a state where offset cannot be set.
-            offset_error = (
-                f"The offset can only be set on {self._awg.model} with an output signal path of "
-                f"{self._awg.OutputSignalPath.DCA.value} "
-                f"(AWGCONTROL:DOUTPUT{self.num}:STATE set to 0)."
-            )
-            raise ValueError(offset_error)
-
-    def set_output_signal_path(
-        self, value: Optional[SignalGeneratorOutputPathsBase] = None
-    ) -> None:
-        """Set the output signal path on the source channel.
-
-        Args:
-            value: The output signal path.
-        """
-        if not value or value == self._awg.OutputSignalPath.DCA:
-            # Translate DCA to output state of 0.
-            output_state = 0
-        elif value == self._awg.OutputSignalPath.DIR:
-            # Translate DIR to output state of 1.
-            output_state = 1
-        else:
-            output_signal_path_error = (
-                f"{value.value} is an invalid output signal path for {self._awg.model}."
-            )
-            raise ValueError(output_signal_path_error)
-        self._awg.set_if_needed(f"AWGCONTROL:DOUTPUT{self.num}:STATE", output_state)
-
-
 @family_base_class
 class AWG5K(AWG5KMixin, AWG):
     """AWG5K device driver."""
@@ -120,3 +71,62 @@ class AWG5K(AWG5KMixin, AWG):
             lower=10.0e6, upper=600.0e6 + (600.0e6 * int(self.model[5]))
         )
         return amplitude_range, offset_range, sample_rate_range
+
+
+class AWG5KSourceChannel(AWGSourceChannel):
+    """AWG5K signal source channel composite."""
+
+    def __init__(self, awg: "AWG5K", channel_name: str) -> None:
+        """Create an AWG5200 source channel.
+
+        Args:
+            awg: An AWG.
+            channel_name: The channel name for the AWG source channel.
+        """
+        super().__init__(awg=awg, channel_name=channel_name)
+        self._awg = awg
+
+    def set_offset(self, value: float, absolute_tolerance: float = 0) -> None:
+        """Set the offset on the source channel.
+
+        Args:
+            value: The offset value to set.
+            absolute_tolerance: The acceptable difference between two floating point values.
+        """
+        if not float(self._awg.query(f"AWGCONTROL:DOUTPUT{self.num}:STATE?")):
+            # Can only set offset when then output state is 0.
+            self._awg.set_if_needed(
+                f"{self.name}:VOLTAGE:OFFSET",
+                value,
+                tolerance=absolute_tolerance,
+            )
+        elif value:
+            # No error is raised when 0 is the offset value and the output signal path
+            # is in a state where offset cannot be set.
+            offset_error = (
+                f"The offset can only be set on {self._awg.model} with an output signal path of "
+                f"{self._awg.OutputSignalPath.DCA.value} "
+                f"(AWGCONTROL:DOUTPUT{self.num}:STATE set to 0)."
+            )
+            raise ValueError(offset_error)
+
+    def set_output_signal_path(
+        self, value: Optional[SignalGeneratorOutputPathsBase] = None
+    ) -> None:
+        """Set the output signal path on the source channel.
+
+        Args:
+            value: The output signal path.
+        """
+        if not value or value == self._awg.OutputSignalPath.DCA:
+            # Translate DCA to output state of 0.
+            output_state = 0
+        elif value == self._awg.OutputSignalPath.DIR:
+            # Translate DIR to output state of 1.
+            output_state = 1
+        else:
+            output_signal_path_error = (
+                f"{value.value} is an invalid output signal path for {self._awg.model}."
+            )
+            raise ValueError(output_signal_path_error)
+        self._awg.set_if_needed(f"AWGCONTROL:DOUTPUT{self.num}:STATE", output_state)

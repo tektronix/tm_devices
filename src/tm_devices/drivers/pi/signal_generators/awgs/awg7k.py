@@ -1,7 +1,7 @@
 """AWG7K device driver module."""
 
 from types import MappingProxyType
-from typing import Dict, Optional, Tuple
+from typing import cast, Dict, Optional, Tuple
 
 from tm_devices.commands import AWG7KMixin
 from tm_devices.drivers.device import family_base_class
@@ -11,54 +11,14 @@ from tm_devices.drivers.pi.signal_generators.awgs.awg import (
     AWGSourceDeviceConstants,
     ParameterBounds,
 )
-from tm_devices.drivers.pi.signal_generators.awgs.awg5k import AWG5KSourceChannel
+from tm_devices.drivers.pi.signal_generators.awgs.awg5k import (
+    AWG5K,
+    AWG5KSourceChannel,
+)
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 from tm_devices.helpers.enums import SignalGeneratorOutputPathsBase
-
-
-class AWG7KSourceChannel(AWG5KSourceChannel):
-    """AWG7K signal source channel composite."""
-
-    def set_offset(self, value: float, absolute_tolerance: float = 0) -> None:
-        """Set the offset on the source channel.
-
-        Args:
-            value: The offset value to set.
-            absolute_tolerance: The acceptable difference between two floating point values.
-        """
-        output_path = float(self._awg.query(f"AWGCONTROL:DOUTPUT{self.num}:STATE?"))
-        if not ("02" in self._awg.opt_string or "06" in self._awg.opt_string) and not output_path:
-            # Can only set offset on AWG7k's without 02 and 06 options and when then
-            # output state is 0.
-            self._awg.set_if_needed(
-                f"{self.name}:VOLTAGE:OFFSET",
-                value,
-                tolerance=absolute_tolerance,
-            )
-        elif value:
-            # No error is raised when 0 is the offset value and the output signal path
-            # is in a state where offset cannot be set.
-            offset_error = (
-                f"The offset can only be set on {self._awg.model} without an 02 or 06 "
-                "option and with an output signal path of "
-                f"{self._awg.OutputSignalPath.DCA.value} "
-                f"(AWGCONTROL:DOUTPUT{self.num}:STATE set to 0)."
-            )
-            raise ValueError(offset_error)
-
-    def set_output_signal_path(
-        self, value: Optional[SignalGeneratorOutputPathsBase] = None
-    ) -> None:
-        """Set the output signal path on the source channel.
-
-        Args:
-            value: The output signal path.
-        """
-        if not ("02" in self._awg.opt_string or "06" in self._awg.opt_string):
-            # Can only set the output signal path on AWG7k's without 02 and 06 options.
-            super().set_output_signal_path(value)
 
 
 @family_base_class
@@ -116,3 +76,56 @@ class AWG7K(AWG7KMixin, AWG):
         sample_rate_range = ParameterBounds(lower=10.0e6, upper=int(self.model[4:6]) * 1.0e9)
 
         return amplitude_range, offset_range, sample_rate_range
+
+
+class AWG7KSourceChannel(AWG5KSourceChannel):
+    """AWG7K signal source channel composite."""
+
+    def __init__(self, awg: AWG7K, channel_name: str) -> None:
+        """Create an AWG5200 source channel.
+
+        Args:
+            awg: An AWG.
+            channel_name: The channel name for the AWG source channel.
+        """
+        super().__init__(awg=cast(AWG5K, awg), channel_name=channel_name)
+        self._awg = awg
+
+    def set_offset(self, value: float, absolute_tolerance: float = 0) -> None:
+        """Set the offset on the source channel.
+
+        Args:
+            value: The offset value to set.
+            absolute_tolerance: The acceptable difference between two floating point values.
+        """
+        output_path = float(self._awg.query(f"AWGCONTROL:DOUTPUT{self.num}:STATE?"))
+        if not ("02" in self._awg.opt_string or "06" in self._awg.opt_string) and not output_path:
+            # Can only set offset on AWG7k's without 02 and 06 options and when then
+            # output state is 0.
+            self._awg.set_if_needed(
+                f"{self.name}:VOLTAGE:OFFSET",
+                value,
+                tolerance=absolute_tolerance,
+            )
+        elif value:
+            # No error is raised when 0 is the offset value and the output signal path
+            # is in a state where offset cannot be set.
+            offset_error = (
+                f"The offset can only be set on {self._awg.model} without an 02 or 06 "
+                "option and with an output signal path of "
+                f"{self._awg.OutputSignalPath.DCA.value} "
+                f"(AWGCONTROL:DOUTPUT{self.num}:STATE set to 0)."
+            )
+            raise ValueError(offset_error)
+
+    def set_output_signal_path(
+        self, value: Optional[SignalGeneratorOutputPathsBase] = None
+    ) -> None:
+        """Set the output signal path on the source channel.
+
+        Args:
+            value: The output signal path.
+        """
+        if not ("02" in self._awg.opt_string or "06" in self._awg.opt_string):
+            # Can only set the output signal path on AWG7k's without 02 and 06 options.
+            super().set_output_signal_path(value)
