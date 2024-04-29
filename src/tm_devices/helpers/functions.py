@@ -347,7 +347,7 @@ def create_visa_connection(
                 visa_library
             ).open_resource(resource_expression)
         # The broad except is because pyvisa_py can throw a base exception in the tcpip.py file
-        except Exception as error_2:  # noqa: BLE001
+        except Exception as error_2:
             message = f"Unable to establish a VISA connection to {resource_expression}\n\n"
             if device_config_entry.connection_type in {
                 ConnectionTypes.TCPIP,
