@@ -11,6 +11,7 @@ exclude_docs: |
   *.txt
   _templates/
   includes/
+  __*/
 validation:
   omitted_files: warn
   absolute_links: warn
@@ -114,6 +115,8 @@ plugins:
             show_symbol_type_toc: false
           import:
             - url: https://docs.python.org/3/objects.inv
+              domains: [std, py]
+            - url: https://typing-extensions.readthedocs.io/en/stable/objects.inv
               domains: [std, py]
             - url: https://pyvisa.readthedocs.io/en/stable/objects.inv
               domains: [std, py]
