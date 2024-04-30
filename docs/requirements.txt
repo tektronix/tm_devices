@@ -10,5 +10,6 @@ mkdocs-mermaid2-plugin
 mkdocs-section-index
 mkdocs-spellcheck[codespell,symspellpy]
 mkdocstrings[python]
+pygments
 pymdown-extensions
 tomli
