@@ -2,8 +2,6 @@
 
 A collection of terms and symbols used throughout the documentation and their definitions.
 
-{.glossary}
-
 🚧
 : Work in Progress
 
@@ -30,6 +28,9 @@ DMM
 
 DPOJET
 :  A jitter, noise, timing, and eye diagram analysis tool for Tektronix Performance Digital Oscilloscopes
+
+IDE
+: Integrated Development Environment
 
 LP
 : Low Profile

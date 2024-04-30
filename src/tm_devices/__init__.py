@@ -1,14 +1,14 @@
 """Test & Measurement Device Management.
 
-Provides access to commonly imported items from the tm_devices package.
+Provides access to commonly imported items from the `tm_devices` package.
 
 Examples:
     >>> from tm_devices import DeviceManager
-    >>> with DeviceManager() as dm:  # doctest: +SKIP
+    >>> with DeviceManager() as dm:
     ...     print(dm.is_open)
-    2023-09-21 01:50:16.031 - Opening DeviceManager
+    2... - Opening DeviceManager
     True
-    2023-09-21 01:50:16.031 - DeviceManager Closed
+    2... - DeviceManager Closed
 """
 
 from importlib.metadata import version

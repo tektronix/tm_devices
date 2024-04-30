@@ -1,8 +1,9 @@
 """A module with all the main device type classes."""
 
-from typing import Final
+from typing import Final, Tuple, Type
 
 from tm_devices.drivers.api.rest_api.margin_testers.margin_tester import MarginTester
+from tm_devices.drivers.device import Device
 from tm_devices.drivers.pi.data_acquisition_systems.data_acquisition_system import (
     DataAcquisitionSystem,
 )
@@ -14,7 +15,7 @@ from tm_devices.drivers.pi.signal_sources.awgs.awg import AWG
 from tm_devices.drivers.pi.source_measure_units.source_measure_unit import SourceMeasureUnit
 from tm_devices.drivers.pi.systems_switches.systems_switch import SystemsSwitch
 
-DEVICE_TYPE_CLASSES: Final = (
+DEVICE_TYPE_CLASSES: Final[Tuple[Type[Device], ...]] = (
     AFG,
     AWG,
     DataAcquisitionSystem,
@@ -25,7 +26,7 @@ DEVICE_TYPE_CLASSES: Final = (
     SystemsSwitch,
     MarginTester,
 )
-"""Tuple[str, ...]: A tuple containing all the different supported device type classes."""
+"""A tuple containing all the different supported device type classes."""
 
 __all__ = [
     "DEVICE_TYPE_CLASSES",

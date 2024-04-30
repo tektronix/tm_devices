@@ -68,22 +68,31 @@ if TYPE_CHECKING:
 # Type Aliases
 ####################################################################################################
 AFGAlias = TypeVar("AFGAlias", bound=AFG, default=AFG)
+"""An alias to a specific AFG driver."""
 AWGAlias = TypeVar("AWGAlias", bound=AWG, default=AWG)
+"""An alias to a specific AWG driver."""
 DataAcquisitionSystemAlias = TypeVar(
     "DataAcquisitionSystemAlias", bound=DataAcquisitionSystem, default=DataAcquisitionSystem
 )
+"""An alias to a specific DataAcquisitionSystem driver."""
 DigitalMultimeterAlias = TypeVar(
     "DigitalMultimeterAlias", bound=DigitalMultimeter, default=DigitalMultimeter
 )
+"""An alias to a specific DigitalMultimeter driver."""
 ScopeAlias = TypeVar("ScopeAlias", bound=Scope, default=Scope)
+"""An alias to a specific Scope driver."""
 MarginTesterAlias = TypeVar("MarginTesterAlias", bound=MarginTester, default=MarginTester)
+"""An alias to a specific MarginTester driver."""
 PowerSupplyUnitAlias = TypeVar(
     "PowerSupplyUnitAlias", bound=PowerSupplyUnit, default=PowerSupplyUnit
 )
+"""An alias to a specific PowerSupplyUnit driver."""
 SourceMeasureUnitAlias = TypeVar(
     "SourceMeasureUnitAlias", bound=SourceMeasureUnit, default=SourceMeasureUnit
 )
+"""An alias to a specific SourceMeasureUnit driver."""
 SystemsSwitchAlias = TypeVar("SystemsSwitchAlias", bound=SystemsSwitch, default=SystemsSwitch)
+"""An alias to a specific SystemsSwitch driver."""
 
 
 ####################################################################################################
@@ -558,8 +567,8 @@ class DeviceManager(metaclass=Singleton):
             alias: An optional alias to use to refer to the SS. If no alias is provided,
                    the device type and number can be used to access the SS instead.
             connection_type: The type of connection to use for VISA, defaults to TCPIP, not needed
-            when the address is a visa resource expression since the connection type is parsed from
-            the address string.
+                when the address is a visa resource expression since the connection type is parsed
+                from the address string.
             port: The port to use when creating a socket connection.
 
         Returns:

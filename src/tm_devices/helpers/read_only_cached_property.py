@@ -16,6 +16,7 @@ try:  # pragma: py-lt-39
         Notes:
             In order for the PyCharm IDE to properly provide auto-complete hints, this class must be
             imported in the following way:
+
             ``from tm_devices.helpers import ReadOnlyCachedProperty as cached_property``.
 
         Examples:
@@ -51,6 +52,7 @@ except TypeError:  # pragma: py-gte-39
         Notes:
             In order for the PyCharm IDE to properly provide auto-complete hints, this class must be
             imported in the following way:
+
             ``from tm_devices.helpers import ReadOnlyCachedProperty as cached_property``.
 
         Examples:

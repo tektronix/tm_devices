@@ -1,7 +1,10 @@
 coverage-conditional-plugin
 coverage[toml]>=7.2.2
 http_server_mock
+linkchecker
 pytest-cov
+pytest-depends
+pytest-env
 pytest-github-report
 pytest-html
 pytest-order

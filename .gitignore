@@ -61,12 +61,16 @@ tests/samples/generated_stubs/*
 tests/verify_devices.yaml
 prof/
 
-# Sphinx documentation
+# Documentation
 .docs*/
 docs/_build/
 docs/autoapi/
 docs/_autoapi/
+docs/reference/
 _readthedocs/
+site*/
+.site*/
+*.inv
 
 # Jupyter Notebook
 .ipynb_checkpoints

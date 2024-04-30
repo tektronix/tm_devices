@@ -35,6 +35,7 @@ class SS3706A(SS3706AMixin, SystemsSwitch):
             verbose: A boolean indicating if verbose output should be printed.
             visa_resource: The VISA resource object.
         """
+        # NOTE: This method must be defined for the documentation to properly generate
         super().__init__(config_entry, verbose, visa_resource)
 
     ################################################################################################

@@ -7,8 +7,22 @@ import dataclasses
 import os
 import pathlib
 
+from dataclasses import dataclass
 from types import MappingProxyType
-from typing import Any, cast, Dict, get_type_hints, List, Mapping, Optional, Tuple, Type, Union
+from typing import (
+    Any,
+    cast,
+    Dict,
+    get_type_hints,
+    List,
+    Mapping,
+    Optional,
+    Protocol,
+    runtime_checkable,
+    Tuple,
+    Type,
+    Union,
+)
 
 import tomli
 import tomli_w
@@ -25,8 +39,13 @@ from tm_devices.helpers import (
 )
 from tm_devices.helpers.constants_and_dataclasses import (
     CONFIG_CLASS_STR_PREFIX_MAPPING,
-    DataclassProtocol,
 )
+
+
+@runtime_checkable
+@dataclass
+class _DataclassProtocol(Protocol):
+    """A Protocol class to allow for type hinting things that accept generic dataclasses."""
 
 
 class DMConfigParser:
@@ -47,7 +66,7 @@ class DMConfigParser:
     FileType = ConfigFileType
 
     _CONFIG_NESTED_DICT_MAPPING: Mapping[
-        Union[Type[DataclassProtocol], Type[SerialConfig]], str
+        Union[Type[_DataclassProtocol], Type[SerialConfig]], str
     ] = MappingProxyType({SerialConfig: "serial_config"})
 
     ################################################################################################

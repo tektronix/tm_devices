@@ -1,4 +1,4 @@
-<div class="custom-badge-table">
+<div markdown="1" class="custom-badge-table">
 
 |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11,7 +11,7 @@
 
 </div>
 
-______________________________________________________________________
+---
 
 # tm_devices: Test & Measurement Device Management
 
@@ -30,7 +30,7 @@ on any operating system thanks to the
 [PyVISA-py](https://pyvisa.readthedocs.io/projects/pyvisa-py/en/latest/)
 VISA backend. However, in order to use any VISA functionality that
 PyVISA-py does not implement, a third-party VISA backend such as
-[TekVISA](https://www.tek.com/en/search?keywords=tekvisa&facets=_templatename%3dsoftware%26parsedsoftwaretype%3dDriver&sort=)
+[TekVISA](https://www.tek.com/en/search?keywords=tekvisa&facets=_templatename%3dsoftware%26parsedsoftwaretype%3dDriver&sort=desc)
 (>=4.2.0) or
 [NI-VISA](https://www.ni.com/en-us/support/downloads/drivers/download.ni-visa.html)
 can be installed. `tm_devices` will use an available VISA backend if one
@@ -71,9 +71,9 @@ with DeviceManager() as device_manager:
 > \[!TIP\]
 > Visit the [Glossary](https://tinyurl.com/tek-tm-devices/docs/glossary.md) to see definitions for all symbols and abbreviations.
 
-<div class="custom-table-center-cells device-support-table">
+<div markdown="1" class="custom-table-center-cells device-support-table">
 
-<div class="custom-table-title">
+<div markdown="1" class="custom-table-title">
 
 _Device Support Levels_
 
@@ -137,9 +137,9 @@ _Device Support Levels_
 
 </div>
 
-<div class="custom-table-center-cells device-support-table">
+<div markdown="1" class="custom-table-center-cells device-support-table">
 
-<div class="custom-table-title">
+<div markdown="1" class="custom-table-title">
 
 _Software Solution Support Levels_
 
@@ -155,11 +155,11 @@ _Software Solution Support Levels_
 
 - REST API
 - VISA *(TekVISA, NI-VISA and PyVISA-py)*
-  - TCPIP
-  - ASRL / Serial / RS-232 / RS-485
-  - SOCKET
-  - USBTMC *(no PyVISA-py support)*
-  - GPIB *(no PyVISA-py support)*
+    - TCPIP
+    - ASRL / Serial / RS-232 / RS-485
+    - SOCKET
+    - USBTMC *(no PyVISA-py support)*
+    - GPIB *(no PyVISA-py support)*
 
 ## Documentation
 
@@ -177,9 +177,9 @@ start a
 the maintainers will review and respond there.
 
 - <tmdevicessupport@tektronix.com> - For technical support and
-  questions.
+    questions.
 - <opensource@tektronix.com> - For open-source policy and license
-  questions.
+    questions.
 
 ## Contributing
 

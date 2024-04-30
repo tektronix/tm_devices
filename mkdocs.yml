@@ -1,0 +1,167 @@
+---
+site_name: tm_devices
+repo_url: https://github.com/tektronix/tm_devices
+edit_uri: ''
+site_author: Tektronix
+site_description: Manage connections and interactions with Test & Measurement devices.
+copyright: © Copyright 2022, Tektronix
+strict: false  # TODO: set to true
+exclude_docs: |
+  *.py
+  *.txt
+  _templates/
+  includes/
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+  not_found: warn
+  anchors: warn
+theme:
+  name: readthedocs
+  highlightjs: false
+  custom_dir: docs/_templates/readthedocs
+  include_homepage_in_sidebar: false
+  titles_only: false
+  navigation_depth: 20
+  collapse_navigation: true
+  sticky_navigation: true
+  features: [content.tooltips]
+extra_css:
+  - _static/css/api_labels.css
+  - _static/css/api_symbols.css
+  - _static/css/code_styles.css
+  - _static/css/theme_overrides.css
+extra_javascript: [_static/js/insert-hr.js]
+markdown_extensions:
+  - meta
+  - toc:
+      permalink: true
+  - tables
+  - fenced_code
+  - abbr
+  - smarty
+  - admonition
+  - md_in_html
+  - sane_lists
+  - attr_list
+  - def_list
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.highlight:
+      use_pygments: true
+      pygments_style: default
+      pygments_lang_class: true
+      code_attr_on_pre: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
+  - pymdownx.inlinehilite
+plugins:
+  - search:
+      prebuild_index: true
+  - include-markdown
+  - mermaid2
+  - section-index
+  - macros:
+      module_name: docs/macros
+      on_error_fail: true
+      on_undefined: strict
+  - gen-files:
+      # noinspection YAMLIncompatibleTypes
+      enabled: !ENV [TM_DEVICES_API_GENERATION, true]
+      scripts: [docs/generate_api_pages.py]
+  - literate-nav
+  - ezglossary:
+      tooltip: full
+      strict: true
+      use_default: true
+      inline_refs: none
+      markdown_links: true
+  - mkdocstrings:  # additional customization takes place in docs/generate_api_pages.py
+      # noinspection YAMLIncompatibleTypes
+      enabled: !ENV [TM_DEVICES_API_GENERATION, true]
+      enable_inventory: true
+      custom_templates: docs/_templates/mkdocstrings
+      handlers:
+        python:  # see https://mkdocstrings.github.io/python/usage/
+          paths: [src]
+          options:
+            extensions: [docs/griffe_custom_decorator_labels.py]
+            docstring_options:
+              ignore_init_summary: true
+              trim_doctest_flags: true
+            merge_init_into_class: true
+            members_order: alphabetical
+            show_inheritance_diagram: true
+            inherited_members: true
+            show_source: false  # a link is included at the top of each page
+            docstring_section_style: list
+            filters: ['!^_', ^__init__]
+            summary: true
+            show_signature_annotations: true
+            separate_signature: true
+            line_length: 100
+            signature_crossrefs: true
+            show_labels: true
+            heading_level: 1
+            show_root_heading: true
+            show_root_full_path: false
+            show_category_heading: false
+            show_symbol_type_heading: true
+            show_symbol_type_toc: false
+          import:
+            - url: https://docs.python.org/3/objects.inv
+              domains: [std, py]
+            - url: https://pyvisa.readthedocs.io/en/stable/objects.inv
+              domains: [std, py]
+            - url: https://packaging.pypa.io/en/stable/objects.inv
+              domains: [std, py]
+            - url: https://docs.python-requests.org/en/stable/objects.inv
+              domains: [std, py]
+  - spellcheck:
+      known_words: known_words.txt
+      skip_files: [CHANGELOG.md]
+      backends:
+        - symspellpy
+        - codespell:
+            dictionaries:
+              - clear
+              - rare
+              - informal
+              - usage
+              - code
+              - names
+              - en-GB_to_en-US
+      ignore_code: true
+      min_length: 2
+      max_capital: 1
+      allow_unicode: true
+      strict_only: true
+not_in_nav: |
+  includes/*
+nav:  # The first entry in each section needs a hard-coded title to avoid being folded in as the section index
+  - index.md
+  - The Basics:
+      - Key Features: key_features.md
+      - basic_usage.md
+      - configuration.md
+      - glossary.md
+      - CHANGELOG.md
+  - Advanced Topics:
+      - Architectural Overview: advanced/architecture.md
+      - advanced/advanced_usage.md
+  - Troubleshooting:
+      - Troubleshooting Usage: troubleshooting/usage.md
+      - Troubleshooting Contributions: troubleshooting/contributions.md
+  - Contributing:
+      - Contributing Guidelines: CONTRIBUTING.md
+      - contributing/add_driver_methods.md
+      - contributing/add_new_device_type.md
+      - contributing/add_new_driver.md
+      - contributing/unit_tests.md
+      - CODE_OF_CONDUCT.md
+      - LICENSE.md
+  - API Reference: reference/

@@ -16,8 +16,8 @@ from tm_devices.helpers import DeviceConfigEntry, print_with_timestamp, Supporte
 class RESTAPIDevice(APIDevice, ABC):
     """Base REST Application Programming Interface (API) device driver."""
 
-    API_VERSIONS: "MappingProxyType[int, str]" = MappingProxyType({})
-    """Dict[int, str]: A mapping of supported API version numbers with the corresponding API URL."""
+    API_VERSIONS: Mapping[int, str] = MappingProxyType({})
+    """A mapping of supported API version numbers with the corresponding API URL."""
 
     ################################################################################################
     # Magic Methods
