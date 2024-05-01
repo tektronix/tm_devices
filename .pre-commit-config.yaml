@@ -47,7 +47,7 @@ repos:
       - id: check-github-actions
       - id: check-github-workflows
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.24.0
+    rev: v3.25.0
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -122,6 +122,14 @@ repos:
         pass_filenames: false
         always_run: true
         args: [., --min=10]
+      - id: poetry-audit
+        name: poetry-audit
+        entry: poetry
+        language: system
+        types: [toml]
+        pass_filenames: false
+        always_run: true
+        args: [audit, --json]
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.4.2
     hooks:

@@ -101,14 +101,17 @@ matplotlib = [
 memory-profiler = "^0.61.0"
 pip = "^24.0"
 poetry = "^1.8.0"
+poetry-audit-plugin = "^0.4.0"
+poetry-plugin-export = "^1.7.1"
+poetry-pre-commit-plugin = "^0.1.2"
 pre-commit = [
   {python = ">=3.9", version = "^3.7"},
   {python = "3.8", version = "^3.5"}
 ]
 pre-commit-update = "^0.3.0"
 pyclean = "^3.0.0"
-pylint = {extras = ["spelling"], version = "3.1.0"}  # Update this by running scripts/update_development_dependencies.py
-pyright = "1.1.360"  # Update this by running scripts/update_development_dependencies.py
+pylint = "3.1.0"  # Update this by running scripts/update_development_dependencies.py
+pyright = "1.1.361"  # Update this by running scripts/update_development_dependencies.py
 pyroma = "^4.2"
 python-semantic-release = "^9.6.0"
 ruff = "0.4.2"  # Update this by running scripts/update_development_dependencies.py
@@ -125,6 +128,7 @@ yamlfix = "^1.16.0"
 
 [tool.poetry.group.docs.dependencies]
 black = "^24.4.2"
+codespell = "^2.2.6"
 mkdocs = "^1.6.0"
 mkdocs-ezglossary-plugin = "^1.6.8"
 mkdocs-gen-files = "^0.5.0"
@@ -133,15 +137,17 @@ mkdocs-literate-nav = "^0.6.1"
 mkdocs-macros-plugin = "^1.0.5"
 mkdocs-mermaid2-plugin = "^1.1.1"
 mkdocs-section-index = "^0.3.9"
-# mkdocs-spellcheck = {extras = ["codespell", "symspellpy"], version = "^1.0.3"}  # TODO: switch to this once the official package is updated
-mkdocs-spellcheck = {extras = ["codespell", "symspellpy"], git = "https://github.com/nfelt14/mkdocs-spellcheck.git", rev = "main"}
-mkdocstrings = {extras = ["python"], version = "^0.25.0"}
+# mkdocs-spellcheck = "^1.0.4"  # TODO: switch to this once the official package is updated
+mkdocs-spellcheck = {git = "https://github.com/nfelt14/mkdocs-spellcheck.git", rev = "main"}
+mkdocstrings = "^0.25.0"
+mkdocstrings-python = "^1.10.0"
 pygments = "^2.17.2"
 pymdown-extensions = "^10.8.1"
+symspellpy = "^6.7.7"
 tomli = "^2.0.1"
 
 [tool.poetry.group.tests.dependencies]
-coverage = {extras = ["toml"], version = "^7.5.0"}
+coverage = "^7.5.0"
 coverage-conditional-plugin = "^0.9.0"
 flask = "^3.0.3"
 http-server-mock = "^1.7"
@@ -154,6 +160,7 @@ pytest-github-report = "^0.0.1"
 pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
 ruff = "0.4.2"  # Update this by running scripts/update_development_dependencies.py
+tomli = "^2.0.1"
 
 [tool.poetry.scripts]
 list-visa-resources = "tm_devices:print_available_visa_devices"
