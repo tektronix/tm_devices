@@ -6,6 +6,8 @@ site_author: Tektronix
 site_description: Manage connections and interactions with Test & Measurement devices.
 copyright: © Copyright 2022, Tektronix
 strict: true
+site_url: !ENV [READTHEDOCS_CANONICAL_URL, null]
+use_directory_urls: true
 exclude_docs: |
   *.py
   *.txt
