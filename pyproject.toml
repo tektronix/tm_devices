@@ -93,6 +93,7 @@ zeroconf = "^0.132.2"
 
 [tool.poetry.group.dev.dependencies]
 docformatter = {extras = ["tomli"], version = "1.7.5"}  # Update this by running scripts/update_development_dependencies.py
+docutils = "^0.20"
 docutils-stubs = "^0.0.22"
 matplotlib = [
   {python = ">=3.9", version = "^3.8"},
