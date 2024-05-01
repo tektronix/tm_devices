@@ -49,7 +49,7 @@ classifiers = [
   "Topic :: System :: Hardware :: Hardware Drivers"
 ]
 description = "Manage connections and interactions with Test & Measurement devices."
-documentation = "https://tm-devices.readthedocs.io/stable/"
+documentation = "https://tektronix.github.io/tm_devices/"
 homepage = "https://pypi.org/project/tm_devices/"
 keywords = [
   "REST API",
@@ -437,7 +437,7 @@ deps =
 setenv =
     DOC_PYTHON_VERSION = python3.11  # Keep this in sync with .readthedocs.yml and any CI scripts
     # Skip pre-commit checks that are explicitly performed by tox
-    SKIP = ruff-format,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma
+    SKIP = ruff-format,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma,poetry-audit
     PYRIGHT_PYTHON_GLOBAL_NODE = False  # This will cause python-pyright to use nodeenv to install node rather than use the system node
 commands_pre =
     poetry install --no-root --without=main
@@ -450,6 +450,7 @@ commands =
     !tests: pyright .
     !tests: pyright --verifytypes tm_devices --ignoreexternal
     !tests: pyroma .
+    !tests: poetry audit
     !tests: poetry build --output=dist_{envname}
     !tests: twine check --strict dist_{envname}/*
     !tests: pre-commit run --all-files --show-diff-on-failure

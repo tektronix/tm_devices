@@ -82,9 +82,11 @@
                     // Last updated on 4-18-2024
                     // Only add the button if the parent <li> element has a <ul> element that contains non-whitespace characters
                     if (t[0].firstChild.parentNode.parentElement.childNodes[2].innerHTML.trim().length !== 0) {
-                        expand = n('<button class="toctree-expand" title="Open/close menu"></button>'), expand.on("click", (function (n) {
+                        const expand = n('<button class="toctree-expand" title="Open/close menu"></button>');
+                        expand.on("click", (function (n) {
                             return e.toggleCurrent(t), n.stopPropagation(), !1
-                        })), t.prepend(expand)
+                        }));
+                        t.prepend(expand)
                     }
                     // End custom changes
 

@@ -15,6 +15,12 @@
     border: 2px solid black
 }
 
+.device-support-table table {
+    width: auto !important;
+    display: table !important;
+    margin: auto !important;
+}
+
 .device-support-table tr:has(td:first-child p:not(:empty)),
 .device-support-table tr:has(td:first-child p:not(:empty)) {
     border-top-width: 2px;
@@ -30,25 +36,6 @@
 .device-support-table table th:first-child {
     font-weight: bolder;
     background-color: transparent !important;
-}
-
-.device-support-table table td:first-child,
-.device-support-table table th:first-child {
-    font-weight: bolder;
-    background-color: transparent !important;
-}
-
-.device-support-table table {
-    margin-left: auto;
-    margin-right: auto;
-    width: auto;
-}
-
-/** Styling for custom table titles */
-.custom-table-title p {
-    text-align: center;
-    font-size: 0.9em;
-    margin-bottom: 0;
 }
 
 .device-support-table table {

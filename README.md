@@ -163,7 +163,7 @@ _Software Solution Support Levels_
 
 ## Documentation
 
-See the full documentation at <https://tm-devices.readthedocs.io/stable/>
+See the full documentation at <https://tektronix.github.io/tm_devices/>
 
 ## Maintainers
 
