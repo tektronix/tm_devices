@@ -28,6 +28,7 @@ dll
 docformatter
 docstring
 docstrings
+en
 enum
 executables
 filepath
@@ -66,6 +67,7 @@ pytest
 pyvisa
 pyvisa_resource_access
 readme
+readthedocs
 register_dm_atexit
 repo
 runtime
@@ -83,6 +85,7 @@ tekscope
 tektronix
 testpypi
 tippy
+tm
 tm_devices
 tmdevicessupport
 toml

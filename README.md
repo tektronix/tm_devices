@@ -163,7 +163,7 @@ _Software Solution Support Levels_
 
 ## Documentation
 
-See the full documentation at <https://tm-devices.readthedocs.io/en/stable/>
+See the full documentation at <https://tm-devices.readthedocs.io/stable/>
 
 ## Maintainers
 
