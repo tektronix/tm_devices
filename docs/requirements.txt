@@ -1,5 +1,4 @@
 black
-graphviz
 mkdocs
 mkdocs-ezglossary-plugin
 mkdocs-gen-files
@@ -8,7 +7,8 @@ mkdocs-literate-nav
 mkdocs-macros-plugin
 mkdocs-mermaid2-plugin
 mkdocs-section-index
-mkdocs-spellcheck[codespell,symspellpy]
+# mkdocs-spellcheck[codespell,symspellpy]  # TODO: switch to this once the official package is updated
+git+https://github.com/nfelt14/mkdocs-spellcheck.git@main#egg=mkdocs-spellcheck[codespell,symspellpy]
 mkdocstrings[python]
 pygments
 pymdown-extensions

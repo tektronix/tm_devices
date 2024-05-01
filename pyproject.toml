@@ -70,85 +70,90 @@ repository = "https://github.com/tektronix/tm_devices"
 version = "1.3.0"
 
 [tool.poetry.dependencies]
-# Development dependencies
-docutils-stubs = ">=0.0.22"
-gpib-ctypes = ">=0.3.0"
-libusb-package = ">=1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.12
-packaging = ">=21.3"
-psutil = ">=5.9.2"
-pyserial = ">=3.5"
+gpib-ctypes = "^0.3.0"
+libusb-package = "^1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.12
+packaging = "^24.0"
+psutil = "^5.9.0"
+pyserial = "^3.5"
 python = "^3.8"  # This is the main Python version requirement
-python-dateutil = ">=2.8.2"
-pyusb = ">=1.2.1"
-pyvicp = ">=1.1.0"
-pyvisa = ">=1.12.0"
-pyvisa-py = ">=0.5.3"
-pyvisa-sim = ">=0.4.0"
-pyyaml = ">=6.0"
-requests = ">=2.28.1"
-tomli = ">=2.0.1"
-tomli-w = ">=1.0.0"
-traceback-with-variables = ">=2.0.4"
-typing-extensions = ">=4.10.0"
-urllib3 = ">=2.0"
-zeroconf = ">=0.54.0"
+python-dateutil = "^2.8.2"
+pyusb = "^1.2.1"
+pyvicp = "^1.1.0"
+pyvisa = "^1.12.0"
+pyvisa-py = "^0.7.2"
+pyvisa-sim = "^0.6.0"
+pyyaml = "^6.0"
+requests = "^2.31.0"
+tomli = "^2.0.1"
+tomli-w = "^1.0.0"
+traceback-with-variables = "^2.0.4"
+typing-extensions = "^4.10.0"
+urllib3 = "^2.0"
+zeroconf = "^0.132.2"
 
 [tool.poetry.group.dev.dependencies]
-black = ">=24.4.0"
-coverage = {extras = ["toml"], version = ">=7.2.2"}
-coverage-conditional-plugin = ">=0.9.0"
 docformatter = {extras = ["tomli"], version = "1.7.5"}  # Update this by running scripts/update_development_dependencies.py
-docutils = "0.20.1"  # docutils released a bad version, have to lock here until it is fixed
-flask = ">=2.2.2"
-graphviz = ">=0.20.1"
-http-server-mock = ">=1.7"
-linkchecker = ">=10.0.0"
+docutils-stubs = "^0.0.22"
 matplotlib = [
-  {python = ">=3.9", version = ">=3.8"},
-  {python = "3.8", version = ">=3.7"}
+  {python = ">=3.9", version = "^3.8"},
+  {python = "3.8", version = "^3.7"}
 ]
-memory-profiler = ">=0.61.0"
-mkdocs = ">=1.5.3"
-mkdocs-ezglossary-plugin = ">=1.6.7"
-mkdocs-gen-files = ">=0.5.0"
-mkdocs-include-markdown-plugin = ">=6.0.5"
-mkdocs-literate-nav = ">=0.6.1"
-mkdocs-macros-plugin = ">=1.0.5"
-mkdocs-mermaid2-plugin = ">=1.1.1"
-mkdocs-section-index = ">=0.3.8"
-mkdocs-spellcheck = {extras = ["codespell", "symspellpy"], version = ">=1.0.3"}
-mkdocstrings = {extras = ["python"], version = ">=0.24.3"}
-pip = ">=22.0"
-poetry = ">=1.8.0"
-pre-commit = ">=2.20.0"
-pre-commit-update = ">=0.1.3"
-pyclean = ">=3.0.0"
-pygments = ">=2.17.2"
+memory-profiler = "^0.61.0"
+pip = "^24.0"
+poetry = "^1.8.0"
+pre-commit = [
+  {python = ">=3.9", version = "^3.7"},
+  {python = "3.8", version = "^3.5"}
+]
+pre-commit-update = "^0.3.0"
+pyclean = "^3.0.0"
 pylint = {extras = ["spelling"], version = "3.1.0"}  # Update this by running scripts/update_development_dependencies.py
-pymdown-extensions = ">=10.7.1"
 pyright = "1.1.360"  # Update this by running scripts/update_development_dependencies.py
-pyroma = ">=4.2"
-pytest = ">=7.1.2"
-pytest-cov = ">=3.0.0"
-pytest-depends = "^1.0.1"
-pytest-env = ">=1.1.3"
-pytest-github-report = ">=0.0.1"
-pytest-html = ">=4.0"
-pytest-order = ">=1.0.1"
-pytest-profiling = ">=1.7.0"
-python-semantic-release = ">=8.5.1"
+pyroma = "^4.2"
+python-semantic-release = "^9.6.0"
 ruff = "0.4.2"  # Update this by running scripts/update_development_dependencies.py
-safety = ">=2.1.1"
-toml-sort = ">=0.23.0"
-tox = ">=4.0"
-tox-gh-actions = ">=3.1.0"
-twine = ">=4.0.2"
-types-python-dateutil = ">=2.8.19"
-types-pyyaml = ">=6.0"
-types-requests = ">=2.28.8"
-urllib3 = ">=1.26.14"
-wheel = ">=0.37.1"
-yamlfix = ">=1.16.0"
+safety = "^3.2.0"
+toml-sort = "^0.23.0"
+tox = "^4.0"
+tox-gh-actions = "^3.1.0"
+twine = "^5.0.0"
+types-python-dateutil = "^2.9"
+types-pyyaml = "^6.0"
+types-requests = "^2.31"
+wheel = "^0.43"
+yamlfix = "^1.16.0"
+
+[tool.poetry.group.docs.dependencies]
+black = "^24.4.2"
+mkdocs = "^1.6.0"
+mkdocs-ezglossary-plugin = "^1.6.8"
+mkdocs-gen-files = "^0.5.0"
+mkdocs-include-markdown-plugin = "^6.0.5"
+mkdocs-literate-nav = "^0.6.1"
+mkdocs-macros-plugin = "^1.0.5"
+mkdocs-mermaid2-plugin = "^1.1.1"
+mkdocs-section-index = "^0.3.9"
+# mkdocs-spellcheck = {extras = ["codespell", "symspellpy"], version = "^1.0.3"}  # TODO: switch to this once the official package is updated
+mkdocs-spellcheck = {extras = ["codespell", "symspellpy"], git = "https://github.com/nfelt14/mkdocs-spellcheck.git", rev = "main"}
+mkdocstrings = {extras = ["python"], version = "^0.25.0"}
+pygments = "^2.17.2"
+pymdown-extensions = "^10.8.1"
+tomli = "^2.0.1"
+
+[tool.poetry.group.tests.dependencies]
+coverage = {extras = ["toml"], version = "^7.5.0"}
+coverage-conditional-plugin = "^0.9.0"
+flask = "^3.0.3"
+http-server-mock = "^1.7"
+linkchecker = "^10.0.0"
+pytest = "^8.2.0"
+pytest-cov = "^5.0.0"
+pytest-depends = "^1.0.1"
+pytest-env = "^1.1.3"
+pytest-github-report = "^0.0.1"
+pytest-html = "^4.1.1"
+pytest-order = "^1.2.1"
+ruff = "0.4.2"  # Update this by running scripts/update_development_dependencies.py
 
 [tool.poetry.scripts]
 list-visa-resources = "tm_devices:print_available_visa_devices"
@@ -427,7 +432,7 @@ setenv =
     SKIP = ruff-format,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma
     PYRIGHT_PYTHON_GLOBAL_NODE = False  # This will cause python-pyright to use nodeenv to install node rather than use the system node
 commands_pre =
-    poetry install --no-root
+    poetry install --no-root --without=main
 commands =
     !tests: safety check
     !tests: ruff format --check --diff .

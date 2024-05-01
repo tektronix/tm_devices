@@ -5,7 +5,7 @@ edit_uri: ''
 site_author: Tektronix
 site_description: Manage connections and interactions with Test & Measurement devices.
 copyright: © Copyright 2022, Tektronix
-strict: false  # TODO: set to true
+strict: true
 exclude_docs: |
   *.py
   *.txt
@@ -127,6 +127,7 @@ plugins:
   - spellcheck:
       known_words: known_words.txt
       skip_files: [CHANGELOG.md]
+      skip_file_globs: [reference/*]
       backends:
         - symspellpy
         - codespell:
