@@ -121,7 +121,7 @@ class DMConfigParser:
     def defined_config_file_path(self) -> str:
         """Filepath of the config file.
 
-        Prioritizes the path defined in the environment variable defined by
+        Prioritizes the path contained in the environment variable defined by
         [`DMConfigParser.CONFIG_FILE_PATH_ENV_VARIABLE`][tm_devices.components.DMConfigParser.CONFIG_FILE_PATH_ENV_VARIABLE]
         with a fallback to the default path defined by
         [`DMConfigParser.DEFAULT_CONFIG_FILE_PATH`][tm_devices.components.DMConfigParser.DEFAULT_CONFIG_FILE_PATH].
