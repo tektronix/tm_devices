@@ -2,7 +2,7 @@
 
 How to configure the Device Manager to be able to connect to devices.
 
-______________________________________________________________________
+---
 
 ## Python Code
 
@@ -10,17 +10,16 @@ The Device Manager can be instantiated without any connections defined. Devices
 can then be added to the Device Manager directly in the python code. Specific
 configuration options can also be changed during runtime.
 
-```{literalinclude} ../examples/miscellaneous/adding_devices.py
----
-language: python
----
+```python
+# fmt: off
+--8<-- "examples/miscellaneous/adding_devices.py"
 ```
 
 See the [Example Usage](basic_usage.md) for more usage examples.
 
-Also see the {py:obj}`tm_devices.DeviceManager` API reference.
+Also see the [`DeviceManager`][tm_devices.DeviceManager] API reference.
 
-______________________________________________________________________
+---
 
 ## Config File
 
@@ -29,7 +28,7 @@ into your scripts. The config file stores a list of device entries and runtime
 behavior options.
 
 The file allows you to set up a list of devices once and is easy to edit when
-things change, but doesn't require modification with every script execution.
+things change, but does not require modification with every script execution.
 
 A config file can be **overruled** by an
 [environment variable](#environment-variable) configuration. That means that if
@@ -119,87 +118,87 @@ devices:
 #### Legend for Device Configuration
 
 - `device_type`
-  - Valid options for `<device_type>`:
-    - `AFG`: An Arbitrary Function Generator
-    - `AWG`: An Arbitrary Waveform Generator
-    - `DAQ`: An Data Acquisition Unit
-    - `DMM`: An Digital Multimeter
-    - `MT`: A Margin Tester
-    - `PSU`: A Power Supply Unit
-    - `SCOPE`: An Oscilloscope
-    - `SMU`: A Source Measure Unit
-    - `SS`: A Systems Switch
+    - Valid options for `<device_type>`:
+        - `AFG`: An Arbitrary Function Generator
+        - `AWG`: An Arbitrary Waveform Generator
+        - `DAQ`: An Data Acquisition Unit
+        - `DMM`: An Digital Multimeter
+        - `MT`: A Margin Tester
+        - `PSU`: A Power Supply Unit
+        - `SCOPE`: An Oscilloscope
+        - `SMU`: A Source Measure Unit
+        - `SS`: A Systems Switch
 - `connection_type`
-  - Defaults to `TCPIP` when not explicitly defined.
-  - Valid options for `<connection_type>`:
-    - VISA connection types:
-      - `TCPIP`: A VISA connection over the TCPIP interface (default)
-      - `USB`: A VISA connection over a physical USBTMC interface
-      - `SERIAL`: A VISA connection over the serial (ASRL / RS-232 / RS-485) interface
-      - `SOCKET`: A VISA connection over the SOCKET interface
-      - `GPIB` : A VISA connection over the GPIB interface
-    - Other valid connection types:
-      - `REST_API`: A REST API connection over the network
+    - Defaults to `TCPIP` when not explicitly defined.
+    - Valid options for `<connection_type>`:
+        - VISA connection types:
+            - `TCPIP`: A VISA connection over the TCPIP interface (default)
+            - `USB`: A VISA connection over a physical USBTMC interface
+            - `SERIAL`: A VISA connection over the serial (ASRL / RS-232 / RS-485) interface
+            - `SOCKET`: A VISA connection over the SOCKET interface
+            - `GPIB` : A VISA connection over the GPIB interface
+        - Other valid connection types:
+            - `REST_API`: A REST API connection over the network
 - `address`
-  - `<ip_address_or_hostname>`
-    - Either the full IP address or system hostname is required to initialize
-      the connection to the device.
-    - Hostname is preferable, since it will gracefully handle a new DHCP lease
-      which results in a potentially new IP address, but sometimes hostnames
-      have resolution problems. In that case, an IP address usually works.
-  - `<model>-<serial_number>`
-    - If using the `USB` connection type for a VISA connection, address must be
-      specified in the format `<model>-<serial_number>` so that the proper VISA
-      resource expression can be created.
-  - `<serial_port>`
-    - The COM port to use, usually a number. For example, an usb-to-serial
-      adapter connected to the USB port number 1 would show up as "COM1", so
-      `address='1'`.
-  - `<gpib_address>`
-    - The GPIB address, a number in the range 0 to 30.
+    - `<ip_address_or_hostname>`
+        - Either the full IP address or system hostname is required to initialize
+            the connection to the device.
+        - Hostname is preferable, since it will gracefully handle a new DHCP lease
+            which results in a potentially new IP address, but sometimes hostnames
+            have resolution problems. In that case, an IP address usually works.
+    - `<model>-<serial_number>`
+        - If using the `USB` connection type for a VISA connection, address must be
+            specified in the format `<model>-<serial_number>` so that the proper VISA
+            resource expression can be created.
+    - `<serial_port>`
+        - The COM port to use, usually a number. For example, an usb-to-serial
+            adapter connected to the USB port number 1 would show up as "COM1", so
+            `address='1'`.
+    - `<gpib_address>`
+        - The GPIB address, a number in the range 0 to 30.
 - `alias`
-  - An optional field for a case-insensitive string that can be used as a key to
-    select the device in the Device Manager instead of the device type and
-    number. Without an alias, the device can still be accessed through a key
-    generated from `<device_type>` string and the number of devices of the same
-    type that were defined before it. For example: If there are two SCOPEs in
-    the device list, one should be `SCOPE 1` and the other should be `SCOPE 2`.
-  - Underscores and dashes are allowed, but other special characters are not
-    allowed. Any alias provided will be converted into all capital letters for
-    use later.
+    - An optional field for a case-insensitive string that can be used as a key to
+        select the device in the Device Manager instead of the device type and
+        number. Without an alias, the device can still be accessed through a key
+        generated from `<device_type>` string and the number of devices of the same
+        type that were defined before it. For example: If there are two SCOPEs in
+        the device list, one should be `SCOPE 1` and the other should be `SCOPE 2`.
+    - Underscores and dashes are allowed, but other special characters are not
+        allowed. Any alias provided will be converted into all capital letters for
+        use later.
 - `lan_port`
-  - The open port, a number in the range 0 to 65535.
-  - Required when the `<connection_type>` is `SOCKET`.
-  - Optional when `<connection_type>` is `REST_API`
+    - The open port, a number in the range 0 to 65535.
+    - Required when the `<connection_type>` is `SOCKET`.
+    - Optional when `<connection_type>` is `REST_API`
 - `serial_config`
-  - Configuration data for `SERIAL` connection type, which VISA documentation
-    commonly refers to as ASRL.
-  - **Both sides must be using the same settings, otherwise data looks like
-    gibberish.**
-    - `baud_rate:` The baud rate controls the communication frequency:.
-      - Common rates: \[115200, 57600, 38400, 19200, 9600, 4800, 2400, 1200,
-        600, 300\].
-      - Different products may support ranges outside the commonly used rates
-        listed here.
-    - `data_bits:` The number of data bits in each character.
-      - One of \[5, 6, 7, 8\].
-    - `flow_control:` Control for pausing/resuming data stream between slower
-      devices.
-      - Valid options: `none`, `xon_xoff`, `dtr_dsr`, or `rts_cts`
-    - `parity:` Parity controls checksum bit (added to each data character)
-      behavior.
-      - Valid options: `none`, `odd` ,`even`, `mark`, or `space`.
-    - `stop_bits:` Number of bits to use to indicate end of a character.
-      - Valid options: `one`, `one_and_a_half`, or `two`.
-    - `end_input:` Character(s) to indicate the end of a message transmission.
-      - Valid options: `termination_break`, `termination_char`, `last_bit`, or
-        `none`.
+    - Configuration data for `SERIAL` connection type, which VISA documentation
+        commonly refers to as ASRL.
+    - **Both sides must be using the same settings, otherwise data looks like
+        gibberish.**
+        - `baud_rate:` The baud rate controls the communication frequency:.
+            - Common rates: \[115200, 57600, 38400, 19200, 9600, 4800, 2400, 1200,
+                600, 300\].
+            - Different products may support ranges outside the commonly used rates
+                listed here.
+        - `data_bits:` The number of data bits in each character.
+            - One of \[5, 6, 7, 8\].
+        - `flow_control:` Control for pausing/resuming data stream between slower
+            devices.
+            - Valid options: `none`, `xon_xoff`, `dtr_dsr`, or `rts_cts`
+        - `parity:` Parity controls checksum bit (added to each data character)
+            behavior.
+            - Valid options: `none`, `odd` ,`even`, `mark`, or `space`.
+        - `stop_bits:` Number of bits to use to indicate end of a character.
+            - Valid options: `one`, `one_and_a_half`, or `two`.
+        - `end_input:` Character(s) to indicate the end of a message transmission.
+            - Valid options: `termination_break`, `termination_char`, `last_bit`, or
+                `none`.
 - `device_driver`
-  - The name of the Python driver class to use for the device (see the
-    {py:obj}`tm_devices.drivers` API reference for a complete list of all driver
-    names).
-  - Required when `<connection_type>` is `REST_API`
-  - Ignored when `<connection_type>` is not `REST_API`
+    - The name of the Python driver class to use for the device (see the
+        [`tm_devices.drivers`][] API reference for a complete list of all driver
+        names).
+    - Required when `<connection_type>` is `REST_API`
+    - Ignored when `<connection_type>` is not `REST_API`
 
 ### Config Options
 
@@ -223,26 +222,26 @@ These are all `false` by default if not defined, set to `true` to modify the
 runtime behavior configuration.
 
 - `verbose_mode`
-  - This config option will turn on more printouts to stdout.
+    - This config option will turn on more printouts to stdout.
 - `verbose_visa`
-  - This config option will turn on extremely verbose VISA logging to stdout.
+    - This config option will turn on extremely verbose VISA logging to stdout.
 - `standalone`
-  - This config option specifies to use the PyVISA-py VISA backend, which
-    doesn't require any actual visa.dll to exist on the system to work.
-  - By default, the Device Manager will default to using whatever visa.dll it
-    can find on the system.
+    - This config option specifies to use the PyVISA-py VISA backend, which
+        does not require any actual visa.dll to exist on the system to work.
+    - By default, the Device Manager will default to using whatever visa.dll it
+        can find on the system.
 - `setup_cleanup`
-  - This config option will make the Device Manager run a cleanup on setup, so
-    devices will get reset on connection.
+    - This config option will make the Device Manager run a cleanup on setup, so
+        devices will get reset on connection.
 - `teardown_cleanup`
-  - This config option will make the Device Manager run a cleanup on teardown,
-    so devices will get reset on close.
+    - This config option will make the Device Manager run a cleanup on teardown,
+        so devices will get reset on close.
 - `retry_visa_connection`
-  - This config option will enable a second attempt when creating VISA connections,
-    the second attempt is made after waiting, to allow the device time to become available.
+    - This config option will enable a second attempt when creating VISA connections,
+        the second attempt is made after waiting, to allow the device time to become available.
 - `check_for_updates`
-  - This config option will enable a check for any available updates on pypi.org for the
-    package when the `DeviceManager` is instantiated.
+    - This config option will enable a check for any available updates on pypi.org for the
+        package when the `DeviceManager` is instantiated.
 
 ### Sample Config File
 
@@ -366,7 +365,7 @@ retry_visa_connection = false
 check_for_updates = false
 ```
 
-______________________________________________________________________
+---
 
 ## Environment Variable
 
@@ -374,10 +373,9 @@ Two environment variables, `TM_OPTIONS` and `TM_DEVICES`, can be used for
 runtime configurations and have a **HIGHER** priority than the config file.
 
 - `TM_OPTIONS` is a comma-delimited, all-uppercase list of enabled options
-  names.
+    names.
 - `TM_DEVICES` is a `~~~`-delimited list of device entries.
-  - Each device entry is a comma-delimited list of "\<key>=\<value>" string
-    pairs.
+    - Each device entry is a comma-delimited list of `<key>=<value>` pairs.
 
 The main benefit of the environment variables over a config file is for
 convenience in load-balanced or dynamic setups. For instance, in headless
@@ -395,7 +393,7 @@ will override any existing config file you have.
 Sample environment variable device configurations (with comments, not allowed in
 environment variable)
 
-```
+```python
 # Sample SMU using IP address and PyVISA-py
 TM_OPTIONS = "STANDALONE"
 TM_DEVICES = "address=123.45.67.255,device_type=SMU"

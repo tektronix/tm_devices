@@ -18,7 +18,7 @@ from pyvisa import constants as visa_constants
 from pyvisa import VisaIOError
 
 from tm_devices.drivers.device import Device
-from tm_devices.drivers.pi._ieee488_2_commands import IEEE4882Commands
+from tm_devices.drivers.pi.ieee488_2_commands import IEEE4882Commands
 from tm_devices.helpers import (
     check_visa_connection,
     create_visa_connection,
@@ -267,7 +267,7 @@ class PIDevice(Device, ABC):
     def check_visa_connection(self, verbose: bool = True) -> bool:
         """Check if a VISA connection can be made to the device.
 
-        Wrapper function for :py:func:`~tm_devices.helpers.check_visa_connection`.
+        Wrapper function for [`check_visa_connection`][tm_devices.helpers.check_visa_connection].
 
         Args:
             verbose: Set this to False in order to disable printouts.

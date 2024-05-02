@@ -1,9 +1,16 @@
-# Troubleshooting `tm_devices` Usage
+# Troubleshooting Usage
 
 This goes over common issues which can occur when using `tm_devices` and how to
 avoid them.
 
-______________________________________________________________________
+{%
+include-markdown "includes/add_new_troubleshooting_section.md"
+comments=false
+rewrite-relative-urls=false
+
+%}
+
+---
 
 ## Issues connecting to devices that are simulated using PyVISA-sim
 

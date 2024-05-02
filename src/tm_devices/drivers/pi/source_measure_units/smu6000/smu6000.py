@@ -8,7 +8,7 @@ from abc import ABC
 from typing import Optional, Tuple, TYPE_CHECKING, Union
 
 from tm_devices.drivers.device import family_base_class
-from tm_devices.drivers.pi._ieee488_2_commands import IEEE4882Commands
+from tm_devices.drivers.pi.ieee488_2_commands import IEEE4882Commands
 from tm_devices.drivers.pi.pi_device import PIDevice
 from tm_devices.drivers.pi.signal_sources.signal_source import SignalSource
 from tm_devices.drivers.pi.source_measure_units.source_measure_unit import SourceMeasureUnit

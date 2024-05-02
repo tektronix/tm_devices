@@ -1,4 +1,4 @@
-"""Components used in the tm_devices package."""
+"""Components used in the `tm_devices` package."""
 
 from tm_devices.components.dm_config_parser import DMConfigParser
 

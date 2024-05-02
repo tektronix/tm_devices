@@ -1,0 +1,138 @@
+.custom-table-center-cells td, .custom-table-center-cells th {
+    text-align: center;
+    white-space: nowrap !important;
+}
+
+.rst-content table.device-support-table.docutils thead {
+    vertical-align: middle;
+
+    .line-block {
+        margin-bottom: 0;
+    }
+}
+
+.device-support-table thead, .device-support-table tbody {
+    border: 2px solid black
+}
+
+.device-support-table table {
+    width: auto !important;
+    display: table !important;
+    margin: auto !important;
+}
+
+.device-support-table.docutils tbody tr:has(th p),
+.device-support-table tr:has(td:first-child:not(:empty)) {
+    border-top-width: 2px;
+    border-top-color: black;
+    border-top-style: solid;
+}
+
+.device-support-table tbody td[rowspan] {
+    background-color: transparent !important;
+}
+
+.device-support-table table td:first-child,
+.device-support-table table th:first-child {
+    font-weight: bolder;
+    background-color: transparent !important;
+}
+
+/** Styling for custom table titles */
+.custom-table-title p {
+    text-align: center;
+    font-size: 0.9em;
+    margin-bottom: 0;
+}
+
+/* Custom style for links located in top-right */
+.wy-nav-content {
+    position: relative;
+}
+
+.top-right-link {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 1%;
+}
+
+/** No icon for admonitions with no-icon class */
+div.admonition.no-icon > .admonition-title::before {
+    content: "";
+}
+
+div.admonition.no-icon > .admonition-title {
+    padding-left: .6rem;
+}
+
+/** Modify the custom badge table */
+.custom-badge-table tbody td, .custom-badge-table tbody th, .custom-badge-table tbody td > p {
+    white-space: inherit;
+    line-height: 1.5rem !important;
+}
+
+.custom-badge-table thead {
+    display: none;
+}
+
+.custom-badge-table table td:first-child,
+.custom-badge-table table th:first-child {
+    text-align: center;
+    background-color: transparent !important;
+}
+
+/** Fix admonition symbols */
+div.hint.admonition > .admonition-title::before {
+    content: "\f0eb";
+}
+
+div.note.admonition > .admonition-title::before {
+    content: "\f05a";
+}
+
+/* Custom cursor for help with abbreviations */
+/* Could add the .mkdocs-ezglossary-link class if those links should get a help icon */
+abbr[title], .mkdocs-ezglossary-link {
+    cursor: help;
+}
+
+/* Fix code color in admonitions */
+.rst-content .admonition code {
+    color: #E74C3C !important;
+}
+
+/* Indentation for mkdocstrings. */
+div.doc-contents:not(.first) {
+    padding-left: 25px;
+    border-left: .05rem solid rgba(200, 200, 200, 0.2);
+}
+
+/* Make the documentation object names look nicer */
+span.doc-object-name {
+    font-size: 110%;
+    font-family: monospace;
+}
+
+/* Make subpackage summary links always black and larger */
+.subpackage-summary-link-text {
+    color: black !important;
+    font-size: 90% !important;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+/* Customize link color */
+a.autorefs, a.autorefs code {
+    color: dodgerblue !important;
+}
+
+a.autorefs:hover, a.autorefs:hover code {
+    color: #d600d6 !important;
+}
+
+/* Hide all ToC entries for auto-generated command parts. */
+li:has(> a[href^="gen_"]),
+li:has(> a[href*="/gen_"]) {
+    display: none;
+}

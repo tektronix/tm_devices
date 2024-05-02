@@ -95,13 +95,14 @@ jobs:
             .results_*/**
             .coverage*
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v4.3.0
         if: ${{ github.repository == env.REPO_NAME && !cancelled() }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./.coverage_tests.xml
           name: codecov-${{ matrix.os_name }}
           fail_ci_if_error: true
+          verbose: true
   create-job-summary:
     name: Test Results
     if: ${{ !cancelled() }}

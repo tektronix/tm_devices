@@ -2,25 +2,27 @@
 
 An overview of this package's architecture.
 
-______________________________________________________________________
+---
 
 ## The Device Manager
 
-The `DeviceManager` class is the backbone of this package. It is what
+The [`DeviceManager`][tm_devices.DeviceManager] class is the backbone of this package. It is what
 facilitates connections to different devices and is responsible for correctly
-selecting the driver for the device being connected to. The `DeviceManager`
+selecting the driver for the device being connected to. The
+[`DeviceManager`][tm_devices.DeviceManager]
 keeps a mapping of all devices in use and provides access to the driver for each
 active device. The device driver is what is responsible for communication with
 the physical device and also contains useful attributes, which contain
 information about the device, and methods, which provide various functionality.
 
-The `DeviceManager` uses a configuration parser (`DMConfigParser`) to read in
+The [`DeviceManager`][tm_devices.DeviceManager] uses a configuration parser
+([`DMConfigParser`][tm_devices.components.DMConfigParser]) to read in
 connection information from an optional config file as well as to store
 connection information that is provided directly via python code.
 
 ### Block Diagram
 
-```{mermaid}
+```mermaid
 classDiagram
     direction LR
 
@@ -28,7 +30,7 @@ classDiagram
     DeviceManager --> "1" DMConfigParser : uses
 ```
 
-______________________________________________________________________
+---
 
 ## Main device types
 
@@ -51,16 +53,9 @@ between different models of the same device type.
 
 ### Block Diagram
 
-```{autoclasstree} tm_devices.drivers.device_type_classes
----
-full:
-namespace: tm_devices.drivers
-align: center
-alt: Main device types class diagram
----
-```
+{{ auto_class_diagram('tm_devices.drivers.device_type_classes', full=True, namespace='tm_devices.drivers') }}
 
-______________________________________________________________________
+---
 
 ## All device drivers
 
@@ -68,11 +63,4 @@ This package supports many devices, zoom in to see them all!
 
 ### Block Diagram
 
-```{autoclasstree} tm_devices.drivers
----
-full:
-namespace: tm_devices.drivers
-align: center
-alt: Complete device driver class diagram
----
-```
+{{ auto_class_diagram('tm_devices.drivers', full=True, namespace='tm_devices.drivers') }}

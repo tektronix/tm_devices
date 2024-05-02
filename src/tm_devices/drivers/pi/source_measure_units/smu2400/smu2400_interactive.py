@@ -10,7 +10,7 @@ from tm_devices.commands import (
     SMU2470Commands,
 )
 from tm_devices.drivers.device import family_base_class
-from tm_devices.drivers.pi._ieee488_2_commands import LegacyTSPIEEE4882Commands
+from tm_devices.drivers.pi.ieee488_2_commands import LegacyTSPIEEE4882Commands
 from tm_devices.drivers.pi.source_measure_units.source_measure_unit import SourceMeasureUnit
 
 # noinspection PyPep8Naming

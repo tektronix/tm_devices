@@ -231,7 +231,7 @@ class Device(ExtendableMixin, ABC):
 
     @property
     def device_number(self) -> int:
-        """Return the device number, if Device not created through DeviceManager will be -1."""
+        """Return the device number, if it was not created by the DeviceManager it will be -1."""
         return self._device_number
 
     @property
@@ -368,7 +368,8 @@ class Device(ExtendableMixin, ABC):
     def check_network_connection(self, verbose: bool = True) -> Tuple[bool, str]:
         """Check the network connection to the device using an external ping command.
 
-        Wrapper function for :py:func:`~tm_devices.helpers.check_network_connection`.
+        Wrapper function for
+        [`check_network_connection`][tm_devices.helpers.check_network_connection].
 
         Args:
             verbose: Set this to False in order to disable printouts.
@@ -387,7 +388,7 @@ class Device(ExtendableMixin, ABC):
     ) -> bool:
         """Check if the given port is open on the device.
 
-        Wrapper function for :py:func:`~tm_devices.helpers.check_port_connection`.
+        Wrapper function for [`check_port_connection`][tm_devices.helpers.check_port_connection].
 
         Args:
             port: The port to check.
@@ -513,15 +514,15 @@ class Device(ExtendableMixin, ABC):
         """Compare and verify actual value with expected value.
 
         Args:
-             expected_value: The expected value.
-             actual_value: The actual value.
-             tolerance: The acceptable difference between two floating point values, e.g. 0.0005
-             percentage: A boolean indicating what kind of tolerance check to perform.
-                 False means absolute tolerance: +/- tolerance.
-                 True means percent tolerance: +/- (tolerance / 100) * value.
-             custom_message_prefix: A custom message to be prepended to the failure message.
-             log_error: Indicate if an error should be logged instead of a failure
-             expect_fail: Indicate if a failure is expected and should be treated as a pass
+            expected_value: The expected value.
+            actual_value: The actual value.
+            tolerance: The acceptable difference between two floating point values, e.g. 0.0005
+            percentage: A boolean indicating what kind of tolerance check to perform.
+                False means absolute tolerance: +/- tolerance.
+                True means percent tolerance: +/- (tolerance / 100) * value.
+            custom_message_prefix: A custom message to be prepended to the failure message.
+            log_error: Indicate if an error should be logged instead of a failure
+            expect_fail: Indicate if a failure is expected and should be treated as a pass
 
         Returns:
             Boolean indicating whether the check passed or failed.

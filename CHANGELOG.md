@@ -12,13 +12,24 @@ Valid subsections within a version are:
 - Fixed
 - Security
 
-______________________________________________________________________
+---
 
 ## Unreleased
 
 Things to be included in the next release go here.
 
-______________________________________________________________________
+### Changed
+
+- Switched from using `sphinx` to `mkdocs` for building the documentation. This enables building the
+    documentation in under 10 minutes while using less than 6 GB of RAM and saving almost 2 GB of
+    disk space. Fixes [#77](https://github.com/tektronix/tm_devices/issues/77).
+
+### Fixed
+
+- Fixed the Readme to display as intended in GitHub and PyPI while maintaining all functionality in
+    the generated documentation site.
+
+---
 
 ## v1.3.0 (2024-04-04)
 
@@ -30,7 +41,7 @@ ______________________________________________________________________
 
 - Updated get_acquisition_data example to select source for the measurement.
 
-______________________________________________________________________
+---
 
 ## v1.2.3 (2024-04-03)
 
@@ -42,7 +53,7 @@ ______________________________________________________________________
 
 - Updated the workflow that creates SBOMs to be able to upload the SBOM as an artifact to a GitHub release.
 
-______________________________________________________________________
+---
 
 ## v1.2.2 (2024-04-03)
 
@@ -85,7 +96,7 @@ ______________________________________________________________________
 
 - Updated the measurement source selection command for the MDO3K, MDO4K, MSO4K and DPO4K models to work properly.
 
-______________________________________________________________________
+---
 
 ## v1.2.1 (2024-02-27)
 
@@ -107,7 +118,7 @@ ______________________________________________________________________
 
 - Updated import statements for the `ReadOnlyCachedProperty` decorator to allow PyCharm auto-complete to work properly.
 
-______________________________________________________________________
+---
 
 ## v1.2.0 (2024-02-09)
 
@@ -150,7 +161,7 @@ ______________________________________________________________________
 - Fixed PI device close method to catch VisaIOErrors and throw a warning, rather than an exception, when closing a PI device connection.
 - Fixed APIs with query attributes missing under MSO4, MSO5, MSO6 and MSO2 model drivers.
 
-______________________________________________________________________
+---
 
 ## v1.1.0 (2023-12-07)
 
@@ -166,7 +177,7 @@ ______________________________________________________________________
 
 - Added support for MSO4B device.
 
-______________________________________________________________________
+---
 
 ## v1.0.1 (2023-12-01)
 
@@ -188,7 +199,7 @@ ______________________________________________________________________
 
 - Fixed a crash observed on macOS when importing `tm_devices`, issue [#108](https://github.com/tektronix/tm_devices/issues/108)
 
-______________________________________________________________________
+---
 
 ## v1.0.0 (2023-11-13)
 
@@ -224,7 +235,7 @@ ______________________________________________________________________
 
 - Removed some outdated and broken API files
 
-______________________________________________________________________
+---
 
 ## v0.1.24 (2023-10-30)
 
@@ -236,7 +247,7 @@ ______________________________________________________________________
 
 - Fixed the `tippy.js` pop-ups in the documentation
 
-______________________________________________________________________
+---
 
 ## v0.1.23 (2023-10-30)
 
@@ -256,7 +267,7 @@ ______________________________________________________________________
 - Updated the auto-generated commands for a handful of models to fix various issues
 - Updated the function responsible for converting version strings into `Version` objects to be able to handle software versions with non-standard formats.
 
-______________________________________________________________________
+---
 
 ## v0.1.22 (2023-10-24)
 
@@ -268,7 +279,7 @@ ______________________________________________________________________
 
 - Fixed the package release workflow to use a version of the `python-semantic-release` GitHub action that doesn't have any bugs
 
-______________________________________________________________________
+---
 
 ## v0.1.21 (2023-10-24)
 
@@ -280,7 +291,7 @@ ______________________________________________________________________
 
 - Fixed the GitHub Release template generation
 
-______________________________________________________________________
+---
 
 ## v0.1.20 (2023-10-24)
 
@@ -292,7 +303,7 @@ ______________________________________________________________________
 
 - Added a template for rendering custom Release Notes for GitHub Releases
 
-______________________________________________________________________
+---
 
 ## v0.1.19 (2023-10-24)
 
@@ -312,7 +323,7 @@ ______________________________________________________________________
 
 - The default behavior of the `DeviceManager` is changed to **not** check for updates
 
-______________________________________________________________________
+---
 
 ## v0.1.18 (2023-10-23)
 
@@ -326,7 +337,7 @@ ______________________________________________________________________
 - Updated permissions for the release workflow to allow it to upload the distribution files to the GitHub Release
 - Updated the README to include the correct link to the badge displaying the total number of package downloads
 
-______________________________________________________________________
+---
 
 ## v0.1.17 (2023-10-20)
 
@@ -339,7 +350,7 @@ ______________________________________________________________________
 - Updated links in the README to properly redirect to GitHub when accessed from PyPI
 - Updated the release workflow to be able to upload artifacts to the GitHub Release page
 
-______________________________________________________________________
+---
 
 ## v0.1.16 (2023-10-20)
 
@@ -351,7 +362,7 @@ ______________________________________________________________________
 
 - Updated the release workflow to properly build the latest version after `python-semantic-release` updates the main branch
 
-______________________________________________________________________
+---
 
 ## v0.1.15 (2023-10-20)
 
@@ -379,7 +390,7 @@ ______________________________________________________________________
 
 - A command-line script to list all available VISA resources, `list-visa-resources`
 
-______________________________________________________________________
+---
 
 ## v0.1.14 (2023-10-05)
 
@@ -387,7 +398,7 @@ ______________________________________________________________________
 
 - Added support for Python 3.12.
 
-______________________________________________________________________
+---
 
 ## v0.1.13 (2023-09-21)
 
@@ -395,7 +406,7 @@ ______________________________________________________________________
 
 - Fixed bug when generating a waveform using Burst Mode on an AFG.
 
-______________________________________________________________________
+---
 
 ## v0.1.12 (2023-09-06)
 
@@ -403,7 +414,7 @@ ______________________________________________________________________
 
 - Support for DPOJET to TekScope5k7k70k models.
 
-______________________________________________________________________
+---
 
 ## v0.1.11 (2023-08-29)
 
@@ -411,7 +422,7 @@ ______________________________________________________________________
 
 - Cache `*OPT?` on first access.
 
-______________________________________________________________________
+---
 
 ## v0.1.10 (2023-08-29)
 
@@ -419,7 +430,7 @@ ______________________________________________________________________
 
 - Support for AWG7KB
 
-______________________________________________________________________
+---
 
 ## v0.1.9 (2023-08-24)
 
@@ -427,7 +438,7 @@ ______________________________________________________________________
 
 - Support for `num_dig_bits_in_ch` and `total_channels` properties to TekScope5k7k70k.
 
-______________________________________________________________________
+---
 
 ## v0.1.8 (2023-08-09)
 
@@ -439,7 +450,7 @@ ______________________________________________________________________
 
 - Changed waveform generation to enforce CustomStrEnum function type.
 
-______________________________________________________________________
+---
 
 ## v0.1.7 (2023-08-02)
 
@@ -452,7 +463,7 @@ ______________________________________________________________________
 - Updated auto-generated API documentation to not show all inherited attributes and methods in order to speed up documentation build time.
 - `SourceDeviceConstants.function_list` was changed to be `SourceDeviceConstants.functions`, which is now an Enumeration of valid functions.
 
-______________________________________________________________________
+---
 
 ## v0.1.6 (2023-07-25)
 
@@ -460,7 +471,7 @@ ______________________________________________________________________
 
 - Fixed bug with not allowing empty license lists.
 
-______________________________________________________________________
+---
 
 ## v0.1.5 (2023-07-25)
 
@@ -468,7 +479,7 @@ ______________________________________________________________________
 
 - Updated syntax for AFG polarities.
 
-______________________________________________________________________
+---
 
 ## v0.1.4 (2023-07-21)
 
@@ -487,7 +498,7 @@ ______________________________________________________________________
 
 - `all_channel_numbers_list` property since MSO2 breaks convention so can no longer rely on sequential channel numbering.
 
-______________________________________________________________________
+---
 
 ## v0.1.3 (2023-07-03)
 
@@ -496,7 +507,7 @@ ______________________________________________________________________
 - Removed TRIANGLE from AFG function list.
 - Added symmetry to waveform generation function call.
 
-______________________________________________________________________
+---
 
 ## v0.1.2 (2023-06-27)
 
@@ -505,7 +516,7 @@ ______________________________________________________________________
 - Updated the add_new dynamic item methods to work with numbers higher than 9.
 - Fixed malformed command syntax due to a bug in determining the preceding separator character.
 
-______________________________________________________________________
+---
 
 ## v0.1.1 (2023-06-20)
 
@@ -513,7 +524,7 @@ ______________________________________________________________________
 
 - Added support for .dev versions.
 
-______________________________________________________________________
+---
 
 ## v0.1.0 (2022-08-08)
 

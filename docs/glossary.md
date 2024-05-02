@@ -1,8 +1,16 @@
 # Glossary
 
-A collection of terms used throughout the documentation and their definitions.
+A collection of terms and symbols used throughout the documentation and their definitions.
 
-{.glossary}
+🚧
+: Work in Progress
+
+✅
+: Implemented
+
+❌
+: Not Supported
+
 AFG
 : Arbitrary Function Generator
 
@@ -20,6 +28,9 @@ DMM
 
 DPOJET
 :  A jitter, noise, timing, and eye diagram analysis tool for Tektronix Performance Digital Oscilloscopes
+
+IDE
+: Integrated Development Environment
 
 LP
 : Low Profile
