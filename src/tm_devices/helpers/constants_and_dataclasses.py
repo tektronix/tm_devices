@@ -85,33 +85,33 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
     """A convenience enumeration listing the options for control flow for a serial device.
 
     It is used to set the
-    [flow_control][tm_devices.helpers.constants_and_dataclasses.SerialConfig.flow_control]
+    [`flow_control`][tm_devices.helpers.constants_and_dataclasses.SerialConfig.flow_control]
     attribute when creating a
-    [SerialConfig][tm_devices.helpers.constants_and_dataclasses.SerialConfig] object.
+    [`SerialConfig`][tm_devices.helpers.constants_and_dataclasses.SerialConfig] object.
     """
     Parity = pyvisa_constants.Parity
     """A convenience enumeration listing the options for parity for a serial device.
 
     It is used to set the
-    [parity][tm_devices.helpers.constants_and_dataclasses.SerialConfig.parity]
+    [`parity`][tm_devices.helpers.constants_and_dataclasses.SerialConfig.parity]
     attribute when creating a
-    [SerialConfig][tm_devices.helpers.constants_and_dataclasses.SerialConfig] object.
+    [`SerialConfig`][tm_devices.helpers.constants_and_dataclasses.SerialConfig] object.
     """
     StopBits = pyvisa_constants.StopBits
     """A convenience enumeration listing the options for stop bits for a serial device.
 
     It is used to set the
-    [stop_bits][tm_devices.helpers.constants_and_dataclasses.SerialConfig.stop_bits]
+    [`stop_bits`][tm_devices.helpers.constants_and_dataclasses.SerialConfig.stop_bits]
     attribute when creating a
-    [SerialConfig][tm_devices.helpers.constants_and_dataclasses.SerialConfig] object.
+    [`SerialConfig`][tm_devices.helpers.constants_and_dataclasses.SerialConfig] object.
     """
     Termination = pyvisa_constants.SerialTermination
     """A convenience enumeration listing the available methods for terminating a serial transfer.
 
     It is used to set the
-    [end_input][tm_devices.helpers.constants_and_dataclasses.SerialConfig.end_input]
+    [`end_input`][tm_devices.helpers.constants_and_dataclasses.SerialConfig.end_input]
     attribute when creating a
-    [SerialConfig][tm_devices.helpers.constants_and_dataclasses.SerialConfig] object.
+    [`SerialConfig`][tm_devices.helpers.constants_and_dataclasses.SerialConfig] object.
     """
     baud_rate: Optional[int] = None
     """The baud rate controls the communication frequency."""
