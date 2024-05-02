@@ -68,6 +68,7 @@ plugins:
   - include-markdown
   - mermaid2
   - section-index
+  - autorefs
   - macros:
       module_name: docs/macros
       on_error_fail: true

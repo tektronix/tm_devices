@@ -51,19 +51,33 @@ class _DataclassProtocol(Protocol):
 class DMConfigParser:
     """Class to parse a configuration file for device connections and runtime options."""
 
-    # This is the environment variable that we check for a user-provided,
-    # comma-delimited list of device parameters, multiple devices are delimited with "~~~".
     DEVICES_ENV_VARIABLE = "TM_DEVICES"
-    # comma-delimited list of options.
+    """The name of the environment variable which can contain a list of device configurations.
+
+    Multiple devices are separated by "~~~", each device contains a comma-separated list of device
+    parameters to use when connecting to the device. See the [configuration
+    documentation][environment-variable] for the device configuration environment variable syntax.
+    """
     OPTIONS_ENV_VARIABLE = "TM_OPTIONS"
-    # This is the environment variable that we check for a user-provided path to a custom config
-    # file that, if present, should contain a list of devices and hostnames/IP addresses.
+    """The name of the environment variable which can contain a comma-separated list of options.
+
+    See the [configuration documentation][environment-variable] for the options environment variable
+    syntax.
+    """
     CONFIG_FILE_PATH_ENV_VARIABLE = "TM_DEVICES_CONFIG"
-    # The default location for a config file that, if present, should contain a list of devices and
-    # hostnames/IP addresses.
+    """The name of the environment variable to check for a custom config file path.
+
+    This environment variable is checked to see if there is a user-provided path to a custom config
+    file that contains a list of devices and hostnames/IP addresses.
+    """
     DEFAULT_CONFIG_FILE_PATH = "./tm_devices.yaml"
-    # Easy access to the enum class
+    """The default location for the config file.
+
+    If present, the file should contain a list of devices and hostnames/IP addresses. See the
+    [configuration documentation][config-file] for the config file syntax.
+    """
     FileType = ConfigFileType
+    """A convenience enumeration listing the valid config file types."""
 
     _CONFIG_NESTED_DICT_MAPPING: Mapping[
         Union[Type[_DataclassProtocol], Type[SerialConfig]], str
@@ -107,8 +121,10 @@ class DMConfigParser:
     def defined_config_file_path(self) -> str:
         """Filepath of the config file.
 
-        Prioritizes path defined from env variable ```self.CONFIG_FILE_PATH_ENV_VARIABLE``` with a
-        fallback to the default path (`tm_devices.yaml` in runtime cwd directory).
+        Prioritizes the path defined in the environment variable
+        [`self.CONFIG_FILE_PATH_ENV_VARIABLE`][tm_devices.components.DMConfigParser.CONFIG_FILE_PATH_ENV_VARIABLE]
+        with a fallback to the default path defined by
+        [`self.DEFAULT_CONFIG_FILE_PATH`][tm_devices.components.DMConfigParser.DEFAULT_CONFIG_FILE_PATH].
         """
         return os.getenv(
             self.CONFIG_FILE_PATH_ENV_VARIABLE,
@@ -277,11 +293,11 @@ class DMConfigParser:
     def write_config_to_file(
         self, config_file_path: Optional[Union[str, os.PathLike[str]]] = None
     ) -> str:
-        """Write a config file located at the current working directory (or custom path).
+        """Write the current configuration to a config file.
 
-        This method will overwrite any existing config file with the current devices and options.
-        If no custom path is provided, and the ``TM_DEVICES_CONFIG`` environment variable is not set
-        defaults to a yaml file in the current working directory.
+        This method will overwrite any existing config file with the current devices and options. If
+        no custom path is provided, it will write to the file defined by
+        [`self.defined_config_file_path`][tm_devices.components.DMConfigParser.defined_config_file_path].
 
         Args:
             config_file_path: The path to the config file. If ends in ".toml" will create toml file.

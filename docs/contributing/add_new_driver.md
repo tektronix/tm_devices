@@ -24,8 +24,7 @@ This guide will walk through the steps needed to add a new device driver.
         below.
 
         !!! note
-
-        For documentation to render for the new driver properly, an `__init__()` method must be defined.
+            For documentation to render for the new driver properly, an `__init__()` method must be defined.
 
 3. Add or update **all** `__init__.py` files within the device type subpackage
     (e.g. `scopes/`, `power_supplies/`) to contain all driver classes and
@@ -71,9 +70,8 @@ A device series driver parent should inherit the abstracted type base class and
 defines abstract functions that all device drivers must implement.
 
 !!! note
-
-The filename should be a snake-case version of the new class name. In this example
-the filepath would be `tm_devices/drivers/pi/power_supplies/psu2200/new_psu.py`
+    The filename should be a snake-case version of the new class name. In this example
+    the filepath would be `tm_devices/drivers/pi/power_supplies/psu2200/new_psu.py`
 
 ```python
 ### drivers/pi/power_supplies/new_series_psu/fancy_power_supply.py
@@ -114,9 +112,8 @@ To add a new device driver within the `PowerSupply` device type and `PSU2200`
 series:
 
 !!! note
-
-The filename should be a snake-case version of the new class name. In this example
-the filepath would be `tm_devices/drivers/pi/power_supplies/psu2200/new_psu.py`
+    The filename should be a snake-case version of the new class name. In this example
+    the filepath would be `tm_devices/drivers/pi/power_supplies/psu2200/new_psu.py`
 
 ```python
 """NewPSU device driver."""

@@ -28,7 +28,7 @@ There is a session-scoped
 [pytest fixture](https://docs.pytest.org/en/latest/explanation/fixtures.html),
 `device_manager`, that provides access to simulated VISA devices throughout the entire test run.
 This fixture is defined in the {{ create_repo_link('tests/conftest.py', config.repo_url, 'tests/conftest.py') }} file and returns a
-[DeviceManager][tm_devices.DeviceManager] instance which can be used by any test that
+[`DeviceManager`][tm_devices.DeviceManager] instance which can be used by any test that
 needs to test device driver behavior.
 
 ### Simulated VISA devices
