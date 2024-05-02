@@ -2,10 +2,13 @@
 
 from typing import Tuple
 
+import pyvisa as visa
+
 from tm_devices.commands import DMM6500Mixin
 from tm_devices.drivers.device import family_base_class
-from tm_devices.drivers.pi._ieee488_2_commands import LegacyTSPIEEE4882Commands
 from tm_devices.drivers.pi.digital_multimeters.digital_multimeter import DigitalMultimeter
+from tm_devices.drivers.pi.ieee488_2_commands import LegacyTSPIEEE4882Commands
+from tm_devices.helpers import DeviceConfigEntry
 
 
 @family_base_class
@@ -17,6 +20,21 @@ class DMM6500(DMM6500Mixin, DigitalMultimeter):
     ################################################################################################
     # Magic Methods
     ################################################################################################
+    def __init__(
+        self,
+        config_entry: DeviceConfigEntry,
+        verbose: bool,
+        visa_resource: visa.resources.MessageBasedResource,
+    ) -> None:
+        """Create a DMM6500 device.
+
+        Args:
+            config_entry: A config entry object parsed by the DMConfigParser.
+            verbose: A boolean indicating if verbose output should be printed.
+            visa_resource: The VISA resource object.
+        """
+        # NOTE: This method must be defined for the documentation to properly generate
+        super().__init__(config_entry, verbose, visa_resource)
 
     ################################################################################################
     # Properties

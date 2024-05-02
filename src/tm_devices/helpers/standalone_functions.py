@@ -1,4 +1,4 @@
-"""Module containing helpers for the tm_devices package that only use standard lib imports."""
+"""Module containing helpers for the `tm_devices` package that only use standard library imports."""
 
 import ipaddress
 import re

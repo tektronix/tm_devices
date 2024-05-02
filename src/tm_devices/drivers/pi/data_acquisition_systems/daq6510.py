@@ -5,10 +5,10 @@ from typing import Tuple
 import pyvisa as visa
 
 from tm_devices.commands import DAQ6510Mixin
-from tm_devices.drivers.pi._ieee488_2_commands import LegacyTSPIEEE4882Commands
 from tm_devices.drivers.pi.data_acquisition_systems.data_acquisition_system import (
     DataAcquisitionSystem,
 )
+from tm_devices.drivers.pi.ieee488_2_commands import LegacyTSPIEEE4882Commands
 from tm_devices.helpers import DeviceConfigEntry
 
 # noinspection PyPep8Naming

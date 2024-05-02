@@ -11,13 +11,20 @@ ci:
     - pyright
     - pyright-verifytypes
     - pyroma
+    - poetry-audit
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
       - id: check-yaml
+        args: [--unsafe]
       - id: check-toml
       - id: check-json
+      - id: check-xml
+# TODO: figure out why this hook is failing in a few environments
+#      - id: file-contents-sorter
+#        files: ^(docs/known_words.txt)$
+#        args: [--unique, --ignore-case]
       - id: requirements-txt-fixer
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -25,7 +32,7 @@ repos:
       - id: check-merge-conflict
       - id: check-added-large-files
         args: [--maxkb=3000, --enforce-all]
-      - id: forbid-new-submodules
+      - id: forbid-submodules
       - id: pretty-format-json
         args: [--autofix, --indent=4]
   - repo: https://github.com/Lucas-C/pre-commit-hooks
@@ -41,7 +48,7 @@ repos:
       - id: check-github-actions
       - id: check-github-workflows
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.24.0
+    rev: v3.25.0
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -51,6 +58,7 @@ repos:
       - id: blacken-docs
         files: \.(rst|md|markdown|tex)$
         additional_dependencies: [black==23.12.1]  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
+        args: [--line-length=100]
   - repo: https://github.com/lyz-code/yamlfix
     rev: 1.16.0
     hooks:
@@ -59,31 +67,21 @@ repos:
     rev: 0.7.17
     hooks:
       - id: mdformat
-        args: [--number, --end-of-line, keep]
+        args: [--number, --end-of-line, keep, --ignore-missing-references]
         additional_dependencies:
           - setuptools  # This is required since Python 3.12 no longer installs setuptools by default in virtual environments
-          - mdformat-myst
-          - mdformat-toc
-          - mdformat-frontmatter
           - mdformat-beautysh
-          - mdformat-black
-          - black==23.12.1  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
           - mdformat-config
-          - mdformat-shfmt
-          - mdformat-web
-          - mdformat-gfm
           - mdformat-footnote
-# Currently rstcheck doesn't work with the templates
-#  - repo: https://github.com/rstcheck/rstcheck
-#    rev: v6.1.2
-#    hooks:
-#      - id: rstcheck
-#        additional_dependencies: [tomli, sphinx]
-# TODO: enable this, will require configuration
-#  - repo: https://github.com/jackdewinter/pymarkdown
-#    rev: v0.9.11
-#    hooks:
-#      - id: pymarkdown
+          - mdformat-frontmatter
+          - mdformat-gfm
+          - mdformat-mkdocs
+          - mdformat-shfmt
+          - mdformat-simple-breaks
+          - mdformat-tables
+          - mdformat-toc
+          - mdformat-web
+          - mdformat-wikilink
   - repo: https://gitlab.com/smop/pre-commit-hooks
     rev: v1.0.0
     hooks:
@@ -124,6 +122,14 @@ repos:
         pass_filenames: false
         always_run: true
         args: [., --min=10]
+      - id: poetry-audit
+        name: poetry-audit
+        entry: poetry
+        language: system
+        types: [toml]
+        pass_filenames: false
+        always_run: true
+        args: [audit, --json]
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.4.2
     hooks:

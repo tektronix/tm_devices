@@ -1,5 +1,6 @@
 poetry
 poetry-core
+poetry-plugin-export
 pre-commit
 pre-commit-update
 requests

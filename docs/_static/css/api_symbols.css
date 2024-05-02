@@ -1,0 +1,63 @@
+/* Hide the main header symbol */
+h1.doc-heading > code.doc-symbol {
+    display: none;
+}
+
+.doc-symbol-heading {
+    font-size: 60% !important;
+}
+
+/* Create nice documentation symbols */
+.doc-symbol-parameter::after {
+    content: "parameter";
+}
+
+.doc-symbol-parameter {
+    background-color: #df50af1a !important;
+    color: #df50af !important;
+}
+
+.doc-symbol-attribute::after {
+    content: "attribute";
+}
+
+.doc-symbol-attribute {
+    background-color: #0079ff1a !important;
+    color: #0079ff !important;
+}
+
+.doc-symbol-function::after {
+    content: "function";
+}
+
+.doc-symbol-function {
+    background-color: #00dfa21a !important;
+    color: #00dfa2 !important;
+}
+
+.doc-symbol-method::after {
+    content: "method";
+}
+
+.doc-symbol-method {
+    background-color: #00dfa21a !important;
+    color: #00dfa2 !important;
+}
+
+.doc-symbol-class::after {
+    content: "class";
+}
+
+.doc-symbol-class {
+    background-color: #d1b6191a !important;
+    color: #d1b619 !important;
+}
+
+.doc-symbol-module::after {
+    content: "module";
+}
+
+.doc-symbol-module {
+    background-color: #ff00601a !important;
+    color: #ff0060 !important;
+}

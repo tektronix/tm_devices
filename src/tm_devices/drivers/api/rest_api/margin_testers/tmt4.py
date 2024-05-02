@@ -3,7 +3,7 @@
 import time
 
 from types import MappingProxyType
-from typing import Any, cast, Dict, Optional, Tuple
+from typing import Any, cast, Dict, Mapping, Optional, Tuple
 
 from packaging.version import Version
 
@@ -17,8 +17,8 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 class TMT4(MarginTester):
     """TMT4 series device driver."""
 
-    API_VERSIONS = MappingProxyType({1: "/api"})
-    """Dict[int, str]: A mapping of supported API version numbers with the corresponding API URL."""
+    API_VERSIONS: Mapping[int, str] = MappingProxyType({1: "/api"})
+    """A mapping of supported API version numbers with the corresponding API URL."""
 
     ################################################################################################
     # Magic Methods
@@ -126,7 +126,7 @@ class TMT4(MarginTester):
             timeout: The timeout to wait for an unlocked device in seconds.
 
         Raises:
-            TimeoutError if device does not unlock within timeout.
+            TimeoutError: If the device does not unlock within the timeout.
         """
         start = time.time()
         while time.time() < start + timeout:

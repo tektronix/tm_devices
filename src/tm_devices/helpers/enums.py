@@ -1,4 +1,4 @@
-"""Module containing Enums for the tm_devices package."""
+"""Module containing Enums for the `tm_devices` package."""
 
 from enum import Enum
 from typing import cast, List
@@ -58,12 +58,9 @@ class DeviceTypes(CustomStrEnum):
     """Class holding the valid device types supported.
 
     Any additions to this class need to be added to
-    the :py:obj:`~tm_devices.helpers.constants_and_dataclasses.VALID_DEVICE_CONNECTION_TYPES`
+    the [`tm_devices.helpers.constants_and_dataclasses.VALID_DEVICE_CONNECTION_TYPES`][]
     constant as well.
     """
-
-    # NOTE: Any additions to this enum will require the corresponding Parent class be added to the
-    #       tests.test_tm_devices.test_device_method_abstraction unit test.
 
     AFG = "AFG"
     """An enum member representing an Arbitrary Function Generator."""
@@ -200,7 +197,7 @@ class SupportedModels(CustomStrEnum):
 
 
 class SupportedRequestTypes(CustomStrEnum):
-    """All request types supported by a RESTAPIDevice."""
+    """All request types supported by a [RESTAPIDevice][tm_devices.drivers.api.rest_api.rest_api_device.RESTAPIDevice]."""  # noqa: E501
 
     GET = "GET"
     POST = "POST"
@@ -210,7 +207,7 @@ class SupportedRequestTypes(CustomStrEnum):
 
 
 class SignalSourceFunctionBase(Enum):
-    """Base Enum function names."""
+    """An enumeration for all function name enumerations to inherit from."""
 
 
 class SignalSourceFunctionsAWG(SignalSourceFunctionBase):

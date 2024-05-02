@@ -116,11 +116,11 @@ def test_smu(  # noqa: PLR0915
     # Test some generic device functionality
     capsys.readouterr()  # clear the buffer
     cmd_arg_constants_repr = (
-        f"<tm_devices.commands._smu2601b_commands.SMU2601BCommandConstants object at "
+        f"<tm_devices.commands.smu2601b_commands.SMU2601BCommandConstants object at "
         f"{str(smu.command_argument_constants).split(' at ', maxsplit=1)[-1]}"
     )
     cmds_repr = (
-        f"<tm_devices.commands._smu2601b_commands.SMU2601BCommands object at "
+        f"<tm_devices.commands.smu2601b_commands.SMU2601BCommands object at "
         f"{str(smu.commands).split(' at ', maxsplit=1)[-1]}"
     )
     print(smu)
