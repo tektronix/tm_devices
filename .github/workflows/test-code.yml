@@ -102,6 +102,7 @@ jobs:
           files: ./.coverage_tests.xml
           name: codecov-${{ matrix.os_name }}
           fail_ci_if_error: true
+          verbose: true
   create-job-summary:
     name: Test Results
     if: ${{ !cancelled() }}
