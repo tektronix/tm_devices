@@ -4,6 +4,7 @@ build:
   os: ubuntu-22.04
   tools:
     python: '3.11'  # This needs to stay in sync with pyproject.toml and any CI scripts
+    nodejs: '20'  # This needs to stay in sync with any CI scripts
 python:
   install:
     - requirements: docs/requirements.txt
