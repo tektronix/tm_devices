@@ -375,8 +375,7 @@ runtime configurations and have a **HIGHER** priority than the config file.
 - `TM_OPTIONS` is a comma-delimited, all-uppercase list of enabled options
     names.
 - `TM_DEVICES` is a `~~~`-delimited list of device entries.
-    - Each device entry is a comma-delimited list of "\<key>=\<value>" string
-        pairs.
+    - Each device entry is a comma-delimited list of `<key>=<value>` pairs.
 
 The main benefit of the environment variables over a config file is for
 convenience in load-balanced or dynamic setups. For instance, in headless
