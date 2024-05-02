@@ -7,7 +7,6 @@ import dataclasses
 import os
 import pathlib
 
-from dataclasses import dataclass
 from types import MappingProxyType
 from typing import (
     Any,
@@ -43,7 +42,7 @@ from tm_devices.helpers.constants_and_dataclasses import (
 
 
 @runtime_checkable
-@dataclass
+@dataclasses.dataclass
 class _DataclassProtocol(Protocol):
     """A Protocol class to allow for type hinting things that accept generic dataclasses."""
 
