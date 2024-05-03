@@ -32,7 +32,7 @@ for path in src.rglob("*.py"):
         source_link = (
             f'<div class="top-right-link" markdown="1">'
             f'<a href="{{{{ config.repo_url }}}}'
-            f'/blob/{{{{ package_version }}}}/src/'
+            f'/blob/{{{{ git_ref }}}}/src/'
             f'{"/".join(module_path.parts)}.py">[python source code]</a>'
             f'</div>\n\n'
         )
