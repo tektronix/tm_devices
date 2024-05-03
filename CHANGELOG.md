@@ -23,6 +23,7 @@ Things to be included in the next release go here.
 - Switched from using `sphinx` to `mkdocs` for building the documentation. This enables building the
     documentation in under 10 minutes while using less than 6 GB of RAM and saving almost 2 GB of
     disk space. Fixes [#77](https://github.com/tektronix/tm_devices/issues/77).
+- Switched from GitHub Pages to ReadtheDocs for official documentation hosting.
 
 ### Fixed
 

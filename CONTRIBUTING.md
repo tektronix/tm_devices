@@ -68,10 +68,9 @@ recommended IDE for package development is
 
 1. Set up commit signing, see [GitHub's documentation](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification) for details.
 
-    ```{hint}
-       All commits going into the main repository are required to be signed, so make sure
-       to set up commit signing before starting to make changes.
-    ```
+    !!! hint
+        All commits going into the main repository are required to be signed, so make sure
+        to set up commit signing before starting to make changes.
 
 2. Fork `tm_devices` into a new repository.
 
@@ -109,19 +108,19 @@ recommended IDE for package development is
 6. When you're done making changes, check that your changes conform to any code
     formatting requirements and pass any tests.
 
-    ````{note}
-       Always remember to activate the virtual environment before attempting to run tests or other code.
-            ```console
-            # Linux
-            source .venv/bin/activate
+    !!! note
+        Always remember to activate the virtual environment before attempting to run tests or other code.
 
-            # Windows
-            .venv\Scripts\activate.bat
-            ```
-    ````
+        ```console
+        # Linux
+        source .venv/bin/activate
+
+        # Windows
+        .venv\Scripts\activate.bat
+        ```
 
     - To run full static code analysis, tests, and documentation validation
-        (running this prior to opening a pull request is highly recommended, but it is **very slow**):
+        (running this prior to opening a pull request is highly recommended, but it is slow):
 
         ```console
         tox -p
@@ -145,12 +144,29 @@ recommended IDE for package development is
         tox -e tests
         ```
 
-    ```{note}
-       Two html outputs are generated:
+        !!! note
+            Two html outputs are generated:
 
-       - Code coverage report: `.results_tests/htmlcov/index.html`
-       - Test results: `.results_tests/results.html`
-    ```
+            - Code coverage report: `.results_tests/htmlcov/index.html`
+            - Test results: `.results_tests/results.html`
+
+    - To just build the documentation:
+
+        ```console
+        tox -e docs
+        ```
+
+        !!! hint
+            To view the documentation locally you will need to first build and then serve the site using one of the following methods:
+
+            ```console
+            mkdocs serve --clean --no-livereload
+            ```
+
+            ```console
+            tox -e docs
+            python -m http.server -d .results_docs
+            ```
 
 7. Commit and push your changes, then open a pull request from
     the fork back into the main repository.
@@ -174,16 +190,16 @@ recommended IDE for package development is
 To update the required python packages and commit hooks run the following
 commands:
 
-````{note}
-Always remember to activate the virtual environment before attempting to run tests or other code.
-```console
-# Linux
-source .venv/bin/activate
+!!! note
+    Always remember to activate the virtual environment before attempting to run tests or other code.
 
-# Windows
-.venv\Scripts\activate.bat
-```
-````
+    ```console
+    # Linux
+    source .venv/bin/activate
+
+    # Windows
+    .venv\Scripts\activate.bat
+    ```
 
 ```console
 python scripts/update_development_dependencies.py

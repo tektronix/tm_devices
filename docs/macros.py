@@ -1,6 +1,7 @@
 """Macros for the documentation."""
 
 import inspect
+import os
 import pathlib
 import re
 
@@ -187,8 +188,14 @@ def define_env(env: MacrosPlugin) -> None:
         pathlib.Path(f"{pathlib.Path(__file__).parents[1]}") / "pyproject.toml", "rb"
     ) as file_handle:
         pyproject_data = tomli.load(file_handle)
-        env.variables["package_version"] = "v" + pyproject_data["tool"]["poetry"]["version"]
+        package_version = "v" + pyproject_data["tool"]["poetry"]["version"]
+    git_ref = "main" if os.getenv("READTHEDOCS_VERSION") == "latest" else package_version
 
+    # Add a variable that points to the latest version of the package
+    env.variables["package_version"] = package_version
+    # Add a variable that points to either the latest version tag or the main branch depending
+    # on where/when the docs are being built.
+    env.variables["git_ref"] = git_ref
     # Add the auto_class_diagram macro
     env.macro(class_diagram, "auto_class_diagram")  # pyright: ignore[reportUnknownMemberType]
     # Add the create_repo_link macro
