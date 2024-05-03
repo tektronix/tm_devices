@@ -129,8 +129,7 @@ plugins:
               domains: [std, py]
   - spellcheck:
       known_words: known_words.txt
-      skip_files: [CHANGELOG.md]
-      skip_file_globs: [reference/*]
+      skip_files: [CHANGELOG.md, reference/*]
       backends:
         - symspellpy
         - codespell:
