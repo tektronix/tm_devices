@@ -150,6 +150,24 @@ recommended IDE for package development is
             - Code coverage report: `.results_tests/htmlcov/index.html`
             - Test results: `.results_tests/results.html`
 
+    - To just build the documentation:
+
+        ```console
+        tox -e docs
+        ```
+
+        !!! hint
+            To view the documentation locally you will need to first build and then serve the site using one of the following methods:
+
+            ```console
+            mkdocs serve --clean --no-livereload
+            ```
+
+            ```console
+            tox -e docs
+            python -m http.server -d .results_docs
+            ```
+
 7. Commit and push your changes, then open a pull request from
     the fork back into the main repository.
 
