@@ -35,7 +35,7 @@ def main() -> None:
         tracking_unreleased = False
         tracking_entries = False
         for line in changelog_file:
-            if line.startswith("___"):
+            if line.startswith(("___", "---")):
                 tracking_unreleased = False
                 tracking_entries = False
             if tracking_unreleased:
