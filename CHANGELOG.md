@@ -18,7 +18,7 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
-______________________________________________________________________
+---
 
 ## v1.4.0 (2024-05-03)
 
