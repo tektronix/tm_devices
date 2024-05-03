@@ -18,6 +18,22 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+______________________________________________________________________
+
+## v1.4.0 (2024-05-03)
+
+### Merged Pull Requests
+
+- fix: Update release notes generator script to account for markdown formatting changes ([#203](https://github.com/tektronix/tm_devices/pull/203))
+- Update package to point to ReadtheDocs for official documentation ([#201](https://github.com/tektronix/tm_devices/pull/201))
+- Fix ReadtheDocs builds by installing nodejs ([#200](https://github.com/tektronix/tm_devices/pull/200))
+- docs: Switch from Sphinx to Mkdocs for building documentation. ([#11](https://github.com/tektronix/tm_devices/pull/11))
+- gh-actions(deps): bump python-semantic-release/python-semantic-release ([#197](https://github.com/tektronix/tm_devices/pull/197))
+- python-deps(deps): bump the python-dependencies group with 2 updates ([#192](https://github.com/tektronix/tm_devices/pull/192))
+- gh-actions(deps): bump the gh-actions-dependencies group with 2 updates ([#191](https://github.com/tektronix/tm_devices/pull/191))
+- gh-actions(deps): bump the gh-actions-dependencies group with 3 updates ([#190](https://github.com/tektronix/tm_devices/pull/190))
+- python-deps(deps-dev): update pyright requirement from 1.1.356 to 1.1.357 in the python-dependencies group ([#189](https://github.com/tektronix/tm_devices/pull/189))
+
 ### Changed
 
 - Switched from using `sphinx` to `mkdocs` for building the documentation. This enables building the
