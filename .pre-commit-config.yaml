@@ -75,6 +75,7 @@ repos:
           - mdformat-footnote
           - mdformat-frontmatter
           - mdformat-gfm
+          - mdformat-gfm-alerts
           - mdformat-mkdocs
           - mdformat-shfmt
           - mdformat-simple-breaks
