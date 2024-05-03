@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- Updated the changelog template to not cause `pre-commit` failures when it is used to update the changelog.
+
 ---
 
 ## v1.4.0 (2024-05-03)
