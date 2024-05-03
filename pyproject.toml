@@ -49,7 +49,7 @@ classifiers = [
   "Topic :: System :: Hardware :: Hardware Drivers"
 ]
 description = "Manage connections and interactions with Test & Measurement devices."
-documentation = "https://tektronix.github.io/tm_devices/"
+documentation = "https://tm-devices.readthedocs.io/stable/"
 homepage = "https://pypi.org/project/tm_devices/"
 keywords = [
   "REST API",
