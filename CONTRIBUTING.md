@@ -57,15 +57,6 @@ If you are proposing a feature:
 
 Ready to contribute? Here's how to set up `tm_devices` for local development.
 
-### Supported IDEs for package development
-
-Currently, autocomplete does not work properly for VS Code in a package
-development environment (this does not affect standard pip installs). The
-recommended IDE for package development is
-[PyCharm](https://www.jetbrains.com/pycharm/download).
-
-### Setup steps for package development
-
 1. Set up commit signing, see [GitHub's documentation](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification) for details.
 
     !!! hint
