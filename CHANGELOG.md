@@ -18,6 +18,17 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v1.4.1 (2024-05-06)
+
+### Merged Pull Requests
+
+- ci: Revert python-semantic-release version bump since the GitHub Action no longer properly signs commits ([#208](https://github.com/tektronix/tm_devices/pull/208))
+- gh-actions(deps): bump the gh-actions-dependencies group with 2 updates ([#207](https://github.com/tektronix/tm_devices/pull/207))
+- Update contribution guide to remove outdated instructions ([#205](https://github.com/tektronix/tm_devices/pull/205))
+- fix: Update Changelog template to prevent pre-commit failures. when creating new versions with python-semantic-version ([#204](https://github.com/tektronix/tm_devices/pull/204))
+
 ### Fixed
 
 - Updated the changelog template to not cause `pre-commit` failures when it is used to update the changelog.
