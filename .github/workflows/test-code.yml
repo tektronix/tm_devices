@@ -114,7 +114,7 @@ jobs:
         with:
           path: artifacts
       - name: Generate Summary
-        uses: phoenix-actions/test-reporting@v14
+        uses: phoenix-actions/test-reporting@v15
         with:
           name: Test Results
           only-summary: false
