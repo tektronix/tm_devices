@@ -115,7 +115,7 @@ pylint = "3.1.0"  # Update this by running scripts/update_development_dependenci
 pyright = "1.1.361"  # Update this by running scripts/update_development_dependencies.py
 pyroma = "^4.2"
 python-semantic-release = "^9.6.0"
-ruff = "0.4.2"  # Update this by running scripts/update_development_dependencies.py
+ruff = "0.4.3"  # Update this by running scripts/update_development_dependencies.py
 safety = "^3.2.0"
 toml-sort = "^0.23.0"
 tox = "^4.0"
@@ -160,7 +160,7 @@ pytest-env = "^1.1.3"
 pytest-github-report = "^0.0.1"
 pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
-ruff = "0.4.2"  # Update this by running scripts/update_development_dependencies.py
+ruff = "0.4.3"  # Update this by running scripts/update_development_dependencies.py
 tomli = "^2.0.1"
 
 [tool.poetry.scripts]
