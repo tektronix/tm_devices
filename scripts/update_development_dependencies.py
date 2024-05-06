@@ -66,6 +66,13 @@ def main() -> None:
     args = parse_arguments()
     lock_only = args.no_install
 
+    # Remove the dependencies from poetry to avoid issues if they are in multiple groups
+    for group, dependencies_list in DEPENDENCIES_TO_UPDATE.items():
+        dependencies = " ".join(f'"{x.split("[", maxsplit=1)[0]}"' for x in dependencies_list)
+        _run_cmd_in_subprocess(
+            f'"{python_executable}" -m poetry remove --lock --group={group} {dependencies}'
+        )
+
     # Get the latest versions for each of the dependencies to update
     for group, dependencies_list in DEPENDENCIES_TO_UPDATE.items():
         latest_dependency_versions: List[str] = []

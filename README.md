@@ -68,7 +68,7 @@ with DeviceManager() as device_manager:
 
 ### Supported Devices & Software Solutions
 
-> \[!TIP\]
+> [!TIP]
 > Visit the [Glossary](https://tinyurl.com/tek-tm-devices/docs/glossary.md) to see definitions for all symbols and abbreviations.
 
 <div markdown="1" class="custom-table-center-cells device-support-table">

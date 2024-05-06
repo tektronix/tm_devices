@@ -31,7 +31,7 @@ PAGE_REPLACEMENTS = {
         (" ✅ ", " [](default:✅) "),
         (" 🚧 ", " [](default:🚧) "),
         (" ❌ ", " [](default:❌) "),
-        (r"> \[!TIP\]", "!!! tip"),
+        (r"> [!TIP]", "!!! tip"),
         (
             "> Visit the [Glossary",
             "    Hover over a link or icon to see its definition, or visit the [Glossary",

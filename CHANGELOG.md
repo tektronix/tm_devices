@@ -21,6 +21,11 @@ Things to be included in the next release go here.
 ### Fixed
 
 - Updated the changelog template to not cause `pre-commit` failures when it is used to update the changelog.
+- Updated the readme to properly render on PyPI.
+
+### Removed
+
+- Removed outdated instructions from the contribution guide.
 
 ---
 
