@@ -75,3 +75,8 @@
     background-color: #9555dda3;
     color: black;
 }
+
+.doc-label-staticmethod > code {
+    background-color: #e2c1f9a6;
+    color: black;
+}
