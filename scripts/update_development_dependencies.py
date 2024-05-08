@@ -5,6 +5,7 @@ commit-config.yaml files.
 """
 
 import argparse
+import contextlib
 import shlex
 import subprocess
 import sys
@@ -111,6 +112,11 @@ def main() -> None:
         _run_cmd_in_subprocess(
             f'"{python_executable}" -m poetry export --only {group} '
             f"--without-hashes --output {group}/requirements.txt"
+        )
+    # Sort the requirements files (ignore failures due to changed files
+    with contextlib.suppress(subprocess.CalledProcessError):
+        _run_cmd_in_subprocess(
+            f'"{python_executable}" -m pre_commit run --all requirements-txt-fixer'
         )
 
 
