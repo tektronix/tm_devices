@@ -18,6 +18,16 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v1.4.2 (2024-05-09)
+
+### Merged Pull Requests
+
+- docs: Add a copy button to the code blocks in the documentation ([#211](https://github.com/tektronix/tm_devices/pull/211))
+- docs: Update mkdocs-ezglossary-plugin version used for building docs ([#210](https://github.com/tektronix/tm_devices/pull/210))
+- docs: Add styling for a new method label ([#209](https://github.com/tektronix/tm_devices/pull/209))
+
 ### Added
 
 - Added a click to copy button to all code blocks.
