@@ -123,7 +123,7 @@ const addCopyButtonToCodeCells = () => {
   }
 
   // Add copybuttons to all of our code cells
-  const COPYBUTTON_SELECTOR = 'div.highlight pre';  // TODO: tweak this
+  const COPYBUTTON_SELECTOR = 'div.highlight pre';
   const codeCells = document.querySelectorAll(COPYBUTTON_SELECTOR)
   codeCells.forEach((codeCell, index) => {
     const id = codeCellId(index)
@@ -219,7 +219,7 @@ var copyTargetText = (trigger) => {
 
   let text = filterText(target, exclude);
   // return formatCopyText(text, {{ "{!r}".format(copybutton_prompt_text) }}, {{ copybutton_prompt_is_regexp | lower }}, {{ copybutton_only_copy_prompt_lines | lower }}, {{ copybutton_remove_prompts | lower }}, {{ copybutton_copy_empty_lines | lower }}, {{ "{!r}".format(copybutton_line_continuation_character) }}, {{ "{!r}".format(copybutton_here_doc_delimiter) }})
-  return formatCopyText(text, "", false, true, true, true, "", "")  // TODO: tweak this
+  return formatCopyText(text, "", false, true, true, true, "", "")
 }
 
   // Initialize with a callback so we can modify the text before copy
