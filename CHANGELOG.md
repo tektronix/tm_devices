@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Removed
+
+- docs: Removed the copy code button from the Python API signatures in the documentation.
+
 ---
 
 ## v1.4.2 (2024-05-09)
