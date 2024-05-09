@@ -10,7 +10,6 @@ button.copybtn {
     transition: opacity 0.3s, border .3s, background-color .3s;
     user-select: none;
     padding: 0;
-    border: none;
     outline: none;
     border-radius: 0.4em;
     /* The colors that GitHub uses */
