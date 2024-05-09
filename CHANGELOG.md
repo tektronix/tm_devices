@@ -18,6 +18,15 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added a click to copy button to all code blocks.
+
+### Fixed
+
+- Updated `mkdocs-ezglossary-plugin` to a version that allows linking to glossary entries from the
+    home page of documentation that is hosted on ReadtheDocs.
+
 ---
 
 ## v1.4.1 (2024-05-06)
