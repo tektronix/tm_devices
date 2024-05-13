@@ -29,7 +29,7 @@ def test_dmm6500(device_manager: DeviceManager) -> None:
     assert dmm.all_channel_names_list == ()
 
 
-def test_dmm7500(device_manager: DeviceManager) -> None:
+def test_dmm75xx(device_manager: DeviceManager) -> None:
     """Test the DMM drivers.
 
     Args:
