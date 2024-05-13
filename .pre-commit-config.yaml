@@ -47,6 +47,7 @@ repos:
       - id: check-dependabot
       - id: check-github-actions
       - id: check-github-workflows
+        args: [--verbose]
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v3.25.0
     hooks:
