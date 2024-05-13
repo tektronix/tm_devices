@@ -18,6 +18,9 @@ jobs:
     name: Build package
     runs-on: ubuntu-latest
     environment: package-build
+    permissions:
+      id-token: write
+      attestations: write
     env:
       PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
     steps:
@@ -26,6 +29,8 @@ jobs:
           fetch-depth: 0
       - uses: hynek/build-and-inspect-python-package@v2.5.0
         id: build-pkg
+        with:
+          attest-build-provenance-github: 'true'
       - name: Set up Python
         uses: actions/setup-python@v5
         with:

@@ -30,6 +30,9 @@ jobs:
     needs: [job-variables]
     if: github.repository == needs.job-variables.outputs.repo-name
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      attestations: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -52,6 +55,8 @@ jobs:
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
       - name: Build package
         uses: hynek/build-and-inspect-python-package@v2.5.0
+        with:
+          attest-build-provenance-github: 'true'
     outputs:
       built-version: ${{ steps.create-version.outputs.NEW_VERSION }}
   test-pypi-upload:
