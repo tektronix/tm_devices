@@ -22,6 +22,11 @@ Things to be included in the next release go here.
 
 - docs: Removed the copy code button from the Python API signatures in the documentation.
 
+### Changed
+
+- Updated most `__init__.py` files to not include `__all__` variable definitions.
+- Renamed some of the abstract base classes to separate them from the actual device driver classes.
+
 ---
 
 ## v1.4.2 (2024-05-09)
