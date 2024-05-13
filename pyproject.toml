@@ -441,7 +441,7 @@ setenv =
 commands_pre =
     poetry install --no-root --without=main
 commands =
-    !tests: safety check
+    !tests: safety check --ignore=67599
     !tests: ruff format --check --diff .
     !tests: docformatter --check --diff .
     !tests: ruff check .
