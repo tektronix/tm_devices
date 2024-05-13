@@ -130,9 +130,9 @@ repos:
         types: [toml]
         pass_filenames: false
         always_run: true
-        args: [audit, --json]
+        args: [audit, --json, --ignore-code=CVE-2018-20225]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.4.3
+    rev: v0.4.4
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]

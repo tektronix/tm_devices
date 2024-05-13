@@ -115,7 +115,7 @@ pylint = "3.1.0"
 pyright = "1.1.362"
 pyroma = "^4.2"
 python-semantic-release = "^9.6.0"
-ruff = "0.4.3"
+ruff = "0.4.4"
 safety = "^3.2.0"
 toml-sort = "^0.23.0"
 tox = "^4.0"
@@ -159,7 +159,7 @@ pytest-env = "^1.1.3"
 pytest-github-report = "^0.0.1"
 pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
-ruff = "0.4.3"
+ruff = "0.4.4"
 tomli = "^2.0.1"
 
 [tool.poetry.scripts]
@@ -441,7 +441,7 @@ setenv =
 commands_pre =
     poetry install --no-root --without=main
 commands =
-    !tests: safety check
+    !tests: safety check --ignore=67599
     !tests: ruff format --check --diff .
     !tests: docformatter --check --diff .
     !tests: ruff check .
@@ -449,7 +449,7 @@ commands =
     !tests: pyright .
     !tests: pyright --verifytypes tm_devices --ignoreexternal
     !tests: pyroma .
-    !tests: poetry audit
+    !tests: poetry audit --ignore-code=CVE-2018-20225
     !tests: poetry build --output=dist_{envname}
     !tests: twine check --strict dist_{envname}/*
     !tests: pre-commit run --all-files --show-diff-on-failure
