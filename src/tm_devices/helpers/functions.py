@@ -336,7 +336,7 @@ def create_visa_connection(
                 stacklevel=4,
             )
     # The broad except is because pyvisa_py can throw a base exception in the tcpip.py file
-    except Exception as error_1:  # noqa: BLE001
+    except Exception as error_1:
         if not retry_connection:
             message = f"Unable to establish a VISA connection to {resource_expression}"
             raise ConnectionError(message) from error_1
