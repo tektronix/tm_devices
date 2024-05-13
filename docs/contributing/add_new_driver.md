@@ -26,32 +26,26 @@ This guide will walk through the steps needed to add a new device driver.
         !!! note
             For documentation to render for the new driver properly, an `__init__()` method must be defined.
 
-3. Add or update **all** `__init__.py` files within the device type subpackage
-    (e.g. `scopes/`, `power_supplies/`) to contain all driver classes and
-    subpackage classes defined at that level
-
-    - See other `__init__.py` files for examples
-
-4. Update the [`SupportedModels`][tm_devices.SupportedModels] enum exposed in
+3. Update the [`SupportedModels`][tm_devices.SupportedModels] enum exposed in
     `tm_devices/helpers/__init__.py`
 
-5. Update the `___SUPPORTED_MODEL_REGEX_STRING` regex constant inside
+4. Update the `___SUPPORTED_MODEL_REGEX_STRING` regex constant inside
     `tm_devices/helpers/functions.py` to include a mapping of the new driver name (model series)
     to a regex string matching the appropriate model strings
 
-6. Update the [`DEVICE_DRIVER_MODEL_MAPPING`][tm_devices.drivers.DEVICE_DRIVER_MODEL_MAPPING] lookup inside
+5. Update the [`DEVICE_DRIVER_MODEL_MAPPING`][tm_devices.drivers.DEVICE_DRIVER_MODEL_MAPPING] lookup inside
     `tm_devices/drivers/device_driver_mapping.py`
 
-7. Update the `__all__` variable inside `tm_devices/drivers/__init__.py` to
+6. Update the `__all__` variable inside `tm_devices/drivers/__init__.py` to
     include the new device driver
 
-8. If the device supports VISA USBTMC communication, update the
+7. If the device supports VISA USBTMC communication, update the
     [`USB_MODEL_ID_LOOKUP`][tm_devices.helpers.USB_MODEL_ID_LOOKUP] lookup exposed
     in `tm_devices/helpers/__init__.py`
 
-9. Update the Supported Devices section in `README.rst` to include the new model
+8. Update the Supported Devices section in `README.rst` to include the new model
 
-10. Update unit tests (and simulated device files)
+9. Update unit tests (and simulated device files)
 
     1. Add a new simulated device driver in the correct folder within
         `tests/sim_devices`
@@ -60,7 +54,7 @@ This guide will walk through the steps needed to add a new device driver.
         the corresponding simulated device file)
     3. Update `tests/test_all_device_drivers.py` with the new simulated resource
 
-11. Run the `tests/verify_physical_device_support.py` script targeting a
+10. Run the `tests/verify_physical_device_support.py` script targeting a
     physical device that will use the newly created driver to verify it is
     working properly.
 
