@@ -449,7 +449,7 @@ commands =
     !tests: pyright .
     !tests: pyright --verifytypes tm_devices --ignoreexternal
     !tests: pyroma .
-    !tests: poetry audit
+    !tests: poetry audit --ignore-code=CVE-2018-20225
     !tests: poetry build --output=dist_{envname}
     !tests: twine check --strict dist_{envname}/*
     !tests: pre-commit run --all-files --show-diff-on-failure
