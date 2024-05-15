@@ -1,4 +1,15 @@
-{# Original source file: https://github.com/mkdocstrings/python/blob/main/src/mkdocstrings_handlers/python/templates/material/_base/children.html#}
+{#- Template for members (children) of an object.
+
+This template iterates on members of a given object and renders them.
+It can group members by category (attributes, classes, functions, modules) or render them in a flat list.
+
+Context:
+  obj (griffe.dataclasses.Object): The object to render.
+  config (dict): The configuration options.
+  root_members (bool): Whether the object is the root object.
+  heading_level (int): The HTML heading level to use.
+-#}
+{# Original source file: https://github.com/mkdocstrings/python/blob/main/src/mkdocstrings_handlers/python/templates/material/_base/children.html.jinja#}
 {%- macro create_summary_table(item_list) -%}
     <table>
         <tbody>
@@ -21,7 +32,13 @@
 {%- endmacro -%}
 
 {% if obj.members %}
-  {{ log.debug("Rendering children of " + obj.path) }}
+  {% block logs scoped %}
+    {#- Logging block.
+
+    This block can be used to log debug messages, deprecation messages, warnings, etc.
+    -#}
+    {{ log.debug("Rendering children of " + obj.path) }}
+  {% endblock logs %}
 
   <div class="doc doc-children">
 
@@ -99,7 +116,7 @@
                 {% endif %}
                 {% with heading_level = heading_level + extra_level %}
                   {% for attribute in attributes|order_members(config.members_order, members_list) %}
-                    {% if not attribute.is_alias or attribute.is_explicitely_exported or attribute.inherited %}
+                    {% if members_list is not none or attribute.is_public(check_name=False) %}
                       {% include attribute|get_template with context %}
                     {% endif %}
                   {% endfor %}
@@ -119,7 +136,7 @@
                 {% endif %}
                 {% with heading_level = heading_level + extra_level %}
                   {% for class in classes|order_members(config.members_order, members_list) %}
-                    {% if not class.is_alias or class.is_explicitely_exported or class.inherited %}
+                    {% if members_list is not none or class.is_public(check_name=False) %}
                       {% include class|get_template with context %}
                     {% endif %}
                   {% endfor %}
@@ -140,7 +157,7 @@
                 {% with heading_level = heading_level + extra_level %}
                   {% for function in functions|order_members(config.members_order, members_list) %}
                     {% if not (obj.kind.value == "class" and function.name == "__init__" and config.merge_init_into_class) %}
-                      {% if not function.is_alias or function.is_explicitely_exported or function.inherited %}
+                      {% if members_list is not none or function.is_public(check_name=False) %}
                         {% include function|get_template with context %}
                       {% endif %}
                     {% endif %}
@@ -162,7 +179,7 @@
                   {% endif %}
                   {% with heading_level = heading_level + extra_level %}
                     {% for module in modules|order_members(config.members_order, members_list) %}
-                      {% if not module.is_alias or module.is_explicitely_exported or module.inherited %}
+                      {% if members_list is not none or module.is_public(check_name=False) %}
                         {% include module|get_template with context %}
                       {% endif %}
                     {% endfor %}
@@ -186,7 +203,7 @@
 
             {% if not (obj.is_class and child.name == "__init__" and config.merge_init_into_class) %}
 
-              {% if not child.is_alias or child.is_explicitely_exported or child.inherited %}
+              {% if members_list is not none or child.is_public(check_name=False) %}
                 {% if child.is_attribute %}
                   {% with attribute = child %}
                     {% include attribute|get_template with context %}

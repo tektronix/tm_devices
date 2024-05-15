@@ -49,7 +49,7 @@ repos:
       - id: check-github-workflows
         args: [--verbose]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.25.0
+    rev: v3.25.1
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -64,6 +64,15 @@ repos:
     rev: 1.16.0
     hooks:
       - id: yamlfix
+# TODO: get this working
+#  - repo: https://github.com/motet-a/jinjalint
+#    rev: "0.5"
+#    hooks:
+#      - id: jinjalint
+  - repo: https://github.com/thibaudcolas/curlylint
+    rev: v0.13.1
+    hooks:
+      - id: curlylint
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.17
     hooks:
