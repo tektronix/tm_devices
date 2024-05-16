@@ -47,7 +47,7 @@ class _ConfigEntryEnvStrMixin(AsDictionaryMixin):
         for key, val in self.to_dict(ignore_none=True).items():
             # must pull class type from actual value, not the to_dict()'s representation
             if (
-                prefix := CONFIG_CLASS_STR_PREFIX_MAPPING.get(type(getattr(self, key)))
+                prefix := CONFIG_CLASS_STR_PREFIX_MAPPING.get(type(getattr(self, key)))  # pyright: ignore[reportUnknownArgumentType]
             ) is not None:
                 if any(val.values()):
                     # still need to ignore the None values
