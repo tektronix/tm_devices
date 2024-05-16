@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added a new section in the documentation of each package/subpackage that shows the submodules (files) of that package/subpackage.
+
 ### Removed
 
 - docs: Removed the copy code button from the Python API signatures in the documentation.
@@ -26,6 +30,7 @@ Things to be included in the next release go here.
 
 - Updated most `__init__.py` files to not include `__all__` variable definitions.
 - Renamed some of the abstract base classes to separate them from the actual device driver classes.
+- Updated the documentation templates to use the new jinja template style that `mkdocstrings-python` is switching to.
 
 ---
 
