@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added a new section in the documentation of each package/subpackage that shows the submodules (files) of that package/subpackage.
+
 ### Removed
 
 - docs: Removed the copy code button from the Python API signatures in the documentation.
