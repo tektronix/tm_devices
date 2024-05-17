@@ -100,7 +100,7 @@ Context:
             keep_no_docstrings=config.show_if_no_docstring)|selectattr("is_init_module", "equalto", false)|list|order_members(config.members_order, members_list)
         %}
             {% if modules %}
-                {% filter heading(heading_level, id=html_id ~ "-modules") %}Submodules{% endfilter %}
+                {% filter heading(heading_level, id=html_id ~ "-modules") %}Modules{% endfilter %}
                 {{ create_summary_table(modules) }}
             {% endif %}
         {% endwith %}
