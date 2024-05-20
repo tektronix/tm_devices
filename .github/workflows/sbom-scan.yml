@@ -14,22 +14,25 @@ jobs:
     permissions:
       security-events: write
       contents: write
+      id-token: write
+      attestations: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: x  # any version
-      - name: Build Package
+      - name: Create lockfile
         run: |
           pip install poetry
-          poetry build
+          poetry lock
       - name: Create SBOM
         uses: anchore/sbom-action@v0
         with:
-          path: ''  # workaround for https://github.com/anchore/sbom-action/issues/389
-          file: ./dist/*.whl
           format: spdx-json
           output-file: ${{ github.event.repository.name }}-sbom.spdx.json
+      - uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: ${{ github.event.repository.name }}-sbom.spdx.json
       - name: Scan SBOM
         uses: anchore/scan-action@v3
         id: scan
