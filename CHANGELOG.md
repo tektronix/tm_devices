@@ -21,6 +21,7 @@ Things to be included in the next release go here.
 ### Added
 
 - Added a new section in the documentation of each package/subpackage that shows the submodules (files) of that package/subpackage.
+- Added signed build provenance attestations to workflow artifacts for the built package.
 
 ### Removed
 
