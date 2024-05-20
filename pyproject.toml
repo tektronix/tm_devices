@@ -111,7 +111,7 @@ pre-commit = [
 ]
 pre-commit-update = "^0.3.0"
 pyclean = "^3.0.0"
-pylint = "3.2.0"
+pylint = "3.2.1"
 pyright = "1.1.363"
 pyroma = "^4.2"
 python-semantic-release = "^9.6.0"
