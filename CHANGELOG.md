@@ -22,6 +22,8 @@ Things to be included in the next release go here.
 
 - Added a new section in the documentation of each package/subpackage that shows the submodules (files) of that package/subpackage.
 - Added signed build provenance attestations to workflow artifacts for the built package.
+- Added signed build provenance attestations to the generated SBOMs.
+- Documentation was added explaining how to verify the attestations on uploaded files.
 
 ### Removed
 
