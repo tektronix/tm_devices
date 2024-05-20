@@ -22,10 +22,11 @@ jobs:
       - name: Create lockfile
         run: |
           pip install poetry
-          poetry lock
+          poetry build
       - name: Create SBOM
         uses: anchore/sbom-action@v0
         with:
+          file: ./dist/*.whl
           format: spdx-json
           output-file: ${{ github.event.repository.name }}-sbom.spdx.json
       - name: Scan SBOM
