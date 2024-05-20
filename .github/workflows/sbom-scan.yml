@@ -26,6 +26,7 @@ jobs:
       - name: Create SBOM
         uses: anchore/sbom-action@v0
         with:
+          path: ''  # workaround for https://github.com/anchore/sbom-action/issues/389
           file: ./dist/*.whl
           format: spdx-json
           output-file: ${{ github.event.repository.name }}-sbom.spdx.json
