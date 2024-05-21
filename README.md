@@ -192,6 +192,18 @@ contributing to this project, you agree to abide by its terms.
 `tm_devices` was created by Tektronix. It is licensed under the terms of
 the [Apache License 2.0](https://tinyurl.com/tek-tm-devices/LICENSE.md).
 
+## Security
+
+The signatures of the files uploaded to [PyPI](https://pypi.org/project/tm-devices/) and each
+[GitHub Release](https://github.com/tektronix/tm_devices/releases) can be verified using
+the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify).
+The artifact attestations can also be directly downloaded from the
+[GitHub repo attestations page](https://github.com/tektronix/tm_devices/attestations) if desired.
+
+```shell
+gh attestation verify --owner tektronix <file>
+```
+
 ## Credits
 
 `tm_devices` was created with
