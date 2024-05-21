@@ -31,7 +31,7 @@ jobs:
           format: spdx-json
           output-file: ${{ github.event.repository.name }}-sbom.spdx.json
       - uses: actions/attest-build-provenance@v1
-        if: ${{ github.event.pull_request.head.repo.fork != 'true' && github.event.workflow_call.pull_request.head.repo.fork != 'true' }}
+        if: ${{ github.event.pull_request.head.repo.full_name != github.repository && github.event.workflow_call.pull_request.head.repo.full_name != github.repository && github.actor != 'dependabot[bot]' }}
         with:
           subject-path: ${{ github.event.repository.name }}-sbom.spdx.json
       - name: Scan SBOM
