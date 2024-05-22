@@ -22,6 +22,8 @@ validation:
   anchors: warn
 theme:
   name: readthedocs
+  analytics:
+    gtag: G-SDPEX4WBKJ
   highlightjs: false
   custom_dir: docs/_templates/readthedocs
   include_homepage_in_sidebar: false
