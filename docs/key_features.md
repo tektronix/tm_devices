@@ -8,7 +8,7 @@ complex examples.
 - Fast and easy setup using the
     [`DeviceManager`][tm_devices.DeviceManager] class as the central hub
     for automation.
-- Support for many popular Tektronix(TM) and Keithley(TM) Test and Measurement
+- Support for many popular Tektronix™ and Keithley™ Test and Measurement
     products.
     - Built in command tree, accessible via autocomplete in any <IDE:> with
         IntelliSense.
