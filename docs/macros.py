@@ -16,7 +16,7 @@ HEADER_ONE_REGEX = re.compile(r"^#\s(.+)$", re.MULTILINE)
 PAGE_REPLACEMENTS = {
     "index.md": (
         (" AFGs ", r" [AFGs](default:AFG) "),
-        (" AWGs ", r" [AWGs](default:AFG) "),
+        (" AWGs ", r" [AWGs](default:AWG) "),
         (" Scopes ", r" [Scopes](default:Scope) "),
         (" PSUs ", r" [PSUs](default:PSU) "),
         (" SMUs ", r" [SMUs](default:SMU) "),
