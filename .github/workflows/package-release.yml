@@ -109,7 +109,7 @@ jobs:
           ref: main  # Make sure to check out the latest commit on main, not the original commit that triggered the workflow
           fetch-depth: 0
       - name: Build package
-        uses: hynek/build-and-inspect-python-package@v2.5.0
+        uses: hynek/build-and-inspect-python-package@v2.6.0
         with:
           attest-build-provenance-github: 'true'
   upload-testpypi:
