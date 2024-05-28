@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: hynek/build-and-inspect-python-package@v2.5.0
+      - uses: hynek/build-and-inspect-python-package@v2.6.0
         id: build-pkg
         with:
           attest-build-provenance-github: ${{ !(github.event.pull_request.head.repo.fork || github.event.workflow_call.pull_request.head.repo.fork) && github.actor != 'dependabot[bot]' }}
