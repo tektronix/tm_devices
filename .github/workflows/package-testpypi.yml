@@ -54,7 +54,7 @@ jobs:
           python scripts/project_version.py --set-version=$NEW_VERSION
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
       - name: Build package
-        uses: hynek/build-and-inspect-python-package@v2.5.0
+        uses: hynek/build-and-inspect-python-package@v2.6.0
         with:
           attest-build-provenance-github: 'true'
     outputs:
