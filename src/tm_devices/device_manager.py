@@ -67,31 +67,31 @@ if TYPE_CHECKING:
 ####################################################################################################
 # Type Aliases
 ####################################################################################################
-AFGAlias = TypeVar("AFGAlias", bound=AFG, default=AFG)
+AFGAlias = TypeVar("AFGAlias", bound=AFG, default=AFG)  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
 """An alias to a specific AFG driver."""
-AWGAlias = TypeVar("AWGAlias", bound=AWG, default=AWG)
+AWGAlias = TypeVar("AWGAlias", bound=AWG, default=AWG)  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
 """An alias to a specific AWG driver."""
-DataAcquisitionSystemAlias = TypeVar(
+DataAcquisitionSystemAlias = TypeVar(  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
     "DataAcquisitionSystemAlias", bound=DataAcquisitionSystem, default=DataAcquisitionSystem
 )
 """An alias to a specific DataAcquisitionSystem driver."""
-DigitalMultimeterAlias = TypeVar(
+DigitalMultimeterAlias = TypeVar(  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
     "DigitalMultimeterAlias", bound=DigitalMultimeter, default=DigitalMultimeter
 )
 """An alias to a specific DigitalMultimeter driver."""
-ScopeAlias = TypeVar("ScopeAlias", bound=Scope, default=Scope)
+ScopeAlias = TypeVar("ScopeAlias", bound=Scope, default=Scope)  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
 """An alias to a specific Scope driver."""
-MarginTesterAlias = TypeVar("MarginTesterAlias", bound=MarginTester, default=MarginTester)
+MarginTesterAlias = TypeVar("MarginTesterAlias", bound=MarginTester, default=MarginTester)  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
 """An alias to a specific MarginTester driver."""
-PowerSupplyUnitAlias = TypeVar(
+PowerSupplyUnitAlias = TypeVar(  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
     "PowerSupplyUnitAlias", bound=PowerSupplyUnit, default=PowerSupplyUnit
 )
 """An alias to a specific PowerSupplyUnit driver."""
-SourceMeasureUnitAlias = TypeVar(
+SourceMeasureUnitAlias = TypeVar(  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
     "SourceMeasureUnitAlias", bound=SourceMeasureUnit, default=SourceMeasureUnit
 )
 """An alias to a specific SourceMeasureUnit driver."""
-SystemsSwitchAlias = TypeVar("SystemsSwitchAlias", bound=SystemsSwitch, default=SystemsSwitch)
+SystemsSwitchAlias = TypeVar("SystemsSwitchAlias", bound=SystemsSwitch, default=SystemsSwitch)  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
 """An alias to a specific SystemsSwitch driver."""
 
 
