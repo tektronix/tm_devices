@@ -27,6 +27,8 @@ jobs:
           else
             echo "breaking_changes=true" >> $GITHUB_OUTPUT
           fi
+      - name: debug output
+        run: echo ${{ steps.check.breaking_changes }}
       - name: Fetch PR number
         id: pr
         uses: actions/github-script@v7
