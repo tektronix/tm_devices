@@ -33,6 +33,7 @@ jobs:
           attest-build-provenance-github: ${{ !(github.event.pull_request.head.repo.fork || github.event.workflow_call.pull_request.head.repo.fork) && github.actor != 'dependabot[bot]' }}
   install-package:
     name: Install package
+    needs: build-package
     runs-on: ${{ matrix.platform }}
     strategy:
       matrix:
