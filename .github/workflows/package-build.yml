@@ -12,6 +12,8 @@ on:
         description: The name of the package being installed.
         required: true
         type: string
+env:
+  PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
 jobs:
   # Verify the package builds fine
   build-package:
@@ -21,8 +23,6 @@ jobs:
     permissions:
       id-token: write
       attestations: write
-    env:
-      PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
     steps:
       - uses: actions/checkout@v4
         with:
