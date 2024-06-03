@@ -12,6 +12,8 @@ on:
         description: The name of the package being installed.
         required: true
         type: string
+env:
+  PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
 jobs:
   # Verify the package builds fine
   build-package:
@@ -21,8 +23,6 @@ jobs:
     permissions:
       id-token: write
       attestations: write
-    env:
-      PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -31,16 +31,43 @@ jobs:
         id: build-pkg
         with:
           attest-build-provenance-github: ${{ !(github.event.pull_request.head.repo.fork || github.event.workflow_call.pull_request.head.repo.fork) && github.actor != 'dependabot[bot]' }}
+  install-package:
+    name: Install package
+    needs: build-package
+    runs-on: ${{ matrix.platform }}
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']  # when updating this, make sure to update all workflows that use this strategy
+    steps:
+      - name: Download built packages
+        uses: actions/download-artifact@v4
+        with:
+          name: Packages
+          path: dist
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: x  # any version
+          python-version: ${{ matrix.python-version }}
           check-latest: true
       - name: Test installing wheel
-        run: |
-          pip install ${{ steps.build-pkg.outputs.dist }}/*.whl
-          pip uninstall --yes "$PACKAGE_NAME"
+        shell: bash
+        run: pip install dist/*.whl
+      - name: Uninstall wheel
+        run: pip uninstall --yes "${{ env.PACKAGE_NAME }}"
       - name: Test installing tarball
-        run: |-
-          pip install ${{ steps.build-pkg.outputs.dist }}/*.tar.gz
-          pip uninstall --yes "$PACKAGE_NAME"
+        shell: bash
+        run: pip install dist/*.tar.gz
+      - name: Uninstall tarball
+        run: pip uninstall --yes "${{ env.PACKAGE_NAME }}"
+  # Check that all jobs passed
+  check-build-and-install-passed:
+    if: ${{ !cancelled() }}
+    needs: [build-package, install-package]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}

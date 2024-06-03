@@ -183,10 +183,12 @@ jobs:
       - upload-github
     if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
       'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.platform }}
     strategy:
       fail-fast: false
       matrix:
+        platform: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']  # when updating this, make sure to update all workflows that use this strategy
         index_urls:
           - ''
           - ' --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple'
@@ -194,7 +196,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: x
+          python-version: ${{ matrix.python-version }}
           check-latest: true
       - name: Test installing package
         # A retry is used to allow for some downtime before the package is installable
@@ -204,4 +206,5 @@ jobs:
           max_attempts: 5
           retry_wait_seconds: 30
           warning_on_retry: false
-          command: pip install${{ matrix.index_urls }} "$PACKAGE_NAME==${{ needs.pypi-version.outputs.built-version }}"
+          command: pip install${{ matrix.index_urls }} "${{ env.PACKAGE_NAME }}==${{
+            needs.pypi-version.outputs.built-version }}"
