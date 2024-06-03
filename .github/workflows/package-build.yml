@@ -53,14 +53,14 @@ jobs:
           check-latest: true
       - name: Test installing wheel
         shell: bash
-        run: |
-          pip install dist/*.whl
-          pip uninstall --yes "${{ env.PACKAGE_NAME }}"
+        run: pip install dist/*.whl
+      - name: Uninstall wheel
+        run: pip uninstall --yes "${{ env.PACKAGE_NAME }}"
       - name: Test installing tarball
         shell: bash
-        run: |
-          pip install dist/*.tar.gz
-          pip uninstall --yes "${{ env.PACKAGE_NAME }}"
+        run: pip install dist/*.tar.gz
+      - name: Uninstall tarball
+        run: pip uninstall --yes "${{ env.PACKAGE_NAME }}"
   # Check that all jobs passed
   check-build-and-install-passed:
     if: ${{ !cancelled() }}
