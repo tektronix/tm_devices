@@ -162,6 +162,7 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
             self.end_input = getattr(self.Termination, self.end_input)
 
 
+# pylint: disable=too-many-instance-attributes
 @dataclass(frozen=True)
 class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntryEnvStrMixin):
     """Dataclass for holding configuration information for a single device."""
@@ -187,10 +188,12 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     serial_config: Optional[SerialConfig] = None
     """Serial configuration properties for connecting to a device over SERIAL (ASRL)."""
     device_driver: Optional[str] = None
-    """The name of the Python driver to use for the device (required for connection_type=REST_API, ignored otherwise)"""  # noqa: E501
+    """The name of the Python driver to use for the device (required for connection_type=REST_API, ignored otherwise)."""  # noqa: E501
+    gpib_board_number: Optional[int] = None
+    """The GPIB board number (also referred to as a controller) to be used when making a GPIB connection (defaults to 0)."""  # noqa: E501
 
     # pylint: disable=too-many-branches
-    def __post_init__(self) -> None:  # noqa: PLR0912,C901
+    def __post_init__(self) -> None:  # noqa: PLR0912,C901,PLR0915
         """Validate data after creation.
 
         Raises:
@@ -212,28 +215,54 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
                 object.__setattr__(self, "device_type", DeviceTypes(self.device_type))
             if not isinstance(self.connection_type, ConnectionTypes):  # pyright: ignore[reportUnnecessaryIsInstance]
                 object.__setattr__(self, "connection_type", ConnectionTypes(self.connection_type))
-
-            # While a SerialConfig is not frozen, if not created here then it cannot be added later.
-            # A serial_config must be created if the connection_type is SERIAL (ASRL).
-            if self.connection_type == ConnectionTypes.SERIAL and self.serial_config is None:
-                object.__setattr__(self, "serial_config", SerialConfig())
-
-            if self.device_type not in VALID_DEVICE_CONNECTION_TYPES:
-                msg = (
-                    f"{self.device_type.name} is not a valid device type. Valid device types: "
-                    f"{VALID_DEVICE_CONNECTION_TYPES}"
-                )
-                raise TypeError(msg)
-            if self.connection_type not in VALID_DEVICE_CONNECTION_TYPES[self.device_type]:
-                msg = (
-                    f"{self.connection_type.name} is not a valid "
-                    f"{self.device_type} connection type. Valid connection types: "
-                    f"{[x.name for x in VALID_DEVICE_CONNECTION_TYPES[self.device_type]]}"
-                )
-                raise TypeError(msg)
         except ValueError as error:
             # this is from an invalid enum name
             raise TypeError(*error.args)  # noqa: TRY200,B904
+
+        # Set the GPIB board number to 0 if it is not provided
+        if "GPIB" in self.connection_type.value:
+            if self.gpib_board_number is None:
+                object.__setattr__(self, "gpib_board_number", 0)
+            if not isinstance(self.gpib_board_number, int):
+                try:
+                    # noinspection PyTypeChecker
+                    object.__setattr__(self, "gpib_board_number", int(self.gpib_board_number))  # pyright: ignore[reportArgumentType]
+                except ValueError:
+                    msg = (
+                        f'"{self.gpib_board_number}" is not a valid GPIB board number, '
+                        f"valid board numbers must be integers."
+                    )
+                    raise ValueError(msg)  # noqa: B904
+
+        if (
+            self.gpib_board_number is not None
+            and not MIN_GPIB_BOARD_NUMBER <= self.gpib_board_number <= MAX_GPIB_BOARD_NUMBER
+        ):
+            msg = (
+                f'The GPIB board number of "{self.gpib_board_number}" is not a valid board number. '
+                f"The valid board number range is "
+                f"{MIN_GPIB_BOARD_NUMBER} <= gpib_board_number <= {MAX_GPIB_BOARD_NUMBER}."
+            )
+            raise ValueError(msg)
+
+        # While a SerialConfig is not frozen, if not created here then it cannot be added later.
+        # A serial_config must be created if the connection_type is SERIAL (ASRL).
+        if self.connection_type == ConnectionTypes.SERIAL and self.serial_config is None:
+            object.__setattr__(self, "serial_config", SerialConfig())
+
+        if self.device_type not in VALID_DEVICE_CONNECTION_TYPES:
+            msg = (
+                f"{self.device_type.name} is not a valid device type. Valid device types: "
+                f"{VALID_DEVICE_CONNECTION_TYPES}"
+            )
+            raise TypeError(msg)
+        if self.connection_type not in VALID_DEVICE_CONNECTION_TYPES[self.device_type]:
+            msg = (
+                f"{self.connection_type.name} is not a valid "
+                f"{self.device_type} connection type. Valid connection types: "
+                f"{[x.name for x in VALID_DEVICE_CONNECTION_TYPES[self.device_type]]}"
+            )
+            raise TypeError(msg)
 
         # Check if a specific device driver is needed to be specified
         if self.connection_type == ConnectionTypes.REST_API and self.device_driver is None:
@@ -263,7 +292,10 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
                 or (self.connection_type == ConnectionTypes.SERIAL and not self.address.isdigit())
                 or (
                     self.connection_type == ConnectionTypes.GPIB
-                    and not (self.address.isdigit() and 1 <= int(self.address) <= MAX_GPIB_ADDRESS)
+                    and not (
+                        self.address.isdigit()
+                        and MIN_GPIB_ADDRESS <= int(self.address) <= MAX_GPIB_ADDRESS
+                    )
                 )
             ):
                 raise ValueError
@@ -274,7 +306,7 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
             SOCKET: IP address or the hostname (must define `lan_port` field).
             REST_API: IP address or the hostname (must define `lan_port` field).
             SERIAL/ASRL: serial COM port number.
-            GPIB: address number (1 <= n <= 30).
+            GPIB: address number ({MIN_GPIB_ADDRESS} <= n <= {MAX_GPIB_ADDRESS}).
             USB: use expression format "<model>-<serial_number>" (ex: "MSO24-ABC0123").
                 """
             raise ValueError(msg) from exc
@@ -364,12 +396,12 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
             resource_expr = f"TCPIP0::{self.address}::{self.lan_port}::SOCKET"
         elif self.connection_type == ConnectionTypes.TCPIP:
             resource_expr = f"TCPIP0::{self.address}::inst0::INSTR"
-        elif self.connection_type == ConnectionTypes.GPIB:
-            resource_expr = f"GPIB0::{self.address}::INSTR"
         elif self.connection_type == ConnectionTypes.SERIAL:
             resource_expr = f"ASRL{self.address}::INSTR"
         elif self.connection_type == ConnectionTypes.MOCK:  # pragma: no cover
             resource_expr = f"MOCK0::{self.address}::INSTR"
+        elif self.connection_type == ConnectionTypes.GPIB:
+            resource_expr = f"GPIB{self.gpib_board_number}::{self.address}::INSTR"
         else:
             msg = (
                 f"{self.connection_type.value} is not a valid connection "
@@ -413,7 +445,15 @@ class DMConfigOptions(AsDictionaryMixin):
 #                                CONSTANTS
 ###############################################################################
 # don't include this in the __init__
+MIN_GPIB_ADDRESS: Final[int] = 0
+# don't include this in the __init__
 MAX_GPIB_ADDRESS: Final[int] = 30
+# don't include this in the __init__
+MAX_GPIB_BOARD_NUMBER: Final[int] = 32
+# don't include this in the __init__
+MIN_VGPIB_BOARD_NUMBER: Final[int] = 8
+# don't include this in the __init__
+MIN_GPIB_BOARD_NUMBER: Final[int] = 0
 # don't include this in the __init__
 CONFIG_CLASS_STR_PREFIX_MAPPING: Final = MappingProxyType({SerialConfig: "serial_"})
 # don't include this in the __init__
