@@ -24,6 +24,7 @@ Things to be included in the next release go here.
 - Added signed build provenance attestations to workflow artifacts for the built package.
 - Added signed build provenance attestations to the generated SBOMs.
 - Documentation was added explaining how to verify the attestations on uploaded files.
+- Enabled support for Virtual GPIB connections to supported devices.
 
 ### Removed
 
