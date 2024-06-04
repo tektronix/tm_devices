@@ -260,6 +260,7 @@ class DeviceManager(metaclass=Singleton):
         connection_type: Optional[str] = None,
         port: Optional[int] = None,
         serial_config: Optional[SerialConfig] = None,
+        gpib_board_number: Optional[int] = None,
     ) -> AFGAlias:
         """Add an AFG to the DeviceManager.
 
@@ -273,6 +274,8 @@ class DeviceManager(metaclass=Singleton):
                 from the address string.
             port: The port to use when creating a socket connection.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
+            gpib_board_number: The GPIB board number (also referred to as a controller) to be used
+                when making a GPIB connection (defaults to 0).
 
         Returns:
             The AFG device driver.
@@ -287,6 +290,7 @@ class DeviceManager(metaclass=Singleton):
                 connection_type=connection_type,
                 port=port,
                 serial_config=serial_config,
+                gpib_board_number=gpib_board_number,
             ),
         )
 
@@ -298,6 +302,7 @@ class DeviceManager(metaclass=Singleton):
         connection_type: Optional[str] = None,
         port: Optional[int] = None,
         serial_config: Optional[SerialConfig] = None,
+        gpib_board_number: Optional[int] = None,
     ) -> AWGAlias:
         """Add an AWG to the DeviceManager.
 
@@ -311,6 +316,8 @@ class DeviceManager(metaclass=Singleton):
                 from the address string.
             port: The port to use when creating a socket connection.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
+            gpib_board_number: The GPIB board number (also referred to as a controller) to be used
+                when making a GPIB connection (defaults to 0).
 
         Returns:
             The AWG device driver.
@@ -325,6 +332,7 @@ class DeviceManager(metaclass=Singleton):
                 connection_type=connection_type,
                 port=port,
                 serial_config=serial_config,
+                gpib_board_number=gpib_board_number,
             ),
         )
 
@@ -336,6 +344,7 @@ class DeviceManager(metaclass=Singleton):
         connection_type: Optional[str] = None,
         port: Optional[int] = None,
         serial_config: Optional[SerialConfig] = None,
+        gpib_board_number: Optional[int] = None,
     ) -> DataAcquisitionSystemAlias:
         """Add a DAQ to the DeviceManager.
 
@@ -349,6 +358,8 @@ class DeviceManager(metaclass=Singleton):
                 from the address string.
             port: The port to use when creating a socket connection.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
+            gpib_board_number: The GPIB board number (also referred to as a controller) to be used
+                when making a GPIB connection (defaults to 0).
 
         Returns:
             The DAQ device driver.
@@ -363,6 +374,7 @@ class DeviceManager(metaclass=Singleton):
                 connection_type=connection_type,
                 port=port,
                 serial_config=serial_config,
+                gpib_board_number=gpib_board_number,
             ),
         )
 
@@ -374,6 +386,7 @@ class DeviceManager(metaclass=Singleton):
         connection_type: Optional[str] = None,
         port: Optional[int] = None,
         serial_config: Optional[SerialConfig] = None,
+        gpib_board_number: Optional[int] = None,
     ) -> DigitalMultimeterAlias:
         """Add a DMM to the DeviceManager.
 
@@ -387,6 +400,8 @@ class DeviceManager(metaclass=Singleton):
                 from the address string.
             port: The port to use when creating a socket connection.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
+            gpib_board_number: The GPIB board number (also referred to as a controller) to be used
+                when making a GPIB connection (defaults to 0).
 
         Returns:
             The DMM device driver.
@@ -401,6 +416,7 @@ class DeviceManager(metaclass=Singleton):
                 connection_type=connection_type,
                 port=port,
                 serial_config=serial_config,
+                gpib_board_number=gpib_board_number,
             ),
         )
 
@@ -445,6 +461,7 @@ class DeviceManager(metaclass=Singleton):
         connection_type: Optional[str] = None,
         port: Optional[int] = None,
         serial_config: Optional[SerialConfig] = None,
+        gpib_board_number: Optional[int] = None,
     ) -> PowerSupplyUnitAlias:
         """Add a PSU to the DeviceManager.
 
@@ -458,6 +475,8 @@ class DeviceManager(metaclass=Singleton):
                 from the address string.
             port: The port to use when creating a socket connection.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
+            gpib_board_number: The GPIB board number (also referred to as a controller) to be used
+                when making a GPIB connection (defaults to 0).
 
         Returns:
             The PSU device driver.
@@ -472,6 +491,7 @@ class DeviceManager(metaclass=Singleton):
                 connection_type=connection_type,
                 port=port,
                 serial_config=serial_config,
+                gpib_board_number=gpib_board_number,
             ),
         )
 
@@ -483,6 +503,7 @@ class DeviceManager(metaclass=Singleton):
         connection_type: Optional[str] = None,
         port: Optional[int] = None,
         serial_config: Optional[SerialConfig] = None,
+        gpib_board_number: Optional[int] = None,
     ) -> ScopeAlias:
         """Add a scope to the DeviceManager.
 
@@ -496,6 +517,8 @@ class DeviceManager(metaclass=Singleton):
                 from the address string.
             port: The port to use when creating a socket connection.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
+            gpib_board_number: The GPIB board number (also referred to as a controller) to be used
+                when making a GPIB connection (defaults to 0).
 
         Returns:
             The scope device driver.
@@ -510,6 +533,7 @@ class DeviceManager(metaclass=Singleton):
                 connection_type=connection_type,
                 port=port,
                 serial_config=serial_config,
+                gpib_board_number=gpib_board_number,
             ),
         )
 
@@ -521,6 +545,7 @@ class DeviceManager(metaclass=Singleton):
         connection_type: Optional[str] = None,
         port: Optional[int] = None,
         serial_config: Optional[SerialConfig] = None,
+        gpib_board_number: Optional[int] = None,
     ) -> SourceMeasureUnitAlias:
         """Add a SMU to the DeviceManager.
 
@@ -534,6 +559,8 @@ class DeviceManager(metaclass=Singleton):
                 from the address string.
             port: The port to use when creating a socket connection.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
+            gpib_board_number: The GPIB board number (also referred to as a controller) to be used
+                when making a GPIB connection (defaults to 0).
 
         Returns:
             The SMU device driver.
@@ -548,6 +575,7 @@ class DeviceManager(metaclass=Singleton):
                 connection_type=connection_type,
                 port=port,
                 serial_config=serial_config,
+                gpib_board_number=gpib_board_number,
             ),
         )
 
@@ -558,6 +586,7 @@ class DeviceManager(metaclass=Singleton):
         alias: Optional[str] = None,
         connection_type: Optional[str] = None,
         port: Optional[int] = None,
+        gpib_board_number: Optional[int] = None,
     ) -> SystemsSwitchAlias:
         """Add a SS to the DeviceManager.
 
@@ -570,6 +599,8 @@ class DeviceManager(metaclass=Singleton):
                 when the address is a visa resource expression since the connection type is parsed
                 from the address string.
             port: The port to use when creating a socket connection.
+            gpib_board_number: The GPIB board number (also referred to as a controller) to be used
+                when making a GPIB connection (defaults to 0).
 
         Returns:
             The SS device driver.
@@ -583,6 +614,7 @@ class DeviceManager(metaclass=Singleton):
                 alias=alias,
                 connection_type=connection_type,
                 port=port,
+                gpib_board_number=gpib_board_number,
             ),
         )
 
@@ -1020,6 +1052,7 @@ class DeviceManager(metaclass=Singleton):
         port: Optional[int] = None,
         serial_config: Optional[SerialConfig] = None,
         device_driver: Optional[str] = None,
+        gpib_board_number: Optional[int] = None,
     ) -> Union[RESTAPIDevice, PIDevice]:
         """Add a device to the DeviceManager.
 
@@ -1035,6 +1068,8 @@ class DeviceManager(metaclass=Singleton):
             port: The port to use when creating a socket connection.
             serial_config: Serial connection settings, only needed when connection_type="SERIAL".
             device_driver: A string indicating the specific Python device driver to use.
+            gpib_board_number: The GPIB board number (also referred to as a controller) to be used
+                when making a GPIB connection (defaults to 0).
 
         Returns:
             The created device.
@@ -1048,6 +1083,10 @@ class DeviceManager(metaclass=Singleton):
             ):
                 address = address_parts[0]
                 port = int(address_parts[1])
+            if connection_type.startswith(ConnectionTypes.GPIB.value):
+                with contextlib.suppress(ValueError):
+                    gpib_board_number = int("".join(filter(lambda x: x.isdigit(), connection_type)))
+                connection_type = ConnectionTypes.GPIB.value
 
         # Device Manager uses all caps for key mappings to device drivers and aliases
         config_dict: dict[str, Optional[Union[str, int, SerialConfig]]] = {
@@ -1064,6 +1103,8 @@ class DeviceManager(metaclass=Singleton):
             config_dict["serial_config"] = serial_config
         if device_driver:
             config_dict["device_driver"] = device_driver
+        if gpib_board_number:
+            config_dict["gpib_board_number"] = gpib_board_number
         new_device_name, new_device_config = self.__config.add_device(**config_dict)  # pyright: ignore[reportArgumentType]
 
         return self.__create_device(new_device_name, new_device_config)
