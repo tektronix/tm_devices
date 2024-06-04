@@ -220,7 +220,7 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
             raise TypeError(*error.args)  # noqa: TRY200,B904
 
         # Set the GPIB board number to 0 if it is not provided
-        if "GPIB" in self.connection_type.value:
+        if self.connection_type == ConnectionTypes.GPIB:
             if self.gpib_board_number is None:
                 object.__setattr__(self, "gpib_board_number", 0)
             if not isinstance(self.gpib_board_number, int):
