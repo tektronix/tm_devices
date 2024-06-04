@@ -153,6 +153,7 @@ class DMConfigParser:
         lan_port: Optional[int] = None,
         serial_config: Optional[SerialConfig] = None,
         device_driver: Optional[str] = None,
+        gpib_board_number: Optional[int] = None,
     ) -> Tuple[str, DeviceConfigEntry]:
         """Add a new device configuration entry.
 
@@ -169,6 +170,8 @@ class DMConfigParser:
             lan_port: The port number to connect on, used for SOCKET/REST_API connections.
             serial_config: A dataclass for holding serial connection info.
             device_driver: A string indicating the specific Python device driver to use.
+            gpib_board_number: The GPIB board number (also referred to as a controller), only used
+                for GPIB connections. The default is 0.
 
         Returns:
             Tuple of the config entry name and the new DeviceConfigEntry
@@ -187,6 +190,7 @@ class DMConfigParser:
             lan_port=lan_port,
             serial_config=serial_config,
             device_driver=device_driver,
+            gpib_board_number=gpib_board_number,
         )
         # Currently, USB connections when using the PyVISA-py backend are not supported.
         if self.__options.standalone and new_entry.connection_type in {

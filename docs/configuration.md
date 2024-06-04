@@ -103,6 +103,7 @@ devices:
       end_input: none
 # gpib connection
   - address: <gpib_address>
+    gpib_board_number: <gpib_board_number>
     alias: <alias>
     connection_type: GPIB
     device_type: <device_type>
@@ -193,6 +194,9 @@ devices:
         - `end_input:` Character(s) to indicate the end of a message transmission.
             - Valid options: `termination_break`, `termination_char`, `last_bit`, or
                 `none`.
+- `gpib_board_number`
+    - The GPIB board number (also referred to as a controller) that the device is connected to.
+    - If no board number is provided in the configuration, a board number of `0` is assumed.
 - `device_driver`
     - The name of the Python driver class to use for the device (see the
         [`tm_devices.drivers`][] API reference for a complete list of all driver
