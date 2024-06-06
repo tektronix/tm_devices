@@ -36,6 +36,10 @@ Things to be included in the next release go here.
 - Renamed some of the abstract base classes to separate them from the actual device driver classes.
 - Updated the documentation templates to use the new jinja template style that `mkdocstrings-python` is switching to.
 
+### Fixed
+
+- Fixed the API documentation to properly sort all the modules so that the Table of Contents is readable.
+
 ---
 
 ## v1.4.2 (2024-05-09)
