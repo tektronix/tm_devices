@@ -42,24 +42,24 @@ for path in src.rglob("*.py"):
             ("helpers", "enums"),
             ("helpers", "__init__"),
         }:
-            fd.write("    options:\n      show_if_no_docstring: true\n")
+            fd.write("    options:\n        show_if_no_docstring: true\n")
         if module_path.parts[-2:] == ("commands", "__init__"):
             fd.write(
                 "    options:\n"
-                "      inherited_members: false\n"
-                "      filters: ['!^_', '^__init__', '^gen_']\n"
-                "      members_order: source\n"
-                "      merge_init_into_class: false\n"
+                "        inherited_members: false\n"
+                "        filters: ['!^_', '^__init__', '^gen_']\n"
+                "        members_order: source\n"
+                "        merge_init_into_class: false\n"
             )
         elif module_path.parts[1] == "commands":
             fd.write(
                 "    options:\n"
-                "      inherited_members: false\n"
-                "      merge_init_into_class: false\n"
-                "      filters: ['!^_']\n"
+                "        inherited_members: false\n"
+                "        merge_init_into_class: false\n"
+                "        filters: ['!^_']\n"
             )
         if module_path.parts[-2:] == ("drivers", "__init__"):
-            fd.write("    options:\n      members_order: source\n\n")
+            fd.write("    options:\n        members_order: source\n\n")
 
     mkdocs_gen_files.set_edit_path(full_doc_path, path.relative_to(root))
 
