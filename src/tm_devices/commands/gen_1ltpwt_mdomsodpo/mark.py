@@ -11,8 +11,8 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - MARK {NEXT|PREVious}
-    - MARK:CREATE {CH<x>|MATH|REF1 |REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2|REF3|REF4|DIGital| COLUMN|RF_AMPlitude|RF_FREQuency|RF_PHASe}
-    - MARK:DELEte {CH<x>|MATH|REF1|REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2| REF3|REF4|DIGital|COLUMN|SELECTED|ALL||RF_AMPlitude|RF_FREQuency| RF_PHASe}
+    - MARK:CREATE {CH<x>|MATH|REF1|REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2|REF3|REF4|DIGital|COLUMN|RF_AMPlitude|RF_FREQuency|RF_PHASe}
+    - MARK:DELEte {CH<x>|MATH|REF1|REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2|REF3|REF4|DIGital|COLUMN|SELECTED|ALL||RF_AMPlitude|RF_FREQuency|RF_PHASe}
     - MARK:FREE?
     - MARK:SAVEALL TOUSER
     - MARK:SELected:END?
@@ -504,7 +504,7 @@ class MarkDelete(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - MARK:DELEte {CH<x>|MATH|REF1|REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2| REF3|REF4|DIGital|COLUMN|SELECTED|ALL||RF_AMPlitude|RF_FREQuency| RF_PHASe}
+        - MARK:DELEte {CH<x>|MATH|REF1|REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2|REF3|REF4|DIGital|COLUMN|SELECTED|ALL||RF_AMPlitude|RF_FREQuency|RF_PHASe}
         ```
 
     Info:
@@ -530,7 +530,7 @@ class MarkCreate(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - MARK:CREATE {CH<x>|MATH|REF1 |REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2|REF3|REF4|DIGital| COLUMN|RF_AMPlitude|RF_FREQuency|RF_PHASe}
+        - MARK:CREATE {CH<x>|MATH|REF1|REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2|REF3|REF4|DIGital|COLUMN|RF_AMPlitude|RF_FREQuency|RF_PHASe}
         ```
 
     Info:
@@ -600,7 +600,7 @@ class Mark(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MARK:CREATE {CH<x>|MATH|REF1 |REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2|REF3|REF4|DIGital| COLUMN|RF_AMPlitude|RF_FREQuency|RF_PHASe}
+            - MARK:CREATE {CH<x>|MATH|REF1|REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2|REF3|REF4|DIGital|COLUMN|RF_AMPlitude|RF_FREQuency|RF_PHASe}
             ```
 
         Info:
@@ -628,7 +628,7 @@ class Mark(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MARK:DELEte {CH<x>|MATH|REF1|REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2| REF3|REF4|DIGital|COLUMN|SELECTED|ALL||RF_AMPlitude|RF_FREQuency| RF_PHASe}
+            - MARK:DELEte {CH<x>|MATH|REF1|REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2|REF3|REF4|DIGital|COLUMN|SELECTED|ALL||RF_AMPlitude|RF_FREQuency|RF_PHASe}
             ```
 
         Info:

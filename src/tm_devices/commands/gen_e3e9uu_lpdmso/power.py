@@ -101,17 +101,17 @@ Commands and Queries:
     - POWer:POWer<x>:GATing:GLOBal {ON|OFF|1|0}
     - POWer:POWer<x>:GATing:GLOBal?
     - POWer:POWer<x>:GATing?
-    - POWer:POWer<x>:HARMONICS:CLASs {CLASSA | CLASSB | CLASSC | CLASSD}
+    - POWer:POWer<x>:HARMONICS:CLASs {CLASSA|CLASSB|CLASSC|CLASSD}
     - POWer:POWer<x>:HARMONICS:CLASs?
     - POWer:POWer<x>:HARMONICS:CLFile <QString>
     - POWer:POWer<x>:HARMONICS:CLFile?
-    - POWer:POWer<x>:HARMONICS:CMEThod {RATed | MEASured}
+    - POWer:POWer<x>:HARMONICS:CMEThod {RATed|MEASured}
     - POWer:POWer<x>:HARMONICS:CMEThod?
     - POWer:POWer<x>:HARMONICS:FUNDCURRent <NR1>
     - POWer:POWer<x>:HARMONICS:FUNDCURRent?
     - POWer:POWer<x>:HARMONICS:HORDer <NR1>
     - POWer:POWer<x>:HARMONICS:HORDer?
-    - POWer:POWer<x>:HARMONICS:HSOURce {CURRent | VOLTage}
+    - POWer:POWer<x>:HARMONICS:HSOURce {CURRent|VOLTage}
     - POWer:POWer<x>:HARMONICS:HSOURce?
     - POWer:POWer<x>:HARMONICS:IPOWer <NR1>
     - POWer:POWer<x>:HARMONICS:IPOWer?
@@ -119,19 +119,19 @@ Commands and Queries:
     - POWer:POWer<x>:HARMONICS:ISOURce?
     - POWer:POWer<x>:HARMONICS:LINEFREQUEncy {Auto|FIFTyhz|SIXTyhz |THREESIXTyhz|FOURHUNDREdhz|SIXFIFTyhz|EIGHTHUNDREdhz|CUSTom
     - POWer:POWer<x>:HARMONICS:LINEFREQUEncy?
-    - POWer:POWer<x>:HARMONICS:ODDEVen {ALL | ODD | EVEN}
+    - POWer:POWer<x>:HARMONICS:ODDEVen {ALL|ODD|EVEN}
     - POWer:POWer<x>:HARMONICS:ODDEVen?
     - POWer:POWer<x>:HARMONICS:PFACtor <NR1>
     - POWer:POWer<x>:HARMONICS:PFACtor?
-    - POWer:POWer<x>:HARMONICS:POWERRating {HIGH | LOW}
+    - POWer:POWer<x>:HARMONICS:POWERRating {HIGH|LOW}
     - POWer:POWer<x>:HARMONICS:POWERRating?
     - POWer:POWer<x>:HARMONICS:RCURRent <NR1>
     - POWer:POWer<x>:HARMONICS:RCURRent?
-    - POWer:POWer<x>:HARMONICS:STANDard {NONe |IEC |MIL |AM14 |DO160 |CUSTOM}
+    - POWer:POWer<x>:HARMONICS:STANDard {NONe|IEC|MIL|AM14|DO160|CUSTOM}
     - POWer:POWer<x>:HARMONICS:STANDard?
     - POWer:POWer<x>:HARMONICS:STARTFREQUEncy <NR2>
     - POWer:POWer<x>:HARMONICS:STARTFREQUEncy?
-    - POWer:POWer<x>:HARMONICS:UNITs {LOG | LINear}
+    - POWer:POWer<x>:HARMONICS:UNITs {LOG|LINear}
     - POWer:POWer<x>:HARMONICS:UNITs?
     - POWer:POWer<x>:HARMONICS:VSOURce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:HARMONICS:VSOURce?
@@ -191,7 +191,7 @@ Commands and Queries:
     - POWer:POWer<x>:LABel?
     - POWer:POWer<x>:LINERIPPLE:INPUTSOurce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:LINERIPPLE:INPUTSOurce?
-    - POWer:POWer<x>:LINERIPPLE:LFREQuency {FIFty | SIXty | FOURHundred}
+    - POWer:POWer<x>:LINERIPPLE:LFREQuency {FIFty|SIXty|FOURHundred}
     - POWer:POWer<x>:LINERIPPLE:LFREQuency?
     - POWer:POWer<x>:MAGNETICLOSS:ISOURce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:MAGNETICLOSS:ISOURce?
@@ -199,7 +199,7 @@ Commands and Queries:
     - POWer:POWer<x>:MAGNETICLOSS:VSOURce?
     - POWer:POWer<x>:MAGPROPERTY:AREAofcrosssection <NR2>
     - POWer:POWer<x>:MAGPROPERTY:AREAofcrosssection?
-    - POWer:POWer<x>:MAGPROPERTY:EDGESOURce {Current | VOLTAGE}
+    - POWer:POWer<x>:MAGPROPERTY:EDGESOURce {Current|VOLTAGE}
     - POWer:POWer<x>:MAGPROPERTY:EDGESOURce?
     - POWer:POWer<x>:MAGPROPERTY:ISOURce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:MAGPROPERTY:ISOURce?
@@ -241,7 +241,7 @@ Commands and Queries:
     - POWer:POWer<x>:MAGPROPERTY:UNITs?
     - POWer:POWer<x>:MAGPROPERTY:VSOURce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:MAGPROPERTY:VSOURce?
-    - POWer:POWer<x>:NDUTYCYCLE:EDGEType {RISE | FALL | BOTH}
+    - POWer:POWer<x>:NDUTYCYCLE:EDGEType {RISE|FALL|BOTH}
     - POWer:POWer<x>:NDUTYCYCLE:EDGEType?
     - POWer:POWer<x>:NDUTYCYCLE:INPUTSOurce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:NDUTYCYCLE:INPUTSOurce?
@@ -251,15 +251,15 @@ Commands and Queries:
     - POWer:POWer<x>:PDUTYCYCLE:EDGEType?
     - POWer:POWer<x>:PDUTYCYCLE:INPUTSOurce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:PDUTYCYCLE:INPUTSOurce?
-    - POWer:POWer<x>:PERIOD:EDGe {RISE | FALL}
+    - POWer:POWer<x>:PERIOD:EDGe {RISE|FALL}
     - POWer:POWer<x>:PERIOD:EDGe?
     - POWer:POWer<x>:PERIOD:INPUTSOurce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:PERIOD:INPUTSOurce?
-    - POWer:POWer<x>:POWERQUALITY:CCYCles {ON |OFF |1 |0}
+    - POWer:POWer<x>:POWERQUALITY:CCYCles {ON|OFF|1|0}
     - POWer:POWer<x>:POWERQUALITY:CCYCles?
-    - POWer:POWer<x>:POWERQUALITY:FREFerence {VOLTage | CURRent}
+    - POWer:POWer<x>:POWERQUALITY:FREFerence {VOLTage|CURRent}
     - POWer:POWer<x>:POWERQUALITY:FREFerence?
-    - POWer:POWer<x>:POWERQUALITY:ISOURce {CH<x> | MATH<x> | REF<x>}
+    - POWer:POWer<x>:POWERQUALITY:ISOURce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:POWERQUALITY:ISOURce?
     - POWer:POWer<x>:POWERQUALITY:STYPe {AC|DC}
     - POWer:POWer<x>:POWERQUALITY:STYPe?
@@ -298,7 +298,7 @@ Commands and Queries:
     - POWer:POWer<x>:PSRR:STOPFREQuency <NR3>
     - POWer:POWer<x>:PSRR:STOPFREQuency?
     - POWer:POWer<x>:PSRR:TESTCONNection {EXECute}
-    - POWer:POWer<x>:RDSON:DEVICEType {SWITCHING | PNJUNCTION}
+    - POWer:POWer<x>:RDSON:DEVICEType {SWITCHING|PNJUNCTION}
     - POWer:POWer<x>:RDSON:DEVICEType?
     - POWer:POWer<x>:RDSON:ISOURce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:RDSON:ISOURce?
@@ -318,11 +318,11 @@ Commands and Queries:
     - POWer:POWer<x>:REFLevels:ABSolute:RISELow?
     - POWer:POWer<x>:REFLevels:ABSolute:RISEMid <NR1>
     - POWer:POWer<x>:REFLevels:ABSolute:RISEMid?
-    - POWer:POWer<x>:REFLevels:ABSolute:TYPE {SAME | UNIQue}
+    - POWer:POWer<x>:REFLevels:ABSolute:TYPE {SAME|UNIQue}
     - POWer:POWer<x>:REFLevels:ABSolute:TYPE?
-    - POWer:POWer<x>:REFLevels:BASETop {AUTO | MINMax | MEANhistogram | MODEhistogram | EYEhistogram}
+    - POWer:POWer<x>:REFLevels:BASETop {AUTO|MINMax|MEANhistogram|MODEhistogram|EYEhistogram}
     - POWer:POWer<x>:REFLevels:BASETop?
-    - POWer:POWer<x>:REFLevels:METHod {PERCent | ABSolute}
+    - POWer:POWer<x>:REFLevels:METHod {PERCent|ABSolute}
     - POWer:POWer<x>:REFLevels:METHod?
     - POWer:POWer<x>:REFLevels:PERCent:FALLHigh <NR1>
     - POWer:POWer<x>:REFLevels:PERCent:FALLHigh?
@@ -338,7 +338,7 @@ Commands and Queries:
     - POWer:POWer<x>:REFLevels:PERCent:RISELow?
     - POWer:POWer<x>:REFLevels:PERCent:RISEMid <NR1>
     - POWer:POWer<x>:REFLevels:PERCent:RISEMid?
-    - POWer:POWer<x>:REFLevels:PERCent:TYPE {TENNinety | TWENtyeighty | CUSTom}
+    - POWer:POWer<x>:REFLevels:PERCent:TYPE {TENNinety|TWENtyeighty|CUSTom}
     - POWer:POWer<x>:REFLevels:PERCent:TYPE?
     - POWer:POWer<x>:RESUlts:ALLAcqs:MAXimum? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak| Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability| RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE| PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG| TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT| LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL| PKPK|HIGH|LOW|MAX|MIN| INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
     - POWer:POWer<x>:RESUlts:ALLAcqs:MEAN? {InputPwr|Output1Pwr|Output2Pwr| Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency| INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax| IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR| APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ| ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG| TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT| LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL| PKPK|HIGH|LOW|MAX|MIN| INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
@@ -384,23 +384,23 @@ Commands and Queries:
     - POWer:POWer<x>:SOA:SAVemask:FOLDer
     - POWer:POWer<x>:SOA:SAVemask:FOLDer?
     - POWer:POWer<x>:SOA:SAVemask?
-    - POWer:POWer<x>:SOA:VSOURce {CH<x> | MATH<x> | REF<x>}
+    - POWer:POWer<x>:SOA:VSOURce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:SOA:VSOURce?
-    - POWer:POWer<x>:SWITCHINGLOSS:DEVICEType {MOSFET | BJT}
+    - POWer:POWer<x>:SWITCHINGLOSS:DEVICEType {MOSFET|BJT}
     - POWer:POWer<x>:SWITCHINGLOSS:DEVICEType?
-    - POWer:POWer<x>:SWITCHINGLOSS:GATESOurce {CH<x> | MATH<x> | REF<x>}
+    - POWer:POWer<x>:SWITCHINGLOSS:GATESOurce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:SWITCHINGLOSS:GATESOurce?
     - POWer:POWer<x>:SWITCHINGLOSS:ILEVELAbs <NR1>
     - POWer:POWer<x>:SWITCHINGLOSS:ILEVELAbs?
     - POWer:POWer<x>:SWITCHINGLOSS:ILEVELPct <NR1>
     - POWer:POWer<x>:SWITCHINGLOSS:ILEVELPct?
-    - POWer:POWer<x>:SWITCHINGLOSS:ISOURce {CH<x> | MATH<x> | REF<x>}
+    - POWer:POWer<x>:SWITCHINGLOSS:ISOURce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:SWITCHINGLOSS:ISOURce?
-    - POWer:POWer<x>:SWITCHINGLOSS:LEVELUNIts {PERCent | ABSolute}
+    - POWer:POWer<x>:SWITCHINGLOSS:LEVELUNIts {PERCent|ABSolute}
     - POWer:POWer<x>:SWITCHINGLOSS:LEVELUNIts?
     - POWer:POWer<x>:SWITCHINGLOSS:RDSOn <NR1>
     - POWer:POWer<x>:SWITCHINGLOSS:RDSOn?
-    - POWer:POWer<x>:SWITCHINGLOSS:SWLCONFIGType {SMPS | PFC | FLYBACK}
+    - POWer:POWer<x>:SWITCHINGLOSS:SWLCONFIGType {SMPS|PFC|FLYBACK}
     - POWer:POWer<x>:SWITCHINGLOSS:SWLCONFIGType?
     - POWer:POWer<x>:SWITCHINGLOSS:VCESat <NR1>
     - POWer:POWer<x>:SWITCHINGLOSS:VCESat?
@@ -410,9 +410,9 @@ Commands and Queries:
     - POWer:POWer<x>:SWITCHINGLOSS:VLEVELAbs?
     - POWer:POWer<x>:SWITCHINGLOSS:VLEVELPct <NR1>
     - POWer:POWer<x>:SWITCHINGLOSS:VLEVELPct?
-    - POWer:POWer<x>:SWITCHINGLOSS:VSOURce {CH<x> | MATH<x> | REF<x>}
+    - POWer:POWer<x>:SWITCHINGLOSS:VSOURce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:SWITCHINGLOSS:VSOURce?
-    - POWer:POWer<x>:SWITCHINGRIPPLE:INPUTSOurce {CH<x> | MATH<x> | REF<x>}
+    - POWer:POWer<x>:SWITCHINGRIPPLE:INPUTSOurce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:SWITCHINGRIPPLE:INPUTSOurce?
     - POWer:POWer<x>:SWITCHINGRIPPLE:LFREQuency <NR1>
     - POWer:POWer<x>:SWITCHINGRIPPLE:LFREQuency?
@@ -426,7 +426,7 @@ Commands and Queries:
     - POWer:POWer<x>:TURNOFFtime:MAXTIMe?
     - POWer:POWer<x>:TURNOFFtime:MAXVoltage <NR3>
     - POWer:POWer<x>:TURNOFFtime:MAXVoltage?
-    - POWer:POWer<x>:TURNOFFtime:NUMOUTputs {ONE|TWO|THREE|FOUR|FIVE| SIX|SEVEN}
+    - POWer:POWer<x>:TURNOFFtime:NUMOUTputs {ONE|TWO|THREE|FOUR|FIVE|SIX|SEVEN}
     - POWer:POWer<x>:TURNOFFtime:NUMOUTputs?
     - POWer:POWer<x>:TURNOFFtime:OUTPUT1SOURce {CH<x>|REF<x>|MATH<x>}
     - POWer:POWer<x>:TURNOFFtime:OUTPUT1SOURce?
@@ -468,7 +468,7 @@ Commands and Queries:
     - POWer:POWer<x>:TURNONtime:MAXTIMe?
     - POWer:POWer<x>:TURNONtime:MAXVoltage <NR3>
     - POWer:POWer<x>:TURNONtime:MAXVoltage?
-    - POWer:POWer<x>:TURNONtime:NUMOUTputs {ONE|TWO|THREE|FOUR|FIVE| SIX|SEVEN}
+    - POWer:POWer<x>:TURNONtime:NUMOUTputs {ONE|TWO|THREE|FOUR|FIVE|SIX|SEVEN}
     - POWer:POWer<x>:TURNONtime:NUMOUTputs?
     - POWer:POWer<x>:TURNONtime:OUTPUT1SOURce {CH<x>|REF<x>|MATH<x>}
     - POWer:POWer<x>:TURNONtime:OUTPUT1SOURce?
@@ -1171,7 +1171,7 @@ class PowerPowerItemTurnontimeNumoutputs(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:TURNONtime:NUMOUTputs {ONE|TWO|THREE|FOUR|FIVE| SIX|SEVEN}
+        - POWer:POWer<x>:TURNONtime:NUMOUTputs {ONE|TWO|THREE|FOUR|FIVE|SIX|SEVEN}
         - POWer:POWer<x>:TURNONtime:NUMOUTputs?
         ```
 
@@ -1604,7 +1604,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:TURNONtime:NUMOUTputs {ONE|TWO|THREE|FOUR|FIVE| SIX|SEVEN}
+            - POWer:POWer<x>:TURNONtime:NUMOUTputs {ONE|TWO|THREE|FOUR|FIVE|SIX|SEVEN}
             - POWer:POWer<x>:TURNONtime:NUMOUTputs?
             ```
 
@@ -2588,7 +2588,7 @@ class PowerPowerItemTurnofftimeNumoutputs(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:TURNOFFtime:NUMOUTputs {ONE|TWO|THREE|FOUR|FIVE| SIX|SEVEN}
+        - POWer:POWer<x>:TURNOFFtime:NUMOUTputs {ONE|TWO|THREE|FOUR|FIVE|SIX|SEVEN}
         - POWer:POWer<x>:TURNOFFtime:NUMOUTputs?
         ```
 
@@ -3023,7 +3023,7 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:TURNOFFtime:NUMOUTputs {ONE|TWO|THREE|FOUR|FIVE| SIX|SEVEN}
+            - POWer:POWer<x>:TURNOFFtime:NUMOUTputs {ONE|TWO|THREE|FOUR|FIVE|SIX|SEVEN}
             - POWer:POWer<x>:TURNOFFtime:NUMOUTputs?
             ```
 
@@ -3567,7 +3567,7 @@ class PowerPowerItemSwitchingrippleInputsource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:SWITCHINGRIPPLE:INPUTSOurce {CH<x> | MATH<x> | REF<x>}
+        - POWer:POWer<x>:SWITCHINGRIPPLE:INPUTSOurce {CH<x>|MATH<x>|REF<x>}
         - POWer:POWer<x>:SWITCHINGRIPPLE:INPUTSOurce?
         ```
 
@@ -3622,7 +3622,7 @@ class PowerPowerItemSwitchingripple(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:SWITCHINGRIPPLE:INPUTSOurce {CH<x> | MATH<x> | REF<x>}
+            - POWer:POWer<x>:SWITCHINGRIPPLE:INPUTSOurce {CH<x>|MATH<x>|REF<x>}
             - POWer:POWer<x>:SWITCHINGRIPPLE:INPUTSOurce?
             ```
 
@@ -3686,7 +3686,7 @@ class PowerPowerItemSwitchinglossVsource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:SWITCHINGLOSS:VSOURce {CH<x> | MATH<x> | REF<x>}
+        - POWer:POWer<x>:SWITCHINGLOSS:VSOURce {CH<x>|MATH<x>|REF<x>}
         - POWer:POWer<x>:SWITCHINGLOSS:VSOURce?
         ```
 
@@ -3837,7 +3837,7 @@ class PowerPowerItemSwitchinglossSwlconfigtype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:SWITCHINGLOSS:SWLCONFIGType {SMPS | PFC | FLYBACK}
+        - POWer:POWer<x>:SWITCHINGLOSS:SWLCONFIGType {SMPS|PFC|FLYBACK}
         - POWer:POWer<x>:SWITCHINGLOSS:SWLCONFIGType?
         ```
 
@@ -3898,7 +3898,7 @@ class PowerPowerItemSwitchinglossLevelunits(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:SWITCHINGLOSS:LEVELUNIts {PERCent | ABSolute}
+        - POWer:POWer<x>:SWITCHINGLOSS:LEVELUNIts {PERCent|ABSolute}
         - POWer:POWer<x>:SWITCHINGLOSS:LEVELUNIts?
         ```
 
@@ -3928,7 +3928,7 @@ class PowerPowerItemSwitchinglossIsource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:SWITCHINGLOSS:ISOURce {CH<x> | MATH<x> | REF<x>}
+        - POWer:POWer<x>:SWITCHINGLOSS:ISOURce {CH<x>|MATH<x>|REF<x>}
         - POWer:POWer<x>:SWITCHINGLOSS:ISOURce?
         ```
 
@@ -4020,7 +4020,7 @@ class PowerPowerItemSwitchinglossGatesource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:SWITCHINGLOSS:GATESOurce {CH<x> | MATH<x> | REF<x>}
+        - POWer:POWer<x>:SWITCHINGLOSS:GATESOurce {CH<x>|MATH<x>|REF<x>}
         - POWer:POWer<x>:SWITCHINGLOSS:GATESOurce?
         ```
 
@@ -4053,7 +4053,7 @@ class PowerPowerItemSwitchinglossDevicetype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:SWITCHINGLOSS:DEVICEType {MOSFET | BJT}
+        - POWer:POWer<x>:SWITCHINGLOSS:DEVICEType {MOSFET|BJT}
         - POWer:POWer<x>:SWITCHINGLOSS:DEVICEType?
         ```
     """
@@ -4136,7 +4136,7 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:SWITCHINGLOSS:DEVICEType {MOSFET | BJT}
+            - POWer:POWer<x>:SWITCHINGLOSS:DEVICEType {MOSFET|BJT}
             - POWer:POWer<x>:SWITCHINGLOSS:DEVICEType?
             ```
         """
@@ -4162,7 +4162,7 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:SWITCHINGLOSS:GATESOurce {CH<x> | MATH<x> | REF<x>}
+            - POWer:POWer<x>:SWITCHINGLOSS:GATESOurce {CH<x>|MATH<x>|REF<x>}
             - POWer:POWer<x>:SWITCHINGLOSS:GATESOurce?
             ```
 
@@ -4258,7 +4258,7 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:SWITCHINGLOSS:ISOURce {CH<x> | MATH<x> | REF<x>}
+            - POWer:POWer<x>:SWITCHINGLOSS:ISOURce {CH<x>|MATH<x>|REF<x>}
             - POWer:POWer<x>:SWITCHINGLOSS:ISOURce?
             ```
 
@@ -4291,7 +4291,7 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:SWITCHINGLOSS:LEVELUNIts {PERCent | ABSolute}
+            - POWer:POWer<x>:SWITCHINGLOSS:LEVELUNIts {PERCent|ABSolute}
             - POWer:POWer<x>:SWITCHINGLOSS:LEVELUNIts?
             ```
 
@@ -4353,7 +4353,7 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:SWITCHINGLOSS:SWLCONFIGType {SMPS | PFC | FLYBACK}
+            - POWer:POWer<x>:SWITCHINGLOSS:SWLCONFIGType {SMPS|PFC|FLYBACK}
             - POWer:POWer<x>:SWITCHINGLOSS:SWLCONFIGType?
             ```
 
@@ -4513,7 +4513,7 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:SWITCHINGLOSS:VSOURce {CH<x> | MATH<x> | REF<x>}
+            - POWer:POWer<x>:SWITCHINGLOSS:VSOURce {CH<x>|MATH<x>|REF<x>}
             - POWer:POWer<x>:SWITCHINGLOSS:VSOURce?
             ```
 
@@ -4544,7 +4544,7 @@ class PowerPowerItemSoaVsource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:SOA:VSOURce {CH<x> | MATH<x> | REF<x>}
+        - POWer:POWer<x>:SOA:VSOURce {CH<x>|MATH<x>|REF<x>}
         - POWer:POWer<x>:SOA:VSOURce?
         ```
 
@@ -5041,7 +5041,7 @@ class PowerPowerItemSoa(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:SOA:VSOURce {CH<x> | MATH<x> | REF<x>}
+            - POWer:POWer<x>:SOA:VSOURce {CH<x>|MATH<x>|REF<x>}
             - POWer:POWer<x>:SOA:VSOURce?
             ```
 
@@ -6637,7 +6637,7 @@ class PowerPowerItemReflevelsPercentType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:REFLevels:PERCent:TYPE {TENNinety | TWENtyeighty | CUSTom}
+        - POWer:POWer<x>:REFLevels:PERCent:TYPE {TENNinety|TWENtyeighty|CUSTom}
         - POWer:POWer<x>:REFLevels:PERCent:TYPE?
         ```
 
@@ -7121,7 +7121,7 @@ class PowerPowerItemReflevelsPercent(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:REFLevels:PERCent:TYPE {TENNinety | TWENtyeighty | CUSTom}
+            - POWer:POWer<x>:REFLevels:PERCent:TYPE {TENNinety|TWENtyeighty|CUSTom}
             - POWer:POWer<x>:REFLevels:PERCent:TYPE?
             ```
 
@@ -7153,7 +7153,7 @@ class PowerPowerItemReflevelsMethod(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:REFLevels:METHod {PERCent | ABSolute}
+        - POWer:POWer<x>:REFLevels:METHod {PERCent|ABSolute}
         - POWer:POWer<x>:REFLevels:METHod?
         ```
 
@@ -7183,10 +7183,10 @@ class PowerPowerItemReflevelsBasetop(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:REFLevels:BASETop {AUTO | MINMax | MEANhistogram | MODEhistogram | EYEhistogram}
+        - POWer:POWer<x>:REFLevels:BASETop {AUTO|MINMax|MEANhistogram|MODEhistogram|EYEhistogram}
         - POWer:POWer<x>:REFLevels:BASETop?
         ```
-    """  # noqa: E501
+    """
 
 
 class PowerPowerItemReflevelsAbsoluteType(SCPICmdWrite, SCPICmdRead):
@@ -7207,7 +7207,7 @@ class PowerPowerItemReflevelsAbsoluteType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:REFLevels:ABSolute:TYPE {SAME | UNIQue}
+        - POWer:POWer<x>:REFLevels:ABSolute:TYPE {SAME|UNIQue}
         - POWer:POWer<x>:REFLevels:ABSolute:TYPE?
         ```
 
@@ -7696,7 +7696,7 @@ class PowerPowerItemReflevelsAbsolute(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:REFLevels:ABSolute:TYPE {SAME | UNIQue}
+            - POWer:POWer<x>:REFLevels:ABSolute:TYPE {SAME|UNIQue}
             - POWer:POWer<x>:REFLevels:ABSolute:TYPE?
             ```
 
@@ -7774,7 +7774,7 @@ class PowerPowerItemReflevels(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:REFLevels:BASETop {AUTO | MINMax | MEANhistogram | MODEhistogram | EYEhistogram}
+            - POWer:POWer<x>:REFLevels:BASETop {AUTO|MINMax|MEANhistogram|MODEhistogram|EYEhistogram}
             - POWer:POWer<x>:REFLevels:BASETop?
             ```
         """  # noqa: E501
@@ -7798,7 +7798,7 @@ class PowerPowerItemReflevels(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:REFLevels:METHod {PERCent | ABSolute}
+            - POWer:POWer<x>:REFLevels:METHod {PERCent|ABSolute}
             - POWer:POWer<x>:REFLevels:METHod?
             ```
 
@@ -7912,7 +7912,7 @@ class PowerPowerItemRdsonDevicetype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RDSON:DEVICEType {SWITCHING | PNJUNCTION}
+        - POWer:POWer<x>:RDSON:DEVICEType {SWITCHING|PNJUNCTION}
         - POWer:POWer<x>:RDSON:DEVICEType?
         ```
 
@@ -7962,7 +7962,7 @@ class PowerPowerItemRdson(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RDSON:DEVICEType {SWITCHING | PNJUNCTION}
+            - POWer:POWer<x>:RDSON:DEVICEType {SWITCHING|PNJUNCTION}
             - POWer:POWer<x>:RDSON:DEVICEType?
             ```
 
@@ -9185,7 +9185,7 @@ class PowerPowerItemPowerqualityIsource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:POWERQUALITY:ISOURce {CH<x> | MATH<x> | REF<x>}
+        - POWer:POWer<x>:POWERQUALITY:ISOURce {CH<x>|MATH<x>|REF<x>}
         - POWer:POWer<x>:POWERQUALITY:ISOURce?
         ```
 
@@ -9217,7 +9217,7 @@ class PowerPowerItemPowerqualityFreference(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:POWERQUALITY:FREFerence {VOLTage | CURRent}
+        - POWer:POWer<x>:POWERQUALITY:FREFerence {VOLTage|CURRent}
         - POWer:POWer<x>:POWERQUALITY:FREFerence?
         ```
     """
@@ -9240,7 +9240,7 @@ class PowerPowerItemPowerqualityCcycles(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:POWERQUALITY:CCYCles {ON |OFF |1 |0}
+        - POWer:POWer<x>:POWERQUALITY:CCYCles {ON|OFF|1|0}
         - POWer:POWer<x>:POWERQUALITY:CCYCles?
         ```
 
@@ -9299,7 +9299,7 @@ class PowerPowerItemPowerquality(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:POWERQUALITY:CCYCles {ON |OFF |1 |0}
+            - POWer:POWer<x>:POWERQUALITY:CCYCles {ON|OFF|1|0}
             - POWer:POWer<x>:POWERQUALITY:CCYCles?
             ```
 
@@ -9333,7 +9333,7 @@ class PowerPowerItemPowerquality(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:POWERQUALITY:FREFerence {VOLTage | CURRent}
+            - POWer:POWer<x>:POWERQUALITY:FREFerence {VOLTage|CURRent}
             - POWer:POWer<x>:POWERQUALITY:FREFerence?
             ```
         """
@@ -9358,7 +9358,7 @@ class PowerPowerItemPowerquality(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:POWERQUALITY:ISOURce {CH<x> | MATH<x> | REF<x>}
+            - POWer:POWer<x>:POWERQUALITY:ISOURce {CH<x>|MATH<x>|REF<x>}
             - POWer:POWer<x>:POWERQUALITY:ISOURce?
             ```
 
@@ -9482,7 +9482,7 @@ class PowerPowerItemPeriodEdge(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:PERIOD:EDGe {RISE | FALL}
+        - POWer:POWer<x>:PERIOD:EDGe {RISE|FALL}
         - POWer:POWer<x>:PERIOD:EDGe?
         ```
     """
@@ -9525,7 +9525,7 @@ class PowerPowerItemPeriod(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:PERIOD:EDGe {RISE | FALL}
+            - POWer:POWer<x>:PERIOD:EDGe {RISE|FALL}
             - POWer:POWer<x>:PERIOD:EDGe?
             ```
         """
@@ -9831,7 +9831,7 @@ class PowerPowerItemNdutycycleEdgetype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:NDUTYCYCLE:EDGEType {RISE | FALL | BOTH}
+        - POWer:POWer<x>:NDUTYCYCLE:EDGEType {RISE|FALL|BOTH}
         - POWer:POWer<x>:NDUTYCYCLE:EDGEType?
         ```
     """
@@ -9877,7 +9877,7 @@ class PowerPowerItemNdutycycle(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:NDUTYCYCLE:EDGEType {RISE | FALL | BOTH}
+            - POWer:POWer<x>:NDUTYCYCLE:EDGEType {RISE|FALL|BOTH}
             - POWer:POWer<x>:NDUTYCYCLE:EDGEType?
             ```
         """
@@ -10531,7 +10531,7 @@ class PowerPowerItemMagpropertyEdgesource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:MAGPROPERTY:EDGESOURce {Current | VOLTAGE}
+        - POWer:POWer<x>:MAGPROPERTY:EDGESOURce {Current|VOLTAGE}
         - POWer:POWer<x>:MAGPROPERTY:EDGESOURce?
         ```
 
@@ -10716,7 +10716,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:MAGPROPERTY:EDGESOURce {Current | VOLTAGE}
+            - POWer:POWer<x>:MAGPROPERTY:EDGESOURce {Current|VOLTAGE}
             - POWer:POWer<x>:MAGPROPERTY:EDGESOURce?
             ```
 
@@ -11530,7 +11530,7 @@ class PowerPowerItemLinerippleLfrequency(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:LINERIPPLE:LFREQuency {FIFty | SIXty | FOURHundred}
+        - POWer:POWer<x>:LINERIPPLE:LFREQuency {FIFty|SIXty|FOURHundred}
         - POWer:POWer<x>:LINERIPPLE:LFREQuency?
         ```
     """
@@ -11642,7 +11642,7 @@ class PowerPowerItemLineripple(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:LINERIPPLE:LFREQuency {FIFty | SIXty | FOURHundred}
+            - POWer:POWer<x>:LINERIPPLE:LFREQuency {FIFty|SIXty|FOURHundred}
             - POWer:POWer<x>:LINERIPPLE:LFREQuency?
             ```
         """
@@ -13490,7 +13490,7 @@ class PowerPowerItemHarmonicsUnits(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:HARMONICS:UNITs {LOG | LINear}
+        - POWer:POWer<x>:HARMONICS:UNITs {LOG|LINear}
         - POWer:POWer<x>:HARMONICS:UNITs?
         ```
     """
@@ -13540,7 +13540,7 @@ class PowerPowerItemHarmonicsStandard(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:HARMONICS:STANDard {NONe |IEC |MIL |AM14 |DO160 |CUSTOM}
+        - POWer:POWer<x>:HARMONICS:STANDard {NONe|IEC|MIL|AM14|DO160|CUSTOM}
         - POWer:POWer<x>:HARMONICS:STANDard?
         ```
 
@@ -13601,7 +13601,7 @@ class PowerPowerItemHarmonicsPowerrating(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:HARMONICS:POWERRating {HIGH | LOW}
+        - POWer:POWer<x>:HARMONICS:POWERRating {HIGH|LOW}
         - POWer:POWer<x>:HARMONICS:POWERRating?
         ```
     """
@@ -13650,7 +13650,7 @@ class PowerPowerItemHarmonicsOddeven(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:HARMONICS:ODDEVen {ALL | ODD | EVEN}
+        - POWer:POWer<x>:HARMONICS:ODDEVen {ALL|ODD|EVEN}
         - POWer:POWer<x>:HARMONICS:ODDEVen?
         ```
 
@@ -13773,7 +13773,7 @@ class PowerPowerItemHarmonicsHsource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:HARMONICS:HSOURce {CURRent | VOLTage}
+        - POWer:POWer<x>:HARMONICS:HSOURce {CURRent|VOLTage}
         - POWer:POWer<x>:HARMONICS:HSOURce?
         ```
     """
@@ -13851,7 +13851,7 @@ class PowerPowerItemHarmonicsCmethod(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:HARMONICS:CMEThod {RATed | MEASured}
+        - POWer:POWer<x>:HARMONICS:CMEThod {RATed|MEASured}
         - POWer:POWer<x>:HARMONICS:CMEThod?
         ```
 
@@ -13907,7 +13907,7 @@ class PowerPowerItemHarmonicsClass(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:HARMONICS:CLASs {CLASSA | CLASSB | CLASSC | CLASSD}
+        - POWer:POWer<x>:HARMONICS:CLASs {CLASSA|CLASSB|CLASSC|CLASSD}
         - POWer:POWer<x>:HARMONICS:CLASs?
         ```
     """
@@ -13987,7 +13987,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:HARMONICS:CLASs {CLASSA | CLASSB | CLASSC | CLASSD}
+            - POWer:POWer<x>:HARMONICS:CLASs {CLASSA|CLASSB|CLASSC|CLASSD}
             - POWer:POWer<x>:HARMONICS:CLASs?
             ```
         """
@@ -14040,7 +14040,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:HARMONICS:CMEThod {RATed | MEASured}
+            - POWer:POWer<x>:HARMONICS:CMEThod {RATed|MEASured}
             - POWer:POWer<x>:HARMONICS:CMEThod?
             ```
 
@@ -14130,7 +14130,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:HARMONICS:HSOURce {CURRent | VOLTage}
+            - POWer:POWer<x>:HARMONICS:HSOURce {CURRent|VOLTage}
             - POWer:POWer<x>:HARMONICS:HSOURce?
             ```
         """
@@ -14255,7 +14255,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:HARMONICS:ODDEVen {ALL | ODD | EVEN}
+            - POWer:POWer<x>:HARMONICS:ODDEVen {ALL|ODD|EVEN}
             - POWer:POWer<x>:HARMONICS:ODDEVen?
             ```
 
@@ -14317,7 +14317,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:HARMONICS:POWERRating {HIGH | LOW}
+            - POWer:POWer<x>:HARMONICS:POWERRating {HIGH|LOW}
             - POWer:POWer<x>:HARMONICS:POWERRating?
             ```
         """
@@ -14372,7 +14372,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:HARMONICS:STANDard {NONe |IEC |MIL |AM14 |DO160 |CUSTOM}
+            - POWer:POWer<x>:HARMONICS:STANDard {NONe|IEC|MIL|AM14|DO160|CUSTOM}
             - POWer:POWer<x>:HARMONICS:STANDard?
             ```
 
@@ -14434,7 +14434,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:HARMONICS:UNITs {LOG | LINear}
+            - POWer:POWer<x>:HARMONICS:UNITs {LOG|LINear}
             - POWer:POWer<x>:HARMONICS:UNITs?
             ```
         """

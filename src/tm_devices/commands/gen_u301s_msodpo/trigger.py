@@ -37,7 +37,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:FLEXray:CONDition?
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:HIVALue?
-    - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:VALue <QString>
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:VALue?
@@ -45,7 +45,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:HIVALue?
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:OFFSet <NR1>
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:OFFSet?
-    - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier?
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:SIZe <NR1>
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:SIZe?
@@ -53,11 +53,11 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:VALue?
     - TRIGger:A:BUS:B<x>:FLEXray:EOFTYPE {STATic|DYNAMic|ANY}
     - TRIGger:A:BUS:B<x>:FLEXray:EOFTYPE?
-    - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic| NULLFRDynamic}
+    - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic|NULLFRDynamic}
     - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE?
     - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:HIVALue?
-    - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier?
     - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:VALue <QString>
     - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:VALue?
@@ -260,7 +260,7 @@ Commands and Queries:
     - TRIGger:A:VIDeo:CUSTom?
     - TRIGger:A:VIDeo:FIELD {ODD|EVEN|ALLFields|ALLLines|NUMERic}
     - TRIGger:A:VIDeo:FIELD?
-    - TRIGger:A:VIDeo:HDtv:FORMat {HD1080P24|HD720P60|HD480P60|HD1080I50|HD1080P25| HD1080I60|HD1080PSF24}
+    - TRIGger:A:VIDeo:HDtv:FORMat {HD1080P24|HD720P60|HD480P60|HD1080I50|HD1080P25|HD1080I60|HD1080PSF24}
     - TRIGger:A:VIDeo:HDtv:FORMat?
     - TRIGger:A:VIDeo:HOLDoff:FIELD <NR3>
     - TRIGger:A:VIDeo:HOLDoff:FIELD?
@@ -878,7 +878,7 @@ class TriggerAVideoHdtvFormat(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:VIDeo:HDtv:FORMat {HD1080P24|HD720P60|HD480P60|HD1080I50|HD1080P25| HD1080I60|HD1080PSF24}
+        - TRIGger:A:VIDeo:HDtv:FORMat {HD1080P24|HD720P60|HD480P60|HD1080I50|HD1080P25|HD1080I60|HD1080PSF24}
         - TRIGger:A:VIDeo:HDtv:FORMat?
         ```
     """  # noqa: E501
@@ -916,7 +916,7 @@ class TriggerAVideoHdtv(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:VIDeo:HDtv:FORMat {HD1080P24|HD720P60|HD480P60|HD1080I50|HD1080P25| HD1080I60|HD1080PSF24}
+            - TRIGger:A:VIDeo:HDtv:FORMat {HD1080P24|HD720P60|HD480P60|HD1080I50|HD1080P25|HD1080I60|HD1080PSF24}
             - TRIGger:A:VIDeo:HDtv:FORMat?
             ```
         """  # noqa: E501
@@ -7735,7 +7735,7 @@ class TriggerABusBItemFlexrayFrameidQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier?
         ```
 
@@ -7852,7 +7852,7 @@ class TriggerABusBItemFlexrayFrameid(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier?
             ```
 
@@ -7916,7 +7916,7 @@ class TriggerABusBItemFlexrayErrtype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic| NULLFRDynamic}
+        - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic|NULLFRDynamic}
         - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE?
         ```
 
@@ -8033,7 +8033,7 @@ class TriggerABusBItemFlexrayDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier?
         ```
 
@@ -8214,7 +8214,7 @@ class TriggerABusBItemFlexrayData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier?
             ```
 
@@ -8337,7 +8337,7 @@ class TriggerABusBItemFlexrayCyclecountQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
         ```
 
@@ -8457,7 +8457,7 @@ class TriggerABusBItemFlexrayCyclecount(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSThan|MOREThan|EQUal|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
             ```
 
@@ -8699,7 +8699,7 @@ class TriggerABusBItemFlexray(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic| NULLFRDynamic}
+            - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic|NULLFRDynamic}
             - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE?
             ```
 

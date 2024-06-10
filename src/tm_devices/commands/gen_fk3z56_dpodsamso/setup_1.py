@@ -10,19 +10,20 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - SETUp:NAMe <NR1>,<QString>? <NR1>
+    - SETUp:NAMe <NR1>,<QString>
+    - SETUp:NAMe? <NR1>
     ```
 """
 
 from typing import Optional, TYPE_CHECKING
 
-from ..helpers import SCPICmdRead, SCPICmdWrite
+from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
 
 if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
 
 
-class SetupName(SCPICmdWrite):
+class SetupName(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``SETUp:NAMe`` command.
 
     Description:
@@ -33,11 +34,15 @@ class SetupName(SCPICmdWrite):
           name.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``SETUp:NAMe? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the ``SETUp:NAMe? argument`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``SETUp:NAMe value`` command.
 
     SCPI Syntax:
         ```
-        - SETUp:NAMe <NR1>,<QString>? <NR1>
+        - SETUp:NAMe <NR1>,<QString>
+        - SETUp:NAMe? <NR1>
         ```
 
     Info:
@@ -75,11 +80,15 @@ class Setup(SCPICmdRead):
               your setup name.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``SETUp:NAMe? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the ``SETUp:NAMe? argument``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``SETUp:NAMe value`` command.
 
         SCPI Syntax:
             ```
-            - SETUp:NAMe <NR1>,<QString>? <NR1>
+            - SETUp:NAMe <NR1>,<QString>
+            - SETUp:NAMe? <NR1>
             ```
 
         Info:

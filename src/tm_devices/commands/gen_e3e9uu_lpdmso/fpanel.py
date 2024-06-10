@@ -10,7 +10,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - FPAnel:PRESS {AUTOset| BUS| CH<x>| CLEAR| CURsor| DEFaultsetup| FASTAcq| FORCetrig| GPKNOB1| GPKNOB2| HIGHRES| HORZPOS| HORZScale| MATh| NEXt| PREv| REF| RUNSTop| SETTO50| SINGleseq| TOUCHSCReen| TRIGMode| TRIGSlope| USER| VERTPOS| VERTSCALE| ZOOM}
+    - FPAnel:PRESS {AUTOset|BUS|CH<x>|CLEAR|CURsor|DEFaultsetup|FASTAcq|FORCetrig|GPKNOB1|GPKNOB2|HIGHRES|HORZPOS|HORZScale|MATh|NEXt|PREv|REF|RUNSTop|SETTO50|SINGleseq|TOUCHSCReen|TRIGMode|TRIGSlope|USER|VERTPOS|VERTSCALE|ZOOM}
     - FPAnel:TURN {GPKNOB<x>|HORZPOS|HORZScale|PANKNOB| TRIGLevel|VERTPOS|VERTSCALE|ZOOM} [,<NR1>]
     ```
 """  # noqa: E501
@@ -65,7 +65,7 @@ class FpanelPress(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - FPAnel:PRESS {AUTOset| BUS| CH<x>| CLEAR| CURsor| DEFaultsetup| FASTAcq| FORCetrig| GPKNOB1| GPKNOB2| HIGHRES| HORZPOS| HORZScale| MATh| NEXt| PREv| REF| RUNSTop| SETTO50| SINGleseq| TOUCHSCReen| TRIGMode| TRIGSlope| USER| VERTPOS| VERTSCALE| ZOOM}
+        - FPAnel:PRESS {AUTOset|BUS|CH<x>|CLEAR|CURsor|DEFaultsetup|FASTAcq|FORCetrig|GPKNOB1|GPKNOB2|HIGHRES|HORZPOS|HORZScale|MATh|NEXt|PREv|REF|RUNSTop|SETTO50|SINGleseq|TOUCHSCReen|TRIGMode|TRIGSlope|USER|VERTPOS|VERTSCALE|ZOOM}
         ```
 
     Info:
@@ -130,7 +130,7 @@ class Fpanel(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - FPAnel:PRESS {AUTOset| BUS| CH<x>| CLEAR| CURsor| DEFaultsetup| FASTAcq| FORCetrig| GPKNOB1| GPKNOB2| HIGHRES| HORZPOS| HORZScale| MATh| NEXt| PREv| REF| RUNSTop| SETTO50| SINGleseq| TOUCHSCReen| TRIGMode| TRIGSlope| USER| VERTPOS| VERTSCALE| ZOOM}
+            - FPAnel:PRESS {AUTOset|BUS|CH<x>|CLEAR|CURsor|DEFaultsetup|FASTAcq|FORCetrig|GPKNOB1|GPKNOB2|HIGHRES|HORZPOS|HORZScale|MATh|NEXt|PREv|REF|RUNSTop|SETTO50|SINGleseq|TOUCHSCReen|TRIGMode|TRIGSlope|USER|VERTPOS|VERTSCALE|ZOOM}
             ```
 
         Info:

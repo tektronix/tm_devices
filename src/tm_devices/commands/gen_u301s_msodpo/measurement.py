@@ -68,6 +68,7 @@ Commands and Queries:
     - MEASUrement:REFLevel:ABSolute:MID2?
     - MEASUrement:REFLevel:ABSolute:MID<x> <NR3>
     - MEASUrement:REFLevel:ABSolute:MID<x>?
+    - MEASUrement:REFLevel:ABSolute:MID?
     - MEASUrement:REFLevel:METHod {ABSolute|PERCent}
     - MEASUrement:REFLevel:METHod?
     - MEASUrement:REFLevel:PERCent:HIGH <NR3>
@@ -79,6 +80,7 @@ Commands and Queries:
     - MEASUrement:REFLevel:PERCent:MID2?
     - MEASUrement:REFLevel:PERCent:MID<x> <NR3>
     - MEASUrement:REFLevel:PERCent:MID<x>?
+    - MEASUrement:REFLevel:PERCent:MID?
     - MEASUrement:REFLevel?
     - MEASUrement:SNAPShot
     - MEASUrement:STATIstics RESET
@@ -319,7 +321,7 @@ class MeasurementReflevelPercentMid2(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class MeasurementReflevelPercentMid(SCPICmdWrite):
+class MeasurementReflevelPercentMid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevel:PERCent:MID`` command.
 
     Description:
@@ -328,12 +330,16 @@ class MeasurementReflevelPercentMid(SCPICmdWrite):
           command affects the results of period, frequency, delay, and all cyclic measurements.
 
     Usage:
+        - Using the ``.query()`` method will send the ``MEASUrement:REFLevel:PERCent:MID?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:REFLevel:PERCent:MID?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``MEASUrement:REFLevel:PERCent:MID value`` command.
 
     SCPI Syntax:
         ```
         - MEASUrement:REFLevel:PERCent:MID [1] <NR3>[1]?
+        - MEASUrement:REFLevel:PERCent:MID?
         ```
 
     Info:
@@ -493,12 +499,18 @@ class MeasurementReflevelPercent(SCPICmdRead):
               measurements.
 
         Usage:
+            - Using the ``.query()`` method will send the ``MEASUrement:REFLevel:PERCent:MID?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MEASUrement:REFLevel:PERCent:MID?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``MEASUrement:REFLevel:PERCent:MID value`` command.
 
         SCPI Syntax:
             ```
             - MEASUrement:REFLevel:PERCent:MID [1] <NR3>[1]?
+            - MEASUrement:REFLevel:PERCent:MID?
             ```
 
         Info:
@@ -657,7 +669,7 @@ class MeasurementReflevelAbsoluteMid2(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class MeasurementReflevelAbsoluteMid(SCPICmdWrite):
+class MeasurementReflevelAbsoluteMid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevel:ABSolute:MID`` command.
 
     Description:
@@ -666,12 +678,16 @@ class MeasurementReflevelAbsoluteMid(SCPICmdWrite):
           period, frequency, delay, and all cyclic measurements.
 
     Usage:
+        - Using the ``.query()`` method will send the ``MEASUrement:REFLevel:ABSolute:MID?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:REFLevel:ABSolute:MID?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``MEASUrement:REFLevel:ABSolute:MID value`` command.
 
     SCPI Syntax:
         ```
         - MEASUrement:REFLevel:ABSolute:MID [1] <NR3>[1]?
+        - MEASUrement:REFLevel:ABSolute:MID?
         ```
 
     Info:
@@ -827,12 +843,18 @@ class MeasurementReflevelAbsolute(SCPICmdRead):
               of period, frequency, delay, and all cyclic measurements.
 
         Usage:
+            - Using the ``.query()`` method will send the ``MEASUrement:REFLevel:ABSolute:MID?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MEASUrement:REFLevel:ABSolute:MID?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``MEASUrement:REFLevel:ABSolute:MID value`` command.
 
         SCPI Syntax:
             ```
             - MEASUrement:REFLevel:ABSolute:MID [1] <NR3>[1]?
+            - MEASUrement:REFLevel:ABSolute:MID?
             ```
 
         Info:

@@ -9,7 +9,8 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - DISPlay:BRIGHtness {|MINimum|MAXimum}?[MINimum|MAXimum]
+    - DISPlay:BRIGHtness {|MINimum|MAXimum}
+    - DISPlay:BRIGHtness?[MINimum|MAXimum]
     - DISPlay:CONTrast {<contrast>|MINimum|MAXimum}
     - DISPlay:CONTrast?
     - DISPlay:SAVer:IMMediate
@@ -23,7 +24,7 @@ Commands and Queries:
 
 from typing import Optional, TYPE_CHECKING
 
-from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
+from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
@@ -285,18 +286,24 @@ class DisplayContrast(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class DisplayBrightness(SCPICmdWrite):
+class DisplayBrightness(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``DISPlay:BRIGHtness`` command.
 
     Description:
         - This command sets or queries the brightness of the LCD display.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``DISPlay:BRIGHtness? argument``
+          query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``DISPlay:BRIGHtness? argument`` query and raise an AssertionError if the returned value
+          does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DISPlay:BRIGHtness value`` command.
 
     SCPI Syntax:
         ```
-        - DISPlay:BRIGHtness {|MINimum|MAXimum}?[MINimum|MAXimum]
+        - DISPlay:BRIGHtness {|MINimum|MAXimum}
+        - DISPlay:BRIGHtness?[MINimum|MAXimum]
         ```
     """
 
@@ -331,11 +338,17 @@ class Display(SCPICmdRead):
             - This command sets or queries the brightness of the LCD display.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``DISPlay:BRIGHtness? argument``
+              query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``DISPlay:BRIGHtness? argument`` query and raise an AssertionError if the returned
+              value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DISPlay:BRIGHtness value`` command.
 
         SCPI Syntax:
             ```
-            - DISPlay:BRIGHtness {|MINimum|MAXimum}?[MINimum|MAXimum]
+            - DISPlay:BRIGHtness {|MINimum|MAXimum}
+            - DISPlay:BRIGHtness?[MINimum|MAXimum]
             ```
         """
         return self._brightness

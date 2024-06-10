@@ -1,4 +1,3 @@
-# pylint: disable=line-too-long
 """The wlist commands module.
 
 These commands are used in the following models:
@@ -12,10 +11,12 @@ Commands and Queries:
     ```
     - WLISt:NAME? <Index>
     - WLISt:SIZE?
-    - WLISt:WAVeform:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>? <wfm_name>[,<StartIndex>[,<Size>]]
+    - WLISt:WAVeform:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>
+    - WLISt:WAVeform:DATA? <wfm_name>[,<StartIndex>[,<Size>]]
     - WLISt:WAVeform:DELete {<wfm_name>|ALL}
     - WLISt:WAVeform:LENGth? <wfm_name>
-    - WLISt:WAVeform:MARKer:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>? <wfm_name>[,<StartIndex>[,<Size>]]
+    - WLISt:WAVeform:MARKer:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>
+    - WLISt:WAVeform:MARKer:DATA? <wfm_name>[,<StartIndex>[,<Size>]]
     - WLISt:WAVeform:NEW <wfm_name>,<Size>,<Type>
     - WLISt:WAVeform:NORMalize <wfm_name>,<Type>
     - WLISt:WAVeform:PREDefined? <wfm_name>
@@ -23,7 +24,7 @@ Commands and Queries:
     - WLISt:WAVeform:TSTamp? <wfm_name>
     - WLISt:WAVeform:TYPE? <wfm_name>
     ```
-"""  # noqa: E501
+"""
 
 from typing import Optional, TYPE_CHECKING
 
@@ -158,7 +159,7 @@ class WlistWaveformNew(SCPICmdWrite):
     """
 
 
-class WlistWaveformMarkerData(SCPICmdWrite):
+class WlistWaveformMarkerData(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``WLISt:WAVeform:MARKer:DATA`` command.
 
     Description:
@@ -168,14 +169,20 @@ class WlistWaveformMarkerData(SCPICmdWrite):
           http, or file sharing) to transfer the file.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the
+          ``WLISt:WAVeform:MARKer:DATA? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``WLISt:WAVeform:MARKer:DATA? argument`` query and raise an AssertionError if the returned
+          value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:MARKer:DATA value``
           command.
 
     SCPI Syntax:
         ```
-        - WLISt:WAVeform:MARKer:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>? <wfm_name>[,<StartIndex>[,<Size>]]
+        - WLISt:WAVeform:MARKer:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>
+        - WLISt:WAVeform:MARKer:DATA? <wfm_name>[,<StartIndex>[,<Size>]]
         ```
-    """  # noqa: E501
+    """
 
 
 class WlistWaveformMarker(SCPICmdRead):
@@ -205,14 +212,20 @@ class WlistWaveformMarker(SCPICmdRead):
               (ftp, http, or file sharing) to transfer the file.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``WLISt:WAVeform:MARKer:DATA? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``WLISt:WAVeform:MARKer:DATA? argument`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:MARKer:DATA value``
               command.
 
         SCPI Syntax:
             ```
-            - WLISt:WAVeform:MARKer:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>? <wfm_name>[,<StartIndex>[,<Size>]]
+            - WLISt:WAVeform:MARKer:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>
+            - WLISt:WAVeform:MARKer:DATA? <wfm_name>[,<StartIndex>[,<Size>]]
             ```
-        """  # noqa: E501
+        """
         return self._data
 
 
@@ -256,7 +269,7 @@ class WlistWaveformDelete(SCPICmdWrite):
     """
 
 
-class WlistWaveformData(SCPICmdWrite):
+class WlistWaveformData(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``WLISt:WAVeform:DATA`` command.
 
     Description:
@@ -270,11 +283,17 @@ class WlistWaveformData(SCPICmdWrite):
           specification.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``WLISt:WAVeform:DATA? argument``
+          query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``WLISt:WAVeform:DATA? argument`` query and raise an AssertionError if the returned value
+          does not match ``value``.
         - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:DATA value`` command.
 
     SCPI Syntax:
         ```
-        - WLISt:WAVeform:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>? <wfm_name>[,<StartIndex>[,<Size>]]
+        - WLISt:WAVeform:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>
+        - WLISt:WAVeform:DATA? <wfm_name>[,<StartIndex>[,<Size>]]
         ```
 
     Info:
@@ -283,7 +302,7 @@ class WlistWaveformData(SCPICmdWrite):
         - ``<StartIndex>`` ::=<NR1>.
         - ``<Size>`` ::=<NR1>.
         - ``<block_data>`` ::=<IEEE 488.2 block>.
-    """  # noqa: E501
+    """
 
 
 #  pylint: disable=too-many-instance-attributes
@@ -336,12 +355,18 @@ class WlistWaveform(SCPICmdRead):
               detailed format specification.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``WLISt:WAVeform:DATA? argument``
+              query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``WLISt:WAVeform:DATA? argument`` query and raise an AssertionError if the returned
+              value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:DATA value``
               command.
 
         SCPI Syntax:
             ```
-            - WLISt:WAVeform:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>? <wfm_name>[,<StartIndex>[,<Size>]]
+            - WLISt:WAVeform:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>
+            - WLISt:WAVeform:DATA? <wfm_name>[,<StartIndex>[,<Size>]]
             ```
 
         Info:
@@ -350,7 +375,7 @@ class WlistWaveform(SCPICmdRead):
             - ``<StartIndex>`` ::=<NR1>.
             - ``<Size>`` ::=<NR1>.
             - ``<block_data>`` ::=<IEEE 488.2 block>.
-        """  # noqa: E501
+        """
         return self._data
 
     @property

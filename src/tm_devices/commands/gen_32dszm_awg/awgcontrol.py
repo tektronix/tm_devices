@@ -27,7 +27,8 @@ Commands and Queries:
     - AWGControl:DOUTput[n]:STATe?
     - AWGControl:ENHanced:SEQuence:JMODe <jump_mode>
     - AWGControl:ENHanced:SEQuence:JMODe?
-    - AWGControl:EVENt:DJUMp:DEFine <event_pattern>,<jump_target>? <event_pattern>
+    - AWGControl:EVENt:DJUMp:DEFine <event_pattern>,<jump_target>
+    - AWGControl:EVENt:DJUMp:DEFine? <event_pattern>
     - AWGControl:EVENt:JMODe <jump_mode>
     - AWGControl:EVENt:JMODe?
     - AWGControl:EVENt:SOFTware:IMMediate <target>
@@ -907,7 +908,7 @@ class AwgcontrolEventJmode(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class AwgcontrolEventDjumpDefine(SCPICmdWrite):
+class AwgcontrolEventDjumpDefine(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``AWGControl:EVENt:DJUMp:DEFine`` command.
 
     Description:
@@ -915,12 +916,18 @@ class AwgcontrolEventDjumpDefine(SCPICmdWrite):
           returns the jump target associated to the specified ``<event_pattern>``.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the
+          ``AWGControl:EVENt:DJUMp:DEFine? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``AWGControl:EVENt:DJUMp:DEFine? argument`` query and raise an AssertionError if the
+          returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``AWGControl:EVENt:DJUMp:DEFine value``
           command.
 
     SCPI Syntax:
         ```
-        - AWGControl:EVENt:DJUMp:DEFine <event_pattern>,<jump_target>? <event_pattern>
+        - AWGControl:EVENt:DJUMp:DEFine <event_pattern>,<jump_target>
+        - AWGControl:EVENt:DJUMp:DEFine? <event_pattern>
         ```
 
     Info:
@@ -958,12 +965,18 @@ class AwgcontrolEventDjump(SCPICmdRead):
               query returns the jump target associated to the specified ``<event_pattern>``.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``AWGControl:EVENt:DJUMp:DEFine? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``AWGControl:EVENt:DJUMp:DEFine? argument`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``AWGControl:EVENt:DJUMp:DEFine value`` command.
 
         SCPI Syntax:
             ```
-            - AWGControl:EVENt:DJUMp:DEFine <event_pattern>,<jump_target>? <event_pattern>
+            - AWGControl:EVENt:DJUMp:DEFine <event_pattern>,<jump_target>
+            - AWGControl:EVENt:DJUMp:DEFine? <event_pattern>
             ```
 
         Info:

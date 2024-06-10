@@ -11,7 +11,7 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - AUTOSet {EXECute|UNDo|VFields|VIDeo|VLines}
-    - AUTOSet:OVErlay {ON | OFF}
+    - AUTOSet:OVErlay {ON|OFF}
     - AUTOSet:PERcent <NR3>
     ```
 """
@@ -55,7 +55,7 @@ class AutosetOverlay(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - AUTOSet:OVErlay {ON | OFF}
+        - AUTOSet:OVErlay {ON|OFF}
         ```
     """
 
@@ -113,7 +113,7 @@ class Autoset(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - AUTOSet:OVErlay {ON | OFF}
+            - AUTOSet:OVErlay {ON|OFF}
             ```
         """
         return self._overlay

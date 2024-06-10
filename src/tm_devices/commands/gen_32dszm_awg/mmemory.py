@@ -12,7 +12,8 @@ Commands and Queries:
     - MMEMory:CATalog? [<msus>]
     - MMEMory:CDIRectory [<directory_name>]
     - MMEMory:CDIRectory?
-    - MMEMory:DATA <file_name>,<block_data>? <file_name>
+    - MMEMory:DATA <file_name>,<block_data>
+    - MMEMory:DATA? <file_name>
     - MMEMory:DELete <file_name>[,<msus>]
     - MMEMory:EXPort <wfm_name>,<filename>,<type>
     - MMEMory:IMPort <wfm_name>,<filename>,<type>
@@ -812,7 +813,7 @@ class MmemoryDelete(SCPICmdWrite):
     """
 
 
-class MmemoryData(SCPICmdWrite):
+class MmemoryData(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``MMEMory:DATA`` command.
 
     Description:
@@ -824,11 +825,15 @@ class MmemoryData(SCPICmdWrite):
           sharing) to transfer the file.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``MMEMory:DATA? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the ``MMEMory:DATA? argument``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MMEMory:DATA value`` command.
 
     SCPI Syntax:
         ```
-        - MMEMory:DATA <file_name>,<block_data>? <file_name>
+        - MMEMory:DATA <file_name>,<block_data>
+        - MMEMory:DATA? <file_name>
         ```
 
     Info:
@@ -960,11 +965,15 @@ class Mmemory(SCPICmdRead):
               sharing) to transfer the file.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``MMEMory:DATA? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the ``MMEMory:DATA? argument``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MMEMory:DATA value`` command.
 
         SCPI Syntax:
             ```
-            - MMEMory:DATA <file_name>,<block_data>? <file_name>
+            - MMEMory:DATA <file_name>,<block_data>
+            - MMEMory:DATA? <file_name>
             ```
 
         Info:

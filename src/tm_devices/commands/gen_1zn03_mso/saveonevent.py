@@ -17,7 +17,7 @@ Commands and Queries:
     - SAVEONEVent:IMAGe:FILEFormat?
     - SAVEONEVent:WAVEform:FILEFormat {INTERNal|SPREADSheet|MATlab}
     - SAVEONEVent:WAVEform:FILEFormat?
-    - SAVEONEVent:WAVEform:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| ALL}
+    - SAVEONEVent:WAVEform:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|ALL}
     - SAVEONEVent:WAVEform:SOUrce?
     ```
 """
@@ -47,7 +47,7 @@ class SaveoneventWaveformSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVEONEVent:WAVEform:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| ALL}
+        - SAVEONEVent:WAVEform:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|ALL}
         - SAVEONEVent:WAVEform:SOUrce?
         ```
 
@@ -157,7 +157,7 @@ class SaveoneventWaveform(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVEONEVent:WAVEform:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| ALL}
+            - SAVEONEVent:WAVEform:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|ALL}
             - SAVEONEVent:WAVEform:SOUrce?
             ```
 

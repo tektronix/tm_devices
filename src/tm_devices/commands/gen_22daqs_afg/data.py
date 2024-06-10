@@ -12,26 +12,30 @@ Commands and Queries:
     ```
     - DATA:CATalog?
     - DATA:COPY <trace_name>,{EMEMory[1]|EMEMory2}{EMEMory[1]|EMEMory2},{USER[1]|USER<x>}
-    - DATA:DATA {EMEMory|EMEMory1|EMEMory2},<binary_block_data>?{EMEMory[1]|EMEMory2}
+    - DATA:DATA {EMEMory|EMEMory<x>},<binary_block_data>
     - DATA:DATA:LINE {EMEMory|EMEMory<x>},<start_point>,<point_data1>, <end_point>,<point_data2>
-    - DATA:DATA:VALue {EMEMory|EMEMory1|EMEMory2},<point>,<data>?{EMEMory[1]|EMEMory2},<points>
+    - DATA:DATA:VALue {EMEMory|EMEMory<x>},<point>,<data>
+    - DATA:DATA:VALue? {EMEMory[1]|EMEMory2},<points>
+    - DATA:DATA? {EMEMory[1]|EMEMory2}
     - DATA:DEFine {EMEMory|EMEMory<x>}[,{<points>|<trace_name>}]
     - DATA:DELete:NAME <trace_name>
     - DATA:EMEMCOPY {EMEMory[1]|EMEMory2}, {EMEMory[1]|EMEMory2}
-    - DATA:LOCK:STATe {USER[1]|USER2|USER3|USER4},{ON|OFF|<NR1>}?{USER[1]|USER2|USER3|USER4}
-    - DATA:POINts {EMEMory|EMEMory1|EMEMory2}[,<points>|MINimum|MAXimum]?{EMEMory[1]|EMEMory2}{,MIN|MAX}
+    - DATA:LOCK:STATe {USER[1]|USER<x>},{ON|OFF|<NR1>}
+    - DATA:LOCK:STATe? {USER[1]|USER2|USER3|USER4}
+    - DATA:POINts {EMEMory|EMEMory<x>}[,<points>|MINimum|MAXimum]
+    - DATA:POINts? {EMEMory[1]|EMEMory2}{,MIN|MAX}
     ```
-"""  # noqa: E501
+"""
 
 from typing import Optional, TYPE_CHECKING
 
-from ..helpers import SCPICmdRead, SCPICmdWrite
+from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
 
 if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
 
 
-class DataPoints(SCPICmdWrite):
+class DataPoints(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``DATA:POINts`` command.
 
     Description:
@@ -39,11 +43,15 @@ class DataPoints(SCPICmdWrite):
           edit memory.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``DATA:POINts? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the ``DATA:POINts? argument``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DATA:POINts value`` command.
 
     SCPI Syntax:
         ```
-        - DATA:POINts {EMEMory|EMEMory1|EMEMory2}[,<points>|MINimum|MAXimum]?{EMEMory[1]|EMEMory2}{,MIN|MAX}
+        - DATA:POINts {EMEMory|EMEMory<x>}[,<points>|MINimum|MAXimum]
+        - DATA:POINts? {EMEMory[1]|EMEMory2}{,MIN|MAX}
         ```
 
     Info:
@@ -53,21 +61,25 @@ class DataPoints(SCPICmdWrite):
         - ``<points>::=<NR1>``
         - ``EMEMory[1]`` refers to the query arguments column in the table in Appendix B.
         - ``EMEMory2`` refers to the query arguments column in the table in Appendix B.
-    """  # noqa: E501
+    """
 
 
-class DataLockState(SCPICmdWrite):
+class DataLockState(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``DATA:LOCK:STATe`` command.
 
     Description:
         - This command sets or queries whether to lock or unlock the user waveform memory.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``DATA:LOCK:STATe? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the ``DATA:LOCK:STATe? argument``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DATA:LOCK:STATe value`` command.
 
     SCPI Syntax:
         ```
-        - DATA:LOCK:STATe {USER[1]|USER2|USER3|USER4},{ON|OFF|<NR1>}?{USER[1]|USER2|USER3|USER4}
+        - DATA:LOCK:STATe {USER[1]|USER<x>},{ON|OFF|<NR1>}
+        - DATA:LOCK:STATe? {USER[1]|USER2|USER3|USER4}
         ```
 
     Info:
@@ -100,11 +112,17 @@ class DataLock(SCPICmdRead):
             - This command sets or queries whether to lock or unlock the user waveform memory.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``DATA:LOCK:STATe? argument``
+              query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``DATA:LOCK:STATe? argument`` query and raise an AssertionError if the returned value
+              does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DATA:LOCK:STATe value`` command.
 
         SCPI Syntax:
             ```
-            - DATA:LOCK:STATe {USER[1]|USER2|USER3|USER4},{ON|OFF|<NR1>}?{USER[1]|USER2|USER3|USER4}
+            - DATA:LOCK:STATe {USER[1]|USER<x>},{ON|OFF|<NR1>}
+            - DATA:LOCK:STATe? {USER[1]|USER2|USER3|USER4}
             ```
 
         Info:
@@ -225,18 +243,22 @@ class DataDefine(SCPICmdWrite):
     """
 
 
-class DataDataValue(SCPICmdWrite):
+class DataDataValue(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``DATA:DATA:VALue`` command.
 
     Description:
         - This command sets or queries the data value at the specified point in the edit memory.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``DATA:DATA:VALue? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the ``DATA:DATA:VALue? argument``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DATA:DATA:VALue value`` command.
 
     SCPI Syntax:
         ```
-        - DATA:DATA:VALue {EMEMory|EMEMory1|EMEMory2},<point>,<data>?{EMEMory[1]|EMEMory2},<points>
+        - DATA:DATA:VALue {EMEMory|EMEMory<x>},<point>,<data>
+        - DATA:DATA:VALue? {EMEMory[1]|EMEMory2},<points>
         ```
 
     Info:
@@ -277,7 +299,7 @@ class DataDataLine(SCPICmdWrite):
     """
 
 
-class DataData(SCPICmdWrite, SCPICmdRead):
+class DataData(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``DATA:DATA`` command.
 
     Description:
@@ -285,11 +307,15 @@ class DataData(SCPICmdWrite, SCPICmdRead):
           in the arbitrary function generator. The query command returns the binary block data.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``DATA:DATA? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the ``DATA:DATA? argument`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DATA:DATA value`` command.
 
     SCPI Syntax:
         ```
-        - DATA:DATA {EMEMory|EMEMory1|EMEMory2},<binary_block_data>?{EMEMory[1]|EMEMory2}
+        - DATA:DATA {EMEMory|EMEMory<x>},<binary_block_data>
+        - DATA:DATA? {EMEMory[1]|EMEMory2}
         ```
 
     Info:
@@ -345,11 +371,17 @@ class DataData(SCPICmdWrite, SCPICmdRead):
             - This command sets or queries the data value at the specified point in the edit memory.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``DATA:DATA:VALue? argument``
+              query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``DATA:DATA:VALue? argument`` query and raise an AssertionError if the returned value
+              does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DATA:DATA:VALue value`` command.
 
         SCPI Syntax:
             ```
-            - DATA:DATA:VALue {EMEMory|EMEMory1|EMEMory2},<point>,<data>?{EMEMory[1]|EMEMory2},<points>
+            - DATA:DATA:VALue {EMEMory|EMEMory<x>},<point>,<data>
+            - DATA:DATA:VALue? {EMEMory[1]|EMEMory2},<points>
             ```
 
         Info:
@@ -361,7 +393,7 @@ class DataData(SCPICmdWrite, SCPICmdRead):
             - ``EMEMory`` refers to the query arguments column in the table in Appendix B.
             - ``EMEMory1`` refers to the query arguments column in the table in Appendix B.
             - ``EMEMory2`` refers to the query arguments column in the table in Appendix B.
-        """  # noqa: E501
+        """
         return self._value
 
 
@@ -556,11 +588,15 @@ class Data(SCPICmdRead):
               edit memory.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``DATA:POINts? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the ``DATA:POINts? argument``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DATA:POINts value`` command.
 
         SCPI Syntax:
             ```
-            - DATA:POINts {EMEMory|EMEMory1|EMEMory2}[,<points>|MINimum|MAXimum]?{EMEMory[1]|EMEMory2}{,MIN|MAX}
+            - DATA:POINts {EMEMory|EMEMory<x>}[,<points>|MINimum|MAXimum]
+            - DATA:POINts? {EMEMory[1]|EMEMory2}{,MIN|MAX}
             ```
 
         Info:
@@ -570,7 +606,7 @@ class Data(SCPICmdRead):
             - ``<points>::=<NR1>``
             - ``EMEMory[1]`` refers to the query arguments column in the table in Appendix B.
             - ``EMEMory2`` refers to the query arguments column in the table in Appendix B.
-        """  # noqa: E501
+        """
         return self._points
 
     @property
@@ -583,11 +619,15 @@ class Data(SCPICmdRead):
               data.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``DATA:DATA? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the ``DATA:DATA? argument``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DATA:DATA value`` command.
 
         SCPI Syntax:
             ```
-            - DATA:DATA {EMEMory|EMEMory1|EMEMory2},<binary_block_data>?{EMEMory[1]|EMEMory2}
+            - DATA:DATA {EMEMory|EMEMory<x>},<binary_block_data>
+            - DATA:DATA? {EMEMory[1]|EMEMory2}
             ```
 
         Info:

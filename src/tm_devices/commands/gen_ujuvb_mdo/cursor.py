@@ -21,7 +21,7 @@ Commands and Queries:
     - CURSor:HBArs?
     - CURSor:MODe {TRACk|INDependent}
     - CURSor:MODe?
-    - CURSor:SOUrce {CH<x>|REF<x>|MATH |BUS<x>|D<x>|AUTO}
+    - CURSor:SOUrce {CH<x>|REF<x>|MATH|BUS<x>|D<x>|AUTO}
     - CURSor:SOUrce?
     - CURSor:VBArs:ALTERNATE<x>?
     - CURSor:VBArs:DELTa?
@@ -1554,7 +1554,7 @@ class CursorSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - CURSor:SOUrce {CH<x>|REF<x>|MATH |BUS<x>|D<x>|AUTO}
+        - CURSor:SOUrce {CH<x>|REF<x>|MATH|BUS<x>|D<x>|AUTO}
         - CURSor:SOUrce?
         ```
 
@@ -2033,7 +2033,7 @@ class Cursor(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CURSor:SOUrce {CH<x>|REF<x>|MATH |BUS<x>|D<x>|AUTO}
+            - CURSor:SOUrce {CH<x>|REF<x>|MATH|BUS<x>|D<x>|AUTO}
             - CURSor:SOUrce?
             ```
 

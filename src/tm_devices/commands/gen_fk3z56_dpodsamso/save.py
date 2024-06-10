@@ -18,7 +18,7 @@ Commands and Queries:
     - SAVe:WAVEform [<wfm>,REF<x>]| [<wfm>,<QString>] | [ALL,[QString]]| [DIGITALALL,<QString>]
     - SAVe:WAVEform:DATa:STARt {<NR1>}
     - SAVe:WAVEform:DATa:STOP {<NR1>}
-    - SAVe:WAVEform:FILEFormat {INTERNal|MATHCad|MATLab|SPREADSHEETCsv| SPREADSHEETTxt|TIMEStamp|AUTO}
+    - SAVe:WAVEform:FILEFormat {INTERNal|MATHCad|MATLab|SPREADSHEETCsv|SPREADSHEETTxt|TIMEStamp|AUTO}
     - SAVe:WAVEform:FILEFormat?
     - SAVe:WAVEform:FORCESAMEFilesize {<NR1>|OFF|ON}
     - SAVe:WAVEform:FORCESAMEFilesize?
@@ -87,7 +87,7 @@ class SaveWaveformFileformat(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVe:WAVEform:FILEFormat {INTERNal|MATHCad|MATLab|SPREADSHEETCsv| SPREADSHEETTxt|TIMEStamp|AUTO}
+        - SAVe:WAVEform:FILEFormat {INTERNal|MATHCad|MATLab|SPREADSHEETCsv|SPREADSHEETTxt|TIMEStamp|AUTO}
         - SAVe:WAVEform:FILEFormat?
         ```
 
@@ -308,7 +308,7 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVe:WAVEform:FILEFormat {INTERNal|MATHCad|MATLab|SPREADSHEETCsv| SPREADSHEETTxt|TIMEStamp|AUTO}
+            - SAVe:WAVEform:FILEFormat {INTERNal|MATHCad|MATLab|SPREADSHEETCsv|SPREADSHEETTxt|TIMEStamp|AUTO}
             - SAVe:WAVEform:FILEFormat?
             ```
 

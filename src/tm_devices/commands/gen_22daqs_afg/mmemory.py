@@ -16,6 +16,7 @@ Commands and Queries:
     - MMEMory:LOAD:STATe {0|1|2|3|4},<file_name>
     - MMEMory:LOAD:TRACe EMEMory|EMEMory[1]|EMEMory2,<file_name>
     - MMEMory:LOCK:STATe <file_name>,{ON|OFF|<NR1>}<file_name>?
+    - MMEMory:LOCK:STATe?
     - MMEMory:MDIRectory <directory_name>
     - MMEMory:STORe:STATe {0|1|2|3|4},<file_name>
     - MMEMory:STORe:TRACe EMEMory[1]|EMEMory2,<file_name>
@@ -146,7 +147,7 @@ class MmemoryMdirectory(SCPICmdWrite):
     """
 
 
-class MmemoryLockState(SCPICmdWrite):
+class MmemoryLockState(SCPICmdWrite, SCPICmdRead):
     """The ``MMEMory:LOCK:STATe`` command.
 
     Description:
@@ -154,11 +155,15 @@ class MmemoryLockState(SCPICmdWrite):
           system. If you lock a file or directory, you cannot overwrite or delete it.
 
     Usage:
+        - Using the ``.query()`` method will send the ``MMEMory:LOCK:STATe?`` query.
+        - Using the ``.verify(value)`` method will send the ``MMEMory:LOCK:STATe?`` query and raise
+          an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MMEMory:LOCK:STATe value`` command.
 
     SCPI Syntax:
         ```
         - MMEMory:LOCK:STATe <file_name>,{ON|OFF|<NR1>}<file_name>?
+        - MMEMory:LOCK:STATe?
         ```
     """
 
@@ -188,11 +193,15 @@ class MmemoryLock(SCPICmdRead):
               system. If you lock a file or directory, you cannot overwrite or delete it.
 
         Usage:
+            - Using the ``.query()`` method will send the ``MMEMory:LOCK:STATe?`` query.
+            - Using the ``.verify(value)`` method will send the ``MMEMory:LOCK:STATe?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MMEMory:LOCK:STATe value`` command.
 
         SCPI Syntax:
             ```
             - MMEMory:LOCK:STATe <file_name>,{ON|OFF|<NR1>}<file_name>?
+            - MMEMory:LOCK:STATe?
             ```
         """
         return self._state

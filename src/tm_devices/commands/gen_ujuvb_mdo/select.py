@@ -16,7 +16,7 @@ Commands and Queries:
     - SELect:BUS<x>?
     - SELect:CH<x> {ON|OFF|1|0}
     - SELect:CH<x>?
-    - SELect:CONTROl {CH<x> |MATH|REF<x>|BUS<x>|D<x>|RF_AMPlitude|RF_FREQuency |RF_PHASe|RF_NORMal|RF_AVErage| RF_MAXHold|RF_MINHold}
+    - SELect:CONTROl {CH<x>|MATH|REF<x>|BUS<x>|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe|RF_NORMal|RF_AVErage|RF_MAXHold|RF_MINHold}
     - SELect:CONTROl?
     - SELect:D<x> {<NR1>|OFF|ON}
     - SELect:D<x>?
@@ -300,7 +300,7 @@ class SelectControl(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:CONTROl {CH<x> |MATH|REF<x>|BUS<x>|D<x>|RF_AMPlitude|RF_FREQuency |RF_PHASe|RF_NORMal|RF_AVErage| RF_MAXHold|RF_MINHold}
+        - SELect:CONTROl {CH<x>|MATH|REF<x>|BUS<x>|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe|RF_NORMal|RF_AVErage|RF_MAXHold|RF_MINHold}
         - SELect:CONTROl?
         ```
 
@@ -509,7 +509,7 @@ class Select(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:CONTROl {CH<x> |MATH|REF<x>|BUS<x>|D<x>|RF_AMPlitude|RF_FREQuency |RF_PHASe|RF_NORMal|RF_AVErage| RF_MAXHold|RF_MINHold}
+            - SELect:CONTROl {CH<x>|MATH|REF<x>|BUS<x>|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe|RF_NORMal|RF_AVErage|RF_MAXHold|RF_MINHold}
             - SELect:CONTROl?
             ```
 

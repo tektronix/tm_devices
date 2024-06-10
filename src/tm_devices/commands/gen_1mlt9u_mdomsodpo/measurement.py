@@ -41,7 +41,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:MAXimum?
     - MEASUrement:MEAS<x>:MEAN?
     - MEASUrement:MEAS<x>:MINImum?
-    - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>|HIStogram|RF_AMPlitude| RF_FREQuency|RF_PHASe}
+    - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>|HIStogram|RF_AMPlitude|RF_FREQuency|RF_PHASe}
     - MEASUrement:MEAS<x>:SOUrce1?
     - MEASUrement:MEAS<x>:STATE {OFF|ON|<NR1>}
     - MEASUrement:MEAS<x>:STATE?
@@ -2311,7 +2311,7 @@ class MeasurementMeasItemSource1(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>|HIStogram|RF_AMPlitude| RF_FREQuency|RF_PHASe}
+        - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>|HIStogram|RF_AMPlitude|RF_FREQuency|RF_PHASe}
         - MEASUrement:MEAS<x>:SOUrce1?
         ```
 
@@ -2739,7 +2739,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>|HIStogram|RF_AMPlitude| RF_FREQuency|RF_PHASe}
+            - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>|HIStogram|RF_AMPlitude|RF_FREQuency|RF_PHASe}
             - MEASUrement:MEAS<x>:SOUrce1?
             ```
 

@@ -16,13 +16,13 @@ Commands and Queries:
     - BUS:B1<x>:DISplay:LAYout?
     - BUS:B1<x>:USB:HYSTeresis <NR3>
     - BUS:B1<x>:USB:HYSTeresis?
-    - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K | RATE153K|RATE20K|RATE25K|RATE250K | RATE31K|RATE33K|RATE37K|RATE400K | RATE50K|RATE500K|RATE62K|RATE68K | RATE800K|RATE83K|RATE92K|CUSTom}
+    - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K|RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE37K|RATE400K|RATE50K|RATE500K|RATE62K|RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
     - BUS:B<x>:CAN:BITRate:VALue <nr3>
     - BUS:B<x>:CAN:BITRate:VALue?
     - BUS:B<x>:CAN:BITRate?
     - BUS:B<x>:CAN:PRObe {DIFFerential|CANH|CANL|RX|TX}
     - BUS:B<x>:CAN:PRObe?
-    - BUS:B<x>:CAN:SOUrce {CH<x> |D0|D1|D10|D11 |D12|D13|D14|D15 |D2|D3|D4|D5 |D6|D7|D8|D9 |MATH<x>}
+    - BUS:B<x>:CAN:SOUrce {CH<x>|D0|D1|D10|D11|D12|D13|D14|D15|D2|D3|D4|D5|D6|D7|D8|D9|MATH<x>}
     - BUS:B<x>:CAN:SOUrce?
     - BUS:B<x>:DISplay:DECOde:FILe {decodeFileName}
     - BUS:B<x>:DISplay:DECOde:FILe?
@@ -33,9 +33,9 @@ Commands and Queries:
     - BUS:B<x>:ETHERnet:PRObe {DIFFerential|SINGleended}
     - BUS:B<x>:ETHERnet:PRObe?
     - BUS:B<x>:ETHERnet:SOUrce {CH<x>|MATH<x>}
-    - BUS:B<x>:ETHERnet:SOUrce:DMINus {CH<x>| D0|D1|D2|D3 |D4| D5|D6|D7|D8| D9|D10|D11|D12| D13|D14|D15| MATH<x>}
+    - BUS:B<x>:ETHERnet:SOUrce:DMINus {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:ETHERnet:SOUrce:DMINus?
-    - BUS:B<x>:ETHERnet:SOUrce:DPLUs {CH<x>| D0|D1|D2|D3| D4| D5|D6|D7|D8| D9|D10|D11|D12| D13|D14|D15| MATH<x>}
+    - BUS:B<x>:ETHERnet:SOUrce:DPLUs {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:ETHERnet:SOUrce:DPLUs?
     - BUS:B<x>:ETHERnet:SOUrce?
     - BUS:B<x>:ETHERnet:TYPe {ENET10BASET|ENET100BASETX}
@@ -50,17 +50,17 @@ Commands and Queries:
     - BUS:B<x>:FLEXRAY:PROBe?
     - BUS:B<x>:FLEXRAY:SIGnal {BDIFFBP|BM|TXRX}
     - BUS:B<x>:FLEXRAY:SIGnal?
-    - BUS:B<x>:FLEXRAY:SOUrce {CH<x> |D0|D1|D10|D11 |D12|D13|D14|D15 |D2|D3|D4|D5 |D6|D7|D8|D9 |MATH<x>}
+    - BUS:B<x>:FLEXRAY:SOUrce {CH<x>|D0|D1|D10|D11|D12|D13|D14|D15|D2|D3|D4|D5|D6|D7|D8|D9|MATH<x>}
     - BUS:B<x>:FLEXRAY:SOUrce?
-    - BUS:B<x>:I2C:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>|}
+    - BUS:B<x>:I2C:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>|}
     - BUS:B<x>:I2C:CLOCk:SOUrce?
-    - BUS:B<x>:I2C:DATa:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+    - BUS:B<x>:I2C:DATa:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:I2C:DATa:SOUrce?
     - BUS:B<x>:I2C:RWINADDR {No|Yes}
     - BUS:B<x>:I2C:RWINADDR?
     - BUS:B<x>:LABel <string>
     - BUS:B<x>:LABel?
-    - BUS:B<x>:LIN:BITRate {RATE10K | RATE1K | RATE19K | RATE2K | RATE4K | RATE9K | CUSTom}
+    - BUS:B<x>:LIN:BITRate {RATE10K|RATE1K|RATE19K|RATE2K|RATE4K|RATE9K|CUSTom}
     - BUS:B<x>:LIN:BITRate:VALue <nr3>
     - BUS:B<x>:LIN:BITRate:VALue?
     - BUS:B<x>:LIN:BITRate?
@@ -68,7 +68,7 @@ Commands and Queries:
     - BUS:B<x>:LIN:IDFORmat?
     - BUS:B<x>:LIN:POLarity {INVerted|NORMal}
     - BUS:B<x>:LIN:POLarity?
-    - BUS:B<x>:LIN:SOUrce {CH<x> |D0|D1|D10|D11 |D12|D13|D14|D15 |D2|D3|D4|D5 |D6|D7|D8|D9 |MATH<x>}
+    - BUS:B<x>:LIN:SOUrce {CH<x>|D0|D1|D10|D11|D12|D13|D14|D15|D2|D3|D4|D5|D6|D7|D8|D9|MATH<x>}
     - BUS:B<x>:LIN:SOUrce?
     - BUS:B<x>:LIN:STANDard {MIXed|V1X|V2X}
     - BUS:B<x>:LIN:STANDard?
@@ -86,31 +86,31 @@ Commands and Queries:
     - BUS:B<x>:MIPICSITWo:CLOCk:TYPe?
     - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DIFFerential {D<x>}
     - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DIFFerential?
-    - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DMINUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+    - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DMINUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DMINUS?
-    - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DPLUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+    - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DPLUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DPLUS?
     - BUS:B<x>:MIPICSITWo:LANE<x>:TYPe {ANALog|DIGItal}
     - BUS:B<x>:MIPICSITWo:LANE<x>:TYPe?
-    - BUS:B<x>:MIPIDSIOne:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+    - BUS:B<x>:MIPIDSIOne:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:MIPIDSIOne:CLOCk:SOUrce?
     - BUS:B<x>:MIPIDSIOne:CLOCk:TYPe {ANALog|DIGItal}
     - BUS:B<x>:MIPIDSIOne:CLOCk:TYPe?
     - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DIFFerential {D<x>}
     - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DIFFerential?
-    - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DMINUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+    - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DMINUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DMINUS?
-    - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DPLUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+    - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DPLUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DPLUS?
     - BUS:B<x>:MIPIDSIOne:LANE<x>:TYPe {ANALog|DIGItal}
     - BUS:B<x>:MIPIDSIOne:LANE<x>:TYPe?
     - BUS:B<x>:PARallel:CLOCk:EDGE {FALL|RISe|EITHer}
     - BUS:B<x>:PARallel:CLOCk:EDGE?
-    - BUS:B<x>:PARallel:CLOCk:SOUrce {CH<x>|D0|D1|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+    - BUS:B<x>:PARallel:CLOCk:SOUrce {CH<x>|D0|D1|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:PARallel:CLOCk:SOUrce?
     - BUS:B<x>:PARallel:ISCLOCKED {YES|NO}
     - BUS:B<x>:PARallel:ISCLOCKED?
-    - BUS:B<x>:PARallel:SOURCES {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+    - BUS:B<x>:PARallel:SOURCES {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:PARallel:SOURCES?
     - BUS:B<x>:PCIE:BITRate {RATE2500|RATE5000|RATE8000|RATE16000|AUTO|CUSTom}
     - BUS:B<x>:PCIE:BITRate:VALue <nr3>
@@ -120,7 +120,7 @@ Commands and Queries:
     - BUS:B<x>:PCIE:HYSTeresis?
     - BUS:B<x>:PCIE:LANE <nr3>
     - BUS:B<x>:PCIE:LANE?
-    - BUS:B<x>:PCIE:SOUrce {CH<x> | D0|D1|D10|D11 | D12|D13|D14|D15 | D2|D3|D4|D5 | D6|D7|D8|D9 | MATH<x>}
+    - BUS:B<x>:PCIE:SOUrce {CH<x>|D0|D1|D10|D11|D12|D13|D14|D15|D2|D3|D4|D5|D6|D7|D8|D9|MATH<x>}
     - BUS:B<x>:PCIE:SOUrce?
     - BUS:B<x>:POSition <NR3>
     - BUS:B<x>:POSition?
@@ -138,29 +138,29 @@ Commands and Queries:
     - BUS:B<x>:RS232C:POLarity?
     - BUS:B<x>:RS232C:SOUrce {CH<x>|D<x>|MATH<x>}
     - BUS:B<x>:RS232C:SOUrce?
-    - BUS:B<x>:S64B66B:BITRate { CUSTom | RATE10000 | RATE12000 | RATE14000 }
+    - BUS:B<x>:S64B66B:BITRate { CUSTom|RATE10000|RATE12000|RATE14000 }
     - BUS:B<x>:S64B66B:BITRate:VALue <NR3>
     - BUS:B<x>:S64B66B:BITRate:VALue?
     - BUS:B<x>:S64B66B:BITRate?
-    - BUS:B<x>:S64B66B:DESCRAMble { ON | OFF }
+    - BUS:B<x>:S64B66B:DESCRAMble { ON|OFF }
     - BUS:B<x>:S64B66B:DESCRAMble?
     - BUS:B<x>:S64B66B:HYSTeresis <NR3>
     - BUS:B<x>:S64B66B:HYSTeresis?
-    - BUS:B<x>:S64B66B:SOUrce { CH1 | CH2 | CH3 | CH4 | MATH1 | MATH2 | MATH3 | MATH4 }
+    - BUS:B<x>:S64B66B:SOUrce { CH1|CH2|CH3|CH4|MATH1|MATH2|MATH3|MATH4 }
     - BUS:B<x>:S64B66B:SOUrce?
-    - BUS:B<x>:S8B10B:BITRate {CUSTom|RATE1250|RATE1500|RATE2125|RATE2500|RATE3000|RATE3125| RATE4250|RATE5000|RATE6000|RATE6250}
+    - BUS:B<x>:S8B10B:BITRate {CUSTom|RATE1250|RATE1500|RATE2125|RATE2500|RATE3000|RATE3125|RATE4250|RATE5000|RATE6000|RATE6250}
     - BUS:B<x>:S8B10B:BITRate:VALue <NR3>
     - BUS:B<x>:S8B10B:BITRate:VALue?
     - BUS:B<x>:S8B10B:BITRate?
     - BUS:B<x>:S8B10B:HYSTeresis <NR3>
     - BUS:B<x>:S8B10B:HYSTeresis?
-    - BUS:B<x>:S8B10B:SOUrce {CH<x>|D0|D1|D2|D3|D4| D5|D6|D7|D8|D9|D10 |D11|D12|D13|D14|D15| MATH<x>}
+    - BUS:B<x>:S8B10B:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:S8B10B:SOUrce?
     - BUS:B<x>:SPI:BITOrder {LSB|MSB}
     - BUS:B<x>:SPI:BITOrder?
     - BUS:B<x>:SPI:CLOCk:POLarity {FALL|RISE}
     - BUS:B<x>:SPI:CLOCk:POLarity?
-    - BUS:B<x>:SPI:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+    - BUS:B<x>:SPI:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:SPI:CLOCk:SOUrce?
     - BUS:B<x>:SPI:DATa:DELay <NR1>
     - BUS:B<x>:SPI:DATa:DELay?
@@ -168,7 +168,7 @@ Commands and Queries:
     - BUS:B<x>:SPI:DATa:POLarity?
     - BUS:B<x>:SPI:DATa:SIZe <NR3>
     - BUS:B<x>:SPI:DATa:SIZe?
-    - BUS:B<x>:SPI:DATa:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+    - BUS:B<x>:SPI:DATa:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:SPI:DATa:SOUrce?
     - BUS:B<x>:SPI:FRAMING {IDLE|SS}
     - BUS:B<x>:SPI:FRAMING?
@@ -176,18 +176,18 @@ Commands and Queries:
     - BUS:B<x>:SPI:IDLETime?
     - BUS:B<x>:SPI:SELect:POLarity {LOW|HIGH}
     - BUS:B<x>:SPI:SELect:POLarity?
-    - BUS:B<x>:SPI:SELect:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+    - BUS:B<x>:SPI:SELect:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:SPI:SELect:SOUrce?
-    - BUS:B<x>:TYPe {CAN|CUSTom|FLEXRAY|LIN|I2C|MIPICSITWo|MIPIDSIOne| PARallel|PCIE|RS232c|S8B10B|SPI|USB|ETHernet}
+    - BUS:B<x>:TYPe {CAN|CUSTom|FLEXRAY|LIN|I2C|MIPICSITWo|MIPIDSIOne|PARallel|PCIE|RS232c|S8B10B|SPI|USB|ETHernet}
     - BUS:B<x>:TYPe?
     - BUS:B<x>:USB:BITRate {FULL|HIGH|LOW}
     - BUS:B<x>:USB:BITRate?
     - BUS:B<x>:USB:PRObe {DIFFerential|SINGleended}
     - BUS:B<x>:USB:PRObe?
-    - BUS:B<x>:USB:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
-    - BUS:B<x>:USB:SOUrce:DMINus {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+    - BUS:B<x>:USB:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
+    - BUS:B<x>:USB:SOUrce:DMINus {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:USB:SOUrce:DMINus?
-    - BUS:B<x>:USB:SOUrce:DPLUs {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+    - BUS:B<x>:USB:SOUrce:DPLUs {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
     - BUS:B<x>:USB:SOUrce:DPLUs?
     - BUS:B<x>:USB:SOUrce?
     - BUS:CH<x>:LOWTHRESHold <NR3>
@@ -555,7 +555,7 @@ class BusBItemUsbSourceDplus(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:USB:SOUrce:DPLUs {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+        - BUS:B<x>:USB:SOUrce:DPLUs {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:USB:SOUrce:DPLUs?
         ```
 
@@ -585,7 +585,7 @@ class BusBItemUsbSourceDminus(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:USB:SOUrce:DMINus {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+        - BUS:B<x>:USB:SOUrce:DMINus {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:USB:SOUrce:DMINus?
         ```
 
@@ -612,7 +612,7 @@ class BusBItemUsbSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:USB:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+        - BUS:B<x>:USB:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:USB:SOUrce?
         ```
 
@@ -651,7 +651,7 @@ class BusBItemUsbSource(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:USB:SOUrce:DMINus {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+            - BUS:B<x>:USB:SOUrce:DMINus {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:USB:SOUrce:DMINus?
             ```
 
@@ -681,7 +681,7 @@ class BusBItemUsbSource(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:USB:SOUrce:DPLUs {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+            - BUS:B<x>:USB:SOUrce:DPLUs {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:USB:SOUrce:DPLUs?
             ```
 
@@ -840,7 +840,7 @@ class BusBItemUsb(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:USB:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+            - BUS:B<x>:USB:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:USB:SOUrce?
             ```
 
@@ -872,7 +872,7 @@ class BusBItemType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:TYPe {CAN|CUSTom|FLEXRAY|LIN|I2C|MIPICSITWo|MIPIDSIOne| PARallel|PCIE|RS232c|S8B10B|SPI|USB|ETHernet}
+        - BUS:B<x>:TYPe {CAN|CUSTom|FLEXRAY|LIN|I2C|MIPICSITWo|MIPIDSIOne|PARallel|PCIE|RS232c|S8B10B|SPI|USB|ETHernet}
         - BUS:B<x>:TYPe?
         ```
 
@@ -909,7 +909,7 @@ class BusBItemSpiSelectSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:SPI:SELect:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+        - BUS:B<x>:SPI:SELect:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:SPI:SELect:SOUrce?
         ```
 
@@ -1014,7 +1014,7 @@ class BusBItemSpiSelect(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:SPI:SELect:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+            - BUS:B<x>:SPI:SELect:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:SPI:SELect:SOUrce?
             ```
 
@@ -1093,7 +1093,7 @@ class BusBItemSpiDataSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:SPI:DATa:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+        - BUS:B<x>:SPI:DATa:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:SPI:DATa:SOUrce?
         ```
 
@@ -1304,7 +1304,7 @@ class BusBItemSpiData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:SPI:DATa:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+            - BUS:B<x>:SPI:DATa:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:SPI:DATa:SOUrce?
             ```
 
@@ -1334,7 +1334,7 @@ class BusBItemSpiClockSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:SPI:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+        - BUS:B<x>:SPI:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:SPI:CLOCk:SOUrce?
         ```
 
@@ -1440,7 +1440,7 @@ class BusBItemSpiClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:SPI:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+            - BUS:B<x>:SPI:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:SPI:CLOCk:SOUrce?
             ```
 
@@ -1665,7 +1665,7 @@ class BusBItemS8b10bSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:S8B10B:SOUrce {CH<x>|D0|D1|D2|D3|D4| D5|D6|D7|D8|D9|D10 |D11|D12|D13|D14|D15| MATH<x>}
+        - BUS:B<x>:S8B10B:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:S8B10B:SOUrce?
         ```
 
@@ -1742,7 +1742,7 @@ class BusBItemS8b10bBitrate(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:S8B10B:BITRate {CUSTom|RATE1250|RATE1500|RATE2125|RATE2500|RATE3000|RATE3125| RATE4250|RATE5000|RATE6000|RATE6250}
+        - BUS:B<x>:S8B10B:BITRate {CUSTom|RATE1250|RATE1500|RATE2125|RATE2500|RATE3000|RATE3125|RATE4250|RATE5000|RATE6000|RATE6250}
         - BUS:B<x>:S8B10B:BITRate?
         ```
 
@@ -1833,7 +1833,7 @@ class BusBItemS8b10b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:S8B10B:BITRate {CUSTom|RATE1250|RATE1500|RATE2125|RATE2500|RATE3000|RATE3125| RATE4250|RATE5000|RATE6000|RATE6250}
+            - BUS:B<x>:S8B10B:BITRate {CUSTom|RATE1250|RATE1500|RATE2125|RATE2500|RATE3000|RATE3125|RATE4250|RATE5000|RATE6000|RATE6250}
             - BUS:B<x>:S8B10B:BITRate?
             ```
 
@@ -1894,7 +1894,7 @@ class BusBItemS8b10b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:S8B10B:SOUrce {CH<x>|D0|D1|D2|D3|D4| D5|D6|D7|D8|D9|D10 |D11|D12|D13|D14|D15| MATH<x>}
+            - BUS:B<x>:S8B10B:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:S8B10B:SOUrce?
             ```
 
@@ -1924,7 +1924,7 @@ class BusBItemS64b66bSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:S64B66B:SOUrce { CH1 | CH2 | CH3 | CH4 | MATH1 | MATH2 | MATH3 | MATH4 }
+        - BUS:B<x>:S64B66B:SOUrce { CH1|CH2|CH3|CH4|MATH1|MATH2|MATH3|MATH4 }
         - BUS:B<x>:S64B66B:SOUrce?
         ```
 
@@ -1975,7 +1975,7 @@ class BusBItemS64b66bDescramble(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:S64B66B:DESCRAMble { ON | OFF }
+        - BUS:B<x>:S64B66B:DESCRAMble { ON|OFF }
         - BUS:B<x>:S64B66B:DESCRAMble?
         ```
 
@@ -2027,7 +2027,7 @@ class BusBItemS64b66bBitrate(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:S64B66B:BITRate { CUSTom | RATE10000 | RATE12000 | RATE14000 }
+        - BUS:B<x>:S64B66B:BITRate { CUSTom|RATE10000|RATE12000|RATE14000 }
         - BUS:B<x>:S64B66B:BITRate?
         ```
 
@@ -2114,7 +2114,7 @@ class BusBItemS64b66b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:S64B66B:BITRate { CUSTom | RATE10000 | RATE12000 | RATE14000 }
+            - BUS:B<x>:S64B66B:BITRate { CUSTom|RATE10000|RATE12000|RATE14000 }
             - BUS:B<x>:S64B66B:BITRate?
             ```
 
@@ -2146,7 +2146,7 @@ class BusBItemS64b66b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:S64B66B:DESCRAMble { ON | OFF }
+            - BUS:B<x>:S64B66B:DESCRAMble { ON|OFF }
             - BUS:B<x>:S64B66B:DESCRAMble?
             ```
 
@@ -2197,7 +2197,7 @@ class BusBItemS64b66b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:S64B66B:SOUrce { CH1 | CH2 | CH3 | CH4 | MATH1 | MATH2 | MATH3 | MATH4 }
+            - BUS:B<x>:S64B66B:SOUrce { CH1|CH2|CH3|CH4|MATH1|MATH2|MATH3|MATH4 }
             - BUS:B<x>:S64B66B:SOUrce?
             ```
 
@@ -2659,10 +2659,10 @@ class BusBItemPcieSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:PCIE:SOUrce {CH<x> | D0|D1|D10|D11 | D12|D13|D14|D15 | D2|D3|D4|D5 | D6|D7|D8|D9 | MATH<x>}
+        - BUS:B<x>:PCIE:SOUrce {CH<x>|D0|D1|D10|D11|D12|D13|D14|D15|D2|D3|D4|D5|D6|D7|D8|D9|MATH<x>}
         - BUS:B<x>:PCIE:SOUrce?
         ```
-    """  # noqa: E501
+    """
 
 
 class BusBItemPcieLane(SCPICmdWrite, SCPICmdRead):
@@ -2909,7 +2909,7 @@ class BusBItemPcie(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:PCIE:SOUrce {CH<x> | D0|D1|D10|D11 | D12|D13|D14|D15 | D2|D3|D4|D5 | D6|D7|D8|D9 | MATH<x>}
+            - BUS:B<x>:PCIE:SOUrce {CH<x>|D0|D1|D10|D11|D12|D13|D14|D15|D2|D3|D4|D5|D6|D7|D8|D9|MATH<x>}
             - BUS:B<x>:PCIE:SOUrce?
             ```
         """  # noqa: E501
@@ -2935,7 +2935,7 @@ class BusBItemParallelSources(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:PARallel:SOURCES {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+        - BUS:B<x>:PARallel:SOURCES {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:PARallel:SOURCES?
         ```
 
@@ -2990,7 +2990,7 @@ class BusBItemParallelClockSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:PARallel:CLOCk:SOUrce {CH<x>|D0|D1|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+        - BUS:B<x>:PARallel:CLOCk:SOUrce {CH<x>|D0|D1|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:PARallel:CLOCk:SOUrce?
         ```
 
@@ -3093,7 +3093,7 @@ class BusBItemParallelClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:PARallel:CLOCk:SOUrce {CH<x>|D0|D1|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+            - BUS:B<x>:PARallel:CLOCk:SOUrce {CH<x>|D0|D1|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:PARallel:CLOCk:SOUrce?
             ```
 
@@ -3191,7 +3191,7 @@ class BusBItemParallel(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:PARallel:SOURCES {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+            - BUS:B<x>:PARallel:SOURCES {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:PARallel:SOURCES?
             ```
 
@@ -3249,7 +3249,7 @@ class BusBItemMipidsioneLaneItemSourceDplus(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DPLUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+        - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DPLUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DPLUS?
         ```
 
@@ -3281,7 +3281,7 @@ class BusBItemMipidsioneLaneItemSourceDminus(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DMINUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+        - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DMINUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DMINUS?
         ```
 
@@ -3393,7 +3393,7 @@ class BusBItemMipidsioneLaneItemSource(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DMINUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+            - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DMINUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DMINUS?
             ```
 
@@ -3426,7 +3426,7 @@ class BusBItemMipidsioneLaneItemSource(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DPLUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+            - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DPLUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:MIPIDSIOne:LANE<x>:SOUrce:DPLUS?
             ```
 
@@ -3546,7 +3546,7 @@ class BusBItemMipidsioneClockSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:MIPIDSIOne:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+        - BUS:B<x>:MIPIDSIOne:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:MIPIDSIOne:CLOCk:SOUrce?
         ```
 
@@ -3596,7 +3596,7 @@ class BusBItemMipidsioneClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:MIPIDSIOne:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+            - BUS:B<x>:MIPIDSIOne:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:MIPIDSIOne:CLOCk:SOUrce?
             ```
 
@@ -3731,7 +3731,7 @@ class BusBItemMipicsitwoLaneItemSourceDplus(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DPLUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+        - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DPLUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DPLUS?
         ```
 
@@ -3763,7 +3763,7 @@ class BusBItemMipicsitwoLaneItemSourceDminus(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DMINUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+        - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DMINUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DMINUS?
         ```
 
@@ -3875,7 +3875,7 @@ class BusBItemMipicsitwoLaneItemSource(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DMINUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+            - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DMINUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DMINUS?
             ```
 
@@ -3908,7 +3908,7 @@ class BusBItemMipicsitwoLaneItemSource(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DPLUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10| D11|D12|D13|D14|D15|MATH<x>}
+            - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DPLUS {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:MIPICSITWo:LANE<x>:SOUrce:DPLUS?
             ```
 
@@ -4503,10 +4503,10 @@ class BusBItemLinSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:LIN:SOUrce {CH<x> |D0|D1|D10|D11 |D12|D13|D14|D15 |D2|D3|D4|D5 |D6|D7|D8|D9 |MATH<x>}
+        - BUS:B<x>:LIN:SOUrce {CH<x>|D0|D1|D10|D11|D12|D13|D14|D15|D2|D3|D4|D5|D6|D7|D8|D9|MATH<x>}
         - BUS:B<x>:LIN:SOUrce?
         ```
-    """  # noqa: E501
+    """
 
 
 class BusBItemLinPolarity(SCPICmdWrite, SCPICmdRead):
@@ -4582,8 +4582,8 @@ class BusBItemLinBitrate(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:LIN:BITRate`` command.
 
     Description:
-        - This command sets or queries the LIN bus bit rate. The bus is specified by x. The value of
-          x can range from 1 to 16.
+        - This command sets or queries the LIN bus bit rate. The bus number is specified by x. If
+          you select Custom, use ``BUS:BX:LIN:BITRATE:CUSTOM`` to set the bit rate.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:LIN:BITRate?`` query.
@@ -4593,9 +4593,12 @@ class BusBItemLinBitrate(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:LIN:BITRate {RATE10K | RATE1K | RATE19K | RATE2K | RATE4K | RATE9K | CUSTom}
+        - BUS:B<x>:LIN:BITRate {RATE10K|RATE1K|RATE19K|RATE2K|RATE4K|RATE9K|CUSTom}
         - BUS:B<x>:LIN:BITRate?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.value``: The ``BUS:B<x>:LIN:BITRate:VALue`` command.
@@ -4637,6 +4640,9 @@ class BusBItemLin(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:LIN?`` query and raise an
           AssertionError if the returned value does not match ``value``.
 
+    Info:
+        - ``B<x>`` is the number of the bus.
+
     Properties:
         - ``.bitrate``: The ``BUS:B<x>:LIN:BITRate`` command.
         - ``.idformat``: The ``BUS:B<x>:LIN:IDFORmat`` command.
@@ -4658,8 +4664,8 @@ class BusBItemLin(SCPICmdRead):
         """Return the ``BUS:B<x>:LIN:BITRate`` command.
 
         Description:
-            - This command sets or queries the LIN bus bit rate. The bus is specified by x. The
-              value of x can range from 1 to 16.
+            - This command sets or queries the LIN bus bit rate. The bus number is specified by x.
+              If you select Custom, use ``BUS:BX:LIN:BITRATE:CUSTOM`` to set the bit rate.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:LIN:BITRate?`` query.
@@ -4670,9 +4676,12 @@ class BusBItemLin(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:LIN:BITRate {RATE10K | RATE1K | RATE19K | RATE2K | RATE4K | RATE9K | CUSTom}
+            - BUS:B<x>:LIN:BITRate {RATE10K|RATE1K|RATE19K|RATE2K|RATE4K|RATE9K|CUSTom}
             - BUS:B<x>:LIN:BITRate?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.value``: The ``BUS:B<x>:LIN:BITRate:VALue`` command.
@@ -4747,7 +4756,7 @@ class BusBItemLin(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:LIN:SOUrce {CH<x> |D0|D1|D10|D11 |D12|D13|D14|D15 |D2|D3|D4|D5 |D6|D7|D8|D9 |MATH<x>}
+            - BUS:B<x>:LIN:SOUrce {CH<x>|D0|D1|D10|D11|D12|D13|D14|D15|D2|D3|D4|D5|D6|D7|D8|D9|MATH<x>}
             - BUS:B<x>:LIN:SOUrce?
             ```
         """  # noqa: E501
@@ -4852,7 +4861,7 @@ class BusBItemI2cDataSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:I2C:DATa:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+        - BUS:B<x>:I2C:DATa:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:I2C:DATa:SOUrce?
         ```
 
@@ -4898,7 +4907,7 @@ class BusBItemI2cData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:I2C:DATa:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>}
+            - BUS:B<x>:I2C:DATa:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:I2C:DATa:SOUrce?
             ```
 
@@ -4928,7 +4937,7 @@ class BusBItemI2cClockSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:I2C:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>|}
+        - BUS:B<x>:I2C:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>|}
         - BUS:B<x>:I2C:CLOCk:SOUrce?
         ```
 
@@ -4974,7 +4983,7 @@ class BusBItemI2cClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:I2C:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12| D13|D14|D15|MATH<x>|}
+            - BUS:B<x>:I2C:CLOCk:SOUrce {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>|}
             - BUS:B<x>:I2C:CLOCk:SOUrce?
             ```
 
@@ -5085,7 +5094,7 @@ class BusBItemFlexraySource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:FLEXRAY:SOUrce {CH<x> |D0|D1|D10|D11 |D12|D13|D14|D15 |D2|D3|D4|D5 |D6|D7|D8|D9 |MATH<x>}
+        - BUS:B<x>:FLEXRAY:SOUrce {CH<x>|D0|D1|D10|D11|D12|D13|D14|D15|D2|D3|D4|D5|D6|D7|D8|D9|MATH<x>}
         - BUS:B<x>:FLEXRAY:SOUrce?
         ```
     """  # noqa: E501
@@ -5328,7 +5337,7 @@ class BusBItemFlexray(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:FLEXRAY:SOUrce {CH<x> |D0|D1|D10|D11 |D12|D13|D14|D15 |D2|D3|D4|D5 |D6|D7|D8|D9 |MATH<x>}
+            - BUS:B<x>:FLEXRAY:SOUrce {CH<x>|D0|D1|D10|D11|D12|D13|D14|D15|D2|D3|D4|D5|D6|D7|D8|D9|MATH<x>}
             - BUS:B<x>:FLEXRAY:SOUrce?
             ```
         """  # noqa: E501
@@ -5424,7 +5433,7 @@ class BusBItemEthernetSourceDplus(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:ETHERnet:SOUrce:DPLUs {CH<x>| D0|D1|D2|D3| D4| D5|D6|D7|D8| D9|D10|D11|D12| D13|D14|D15| MATH<x>}
+        - BUS:B<x>:ETHERnet:SOUrce:DPLUs {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:ETHERnet:SOUrce:DPLUs?
         ```
 
@@ -5454,7 +5463,7 @@ class BusBItemEthernetSourceDminus(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:ETHERnet:SOUrce:DMINus {CH<x>| D0|D1|D2|D3 |D4| D5|D6|D7|D8| D9|D10|D11|D12| D13|D14|D15| MATH<x>}
+        - BUS:B<x>:ETHERnet:SOUrce:DMINus {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
         - BUS:B<x>:ETHERnet:SOUrce:DMINus?
         ```
 
@@ -5523,7 +5532,7 @@ class BusBItemEthernetSource(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:ETHERnet:SOUrce:DMINus {CH<x>| D0|D1|D2|D3 |D4| D5|D6|D7|D8| D9|D10|D11|D12| D13|D14|D15| MATH<x>}
+            - BUS:B<x>:ETHERnet:SOUrce:DMINus {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:ETHERnet:SOUrce:DMINus?
             ```
 
@@ -5555,7 +5564,7 @@ class BusBItemEthernetSource(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:ETHERnet:SOUrce:DPLUs {CH<x>| D0|D1|D2|D3| D4| D5|D6|D7|D8| D9|D10|D11|D12| D13|D14|D15| MATH<x>}
+            - BUS:B<x>:ETHERnet:SOUrce:DPLUs {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|MATH<x>}
             - BUS:B<x>:ETHERnet:SOUrce:DPLUs?
             ```
 
@@ -5954,10 +5963,10 @@ class BusBItemCanSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:CAN:SOUrce {CH<x> |D0|D1|D10|D11 |D12|D13|D14|D15 |D2|D3|D4|D5 |D6|D7|D8|D9 |MATH<x>}
+        - BUS:B<x>:CAN:SOUrce {CH<x>|D0|D1|D10|D11|D12|D13|D14|D15|D2|D3|D4|D5|D6|D7|D8|D9|MATH<x>}
         - BUS:B<x>:CAN:SOUrce?
         ```
-    """  # noqa: E501
+    """
 
 
 class BusBItemCanProbe(SCPICmdWrite, SCPICmdRead):
@@ -6018,7 +6027,7 @@ class BusBItemCanBitrate(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K | RATE153K|RATE20K|RATE25K|RATE250K | RATE31K|RATE33K|RATE37K|RATE400K | RATE50K|RATE500K|RATE62K|RATE68K | RATE800K|RATE83K|RATE92K|CUSTom}
+        - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K|RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE37K|RATE400K|RATE50K|RATE500K|RATE62K|RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
         - BUS:B<x>:CAN:BITRate?
         ```
 
@@ -6092,7 +6101,7 @@ class BusBItemCan(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K | RATE153K|RATE20K|RATE25K|RATE250K | RATE31K|RATE33K|RATE37K|RATE400K | RATE50K|RATE500K|RATE62K|RATE68K | RATE800K|RATE83K|RATE92K|CUSTom}
+            - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K|RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE37K|RATE400K|RATE50K|RATE500K|RATE62K|RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
             - BUS:B<x>:CAN:BITRate?
             ```
 
@@ -6138,7 +6147,7 @@ class BusBItemCan(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:CAN:SOUrce {CH<x> |D0|D1|D10|D11 |D12|D13|D14|D15 |D2|D3|D4|D5 |D6|D7|D8|D9 |MATH<x>}
+            - BUS:B<x>:CAN:SOUrce {CH<x>|D0|D1|D10|D11|D12|D13|D14|D15|D2|D3|D4|D5|D6|D7|D8|D9|MATH<x>}
             - BUS:B<x>:CAN:SOUrce?
             ```
         """  # noqa: E501
@@ -6313,6 +6322,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:LIN?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:LIN?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.bitrate``: The ``BUS:B<x>:LIN:BITRate`` command.
@@ -6517,7 +6529,7 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:TYPe {CAN|CUSTom|FLEXRAY|LIN|I2C|MIPICSITWo|MIPIDSIOne| PARallel|PCIE|RS232c|S8B10B|SPI|USB|ETHernet}
+            - BUS:B<x>:TYPe {CAN|CUSTom|FLEXRAY|LIN|I2C|MIPICSITWo|MIPIDSIOne|PARallel|PCIE|RS232c|S8B10B|SPI|USB|ETHernet}
             - BUS:B<x>:TYPe?
             ```
 

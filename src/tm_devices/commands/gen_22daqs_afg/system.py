@@ -22,7 +22,7 @@ Commands and Queries:
     - SYSTem:PASSword:CENable:STATe?
     - SYSTem:PASSword:NEW <current_password>,<new_password>
     - SYSTem:SECurity:IMMediate
-    - SYSTem:ULANguage {ENGLish|FRENch|GERMan|JAPanese|KORean|SCHinese| TCHinese|RUSSian}
+    - SYSTem:ULANguage {ENGLish|FRENch|GERMan|JAPanese|KORean|SCHinese|TCHinese|RUSSian}
     - SYSTem:ULANguage?
     - SYSTem:VERSion?
     ```
@@ -69,7 +69,7 @@ class SystemUlanguage(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SYSTem:ULANguage {ENGLish|FRENch|GERMan|JAPanese|KORean|SCHinese| TCHinese|RUSSian}
+        - SYSTem:ULANguage {ENGLish|FRENch|GERMan|JAPanese|KORean|SCHinese|TCHinese|RUSSian}
         - SYSTem:ULANguage?
         ```
     """
@@ -722,7 +722,7 @@ class System(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SYSTem:ULANguage {ENGLish|FRENch|GERMan|JAPanese|KORean|SCHinese| TCHinese|RUSSian}
+            - SYSTem:ULANguage {ENGLish|FRENch|GERMan|JAPanese|KORean|SCHinese|TCHinese|RUSSian}
             - SYSTem:ULANguage?
             ```
         """

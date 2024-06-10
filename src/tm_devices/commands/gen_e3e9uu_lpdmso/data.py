@@ -10,7 +10,7 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - DATa {INIT|SNAp}
-    - DATa:ENCdg {ASCIi| RIBinary| RPBinary| FPBinary| SRIbinary| SRPbinary| SFPbinary}
+    - DATa:ENCdg {ASCIi|RIBinary|RPBinary|FPBinary|SRIbinary|SRPbinary|SFPbinary}
     - DATa:ENCdg?
     - DATa:FRAMESTARt <NR1>
     - DATa:FRAMESTARt?
@@ -354,7 +354,7 @@ class DataEncdg(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DATa:ENCdg {ASCIi| RIBinary| RPBinary| FPBinary| SRIbinary| SRPbinary| SFPbinary}
+        - DATa:ENCdg {ASCIi|RIBinary|RPBinary|FPBinary|SRIbinary|SRPbinary|SFPbinary}
         - DATa:ENCdg?
         ```
 
@@ -467,7 +467,7 @@ class Data(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DATa:ENCdg {ASCIi| RIBinary| RPBinary| FPBinary| SRIbinary| SRPbinary| SFPbinary}
+            - DATa:ENCdg {ASCIi|RIBinary|RPBinary|FPBinary|SRIbinary|SRPbinary|SFPbinary}
             - DATa:ENCdg?
             ```
 

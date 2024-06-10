@@ -10,12 +10,16 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - TRIGger:IMMediate {ATRigger|BTRigger}
-    - TRIGger:IMPedance <impedance>[,<input_trigger>]? [<input_trigger>]
+    - TRIGger:IMPedance <impedance>[,<input_trigger>]
+    - TRIGger:IMPedance? [<input_trigger>]
     - TRIGger:INTerval <NR3>
     - TRIGger:INTerval?
-    - TRIGger:LEVel <NRf>[,ATRigger|BTRigger]? [ATRigger|BTRigger]
-    - TRIGger:MODE {SYNChronous|ASYNchronous}[,<input_trigger>]? <input_trigger>
-    - TRIGger:SLOPe {POSitive|NEGative}[,<input_trigger>]? [<input_trigger>]
+    - TRIGger:LEVel <NRf>[,ATRigger|BTRigger]
+    - TRIGger:LEVel? [ATRigger|BTRigger]
+    - TRIGger:MODE {SYNChronous|ASYNchronous}[,<input_trigger>]
+    - TRIGger:MODE? <input_trigger>
+    - TRIGger:SLOPe {POSitive|NEGative}[,<input_trigger>]
+    - TRIGger:SLOPe? [<input_trigger>]
     - TRIGger:SOURce {EXTernal|INTernal}
     - TRIGger:SOURce?
     - TRIGger:WVALue {FIRSt}
@@ -25,7 +29,7 @@ Commands and Queries:
 
 from typing import Optional, TYPE_CHECKING
 
-from ..helpers import SCPICmdRead, SCPICmdWrite
+from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
 
 if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
@@ -81,7 +85,7 @@ class TriggerSource(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class TriggerSlope(SCPICmdWrite):
+class TriggerSlope(SCPICmdWrite, SCPICmdReadWithArguments):
     r"""The ``TRIGger:SLOPe`` command.
 
     Description:
@@ -89,11 +93,15 @@ class TriggerSlope(SCPICmdWrite):
           to set the polarity in modes other than gated mode.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``TRIGger:SLOPe? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the ``TRIGger:SLOPe? argument``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``TRIGger:SLOPe value`` command.
 
     SCPI Syntax:
         ```
-        - TRIGger:SLOPe {POSitive|NEGative}[,<input_trigger>]? [<input_trigger>]
+        - TRIGger:SLOPe {POSitive|NEGative}[,<input_trigger>]
+        - TRIGger:SLOPe? [<input_trigger>]
         ```
 
     Info:
@@ -104,7 +112,7 @@ class TriggerSlope(SCPICmdWrite):
     """
 
 
-class TriggerMode(SCPICmdWrite):
+class TriggerMode(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``TRIGger:MODE`` command.
 
     Description:
@@ -112,11 +120,15 @@ class TriggerMode(SCPICmdWrite):
           being used.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``TRIGger:MODE? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the ``TRIGger:MODE? argument``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``TRIGger:MODE value`` command.
 
     SCPI Syntax:
         ```
-        - TRIGger:MODE {SYNChronous|ASYNchronous}[,<input_trigger>]? <input_trigger>
+        - TRIGger:MODE {SYNChronous|ASYNchronous}[,<input_trigger>]
+        - TRIGger:MODE? <input_trigger>
         ```
 
     Info:
@@ -127,18 +139,22 @@ class TriggerMode(SCPICmdWrite):
     """
 
 
-class TriggerLevel(SCPICmdWrite):
+class TriggerLevel(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``TRIGger:LEVel`` command.
 
     Description:
         - This command sets or returns the external trigger input level (threshold).
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``TRIGger:LEVel? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the ``TRIGger:LEVel? argument``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``TRIGger:LEVel value`` command.
 
     SCPI Syntax:
         ```
-        - TRIGger:LEVel <NRf>[,ATRigger|BTRigger]? [ATRigger|BTRigger]
+        - TRIGger:LEVel <NRf>[,ATRigger|BTRigger]
+        - TRIGger:LEVel? [ATRigger|BTRigger]
         ```
 
     Info:
@@ -168,7 +184,7 @@ class TriggerInterval(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class TriggerImpedance(SCPICmdWrite):
+class TriggerImpedance(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``TRIGger:IMPedance`` command.
 
     Description:
@@ -176,11 +192,16 @@ class TriggerImpedance(SCPICmdWrite):
           external trigger.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``TRIGger:IMPedance? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``TRIGger:IMPedance? argument`` query and raise an AssertionError if the returned value
+          does not match ``value``.
         - Using the ``.write(value)`` method will send the ``TRIGger:IMPedance value`` command.
 
     SCPI Syntax:
         ```
-        - TRIGger:IMPedance <impedance>[,<input_trigger>]? [<input_trigger>]
+        - TRIGger:IMPedance <impedance>[,<input_trigger>]
+        - TRIGger:IMPedance? [<input_trigger>]
         ```
 
     Info:
@@ -245,11 +266,17 @@ class Trigger(SCPICmdRead):
               external trigger.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``TRIGger:IMPedance? argument``
+              query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``TRIGger:IMPedance? argument`` query and raise an AssertionError if the returned
+              value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``TRIGger:IMPedance value`` command.
 
         SCPI Syntax:
             ```
-            - TRIGger:IMPedance <impedance>[,<input_trigger>]? [<input_trigger>]
+            - TRIGger:IMPedance <impedance>[,<input_trigger>]
+            - TRIGger:IMPedance? [<input_trigger>]
             ```
 
         Info:
@@ -286,11 +313,16 @@ class Trigger(SCPICmdRead):
             - This command sets or returns the external trigger input level (threshold).
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``TRIGger:LEVel? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``TRIGger:LEVel? argument`` query and raise an AssertionError if the returned value
+              does not match ``value``.
             - Using the ``.write(value)`` method will send the ``TRIGger:LEVel value`` command.
 
         SCPI Syntax:
             ```
-            - TRIGger:LEVel <NRf>[,ATRigger|BTRigger]? [ATRigger|BTRigger]
+            - TRIGger:LEVel <NRf>[,ATRigger|BTRigger]
+            - TRIGger:LEVel? [ATRigger|BTRigger]
             ```
 
         Info:
@@ -309,11 +341,15 @@ class Trigger(SCPICmdRead):
               is being used.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``TRIGger:MODE? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the ``TRIGger:MODE? argument``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``TRIGger:MODE value`` command.
 
         SCPI Syntax:
             ```
-            - TRIGger:MODE {SYNChronous|ASYNchronous}[,<input_trigger>]? <input_trigger>
+            - TRIGger:MODE {SYNChronous|ASYNchronous}[,<input_trigger>]
+            - TRIGger:MODE? <input_trigger>
             ```
 
         Info:
@@ -333,11 +369,16 @@ class Trigger(SCPICmdRead):
               command to set the polarity in modes other than gated mode.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``TRIGger:SLOPe? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``TRIGger:SLOPe? argument`` query and raise an AssertionError if the returned value
+              does not match ``value``.
             - Using the ``.write(value)`` method will send the ``TRIGger:SLOPe value`` command.
 
         SCPI Syntax:
             ```
-            - TRIGger:SLOPe {POSitive|NEGative}[,<input_trigger>]? [<input_trigger>]
+            - TRIGger:SLOPe {POSitive|NEGative}[,<input_trigger>]
+            - TRIGger:SLOPe? [<input_trigger>]
             ```
 
         Info:

@@ -17,8 +17,10 @@ Commands and Queries:
     - FILESystem:HOMEDir?
     - FILESystem:LDIR?
     - FILESystem:MKDir <directory_path>
-    - FILESystem:MOUNT:DRIVE <QString>? <QString>
-    - FILESystem:MOUNT:TEKDrive <QString>? <QString>
+    - FILESystem:MOUNT:DRIVE <QString>
+    - FILESystem:MOUNT:DRIVE? <QString>
+    - FILESystem:MOUNT:TEKDrive <QString>
+    - FILESystem:MOUNT:TEKDrive? <QString>
     - FILESystem:READFile <QString>
     - FILESystem:REName <old_file_path>,<new_file_path>
     - FILESystem:RMDir <directory_path>
@@ -34,7 +36,7 @@ Commands and Queries:
 
 from typing import Optional, TYPE_CHECKING
 
-from ..helpers import SCPICmdRead, SCPICmdWrite
+from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
 
 if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
@@ -395,7 +397,7 @@ class FilesystemReadfile(SCPICmdWrite):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class FilesystemMountTekdrive(SCPICmdWrite):
+class FilesystemMountTekdrive(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``FILESystem:MOUNT:TEKDrive`` command.
 
     Description:
@@ -414,12 +416,18 @@ class FilesystemMountTekdrive(SCPICmdWrite):
           TekDrive is mounted.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the
+          ``FILESystem:MOUNT:TEKDrive? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``FILESystem:MOUNT:TEKDrive? argument`` query and raise an AssertionError if the returned
+          value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``FILESystem:MOUNT:TEKDrive value``
           command.
 
     SCPI Syntax:
         ```
-        - FILESystem:MOUNT:TEKDrive <QString>? <QString>
+        - FILESystem:MOUNT:TEKDrive <QString>
+        - FILESystem:MOUNT:TEKDrive? <QString>
         ```
 
     Info:
@@ -427,8 +435,10 @@ class FilesystemMountTekdrive(SCPICmdWrite):
           drive name, AutoDisconnectMode, RestrictToCurrentIP, and AutoDisconnectTime.
     """
 
+    _WRAP_ARG_WITH_QUOTES = True
 
-class FilesystemMountDrive(SCPICmdWrite):
+
+class FilesystemMountDrive(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``FILESystem:MOUNT:DRIVE`` command.
 
     Description:
@@ -446,13 +456,21 @@ class FilesystemMountDrive(SCPICmdWrite):
           indicates the drive is mounted. A return of 0 indicated the drive is not mounted.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``FILESystem:MOUNT:DRIVE? argument``
+          query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``FILESystem:MOUNT:DRIVE? argument`` query and raise an AssertionError if the returned
+          value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``FILESystem:MOUNT:DRIVE value`` command.
 
     SCPI Syntax:
         ```
-        - FILESystem:MOUNT:DRIVE <QString>? <QString>
+        - FILESystem:MOUNT:DRIVE <QString>
+        - FILESystem:MOUNT:DRIVE? <QString>
         ```
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class FilesystemMount(SCPICmdRead):
@@ -493,12 +511,18 @@ class FilesystemMount(SCPICmdRead):
               return of 0 indicated the drive is not mounted.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``FILESystem:MOUNT:DRIVE? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``FILESystem:MOUNT:DRIVE? argument`` query and raise an AssertionError if the returned
+              value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``FILESystem:MOUNT:DRIVE value``
               command.
 
         SCPI Syntax:
             ```
-            - FILESystem:MOUNT:DRIVE <QString>? <QString>
+            - FILESystem:MOUNT:DRIVE <QString>
+            - FILESystem:MOUNT:DRIVE? <QString>
             ```
         """
         return self._drive
@@ -523,12 +547,18 @@ class FilesystemMount(SCPICmdRead):
               this command returns whether or not the specified TekDrive is mounted.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``FILESystem:MOUNT:TEKDrive? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``FILESystem:MOUNT:TEKDrive? argument`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``FILESystem:MOUNT:TEKDrive value``
               command.
 
         SCPI Syntax:
             ```
-            - FILESystem:MOUNT:TEKDrive <QString>? <QString>
+            - FILESystem:MOUNT:TEKDrive <QString>
+            - FILESystem:MOUNT:TEKDrive? <QString>
             ```
 
         Info:

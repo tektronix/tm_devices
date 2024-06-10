@@ -10,7 +10,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - MEASUrement:ADDMEAS {ACRMS |AMPlITUDE |AREA |BASE |BURSTWIDTH |DATARATE |DELAY |FALLSLEWRATE |FALLTIME |FREQUENCY |HIGHTIME |HOLD |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUty |NOVERSHOOT |NPERIOD |NWIDTTH |PDUTY |PERIOD |PHASE |PK2Pk |POVERSHOOT |PWIDTH |RISESLEWRATE |RISETIME |RMS |SETUP |SKEW |TIMEOUTSIDELEVEL |TIMETOMAX |TIMETOMIN |TOP}
+    - MEASUrement:ADDMEAS {ACRMS|AMPlITUDE|AREA|BASE|BURSTWIDTH|DATARATE|DELAY|FALLSLEWRATE|FALLTIME|FREQUENCY|HIGHTIME|HOLD|LOWTIME|MAXIMUM|MEAN|MINIMUM|NDUty|NOVERSHOOT|NPERIOD|NWIDTTH|PDUTY|PERIOD|PHASE|PK2Pk|POVERSHOOT|PWIDTH|RISESLEWRATE|RISETIME|RMS|SETUP|SKEW|TIMEOUTSIDELEVEL|TIMETOMAX|TIMETOMIN|TOP}
     - MEASUrement:ADDNew 'QString'
     - MEASUrement:ANNOTate {OFF|AUTO}
     - MEASUrement:ANNOTate?
@@ -89,7 +89,7 @@ Commands and Queries:
     - MEASUrement:MATH<x>:REFLevels:ABSolute:RISEMid?
     - MEASUrement:MATH<x>:REFLevels:ABSolute:TYPE {SAME|UNIQue}
     - MEASUrement:MATH<x>:REFLevels:ABSolute:TYPE?
-    - MEASUrement:MATH<x>:REFLevels:BASETop {AUTO|MINMax|MEANhistogram| MODEhistogram|EYEhistogram}
+    - MEASUrement:MATH<x>:REFLevels:BASETop {AUTO|MINMax|MEANhistogram|MODEhistogram|EYEhistogram}
     - MEASUrement:MATH<x>:REFLevels:BASETop?
     - MEASUrement:MATH<x>:REFLevels:METHod {PERCent|ABSolute}
     - MEASUrement:MATH<x>:REFLevels:METHod?
@@ -184,7 +184,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:PASSFAILLOWlimit?
     - MEASUrement:MEAS<x>:PASSFAILMARgin <NR2>
     - MEASUrement:MEAS<x>:PASSFAILMARgin?
-    - MEASUrement:MEAS<x>:PASSFAILWHEN {LESSthan| GREATERthan| Equals| NOTEQuals| INSIDErange| OUTSIDErange}
+    - MEASUrement:MEAS<x>:PASSFAILWHEN {LESSthan|GREATERthan|Equals|NOTEQuals|INSIDErange|OUTSIDErange}
     - MEASUrement:MEAS<x>:PASSFAILWHEN?
     - MEASUrement:MEAS<x>:PERFREQ:EDGE {FIRST|RISE|FALL}
     - MEASUrement:MEAS<x>:PERFREQ:EDGE?
@@ -204,7 +204,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:REFLevels1:ABSolute:RISEMid?
     - MEASUrement:MEAS<x>:REFLevels1:ABSolute:TYPE {SAME|UNIQue}
     - MEASUrement:MEAS<x>:REFLevels1:ABSolute:TYPE?
-    - MEASUrement:MEAS<x>:REFLevels1:BASETop {AUTO|MINMax|MEANhistogram| MODEhistogram|EYEhistogram}
+    - MEASUrement:MEAS<x>:REFLevels1:BASETop {AUTO|MINMax|MEANhistogram|MODEhistogram|EYEhistogram}
     - MEASUrement:MEAS<x>:REFLevels1:BASETop?
     - MEASUrement:MEAS<x>:REFLevels1:METHod {PERCent|ABSolute}
     - MEASUrement:MEAS<x>:REFLevels1:METHod?
@@ -244,7 +244,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:RESUlts:CURRentacq:STDDev?
     - MEASUrement:MEAS<x>:SIGNALType {CLOCK|DATA|AUTO}
     - MEASUrement:MEAS<x>:SIGNALType?
-    - MEASUrement:MEAS<x>:SOUrce1 {CH<x> |DCH<x>_D<x> |MATH<x> |REF<x>}
+    - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>}
     - MEASUrement:MEAS<x>:SOUrce1?
     - MEASUrement:MEAS<x>:STATUS?
     - MEASUrement:MEAS<x>:TOEDGESEARCHDIRect {FORWard|BACKWard}
@@ -253,7 +253,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:TOEdge?
     - MEASUrement:MEAS<x>:TRANSition {<NR1>|OFF|ON}
     - MEASUrement:MEAS<x>:TRANSition?
-    - MEASUrement:MEAS<x>:TYPe {ACRMS |AMPlITUDE |AREA |BASE |BURSTWIDTH |DATARATE |DELAY |FALLSLEWRATE |FALLTIME |FREQUENCY |HIGHTIME |HOLD |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUtY |NPERIOD |NOVERSHOOT |NWIDTH |PDUTY |PERIOD |PHASE |PK2Pk |POVERSHOOT |PWIDTH |RISESLEWRATE |RISETIME |RMS |SETUP |SKEW |TIMEOUTSIDELEVEL |TOP}
+    - MEASUrement:MEAS<x>:TYPe {ACRMS|AMPlITUDE|AREA|BASE|BURSTWIDTH|DATARATE|DELAY|FALLSLEWRATE|FALLTIME|FREQUENCY|HIGHTIME|HOLD|LOWTIME|MAXIMUM|MEAN|MINIMUM|NDUtY|NPERIOD|NOVERSHOOT|NWIDTH|PDUTY|PERIOD|PHASE|PK2Pk|POVERSHOOT|PWIDTH|RISESLEWRATE|RISETIME|RMS|SETUP|SKEW|TIMEOUTSIDELEVEL|TOP}
     - MEASUrement:MEAS<x>:TYPe?
     - MEASUrement:MEAS<x>:XUNIT?
     - MEASUrement:MEAS<x>:YUNIT?
@@ -273,7 +273,7 @@ Commands and Queries:
     - MEASUrement:REF<x>:REFLevels:ABSolute:RISEMid?
     - MEASUrement:REF<x>:REFLevels:ABSolute:TYPE {SAME|UNIQue}
     - MEASUrement:REF<x>:REFLevels:ABSolute:TYPE?
-    - MEASUrement:REF<x>:REFLevels:BASETop {AUTO| MINMax| MEANhistogram| MODEhistogram| EYEhistogram}
+    - MEASUrement:REF<x>:REFLevels:BASETop {AUTO|MINMax|MEANhistogram|MODEhistogram|EYEhistogram}
     - MEASUrement:REF<x>:REFLevels:BASETop?
     - MEASUrement:REF<x>:REFLevels:METHod {PERCent|ABSolute}
     - MEASUrement:REF<x>:REFLevels:METHod?
@@ -1035,11 +1035,11 @@ class MeasurementReflevelsBasetop(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``AUTO``
-        - ``MINMax``
-        - ``MEANhistogram``
-        - ``MODEhistogram``
-        - ``EYEhistogram``
+        - ``AUTO`` sets the base top method to AUTO.
+        - ``MINMax`` sets the base top method to MINMax.
+        - ``MEANhistogram`` sets the base top method to MEANhistogram.
+        - ``MODEhistogram`` sets the base top method to MODEhistogram.
+        - ``EYEhistogram`` sets the base top method to EYEhistogram.
     """
 
 
@@ -1591,11 +1591,11 @@ class MeasurementReflevels(SCPICmdRead):
             ```
 
         Info:
-            - ``AUTO``
-            - ``MINMax``
-            - ``MEANhistogram``
-            - ``MODEhistogram``
-            - ``EYEhistogram``
+            - ``AUTO`` sets the base top method to AUTO.
+            - ``MINMax`` sets the base top method to MINMax.
+            - ``MEANhistogram`` sets the base top method to MEANhistogram.
+            - ``MODEhistogram`` sets the base top method to MODEhistogram.
+            - ``EYEhistogram`` sets the base top method to EYEhistogram.
         """
         return self._basetop
 
@@ -2268,7 +2268,7 @@ class MeasurementRefItemReflevelsBasetop(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:REF<x>:REFLevels:BASETop {AUTO| MINMax| MEANhistogram| MODEhistogram| EYEhistogram}
+        - MEASUrement:REF<x>:REFLevels:BASETop {AUTO|MINMax|MEANhistogram|MODEhistogram|EYEhistogram}
         - MEASUrement:REF<x>:REFLevels:BASETop?
         ```
 
@@ -2850,7 +2850,7 @@ class MeasurementRefItemReflevels(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:REF<x>:REFLevels:BASETop {AUTO| MINMax| MEANhistogram| MODEhistogram| EYEhistogram}
+            - MEASUrement:REF<x>:REFLevels:BASETop {AUTO|MINMax|MEANhistogram|MODEhistogram|EYEhistogram}
             - MEASUrement:REF<x>:REFLevels:BASETop?
             ```
 
@@ -3015,7 +3015,7 @@ class MeasurementMeasItemType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:TYPe {ACRMS |AMPlITUDE |AREA |BASE |BURSTWIDTH |DATARATE |DELAY |FALLSLEWRATE |FALLTIME |FREQUENCY |HIGHTIME |HOLD |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUtY |NPERIOD |NOVERSHOOT |NWIDTH |PDUTY |PERIOD |PHASE |PK2Pk |POVERSHOOT |PWIDTH |RISESLEWRATE |RISETIME |RMS |SETUP |SKEW |TIMEOUTSIDELEVEL |TOP}
+        - MEASUrement:MEAS<x>:TYPe {ACRMS|AMPlITUDE|AREA|BASE|BURSTWIDTH|DATARATE|DELAY|FALLSLEWRATE|FALLTIME|FREQUENCY|HIGHTIME|HOLD|LOWTIME|MAXIMUM|MEAN|MINIMUM|NDUtY|NPERIOD|NOVERSHOOT|NWIDTH|PDUTY|PERIOD|PHASE|PK2Pk|POVERSHOOT|PWIDTH|RISESLEWRATE|RISETIME|RMS|SETUP|SKEW|TIMEOUTSIDELEVEL|TOP}
         - MEASUrement:MEAS<x>:TYPe?
         ```
 
@@ -3234,7 +3234,7 @@ class MeasurementMeasItemSource1(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:SOUrce1 {CH<x> |DCH<x>_D<x> |MATH<x> |REF<x>}
+        - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>}
         - MEASUrement:MEAS<x>:SOUrce1?
         ```
 
@@ -4661,7 +4661,7 @@ class MeasurementMeasItemReflevels1Basetop(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:REFLevels1:BASETop {AUTO|MINMax|MEANhistogram| MODEhistogram|EYEhistogram}
+        - MEASUrement:MEAS<x>:REFLevels1:BASETop {AUTO|MINMax|MEANhistogram|MODEhistogram|EYEhistogram}
         - MEASUrement:MEAS<x>:REFLevels1:BASETop?
         ```
 
@@ -5215,7 +5215,7 @@ class MeasurementMeasItemReflevels1(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:REFLevels1:BASETop {AUTO|MINMax|MEANhistogram| MODEhistogram|EYEhistogram}
+            - MEASUrement:MEAS<x>:REFLevels1:BASETop {AUTO|MINMax|MEANhistogram|MODEhistogram|EYEhistogram}
             - MEASUrement:MEAS<x>:REFLevels1:BASETop?
             ```
 
@@ -5459,7 +5459,7 @@ class MeasurementMeasItemPassfailwhen(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:PASSFAILWHEN {LESSthan| GREATERthan| Equals| NOTEQuals| INSIDErange| OUTSIDErange}
+        - MEASUrement:MEAS<x>:PASSFAILWHEN {LESSthan|GREATERthan|Equals|NOTEQuals|INSIDErange|OUTSIDErange}
         - MEASUrement:MEAS<x>:PASSFAILWHEN?
         ```
 
@@ -8296,7 +8296,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:PASSFAILWHEN {LESSthan| GREATERthan| Equals| NOTEQuals| INSIDErange| OUTSIDErange}
+            - MEASUrement:MEAS<x>:PASSFAILWHEN {LESSthan|GREATERthan|Equals|NOTEQuals|INSIDErange|OUTSIDErange}
             - MEASUrement:MEAS<x>:PASSFAILWHEN?
             ```
 
@@ -8513,7 +8513,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:SOUrce1 {CH<x> |DCH<x>_D<x> |MATH<x> |REF<x>}
+            - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>}
             - MEASUrement:MEAS<x>:SOUrce1?
             ```
 
@@ -8662,7 +8662,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:TYPe {ACRMS |AMPlITUDE |AREA |BASE |BURSTWIDTH |DATARATE |DELAY |FALLSLEWRATE |FALLTIME |FREQUENCY |HIGHTIME |HOLD |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUtY |NPERIOD |NOVERSHOOT |NWIDTH |PDUTY |PERIOD |PHASE |PK2Pk |POVERSHOOT |PWIDTH |RISESLEWRATE |RISETIME |RMS |SETUP |SKEW |TIMEOUTSIDELEVEL |TOP}
+            - MEASUrement:MEAS<x>:TYPe {ACRMS|AMPlITUDE|AREA|BASE|BURSTWIDTH|DATARATE|DELAY|FALLSLEWRATE|FALLTIME|FREQUENCY|HIGHTIME|HOLD|LOWTIME|MAXIMUM|MEAN|MINIMUM|NDUtY|NPERIOD|NOVERSHOOT|NWIDTH|PDUTY|PERIOD|PHASE|PK2Pk|POVERSHOOT|PWIDTH|RISESLEWRATE|RISETIME|RMS|SETUP|SKEW|TIMEOUTSIDELEVEL|TOP}
             - MEASUrement:MEAS<x>:TYPe?
             ```
 
@@ -9390,7 +9390,7 @@ class MeasurementMathItemReflevelsBasetop(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MATH<x>:REFLevels:BASETop {AUTO|MINMax|MEANhistogram| MODEhistogram|EYEhistogram}
+        - MEASUrement:MATH<x>:REFLevels:BASETop {AUTO|MINMax|MEANhistogram|MODEhistogram|EYEhistogram}
         - MEASUrement:MATH<x>:REFLevels:BASETop?
         ```
 
@@ -10013,7 +10013,7 @@ class MeasurementMathItemReflevels(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MATH<x>:REFLevels:BASETop {AUTO|MINMax|MEANhistogram| MODEhistogram|EYEhistogram}
+            - MEASUrement:MATH<x>:REFLevels:BASETop {AUTO|MINMax|MEANhistogram|MODEhistogram|EYEhistogram}
             - MEASUrement:MATH<x>:REFLevels:BASETop?
             ```
 
@@ -11956,7 +11956,7 @@ class MeasurementAddmeas(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - MEASUrement:ADDMEAS {ACRMS |AMPlITUDE |AREA |BASE |BURSTWIDTH |DATARATE |DELAY |FALLSLEWRATE |FALLTIME |FREQUENCY |HIGHTIME |HOLD |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUty |NOVERSHOOT |NPERIOD |NWIDTTH |PDUTY |PERIOD |PHASE |PK2Pk |POVERSHOOT |PWIDTH |RISESLEWRATE |RISETIME |RMS |SETUP |SKEW |TIMEOUTSIDELEVEL |TIMETOMAX |TIMETOMIN |TOP}
+        - MEASUrement:ADDMEAS {ACRMS|AMPlITUDE|AREA|BASE|BURSTWIDTH|DATARATE|DELAY|FALLSLEWRATE|FALLTIME|FREQUENCY|HIGHTIME|HOLD|LOWTIME|MAXIMUM|MEAN|MINIMUM|NDUty|NOVERSHOOT|NPERIOD|NWIDTTH|PDUTY|PERIOD|PHASE|PK2Pk|POVERSHOOT|PWIDTH|RISESLEWRATE|RISETIME|RMS|SETUP|SKEW|TIMEOUTSIDELEVEL|TIMETOMAX|TIMETOMIN|TOP}
         ```
 
     Info:
@@ -12128,7 +12128,7 @@ class Measurement(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:ADDMEAS {ACRMS |AMPlITUDE |AREA |BASE |BURSTWIDTH |DATARATE |DELAY |FALLSLEWRATE |FALLTIME |FREQUENCY |HIGHTIME |HOLD |LOWTIME |MAXIMUM |MEAN |MINIMUM |NDUty |NOVERSHOOT |NPERIOD |NWIDTTH |PDUTY |PERIOD |PHASE |PK2Pk |POVERSHOOT |PWIDTH |RISESLEWRATE |RISETIME |RMS |SETUP |SKEW |TIMEOUTSIDELEVEL |TIMETOMAX |TIMETOMIN |TOP}
+            - MEASUrement:ADDMEAS {ACRMS|AMPlITUDE|AREA|BASE|BURSTWIDTH|DATARATE|DELAY|FALLSLEWRATE|FALLTIME|FREQUENCY|HIGHTIME|HOLD|LOWTIME|MAXIMUM|MEAN|MINIMUM|NDUty|NOVERSHOOT|NPERIOD|NWIDTTH|PDUTY|PERIOD|PHASE|PK2Pk|POVERSHOOT|PWIDTH|RISESLEWRATE|RISETIME|RMS|SETUP|SKEW|TIMEOUTSIDELEVEL|TIMETOMAX|TIMETOMIN|TOP}
             ```
 
         Info:

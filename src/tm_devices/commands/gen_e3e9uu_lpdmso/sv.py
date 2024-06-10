@@ -84,7 +84,7 @@ Commands and Queries:
     - SV:SPECtrogram:CURSor:A?
     - SV:SPECtrogram:CURSor:B {1|0|ON|OFF}
     - SV:SPECtrogram:CURSor:B?
-    - SV:WINDOW {KAISerbessel|RECTangular|HAMMing| HANNing|BLACkmanharris|FLATtop2}
+    - SV:WINDOW {KAISerbessel|RECTangular|HAMMing|HANNing|BLACkmanharris|FLATtop2}
     - SV:WINDOW?
     ```
 """
@@ -120,7 +120,7 @@ class SvWindow(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SV:WINDOW {KAISerbessel|RECTangular|HAMMing| HANNing|BLACkmanharris|FLATtop2}
+        - SV:WINDOW {KAISerbessel|RECTangular|HAMMing|HANNing|BLACkmanharris|FLATtop2}
         - SV:WINDOW?
         ```
 
@@ -3125,7 +3125,7 @@ class Sv(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SV:WINDOW {KAISerbessel|RECTangular|HAMMing| HANNing|BLACkmanharris|FLATtop2}
+            - SV:WINDOW {KAISerbessel|RECTangular|HAMMing|HANNing|BLACkmanharris|FLATtop2}
             - SV:WINDOW?
             ```
 

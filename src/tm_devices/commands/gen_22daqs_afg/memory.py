@@ -12,7 +12,8 @@ Commands and Queries:
     - *RCL {0|1|2|3|4}
     - *SAV {0|1|2|3|4}
     - MEMory:STATe:DELete {0|1|2|3|4}
-    - MEMory:STATe:LOCK {1|2|3|4},{ON|OFF|<NR1>}?{1|2|3|4}
+    - MEMory:STATe:LOCK {1|2|3|4},{ON|OFF|<NR1>}
+    - MEMory:STATe:LOCK? {1|2|3|4}
     - MEMory:STATe:RECall:AUTo {ON|OFF|<NR1>}
     - MEMory:STATe:RECall:AUTo?
     - MEMory:STATe:VALid? {0|1|2|3|4}
@@ -114,7 +115,7 @@ class MemoryStateRecall(SCPICmdRead):
         return self._auto
 
 
-class MemoryStateLock(SCPICmdWrite):
+class MemoryStateLock(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``MEMory:STATe:LOCK`` command.
 
     Description:
@@ -123,11 +124,16 @@ class MemoryStateLock(SCPICmdWrite):
           command for the setup memory of location number 0 (last setup memory).
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``MEMory:STATe:LOCK? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``MEMory:STATe:LOCK? argument`` query and raise an AssertionError if the returned value
+          does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MEMory:STATe:LOCK value`` command.
 
     SCPI Syntax:
         ```
-        - MEMory:STATe:LOCK {1|2|3|4},{ON|OFF|<NR1>}?{1|2|3|4}
+        - MEMory:STATe:LOCK {1|2|3|4},{ON|OFF|<NR1>}
+        - MEMory:STATe:LOCK? {1|2|3|4}
         ```
     """
 
@@ -200,11 +206,17 @@ class MemoryState(SCPICmdRead):
               command for the setup memory of location number 0 (last setup memory).
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``MEMory:STATe:LOCK? argument``
+              query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``MEMory:STATe:LOCK? argument`` query and raise an AssertionError if the returned
+              value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MEMory:STATe:LOCK value`` command.
 
         SCPI Syntax:
             ```
-            - MEMory:STATe:LOCK {1|2|3|4},{ON|OFF|<NR1>}?{1|2|3|4}
+            - MEMory:STATe:LOCK {1|2|3|4},{ON|OFF|<NR1>}
+            - MEMory:STATe:LOCK? {1|2|3|4}
             ```
         """
         return self._lock
