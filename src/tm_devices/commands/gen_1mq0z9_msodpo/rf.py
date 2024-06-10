@@ -55,7 +55,8 @@ Commands and Queries:
     - RF:PRObe:CALibrate {EXECute|INITialize}
     - RF:PRObe:CALibrate:CALIBRATABLe?
     - RF:PRObe:CALibrate:STATE?
-    - RF:PRObe:COMMAND <QString>, <QString>? <QString>
+    - RF:PRObe:COMMAND <QString>, <QString>
+    - RF:PRObe:COMMAND? <QString>
     - RF:PRObe:DEGAUss EXECute
     - RF:PRObe:DEGAUss:STATE?
     - RF:PRObe:FORCEDRange <NR3>
@@ -126,7 +127,7 @@ Commands and Queries:
 
 from typing import Optional, TYPE_CHECKING
 
-from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
+from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
@@ -1829,7 +1830,7 @@ class RfProbeDegauss(SCPICmdWrite, SCPICmdRead):
         return self._state
 
 
-class RfProbeCommand(SCPICmdWrite):
+class RfProbeCommand(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``RF:PRObe:COMMAND`` command.
 
     Description:
@@ -1841,11 +1842,15 @@ class RfProbeCommand(SCPICmdWrite):
           specify the probe command enumeration for which the response data is requested.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``RF:PRObe:COMMAND? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the ``RF:PRObe:COMMAND? argument``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``RF:PRObe:COMMAND value`` command.
 
     SCPI Syntax:
         ```
-        - RF:PRObe:COMMAND <QString>, <QString>? <QString>
+        - RF:PRObe:COMMAND <QString>, <QString>
+        - RF:PRObe:COMMAND? <QString>
         ```
 
     Info:
@@ -2077,11 +2082,17 @@ class RfProbe(SCPICmdRead):
               is requested.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``RF:PRObe:COMMAND? argument``
+              query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``RF:PRObe:COMMAND? argument`` query and raise an AssertionError if the returned value
+              does not match ``value``.
             - Using the ``.write(value)`` method will send the ``RF:PRObe:COMMAND value`` command.
 
         SCPI Syntax:
             ```
-            - RF:PRObe:COMMAND <QString>, <QString>? <QString>
+            - RF:PRObe:COMMAND <QString>, <QString>
+            - RF:PRObe:COMMAND? <QString>
             ```
 
         Info:

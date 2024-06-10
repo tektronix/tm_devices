@@ -59,7 +59,7 @@ Commands and Queries:
     - MATH:MATH<x>:SIGNeddata?
     - MATH:MATH<x>:SOUrce1 {CH<x>|MATH<x>|REF<x>}
     - MATH:MATH<x>:SOUrce1?
-    - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing| HANNing|BLACKMANHarris|KAISERBessel|GAUSSian| FLATTOP2|TEKEXPonential}
+    - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing|HANNing|BLACKMANHarris|KAISERBessel|GAUSSian|FLATTOP2|TEKEXPonential}
     - MATH:MATH<x>:SPECTral:WINdow?
     - MATH:MATH<x>:SPI:SUPPortedfields {DATa|MOSIdata|MISOdata}
     - MATH:MATH<x>:SPI:SUPPortedfields?
@@ -232,7 +232,7 @@ class MathMathItemSpectralWindow(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing| HANNing|BLACKMANHarris|KAISERBessel|GAUSSian| FLATTOP2|TEKEXPonential}
+        - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing|HANNing|BLACKMANHarris|KAISERBessel|GAUSSian|FLATTOP2|TEKEXPonential}
         - MATH:MATH<x>:SPECTral:WINdow?
         ```
 
@@ -290,7 +290,7 @@ class MathMathItemSpectral(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing| HANNing|BLACKMANHarris|KAISERBessel|GAUSSian| FLATTOP2|TEKEXPonential}
+            - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing|HANNing|BLACKMANHarris|KAISERBessel|GAUSSian|FLATTOP2|TEKEXPonential}
             - MATH:MATH<x>:SPECTral:WINdow?
             ```
 

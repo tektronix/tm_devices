@@ -10,7 +10,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - FPAnel:PRESS {AUTOset| BUS| CH1<x>| CLEAR| DEFaultsetup| FORCetrig| GPKNOB1| GPKNOB2| HORZPOS| MATh| REF| RUNSTop| SETTO50| SINGleseq| TOUCHSCReen| TRIGMode| USER| VERTPOS| VERTSCALE}
+    - FPAnel:PRESS {AUTOset|BUS|CH1<x>|CLEAR|DEFaultsetup|FORCetrig|GPKNOB1|GPKNOB2|HORZPOS|MATh|REF|RUNSTop|SETTO50|SINGleseq|TOUCHSCReen|TRIGMode|USER|VERTPOS|VERTSCALE}
     - FPAnel:TURN {GPKNOB1| GPKNOB2| HORZPOS| HORZScale| TRIGLevel| VERTPOS| VERTSCALE} [,<NR1>]
     ```
 """  # noqa: E501
@@ -56,7 +56,7 @@ class FpanelPress(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - FPAnel:PRESS {AUTOset| BUS| CH1<x>| CLEAR| DEFaultsetup| FORCetrig| GPKNOB1| GPKNOB2| HORZPOS| MATh| REF| RUNSTop| SETTO50| SINGleseq| TOUCHSCReen| TRIGMode| USER| VERTPOS| VERTSCALE}
+        - FPAnel:PRESS {AUTOset|BUS|CH1<x>|CLEAR|DEFaultsetup|FORCetrig|GPKNOB1|GPKNOB2|HORZPOS|MATh|REF|RUNSTop|SETTO50|SINGleseq|TOUCHSCReen|TRIGMode|USER|VERTPOS|VERTSCALE}
         ```
 
     Info:
@@ -113,7 +113,7 @@ class Fpanel(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - FPAnel:PRESS {AUTOset| BUS| CH1<x>| CLEAR| DEFaultsetup| FORCetrig| GPKNOB1| GPKNOB2| HORZPOS| MATh| REF| RUNSTop| SETTO50| SINGleseq| TOUCHSCReen| TRIGMode| USER| VERTPOS| VERTSCALE}
+            - FPAnel:PRESS {AUTOset|BUS|CH1<x>|CLEAR|DEFaultsetup|FORCetrig|GPKNOB1|GPKNOB2|HORZPOS|MATh|REF|RUNSTop|SETTO50|SINGleseq|TOUCHSCReen|TRIGMode|USER|VERTPOS|VERTSCALE}
             ```
 
         Info:

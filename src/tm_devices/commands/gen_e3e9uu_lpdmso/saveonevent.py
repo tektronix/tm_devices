@@ -9,7 +9,8 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - SAVEONEVent:FILEDest ? <Qstring>
+    - SAVEONEVent:FILEDest
+    - SAVEONEVent:FILEDest? <Qstring>
     - SAVEONEVent:FILEName <QString>
     - SAVEONEVent:FILEName?
     - SAVEONEVent:IMAGe:FILEFormat {PNG|BMP|JPG}
@@ -23,7 +24,7 @@ Commands and Queries:
 
 from typing import Optional, TYPE_CHECKING
 
-from ..helpers import SCPICmdRead, SCPICmdWrite
+from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
@@ -267,7 +268,7 @@ class SaveoneventFilename(SCPICmdWrite, SCPICmdRead):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class SaveoneventFiledest(SCPICmdWrite):
+class SaveoneventFiledest(SCPICmdWriteNoArguments, SCPICmdReadWithArguments):
     """The ``SAVEONEVent:FILEDest`` command.
 
     Description:
@@ -275,11 +276,17 @@ class SaveoneventFiledest(SCPICmdWrite):
           ``SAVEON:FILE:DEST`` (still valid command, but only an alias for this new command).
 
     Usage:
-        - Using the ``.write(value)`` method will send the ``SAVEONEVent:FILEDest value`` command.
+        - Using the ``.query(argument)`` method will send the ``SAVEONEVent:FILEDest? argument``
+          query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``SAVEONEVent:FILEDest? argument`` query and raise an AssertionError if the returned value
+          does not match ``value``.
+        - Using the ``.write()`` method will send the ``SAVEONEVent:FILEDest`` command.
 
     SCPI Syntax:
         ```
-        - SAVEONEVent:FILEDest ? <Qstring>
+        - SAVEONEVent:FILEDest
+        - SAVEONEVent:FILEDest? <Qstring>
         ```
 
     Info:
@@ -320,12 +327,17 @@ class Saveonevent(SCPICmdRead):
               ``SAVEON:FILE:DEST`` (still valid command, but only an alias for this new command).
 
         Usage:
-            - Using the ``.write(value)`` method will send the ``SAVEONEVent:FILEDest value``
-              command.
+            - Using the ``.query(argument)`` method will send the ``SAVEONEVent:FILEDest? argument``
+              query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``SAVEONEVent:FILEDest? argument`` query and raise an AssertionError if the returned
+              value does not match ``value``.
+            - Using the ``.write()`` method will send the ``SAVEONEVent:FILEDest`` command.
 
         SCPI Syntax:
             ```
-            - SAVEONEVent:FILEDest ? <Qstring>
+            - SAVEONEVent:FILEDest
+            - SAVEONEVent:FILEDest? <Qstring>
             ```
 
         Info:

@@ -36,7 +36,7 @@ Commands and Queries:
     - ZOOm:REF<x>:VERTical:POSition?
     - ZOOm:REF<x>:VERTical:SCAle <NR3>
     - ZOOm:REF<x>:VERTical:SCAle?
-    - ZOOm:SCROLL:DIREction {FWD|FFWD|REV| FREV|STOP}
+    - ZOOm:SCROLL:DIREction {FWD|FFWD|REV|FREV|STOP}
     - ZOOm:SCROLL:DIREction?
     - ZOOm:SCROLL:LOCk {ON|OFF|<NR1>}
     - ZOOm:SCROLL:LOCk?
@@ -2222,7 +2222,7 @@ class ZoomScrollDirection(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ZOOm:SCROLL:DIREction {FWD|FFWD|REV| FREV|STOP}
+        - ZOOm:SCROLL:DIREction {FWD|FFWD|REV|FREV|STOP}
         - ZOOm:SCROLL:DIREction?
         ```
 
@@ -2272,7 +2272,7 @@ class ZoomScroll(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ZOOm:SCROLL:DIREction {FWD|FFWD|REV| FREV|STOP}
+            - ZOOm:SCROLL:DIREction {FWD|FFWD|REV|FREV|STOP}
             - ZOOm:SCROLL:DIREction?
             ```
 

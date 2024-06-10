@@ -97,10 +97,13 @@ Commands and Queries:
     - WLISt:WAVeform:ACFile:RSINc?
     - WLISt:WAVeform:ACFile:SKEW {0|1|OFF|ON}
     - WLISt:WAVeform:ACFile:SKEW?
-    - WLISt:WAVeform:AMPLitude <wfm_name>,<amplitude>? <wfm_name>
+    - WLISt:WAVeform:AMPLitude <wfm_name>,<amplitude>
+    - WLISt:WAVeform:AMPLitude? <wfm_name>
     - WLISt:WAVeform:AOFFset <wfm_name>,<offset_factor>
-    - WLISt:WAVeform:DATA:I <wfm_name>[,<StartIndex>[,<Size>]],<block_data>? <wfm_name>[,<StartIndex>[,<Size>]]
-    - WLISt:WAVeform:DATA:Q <wfm_name>[,<StartIndex>[,<Size>]],<block_data>? <wfm_name>[,<StartIndex>[,<Size>]]
+    - WLISt:WAVeform:DATA:I <wfm_name>[,<StartIndex>[,<Size>]],<block_data>
+    - WLISt:WAVeform:DATA:I? <wfm_name>[,<StartIndex>[,<Size>]]
+    - WLISt:WAVeform:DATA:Q <wfm_name>[,<StartIndex>[,<Size>]],<block_data>
+    - WLISt:WAVeform:DATA:Q? <wfm_name>[,<StartIndex>[,<Size>]]
     - WLISt:WAVeform:DELete {<wfm_name>|ALL}
     - WLISt:WAVeform:FREQuency <wfm_name>,<frequency>
     - WLISt:WAVeform:FREQuency?
@@ -109,20 +112,24 @@ Commands and Queries:
     - WLISt:WAVeform:LENGth? <wfm_name>
     - WLISt:WAVeform:LMAXimum?
     - WLISt:WAVeform:LMINimum?
-    - WLISt:WAVeform:MARKer:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>? <wfm_name>[,<StartIndex>[,<Size>]]
+    - WLISt:WAVeform:MARKer:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>
+    - WLISt:WAVeform:MARKer:DATA? <wfm_name>[,<StartIndex>[,<Size>]]
     - WLISt:WAVeform:MIQ <I_wfm_name>,<Q_wfm_name>
     - WLISt:WAVeform:NEW <wfm_name>,<Size>[,<format>[,<is_saveable>]]
     - WLISt:WAVeform:NORMalize <wfm_name>,{FSCale|ZREFerence}
-    - WLISt:WAVeform:OFFSet <wfm_name>,<offset>? <wfm_name>
+    - WLISt:WAVeform:OFFSet <wfm_name>,<offset>
+    - WLISt:WAVeform:OFFSet? <wfm_name>
     - WLISt:WAVeform:RESample <wfm_name>,<size>
     - WLISt:WAVeform:REVerse <wfm_name>
     - WLISt:WAVeform:ROTate:DEGRees <wfm_name>,<phase>
     - WLISt:WAVeform:ROTate:POINts <wfm_name>,<points>
     - WLISt:WAVeform:SCALe <wfm_name>,<multiplier_factor>
     - WLISt:WAVeform:SDCorrection <wfm_name>[,<end_frequency>]
-    - WLISt:WAVeform:SFORmat <wfm_name>,{REAL|I|Q}? <wfm_name>
+    - WLISt:WAVeform:SFORmat <wfm_name>,{REAL|I|Q}
+    - WLISt:WAVeform:SFORmat? <wfm_name>
     - WLISt:WAVeform:SHIFt <wfm_name>,<phase>
-    - WLISt:WAVeform:SRATe <wfm_name>,<sample_rate>? <wfm_name>
+    - WLISt:WAVeform:SRATe <wfm_name>,<sample_rate>
+    - WLISt:WAVeform:SRATe? <wfm_name>
     - WLISt:WAVeform:TSTamp? <wfm_name>
     - WLISt:WAVeform:TYPE? <wfm_name>
     ```
@@ -185,7 +192,7 @@ class WlistWaveformTstamp(SCPICmdReadWithArguments):
     """
 
 
-class WlistWaveformSrate(SCPICmdWrite):
+class WlistWaveformSrate(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``WLISt:WAVeform:SRATe`` command.
 
     Description:
@@ -193,11 +200,17 @@ class WlistWaveformSrate(SCPICmdWrite):
           waveform list
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``WLISt:WAVeform:SRATe? argument``
+          query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``WLISt:WAVeform:SRATe? argument`` query and raise an AssertionError if the returned value
+          does not match ``value``.
         - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:SRATe value`` command.
 
     SCPI Syntax:
         ```
-        - WLISt:WAVeform:SRATe <wfm_name>,<sample_rate>? <wfm_name>
+        - WLISt:WAVeform:SRATe <wfm_name>,<sample_rate>
+        - WLISt:WAVeform:SRATe? <wfm_name>
         ```
     """
 
@@ -218,7 +231,7 @@ class WlistWaveformShift(SCPICmdWrite):
     """
 
 
-class WlistWaveformSformat(SCPICmdWrite):
+class WlistWaveformSformat(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``WLISt:WAVeform:SFORmat`` command.
 
     Description:
@@ -226,11 +239,17 @@ class WlistWaveformSformat(SCPICmdWrite):
           list.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``WLISt:WAVeform:SFORmat? argument``
+          query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``WLISt:WAVeform:SFORmat? argument`` query and raise an AssertionError if the returned
+          value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:SFORmat value`` command.
 
     SCPI Syntax:
         ```
-        - WLISt:WAVeform:SFORmat <wfm_name>,{REAL|I|Q}? <wfm_name>
+        - WLISt:WAVeform:SFORmat <wfm_name>,{REAL|I|Q}
+        - WLISt:WAVeform:SFORmat? <wfm_name>
         ```
     """
 
@@ -401,7 +420,7 @@ class WlistWaveformResample(SCPICmdWrite):
     """
 
 
-class WlistWaveformOffset(SCPICmdWrite):
+class WlistWaveformOffset(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``WLISt:WAVeform:OFFSet`` command.
 
     Description:
@@ -409,11 +428,17 @@ class WlistWaveformOffset(SCPICmdWrite):
           waveform list.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``WLISt:WAVeform:OFFSet? argument``
+          query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``WLISt:WAVeform:OFFSet? argument`` query and raise an AssertionError if the returned
+          value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:OFFSet value`` command.
 
     SCPI Syntax:
         ```
-        - WLISt:WAVeform:OFFSet <wfm_name>,<offset>? <wfm_name>
+        - WLISt:WAVeform:OFFSet <wfm_name>,<offset>
+        - WLISt:WAVeform:OFFSet? <wfm_name>
         ```
     """
 
@@ -468,7 +493,7 @@ class WlistWaveformMiq(SCPICmdWrite):
     """
 
 
-class WlistWaveformMarkerData(SCPICmdWrite):
+class WlistWaveformMarkerData(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``WLISt:WAVeform:MARKer:DATA`` command.
 
     Description:
@@ -478,14 +503,20 @@ class WlistWaveformMarkerData(SCPICmdWrite):
           http, or file sharing) to transfer the file.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the
+          ``WLISt:WAVeform:MARKer:DATA? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``WLISt:WAVeform:MARKer:DATA? argument`` query and raise an AssertionError if the returned
+          value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:MARKer:DATA value``
           command.
 
     SCPI Syntax:
         ```
-        - WLISt:WAVeform:MARKer:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>? <wfm_name>[,<StartIndex>[,<Size>]]
+        - WLISt:WAVeform:MARKer:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>
+        - WLISt:WAVeform:MARKer:DATA? <wfm_name>[,<StartIndex>[,<Size>]]
         ```
-    """  # noqa: E501
+    """
 
 
 class WlistWaveformMarker(SCPICmdRead):
@@ -515,14 +546,20 @@ class WlistWaveformMarker(SCPICmdRead):
               (ftp, http, or file sharing) to transfer the file.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``WLISt:WAVeform:MARKer:DATA? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``WLISt:WAVeform:MARKer:DATA? argument`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:MARKer:DATA value``
               command.
 
         SCPI Syntax:
             ```
-            - WLISt:WAVeform:MARKer:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>? <wfm_name>[,<StartIndex>[,<Size>]]
+            - WLISt:WAVeform:MARKer:DATA <wfm_name>[,<StartIndex>[,<Size>]],<block_data>
+            - WLISt:WAVeform:MARKer:DATA? <wfm_name>[,<StartIndex>[,<Size>]]
             ```
-        """  # noqa: E501
+        """
         return self._data
 
 
@@ -659,7 +696,7 @@ class WlistWaveformDelete(SCPICmdWrite):
     """
 
 
-class WlistWaveformDataQ(SCPICmdWrite):
+class WlistWaveformDataQ(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``WLISt:WAVeform:DATA:Q`` command.
 
     Description:
@@ -677,16 +714,22 @@ class WlistWaveformDataQ(SCPICmdWrite):
           ``WLIST:WAVEFORM:MARKER:DATA``.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``WLISt:WAVeform:DATA:Q? argument``
+          query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``WLISt:WAVeform:DATA:Q? argument`` query and raise an AssertionError if the returned
+          value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:DATA:Q value`` command.
 
     SCPI Syntax:
         ```
-        - WLISt:WAVeform:DATA:Q <wfm_name>[,<StartIndex>[,<Size>]],<block_data>? <wfm_name>[,<StartIndex>[,<Size>]]
+        - WLISt:WAVeform:DATA:Q <wfm_name>[,<StartIndex>[,<Size>]],<block_data>
+        - WLISt:WAVeform:DATA:Q? <wfm_name>[,<StartIndex>[,<Size>]]
         ```
-    """  # noqa: E501
+    """
 
 
-class WlistWaveformDataI(SCPICmdWrite):
+class WlistWaveformDataI(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``WLISt:WAVeform:DATA:I`` command.
 
     Description:
@@ -700,13 +743,19 @@ class WlistWaveformDataI(SCPICmdWrite):
           commands/queries. To set marker data, use the command ``WLIST:WAVEFORM:MARKER:DATA``.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``WLISt:WAVeform:DATA:I? argument``
+          query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``WLISt:WAVeform:DATA:I? argument`` query and raise an AssertionError if the returned
+          value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:DATA:I value`` command.
 
     SCPI Syntax:
         ```
-        - WLISt:WAVeform:DATA:I <wfm_name>[,<StartIndex>[,<Size>]],<block_data>? <wfm_name>[,<StartIndex>[,<Size>]]
+        - WLISt:WAVeform:DATA:I <wfm_name>[,<StartIndex>[,<Size>]],<block_data>
+        - WLISt:WAVeform:DATA:I? <wfm_name>[,<StartIndex>[,<Size>]]
         ```
-    """  # noqa: E501
+    """
 
 
 class WlistWaveformData(SCPICmdRead):
@@ -746,14 +795,20 @@ class WlistWaveformData(SCPICmdRead):
               commands/queries. To set marker data, use the command ``WLIST:WAVEFORM:MARKER:DATA``.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``WLISt:WAVeform:DATA:Q? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``WLISt:WAVeform:DATA:Q? argument`` query and raise an AssertionError if the returned
+              value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:DATA:Q value``
               command.
 
         SCPI Syntax:
             ```
-            - WLISt:WAVeform:DATA:Q <wfm_name>[,<StartIndex>[,<Size>]],<block_data>? <wfm_name>[,<StartIndex>[,<Size>]]
+            - WLISt:WAVeform:DATA:Q <wfm_name>[,<StartIndex>[,<Size>]],<block_data>
+            - WLISt:WAVeform:DATA:Q? <wfm_name>[,<StartIndex>[,<Size>]]
             ```
-        """  # noqa: E501
+        """
         return self._q
 
     @property
@@ -772,14 +827,20 @@ class WlistWaveformData(SCPICmdRead):
               ``WLIST:WAVEFORM:MARKER:DATA``.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``WLISt:WAVeform:DATA:I? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``WLISt:WAVeform:DATA:I? argument`` query and raise an AssertionError if the returned
+              value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:DATA:I value``
               command.
 
         SCPI Syntax:
             ```
-            - WLISt:WAVeform:DATA:I <wfm_name>[,<StartIndex>[,<Size>]],<block_data>? <wfm_name>[,<StartIndex>[,<Size>]]
+            - WLISt:WAVeform:DATA:I <wfm_name>[,<StartIndex>[,<Size>]],<block_data>
+            - WLISt:WAVeform:DATA:I? <wfm_name>[,<StartIndex>[,<Size>]]
             ```
-        """  # noqa: E501
+        """
         return self._i
 
 
@@ -799,7 +860,7 @@ class WlistWaveformAoffset(SCPICmdWrite):
     """
 
 
-class WlistWaveformAmplitude(SCPICmdWrite):
+class WlistWaveformAmplitude(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``WLISt:WAVeform:AMPLitude`` command.
 
     Description:
@@ -807,12 +868,18 @@ class WlistWaveformAmplitude(SCPICmdWrite):
           waveform in the waveform list.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``WLISt:WAVeform:AMPLitude? argument``
+          query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``WLISt:WAVeform:AMPLitude? argument`` query and raise an AssertionError if the returned
+          value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:AMPLitude value``
           command.
 
     SCPI Syntax:
         ```
-        - WLISt:WAVeform:AMPLitude <wfm_name>,<amplitude>? <wfm_name>
+        - WLISt:WAVeform:AMPLitude <wfm_name>,<amplitude>
+        - WLISt:WAVeform:AMPLitude? <wfm_name>
         ```
     """
 
@@ -1145,12 +1212,18 @@ class WlistWaveform(SCPICmdRead):
               waveform in the waveform list.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``WLISt:WAVeform:AMPLitude? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``WLISt:WAVeform:AMPLitude? argument`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:AMPLitude value``
               command.
 
         SCPI Syntax:
             ```
-            - WLISt:WAVeform:AMPLitude <wfm_name>,<amplitude>? <wfm_name>
+            - WLISt:WAVeform:AMPLitude <wfm_name>,<amplitude>
+            - WLISt:WAVeform:AMPLitude? <wfm_name>
             ```
         """
         return self._amplitude
@@ -1408,12 +1481,18 @@ class WlistWaveform(SCPICmdRead):
               waveform list.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``WLISt:WAVeform:OFFSet? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``WLISt:WAVeform:OFFSet? argument`` query and raise an AssertionError if the returned
+              value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:OFFSet value``
               command.
 
         SCPI Syntax:
             ```
-            - WLISt:WAVeform:OFFSet <wfm_name>,<offset>? <wfm_name>
+            - WLISt:WAVeform:OFFSet <wfm_name>,<offset>
+            - WLISt:WAVeform:OFFSet? <wfm_name>
             ```
         """
         return self._offset
@@ -1518,12 +1597,18 @@ class WlistWaveform(SCPICmdRead):
               waveform list.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``WLISt:WAVeform:SFORmat? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``WLISt:WAVeform:SFORmat? argument`` query and raise an AssertionError if the returned
+              value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:SFORmat value``
               command.
 
         SCPI Syntax:
             ```
-            - WLISt:WAVeform:SFORmat <wfm_name>,{REAL|I|Q}? <wfm_name>
+            - WLISt:WAVeform:SFORmat <wfm_name>,{REAL|I|Q}
+            - WLISt:WAVeform:SFORmat? <wfm_name>
             ```
         """
         return self._sformat
@@ -1555,12 +1640,18 @@ class WlistWaveform(SCPICmdRead):
               the waveform list
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``WLISt:WAVeform:SRATe? argument``
+              query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``WLISt:WAVeform:SRATe? argument`` query and raise an AssertionError if the returned
+              value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:SRATe value``
               command.
 
         SCPI Syntax:
             ```
-            - WLISt:WAVeform:SRATe <wfm_name>,<sample_rate>? <wfm_name>
+            - WLISt:WAVeform:SRATe <wfm_name>,<sample_rate>
+            - WLISt:WAVeform:SRATe? <wfm_name>
             ```
         """
         return self._srate

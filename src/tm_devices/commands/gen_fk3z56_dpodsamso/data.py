@@ -13,7 +13,7 @@ Commands and Queries:
     - DATa {INIT|SNAp}
     - DATa:DESTination REF<x>
     - DATa:DESTination?
-    - DATa:ENCdg {ASCIi|FAStest|RIBinary|RPBinary|FPBinary|SRIbinary |SRPbinary|SFPbinary}
+    - DATa:ENCdg {ASCIi|FAStest|RIBinary|RPBinary|FPBinary|SRIbinary|SRPbinary|SFPbinary}
     - DATa:ENCdg?
     - DATa:FRAMESTARt <NR1>
     - DATa:FRAMESTARt?
@@ -253,7 +253,7 @@ class DataEncdg(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DATa:ENCdg {ASCIi|FAStest|RIBinary|RPBinary|FPBinary|SRIbinary |SRPbinary|SFPbinary}
+        - DATa:ENCdg {ASCIi|FAStest|RIBinary|RPBinary|FPBinary|SRIbinary|SRPbinary|SFPbinary}
         - DATa:ENCdg?
         ```
 
@@ -400,7 +400,7 @@ class Data(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DATa:ENCdg {ASCIi|FAStest|RIBinary|RPBinary|FPBinary|SRIbinary |SRPbinary|SFPbinary}
+            - DATa:ENCdg {ASCIi|FAStest|RIBinary|RPBinary|FPBinary|SRIbinary|SRPbinary|SFPbinary}
             - DATa:ENCdg?
             ```
 

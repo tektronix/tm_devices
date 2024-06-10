@@ -33,7 +33,7 @@ Commands and Queries:
     - ACQuire:STATE?
     - ACQuire:STOPAfter {RUNSTop|SEQuence}
     - ACQuire:STOPAfter?
-    - ACQuire:SYNcsamples {ON | OFF}
+    - ACQuire:SYNcsamples {ON|OFF}
     - ACQuire:SYNcsamples?
     ```
 """
@@ -62,7 +62,7 @@ class AcquireSyncsamples(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ACQuire:SYNcsamples {ON | OFF}
+        - ACQuire:SYNcsamples {ON|OFF}
         - ACQuire:SYNcsamples?
         ```
 
@@ -934,7 +934,7 @@ class Acquire(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ACQuire:SYNcsamples {ON | OFF}
+            - ACQuire:SYNcsamples {ON|OFF}
             - ACQuire:SYNcsamples?
             ```
 

@@ -12,9 +12,12 @@ Commands and Queries:
     - SLISt:NAME? <Index>
     - SLISt:SIZE?
     - SLISt:SUBSequence:DELete {<subseq_name>|ALL}
-    - SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt <subseq_name>,<NR1>? <subseq_name>
-    - SLISt:SUBSequence:ELEMent[n]:WAVeform[n] <subseq_name>,<wfm_name>? <subseq_name>
-    - SLISt:SUBSequence:LENGth <subseq_name>,<NR1>? <subseq_name>
+    - SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt <subseq_name>,<NR1>
+    - SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt? <subseq_name>
+    - SLISt:SUBSequence:ELEMent[n]:WAVeform[n] <subseq_name>,<wfm_name>
+    - SLISt:SUBSequence:ELEMent[n]:WAVeform[n]? <subseq_name>
+    - SLISt:SUBSequence:LENGth <subseq_name>,<NR1>
+    - SLISt:SUBSequence:LENGth? <subseq_name>
     - SLISt:SUBSequence:NEW <subseq_name>,<length>
     - SLISt:SUBSequence:TSTamp? <subseq_name>
     ```
@@ -78,19 +81,25 @@ class SlistSubsequenceNew(SCPICmdWrite):
     """
 
 
-class SlistSubsequenceLength(SCPICmdWrite):
+class SlistSubsequenceLength(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``SLISt:SUBSequence:LENGth`` command.
 
     Description:
         - This command and query sets or returns the size of the subsequence.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``SLISt:SUBSequence:LENGth? argument``
+          query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``SLISt:SUBSequence:LENGth? argument`` query and raise an AssertionError if the returned
+          value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``SLISt:SUBSequence:LENGth value``
           command.
 
     SCPI Syntax:
         ```
-        - SLISt:SUBSequence:LENGth <subseq_name>,<NR1>? <subseq_name>
+        - SLISt:SUBSequence:LENGth <subseq_name>,<NR1>
+        - SLISt:SUBSequence:LENGth? <subseq_name>
         ```
 
     Info:
@@ -98,7 +107,9 @@ class SlistSubsequenceLength(SCPICmdWrite):
     """
 
 
-class SlistSubsequenceElementItemWaveformItem(ValidatedDynamicNumberCmd, SCPICmdWrite):
+class SlistSubsequenceElementItemWaveformItem(
+    ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdReadWithArguments
+):
     """The ``SLISt:SUBSequence:ELEMent[n]:WAVeform[n]`` command.
 
     Description:
@@ -108,12 +119,18 @@ class SlistSubsequenceElementItemWaveformItem(ValidatedDynamicNumberCmd, SCPICmd
           is run.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the
+          ``SLISt:SUBSequence:ELEMent[n]:WAVeform[n]? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``SLISt:SUBSequence:ELEMent[n]:WAVeform[n]? argument`` query and raise an AssertionError
+          if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``SLISt:SUBSequence:ELEMent[n]:WAVeform[n] value`` command.
 
     SCPI Syntax:
         ```
-        - SLISt:SUBSequence:ELEMent[n]:WAVeform[n] <subseq_name>,<wfm_name>? <subseq_name>
+        - SLISt:SUBSequence:ELEMent[n]:WAVeform[n] <subseq_name>,<wfm_name>
+        - SLISt:SUBSequence:ELEMent[n]:WAVeform[n]? <subseq_name>
         ```
 
     Info:
@@ -122,7 +139,7 @@ class SlistSubsequenceElementItemWaveformItem(ValidatedDynamicNumberCmd, SCPICmd
     """
 
 
-class SlistSubsequenceElementItemLoopCount(SCPICmdWrite):
+class SlistSubsequenceElementItemLoopCount(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt`` command.
 
     Description:
@@ -130,12 +147,18 @@ class SlistSubsequenceElementItemLoopCount(SCPICmdWrite):
           element. The loop count is an integer.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the
+          ``SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt? argument`` query and raise an AssertionError if
+          the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt value`` command.
 
     SCPI Syntax:
         ```
-        - SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt <subseq_name>,<NR1>? <subseq_name>
+        - SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt <subseq_name>,<NR1>
+        - SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt? <subseq_name>
         ```
     """
 
@@ -165,12 +188,18 @@ class SlistSubsequenceElementItemLoop(SCPICmdRead):
               element. The loop count is an integer.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt? argument`` query and raise an
+              AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt value`` command.
 
         SCPI Syntax:
             ```
-            - SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt <subseq_name>,<NR1>? <subseq_name>
+            - SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt <subseq_name>,<NR1>
+            - SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt? <subseq_name>
             ```
         """
         return self._count
@@ -227,12 +256,18 @@ class SlistSubsequenceElementItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               when the sequence is run.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``SLISt:SUBSequence:ELEMent[n]:WAVeform[n]? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``SLISt:SUBSequence:ELEMent[n]:WAVeform[n]? argument`` query and raise an
+              AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``SLISt:SUBSequence:ELEMent[n]:WAVeform[n] value`` command.
 
         SCPI Syntax:
             ```
-            - SLISt:SUBSequence:ELEMent[n]:WAVeform[n] <subseq_name>,<wfm_name>? <subseq_name>
+            - SLISt:SUBSequence:ELEMent[n]:WAVeform[n] <subseq_name>,<wfm_name>
+            - SLISt:SUBSequence:ELEMent[n]:WAVeform[n]? <subseq_name>
             ```
 
         Info:
@@ -332,12 +367,18 @@ class SlistSubsequence(SCPICmdRead):
             - This command and query sets or returns the size of the subsequence.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``SLISt:SUBSequence:LENGth? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``SLISt:SUBSequence:LENGth? argument`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``SLISt:SUBSequence:LENGth value``
               command.
 
         SCPI Syntax:
             ```
-            - SLISt:SUBSequence:LENGth <subseq_name>,<NR1>? <subseq_name>
+            - SLISt:SUBSequence:LENGth <subseq_name>,<NR1>
+            - SLISt:SUBSequence:LENGth? <subseq_name>
             ```
 
         Info:

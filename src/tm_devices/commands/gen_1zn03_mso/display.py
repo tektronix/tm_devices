@@ -219,7 +219,7 @@ Commands and Queries:
     - DISplay:SELect:MATH?
     - DISplay:SELect:REFerence {NONE|REF<x>}
     - DISplay:SELect:REFerence?
-    - DISplay:SELect:SOUrce {NONE |CH<x> |DCH<x> |BUS<x> |MATH<x> |PLOT<x> |REF<x>}
+    - DISplay:SELect:SOUrce {NONE|CH<x>|DCH<x>|BUS<x>|MATH<x>|PLOT<x>|REF<x>}
     - DISplay:SELect:SOUrce?
     - DISplay:SELect:VIEW {WAVEVIEW1|MATHFFT<x>|PLOTVIEW<x>|REFFFT<x>}
     - DISplay:SELect:VIEW?
@@ -237,7 +237,7 @@ Commands and Queries:
     - DISplay:WAVEView1:CH<x>:VERTical:POSition?
     - DISplay:WAVEView1:CH<x>:VERTical:SCAle <NR3>
     - DISplay:WAVEView1:CH<x>:VERTical:SCAle?
-    - DISplay:WAVEView1:CURSor:CURSOR1:ASOUrce {AUTO| CH<x>| BUS<x>| DCH<x>_DALL| MATH<x>| REF<x>| PLOT<x>}
+    - DISplay:WAVEView1:CURSor:CURSOR1:ASOUrce {AUTO|CH<x>|BUS<x>|DCH<x>_DALL|MATH<x>|REF<x>|PLOT<x>}
     - DISplay:WAVEView1:CURSor:CURSOR1:ASOUrce?
     - DISplay:WAVEView1:CURSor:CURSOR1:BSOUrce {AUTO| CH<x>| BUS<x>| DCH<x>_DALL| MATH<x>| REF<x>| PLOT<x>
     - DISplay:WAVEView1:CURSor:CURSOR1:BSOUrce?
@@ -3614,7 +3614,7 @@ class DisplayWaveview1CursorCursor1Asource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:WAVEView1:CURSor:CURSOR1:ASOUrce {AUTO| CH<x>| BUS<x>| DCH<x>_DALL| MATH<x>| REF<x>| PLOT<x>}
+        - DISplay:WAVEView1:CURSor:CURSOR1:ASOUrce {AUTO|CH<x>|BUS<x>|DCH<x>_DALL|MATH<x>|REF<x>|PLOT<x>}
         - DISplay:WAVEView1:CURSor:CURSOR1:ASOUrce?
         ```
 
@@ -3707,7 +3707,7 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:WAVEView1:CURSor:CURSOR1:ASOUrce {AUTO| CH<x>| BUS<x>| DCH<x>_DALL| MATH<x>| REF<x>| PLOT<x>}
+            - DISplay:WAVEView1:CURSor:CURSOR1:ASOUrce {AUTO|CH<x>|BUS<x>|DCH<x>_DALL|MATH<x>|REF<x>|PLOT<x>}
             - DISplay:WAVEView1:CURSor:CURSOR1:ASOUrce?
             ```
 
@@ -5040,7 +5040,7 @@ class DisplaySelectSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:SELect:SOUrce {NONE |CH<x> |DCH<x> |BUS<x> |MATH<x> |PLOT<x> |REF<x>}
+        - DISplay:SELect:SOUrce {NONE|CH<x>|DCH<x>|BUS<x>|MATH<x>|PLOT<x>|REF<x>}
         - DISplay:SELect:SOUrce?
         ```
 
@@ -5255,7 +5255,7 @@ class DisplaySelect(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:SELect:SOUrce {NONE |CH<x> |DCH<x> |BUS<x> |MATH<x> |PLOT<x> |REF<x>}
+            - DISplay:SELect:SOUrce {NONE|CH<x>|DCH<x>|BUS<x>|MATH<x>|PLOT<x>|REF<x>}
             - DISplay:SELect:SOUrce?
             ```
 

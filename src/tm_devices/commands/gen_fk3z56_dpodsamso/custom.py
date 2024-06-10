@@ -1,4 +1,3 @@
-# pylint: disable=line-too-long
 """The custom commands module.
 
 These commands are used in the following models:
@@ -11,12 +10,12 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - CUSTOM:GATE<x>:SOUrce { CH1 | CH2 | CH3 | CH4 | MATH1 | MATH2 | MATH3 | MATH4| REF1 | REF2 | REF3 | REF4 }
+    - CUSTOM:GATE<x>:SOUrce { CH1|CH2|CH3|CH4|MATH1|MATH2|MATH3|MATH4|REF1|REF2|REF3|REF4 }
     - CUSTOM:GATE<x>:START <NR3>
     - CUSTOM:GATE<x>:WIDth <NR3>
-    - CUSTOM:SELECT:GATE<x> {1 | 0 | ON | OFF}
+    - CUSTOM:SELECT:GATE<x> {1|0|ON|OFF}
     ```
-"""  # noqa: E501
+"""
 
 from typing import Dict, Optional, TYPE_CHECKING
 
@@ -42,7 +41,7 @@ class CustomSelectGateItem(ValidatedDynamicNumberCmd, SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - CUSTOM:SELECT:GATE<x> {1 | 0 | ON | OFF}
+        - CUSTOM:SELECT:GATE<x> {1|0|ON|OFF}
         ```
 
     Info:
@@ -84,7 +83,7 @@ class CustomSelect(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CUSTOM:SELECT:GATE<x> {1 | 0 | ON | OFF}
+            - CUSTOM:SELECT:GATE<x> {1|0|ON|OFF}
             ```
 
         Info:
@@ -139,9 +138,9 @@ class CustomGateItemSource(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - CUSTOM:GATE<x>:SOUrce { CH1 | CH2 | CH3 | CH4 | MATH1 | MATH2 | MATH3 | MATH4| REF1 | REF2 | REF3 | REF4 }
+        - CUSTOM:GATE<x>:SOUrce { CH1|CH2|CH3|CH4|MATH1|MATH2|MATH3|MATH4|REF1|REF2|REF3|REF4 }
         ```
-    """  # noqa: E501
+    """
 
 
 class CustomGateItem(ValidatedDynamicNumberCmd, SCPICmdRead):
@@ -177,9 +176,9 @@ class CustomGateItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CUSTOM:GATE<x>:SOUrce { CH1 | CH2 | CH3 | CH4 | MATH1 | MATH2 | MATH3 | MATH4| REF1 | REF2 | REF3 | REF4 }
+            - CUSTOM:GATE<x>:SOUrce { CH1|CH2|CH3|CH4|MATH1|MATH2|MATH3|MATH4|REF1|REF2|REF3|REF4 }
             ```
-        """  # noqa: E501
+        """
         return self._source
 
     @property

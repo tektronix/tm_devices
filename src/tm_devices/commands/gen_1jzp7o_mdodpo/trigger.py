@@ -14,14 +14,14 @@ Commands and Queries:
     - TRIGger:A SETLevel
     - TRIGger:A:BANDWidth:RF:HIGH?
     - TRIGger:A:BANDWidth:RF:LOW?
-    - TRIGger:A:BUS {I2C|SPI|CAN|RS232C|PARallel|USB|LIN|FLEXRay|AUDio| ETHERnet|MIL1553B}
+    - TRIGger:A:BUS {I2C|SPI|CAN|RS232C|PARallel|USB|LIN|FLEXRay|AUDio|ETHERnet|MIL1553B}
     - TRIGger:A:BUS:B<x>:ARINC429A:CONDition {STARt|END|LABel|DATA|LABELANDDATA|ERRor}
     - TRIGger:A:BUS:B<x>:ARINC429A:CONDition?
     - TRIGger:A:BUS:B<x>:ARINC429A:ERRTYPE {ANY|GAP|WORD|PARity}
     - TRIGger:A:BUS:B<x>:ARINC429A:ERRTYPE?
     - TRIGger:A:BUS:B<x>:ARINC429A:LABel:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:ARINC429A:LABel:HIVALue?
-    - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {LESSthan|MOREthan|Equal|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {LESSthan|MOREthan|Equal|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier?
     - TRIGger:A:BUS:B<x>:ARINC429A:LABel:VALue <QString>
     - TRIGger:A:BUS:B<x>:ARINC429A:LABel:VALue?
@@ -73,7 +73,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:FLEXray:CONDition?
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:HIVALue?
-    - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:VALue <QString>
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:VALue?
@@ -81,7 +81,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:HIVALue?
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:OFFSet <NR1>
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:OFFSet?
-    - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier?
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:SIZe <NR1>
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:SIZe?
@@ -89,11 +89,11 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:VALue?
     - TRIGger:A:BUS:B<x>:FLEXray:EOFTYPE {STATic|DYNAMic|ANY}
     - TRIGger:A:BUS:B<x>:FLEXray:EOFTYPE?
-    - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic| NULLFRDynamic}
+    - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic|NULLFRDynamic}
     - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE?
     - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:HIVALue?
-    - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier?
     - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:VALue <QString>
     - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:VALue?
@@ -127,7 +127,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:LIN:CONDition?
     - TRIGger:A:BUS:B<x>:LIN:DATa:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:LIN:DATa:HIVALue?
-    - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier?
     - TRIGger:A:BUS:B<x>:LIN:DATa:SIZe <NR1>
     - TRIGger:A:BUS:B<x>:LIN:DATa:SIZe?
@@ -161,7 +161,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:MIL1553B:ERRTYPE?
     - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:HIVALue?
-    - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier?
     - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:VALue <QString>
     - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:VALue?
@@ -217,7 +217,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:USB:ADDRess:HIVALue?
     - TRIGger:A:BUS:B<x>:USB:ADDRess:VALue <Qstring>
     - TRIGger:A:BUS:B<x>:USB:ADDRess:VALue?
-    - TRIGger:A:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket |HANDSHAKEPacket|SPECIALPacket|ERRor}
+    - TRIGger:A:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket|HANDSHAKEPacket|SPECIALPacket|ERRor}
     - TRIGger:A:BUS:B<x>:USB:CONDition?
     - TRIGger:A:BUS:B<x>:USB:DATa:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:USB:DATa:HIVALue?
@@ -235,7 +235,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:USB:ERRTYPE?
     - TRIGger:A:BUS:B<x>:USB:HANDSHAKEType {ANY|NAK|ACK|STALL}
     - TRIGger:A:BUS:B<x>:USB:HANDSHAKEType?
-    - TRIGger:A:BUS:B<x>:USB:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual |MOREEQual|INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:USB:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:USB:QUALifier?
     - TRIGger:A:BUS:B<x>:USB:SOFFRAMENUMber <QString>
     - TRIGger:A:BUS:B<x>:USB:SOFFRAMENUMber?
@@ -350,7 +350,7 @@ Commands and Queries:
     - TRIGger:A:SETHold:CLOCk:THReshold {<NR3>|TTL}
     - TRIGger:A:SETHold:CLOCk:THReshold?
     - TRIGger:A:SETHold:CLOCk?
-    - TRIGger:A:SETHold:DATa:SOUrce {CH<x>|D<x>| AUX}
+    - TRIGger:A:SETHold:DATa:SOUrce {CH<x>|D<x>|AUX}
     - TRIGger:A:SETHold:DATa:SOUrce?
     - TRIGger:A:SETHold:DATa:THReshold {<NR3>|TTL}
     - TRIGger:A:SETHold:DATa:THReshold?
@@ -366,7 +366,7 @@ Commands and Queries:
     - TRIGger:A:SETHold?
     - TRIGger:A:TIMEOut:POLarity {STAYSHigh|STAYSLow|EITher}
     - TRIGger:A:TIMEOut:POLarity?
-    - TRIGger:A:TIMEOut:SOUrce {CH<x>|LINE|AUX| D<x>|RF}
+    - TRIGger:A:TIMEOut:SOUrce {CH<x>|LINE|AUX|D<x>|RF}
     - TRIGger:A:TIMEOut:SOUrce?
     - TRIGger:A:TIMEOut:TIMe <NR3>
     - TRIGger:A:TIMEOut:TIMe?
@@ -403,7 +403,7 @@ Commands and Queries:
     - TRIGger:A:VIDeo:POLarity?
     - TRIGger:A:VIDeo:SOUrce {CH<x>}
     - TRIGger:A:VIDeo:SOUrce?
-    - TRIGger:A:VIDeo:STANdard {NTSc|PAL|SECAM|BILevelcustom| TRILevelcustom| HD480P60|HD576P50|HD720P30|HD720P50 |HD720P60|HD875I60|HD1080P24|HD1080SF24|HD1080I50 |HD1080I60|HD1080P25|HD1080P30|HD1080P50|HD1080P60}
+    - TRIGger:A:VIDeo:STANdard {NTSc|PAL|SECAM|BILevelcustom|TRILevelcustom|HD480P60|HD576P50|HD720P30|HD720P50|HD720P60|HD875I60|HD1080P24|HD1080SF24|HD1080I50|HD1080I60|HD1080P25|HD1080P30|HD1080P50|HD1080P60}
     - TRIGger:A:VIDeo:STANdard?
     - TRIGger:A:VIDeo:SYNC {ODD|EVEN|ALLFields|ALLLines|NUMERic}
     - TRIGger:A:VIDeo:SYNC?
@@ -1567,7 +1567,7 @@ class TriggerAVideoStandard(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:VIDeo:STANdard {NTSc|PAL|SECAM|BILevelcustom| TRILevelcustom| HD480P60|HD576P50|HD720P30|HD720P50 |HD720P60|HD875I60|HD1080P24|HD1080SF24|HD1080I50 |HD1080I60|HD1080P25|HD1080P30|HD1080P50|HD1080P60}
+        - TRIGger:A:VIDeo:STANdard {NTSc|PAL|SECAM|BILevelcustom|TRILevelcustom|HD480P60|HD576P50|HD720P30|HD720P50|HD720P60|HD875I60|HD1080P24|HD1080SF24|HD1080I50|HD1080I60|HD1080P25|HD1080P30|HD1080P50|HD1080P60}
         - TRIGger:A:VIDeo:STANdard?
         ```
 
@@ -2201,7 +2201,7 @@ class TriggerAVideo(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:VIDeo:STANdard {NTSc|PAL|SECAM|BILevelcustom| TRILevelcustom| HD480P60|HD576P50|HD720P30|HD720P50 |HD720P60|HD875I60|HD1080P24|HD1080SF24|HD1080I50 |HD1080I60|HD1080P25|HD1080P30|HD1080P50|HD1080P60}
+            - TRIGger:A:VIDeo:STANdard {NTSc|PAL|SECAM|BILevelcustom|TRILevelcustom|HD480P60|HD576P50|HD720P30|HD720P50|HD720P60|HD875I60|HD1080P24|HD1080SF24|HD1080I50|HD1080I60|HD1080P25|HD1080P30|HD1080P50|HD1080P60}
             - TRIGger:A:VIDeo:STANdard?
             ```
 
@@ -2795,7 +2795,7 @@ class TriggerATimeoutSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:TIMEOut:SOUrce {CH<x>|LINE|AUX| D<x>|RF}
+        - TRIGger:A:TIMEOut:SOUrce {CH<x>|LINE|AUX|D<x>|RF}
         - TRIGger:A:TIMEOut:SOUrce?
         ```
 
@@ -2910,7 +2910,7 @@ class TriggerATimeout(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:TIMEOut:SOUrce {CH<x>|LINE|AUX| D<x>|RF}
+            - TRIGger:A:TIMEOut:SOUrce {CH<x>|LINE|AUX|D<x>|RF}
             - TRIGger:A:TIMEOut:SOUrce?
             ```
 
@@ -3190,7 +3190,7 @@ class TriggerASetholdDataSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:SETHold:DATa:SOUrce {CH<x>|D<x>| AUX}
+        - TRIGger:A:SETHold:DATa:SOUrce {CH<x>|D<x>|AUX}
         - TRIGger:A:SETHold:DATa:SOUrce?
         ```
 
@@ -3250,7 +3250,7 @@ class TriggerASetholdData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:SETHold:DATa:SOUrce {CH<x>|D<x>| AUX}
+            - TRIGger:A:SETHold:DATa:SOUrce {CH<x>|D<x>|AUX}
             - TRIGger:A:SETHold:DATa:SOUrce?
             ```
 
@@ -7069,7 +7069,7 @@ class TriggerABusBItemUsbQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:USB:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual |MOREEQual|INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:USB:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:USB:QUALifier?
         ```
 
@@ -7524,7 +7524,7 @@ class TriggerABusBItemUsbCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket |HANDSHAKEPacket|SPECIALPacket|ERRor}
+        - TRIGger:A:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket|HANDSHAKEPacket|SPECIALPacket|ERRor}
         - TRIGger:A:BUS:B<x>:USB:CONDition?
         ```
 
@@ -7753,7 +7753,7 @@ class TriggerABusBItemUsb(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket |HANDSHAKEPacket|SPECIALPacket|ERRor}
+            - TRIGger:A:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket|HANDSHAKEPacket|SPECIALPacket|ERRor}
             - TRIGger:A:BUS:B<x>:USB:CONDition?
             ```
 
@@ -7884,7 +7884,7 @@ class TriggerABusBItemUsb(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:USB:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual |MOREEQual|INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:USB:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:USB:QUALifier?
             ```
 
@@ -9963,7 +9963,7 @@ class TriggerABusBItemMil1553bStatusAddressQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier?
         ```
 
@@ -10083,7 +10083,7 @@ class TriggerABusBItemMil1553bStatusAddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier?
             ```
 
@@ -11301,7 +11301,7 @@ class TriggerABusBItemLinDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier?
         ```
 
@@ -11418,7 +11418,7 @@ class TriggerABusBItemLinData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier?
             ```
 
@@ -12560,7 +12560,7 @@ class TriggerABusBItemFlexrayFrameidQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier?
         ```
 
@@ -12679,7 +12679,7 @@ class TriggerABusBItemFlexrayFrameid(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier?
             ```
 
@@ -12743,7 +12743,7 @@ class TriggerABusBItemFlexrayErrtype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic| NULLFRDynamic}
+        - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic|NULLFRDynamic}
         - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE?
         ```
 
@@ -12862,7 +12862,7 @@ class TriggerABusBItemFlexrayDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier?
         ```
 
@@ -13045,7 +13045,7 @@ class TriggerABusBItemFlexrayData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier?
             ```
 
@@ -13170,7 +13170,7 @@ class TriggerABusBItemFlexrayCyclecountQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
         ```
 
@@ -13292,7 +13292,7 @@ class TriggerABusBItemFlexrayCyclecount(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
             ```
 
@@ -13534,7 +13534,7 @@ class TriggerABusBItemFlexray(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic| NULLFRDynamic}
+            - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic|NULLFRDynamic}
             - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE?
             ```
 
@@ -15274,7 +15274,7 @@ class TriggerABusBItemArinc429aLabelQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {LESSthan|MOREthan|Equal|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {LESSthan|MOREthan|Equal|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier?
         ```
 
@@ -15388,7 +15388,7 @@ class TriggerABusBItemArinc429aLabel(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {LESSthan|MOREthan|Equal|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {LESSthan|MOREthan|Equal|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier?
             ```
 
@@ -15931,7 +15931,7 @@ class TriggerABus(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS {I2C|SPI|CAN|RS232C|PARallel|USB|LIN|FLEXRay|AUDio| ETHERnet|MIL1553B}
+        - TRIGger:A:BUS {I2C|SPI|CAN|RS232C|PARallel|USB|LIN|FLEXRay|AUDio|ETHERnet|MIL1553B}
         - TRIGger:A:BUS?
         ```
 
@@ -16253,7 +16253,7 @@ class TriggerA(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS {I2C|SPI|CAN|RS232C|PARallel|USB|LIN|FLEXRay|AUDio| ETHERnet|MIL1553B}
+            - TRIGger:A:BUS {I2C|SPI|CAN|RS232C|PARallel|USB|LIN|FLEXRay|AUDio|ETHERnet|MIL1553B}
             - TRIGger:A:BUS?
             ```
 

@@ -52,7 +52,7 @@ Commands and Queries:
     - MATH:MATH<x>:FILTer:ORDer?
     - MATH:MATH<x>:FILTer:PRIPple <NR3>
     - MATH:MATH<x>:FILTer:PRIPple?
-    - MATH:MATH<x>:FILTer:RESPonse {BUTTerworth| CHEBYONe| CHEBYTWo| ELLiptical| GAUSsian| BESSelCUSTom}
+    - MATH:MATH<x>:FILTer:RESPonse {BUTTerworth|CHEBYONe|CHEBYTWo|ELLiptical|GAUSsian|BESSelCUSTom}
     - MATH:MATH<x>:FILTer:RESPonse?
     - MATH:MATH<x>:FILTer:ROFactor <NR1>
     - MATH:MATH<x>:FILTer:ROFactor?
@@ -71,7 +71,7 @@ Commands and Queries:
     - MATH:MATH<x>:FILTer:SYMBols?
     - MATH:MATH<x>:FILTer:TWIDth <NR3>
     - MATH:MATH<x>:FILTer:TWIDth?
-    - MATH:MATH<x>:FILTer:TYPe {LPASs| HPASs| BPASs| BSTop| APASs| HILBert| DIFFerentiator| RC| RRC}
+    - MATH:MATH<x>:FILTer:TYPe {LPASs|HPASs|BPASs|BSTop|APASs|HILBert|DIFFerentiator|RC|RRC}
     - MATH:MATH<x>:FILTer:TYPe?
     - MATH:MATH<x>:FLEXray:SUPPortedfields {DATa}
     - MATH:MATH<x>:FLEXray:SUPPortedfields?
@@ -138,7 +138,7 @@ Commands and Queries:
     - MATH:MATH<x>:SPECTral:UNWRap:DEGrees <NR3>
     - MATH:MATH<x>:SPECTral:UNWRap:DEGrees?
     - MATH:MATH<x>:SPECTral:UNWRap?
-    - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing| HANNing|BLACKMANHarris|KAISERBessel|GAUSSian| FLATTOP2|TEKEXPonential}
+    - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing|HANNing|BLACKMANHarris|KAISERBessel|GAUSSian|FLATTOP2|TEKEXPonential}
     - MATH:MATH<x>:SPECTral:WINdow?
     - MATH:MATH<x>:SPI:SUPPortedfields {DATa|MOSIdata|MISOdata}
     - MATH:MATH<x>:SPI:SUPPortedfields?
@@ -536,7 +536,7 @@ class MathMathItemSpectralWindow(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing| HANNing|BLACKMANHarris|KAISERBessel|GAUSSian| FLATTOP2|TEKEXPonential}
+        - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing|HANNing|BLACKMANHarris|KAISERBessel|GAUSSian|FLATTOP2|TEKEXPonential}
         - MATH:MATH<x>:SPECTral:WINdow?
         ```
 
@@ -1134,7 +1134,7 @@ class MathMathItemSpectral(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing| HANNing|BLACKMANHarris|KAISERBessel|GAUSSian| FLATTOP2|TEKEXPonential}
+            - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing|HANNing|BLACKMANHarris|KAISERBessel|GAUSSian|FLATTOP2|TEKEXPonential}
             - MATH:MATH<x>:SPECTral:WINdow?
             ```
 
@@ -2849,7 +2849,7 @@ class MathMathItemFilterType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:FILTer:TYPe {LPASs| HPASs| BPASs| BSTop| APASs| HILBert| DIFFerentiator| RC| RRC}
+        - MATH:MATH<x>:FILTer:TYPe {LPASs|HPASs|BPASs|BSTop|APASs|HILBert|DIFFerentiator|RC|RRC}
         - MATH:MATH<x>:FILTer:TYPe?
         ```
 
@@ -2863,7 +2863,7 @@ class MathMathItemFilterType(SCPICmdWrite, SCPICmdRead):
         - ``DIFFerentiator`` specifies the filter type as DIFFerentiator.
         - ``RC`` specifies the filter type as RC.
         - ``RRC`` specifies the filter type as RRC.
-    """  # noqa: E501
+    """
 
 
 class MathMathItemFilterTwidth(SCPICmdWrite, SCPICmdRead):
@@ -3144,7 +3144,7 @@ class MathMathItemFilterResponse(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:FILTer:RESPonse {BUTTerworth| CHEBYONe| CHEBYTWo| ELLiptical| GAUSsian| BESSelCUSTom}
+        - MATH:MATH<x>:FILTer:RESPonse {BUTTerworth|CHEBYONe|CHEBYTWo|ELLiptical|GAUSsian|BESSelCUSTom}
         - MATH:MATH<x>:FILTer:RESPonse?
         ```
 
@@ -3730,7 +3730,7 @@ class MathMathItemFilter(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:FILTer:RESPonse {BUTTerworth| CHEBYONe| CHEBYTWo| ELLiptical| GAUSsian| BESSelCUSTom}
+            - MATH:MATH<x>:FILTer:RESPonse {BUTTerworth|CHEBYONe|CHEBYTWo|ELLiptical|GAUSsian|BESSelCUSTom}
             - MATH:MATH<x>:FILTer:RESPonse?
             ```
 
@@ -3972,7 +3972,7 @@ class MathMathItemFilter(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:FILTer:TYPe {LPASs| HPASs| BPASs| BSTop| APASs| HILBert| DIFFerentiator| RC| RRC}
+            - MATH:MATH<x>:FILTer:TYPe {LPASs|HPASs|BPASs|BSTop|APASs|HILBert|DIFFerentiator|RC|RRC}
             - MATH:MATH<x>:FILTer:TYPe?
             ```
 
@@ -3986,7 +3986,7 @@ class MathMathItemFilter(SCPICmdRead):
             - ``DIFFerentiator`` specifies the filter type as DIFFerentiator.
             - ``RC`` specifies the filter type as RC.
             - ``RRC`` specifies the filter type as RRC.
-        """  # noqa: E501
+        """
         return self._type
 
 

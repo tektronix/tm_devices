@@ -34,7 +34,7 @@ Commands and Queries:
     - ERRORDetector:BIT:PATTERNFilename?
     - ERRORDetector:BIT:SYNCPATtern:BITString <QString>
     - ERRORDetector:BIT:SYNCPATtern:BITString?
-    - ERRORDetector:BIT:SYNCPATtern:DISParity<x> {RDPLUS | RDMINUS}
+    - ERRORDetector:BIT:SYNCPATtern:DISParity<x> {RDPLUS|RDMINUS}
     - ERRORDetector:BIT:SYNCPATtern:DISParity<x>?
     - ERRORDetector:BIT:SYNCPATtern:MINus<x>?
     - ERRORDetector:BIT:SYNCPATtern:PLUS<x>?
@@ -57,11 +57,11 @@ Commands and Queries:
     - ERRORDetector:BIT:TEST:TIME:MINUTES?
     - ERRORDetector:BIT:TEST:TIME:SECOnds?
     - ERRORDetector:BIT:TEST:TIME?
-    - ERRORDetector:BITRate {RATEcustom:CUSTOM |RATE312000000:RATE312 |RATE1250000000:RATE1250 |RATE1500000000:RATE1500 |RATE2125000000:RATE2125 |RATE2500000000:RATE2500 |RATE3000000000:RATE3000 |RATE3125000000:RATE3125 |RATE4250000000:RATE4250 |RATE5000000000:RATE5000 |RATE6000000000:RATE6000 |RATE6250000000:RATE6250}DPO70000SX{RATE3200 | RATE3600 | RATE4000 | RATE4400 | RATE4800 | RATE5200 | RATE5600 | RATE6000 | RATE6400 | CUSTOM}
+    - ERRORDetector:BITRate {RATEcustom:CUSTOM|RATE312000000:RATE312|RATE1250000000:RATE1250|RATE1500000000:RATE1500|RATE2125000000:RATE2125|RATE2500000000:RATE2500|RATE3000000000:RATE3000|RATE3125000000:RATE3125|RATE4250000000:RATE4250|RATE5000000000:RATE5000|RATE6000000000:RATE6000|RATE6250000000:RATE6250}DPO70000SX{RATE3200|RATE3600|RATE4000|RATE4400|RATE4800|RATE5200|RATE5600|RATE6000|RATE6400|CUSTOM}
     - ERRORDetector:BITRate:VALue <NR3>
     - ERRORDetector:BITRate:VALue?
     - ERRORDetector:BITRate?
-    - ERRORDetector:CHANnel {CH1 | CH2 | CH3 | CH4}
+    - ERRORDetector:CHANnel {CH1|CH2|CH3|CH4}
     - ERRORDetector:CHANnel?
     - ERRORDetector:DURATION:COUNt <NR1>
     - ERRORDetector:DURATION:COUNt?
@@ -81,7 +81,7 @@ Commands and Queries:
     - ERRORDetector:ERRORLIMIT?
     - ERRORDetector:FILE:RECAll <fileName>
     - ERRORDetector:FILE:SAVe <fileName>
-    - ERRORDetector:FONTSIze {DEFAULT | LARGE | XLARGE}
+    - ERRORDetector:FONTSIze {DEFAULT|LARGE|XLARGE}
     - ERRORDetector:FONTSIze?
     - ERRORDetector:FRAme:EOF <Qstring>
     - ERRORDetector:FRAme:EOF?
@@ -114,22 +114,23 @@ Commands and Queries:
     - ERRORDetector:MAXALIGNS?
     - ERRORDetector:PATTERNNAME <Qstring>
     - ERRORDetector:PATTERNNAME?
-    - ERRORDetector:PREset {SATA1_CJTPAT_BIT | SATA2_CJTPAT_BIT | SATA3_CJTPAT_BIT | SATA3_FRAME | SATA3_CHAR | SATA3_HFTP_BIT | SATA3_LBP_BIT | SATA3_LFTP_BIT | SATA3_MFTP_BIT | USB3_SYMBOL | USB3_CHAR | PCIE1_COMP_BIT | PCIE2_COMP_BIT | ANY_CJTPAT_BIT | ANY_CJTPAT_CHAR | CUSTOM}DPO70000SX{CUSTOM_SETUP | PRBS7_BIT_ERROR | PRBS9_BIT_ERROR | PRBS11_BIT_ERROR | PRBS16_BIT_ERROR | PRBS23_BIT_ERROR}
+    - ERRORDetector:PREset {SATA1_CJTPAT_BIT|SATA2_CJTPAT_BIT|SATA3_CJTPAT_BIT|SATA3_FRAME|SATA3_CHAR|SATA3_HFTP_BIT|SATA3_LBP_BIT|SATA3_LFTP_BIT|SATA3_MFTP_BIT|USB3_SYMBOL|USB3_CHAR|PCIE1_COMP_BIT|PCIE2_COMP_BIT|ANY_CJTPAT_BIT|ANY_CJTPAT_CHAR|CUSTOM}DPO70000SX{CUSTOM_SETUP|PRBS7_BIT_ERROR|PRBS9_BIT_ERROR|PRBS11_BIT_ERROR|PRBS16_BIT_ERROR|PRBS23_BIT_ERROR}
     - ERRORDetector:PREset:APPLY
-    - ERRORDetector:SAVEIMAGE {OFF | ON}
+    - ERRORDetector:SAVEIMAGE {OFF|ON}
     - ERRORDetector:SAVEIMAGE?
-    - ERRORDetector:SAVEWFM {OFF | ON}
+    - ERRORDetector:SAVEWFM {OFF|ON}
     - ERRORDetector:SAVEWFM?
-    - ERRORDetector:SCRAMBLED {ON | OFF}
+    - ERRORDetector:SCRAMBLED {ON|OFF}
     - ERRORDetector:SCRAMBLED?
-    - ERRORDetector:SENDEMAIL {OFF | ON}
+    - ERRORDetector:SENDEMAIL {OFF|ON}
     - ERRORDetector:SENDEMAIL?
-    - ERRORDetector:SIGnaltype {SATAGEN<x>| USB3|PCIEGEN<x>|ANY8B10B|PRBS7|PRBS9}?DPO70000SX{CUSTOM | PRBS7 | PRBS9 | PRBS11 | PRBS16 |PRBS23}
+    - ERRORDetector:SIGnaltype {SATAGEN<x>|PRBS9|PCIEGEN<x>|CUSTOM|PRBS23|PRBS11|USB3|PRBS16|ANY8B10B|PRBS7}
+    - ERRORDetector:SIGnaltype?
     - ERRORDetector:SSC {ON|OFF}
     - ERRORDetector:SSC?
     - ERRORDetector:STANdard <LIST>
     - ERRORDetector:STANdard?
-    - ERRORDetector:STATE {<NR1>| OFF | ON}?DPO70000SX{OFF | ON}
+    - ERRORDetector:STATE {OFF|ON|<NR1>}
     - ERRORDetector:STATE?
     - ERRORDetector:STATus?
     - ERRORDetector:STOPWHEN <MANUAL | COUNT | TIME | ERROR>DPO70000SX<MANUAL>
@@ -158,9 +159,9 @@ Commands and Queries:
     - ERRORDetector:SYMBOL:TEST:TIME?
     - ERRORDetector:SYMBOL:TEST?
     - ERRORDetector:SYMBOL?
-    - ERRORDetector:TIMEformat {DDHHMMSS | SECONDS}
+    - ERRORDetector:TIMEformat {DDHHMMSS|SECONDS}
     - ERRORDetector:TIMEformat?
-    - ERRORDetector:TYPe {BIT | FRAME | SYMBOL | CHARACTER | PRBS7 | PRBS9}
+    - ERRORDetector:TYPe {BIT|FRAME|SYMBOL|CHARACTER|PRBS7|PRBS9}
     - ERRORDetector:TYPe?
     ```
 """  # noqa: E501
@@ -193,7 +194,7 @@ class ErrordetectorType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ERRORDetector:TYPe {BIT | FRAME | SYMBOL | CHARACTER | PRBS7 | PRBS9}
+        - ERRORDetector:TYPe {BIT|FRAME|SYMBOL|CHARACTER|PRBS7|PRBS9}
         - ERRORDetector:TYPe?
         ```
 
@@ -222,7 +223,7 @@ class ErrordetectorTimeformat(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ERRORDetector:TIMEformat {DDHHMMSS | SECONDS}
+        - ERRORDetector:TIMEformat {DDHHMMSS|SECONDS}
         - ERRORDetector:TIMEformat?
         ```
     """
@@ -1314,7 +1315,7 @@ class ErrordetectorState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ERRORDetector:STATE {<NR1>| OFF | ON}?DPO70000SX{OFF | ON}
+        - ERRORDetector:STATE {OFF|ON|<NR1>}
         - ERRORDetector:STATE?
         ```
 
@@ -1374,7 +1375,7 @@ class ErrordetectorSsc(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class ErrordetectorSignaltype(SCPICmdWrite):
+class ErrordetectorSignaltype(SCPICmdWrite, SCPICmdRead):
     """The ``ERRORDetector:SIGnaltype`` command.
 
     Description:
@@ -1384,12 +1385,16 @@ class ErrordetectorSignaltype(SCPICmdWrite):
           ``ERRORDetector:BITRATE:VALue`` commands.
 
     Usage:
+        - Using the ``.query()`` method will send the ``ERRORDetector:SIGnaltype?`` query.
+        - Using the ``.verify(value)`` method will send the ``ERRORDetector:SIGnaltype?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``ERRORDetector:SIGnaltype value``
           command.
 
     SCPI Syntax:
         ```
-        - ERRORDetector:SIGnaltype {SATAGEN<x>| USB3|PCIEGEN<x>|ANY8B10B|PRBS7|PRBS9}?DPO70000SX{CUSTOM | PRBS7 | PRBS9 | PRBS11 | PRBS16 |PRBS23}
+        - ERRORDetector:SIGnaltype {SATAGEN<x>|PRBS9|PCIEGEN<x>|CUSTOM|PRBS23|PRBS11|USB3|PRBS16|ANY8B10B|PRBS7}
+        - ERRORDetector:SIGnaltype?
         ```
 
     Info:
@@ -1417,7 +1422,7 @@ class ErrordetectorSendemail(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ERRORDetector:SENDEMAIL {OFF | ON}
+        - ERRORDetector:SENDEMAIL {OFF|ON}
         - ERRORDetector:SENDEMAIL?
         ```
 
@@ -1442,7 +1447,7 @@ class ErrordetectorScrambled(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ERRORDetector:SCRAMBLED {ON | OFF}
+        - ERRORDetector:SCRAMBLED {ON|OFF}
         - ERRORDetector:SCRAMBLED?
         ```
 
@@ -1474,7 +1479,7 @@ class ErrordetectorSavewfm(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ERRORDetector:SAVEWFM {OFF | ON}
+        - ERRORDetector:SAVEWFM {OFF|ON}
         - ERRORDetector:SAVEWFM?
         ```
 
@@ -1506,7 +1511,7 @@ class ErrordetectorSaveimage(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ERRORDetector:SAVEIMAGE {OFF | ON}
+        - ERRORDetector:SAVEIMAGE {OFF|ON}
         - ERRORDetector:SAVEIMAGE?
         ```
     """
@@ -1552,7 +1557,7 @@ class ErrordetectorPreset(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ERRORDetector:PREset {SATA1_CJTPAT_BIT | SATA2_CJTPAT_BIT | SATA3_CJTPAT_BIT | SATA3_FRAME | SATA3_CHAR | SATA3_HFTP_BIT | SATA3_LBP_BIT | SATA3_LFTP_BIT | SATA3_MFTP_BIT | USB3_SYMBOL | USB3_CHAR | PCIE1_COMP_BIT | PCIE2_COMP_BIT | ANY_CJTPAT_BIT | ANY_CJTPAT_CHAR | CUSTOM}DPO70000SX{CUSTOM_SETUP | PRBS7_BIT_ERROR | PRBS9_BIT_ERROR | PRBS11_BIT_ERROR | PRBS16_BIT_ERROR | PRBS23_BIT_ERROR}
+        - ERRORDetector:PREset {SATA1_CJTPAT_BIT|SATA2_CJTPAT_BIT|SATA3_CJTPAT_BIT|SATA3_FRAME|SATA3_CHAR|SATA3_HFTP_BIT|SATA3_LBP_BIT|SATA3_LFTP_BIT|SATA3_MFTP_BIT|USB3_SYMBOL|USB3_CHAR|PCIE1_COMP_BIT|PCIE2_COMP_BIT|ANY_CJTPAT_BIT|ANY_CJTPAT_CHAR|CUSTOM}DPO70000SX{CUSTOM_SETUP|PRBS7_BIT_ERROR|PRBS9_BIT_ERROR|PRBS11_BIT_ERROR|PRBS16_BIT_ERROR|PRBS23_BIT_ERROR}
         ```
 
     Properties:
@@ -2681,7 +2686,7 @@ class ErrordetectorFontsize(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ERRORDetector:FONTSIze {DEFAULT | LARGE | XLARGE}
+        - ERRORDetector:FONTSIze {DEFAULT|LARGE|XLARGE}
         - ERRORDetector:FONTSIze?
         ```
 
@@ -3257,7 +3262,7 @@ class ErrordetectorChannel(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ERRORDetector:CHANnel {CH1 | CH2 | CH3 | CH4}
+        - ERRORDetector:CHANnel {CH1|CH2|CH3|CH4}
         - ERRORDetector:CHANnel?
         ```
 
@@ -3311,7 +3316,7 @@ class ErrordetectorBitrate(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ERRORDetector:BITRate {RATEcustom:CUSTOM |RATE312000000:RATE312 |RATE1250000000:RATE1250 |RATE1500000000:RATE1500 |RATE2125000000:RATE2125 |RATE2500000000:RATE2500 |RATE3000000000:RATE3000 |RATE3125000000:RATE3125 |RATE4250000000:RATE4250 |RATE5000000000:RATE5000 |RATE6000000000:RATE6000 |RATE6250000000:RATE6250}DPO70000SX{RATE3200 | RATE3600 | RATE4000 | RATE4400 | RATE4800 | RATE5200 | RATE5600 | RATE6000 | RATE6400 | CUSTOM}
+        - ERRORDetector:BITRate {RATEcustom:CUSTOM|RATE312000000:RATE312|RATE1250000000:RATE1250|RATE1500000000:RATE1500|RATE2125000000:RATE2125|RATE2500000000:RATE2500|RATE3000000000:RATE3000|RATE3125000000:RATE3125|RATE4250000000:RATE4250|RATE5000000000:RATE5000|RATE6000000000:RATE6000|RATE6250000000:RATE6250}DPO70000SX{RATE3200|RATE3600|RATE4000|RATE4400|RATE4800|RATE5200|RATE5600|RATE6000|RATE6400|CUSTOM}
         - ERRORDetector:BITRate?
         ```
 
@@ -4171,7 +4176,7 @@ class ErrordetectorBitSyncpatternDisparityItem(
 
     SCPI Syntax:
         ```
-        - ERRORDetector:BIT:SYNCPATtern:DISParity<x> {RDPLUS | RDMINUS}
+        - ERRORDetector:BIT:SYNCPATtern:DISParity<x> {RDPLUS|RDMINUS}
         - ERRORDetector:BIT:SYNCPATtern:DISParity<x>?
         ```
 
@@ -4308,7 +4313,7 @@ class ErrordetectorBitSyncpattern(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:BIT:SYNCPATtern:DISParity<x> {RDPLUS | RDMINUS}
+            - ERRORDetector:BIT:SYNCPATtern:DISParity<x> {RDPLUS|RDMINUS}
             - ERRORDetector:BIT:SYNCPATtern:DISParity<x>?
             ```
 
@@ -5358,7 +5363,7 @@ class Errordetector(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:BITRate {RATEcustom:CUSTOM |RATE312000000:RATE312 |RATE1250000000:RATE1250 |RATE1500000000:RATE1500 |RATE2125000000:RATE2125 |RATE2500000000:RATE2500 |RATE3000000000:RATE3000 |RATE3125000000:RATE3125 |RATE4250000000:RATE4250 |RATE5000000000:RATE5000 |RATE6000000000:RATE6000 |RATE6250000000:RATE6250}DPO70000SX{RATE3200 | RATE3600 | RATE4000 | RATE4400 | RATE4800 | RATE5200 | RATE5600 | RATE6000 | RATE6400 | CUSTOM}
+            - ERRORDetector:BITRate {RATEcustom:CUSTOM|RATE312000000:RATE312|RATE1250000000:RATE1250|RATE1500000000:RATE1500|RATE2125000000:RATE2125|RATE2500000000:RATE2500|RATE3000000000:RATE3000|RATE3125000000:RATE3125|RATE4250000000:RATE4250|RATE5000000000:RATE5000|RATE6000000000:RATE6000|RATE6250000000:RATE6250}DPO70000SX{RATE3200|RATE3600|RATE4000|RATE4400|RATE4800|RATE5200|RATE5600|RATE6000|RATE6400|CUSTOM}
             - ERRORDetector:BITRate?
             ```
 
@@ -5388,7 +5393,7 @@ class Errordetector(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:CHANnel {CH1 | CH2 | CH3 | CH4}
+            - ERRORDetector:CHANnel {CH1|CH2|CH3|CH4}
             - ERRORDetector:CHANnel?
             ```
 
@@ -5470,7 +5475,7 @@ class Errordetector(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:FONTSIze {DEFAULT | LARGE | XLARGE}
+            - ERRORDetector:FONTSIze {DEFAULT|LARGE|XLARGE}
             - ERRORDetector:FONTSIze?
             ```
 
@@ -5582,7 +5587,7 @@ class Errordetector(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:PREset {SATA1_CJTPAT_BIT | SATA2_CJTPAT_BIT | SATA3_CJTPAT_BIT | SATA3_FRAME | SATA3_CHAR | SATA3_HFTP_BIT | SATA3_LBP_BIT | SATA3_LFTP_BIT | SATA3_MFTP_BIT | USB3_SYMBOL | USB3_CHAR | PCIE1_COMP_BIT | PCIE2_COMP_BIT | ANY_CJTPAT_BIT | ANY_CJTPAT_CHAR | CUSTOM}DPO70000SX{CUSTOM_SETUP | PRBS7_BIT_ERROR | PRBS9_BIT_ERROR | PRBS11_BIT_ERROR | PRBS16_BIT_ERROR | PRBS23_BIT_ERROR}
+            - ERRORDetector:PREset {SATA1_CJTPAT_BIT|SATA2_CJTPAT_BIT|SATA3_CJTPAT_BIT|SATA3_FRAME|SATA3_CHAR|SATA3_HFTP_BIT|SATA3_LBP_BIT|SATA3_LFTP_BIT|SATA3_MFTP_BIT|USB3_SYMBOL|USB3_CHAR|PCIE1_COMP_BIT|PCIE2_COMP_BIT|ANY_CJTPAT_BIT|ANY_CJTPAT_CHAR|CUSTOM}DPO70000SX{CUSTOM_SETUP|PRBS7_BIT_ERROR|PRBS9_BIT_ERROR|PRBS11_BIT_ERROR|PRBS16_BIT_ERROR|PRBS23_BIT_ERROR}
             ```
 
         Sub-properties:
@@ -5614,7 +5619,7 @@ class Errordetector(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:SAVEIMAGE {OFF | ON}
+            - ERRORDetector:SAVEIMAGE {OFF|ON}
             - ERRORDetector:SAVEIMAGE?
             ```
         """
@@ -5644,7 +5649,7 @@ class Errordetector(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:SAVEWFM {OFF | ON}
+            - ERRORDetector:SAVEWFM {OFF|ON}
             - ERRORDetector:SAVEWFM?
             ```
 
@@ -5670,7 +5675,7 @@ class Errordetector(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:SCRAMBLED {ON | OFF}
+            - ERRORDetector:SCRAMBLED {ON|OFF}
             - ERRORDetector:SCRAMBLED?
             ```
 
@@ -5702,7 +5707,7 @@ class Errordetector(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:SENDEMAIL {OFF | ON}
+            - ERRORDetector:SENDEMAIL {OFF|ON}
             - ERRORDetector:SENDEMAIL?
             ```
 
@@ -5723,12 +5728,16 @@ class Errordetector(SCPICmdRead):
               ``ERRORDetector:BITRATE`` and ``ERRORDetector:BITRATE:VALue`` commands.
 
         Usage:
+            - Using the ``.query()`` method will send the ``ERRORDetector:SIGnaltype?`` query.
+            - Using the ``.verify(value)`` method will send the ``ERRORDetector:SIGnaltype?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``ERRORDetector:SIGnaltype value``
               command.
 
         SCPI Syntax:
             ```
-            - ERRORDetector:SIGnaltype {SATAGEN<x>| USB3|PCIEGEN<x>|ANY8B10B|PRBS7|PRBS9}?DPO70000SX{CUSTOM | PRBS7 | PRBS9 | PRBS11 | PRBS16 |PRBS23}
+            - ERRORDetector:SIGnaltype {SATAGEN<x>|PRBS9|PCIEGEN<x>|CUSTOM|PRBS23|PRBS11|USB3|PRBS16|ANY8B10B|PRBS7}
+            - ERRORDetector:SIGnaltype?
             ```
 
         Info:
@@ -5805,7 +5814,7 @@ class Errordetector(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:STATE {<NR1>| OFF | ON}?DPO70000SX{OFF | ON}
+            - ERRORDetector:STATE {OFF|ON|<NR1>}
             - ERRORDetector:STATE?
             ```
 
@@ -5913,7 +5922,7 @@ class Errordetector(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:TIMEformat {DDHHMMSS | SECONDS}
+            - ERRORDetector:TIMEformat {DDHHMMSS|SECONDS}
             - ERRORDetector:TIMEformat?
             ```
         """
@@ -5934,7 +5943,7 @@ class Errordetector(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:TYPe {BIT | FRAME | SYMBOL | CHARACTER | PRBS7 | PRBS9}
+            - ERRORDetector:TYPe {BIT|FRAME|SYMBOL|CHARACTER|PRBS7|PRBS9}
             - ERRORDetector:TYPe?
             ```
 

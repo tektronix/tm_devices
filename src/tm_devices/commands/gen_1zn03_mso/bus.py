@@ -11,11 +11,11 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - BUS:ADDNew <QString>
-    - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K| RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE400K|RATE50K| RATE500K|RATE62K| RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
+    - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K|RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE400K|RATE50K|RATE500K|RATE62K|RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
     - BUS:B<x>:CAN:BITRate:VALue <NR3>
     - BUS:B<x>:CAN:BITRate:VALue?
     - BUS:B<x>:CAN:BITRate?
-    - BUS:B<x>:CAN:FD:BITRate {RATE1M|RATE2M|RATE3M|RATE4M|RATE5M|RATE6M| RATE7M|RATE8M|RATE9M|RATE10M|RATE11M|RATE12M|RATE13M| RATE14M|RATE15M|RATE16M|CUSTom}
+    - BUS:B<x>:CAN:FD:BITRate {RATE1M|RATE2M|RATE3M|RATE4M|RATE5M|RATE6M|RATE7M|RATE8M|RATE9M|RATE10M|RATE11M|RATE12M|RATE13M|RATE14M|RATE15M|RATE16M|CUSTom}
     - BUS:B<x>:CAN:FD:BITRate:CUSTom <NR1>
     - BUS:B<x>:CAN:FD:BITRate:CUSTom?
     - BUS:B<x>:CAN:FD:BITRate?
@@ -23,7 +23,7 @@ Commands and Queries:
     - BUS:B<x>:CAN:SAMPLEpoint?
     - BUS:B<x>:CAN:SIGNal {DIFFerential|CANH|CANL|RX|TX}
     - BUS:B<x>:CAN:SIGNal?
-    - BUS:B<x>:CAN:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+    - BUS:B<x>:CAN:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
     - BUS:B<x>:CAN:SOUrce?
     - BUS:B<x>:CAN:STANDard {CAN2X|FDISO|FDNONISO}
     - BUS:B<x>:CAN:STANDard?
@@ -33,11 +33,11 @@ Commands and Queries:
     - BUS:B<x>:DISplay:FORMat?
     - BUS:B<x>:DISplay:LAYout {BUS|BUSANDWAVEFORM}
     - BUS:B<x>:DISplay:LAYout?
-    - BUS:B<x>:I2C:CLOCk:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+    - BUS:B<x>:I2C:CLOCk:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
     - BUS:B<x>:I2C:CLOCk:SOUrce?
     - BUS:B<x>:I2C:CLOCk:THReshold <NR3>
     - BUS:B<x>:I2C:CLOCk:THReshold?
-    - BUS:B<x>:I2C:DATa:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+    - BUS:B<x>:I2C:DATa:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
     - BUS:B<x>:I2C:DATa:SOUrce?
     - BUS:B<x>:I2C:DATa:THReshold <NR3>
     - BUS:B<x>:I2C:DATa:THReshold?
@@ -71,7 +71,7 @@ Commands and Queries:
     - BUS:B<x>:LIN:POLarity?
     - BUS:B<x>:LIN:SAMPLEpoint <NR1>
     - BUS:B<x>:LIN:SAMPLEpoint?
-    - BUS:B<x>:LIN:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+    - BUS:B<x>:LIN:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
     - BUS:B<x>:LIN:SOUrce:THReshold <NR3>
     - BUS:B<x>:LIN:SOUrce:THReshold?
     - BUS:B<x>:LIN:SOUrce?
@@ -80,7 +80,7 @@ Commands and Queries:
     - BUS:B<x>:PARallel:ALLTHResholds <NR3>
     - BUS:B<x>:PARallel:ALLTHResholds:APPly
     - BUS:B<x>:PARallel:ALLTHResholds?
-    - BUS:B<x>:PARallel:BIT<x>SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>| NONE}
+    - BUS:B<x>:PARallel:BIT<x>SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>|NONE}
     - BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold <NR3>
     - BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold?
     - BUS:B<x>:PARallel:BIT<x>SOUrce?
@@ -88,11 +88,11 @@ Commands and Queries:
     - BUS:B<x>:PARallel:CLOCk:EDGE?
     - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {OFF|ON|<NR1>}
     - BUS:B<x>:PARallel:CLOCk:ISCLOCKED?
-    - BUS:B<x>:PARallel:CLOCkSOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>| NONE}
+    - BUS:B<x>:PARallel:CLOCkSOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>|NONE}
     - BUS:B<x>:PARallel:CLOCkSOUrce:THReshold <NR3>
     - BUS:B<x>:PARallel:CLOCkSOUrce:THReshold?
     - BUS:B<x>:PARallel:CLOCkSOUrce?
-    - BUS:B<x>:RS232C:BITRate {CUSTOM|RATE300|RATE1K|RATE2K|RATE9K| RATE19K|RATE38K|RATE115K|RATE921K}
+    - BUS:B<x>:RS232C:BITRate {CUSTOM|RATE300|RATE1K|RATE2K|RATE9K|RATE19K|RATE38K|RATE115K|RATE921K}
     - BUS:B<x>:RS232C:BITRate:CUSTom <NR1>
     - BUS:B<x>:RS232C:BITRate:CUSTom?
     - BUS:B<x>:RS232C:BITRate?
@@ -106,7 +106,7 @@ Commands and Queries:
     - BUS:B<x>:RS232C:PARity?
     - BUS:B<x>:RS232C:POLarity {NORmal|INVERTed}
     - BUS:B<x>:RS232C:POLarity?
-    - BUS:B<x>:RS232C:SOUrce {CH<x>| DCH<x>_D<x>| REF<x>| MATH<x>| REF<x>_D<x>}
+    - BUS:B<x>:RS232C:SOUrce {CH<x>|DCH<x>_D<x>|REF<x>|MATH<x>|REF<x>_D<x>}
     - BUS:B<x>:RS232C:SOUrce:THReshold <NR3>
     - BUS:B<x>:RS232C:SOUrce:THReshold?
     - BUS:B<x>:RS232C:SOUrce?
@@ -122,7 +122,7 @@ Commands and Queries:
     - BUS:B<x>:SENT:POLARITY?
     - BUS:B<x>:SENT:SLOW {NOne|ENHANCED4|ENHANCED8|SHOrt}
     - BUS:B<x>:SENT:SLOW?
-    - BUS:B<x>:SENT:SOUrce {CH<x>| DCH<x>_D<x>| Math<x>| REF<x>| REF<x>_D<x>}
+    - BUS:B<x>:SENT:SOUrce {CH<x>|DCH<x>_D<x>|Math<x>|REF<x>|REF<x>_D<x>}
     - BUS:B<x>:SENT:SOUrce?
     - BUS:B<x>:SENT:THRESHold <NR3>
     - BUS:B<x>:SENT:THRESHold?
@@ -134,7 +134,7 @@ Commands and Queries:
     - BUS:B<x>:SPI:BITOrder?
     - BUS:B<x>:SPI:CLOCk:POLarity {FALL|RISE}
     - BUS:B<x>:SPI:CLOCk:POLarity?
-    - BUS:B<x>:SPI:CLOCk:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+    - BUS:B<x>:SPI:CLOCk:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
     - BUS:B<x>:SPI:CLOCk:SOUrce?
     - BUS:B<x>:SPI:CLOCk:THReshold <NR3>
     - BUS:B<x>:SPI:CLOCk:THReshold?
@@ -142,7 +142,7 @@ Commands and Queries:
     - BUS:B<x>:SPI:DATa:POLarity?
     - BUS:B<x>:SPI:DATa:SIZe <NR1>
     - BUS:B<x>:SPI:DATa:SIZe?
-    - BUS:B<x>:SPI:DATa:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+    - BUS:B<x>:SPI:DATa:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
     - BUS:B<x>:SPI:DATa:SOUrce?
     - BUS:B<x>:SPI:DATa:THReshold <NR3>
     - BUS:B<x>:SPI:DATa:THReshold?
@@ -152,13 +152,13 @@ Commands and Queries:
     - BUS:B<x>:SPI:IDLETime?
     - BUS:B<x>:SPI:MISo:DATa:POLarity {HIGH|LOW}
     - BUS:B<x>:SPI:MISo:DATa:POLarity?
-    - BUS:B<x>:SPI:MISo:INPut {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>}
+    - BUS:B<x>:SPI:MISo:INPut {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>}
     - BUS:B<x>:SPI:MISo:INPut?
     - BUS:B<x>:SPI:MISo:THReshold <NR3>
     - BUS:B<x>:SPI:MISo:THReshold?
     - BUS:B<x>:SPI:MOSi:DATa:POLarity {HIGH|LOW}
     - BUS:B<x>:SPI:MOSi:DATa:POLarity?
-    - BUS:B<x>:SPI:MOSi:INPut {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>}
+    - BUS:B<x>:SPI:MOSi:INPut {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>}
     - BUS:B<x>:SPI:MOSi:INPut?
     - BUS:B<x>:SPI:MOSi:THReshold <NR3>
     - BUS:B<x>:SPI:MOSi:THReshold?
@@ -166,11 +166,11 @@ Commands and Queries:
     - BUS:B<x>:SPI:NUMBer:INputs?
     - BUS:B<x>:SPI:SELect:POLarity {LOW|HIGH}
     - BUS:B<x>:SPI:SELect:POLarity?
-    - BUS:B<x>:SPI:SELect:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+    - BUS:B<x>:SPI:SELect:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
     - BUS:B<x>:SPI:SELect:SOUrce?
     - BUS:B<x>:SPI:SELect:THReshold <NR3>
     - BUS:B<x>:SPI:SELect:THReshold?
-    - BUS:B<x>:TYPe {CAN| I2C| LIN| PARallel| RS232C| SENT| SPI}
+    - BUS:B<x>:TYPe {CAN|I2C|LIN|PARallel|RS232C|SENT|SPI}
     - BUS:B<x>:TYPe?
     - BUS:DELete <QString>
     - BUS:LIST?
@@ -246,7 +246,7 @@ class BusBItemType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:TYPe {CAN| I2C| LIN| PARallel| RS232C| SENT| SPI}
+        - BUS:B<x>:TYPe {CAN|I2C|LIN|PARallel|RS232C|SENT|SPI}
         - BUS:B<x>:TYPe?
         ```
 
@@ -304,7 +304,7 @@ class BusBItemSpiSelectSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:SPI:SELect:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+        - BUS:B<x>:SPI:SELect:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:SPI:SELect:SOUrce?
         ```
 
@@ -415,7 +415,7 @@ class BusBItemSpiSelect(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:SPI:SELect:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+            - BUS:B<x>:SPI:SELect:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:SPI:SELect:SOUrce?
             ```
 
@@ -576,7 +576,7 @@ class BusBItemSpiMosiInput(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:SPI:MOSi:INPut {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>}
+        - BUS:B<x>:SPI:MOSi:INPut {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>}
         - BUS:B<x>:SPI:MOSi:INPut?
         ```
 
@@ -723,7 +723,7 @@ class BusBItemSpiMosi(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:SPI:MOSi:INPut {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>}
+            - BUS:B<x>:SPI:MOSi:INPut {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>}
             - BUS:B<x>:SPI:MOSi:INPut?
             ```
 
@@ -808,7 +808,7 @@ class BusBItemSpiMisoInput(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:SPI:MISo:INPut {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>}
+        - BUS:B<x>:SPI:MISo:INPut {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>}
         - BUS:B<x>:SPI:MISo:INPut?
         ```
 
@@ -955,7 +955,7 @@ class BusBItemSpiMiso(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:SPI:MISo:INPut {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>}
+            - BUS:B<x>:SPI:MISo:INPut {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>}
             - BUS:B<x>:SPI:MISo:INPut?
             ```
 
@@ -1090,7 +1090,7 @@ class BusBItemSpiDataSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:SPI:DATa:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+        - BUS:B<x>:SPI:DATa:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:SPI:DATa:SOUrce?
         ```
 
@@ -1257,7 +1257,7 @@ class BusBItemSpiData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:SPI:DATa:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+            - BUS:B<x>:SPI:DATa:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:SPI:DATa:SOUrce?
             ```
 
@@ -1343,7 +1343,7 @@ class BusBItemSpiClockSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:SPI:CLOCk:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+        - BUS:B<x>:SPI:CLOCk:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:SPI:CLOCk:SOUrce?
         ```
 
@@ -1454,7 +1454,7 @@ class BusBItemSpiClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:SPI:CLOCk:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+            - BUS:B<x>:SPI:CLOCk:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:SPI:CLOCk:SOUrce?
             ```
 
@@ -1852,7 +1852,7 @@ class BusBItemSentSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:SENT:SOUrce {CH<x>| DCH<x>_D<x>| Math<x>| REF<x>| REF<x>_D<x>}
+        - BUS:B<x>:SENT:SOUrce {CH<x>|DCH<x>_D<x>|Math<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:SENT:SOUrce?
         ```
 
@@ -2247,7 +2247,7 @@ class BusBItemSent(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:SENT:SOUrce {CH<x>| DCH<x>_D<x>| Math<x>| REF<x>| REF<x>_D<x>}
+            - BUS:B<x>:SENT:SOUrce {CH<x>|DCH<x>_D<x>|Math<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:SENT:SOUrce?
             ```
 
@@ -2386,7 +2386,7 @@ class BusBItemRs232cSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:RS232C:SOUrce {CH<x>| DCH<x>_D<x>| REF<x>| MATH<x>| REF<x>_D<x>}
+        - BUS:B<x>:RS232C:SOUrce {CH<x>|DCH<x>_D<x>|REF<x>|MATH<x>|REF<x>_D<x>}
         - BUS:B<x>:RS232C:SOUrce?
         ```
 
@@ -2620,7 +2620,7 @@ class BusBItemRs232cBitrate(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:RS232C:BITRate {CUSTOM|RATE300|RATE1K|RATE2K|RATE9K| RATE19K|RATE38K|RATE115K|RATE921K}
+        - BUS:B<x>:RS232C:BITRate {CUSTOM|RATE300|RATE1K|RATE2K|RATE9K|RATE19K|RATE38K|RATE115K|RATE921K}
         - BUS:B<x>:RS232C:BITRate?
         ```
 
@@ -2712,7 +2712,7 @@ class BusBItemRs232c(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:RS232C:BITRate {CUSTOM|RATE300|RATE1K|RATE2K|RATE9K| RATE19K|RATE38K|RATE115K|RATE921K}
+            - BUS:B<x>:RS232C:BITRate {CUSTOM|RATE300|RATE1K|RATE2K|RATE9K|RATE19K|RATE38K|RATE115K|RATE921K}
             - BUS:B<x>:RS232C:BITRate?
             ```
 
@@ -2885,7 +2885,7 @@ class BusBItemRs232c(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:RS232C:SOUrce {CH<x>| DCH<x>_D<x>| REF<x>| MATH<x>| REF<x>_D<x>}
+            - BUS:B<x>:RS232C:SOUrce {CH<x>|DCH<x>_D<x>|REF<x>|MATH<x>|REF<x>_D<x>}
             - BUS:B<x>:RS232C:SOUrce?
             ```
 
@@ -2949,7 +2949,7 @@ class BusBItemParallelClocksource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:PARallel:CLOCkSOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>| NONE}
+        - BUS:B<x>:PARallel:CLOCkSOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>|NONE}
         - BUS:B<x>:PARallel:CLOCkSOUrce?
         ```
 
@@ -3188,7 +3188,7 @@ class BusBItemParallelBitsourceItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCP
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:PARallel:BIT<x>SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>| NONE}
+        - BUS:B<x>:PARallel:BIT<x>SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>|NONE}
         - BUS:B<x>:PARallel:BIT<x>SOUrce?
         ```
 
@@ -3402,7 +3402,7 @@ class BusBItemParallel(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:PARallel:BIT<x>SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>| NONE}
+            - BUS:B<x>:PARallel:BIT<x>SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>|NONE}
             - BUS:B<x>:PARallel:BIT<x>SOUrce?
             ```
 
@@ -3420,7 +3420,7 @@ class BusBItemParallel(SCPICmdRead):
 
         Sub-properties:
             - ``.threshold``: The ``BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold`` command.
-        """  # noqa: E501
+        """
         return self._bitsource
 
     @property
@@ -3458,7 +3458,7 @@ class BusBItemParallel(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:PARallel:CLOCkSOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>| NONE}
+            - BUS:B<x>:PARallel:CLOCkSOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>|NONE}
             - BUS:B<x>:PARallel:CLOCkSOUrce?
             ```
 
@@ -3548,7 +3548,7 @@ class BusBItemLinSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:LIN:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+        - BUS:B<x>:LIN:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:LIN:SOUrce?
         ```
 
@@ -3913,7 +3913,7 @@ class BusBItemLin(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:LIN:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+            - BUS:B<x>:LIN:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:LIN:SOUrce?
             ```
 
@@ -4618,7 +4618,7 @@ class BusBItemI2cDataSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:I2C:DATa:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+        - BUS:B<x>:I2C:DATa:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:I2C:DATa:SOUrce?
         ```
 
@@ -4672,7 +4672,7 @@ class BusBItemI2cData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:I2C:DATa:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+            - BUS:B<x>:I2C:DATa:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:I2C:DATa:SOUrce?
             ```
 
@@ -4758,7 +4758,7 @@ class BusBItemI2cClockSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:I2C:CLOCk:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+        - BUS:B<x>:I2C:CLOCk:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:I2C:CLOCk:SOUrce?
         ```
 
@@ -4812,7 +4812,7 @@ class BusBItemI2cClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:I2C:CLOCk:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+            - BUS:B<x>:I2C:CLOCk:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:I2C:CLOCk:SOUrce?
             ```
 
@@ -5161,7 +5161,7 @@ class BusBItemCanSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:CAN:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+        - BUS:B<x>:CAN:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:CAN:SOUrce?
         ```
 
@@ -5269,7 +5269,7 @@ class BusBItemCanFdBitrate(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:CAN:FD:BITRate {RATE1M|RATE2M|RATE3M|RATE4M|RATE5M|RATE6M| RATE7M|RATE8M|RATE9M|RATE10M|RATE11M|RATE12M|RATE13M| RATE14M|RATE15M|RATE16M|CUSTom}
+        - BUS:B<x>:CAN:FD:BITRate {RATE1M|RATE2M|RATE3M|RATE4M|RATE5M|RATE6M|RATE7M|RATE8M|RATE9M|RATE10M|RATE11M|RATE12M|RATE13M|RATE14M|RATE15M|RATE16M|CUSTom}
         - BUS:B<x>:CAN:FD:BITRate?
         ```
 
@@ -5349,7 +5349,7 @@ class BusBItemCanFd(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:CAN:FD:BITRate {RATE1M|RATE2M|RATE3M|RATE4M|RATE5M|RATE6M| RATE7M|RATE8M|RATE9M|RATE10M|RATE11M|RATE12M|RATE13M| RATE14M|RATE15M|RATE16M|CUSTom}
+            - BUS:B<x>:CAN:FD:BITRate {RATE1M|RATE2M|RATE3M|RATE4M|RATE5M|RATE6M|RATE7M|RATE8M|RATE9M|RATE10M|RATE11M|RATE12M|RATE13M|RATE14M|RATE15M|RATE16M|CUSTom}
             - BUS:B<x>:CAN:FD:BITRate?
             ```
 
@@ -5403,7 +5403,7 @@ class BusBItemCanBitrate(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K| RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE400K|RATE50K| RATE500K|RATE62K| RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
+        - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K|RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE400K|RATE50K|RATE500K|RATE62K|RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
         - BUS:B<x>:CAN:BITRate?
         ```
 
@@ -5494,7 +5494,7 @@ class BusBItemCan(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K| RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE400K|RATE50K| RATE500K|RATE62K| RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
+            - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K|RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE400K|RATE50K|RATE500K|RATE62K|RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
             - BUS:B<x>:CAN:BITRate?
             ```
 
@@ -5593,7 +5593,7 @@ class BusBItemCan(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:CAN:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+            - BUS:B<x>:CAN:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:CAN:SOUrce?
             ```
 
@@ -5917,7 +5917,7 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:TYPe {CAN| I2C| LIN| PARallel| RS232C| SENT| SPI}
+            - BUS:B<x>:TYPe {CAN|I2C|LIN|PARallel|RS232C|SENT|SPI}
             - BUS:B<x>:TYPe?
             ```
 

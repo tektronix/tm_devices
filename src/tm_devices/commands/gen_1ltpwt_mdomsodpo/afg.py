@@ -28,7 +28,7 @@ Commands and Queries:
     - AFG:ARBitrary:EMEM:POINTS?
     - AFG:FREQuency <NR3>
     - AFG:FREQuency?
-    - AFG:FUNCtion {SINE|SQUare|PULSe|RAMP|NOISe|DC|SINC|GAUSsian|LORENtz |ERISe|EDECAy|HAVERSINe|CARDIac|ARBitrary}
+    - AFG:FUNCtion {SINE|SQUare|PULSe|RAMP|NOISe|DC|SINC|GAUSsian|LORENtz|ERISe|EDECAy|HAVERSINe|CARDIac|ARBitrary}
     - AFG:FUNCtion?
     - AFG:HIGHLevel <NR3>
     - AFG:HIGHLevel?
@@ -709,7 +709,7 @@ class AfgFunction(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - AFG:FUNCtion {SINE|SQUare|PULSe|RAMP|NOISe|DC|SINC|GAUSsian|LORENtz |ERISe|EDECAy|HAVERSINe|CARDIac|ARBitrary}
+        - AFG:FUNCtion {SINE|SQUare|PULSe|RAMP|NOISe|DC|SINC|GAUSsian|LORENtz|ERISe|EDECAy|HAVERSINe|CARDIac|ARBitrary}
         - AFG:FUNCtion?
         ```
 
@@ -1499,7 +1499,7 @@ class Afg(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - AFG:FUNCtion {SINE|SQUare|PULSe|RAMP|NOISe|DC|SINC|GAUSsian|LORENtz |ERISe|EDECAy|HAVERSINe|CARDIac|ARBitrary}
+            - AFG:FUNCtion {SINE|SQUare|PULSe|RAMP|NOISe|DC|SINC|GAUSsian|LORENtz|ERISe|EDECAy|HAVERSINe|CARDIac|ARBitrary}
             - AFG:FUNCtion?
             ```
 

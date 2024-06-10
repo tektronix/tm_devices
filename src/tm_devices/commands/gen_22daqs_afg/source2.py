@@ -14,7 +14,7 @@ Commands and Queries:
     - SOURce2:AM:DEPTh?
     - SOURce2:AM:INTernal:FREQuency {<frequency>|MINimum|MAXimum}
     - SOURce2:AM:INTernal:FREQuency?
-    - SOURce2:AM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle|RAMP |NRAMp|PRNoise| USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
+    - SOURce2:AM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle|RAMP|NRAMp|PRNoise|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
     - SOURce2:AM:INTernal:FUNCtion:EFILe <file_name>
     - SOURce2:AM:INTernal:FUNCtion:EFILe?
     - SOURce2:AM:INTernal:FUNCtion?
@@ -24,7 +24,7 @@ Commands and Queries:
     - SOURce2:AM:STATe?
     - SOURce2:BURSt:MODE {TRIGgered|GATed}
     - SOURce2:BURSt:MODE?
-    - SOURce2:BURSt:NCYCles {<cycles>|INFinity|MINimum| MAXimum}
+    - SOURce2:BURSt:NCYCles {<cycles>|INFinity|MINimum|MAXimum}
     - SOURce2:BURSt:NCYCles?
     - SOURce2:BURSt:STATe {ON|OFF|<NR1>}
     - SOURce2:BURSt:STATe?
@@ -36,7 +36,7 @@ Commands and Queries:
     - SOURce2:FM:DEViation?
     - SOURce2:FM:INTernal:FREQuency {<frequency>|MINimum|MAXimum}
     - SOURce2:FM:INTernal:FREQuency?
-    - SOURce2:FM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle| RAMP| NRAMp| PRNoise| USER[1]| USER<x>|EMEMory[1]|EMEMory2|EFILe}
+    - SOURce2:FM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle|RAMP|NRAMp|PRNoise|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
     - SOURce2:FM:INTernal:FUNCtion:EFILe <file_name>
     - SOURce2:FM:INTernal:FUNCtion:EFILe?
     - SOURce2:FM:INTernal:FUNCtion?
@@ -71,7 +71,7 @@ Commands and Queries:
     - SOURce2:FUNCtion:EFILe?
     - SOURce2:FUNCtion:RAMP:SYMMetry {<symmetry>|MINimum|MAXimum}
     - SOURce2:FUNCtion:RAMP:SYMMetry?
-    - SOURce2:FUNCtion:SHAPe {SINusoid|SQUare|PULSe|RAMP |PRNoise|DC|SINC|GAUSsian|LORentz|ERISe|EDECay| HAVersine|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
+    - SOURce2:FUNCtion:SHAPe {SINusoid|SQUare|PULSe|RAMP|PRNoise|DC|SINC|GAUSsian|LORentz|ERISe|EDECay|HAVersine|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
     - SOURce2:FUNCtion:SHAPe?
     - SOURce2:PHASe:ADJust {<phase>|MINimum|MAXimum}
     - SOURce2:PHASe:ADJust?
@@ -80,7 +80,7 @@ Commands and Queries:
     - SOURce2:PM:DEViation?
     - SOURce2:PM:INTernal:FREQuency {<frequency>|MINimum|MAXimum}
     - SOURce2:PM:INTernal:FREQuency?
-    - SOURce2:PM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle| RAMP|NRAMp|PRNoise| USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
+    - SOURce2:PM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle|RAMP|NRAMp|PRNoise|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
     - SOURce2:PM:INTernal:FUNCtion:EFILe <file_name>
     - SOURce2:PM:INTernal:FUNCtion:EFILe?
     - SOURce2:PM:INTernal:FUNCtion?
@@ -96,9 +96,9 @@ Commands and Queries:
     - SOURce2:PULSe:HOLD?
     - SOURce2:PULSe:PERiod {<period>|MINimum|MAXimum}
     - SOURce2:PULSe:PERiod?
-    - SOURce2:PULSe:TRANsition:LEADing {<seconds>|MINimum| MAXimum}
+    - SOURce2:PULSe:TRANsition:LEADing {<seconds>|MINimum|MAXimum}
     - SOURce2:PULSe:TRANsition:LEADing?
-    - SOURce2:PULSe:TRANsition:TRAiling {<seconds>|MINimum| MAXimum}
+    - SOURce2:PULSe:TRANsition:TRAiling {<seconds>|MINimum|MAXimum}
     - SOURce2:PULSe:TRANsition:TRAiling?
     - SOURce2:PULSe:WIDTh {<seconds>|MINimum|MAXimum}
     - SOURce2:PULSe:WIDTh?
@@ -106,7 +106,7 @@ Commands and Queries:
     - SOURce2:PWM:DEViation:DCYCle?
     - SOURce2:PWM:INTernal:FREQuency {<frequency>|MINimum|MAXimum}
     - SOURce2:PWM:INTernal:FREQuency?
-    - SOURce2:PWM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle |RAMP|NRAMp|PRNoise|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
+    - SOURce2:PWM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle|RAMP|NRAMp|PRNoise|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
     - SOURce2:PWM:INTernal:FUNCtion:EFILe <file_name>
     - SOURce2:PWM:INTernal:FUNCtion:EFILe?
     - SOURce2:PWM:INTernal:FUNCtion?
@@ -130,7 +130,7 @@ Commands and Queries:
     - SOURce2:VOLTage:LEVel:IMMediate:AMPLitude?
     - SOURce2:VOLTage:LEVel:IMMediate:HIGH {<voltage>|MINimum|MAXimum}
     - SOURce2:VOLTage:LEVel:IMMediate:HIGH?
-    - SOURce2:VOLTage:LEVel:IMMediate:LOW {<voltage>|MINimum| MAXimum}
+    - SOURce2:VOLTage:LEVel:IMMediate:LOW {<voltage>|MINimum|MAXimum}
     - SOURce2:VOLTage:LEVel:IMMediate:LOW?
     - SOURce2:VOLTage:LEVel:IMMediate:OFFSet {<voltage>|MINimum|MAXimum}
     - SOURce2:VOLTage:LEVel:IMMediate:OFFSet?
@@ -340,7 +340,7 @@ class Source2VoltageLevelImmediateLow(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SOURce2:VOLTage:LEVel:IMMediate:LOW {<voltage>|MINimum| MAXimum}
+        - SOURce2:VOLTage:LEVel:IMMediate:LOW {<voltage>|MINimum|MAXimum}
         - SOURce2:VOLTage:LEVel:IMMediate:LOW?
         ```
     """
@@ -471,7 +471,7 @@ class Source2VoltageLevelImmediate(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SOURce2:VOLTage:LEVel:IMMediate:LOW {<voltage>|MINimum| MAXimum}
+            - SOURce2:VOLTage:LEVel:IMMediate:LOW {<voltage>|MINimum|MAXimum}
             - SOURce2:VOLTage:LEVel:IMMediate:LOW?
             ```
         """
@@ -1067,7 +1067,7 @@ class Source2PwmInternalFunction(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SOURce2:PWM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle |RAMP|NRAMp|PRNoise|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
+        - SOURce2:PWM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle|RAMP|NRAMp|PRNoise|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
         - SOURce2:PWM:INTernal:FUNCtion?
         ```
 
@@ -1209,7 +1209,7 @@ class Source2PwmInternal(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SOURce2:PWM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle |RAMP|NRAMp|PRNoise|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
+            - SOURce2:PWM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle|RAMP|NRAMp|PRNoise|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
             - SOURce2:PWM:INTernal:FUNCtion?
             ```
 
@@ -1439,7 +1439,7 @@ class Source2PulseTransitionTrailing(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SOURce2:PULSe:TRANsition:TRAiling {<seconds>|MINimum| MAXimum}
+        - SOURce2:PULSe:TRANsition:TRAiling {<seconds>|MINimum|MAXimum}
         - SOURce2:PULSe:TRANsition:TRAiling?
         ```
     """
@@ -1460,7 +1460,7 @@ class Source2PulseTransitionLeading(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SOURce2:PULSe:TRANsition:LEADing {<seconds>|MINimum| MAXimum}
+        - SOURce2:PULSe:TRANsition:LEADing {<seconds>|MINimum|MAXimum}
         - SOURce2:PULSe:TRANsition:LEADing?
         ```
     """
@@ -1502,7 +1502,7 @@ class Source2PulseTransition(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SOURce2:PULSe:TRANsition:TRAiling {<seconds>|MINimum| MAXimum}
+            - SOURce2:PULSe:TRANsition:TRAiling {<seconds>|MINimum|MAXimum}
             - SOURce2:PULSe:TRANsition:TRAiling?
             ```
         """
@@ -1526,7 +1526,7 @@ class Source2PulseTransition(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SOURce2:PULSe:TRANsition:LEADing {<seconds>|MINimum| MAXimum}
+            - SOURce2:PULSe:TRANsition:LEADing {<seconds>|MINimum|MAXimum}
             - SOURce2:PULSe:TRANsition:LEADing?
             ```
         """
@@ -1866,7 +1866,7 @@ class Source2PmInternalFunction(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SOURce2:PM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle| RAMP|NRAMp|PRNoise| USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
+        - SOURce2:PM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle|RAMP|NRAMp|PRNoise|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
         - SOURce2:PM:INTernal:FUNCtion?
         ```
 
@@ -2007,7 +2007,7 @@ class Source2PmInternal(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SOURce2:PM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle| RAMP|NRAMp|PRNoise| USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
+            - SOURce2:PM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle|RAMP|NRAMp|PRNoise|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
             - SOURce2:PM:INTernal:FUNCtion?
             ```
 
@@ -2280,7 +2280,7 @@ class Source2FunctionShape(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SOURce2:FUNCtion:SHAPe {SINusoid|SQUare|PULSe|RAMP |PRNoise|DC|SINC|GAUSsian|LORentz|ERISe|EDECay| HAVersine|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
+        - SOURce2:FUNCtion:SHAPe {SINusoid|SQUare|PULSe|RAMP|PRNoise|DC|SINC|GAUSsian|LORentz|ERISe|EDECay|HAVersine|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
         - SOURce2:FUNCtion:SHAPe?
         ```
 
@@ -2459,7 +2459,7 @@ class Source2Function(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SOURce2:FUNCtion:SHAPe {SINusoid|SQUare|PULSe|RAMP |PRNoise|DC|SINC|GAUSsian|LORentz|ERISe|EDECay| HAVersine|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
+            - SOURce2:FUNCtion:SHAPe {SINusoid|SQUare|PULSe|RAMP|PRNoise|DC|SINC|GAUSsian|LORentz|ERISe|EDECay|HAVersine|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
             - SOURce2:FUNCtion:SHAPe?
             ```
 
@@ -3266,7 +3266,7 @@ class Source2FmInternalFunction(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SOURce2:FM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle| RAMP| NRAMp| PRNoise| USER[1]| USER<x>|EMEMory[1]|EMEMory2|EFILe}
+        - SOURce2:FM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle|RAMP|NRAMp|PRNoise|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
         - SOURce2:FM:INTernal:FUNCtion?
         ```
 
@@ -3408,7 +3408,7 @@ class Source2FmInternal(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SOURce2:FM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle| RAMP| NRAMp| PRNoise| USER[1]| USER<x>|EMEMory[1]|EMEMory2|EFILe}
+            - SOURce2:FM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle|RAMP|NRAMp|PRNoise|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
             - SOURce2:FM:INTernal:FUNCtion?
             ```
 
@@ -3700,7 +3700,7 @@ class Source2BurstNcycles(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SOURce2:BURSt:NCYCles {<cycles>|INFinity|MINimum| MAXimum}
+        - SOURce2:BURSt:NCYCles {<cycles>|INFinity|MINimum|MAXimum}
         - SOURce2:BURSt:NCYCles?
         ```
     """
@@ -3787,7 +3787,7 @@ class Source2Burst(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SOURce2:BURSt:NCYCles {<cycles>|INFinity|MINimum| MAXimum}
+            - SOURce2:BURSt:NCYCles {<cycles>|INFinity|MINimum|MAXimum}
             - SOURce2:BURSt:NCYCles?
             ```
         """
@@ -3925,7 +3925,7 @@ class Source2AmInternalFunction(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SOURce2:AM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle|RAMP |NRAMp|PRNoise| USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
+        - SOURce2:AM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle|RAMP|NRAMp|PRNoise|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
         - SOURce2:AM:INTernal:FUNCtion?
         ```
 
@@ -4067,7 +4067,7 @@ class Source2AmInternal(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SOURce2:AM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle|RAMP |NRAMp|PRNoise| USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
+            - SOURce2:AM:INTernal:FUNCtion {SINusoid|SQUare|TRIangle|RAMP|NRAMp|PRNoise|USER[1]|USER<x>|EMEMory[1]|EMEMory2|EFILe}
             - SOURce2:AM:INTernal:FUNCtion?
             ```
 

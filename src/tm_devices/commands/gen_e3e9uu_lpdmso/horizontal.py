@@ -58,7 +58,7 @@ Commands and Queries:
     - HORizontal:MODe {AUTO|MANual}
     - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:VALue <NR1>
     - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:VALue?
-    - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride {OFF|ON|0| 1}
+    - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride {OFF|ON|0|1}
     - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride?
     - HORizontal:MODe:MANual:CONFIGure {HORIZontalscale|RECORDLength}
     - HORizontal:MODe:MANual:CONFIGure?
@@ -597,7 +597,7 @@ class HorizontalModeAutomaticFastacqRecordlengthMaximumZoomoverride(SCPICmdWrite
 
     SCPI Syntax:
         ```
-        - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride {OFF|ON|0| 1}
+        - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride {OFF|ON|0|1}
         - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride?
         ```
 
@@ -706,7 +706,7 @@ class HorizontalModeAutomaticFastacqRecordlengthMaximum(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride {OFF|ON|0| 1}
+            - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride {OFF|ON|0|1}
             - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride?
             ```
 

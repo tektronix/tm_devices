@@ -13,9 +13,9 @@ Commands and Queries:
     - DATa {INIT|SNAp}
     - DATa:DESTination REF<x>
     - DATa:DESTination?
-    - DATa:ENCdg {ASCIi|FAStest|RIBinary|RPBinary|SRIbinary|SRPbinary|FPbinary| SFPbinary}
+    - DATa:ENCdg {ASCIi|FAStest|RIBinary|RPBinary|SRIbinary|SRPbinary|FPbinary|SFPbinary}
     - DATa:ENCdg?
-    - DATa:SOUrce {CH<x>|MATH|REF<x>|D<x>|DIGital |RF_AMPlitude|RF_FREQuency|RF_PHASe|RF_NORMal|RF_AVErage| RF_MAXHold|RF_MINHold}
+    - DATa:SOUrce {CH<x>|MATH|REF<x>|D<x>|DIGital|RF_AMPlitude|RF_FREQuency|RF_PHASe|RF_NORMal|RF_AVErage|RF_MAXHold|RF_MINHold}
     - DATa:SOUrce?
     - DATa:STARt <NR1>
     - DATa:STARt?
@@ -146,7 +146,7 @@ class DataSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DATa:SOUrce {CH<x>|MATH|REF<x>|D<x>|DIGital |RF_AMPlitude|RF_FREQuency|RF_PHASe|RF_NORMal|RF_AVErage| RF_MAXHold|RF_MINHold}
+        - DATa:SOUrce {CH<x>|MATH|REF<x>|D<x>|DIGital|RF_AMPlitude|RF_FREQuency|RF_PHASe|RF_NORMal|RF_AVErage|RF_MAXHold|RF_MINHold}
         - DATa:SOUrce?
         ```
 
@@ -190,7 +190,7 @@ class DataEncdg(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DATa:ENCdg {ASCIi|FAStest|RIBinary|RPBinary|SRIbinary|SRPbinary|FPbinary| SFPbinary}
+        - DATa:ENCdg {ASCIi|FAStest|RIBinary|RPBinary|SRIbinary|SRPbinary|FPbinary|SFPbinary}
         - DATa:ENCdg?
         ```
 
@@ -346,7 +346,7 @@ class Data(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DATa:ENCdg {ASCIi|FAStest|RIBinary|RPBinary|SRIbinary|SRPbinary|FPbinary| SFPbinary}
+            - DATa:ENCdg {ASCIi|FAStest|RIBinary|RPBinary|SRIbinary|SRPbinary|FPbinary|SFPbinary}
             - DATa:ENCdg?
             ```
 
@@ -410,7 +410,7 @@ class Data(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DATa:SOUrce {CH<x>|MATH|REF<x>|D<x>|DIGital |RF_AMPlitude|RF_FREQuency|RF_PHASe|RF_NORMal|RF_AVErage| RF_MAXHold|RF_MINHold}
+            - DATa:SOUrce {CH<x>|MATH|REF<x>|D<x>|DIGital|RF_AMPlitude|RF_FREQuency|RF_PHASe|RF_NORMal|RF_AVErage|RF_MAXHold|RF_MINHold}
             - DATa:SOUrce?
             ```
 

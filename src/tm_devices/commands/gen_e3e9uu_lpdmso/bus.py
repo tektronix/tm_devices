@@ -77,11 +77,11 @@ Commands and Queries:
     - BUS:B<x>:AUTOETHERnet:THRESHold?
     - BUS:B<x>:AUTOETHERnet:TYPe {HUNDREDBASET1}
     - BUS:B<x>:AUTOETHERnet:TYPe?
-    - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K| RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE400K|RATE50K| RATE500K|RATE62K| RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
+    - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K|RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE400K|RATE50K|RATE500K|RATE62K|RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
     - BUS:B<x>:CAN:BITRate:VALue <NR3>
     - BUS:B<x>:CAN:BITRate:VALue?
     - BUS:B<x>:CAN:BITRate?
-    - BUS:B<x>:CAN:FD:BITRate {RATE1M|RATE2M|RATE3M|RATE4M|RATE5M|RATE6M| RATE7M|RATE8M|RATE9M|RATE10M|RATE11M|RATE12M|RATE13M| RATE14M|RATE15M|RATE16M|CUSTom}
+    - BUS:B<x>:CAN:FD:BITRate {RATE1M|RATE2M|RATE3M|RATE4M|RATE5M|RATE6M|RATE7M|RATE8M|RATE9M|RATE10M|RATE11M|RATE12M|RATE13M|RATE14M|RATE15M|RATE16M|CUSTom}
     - BUS:B<x>:CAN:FD:BITRate:CUSTom <NR1>
     - BUS:B<x>:CAN:FD:BITRate:CUSTom?
     - BUS:B<x>:CAN:FD:BITRate?
@@ -395,7 +395,7 @@ Commands and Queries:
     - BUS:B<x>:NFC:CMD:STARTINDex?
     - BUS:B<x>:NFC:CMD:THReshold <NR3>
     - BUS:B<x>:NFC:CMD:THReshold?
-    - BUS:B<x>:NFC:CMD:TRANsition:ZERo {RISing| FALLing}
+    - BUS:B<x>:NFC:CMD:TRANsition:ZERo {RISing|FALLing}
     - BUS:B<x>:NFC:CMD:TRANsition:ZERo?
     - BUS:B<x>:NFC:COMMand:POLarity {NORMal|INVerted}
     - BUS:B<x>:NFC:COMMand:POLarity?
@@ -407,7 +407,7 @@ Commands and Queries:
     - BUS:B<x>:NFC:SOUrce?
     - BUS:B<x>:NFC:START:INDex <NR1>
     - BUS:B<x>:NFC:START:INDex?
-    - BUS:B<x>:NFC:STD {NFC15693| NFC14443A| NFC14443B| NFCFELica}
+    - BUS:B<x>:NFC:STD {NFC15693|NFC14443A|NFC14443B|NFCFELica}
     - BUS:B<x>:NFC:STD?
     - BUS:B<x>:NFC:TOLerance <NR3>
     - BUS:B<x>:NFC:TOLerance?
@@ -473,7 +473,7 @@ Commands and Queries:
     - BUS:B<x>:PSIFIVe:THRESHold?
     - BUS:B<x>:RS232C:BITORDer {LSB|MSB}
     - BUS:B<x>:RS232C:BITORDer?
-    - BUS:B<x>:RS232C:BITRate {CUSTOM|RATE300|RATE1K|RATE2K|RATE9K| RATE19K|RATE38K|RATE115K|RATE921K}
+    - BUS:B<x>:RS232C:BITRate {CUSTOM|RATE300|RATE1K|RATE2K|RATE9K|RATE19K|RATE38K|RATE115K|RATE921K}
     - BUS:B<x>:RS232C:BITRate:CUSTom <NR1>
     - BUS:B<x>:RS232C:BITRate:CUSTom?
     - BUS:B<x>:RS232C:BITRate?
@@ -597,11 +597,11 @@ Commands and Queries:
     - BUS:B<x>:SPI:SELect:SOUrce?
     - BUS:B<x>:SPI:SELect:THReshold <NR3>
     - BUS:B<x>:SPI:SELect:THReshold?
-    - BUS:B<x>:SPMI:SCLk:SOUrce {CH<x>|CH<x>_Dx>| MATH<x>|REF<x>|REF<x>_D<x>}
+    - BUS:B<x>:SPMI:SCLk:SOUrce {CH<x>|CH<x>_Dx>|MATH<x>|REF<x>|REF<x>_D<x>}
     - BUS:B<x>:SPMI:SCLk:SOUrce?
     - BUS:B<x>:SPMI:SCLk:THReshold <NR3>
     - BUS:B<x>:SPMI:SCLk:THReshold?
-    - BUS:B<x>:SPMI:SDATa:SOUrce {CH<x>|CH<x>_Dx>| MATH<x>|REF<x>|REF<x>_D<x>}
+    - BUS:B<x>:SPMI:SDATa:SOUrce {CH<x>|CH<x>_Dx>|MATH<x>|REF<x>|REF<x>_D<x>}
     - BUS:B<x>:SPMI:SDATa:SOUrce?
     - BUS:B<x>:SPMI:SDATa:THReshold <NR3>
     - BUS:B<x>:SPMI:SDATa:THReshold?
@@ -617,7 +617,7 @@ Commands and Queries:
     - BUS:B<x>:SVID:DATA:SOUrce?
     - BUS:B<x>:SVID:DATA:THReshold <NR3>
     - BUS:B<x>:SVID:DATA:THReshold?
-    - BUS:B<x>:TYPe {ARINC429| AUDio| CAN| ETHernet| EUSB| FLEXRAY| I2C| I3C| LIN| MDIO| MIL1553B| PARallel| RS232C| SENT| SPI| SPMI| SVID| USB}
+    - BUS:B<x>:TYPe {ARINC429|AUDio|CAN|ETHernet|EUSB|FLEXRAY|I2C|I3C|LIN|MDIO|MIL1553B|PARallel|RS232C|SENT|SPI|SPMI|SVID|USB}
     - BUS:B<x>:TYPe?
     - BUS:B<x>:USB:BITRate {FULL|HIGH|LOW}
     - BUS:B<x>:USB:BITRate?
@@ -1265,7 +1265,7 @@ class BusBItemType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:TYPe {ARINC429| AUDio| CAN| ETHernet| EUSB| FLEXRAY| I2C| I3C| LIN| MDIO| MIL1553B| PARallel| RS232C| SENT| SPI| SPMI| SVID| USB}
+        - BUS:B<x>:TYPe {ARINC429|AUDio|CAN|ETHernet|EUSB|FLEXRAY|I2C|I3C|LIN|MDIO|MIL1553B|PARallel|RS232C|SENT|SPI|SPMI|SVID|USB}
         - BUS:B<x>:TYPe?
         ```
 
@@ -1812,7 +1812,7 @@ class BusBItemSpmiSdataSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:SPMI:SDATa:SOUrce {CH<x>|CH<x>_Dx>| MATH<x>|REF<x>|REF<x>_D<x>}
+        - BUS:B<x>:SPMI:SDATa:SOUrce {CH<x>|CH<x>_Dx>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:SPMI:SDATa:SOUrce?
         ```
 
@@ -1867,7 +1867,7 @@ class BusBItemSpmiSdata(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:SPMI:SDATa:SOUrce {CH<x>|CH<x>_Dx>| MATH<x>|REF<x>|REF<x>_D<x>}
+            - BUS:B<x>:SPMI:SDATa:SOUrce {CH<x>|CH<x>_Dx>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:SPMI:SDATa:SOUrce?
             ```
 
@@ -1953,7 +1953,7 @@ class BusBItemSpmiSclkSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:SPMI:SCLk:SOUrce {CH<x>|CH<x>_Dx>| MATH<x>|REF<x>|REF<x>_D<x>}
+        - BUS:B<x>:SPMI:SCLk:SOUrce {CH<x>|CH<x>_Dx>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:SPMI:SCLk:SOUrce?
         ```
 
@@ -2008,7 +2008,7 @@ class BusBItemSpmiSclk(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:SPMI:SCLk:SOUrce {CH<x>|CH<x>_Dx>| MATH<x>|REF<x>|REF<x>_D<x>}
+            - BUS:B<x>:SPMI:SCLk:SOUrce {CH<x>|CH<x>_Dx>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:SPMI:SCLk:SOUrce?
             ```
 
@@ -6117,7 +6117,7 @@ class BusBItemRs232cBitrate(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:RS232C:BITRate {CUSTOM|RATE300|RATE1K|RATE2K|RATE9K| RATE19K|RATE38K|RATE115K|RATE921K}
+        - BUS:B<x>:RS232C:BITRate {CUSTOM|RATE300|RATE1K|RATE2K|RATE9K|RATE19K|RATE38K|RATE115K|RATE921K}
         - BUS:B<x>:RS232C:BITRate?
         ```
 
@@ -6265,7 +6265,7 @@ class BusBItemRs232c(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:RS232C:BITRate {CUSTOM|RATE300|RATE1K|RATE2K|RATE9K| RATE19K|RATE38K|RATE115K|RATE921K}
+            - BUS:B<x>:RS232C:BITRate {CUSTOM|RATE300|RATE1K|RATE2K|RATE9K|RATE19K|RATE38K|RATE115K|RATE921K}
             - BUS:B<x>:RS232C:BITRate?
             ```
 
@@ -8568,7 +8568,7 @@ class BusBItemNfcStd(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:NFC:STD {NFC15693| NFC14443A| NFC14443B| NFCFELica}
+        - BUS:B<x>:NFC:STD {NFC15693|NFC14443A|NFC14443B|NFCFELica}
         - BUS:B<x>:NFC:STD?
         ```
 
@@ -8919,7 +8919,7 @@ class BusBItemNfcCmdTransitionZero(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:NFC:CMD:TRANsition:ZERo {RISing| FALLing}
+        - BUS:B<x>:NFC:CMD:TRANsition:ZERo {RISing|FALLing}
         - BUS:B<x>:NFC:CMD:TRANsition:ZERo?
         ```
 
@@ -8968,7 +8968,7 @@ class BusBItemNfcCmdTransition(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:NFC:CMD:TRANsition:ZERo {RISing| FALLing}
+            - BUS:B<x>:NFC:CMD:TRANsition:ZERo {RISing|FALLing}
             - BUS:B<x>:NFC:CMD:TRANsition:ZERo?
             ```
 
@@ -9401,7 +9401,7 @@ class BusBItemNfc(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:NFC:STD {NFC15693| NFC14443A| NFC14443B| NFCFELica}
+            - BUS:B<x>:NFC:STD {NFC15693|NFC14443A|NFC14443B|NFCFELica}
             - BUS:B<x>:NFC:STD?
             ```
 
@@ -20182,7 +20182,7 @@ class BusBItemCanFdBitrate(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:CAN:FD:BITRate {RATE1M|RATE2M|RATE3M|RATE4M|RATE5M|RATE6M| RATE7M|RATE8M|RATE9M|RATE10M|RATE11M|RATE12M|RATE13M| RATE14M|RATE15M|RATE16M|CUSTom}
+        - BUS:B<x>:CAN:FD:BITRate {RATE1M|RATE2M|RATE3M|RATE4M|RATE5M|RATE6M|RATE7M|RATE8M|RATE9M|RATE10M|RATE11M|RATE12M|RATE13M|RATE14M|RATE15M|RATE16M|CUSTom}
         - BUS:B<x>:CAN:FD:BITRate?
         ```
 
@@ -20262,7 +20262,7 @@ class BusBItemCanFd(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:CAN:FD:BITRate {RATE1M|RATE2M|RATE3M|RATE4M|RATE5M|RATE6M| RATE7M|RATE8M|RATE9M|RATE10M|RATE11M|RATE12M|RATE13M| RATE14M|RATE15M|RATE16M|CUSTom}
+            - BUS:B<x>:CAN:FD:BITRate {RATE1M|RATE2M|RATE3M|RATE4M|RATE5M|RATE6M|RATE7M|RATE8M|RATE9M|RATE10M|RATE11M|RATE12M|RATE13M|RATE14M|RATE15M|RATE16M|CUSTom}
             - BUS:B<x>:CAN:FD:BITRate?
             ```
 
@@ -20316,7 +20316,7 @@ class BusBItemCanBitrate(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K| RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE400K|RATE50K| RATE500K|RATE62K| RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
+        - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K|RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE400K|RATE50K|RATE500K|RATE62K|RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
         - BUS:B<x>:CAN:BITRate?
         ```
 
@@ -20407,7 +20407,7 @@ class BusBItemCan(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K| RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE400K|RATE50K| RATE500K|RATE62K| RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
+            - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K|RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE400K|RATE50K|RATE500K|RATE62K|RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
             - BUS:B<x>:CAN:BITRate?
             ```
 
@@ -23635,7 +23635,7 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:TYPe {ARINC429| AUDio| CAN| ETHernet| EUSB| FLEXRAY| I2C| I3C| LIN| MDIO| MIL1553B| PARallel| RS232C| SENT| SPI| SPMI| SVID| USB}
+            - BUS:B<x>:TYPe {ARINC429|AUDio|CAN|ETHernet|EUSB|FLEXRAY|I2C|I3C|LIN|MDIO|MIL1553B|PARallel|RS232C|SENT|SPI|SPMI|SVID|USB}
             - BUS:B<x>:TYPe?
             ```
 

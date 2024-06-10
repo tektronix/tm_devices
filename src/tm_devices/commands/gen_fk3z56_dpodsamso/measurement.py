@@ -54,7 +54,7 @@ Commands and Queries:
     - MEASUrement:IMMed:SOUrce1:SIGType {PULse|EYE}
     - MEASUrement:IMMed:SOUrce1:SIGType?
     - MEASUrement:IMMed:SOUrce1?
-    - MEASUrement:IMMed:TYPe {AMPlitude|AREa| BURst|CARea|CMEan|CRMs|DELay|DISTDUty| EXTINCTDB|EXTINCTPCT|EXTINCTRATIO| EYEHeight|EYEWIdth|FALL|FREQuency|HIGH| HITs|LOW|MAXimum|MEAN| MEDian|MINImum| NCROss|NDUty|NOVershoot|NWIdth|PBASe| PCROss|PCTCROss|PDUty|PEAKHits|PERIod| PHAse|PK2Pk|PKPKJitter|PKPKNoise| POVershoot|PTOP|PWIdth|QFACtor|RISe| RMS|RMSJitter|RMSNoise|SIGMA1|SIGMA2| SIGMA3|SIXSigmajit|SNRatio|STDdev| UNDEFINED|WAVEFORMS}
+    - MEASUrement:IMMed:TYPe {AMPlitude|AREa|BURst|CARea|CMEan|CRMs|DELay|DISTDUty|EXTINCTDB|EXTINCTPCT|EXTINCTRATIO|EYEHeight|EYEWIdth|FALL|FREQuency|HIGH|HITs|LOW|MAXimum|MEAN|MEDian|MINImum|NCROss|NDUty|NOVershoot|NWIdth|PBASe|PCROss|PCTCROss|PDUty|PEAKHits|PERIod|PHAse|PK2Pk|PKPKJitter|PKPKNoise|POVershoot|PTOP|PWIdth|QFACtor|RISe|RMS|RMSJitter|RMSNoise|SIGMA1|SIGMA2|SIGMA3|SIXSigmajit|SNRatio|STDdev|UNDEFINED|WAVEFORMS}
     - MEASUrement:IMMed:TYPe?
     - MEASUrement:IMMed:UNIts?
     - MEASUrement:IMMed:VALue?
@@ -94,7 +94,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:STATE {<NR1>|OFF|ON}
     - MEASUrement:MEAS<x>:STATE?
     - MEASUrement:MEAS<x>:STDdev?
-    - MEASUrement:MEAS<x>:TYPe {AMPlitude|AREa| BURst|CARea|CMEan|CRMs|DELay|DISTDUty| EXTINCTDB|EXTINCTPCT|EXTINCTRATIO|EYEHeight| EYEWIdth|FALL|FREQuency|HIGH|HITs|LOW| MAXimum|MEAN|MEDian|MINImum|NCROss|NDUty| NOVershoot|NWIdth|PBASe|PCROss|PCTCROss|PDUty| PEAKHits|PERIod|PHAse|PK2Pk|PKPKJitter| PKPKNoise|POVershoot|PTOP|PWIdth|QFACtor| RISe|RMS|RMSJitter|RMSNoise|SIGMA1|SIGMA2| SIGMA3|SIXSigmajit|SNRatio|STDdev|UNDEFINED| WAVEFORMS}
+    - MEASUrement:MEAS<x>:TYPe {AMPlitude|AREa|BURst|CARea|CMEan|CRMs|DELay|DISTDUty|EXTINCTDB|EXTINCTPCT|EXTINCTRATIO|EYEHeight|EYEWIdth|FALL|FREQuency|HIGH|HITs|LOW|MAXimum|MEAN|MEDian|MINImum|NCROss|NDUty|NOVershoot|NWIdth|PBASe|PCROss|PCTCROss|PDUty|PEAKHits|PERIod|PHAse|PK2Pk|PKPKJitter|PKPKNoise|POVershoot|PTOP|PWIdth|QFACtor|RISe|RMS|RMSJitter|RMSNoise|SIGMA1|SIGMA2|SIGMA3|SIXSigmajit|SNRatio|STDdev|UNDEFINED|WAVEFORMS}
     - MEASUrement:MEAS<x>:TYPe?
     - MEASUrement:MEAS<x>:UNIts?
     - MEASUrement:MEAS<x>:VALue?
@@ -1042,7 +1042,7 @@ class MeasurementMeasItemType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:TYPe {AMPlitude|AREa| BURst|CARea|CMEan|CRMs|DELay|DISTDUty| EXTINCTDB|EXTINCTPCT|EXTINCTRATIO|EYEHeight| EYEWIdth|FALL|FREQuency|HIGH|HITs|LOW| MAXimum|MEAN|MEDian|MINImum|NCROss|NDUty| NOVershoot|NWIdth|PBASe|PCROss|PCTCROss|PDUty| PEAKHits|PERIod|PHAse|PK2Pk|PKPKJitter| PKPKNoise|POVershoot|PTOP|PWIdth|QFACtor| RISe|RMS|RMSJitter|RMSNoise|SIGMA1|SIGMA2| SIGMA3|SIXSigmajit|SNRatio|STDdev|UNDEFINED| WAVEFORMS}
+        - MEASUrement:MEAS<x>:TYPe {AMPlitude|AREa|BURst|CARea|CMEan|CRMs|DELay|DISTDUty|EXTINCTDB|EXTINCTPCT|EXTINCTRATIO|EYEHeight|EYEWIdth|FALL|FREQuency|HIGH|HITs|LOW|MAXimum|MEAN|MEDian|MINImum|NCROss|NDUty|NOVershoot|NWIdth|PBASe|PCROss|PCTCROss|PDUty|PEAKHits|PERIod|PHAse|PK2Pk|PKPKJitter|PKPKNoise|POVershoot|PTOP|PWIdth|QFACtor|RISe|RMS|RMSJitter|RMSNoise|SIGMA1|SIGMA2|SIGMA3|SIXSigmajit|SNRatio|STDdev|UNDEFINED|WAVEFORMS}
         - MEASUrement:MEAS<x>:TYPe?
         ```
 
@@ -2562,7 +2562,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:TYPe {AMPlitude|AREa| BURst|CARea|CMEan|CRMs|DELay|DISTDUty| EXTINCTDB|EXTINCTPCT|EXTINCTRATIO|EYEHeight| EYEWIdth|FALL|FREQuency|HIGH|HITs|LOW| MAXimum|MEAN|MEDian|MINImum|NCROss|NDUty| NOVershoot|NWIdth|PBASe|PCROss|PCTCROss|PDUty| PEAKHits|PERIod|PHAse|PK2Pk|PKPKJitter| PKPKNoise|POVershoot|PTOP|PWIdth|QFACtor| RISe|RMS|RMSJitter|RMSNoise|SIGMA1|SIGMA2| SIGMA3|SIXSigmajit|SNRatio|STDdev|UNDEFINED| WAVEFORMS}
+            - MEASUrement:MEAS<x>:TYPe {AMPlitude|AREa|BURst|CARea|CMEan|CRMs|DELay|DISTDUty|EXTINCTDB|EXTINCTPCT|EXTINCTRATIO|EYEHeight|EYEWIdth|FALL|FREQuency|HIGH|HITs|LOW|MAXimum|MEAN|MEDian|MINImum|NCROss|NDUty|NOVershoot|NWIdth|PBASe|PCROss|PCTCROss|PDUty|PEAKHits|PERIod|PHAse|PK2Pk|PKPKJitter|PKPKNoise|POVershoot|PTOP|PWIdth|QFACtor|RISe|RMS|RMSJitter|RMSNoise|SIGMA1|SIGMA2|SIGMA3|SIXSigmajit|SNRatio|STDdev|UNDEFINED|WAVEFORMS}
             - MEASUrement:MEAS<x>:TYPe?
             ```
 
@@ -2809,7 +2809,7 @@ class MeasurementImmedType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:IMMed:TYPe {AMPlitude|AREa| BURst|CARea|CMEan|CRMs|DELay|DISTDUty| EXTINCTDB|EXTINCTPCT|EXTINCTRATIO| EYEHeight|EYEWIdth|FALL|FREQuency|HIGH| HITs|LOW|MAXimum|MEAN| MEDian|MINImum| NCROss|NDUty|NOVershoot|NWIdth|PBASe| PCROss|PCTCROss|PDUty|PEAKHits|PERIod| PHAse|PK2Pk|PKPKJitter|PKPKNoise| POVershoot|PTOP|PWIdth|QFACtor|RISe| RMS|RMSJitter|RMSNoise|SIGMA1|SIGMA2| SIGMA3|SIXSigmajit|SNRatio|STDdev| UNDEFINED|WAVEFORMS}
+        - MEASUrement:IMMed:TYPe {AMPlitude|AREa|BURst|CARea|CMEan|CRMs|DELay|DISTDUty|EXTINCTDB|EXTINCTPCT|EXTINCTRATIO|EYEHeight|EYEWIdth|FALL|FREQuency|HIGH|HITs|LOW|MAXimum|MEAN|MEDian|MINImum|NCROss|NDUty|NOVershoot|NWIdth|PBASe|PCROss|PCTCROss|PDUty|PEAKHits|PERIod|PHAse|PK2Pk|PKPKJitter|PKPKNoise|POVershoot|PTOP|PWIdth|QFACtor|RISe|RMS|RMSJitter|RMSNoise|SIGMA1|SIGMA2|SIGMA3|SIXSigmajit|SNRatio|STDdev|UNDEFINED|WAVEFORMS}
         - MEASUrement:IMMed:TYPe?
         ```
 
@@ -4081,7 +4081,7 @@ class MeasurementImmed(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:IMMed:TYPe {AMPlitude|AREa| BURst|CARea|CMEan|CRMs|DELay|DISTDUty| EXTINCTDB|EXTINCTPCT|EXTINCTRATIO| EYEHeight|EYEWIdth|FALL|FREQuency|HIGH| HITs|LOW|MAXimum|MEAN| MEDian|MINImum| NCROss|NDUty|NOVershoot|NWIdth|PBASe| PCROss|PCTCROss|PDUty|PEAKHits|PERIod| PHAse|PK2Pk|PKPKJitter|PKPKNoise| POVershoot|PTOP|PWIdth|QFACtor|RISe| RMS|RMSJitter|RMSNoise|SIGMA1|SIGMA2| SIGMA3|SIXSigmajit|SNRatio|STDdev| UNDEFINED|WAVEFORMS}
+            - MEASUrement:IMMed:TYPe {AMPlitude|AREa|BURst|CARea|CMEan|CRMs|DELay|DISTDUty|EXTINCTDB|EXTINCTPCT|EXTINCTRATIO|EYEHeight|EYEWIdth|FALL|FREQuency|HIGH|HITs|LOW|MAXimum|MEAN|MEDian|MINImum|NCROss|NDUty|NOVershoot|NWIdth|PBASe|PCROss|PCTCROss|PDUty|PEAKHits|PERIod|PHAse|PK2Pk|PKPKJitter|PKPKNoise|POVershoot|PTOP|PWIdth|QFACtor|RISe|RMS|RMSJitter|RMSNoise|SIGMA1|SIGMA2|SIGMA3|SIXSigmajit|SNRatio|STDdev|UNDEFINED|WAVEFORMS}
             - MEASUrement:IMMed:TYPe?
             ```
 

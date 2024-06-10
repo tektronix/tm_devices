@@ -70,11 +70,11 @@ Commands and Queries:
     - BUS:B<x>:ETHERnet:PROTOcol?
     - BUS:B<x>:ETHERnet:PRObe {DIFFerential|SINGleended}
     - BUS:B<x>:ETHERnet:PRObe?
-    - BUS:B<x>:ETHERnet:SOUrce:DIFFerential {CH<x>|MATH |REF<x>}
+    - BUS:B<x>:ETHERnet:SOUrce:DIFFerential {CH<x>|MATH|REF<x>}
     - BUS:B<x>:ETHERnet:SOUrce:DIFFerential?
     - BUS:B<x>:ETHERnet:SOUrce:DMINus {CH<x>|D<x>}
     - BUS:B<x>:ETHERnet:SOUrce:DMINus?
-    - BUS:B<x>:ETHERnet:SOUrce:DPLUs {CH<x>|D0|D1|D2|D3| D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15}
+    - BUS:B<x>:ETHERnet:SOUrce:DPLUs {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15}
     - BUS:B<x>:ETHERnet:SOUrce:DPLUs?
     - BUS:B<x>:ETHERnet:TYPe {ENET10BASET|ENET100BASETX}
     - BUS:B<x>:ETHERnet:TYPe?
@@ -190,7 +190,7 @@ Commands and Queries:
     - BUS:B<x>:SPI:SS:SOUrce?
     - BUS:B<x>:STATE {<NR1>|OFF|ON}
     - BUS:B<x>:STATE?
-    - BUS:B<x>:TYPe {I2C|SPI|CAN|RS232C|PARallel|USB|LIN|FLEXRay|AUDio|ETHERnet| MIL1553B|ARINC429A}
+    - BUS:B<x>:TYPe {I2C|SPI|CAN|RS232C|PARallel|USB|LIN|FLEXRay|AUDio|ETHERnet|MIL1553B|ARINC429A}
     - BUS:B<x>:TYPe?
     - BUS:B<x>:USB:BITRate {LOW|FULL|HIGH}
     - BUS:B<x>:USB:BITRate?
@@ -1255,7 +1255,7 @@ class BusBItemType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:TYPe {I2C|SPI|CAN|RS232C|PARallel|USB|LIN|FLEXRay|AUDio|ETHERnet| MIL1553B|ARINC429A}
+        - BUS:B<x>:TYPe {I2C|SPI|CAN|RS232C|PARallel|USB|LIN|FLEXRay|AUDio|ETHERnet|MIL1553B|ARINC429A}
         - BUS:B<x>:TYPe?
         ```
 
@@ -5071,7 +5071,7 @@ class BusBItemEthernetSourceDplus(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:ETHERnet:SOUrce:DPLUs {CH<x>|D0|D1|D2|D3| D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15}
+        - BUS:B<x>:ETHERnet:SOUrce:DPLUs {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15}
         - BUS:B<x>:ETHERnet:SOUrce:DPLUs?
         ```
 
@@ -5130,7 +5130,7 @@ class BusBItemEthernetSourceDifferential(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:ETHERnet:SOUrce:DIFFerential {CH<x>|MATH |REF<x>}
+        - BUS:B<x>:ETHERnet:SOUrce:DIFFerential {CH<x>|MATH|REF<x>}
         - BUS:B<x>:ETHERnet:SOUrce:DIFFerential?
         ```
 
@@ -5186,7 +5186,7 @@ class BusBItemEthernetSource(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:ETHERnet:SOUrce:DIFFerential {CH<x>|MATH |REF<x>}
+            - BUS:B<x>:ETHERnet:SOUrce:DIFFerential {CH<x>|MATH|REF<x>}
             - BUS:B<x>:ETHERnet:SOUrce:DIFFerential?
             ```
 
@@ -5247,7 +5247,7 @@ class BusBItemEthernetSource(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:ETHERnet:SOUrce:DPLUs {CH<x>|D0|D1|D2|D3| D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15}
+            - BUS:B<x>:ETHERnet:SOUrce:DPLUs {CH<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15}
             - BUS:B<x>:ETHERnet:SOUrce:DPLUs?
             ```
 
@@ -7760,7 +7760,7 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:TYPe {I2C|SPI|CAN|RS232C|PARallel|USB|LIN|FLEXRay|AUDio|ETHERnet| MIL1553B|ARINC429A}
+            - BUS:B<x>:TYPe {I2C|SPI|CAN|RS232C|PARallel|USB|LIN|FLEXRay|AUDio|ETHERnet|MIL1553B|ARINC429A}
             - BUS:B<x>:TYPe?
             ```
 

@@ -10,13 +10,13 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - DATa {INIT|SNAp}
-    - DATa:ENCdg {ASCIi| RIBinary| RPBinary| FPBinary| SRIbinary| SRPbinary| SFPbinary}
+    - DATa:ENCdg {ASCIi|RIBinary|RPBinary|FPBinary|SRIbinary|SRPbinary|SFPbinary}
     - DATa:ENCdg?
     - DATa:MODe {VECtor|PIXmap}
     - DATa:MODe?
     - DATa:RESample <NR1>
     - DATa:RESample?
-    - DATa:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>}
+    - DATa:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>}
     - DATa:SOUrce:AVAILable?
     - DATa:SOUrce?
     - DATa:STARt <NR1>
@@ -164,7 +164,7 @@ class DataSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DATa:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>}
+        - DATa:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>}
         - DATa:SOUrce?
         ```
 
@@ -278,7 +278,7 @@ class DataEncdg(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DATa:ENCdg {ASCIi| RIBinary| RPBinary| FPBinary| SRIbinary| SRPbinary| SFPbinary}
+        - DATa:ENCdg {ASCIi|RIBinary|RPBinary|FPBinary|SRIbinary|SRPbinary|SFPbinary}
         - DATa:ENCdg?
         ```
 
@@ -386,7 +386,7 @@ class Data(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DATa:ENCdg {ASCIi| RIBinary| RPBinary| FPBinary| SRIbinary| SRPbinary| SFPbinary}
+            - DATa:ENCdg {ASCIi|RIBinary|RPBinary|FPBinary|SRIbinary|SRPbinary|SFPbinary}
             - DATa:ENCdg?
             ```
 
@@ -502,7 +502,7 @@ class Data(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DATa:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>}
+            - DATa:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>}
             - DATa:SOUrce?
             ```
 

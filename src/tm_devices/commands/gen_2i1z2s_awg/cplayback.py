@@ -17,10 +17,13 @@ Commands and Queries:
     - CPLayback:CLISt:SIGNal:DELete {ALL|signal_name}
     - CPLayback:CLISt:SIGNal:SCOMpile <signal_name>,{OFF|ON|1|0}
     - CPLayback:CLISt:SIGNal:SCOMpile?
-    - CPLayback:CLISt:SIGNal:WAVeform:FOFFset <signal_name>,<ALL|NR1>,<NRf>? <signal_name>,<NR1>
+    - CPLayback:CLISt:SIGNal:WAVeform:FOFFset <signal_name>,<ALL|NR1>,<NRf>
+    - CPLayback:CLISt:SIGNal:WAVeform:FOFFset? <signal_name>,<NR1>
     - CPLayback:CLISt:SIGNal:WAVeform:NAME? <signal_name>,<NR1>
-    - CPLayback:CLISt:SIGNal:WAVeform:OTIMe <signal_name>,<ALL|<NR1>,<NRf>? <signal_name>,<NR1>
-    - CPLayback:CLISt:SIGNal:WAVeform:SRATe <signal_name>,<ALL|NR1>,<NRf>? <signal_name>,<NR1>
+    - CPLayback:CLISt:SIGNal:WAVeform:OTIMe <signal_name>,<ALL|<NR1>,<NRf>
+    - CPLayback:CLISt:SIGNal:WAVeform:OTIMe? <signal_name>,<NR1>
+    - CPLayback:CLISt:SIGNal:WAVeform:SRATe <signal_name>,<ALL|NR1>,<NRf>
+    - CPLayback:CLISt:SIGNal:WAVeform:SRATe? <signal_name>,<NR1>
     - CPLayback:CLISt:SIGNal:WCOunt? <signal_name>
     - CPLayback:CLISt:SIZE?
     - CPLayback:COMPile
@@ -361,7 +364,7 @@ class CplaybackClistSignalWcount(SCPICmdReadWithArguments):
     """
 
 
-class CplaybackClistSignalWaveformSrate(SCPICmdWrite):
+class CplaybackClistSignalWaveformSrate(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``CPLayback:CLISt:SIGNal:WAVeform:SRATe`` command.
 
     Description:
@@ -369,17 +372,23 @@ class CplaybackClistSignalWaveformSrate(SCPICmdWrite):
           the Captured Signal List.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the
+          ``CPLayback:CLISt:SIGNal:WAVeform:SRATe? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``CPLayback:CLISt:SIGNal:WAVeform:SRATe? argument`` query and raise an AssertionError if
+          the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``CPLayback:CLISt:SIGNal:WAVeform:SRATe value`` command.
 
     SCPI Syntax:
         ```
-        - CPLayback:CLISt:SIGNal:WAVeform:SRATe <signal_name>,<ALL|NR1>,<NRf>? <signal_name>,<NR1>
+        - CPLayback:CLISt:SIGNal:WAVeform:SRATe <signal_name>,<ALL|NR1>,<NRf>
+        - CPLayback:CLISt:SIGNal:WAVeform:SRATe? <signal_name>,<NR1>
         ```
     """
 
 
-class CplaybackClistSignalWaveformOtime(SCPICmdWrite):
+class CplaybackClistSignalWaveformOtime(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``CPLayback:CLISt:SIGNal:WAVeform:OTIMe`` command.
 
     Description:
@@ -387,12 +396,18 @@ class CplaybackClistSignalWaveformOtime(SCPICmdWrite):
           signal in the Captured Signal List.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the
+          ``CPLayback:CLISt:SIGNal:WAVeform:OTIMe? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``CPLayback:CLISt:SIGNal:WAVeform:OTIMe? argument`` query and raise an AssertionError if
+          the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``CPLayback:CLISt:SIGNal:WAVeform:OTIMe value`` command.
 
     SCPI Syntax:
         ```
-        - CPLayback:CLISt:SIGNal:WAVeform:OTIMe <signal_name>,<ALL|<NR1>,<NRf>? <signal_name>,<NR1>
+        - CPLayback:CLISt:SIGNal:WAVeform:OTIMe <signal_name>,<ALL|<NR1>,<NRf>
+        - CPLayback:CLISt:SIGNal:WAVeform:OTIMe? <signal_name>,<NR1>
         ```
     """
 
@@ -418,7 +433,7 @@ class CplaybackClistSignalWaveformName(SCPICmdReadWithArguments):
     """
 
 
-class CplaybackClistSignalWaveformFoffset(SCPICmdWrite):
+class CplaybackClistSignalWaveformFoffset(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``CPLayback:CLISt:SIGNal:WAVeform:FOFFset`` command.
 
     Description:
@@ -426,12 +441,18 @@ class CplaybackClistSignalWaveformFoffset(SCPICmdWrite):
           specified signal in the Captured Signal List.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the
+          ``CPLayback:CLISt:SIGNal:WAVeform:FOFFset? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``CPLayback:CLISt:SIGNal:WAVeform:FOFFset? argument`` query and raise an AssertionError if
+          the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``CPLayback:CLISt:SIGNal:WAVeform:FOFFset value`` command.
 
     SCPI Syntax:
         ```
-        - CPLayback:CLISt:SIGNal:WAVeform:FOFFset <signal_name>,<ALL|NR1>,<NRf>? <signal_name>,<NR1>
+        - CPLayback:CLISt:SIGNal:WAVeform:FOFFset <signal_name>,<ALL|NR1>,<NRf>
+        - CPLayback:CLISt:SIGNal:WAVeform:FOFFset? <signal_name>,<NR1>
         ```
     """
 
@@ -467,14 +488,20 @@ class CplaybackClistSignalWaveform(SCPICmdRead):
               the specified signal in the Captured Signal List.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``CPLayback:CLISt:SIGNal:WAVeform:FOFFset? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``CPLayback:CLISt:SIGNal:WAVeform:FOFFset? argument`` query and raise an
+              AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``CPLayback:CLISt:SIGNal:WAVeform:FOFFset value`` command.
 
         SCPI Syntax:
             ```
-            - CPLayback:CLISt:SIGNal:WAVeform:FOFFset <signal_name>,<ALL|NR1>,<NRf>? <signal_name>,<NR1>
+            - CPLayback:CLISt:SIGNal:WAVeform:FOFFset <signal_name>,<ALL|NR1>,<NRf>
+            - CPLayback:CLISt:SIGNal:WAVeform:FOFFset? <signal_name>,<NR1>
             ```
-        """  # noqa: E501
+        """
         return self._foffset
 
     @property
@@ -508,14 +535,20 @@ class CplaybackClistSignalWaveform(SCPICmdRead):
               signal in the Captured Signal List.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``CPLayback:CLISt:SIGNal:WAVeform:OTIMe? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``CPLayback:CLISt:SIGNal:WAVeform:OTIMe? argument`` query and raise an AssertionError
+              if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``CPLayback:CLISt:SIGNal:WAVeform:OTIMe value`` command.
 
         SCPI Syntax:
             ```
-            - CPLayback:CLISt:SIGNal:WAVeform:OTIMe <signal_name>,<ALL|<NR1>,<NRf>? <signal_name>,<NR1>
+            - CPLayback:CLISt:SIGNal:WAVeform:OTIMe <signal_name>,<ALL|<NR1>,<NRf>
+            - CPLayback:CLISt:SIGNal:WAVeform:OTIMe? <signal_name>,<NR1>
             ```
-        """  # noqa: E501
+        """
         return self._otime
 
     @property
@@ -527,14 +560,20 @@ class CplaybackClistSignalWaveform(SCPICmdRead):
               signal in the Captured Signal List.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the
+              ``CPLayback:CLISt:SIGNal:WAVeform:SRATe? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``CPLayback:CLISt:SIGNal:WAVeform:SRATe? argument`` query and raise an AssertionError
+              if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``CPLayback:CLISt:SIGNal:WAVeform:SRATe value`` command.
 
         SCPI Syntax:
             ```
-            - CPLayback:CLISt:SIGNal:WAVeform:SRATe <signal_name>,<ALL|NR1>,<NRf>? <signal_name>,<NR1>
+            - CPLayback:CLISt:SIGNal:WAVeform:SRATe <signal_name>,<ALL|NR1>,<NRf>
+            - CPLayback:CLISt:SIGNal:WAVeform:SRATe? <signal_name>,<NR1>
             ```
-        """  # noqa: E501
+        """
         return self._srate
 
 

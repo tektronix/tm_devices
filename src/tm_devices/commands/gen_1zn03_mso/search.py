@@ -29,7 +29,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:SIZe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType {ACKMISS|BITSTUFFing|FORMERRor |ANYERRor}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType {ACKMISS|BITSTUFFing|FORMERRor|ANYERRor}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FD:BRSBit {ONE|ZERo|NOCARE}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:FD:BRSBit?
@@ -57,7 +57,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:DATa:HIVALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:DATa:HIVALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:DATa:QUALifier {EQual|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan| INrange|OUTrange}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:DATa:QUALifier {EQual|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan|INrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:DATa:QUALifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:DATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:DATa:SIZe?
@@ -83,19 +83,19 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:ERRType?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:HIVALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:HIVALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:QUALifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:VALue <Qstring>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:HIVALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:HIVALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:QUALifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:VALue <Qstring>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:HIVALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:HIVALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:QUALifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:VALue <Qstring>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:VALue?
@@ -103,7 +103,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:INVERTNIBble:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus:VALue <Qstring>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:STATus:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:QUALifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:HIVALue?
@@ -111,13 +111,13 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:TICKs:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:HIVALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:HIVALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQualINrange|OUTrange}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQualINrange|OUTrange}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:QUALifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:VALue <Qstring>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:IDentifier:VALue <Qstring>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:IDentifier:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce {B0|B1|B2|B3|B4|B5|B6|B7|B8|B9|B10| B11|B12|B13|B14|B15|B16}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce {B0|B1|B2|B3|B4|B5|B6|B7|B8|B9|B10|B11|B12|B13|B14|B15|B16}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPI:CONDition {DATA|SS|STARTofframe}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPI:CONDition?
@@ -129,7 +129,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPI:SOURCETYpe?
     - SEARCH:SEARCH<x>:TRIGger:A:EDGE:SLOpe {RISe|FALL|EITher}
     - SEARCH:SEARCH<x>:TRIGger:A:EDGE:SLOpe?
-    - SEARCH:SEARCH<x>:TRIGger:A:EDGE:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+    - SEARCH:SEARCH<x>:TRIGger:A:EDGE:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
     - SEARCH:SEARCH<x>:TRIGger:A:EDGE:SOUrce?
     - SEARCH:SEARCH<x>:TRIGger:A:EDGE:THReshold <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:EDGE:THReshold?
@@ -139,7 +139,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:DELTatime?
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:FUNCtion {AND|NANd|NOR|OR}
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:FUNCtion?
-    - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce {CH<x>| DCH<x>_D<x>| REF<x>_D<x>}
+    - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce {CH<x>|DCH<x>_D<x>|REF<x>_D<x>}
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce?
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:LEVel:CH<x> <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:LEVel:CH<x>?
@@ -169,11 +169,11 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:LOWLimit?
     - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:POLarity {POSitive|NEGative}
     - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:POLarity?
-    - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+    - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
     - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:SOUrce?
     - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:THReshold <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:THReshold?
-    - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:WHEn {LESSthan|MOREthan| EQual|UNEQual|WIThin|OUTside}
+    - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:WHEn {LESSthan|MOREthan|EQual|UNEQual|WIThin|OUTside}
     - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:WHEn?
     - SEARCH:SEARCH<x>:TRIGger:A:RUNT:LOGICQUALification {ON|OFF}
     - SEARCH:SEARCH<x>:TRIGger:A:RUNT:LOGICQUALification?
@@ -190,7 +190,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:RUNT:WIDth?
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:EDGE {FALL|RISe}
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:EDGE?
-    - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+    - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce?
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:THReshold <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:THReshold?
@@ -220,13 +220,13 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:LOGICQUALification?
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:POLarity {STAYSHigh|STAYSLow|EITher}
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:POLarity?
-    - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+    - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:THReshold <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:THReshold?
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:TIMe <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:TIMe?
-    - SEARCH:SEARCH<x>:TRIGger:A:TYPe {EDGE| RUNT| TRANsition| PULSEWidth| TIMEOut| LOGIc| SETHold| Bus}
+    - SEARCH:SEARCH<x>:TRIGger:A:TYPe {EDGE|RUNT|TRANsition|PULSEWidth|TIMEOut|LOGIc|SETHold|Bus}
     - SEARCH:SEARCH<x>:TRIGger:A:TYPe?
     - SEARCH:SELected SEARCH1
     - SEARCH:SELected?
@@ -289,7 +289,7 @@ class SearchSearchItemTriggerAType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:TYPe {EDGE| RUNT| TRANsition| PULSEWidth| TIMEOut| LOGIc| SETHold| Bus}
+        - SEARCH:SEARCH<x>:TRIGger:A:TYPe {EDGE|RUNT|TRANsition|PULSEWidth|TIMEOut|LOGIc|SETHold|Bus}
         - SEARCH:SEARCH<x>:TRIGger:A:TYPe?
         ```
 
@@ -389,7 +389,7 @@ class SearchSearchItemTriggerATimeoutSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+        - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?
         ```
 
@@ -402,7 +402,7 @@ class SearchSearchItemTriggerATimeoutSource(SCPICmdWrite, SCPICmdRead):
         - ``REF<x>`` specifies the reference waveform as the search source, where <x> = ≥1.
         - ``REF<x>_D<x>`` specifies a digital reference waveform as the source waveform the
           specified search.
-    """  # noqa: E501
+    """
 
 
 class SearchSearchItemTriggerATimeoutPolarity(SCPICmdWrite, SCPICmdRead):
@@ -569,7 +569,7 @@ class SearchSearchItemTriggerATimeout(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+            - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?
             ```
 
@@ -1364,7 +1364,7 @@ class SearchSearchItemTriggerASetholdClockSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+        - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce?
         ```
 
@@ -1483,7 +1483,7 @@ class SearchSearchItemTriggerASetholdClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+            - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce?
             ```
 
@@ -2171,7 +2171,7 @@ class SearchSearchItemTriggerAPulsewidthWhen(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:WHEn {LESSthan|MOREthan| EQual|UNEQual|WIThin|OUTside}
+        - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:WHEn {LESSthan|MOREthan|EQual|UNEQual|WIThin|OUTside}
         - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:WHEn?
         ```
 
@@ -2237,7 +2237,7 @@ class SearchSearchItemTriggerAPulsewidthSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+        - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:SOUrce?
         ```
 
@@ -2541,7 +2541,7 @@ class SearchSearchItemTriggerAPulsewidth(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+            - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:SOUrce?
             ```
 
@@ -2604,7 +2604,7 @@ class SearchSearchItemTriggerAPulsewidth(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:WHEn {LESSthan|MOREthan| EQual|UNEQual|WIThin|OUTside}
+            - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:WHEn {LESSthan|MOREthan|EQual|UNEQual|WIThin|OUTside}
             - SEARCH:SEARCH<x>:TRIGger:A:PULSEWidth:WHEn?
             ```
 
@@ -3291,7 +3291,7 @@ class SearchSearchItemTriggerALogicInputClockSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce {CH<x>| DCH<x>_D<x>| REF<x>_D<x>}
+        - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce {CH<x>|DCH<x>_D<x>|REF<x>_D<x>}
         - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce?
         ```
 
@@ -3349,7 +3349,7 @@ class SearchSearchItemTriggerALogicInputClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce {CH<x>| DCH<x>_D<x>| REF<x>_D<x>}
+            - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce {CH<x>|DCH<x>_D<x>|REF<x>_D<x>}
             - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPUT:CLOCK:SOUrce?
             ```
 
@@ -3858,7 +3858,7 @@ class SearchSearchItemTriggerAEdgeSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:EDGE:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+        - SEARCH:SEARCH<x>:TRIGger:A:EDGE:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - SEARCH:SEARCH<x>:TRIGger:A:EDGE:SOUrce?
         ```
 
@@ -3977,7 +3977,7 @@ class SearchSearchItemTriggerAEdge(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:EDGE:SOUrce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| REF<x>_D<x>}
+            - SEARCH:SEARCH<x>:TRIGger:A:EDGE:SOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - SEARCH:SEARCH<x>:TRIGger:A:EDGE:SOUrce?
             ```
 
@@ -3993,7 +3993,7 @@ class SearchSearchItemTriggerAEdge(SCPICmdRead):
               number is specified by x.
             - ``REF<x>_D<x>`` specifies a digital reference waveform as the source waveform for the
               specified search.
-        """  # noqa: E501
+        """
         return self._source
 
     @property
@@ -4341,7 +4341,7 @@ class SearchSearchItemTriggerABusSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce {B0|B1|B2|B3|B4|B5|B6|B7|B8|B9|B10| B11|B12|B13|B14|B15|B16}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce {B0|B1|B2|B3|B4|B5|B6|B7|B8|B9|B10|B11|B12|B13|B14|B15|B16}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce?
         ```
 
@@ -4475,7 +4475,7 @@ class SearchSearchItemTriggerABusSentSlowDataQualifier(SCPICmdWrite, SCPICmdRead
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQualINrange|OUTrange}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQualINrange|OUTrange}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:QUALifier?
         ```
 
@@ -4598,7 +4598,7 @@ class SearchSearchItemTriggerABusSentSlowData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQualINrange|OUTrange}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQualINrange|OUTrange}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:SLOW:DATA:QUALifier?
             ```
 
@@ -4859,7 +4859,7 @@ class SearchSearchItemTriggerABusSentPauseQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:QUALifier?
         ```
 
@@ -4917,7 +4917,7 @@ class SearchSearchItemTriggerABusSentPause(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:PAUSE:QUALifier?
             ```
 
@@ -5154,7 +5154,7 @@ class SearchSearchItemTriggerABusSentFastCounterQualifier(SCPICmdWrite, SCPICmdR
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:QUALifier?
         ```
 
@@ -5278,7 +5278,7 @@ class SearchSearchItemTriggerABusSentFastCounter(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:COUNTer:QUALifier?
             ```
 
@@ -5371,7 +5371,7 @@ class SearchSearchItemTriggerABusSentFastChan2bQualifier(SCPICmdWrite, SCPICmdRe
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:QUALifier?
         ```
 
@@ -5494,7 +5494,7 @@ class SearchSearchItemTriggerABusSentFastChan2b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN2B:QUALifier?
             ```
 
@@ -5587,7 +5587,7 @@ class SearchSearchItemTriggerABusSentFastChan1aQualifier(SCPICmdWrite, SCPICmdRe
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:QUALifier?
         ```
 
@@ -5710,7 +5710,7 @@ class SearchSearchItemTriggerABusSentFastChan1a(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SENT:FAST:CHAN1A:QUALifier?
             ```
 
@@ -6697,19 +6697,19 @@ class SearchSearchItemTriggerABusLinDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:DATa:QUALifier {EQual|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan| INrange|OUTrange}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:DATa:QUALifier {EQual|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan|INrange|OUTrange}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:DATa:QUALifier?
         ```
 
     Info:
-        - ``EQual`` Arguments are the following available data qualifiers.
-        - ``LESSEQual`` Arguments are the following available data qualifiers.
-        - ``MOREEQual`` Arguments are the following available data qualifiers.
-        - ``UNEQual`` Arguments are the following available data qualifiers.
-        - ``LESSthan`` Arguments are the following available data qualifiers.
-        - ``MOREthan`` Arguments are the following available data qualifiers.
-        - ``INrange`` Arguments are the following available data qualifiers.
-        - ``OUTrange`` Arguments are the following available data qualifiers.
+        - ``EQual`` sets the data qualifier to equal.
+        - ``LESSEQual`` sets the data qualifier to less equal.
+        - ``MOREEQual`` sets the data qualifier to more equal.
+        - ``UNEQual`` sets the data qualifier to unequal.
+        - ``LESSthan`` sets the data qualifier to less than.
+        - ``MOREthan`` sets the data qualifier to more than.
+        - ``INrange`` sets the data qualifier to in range.
+        - ``OUTrange`` sets the data qualifier out of range.
     """  # noqa: E501
 
 
@@ -6823,19 +6823,19 @@ class SearchSearchItemTriggerABusLinData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:DATa:QUALifier {EQual|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan| INrange|OUTrange}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:DATa:QUALifier {EQual|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan|INrange|OUTrange}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:DATa:QUALifier?
             ```
 
         Info:
-            - ``EQual`` Arguments are the following available data qualifiers.
-            - ``LESSEQual`` Arguments are the following available data qualifiers.
-            - ``MOREEQual`` Arguments are the following available data qualifiers.
-            - ``UNEQual`` Arguments are the following available data qualifiers.
-            - ``LESSthan`` Arguments are the following available data qualifiers.
-            - ``MOREthan`` Arguments are the following available data qualifiers.
-            - ``INrange`` Arguments are the following available data qualifiers.
-            - ``OUTrange`` Arguments are the following available data qualifiers.
+            - ``EQual`` sets the data qualifier to equal.
+            - ``LESSEQual`` sets the data qualifier to less equal.
+            - ``MOREEQual`` sets the data qualifier to more equal.
+            - ``UNEQual`` sets the data qualifier to unequal.
+            - ``LESSthan`` sets the data qualifier to less than.
+            - ``MOREthan`` sets the data qualifier to more than.
+            - ``INrange`` sets the data qualifier to in range.
+            - ``OUTrange`` sets the data qualifier out of range.
         """  # noqa: E501
         return self._qualifier
 
@@ -7869,7 +7869,7 @@ class SearchSearchItemTriggerABusCanErrtype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType {ACKMISS|BITSTUFFing|FORMERRor |ANYERRor}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType {ACKMISS|BITSTUFFing|FORMERRor|ANYERRor}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType?
         ```
 
@@ -8246,14 +8246,13 @@ class SearchSearchItemTriggerABusCanCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``SOF`` Arguments specify the following CAN bus trigger conditions.
-        - ``FRAMEtype`` Arguments specify the following CAN bus trigger conditions.
-        - ``IDentifier`` Arguments specify the following CAN bus trigger conditions.
-        - ``DATa`` Arguments specify the following CAN bus trigger conditions.
-        - ``IDANDDATA`` Arguments specify the following CAN bus trigger conditions.
-        - ``EOF`` Arguments specify the following CAN bus trigger conditions.
-        - ``ERRor`` Arguments specify the following CAN bus trigger conditions.
-        - ``FDBITS`` Arguments specify the following CAN bus trigger conditions.
+        - ``SOF`` specifies the search condition for a CAN bus as start of frame.
+        - ``FRAMEtype`` specifies the search condition for a CAN bus as frame type.
+        - ``IDentifier`` specifies the search condition for a CAN bus as identifier.
+        - ``IDANDDATA`` specifies the search condition for a CAN bus as ID and data.
+        - ``EOF`` specifies the search condition for a CAN bus as end of frame.
+        - ``ERRor`` specifies the search condition for a CAN bus as error.
+        - ``FDBITS`` specifies the search condition for a CAN bus as FD bits.
     """  # noqa: E501
 
 
@@ -8313,14 +8312,13 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
             ```
 
         Info:
-            - ``SOF`` Arguments specify the following CAN bus trigger conditions.
-            - ``FRAMEtype`` Arguments specify the following CAN bus trigger conditions.
-            - ``IDentifier`` Arguments specify the following CAN bus trigger conditions.
-            - ``DATa`` Arguments specify the following CAN bus trigger conditions.
-            - ``IDANDDATA`` Arguments specify the following CAN bus trigger conditions.
-            - ``EOF`` Arguments specify the following CAN bus trigger conditions.
-            - ``ERRor`` Arguments specify the following CAN bus trigger conditions.
-            - ``FDBITS`` Arguments specify the following CAN bus trigger conditions.
+            - ``SOF`` specifies the search condition for a CAN bus as start of frame.
+            - ``FRAMEtype`` specifies the search condition for a CAN bus as frame type.
+            - ``IDentifier`` specifies the search condition for a CAN bus as identifier.
+            - ``IDANDDATA`` specifies the search condition for a CAN bus as ID and data.
+            - ``EOF`` specifies the search condition for a CAN bus as end of frame.
+            - ``ERRor`` specifies the search condition for a CAN bus as error.
+            - ``FDBITS`` specifies the search condition for a CAN bus as FD bits.
         """  # noqa: E501
         return self._condition
 
@@ -8363,7 +8361,7 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType {ACKMISS|BITSTUFFing|FORMERRor |ANYERRor}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType {ACKMISS|BITSTUFFing|FORMERRor|ANYERRor}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:ERRType?
             ```
 
@@ -8604,7 +8602,7 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce {B0|B1|B2|B3|B4|B5|B6|B7|B8|B9|B10| B11|B12|B13|B14|B15|B16}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce {B0|B1|B2|B3|B4|B5|B6|B7|B8|B9|B10|B11|B12|B13|B14|B15|B16}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce?
             ```
 
@@ -8899,7 +8897,7 @@ class SearchSearchItemTriggerA(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:TYPe {EDGE| RUNT| TRANsition| PULSEWidth| TIMEOut| LOGIc| SETHold| Bus}
+            - SEARCH:SEARCH<x>:TRIGger:A:TYPe {EDGE|RUNT|TRANsition|PULSEWidth|TIMEOut|LOGIc|SETHold|Bus}
             - SEARCH:SEARCH<x>:TRIGger:A:TYPe?
             ```
 

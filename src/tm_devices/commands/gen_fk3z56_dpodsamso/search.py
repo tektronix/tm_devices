@@ -40,7 +40,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:IDentifier:MODe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:IDentifier:VALue <string>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:IDentifier:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:CONDition {STARTFRAME|MACADDRess|MACTYPE|IPV4Header|TCPHeader|DATa |ENDPACKET|FCSError|QTAG|TCPDATA}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:CONDition {STARTFRAME|MACADDRess|MACTYPE|IPV4Header|TCPHeader|DATa|ENDPACKET|FCSError|QTAG|TCPDATA}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:FORMat {BINary|HEX}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:FORMat?
@@ -86,7 +86,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader:SOUrceport:FORMat?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader:SOUrceport:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader:SOUrceport:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CONDition {SOF|FRAMEtype|IDentifier|CYCLEcount|HEADer|DATA|IDANDDATA| EOF|ERRor}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CONDition {SOF|FRAMEtype|IDentifier|CYCLEcount|HEADer|DATA|IDANDDATA|EOF|ERRor}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:FORMat {BINary|HEX}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:FORMat?
@@ -106,7 +106,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:EOFTYPE {ALL|STATIC|DYNAMIC}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:EOFTYPE?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:ERRTYPE {CRCHEADer|CRCTRAILer|NULLFRSTATIC|NULLFRDYNAMIC |SYNCFRAME|STARTUPNOSYNC}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:ERRTYPE {CRCHEADer|CRCTRAILer|NULLFRSTATIC|NULLFRDYNAMIC|SYNCFRAME|STARTUPNOSYNC}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:ERRTYPE?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:FRAMEType {NORMal|PAYload|NULL|SYNC|STARTup}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:FRAMEType?
@@ -162,7 +162,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:IDentifier:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:FORMat {BINary|HEX}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:FORMat?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:QUALifier {LESSthan|MOREthan|EQual |UNEQual|LESSEQual|MOREEQual}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:QUALifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:VALue?
@@ -222,7 +222,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:DTLong {ANY|BLANK|EMBEDded|NULL|RAW10|RAW12|RAW14|RAW<x>|RGB444|RGB555|RGB565|RGB666|RGB888|USER8B1|USER8B2|USER8B3|USER8B4|USER8B5|USER8B6|USER8B7|USER8B8|YUV420B10|YUV420C10|YUV420B8|YUV420C8|YUV420L8|YUV422B10|YUV422B8}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:DTLong?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:DTShort {ANY|FRAMEEnd|FRAMEStart|GSP1|GSP2|GSP3|GSP4|GSP5| GSP6|GSP7|GSP8|LINEEnd|LINEStart}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:DTShort {ANY|FRAMEEnd|FRAMEStart|GSP1|GSP2|GSP3|GSP4|GSP5|GSP6|GSP7|GSP8|LINEEnd|LINEStart}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:DTShort?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:ERRor {ANY|CHECKsumerror|ECCError}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:ERRor?
@@ -276,15 +276,15 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:YUV:Y:QUAlifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:YUV:Y:VALue {<NR3>|DONTCare}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:YUV:Y:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:ACKERRreport {ANY|CHKSUMError|CONTention|DSINR|DSIViolation|DSIVC| ECCMBError|ECCSBError|EOTSync|ESCMODEError|FCE|HSRTError| INVALID|LPTSError|SOTError|SOTSync}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:ACKERRreport {ANY|CHKSUMError|CONTention|DSINR|DSIViolation|DSIVC|ECCMBError|ECCSBError|EOTSync|ESCMODEError|FCE|HSRTError|INVALID|LPTSError|SOTError|SOTSync}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:ACKERRreport?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:CONDition {ESCMode|BTA|EOT|ERROR|LONG|SHORT|SOT|STOP|WA}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DIRection {FORWard|REVErse|ANY}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DIRection?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTLong {ANY|BLANK|DCSLONGRead|DCSLONGWrite|GLONGRead|GLONGWrite| LPS666|NULL|PPS565|PPS666|PPS888|PPS101010|PPS121212|YCBCR12|YCBCR16|YCBCR20|YCBCR24}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTLong {ANY|BLANK|DCSLONGRead|DCSLONGWrite|GLONGRead|GLONGWrite|LPS666|NULL|PPS565|PPS666|PPS888|PPS101010|PPS121212|YCBCR12|YCBCR16|YCBCR20|YCBCR24}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTLong?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTShort {ACKErrorreport|ANY|COLOROFF|COLORON|DCSR|DCSSRR1| DCSRR2|DCSSW<x>|EOT|GR<x>|GSRR<x>| GSW<x>|HSYNCEnd|HSYNCStart|MAXRETsize|SHUTDown| TURNON|VSYNCEnd|VSYNCStart}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTShort {ACKErrorreport|ANY|COLOROFF|COLORON|DCSR|DCSSRR1|DCSRR2|DCSSW<x>|EOT|GR<x>|GSRR<x>|GSW<x>|HSYNCEnd|HSYNCStart|MAXRETsize|SHUTDown|TURNON|VSYNCEnd|VSYNCStart}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTShort?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:ERRor {ANY|CHECKsumerror|ECCError}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:ERRor?
@@ -378,19 +378,19 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C:DATa:SIZe?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C:DATa:VALue <string>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C:DATa:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE { SYNC | INVSYNC | BLOCKtype | PATtern }
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType { NONe | X1E | X2D | X33 | X66 | X55 | X78 | X4B | X87 | X99 | XB4 | XCC | XD2 | XE1 | XFF }
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE { SYNC|INVSYNC|BLOCKtype|PATtern }
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType { NONe|X1E|X2D|X33|X66|X55|X78|X4B|X87|X99|XB4|XCC|XD2|XE1|XFF }
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat { Binary | HEX }
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat { Binary|HEX }
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:SYNC <string>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:SYNC?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:VALue <string>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat { Binary | HEX }
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat { Binary|HEX }
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:CONDition { BLOCK | BLOCK1THEN2 }
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:CONDition { BLOCK|BLOCK1THEN2 }
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CHARacter:CHAR <string>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CHARacter:CHAR?
@@ -399,6 +399,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CHARacter:SYMbol:PLUS <string>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CHARacter:SYMbol:PLUS?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition {ANYControl|CHARacter|ERROR| PATtern}?
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:DISParity {NEGAtive|POSITIVe|EITher}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:DISParity?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:CHAR {<NR1>|ON|OFF}
@@ -413,7 +414,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:PATtern:SYMbol:MINus<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:PATtern:SYMbol:PLUS<x> <string>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:PATtern:SYMbol:PLUS<x>?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce {B0|B1|B2|B3|B4|B5|B6|B7|B8|B9|B10| B11|B12|B13|B14|B15|B16}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce {B0|B1|B2|B3|B4|B5|B6|B7|B8|B9|B10|B11|B12|B13|B14|B15|B16}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPI:CONDition {DATA|SS}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:SPI:CONDition?
@@ -435,7 +436,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter:SYMbol:MINus?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter:SYMbol:PLUS <string>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter:SYMbol:PLUS?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition {DATAPacket|EOP|ERROR|HANDSHAKEPacket|RESET|RESUME| SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition {DATAPacket|EOP|ERROR|HANDSHAKEPacket|RESET|RESUME|SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:FORMat {BINary|HEX|SYMBolic}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:FORMat?
@@ -471,10 +472,10 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:HANDSHAKEType?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:LONGORDERedset {EIE|TS<x>}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:LONGORDERedset?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets {LMP | TP | DP | ITP}
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:LMPPACKets {ANY | LMPLink | LMPUtwo | LMPDevice | LMPConfig | LMPResponse}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets {LMP|TP|DP|ITP}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:LMPPACKets {ANY|LMPLink|LMPUtwo|LMPDevice|LMPConfig|LMPResponse}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:LMPPACKets?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:TPPACKets {ANY | TPACK | TPNRDY | TPERDY | TPStatus | TPSTall | TPNotify | TPPing | TPResponse}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:TPPACKets {ANY|TPACK|TPNRDY|TPERDY|TPStatus|TPSTall|TPNotify|TPPing|TPResponse}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:TPPACKets?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PATtern:CHAR<x> <string>
@@ -511,7 +512,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SPLIT:SE:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:TOKENType {ANY|IN|OUT|SETUP|SOF}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:TOKENType?
-    - SEARCH:SEARCH<x>:TRIGger:A:DDRMemory:AUTOBitrate {AUTO|CUSTom|DDR200|DDR266|DDR333|DDR370| DDR400|DDR533|DDR667|DDR800|DDR1066|DDR1200|DDR1333|DDR1466| DDR1600|DDR1866|DDR2133|DDR2400|DDR2666|DDR3200|DDR4000| DDR4800|DDR5000|DDR5500}
+    - SEARCH:SEARCH<x>:TRIGger:A:DDRMemory:AUTOBitrate {AUTO|CUSTom|DDR200|DDR266|DDR333|DDR370|DDR400|DDR533|DDR667|DDR800|DDR1066|DDR1200|DDR1333|DDR1466|DDR1600|DDR1866|DDR2133|DDR2400|DDR2666|DDR3200|DDR4000|DDR4800|DDR5000|DDR5500}
     - SEARCH:SEARCH<x>:TRIGger:A:DDRMemory:AUTOBitrate?
     - SEARCH:SEARCH<x>:TRIGger:A:DDRMemory:AUTOReflevel {AUTO|CUSTom}
     - SEARCH:SEARCH<x>:TRIGger:A:DDRMemory:AUTOReflevel?
@@ -677,7 +678,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:THReshold:LOW:REF<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:WHEn {FASTERthan|SLOWERthan}
     - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:WHEn?
-    - SEARCH:SEARCH<x>:TRIGger:A:TYPe {EDGE|RUNT|TRANsition|PATtern|GLItch|SETHold|UNDEFINED| WIDth|TIMEOut|WINdow|STATE|DDRRead|DDRWrite|DDRREADWrite}
+    - SEARCH:SEARCH<x>:TRIGger:A:TYPe {EDGE|RUNT|TRANsition|PATtern|GLItch|SETHold|UNDEFINED|WIDth|TIMEOut|WINdow|STATE|DDRRead|DDRWrite|DDRREADWrite}
     - SEARCH:SEARCH<x>:TRIGger:A:TYPe?
     - SEARCH:SEARCH<x>:TRIGger:A:WIDth:HIGHLimit <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:WIDth:HIGHLimit?
@@ -1856,7 +1857,7 @@ class SearchSearchItemTriggerAType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:TYPe {EDGE|RUNT|TRANsition|PATtern|GLItch|SETHold|UNDEFINED| WIDth|TIMEOut|WINdow|STATE|DDRRead|DDRWrite|DDRREADWrite}
+        - SEARCH:SEARCH<x>:TRIGger:A:TYPe {EDGE|RUNT|TRANsition|PATtern|GLItch|SETHold|UNDEFINED|WIDth|TIMEOut|WINdow|STATE|DDRRead|DDRWrite|DDRREADWrite}
         - SEARCH:SEARCH<x>:TRIGger:A:TYPe?
         ```
 
@@ -7776,7 +7777,7 @@ class SearchSearchItemTriggerADdrmemoryAutobitrate(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:DDRMemory:AUTOBitrate {AUTO|CUSTom|DDR200|DDR266|DDR333|DDR370| DDR400|DDR533|DDR667|DDR800|DDR1066|DDR1200|DDR1333|DDR1466| DDR1600|DDR1866|DDR2133|DDR2400|DDR2666|DDR3200|DDR4000| DDR4800|DDR5000|DDR5500}
+        - SEARCH:SEARCH<x>:TRIGger:A:DDRMemory:AUTOBitrate {AUTO|CUSTom|DDR200|DDR266|DDR333|DDR370|DDR400|DDR533|DDR667|DDR800|DDR1066|DDR1200|DDR1333|DDR1466|DDR1600|DDR1866|DDR2133|DDR2400|DDR2666|DDR3200|DDR4000|DDR4800|DDR5000|DDR5500}
         - SEARCH:SEARCH<x>:TRIGger:A:DDRMemory:AUTOBitrate?
         ```
 
@@ -7877,7 +7878,7 @@ class SearchSearchItemTriggerADdrmemory(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:DDRMemory:AUTOBitrate {AUTO|CUSTom|DDR200|DDR266|DDR333|DDR370| DDR400|DDR533|DDR667|DDR800|DDR1066|DDR1200|DDR1333|DDR1466| DDR1600|DDR1866|DDR2133|DDR2400|DDR2666|DDR3200|DDR4000| DDR4800|DDR5000|DDR5500}
+            - SEARCH:SEARCH<x>:TRIGger:A:DDRMemory:AUTOBitrate {AUTO|CUSTom|DDR200|DDR266|DDR333|DDR370|DDR400|DDR533|DDR667|DDR800|DDR1066|DDR1200|DDR1333|DDR1466|DDR1600|DDR1866|DDR2133|DDR2400|DDR2666|DDR3200|DDR4000|DDR4800|DDR5000|DDR5500}
             - SEARCH:SEARCH<x>:TRIGger:A:DDRMemory:AUTOBitrate?
             ```
 
@@ -9560,7 +9561,7 @@ class SearchSearchItemTriggerABusUsbPacketsTppackets(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:TPPACKets {ANY | TPACK | TPNRDY | TPERDY | TPStatus | TPSTall | TPNotify | TPPing | TPResponse}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:TPPACKets {ANY|TPACK|TPNRDY|TPERDY|TPStatus|TPSTall|TPNotify|TPPing|TPResponse}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:TPPACKets?
         ```
 
@@ -9595,7 +9596,7 @@ class SearchSearchItemTriggerABusUsbPacketsLmppackets(SCPICmdWrite, SCPICmdRead)
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:LMPPACKets {ANY | LMPLink | LMPUtwo | LMPDevice | LMPConfig | LMPResponse}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:LMPPACKets {ANY|LMPLink|LMPUtwo|LMPDevice|LMPConfig|LMPResponse}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:LMPPACKets?
         ```
 
@@ -9627,7 +9628,7 @@ class SearchSearchItemTriggerABusUsbPackets(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets {LMP | TP | DP | ITP}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets {LMP|TP|DP|ITP}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets?
         ```
 
@@ -9670,7 +9671,7 @@ class SearchSearchItemTriggerABusUsbPackets(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:LMPPACKets {ANY | LMPLink | LMPUtwo | LMPDevice | LMPConfig | LMPResponse}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:LMPPACKets {ANY|LMPLink|LMPUtwo|LMPDevice|LMPConfig|LMPResponse}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:LMPPACKets?
             ```
 
@@ -9703,7 +9704,7 @@ class SearchSearchItemTriggerABusUsbPackets(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:TPPACKets {ANY | TPACK | TPNRDY | TPERDY | TPStatus | TPSTall | TPNotify | TPPing | TPResponse}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:TPPACKets {ANY|TPACK|TPNRDY|TPERDY|TPStatus|TPSTall|TPNotify|TPPing|TPResponse}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:TPPACKets?
             ```
 
@@ -10679,7 +10680,7 @@ class SearchSearchItemTriggerABusUsbCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition {DATAPacket|EOP|ERROR|HANDSHAKEPacket|RESET|RESUME| SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition {DATAPacket|EOP|ERROR|HANDSHAKEPacket|RESET|RESUME|SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition?
         ```
 
@@ -11258,7 +11259,7 @@ class SearchSearchItemTriggerABusUsb(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition {DATAPacket|EOP|ERROR|HANDSHAKEPacket|RESET|RESUME| SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition {DATAPacket|EOP|ERROR|HANDSHAKEPacket|RESET|RESUME|SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CONDition?
             ```
 
@@ -11506,7 +11507,7 @@ class SearchSearchItemTriggerABusUsb(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets {LMP | TP | DP | ITP}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets {LMP|TP|DP|ITP}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets?
             ```
 
@@ -11992,7 +11993,7 @@ class SearchSearchItemTriggerABusSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce {B0|B1|B2|B3|B4|B5|B6|B7|B8|B9|B10| B11|B12|B13|B14|B15|B16}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce {B0|B1|B2|B3|B4|B5|B6|B7|B8|B9|B10|B11|B12|B13|B14|B15|B16}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce?
         ```
 
@@ -12450,7 +12451,7 @@ class SearchSearchItemTriggerABusS8b10bDisparity(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class SearchSearchItemTriggerABusS8b10bCondition(SCPICmdWrite):
+class SearchSearchItemTriggerABusS8b10bCondition(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition`` command.
 
     Description:
@@ -12460,12 +12461,18 @@ class SearchSearchItemTriggerABusS8b10bCondition(SCPICmdWrite):
           search commands (character, error, and pattern).
 
     Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition?`` query and raise an AssertionError if
+          the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition value`` command.
 
     SCPI Syntax:
         ```
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition {ANYControl|CHARacter|ERROR| PATtern}?
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition?
         ```
 
     Info:
@@ -12779,12 +12786,18 @@ class SearchSearchItemTriggerABusS8b10b(SCPICmdRead):
               use the corresponding 8B10B search commands (character, error, and pattern).
 
         Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition?`` query and raise an AssertionError
+              if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition value`` command.
 
         SCPI Syntax:
             ```
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition {ANYControl|CHARacter|ERROR| PATtern}?
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition?
             ```
 
         Info:
@@ -12913,7 +12926,7 @@ class SearchSearchItemTriggerABusS64b66bCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:CONDition { BLOCK | BLOCK1THEN2 }
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:CONDition { BLOCK|BLOCK1THEN2 }
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:CONDition?
         ```
 
@@ -12940,7 +12953,7 @@ class SearchSearchItemTriggerABusS64b66bBlockonethentwoFormat(SCPICmdWrite, SCPI
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat { Binary | HEX }
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat { Binary|HEX }
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat?
         ```
 
@@ -12989,7 +13002,7 @@ class SearchSearchItemTriggerABusS64b66bBlockonethentwo(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat { Binary | HEX }
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat { Binary|HEX }
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat?
             ```
 
@@ -13071,7 +13084,7 @@ class SearchSearchItemTriggerABusS64b66bBlockonePatternFormat(SCPICmdWrite, SCPI
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat { Binary | HEX }
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat { Binary|HEX }
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat?
         ```
 
@@ -13129,7 +13142,7 @@ class SearchSearchItemTriggerABusS64b66bBlockonePattern(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat { Binary | HEX }
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat { Binary|HEX }
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat?
             ```
 
@@ -13212,7 +13225,7 @@ class SearchSearchItemTriggerABusS64b66bBlockoneBlocktype(SCPICmdWrite, SCPICmdR
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType { NONe | X1E | X2D | X33 | X66 | X55 | X78 | X4B | X87 | X99 | XB4 | XCC | XD2 | XE1 | XFF }
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType { NONe|X1E|X2D|X33|X66|X55|X78|X4B|X87|X99|XB4|XCC|XD2|XE1|XFF }
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType?
         ```
 
@@ -13252,7 +13265,7 @@ class SearchSearchItemTriggerABusS64b66bBlockone(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE { SYNC | INVSYNC | BLOCKtype | PATtern }
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE { SYNC|INVSYNC|BLOCKtype|PATtern }
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE?
         ```
 
@@ -13295,7 +13308,7 @@ class SearchSearchItemTriggerABusS64b66bBlockone(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType { NONe | X1E | X2D | X33 | X66 | X55 | X78 | X4B | X87 | X99 | XB4 | XCC | XD2 | XE1 | XFF }
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType { NONe|X1E|X2D|X33|X66|X55|X78|X4B|X87|X99|XB4|XCC|XD2|XE1|XFF }
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType?
             ```
 
@@ -13387,7 +13400,7 @@ class SearchSearchItemTriggerABusS64b66b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE { SYNC | INVSYNC | BLOCKtype | PATtern }
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE { SYNC|INVSYNC|BLOCKtype|PATtern }
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE?
             ```
 
@@ -13402,7 +13415,7 @@ class SearchSearchItemTriggerABusS64b66b(SCPICmdRead):
               command.
             - ``.pattern``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern`` command
               tree.
-        """  # noqa: E501
+        """
         return self._blockone
 
     @property
@@ -13440,7 +13453,7 @@ class SearchSearchItemTriggerABusS64b66b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:CONDition { BLOCK | BLOCK1THEN2 }
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:CONDition { BLOCK|BLOCK1THEN2 }
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:CONDition?
             ```
 
@@ -16837,7 +16850,7 @@ class SearchSearchItemTriggerABusMipidsioneDtshort(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTShort {ACKErrorreport|ANY|COLOROFF|COLORON|DCSR|DCSSRR1| DCSRR2|DCSSW<x>|EOT|GR<x>|GSRR<x>| GSW<x>|HSYNCEnd|HSYNCStart|MAXRETsize|SHUTDown| TURNON|VSYNCEnd|VSYNCStart}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTShort {ACKErrorreport|ANY|COLOROFF|COLORON|DCSR|DCSSRR1|DCSRR2|DCSSW<x>|EOT|GR<x>|GSRR<x>|GSW<x>|HSYNCEnd|HSYNCStart|MAXRETsize|SHUTDown|TURNON|VSYNCEnd|VSYNCStart}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTShort?
         ```
 
@@ -16888,7 +16901,7 @@ class SearchSearchItemTriggerABusMipidsioneDtlong(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTLong {ANY|BLANK|DCSLONGRead|DCSLONGWrite|GLONGRead|GLONGWrite| LPS666|NULL|PPS565|PPS666|PPS888|PPS101010|PPS121212|YCBCR12|YCBCR16|YCBCR20|YCBCR24}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTLong {ANY|BLANK|DCSLONGRead|DCSLONGWrite|GLONGRead|GLONGWrite|LPS666|NULL|PPS565|PPS666|PPS888|PPS101010|PPS121212|YCBCR12|YCBCR16|YCBCR20|YCBCR24}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTLong?
         ```
 
@@ -16994,7 +17007,7 @@ class SearchSearchItemTriggerABusMipidsioneAckerrreport(SCPICmdWrite, SCPICmdRea
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:ACKERRreport {ANY|CHKSUMError|CONTention|DSINR|DSIViolation|DSIVC| ECCMBError|ECCSBError|EOTSync|ESCMODEError|FCE|HSRTError| INVALID|LPTSError|SOTError|SOTSync}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:ACKERRreport {ANY|CHKSUMError|CONTention|DSINR|DSIViolation|DSIVC|ECCMBError|ECCSBError|EOTSync|ESCMODEError|FCE|HSRTError|INVALID|LPTSError|SOTError|SOTSync}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:ACKERRreport?
         ```
 
@@ -17113,7 +17126,7 @@ class SearchSearchItemTriggerABusMipidsione(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:ACKERRreport {ANY|CHKSUMError|CONTention|DSINR|DSIViolation|DSIVC| ECCMBError|ECCSBError|EOTSync|ESCMODEError|FCE|HSRTError| INVALID|LPTSError|SOTError|SOTSync}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:ACKERRreport {ANY|CHKSUMError|CONTention|DSINR|DSIViolation|DSIVC|ECCMBError|ECCSBError|EOTSync|ESCMODEError|FCE|HSRTError|INVALID|LPTSError|SOTError|SOTSync}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:ACKERRreport?
             ```
 
@@ -17221,7 +17234,7 @@ class SearchSearchItemTriggerABusMipidsione(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTLong {ANY|BLANK|DCSLONGRead|DCSLONGWrite|GLONGRead|GLONGWrite| LPS666|NULL|PPS565|PPS666|PPS888|PPS101010|PPS121212|YCBCR12|YCBCR16|YCBCR20|YCBCR24}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTLong {ANY|BLANK|DCSLONGRead|DCSLONGWrite|GLONGRead|GLONGWrite|LPS666|NULL|PPS565|PPS666|PPS888|PPS101010|PPS121212|YCBCR12|YCBCR16|YCBCR20|YCBCR24}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTLong?
             ```
 
@@ -17265,7 +17278,7 @@ class SearchSearchItemTriggerABusMipidsione(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTShort {ACKErrorreport|ANY|COLOROFF|COLORON|DCSR|DCSSRR1| DCSRR2|DCSSW<x>|EOT|GR<x>|GSRR<x>| GSW<x>|HSYNCEnd|HSYNCStart|MAXRETsize|SHUTDown| TURNON|VSYNCEnd|VSYNCStart}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTShort {ACKErrorreport|ANY|COLOROFF|COLORON|DCSR|DCSSRR1|DCSRR2|DCSSW<x>|EOT|GR<x>|GSRR<x>|GSW<x>|HSYNCEnd|HSYNCStart|MAXRETsize|SHUTDown|TURNON|VSYNCEnd|VSYNCStart}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:DTShort?
             ```
 
@@ -19410,7 +19423,7 @@ class SearchSearchItemTriggerABusMipicsitwoDtshort(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:DTShort {ANY|FRAMEEnd|FRAMEStart|GSP1|GSP2|GSP3|GSP4|GSP5| GSP6|GSP7|GSP8|LINEEnd|LINEStart}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:DTShort {ANY|FRAMEEnd|FRAMEStart|GSP1|GSP2|GSP3|GSP4|GSP5|GSP6|GSP7|GSP8|LINEEnd|LINEStart}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:DTShort?
         ```
 
@@ -19683,7 +19696,7 @@ class SearchSearchItemTriggerABusMipicsitwo(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:DTShort {ANY|FRAMEEnd|FRAMEStart|GSP1|GSP2|GSP3|GSP4|GSP5| GSP6|GSP7|GSP8|LINEEnd|LINEStart}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:DTShort {ANY|FRAMEEnd|FRAMEStart|GSP1|GSP2|GSP3|GSP4|GSP5|GSP6|GSP7|GSP8|LINEEnd|LINEStart}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:DTShort?
             ```
 
@@ -21660,7 +21673,7 @@ class SearchSearchItemTriggerABusMil1553bCommandAddressQualifier(SCPICmdWrite, S
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:QUALifier {LESSthan|MOREthan|EQual |UNEQual|LESSEQual|MOREEQual}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:QUALifier?
         ```
 
@@ -21781,7 +21794,7 @@ class SearchSearchItemTriggerABusMil1553bCommandAddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:QUALifier {LESSthan|MOREthan|EQual |UNEQual|LESSEQual|MOREEQual}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:QUALifier?
             ```
 
@@ -23959,7 +23972,7 @@ class SearchSearchItemTriggerABusFlexrayErrtype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:ERRTYPE {CRCHEADer|CRCTRAILer|NULLFRSTATIC|NULLFRDYNAMIC |SYNCFRAME|STARTUPNOSYNC}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:ERRTYPE {CRCHEADer|CRCTRAILer|NULLFRSTATIC|NULLFRDYNAMIC|SYNCFRAME|STARTUPNOSYNC}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:ERRTYPE?
         ```
     """  # noqa: E501
@@ -24511,7 +24524,7 @@ class SearchSearchItemTriggerABusFlexrayCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CONDition {SOF|FRAMEtype|IDentifier|CYCLEcount|HEADer|DATA|IDANDDATA| EOF|ERRor}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CONDition {SOF|FRAMEtype|IDentifier|CYCLEcount|HEADer|DATA|IDANDDATA|EOF|ERRor}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CONDition?
         ```
     """  # noqa: E501
@@ -24583,7 +24596,7 @@ class SearchSearchItemTriggerABusFlexray(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CONDition {SOF|FRAMEtype|IDentifier|CYCLEcount|HEADer|DATA|IDANDDATA| EOF|ERRor}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CONDition {SOF|FRAMEtype|IDentifier|CYCLEcount|HEADer|DATA|IDANDDATA|EOF|ERRor}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CONDition?
             ```
         """  # noqa: E501
@@ -24677,7 +24690,7 @@ class SearchSearchItemTriggerABusFlexray(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:ERRTYPE {CRCHEADer|CRCTRAILer|NULLFRSTATIC|NULLFRDYNAMIC |SYNCFRAME|STARTUPNOSYNC}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:ERRTYPE {CRCHEADer|CRCTRAILer|NULLFRSTATIC|NULLFRDYNAMIC|SYNCFRAME|STARTUPNOSYNC}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:ERRTYPE?
             ```
         """  # noqa: E501
@@ -26602,7 +26615,7 @@ class SearchSearchItemTriggerABusEthernetCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:CONDition {STARTFRAME|MACADDRess|MACTYPE|IPV4Header|TCPHeader|DATa |ENDPACKET|FCSError|QTAG|TCPDATA}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:CONDition {STARTFRAME|MACADDRess|MACTYPE|IPV4Header|TCPHeader|DATa|ENDPACKET|FCSError|QTAG|TCPDATA}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:CONDition?
         ```
 
@@ -26676,7 +26689,7 @@ class SearchSearchItemTriggerABusEthernet(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:CONDition {STARTFRAME|MACADDRess|MACTYPE|IPV4Header|TCPHeader|DATa |ENDPACKET|FCSError|QTAG|TCPDATA}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:CONDition {STARTFRAME|MACADDRess|MACTYPE|IPV4Header|TCPHeader|DATa|ENDPACKET|FCSError|QTAG|TCPDATA}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:CONDition?
             ```
 
@@ -27882,7 +27895,7 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce {B0|B1|B2|B3|B4|B5|B6|B7|B8|B9|B10| B11|B12|B13|B14|B15|B16}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce {B0|B1|B2|B3|B4|B5|B6|B7|B8|B9|B10|B11|B12|B13|B14|B15|B16}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SOUrce?
             ```
 
@@ -28265,7 +28278,7 @@ class SearchSearchItemTriggerA(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:TYPe {EDGE|RUNT|TRANsition|PATtern|GLItch|SETHold|UNDEFINED| WIDth|TIMEOut|WINdow|STATE|DDRRead|DDRWrite|DDRREADWrite}
+            - SEARCH:SEARCH<x>:TRIGger:A:TYPe {EDGE|RUNT|TRANsition|PATtern|GLItch|SETHold|UNDEFINED|WIDth|TIMEOut|WINdow|STATE|DDRRead|DDRWrite|DDRREADWrite}
             - SEARCH:SEARCH<x>:TRIGger:A:TYPe?
             ```
 

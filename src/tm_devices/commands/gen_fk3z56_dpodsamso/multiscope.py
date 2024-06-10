@@ -10,7 +10,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - MULTiscope:CONFig {ATI | TEKCONnect | TIMESYnc}
+    - MULTiscope:CONFig {ATI|TEKCONnect|TIMESYnc}
     - MULTiscope:EXIT
     - MULTiscope:RESTART
     - MULTiscope:STATUS?
@@ -89,7 +89,7 @@ class MultiscopeConfig(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - MULTiscope:CONFig {ATI | TEKCONnect | TIMESYnc}
+        - MULTiscope:CONFig {ATI|TEKCONnect|TIMESYnc}
         ```
 
     Info:
@@ -138,7 +138,7 @@ class Multiscope(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MULTiscope:CONFig {ATI | TEKCONnect | TIMESYnc}
+            - MULTiscope:CONFig {ATI|TEKCONnect|TIMESYnc}
             ```
 
         Info:

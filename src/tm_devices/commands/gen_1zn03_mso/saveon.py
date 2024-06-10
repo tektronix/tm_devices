@@ -22,7 +22,7 @@ Commands and Queries:
     - SAVEON:WAVEform {<NR1>|ON|OFF}
     - SAVEON:WAVEform:FILEFormat {INTERNal|SPREADSheet}
     - SAVEON:WAVEform:FILEFormat?
-    - SAVEON:WAVEform:SOURce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| ALL}
+    - SAVEON:WAVEform:SOURce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|ALL}
     - SAVEON:WAVEform:SOURce?
     - SAVEON:WAVEform?
     ```
@@ -51,7 +51,7 @@ class SaveonWaveformSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVEON:WAVEform:SOURce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| ALL}
+        - SAVEON:WAVEform:SOURce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|ALL}
         - SAVEON:WAVEform:SOURce?
         ```
 
@@ -174,7 +174,7 @@ class SaveonWaveform(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVEON:WAVEform:SOURce {CH<x>| DCH<x>_D<x>| MATH<x>| REF<x>| ALL}
+            - SAVEON:WAVEform:SOURce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|ALL}
             - SAVEON:WAVEform:SOURce?
             ```
 

@@ -11,11 +11,11 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - TRIGger FORCe
-    - TRIGger:A:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA |EOW|ERRor}
+    - TRIGger:A:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA|EOW|ERRor}
     - TRIGger:A:BUS:B<x>:ARINC429A:CONDition?
     - TRIGger:A:BUS:B<x>:ARINC429A:DATa:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:ARINC429A:DATa:HIVALue?
-    - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier?
     - TRIGger:A:BUS:B<x>:ARINC429A:DATa:VALue <QString>
     - TRIGger:A:BUS:B<x>:ARINC429A:DATa:VALue?
@@ -23,7 +23,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:ARINC429A:ERRTYPe?
     - TRIGger:A:BUS:B<x>:ARINC429A:LABel:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:ARINC429A:LABel:HIVALue?
-    - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier?
     - TRIGger:A:BUS:B<x>:ARINC429A:LABel:VALue <QString>
     - TRIGger:A:BUS:B<x>:ARINC429A:LABel:VALue?
@@ -39,7 +39,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:AUDio:DATa:HIVALue?
     - TRIGger:A:BUS:B<x>:AUDio:DATa:OFFSet <NR1>
     - TRIGger:A:BUS:B<x>:AUDio:DATa:OFFSet?
-    - TRIGger:A:BUS:B<x>:AUDio:DATa:QUALifier {LESSthan| MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:AUDio:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:AUDio:DATa:QUALifier?
     - TRIGger:A:BUS:B<x>:AUDio:DATa:TDMVALue <QString>
     - TRIGger:A:BUS:B<x>:AUDio:DATa:TDMVALue?
@@ -71,13 +71,13 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:CAN:IDentifier:MODe?
     - TRIGger:A:BUS:B<x>:CAN:IDentifier:VALue <QString>
     - TRIGger:A:BUS:B<x>:CAN:IDentifier:VALue?
-    - TRIGger:A:BUS:B<x>:ETHERnet:CONDition {SFD|MACADDRess|MACLENgth|IPHeader|TCPHeader|DATa|EOP| IDLe|FCSError|QTAG}
+    - TRIGger:A:BUS:B<x>:ETHERnet:CONDition {SFD|MACADDRess|MACLENgth|IPHeader|TCPHeader|DATa|EOP|IDLe|FCSError|QTAG}
     - TRIGger:A:BUS:B<x>:ETHERnet:CONDition?
     - TRIGger:A:BUS:B<x>:ETHERnet:DATa:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:ETHERnet:DATa:HIVALue?
     - TRIGger:A:BUS:B<x>:ETHERnet:DATa:OFFSet <NR1>
     - TRIGger:A:BUS:B<x>:ETHERnet:DATa:OFFSet?
-    - TRIGger:A:BUS:B<x>:ETHERnet:DATa:QUALifier {EQual| UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:ETHERnet:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:ETHERnet:DATa:QUALifier?
     - TRIGger:A:BUS:B<x>:ETHERnet:DATa:SIZe <NR1>
     - TRIGger:A:BUS:B<x>:ETHERnet:DATa:SIZe?
@@ -111,7 +111,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:FLEXray:CONDition?
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:HIVALue?
-    - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:VALue <QString>
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:VALue?
@@ -119,7 +119,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:HIVALue?
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:OFFSet <NR1>
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:OFFSet?
-    - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier?
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:SIZe <NR1>
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:SIZe?
@@ -127,11 +127,11 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:FLEXray:DATa:VALue?
     - TRIGger:A:BUS:B<x>:FLEXray:EOFTYPE {STATic|DYNAMic|ANY}
     - TRIGger:A:BUS:B<x>:FLEXray:EOFTYPE?
-    - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic| NULLFRDynamic}
+    - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic|NULLFRDynamic}
     - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE?
     - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:HIVALue?
-    - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan| MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier?
     - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:VALue <QString>
     - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:VALue?
@@ -163,7 +163,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:I3C:ADDRess:MODe?
     - TRIGger:A:BUS:B<x>:I3C:ADDRess:VALue <QString>
     - TRIGger:A:BUS:B<x>:I3C:ADDRess:VALue?
-    - TRIGger:A:BUS:B<x>:I3C:CONDition {STARt| REPEATStart| ADDRess| DATa| SDRDirect| SDRBroadcast| ERRors| HOTJoin| HDRRestart| HDRExit| STOP}
+    - TRIGger:A:BUS:B<x>:I3C:CONDition {STARt|REPEATStart|ADDRess|DATa|SDRDirect|SDRBroadcast|ERRors|HOTJoin|HDRRestart|HDRExit|STOP}
     - TRIGger:A:BUS:B<x>:I3C:CONDition?
     - TRIGger:A:BUS:B<x>:I3C:DATa:DIRection {READ|WRITE|NOCARE}
     - TRIGger:A:BUS:B<x>:I3C:DATa:DIRection?
@@ -173,9 +173,9 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:I3C:DATa:VALue?
     - TRIGger:A:BUS:B<x>:I3C:ERRORTYPe {NACK|TBIT|BADDr}
     - TRIGger:A:BUS:B<x>:I3C:ERRORTYPe?
-    - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
+    - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya|ENTRDya|SETMwrl|SETMrdl|DLSLave|ENTRTSTMode|EXTime|SETaasa|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe|SETBUSCON}
     - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket?
-    - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime| GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
+    - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya|SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl|GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt|MDATASpeed|HDRCapability|GETXTime|GETCAPS|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe}
     - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket?
     - TRIGger:A:BUS:B<x>:I3C:TBIT:DIREction {READ|WRITe}
     - TRIGger:A:BUS:B<x>:I3C:TBIT:DIREction?
@@ -183,7 +183,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:LIN:CONDition?
     - TRIGger:A:BUS:B<x>:LIN:DATa:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:LIN:DATa:HIVALue?
-    - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier?
     - TRIGger:A:BUS:B<x>:LIN:DATa:SIZe <NR1>
     - TRIGger:A:BUS:B<x>:LIN:DATa:SIZe?
@@ -195,7 +195,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:LIN:IDentifier:VALue?
     - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:ADDRess:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:ADDRess:HIVALue?
-    - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier?
     - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:ADDRess:VALue <QString>
     - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:ADDRess:VALue?
@@ -207,7 +207,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:SUBADdress?
     - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:TRBit {RX|TX|X}
     - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:TRBit?
-    - TRIGger:A:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA |TIMe|ERRor}
+    - TRIGger:A:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA|TIMe|ERRor}
     - TRIGger:A:BUS:B<x>:MIL1553B:CONDition?
     - TRIGger:A:BUS:B<x>:MIL1553B:DATa:PARity {ONE|ZERo|NOCARE}
     - TRIGger:A:BUS:B<x>:MIL1553B:DATa:PARity?
@@ -217,7 +217,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:MIL1553B:ERRTYPe?
     - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:HIVALue?
-    - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {EQual|UNEQual|LESSthan |MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier?
     - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:VALue <QString>
     - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:VALue?
@@ -261,19 +261,19 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:SENT:ERRType?
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:HIVALue?
-    - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier?
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:VALue <Qstring>
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:VALue?
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:HIVALue?
-    - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier?
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:VALue <Qstring>
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:VALue?
     - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:HIVALue?
-    - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:QUALifier?
     - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:VALue <Qstring>
     - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:VALue?
@@ -281,11 +281,11 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue?
     - TRIGger:A:BUS:B<x>:SENT:FAST:STATus:VALue <Qstring>
     - TRIGger:A:BUS:B<x>:SENT:FAST:STATus:VALue?
-    - TRIGger:A:BUS:B<x>:SENT:PAUSE:QUALifier {EQual|UNEQual| LESSthan|MOREthan|LESSEQual|MOREEQual|Inrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|Inrange|OUTrange}
     - TRIGger:A:BUS:B<x>:SENT:PAUSE:QUALifier?
     - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:HIVALue?
-    - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:QUALifier {EQual| UNEQual| LESSthan| MOREthan| LESSEQual| MOREEQual| INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:QUALifier?
     - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue <Qstring>
     - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue?
@@ -297,7 +297,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:SPI:DATa:SIZe?
     - TRIGger:A:BUS:B<x>:SPI:DATa:VALue <QString>
     - TRIGger:A:BUS:B<x>:SPI:DATa:VALue?
-    - TRIGger:A:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep| SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte| DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd| EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte| AUTHenticate|TRANSferbusownership|PARItyerror}
+    - TRIGger:A:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep|SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte|DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd|EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte|AUTHenticate|TRANSferbusownership|PARItyerror}
     - TRIGger:A:BUS:B<x>:SPMI:CONDition?
     - TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe <NR2>
     - TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe?
@@ -311,13 +311,13 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:SPMI:REGISTERADDRess:VALue?
     - TRIGger:A:BUS:B<x>:SPMI:SLAVEADDRess:VALue <Qstring>
     - TRIGger:A:BUS:B<x>:SPMI:SLAVEADDRess:VALue?
-    - TRIGger:A:BUS:B<x>:SVID:COMMand:RESPonse {GETREG| GETREGVENDor| GETREGTESTCFG| SETVIDFAST| SETVIDSLOW| SETVIDDECay| SETPS| SETREGADDR| SETREGDATa| SETREGADDRVENDor| SETREGDATAVENDor| SETREGADDRTESTCONFg| SETREGDATATESTCONFg| TESTMODe| SETWP| GETREGPKTRECent| GETREGPKTALERt| GETREGPKTBAD| GETREGVREVENt}
+    - TRIGger:A:BUS:B<x>:SVID:COMMand:RESPonse {GETREG|GETREGVENDor|GETREGTESTCFG|SETVIDFAST|SETVIDSLOW|SETVIDDECay|SETPS|SETREGADDR|SETREGDATa|SETREGADDRVENDor|SETREGDATAVENDor|SETREGADDRTESTCONFg|SETREGDATATESTCONFg|TESTMODe|SETWP|GETREGPKTRECent|GETREGPKTALERt|GETREGPKTBAD|GETREGVREVENt}
     - TRIGger:A:BUS:B<x>:SVID:COMMand:RESPonse?
     - TRIGger:A:BUS:B<x>:SVID:COMMand:TYPe {GET|SET|OPTional}
     - TRIGger:A:BUS:B<x>:SVID:COMMand:TYPe?
-    - TRIGger:A:BUS:B<x>:SVID:CONDition {STARTCONDition| SLAVEADDRess| COMMand| PAYLoad| ERRors}
+    - TRIGger:A:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess|COMMand|PAYLoad|ERRors}
     - TRIGger:A:BUS:B<x>:SVID:CONDition?
-    - TRIGger:A:BUS:B<x>:SVID:ERRor:TYPe {NACK| REJect| MIXed| PARity}
+    - TRIGger:A:BUS:B<x>:SVID:ERRor:TYPe {NACK|REJect|MIXed|PARity}
     - TRIGger:A:BUS:B<x>:SVID:ERRor:TYPe?
     - TRIGger:A:BUS:B<x>:SVID:PARity:TYPe {MASTer|SLAVe}
     - TRIGger:A:BUS:B<x>:SVID:PARity:TYPe?
@@ -331,13 +331,13 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:USB:ADDRess:HIVALue?
     - TRIGger:A:BUS:B<x>:USB:ADDRess:VALue <QString>
     - TRIGger:A:BUS:B<x>:USB:ADDRess:VALue?
-    - TRIGger:A:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket| HANDSHAKEPacket|SPECIALPacket|ERRor}
+    - TRIGger:A:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket|HANDSHAKEPacket|SPECIALPacket|ERRor}
     - TRIGger:A:BUS:B<x>:USB:CONDition?
     - TRIGger:A:BUS:B<x>:USB:DATa:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:USB:DATa:HIVALue?
     - TRIGger:A:BUS:B<x>:USB:DATa:OFFSet <NR1>
     - TRIGger:A:BUS:B<x>:USB:DATa:OFFSet?
-    - TRIGger:A:BUS:B<x>:USB:DATa:QUALifier {EQual|UNEQual| LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:USB:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:USB:DATa:QUALifier?
     - TRIGger:A:BUS:B<x>:USB:DATa:SIZe <NR1>
     - TRIGger:A:BUS:B<x>:USB:DATa:SIZe?
@@ -395,7 +395,7 @@ Commands and Queries:
     - TRIGger:A:LOGIc:POLarity?
     - TRIGger:A:LOGIc:USECLockedge {OFF|ON|0|1}
     - TRIGger:A:LOGIc:USECLockedge?
-    - TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual| UNEQual}
+    - TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
     - TRIGger:A:LOGIc:WHEn?
     - TRIGger:A:LOWerthreshold:CH<x> <NR3>
     - TRIGger:A:LOWerthreshold:CH<x>?
@@ -451,11 +451,11 @@ Commands and Queries:
     - TRIGger:A:TRANsition:SOUrce?
     - TRIGger:A:TRANsition:WHEn {SLOWer|FASTer|EQual|UNEQual}
     - TRIGger:A:TRANsition:WHEn?
-    - TRIGger:A:TYPe {EDGE|WIDth|TIMEOut|RUNt|WINdow|LOGIc| SETHold|TRANsition|BUS}
+    - TRIGger:A:TYPe {EDGE|WIDth|TIMEOut|RUNt|WINdow|LOGIc|SETHold|TRANsition|BUS}
     - TRIGger:A:TYPe?
     - TRIGger:A:UPPerthreshold:CH<x> <NR3>
     - TRIGger:A:UPPerthreshold:CH<x>?
-    - TRIGger:A:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN| ALLFields}
+    - TRIGger:A:VIDeo:FIELD {ALLLines|NUMERic|ODD|EVEN|ALLFields}
     - TRIGger:A:VIDeo:FIELD?
     - TRIGger:A:VIDeo:LINE <NR1>
     - TRIGger:A:VIDeo:LINE?
@@ -471,17 +471,17 @@ Commands and Queries:
     - TRIGger:A:WINdow:LOGICQUALification?
     - TRIGger:A:WINdow:SOUrce {CH<x>}
     - TRIGger:A:WINdow:SOUrce?
-    - TRIGger:A:WINdow:WHEn {ENTERSWindow|EXITSWindow| INSIDEGreater|OUTSIDEGreater}
+    - TRIGger:A:WINdow:WHEn {ENTERSWindow|EXITSWindow|INSIDEGreater|OUTSIDEGreater}
     - TRIGger:A:WINdow:WHEn?
     - TRIGger:A:WINdow:WIDth <NR3>
     - TRIGger:A:WINdow:WIDth?
     - TRIGger:AUXLevel {<NR3>|ECL|TTL}
     - TRIGger:AUXLevel?
-    - TRIGger:B:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA |EOW|ERRor}
+    - TRIGger:B:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA|EOW|ERRor}
     - TRIGger:B:BUS:B<x>:ARINC429A:CONDition?
     - TRIGger:B:BUS:B<x>:ARINC429A:DATa:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:ARINC429A:DATa:HIVALue?
-    - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier?
     - TRIGger:B:BUS:B<x>:ARINC429A:DATa:VALue <QString>
     - TRIGger:B:BUS:B<x>:ARINC429A:DATa:VALue?
@@ -489,7 +489,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:ARINC429A:ERRTYPe?
     - TRIGger:B:BUS:B<x>:ARINC429A:LABel:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:ARINC429A:LABel:HIVALue?
-    - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier?
     - TRIGger:B:BUS:B<x>:ARINC429A:LABel:VALue <QString>
     - TRIGger:B:BUS:B<x>:ARINC429A:LABel:VALue?
@@ -505,7 +505,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:AUDio:DATa:HIVALue?
     - TRIGger:B:BUS:B<x>:AUDio:DATa:OFFSet <NR1>
     - TRIGger:B:BUS:B<x>:AUDio:DATa:OFFSet?
-    - TRIGger:B:BUS:B<x>:AUDio:DATa:QUALifier {LESSthan| MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:AUDio:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:AUDio:DATa:QUALifier?
     - TRIGger:B:BUS:B<x>:AUDio:DATa:TDMVALue <QString>
     - TRIGger:B:BUS:B<x>:AUDio:DATa:TDMVALue?
@@ -537,13 +537,13 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:CAN:IDentifier:MODe?
     - TRIGger:B:BUS:B<x>:CAN:IDentifier:VALue <QString>
     - TRIGger:B:BUS:B<x>:CAN:IDentifier:VALue?
-    - TRIGger:B:BUS:B<x>:ETHERnet:CONDition {SFD|MACADDRess|MACLENgth|IPHeader|TCPHeader|DATa|EOP| IDLe|FCSError|QTAG}
+    - TRIGger:B:BUS:B<x>:ETHERnet:CONDition {SFD|MACADDRess|MACLENgth|IPHeader|TCPHeader|DATa|EOP|IDLe|FCSError|QTAG}
     - TRIGger:B:BUS:B<x>:ETHERnet:CONDition?
     - TRIGger:B:BUS:B<x>:ETHERnet:DATa:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:ETHERnet:DATa:HIVALue?
     - TRIGger:B:BUS:B<x>:ETHERnet:DATa:OFFSet <NR1>
     - TRIGger:B:BUS:B<x>:ETHERnet:DATa:OFFSet?
-    - TRIGger:B:BUS:B<x>:ETHERnet:DATa:QUALifier {EQual| UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:ETHERnet:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:ETHERnet:DATa:QUALifier?
     - TRIGger:B:BUS:B<x>:ETHERnet:DATa:SIZe <NR1>
     - TRIGger:B:BUS:B<x>:ETHERnet:DATa:SIZe?
@@ -577,7 +577,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:FLEXray:CONDition?
     - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:HIVALue?
-    - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
     - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:VALue <QString>
     - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:VALue?
@@ -585,7 +585,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:FLEXray:DATa:HIVALue?
     - TRIGger:B:BUS:B<x>:FLEXray:DATa:OFFSet <NR1>
     - TRIGger:B:BUS:B<x>:FLEXray:DATa:OFFSet?
-    - TRIGger:B:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:FLEXray:DATa:QUALifier?
     - TRIGger:B:BUS:B<x>:FLEXray:DATa:SIZe <NR1>
     - TRIGger:B:BUS:B<x>:FLEXray:DATa:SIZe?
@@ -593,11 +593,11 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:FLEXray:DATa:VALue?
     - TRIGger:B:BUS:B<x>:FLEXray:EOFTYPE {STATic|DYNAMic|ANY}
     - TRIGger:B:BUS:B<x>:FLEXray:EOFTYPE?
-    - TRIGger:B:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic| NULLFRDynamic}
+    - TRIGger:B:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic|NULLFRDynamic}
     - TRIGger:B:BUS:B<x>:FLEXray:ERRTYPE?
     - TRIGger:B:BUS:B<x>:FLEXray:FRAMEID:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:FLEXray:FRAMEID:HIVALue?
-    - TRIGger:B:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan| MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:FLEXray:FRAMEID:QUALifier?
     - TRIGger:B:BUS:B<x>:FLEXray:FRAMEID:VALue <QString>
     - TRIGger:B:BUS:B<x>:FLEXray:FRAMEID:VALue?
@@ -629,7 +629,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:I3C:ADDRess:MODe?
     - TRIGger:B:BUS:B<x>:I3C:ADDRess:VALue <QString>
     - TRIGger:B:BUS:B<x>:I3C:ADDRess:VALue?
-    - TRIGger:B:BUS:B<x>:I3C:CONDition {STARt| REPEATStart| ADDRess| DATa| SDRDirect| SDRBroadcast| ERRors| HOTJoin| HDRRestart| HDRExit| STOP}
+    - TRIGger:B:BUS:B<x>:I3C:CONDition {STARt|REPEATStart|ADDRess|DATa|SDRDirect|SDRBroadcast|ERRors|HOTJoin|HDRRestart|HDRExit|STOP}
     - TRIGger:B:BUS:B<x>:I3C:CONDition?
     - TRIGger:B:BUS:B<x>:I3C:DATa:DIRection {READ|WRITE|NOCARE}
     - TRIGger:B:BUS:B<x>:I3C:DATa:DIRection?
@@ -639,9 +639,9 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:I3C:DATa:VALue?
     - TRIGger:B:BUS:B<x>:I3C:ERRORTYPe {NACK|TBIT|BADDr}
     - TRIGger:B:BUS:B<x>:I3C:ERRORTYPe?
-    - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
+    - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya|ENTRDya|SETMwrl|SETMrdl|DLSLave|ENTRTSTMode|EXTime|SETaasa|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe|SETBUSCON}
     - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket?
-    - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime| GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
+    - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya|SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl|GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt|MDATASpeed|HDRCapability|GETXTime|GETCAPS|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe}
     - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket?
     - TRIGger:B:BUS:B<x>:I3C:TBIT:DIREction {READ|WRITe}
     - TRIGger:B:BUS:B<x>:I3C:TBIT:DIREction?
@@ -649,7 +649,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:LIN:CONDition?
     - TRIGger:B:BUS:B<x>:LIN:DATa:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:LIN:DATa:HIVALue?
-    - TRIGger:B:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:LIN:DATa:QUALifier?
     - TRIGger:B:BUS:B<x>:LIN:DATa:SIZe <NR1>
     - TRIGger:B:BUS:B<x>:LIN:DATa:SIZe?
@@ -661,7 +661,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:LIN:IDentifier:VALue?
     - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:ADDRess:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:ADDRess:HIVALue?
-    - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier?
     - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:ADDRess:VALue <QString>
     - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:ADDRess:VALue?
@@ -673,7 +673,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:SUBADdress?
     - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:TRBit {RX|TX|X}
     - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:TRBit?
-    - TRIGger:B:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA |TIMe|ERRor}
+    - TRIGger:B:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA|TIMe|ERRor}
     - TRIGger:B:BUS:B<x>:MIL1553B:CONDition?
     - TRIGger:B:BUS:B<x>:MIL1553B:DATa:PARity {ONE|ZERo|NOCARE}
     - TRIGger:B:BUS:B<x>:MIL1553B:DATa:PARity?
@@ -683,7 +683,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:MIL1553B:ERRTYPe?
     - TRIGger:B:BUS:B<x>:MIL1553B:STATus:ADDRess:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:MIL1553B:STATus:ADDRess:HIVALue?
-    - TRIGger:B:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {EQual|UNEQual|LESSthan |MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier?
     - TRIGger:B:BUS:B<x>:MIL1553B:STATus:ADDRess:VALue <QString>
     - TRIGger:B:BUS:B<x>:MIL1553B:STATus:ADDRess:VALue?
@@ -727,19 +727,19 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:SENT:ERRType?
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:HIVALue?
-    - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier?
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:VALue <Qstring>
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:VALue?
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:HIVALue?
-    - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier?
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:VALue <Qstring>
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:VALue?
     - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:HIVALue?
-    - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:QUALifier?
     - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:VALue <Qstring>
     - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:VALue?
@@ -747,11 +747,11 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue?
     - TRIGger:B:BUS:B<x>:SENT:FAST:STATus:VALue <Qstring>
     - TRIGger:B:BUS:B<x>:SENT:FAST:STATus:VALue?
-    - TRIGger:B:BUS:B<x>:SENT:PAUSE:QUALifier {EQual|UNEQual| LESSthan|MOREthan|LESSEQual|MOREEQual|Inrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|Inrange|OUTrange}
     - TRIGger:B:BUS:B<x>:SENT:PAUSE:QUALifier?
     - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:HIVALue?
-    - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:QUALifier {EQual| UNEQual| LESSthan| MOREthan| LESSEQual| MOREEQual| INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:QUALifier?
     - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:VALue <Qstring>
     - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:VALue?
@@ -763,7 +763,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:SPI:DATa:SIZe?
     - TRIGger:B:BUS:B<x>:SPI:DATa:VALue <QString>
     - TRIGger:B:BUS:B<x>:SPI:DATa:VALue?
-    - TRIGger:B:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep| SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte| DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd| EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte| AUTHenticate|TRANSferbusownership|PARItyerror}
+    - TRIGger:B:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep|SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte|DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd|EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte|AUTHenticate|TRANSferbusownership|PARItyerror}
     - TRIGger:B:BUS:B<x>:SPMI:CONDition?
     - TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe <NR2>
     - TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe?
@@ -777,13 +777,13 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:SPMI:REGISTERADDRess:VALue?
     - TRIGger:B:BUS:B<x>:SPMI:SLAVEADDRess:VALue <Qstring>
     - TRIGger:B:BUS:B<x>:SPMI:SLAVEADDRess:VALue?
-    - TRIGger:B:BUS:B<x>:SVID:COMMand:RESPonse {GETREG| GETREGVENDor| GETREGTESTCFG| SETVIDFAST| SETVIDSLOW| SETVIDDECay| SETPS| SETREGADDR| SETREGDATa| SETREGADDRVENDor| SETREGDATAVENDor| SETREGADDRTESTCONFg| SETREGDATATESTCONFg| TESTMODe| SETWP| GETREGPKTRECent| GETREGPKTALERt| GETREGPKTBAD| GETREGVREVENt}
+    - TRIGger:B:BUS:B<x>:SVID:COMMand:RESPonse {GETREG|GETREGVENDor|GETREGTESTCFG|SETVIDFAST|SETVIDSLOW|SETVIDDECay|SETPS|SETREGADDR|SETREGDATa|SETREGADDRVENDor|SETREGDATAVENDor|SETREGADDRTESTCONFg|SETREGDATATESTCONFg|TESTMODe|SETWP|GETREGPKTRECent|GETREGPKTALERt|GETREGPKTBAD|GETREGVREVENt}
     - TRIGger:B:BUS:B<x>:SVID:COMMand:RESPonse?
     - TRIGger:B:BUS:B<x>:SVID:COMMand:TYPe {GET|SET|OPTional}
     - TRIGger:B:BUS:B<x>:SVID:COMMand:TYPe?
-    - TRIGger:B:BUS:B<x>:SVID:CONDition {STARTCONDition| SLAVEADDRess| COMMand| PAYLoad| ERRors}
+    - TRIGger:B:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess|COMMand|PAYLoad|ERRors}
     - TRIGger:B:BUS:B<x>:SVID:CONDition?
-    - TRIGger:B:BUS:B<x>:SVID:ERRor:TYPe {NACK| REJect| MIXed| PARity}
+    - TRIGger:B:BUS:B<x>:SVID:ERRor:TYPe {NACK|REJect|MIXed|PARity}
     - TRIGger:B:BUS:B<x>:SVID:ERRor:TYPe?
     - TRIGger:B:BUS:B<x>:SVID:PARity:TYPe {MASTer|SLAVe}
     - TRIGger:B:BUS:B<x>:SVID:PARity:TYPe?
@@ -797,13 +797,13 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:USB:ADDRess:HIVALue?
     - TRIGger:B:BUS:B<x>:USB:ADDRess:VALue <QString>
     - TRIGger:B:BUS:B<x>:USB:ADDRess:VALue?
-    - TRIGger:B:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket| HANDSHAKEPacket|SPECIALPacket|ERRor}
+    - TRIGger:B:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket|HANDSHAKEPacket|SPECIALPacket|ERRor}
     - TRIGger:B:BUS:B<x>:USB:CONDition?
     - TRIGger:B:BUS:B<x>:USB:DATa:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:USB:DATa:HIVALue?
     - TRIGger:B:BUS:B<x>:USB:DATa:OFFSet <NR1>
     - TRIGger:B:BUS:B<x>:USB:DATa:OFFSet?
-    - TRIGger:B:BUS:B<x>:USB:DATa:QUALifier {EQual|UNEQual| LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:USB:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:USB:DATa:QUALifier?
     - TRIGger:B:BUS:B<x>:USB:DATa:SIZe <NR1>
     - TRIGger:B:BUS:B<x>:USB:DATa:SIZe?
@@ -859,7 +859,7 @@ Commands and Queries:
     - TRIGger:B:LOGIc:POLarity?
     - TRIGger:B:LOGIc:USECLockedge {OFF|ON|0|1}
     - TRIGger:B:LOGIc:USECLockedge?
-    - TRIGger:B:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual| UNEQual}
+    - TRIGger:B:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
     - TRIGger:B:LOGIc:WHEn?
     - TRIGger:B:LOWerthreshold:CH<x> <NR3>
     - TRIGger:B:LOWerthreshold:CH<x>?
@@ -929,11 +929,11 @@ Commands and Queries:
     - TRIGger:B:TRANsition:SOUrce?
     - TRIGger:B:TRANsition:WHEn {SLOWer|FASTer|EQual|UNEQual}
     - TRIGger:B:TRANsition:WHEn?
-    - TRIGger:B:TYPe {EDGE|WIDth|TIMEOut|RUNt|WINdow|LOGIc| SETHold|TRANsition|BUS}
+    - TRIGger:B:TYPe {EDGE|WIDth|TIMEOut|RUNt|WINdow|LOGIc|SETHold|TRANsition|BUS}
     - TRIGger:B:TYPe?
     - TRIGger:B:UPPerthreshold:CH<x> <NR3>
     - TRIGger:B:UPPerthreshold:CH<x>?
-    - TRIGger:B:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN| ALLFields}
+    - TRIGger:B:VIDeo:FIELD {ALLLines|NUMERic|ODD|EVEN|ALLFields}
     - TRIGger:B:VIDeo:FIELD?
     - TRIGger:B:VIDeo:LINE <NR1>
     - TRIGger:B:VIDeo:LINE?
@@ -949,7 +949,7 @@ Commands and Queries:
     - TRIGger:B:WINdow:LOGICQUALification?
     - TRIGger:B:WINdow:SOUrce {CH<x>}
     - TRIGger:B:WINdow:SOUrce?
-    - TRIGger:B:WINdow:WHEn {ENTERSWindow|EXITSWindow| INSIDEGreater|OUTSIDEGreater}
+    - TRIGger:B:WINdow:WHEn {ENTERSWindow|EXITSWindow|INSIDEGreater|OUTSIDEGreater}
     - TRIGger:B:WINdow:WHEn?
     - TRIGger:B:WINdow:WIDth <NR3>
     - TRIGger:B:WINdow:WIDth?
@@ -1210,7 +1210,7 @@ class TriggerBWindowWhen(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:WINdow:WHEn {ENTERSWindow|EXITSWindow| INSIDEGreater|OUTSIDEGreater}
+        - TRIGger:B:WINdow:WHEn {ENTERSWindow|EXITSWindow|INSIDEGreater|OUTSIDEGreater}
         - TRIGger:B:WINdow:WHEn?
         ```
 
@@ -1480,7 +1480,7 @@ class TriggerBWindow(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:WINdow:WHEn {ENTERSWindow|EXITSWindow| INSIDEGreater|OUTSIDEGreater}
+            - TRIGger:B:WINdow:WHEn {ENTERSWindow|EXITSWindow|INSIDEGreater|OUTSIDEGreater}
             - TRIGger:B:WINdow:WHEn?
             ```
 
@@ -1635,7 +1635,7 @@ class TriggerBVideoField(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN| ALLFields}
+        - TRIGger:B:VIDeo:FIELD {ALLLines|NUMERic|ODD|EVEN|ALLFields}
         - TRIGger:B:VIDeo:FIELD?
         ```
 
@@ -1689,7 +1689,7 @@ class TriggerBVideo(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN| ALLFields}
+            - TRIGger:B:VIDeo:FIELD {ALLLines|NUMERic|ODD|EVEN|ALLFields}
             - TRIGger:B:VIDeo:FIELD?
             ```
 
@@ -1891,7 +1891,7 @@ class TriggerBType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:TYPe {EDGE|WIDth|TIMEOut|RUNt|WINdow|LOGIc| SETHold|TRANsition|BUS}
+        - TRIGger:B:TYPe {EDGE|WIDth|TIMEOut|RUNt|WINdow|LOGIc|SETHold|TRANsition|BUS}
         - TRIGger:B:TYPe?
         ```
 
@@ -4056,7 +4056,7 @@ class TriggerBLogicWhen(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual| UNEQual}
+        - TRIGger:B:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
         - TRIGger:B:LOGIc:WHEn?
         ```
 
@@ -4456,7 +4456,7 @@ class TriggerBLogic(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual| UNEQual}
+            - TRIGger:B:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
             - TRIGger:B:LOGIc:WHEn?
             ```
 
@@ -5757,7 +5757,7 @@ class TriggerBBusBItemUsbDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:USB:DATa:QUALifier {EQual|UNEQual| LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:USB:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:USB:DATa:QUALifier?
         ```
 
@@ -5928,7 +5928,7 @@ class TriggerBBusBItemUsbData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:USB:DATa:QUALifier {EQual|UNEQual| LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:USB:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:USB:DATa:QUALifier?
             ```
 
@@ -6045,7 +6045,7 @@ class TriggerBBusBItemUsbCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket| HANDSHAKEPacket|SPECIALPacket|ERRor}
+        - TRIGger:B:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket|HANDSHAKEPacket|SPECIALPacket|ERRor}
         - TRIGger:B:BUS:B<x>:USB:CONDition?
         ```
 
@@ -6286,7 +6286,7 @@ class TriggerBBusBItemUsb(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket| HANDSHAKEPacket|SPECIALPacket|ERRor}
+            - TRIGger:B:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket|HANDSHAKEPacket|SPECIALPacket|ERRor}
             - TRIGger:B:BUS:B<x>:USB:CONDition?
             ```
 
@@ -6814,7 +6814,7 @@ class TriggerBBusBItemSvidErrorType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SVID:ERRor:TYPe {NACK| REJect| MIXed| PARity}
+        - TRIGger:B:BUS:B<x>:SVID:ERRor:TYPe {NACK|REJect|MIXed|PARity}
         - TRIGger:B:BUS:B<x>:SVID:ERRor:TYPe?
         ```
 
@@ -6861,7 +6861,7 @@ class TriggerBBusBItemSvidError(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SVID:ERRor:TYPe {NACK| REJect| MIXed| PARity}
+            - TRIGger:B:BUS:B<x>:SVID:ERRor:TYPe {NACK|REJect|MIXed|PARity}
             - TRIGger:B:BUS:B<x>:SVID:ERRor:TYPe?
             ```
 
@@ -6890,7 +6890,7 @@ class TriggerBBusBItemSvidCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SVID:CONDition {STARTCONDition| SLAVEADDRess| COMMand| PAYLoad| ERRors}
+        - TRIGger:B:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess|COMMand|PAYLoad|ERRors}
         - TRIGger:B:BUS:B<x>:SVID:CONDition?
         ```
 
@@ -6951,7 +6951,7 @@ class TriggerBBusBItemSvidCommandResponse(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SVID:COMMand:RESPonse {GETREG| GETREGVENDor| GETREGTESTCFG| SETVIDFAST| SETVIDSLOW| SETVIDDECay| SETPS| SETREGADDR| SETREGDATa| SETREGADDRVENDor| SETREGDATAVENDor| SETREGADDRTESTCONFg| SETREGDATATESTCONFg| TESTMODe| SETWP| GETREGPKTRECent| GETREGPKTALERt| GETREGPKTBAD| GETREGVREVENt}
+        - TRIGger:B:BUS:B<x>:SVID:COMMand:RESPonse {GETREG|GETREGVENDor|GETREGTESTCFG|SETVIDFAST|SETVIDSLOW|SETVIDDECay|SETPS|SETREGADDR|SETREGDATa|SETREGADDRVENDor|SETREGDATAVENDor|SETREGADDRTESTCONFg|SETREGDATATESTCONFg|TESTMODe|SETWP|GETREGPKTRECent|GETREGPKTALERt|GETREGPKTBAD|GETREGVREVENt}
         - TRIGger:B:BUS:B<x>:SVID:COMMand:RESPonse?
         ```
 
@@ -7015,7 +7015,7 @@ class TriggerBBusBItemSvidCommand(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SVID:COMMand:RESPonse {GETREG| GETREGVENDor| GETREGTESTCFG| SETVIDFAST| SETVIDSLOW| SETVIDDECay| SETPS| SETREGADDR| SETREGDATa| SETREGADDRVENDor| SETREGDATAVENDor| SETREGADDRTESTCONFg| SETREGDATATESTCONFg| TESTMODe| SETWP| GETREGPKTRECent| GETREGPKTALERt| GETREGPKTBAD| GETREGVREVENt}
+            - TRIGger:B:BUS:B<x>:SVID:COMMand:RESPonse {GETREG|GETREGVENDor|GETREGTESTCFG|SETVIDFAST|SETVIDSLOW|SETVIDDECay|SETPS|SETREGADDR|SETREGDATa|SETREGADDRVENDor|SETREGDATAVENDor|SETREGADDRTESTCONFg|SETREGDATATESTCONFg|TESTMODe|SETWP|GETREGPKTRECent|GETREGPKTALERt|GETREGPKTBAD|GETREGVREVENt}
             - TRIGger:B:BUS:B<x>:SVID:COMMand:RESPonse?
             ```
 
@@ -7134,7 +7134,7 @@ class TriggerBBusBItemSvid(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SVID:CONDition {STARTCONDition| SLAVEADDRess| COMMand| PAYLoad| ERRors}
+            - TRIGger:B:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess|COMMand|PAYLoad|ERRors}
             - TRIGger:B:BUS:B<x>:SVID:CONDition?
             ```
 
@@ -7145,7 +7145,7 @@ class TriggerBBusBItemSvid(SCPICmdRead):
             - ``COMMand`` sets the trigger condition to command.
             - ``PAYLoad`` sets the trigger condition to payload.
             - ``ERRors`` sets the trigger condition to errors.
-        """  # noqa: E501
+        """
         return self._condition
 
     @property
@@ -7632,7 +7632,7 @@ class TriggerBBusBItemSpmiCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep| SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte| DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd| EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte| AUTHenticate|TRANSferbusownership|PARItyerror}
+        - TRIGger:B:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep|SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte|DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd|EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte|AUTHenticate|TRANSferbusownership|PARItyerror}
         - TRIGger:B:BUS:B<x>:SPMI:CONDition?
         ```
 
@@ -7718,7 +7718,7 @@ class TriggerBBusBItemSpmi(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep| SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte| DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd| EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte| AUTHenticate|TRANSferbusownership|PARItyerror}
+            - TRIGger:B:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep|SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte|DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd|EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte|AUTHenticate|TRANSferbusownership|PARItyerror}
             - TRIGger:B:BUS:B<x>:SPMI:CONDition?
             ```
 
@@ -8219,7 +8219,7 @@ class TriggerBBusBItemSentSlowDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:QUALifier {EQual| UNEQual| LESSthan| MOREthan| LESSEQual| MOREEQual| INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:QUALifier?
         ```
 
@@ -8336,7 +8336,7 @@ class TriggerBBusBItemSentSlowData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:QUALifier {EQual| UNEQual| LESSthan| MOREthan| LESSEQual| MOREEQual| INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:QUALifier?
             ```
 
@@ -8464,7 +8464,7 @@ class TriggerBBusBItemSentPauseQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SENT:PAUSE:QUALifier {EQual|UNEQual| LESSthan|MOREthan|LESSEQual|MOREEQual|Inrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|Inrange|OUTrange}
         - TRIGger:B:BUS:B<x>:SENT:PAUSE:QUALifier?
         ```
 
@@ -8517,7 +8517,7 @@ class TriggerBBusBItemSentPause(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SENT:PAUSE:QUALifier {EQual|UNEQual| LESSthan|MOREthan|LESSEQual|MOREEQual|Inrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|Inrange|OUTrange}
             - TRIGger:B:BUS:B<x>:SENT:PAUSE:QUALifier?
             ```
 
@@ -8734,7 +8734,7 @@ class TriggerBBusBItemSentFastCounterQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:QUALifier?
         ```
 
@@ -8853,7 +8853,7 @@ class TriggerBBusBItemSentFastCounter(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:QUALifier?
             ```
 
@@ -8944,7 +8944,7 @@ class TriggerBBusBItemSentFastChan2bQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier?
         ```
 
@@ -9060,7 +9060,7 @@ class TriggerBBusBItemSentFastChan2b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier?
             ```
 
@@ -9150,7 +9150,7 @@ class TriggerBBusBItemSentFastChan1aQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier?
         ```
 
@@ -9266,7 +9266,7 @@ class TriggerBBusBItemSentFastChan1a(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier?
             ```
 
@@ -10847,7 +10847,7 @@ class TriggerBBusBItemMil1553bStatusAddressQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {EQual|UNEQual|LESSthan |MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier?
         ```
 
@@ -10970,7 +10970,7 @@ class TriggerBBusBItemMil1553bStatusAddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {EQual|UNEQual|LESSthan |MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier?
             ```
 
@@ -11296,7 +11296,7 @@ class TriggerBBusBItemMil1553bCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA |TIMe|ERRor}
+        - TRIGger:B:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA|TIMe|ERRor}
         - TRIGger:B:BUS:B<x>:MIL1553B:CONDition?
         ```
 
@@ -11479,7 +11479,7 @@ class TriggerBBusBItemMil1553bCommandAddressQualifier(SCPICmdWrite, SCPICmdRead)
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier?
         ```
 
@@ -11602,7 +11602,7 @@ class TriggerBBusBItemMil1553bCommandAddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier?
             ```
 
@@ -11883,7 +11883,7 @@ class TriggerBBusBItemMil1553b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA |TIMe|ERRor}
+            - TRIGger:B:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA|TIMe|ERRor}
             - TRIGger:B:BUS:B<x>:MIL1553B:CONDition?
             ```
 
@@ -12156,7 +12156,7 @@ class TriggerBBusBItemLinDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:LIN:DATa:QUALifier?
         ```
 
@@ -12273,7 +12273,7 @@ class TriggerBBusBItemLinData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:LIN:DATa:QUALifier?
             ```
 
@@ -12586,7 +12586,7 @@ class TriggerBBusBItemI3cSdrDirectpacket(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime| GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
+        - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya|SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl|GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt|MDATASpeed|HDRCapability|GETXTime|GETCAPS|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe}
         - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket?
         ```
 
@@ -12639,7 +12639,7 @@ class TriggerBBusBItemI3cSdrBroadcastpacket(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
+        - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya|ENTRDya|SETMwrl|SETMrdl|DLSLave|ENTRTSTMode|EXTime|SETaasa|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe|SETBUSCON}
         - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket?
         ```
 
@@ -12706,7 +12706,7 @@ class TriggerBBusBItemI3cSdr(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
+            - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya|ENTRDya|SETMwrl|SETMrdl|DLSLave|ENTRTSTMode|EXTime|SETaasa|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe|SETBUSCON}
             - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket?
             ```
 
@@ -12751,7 +12751,7 @@ class TriggerBBusBItemI3cSdr(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime| GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
+            - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya|SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl|GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt|MDATASpeed|HDRCapability|GETXTime|GETCAPS|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe}
             - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket?
             ```
 
@@ -13020,7 +13020,7 @@ class TriggerBBusBItemI3cCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:I3C:CONDition {STARt| REPEATStart| ADDRess| DATa| SDRDirect| SDRBroadcast| ERRors| HOTJoin| HDRRestart| HDRExit| STOP}
+        - TRIGger:B:BUS:B<x>:I3C:CONDition {STARt|REPEATStart|ADDRess|DATa|SDRDirect|SDRBroadcast|ERRors|HOTJoin|HDRRestart|HDRExit|STOP}
         - TRIGger:B:BUS:B<x>:I3C:CONDition?
         ```
 
@@ -13233,7 +13233,7 @@ class TriggerBBusBItemI3c(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:I3C:CONDition {STARt| REPEATStart| ADDRess| DATa| SDRDirect| SDRBroadcast| ERRors| HOTJoin| HDRRestart| HDRExit| STOP}
+            - TRIGger:B:BUS:B<x>:I3C:CONDition {STARt|REPEATStart|ADDRess|DATa|SDRDirect|SDRBroadcast|ERRors|HOTJoin|HDRRestart|HDRExit|STOP}
             - TRIGger:B:BUS:B<x>:I3C:CONDition?
             ```
 
@@ -14184,7 +14184,7 @@ class TriggerBBusBItemFlexrayFrameidQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan| MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:FLEXray:FRAMEID:QUALifier?
         ```
 
@@ -14301,7 +14301,7 @@ class TriggerBBusBItemFlexrayFrameid(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan| MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:FLEXray:FRAMEID:QUALifier?
             ```
 
@@ -14363,7 +14363,7 @@ class TriggerBBusBItemFlexrayErrtype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic| NULLFRDynamic}
+        - TRIGger:B:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic|NULLFRDynamic}
         - TRIGger:B:BUS:B<x>:FLEXray:ERRTYPE?
         ```
 
@@ -14482,7 +14482,7 @@ class TriggerBBusBItemFlexrayDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:FLEXray:DATa:QUALifier?
         ```
 
@@ -14664,7 +14664,7 @@ class TriggerBBusBItemFlexrayData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:FLEXray:DATa:QUALifier?
             ```
 
@@ -14788,7 +14788,7 @@ class TriggerBBusBItemFlexrayCyclecountQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
         ```
 
@@ -14909,7 +14909,7 @@ class TriggerBBusBItemFlexrayCyclecount(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
             ```
 
@@ -15149,7 +15149,7 @@ class TriggerBBusBItemFlexray(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic| NULLFRDynamic}
+            - TRIGger:B:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic|NULLFRDynamic}
             - TRIGger:B:BUS:B<x>:FLEXray:ERRTYPE?
             ```
 
@@ -16615,7 +16615,7 @@ class TriggerBBusBItemEthernetDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:ETHERnet:DATa:QUALifier {EQual| UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:ETHERnet:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:ETHERnet:DATa:QUALifier?
         ```
 
@@ -16801,7 +16801,7 @@ class TriggerBBusBItemEthernetData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:ETHERnet:DATa:QUALifier {EQual| UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:ETHERnet:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:ETHERnet:DATa:QUALifier?
             ```
 
@@ -16902,7 +16902,7 @@ class TriggerBBusBItemEthernetCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:ETHERnet:CONDition {SFD|MACADDRess|MACLENgth|IPHeader|TCPHeader|DATa|EOP| IDLe|FCSError|QTAG}
+        - TRIGger:B:BUS:B<x>:ETHERnet:CONDition {SFD|MACADDRess|MACLENgth|IPHeader|TCPHeader|DATa|EOP|IDLe|FCSError|QTAG}
         - TRIGger:B:BUS:B<x>:ETHERnet:CONDition?
         ```
 
@@ -16969,7 +16969,7 @@ class TriggerBBusBItemEthernet(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:ETHERnet:CONDition {SFD|MACADDRess|MACLENgth|IPHeader|TCPHeader|DATa|EOP| IDLe|FCSError|QTAG}
+            - TRIGger:B:BUS:B<x>:ETHERnet:CONDition {SFD|MACADDRess|MACLENgth|IPHeader|TCPHeader|DATa|EOP|IDLe|FCSError|QTAG}
             - TRIGger:B:BUS:B<x>:ETHERnet:CONDition?
             ```
 
@@ -18074,7 +18074,7 @@ class TriggerBBusBItemAudioDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:AUDio:DATa:QUALifier {LESSthan| MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:AUDio:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:AUDio:DATa:QUALifier?
         ```
 
@@ -18317,7 +18317,7 @@ class TriggerBBusBItemAudioData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:AUDio:DATa:QUALifier {LESSthan| MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:AUDio:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:AUDio:DATa:QUALifier?
             ```
 
@@ -18719,7 +18719,7 @@ class TriggerBBusBItemArinc429aLabelQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier?
         ```
 
@@ -18836,7 +18836,7 @@ class TriggerBBusBItemArinc429aLabel(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier?
             ```
 
@@ -18961,7 +18961,7 @@ class TriggerBBusBItemArinc429aDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier?
         ```
 
@@ -19078,7 +19078,7 @@ class TriggerBBusBItemArinc429aData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier?
             ```
 
@@ -19142,7 +19142,7 @@ class TriggerBBusBItemArinc429aCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA |EOW|ERRor}
+        - TRIGger:B:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA|EOW|ERRor}
         - TRIGger:B:BUS:B<x>:ARINC429A:CONDition?
         ```
 
@@ -19204,7 +19204,7 @@ class TriggerBBusBItemArinc429a(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA |EOW|ERRor}
+            - TRIGger:B:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA|EOW|ERRor}
             - TRIGger:B:BUS:B<x>:ARINC429A:CONDition?
             ```
 
@@ -20133,7 +20133,7 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:TYPe {EDGE|WIDth|TIMEOut|RUNt|WINdow|LOGIc| SETHold|TRANsition|BUS}
+            - TRIGger:B:TYPe {EDGE|WIDth|TIMEOut|RUNt|WINdow|LOGIc|SETHold|TRANsition|BUS}
             - TRIGger:B:TYPe?
             ```
 
@@ -20275,7 +20275,7 @@ class TriggerAWindowWhen(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:WINdow:WHEn {ENTERSWindow|EXITSWindow| INSIDEGreater|OUTSIDEGreater}
+        - TRIGger:A:WINdow:WHEn {ENTERSWindow|EXITSWindow|INSIDEGreater|OUTSIDEGreater}
         - TRIGger:A:WINdow:WHEn?
         ```
 
@@ -20545,7 +20545,7 @@ class TriggerAWindow(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:WINdow:WHEn {ENTERSWindow|EXITSWindow| INSIDEGreater|OUTSIDEGreater}
+            - TRIGger:A:WINdow:WHEn {ENTERSWindow|EXITSWindow|INSIDEGreater|OUTSIDEGreater}
             - TRIGger:A:WINdow:WHEn?
             ```
 
@@ -20700,7 +20700,7 @@ class TriggerAVideoField(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN| ALLFields}
+        - TRIGger:A:VIDeo:FIELD {ALLLines|NUMERic|ODD|EVEN|ALLFields}
         - TRIGger:A:VIDeo:FIELD?
         ```
 
@@ -20754,7 +20754,7 @@ class TriggerAVideo(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN| ALLFields}
+            - TRIGger:A:VIDeo:FIELD {ALLLines|NUMERic|ODD|EVEN|ALLFields}
             - TRIGger:A:VIDeo:FIELD?
             ```
 
@@ -20956,7 +20956,7 @@ class TriggerAType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:TYPe {EDGE|WIDth|TIMEOut|RUNt|WINdow|LOGIc| SETHold|TRANsition|BUS}
+        - TRIGger:A:TYPe {EDGE|WIDth|TIMEOut|RUNt|WINdow|LOGIc|SETHold|TRANsition|BUS}
         - TRIGger:A:TYPe?
         ```
 
@@ -22671,7 +22671,7 @@ class TriggerALogicWhen(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual| UNEQual}
+        - TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
         - TRIGger:A:LOGIc:WHEn?
         ```
 
@@ -23071,7 +23071,7 @@ class TriggerALogic(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual| UNEQual}
+            - TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
             - TRIGger:A:LOGIc:WHEn?
             ```
 
@@ -24435,7 +24435,7 @@ class TriggerABusBItemUsbDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:USB:DATa:QUALifier {EQual|UNEQual| LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:USB:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:USB:DATa:QUALifier?
         ```
 
@@ -24606,7 +24606,7 @@ class TriggerABusBItemUsbData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:USB:DATa:QUALifier {EQual|UNEQual| LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:USB:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:USB:DATa:QUALifier?
             ```
 
@@ -24723,7 +24723,7 @@ class TriggerABusBItemUsbCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket| HANDSHAKEPacket|SPECIALPacket|ERRor}
+        - TRIGger:A:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket|HANDSHAKEPacket|SPECIALPacket|ERRor}
         - TRIGger:A:BUS:B<x>:USB:CONDition?
         ```
 
@@ -24964,7 +24964,7 @@ class TriggerABusBItemUsb(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket| HANDSHAKEPacket|SPECIALPacket|ERRor}
+            - TRIGger:A:BUS:B<x>:USB:CONDition {SYNC|RESET|SUSPEND|RESUME|EOP|TOKENPacket|DATAPacket|HANDSHAKEPacket|SPECIALPacket|ERRor}
             - TRIGger:A:BUS:B<x>:USB:CONDition?
             ```
 
@@ -25492,7 +25492,7 @@ class TriggerABusBItemSvidErrorType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SVID:ERRor:TYPe {NACK| REJect| MIXed| PARity}
+        - TRIGger:A:BUS:B<x>:SVID:ERRor:TYPe {NACK|REJect|MIXed|PARity}
         - TRIGger:A:BUS:B<x>:SVID:ERRor:TYPe?
         ```
 
@@ -25539,7 +25539,7 @@ class TriggerABusBItemSvidError(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SVID:ERRor:TYPe {NACK| REJect| MIXed| PARity}
+            - TRIGger:A:BUS:B<x>:SVID:ERRor:TYPe {NACK|REJect|MIXed|PARity}
             - TRIGger:A:BUS:B<x>:SVID:ERRor:TYPe?
             ```
 
@@ -25568,7 +25568,7 @@ class TriggerABusBItemSvidCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SVID:CONDition {STARTCONDition| SLAVEADDRess| COMMand| PAYLoad| ERRors}
+        - TRIGger:A:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess|COMMand|PAYLoad|ERRors}
         - TRIGger:A:BUS:B<x>:SVID:CONDition?
         ```
 
@@ -25629,7 +25629,7 @@ class TriggerABusBItemSvidCommandResponse(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SVID:COMMand:RESPonse {GETREG| GETREGVENDor| GETREGTESTCFG| SETVIDFAST| SETVIDSLOW| SETVIDDECay| SETPS| SETREGADDR| SETREGDATa| SETREGADDRVENDor| SETREGDATAVENDor| SETREGADDRTESTCONFg| SETREGDATATESTCONFg| TESTMODe| SETWP| GETREGPKTRECent| GETREGPKTALERt| GETREGPKTBAD| GETREGVREVENt}
+        - TRIGger:A:BUS:B<x>:SVID:COMMand:RESPonse {GETREG|GETREGVENDor|GETREGTESTCFG|SETVIDFAST|SETVIDSLOW|SETVIDDECay|SETPS|SETREGADDR|SETREGDATa|SETREGADDRVENDor|SETREGDATAVENDor|SETREGADDRTESTCONFg|SETREGDATATESTCONFg|TESTMODe|SETWP|GETREGPKTRECent|GETREGPKTALERt|GETREGPKTBAD|GETREGVREVENt}
         - TRIGger:A:BUS:B<x>:SVID:COMMand:RESPonse?
         ```
 
@@ -25693,7 +25693,7 @@ class TriggerABusBItemSvidCommand(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SVID:COMMand:RESPonse {GETREG| GETREGVENDor| GETREGTESTCFG| SETVIDFAST| SETVIDSLOW| SETVIDDECay| SETPS| SETREGADDR| SETREGDATa| SETREGADDRVENDor| SETREGDATAVENDor| SETREGADDRTESTCONFg| SETREGDATATESTCONFg| TESTMODe| SETWP| GETREGPKTRECent| GETREGPKTALERt| GETREGPKTBAD| GETREGVREVENt}
+            - TRIGger:A:BUS:B<x>:SVID:COMMand:RESPonse {GETREG|GETREGVENDor|GETREGTESTCFG|SETVIDFAST|SETVIDSLOW|SETVIDDECay|SETPS|SETREGADDR|SETREGDATa|SETREGADDRVENDor|SETREGDATAVENDor|SETREGADDRTESTCONFg|SETREGDATATESTCONFg|TESTMODe|SETWP|GETREGPKTRECent|GETREGPKTALERt|GETREGPKTBAD|GETREGVREVENt}
             - TRIGger:A:BUS:B<x>:SVID:COMMand:RESPonse?
             ```
 
@@ -25812,7 +25812,7 @@ class TriggerABusBItemSvid(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SVID:CONDition {STARTCONDition| SLAVEADDRess| COMMand| PAYLoad| ERRors}
+            - TRIGger:A:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess|COMMand|PAYLoad|ERRors}
             - TRIGger:A:BUS:B<x>:SVID:CONDition?
             ```
 
@@ -25823,7 +25823,7 @@ class TriggerABusBItemSvid(SCPICmdRead):
             - ``COMMand`` sets the trigger condition to command.
             - ``PAYLoad`` sets the trigger condition to payload.
             - ``ERRors`` sets the trigger condition to errors.
-        """  # noqa: E501
+        """
         return self._condition
 
     @property
@@ -26310,7 +26310,7 @@ class TriggerABusBItemSpmiCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep| SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte| DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd| EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte| AUTHenticate|TRANSferbusownership|PARItyerror}
+        - TRIGger:A:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep|SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte|DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd|EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte|AUTHenticate|TRANSferbusownership|PARItyerror}
         - TRIGger:A:BUS:B<x>:SPMI:CONDition?
         ```
 
@@ -26396,7 +26396,7 @@ class TriggerABusBItemSpmi(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep| SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte| DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd| EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte| AUTHenticate|TRANSferbusownership|PARItyerror}
+            - TRIGger:A:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep|SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte|DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd|EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte|AUTHenticate|TRANSferbusownership|PARItyerror}
             - TRIGger:A:BUS:B<x>:SPMI:CONDition?
             ```
 
@@ -26897,7 +26897,7 @@ class TriggerABusBItemSentSlowDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:QUALifier {EQual| UNEQual| LESSthan| MOREthan| LESSEQual| MOREEQual| INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:QUALifier?
         ```
 
@@ -27014,7 +27014,7 @@ class TriggerABusBItemSentSlowData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:QUALifier {EQual| UNEQual| LESSthan| MOREthan| LESSEQual| MOREEQual| INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:QUALifier?
             ```
 
@@ -27142,7 +27142,7 @@ class TriggerABusBItemSentPauseQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SENT:PAUSE:QUALifier {EQual|UNEQual| LESSthan|MOREthan|LESSEQual|MOREEQual|Inrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|Inrange|OUTrange}
         - TRIGger:A:BUS:B<x>:SENT:PAUSE:QUALifier?
         ```
 
@@ -27195,7 +27195,7 @@ class TriggerABusBItemSentPause(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SENT:PAUSE:QUALifier {EQual|UNEQual| LESSthan|MOREthan|LESSEQual|MOREEQual|Inrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|Inrange|OUTrange}
             - TRIGger:A:BUS:B<x>:SENT:PAUSE:QUALifier?
             ```
 
@@ -27412,7 +27412,7 @@ class TriggerABusBItemSentFastCounterQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:QUALifier?
         ```
 
@@ -27531,7 +27531,7 @@ class TriggerABusBItemSentFastCounter(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:QUALifier?
             ```
 
@@ -27622,7 +27622,7 @@ class TriggerABusBItemSentFastChan2bQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier?
         ```
 
@@ -27738,7 +27738,7 @@ class TriggerABusBItemSentFastChan2b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier?
             ```
 
@@ -27828,7 +27828,7 @@ class TriggerABusBItemSentFastChan1aQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier?
         ```
 
@@ -27944,7 +27944,7 @@ class TriggerABusBItemSentFastChan1a(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan| LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier?
             ```
 
@@ -29525,7 +29525,7 @@ class TriggerABusBItemMil1553bStatusAddressQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {EQual|UNEQual|LESSthan |MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier?
         ```
 
@@ -29648,7 +29648,7 @@ class TriggerABusBItemMil1553bStatusAddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {EQual|UNEQual|LESSthan |MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:MIL1553B:STATus:ADDRess:QUALifier?
             ```
 
@@ -29974,7 +29974,7 @@ class TriggerABusBItemMil1553bCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA |TIMe|ERRor}
+        - TRIGger:A:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA|TIMe|ERRor}
         - TRIGger:A:BUS:B<x>:MIL1553B:CONDition?
         ```
 
@@ -30157,7 +30157,7 @@ class TriggerABusBItemMil1553bCommandAddressQualifier(SCPICmdWrite, SCPICmdRead)
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier?
         ```
 
@@ -30280,7 +30280,7 @@ class TriggerABusBItemMil1553bCommandAddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:ADDRess:QUALifier?
             ```
 
@@ -30561,7 +30561,7 @@ class TriggerABusBItemMil1553b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA |TIMe|ERRor}
+            - TRIGger:A:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA|TIMe|ERRor}
             - TRIGger:A:BUS:B<x>:MIL1553B:CONDition?
             ```
 
@@ -30834,7 +30834,7 @@ class TriggerABusBItemLinDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier?
         ```
 
@@ -30951,7 +30951,7 @@ class TriggerABusBItemLinData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:LIN:DATa:QUALifier?
             ```
 
@@ -31264,7 +31264,7 @@ class TriggerABusBItemI3cSdrDirectpacket(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime| GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
+        - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya|SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl|GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt|MDATASpeed|HDRCapability|GETXTime|GETCAPS|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe}
         - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket?
         ```
 
@@ -31317,7 +31317,7 @@ class TriggerABusBItemI3cSdrBroadcastpacket(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
+        - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya|ENTRDya|SETMwrl|SETMrdl|DLSLave|ENTRTSTMode|EXTime|SETaasa|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe|SETBUSCON}
         - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket?
         ```
 
@@ -31384,7 +31384,7 @@ class TriggerABusBItemI3cSdr(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave| DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave| ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
+            - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya|ENTRDya|SETMwrl|SETMrdl|DLSLave|ENTRTSTMode|EXTime|SETaasa|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe|SETBUSCON}
             - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket?
             ```
 
@@ -31429,7 +31429,7 @@ class TriggerABusBItemI3cSdr(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave| DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya| SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch| GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime| GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
+            - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya|SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl|GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt|MDATASpeed|HDRCapability|GETXTime|GETCAPS|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe}
             - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket?
             ```
 
@@ -31698,7 +31698,7 @@ class TriggerABusBItemI3cCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:I3C:CONDition {STARt| REPEATStart| ADDRess| DATa| SDRDirect| SDRBroadcast| ERRors| HOTJoin| HDRRestart| HDRExit| STOP}
+        - TRIGger:A:BUS:B<x>:I3C:CONDition {STARt|REPEATStart|ADDRess|DATa|SDRDirect|SDRBroadcast|ERRors|HOTJoin|HDRRestart|HDRExit|STOP}
         - TRIGger:A:BUS:B<x>:I3C:CONDition?
         ```
 
@@ -31911,7 +31911,7 @@ class TriggerABusBItemI3c(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:I3C:CONDition {STARt| REPEATStart| ADDRess| DATa| SDRDirect| SDRBroadcast| ERRors| HOTJoin| HDRRestart| HDRExit| STOP}
+            - TRIGger:A:BUS:B<x>:I3C:CONDition {STARt|REPEATStart|ADDRess|DATa|SDRDirect|SDRBroadcast|ERRors|HOTJoin|HDRRestart|HDRExit|STOP}
             - TRIGger:A:BUS:B<x>:I3C:CONDition?
             ```
 
@@ -32862,7 +32862,7 @@ class TriggerABusBItemFlexrayFrameidQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan| MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier?
         ```
 
@@ -32979,7 +32979,7 @@ class TriggerABusBItemFlexrayFrameid(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan| MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:QUALifier?
             ```
 
@@ -33041,7 +33041,7 @@ class TriggerABusBItemFlexrayErrtype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic| NULLFRDynamic}
+        - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic|NULLFRDynamic}
         - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE?
         ```
 
@@ -33160,7 +33160,7 @@ class TriggerABusBItemFlexrayDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier?
         ```
 
@@ -33342,7 +33342,7 @@ class TriggerABusBItemFlexrayData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier?
             ```
 
@@ -33466,7 +33466,7 @@ class TriggerABusBItemFlexrayCyclecountQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
         ```
 
@@ -33587,7 +33587,7 @@ class TriggerABusBItemFlexrayCyclecount(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual| INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
             ```
 
@@ -33827,7 +33827,7 @@ class TriggerABusBItemFlexray(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic| NULLFRDynamic}
+            - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE {CRCHeader|CRCTrailer|SYNCFrame|STARTupnosync|NULLFRStatic|NULLFRDynamic}
             - TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE?
             ```
 
@@ -35293,7 +35293,7 @@ class TriggerABusBItemEthernetDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:ETHERnet:DATa:QUALifier {EQual| UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:ETHERnet:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:ETHERnet:DATa:QUALifier?
         ```
 
@@ -35479,7 +35479,7 @@ class TriggerABusBItemEthernetData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:ETHERnet:DATa:QUALifier {EQual| UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:ETHERnet:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:ETHERnet:DATa:QUALifier?
             ```
 
@@ -35580,7 +35580,7 @@ class TriggerABusBItemEthernetCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:ETHERnet:CONDition {SFD|MACADDRess|MACLENgth|IPHeader|TCPHeader|DATa|EOP| IDLe|FCSError|QTAG}
+        - TRIGger:A:BUS:B<x>:ETHERnet:CONDition {SFD|MACADDRess|MACLENgth|IPHeader|TCPHeader|DATa|EOP|IDLe|FCSError|QTAG}
         - TRIGger:A:BUS:B<x>:ETHERnet:CONDition?
         ```
 
@@ -35647,7 +35647,7 @@ class TriggerABusBItemEthernet(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:ETHERnet:CONDition {SFD|MACADDRess|MACLENgth|IPHeader|TCPHeader|DATa|EOP| IDLe|FCSError|QTAG}
+            - TRIGger:A:BUS:B<x>:ETHERnet:CONDition {SFD|MACADDRess|MACLENgth|IPHeader|TCPHeader|DATa|EOP|IDLe|FCSError|QTAG}
             - TRIGger:A:BUS:B<x>:ETHERnet:CONDition?
             ```
 
@@ -36752,7 +36752,7 @@ class TriggerABusBItemAudioDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:AUDio:DATa:QUALifier {LESSthan| MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:AUDio:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:AUDio:DATa:QUALifier?
         ```
 
@@ -36995,7 +36995,7 @@ class TriggerABusBItemAudioData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:AUDio:DATa:QUALifier {LESSthan| MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:AUDio:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:AUDio:DATa:QUALifier?
             ```
 
@@ -37397,7 +37397,7 @@ class TriggerABusBItemArinc429aLabelQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier?
         ```
 
@@ -37514,7 +37514,7 @@ class TriggerABusBItemArinc429aLabel(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier?
             ```
 
@@ -37639,7 +37639,7 @@ class TriggerABusBItemArinc429aDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier?
         ```
 
@@ -37756,7 +37756,7 @@ class TriggerABusBItemArinc429aData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan |LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier?
             ```
 
@@ -37820,7 +37820,7 @@ class TriggerABusBItemArinc429aCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA |EOW|ERRor}
+        - TRIGger:A:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA|EOW|ERRor}
         - TRIGger:A:BUS:B<x>:ARINC429A:CONDition?
         ```
 
@@ -37882,7 +37882,7 @@ class TriggerABusBItemArinc429a(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA |EOW|ERRor}
+            - TRIGger:A:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA|EOW|ERRor}
             - TRIGger:A:BUS:B<x>:ARINC429A:CONDition?
             ```
 
@@ -38755,7 +38755,7 @@ class TriggerA(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:TYPe {EDGE|WIDth|TIMEOut|RUNt|WINdow|LOGIc| SETHold|TRANsition|BUS}
+            - TRIGger:A:TYPe {EDGE|WIDth|TIMEOut|RUNt|WINdow|LOGIc|SETHold|TRANsition|BUS}
             - TRIGger:A:TYPe?
             ```
 

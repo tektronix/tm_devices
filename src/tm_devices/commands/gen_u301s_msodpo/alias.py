@@ -11,7 +11,8 @@ Commands and Queries:
     ```
     - ALIas {OFF|ON|<NR1>}
     - ALIas:CATalog?
-    - ALIas:DEFine <QString><,>{<QString>|<Block>}? <QString>
+    - ALIas:DEFine <QString><,>{<QString>|<Block>}
+    - ALIas:DEFine? <QString>
     - ALIas:DELEte <QString>
     - ALIas:DELEte:ALL
     - ALIas:DELEte:NAMe <QString>
@@ -23,7 +24,7 @@ Commands and Queries:
 
 from typing import Optional, TYPE_CHECKING
 
-from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
+from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
@@ -163,7 +164,7 @@ class AliasDelete(SCPICmdWrite, SCPICmdRead):
         return self._name
 
 
-class AliasDefine(SCPICmdWrite):
+class AliasDefine(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``ALIas:DEFine`` command.
 
     Description:
@@ -173,11 +174,15 @@ class AliasDefine(SCPICmdWrite):
           of a selected alias.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``ALIas:DEFine? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the ``ALIas:DEFine? argument``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``ALIas:DEFine value`` command.
 
     SCPI Syntax:
         ```
-        - ALIas:DEFine <QString><,>{<QString>|<Block>}? <QString>
+        - ALIas:DEFine <QString><,>{<QString>|<Block>}
+        - ALIas:DEFine? <QString>
         ```
 
     Info:
@@ -275,11 +280,15 @@ class Alias(SCPICmdWrite, SCPICmdRead):
               definitions of a selected alias.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``ALIas:DEFine? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the ``ALIas:DEFine? argument``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``ALIas:DEFine value`` command.
 
         SCPI Syntax:
             ```
-            - ALIas:DEFine <QString><,>{<QString>|<Block>}? <QString>
+            - ALIas:DEFine <QString><,>{<QString>|<Block>}
+            - ALIas:DEFine? <QString>
             ```
 
         Info:

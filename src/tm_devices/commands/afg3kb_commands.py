@@ -44,7 +44,6 @@ class AFG3KBCommandConstants:
     """
 
     EMEMORY = "EMEMORY"  # EMEMory
-    EMEMORY1 = "EMEMORY1"  # EMEMory1
     EMEMORY2 = "EMEMORY2"  # EMEMory2
     EXTERNAL = "EXTERNAL"  # EXTernal
     NEGATIVE = "NEGATIVE"  # NEGative

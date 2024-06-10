@@ -1,4 +1,3 @@
-# pylint: disable=line-too-long
 """The mmemory commands module.
 
 These commands are used in the following models:
@@ -13,8 +12,9 @@ Commands and Queries:
     - MMEMory:CATalog? [<msus>]
     - MMEMory:CDIRectory [<directory_name>]
     - MMEMory:CDIRectory?
-    - MMEMory:DATA <file_path>[,<start_index>],<block_data>? <file_path>[,<start_index>[,<size>]]
+    - MMEMory:DATA <file_path>[,<start_index>],<block_data>
     - MMEMory:DATA:SIZE? <file_path>
+    - MMEMory:DATA? <file_path>[,<start_index>[,<size>]]
     - MMEMory:DELete <file_name>[,<msus>]
     - MMEMory:IMPort <wfm_name>,<filepath>,<type>
     - MMEMory:IMPort:PARameter:NORMalize <Type>
@@ -984,23 +984,27 @@ class MmemoryDataSize(SCPICmdReadWithArguments):
     """
 
 
-class MmemoryData(SCPICmdWrite, SCPICmdRead):
+class MmemoryData(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``MMEMory:DATA`` command.
 
     Description:
         - This command sets or returns block data to/from a file in the current mass storage device.
 
     Usage:
+        - Using the ``.query(argument)`` method will send the ``MMEMory:DATA? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the ``MMEMory:DATA? argument``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MMEMory:DATA value`` command.
 
     SCPI Syntax:
         ```
-        - MMEMory:DATA <file_path>[,<start_index>],<block_data>? <file_path>[,<start_index>[,<size>]]
+        - MMEMory:DATA <file_path>[,<start_index>],<block_data>
+        - MMEMory:DATA? <file_path>[,<start_index>[,<size>]]
         ```
 
     Properties:
         - ``.size``: The ``MMEMory:DATA:SIZE`` command.
-    """  # noqa: E501
+    """
 
     def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
@@ -1150,16 +1154,20 @@ class Mmemory(SCPICmdRead):
               device.
 
         Usage:
+            - Using the ``.query(argument)`` method will send the ``MMEMory:DATA? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the ``MMEMory:DATA? argument``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MMEMory:DATA value`` command.
 
         SCPI Syntax:
             ```
-            - MMEMory:DATA <file_path>[,<start_index>],<block_data>? <file_path>[,<start_index>[,<size>]]
+            - MMEMory:DATA <file_path>[,<start_index>],<block_data>
+            - MMEMory:DATA? <file_path>[,<start_index>[,<size>]]
             ```
 
         Sub-properties:
             - ``.size``: The ``MMEMory:DATA:SIZE`` command.
-        """  # noqa: E501
+        """
         return self._data
 
     @property

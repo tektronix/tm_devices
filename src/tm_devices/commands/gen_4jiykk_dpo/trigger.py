@@ -46,7 +46,7 @@ Commands and Queries:
     - TRIGger:A:BUS:DATa:FORMat?
     - TRIGger:A:BUS:DATa:VALue <string>
     - TRIGger:A:BUS:DATa:VALue?
-    - TRIGger:A:BUS:ETHERnet:DATa:FORMat {BINARY | HEX}
+    - TRIGger:A:BUS:ETHERnet:DATa:FORMat {BINARY|HEX}
     - TRIGger:A:BUS:ETHERnet:DATa:FORMat?
     - TRIGger:A:BUS:ETHERnet:IPHeader:SOUrceaddr:VALue <QString>
     - TRIGger:A:BUS:ETHERnet:IPHeader:SOUrceaddr:VALue?
@@ -70,7 +70,7 @@ Commands and Queries:
     - TRIGger:A:BUS:FLEXRAY:DATa:VALue?
     - TRIGger:A:BUS:FLEXRAY:EOFTYPE {ALL|STATIC|DYNAMIC}
     - TRIGger:A:BUS:FLEXRAY:EOFTYPE?
-    - TRIGger:A:BUS:FLEXRAY:ERRTYPE {CRCHEADer|CRCTRAILer|NULLFRSTATIC|NULLFRDYNAMIC |SYNCFRAME|STARTUPNOSYNC}
+    - TRIGger:A:BUS:FLEXRAY:ERRTYPE {CRCHEADer|CRCTRAILer|NULLFRSTATIC|NULLFRDYNAMIC|SYNCFRAME|STARTUPNOSYNC}
     - TRIGger:A:BUS:FLEXRAY:ERRTYPE?
     - TRIGger:A:BUS:FLEXRAY:FRAMEType {NORMal|PAYload|NULL|SYNC|STARTup}
     - TRIGger:A:BUS:FLEXRAY:FRAMEType?
@@ -212,17 +212,17 @@ Commands and Queries:
     - TRIGger:A:BUS:RS232C:DATa:SIZe?
     - TRIGger:A:BUS:RS232C:DATa:VALue <string>
     - TRIGger:A:BUS:RS232C:DATa:VALue?
-    - TRIGger:A:BUS:S64B66B:BLOCKONE { SYNC | INVSYNC | BLOCKtype | PATtern }
-    - TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType { NONe | X1E | X2D | X33 | X66 | X55 | X78 | X4B | X87 | X99 | XB4 | XCC | XD2 | XE1 | XFF }
+    - TRIGger:A:BUS:S64B66B:BLOCKONE { SYNC|INVSYNC|BLOCKtype|PATtern }
+    - TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType { NONe|X1E|X2D|X33|X66|X55|X78|X4B|X87|X99|XB4|XCC|XD2|XE1|XFF }
     - TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType?
-    - TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat { Binary | HEX }
+    - TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat { Binary|HEX }
     - TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat?
     - TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:SYNC <string>
     - TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:SYNC?
     - TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:VALue <string>
     - TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:VALue?
     - TRIGger:A:BUS:S64B66B:BLOCKONE?
-    - TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat { Binary | HEX }
+    - TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat { Binary|HEX }
     - TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat?
     - TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:PATTERNOne:SYNC <string>
     - TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:PATTERNOne:SYNC?
@@ -232,7 +232,7 @@ Commands and Queries:
     - TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:PATTERNTwo:SYNC?
     - TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:PATTERNTwo:VALue <string>
     - TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:PATTERNTwo:VALue?
-    - TRIGger:A:BUS:S64B66B:CONDition { BLOCK | BLOCK1THEN2 }
+    - TRIGger:A:BUS:S64B66B:CONDition { BLOCK|BLOCK1THEN2 }
     - TRIGger:A:BUS:S64B66B:CONDition?
     - TRIGger:A:BUS:S8B10B:CHARacter:CHAR <string>
     - TRIGger:A:BUS:S8B10B:CHARacter:CHAR?
@@ -254,7 +254,7 @@ Commands and Queries:
     - TRIGger:A:BUS:S8B10B:PATtern:SYMbol:MINus<x>?
     - TRIGger:A:BUS:S8B10B:PATtern:SYMbol:PLUS<x> <string>
     - TRIGger:A:BUS:S8B10B:PATtern:SYMbol:PLUS<x>?
-    - TRIGger:A:BUS:SOUrce {B1|B2|B3|B4|B5|B6|B7|B8|B9|B10|B11|B12| B13|B14|B15|B16}
+    - TRIGger:A:BUS:SOUrce {B1|B2|B3|B4|B5|B6|B7|B8|B9|B10|B11|B12|B13|B14|B15|B16}
     - TRIGger:A:BUS:SOUrce?
     - TRIGger:A:BUS:SPI:CONDition {DATA|SS}
     - TRIGger:A:BUS:SPI:CONDition?
@@ -276,7 +276,7 @@ Commands and Queries:
     - TRIGger:A:BUS:USB:CHARacter:SYMbol:MINus?
     - TRIGger:A:BUS:USB:CHARacter:SYMbol:PLUS <string>
     - TRIGger:A:BUS:USB:CHARacter:SYMbol:PLUS?
-    - TRIGger:A:BUS:USB:CONDition {DATAPacket|EOP|ERROR|HANDSHAKEPacket|RESET|RESUME| SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
+    - TRIGger:A:BUS:USB:CONDition {DATAPacket|EOP|ERROR|HANDSHAKEPacket|RESET|RESUME|SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
     - TRIGger:A:BUS:USB:CONDition?
     - TRIGger:A:BUS:USB:DATa:FORMat {BINary|HEXadecimal}
     - TRIGger:A:BUS:USB:DATa:FORMat?
@@ -316,7 +316,7 @@ Commands and Queries:
     - TRIGger:A:BUS:USB:PATtern:SYMbol:MINus<x>?
     - TRIGger:A:BUS:USB:PATtern:SYMbol:PLUS<x> <string>
     - TRIGger:A:BUS:USB:PATtern:SYMbol:PLUS<x>?
-    - TRIGger:A:BUS:USB:QUAlifier {EQUal|INrange|LESSEQual|MOREEQual|OUTrange|UNEQual| LESSThan|MOREThan}
+    - TRIGger:A:BUS:USB:QUAlifier {EQUal|INrange|LESSEQual|MOREEQual|OUTrange|UNEQual|LESSThan|MOREThan}
     - TRIGger:A:BUS:USB:QUAlifier?
     - TRIGger:A:BUS:USB:SOF:FORMat {BINary|HEXadecimal|SYMBolic}
     - TRIGger:A:BUS:USB:SOF:FORMat?
@@ -362,25 +362,25 @@ Commands and Queries:
     - TRIGger:A:CAN:PROBE?
     - TRIGger:A:CAN:SPEed <NR3>
     - TRIGger:A:CAN:SPEed?
-    - TRIGger:A:COMMunication:AMI:PULSEForm {PLUSOne|MINUSOne| EYEdiagram}
+    - TRIGger:A:COMMunication:AMI:PULSEForm {PLUSOne|MINUSOne|EYEdiagram}
     - TRIGger:A:COMMunication:AMI:PULSEForm?
     - TRIGger:A:COMMunication:AMI:THReshold:HIGH <NR3>
     - TRIGger:A:COMMunication:AMI:THReshold:HIGH?
     - TRIGger:A:COMMunication:AMI:THReshold:LOW <NR3>
     - TRIGger:A:COMMunication:AMI:THReshold:LOW?
-    - TRIGger:A:COMMunication:B3ZS:PULSEForm {PLUSOne|MINUSOne| EYEdiagram}
+    - TRIGger:A:COMMunication:B3ZS:PULSEForm {PLUSOne|MINUSOne|EYEdiagram}
     - TRIGger:A:COMMunication:B3ZS:PULSEForm?
     - TRIGger:A:COMMunication:B3ZS:THReshold:HIGH <NR3>
     - TRIGger:A:COMMunication:B3ZS:THReshold:HIGH?
     - TRIGger:A:COMMunication:B3ZS:THReshold:LOW <NR3>
     - TRIGger:A:COMMunication:B3ZS:THReshold:LOW?
-    - TRIGger:A:COMMunication:B6ZS:PULSEForm {PLUSOne|MINUSOne| EYEdiagram}
+    - TRIGger:A:COMMunication:B6ZS:PULSEForm {PLUSOne|MINUSOne|EYEdiagram}
     - TRIGger:A:COMMunication:B6ZS:PULSEForm?
     - TRIGger:A:COMMunication:B6ZS:THReshold:HIGH <NR3>
     - TRIGger:A:COMMunication:B6ZS:THReshold:HIGH?
     - TRIGger:A:COMMunication:B6ZS:THReshold:LOW <NR3>
     - TRIGger:A:COMMunication:B6ZS:THReshold:LOW?
-    - TRIGger:A:COMMunication:B8ZS:PULSEForm {PLUSOne|MINUSOne| EYEdiagram}
+    - TRIGger:A:COMMunication:B8ZS:PULSEForm {PLUSOne|MINUSOne|EYEdiagram}
     - TRIGger:A:COMMunication:B8ZS:PULSEForm?
     - TRIGger:A:COMMunication:B8ZS:THReshold:HIGH <NR3>
     - TRIGger:A:COMMunication:B8ZS:THReshold:HIGH?
@@ -394,7 +394,7 @@ Commands and Queries:
     - TRIGger:A:COMMunication:CMI:PULSEForm?
     - TRIGger:A:COMMunication:CODe {AMI|HDB3|B3ZS|B6ZS|B8ZS|CMI|NRZ|MLT3|MANChester}
     - TRIGger:A:COMMunication:CODe?
-    - TRIGger:A:COMMunication:HDB3:PULSEForm {PLUSOne|MINUSOne| EYEdiagram}
+    - TRIGger:A:COMMunication:HDB3:PULSEForm {PLUSOne|MINUSOne|EYEdiagram}
     - TRIGger:A:COMMunication:HDB3:PULSEForm?
     - TRIGger:A:COMMunication:HDB3:THReshold:HIGH <NR3>
     - TRIGger:A:COMMunication:HDB3:THReshold:HIGH?
@@ -404,7 +404,7 @@ Commands and Queries:
     - TRIGger:A:COMMunication:SOUrce:TYPe {DATa|CLOCk|RECOVered}
     - TRIGger:A:COMMunication:SOUrce:TYPe?
     - TRIGger:A:COMMunication:SOUrce?
-    - TRIGger:A:COMMunication:STANdard {ATAG<x>|CLOCKCoax| CLOCKSymmetrical|Custom|D<x>|DS0Contra| DS0Double| DS0Single|DS0Timing|DS1|DS1A| DS1C|DS2| DS2RATECoax|DS2RATESymmetrical| DS3|DS4NA|E1|E2|E3|E4|ENET100|ENET1250| ENETXAUI| FC133|FC266|FC531|FC1063|FC2125|FC4250| FST|FW1394BS400B|FW1394BS1600B|HST|INF2_5G| OC1|OC3| OC12|OC48|OC48_FEC|PCIEXPRESS|RATE32Mbit| RATE97Mbit|RIO_500M|RIO_750M| RIO_1G|RIO_2G|RIO_1_5G|RIO_SERIAL_1G| RIO_SERIAL_2G|RIO_SERIAL_3G|SAS1_5|SAS3_?| SFI5_2|SFI5_3|STM0_CMI|STM0_HDBX|STM1E|STS1| STS3| TFI5_2|TFI5_3|VIDEO270|VIDEO292M|VIDEO360|VSROC192}
+    - TRIGger:A:COMMunication:STANdard {ATAG<x>|CLOCKCoax|CLOCKSymmetrical|Custom|D<x>|DS0Contra|DS0Double|DS0Single|DS0Timing|DS1|DS1A|DS1C|DS2|DS2RATECoax|DS2RATESymmetrical|DS3|DS4NA|E1|E2|E3|E4|ENET100|ENET1250|ENETXAUI|FC133|FC266|FC531|FC1063|FC2125|FC4250|FST|FW1394BS400B|FW1394BS1600B|HST|INF2_5G|OC1|OC3|OC12|OC48|OC48_FEC|PCIEXPRESS|RATE32Mbit|RATE97Mbit|RIO_500M|RIO_750M|RIO_1G|RIO_2G|RIO_1_5G|RIO_SERIAL_1G|RIO_SERIAL_2G|RIO_SERIAL_3G|SAS1_5|SAS3_?|SFI5_2|SFI5_3|STM0_CMI|STM0_HDBX|STM1E|STS1|STS3|TFI5_2|TFI5_3|VIDEO270|VIDEO292M|VIDEO360|VSROC192}
     - TRIGger:A:COMMunication:STANdard?
     - TRIGger:A:EDGE:COUPling {AC|DC|HFRej|LFRej|NOISErej|ATRIGger}
     - TRIGger:A:EDGE:COUPling:CH<x> {AC|DC|HFRej|LFRej|NOISErej}
@@ -494,7 +494,7 @@ Commands and Queries:
     - TRIGger:A:PLOCK:LENGTH?
     - TRIGger:A:PLOCK:SOURCE CH<x>
     - TRIGger:A:PLOCK:SOURCE?
-    - TRIGger:A:PULse:CLAss {GLItch|RUNT|WIDth| TRANsition|TIMEOut|WINdow}
+    - TRIGger:A:PULse:CLAss {GLItch|RUNT|WIDth|TRANsition|TIMEOut|WINdow}
     - TRIGger:A:PULse:CLAss?
     - TRIGger:A:PULse:GLItch:ENVelope <OFF|ON>
     - TRIGger:A:PULse:GLItch:ENVelope?
@@ -518,11 +518,11 @@ Commands and Queries:
     - TRIGger:A:PULse:PERiod:LOWLimit?
     - TRIGger:A:PULse:PERiod:POLarity {NEGAtive|POSITIVe}
     - TRIGger:A:PULse:PERiod:POLarity?
-    - TRIGger:A:PULse:PERiod:QUAlify {OCCurs | LOGIC | BUS}
+    - TRIGger:A:PULse:PERiod:QUAlify {OCCurs|LOGIC|BUS}
     - TRIGger:A:PULse:PERiod:QUAlify?
     - TRIGger:A:PULse:PERiod:VIEW {PERiod|FREQuency}
     - TRIGger:A:PULse:PERiod:VIEW?
-    - TRIGger:A:PULse:PERiod:WHEn {LESSthan | GREATerthan | WITHin | OUTside}
+    - TRIGger:A:PULse:PERiod:WHEn {LESSthan|GREATerthan|WITHin|OUTside}
     - TRIGger:A:PULse:PERiod:WHEn?
     - TRIGger:A:PULse:PERiod?
     - TRIGger:A:PULse:RUNT:LOGIc:INPUT:CH<x> {HIGH|LOW|X}
@@ -646,7 +646,7 @@ Commands and Queries:
     - TRIGger:A:SERIAL:LOCKOffset?
     - TRIGger:A:SERIAL:SOUrce {CH<x>}
     - TRIGger:A:SERIAL:SOUrce?
-    - TRIGger:A:SERIAL:STANdard {FC133|FC266|FC531|FC1063|D<x>|VIDEO270|VIDEO360|OC1|OC3| OC12|ENET1250|FW1394BS400B|FW1394BS800B|CUSTom|ENET100FX| RIO_500M|RIO_750M|RIO_1G|RIO_SERIAL_1G|VSROC192|ENETXAUI| SAS3_?|PCIExpress|INFINIBAND|RIO_SERIAL_2G|RIO_SERIAL_3G| FC2125|RIO_2G|FW1394BS1600B|SAS1_5|ENETXAUI|ENETXAUI2| FC2125|FC4250|FW1394BS1600B|INFINIBAND|PCIExpress|PCIExpress2| RIO_2G|RIO_500M|RIO_750M|RIO_SERIAL_1G|RIO_SERIAL_2_5G| RIO_SERIAL_3G|SAS6_0|SATA1_5|SATA3_0|SATA6_0}
+    - TRIGger:A:SERIAL:STANdard {FC133|FC266|FC531|FC1063|D<x>|VIDEO270|VIDEO360|OC1|OC3|OC12|ENET1250|FW1394BS400B|FW1394BS800B|CUSTom|ENET100FX|RIO_500M|RIO_750M|RIO_1G|RIO_SERIAL_1G|VSROC192|ENETXAUI|SAS3_?|PCIExpress|INFINIBAND|RIO_SERIAL_2G|RIO_SERIAL_3G|FC2125|RIO_2G|FW1394BS1600B|SAS1_5|ENETXAUI|ENETXAUI2|FC2125|FC4250|FW1394BS1600B|INFINIBAND|PCIExpress|PCIExpress2|RIO_2G|RIO_500M|RIO_750M|RIO_SERIAL_1G|RIO_SERIAL_2_5G|RIO_SERIAL_3G|SAS6_0|SATA1_5|SATA3_0|SATA6_0}
     - TRIGger:A:SERIAL:STANdard?
     - TRIGger:A:SERIAL:TRIGgeron {PATtern|LOck}
     - TRIGger:A:SERIAL:TRIGgeron?
@@ -686,7 +686,7 @@ Commands and Queries:
     - TRIGger:A:SPI:SS:LEVel?
     - TRIGger:A:SPI:SS:SOUrce CH<x>
     - TRIGger:A:SPI:SS:SOUrce?
-    - TRIGger:A:TYPe {EDGE|LOGIc|PULse|VIDeo| I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
+    - TRIGger:A:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
     - TRIGger:A:TYPe?
     - TRIGger:A:UPPerthreshold:CH<x> {ECL|TTL|<NR3>}
     - TRIGger:A:UPPerthreshold:CH<x>?
@@ -709,7 +709,7 @@ Commands and Queries:
     - TRIGger:A:VIDeo:SCAN?
     - TRIGger:A:VIDeo:SOUrce CH<x>
     - TRIGger:A:VIDeo:SOUrce?
-    - TRIGger:A:VIDeo:STANdard {BILevelcustom|TRILevelcustom|NTSc|PAL| SECAM|HD480P60|HD576P50|HD875I60|HD720P30|HD720P50| HD720P60|HD1080I50|HD1080I60|HD1080P24| HD1080P25|HD1080P30|HD1080P50|HD1080P60| HD1080SF24}
+    - TRIGger:A:VIDeo:STANdard {BILevelcustom|TRILevelcustom|NTSc|PAL|SECAM|HD480P60|HD576P50|HD875I60|HD720P30|HD720P50|HD720P60|HD1080I50|HD1080I60|HD1080P24|HD1080P25|HD1080P30|HD1080P50|HD1080P60|HD1080SF24}
     - TRIGger:A:VIDeo:STANdard?
     - TRIGger:A:VIDeo?
     - TRIGger:A?
@@ -793,7 +793,7 @@ Commands and Queries:
     - TRIGger:B:LOGIc?
     - TRIGger:B:LOWerthreshold:CH<x> {ECL|TTL|<NR3>}
     - TRIGger:B:LOWerthreshold:CH<x>?
-    - TRIGger:B:PULse:CLAss {GLItch|RUNT|WIDth| TRANsition|TIMEOut|WINdow}
+    - TRIGger:B:PULse:CLAss {GLItch|RUNT|WIDth|TRANsition|TIMEOut|WINdow}
     - TRIGger:B:PULse:CLAss?
     - TRIGger:B:PULse:GLItch:ENVelope <OFF|ON>
     - TRIGger:B:PULse:GLItch:ENVelope?
@@ -817,11 +817,11 @@ Commands and Queries:
     - TRIGger:B:PULse:PERiod:LOWLimit?
     - TRIGger:B:PULse:PERiod:POLarity {NEGAtive|POSITIVe}
     - TRIGger:B:PULse:PERiod:POLarity?
-    - TRIGger:B:PULse:PERiod:QUAlify {OCCurs | LOGIC | BUS}
+    - TRIGger:B:PULse:PERiod:QUAlify {OCCurs|LOGIC|BUS}
     - TRIGger:B:PULse:PERiod:QUAlify?
     - TRIGger:B:PULse:PERiod:VIEW {PERiod|FREQuency}
     - TRIGger:B:PULse:PERiod:VIEW?
-    - TRIGger:B:PULse:PERiod:WHEn {LESSthan | GREATerthan | WITHin | OUTside}
+    - TRIGger:B:PULse:PERiod:WHEn {LESSthan|GREATerthan|WITHin|OUTside}
     - TRIGger:B:PULse:PERiod:WHEn?
     - TRIGger:B:PULse:PERiod?
     - TRIGger:B:PULse:RUNT:POLarity {POSITIVe|NEGAtive|EITher}
@@ -945,7 +945,7 @@ Commands and Queries:
     - TRIGger:B:STATE?
     - TRIGger:B:TIMe <NR3>
     - TRIGger:B:TIMe?
-    - TRIGger:B:TYPe {EDGE|LOGIc|PULse|VIDeo| I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
+    - TRIGger:B:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
     - TRIGger:B:TYPe?
     - TRIGger:B:UPPerthreshold:CH<x> {ECL|TTL|<NR3>}
     - TRIGger:B:UPPerthreshold:CH<x>?
@@ -2247,7 +2247,7 @@ class TriggerBType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:TYPe {EDGE|LOGIc|PULse|VIDeo| I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
+        - TRIGger:B:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
         - TRIGger:B:TYPe?
         ```
 
@@ -6236,7 +6236,7 @@ class TriggerBPulsePeriodWhen(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:PULse:PERiod:WHEn {LESSthan | GREATerthan | WITHin | OUTside}
+        - TRIGger:B:PULse:PERiod:WHEn {LESSthan|GREATerthan|WITHin|OUTside}
         - TRIGger:B:PULse:PERiod:WHEn?
         ```
 
@@ -6301,7 +6301,7 @@ class TriggerBPulsePeriodQualify(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:PULse:PERiod:QUAlify {OCCurs | LOGIC | BUS}
+        - TRIGger:B:PULse:PERiod:QUAlify {OCCurs|LOGIC|BUS}
         - TRIGger:B:PULse:PERiod:QUAlify?
         ```
 
@@ -6559,7 +6559,7 @@ class TriggerBPulsePeriod(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:PULse:PERiod:QUAlify {OCCurs | LOGIC | BUS}
+            - TRIGger:B:PULse:PERiod:QUAlify {OCCurs|LOGIC|BUS}
             - TRIGger:B:PULse:PERiod:QUAlify?
             ```
 
@@ -6626,7 +6626,7 @@ class TriggerBPulsePeriod(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:PULse:PERiod:WHEn {LESSthan | GREATerthan | WITHin | OUTside}
+            - TRIGger:B:PULse:PERiod:WHEn {LESSthan|GREATerthan|WITHin|OUTside}
             - TRIGger:B:PULse:PERiod:WHEn?
             ```
 
@@ -7168,7 +7168,7 @@ class TriggerBPulseClass(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:PULse:CLAss {GLItch|RUNT|WIDth| TRANsition|TIMEOut|WINdow}
+        - TRIGger:B:PULse:CLAss {GLItch|RUNT|WIDth|TRANsition|TIMEOut|WINdow}
         - TRIGger:B:PULse:CLAss?
         ```
 
@@ -7283,7 +7283,7 @@ class TriggerBPulse(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:PULse:CLAss {GLItch|RUNT|WIDth| TRANsition|TIMEOut|WINdow}
+            - TRIGger:B:PULse:CLAss {GLItch|RUNT|WIDth|TRANsition|TIMEOut|WINdow}
             - TRIGger:B:PULse:CLAss?
             ```
 
@@ -10560,7 +10560,7 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:TYPe {EDGE|LOGIc|PULse|VIDeo| I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
+            - TRIGger:B:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
             - TRIGger:B:TYPe?
             ```
 
@@ -10646,7 +10646,7 @@ class TriggerAVideoStandard(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:VIDeo:STANdard {BILevelcustom|TRILevelcustom|NTSc|PAL| SECAM|HD480P60|HD576P50|HD875I60|HD720P30|HD720P50| HD720P60|HD1080I50|HD1080I60|HD1080P24| HD1080P25|HD1080P30|HD1080P50|HD1080P60| HD1080SF24}
+        - TRIGger:A:VIDeo:STANdard {BILevelcustom|TRILevelcustom|NTSc|PAL|SECAM|HD480P60|HD576P50|HD875I60|HD720P30|HD720P50|HD720P60|HD1080I50|HD1080I60|HD1080P24|HD1080P25|HD1080P30|HD1080P50|HD1080P60|HD1080SF24}
         - TRIGger:A:VIDeo:STANdard?
         ```
 
@@ -11331,7 +11331,7 @@ class TriggerAVideo(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:VIDeo:STANdard {BILevelcustom|TRILevelcustom|NTSc|PAL| SECAM|HD480P60|HD576P50|HD875I60|HD720P30|HD720P50| HD720P60|HD1080I50|HD1080I60|HD1080P24| HD1080P25|HD1080P30|HD1080P50|HD1080P60| HD1080SF24}
+            - TRIGger:A:VIDeo:STANdard {BILevelcustom|TRILevelcustom|NTSc|PAL|SECAM|HD480P60|HD576P50|HD875I60|HD720P30|HD720P50|HD720P60|HD1080I50|HD1080I60|HD1080P24|HD1080P25|HD1080P30|HD1080P50|HD1080P60|HD1080SF24}
             - TRIGger:A:VIDeo:STANdard?
             ```
 
@@ -11473,7 +11473,7 @@ class TriggerAType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:TYPe {EDGE|LOGIc|PULse|VIDeo| I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
+        - TRIGger:A:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
         - TRIGger:A:TYPe?
         ```
 
@@ -12684,7 +12684,7 @@ class TriggerASerialStandard(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:SERIAL:STANdard {FC133|FC266|FC531|FC1063|D<x>|VIDEO270|VIDEO360|OC1|OC3| OC12|ENET1250|FW1394BS400B|FW1394BS800B|CUSTom|ENET100FX| RIO_500M|RIO_750M|RIO_1G|RIO_SERIAL_1G|VSROC192|ENETXAUI| SAS3_?|PCIExpress|INFINIBAND|RIO_SERIAL_2G|RIO_SERIAL_3G| FC2125|RIO_2G|FW1394BS1600B|SAS1_5|ENETXAUI|ENETXAUI2| FC2125|FC4250|FW1394BS1600B|INFINIBAND|PCIExpress|PCIExpress2| RIO_2G|RIO_500M|RIO_750M|RIO_SERIAL_1G|RIO_SERIAL_2_5G| RIO_SERIAL_3G|SAS6_0|SATA1_5|SATA3_0|SATA6_0}
+        - TRIGger:A:SERIAL:STANdard {FC133|FC266|FC531|FC1063|D<x>|VIDEO270|VIDEO360|OC1|OC3|OC12|ENET1250|FW1394BS400B|FW1394BS800B|CUSTom|ENET100FX|RIO_500M|RIO_750M|RIO_1G|RIO_SERIAL_1G|VSROC192|ENETXAUI|SAS3_?|PCIExpress|INFINIBAND|RIO_SERIAL_2G|RIO_SERIAL_3G|FC2125|RIO_2G|FW1394BS1600B|SAS1_5|ENETXAUI|ENETXAUI2|FC2125|FC4250|FW1394BS1600B|INFINIBAND|PCIExpress|PCIExpress2|RIO_2G|RIO_500M|RIO_750M|RIO_SERIAL_1G|RIO_SERIAL_2_5G|RIO_SERIAL_3G|SAS6_0|SATA1_5|SATA3_0|SATA6_0}
         - TRIGger:A:SERIAL:STANdard?
         ```
 
@@ -13602,7 +13602,7 @@ class TriggerASerial(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:SERIAL:STANdard {FC133|FC266|FC531|FC1063|D<x>|VIDEO270|VIDEO360|OC1|OC3| OC12|ENET1250|FW1394BS400B|FW1394BS800B|CUSTom|ENET100FX| RIO_500M|RIO_750M|RIO_1G|RIO_SERIAL_1G|VSROC192|ENETXAUI| SAS3_?|PCIExpress|INFINIBAND|RIO_SERIAL_2G|RIO_SERIAL_3G| FC2125|RIO_2G|FW1394BS1600B|SAS1_5|ENETXAUI|ENETXAUI2| FC2125|FC4250|FW1394BS1600B|INFINIBAND|PCIExpress|PCIExpress2| RIO_2G|RIO_500M|RIO_750M|RIO_SERIAL_1G|RIO_SERIAL_2_5G| RIO_SERIAL_3G|SAS6_0|SATA1_5|SATA3_0|SATA6_0}
+            - TRIGger:A:SERIAL:STANdard {FC133|FC266|FC531|FC1063|D<x>|VIDEO270|VIDEO360|OC1|OC3|OC12|ENET1250|FW1394BS400B|FW1394BS800B|CUSTom|ENET100FX|RIO_500M|RIO_750M|RIO_1G|RIO_SERIAL_1G|VSROC192|ENETXAUI|SAS3_?|PCIExpress|INFINIBAND|RIO_SERIAL_2G|RIO_SERIAL_3G|FC2125|RIO_2G|FW1394BS1600B|SAS1_5|ENETXAUI|ENETXAUI2|FC2125|FC4250|FW1394BS1600B|INFINIBAND|PCIExpress|PCIExpress2|RIO_2G|RIO_500M|RIO_750M|RIO_SERIAL_1G|RIO_SERIAL_2_5G|RIO_SERIAL_3G|SAS6_0|SATA1_5|SATA3_0|SATA6_0}
             - TRIGger:A:SERIAL:STANdard?
             ```
 
@@ -17012,7 +17012,7 @@ class TriggerAPulsePeriodWhen(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:PULse:PERiod:WHEn {LESSthan | GREATerthan | WITHin | OUTside}
+        - TRIGger:A:PULse:PERiod:WHEn {LESSthan|GREATerthan|WITHin|OUTside}
         - TRIGger:A:PULse:PERiod:WHEn?
         ```
 
@@ -17077,7 +17077,7 @@ class TriggerAPulsePeriodQualify(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:PULse:PERiod:QUAlify {OCCurs | LOGIC | BUS}
+        - TRIGger:A:PULse:PERiod:QUAlify {OCCurs|LOGIC|BUS}
         - TRIGger:A:PULse:PERiod:QUAlify?
         ```
 
@@ -17336,7 +17336,7 @@ class TriggerAPulsePeriod(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:PULse:PERiod:QUAlify {OCCurs | LOGIC | BUS}
+            - TRIGger:A:PULse:PERiod:QUAlify {OCCurs|LOGIC|BUS}
             - TRIGger:A:PULse:PERiod:QUAlify?
             ```
 
@@ -17403,7 +17403,7 @@ class TriggerAPulsePeriod(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:PULse:PERiod:WHEn {LESSthan | GREATerthan | WITHin | OUTside}
+            - TRIGger:A:PULse:PERiod:WHEn {LESSthan|GREATerthan|WITHin|OUTside}
             - TRIGger:A:PULse:PERiod:WHEn?
             ```
 
@@ -17945,7 +17945,7 @@ class TriggerAPulseClass(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:PULse:CLAss {GLItch|RUNT|WIDth| TRANsition|TIMEOut|WINdow}
+        - TRIGger:A:PULse:CLAss {GLItch|RUNT|WIDth|TRANsition|TIMEOut|WINdow}
         - TRIGger:A:PULse:CLAss?
         ```
 
@@ -18060,7 +18060,7 @@ class TriggerAPulse(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:PULse:CLAss {GLItch|RUNT|WIDth| TRANsition|TIMEOut|WINdow}
+            - TRIGger:A:PULse:CLAss {GLItch|RUNT|WIDth|TRANsition|TIMEOut|WINdow}
             - TRIGger:A:PULse:CLAss?
             ```
 
@@ -21266,7 +21266,7 @@ class TriggerACommunicationStandard(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:COMMunication:STANdard {ATAG<x>|CLOCKCoax| CLOCKSymmetrical|Custom|D<x>|DS0Contra| DS0Double| DS0Single|DS0Timing|DS1|DS1A| DS1C|DS2| DS2RATECoax|DS2RATESymmetrical| DS3|DS4NA|E1|E2|E3|E4|ENET100|ENET1250| ENETXAUI| FC133|FC266|FC531|FC1063|FC2125|FC4250| FST|FW1394BS400B|FW1394BS1600B|HST|INF2_5G| OC1|OC3| OC12|OC48|OC48_FEC|PCIEXPRESS|RATE32Mbit| RATE97Mbit|RIO_500M|RIO_750M| RIO_1G|RIO_2G|RIO_1_5G|RIO_SERIAL_1G| RIO_SERIAL_2G|RIO_SERIAL_3G|SAS1_5|SAS3_?| SFI5_2|SFI5_3|STM0_CMI|STM0_HDBX|STM1E|STS1| STS3| TFI5_2|TFI5_3|VIDEO270|VIDEO292M|VIDEO360|VSROC192}
+        - TRIGger:A:COMMunication:STANdard {ATAG<x>|CLOCKCoax|CLOCKSymmetrical|Custom|D<x>|DS0Contra|DS0Double|DS0Single|DS0Timing|DS1|DS1A|DS1C|DS2|DS2RATECoax|DS2RATESymmetrical|DS3|DS4NA|E1|E2|E3|E4|ENET100|ENET1250|ENETXAUI|FC133|FC266|FC531|FC1063|FC2125|FC4250|FST|FW1394BS400B|FW1394BS1600B|HST|INF2_5G|OC1|OC3|OC12|OC48|OC48_FEC|PCIEXPRESS|RATE32Mbit|RATE97Mbit|RIO_500M|RIO_750M|RIO_1G|RIO_2G|RIO_1_5G|RIO_SERIAL_1G|RIO_SERIAL_2G|RIO_SERIAL_3G|SAS1_5|SAS3_?|SFI5_2|SFI5_3|STM0_CMI|STM0_HDBX|STM1E|STS1|STS3|TFI5_2|TFI5_3|VIDEO270|VIDEO292M|VIDEO360|VSROC192}
         - TRIGger:A:COMMunication:STANdard?
         ```
     """  # noqa: E501
@@ -21521,7 +21521,7 @@ class TriggerACommunicationHdb3Pulseform(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:COMMunication:HDB3:PULSEForm {PLUSOne|MINUSOne| EYEdiagram}
+        - TRIGger:A:COMMunication:HDB3:PULSEForm {PLUSOne|MINUSOne|EYEdiagram}
         - TRIGger:A:COMMunication:HDB3:PULSEForm?
         ```
 
@@ -21572,7 +21572,7 @@ class TriggerACommunicationHdb3(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:COMMunication:HDB3:PULSEForm {PLUSOne|MINUSOne| EYEdiagram}
+            - TRIGger:A:COMMunication:HDB3:PULSEForm {PLUSOne|MINUSOne|EYEdiagram}
             - TRIGger:A:COMMunication:HDB3:PULSEForm?
             ```
 
@@ -21954,7 +21954,7 @@ class TriggerACommunicationB8zsPulseform(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:COMMunication:B8ZS:PULSEForm {PLUSOne|MINUSOne| EYEdiagram}
+        - TRIGger:A:COMMunication:B8ZS:PULSEForm {PLUSOne|MINUSOne|EYEdiagram}
         - TRIGger:A:COMMunication:B8ZS:PULSEForm?
         ```
 
@@ -22005,7 +22005,7 @@ class TriggerACommunicationB8zs(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:COMMunication:B8ZS:PULSEForm {PLUSOne|MINUSOne| EYEdiagram}
+            - TRIGger:A:COMMunication:B8ZS:PULSEForm {PLUSOne|MINUSOne|EYEdiagram}
             - TRIGger:A:COMMunication:B8ZS:PULSEForm?
             ```
 
@@ -22182,7 +22182,7 @@ class TriggerACommunicationB6zsPulseform(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:COMMunication:B6ZS:PULSEForm {PLUSOne|MINUSOne| EYEdiagram}
+        - TRIGger:A:COMMunication:B6ZS:PULSEForm {PLUSOne|MINUSOne|EYEdiagram}
         - TRIGger:A:COMMunication:B6ZS:PULSEForm?
         ```
 
@@ -22233,7 +22233,7 @@ class TriggerACommunicationB6zs(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:COMMunication:B6ZS:PULSEForm {PLUSOne|MINUSOne| EYEdiagram}
+            - TRIGger:A:COMMunication:B6ZS:PULSEForm {PLUSOne|MINUSOne|EYEdiagram}
             - TRIGger:A:COMMunication:B6ZS:PULSEForm?
             ```
 
@@ -22410,7 +22410,7 @@ class TriggerACommunicationB3zsPulseform(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:COMMunication:B3ZS:PULSEForm {PLUSOne|MINUSOne| EYEdiagram}
+        - TRIGger:A:COMMunication:B3ZS:PULSEForm {PLUSOne|MINUSOne|EYEdiagram}
         - TRIGger:A:COMMunication:B3ZS:PULSEForm?
         ```
 
@@ -22461,7 +22461,7 @@ class TriggerACommunicationB3zs(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:COMMunication:B3ZS:PULSEForm {PLUSOne|MINUSOne| EYEdiagram}
+            - TRIGger:A:COMMunication:B3ZS:PULSEForm {PLUSOne|MINUSOne|EYEdiagram}
             - TRIGger:A:COMMunication:B3ZS:PULSEForm?
             ```
 
@@ -22638,7 +22638,7 @@ class TriggerACommunicationAmiPulseform(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:COMMunication:AMI:PULSEForm {PLUSOne|MINUSOne| EYEdiagram}
+        - TRIGger:A:COMMunication:AMI:PULSEForm {PLUSOne|MINUSOne|EYEdiagram}
         - TRIGger:A:COMMunication:AMI:PULSEForm?
         ```
 
@@ -22685,7 +22685,7 @@ class TriggerACommunicationAmi(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:COMMunication:AMI:PULSEForm {PLUSOne|MINUSOne| EYEdiagram}
+            - TRIGger:A:COMMunication:AMI:PULSEForm {PLUSOne|MINUSOne|EYEdiagram}
             - TRIGger:A:COMMunication:AMI:PULSEForm?
             ```
 
@@ -22890,7 +22890,7 @@ class TriggerACommunication(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:COMMunication:STANdard {ATAG<x>|CLOCKCoax| CLOCKSymmetrical|Custom|D<x>|DS0Contra| DS0Double| DS0Single|DS0Timing|DS1|DS1A| DS1C|DS2| DS2RATECoax|DS2RATESymmetrical| DS3|DS4NA|E1|E2|E3|E4|ENET100|ENET1250| ENETXAUI| FC133|FC266|FC531|FC1063|FC2125|FC4250| FST|FW1394BS400B|FW1394BS1600B|HST|INF2_5G| OC1|OC3| OC12|OC48|OC48_FEC|PCIEXPRESS|RATE32Mbit| RATE97Mbit|RIO_500M|RIO_750M| RIO_1G|RIO_2G|RIO_1_5G|RIO_SERIAL_1G| RIO_SERIAL_2G|RIO_SERIAL_3G|SAS1_5|SAS3_?| SFI5_2|SFI5_3|STM0_CMI|STM0_HDBX|STM1E|STS1| STS3| TFI5_2|TFI5_3|VIDEO270|VIDEO292M|VIDEO360|VSROC192}
+            - TRIGger:A:COMMunication:STANdard {ATAG<x>|CLOCKCoax|CLOCKSymmetrical|Custom|D<x>|DS0Contra|DS0Double|DS0Single|DS0Timing|DS1|DS1A|DS1C|DS2|DS2RATECoax|DS2RATESymmetrical|DS3|DS4NA|E1|E2|E3|E4|ENET100|ENET1250|ENETXAUI|FC133|FC266|FC531|FC1063|FC2125|FC4250|FST|FW1394BS400B|FW1394BS1600B|HST|INF2_5G|OC1|OC3|OC12|OC48|OC48_FEC|PCIEXPRESS|RATE32Mbit|RATE97Mbit|RIO_500M|RIO_750M|RIO_1G|RIO_2G|RIO_1_5G|RIO_SERIAL_1G|RIO_SERIAL_2G|RIO_SERIAL_3G|SAS1_5|SAS3_?|SFI5_2|SFI5_3|STM0_CMI|STM0_HDBX|STM1E|STS1|STS3|TFI5_2|TFI5_3|VIDEO270|VIDEO292M|VIDEO360|VSROC192}
             - TRIGger:A:COMMunication:STANdard?
             ```
         """  # noqa: E501
@@ -24460,7 +24460,7 @@ class TriggerABusUsbQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:USB:QUAlifier {EQUal|INrange|LESSEQual|MOREEQual|OUTrange|UNEQual| LESSThan|MOREThan}
+        - TRIGger:A:BUS:USB:QUAlifier {EQUal|INrange|LESSEQual|MOREEQual|OUTrange|UNEQual|LESSThan|MOREThan}
         - TRIGger:A:BUS:USB:QUAlifier?
         ```
 
@@ -25497,7 +25497,7 @@ class TriggerABusUsbCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:USB:CONDition {DATAPacket|EOP|ERROR|HANDSHAKEPacket|RESET|RESUME| SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
+        - TRIGger:A:BUS:USB:CONDition {DATAPacket|EOP|ERROR|HANDSHAKEPacket|RESET|RESUME|SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
         - TRIGger:A:BUS:USB:CONDition?
         ```
 
@@ -26006,7 +26006,7 @@ class TriggerABusUsb(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:USB:CONDition {DATAPacket|EOP|ERROR|HANDSHAKEPacket|RESET|RESUME| SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
+            - TRIGger:A:BUS:USB:CONDition {DATAPacket|EOP|ERROR|HANDSHAKEPacket|RESET|RESUME|SPECIALPacket|SUSPEND|SYNC|TOKENPacket}
             - TRIGger:A:BUS:USB:CONDition?
             ```
 
@@ -26233,7 +26233,7 @@ class TriggerABusUsb(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:USB:QUAlifier {EQUal|INrange|LESSEQual|MOREEQual|OUTrange|UNEQual| LESSThan|MOREThan}
+            - TRIGger:A:BUS:USB:QUAlifier {EQUal|INrange|LESSEQual|MOREEQual|OUTrange|UNEQual|LESSThan|MOREThan}
             - TRIGger:A:BUS:USB:QUAlifier?
             ```
 
@@ -26623,7 +26623,7 @@ class TriggerABusSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:SOUrce {B1|B2|B3|B4|B5|B6|B7|B8|B9|B10|B11|B12| B13|B14|B15|B16}
+        - TRIGger:A:BUS:SOUrce {B1|B2|B3|B4|B5|B6|B7|B8|B9|B10|B11|B12|B13|B14|B15|B16}
         - TRIGger:A:BUS:SOUrce?
         ```
 
@@ -27367,7 +27367,7 @@ class TriggerABusS64b66bCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:S64B66B:CONDition { BLOCK | BLOCK1THEN2 }
+        - TRIGger:A:BUS:S64B66B:CONDition { BLOCK|BLOCK1THEN2 }
         - TRIGger:A:BUS:S64B66B:CONDition?
         ```
 
@@ -27657,7 +27657,7 @@ class TriggerABusS64b66bBlockonethentwoFormat(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat { Binary | HEX }
+        - TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat { Binary|HEX }
         - TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat?
         ```
 
@@ -27712,7 +27712,7 @@ class TriggerABusS64b66bBlockonethentwo(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat { Binary | HEX }
+            - TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat { Binary|HEX }
             - TRIGger:A:BUS:S64B66B:BLOCKONETHENTWO:FORMat?
             ```
 
@@ -27826,7 +27826,7 @@ class TriggerABusS64b66bBlockonePatternFormat(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat { Binary | HEX }
+        - TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat { Binary|HEX }
         - TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat?
         ```
 
@@ -27876,7 +27876,7 @@ class TriggerABusS64b66bBlockonePattern(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat { Binary | HEX }
+            - TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat { Binary|HEX }
             - TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:FORMat?
             ```
 
@@ -27958,7 +27958,7 @@ class TriggerABusS64b66bBlockoneBlocktype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType { NONe | X1E | X2D | X33 | X66 | X55 | X78 | X4B | X87 | X99 | XB4 | XCC | XD2 | XE1 | XFF }
+        - TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType { NONe|X1E|X2D|X33|X66|X55|X78|X4B|X87|X99|XB4|XCC|XD2|XE1|XFF }
         - TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType?
         ```
 
@@ -27996,7 +27996,7 @@ class TriggerABusS64b66bBlockone(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:S64B66B:BLOCKONE { SYNC | INVSYNC | BLOCKtype | PATtern }
+        - TRIGger:A:BUS:S64B66B:BLOCKONE { SYNC|INVSYNC|BLOCKtype|PATtern }
         - TRIGger:A:BUS:S64B66B:BLOCKONE?
         ```
 
@@ -28036,7 +28036,7 @@ class TriggerABusS64b66bBlockone(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType { NONe | X1E | X2D | X33 | X66 | X55 | X78 | X4B | X87 | X99 | XB4 | XCC | XD2 | XE1 | XFF }
+            - TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType { NONe|X1E|X2D|X33|X66|X55|X78|X4B|X87|X99|XB4|XCC|XD2|XE1|XFF }
             - TRIGger:A:BUS:S64B66B:BLOCKONE:BLOCKType?
             ```
 
@@ -28116,7 +28116,7 @@ class TriggerABusS64b66b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:S64B66B:BLOCKONE { SYNC | INVSYNC | BLOCKtype | PATtern }
+            - TRIGger:A:BUS:S64B66B:BLOCKONE { SYNC|INVSYNC|BLOCKtype|PATtern }
             - TRIGger:A:BUS:S64B66B:BLOCKONE?
             ```
 
@@ -28170,7 +28170,7 @@ class TriggerABusS64b66b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:S64B66B:CONDition { BLOCK | BLOCK1THEN2 }
+            - TRIGger:A:BUS:S64B66B:CONDition { BLOCK|BLOCK1THEN2 }
             - TRIGger:A:BUS:S64B66B:CONDition?
             ```
 
@@ -32927,7 +32927,7 @@ class TriggerABusFlexrayErrtype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:FLEXRAY:ERRTYPE {CRCHEADer|CRCTRAILer|NULLFRSTATIC|NULLFRDYNAMIC |SYNCFRAME|STARTUPNOSYNC}
+        - TRIGger:A:BUS:FLEXRAY:ERRTYPE {CRCHEADer|CRCTRAILer|NULLFRSTATIC|NULLFRDYNAMIC|SYNCFRAME|STARTUPNOSYNC}
         - TRIGger:A:BUS:FLEXRAY:ERRTYPE?
         ```
     """  # noqa: E501
@@ -33570,7 +33570,7 @@ class TriggerABusFlexray(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:FLEXRAY:ERRTYPE {CRCHEADer|CRCTRAILer|NULLFRSTATIC|NULLFRDYNAMIC |SYNCFRAME|STARTUPNOSYNC}
+            - TRIGger:A:BUS:FLEXRAY:ERRTYPE {CRCHEADer|CRCTRAILer|NULLFRSTATIC|NULLFRDYNAMIC|SYNCFRAME|STARTUPNOSYNC}
             - TRIGger:A:BUS:FLEXRAY:ERRTYPE?
             ```
         """  # noqa: E501
@@ -33760,7 +33760,7 @@ class TriggerABusEthernetDataFormat(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:ETHERnet:DATa:FORMat {BINARY | HEX}
+        - TRIGger:A:BUS:ETHERnet:DATa:FORMat {BINARY|HEX}
         - TRIGger:A:BUS:ETHERnet:DATa:FORMat?
         ```
 
@@ -33804,7 +33804,7 @@ class TriggerABusEthernetData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:ETHERnet:DATa:FORMat {BINARY | HEX}
+            - TRIGger:A:BUS:ETHERnet:DATa:FORMat {BINARY|HEX}
             - TRIGger:A:BUS:ETHERnet:DATa:FORMat?
             ```
 
@@ -35116,7 +35116,7 @@ class TriggerABus(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:SOUrce {B1|B2|B3|B4|B5|B6|B7|B8|B9|B10|B11|B12| B13|B14|B15|B16}
+            - TRIGger:A:BUS:SOUrce {B1|B2|B3|B4|B5|B6|B7|B8|B9|B10|B11|B12|B13|B14|B15|B16}
             - TRIGger:A:BUS:SOUrce?
             ```
 
@@ -35619,7 +35619,7 @@ class TriggerA(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:TYPe {EDGE|LOGIc|PULse|VIDeo| I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
+            - TRIGger:A:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
             - TRIGger:A:TYPe?
             ```
 
