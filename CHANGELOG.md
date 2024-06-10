@@ -18,6 +18,34 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v1.5.0 (2024-06-10)
+
+### Merged Pull Requests
+
+- fix: Update the commands to have uniform spacing of arguments. ([#234](https://github.com/tektronix/tm_devices/pull/234))
+- ci: Update the updater workflow to skip running poetry-audit during the updater process ([#235](https://github.com/tektronix/tm_devices/pull/235))
+- python-deps(deps-dev): bump the python-dependencies group with 3 updates ([#233](https://github.com/tektronix/tm_devices/pull/233))
+- gh-actions(deps): bump the gh-actions-dependencies group with 2 updates ([#218](https://github.com/tektronix/tm_devices/pull/218))
+- docs: Properly sort modules when building the API documentation ([#231](https://github.com/tektronix/tm_devices/pull/231))
+- Enable Virtual GPIB connections to supported instruments ([#230](https://github.com/tektronix/tm_devices/pull/230))
+- ci: Update build and release workflows to verify the package can be installed for all supported Python versions and Operating Systems ([#229](https://github.com/tektronix/tm_devices/pull/229))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#225](https://github.com/tektronix/tm_devices/pull/225))
+- Add workflows to check for changes that break public APIs ([#227](https://github.com/tektronix/tm_devices/pull/227))
+- gh-actions(deps): bump the gh-actions-dependencies group across 1 directory with 2 updates ([#226](https://github.com/tektronix/tm_devices/pull/226))
+- docs: Update the trademark symbols ([#223](https://github.com/tektronix/tm_devices/pull/223))
+- docs: Add analytics code for documentation ([#222](https://github.com/tektronix/tm_devices/pull/222))
+- Sign all published files ([#221](https://github.com/tektronix/tm_devices/pull/221))
+- Add attestations to artifacts ([#220](https://github.com/tektronix/tm_devices/pull/220))
+- python-deps(deps-dev): update pylint requirement from 3.2.0 to 3.2.1 in the python-dependencies group ([#219](https://github.com/tektronix/tm_devices/pull/219))
+- docs: Update wording of API package Modules section ([#217](https://github.com/tektronix/tm_devices/pull/217))
+- Update api template usage ([#216](https://github.com/tektronix/tm_devices/pull/216))
+- Cleanup init files and rename abstract classes ([#215](https://github.com/tektronix/tm_devices/pull/215))
+- gh-actions(deps): bump python-semantic-release/python-semantic-release from 9.6.0 to 9.7.2 in the gh-actions-dependencies group ([#213](https://github.com/tektronix/tm_devices/pull/213))
+- python-deps(deps-dev): update ruff requirement from 0.4.3 to 0.4.4 in the python-dependencies group ([#214](https://github.com/tektronix/tm_devices/pull/214))
+- docs: Update copy code button to not show up on doc signatures in the API documentation ([#212](https://github.com/tektronix/tm_devices/pull/212))
+
 ### Added
 
 - Added a new section in the documentation of each package/subpackage that shows the submodules (files) of that package/subpackage.
