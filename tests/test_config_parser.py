@@ -336,6 +336,16 @@ def test_file_config_non_default_path(
             {"TM_DEVICES": "device_type=SCOPE,connection_type=GPIB,address=99"},
             ValueError,
         ),
+        # Test GPIB connection with invalid gpib board number
+        (
+            {"TM_DEVICES": "device_type=AWG,connection_type=GPIB,address=1,gpib_board_number=34"},
+            ValueError,
+        ),
+        # Test GPIB connection with invalid gpib board number (str instead of int)
+        (
+            {"TM_DEVICES": "device_type=AWG,connection_type=GPIB,address=1,gpib_board_number=3s"},
+            ValueError,
+        ),
         # Test REST_API connection with no device driver
         (
             {"TM_DEVICES": "device_type=MT,connection_type=REST_API,address=localhost"},
@@ -489,6 +499,16 @@ def test_remove_device() -> None:
             "ASRL3::INSTR",
         ),
         (
+            "device_type=SCOPE,address=1,connection_type=GPIB,gpib_board_number=8",
+            "SCOPE 1",
+            "GPIB8::1::INSTR",
+        ),
+        (
+            "device_type=SCOPE,address=1,connection_type=GPIB,gpib_board_number=2",
+            "SCOPE 1",
+            "GPIB2::1::INSTR",
+        ),
+        (
             "device_type=MT,device_driver=TMT4,address=1.2.3.4,connection_type=REST_API",
             "MT 1",
             None,
@@ -496,7 +516,9 @@ def test_remove_device() -> None:
     ],
 )
 def test_get_visa_resource_expression(
-    instrument_string: str, device_name: str, expected_expr: Optional[str]
+    instrument_string: str,
+    device_name: str,
+    expected_expr: Optional[str],
 ) -> None:
     """Test creating a resource expression.
 
@@ -513,7 +535,7 @@ def test_get_visa_resource_expression(
             assert returned_expr == expected_expr
         else:
             with pytest.raises(
-                ValueError, match=r"[A-Z_]+ is not a valid connection type for a VISA resource\."
+                ValueError, match=r"^[A-Z_]+ is not a valid connection type for a VISA resource\."
             ):
                 device.get_visa_resource_expression()
 

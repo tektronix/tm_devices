@@ -24,6 +24,7 @@ Things to be included in the next release go here.
 - Added signed build provenance attestations to workflow artifacts for the built package.
 - Added signed build provenance attestations to the generated SBOMs.
 - Documentation was added explaining how to verify the attestations on uploaded files.
+- Enabled support for Virtual GPIB connections to supported devices.
 
 ### Removed
 
@@ -34,6 +35,10 @@ Things to be included in the next release go here.
 - Updated most `__init__.py` files to not include `__all__` variable definitions.
 - Renamed some of the abstract base classes to separate them from the actual device driver classes.
 - Updated the documentation templates to use the new jinja template style that `mkdocstrings-python` is switching to.
+
+### Fixed
+
+- Fixed the API documentation to properly sort all the modules so that the Table of Contents is readable.
 
 ---
 

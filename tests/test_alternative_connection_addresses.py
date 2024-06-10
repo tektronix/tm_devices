@@ -115,6 +115,18 @@ from tm_devices import DeviceManager
             None,
             ("SOCKET", "AFG3KC", "AFG3252C", "SERIAL1"),
         ),
+        (
+            "GPIB2::15::INSTR",
+            "SMU",
+            None,
+            ("GPIB", "SMU2635B", "Model 2635B", "4498311"),
+        ),
+        (
+            "GPIB::26::INSTR",
+            "SMU",
+            None,
+            ("GPIB", "SMU2634B", "Model 2634B", "4498311"),
+        ),
     ],
 )
 def test_alternative_connection_methods(
