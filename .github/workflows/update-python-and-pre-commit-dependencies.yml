@@ -41,7 +41,7 @@ jobs:
       - name: Run pre-commit
         continue-on-error: true
         env:
-          SKIP: ${{ inputs.pre-commit-hook-skip-list || 'pylint,pyright,pyright-verifytypes,pyroma' }}
+          SKIP: ${{ inputs.pre-commit-hook-skip-list || 'pylint,pyright,pyright-verifytypes,pyroma,poetry-audit' }}
         run: python -m pre_commit run --all
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
