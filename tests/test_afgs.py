@@ -49,7 +49,7 @@ def test_afg3kc(device_manager: DeviceManager) -> None:
         "pyvisa.resources.messagebased.MessageBasedResource.query",
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
-        assert afg3kc.query_expect_timeout("INVALID?", timeout_ms=1) == ""
+        afg3kc.query_expect_timeout("INVALID?", timeout_ms=1)
     assert afg3kc.expect_esr(32, '1, Command error\n0,"No error"')[0]
     with pytest.raises(AssertionError):
         afg3kc.expect_esr(32, '1, Command error\n0,"No error"')

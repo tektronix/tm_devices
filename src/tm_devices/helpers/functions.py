@@ -432,7 +432,7 @@ def get_model_series(model: str) -> str:
     # contribute to determining the correct series.
     valid_model_endings = {"A", "B", "C", "D", "LP"}
     model_end = ""
-    if re.search("[0-9]", simplified_model):  # if the model contains numbers
+    if re.search(r"\d", simplified_model):  # if the model contains numbers
         model_end = re.split(r"\d+", simplified_model)[-1]  # split on the occurrence of each number
     if len(model_end) == 1 and model_end not in valid_model_endings:
         simplified_model = simplified_model.rstrip(model_end)

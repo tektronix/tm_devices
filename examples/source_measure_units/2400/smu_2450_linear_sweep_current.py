@@ -29,7 +29,6 @@ with DeviceManager() as device_manager:
 
     # Measure Settings
     smu2450.commands.smu.measure.func = smu2450.commands.smu.FUNC_DC_VOLTAGE
-    smu2450.commands.smu.measure.autorange = smu2450.commands.smu.measure.autorange
     smu2450.commands.smu.measure.nplc = NPLC
     smu2450.commands.smu.measure.sense = smu2450.commands.smu.SENSE_4WIRE
 

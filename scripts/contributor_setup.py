@@ -102,7 +102,7 @@ def main() -> None:
         args = parse_arguments()
         if running_in_virtualenv():
             raise IndexError
-        if not sys.version_info >= (3, 8):
+        if sys.version_info < (3, 8):  # noqa: UP036
             msg = (
                 "Unable to set up the environment. "
                 "Please use a Python version greater than or equal to 3.8."
