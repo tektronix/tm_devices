@@ -623,7 +623,7 @@ class DeviceManager(metaclass=Singleton):
         self.__protect_access()
         for device_name, device_object in self.__devices.items():
             try:
-                device_object.cleanup(verbose=False or bool(self.__config.options.verbose_mode))
+                device_object.cleanup(verbose=bool(self.__config.options.verbose_mode))
             except (visa.errors.Error, socket.error, RPCError, AttributeError):  # noqa: PERF203
                 print(f"Device cleanup of {device_name} failed. Retrying...")
                 device_object.cleanup()
@@ -1256,7 +1256,7 @@ class DeviceManager(metaclass=Singleton):
 
         # Clean up devices if the option is enabled.
         if self.__setup_cleanup_enabled:
-            new_device.cleanup(verbose=False or bool(self.__config.options.verbose_mode))
+            new_device.cleanup(verbose=bool(self.__config.options.verbose_mode))
 
         return new_device
 

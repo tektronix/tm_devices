@@ -458,10 +458,9 @@ class PIDevice(Device, ABC):
         if (
             allow_equal
             and (
-                (not abs(actual_value) <= (abs(value) + tolerance))
-                and (str(value) != str(actual_value))
+                (abs(actual_value) < (abs(value) + tolerance)) and (str(value) != str(actual_value))
             )
-        ) or (not allow_equal and not abs(actual_value) < (abs(value) + tolerance)):
+        ) or (not allow_equal and abs(actual_value) >= (abs(value) + tolerance)):
             max_value = value + tolerance
             self.raise_failure(
                 f"query_less_than failed for query: {query}\n  "

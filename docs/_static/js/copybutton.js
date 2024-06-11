@@ -96,8 +96,8 @@ const clearSelection = () => {
 // Changes tooltip text for a moment, then changes it back
 // We want the timeout of our `success` class to be a bit shorter than the
 // tooltip and icon change, so that we can hide the icon before changing back.
-var timeoutIcon = 2000;
-var timeoutSuccessClass = 1500;
+const timeoutIcon = 2000;
+const timeoutSuccessClass = 1500;
 
 const temporarilyChangeTooltip = (el, oldText, newText) => {
   el.setAttribute('data-tooltip', newText)
@@ -159,12 +159,12 @@ function filterText(target, exclude) {
 // Callback when a copy button is clicked. Will be passed the node that was clicked
 // should then grab the text and replace pieces of text that shouldn't be used in output
 function formatCopyText(textContent, copybuttonPromptText, isRegexp = false, onlyCopyPromptLines = true, removePrompts = true, copyEmptyLines = true, lineContinuationChar = "", hereDocDelim = "") {
-    var regexp;
-    var match;
+    let regexp;
+    let match;
 
     // Do we check for line continuation characters and "HERE-documents"?
-    var useLineCont = !!lineContinuationChar
-    var useHereDoc = !!hereDocDelim
+    let useLineCont = !!lineContinuationChar
+    let useHereDoc = !!hereDocDelim
 
     // create regexp to capture prompt and remaining line
     if (isRegexp) {
@@ -174,9 +174,9 @@ function formatCopyText(textContent, copybuttonPromptText, isRegexp = false, onl
     }
 
     const outputLines = [];
-    var promptFound = false;
-    var gotLineCont = false;
-    var gotHereDoc = false;
+    let promptFound = false;
+    let gotLineCont = false;
+    let gotHereDoc = false;
     const lineGotPrompt = [];
     for (const line of textContent.split('\n')) {
         match = line.match(regexp)
@@ -211,8 +211,8 @@ function formatCopyText(textContent, copybuttonPromptText, isRegexp = false, onl
 }
 
 
-var copyTargetText = (trigger) => {
-  var target = document.querySelector(trigger.attributes['data-clipboard-target'].value);
+const copyTargetText = (trigger) => {
+  let target = document.querySelector(trigger.attributes['data-clipboard-target'].value);
 
   // get filtered text
   let exclude = '.linenos';  // Can use ".linenos, .gp, .go" to exclude prompt characters and output in code blocks

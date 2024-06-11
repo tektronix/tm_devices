@@ -66,7 +66,7 @@ def bjt_slow(inst: SMU2602B) -> None:
 
         vceo_status = vceo(inst, index)
         vce_sat_status, vbe_sat_status = vbe_vce_sat(inst, index)
-        hfe_status = hfe1(inst, index)
+        hfe_status = hfe1(inst)
 
         if not vceo_status:
             bins[1] += 1
@@ -213,12 +213,11 @@ def vbe_vce_sat(inst: SMU2602B, index: int) -> Tuple[bool, bool]:
     return vce_sat_status, vbe_sat_status
 
 
-def hfe1(inst: SMU2602B, index: int) -> bool:
+def hfe1(inst: SMU2602B) -> bool:
     """This function will run the HFE1 test on the transistor.
 
     Args:
         inst (SMU2602B): The python driver instance for the instrument used in testing.
-        index (int): The number of the transistor under test.
 
     Returns:
         bool: Returns the status of the HFE1 test. Pass = True, Fail = False

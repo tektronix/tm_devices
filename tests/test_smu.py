@@ -80,7 +80,7 @@ def test_smu(  # noqa: PLR0915
         "pyvisa.resources.messagebased.MessageBasedResource.query",
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
-        assert smu.query_expect_timeout("INVALID?", timeout_ms=1) == ""
+        smu.query_expect_timeout("INVALID?", timeout_ms=1)
     assert smu.expect_esr(32, "Command error,No Error")[0]
 
     with pytest.raises(AssertionError):
@@ -263,7 +263,7 @@ def test_smu2450(device_manager: DeviceManager, capsys: pytest.CaptureFixture[st
         "pyvisa.resources.messagebased.MessageBasedResource.query",
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
-        assert smu.query_expect_timeout("INVALID?", timeout_ms=1) == ""
+        smu.query_expect_timeout("INVALID?", timeout_ms=1)
     assert smu.expect_esr(32, "Command error,No Error")[0]
     assert smu.all_channel_names_list == ("OUTPUT1",)
 

@@ -27,7 +27,7 @@ def test_ss(device_manager: DeviceManager) -> None:
         "pyvisa.resources.messagebased.MessageBasedResource.query",
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
-        assert switch.query_expect_timeout("INVALID?", timeout_ms=1) == ""
+        switch.query_expect_timeout("INVALID?", timeout_ms=1)
     assert switch.expect_esr(32, "Command error,No Error")[0]
 
     expected_ch_names = tuple(str(x) for x in range(1, switch.total_channels + 1))

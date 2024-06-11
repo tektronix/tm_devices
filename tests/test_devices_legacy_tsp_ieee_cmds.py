@@ -24,7 +24,7 @@ def test_dmm6500(device_manager: DeviceManager) -> None:
         "pyvisa.resources.messagebased.MessageBasedResource.query",
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
-        assert dmm.query_expect_timeout("INVALID?", timeout_ms=1) == ""
+        dmm.query_expect_timeout("INVALID?", timeout_ms=1)
     assert dmm.expect_esr(32, "Command error,No Error")[0]
     assert dmm.all_channel_names_list == ()
 
@@ -43,7 +43,7 @@ def test_dmm75xx(device_manager: DeviceManager) -> None:
         "pyvisa.resources.messagebased.MessageBasedResource.query",
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
-        assert dmm.query_expect_timeout("INVALID?", timeout_ms=1) == ""
+        dmm.query_expect_timeout("INVALID?", timeout_ms=1)
     assert dmm.expect_esr(32, "Command error,No Error")[0]
     assert dmm.all_channel_names_list == ()
 
@@ -64,6 +64,6 @@ def test_daq6510(device_manager: DeviceManager) -> None:
         "pyvisa.resources.messagebased.MessageBasedResource.query",
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
-        assert daq.query_expect_timeout("INVALID?", timeout_ms=1) == ""
+        daq.query_expect_timeout("INVALID?", timeout_ms=1)
     assert daq.expect_esr(32, "Command error,No Error")[0]
     assert daq.all_channel_names_list == ("1",)
