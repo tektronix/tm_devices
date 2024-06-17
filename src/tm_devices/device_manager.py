@@ -68,31 +68,31 @@ if TYPE_CHECKING:
 # Type Aliases
 ####################################################################################################
 AFGAlias = TypeVar("AFGAlias", bound=AFG, default=AFG)  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
-"""An alias to a specific AFG driver."""
+"""An alias to a specific Arbitrary Function Generator Python driver."""
 AWGAlias = TypeVar("AWGAlias", bound=AWG, default=AWG)  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
-"""An alias to a specific AWG driver."""
+"""An alias to a specific Arbitrary Waveform Generator Python driver."""
 DataAcquisitionSystemAlias = TypeVar(  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
     "DataAcquisitionSystemAlias", bound=DataAcquisitionSystem, default=DataAcquisitionSystem
 )
-"""An alias to a specific DataAcquisitionSystem driver."""
+"""An alias to a specific Data Acquisition System Python driver."""
 DigitalMultimeterAlias = TypeVar(  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
     "DigitalMultimeterAlias", bound=DigitalMultimeter, default=DigitalMultimeter
 )
-"""An alias to a specific DigitalMultimeter driver."""
+"""An alias to a specific Digital Multimeter Python driver."""
 ScopeAlias = TypeVar("ScopeAlias", bound=Scope, default=Scope)  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
 """An alias to a specific Scope driver."""
 MarginTesterAlias = TypeVar("MarginTesterAlias", bound=MarginTester, default=MarginTester)  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
-"""An alias to a specific MarginTester driver."""
+"""An alias to a specific Margin Tester Python driver."""
 PowerSupplyUnitAlias = TypeVar(  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
     "PowerSupplyUnitAlias", bound=PowerSupplyUnit, default=PowerSupplyUnit
 )
-"""An alias to a specific PowerSupplyUnit driver."""
+"""An alias to a specific Power Supply Unit Python driver."""
 SourceMeasureUnitAlias = TypeVar(  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
     "SourceMeasureUnitAlias", bound=SourceMeasureUnit, default=SourceMeasureUnit
 )
-"""An alias to a specific SourceMeasureUnit driver."""
+"""An alias to a specific Source Measure Unit Python driver."""
 SystemsSwitchAlias = TypeVar("SystemsSwitchAlias", bound=SystemsSwitch, default=SystemsSwitch)  # pylint: disable=unexpected-keyword-arg,useless-suppression  # TODO: remove pylint disable statement
-"""An alias to a specific SystemsSwitch driver."""
+"""An alias to a specific Systems Switch Python driver."""
 
 
 ####################################################################################################
@@ -262,7 +262,7 @@ class DeviceManager(metaclass=Singleton):
         serial_config: Optional[SerialConfig] = None,
         gpib_board_number: Optional[int] = None,
     ) -> AFGAlias:
-        """Add an AFG to the DeviceManager.
+        """Add an Arbitrary Function Generator to the DeviceManager.
 
         Args:
             address: The address of the AFG, either an IP address or hostname. If the connection
@@ -278,7 +278,7 @@ class DeviceManager(metaclass=Singleton):
                 when making a GPIB connection (defaults to 0).
 
         Returns:
-            The AFG device driver.
+            The Arbitrary Function Generator device driver.
         """
         self.__protect_access()
         return cast(
@@ -304,7 +304,7 @@ class DeviceManager(metaclass=Singleton):
         serial_config: Optional[SerialConfig] = None,
         gpib_board_number: Optional[int] = None,
     ) -> AWGAlias:
-        """Add an AWG to the DeviceManager.
+        """Add an Arbitrary Waveform Generator to the DeviceManager.
 
         Args:
             address: The address of the AWG, either an IP address or hostname. If the connection
@@ -320,7 +320,7 @@ class DeviceManager(metaclass=Singleton):
                 when making a GPIB connection (defaults to 0).
 
         Returns:
-            The AWG device driver.
+            The Arbitrary Waveform Generator device driver.
         """
         self.__protect_access()
         return cast(
@@ -346,7 +346,7 @@ class DeviceManager(metaclass=Singleton):
         serial_config: Optional[SerialConfig] = None,
         gpib_board_number: Optional[int] = None,
     ) -> DataAcquisitionSystemAlias:
-        """Add a DAQ to the DeviceManager.
+        """Add a Data Acquisition System to the DeviceManager.
 
         Args:
             address: The address of the DAQ, either an IP address or hostname. If the connection
@@ -362,7 +362,7 @@ class DeviceManager(metaclass=Singleton):
                 when making a GPIB connection (defaults to 0).
 
         Returns:
-            The DAQ device driver.
+            The Data Acquisition System device driver.
         """
         self.__protect_access()
         return cast(
@@ -388,7 +388,7 @@ class DeviceManager(metaclass=Singleton):
         serial_config: Optional[SerialConfig] = None,
         gpib_board_number: Optional[int] = None,
     ) -> DigitalMultimeterAlias:
-        """Add a DMM to the DeviceManager.
+        """Add a Digital Multimeter to the DeviceManager.
 
         Args:
             address: The address of the DMM, either an IP address or hostname. If the connection
@@ -404,7 +404,7 @@ class DeviceManager(metaclass=Singleton):
                 when making a GPIB connection (defaults to 0).
 
         Returns:
-            The DMM device driver.
+            The Digital Multimeter device driver.
         """
         self.__protect_access()
         return cast(
@@ -463,7 +463,7 @@ class DeviceManager(metaclass=Singleton):
         serial_config: Optional[SerialConfig] = None,
         gpib_board_number: Optional[int] = None,
     ) -> PowerSupplyUnitAlias:
-        """Add a PSU to the DeviceManager.
+        """Add a Power Supply Unit to the DeviceManager.
 
         Args:
             address: The address of the PSU, either an IP address or hostname. If the connection
@@ -479,7 +479,7 @@ class DeviceManager(metaclass=Singleton):
                 when making a GPIB connection (defaults to 0).
 
         Returns:
-            The PSU device driver.
+            The Power Supply Unit device driver.
         """
         self.__protect_access()
         return cast(
@@ -547,7 +547,7 @@ class DeviceManager(metaclass=Singleton):
         serial_config: Optional[SerialConfig] = None,
         gpib_board_number: Optional[int] = None,
     ) -> SourceMeasureUnitAlias:
-        """Add a SMU to the DeviceManager.
+        """Add a Source Measure Unit to the DeviceManager.
 
         Args:
             address: The address of the device, either an IP address or hostname. If the connection
@@ -563,7 +563,7 @@ class DeviceManager(metaclass=Singleton):
                 when making a GPIB connection (defaults to 0).
 
         Returns:
-            The SMU device driver.
+            The Source Measure Unit device driver.
         """
         self.__protect_access()
         return cast(
@@ -588,13 +588,13 @@ class DeviceManager(metaclass=Singleton):
         port: Optional[int] = None,
         gpib_board_number: Optional[int] = None,
     ) -> SystemsSwitchAlias:
-        """Add a SS to the DeviceManager.
+        """Add a Systems Switch to the DeviceManager.
 
         Args:
             address: The address of the device, either an IP address or hostname. If the connection
                      type is ``"USB"`` then the address must be specified as ``"<model>-<serial>"``.
-            alias: An optional alias to use to refer to the SS. If no alias is provided,
-                   the device type and number can be used to access the SS instead.
+            alias: An optional alias to use to refer to the Systems Switch. If no alias is provided,
+                   the device type and number can be used to access the Systems Switch instead.
             connection_type: The type of connection to use for VISA, defaults to TCPIP, not needed
                 when the address is a visa resource expression since the connection type is parsed
                 from the address string.
@@ -603,7 +603,7 @@ class DeviceManager(metaclass=Singleton):
                 when making a GPIB connection (defaults to 0).
 
         Returns:
-            The SS device driver.
+            The Systems Switch device driver.
         """
         self.__protect_access()
         return cast(
@@ -698,7 +698,7 @@ class DeviceManager(metaclass=Singleton):
         return found_devices
 
     def get_afg(self, number_or_alias: Union[int, str]) -> AFGAlias:
-        """Get the AFG driver for the given AFG number or alias.
+        """Get the Arbitrary Function Generator Python driver for the given AFG number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
 
@@ -706,7 +706,7 @@ class DeviceManager(metaclass=Singleton):
             number_or_alias: The number or alias of the AFG to get.
 
         Returns:
-            The AFG device driver.
+            The Arbitrary Function Generator device driver.
         """
         self.__protect_access()
         if isinstance(number_or_alias, int):
@@ -719,7 +719,7 @@ class DeviceManager(metaclass=Singleton):
         )
 
     def get_awg(self, number_or_alias: Union[int, str]) -> AWGAlias:
-        """Get the AWG driver for the given AWG number or alias.
+        """Get the Arbitrary Waveform Generator Python driver for the given AWG number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
 
@@ -727,7 +727,7 @@ class DeviceManager(metaclass=Singleton):
             number_or_alias: The number or alias of the AWG to get.
 
         Returns:
-            The AWG device driver.
+            The Arbitrary Waveform Generator device driver.
         """
         self.__protect_access()
         if isinstance(number_or_alias, int):
@@ -740,15 +740,15 @@ class DeviceManager(metaclass=Singleton):
         )
 
     def get_daq(self, number_or_alias: Union[int, str]) -> DataAcquisitionSystemAlias:
-        """Get the DAQ driver for the given scope number or alias.
+        """Get the Data Acquisition System Python driver for the given DAQ number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
 
         Args:
-            number_or_alias: The number or alias of the scope to get.
+            number_or_alias: The number or alias of the DAQ to get.
 
         Returns:
-            The scope device driver.
+            The Data Acquisition System device driver.
         """
         self.__protect_access()
         if isinstance(number_or_alias, int):
@@ -762,7 +762,7 @@ class DeviceManager(metaclass=Singleton):
         )
 
     def get_dmm(self, number_or_alias: Union[int, str]) -> DigitalMultimeterAlias:
-        """Get the DMM driver for the given DMM number or alias.
+        """Get the Digital Multimeter Python driver for the given DMM number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
 
@@ -770,7 +770,7 @@ class DeviceManager(metaclass=Singleton):
             number_or_alias: The number or alias of the DMM to get.
 
         Returns:
-            The DMM device driver.
+            The Digital Multimeter device driver.
         """
         self.__protect_access()
         if isinstance(number_or_alias, int):
@@ -828,7 +828,7 @@ class DeviceManager(metaclass=Singleton):
         return device
 
     def get_mt(self, number_or_alias: Union[int, str]) -> MarginTesterAlias:
-        """Get the Margin Tester driver for the given Margin Tester number or alias.
+        """Get the Margin Tester Python driver for the given Margin Tester number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
 
@@ -850,7 +850,7 @@ class DeviceManager(metaclass=Singleton):
         )
 
     def get_psu(self, number_or_alias: Union[int, str]) -> PowerSupplyUnitAlias:
-        """Get the PSU driver for the given PSU number or alias.
+        """Get the Power Supply Unit Python driver for the given PSU number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
 
@@ -858,7 +858,7 @@ class DeviceManager(metaclass=Singleton):
             number_or_alias: The number or alias of the PSU to get.
 
         Returns:
-            The PSU device driver.
+            The Power Supply Unit device driver.
         """
         self.__protect_access()
         if isinstance(number_or_alias, int):
@@ -893,7 +893,7 @@ class DeviceManager(metaclass=Singleton):
         )
 
     def get_smu(self, number_or_alias: Union[int, str]) -> SourceMeasureUnitAlias:
-        """Get the SMU driver for the given SMU number or alias.
+        """Get the Source Measure Unit Python driver for the given SMU number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
 
@@ -901,7 +901,7 @@ class DeviceManager(metaclass=Singleton):
             number_or_alias: The number or alias of the SMU to get.
 
         Returns:
-            The SMU device driver.
+            The Source Measure Unit device driver.
         """
         self.__protect_access()
         if isinstance(number_or_alias, int):
@@ -915,15 +915,15 @@ class DeviceManager(metaclass=Singleton):
         )
 
     def get_ss(self, number_or_alias: Union[int, str]) -> SystemsSwitchAlias:
-        """Get the SS driver for the given SS number or alias.
+        """Get the Systems Switch Python driver for the given Systems Switch number or alias.
 
         Integers are treated as a device number, strings are treated as an alias.
 
         Args:
-            number_or_alias: The number or alias of the SS to get.
+            number_or_alias: The number or alias of the Systems Switch to get.
 
         Returns:
-            The SS device driver.
+            The Systems Switch device driver.
         """
         self.__protect_access()
         if isinstance(number_or_alias, int):

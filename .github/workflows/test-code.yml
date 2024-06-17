@@ -39,7 +39,7 @@ jobs:
       - if: ${{ inputs.node-version }}
         name: Install non-python documentation dependencies
         run: |
-          npm install -g @mermaid-js/mermaid-cli
+          npm install --global @mermaid-js/mermaid-cli
           sudo apt install --no-install-recommends --assume-yes graphviz
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
