@@ -8,7 +8,20 @@ import os
 import pathlib
 
 from types import MappingProxyType
-from typing import Any, cast, Dict, get_type_hints, List, Mapping, Optional, Tuple, Type, Union
+from typing import (
+    Any,
+    cast,
+    Dict,
+    get_type_hints,
+    List,
+    Mapping,
+    Optional,
+    Protocol,
+    runtime_checkable,
+    Tuple,
+    Type,
+    Union,
+)
 
 import tomli
 import tomli_w
@@ -25,29 +38,48 @@ from tm_devices.helpers import (
 )
 from tm_devices.helpers.constants_and_dataclasses import (
     CONFIG_CLASS_STR_PREFIX_MAPPING,
-    DataclassProtocol,
 )
+
+
+@runtime_checkable
+@dataclasses.dataclass
+class _DataclassProtocol(Protocol):
+    """A Protocol class to allow for type hinting things that accept generic dataclasses."""
 
 
 class DMConfigParser:
     """Class to parse a configuration file for device connections and runtime options."""
 
-    # This is the environment variable that we check for a user-provided,
-    # comma-delimited list of device parameters, multiple devices are delimited with "~~~".
     DEVICES_ENV_VARIABLE = "TM_DEVICES"
-    # comma-delimited list of options.
+    """The name of the environment variable which can contain a list of device configurations.
+
+    Multiple devices are separated by "~~~", each device contains a comma-separated list of device
+    parameters to use when connecting to the device. See the [configuration
+    documentation][environment-variable] for the device configuration environment variable syntax.
+    """
     OPTIONS_ENV_VARIABLE = "TM_OPTIONS"
-    # This is the environment variable that we check for a user-provided path to a custom config
-    # file that, if present, should contain a list of devices and hostnames/IP addresses.
+    """The name of the environment variable which can contain a comma-separated list of options.
+
+    See the [configuration documentation][environment-variable] for the options environment variable
+    syntax.
+    """
     CONFIG_FILE_PATH_ENV_VARIABLE = "TM_DEVICES_CONFIG"
-    # The default location for a config file that, if present, should contain a list of devices and
-    # hostnames/IP addresses.
+    """The name of the environment variable to check for a custom config file path.
+
+    This environment variable is checked to see if there is a user-provided path to a custom config
+    file that contains a list of devices and hostnames/IP addresses.
+    """
     DEFAULT_CONFIG_FILE_PATH = "./tm_devices.yaml"
-    # Easy access to the enum class
+    """The default location for the config file.
+
+    If present, the file should contain a list of devices and hostnames/IP addresses. See the
+    [configuration documentation][config-file] for the config file syntax.
+    """
     FileType = ConfigFileType
+    """A convenience enumeration listing the valid config file types."""
 
     _CONFIG_NESTED_DICT_MAPPING: Mapping[
-        Union[Type[DataclassProtocol], Type[SerialConfig]], str
+        Union[Type[_DataclassProtocol], Type[SerialConfig]], str
     ] = MappingProxyType({SerialConfig: "serial_config"})
 
     ################################################################################################
@@ -88,8 +120,10 @@ class DMConfigParser:
     def defined_config_file_path(self) -> str:
         """Filepath of the config file.
 
-        Prioritizes path defined from env variable ```self.CONFIG_FILE_PATH_ENV_VARIABLE``` with a
-        fallback to the default path (`tm_devices.yaml` in runtime cwd directory).
+        Prioritizes the path contained in the environment variable defined by
+        [`DMConfigParser.CONFIG_FILE_PATH_ENV_VARIABLE`][tm_devices.components.DMConfigParser.CONFIG_FILE_PATH_ENV_VARIABLE]
+        with a fallback to the default path defined by
+        [`DMConfigParser.DEFAULT_CONFIG_FILE_PATH`][tm_devices.components.DMConfigParser.DEFAULT_CONFIG_FILE_PATH].
         """
         return os.getenv(
             self.CONFIG_FILE_PATH_ENV_VARIABLE,
@@ -119,6 +153,7 @@ class DMConfigParser:
         lan_port: Optional[int] = None,
         serial_config: Optional[SerialConfig] = None,
         device_driver: Optional[str] = None,
+        gpib_board_number: Optional[int] = None,
     ) -> Tuple[str, DeviceConfigEntry]:
         """Add a new device configuration entry.
 
@@ -135,6 +170,8 @@ class DMConfigParser:
             lan_port: The port number to connect on, used for SOCKET/REST_API connections.
             serial_config: A dataclass for holding serial connection info.
             device_driver: A string indicating the specific Python device driver to use.
+            gpib_board_number: The GPIB board number (also referred to as a controller), only used
+                for GPIB connections. The default is 0.
 
         Returns:
             Tuple of the config entry name and the new DeviceConfigEntry
@@ -153,6 +190,7 @@ class DMConfigParser:
             lan_port=lan_port,
             serial_config=serial_config,
             device_driver=device_driver,
+            gpib_board_number=gpib_board_number,
         )
         # Currently, USB connections when using the PyVISA-py backend are not supported.
         if self.__options.standalone and new_entry.connection_type in {
@@ -258,11 +296,11 @@ class DMConfigParser:
     def write_config_to_file(
         self, config_file_path: Optional[Union[str, os.PathLike[str]]] = None
     ) -> str:
-        """Write a config file located at the current working directory (or custom path).
+        """Write the current configuration to a config file.
 
-        This method will overwrite any existing config file with the current devices and options.
-        If no custom path is provided, and the ``TM_DEVICES_CONFIG`` environment variable is not set
-        defaults to a yaml file in the current working directory.
+        This method will overwrite any existing config file with the current devices and options. If
+        no custom path is provided, it will write to the file defined by
+        [`DMConfigParser.defined_config_file_path`][tm_devices.components.DMConfigParser.defined_config_file_path].
 
         Args:
             config_file_path: The path to the config file. If ends in ".toml" will create toml file.

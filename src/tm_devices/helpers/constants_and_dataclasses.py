@@ -1,12 +1,12 @@
-"""Module containing constants and dataclasses for the tm_devices package."""
+"""Module containing constants and dataclasses for the `tm_devices` package."""
 
 import re
 
 from dataclasses import dataclass
 from types import MappingProxyType
-from typing import Final, List, Mapping, Optional, Protocol, runtime_checkable, Union
+from typing import Final, FrozenSet, List, Mapping, Optional, Tuple, Union
 
-import pyvisa as visa
+from pyvisa import constants as pyvisa_constants
 
 from tm_devices.helpers.dataclass_mixins import (
     AsDictionaryMixin,
@@ -14,12 +14,6 @@ from tm_devices.helpers.dataclass_mixins import (
 )
 from tm_devices.helpers.enums import ConnectionTypes, DeviceTypes, LoadImpedanceAFG, SupportedModels
 from tm_devices.helpers.standalone_functions import validate_address
-
-
-@runtime_checkable
-@dataclass
-class DataclassProtocol(Protocol):
-    """A Protocol class to allow for type hinting things that accept generic dataclasses."""
 
 
 @dataclass
@@ -31,9 +25,9 @@ class USBTMCConfiguration:
     """
 
     vendor_id: str
-    """str: The hexadecimal Vendor ID used to create the USBTMC resource expression."""
+    """The hexadecimal Vendor ID used to create the USBTMC resource expression."""
     model_id: str
-    """str: The hexadecimal Model ID used to create the USBTMC resource expression."""
+    """The hexadecimal Model ID used to create the USBTMC resource expression."""
 
 
 class _ConfigEntryEnvStrMixin(AsDictionaryMixin):
@@ -53,7 +47,7 @@ class _ConfigEntryEnvStrMixin(AsDictionaryMixin):
         for key, val in self.to_dict(ignore_none=True).items():
             # must pull class type from actual value, not the to_dict()'s representation
             if (
-                prefix := CONFIG_CLASS_STR_PREFIX_MAPPING.get(type(getattr(self, key)))
+                prefix := CONFIG_CLASS_STR_PREFIX_MAPPING.get(type(getattr(self, key)))  # pyright: ignore[reportUnknownArgumentType]
             ) is not None:
                 if any(val.values()):
                     # still need to ignore the None values
@@ -73,59 +67,81 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
     """Serial configuration properties for connecting to a device over SERIAL (ASRL).
 
     Notes:
-        - baud_rate: The baud rate controls the communication frequency.
+        - `baud_rate`: The baud rate controls the communication frequency.
             e.g. 9600
-        - data_bits: The number of data bits in each character.
+        - `data_bits`: The number of data bits in each character.
             One of [5, 6, 7, 8].
-        - flow_control: Control for pausing/resuming data stream between slower devices.
+        - `flow_control`: Control for pausing/resuming data stream between slower devices.
             One of ``SerialConfig.FlowControl.[none|xon_xoff|dtr_dsr|rts_cts]``.
-        - parity: Parity controls checksum bit (added to each data character) behavior.
+        - `parity`: Parity controls checksum bit (added to each data character) behavior.
             One of ``SerialConfig.Parity.[none|odd|even|mark|space]``.
-        - stop_bits: Number of bits to use to indicate end of a character.
+        - `stop_bits`: Number of bits to use to indicate end of a character.
             One of ``SerialConfig.StopBits.[one|one_and_a_half|two]``.
-        - end_input: Character(s) to indicate the end of a message transmission.
+        - `end_input`: Character(s) to indicate the end of a message transmission.
             One of ``SerialConfig.Termination.[termination_break|termination_char|last_bit|none]``.
     """
 
-    FlowControl = visa.resources.serial.constants.ControlFlow
-    """visa.resources.serial.constants.ControlFlow: Control flow for a serial device."""
-    Parity = visa.resources.serial.constants.Parity
-    """visa.resources.serial.constants.Parity: Parity type to use with every frame transmitted and received on a serial session.
+    FlowControl = pyvisa_constants.ControlFlow
+    """A convenience enumeration listing the options for control flow for a serial device.
 
-    Used only for SERIAL (ASRL) resources.
-    """  # noqa: E501
-    StopBits = visa.resources.serial.constants.StopBits
-    """visa.resources.serial.constants.StopBits: The number of stop bits that indicate the end of a frame on a serial resource.
+    It is used to set the
+    [`flow_control`][tm_devices.helpers.constants_and_dataclasses.SerialConfig.flow_control]
+    attribute when creating a
+    [`SerialConfig`][tm_devices.helpers.constants_and_dataclasses.SerialConfig] object.
+    """
+    Parity = pyvisa_constants.Parity
+    """A convenience enumeration listing the options for parity for a serial device.
 
-    Used only for SERIAL (ASRL) resources.
-    """  # noqa: E501
-    Termination = visa.resources.serial.constants.SerialTermination
-    """visa.resources.serial.constants.SerialTermination: The available methods for terminating a serial transfer."""  # noqa: E501
+    It is used to set the
+    [`parity`][tm_devices.helpers.constants_and_dataclasses.SerialConfig.parity]
+    attribute when creating a
+    [`SerialConfig`][tm_devices.helpers.constants_and_dataclasses.SerialConfig] object.
+    """
+    StopBits = pyvisa_constants.StopBits
+    """A convenience enumeration listing the options for stop bits for a serial device.
+
+    It is used to set the
+    [`stop_bits`][tm_devices.helpers.constants_and_dataclasses.SerialConfig.stop_bits]
+    attribute when creating a
+    [`SerialConfig`][tm_devices.helpers.constants_and_dataclasses.SerialConfig] object.
+    """
+    Termination = pyvisa_constants.SerialTermination
+    """A convenience enumeration listing the available methods for terminating a serial transfer.
+
+    It is used to set the
+    [`end_input`][tm_devices.helpers.constants_and_dataclasses.SerialConfig.end_input]
+    attribute when creating a
+    [`SerialConfig`][tm_devices.helpers.constants_and_dataclasses.SerialConfig] object.
+    """
     baud_rate: Optional[int] = None
-    """Optional[int]: The baud rate controls the communication frequency."""
+    """The baud rate controls the communication frequency."""
     data_bits: Optional[int] = None
-    """Optional[int]: The number of data bits in each character.
+    """The number of data bits in each character.
 
     One of ``[5, 6, 7, 8]``.
     """
     flow_control: Optional[FlowControl] = None
-    """Optional[FlowControl]: Control for pausing/resuming data stream between slower devices.
+    """Control for pausing/resuming data stream between slower devices.
 
     One of ``SerialConfig.FlowControl.[none|xon_xoff|dtr_dsr|rts_cts]``.
     """
     parity: Optional[Parity] = None
-    """Optional[Parity]: Parity adds a checksum bit to each data character.
-     Checksum bit enables the target device to determine whether the data was received correctly.
+    """Parity adds a checksum bit to each data character.
+
+    This checksum bit enables the target device to determine whether the data was received
+    correctly. The parity is used with every frame transmitted and received on a serial session.
 
     One of ``SerialConfig.Parity.[none|odd|even|mark|space]``.
     """
     stop_bits: Optional[StopBits] = None
-    """Optional[StopBits]: Number of bits to use to indicate end of a character.
+    """Number of bits to use to indicate end of a character.
+
+    The number of stop bits that indicate the end of a frame on a serial resource.
 
     One of ``SerialConfig.StopBits.[one|one_and_a_half|two]``.
     """
     end_input: Optional[Termination] = None
-    """Optional[Termination]: Character(s) to indicate the end of a message transmission.
+    """Character(s) to indicate the end of a message transmission.
 
     One of ``SerialConfig.Termination.[termination_break|termination_char|last_bit|none]``.
     """
@@ -146,35 +162,38 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
             self.end_input = getattr(self.Termination, self.end_input)
 
 
+# pylint: disable=too-many-instance-attributes
 @dataclass(frozen=True)
 class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntryEnvStrMixin):
     """Dataclass for holding configuration information for a single device."""
 
     device_type: DeviceTypes
-    """tm_devices.helpers.DeviceTypes: The specific device type defined in the config entry."""
+    """The specific device type defined in the config entry."""
     address: str
-    """str: The address used to connect to the device.
+    """The address used to connect to the device.
 
     Notes:
         - TCPIP: IP address or the hostname.
         - SOCKET: IP address or the hostname (must define `lan_port` field).
         - REST_API: IP address or the hostname (must define `lan_port` field).
         - SERIAL/ASRL: serial COM port number.
-        - USB: use expression format f"{model}-{serial_number}" (ex: "MSO24-ABC0123").
+        - USB: use expression format `f"{model}-{serial_number}"` (ex: `"MSO24-ABC0123"`).
     """
     connection_type: ConnectionTypes = ConnectionTypes.TCPIP
-    """tm_devices.helpers.ConnectionTypes: The specific type of connection defined in the config entry."""  # noqa: E501
+    """The specific type of connection defined in the config entry."""
     alias: Optional[str] = None
-    """Optional[str]: An optional key/name used to retrieve this devices from the DeviceManager."""
+    """An optional key/name used to retrieve this devices from the DeviceManager."""
     lan_port: Optional[int] = None
-    """Optional[int]: The port number to connect on, used for SOCKET/REST_API connections."""
+    """The port number to connect on, used for SOCKET/REST_API connections."""
     serial_config: Optional[SerialConfig] = None
-    """Optional[SerialConfig]: Serial configuration properties for connecting to a device over SERIAL (ASRL)."""  # noqa: E501
+    """Serial configuration properties for connecting to a device over SERIAL (ASRL)."""
     device_driver: Optional[str] = None
-    """Optional[str]: The name of the Python driver to use for the device (required for connection_type=REST_API, ignored otherwise)"""  # noqa: E501
+    """The name of the Python driver to use for the device (required for connection_type=REST_API, ignored otherwise)."""  # noqa: E501
+    gpib_board_number: Optional[int] = None
+    """The GPIB board number (also referred to as a controller) to be used when making a GPIB connection (defaults to 0)."""  # noqa: E501
 
     # pylint: disable=too-many-branches
-    def __post_init__(self) -> None:  # noqa: PLR0912,C901
+    def __post_init__(self) -> None:  # noqa: PLR0912,C901,PLR0915
         """Validate data after creation.
 
         Raises:
@@ -196,28 +215,54 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
                 object.__setattr__(self, "device_type", DeviceTypes(self.device_type))
             if not isinstance(self.connection_type, ConnectionTypes):  # pyright: ignore[reportUnnecessaryIsInstance]
                 object.__setattr__(self, "connection_type", ConnectionTypes(self.connection_type))
-
-            # While a SerialConfig is not frozen, if not created here then it cannot be added later.
-            # A serial_config must be created if the connection_type is SERIAL (ASRL).
-            if self.connection_type == ConnectionTypes.SERIAL and self.serial_config is None:
-                object.__setattr__(self, "serial_config", SerialConfig())
-
-            if self.device_type not in VALID_DEVICE_CONNECTION_TYPES:
-                msg = (
-                    f"{self.device_type.name} is not a valid device type. Valid device types: "
-                    f"{VALID_DEVICE_CONNECTION_TYPES}"
-                )
-                raise TypeError(msg)
-            if self.connection_type not in VALID_DEVICE_CONNECTION_TYPES[self.device_type]:
-                msg = (
-                    f"{self.connection_type.name} is not a valid "
-                    f"{self.device_type} connection type. Valid connection types: "
-                    f"{[x.name for x in VALID_DEVICE_CONNECTION_TYPES[self.device_type]]}"
-                )
-                raise TypeError(msg)
         except ValueError as error:
             # this is from an invalid enum name
             raise TypeError(*error.args)  # noqa: TRY200,B904
+
+        # Set the GPIB board number to 0 if it is not provided
+        if self.connection_type == ConnectionTypes.GPIB:
+            if self.gpib_board_number is None:
+                object.__setattr__(self, "gpib_board_number", 0)
+            if not isinstance(self.gpib_board_number, int):
+                try:
+                    # noinspection PyTypeChecker
+                    object.__setattr__(self, "gpib_board_number", int(self.gpib_board_number))  # pyright: ignore[reportArgumentType]
+                except ValueError:
+                    msg = (
+                        f'"{self.gpib_board_number}" is not a valid GPIB board number, '
+                        f"valid board numbers must be integers."
+                    )
+                    raise ValueError(msg)  # noqa: B904
+
+        if (
+            self.gpib_board_number is not None
+            and not MIN_GPIB_BOARD_NUMBER <= self.gpib_board_number <= MAX_GPIB_BOARD_NUMBER
+        ):
+            msg = (
+                f'The GPIB board number of "{self.gpib_board_number}" is not a valid board number. '
+                f"The valid board number range is "
+                f"{MIN_GPIB_BOARD_NUMBER} <= gpib_board_number <= {MAX_GPIB_BOARD_NUMBER}."
+            )
+            raise ValueError(msg)
+
+        # While a SerialConfig is not frozen, if not created here then it cannot be added later.
+        # A serial_config must be created if the connection_type is SERIAL (ASRL).
+        if self.connection_type == ConnectionTypes.SERIAL and self.serial_config is None:
+            object.__setattr__(self, "serial_config", SerialConfig())
+
+        if self.device_type not in VALID_DEVICE_CONNECTION_TYPES:
+            msg = (
+                f"{self.device_type.name} is not a valid device type. Valid device types: "
+                f"{VALID_DEVICE_CONNECTION_TYPES}"
+            )
+            raise TypeError(msg)
+        if self.connection_type not in VALID_DEVICE_CONNECTION_TYPES[self.device_type]:
+            msg = (
+                f"{self.connection_type.name} is not a valid "
+                f"{self.device_type} connection type. Valid connection types: "
+                f"{[x.name for x in VALID_DEVICE_CONNECTION_TYPES[self.device_type]]}"
+            )
+            raise TypeError(msg)
 
         # Check if a specific device driver is needed to be specified
         if self.connection_type == ConnectionTypes.REST_API and self.device_driver is None:
@@ -247,7 +292,10 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
                 or (self.connection_type == ConnectionTypes.SERIAL and not self.address.isdigit())
                 or (
                     self.connection_type == ConnectionTypes.GPIB
-                    and not (self.address.isdigit() and 1 <= int(self.address) <= MAX_GPIB_ADDRESS)
+                    and not (
+                        self.address.isdigit()
+                        and MIN_GPIB_ADDRESS <= int(self.address) <= MAX_GPIB_ADDRESS
+                    )
                 )
             ):
                 raise ValueError
@@ -258,7 +306,7 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
             SOCKET: IP address or the hostname (must define `lan_port` field).
             REST_API: IP address or the hostname (must define `lan_port` field).
             SERIAL/ASRL: serial COM port number.
-            GPIB: address number (1 <= n <= 30).
+            GPIB: address number ({MIN_GPIB_ADDRESS} <= n <= {MAX_GPIB_ADDRESS}).
             USB: use expression format "<model>-<serial_number>" (ex: "MSO24-ABC0123").
                 """
             raise ValueError(msg) from exc
@@ -348,12 +396,12 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
             resource_expr = f"TCPIP0::{self.address}::{self.lan_port}::SOCKET"
         elif self.connection_type == ConnectionTypes.TCPIP:
             resource_expr = f"TCPIP0::{self.address}::inst0::INSTR"
-        elif self.connection_type == ConnectionTypes.GPIB:
-            resource_expr = f"GPIB0::{self.address}::INSTR"
         elif self.connection_type == ConnectionTypes.SERIAL:
             resource_expr = f"ASRL{self.address}::INSTR"
         elif self.connection_type == ConnectionTypes.MOCK:  # pragma: no cover
             resource_expr = f"MOCK0::{self.address}::INSTR"
+        elif self.connection_type == ConnectionTypes.GPIB:
+            resource_expr = f"GPIB{self.gpib_board_number}::{self.address}::INSTR"
         else:
             msg = (
                 f"{self.connection_type.value} is not a valid connection "
@@ -368,19 +416,19 @@ class DMConfigOptions(AsDictionaryMixin):
     """Device Management Configuration options."""
 
     standalone: Optional[bool] = None
-    """Optional[bool]: An option indicating to use PyVISA-py's pure Python VISA backend."""
+    """An option indicating to use PyVISA-py's pure Python VISA backend."""
     setup_cleanup: Optional[bool] = None
-    """Optional[bool]: An option indicating to run a device's ``cleanup()`` method when opening the connection."""  # noqa: E501
+    """An option indicating to run a device's ``cleanup()`` method when opening the connection."""
     teardown_cleanup: Optional[bool] = None
-    """Optional[bool]: An option indicating to run a device's ``cleanup()`` method when closing the connection."""  # noqa: E501
+    """An option indicating to run a device's ``cleanup()`` method when closing the connection."""
     verbose_mode: Optional[bool] = None
-    """Optional[bool]: A verbosity flag to turn on more printouts to stdout."""
+    """A verbosity flag to turn on more printouts to stdout."""
     verbose_visa: Optional[bool] = None
-    """Optional[bool]: A verbosity flag to enable extremely verbose VISA logging to stdout."""
+    """A verbosity flag to enable extremely verbose VISA logging to stdout."""
     retry_visa_connection: Optional[bool] = None
-    """Optional[bool]: A flag to enable retrying the first VISA connection attempt."""
+    """A flag to enable retrying the first VISA connection attempt."""
     check_for_updates: Optional[bool] = None
-    """Optional[bool]: A flag indicating if a check for updates for the package should be performed on creation of the DeviceManager."""  # noqa: E501
+    """A flag indicating if a check for updates for the package should be performed on creation of the DeviceManager."""  # noqa: E501
 
     def __str__(self) -> str:
         """Complete config entry line for an environment variable."""
@@ -397,11 +445,19 @@ class DMConfigOptions(AsDictionaryMixin):
 #                                CONSTANTS
 ###############################################################################
 # don't include this in the __init__
-MAX_GPIB_ADDRESS = 30
+MIN_GPIB_ADDRESS: Final[int] = 0
+# don't include this in the __init__
+MAX_GPIB_ADDRESS: Final[int] = 30
+# don't include this in the __init__
+MAX_GPIB_BOARD_NUMBER: Final[int] = 32
+# don't include this in the __init__
+MIN_VGPIB_BOARD_NUMBER: Final[int] = 8
+# don't include this in the __init__
+MIN_GPIB_BOARD_NUMBER: Final[int] = 0
 # don't include this in the __init__
 CONFIG_CLASS_STR_PREFIX_MAPPING: Final = MappingProxyType({SerialConfig: "serial_"})
 # don't include this in the __init__
-VALID_SERIAL_BAUD: Final = frozenset(
+VALID_SERIAL_BAUD: Final[FrozenSet[int]] = frozenset(
     [
         300,
         600,
@@ -419,94 +475,96 @@ VALID_SERIAL_BAUD: Final = frozenset(
     ]
 )
 # don't include this in the __init__
-VALID_SERIAL_DATA_BITS: Final = frozenset([5, 6, 7, 8])
+VALID_SERIAL_DATA_BITS: Final[FrozenSet[int]] = frozenset([5, 6, 7, 8])
 
-PYVISA_PY_BACKEND: Final = "@py"
-"""str: Constant string which indicates to use the pure Python PyVISA-py backend when creating VISA connections."""  # noqa: E501
+PYVISA_PY_BACKEND: Final[str] = "@py"
+"""Constant string which indicates to use the pure Python PyVISA-py backend when creating VISA connections."""  # noqa: E501
 
-SYSTEM_DEFAULT_VISA_BACKEND: Final = ""
-"""str: Constant string which indicates to use the current system's default VISA backend when creating VISA connections."""  # noqa: E501
+SYSTEM_DEFAULT_VISA_BACKEND: Final[str] = ""
+"""Constant string which indicates to use the current system's default VISA backend when creating VISA connections."""  # noqa: E501
 
-PACKAGE_NAME: Final = "tm_devices"
-"""str: Constant string with the name of this package."""
+PACKAGE_NAME: Final[str] = "tm_devices"
+"""Constant string with the name of this package."""
 
-VISA_RESOURCE_EXPRESSION_REGEX: Final = re.compile(
+VISA_RESOURCE_EXPRESSION_REGEX: "Final[re.Pattern[str]]" = re.compile(  # pylint: disable=unsubscriptable-object,useless-suppression
     r"^(\w+)(?:::0X\w+)?::([-.\w]+)(?:::(\w+))?(?:::INST0?)?::(INSTR?|SOCKET)$"
 )
-"""re.Pattern[str]: A regex pattern used to capture pieces of VISA resource expressions."""
+"""A regex pattern used to capture pieces of VISA resource expressions."""
 
-UNIT_TEST_TIMEOUT: Final = 50
-"""int: The VISA timeout value to use during unit tests, in milliseconds."""
+UNIT_TEST_TIMEOUT: Final[int] = 50
+"""The VISA timeout value to use during unit tests, in milliseconds."""
 
-VALID_DEVICE_CONNECTION_TYPES: Final = MappingProxyType(
-    {
-        DeviceTypes.AFG: (
-            ConnectionTypes.TCPIP,
-            ConnectionTypes.USB,
-            ConnectionTypes.SOCKET,
-            ConnectionTypes.SERIAL,
-            ConnectionTypes.GPIB,
-        ),
-        DeviceTypes.AWG: (
-            ConnectionTypes.TCPIP,
-            ConnectionTypes.USB,
-            ConnectionTypes.SOCKET,
-            ConnectionTypes.SERIAL,
-            ConnectionTypes.GPIB,
-        ),
-        DeviceTypes.DAQ: (
-            ConnectionTypes.TCPIP,
-            ConnectionTypes.USB,
-            ConnectionTypes.GPIB,
-            ConnectionTypes.SERIAL,
-        ),
-        DeviceTypes.DMM: (
-            ConnectionTypes.TCPIP,
-            ConnectionTypes.USB,
-            ConnectionTypes.SOCKET,
-            ConnectionTypes.SERIAL,
-            ConnectionTypes.GPIB,
-        ),
-        DeviceTypes.MT: (ConnectionTypes.REST_API,),
-        DeviceTypes.PSU: (
-            ConnectionTypes.TCPIP,
-            ConnectionTypes.USB,
-            ConnectionTypes.SOCKET,
-            ConnectionTypes.SERIAL,
-            ConnectionTypes.GPIB,
-        ),
-        DeviceTypes.SCOPE: (
-            ConnectionTypes.TCPIP,
-            ConnectionTypes.USB,
-            ConnectionTypes.SOCKET,
-            ConnectionTypes.SERIAL,
-            ConnectionTypes.GPIB,
-            ConnectionTypes.MOCK,
-        ),
-        DeviceTypes.SMU: (
-            ConnectionTypes.TCPIP,
-            ConnectionTypes.USB,
-            ConnectionTypes.SOCKET,
-            ConnectionTypes.SERIAL,
-            ConnectionTypes.GPIB,
-        ),
-        DeviceTypes.SS: (
-            ConnectionTypes.TCPIP,
-            ConnectionTypes.USB,
-            ConnectionTypes.SOCKET,
-            ConnectionTypes.GPIB,
-        ),
-    }
+VALID_DEVICE_CONNECTION_TYPES: Final[Mapping[DeviceTypes, Tuple[ConnectionTypes, ...]]] = (
+    MappingProxyType(
+        {
+            DeviceTypes.AFG: (
+                ConnectionTypes.TCPIP,
+                ConnectionTypes.USB,
+                ConnectionTypes.SOCKET,
+                ConnectionTypes.SERIAL,
+                ConnectionTypes.GPIB,
+            ),
+            DeviceTypes.AWG: (
+                ConnectionTypes.TCPIP,
+                ConnectionTypes.USB,
+                ConnectionTypes.SOCKET,
+                ConnectionTypes.SERIAL,
+                ConnectionTypes.GPIB,
+            ),
+            DeviceTypes.DAQ: (
+                ConnectionTypes.TCPIP,
+                ConnectionTypes.USB,
+                ConnectionTypes.GPIB,
+                ConnectionTypes.SERIAL,
+            ),
+            DeviceTypes.DMM: (
+                ConnectionTypes.TCPIP,
+                ConnectionTypes.USB,
+                ConnectionTypes.SOCKET,
+                ConnectionTypes.SERIAL,
+                ConnectionTypes.GPIB,
+            ),
+            DeviceTypes.MT: (ConnectionTypes.REST_API,),
+            DeviceTypes.PSU: (
+                ConnectionTypes.TCPIP,
+                ConnectionTypes.USB,
+                ConnectionTypes.SOCKET,
+                ConnectionTypes.SERIAL,
+                ConnectionTypes.GPIB,
+            ),
+            DeviceTypes.SCOPE: (
+                ConnectionTypes.TCPIP,
+                ConnectionTypes.USB,
+                ConnectionTypes.SOCKET,
+                ConnectionTypes.SERIAL,
+                ConnectionTypes.GPIB,
+                ConnectionTypes.MOCK,
+            ),
+            DeviceTypes.SMU: (
+                ConnectionTypes.TCPIP,
+                ConnectionTypes.USB,
+                ConnectionTypes.SOCKET,
+                ConnectionTypes.SERIAL,
+                ConnectionTypes.GPIB,
+            ),
+            DeviceTypes.SS: (
+                ConnectionTypes.TCPIP,
+                ConnectionTypes.USB,
+                ConnectionTypes.SOCKET,
+                ConnectionTypes.GPIB,
+            ),
+        }
+    )
 )
-"""Dict[tm_devices.helpers.DeviceTypes, Tuple[tm_devices.helpers.ConnectionTypes, ...]]: Mapping of each device type to its supported connection types.
+"""Mapping of each device type to its supported connection types.
 
-Any additions to this class need to be added to the :py:obj:`~tm_devices.helpers.enums.DeviceTypes`
-enum as well.
-"""  # noqa: E501
+Any additions to this class need to be added to the [`tm_devices.helpers.enums.DeviceTypes`][] enum
+as well.
+"""
 
 # USBTMC configuration defines
-_TEKTRONIX_USBTMC_VENDOR_ID: Final = "0x0699"
-_KEITHLEY_USBTMC_VENDOR_ID: Final = "0x05E6"
+_TEKTRONIX_USBTMC_VENDOR_ID: Final[str] = "0x0699"
+_KEITHLEY_USBTMC_VENDOR_ID: Final[str] = "0x05E6"
 USB_MODEL_ID_LOOKUP: Final[Mapping[str, USBTMCConfiguration]] = MappingProxyType(
     {
         SupportedModels.MDO3K.value: USBTMCConfiguration(
@@ -656,4 +714,4 @@ LOAD_IMPEDANCE_LOOKUP: Final[Mapping[Union[float, str], LoadImpedanceAFG]] = Map
         "FIFTY": LoadImpedanceAFG.FIFTY,
     }
 )
-"""Dict[str, tm_devices.helpers.USBTMCConfiguration]: Mapping of model USBTMC info."""
+"""A mapping of model USBTMC info."""

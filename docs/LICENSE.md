@@ -1,4 +1,8 @@
 # License
 
-```{include} ../LICENSE.md
-```
+{%
+include-markdown "../LICENSE.md"
+comments=false
+rewrite-relative-urls=false
+
+%}

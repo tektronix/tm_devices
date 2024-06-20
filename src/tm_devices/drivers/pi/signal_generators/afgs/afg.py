@@ -260,6 +260,9 @@ class AFG(SignalGenerator, ABC):
 class AFGSourceChannel(BaseAFGSourceChannel):
     """AFG signal source channel composite."""
 
+    ################################################################################################
+    # Magic Methods
+    ################################################################################################
     def __init__(self, afg: AFG, channel_name: str) -> None:
         """Create an AFG source channel.
 
@@ -270,6 +273,9 @@ class AFGSourceChannel(BaseAFGSourceChannel):
         super().__init__(pi_device=afg, channel_name=channel_name)
         self._afg = afg
 
+    ################################################################################################
+    # Public Methods
+    ################################################################################################
     def initiate_phase_sync(self) -> None:
         """Initialize a phase sync between SOURCE1 and SOURCE2 on the device.
 

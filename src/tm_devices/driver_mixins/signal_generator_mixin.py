@@ -18,8 +18,8 @@ _SignalSourceTypeVar = TypeVar("_SignalSourceTypeVar", bound=SignalGeneratorFunc
 class ParameterBounds(NamedTuple):
     """The upper and lower bounds of a parameter."""
 
-    lower: float
-    upper: float
+    lower: float  # pyright: ignore[reportUninitializedInstanceVariable]
+    upper: float  # pyright: ignore[reportUninitializedInstanceVariable]
 
 
 @dataclass(frozen=True)

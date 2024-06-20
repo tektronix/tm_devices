@@ -49,7 +49,7 @@ classifiers = [
   "Topic :: System :: Hardware :: Hardware Drivers"
 ]
 description = "Manage connections and interactions with Test & Measurement devices."
-documentation = "https://tektronix.github.io/tm_devices/"
+documentation = "https://tm-devices.readthedocs.io/stable/"
 homepage = "https://pypi.org/project/tm_devices/"
 keywords = [
   "REST API",
@@ -65,72 +65,102 @@ maintainers = [
   "Nicholas Felt <nicholas.felt@tektronix.com>"
 ]
 name = "tm_devices"
-readme = "README.rst"
+readme = "README.md"
 repository = "https://github.com/tektronix/tm_devices"
-version = "1.2.1"
+version = "1.5.0"
 
 [tool.poetry.dependencies]
-gpib-ctypes = ">=0.3.0"
-libusb-package = ">=1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.12
-packaging = ">=21.3"
-psutil = ">=5.9.2"
-pyserial = ">=3.5"
+gpib-ctypes = "^0.3.0"
+libusb-package = "^1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.12
+packaging = "^24.0"
+psutil = "^5.9.0"
+pyserial = "^3.5"
 python = "^3.8"  # This is the main Python version requirement
-python-dateutil = ">=2.8.2"
-pyusb = ">=1.2.1"
-pyvicp = ">=1.1.0"
-pyvisa = ">=1.12.0"
-pyvisa-py = ">=0.5.3"
-pyvisa-sim = ">=0.4.0"
-pyyaml = ">=6.0"
-requests = ">=2.28.1"
-tomli = ">=2.0.1"
-tomli-w = ">=1.0.0"
-traceback-with-variables = ">=2.0.4"
-typing-extensions = ">=4.10.0"
-urllib3 = ">=2.0"
-zeroconf = ">=0.54.0"
+python-dateutil = "^2.8.2"
+pyusb = "^1.2.1"
+pyvicp = "^1.1.0"
+pyvisa = "^1.12.0"
+pyvisa-py = "^0.7.2"
+pyvisa-sim = "^0.6.0"
+pyyaml = "^6.0"
+requests = "^2.31.0"
+tomli = "^2.0.1"
+tomli-w = "^1.0.0"
+traceback-with-variables = "^2.0.4"
+typing-extensions = "^4.10.0"
+urllib3 = "^2.0"
+zeroconf = "^0.132.2"
 
-# Development dependencies
 [tool.poetry.group.dev.dependencies]
-coverage = {extras = ["toml"], version = ">=7.2.2"}
-coverage-conditional-plugin = ">=0.9.0"
-docformatter = {extras = ["tomli"], version = "==1.7.0"}  # can't update due to https://github.com/PyCQA/docformatter/issues/174
-flask = ">=2.2.2"
-graphviz = ">=0.20.1"
-http-server-mock = ">=1.7"
-myst-parser = ">=0.19.1"
-pip = ">=22.0"
-poetry = ">=1.8.0"
-pre-commit = ">=2.20.0"
-pre-commit-update = ">=0.1.3"
-pylint = {extras = ["spelling"], version = "3.1.0"}  # Update this by running scripts/update_development_dependencies.py
-pyright = "1.1.356"  # Update this by running scripts/update_development_dependencies.py
-pyroma = ">=4.2"
-pytest = ">=7.1.2"
-pytest-cov = ">=3.0.0"
-pytest-html = ">=4.0"
-pytest-order = ">=1.0.1"
-pytest-profiling = ">=1.7.0"
-python-semantic-release = ">=8.5.1"
-ruff = "0.3.4"  # Update this by running scripts/update_development_dependencies.py
-safety = ">=2.1.1"
-sphinx-autoapi = ">=2.0.0"
-sphinx-copybutton = ">=0.5.1"
-sphinx-rtd-theme = ">=1.0.0"
-sphinx-tippy = ">=0.4.1"
-sphinx-togglebutton = ">=0.3.2"
-sphinxcontrib-mermaid = ">=0.7.1"
-toml-sort = ">=0.23.0"
-tox = ">=4.0"
-tox-gh-actions = ">=3.1.0"
-twine = ">=4.0.2"
-types-python-dateutil = ">=2.8.19"
-types-pyyaml = ">=6.0"
-types-requests = ">=2.28.8"
-urllib3 = ">=1.26.14"
-wheel = ">=0.37.1"
-yamlfix = ">=1.16.0"
+docformatter = {extras = ["tomli"], version = "1.7.5"}
+docutils = "^0.20"
+docutils-stubs = "^0.0.22"
+matplotlib = [
+  {python = ">=3.9", version = "^3.8"},
+  {python = "3.8", version = "^3.7"}
+]
+memory-profiler = "^0.61.0"
+pip = "^24.0"
+poetry = "^1.8.0"
+poetry-audit-plugin = "^0.4.0"
+poetry-plugin-export = "^1.7.1"
+poetry-pre-commit-plugin = "^0.1.2"
+pre-commit = [
+  {python = ">=3.9", version = "^3.7"},
+  {python = "3.8", version = "^3.5"}
+]
+pre-commit-update = "^0.3.0"
+pyclean = "^3.0.0"
+pylint = "3.2.3"
+pyright = "1.1.368"
+pyroma = "^4.2"
+python-semantic-release = "^9.6.0"
+ruff = "0.4.10"
+safety = "^3.2.0"
+toml-sort = "^0.23.0"
+tox = "^4.0"
+tox-gh-actions = "^3.1.0"
+twine = "^5.0.0"
+types-python-dateutil = "^2.9"
+types-pyyaml = "^6.0"
+types-requests = "^2.31"
+wheel = "^0.43"
+yamlfix = "^1.16.0"
+
+[tool.poetry.group.docs.dependencies]
+black = "^24.4.2"
+codespell = "^2.2.6"
+mkdocs = "^1.6.0"
+mkdocs-ezglossary-plugin = "^1.6.10"
+mkdocs-gen-files = "^0.5.0"
+mkdocs-include-markdown-plugin = "^6.0.5"
+mkdocs-literate-nav = "^0.6.1"
+mkdocs-macros-plugin = "^1.0.5"
+mkdocs-mermaid2-plugin = "^1.1.1"
+mkdocs-section-index = "^0.3.9"
+mkdocs-spellcheck = "^1.1.0"
+mkdocstrings = "^0.25.0"
+mkdocstrings-python = "^1.10.2"
+pygments = "^2.17.2"
+pymdown-extensions = "^10.8.1"
+symspellpy = "^6.7.7"
+tomli = "^2.0.1"
+
+[tool.poetry.group.tests.dependencies]
+coverage = "^7.5.0"
+coverage-conditional-plugin = "^0.9.0"
+flask = "^3.0.3"
+http-server-mock = "^1.7"
+linkchecker = "^10.0.0"
+pytest = "^8.2.0"
+pytest-cov = "^5.0.0"
+pytest-depends = "^1.0.1"
+pytest-env = "^1.1.3"
+pytest-github-report = "^0.0.1"
+pytest-html = "^4.1.1"
+pytest-order = "^1.2.1"
+ruff = "0.4.10"
+tomli = "^2.0.1"
 
 [tool.poetry.scripts]
 list-visa-resources = "tm_devices:print_available_visa_devices"
@@ -140,7 +170,7 @@ list-visa-resources = "tm_devices:print_available_visa_devices"
 "Changelog" = "https://github.com/tektronix/tm_devices/blob/main/CHANGELOG.md"
 
 [tool.pre-commit-update]
-keep = ["docformatter"]
+keep = []
 verbose = true
 
 [tool.pylint.basic]
@@ -193,6 +223,7 @@ disable = [
   "duplicate-code",
   "fixme",  # caught by ruff
   "global-statement",  # caught by ruff
+  "invalid-name",  # caught by ruff
   "line-too-long",  # caught by ruff
   "locally-disabled",  # allowed
   "missing-class-docstring",  # caught by ruff
@@ -204,6 +235,7 @@ disable = [
   "suppressed-message",  # allowed
   "too-many-arguments",  # caught by ruff
   "too-many-branches",  # caught by ruff
+  "too-many-lines",  # not necessary to check for
   "too-many-statements",  # caught by ruff
   "too-many-statements",  # caught by ruff
   "unused-argument",  # caught by ruff
@@ -226,6 +258,7 @@ output-format = "text"  # colorized could be another option
 [tool.pyright]
 ignore = [
   "**/output_*/**",
+  "site/**",
   "temp_*.py"
 ]
 pythonPlatform = "All"
@@ -249,12 +282,14 @@ useLibraryCodeForTypes = true
 # Pytest configuration
 [tool.pytest.ini_options]
 addopts = "--order-scope=module --cov-config=pyproject.toml"
+doctest_optionflags = "ELLIPSIS NORMALIZE_WHITESPACE IGNORE_EXCEPTION_DETAIL"
 filterwarnings = [
   "ignore:'xdrlib' is deprecated:DeprecationWarning",
   "ignore::DeprecationWarning:pkg_resources",
   "ignore:GPIB library not found:UserWarning",
   "ignore:pkg_resources is deprecated:DeprecationWarning"
 ]
+junit_family = "xunit2"
 junit_logging = "all"
 markers = [
   'docs',
@@ -262,6 +297,9 @@ markers = [
   'slow'
 ]
 xfail_strict = true
+
+[tool.pytest_env]
+pytest_report_title = {skip_if_set = true, value = "Test Results"}
 
 [tool.rstcheck]
 ignore_directives = [
@@ -276,12 +314,7 @@ target-version = "py38"  # always generate Python 3.8 compatible code
 
 [tool.ruff.lint]
 allowed-confusables = ["¸", "×"]
-fixable = [
-  "F401",
-  "FLY002",
-  "I",
-  "RUF100"
-]
+fixable = ["ALL"]
 flake8-pytest-style = {mark-parentheses = false}
 flake8-quotes = {docstring-quotes = "double"}
 ignore = [
@@ -331,18 +364,11 @@ order-by-type = false
 ]
 "src/tm_devices/commands/**" = [
   "A003",  # Class attribute is shadowing a python builtin
+  "D104",  # Missing docstring in public package
+  "D107",  # Missing docstring in `__init__`
   "ERA001",  # Found commented-out code
   "S105",  # Possible hardcoded password
   "TID252"  # Relative imports from parent modules are banned
-]
-"src/tm_devices/drivers/api/__init__.py" = [
-  "D104"  # Missing docstring in public package
-]
-"src/tm_devices/drivers/api/rest_api/__init__.py" = [
-  "D104"  # Missing docstring in public package
-]
-"src/tm_devices/drivers/pi/__init__.py" = [
-  "D104"  # Missing docstring in public package
 ]
 "tests/**" = [
   "PLC1901",  # compare-to-empty-string
@@ -410,28 +436,36 @@ deps =
 setenv =
     DOC_PYTHON_VERSION = python3.11  # Keep this in sync with .readthedocs.yml and any CI scripts
     # Skip pre-commit checks that are explicitly performed by tox
-    SKIP = ruff-format,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma
+    SKIP = ruff-format,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma,poetry-audit
     PYRIGHT_PYTHON_GLOBAL_NODE = False  # This will cause python-pyright to use nodeenv to install node rather than use the system node
 commands_pre =
-    poetry install --no-root
+    poetry install --no-root --without=main
 commands =
-    !tests: safety check
+    !tests: safety check --ignore=70612
     !tests: ruff format --check --diff .
     !tests: docformatter --check --diff .
     !tests: ruff check .
-    !tests: pylint --report=y .
+    !tests: pylint .
     !tests: pyright .
     !tests: pyright --verifytypes tm_devices --ignoreexternal
     !tests: pyroma .
+    !tests: poetry audit --ignore-code=CVE-2019-8341
     !tests: poetry build --output=dist_{envname}
     !tests: twine check --strict dist_{envname}/*
     !tests: pre-commit run --all-files --show-diff-on-failure
+    !tests: pytest -vv --doctest-modules --doctest-report=ndiff --showlocals --junitxml={tox_root}/.results_{envname}/results_doctests.xml --self-contained-html --html={tox_root}/.results_{envname}/results_doctests.html src
     pytest -vv -k "not test_docs" --showlocals --cov --junitxml={tox_root}/.results_{envname}/results.xml --cov-report=term --cov-report=xml:{tox_root}/.coverage_{envname}.xml --cov-report=html:{tox_root}/.results_{envname}/html --self-contained-html --html={tox_root}/.results_{envname}/results.html
 
 [testenv:tests]
 basepython = python
 deps =
     -rtests/requirements.txt
+passenv =
+    pytest_report_title
+setenv =
+    pytest_github_report = true
+    pytest_use_blanks = true
+    GITHUB_STEP_SUMMARY = {tox_root}/.results_{envname}/github_report.md
 commands_pre =
 
 [testenv:docs]
@@ -441,7 +475,7 @@ deps =
 commands_pre =
 commands =
     python -c "import shutil; shutil.rmtree('.results_{envname}', ignore_errors=True)"
-    sphinx-build -b html -a -W --keep-going docs .results_{envname}/html
+    mkdocs --verbose build --site-dir .results_{envname}
 
 [testenv:doctests]
 basepython = {env:DOC_PYTHON_VERSION}
@@ -450,5 +484,5 @@ deps =
     -rtests/requirements.txt
 commands_pre =
 commands =
-    pytest -v -k "test_docs and not test_docs_html" --showlocals --junitxml={tox_root}/.results_{envname}/results.xml --self-contained-html --html={tox_root}/.results_{envname}/results.html
+    pytest -v -k "test_docs" --showlocals --junitxml={tox_root}/.results_{envname}/results.xml --self-contained-html --html={tox_root}/.results_{envname}/results.html
 """

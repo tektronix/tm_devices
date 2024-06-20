@@ -1,0 +1,82 @@
+/* Create nice documentation labels */
+.doc-heading {
+    position: relative;
+}
+
+.doc-labels {
+    font-size: 90%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.doc-label > code {
+    border-radius: 15px;
+    padding: 2px 8px;
+    font-weight: bold;
+}
+
+.doc-label-special > code {
+    background-color: #3330E4;
+    color: white;
+}
+
+.doc-label-private > code {
+    background-color: #F637EC;
+    color: white;
+}
+
+.doc-label-property > code {
+    background-color: #FBB454;
+    color: black;
+}
+
+.doc-label-read-only > code {
+    background-color: #FAEA48;
+    color: black;
+}
+
+.doc-label-writable > code {
+    background-color: #97e931cf;
+    color: black;
+}
+
+.doc-label-module-attribute > code {
+    background-color: #d53232a6;
+    color: black;
+}
+
+.doc-label-class-attribute > code {
+    background-color: #4788c8;
+    color: white;
+}
+
+.doc-label-classmethod > code {
+    background-color: #c4db47;
+    color: black;
+}
+
+.doc-label-instance-attribute > code {
+    background-color: #14c39e;
+    color: white;
+}
+
+.doc-label-dataclass > code {
+    background-color: #f551e5ed;
+    color: white;
+}
+
+.doc-label-abstractmethod > code {
+    background-color: #a5caff;
+    color: black;
+}
+
+.doc-label-cached > code {
+    background-color: #9555dda3;
+    color: black;
+}
+
+.doc-label-staticmethod > code {
+    background-color: #e2c1f9a6;
+    color: black;
+}

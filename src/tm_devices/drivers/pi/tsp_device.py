@@ -5,7 +5,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Any, Dict, List, Optional, Tuple, TYPE_CHECKING, Union
 
-from tm_devices.drivers.pi._ieee488_2_commands import TSPIEEE4882Commands
+from tm_devices.drivers.pi.ieee488_2_commands import TSPIEEE4882Commands
 from tm_devices.drivers.pi.pi_device import PIDevice
 from tm_devices.helpers import print_with_timestamp
 

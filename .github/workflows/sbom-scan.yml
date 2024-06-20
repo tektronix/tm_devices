@@ -7,11 +7,15 @@ on:
     branches: [main]
   release:
     types: [published]
+  workflow_call:
 jobs:
   create-and-scan-sbom:
     runs-on: ubuntu-latest
     permissions:
       security-events: write
+      contents: write
+      id-token: write
+      attestations: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -26,6 +30,10 @@ jobs:
         with:
           format: spdx-json
           output-file: ${{ github.event.repository.name }}-sbom.spdx.json
+      - uses: actions/attest-build-provenance@v1
+        if: ${{ !(github.event.pull_request.head.repo.fork || github.event.workflow_call.pull_request.head.repo.fork) && github.actor != 'dependabot[bot]' }}
+        with:
+          subject-path: ${{ github.event.repository.name }}-sbom.spdx.json
       - name: Scan SBOM
         uses: anchore/scan-action@v3
         id: scan

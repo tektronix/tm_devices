@@ -1,6 +1,6 @@
-"""Base Source device driver module.
+"""Base Generator device driver module.
 
-Sources include PI devices such as AFGs and AWGs.
+Generators include PI devices such as AFGs and AWGs.
 """
 
 from abc import ABC, abstractmethod

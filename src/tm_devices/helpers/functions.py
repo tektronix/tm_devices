@@ -1,4 +1,4 @@
-"""Module containing helpers for the tm_devices package."""
+"""Module containing helpers for the `tm_devices` package."""
 
 import contextlib
 import datetime
@@ -336,7 +336,7 @@ def create_visa_connection(
                 stacklevel=4,
             )
     # The broad except is because pyvisa_py can throw a base exception in the tcpip.py file
-    except Exception as error_1:  # noqa: BLE001
+    except Exception as error_1:
         if not retry_connection:
             message = f"Unable to establish a VISA connection to {resource_expression}"
             raise ConnectionError(message) from error_1
@@ -347,7 +347,7 @@ def create_visa_connection(
                 visa_library
             ).open_resource(resource_expression)
         # The broad except is because pyvisa_py can throw a base exception in the tcpip.py file
-        except Exception as error_2:  # noqa: BLE001
+        except Exception as error_2:
             message = f"Unable to establish a VISA connection to {resource_expression}\n\n"
             if device_config_entry.connection_type in {
                 ConnectionTypes.TCPIP,
@@ -369,7 +369,7 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
     needed to make a connection using the DeviceManager.
 
     The pieces consist of:
-        - The connection type, e.g. TCPIP.
+        - The connection type, e.g. TCPIP, GPIB<board_number> (e.g. GPIB0).
         - The address of the device, an IP address
           (with port separated by a colon for SOCKET connections), hostname, or
           string in the format ``model-serial``.
@@ -399,6 +399,12 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
             match_groups_list[1] = filtered_usb_model_keys[0].replace("SMU", "").replace("PSU", "")
         if match_groups_list[-1] == ConnectionTypes.SOCKET.value:
             retval = (match_groups_list[-1], ":".join(match_groups_list[1:3]))
+        # If connection_type is GPIB, the board number must be passed back in the returned value
+        elif input_str.upper().startswith(ConnectionTypes.GPIB.value.upper()):
+            retval = (
+                match_groups_list[0],
+                "-".join(match_groups_list[1:]).lstrip("0X"),
+            )
         else:
             retval = (
                 match_groups_list[0].rstrip("0"),
@@ -419,11 +425,14 @@ def get_model_series(model: str) -> str:
     model_parts = model.strip().upper().split("-")
     simplified_model = model_parts[0].replace("MODEL", "").strip()
 
+    # Remove "Virtual" from the model string
+    simplified_model = simplified_model.replace("VIRTUAL", "")
+
     # Remove ending characters from the model string that doesn't
     # contribute to determining the correct series.
     valid_model_endings = {"A", "B", "C", "D", "LP"}
     model_end = ""
-    if re.search("[0-9]", simplified_model):  # if the model contains numbers
+    if re.search(r"\d", simplified_model):  # if the model contains numbers
         model_end = re.split(r"\d+", simplified_model)[-1]  # split on the occurrence of each number
     if len(model_end) == 1 and model_end not in valid_model_endings:
         simplified_model = simplified_model.rstrip(model_end)

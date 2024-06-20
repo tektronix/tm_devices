@@ -423,6 +423,12 @@ resources:
   GPIB::1::INSTR:
     device: smu2636b
     filename: smu/smu2636b.yaml
+  GPIB2::15::INSTR:
+    device: smu2635b
+    filename: smu/smu2635b.yaml
+  GPIB0::26::INSTR:
+    device: smu2634b
+    filename: smu/smu2634b.yaml
   #   smu265xa
   TCPIP::SMU2651A-HOSTNAME::INSTR:
     device: smu2651a

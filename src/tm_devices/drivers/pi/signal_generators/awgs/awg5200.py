@@ -4,6 +4,8 @@ from pathlib import Path
 from types import MappingProxyType
 from typing import cast, Dict, Literal, Optional, Tuple
 
+import pyvisa as visa
+
 from tm_devices.commands import AWG5200Mixin
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.signal_generators.awgs.awg import (
@@ -12,8 +14,11 @@ from tm_devices.drivers.pi.signal_generators.awgs.awg import (
     AWGSourceDeviceConstants,
     ParameterBounds,
 )
+from tm_devices.helpers import (
+    DeviceConfigEntry,
+    SASSetWaveformFileTypes,
+)
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
-from tm_devices.helpers import SASSetWaveformFileTypes
 from tm_devices.helpers.enums import (
     SignalGeneratorFunctionsAWG,
     SignalGeneratorOutputPaths5200,
@@ -35,6 +40,25 @@ class AWG5200(AWG5200Mixin, AWG):
     sample_waveform_set_file = (
         "C:\\Program Files\\Tektronix\\AWG5200\\Samples\\AWG5k7k Predefined Waveforms.awgx"
     )
+
+    ################################################################################################
+    # Magic Methods
+    ################################################################################################
+    def __init__(
+        self,
+        config_entry: DeviceConfigEntry,
+        verbose: bool,
+        visa_resource: visa.resources.MessageBasedResource,
+    ) -> None:
+        """Create an AWG5200 device.
+
+        Args:
+            config_entry: A config entry object parsed by the DMConfigParser.
+            verbose: A boolean indicating if verbose output should be printed.
+            visa_resource: The VISA resource object.
+        """
+        # NOTE: This method must be defined for the documentation to properly generate
+        super().__init__(config_entry, verbose, visa_resource)
 
     ################################################################################################
     # Properties
@@ -255,6 +279,9 @@ class AWG5200(AWG5200Mixin, AWG):
 class AWG5200SourceChannel(AWGSourceChannel):
     """AWG5200 signal source channel composite."""
 
+    ################################################################################################
+    # Magic Methods
+    ################################################################################################
     def __init__(self, awg: AWG5200, channel_name: str) -> None:
         """Create an AWG5200 source channel.
 
@@ -265,6 +292,9 @@ class AWG5200SourceChannel(AWGSourceChannel):
         super().__init__(awg=awg, channel_name=channel_name)
         self._awg = awg
 
+    ################################################################################################
+    # Public Methods
+    ################################################################################################
     def load_waveform(self, waveform_name: str) -> None:
         """Load in a waveform from the waveform list to the source channel.
 

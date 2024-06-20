@@ -8,7 +8,7 @@ project.
 This will print the available VISA devices to the console when run from a shell terminal.
 
 ```console
-> list-visa-resources
+$ list-visa-resources
 [
   "TCPIP0::192.168.0.100::inst0::INSTR",
   "ASRL4::INSTR"
@@ -24,30 +24,27 @@ via [Python code](configuration.md#python-code) (shown here). See the
 [Configuration guide](configuration.md) for more information on how to
 configure devices to connect with.
 
-```{literalinclude} ../examples/miscellaneous/adding_devices.py
----
-language: python
----
+```python
+# fmt: off
+--8<-- "examples/miscellaneous/adding_devices.py"
 ```
 
 ## VISA backend selection
 
-The `DeviceManager` can be configured to use VISA backends from different VISA implementations.
+The [`DeviceManager`][tm_devices.DeviceManager] can be configured to use VISA backends from different VISA implementations.
 
-```{literalinclude} ../examples/miscellaneous/visa_connection_selectivity.py
----
-language: python
----
+```python
+# fmt: off
+--8<-- "examples/miscellaneous/visa_connection_selectivity.py"
 ```
 
 ## Alias usage
 
 Devices can be given custom alias names and can be referenced by that alias.
 
-```{literalinclude} ../examples/miscellaneous/alias_usage.py
----
-language: python
----
+```python
+# fmt: off
+--8<-- "examples/miscellaneous/alias_usage.py"
 ```
 
 ## Adding devices with environment variables
@@ -57,10 +54,9 @@ Device configuration information can be defined in an
 outside the Python code for ease of automation
 (shown inside the Python code here for demonstration purposes).
 
-```{literalinclude} ../examples/miscellaneous/adding_devices_with_env_var.py
----
-language: python
----
+```python
+# fmt: off
+--8<-- "examples/miscellaneous/adding_devices_with_env_var.py"
 ```
 
 ## Disable command checking
@@ -71,10 +67,9 @@ This removes an extra query that verifies the property was set to the expected
 value. This can be disabled at the device level or disabled for all devices by
 disabling verification via the device manager.
 
-```{literalinclude} ../examples/miscellaneous/disable_command_verification.py
----
-language: python
----
+```python
+# fmt: off
+--8<-- "examples/miscellaneous/disable_command_verification.py"
 ```
 
 ## Generate a signal using the Internal AFG
@@ -85,10 +80,9 @@ on CH1 of the SCOPE.
 - Requires a SCOPE with a license for the Internal AFG.
 - Requires the Internal AFG output to be connected to CH1 on the SCOPE
 
-```{literalinclude} ../examples/scopes/tekscope/generate_internal_afg_signal.py
----
-language: python
----
+```python
+# fmt: off
+--8<-- "examples/scopes/tekscope/generate_internal_afg_signal.py"
 ```
 
 ## Generate a function using an AFG
@@ -118,10 +112,9 @@ Perform a curve query and save the results to a csv file.
 
 - Requires an AFG connected to channel 1 on a SCOPE.
 
-```{literalinclude} ../examples/scopes/tekscope/basic_curve_query.py
----
-language: python
----
+```python
+# fmt: off
+--8<-- "examples/scopes/tekscope/basic_curve_query.py"
 ```
 
 ## Saving / recalling a waveform and session
@@ -132,10 +125,9 @@ recalling previously saved waveforms if we ever need to use that waveform again.
 The same can be done for scope sessions, sessions are essentially a snapshot of
 the current state of our scope.
 
-```{literalinclude} ../examples/scopes/tekscope/basic_save_recall.py
----
-language: python
----
+```python
+# fmt: off
+--8<-- "examples/scopes/tekscope/basic_save_recall.py"
 ```
 
 ## Configuring a measurement on a single sequence
@@ -143,10 +135,9 @@ language: python
 A scope can be configured for a measurement on a single acquisition by setting the appropriate acquisition parameters
 and adding the desired measurement on the selected channel.
 
-```{literalinclude} ../examples/scopes/tekscope/get_acquisition_data.py
----
-language: python
----
+```python
+# fmt: off
+--8<-- "examples/scopes/tekscope/get_acquisition_data.py"
 ```
 
 ## Adding DPOJET measurements and plots
@@ -154,10 +145,9 @@ language: python
 DPOJET measurements and plots can be added on a DPO70KSX/C/7KC/DPO5KB scope.
 Measurements report can be saved in a `.pdf` format.
 
-```{literalinclude} ../examples/scopes/tekscope_70k/dpojet/adding_dpojet_measurements.py
----
-language: python
----
+```python
+# fmt: off
+--8<-- "examples/scopes/tekscope_70k/dpojet/adding_dpojet_measurements.py"
 ```
 
 ## Directly accessing the PyVISA resource object
@@ -166,51 +156,46 @@ The [PyVISA](https://pyvisa.readthedocs.io/en/latest/) resource object can be di
 accessed if there is a specific action that is not yet available directly through
 the drivers in the `tm_devices` package.
 
-```{literalinclude} ../examples/miscellaneous/pyvisa_resource_access.py
----
-language: python
----
+```python
+# fmt: off
+--8<-- "examples/miscellaneous/pyvisa_resource_access.py"
 ```
 
 ## Dynamic reading buffers (SMUs)
 
 Create and read from a dynamic buffer.
 
-```{literalinclude} ../examples/source_measure_units/2600/reading_dynamic_buffers.py
----
-language: python
----
+```python
+# fmt: off
+--8<-- "examples/source_measure_units/2600/reading_dynamic_buffers.py"
 ```
 
 ## Registering the Device Manager to be closed at program termination
 
-Sometimes using the `DeviceManager` class as a context manager isn't feasible.
+Sometimes using the [`DeviceManager`][tm_devices.DeviceManager] class as a context manager is not feasible.
 In those instances there is an alternative way to enforce the device manager to
 close when the Python script execution is finished without needing to explicitly
-call the `.close()` method.
+call the [`.close()`][tm_devices.DeviceManager.close] method.
 
-```{literalinclude} ../examples/miscellaneous/register_dm_atexit.py
----
-language: python
----
+```python
+# fmt: off
+--8<-- "examples/miscellaneous/register_dm_atexit.py"
 ```
 
 ## Add custom device support
 
 Sometimes there is a need to use a device that is not currently supported by
 `tm_devices`. When this is the case, custom device driver classes can be created
-and passed to the {py:obj}`DeviceManager <tm_devices.DeviceManager>` when it is
+and passed to the [`DeviceManager`][tm_devices.DeviceManager] when it is
 first instantiated.
 
 In order to do this a few things will need to be created:
 
 1. A custom device class inheriting from one of the
-   [main device types](advanced/architecture.md#main-device-types).
+    [main device types](advanced/architecture.md#main-device-types).
 2. A mapping of the parsed model series string to the Python class.
 
-```{literalinclude} ../examples/miscellaneous/custom_device_driver_support.py
----
-language: python
-emphasize-lines: 7-12,19-21,28-30
----
+```python
+# fmt: off
+--8<-- "examples/miscellaneous/custom_device_driver_support.py"
 ```

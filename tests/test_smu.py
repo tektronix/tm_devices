@@ -80,7 +80,7 @@ def test_smu(  # noqa: PLR0915
         "pyvisa.resources.messagebased.MessageBasedResource.query",
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
-        assert smu.query_expect_timeout("INVALID?", timeout_ms=1) == ""
+        smu.query_expect_timeout("INVALID?", timeout_ms=1)
     assert smu.expect_esr(32, "Command error,No Error")[0]
 
     with pytest.raises(AssertionError):
@@ -116,16 +116,16 @@ def test_smu(  # noqa: PLR0915
     # Test some generic device functionality
     capsys.readouterr()  # clear the buffer
     cmd_arg_constants_repr = (
-        f"<tm_devices.commands._smu2601b_commands.SMU2601BCommandConstants object at "
+        f"<tm_devices.commands.smu2601b_commands.SMU2601BCommandConstants object at "
         f"{str(smu.command_argument_constants).split(' at ', maxsplit=1)[-1]}"
     )
     cmds_repr = (
-        f"<tm_devices.commands._smu2601b_commands.SMU2601BCommands object at "
+        f"<tm_devices.commands.smu2601b_commands.SMU2601BCommands object at "
         f"{str(smu.commands).split(' at ', maxsplit=1)[-1]}"
     )
     print(smu)
     expected_stdout = f"""{'=' * 45} SMU {smu.device_number} {'=' * 45}
-  <class 'tm_devices.drivers.pi.source_measure_units.smu2600.smu2601b.SMU2601B'> object at {id(smu)}
+  <class 'tm_devices.drivers.pi.source_measure_units.smu26xx.smu2601b.SMU2601B'> object at {id(smu)}
     address='SMU2601B-HOSTNAME'
     alias='SMU-DEVICE'
     all_channel_names_list=('a',)
@@ -263,7 +263,7 @@ def test_smu2450(device_manager: DeviceManager, capsys: pytest.CaptureFixture[st
         "pyvisa.resources.messagebased.MessageBasedResource.query",
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
-        assert smu.query_expect_timeout("INVALID?", timeout_ms=1) == ""
+        smu.query_expect_timeout("INVALID?", timeout_ms=1)
     assert smu.expect_esr(32, "Command error,No Error")[0]
     assert smu.all_channel_names_list == ("OUTPUT1",)
 

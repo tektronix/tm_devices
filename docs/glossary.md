@@ -1,8 +1,16 @@
 # Glossary
 
-A collection of terms used throughout the documentation and their definitions.
+A collection of terms and symbols used throughout the documentation and their definitions.
 
-{.glossary}
+🚧
+: Work in Progress
+
+✅
+: Implemented
+
+❌
+: Not Supported
+
 AFG
 : Arbitrary Function Generator
 
@@ -32,6 +40,9 @@ GPIB
 
 IAFG
 : Internal Arbitrary Function Generator.
+
+IDE
+: Integrated Development Environment
 
 LP
 : Low Profile

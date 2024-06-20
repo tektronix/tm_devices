@@ -392,6 +392,9 @@ class AWG(SignalGenerator, ABC):
 class AWGSourceChannel(BaseSourceChannel, ExtendableMixin):
     """AWG signal source channel composite."""
 
+    ################################################################################################
+    # Magic Methods
+    ################################################################################################
     def __init__(self, awg: AWG, channel_name: str) -> None:
         """Create an AWG source channel.
 
@@ -402,6 +405,9 @@ class AWGSourceChannel(BaseSourceChannel, ExtendableMixin):
         super().__init__(pi_device=awg, channel_name=channel_name)
         self._awg = awg
 
+    ################################################################################################
+    # Public Methods
+    ################################################################################################
     def set_waveform_properties(
         self,
         output_signal_path: Optional[SignalGeneratorOutputPathsBase],

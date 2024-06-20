@@ -12,8 +12,25 @@ on:
           minor for backward compatible larger changes,
           major for non-backward compatible changes.
         options: [patch, minor, major]
+  workflow_call:
+    inputs:
+      package-name:
+        description: The name of the package to use to gate uploads.
+        required: true
+        type: string
+      release_level:
+        description: |
+          Select the release level,
+          patch for backward compatible minor changes and bug fixes,
+          minor for backward compatible larger changes,
+          major for non-backward compatible changes.
+        required: true
+        type: string
 concurrency:
   group: pypi
+env:
+  REPO_NAME: tektronix/${{ inputs.package-name || 'tm_devices' }}
+  PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
 jobs:
   print-inputs:
     runs-on: ubuntu-latest
@@ -31,6 +48,11 @@ jobs:
           echo "- release_level: ${{ inputs.release_level }}" >> $GITHUB_STEP_SUMMARY
           echo "## Incoming Changes" >> $GITHUB_STEP_SUMMARY
           cat python_semantic_release_templates/.previous_release_notes_for_template.md >> $GITHUB_STEP_SUMMARY
+      - name: Set outputs
+        id: variables
+        run: echo "repo-name=$REPO_NAME" >> $GITHUB_OUTPUT
+    outputs:
+      repo-name: ${{ steps.variables.outputs.repo-name }}
   # This job requires a Personal Access Token (Classic) with
   # the public_repo permission. It also needs a private/public
   # ssh key pair that can be used for signing. The public key must
@@ -38,7 +60,8 @@ jobs:
   pypi-version:
     name: Update package version
     needs: [print-inputs]
-    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
+      'refs/heads/main'
     runs-on: ubuntu-latest
     environment: package-release-gate
     permissions:
@@ -59,7 +82,7 @@ jobs:
           python scripts/check_unreleased_changelog_items.py
           git config --global tag.gpgSign true
       - name: Python Semantic Release
-        uses: python-semantic-release/python-semantic-release@v9.4.0
+        uses: python-semantic-release/python-semantic-release@v9.8.2
         id: release
         with:
           force: ${{ inputs.release_level }}
@@ -73,20 +96,27 @@ jobs:
       built-version: ${{ steps.release.outputs.version }}
   pypi-build:
     name: Build package
-    needs: [pypi-version]
-    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    needs: [print-inputs, pypi-version]
+    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
+      'refs/heads/main'
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      attestations: write
     steps:
       - uses: actions/checkout@v4
         with:
           ref: main  # Make sure to check out the latest commit on main, not the original commit that triggered the workflow
           fetch-depth: 0
       - name: Build package
-        uses: hynek/build-and-inspect-python-package@v2.2.0
+        uses: hynek/build-and-inspect-python-package@v2.6.0
+        with:
+          attest-build-provenance-github: 'true'
   upload-testpypi:
     name: Upload package to TestPyPI
-    needs: [pypi-build]
-    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    needs: [print-inputs, pypi-build]
+    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
+      'refs/heads/main'
     runs-on: ubuntu-latest
     environment: package-testpypi
     permissions:
@@ -98,13 +128,14 @@ jobs:
           name: Packages
           path: dist
       - name: Upload package to Test PyPI
-        uses: pypa/gh-action-pypi-publish@v1.8.14
+        uses: pypa/gh-action-pypi-publish@v1.9.0
         with:
           repository-url: https://test.pypi.org/legacy/
   upload-pypi:
     name: Upload package to PyPI
-    needs: [upload-testpypi]
-    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    needs: [print-inputs, upload-testpypi]
+    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
+      'refs/heads/main'
     runs-on: ubuntu-latest
     environment: package-release
     permissions:
@@ -116,11 +147,12 @@ jobs:
           name: Packages
           path: dist
       - name: Upload package to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.8.14
+        uses: pypa/gh-action-pypi-publish@v1.9.0
   upload-github:
     name: Upload package to GitHub Release
-    needs: [upload-pypi]
-    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
+    needs: [print-inputs, upload-pypi]
+    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
+      'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -143,16 +175,20 @@ jobs:
   pypi-install:
     name: Install package
     needs:
+      - print-inputs
       - pypi-version
       - pypi-build
       - upload-testpypi
       - upload-pypi
       - upload-github
-    if: github.repository == 'tektronix/tm_devices' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
+      'refs/heads/main'
+    runs-on: ${{ matrix.platform }}
     strategy:
       fail-fast: false
       matrix:
+        platform: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']  # when updating this, make sure to update all workflows that use this strategy
         index_urls:
           - ''
           - ' --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple'
@@ -160,7 +196,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: x
+          python-version: ${{ matrix.python-version }}
           check-latest: true
       - name: Test installing package
         # A retry is used to allow for some downtime before the package is installable
@@ -170,4 +206,5 @@ jobs:
           max_attempts: 5
           retry_wait_seconds: 30
           warning_on_retry: false
-          command: pip install${{ matrix.index_urls }} tm_devices==${{ needs.pypi-version.outputs.built-version }}
+          command: pip install${{ matrix.index_urls }} "${{ env.PACKAGE_NAME }}==${{
+            needs.pypi-version.outputs.built-version }}"

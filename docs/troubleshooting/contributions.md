@@ -1,9 +1,16 @@
-# Troubleshooting `tm_devices` Contributions
+# Troubleshooting Contributions
 
 This goes over common issues which can occur when contributing to `tm_devices`
 and how to deal with them.
 
-______________________________________________________________________
+{%
+include-markdown "includes/add_new_troubleshooting_section.md"
+comments=false
+rewrite-relative-urls=false
+
+%}
+
+---
 
 ## Unit tests have lots of VISA timeouts and failures in tests for areas that were not changed
 
@@ -47,7 +54,7 @@ WARNING  pyvisa:devices.py:143 No eom provided for InterfaceType.tcpip, INSTR.Us
 This is usually caused by invalid entries in the `resources` list in the
 `tests/sim_devices/devices.yaml` file.
 
-Notice in this code example how the `device` key value doesn't match a valid
+Notice in this code example how the `device` key value does not match a valid
 item from the `devices` list in `tests/sim_devices/psu/psu2281.yaml`. The
 `device` key value **must match** a valid item (device) from the `devices` list
 in the yaml file which is specified by the `filename` key.
@@ -70,7 +77,7 @@ devices:
         r: KEITHLEY INSTRUMENTS INC.,MODEL 2281S-20-6,01234567,01.00
 ```
 
-______________________________________________________________________
+---
 
 ## Pyright is failing on unchanged code
 
@@ -120,13 +127,13 @@ Completed in 58.189sec
 
 ### Solution:
 
-This is caused by running `pre-commit` in a Python environment that doesn't have the
+This is caused by running `pre-commit` in a Python environment that does not have the
 proper development dependencies installed.
 
 See the [contributing guide](../CONTRIBUTING.md) for details on how to properly set up
 and test changes using a virtual environment.
 
-______________________________________________________________________
+---
 
 ## Executable not found during `pre-commit`
 
@@ -224,7 +231,7 @@ python scripts/update_development_dependencies.py
 # Re-run original, failing command
 ```
 
-______________________________________________________________________
+---
 
 ## `FileNotFoundError` when running tests
 

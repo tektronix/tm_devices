@@ -2,7 +2,7 @@
 
 An overview of the signal generation functionality available in this package, along with information about Tektronix signal generators.
 
-______________________________________________________________________
+---
 
 ## Function Generation
 
@@ -19,7 +19,7 @@ Arbitrary Waveform Generators ({term}`AWGs <AWG>`) enforce one cycle per sample,
 The number of samples that occurs during a second is referred to as a sample per second (S/s), a unit which determines the frequency of the waveform.
 With low frequency functions, {term}`AWGs <AWG>` are functionally identical to {term}`AFGs <AFG>`, besides offering more constrained amplitudes and offsets.
 
-______________________________________________________________________
+---
 
 ### Class Structure
 
@@ -83,7 +83,7 @@ For example: the `afg.source_channel\["SOURCE1"\].set_amplitude()` call will cha
 The source channel classes not only provide easy access to basic {term}`SCPI` commands, but also helper functions, like `set_function_properties()`
 ```
 
-______________________________________________________________________
+---
 
 ### SignalGeneratorMixin Methods
 
@@ -98,7 +98,7 @@ Each class has children which inherit the base abstracted methods. These methods
 methods handle similarly, regardless of the different {term}`PI` commands required.
 
 - `source_device_constants` is a property which holds information about what functions
-  and memory sizes are allowed.
+    and memory sizes are allowed.
 
 ```{tip}
 `source_device_constants.functions` will provide an enum of possible functions to generate on the current signal generator.
@@ -149,7 +149,7 @@ This includes:
 - Features unique to each which should be kept in mind.
 - Constraints for each waveform parameter.
 
-______________________________________________________________________
+---
 
 ### TekScope Internal Arbitrary Function Generators
 
@@ -235,7 +235,7 @@ align: center
 The constraints for the {py:obj}`MSO5B <tm_devices.drivers.pi.scopes.tekscope.mso5b.MSO5B>` are identical to
 [other tekscope models](#mso2-mso4-mso4b-mso5-mso5lp-mso6-mso6b-lpd6), except the upper frequency bound is doubled.
 
-______________________________________________________________________
+---
 
 ### Arbitrary Function Generators
 
@@ -374,7 +374,7 @@ align: center
 
 ```
 
-______________________________________________________________________
+---
 
 ### Arbitrary Waveform Generators
 

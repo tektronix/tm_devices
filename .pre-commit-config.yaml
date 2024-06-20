@@ -11,13 +11,20 @@ ci:
     - pyright
     - pyright-verifytypes
     - pyroma
+    - poetry-audit
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
       - id: check-yaml
+        args: [--unsafe]
       - id: check-toml
       - id: check-json
+      - id: check-xml
+# TODO: figure out why this hook is failing in a few environments
+#      - id: file-contents-sorter
+#        files: ^(docs/known_words.txt)$
+#        args: [--unique, --ignore-case]
       - id: requirements-txt-fixer
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -25,7 +32,7 @@ repos:
       - id: check-merge-conflict
       - id: check-added-large-files
         args: [--maxkb=3000, --enforce-all]
-      - id: forbid-new-submodules
+      - id: forbid-submodules
       - id: pretty-format-json
         args: [--autofix, --indent=4]
   - repo: https://github.com/Lucas-C/pre-commit-hooks
@@ -34,14 +41,15 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.28.1
+    rev: 0.28.5
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
       - id: check-github-actions
       - id: check-github-workflows
+        args: [--verbose]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.21.3
+    rev: v3.27.0
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -51,37 +59,40 @@ repos:
       - id: blacken-docs
         files: \.(rst|md|markdown|tex)$
         additional_dependencies: [black==23.12.1]  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
+        args: [--line-length=100]
   - repo: https://github.com/lyz-code/yamlfix
     rev: 1.16.0
     hooks:
       - id: yamlfix
+# TODO: get this working
+#  - repo: https://github.com/motet-a/jinjalint
+#    rev: "0.5"
+#    hooks:
+#      - id: jinjalint
+  - repo: https://github.com/thibaudcolas/curlylint
+    rev: v0.13.1
+    hooks:
+      - id: curlylint
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.17
     hooks:
       - id: mdformat
-        args: [--number, --end-of-line, keep]
+        args: [--number, --end-of-line, keep, --ignore-missing-references]
         additional_dependencies:
           - setuptools  # This is required since Python 3.12 no longer installs setuptools by default in virtual environments
-          - black==23.12.1  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
           - mdformat-beautysh
-          - mdformat-black
           - mdformat-config
-          - mdformat-shfmt
-          - mdformat-web
+          - mdformat-footnote
+          - mdformat-frontmatter
           - mdformat-gfm
-          - mdformat-myst
+          - mdformat-gfm-alerts
+          - mdformat-mkdocs
+          - mdformat-shfmt
+          - mdformat-simple-breaks
+          - mdformat-tables
           - mdformat-toc
-# Currently rstcheck doesn't work with the templates
-#  - repo: https://github.com/rstcheck/rstcheck
-#    rev: v6.1.2
-#    hooks:
-#      - id: rstcheck
-#        additional_dependencies: [tomli, sphinx]
-# TODO: enable this, will require configuration
-#  - repo: https://github.com/jackdewinter/pymarkdown
-#    rev: v0.9.11
-#    hooks:
-#      - id: pymarkdown
+          - mdformat-web
+          - mdformat-wikilink
   - repo: https://gitlab.com/smop/pre-commit-hooks
     rev: v1.0.0
     hooks:
@@ -122,14 +133,22 @@ repos:
         pass_filenames: false
         always_run: true
         args: [., --min=10]
+      - id: poetry-audit
+        name: poetry-audit
+        entry: poetry
+        language: system
+        types: [toml]
+        pass_filenames: false
+        always_run: true
+        args: [audit, --json, --ignore-code=CVE-2019-8341]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.3.4
+    rev: v0.4.10
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
       - id: ruff-format
   - repo: https://github.com/PyCQA/docformatter
-    rev: v1.7.0  # can't update due to https://github.com/PyCQA/docformatter/issues/174
+    rev: v1.7.5
     hooks:
       - id: docformatter
         additional_dependencies: [tomli]

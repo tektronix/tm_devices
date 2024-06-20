@@ -12,11 +12,183 @@ Valid subsections within a version are:
 - Fixed
 - Security
 
-______________________________________________________________________
+---
 
 ## Unreleased
 
 Things to be included in the next release go here.
+
+---
+
+## v1.5.0 (2024-06-10)
+
+### Merged Pull Requests
+
+- fix: Update the commands to have uniform spacing of arguments. ([#234](https://github.com/tektronix/tm_devices/pull/234))
+- ci: Update the updater workflow to skip running poetry-audit during the updater process ([#235](https://github.com/tektronix/tm_devices/pull/235))
+- python-deps(deps-dev): bump the python-dependencies group with 3 updates ([#233](https://github.com/tektronix/tm_devices/pull/233))
+- gh-actions(deps): bump the gh-actions-dependencies group with 2 updates ([#218](https://github.com/tektronix/tm_devices/pull/218))
+- docs: Properly sort modules when building the API documentation ([#231](https://github.com/tektronix/tm_devices/pull/231))
+- Enable Virtual GPIB connections to supported instruments ([#230](https://github.com/tektronix/tm_devices/pull/230))
+- ci: Update build and release workflows to verify the package can be installed for all supported Python versions and Operating Systems ([#229](https://github.com/tektronix/tm_devices/pull/229))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#225](https://github.com/tektronix/tm_devices/pull/225))
+- Add workflows to check for changes that break public APIs ([#227](https://github.com/tektronix/tm_devices/pull/227))
+- gh-actions(deps): bump the gh-actions-dependencies group across 1 directory with 2 updates ([#226](https://github.com/tektronix/tm_devices/pull/226))
+- docs: Update the trademark symbols ([#223](https://github.com/tektronix/tm_devices/pull/223))
+- docs: Add analytics code for documentation ([#222](https://github.com/tektronix/tm_devices/pull/222))
+- Sign all published files ([#221](https://github.com/tektronix/tm_devices/pull/221))
+- Add attestations to artifacts ([#220](https://github.com/tektronix/tm_devices/pull/220))
+- python-deps(deps-dev): update pylint requirement from 3.2.0 to 3.2.1 in the python-dependencies group ([#219](https://github.com/tektronix/tm_devices/pull/219))
+- docs: Update wording of API package Modules section ([#217](https://github.com/tektronix/tm_devices/pull/217))
+- Update api template usage ([#216](https://github.com/tektronix/tm_devices/pull/216))
+- Cleanup init files and rename abstract classes ([#215](https://github.com/tektronix/tm_devices/pull/215))
+- gh-actions(deps): bump python-semantic-release/python-semantic-release from 9.6.0 to 9.7.2 in the gh-actions-dependencies group ([#213](https://github.com/tektronix/tm_devices/pull/213))
+- python-deps(deps-dev): update ruff requirement from 0.4.3 to 0.4.4 in the python-dependencies group ([#214](https://github.com/tektronix/tm_devices/pull/214))
+- docs: Update copy code button to not show up on doc signatures in the API documentation ([#212](https://github.com/tektronix/tm_devices/pull/212))
+
+### Added
+
+- Added a new section in the documentation of each package/subpackage that shows the submodules (files) of that package/subpackage.
+- Added signed build provenance attestations to workflow artifacts for the built package.
+- Added signed build provenance attestations to the generated SBOMs.
+- Documentation was added explaining how to verify the attestations on uploaded files.
+- Enabled support for Virtual GPIB connections to supported devices.
+
+### Removed
+
+- docs: Removed the copy code button from the Python API signatures in the documentation.
+
+### Changed
+
+- Updated most `__init__.py` files to not include `__all__` variable definitions.
+- Renamed some of the abstract base classes to separate them from the actual device driver classes.
+- Updated the documentation templates to use the new jinja template style that `mkdocstrings-python` is switching to.
+
+### Fixed
+
+- Fixed the API documentation to properly sort all the modules so that the Table of Contents is readable.
+
+---
+
+## v1.4.2 (2024-05-09)
+
+### Merged Pull Requests
+
+- docs: Add a copy button to the code blocks in the documentation ([#211](https://github.com/tektronix/tm_devices/pull/211))
+- docs: Update mkdocs-ezglossary-plugin version used for building docs ([#210](https://github.com/tektronix/tm_devices/pull/210))
+- docs: Add styling for a new method label ([#209](https://github.com/tektronix/tm_devices/pull/209))
+
+### Added
+
+- Added a click to copy button to all code blocks.
+
+### Fixed
+
+- Updated `mkdocs-ezglossary-plugin` to a version that allows linking to glossary entries from the
+    home page of documentation that is hosted on ReadtheDocs.
+
+---
+
+## v1.4.1 (2024-05-06)
+
+### Merged Pull Requests
+
+- ci: Revert python-semantic-release version bump since the GitHub Action no longer properly signs commits ([#208](https://github.com/tektronix/tm_devices/pull/208))
+- gh-actions(deps): bump the gh-actions-dependencies group with 2 updates ([#207](https://github.com/tektronix/tm_devices/pull/207))
+- Update contribution guide to remove outdated instructions ([#205](https://github.com/tektronix/tm_devices/pull/205))
+- fix: Update Changelog template to prevent pre-commit failures. when creating new versions with python-semantic-version ([#204](https://github.com/tektronix/tm_devices/pull/204))
+
+### Fixed
+
+- Updated the changelog template to not cause `pre-commit` failures when it is used to update the changelog.
+- Updated the readme to properly render on PyPI.
+
+### Removed
+
+- Removed outdated instructions from the contribution guide.
+
+---
+
+## v1.4.0 (2024-05-03)
+
+### Merged Pull Requests
+
+- fix: Update release notes generator script to account for markdown formatting changes ([#203](https://github.com/tektronix/tm_devices/pull/203))
+- Update package to point to ReadtheDocs for official documentation ([#201](https://github.com/tektronix/tm_devices/pull/201))
+- Fix ReadtheDocs builds by installing nodejs ([#200](https://github.com/tektronix/tm_devices/pull/200))
+- docs: Switch from Sphinx to Mkdocs for building documentation. ([#11](https://github.com/tektronix/tm_devices/pull/11))
+- gh-actions(deps): bump python-semantic-release/python-semantic-release ([#197](https://github.com/tektronix/tm_devices/pull/197))
+- python-deps(deps): bump the python-dependencies group with 2 updates ([#192](https://github.com/tektronix/tm_devices/pull/192))
+- gh-actions(deps): bump the gh-actions-dependencies group with 2 updates ([#191](https://github.com/tektronix/tm_devices/pull/191))
+- gh-actions(deps): bump the gh-actions-dependencies group with 3 updates ([#190](https://github.com/tektronix/tm_devices/pull/190))
+- python-deps(deps-dev): update pyright requirement from 1.1.356 to 1.1.357 in the python-dependencies group ([#189](https://github.com/tektronix/tm_devices/pull/189))
+
+### Changed
+
+- Switched from using `sphinx` to `mkdocs` for building the documentation. This enables building the
+    documentation in under 10 minutes while using less than 6 GB of RAM and saving almost 2 GB of
+    disk space. Fixes [#77](https://github.com/tektronix/tm_devices/issues/77).
+- Switched from GitHub Pages to ReadtheDocs for official documentation hosting.
+
+### Fixed
+
+- Fixed the Readme to display as intended in GitHub and PyPI while maintaining all functionality in
+    the generated documentation site.
+
+---
+
+## v1.3.0 (2024-04-04)
+
+### Merged Pull Requests
+
+- Updated the get_acquisition_data example to select source for the measurement. ([#187](https://github.com/tektronix/tm_devices/issues/187))
+
+### Changed
+
+- Updated get_acquisition_data example to select source for the measurement.
+
+---
+
+## v1.2.3 (2024-04-03)
+
+### Merged Pull Requests
+
+- Update SBOM scanning workflow to be able to upload artifacts to GitHub releases ([#186](https://github.com/tektronix/tm_devices/issues/186))
+
+### Security
+
+- Updated the workflow that creates SBOMs to be able to upload the SBOM as an artifact to a GitHub release.
+
+---
+
+## v1.2.2 (2024-04-03)
+
+### Merged Pull Requests
+
+- Fix packaging workflows to correctly gate on the repo name. ([#185](https://github.com/tektronix/tm_devices/issues/185))
+- Convert PyPI upload workflows into reusable workflows. ([#184](https://github.com/tektronix/tm_devices/issues/184))
+- ci: Update docformatter version, it no longer causes issues. ([#182](https://github.com/tektronix/tm_devices/issues/182))
+- Add test results to job summary and pull request comments ([#181](https://github.com/tektronix/tm_devices/issues/181))
+- Convert workflows into reusable workflows ([#178](https://github.com/tektronix/tm_devices/issues/178))
+- Update file checker workflow ([#179](https://github.com/tektronix/tm_devices/issues/179))
+- gh-actions(deps): bump the gh-actions-dependencies group with 2 updates ([#177](https://github.com/tektronix/tm_devices/issues/177))
+- python-deps(deps-dev): bump the python-dependencies group with 1 update ([#176](https://github.com/tektronix/tm_devices/issues/176))
+- Update admonition in readme to fix a glitch/bug in GitHub web UI ([#174](https://github.com/tektronix/tm_devices/issues/174))
+- Update supported devices and VISA backends in the readme ([#170](https://github.com/tektronix/tm_devices/issues/170))
+- fix: Updated the measurement source selection command for the MDO3K, MDO4K, MSO4K and DPO4K models to work properly. ([#173](https://github.com/tektronix/tm_devices/issues/173))
+- ci: Update codecov-action to v4. ([#140](https://github.com/tektronix/tm_devices/issues/140))
+- Handle Visa IO Error on first connection ([#172](https://github.com/tektronix/tm_devices/issues/172))
+- Misc. workflow updates ([#171](https://github.com/tektronix/tm_devices/issues/171))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 1 update ([#158](https://github.com/tektronix/tm_devices/issues/158))
+- python-deps(deps): Bump the python-dependencies group with 2 updates ([#159](https://github.com/tektronix/tm_devices/issues/159))
+- gh-actions(deps): Bump the gh-actions-dependencies group with 2 updates ([#166](https://github.com/tektronix/tm_devices/issues/166))
+- ci: Update documentation builds to use node.js version 20. ([#163](https://github.com/tektronix/tm_devices/issues/163))
+- refactor: Update the type aliases used by the `DeviceManager` add/get methods to return `TypeVar`s with default values that are bound to the appropriate device type. ([#162](https://github.com/tektronix/tm_devices/issues/162))
+- ci: Add a step to upload the sarif file as a workflow artifact. ([#157](https://github.com/tektronix/tm_devices/issues/157))
+- refactor: Update the get_model_series() method to only warn the user if the model isn't contained in the list of supported models. ([#156](https://github.com/tektronix/tm_devices/issues/156))
+- test: Update tox to test building the package in a unique environment to prevent race conditions when running tox environments in parallel. ([#155](https://github.com/tektronix/tm_devices/issues/155))
+- ci: Add permissions to write security events for the SBOM scan. ([#154](https://github.com/tektronix/tm_devices/issues/154))
+- Add SBOM generation and scanning workflow ([#153](https://github.com/tektronix/tm_devices/issues/153))
 
 ### Added
 
@@ -27,7 +199,7 @@ Things to be included in the next release go here.
 - Added a property named `internal_afg` in TekScope.
 - Added implementation of `generate_function` for all AWG models.
 - Added two burst functions to SignalGeneratorMixin: one to set up burst and one to generate the burst by forcing trigger.
-  - NOTE: Only the AFG's and internal AFG have these functions implemented.
+    - NOTE: Only the AFG's and internal AFG have these functions implemented.
 - Added `OutputSignalPath` enum attribute in AWG's representing output signal path options.
 - Added two functions for loading waveform set files in the AWG70k's and AWG5200: one for loading a waveform set file and another for loading a specific waveform from a waveform set file.
 - Added `sample_waveform_set_file` attribute in AWG70k's and AWG5200 to define the default waveform set file.
@@ -35,14 +207,14 @@ Things to be included in the next release go here.
 ### Changed
 
 - <span style="color:red">BREAKING CHANGE</span>. Changed the term "signal source" to "signal generator".
-  - All uses of this term are changed. Import paths now use signal_generator instead of signal_source.
+    - All uses of this term are changed. Import paths now use signal_generator instead of signal_source.
 - <span style="color:red">BREAKING CHANGE</span>. Changed the function name of `generate_waveform()` to `generate_function()`.
-  - `generate_waveform()` only exists on AWGs now, however the functionality is entirely changed.
+    - `generate_waveform()` only exists on AWGs now, however the functionality is entirely changed.
 - <span style="color:red">BREAKING CHANGE</span>. Changed the `generate_function()` function by removing burst functionality.
-  - Any use of burst now must use `setup_burst()` and `generate_burst()` instead.
+    - Any use of burst now must use `setup_burst()` and `generate_burst()` instead.
 - Updated AWG's such that the `family_base_class` is at the series level.
 
-______________________________________________________________________
+---
 
 ## v1.2.1 (2024-02-27)
 
@@ -64,7 +236,7 @@ ______________________________________________________________________
 
 - Updated import statements for the `ReadOnlyCachedProperty` decorator to allow PyCharm auto-complete to work properly.
 
-______________________________________________________________________
+---
 
 ## v1.2.0 (2024-02-09)
 
@@ -107,7 +279,7 @@ ______________________________________________________________________
 - Fixed PI device close method to catch VisaIOErrors and throw a warning, rather than an exception, when closing a PI device connection.
 - Fixed APIs with query attributes missing under MSO4, MSO5, MSO6 and MSO2 model drivers.
 
-______________________________________________________________________
+---
 
 ## v1.1.0 (2023-12-07)
 
@@ -123,7 +295,7 @@ ______________________________________________________________________
 
 - Added support for MSO4B device.
 
-______________________________________________________________________
+---
 
 ## v1.0.1 (2023-12-01)
 
@@ -145,7 +317,7 @@ ______________________________________________________________________
 
 - Fixed a crash observed on macOS when importing `tm_devices`, issue [#108](https://github.com/tektronix/tm_devices/issues/108)
 
-______________________________________________________________________
+---
 
 ## v1.0.0 (2023-11-13)
 
@@ -181,7 +353,7 @@ ______________________________________________________________________
 
 - Removed some outdated and broken API files
 
-______________________________________________________________________
+---
 
 ## v0.1.24 (2023-10-30)
 
@@ -193,7 +365,7 @@ ______________________________________________________________________
 
 - Fixed the `tippy.js` pop-ups in the documentation
 
-______________________________________________________________________
+---
 
 ## v0.1.23 (2023-10-30)
 
@@ -213,7 +385,7 @@ ______________________________________________________________________
 - Updated the auto-generated commands for a handful of models to fix various issues
 - Updated the function responsible for converting version strings into `Version` objects to be able to handle software versions with non-standard formats.
 
-______________________________________________________________________
+---
 
 ## v0.1.22 (2023-10-24)
 
@@ -225,7 +397,7 @@ ______________________________________________________________________
 
 - Fixed the package release workflow to use a version of the `python-semantic-release` GitHub action that doesn't have any bugs
 
-______________________________________________________________________
+---
 
 ## v0.1.21 (2023-10-24)
 
@@ -237,7 +409,7 @@ ______________________________________________________________________
 
 - Fixed the GitHub Release template generation
 
-______________________________________________________________________
+---
 
 ## v0.1.20 (2023-10-24)
 
@@ -249,7 +421,7 @@ ______________________________________________________________________
 
 - Added a template for rendering custom Release Notes for GitHub Releases
 
-______________________________________________________________________
+---
 
 ## v0.1.19 (2023-10-24)
 
@@ -269,7 +441,7 @@ ______________________________________________________________________
 
 - The default behavior of the `DeviceManager` is changed to **not** check for updates
 
-______________________________________________________________________
+---
 
 ## v0.1.18 (2023-10-23)
 
@@ -283,7 +455,7 @@ ______________________________________________________________________
 - Updated permissions for the release workflow to allow it to upload the distribution files to the GitHub Release
 - Updated the README to include the correct link to the badge displaying the total number of package downloads
 
-______________________________________________________________________
+---
 
 ## v0.1.17 (2023-10-20)
 
@@ -296,7 +468,7 @@ ______________________________________________________________________
 - Updated links in the README to properly redirect to GitHub when accessed from PyPI
 - Updated the release workflow to be able to upload artifacts to the GitHub Release page
 
-______________________________________________________________________
+---
 
 ## v0.1.16 (2023-10-20)
 
@@ -308,7 +480,7 @@ ______________________________________________________________________
 
 - Updated the release workflow to properly build the latest version after `python-semantic-release` updates the main branch
 
-______________________________________________________________________
+---
 
 ## v0.1.15 (2023-10-20)
 
@@ -336,7 +508,7 @@ ______________________________________________________________________
 
 - A command-line script to list all available VISA resources, `list-visa-resources`
 
-______________________________________________________________________
+---
 
 ## v0.1.14 (2023-10-05)
 
@@ -344,7 +516,7 @@ ______________________________________________________________________
 
 - Added support for Python 3.12.
 
-______________________________________________________________________
+---
 
 ## v0.1.13 (2023-09-21)
 
@@ -352,7 +524,7 @@ ______________________________________________________________________
 
 - Fixed bug when generating a waveform using Burst Mode on an AFG.
 
-______________________________________________________________________
+---
 
 ## v0.1.12 (2023-09-06)
 
@@ -360,7 +532,7 @@ ______________________________________________________________________
 
 - Support for DPOJET to TekScope5k7k70k models.
 
-______________________________________________________________________
+---
 
 ## v0.1.11 (2023-08-29)
 
@@ -368,7 +540,7 @@ ______________________________________________________________________
 
 - Cache `*OPT?` on first access.
 
-______________________________________________________________________
+---
 
 ## v0.1.10 (2023-08-29)
 
@@ -376,7 +548,7 @@ ______________________________________________________________________
 
 - Support for AWG7KB
 
-______________________________________________________________________
+---
 
 ## v0.1.9 (2023-08-24)
 
@@ -384,7 +556,7 @@ ______________________________________________________________________
 
 - Support for `num_dig_bits_in_ch` and `total_channels` properties to TekScope5k7k70k.
 
-______________________________________________________________________
+---
 
 ## v0.1.8 (2023-08-09)
 
@@ -396,7 +568,7 @@ ______________________________________________________________________
 
 - Changed waveform generation to enforce CustomStrEnum function type.
 
-______________________________________________________________________
+---
 
 ## v0.1.7 (2023-08-02)
 
@@ -409,7 +581,7 @@ ______________________________________________________________________
 - Updated auto-generated API documentation to not show all inherited attributes and methods in order to speed up documentation build time.
 - `SourceDeviceConstants.function_list` was changed to be `SourceDeviceConstants.functions`, which is now an Enumeration of valid functions.
 
-______________________________________________________________________
+---
 
 ## v0.1.6 (2023-07-25)
 
@@ -417,7 +589,7 @@ ______________________________________________________________________
 
 - Fixed bug with not allowing empty license lists.
 
-______________________________________________________________________
+---
 
 ## v0.1.5 (2023-07-25)
 
@@ -425,7 +597,7 @@ ______________________________________________________________________
 
 - Updated syntax for AFG polarities.
 
-______________________________________________________________________
+---
 
 ## v0.1.4 (2023-07-21)
 
@@ -444,7 +616,7 @@ ______________________________________________________________________
 
 - `all_channel_numbers_list` property since MSO2 breaks convention so can no longer rely on sequential channel numbering.
 
-______________________________________________________________________
+---
 
 ## v0.1.3 (2023-07-03)
 
@@ -453,7 +625,7 @@ ______________________________________________________________________
 - Removed TRIANGLE from AFG function list.
 - Added symmetry to waveform generation function call.
 
-______________________________________________________________________
+---
 
 ## v0.1.2 (2023-06-27)
 
@@ -462,7 +634,7 @@ ______________________________________________________________________
 - Updated the add_new dynamic item methods to work with numbers higher than 9.
 - Fixed malformed command syntax due to a bug in determining the preceding separator character.
 
-______________________________________________________________________
+---
 
 ## v0.1.1 (2023-06-20)
 
@@ -470,7 +642,7 @@ ______________________________________________________________________
 
 - Added support for .dev versions.
 
-______________________________________________________________________
+---
 
 ## v0.1.0 (2022-08-08)
 

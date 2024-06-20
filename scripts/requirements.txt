@@ -1,0 +1,10 @@
+poetry
+poetry-core
+poetry-plugin-export
+pre-commit
+pre-commit-update
+requests
+toml-sort
+tomli
+tomli_w
+yamlfix

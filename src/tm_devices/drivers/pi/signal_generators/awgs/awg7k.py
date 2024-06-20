@@ -3,6 +3,8 @@
 from types import MappingProxyType
 from typing import cast, Dict, Optional, Tuple
 
+import pyvisa as visa
+
 from tm_devices.commands import AWG7KMixin
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.signal_generators.awgs.awg import (
@@ -15,6 +17,7 @@ from tm_devices.drivers.pi.signal_generators.awgs.awg5k import (
     AWG5K,
     AWG5KSourceChannel,
 )
+from tm_devices.helpers import DeviceConfigEntry
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
@@ -30,6 +33,25 @@ class AWG7K(AWG7KMixin, AWG):
         memory_max_record_length=32400000,
         memory_min_record_length=2,
     )
+
+    ################################################################################################
+    # Magic Methods
+    ################################################################################################
+    def __init__(
+        self,
+        config_entry: DeviceConfigEntry,
+        verbose: bool,
+        visa_resource: visa.resources.MessageBasedResource,
+    ) -> None:
+        """Create an AWG7K device.
+
+        Args:
+            config_entry: A config entry object parsed by the DMConfigParser.
+            verbose: A boolean indicating if verbose output should be printed.
+            visa_resource: The VISA resource object.
+        """
+        # NOTE: This method must be defined for the documentation to properly generate
+        super().__init__(config_entry, verbose, visa_resource)
 
     ################################################################################################
     # Properties
@@ -81,6 +103,9 @@ class AWG7K(AWG7KMixin, AWG):
 class AWG7KSourceChannel(AWG5KSourceChannel):
     """AWG7K signal source channel composite."""
 
+    ################################################################################################
+    # Magic Methods
+    ################################################################################################
     def __init__(self, awg: AWG7K, channel_name: str) -> None:
         """Create an AWG5200 source channel.
 
@@ -91,6 +116,9 @@ class AWG7KSourceChannel(AWG5KSourceChannel):
         super().__init__(awg=cast(AWG5K, awg), channel_name=channel_name)
         self._awg = awg
 
+    ################################################################################################
+    # Public Methods
+    ################################################################################################
     def set_offset(self, value: float, absolute_tolerance: float = 0) -> None:
         """Set the offset on the source channel.
 

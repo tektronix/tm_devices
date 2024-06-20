@@ -2,6 +2,8 @@
 
 from typing import Optional, Tuple
 
+import pyvisa as visa
+
 from tm_devices.commands import AFG3KMixin
 from tm_devices.drivers.pi.signal_generators.afgs.afg import (
     AFG,
@@ -10,6 +12,7 @@ from tm_devices.drivers.pi.signal_generators.afgs.afg import (
     ParameterBounds,
     SignalGeneratorFunctionsAFG,
 )
+from tm_devices.helpers import DeviceConfigEntry
 
 
 class AFG3K(AFG3KMixin, AFG):
@@ -23,6 +26,28 @@ class AFG3K(AFG3KMixin, AFG):
 
     _16KB_THRESHOLD = 16 * 1024
 
+    ################################################################################################
+    # Magic Methods
+    ################################################################################################
+    def __init__(
+        self,
+        config_entry: DeviceConfigEntry,
+        verbose: bool,
+        visa_resource: visa.resources.MessageBasedResource,
+    ) -> None:
+        """Create an AFG3K device.
+
+        Args:
+            config_entry: A config entry object parsed by the DMConfigParser.
+            verbose: A boolean indicating if verbose output should be printed.
+            visa_resource: The VISA resource object.
+        """
+        # NOTE: This method must be defined for the documentation to properly generate
+        super().__init__(config_entry, verbose, visa_resource)
+
+    ################################################################################################
+    # Private Methods
+    ################################################################################################
     @staticmethod
     def _get_driver_specific_multipliers(model_number: str) -> Tuple[float, float]:
         """Get multipliers for frequency dependent on the function.
