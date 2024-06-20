@@ -17,10 +17,8 @@ from tm_devices.helpers.enums import (
     ConfigFileType,
     ConnectionTypes,
     DeviceTypes,
-    SignalSourceFunctionBase,
-    SignalSourceFunctionsAFG,
-    SignalSourceFunctionsAWG,
-    SignalSourceFunctionsIAFG,
+    LoadImpedanceAFG,
+    SASSetWaveformFileTypes,
     SupportedModels,
     SupportedRequestTypes,
 )
@@ -76,8 +74,6 @@ __all__ = [
     "validate_address",
     "VISA_RESOURCE_EXPRESSION_REGEX",
     "ReadOnlyCachedProperty",
-    "SignalSourceFunctionBase",
-    "SignalSourceFunctionsAWG",
-    "SignalSourceFunctionsAFG",
-    "SignalSourceFunctionsIAFG",
+    "SASSetWaveformFileTypes",
+    "LoadImpedanceAFG",
 ]

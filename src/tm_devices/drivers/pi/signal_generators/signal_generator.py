@@ -1,6 +1,6 @@
-"""Base Source device driver module.
+"""Base Generator device driver module.
 
-Sources include PI devices such as AFGs and AWGs.
+Generators include PI devices such as AFGs and AWGs.
 """
 
 from abc import ABC, abstractmethod
@@ -14,8 +14,8 @@ from tm_devices.helpers import print_with_timestamp
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class SignalSource(PIDevice, SignalGeneratorMixin, ABC):
-    """Base Source device driver."""
+class SignalGenerator(PIDevice, SignalGeneratorMixin, ABC):
+    """Base Signal Generator device driver."""
 
     ################################################################################################
     # Properties

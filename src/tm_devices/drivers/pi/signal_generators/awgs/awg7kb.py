@@ -2,7 +2,7 @@
 
 import pyvisa as visa
 
-from tm_devices.drivers.pi.signal_sources.awgs.awg7k import AWG7K
+from tm_devices.drivers.pi.signal_generators.awgs.awg7k import AWG7K
 from tm_devices.helpers import DeviceConfigEntry
 
 

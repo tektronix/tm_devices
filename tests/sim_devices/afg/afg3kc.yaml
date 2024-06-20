@@ -1,7 +1,77 @@
 ---
 spec: '1.1'
 devices:
-  afg3kc:
+  afg3011c:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AFG3011C,SERIAL,SCPI:99.0 FV:3.2.3
+  afg3021c:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AFG3021C,SERIAL,SCPI:99.0 FV:3.2.3
+  afg3052c:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AFG3052C,SERIAL,SCPI:99.0 FV:3.2.3
+  afg3101c:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AFG3101C,SERIAL,SCPI:99.0 FV:3.2.3
+  afg3151c:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AFG3151C,SERIAL3,SCPI:99.0 FV:3.2.3
+  afg3252c:
     eom:
       USB INSTR:
         q: "\n"
@@ -81,11 +151,9 @@ devices:
         default: 50.0
         getter:
           q: SOURCE1:PULSE:DCYCLE?
-          r: '{:f}'
+          r: '{:s}'
         setter:
-          q: SOURCE1:PULSE:DCYCLE {:f}
-        specs:
-          type: float
+          q: SOURCE1:PULSE:DCYCLE {:s}
       output_1_polarity:
         default: NORM
         getter:
@@ -316,51 +384,3 @@ devices:
         - q: SYSTEM:ERROR?
           default: 0,"No error"
           command_error: 1, Command error
-  afg3kc-1ch:
-    eom:
-      USB INSTR:
-        q: "\n"
-        r: "\n"
-      TCPIP INSTR:
-        q: "\n"
-        r: "\n"
-      TCPIP SOCKET:
-        q: "\n"
-        r: "\n"
-    dialogues:
-      - q: '*IDN?'
-        r: TEKTRONIX,AFG3151C,SERIAL3,SCPI:99.0 FV:3.2.3
-      - q: '*OPC?'
-        r: '1'
-  afg3051c:
-    eom:
-      USB INSTR:
-        q: "\n"
-        r: "\n"
-      TCPIP INSTR:
-        q: "\n"
-        r: "\n"
-      TCPIP SOCKET:
-        q: "\n"
-        r: "\n"
-    dialogues:
-      - q: '*IDN?'
-        r: TEKTRONIX,AFG3051C,SERIAL4,SCPI:99.0 FV:3.2.3
-      - q: '*OPC?'
-        r: '1'
-  afg3021c:
-    eom:
-      USB INSTR:
-        q: "\n"
-        r: "\n"
-      TCPIP INSTR:
-        q: "\n"
-        r: "\n"
-      TCPIP SOCKET:
-        q: "\n"
-        r: "\n"
-    dialogues:
-      - q: '*IDN?'
-        r: TEKTRONIX,AFG3021C,SERIAL,SCPI:99.0 FV:3.2.3
-      - q: '*OPC?'
-        r: '1'

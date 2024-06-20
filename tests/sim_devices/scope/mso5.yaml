@@ -53,7 +53,7 @@ devices:
         r: REF1
       - q: HEADER OFF
       - q: :LICENSE:APPID?
-        r: LIC5,LIC4
+        r: LIC5,LIC4,AFG
       - q: RECALL:WAVEFORM "temp.wfm", REF1
       - q: :RECALL:WAVEFORM "REF1.wfm",REF1
       - q: :SAVE:WAVEFORM temp.wfm,"REF1.wfm"

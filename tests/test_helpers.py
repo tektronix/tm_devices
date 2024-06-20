@@ -249,7 +249,7 @@ def test_create_and_check_visa_connection(capsys: pytest.CaptureFixture[str]) ->
     dev_config_3 = DeviceConfigEntry(
         device_type=DeviceTypes.AFG,
         connection_type=ConnectionTypes.SOCKET,
-        address="AFG3KC-HOSTNAME",
+        address="AFG3252C-HOSTNAME",
         lan_port=10001,
     )
     visa_obj = create_visa_connection(dev_config_3, SIMULATED_VISA_LIB)

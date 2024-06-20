@@ -1,7 +1,7 @@
 ---
 spec: '1.1'
 devices:
-  awg7122b:
+  awg7062bopt02:
     eom:
       USB INSTR:
         q: "\n"
@@ -14,10 +14,12 @@ devices:
         r: "\n"
     dialogues:
       - q: '*IDN?'
-        r: TEKTRONIX,AWG7122B,B010123,SCPI:99.0 FW:3.0.136.602
+        r: TEKTRONIX,AWG7062B,B010123,SCPI:99.0 FW:3.0.136.602
       - q: '*OPC'
       - q: '*OPC?'
         r: '1'
+      - q: '*OPT?'
+        r: '02'
       - q: '*RST'
       - q: '*CLS'
       - q: AWGControl:CONFigure:CNUMber?
@@ -44,3 +46,62 @@ devices:
           min: 0
           max: 255
           type: int
+      memory_import:
+        default: ''
+        getter:
+          q: MMEMory:IMPort?
+          r: '{:s}'
+        setter:
+          q: MMEMory:IMPort {:s}
+  awg7121bopt01:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AWG7121B,B010123,SCPI:99.0 FW:3.0.136.602
+      - q: '*OPC'
+      - q: '*OPC?'
+        r: '1'
+      - q: '*OPT?'
+        r: '01'
+      - q: '*RST'
+      - q: '*CLS'
+      - q: AWGControl:CONFigure:CNUMber?
+        r: '2'
+      - q: 'MMEMory:IMPort '
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: SYSTEM:ERROR?
+          default: 0,"No error"
+          command_error: 1, "Command error"
+    properties:
+      sre:
+        default: 0
+        getter:
+          q: '*SRE?'
+          r: '{:d}'
+        setter:
+          q: '*SRE {:d}'
+        specs:
+          min: 0
+          max: 255
+          type: int
+      memory_import:
+        default: ''
+        getter:
+          q: MMEMory:IMPort?
+          r: '{:s}'
+        setter:
+          q: MMEMory:IMPort {:s}

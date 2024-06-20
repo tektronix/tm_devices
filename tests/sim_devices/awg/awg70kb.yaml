@@ -1,7 +1,7 @@
 ---
 spec: '1.1'
 devices:
-  awg70002b:
+  awg70002bopt208:
     eom:
       USB INSTR:
         q: "\n"
@@ -18,11 +18,12 @@ devices:
       - q: '*OPC'
       - q: '*OPC?'
         r: '1'
+      - q: '*OPT?'
+        r: '208'
       - q: '*RST'
       - q: '*CLS'
       - q: AWGControl:CONFigure:CNUMber?
         r: '2'
-      - q: 'MMEMory:IMPort '
     error:
       status_register:
         - q: '*ESR?'
@@ -44,3 +45,52 @@ devices:
           min: 0
           max: 255
           type: int
+      memory_import:
+        default: ''
+        getter:
+          q: MMEMory:IMPort?
+          r: '{:s}'
+        setter:
+          q: MMEMory:IMPort {:s}
+      output1_path:
+        default: DIR
+        getter:
+          q: OUTPUT1:PATH?
+          r: '{:s}'
+        setter:
+          q: OUTPUT1:PATH {:s}
+        specs:
+          type: str
+          valid: [DIR, DCA]
+      source1_offset:
+        default: 0.0
+        getter:
+          q: SOURCE1:VOLTAGE:OFFSET?
+          r: '{:f}'
+        setter:
+          q: SOURCE1:VOLTAGE:OFFSET {:f}
+        specs:
+          min: -0.5
+          max: 0.5
+          type: float
+      output2_path:
+        default: DIR
+        getter:
+          q: OUTPUT2:PATH?
+          r: '{:s}'
+        setter:
+          q: OUTPUT2:PATH {:s}
+        specs:
+          type: str
+          valid: [DIR, DCA]
+      source2_offset:
+        default: 0.0
+        getter:
+          q: SOURCE2:VOLTAGE:OFFSET?
+          r: '{:f}'
+        setter:
+          q: SOURCE2:VOLTAGE:OFFSET {:f}
+        specs:
+          min: -0.5
+          max: 0.5
+          type: float

@@ -20,6 +20,8 @@ devices:
         r: MSO58B-200201
       - q: :FILESystem:LDIR?
         r: 'E:,F:,G:,H:,I:,J:,K:'
+      - q: :LICENSE:APPID?
+        r: AFG
       - q: :FILESystem:CWD "E:"
       - q: :FILESystem:CWD "F:"
       - q: :FILESystem:CWD "G:"
