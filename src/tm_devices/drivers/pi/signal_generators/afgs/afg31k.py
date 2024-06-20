@@ -23,7 +23,6 @@ class AFG31K(AFG):
     _PRE_15_FREQ_THRESHOLD_1 = 60.0e6
     _PRE_15_FREQ_THRESHOLD_2 = 80.0e6
     _POST_15_FREQ_THRESHOLD = 200.0e6
-
     _16KB_THRESHOLD = 16 * 1024
     ################################################################################################
     # Magic Methods
@@ -39,7 +38,15 @@ class AFG31K(AFG):
 
     @staticmethod
     def _get_driver_specific_multipliers(model_number: str) -> Tuple[float, float, float]:
-        """Get multipliers for frequency dependant for different functions."""
+        """Get multipliers for frequency dependent on the function.
+
+        Args:
+            model_number: The numbers not pertaining to series or channel count in the name.
+                ie: AFG31 ->25<- 1
+
+        Returns:
+            The necessary values to multiply the frequency by dependent on the function.
+        """
         # the square wave constraints are difference for model 25
         square_wave_multiplier = 0.64 if model_number == "25" else 0.8
 
@@ -63,13 +70,16 @@ class AFG31K(AFG):
         frequency: Optional[float] = None,
         load_impedance: LoadImpedanceAFG = LoadImpedanceAFG.HIGHZ,
     ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds, ParameterBounds]:
-        """Get constraints which are dependent on the model series.
+        """Get constraints which are dependent on the model series and parameters.
 
         Args:
             function: The function that needs to be generated.
             waveform_length: The length of the waveform if no function or arbitrary is provided.
             frequency: The frequency of the waveform that needs to be generated.
             load_impedance: The suggested impedance on the source.
+
+        Returns:
+            Ranges for amplitude, frequency, offset, and sample rate.
         """
         # the model number is the third and fourth digit of the model serial, ex. 31(25)2
         model_number = self.model[5:7]

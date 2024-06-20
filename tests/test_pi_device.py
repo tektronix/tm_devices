@@ -133,7 +133,8 @@ def test_pi_device(  # noqa: PLR0915
     # Expect set not needed since verbose is already off.
     assert scope.set_if_needed(":VERBose", 0) == (False, "0")
     # Expect set needed
-    assert scope.set_if_needed(":VERBose", 1) == (True, "1")
+    assert scope.set_if_needed(":VERBose", 1) == (True, "")
+    assert scope.set_if_needed(":VERBose", 0, verify_value=True) == (True, "0")
     # Set VERBose back to off
     scope.set_and_check(":VERBose", "0")
 

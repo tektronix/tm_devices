@@ -1,4 +1,4 @@
-"""An example showing how to generate a function using an AFG and AWG."""
+"""An example showing how to generate a function using an AFG."""
 
 from tm_devices import DeviceManager
 from tm_devices.drivers import AFG3K

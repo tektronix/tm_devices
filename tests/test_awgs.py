@@ -23,7 +23,10 @@ from tm_devices.drivers.pi.signal_generators.awgs.awg import (
     ParameterBounds,
     SignalGeneratorFunctionsAWG,
 )
-from tm_devices.helpers import SignalGeneratorOutputPaths5200, SignalGeneratorOutputPathsNon5200
+from tm_devices.helpers.enums import (
+    SignalGeneratorOutputPaths5200,
+    SignalGeneratorOutputPathsNon5200,
+)
 
 
 def check_constraints(
@@ -160,7 +163,7 @@ def test_awg5200(device_manager: DeviceManager, capsys: pytest.CaptureFixture[st
         awg520025.source_channel["SOURCE1"].set_state(-1)
 
     # Coverage for setting frequency with absolute tolerance.
-    awg520050.set_sample_rate(5000000000, absolute_tolerance=0)
+    awg520050.set_sample_rate(5000000000, absolute_tolerance=10)
     query_val = awg520050.query("CLOCK:SRATE?")
     assert float(query_val) == 5000000000
 
@@ -253,7 +256,7 @@ def test_awg70k(  # noqa: PLR0915  # pylint: disable=too-many-locals
     offset = float(awg70ka150.query("SOURCE1:VOLTAGE:OFFSET?"))
     assert offset == 0.1
 
-    awg70ka150.set_sample_rate(500000000)
+    awg70ka150.set_sample_rate(500000000, absolute_tolerance=10)
     current_frequency = awg70ka150.query("SOURCE1:FREQUENCY?")
     assert float(current_frequency) == 500000000
 
@@ -278,7 +281,7 @@ def test_awg70k(  # noqa: PLR0915  # pylint: disable=too-many-locals
         )
 
     # Coverage for setting frequency with absolute tolerance.
-    awg70ka150.set_sample_rate(5000000000, absolute_tolerance=0)
+    awg70ka150.set_sample_rate(5000000000, absolute_tolerance=10)
     query_val = awg70ka150.query("SOURCE1:FREQUENCY?")
     assert float(query_val) == 5000000000
 
@@ -308,13 +311,13 @@ def test_awg7k(device_manager: DeviceManager) -> None:  # pylint: disable=too-ma
         if option in {"02", "06"}:
             ampl_range = ParameterBounds(lower=0.5, upper=1.0)
             offset_range = ParameterBounds(lower=-0.0, upper=0.0)
-        else:
-            if not output_path:
-                offset_range = ParameterBounds(lower=-0.5, upper=0.5)
-            else:
-                offset_range = ParameterBounds(lower=-0.0, upper=0.0)
-
+        elif not output_path:
+            # Default output signal path is DCA
+            offset_range = ParameterBounds(lower=-0.5, upper=0.5)
             ampl_range = ParameterBounds(lower=50.0e-3, upper=2.0)
+        else:
+            offset_range = ParameterBounds(lower=-0.0, upper=0.0)
+            ampl_range = ParameterBounds(lower=50.0e-3, upper=1.0)
 
         constraints = awg.get_waveform_constraints(
             SignalGeneratorFunctionsAWG.TRIANGLE,
@@ -341,13 +344,23 @@ def test_awg5k(device_manager: DeviceManager) -> None:
     awg5kc = cast(AWG5KC, device_manager.add_awg("awg5012c-hostname", alias="awg5kc"))
     length_range = ParameterBounds(lower=960, upper=960)
     awg_list = [awg5k, awg5kb, awg5kc]
-    offset_range = ParameterBounds(lower=-2.25, upper=2.25)
     ampl_range = ParameterBounds(lower=20.0e-3, upper=4.5)
-
+    offset_range = ParameterBounds(lower=-2.25, upper=2.25)
+    output_path: Optional[SignalGeneratorOutputPathsNon5200] = None
     for awg in awg_list:
         sample_range = ParameterBounds(lower=10.0e6, upper=int(awg.model[5]) * 600.0e6 + 600.0e6)
 
-        constraints = awg.get_waveform_constraints(SignalGeneratorFunctionsAWG.CLOCK)
+        if output_path:
+            # Default output signal path is DCA
+            ampl_range = ParameterBounds(lower=20.0e-3, upper=0.6)
+            offset_range = ParameterBounds(lower=-0.0, upper=0.0)
+
+        constraints = awg.get_waveform_constraints(
+            SignalGeneratorFunctionsAWG.CLOCK,
+            output_signal_path=output_path,
+        )
+
+        output_path = awg.OutputSignalPath.DIR
 
         check_constraints(
             constraints,

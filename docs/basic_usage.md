@@ -65,6 +65,8 @@ language: python
 
 ## Disable command checking
 
+## Disable command checking
+
 This removes an extra query that verifies the property was set to the expected
 value. This can be disabled at the device level or disabled for all devices by
 disabling verification via the device manager.
@@ -91,9 +93,20 @@ language: python
 
 ## Generate a function using an AFG
 
-Call `generate_function` to generate a 0.5 V, 10 MHz RAMP wave on SOURCE1 of the AFG.
+Call `generate_function()` to generate a 0.5 V, 10 MHz RAMP wave on SOURCE1 of the AFG.
 
 ```{literalinclude} ../examples/signal_generators/generate_function.py
+---
+language: python
+---
+```
+
+## Getting the parameter constraints of a signal generator
+
+Call `get_waveform_constraints()` and check if the frequency,
+amplitude, and sample rate provided are possible to generate.
+
+```{literalinclude} ../examples/signal_generators/waveform_constraints.py
 ---
 language: python
 ---

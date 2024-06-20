@@ -13,65 +13,12 @@ from tm_devices.drivers.pi.signal_generators.awgs.awg import (
     ParameterBounds,
 )
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
-from tm_devices.helpers import (
-    SASSetWaveformFileTypes,
+from tm_devices.helpers import SASSetWaveformFileTypes
+from tm_devices.helpers.enums import (
     SignalGeneratorFunctionsAWG,
     SignalGeneratorOutputPaths5200,
     SignalGeneratorOutputPathsBase,
 )
-
-
-class AWG5200SourceChannel(AWGSourceChannel):
-    """AWG5200 source channel driver."""
-
-    def __init__(self, awg: "AWG5200", channel_name: str) -> None:
-        """Create an AWG5200 source channel.
-
-        Args:
-            awg: An AWG.
-            channel_name: The channel name for the AWG source channel.
-        """
-        super().__init__(awg=awg, channel_name=channel_name)
-        self._awg = awg
-
-    def load_waveform(self, waveform_name: str) -> None:
-        """Load in a waveform from the waveform list to the source channel.
-
-        Args:
-            waveform_name: The name of the waveform to load.
-        """
-        self._awg.ieee_cmds.opc()
-        self._awg.set_if_needed(f"{self.name}:WAVEFORM", f'"{waveform_name}"', allow_empty=True)
-
-    def set_offset(self, value: float, absolute_tolerance: float = 0) -> None:
-        """Set the offset on the source channel.
-
-        Args:
-            value: The offset value to set.
-            absolute_tolerance: The acceptable difference between two floating point values.
-        """
-        self._awg.set_if_needed(
-            f"{self.name}:VOLTAGE:OFFSET",
-            value,
-            tolerance=absolute_tolerance,
-        )
-
-    def set_output_signal_path(
-        self, value: Optional[SignalGeneratorOutputPathsBase] = None
-    ) -> None:
-        """Set the output signal path on the source channel.
-
-        Args:
-            value: The output signal path.
-        """
-        if not value:
-            value = self._awg.OutputSignalPath.DCHB
-        if value not in self._awg.OutputSignalPath:
-            output_signal_path_error = (
-                f"{value.value} is an invalid output signal path for {self._awg.model}."
-            )
-            raise ValueError(output_signal_path_error)
-        self._awg.set_if_needed(f"OUTPUT{self.num}:PATH", value.value)
 
 
 @family_base_class
@@ -243,7 +190,14 @@ class AWG5200(AWG5200Mixin, AWG):
         self,
         output_signal_path: Optional[SignalGeneratorOutputPathsBase],
     ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
-        """Get constraints which are dependent on the model series."""
+        """Get constraints which are dependent on the model series and parameters.
+
+        Args:
+            output_signal_path: The signal path that the output is taking.
+
+        Returns:
+            Ranges for amplitude, offset, and sample rate.
+        """
         if not output_signal_path:
             output_signal_path = self.OutputSignalPath.DCHB
         # Direct Current High Bandwidth with the DC options has 1.5 V amplitude
@@ -280,15 +234,72 @@ class AWG5200(AWG5200Mixin, AWG):
         if not waveform_set_file:
             waveform_set_file = self.sample_waveform_set_file
         waveform_file_type = Path(waveform_set_file).suffix.lower()
-        if waveform_file_type not in SASSetWaveformFileTypes:
+        try:
+            SASSetWaveformFileTypes(waveform_file_type)
+            if not waveform_name:
+                self.write(f'MMEMORY:OPEN:SASSET "{waveform_set_file}"', opc=True)
+            else:
+                self.write(
+                    f'MMEMORY:OPEN:SASSET:WAVEFORM "{waveform_set_file}", "{waveform_name}"',
+                    opc=True,
+                )
+        except ValueError as err:
             waveform_file_type_error = (
                 f"{waveform_file_type} is an invalid waveform file extension."
             )
-            raise ValueError(waveform_file_type_error)
-        if not waveform_name:
-            self.write(f'MMEMORY:OPEN:SASSET "{waveform_set_file}"', opc=True)
-        else:
-            self.write(
-                f'MMEMORY:OPEN:SASSET:WAVEFORM "{waveform_set_file}", "{waveform_name}"', opc=True
-            )
+            raise ValueError(waveform_file_type_error) from err
+
         self.expect_esr(0)
+
+
+class AWG5200SourceChannel(AWGSourceChannel):
+    """AWG5200 signal source channel composite."""
+
+    def __init__(self, awg: AWG5200, channel_name: str) -> None:
+        """Create an AWG5200 source channel.
+
+        Args:
+            awg: An AWG.
+            channel_name: The channel name for the AWG source channel.
+        """
+        super().__init__(awg=awg, channel_name=channel_name)
+        self._awg = awg
+
+    def load_waveform(self, waveform_name: str) -> None:
+        """Load in a waveform from the waveform list to the source channel.
+
+        Args:
+            waveform_name: The name of the waveform to load.
+        """
+        self._awg.ieee_cmds.opc()
+        self._awg.set_if_needed(f"{self.name}:WAVEFORM", f'"{waveform_name}"', allow_empty=True)
+
+    def set_offset(self, value: float, absolute_tolerance: float = 0) -> None:
+        """Set the offset on the source channel.
+
+        Args:
+            value: The offset value to set.
+            absolute_tolerance: The acceptable difference between two floating point values.
+        """
+        self._awg.set_if_needed(
+            f"{self.name}:VOLTAGE:OFFSET",
+            value,
+            tolerance=absolute_tolerance,
+        )
+
+    def set_output_signal_path(
+        self, value: Optional[SignalGeneratorOutputPathsBase] = None
+    ) -> None:
+        """Set the output signal path on the source channel.
+
+        Args:
+            value: The output signal path.
+        """
+        if not value:
+            value = self._awg.OutputSignalPath.DCHB
+        if value not in self._awg.OutputSignalPath:
+            output_signal_path_error = (
+                f"{value.value} is an invalid output signal path for {self._awg.model}."
+            )
+            raise ValueError(output_signal_path_error)
+        self._awg.set_if_needed(f"OUTPUT{self.num}:PATH", value.value)

@@ -17,16 +17,15 @@ from tm_devices.driver_mixins.signal_generator_mixin import (
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi._base_source_channel import BaseSourceChannel
 from tm_devices.drivers.pi.signal_generators.signal_generator import SignalGenerator
-from tm_devices.helpers import (
-    DeviceTypes,
-    LoadImpedanceAFG,
+from tm_devices.helpers import DeviceTypes, LoadImpedanceAFG
+
+# noinspection PyPep8Naming
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
+from tm_devices.helpers.enums import (
     SignalGeneratorFunctionsAWG,
     SignalGeneratorOutputPathsBase,
     SignalGeneratorOutputPathsNon5200,
 )
-
-# noinspection PyPep8Naming
-from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 @dataclass(frozen=True)
@@ -34,106 +33,6 @@ class AWGSourceDeviceConstants(SourceDeviceConstants):
     """Class to hold source device constants."""
 
     functions: Type[SignalGeneratorFunctionsAWG] = SignalGeneratorFunctionsAWG
-
-
-@family_base_class
-class AWGSourceChannel(BaseSourceChannel, ExtendableMixin):
-    """AWG source channel driver."""
-
-    def __init__(self, awg: "AWG", channel_name: str) -> None:
-        """Create an AWG source channel.
-
-        Args:
-            awg: An AWG.
-            channel_name: The channel name for the AWG source channel.
-        """
-        super().__init__(pi_device=awg, channel_name=channel_name)
-        self._awg = awg
-
-    def set_waveform_properties(
-        self,
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase],
-        waveform_name: str,
-        amplitude: float,
-        offset: float,
-    ) -> None:
-        """Set the given parameters on the provided source channel.
-
-        Args:
-            output_signal_path: The output signal path of the specified channel.
-            waveform_name: The name of the waveform from the waveform list to generate.
-            amplitude: The amplitude of the signal to generate.
-            offset: The offset of the signal to generate.
-        """
-        self.set_amplitude(amplitude)
-        self.set_output_signal_path(output_signal_path)
-        self.set_offset(offset)
-        self.load_waveform(waveform_name)
-
-    def set_amplitude(self, value: float, absolute_tolerance: float = 0) -> None:
-        """Set the amplitude on the source channel.
-
-        Args:
-            value: The amplitude value to set.
-            absolute_tolerance: The acceptable difference between two floating point values.
-        """
-        self._awg.set_if_needed(
-            f"{self.name}:VOLTAGE:AMPLITUDE",
-            value,
-            tolerance=absolute_tolerance,
-        )
-
-    def set_offset(self, value: float, absolute_tolerance: float = 0) -> None:
-        """Set the offset on the source channel.
-
-        Args:
-            value: The offset value to set.
-            absolute_tolerance: The acceptable difference between two floating point values.
-        """
-        output_path = self._awg.query(f"OUTPUT{self.num}:PATH?")
-        if output_path == self._awg.OutputSignalPath.DCA.value:
-            self._awg.set_if_needed(
-                f"{self.name}:VOLTAGE:OFFSET",
-                value,
-                tolerance=absolute_tolerance,
-            )
-        elif value:
-            # No error is raised when 0 is the offset value and the output signal path is
-            # in a state where offset cannot be set.
-            offset_error = (
-                f"The offset can only be set with an output signal path of "
-                f"{self._awg.OutputSignalPath.DCA.value}."
-            )
-            raise ValueError(offset_error)
-
-    def set_state(self, value: int) -> None:
-        """Set the output state to ON/OFF (1/0) on the source channel.
-
-        Args:
-            value: The output state.
-        """
-        if value not in [0, 1]:
-            error_message = "Output state value must be 1 (ON) or 0 (OFF)."
-            raise ValueError(error_message)
-        self._awg.set_if_needed(f"OUTPUT{self.num}:STATE", value)
-
-    def set_output_signal_path(
-        self, value: Optional[SignalGeneratorOutputPathsBase] = None
-    ) -> None:
-        """Set the output signal path on the source channel.
-
-        Args:
-            value: The output signal path.
-        """
-        raise NotImplementedError
-
-    def load_waveform(self, waveform_name: str) -> None:
-        """Load in a waveform from the waveform list to the source channel.
-
-        Args:
-            waveform_name: The name of the waveform to load.
-        """
-        self._awg.set_if_needed(f"{self.name}:WAVEFORM", f'"{waveform_name}"', allow_empty=True)
 
 
 class AWG(SignalGenerator, ABC):
@@ -158,7 +57,11 @@ class AWG(SignalGenerator, ABC):
     ################################################################################################
     @cached_property
     def source_channel(self) -> "MappingProxyType[str, AWGSourceChannel]":  # pragma: no cover
-        """Mapping of channel names to AWGSourceChannel objects."""
+        """Mapping of channel names to AWGSourceChannel objects.
+
+        Returns:
+            The dictionary of channel string to the source channel object.
+        """
         channel_map: Dict[str, AWGSourceChannel] = {}
         for channel_name in self.all_channel_names_list:
             channel_map[channel_name] = AWGSourceChannel(self, channel_name)
@@ -327,6 +230,9 @@ class AWG(SignalGenerator, ABC):
             frequency: The frequency of the waveform that needs to be generated.
             output_signal_path: The output signal path that was set on the channel.
             load_impedance: The suggested impedance on the source.
+
+        Returns:
+            A Named Tuple containing a set of parameters and their restricted bounds.
         """
         del frequency, load_impedance
 
@@ -399,6 +305,9 @@ class AWG(SignalGenerator, ABC):
             function: The waveform shape to generate.
             output_signal_path: The output signal path of the specified channel.
             symmetry: The symmetry to set the signal to, only applicable to certain functions.
+
+        Returns:
+            A tuple containing the best waveform from the predefined files and the sample rate.
         """
         if function == function.RAMP and symmetry == 50:  # noqa: PLR2004
             function = function.TRIANGLE
@@ -477,3 +386,103 @@ class AWG(SignalGenerator, ABC):
                 termination="\r\n",
                 encoding="latin-1",
             )
+
+
+@family_base_class
+class AWGSourceChannel(BaseSourceChannel, ExtendableMixin):
+    """AWG signal source channel composite."""
+
+    def __init__(self, awg: AWG, channel_name: str) -> None:
+        """Create an AWG source channel.
+
+        Args:
+            awg: An AWG.
+            channel_name: The channel name for the AWG source channel.
+        """
+        super().__init__(pi_device=awg, channel_name=channel_name)
+        self._awg = awg
+
+    def set_waveform_properties(
+        self,
+        output_signal_path: Optional[SignalGeneratorOutputPathsBase],
+        waveform_name: str,
+        amplitude: float,
+        offset: float,
+    ) -> None:
+        """Set the given parameters on the provided source channel.
+
+        Args:
+            output_signal_path: The output signal path of the specified channel.
+            waveform_name: The name of the waveform from the waveform list to generate.
+            amplitude: The amplitude of the signal to generate.
+            offset: The offset of the signal to generate.
+        """
+        self.set_amplitude(amplitude)
+        self.set_output_signal_path(output_signal_path)
+        self.set_offset(offset)
+        self.load_waveform(waveform_name)
+
+    def set_amplitude(self, value: float, absolute_tolerance: float = 0) -> None:
+        """Set the amplitude on the source channel.
+
+        Args:
+            value: The amplitude value to set.
+            absolute_tolerance: The acceptable difference between two floating point values.
+        """
+        self._awg.set_if_needed(
+            f"{self.name}:VOLTAGE:AMPLITUDE",
+            value,
+            tolerance=absolute_tolerance,
+        )
+
+    def set_offset(self, value: float, absolute_tolerance: float = 0) -> None:
+        """Set the offset on the source channel.
+
+        Args:
+            value: The offset value to set.
+            absolute_tolerance: The acceptable difference between two floating point values.
+        """
+        output_path = self._awg.query(f"OUTPUT{self.num}:PATH?")
+        if output_path == self._awg.OutputSignalPath.DCA.value:
+            self._awg.set_if_needed(
+                f"{self.name}:VOLTAGE:OFFSET",
+                value,
+                tolerance=absolute_tolerance,
+            )
+        elif value:
+            # No error is raised when 0 is the offset value and the output signal path is
+            # in a state where offset cannot be set.
+            offset_error = (
+                f"The offset can only be set with an output signal path of "
+                f"{self._awg.OutputSignalPath.DCA.value}."
+            )
+            raise ValueError(offset_error)
+
+    def set_state(self, value: int) -> None:
+        """Set the output state to ON/OFF (1/0) on the source channel.
+
+        Args:
+            value: The output state.
+        """
+        if value not in [0, 1]:
+            error_message = "Output state value must be 1 (ON) or 0 (OFF)."
+            raise ValueError(error_message)
+        self._awg.set_if_needed(f"OUTPUT{self.num}:STATE", value)
+
+    def set_output_signal_path(
+        self, value: Optional[SignalGeneratorOutputPathsBase] = None
+    ) -> None:
+        """Set the output signal path on the source channel.
+
+        Args:
+            value: The output signal path.
+        """
+        raise NotImplementedError
+
+    def load_waveform(self, waveform_name: str) -> None:
+        """Load in a waveform from the waveform list to the source channel.
+
+        Args:
+            waveform_name: The name of the waveform to load.
+        """
+        self._awg.set_if_needed(f"{self.name}:WAVEFORM", f'"{waveform_name}"', allow_empty=True)

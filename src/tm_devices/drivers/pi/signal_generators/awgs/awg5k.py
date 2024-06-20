@@ -14,11 +14,77 @@ from tm_devices.drivers.pi.signal_generators.awgs.awg import (
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
-from tm_devices.helpers import SignalGeneratorOutputPathsBase
+from tm_devices.helpers.enums import SignalGeneratorOutputPathsBase
+
+
+@family_base_class
+class AWG5K(AWG5KMixin, AWG):
+    """AWG5K device driver."""
+
+    _DEVICE_CONSTANTS = AWGSourceDeviceConstants(
+        memory_page_size=1,
+        memory_max_record_length=16200000,
+        memory_min_record_length=1,
+    )
+
+    ################################################################################################
+    # Properties
+    ################################################################################################
+    @cached_property
+    def source_channel(self) -> "MappingProxyType[str, AWGSourceChannel]":
+        """Mapping of channel names to AWG5KSourceChannel objects."""
+        channel_map: Dict[str, AWG5KSourceChannel] = {}
+        for channel_name in self.all_channel_names_list:
+            channel_map[channel_name] = AWG5KSourceChannel(self, channel_name)
+        return MappingProxyType(channel_map)
+
+    ################################################################################################
+    # Private Methods
+    ################################################################################################
+    def _get_series_specific_constraints(
+        self,
+        output_signal_path: Optional[SignalGeneratorOutputPathsBase],
+    ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
+        """Get constraints which are dependent on the model series and parameters.
+
+        Args:
+            output_signal_path: The signal path that the output is taking.
+
+        Returns:
+            Ranges for amplitude, offset, and sample rate.
+        """
+        if not output_signal_path:
+            output_signal_path = self.OutputSignalPath.DCA
+
+        # if DIR output path is disconnected
+        if output_signal_path == self.OutputSignalPath.DCA:
+            amplitude_range = ParameterBounds(lower=20.0e-3, upper=4.5)
+            offset_range = ParameterBounds(lower=-2.25, upper=2.25)
+        # otherwise the DIR output path is connected
+        else:
+            amplitude_range = ParameterBounds(lower=20.0e-3, upper=0.6)
+            offset_range = ParameterBounds(lower=-0.0, upper=0.0)
+
+        # AWG(Arbitrary Waveform Generator)5(Series)0x(.6 + .6x GS/s)x(x Channels)z(Model)
+        # AWG5012B means the sample rate max is 1.2 GHz, a AWG5002B would have a 600 MHz max
+        sample_rate_range = ParameterBounds(
+            lower=10.0e6, upper=600.0e6 + (600.0e6 * int(self.model[5]))
+        )
+        return amplitude_range, offset_range, sample_rate_range
 
 
 class AWG5KSourceChannel(AWGSourceChannel):
-    """AWG5K source channel driver."""
+    """AWG5K signal source channel composite."""
+
+    def __init__(self, awg: "AWG5K", channel_name: str) -> None:
+        """Create an AWG5200 source channel.
+
+        Args:
+            awg: An AWG.
+            channel_name: The channel name for the AWG source channel.
+        """
+        super().__init__(awg=awg, channel_name=channel_name)
+        self._awg = awg
 
     def set_offset(self, value: float, absolute_tolerance: float = 0) -> None:
         """Set the offset on the source channel.
@@ -64,52 +130,3 @@ class AWG5KSourceChannel(AWGSourceChannel):
             )
             raise ValueError(output_signal_path_error)
         self._awg.set_if_needed(f"AWGCONTROL:DOUTPUT{self.num}:STATE", output_state)
-
-
-@family_base_class
-class AWG5K(AWG5KMixin, AWG):
-    """AWG5K device driver."""
-
-    _DEVICE_CONSTANTS = AWGSourceDeviceConstants(
-        memory_page_size=1,
-        memory_max_record_length=16200000,
-        memory_min_record_length=1,
-    )
-
-    ################################################################################################
-    # Properties
-    ################################################################################################
-    @cached_property
-    def source_channel(self) -> "MappingProxyType[str, AWGSourceChannel]":
-        """Mapping of channel names to AWG5KSourceChannel objects."""
-        channel_map: Dict[str, AWG5KSourceChannel] = {}
-        for channel_name in self.all_channel_names_list:
-            channel_map[channel_name] = AWG5KSourceChannel(self, channel_name)
-        return MappingProxyType(channel_map)
-
-    ################################################################################################
-    # Private Methods
-    ################################################################################################
-    def _get_series_specific_constraints(
-        self,
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase],
-    ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
-        """Get constraints which are dependent on the model series."""
-        if not output_signal_path:
-            output_signal_path = self.OutputSignalPath.DCA
-
-        # if DIR output path is disconnected
-        if output_signal_path == self.OutputSignalPath.DCA:
-            amplitude_range = ParameterBounds(lower=20.0e-3, upper=4.5)
-            offset_range = ParameterBounds(lower=-2.25, upper=2.25)
-        # otherwise the DIR output path is connected
-        else:
-            amplitude_range = ParameterBounds(lower=50e-3, upper=1.0)
-            offset_range = ParameterBounds(lower=-0.0, upper=0.0)
-
-        # AWG(Arbitrary Waveform Generator)5(Series)0x(.6 + .6x GS/s)x(x Channels)z(Model)
-        # AWG5012B means the sample rate max is 1.2 GHz, a AWG5002B would have a 600 MHz max
-        sample_rate_range = ParameterBounds(
-            lower=10.0e6, upper=600.0e6 + (600.0e6 * int(self.model[5]))
-        )
-        return amplitude_range, offset_range, sample_rate_range

@@ -20,26 +20,7 @@ Things to be included in the next release go here.
 
 ### Added
 
-- Added TekVISA as one of the VISA backends supported.
-
-### Changed
-
-- Updated the `get_model_series()` function to only warn the user if the model is not found in the `SupportedModels` enumeration. This also eliminates false warnings during unit tests.
-
-### Fixed
-
-- Updated the measurement source selection command for the MDO3K, MDO4K, MSO4K and DPO4K models to work properly.
-
-______________________________________________________________________
-
-## v2.0.0 (2024-02-12)
-
-### Merged Pull Requests
-
-- feat: AWG Generate Function and Waveform Constraints
-
-### Added
-
+- Added the constraint ranges for all signal generators
 - Added drivers for AWG and AFG channels
 - Added a property named `source_channel` in AWG's and AFG's.
 - Added drivers for internal AFG in TekScopes.
@@ -53,10 +34,13 @@ ______________________________________________________________________
 
 ### Changed
 
-- Changed the term "signal source" to "signal generator".
-- Changed the function name of `generate_waveform` to `generate_function`.
-- Changed the `generate_function` function by removing burst functionality.
-- Updated AWG's such that the `family_base_class` is at the model level.
+- <span style="color:red">BREAKING CHANGE</span>. Changed the term "signal source" to "signal generator".
+  - All uses of this term are changed. Import paths now use signal_generator instead of signal_source.
+- <span style="color:red">BREAKING CHANGE</span>. Changed the function name of `generate_waveform()` to `generate_function()`.
+  - `generate_waveform()` only exists on AWGs now, however the functionality is entirely changed.
+- <span style="color:red">BREAKING CHANGE</span>. Changed the `generate_function()` function by removing burst functionality.
+  - Any use of burst now must use `setup_burst()` and `generate_burst()` instead.
+- Updated AWG's such that the `family_base_class` is at the series level.
 
 ______________________________________________________________________
 

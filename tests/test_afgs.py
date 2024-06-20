@@ -180,7 +180,7 @@ def test_afg3k(device_manager: DeviceManager) -> None:  # noqa: PLR0915  # pylin
         ramp_symmetry_range=None,
     )
 
-    with pytest.raises(ValueError, match="AFGs must have a waveform defined."):
+    with pytest.raises(ValueError, match="AFGs must have a function defined."):
         afg3252c.get_waveform_constraints()
 
     with pytest.raises(ValueError, match=r"Output state value must be 1 \(ON\) or 0 \(OFF\)\."):

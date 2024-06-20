@@ -25,7 +25,14 @@ class AFG3K(AFG3KMixin, AFG):
 
     @staticmethod
     def _get_driver_specific_multipliers(model_number: str) -> Tuple[float, float]:
-        """Get multipliers for frequency dependant for different functions."""
+        """Get multipliers for frequency dependent on the function.
+
+        Args:
+            model_number: Unused in the AFG3K.
+
+        Returns:
+            The necessary values to multiply the frequency by dependent on the function.
+        """
         del model_number
         # the square waveform constraints are half og the SIN wave constraints
         square_wave_multiplier = 0.5
@@ -41,13 +48,16 @@ class AFG3K(AFG3KMixin, AFG):
         frequency: Optional[float] = None,
         load_impedance: LoadImpedanceAFG = LoadImpedanceAFG.HIGHZ,
     ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds, ParameterBounds]:
-        """Get constraints which are dependent on the model series.
+        """Get constraints which are dependent on the model series and parameters.
 
         Args:
             function: The function that needs to be generated.
             waveform_length: The length of the waveform if no function or arbitrary is provided.
             frequency: The frequency of the waveform that needs to be generated.
             load_impedance: The suggested impedance on the source.
+
+        Returns:
+            Ranges for amplitude, frequency, offset, and sample rate.
         """
         # the model number is the second and third digit of the model serial, ex. 3(15)1
         model_number = self.model[4:6]

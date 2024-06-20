@@ -9,5 +9,5 @@ class MSO5B(MSO5BMixin, MSO5):
 
     @staticmethod
     def _get_driver_specific_multipliers() -> float:
-        """Get constraints for specific drivers."""
+        """Return a value to multiply the original Tekscope IAFG frequency by."""
         return 2.0

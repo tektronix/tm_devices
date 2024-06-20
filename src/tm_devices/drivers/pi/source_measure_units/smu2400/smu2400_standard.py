@@ -87,7 +87,7 @@ class SMU2400Standard(SourceMeasureUnit, ABC):
         custom_message_prefix: str = "",
         *,
         expected_value: Optional[Union[str, float]] = None,
-        opc: Optional[bool] = None,
+        opc: bool = False,
     ) -> str:
         """Send the given command with the given value and then verify the results.
 

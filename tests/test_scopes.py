@@ -18,11 +18,11 @@ from tm_devices.drivers import MSO2, MSO5, MSO5B, MSO6, MSO70KDX, TekScopeSW
 from tm_devices.drivers.pi.scopes.tekscope.tekscope import (
     ExtendedSourceDeviceConstants,
     ParameterBounds,
-    SignalGeneratorFunctionsIAFG,
     TekProbeData,
     TekScope,
     TekScopeChannel,
 )
+from tm_devices.helpers.enums import SignalGeneratorFunctionsIAFG
 
 
 class TmDevicesUnitTestOnlyCustomMSO5(MSO5):
@@ -185,7 +185,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     scope.expect_esr(0, '0,"No events to report - queue empty"')
 
     # Assert that getting license list returns the correct tuple
-    assert scope.license_list == ("LIC5", "LIC4")
+    assert scope.license_list == ("LIC5", "LIC4", "AFG")
     assert scope.has_license("LIC5")
     # Assert that the number of digital bits in channel is 8
     assert scope.num_dig_bits_in_ch == 8
@@ -339,11 +339,11 @@ def test_iafg(device_manager: DeviceManager) -> None:
         ramp_symmetry_range=ParameterBounds(lower=0.0, upper=100.0),
     )
 
-    with pytest.raises(ValueError, match="IAFGs must have a waveform defined."):
-        mso64.get_waveform_constraints()
+    with pytest.raises(ValueError, match="IAFGs must have a function defined."):
+        mso56b.get_waveform_constraints()
 
     with pytest.raises(ValueError, match=r"Output state value must be 1 \(ON\) or 0 \(OFF\)\."):
-        mso64.internal_afg.set_state(-1)
+        mso56b.internal_afg.set_state(-1)
 
 
 def test_exceptions(device_manager: DeviceManager) -> None:

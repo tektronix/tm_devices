@@ -668,7 +668,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
         custom_message_prefix: str = "",
         *,
         expected_value: Optional[Union[str, float]] = None,
-        opc: Optional[bool] = None,
+        opc: bool = False,
     ) -> str:
         """Send the given command with the given value and then verify the results.
 
@@ -689,7 +689,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
         Returns:
             The output of the query portion of the method.
         """
-        self.write(f"{command} {value}", opc=bool(opc))
+        self.write(f"{command} {value}", opc=opc)
         if self._enable_verification:
             check = self.query(command + "?", remove_quotes=remove_quotes)
             message_prefix = f"Failed to set {command} to {value}"
@@ -717,9 +717,9 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
         custom_message_prefix: str = "",
         *,
         expected_value: Optional[Union[str, float]] = None,
-        opc: Optional[bool] = None,
-        allow_empty: Optional[bool] = None,
-        verify_value: Optional[bool] = None,
+        opc: bool = False,
+        allow_empty: bool = False,
+        verify_value: bool = False,
     ) -> Tuple[bool, str]:
         """Query the command's field and update it if the value does not match the input.
 
@@ -751,11 +751,11 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
                 percentage=percentage,
                 remove_quotes=remove_quotes,
                 custom_message_prefix=custom_message_prefix,
-                allow_empty=bool(allow_empty),
+                allow_empty=allow_empty,
             )
         except AssertionError:
             query_passed = False
-            if verify_value or verify_value is None:
+            if verify_value:
                 actual_value = self.set_and_check(
                     command,
                     value,

@@ -6,8 +6,11 @@ from typing import cast
 import pytest
 
 from tm_devices import DeviceManager
-from tm_devices.drivers import AWG5K, AWG7K, AWG70KA, AWG5200, MSO5
-from tm_devices.helpers import SignalGeneratorOutputPaths5200, SignalGeneratorOutputPathsNon5200
+from tm_devices.drivers import AWG5K, AWG7K, AWG70KA, AWG5200, MSO2, MSO5
+from tm_devices.helpers.enums import (
+    SignalGeneratorOutputPaths5200,
+    SignalGeneratorOutputPathsNon5200,
+)
 
 
 def test_awg5200_gen_waveform(
@@ -431,3 +434,11 @@ def test_internal_afg_gen_waveform(
             0.0,
             "all",
         )
+
+    mso2_scope: MSO2 = device_manager.add_scope("MSO22-HOSTNAME", connection_type="TCPIP")
+
+    with pytest.raises(
+        AttributeError,
+        match="No AFG License, the class instance attributes are not accessible.",
+    ):
+        mso2_scope.internal_afg.set_offset(1.0)
