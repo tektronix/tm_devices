@@ -20,7 +20,7 @@ def fixture_docs_server(site_dir: str) -> Generator[str, None, None]:
     """Serve the documentation site."""
     port = f"8{sys.version_info.major}{sys.version_info.minor}"
     cmd = [sys.executable, "-m", "http.server", port, "--directory", site_dir]
-    with subprocess.Popen(
+    with subprocess.Popen(  # noqa: S603
         cmd,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -74,6 +74,6 @@ class TestDocs:  # pylint: disable=no-self-use
     @pytest.mark.depends(on=["test_docs_html"])
     def test_docs_linkcheck(self, docs_server: str) -> None:
         """Run the linkcheck test for the documentation."""
-        subprocess.check_call(
+        subprocess.check_call(  # noqa: S603
             shlex.split(f"linkchecker --config=docs/.linkchecker.ini {docs_server}")
         )

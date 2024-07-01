@@ -353,7 +353,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         start_dir = os.getcwd()
         try:
             os.chdir(generated_stub_file.parent)
-            subprocess.check_call(
+            subprocess.check_call(  # noqa: S603
                 [
                     sys.executable,
                     "-m",
@@ -363,13 +363,13 @@ class Device(ABC, metaclass=abc.ABCMeta):
                     generated_stub_file.name,
                 ]
             )
-            subprocess.check_call(
+            subprocess.check_call(  # noqa: S603
                 [
                     sys.executable,
                     "-m",
                     "ruff",
-                    "--quiet",
                     "check",
+                    "--quiet",
                     "--select=I",
                     "--fix",
                     generated_stub_file.name,

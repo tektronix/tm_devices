@@ -112,7 +112,7 @@ pre-commit = [
 pre-commit-update = "^0.3.0"
 pyclean = "^3.0.0"
 pylint = "3.2.5"
-pyright = "1.1.369"
+pyright = "1.1.368"
 pyroma = "^4.2"
 python-semantic-release = "^9.6.0"
 ruff = "0.5.0"
@@ -309,6 +309,7 @@ ignore_directives = [
 [tool.ruff]
 line-length = 100
 namespace-packages = ["examples/**", "scripts/**", "tests/**"]
+output-format = "concise"
 src = ["docs", "examples", "scripts", "src", "tests"]
 target-version = "py38"  # always generate Python 3.8 compatible code
 
