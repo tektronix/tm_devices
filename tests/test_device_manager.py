@@ -354,7 +354,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         try:
             os.chdir(generated_stub_file.parent)
             subprocess.check_call(
-                [  # noqa: S603
+                [
                     sys.executable,
                     "-m",
                     "ruff",
@@ -364,7 +364,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
                 ]
             )
             subprocess.check_call(
-                [  # noqa: S603
+                [
                     sys.executable,
                     "-m",
                     "ruff",

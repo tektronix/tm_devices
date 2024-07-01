@@ -433,7 +433,7 @@ class RESTAPIDevice(APIDevice, ABC):
                 print(f", {headers=}", end="")
             if json_body:
                 print(f", {json_body=}", end="")
-            print("")
+            print()
         try:
             if request_type == SupportedRequestTypes.DELETE:
                 response = requests.delete(

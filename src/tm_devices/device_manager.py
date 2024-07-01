@@ -631,7 +631,7 @@ class DeviceManager(metaclass=Singleton):
     def close(self) -> None:
         """Close the DeviceManager."""
         self.__protect_access()
-        print("")
+        print()
         if self.__devices:
             print_with_timestamp("Closing Connections to Devices")
             if self.__teardown_cleanup_enabled:

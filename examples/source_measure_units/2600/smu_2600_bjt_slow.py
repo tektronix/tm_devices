@@ -290,7 +290,7 @@ def display_results(sep: str = "\t") -> None:
     Args:
         sep (str, optional): Controls the separator of the output table. Defaults to tab.
     """
-    print("")
+    print()
     print("BJT Slow Complete. Results: ")
     print("VCEO", "VCEsat", "VBEsat", "BETA1", "STATUS", sep=sep)
     for index in range(NUM_PARTS):

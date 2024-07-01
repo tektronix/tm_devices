@@ -65,12 +65,12 @@ def create_virtual_environment(
     ):
         if not added_newline:
             added_newline = True
-            print("")
+            print()
         print(f"Removing virtualenv located at '{virtual_env_dir}'")
         shutil.rmtree(virtual_env_dir)
     if not virtual_env_dir.exists() and not running_in_virtualenv():
         if not added_newline:
-            print("")
+            print()
         print(f"Creating virtualenv located at '{virtual_env_dir}'")
         _run_cmd_in_subprocess(f"{sys.executable} -m venv {virtual_env_dir}")
 
