@@ -69,7 +69,7 @@ def fixture_device_manager() -> Generator[DeviceManager, None, None]:
     Yields:
         The DeviceManager instance.
     """
-    print("")
+    print()
     with mock.patch(
         "socket.gethostbyname", mock.MagicMock(side_effect=mock_gethostbyname)
     ), mock.patch(
