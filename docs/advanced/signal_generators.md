@@ -10,14 +10,14 @@ A function is a limited set of common waveforms that are provided by default thr
 The simplicity of these waveforms allows for output parameters like waveform length and sample rate to be
 abstracted away. Frequency replaces these in order to provide signals which are easy to quantify and manipulate.
 
-Arbitrary Function Generators ({term}`AFGs <AFG>`) utilize a phase increment process and a data lookup table to provide variable frequencies.
+Arbitrary Function Generators (\[AFGs\](default: AFG)) utilize a phase increment process and a data lookup table to provide variable frequencies.
 The phase increment calculated is dependent on the waveform length and frequency requested. This has
 a side effect where the phase increment can be larger than one index in the lookup table. Functions bypass this
 issue by being simplistic enough that waveform length reduction doesn't have a detrimental effect on the end output.
 
-Arbitrary Waveform Generators ({term}`AWGs <AWG>`) enforce one cycle per sample, allowing the output to be the same shape regardless of clock rate.
+Arbitrary Waveform Generators (\[AWGs\](default: AWG)) enforce one cycle per sample, allowing the output to be the same shape regardless of clock rate.
 The number of samples that occurs during a second is referred to as a sample per second (S/s), a unit which determines the frequency of the waveform.
-With low frequency functions, {term}`AWGs <AWG>` are functionally identical to {term}`AFGs <AFG>`, besides offering more constrained amplitudes and offsets.
+With low frequency functions, \[AWGs\](default: AWG) are functionally identical to \[AFGs\](default: AFG), besides offering more constrained amplitudes and offsets.
 
 ---
 
@@ -33,18 +33,18 @@ classDiagram
 
 ```
 
-The {py:obj}`SignalGenerator <tm_devices.drivers.pi.signal_generators.signal_generator.SignalGenerator>` class is responsible
-for most waveform generators, including the {py:obj}`AFG <tm_devices.drivers.pi.signal_generators.afgs.afg.AFG>` and
-{py:obj}`AWG <tm_devices.drivers.pi.signal_generators.awgs.awg.AWG>`.
-Similarly, {py:obj}`TekScope <tm_devices.drivers.pi.scopes.tekscope.tekscope.TekScope>` is responsible for the
-{term}`AFG's <AFG>` internal to the scopes themselves, commonly referred to as
-an {term}`IAFG`. All of these classes inherit
-{py:obj}`SignalGeneratorMixin<tm_devices.driver_mixins.signal_generator_mixin.SignalGeneratorMixin>`,
+The [`SignalGenerator`][tm_devices.drivers.pi.signal_generators.signal_generator.SignalGenerator] class is responsible
+for most waveform generators, including the [`AFG`][tm_devices.drivers.pi.signal_generators.afgs.afg.AFG] and
+[`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG>].
+Similarly, [`TekScope`][tm_devices.drivers.pi.scopes.tekscope.tekscope.TekScope>] is responsible for the
+<AFG:> internal to the scopes themselves, commonly referred to as
+an <IAFG:>. All of these classes inherit
+[`SignalGeneratorMixin`][tm_devices.driver_mixins.signal_generator_mixin.SignalGeneratorMixin],
 which includes a list of methods which share
 functionality throughout all signal generators.
 
 ```{note}
-{py:obj}`SignalGeneratorMixin<tm_devices.driver_mixins.signal_generator_mixin.SignalGeneratorMixin>`
+[`SignalGeneratorMixin`][tm_devices.driver_mixins.signal_generator_mixin.SignalGeneratorMixin>]
 only contains abstract methods; defining the class by itself and calling
 methods in it will only raise `NotImplemented` errors.
 ```
@@ -63,24 +63,24 @@ classDiagram
     AWGSourceChannel <|-- AWG70KSourceChannel
 ```
 
-Each {py:obj}`SignalGenerator <tm_devices.drivers.pi.signal_generators.signal_generator.SignalGenerator>` class
-({py:obj}`AFG <tm_devices.drivers.pi.signal_generators.afgs.afg.AFG>`,
-{py:obj}`AWG <tm_devices.drivers.pi.signal_generators.awgs.awg.AWG>`) and
-{py:obj}`TekScope <tm_devices.drivers.pi.scopes.tekscope.tekscope.TekScope>`
-(if the {term}`AFG` license is installed) will contain a dictionary of source channel classes,
+Each [`SignalGenerator`][tm_devices.drivers.pi.signal_generators.signal_generator.SignalGenerator] class(
+[`AFG`][tm_devices.drivers.pi.signal_generators.afgs.afg.AFG],
+[`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG]) and
+[`TekScope`][tm_devices.drivers.pi.scopes.tekscope.tekscope.TekScope]
+(if the <AFG:> license is installed) will contain a dictionary of source channel classes,
 which are defined on first access.
 Each of these source channel classes (
-{py:obj}`AFGSourceChannel <tm_devices.drivers.pi.signal_generators.afgs.afg.AFGSourceChannel>`,
-{py:obj}`AWGSourceChannel <tm_devices.drivers.pi.signal_generators.awgs.awg.AWGSourceChannel>`, and
-{py:obj}`InternalAFGChannel <tm_devices.drivers.pi.scopes.tekscope.tekscope.InternalAFGChannel>`
+[`AFGSourceChannel`][tm_devices.drivers.pi.signal_generators.afgs.afg.AFGSourceChannel],
+[`AWGSourceChannel`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWGSourceChannel], and
+[`InternalAFGChannel`][tm_devices.drivers.pi.scopes.tekscope.tekscope.InternalAFGChannel]
 ) represents an output on the signal generator
-(or the {term}`IAFG` in the case of an oscilloscope).
+(or the <IAFG:> in the case of an oscilloscope).
 
-These source channel classes contain methods and properties which pertain to {term}`PI` commands which only apply changes to one output.
+These source channel classes contain methods and properties which pertain to <PI:> commands which only apply changes to one output.
 For example: the `afg.source_channel\["SOURCE1"\].set_amplitude()` call will change the amplitude only for source output 1.
 
 ```{tip}
-The source channel classes not only provide easy access to basic {term}`SCPI` commands, but also helper functions, like `set_function_properties()`
+The source channel classes not only provide easy access to basic <SCPI:> commands, but also helper functions, like `set_function_properties()`
 ```
 
 ---
@@ -95,7 +95,7 @@ As such, it is up to the user to implement these checks.
 ```
 
 Each class has children which inherit the base abstracted methods. These methods are tailored to each signal generator so the
-methods handle similarly, regardless of the different {term}`PI` commands required.
+methods handle similarly, regardless of the different <PI:> commands required.
 
 - `source_device_constants` is a property which holds information about what functions
     and memory sizes are allowed.
@@ -107,9 +107,9 @@ methods handle similarly, regardless of the different {term}`PI` commands requir
 `generate_function()` is a method which allows for the user to request a function from
 any source channel, provided an amplitude, frequency and offset is supplied. Other key features
 include the ability to manipulate specific aspects of certain functions. Ramp waveforms can have their symmetry changed
-and duty cycle can be altered for pulse functions. The termination of the {term}`IAFG` and any {term}`AFG` can be
+and duty cycle can be altered for pulse functions. The termination of the <IAFG:> and any <AFG:> can be
 specified using `HIGHZ` or `FIFTY` string literals. If the output needs to be inverted,
-the polarity can be changed on AFGs.
+the polarity can be changed on \[AFGs\](default: AFG).
 
 ```{warning}
 `generate_function()` allows function parameters which can exceed actual generation bounds.
@@ -131,15 +131,15 @@ manually will likely cause burst to stop functioning.
 `get_waveform_constraints()` will return a series of ranges that a waveform's parameters must
 be within to be generated. These constraints can be used before generating a function to
 make sure that the parameters you will be supplying
-are not outside the bounds. The method only requires the desired waveform function (except on {term}`AWGs <AWG>`) to be provided.
+are not outside the bounds. The method only requires the desired waveform function (except on \[AWGs\](default: AWG)) to be provided.
 However, different aspects may need to be provided to get a more accurate representation of what can actually be generated.
 If no other inputs are provided, the smallest range of the attribute is chosen.
-An {term}`AWG's <AWG>` signal path affects the range of the offset and amplitude.
-Higher frequencies on AFGs will lower the upper bound of the amplitude,
+An \[AWG's\](default: AWG) signal path affects the range of the offset and amplitude.
+Higher frequencies on \[AFGs\](default: AFG) will lower the upper bound of the amplitude,
 alongside the which impedance is set.
 
 `set_waveform_properties()` is functionally identical to `generate_function()`, but does not turn the
-source channel off or on, nor will it stop or start an {term}`AWG`.
+source channel off or on, nor will it stop or start an <AWG:>.
 
 ## Signal Generators
 
@@ -163,26 +163,26 @@ alt: Tekscope `IAFG` Class Diagram
 ```
 
 The TekScope series instruments are signal generators focused on waveform generation which operate on the Windows operating systems.
-They accept communication through {term}`USB` and {term}`TCPIP` interfaces.
+They accept communication through <USB:> and <TCPIP:> interfaces.
 
-Requesting function generation on an {term}`IAFG` will initially turn it off. The frequency, offset,
+Requesting function generation on an <IAFG:> will initially turn it off. The frequency, offset,
 function, impedance, and amplitude are set in the stated order.
 If the function is a `SQUARE` wave, the duty cycle is used
 to set how long the pulses are. Symmetry decides what direction the `RAMP` function
 skews. After all parameters are set, the source channel is then turned back on.
 
-Setting up bursts of the {term}`IAFG` involves setting it to burst mode and loading in a specified number of bursts.
+Setting up bursts of the <IAFG:> involves setting it to burst mode and loading in a specified number of bursts.
 
 IAFGs have access to the following functions, listed within
-{py:obj}`SignalGeneratorFunctionsIAFG <tm_devices.helpers.enums.SignalGeneratorFunctionsIAFG>`:
+[`SignalGeneratorFunctionsIAFG`][tm_devices.helpers.enums.SignalGeneratorFunctionsIAFG]:
 `SIN`, `SQUARE`, `RAMP`, `PULSE`, `PRNOISE`, `DC`, `SINC`, `GAUSSIAN`, `LORENTZ`, `ERISE`, `EDECAY`, `HAVERSINE`, `CARDIAC`, `ARBITRARY`
 
 ```{note}
-IAFGs are only accessible if the oscilloscope has the {term}`AFG` license installed.
+[IAFGs](default: IAFG) are only accessible if the oscilloscope has the `AFG` license installed.
 ```
 
 ```{note}
-IAFGs contain no waveform list, editable memory or user defined waveforms. This means arbitrary waveforms
+[IAFGs](default: IAFG) contain no waveform list, editable memory or user defined waveforms. This means arbitrary waveforms
 must be loaded from the hard drive.
 ```
 
@@ -202,16 +202,16 @@ Although `ARBITRARY` is a valid function, it will not generate properly when usi
 
 ##### Constraints:
 
-The amplitude and frequency range for the Internal AFG varies based on the desired function.
+The amplitude and frequency range for the <IAFG:> varies based on the desired function.
 These ranges are the same for each of the classes listed:
-{py:obj}`MSO2 <tm_devices.drivers.pi.scopes.tekscope.mso2.MSO2>`
-{py:obj}`MSO4 <tm_devices.drivers.pi.scopes.tekscope.mso4.MSO4>`
-{py:obj}`MSO4B <tm_devices.drivers.pi.scopes.tekscope.mso4b.MSO4B>`
-{py:obj}`MSO5 <tm_devices.drivers.pi.scopes.tekscope.mso5.MSO5>`
-{py:obj}`MSO5LP <tm_devices.drivers.pi.scopes.tekscope.mso5.MSO5LP>`
-{py:obj}`MSO6 <tm_devices.drivers.pi.scopes.tekscope.mso6.MSO6>`
-{py:obj}`MSO6B <tm_devices.drivers.pi.scopes.tekscope.mso6b.MSO6B>`
-{py:obj}`LPD6 <tm_devices.drivers.pi.scopes.tekscope.lpd6.LPD6>`
+[`MSO2`][tm_devices.drivers.pi.scopes.tekscope.mso2.MSO2]
+[`MSO4`][tm_devices.drivers.pi.scopes.tekscope.mso4.MSO4]
+[`MSO4B`][tm_devices.drivers.pi.scopes.tekscope.mso4b.MSO4B]
+[`MSO5`][tm_devices.drivers.pi.scopes.tekscope.mso5.MSO5]
+[`MSO5LP`][tm_devices.drivers.pi.scopes.tekscope.mso5.MSO5LP]
+[`MSO6`][tm_devices.drivers.pi.scopes.tekscope.mso6.MSO6]
+[`MSO6B`][tm_devices.drivers.pi.scopes.tekscope.mso6b.MSO6B]
+[`LPD6`][tm_devices.drivers.pi.scopes.tekscope.lpd6.LPD6]
 
 Sample rates are 250.0MS/s for `ARBITRARY` waveforms.
 
@@ -232,7 +232,7 @@ align: center
 
 ##### Constraints:
 
-The constraints for the {py:obj}`MSO5B <tm_devices.drivers.pi.scopes.tekscope.mso5b.MSO5B>` are identical to
+The constraints for the [`MSO5B`][tm_devices.drivers.pi.scopes.tekscope.mso5b.MSO5B] are identical to
 [other tekscope models](#mso2-mso4-mso4b-mso5-mso5lp-mso6-mso6b-lpd6), except the upper frequency bound is doubled.
 
 ---
@@ -248,17 +248,17 @@ alt: AFG Class Diagram
 ---
 ```
 
-{term}`AFGs <AFG>` handle [function generation](#tekscope-internal-arbitrary-function-generators) identically to {term}`IAFGs <IAFG>`,
+\[AFGs\](default: AFG) handle [function generation](#tekscope-internal-arbitrary-function-generators) identically to <IAFG:>,
 except for the order in which the parameters are set.
 
-All functions which are shared by each {term}`AFG` exist within the
-{py:obj}`AFG <tm_devices.drivers.pi.signal_generators.afgs.afg.AFG>` class.
+All functions which are shared by each <AFG:> exist within the
+[`AFG`][tm_devices.drivers.pi.signal_generators.afgs.afg.AFG] class.
 
-Setting up bursts of the {term}`AFG` involves setting the {term}`AFG` trigger to external, so the burst doesn't activate
+Setting up bursts of the <AFG:> involves setting the <AFG:> trigger to external, so the burst doesn't activate
 on the internal trigger. Following this, the burst state is set to `ON` and mode set to `TRIGGERED`.
 
-{term}`AFGs <AFG>` have access to the following functions, listed within
-{py:obj}`SignalGeneratorFunctionsAFG <tm_devices.helpers.enums.SignalGeneratorFunctionsAFG>`:
+\[AFGs\](default: AFG) have access to the following functions, listed within
+[`SignalGeneratorFunctionsAFG`][tm_devices.helpers.enums.SignalGeneratorFunctionsAFG]:
 `SIN`, `SQUARE`, `RAMP`, `PULSE`, `DC`, `SINC`, `GAUSSIAN`, `LORENTZ`, `ERISE`, `EDECAY`, `HAVERSINE`, `CARDIAC`, `NOISE`, `ARBITRARY`
 
 ```{note}
@@ -272,11 +272,11 @@ Although `Arbitrary` is a valid function, it will not generate properly when usi
 #### AFG3K, AFG3KB, AFG3KC
 
 The AFG3K series instruments are function generating devices that also offer the capacity to generate arbitrary waveforms. They accept
-communication through {term}`USB`, {term}`TCPIP` and {term}`GPIB` interfaces. These instruments have their
+communication through <USB:>, <TCPIP:> and <GPIB:> interfaces. These instruments have their
 own class representations, corresponding to the
-{py:obj}`AFG3K <tm_devices.drivers.pi.signal_generators.afgs.afg3k.AFG3K>`,
-{py:obj}`AFG3KB <tm_devices.drivers.pi.signal_generators.afgs.afg3kb.AFG3KB>`, and
-{py:obj}`AFG3KC <tm_devices.drivers.pi.signal_generators.afgs.afg3kc.AFG3KC>`.
+[`AFG3K`][tm_devices.drivers.pi.signal_generators.afgs.afg3k.AFG3K],
+[`AFG3KB`][tm_devices.drivers.pi.signal_generators.afgs.afg3kb.AFG3KB], and
+[`AFG3KC`][tm_devices.drivers.pi.signal_generators.afgs.afg3kc.AFG3KC].
 
 ##### Constraints:
 
@@ -327,9 +327,9 @@ align: center
 #### AFG31K
 
 The AFG31K series instruments are function generating devices that also offer the capacity to generate arbitrary waveforms. They accept
-communication through {term}`USB`, {term}`TCPIP`, and {term}`GPIB` interfaces. The AFG31K has its
+communication through <USB:>, <TCPIP:>, and <GPIB:> interfaces. The AFG31K has its
 own class representation, corresponding to
-{py:obj}`AFG31K <tm_devices.drivers.pi.signal_generators.afgs.afg31k.AFG31K>`.
+[`AFG31K`][tm_devices.drivers.pi.signal_generators.afgs.afg31k.AFG31K].
 
 ##### Constraints:
 
@@ -387,11 +387,11 @@ alt: AWG Class Diagram
 ---
 ```
 
-All functions which are shared by each {term}`AWG` exist within the
-{py:obj}`AWG <tm_devices.drivers.pi.signal_generators.awgs.awg.AWG>` class.
+All functions which are shared by each <AWG:> exist within the
+[`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG] class.
 
-Function generation on {term}`AWGs <AWG>` is fundamentally different from {term}`AFGs <AFG>`. The {term}`AWG` is stopped and the source channel being used
-is turned off. Predefined waveforms provided with the {term}`AWG`
+Function generation on \[AWGs\](default: AWG) is fundamentally different from \[AFGs\](default: AFG). The <AWG:> is stopped and the source channel being used
+is turned off. Predefined waveforms provided with the <AWG:>
 are then loaded from the hard drive into the waveform list for the AWG5200 and AWG70K. Sample rate is not source dependant,
 instead it is set through the `SignalGenerator` class. The source channel provided has its waveform, offset, amplitude, and signal path set.
 These attributes can take a while to be set, though once complete, the source channels are turned back on and `AWGCONTROL:RUN`
@@ -401,25 +401,25 @@ is sent to begin the transmission of the waveform.
 If the waveform is `RAMP`, a symmetry of 50 will set the waveform to a `TRIANGLE`.
 ```
 
-The {py:obj}`AWG <tm_devices.drivers.pi.signal_generators.awgs.awg.AWG>` class has some unique methods.
+The [`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG] class has some unique methods.
 `generate_waveform()` allows for a waveform name from the waveform list
 to be provided, instead of a function. The method is also distinctly different from generate function as it relies on a sample
-rate also being provided to actually generate the waveform. All functions which are generic to the {term}`AWG`
-exist within the {py:obj}`AWG <tm_devices.drivers.pi.signal_generators.awgs.awg.AWG>` class.
+rate also being provided to actually generate the waveform. All functions which are generic to the <AWG:>
+exist within the [`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG] class.
 
-AWGs have access to the following functions, listed within
-{py:obj}`SignalGeneratorFunctionsAWG <tm_devices.helpers.enums.SignalGeneratorFunctionsAWG>`:
+\[AWGs\](default: AWG) have access to the following functions, listed within
+[`SignalGeneratorFunctionsAWG`][tm_devices.helpers.enums.SignalGeneratorFunctionsAWG]:
 `SIN`, `SQUARE`, `RAMP`, `TRIANGLE`, `DC`, `CLOCK`
 
 #### AWG5K/AWG7K
 
 The AWG5K/7K series instruments are signal generators focused on waveform generation which operate on Windows.
-They accept communication through {term}`TCPIP` and {term}`GPIB` interfaces.
+They accept communication through <TCPIP:> and <GPIB:> interfaces.
 
 `set_output_signal_path()` is uniquely defined within the AWG5K and AWG7K classes, as it will set the value for
-`AWGCONTROL:DOUTPUTx:STATE`, which is a unique option not seen in the other {term}`AWGs <AWG>`.
+`AWGCONTROL:DOUTPUTx:STATE`, which is a unique option not seen in the other \[AWGs\](default: AWG).
 
-`set_offset()` is conditioned to make sure that the {term}`AWG` output signal path is not DIR, as the {term}`VISA` query will time
+`set_offset()` is conditioned to make sure that the <AWG:> output signal path is not DIR, as the <VISA:> query will time
 out otherwise.
 
 ```{note}
@@ -434,15 +434,15 @@ All waveforms must be the same length when sending the AWGCONTROL:RUN command.
 
 The AWG5K series instruments have their
 own class representations, corresponding to the
-{py:obj}`AWG5K <tm_devices.drivers.pi.signal_generators.awgs.awg5k.AWG5K>`,
-{py:obj}`AWG5KB <tm_devices.drivers.pi.signal_generators.awgs.awg5kb.AWG5KB>`, and
-{py:obj}`AWG5KC <tm_devices.drivers.pi.signal_generators.awgs.awg5kc.AWG5KC>`.
+[`AWG5K`][tm_devices.drivers.pi.signal_generators.awgs.awg5k.AWG5K],
+[`AWG5KB`][tm_devices.drivers.pi.signal_generators.awgs.awg5kb.AWG5KB], and
+[`AWG5KC`][tm_devices.drivers.pi.signal_generators.awgs.awg5kc.AWG5KC].
 
 ###### Constraints:
 
 The AWG5K series offers an upper sample rate range from 600.0MS/s to 1.2GS/s dependent on the model number.
 Sending `AWGControl:DOUTput[n] 1` or using `DIR` in `set_output_signal_path()` will reduce the maximum amplitude
-to 0.6V. This occurs by bypassing the internal amplifier, which reroutes the {term}`DAC` directly to the
+to 0.6V. This occurs by bypassing the internal amplifier, which reroutes the <DAC:> directly to the
 differential output.
 
 ```{table} AWG5K Constraints
@@ -467,9 +467,9 @@ AWG5K's have digitized outputs on the rear of the device.
 
 The AWG7K series instruments have their
 own class representations, corresponding to the
-{py:obj}`AWG7K <tm_devices.drivers.pi.signal_generators.awgs.awg7k.AWG7K>`,
-{py:obj}`AWG7KB <tm_devices.drivers.pi.signal_generators.awgs.awg7kb.AWG7KB>`, and
-{py:obj}`AWG7KC <tm_devices.drivers.pi.signal_generators.awgs.awg7kc.AWG7KC>`.
+[`AWG7K`][tm_devices.drivers.pi.signal_generators.awgs.awg7k.AWG7K],
+[`AWG7KB`][tm_devices.drivers.pi.signal_generators.awgs.awg7kb.AWG7KB], and
+[`AWG7KC`][tm_devices.drivers.pi.signal_generators.awgs.awg7kc.AWG7KC].
 
 ###### Constraints:
 
@@ -493,7 +493,7 @@ align: center
 ```
 
 The AWG7K also includes varying options which directly affects these ranges, such as option 02 and 06.
-These options will enforce the output signal path to always go directly from the {term}`DAC` to the differential output.
+These options will enforce the output signal path to always go directly from the <DAC:> to the differential output.
 
 ```{table} AWG7K Option Constraints
 ---
@@ -514,11 +514,11 @@ align: center
 #### AWG5200
 
 The AWG5200 series instruments are signal generators focused on waveform generation which operate on Windows.
-They accept communication through {term}`USB`, {term}`TCPIP`, and {term}`GPIB` interfaces.
+They accept communication through <USB:>, <TCPIP:>, and <GPIB:> interfaces.
 
 The AWG52000 has its
 own class representation, corresponding to
-{py:obj}`AWG5200 <tm_devices.drivers.pi.signal_generators.awgs.awg5200.AWG5200>`.
+[`AWG5200`][tm_devices.drivers.pi.signal_generators.awgs.awg5200.AWG5200].
 
 `set_output_signal_path()` is uniquely defined within the AWG5200 as it has special output signal paths.
 
@@ -552,7 +552,7 @@ align: center
 The AWG5200's programming commands are seperated into three seperated categories: Sequential, Blocking, and Overlapping.
 The type of command is important to consider, as using them in an incorrect order can lead to unintended results.
 
-Sequential commands function as standard {term}`PI` commands. They will not start until the previous command has finished. These commands
+Sequential commands function as standard <PI:> commands. They will not start until the previous command has finished. These commands
 tend to be fast and will allow for quick response times even if they are queued in the input buffer.
 
 Blocking commands are very similar to Sequential commands. The main difference between Sequential and Blocking is that
@@ -571,9 +571,9 @@ Overlapping commands run in parallel with any other command, so placing them fir
 ```
 
 ```{tip}
-There are multiple ways of synchronizing overlapping commands. This includes using {term}`OPC` or {term}`WAI` to
-wait for the operation complete to clear in the {term}`SESR`. This can also be done using an {term}`SRQ`,
-along with waiting for the trigger bit in the {term}`OCR`.
+There are multiple ways of synchronizing overlapping commands. This includes using <OPC:> or <WAI:> to
+wait for the operation complete to clear in the <SESR:>. This can also be done using an <SRQ:>,
+along with waiting for the trigger bit in the <OCR:>.
 ```
 
 ```{caution}
@@ -589,15 +589,15 @@ If the AWG5200 is experiencing problems, this may be a cause.
 #### AWG70KA, AWG70KB
 
 The AWG70K series instruments are signal generators focused on waveform generation which operate on Windows.
-They accept communication through {term}`USB`, {term}`TCPIP`, and {term}`GPIB` interfaces.
+They accept communication through <USB:>, <TCPIP:>, and <GPIB:> interfaces.
 
 `set_output_signal_path()` is uniquely defined within the
-{py:obj}`AWG70KA <tm_devices.drivers.pi.signal_generators.awgs.awg70ka.AWG70KA>` and
-{py:obj}`AWG70KB <tm_devices.drivers.pi.signal_generators.awgs.awg70kb.AWG70KB>` classes.
-By default, it will first attempt to set the output signal path to {term}`DCA`.
+[`AWG70KA`][tm_devices.drivers.pi.signal_generators.awgs.awg70ka.AWG70KA] and
+[`AWG70KB`][tm_devices.drivers.pi.signal_generators.awgs.awg70kb.AWG70KB] classes.
+By default, it will first attempt to set the output signal path to <DCA:>.
 If this fails (implying an MDC4500-4B is not connected), then a direct signal path will be set.
 
-`set_offset()` is conditioned to make sure that the {term}`AWG` output signal path is {term}`DCA`, as the {term}`VISA` query will time
+`set_offset()` is conditioned to make sure that the <AWG:> output signal path is <DCA:>, as the <VISA:> query will time
 out otherwise.
 
 ##### Constraints:
