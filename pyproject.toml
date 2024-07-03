@@ -436,8 +436,8 @@ deps =
     poetry
 setenv =
     DOC_PYTHON_VERSION = python3.11  # Keep this in sync with .readthedocs.yml and any CI scripts
-    # Skip pre-commit checks that are explicitly performed by tox
-    SKIP = ruff-format,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma,poetry-audit
+    # Skip pre-commit checks that are explicitly performed by tox or not needed
+    SKIP = ruff-format,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma,poetry-audit,file-contents-sorter
     PYRIGHT_PYTHON_GLOBAL_NODE = False  # This will cause python-pyright to use nodeenv to install node rather than use the system node
 commands_pre =
     poetry install --no-root --without=main
