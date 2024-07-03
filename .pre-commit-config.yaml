@@ -23,7 +23,7 @@ repos:
       - id: check-xml
       - id: file-contents-sorter
         files: ^(docs/known_words.txt)$
-        args: [--unique]
+        args: [--unique, --ignore-case]
       - id: requirements-txt-fixer
       - id: trailing-whitespace
       - id: end-of-file-fixer
