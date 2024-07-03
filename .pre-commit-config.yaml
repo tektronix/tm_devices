@@ -21,10 +21,9 @@ repos:
       - id: check-toml
       - id: check-json
       - id: check-xml
-# TODO: figure out why this hook is failing in a few environments
-#      - id: file-contents-sorter
-#        files: ^(docs/known_words.txt)$
-#        args: [--unique, --ignore-case]
+      - id: file-contents-sorter
+        files: ^(docs/known_words.txt)$
+        args: [--unique, --ignore-case]
       - id: requirements-txt-fixer
       - id: trailing-whitespace
       - id: end-of-file-fixer
