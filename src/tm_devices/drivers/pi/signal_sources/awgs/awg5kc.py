@@ -7,7 +7,7 @@ from tm_devices.drivers.pi.signal_sources.awgs.awg5kb import AWG5KB
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class AWG5KC(AWG5KCMixin, AWG5KB):
+class AWG5KC(AWG5KCMixin, AWG5KB):  # pyright: ignore[reportIncompatibleMethodOverride]
     """AWG5KC device driver."""
 
     ################################################################################################

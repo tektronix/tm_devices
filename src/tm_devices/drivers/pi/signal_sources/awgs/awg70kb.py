@@ -7,7 +7,7 @@ from tm_devices.drivers.pi.signal_sources.awgs.awg70ka import AWG70KA
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class AWG70KB(AWG70KBMixin, AWG70KA):
+class AWG70KB(AWG70KBMixin, AWG70KA):  # pyright: ignore[reportIncompatibleMethodOverride]
     """AWG70KB device driver."""
 
     ################################################################################################

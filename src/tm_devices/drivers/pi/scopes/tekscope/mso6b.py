@@ -7,7 +7,7 @@ from tm_devices.drivers.pi.scopes.tekscope.mso6 import MSO6
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class MSO6B(MSO6BMixin, MSO6):
+class MSO6B(MSO6BMixin, MSO6):  # pyright: ignore[reportIncompatibleMethodOverride]
     """MSO6B device driver."""
 
     ################################################################################################

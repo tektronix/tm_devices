@@ -7,7 +7,7 @@ from tm_devices.drivers.pi.source_measure_units.smu26xx.smu2601b import SMU2601B
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class SMU2601BPulse(SMU2601BPulseMixin, SMU2601B):
+class SMU2601BPulse(SMU2601BPulseMixin, SMU2601B):  # pyright: ignore[reportIncompatibleMethodOverride]
     """SMU2601B-PULSE device driver."""
 
     ################################################################################################

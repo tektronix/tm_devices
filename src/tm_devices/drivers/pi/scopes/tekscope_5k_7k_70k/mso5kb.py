@@ -7,7 +7,7 @@ from tm_devices.drivers.pi.scopes.tekscope_5k_7k_70k.mso5k import MSO5K
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class MSO5KB(MSO5KBMixin, MSO5K):
+class MSO5KB(MSO5KBMixin, MSO5K):  # pyright: ignore[reportIncompatibleMethodOverride]
     """MSO5KB device driver."""
 
     ################################################################################################

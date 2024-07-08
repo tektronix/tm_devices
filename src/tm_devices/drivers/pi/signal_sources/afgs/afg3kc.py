@@ -7,7 +7,7 @@ from tm_devices.drivers.pi.signal_sources.afgs.afg3kb import AFG3KB
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class AFG3KC(AFG3KCMixin, AFG3KB):
+class AFG3KC(AFG3KCMixin, AFG3KB):  # pyright: ignore[reportIncompatibleMethodOverride]
     """AFG3KC device driver."""
 
     ################################################################################################

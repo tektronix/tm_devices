@@ -29,12 +29,12 @@ class AsDictionaryMixin:
         """
         return {
             prop: self._represent(value, ignore_none=ignore_none, sort_keys=sort_keys)
-            for prop, value in (
+            for prop, value in (  # pyright: ignore[reportUnknownVariableType]
                 vars(self).items()
                 if not sort_keys
                 else sorted(vars(self).items(), key=operator.itemgetter(0))
             )
-            if not (prop.startswith("_") or (ignore_none and value is None))
+            if not (prop.startswith("_") or (ignore_none and value is None))  # pyright: ignore[reportUnknownMemberType]
         }
 
     @staticmethod

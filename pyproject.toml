@@ -308,7 +308,7 @@ ignore_directives = [
 
 [tool.ruff]
 line-length = 100
-namespace-packages = ["examples/**", "scripts/**", "tests/**"]
+namespace-packages = ["docs/**", "examples/**", "scripts/**", "tests/**"]
 output-format = "concise"
 src = ["docs", "examples", "scripts", "src", "tests"]
 target-version = "py38"  # always generate Python 3.8 compatible code

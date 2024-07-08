@@ -7,7 +7,7 @@ from tm_devices.drivers.pi.scopes.tekscope.mso6 import MSO6
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class LPD6(LPD6Mixin, MSO6):
+class LPD6(LPD6Mixin, MSO6):  # pyright: ignore[reportIncompatibleMethodOverride]
     """LPD6 device driver."""
 
     ################################################################################################

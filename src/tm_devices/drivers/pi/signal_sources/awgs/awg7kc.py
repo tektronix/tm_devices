@@ -7,7 +7,7 @@ from tm_devices.drivers.pi.signal_sources.awgs.awg7kb import AWG7KB
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class AWG7KC(AWG7KCMixin, AWG7KB):
+class AWG7KC(AWG7KCMixin, AWG7KB):  # pyright: ignore[reportIncompatibleMethodOverride]
     """AWG7KC device driver."""
 
     ################################################################################################

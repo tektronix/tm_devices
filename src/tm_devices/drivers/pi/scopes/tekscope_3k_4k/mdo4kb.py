@@ -7,7 +7,7 @@ from tm_devices.drivers.pi.scopes.tekscope_3k_4k.mdo4k import MDO4K
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class MDO4KB(MDO4KBMixin, MDO4K):
+class MDO4KB(MDO4KBMixin, MDO4K):  # pyright: ignore[reportIncompatibleMethodOverride]
     """MDO4KB device driver."""
 
     ################################################################################################
