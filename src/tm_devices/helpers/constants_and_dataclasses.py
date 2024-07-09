@@ -4,7 +4,7 @@ import re
 
 from dataclasses import dataclass
 from types import MappingProxyType
-from typing import Final, FrozenSet, List, Mapping, Optional, Tuple
+from typing import Final, FrozenSet, List, Mapping, Optional, Tuple, Union
 
 from pyvisa import constants as pyvisa_constants
 
@@ -12,7 +12,7 @@ from tm_devices.helpers.dataclass_mixins import (
     AsDictionaryMixin,
     AsDictionaryUseEnumNameUseCustEnumStrValueMixin,
 )
-from tm_devices.helpers.enums import ConnectionTypes, DeviceTypes, SupportedModels
+from tm_devices.helpers.enums import ConnectionTypes, DeviceTypes, LoadImpedanceAFG, SupportedModels
 from tm_devices.helpers.standalone_functions import validate_address
 
 
@@ -705,3 +705,14 @@ USB_MODEL_ID_LOOKUP: Final[Mapping[str, USBTMCConfiguration]] = MappingProxyType
     }
 )
 """A mapping of model USBTMC info."""
+
+LOAD_IMPEDANCE_LOOKUP: Final[Mapping[Union[float, str], LoadImpedanceAFG]] = MappingProxyType(
+    {
+        9.97e37: LoadImpedanceAFG.HIGHZ,
+        1.0e6: LoadImpedanceAFG.HIGHZ,
+        "HIGHZ": LoadImpedanceAFG.HIGHZ,
+        50.0: LoadImpedanceAFG.FIFTY,
+        "FIFTY": LoadImpedanceAFG.FIFTY,
+    }
+)
+"""Conversions of literal values to Enum values."""

@@ -1,4 +1,4 @@
-# pyright: reportUnnecessaryTypeIgnoreComment=none
+# pylint: disable=too-many-lines  # pyright: reportUnnecessaryTypeIgnoreComment=none
 """Base Programmable Interface (PI) device driver module."""
 
 import inspect
@@ -9,7 +9,7 @@ import warnings
 
 from abc import ABC, abstractmethod
 from contextlib import contextmanager
-from typing import final, Generator, Optional, Sequence, Tuple, Union
+from typing import final, Generator, List, Optional, Sequence, Tuple, Union
 
 import pyvisa as visa
 
@@ -35,8 +35,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 from tm_devices.helpers.constants_and_dataclasses import UNIT_TEST_TIMEOUT
 
 
-# pylint: disable=too-many-public-methods
-class PIDevice(Device, ABC):
+class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
     """Base Programmable Interface (PI) device driver."""
 
     # This is a class constant that can be overwritten by children which defines
@@ -301,6 +300,76 @@ class PIDevice(Device, ABC):
         """Return the VISA status byte."""
         return self._visa_resource.read_stb()
 
+    def poll_query(  # noqa: PLR0913
+        self,
+        number_of_polls: int,
+        query: str,
+        wanted_val: Union[float, str],
+        sleep_time: float = 0.4,
+        tolerance: float = 0,
+        percentage: bool = False,
+        invert_range: bool = False,
+        invalid_values: Union[List[Union[float, str]], None] = None,
+    ) -> None:
+        """Poll the query until the wanted value appears.
+
+        Args:
+            number_of_polls: The number of times to poll the query.
+            query: The query to poll.
+            wanted_val: The desired value to poll for.
+            sleep_time: The time to wait between polls (in seconds).
+            tolerance: The acceptable difference between two floating point values.
+            percentage: A boolean indicating what kind of tolerance check to perform.
+                 False means absolute tolerance: +/- tolerance.
+                 True means percent tolerance: +/- (tolerance / 100) * value.
+            invert_range: A boolean indicating when to stop polling.
+                 False means polling until the wanted value appears.
+                 True means polling until a different value from the wanted value appears.
+            invalid_values: A list of values that should never be received when polling.
+
+        Raises:
+            AssertionError: Indicating that the device never reached the wanted value.
+        """
+        if invalid_values is None:
+            invalid_values = []
+        poll_number: int = 0
+        query_list = ""
+        if isinstance(wanted_val, float):
+            tolerance = abs(tolerance * 0.01 * wanted_val if percentage else tolerance)
+        while poll_number < number_of_polls:
+            queried_value = self.query(query)
+            query_list += f"\t{poll_number} - {queried_value}\n"
+            if invalid_values:
+                self.ieee_cmds.cls()
+                error_check = (
+                    float(queried_value) not in invalid_values
+                    if isinstance(wanted_val, (float, int))
+                    else queried_value not in invalid_values
+                )
+            else:
+                error_check = True
+            if error_check:
+                float_comparison = (
+                    isinstance(wanted_val, (float, int))
+                    and wanted_val - tolerance
+                    <= float(queried_value)
+                    <= float(wanted_val) + tolerance
+                )
+                str_comparison = isinstance(wanted_val, str) and queried_value == wanted_val
+                if (
+                    not invert_range
+                    and (float_comparison or str_comparison)
+                    or invert_range
+                    and not (float_comparison or str_comparison)
+                ):
+                    return
+            time.sleep(sleep_time)
+            poll_number += 1
+        raise AssertionError(  # noqa: TRY003
+            f"{query} {'never' if not invert_range else 'always'} "
+            f"returned {wanted_val}, received:\n{query_list}"
+        )
+
     def query(
         self,
         query: str,
@@ -507,7 +576,7 @@ class PIDevice(Device, ABC):
 
         return response
 
-    def query_response(
+    def query_response(  # noqa: PLR0913
         self,
         query: str,
         value: Union[str, float],
@@ -515,6 +584,7 @@ class PIDevice(Device, ABC):
         percentage: bool = False,
         remove_quotes: bool = False,
         custom_message_prefix: str = "",
+        allow_empty: bool = False,
     ) -> Tuple[bool, str]:
         """Query the and verify the result.
 
@@ -527,11 +597,12 @@ class PIDevice(Device, ABC):
                  True means percent tolerance: +/- (tolerance / 100) * value.
             remove_quotes: Set this to True to remove all double quotes from the returned value.
             custom_message_prefix: A custom message to be prepended to the failure message.
+            allow_empty: Set this to True if an empty return string is permitted.
 
         Returns:
             Tuple containing the boolean verification result and the value returned from the query.
         """
-        actual_value = self.query(query, remove_quotes=remove_quotes)
+        actual_value = self.query(query, remove_quotes=remove_quotes, allow_empty=allow_empty)
         message_prefix = f"query_response failed for query: {query}"
         if custom_message_prefix:
             message_prefix = f"{custom_message_prefix}\n{message_prefix}"
@@ -596,6 +667,7 @@ class PIDevice(Device, ABC):
         custom_message_prefix: str = "",
         *,
         expected_value: Optional[Union[str, float]] = None,
+        opc: bool = False,
     ) -> str:
         """Send the given command with the given value and then verify the results.
 
@@ -611,11 +683,12 @@ class PIDevice(Device, ABC):
             remove_quotes: Set this to True to remove all double quotes from the returned value.
             custom_message_prefix: A custom message to be prepended to the failure message.
             expected_value: An optional, alternative value expected to be returned.
+            opc: Boolean indicating if ``*OPC?`` should be queried after sending the command.
 
         Returns:
             The output of the query portion of the method.
         """
-        self.write(f"{command} {value}")
+        self.write(f"{command} {value}", opc=opc)
         if self._enable_verification:
             check = self.query(command + "?", remove_quotes=remove_quotes)
             message_prefix = f"Failed to set {command} to {value}"
@@ -632,6 +705,70 @@ class PIDevice(Device, ABC):
         else:
             check = ""
         return check
+
+    def set_if_needed(  # noqa: PLR0913
+        self,
+        command: str,
+        value: Union[str, float],
+        tolerance: float = 0,
+        percentage: bool = False,
+        remove_quotes: bool = False,
+        custom_message_prefix: str = "",
+        *,
+        expected_value: Optional[Union[str, float]] = None,
+        opc: bool = False,
+        allow_empty: bool = False,
+        verify_value: bool = False,
+    ) -> Tuple[bool, str]:
+        """Query the command's field and update it if the value does not match the input.
+
+        Args:
+            command: The command to send.
+                For example: ``:AFG:FUNCTION``
+            value: The value being set by the command.
+                For example: ``SINE``
+            tolerance: The acceptable difference between two floating point values.
+            percentage: A boolean indicating what kind of tolerance check to perform.
+                 False means absolute tolerance: +/- tolerance.
+                 True means percent tolerance: +/- (tolerance / 100) * value.
+            remove_quotes: Set this to True to remove all double quotes from the returned value.
+            custom_message_prefix: A custom message to be prepended to the failure message.
+            expected_value: An optional, alternative value expected to be returned.
+            opc: Boolean indicating if ``*OPC?`` should be queried after sending the command.
+            allow_empty: Set this to True if an empty return string is permitted.
+            verify_value: Boolean indicating to verify value after write.
+
+        Returns:
+            Tuple containing the boolean value indicating if the command needed to be set and
+            the value returned from the query.
+        """
+        try:
+            query_passed, actual_value = self.query_response(
+                query=command + "?",
+                value=value,
+                tolerance=tolerance,
+                percentage=percentage,
+                remove_quotes=remove_quotes,
+                custom_message_prefix=custom_message_prefix,
+                allow_empty=allow_empty,
+            )
+        except AssertionError:
+            query_passed = False
+            if verify_value:
+                actual_value = self.set_and_check(
+                    command,
+                    value,
+                    tolerance,
+                    percentage,
+                    remove_quotes,
+                    custom_message_prefix,
+                    expected_value=expected_value,
+                    opc=opc,
+                )
+            else:
+                self.write(f"{command} {value}", opc=bool(opc))
+                actual_value = ""
+        return not query_passed, actual_value
 
     @final
     def turn_all_channels_off(self) -> None:

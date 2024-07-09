@@ -5,7 +5,9 @@ alias_usage
 api
 artifact
 artifacts
+autoclasstree
 autocomplete
+awgs
 backend
 backends
 basic_curve_query
@@ -32,9 +34,11 @@ en
 enum
 executables
 filepath
+generate_function
 get_acquisition_data
 gh
 github
+haversine
 hostname
 hostnames
 html
@@ -47,6 +51,7 @@ licensor
 linter
 linters
 linting
+literalinclude
 mailto
 md
 mixin
@@ -57,6 +62,7 @@ namespace
 noqa
 opensource
 parallelization
+pi
 pre
 psu
 py
@@ -73,7 +79,9 @@ repo
 runtime
 sarif
 sexualized
+signal_generators
 sim_devices
+sinc
 socio
 stdout
 styleguide

@@ -1,6 +1,6 @@
 ---
 devices:
-  - address: AFG3KC-HOSTNAME
+  - address: AFG3252C-HOSTNAME
     device_type: AFG
   - address: MSO58B-HOSTNAME
     alias: MSO58B

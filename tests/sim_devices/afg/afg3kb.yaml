@@ -1,7 +1,7 @@
 ---
 spec: '1.1'
 devices:
-  afg3kb:
+  afg3022b:
     eom:
       USB INSTR:
         q: "\n"

@@ -127,3 +127,26 @@ def test_pi_device(  # noqa: PLR0915
     # Re-open the device for device manager teardown
     with mock.patch.dict("os.environ", {"TM_DEVICES_UNIT_TESTS_REBOOT_ALLOW": "true"}, clear=True):
         assert scope._open()  # noqa: SLF001
+
+    # Ensure VERBose is off
+    scope.set_and_check(":VERBose", 0)
+    # Expect set not needed since verbose is already off.
+    assert scope.set_if_needed(":VERBose", 0) == (False, "0")
+    # Expect set needed
+    assert scope.set_if_needed(":VERBose", 1) == (True, "")
+    assert scope.set_if_needed(":VERBose", 0, verify_value=True) == (True, "0")
+    # Set VERBose back to off
+    scope.set_and_check(":VERBose", "0")
+
+    scope.set_and_check(":DISPLAY:WAVEVIEW:CH1:STATE", 1)
+    scope.poll_query(1, ":DISPLAY:WAVEVIEW:CH1:STATE?", 1.0, sleep_time=0)
+    # Display waveview state is set to 1, but we are wanting 0.
+    with pytest.raises(AssertionError):
+        scope.poll_query(2, ":DISPLAY:WAVEVIEW:CH1:STATE?", 0, sleep_time=0)
+    # Set display waveview state to a maximum bound value.
+    scope.set_and_check(":DISPLAY:WAVEVIEW:CH1:STATE", 9.9e37)
+    with pytest.raises(AssertionError):
+        # Pass in the maximum bound value as invalid values.
+        scope.poll_query(
+            1, ":DISPLAY:WAVEVIEW:CH1:STATE?", 9.9e37, sleep_time=0, invalid_values=[9.9e37]
+        )

@@ -206,11 +206,11 @@ class SupportedRequestTypes(CustomStrEnum):
     PATCH = "PATCH"
 
 
-class SignalSourceFunctionBase(Enum):
+class SignalGeneratorFunctionBase(Enum):
     """An enumeration for all function name enumerations to inherit from."""
 
 
-class SignalSourceFunctionsAWG(SignalSourceFunctionBase):
+class SignalGeneratorFunctionsAWG(SignalGeneratorFunctionBase):
     """AWG function names."""
 
     SIN = "Sine"
@@ -221,7 +221,7 @@ class SignalSourceFunctionsAWG(SignalSourceFunctionBase):
     DC = "DC"
 
 
-class SignalSourceFunctionsAFG(SignalSourceFunctionBase):
+class SignalGeneratorFunctionsAFG(SignalGeneratorFunctionBase):
     """AFG function names."""
 
     SIN = "SIN"
@@ -239,7 +239,7 @@ class SignalSourceFunctionsAFG(SignalSourceFunctionBase):
     ARBITRARY = "ARB"
 
 
-class SignalSourceFunctionsIAFG(SignalSourceFunctionBase):
+class SignalGeneratorFunctionsIAFG(SignalGeneratorFunctionBase):
     """IAFG function names."""
 
     SIN = "SINE"
@@ -256,3 +256,37 @@ class SignalSourceFunctionsIAFG(SignalSourceFunctionBase):
     CARDIAC = "CARDIAC"
     NOISE = "NOISE"
     ARBITRARY = "ARBITRARY"
+
+
+class SignalGeneratorOutputPathsBase(CustomStrEnum):
+    """Base output signal path types."""
+
+
+class SignalGeneratorOutputPathsNon5200(SignalGeneratorOutputPathsBase):
+    """Output signal path types for non-AWG5200's."""
+
+    DCA = "DCA"  # Direct Coupled Amplifier, signal enters an amplifier before the output (+/-)
+    DIR = "DIR"  # DIRect output, bypasses the amplifier and filter directly to the output (+/-)
+
+
+class SignalGeneratorOutputPaths5200(SignalGeneratorOutputPathsBase):
+    """Output signal path types for AWG5200's."""
+
+    DCHB = "DCHB"  # DC High Bandwidth, goes directly to the differential output (+/-)
+    DCHV = "DCHV"  # DC High Voltage, enters another amplifier before going to the output (+/-)
+
+
+class SASSetWaveformFileTypes(CustomStrEnum):
+    """Supported file types for the command ``MMEMory:OPEN:SASSet[:WAVeform]``."""
+
+    AWG = ".awg"
+    AWGX = ".awgx"
+    MAT = ".mat"
+    SEQX = ".seqx"
+
+
+class LoadImpedanceAFG(Enum):
+    """AFG/IAFG Impedance Values."""
+
+    HIGHZ = "HIGHZ"  # High Impedance (1 Mega Ohm) termination
+    FIFTY = "FIFTY"  # 50 Ohm termination

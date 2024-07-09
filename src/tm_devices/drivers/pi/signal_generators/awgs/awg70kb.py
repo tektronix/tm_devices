@@ -1,20 +1,14 @@
-"""AWG70KA device driver module."""
+"""AWG70KB device driver module."""
 
 import pyvisa as visa
 
-from tm_devices.commands import AWG70KAMixin
-from tm_devices.drivers.pi.signal_sources.awgs.awg import AWG, AWGSourceDeviceConstants
+from tm_devices.commands import AWG70KBMixin
+from tm_devices.drivers.pi.signal_generators.awgs.awg70ka import AWG70KA
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class AWG70KA(AWG70KAMixin, AWG):
-    """AWG70KA device driver."""
-
-    _DEVICE_CONSTANTS = AWGSourceDeviceConstants(
-        memory_page_size=1,
-        memory_max_record_length=2000000000,
-        memory_min_record_length=1,
-    )
+class AWG70KB(AWG70KBMixin, AWG70KA):  # pyright: ignore[reportIncompatibleMethodOverride]
+    """AWG70KB device driver."""
 
     ################################################################################################
     # Magic Methods
@@ -25,7 +19,7 @@ class AWG70KA(AWG70KAMixin, AWG):
         verbose: bool,
         visa_resource: visa.resources.MessageBasedResource,
     ) -> None:
-        """Create an AWG70KA device.
+        """Create an AWG70KB device.
 
         Args:
             config_entry: A config entry object parsed by the DMConfigParser.
@@ -34,7 +28,3 @@ class AWG70KA(AWG70KAMixin, AWG):
         """
         # NOTE: This method must be defined for the documentation to properly generate
         super().__init__(config_entry, verbose, visa_resource)
-
-    ################################################################################################
-    # Public Methods
-    ################################################################################################

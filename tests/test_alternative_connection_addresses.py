@@ -110,7 +110,7 @@ from tm_devices import DeviceManager
             ("SERIAL", "SMU2614B", "Model 2614B", "4498311"),
         ),
         (
-            "TCPIP::AFG3KC-HOSTNAME::10001::SOCKET",
+            "TCPIP::AFG3252C-HOSTNAME::10001::SOCKET",
             "AFG",
             None,
             ("SOCKET", "AFG3KC", "AFG3252C", "SERIAL1"),
