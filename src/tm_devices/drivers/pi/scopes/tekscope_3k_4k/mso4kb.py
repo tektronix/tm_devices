@@ -7,7 +7,7 @@ from tm_devices.drivers.pi.scopes.tekscope_3k_4k.mso4k import MSO4K
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class MSO4KB(MSO4KBMixin, MSO4K):
+class MSO4KB(MSO4KBMixin, MSO4K):  # pyright: ignore[reportIncompatibleMethodOverride]
     """MSO4KB device driver."""
 
     ################################################################################################

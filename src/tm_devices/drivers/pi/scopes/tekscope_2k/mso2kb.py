@@ -7,7 +7,7 @@ from tm_devices.drivers.pi.scopes.tekscope_2k.mso2k import MSO2K
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class MSO2KB(MSO2KBMixin, MSO2K):
+class MSO2KB(MSO2KBMixin, MSO2K):  # pyright: ignore[reportIncompatibleMethodOverride]
     """MSO2KB device driver."""
 
     ################################################################################################

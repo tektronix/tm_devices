@@ -3,9 +3,12 @@
 import operator
 
 from enum import Enum
-from typing import Any, Dict
+from typing import Any, Dict, TYPE_CHECKING
 
 from tm_devices.helpers.enums import CustomStrEnum
+
+if TYPE_CHECKING:
+    from collections.abc import ItemsView
 
 
 # pylint: disable=too-few-public-methods
@@ -27,12 +30,11 @@ class AsDictionaryMixin:
             >>> vars(foo)  # see how this differs from the builtin function vars
             {'a': 'public', '_b': 'secret', 'c': 5}
         """
+        self_vars: ItemsView[str, Any] = vars(self).items()
         return {
             prop: self._represent(value, ignore_none=ignore_none, sort_keys=sort_keys)
             for prop, value in (
-                vars(self).items()
-                if not sort_keys
-                else sorted(vars(self).items(), key=operator.itemgetter(0))
+                self_vars if not sort_keys else sorted(self_vars, key=operator.itemgetter(0))
             )
             if not (prop.startswith("_") or (ignore_none and value is None))
         }

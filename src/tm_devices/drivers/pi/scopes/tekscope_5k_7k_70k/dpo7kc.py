@@ -7,7 +7,7 @@ from tm_devices.drivers.pi.scopes.tekscope_5k_7k_70k.dpo7k import DPO7K
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class DPO7KC(DPO7KCMixin, DPO7K):
+class DPO7KC(DPO7KCMixin, DPO7K):  # pyright: ignore[reportIncompatibleMethodOverride]
     """DPO7KC device driver."""
 
     ################################################################################################

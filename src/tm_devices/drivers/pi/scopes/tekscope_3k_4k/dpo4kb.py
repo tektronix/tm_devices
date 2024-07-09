@@ -7,7 +7,7 @@ from tm_devices.drivers.pi.scopes.tekscope_3k_4k.dpo4k import DPO4K
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class DPO4KB(DPO4KBMixin, DPO4K):
+class DPO4KB(DPO4KBMixin, DPO4K):  # pyright: ignore[reportIncompatibleMethodOverride]
     """DPO4KB device driver."""
 
     ################################################################################################
