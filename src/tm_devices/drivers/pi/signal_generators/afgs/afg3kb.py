@@ -1,20 +1,14 @@
-"""AWG5K device driver module."""
+"""AFG3KB device driver module."""
 
 import pyvisa as visa
 
-from tm_devices.commands import AWG5KMixin
-from tm_devices.drivers.pi.signal_sources.awgs.awg import AWG, AWGSourceDeviceConstants
+from tm_devices.commands import AFG3KBMixin
+from tm_devices.drivers.pi.signal_generators.afgs.afg3k import AFG3K
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class AWG5K(AWG5KMixin, AWG):
-    """AWG5K device driver."""
-
-    _DEVICE_CONSTANTS = AWGSourceDeviceConstants(
-        memory_page_size=1,
-        memory_max_record_length=16200000,
-        memory_min_record_length=1,
-    )
+class AFG3KB(AFG3KBMixin, AFG3K):  # pyright: ignore[reportIncompatibleMethodOverride]
+    """AFG3KB device driver."""
 
     ################################################################################################
     # Magic Methods
@@ -25,7 +19,7 @@ class AWG5K(AWG5KMixin, AWG):
         verbose: bool,
         visa_resource: visa.resources.MessageBasedResource,
     ) -> None:
-        """Create an AWG5K device.
+        """Create an AFG3KB device.
 
         Args:
             config_entry: A config entry object parsed by the DMConfigParser.
