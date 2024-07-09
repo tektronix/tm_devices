@@ -344,9 +344,7 @@ def test_status(value: float, low: float, high: float) -> bool:
     Returns:
         A boolean indicating whether the test passed or failed. Pass = True, Fail = False
     """
-    if value < low or value > high:
-        return False
-    return True
+    return not (value < low or value > high)
 
 
 def get_part_status(vf1: bool, vf2: bool, dyn_z: bool, ir1: bool, ir2: bool, vr_: bool) -> bool:

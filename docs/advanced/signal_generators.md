@@ -35,8 +35,8 @@ classDiagram
 
 The [`SignalGenerator`][tm_devices.drivers.pi.signal_generators.signal_generator.SignalGenerator] class is responsible
 for most waveform generators, including the [`AFG`][tm_devices.drivers.pi.signal_generators.afgs.afg.AFG] and
-[`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG>].
-Similarly, [`TekScope`][tm_devices.drivers.pi.scopes.tekscope.tekscope.TekScope>] is responsible for the
+[`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG].
+Similarly, [`TekScope`][tm_devices.drivers.pi.scopes.tekscope.tekscope.TekScope] is responsible for the
 <AFG:> internal to the scopes themselves, commonly referred to as
 an <IAFG:>. All of these classes inherit
 [`SignalGeneratorMixin`][tm_devices.driver_mixins.signal_generator_mixin.SignalGeneratorMixin],
@@ -208,7 +208,7 @@ These ranges are the same for each of the classes listed:
 [`MSO4`][tm_devices.drivers.pi.scopes.tekscope.mso4.MSO4]
 [`MSO4B`][tm_devices.drivers.pi.scopes.tekscope.mso4b.MSO4B]
 [`MSO5`][tm_devices.drivers.pi.scopes.tekscope.mso5.MSO5]
-[`MSO5LP`][tm_devices.drivers.pi.scopes.tekscope.mso5.MSO5LP]
+[`MSO5LP`][tm_devices.drivers.pi.scopes.tekscope.mso5lp.MSO5LP]
 [`MSO6`][tm_devices.drivers.pi.scopes.tekscope.mso6.MSO6]
 [`MSO6B`][tm_devices.drivers.pi.scopes.tekscope.mso6b.MSO6B]
 [`LPD6`][tm_devices.drivers.pi.scopes.tekscope.lpd6.LPD6]

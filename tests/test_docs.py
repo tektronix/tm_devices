@@ -20,8 +20,8 @@ def fixture_docs_server(site_dir: str) -> Generator[str, None, None]:
     """Serve the documentation site."""
     port = f"8{sys.version_info.major}{sys.version_info.minor}"
     cmd = [sys.executable, "-m", "http.server", port, "--directory", site_dir]
-    with subprocess.Popen(
-        cmd,  # noqa: S603
+    with subprocess.Popen(  # noqa: S603
+        cmd,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     ) as server_process:

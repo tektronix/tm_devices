@@ -165,6 +165,7 @@ nav:  # The first entry in each section needs a hard-coded title to avoid being 
   - Advanced Topics:
       - Architectural Overview: advanced/architecture.md
       - advanced/advanced_usage.md
+      - advanced/signal_generators.md
   - Troubleshooting:
       - Troubleshooting Usage: troubleshooting/usage.md
       - Troubleshooting Contributions: troubleshooting/contributions.md

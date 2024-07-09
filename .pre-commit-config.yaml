@@ -21,10 +21,9 @@ repos:
       - id: check-toml
       - id: check-json
       - id: check-xml
-# TODO: figure out why this hook is failing in a few environments
-#      - id: file-contents-sorter
-#        files: ^(docs/known_words.txt)$
-#        args: [--unique, --ignore-case]
+      - id: file-contents-sorter
+        files: ^(docs/known_words.txt)$
+        args: [--unique, --ignore-case]
       - id: requirements-txt-fixer
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -41,7 +40,7 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.28.5
+    rev: 0.28.6
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
@@ -54,7 +53,7 @@ repos:
       - id: commitizen
         stages: [commit-msg]
   - repo: https://github.com/adamchainz/blacken-docs
-    rev: 1.16.0
+    rev: 1.18.0
     hooks:
       - id: blacken-docs
         files: \.(rst|md|markdown|tex)$
@@ -142,7 +141,7 @@ repos:
         always_run: true
         args: [audit, --json, --ignore-code=CVE-2019-8341]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.4.10
+    rev: v0.5.0
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
