@@ -16,7 +16,31 @@ Valid subsections within a version are:
 
 ## Unreleased
 
-Things to be included in the next release go here.
+- Things to be included in the next release go here.
+
+### Added
+
+- Added the constraint ranges for all signal generators
+- Added drivers for AWG and AFG channels
+- Added a property named `source_channel` in AWG's and AFG's.
+- Added drivers for internal AFG in TekScopes.
+- Added a property named `internal_afg` in TekScope.
+- Added implementation of `generate_function` for all AWG models.
+- Added two burst functions to SignalGeneratorMixin: one to set up burst and one to generate the burst by forcing trigger.
+    - NOTE: Only the AFG's and internal AFG have these functions implemented.
+- Added `OutputSignalPath` enum attribute in AWG's representing output signal path options.
+- Added two functions for loading waveform set files in the AWG70k's and AWG5200: one for loading a waveform set file and another for loading a specific waveform from a waveform set file.
+- Added `sample_waveform_set_file` attribute in AWG70k's and AWG5200 to define the default waveform set file.
+
+### Changed
+
+- <span style="color:red">BREAKING CHANGE</span>. Changed the term "signal source" to "signal generator".
+    - All uses of this term are changed. Import paths now use signal_generator instead of signal_source.
+- <span style="color:red">BREAKING CHANGE</span>. Changed the function name of `generate_waveform()` to `generate_function()`.
+    - `generate_waveform()` only exists on AWGs now, however the functionality is entirely changed.
+- <span style="color:red">BREAKING CHANGE</span>. Changed the `generate_function()` function by removing burst functionality.
+    - Any use of burst now must use `setup_burst()` and `generate_burst()` instead.
+- Updated AWG's such that the `family_base_class` is at the series level.
 
 ---
 

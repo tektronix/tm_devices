@@ -8,7 +8,7 @@ An overview of the signal generation functionality available in this package, al
 
 A function is a limited set of common waveforms that are provided by default through the instrument.
 The simplicity of these waveforms allows for output parameters like waveform length and sample rate to be
-abstracted away. Frequency replaces these in order to provide signals which are easy to quantify and manipulate.
+abstracted away. Frequency replaces these in order to provide signals that are easy to quantify and manipulate.
 
 Arbitrary Function Generators ([AFGs](default:AFG)) utilize a phase increment process and a data lookup table to provide variable frequencies.
 The phase increment calculated is dependent on the waveform length and frequency requested. This has
@@ -16,7 +16,7 @@ a side effect where the phase increment can be larger than one index in the look
 issue by being simplistic enough that waveform length reduction does not have a detrimental effect on the end output.
 
 Arbitrary Waveform Generators ([AWGs](default:AWG)) enforce one cycle per sample, allowing the output to be the same shape regardless of clock rate.
-The number of samples that occurs during a second is referred to as a sample per second (S/s), a unit which determines the frequency of the waveform.
+The number of samples that occur during a second is referred to as a sample per second (S/s), a unit that determines the frequency of the waveform.
 With low frequency functions, [AWGs](default:AWG) are functionally identical to [AFGs](default:AFG), besides offering more constrained amplitudes and offsets.
 
 ---
@@ -40,7 +40,7 @@ Similarly, [`TekScope`][tm_devices.drivers.pi.scopes.tekscope.tekscope.TekScope]
 [AFG](default:AFG) internal to the scopes themselves, commonly referred to as
 an [IAFG](default:IAFG). All of these classes inherit
 [`SignalGeneratorMixin`][tm_devices.driver_mixins.signal_generator_mixin.SignalGeneratorMixin],
-which includes a list of methods which share
+which includes a list of methods that share
 functionality throughout all signal generators.
 
 !!! note
@@ -52,14 +52,17 @@ functionality throughout all signal generators.
 classDiagram
     direction LR
 
-    Tekscope <|-- InternalAFGChannel
-    AFG <|-- AFGSourceChannel
+    SignalGeneratorMixin <|-- Tekscope
+    SignalGeneratorMixin <|-- AFG
+    SignalGeneratorMixin <|-- AWG
 
-    AWG <|-- AWGSourceChannel
+    Tekscope "1..n" *-- InternalAFGChannel
+    AWG "1..n" *-- AWGSourceChannel
+    AWGSourceChannel <|-- AWG5200SourceChannel
     AWGSourceChannel <|-- AWG5KSourceChannel
     AWG5KSourceChannel <|-- AWG7KSourceChannel
-    AWGSourceChannel <|-- AWG5200SourceChannel
     AWGSourceChannel <|-- AWG70KSourceChannel
+    AFG "1..n" *-- AFGSourceChannel
 ```
 
 Each [`SignalGenerator`][tm_devices.drivers.pi.signal_generators.signal_generator.SignalGenerator] class(
@@ -75,12 +78,12 @@ Each of these source channel classes (
 ) represents an output on the signal generator
 (or the [IAFG](default:IAFG) in the case of an oscilloscope).
 
-These source channel classes contain methods and properties which pertain to [PI](default:PI) commands which only apply changes to one output.
-For example: the `afg.source_channel\["SOURCE1"\].set_amplitude()` call will change the amplitude only for source output 1.
+These source channel classes contain methods and properties that pertain to [PI](default:PI) commands, which only apply changes to one output.
+For example: the `afg.source_channel["SOURCE1"].set_amplitude()` call will change the amplitude only for source output 1.
 
 !!! tip
 
-The source channel classes not only provide easy access to basic [SCPI](default:SCPI) commands, but also helper functions, like `set_function_properties()`
+The source channel classes not only provide easy access to basic [SCPI](default:SCPI) commands but also helper functions, like `set_function_properties()`
 
 ---
 
@@ -92,33 +95,33 @@ The source channel classes not only provide easy access to basic [SCPI](default:
     state it was in previously. Attempting validation when changes can occur outside its scope leads to many redundant checks.
     As such, it is up to the user to implement these checks.
 
-Each class has children which inherit the base abstracted methods. These methods are tailored to each signal generator so the
+Each class has children which inherit the base abstracted methods. These methods are tailored to each signal generator, so the
 methods handle similarly, regardless of the different [PI](default:PI) commands required.
 
-- `source_device_constants` is a property which holds information about what functions
+- `source_device_constants` is a property that holds information about what functions
     and memory sizes are allowed.
 
 !!! tip
     `source_device_constants.functions` will provide an enum of possible functions to generate on the current signal generator.
 
-`generate_function()` is a method which allows for the user to request a function from
-any source channel, provided an amplitude, frequency and offset is supplied. Other key features
+`generate_function()` is a method that allows the user to request a function from
+any source channel, provided an amplitude, frequency, and offset are supplied. Other key features
 include the ability to manipulate specific aspects of certain functions. Ramp waveforms can have their symmetry changed
 and duty cycle can be altered for pulse functions. The termination of the [IAFG](default:IAFG) and any [AFG](default:AFG) can be
 specified using `HIGHZ` or `FIFTY` string literals. If the output needs to be inverted,
 the polarity can be changed on [AFGs](default:AFG).
 
 !!! warning
-    `generate_function()` allows function parameters which can exceed actual generation bounds.
+    `generate_function()` allows function parameters that can exceed actual generation bounds.
     `get_waveform_constraints()` should be used in tandem with `generate_function()`, or utilizing the constraints provided in
     [Signal Generators](#signal-generators).
 
-The `setup_burst()` method places the signal generator into a state for waveforms to be generated a set number
+The `setup_burst()` method places the signal generator in a state for waveforms to be generated a set number
 of times. All parameters passed into the method are functionally identical to `generate_function()`, besides `burst_count`.
 `burst_count` specifies how many cycles of the waveform are to be generated.
 
 !!! warning
-    `setup_burst()` will set parameters which can affect the signal generators behavior. Changing these parameters
+    `setup_burst()` will set parameters that can affect the signal generator's behavior. Changing these parameters
     manually will likely cause burst to stop functioning.
 
 `generate_burst()`  writes a trigger to the signal generator, initiating the generation of a burst of waveforms.
@@ -129,19 +132,19 @@ make sure that the parameters you will be supplying
 are not outside the bounds. The method only requires the desired waveform function (except on [AWGs](default:AWG)) to be provided.
 However, different aspects may need to be provided to get a more accurate representation of what can actually be generated.
 If no other inputs are provided, the smallest range of the attribute is chosen.
-An [AWG's](default:AWG) signal path affects the range of the offset and amplitude.
+For an [AWG](default:AWG), the signal path affects the range of the offset and amplitude.
 Higher frequencies on [AFGs](default:AFG) will lower the upper bound of the amplitude,
-alongside the which impedance is set.
+alongside which impedance is set.
 
 `set_waveform_properties()` is functionally identical to `generate_function()`, but does not turn the
 source channel off or on, nor will it stop or start an [AWG](default:AWG).
 
 ## Signal Generators
 
-An overview of the different signal generators which are available in `tm_devices`.
+An overview of the different signal generators that are available in `tm_devices`.
 This includes:
 
-- Features unique to each which should be kept in mind.
+- Features unique to each.
 - Constraints for each waveform parameter.
 
 ---
@@ -164,7 +167,7 @@ classDiagram
 
 ```
 
-The TekScope series instruments are signal generators focused on waveform generation which operate on the Windows operating systems.
+The TekScope series instruments are signal generators focused on waveform generation and operate on the Windows operating system.
 They accept communication through [USB](default:USB) and [TCPIP](default:TCPIP) interfaces.
 
 Requesting function generation on an [IAFG](default:IAFG) will initially turn it off. The frequency, offset,
@@ -183,11 +186,11 @@ Setting up bursts of an [IAFG](default:IAFG) involves setting it to burst mode a
     [IAFGs](default:IAFG) are only accessible if the oscilloscope has the `AFG` license installed.
 
 !!! note
-    [IAFGs](default:IAFG) contain no waveform list, editable memory or user defined waveforms. This means arbitrary waveforms
+    [IAFGs](default:IAFG) contain no waveform list, editable memory, or user-defined waveforms. This means arbitrary waveforms
     must be loaded from the hard drive.
 
 !!! note
-    Some functions, like `SINC`, `GAUSSIAN`, `LORENTZ`, `ERISE`, `EDECAY` and `HAVERSINE` already have an inbuilt offset.
+    Some functions, like `SINC`, `GAUSSIAN`, `LORENTZ`, `ERISE`, `EDECAY`, and `HAVERSINE` already have an inbuilt offset.
 
 !!! note
     If the output termination matching is set to FIFTY instead of HIGHZ, then the offset and amplitude bounds will be halved.
@@ -199,7 +202,7 @@ Setting up bursts of an [IAFG](default:IAFG) involves setting it to burst mode a
 
 ##### Constraints:
 
-The amplitude and frequency range for the [IAFG](default:IAFG) varies based on the desired function.
+The amplitude and frequency range for the [IAFG](default:IAFG) vary based on the desired function.
 These ranges are the same for each of the classes listed:
 [`MSO2`][tm_devices.drivers.pi.scopes.tekscope.mso2.MSO2]
 [`MSO4`][tm_devices.drivers.pi.scopes.tekscope.mso4.MSO4]
@@ -249,7 +252,7 @@ classDiagram
 [AFGs](default:AFG) handle [function generation](#tekscope-internal-arbitrary-function-generators) identically to [IAFGs](default:IAFG)
 except for the order in which the parameters are set.
 
-All functions which are shared by each [AFG](default:AFG) exist within the
+All functions that are shared by each [AFG](default:AFG) exist within the
 [`AFG`][tm_devices.drivers.pi.signal_generators.afgs.afg.AFG] class.
 
 Setting up bursts of the [AFG](default:AFG) involves setting the trigger on the device to external, so the burst does not activate
@@ -276,7 +279,7 @@ own class representations, corresponding to the
 
 ##### Constraints:
 
-The amplitude, offset, and frequency range for AFG3Ks is extremely varied dependent on model number, frequency, and function.
+The amplitude, offset, and frequency range for AFG3Ks are extremely varied, dependent on model number, frequency, and function.
 However, the sample rate of the entire AFG3K series is 250.0MS/s.
 
 <div markdown="1" class="custom-table-title">
@@ -374,13 +377,13 @@ classDiagram
     AWG70KA <|-- AWG70KB
 ```
 
-All functions which are shared by each [AWG](default:AWG) exist within the
+All functions that are shared by each [AWG](default:AWG) exist within the
 [`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG] class.
 
 Function generation on [AWGs](default:AWG) is fundamentally different from [AFGs](default:AFG). The [AWG](default:AWG) is stopped and the source channel being used
 is turned off. Predefined waveforms provided with the [AWG](default:AWG)
-are then loaded from the hard drive into the waveform list for the AWG5200 and AWG70K. Sample rate is not source dependant,
-instead it is set through the `SignalGenerator` class. The source channel provided has its waveform, offset, amplitude, and signal path set.
+are then loaded from the hard drive into the waveform list for the AWG5200 and AWG70K. The sample rate is not source dependent,
+instead, it is set through the `SignalGenerator` class. The source channel provided has its waveform, offset, amplitude, and signal path set.
 These attributes can take a while to be set, though once complete, the source channels are turned back on and `AWGCONTROL:RUN`
 is sent to begin the transmission of the waveform.
 
@@ -389,8 +392,8 @@ is sent to begin the transmission of the waveform.
 
 The [`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG] class has some unique methods.
 `generate_waveform()` allows for a waveform name from the waveform list
-to be provided, instead of a function. The method is also distinctly different from generate function as it relies on a sample
-rate also being provided to actually generate the waveform. All functions which are generic to the [AWG](default:AWG)
+to be provided, instead of a function. The method is also distinctly different from the generate function as it relies on a sample
+rate being provided to generate the waveform. All functions that are generic to the [AWG](default:AWG)
 exist within the [`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG] class.
 
 [AWGs](default:AWG) have access to the following functions, listed within
@@ -399,7 +402,7 @@ exist within the [`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG] c
 
 #### AWG5K/AWG7K
 
-The AWG5K/7K series instruments are signal generators focused on waveform generation which operate on Windows.
+The AWG5K/7K series instruments are signal generators focused on waveform generation and operate on the Windows operating system.
 They accept communication through [TCPIP](default:TCPIP) and [GPIB](default:GPIB) interfaces.
 
 `set_output_signal_path()` is uniquely defined within the AWG5K and AWG7K classes, as it will set the value for
@@ -424,7 +427,7 @@ own class representations, corresponding to the
 
 ###### Constraints:
 
-The AWG5K series offers an upper sample rate range from 600.0MS/s to 1.2GS/s dependent on the model number.
+The AWG5K series offers an upper sample rate range from 600.0MS/s to 1.2GS/s depending on the model number.
 Sending `AWGControl:DOUTput[n] 1` or using `DIR` in `set_output_signal_path()` will reduce the maximum amplitude
 to 0.6V. This occurs by bypassing the internal amplifier, which reroutes the [DAC](default:DAC) directly to the
 differential output.
@@ -454,9 +457,9 @@ own class representations, corresponding to the
 
 ###### Constraints:
 
-The AWG7K series instruments functions identically to the AWG5K series,
+The AWG7K series instruments function identically to the AWG5K series,
 excluding the higher sample rate, lower amplitude, and offset range.
-The model number conveys information about the unit, with the second and third number indicating
+The model number conveys information about the unit, with the second and third numbers indicating
 the maximum sample rate in gigahertz allowed on the unit.
 
 <div markdown="1" class="custom-table-title">
@@ -470,7 +473,7 @@ _AWG7K Constraints_
 | <span style="font-size:0.7em;">Amplitude   | <span style="font-size:0.7em;">50.0mV–2.0V      | <span style="font-size:0.7em;">50.0mV–2.0V       | <span style="font-size:0.7em;">50.0mV–2.0V      | <span style="font-size:0.7em;">50.0mV–2.0V       | <span style="font-size:0.7em;">50.0mV–2.0V      |
 | <span style="font-size:0.7em;">Offset      | <span style="font-size:0.7em;">-0.5V–0.5V       | <span style="font-size:0.7em;">-0.5V–0.5V        | <span style="font-size:0.7em;">-0.5V–0.5V       | <span style="font-size:0.7em;">-0.5V–0.5V        | <span style="font-size:0.7em;">-0.5V–0.5V       |
 
-The AWG7K also includes varying options which directly affects these ranges, such as option 02 and 06.
+The AWG7K also includes varying options that directly affect these ranges, such as option 02 and option 06.
 These options will enforce the output signal path to always go directly from the [DAC](default:DAC) to the differential output.
 
 <div markdown="1" class="custom-table-title">
@@ -496,15 +499,15 @@ own class representation, corresponding to
 
 `set_output_signal_path()` is uniquely defined within the AWG5200 as it has special output signal paths.
 
-`load_waveform()` inherently has an operation complete check as attempting to run overlapping commands while loading a waveform can lead to
+`load_waveform()` inherently has an operation complete check, as attempting to run overlapping commands while loading a waveform can lead to
 unintended behavior.
 
 ##### Constraints:
 
-The AWG5200 does not have a sample rate range dependent on model number. Instead, it refers to
+The AWG5200 does not have a sample rate range dependent on the model number. Instead, it refers to
 which option is installed to provide the range of the sample rate. Option 25 on the devices provides
-a maximum rate is 2.5GS/s, whereas option 50 allows a maximum rate of 5.0GS/s.
-If option DC is provided, the DCHB signal output path will amplitude range will be increased to have a maximum
+a maximum rate of 2.5GS/s, whereas option 50 allows a maximum rate of 5.0GS/s.
+If option DC is provided, the DCHB signal output path amplitude range will be increased to have a maximum
 of 1.5V. The DCHV signal path increases this range further to 5.0V by including another amplifier.
 
 <div markdown="1" class="custom-table-title">
@@ -521,7 +524,7 @@ _AWG5200 Constraints_
 
 ##### Sequential, Blocking and Overlapping Commands:
 
-The AWG5200's programming commands are seperated into three seperated categories: Sequential, Blocking, and Overlapping.
+The AWG5200's programming commands are separated into three separated categories: Sequential, Blocking, and Overlapping.
 The type of command is important to consider, as using them in an incorrect order can lead to unintended results.
 
 Sequential commands function as standard [PI](default:PI) commands. They will not start until the previous command has finished. These commands
@@ -533,7 +536,7 @@ Blocking commands often take longer to execute.
 !!! caution
     Due to the length of Blocking commands, a query may time out when sent if performed immediately after a large series of consecutive Blocking commands.
 
-Some commands can perform data analysis on another thread, these are referred to as Overlapping commands. They allow any command to be started
+Some commands can perform data analysis on another thread; these are referred to as Overlapping commands. They allow any command to be started
 while they are being executed. They cannot begin if the previous command was blocking or sequential, or if the operation complete status register is
 not set.
 
@@ -555,8 +558,9 @@ not set.
 
 #### AWG70KA, AWG70KB
 
-The AWG70K series instruments are signal generators focused on waveform generation which operate on Windows.
-They accept communication through [USB](default:USB), [TCPIP](default:TCPIP), and [GPIB](default:GPIB) interfaces.
+The AWG70K series instruments are signal generators focused on waveform generation.
+These instruments operate on the Windows operating system, and they accept communication through
+[USB](default:USB), [TCPIP](default:TCPIP), and [GPIB](default:GPIB) interfaces.
 
 `set_output_signal_path()` is uniquely defined within the
 [`AWG70KA`][tm_devices.drivers.pi.signal_generators.awgs.awg70ka.AWG70KA] and
@@ -569,13 +573,13 @@ out otherwise.
 
 ##### Constraints:
 
-The AWG70K signal generator is a special case, where only the direct signal output path is allowed
+The AWG70K signal generator is a special case where only the direct signal output path is allowed
 (unless option AC is installed). This means the amplitude is limited,
-and offset is not allowed to be set by default. However, there is a secondary device which allows for DC amplification, the MDC4500-4B.
-The MDC4500-4B is an amplifier which provides the ability to utilize DC offset on an AWG70K. It also provides a larger range of amplitude.
+and offset is not allowed to be set by default. However, there is a secondary device that allows for DC amplification, the MDC4500-4B.
+The MDC4500-4B provides the ability to utilize DC offset and large range of amplitude on an AWG70K.
 
 Just like the AWG5200, the frequency is dependent on the option installed (150, 225, 216, 208).
-The first numbers in the option provides the number of source channels the AWG70K has, the next two numbers
+The first number in the option provides the number of source channels the AWG70K has; the next two numbers
 indicate the sample rate in gigahertz.
 
 !!! tip
@@ -601,16 +605,16 @@ the AWG5200 section.
 
 [^TA]: AFG302xB has its upper bound for frequency halved for these functions.
 
-[^TB]: Amplitude upper bound is reduced to 16.0V when frequency is greater than 100.0MHz.
+[^TB]: The amplitude upper bound is reduced to 16.0V when the frequency is greater than 100.0MHz.
 
-[^TC]: Amplitude upper bound is reduced to 8.0V when frequency is greater than 200.0MHz.
+[^TC]: The amplitude upper bound is reduced to 8.0V when the frequency is greater than 200.0MHz.
 
 [^TOA]: When waveform length is greater than 16Kb, otherwise, the sample rate is 250.0MS/s.
 
-[^TOB]: Amplitude upper bound is reduced to 16.0V when the frequency is greater than 60.0MHz. It is further reduced to 12.0V when the frequency is greater than 80.0MHz
+[^TOB]: The amplitude upper bound is reduced to 16.0V when the frequency is greater than 60.0MHz. It is further reduced to 12.0V when the frequency is greater than 80.0MHz
 
-[^TOC]: Amplitude upper bound is reduced to 8.0V when the frequency is greater than 200.0MHz.
+[^TOC]: The amplitude upper bound is reduced to 8.0V when the frequency is greater than 200.0MHz.
 
-[^SA]: Samples rates higher than 10GS/S(12GS/s for B/C) can only be done through Interleave.
+[^SA]: Sample rates higher than 10GS/S(12GS/s for B/C) can only be done through Interleave.
 
-[^SZA]: Although the MDC4500-4B allows for greater than 1.0V amplitude, there is a drop off in accuracy.
+[^SZA]: Although the MDC4500-4B allows for greater than 1.0V amplitude, there is a drop in accuracy.

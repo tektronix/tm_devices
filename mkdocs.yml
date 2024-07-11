@@ -73,7 +73,6 @@ plugins:
   - search:
       prebuild_index: true
   - include-markdown
-  - mermaid2
   - section-index
   - autorefs
   - macros:
@@ -91,6 +90,7 @@ plugins:
       use_default: true
       inline_refs: none
       markdown_links: true
+  - mermaid2
   - mkdocstrings:  # additional customization takes place in docs/generate_api_pages.py
       # noinspection YAMLIncompatibleTypes
       enabled: !ENV [TM_DEVICES_API_GENERATION, true]
