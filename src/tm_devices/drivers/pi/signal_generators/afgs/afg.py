@@ -173,6 +173,7 @@ class AFG(SignalGenerator, ABC):
                 polarity=polarity,
                 symmetry=symmetry,
             )
+            source_channel.set_state(1)
 
     def generate_burst(self) -> None:
         """Generate a burst of waveforms by forcing trigger."""

@@ -5,7 +5,6 @@ alias_usage
 api
 artifact
 artifacts
-autoclasstree
 autocomplete
 awgs
 backend
@@ -51,7 +50,6 @@ licensor
 linter
 linters
 linting
-literalinclude
 mailto
 md
 mixin
