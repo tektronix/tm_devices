@@ -704,16 +704,6 @@ USB_MODEL_ID_LOOKUP: Final[Mapping[str, USBTMCConfiguration]] = MappingProxyType
         ),
     }
 )
-
-LOAD_IMPEDANCE_LOOKUP: Final[Mapping[Union[float, str], LoadImpedanceAFG]] = MappingProxyType(
-    {
-        9.97e37: LoadImpedanceAFG.HIGHZ,
-        1.0e6: LoadImpedanceAFG.HIGHZ,
-        "HIGHZ": LoadImpedanceAFG.HIGHZ,
-        50.0: LoadImpedanceAFG.FIFTY,
-        "FIFTY": LoadImpedanceAFG.FIFTY,
-    }
-)
 """A mapping of model USBTMC info."""
 
 LOAD_IMPEDANCE_LOOKUP: Final[Mapping[Union[float, str], LoadImpedanceAFG]] = MappingProxyType(
