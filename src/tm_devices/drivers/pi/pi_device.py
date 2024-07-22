@@ -586,7 +586,7 @@ class PIDevice(Device, ABC):
         """Reset the VISA timeout to the default value."""
         self.visa_timeout = self._default_visa_timeout
 
-    def set_and_check(  # noqa: PLR0913
+    def set_and_check(
         self,
         command: str,
         value: Union[str, float],

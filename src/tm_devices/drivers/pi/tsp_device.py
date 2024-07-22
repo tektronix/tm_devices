@@ -193,7 +193,7 @@ class TSPDevice(PIDevice, ABC):
         """
         self.write(f"{script_name}()")
 
-    def set_and_check(  # noqa: PLR0913
+    def set_and_check(
         self,
         command: str,
         value: Union[str, float],
