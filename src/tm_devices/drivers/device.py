@@ -501,7 +501,7 @@ class Device(ExtendableMixin, ABC):
         return rebooted
 
     @final
-    def verify_values(  # noqa: PLR0913
+    def verify_values(
         self,
         expected_value: Union[str, float],
         actual_value: Union[str, float],
