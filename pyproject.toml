@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "poetry.core.masonry.api"
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=1.8.0"]
 
 [tool]
 
@@ -93,7 +93,7 @@ zeroconf = "^0.132.2"
 
 [tool.poetry.group.dev.dependencies]
 docformatter = {extras = ["tomli"], version = "1.7.5"}
-docutils = "^0.20"
+docutils = "^0.20"  # TODO: remove this when the minimum Python version is >=3.9
 docutils-stubs = "^0.0.22"
 matplotlib = [
   {python = ">=3.9", version = "^3.8"},
