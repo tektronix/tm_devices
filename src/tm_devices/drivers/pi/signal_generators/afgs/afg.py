@@ -85,7 +85,7 @@ class AFG(SignalGenerator, ABC):
             amplitude: The amplitude of the signal to generate.
             offset: The offset of the signal to generate.
             channel: The channel name to output the signal from, or 'all'.
-            output_signal_path: The output signal path of the specified channel.
+            output_signal_path: Unused in this class.
             termination: The impedance this device's ``channel`` expects to see at the received end.
             duty_cycle: The duty cycle percentage within [0.4, 99.6].
             polarity: The polarity to set the signal to.
@@ -151,7 +151,7 @@ class AFG(SignalGenerator, ABC):
             offset: The offset of the signal to generate.
             burst_count: The number of wavelengths to be generated.
             channel: The channel name to output the signal from, or 'all'.
-            output_signal_path: The output signal path of the specified channel.
+            output_signal_path: Unused in this class.
             termination: The impedance this device's ``channel`` expects to see at the received end.
             duty_cycle: The duty cycle percentage within [0.4, 99.6].
             polarity: The polarity to set the signal to.
@@ -194,7 +194,7 @@ class AFG(SignalGenerator, ABC):
             function: The function that needs to be generated.
             waveform_length: The length of the waveform if no function or arbitrary is provided.
             frequency: The frequency of the waveform that needs to be generated.
-            output_signal_path: The output signal path that was set on the channel.
+            output_signal_path: Unused in this class.
             load_impedance: The suggested impedance on the source.
 
         Returns:
@@ -224,18 +224,6 @@ class AFG(SignalGenerator, ABC):
     ################################################################################################
     # Private Methods
     ################################################################################################
-    def _reboot(self) -> None:
-        """Reboot the device."""
-        # TODO: implement
-
-    def _send_waveform(self, target_file: str) -> None:
-        """Send the waveform information to the AWG as a file in memory.
-
-        Args:
-            target_file: The name of the waveform file.
-        """
-        # TODO: implement
-
     @abstractmethod
     def _get_series_specific_constraints(
         self,

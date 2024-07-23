@@ -158,3 +158,10 @@ class AWG5KSourceChannel(AWGSourceChannel):
             )
             raise ValueError(output_signal_path_error)
         self._awg.set_if_needed(f"AWGCONTROL:DOUTPUT{self.num}:STATE", output_state)
+
+    def _reboot(self) -> None:
+        """Reboot the device."""
+        # TODO: implement
+        raise NotImplementedError(
+            f"``.reboot()`` is not yet implemented for the {self.__class__.__name__} driver"
+        )

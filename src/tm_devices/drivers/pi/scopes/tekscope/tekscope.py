@@ -403,11 +403,11 @@ class TekScope(
             function: The function to generate.
             amplitude: The amplitude of the signal to generate.
             offset: The offset of the signal to generate.
-            channel: The channel number to output the signal from, or 'all'.
-            output_signal_path: The output signal path of the specified channel.
+            channel: Unused in this class.
+            output_signal_path: Unused in this class.
             termination: The impedance to set the channel to.
             duty_cycle: The duty cycle to set the signal to.
-            polarity: The polarity to set the signal to.
+            polarity: Unused in this class.
             symmetry: The symmetry to set the signal to, only applicable to certain functions.
         """
         del polarity, channel, output_signal_path  # these aren't used
@@ -450,11 +450,11 @@ class TekScope(
             amplitude: The amplitude of the signal to generate.
             offset: The offset of the signal to generate.
             burst_count: The number of wavelengths to be generated.
-            channel: The channel number to output the signal from, or 'all'.
-            output_signal_path: The output signal path of the specified channel.
+            channel: Unused in this class.
+            output_signal_path: Unused in this class.
             termination: The impedance to set the channel to.
             duty_cycle: The duty cycle to set the signal to.
-            polarity: The polarity to set the signal to.
+            polarity: Unused in this class.
             symmetry: The symmetry to set the signal to, only applicable to certain functions.
         """
         del polarity, channel, output_signal_path  # these aren't used
@@ -488,21 +488,20 @@ class TekScope(
 
         Args:
             function: The function that needs to be generated.
-            waveform_length: The length of the waveform if no function or arbitrary is provided.
+            waveform_length: Unused in this class.
             frequency: The frequency of the waveform that needs to be generated.
-            output_signal_path: The output signal path that was set on the channel.
+            output_signal_path: Unused in this class.
             load_impedance: The suggested impedance on the source.
 
         Returns:
             A Named Tuple containing a set of parameters and their restricted bounds.
         """
-        del output_signal_path
+        del output_signal_path, waveform_length
 
         if not function:
             msg = "IAFGs must have a function defined."
             raise ValueError(msg)
 
-        del waveform_length
         base_frequency_low = 100.0e-3
         base_frequency_high = 50.0e6 * self._get_driver_specific_multipliers()
 
@@ -939,7 +938,7 @@ class InternalAFGChannel(BaseAFGSourceChannel):
             burst_count: The number of wavelengths to be generated.
             termination: The impedance this device's ``channel`` expects to see at the received end.
             duty_cycle: The duty cycle percentage within [10.0, 90.0].
-            polarity: The polarity to set the signal to.
+            polarity: Unused in this class.
             symmetry: The symmetry to set the signal to, only applicable to certain functions.
         """
         del polarity

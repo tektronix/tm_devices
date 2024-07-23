@@ -175,3 +175,10 @@ class AFG3K(AFG3KMixin, AFG):
         sample_rate_range = ParameterBounds(lower=sample_rate, upper=sample_rate)
 
         return amplitude_range, frequency_range, offset_range, sample_rate_range
+
+    def _reboot(self) -> None:
+        """Reboot the device."""
+        # TODO: implement
+        raise NotImplementedError(
+            f"``.reboot()`` is not yet implemented for the {self.__class__.__name__} driver"
+        )

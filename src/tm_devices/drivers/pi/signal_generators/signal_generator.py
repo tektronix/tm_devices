@@ -3,7 +3,7 @@
 Generators include PI devices such as AFGs and AWGs.
 """
 
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import Tuple, Union
 
 from tm_devices.driver_mixins.signal_generator_mixin import SignalGeneratorMixin
@@ -110,15 +110,6 @@ class SignalGenerator(PIDevice, SignalGeneratorMixin, ABC):
     ################################################################################################
     # Private Methods
     ################################################################################################
-    @abstractmethod
-    def _send_waveform(self, target_file: str) -> None:
-        """Send the waveform information to the source as a file in memory.
-
-        Args:
-            target_file: The name of the waveform file.
-        """
-        raise NotImplementedError
-
     def _validate_channels(self, channel: str) -> Tuple[str, ...]:
         """Create a list of channels to use on the source based on the desired channel number.
 

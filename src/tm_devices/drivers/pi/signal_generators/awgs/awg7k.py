@@ -157,3 +157,10 @@ class AWG7KSourceChannel(AWG5KSourceChannel):
         if not ("02" in self._awg.opt_string or "06" in self._awg.opt_string):
             # Can only set the output signal path on AWG7k's without 02 and 06 options.
             super().set_output_signal_path(value)
+
+    def _reboot(self) -> None:
+        """Reboot the device."""
+        # TODO: implement
+        raise NotImplementedError(
+            f"``.reboot()`` is not yet implemented for the {self.__class__.__name__} driver"
+        )

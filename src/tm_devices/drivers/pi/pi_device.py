@@ -576,7 +576,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
 
         return response
 
-    def query_response(  # noqa: PLR0913
+    def query_response(
         self,
         query: str,
         value: Union[str, float],

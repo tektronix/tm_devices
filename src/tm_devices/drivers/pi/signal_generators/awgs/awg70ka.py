@@ -275,3 +275,10 @@ class AWG70KASourceChannel(AWGSourceChannel):
                 f"{value.value} is an invalid output signal path for {self._awg.model}."
             )
             raise ValueError(output_signal_path_error)
+
+    def _reboot(self) -> None:
+        """Reboot the device."""
+        # TODO: implement
+        raise NotImplementedError(
+            f"``.reboot()`` is not yet implemented for the {self.__class__.__name__} driver"
+        )

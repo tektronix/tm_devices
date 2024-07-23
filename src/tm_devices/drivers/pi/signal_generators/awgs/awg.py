@@ -1,10 +1,7 @@
 """Base AWG device driver module."""
 
-import struct
-
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from pathlib import Path
 from types import MappingProxyType
 from typing import ClassVar, Dict, List, Literal, Optional, Tuple, Type
 
@@ -227,9 +224,9 @@ class AWG(SignalGenerator, ABC):
         Args:
             function: The function that needs to be generated.
             waveform_length: The length of the waveform if no function or arbitrary is provided.
-            frequency: The frequency of the waveform that needs to be generated.
+            frequency: Unused in this class.
             output_signal_path: The output signal path that was set on the channel.
-            load_impedance: The suggested impedance on the source.
+            load_impedance: Unused in this class.
 
         Returns:
             A Named Tuple containing a set of parameters and their restricted bounds.
@@ -356,36 +353,6 @@ class AWG(SignalGenerator, ABC):
     def _reboot(self) -> None:
         """Reboot the device."""
         # TODO: overwrite the reboot code here
-
-    # TODO: add testing for this
-    def _send_waveform(self, target_file: str) -> None:  # pragma: no cover
-        """Send the waveform information to the AWG as a file in memory.
-
-        Args:
-            target_file: The name of the waveform file.
-        """
-        with open(target_file, "rb") as file_handle:
-            file_handle.seek(0, 0)
-            waveform_data = file_handle.read()
-            # must be even to send
-            if len(waveform_data) % 2:
-                waveform_data += b"\0"
-
-            info_len = int(len(waveform_data) / 2)
-            bin_waveform = struct.unpack(">" + str(info_len) + "H", waveform_data)
-
-            # Turn "path/to/stuff.wfm" into "stuff.wfm".
-            filename_target = Path(target_file).name
-            # Write the waveform data to the AWG memory.
-            string_to_send = 'MMEMORY:DATA "' + filename_target + '",'
-            self._visa_resource.write_binary_values(
-                string_to_send,
-                bin_waveform,
-                datatype="H",
-                is_big_endian=True,
-                termination="\r\n",
-                encoding="latin-1",
-            )
 
 
 @family_base_class
