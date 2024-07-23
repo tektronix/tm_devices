@@ -576,7 +576,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
 
         return response
 
-    def query_response(  # noqa: PLR0913
+    def query_response(
         self,
         query: str,
         value: Union[str, float],
@@ -657,7 +657,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
         """Reset the VISA timeout to the default value."""
         self.visa_timeout = self._default_visa_timeout
 
-    def set_and_check(
+    def set_and_check(  # noqa: PLR0913
         self,
         command: str,
         value: Union[str, float],

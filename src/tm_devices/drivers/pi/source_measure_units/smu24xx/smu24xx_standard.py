@@ -77,7 +77,7 @@ class SMU24xxStandard(SourceMeasureUnit, ABC):
         msg = f"This functionality is not available on the {self.__class__.__name__} instrument."
         raise NotImplementedError(msg)
 
-    def set_and_check(
+    def set_and_check(  # noqa: PLR0913
         self,
         command: str,
         value: Union[str, float],
