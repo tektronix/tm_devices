@@ -352,7 +352,9 @@ class AWG(SignalGenerator, ABC):
 
     def _reboot(self) -> None:
         """Reboot the device."""
-        # TODO: overwrite the reboot code here
+        raise NotImplementedError(
+            f"``._reboot()`` is not yet implemented for the {self.__class__.__name__} driver"
+        )
 
 
 @family_base_class

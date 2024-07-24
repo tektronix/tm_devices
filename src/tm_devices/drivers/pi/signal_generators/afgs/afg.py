@@ -243,7 +243,6 @@ class AFG(SignalGenerator, ABC):
         Returns:
             Ranges for amplitude, frequency, offset, and sample rate.
         """
-        raise NotImplementedError
 
 
 class AFGSourceChannel(BaseAFGSourceChannel):

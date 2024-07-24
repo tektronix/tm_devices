@@ -180,5 +180,5 @@ class AFG3K(AFG3KMixin, AFG):
         """Reboot the device."""
         # TODO: implement
         raise NotImplementedError(
-            f"``.reboot()`` is not yet implemented for the {self.__class__.__name__} driver"
+            f"``._reboot()`` is not yet implemented for the {self.__class__.__name__} driver"
         )
