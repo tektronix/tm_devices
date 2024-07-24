@@ -71,7 +71,7 @@ class TekProbeData:
 
 
 # pylint: disable=too-many-public-methods
-# TODO: Move signal generator mixin to different abstract class, so that tekscope software
+# TODO: Move signal generator mixin to different abstract class, so that TekScopePC
 #   does not inherit the IAFG.
 @family_base_class
 class TekScope(
