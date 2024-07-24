@@ -82,8 +82,7 @@ These source channel classes contain methods and properties that pertain to [PI]
 For example: the `afg.source_channel["SOURCE1"].set_amplitude()` call will change the amplitude only for source output 1.
 
 !!! tip
-
-The source channel classes not only provide easy access to basic [SCPI](default:SCPI) commands but also helper functions, like `set_function_properties()`
+    The source channel classes not only provide easy access to basic [SCPI](default:SCPI) commands but also helper functions, like `set_function_properties()`
 
 ---
 
@@ -98,8 +97,8 @@ The source channel classes not only provide easy access to basic [SCPI](default:
 Each class has children which inherit the base abstracted methods. These methods are tailored to each signal generator, so the
 methods handle similarly, regardless of the different [PI](default:PI) commands required.
 
-- `source_device_constants` is a property that holds information about what functions
-    and memory sizes are allowed.
+`source_device_constants` is a property that holds information about what functions
+and memory sizes are allowed.
 
 !!! tip
     `source_device_constants.functions` will provide an enum of possible functions to generate on the current signal generator.
@@ -138,6 +137,8 @@ alongside which impedance is set.
 
 `set_waveform_properties()` is functionally identical to `generate_function()`, but does not turn the
 source channel off or on, nor will it stop or start an [AWG](default:AWG).
+
+---
 
 ## Signal Generators
 
@@ -200,7 +201,7 @@ Setting up bursts of an [IAFG](default:IAFG) involves setting it to burst mode a
 
 #### MSO2, MSO4, MSO4B, MSO5, MSO5LP, MSO6, MSO6B, LPD6
 
-##### Constraints:
+##### Constraints
 
 The amplitude and frequency range for the [IAFG](default:IAFG) vary based on the desired function.
 These ranges are the same for each of the classes listed:
@@ -229,7 +230,7 @@ _[IAFG](default:IAFG) Constraints_
 
 #### MSO5B
 
-##### Constraints:
+##### Constraints
 
 The constraints for the [`MSO5B`][tm_devices.drivers.pi.scopes.tekscope.mso5b.MSO5B] are identical to
 [other tekscope models](#mso2-mso4-mso4b-mso5-mso5lp-mso6-mso6b-lpd6), except the upper frequency bound is doubled.
@@ -277,7 +278,7 @@ own class representations, corresponding to the
 [`AFG3KB`][tm_devices.drivers.pi.signal_generators.afgs.afg3kb.AFG3KB], and
 [`AFG3KC`][tm_devices.drivers.pi.signal_generators.afgs.afg3kc.AFG3KC].
 
-##### Constraints:
+##### Constraints
 
 The amplitude, offset, and frequency range for AFG3Ks are extremely varied, dependent on model number, frequency, and function.
 However, the sample rate of the entire AFG3K series is 250.0MS/s.
@@ -322,7 +323,7 @@ communication through [USB](default:USB), [TCPIP](default:TCPIP), and [GPIB](def
 own class representation, corresponding to
 [`AFG31K`][tm_devices.drivers.pi.signal_generators.afgs.afg31k.AFG31K].
 
-##### Constraints:
+##### Constraints
 
 <div markdown="1" class="custom-table-title">
 
@@ -415,7 +416,7 @@ out otherwise.
     Operation complete commands will always return 1 on the AWG5K/7K series.
 
 !!! caution
-    All waveforms must be the same length when sending the AWGCONTROL:RUN command.
+    All waveforms must be the same length when sending the `AWGCONTROL:RUN` command.
 
 ##### AWG5K, AWG5KB, AWG5KC
 
@@ -425,7 +426,7 @@ own class representations, corresponding to the
 [`AWG5KB`][tm_devices.drivers.pi.signal_generators.awgs.awg5kb.AWG5KB], and
 [`AWG5KC`][tm_devices.drivers.pi.signal_generators.awgs.awg5kc.AWG5KC].
 
-###### Constraints:
+###### Constraints
 
 The AWG5K series offers an upper sample rate range from 600.0MS/s to 1.2GS/s depending on the model number.
 Sending `AWGControl:DOUTput[n] 1` or using `DIR` in `set_output_signal_path()` will reduce the maximum amplitude
@@ -455,12 +456,12 @@ own class representations, corresponding to the
 [`AWG7KB`][tm_devices.drivers.pi.signal_generators.awgs.awg7kb.AWG7KB], and
 [`AWG7KC`][tm_devices.drivers.pi.signal_generators.awgs.awg7kc.AWG7KC].
 
-###### Constraints:
+###### Constraints
 
 The AWG7K series instruments function identically to the AWG5K series,
 excluding the higher sample rate, lower amplitude, and offset range.
 The model number conveys information about the unit, with the second and third numbers indicating
-the maximum sample rate in gigahertz allowed on the unit.
+the maximum sample rate in Gigahertz allowed on the unit.
 
 <div markdown="1" class="custom-table-title">
 
@@ -502,7 +503,7 @@ own class representation, corresponding to
 `load_waveform()` inherently has an operation complete check, as attempting to run overlapping commands while loading a waveform can lead to
 unintended behavior.
 
-##### Constraints:
+##### Constraints
 
 The AWG5200 does not have a sample rate range dependent on the model number. Instead, it refers to
 which option is installed to provide the range of the sample rate. Option 25 on the devices provides
@@ -571,7 +572,7 @@ If this fails (implying an MDC4500-4B is not connected), then a direct signal pa
 `set_offset()` is conditioned to make sure that the [AWG](default:AWG) output signal path has a [DCA](default:DCA), as the [VISA](default:VISA) query will time
 out otherwise.
 
-##### Constraints:
+##### Constraints
 
 The AWG70K signal generator is a special case where only the direct signal output path is allowed
 (unless option AC is installed). This means the amplitude is limited,
@@ -580,7 +581,7 @@ The MDC4500-4B provides the ability to utilize DC offset and large range of ampl
 
 Just like the AWG5200, the frequency is dependent on the option installed (150, 225, 216, 208).
 The first number in the option provides the number of source channels the AWG70K has; the next two numbers
-indicate the sample rate in gigahertz.
+indicate the sample rate in Gigahertz.
 
 !!! tip
     Though the AWG70K has no offset by default, one can be simulated by changing the raw data in the waveform.
