@@ -18,6 +18,24 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v2.0.0 (2024-07-24)
+
+### Merged Pull Requests
+
+- docs: Updated the signal generation docs to fix some bugs that were found ([#252](https://github.com/tektronix/tm_devices/pull/252))
+- Signal Generation Restructure and addition of high level methods ([#246](https://github.com/tektronix/tm_devices/pull/246))
+- gh-actions(deps): bump the gh-actions-dependencies group with 2 updates ([#250](https://github.com/tektronix/tm_devices/pull/250))
+- python-deps(deps-dev): bump the python-dependencies group with 3 updates ([#242](https://github.com/tektronix/tm_devices/pull/242))
+- gh-actions(deps): bump anchore/scan-action ([#248](https://github.com/tektronix/tm_devices/pull/248))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#238](https://github.com/tektronix/tm_devices/pull/238))
+- gh-actions(deps): bump python-semantic-release/python-semantic-release ([#244](https://github.com/tektronix/tm_devices/pull/244))
+- ci: Add back file sorter hook to pre-commit ([#243](https://github.com/tektronix/tm_devices/pull/243))
+- python-deps(deps): bump the python-dependencies group with 3 updates ([#241](https://github.com/tektronix/tm_devices/pull/241))
+- gh-actions(deps): bump the gh-actions-dependencies group across 1 directory with 3 updates ([#239](https://github.com/tektronix/tm_devices/pull/239))
+- refactor: Miscellaneous refactors to reduce technical debt in variable declarations and comparison operations ([#236](https://github.com/tektronix/tm_devices/pull/236))
+
 ### Added
 
 - Added the constraint ranges for all signal generators
