@@ -1,24 +1,25 @@
-"""AWG7KB device driver module."""
+"""AWG7KC device driver module."""
 
 import pyvisa as visa
 
-from tm_devices.drivers.pi.signal_sources.awgs.awg7k import AWG7K
+from tm_devices.commands import AWG7KCMixin
+from tm_devices.drivers.pi.signal_generators.awgs.awg7kb import AWG7KB
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class AWG7KB(AWG7K):
-    """AWG7KB device driver."""
+class AWG7KC(AWG7KCMixin, AWG7KB):  # pyright: ignore[reportIncompatibleMethodOverride]
+    """AWG7KC device driver."""
 
     ################################################################################################
     # Magic Methods
     ################################################################################################
-    def __init__(  # pylint: disable=useless-parent-delegation
+    def __init__(
         self,
         config_entry: DeviceConfigEntry,
         verbose: bool,
         visa_resource: visa.resources.MessageBasedResource,
     ) -> None:
-        """Create an AWG7KB device.
+        """Create an AWG7KC device.
 
         Args:
             config_entry: A config entry object parsed by the DMConfigParser.
@@ -27,3 +28,7 @@ class AWG7KB(AWG7K):
         """
         # NOTE: This method must be defined for the documentation to properly generate
         super().__init__(config_entry, verbose, visa_resource)
+
+    ################################################################################################
+    # Public Methods
+    ################################################################################################

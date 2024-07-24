@@ -1,9 +1,9 @@
-"""Base Source device driver module.
+"""Base Generator device driver module.
 
-Sources include PI devices such as AFGs and AWGs.
+Generators include PI devices such as AFGs and AWGs.
 """
 
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import Tuple, Union
 
 from tm_devices.driver_mixins.signal_generator_mixin import SignalGeneratorMixin
@@ -14,8 +14,8 @@ from tm_devices.helpers import print_with_timestamp
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class SignalSource(PIDevice, SignalGeneratorMixin, ABC):
-    """Base Source device driver."""
+class SignalGenerator(PIDevice, SignalGeneratorMixin, ABC):
+    """Base Signal Generator device driver."""
 
     ################################################################################################
     # Properties
@@ -110,15 +110,6 @@ class SignalSource(PIDevice, SignalGeneratorMixin, ABC):
     ################################################################################################
     # Private Methods
     ################################################################################################
-    @abstractmethod
-    def _send_waveform(self, target_file: str) -> None:
-        """Send the waveform information to the source as a file in memory.
-
-        Args:
-            target_file: The name of the waveform file.
-        """
-        raise NotImplementedError
-
     def _validate_channels(self, channel: str) -> Tuple[str, ...]:
         """Create a list of channels to use on the source based on the desired channel number.
 

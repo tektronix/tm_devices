@@ -1,7 +1,7 @@
 ---
 spec: '1.1'
 devices:
-  awg70001a:
+  awg70001aopt150:
     eom:
       USB INSTR:
         q: "\n"
@@ -18,11 +18,17 @@ devices:
       - q: '*OPC'
       - q: '*OPC?'
         r: '1'
+      - q: '*OPT?'
+        r: '150'
       - q: '*RST'
       - q: '*CLS'
       - q: AWGControl:CONFigure:CNUMber?
         r: '1'
       - q: 'MMEMory:IMPort '
+      - q: AWGCONTROL:RUN
+      - q: WLISt:LIST?
+        r: '"*Clock960,*Triangle960,*Triangle1000,*Triangle100,*Triangle10,*Square960,*Square1000,*Square100,*Square10,*Sine960,*Sine3600,*Sine360,*Sine36,*Sine1000,*Sine100,*Sine10,*Ramp96
+          0,*Ramp1000,*Ramp100,*Ramp10,*DC"'
     error:
       status_register:
         - q: '*ESR?'
@@ -44,3 +50,340 @@ devices:
           min: 0
           max: 255
           type: int
+      output_1_state:
+        default: 0
+        getter:
+          q: OUTPUT1:STATE?
+          r: '{:d}'
+        setter:
+          q: OUTPUT1:STATE {:d}
+        specs:
+          valid: [0, 1]
+          type: int
+      source1_waveform:
+        default: ''
+        getter:
+          q: SOURCE1:WAVEFORM?
+          r: '{:s}'
+        setter:
+          q: SOURCE1:WAVEFORM {:s}
+      source1_frequency:
+        default: 25000000000
+        getter:
+          q: SOURCE1:FREQUENCY?
+          r: '{:f}'
+        setter:
+          q: SOURCE1:FREQUENCY {:f}
+        specs:
+          min: 1490
+          max: 50000000000
+          type: float
+      source1_amplitude:
+        default: 0.5
+        getter:
+          q: SOURCE1:VOLTAGE:AMPLITUDE?
+          r: '{:f}'
+        setter:
+          q: SOURCE1:VOLTAGE:AMPLITUDE {:f}
+        specs:
+          min: 0.5
+          max: 1.0
+          type: float
+      source1_offset:
+        default: 0.0
+        getter:
+          q: SOURCE1:VOLTAGE:OFFSET?
+          r: '{:f}'
+        setter:
+          q: SOURCE1:VOLTAGE:OFFSET {:f}
+        specs:
+          min: -0.5
+          max: 0.5
+          type: float
+      output1_path:
+        default: DIR
+        getter:
+          q: OUTPUT1:PATH?
+          r: '{:s}'
+        setter:
+          q: OUTPUT1:PATH {:s}
+        specs:
+          type: str
+          valid: [DIR, DCA]
+      output2_path:
+        default: DIR
+        getter:
+          q: OUTPUT2:PATH?
+          r: '{:s}'
+        setter:
+          q: OUTPUT2:PATH {:s}
+        specs:
+          type: str
+          valid: [DIR, DCA]
+      source2_offset:
+        default: 0.0
+        getter:
+          q: SOURCE2:VOLTAGE:OFFSET?
+          r: '{:f}'
+        setter:
+          q: SOURCE2:VOLTAGE:OFFSET {:f}
+        specs:
+          min: -0.5
+          max: 0.5
+          type: float
+      memory_import:
+        default: ''
+        getter:
+          q: MMEMory:IMPort?
+          r: '{:s}'
+        setter:
+          q: MMEMory:IMPort {:s}
+      mmemory_open_sasset:
+        default: ''
+        setter:
+          q: MMEMORY:OPEN:SASSET "{:s}"
+      mmemory_open_sasset_waveform:
+        default: ''
+        setter:
+          q: MMEMORY:OPEN:SASSET:WAVEFORM "{:s}", "{:s}"
+  awg70002aopt225:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AWG70002A,SERIAL1,FV:6.3.0080.0
+      - q: '*OPC'
+      - q: AWGCONTROL:RUN
+      - q: '*OPC?'
+        r: '1'
+      - q: '*OPT?'
+        r: '225'
+      - q: '*RST'
+      - q: '*CLS'
+      - q: AWGControl:CONFigure:CNUMber?
+        r: '1'
+      - q: 'MMEMory:IMPort '
+      - q: WLISt:LIST?
+        r: ''
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: SYSTEM:ERROR?
+          default: 0,"No error"
+          command_error: 1, "Command error"
+    properties:
+      sre:
+        default: 0
+        getter:
+          q: '*SRE?'
+          r: '{:d}'
+        setter:
+          q: '*SRE {:d}'
+        specs:
+          min: 0
+          max: 255
+          type: int
+      memory_import:
+        default: ''
+        getter:
+          q: MMEMory:IMPort?
+          r: '{:s}'
+        setter:
+          q: MMEMory:IMPort {:s}
+      output_1_state:
+        default: 0
+        getter:
+          q: OUTPUT1:STATE?
+          r: '{:d}'
+        setter:
+          q: OUTPUT1:STATE {:d}
+        specs:
+          valid: [0, 1]
+          type: int
+      source1_waveform:
+        default: ''
+        getter:
+          q: SOURCE1:WAVEFORM?
+          r: '{:s}'
+        setter:
+          q: SOURCE1:WAVEFORM {:s}
+      source1_frequency:
+        default: 25000000000
+        getter:
+          q: SOURCE1:FREQUENCY?
+          r: '{:f}'
+        setter:
+          q: SOURCE1:FREQUENCY {:f}
+        specs:
+          min: 1490
+          max: 50000000000
+          type: float
+      source1_amplitude:
+        default: 0.5
+        getter:
+          q: SOURCE1:VOLTAGE:AMPLITUDE?
+          r: '{:f}'
+        setter:
+          q: SOURCE1:VOLTAGE:AMPLITUDE {:f}
+        specs:
+          min: 0.5
+          max: 1.0
+          type: float
+      output1_path:
+        default: DIR
+        getter:
+          q: OUTPUT1:PATH?
+          r: '{:s}'
+        setter:
+          q: OUTPUT1:PATH {:s}
+        specs:
+          type: str
+          valid: [DIR, DCA]
+      source1_offset:
+        default: 0.0
+        getter:
+          q: SOURCE1:VOLTAGE:OFFSET?
+          r: '{:f}'
+        setter:
+          q: SOURCE1:VOLTAGE:OFFSET {:f}
+        specs:
+          min: -0.5
+          max: 0.5
+          type: float
+      output2_path:
+        default: DIR
+        getter:
+          q: OUTPUT2:PATH?
+          r: '{:s}'
+        setter:
+          q: OUTPUT2:PATH {:s}
+        specs:
+          type: str
+          valid: [DIR, DCA]
+      source2_offset:
+        default: 0.0
+        getter:
+          q: SOURCE2:VOLTAGE:OFFSET?
+          r: '{:f}'
+        setter:
+          q: SOURCE2:VOLTAGE:OFFSET {:f}
+        specs:
+          min: -0.5
+          max: 0.5
+          type: float
+      mmemory_open_sasset:
+        default: ''
+        setter:
+          q: MMEMORY:OPEN:SASSET "{:s}"
+      mmemory_open_sasset_waveform:
+        default: ''
+        setter:
+          q: MMEMORY:OPEN:SASSET:WAVEFORM "{:s}", "{:s}"
+  awg70002aopt216:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,AWG70002A,SERIAL1,FV:6.3.0080.0
+      - q: '*OPC'
+      - q: '*OPC?'
+        r: '1'
+      - q: '*OPT?'
+        r: '216'
+      - q: '*RST'
+      - q: '*CLS'
+      - q: AWGControl:CONFigure:CNUMber?
+        r: '1'
+      - q: 'MMEMory:IMPort '
+      - q: WLISt:LIST?
+        r: '"*Triangle960,*Triangle1000,*Triangle100,*Triangle10,*Square960,*Square1000,*Square100,*Square10,*Sine960,*Sine3600,*Sine360,*Sine36,*Sine1000,*Sine100,*Sine10,*Ramp96
+          0,*Ramp1000,*Ramp100,*Ramp10,*DC"'
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: SYSTEM:ERROR?
+          default: 0,"No error"
+          command_error: 1, "Command error"
+    properties:
+      sre:
+        default: 0
+        getter:
+          q: '*SRE?'
+          r: '{:d}'
+        setter:
+          q: '*SRE {:d}'
+        specs:
+          min: 0
+          max: 255
+          type: int
+      memory_import:
+        default: ''
+        getter:
+          q: MMEMory:IMPort?
+          r: '{:s}'
+        setter:
+          q: MMEMory:IMPort {:s}
+      output1_path:
+        default: DIR
+        getter:
+          q: OUTPUT1:PATH?
+          r: '{:s}'
+        setter:
+          q: OUTPUT1:PATH {:s}
+        specs:
+          type: str
+          valid: [DIR, DCA]
+      source1_offset:
+        default: 0.0
+        getter:
+          q: SOURCE1:VOLTAGE:OFFSET?
+          r: '{:f}'
+        setter:
+          q: SOURCE1:VOLTAGE:OFFSET {:f}
+        specs:
+          min: -0.5
+          max: 0.5
+          type: float
+      output2_path:
+        default: DIR
+        getter:
+          q: OUTPUT2:PATH?
+          r: '{:s}'
+        setter:
+          q: OUTPUT2:PATH {:s}
+        specs:
+          type: str
+          valid: [DIR, DCA]
+      source2_offset:
+        default: 0.0
+        getter:
+          q: SOURCE2:VOLTAGE:OFFSET?
+          r: '{:f}'
+        setter:
+          q: SOURCE2:VOLTAGE:OFFSET {:f}
+        specs:
+          min: -0.5
+          max: 0.5
+          type: float

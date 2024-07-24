@@ -193,7 +193,7 @@ class TSPDevice(PIDevice, ABC):
         """
         self.write(f"{script_name}()")
 
-    def set_and_check(
+    def set_and_check(  # noqa: PLR0913
         self,
         command: str,
         value: Union[str, float],
@@ -203,6 +203,7 @@ class TSPDevice(PIDevice, ABC):
         custom_message_prefix: str = "",
         *,
         expected_value: Optional[Union[str, float]] = None,
+        opc: bool = False,
     ) -> str:
         """Send the given command with the given value and then verify the results.
 
@@ -218,11 +219,12 @@ class TSPDevice(PIDevice, ABC):
             remove_quotes: Set this to True to remove all double quotes from the returned value.
             custom_message_prefix: A custom message to be prepended to the failure message.
             expected_value: An optional, alternative value expected to be returned.
+            opc: Boolean indicating if ``*OPC?`` should be queried after sending the command.
 
         Returns:
             The output of the query portion of the method.
         """
-        self.write(f"{command} = {value}")
+        self.write(f"{command} = {value}", opc=opc)
         if self._enable_verification:
             check = self.query("print(" + command + ")", remove_quotes=remove_quotes)
             message_prefix = f"Failed to set {command} to {value}"

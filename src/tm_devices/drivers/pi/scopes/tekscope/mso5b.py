@@ -28,3 +28,11 @@ class MSO5B(MSO5BMixin, MSO5):  # pyright: ignore[reportIncompatibleMethodOverri
         """
         # NOTE: This method must be defined for the documentation to properly generate
         super().__init__(config_entry, verbose, visa_resource)
+
+    ################################################################################################
+    # Private Methods
+    ################################################################################################
+    @staticmethod
+    def _get_driver_specific_multipliers() -> float:
+        """Return a value to multiply the original Tekscope IAFG frequency by."""
+        return 2.0

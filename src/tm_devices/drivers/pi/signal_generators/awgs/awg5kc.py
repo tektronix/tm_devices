@@ -3,7 +3,7 @@
 import pyvisa as visa
 
 from tm_devices.commands import AWG5KCMixin
-from tm_devices.drivers.pi.signal_sources.awgs.awg5kb import AWG5KB
+from tm_devices.drivers.pi.signal_generators.awgs.awg5kb import AWG5KB
 from tm_devices.helpers import DeviceConfigEntry
 
 

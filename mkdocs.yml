@@ -51,6 +51,7 @@ markdown_extensions:
   - abbr
   - smarty
   - admonition
+  - footnotes
   - md_in_html
   - sane_lists
   - attr_list
@@ -72,7 +73,6 @@ plugins:
   - search:
       prebuild_index: true
   - include-markdown
-  - mermaid2
   - section-index
   - autorefs
   - macros:
@@ -90,6 +90,7 @@ plugins:
       use_default: true
       inline_refs: none
       markdown_links: true
+  - mermaid2
   - mkdocstrings:  # additional customization takes place in docs/generate_api_pages.py
       # noinspection YAMLIncompatibleTypes
       enabled: !ENV [TM_DEVICES_API_GENERATION, true]
@@ -165,6 +166,7 @@ nav:  # The first entry in each section needs a hard-coded title to avoid being 
   - Advanced Topics:
       - Architectural Overview: advanced/architecture.md
       - advanced/advanced_usage.md
+      - advanced/signal_generators.md
   - Troubleshooting:
       - Troubleshooting Usage: troubleshooting/usage.md
       - Troubleshooting Contributions: troubleshooting/contributions.md
