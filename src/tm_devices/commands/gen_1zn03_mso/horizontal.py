@@ -10,7 +10,7 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - HORizontal:ACQDURATION?
-    - HORizontal:DELay:MODe {OFF|ON|<NR1>}
+    - HORizontal:DELay:MODe {ON|OFF|<NR1>}
     - HORizontal:DELay:MODe?
     - HORizontal:DELay:TIMe <NR3>
     - HORizontal:DELay:TIMe?
@@ -757,7 +757,7 @@ class HorizontalDelayMode(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HORizontal:DELay:MODe {OFF|ON|<NR1>}
+        - HORizontal:DELay:MODe {ON|OFF|<NR1>}
         - HORizontal:DELay:MODe?
         ```
 
@@ -804,7 +804,7 @@ class HorizontalDelay(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HORizontal:DELay:MODe {OFF|ON|<NR1>}
+            - HORizontal:DELay:MODe {ON|OFF|<NR1>}
             - HORizontal:DELay:MODe?
             ```
 

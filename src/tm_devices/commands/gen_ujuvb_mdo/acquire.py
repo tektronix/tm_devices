@@ -14,7 +14,7 @@ Commands and Queries:
     - ACQuire:FASTAcq:PALEtte?
     - ACQuire:FASTAcq:STATE {0|1|OFF|ON}
     - ACQuire:FASTAcq:STATE?
-    - ACQuire:MAGnivu {<NR1>|OFF|ON}
+    - ACQuire:MAGnivu {ON|OFF|<NR1>}
     - ACQuire:MAGnivu?
     - ACQuire:MAXSamplerate?
     - ACQuire:MODe {SAMple|PEAKdetect|HIRes|AVErage|ENVelope}
@@ -359,7 +359,7 @@ class AcquireMagnivu(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ACQuire:MAGnivu {<NR1>|OFF|ON}
+        - ACQuire:MAGnivu {ON|OFF|<NR1>}
         - ACQuire:MAGnivu?
         ```
 
@@ -595,7 +595,7 @@ class Acquire(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ACQuire:MAGnivu {<NR1>|OFF|ON}
+            - ACQuire:MAGnivu {ON|OFF|<NR1>}
             - ACQuire:MAGnivu?
             ```
 

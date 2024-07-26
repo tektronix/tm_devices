@@ -18,7 +18,7 @@ Commands and Queries:
     - SELect:CH<x>?
     - SELect:CONTROl {CH<x>|MATH|REF<x>|BUS<x>|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe|RF_NORMal|RF_AVErage|RF_MAXHold|RF_MINHold}
     - SELect:CONTROl?
-    - SELect:D<x> {<NR1>|OFF|ON}
+    - SELect:D<x> {ON|OFF|<NR1>}
     - SELect:D<x>?
     - SELect:DAll {ON|OFF|0|1}
     - SELect:MATH {ON|OFF|<NR1>}
@@ -352,7 +352,7 @@ class SelectDigitalBit(ValidatedDigitalBit, SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:D<x> {<NR1>|OFF|ON}
+        - SELect:D<x> {ON|OFF|<NR1>}
         - SELect:D<x>?
         ```
 
@@ -637,7 +637,7 @@ class Select(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:D<x> {<NR1>|OFF|ON}
+            - SELect:D<x> {ON|OFF|<NR1>}
             - SELect:D<x>?
             ```
 

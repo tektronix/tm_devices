@@ -11,7 +11,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - MEASUrement:ANNOTation:IMMEDSTAte {<NR1>|OFF|ON}
+    - MEASUrement:ANNOTation:IMMEDSTAte {ON|OFF|<NR1>}
     - MEASUrement:ANNOTation:IMMEDSTAte?
     - MEASUrement:ANNOTation:NUMX?
     - MEASUrement:ANNOTation:NUMY?
@@ -91,7 +91,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:SOUrce1:SIGType {PULse|EYE}
     - MEASUrement:MEAS<x>:SOUrce1:SIGType?
     - MEASUrement:MEAS<x>:SOUrce1?
-    - MEASUrement:MEAS<x>:STATE {<NR1>|OFF|ON}
+    - MEASUrement:MEAS<x>:STATE {ON|OFF|<NR1>}
     - MEASUrement:MEAS<x>:STATE?
     - MEASUrement:MEAS<x>:STDdev?
     - MEASUrement:MEAS<x>:TYPe {AMPlitude|AREa|BURst|CARea|CMEan|CRMs|DELay|DISTDUty|EXTINCTDB|EXTINCTPCT|EXTINCTRATIO|EYEHeight|EYEWIdth|FALL|FREQuency|HIGH|HITs|LOW|MAXimum|MEAN|MEDian|MINImum|NCROss|NDUty|NOVershoot|NWIdth|PBASe|PCROss|PCTCROss|PDUty|PEAKHits|PERIod|PHAse|PK2Pk|PKPKJitter|PKPKNoise|POVershoot|PTOP|PWIdth|QFACtor|RISe|RMS|RMSJitter|RMSNoise|SIGMA1|SIGMA2|SIGMA3|SIXSigmajit|SNRatio|STDdev|UNDEFINED|WAVEFORMS}
@@ -1211,13 +1211,11 @@ class MeasurementMeasItemState(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:STATE`` command.
 
     Description:
-        - This command sets or queries whether the specified measurement slot is computed and
-          displayed. The measurement slot is specified by x, which ranges from 1 through 8. This
-          command is equivalent to selecting Measurement Setup from the Measure menu and then
-          clicking the Display button. For a measurement to display, you must have selected a source
-          waveform and defined the measurement you want to take and display. You select the
-          measurement using the ``MEASUREMENT:MEASX:SOURCEX`` command. You define the measurement
-          type using the ``MEASUREMENT:MEASX:TYPE`` command.
+        - This command specifies whether the specified measurement slot is computed and displayed.
+          The measurement slot is specified by <x>, which ranges from 1 through 8. For a measurement
+          to display, you must have selected a source waveform and defined the measurement you want
+          to take and display. You select the measurement using the ``MEASUREMENT:MEASX:SOURCEX``
+          command. You define the measurement type using the ``MEASUREMENT:MEASX:TYPE`` command.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:STATE?`` query.
@@ -1228,15 +1226,15 @@ class MeasurementMeasItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:STATE {<NR1>|OFF|ON}
+        - MEASUrement:MEAS<x>:STATE {ON|OFF|<NR1>}
         - MEASUrement:MEAS<x>:STATE?
         ```
 
     Info:
-        - ``<NR1>`` = 0 disables calculation and display of the specified measurement slot; any
-          other value enables calculation and display of the specified measurement slot.
         - ``OFF`` disables calculation and display of the specified measurement slot.
         - ``ON`` enables calculation and display of the specified measurement slot.
+        - ``<NR1>`` = 0 disables calculation and display of the specified measurement slot; any
+          other value enables calculation and display of the specified measurement slot.
     """
 
 
@@ -2493,13 +2491,12 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:STATE`` command.
 
         Description:
-            - This command sets or queries whether the specified measurement slot is computed and
-              displayed. The measurement slot is specified by x, which ranges from 1 through 8. This
-              command is equivalent to selecting Measurement Setup from the Measure menu and then
-              clicking the Display button. For a measurement to display, you must have selected a
-              source waveform and defined the measurement you want to take and display. You select
-              the measurement using the ``MEASUREMENT:MEASX:SOURCEX`` command. You define the
-              measurement type using the ``MEASUREMENT:MEASX:TYPE`` command.
+            - This command specifies whether the specified measurement slot is computed and
+              displayed. The measurement slot is specified by <x>, which ranges from 1 through 8.
+              For a measurement to display, you must have selected a source waveform and defined the
+              measurement you want to take and display. You select the measurement using the
+              ``MEASUREMENT:MEASX:SOURCEX`` command. You define the measurement type using the
+              ``MEASUREMENT:MEASX:TYPE`` command.
 
         Usage:
             - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:STATE?`` query.
@@ -2510,15 +2507,15 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:STATE {<NR1>|OFF|ON}
+            - MEASUrement:MEAS<x>:STATE {ON|OFF|<NR1>}
             - MEASUrement:MEAS<x>:STATE?
             ```
 
         Info:
-            - ``<NR1>`` = 0 disables calculation and display of the specified measurement slot; any
-              other value enables calculation and display of the specified measurement slot.
             - ``OFF`` disables calculation and display of the specified measurement slot.
             - ``ON`` enables calculation and display of the specified measurement slot.
+            - ``<NR1>`` = 0 disables calculation and display of the specified measurement slot; any
+              other value enables calculation and display of the specified measurement slot.
         """
         return self._state
 
@@ -4472,7 +4469,7 @@ class MeasurementAnnotationImmedstate(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:ANNOTation:IMMEDSTAte {<NR1>|OFF|ON}
+        - MEASUrement:ANNOTation:IMMEDSTAte {ON|OFF|<NR1>}
         - MEASUrement:ANNOTation:IMMEDSTAte?
         ```
 
@@ -4535,7 +4532,7 @@ class MeasurementAnnotation(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:ANNOTation:IMMEDSTAte {<NR1>|OFF|ON}
+            - MEASUrement:ANNOTation:IMMEDSTAte {ON|OFF|<NR1>}
             - MEASUrement:ANNOTation:IMMEDSTAte?
             ```
 

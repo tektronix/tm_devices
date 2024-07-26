@@ -25,6 +25,7 @@ Commands and Queries:
     - CLOCk:EREFerence:MULTiplier <NR1>
     - CLOCk:EREFerence:MULTiplier?
     - CLOCk:JITTer {0|1|OFF|ON}
+    - CLOCk:JITTer?
     - CLOCk:OUTPut:FREQuency?
     - CLOCk:OUTPut:STATe {0|1|OFF|ON}
     - CLOCk:OUTPut:STATe?
@@ -425,7 +426,7 @@ class ClockOutput(SCPICmdRead):
         return self._state
 
 
-class ClockJitter(SCPICmdWrite):
+class ClockJitter(SCPICmdWrite, SCPICmdRead):
     """The ``CLOCk:JITTer`` command.
 
     Description:
@@ -434,11 +435,15 @@ class ClockJitter(SCPICmdWrite):
           connector.
 
     Usage:
+        - Using the ``.query()`` method will send the ``CLOCk:JITTer?`` query.
+        - Using the ``.verify(value)`` method will send the ``CLOCk:JITTer?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``CLOCk:JITTer value`` command.
 
     SCPI Syntax:
         ```
         - CLOCk:JITTer {0|1|OFF|ON}
+        - CLOCk:JITTer?
         ```
 
     Info:
@@ -1006,11 +1011,15 @@ class Clock(SCPICmdRead):
               Reference In connector.
 
         Usage:
+            - Using the ``.query()`` method will send the ``CLOCk:JITTer?`` query.
+            - Using the ``.verify(value)`` method will send the ``CLOCk:JITTer?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``CLOCk:JITTer value`` command.
 
         SCPI Syntax:
             ```
             - CLOCk:JITTer {0|1|OFF|ON}
+            - CLOCk:JITTer?
             ```
 
         Info:

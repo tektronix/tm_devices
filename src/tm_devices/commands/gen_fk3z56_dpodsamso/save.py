@@ -20,7 +20,7 @@ Commands and Queries:
     - SAVe:WAVEform:DATa:STOP {<NR1>}
     - SAVe:WAVEform:FILEFormat {INTERNal|MATHCad|MATLab|SPREADSHEETCsv|SPREADSHEETTxt|TIMEStamp|AUTO}
     - SAVe:WAVEform:FILEFormat?
-    - SAVe:WAVEform:FORCESAMEFilesize {<NR1>|OFF|ON}
+    - SAVe:WAVEform:FORCESAMEFilesize {ON|OFF|<NR1>}
     - SAVe:WAVEform:FORCESAMEFilesize?
     ```
 """  # noqa: E501
@@ -53,7 +53,7 @@ class SaveWaveformForcesamefilesize(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVe:WAVEform:FORCESAMEFilesize {<NR1>|OFF|ON}
+        - SAVe:WAVEform:FORCESAMEFilesize {ON|OFF|<NR1>}
         - SAVe:WAVEform:FORCESAMEFilesize?
         ```
 
@@ -366,7 +366,7 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVe:WAVEform:FORCESAMEFilesize {<NR1>|OFF|ON}
+            - SAVe:WAVEform:FORCESAMEFilesize {ON|OFF|<NR1>}
             - SAVe:WAVEform:FORCESAMEFilesize?
             ```
 
