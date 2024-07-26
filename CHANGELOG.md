@@ -16,7 +16,13 @@ Valid subsections within a version are:
 
 ## Unreleased
 
-Things to be included in the next release go here.
+### Added
+
+- Support for SourceXpress to AWG70KA, AWG70KB and AWG7K models.
+
+### Fixed
+
+- Fixed APIs with write and query accepting arguments for AWG70KA and AWG70KB models drivers.
 
 ---
 

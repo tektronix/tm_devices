@@ -17,7 +17,7 @@ Commands and Queries:
     - ACQuire:FASTAVerage:STOPafter?
     - ACQuire:FASTAcq:PALEtte {NORMal|TEMPerature|SPECtral|INVErted}
     - ACQuire:FASTAcq:PALEtte?
-    - ACQuire:FASTAcq:STATE {<NR1>|OFF|ON}
+    - ACQuire:FASTAcq:STATE {ON|OFF|<NR1>}
     - ACQuire:FASTAcq:STATE?
     - ACQuire:MAXSamplerate?
     - ACQuire:MODe {SAMple|PEAKdetect|HIRes|AVErage|ENVelope}
@@ -397,7 +397,7 @@ class AcquireFastacqState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ACQuire:FASTAcq:STATE {<NR1>|OFF|ON}
+        - ACQuire:FASTAcq:STATE {ON|OFF|<NR1>}
         - ACQuire:FASTAcq:STATE?
         ```
 
@@ -509,7 +509,7 @@ class AcquireFastacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ACQuire:FASTAcq:STATE {<NR1>|OFF|ON}
+            - ACQuire:FASTAcq:STATE {ON|OFF|<NR1>}
             - ACQuire:FASTAcq:STATE?
             ```
 

@@ -39,7 +39,7 @@ Commands and Queries:
     - VISual:AREA<x>?
     - VISual:AREACOLOr {DEFAULT|INHERIT}
     - VISual:AREACOLOr?
-    - VISual:ASPECTratio {<NR1>|OFF|ON}
+    - VISual:ASPECTratio {ON|OFF|<NR1>}
     - VISual:ASPECTratio?
     - VISual:DELETEAREA <1-8>
     - VISual:ENAble {ON|OFF}
@@ -216,7 +216,7 @@ class VisualAspectratio(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - VISual:ASPECTratio {<NR1>|OFF|ON}
+        - VISual:ASPECTratio {ON|OFF|<NR1>}
         - VISual:ASPECTratio?
         ```
 
@@ -1082,7 +1082,7 @@ class Visual(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - VISual:ASPECTratio {<NR1>|OFF|ON}
+            - VISual:ASPECTratio {ON|OFF|<NR1>}
             - VISual:ASPECTratio?
             ```
 

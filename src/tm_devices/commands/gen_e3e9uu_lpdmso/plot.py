@@ -34,15 +34,15 @@ Commands and Queries:
     - PLOT:PLOT<x>:INTerpolate?
     - PLOT:PLOT<x>:LABel:COLor <QString>
     - PLOT:PLOT<x>:LABel:COLor?
-    - PLOT:PLOT<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+    - PLOT:PLOT<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
     - PLOT:PLOT<x>:LABel:FONT:BOLD?
-    - PLOT:PLOT<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+    - PLOT:PLOT<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
     - PLOT:PLOT<x>:LABel:FONT:ITALic?
     - PLOT:PLOT<x>:LABel:FONT:SIZE <NR1>
     - PLOT:PLOT<x>:LABel:FONT:SIZE?
     - PLOT:PLOT<x>:LABel:FONT:TYPE <QString>
     - PLOT:PLOT<x>:LABel:FONT:TYPE?
-    - PLOT:PLOT<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+    - PLOT:PLOT<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
     - PLOT:PLOT<x>:LABel:FONT:UNDERline?
     - PLOT:PLOT<x>:LABel:NAMe <QString>
     - PLOT:PLOT<x>:LABel:NAMe?
@@ -854,7 +854,7 @@ class PlotPlotItemLabelFontUnderline(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - PLOT:PLOT<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+        - PLOT:PLOT<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
         - PLOT:PLOT<x>:LABel:FONT:UNDERline?
         ```
 
@@ -935,7 +935,7 @@ class PlotPlotItemLabelFontItalic(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - PLOT:PLOT<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+        - PLOT:PLOT<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
         - PLOT:PLOT<x>:LABel:FONT:ITALic?
         ```
 
@@ -962,7 +962,7 @@ class PlotPlotItemLabelFontBold(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - PLOT:PLOT<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+        - PLOT:PLOT<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
         - PLOT:PLOT<x>:LABel:FONT:BOLD?
         ```
 
@@ -1014,7 +1014,7 @@ class PlotPlotItemLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - PLOT:PLOT<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+            - PLOT:PLOT<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
             - PLOT:PLOT<x>:LABel:FONT:BOLD?
             ```
 
@@ -1042,7 +1042,7 @@ class PlotPlotItemLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - PLOT:PLOT<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+            - PLOT:PLOT<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
             - PLOT:PLOT<x>:LABel:FONT:ITALic?
             ```
 
@@ -1126,7 +1126,7 @@ class PlotPlotItemLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - PLOT:PLOT<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+            - PLOT:PLOT<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
             - PLOT:PLOT<x>:LABel:FONT:UNDERline?
             ```
 

@@ -125,7 +125,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:CCRESUlts:CURRentacq:STDDev?
     - MEASUrement:MEAS<x>:DELay:EDGE<x> {FALL|RISe|BOTH|SAMEas|OPPositeas}
     - MEASUrement:MEAS<x>:DELay:EDGE<x>?
-    - MEASUrement:MEAS<x>:DISPlaystat:ENABle {OFF|ON|<NR1>}
+    - MEASUrement:MEAS<x>:DISPlaystat:ENABle {ON|OFF|<NR1>}
     - MEASUrement:MEAS<x>:DISPlaystat:ENABle?
     - MEASUrement:MEAS<x>:EDGE<x> {RISE|FALL|BOTH}
     - MEASUrement:MEAS<x>:EDGE<x>?
@@ -251,7 +251,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:TOEDGESEARCHDIRect?
     - MEASUrement:MEAS<x>:TOEdge {SAMEas|OPPositeas|RISe|FALL|BOTH}
     - MEASUrement:MEAS<x>:TOEdge?
-    - MEASUrement:MEAS<x>:TRANSition {<NR1>|OFF|ON}
+    - MEASUrement:MEAS<x>:TRANSition {ON|OFF|<NR1>}
     - MEASUrement:MEAS<x>:TRANSition?
     - MEASUrement:MEAS<x>:TYPe {ACRMS|AMPlITUDE|AREA|BASE|BURSTWIDTH|DATARATE|DELAY|FALLSLEWRATE|FALLTIME|FREQUENCY|HIGHTIME|HOLD|LOWTIME|MAXIMUM|MEAN|MINIMUM|NDUtY|NPERIOD|NOVERSHOOT|NWIDTH|PDUTY|PERIOD|PHASE|PK2Pk|POVERSHOOT|PWIDTH|RISESLEWRATE|RISETIME|RMS|SETUP|SKEW|TIMEOUTSIDELEVEL|TOP}
     - MEASUrement:MEAS<x>:TYPe?
@@ -3120,7 +3120,7 @@ class MeasurementMeasItemTransition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:TRANSition {<NR1>|OFF|ON}
+        - MEASUrement:MEAS<x>:TRANSition {ON|OFF|<NR1>}
         - MEASUrement:MEAS<x>:TRANSition?
         ```
 
@@ -6744,7 +6744,7 @@ class MeasurementMeasItemDisplaystatEnable(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:DISPlaystat:ENABle {OFF|ON|<NR1>}
+        - MEASUrement:MEAS<x>:DISPlaystat:ENABle {ON|OFF|<NR1>}
         - MEASUrement:MEAS<x>:DISPlaystat:ENABle?
         ```
 
@@ -6796,7 +6796,7 @@ class MeasurementMeasItemDisplaystat(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:DISPlaystat:ENABle {OFF|ON|<NR1>}
+            - MEASUrement:MEAS<x>:DISPlaystat:ENABle {ON|OFF|<NR1>}
             - MEASUrement:MEAS<x>:DISPlaystat:ENABle?
             ```
 
@@ -8630,7 +8630,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:TRANSition {<NR1>|OFF|ON}
+            - MEASUrement:MEAS<x>:TRANSition {ON|OFF|<NR1>}
             - MEASUrement:MEAS<x>:TRANSition?
             ```
 

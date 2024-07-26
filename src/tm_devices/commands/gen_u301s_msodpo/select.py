@@ -10,13 +10,13 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - SELect {ON|OFF}
-    - SELect:BUS<x> {<NR1>|OFF|ON}
+    - SELect:BUS<x> {ON|OFF|<NR1>}
     - SELect:BUS<x>?
     - SELect:CH<x> {ON|OFF|<NR1>}
     - SELect:CH<x>?
     - SELect:CONTROl {CH<x>|MATH|BUS<x>}
     - SELect:CONTROl?
-    - SELect:D<x> {<NR1>|OFF|ON}
+    - SELect:D<x> {ON|OFF|<NR1>}
     - SELect:D<x>?
     - SELect:MATH1 {ON|OFF|<NR1>}
     - SELect:MATH1?
@@ -113,7 +113,7 @@ class SelectDigitalBit(ValidatedDigitalBit, SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:D<x> {<NR1>|OFF|ON}
+        - SELect:D<x> {ON|OFF|<NR1>}
         - SELect:D<x>?
         ```
 
@@ -161,9 +161,8 @@ class SelectChannel(ValidatedChannel, SCPICmdWrite, SCPICmdRead):
     """The ``SELect:CH<x>`` command.
 
     Description:
-        - Turns the display of the channel <x> waveform on or off, where <x > is the channel number.
-          This command also resets the acquisition. The query returns whether the channel is on or
-          off but does not indicate whether it is the selected waveform.
+        - This command sets or queries the displayed state of the specified channel waveform. The x
+          can be channel 1 through 4.
 
     Usage:
         - Using the ``.query()`` method will send the ``SELect:CH<x>?`` query.
@@ -178,11 +177,10 @@ class SelectChannel(ValidatedChannel, SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``ON`` turns on the display of the specified waveform. This waveform also becomes the
-          selected waveform.
-        - ``OFF`` turns off the display of the specified waveform.
-        - ``<NR1>`` = 0 turns off the display of the specified waveform; any other value turns on
-          the display of the specified waveform.
+        - ``<NR1> = 0`` turns off the display of the specified channel waveform; any other value
+          turns on the display of the specified waveform.
+        - ``OFF`` turns off the display of the indicated channel waveform.
+        - ``ON`` displays the indicated channel waveform.
     """
 
 
@@ -202,7 +200,7 @@ class SelectBusItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:BUS<x> {<NR1>|OFF|ON}
+        - SELect:BUS<x> {ON|OFF|<NR1>}
         - SELect:BUS<x>?
         ```
     """
@@ -269,7 +267,7 @@ class Select(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:BUS<x> {<NR1>|OFF|ON}
+            - SELect:BUS<x> {ON|OFF|<NR1>}
             - SELect:BUS<x>?
             ```
         """
@@ -280,9 +278,8 @@ class Select(SCPICmdWrite, SCPICmdRead):
         """Return the ``SELect:CH<x>`` command.
 
         Description:
-            - Turns the display of the channel <x> waveform on or off, where <x > is the channel
-              number. This command also resets the acquisition. The query returns whether the
-              channel is on or off but does not indicate whether it is the selected waveform.
+            - This command sets or queries the displayed state of the specified channel waveform.
+              The x can be channel 1 through 4.
 
         Usage:
             - Using the ``.query()`` method will send the ``SELect:CH<x>?`` query.
@@ -297,11 +294,10 @@ class Select(SCPICmdWrite, SCPICmdRead):
             ```
 
         Info:
-            - ``ON`` turns on the display of the specified waveform. This waveform also becomes the
-              selected waveform.
-            - ``OFF`` turns off the display of the specified waveform.
-            - ``<NR1>`` = 0 turns off the display of the specified waveform; any other value turns
-              on the display of the specified waveform.
+            - ``<NR1> = 0`` turns off the display of the specified channel waveform; any other value
+              turns on the display of the specified waveform.
+            - ``OFF`` turns off the display of the indicated channel waveform.
+            - ``ON`` displays the indicated channel waveform.
         """
         return self._ch
 
@@ -354,7 +350,7 @@ class Select(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:D<x> {<NR1>|OFF|ON}
+            - SELect:D<x> {ON|OFF|<NR1>}
             - SELect:D<x>?
             ```
 

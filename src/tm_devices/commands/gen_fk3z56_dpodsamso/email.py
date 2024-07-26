@@ -25,11 +25,11 @@ Commands and Queries:
     - EMail:IMAGe?
     - EMail:LIMit {ON|OFF|<NR1>}
     - EMail:LIMit?
-    - EMail:MASK {<NR1>|ON|OFF}
+    - EMail:MASK {ON|OFF|<NR1>}
     - EMail:MASK?
     - EMail:MAXSize {<NR1>}
     - EMail:MAXSize?
-    - EMail:MEASUrement {<NR1>|ON|OFF}
+    - EMail:MEASUrement {ON|OFF|<NR1>}
     - EMail:MEASUrement?
     - EMail:NUMEMails {<NR1>}
     - EMail:NUMEMails?
@@ -42,9 +42,9 @@ Commands and Queries:
     - EMail:TIMEOut?
     - EMail:TO <QString>
     - EMail:TO?
-    - EMail:TRIGger {<NR1>|ON|OFF}
+    - EMail:TRIGger {ON|OFF|<NR1>}
     - EMail:TRIGger?
-    - EMail:WAVEform {<NR1>|ON|OFF}
+    - EMail:WAVEform {ON|OFF|<NR1>}
     - EMail:WAVEform?
     ```
 """
@@ -74,7 +74,7 @@ class EmailWaveform(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - EMail:WAVEform {<NR1>|ON|OFF}
+        - EMail:WAVEform {ON|OFF|<NR1>}
         - EMail:WAVEform?
         ```
 
@@ -101,7 +101,7 @@ class EmailTrigger(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - EMail:TRIGger {<NR1>|ON|OFF}
+        - EMail:TRIGger {ON|OFF|<NR1>}
         - EMail:TRIGger?
         ```
 
@@ -277,7 +277,7 @@ class EmailMeasurement(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - EMail:MEASUrement {<NR1>|ON|OFF}
+        - EMail:MEASUrement {ON|OFF|<NR1>}
         - EMail:MEASUrement?
         ```
 
@@ -328,7 +328,7 @@ class EmailMask(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - EMail:MASK {<NR1>|ON|OFF}
+        - EMail:MASK {ON|OFF|<NR1>}
         - EMail:MASK?
         ```
 
@@ -817,7 +817,7 @@ class Email(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - EMail:MASK {<NR1>|ON|OFF}
+            - EMail:MASK {ON|OFF|<NR1>}
             - EMail:MASK?
             ```
 
@@ -872,7 +872,7 @@ class Email(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - EMail:MEASUrement {<NR1>|ON|OFF}
+            - EMail:MEASUrement {ON|OFF|<NR1>}
             - EMail:MEASUrement?
             ```
 
@@ -1050,7 +1050,7 @@ class Email(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - EMail:TRIGger {<NR1>|ON|OFF}
+            - EMail:TRIGger {ON|OFF|<NR1>}
             - EMail:TRIGger?
             ```
 
@@ -1080,7 +1080,7 @@ class Email(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - EMail:WAVEform {<NR1>|ON|OFF}
+            - EMail:WAVEform {ON|OFF|<NR1>}
             - EMail:WAVEform?
             ```
 

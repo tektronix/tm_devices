@@ -105,8 +105,8 @@ class TriggerSlope(SCPICmdWrite, SCPICmdReadWithArguments):
         ```
 
     Info:
-        - ``POSitive`` specifies a trigger on the rising edge of the external trigger signal.
-          NEGative specifies a trigger on the falling edge of the external trigger
+        - ``POSitive`` specifies a trigger on the rising edge of the external trigger
+          signal.NEGative specifies a trigger on the falling edge of the external trigger
           signal.``<input_trigger>`` ::= {ATRigger\|BTRigger}, defaults to ATR if not specified.
         - ``*RST`` sets all external trigger slopes to POSitive.
     """
@@ -380,8 +380,8 @@ class Trigger(SCPICmdRead):
             ```
 
         Info:
-            - ``POSitive`` specifies a trigger on the rising edge of the external trigger signal.
-              NEGative specifies a trigger on the falling edge of the external trigger
+            - ``POSitive`` specifies a trigger on the rising edge of the external trigger
+              signal.NEGative specifies a trigger on the falling edge of the external trigger
               signal.``<input_trigger>`` ::= {ATRigger\|BTRigger}, defaults to ATR if not specified.
             - ``*RST`` sets all external trigger slopes to POSitive.
         """

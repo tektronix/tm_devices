@@ -11,7 +11,7 @@ Commands and Queries:
     ```
     - PILOGger:FILEName <QString>
     - PILOGger:FILEName?
-    - PILOGger:STATE {<NR1>|OFF|ON}
+    - PILOGger:STATE {ON|OFF|<NR1>}
     - PILOGger:STATE?
     ```
 """
@@ -40,7 +40,7 @@ class PiloggerState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - PILOGger:STATE {<NR1>|OFF|ON}
+        - PILOGger:STATE {ON|OFF|<NR1>}
         - PILOGger:STATE?
         ```
 
@@ -145,7 +145,7 @@ class Pilogger(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - PILOGger:STATE {<NR1>|OFF|ON}
+            - PILOGger:STATE {ON|OFF|<NR1>}
             - PILOGger:STATE?
             ```
 

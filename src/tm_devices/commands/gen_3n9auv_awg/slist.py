@@ -227,10 +227,10 @@ class SlistSequenceStepItemWinput(SCPICmdWrite, SCPICmdReadWithArguments):
 
     Info:
         - ``ATRigger`` - This enables the sequencer to move due to a trigger event from the A
-          Trigger Input connector or the A Force Trigger front panel button. BTRigger - This enables
+          Trigger Input connector or the A Force Trigger front panel button.BTRigger - This enables
           the sequencer to move due to a trigger event from the B Trigger Input connector or the B
-          Force Trigger front panel button. ITRigger - This enables the sequencer to move due to an
-          Internal Trigger event. OFF - Disables the wait for trigger event, allowing the
+          Force Trigger front panel button.ITRigger - This enables the sequencer to move due to an
+          Internal Trigger event.OFF - Disables the wait for trigger event, allowing the
           waveforms(s) of this step to be played immediately.
     """
 
@@ -258,9 +258,9 @@ class SlistSequenceStepItemTflagItemDflag(SCPICmdWrite, SCPICmdReadWithArguments
 
     Info:
         - ``NCHange`` - The flag state continues to be in the state is defined in the previous step
-          Default value. HIGH - The flag signal transitions to the high state. LOW - The flag signal
-          transitions to the low state. TOGGle - The flag signal transitions to the high state if
-          the previous step defined the flag to be in the low state and vice versa. PULSe - The flag
+          Default value.HIGH - The flag signal transitions to the high state.LOW - The flag signal
+          transitions to the low state.TOGGle - The flag signal transitions to the high state if the
+          previous step defined the flag to be in the low state and vice versa.PULSe - The flag
           signal outputs a pulse signal of a fixed width.
     """
 
@@ -288,9 +288,9 @@ class SlistSequenceStepItemTflagItemCflag(SCPICmdWrite, SCPICmdReadWithArguments
 
     Info:
         - ``NCHange`` - The flag state continues to be in the state is defined in the previous step
-          Default value. HIGH - The flag signal transitions to the high state. LOW - The flag signal
-          transitions to the low state. TOGGle - The flag signal transitions to the high state if
-          the previous step defined the flag to be in the low state and vice versa. PULSe - The flag
+          Default value.HIGH - The flag signal transitions to the high state.LOW - The flag signal
+          transitions to the low state.TOGGle - The flag signal transitions to the high state if the
+          previous step defined the flag to be in the low state and vice versa.PULSe - The flag
           signal outputs a pulse signal of a fixed width.
     """
 
@@ -318,9 +318,9 @@ class SlistSequenceStepItemTflagItemBflag(SCPICmdWrite, SCPICmdReadWithArguments
 
     Info:
         - ``NCHange`` - The flag state continues to be in the state is defined in the previous step
-          Default value. HIGH - The flag signal transitions to the high state. LOW - The flag signal
-          transitions to the low state. TOGGle - The flag signal transitions to the high state if
-          the previous step defined the flag to be in the low state and vice versa. PULSe - The flag
+          Default value.HIGH - The flag signal transitions to the high state.LOW - The flag signal
+          transitions to the low state.TOGGle - The flag signal transitions to the high state if the
+          previous step defined the flag to be in the low state and vice versa.PULSe - The flag
           signal outputs a pulse signal of a fixed width.
     """
 
@@ -348,9 +348,9 @@ class SlistSequenceStepItemTflagItemAflag(SCPICmdWrite, SCPICmdReadWithArguments
 
     Info:
         - ``NCHange`` - The flag state continues to be in the state is defined in the previous step
-          Default value. HIGH - The flag signal transitions to the high state. LOW - The flag signal
-          transitions to the low state. TOGGle - The flag signal transitions to the high state if
-          the previous step defined the flag to be in the low state and vice versa. PULSe - The flag
+          Default value.HIGH - The flag signal transitions to the high state.LOW - The flag signal
+          transitions to the low state.TOGGle - The flag signal transitions to the high state if the
+          previous step defined the flag to be in the low state and vice versa.PULSe - The flag
           signal outputs a pulse signal of a fixed width.
     """
 
@@ -401,10 +401,10 @@ class SlistSequenceStepItemTflagItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``NCHange`` - The flag state continues to be in the state is defined in the previous
-              step Default value. HIGH - The flag signal transitions to the high state. LOW - The
-              flag signal transitions to the low state. TOGGle - The flag signal transitions to the
-              high state if the previous step defined the flag to be in the low state and vice
-              versa. PULSe - The flag signal outputs a pulse signal of a fixed width.
+              step Default value.HIGH - The flag signal transitions to the high state.LOW - The flag
+              signal transitions to the low state.TOGGle - The flag signal transitions to the high
+              state if the previous step defined the flag to be in the low state and vice
+              versa.PULSe - The flag signal outputs a pulse signal of a fixed width.
         """
         return self._aflag
 
@@ -432,10 +432,10 @@ class SlistSequenceStepItemTflagItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``NCHange`` - The flag state continues to be in the state is defined in the previous
-              step Default value. HIGH - The flag signal transitions to the high state. LOW - The
-              flag signal transitions to the low state. TOGGle - The flag signal transitions to the
-              high state if the previous step defined the flag to be in the low state and vice
-              versa. PULSe - The flag signal outputs a pulse signal of a fixed width.
+              step Default value.HIGH - The flag signal transitions to the high state.LOW - The flag
+              signal transitions to the low state.TOGGle - The flag signal transitions to the high
+              state if the previous step defined the flag to be in the low state and vice
+              versa.PULSe - The flag signal outputs a pulse signal of a fixed width.
         """
         return self._bflag
 
@@ -463,10 +463,10 @@ class SlistSequenceStepItemTflagItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``NCHange`` - The flag state continues to be in the state is defined in the previous
-              step Default value. HIGH - The flag signal transitions to the high state. LOW - The
-              flag signal transitions to the low state. TOGGle - The flag signal transitions to the
-              high state if the previous step defined the flag to be in the low state and vice
-              versa. PULSe - The flag signal outputs a pulse signal of a fixed width.
+              step Default value.HIGH - The flag signal transitions to the high state.LOW - The flag
+              signal transitions to the low state.TOGGle - The flag signal transitions to the high
+              state if the previous step defined the flag to be in the low state and vice
+              versa.PULSe - The flag signal outputs a pulse signal of a fixed width.
         """
         return self._cflag
 
@@ -494,10 +494,10 @@ class SlistSequenceStepItemTflagItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``NCHange`` - The flag state continues to be in the state is defined in the previous
-              step Default value. HIGH - The flag signal transitions to the high state. LOW - The
-              flag signal transitions to the low state. TOGGle - The flag signal transitions to the
-              high state if the previous step defined the flag to be in the low state and vice
-              versa. PULSe - The flag signal outputs a pulse signal of a fixed width.
+              step Default value.HIGH - The flag signal transitions to the high state.LOW - The flag
+              signal transitions to the low state.TOGGle - The flag signal transitions to the high
+              state if the previous step defined the flag to be in the low state and vice
+              versa.PULSe - The flag signal outputs a pulse signal of a fixed width.
         """
         return self._dflag
 
@@ -692,7 +692,7 @@ class SlistSequenceStepItemRcount(SCPICmdWrite, SCPICmdReadWithArguments):
         ```
 
     Info:
-        - ``ONCE`` - Plays the waveform one time during this sequence step. INFinte - Plays the
+        - ``ONCE`` - Plays the waveform one time during this sequence step.INFinte - Plays the
           waveform continuously during this sequence step.<NR1> - Plays this waveform the selected
           number of times during this sequence step. The allowed value is between 1 and 2^20.
     """
@@ -724,10 +724,10 @@ class SlistSequenceStepItemGoto(SCPICmdWrite, SCPICmdReadWithArguments):
         ```
 
     Info:
-        - ``LAST`` - This enables the sequencer to go to the last step in the sequence. FIRSt - This
-          enables the sequencer to go to first step in the sequence. NEXT - This enables the
+        - ``LAST`` - This enables the sequencer to go to the last step in the sequence.FIRSt - This
+          enables the sequencer to go to first step in the sequence.NEXT - This enables the
           sequencer to go to the next sequence step. (The ``SLISt:SEQuence:STEP``[n]``:EJUMp:STEP``
-          setting is ignored.) END - This enables the sequencer to go to the end and play 0 V until
+          setting is ignored.)END - This enables the sequencer to go to the end and play 0 V until
           play is stopped.
     """
 
@@ -756,8 +756,8 @@ class SlistSequenceStepItemEjump(SCPICmdWrite, SCPICmdReadWithArguments):
         ```
 
     Info:
-        - ``NEXT`` - This enables the sequencer to jump to the next sequence step. FIRSt - This
-          enables the sequencer to jump to first step in the sequence. LAST - This enables the
+        - ``NEXT`` - This enables the sequencer to jump to the next sequence step.FIRSt - This
+          enables the sequencer to jump to first step in the sequence.LAST - This enables the
           sequencer to jump to the last step in the sequence. END - This enables the sequencer to
           jump to the end and play 0 V until play is stopped.
     """
@@ -787,10 +787,10 @@ class SlistSequenceStepItemEjinput(SCPICmdWrite, SCPICmdReadWithArguments):
         ```
 
     Info:
-        - ``ATRigger`` - This enables the sequencer to jump to the event of a ATRIG. BTRigger - This
-          enables the sequencer to jump to the event of a BTRIG. ITRigger - This enables the
-          sequencer to jump to the event of an Internal Trigger. OFF - Ignores all events, even if
-          an event occurs during that step.
+        - ``ATRigger`` - This enables the sequencer to jump to the event of a ATRIG.BTRigger - This
+          enables the sequencer to jump to the event of a BTRIG.ITRigger - This enables the
+          sequencer to jump to the event of an Internal Trigger.OFF - Ignores all events, even if an
+          event occurs during that step.
         - ``*RST`` sets this to OFF.
     """
 
@@ -855,10 +855,10 @@ class SlistSequenceStepItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``ATRigger`` - This enables the sequencer to jump to the event of a ATRIG. BTRigger -
-              This enables the sequencer to jump to the event of a BTRIG. ITRigger - This enables
-              the sequencer to jump to the event of an Internal Trigger. OFF - Ignores all events,
-              even if an event occurs during that step.
+            - ``ATRigger`` - This enables the sequencer to jump to the event of a ATRIG.BTRigger -
+              This enables the sequencer to jump to the event of a BTRIG.ITRigger - This enables the
+              sequencer to jump to the event of an Internal Trigger.OFF - Ignores all events, even
+              if an event occurs during that step.
             - ``*RST`` sets this to OFF.
         """
         return self._ejinput
@@ -888,8 +888,8 @@ class SlistSequenceStepItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``NEXT`` - This enables the sequencer to jump to the next sequence step. FIRSt - This
-              enables the sequencer to jump to first step in the sequence. LAST - This enables the
+            - ``NEXT`` - This enables the sequencer to jump to the next sequence step.FIRSt - This
+              enables the sequencer to jump to first step in the sequence.LAST - This enables the
               sequencer to jump to the last step in the sequence. END - This enables the sequencer
               to jump to the end and play 0 V until play is stopped.
         """
@@ -922,10 +922,10 @@ class SlistSequenceStepItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``LAST`` - This enables the sequencer to go to the last step in the sequence. FIRSt -
-              This enables the sequencer to go to first step in the sequence. NEXT - This enables
-              the sequencer to go to the next sequence step. (The
-              ``SLISt:SEQuence:STEP``[n]``:EJUMp:STEP`` setting is ignored.) END - This enables the
+            - ``LAST`` - This enables the sequencer to go to the last step in the sequence.FIRSt -
+              This enables the sequencer to go to first step in the sequence.NEXT - This enables the
+              sequencer to go to the next sequence step. (The
+              ``SLISt:SEQuence:STEP``[n]``:EJUMp:STEP`` setting is ignored.)END - This enables the
               sequencer to go to the end and play 0 V until play is stopped.
         """
         return self._goto
@@ -954,7 +954,7 @@ class SlistSequenceStepItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``ONCE`` - Plays the waveform one time during this sequence step. INFinte - Plays the
+            - ``ONCE`` - Plays the waveform one time during this sequence step.INFinte - Plays the
               waveform continuously during this sequence step.<NR1> - Plays this waveform the
               selected number of times during this sequence step. The allowed value is between 1 and
               2^20.
@@ -1047,11 +1047,11 @@ class SlistSequenceStepItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``ATRigger`` - This enables the sequencer to move due to a trigger event from the A
-              Trigger Input connector or the A Force Trigger front panel button. BTRigger - This
+              Trigger Input connector or the A Force Trigger front panel button.BTRigger - This
               enables the sequencer to move due to a trigger event from the B Trigger Input
-              connector or the B Force Trigger front panel button. ITRigger - This enables the
-              sequencer to move due to an Internal Trigger event. OFF - Disables the wait for
-              trigger event, allowing the waveforms(s) of this step to be played immediately.
+              connector or the B Force Trigger front panel button.ITRigger - This enables the
+              sequencer to move due to an Internal Trigger event.OFF - Disables the wait for trigger
+              event, allowing the waveforms(s) of this step to be played immediately.
         """
         return self._winput
 

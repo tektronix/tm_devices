@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - ACQuire:MAGnivu {<NR1>|OFF|ON}
+    - ACQuire:MAGnivu {ON|OFF|<NR1>}
     - ACQuire:MAGnivu?
     - ACQuire:MAXSamplerate?
     - ACQuire:MODe {SAMple|AVErage}
@@ -207,7 +207,7 @@ class AcquireMagnivu(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ACQuire:MAGnivu {<NR1>|OFF|ON}
+        - ACQuire:MAGnivu {ON|OFF|<NR1>}
         - ACQuire:MAGnivu?
         ```
 
@@ -271,7 +271,7 @@ class Acquire(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ACQuire:MAGnivu {<NR1>|OFF|ON}
+            - ACQuire:MAGnivu {ON|OFF|<NR1>}
             - ACQuire:MAGnivu?
             ```
 
