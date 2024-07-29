@@ -28,6 +28,7 @@ PAGE_REPLACEMENTS = {
         (" TSP ", " <TSP:>"),
         (" API ", " <API:>"),
         (" DPOJET ", " <DPOJET:>"),
+        (" SourceXpress ", " <SourceXpress:>"),
         (" ✅ ", " [](default:✅) "),
         (" 🚧 ", " [](default:🚧) "),
         (" ❌ ", " [](default:❌) "),
