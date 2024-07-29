@@ -83,6 +83,8 @@ SESR
 SMU
 : Source Measure Unit
 
+SourceXpress
+: An application to Load and play waveforms remotely for Tektronix Arbitrary Waveform Generators
 SRQ
 : Service Request
 
