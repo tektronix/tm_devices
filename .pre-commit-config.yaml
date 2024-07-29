@@ -39,7 +39,7 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.29.0
+    rev: 0.29.1
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
@@ -139,7 +139,7 @@ repos:
         always_run: true
         args: [audit, --json, --ignore-code=CVE-2019-8341]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.5.4
+    rev: v0.5.5
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
