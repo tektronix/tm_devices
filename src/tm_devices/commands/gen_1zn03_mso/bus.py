@@ -86,7 +86,7 @@ Commands and Queries:
     - BUS:B<x>:PARallel:BIT<x>SOUrce?
     - BUS:B<x>:PARallel:CLOCk:EDGE {FALLING|RISING|EITHER}
     - BUS:B<x>:PARallel:CLOCk:EDGE?
-    - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {OFF|ON|<NR1>}
+    - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {ON|OFF|<NR1>}
     - BUS:B<x>:PARallel:CLOCk:ISCLOCKED?
     - BUS:B<x>:PARallel:CLOCkSOUrce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>|NONE}
     - BUS:B<x>:PARallel:CLOCkSOUrce:THReshold <NR3>
@@ -3020,7 +3020,7 @@ class BusBItemParallelClockIsclocked(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {OFF|ON|<NR1>}
+        - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {ON|OFF|<NR1>}
         - BUS:B<x>:PARallel:CLOCk:ISCLOCKED?
         ```
 
@@ -3129,7 +3129,7 @@ class BusBItemParallelClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {OFF|ON|<NR1>}
+            - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {ON|OFF|<NR1>}
             - BUS:B<x>:PARallel:CLOCk:ISCLOCKED?
             ```
 

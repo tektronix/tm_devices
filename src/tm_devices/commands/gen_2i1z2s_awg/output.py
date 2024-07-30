@@ -60,8 +60,8 @@ class OutputItemWvalueMarkerItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICm
 
     Info:
         - ``FIRSt`` sets the marker output level to match the first point in the waveform when the
-          channel is in the waiting-for-trigger state. LOW sets the marker output to a logic level
-          low for when the channel is in the waiting-for-trigger state. HIGH sets the marker output
+          channel is in the waiting-for-trigger state.LOW sets the marker output to a logic level
+          low for when the channel is in the waiting-for-trigger state.HIGH sets the marker output
           to a logic level high when the channel is in the waiting-for-trigger state.[n] determines
           the channel number. If omitted, interpreted as 1.[m] determines the marker number. If
           omitted, interpreted as 1.
@@ -92,7 +92,7 @@ class OutputItemWvalueAnalogState(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``FIRSt`` sets the output level for channel 'n' to match the first point in the waveform
-          when channel 'n' is in the Waiting-for-trigger state. ZERO sets the output level for
+          when channel 'n' is in the Waiting-for-trigger state.ZERO sets the output level for
           channel 'n' to 0 volts when channel 'n' is in the Waiting-for-trigger state.[n] determines
           the channel number. If omitted, interpreted as 1.
         - ``*RST`` sets all channels to ZERO.
@@ -139,7 +139,7 @@ class OutputItemWvalueAnalog(SCPICmdRead):
 
         Info:
             - ``FIRSt`` sets the output level for channel 'n' to match the first point in the
-              waveform when channel 'n' is in the Waiting-for-trigger state. ZERO sets the output
+              waveform when channel 'n' is in the Waiting-for-trigger state.ZERO sets the output
               level for channel 'n' to 0 volts when channel 'n' is in the Waiting-for-trigger
               state.[n] determines the channel number. If omitted, interpreted as 1.
             - ``*RST`` sets all channels to ZERO.
@@ -191,8 +191,8 @@ class OutputItemWvalue(SCPICmdRead):
 
         Info:
             - ``FIRSt`` sets the marker output level to match the first point in the waveform when
-              the channel is in the waiting-for-trigger state. LOW sets the marker output to a logic
-              level low for when the channel is in the waiting-for-trigger state. HIGH sets the
+              the channel is in the waiting-for-trigger state.LOW sets the marker output to a logic
+              level low for when the channel is in the waiting-for-trigger state.HIGH sets the
               marker output to a logic level high when the channel is in the waiting-for-trigger
               state.[n] determines the channel number. If omitted, interpreted as 1.[m] determines
               the marker number. If omitted, interpreted as 1.
@@ -237,7 +237,7 @@ class OutputItemSvalueMarkerItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICm
 
     Info:
         - ``OFF`` sets the stop state marker output for channel 'n' to open (electrically
-          disconnected). LOW sets the stop state marker output for channel 'n' value to 0 volts.[n]
+          disconnected).LOW sets the stop state marker output for channel 'n' value to 0 volts.[n]
           determines the channel number. If omitted, interpreted as 1.[m] determines the marker
           number. If omitted, interpreted as 1.
         - ``*RST`` sets all channel markers to LOW.
@@ -265,9 +265,9 @@ class OutputItemSvalueAnalogState(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``OFF`` sets the stop state output for channel 'n' to open (electrically disconnected).
-          ZERO sets the stop state output value for channel 'n' to 0 volts.[n] determines the
-          channel number. If omitted, interpreted as 1.
+        - ``OFF`` sets the stop state output for channel 'n' to open (electrically
+          disconnected).ZERO sets the stop state output value for channel 'n' to 0 volts.[n]
+          determines the channel number. If omitted, interpreted as 1.
         - ``*RST`` sets all channels to ZERO.
     """
 
@@ -311,7 +311,7 @@ class OutputItemSvalueAnalog(SCPICmdRead):
 
         Info:
             - ``OFF`` sets the stop state output for channel 'n' to open (electrically
-              disconnected). ZERO sets the stop state output value for channel 'n' to 0 volts.[n]
+              disconnected).ZERO sets the stop state output value for channel 'n' to 0 volts.[n]
               determines the channel number. If omitted, interpreted as 1.
             - ``*RST`` sets all channels to ZERO.
         """
@@ -361,7 +361,7 @@ class OutputItemSvalue(SCPICmdRead):
 
         Info:
             - ``OFF`` sets the stop state marker output for channel 'n' to open (electrically
-              disconnected). LOW sets the stop state marker output for channel 'n' value to 0
+              disconnected).LOW sets the stop state marker output for channel 'n' value to 0
               volts.[n] determines the channel number. If omitted, interpreted as 1.[m] determines
               the marker number. If omitted, interpreted as 1.
             - ``*RST`` sets all channel markers to LOW.
@@ -402,7 +402,7 @@ class OutputItemState(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``0`` or OFF disables the channel's output. 1 or ON enables the channel's output.[n]
+        - ``0`` or OFF disables the channel's output.1 or ON enables the channel's output.[n]
           determines the channel number. If omitted, interpreted as 1.
         - ``*RST`` sets all channels to 0.
     """
@@ -539,7 +539,7 @@ class OutputItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``0`` or OFF disables the channel's output. 1 or ON enables the channel's output.[n]
+            - ``0`` or OFF disables the channel's output.1 or ON enables the channel's output.[n]
               determines the channel number. If omitted, interpreted as 1.
             - ``*RST`` sets all channels to 0.
         """

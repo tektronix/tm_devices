@@ -13,13 +13,13 @@ Commands and Queries:
     - SAVEON:FILE:DEST?
     - SAVEON:FILE:NAME <QString>
     - SAVEON:FILE:NAME?
-    - SAVEON:IMAGe {<NR1>|OFF|ON}
+    - SAVEON:IMAGe {ON|OFF|<NR1>}
     - SAVEON:IMAGe:FILEFormat {PNG|BMP|JPG}
     - SAVEON:IMAGe:FILEFormat?
     - SAVEON:IMAGe?
-    - SAVEON:TRIGger {<NR1>|ON|OFF}
+    - SAVEON:TRIGger {ON|OFF|<NR1>}
     - SAVEON:TRIGger?
-    - SAVEON:WAVEform {<NR1>|ON|OFF}
+    - SAVEON:WAVEform {ON|OFF|<NR1>}
     - SAVEON:WAVEform:FILEFormat {INTERNal|SPREADSheet}
     - SAVEON:WAVEform:FILEFormat?
     - SAVEON:WAVEform:SOURce {CH<x>|DCH<x>_D<x>|MATH<x>|REF<x>|ALL}
@@ -111,7 +111,7 @@ class SaveonWaveform(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVEON:WAVEform {<NR1>|ON|OFF}
+        - SAVEON:WAVEform {ON|OFF|<NR1>}
         - SAVEON:WAVEform?
         ```
 
@@ -214,7 +214,7 @@ class SaveonTrigger(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVEON:TRIGger {<NR1>|ON|OFF}
+        - SAVEON:TRIGger {ON|OFF|<NR1>}
         - SAVEON:TRIGger?
         ```
 
@@ -267,7 +267,7 @@ class SaveonImage(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVEON:IMAGe {<NR1>|OFF|ON}
+        - SAVEON:IMAGe {ON|OFF|<NR1>}
         - SAVEON:IMAGe?
         ```
 
@@ -489,7 +489,7 @@ class Saveon(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVEON:IMAGe {<NR1>|OFF|ON}
+            - SAVEON:IMAGe {ON|OFF|<NR1>}
             - SAVEON:IMAGe?
             ```
 
@@ -528,7 +528,7 @@ class Saveon(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVEON:TRIGger {<NR1>|ON|OFF}
+            - SAVEON:TRIGger {ON|OFF|<NR1>}
             - SAVEON:TRIGger?
             ```
 
@@ -558,7 +558,7 @@ class Saveon(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVEON:WAVEform {<NR1>|ON|OFF}
+            - SAVEON:WAVEform {ON|OFF|<NR1>}
             - SAVEON:WAVEform?
             ```
 

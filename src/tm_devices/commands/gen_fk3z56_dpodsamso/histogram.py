@@ -26,7 +26,7 @@ Commands and Queries:
     - HIStogram:SIZe?
     - HIStogram:SOUrce {CH<x>|MATH<x>|REF<x>}
     - HIStogram:SOUrce?
-    - HIStogram:STATE {<NR1>|ON|OFF}
+    - HIStogram:STATE {ON|OFF|<NR1>}
     - HIStogram:STATE?
     - HIStogram?
     ```
@@ -55,7 +55,7 @@ class HistogramState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HIStogram:STATE {<NR1>|ON|OFF}
+        - HIStogram:STATE {ON|OFF|<NR1>}
         - HIStogram:STATE?
         ```
 
@@ -655,7 +655,7 @@ class Histogram(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HIStogram:STATE {<NR1>|ON|OFF}
+            - HIStogram:STATE {ON|OFF|<NR1>}
             - HIStogram:STATE?
             ```
 

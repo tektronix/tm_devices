@@ -949,7 +949,7 @@ Commands and Queries:
     - TRIGger:B:TYPe?
     - TRIGger:B:UPPerthreshold:CH<x> {ECL|TTL|<NR3>}
     - TRIGger:B:UPPerthreshold:CH<x>?
-    - TRIGger:ENHanced {<NR1>|OFF|ON}
+    - TRIGger:ENHanced {ON|OFF|<NR1>}
     - TRIGger:ENHanced?
     - TRIGger:EQUation<x> <string>
     - TRIGger:EQUation<x>?
@@ -982,7 +982,7 @@ Commands and Queries:
     - TRIGger:QUALification:BUS:SOUrce?
     - TRIGger:QUALification:BUS:VALue <String>
     - TRIGger:QUALification:BUS:VALue?
-    - TRIGger:SENSITivity {<NR1>|OFF|ON}
+    - TRIGger:SENSITivity {ON|OFF|<NR1>}
     - TRIGger:SENSITivity?
     - TRIGger:SHOWEQuation {ON|OFF}
     - TRIGger:SHOWEQuation?
@@ -1068,7 +1068,7 @@ class TriggerSensitivity(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:SENSITivity {<NR1>|OFF|ON}
+        - TRIGger:SENSITivity {ON|OFF|<NR1>}
         - TRIGger:SENSITivity?
         ```
 
@@ -2141,7 +2141,7 @@ class TriggerEnhanced(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:ENHanced {<NR1>|OFF|ON}
+        - TRIGger:ENHanced {ON|OFF|<NR1>}
         - TRIGger:ENHanced?
         ```
 
@@ -35743,7 +35743,7 @@ class Trigger(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:ENHanced {<NR1>|OFF|ON}
+            - TRIGger:ENHanced {ON|OFF|<NR1>}
             - TRIGger:ENHanced?
             ```
 
@@ -35897,7 +35897,7 @@ class Trigger(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:SENSITivity {<NR1>|OFF|ON}
+            - TRIGger:SENSITivity {ON|OFF|<NR1>}
             - TRIGger:SENSITivity?
             ```
 
