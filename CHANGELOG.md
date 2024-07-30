@@ -26,14 +26,6 @@ Things to be included in the next release go here.
 
 - Fixed APIs with writes and queries accepting arguments for AWG70KA and AWG70KB models drivers.
 
-### Added
-
-- Full Python API support for SourceXpress to AWG70KA, AWG70KB and AWG7K models.
-
-### Fixed
-
-- Fixed APIs with writes and queries accepting arguments for AWG70KA and AWG70KB models drivers.
-
 ---
 
 ## v2.0.0 (2024-07-24)
