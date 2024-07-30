@@ -6,7 +6,6 @@ ci:
   autoupdate_schedule: quarterly
   skip:
     - check-poetry
-    - toml-sort
     - pylint
     - pyright
     - pyright-verifytypes
@@ -97,14 +96,12 @@ repos:
     rev: v1.0.0
     hooks:
       - id: check-poetry
+  - repo: https://github.com/pappasam/toml-sort
+    rev: v0.23.1
+    hooks:
+      - id: toml-sort-fix
   - repo: local
     hooks:
-      - id: toml-sort
-        name: toml-sort
-        entry: toml-sort
-        language: system
-        types: [toml]
-        pass_filenames: true
       - id: pylint
         name: pylint
         entry: pylint
