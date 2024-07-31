@@ -18,6 +18,17 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v2.1.0 (2024-07-31)
+
+### Merged Pull Requests
+
+- feat: Added SourceXpress API support and AWG defects fix ([#260](https://github.com/tektronix/tm_devices/pull/260))
+- gh-actions(deps): bump hynek/build-and-inspect-python-package ([#258](https://github.com/tektronix/tm_devices/pull/258))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#257](https://github.com/tektronix/tm_devices/pull/257))
+- Update jinja templates ([#254](https://github.com/tektronix/tm_devices/pull/254))
+
 ### Added
 
 - Full Python API support for SourceXpress to AWG70KA, AWG70KB and AWG7K models.
