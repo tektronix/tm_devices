@@ -24,6 +24,7 @@ Commands and Queries:
     - MMEMory:MSIS?
     - MMEMory:OPEN <filepath>
     - MMEMory:OPEN:PARameter:NORMalize <Type>
+    - MMEMory:OPEN:PARameter:NORMalize?
     - MMEMory:OPEN:PARameter:SIQ {0|1|OFF|ON}
     - MMEMory:OPEN:PARameter:SIQ?
     - MMEMory:OPEN:SASSet:SEQuence <filepath>[,<desired_sequence>]
@@ -584,7 +585,7 @@ class MmemoryOpenParameterSiq(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class MmemoryOpenParameterNormalize(SCPICmdWrite):
+class MmemoryOpenParameterNormalize(SCPICmdWrite, SCPICmdRead):
     """The ``MMEMory:OPEN:PARameter:NORMalize`` command.
 
     Description:
@@ -595,18 +596,22 @@ class MmemoryOpenParameterNormalize(SCPICmdWrite):
           Analog text files from AWG.RFD - RFXpress AWG Series waveforms.MAT - Matlab files
 
     Usage:
+        - Using the ``.query()`` method will send the ``MMEMory:OPEN:PARameter:NORMalize?`` query.
+        - Using the ``.verify(value)`` method will send the ``MMEMory:OPEN:PARameter:NORMalize?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``MMEMory:OPEN:PARameter:NORMalize value`` command.
 
     SCPI Syntax:
         ```
         - MMEMory:OPEN:PARameter:NORMalize <Type>
+        - MMEMory:OPEN:PARameter:NORMalize?
         ```
 
     Info:
         - ``NONE`` will not normalize the imported data. The data may contain points outside of the
-          AWG's amplitude range. FSCale normalizes the imported data to the full amplitude range.
-          ZREFerence normalizes the imported data while preserving the offset.
+          AWG's amplitude range.FSCale normalizes the imported data to the full amplitude
+          range.ZREFerence normalizes the imported data while preserving the offset.
         - ``*RST`` sets the arguments to NONE.
     """
 
@@ -641,18 +646,24 @@ class MmemoryOpenParameter(SCPICmdRead):
               - Analog text files from AWG.RFD - RFXpress AWG Series waveforms.MAT - Matlab files
 
         Usage:
+            - Using the ``.query()`` method will send the ``MMEMory:OPEN:PARameter:NORMalize?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MMEMory:OPEN:PARameter:NORMalize?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``MMEMory:OPEN:PARameter:NORMalize value`` command.
 
         SCPI Syntax:
             ```
             - MMEMory:OPEN:PARameter:NORMalize <Type>
+            - MMEMory:OPEN:PARameter:NORMalize?
             ```
 
         Info:
             - ``NONE`` will not normalize the imported data. The data may contain points outside of
-              the AWG's amplitude range. FSCale normalizes the imported data to the full amplitude
-              range. ZREFerence normalizes the imported data while preserving the offset.
+              the AWG's amplitude range.FSCale normalizes the imported data to the full amplitude
+              range.ZREFerence normalizes the imported data while preserving the offset.
             - ``*RST`` sets the arguments to NONE.
         """
         return self._normalize
@@ -849,8 +860,8 @@ class MmemoryImportParameterNormalize(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``NONE`` will not normalize the imported data. The data may contain points outside of the
-          AWG's amplitude range. FSCale normalizes the imported data to the full amplitude range.
-          ZREFerence normalizes the imported data while preserving the offset.
+          AWG's amplitude range.FSCale normalizes the imported data to the full amplitude
+          range.ZREFerence normalizes the imported data while preserving the offset.
     """
 
 
@@ -898,8 +909,8 @@ class MmemoryImportParameter(SCPICmdRead):
 
         Info:
             - ``NONE`` will not normalize the imported data. The data may contain points outside of
-              the AWG's amplitude range. FSCale normalizes the imported data to the full amplitude
-              range. ZREFerence normalizes the imported data while preserving the offset.
+              the AWG's amplitude range.FSCale normalizes the imported data to the full amplitude
+              range.ZREFerence normalizes the imported data while preserving the offset.
         """
         return self._normalize
 

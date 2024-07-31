@@ -10,7 +10,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - LIMit:BEEP {<NR1>|OFF|ON}
+    - LIMit:BEEP {ON|OFF|<NR1>}
     - LIMit:BEEP?
     - LIMit:COMpare {RESet}
     - LIMit:COMpare:CH<x> {NONe|REF<x>}
@@ -19,27 +19,27 @@ Commands and Queries:
     - LIMit:COMpare:MATH<x>?
     - LIMit:COMpare:REF<x> {NONe|REF<x>}
     - LIMit:COMpare:REF<x>?
-    - LIMit:EMail {<NR1>|OFF|ON}
+    - LIMit:EMail {ON|OFF|<NR1>}
     - LIMit:EMail?
-    - LIMit:HARDCopy {<NR1>|OFF|ON}
+    - LIMit:HARDCopy {ON|OFF|<NR1>}
     - LIMit:HARDCopy?
-    - LIMit:HIGHLIGHTHits {<NR1>|OFF|ON}
+    - LIMit:HIGHLIGHTHits {ON|OFF|<NR1>}
     - LIMit:HIGHLIGHTHits:RESet
     - LIMit:HIGHLIGHTHits?
-    - LIMit:LOCk {<NR1>|OFF|ON}
+    - LIMit:LOCk {ON|OFF|<NR1>}
     - LIMit:LOCk?
-    - LIMit:LOG {<NR1>|OFF|ON}
+    - LIMit:LOG {ON|OFF|<NR1>}
     - LIMit:LOG?
-    - LIMit:SAVEWFM {<NR1>|OFF|ON}
+    - LIMit:SAVEWFM {ON|OFF|<NR1>}
     - LIMit:SAVEWFM:FILEName <QString>
     - LIMit:SAVEWFM:FILEName?
     - LIMit:SAVEWFM?
-    - LIMit:SRQ {<NR1>|OFF|ON}
+    - LIMit:SRQ {ON|OFF|<NR1>}
     - LIMit:SRQ?
-    - LIMit:STATE {<NR1>|OFF|ON}
+    - LIMit:STATE {ON|OFF|<NR1>}
     - LIMit:STATE?
     - LIMit:STATus?
-    - LIMit:STOPOnviolation {<NR1>|OFF|ON}
+    - LIMit:STOPOnviolation {ON|OFF|<NR1>}
     - LIMit:STOPOnviolation?
     - LIMit:TEMPlate:DESTination {REF<x>}
     - LIMit:TEMPlate:DESTination?
@@ -425,7 +425,7 @@ class LimitStoponviolation(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - LIMit:STOPOnviolation {<NR1>|OFF|ON}
+        - LIMit:STOPOnviolation {ON|OFF|<NR1>}
         - LIMit:STOPOnviolation?
         ```
 
@@ -472,7 +472,7 @@ class LimitState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - LIMit:STATE {<NR1>|OFF|ON}
+        - LIMit:STATE {ON|OFF|<NR1>}
         - LIMit:STATE?
         ```
 
@@ -500,7 +500,7 @@ class LimitSrq(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - LIMit:SRQ {<NR1>|OFF|ON}
+        - LIMit:SRQ {ON|OFF|<NR1>}
         - LIMit:SRQ?
         ```
 
@@ -559,7 +559,7 @@ class LimitSavewfm(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - LIMit:SAVEWFM {<NR1>|OFF|ON}
+        - LIMit:SAVEWFM {ON|OFF|<NR1>}
         - LIMit:SAVEWFM?
         ```
 
@@ -623,7 +623,7 @@ class LimitLog(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - LIMit:LOG {<NR1>|OFF|ON}
+        - LIMit:LOG {ON|OFF|<NR1>}
         - LIMit:LOG?
         ```
 
@@ -653,7 +653,7 @@ class LimitLock(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - LIMit:LOCk {<NR1>|OFF|ON}
+        - LIMit:LOCk {ON|OFF|<NR1>}
         - LIMit:LOCk?
         ```
 
@@ -697,7 +697,7 @@ class LimitHighlighthits(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - LIMit:HIGHLIGHTHits {<NR1>|OFF|ON}
+        - LIMit:HIGHLIGHTHits {ON|OFF|<NR1>}
         - LIMit:HIGHLIGHTHits?
         ```
 
@@ -752,7 +752,7 @@ class LimitHardcopy(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - LIMit:HARDCopy {<NR1>|OFF|ON}
+        - LIMit:HARDCopy {ON|OFF|<NR1>}
         - LIMit:HARDCopy?
         ```
 
@@ -782,7 +782,7 @@ class LimitEmail(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - LIMit:EMail {<NR1>|OFF|ON}
+        - LIMit:EMail {ON|OFF|<NR1>}
         - LIMit:EMail?
         ```
 
@@ -1019,7 +1019,7 @@ class LimitBeep(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - LIMit:BEEP {<NR1>|OFF|ON}
+        - LIMit:BEEP {ON|OFF|<NR1>}
         - LIMit:BEEP?
         ```
 
@@ -1095,7 +1095,7 @@ class Limit(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - LIMit:BEEP {<NR1>|OFF|ON}
+            - LIMit:BEEP {ON|OFF|<NR1>}
             - LIMit:BEEP?
             ```
 
@@ -1147,7 +1147,7 @@ class Limit(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - LIMit:EMail {<NR1>|OFF|ON}
+            - LIMit:EMail {ON|OFF|<NR1>}
             - LIMit:EMail?
             ```
 
@@ -1181,7 +1181,7 @@ class Limit(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - LIMit:HARDCopy {<NR1>|OFF|ON}
+            - LIMit:HARDCopy {ON|OFF|<NR1>}
             - LIMit:HARDCopy?
             ```
 
@@ -1213,7 +1213,7 @@ class Limit(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - LIMit:HIGHLIGHTHits {<NR1>|OFF|ON}
+            - LIMit:HIGHLIGHTHits {ON|OFF|<NR1>}
             - LIMit:HIGHLIGHTHits?
             ```
 
@@ -1246,7 +1246,7 @@ class Limit(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - LIMit:LOCk {<NR1>|OFF|ON}
+            - LIMit:LOCk {ON|OFF|<NR1>}
             - LIMit:LOCk?
             ```
 
@@ -1275,7 +1275,7 @@ class Limit(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - LIMit:LOG {<NR1>|OFF|ON}
+            - LIMit:LOG {ON|OFF|<NR1>}
             - LIMit:LOG?
             ```
 
@@ -1306,7 +1306,7 @@ class Limit(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - LIMit:SAVEWFM {<NR1>|OFF|ON}
+            - LIMit:SAVEWFM {ON|OFF|<NR1>}
             - LIMit:SAVEWFM?
             ```
 
@@ -1341,7 +1341,7 @@ class Limit(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - LIMit:SRQ {<NR1>|OFF|ON}
+            - LIMit:SRQ {ON|OFF|<NR1>}
             - LIMit:SRQ?
             ```
 
@@ -1374,7 +1374,7 @@ class Limit(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - LIMit:STATE {<NR1>|OFF|ON}
+            - LIMit:STATE {ON|OFF|<NR1>}
             - LIMit:STATE?
             ```
 
@@ -1423,7 +1423,7 @@ class Limit(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - LIMit:STOPOnviolation {<NR1>|OFF|ON}
+            - LIMit:STOPOnviolation {ON|OFF|<NR1>}
             - LIMit:STOPOnviolation?
             ```
 

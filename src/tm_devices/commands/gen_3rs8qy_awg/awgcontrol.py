@@ -10,6 +10,7 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - AWGControl:ARSettings {0|1|ON|OFF}
+    - AWGControl:ARSettings?
     - AWGControl:CLOCk:DRATe <NR1>
     - AWGControl:CLOCk:DRATe?
     - AWGControl:CLOCk:PHASe:ADJust <NR1>
@@ -1207,10 +1208,10 @@ class AwgcontrolClockSource(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``INTernal`` - clock signal is generated internally and the reference frequency is derived
-          by the internal oscillator. EFIXed - clock is generated internally and the reference
-          frequency is derived from a fixed 10 MHz reference supplied at the Reference In connector.
-          EVARiable - clock is generated internally and the reference frequency is derived from a
-          variable reference supplied at the Reference In connector. EXTernal - clock signal
+          by the internal oscillator.EFIXed - clock is generated internally and the reference
+          frequency is derived from a fixed 10 MHz reference supplied at the Reference In
+          connector.EVARiable - clock is generated internally and the reference frequency is derived
+          from a variable reference supplied at the Reference In connector.EXTernal - clock signal
           supplied by the Clock In connector and the reference frequency is derived from the
           internal precision oscillator.
         - ``*RST`` sets this to INT.
@@ -1381,10 +1382,10 @@ class AwgcontrolClock(SCPICmdRead):
 
         Info:
             - ``INTernal`` - clock signal is generated internally and the reference frequency is
-              derived by the internal oscillator. EFIXed - clock is generated internally and the
+              derived by the internal oscillator.EFIXed - clock is generated internally and the
               reference frequency is derived from a fixed 10 MHz reference supplied at the Reference
-              In connector. EVARiable - clock is generated internally and the reference frequency is
-              derived from a variable reference supplied at the Reference In connector. EXTernal -
+              In connector.EVARiable - clock is generated internally and the reference frequency is
+              derived from a variable reference supplied at the Reference In connector.EXTernal -
               clock signal supplied by the Clock In connector and the reference frequency is derived
               from the internal precision oscillator.
             - ``*RST`` sets this to INT.
@@ -1392,7 +1393,7 @@ class AwgcontrolClock(SCPICmdRead):
         return self._source
 
 
-class AwgcontrolArsettings(SCPICmdWrite):
+class AwgcontrolArsettings(SCPICmdWrite, SCPICmdRead):
     """The ``AWGControl:ARSettings`` command.
 
     Description:
@@ -1404,11 +1405,15 @@ class AwgcontrolArsettings(SCPICmdWrite):
           waveform properties and sequence properties.
 
     Usage:
+        - Using the ``.query()`` method will send the ``AWGControl:ARSettings?`` query.
+        - Using the ``.verify(value)`` method will send the ``AWGControl:ARSettings?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``AWGControl:ARSettings value`` command.
 
     SCPI Syntax:
         ```
         - AWGControl:ARSettings {0|1|ON|OFF}
+        - AWGControl:ARSettings?
         ```
     """
 
@@ -1479,12 +1484,16 @@ class Awgcontrol(SCPICmdRead):
               are defined as part the waveform properties and sequence properties.
 
         Usage:
+            - Using the ``.query()`` method will send the ``AWGControl:ARSettings?`` query.
+            - Using the ``.verify(value)`` method will send the ``AWGControl:ARSettings?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``AWGControl:ARSettings value``
               command.
 
         SCPI Syntax:
             ```
             - AWGControl:ARSettings {0|1|ON|OFF}
+            - AWGControl:ARSettings?
             ```
         """
         return self._arsettings

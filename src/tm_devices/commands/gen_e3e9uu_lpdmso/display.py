@@ -15,15 +15,15 @@ Commands and Queries:
     - DISplay:CH<x>:NORMALColor?
     - DISplay:COLors {NORMal|INVERTed}
     - DISplay:COLors?
-    - DISplay:GLObal:B<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:GLObal:B<x>:STATE {ON|OFF|<NR1>}
     - DISplay:GLObal:B<x>:STATE?
-    - DISplay:GLObal:CH<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:GLObal:CH<x>:STATE {ON|OFF|<NR1>}
     - DISplay:GLObal:CH<x>:STATE?
-    - DISplay:GLObal:MATH<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:GLObal:MATH<x>:STATE {ON|OFF|<NR1>}
     - DISplay:GLObal:MATH<x>:STATE?
-    - DISplay:GLObal:PLOT<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:GLObal:PLOT<x>:STATE {ON|OFF|<NR1>}
     - DISplay:GLObal:PLOT<x>:STATE?
-    - DISplay:GLObal:REF<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:GLObal:REF<x>:STATE {ON|OFF|<NR1>}
     - DISplay:GLObal:REF<x>:STATE?
     - DISplay:INTENSITy:BACKLight {LOW|MEDium|HIGH}
     - DISplay:INTENSITy:BACKLight:AUTODim:ENAble {ON|OFF}
@@ -32,7 +32,7 @@ Commands and Queries:
     - DISplay:INTENSITy:BACKLight:AUTODim:TIMe?
     - DISplay:INTENSITy:BACKLight?
     - DISplay:INTENSITy?
-    - DISplay:MATHFFTView1:AUTOScale {OFF|ON|<NR1>
+    - DISplay:MATHFFTView1:AUTOScale {ON|OFF|<NR1>}
     - DISplay:MATHFFTView1:AUTOScale?
     - DISplay:MATHFFTView1:CURSor:ASOUrce?
     - DISplay:MATHFFTView1:CURSor:BSOUrce?
@@ -73,7 +73,7 @@ Commands and Queries:
     - DISplay:MATHFFTView1:CURSor:WAVEform:BPOSition?
     - DISplay:MATHFFTView1:GRIDlines {HORizontal|VERTical|BOTH}
     - DISplay:MATHFFTView1:GRIDlines?
-    - DISplay:MATHFFTView1:MATH:MATH<x>:STATE {OFF|ON|<NR1>}
+    - DISplay:MATHFFTView1:MATH:MATH<x>:STATE {ON|OFF|<NR1>}
     - DISplay:MATHFFTView1:XAXIS:SCALE {LINEAr|LOG}
     - DISplay:MATHFFTView1:XAXIS:SCALE?
     - DISplay:MATHFFTView1:YAXIS:SCALE {LINEAr|DBM}
@@ -92,7 +92,7 @@ Commands and Queries:
     - DISplay:PERSistence {OFF|AUTO|INFPersist|INFInite|VARpersist|CLEAR}
     - DISplay:PERSistence:RESET
     - DISplay:PERSistence?
-    - DISplay:PLOTView1:AUTOScale {OFF|ON|<NR1>}
+    - DISplay:PLOTView1:AUTOScale {ON|OFF|<NR1>}
     - DISplay:PLOTView1:AUTOScale?
     - DISplay:PLOTView1:CURSor:ASOUrce?
     - DISplay:PLOTView1:CURSor:BSOUrce?
@@ -121,7 +121,7 @@ Commands and Queries:
     - DISplay:PLOTView1:CURSor:SCREEN:BYPOSition?
     - DISplay:PLOTView1:CURSor:SPLITMODE {SAME|SPLIT}
     - DISplay:PLOTView1:CURSor:SPLITMODE?
-    - DISplay:PLOTView1:CURSor:STATE {OFF|ON|<NR1>}
+    - DISplay:PLOTView1:CURSor:STATE {ON|OFF|<NR1>}
     - DISplay:PLOTView1:CURSor:STATE?
     - DISplay:PLOTView1:CURSor:VBArs:APOSition <NR3>
     - DISplay:PLOTView1:CURSor:VBArs:APOSition?
@@ -259,15 +259,15 @@ Commands and Queries:
     - DISplay:WAVEView1:BUS:B<x>:STATE?
     - DISplay:WAVEView1:BUS:B<x>:VERTical:POSition <NR3>
     - DISplay:WAVEView1:BUS:B<x>:VERTical:POSition?
-    - DISplay:WAVEView1:CH<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:WAVEView1:CH<x>:STATE {ON|OFF|<NR1>}
     - DISplay:WAVEView1:CH<x>:STATE?
     - DISplay:WAVEView1:CH<x>:VERTical:POSition <NR3>
     - DISplay:WAVEView1:CH<x>:VERTical:POSition?
     - DISplay:WAVEView1:CH<x>:VERTical:SCAle <NR3>
     - DISplay:WAVEView1:CH<x>:VERTical:SCAle?
-    - DISplay:WAVEView1:CH<x>_D<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:WAVEView1:CH<x>_D<x>:STATE {ON|OFF|<NR1>}
     - DISplay:WAVEView1:CH<x>_D<x>:STATE?
-    - DISplay:WAVEView1:CH<x>_DALL:STATE {<NR1>|OFF|ON}
+    - DISplay:WAVEView1:CH<x>_DALL:STATE {ON|OFF|<NR1>}
     - DISplay:WAVEView1:CH<x>_DALL:STATE?
     - DISplay:WAVEView1:CH<x>_DALL:VERTical:POSition <NR3>
     - DISplay:WAVEView1:CH<x>_DALL:VERTical:POSition?
@@ -297,7 +297,7 @@ Commands and Queries:
     - DISplay:WAVEView1:CURSor:CURSOR1:SCREEN:BYPOSition?
     - DISplay:WAVEView1:CURSor:CURSOR1:SPLITMODE {SAME|SPLIT}
     - DISplay:WAVEView1:CURSor:CURSOR1:SPLITMODE?
-    - DISplay:WAVEView1:CURSor:CURSOR1:STATE {<NR1>|OFF|ON}
+    - DISplay:WAVEView1:CURSor:CURSOR1:STATE {ON|OFF|<NR1>}
     - DISplay:WAVEView1:CURSor:CURSOR1:STATE?
     - DISplay:WAVEView1:CURSor:CURSOR1:VBArs:APOSition <NR3>
     - DISplay:WAVEView1:CURSor:CURSOR1:VBArs:APOSition?
@@ -321,17 +321,17 @@ Commands and Queries:
     - DISplay:WAVEView1:INTENSITy:GRATicule?
     - DISplay:WAVEView1:INTENSITy:WAVEform <NR2>
     - DISplay:WAVEView1:INTENSITy:WAVEform?
-    - DISplay:WAVEView1:MATH:MATH<x>:AUTOScale {<NR1>|OFF|ON}
+    - DISplay:WAVEView1:MATH:MATH<x>:AUTOScale {ON|OFF|<NR1>}
     - DISplay:WAVEView1:MATH:MATH<x>:AUTOScale?
-    - DISplay:WAVEView1:MATH:MATH<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:WAVEView1:MATH:MATH<x>:STATE {ON|OFF|<NR1>}
     - DISplay:WAVEView1:MATH:MATH<x>:STATE?
     - DISplay:WAVEView1:MATH:MATH<x>:VERTical:POSition <NR3>
     - DISplay:WAVEView1:MATH:MATH<x>:VERTical:POSition?
     - DISplay:WAVEView1:MATH:MATH<x>:VERTical:SCAle <NR3>
     - DISplay:WAVEView1:MATH:MATH<x>:VERTical:SCAle?
-    - DISplay:WAVEView1:PLOT:PLOT<x>:AUTOScale {<NR1>|OFF|ON}
+    - DISplay:WAVEView1:PLOT:PLOT<x>:AUTOScale {ON|OFF|<NR1>}
     - DISplay:WAVEView1:PLOT:PLOT<x>:AUTOScale?
-    - DISplay:WAVEView1:PLOT:PLOT<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:WAVEView1:PLOT:PLOT<x>:STATE {ON|OFF|<NR1>}
     - DISplay:WAVEView1:PLOT:PLOT<x>:STATE?
     - DISplay:WAVEView1:PLOT:PLOT<x>:VERTical:POSition <NR3>
     - DISplay:WAVEView1:PLOT:PLOT<x>:VERTical:POSition?
@@ -339,7 +339,7 @@ Commands and Queries:
     - DISplay:WAVEView1:PLOT:PLOT<x>:VERTical:SCAle?
     - DISplay:WAVEView1:REF:REF<x>:FRAMe <NR1>
     - DISplay:WAVEView1:REF:REF<x>:FRAMe?
-    - DISplay:WAVEView1:REF:REF<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:WAVEView1:REF:REF<x>:STATE {ON|OFF|<NR1>}
     - DISplay:WAVEView1:REF:REF<x>:STATE?
     - DISplay:WAVEView1:REF:REF<x>:VERTical:POSition <NR3>
     - DISplay:WAVEView1:REF:REF<x>:VERTical:POSition?
@@ -381,7 +381,7 @@ Commands and Queries:
     - DISplay:WAVEView:CURSor:CURSOR1:ROLOCATION?
     - DISplay:WAVEView:GRIDTYPE {MOVEABLE|FIXED}
     - DISplay:WAVEView:GRIDTYPE?
-    - DISplay:WAVEform {<NR1>|OFF|ON}
+    - DISplay:WAVEform {ON|OFF|<NR1>}
     - DISplay:WAVEform?
     - DISplay?
     ```
@@ -419,7 +419,7 @@ class DisplayWaveform(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:WAVEform {<NR1>|OFF|ON}
+        - DISplay:WAVEform {ON|OFF|<NR1>}
         - DISplay:WAVEform?
         ```
 
@@ -1981,7 +1981,7 @@ class DisplayWaveview1RefRefItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:WAVEView1:REF:REF<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:WAVEView1:REF:REF<x>:STATE {ON|OFF|<NR1>}
         - DISplay:WAVEView1:REF:REF<x>:STATE?
         ```
 
@@ -2057,7 +2057,7 @@ class DisplayWaveview1RefRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:WAVEView1:REF:REF<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:WAVEView1:REF:REF<x>:STATE {ON|OFF|<NR1>}
             - DISplay:WAVEView1:REF:REF<x>:STATE?
             ```
 
@@ -2301,7 +2301,7 @@ class DisplayWaveview1PlotPlotItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:WAVEView1:PLOT:PLOT<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:WAVEView1:PLOT:PLOT<x>:STATE {ON|OFF|<NR1>}
         - DISplay:WAVEView1:PLOT:PLOT<x>:STATE?
         ```
 
@@ -2331,7 +2331,7 @@ class DisplayWaveview1PlotPlotItemAutoscale(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:WAVEView1:PLOT:PLOT<x>:AUTOScale {<NR1>|OFF|ON}
+        - DISplay:WAVEView1:PLOT:PLOT<x>:AUTOScale {ON|OFF|<NR1>}
         - DISplay:WAVEView1:PLOT:PLOT<x>:AUTOScale?
         ```
 
@@ -2386,7 +2386,7 @@ class DisplayWaveview1PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:WAVEView1:PLOT:PLOT<x>:AUTOScale {<NR1>|OFF|ON}
+            - DISplay:WAVEView1:PLOT:PLOT<x>:AUTOScale {ON|OFF|<NR1>}
             - DISplay:WAVEView1:PLOT:PLOT<x>:AUTOScale?
             ```
 
@@ -2417,7 +2417,7 @@ class DisplayWaveview1PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:WAVEView1:PLOT:PLOT<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:WAVEView1:PLOT:PLOT<x>:STATE {ON|OFF|<NR1>}
             - DISplay:WAVEView1:PLOT:PLOT<x>:STATE?
             ```
 
@@ -2633,7 +2633,7 @@ class DisplayWaveview1MathMathItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:WAVEView1:MATH:MATH<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:WAVEView1:MATH:MATH<x>:STATE {ON|OFF|<NR1>}
         - DISplay:WAVEView1:MATH:MATH<x>:STATE?
         ```
 
@@ -2663,7 +2663,7 @@ class DisplayWaveview1MathMathItemAutoscale(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:WAVEView1:MATH:MATH<x>:AUTOScale {<NR1>|OFF|ON}
+        - DISplay:WAVEView1:MATH:MATH<x>:AUTOScale {ON|OFF|<NR1>}
         - DISplay:WAVEView1:MATH:MATH<x>:AUTOScale?
         ```
 
@@ -2718,7 +2718,7 @@ class DisplayWaveview1MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:WAVEView1:MATH:MATH<x>:AUTOScale {<NR1>|OFF|ON}
+            - DISplay:WAVEView1:MATH:MATH<x>:AUTOScale {ON|OFF|<NR1>}
             - DISplay:WAVEView1:MATH:MATH<x>:AUTOScale?
             ```
 
@@ -2749,7 +2749,7 @@ class DisplayWaveview1MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:WAVEView1:MATH:MATH<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:WAVEView1:MATH:MATH<x>:STATE {ON|OFF|<NR1>}
             - DISplay:WAVEView1:MATH:MATH<x>:STATE?
             ```
 
@@ -3585,7 +3585,7 @@ class DisplayWaveview1CursorCursor1State(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:WAVEView1:CURSor:CURSOR1:STATE {<NR1>|OFF|ON}
+        - DISplay:WAVEView1:CURSor:CURSOR1:STATE {ON|OFF|<NR1>}
         - DISplay:WAVEView1:CURSor:CURSOR1:STATE?
         ```
 
@@ -4650,7 +4650,7 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:WAVEView1:CURSor:CURSOR1:STATE {<NR1>|OFF|ON}
+            - DISplay:WAVEView1:CURSor:CURSOR1:STATE {ON|OFF|<NR1>}
             - DISplay:WAVEView1:CURSor:CURSOR1:STATE?
             ```
 
@@ -4910,7 +4910,7 @@ class DisplayWaveview1ChannelDallState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:WAVEView1:CH<x>_DALL:STATE {<NR1>|OFF|ON}
+        - DISplay:WAVEView1:CH<x>_DALL:STATE {ON|OFF|<NR1>}
         - DISplay:WAVEView1:CH<x>_DALL:STATE?
         ```
 
@@ -4959,7 +4959,7 @@ class DisplayWaveview1ChannelDall(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:WAVEView1:CH<x>_DALL:STATE {<NR1>|OFF|ON}
+            - DISplay:WAVEView1:CH<x>_DALL:STATE {ON|OFF|<NR1>}
             - DISplay:WAVEView1:CH<x>_DALL:STATE?
             ```
 
@@ -5004,7 +5004,7 @@ class DisplayWaveview1ChannelDigitalBitState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:WAVEView1:CH<x>_D<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:WAVEView1:CH<x>_D<x>:STATE {ON|OFF|<NR1>}
         - DISplay:WAVEView1:CH<x>_D<x>:STATE?
         ```
 
@@ -5051,7 +5051,7 @@ class DisplayWaveview1ChannelDigitalBit(ValidatedDigitalBit, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:WAVEView1:CH<x>_D<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:WAVEView1:CH<x>_D<x>:STATE {ON|OFF|<NR1>}
             - DISplay:WAVEView1:CH<x>_D<x>:STATE?
             ```
 
@@ -5214,7 +5214,7 @@ class DisplayWaveview1ChannelState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:WAVEView1:CH<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:WAVEView1:CH<x>:STATE {ON|OFF|<NR1>}
         - DISplay:WAVEView1:CH<x>:STATE?
         ```
 
@@ -5266,7 +5266,7 @@ class DisplayWaveview1Channel(ValidatedChannel, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:WAVEView1:CH<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:WAVEView1:CH<x>:STATE {ON|OFF|<NR1>}
             - DISplay:WAVEView1:CH<x>:STATE?
             ```
 
@@ -11376,7 +11376,7 @@ class DisplayPlotview1CursorState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:PLOTView1:CURSor:STATE {OFF|ON|<NR1>}
+        - DISplay:PLOTView1:CURSor:STATE {ON|OFF|<NR1>}
         - DISplay:PLOTView1:CURSor:STATE?
         ```
 
@@ -12445,7 +12445,7 @@ class DisplayPlotview1Cursor(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:PLOTView1:CURSor:STATE {OFF|ON|<NR1>}
+            - DISplay:PLOTView1:CURSor:STATE {ON|OFF|<NR1>}
             - DISplay:PLOTView1:CURSor:STATE?
             ```
 
@@ -12508,7 +12508,7 @@ class DisplayPlotview1Autoscale(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:PLOTView1:AUTOScale {OFF|ON|<NR1>}
+        - DISplay:PLOTView1:AUTOScale {ON|OFF|<NR1>}
         - DISplay:PLOTView1:AUTOScale?
         ```
 
@@ -12563,7 +12563,7 @@ class DisplayPlotview1(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:PLOTView1:AUTOScale {OFF|ON|<NR1>}
+            - DISplay:PLOTView1:AUTOScale {ON|OFF|<NR1>}
             - DISplay:PLOTView1:AUTOScale?
             ```
 
@@ -13345,7 +13345,7 @@ class DisplayMathfftview1MathMathItemState(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - DISplay:MATHFFTView1:MATH:MATH<x>:STATE {OFF|ON|<NR1>}
+        - DISplay:MATHFFTView1:MATH:MATH<x>:STATE {ON|OFF|<NR1>}
         ```
 
     Info:
@@ -13387,7 +13387,7 @@ class DisplayMathfftview1MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:MATHFFTView1:MATH:MATH<x>:STATE {OFF|ON|<NR1>}
+            - DISplay:MATHFFTView1:MATH:MATH<x>:STATE {ON|OFF|<NR1>}
             ```
 
         Info:
@@ -15005,7 +15005,7 @@ class DisplayMathfftview1Autoscale(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:MATHFFTView1:AUTOScale {OFF|ON|<NR1>
+        - DISplay:MATHFFTView1:AUTOScale {ON|OFF|<NR1>}
         - DISplay:MATHFFTView1:AUTOScale?
         ```
 
@@ -15062,7 +15062,7 @@ class DisplayMathfftview1(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:MATHFFTView1:AUTOScale {OFF|ON|<NR1>
+            - DISplay:MATHFFTView1:AUTOScale {ON|OFF|<NR1>}
             - DISplay:MATHFFTView1:AUTOScale?
             ```
 
@@ -15449,7 +15449,7 @@ class DisplayGlobalRefItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:GLObal:REF<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:GLObal:REF<x>:STATE {ON|OFF|<NR1>}
         - DISplay:GLObal:REF<x>:STATE?
         ```
 
@@ -15501,7 +15501,7 @@ class DisplayGlobalRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:GLObal:REF<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:GLObal:REF<x>:STATE {ON|OFF|<NR1>}
             - DISplay:GLObal:REF<x>:STATE?
             ```
 
@@ -15533,7 +15533,7 @@ class DisplayGlobalPlotItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:GLObal:PLOT<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:GLObal:PLOT<x>:STATE {ON|OFF|<NR1>}
         - DISplay:GLObal:PLOT<x>:STATE?
         ```
 
@@ -15585,7 +15585,7 @@ class DisplayGlobalPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:GLObal:PLOT<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:GLObal:PLOT<x>:STATE {ON|OFF|<NR1>}
             - DISplay:GLObal:PLOT<x>:STATE?
             ```
 
@@ -15617,7 +15617,7 @@ class DisplayGlobalMathItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:GLObal:MATH<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:GLObal:MATH<x>:STATE {ON|OFF|<NR1>}
         - DISplay:GLObal:MATH<x>:STATE?
         ```
 
@@ -15665,7 +15665,7 @@ class DisplayGlobalMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:GLObal:MATH<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:GLObal:MATH<x>:STATE {ON|OFF|<NR1>}
             - DISplay:GLObal:MATH<x>:STATE?
             ```
 
@@ -15697,7 +15697,7 @@ class DisplayGlobalChannelState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:GLObal:CH<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:GLObal:CH<x>:STATE {ON|OFF|<NR1>}
         - DISplay:GLObal:CH<x>:STATE?
         ```
 
@@ -15745,7 +15745,7 @@ class DisplayGlobalChannel(ValidatedChannel, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:GLObal:CH<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:GLObal:CH<x>:STATE {ON|OFF|<NR1>}
             - DISplay:GLObal:CH<x>:STATE?
             ```
 
@@ -15776,7 +15776,7 @@ class DisplayGlobalBItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:GLObal:B<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:GLObal:B<x>:STATE {ON|OFF|<NR1>}
         - DISplay:GLObal:B<x>:STATE?
         ```
 
@@ -15823,7 +15823,7 @@ class DisplayGlobalBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:GLObal:B<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:GLObal:B<x>:STATE {ON|OFF|<NR1>}
             - DISplay:GLObal:B<x>:STATE?
             ```
 
@@ -16465,7 +16465,7 @@ class Display(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:WAVEform {<NR1>|OFF|ON}
+            - DISplay:WAVEform {ON|OFF|<NR1>}
             - DISplay:WAVEform?
             ```
 

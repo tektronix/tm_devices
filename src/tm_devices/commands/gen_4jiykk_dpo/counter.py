@@ -34,7 +34,7 @@ Commands and Queries:
     - COUnter:SHOWLog?
     - COUnter:SHOWMeasurement <OFF|ON>
     - COUnter:SHOWMeasurement?
-    - COUnter:STAte {<NR1>|OFF|ON}
+    - COUnter:STAte {ON|OFF|<NR1>}
     - COUnter:STAte?
     - COUnter:TYPe <TIME|FREQuency>
     - COUnter:TYPe?
@@ -188,7 +188,7 @@ class CounterState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - COUnter:STAte {<NR1>|OFF|ON}
+        - COUnter:STAte {ON|OFF|<NR1>}
         - COUnter:STAte?
         ```
 
@@ -1138,7 +1138,7 @@ class Counter(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - COUnter:STAte {<NR1>|OFF|ON}
+            - COUnter:STAte {ON|OFF|<NR1>}
             - COUnter:STAte?
             ```
 

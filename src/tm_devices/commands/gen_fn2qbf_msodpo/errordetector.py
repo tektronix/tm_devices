@@ -21,7 +21,7 @@ Commands and Queries:
     - ERRORDetector:ALIGNPRIMitive:MINus<x>?
     - ERRORDetector:ALIGNPRIMitive:PLUS<x>?
     - ERRORDetector:ALIGNPRIMitive:PLUS?
-    - ERRORDetector:ALIGNPRIMitive:STATE {<NR1>|OFF|ON}
+    - ERRORDetector:ALIGNPRIMitive:STATE {ON|OFF|<NR1>}
     - ERRORDetector:ALIGNPRIMitive:STATE?
     - ERRORDetector:ALIGNPRIMitive:SYMBOL<x> <QString>
     - ERRORDetector:ALIGNPRIMitive:SYMBOL<x>?
@@ -122,13 +122,13 @@ Commands and Queries:
     - ERRORDetector:SCRAMBLED?
     - ERRORDetector:SENDEMAIL {OFF|ON}
     - ERRORDetector:SENDEMAIL?
-    - ERRORDetector:SIGnaltype {SATAGEN<x>|PRBS9|PCIEGEN<x>|CUSTOM|PRBS23|PRBS11|USB3|PRBS16|ANY8B10B|PRBS7}
+    - ERRORDetector:SIGnaltype {SATAGEN<x>|PRBS7|PRBS11|USB3|PCIEGEN<x>|PRBS23|CUSTOM|ANY8B10B|PRBS16|PRBS9}
     - ERRORDetector:SIGnaltype?
     - ERRORDetector:SSC {ON|OFF}
     - ERRORDetector:SSC?
     - ERRORDetector:STANdard <LIST>
     - ERRORDetector:STANdard?
-    - ERRORDetector:STATE {OFF|ON|<NR1>}
+    - ERRORDetector:STATE {ON|OFF|<NR1>}
     - ERRORDetector:STATE?
     - ERRORDetector:STATus?
     - ERRORDetector:STOPWHEN <MANUAL | COUNT | TIME | ERROR>DPO70000SX<MANUAL>
@@ -1313,7 +1313,7 @@ class ErrordetectorState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ERRORDetector:STATE {OFF|ON|<NR1>}
+        - ERRORDetector:STATE {ON|OFF|<NR1>}
         - ERRORDetector:STATE?
         ```
 
@@ -1391,7 +1391,7 @@ class ErrordetectorSignaltype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ERRORDetector:SIGnaltype {SATAGEN<x>|PRBS9|PCIEGEN<x>|CUSTOM|PRBS23|PRBS11|USB3|PRBS16|ANY8B10B|PRBS7}
+        - ERRORDetector:SIGnaltype {SATAGEN<x>|PRBS7|PRBS11|USB3|PCIEGEN<x>|PRBS23|CUSTOM|ANY8B10B|PRBS16|PRBS9}
         - ERRORDetector:SIGnaltype?
         ```
 
@@ -4583,7 +4583,7 @@ class ErrordetectorAlignprimitiveState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ERRORDetector:ALIGNPRIMitive:STATE {<NR1>|OFF|ON}
+        - ERRORDetector:ALIGNPRIMitive:STATE {ON|OFF|<NR1>}
         - ERRORDetector:ALIGNPRIMitive:STATE?
         ```
 
@@ -4820,7 +4820,7 @@ class ErrordetectorAlignprimitive(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:ALIGNPRIMitive:STATE {<NR1>|OFF|ON}
+            - ERRORDetector:ALIGNPRIMitive:STATE {ON|OFF|<NR1>}
             - ERRORDetector:ALIGNPRIMitive:STATE?
             ```
 
@@ -5654,7 +5654,7 @@ class Errordetector(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:SIGnaltype {SATAGEN<x>|PRBS9|PCIEGEN<x>|CUSTOM|PRBS23|PRBS11|USB3|PRBS16|ANY8B10B|PRBS7}
+            - ERRORDetector:SIGnaltype {SATAGEN<x>|PRBS7|PRBS11|USB3|PCIEGEN<x>|PRBS23|CUSTOM|ANY8B10B|PRBS16|PRBS9}
             - ERRORDetector:SIGnaltype?
             ```
 
@@ -5732,7 +5732,7 @@ class Errordetector(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:STATE {OFF|ON|<NR1>}
+            - ERRORDetector:STATE {ON|OFF|<NR1>}
             - ERRORDetector:STATE?
             ```
 

@@ -25,7 +25,7 @@ Commands and Queries:
     - DATa:STARt?
     - DATa:STOP <NR1>
     - DATa:STOP?
-    - DATa:SYNCSOUrces {<NR1>|OFF|ON}
+    - DATa:SYNCSOUrces {ON|OFF|<NR1>}
     - DATa:SYNCSOUrces?
     - DATa?
     ```
@@ -53,7 +53,7 @@ class DataSyncsources(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DATa:SYNCSOUrces {<NR1>|OFF|ON}
+        - DATa:SYNCSOUrces {ON|OFF|<NR1>}
         - DATa:SYNCSOUrces?
         ```
 
@@ -624,7 +624,7 @@ class Data(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DATa:SYNCSOUrces {<NR1>|OFF|ON}
+            - DATa:SYNCSOUrces {ON|OFF|<NR1>}
             - DATa:SYNCSOUrces?
             ```
 

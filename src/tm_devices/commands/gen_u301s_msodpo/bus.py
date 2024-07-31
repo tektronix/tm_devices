@@ -30,7 +30,7 @@ Commands and Queries:
     - BUS:B<x>:FLEXray:SIGnal?
     - BUS:B<x>:FLEXray:SOUrce {CH<x>|D<x>}
     - BUS:B<x>:FLEXray:SOUrce?
-    - BUS:B<x>:I2C:ADDRess:RWINClude {<NR1>|OFF|ON}
+    - BUS:B<x>:I2C:ADDRess:RWINClude {ON|OFF|<NR1>}
     - BUS:B<x>:I2C:ADDRess:RWINClude?
     - BUS:B<x>:I2C:CLOCK:SOUrce {CH<x>|D<x>}
     - BUS:B<x>:I2C:CLOCK:SOUrce?
@@ -122,7 +122,7 @@ Commands and Queries:
     - BUS:B<x>:SPI:SS:POLARity?
     - BUS:B<x>:SPI:SS:SOUrce {CH<x>|D<x>}
     - BUS:B<x>:SPI:SS:SOUrce?
-    - BUS:B<x>:STATE {<NR1>|OFF|ON}
+    - BUS:B<x>:STATE {ON|OFF|<NR1>}
     - BUS:B<x>:STATE?
     - BUS:B<x>:TYPE {I2C|SPI|CAN|RS232C|PARallel|LIN}
     - BUS:LOWerthreshold:CH<x> {<NR3>|ECL|TTL}
@@ -471,7 +471,7 @@ class BusBItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:STATE {<NR1>|OFF|ON}
+        - BUS:B<x>:STATE {ON|OFF|<NR1>}
         - BUS:B<x>:STATE?
         ```
 
@@ -3458,7 +3458,7 @@ class BusBItemI2cAddressRwinclude(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:I2C:ADDRess:RWINClude {<NR1>|OFF|ON}
+        - BUS:B<x>:I2C:ADDRess:RWINClude {ON|OFF|<NR1>}
         - BUS:B<x>:I2C:ADDRess:RWINClude?
         ```
 
@@ -3500,7 +3500,7 @@ class BusBItemI2cAddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:I2C:ADDRess:RWINClude {<NR1>|OFF|ON}
+            - BUS:B<x>:I2C:ADDRess:RWINClude {ON|OFF|<NR1>}
             - BUS:B<x>:I2C:ADDRess:RWINClude?
             ```
 
@@ -4459,7 +4459,7 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:STATE {<NR1>|OFF|ON}
+            - BUS:B<x>:STATE {ON|OFF|<NR1>}
             - BUS:B<x>:STATE?
             ```
 
