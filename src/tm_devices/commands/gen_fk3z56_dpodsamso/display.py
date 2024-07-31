@@ -11,7 +11,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - DISplay:CLOCk {<NR1>|ON|OFF}
+    - DISplay:CLOCk {ON|OFF|<NR1>}
     - DISplay:CLOCk?
     - DISplay:COLOr:MATHCOLOr {DEFAULT|INHERIT}
     - DISplay:COLOr:MATHCOLOr?
@@ -54,13 +54,13 @@ Commands and Queries:
     - DISplay:FORMat?
     - DISplay:GRAticule {CROSSHair|FRAme|FULl|GRId|IRE|NTSC|MV|PAL}
     - DISplay:GRAticule?
-    - DISplay:INTENSITy:AUTOBright {OFF|ON|<NR1>}
+    - DISplay:INTENSITy:AUTOBright {ON|OFF|<NR1>}
     - DISplay:INTENSITy:AUTOBright?
     - DISplay:INTENSITy:BACKLight {LOW|MEDium|HIGH}
     - DISplay:INTENSITy:BACKLight?
     - DISplay:INTENSITy:CUSTOMPct <NRF>
     - DISplay:INTENSITy:CUSTOMPct?
-    - DISplay:INTENSITy:SCREENSAVER {OFF|ON|<NR1>}
+    - DISplay:INTENSITy:SCREENSAVER {ON|OFF|<NR1>}
     - DISplay:INTENSITy:SCREENSAVER?
     - DISplay:INTENSITy:SCREENSAVERDELAY {<NR1>}
     - DISplay:INTENSITy:SCREENSAVERDELAY?
@@ -84,24 +84,24 @@ Commands and Queries:
     - DISplay:SCREENTExt:LABel<x>:FONTSTyle?
     - DISplay:SCREENTExt:LABel<x>:NAMe <QString>
     - DISplay:SCREENTExt:LABel<x>:NAMe?
-    - DISplay:SCREENTExt:LABel<x>:STATE {<NR1>|OFF|ON}
+    - DISplay:SCREENTExt:LABel<x>:STATE {ON|OFF|<NR1>}
     - DISplay:SCREENTExt:LABel<x>:STATE?
     - DISplay:SCREENTExt:LABel<x>:XPOS <NR1>
     - DISplay:SCREENTExt:LABel<x>:YPOS <NR1>
     - DISplay:SCREENTExt:LABel<x>?
-    - DISplay:SCREENTExt:STATE {<NR1>|ON|OFF}
+    - DISplay:SCREENTExt:STATE {ON|OFF|<NR1>}
     - DISplay:SCREENTExt?
-    - DISplay:SHOWREmote {<NR1>|ON|OFF}
+    - DISplay:SHOWREmote {ON|OFF|<NR1>}
     - DISplay:SHOWREmote?
     - DISplay:STYle {DOTs|INTENSIFied|VECtors}
     - DISplay:STYle?
     - DISplay:TRIGBar {OFF|SHORt|LONG}
     - DISplay:TRIGBar?
-    - DISplay:TRIGT {<NR1>|OFF|ON}
+    - DISplay:TRIGT {ON|OFF|<NR1>}
     - DISplay:TRIGT?
     - DISplay:VARpersist <NR3>
     - DISplay:VARpersist?
-    - DISplay:WAVEform {<NR1>|OFF|ON}
+    - DISplay:WAVEform {ON|OFF|<NR1>}
     - DISplay:WAVEform?
     - DISplay?
     ```
@@ -139,7 +139,7 @@ class DisplayWaveform(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:WAVEform {<NR1>|OFF|ON}
+        - DISplay:WAVEform {ON|OFF|<NR1>}
         - DISplay:WAVEform?
         ```
 
@@ -190,7 +190,7 @@ class DisplayTrigt(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:TRIGT {<NR1>|OFF|ON}
+        - DISplay:TRIGT {ON|OFF|<NR1>}
         - DISplay:TRIGT?
         ```
 
@@ -280,7 +280,7 @@ class DisplayShowremote(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:SHOWREmote {<NR1>|ON|OFF}
+        - DISplay:SHOWREmote {ON|OFF|<NR1>}
         - DISplay:SHOWREmote?
         ```
 
@@ -304,7 +304,7 @@ class DisplayScreentextState(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - DISplay:SCREENTExt:STATE {<NR1>|ON|OFF}
+        - DISplay:SCREENTExt:STATE {ON|OFF|<NR1>}
         ```
 
     Info:
@@ -374,7 +374,7 @@ class DisplayScreentextLabelItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:SCREENTExt:LABel<x>:STATE {<NR1>|OFF|ON}
+        - DISplay:SCREENTExt:LABel<x>:STATE {ON|OFF|<NR1>}
         - DISplay:SCREENTExt:LABel<x>:STATE?
         ```
 
@@ -795,7 +795,7 @@ class DisplayScreentextLabelItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:SCREENTExt:LABel<x>:STATE {<NR1>|OFF|ON}
+            - DISplay:SCREENTExt:LABel<x>:STATE {ON|OFF|<NR1>}
             - DISplay:SCREENTExt:LABel<x>:STATE?
             ```
 
@@ -925,7 +925,7 @@ class DisplayScreentext(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:SCREENTExt:STATE {<NR1>|ON|OFF}
+            - DISplay:SCREENTExt:STATE {ON|OFF|<NR1>}
             ```
 
         Info:
@@ -1184,7 +1184,7 @@ class DisplayIntensityScreensaver(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:INTENSITy:SCREENSAVER {OFF|ON|<NR1>}
+        - DISplay:INTENSITy:SCREENSAVER {ON|OFF|<NR1>}
         - DISplay:INTENSITy:SCREENSAVER?
         ```
 
@@ -1270,7 +1270,7 @@ class DisplayIntensityAutobright(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:INTENSITy:AUTOBright {OFF|ON|<NR1>}
+        - DISplay:INTENSITy:AUTOBright {ON|OFF|<NR1>}
         - DISplay:INTENSITy:AUTOBright?
         ```
 
@@ -1340,7 +1340,7 @@ class DisplayIntensity(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:INTENSITy:AUTOBright {OFF|ON|<NR1>}
+            - DISplay:INTENSITy:AUTOBright {ON|OFF|<NR1>}
             - DISplay:INTENSITy:AUTOBright?
             ```
 
@@ -1438,7 +1438,7 @@ class DisplayIntensity(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:INTENSITy:SCREENSAVER {OFF|ON|<NR1>}
+            - DISplay:INTENSITy:SCREENSAVER {ON|OFF|<NR1>}
             - DISplay:INTENSITy:SCREENSAVER?
             ```
 
@@ -2709,9 +2709,8 @@ class DisplayClock(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:CLOCk`` command.
 
     Description:
-        - This command sets or queries the display of the date and time. This is equivalent to
-          selecting Display Date & Time from the Display menu. The query form of this command
-          returns an ON (1) or an OFF (0).
+        - This command specifies whether the oscilloscope displays the date and time. The query form
+          of this command returns an ON (1) or an OFF (0).
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:CLOCk?`` query.
@@ -2721,15 +2720,15 @@ class DisplayClock(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:CLOCk {<NR1>|ON|OFF}
+        - DISplay:CLOCk {ON|OFF|<NR1>}
         - DISplay:CLOCk?
         ```
 
     Info:
-        - ``<NR1>`` = 0 disables display of date and time; any other value enables display of date
-          and time.
-        - ``ON`` enables display of date and time.
-        - ``OFF`` disables display of date and time.
+        - ``ON`` enables the display of date and time.
+        - ``OFF`` disables the display of date and time.
+        - ``<NR1>`` = 0 disables the display of date and time; any other value enables the display
+          of date and time.
     """
 
 
@@ -2797,9 +2796,8 @@ class Display(SCPICmdRead):
         """Return the ``DISplay:CLOCk`` command.
 
         Description:
-            - This command sets or queries the display of the date and time. This is equivalent to
-              selecting Display Date & Time from the Display menu. The query form of this command
-              returns an ON (1) or an OFF (0).
+            - This command specifies whether the oscilloscope displays the date and time. The query
+              form of this command returns an ON (1) or an OFF (0).
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:CLOCk?`` query.
@@ -2809,15 +2807,15 @@ class Display(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:CLOCk {<NR1>|ON|OFF}
+            - DISplay:CLOCk {ON|OFF|<NR1>}
             - DISplay:CLOCk?
             ```
 
         Info:
-            - ``<NR1>`` = 0 disables display of date and time; any other value enables display of
-              date and time.
-            - ``ON`` enables display of date and time.
-            - ``OFF`` disables display of date and time.
+            - ``ON`` enables the display of date and time.
+            - ``OFF`` disables the display of date and time.
+            - ``<NR1>`` = 0 disables the display of date and time; any other value enables the
+              display of date and time.
         """
         return self._clock
 
@@ -3134,7 +3132,7 @@ class Display(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:SHOWREmote {<NR1>|ON|OFF}
+            - DISplay:SHOWREmote {ON|OFF|<NR1>}
             - DISplay:SHOWREmote?
             ```
 
@@ -3225,7 +3223,7 @@ class Display(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:TRIGT {<NR1>|OFF|ON}
+            - DISplay:TRIGT {ON|OFF|<NR1>}
             - DISplay:TRIGT?
             ```
 
@@ -3278,7 +3276,7 @@ class Display(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:WAVEform {<NR1>|OFF|ON}
+            - DISplay:WAVEform {ON|OFF|<NR1>}
             - DISplay:WAVEform?
             ```
 

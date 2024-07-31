@@ -59,11 +59,11 @@ Commands and Queries:
     - HORizontal:FASTframe:SELECTED:SOUrce?
     - HORizontal:FASTframe:SEQuence {FIRst|LAST}
     - HORizontal:FASTframe:SEQuence?
-    - HORizontal:FASTframe:SINGLEFramemath {<NR1>|OFF|ON}
+    - HORizontal:FASTframe:SINGLEFramemath {ON|OFF|<NR1>}
     - HORizontal:FASTframe:SINGLEFramemath?
-    - HORizontal:FASTframe:SIXteenbit {<NR1>|OFF|ON}
+    - HORizontal:FASTframe:SIXteenbit {ON|OFF|<NR1>}
     - HORizontal:FASTframe:SIXteenbit?
-    - HORizontal:FASTframe:STATE {<NR1>|ON|OFF}
+    - HORizontal:FASTframe:STATE {ON|OFF|<NR1>}
     - HORizontal:FASTframe:STATE?
     - HORizontal:FASTframe:SUMFrame {NONe|AVErage|ENVelope}
     - HORizontal:FASTframe:SUMFrame?
@@ -98,7 +98,7 @@ Commands and Queries:
     - HORizontal:FASTframe:XZEro:SELECTED:CH<x>?
     - HORizontal:FASTframe:XZEro:SELECTED:REF<x>?
     - HORizontal:FASTframe?
-    - HORizontal:MAIn:DELay:MODe {<NR1>|ON|OFF}
+    - HORizontal:MAIn:DELay:MODe {ON|OFF|<NR1>}
     - HORizontal:MAIn:DELay:MODe?
     - HORizontal:MAIn:DELay:POSition <NR3>
     - HORizontal:MAIn:DELay:POSition?
@@ -770,7 +770,7 @@ class HorizontalMainDelayMode(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HORizontal:MAIn:DELay:MODe {<NR1>|ON|OFF}
+        - HORizontal:MAIn:DELay:MODe {ON|OFF|<NR1>}
         - HORizontal:MAIn:DELay:MODe?
         ```
 
@@ -819,7 +819,7 @@ class HorizontalMainDelay(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HORizontal:MAIn:DELay:MODe {<NR1>|ON|OFF}
+            - HORizontal:MAIn:DELay:MODe {ON|OFF|<NR1>}
             - HORizontal:MAIn:DELay:MODe?
             ```
 
@@ -2961,11 +2961,10 @@ class HorizontalFastframeState(SCPICmdWrite, SCPICmdRead):
     """The ``HORizontal:FASTframe:STATE`` command.
 
     Description:
-        - This command sets or queries the state of FastFrame acquisition. This is equivalent to
-          setting FastFrame to On in the FastFrame Setup menu. FastFrame lets users capture a series
-          of triggered acquisitions with minimal time between them. The digitizing instrument in
-          FastFrame mode is ready to accept a continuous burst of triggers 400 ms after the
-          controller sends the ``ACQUIRE:STATE RUN`` command.
+        - This command sets or returns the state of FastFrame. Acquisition modes Envelope and
+          Average are not compatible with FastFrame. If FastFrame is on, an attempted set to those
+          acquisition modes will fail and revert to Sample mode. If FastFrame is turned on while in
+          one of those acquisition modes, the acquisition mode is changed to Sample.
 
     Usage:
         - Using the ``.query()`` method will send the ``HORizontal:FASTframe:STATE?`` query.
@@ -2976,15 +2975,14 @@ class HorizontalFastframeState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HORizontal:FASTframe:STATE {<NR1>|ON|OFF}
+        - HORizontal:FASTframe:STATE {ON|OFF|<NR1>}
         - HORizontal:FASTframe:STATE?
         ```
 
     Info:
-        - ``<NR1>`` = 0 turns off horizontal FastFrame; any other value turns on horizontal
-          FastFrame.
-        - ``<ON>`` turns on horizontal FastFrame.
-        - ``<OFF>`` turns off horizontal FastFrame.
+        - ``ON`` indicates FastFrame is active.
+        - ``OFF`` indicates that FastFrame is off.
+        - ``<NR1>`` A 0 turns off FastFrame; any other value activates FastFrame.
     """
 
 
@@ -3003,7 +3001,7 @@ class HorizontalFastframeSixteenbit(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HORizontal:FASTframe:SIXteenbit {<NR1>|OFF|ON}
+        - HORizontal:FASTframe:SIXteenbit {ON|OFF|<NR1>}
         - HORizontal:FASTframe:SIXteenbit?
         ```
 
@@ -3032,7 +3030,7 @@ class HorizontalFastframeSingleframemath(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HORizontal:FASTframe:SINGLEFramemath {<NR1>|OFF|ON}
+        - HORizontal:FASTframe:SINGLEFramemath {ON|OFF|<NR1>}
         - HORizontal:FASTframe:SINGLEFramemath?
         ```
 
@@ -4500,7 +4498,7 @@ class HorizontalFastframe(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HORizontal:FASTframe:SINGLEFramemath {<NR1>|OFF|ON}
+            - HORizontal:FASTframe:SINGLEFramemath {ON|OFF|<NR1>}
             - HORizontal:FASTframe:SINGLEFramemath?
             ```
 
@@ -4528,7 +4526,7 @@ class HorizontalFastframe(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HORizontal:FASTframe:SIXteenbit {<NR1>|OFF|ON}
+            - HORizontal:FASTframe:SIXteenbit {ON|OFF|<NR1>}
             - HORizontal:FASTframe:SIXteenbit?
             ```
 
@@ -4545,11 +4543,10 @@ class HorizontalFastframe(SCPICmdRead):
         """Return the ``HORizontal:FASTframe:STATE`` command.
 
         Description:
-            - This command sets or queries the state of FastFrame acquisition. This is equivalent to
-              setting FastFrame to On in the FastFrame Setup menu. FastFrame lets users capture a
-              series of triggered acquisitions with minimal time between them. The digitizing
-              instrument in FastFrame mode is ready to accept a continuous burst of triggers 400 ms
-              after the controller sends the ``ACQUIRE:STATE RUN`` command.
+            - This command sets or returns the state of FastFrame. Acquisition modes Envelope and
+              Average are not compatible with FastFrame. If FastFrame is on, an attempted set to
+              those acquisition modes will fail and revert to Sample mode. If FastFrame is turned on
+              while in one of those acquisition modes, the acquisition mode is changed to Sample.
 
         Usage:
             - Using the ``.query()`` method will send the ``HORizontal:FASTframe:STATE?`` query.
@@ -4560,15 +4557,14 @@ class HorizontalFastframe(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HORizontal:FASTframe:STATE {<NR1>|ON|OFF}
+            - HORizontal:FASTframe:STATE {ON|OFF|<NR1>}
             - HORizontal:FASTframe:STATE?
             ```
 
         Info:
-            - ``<NR1>`` = 0 turns off horizontal FastFrame; any other value turns on horizontal
-              FastFrame.
-            - ``<ON>`` turns on horizontal FastFrame.
-            - ``<OFF>`` turns off horizontal FastFrame.
+            - ``ON`` indicates FastFrame is active.
+            - ``OFF`` indicates that FastFrame is off.
+            - ``<NR1>`` A 0 turns off FastFrame; any other value activates FastFrame.
         """
         return self._state
 

@@ -43,7 +43,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:MINImum?
     - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>}
     - MEASUrement:MEAS<x>:SOUrce1?
-    - MEASUrement:MEAS<x>:STATE {OFF|ON|<NR1>}
+    - MEASUrement:MEAS<x>:STATE {ON|OFF|<NR1>}
     - MEASUrement:MEAS<x>:STATE?
     - MEASUrement:MEAS<x>:STDdev?
     - MEASUrement:MEAS<x>:TYPe {AMPlitude|AREa|BURst|CARea|CMEan|CRMs|DELay|FALL|FREQuency|HIGH|HITS|LOW|MAXimum|MEAN|MEDian|MINImum|NDUty|NEDGECount|NOVershoot|NPULSECount|NWIdth|PEAKHits|PDUty|PEDGECount|PERIod|PHAse|PK2Pk|POVershoot|PPULSECount|PWIdth|RISe|RMS|SIGMA<x>|STDdev|TOVershoot|WAVEFORMS}
@@ -2277,7 +2277,7 @@ class MeasurementMeasItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:STATE {OFF|ON|<NR1>}
+        - MEASUrement:MEAS<x>:STATE {ON|OFF|<NR1>}
         - MEASUrement:MEAS<x>:STATE?
         ```
 
@@ -2769,7 +2769,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:STATE {OFF|ON|<NR1>}
+            - MEASUrement:MEAS<x>:STATE {ON|OFF|<NR1>}
             - MEASUrement:MEAS<x>:STATE?
             ```
 

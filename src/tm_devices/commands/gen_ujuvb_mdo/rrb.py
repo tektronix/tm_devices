@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - RRB:STATE {<NR1>|OFF|ON}
+    - RRB:STATE {ON|OFF|<NR1>}
     - RRB:STATE?
     ```
 """
@@ -37,7 +37,7 @@ class RrbState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - RRB:STATE {<NR1>|OFF|ON}
+        - RRB:STATE {ON|OFF|<NR1>}
         - RRB:STATE?
         ```
 
@@ -79,7 +79,7 @@ class Rrb(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - RRB:STATE {<NR1>|OFF|ON}
+            - RRB:STATE {ON|OFF|<NR1>}
             - RRB:STATE?
             ```
 

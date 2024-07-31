@@ -10,27 +10,37 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - BWAVeform:AMPLitude <amplitude>
+    - BWAVeform:AMPLitude?
     - BWAVeform:AUTO {length|cycle|duration|freqency|sample rate}
     - BWAVeform:AUTO?
     - BWAVeform:COMPile
     - BWAVeform:COMPile:CASSign {0|1|OFF|ON}
     - BWAVeform:COMPile:CASSign?
     - BWAVeform:COMPile:CHANnel {NONE|<channel_number>}
+    - BWAVeform:COMPile:CHANnel?
     - BWAVeform:COMPile:NAME <waveform_name>
     - BWAVeform:COMPile:NAME?
     - BWAVeform:COMPile:PLAY {0|1|OFF|ON}
     - BWAVeform:COMPile:PLAY?
     - BWAVeform:CYCLe <cycle>
+    - BWAVeform:CYCLe?
     - BWAVeform:FDRange {OFF|ON|0|1}
+    - BWAVeform:FDRange?
     - BWAVeform:FREQuency <frequency>
+    - BWAVeform:FREQuency?
     - BWAVeform:FUNCtion {sine|square|triangle|ramp|noise|DC}
     - BWAVeform:FUNCtion?
     - BWAVeform:HIGH <high>
+    - BWAVeform:HIGH?
     - BWAVeform:LENGth <length>
+    - BWAVeform:LENGth?
     - BWAVeform:LOW <low>
+    - BWAVeform:LOW?
     - BWAVeform:OFFSet <offset>
+    - BWAVeform:OFFSet?
     - BWAVeform:RESet
     - BWAVeform:SRATe <sample_rate>
+    - BWAVeform:SRATe?
     ```
 """
 
@@ -42,7 +52,7 @@ if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
 
 
-class BwaveformSrate(SCPICmdWrite):
+class BwaveformSrate(SCPICmdWrite, SCPICmdRead):
     """The ``BWAVeform:SRATe`` command.
 
     Description:
@@ -50,11 +60,15 @@ class BwaveformSrate(SCPICmdWrite):
           Waveform editor plug-in.
 
     Usage:
+        - Using the ``.query()`` method will send the ``BWAVeform:SRATe?`` query.
+        - Using the ``.verify(value)`` method will send the ``BWAVeform:SRATe?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BWAVeform:SRATe value`` command.
 
     SCPI Syntax:
         ```
         - BWAVeform:SRATe <sample_rate>
+        - BWAVeform:SRATe?
         ```
     """
 
@@ -75,7 +89,7 @@ class BwaveformReset(SCPICmdWriteNoArguments):
     """
 
 
-class BwaveformOffset(SCPICmdWrite):
+class BwaveformOffset(SCPICmdWrite, SCPICmdRead):
     """The ``BWAVeform:OFFSet`` command.
 
     Description:
@@ -85,16 +99,20 @@ class BwaveformOffset(SCPICmdWrite):
           ``BWAVEFORM:FDRANGE`` for more information.
 
     Usage:
+        - Using the ``.query()`` method will send the ``BWAVeform:OFFSet?`` query.
+        - Using the ``.verify(value)`` method will send the ``BWAVeform:OFFSet?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BWAVeform:OFFSet value`` command.
 
     SCPI Syntax:
         ```
         - BWAVeform:OFFSet <offset>
+        - BWAVeform:OFFSet?
         ```
     """
 
 
-class BwaveformLow(SCPICmdWrite):
+class BwaveformLow(SCPICmdWrite, SCPICmdRead):
     """The ``BWAVeform:LOW`` command.
 
     Description:
@@ -102,16 +120,20 @@ class BwaveformLow(SCPICmdWrite):
           Waveform editor plug-in.
 
     Usage:
+        - Using the ``.query()`` method will send the ``BWAVeform:LOW?`` query.
+        - Using the ``.verify(value)`` method will send the ``BWAVeform:LOW?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BWAVeform:LOW value`` command.
 
     SCPI Syntax:
         ```
         - BWAVeform:LOW <low>
+        - BWAVeform:LOW?
         ```
     """
 
 
-class BwaveformLength(SCPICmdWrite):
+class BwaveformLength(SCPICmdWrite, SCPICmdRead):
     """The ``BWAVeform:LENGth`` command.
 
     Description:
@@ -119,16 +141,20 @@ class BwaveformLength(SCPICmdWrite):
           editor plug-in.
 
     Usage:
+        - Using the ``.query()`` method will send the ``BWAVeform:LENGth?`` query.
+        - Using the ``.verify(value)`` method will send the ``BWAVeform:LENGth?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BWAVeform:LENGth value`` command.
 
     SCPI Syntax:
         ```
         - BWAVeform:LENGth <length>
+        - BWAVeform:LENGth?
         ```
     """
 
 
-class BwaveformHigh(SCPICmdWrite):
+class BwaveformHigh(SCPICmdWrite, SCPICmdRead):
     """The ``BWAVeform:HIGH`` command.
 
     Description:
@@ -136,11 +162,15 @@ class BwaveformHigh(SCPICmdWrite):
           Waveform editor plug-in.
 
     Usage:
+        - Using the ``.query()`` method will send the ``BWAVeform:HIGH?`` query.
+        - Using the ``.verify(value)`` method will send the ``BWAVeform:HIGH?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BWAVeform:HIGH value`` command.
 
     SCPI Syntax:
         ```
         - BWAVeform:HIGH <high>
+        - BWAVeform:HIGH?
         ```
     """
 
@@ -168,7 +198,7 @@ class BwaveformFunction(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class BwaveformFrequency(SCPICmdWrite):
+class BwaveformFrequency(SCPICmdWrite, SCPICmdRead):
     """The ``BWAVeform:FREQuency`` command.
 
     Description:
@@ -176,16 +206,20 @@ class BwaveformFrequency(SCPICmdWrite):
           editor plug-in.
 
     Usage:
+        - Using the ``.query()`` method will send the ``BWAVeform:FREQuency?`` query.
+        - Using the ``.verify(value)`` method will send the ``BWAVeform:FREQuency?`` query and raise
+          an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BWAVeform:FREQuency value`` command.
 
     SCPI Syntax:
         ```
         - BWAVeform:FREQuency <frequency>
+        - BWAVeform:FREQuency?
         ```
     """
 
 
-class BwaveformFdrange(SCPICmdWrite):
+class BwaveformFdrange(SCPICmdWrite, SCPICmdRead):
     """The ``BWAVeform:FDRange`` command.
 
     Description:
@@ -204,16 +238,20 @@ class BwaveformFdrange(SCPICmdWrite):
           The control is not available for a DC waveform.
 
     Usage:
+        - Using the ``.query()`` method will send the ``BWAVeform:FDRange?`` query.
+        - Using the ``.verify(value)`` method will send the ``BWAVeform:FDRange?`` query and raise
+          an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BWAVeform:FDRange value`` command.
 
     SCPI Syntax:
         ```
         - BWAVeform:FDRange {OFF|ON|0|1}
+        - BWAVeform:FDRange?
         ```
     """
 
 
-class BwaveformCycle(SCPICmdWrite):
+class BwaveformCycle(SCPICmdWrite, SCPICmdRead):
     """The ``BWAVeform:CYCLe`` command.
 
     Description:
@@ -221,11 +259,15 @@ class BwaveformCycle(SCPICmdWrite):
           the waveform created by the Basic Waveform editor plug-in.
 
     Usage:
+        - Using the ``.query()`` method will send the ``BWAVeform:CYCLe?`` query.
+        - Using the ``.verify(value)`` method will send the ``BWAVeform:CYCLe?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BWAVeform:CYCLe value`` command.
 
     SCPI Syntax:
         ```
         - BWAVeform:CYCLe <cycle>
+        - BWAVeform:CYCLe?
         ```
     """
 
@@ -273,7 +315,7 @@ class BwaveformCompileName(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class BwaveformCompileChannel(SCPICmdWrite):
+class BwaveformCompileChannel(SCPICmdWrite, SCPICmdRead):
     """The ``BWAVeform:COMPile:CHANnel`` command.
 
     Description:
@@ -282,12 +324,16 @@ class BwaveformCompileChannel(SCPICmdWrite):
           and offset range.
 
     Usage:
+        - Using the ``.query()`` method will send the ``BWAVeform:COMPile:CHANnel?`` query.
+        - Using the ``.verify(value)`` method will send the ``BWAVeform:COMPile:CHANnel?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BWAVeform:COMPile:CHANnel value``
           command.
 
     SCPI Syntax:
         ```
         - BWAVeform:COMPile:CHANnel {NONE|<channel_number>}
+        - BWAVeform:COMPile:CHANnel?
         ```
     """
 
@@ -378,12 +424,16 @@ class BwaveformCompile(SCPICmdWriteNoArguments, SCPICmdRead):
               amplitude and offset range.
 
         Usage:
+            - Using the ``.query()`` method will send the ``BWAVeform:COMPile:CHANnel?`` query.
+            - Using the ``.verify(value)`` method will send the ``BWAVeform:COMPile:CHANnel?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``BWAVeform:COMPile:CHANnel value``
               command.
 
         SCPI Syntax:
             ```
             - BWAVeform:COMPile:CHANnel {NONE|<channel_number>}
+            - BWAVeform:COMPile:CHANnel?
             ```
         """
         return self._channel
@@ -460,7 +510,7 @@ class BwaveformAuto(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class BwaveformAmplitude(SCPICmdWrite):
+class BwaveformAmplitude(SCPICmdWrite, SCPICmdRead):
     """The ``BWAVeform:AMPLitude`` command.
 
     Description:
@@ -470,11 +520,15 @@ class BwaveformAmplitude(SCPICmdWrite):
           command ``BWAVEFORM:FDRANGE`` for more information.
 
     Usage:
+        - Using the ``.query()`` method will send the ``BWAVeform:AMPLitude?`` query.
+        - Using the ``.verify(value)`` method will send the ``BWAVeform:AMPLitude?`` query and raise
+          an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BWAVeform:AMPLitude value`` command.
 
     SCPI Syntax:
         ```
         - BWAVeform:AMPLitude <amplitude>
+        - BWAVeform:AMPLitude?
         ```
     """
 
@@ -531,12 +585,16 @@ class Bwaveform(SCPICmdRead):
               to the command ``BWAVEFORM:FDRANGE`` for more information.
 
         Usage:
+            - Using the ``.query()`` method will send the ``BWAVeform:AMPLitude?`` query.
+            - Using the ``.verify(value)`` method will send the ``BWAVeform:AMPLitude?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``BWAVeform:AMPLitude value``
               command.
 
         SCPI Syntax:
             ```
             - BWAVeform:AMPLitude <amplitude>
+            - BWAVeform:AMPLitude?
             ```
         """
         return self._amplitude
@@ -599,11 +657,15 @@ class Bwaveform(SCPICmdRead):
               for the waveform created by the Basic Waveform editor plug-in.
 
         Usage:
+            - Using the ``.query()`` method will send the ``BWAVeform:CYCLe?`` query.
+            - Using the ``.verify(value)`` method will send the ``BWAVeform:CYCLe?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``BWAVeform:CYCLe value`` command.
 
         SCPI Syntax:
             ```
             - BWAVeform:CYCLe <cycle>
+            - BWAVeform:CYCLe?
             ```
         """
         return self._cycle
@@ -629,11 +691,15 @@ class Bwaveform(SCPICmdRead):
               available for a DC waveform.
 
         Usage:
+            - Using the ``.query()`` method will send the ``BWAVeform:FDRange?`` query.
+            - Using the ``.verify(value)`` method will send the ``BWAVeform:FDRange?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``BWAVeform:FDRange value`` command.
 
         SCPI Syntax:
             ```
             - BWAVeform:FDRange {OFF|ON|0|1}
+            - BWAVeform:FDRange?
             ```
         """
         return self._fdrange
@@ -647,12 +713,16 @@ class Bwaveform(SCPICmdRead):
               Waveform editor plug-in.
 
         Usage:
+            - Using the ``.query()`` method will send the ``BWAVeform:FREQuency?`` query.
+            - Using the ``.verify(value)`` method will send the ``BWAVeform:FREQuency?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``BWAVeform:FREQuency value``
               command.
 
         SCPI Syntax:
             ```
             - BWAVeform:FREQuency <frequency>
+            - BWAVeform:FREQuency?
             ```
         """
         return self._frequency
@@ -690,11 +760,15 @@ class Bwaveform(SCPICmdRead):
               Basic Waveform editor plug-in.
 
         Usage:
+            - Using the ``.query()`` method will send the ``BWAVeform:HIGH?`` query.
+            - Using the ``.verify(value)`` method will send the ``BWAVeform:HIGH?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``BWAVeform:HIGH value`` command.
 
         SCPI Syntax:
             ```
             - BWAVeform:HIGH <high>
+            - BWAVeform:HIGH?
             ```
         """
         return self._high
@@ -708,11 +782,15 @@ class Bwaveform(SCPICmdRead):
               editor plug-in.
 
         Usage:
+            - Using the ``.query()`` method will send the ``BWAVeform:LENGth?`` query.
+            - Using the ``.verify(value)`` method will send the ``BWAVeform:LENGth?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``BWAVeform:LENGth value`` command.
 
         SCPI Syntax:
             ```
             - BWAVeform:LENGth <length>
+            - BWAVeform:LENGth?
             ```
         """
         return self._length
@@ -726,11 +804,15 @@ class Bwaveform(SCPICmdRead):
               Basic Waveform editor plug-in.
 
         Usage:
+            - Using the ``.query()`` method will send the ``BWAVeform:LOW?`` query.
+            - Using the ``.verify(value)`` method will send the ``BWAVeform:LOW?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``BWAVeform:LOW value`` command.
 
         SCPI Syntax:
             ```
             - BWAVeform:LOW <low>
+            - BWAVeform:LOW?
             ```
         """
         return self._low
@@ -746,11 +828,15 @@ class Bwaveform(SCPICmdRead):
               command ``BWAVEFORM:FDRANGE`` for more information.
 
         Usage:
+            - Using the ``.query()`` method will send the ``BWAVeform:OFFSet?`` query.
+            - Using the ``.verify(value)`` method will send the ``BWAVeform:OFFSet?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``BWAVeform:OFFSet value`` command.
 
         SCPI Syntax:
             ```
             - BWAVeform:OFFSet <offset>
+            - BWAVeform:OFFSet?
             ```
         """
         return self._offset
@@ -781,11 +867,15 @@ class Bwaveform(SCPICmdRead):
               Waveform editor plug-in.
 
         Usage:
+            - Using the ``.query()`` method will send the ``BWAVeform:SRATe?`` query.
+            - Using the ``.verify(value)`` method will send the ``BWAVeform:SRATe?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``BWAVeform:SRATe value`` command.
 
         SCPI Syntax:
             ```
             - BWAVeform:SRATe <sample_rate>
+            - BWAVeform:SRATe?
             ```
         """
         return self._srate

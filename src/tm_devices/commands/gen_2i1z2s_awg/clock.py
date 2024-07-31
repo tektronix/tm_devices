@@ -430,7 +430,8 @@ class ClockJitter(SCPICmdWrite):
     Description:
         - This command sets or returns the state (enabled or disabled) to apply or not apply jitter
           reduction to the internal system clock or the clock signal applied to the Reference In
-          connector.
+          connector. When enabled, the chosen sample rate value will be adjusted to achieve the best
+          performance.
 
     Usage:
         - Using the ``.write(value)`` method will send the ``CLOCk:JITTer value`` command.
@@ -958,7 +959,8 @@ class Clock(SCPICmdRead):
         Description:
             - This command sets or returns the state (enabled or disabled) to apply or not apply
               jitter reduction to the internal system clock or the clock signal applied to the
-              Reference In connector.
+              Reference In connector. When enabled, the chosen sample rate value will be adjusted to
+              achieve the best performance.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``CLOCk:JITTer value`` command.

@@ -85,8 +85,8 @@ _Device Support Levels_
 |        | **AFG31xxx**             | PI              | ✅                |                                    |
 | AWGs   | **AWG5000**              | PI              | ✅                |                                    |
 |        | **AWG5200**              | PI              | ✅                |                                    |
-|        | **AWG7000**              | PI              | ✅                |                                    |
-|        | **AWG70000**             | PI              | ✅                |                                    |
+|        | **AWG7000**              | PI              | ✅                | ✅                                  |
+|        | **AWG70000**             | PI              | ✅                | ✅                                  |
 | Scopes | **2 Series MSO**         | PI              | ✅                | ✅                                  |
 |        | **3 Series MDO**         | PI              | ✅                |                                    |
 |        | **4 Series MSO**         | PI              | ✅                | ✅                                  |
@@ -148,6 +148,7 @@ _Software Solution Support Levels_
 | Software<br>Solution | Command<br>Type | Basic<br>Control | Python API<br>Validation<br>Status |
 | -------------------- | --------------- | ---------------- | ---------------------------------- |
 | DPOJET               | PI              | ✅                | ✅                                  |
+| SourceXpress         | PI              | ✅                | ✅                                  |
 
 </div>
 

@@ -12,11 +12,11 @@ Commands and Queries:
     ```
     - SELect:B<x> {0|1|OFF|ON}
     - SELect:B<x>?
-    - SELect:CH<x> {<NR1>|OFF|ON}
+    - SELect:CH<x> {ON|OFF|<NR1>}
     - SELect:CH<x>?
     - SELect:CONTROl {CH<x>|MATH<x>|REF<x>}
     - SELect:CONTROl?
-    - SELect:D<x> {<NR1>|OFF|ON}
+    - SELect:D<x> {ON|OFF|<NR1>}
     - SELect:D<x>?
     - SELect:DALL <NR1>
     - SELect:DIGTraces:COMbination <nr1>
@@ -247,7 +247,7 @@ class SelectDigitalBit(ValidatedDigitalBit, SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:D<x> {<NR1>|OFF|ON}
+        - SELect:D<x> {ON|OFF|<NR1>}
         - SELect:D<x>?
         ```
 
@@ -310,7 +310,7 @@ class SelectChannel(ValidatedChannel, SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:CH<x> {<NR1>|OFF|ON}
+        - SELect:CH<x> {ON|OFF|<NR1>}
         - SELect:CH<x>?
         ```
 
@@ -518,7 +518,7 @@ class Select(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:CH<x> {<NR1>|OFF|ON}
+            - SELect:CH<x> {ON|OFF|<NR1>}
             - SELect:CH<x>?
             ```
 
@@ -609,7 +609,7 @@ class Select(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:D<x> {<NR1>|OFF|ON}
+            - SELect:D<x> {ON|OFF|<NR1>}
             - SELect:D<x>?
             ```
 

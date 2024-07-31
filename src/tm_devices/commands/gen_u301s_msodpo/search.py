@@ -11,7 +11,7 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - SEARCH:SEARCH<x>:COPy {SEARCHtotrigger|TRIGgertosearch}
-    - SEARCH:SEARCH<x>:STATE {<NR1>|OFF|ON}
+    - SEARCH:SEARCH<x>:STATE {ON|OFF|<NR1>}
     - SEARCH:SEARCH<x>:STATE?
     - SEARCH:SEARCH<x>:TOTAL?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:ADDRess:MODe {STandard|EXTended}
@@ -9578,7 +9578,7 @@ class SearchSearchItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:STATE {<NR1>|OFF|ON}
+        - SEARCH:SEARCH<x>:STATE {ON|OFF|<NR1>}
         - SEARCH:SEARCH<x>:STATE?
         ```
 
@@ -9672,7 +9672,7 @@ class SearchSearchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:STATE {<NR1>|OFF|ON}
+            - SEARCH:SEARCH<x>:STATE {ON|OFF|<NR1>}
             - SEARCH:SEARCH<x>:STATE?
             ```
 

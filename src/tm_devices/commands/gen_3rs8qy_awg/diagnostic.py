@@ -1,7 +1,7 @@
 """The diagnostic commands module.
 
 These commands are used in the following models:
-AWG5200, AWG70KA, AWG70KB
+AWG70KA, AWG70KB
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
@@ -14,6 +14,7 @@ Commands and Queries:
     - DIAGnostic:CONTrol:COUNt <NR1>
     - DIAGnostic:CONTrol:COUNt?
     - DIAGnostic:CONTrol:HALT {0|1|OFF|ON}
+    - DIAGnostic:CONTrol:HALT?
     - DIAGnostic:CONTrol:LOOP {ONCE|CONTinuous|COUNt}
     - DIAGnostic:CONTrol:LOOP?
     - DIAGnostic:DATA?
@@ -218,8 +219,8 @@ class DiagnosticSelectVerify(SCPICmdReadWithArguments):
 
     Description:
         - This command returns selection status of one specific test. A specific test requires the
-          'subsystem', 'area', and 'test'. This is context sensitive and is dependent on the type as
-          set with the command ``DIAGNOSTIC:TYPE``.
+          'subsystem',  'area', and 'test'. This is context sensitive and is dependent on the type
+          as set with the command ``DIAGNOSTIC:TYPE``.
 
     Usage:
         - Using the ``.query(argument)`` method will send the ``DIAGnostic:SELect:VERify? argument``
@@ -269,8 +270,8 @@ class DiagnosticSelect(SCPICmdWrite, SCPICmdRead):
 
         Description:
             - This command returns selection status of one specific test. A specific test requires
-              the 'subsystem', 'area', and 'test'. This is context sensitive and is dependent on the
-              type as set with the command ``DIAGNOSTIC:TYPE``.
+              the 'subsystem',  'area', and 'test'. This is context sensitive and is dependent on
+              the type as set with the command ``DIAGNOSTIC:TYPE``.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -602,7 +603,7 @@ class DiagnosticImmediate(SCPICmdWriteNoArguments, SCPICmdRead):
     Description:
         - This command executes all of the NORMal diagnostic tests. The query form of this command
           executes all of the NORMal diagnostics and returns the results in the form of numeric of
-          values of 0 for no errors or -330 for one or more tests failed. This changes the active
+          values of 0 for no errors or  -330 for one or more tests failed. This changes the active
           mode to DIAGnostic, if necessary, and returns back to the original active mode when done.
           This makes a single pass of all of the NORMal diagnostics.
 
@@ -674,7 +675,7 @@ class DiagnosticControlLoop(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class DiagnosticControlHalt(SCPICmdWrite):
+class DiagnosticControlHalt(SCPICmdWrite, SCPICmdRead):
     """The ``DIAGnostic:CONTrol:HALT`` command.
 
     Description:
@@ -683,12 +684,16 @@ class DiagnosticControlHalt(SCPICmdWrite):
           diagnostic functions.
 
     Usage:
+        - Using the ``.query()`` method will send the ``DIAGnostic:CONTrol:HALT?`` query.
+        - Using the ``.verify(value)`` method will send the ``DIAGnostic:CONTrol:HALT?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``DIAGnostic:CONTrol:HALT value``
           command.
 
     SCPI Syntax:
         ```
         - DIAGnostic:CONTrol:HALT {0|1|OFF|ON}
+        - DIAGnostic:CONTrol:HALT?
         ```
 
     Info:
@@ -777,12 +782,16 @@ class DiagnosticControl(SCPICmdRead):
               of diagnostic functions.
 
         Usage:
+            - Using the ``.query()`` method will send the ``DIAGnostic:CONTrol:HALT?`` query.
+            - Using the ``.verify(value)`` method will send the ``DIAGnostic:CONTrol:HALT?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``DIAGnostic:CONTrol:HALT value``
               command.
 
         SCPI Syntax:
             ```
             - DIAGnostic:CONTrol:HALT {0|1|OFF|ON}
+            - DIAGnostic:CONTrol:HALT?
             ```
 
         Info:
@@ -1215,7 +1224,7 @@ class Diagnostic(SCPICmdRead):
         Description:
             - This command executes all of the NORMal diagnostic tests. The query form of this
               command executes all of the NORMal diagnostics and returns the results in the form of
-              numeric of values of 0 for no errors or -330 for one or more tests failed. This
+              numeric of values of 0 for no errors or  -330 for one or more tests failed. This
               changes the active mode to DIAGnostic, if necessary, and returns back to the original
               active mode when done. This makes a single pass of all of the NORMal diagnostics.
 

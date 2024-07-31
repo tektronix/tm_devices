@@ -42,6 +42,7 @@ Commands and Queries:
     - WLISt:SPARameter:CASCading:STAGe[m]:ENABle {0|1|OFF|ON}
     - WLISt:SPARameter:CASCading:STAGe[m]:ENABle?
     - WLISt:SPARameter:CASCading:STAGe[m]:FILE <filepath>
+    - WLISt:SPARameter:CASCading:STAGe[m]:FILE?
     - WLISt:SPARameter:CASCading:STAGe[m]:RX[n] <port number>
     - WLISt:SPARameter:CASCading:STAGe[m]:RX[n]?
     - WLISt:SPARameter:CASCading:STAGe[m]:SSCHeme {SENDed|DIFFerential}
@@ -75,6 +76,7 @@ Commands and Queries:
     - WLISt:SPARameter:NCAScading:DTX[n] <port number>
     - WLISt:SPARameter:NCAScading:DTX[n]?
     - WLISt:SPARameter:NCAScading:FILE <filepath>
+    - WLISt:SPARameter:NCAScading:FILE?
     - WLISt:SPARameter:NCAScading:LAYout {TYPical|ALTernate}
     - WLISt:SPARameter:NCAScading:LAYout?
     - WLISt:SPARameter:NCAScading:RX[n] <port number>
@@ -86,6 +88,7 @@ Commands and Queries:
     - WLISt:SPARameter:NCAScading:TX[n] <port number>
     - WLISt:SPARameter:NCAScading:TX[n]?
     - WLISt:SPARameter:NCAScading:TYPE {1|2|4|6|8|12}
+    - WLISt:SPARameter:NCAScading:TYPE?
     - WLISt:SPARameter:SFORmat {REAL|I|Q|IQ}
     - WLISt:SPARameter:SFORmat?
     - WLISt:WAVeform:ACFile <file_path>,<wfm_name>[,<Q_file_path>]
@@ -106,7 +109,7 @@ Commands and Queries:
     - WLISt:WAVeform:DATA:Q? <wfm_name>[,<StartIndex>[,<Size>]]
     - WLISt:WAVeform:DELete {<wfm_name>|ALL}
     - WLISt:WAVeform:FREQuency <wfm_name>,<frequency>
-    - WLISt:WAVeform:FREQuency?
+    - WLISt:WAVeform:FREQuency? <wfm_name>
     - WLISt:WAVeform:GRANularity?
     - WLISt:WAVeform:INVert <wfm_name>
     - WLISt:WAVeform:LENGth? <wfm_name>
@@ -656,23 +659,25 @@ class WlistWaveformGranularity(SCPICmdRead):
     """
 
 
-class WlistWaveformFrequency(SCPICmdWrite, SCPICmdRead):
+class WlistWaveformFrequency(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``WLISt:WAVeform:FREQuency`` command.
 
     Description:
         - The command sets or returns the Recommended Center Frequency of the named IQ waveform.
 
     Usage:
-        - Using the ``.query()`` method will send the ``WLISt:WAVeform:FREQuency?`` query.
-        - Using the ``.verify(value)`` method will send the ``WLISt:WAVeform:FREQuency?`` query and
-          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.query(argument)`` method will send the ``WLISt:WAVeform:FREQuency? argument``
+          query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``WLISt:WAVeform:FREQuency? argument`` query and raise an AssertionError if the returned
+          value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:FREQuency value``
           command.
 
     SCPI Syntax:
         ```
         - WLISt:WAVeform:FREQuency <wfm_name>,<frequency>
-        - WLISt:WAVeform:FREQuency?
+        - WLISt:WAVeform:FREQuency? <wfm_name>
         ```
     """
 
@@ -758,7 +763,7 @@ class WlistWaveformDataI(SCPICmdWrite, SCPICmdReadWithArguments):
     """
 
 
-class WlistWaveformData(SCPICmdRead):
+class WlistWaveformData(SCPICmdWrite, SCPICmdReadWithArguments):
     """The ``WLISt:WAVeform:DATA`` command tree.
 
     Usage:
@@ -1290,16 +1295,18 @@ class WlistWaveform(SCPICmdRead):
             - The command sets or returns the Recommended Center Frequency of the named IQ waveform.
 
         Usage:
-            - Using the ``.query()`` method will send the ``WLISt:WAVeform:FREQuency?`` query.
-            - Using the ``.verify(value)`` method will send the ``WLISt:WAVeform:FREQuency?`` query
-              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.query(argument)`` method will send the
+              ``WLISt:WAVeform:FREQuency? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``WLISt:WAVeform:FREQuency? argument`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``WLISt:WAVeform:FREQuency value``
               command.
 
         SCPI Syntax:
             ```
             - WLISt:WAVeform:FREQuency <wfm_name>,<frequency>
-            - WLISt:WAVeform:FREQuency?
+            - WLISt:WAVeform:FREQuency? <wfm_name>
             ```
         """
         return self._frequency
@@ -1724,19 +1731,23 @@ class WlistSparameterSformat(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class WlistSparameterNcascadingType(SCPICmdWrite):
+class WlistSparameterNcascadingType(SCPICmdWrite, SCPICmdRead):
     """The ``WLISt:SPARameter:NCAScading:TYPE`` command.
 
     Description:
         - This command sets or returns the S-Parameter number of ports, in Non-Cascading mode.
 
     Usage:
+        - Using the ``.query()`` method will send the ``WLISt:SPARameter:NCAScading:TYPE?`` query.
+        - Using the ``.verify(value)`` method will send the ``WLISt:SPARameter:NCAScading:TYPE?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``WLISt:SPARameter:NCAScading:TYPE value`` command.
 
     SCPI Syntax:
         ```
         - WLISt:SPARameter:NCAScading:TYPE {1|2|4|6|8|12}
+        - WLISt:SPARameter:NCAScading:TYPE?
         ```
     """
 
@@ -1854,7 +1865,7 @@ class WlistSparameterNcascadingLayout(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class WlistSparameterNcascadingFile(SCPICmdWrite):
+class WlistSparameterNcascadingFile(SCPICmdWrite, SCPICmdRead):
     """The ``WLISt:SPARameter:NCAScading:FILE`` command.
 
     Description:
@@ -1862,12 +1873,16 @@ class WlistSparameterNcascadingFile(SCPICmdWrite):
           Non-Cascading mode.
 
     Usage:
+        - Using the ``.query()`` method will send the ``WLISt:SPARameter:NCAScading:FILE?`` query.
+        - Using the ``.verify(value)`` method will send the ``WLISt:SPARameter:NCAScading:FILE?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``WLISt:SPARameter:NCAScading:FILE value`` command.
 
     SCPI Syntax:
         ```
         - WLISt:SPARameter:NCAScading:FILE <filepath>
+        - WLISt:SPARameter:NCAScading:FILE?
         ```
     """
 
@@ -2529,12 +2544,18 @@ class WlistSparameterNcascading(SCPICmdRead):
               Non-Cascading mode.
 
         Usage:
+            - Using the ``.query()`` method will send the ``WLISt:SPARameter:NCAScading:FILE?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``WLISt:SPARameter:NCAScading:FILE?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``WLISt:SPARameter:NCAScading:FILE value`` command.
 
         SCPI Syntax:
             ```
             - WLISt:SPARameter:NCAScading:FILE <filepath>
+            - WLISt:SPARameter:NCAScading:FILE?
             ```
         """
         return self._file
@@ -2674,12 +2695,18 @@ class WlistSparameterNcascading(SCPICmdRead):
             - This command sets or returns the S-Parameter number of ports, in Non-Cascading mode.
 
         Usage:
+            - Using the ``.query()`` method will send the ``WLISt:SPARameter:NCAScading:TYPE?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``WLISt:SPARameter:NCAScading:TYPE?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``WLISt:SPARameter:NCAScading:TYPE value`` command.
 
         SCPI Syntax:
             ```
             - WLISt:SPARameter:NCAScading:TYPE {1|2|4|6|8|12}
+            - WLISt:SPARameter:NCAScading:TYPE?
             ```
         """
         return self._type
@@ -2828,7 +2855,7 @@ class WlistSparameterCascadingStageItemRxItem(ValidatedDynamicNumberCmd, SCPICmd
     """
 
 
-class WlistSparameterCascadingStageItemFile(SCPICmdWrite):
+class WlistSparameterCascadingStageItemFile(SCPICmdWrite, SCPICmdRead):
     """The ``WLISt:SPARameter:CASCading:STAGe[m]:FILE`` command.
 
     Description:
@@ -2836,12 +2863,18 @@ class WlistSparameterCascadingStageItemFile(SCPICmdWrite):
           in Cascading mode.
 
     Usage:
+        - Using the ``.query()`` method will send the ``WLISt:SPARameter:CASCading:STAGe[m]:FILE?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``WLISt:SPARameter:CASCading:STAGe[m]:FILE?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``WLISt:SPARameter:CASCading:STAGe[m]:FILE value`` command.
 
     SCPI Syntax:
         ```
         - WLISt:SPARameter:CASCading:STAGe[m]:FILE <filepath>
+        - WLISt:SPARameter:CASCading:STAGe[m]:FILE?
         ```
     """
 
@@ -3057,12 +3090,18 @@ class WlistSparameterCascadingStageItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               Stage, in Cascading mode.
 
         Usage:
+            - Using the ``.query()`` method will send the
+              ``WLISt:SPARameter:CASCading:STAGe[m]:FILE?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``WLISt:SPARameter:CASCading:STAGe[m]:FILE?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``WLISt:SPARameter:CASCading:STAGe[m]:FILE value`` command.
 
         SCPI Syntax:
             ```
             - WLISt:SPARameter:CASCading:STAGe[m]:FILE <filepath>
+            - WLISt:SPARameter:CASCading:STAGe[m]:FILE?
             ```
         """
         return self._file
@@ -4063,7 +4102,7 @@ class WlistLast(SCPICmdRead):
     """The ``WLISt:LAST`` command.
 
     Description:
-        - This command returns the name of the most recently added waveform in the waveform list.
+        - This command returns the name of  the most recently added waveform in the waveform list.
 
     Usage:
         - Using the ``.query()`` method will send the ``WLISt:LAST?`` query.
@@ -4108,7 +4147,7 @@ class Wlist(SCPICmdRead):
         """Return the ``WLISt:LAST`` command.
 
         Description:
-            - This command returns the name of the most recently added waveform in the waveform
+            - This command returns the name of  the most recently added waveform in the waveform
               list.
 
         Usage:

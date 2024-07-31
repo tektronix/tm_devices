@@ -11,15 +11,15 @@ Commands and Queries:
     ```
     - DCH<x>_D<x>:LABel:COLor <QString>
     - DCH<x>_D<x>:LABel:COLor?
-    - DCH<x>_D<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+    - DCH<x>_D<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
     - DCH<x>_D<x>:LABel:FONT:BOLD?
-    - DCH<x>_D<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+    - DCH<x>_D<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
     - DCH<x>_D<x>:LABel:FONT:ITALic?
     - DCH<x>_D<x>:LABel:FONT:SIZE <NR1>
     - DCH<x>_D<x>:LABel:FONT:SIZE?
     - DCH<x>_D<x>:LABel:FONT:TYPE <QString>
     - DCH<x>_D<x>:LABel:FONT:TYPE?
-    - DCH<x>_D<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+    - DCH<x>_D<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
     - DCH<x>_D<x>:LABel:FONT:UNDERline?
     - DCH<x>_D<x>:LABel:NAMe <QString>
     - DCH<x>_D<x>:LABel:NAMe?
@@ -114,7 +114,7 @@ class DchItemDigitalBitLabelFontUnderline(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DCH<x>_D<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+        - DCH<x>_D<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
         - DCH<x>_D<x>:LABel:FONT:UNDERline?
         ```
 
@@ -197,7 +197,7 @@ class DchItemDigitalBitLabelFontItalic(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DCH<x>_D<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+        - DCH<x>_D<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
         - DCH<x>_D<x>:LABel:FONT:ITALic?
         ```
 
@@ -225,7 +225,7 @@ class DchItemDigitalBitLabelFontBold(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DCH<x>_D<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+        - DCH<x>_D<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
         - DCH<x>_D<x>:LABel:FONT:BOLD?
         ```
 
@@ -284,7 +284,7 @@ class DchItemDigitalBitLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DCH<x>_D<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+            - DCH<x>_D<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
             - DCH<x>_D<x>:LABel:FONT:BOLD?
             ```
 
@@ -314,7 +314,7 @@ class DchItemDigitalBitLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DCH<x>_D<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+            - DCH<x>_D<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
             - DCH<x>_D<x>:LABel:FONT:ITALic?
             ```
 
@@ -401,7 +401,7 @@ class DchItemDigitalBitLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DCH<x>_D<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+            - DCH<x>_D<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
             - DCH<x>_D<x>:LABel:FONT:UNDERline?
             ```
 

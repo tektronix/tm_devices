@@ -10,9 +10,9 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - FASTAcq:HIACQRATE {<NR1>|OFF|ON}
+    - FASTAcq:HIACQRATE {ON|OFF|<NR1>}
     - FASTAcq:HIACQRATE?
-    - FASTAcq:STATE {<NR1>|ON|OFF}
+    - FASTAcq:STATE {ON|OFF|<NR1>}
     - FASTAcq:STATE?
     - FASTAcq?
     ```
@@ -41,7 +41,7 @@ class FastacqState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - FASTAcq:STATE {<NR1>|ON|OFF}
+        - FASTAcq:STATE {ON|OFF|<NR1>}
         - FASTAcq:STATE?
         ```
 
@@ -68,7 +68,7 @@ class FastacqHiacqrate(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - FASTAcq:HIACQRATE {<NR1>|OFF|ON}
+        - FASTAcq:HIACQRATE {ON|OFF|<NR1>}
         - FASTAcq:HIACQRATE?
         ```
 
@@ -124,7 +124,7 @@ class Fastacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - FASTAcq:HIACQRATE {<NR1>|OFF|ON}
+            - FASTAcq:HIACQRATE {ON|OFF|<NR1>}
             - FASTAcq:HIACQRATE?
             ```
 
@@ -154,7 +154,7 @@ class Fastacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - FASTAcq:STATE {<NR1>|ON|OFF}
+            - FASTAcq:STATE {ON|OFF|<NR1>}
             - FASTAcq:STATE?
             ```
 

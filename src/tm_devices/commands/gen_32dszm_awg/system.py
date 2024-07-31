@@ -151,8 +151,8 @@ class SystemDate(SCPICmdWrite, SCPICmdRead):
     """The ``SYSTem:DATE`` command.
 
     Description:
-        - This command and query sets or returns the system date. When the values are nonintegers,
-          they are rounded off to nearest integral values.
+        - This command sets or returns the system date. When the values are nonintegers, they are
+          rounded off to nearest integral values.
 
     Usage:
         - Using the ``.query()`` method will send the ``SYSTem:DATE?`` query.
@@ -165,11 +165,6 @@ class SystemDate(SCPICmdWrite, SCPICmdRead):
         - SYSTem:DATE <year>,<month>,<day>
         - SYSTem:DATE?
         ```
-
-    Info:
-        - ``<year>`` ::=<NRf> (Four digit number).
-        - ``<month>`` ::=<NRf> from 1 to 12.
-        - ``<day>`` ::=<NRf> from 1 to 31.
     """
 
 
@@ -202,8 +197,8 @@ class System(SCPICmdRead):
         """Return the ``SYSTem:DATE`` command.
 
         Description:
-            - This command and query sets or returns the system date. When the values are
-              nonintegers, they are rounded off to nearest integral values.
+            - This command sets or returns the system date. When the values are nonintegers, they
+              are rounded off to nearest integral values.
 
         Usage:
             - Using the ``.query()`` method will send the ``SYSTem:DATE?`` query.
@@ -216,11 +211,6 @@ class System(SCPICmdRead):
             - SYSTem:DATE <year>,<month>,<day>
             - SYSTem:DATE?
             ```
-
-        Info:
-            - ``<year>`` ::=<NRf> (Four digit number).
-            - ``<month>`` ::=<NRf> from 1 to 12.
-            - ``<day>`` ::=<NRf> from 1 to 31.
         """
         return self._date
 

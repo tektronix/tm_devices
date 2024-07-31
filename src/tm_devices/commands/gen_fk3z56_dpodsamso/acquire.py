@@ -14,7 +14,7 @@ Commands and Queries:
     - ACQuire:ENHANCEDEnob:STATE?
     - ACQuire:INTERPEightbit {AUTO|ON|OFF}
     - ACQuire:INTERPEightbit?
-    - ACQuire:MAGnivu {<NR1>|OFF|ON}
+    - ACQuire:MAGnivu {ON|OFF|<NR1>}
     - ACQuire:MAGnivu?
     - ACQuire:MODe {SAMple|PEAKdetect|HIRes|AVErage|WFMDB|ENVelope}
     - ACQuire:MODe:ACTUal?
@@ -416,7 +416,7 @@ class AcquireMagnivu(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ACQuire:MAGnivu {<NR1>|OFF|ON}
+        - ACQuire:MAGnivu {ON|OFF|<NR1>}
         - ACQuire:MAGnivu?
         ```
 
@@ -628,7 +628,7 @@ class Acquire(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ACQuire:MAGnivu {<NR1>|OFF|ON}
+            - ACQuire:MAGnivu {ON|OFF|<NR1>}
             - ACQuire:MAGnivu?
             ```
 

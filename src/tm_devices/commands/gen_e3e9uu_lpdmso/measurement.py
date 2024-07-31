@@ -92,7 +92,7 @@ Commands and Queries:
     - MEASUrement:DISPLAYUnits {SEConds|UNITINtervals}
     - MEASUrement:DISPLAYUnits?
     - MEASUrement:EDGE<x> {RISE|FALL|BOTH}
-    - MEASUrement:EYERENDER {<NR1>|OFF|ON}
+    - MEASUrement:EYERENDER {ON|OFF|<NR1>}
     - MEASUrement:EYERENDER?
     - MEASUrement:FILTers:BLANKingtime <NR3>
     - MEASUrement:FILTers:BLANKingtime?
@@ -289,7 +289,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:DBDown?
     - MEASUrement:MEAS<x>:DELay:EDGE<x> {FALL|RISe|BOTH|SAMEas|OPPositeas}
     - MEASUrement:MEAS<x>:DELay:EDGE<x>?
-    - MEASUrement:MEAS<x>:DISPlaystat:ENABle {OFF|ON|<NR1>}
+    - MEASUrement:MEAS<x>:DISPlaystat:ENABle {ON|OFF|<NR1>}
     - MEASUrement:MEAS<x>:DISPlaystat:ENABle?
     - MEASUrement:MEAS<x>:EDGE<x> {RISE|FALL|BOTH}
     - MEASUrement:MEAS<x>:EDGEIncre <NR3>
@@ -684,7 +684,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:TOSYmbol:LOGIC5SOUrce?
     - MEASUrement:MEAS<x>:TOSYmbol:MEASUREAT {Start|Stop|ClockEdge}
     - MEASUrement:MEAS<x>:TOSYmbol:MEASUREAT?
-    - MEASUrement:MEAS<x>:TRANSition {<NR1>|OFF|ON}
+    - MEASUrement:MEAS<x>:TRANSition {ON|OFF|<NR1>}
     - MEASUrement:MEAS<x>:TYPe {ACCOMMONMODE|ACPR|ACRMS|AMPlITUDE|AREA|BASE|BITAMPLITUDE|BITHIGH|BITLOW|BURSTWIDTH|COMMONMODE|CPOWER|DATARATE|DCD|DDJ|DDRAOS|DDRAOSPERTCK|DDRAOSPERUI|DDRAUS|DDRAUSPERTCK|DDRAUSPERUI|DDRHOLDDIFF|DDRSETUPDIFF|DDRTCHABS|DDRTCHAVERAGE|DDRTCKAVERAGE|DDRTCLABS|DDRTCLAVERAGE|DDRTERRMN|DDRTERRN|DDRTJITCC|DDRTJITDUTY|DDRTJITPER|DDRTPST|DDRTRPRE|DDRTWPRE|DDRVIXAC|DDRTDQSCK|DELAY|DJ|DJDIRAC|DPMOVERSHOOT|DPMPSIJ|DPMUNDERSHOOT|DPMRIPPLE|DPMTURNOFFTIME|DPMTURNONTIME|EYEHIGH|EYELOW|FALLSLEWRATE|FALLTIME|FREQUENCY|F2|F4|F8|HIGH|HEIGHT|HEIGHTBER|HIGHTIME|HOLD|IMDAANGLE|IMDADIRECTION|IMDADQ0|IMDAEFFICIENCY|IMDAHARMONICS|IMDAMECHPWR|IMDAPOWERQUALITY|IMDASPEED|IMDASYSEFF|IMDATORQUE|JITTERSUMMARY|J2|J9|LOW|LOWTIME|MAXIMUM|MEAN|MINIMUM|NDUtY|NPERIOD|NPJ|NOVERSHOOT|NWIDTH|OBW|PDUTTY|PERIOD|PHASE|PHASENOISE|PJ|PK2Pk|POVERSHOOT|PWIDTH|QFACTOR|RISESLEWRATE|RISETIME|RJ|RJDIRAC|RMS|SRJ|SSCFREQDEV|SSCMODRATE|SETUP|SKEW|TIE|TIMEOUTSIDELEVEL|TJBER|TNTRATIO|TOP|UNITINTERVAL|VDIFFXOVR|WBGDDT|WBGDIODEDDT|WBGEOFF|WBGEON|WBGERR|WBGIPEAK|WBGIRRM|WBGQOSS|WBGQRR|WBGTDOFF|WBGTDON|WBGTF|WBGTON|WBGTOFF|WBGTR|WBGTRR|WBGVPEAK|WIDTH|WIDTHBER}
     - MEASUrement:MEAS<x>:TYPe?
     - MEASUrement:MEAS<x>:VLEVel {PERCent|ABSolute}
@@ -5663,7 +5663,7 @@ class MeasurementMeasItemTransition(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:TRANSition {<NR1>|OFF|ON}
+        - MEASUrement:MEAS<x>:TRANSition {ON|OFF|<NR1>}
         ```
 
     Info:
@@ -16401,7 +16401,7 @@ class MeasurementMeasItemDisplaystatEnable(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:DISPlaystat:ENABle {OFF|ON|<NR1>}
+        - MEASUrement:MEAS<x>:DISPlaystat:ENABle {ON|OFF|<NR1>}
         - MEASUrement:MEAS<x>:DISPlaystat:ENABle?
         ```
 
@@ -16453,7 +16453,7 @@ class MeasurementMeasItemDisplaystat(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:DISPlaystat:ENABle {OFF|ON|<NR1>}
+            - MEASUrement:MEAS<x>:DISPlaystat:ENABle {ON|OFF|<NR1>}
             - MEASUrement:MEAS<x>:DISPlaystat:ENABle?
             ```
 
@@ -23312,7 +23312,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:TRANSition {<NR1>|OFF|ON}
+            - MEASUrement:MEAS<x>:TRANSition {ON|OFF|<NR1>}
             ```
 
         Info:
@@ -27162,7 +27162,7 @@ class MeasurementEyerender(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:EYERENDER {<NR1>|OFF|ON}
+        - MEASUrement:EYERENDER {ON|OFF|<NR1>}
         - MEASUrement:EYERENDER?
         ```
 
@@ -30903,7 +30903,7 @@ class Measurement(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:EYERENDER {<NR1>|OFF|ON}
+            - MEASUrement:EYERENDER {ON|OFF|<NR1>}
             - MEASUrement:EYERENDER?
             ```
 

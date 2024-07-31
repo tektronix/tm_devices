@@ -29,7 +29,7 @@ Commands and Queries:
     - CURSor:SCREEN:YPOSITION<x>?
     - CURSor:SOUrce1 {CH<x>|MATH<x>|REF1|REF1|REF3|REF4}
     - CURSor:SOUrce1?
-    - CURSor:STATE {<NR1>|ON|OFF}
+    - CURSor:STATE {ON|OFF|<NR1>}
     - CURSor:STATE?
     - CURSor:VBArs SNAp
     - CURSor:VBArs:DELTa?
@@ -1356,7 +1356,7 @@ class CursorState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - CURSor:STATE {<NR1>|ON|OFF}
+        - CURSor:STATE {ON|OFF|<NR1>}
         - CURSor:STATE?
         ```
 
@@ -2054,7 +2054,7 @@ class Cursor(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CURSor:STATE {<NR1>|ON|OFF}
+            - CURSor:STATE {ON|OFF|<NR1>}
             - CURSor:STATE?
             ```
 

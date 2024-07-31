@@ -105,8 +105,8 @@ class TriggerSlope(SCPICmdWrite, SCPICmdReadWithArguments):
         ```
 
     Info:
-        - ``POSitive`` specifies a trigger on the rising edge of the external trigger signal.
-          NEGative specifies a trigger on the falling edge of the external trigger
+        - ``POSitive`` specifies a trigger on the rising edge of the external trigger
+          signal.NEGative specifies a trigger on the falling edge of the external trigger
           signal.``<input_trigger>`` ::= {ATRigger\|BTRigger}, defaults to ATR if not specified.
         - ``*RST`` sets all external trigger slopes to POSitive.
     """
@@ -133,7 +133,7 @@ class TriggerMode(SCPICmdWrite, SCPICmdReadWithArguments):
 
     Info:
         - ``SYNChronous`` : Synchronous triggering. This is the recommended trigger type when using
-          the Sync Clock Out to synchronize with external devices. ASYNchronous: Asynchronous
+          the Sync Clock Out to synchronize with external devices.ASYNchronous: Asynchronous
           triggering. This is the fastest triggering type.
         - ``*RST`` sets this to ASYNchronous.
     """
@@ -354,7 +354,7 @@ class Trigger(SCPICmdRead):
 
         Info:
             - ``SYNChronous`` : Synchronous triggering. This is the recommended trigger type when
-              using the Sync Clock Out to synchronize with external devices. ASYNchronous:
+              using the Sync Clock Out to synchronize with external devices.ASYNchronous:
               Asynchronous triggering. This is the fastest triggering type.
             - ``*RST`` sets this to ASYNchronous.
         """
@@ -382,8 +382,8 @@ class Trigger(SCPICmdRead):
             ```
 
         Info:
-            - ``POSitive`` specifies a trigger on the rising edge of the external trigger signal.
-              NEGative specifies a trigger on the falling edge of the external trigger
+            - ``POSitive`` specifies a trigger on the rising edge of the external trigger
+              signal.NEGative specifies a trigger on the falling edge of the external trigger
               signal.``<input_trigger>`` ::= {ATRigger\|BTRigger}, defaults to ATR if not specified.
             - ``*RST`` sets all external trigger slopes to POSitive.
         """

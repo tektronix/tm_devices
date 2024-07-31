@@ -12,7 +12,7 @@ Commands and Queries:
     ```
     - SAVEON {RESET}
     - SAVEON:COUNt?
-    - SAVEON:FILE:AUTOInc {<NR1>|ON|OFF}
+    - SAVEON:FILE:AUTOInc {ON|OFF|<NR1>}
     - SAVEON:FILE:AUTOInc?
     - SAVEON:FILE:COUNt <NR3>
     - SAVEON:FILE:COUNt?
@@ -22,21 +22,21 @@ Commands and Queries:
     - SAVEON:FILE:NAME?
     - SAVEON:FILE:TYPE {AUTO|CUSTOM}
     - SAVEON:FILE:TYPE?
-    - SAVEON:IMAGe {<NR1>|OFF|ON}
+    - SAVEON:IMAGe {ON|OFF|<NR1>}
     - SAVEON:IMAGe?
-    - SAVEON:LIMit {<NR1>|OFF|ON}
+    - SAVEON:LIMit {ON|OFF|<NR1>}
     - SAVEON:LIMit?
-    - SAVEON:MASK {<NR1>|OFF|ON}
+    - SAVEON:MASK {ON|OFF|<NR1>}
     - SAVEON:MASK?
-    - SAVEON:MEASUrement {<NR1>|OFF|ON}
+    - SAVEON:MEASUrement {ON|OFF|<NR1>}
     - SAVEON:MEASUrement?
     - SAVEON:NUMEvents <NR3>
     - SAVEON:NUMEvents?
-    - SAVEON:SETUP {<NR1>|ON|OFF}
+    - SAVEON:SETUP {ON|OFF|<NR1>}
     - SAVEON:SETUP?
-    - SAVEON:TRIGger {<NR1>|ON|OFF}
+    - SAVEON:TRIGger {ON|OFF|<NR1>}
     - SAVEON:TRIGger?
-    - SAVEON:WAVEform {<NR1>|ON|OFF}
+    - SAVEON:WAVEform {ON|OFF|<NR1>}
     - SAVEON:WAVEform?
     ```
 """
@@ -67,7 +67,7 @@ class SaveonWaveform(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVEON:WAVEform {<NR1>|ON|OFF}
+        - SAVEON:WAVEform {ON|OFF|<NR1>}
         - SAVEON:WAVEform?
         ```
 
@@ -101,7 +101,7 @@ class SaveonTrigger(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVEON:TRIGger {<NR1>|ON|OFF}
+        - SAVEON:TRIGger {ON|OFF|<NR1>}
         - SAVEON:TRIGger?
         ```
 
@@ -127,7 +127,7 @@ class SaveonSetup(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVEON:SETUP {<NR1>|ON|OFF}
+        - SAVEON:SETUP {ON|OFF|<NR1>}
         - SAVEON:SETUP?
         ```
 
@@ -181,7 +181,7 @@ class SaveonMeasurement(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVEON:MEASUrement {<NR1>|OFF|ON}
+        - SAVEON:MEASUrement {ON|OFF|<NR1>}
         - SAVEON:MEASUrement?
         ```
 
@@ -215,7 +215,7 @@ class SaveonMask(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVEON:MASK {<NR1>|OFF|ON}
+        - SAVEON:MASK {ON|OFF|<NR1>}
         - SAVEON:MASK?
         ```
 
@@ -248,7 +248,7 @@ class SaveonLimit(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVEON:LIMit {<NR1>|OFF|ON}
+        - SAVEON:LIMit {ON|OFF|<NR1>}
         - SAVEON:LIMit?
         ```
 
@@ -274,7 +274,7 @@ class SaveonImage(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVEON:IMAGe {<NR1>|OFF|ON}
+        - SAVEON:IMAGe {ON|OFF|<NR1>}
         - SAVEON:IMAGe?
         ```
 
@@ -417,7 +417,7 @@ class SaveonFileAutoinc(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVEON:FILE:AUTOInc {<NR1>|ON|OFF}
+        - SAVEON:FILE:AUTOInc {ON|OFF|<NR1>}
         - SAVEON:FILE:AUTOInc?
         ```
 
@@ -474,7 +474,7 @@ class SaveonFile(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVEON:FILE:AUTOInc {<NR1>|ON|OFF}
+            - SAVEON:FILE:AUTOInc {ON|OFF|<NR1>}
             - SAVEON:FILE:AUTOInc?
             ```
 
@@ -726,7 +726,7 @@ class Saveon(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVEON:IMAGe {<NR1>|OFF|ON}
+            - SAVEON:IMAGe {ON|OFF|<NR1>}
             - SAVEON:IMAGe?
             ```
 
@@ -760,7 +760,7 @@ class Saveon(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVEON:LIMit {<NR1>|OFF|ON}
+            - SAVEON:LIMit {ON|OFF|<NR1>}
             - SAVEON:LIMit?
             ```
 
@@ -795,7 +795,7 @@ class Saveon(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVEON:MASK {<NR1>|OFF|ON}
+            - SAVEON:MASK {ON|OFF|<NR1>}
             - SAVEON:MASK?
             ```
 
@@ -826,7 +826,7 @@ class Saveon(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVEON:MEASUrement {<NR1>|OFF|ON}
+            - SAVEON:MEASUrement {ON|OFF|<NR1>}
             - SAVEON:MEASUrement?
             ```
 
@@ -879,7 +879,7 @@ class Saveon(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVEON:SETUP {<NR1>|ON|OFF}
+            - SAVEON:SETUP {ON|OFF|<NR1>}
             - SAVEON:SETUP?
             ```
 
@@ -915,7 +915,7 @@ class Saveon(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVEON:TRIGger {<NR1>|ON|OFF}
+            - SAVEON:TRIGger {ON|OFF|<NR1>}
             - SAVEON:TRIGger?
             ```
 
@@ -945,7 +945,7 @@ class Saveon(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVEON:WAVEform {<NR1>|ON|OFF}
+            - SAVEON:WAVEform {ON|OFF|<NR1>}
             - SAVEON:WAVEform?
             ```
 

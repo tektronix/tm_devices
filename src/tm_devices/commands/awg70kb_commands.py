@@ -11,7 +11,7 @@ from tm_devices.drivers.pi.pi_device import PIDevice
 
 from .gen_3n9auv_awg.active import Active
 from .gen_3n9auv_awg.calibration import Calibration
-from .gen_3n9auv_awg.diagnostic import Diagnostic
+from .gen_3n9auv_awg.connectivity import Connectivity
 from .gen_3n9auv_awg.display import Display
 from .gen_3n9auv_awg.output import Output
 from .gen_3n9auv_awg.slist import Slist
@@ -22,6 +22,7 @@ from .gen_3rs8qy_awg.awgcontrol import Awgcontrol
 from .gen_3rs8qy_awg.bwaveform import Bwaveform
 from .gen_3rs8qy_awg.clock import Clock
 from .gen_3rs8qy_awg.cplayback import Cplayback
+from .gen_3rs8qy_awg.diagnostic import Diagnostic
 from .gen_3rs8qy_awg.fgen import Fgen
 from .gen_3rs8qy_awg.instrument import Instrument
 from .gen_3rs8qy_awg.mmemory import Mmemory
@@ -84,6 +85,7 @@ class AWG70KBCommands:
         - ``.calibration``: The ``CALibration`` command tree.
         - ``.clock``: The ``CLOCk`` command tree.
         - ``.cls``: The ``*CLS`` command.
+        - ``.connectivity``: The ``CONNectivity`` command tree.
         - ``.cplayback``: The ``CPLayback`` command tree.
         - ``.diagnostic``: The ``DIAGnostic`` command tree.
         - ``.display``: The ``DISPlay`` command tree.
@@ -125,6 +127,7 @@ class AWG70KBCommands:
         self._calibration = Calibration(device)
         self._clock = Clock(device)
         self._cls = Cls(device)
+        self._connectivity = Connectivity(device)
         self._cplayback = Cplayback(device)
         self._diagnostic = Diagnostic(device)
         self._display = Display(device)
@@ -330,6 +333,25 @@ class AWG70KBCommands:
             ```
         """
         return self._cls
+
+    @property
+    def connectivity(self) -> Connectivity:
+        """Return the ``CONNectivity`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``CONNectivity?`` query.
+            - Using the ``.verify(value)`` method will send the ``CONNectivity?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.active``: The ``CONNectivity:ACTive`` command.
+            - ``.connect``: The ``CONNectivity:CONNect`` command.
+            - ``.disconnect``: The ``CONNectivity:DISConnect`` command.
+            - ``.gang``: The ``CONNectivity:GANG`` command tree.
+            - ``.remove``: The ``CONNectivity:REMove`` command.
+            - ``.status``: The ``CONNectivity:STATus`` command.
+        """
+        return self._connectivity
 
     @property
     def cplayback(self) -> Cplayback:
@@ -938,6 +960,7 @@ class AWG70KBMixin:
             - ``.calibration``: The ``CALibration`` command tree.
             - ``.clock``: The ``CLOCk`` command tree.
             - ``.cls``: The ``*CLS`` command.
+            - ``.connectivity``: The ``CONNectivity`` command tree.
             - ``.cplayback``: The ``CPLayback`` command tree.
             - ``.diagnostic``: The ``DIAGnostic`` command tree.
             - ``.display``: The ``DISPlay`` command tree.
