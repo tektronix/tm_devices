@@ -10,7 +10,7 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - HORizontal:ACQDURATION?
-    - HORizontal:DELay:MODe {OFF|ON|<NR1>}
+    - HORizontal:DELay:MODe {ON|OFF|<NR1>}
     - HORizontal:DELay:MODe?
     - HORizontal:DELay:TIMe <NR3>
     - HORizontal:DELay:TIMe?
@@ -22,14 +22,14 @@ Commands and Queries:
     - HORizontal:FASTframe:MULtipleframes:MODe?
     - HORizontal:FASTframe:REF:FRAme <NR1>
     - HORizontal:FASTframe:REF:FRAme?
-    - HORizontal:FASTframe:REF:INCLUde {<NR1>|OFF|ON}
+    - HORizontal:FASTframe:REF:INCLUde {ON|OFF|<NR1>}
     - HORizontal:FASTframe:REF:INCLUde?
     - HORizontal:FASTframe:SELECTED <NR1>
     - HORizontal:FASTframe:SELECTED?
-    - HORizontal:FASTframe:STATE {<NR1>|OFF|ON}
+    - HORizontal:FASTframe:STATE {ON|OFF|<NR1>}
     - HORizontal:FASTframe:STATE?
     - HORizontal:FASTframe:SUMFrame {NONe|AVErage|ENVelope}
-    - HORizontal:FASTframe:SUMFrame:STATE {<NR1>|OFF|ON}
+    - HORizontal:FASTframe:SUMFrame:STATE {ON|OFF|<NR1>}
     - HORizontal:FASTframe:SUMFrame:STATE?
     - HORizontal:FASTframe:TIMEStamp:ALL?
     - HORizontal:FASTframe:TIMEStamp:DELTa?
@@ -1954,7 +1954,7 @@ class HorizontalFastframeSumframeState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HORizontal:FASTframe:SUMFrame:STATE {<NR1>|OFF|ON}
+        - HORizontal:FASTframe:SUMFrame:STATE {ON|OFF|<NR1>}
         - HORizontal:FASTframe:SUMFrame:STATE?
         ```
 
@@ -2017,7 +2017,7 @@ class HorizontalFastframeSumframe(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HORizontal:FASTframe:SUMFrame:STATE {<NR1>|OFF|ON}
+            - HORizontal:FASTframe:SUMFrame:STATE {ON|OFF|<NR1>}
             - HORizontal:FASTframe:SUMFrame:STATE?
             ```
 
@@ -2047,7 +2047,7 @@ class HorizontalFastframeState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HORizontal:FASTframe:STATE {<NR1>|OFF|ON}
+        - HORizontal:FASTframe:STATE {ON|OFF|<NR1>}
         - HORizontal:FASTframe:STATE?
         ```
 
@@ -2099,7 +2099,7 @@ class HorizontalFastframeRefInclude(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HORizontal:FASTframe:REF:INCLUde {<NR1>|OFF|ON}
+        - HORizontal:FASTframe:REF:INCLUde {ON|OFF|<NR1>}
         - HORizontal:FASTframe:REF:INCLUde?
         ```
 
@@ -2197,7 +2197,7 @@ class HorizontalFastframeRef(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HORizontal:FASTframe:REF:INCLUde {<NR1>|OFF|ON}
+            - HORizontal:FASTframe:REF:INCLUde {ON|OFF|<NR1>}
             - HORizontal:FASTframe:REF:INCLUde?
             ```
 
@@ -2492,7 +2492,7 @@ class HorizontalFastframe(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HORizontal:FASTframe:STATE {<NR1>|OFF|ON}
+            - HORizontal:FASTframe:STATE {ON|OFF|<NR1>}
             - HORizontal:FASTframe:STATE?
             ```
 
@@ -2621,7 +2621,7 @@ class HorizontalDelayMode(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HORizontal:DELay:MODe {OFF|ON|<NR1>}
+        - HORizontal:DELay:MODe {ON|OFF|<NR1>}
         - HORizontal:DELay:MODe?
         ```
 
@@ -2668,7 +2668,7 @@ class HorizontalDelay(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HORizontal:DELay:MODe {OFF|ON|<NR1>}
+            - HORizontal:DELay:MODe {ON|OFF|<NR1>}
             - HORizontal:DELay:MODe?
             ```
 

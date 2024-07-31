@@ -11,11 +11,11 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - SEARCH:MARKALLevents {<NR1>|OFF|ON}
+    - SEARCH:MARKALLevents {ON|OFF|<NR1>}
     - SEARCH:MARKALLevents?
     - SEARCH:SEARCH<x> <QString>
     - SEARCH:SEARCH<x>:COPy {SEARCHtotrigger|TRIGgertosearch|FROMSearch<x>}
-    - SEARCH:SEARCH<x>:STATE {<NR1>|OFF|ON}
+    - SEARCH:SEARCH<x>:STATE {ON|OFF|<NR1>}
     - SEARCH:SEARCH<x>:STATE?
     - SEARCH:SEARCH<x>:TOTAL?
     - SEARCH:SEARCH<x>:TRIGer:A:BUS:PCIE:SYNCHeader
@@ -350,13 +350,13 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DISParity {EITher|NEGAtive|POSITIVe}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:DISParity?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:CHAR {<NR1>|OFF|ON}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:CHAR {ON|OFF|<NR1>}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:CHAR?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:DISParity {<NR1>|OFF|ON}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:DISParity {ON|OFF|<NR1>}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:DISParity?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:ORDERedset {<NR1>|OFF|ON}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:ORDERedset {ON|OFF|<NR1>}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:ORDERedset?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:SYNC {<NR1>|OFF|ON}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:SYNC {ON|OFF|<NR1>}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:SYNC?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:FORMat {ORDERedset|SYMbol|CHAR}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:FORMat?
@@ -402,9 +402,9 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:DISParity {NEGAtive|POSITIVe|EITher}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:DISParity?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:CHAR {<NR1>|ON|OFF}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:CHAR {ON|OFF|<NR1>}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:CHAR?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:DISParity {<NR1>|ON|OFF}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:DISParity {ON|OFF|<NR1>}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:DISParity?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:FORMat {CHAR|SYMbol}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:FORMat?
@@ -458,9 +458,9 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ENDPoint:HIVALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ENDPoint:VALue <string>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ENDPoint:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:CHAR {<NR1>|OFF|ON}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:CHAR {ON|OFF|<NR1>}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:CHAR?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:DISParity {<NR1>|OFF|ON}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:DISParity {ON|OFF|<NR1>}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:DISParity?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:ORDERedset {|OFF|ON}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:ORDERedset?
@@ -9887,7 +9887,7 @@ class SearchSearchItemTriggerABusUsbErrorDisparity(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:DISParity {<NR1>|OFF|ON}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:DISParity {ON|OFF|<NR1>}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:DISParity?
         ```
 
@@ -9915,7 +9915,7 @@ class SearchSearchItemTriggerABusUsbErrorChar(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:CHAR {<NR1>|OFF|ON}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:CHAR {ON|OFF|<NR1>}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:CHAR?
         ```
 
@@ -9970,7 +9970,7 @@ class SearchSearchItemTriggerABusUsbError(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:CHAR {<NR1>|OFF|ON}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:CHAR {ON|OFF|<NR1>}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:CHAR?
             ```
 
@@ -10000,7 +10000,7 @@ class SearchSearchItemTriggerABusUsbError(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:DISParity {<NR1>|OFF|ON}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:DISParity {ON|OFF|<NR1>}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:DISParity?
             ```
 
@@ -12301,7 +12301,7 @@ class SearchSearchItemTriggerABusS8b10bErrorDisparity(SCPICmdWrite, SCPICmdRead)
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:DISParity {<NR1>|ON|OFF}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:DISParity {ON|OFF|<NR1>}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:DISParity?
         ```
 
@@ -12329,7 +12329,7 @@ class SearchSearchItemTriggerABusS8b10bErrorChar(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:CHAR {<NR1>|ON|OFF}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:CHAR {ON|OFF|<NR1>}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:CHAR?
         ```
 
@@ -12380,7 +12380,7 @@ class SearchSearchItemTriggerABusS8b10bError(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:CHAR {<NR1>|ON|OFF}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:CHAR {ON|OFF|<NR1>}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:CHAR?
             ```
 
@@ -12410,7 +12410,7 @@ class SearchSearchItemTriggerABusS8b10bError(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:DISParity {<NR1>|ON|OFF}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:DISParity {ON|OFF|<NR1>}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:DISParity?
             ```
 
@@ -14163,7 +14163,7 @@ class SearchSearchItemTriggerABusPcieErrorSync(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:SYNC {<NR1>|OFF|ON}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:SYNC {ON|OFF|<NR1>}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:SYNC?
         ```
 
@@ -14193,7 +14193,7 @@ class SearchSearchItemTriggerABusPcieErrorOrderedset(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:ORDERedset {<NR1>|OFF|ON}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:ORDERedset {ON|OFF|<NR1>}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:ORDERedset?
         ```
 
@@ -14222,7 +14222,7 @@ class SearchSearchItemTriggerABusPcieErrorDisparity(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:DISParity {<NR1>|OFF|ON}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:DISParity {ON|OFF|<NR1>}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:DISParity?
         ```
 
@@ -14251,7 +14251,7 @@ class SearchSearchItemTriggerABusPcieErrorChar(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:CHAR {<NR1>|OFF|ON}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:CHAR {ON|OFF|<NR1>}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:CHAR?
         ```
 
@@ -14309,7 +14309,7 @@ class SearchSearchItemTriggerABusPcieError(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:CHAR {<NR1>|OFF|ON}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:CHAR {ON|OFF|<NR1>}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:CHAR?
             ```
 
@@ -14339,7 +14339,7 @@ class SearchSearchItemTriggerABusPcieError(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:DISParity {<NR1>|OFF|ON}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:DISParity {ON|OFF|<NR1>}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:DISParity?
             ```
 
@@ -14369,7 +14369,7 @@ class SearchSearchItemTriggerABusPcieError(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:ORDERedset {<NR1>|OFF|ON}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:ORDERedset {ON|OFF|<NR1>}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:ORDERedset?
             ```
 
@@ -14398,7 +14398,7 @@ class SearchSearchItemTriggerABusPcieError(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:SYNC {<NR1>|OFF|ON}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:SYNC {ON|OFF|<NR1>}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:SYNC?
             ```
 
@@ -28595,7 +28595,7 @@ class SearchSearchItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:STATE {<NR1>|OFF|ON}
+        - SEARCH:SEARCH<x>:STATE {ON|OFF|<NR1>}
         - SEARCH:SEARCH<x>:STATE?
         ```
 
@@ -28708,7 +28708,7 @@ class SearchSearchItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:STATE {<NR1>|OFF|ON}
+            - SEARCH:SEARCH<x>:STATE {ON|OFF|<NR1>}
             - SEARCH:SEARCH<x>:STATE?
             ```
 
@@ -28781,7 +28781,7 @@ class SearchMarkallevents(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:MARKALLevents {<NR1>|OFF|ON}
+        - SEARCH:MARKALLevents {ON|OFF|<NR1>}
         - SEARCH:MARKALLevents?
         ```
 
@@ -28830,7 +28830,7 @@ class Search(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:MARKALLevents {<NR1>|OFF|ON}
+            - SEARCH:MARKALLevents {ON|OFF|<NR1>}
             - SEARCH:MARKALLevents?
             ```
 

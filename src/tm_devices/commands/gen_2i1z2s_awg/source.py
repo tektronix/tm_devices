@@ -1993,10 +1993,9 @@ class SourceRccouple(SCPICmdWrite):
 
     Description:
         - This command sets or returns the Coupled state (enabled or disabled) of the Run Mode
-          control of a multi-channel instrument. The Run controls consist of the Run Mode and
-          Trigger Input. The set form of the command forces all channels to match channel 1. After
-          the initial coupling of the settings, changes made to the Run Mode of any channel affects
-          all channels.
+          control. The Run controls consist of the Run Mode and Trigger Input. The set form of the
+          command forces all channels to match channel 1. After the initial coupling of the
+          settings, changes made to the Run Mode of any channel affects all channels.
 
     Usage:
         - Using the ``.write(value)`` method will send the ``SOURce:RCCouple value`` command.
@@ -2132,10 +2131,9 @@ class Source(SCPICmdRead):
 
         Description:
             - This command sets or returns the Coupled state (enabled or disabled) of the Run Mode
-              control of a multi-channel instrument. The Run controls consist of the Run Mode and
-              Trigger Input. The set form of the command forces all channels to match channel 1.
-              After the initial coupling of the settings, changes made to the Run Mode of any
-              channel affects all channels.
+              control. The Run controls consist of the Run Mode and Trigger Input. The set form of
+              the command forces all channels to match channel 1. After the initial coupling of the
+              settings, changes made to the Run Mode of any channel affects all channels.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``SOURce:RCCouple value`` command.

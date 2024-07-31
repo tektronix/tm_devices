@@ -441,7 +441,7 @@ Commands and Queries:
     - BUS:B<x>:PARallel:CLOCKSOUrce?
     - BUS:B<x>:PARallel:CLOCk:EDGE {FALLING|RISING|EITHER}
     - BUS:B<x>:PARallel:CLOCk:EDGE?
-    - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {OFF|ON|<NR1>}
+    - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {ON|OFF|<NR1>}
     - BUS:B<x>:PARallel:CLOCk:ISCLOCKED?
     - BUS:B<x>:PSIFIVe:BITPERiod <NR1>
     - BUS:B<x>:PSIFIVe:BITPERiod?
@@ -7305,7 +7305,7 @@ class BusBItemParallelClockIsclocked(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {OFF|ON|<NR1>}
+        - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {ON|OFF|<NR1>}
         - BUS:B<x>:PARallel:CLOCk:ISCLOCKED?
         ```
 
@@ -7414,7 +7414,7 @@ class BusBItemParallelClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {OFF|ON|<NR1>}
+            - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {ON|OFF|<NR1>}
             - BUS:B<x>:PARallel:CLOCk:ISCLOCKED?
             ```
 

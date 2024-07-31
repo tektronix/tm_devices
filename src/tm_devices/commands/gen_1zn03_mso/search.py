@@ -212,9 +212,9 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:REF<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:SETTime <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:SETTime?
-    - SEARCH:SEARCH<x>:TRIGger:A:STATE {<NR1>|OFF|ON}
+    - SEARCH:SEARCH<x>:TRIGger:A:STATE {ON|OFF|<NR1>}
     - SEARCH:SEARCH<x>:TRIGger:A:STATE?
-    - SEARCH:SEARCH<x>:TRIGger:A:STOPAcq {<NR1>|OFF|ON}
+    - SEARCH:SEARCH<x>:TRIGger:A:STOPAcq {ON|OFF|<NR1>}
     - SEARCH:SEARCH<x>:TRIGger:A:STOPAcq?
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:LOGICQUALification {ON|OFF}
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:LOGICQUALification?
@@ -658,7 +658,7 @@ class SearchSearchItemTriggerAStopacq(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:STOPAcq {<NR1>|OFF|ON}
+        - SEARCH:SEARCH<x>:TRIGger:A:STOPAcq {ON|OFF|<NR1>}
         - SEARCH:SEARCH<x>:TRIGger:A:STOPAcq?
         ```
 
@@ -688,7 +688,7 @@ class SearchSearchItemTriggerAState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:STATE {<NR1>|OFF|ON}
+        - SEARCH:SEARCH<x>:TRIGger:A:STATE {ON|OFF|<NR1>}
         - SEARCH:SEARCH<x>:TRIGger:A:STATE?
         ```
 
@@ -8814,7 +8814,7 @@ class SearchSearchItemTriggerA(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:STATE {<NR1>|OFF|ON}
+            - SEARCH:SEARCH<x>:TRIGger:A:STATE {ON|OFF|<NR1>}
             - SEARCH:SEARCH<x>:TRIGger:A:STATE?
             ```
 
@@ -8844,7 +8844,7 @@ class SearchSearchItemTriggerA(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:STOPAcq {<NR1>|OFF|ON}
+            - SEARCH:SEARCH<x>:TRIGger:A:STOPAcq {ON|OFF|<NR1>}
             - SEARCH:SEARCH<x>:TRIGger:A:STOPAcq?
             ```
 

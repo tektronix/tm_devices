@@ -18,7 +18,7 @@ Commands and Queries:
     - MATH1:HORizontal:UNIts?
     - MATH1:LABel <QString>
     - MATH1:LABel?
-    - MATH1:SPECTral:GATing:INDICators {<NR1>|OFF|ON}
+    - MATH1:SPECTral:GATing:INDICators {ON|OFF|<NR1>}
     - MATH1:SPECTral:GATing:INDICators:END?
     - MATH1:SPECTral:GATing:INDICators:STARt?
     - MATH1:SPECTral:GATing:INDICators?
@@ -368,7 +368,7 @@ class Math1SpectralGatingIndicators(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH1:SPECTral:GATing:INDICators {<NR1>|OFF|ON}
+        - MATH1:SPECTral:GATing:INDICators {ON|OFF|<NR1>}
         - MATH1:SPECTral:GATing:INDICators?
         ```
 
@@ -467,7 +467,7 @@ class Math1SpectralGating(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH1:SPECTral:GATing:INDICators {<NR1>|OFF|ON}
+            - MATH1:SPECTral:GATing:INDICators {ON|OFF|<NR1>}
             - MATH1:SPECTral:GATing:INDICators?
             ```
 

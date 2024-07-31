@@ -10,14 +10,14 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - ALIas {OFF|ON|<NR1>}
+    - ALIas {ON|OFF|<NR1>}
     - ALIas:CATalog?
     - ALIas:DEFine <QString><,>{<QString>|<Block>}
     - ALIas:DEFine?
     - ALIas:DELEte <QString>
     - ALIas:DELEte:ALL
     - ALIas:DELEte:NAMe <QString>
-    - ALIas:STATE {<NR1>|OFF|ON}
+    - ALIas:STATE {ON|OFF|<NR1>}
     - ALIas:STATE?
     - ALIas?
     ```
@@ -46,7 +46,7 @@ class AliasState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ALIas:STATE {<NR1>|OFF|ON}
+        - ALIas:STATE {ON|OFF|<NR1>}
         - ALIas:STATE?
         ```
 
@@ -229,7 +229,7 @@ class Alias(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ALIas {OFF|ON|<NR1>}
+        - ALIas {ON|OFF|<NR1>}
         - ALIas?
         ```
 
@@ -343,7 +343,7 @@ class Alias(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ALIas:STATE {<NR1>|OFF|ON}
+            - ALIas:STATE {ON|OFF|<NR1>}
             - ALIas:STATE?
             ```
 

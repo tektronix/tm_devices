@@ -15,15 +15,15 @@ Commands and Queries:
     - REF:REF<x>:DESKew <NR3>
     - REF:REF<x>:LABel:COLor <QString>
     - REF:REF<x>:LABel:COLor?
-    - REF:REF<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+    - REF:REF<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
     - REF:REF<x>:LABel:FONT:BOLD?
-    - REF:REF<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+    - REF:REF<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
     - REF:REF<x>:LABel:FONT:ITALic?
     - REF:REF<x>:LABel:FONT:SIZE <NR1>
     - REF:REF<x>:LABel:FONT:SIZE?
     - REF:REF<x>:LABel:FONT:TYPE <QString>
     - REF:REF<x>:LABel:FONT:TYPE?
-    - REF:REF<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+    - REF:REF<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
     - REF:REF<x>:LABel:FONT:UNDERline?
     - REF:REF<x>:LABel:NAMe <QString>
     - REF:REF<x>:LABel:NAMe?
@@ -1419,7 +1419,7 @@ class RefRefItemLabelFontUnderline(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - REF:REF<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+        - REF:REF<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
         - REF:REF<x>:LABel:FONT:UNDERline?
         ```
 
@@ -1496,7 +1496,7 @@ class RefRefItemLabelFontItalic(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - REF:REF<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+        - REF:REF<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
         - REF:REF<x>:LABel:FONT:ITALic?
         ```
 
@@ -1522,7 +1522,7 @@ class RefRefItemLabelFontBold(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - REF:REF<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+        - REF:REF<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
         - REF:REF<x>:LABel:FONT:BOLD?
         ```
 
@@ -1573,7 +1573,7 @@ class RefRefItemLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - REF:REF<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+            - REF:REF<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
             - REF:REF<x>:LABel:FONT:BOLD?
             ```
 
@@ -1600,7 +1600,7 @@ class RefRefItemLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - REF:REF<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+            - REF:REF<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
             - REF:REF<x>:LABel:FONT:ITALic?
             ```
 
@@ -1679,7 +1679,7 @@ class RefRefItemLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - REF:REF<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+            - REF:REF<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
             - REF:REF<x>:LABel:FONT:UNDERline?
             ```
 
