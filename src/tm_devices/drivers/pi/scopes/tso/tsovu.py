@@ -1,7 +1,5 @@
 """TSOVu device driver module."""
 
-import inspect
-
 import pyvisa as visa
 
 from tm_devices.drivers.device import family_base_class
@@ -35,14 +33,3 @@ class TSOVu(Scope):
     ################################################################################################
     # Private Methods
     ################################################################################################
-    def _reboot(self) -> None:
-        """Perform the actual rebooting code.
-
-        Raises:
-            NotImplementedError: Indicates the current driver has not implemented this method.
-        """
-        # TODO: implement
-        raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
-            f" is not yet implemented for the {self.__class__.__name__} driver"
-        )
