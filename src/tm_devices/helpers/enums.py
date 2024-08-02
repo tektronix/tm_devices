@@ -80,8 +80,8 @@ class DeviceTypes(CustomStrEnum):
     """An enum member representing a Source Measure Unit."""
     SS = "SS"
     """An enum member representing a Systems Switch."""
-    UNKNOWN = "UNKNOWN"
-    """An enum member representing an unknown device type."""
+    UNSUPPORTED = "UNSUPPORTED"
+    """An enum member representing an unsupported device type."""
     _UNIT_TEST_ONLY_DEVICE_DO_NOT_USE = "_UNIT_TEST_ONLY_DEVICE_DO_NOT_USE"
 
 

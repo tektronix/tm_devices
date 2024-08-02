@@ -1,0 +1,4 @@
+---
+devices:
+  - address: UNSUPPORTED-DEVICE-TYPE
+    device_type: UNSUPPORTED

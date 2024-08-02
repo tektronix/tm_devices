@@ -80,6 +80,8 @@ with DeviceManager(external_device_drivers=CUSTOM_DEVICE_DRIVERS) as device_mana
     # Add the custom scope
     custom_scope: CustomScope = device_manager.add_scope("192.168.0.2")
     # Add the custom device that is a device type not officially supported
+    # NOTE: If using a config file or environment variable to define a device that is unsupported,
+    #       the `device_type` key must be set to "UNSUPPORTED".
     custom_device: CustomDevice = device_manager.add_unsupported_device("192.168.0.3")
 
     # Custom drivers inherit all methods

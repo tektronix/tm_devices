@@ -650,17 +650,10 @@ class DeviceManager(metaclass=Singleton):
             The custom device driver.
         """
         self.__protect_access()
-        warnings.warn(
-            f"An unsupported device type is being added to the {self.__class__.__name__}. "
-            f"Not all functionality will be available in the device driver. "
-            f"Please consider contributing to {PACKAGE_NAME} to implement official "
-            f"support for this device type.",
-            stacklevel=2,
-        )
         return cast(
             UnsupportedDeviceAlias,
             self._add_device(
-                device_type=DeviceTypes.UNKNOWN.value,
+                device_type=DeviceTypes.UNSUPPORTED.value,
                 address=address,
                 alias=alias,
                 connection_type=connection_type,
@@ -872,7 +865,7 @@ class DeviceManager(metaclass=Singleton):
         if (
             device_type is not None
             and device.device_type != device_type.upper()
-            and device.config_entry.device_type != DeviceTypes.UNKNOWN
+            and device.config_entry.device_type != DeviceTypes.UNSUPPORTED
         ):
             message = (
                 f'A device of type "{device_type}" was specified to be accessed, '
@@ -1009,7 +1002,7 @@ class DeviceManager(metaclass=Singleton):
             print_with_timestamp("Opening Connections to Devices")
             for device_name, device_config in self.__config.devices.items():
                 if device_name not in self.__devices:
-                    self.__create_device(device_name, device_config)
+                    self.__create_device(device_name, device_config, 3)
 
     def open(self) -> bool:
         """Reopen all devices if the DeviceManager has been previously closed.
@@ -1029,7 +1022,7 @@ class DeviceManager(metaclass=Singleton):
         if self.__config.devices:
             print_with_timestamp("Opening Connections to Devices")
         for device_name, device_config in self.__config.devices.items():
-            self.__create_device(device_name, device_config)
+            self.__create_device(device_name, device_config, 3)
         if self.__setup_cleanup_enabled:
             self.cleanup_all_devices()
         self.__is_open = True
@@ -1162,7 +1155,7 @@ class DeviceManager(metaclass=Singleton):
             config_dict["gpib_board_number"] = gpib_board_number
         new_device_name, new_device_config = self.__config.add_device(**config_dict)  # pyright: ignore[reportArgumentType]
 
-        return self.__create_device(new_device_name, new_device_config)
+        return self.__create_device(new_device_name, new_device_config, 4)
 
     @staticmethod
     def __clear_visa_output_buffer_and_get_idn(visa_resource: MessageBasedResource) -> str:
@@ -1234,13 +1227,17 @@ class DeviceManager(metaclass=Singleton):
         return idn_response
 
     def __create_device(
-        self, device_config_name: str, device_config: DeviceConfigEntry
+        self,
+        device_config_name: str,
+        device_config: DeviceConfigEntry,
+        warning_stacklevel: int,
     ) -> Union[RESTAPIDevice, PIDevice]:
         """Create a new device driver and add it to the device dictionary.
 
         Args:
             device_config_name: The name returned when creating the device_config.
             device_config: The dataclass holding the device configuration information.
+            warning_stacklevel: The stacklevel of the warning to raise for unsupported device types.
 
         Returns:
             The created device driver.
@@ -1262,6 +1259,14 @@ class DeviceManager(metaclass=Singleton):
             device_drivers = DEVICE_DRIVER_MODEL_MAPPING
 
         alias_string = f' "{device_config.alias}"' if device_config.alias else ""
+        if device_config.device_type == DeviceTypes.UNSUPPORTED:
+            warnings.warn(
+                f"An unsupported device type is being added to the {self.__class__.__name__}. "
+                f"Not all functionality will be available in the device driver. "
+                f"Please consider contributing to {PACKAGE_NAME} to implement official "
+                f"support for this device type.",
+                stacklevel=warning_stacklevel,
+            )
         print_with_timestamp(f"Creating Connection to {device_config_name}{alias_string}")
         new_device: Union[RESTAPIDevice, PIDevice]
         if device_config.connection_type == ConnectionTypes.REST_API:
@@ -1294,11 +1299,19 @@ class DeviceManager(metaclass=Singleton):
         self.__devices[device_config_name] = new_device
         if device_config.alias:
             self.__devices[device_config.alias] = new_device
+        if new_device.config_entry.device_type == DeviceTypes.UNSUPPORTED:
+            # Add an alias to the AliasDict which contains the device_type that the custom device
+            # driver defines, which may be different from the device type defined in the config,
+            # which is "UNSUPPORTED". This allows the device to be removed from the config and
+            # DeviceManager when necessary.
+            self.__devices[f"{new_device.device_type} {new_device.device_number}".upper()] = (
+                new_device
+            )
 
         # double check created device is correct type
         if (
             new_device.device_type != new_device.config_entry.device_type.value
-            and new_device.config_entry.device_type != DeviceTypes.UNKNOWN
+            and new_device.config_entry.device_type != DeviceTypes.UNSUPPORTED
         ):
             self.remove_device(
                 alias=new_device.config_entry.alias,
