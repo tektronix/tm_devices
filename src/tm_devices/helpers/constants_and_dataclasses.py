@@ -192,7 +192,7 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     lan_port: Optional[int] = None
     """The port number to connect on, used for SOCKET/REST_API connections."""
     lan_device_name: Optional[LANDeviceNames] = None
-    """The LAN device name to connect on, used for TCPIP connections."""
+    """The LAN device name to connect on, used for TCPIP connections (defaults to 'inst0')."""
     serial_config: Optional[SerialConfig] = None
     """Serial configuration properties for connecting to a device over SERIAL (ASRL)."""
     device_driver: Optional[str] = None
