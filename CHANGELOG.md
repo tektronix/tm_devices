@@ -18,6 +18,15 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v2.2.0 (2024-08-02)
+
+### Merged Pull Requests
+
+- Enable adding unsupported device types via the DeviceManager ([#262](https://github.com/tektronix/tm_devices/pull/262))
+- test: Ignore http-rate-limited warnings to avoid failure due to the abundance of GitHub URLs in the Changelog ([#261](https://github.com/tektronix/tm_devices/pull/261))
+
 ### Added
 
 - Added a new method to the `DeviceManager` class, `add_unsupported_device()`, which enables adding an unsupported device type.
