@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added a new method to the `DeviceManager` class, `add_unsupported_device()`, which enables adding an unsupported device type.
+
 ---
 
 ## v2.1.0 (2024-07-31)

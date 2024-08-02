@@ -363,6 +363,10 @@ order-by-type = false
 "examples/**" = [
   "S101"  # Use of assert detected
 ]
+"examples/miscellaneous/custom_device_driver_support.py" = [
+  "ARG002",  # Unused method argument
+  "D102"  # Missing docstring in public method
+]
 "src/tm_devices/commands/**" = [
   "A003",  # Class attribute is shadowing a python builtin
   "D104",  # Missing docstring in public package
