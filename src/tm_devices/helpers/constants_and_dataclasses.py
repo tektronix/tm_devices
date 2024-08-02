@@ -12,7 +12,13 @@ from tm_devices.helpers.dataclass_mixins import (
     AsDictionaryMixin,
     AsDictionaryUseEnumNameUseCustEnumStrValueMixin,
 )
-from tm_devices.helpers.enums import ConnectionTypes, DeviceTypes, LoadImpedanceAFG, SupportedModels
+from tm_devices.helpers.enums import (
+    ConnectionTypes,
+    DeviceTypes,
+    LANDeviceNames,
+    LoadImpedanceAFG,
+    SupportedModels,
+)
 from tm_devices.helpers.standalone_functions import validate_address
 
 
@@ -185,6 +191,8 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     """An optional key/name used to retrieve this devices from the DeviceManager."""
     lan_port: Optional[int] = None
     """The port number to connect on, used for SOCKET/REST_API connections."""
+    lan_device_name: Optional[LANDeviceNames] = None
+    """The LAN device name to connect on, used for TCPIP connections."""
     serial_config: Optional[SerialConfig] = None
     """Serial configuration properties for connecting to a device over SERIAL (ASRL)."""
     device_driver: Optional[str] = None
@@ -215,9 +223,17 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
                 object.__setattr__(self, "device_type", DeviceTypes(self.device_type))
             if not isinstance(self.connection_type, ConnectionTypes):  # pyright: ignore[reportUnnecessaryIsInstance]
                 object.__setattr__(self, "connection_type", ConnectionTypes(self.connection_type))
+            if self.lan_device_name is not None and not isinstance(
+                self.lan_device_name, LANDeviceNames
+            ):  # pyright: ignore[reportUnnecessaryIsInstance]
+                object.__setattr__(self, "lan_device_name", LANDeviceNames(self.lan_device_name))
         except ValueError as error:
             # this is from an invalid enum name
             raise TypeError(*error.args)  # noqa: TRY200,B904
+
+        # Set the LAN device name to "inst0" if it is not provided and the connection type is TCPIP
+        if self.connection_type == ConnectionTypes.TCPIP and self.lan_device_name is None:
+            object.__setattr__(self, "lan_device_name", LANDeviceNames.INST0)
 
         # Set the GPIB board number to 0 if it is not provided
         if self.connection_type == ConnectionTypes.GPIB:
@@ -395,7 +411,7 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         elif self.connection_type == ConnectionTypes.SOCKET:
             resource_expr = f"TCPIP0::{self.address}::{self.lan_port}::SOCKET"
         elif self.connection_type == ConnectionTypes.TCPIP:
-            resource_expr = f"TCPIP0::{self.address}::inst0::INSTR"
+            resource_expr = f"TCPIP0::{self.address}::{self.lan_device_name.value}::INSTR"  # pyright: ignore[reportOptionalMemberAccess]
         elif self.connection_type == ConnectionTypes.SERIAL:
             resource_expr = f"ASRL{self.address}::INSTR"
         elif self.connection_type == ConnectionTypes.MOCK:  # pragma: no cover

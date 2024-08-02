@@ -72,7 +72,7 @@ class TestDeviceManager:  # pylint: disable=no-self-use
         # Get the list of device types, ignore the unit test ones since
         # this test only applies to actual supported devices.
         "device_type",
-        list(filter(lambda x: "UNIT_TEST" not in x, (y.name for y in DeviceTypes))),  # pyright: ignore[reportCallIssue,reportOperatorIssue]
+        list(filter(lambda x: "UNIT_TEST" not in x, (y.name for y in DeviceTypes))),
     )
     def test_supported_device_type_methods(self, device_type: str) -> None:
         """Test that all supported device types have a getter method in the DeviceManager.

@@ -83,6 +83,15 @@ class DeviceTypes(CustomStrEnum):
     _UNIT_TEST_ONLY_DEVICE_DO_NOT_USE = "_UNIT_TEST_ONLY_DEVICE_DO_NOT_USE"
 
 
+class LANDeviceNames(CustomStrEnum):
+    """Class holding the valid LAN device names supported when connecting to devices using TCPIP."""
+
+    INST0 = "inst0"
+    """An enum member representing the default LAN device name."""
+    HISLIP0 = "hislip0"
+    """An enum member representing High Speed LAN Instrument Protocol (HiSLIP) LAN device name."""
+
+
 class SupportedModels(CustomStrEnum):
     """Class containing all model series supported by the device management system."""
 
