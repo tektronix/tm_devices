@@ -116,7 +116,6 @@ pyright = "1.1.374"
 pyroma = "^4.2"
 python-semantic-release = "^9.6.0"
 ruff = "0.5.6"
-safety = "^3.2.0"
 toml-sort = "^0.23.0"
 tox = "^4.0"
 tox-gh-actions = "^3.1.0"
@@ -440,24 +439,15 @@ deps =
     poetry
 setenv =
     DOC_PYTHON_VERSION = python3.11  # Keep this in sync with .readthedocs.yml and any CI scripts
-    # Skip pre-commit checks that are explicitly performed by tox or not needed
-    SKIP = ruff-format,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma,poetry-audit,file-contents-sorter
+    # Skip pre-commit checks that are not needed
+    SKIP = file-contents-sorter
     PYRIGHT_PYTHON_GLOBAL_NODE = False  # This will cause python-pyright to use nodeenv to install node rather than use the system node
 commands_pre =
     poetry install --no-root --without=main
 commands =
-    !tests: safety check --ignore=70612
-    !tests: ruff format --check --diff .
-    !tests: docformatter --check --diff .
-    !tests: ruff check .
-    !tests: pylint .
-    !tests: pyright .
-    !tests: pyright --verifytypes tm_devices --ignoreexternal
-    !tests: pyroma .
-    !tests: poetry audit --ignore-code=CVE-2019-8341
     !tests: poetry build --output=dist_{envname}
     !tests: twine check --strict dist_{envname}/*
-    !tests: pre-commit run --all-files --show-diff-on-failure
+    !tests: pre-commit run --all-files
     !tests: pytest -vv --doctest-modules --doctest-report=ndiff --showlocals --junitxml={tox_root}/.results_{envname}/results_doctests.xml --self-contained-html --html={tox_root}/.results_{envname}/results_doctests.html src
     pytest -vv -k "not test_docs" --showlocals --cov --junitxml={tox_root}/.results_{envname}/results.xml --cov-report=term --cov-report=xml:{tox_root}/.coverage_{envname}.xml --cov-report=html:{tox_root}/.results_{envname}/html --self-contained-html --html={tox_root}/.results_{envname}/results.html
 
