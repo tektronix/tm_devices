@@ -30,7 +30,7 @@ jobs:
         tox_env: [docs, doctests]
     env:
       NODE_VERSION: ${{ inputs.node-version || 20 }}  # The node version needs to stay in sync with .readthedocs.yml
-      PYTHON_VERSION: ${{ inputs.node-version || '3.11' }}  # This needs to stay in sync with .readthedocs.yml and pyproject.toml
+      PYTHON_VERSION: ${{ inputs.node-version || '3.11' }}  # This needs to stay in sync with .readthedocs.yml and the tox config in pyproject.toml
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
