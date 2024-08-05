@@ -95,7 +95,7 @@ def main() -> None:
     _run_cmd_in_subprocess(poetry_update_cmd)
 
     # Update pre-commit config file
-    _run_cmd_in_subprocess(f'"{python_script_location}/pre-commit-update"')
+    _run_cmd_in_subprocess(f'"{python_executable}" -m pre_commit autoupdate --freeze')
 
     # Fix the formatting of the pre-commit config file
     with warnings.catch_warnings():
