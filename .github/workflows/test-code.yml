@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: lts
+          node-version: latest
           check-latest: true
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
