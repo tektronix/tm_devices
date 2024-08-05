@@ -116,7 +116,6 @@ pyright = "1.1.374"
 pyroma = "^4.2"
 python-semantic-release = "^9.6.0"
 ruff = "0.5.6"
-safety = "^3.2.0"
 toml-sort = "^0.23.0"
 tox = "^4.0"
 tox-gh-actions = "^3.1.0"
@@ -446,7 +445,6 @@ setenv =
 commands_pre =
     poetry install --no-root --without=main
 commands =
-    !tests: safety check --ignore=70612
     !tests: poetry build --output=dist_{envname}
     !tests: twine check --strict dist_{envname}/*
     !tests: pre-commit run --all-files
