@@ -169,7 +169,8 @@ class DMConfigParser:
             connection_type: The specific type of connection defined in the config entry.
             alias: An optional key/name used to retrieve this device from the DeviceManager.
             lan_port: The port number to connect on, used for SOCKET/REST_API connections.
-            lan_device_name: The LAN device name to connect on, used for TCPIP connections.
+            lan_device_name: The LAN device name to connect on, only used for TCPIP connections.
+                The default is 'inst0'.
             serial_config: A dataclass for holding serial connection info.
             device_driver: A string indicating the specific Python device driver to use.
             gpib_board_number: The GPIB board number (also referred to as a controller), only used

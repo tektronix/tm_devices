@@ -226,7 +226,7 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
             # this is from an invalid enum name
             raise TypeError(*error.args)  # noqa: TRY200,B904
 
-        # Set the LAN device name to "inst0" if it is not provided and the connection type is TCPIP
+        # Set the LAN device name to "inst0" if one is not provided and the connection type is TCPIP
         if self.connection_type == ConnectionTypes.TCPIP and self.lan_device_name is None:
             object.__setattr__(self, "lan_device_name", "inst0")
 
