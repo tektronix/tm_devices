@@ -67,7 +67,7 @@ maintainers = [
 name = "tm_devices"
 readme = "README.md"
 repository = "https://github.com/tektronix/tm_devices"
-version = "2.1.0"
+version = "2.2.0"
 
 [tool.poetry.dependencies]
 gpib-ctypes = "^0.3.0"
@@ -109,14 +109,12 @@ pre-commit = [
   {python = ">=3.9", version = "^3.7"},
   {python = "3.8", version = "^3.5"}
 ]
-pre-commit-update = "^0.3.0"
 pyclean = "^3.0.0"
 pylint = "3.2.6"
 pyright = "1.1.374"
 pyroma = "^4.2"
 python-semantic-release = "^9.6.0"
 ruff = "0.5.6"
-safety = "^3.2.0"
 toml-sort = "^0.23.0"
 tox = "^4.0"
 tox-gh-actions = "^3.1.0"
@@ -124,7 +122,7 @@ twine = "^5.0.0"
 types-python-dateutil = "^2.9"
 types-pyyaml = "^6.0"
 types-requests = "^2.31"
-wheel = "^0.43"
+wheel = "^0.44"
 yamlfix = "^1.16.0"
 
 [tool.poetry.group.docs.dependencies]
@@ -168,10 +166,6 @@ list-visa-resources = "tm_devices:print_available_visa_devices"
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/tektronix/tm_devices/issues"
 "Changelog" = "https://github.com/tektronix/tm_devices/blob/main/CHANGELOG.md"
-
-[tool.pre-commit-update]
-keep = []
-verbose = true
 
 [tool.pylint.basic]
 good-names = ["_"]
@@ -363,6 +357,10 @@ order-by-type = false
 "examples/**" = [
   "S101"  # Use of assert detected
 ]
+"examples/miscellaneous/custom_device_driver_support.py" = [
+  "ARG002",  # Unused method argument
+  "D102"  # Missing docstring in public method
+]
 "src/tm_devices/commands/**" = [
   "A003",  # Class attribute is shadowing a python builtin
   "D104",  # Missing docstring in public package
@@ -436,24 +434,15 @@ deps =
     poetry
 setenv =
     DOC_PYTHON_VERSION = python3.11  # Keep this in sync with .readthedocs.yml and any CI scripts
-    # Skip pre-commit checks that are explicitly performed by tox or not needed
-    SKIP = ruff-format,docformatter,ruff,pylint,pyright,pyright-verifytypes,pyroma,poetry-audit,file-contents-sorter
+    # Skip pre-commit checks that are not needed
+    SKIP = file-contents-sorter
     PYRIGHT_PYTHON_GLOBAL_NODE = False  # This will cause python-pyright to use nodeenv to install node rather than use the system node
 commands_pre =
     poetry install --no-root --without=main
 commands =
-    !tests: safety check --ignore=70612
-    !tests: ruff format --check --diff .
-    !tests: docformatter --check --diff .
-    !tests: ruff check .
-    !tests: pylint .
-    !tests: pyright .
-    !tests: pyright --verifytypes tm_devices --ignoreexternal
-    !tests: pyroma .
-    !tests: poetry audit --ignore-code=CVE-2019-8341
     !tests: poetry build --output=dist_{envname}
     !tests: twine check --strict dist_{envname}/*
-    !tests: pre-commit run --all-files --show-diff-on-failure
+    !tests: pre-commit run --all-files
     !tests: pytest -vv --doctest-modules --doctest-report=ndiff --showlocals --junitxml={tox_root}/.results_{envname}/results_doctests.xml --self-contained-html --html={tox_root}/.results_{envname}/results_doctests.html src
     pytest -vv -k "not test_docs" --showlocals --cov --junitxml={tox_root}/.results_{envname}/results.xml --cov-report=term --cov-report=xml:{tox_root}/.coverage_{envname}.xml --cov-report=html:{tox_root}/.results_{envname}/html --self-contained-html --html={tox_root}/.results_{envname}/results.html
 

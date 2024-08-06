@@ -47,9 +47,6 @@ class CustomRestApiDevice(RESTAPIDevice):
         """Define abstract method _open."""
         return True
 
-    def _reboot(self) -> None:
-        """Perform the actual rebooting code."""
-
     @cached_property
     def manufacturer(self) -> str:
         """Return the manufacturer of the device."""
