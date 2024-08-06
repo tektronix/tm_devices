@@ -229,8 +229,8 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         # Validate the GPIB board number
         if (
             self.connection_type == ConnectionTypes.GPIB
+            and not isinstance(self.gpib_board_number, int)
             and self.gpib_board_number is not None
-            and not isinstance(self.gpib_board_number, int)  # pyright: ignore[reportUnnecessaryIsInstance]
         ):
             try:
                 # noinspection PyTypeChecker
@@ -242,13 +242,16 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
                 )
                 raise ValueError(msg)  # noqa: B904
 
-            if not MIN_GPIB_BOARD_NUMBER <= self.gpib_board_number <= MAX_GPIB_BOARD_NUMBER:
-                msg = (
-                    f'The GPIB board number of "{self.gpib_board_number}" is not a valid '
-                    f"board number. The valid board number range is "
-                    f"{MIN_GPIB_BOARD_NUMBER} <= gpib_board_number <= {MAX_GPIB_BOARD_NUMBER}."
-                )
-                raise ValueError(msg)
+        if (
+            self.gpib_board_number is not None
+            and not MIN_GPIB_BOARD_NUMBER <= self.gpib_board_number <= MAX_GPIB_BOARD_NUMBER
+        ):
+            msg = (
+                f'The GPIB board number of "{self.gpib_board_number}" is not a valid board number. '
+                f"The valid board number range is "
+                f"{MIN_GPIB_BOARD_NUMBER} <= gpib_board_number <= {MAX_GPIB_BOARD_NUMBER}."
+            )
+            raise ValueError(msg)
 
         # While a SerialConfig is not frozen, if not created here then it cannot be added later.
         # A serial_config must be created if the connection_type is SERIAL (ASRL).
