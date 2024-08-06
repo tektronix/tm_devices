@@ -200,7 +200,7 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     """The GPIB board number (also referred to as a controller) to be used when making a GPIB connection (defaults to 0)."""  # noqa: E501
 
     # pylint: disable=too-many-branches
-    def __post_init__(self) -> None:  # noqa: PLR0912,C901,PLR0915
+    def __post_init__(self) -> None:  # noqa: PLR0912, C901
         """Validate data after creation.
 
         Raises:
@@ -226,31 +226,29 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
             # this is from an invalid enum name
             raise TypeError(*error.args)  # noqa: TRY200,B904
 
-        # Set the GPIB board number to 0 if it is not provided
-        if self.connection_type == ConnectionTypes.GPIB:
-            if self.gpib_board_number is None:
-                object.__setattr__(self, "gpib_board_number", 0)
-            if not isinstance(self.gpib_board_number, int):
-                try:
-                    # noinspection PyTypeChecker
-                    object.__setattr__(self, "gpib_board_number", int(self.gpib_board_number))  # pyright: ignore[reportArgumentType]
-                except ValueError:
-                    msg = (
-                        f'"{self.gpib_board_number}" is not a valid GPIB board number, '
-                        f"valid board numbers must be integers."
-                    )
-                    raise ValueError(msg)  # noqa: B904
-
+        # Validate the GPIB board number
         if (
-            self.gpib_board_number is not None
-            and not MIN_GPIB_BOARD_NUMBER <= self.gpib_board_number <= MAX_GPIB_BOARD_NUMBER
+            self.connection_type == ConnectionTypes.GPIB
+            and self.gpib_board_number is not None
+            and not isinstance(self.gpib_board_number, int)  # pyright: ignore[reportUnnecessaryIsInstance]
         ):
-            msg = (
-                f'The GPIB board number of "{self.gpib_board_number}" is not a valid board number. '
-                f"The valid board number range is "
-                f"{MIN_GPIB_BOARD_NUMBER} <= gpib_board_number <= {MAX_GPIB_BOARD_NUMBER}."
-            )
-            raise ValueError(msg)
+            try:
+                # noinspection PyTypeChecker
+                object.__setattr__(self, "gpib_board_number", int(self.gpib_board_number))
+            except ValueError:
+                msg = (
+                    f'"{self.gpib_board_number}" is not a valid GPIB board number, '
+                    f"valid board numbers must be integers."
+                )
+                raise ValueError(msg)  # noqa: B904
+
+            if not MIN_GPIB_BOARD_NUMBER <= self.gpib_board_number <= MAX_GPIB_BOARD_NUMBER:
+                msg = (
+                    f'The GPIB board number of "{self.gpib_board_number}" is not a valid '
+                    f"board number. The valid board number range is "
+                    f"{MIN_GPIB_BOARD_NUMBER} <= gpib_board_number <= {MAX_GPIB_BOARD_NUMBER}."
+                )
+                raise ValueError(msg)
 
         # While a SerialConfig is not frozen, if not created here then it cannot be added later.
         # A serial_config must be created if the connection_type is SERIAL (ASRL).
@@ -410,7 +408,8 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         elif self.connection_type == ConnectionTypes.MOCK:  # pragma: no cover
             resource_expr = f"MOCK0::{self.address}::INSTR"
         elif self.connection_type == ConnectionTypes.GPIB:
-            resource_expr = f"GPIB{self.gpib_board_number}::{self.address}::INSTR"
+            gpib_board_number = 0 if self.gpib_board_number is None else self.gpib_board_number
+            resource_expr = f"GPIB{gpib_board_number}::{self.address}::INSTR"
         else:
             msg = (
                 f"{self.connection_type.value} is not a valid connection "
