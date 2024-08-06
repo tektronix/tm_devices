@@ -13,7 +13,6 @@ devices:
     alias: afg
     connection_type: TCPIP
     device_type: AFG
-    lan_device_name: inst0
   - address: '1'
     alias: serial_smu
     connection_type: SERIAL

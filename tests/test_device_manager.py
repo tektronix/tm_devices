@@ -140,7 +140,6 @@ stop_bits = "one"
 address = "MSO56-HOSTNAME"
 connection_type = "TCPIP"
 device_type = "SCOPE"
-lan_device_name = "inst0"
 
 [options]
 setup_cleanup = false
@@ -171,7 +170,6 @@ devices:
   - address: MSO56-HOSTNAME
     connection_type: TCPIP
     device_type: SCOPE
-    lan_device_name: inst0
 options:
   setup_cleanup: false
   standalone: false
@@ -190,8 +188,7 @@ options:
             "TM_DEVICES=~~~address=1,alias=TESTING,connection_type=SERIAL,device_type=SMU,"
             "serial_baud_rate=115200,serial_data_bits=8,serial_end_input=none,"
             "serial_flow_control=xon_xoff,serial_parity=none,serial_stop_bits=one"
-            "~~~address=MSO56-HOSTNAME,connection_type=TCPIP,device_type=SCOPE,"
-            "lan_device_name=inst0~~~"
+            "~~~address=MSO56-HOSTNAME,connection_type=TCPIP,device_type=SCOPE~~~"
         )
 
     def test_dm_properties(self, device_manager: DeviceManager) -> None:
@@ -648,7 +645,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         assert afg.query("*IDN?") == "TEKTRONIX,AFG3252C,SERIAL1,SCPI:99.0 FV:3.2.3"
         assert available_devices["local"] == device_tuple
         assert available_devices["configured"] == (
-            "address=AFG3252C-HOSTNAME,connection_type=TCPIP,device_type=AFG,lan_device_name=inst0",
+            "address=AFG3252C-HOSTNAME,connection_type=TCPIP,device_type=AFG",
         )
 
     def test_deleting_device_manager(self) -> None:

@@ -16,7 +16,6 @@ address = "123.45.6.789"
 alias = "afg"
 connection_type = "TCPIP"
 device_type = "AFG"
-lan_device_name = "inst0"
 
 [[devices]]
 address = "1"

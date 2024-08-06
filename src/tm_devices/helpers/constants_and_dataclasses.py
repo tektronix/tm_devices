@@ -226,10 +226,6 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
             # this is from an invalid enum name
             raise TypeError(*error.args)  # noqa: TRY200,B904
 
-        # Set the LAN device name to "inst0" if one is not provided and the connection type is TCPIP
-        if self.connection_type == ConnectionTypes.TCPIP and self.lan_device_name is None:
-            object.__setattr__(self, "lan_device_name", "inst0")
-
         # Set the GPIB board number to 0 if it is not provided
         if self.connection_type == ConnectionTypes.GPIB:
             if self.gpib_board_number is None:
@@ -406,7 +402,9 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         elif self.connection_type == ConnectionTypes.SOCKET:
             resource_expr = f"TCPIP0::{self.address}::{self.lan_port}::SOCKET"
         elif self.connection_type == ConnectionTypes.TCPIP:
-            resource_expr = f"TCPIP0::{self.address}::{self.lan_device_name}::INSTR"
+            # Set the LAN device name to "inst0" if one is not provided/
+            lan_device_name = "inst0" if self.lan_device_name is None else self.lan_device_name
+            resource_expr = f"TCPIP0::{self.address}::{lan_device_name}::INSTR"
         elif self.connection_type == ConnectionTypes.SERIAL:
             resource_expr = f"ASRL{self.address}::INSTR"
         elif self.connection_type == ConnectionTypes.MOCK:  # pragma: no cover
