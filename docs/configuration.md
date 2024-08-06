@@ -85,18 +85,18 @@ devices:
     connection_type: TCPIP
     device_type: <device_type>
     lan_device_name: <lan_device_name>
-# usb connection
+# USB connection
   - address: <model>-<serial_number>
     alias: <alias>
     connection_type: USB
     device_type: <device_type>
-# socket connection
+# SOCKET connection
   - address: <ip_address_or_hostname>
     alias: <alias>
     connection_type: SOCKET
     device_type: <device_type>
     lan_port: <port_number>
-# serial connection
+# SERIAL connection
   - address: <serial_port>
     alias: <alias>
     connection_type: SERIAL
@@ -107,7 +107,7 @@ devices:
       flow_control: xon_xoff
       parity: none
       end_input: none
-# gpib connection
+# GPIB connection
   - address: <gpib_address>
     gpib_board_number: <gpib_board_number>
     alias: <alias>
