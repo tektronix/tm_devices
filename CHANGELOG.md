@@ -22,10 +22,6 @@ Things to be included in the next release go here.
 
 - Changed `DeviceConfigEntry` dataclass by adding an optional `lan_device_name` field, which allows connecting to instruments through TCPIP on LAN device names other than `inst0`.
 
-### Added
-
-- Added `LANDeviceNames` enum, which represents the supported LAN device names. Supported LAN device names are `inst0` (default) and `hislip0`.
-
 ---
 
 ## v2.2.0 (2024-08-02)

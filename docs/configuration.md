@@ -180,9 +180,6 @@ devices:
 - `lan_device_name`
     - The LAN device name to connect on when `<connection_type>` is `TCPIP`.
     - If no LAN device name is provided in the configuration, `inst0` is used.
-    - Valid options for `<lan_device_name>`:
-        - `inst0`: The default LAN device name when connecting through TCPIP
-        - `hislip0`: Connect with the High Speed LAN Instrument Protocol (HiSLIP)
 - `serial_config`
     - Configuration data for `SERIAL` connection type, which VISA documentation
         commonly refers to as ASRL.

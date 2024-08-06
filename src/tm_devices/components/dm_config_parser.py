@@ -34,7 +34,6 @@ from tm_devices.helpers import (
     DeviceConfigEntry,
     DeviceTypes,
     DMConfigOptions,
-    LANDeviceNames,
     SerialConfig,
 )
 from tm_devices.helpers.constants_and_dataclasses import (
@@ -152,7 +151,7 @@ class DMConfigParser:
         connection_type: Union[ConnectionTypes, str] = ConnectionTypes.TCPIP,
         alias: Optional[str] = None,
         lan_port: Optional[int] = None,
-        lan_device_name: Optional[LANDeviceNames] = None,
+        lan_device_name: Optional[str] = None,
         serial_config: Optional[SerialConfig] = None,
         device_driver: Optional[str] = None,
         gpib_board_number: Optional[int] = None,

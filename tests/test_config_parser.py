@@ -15,7 +15,6 @@ from tm_devices.helpers import (
     DeviceConfigEntry,
     DeviceTypes,
     DMConfigOptions,
-    LANDeviceNames,
     SerialConfig,
 )
 from tm_devices.helpers.constants_and_dataclasses import CONFIG_CLASS_STR_PREFIX_MAPPING
@@ -41,7 +40,7 @@ def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None
         address="MSO54-123456",
         connection_type=ConnectionTypes.TCPIP,
         device_type=DeviceTypes.SCOPE,
-        lan_device_name=LANDeviceNames.HISLIP0,
+        lan_device_name="hislip0",
     )
     expected_entry = MappingProxyType({"SCOPE 1": expected_device})
 
@@ -211,7 +210,7 @@ def test_file_config_non_default_path(
             address="MSO54-123456",
             connection_type=ConnectionTypes.TCPIP,
             device_type=DeviceTypes.SCOPE,
-            lan_device_name=LANDeviceNames.HISLIP0,
+            lan_device_name="hislip0",
         ),
         "SCOPE 2": DeviceConfigEntry(
             address="789.56.4.123",
