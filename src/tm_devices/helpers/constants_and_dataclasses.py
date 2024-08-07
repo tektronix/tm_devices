@@ -585,6 +585,9 @@ USB_MODEL_ID_LOOKUP: Final[Mapping[str, USBTMCConfiguration]] = MappingProxyType
         SupportedModels.MSO2.value: USBTMCConfiguration(
             vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0105"
         ),
+        SupportedModels.MSO2KB.value: USBTMCConfiguration(
+            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x03A4"
+        ),
         SupportedModels.MSO4.value: USBTMCConfiguration(
             vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0527"
         ),
