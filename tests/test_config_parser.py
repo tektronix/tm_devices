@@ -33,11 +33,14 @@ def test_nested_config_prefix_mapping() -> None:
 def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None:
     """Test the environment variable config method."""
     options = ["STANDALONE"]
-    expected_device_string = "address=MSO54-123456,connection_type=TCPIP,device_type=SCOPE"
+    expected_device_string = (
+        "address=MSO54-123456,connection_type=TCPIP,device_type=SCOPE,lan_device_name=hislip0"
+    )
     expected_device = DeviceConfigEntry(
         address="MSO54-123456",
         connection_type=ConnectionTypes.TCPIP,
         device_type=DeviceTypes.SCOPE,
+        lan_device_name="hislip0",
     )
     expected_entry = MappingProxyType({"SCOPE 1": expected_device})
 
@@ -207,6 +210,7 @@ def test_file_config_non_default_path(
             address="MSO54-123456",
             connection_type=ConnectionTypes.TCPIP,
             device_type=DeviceTypes.SCOPE,
+            lan_device_name="hislip0",
         ),
         "SCOPE 2": DeviceConfigEntry(
             address="789.56.4.123",
