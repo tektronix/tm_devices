@@ -432,11 +432,12 @@ package = wheel
 install_command = python -I -m pip install --upgrade --upgrade-strategy=eager {opts} {packages}
 deps =
     poetry
+passenv =
+    PYRIGHT_PYTHON_GLOBAL_NODE  # If set outside of tox, this will cause python-pyright to use nodeenv to install node rather than use the system node
 setenv =
     DOC_PYTHON_VERSION = python3.11  # Keep this in sync with .readthedocs.yml and any CI scripts
     # Skip pre-commit checks that are not needed
     SKIP = file-contents-sorter
-    PYRIGHT_PYTHON_GLOBAL_NODE = False  # This will cause python-pyright to use nodeenv to install node rather than use the system node
 commands_pre =
     poetry install --no-root --without=main
 commands =
