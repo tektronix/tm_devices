@@ -79,18 +79,24 @@ devices:
     alias: <alias>
     connection_type: <connection_type>
     device_type: <device_type>
-# usb connection
+# TCPIP connection
+  - address: <ip_address_or_hostname>
+    alias: <alias>
+    connection_type: TCPIP
+    device_type: <device_type>
+    lan_device_name: <lan_device_name>
+# USB connection
   - address: <model>-<serial_number>
     alias: <alias>
     connection_type: USB
     device_type: <device_type>
-# socket connection
+# SOCKET connection
   - address: <ip_address_or_hostname>
     alias: <alias>
     connection_type: SOCKET
     device_type: <device_type>
     lan_port: <port_number>
-# serial connection
+# SERIAL connection
   - address: <serial_port>
     alias: <alias>
     connection_type: SERIAL
@@ -101,7 +107,7 @@ devices:
       flow_control: xon_xoff
       parity: none
       end_input: none
-# gpib connection
+# GPIB connection
   - address: <gpib_address>
     gpib_board_number: <gpib_board_number>
     alias: <alias>
@@ -171,6 +177,9 @@ devices:
     - The open port, a number in the range 0 to 65535.
     - Required when the `<connection_type>` is `SOCKET`.
     - Optional when `<connection_type>` is `REST_API`
+- `lan_device_name`
+    - The LAN device name to connect on when `<connection_type>` is `TCPIP`.
+    - If no LAN device name is provided in the configuration, `inst0` is used.
 - `serial_config`
     - Configuration data for `SERIAL` connection type, which VISA documentation
         commonly refers to as ASRL.
@@ -263,6 +272,11 @@ devices:
     alias: my_smu_by_ip
     connection_type: TCPIP
     device_type: SMU
+# TCPIP connection to SCOPE using the High Speed LAN Instrument Protocol (HiSLIP)
+  - address: MSO54-123456
+    alias: my_scope_on_hislip0
+    device_type: SCOPE
+    lan_device_name: hislip0
 # SOCKET connection to SCOPE types needs lan_port number
   - address: 123.45.67.255
     alias: my_scope_port4000
@@ -320,6 +334,14 @@ address = "123.45.67.255"
 alias = "my_smu_by_ip"
 connection_type = "TCPIP"
 device_type = "SMU"
+
+# TCPIP connection to SCOPE using the High Speed LAN Instrument Protocol (HiSLIP)
+[[devices]]
+address = "MSO54-123456"
+alias = "my_scope_by_hostname"
+connection_type = "TCPIP"
+device_type = "SCOPE"
+lan_device_name = "hislip0"
 
 # SOCKET connection to SCOPE types needs lan_port number
 [[devices]]

@@ -12,7 +12,12 @@ from tm_devices.helpers.dataclass_mixins import (
     AsDictionaryMixin,
     AsDictionaryUseEnumNameUseCustEnumStrValueMixin,
 )
-from tm_devices.helpers.enums import ConnectionTypes, DeviceTypes, LoadImpedanceAFG, SupportedModels
+from tm_devices.helpers.enums import (
+    ConnectionTypes,
+    DeviceTypes,
+    LoadImpedanceAFG,
+    SupportedModels,
+)
 from tm_devices.helpers.standalone_functions import validate_address
 
 
@@ -185,6 +190,8 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     """An optional key/name used to retrieve this devices from the DeviceManager."""
     lan_port: Optional[int] = None
     """The port number to connect on, used for SOCKET/REST_API connections."""
+    lan_device_name: Optional[str] = None
+    """The LAN device name to connect on, used for TCPIP connections (defaults to 'inst0')."""
     serial_config: Optional[SerialConfig] = None
     """Serial configuration properties for connecting to a device over SERIAL (ASRL)."""
     device_driver: Optional[str] = None
@@ -193,7 +200,7 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     """The GPIB board number (also referred to as a controller) to be used when making a GPIB connection (defaults to 0)."""  # noqa: E501
 
     # pylint: disable=too-many-branches
-    def __post_init__(self) -> None:  # noqa: PLR0912,C901,PLR0915
+    def __post_init__(self) -> None:  # noqa: PLR0912, C901
         """Validate data after creation.
 
         Raises:
@@ -219,20 +226,21 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
             # this is from an invalid enum name
             raise TypeError(*error.args)  # noqa: TRY200,B904
 
-        # Set the GPIB board number to 0 if it is not provided
-        if self.connection_type == ConnectionTypes.GPIB:
-            if self.gpib_board_number is None:
-                object.__setattr__(self, "gpib_board_number", 0)
-            if not isinstance(self.gpib_board_number, int):
-                try:
-                    # noinspection PyTypeChecker
-                    object.__setattr__(self, "gpib_board_number", int(self.gpib_board_number))  # pyright: ignore[reportArgumentType]
-                except ValueError:
-                    msg = (
-                        f'"{self.gpib_board_number}" is not a valid GPIB board number, '
-                        f"valid board numbers must be integers."
-                    )
-                    raise ValueError(msg)  # noqa: B904
+        # Validate the GPIB board number
+        if (
+            self.connection_type == ConnectionTypes.GPIB
+            and not isinstance(self.gpib_board_number, int)
+            and self.gpib_board_number is not None
+        ):
+            try:
+                # noinspection PyTypeChecker
+                object.__setattr__(self, "gpib_board_number", int(self.gpib_board_number))
+            except ValueError:
+                msg = (
+                    f'"{self.gpib_board_number}" is not a valid GPIB board number, '
+                    f"valid board numbers must be integers."
+                )
+                raise ValueError(msg)  # noqa: B904
 
         if (
             self.gpib_board_number is not None
@@ -395,13 +403,16 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         elif self.connection_type == ConnectionTypes.SOCKET:
             resource_expr = f"TCPIP0::{self.address}::{self.lan_port}::SOCKET"
         elif self.connection_type == ConnectionTypes.TCPIP:
-            resource_expr = f"TCPIP0::{self.address}::inst0::INSTR"
+            # Set the LAN device name to "inst0" if one is not provided/
+            lan_device_name = "inst0" if self.lan_device_name is None else self.lan_device_name
+            resource_expr = f"TCPIP0::{self.address}::{lan_device_name}::INSTR"
         elif self.connection_type == ConnectionTypes.SERIAL:
             resource_expr = f"ASRL{self.address}::INSTR"
         elif self.connection_type == ConnectionTypes.MOCK:  # pragma: no cover
             resource_expr = f"MOCK0::{self.address}::INSTR"
         elif self.connection_type == ConnectionTypes.GPIB:
-            resource_expr = f"GPIB{self.gpib_board_number}::{self.address}::INSTR"
+            gpib_board_number = 0 if self.gpib_board_number is None else self.gpib_board_number
+            resource_expr = f"GPIB{gpib_board_number}::{self.address}::INSTR"
         else:
             msg = (
                 f"{self.connection_type.value} is not a valid connection "

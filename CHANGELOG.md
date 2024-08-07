@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Changed
+
+- Changed `DeviceConfigEntry` dataclass by adding an optional `lan_device_name` field, which allows connecting to instruments through TCPIP on LAN device names other than `inst0`.
+
 ---
 
 ## v2.2.0 (2024-08-02)
