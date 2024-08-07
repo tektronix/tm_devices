@@ -65,9 +65,3 @@ class TekScope5k7k70k(Scope, ABC):
     ################################################################################################
     # Private Methods
     ################################################################################################
-    def _reboot(self) -> None:
-        """Perform the actual rebooting code."""
-        # TODO: implement
-        raise NotImplementedError(
-            f"``.reboot()`` is not yet implemented for the {self.__class__.__name__} driver"
-        )

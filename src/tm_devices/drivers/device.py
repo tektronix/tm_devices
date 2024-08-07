@@ -150,7 +150,6 @@ class Device(ExtendableMixin, ABC):
            A boolean indicating if device connected successfully.
         """
 
-    @abstractmethod
     def _reboot(self) -> None:
         """Perform the actual rebooting code."""
         raise NotImplementedError(

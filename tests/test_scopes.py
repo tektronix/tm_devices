@@ -404,10 +404,6 @@ def test_tekscope70k(device_manager: DeviceManager, capsys: pytest.CaptureFixtur
     with pytest.raises(SystemError):
         scope.query("EMPTY?")
 
-    with pytest.raises(NotImplementedError) as error:
-        scope.reboot()
-    assert str(error.value.args[0]) == "``.reboot()`` is not yet implemented for the MSO70K driver"
-
     # get coverage for different IDN format
     scope_70k: MSO70KDX = device_manager.add_scope("MSO70KDX-HOSTNAME", alias="mso70k")
     assert scope_70k.sw_version == Version("10.99.1")

@@ -5,24 +5,37 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_call:  # In order to use this workflow, the caller must have a tox configuration that includes both a "docs" and "doctests" environment.
+    inputs:
+      node-version:
+        description: The version of Node.js to install. This workflow also installs
+          mermaid-cli via npm and graphviz via apt.
+        required: true
+        type: number
+      python-version:
+        description: The version of Python to use for this workflow.
+        required: true
+        type: string
 # Cancel running jobs for the same workflow and branch.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 # IMPORTANT: Any new jobs need to be added to the check-docs-passed job to ensure they correctly gate code changes
 jobs:
-  # Test building the docs (html, linkcheck, doctest, coverage)
   test-docs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         tox_env: [docs, doctests]
+    env:
+      NODE_VERSION: ${{ inputs.node-version || 20 }}  # The node version needs to stay in sync with .readthedocs.yml
+      PYTHON_VERSION: ${{ inputs.node-version || '3.11' }}  # This needs to stay in sync with .readthedocs.yml and the tox config in pyproject.toml
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20  # The node version needs to stay in sync with .readthedocs.yml
+          node-version: ${{ env.NODE_VERSION }}
       - name: Install non-python documentation dependencies
         run: |
           npm install --global @mermaid-js/mermaid-cli
@@ -30,7 +43,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'  # This needs to stay in sync with .readthedocs.yml and pyproject.toml
+          python-version: ${{ env.PYTHON_VERSION }}
       - name: Install tox
         run: python -m pip install tox
       - name: Test

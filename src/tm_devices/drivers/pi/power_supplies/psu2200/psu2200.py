@@ -49,9 +49,3 @@ class PSU2200(PowerSupplyUnit):
     ################################################################################################
     # Private Methods
     ################################################################################################
-    def _reboot(self) -> None:
-        """Perform the actual rebooting code."""
-        # TODO: implement
-        raise NotImplementedError(
-            f"``.reboot()`` is not yet implemented for the {self.__class__.__name__} driver"
-        )

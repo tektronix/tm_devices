@@ -350,12 +350,6 @@ class AWG(SignalGenerator, ABC):
     ) -> Tuple[ParameterBounds, ParameterBounds, ParameterBounds]:
         raise NotImplementedError
 
-    def _reboot(self) -> None:
-        """Reboot the device."""
-        raise NotImplementedError(
-            f"``._reboot()`` is not yet implemented for the {self.__class__.__name__} driver"
-        )
-
 
 @family_base_class
 class AWGSourceChannel(BaseSourceChannel, ExtendableMixin):

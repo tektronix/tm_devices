@@ -553,6 +553,7 @@ VALID_DEVICE_CONNECTION_TYPES: Final[Mapping[DeviceTypes, Tuple[ConnectionTypes,
                 ConnectionTypes.SOCKET,
                 ConnectionTypes.GPIB,
             ),
+            DeviceTypes.UNSUPPORTED: tuple(ConnectionTypes),
         }
     )
 )

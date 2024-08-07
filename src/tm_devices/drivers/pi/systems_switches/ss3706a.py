@@ -1,7 +1,5 @@
 """SS3706A device driver module."""
 
-import inspect
-
 from typing import Tuple
 
 import pyvisa as visa
@@ -74,14 +72,3 @@ class SS3706A(SS3706AMixin, SystemsSwitch):
     ################################################################################################
     # Private Methods
     ################################################################################################
-    def _reboot(self) -> None:
-        """Perform the actual rebooting code.
-
-        Raises:
-            NotImplementedError: Indicates the current driver has not implemented this method.
-        """
-        # TODO: implement
-        raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
-            f" is not yet implemented for the {self.__class__.__name__} driver"
-        )

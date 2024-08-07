@@ -76,7 +76,11 @@ def test_device_types() -> None:
     """Verify that the DEVICE_TYPES is kept up to date."""
     abstract_device_list = tm_devices.drivers.DEVICE_TYPE_CLASSES
     supported_device_types = sorted(
-        [x for x in tm_devices.helpers.DeviceTypes.list_values() if "UNIT_TEST" not in x]
+        [
+            x
+            for x in tm_devices.helpers.DeviceTypes.list_values()
+            if "UNIT_TEST" not in x and "UNSUPPORTED" not in x
+        ]
     )
     if len(abstract_device_list) != len(supported_device_types):
         msg = (
