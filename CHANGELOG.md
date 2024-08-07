@@ -18,6 +18,18 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v2.2.1 (2024-08-07)
+
+### Merged Pull Requests
+
+- feat: Custom LAN Device Name for TCPIP Connections ([#267](https://github.com/tektronix/tm_devices/pull/267))
+- docs: Update links on the Readme to point to the full GitHub URL ([#266](https://github.com/tektronix/tm_devices/pull/266))
+- ci: Update the script that updates the pre-commit dependencies to update them with frozen hashes ([#265](https://github.com/tektronix/tm_devices/pull/265))
+- Convert test-docs.yml to a reusable workflow ([#264](https://github.com/tektronix/tm_devices/pull/264))
+- python-deps(deps-dev): bump the python-dependencies group with 3 updates ([#263](https://github.com/tektronix/tm_devices/pull/263))
+
 ### Changed
 
 - Changed `DeviceConfigEntry` dataclass by adding an optional `lan_device_name` field, which allows connecting to instruments through TCPIP on LAN device names other than `inst0`.
