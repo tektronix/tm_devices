@@ -19,15 +19,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: ZIP source folder
-        run: zip -r tm_devices.zip tm_devices/src 
+      
+      # Download the artifact from the previous workflow
+      - name: Download packages artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: Packages
+        
       - name: Run Veracode Policy scan
         uses: veracode/veracode-uploadandscan-action@0.2.6
         with:
-          appname: "Tek_Trebuchet_WebApp"
+          appname: "tm_devices"
           createprofile: false
           version: ${{ github.sha }}
-          filepath: "tm_devices.zip"
+          filepath: "packages.zip"
           scantimeout: 30
           vid: ${{ secrets.VERACODE_API_ID }}
           vkey: ${{ secrets.VERACODE_API_KEY }}
