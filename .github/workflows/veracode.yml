@@ -1,0 +1,33 @@
+name: Veracode Scan
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  veracode-sast-task:
+    runs-on: ubuntu-latest
+    name: Veracode SAST policy scan
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: ZIP source folder
+        run: zip -r tm_devices.zip tm_devices/src 
+      - name: Run Veracode Policy scan
+        uses: veracode/veracode-uploadandscan-action@0.2.6
+        with:
+          appname: "Tek_Trebuchet_WebApp"
+          createprofile: false
+          version: ${{ github.sha }}
+          filepath: "tm_devices.zip"
+          scantimeout: 30
+          vid: ${{ secrets.VERACODE_API_ID }}
+          vkey: ${{ secrets.VERACODE_API_KEY }}
