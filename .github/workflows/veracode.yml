@@ -46,6 +46,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: Packages
+          path: dist
 
       - name: List files in workspace
         run: ls -al
