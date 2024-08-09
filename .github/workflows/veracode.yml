@@ -48,20 +48,16 @@ jobs:
           name: Packages
           path: dist
 
-      - name: List files in workspace
-        run: ls -al
-      
-      - name: List files in dist directory
-        run: ls -al dist
-
-      
+      - name: ZIP artifact folder
+        run: zip -r tm_devices.zip dist
+       
       - name: Run Veracode Policy Scan
         uses: veracode/veracode-uploadandscan-action@0.2.6
         with:
           appname: "tm_devices"
           createprofile: false
           version: ${{ github.sha }}
-          filepath: "Packages.zip"
+          filepath: "tm_devices.zip"
           scantimeout: 30
           vid: ${{ secrets.VERACODE_API_ID }}
           vkey: ${{ secrets.VERACODE_API_KEY }}
