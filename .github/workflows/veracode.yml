@@ -55,9 +55,9 @@ jobs:
         uses: veracode/veracode-uploadandscan-action@0.2.6
         with:
           appname: "tm_devices"
-          createprofile: true
+          createprofile: false
           version: ${{ github.sha }}
           filepath: "tm_devices.zip"
-          scantimeout: 30
+          scantimeout: 60
           vid: ${{ secrets.VERACODE_API_ID }}
           vkey: ${{ secrets.VERACODE_API_KEY }}
