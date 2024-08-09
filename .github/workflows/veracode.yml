@@ -33,12 +33,6 @@ jobs:
         id: build-pkg
         with:
           attest-build-provenance-github: ${{ !(github.event.pull_request.head.repo.fork || github.event.workflow_call.pull_request.head.repo.fork) && github.actor != 'dependabot[bot]' }}
-      
-      - name: Upload built packages
-        uses: actions/upload-artifact@v4
-        with:
-          name: Packages
-          path: dist/packages.zip
 
   veracode-scan:
     name: Veracode SAST Policy Scan
@@ -52,7 +46,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: Packages
-          path: dist
       
       - name: Run Veracode Policy Scan
         uses: veracode/veracode-uploadandscan-action@0.2.6
@@ -60,7 +53,7 @@ jobs:
           appname: "tm_devices"
           createprofile: false
           version: ${{ github.sha }}
-          filepath: "dist/packages.zip"
+          filepath: "Packages"
           scantimeout: 30
           vid: ${{ secrets.VERACODE_API_ID }}
           vkey: ${{ secrets.VERACODE_API_KEY }}
