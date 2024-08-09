@@ -46,7 +46,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: Packages
-          path: dist
       
       - name: Run Veracode Policy Scan
         uses: veracode/veracode-uploadandscan-action@0.2.6
@@ -54,7 +53,7 @@ jobs:
           appname: "tm_devices"
           createprofile: false
           version: ${{ github.sha }}
-          filepath: "dist/Packages.zip"
+          filepath: "Packages.zip"
           scantimeout: 30
           vid: ${{ secrets.VERACODE_API_ID }}
           vkey: ${{ secrets.VERACODE_API_KEY }}
