@@ -54,7 +54,7 @@ jobs:
           appname: "tm_devices"
           createprofile: false
           version: ${{ github.sha }}
-          filepath: "/home/runner/work/tm_devices/tm_devices/dist/Packages/tm_devices-2.2.1-py3-none-any.whl"
+          filepath: "/home/runner/work/tm_devices/tm_devices/dist/Packages.zip"
           scantimeout: 30
           vid: ${{ secrets.VERACODE_API_ID }}
           vkey: ${{ secrets.VERACODE_API_KEY }}
