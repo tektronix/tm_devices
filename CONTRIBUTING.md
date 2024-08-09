@@ -88,15 +88,19 @@ Ready to contribute? Here's how to set up `tm_devices` for local development.
         pre-commit install
         ```
 
-4. Use `git` to create a branch for local development and make your changes:
+4. Check to see if there are any [open issues](https://github.com/tektronix/tm_devices/issues) or [pull requests](https://github.com/tektronix/tm_devices/pulls) that are related to the change you wish to make.
+
+5. Create or update an [issue](https://github.com/tektronix/tm_devices/issues) to track the status of your change.
+
+6. Use `git` to create a branch for local development and make your changes:
 
     ```console
     git checkout -b name-of-your-bugfix-or-feature
     ```
 
-5. Update the **Unreleased** section in the [CHANGELOG](./CHANGELOG.md) using the proper format.
+7. Update the **Unreleased** section in the [CHANGELOG](./CHANGELOG.md) using the proper format.
 
-6. When you're done making changes, check that your changes conform to any code
+8. When you're done making changes, check that your changes conform to any code
     formatting requirements and pass any tests.
 
     !!! note
@@ -159,7 +163,7 @@ Ready to contribute? Here's how to set up `tm_devices` for local development.
             python -m http.server -d .results_docs
             ```
 
-7. Commit and push your changes, then open a pull request from
+9. Commit and push your changes, then open a pull request from
     the fork back into the main repository.
 
     - Commit messages must be structured as follows:
