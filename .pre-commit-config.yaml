@@ -47,7 +47,7 @@ repos:
       - id: check-github-workflows
         args: [--verbose]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 545f14348514ac1adf3d84d46755ef56f082756b  # frozen: v3.28.0
+    rev: d7e01aa9b0cfe3c1b732e66d523bbd0656221127  # frozen: v3.29.0
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -139,7 +139,7 @@ repos:
         always_run: true
         args: [audit, --json, --ignore-code=CVE-2019-8341]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 89fdf53fde24c2f86be24b5a389289e57fa3ef03  # frozen: v0.5.6
+    rev: ac97362543353002a47d6cae8918b25444d102df  # frozen: v0.5.7
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
