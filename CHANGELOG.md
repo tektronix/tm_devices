@@ -18,6 +18,16 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v2.2.2 (2024-08-14)
+
+### Merged Pull Requests
+
+- Fix the stubgen helper function to attach stubs to the correct class in modules with multiple classes ([#276](https://github.com/tektronix/tm_devices/pull/276))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#273](https://github.com/tektronix/tm_devices/pull/273))
+- docs: Update the contribution guide to provide details on how to track the status of changes in the GitHub repo using issues ([#271](https://github.com/tektronix/tm_devices/pull/271))
+
 ### Fixed
 
 - Fixed the stubgen helper to properly attach stubs to the correct class in modules that have multiple classes.
