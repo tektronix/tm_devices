@@ -101,7 +101,7 @@ def add_info_to_stub(cls: Any, method: Any, is_property: bool = False) -> None: 
                     first_half_contents = first_half_contents[:-1]
                 second_half_contents = contents[end_pos:]
                 contents = first_half_contents + method_stub_content + second_half_contents
-            else:
+            else:  # pragma: no cover
                 msg = f"Could not find the end of the {cls.__class__.__name__} class."
                 raise ValueError(msg)
 
