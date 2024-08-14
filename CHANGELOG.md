@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- Fixed the stubgen helper to properly attach stubs to the correct class in modules that have multiple classes.
+
 ---
 
 ## v2.2.1 (2024-08-07)
