@@ -86,6 +86,13 @@ class Device(ABC, metaclass=abc.ABCMeta):
     def __init__(self, config_entry: DeviceConfigEntry, verbose: bool) -> None: ...
     def already_exists(self) -> None:
         """Return nothing."""
+
+def function_1(arg1: str, arg2: int = 1) -> bool: ...
+
+class OtherDevice(ABC, metaclass=abc.ABCMeta):
+    def __init__(self, config_entry: DeviceConfigEntry, verbose: bool) -> None: ...
+
+def function_2(arg1: str, arg2: int = 2) -> bool: ...
 '''
     sub_filepath = Path("drivers/device.pyi")
     generated_stub_dir = (
@@ -158,7 +165,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
         return f"Scope {device.model} {value}"
 
     @SignalGenerator.add_method
-    def custom_model_getter_ss(device: SignalGenerator, value: str) -> str:
+    def custom_model_getter_sg(device: SignalGenerator, value: str) -> str:
         """Return the model."""
         return f"SignalGenerator {device.model} {value}"
 
@@ -187,7 +194,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
                 "-m",
                 "ruff",
                 "format",
-                # "--quiet",
+                "--quiet",
                 generated_stub_file.name,
             ]
         )
@@ -197,7 +204,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
                 "-m",
                 "ruff",
                 "check",
-                # "--quiet",
+                "--quiet",
                 "--select=I",
                 "--fix",
                 generated_stub_file.name,
@@ -228,7 +235,7 @@ class Device(ABC, metaclass=abc.ABCMeta):
     # noinspection PyUnresolvedReferences
     assert afg.custom_model_getter("a", "b", "c", 0.1) == "Device AFG3252C a b c 0.1"
     # noinspection PyUnresolvedReferences
-    assert afg.custom_model_getter_ss("hello") == "SignalGenerator AFG3252C hello"
+    assert afg.custom_model_getter_sg("hello") == "SignalGenerator AFG3252C hello"
     # noinspection PyUnresolvedReferences
     assert afg.custom_model_getter_afg("hello") == "AFG AFG3252C hello"
     # noinspection PyUnresolvedReferences
