@@ -1,13 +1,10 @@
 ---
-name: tek-repo-lint
+name: Enforce Open Source Community Standards
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-  workflow_dispatch:
-  workflow_call:
-# IMPORTANT: Any new jobs need to be added to the check-repo-lint-passed job to ensure they correctly gate code changes
 jobs:
   enforce-community-standards:
     runs-on: ubuntu-latest
