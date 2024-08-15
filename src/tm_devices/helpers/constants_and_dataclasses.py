@@ -224,7 +224,7 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
                 object.__setattr__(self, "connection_type", ConnectionTypes(self.connection_type))
         except ValueError as error:
             # this is from an invalid enum name
-            raise TypeError(*error.args)  # noqa: TRY200,B904
+            raise TypeError(*error.args)  # noqa: B904
 
         # Validate the GPIB board number
         if (
