@@ -430,7 +430,7 @@ class DMConfigParser:
             options_list = list(options_mapping)
             valid_options = set(get_type_hints(DMConfigOptions))
             msg = f"Invalid configuration options found: {list(set(options_list) - valid_options)}"
-            raise KeyError(msg)  # noqa: TRY200,B904
+            raise KeyError(msg)  # noqa: B904
         devices_list = data.get("devices", [])
         return options, devices_list
 

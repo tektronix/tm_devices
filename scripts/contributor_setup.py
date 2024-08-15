@@ -136,8 +136,9 @@ def main() -> None:
         commands_to_send = (
             f"{python_executable} -m pip install -U pip wheel poetry",
             f"{python_executable} -m poetry install",
+            f"{python_executable} -m nodeenv --python-virtualenv --clean-src",
             f"{python_executable} -m pre_commit install",
-            f"{python_executable} -m tox -vve tests",
+            f"{python_executable} -m tox -e tests",
         )
         for command in commands_to_send:
             _run_cmd_in_subprocess(command)
@@ -146,7 +147,7 @@ def main() -> None:
             "Unable to set up the environment. Please run this script from a "
             "standard Python installation, not a virtual environment."
         )
-        raise SystemExit(msg)  # noqa: TRY200,B904
+        raise SystemExit(msg)  # noqa: B904
     finally:
         os.chdir(starting_dir)
 
