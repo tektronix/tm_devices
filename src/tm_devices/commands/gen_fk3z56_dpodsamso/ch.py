@@ -31,7 +31,7 @@ Commands and Queries:
     - CH<x>:FASTFRamecapable?
     - CH<x>:ICAPture:SOUrce {D<x>|CQ0}
     - CH<x>:ICAPture:SOUrce?
-    - CH<x>:ICAPture:STATE {<NR1>|OFF|ON}
+    - CH<x>:ICAPture:STATE {ON|OFF|<NR1>}
     - CH<x>:ICAPture:STATE?
     - CH<x>:INVert {ON|OFF|<NR1>}
     - CH<x>:INVert?
@@ -2416,7 +2416,7 @@ class ChannelIcaptureState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - CH<x>:ICAPture:STATE {<NR1>|OFF|ON}
+        - CH<x>:ICAPture:STATE {ON|OFF|<NR1>}
         - CH<x>:ICAPture:STATE?
         ```
 
@@ -2512,7 +2512,7 @@ class ChannelIcapture(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CH<x>:ICAPture:STATE {<NR1>|OFF|ON}
+            - CH<x>:ICAPture:STATE {ON|OFF|<NR1>}
             - CH<x>:ICAPture:STATE?
             ```
 

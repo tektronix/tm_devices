@@ -152,7 +152,3 @@ class TMT4(MarginTester):
     def _cleanup(self) -> None:
         """Perform the cleanup defined for the device."""
         # TODO: implement
-
-    def _reboot(self) -> None:
-        """Reboot the device."""
-        # TODO: implement

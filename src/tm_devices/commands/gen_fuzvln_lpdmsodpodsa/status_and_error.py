@@ -10,7 +10,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - *PSC {<NR1>|OFF|ON}
+    - *PSC {ON|OFF|<NR1>}
     - *PSC?
     ```
 """
@@ -41,7 +41,7 @@ class Psc(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - *PSC {<NR1>|OFF|ON}
+        - *PSC {ON|OFF|<NR1>}
         - *PSC?
         ```
 

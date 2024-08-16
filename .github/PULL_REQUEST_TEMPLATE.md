@@ -2,6 +2,8 @@
 
 Please include a summary of the changes and any links to related issues. Please also include relevant motivation and context.
 
+Addresses #\< fill in issue number here >
+
 ## Types of changes
 
 What types of changes does your code introduce?
@@ -21,6 +23,7 @@ _Put an `x` in the boxes that apply. You can also fill these out after creating 
 - [ ] I have followed the guidelines in the [CONTRIBUTING](https://github.com/tektronix/tm_devices/blob/main/CONTRIBUTING.md) document
 - [ ] I have signed the CLA
 - [ ] I have checked to ensure there aren't other open [Pull Requests](https://github.com/tektronix/tm_devices/pulls) for the same update/change
+- [ ] I have created (or updated) an [Issue](https://github.com/tektronix/tm_devices/issues) to track the status of this update/change and updated the link in this PR description (see above in the **Proposed changes** section) using the wording `Addresses #<issue_number>`
 - [ ] I have performed a self-review of my code
 - [ ] My code follows the style guidelines of this project
 - [ ] I have commented my code, particularly in hard-to-understand areas

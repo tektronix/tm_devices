@@ -151,6 +151,7 @@ class DMConfigParser:
         connection_type: Union[ConnectionTypes, str] = ConnectionTypes.TCPIP,
         alias: Optional[str] = None,
         lan_port: Optional[int] = None,
+        lan_device_name: Optional[str] = None,
         serial_config: Optional[SerialConfig] = None,
         device_driver: Optional[str] = None,
         gpib_board_number: Optional[int] = None,
@@ -168,6 +169,8 @@ class DMConfigParser:
             connection_type: The specific type of connection defined in the config entry.
             alias: An optional key/name used to retrieve this device from the DeviceManager.
             lan_port: The port number to connect on, used for SOCKET/REST_API connections.
+            lan_device_name: The LAN device name to connect on, only used for TCPIP connections.
+                The default is 'inst0'.
             serial_config: A dataclass for holding serial connection info.
             device_driver: A string indicating the specific Python device driver to use.
             gpib_board_number: The GPIB board number (also referred to as a controller), only used
@@ -188,6 +191,7 @@ class DMConfigParser:
             connection_type=connection_type,
             alias=alias,
             lan_port=lan_port,
+            lan_device_name=lan_device_name,
             serial_config=serial_config,
             device_driver=device_driver,
             gpib_board_number=gpib_board_number,
@@ -426,7 +430,7 @@ class DMConfigParser:
             options_list = list(options_mapping)
             valid_options = set(get_type_hints(DMConfigOptions))
             msg = f"Invalid configuration options found: {list(set(options_list) - valid_options)}"
-            raise KeyError(msg)  # noqa: TRY200,B904
+            raise KeyError(msg)  # noqa: B904
         devices_list = data.get("devices", [])
         return options, devices_list
 

@@ -29,7 +29,7 @@ def _get_data_type(data_object: Any) -> str:
 
 
 # pylint: disable=too-many-locals
-def add_info_to_stub(cls: Any, method: Any, is_property: bool = False) -> None:  # noqa: C901
+def add_info_to_stub(cls: Any, method: Any, is_property: bool = False) -> None:  # noqa: C901,PLR0912
     """Add information to a stub file.
 
     This method requires that an environment variable named ``TM_DEVICES_STUB_DIR`` is defined that
@@ -42,6 +42,7 @@ def add_info_to_stub(cls: Any, method: Any, is_property: bool = False) -> None: 
 
     Raises:
         AssertionError: Indicates that the file that needs to be updated does not exist.
+        ValueError: Indicates that the class could not be found in the stub file.
     """
     if stub_dir := os.getenv("TM_DEVICES_STUB_DIR"):
         method_filepath = inspect.getfile(cls)
@@ -88,8 +89,21 @@ def add_info_to_stub(cls: Any, method: Any, is_property: bool = False) -> None: 
         with open(method_filepath, encoding="utf-8") as file_pointer:
             contents = file_pointer.read()
         if f" def {method.__name__}(" not in contents:
-            contents += method_stub_content
             if typing_imports:
                 contents = f"from typing import {', '.join(typing_imports)}\n" + contents
+            # Use a regular expression to find the end of the current class
+            pattern = r"(class\s+" + cls.__name__ + r"\b.*?)(\n(?=def|class)|\Z)"
+            # Insert the new code at the end of the current class
+            if match := re.search(pattern, contents, flags=re.DOTALL):
+                end_pos = match.end()
+                first_half_contents = contents[:end_pos]
+                if first_half_contents.endswith("\n\n"):
+                    first_half_contents = first_half_contents[:-1]
+                second_half_contents = contents[end_pos:]
+                contents = first_half_contents + method_stub_content + second_half_contents
+            else:  # pragma: no cover
+                msg = f"Could not find the end of the {cls.__class__.__name__} class."
+                raise ValueError(msg)
+
             with open(method_filepath, "w", encoding="utf-8") as file_pointer:
                 file_pointer.write(contents)

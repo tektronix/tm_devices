@@ -11,25 +11,25 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - MASK:AUTOAdjust {<NR1>|OFF|ON}
+    - MASK:AUTOAdjust {ON|OFF|<NR1>}
     - MASK:AUTOAdjust:HDELTA {<NR3>}
     - MASK:AUTOAdjust:HDELTA?
     - MASK:AUTOAdjust:VDELTA {<NR3>}
     - MASK:AUTOAdjust:VDELTA?
     - MASK:AUTOAdjust?
-    - MASK:AUTOSet:AUTOAdjust {<NR1>|OFF|ON}
+    - MASK:AUTOSet:AUTOAdjust {ON|OFF|<NR1>}
     - MASK:AUTOSet:AUTOAdjust?
-    - MASK:AUTOSet:HPOS {<NR1>|OFF|ON}
+    - MASK:AUTOSet:HPOS {ON|OFF|<NR1>}
     - MASK:AUTOSet:HPOS?
-    - MASK:AUTOSet:HSCAle {<NR1>|OFF|ON}
+    - MASK:AUTOSet:HSCAle {ON|OFF|<NR1>}
     - MASK:AUTOSet:HSCAle?
     - MASK:AUTOSet:MODe {MANual|AUTO}
     - MASK:AUTOSet:MODe?
-    - MASK:AUTOSet:OFFSETAdj {<NR1>|OFF|ON}
+    - MASK:AUTOSet:OFFSETAdj {ON|OFF|<NR1>}
     - MASK:AUTOSet:OFFSETAdj?
     - MASK:AUTOSet:STANdard {ATATXG<x>|ATARXG<x>|CLOCKCoax|CLOCKSymmetrical|D<x>|DS0Contra|DS0Double|DS0Single|DS0Timing|DS1|DS1A|DS1C|DS2RATESymmetrical|DS2RATECoax|DS2|DS3|DS4NA|DS4NA_Max|E1Symmetrical|E1Coax|E2|E3|E4_0|E4_1|ENET100FX|ENET100STP|ENET100UTP|ENET1250|ENET1000BCX_NTP2|ENET1000BCX_ATP2|ENET1000BCX_ATP3|ENETXAUI_Near|ENETXAUI_Far|FC133|FC266|FC531|FC1063|FC1063Draft|FC2125|FC133E|FC266E|FC531E|FC1063E|FC1063E_NBT|FC1063E_NDT|FC1063E_NGT|FC1063E_ABT|FC1063E_ADT|FC1063E_AGT|FC1063E_ABR|FC1063E_ADR|FC1063E_AGR|FC2125E_NBT|FC2125E_NDT|FC2125E_NGT|FC2125E_ABT|FC2125E_ADT|FC2125E_AGT|FC2125E_ABR|FC2125E_ADR|FC2125E_AGR|FC4250E_ABR|FC4250E_ABT|FC4250E_ADR|FC4250E_ADT|FC4250E_AGR|FC4250E_AGT|FC4250E_NBT|FC4250E_NDT|FC4250E_NGT|FST1|FST2|FST3|FST4|FST5|FST6|FW1394BS400BT1|FW1394BS400BT2|FW1394BS800BT1|FW1394BS800BT2|FW1394BS1600BT1|FW1394BS1600BT2|FW1394BS400B|FW1394BS800B|FW1394BS1600B|G703DS1|G703DS3|HST<x>|INF2_5G|INF2_5GE|NONe|OC1|OC3|OC12|OC48|OC48_FEC|RATE32Mbit|RATE97Mbit|RIO_DRV500M|RIO_DRV750M|RIO_DRV1G|RIO_DRV1_5G|RIO_DRV2G|RIO_EDRV500M|RIO_EDRV750M|RIO_EDRV1G|RIO_EDRV1_5G|RIO_EDRV2G|RIO_RCV500M|RIO_RCV750M|RIO_RCV1G|RIO_RCV1_5G|RIO_RCV2G|RIO_SERIAL_1G|RIO_SERIAL_2G|RIO_SERIAL_3G|SFI5_XMITADATA2|SFI5_XMITCDATA2|SFI5_XMITACLK2|SFI5_XMITCCLK2|SFI5_RCVBDATA2|SFI5_RCVDDATA2|SFI5_RCVBCLK2|SFI5_RCVDCLK2|SFI5_XMITADATA3|SFI5_XMITCDATA3|SFI5_XMITACLK3|SFI5_XMITCCLK3|SFI5_RCVBDATA3|SFI5_RCVDDATA3|SFI5_RCVBCLK3|SFI5_RCVDCLK3|PCIEXPRESS_Xmit|PCIEXPRESS_Rcv|SAS1_5_IR|SAS1_5_CR|SAS1_5_XR|SAS1_5_IR_AASJ|SAS1_5_CR_AASJ|SAS1_5_XR_AASJ|SAS1_5_SATA|SAS3_0_IR|SAS3_0_CR|SAS3_0_XR|SAS3_0_IR_AASJ|SAS3_0_CR_AASJ|SAS3_0_XR_AASJ|SAS3_0_SATA|STM0_1|STM0_0|STM0_HDBX|STM1E_0|STM1E_1|STS1Pulse|STS1Eye|STS3|STS3_Max|TFI5_2|TFI5_3|USERMask|VIDEO270|VIDEO292M|VIDEO360|VSROC192}
     - MASK:AUTOSet:STANdard?
-    - MASK:AUTOSet:TRIGger {<NR1>|OFF|ON}
+    - MASK:AUTOSet:TRIGger {ON|OFF|<NR1>}
     - MASK:AUTOSet:TRIGger?
     - MASK:AUTOSet:USER:ONE <NR3>
     - MASK:AUTOSet:USER:ONE?
@@ -37,34 +37,34 @@ Commands and Queries:
     - MASK:AUTOSet:USER:TYPe?
     - MASK:AUTOSet:USER:ZERo <NR3>
     - MASK:AUTOSet:USER:ZERo?
-    - MASK:AUTOSet:VPOS {<NR1>|OFF|ON}
+    - MASK:AUTOSet:VPOS {ON|OFF|<NR1>}
     - MASK:AUTOSet:VPOS?
-    - MASK:AUTOSet:VSCAle {<NR1>|OFF|ON}
+    - MASK:AUTOSet:VSCAle {ON|OFF|<NR1>}
     - MASK:AUTOSet:VSCAle?
     - MASK:COPy:USER
     - MASK:COUNt RESET
     - MASK:COUNt:FAILURES?
     - MASK:COUNt:HITS?
     - MASK:COUNt:SEG<m>:HITS?
-    - MASK:COUNt:STATE {<NR1>|OFF|ON}
+    - MASK:COUNt:STATE {ON|OFF|<NR1>}
     - MASK:COUNt:STATE?
     - MASK:COUNt:TESTS?
     - MASK:COUNt:TOTal?
     - MASK:COUNt:VIOLATIONS?
     - MASK:COUNt:WAVEFORMS?
-    - MASK:DISplay {<NR1>|OFF|ON}
+    - MASK:DISplay {ON|OFF|<NR1>}
     - MASK:DISplay?
-    - MASK:FILTer {<NR1>|OFF|ON}
+    - MASK:FILTer {ON|OFF|<NR1>}
     - MASK:FILTer:ORR:VERT_INDEX? CH<x>
     - MASK:FILTer?
-    - MASK:HIGHLIGHTHits {<NR1>|OFF|ON}
+    - MASK:HIGHLIGHTHits {ON|OFF|<NR1>}
     - MASK:HIGHLIGHTHits?
-    - MASK:INVert {<NR1>|OFF|ON}
-    - MASK:LOCk {<NR1>|OFF|ON}
+    - MASK:INVert {ON|OFF|<NR1>}
+    - MASK:LOCk {ON|OFF|<NR1>}
     - MASK:LOCk?
     - MASK:MARgin:PERCent <NR3>
     - MASK:MARgin:PERCent?
-    - MASK:MARgin:STATE {<NR1>|OFF|ON}
+    - MASK:MARgin:STATE {ON|OFF|<NR1>}
     - MASK:MARgin:STATE?
     - MASK:MASKPRE:AMPlitude <NR3>
     - MASK:MASKPRE:AMPlitude?
@@ -100,40 +100,40 @@ Commands and Queries:
     - MASK:SOUrce?
     - MASK:STANdard {ATARXG<x>|ATATXG1|ATATXG2|ATATXG3|CLOCKCoax|CLOCKSymmetrical|D<x>|DS0Contra|DS0Double|DS0Single|DS0Timing|DS1|DS1A|DS1C|DS2|DS2RATECoax|DS2RATESymmetrical|DS3|DS4NA|DS4NA_Max|E1Coax|E1Symmetrical|E2|E3|E4_1|E4_0|ENET1000BCX_ATP2|ENET1000BCX_ATP3|ENET1000BCX_NTP2|ENET100FX|ENET100STP|ENET100UTP|ENET1250|ENETXAUI_Far|ENETXAUI_Near|FC1063|FC1063Draft|FC1063E|FC1063E_ABR|FC1063E_ABT|FC1063E_ADR|FC1063E_ADT|FC1063E_AGR|FC1063E_AGT|FC1063E_NBT|FC1063E_NDT|FC1063E_NGT|FC133|FC133E|FC2125|FC2125E_ABR|FC2125E_ABT|FC2125E_ADR|FC2125E_ADT|FC2125E_AGR|FC2125E_AGT|FC2125E_NBT|FC2125E_NDT|FC2125E_NGT|FC266|FC266E|FC4250E_ABR|FC4250E_ABT|FC4250E_ADR|FC4250E_ADT|FC4250E_AGR|FC4250E_AGT|FC4250E_NBT|FC4250E_NDT|FC4250E_NGT|FC531|FC531E|FST1|FST2|FST3|FST4|FST5|FST6|FW1394BS1600B|FW1394BS1600BT1|FW1394BS1600BT2|FW1394BS400B|FW1394BS400BT1|FW1394BS400BT2|FW1394BS800B|FW1394BS800BT1|FW1394BS800BT2|G703DS1|G703DS3|HST<x>|INF2_5G|INF2_5GE|NONe|OC1|OC12|OC3|OC48|OC48_FEC|PCIEXPRESS_Rcv|PCIEXPRESS_Xmit|RATE32Mbit|RATE97Mbit|RIO_DRV1G|RIO_DRV1_5G|RIO_DRV2G|RIO_DRV500M|RIO_DRV500M|RIO_DRV750M|RIO_EDRV1G|RIO_EDRV1_5G|RIO_EDRV2G|RIO_EDRV500M|RIO_EDRV500M|RIO_EDRV750M|RIO_RCV1G|RIO_RCV1_5G|RIO_RCV2G|RIO_RCV500M|RIO_RCV500M|RIO_RCV750M|RIO_SERIAL_1G|RIO_SERIAL_2G|RIO_SERIAL_3G|SFI5_RCVBCLK2|SFI5_RCVBCLK3|SFI5_RCVBDATA2|SFI5_RCVBDATA3|SFI5_RCVDCLK2|SFI5_RCVDCLK3|SFI5_RCVDDATA2|SFI5_RCVDDATA3|SFI5_XMITACLK2|SFI5_XMITACLK3|SFI5_XMITADATA2|SFI5_XMITADATA3|SFI5_XMITCCLK2|SFI5_XMITCCLK3|SFI5_XMITCDATA2|SFI5_XMITCDATA3|STM0_0|STM0_1|STM0_HDBX|STM1E_1|STM1E_0|STS1Eye|STS1Pulse|STS3|STS3_Max|TFI5_2|TFI5_3|USERMask|VIDEO270|VIDEO292M|VIDEO360|VSROC192|SAS1_5_IR|SAS1_5_CR|SAS1_5_XR|SAS1_5_IR_AASJ|SAS1_5_CR_AASJ|SAS1_5_XR_AASJ|SAS1_5_SATA|SAS3_0_IR|SAS3_0_CR|SAS3_0_XR|SAS3_0_IR_AASJ|SAS3_0_CR_AASJ|SAS3_0_XR_AASJ|SAS3_0_SATA}
     - MASK:STANdard?
-    - MASK:STOPOnviolation {<NR1>|OFF|ON}
+    - MASK:STOPOnviolation {ON|OFF|<NR1>}
     - MASK:STOPOnviolation?
-    - MASK:TESt:AUX:COMPLetion {<NR1>|OFF|ON}
+    - MASK:TESt:AUX:COMPLetion {ON|OFF|<NR1>}
     - MASK:TESt:AUX:COMPLetion?
-    - MASK:TESt:AUX:FAILure {<NR1>|OFF|ON}
+    - MASK:TESt:AUX:FAILure {ON|OFF|<NR1>}
     - MASK:TESt:AUX:FAILure?
-    - MASK:TESt:BEEP:COMPLetion {<NR1>|OFF|ON}
+    - MASK:TESt:BEEP:COMPLetion {ON|OFF|<NR1>}
     - MASK:TESt:BEEP:COMPLetion?
-    - MASK:TESt:BEEP:FAILure {<NR1>|OFF|ON}
+    - MASK:TESt:BEEP:FAILure {ON|OFF|<NR1>}
     - MASK:TESt:BEEP:FAILure?
     - MASK:TESt:DELay <NR3>
     - MASK:TESt:DELay?
-    - MASK:TESt:HARDCopy {<NR1>|OFF|ON}
+    - MASK:TESt:HARDCopy {ON|OFF|<NR1>}
     - MASK:TESt:HARDCopy?
-    - MASK:TESt:LOG:FAILure {<NR1>|OFF|ON}
+    - MASK:TESt:LOG:FAILure {ON|OFF|<NR1>}
     - MASK:TESt:LOG:FAILure?
-    - MASK:TESt:REPeat {<NR1>|OFF|ON}
+    - MASK:TESt:REPeat {ON|OFF|<NR1>}
     - MASK:TESt:REPeat?
     - MASK:TESt:SAMple {<NR1>}
     - MASK:TESt:SAMple:THReshold {<NR1>}
     - MASK:TESt:SAMple:THReshold?
     - MASK:TESt:SAMple?
-    - MASK:TESt:SAVEWFM {<NR1>|OFF|ON}
+    - MASK:TESt:SAVEWFM {ON|OFF|<NR1>}
     - MASK:TESt:SAVEWFM:FILEName <QString>
     - MASK:TESt:SAVEWFM:FILEName?
     - MASK:TESt:SAVEWFM?
-    - MASK:TESt:SRQ:COMPLetion {<NR1>|OFF|ON}
+    - MASK:TESt:SRQ:COMPLetion {ON|OFF|<NR1>}
     - MASK:TESt:SRQ:COMPLetion?
-    - MASK:TESt:SRQ:FAILure {<NR1>|OFF|ON}
+    - MASK:TESt:SRQ:FAILure {ON|OFF|<NR1>}
     - MASK:TESt:SRQ:FAILure?
-    - MASK:TESt:STATE {<NR1>|OFF|ON}
+    - MASK:TESt:STATE {ON|OFF|<NR1>}
     - MASK:TESt:STATE?
     - MASK:TESt:STATUS?
-    - MASK:TESt:STOP:FAILure {<NR1>|OFF|ON}
+    - MASK:TESt:STOP:FAILure {ON|OFF|<NR1>}
     - MASK:TESt:STOP:FAILure?
     - MASK:TESt:THReshold <NR1>
     - MASK:TESt:THReshold?
@@ -1158,7 +1158,7 @@ class MaskTestStopFailure(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:TESt:STOP:FAILure {<NR1>|OFF|ON}
+        - MASK:TESt:STOP:FAILure {ON|OFF|<NR1>}
         - MASK:TESt:STOP:FAILure?
         ```
 
@@ -1204,7 +1204,7 @@ class MaskTestStop(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:TESt:STOP:FAILure {<NR1>|OFF|ON}
+            - MASK:TESt:STOP:FAILure {ON|OFF|<NR1>}
             - MASK:TESt:STOP:FAILure?
             ```
 
@@ -1242,11 +1242,9 @@ class MaskTestState(SCPICmdWrite, SCPICmdRead):
     """The ``MASK:TESt:STATE`` command.
 
     Description:
-        - This command sets or returns the state of mask pass/fail testing. When enabled, this
-          command resets the pass/fail status information and starts pass/fail mask testing. This
-          command also generates an 'Operation Complete' message when pass/fail testing completes.
-          Refer to BUSY and OPC commands for information on synchronizing a controller with
-          pass/fail testing.
+        - This command turns the pass/fail mask test on or off. Most of the other ``MASK:TEST``
+          commands need to be executed before this command. A series of examples showing how to use
+          mask commands for typical tasks is included in an appendix.
 
     Usage:
         - Using the ``.query()`` method will send the ``MASK:TESt:STATE?`` query.
@@ -1256,15 +1254,14 @@ class MaskTestState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:TESt:STATE {<NR1>|OFF|ON}
+        - MASK:TESt:STATE {ON|OFF|<NR1>}
         - MASK:TESt:STATE?
         ```
 
     Info:
-        - ``<NR1>`` = 0 turns off mask pass/fail testing; any other integer turns on mask pass/fail
-          testing.
-        - ``OFF`` turns off mask pass/fail testing.
-        - ``ON`` turns on mask pass/fail testing.
+        - ``ON`` turns the mask test on.
+        - ``OFF`` turns the mask test off.
+        - ``<NR1>`` is an integer. 0 turns the mask test off; any other integer turns it on.
     """
 
 
@@ -1272,10 +1269,9 @@ class MaskTestSrqFailure(SCPICmdWrite, SCPICmdRead):
     """The ``MASK:TESt:SRQ:FAILure`` command.
 
     Description:
-        - This command sets or returns the SRQ status on pass/fail test failure mode. When enabled,
-          this command causes the instrument to send a GPIB SRQ command when the pass/fail status
-          changes to 'Failing'. In other words, it sends an SRQ when a failure occurs during the
-          mask pass/fail test.
+        - This command causes the instrument to send an SRQ command when a pass/fail mask test
+          fails. A series of examples showing how to use mask commands for typical tasks is included
+          in an appendix.
 
     Usage:
         - Using the ``.query()`` method will send the ``MASK:TESt:SRQ:FAILure?`` query.
@@ -1285,15 +1281,15 @@ class MaskTestSrqFailure(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:TESt:SRQ:FAILure {<NR1>|OFF|ON}
+        - MASK:TESt:SRQ:FAILure {ON|OFF|<NR1>}
         - MASK:TESt:SRQ:FAILure?
         ```
 
     Info:
-        - ``<NR1>`` = 0 turns off the pass/fail SRQ on failure, and any other integer turns on the
-          pass/fail SRQ on failure.
-        - ``OFF`` turns off the pass/fail SRQ on failure. This is the default.
-        - ``ON`` turns on the pass/fail SRQ on failure.
+        - ``ON`` turns on this feature, so that when a mask test fails, the instrument will send an
+          SRQ command (if registers are set to send SRQ when OPC is asserted.
+        - ``OFF`` turns off this feature.
+        - ``<NR1>`` is an integer. 0 turns off this feature; any other integer turns it on.
     """
 
 
@@ -1301,9 +1297,11 @@ class MaskTestSrqCompletion(SCPICmdWrite, SCPICmdRead):
     """The ``MASK:TESt:SRQ:COMPLetion`` command.
 
     Description:
-        - This command sets or returns an SRQ on pass/fail test completion mode. When enabled, this
-          command causes the instrument to send a GPIB SRQ command when the mask pass/fail test
-          completes.
+        - This command causes the instrument to send an SRQ command when a pass/fail mask test
+          completes. Use the command ``MASK:TEST:COMPLETION:CRITERION`` to specify criterion. The
+          ``MASK:ACTONEVENT:ENABLE`` command should be set to ON for this event to happen. After the
+          event occurs ``MASK:ACTONEVENT:ENABLE`` command will be set to OFF automatically. A series
+          of examples showing how to use mask commands for typical tasks is included in an appendix.
 
     Usage:
         - Using the ``.query()`` method will send the ``MASK:TESt:SRQ:COMPLetion?`` query.
@@ -1314,15 +1312,15 @@ class MaskTestSrqCompletion(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:TESt:SRQ:COMPLetion {<NR1>|OFF|ON}
+        - MASK:TESt:SRQ:COMPLetion {ON|OFF|<NR1>}
         - MASK:TESt:SRQ:COMPLetion?
         ```
 
     Info:
-        - ``<NR1>`` = 0 turns off the pass/fail SR on completion, any other integer turns on the
-          pass/fail SRQ on completion.
-        - ``OFF`` turns off the pass/fail SRQ on completion.
-        - ``ON`` turns on the pass/fail SRQ on completion.
+        - ``ON`` turns on this feature, so that upon the completion of a mask test, the instrument
+          will send an SRQ command (if registers are set to send SRQ when OPC is asserted).
+        - ``OFF`` turns off this feature.
+        - ``<NR1>`` is an integer. 0 turns off this feature; any other integer turns it on.
     """
 
 
@@ -1349,9 +1347,12 @@ class MaskTestSrq(SCPICmdRead):
         """Return the ``MASK:TESt:SRQ:COMPLetion`` command.
 
         Description:
-            - This command sets or returns an SRQ on pass/fail test completion mode. When enabled,
-              this command causes the instrument to send a GPIB SRQ command when the mask pass/fail
-              test completes.
+            - This command causes the instrument to send an SRQ command when a pass/fail mask test
+              completes. Use the command ``MASK:TEST:COMPLETION:CRITERION`` to specify criterion.
+              The ``MASK:ACTONEVENT:ENABLE`` command should be set to ON for this event to happen.
+              After the event occurs ``MASK:ACTONEVENT:ENABLE`` command will be set to OFF
+              automatically. A series of examples showing how to use mask commands for typical tasks
+              is included in an appendix.
 
         Usage:
             - Using the ``.query()`` method will send the ``MASK:TESt:SRQ:COMPLetion?`` query.
@@ -1362,15 +1363,16 @@ class MaskTestSrq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:TESt:SRQ:COMPLetion {<NR1>|OFF|ON}
+            - MASK:TESt:SRQ:COMPLetion {ON|OFF|<NR1>}
             - MASK:TESt:SRQ:COMPLetion?
             ```
 
         Info:
-            - ``<NR1>`` = 0 turns off the pass/fail SR on completion, any other integer turns on the
-              pass/fail SRQ on completion.
-            - ``OFF`` turns off the pass/fail SRQ on completion.
-            - ``ON`` turns on the pass/fail SRQ on completion.
+            - ``ON`` turns on this feature, so that upon the completion of a mask test, the
+              instrument will send an SRQ command (if registers are set to send SRQ when OPC is
+              asserted).
+            - ``OFF`` turns off this feature.
+            - ``<NR1>`` is an integer. 0 turns off this feature; any other integer turns it on.
         """
         return self._completion
 
@@ -1379,10 +1381,9 @@ class MaskTestSrq(SCPICmdRead):
         """Return the ``MASK:TESt:SRQ:FAILure`` command.
 
         Description:
-            - This command sets or returns the SRQ status on pass/fail test failure mode. When
-              enabled, this command causes the instrument to send a GPIB SRQ command when the
-              pass/fail status changes to 'Failing'. In other words, it sends an SRQ when a failure
-              occurs during the mask pass/fail test.
+            - This command causes the instrument to send an SRQ command when a pass/fail mask test
+              fails. A series of examples showing how to use mask commands for typical tasks is
+              included in an appendix.
 
         Usage:
             - Using the ``.query()`` method will send the ``MASK:TESt:SRQ:FAILure?`` query.
@@ -1393,15 +1394,15 @@ class MaskTestSrq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:TESt:SRQ:FAILure {<NR1>|OFF|ON}
+            - MASK:TESt:SRQ:FAILure {ON|OFF|<NR1>}
             - MASK:TESt:SRQ:FAILure?
             ```
 
         Info:
-            - ``<NR1>`` = 0 turns off the pass/fail SRQ on failure, and any other integer turns on
-              the pass/fail SRQ on failure.
-            - ``OFF`` turns off the pass/fail SRQ on failure. This is the default.
-            - ``ON`` turns on the pass/fail SRQ on failure.
+            - ``ON`` turns on this feature, so that when a mask test fails, the instrument will send
+              an SRQ command (if registers are set to send SRQ when OPC is asserted.
+            - ``OFF`` turns off this feature.
+            - ``<NR1>`` is an integer. 0 turns off this feature; any other integer turns it on.
         """
         return self._failure
 
@@ -1438,9 +1439,12 @@ class MaskTestSavewfm(SCPICmdWrite, SCPICmdRead):
     """The ``MASK:TESt:SAVEWFM`` command.
 
     Description:
-        - This command sets or returns the save waveform to file on failure setting. When enabled,
-          this command copies waveform data from active channels to files when the pass/fail test
-          status changes to 'Failing'.
+        - This command copies the waveform data from all active channels to a file on a flash memory
+          device such as a USB stick or a network drive. See the command ``FILESYSTEM:MKDIR`` and
+          other File System commands for more information on saving to a file. The
+          ``MASK:ACTONEVENT:ENABLE`` command should be set to ON for this event to happen. After the
+          event occurs ``MASK:ACTONEVENT:ENABLE`` command will be set to OFF automatically. A series
+          of examples showing how to use mask commands for typical tasks is included in an appendix.
 
     Usage:
         - Using the ``.query()`` method will send the ``MASK:TESt:SAVEWFM?`` query.
@@ -1450,15 +1454,15 @@ class MaskTestSavewfm(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:TESt:SAVEWFM {<NR1>|OFF|ON}
+        - MASK:TESt:SAVEWFM {ON|OFF|<NR1>}
         - MASK:TESt:SAVEWFM?
         ```
 
     Info:
-        - ``<NR1>`` = 0 turns off copying all active channel waveforms to files, and any other
-          integer turns on copying all active channel waveforms to files.
-        - ``OFF`` turns off copying all active channel waveforms to files.
-        - ``ON`` turns on copying all active channel waveforms to files.
+        - ``ON`` turns on this feature, so that waveform data from all active channels is copied to
+          files upon test failure.
+        - ``OFF`` turns off this feature.
+        - ``<NR1>`` is an integer. 0 turns off this feature; any other value turns it on.
 
     Properties:
         - ``.filename``: The ``MASK:TESt:SAVEWFM:FILEName`` command.
@@ -1588,9 +1592,9 @@ class MaskTestRepeat(SCPICmdWrite, SCPICmdRead):
     """The ``MASK:TESt:REPeat`` command.
 
     Description:
-        - This command sets or returns the repeat pass/fail test on completion mode. When enabled,
-          this command repeats the pass/fail test cycle at the completion of the previous test
-          cycle.
+        - This command causes the mask test cycle to continuously repeat upon the completion of the
+          previous test cycle. A series of examples showing how to use mask commands for typical
+          tasks is included in an appendix.
 
     Usage:
         - Using the ``.query()`` method will send the ``MASK:TESt:REPeat?`` query.
@@ -1600,15 +1604,15 @@ class MaskTestRepeat(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:TESt:REPeat {<NR1>|OFF|ON}
+        - MASK:TESt:REPeat {ON|OFF|<NR1>}
         - MASK:TESt:REPeat?
         ```
 
     Info:
-        - ``<NR1>`` = 0 turns off repeat on completion, and any other integer turns on repeat on
-          completion.
-        - ``OFF`` turns off repeat on completion.
-        - ``ON`` turns on repeat on completion.
+        - ``ON`` turns on this feature, so that the mask test cycle repeats continuously upon the
+          completion of the previous test cycle.
+        - ``OFF`` turns off this feature.
+        - ``<NR1>`` is an integer. 0 turns off this feature; any other integer turns it on.
     """
 
 
@@ -1629,7 +1633,7 @@ class MaskTestLogFailure(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:TESt:LOG:FAILure {<NR1>|OFF|ON}
+        - MASK:TESt:LOG:FAILure {ON|OFF|<NR1>}
         - MASK:TESt:LOG:FAILure?
         ```
 
@@ -1676,7 +1680,7 @@ class MaskTestLog(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:TESt:LOG:FAILure {<NR1>|OFF|ON}
+            - MASK:TESt:LOG:FAILure {ON|OFF|<NR1>}
             - MASK:TESt:LOG:FAILure?
             ```
 
@@ -1693,10 +1697,11 @@ class MaskTestHardcopy(SCPICmdWrite, SCPICmdRead):
     """The ``MASK:TESt:HARDCopy`` command.
 
     Description:
-        - This command sets or returns the hard copy in pass/fail failure mode. When enabled, this
-          command causes the instrument to generate a screen hard copy, to the default printer using
-          the current instrument hard copy settings, as soon as the pass/fail status changes to
-          'Failing'.
+        - This command will cause the instrument to generate a screen shot to the default printer as
+          soon as a pass/fail mask test fails, using the current instrument hard copy settings. See
+          ``HARDCOPY:ACTIVEPRINTER`` and other Hardcopy commands for more information on accessing
+          printer settings. A series of examples showing how to use mask commands for typical tasks
+          is included in an appendix.
 
     Usage:
         - Using the ``.query()`` method will send the ``MASK:TESt:HARDCopy?`` query.
@@ -1706,15 +1711,15 @@ class MaskTestHardcopy(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:TESt:HARDCopy {<NR1>|OFF|ON}
+        - MASK:TESt:HARDCopy {ON|OFF|<NR1>}
         - MASK:TESt:HARDCopy?
         ```
 
     Info:
-        - ``<NR1>`` = 0 turns off generate hard copy on failure, and any other value turns on
-          generate hard copy on failure.
-        - ``OFF`` turns off generate hard copy on failure.
-        - ``ON`` turns on generate hard copy on failure.
+        - ``ON`` turns on this feature, so that the instrument will generate a screen hard copy to
+          the default printer upon failure.
+        - ``OFF`` turns off this feature.
+        - ``<NR1>`` = 0 turns off this feature; any other value turns it on.
     """
 
 
@@ -1761,7 +1766,7 @@ class MaskTestBeepFailure(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:TESt:BEEP:FAILure {<NR1>|OFF|ON}
+        - MASK:TESt:BEEP:FAILure {ON|OFF|<NR1>}
         - MASK:TESt:BEEP:FAILure?
         ```
 
@@ -1789,7 +1794,7 @@ class MaskTestBeepCompletion(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:TESt:BEEP:COMPLetion {<NR1>|OFF|ON}
+        - MASK:TESt:BEEP:COMPLetion {ON|OFF|<NR1>}
         - MASK:TESt:BEEP:COMPLetion?
         ```
 
@@ -1837,7 +1842,7 @@ class MaskTestBeep(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:TESt:BEEP:COMPLetion {<NR1>|OFF|ON}
+            - MASK:TESt:BEEP:COMPLetion {ON|OFF|<NR1>}
             - MASK:TESt:BEEP:COMPLetion?
             ```
 
@@ -1867,7 +1872,7 @@ class MaskTestBeep(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:TESt:BEEP:FAILure {<NR1>|OFF|ON}
+            - MASK:TESt:BEEP:FAILure {ON|OFF|<NR1>}
             - MASK:TESt:BEEP:FAILure?
             ```
 
@@ -1896,7 +1901,7 @@ class MaskTestAuxFailure(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:TESt:AUX:FAILure {<NR1>|OFF|ON}
+        - MASK:TESt:AUX:FAILure {ON|OFF|<NR1>}
         - MASK:TESt:AUX:FAILure?
         ```
 
@@ -1924,7 +1929,7 @@ class MaskTestAuxCompletion(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:TESt:AUX:COMPLetion {<NR1>|OFF|ON}
+        - MASK:TESt:AUX:COMPLetion {ON|OFF|<NR1>}
         - MASK:TESt:AUX:COMPLetion?
         ```
 
@@ -1972,7 +1977,7 @@ class MaskTestAux(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:TESt:AUX:COMPLetion {<NR1>|OFF|ON}
+            - MASK:TESt:AUX:COMPLetion {ON|OFF|<NR1>}
             - MASK:TESt:AUX:COMPLetion?
             ```
 
@@ -2002,7 +2007,7 @@ class MaskTestAux(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:TESt:AUX:FAILure {<NR1>|OFF|ON}
+            - MASK:TESt:AUX:FAILure {ON|OFF|<NR1>}
             - MASK:TESt:AUX:FAILure?
             ```
 
@@ -2122,10 +2127,11 @@ class MaskTest(SCPICmdRead):
         """Return the ``MASK:TESt:HARDCopy`` command.
 
         Description:
-            - This command sets or returns the hard copy in pass/fail failure mode. When enabled,
-              this command causes the instrument to generate a screen hard copy, to the default
-              printer using the current instrument hard copy settings, as soon as the pass/fail
-              status changes to 'Failing'.
+            - This command will cause the instrument to generate a screen shot to the default
+              printer as soon as a pass/fail mask test fails, using the current instrument hard copy
+              settings. See ``HARDCOPY:ACTIVEPRINTER`` and other Hardcopy commands for more
+              information on accessing printer settings. A series of examples showing how to use
+              mask commands for typical tasks is included in an appendix.
 
         Usage:
             - Using the ``.query()`` method will send the ``MASK:TESt:HARDCopy?`` query.
@@ -2135,15 +2141,15 @@ class MaskTest(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:TESt:HARDCopy {<NR1>|OFF|ON}
+            - MASK:TESt:HARDCopy {ON|OFF|<NR1>}
             - MASK:TESt:HARDCopy?
             ```
 
         Info:
-            - ``<NR1>`` = 0 turns off generate hard copy on failure, and any other value turns on
-              generate hard copy on failure.
-            - ``OFF`` turns off generate hard copy on failure.
-            - ``ON`` turns on generate hard copy on failure.
+            - ``ON`` turns on this feature, so that the instrument will generate a screen hard copy
+              to the default printer upon failure.
+            - ``OFF`` turns off this feature.
+            - ``<NR1>`` = 0 turns off this feature; any other value turns it on.
         """
         return self._hardcopy
 
@@ -2166,9 +2172,9 @@ class MaskTest(SCPICmdRead):
         """Return the ``MASK:TESt:REPeat`` command.
 
         Description:
-            - This command sets or returns the repeat pass/fail test on completion mode. When
-              enabled, this command repeats the pass/fail test cycle at the completion of the
-              previous test cycle.
+            - This command causes the mask test cycle to continuously repeat upon the completion of
+              the previous test cycle. A series of examples showing how to use mask commands for
+              typical tasks is included in an appendix.
 
         Usage:
             - Using the ``.query()`` method will send the ``MASK:TESt:REPeat?`` query.
@@ -2178,15 +2184,15 @@ class MaskTest(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:TESt:REPeat {<NR1>|OFF|ON}
+            - MASK:TESt:REPeat {ON|OFF|<NR1>}
             - MASK:TESt:REPeat?
             ```
 
         Info:
-            - ``<NR1>`` = 0 turns off repeat on completion, and any other integer turns on repeat on
-              completion.
-            - ``OFF`` turns off repeat on completion.
-            - ``ON`` turns on repeat on completion.
+            - ``ON`` turns on this feature, so that the mask test cycle repeats continuously upon
+              the completion of the previous test cycle.
+            - ``OFF`` turns off this feature.
+            - ``<NR1>`` is an integer. 0 turns off this feature; any other integer turns it on.
         """
         return self._repeat
 
@@ -2227,9 +2233,13 @@ class MaskTest(SCPICmdRead):
         """Return the ``MASK:TESt:SAVEWFM`` command.
 
         Description:
-            - This command sets or returns the save waveform to file on failure setting. When
-              enabled, this command copies waveform data from active channels to files when the
-              pass/fail test status changes to 'Failing'.
+            - This command copies the waveform data from all active channels to a file on a flash
+              memory device such as a USB stick or a network drive. See the command
+              ``FILESYSTEM:MKDIR`` and other File System commands for more information on saving to
+              a file. The ``MASK:ACTONEVENT:ENABLE`` command should be set to ON for this event to
+              happen. After the event occurs ``MASK:ACTONEVENT:ENABLE`` command will be set to OFF
+              automatically. A series of examples showing how to use mask commands for typical tasks
+              is included in an appendix.
 
         Usage:
             - Using the ``.query()`` method will send the ``MASK:TESt:SAVEWFM?`` query.
@@ -2239,15 +2249,15 @@ class MaskTest(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:TESt:SAVEWFM {<NR1>|OFF|ON}
+            - MASK:TESt:SAVEWFM {ON|OFF|<NR1>}
             - MASK:TESt:SAVEWFM?
             ```
 
         Info:
-            - ``<NR1>`` = 0 turns off copying all active channel waveforms to files, and any other
-              integer turns on copying all active channel waveforms to files.
-            - ``OFF`` turns off copying all active channel waveforms to files.
-            - ``ON`` turns on copying all active channel waveforms to files.
+            - ``ON`` turns on this feature, so that waveform data from all active channels is copied
+              to files upon test failure.
+            - ``OFF`` turns off this feature.
+            - ``<NR1>`` is an integer. 0 turns off this feature; any other value turns it on.
 
         Sub-properties:
             - ``.filename``: The ``MASK:TESt:SAVEWFM:FILEName`` command.
@@ -2274,11 +2284,9 @@ class MaskTest(SCPICmdRead):
         """Return the ``MASK:TESt:STATE`` command.
 
         Description:
-            - This command sets or returns the state of mask pass/fail testing. When enabled, this
-              command resets the pass/fail status information and starts pass/fail mask testing.
-              This command also generates an 'Operation Complete' message when pass/fail testing
-              completes. Refer to BUSY and OPC commands for information on synchronizing a
-              controller with pass/fail testing.
+            - This command turns the pass/fail mask test on or off. Most of the other ``MASK:TEST``
+              commands need to be executed before this command. A series of examples showing how to
+              use mask commands for typical tasks is included in an appendix.
 
         Usage:
             - Using the ``.query()`` method will send the ``MASK:TESt:STATE?`` query.
@@ -2288,15 +2296,14 @@ class MaskTest(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:TESt:STATE {<NR1>|OFF|ON}
+            - MASK:TESt:STATE {ON|OFF|<NR1>}
             - MASK:TESt:STATE?
             ```
 
         Info:
-            - ``<NR1>`` = 0 turns off mask pass/fail testing; any other integer turns on mask
-              pass/fail testing.
-            - ``OFF`` turns off mask pass/fail testing.
-            - ``ON`` turns on mask pass/fail testing.
+            - ``ON`` turns the mask test on.
+            - ``OFF`` turns the mask test off.
+            - ``<NR1>`` is an integer. 0 turns the mask test off; any other integer turns it on.
         """
         return self._state
 
@@ -2397,9 +2404,14 @@ class MaskStoponviolation(SCPICmdWrite, SCPICmdRead):
     """The ``MASK:STOPOnviolation`` command.
 
     Description:
-        - This command sets or returns the stop on violation setting. When enabled, this command
-          stops waveform acquisitions on the first occurrence of a waveform violation.
-          ``MASK:DISPLAY`` must be ON for the instrument to detect violations.
+        - This command stops the waveform acquisitions upon the first occurrence of a waveform
+          violation. The ``MASK:ACTONEVENT:ENABLE`` command should be set to ON for this event to
+          happen. After the event occurs ``MASK:ACTONEVENT:ENABLE`` command will be set to OFF
+          automatically. You can also specify an action to be performed when acquisitions are
+          stopped by using the commands such as ``MASK:TEST:SAVEWFM``, ``MASK:TEST:SAVEIMAGE``,
+          ``MASK:TEST:AUXOUT:FAILURE``, ``MASK:TEST:HARDCOPY``, or ``MASK:TEST:SRQ:FAILURE``. A
+          series of examples showing how to use mask commands for typical tasks is included in an
+          appendix.
 
     Usage:
         - Using the ``.query()`` method will send the ``MASK:STOPOnviolation?`` query.
@@ -2409,14 +2421,14 @@ class MaskStoponviolation(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:STOPOnviolation {<NR1>|OFF|ON}
+        - MASK:STOPOnviolation {ON|OFF|<NR1>}
         - MASK:STOPOnviolation?
         ```
 
     Info:
-        - ``<NR1>`` = 0 turns off stop on violation; any other value turns on stop on violation.
-        - ``OFF`` turns off mask test stop on violation.
         - ``ON`` stops waveform acquisition on the first occurrence of a mask violation.
+        - ``OFF`` turns this feature off.
+        - ``<NR1>=0`` turns this feature off ; any other value turns it on.
     """
 
 
@@ -3520,7 +3532,7 @@ class MaskMarginState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:MARgin:STATE {<NR1>|OFF|ON}
+        - MASK:MARgin:STATE {ON|OFF|<NR1>}
         - MASK:MARgin:STATE?
         ```
 
@@ -3618,7 +3630,7 @@ class MaskMargin(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:MARgin:STATE {<NR1>|OFF|ON}
+            - MASK:MARgin:STATE {ON|OFF|<NR1>}
             - MASK:MARgin:STATE?
             ```
 
@@ -3636,11 +3648,12 @@ class MaskLock(SCPICmdWrite, SCPICmdRead):
     """The ``MASK:LOCk`` command.
 
     Description:
-        - This command sets or returns the mask lock to waveform mode. It locks the mask to the
-          waveform such that changes to the horizontal and/or vertical scale settings redraws the
-          mask segments in proportion. This feature allows for expanding horizontal and/or vertical
-          settings to zoom in on waveforms and masks to visually examine violation areas in more
-          detail.
+        - This command locks the mask to the source waveform so that any changes made to the
+          horizontal and/or vertical scale settings of the waveform will redraw the mask segments in
+          proportion. This feature is useful for expanding the horizontal and/or vertical settings
+          in order to zoom in on waveforms and masks, and visually examine violation areas in more
+          detail. A series of examples showing how to use mask commands for typical tasks is
+          included in an appendix.
 
     Usage:
         - Using the ``.query()`` method will send the ``MASK:LOCk?`` query.
@@ -3650,15 +3663,14 @@ class MaskLock(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:LOCk {<NR1>|OFF|ON}
+        - MASK:LOCk {ON|OFF|<NR1>}
         - MASK:LOCk?
         ```
 
     Info:
-        - ``<NR1>`` = 0 turns off mask lock to waveform and any other value turns on mask lock to
-          waveform.
-        - ``OFF`` turns off mask lock to waveform.
-        - ``ON`` turns on mask lock to waveform.
+        - ``ON`` turns on this feature, so that the mask is locked to the waveform.
+        - ``OFF`` turns off this feature.
+        - ``<NR1> = 0`` turns off this feature. Any other value turns it on.
     """
 
 
@@ -3674,7 +3686,7 @@ class MaskInvert(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - MASK:INVert {<NR1>|OFF|ON}
+        - MASK:INVert {ON|OFF|<NR1>}
         ```
 
     Info:
@@ -3699,7 +3711,7 @@ class MaskHighlighthits(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:HIGHLIGHTHits {<NR1>|OFF|ON}
+        - MASK:HIGHLIGHTHits {ON|OFF|<NR1>}
         - MASK:HIGHLIGHTHits?
         ```
 
@@ -3788,7 +3800,7 @@ class MaskFilter(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:FILTer {<NR1>|OFF|ON}
+        - MASK:FILTer {ON|OFF|<NR1>}
         - MASK:FILTer?
         ```
 
@@ -3838,7 +3850,7 @@ class MaskDisplay(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:DISplay {<NR1>|OFF|ON}
+        - MASK:DISplay {ON|OFF|<NR1>}
         - MASK:DISplay?
         ```
 
@@ -3946,7 +3958,7 @@ class MaskCountState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:COUNt:STATE {<NR1>|OFF|ON}
+        - MASK:COUNt:STATE {ON|OFF|<NR1>}
         - MASK:COUNt:STATE?
         ```
 
@@ -4164,7 +4176,7 @@ class MaskCount(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:COUNt:STATE {<NR1>|OFF|ON}
+            - MASK:COUNt:STATE {ON|OFF|<NR1>}
             - MASK:COUNt:STATE?
             ```
 
@@ -4333,7 +4345,7 @@ class MaskAutosetVscale(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:AUTOSet:VSCAle {<NR1>|OFF|ON}
+        - MASK:AUTOSet:VSCAle {ON|OFF|<NR1>}
         - MASK:AUTOSet:VSCAle?
         ```
 
@@ -4361,7 +4373,7 @@ class MaskAutosetVpos(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:AUTOSet:VPOS {<NR1>|OFF|ON}
+        - MASK:AUTOSet:VPOS {ON|OFF|<NR1>}
         - MASK:AUTOSet:VPOS?
         ```
 
@@ -4559,7 +4571,7 @@ class MaskAutosetTrigger(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:AUTOSet:TRIGger {<NR1>|OFF|ON}
+        - MASK:AUTOSet:TRIGger {ON|OFF|<NR1>}
         - MASK:AUTOSet:TRIGger?
         ```
 
@@ -4749,7 +4761,7 @@ class MaskAutosetOffsetadj(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:AUTOSet:OFFSETAdj {<NR1>|OFF|ON}
+        - MASK:AUTOSet:OFFSETAdj {ON|OFF|<NR1>}
         - MASK:AUTOSet:OFFSETAdj?
         ```
 
@@ -4805,7 +4817,7 @@ class MaskAutosetHscale(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:AUTOSet:HSCAle {<NR1>|OFF|ON}
+        - MASK:AUTOSet:HSCAle {ON|OFF|<NR1>}
         - MASK:AUTOSet:HSCAle?
         ```
 
@@ -4833,7 +4845,7 @@ class MaskAutosetHpos(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:AUTOSet:HPOS {<NR1>|OFF|ON}
+        - MASK:AUTOSet:HPOS {ON|OFF|<NR1>}
         - MASK:AUTOSet:HPOS?
         ```
 
@@ -4863,7 +4875,7 @@ class MaskAutosetAutoadjust(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:AUTOSet:AUTOAdjust {<NR1>|OFF|ON}
+        - MASK:AUTOSet:AUTOAdjust {ON|OFF|<NR1>}
         - MASK:AUTOSet:AUTOAdjust?
         ```
 
@@ -4930,7 +4942,7 @@ class MaskAutoset(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:AUTOSet:AUTOAdjust {<NR1>|OFF|ON}
+            - MASK:AUTOSet:AUTOAdjust {ON|OFF|<NR1>}
             - MASK:AUTOSet:AUTOAdjust?
             ```
 
@@ -4960,7 +4972,7 @@ class MaskAutoset(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:AUTOSet:HPOS {<NR1>|OFF|ON}
+            - MASK:AUTOSet:HPOS {ON|OFF|<NR1>}
             - MASK:AUTOSet:HPOS?
             ```
 
@@ -4991,7 +5003,7 @@ class MaskAutoset(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:AUTOSet:HSCAle {<NR1>|OFF|ON}
+            - MASK:AUTOSet:HSCAle {ON|OFF|<NR1>}
             - MASK:AUTOSet:HSCAle?
             ```
 
@@ -5053,7 +5065,7 @@ class MaskAutoset(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:AUTOSet:OFFSETAdj {<NR1>|OFF|ON}
+            - MASK:AUTOSet:OFFSETAdj {ON|OFF|<NR1>}
             - MASK:AUTOSet:OFFSETAdj?
             ```
 
@@ -5245,7 +5257,7 @@ class MaskAutoset(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:AUTOSet:TRIGger {<NR1>|OFF|ON}
+            - MASK:AUTOSet:TRIGger {ON|OFF|<NR1>}
             - MASK:AUTOSet:TRIGger?
             ```
 
@@ -5290,7 +5302,7 @@ class MaskAutoset(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:AUTOSet:VPOS {<NR1>|OFF|ON}
+            - MASK:AUTOSet:VPOS {ON|OFF|<NR1>}
             - MASK:AUTOSet:VPOS?
             ```
 
@@ -5320,7 +5332,7 @@ class MaskAutoset(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:AUTOSet:VSCAle {<NR1>|OFF|ON}
+            - MASK:AUTOSet:VSCAle {ON|OFF|<NR1>}
             - MASK:AUTOSet:VSCAle?
             ```
 
@@ -5402,7 +5414,7 @@ class MaskAutoadjust(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MASK:AUTOAdjust {<NR1>|OFF|ON}
+        - MASK:AUTOAdjust {ON|OFF|<NR1>}
         - MASK:AUTOAdjust?
         ```
 
@@ -5558,7 +5570,7 @@ class Mask(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:AUTOAdjust {<NR1>|OFF|ON}
+            - MASK:AUTOAdjust {ON|OFF|<NR1>}
             - MASK:AUTOAdjust?
             ```
 
@@ -5658,7 +5670,7 @@ class Mask(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:DISplay {<NR1>|OFF|ON}
+            - MASK:DISplay {ON|OFF|<NR1>}
             - MASK:DISplay?
             ```
 
@@ -5689,7 +5701,7 @@ class Mask(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:FILTer {<NR1>|OFF|ON}
+            - MASK:FILTer {ON|OFF|<NR1>}
             - MASK:FILTer?
             ```
 
@@ -5719,7 +5731,7 @@ class Mask(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:HIGHLIGHTHits {<NR1>|OFF|ON}
+            - MASK:HIGHLIGHTHits {ON|OFF|<NR1>}
             - MASK:HIGHLIGHTHits?
             ```
 
@@ -5744,7 +5756,7 @@ class Mask(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:INVert {<NR1>|OFF|ON}
+            - MASK:INVert {ON|OFF|<NR1>}
             ```
 
         Info:
@@ -5759,11 +5771,12 @@ class Mask(SCPICmdRead):
         """Return the ``MASK:LOCk`` command.
 
         Description:
-            - This command sets or returns the mask lock to waveform mode. It locks the mask to the
-              waveform such that changes to the horizontal and/or vertical scale settings redraws
-              the mask segments in proportion. This feature allows for expanding horizontal and/or
-              vertical settings to zoom in on waveforms and masks to visually examine violation
-              areas in more detail.
+            - This command locks the mask to the source waveform so that any changes made to the
+              horizontal and/or vertical scale settings of the waveform will redraw the mask
+              segments in proportion. This feature is useful for expanding the horizontal and/or
+              vertical settings in order to zoom in on waveforms and masks, and visually examine
+              violation areas in more detail. A series of examples showing how to use mask commands
+              for typical tasks is included in an appendix.
 
         Usage:
             - Using the ``.query()`` method will send the ``MASK:LOCk?`` query.
@@ -5773,15 +5786,14 @@ class Mask(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:LOCk {<NR1>|OFF|ON}
+            - MASK:LOCk {ON|OFF|<NR1>}
             - MASK:LOCk?
             ```
 
         Info:
-            - ``<NR1>`` = 0 turns off mask lock to waveform and any other value turns on mask lock
-              to waveform.
-            - ``OFF`` turns off mask lock to waveform.
-            - ``ON`` turns on mask lock to waveform.
+            - ``ON`` turns on this feature, so that the mask is locked to the waveform.
+            - ``OFF`` turns off this feature.
+            - ``<NR1> = 0`` turns off this feature. Any other value turns it on.
         """
         return self._lock
 
@@ -6101,9 +6113,14 @@ class Mask(SCPICmdRead):
         """Return the ``MASK:STOPOnviolation`` command.
 
         Description:
-            - This command sets or returns the stop on violation setting. When enabled, this command
-              stops waveform acquisitions on the first occurrence of a waveform violation.
-              ``MASK:DISPLAY`` must be ON for the instrument to detect violations.
+            - This command stops the waveform acquisitions upon the first occurrence of a waveform
+              violation. The ``MASK:ACTONEVENT:ENABLE`` command should be set to ON for this event
+              to happen. After the event occurs ``MASK:ACTONEVENT:ENABLE`` command will be set to
+              OFF automatically. You can also specify an action to be performed when acquisitions
+              are stopped by using the commands such as ``MASK:TEST:SAVEWFM``,
+              ``MASK:TEST:SAVEIMAGE``, ``MASK:TEST:AUXOUT:FAILURE``, ``MASK:TEST:HARDCOPY``, or
+              ``MASK:TEST:SRQ:FAILURE``. A series of examples showing how to use mask commands for
+              typical tasks is included in an appendix.
 
         Usage:
             - Using the ``.query()`` method will send the ``MASK:STOPOnviolation?`` query.
@@ -6114,14 +6131,14 @@ class Mask(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MASK:STOPOnviolation {<NR1>|OFF|ON}
+            - MASK:STOPOnviolation {ON|OFF|<NR1>}
             - MASK:STOPOnviolation?
             ```
 
         Info:
-            - ``<NR1>`` = 0 turns off stop on violation; any other value turns on stop on violation.
-            - ``OFF`` turns off mask test stop on violation.
             - ``ON`` stops waveform acquisition on the first occurrence of a mask violation.
+            - ``OFF`` turns this feature off.
+            - ``<NR1>=0`` turns this feature off ; any other value turns it on.
         """
         return self._stoponviolation
 

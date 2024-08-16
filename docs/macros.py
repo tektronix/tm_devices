@@ -28,6 +28,7 @@ PAGE_REPLACEMENTS = {
         (" TSP ", " <TSP:>"),
         (" API ", " <API:>"),
         (" DPOJET ", " <DPOJET:>"),
+        (" SourceXpress ", " <SourceXpress:>"),
         (" ✅ ", " [](default:✅) "),
         (" 🚧 ", " [](default:🚧) "),
         (" ❌ ", " [](default:❌) "),
@@ -36,10 +37,16 @@ PAGE_REPLACEMENTS = {
             "> Visit the [Glossary",
             "    Hover over a link or icon to see its definition, or visit the [Glossary",
         ),
-        ("(https://tinyurl.com/tek-tm-devices/docs/glossary.md)", "(./glossary.md)"),
-        ("(https://tinyurl.com/tek-tm-devices/CODE_OF_CONDUCT.md)", "(./CODE_OF_CONDUCT.md)"),
-        ("(https://tinyurl.com/tek-tm-devices/CONTRIBUTING.md)", "(./CONTRIBUTING.md)"),
-        ("(https://tinyurl.com/tek-tm-devices/LICENSE.md)", "(./LICENSE.md)"),
+        ("(https://github.com/tektronix/tm_devices/blob/main/docs/glossary.md)", "(./glossary.md)"),
+        (
+            "(https://github.com/tektronix/tm_devices/blob/main/CODE_OF_CONDUCT.md)",
+            "(./CODE_OF_CONDUCT.md)",
+        ),
+        (
+            "(https://github.com/tektronix/tm_devices/blob/main/CONTRIBUTING.md)",
+            "(./CONTRIBUTING.md)",
+        ),
+        ("(https://github.com/tektronix/tm_devices/blob/main/LICENSE.md)", "(./LICENSE.md)"),
     ),
 }
 FILES_TO_REMOVE_BLACK_FORMATTER_DISABLE_COMMENT = {

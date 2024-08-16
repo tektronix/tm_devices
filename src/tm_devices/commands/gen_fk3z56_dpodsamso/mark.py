@@ -22,7 +22,7 @@ Commands and Queries:
     - MARK:SELECTED:OWNer?
     - MARK:SELECTED:SOUrce?
     - MARK:SELECTED:STARt?
-    - MARK:SELECTED:STATE {<NR1>|OFF|ON}
+    - MARK:SELECTED:STATE {ON|OFF|<NR1>}
     - MARK:SELECTED:STATE?
     - MARK:SELECTED:ZOOm:POSition?
     - MARK:SELECTED:ZOOm:SCAle?
@@ -174,7 +174,7 @@ class MarkSelectedState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MARK:SELECTED:STATE {<NR1>|OFF|ON}
+        - MARK:SELECTED:STATE {ON|OFF|<NR1>}
         - MARK:SELECTED:STATE?
         ```
 
@@ -522,7 +522,7 @@ class MarkSelected(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MARK:SELECTED:STATE {<NR1>|OFF|ON}
+            - MARK:SELECTED:STATE {ON|OFF|<NR1>}
             - MARK:SELECTED:STATE?
             ```
 

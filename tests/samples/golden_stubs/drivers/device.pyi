@@ -29,3 +29,10 @@ class Device(ABC, metaclass=abc.ABCMeta):
 
         This has a multi-line description.
         """
+
+def function_1(arg1: str, arg2: int = 1) -> bool: ...
+
+class OtherDevice(ABC, metaclass=abc.ABCMeta):
+    def __init__(self, config_entry: DeviceConfigEntry, verbose: bool) -> None: ...
+
+def function_2(arg1: str, arg2: int = 2) -> bool: ...

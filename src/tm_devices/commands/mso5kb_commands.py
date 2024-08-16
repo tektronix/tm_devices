@@ -87,9 +87,7 @@ from .gen_ft5uww_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rs
 from .gen_fteabn_lpdmsomdodpoafgawgdsa.status_and_error import Opt
 from .gen_fug7nl_lpdmsodpomdoawgdsa.status_and_error import Ese, Sre
 from .gen_fuzvln_lpdmsodpodsa.alias import Alias
-from .gen_fuzvln_lpdmsodpodsa.header import Header
 from .gen_fuzvln_lpdmsodpodsa.status_and_error import Psc
-from .gen_fuzvln_lpdmsodpodsa.verbose import Verbose
 from .gen_fx54ua_lpdmsodpomdodsa.allev import Allev
 from .gen_fx54ua_lpdmsodpomdodsa.busy import Busy
 from .gen_fx54ua_lpdmsodpomdodsa.dese import Dese
@@ -97,6 +95,7 @@ from .gen_fx54ua_lpdmsodpomdodsa.event import Event
 from .gen_fx54ua_lpdmsodpomdodsa.evmsg import Evmsg
 from .gen_fx54ua_lpdmsodpomdodsa.evqty import Evqty
 from .gen_fx54ua_lpdmsodpomdodsa.factory import Factory
+from .gen_fx54ua_lpdmsodpomdodsa.header import Header
 from .gen_fx54ua_lpdmsodpomdodsa.id import Id
 from .gen_fx54ua_lpdmsodpomdodsa.miscellaneous import Ddt, Lrn
 from .gen_fx54ua_lpdmsodpomdodsa.newpass import Newpass
@@ -105,6 +104,7 @@ from .gen_fx54ua_lpdmsodpomdodsa.rem import Rem
 from .gen_fx54ua_lpdmsodpomdodsa.set import Set
 from .gen_fx54ua_lpdmsodpomdodsa.status_and_error import Pud
 from .gen_fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
+from .gen_fx54ua_lpdmsodpomdodsa.verbose import Verbose
 from .gen_fx54ua_lpdmsodpomdodsa.wavfrm import Wavfrm
 from .gen_fzn174_lpdmsodpomdodsa.lock import Lock
 from .gen_fzn174_lpdmsodpomdodsa.unlock import Unlock
@@ -1064,7 +1064,7 @@ class MSO5KBCommands:
 
         SCPI Syntax:
             ```
-            - ALIas {OFF|ON|<NR1>}
+            - ALIas {ON|OFF|<NR1>}
             - ALIas?
             ```
 
@@ -2295,7 +2295,7 @@ class MSO5KBCommands:
 
         SCPI Syntax:
             ```
-            - HDR {<NR1>|OFF|ON}
+            - HDR {ON|OFF|<NR1>}
             - HDR?
             ```
 
@@ -2328,7 +2328,7 @@ class MSO5KBCommands:
 
         SCPI Syntax:
             ```
-            - HEADer {<NR1>|OFF|ON}
+            - HEADer {ON|OFF|<NR1>}
             - HEADer?
             ```
 
@@ -2855,7 +2855,7 @@ class MSO5KBCommands:
 
         SCPI Syntax:
             ```
-            - OPCEXtended {<NR1>|OFF|ON}
+            - OPCEXtended {ON|OFF|<NR1>}
             - OPCEXtended?
             ```
 
@@ -2957,7 +2957,7 @@ class MSO5KBCommands:
 
         SCPI Syntax:
             ```
-            - *PSC {<NR1>|OFF|ON}
+            - *PSC {ON|OFF|<NR1>}
             - *PSC?
             ```
 
@@ -3619,7 +3619,7 @@ class MSO5KBCommands:
 
         SCPI Syntax:
             ```
-            - VERBose {<NR1>|OFF|ON}
+            - VERBose {ON|OFF|<NR1>}
             ```
 
         Info:

@@ -849,8 +849,8 @@ class MmemoryImportParameterNormalize(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``NONE`` will not normalize the imported data. The data may contain points outside of the
-          AWG's amplitude range. FSCale normalizes the imported data to the full amplitude range.
-          ZREFerence normalizes the imported data while preserving the offset.
+          AWG's amplitude range.FSCale normalizes the imported data to the full amplitude
+          range.ZREFerence normalizes the imported data while preserving the offset.
     """
 
 
@@ -898,8 +898,8 @@ class MmemoryImportParameter(SCPICmdRead):
 
         Info:
             - ``NONE`` will not normalize the imported data. The data may contain points outside of
-              the AWG's amplitude range. FSCale normalizes the imported data to the full amplitude
-              range. ZREFerence normalizes the imported data while preserving the offset.
+              the AWG's amplitude range.FSCale normalizes the imported data to the full amplitude
+              range.ZREFerence normalizes the imported data while preserving the offset.
         """
         return self._normalize
 

@@ -460,10 +460,10 @@ class AwgcontrolClockSource(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``INTernal`` - clock signal is generated internally and the reference frequency is derived
-          by the internal oscillator. EFIXed - clock is generated internally and the reference
-          frequency is derived from a fixed 10 MHz reference supplied at the Reference In connector.
-          EVARiable - clock is generated internally and the reference frequency is derived from a
-          variable reference supplied at the Reference In connector. EXTernal - clock signal
+          by the internal oscillator.EFIXed - clock is generated internally and the reference
+          frequency is derived from a fixed 10 MHz reference supplied at the Reference In
+          connector.EVARiable - clock is generated internally and the reference frequency is derived
+          from a variable reference supplied at the Reference In connector.EXTernal - clock signal
           supplied by the Clock In connector and the reference frequency is derived from the
           internal precision oscillator.
         - ``*RST`` sets this to INT.
@@ -634,10 +634,10 @@ class AwgcontrolClock(SCPICmdRead):
 
         Info:
             - ``INTernal`` - clock signal is generated internally and the reference frequency is
-              derived by the internal oscillator. EFIXed - clock is generated internally and the
+              derived by the internal oscillator.EFIXed - clock is generated internally and the
               reference frequency is derived from a fixed 10 MHz reference supplied at the Reference
-              In connector. EVARiable - clock is generated internally and the reference frequency is
-              derived from a variable reference supplied at the Reference In connector. EXTernal -
+              In connector.EVARiable - clock is generated internally and the reference frequency is
+              derived from a variable reference supplied at the Reference In connector.EXTernal -
               clock signal supplied by the Clock In connector and the reference frequency is derived
               from the internal precision oscillator.
             - ``*RST`` sets this to INT.

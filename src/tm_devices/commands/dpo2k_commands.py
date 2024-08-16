@@ -14,12 +14,10 @@ from .gen_1lcv3a_msodpomdo.message import Message
 from .gen_1lcv3a_msodpomdo.setup_1 import SetupItem
 from .gen_1nmc1o_msodpomdo.clearmenu import Clearmenu
 from .gen_1nmc1o_msodpomdo.errlog import Errlog
-from .gen_1nmc1o_msodpomdo.header import Header
 from .gen_1nmc1o_msodpomdo.language import Language
 from .gen_1nmc1o_msodpomdo.status_and_error import Psc
 from .gen_1nmc1o_msodpomdo.usbdevice import Usbdevice
 from .gen_1nmc1o_msodpomdo.usbtmc import Usbtmc
-from .gen_1nmc1o_msodpomdo.verbose import Verbose
 from .gen_e6lgg1_lpdmsodpomdo.totaluptime import Totaluptime
 from .gen_fhrp27_msodpomdodsa.curve import Curve
 from .gen_fhrp27_msodpomdodsa.date import Date
@@ -37,6 +35,7 @@ from .gen_fx54ua_lpdmsodpomdodsa.event import Event
 from .gen_fx54ua_lpdmsodpomdodsa.evmsg import Evmsg
 from .gen_fx54ua_lpdmsodpomdodsa.evqty import Evqty
 from .gen_fx54ua_lpdmsodpomdodsa.factory import Factory
+from .gen_fx54ua_lpdmsodpomdodsa.header import Header
 from .gen_fx54ua_lpdmsodpomdodsa.id import Id
 from .gen_fx54ua_lpdmsodpomdodsa.miscellaneous import Ddt, Lrn
 from .gen_fx54ua_lpdmsodpomdodsa.newpass import Newpass
@@ -45,6 +44,7 @@ from .gen_fx54ua_lpdmsodpomdodsa.rem import Rem
 from .gen_fx54ua_lpdmsodpomdodsa.set import Set
 from .gen_fx54ua_lpdmsodpomdodsa.status_and_error import Pud
 from .gen_fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
+from .gen_fx54ua_lpdmsodpomdodsa.verbose import Verbose
 from .gen_fx54ua_lpdmsodpomdodsa.wavfrm import Wavfrm
 from .gen_fzn174_lpdmsodpomdodsa.lock import Lock
 from .gen_fzn174_lpdmsodpomdodsa.unlock import Unlock
@@ -664,7 +664,7 @@ class DPO2KCommands:
 
         SCPI Syntax:
             ```
-            - ALIas {OFF|ON|<NR1>}
+            - ALIas {ON|OFF|<NR1>}
             - ALIas?
             ```
 
@@ -1484,8 +1484,10 @@ class DPO2KCommands:
         """Return the ``HEADer`` command.
 
         Description:
-            - This command specifies the Response Header Enable State that causes the oscilloscope
-              to either include or omit headers on query responses.
+            - This command sets or queries the Response Header Enable State that causes the
+              instrument to either include or omit headers on query responses. Whether the long or
+              short form of header keywords and enumerations are returned is dependent upon the
+              state of ``:VERBose``.
 
         Usage:
             - Using the ``.query()`` method will send the ``HEADer?`` query.
@@ -1495,18 +1497,18 @@ class DPO2KCommands:
 
         SCPI Syntax:
             ```
-            - HEADer {OFF|ON|<NR1>}
+            - HEADer {ON|OFF|<NR1>}
             - HEADer?
             ```
 
         Info:
-            - ``OFF`` sets the Response Header Enable State to false. This causes the oscilloscope
-              to omit headers on query responses, so that only the argument is returned.
-            - ``ON`` sets the Response Header Enable State to true. This causes the oscilloscope to
-              include headers on applicable query responses. You can then use the query response as
-              a command.
             - ``<NR1>`` = 0 sets the Response Header Enable State to false; any other value sets
               this state to true.
+            - ``OFF`` sets the Response Header Enable State to false. This causes the instrument to
+              omit headers on query responses, so that only the argument is returned.
+            - ``ON`` sets the Response Header Enable State to true. This causes the instrument to
+              include headers on applicable query responses. You can then use the query response as
+              a command.
         """
         return self._header
 
@@ -2474,24 +2476,23 @@ class DPO2KCommands:
         """Return the ``VERBose`` command.
 
         Description:
-            - This command specifies the Verbose state that controls the length of keywords on query
-              responses. Keywords can be both headers and arguments.
+            - This command sets or queries the Verbose state that controls the length of keywords on
+              query responses. Keywords can be both headers and arguments.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``VERBose value`` command.
 
         SCPI Syntax:
             ```
-            - VERBose {OFF|ON|<NR1>}
+            - VERBose {ON|OFF|<NR1>}
             ```
 
         Info:
+            - ``<NR1>`` = 0 disables Verbose, any other value enables Verbose.
             - ``OFF`` sets the Verbose state to false, which returns minimum-length keywords for
               applicable setting queries.
             - ``ON`` sets the Verbose state to true, which returns full-length keywords for
               applicable setting queries.
-            - ``<NR1>`` a 0 returns minimum-length keywords for applicable setting queries; any
-              other value returns full-length keywords.
         """
         return self._verbose
 

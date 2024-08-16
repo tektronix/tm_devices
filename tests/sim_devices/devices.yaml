@@ -43,6 +43,35 @@ devices:
     dialogues:
       - q: '*IDN?'
         r: 1
+  unsupported-device-type:
+    eom:
+      USB INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP INSTR:
+        q: "\n"
+        r: "\n"
+      TCPIP SOCKET:
+        q: "\n"
+        r: "\n"
+    dialogues:
+      - q: '*IDN?'
+        r: TEKTRONIX,UNSUPPORTED,000000,FV:1.0.0
+      - q: '*OPC?'
+        r: '1'
+      - q: '*RST'
+      - q: '*CLS'
+      - q: '*OPT'
+        r: NONE
+    error:
+      status_register:
+        - q: '*ESR?'
+          command_error: 32
+          query_error: 4
+      error_queue:
+        - q: :ALLev?
+          default: 0,"No events to report - queue empty"
+          command_error: 113,"Undefined header; Command not found; EXAMPLE_COMMAND"
 resources:
   # --- bad inputs ---
   TCPIP::UNKNOWN::INSTR:
@@ -54,6 +83,10 @@ resources:
   TCPIP::LONGNAMEINSTRUMENT-HOSTNAME::INSTR:
     device: longNameInstrument
     filename: scope/longNameInstrument.yaml
+
+  # --- unsupported device type ---
+  TCPIP::UNSUPPORTED-DEVICE-TYPE::INSTR:
+    device: unsupported-device-type
 
   # --- afg ---
   #   afg3k
@@ -218,6 +251,9 @@ resources:
     device: mso2k
     filename: scope/mso2k.yaml
   TCPIP::MSO2KB-HOSTNAME::INSTR:
+    device: mso2kb
+    filename: scope/mso2kb.yaml
+  USB0::0x0699::0x03A4::SERIAL1::INSTR:
     device: mso2kb
     filename: scope/mso2kb.yaml
   #   dpo2k

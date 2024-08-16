@@ -11,11 +11,6 @@ on:
         description: The name of the repository to use to gate Codecov uploads.
         required: true
         type: string
-      node-version:  # The node version needs to stay in sync with .readthedocs.yml
-        description: The version of Node.js to install; if set, mermaid-cli will be
-          installed via npm and graphviz will be installed via apt.
-        required: false
-        type: number
 # Cancel running jobs for the same workflow and branch.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -32,15 +27,7 @@ jobs:
         python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']  # when updating this, make sure to update all workflows that use this strategy
     steps:
       - uses: actions/checkout@v4
-      - if: ${{ inputs.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ inputs.node-version }}
-      - if: ${{ inputs.node-version }}
-        name: Install non-python documentation dependencies
-        run: |
-          npm install --global @mermaid-js/mermaid-cli
-          sudo apt install --no-install-recommends --assume-yes graphviz
+      - uses: actions/setup-node@v4
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
