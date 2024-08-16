@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: ZIP source folder
-        run: zip -r src.zip tm_devices/src 
+        run: zip -r src.zip src 
       - name: Run Veracode Policy scan
         uses: veracode/veracode-uploadandscan-action@0.2.6
         with:
