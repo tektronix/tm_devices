@@ -86,6 +86,68 @@ Things to be included in the next release go here.
 
 ---
 
+## v2.2.2 (2024-08-14)
+
+### Merged Pull Requests
+
+- Fix the stubgen helper function to attach stubs to the correct class in modules with multiple classes ([#276](https://github.com/tektronix/tm_devices/pull/276))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#273](https://github.com/tektronix/tm_devices/pull/273))
+- docs: Update the contribution guide to provide details on how to track the status of changes in the GitHub repo using issues ([#271](https://github.com/tektronix/tm_devices/pull/271))
+
+### Fixed
+
+- Fixed the stubgen helper to properly attach stubs to the correct class in modules that have multiple classes.
+
+---
+
+## v2.2.1 (2024-08-07)
+
+### Merged Pull Requests
+
+- feat: Custom LAN Device Name for TCPIP Connections ([#267](https://github.com/tektronix/tm_devices/pull/267))
+- docs: Update links on the Readme to point to the full GitHub URL ([#266](https://github.com/tektronix/tm_devices/pull/266))
+- ci: Update the script that updates the pre-commit dependencies to update them with frozen hashes ([#265](https://github.com/tektronix/tm_devices/pull/265))
+- Convert test-docs.yml to a reusable workflow ([#264](https://github.com/tektronix/tm_devices/pull/264))
+- python-deps(deps-dev): bump the python-dependencies group with 3 updates ([#263](https://github.com/tektronix/tm_devices/pull/263))
+
+### Changed
+
+- Changed `DeviceConfigEntry` dataclass by adding an optional `lan_device_name` field, which allows connecting to instruments through TCPIP on LAN device names other than `inst0`.
+
+---
+
+## v2.2.0 (2024-08-02)
+
+### Merged Pull Requests
+
+- Enable adding unsupported device types via the DeviceManager ([#262](https://github.com/tektronix/tm_devices/pull/262))
+- test: Ignore http-rate-limited warnings to avoid failure due to the abundance of GitHub URLs in the Changelog ([#261](https://github.com/tektronix/tm_devices/pull/261))
+
+### Added
+
+- Added a new method to the `DeviceManager` class, `add_unsupported_device()`, which enables adding an unsupported device type.
+
+---
+
+## v2.1.0 (2024-07-31)
+
+### Merged Pull Requests
+
+- feat: Added SourceXpress API support and AWG defects fix ([#260](https://github.com/tektronix/tm_devices/pull/260))
+- gh-actions(deps): bump hynek/build-and-inspect-python-package ([#258](https://github.com/tektronix/tm_devices/pull/258))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#257](https://github.com/tektronix/tm_devices/pull/257))
+- Update jinja templates ([#254](https://github.com/tektronix/tm_devices/pull/254))
+
+### Added
+
+- Full Python API support for SourceXpress to AWG70KA, AWG70KB and AWG7K models.
+
+### Fixed
+
+- Fixed APIs with writes and queries accepting arguments for AWG70KA and AWG70KB models drivers.
+
+---
+
 ## v2.0.0 (2024-07-24)
 
 ### Merged Pull Requests
