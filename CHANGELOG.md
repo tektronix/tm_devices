@@ -16,8 +16,6 @@ Valid subsections within a version are:
 
 ## Unreleased
 
-Things to be included in the next release go here.
-
 ### Added
 
 - Added curve query support for the MSO2KB series scopes
