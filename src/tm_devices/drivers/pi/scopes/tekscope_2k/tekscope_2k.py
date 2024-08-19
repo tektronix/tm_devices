@@ -34,7 +34,7 @@ class TekScope2k(Scope, ABC):
     ################################################################################################
 
     def get_available_data_sources(self) -> List[str]:
-        """Get the list of waveforms currently as available as data sources.
+        """Fetch the list of currently active channel names available as data sources.
 
         Returns:
             The list of available data sources as strings.
