@@ -24,5 +24,6 @@ jobs:
           version: ${{ github.sha }}
           filepath: "src.zip"
           scantimeout: 30
+          scanname: "tm_devices_build_${{ github.run_number }}"
           vid: ${{ secrets.VERACODE_API_ID }}
           vkey: ${{ secrets.VERACODE_API_KEY }}
