@@ -1,3 +1,4 @@
+maison<2.0.0
 poetry
 poetry-core
 poetry-plugin-export
