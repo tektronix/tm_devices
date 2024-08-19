@@ -62,6 +62,8 @@ repos:
     rev: 47039c9bf8039e81f092c9777a1bc8be32fb7870  # frozen: 1.16.0
     hooks:
       - id: yamlfix
+        additional_dependencies:
+          - maison<2.0.0
 # TODO: get this working
 #  - repo: https://github.com/motet-a/jinjalint
 #    rev: "0.5"

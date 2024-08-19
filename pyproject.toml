@@ -95,6 +95,7 @@ zeroconf = "^0.132.2"
 docformatter = {extras = ["tomli"], version = "1.7.5"}
 docutils = "^0.20"  # TODO: remove this when the minimum Python version is >=3.9
 docutils-stubs = "^0.0.22"
+maison = "^1.4.3"  # yamlfix is broken with v2.0+
 matplotlib = [
   {python = ">=3.9", version = "^3.8"},
   {python = "3.8", version = "^3.7"}
