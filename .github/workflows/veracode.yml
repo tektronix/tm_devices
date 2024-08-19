@@ -21,9 +21,8 @@ jobs:
         with:
           appname: "tm_devices"
           createprofile: false
-          version: ${{ github.sha }}
+          version: "tm_devices_${{ github.sha }}"
           filepath: "src.zip"
           scantimeout: 30
-          scanname: "tm_devices_build_${{ github.run_number }}"
           vid: ${{ secrets.VERACODE_API_ID }}
           vkey: ${{ secrets.VERACODE_API_KEY }}
