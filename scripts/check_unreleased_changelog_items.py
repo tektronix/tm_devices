@@ -38,10 +38,10 @@ def main() -> None:
             if line.startswith(("___", "---")):
                 tracking_unreleased = False
                 tracking_entries = False
-            if tracking_unreleased:
-                release_notes_content += line
             if line.startswith("## Unreleased"):
                 tracking_unreleased = True
+            if tracking_unreleased:
+                release_notes_content += line
             if tracking_unreleased and line.startswith(
                 (
                     "### Added\n",
