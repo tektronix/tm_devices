@@ -3,9 +3,7 @@
 This will cause them to be classified correctly when the documentation is built.
 """
 
-# noinspection PyProtectedMember
-from griffe.agents.visitor import stdlib_decorators
-from griffe.extensions import Extension
+from griffe import Extension, stdlib_decorators
 
 
 class CustomDecoratorLabels(Extension):
