@@ -145,7 +145,7 @@ class TSPDevice(PIDevice, ABC):
         """
         if file_path is not None:
             with open(file_path, encoding="utf-8") as script_tsp:
-                script_body = script_tsp.read()
+                script_body = script_tsp.read().strip()
 
         # Check if the script exists, delete it if it does
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")

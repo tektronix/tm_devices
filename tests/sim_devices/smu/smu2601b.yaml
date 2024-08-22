@@ -7,11 +7,8 @@ devices:
         r: Keithley Instruments Inc., Model 2601B, 4498311, 3.3.5
       - q: print(available(gpib))
         r: 'true'
-      - q: loadscript loadfuncs
-      - q: loadscript tsp_function
-      - q: print("TEK")
-      - q: '"""Sample script used in test_smu.py."""'
-      - q: endscript
+      - q: loadscript loadfuncs\n"""Sample script used in test_smu.py."""\nprint("TEK")\nendscript
+      - q: loadscript tsp_function\n"""Sample script used in test_smu.py."""\nprint("TEK")\nendscript
       - q: loadfuncs.save()
       - q: loadfuncs()
       - q: errorqueue.clear()
@@ -20,7 +17,7 @@ devices:
       - q: print(status.standard.enable)
         r: 1
       - q: opc()
-      - q: print([[1]])
+      - q: waitcomplete() print([[1]])
         r: 1
       - q: reset()
       - q: status.request_enable = 1

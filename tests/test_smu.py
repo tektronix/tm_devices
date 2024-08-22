@@ -31,6 +31,7 @@ def test_smu(  # noqa: PLR0915
         device_manager: The DeviceManager object.
         capsys: The captured stdout and stderr.
     """
+    device_manager.verbose = True
     smu: SMU2601B = device_manager.add_smu("smu2601b-hostname", alias="smu-device")
     assert id(device_manager.get_smu(number_or_alias="smu-device")) == id(smu)
     assert id(device_manager.get_smu(number_or_alias=smu.device_number)) == id(smu)
@@ -75,18 +76,18 @@ def test_smu(  # noqa: PLR0915
     assert "tsp_function()" not in stdout
     smu.expect_esr(0)
     smu.load_script(
-        script_name="tsp_function",
-        script_body=(
-            Path(os.path.realpath(__file__)).parent / "samples" / "tsp_script.tsp"
-        ).read_text(),
+        script_name="loadfuncs",
+        script_body=(Path(os.path.realpath(__file__)).parent / "samples" / "tsp_script.tsp")
+        .read_text()
+        .strip(),
         run_script=True,
     )
     stdout = capsys.readouterr().out
-    assert "loadscript tsp_function" in stdout
-    assert "if tsp_function ~= nil then script.delete('tsp_function') end" in stdout
+    assert "loadscript loadfuncs" in stdout
+    assert "if loadfuncs ~= nil then script.delete('loadfuncs') end" in stdout
     assert "endscript" in stdout
-    assert "tsp_function.save()" not in stdout
-    assert "tsp_function()" in stdout
+    assert "loadfuncs.save()" not in stdout
+    assert "loadfuncs()" in stdout
     smu.expect_esr(0)
 
     with mock.patch("pyvisa.highlevel.VisaLibraryBase.clear", mock.MagicMock(return_value=None)):

@@ -21,7 +21,7 @@ devices:
       - q: print(status.standard.enable)
         r: 1
       - q: opc()
-      - q: print([[1]])
+      - q: waitcomplete() print([[1]])
         r: 1
       - q: reset()
       - q: status.request_enable = 1
