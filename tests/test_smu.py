@@ -51,6 +51,7 @@ def test_smu(  # noqa: PLR0915
         assert "Query" in stdout
 
     smu.load_script(
+        "loadfuncs",
         file_path=f"{Path(os.path.realpath(__file__)).parent}/samples/tsp_script.tsp",
         run_script=True,
         to_nv_memory=True,
@@ -72,6 +73,20 @@ def test_smu(  # noqa: PLR0915
     assert "endscript" in stdout
     assert "tsp_function.save()" not in stdout
     assert "tsp_function()" not in stdout
+    smu.expect_esr(0)
+    smu.load_script(
+        script_name="tsp_function",
+        script_body=(
+            Path(os.path.realpath(__file__)).parent / "samples" / "tsp_script.tsp"
+        ).read_text(),
+        run_script=True,
+    )
+    stdout = capsys.readouterr().out
+    assert "loadscript tsp_function" in stdout
+    assert "if tsp_function ~= nil then script.delete('tsp_function') end" in stdout
+    assert "endscript" in stdout
+    assert "tsp_function.save()" not in stdout
+    assert "tsp_function()" in stdout
     smu.expect_esr(0)
 
     with mock.patch("pyvisa.highlevel.VisaLibraryBase.clear", mock.MagicMock(return_value=None)):
