@@ -23,10 +23,6 @@ Things to be included in the next release go here.
 - Added curve query support for the MSO2KB series scopes
 - Full Python API support for TekScopePC device.
 
-### Fixed
-
-- Fixed APIs with queries syntax missing.
-
 ---
 
 ## v2.2.2 (2024-08-14)

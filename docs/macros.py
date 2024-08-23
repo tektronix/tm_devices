@@ -29,7 +29,6 @@ PAGE_REPLACEMENTS = {
         (" API ", " <API:>"),
         (" DPOJET ", " <DPOJET:>"),
         (" SourceXpress ", " <SourceXpress:>"),
-        (" TekScopePC ", " <TekScopePC:>"),
         (" ✅ ", " [](default:✅) "),
         (" 🚧 ", " [](default:🚧) "),
         (" ❌ ", " [](default:❌) "),

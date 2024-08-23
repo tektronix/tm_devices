@@ -96,7 +96,7 @@ TCPIP
 : Transmission Control Protocol/Internet Protocol
 
 TekScopePC
-: A PC software to view and analyze waveforms anywhere, anytime, with remote access to Tektronix oscilloscope
+: A PC software application to view and analyze waveforms anywhere, anytime, with remote access to a Tektronix oscilloscope
 
 TSP
 : Test Script Processor

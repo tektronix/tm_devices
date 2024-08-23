@@ -253,6 +253,9 @@ resources:
   TCPIP::MSO2KB-HOSTNAME::INSTR:
     device: mso2kb
     filename: scope/mso2kb.yaml
+  USB0::0x0699::0x03A4::SERIAL1::INSTR:
+    device: mso2kb
+    filename: scope/mso2kb.yaml
   #   dpo2k
   TCPIP::DPO2K-HOSTNAME::INSTR:
     device: dpo2k
