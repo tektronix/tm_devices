@@ -86,20 +86,6 @@ def fixture_device_manager() -> Generator[DeviceManager, None, None]:
         yield dev_manager
 
 
-@pytest.fixture(autouse=True)
-def _reset_dm(device_manager: DeviceManager) -> Generator[None, None, None]:  # pyright: ignore[reportUnusedFunction]
-    """Reset the device_manager settings after each test.
-
-    Args:
-        device_manager: The device manager fixture.
-    """
-    saved_setup_enable = device_manager.setup_cleanup_enabled
-    saved_teardown_enable = device_manager.teardown_cleanup_enabled
-    yield
-    device_manager.setup_cleanup_enabled = saved_setup_enable
-    device_manager.teardown_cleanup_enabled = saved_teardown_enable
-
-
 @pytest.fixture(name="mock_http_server", scope="session")
 def _fixture_mock_http_server() -> (  # pyright: ignore [reportUnusedFunction]
     Generator[None, None, None]

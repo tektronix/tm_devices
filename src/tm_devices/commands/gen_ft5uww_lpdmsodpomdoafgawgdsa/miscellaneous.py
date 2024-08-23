@@ -12,39 +12,16 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - *IDN?
     - *TRG
-    - *TST?
     ```
 """
 
 from typing import Optional, TYPE_CHECKING
 
-from ..helpers import SCPICmdRead, SCPICmdWriteNoArguments
+from ..helpers import SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
     from tm_devices.drivers.pi.pi_device import PIDevice
-
-
-class Tst(SCPICmdRead):
-    """The ``*TST`` command.
-
-    Description:
-        - Tests (self-test) the interface and returns a 0.
-
-    Usage:
-        - Using the ``.query()`` method will send the ``*TST?`` query.
-        - Using the ``.verify(value)`` method will send the ``*TST?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-
-    SCPI Syntax:
-        ```
-        - *TST?
-        ```
-    """
-
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*TST") -> None:
-        super().__init__(device, cmd_syntax)
 
 
 class Trg(SCPICmdWriteNoArguments):
@@ -63,25 +40,4 @@ class Trg(SCPICmdWriteNoArguments):
     """
 
     def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*TRG") -> None:
-        super().__init__(device, cmd_syntax)
-
-
-class Idn(SCPICmdRead):
-    """The ``*IDN`` command.
-
-    Description:
-        - This query-only command returns the instrument identification code.
-
-    Usage:
-        - Using the ``.query()`` method will send the ``*IDN?`` query.
-        - Using the ``.verify(value)`` method will send the ``*IDN?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-
-    SCPI Syntax:
-        ```
-        - *IDN?
-        ```
-    """
-
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*IDN") -> None:
         super().__init__(device, cmd_syntax)

@@ -25,7 +25,7 @@ from tm_devices.drivers.pi.scopes.tekscope.mso5b import MSO5B
 from tm_devices.drivers.pi.scopes.tekscope.mso5lp import MSO5LP
 from tm_devices.drivers.pi.scopes.tekscope.mso6 import MSO6
 from tm_devices.drivers.pi.scopes.tekscope.mso6b import MSO6B
-from tm_devices.drivers.pi.scopes.tekscope.tekscopesw import TekScopeSW
+from tm_devices.drivers.pi.scopes.tekscope.tekscopesw import TekScopePC
 from tm_devices.drivers.pi.scopes.tekscope_2k.dpo2k import DPO2K
 from tm_devices.drivers.pi.scopes.tekscope_2k.dpo2kb import DPO2KB
 from tm_devices.drivers.pi.scopes.tekscope_2k.mso2k import MSO2K
@@ -162,7 +162,7 @@ DEVICE_DRIVER_MODEL_MAPPING: Mapping[str, Type[Device]] = MappingProxyType(
         SupportedModels.MSO70K.value: MSO70K,
         SupportedModels.MSO70KC.value: MSO70KC,
         SupportedModels.MSO70KDX.value: MSO70KDX,
-        SupportedModels.TEKSCOPESW.value: TekScopeSW,
+        SupportedModels.TEKSCOPEPC.value: TekScopePC,
         SupportedModels.TSOVU.value: TSOVu,
         # Margin Testers
         SupportedModels.TMT4.value: TMT4,
