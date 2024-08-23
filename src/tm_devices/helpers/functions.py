@@ -101,7 +101,7 @@ __SUPPORTED_MODEL_REGEX_STRING = (
     rf"|(?P<{SupportedModels.MSO70K.value}>^MSO7\d\d\d\d$)"
     rf"|(?P<{SupportedModels.MSO70KC.value}>^MSO7\d\d\d\dC$)"
     rf"|(?P<{SupportedModels.MSO70KDX.value}>^MSO7\d\d\d\dDX$)"
-    rf"|(?P<{SupportedModels.TEKSCOPESW.value}>^TEKSCOPESW$)"
+    rf"|(?P<{SupportedModels.TEKSCOPEPC.value}>^TEKSCOPE(?:SW|PC)$)"
     rf"|(?P<{SupportedModels.TSOVU.value}>^TSOVU$)"
     rf"|(?P<{SupportedModels.TMT4.value}>^TMT4$)"
     # SMUs
