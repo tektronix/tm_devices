@@ -1,5 +1,9 @@
 """Python drivers for all supported devices."""
 
+import sys
+import warnings
+from typing import Any
+
 # NOTE: For documentation purposes, these imports must be sorted manually, not automatically
 # ruff: isort: skip_file
 from tm_devices.drivers.device_driver_mapping import DEVICE_DRIVER_MODEL_MAPPING
@@ -27,7 +31,7 @@ from tm_devices.drivers.pi.scopes.tekscope.mso5b import MSO5B
 from tm_devices.drivers.pi.scopes.tekscope.mso5lp import MSO5LP
 from tm_devices.drivers.pi.scopes.tekscope.mso6 import MSO6
 from tm_devices.drivers.pi.scopes.tekscope.mso6b import MSO6B
-from tm_devices.drivers.pi.scopes.tekscope.tekscopesw import TekScopeSW
+from tm_devices.drivers.pi.scopes.tekscope.tekscopesw import TekScopePC
 from tm_devices.drivers.pi.scopes.tekscope_2k.dpo2k import DPO2K
 from tm_devices.drivers.pi.scopes.tekscope_2k.dpo2kb import DPO2KB
 from tm_devices.drivers.pi.scopes.tekscope_2k.mso2k import MSO2K
@@ -105,6 +109,21 @@ from tm_devices.drivers.pi.source_measure_units.smu60xx.smu6517b import SMU6517B
 from tm_devices.drivers.pi.systems_switches.ss3706a import SS3706A
 from tm_devices.drivers.api.rest_api.margin_testers.tmt4 import TMT4
 
+# TODO: remove this function after TekScopeSW is fully removed
+if not ("--doctest-modules" in sys.argv and sys.argv[-1] == "src"):  # pragma: no cover
+
+    def __getattr__(name: str) -> Any:
+        if name == "TekScopeSW":
+            warnings.warn(
+                f"{name} is deprecated and will be removed in a future version, "
+                f"please use TekScopePC instead.",
+                DeprecationWarning,
+                stacklevel=2,
+            )
+            return TekScopePC
+        return globals()[name]
+
+
 __all__ = [
     "DEVICE_DRIVER_MODEL_MAPPING",
     "DEVICE_TYPE_CLASSES",
@@ -162,7 +181,7 @@ __all__ = [
     "MSO70K",
     "MSO70KC",
     "MSO70KDX",
-    "TekScopeSW",
+    "TekScopePC",
     "TSOVu",
     "TMT4",
     "SMU2400",

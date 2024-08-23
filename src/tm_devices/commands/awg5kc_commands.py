@@ -25,11 +25,19 @@ from .gen_32dszm_awg.trigger import Trigger
 from .gen_32dszm_awg.wlist import Wlist
 from .gen_33ijgq_afgawg.abort import Abort
 from .gen_33ijgq_afgawg.calibration import Calibration
+from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
+from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import (
+    Cls,
+    Esr,
+    Opc,
+    Rst,
+    Stb,
+    Wai,
+)
+from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
 from .gen_ft5uww_lpdmsodpomdoafgawgdsa.calibration import Cal
-from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Idn, Trg, Tst
-from .gen_ft5uww_lpdmsodpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Rst, Stb, Wai
-from .gen_fteabn_lpdmsomdodpoafgawgdsa.status_and_error import Opt
-from .gen_fug7nl_lpdmsodpomdoawgdsa.status_and_error import Ese, Sre
+from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
+from .gen_fu6dog_lpdmsotekscopepcdpomdoawgdsa.status_and_error import Ese, Sre
 from .helpers import DefaultDictPassKeyToFactory
 
 

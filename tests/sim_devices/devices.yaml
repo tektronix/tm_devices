@@ -235,10 +235,10 @@ resources:
     device: mso68b
     filename: scope/mso6b.yaml
 
-  # --- TekScopeSW ---
-  TCPIP::TEKSCOPESW-HOSTNAME::INSTR:
-    device: tekscopesw
-    filename: scope/tekscopesw.yaml
+  # --- TekScopePC ---
+  TCPIP::TEKSCOPEPC-HOSTNAME::INSTR:
+    device: tekscopepc
+    filename: scope/tekscopepc.yaml
 
   # --- TSOvu---
   TCPIP::TSOVU-HOSTNAME::INSTR:

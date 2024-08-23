@@ -1,9 +1,9 @@
-"""TEKSCOPESW device driver module."""
-
-from typing import Any
+"""TekScopePC device driver module."""
+# TODO: rename file after TekScopeSW is fully removed
 
 import pyvisa as visa
 
+from tm_devices.commands import TekScopePCMixin
 from tm_devices.drivers.pi.scopes.tekscope.tekscope import TekScope
 from tm_devices.helpers import DeviceConfigEntry
 
@@ -11,8 +11,8 @@ from tm_devices.helpers import DeviceConfigEntry
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class TekScopeSW(TekScope):
-    """TEKSCOPESW device driver."""
+class TekScopePC(TekScopePCMixin, TekScope):  # pyright: ignore[reportIncompatibleMethodOverride]
+    """TekScopePC device driver."""
 
     ################################################################################################
     # Magic Methods
@@ -23,7 +23,7 @@ class TekScopeSW(TekScope):
         verbose: bool,
         visa_resource: visa.resources.MessageBasedResource,
     ) -> None:
-        """Create a TekScope device.
+        """Create a TekScopePC device.
 
         Args:
             config_entry: A config entry object parsed by the DMConfigParser.
@@ -32,29 +32,15 @@ class TekScopeSW(TekScope):
         """
         super().__init__(config_entry, verbose, visa_resource)
 
-        # TODO: Remove once auto-generated commands are available for TekScopeSW
-        self._commands: Any = NotImplemented
-        self._command_argument_constants: Any = NotImplemented
-
     ################################################################################################
     # Properties
     ################################################################################################
-    # TODO: Remove once auto-generated commands are available for TekScopeSW
-    @property
-    def command_argument_constants(self) -> Any:
-        """Return the device command argument constants."""
-        return self._command_argument_constants
-
-    # TODO: Remove once auto-generated commands are available for TekScopeSW
-    @property
-    def commands(self) -> Any:
-        """Return the device commands."""
-        return self._commands
 
     @cached_property
     def total_channels(self) -> int:
         """Return the total number of channels (all types)."""
-        return 0
+        # TekScopePC supports a maximum of 8 channels
+        return 8
 
     ################################################################################################
     # Private Methods
@@ -62,3 +48,12 @@ class TekScopeSW(TekScope):
     def _reboot(self) -> None:
         """Reboot the device."""
         # TODO: overwrite the reboot code here
+
+
+# An alias for TekScopeSW driver
+class TekScopeSW(TekScopePC):
+    """TekScopeSW device driver.
+
+    !!! danger "Deprecated"
+        This device driver is deprecated, use [`TekScopePC`][tm_devices.drivers.TekScopePC] instead.
+    """
