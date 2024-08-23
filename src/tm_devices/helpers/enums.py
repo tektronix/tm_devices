@@ -143,7 +143,6 @@ class SupportedModels(CustomStrEnum):
     MSO70K = "MSO70K"
     MSO70KC = "MSO70KC"
     MSO70KDX = "MSO70KDX"
-    TEKSCOPESW = "TekScopeSW"  # TODO: remove this deprecated enum option
     TEKSCOPEPC = "TekScopePC"
     TSOVU = "TSOVu"
     # Margin Testers
