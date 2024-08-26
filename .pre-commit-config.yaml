@@ -39,7 +39,7 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: e2dde74d0702d15f4f43e4f4fb93e301b4bc1e30  # frozen: 0.29.1
+    rev: 5c70e3d884fdbe99af42f2714a444e39f321498d  # frozen: 0.29.2
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
@@ -59,7 +59,7 @@ repos:
         additional_dependencies: [black==24.4.2]  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
         args: [--line-length=100]
   - repo: https://github.com/lyz-code/yamlfix
-    rev: 47039c9bf8039e81f092c9777a1bc8be32fb7870  # frozen: 1.16.0
+    rev: 8072181c0f2eab9f2dd8db2eb3b9556d7cd0bd74  # frozen: 1.17.0
     hooks:
       - id: yamlfix
         additional_dependencies:
@@ -141,7 +141,7 @@ repos:
         always_run: true
         args: [audit, --json, --ignore-code=CVE-2019-8341]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 8b5112a3b2ad121439a2092f8ff548c0d80f2514  # frozen: v0.6.1
+    rev: 24d039e647a08707e6cb31e75e01844eeff925e7  # frozen: v0.6.2
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
