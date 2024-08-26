@@ -173,3 +173,24 @@ def test_tm_devices() -> None:
         Version(tm_devices.__version__)
     except InvalidVersion as exc:
         pytest.fail(f"{tm_devices.__version__} is not a valid version:\n{exc}")
+
+
+def test_deprecated_tekscopesw() -> None:
+    """Verify the TekScopeSW deprecation warning is working."""
+    with pytest.warns(
+        DeprecationWarning,
+        match="TekScopeSW is deprecated and will be removed in a future version, "
+        "please use TekScopePC instead.",
+    ):
+        # pylint: disable=import-outside-toplevel
+        # noinspection PyProtectedMember
+        from tm_devices.drivers import TekScopeSW  # pylint: disable=no-name-in-module
+    assert TekScopeSW is tm_devices.drivers.TekScopePC
+
+    # Check normal drivers
+    # pylint: disable=import-outside-toplevel
+    # noinspection PyPep8Naming
+    from tm_devices.drivers import MSO6 as TempMSO6  # noqa: N811
+    from tm_devices.drivers.pi.scopes.tekscope.mso6 import MSO6
+
+    assert TempMSO6 is MSO6

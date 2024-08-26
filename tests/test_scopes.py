@@ -15,7 +15,7 @@ import pyvisa as visa
 from packaging.version import Version
 
 from tm_devices import DeviceManager
-from tm_devices.drivers import MSO2, MSO2KB, MSO5, MSO5B, MSO6, MSO70KDX, TekScopeSW
+from tm_devices.drivers import MSO2, MSO2KB, MSO5, MSO5B, MSO6, MSO70KDX, TekScopePC
 from tm_devices.drivers.pi.scopes.tekscope.tekscope import (
     ExtendedSourceDeviceConstants,
     ParameterBounds,
@@ -468,21 +468,20 @@ def test_tekscope3k_4k(device_manager: DeviceManager, capsys: pytest.CaptureFixt
     assert scope2.total_channels == 2
 
 
-def test_tekscopesw(device_manager: DeviceManager) -> None:
-    """Test the TekScopeSW implementation.
+def test_tekscopepc(device_manager: DeviceManager) -> None:
+    """Test the TekScopePC implementation.
 
     Args:
         device_manager: The DeviceManager object.
     """
-    scope: TekScopeSW = device_manager.add_scope("TEKSCOPESW-HOSTNAME")
-    # Assert TekScopeSW device was added and aliased properly
-    assert scope.hostname == "hostname"
+    scope: TekScopePC = device_manager.add_scope("TEKSCOPEPC-HOSTNAME")
+    # Assert TekScopePC device was added and aliased properly
+    assert scope.hostname == "TEKSCOPEPC-HOSTNAME"
     assert id(device_manager.get_scope(number_or_alias=scope.device_number)) == id(scope)
-    assert scope.all_channel_names_list == ()
+    assert scope.all_channel_names_list == ("CH1", "CH2", "CH3", "CH4", "CH5", "CH6", "CH7", "CH8")
     assert scope.usb_drives == ("E:",)
     assert scope.ip_address == ""
-    assert not scope.total_channels
-    assert scope.all_channel_names_list == ()
+    assert scope.total_channels == 8
 
 
 def test_tekscope2k(device_manager: DeviceManager, tmp_path: pathlib.Path) -> None:

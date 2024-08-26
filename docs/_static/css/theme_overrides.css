@@ -123,11 +123,11 @@ span.doc-object-name {
 }
 
 /* Customize link color */
-a.autorefs, a.autorefs code {
+a.autorefs, a.autorefs code, .rst-content .admonition a.autorefs code {
     color: dodgerblue !important;
 }
 
-a.autorefs:hover, a.autorefs:hover code {
+a.autorefs:hover, a.autorefs:hover code, .rst-content .admonition a.autorefs:hover code {
     color: #d600d6 !important;
 }
 

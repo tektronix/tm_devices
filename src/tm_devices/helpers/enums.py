@@ -143,7 +143,7 @@ class SupportedModels(CustomStrEnum):
     MSO70K = "MSO70K"
     MSO70KC = "MSO70KC"
     MSO70KDX = "MSO70KDX"
-    TEKSCOPESW = "TekScopeSW"
+    TEKSCOPEPC = "TekScopePC"
     TSOVU = "TSOVu"
     # Margin Testers
     TMT4 = "TMT4"

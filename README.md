@@ -110,7 +110,7 @@ _Device Support Levels_
 |        | **DSA70000/C/D**         | PI              | ✅                | ✅                                  |
 |        | **MSO70000/C/DX**        | PI              | ✅                | ✅                                  |
 |        | **TSOVu**                | PI              | ✅                |                                    |
-|        | **TekScope**             | PI              | ✅                |                                    |
+|        | **TekScope**             | PI              | ✅                | ✅                                  |
 | PSUs   | **2200**                 | PI              | ✅                |                                    |
 |        | **2220**                 | PI              | ✅                |                                    |
 |        | **2230**                 | PI              | ✅                |                                    |

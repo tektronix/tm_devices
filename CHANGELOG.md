@@ -18,9 +18,21 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v2.3.0 (2024-08-23)
+
+### Merged Pull Requests
+
+- feat: Added Full API support for TekscopePC. ([#282](https://github.com/tektronix/tm_devices/pull/282))
+- feat: Add curve query support for MSO2KB series scopes ([#269](https://github.com/tektronix/tm_devices/pull/269))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#279](https://github.com/tektronix/tm_devices/pull/279))
+- ci: Use nodeenv to install node during tox runs, and install node with nodeenv during initial contributor setup ([#278](https://github.com/tektronix/tm_devices/pull/278))
+
 ### Added
 
 - Added curve query support for the MSO2KB series scopes
+- Full Python API support for TekScopePC device.
 
 ---
 
