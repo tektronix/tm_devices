@@ -7,38 +7,4 @@ on:
     branches: [main]
 jobs:
   enforce-community-standards:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        filename:
-          - .github/CODEOWNERS
-          - README.@(md|rst)
-          - CODE_OF_CONDUCT.@(md|rst)
-          - CONTRIBUTING.@(md|rst)
-          - LICENSE.@(md|rst)
-          - SECURITY.@(md|rst)
-          - .github/ISSUE_TEMPLATE/bug_report.yml
-          - .github/ISSUE_TEMPLATE/feature_request.yml
-          - .github/PULL_REQUEST_TEMPLATE.md
-          - .github/dependabot.yml
-          - .github/workflows/codeql-analysis.yml
-    steps:
-      - uses: actions/checkout@v4
-      - name: Ensure ${{ matrix.filename }} exists
-        uses: andstor/file-existence-action@v3
-        with:
-          files: ${{ matrix.filename }}
-          ignore_case: false
-          follow_symbolic_links: false
-          fail: true  # Set the step to fail if the file doesn't exist
-  # Check that all jobs passed
-  check-repo-lint-passed:
-    if: ${{ !cancelled() }}
-    needs: [enforce-community-standards]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Decide whether the needed jobs succeeded or failed
-        uses: re-actors/alls-green@release/v1
-        with:
-          jobs: ${{ toJSON(needs) }}
+    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-enforce-community-standards.yml@main  # TODO: switch to a release tag

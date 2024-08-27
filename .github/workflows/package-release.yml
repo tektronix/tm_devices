@@ -3,208 +3,36 @@ name: Publish to GitHub & PyPI
 on:
   workflow_dispatch:
     inputs:
-      release_level:
+      release-level:
         type: choice
         required: true
         description: |
-          Select the release level,
+          Select the release level:
           patch for backward compatible minor changes and bug fixes,
           minor for backward compatible larger changes,
           major for non-backward compatible changes.
         options: [patch, minor, major]
-  workflow_call:
-    inputs:
-      package-name:
-        description: The name of the package to use to gate uploads.
-        required: true
-        type: string
-      release_level:
-        description: |
-          Select the release level,
-          patch for backward compatible minor changes and bug fixes,
-          minor for backward compatible larger changes,
-          major for non-backward compatible changes.
-        required: true
-        type: string
 concurrency:
   group: pypi
-env:
-  REPO_NAME: tektronix/${{ inputs.package-name || 'tm_devices' }}
-  PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
 jobs:
-  print-inputs:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: x
-      - name: Check for unreleased entries in the Changelog
-        run: python scripts/check_unreleased_changelog_items.py
-      - name: Create summary of workflow inputs and incoming changes
-        run: |
-          echo "## Workflow Inputs" >> $GITHUB_STEP_SUMMARY
-          echo "- release_level: ${{ inputs.release_level }}" >> $GITHUB_STEP_SUMMARY
-          echo "## Incoming Changes" >> $GITHUB_STEP_SUMMARY
-          cat python_semantic_release_templates/.previous_release_notes_for_template.md >> $GITHUB_STEP_SUMMARY
-      - name: Set outputs
-        id: variables
-        run: echo "repo-name=$REPO_NAME" >> $GITHUB_OUTPUT
-    outputs:
-      repo-name: ${{ steps.variables.outputs.repo-name }}
-  # This job requires a Personal Access Token (Classic) with
-  # the public_repo permission. It also needs a private/public
-  # ssh key pair that can be used for signing. The public key must
-  # be attached to the account as an SSH signing key.
-  pypi-version:
-    name: Update package version
-    needs: [print-inputs]
-    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
-      'refs/heads/main'
-    runs-on: ubuntu-latest
-    environment: package-release-gate
+  package-release:
+    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-package-release.yml@main  # TODO: switch to a release tag
+    with:
+      package-name: tm_devices
+      repo-name: tektronix/tm_devices
+      commit-user-name: ${{ vars.TEK_OPENSOURCE_NAME }}
+      commit-user-email: ${{ vars.TEK_OPENSOURCE_EMAIL }}
+      release-level: ${{ inputs.release-level }}
+      build-and-publish-python-package: true
+      python-versions-array: '["3.8", "3.9", "3.10", "3.11", "3.12"]'  # when updating this, make sure to update all workflows that use this strategy
+      operating-systems-array: '["ubuntu", "windows", "macos"]'
+      previous-changelog-filepath: python_semantic_release_templates/.previous_changelog_for_template.md
+      previous-release-notes-filepath: python_semantic_release_templates/.previous_release_notes_for_template.md
     permissions:
-      id-token: write
       contents: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: x
-          check-latest: true
-      - name: Check for unreleased entries in the Changelog and copy files to templates
-        run: |
-          python scripts/check_unreleased_changelog_items.py
-          git config --global tag.gpgSign true
-      - name: Python Semantic Release
-        uses: python-semantic-release/python-semantic-release@v9.8.3
-        id: release
-        with:
-          force: ${{ inputs.release_level }}
-          root_options: -v --strict
-          github_token: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
-          git_committer_email: ${{ vars.TEK_OPENSOURCE_EMAIL }}
-          git_committer_name: ${{ vars.TEK_OPENSOURCE_NAME }}
-          ssh_public_signing_key: ${{ secrets.TEK_OPENSOURCE_SSH_SIGNING_KEY_PUBLIC }}
-          ssh_private_signing_key: ${{ secrets.TEK_OPENSOURCE_SSH_SIGNING_KEY_PRIVATE }}
-    outputs:
-      built-version: ${{ steps.release.outputs.version }}
-  pypi-build:
-    name: Build package
-    needs: [print-inputs, pypi-version]
-    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
-      'refs/heads/main'
-    runs-on: ubuntu-latest
-    permissions:
       id-token: write
       attestations: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main  # Make sure to check out the latest commit on main, not the original commit that triggered the workflow
-          fetch-depth: 0
-      - name: Build package
-        uses: hynek/build-and-inspect-python-package@v2.8.0
-        with:
-          attest-build-provenance-github: 'true'
-  upload-testpypi:
-    name: Upload package to TestPyPI
-    needs: [print-inputs, pypi-build]
-    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
-      'refs/heads/main'
-    runs-on: ubuntu-latest
-    environment: package-testpypi
-    permissions:
-      id-token: write
-    steps:
-      - name: Download built packages
-        uses: actions/download-artifact@v4
-        with:
-          name: Packages
-          path: dist
-      - name: Upload package to Test PyPI
-        uses: pypa/gh-action-pypi-publish@v1.9.0
-        with:
-          repository-url: https://test.pypi.org/legacy/
-  upload-pypi:
-    name: Upload package to PyPI
-    needs: [print-inputs, upload-testpypi]
-    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
-      'refs/heads/main'
-    runs-on: ubuntu-latest
-    environment: package-release
-    permissions:
-      id-token: write
-    steps:
-      - name: Download built packages
-        uses: actions/download-artifact@v4
-        with:
-          name: Packages
-          path: dist
-      - name: Upload package to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.9.0
-  upload-github:
-    name: Upload package to GitHub Release
-    needs: [print-inputs, upload-pypi]
-    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
-      'refs/heads/main'
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main  # Make sure to check out the latest commit on main, not the original commit that triggered the workflow
-          fetch-depth: 0
-      - name: Download built packages
-        uses: actions/download-artifact@v4
-        with:
-          name: Packages
-          path: dist
-      - name: Publish package distributions to GitHub Releases
-        uses: python-semantic-release/upload-to-gh-release@main
-        with:
-          root_options: -v --strict
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-  pypi-install:
-    name: Install package
-    needs:
-      - print-inputs
-      - pypi-version
-      - pypi-build
-      - upload-testpypi
-      - upload-pypi
-      - upload-github
-    if: github.repository == needs.print-inputs.outputs.repo-name && github.ref ==
-      'refs/heads/main'
-    runs-on: ${{ matrix.platform }}
-    strategy:
-      fail-fast: false
-      matrix:
-        platform: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']  # when updating this, make sure to update all workflows that use this strategy
-        index_urls:
-          - ''
-          - ' --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple'
-    steps:
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
-          check-latest: true
-      - name: Test installing package
-        # A retry is used to allow for some downtime before the package is installable
-        uses: nick-fields/retry@v3
-        with:
-          timeout_minutes: 10
-          max_attempts: 5
-          retry_wait_seconds: 30
-          warning_on_retry: false
-          command: pip install${{ matrix.index_urls }} "${{ env.PACKAGE_NAME }}==${{
-            needs.pypi-version.outputs.built-version }}"
+    secrets:
+      checkout-token: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
+      ssh-signing-key-private: ${{ secrets.TEK_OPENSOURCE_SSH_SIGNING_KEY_PRIVATE }}
+      ssh-signing-key-public: ${{ secrets.TEK_OPENSOURCE_SSH_SIGNING_KEY_PUBLIC }}

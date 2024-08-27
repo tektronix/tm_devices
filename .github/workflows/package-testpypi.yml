@@ -1,100 +1,17 @@
 ---
-# Upload to Test PyPI on every push to main
 name: Publish to TestPyPI
 on:
   push:
     branches: [main]
-  workflow_call:
-    inputs:
-      package-name:
-        description: The name of the package to use to gate uploads.
-        required: true
-        type: string
 concurrency:
   group: pypi
-env:
-  REPO_NAME: tektronix/${{ inputs.package-name || 'tm_devices' }}
-  PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
 jobs:
-  job-variables:
-    name: Set variables for other jobs to use
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set variables
-        id: variables
-        run: echo "repo-name=$REPO_NAME" >> $GITHUB_OUTPUT
-    outputs:
-      repo-name: ${{ steps.variables.outputs.repo-name }}
-  test-pypi-build:
-    name: Build package with unique version for test.pypi.org
-    needs: [job-variables]
-    if: github.repository == needs.job-variables.outputs.repo-name
-    runs-on: ubuntu-latest
+  package-testpypi:
+    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-package-testpypi.yml@main  # TODO: switch to a release tag
+    with:
+      package-name: tm_devices
+      repo-name: tektronix/tm_devices
     permissions:
+      contents: read
       id-token: write
       attestations: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: x
-          check-latest: true
-      - name: Install workflow dependencies
-        run: pip install -r scripts/requirements.txt
-      - name: Create unique package version
-        id: create-version
-        run: |
-          CURRENT_VERSION=$(python scripts/pypi_latest_version.py --package="$PACKAGE_NAME" --index=test.pypi)
-          echo CURRENT_VERSION: $CURRENT_VERSION
-          NEW_VERSION=$(python scripts/create_post_version_for_testpypi.py --version=$CURRENT_VERSION)
-          echo NEW_VERSION: $NEW_VERSION
-          python scripts/project_version.py --set-version=$NEW_VERSION
-          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
-      - name: Build package
-        uses: hynek/build-and-inspect-python-package@v2.8.0
-        with:
-          attest-build-provenance-github: 'true'
-    outputs:
-      built-version: ${{ steps.create-version.outputs.NEW_VERSION }}
-  test-pypi-upload:
-    name: Upload package to test.pypi.org
-    needs: [job-variables, test-pypi-build]
-    if: github.repository == needs.job-variables.outputs.repo-name
-    runs-on: ubuntu-latest
-    environment: package-testpypi
-    permissions:
-      id-token: write
-    steps:
-      - name: Download built packages
-        uses: actions/download-artifact@v4
-        with:
-          name: Packages
-          path: dist
-      - name: Upload package to Test PyPI
-        uses: pypa/gh-action-pypi-publish@v1.9.0
-        with:
-          repository-url: https://test.pypi.org/legacy/
-  test-pypi-install:
-    name: Install package from test.pypi.org
-    needs: [job-variables, test-pypi-build, test-pypi-upload]
-    if: github.repository == needs.job-variables.outputs.repo-name
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: x
-          check-latest: true
-      - name: Test installing from test.pypi.org
-        # A retry is used to allow for some downtime before the package is installable
-        uses: nick-fields/retry@v3
-        with:
-          timeout_minutes: 10
-          max_attempts: 5
-          retry_wait_seconds: 30
-          warning_on_retry: false
-          command: pip install --index-url=https://test.pypi.org/simple/ --extra-index-url=https://pypi.org/simple
-            "$PACKAGE_NAME==${{ needs.test-pypi-build.outputs.built-version }}"

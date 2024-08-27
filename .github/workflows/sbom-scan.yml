@@ -7,48 +7,11 @@ on:
     branches: [main]
   release:
     types: [published]
-  workflow_call:
 jobs:
-  create-and-scan-sbom:
-    runs-on: ubuntu-latest
+  sbom-scan:
+    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-sbom-scan.yml@main  # TODO: switch to a release tag
     permissions:
       security-events: write
       contents: write
       id-token: write
       attestations: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: x  # any version
-      - name: Create lockfile
-        run: |
-          pip install poetry
-          poetry lock
-      - name: Create SBOM
-        uses: anchore/sbom-action@v0
-        with:
-          format: spdx-json
-          output-file: ${{ github.event.repository.name }}-sbom.spdx.json
-      - uses: actions/attest-build-provenance@v1
-        if: ${{ !(github.event.pull_request.head.repo.fork || github.event.workflow_call.pull_request.head.repo.fork) && github.actor != 'dependabot[bot]' }}
-        with:
-          subject-path: ${{ github.event.repository.name }}-sbom.spdx.json
-      - name: Scan SBOM
-        uses: anchore/scan-action@v4
-        id: scan
-        with:
-          sbom: ${{ github.event.repository.name }}-sbom.spdx.json
-          fail-build: true
-          severity-cutoff: low
-      - name: Upload SBOM scan SARIF report as a workflow artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: sarif_artifact
-          path: ${{ steps.scan.outputs.sarif }}
-          if-no-files-found: error
-      - name: Upload SBOM scan SARIF report to GitHub UI Security tab
-        if: ${{ github.event_name != 'pull_request' }}
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: ${{ steps.scan.outputs.sarif }}

@@ -3,49 +3,20 @@ name: Update python linting dependencies in-sync with pre-commit
 on:
   pull_request:
     branches: [main]
-  workflow_call:
-    inputs:
-      pre-commit-hook-skip-list:
-        description: A comma-separated list of pre-commit hooks to skip during this
-          job.
-        required: false
-        type: string
 jobs:
-  update-python-and-pre-commit-deps:
-    name: Update python linters and pre-commit dependencies
-    runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' && contains(github.head_ref, '/pip/') }}
+  update-python-and-pre-commit-dependencies:
+    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-update-python-and-pre-commit-dependencies.yml@main  # TODO: switch to a release tag
+    with:
+      commit-user-name: ${{ vars.TEK_OPENSOURCE_NAME }}
+      commit-user-email: ${{ vars.TEK_OPENSOURCE_EMAIL }}
+      dependency-dict: '{"dev": ["pylint", "pyright"], "tests": ["ruff"]}'
+      update-pre-commit: true
+      run-pre-commit: true
+      pre-commit-hook-skip-list: pylint,pyright,pyright-verifytypes,pyroma,poetry-audit
+      export-dependency-groups: docs,tests
     permissions:
       contents: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: ${{ github.head_ref }}
-          token: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: x  # any version
-          check-latest: true
-      - name: Install workflow dependencies
-        run: pip install -r scripts/requirements.txt
-      - uses: crazy-max/ghaction-import-gpg@v6
-        with:
-          gpg_private_key: ${{ secrets.TEK_OPENSOURCE_GPG_SIGNING_KEY_PRIVATE }}
-          passphrase: ${{ secrets.TEK_OPENSOURCE_GPG_SIGNING_KEY_PASSPHRASE }}
-          git_user_signingkey: true
-          git_commit_gpgsign: true
-      - name: Run updater script
-        run: python scripts/update_development_dependencies.py --no-install
-      - name: Run pre-commit
-        continue-on-error: true
-        env:
-          SKIP: ${{ inputs.pre-commit-hook-skip-list || 'pylint,pyright,pyright-verifytypes,pyroma,poetry-audit' }}
-        run: python -m pre_commit run --all
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'ci: Update python linters and pre-commit dependencies.'
-          commit_user_name: ${{ vars.TEK_OPENSOURCE_NAME }}
-          commit_user_email: ${{ vars.TEK_OPENSOURCE_EMAIL }}
-          commit_author: ${{ vars.TEK_OPENSOURCE_NAME }} <${{ vars.TEK_OPENSOURCE_EMAIL }}>
+    secrets:
+      checkout-token: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
+      gpg-signing-key-private: ${{ secrets.TEK_OPENSOURCE_GPG_SIGNING_KEY_PRIVATE }}
+      gpg-signing-key-passphrase: ${{ secrets.TEK_OPENSOURCE_GPG_SIGNING_KEY_PASSPHRASE }}

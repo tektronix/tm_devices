@@ -180,26 +180,6 @@ Ready to contribute? Here's how to set up `tm_devices` for local development.
         [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
         website for more details on this format.
 
-## Updating requirements and commit hooks
-
-To update the required python packages and commit hooks run the following
-commands:
-
-!!! note
-    Always remember to activate the virtual environment before attempting to run tests or other code.
-
-    ```console
-    # Linux
-    source .venv/bin/activate
-
-    # Windows
-    .venv\Scripts\activate.bat
-    ```
-
-```console
-python scripts/update_development_dependencies.py
-```
-
 ## Pull Request Guidelines
 
 Before you submit a pull request, check that it meets these guidelines:
