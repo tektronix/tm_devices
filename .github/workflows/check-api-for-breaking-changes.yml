@@ -3,40 +3,8 @@ name: Check Public API for Breaking Changes
 on:
   pull_request:
     branches: [main]
-  workflow_call:
-    inputs:
-      package-name:
-        description: The name of the package to check.
-        required: true
-        type: string
 jobs:
   check-api-for-breaking-changes:
-    name: Check API for breaking changes
-    runs-on: ubuntu-latest
-    env:
-      PACKAGE_NAME: ${{ inputs.package-name || 'tm_devices' }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: x  # any version
-          check-latest: true
-      - name: Install package to check
-        run: |
-          pip install --upgrade .
-          pip install griffe
-      - name: Check API for breaking changes
-        continue-on-error: true
-        run: |
-          echo "## Breaking API Changes" > breaking_changes.md
-          echo "\`\`\`" >> breaking_changes.md
-          griffe check --format=verbose --against=$(git rev-parse origin/main) --search=src "$PACKAGE_NAME" 2>&1 | tee -a breaking_changes.md
-      - name: Finish writing summary file
-        run: echo "\`\`\`" >> breaking_changes.md
-      - uses: actions/upload-artifact@v4
-        with:
-          name: breaking_changes
-          path: breaking_changes.md
+    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-check-api-for-breaking-changes.yml@v1.0.0
+    with:
+      package-name: tm_devices
