@@ -427,8 +427,8 @@ passenv =
     PYRIGHT_PYTHON_GLOBAL_NODE  # If set outside of tox, this will cause python-pyright to use nodeenv to install node rather than use the system node
 setenv =
     DOC_PYTHON_VERSION = python3.11  # Keep this in sync with .readthedocs.yml and any CI scripts
-    # Skip pre-commit checks that are not needed
-    SKIP = file-contents-sorter
+    # Skip pre-commit checks that are not needed (yamlfix should be removed from this list once Python 3.8 support is dropped)
+    SKIP = file-contents-sorter,yamlfix
 commands_pre =
     poetry install --no-root --without=main
 commands =

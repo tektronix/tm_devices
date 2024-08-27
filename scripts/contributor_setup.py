@@ -49,10 +49,13 @@ def main() -> None:
     try:
         if RUNNING_IN_VIRTUALENV:
             raise IndexError
-        if sys.version_info < (3, 8):  # noqa: UP036
+        # This requires contributors to use newer versions of Python even
+        # though the package supports older versions.
+        if sys.version_info < (3, 9):
             msg = (
                 "Unable to set up the environment. "
-                "Please use a Python version greater than or equal to 3.8."
+                "Please use a Python version greater than 3.8 for "
+                "local development on this package."
             )
             raise SystemExit(msg)
         # Windows systems require the 64 bit python
