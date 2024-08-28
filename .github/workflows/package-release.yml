@@ -16,7 +16,7 @@ concurrency:
   group: pypi
 jobs:
   package-release:
-    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-package-release.yml@v1.0.3
+    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-package-release.yml@v1.1.0
     with:
       package-name: tm_devices
       repo-name: tektronix/tm_devices
@@ -36,3 +36,5 @@ jobs:
       checkout-token: ${{ secrets.TEK_OPENSOURCE_TOKEN }}
       ssh-signing-key-private: ${{ secrets.TEK_OPENSOURCE_SSH_SIGNING_KEY_PRIVATE }}
       ssh-signing-key-public: ${{ secrets.TEK_OPENSOURCE_SSH_SIGNING_KEY_PUBLIC }}
+      pypi-api-token: ${{ secrets.PYPI_API_TOKEN }}
+      test-pypi-api-token: ${{ secrets.TEST_PYPI_API_TOKEN }}
