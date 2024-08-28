@@ -11,7 +11,6 @@ ci:
     - pyright-verifytypes
     - pyroma
     - poetry-audit
-    - actionlint-docker
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: 2c9f875913ee60ca25ce70243dc24d5b6415598c  # frozen: v4.6.0
@@ -47,10 +46,11 @@ repos:
       - id: check-github-actions
       - id: check-github-workflows
         args: [--verbose]
-  - repo: https://github.com/rhysd/actionlint
-    rev: v1.7.1
+  - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
+    rev: c01fb5723b54075325cd9b5e5665a9ae84baf950  # frozen: v1.7.1.15
     hooks:
-      - id: actionlint-docker
+      - id: actionlint
+        additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
     rev: d7e01aa9b0cfe3c1b732e66d523bbd0656221127  # frozen: v3.29.0
     hooks:
