@@ -46,6 +46,10 @@ repos:
       - id: check-github-actions
       - id: check-github-workflows
         args: [--verbose]
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.1
+    hooks:
+      - id: actionlint-docker
   - repo: https://github.com/commitizen-tools/commitizen
     rev: d7e01aa9b0cfe3c1b732e66d523bbd0656221127  # frozen: v3.29.0
     hooks:
