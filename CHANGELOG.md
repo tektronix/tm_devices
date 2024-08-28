@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Changed
+
+- Switched all workflows to use the new [`tektronix/python-package-ci-cd`](https://github.com/tektronix/python-package-ci-cd) reusable workflows.
+
 ---
 
 ## v2.3.0 (2024-08-23)
