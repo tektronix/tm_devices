@@ -32,7 +32,6 @@ from tm_devices.helpers import (
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
-from tm_devices.helpers.constants_and_dataclasses import UNIT_TEST_TIMEOUT
 
 
 class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
@@ -50,6 +49,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
         config_entry: DeviceConfigEntry,
         verbose: bool,
         visa_resource: visa.resources.MessageBasedResource,
+        default_visa_timeout: int,
     ) -> None:
         """Create a PI device.
 
@@ -57,6 +57,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
             config_entry: A config entry object parsed by the DMConfigParser.
             verbose: A boolean indicating if verbose output should be printed.
             visa_resource: The VISA resource object.
+            default_visa_timeout: The default VISA timeout value in milliseconds.
         """
         super().__init__(config_entry, verbose)
         self._visa_resource: visa.resources.MessageBasedResource = visa_resource
@@ -69,11 +70,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
             # Mark this as a simulated VISA backend
             self._visa_library_path += "@sim"
         # Use a default timeout of 30 seconds, if running unit tests use a smaller amount.
-        self._default_visa_timeout = (  # TODO: use new config option
-            30000
-            if not bool(os.environ.get("TM_DEVICES_UNIT_TESTS_RUNNING"))
-            else UNIT_TEST_TIMEOUT
-        )
+        self._default_visa_timeout = default_visa_timeout
         self._ieee_cmds = self._IEEE_COMMANDS_CLASS(self)
         self.reset_visa_timeout()
 
@@ -948,7 +945,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
         self.visa_timeout = (
             120000
             if not bool(os.environ.get("TM_DEVICES_UNIT_TESTS_RUNNING"))
-            else UNIT_TEST_TIMEOUT
+            else self.default_visa_timeout
         )
         self.ieee_cmds.cls()
         self.reset()

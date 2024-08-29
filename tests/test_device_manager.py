@@ -11,7 +11,7 @@ import pytest
 import pyvisa as visa
 import pyvisa.constants
 
-from conftest import SIMULATED_VISA_LIB
+from conftest import SIMULATED_VISA_LIB, UNIT_TEST_TIMEOUT
 from tm_devices import DeviceManager
 from tm_devices.helpers import ConnectionTypes, DeviceTypes, PYVISA_PY_BACKEND, SerialConfig
 
@@ -73,7 +73,7 @@ class TestDeviceManager:  # pylint: disable=no-self-use
                 text = temp_config.read()
             assert (
                 text
-                == """[[devices]]
+                == f"""[[devices]]
 address = "1"
 alias = "TESTING"
 connection_type = "SERIAL"
@@ -93,7 +93,7 @@ connection_type = "TCPIP"
 device_type = "SCOPE"
 
 [options]
-default_visa_timeout = 5000
+default_visa_timeout = {UNIT_TEST_TIMEOUT}
 setup_cleanup = false
 standalone = false
 teardown_cleanup = false
@@ -106,7 +106,7 @@ verbose_visa = false
                 print(text)
             assert (
                 text
-                == """---
+                == f"""---
 devices:
   - address: '1'
     alias: TESTING
@@ -123,7 +123,7 @@ devices:
     connection_type: TCPIP
     device_type: SCOPE
 options:
-  default_visa_timeout: 5000
+  default_visa_timeout: {UNIT_TEST_TIMEOUT}
   setup_cleanup: false
   standalone: false
   teardown_cleanup: false
@@ -137,7 +137,7 @@ options:
 
         assert (
             device_manager.get_current_configuration_as_environment_variable_strings()
-            == "TM_OPTIONS=DEFAULT_VISA_TIMEOUT=5000,VERBOSE_MODE\n"
+            == f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT={UNIT_TEST_TIMEOUT},VERBOSE_MODE\n"
             "TM_DEVICES=~~~address=1,alias=TESTING,connection_type=SERIAL,device_type=SMU,"
             "serial_baud_rate=115200,serial_data_bits=8,serial_end_input=none,"
             "serial_flow_control=xon_xoff,serial_parity=none,serial_stop_bits=one"

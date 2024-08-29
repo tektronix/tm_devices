@@ -314,18 +314,17 @@ class DMConfigParser:
         """
         if config_file_path is None:
             config_file_path = self.defined_config_file_path
-        else:
-            config_file_path = cast(str, config_file_path)
 
-        with open(config_file_path, "w", encoding="utf-8") as config_file:
-            file_type = (
-                DMConfigParser.FileType.TOML
-                if config_file_path.lower().endswith(".toml")
-                else DMConfigParser.FileType.YAML
-            )
-            config_file.write(self.to_config_file_text(file_type=file_type))
+        config_path_obj = pathlib.Path(config_file_path)
 
-        return config_file_path
+        file_type = (
+            DMConfigParser.FileType.TOML
+            if config_path_obj.as_posix().lower().endswith(".toml")
+            else DMConfigParser.FileType.YAML
+        )
+        config_path_obj.write_text(self.to_config_file_text(file_type=file_type), encoding="utf-8")
+
+        return config_path_obj.as_posix()
 
     ################################################################################################
     # Private Methods

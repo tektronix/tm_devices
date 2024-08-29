@@ -507,9 +507,6 @@ VISA_RESOURCE_EXPRESSION_REGEX: "Final[re.Pattern[str]]" = re.compile(  # pylint
 )
 """A regex pattern used to capture pieces of VISA resource expressions."""
 
-UNIT_TEST_TIMEOUT: Final[int] = 50  # TODO: remove
-"""The VISA timeout value to use during unit tests, in milliseconds."""
-
 VALID_DEVICE_CONNECTION_TYPES: Final[Mapping[DeviceTypes, Tuple[ConnectionTypes, ...]]] = (
     MappingProxyType(
         {

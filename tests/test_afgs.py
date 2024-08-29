@@ -8,6 +8,7 @@ import pyvisa as visa
 
 from packaging.version import Version
 
+from conftest import UNIT_TEST_TIMEOUT
 from tm_devices import DeviceManager
 from tm_devices.drivers.pi.signal_generators.afgs.afg import (
     AFGSourceDeviceConstants,
@@ -15,7 +16,6 @@ from tm_devices.drivers.pi.signal_generators.afgs.afg import (
     ParameterBounds,
     SignalGeneratorFunctionsAFG,
 )
-from tm_devices.helpers.constants_and_dataclasses import UNIT_TEST_TIMEOUT
 
 
 def test_afg3k(device_manager: DeviceManager) -> None:  # noqa: PLR0915  # pylint: disable=too-many-locals

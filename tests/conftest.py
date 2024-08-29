@@ -13,7 +13,7 @@ import pyvisa.constants
 from mock_server import mocker_server, PORT
 from tm_devices import DeviceManager
 from tm_devices.components import DMConfigParser
-from tm_devices.helpers import validate_address
+from tm_devices.helpers import DMConfigOptions, validate_address
 
 os.environ["TM_DEVICES_UNIT_TESTS_RUNNING"] = "true"
 # Make sure to not use any local config files
@@ -21,6 +21,7 @@ os.environ[DMConfigParser.CONFIG_FILE_PATH_ENV_VARIABLE] = ""
 
 PROJECT_ROOT_DIR = Path(__file__).parent.parent
 SIMULATED_VISA_LIB = str(Path(__file__).parent / "sim_devices/devices.yaml@sim")
+UNIT_TEST_TIMEOUT = 50
 
 
 def mock_gethostbyname(address: str) -> str:
@@ -81,23 +82,44 @@ def fixture_device_manager() -> Generator[DeviceManager, None, None]:
     ), mock.patch(
         "pyvisa.resources.messagebased.MessageBasedResource.clear",
         mock.MagicMock(return_value=pyvisa.constants.StatusCode.success),
-    ), DeviceManager(verbose=True) as dev_manager:
+    ), DeviceManager(
+        verbose=True, config_options=DMConfigOptions(default_visa_timeout=UNIT_TEST_TIMEOUT)
+    ) as dev_manager:
         dev_manager.visa_library = SIMULATED_VISA_LIB
         yield dev_manager
 
 
+@pytest.fixture(name="unit_test_config_file", scope="session")
+def fixture_unit_test_config_file(
+    tmpdir_factory: pytest.TempdirFactory, device_manager: DeviceManager
+) -> Path:
+    """Save the unit test configuration file.
+
+    Args:
+        tmpdir_factory: The temporary directory path.
+        device_manager: The device manager fixture.
+    """
+    config_file = tmpdir_factory.mktemp("tests") / "unit_test_config.yaml"
+    device_manager.write_current_configuration_to_config_file(config_file)
+    return Path(config_file)
+
+
 @pytest.fixture(autouse=True)
-def _reset_dm(device_manager: DeviceManager) -> Generator[None, None, None]:  # pyright: ignore[reportUnusedFunction]
+def _reset_dm(  # pyright: ignore[reportUnusedFunction]
+    device_manager: DeviceManager, unit_test_config_file: Path
+) -> Generator[None, None, None]:
     """Reset the device_manager settings after each test.
 
     Args:
         device_manager: The device manager fixture.
+        unit_test_config_file: The unit test configuration file.
     """
     saved_setup_enable = device_manager.setup_cleanup_enabled
     saved_teardown_enable = device_manager.teardown_cleanup_enabled
     yield
     device_manager.setup_cleanup_enabled = saved_setup_enable
     device_manager.teardown_cleanup_enabled = saved_teardown_enable
+    device_manager.load_config_file(unit_test_config_file)
 
 
 @pytest.fixture(name="mock_http_server", scope="session")

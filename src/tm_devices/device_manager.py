@@ -1376,7 +1376,12 @@ class DeviceManager(metaclass=Singleton):
         try:
             model_series = get_model_series(idn_response.split(",")[1])
             device_driver = cast(Type[PIDevice], device_drivers[model_series])
-            new_device = device_driver(device_config, self.__verbose, visa_resource)
+            new_device = device_driver(
+                device_config,
+                self.__verbose,
+                visa_resource,
+                self.__config.options.default_visa_timeout,
+            )
         except (KeyError, IndexError) as error:
             visa_resource.close()
             message = "Unable to determine which device driver to use."
