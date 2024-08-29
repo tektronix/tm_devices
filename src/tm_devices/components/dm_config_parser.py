@@ -353,15 +353,22 @@ class DMConfigParser:
         Raises:
             KeyError: Indicates unrecognized option name.
         """
-        options_list = [
-            arg.strip() for arg in os.getenv(self.OPTIONS_ENV_VARIABLE, "").split(",") if arg
-        ]
+        options_list = {
+            arg.strip().split("=", maxsplit=1)[0]: bool(arg)
+            if "=" not in arg
+            else arg.split("=", maxsplit=1)[-1]
+            for arg in os.getenv(self.OPTIONS_ENV_VARIABLE, "").split(",")
+            if arg
+        }
         valid_config_options = {option.upper() for option in get_type_hints(DMConfigOptions)}
         if valid_config_options.issuperset(options_list):
             options = {
-                arg_name.lower(): arg_name in options_list for arg_name in valid_config_options
+                arg_name.lower(): _convert_config_values(options_list[arg_name])
+                if arg_name in options_list
+                else False
+                for arg_name in valid_config_options
             }
-            return DMConfigOptions(**options)
+            return DMConfigOptions(**options)  # pyright: ignore[reportArgumentType]
         msg = (
             f"Invalid configuration options found: {list(set(options_list) - valid_config_options)}"
         )
@@ -448,3 +455,22 @@ class DMConfigParser:
                 }:
                     # assign the dict to the correct key via the class the prefix represented
                     entry[self._CONFIG_NESTED_DICT_MAPPING[to_class]] = config_dict
+
+
+####################################################################################################
+# Private Functions
+####################################################################################################
+def _convert_config_values(value: Union[str, bool]) -> Union[int, str, bool]:  # pragma: no cover
+    """Convert a string into an integer if possible, otherwise leave it as its current type.
+
+    Args:
+        value: The value to convert.
+
+    Returns:
+        The converted value.
+    """
+    if isinstance(value, str):
+        if value.isdigit():
+            return int(value)
+        return value
+    return value

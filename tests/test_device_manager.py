@@ -93,6 +93,7 @@ connection_type = "TCPIP"
 device_type = "SCOPE"
 
 [options]
+default_visa_timeout = 5000
 setup_cleanup = false
 standalone = false
 teardown_cleanup = false
@@ -122,6 +123,7 @@ devices:
     connection_type: TCPIP
     device_type: SCOPE
 options:
+  default_visa_timeout: 5000
   setup_cleanup: false
   standalone: false
   teardown_cleanup: false
@@ -135,7 +137,7 @@ options:
 
         assert (
             device_manager.get_current_configuration_as_environment_variable_strings()
-            == "TM_OPTIONS=VERBOSE_MODE\n"
+            == "TM_OPTIONS=DEFAULT_VISA_TIMEOUT=5000,VERBOSE_MODE\n"
             "TM_DEVICES=~~~address=1,alias=TESTING,connection_type=SERIAL,device_type=SMU,"
             "serial_baud_rate=115200,serial_data_bits=8,serial_end_input=none,"
             "serial_flow_control=xon_xoff,serial_parity=none,serial_stop_bits=one"

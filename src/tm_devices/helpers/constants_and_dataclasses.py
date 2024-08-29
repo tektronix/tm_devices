@@ -438,6 +438,11 @@ class DMConfigOptions(AsDictionaryMixin):
     """A verbosity flag to enable extremely verbose VISA logging to stdout."""
     retry_visa_connection: Optional[bool] = None
     """A flag to enable retrying the first VISA connection attempt."""
+    default_visa_timeout: int = 5000
+    """A default VISA timeout value (in milliseconds) to use when creating VISA connections.
+
+    When this option is not set, a default value of 5000 milliseconds (5 seconds) is used.
+    """
     check_for_updates: Optional[bool] = None
     """A flag indicating if a check for updates for the package should be performed on creation of the DeviceManager."""  # noqa: E501
 
@@ -445,7 +450,7 @@ class DMConfigOptions(AsDictionaryMixin):
         """Complete config entry line for an environment variable."""
         return ",".join(
             [
-                opt_key.upper()
+                opt_key.upper() + (f"={opt_val}" if not isinstance(opt_val, bool) else "")
                 for opt_key, opt_val in self.to_dict(ignore_none=True).items()
                 if opt_val
             ]
@@ -502,7 +507,7 @@ VISA_RESOURCE_EXPRESSION_REGEX: "Final[re.Pattern[str]]" = re.compile(  # pylint
 )
 """A regex pattern used to capture pieces of VISA resource expressions."""
 
-UNIT_TEST_TIMEOUT: Final[int] = 50
+UNIT_TEST_TIMEOUT: Final[int] = 50  # TODO: remove
 """The VISA timeout value to use during unit tests, in milliseconds."""
 
 VALID_DEVICE_CONNECTION_TYPES: Final[Mapping[DeviceTypes, Tuple[ConnectionTypes, ...]]] = (

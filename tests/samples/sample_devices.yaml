@@ -21,6 +21,7 @@ devices:
       baud_rate: 9600
       end_input: none
 options:
+  default_visa_timeout: 1000
   setup_cleanup: false
   standalone: true
   teardown_cleanup: false

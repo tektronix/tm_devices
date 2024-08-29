@@ -69,7 +69,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
             # Mark this as a simulated VISA backend
             self._visa_library_path += "@sim"
         # Use a default timeout of 30 seconds, if running unit tests use a smaller amount.
-        self._default_visa_timeout = (
+        self._default_visa_timeout = (  # TODO: use new config option
             30000
             if not bool(os.environ.get("TM_DEVICES_UNIT_TESTS_RUNNING"))
             else UNIT_TEST_TIMEOUT
