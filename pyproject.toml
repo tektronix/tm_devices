@@ -15,9 +15,8 @@ exclude_lines = [
   "raise NotImplementedError"
 ]
 fail_under = 100
-# TODO: remove the exclusion of the commands
 omit = [
-  "**/tm_devices/commands/**"
+  "**/tm_devices/commands/**"  # TODO: remove this exclusion
 ]
 show_missing = true
 skip_empty = true
