@@ -16,7 +16,7 @@ concurrency:
   group: pypi
 jobs:
   package-release:
-    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-package-release.yml@v1.1.1
+    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-package-release.yml@v1.2.0
     with:
       package-name: tm_devices
       repo-name: tektronix/tm_devices
