@@ -55,6 +55,7 @@ mailto
 md
 mixin
 mixins
+ms
 multimeters
 mv
 namespace
