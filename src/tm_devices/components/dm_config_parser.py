@@ -362,7 +362,9 @@ class DMConfigParser:
         valid_config_options = {option.upper() for option in get_type_hints(DMConfigOptions)}
         if valid_config_options.issuperset(options_dict):
             options = {
-                arg_name.lower(): _convert_config_values(options_dict[arg_name])
+                arg_name.lower(): int(options_dict[arg_name])
+                if isinstance(options_dict[arg_name], str) and options_dict[arg_name].isdigit()  # pyright: ignore[reportUnknownMemberType,reportAttributeAccessIssue]
+                else options_dict[arg_name]
                 for arg_name in options_dict
             }
             return DMConfigOptions(**options)  # pyright: ignore[reportArgumentType]
@@ -452,22 +454,3 @@ class DMConfigParser:
                 }:
                     # assign the dict to the correct key via the class the prefix represented
                     entry[self._CONFIG_NESTED_DICT_MAPPING[to_class]] = config_dict
-
-
-####################################################################################################
-# Private Functions
-####################################################################################################
-def _convert_config_values(value: Union[str, bool]) -> Union[int, str, bool]:  # pragma: no cover
-    """Convert a string into an integer if possible, otherwise leave it as its current type.
-
-    Args:
-        value: The value to convert.
-
-    Returns:
-        The converted value.
-    """
-    if isinstance(value, str):
-        if value.isdigit():
-            return int(value)
-        return value
-    return value

@@ -262,7 +262,7 @@ class Device(ExtendableMixin, ABC):
 
         Usually something like "SCOPE 1"
         """
-        return f"{self.device_type}" + (f" {self.device_number}" if self.device_number > 0 else "")
+        return f"{self.device_type} {max(0, self.device_number) or ''}".strip()
 
     @property
     def port(self) -> Optional[int]:
