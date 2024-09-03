@@ -352,7 +352,7 @@ class DMConfigParser:
         Raises:
             KeyError: Indicates unrecognized option name.
         """
-        options_list = {
+        options_dict = {
             arg.strip().split("=", maxsplit=1)[0]: bool(arg)
             if "=" not in arg
             else arg.split("=", maxsplit=1)[-1]
@@ -360,16 +360,14 @@ class DMConfigParser:
             if arg
         }
         valid_config_options = {option.upper() for option in get_type_hints(DMConfigOptions)}
-        if valid_config_options.issuperset(options_list):
+        if valid_config_options.issuperset(options_dict):
             options = {
-                arg_name.lower(): _convert_config_values(options_list[arg_name])
-                if arg_name in options_list
-                else False
-                for arg_name in valid_config_options
+                arg_name.lower(): _convert_config_values(options_dict[arg_name])
+                for arg_name in options_dict
             }
             return DMConfigOptions(**options)  # pyright: ignore[reportArgumentType]
         msg = (
-            f"Invalid configuration options found: {list(set(options_list) - valid_config_options)}"
+            f"Invalid configuration options found: {list(set(options_dict) - valid_config_options)}"
         )
         raise KeyError(msg)
 
