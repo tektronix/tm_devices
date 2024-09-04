@@ -14,8 +14,8 @@ import pyvisa as visa
 
 from packaging.version import Version
 
+from conftest import UNIT_TEST_TIMEOUT
 from tm_devices import DeviceManager
-from tm_devices.helpers.constants_and_dataclasses import UNIT_TEST_TIMEOUT
 
 if TYPE_CHECKING:
     from tm_devices.drivers import SMU2460, SMU2601B

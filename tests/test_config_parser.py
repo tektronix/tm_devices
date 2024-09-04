@@ -32,7 +32,7 @@ def test_nested_config_prefix_mapping() -> None:
 
 def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None:
     """Test the environment variable config method."""
-    options = ["STANDALONE"]
+    options = ["STANDALONE", "DEFAULT_VISA_TIMEOUT=10000"]
     expected_device_string = (
         "address=MSO54-123456,connection_type=TCPIP,device_type=SCOPE,lan_device_name=hislip0"
     )
@@ -54,12 +54,16 @@ def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None
     assert str(expected_device) == expected_device_string
     assert not config.options.teardown_cleanup
     assert config.options.standalone
+    assert config.options.default_visa_timeout == 10000
     assert (
         config.devices == expected_entry
     ), f"\nDevice dictionaries don't match:\n{expected_entry}\n{config.devices}"
 
     # test that the config string representation looks like env declaration
-    expected_entry_string = f"TM_OPTIONS=STANDALONE\nTM_DEVICES=~~~{expected_device_string}~~~"
+    expected_entry_string = (
+        f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT=10000,STANDALONE\n"
+        f"TM_DEVICES=~~~{expected_device_string}~~~"
+    )
     print(config)
     assert capsys.readouterr().out.strip() == expected_entry_string
 
@@ -96,7 +100,10 @@ def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None
     assert (
         config.devices == expected_entry
     ), f"\nDevice dictionaries don't match:\n{expected_entry}\n{config.devices}"
-    expected_entry_string = f"TM_OPTIONS=STANDALONE\nTM_DEVICES=~~~{expected_device_string}~~~"
+    expected_entry_string = (
+        f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT=10000,STANDALONE\n"
+        f"TM_DEVICES=~~~{expected_device_string}~~~"
+    )
     print(config)
     assert capsys.readouterr().out.strip() == expected_entry_string
 
@@ -141,6 +148,7 @@ options:
   standalone: false
   verbose_mode: false
   verbose_visa: false
+  default_visa_timeout: 10000
   """
     expected_options = DMConfigOptions(
         standalone=False,
@@ -148,6 +156,7 @@ options:
         teardown_cleanup=True,
         verbose_mode=False,
         verbose_visa=False,
+        default_visa_timeout=10000,
     )
     expected_devices = {
         "SCOPE 1": DeviceConfigEntry(
@@ -204,6 +213,7 @@ def test_file_config_non_default_path(
         teardown_cleanup=False,
         verbose_mode=False,
         verbose_visa=False,
+        default_visa_timeout=1000,
     )
     expected_devices = {
         "SCOPE 1": DeviceConfigEntry(

@@ -314,18 +314,17 @@ class DMConfigParser:
         """
         if config_file_path is None:
             config_file_path = self.defined_config_file_path
-        else:
-            config_file_path = cast(str, config_file_path)
 
-        with open(config_file_path, "w", encoding="utf-8") as config_file:
-            file_type = (
-                DMConfigParser.FileType.TOML
-                if config_file_path.lower().endswith(".toml")
-                else DMConfigParser.FileType.YAML
-            )
-            config_file.write(self.to_config_file_text(file_type=file_type))
+        config_path_obj = pathlib.Path(config_file_path)
 
-        return config_file_path
+        file_type = (
+            DMConfigParser.FileType.TOML
+            if config_path_obj.as_posix().lower().endswith(".toml")
+            else DMConfigParser.FileType.YAML
+        )
+        config_path_obj.write_text(self.to_config_file_text(file_type=file_type), encoding="utf-8")
+
+        return config_path_obj.as_posix()
 
     ################################################################################################
     # Private Methods
@@ -353,17 +352,24 @@ class DMConfigParser:
         Raises:
             KeyError: Indicates unrecognized option name.
         """
-        options_list = [
-            arg.strip() for arg in os.getenv(self.OPTIONS_ENV_VARIABLE, "").split(",") if arg
-        ]
+        options_dict = {
+            arg.strip().split("=", maxsplit=1)[0]: bool(arg)
+            if "=" not in arg
+            else arg.split("=", maxsplit=1)[-1]
+            for arg in os.getenv(self.OPTIONS_ENV_VARIABLE, "").split(",")
+            if arg
+        }
         valid_config_options = {option.upper() for option in get_type_hints(DMConfigOptions)}
-        if valid_config_options.issuperset(options_list):
+        if valid_config_options.issuperset(options_dict):
             options = {
-                arg_name.lower(): arg_name in options_list for arg_name in valid_config_options
+                arg_name.lower(): int(options_dict[arg_name])
+                if isinstance(options_dict[arg_name], str) and options_dict[arg_name].isdigit()  # pyright: ignore[reportUnknownMemberType,reportAttributeAccessIssue]
+                else options_dict[arg_name]
+                for arg_name in options_dict
             }
-            return DMConfigOptions(**options)
+            return DMConfigOptions(**options)  # pyright: ignore[reportArgumentType]
         msg = (
-            f"Invalid configuration options found: {list(set(options_list) - valid_config_options)}"
+            f"Invalid configuration options found: {list(set(options_dict) - valid_config_options)}"
         )
         raise KeyError(msg)
 
