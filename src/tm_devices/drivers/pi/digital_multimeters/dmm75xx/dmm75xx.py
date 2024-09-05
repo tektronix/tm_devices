@@ -25,6 +25,7 @@ class DMM75xx(DigitalMultimeter, ABC):
         config_entry: DeviceConfigEntry,
         verbose: bool,
         visa_resource: visa.resources.MessageBasedResource,
+        default_visa_timeout: int,
     ) -> None:
         """Create a DMM75xx device.
 
@@ -32,9 +33,10 @@ class DMM75xx(DigitalMultimeter, ABC):
             config_entry: A config entry object parsed by the DMConfigParser.
             verbose: A boolean indicating if verbose output should be printed.
             visa_resource: The VISA resource object.
+            default_visa_timeout: The default VISA timeout value in milliseconds.
         """
         # NOTE: This method must be defined for the documentation to properly generate
-        super().__init__(config_entry, verbose, visa_resource)
+        super().__init__(config_entry, verbose, visa_resource, default_visa_timeout)
 
     ################################################################################################
     # Properties

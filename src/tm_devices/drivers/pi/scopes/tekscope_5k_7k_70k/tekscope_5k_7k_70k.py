@@ -24,6 +24,7 @@ class TekScope5k7k70k(Scope, ABC):
         config_entry: DeviceConfigEntry,
         verbose: bool,
         visa_resource: visa.resources.MessageBasedResource,
+        default_visa_timeout: int,
     ) -> None:
         """Create a TekScope5k7k70k device.
 
@@ -31,8 +32,9 @@ class TekScope5k7k70k(Scope, ABC):
             config_entry: A config entry object parsed by the DMConfigParser.
             verbose: A boolean indicating if verbose output should be printed.
             visa_resource: The VISA resource object.
+            default_visa_timeout: The default VISA timeout value in milliseconds.
         """
-        super().__init__(config_entry, verbose, visa_resource)
+        super().__init__(config_entry, verbose, visa_resource, default_visa_timeout)
         self.write("HEADER OFF", verbose=False)
         # Extract the numeric part as string from the model number
         digits = "".join(char for char in self.model if char.isdigit())

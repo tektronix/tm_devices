@@ -520,6 +520,7 @@ def test_tekscope2k(device_manager: DeviceManager, tmp_path: pathlib.Path) -> No
     with pytest.raises(AssertionError):
         scope.curve_query(5, wfm_type="FreqDomain")
 
-    assert scope.curve_query(5, wfm_type="TimeDomain") == []
+    with pytest.warns(UserWarning, match="source not available for curve query: CH5"):
+        assert scope.curve_query(5, wfm_type="TimeDomain") == []
 
     assert scope.curve_query(0, wfm_type="Digital") == [1, 0, 1, 0, 1]

@@ -40,7 +40,7 @@ def fixture_docs_server(site_dir: str) -> Generator[str, None, None]:
 def fixture_site_dir(pytestconfig: pytest.Config) -> str:
     """Create the site directory path for testing."""
     site_path = (
-        Path(__file__).parent / f".site_{sys.version_info.major}{sys.version_info.minor}/"
+        Path(__file__).parent.parent / f".site_{sys.version_info.major}{sys.version_info.minor}/"
     ).resolve()
     if xml_path := pytestconfig.getoption("xmlpath"):
         site_path = (Path(xml_path).parent / ".site_html/").resolve()  # pyright: ignore[reportArgumentType]

@@ -47,7 +47,6 @@ from tm_devices.helpers import DeviceConfigEntry, LoadImpedanceAFG
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
-from tm_devices.helpers.constants_and_dataclasses import UNIT_TEST_TIMEOUT
 from tm_devices.helpers.enums import (
     SignalGeneratorFunctionsIAFG,
     SignalGeneratorOutputPathsBase,
@@ -106,6 +105,7 @@ class TekScope(
         config_entry: DeviceConfigEntry,
         verbose: bool,
         visa_resource: visa.resources.MessageBasedResource,
+        default_visa_timeout: int,
     ) -> None:
         """Create a TekScope device.
 
@@ -113,8 +113,9 @@ class TekScope(
             config_entry: A config entry object parsed by the DMConfigParser.
             verbose: A boolean indicating if verbose output should be printed.
             visa_resource: The VISA resource object.
+            default_visa_timeout: The default VISA timeout value in milliseconds.
         """
-        super().__init__(config_entry, verbose, visa_resource)
+        super().__init__(config_entry, verbose, visa_resource, default_visa_timeout)
         self.write("HEADER OFF", verbose=False)
 
         # TODO: this should be a property of the probe attribute on the channel object
@@ -130,7 +131,9 @@ class TekScope(
         channel_map: Dict[str, TekScopeChannel] = {}
 
         with self.temporary_verbose(False) and self.temporary_visa_timeout(
-            500 if not bool(os.environ.get("TM_DEVICES_UNIT_TESTS_RUNNING")) else UNIT_TEST_TIMEOUT
+            500
+            if not bool(os.environ.get("TM_DEVICES_UNIT_TESTS_RUNNING"))
+            else self.default_visa_timeout
         ):
             # Set scope PI to be verbose
             old_pi_verbosity = self.query(":VERBose?")

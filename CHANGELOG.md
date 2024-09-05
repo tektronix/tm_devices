@@ -18,6 +18,15 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added a config option (`default_visa_timeout`) to specify the default VISA timeout for all initial VISA device connections.
+
+### Changed
+
+- Switched all workflows to use the new [`tektronix/python-package-ci-cd`](https://github.com/tektronix/python-package-ci-cd) reusable workflows.
+- Reduced the out-of-the box `default_visa_timeout` value from 30 seconds to 5 seconds.
+
 ---
 
 ## v2.3.0 (2024-08-23)

@@ -23,6 +23,7 @@ class MSO2(MSO2Mixin, TekScope):
         config_entry: DeviceConfigEntry,
         verbose: bool,
         visa_resource: visa.resources.MessageBasedResource,
+        default_visa_timeout: int,
     ) -> None:
         """Create a MSO2 device.
 
@@ -30,8 +31,9 @@ class MSO2(MSO2Mixin, TekScope):
             config_entry: A config entry object parsed by the DMConfigParser.
             verbose: A boolean indicating if verbose output should be printed.
             visa_resource: The VISA resource object.
+            default_visa_timeout: The default VISA timeout value in milliseconds.
         """
-        super().__init__(config_entry, verbose, visa_resource)
+        super().__init__(config_entry, verbose, visa_resource, default_visa_timeout)
         # MSO2 takes 15-20 seconds for shutdown, needs more time before opening visa connection.
         self._reboot_quiet_period = 20
         # the DCH1 channel has 16 bit lanes
