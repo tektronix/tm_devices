@@ -25,7 +25,7 @@ def create_virtual_environment(virtual_env_dir: str | os.PathLike[str]) -> None:
         virtual_env_dir: The directory where the virtual environment should be created
     """
     print(f"\nCreating virtualenv located at '{virtual_env_dir}'")
-    _run_cmd_in_subprocess(f"{sys.executable} -m venv {virtual_env_dir} --clear")
+    _run_cmd_in_subprocess(f'"{sys.executable}" -m venv "{virtual_env_dir}" --clear')
 
 
 def _run_cmd_in_subprocess(command: str) -> None:
@@ -84,11 +84,11 @@ def main() -> None:
         )
         python_executable = files[0]
         commands_to_send = (
-            f"{python_executable} -m pip install -U pip wheel poetry",
-            f"{python_executable} -m poetry install",
-            f"{python_executable} -m nodeenv --python-virtualenv --clean-src",
-            f"{python_executable} -m pre_commit install --install-hooks",
-            f"{python_executable} -m tox -e tests",
+            f'"{python_executable}" -m pip install -U pip wheel poetry',
+            f'"{python_executable}" -m poetry install',
+            f'"{python_executable}" -m nodeenv --python-virtualenv --clean-src',
+            f'"{python_executable}" -m pre_commit install --install-hooks',
+            f'"{python_executable}" -m tox -e tests',
         )
         for command in commands_to_send:
             _run_cmd_in_subprocess(command)
