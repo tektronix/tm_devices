@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 jobs:
   package-build:
-    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-package-build.yml@v1.2.0
+    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-package-build.yml@v1.3.0
     with:
       package-name: tm_devices
       python-versions-array: '["3.8", "3.9", "3.10", "3.11", "3.12"]'  # when updating this, make sure to update all workflows that use this strategy

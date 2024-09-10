@@ -5,7 +5,8 @@ on:
     branches: [main]
 jobs:
   update-python-and-pre-commit-dependencies:
-    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-update-python-and-pre-commit-dependencies.yml@v1.2.0
+    if: ${{ github.actor == 'dependabot[bot]' && contains(github.head_ref, '/pip/') }}
+    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-update-python-and-pre-commit-dependencies.yml@v1.3.0
     with:
       commit-user-name: ${{ vars.TEK_OPENSOURCE_NAME }}
       commit-user-email: ${{ vars.TEK_OPENSOURCE_EMAIL }}
