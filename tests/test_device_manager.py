@@ -168,6 +168,8 @@ options:
             assert device_manager.verbose != saved_verbose
             device_manager.visa_library = PYVISA_PY_BACKEND
             assert device_manager.visa_library == PYVISA_PY_BACKEND
+            device_manager.default_visa_timeout = 1500
+            assert device_manager.default_visa_timeout == 1500
         finally:
             # Reset properties
             device_manager.teardown_cleanup_enabled = saved_teardown
@@ -402,13 +404,22 @@ options:
         saved_teardown_enable = device_manager.teardown_cleanup_enabled
         device_manager.add_scope("MSO56-HOSTNAME")
         assert len(device_manager.devices) == 1
+        assert device_manager.default_visa_timeout == UNIT_TEST_TIMEOUT
+        assert list(device_manager.devices.values())[-1].default_visa_timeout == UNIT_TEST_TIMEOUT  # pyright: ignore[reportUnknownMemberType,reportAttributeAccessIssue]
         _ = capsys.readouterr()  # clear the output
 
+        expected_new_default_timeout = 1000
         device_manager.load_config_file(Path(__file__).parent / "samples/simulated_config.yaml")
         assert len(device_manager.devices) == 3
         stdout = capsys.readouterr().out
         assert "Beginning Device Cleanup on AFG " in stdout
         assert "Finished Device Cleanup on AFG " in stdout
+        assert device_manager.default_visa_timeout == expected_new_default_timeout
+        assert next(iter(device_manager.devices.values())).default_visa_timeout == UNIT_TEST_TIMEOUT  # pyright: ignore[reportUnknownMemberType,reportAttributeAccessIssue]
+        assert (
+            list(device_manager.devices.values())[-1].default_visa_timeout  # pyright: ignore[reportUnknownMemberType,reportAttributeAccessIssue]
+            == expected_new_default_timeout
+        )
 
         # Test with an option set in the file
         device_manager.remove_all_devices()
@@ -420,6 +431,7 @@ options:
         stdout = capsys.readouterr().out
         assert "Beginning Device Cleanup on AFG " not in stdout
         assert "Finished Device Cleanup on AFG " not in stdout
+        assert device_manager.default_visa_timeout == expected_new_default_timeout
 
         # Test adding no devices
         device_manager.remove_all_devices()
@@ -430,6 +442,7 @@ options:
         assert not device_manager.devices
         stdout = capsys.readouterr().out
         assert "Opening Connections to Devices" not in stdout
+        assert device_manager.default_visa_timeout == expected_new_default_timeout
 
         # Reset things
         device_manager.remove_all_devices()

@@ -8,3 +8,4 @@ devices:
 options:
   setup_cleanup: true
   teardown_cleanup: true
+  default_visa_timeout: 1000

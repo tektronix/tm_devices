@@ -438,7 +438,7 @@ class DMConfigOptions(AsDictionaryMixin):
     """A verbosity flag to enable extremely verbose VISA logging to stdout."""
     retry_visa_connection: Optional[bool] = None
     """A flag to enable retrying the first VISA connection attempt."""
-    default_visa_timeout: int = 5000
+    default_visa_timeout: Optional[int] = None
     """A default VISA timeout value (in milliseconds) to use when creating VISA connections.
 
     When this option is not set, a default value of 5000 milliseconds (5 seconds) is used.
