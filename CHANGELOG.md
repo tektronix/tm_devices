@@ -21,11 +21,14 @@ Things to be included in the next release go here.
 ### Added
 
 - Added a config option (`default_visa_timeout`) to specify the default VISA timeout for all initial VISA device connections.
+- Added a new function, `register_additional_usbtmc_mapping()`, to enable users to add USBTMC connection information for devices that don't have native support for USBTMC connections in `tm_devices` yet.
 
 ### Changed
 
 - Switched all workflows to use the new [`tektronix/python-package-ci-cd`](https://github.com/tektronix/python-package-ci-cd) reusable workflows.
 - Reduced the out-of-the box `default_visa_timeout` value from 30 seconds to 5 seconds.
+- _**SEMI-BREAKING CHANGE**_: Changed the `USB_MODEL_ID_LOOKUP` constant to use `SupportedModels` as keys instead of values to make the documentation clearer.
+- _**SEMI-BREAKING CHANGE**_: Changed the `DEVICE_DRIVER_MODEL_MAPPING` constant to use `SupportedModels` as keys instead of values to make the documentation clearer.
 
 ---
 

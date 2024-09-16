@@ -22,11 +22,13 @@ from dateutil.tz import tzlocal
 from packaging.version import InvalidVersion, Version
 
 from tm_devices.helpers.constants_and_dataclasses import (
+    _externally_registered_usbtmc_model_id_lookup,  # pyright: ignore[reportPrivateUsage]
+    _USB_MODEL_ID_STR_LOOKUP,  # pyright: ignore[reportPrivateUsage]
     ConnectionTypes,
     DeviceConfigEntry,
     PACKAGE_NAME,
     PYVISA_PY_BACKEND,
-    USB_MODEL_ID_LOOKUP,
+    USBTMCConfiguration,
     VISA_RESOURCE_EXPRESSION_REGEX,
 )
 from tm_devices.helpers.enums import CustomStrEnum, SupportedModels
@@ -389,9 +391,13 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
             while unneeded_part in match_groups_list:
                 match_groups_list.remove(unneeded_part)
         # Check if the model is in the USB model lookup
+        model_id_lookup = {
+            **_externally_registered_usbtmc_model_id_lookup,
+            **_USB_MODEL_ID_STR_LOOKUP,
+        }
         filtered_usb_model_keys = [
             key
-            for key, value in USB_MODEL_ID_LOOKUP.items()
+            for key, value in model_id_lookup.items()
             if value.model_id == match_groups_list[1].lower()
         ]
         if filtered_usb_model_keys:
@@ -567,6 +573,28 @@ def print_with_timestamp(message: str, end: str = "\n") -> str:
     message = f"{get_timestamp_string()} - {message}"
     print(message, end=end)
     return message
+
+
+def register_additional_usbtmc_mapping(model_series: str, *, model_id: str, vendor_id: str) -> None:
+    """Register USBTMC connection information for a device that doesn't have native `tm_devices` USBTMC support.
+
+    This function adds an additional mapping between the given ``model_series`` and the USBTMC
+    connection information provided. This mapping can then be used by ``tm_devices`` to create a
+    USBTMC connection to the device.
+
+    Args:
+        model_series: The model series string. For VISA devices, the model series is based on the
+            model that is returned from the ``*IDN?`` query (See the
+            [``get_model_series()``][tm_devices.helpers.get_model_series] function for details). For
+            REST API devices, the model series is provided via the
+            [``device_driver``][tm_devices.helpers.constants_and_dataclasses.DeviceConfigEntry.device_driver]
+            parameter in the configuration file, environment variable, or Python code.
+        model_id: The hexadecimal Model ID used to create the USBTMC resource expression.
+        vendor_id: The hexadecimal Vendor ID used to create the USBTMC resource expression.
+    """  # noqa: E501
+    _externally_registered_usbtmc_model_id_lookup[model_series] = USBTMCConfiguration(
+        model_id=model_id, vendor_id=vendor_id
+    )
 
 
 def sanitize_enum(value: str, enum_class: Type[CustomStrEnum]) -> CustomStrEnum:

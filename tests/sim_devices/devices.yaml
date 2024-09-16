@@ -83,6 +83,9 @@ resources:
   TCPIP::LONGNAMEINSTRUMENT-HOSTNAME::INSTR:
     device: longNameInstrument
     filename: scope/longNameInstrument.yaml
+  USB0::0x0699::0x0527::NO_SERIAL::INSTR:
+    device: longNameInstrument
+    filename: scope/longNameInstrument.yaml
 
   # --- unsupported device type ---
   TCPIP::UNSUPPORTED-DEVICE-TYPE::INSTR:
