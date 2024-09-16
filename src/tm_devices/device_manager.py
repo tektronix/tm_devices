@@ -20,6 +20,11 @@ from tm_devices.components import DMConfigParser
 from tm_devices.drivers.api.rest_api.margin_testers.margin_tester import MarginTester
 from tm_devices.drivers.api.rest_api.rest_api_device import RESTAPIDevice
 from tm_devices.drivers.device import Device
+
+# noinspection PyProtectedMember
+from tm_devices.drivers.device_driver_mapping import (
+    _DEVICE_DRIVER_MODEL_STR_MAPPING,  # pyright: ignore[reportPrivateUsage]
+)
 from tm_devices.drivers.pi.data_acquisition_systems.data_acquisition_system import (
     DataAcquisitionSystem,
 )
@@ -1260,15 +1265,12 @@ class DeviceManager(metaclass=Singleton):
             SystemError: Indicates something went wrong when creating the device.
             AssertionError: Indicates something went wrong when creating the device.
         """
-        # pylint: disable=import-outside-toplevel
-        from tm_devices.drivers import DEVICE_DRIVER_MODEL_MAPPING
-
         if self._external_device_drivers is not None:
             device_drivers: Mapping[str, Type[Device]] = MappingProxyType(
-                {**self._external_device_drivers, **DEVICE_DRIVER_MODEL_MAPPING}
+                {**self._external_device_drivers, **_DEVICE_DRIVER_MODEL_STR_MAPPING}
             )
         else:
-            device_drivers = DEVICE_DRIVER_MODEL_MAPPING
+            device_drivers = _DEVICE_DRIVER_MODEL_STR_MAPPING
 
         alias_string = f' "{device_config.alias}"' if device_config.alias else ""
         if device_config.device_type == DeviceTypes.UNSUPPORTED:

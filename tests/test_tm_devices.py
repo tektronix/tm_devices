@@ -155,7 +155,9 @@ def test_device_method_abstraction() -> None:
 def test_supported_models_in_device_driver_mapping() -> None:
     """Verify that all supported models are in the device driver mapping and drivers init file."""
     supported_models_list = sorted(x.value for x in tm_devices.SupportedModels)
-    device_driver_list = sorted(tm_devices.drivers.DEVICE_DRIVER_MODEL_MAPPING)
+    device_driver_list = sorted(
+        tm_devices.drivers.device_driver_mapping._DEVICE_DRIVER_MODEL_STR_MAPPING  # noqa: SLF001
+    )
     module_list: List[str] = list(tm_devices.drivers.__all__)
     # Remove a few non-driver items
     module_list.remove("DEVICE_DRIVER_MODEL_MAPPING")

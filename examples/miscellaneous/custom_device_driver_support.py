@@ -2,7 +2,7 @@
 
 from typing import Tuple, Union
 
-from tm_devices import DeviceManager
+from tm_devices import DeviceManager, register_additional_usbtmc_mapping
 from tm_devices.drivers import MSO5
 from tm_devices.drivers.pi.pi_device import PIDevice
 from tm_devices.drivers.pi.scopes.scope import Scope
@@ -74,11 +74,16 @@ CUSTOM_DEVICE_DRIVERS = {  # A mapping of custom model series strings to Python 
 }
 
 
+# To enable USBTMC connection support for a device without native USBTMC support in tm_devices,
+# simply register the USBTMC connection information for the device's model series.
+register_additional_usbtmc_mapping("CustomModelSeries", model_id="0x0000", vendor_id="0x0000")
+
+
 with DeviceManager(external_device_drivers=CUSTOM_DEVICE_DRIVERS) as device_manager:
     # Add a scope that is currently supported by the package
     mso5: MSO5 = device_manager.add_scope("192.168.0.1")
-    # Add the custom scope
-    custom_scope: CustomScope = device_manager.add_scope("192.168.0.2")
+    # Add the custom scope with a USB connection after registering the USBTMC mapping above
+    custom_scope: CustomScope = device_manager.add_scope("MODEL-SERIAL", connection_type="USB")
     # Add the custom device that is a device type not officially supported
     # NOTE: If using a config file or environment variable to define a device that is unsupported,
     #       the `device_type` key must be set to "UNSUPPORTED".

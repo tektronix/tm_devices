@@ -109,7 +109,7 @@ from tm_devices.drivers.pi.source_measure_units.smu60xx.smu6517b import SMU6517B
 from tm_devices.drivers.pi.systems_switches.ss3706a import SS3706A
 from tm_devices.drivers.api.rest_api.margin_testers.tmt4 import TMT4
 
-# TODO: remove this function after TekScopeSW is fully removed
+# TODO: deprecation: remove this function after TekScopeSW is fully removed
 if not ("--doctest-modules" in sys.argv and sys.argv[-1] == "src"):  # pragma: no cover
 
     def __getattr__(name: str) -> Any:

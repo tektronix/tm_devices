@@ -12,7 +12,7 @@ from tm_devices.driver_mixins.signal_generator_mixin import (
     SourceDeviceConstants,
 )
 from tm_devices.drivers.device import family_base_class
-from tm_devices.drivers.pi._base_source_channel import BaseSourceChannel
+from tm_devices.drivers.pi.base_source_channel import BaseSourceChannel
 from tm_devices.drivers.pi.signal_generators.signal_generator import SignalGenerator
 from tm_devices.helpers import DeviceTypes, LoadImpedanceAFG
 
