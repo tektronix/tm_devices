@@ -58,7 +58,7 @@ class SignalGeneratorMixin(ExtendableMixin, ABC):
         Raises:
             TypeError: Tells the user that they are using an incorrect function type.
         """
-        if not issubclass(type(function), SignalGeneratorFunctionBase):
+        if not issubclass(type(function), SignalGeneratorFunctionBase):  # pyright: ignore[reportUnnecessaryIsInstance]
             msg = (
                 "Generate Waveform does not accept functions as non Enums. "
                 "Please use 'source_device_constants.functions'."

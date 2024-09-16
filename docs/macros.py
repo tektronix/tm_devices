@@ -10,7 +10,7 @@ from typing import Any, Generator, Optional, Set, Tuple
 
 import tomli
 
-from mkdocs_macros.plugin import MacrosPlugin  # pyright: ignore[reportMissingTypeStubs]
+from mkdocs_macros.plugin import MacrosPlugin
 
 HEADER_ONE_REGEX = re.compile(r"^#\s(.+)$", re.MULTILINE)
 PAGE_REPLACEMENTS = {
@@ -212,14 +212,14 @@ def define_env(env: MacrosPlugin) -> None:
 def on_post_page_macros(env: MacrosPlugin) -> None:
     """Post-process pages."""
     # Check if there are any replacements to perform on the page
-    if env.page.file.src_path in PAGE_REPLACEMENTS:  # pyright: ignore[reportUnknownMemberType]
-        for search, replace in PAGE_REPLACEMENTS[env.page.file.src_path]:  # pyright: ignore[reportUnknownMemberType]
-            env.markdown = env.markdown.replace(search, replace)  # pyright: ignore[reportUnknownMemberType]
+    if env.page.file.src_path in PAGE_REPLACEMENTS:
+        for search, replace in PAGE_REPLACEMENTS[env.page.file.src_path]:
+            env.markdown = env.markdown.replace(search, replace)
     # Check if all black format disable comments should be removed from the page
-    if env.page.file.src_path in FILES_TO_REMOVE_BLACK_FORMATTER_DISABLE_COMMENT:  # pyright: ignore[reportUnknownMemberType]
-        env.markdown = env.markdown.replace("# fmt: off\n", "")  # pyright: ignore[reportUnknownMemberType]
+    if env.page.file.src_path in FILES_TO_REMOVE_BLACK_FORMATTER_DISABLE_COMMENT:
+        env.markdown = env.markdown.replace("# fmt: off\n", "")
     # Check if the title is correct
-    if actual_title_match := HEADER_ONE_REGEX.search(env.markdown):  # pyright: ignore[reportUnknownMemberType,reportUnknownArgumentType]
+    if actual_title_match := HEADER_ONE_REGEX.search(env.markdown):
         actual_title = actual_title_match.group(1)
         if env.page.title != actual_title:  # pyright: ignore[reportUnknownMemberType]
-            env.page.title = actual_title  # pyright: ignore[reportUnknownMemberType]
+            env.page.title = actual_title  # pyright: ignore[reportAttributeAccessIssue]
