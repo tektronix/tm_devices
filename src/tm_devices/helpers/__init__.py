@@ -35,6 +35,7 @@ from tm_devices.helpers.functions import (
     get_visa_backend,
     ping_address,
     print_with_timestamp,
+    register_additional_usbtmc_mapping,
     sanitize_enum,
 )
 from tm_devices.helpers.read_only_cached_property import ReadOnlyCachedProperty
@@ -62,6 +63,7 @@ __all__ = [
     "ping_address",
     "print_with_timestamp",
     "PYVISA_PY_BACKEND",
+    "register_additional_usbtmc_mapping",
     "sanitize_enum",
     "SerialConfig",
     "Singleton",

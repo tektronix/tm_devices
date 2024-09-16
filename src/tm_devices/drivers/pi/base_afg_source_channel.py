@@ -3,7 +3,7 @@
 from abc import abstractmethod
 from typing import Literal
 
-from tm_devices.drivers.pi._base_source_channel import BaseSourceChannel
+from tm_devices.drivers.pi.base_source_channel import BaseSourceChannel
 from tm_devices.drivers.pi.pi_device import PIDevice
 from tm_devices.helpers.enums import SignalGeneratorFunctionBase
 

@@ -144,7 +144,7 @@ repos:
         always_run: true
         args: [audit, --json, --ignore-code=CVE-2019-8341]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: f1ebc5730d98440041cc43e4d69829ad598ae1e7  # frozen: v0.6.3
+    rev: 79f422bd92eb329a21b6f3540010c015f61e484e  # frozen: v0.6.5
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]

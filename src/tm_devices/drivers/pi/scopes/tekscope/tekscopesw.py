@@ -1,5 +1,5 @@
 """TekScopePC device driver module."""
-# TODO: rename file after TekScopeSW is fully removed
+# TODO: deprecation: rename file after TekScopeSW is fully removed
 
 import pyvisa as visa
 

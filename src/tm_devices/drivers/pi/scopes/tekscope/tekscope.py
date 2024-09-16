@@ -41,7 +41,7 @@ from tm_devices.driver_mixins.signal_generator_mixin import (
 )
 from tm_devices.driver_mixins.usb_drives_mixin import USBDrivesMixin
 from tm_devices.drivers.device import family_base_class
-from tm_devices.drivers.pi._base_afg_source_channel import BaseAFGSourceChannel
+from tm_devices.drivers.pi.base_afg_source_channel import BaseAFGSourceChannel
 from tm_devices.drivers.pi.scopes.scope import Scope
 from tm_devices.helpers import DeviceConfigEntry, LoadImpedanceAFG
 

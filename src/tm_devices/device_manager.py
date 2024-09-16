@@ -20,6 +20,11 @@ from tm_devices.components import DMConfigParser
 from tm_devices.drivers.api.rest_api.margin_testers.margin_tester import MarginTester
 from tm_devices.drivers.api.rest_api.rest_api_device import RESTAPIDevice
 from tm_devices.drivers.device import Device
+
+# noinspection PyProtectedMember
+from tm_devices.drivers.device_driver_mapping import (
+    _DEVICE_DRIVER_MODEL_STR_MAPPING,  # pyright: ignore[reportPrivateUsage]
+)
 from tm_devices.drivers.pi.data_acquisition_systems.data_acquisition_system import (
     DataAcquisitionSystem,
 )
@@ -138,6 +143,7 @@ class DeviceManager(metaclass=Singleton):
         self.__teardown_cleanup_enabled: bool = NotImplemented
         self.__setup_cleanup_enabled: bool = NotImplemented
         self.__visa_library: str = NotImplemented
+        self.__default_visa_timeout: int = NotImplemented
 
         # Create the config
         self.__config = DMConfigParser()
@@ -180,6 +186,17 @@ class DeviceManager(metaclass=Singleton):
     ################################################################################################
     # Properties
     ################################################################################################
+    @property
+    def default_visa_timeout(self) -> int:
+        """Return the default VISA timeout value."""
+        return self.__default_visa_timeout
+
+    @default_visa_timeout.setter
+    def default_visa_timeout(self, value: int) -> None:
+        """Set the default VISA timeout value."""
+        self.__config.options.default_visa_timeout = value
+        self.__default_visa_timeout = value
+
     @property
     def devices(self) -> Mapping[str, Union[RESTAPIDevice, PIDevice]]:
         """Return the dictionary of devices."""
@@ -1248,15 +1265,12 @@ class DeviceManager(metaclass=Singleton):
             SystemError: Indicates something went wrong when creating the device.
             AssertionError: Indicates something went wrong when creating the device.
         """
-        # pylint: disable=import-outside-toplevel
-        from tm_devices.drivers import DEVICE_DRIVER_MODEL_MAPPING
-
         if self._external_device_drivers is not None:
             device_drivers: Mapping[str, Type[Device]] = MappingProxyType(
-                {**self._external_device_drivers, **DEVICE_DRIVER_MODEL_MAPPING}
+                {**self._external_device_drivers, **_DEVICE_DRIVER_MODEL_STR_MAPPING}
             )
         else:
-            device_drivers = DEVICE_DRIVER_MODEL_MAPPING
+            device_drivers = _DEVICE_DRIVER_MODEL_STR_MAPPING
 
         alias_string = f' "{device_config.alias}"' if device_config.alias else ""
         if device_config.device_type == DeviceTypes.UNSUPPORTED:
@@ -1380,7 +1394,7 @@ class DeviceManager(metaclass=Singleton):
                 device_config,
                 self.__verbose,
                 visa_resource,
-                self.__config.options.default_visa_timeout,
+                self.__default_visa_timeout,
             )
         except (KeyError, IndexError) as error:
             visa_resource.close()
@@ -1403,6 +1417,11 @@ class DeviceManager(metaclass=Singleton):
         )
         self.__teardown_cleanup_enabled = bool(self.__config.options.teardown_cleanup)
         self.__setup_cleanup_enabled = bool(self.__config.options.setup_cleanup)
+        self.__default_visa_timeout = (
+            5000
+            if self.__config.options.default_visa_timeout is None
+            else self.__config.options.default_visa_timeout
+        )
         # Configure the VISA library
         if self.__config.options.standalone:
             self.__visa_library = PYVISA_PY_BACKEND

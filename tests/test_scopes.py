@@ -14,7 +14,7 @@ import pyvisa as visa
 
 from packaging.version import Version
 
-from tm_devices import DeviceManager
+from tm_devices import DeviceManager, register_additional_usbtmc_mapping
 from tm_devices.drivers import MSO2, MSO2KB, MSO5, MSO5B, MSO6, MSO70KDX, TekScopePC
 from tm_devices.drivers.pi.scopes.tekscope.tekscope import (
     ExtendedSourceDeviceConstants,
@@ -23,6 +23,7 @@ from tm_devices.drivers.pi.scopes.tekscope.tekscope import (
     TekScope,
     TekScopeChannel,
 )
+from tm_devices.helpers.constants_and_dataclasses import TEKTRONIX_USBTMC_VENDOR_ID
 from tm_devices.helpers.enums import SignalGeneratorFunctionsIAFG
 
 
@@ -421,6 +422,9 @@ def test_long_device_name(device_manager: DeviceManager) -> None:
     Args:
         device_manager: The DeviceManager object.
     """
+    register_additional_usbtmc_mapping(
+        "LONGNAMEINSTRUMENT", model_id="0x0527", vendor_id=TEKTRONIX_USBTMC_VENDOR_ID
+    )
     # Custom class for testing external device drivers
     try:
         device_manager._external_device_drivers = {  # noqa: SLF001
@@ -428,7 +432,7 @@ def test_long_device_name(device_manager: DeviceManager) -> None:
         }
 
         with pytest.warns(UserWarning):
-            scope = device_manager.add_scope("LONGNAMEINSTRUMENT-HOSTNAME")
+            scope = device_manager.add_scope("LONGNAMEINSTRUMENT-NO_SERIAL", connection_type="USB")
 
         assert not scope.total_channels
         assert scope.all_channel_names_list == ()
