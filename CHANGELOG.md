@@ -30,6 +30,10 @@ Things to be included in the next release go here.
 - _**SEMI-BREAKING CHANGE**_: Changed the `USB_MODEL_ID_LOOKUP` constant to use `SupportedModels` as keys instead of values to make the documentation clearer.
 - _**SEMI-BREAKING CHANGE**_: Changed the `DEVICE_DRIVER_MODEL_MAPPING` constant to use `SupportedModels` as keys instead of values to make the documentation clearer.
 
+### Fixed
+
+- Fixed a bug in the stubgen helper code responsible for adding dynamically added methods to stub files that caused invalid stub files to be created if a dataclass immediately followed a class that was being dynamically updated.
+
 ---
 
 ## v2.3.0 (2024-08-23)
