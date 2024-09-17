@@ -6,9 +6,15 @@ from typing import List
 from tm_devices.helpers import DeviceConfigEntry
 
 class Device(ABC, metaclass=abc.ABCMeta):
+    class NestedClass:
+        """This is a nested class."""
+
     def __init__(self, config_entry: DeviceConfigEntry, verbose: bool) -> None: ...
     def already_exists(self) -> None:
         """Return nothing."""
+    @property
+    def existing_property(self) -> int:
+        """Return an int."""
     @property
     def inc_cached_count(self) -> int:
         """Increment a local counter."""

@@ -92,7 +92,7 @@ def add_info_to_stub(cls: Any, method: Any, is_property: bool = False) -> None: 
             if typing_imports:
                 contents = f"from typing import {', '.join(typing_imports)}\n" + contents
             # Use a regular expression to find the end of the current class
-            pattern = r"(class\s+" + cls.__name__ + r"\b.*?)(\n(?=def|class)|\Z)"
+            pattern = r"(class\s+" + cls.__name__ + r"\b.*?)(\n(?=def|class|@)|\Z)"
             # Insert the new code at the end of the current class
             if match := re.search(pattern, contents, flags=re.DOTALL):
                 end_pos = match.end()
@@ -102,7 +102,7 @@ def add_info_to_stub(cls: Any, method: Any, is_property: bool = False) -> None: 
                 second_half_contents = contents[end_pos:]
                 contents = first_half_contents + method_stub_content + second_half_contents
             else:  # pragma: no cover
-                msg = f"Could not find the end of the {cls.__class__.__name__} class."
+                msg = f"Could not find the end of the {cls.__name__} class."
                 raise ValueError(msg)
 
             with open(method_filepath, "w", encoding="utf-8") as file_pointer:

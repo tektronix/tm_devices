@@ -19,9 +19,66 @@ import pytest
 from tm_devices import DeviceManager
 from tm_devices.drivers import AFG3K, AFG3KC
 from tm_devices.drivers.device import Device
+from tm_devices.drivers.pi.pi_device import PIDevice
 from tm_devices.drivers.pi.scopes.scope import Scope
 from tm_devices.drivers.pi.signal_generators.afgs.afg import AFG
 from tm_devices.drivers.pi.signal_generators.signal_generator import SignalGenerator
+from tm_devices.drivers.pi.tsp_device import TSPDevice
+
+INITIAL_DEVICE_INPUT = '''import abc
+from abc import ABC
+
+from tm_devices.helpers import DeviceConfigEntry
+
+class Device(ABC, metaclass=abc.ABCMeta):
+    class NestedClass:
+        """This is a nested class."""
+    def __init__(self, config_entry: DeviceConfigEntry, verbose: bool) -> None: ...
+    def already_exists(self) -> None:
+        """Return nothing."""
+    @property
+    def existing_property(self) -> int:
+        """Return an int."""
+
+def function_1(arg1: str, arg2: int = 1) -> bool: ...
+
+class OtherDevice(ABC, metaclass=abc.ABCMeta):
+    def __init__(self, config_entry: DeviceConfigEntry, verbose: bool) -> None: ...
+
+def function_2(arg1: str, arg2: int = 2) -> bool: ...
+'''
+INITIAL_PI_DEVICE_INPUT = '''import abc
+
+from abc import ABC
+
+from tm_devices.helpers import DeviceConfigEntry
+
+class PIDevice(ABC, metaclass=abc.ABCMeta):
+    def __init__(self, config_entry: DeviceConfigEntry, verbose: bool) -> None: ...
+    def already_exists(self) -> None:
+        """Return nothing."""
+
+class OtherDevice(ABC, metaclass=abc.ABCMeta):
+    def __init__(self, config_entry: DeviceConfigEntry, verbose: bool) -> None: ...
+'''
+INITIAL_TSP_DEVICE_INPUT = '''import abc
+
+from abc import ABC
+from dataclasses import dataclass
+from tm_devices.helpers import DeviceConfigEntry
+
+class TSPDevice(ABC, metaclass=abc.ABCMeta):
+    def __init__(self, config_entry: DeviceConfigEntry, verbose: bool) -> None: ...
+    def already_exists(self) -> None:
+        """Return nothing."""
+
+@dataclass(frozen=True)
+class CustomDataclass:
+
+    value1: str
+    value2: int = 1
+
+'''
 
 
 @pytest.fixture(scope="module", autouse=True)
@@ -42,6 +99,8 @@ def _remove_added_methods() -> Iterator[None]:
         (AFG, "custom_model_getter_afg"),
         (AFG3K, "custom_model_getter_afg3k"),
         (AFG3KC, "custom_model_getter_afg3kc"),
+        (PIDevice, "added_method"),
+        (TSPDevice, "added_tsp_method"),
     ):
         with contextlib.suppress(AttributeError):
             delattr(obj, name)
@@ -77,34 +136,23 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
 
     local_count = gen_count()
 
-    initial_input = '''import abc
-from abc import ABC
-
-from tm_devices.helpers import DeviceConfigEntry
-
-class Device(ABC, metaclass=abc.ABCMeta):
-    def __init__(self, config_entry: DeviceConfigEntry, verbose: bool) -> None: ...
-    def already_exists(self) -> None:
-        """Return nothing."""
-
-def function_1(arg1: str, arg2: int = 1) -> bool: ...
-
-class OtherDevice(ABC, metaclass=abc.ABCMeta):
-    def __init__(self, config_entry: DeviceConfigEntry, verbose: bool) -> None: ...
-
-def function_2(arg1: str, arg2: int = 2) -> bool: ...
-'''
-    sub_filepath = Path("drivers/device.pyi")
+    golden_stub_dir = Path(__file__).parent / "samples" / "golden_stubs"
+    stub_device_filepath = Path("drivers/device.pyi")
+    stub_pi_device_filepath = Path("drivers/pi/pi_device.pyi")
+    stub_tsp_device_filepath = Path("drivers/pi/tsp_device.pyi")
     generated_stub_dir = (
         Path(__file__).parent
         / "samples/generated_stubs"
         / f"output_{sys.version_info.major}{sys.version_info.minor}/tm_devices"
     )
-    generated_stub_file = generated_stub_dir / sub_filepath
-    golden_stub_dir = Path(__file__).parent / "samples" / "golden_stubs"
-    generated_stub_file.parent.mkdir(parents=True, exist_ok=True)
-    with open(generated_stub_file, "w", encoding="utf-8") as generated_file:
-        generated_file.write(initial_input)
+    generated_device_stub_file = generated_stub_dir / stub_device_filepath
+    generated_device_stub_file.parent.mkdir(parents=True, exist_ok=True)
+    generated_pi_device_stub_file = generated_stub_dir / stub_pi_device_filepath
+    generated_tsp_device_stub_file = generated_stub_dir / stub_tsp_device_filepath
+    generated_pi_device_stub_file.parent.mkdir(parents=True, exist_ok=True)
+    generated_device_stub_file.write_text(INITIAL_DEVICE_INPUT, encoding="utf-8")
+    generated_pi_device_stub_file.write_text(INITIAL_PI_DEVICE_INPUT, encoding="utf-8")
+    generated_tsp_device_stub_file.write_text(INITIAL_TSP_DEVICE_INPUT, encoding="utf-8")
     with mock.patch.dict("os.environ", {"TM_DEVICES_STUB_DIR": str(generated_stub_dir)}):
         # noinspection PyUnusedLocal,PyShadowingNames
         @Device.add_property(is_cached=True)
@@ -153,6 +201,14 @@ def function_2(arg1: str, arg2: int = 2) -> bool: ...
         def already_exists() -> None:
             """Return nothing."""
 
+        @PIDevice.add_method
+        def added_method() -> None:
+            """Return nothing."""
+
+        @TSPDevice.add_method
+        def added_tsp_method() -> None:
+            """Return nothing."""
+
         with pytest.raises(AssertionError):
 
             @Scope.add_method
@@ -187,7 +243,7 @@ def function_2(arg1: str, arg2: int = 2) -> bool: ...
     ############################################################################################
     start_dir = os.getcwd()
     try:
-        os.chdir(generated_stub_file.parent)
+        os.chdir(generated_stub_dir)
         subprocess.check_call(  # noqa: S603
             [
                 sys.executable,
@@ -195,7 +251,7 @@ def function_2(arg1: str, arg2: int = 2) -> bool: ...
                 "ruff",
                 "format",
                 "--quiet",
-                generated_stub_file.name,
+                generated_stub_dir,
             ]
         )
         subprocess.check_call(  # noqa: S603
@@ -207,16 +263,26 @@ def function_2(arg1: str, arg2: int = 2) -> bool: ...
                 "--quiet",
                 "--select=I",
                 "--fix",
-                generated_stub_file.name,
+                generated_stub_dir,
             ]
         )
     finally:
         os.chdir(start_dir)
-    with open(golden_stub_dir / sub_filepath, encoding="utf-8") as golden_file:
-        golden_contents = golden_file.read()
-    with open(generated_stub_file, encoding="utf-8") as generated_file:
-        generated_contents = generated_file.read()
-    assert generated_contents == golden_contents
+
+    # Compare the file contents
+    golden_device_contents = (golden_stub_dir / stub_device_filepath).read_text(encoding="utf-8")
+    generated_device_contents = generated_device_stub_file.read_text(encoding="utf-8")
+    assert generated_device_contents == golden_device_contents
+    golden_pi_device_contents = (golden_stub_dir / stub_pi_device_filepath).read_text(
+        encoding="utf-8"
+    )
+    generated_pi_device_contents = generated_pi_device_stub_file.read_text(encoding="utf-8")
+    assert generated_pi_device_contents == golden_pi_device_contents
+    golden_tsp_device_contents = (golden_stub_dir / stub_tsp_device_filepath).read_text(
+        encoding="utf-8"
+    )
+    generated_tsp_device_contents = generated_tsp_device_stub_file.read_text(encoding="utf-8")
+    assert generated_tsp_device_contents == golden_tsp_device_contents
 
     # Test the custom added properties
     afg = device_manager.add_afg("afg3252c-hostname", alias="testing")
