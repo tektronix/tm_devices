@@ -100,7 +100,7 @@ def _remove_added_methods() -> Iterator[None]:
         (AFG3K, "custom_model_getter_afg3k"),
         (AFG3KC, "custom_model_getter_afg3kc"),
         (PIDevice, "added_method"),
-        (TSPDevice, "added_method"),
+        (TSPDevice, "added_tsp_method"),
     ):
         with contextlib.suppress(AttributeError):
             delattr(obj, name)
