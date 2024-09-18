@@ -123,7 +123,7 @@ def capture_pulse_i(inst: SMU2651A) -> None:
 
     smua.source.output = 0
 
-    inst.write_buffers(I_FILENAME, "smua.nvbuffer1.timestamps", "smua.nvbuffer2", "smua.nvbuffer1")
+    inst.export_buffers(I_FILENAME, "smua.nvbuffer1.timestamps", "smua.nvbuffer2", "smua.nvbuffer1")
 
 
 def capture_pulse_v(inst: SMU2651A) -> None:
@@ -216,7 +216,7 @@ def capture_pulse_v(inst: SMU2651A) -> None:
 
     smua.source.output = 0
 
-    inst.write_buffers(V_FILENAME, "smua.nvbuffer1.timestamps", "smua.nvbuffer2", "smua.nvbuffer1")
+    inst.export_buffers(V_FILENAME, "smua.nvbuffer1.timestamps", "smua.nvbuffer2", "smua.nvbuffer1")
 
 
 # RUN TEST
