@@ -31,7 +31,6 @@ def test_smu(  # noqa: PLR0915
         device_manager: The DeviceManager object.
         capsys: The captured stdout and stderr.
     """
-    device_manager.verbose = True
     smu: SMU2601B = device_manager.add_smu("smu2601b-hostname", alias="smu-device")
     assert id(device_manager.get_smu(number_or_alias="smu-device")) == id(smu)
     assert id(device_manager.get_smu(number_or_alias=smu.device_number)) == id(smu)
@@ -236,8 +235,9 @@ def test_smu(  # noqa: PLR0915
     # TODO: remove this deprecation check in v3
     with mock.patch(
         "tm_devices.drivers.pi.tsp_device.TSPDevice.export_buffers", mock.MagicMock()
-    ), pytest.warns(DeprecationWarning, match=r"Use export_buffers\(\.\.\.\) instead"):
+    ) as mock_obj, pytest.warns(DeprecationWarning, match=r"Use export_buffers\(\.\.\.\) instead"):
         smu.write_buffers(filepath, "smua.nvbuffer1")
+        assert mock_obj.called
 
     try:
         smu.export_buffers(filepath, "smua.nvbuffer1")

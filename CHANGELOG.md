@@ -22,7 +22,7 @@ Things to be included in the next release go here.
 
 - Added a config option (`default_visa_timeout`) to specify the default VISA timeout for all initial VISA device connections.
 - Added a new function, `register_additional_usbtmc_mapping()`, to enable users to add USBTMC connection information for devices that don't have native support for USBTMC connections in `tm_devices` yet.
-- Added `TSPDevice.export_buffers()`.
+- Added `TSPDevice.export_buffers()` to write tsp buffer data fields to file, default is comma separated values with buffer names header.
 
 ### Changed
 
@@ -31,11 +31,11 @@ Things to be included in the next release go here.
 - _**SEMI-BREAKING CHANGE**_: Changed the `USB_MODEL_ID_LOOKUP` constant to use `SupportedModels` as keys instead of values to make the documentation clearer.
 - _**SEMI-BREAKING CHANGE**_: Changed the `DEVICE_DRIVER_MODEL_MAPPING` constant to use `SupportedModels` as keys instead of values to make the documentation clearer.
 - _**SEMI-BREAKING CHANGE**_: Changed the input parameter order in `TSPDevice.load_script()` and updated it to accept raw string input in addition to the `file_path` parameter for the script content.
-- Verbosity with `PIDevice.write()` now handles multiline printing.
+- Verbosity with `PIDevice.write()` now handles multiline input printouts.
 
 ### Deprecated
 
-- renamed `TSPDevice.write_buffers()` to `TSPDevice.export_buffers()` for clarity.
+- Renamed `TSPDevice.write_buffers()` to `TSPDevice.export_buffers()` for clarity.
 
 ### Fixed
 
