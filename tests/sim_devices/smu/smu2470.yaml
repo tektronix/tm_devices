@@ -7,7 +7,7 @@ devices:
         r: Keithley Instruments Inc., Model 2470, 01419964, 3.3.5
       - q: waitcomplete()
       - q: opc()
-      - q: print([[1]])
+      - q: waitcomplete() print([[1]])
         r: 1
       - q: eventlog.clear()
       - q: status.clear()

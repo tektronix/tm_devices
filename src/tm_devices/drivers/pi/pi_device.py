@@ -110,6 +110,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
         Returns:
             Boolean indicating no error, String containing concatenated contents of event log.
         """
+        # TODO: in v3 - This will be deprecated by the has_errors
 
     def turn_channel_off(self, channel_str: str) -> None:
         """Turn off the specified channel.
@@ -867,7 +868,18 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
             SystemError: ``*OPC?`` did not return "1" after sending the command.
         """
         if self._verbose and verbose:
-            print_with_timestamp(f"({self._name_and_alias}) Write >>  {command!r}")
+            if "\n" in command:
+                # Format any multiline command to print out with a single timestamp
+                # followed by as many (whitespace padded) f'>>  {cmd}' lines as it has
+                commands_iter = iter(repr(command.strip()).split("\\n"))
+                spaces = " " * len(
+                    print_with_timestamp(
+                        f"({self._name_and_alias}) Write >>  {next(commands_iter)}"
+                    ).split(">>  ")[0]
+                )
+                print(*[f"{spaces}>>  {cmd}" for cmd in commands_iter], sep="\n")
+            else:
+                print_with_timestamp(f"({self._name_and_alias}) Write >>  {command!r}")
 
         try:
             self._visa_resource.write(command)

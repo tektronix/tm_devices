@@ -286,8 +286,7 @@ class TSPIEEE4882Commands(IEEE4882Commands):
         if write:
             self._pi_device.write("opc()")
             return ""
-        self.wai()
-        return self._pi_device.query("print([[1]])")
+        return self._pi_device.query("waitcomplete() print([[1]])")
 
     def rst(self) -> None:
         r"""Send the Reset (``reset()``) command."""

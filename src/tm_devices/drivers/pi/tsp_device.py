@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import warnings
+
 from abc import ABC
 from typing import Any, Dict, List, Optional, Tuple, TYPE_CHECKING, Union
 
@@ -80,6 +82,26 @@ class TSPDevice(PIDevice, ABC):
 
         return result, failure_message
 
+    def export_buffers(self, filepath: str, *args: str, sep: str = ",") -> None:
+        """Export one or more of the device's buffers to the given filepath.
+
+        Args:
+            filepath: A string representing the path of the file to write to.
+            args: The buffer name(s) to export.
+            sep: The delimiter used to separate data. Defaults to ",".
+        """
+        with open(filepath, mode="w", encoding="utf-8") as file:
+            buffer_data = self.get_buffers(*args)
+            column_length = max(len(x) for x in buffer_data.values())
+            file.write(sep.join(buffer_data) + "\n")
+            for index in range(column_length):
+                file.write(
+                    sep.join(
+                        [str(ls[index]) if index < len(ls) else "" for ls in buffer_data.values()]
+                    )
+                    + "\n"
+                )
+
     def get_buffers(self, *args: str) -> Dict[str, List[float]]:
         """Get the contents of one or more buffers on the device.
 
@@ -127,38 +149,36 @@ class TSPDevice(PIDevice, ABC):
 
     def load_script(
         self,
-        file_path: Union[str, os.PathLike[str]],
-        script_name: str = "",
+        script_name: str,
         *,
+        script_body: str = "",
+        file_path: Union[str, os.PathLike[str], None] = None,
         run_script: bool = False,
         to_nv_memory: bool = False,
     ) -> None:
         """Upload a TSP script to the instrument.
 
         Args:
-            file_path: The file path of the script to read from the Python code's filesystem and
-                load on the instrument.
-            script_name: A string indicating what to name the script being loaded on the instrument,
-                if empty, 'loadfuncs' is used as the script name.
+            script_name: A string indicating what to name the script being loaded on the instrument.
+            script_body: TSP content to load on the instrument, overwritten if `file_path` defined.
+            file_path: a *.tsp file from the local filesystem to read and use as the `script_body`.
             run_script: Boolean indicating if the script should be run immediately after loading.
             to_nv_memory: Boolean indicating if the script is to be saved to non-volatile memory.
         """
-        if not script_name:
-            script_name = "loadfuncs"
+        if file_path is not None:
+            # script_body argument is overwritten by file contents
+            with open(file_path, encoding="utf-8") as script_tsp:
+                script_body = script_tsp.read().strip()
 
         # Check if the script exists, delete it if it does
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")
 
-        with open(file_path, encoding="utf-8") as script:
-            self.write(f"loadscript {script_name}")
-            while tsp_command := script.readline():
-                # TODO: Check and Send Valid Commands
-                self.write(tsp_command.strip())
-            self.write("endscript")
+        # Load the script
+        self.write(f"loadscript {script_name}\n{script_body}\nendscript")
 
-            # Save to NV Memory
-            if to_nv_memory:
-                self.write(f"{script_name}.save()")
+        # Save to Non-Volatile Memory (script definition survives power cycle)
+        if to_nv_memory:
+            self.write(f"{script_name}.save()")
 
         if run_script:
             self.run_script(script_name)
@@ -250,18 +270,14 @@ class TSPDevice(PIDevice, ABC):
             args: The buffer name(s) to export.
             sep: The delimiter used to separate data. Defaults to ",".
         """
-        with open(filepath, mode="w", encoding="utf-8") as file:
-            buffer_data = self.get_buffers(*args)
-            column_length = max(len(x) for x in buffer_data.values())
-            file.write(sep.join(buffer_data) + "\n")
-            for index in range(column_length):
-                file.write(
-                    sep.join(
-                        [str(ls[index]) if index < len(ls) else "" for ls in buffer_data.values()]
-                    )
-                    + "\n"
-                )
+        # TODO: Deprecation - remove in next major version v3
+        warnings.warn(
+            DeprecationWarning("Use export_buffers(...) instead."),
+            stacklevel=2,
+        )
+        self.export_buffers(filepath, *args, sep=sep)
 
-    ################################################################################################
-    # Private Methods
-    ################################################################################################
+
+################################################################################################
+# Private Methods
+################################################################################################

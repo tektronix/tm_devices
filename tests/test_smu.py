@@ -51,6 +51,7 @@ def test_smu(  # noqa: PLR0915
         assert "Query" in stdout
 
     smu.load_script(
+        "loadfuncs",
         file_path=f"{Path(os.path.realpath(__file__)).parent}/samples/tsp_script.tsp",
         run_script=True,
         to_nv_memory=True,
@@ -72,6 +73,20 @@ def test_smu(  # noqa: PLR0915
     assert "endscript" in stdout
     assert "tsp_function.save()" not in stdout
     assert "tsp_function()" not in stdout
+    smu.expect_esr(0)
+    smu.load_script(
+        script_name="loadfuncs",
+        script_body=(Path(os.path.realpath(__file__)).parent / "samples" / "tsp_script.tsp")
+        .read_text()
+        .strip(),
+        run_script=True,
+    )
+    stdout = capsys.readouterr().out
+    assert "loadscript loadfuncs" in stdout
+    assert "if loadfuncs ~= nil then script.delete('loadfuncs') end" in stdout
+    assert "endscript" in stdout
+    assert "loadfuncs.save()" not in stdout
+    assert "loadfuncs()" in stdout
     smu.expect_esr(0)
 
     with mock.patch("pyvisa.highlevel.VisaLibraryBase.clear", mock.MagicMock(return_value=None)):
@@ -216,8 +231,16 @@ def test_smu(  # noqa: PLR0915
         assert str(value) in stdout
 
     filepath = f"./temp_test_{sys.version_info.major}{sys.version_info.minor}.csv"
-    try:
+
+    # TODO: remove this deprecation check in v3
+    with mock.patch(
+        "tm_devices.drivers.pi.tsp_device.TSPDevice.export_buffers", mock.MagicMock()
+    ) as mock_obj, pytest.warns(DeprecationWarning, match=r"Use export_buffers\(\.\.\.\) instead"):
         smu.write_buffers(filepath, "smua.nvbuffer1")
+        assert mock_obj.called
+
+    try:
+        smu.export_buffers(filepath, "smua.nvbuffer1")
         assert os.path.exists(filepath)  # noqa: PTH110
         with open(filepath, encoding="utf-8") as file:
             lines = file.readlines()
