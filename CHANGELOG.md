@@ -18,6 +18,28 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v2.4.0 (2024-09-19)
+
+### Merged Pull Requests
+
+- Update TSPDevice.load_script() to accept raw strings ([#308](https://github.com/tektronix/tm_devices/pull/308))
+- fix: Update stub generation helper function to handle classes followed by dataclasses ([#307](https://github.com/tektronix/tm_devices/pull/307))
+- Add function to register USBTMC connection information for devices that don't have native USBTMC connection support in tm_devices ([#306](https://github.com/tektronix/tm_devices/pull/306))
+- python-deps(deps-dev): Bump the python-dependencies group with 2 updates ([#304](https://github.com/tektronix/tm_devices/pull/304))
+- fix: Ensure that the default VISA timeout value is not overwritten if a new config is loaded that doesn't specify a default VISA timeout. ([#303](https://github.com/tektronix/tm_devices/pull/303))
+- gh-actions(deps): Bump tektronix/python-package-ci-cd ([#287](https://github.com/tektronix/tm_devices/pull/287))
+- chore: Bump the version of tektronix/python-package-ci-cd to v1.3.0 in workflows ([#301](https://github.com/tektronix/tm_devices/pull/301))
+- build: Update license identifier ([#299](https://github.com/tektronix/tm_devices/pull/299))
+- python-deps(deps): Bump the python-dependencies group with 3 updates ([#300](https://github.com/tektronix/tm_devices/pull/300))
+- Enable customizing the default visa timeout ([#293](https://github.com/tektronix/tm_devices/pull/293))
+- python-deps(deps-dev): Bump the python-dependencies group with 4 updates ([#296](https://github.com/tektronix/tm_devices/pull/296))
+- Update python-pacage-ci-cd to v1.1.0 and use tokens to upload to PyPI ([#291](https://github.com/tektronix/tm_devices/pull/291))
+- python-deps(deps): Bump the python-dependencies group across 1 directory with 2 updates ([#288](https://github.com/tektronix/tm_devices/pull/288))
+- chore: Remove an unneeded development dependency ([#286](https://github.com/tektronix/tm_devices/pull/286))
+- Convert to using reusable workflows from the `tektronix/python-package-ci-cd` repo ([#284](https://github.com/tektronix/tm_devices/pull/284))
+
 ### Added
 
 - Added a config option (`default_visa_timeout`) to specify the default VISA timeout for all initial VISA device connections.
