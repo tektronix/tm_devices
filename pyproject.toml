@@ -404,10 +404,10 @@ legacy_tox_ini = """
 [tox]
 requires = tox>4
 isolated_build = True
-envlist = py38,py39,py310,py311,py312,tests,docs,doctests
+envlist = py38,py39,py310,py311,py312,py313,tests,docs,doctests
 skip_missing_interpreters = True
 labels =
-  basic = py38,py39,py310,py311,py312,tests
+  basic = py38,py39,py310,py311,py312,py313,tests
   documentation = docs,doctests
 
 [gh-actions]
@@ -417,6 +417,7 @@ python =
     3.10: py310
     3.11: py311
     3.12: py312
+    3.13: py313
 
 [testenv]
 package = wheel
