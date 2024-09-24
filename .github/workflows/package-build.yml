@@ -15,7 +15,7 @@ jobs:
     uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-package-build.yml@v1.4.0
     with:
       package-name: tm_devices
-      python-versions-array: '["3.8", "3.9", "3.10", "3.11", "3.12"]'  # when updating this, make sure to update all workflows that use this strategy
+      python-versions-array: '["3.8", "3.9", "3.10", "3.11", "3.12", "3.13.0-rc.2"]'  # when updating this, make sure to update all workflows that use this strategy  # TODO: update to standard 3.13 after it is officially released
       operating-systems-array: '["ubuntu", "windows", "macos"]'
     permissions:
       contents: read
