@@ -47,12 +47,12 @@ repos:
       - id: check-github-workflows
         args: [--verbose]
   - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
-    rev: c01fb5723b54075325cd9b5e5665a9ae84baf950  # frozen: v1.7.1.15
+    rev: aa007237bad606b330a90f69bb5ef5dca129957e  # frozen: v1.7.2.16
     hooks:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: d7e01aa9b0cfe3c1b732e66d523bbd0656221127  # frozen: v3.29.0
+    rev: a3498aba5e94c9f7c4acb529b5e7eb6df65fd053  # frozen: v3.29.1
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -144,7 +144,7 @@ repos:
         always_run: true
         args: [audit, --json, --ignore-code=CVE-2019-8341]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 79f422bd92eb329a21b6f3540010c015f61e484e  # frozen: v0.6.5
+    rev: cc915bbf189077041f55bc59c4c0cf7f30cc921f  # frozen: v0.6.8
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
