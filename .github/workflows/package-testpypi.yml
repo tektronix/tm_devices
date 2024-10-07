@@ -7,7 +7,7 @@ concurrency:
   group: pypi
 jobs:
   package-testpypi:
-    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-package-testpypi.yml@v1.4.0
+    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-package-testpypi.yml@v1.4.1
     with:
       package-name: tm_devices
       repo-name: tektronix/tm_devices
