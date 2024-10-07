@@ -57,7 +57,7 @@ repos:
       - id: commitizen
         stages: [commit-msg]
   - repo: https://github.com/adamchainz/blacken-docs
-    rev: 4c97c4a0d921007af6fefae92d8447cfbf63720b  # frozen: 1.18.0
+    rev: d4e2940d27621c7f20215459be05703947618b7b  # frozen: 1.19.0
     hooks:
       - id: blacken-docs
         files: \.(rst|md|markdown|tex)$
