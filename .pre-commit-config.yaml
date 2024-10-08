@@ -56,13 +56,6 @@ repos:
     hooks:
       - id: commitizen
         stages: [commit-msg]
-  - repo: https://github.com/adamchainz/blacken-docs
-    rev: 4c97c4a0d921007af6fefae92d8447cfbf63720b  # frozen: 1.18.0
-    hooks:
-      - id: blacken-docs
-        files: \.(rst|md|markdown|tex)$
-        additional_dependencies: [black==24.4.2]  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
-        args: [--line-length=100]
   - repo: https://github.com/lyz-code/yamlfix
     rev: 8072181c0f2eab9f2dd8db2eb3b9556d7cd0bd74  # frozen: 1.17.0
     hooks:
@@ -84,6 +77,7 @@ repos:
         additional_dependencies:
           - setuptools  # This is required since Python 3.12 no longer installs setuptools by default in virtual environments
           - mdformat-admon
+          - mdformat-black  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
           - mdformat-beautysh
           - mdformat-config
           - mdformat-footnote

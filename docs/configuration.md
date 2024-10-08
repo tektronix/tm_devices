@@ -428,6 +428,7 @@ Sample environment variable device configurations (with comments, not allowed in
 environment variable)
 
 ```python
+# fmt: off
 # Sample SMU using IP address and PyVISA-py
 TM_OPTIONS = "STANDALONE"
 TM_DEVICES = "address=123.45.67.255,device_type=SMU"
