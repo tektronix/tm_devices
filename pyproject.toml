@@ -8,6 +8,12 @@ requires = ["poetry-core>=1.9.0"]
 py-gte-39 = "sys_version_info >= (3, 9)"
 py-lt-39 = "sys_version_info < (3, 9)"
 
+[tool.coverage.paths]
+source = [
+  ".tox/**/site-packages/tm_devices",
+  "src/tm_devices"
+]
+
 [tool.coverage.report]
 exclude_lines = [
   "if TYPE_CHECKING:",
@@ -163,7 +169,6 @@ good-names = ["_"]
 
 [tool.pylint.design]
 max-args = 7
-max-parents = 20
 
 [tool.pylint.main]
 fail-under = 10.0
@@ -218,6 +223,7 @@ disable = [
   "raise-missing-from",  # caught by ruff
   "redefined-builtin",  # caught by ruff
   "suppressed-message",  # allowed
+  "too-many-ancestors",  # allowed
   "too-many-arguments",  # caught by ruff
   "too-many-branches",  # caught by ruff
   "too-many-lines",  # not necessary to check for

@@ -17,10 +17,10 @@ from packaging.version import Version
 from tm_devices import DeviceManager, register_additional_usbtmc_mapping
 from tm_devices.drivers import MSO2, MSO2KB, MSO5, MSO5B, MSO6, MSO70KDX, TekScopePC
 from tm_devices.drivers.pi.scopes.tekscope.tekscope import (
+    AbstractTekScope,
     ExtendedSourceDeviceConstants,
     ParameterBounds,
     TekProbeData,
-    TekScope,
     TekScopeChannel,
 )
 from tm_devices.helpers.constants_and_dataclasses import TEKTRONIX_USBTMC_VENDOR_ID
@@ -46,7 +46,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     scope: MSO5 = device_manager.add_scope("MSO56-SERIAL1", alias="mso56", connection_type="USB")
 
     # cheeky super() call for coverage of USB connection type on Device's hostname implementation
-    assert super(TekScope, scope).hostname == ""
+    assert super(AbstractTekScope, scope).hostname == ""
     # clear cached property so that the scope instance will use the proper implementation
     # noinspection PyPropertyAccess
     del scope.hostname
@@ -486,6 +486,8 @@ def test_tekscopepc(device_manager: DeviceManager) -> None:
     assert scope.usb_drives == ("E:",)
     assert scope.ip_address == ""
     assert scope.total_channels == 8
+    with pytest.warns(UserWarning, match="Rebooting is not supported for the TekScopePC driver."):
+        scope.reboot()
 
 
 def test_tekscope2k(device_manager: DeviceManager, tmp_path: pathlib.Path) -> None:

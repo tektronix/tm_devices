@@ -1,16 +1,20 @@
 """TekScopePC device driver module."""
 
+import warnings
+
 import pyvisa as visa
 
 from tm_devices.commands import TekScopePCMixin
-from tm_devices.drivers.pi.scopes.tekscope.tekscope import TekScope
+from tm_devices.drivers.device import family_base_class
+from tm_devices.drivers.pi.scopes.tekscope.tekscope import AbstractTekScope
 from tm_devices.helpers import DeviceConfigEntry
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class TekScopePC(TekScopePCMixin, TekScope):  # pyright: ignore[reportIncompatibleMethodOverride]
+@family_base_class
+class TekScopePC(TekScopePCMixin, AbstractTekScope):  # pyright: ignore[reportIncompatibleMethodOverride]
     """TekScopePC device driver."""
 
     ################################################################################################
@@ -48,4 +52,8 @@ class TekScopePC(TekScopePCMixin, TekScope):  # pyright: ignore[reportIncompatib
     ################################################################################################
     def _reboot(self) -> None:
         """Reboot the device."""
-        # TODO: overwrite the reboot code here
+        warnings.warn(
+            f"Rebooting is not supported for the {self.__class__.__name__} driver, "
+            f"{self._name_and_alias} will not be rebooted.",
+            stacklevel=3,
+        )

@@ -24,12 +24,13 @@ Things to be included in the next release go here.
 
 ### Changed
 
-- Moved `SignalGenerator` class to the `driver_mixins` submodule and renamed it to `TekAFGAWG`.
+- <span style="color:red">BREAKING CHANGE</span>: Moved `SignalGenerator` class to the `driver_mixins` submodule and renamed it to `TekAFGAWG`.
 
 ### Removed
 
-- Removed previously deprecated `TekScopeSW` alias to the `TekScopePC` class
-- Removed previously deprecated `write_buffers()` from the `TSPDevice` class.
+- <span style="color:red">BREAKING CHANGE</span>: Removed previously deprecated `TekScopeSW` alias to the `TekScopePC` class
+- <span style="color:red">BREAKING CHANGE</span>: Removed previously deprecated `write_buffers()` from the `TSPDevice` class.
+- <span style="color:red">BREAKING CHANGE</span>: Removed Internal AFG methods from the `TekScopePC` driver, since they wouldn't have worked due to its lack of an IAFG.
 
 ---
 

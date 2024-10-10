@@ -435,6 +435,7 @@ class Device(ExtendableMixin, ABC):
         Returns:
             A boolean indicating if any errors were found in the device.
         """
+        # TODO: nfelt14: update this with new behavior
         return self._has_errors()
 
     @final
@@ -504,7 +505,7 @@ class Device(ExtendableMixin, ABC):
             )
         return rebooted
 
-    # TODO: move to mixin
+    # TODO: nfelt14: move to mixin
     @final
     def verify_values(
         self,

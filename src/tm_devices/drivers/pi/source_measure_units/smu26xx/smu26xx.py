@@ -83,7 +83,6 @@ class SMU26xx(SourceMeasureUnit, ABC):
         allev_result_str = '0,"No events to report - queue empty"'
 
         # instrument returns exponential numbers so converting to float before int
-        # TODO: switch to auto-generated command once SMU2601B-PULSE is ready
         if not (err_count := int(float(self.query("print(errorqueue.count)")))):
             result_allev = True
         else:

@@ -69,11 +69,9 @@ class TekProbeData:
     probe_id_type: str = "1X"
 
 
-# pylint: disable=too-many-public-methods
-# TODO: Move signal generator mixin to different abstract class, so that TekScopePC
-#   does not inherit the IAFG.
-@family_base_class
-class TekScope(
+# NOTE: This is no longer considered a family_base_class due to the
+# differences between the physical scope hardware devices and the TekScopePC device.
+class AbstractTekScope(  # pylint: disable=too-many-public-methods
     Scope,
     BusMixin,
     HistogramMixin,
@@ -82,7 +80,6 @@ class TekScope(
     MeasurementsMixin,
     ReferenceMixin,
     SearchMixin,
-    SignalGeneratorMixin,
     PlotMixin,
     PowerMixin,
     USBDrivesMixin,
@@ -128,6 +125,7 @@ class TekScope(
     def channel(self) -> "MappingProxyType[str, TekScopeChannel]":
         """Mapping of channel names to any detectable properties, attributes, and settings."""
         # TODO: overwrite in MSO2 driver, would remove need for try-except
+        #   https://github.com/tektronix/tm_devices/issues/324
         channel_map: Dict[str, TekScopeChannel] = {}
 
         with self.temporary_verbose(False) and self.temporary_visa_timeout(
@@ -175,11 +173,6 @@ class TekScope(
             self.set_and_check(":VERBose", old_pi_verbosity)
         return MappingProxyType(channel_map)
 
-    @cached_property
-    def internal_afg(self) -> "InternalAFGChannel":
-        """The scope's internal AFG."""
-        return InternalAFGChannel(self)
-
     @property
     def commands(
         self,
@@ -214,11 +207,6 @@ class TekScope(
         """Return the number of digital bits expected in a digital channel."""
         # TODO: should be part of self.channel
         return self._num_dig_bits_in_ch
-
-    @property
-    def source_device_constants(self) -> TekScopeSourceDeviceConstants:
-        """Return the device constants."""
-        return self._DEVICE_CONSTANTS
 
     @cached_property
     def total_channels(self) -> int:
@@ -385,207 +373,6 @@ class TekScope(
             return wfm_data[0]  # return single frame
 
         return wfm_data  # return list of frames
-
-    def generate_function(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
-        self,
-        frequency: float,
-        function: SignalGeneratorFunctionsIAFG,
-        amplitude: float,
-        offset: float,
-        channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
-        termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
-        duty_cycle: float = 50.0,
-        polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
-        symmetry: float = 50.0,
-    ) -> None:
-        """Generate a predefined waveform given the following parameters.
-
-        Args:
-            frequency: The frequency of the waveform to generate.
-            function: The function to generate.
-            amplitude: The amplitude of the signal to generate.
-            offset: The offset of the signal to generate.
-            channel: Unused in this class.
-            output_signal_path: Unused in this class.
-            termination: The impedance to set the channel to.
-            duty_cycle: The duty cycle to set the signal to.
-            polarity: Unused in this class.
-            symmetry: The symmetry to set the signal to, only applicable to certain functions.
-        """
-        del polarity, channel, output_signal_path  # these aren't used
-        self._validate_generated_function(function)
-        # Turn off the Internal AFG
-        self.internal_afg.set_state(0)
-        self.internal_afg.set_function_properties(
-            frequency=frequency,
-            function=function,
-            amplitude=amplitude,
-            offset=offset,
-            burst_count=0,
-            termination=termination,
-            duty_cycle=duty_cycle,
-            symmetry=symmetry,
-        )
-        # Turn on the Internal AFG
-        self.internal_afg.set_state(1)
-        # Don't check for errors as any measurement with low amplitude will generate an error
-
-    def setup_burst(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
-        self,
-        frequency: float,
-        function: SignalGeneratorFunctionsIAFG,
-        amplitude: float,
-        offset: float,
-        burst_count: int,
-        channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
-        termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
-        duty_cycle: float = 50.0,
-        polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
-        symmetry: float = 50.0,
-    ) -> None:
-        """Set up the Internal AFG for sending a burst of waveforms given the following parameters.
-
-        Args:
-            frequency: The frequency of the waveform to generate.
-            function: The function to generate.
-            amplitude: The amplitude of the signal to generate.
-            offset: The offset of the signal to generate.
-            burst_count: The number of wavelengths to be generated.
-            channel: Unused in this class.
-            output_signal_path: Unused in this class.
-            termination: The impedance to set the channel to.
-            duty_cycle: The duty cycle to set the signal to.
-            polarity: Unused in this class.
-            symmetry: The symmetry to set the signal to, only applicable to certain functions.
-        """
-        del polarity, channel, output_signal_path  # these aren't used
-        self._validate_generated_function(function)
-        self.internal_afg.set_function_properties(
-            frequency=frequency,
-            function=function,
-            amplitude=amplitude,
-            offset=offset,
-            burst_count=burst_count,
-            termination=termination,
-            duty_cycle=duty_cycle,
-            symmetry=symmetry,
-        )
-
-    def generate_burst(self) -> None:
-        """Generate a burst of waveforms by forcing trigger."""
-        self.internal_afg.trigger_burst()
-        # Don't check for errors as any measurement with low amplitude will generate an error
-
-    # pylint: disable=too-many-locals
-    def get_waveform_constraints(  # pyright: ignore[reportIncompatibleMethodOverride]
-        self,
-        function: Optional[SignalGeneratorFunctionsIAFG] = None,
-        waveform_length: Optional[int] = None,
-        frequency: Optional[float] = None,
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
-        load_impedance: LoadImpedanceAFG = LoadImpedanceAFG.HIGHZ,
-    ) -> ExtendedSourceDeviceConstants:
-        """Get the constraints that restrict the waveform to certain parameter ranges.
-
-        Args:
-            function: The function that needs to be generated.
-            waveform_length: Unused in this class.
-            frequency: The frequency of the waveform that needs to be generated.
-            output_signal_path: Unused in this class.
-            load_impedance: The suggested impedance on the source.
-
-        Returns:
-            A Named Tuple containing a set of parameters and their restricted bounds.
-        """
-        del output_signal_path, waveform_length
-
-        if not function:
-            msg = "IAFGs must have a function defined."
-            raise ValueError(msg)
-
-        base_frequency_low = 100.0e-3
-        base_frequency_high = 50.0e6 * self._get_driver_specific_multipliers()
-
-        load_impedance_multiplier = 1.0 if load_impedance == LoadImpedanceAFG.HIGHZ else 0.5
-
-        base_amplitude_low = 20.0e-3
-        base_amplitude_high = 5.0
-
-        square_duty_cycle_range = ParameterBounds(lower=10.0, upper=90.0)
-        pulse_width_range = None
-        # handle logic to constrain limits of duty cycle and pulse width range due to frequency
-        if frequency is not None:
-            max_duty = 90.0
-            min_duty = 10.0
-            max_square_pulse_freq = base_frequency_high / 2
-            # limit to valid range for calcs, otherwise values are outside valid ranges
-            calc_freq = max((base_amplitude_high, min((max_square_pulse_freq, frequency))))
-            # above 10MHz (or 20MHz), then SQUARE duty cycle and PULSE width ranges get coerced
-            if frequency > (duty_cycle_coercion_start_freq := base_frequency_high / 5):
-                # 15 percent change over the difference between max frequency and start of coercion
-                coercion_slope = 15.0 / (max_square_pulse_freq - duty_cycle_coercion_start_freq)
-                max_duty = 90.0 - (coercion_slope * (calc_freq - duty_cycle_coercion_start_freq))
-                min_duty = 10.0 + (coercion_slope * (calc_freq - duty_cycle_coercion_start_freq))
-                # one decimal place of accuracy as percentage,
-                # and uses floor/ceil on the max/min to stay in valid zone
-                square_duty_cycle_range = ParameterBounds(
-                    lower=math.ceil(min_duty * 10) / 10, upper=math.floor(max_duty * 10) / 10
-                )
-            # TODO: There is an edge case where the IAFG period doesn't exactly equal 1/frequency
-            #  this can cause the pulse width max and min to be outside valid range by tiny bit,
-            #  workaround is to query actual period time and set frequency=1/<actual_period>
-            # limited to 0.1ns resolution regardless of frequency
-            # also uses floor/ceil to stay in valid zone
-            pulse_width_range = ParameterBounds(
-                lower=math.ceil(min_duty / 100 * 1e10 / calc_freq) / 1e10,
-                upper=math.floor(max_duty / 100 * 1e10 / calc_freq) / 1e10,
-            )
-        amplitude_multiplier = 1
-
-        if function in {SignalGeneratorFunctionsIAFG.SIN}:
-            frequency_multiplier = 1
-        elif function in {
-            SignalGeneratorFunctionsIAFG.SQUARE,
-            SignalGeneratorFunctionsIAFG.PULSE,
-            SignalGeneratorFunctionsIAFG.ARBITRARY,
-        }:
-            frequency_multiplier = 0.5
-        elif function in {SignalGeneratorFunctionsIAFG.SINC}:
-            frequency_multiplier = 0.04
-            amplitude_multiplier = 0.6
-        elif function in {
-            SignalGeneratorFunctionsIAFG.RAMP,
-            SignalGeneratorFunctionsIAFG.CARDIAC,
-        }:
-            frequency_multiplier = 0.01
-        else:
-            frequency_multiplier = 0.1
-            amplitude_multiplier = 0.5 if function != SignalGeneratorFunctionsIAFG.LORENTZ else 0.48
-
-        frequency_range = ParameterBounds(
-            lower=base_frequency_low, upper=base_frequency_high * frequency_multiplier
-        )
-        amplitude_range = ParameterBounds(
-            lower=base_amplitude_low * load_impedance_multiplier,
-            upper=base_amplitude_high * amplitude_multiplier * load_impedance_multiplier,
-        )
-        offset_range = ParameterBounds(
-            lower=-2.5 * load_impedance_multiplier, upper=2.5 * load_impedance_multiplier
-        )
-        # RAMP symmetry range never changes with frequency
-        ramp_symmetry_range = ParameterBounds(lower=0.0, upper=100.0)
-        sample_rate_range = ParameterBounds(lower=250.0e6, upper=250.0e6)
-        return ExtendedSourceDeviceConstants(
-            amplitude_range=amplitude_range,
-            frequency_range=frequency_range,
-            offset_range=offset_range,
-            sample_rate_range=sample_rate_range,
-            square_duty_cycle_range=square_duty_cycle_range,
-            pulse_width_range=pulse_width_range,
-            ramp_symmetry_range=ramp_symmetry_range,
-        )
 
     def recall_reference(self, reference_path: str, ref_number: Union[int, str]) -> None:
         """Recall a reference waveform file.
@@ -881,6 +668,231 @@ class TekScope(
         ):
             channel_str = channel_str_base + "_DALL"
         self.set_and_check(f":DISPLAY:WAVEVIEW:{channel_str}:STATE", int(state))
+
+
+@family_base_class
+class TekScope(SignalGeneratorMixin, AbstractTekScope):
+    """A physical TekScope device.
+
+    Physical TekScope devices all come with an Internal AFG.
+    """
+
+    ################################################################################################
+    # Properties
+    ################################################################################################
+    @property
+    def source_device_constants(self) -> TekScopeSourceDeviceConstants:
+        """Return the device constants."""
+        return self._DEVICE_CONSTANTS
+
+    @cached_property
+    def internal_afg(self) -> "InternalAFGChannel":
+        """The scope's internal AFG."""
+        return InternalAFGChannel(self)
+
+    ################################################################################################
+    # Public Methods
+    ################################################################################################
+    def generate_function(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
+        self,
+        frequency: float,
+        function: SignalGeneratorFunctionsIAFG,
+        amplitude: float,
+        offset: float,
+        channel: str = "all",
+        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
+        duty_cycle: float = 50.0,
+        polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
+        symmetry: float = 50.0,
+    ) -> None:
+        """Generate a predefined waveform given the following parameters.
+
+        Args:
+            frequency: The frequency of the waveform to generate.
+            function: The function to generate.
+            amplitude: The amplitude of the signal to generate.
+            offset: The offset of the signal to generate.
+            channel: Unused in this class.
+            output_signal_path: Unused in this class.
+            termination: The impedance to set the channel to.
+            duty_cycle: The duty cycle to set the signal to.
+            polarity: Unused in this class.
+            symmetry: The symmetry to set the signal to, only applicable to certain functions.
+        """
+        del polarity, channel, output_signal_path  # these aren't used
+        self._validate_generated_function(function)
+        # Turn off the Internal AFG
+        self.internal_afg.set_state(0)
+        self.internal_afg.set_function_properties(
+            frequency=frequency,
+            function=function,
+            amplitude=amplitude,
+            offset=offset,
+            burst_count=0,
+            termination=termination,
+            duty_cycle=duty_cycle,
+            symmetry=symmetry,
+        )
+        # Turn on the Internal AFG
+        self.internal_afg.set_state(1)
+        # Don't check for errors as any measurement with low amplitude will generate an error
+
+    def setup_burst(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
+        self,
+        frequency: float,
+        function: SignalGeneratorFunctionsIAFG,
+        amplitude: float,
+        offset: float,
+        burst_count: int,
+        channel: str = "all",
+        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
+        duty_cycle: float = 50.0,
+        polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
+        symmetry: float = 50.0,
+    ) -> None:
+        """Set up the Internal AFG for sending a burst of waveforms given the following parameters.
+
+        Args:
+            frequency: The frequency of the waveform to generate.
+            function: The function to generate.
+            amplitude: The amplitude of the signal to generate.
+            offset: The offset of the signal to generate.
+            burst_count: The number of wavelengths to be generated.
+            channel: Unused in this class.
+            output_signal_path: Unused in this class.
+            termination: The impedance to set the channel to.
+            duty_cycle: The duty cycle to set the signal to.
+            polarity: Unused in this class.
+            symmetry: The symmetry to set the signal to, only applicable to certain functions.
+        """
+        del polarity, channel, output_signal_path  # these aren't used
+        self._validate_generated_function(function)
+        self.internal_afg.set_function_properties(
+            frequency=frequency,
+            function=function,
+            amplitude=amplitude,
+            offset=offset,
+            burst_count=burst_count,
+            termination=termination,
+            duty_cycle=duty_cycle,
+            symmetry=symmetry,
+        )
+
+    def generate_burst(self) -> None:
+        """Generate a burst of waveforms by forcing trigger."""
+        self.internal_afg.trigger_burst()
+        # Don't check for errors as any measurement with low amplitude will generate an error
+
+    # pylint: disable=too-many-locals
+    def get_waveform_constraints(  # pyright: ignore[reportIncompatibleMethodOverride]
+        self,
+        function: Optional[SignalGeneratorFunctionsIAFG] = None,
+        waveform_length: Optional[int] = None,
+        frequency: Optional[float] = None,
+        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
+        load_impedance: LoadImpedanceAFG = LoadImpedanceAFG.HIGHZ,
+    ) -> ExtendedSourceDeviceConstants:
+        """Get the constraints that restrict the waveform to certain parameter ranges.
+
+        Args:
+            function: The function that needs to be generated.
+            waveform_length: Unused in this class.
+            frequency: The frequency of the waveform that needs to be generated.
+            output_signal_path: Unused in this class.
+            load_impedance: The suggested impedance on the source.
+
+        Returns:
+            A Named Tuple containing a set of parameters and their restricted bounds.
+        """
+        del output_signal_path, waveform_length
+
+        if not function:
+            msg = "IAFGs must have a function defined."
+            raise ValueError(msg)
+
+        base_frequency_low = 100.0e-3
+        base_frequency_high = 50.0e6 * self._get_driver_specific_multipliers()
+
+        load_impedance_multiplier = 1.0 if load_impedance == LoadImpedanceAFG.HIGHZ else 0.5
+
+        base_amplitude_low = 20.0e-3
+        base_amplitude_high = 5.0
+
+        square_duty_cycle_range = ParameterBounds(lower=10.0, upper=90.0)
+        pulse_width_range = None
+        # handle logic to constrain limits of duty cycle and pulse width range due to frequency
+        if frequency is not None:
+            max_duty = 90.0
+            min_duty = 10.0
+            max_square_pulse_freq = base_frequency_high / 2
+            # limit to valid range for calcs, otherwise values are outside valid ranges
+            calc_freq = max((base_amplitude_high, min((max_square_pulse_freq, frequency))))
+            # above 10MHz (or 20MHz), then SQUARE duty cycle and PULSE width ranges get coerced
+            if frequency > (duty_cycle_coercion_start_freq := base_frequency_high / 5):
+                # 15 percent change over the difference between max frequency and start of coercion
+                coercion_slope = 15.0 / (max_square_pulse_freq - duty_cycle_coercion_start_freq)
+                max_duty = 90.0 - (coercion_slope * (calc_freq - duty_cycle_coercion_start_freq))
+                min_duty = 10.0 + (coercion_slope * (calc_freq - duty_cycle_coercion_start_freq))
+                # one decimal place of accuracy as percentage,
+                # and uses floor/ceil on the max/min to stay in valid zone
+                square_duty_cycle_range = ParameterBounds(
+                    lower=math.ceil(min_duty * 10) / 10, upper=math.floor(max_duty * 10) / 10
+                )
+            # NOTE: There is an edge case where the IAFG period doesn't exactly equal 1/frequency
+            #  this can cause the pulse width max and min to be outside valid range by tiny bit,
+            #  workaround is to query actual period time and set frequency=1/<actual_period>
+            # limited to 0.1ns resolution regardless of frequency
+            # also uses floor/ceil to stay in valid zone
+            pulse_width_range = ParameterBounds(
+                lower=math.ceil(min_duty / 100 * 1e10 / calc_freq) / 1e10,
+                upper=math.floor(max_duty / 100 * 1e10 / calc_freq) / 1e10,
+            )
+        amplitude_multiplier = 1
+
+        if function in {SignalGeneratorFunctionsIAFG.SIN}:
+            frequency_multiplier = 1
+        elif function in {
+            SignalGeneratorFunctionsIAFG.SQUARE,
+            SignalGeneratorFunctionsIAFG.PULSE,
+            SignalGeneratorFunctionsIAFG.ARBITRARY,
+        }:
+            frequency_multiplier = 0.5
+        elif function in {SignalGeneratorFunctionsIAFG.SINC}:
+            frequency_multiplier = 0.04
+            amplitude_multiplier = 0.6
+        elif function in {
+            SignalGeneratorFunctionsIAFG.RAMP,
+            SignalGeneratorFunctionsIAFG.CARDIAC,
+        }:
+            frequency_multiplier = 0.01
+        else:
+            frequency_multiplier = 0.1
+            amplitude_multiplier = 0.5 if function != SignalGeneratorFunctionsIAFG.LORENTZ else 0.48
+
+        frequency_range = ParameterBounds(
+            lower=base_frequency_low, upper=base_frequency_high * frequency_multiplier
+        )
+        amplitude_range = ParameterBounds(
+            lower=base_amplitude_low * load_impedance_multiplier,
+            upper=base_amplitude_high * amplitude_multiplier * load_impedance_multiplier,
+        )
+        offset_range = ParameterBounds(
+            lower=-2.5 * load_impedance_multiplier, upper=2.5 * load_impedance_multiplier
+        )
+        # RAMP symmetry range never changes with frequency
+        ramp_symmetry_range = ParameterBounds(lower=0.0, upper=100.0)
+        sample_rate_range = ParameterBounds(lower=250.0e6, upper=250.0e6)
+        return ExtendedSourceDeviceConstants(
+            amplitude_range=amplitude_range,
+            frequency_range=frequency_range,
+            offset_range=offset_range,
+            sample_rate_range=sample_rate_range,
+            square_duty_cycle_range=square_duty_cycle_range,
+            pulse_width_range=pulse_width_range,
+            ramp_symmetry_range=ramp_symmetry_range,
+        )
 
 
 @dataclass
