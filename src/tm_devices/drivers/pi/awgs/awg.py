@@ -11,9 +11,9 @@ from tm_devices.driver_mixins.signal_generator_mixin import (
     ParameterBounds,
     SourceDeviceConstants,
 )
+from tm_devices.driver_mixins.tek_afg_awg_mixin import TekAFGAWG
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.base_source_channel import BaseSourceChannel
-from tm_devices.drivers.pi.signal_generators.signal_generator import SignalGenerator
 from tm_devices.helpers import DeviceTypes, LoadImpedanceAFG
 
 # noinspection PyPep8Naming
@@ -32,7 +32,7 @@ class AWGSourceDeviceConstants(SourceDeviceConstants):
     functions: Type[SignalGeneratorFunctionsAWG] = SignalGeneratorFunctionsAWG
 
 
-class AWG(SignalGenerator, ABC):
+class AWG(TekAFGAWG, ABC):
     """Base AWG device driver."""
 
     OutputSignalPath = SignalGeneratorOutputPathsNon5200

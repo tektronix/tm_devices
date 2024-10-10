@@ -1,11 +1,9 @@
-"""Base Generator device driver module.
-
-Generators include PI devices such as AFGs and AWGs.
-"""
+"""A private mixin for common methods and attributes for Tektronix AFG and AWG devices."""
 
 from abc import ABC
 from typing import Tuple, Union
 
+from tm_devices.driver_mixins.class_extension_mixin import ExtendableMixin
 from tm_devices.driver_mixins.signal_generator_mixin import SignalGeneratorMixin
 from tm_devices.drivers.pi.pi_device import PIDevice
 from tm_devices.helpers import print_with_timestamp
@@ -14,8 +12,8 @@ from tm_devices.helpers import print_with_timestamp
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class SignalGenerator(PIDevice, SignalGeneratorMixin, ABC):
-    """Base Signal Generator device driver."""
+class TekAFGAWG(PIDevice, SignalGeneratorMixin, ExtendableMixin, ABC):
+    """A private mixin for common methods and attributes for Tektronix AFG and AWG devices."""
 
     ################################################################################################
     # Properties
@@ -28,7 +26,7 @@ class SignalGenerator(PIDevice, SignalGeneratorMixin, ABC):
     @cached_property
     def opt_string(self) -> str:
         r"""Return the string returned from the ``*OPT?`` query when the device was created."""
-        return self.ieee_cmds.opt()
+        return self.query("*OPT?")
 
     ################################################################################################
     # Public Methods
@@ -66,7 +64,7 @@ class SignalGenerator(PIDevice, SignalGeneratorMixin, ABC):
         # return the errors if any
         returned_errors = ""
         error = ""
-        while error != '0,"No error"':
+        while error != no_error:
             error = str(self.query("SYSTEM:ERROR?"))
             returned_errors += error
             if error != no_error:

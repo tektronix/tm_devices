@@ -17,12 +17,12 @@ from unittest import mock
 import pytest
 
 from tm_devices import DeviceManager
+from tm_devices.driver_mixins.tek_afg_awg_mixin import TekAFGAWG
 from tm_devices.drivers import AFG3K, AFG3KC
 from tm_devices.drivers.device import Device
+from tm_devices.drivers.pi.afgs.afg import AFG
 from tm_devices.drivers.pi.pi_device import PIDevice
 from tm_devices.drivers.pi.scopes.scope import Scope
-from tm_devices.drivers.pi.signal_generators.afgs.afg import AFG
-from tm_devices.drivers.pi.signal_generators.signal_generator import SignalGenerator
 from tm_devices.drivers.pi.tsp_device import TSPDevice
 
 INITIAL_DEVICE_INPUT = '''import abc
@@ -95,7 +95,7 @@ def _remove_added_methods() -> Iterator[None]:
         (Device, "already_exists"),
         (Scope, "custom_model_getter_scope"),
         (Scope, "custom_return"),
-        (SignalGenerator, "custom_model_getter_ss"),
+        (TekAFGAWG, "custom_model_getter_sg"),
         (AFG, "custom_model_getter_afg"),
         (AFG3K, "custom_model_getter_afg3k"),
         (AFG3KC, "custom_model_getter_afg3kc"),
@@ -220,10 +220,10 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
         """Return the model."""
         return f"Scope {device.model} {value}"
 
-    @SignalGenerator.add_method
-    def custom_model_getter_sg(device: SignalGenerator, value: str) -> str:
+    @TekAFGAWG.add_method
+    def custom_model_getter_sg(device: TekAFGAWG, value: str) -> str:
         """Return the model."""
-        return f"SignalGenerator {device.model} {value}"
+        return f"TekAFGAWG {device.model} {value}"
 
     @AFG.add_method
     def custom_model_getter_afg(device: AFG, value: str) -> str:
@@ -301,7 +301,7 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
     # noinspection PyUnresolvedReferences
     assert afg.custom_model_getter("a", "b", "c", 0.1) == "Device AFG3252C a b c 0.1"
     # noinspection PyUnresolvedReferences
-    assert afg.custom_model_getter_sg("hello") == "SignalGenerator AFG3252C hello"
+    assert afg.custom_model_getter_sg("hello") == "TekAFGAWG AFG3252C hello"
     # noinspection PyUnresolvedReferences
     assert afg.custom_model_getter_afg("hello") == "AFG AFG3252C hello"
     # noinspection PyUnresolvedReferences

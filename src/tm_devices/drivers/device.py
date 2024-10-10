@@ -504,6 +504,7 @@ class Device(ExtendableMixin, ABC):
             )
         return rebooted
 
+    # TODO: move to mixin
     @final
     def verify_values(
         self,

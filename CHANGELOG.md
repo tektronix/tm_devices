@@ -20,7 +20,15 @@ Things to be included in the next release go here.
 
 ### Added
 
-- Testing/linting on Python 3.13
+- Testing/linting on Python 3.13.
+
+### Changed
+
+- Moved `SignalGenerator` class to the `driver_mixins` submodule and renamed it to `TekAFGAWG`.
+
+### Removed
+
+- Removed previously deprecated `TekScopeSW` alias to the `TekScopePC` class
 
 ---
 

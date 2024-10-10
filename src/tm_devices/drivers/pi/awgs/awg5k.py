@@ -7,7 +7,7 @@ import pyvisa as visa
 
 from tm_devices.commands import AWG5KMixin
 from tm_devices.drivers.device import family_base_class
-from tm_devices.drivers.pi.signal_generators.awgs.awg import (
+from tm_devices.drivers.pi.awgs.awg import (
     AWG,
     AWGSourceChannel,
     AWGSourceDeviceConstants,

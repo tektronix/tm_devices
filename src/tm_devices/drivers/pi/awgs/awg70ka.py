@@ -1,14 +1,14 @@
-"""AWG5200 device driver module."""
+"""AWG70KA device driver module."""
 
 from pathlib import Path
 from types import MappingProxyType
-from typing import cast, Dict, Literal, Optional, Tuple
+from typing import Dict, Literal, Optional, Tuple
 
 import pyvisa as visa
 
-from tm_devices.commands import AWG5200Mixin
+from tm_devices.commands import AWG70KAMixin
 from tm_devices.drivers.device import family_base_class
-from tm_devices.drivers.pi.signal_generators.awgs.awg import (
+from tm_devices.drivers.pi.awgs.awg import (
     AWG,
     AWGSourceChannel,
     AWGSourceDeviceConstants,
@@ -19,26 +19,20 @@ from tm_devices.helpers import (
     SASSetWaveformFileTypes,
 )
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
-from tm_devices.helpers.enums import (
-    SignalGeneratorFunctionsAWG,
-    SignalGeneratorOutputPaths5200,
-    SignalGeneratorOutputPathsBase,
-)
+from tm_devices.helpers.enums import SignalGeneratorOutputPathsBase
 
 
 @family_base_class
-class AWG5200(AWG5200Mixin, AWG):
-    """AWG5200 device driver."""
-
-    OutputSignalPath = SignalGeneratorOutputPaths5200
+class AWG70KA(AWG70KAMixin, AWG):
+    """AWG70KA device driver."""
 
     _DEVICE_CONSTANTS = AWGSourceDeviceConstants(
         memory_page_size=1,
-        memory_max_record_length=16200000,
+        memory_max_record_length=2000000000,
         memory_min_record_length=1,
     )
     sample_waveform_set_file = (
-        "C:\\Program Files\\Tektronix\\AWG5200\\Samples\\AWG5k7k Predefined Waveforms.awgx"
+        "C:\\Program Files\\Tektronix\\AWG70000\\Samples\\AWG5k7k Predefined Waveforms.awgx"
     )
 
     ################################################################################################
@@ -51,7 +45,7 @@ class AWG5200(AWG5200Mixin, AWG):
         visa_resource: visa.resources.MessageBasedResource,
         default_visa_timeout: int,
     ) -> None:
-        """Create an AWG5200 device.
+        """Create an AWG70KA device.
 
         Args:
             config_entry: A config entry object parsed by the DMConfigParser.
@@ -67,10 +61,10 @@ class AWG5200(AWG5200Mixin, AWG):
     ################################################################################################
     @cached_property
     def source_channel(self) -> "MappingProxyType[str, AWGSourceChannel]":
-        """Mapping of channel names to AWG5200SourceChannel objects."""
-        channel_map: Dict[str, AWG5200SourceChannel] = {}
+        """Mapping of channel names to AWG70KASourceChannel objects."""
+        channel_map: Dict[str, AWG70KASourceChannel] = {}
         for channel_name in self.all_channel_names_list:
-            channel_map[channel_name] = AWG5200SourceChannel(self, channel_name)
+            channel_map[channel_name] = AWG70KASourceChannel(self, channel_name)
         return MappingProxyType(channel_map)
 
     ################################################################################################
@@ -99,49 +93,6 @@ class AWG5200(AWG5200Mixin, AWG):
         """
         self._load_waveform_or_set(waveform_set_file=waveform_set_file, waveform_name=waveform_name)
 
-    def generate_function(  # noqa: PLR0913
-        self,
-        frequency: float,
-        function: SignalGeneratorFunctionsAWG,
-        amplitude: float,
-        offset: float,
-        channel: str = "all",
-        output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
-        termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",
-        duty_cycle: float = 50.0,
-        polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
-        symmetry: float = 50.0,
-    ) -> None:
-        """Generate a predefined waveform given the following parameters.
-
-        Args:
-            frequency: The frequency of the waveform to generate.
-            function: The waveform shape to generate.
-            amplitude: The amplitude of the signal to generate.
-            offset: The offset of the signal to generate.
-            channel: The channel name to output the signal from, or 'all'.
-            output_signal_path: The output signal path of the specified channel.
-            termination: The impedance this device's ``channel`` expects to see at the received end.
-            duty_cycle: The duty cycle percentage within [10.0, 90.0].
-            polarity: The polarity to set the signal to.
-            symmetry: The symmetry to set the signal to, only applicable to certain functions.
-        """
-        predefined_name, needed_sample_rate = self._get_predefined_waveform_name(
-            frequency, function, output_signal_path, symmetry
-        )
-        self.generate_waveform(
-            needed_sample_rate=needed_sample_rate,
-            waveform_name=predefined_name,
-            amplitude=amplitude,
-            offset=offset,
-            channel=channel,
-            output_signal_path=output_signal_path,
-            termination=termination,
-            duty_cycle=duty_cycle,
-            polarity=polarity,
-            symmetry=symmetry,
-        )
-
     def generate_waveform(  # noqa: PLR0913
         self,
         needed_sample_rate: float,
@@ -151,9 +102,9 @@ class AWG5200(AWG5200Mixin, AWG):
         channel: str = "all",
         output_signal_path: Optional[SignalGeneratorOutputPathsBase] = None,
         termination: Literal["FIFTY", "HIGHZ"] = "FIFTY",  # noqa: ARG002
-        duty_cycle: float = 50.0,  # noqa: ARG002
-        polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",  # noqa: ARG002
-        symmetry: float = 50.0,  # noqa: ARG002
+        duty_cycle: float = 50.0,
+        polarity: Literal["NORMAL", "INVERTED"] = "NORMAL",
+        symmetry: float = 50.0,
     ) -> None:
         """Generate a waveform given the following parameters.
 
@@ -175,23 +126,17 @@ class AWG5200(AWG5200Mixin, AWG):
             ","
         ):
             self.load_waveform_set()
-        for channel_name in self._validate_channels(channel):
-            self.set_sample_rate(needed_sample_rate)
-            source_channel = cast(AWG5200SourceChannel, self.source_channel[channel_name])
-            # turn channel off
-            self.set_and_check(f"OUTPUT{source_channel.num}:STATE", "0")
-            source_channel.set_waveform_properties(
-                output_signal_path=output_signal_path,
-                waveform_name=waveform_name,
-                amplitude=amplitude,
-                offset=offset,
-            )
-            self.set_if_needed(f"OUTPUT{source_channel.num}:STATE", "1")
-        # this is an overlapping command
-        self.write("AWGCONTROL:RUN")
-        self.ieee_cmds.opc()
-        # we expect no errors
-        self.expect_esr(0)
+        super().generate_waveform(
+            needed_sample_rate=needed_sample_rate,
+            waveform_name=waveform_name,
+            amplitude=amplitude,
+            offset=offset,
+            channel=channel,
+            output_signal_path=output_signal_path,
+            duty_cycle=duty_cycle,
+            polarity=polarity,
+            symmetry=symmetry,
+        )
 
     def set_sample_rate(self, value: float, absolute_tolerance: Optional[float] = None) -> None:
         """Set the rate at which samples are generated/transmitted.
@@ -205,9 +150,7 @@ class AWG5200(AWG5200Mixin, AWG):
             # Default the absolute tolerance to 0.1% of the provided frequency value
             # due to 32 bit rounding.
             absolute_tolerance = value * 0.001
-        # This is an overlapping command for the AWG5200, and will overlap the
-        # next command and/or overlap the previous if it is still running.
-        self.set_if_needed("CLOCK:SRATE", value, verify_value=False, tolerance=absolute_tolerance)
+        self.set_if_needed("SOURCE1:FREQUENCY", value, tolerance=absolute_tolerance, opc=True)
 
     ################################################################################################
     # Private Methods
@@ -225,24 +168,28 @@ class AWG5200(AWG5200Mixin, AWG):
             Ranges for amplitude, offset, and sample rate.
         """
         if not output_signal_path:
-            output_signal_path = self.OutputSignalPath.DCHB
-        # Direct Current High Bandwidth with the DC options has 1.5 V amplitude
-        if "DC" in self.opt_string and output_signal_path == self.OutputSignalPath.DCHB:
-            amplitude_range = ParameterBounds(lower=25.0e-3, upper=1.5)
-        # Direct Current High Voltage path connected has an even higher amplitude, 5 V
-        elif output_signal_path == self.OutputSignalPath.DCHV:
-            amplitude_range = ParameterBounds(lower=10.0e-3, upper=5.0)
-        # Else, the upper bound is 750 mV
+            output_signal_path = self.OutputSignalPath.DIR
+
+        if output_signal_path == self.OutputSignalPath.DCA:
+            amplitude_range = ParameterBounds(lower=31.0e-3, upper=1.2)
+            offset_range = ParameterBounds(lower=-400.0e-3, upper=800.0e-3)
         else:
-            amplitude_range = ParameterBounds(lower=25.0e-3, upper=750.0e-3)
+            amplitude_range = ParameterBounds(lower=0.125, upper=0.5)
+            offset_range = ParameterBounds(lower=-0.0, upper=0.0)
 
-        offset_range = ParameterBounds(lower=-2.0, upper=2.0)
-        # option is the sample rate in hundreds of Mega Hertz
-        max_sample_rate = 25.0 if "25" in self.opt_string else 50.0
-        # option 50 would have 5.0 GHz, option 2.5 would have 2.5 GHz
-        sample_rate_range = ParameterBounds(lower=300.0, upper=max_sample_rate * 100.0e6)
-
+        rates = ["50", "25", "16", "08"]
+        max_sample_rate = [rate for rate in rates if rate in self.opt_string][0]  # noqa: RUF015
+        # first digit indicates the number of channels, second and third indicate sample rate (GHz)
+        # option 150 would be a one channel source with 50 GHz sample rate
+        sample_rate_range = ParameterBounds(lower=1.5e3, upper=int(max_sample_rate) * 1.0e9)
         return amplitude_range, offset_range, sample_rate_range
+
+    def _cleanup(self) -> None:
+        """Perform the cleanup defined for the device."""
+        super()._cleanup()
+        for source_channel in self.source_channel.values():
+            source_channel.set_output_signal_path()
+            source_channel.set_offset(0)
 
     def _load_waveform_or_set(
         self,
@@ -256,7 +203,6 @@ class AWG5200(AWG5200Mixin, AWG):
                 (The default is defined in the ``sample_wave_file`` attribute).
             waveform_name: The waveform name to load from the waveform set file.
         """
-        # This function is identical to the one in the AWG70KA.
         if not waveform_set_file:
             waveform_set_file = self.sample_waveform_set_file
         waveform_file_type = Path(waveform_set_file).suffix.lower()
@@ -278,13 +224,13 @@ class AWG5200(AWG5200Mixin, AWG):
         self.expect_esr(0)
 
 
-class AWG5200SourceChannel(AWGSourceChannel):
-    """AWG5200 signal source channel composite."""
+class AWG70KASourceChannel(AWGSourceChannel):
+    """AWG70KA signal source channel composite."""
 
     ################################################################################################
     # Magic Methods
     ################################################################################################
-    def __init__(self, awg: AWG5200, channel_name: str) -> None:
+    def __init__(self, awg: AWG70KA, channel_name: str) -> None:
         """Create an AWG5200 source channel.
 
         Args:
@@ -297,41 +243,37 @@ class AWG5200SourceChannel(AWGSourceChannel):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def load_waveform(self, waveform_name: str) -> None:
-        """Load in a waveform from the waveform list to the source channel.
-
-        Args:
-            waveform_name: The name of the waveform to load.
-        """
-        self._awg.ieee_cmds.opc()
-        self._awg.set_if_needed(f"{self.name}:WAVEFORM", f'"{waveform_name}"', allow_empty=True)
-
-    def set_offset(self, value: float, absolute_tolerance: float = 0) -> None:
-        """Set the offset on the source channel.
-
-        Args:
-            value: The offset value to set.
-            absolute_tolerance: The acceptable difference between two floating point values.
-        """
-        self._awg.set_if_needed(
-            f"{self.name}:VOLTAGE:OFFSET",
-            value,
-            tolerance=absolute_tolerance,
-        )
-
     def set_output_signal_path(
         self, value: Optional[SignalGeneratorOutputPathsBase] = None
     ) -> None:
         """Set the output signal path on the source channel.
 
+        Can only set the output signal path to DCA when an MDC4500 is connected to the AWG70K.
+
         Args:
             value: The output signal path.
+                (The default is to attempt to set output signal path to DCA and falling back to DIR)
         """
         if not value:
-            value = self._awg.OutputSignalPath.DCHB
-        if value not in self._awg.OutputSignalPath:
+            # Attempt to set the output signal path to DCA.
+            try:
+                self._awg.set_and_check(
+                    f"OUTPUT{self.num}:PATH", self._awg.OutputSignalPath.DCA.value
+                )
+            except AssertionError:  # pragma: no cover
+                # If error, set output signal path to DIR.
+                expected_esr_message = (
+                    '-222,"Data out of range;Data Out of Range - '
+                    f'OUTPUT{self.num}:PATH DCA\r\n"\n0,"No error"'
+                )
+                self._awg.expect_esr("16", expected_esr_message)
+                self._awg.set_and_check(
+                    f"OUTPUT{self.num}:PATH", self._awg.OutputSignalPath.DIR.value
+                )
+        elif value in self._awg.OutputSignalPath:
+            self._awg.set_if_needed(f"OUTPUT{self.num}:PATH", value.value)
+        else:
             output_signal_path_error = (
                 f"{value.value} is an invalid output signal path for {self._awg.model}."
             )
             raise ValueError(output_signal_path_error)
-        self._awg.set_if_needed(f"OUTPUT{self.num}:PATH", value.value)

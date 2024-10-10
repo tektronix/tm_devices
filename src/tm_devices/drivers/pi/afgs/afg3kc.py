@@ -5,7 +5,7 @@ from typing import Tuple
 import pyvisa as visa
 
 from tm_devices.commands import AFG3KCMixin
-from tm_devices.drivers.pi.signal_generators.afgs.afg3k import (
+from tm_devices.drivers.pi.afgs.afg3k import (
     AFG3K,
 )
 from tm_devices.helpers import DeviceConfigEntry

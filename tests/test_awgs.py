@@ -17,7 +17,7 @@ from tm_devices.drivers import (
     AWG70KB,
     AWG5200,
 )
-from tm_devices.drivers.pi.signal_generators.awgs.awg import (
+from tm_devices.drivers.pi.awgs.awg import (
     AWGSourceDeviceConstants,
     ExtendedSourceDeviceConstants,
     ParameterBounds,

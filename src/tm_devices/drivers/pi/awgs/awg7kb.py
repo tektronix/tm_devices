@@ -1,26 +1,25 @@
-"""AWG5KC device driver module."""
+"""AWG7KB device driver module."""
 
 import pyvisa as visa
 
-from tm_devices.commands import AWG5KCMixin
-from tm_devices.drivers.pi.signal_generators.awgs.awg5kb import AWG5KB
+from tm_devices.drivers.pi.awgs.awg7k import AWG7K
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class AWG5KC(AWG5KCMixin, AWG5KB):  # pyright: ignore[reportIncompatibleMethodOverride]
-    """AWG5KC device driver."""
+class AWG7KB(AWG7K):
+    """AWG7KB device driver."""
 
     ################################################################################################
     # Magic Methods
     ################################################################################################
-    def __init__(
+    def __init__(  # pylint: disable=useless-parent-delegation
         self,
         config_entry: DeviceConfigEntry,
         verbose: bool,
         visa_resource: visa.resources.MessageBasedResource,
         default_visa_timeout: int,
     ) -> None:
-        """Create an AWG5KC device.
+        """Create an AWG7KB device.
 
         Args:
             config_entry: A config entry object parsed by the DMConfigParser.

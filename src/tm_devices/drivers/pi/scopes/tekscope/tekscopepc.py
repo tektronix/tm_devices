@@ -1,5 +1,4 @@
 """TekScopePC device driver module."""
-# TODO: deprecation: rename file after TekScopeSW is fully removed
 
 import pyvisa as visa
 
@@ -50,12 +49,3 @@ class TekScopePC(TekScopePCMixin, TekScope):  # pyright: ignore[reportIncompatib
     def _reboot(self) -> None:
         """Reboot the device."""
         # TODO: overwrite the reboot code here
-
-
-# An alias for TekScopeSW driver
-class TekScopeSW(TekScopePC):
-    """TekScopeSW device driver.
-
-    !!! danger "Deprecated"
-        This device driver is deprecated, use [`TekScopePC`][tm_devices.drivers.TekScopePC] instead.
-    """
