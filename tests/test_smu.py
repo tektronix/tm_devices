@@ -232,13 +232,6 @@ def test_smu(  # noqa: PLR0915
 
     filepath = f"./temp_test_{sys.version_info.major}{sys.version_info.minor}.csv"
 
-    # TODO: remove this deprecation check in v3
-    with mock.patch(
-        "tm_devices.drivers.pi.tsp_device.TSPDevice.export_buffers", mock.MagicMock()
-    ) as mock_obj, pytest.warns(DeprecationWarning, match=r"Use export_buffers\(\.\.\.\) instead"):
-        smu.write_buffers(filepath, "smua.nvbuffer1")
-        assert mock_obj.called
-
     try:
         smu.export_buffers(filepath, "smua.nvbuffer1")
         assert os.path.exists(filepath)  # noqa: PTH110

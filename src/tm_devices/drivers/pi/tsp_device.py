@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import warnings
-
 from abc import ABC
 from typing import Any, Dict, List, Optional, Tuple, TYPE_CHECKING, Union
 
@@ -261,21 +259,6 @@ class TSPDevice(PIDevice, ABC):
         else:
             check = ""
         return check
-
-    def write_buffers(self, filepath: str, *args: str, sep: str = ",") -> None:
-        """Export one or more of the device's buffers to the given filepath.
-
-        Args:
-            filepath: A string representing the path of the file to write to.
-            args: The buffer name(s) to export.
-            sep: The delimiter used to separate data. Defaults to ",".
-        """
-        # TODO: Deprecation - remove in next major version v3
-        warnings.warn(
-            DeprecationWarning("Use export_buffers(...) instead."),
-            stacklevel=2,
-        )
-        self.export_buffers(filepath, *args, sep=sep)
 
 
 ################################################################################################

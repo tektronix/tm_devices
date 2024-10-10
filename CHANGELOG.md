@@ -29,6 +29,7 @@ Things to be included in the next release go here.
 ### Removed
 
 - Removed previously deprecated `TekScopeSW` alias to the `TekScopePC` class
+- Removed previously deprecated `write_buffers()` from the `TSPDevice` class.
 
 ---
 
