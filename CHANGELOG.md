@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Testing/linting on Python 3.13
+
 ---
 
 ### Added
