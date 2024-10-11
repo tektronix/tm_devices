@@ -2,6 +2,7 @@ __none__
 add_new
 adding_devices
 alias_usage
+analyze
 api
 artifact
 artifacts
@@ -54,6 +55,7 @@ mailto
 md
 mixin
 mixins
+ms
 multimeters
 mv
 namespace

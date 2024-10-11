@@ -2,6 +2,7 @@
 """Test the Scopes."""
 
 import os
+import pathlib
 import subprocess
 import sys
 
@@ -13,8 +14,8 @@ import pyvisa as visa
 
 from packaging.version import Version
 
-from tm_devices import DeviceManager
-from tm_devices.drivers import MSO2, MSO5, MSO5B, MSO6, MSO70KDX, TekScopeSW
+from tm_devices import DeviceManager, register_additional_usbtmc_mapping
+from tm_devices.drivers import MSO2, MSO2KB, MSO5, MSO5B, MSO6, MSO70KDX, TekScopePC
 from tm_devices.drivers.pi.scopes.tekscope.tekscope import (
     ExtendedSourceDeviceConstants,
     ParameterBounds,
@@ -22,6 +23,7 @@ from tm_devices.drivers.pi.scopes.tekscope.tekscope import (
     TekScope,
     TekScopeChannel,
 )
+from tm_devices.helpers.constants_and_dataclasses import TEKTRONIX_USBTMC_VENDOR_ID
 from tm_devices.helpers.enums import SignalGeneratorFunctionsIAFG
 
 
@@ -404,10 +406,6 @@ def test_tekscope70k(device_manager: DeviceManager, capsys: pytest.CaptureFixtur
     with pytest.raises(SystemError):
         scope.query("EMPTY?")
 
-    with pytest.raises(NotImplementedError) as error:
-        scope.reboot()
-    assert str(error.value.args[0]) == "``.reboot()`` is not yet implemented for the MSO70K driver"
-
     # get coverage for different IDN format
     scope_70k: MSO70KDX = device_manager.add_scope("MSO70KDX-HOSTNAME", alias="mso70k")
     assert scope_70k.sw_version == Version("10.99.1")
@@ -424,6 +422,9 @@ def test_long_device_name(device_manager: DeviceManager) -> None:
     Args:
         device_manager: The DeviceManager object.
     """
+    register_additional_usbtmc_mapping(
+        "LONGNAMEINSTRUMENT", model_id="0x0527", vendor_id=TEKTRONIX_USBTMC_VENDOR_ID
+    )
     # Custom class for testing external device drivers
     try:
         device_manager._external_device_drivers = {  # noqa: SLF001
@@ -431,7 +432,7 @@ def test_long_device_name(device_manager: DeviceManager) -> None:
         }
 
         with pytest.warns(UserWarning):
-            scope = device_manager.add_scope("LONGNAMEINSTRUMENT-HOSTNAME")
+            scope = device_manager.add_scope("LONGNAMEINSTRUMENT-NO_SERIAL", connection_type="USB")
 
         assert not scope.total_channels
         assert scope.all_channel_names_list == ()
@@ -471,18 +472,59 @@ def test_tekscope3k_4k(device_manager: DeviceManager, capsys: pytest.CaptureFixt
     assert scope2.total_channels == 2
 
 
-def test_tekscopesw(device_manager: DeviceManager) -> None:
-    """Test the TekScopeSW implementation.
+def test_tekscopepc(device_manager: DeviceManager) -> None:
+    """Test the TekScopePC implementation.
 
     Args:
         device_manager: The DeviceManager object.
     """
-    scope: TekScopeSW = device_manager.add_scope("TEKSCOPESW-HOSTNAME")
-    # Assert TekScopeSW device was added and aliased properly
-    assert scope.hostname == "hostname"
+    scope: TekScopePC = device_manager.add_scope("TEKSCOPEPC-HOSTNAME")
+    # Assert TekScopePC device was added and aliased properly
+    assert scope.hostname == "TEKSCOPEPC-HOSTNAME"
     assert id(device_manager.get_scope(number_or_alias=scope.device_number)) == id(scope)
-    assert scope.all_channel_names_list == ()
+    assert scope.all_channel_names_list == ("CH1", "CH2", "CH3", "CH4", "CH5", "CH6", "CH7", "CH8")
     assert scope.usb_drives == ("E:",)
     assert scope.ip_address == ""
-    assert not scope.total_channels
-    assert scope.all_channel_names_list == ()
+    assert scope.total_channels == 8
+
+
+def test_tekscope2k(device_manager: DeviceManager, tmp_path: pathlib.Path) -> None:
+    """Test the tekscope2k implementation.
+
+    Args:
+        device_manager: The DeviceManager object.
+        tmp_path: pytest temporary directory function
+    """
+    device_manager.remove_all_devices()
+    # Verify hostname can be determined when only the IP is provided
+    scope: MSO2KB = device_manager.add_scope(
+        "MSO2KB-SERIAL1", alias="mso2kb", connection_type="USB"
+    )
+
+    assert scope.idn_string == "TEKTRONIX,MSO2024B,001061,CF:91.1CT FV:v1.30"
+
+    assert scope.all_channel_names_list == ("CH1", "CH2", "CH3", "CH4")
+    assert scope.total_channels == 4
+
+    # Test toggle all channels on/off
+    scope.turn_all_channels_on()
+    for ch_name in scope.all_channel_names_list:
+        assert scope.query(f"SELECT:{ch_name}?") == "1"
+
+    scope.turn_all_channels_off()
+    for ch_name in scope.all_channel_names_list:
+        assert scope.query(f"SELECT:{ch_name}?") == "0"
+
+    filename = tmp_path / "temp.txt"
+    curve = scope.curve_query(1, wfm_type="TimeDomain", output_csv_file=str(filename))
+    with open(filename, encoding="utf8") as curve_csv:
+        curve_reformatted_from_file = list(map(float, curve_csv.read()[:-1].split(",")))
+        assert curve == curve_reformatted_from_file
+
+    with pytest.raises(AssertionError):
+        scope.curve_query(5, wfm_type="FreqDomain")
+
+    with pytest.warns(UserWarning, match="source not available for curve query: CH5"):
+        assert scope.curve_query(5, wfm_type="TimeDomain") == []
+
+    assert scope.curve_query(0, wfm_type="Digital") == [1, 0, 1, 0, 1]

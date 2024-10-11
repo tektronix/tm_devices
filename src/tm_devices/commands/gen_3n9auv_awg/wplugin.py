@@ -10,6 +10,7 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - WPLugin:ACTive <plugin_name>
+    - WPLugin:ACTive?
     - WPLugin:PLUGins?
     ```
 """
@@ -41,18 +42,22 @@ class WpluginPlugins(SCPICmdRead):
     """
 
 
-class WpluginActive(SCPICmdWrite):
+class WpluginActive(SCPICmdWrite, SCPICmdRead):
     """The ``WPLugin:ACTive`` command.
 
     Description:
         - This command sets or returns the active waveform creation plug-in.
 
     Usage:
+        - Using the ``.query()`` method will send the ``WPLugin:ACTive?`` query.
+        - Using the ``.verify(value)`` method will send the ``WPLugin:ACTive?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``WPLugin:ACTive value`` command.
 
     SCPI Syntax:
         ```
         - WPLugin:ACTive <plugin_name>
+        - WPLugin:ACTive?
         ```
     """
 
@@ -83,11 +88,15 @@ class Wplugin(SCPICmdRead):
             - This command sets or returns the active waveform creation plug-in.
 
         Usage:
+            - Using the ``.query()`` method will send the ``WPLugin:ACTive?`` query.
+            - Using the ``.verify(value)`` method will send the ``WPLugin:ACTive?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``WPLugin:ACTive value`` command.
 
         SCPI Syntax:
             ```
             - WPLugin:ACTive <plugin_name>
+            - WPLugin:ACTive?
             ```
         """
         return self._active

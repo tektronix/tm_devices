@@ -25,8 +25,8 @@ Commands and Queries:
     - SEQuence:ELEMent[n]:SUBSequence?
     - SEQuence:ELEMent[n]:TWAit <Boolean>
     - SEQuence:ELEMent[n]:TWAit?
-    - SEQuence:ELEMent[n]:WAVeform[m] [1|2|3|4] <wfm_name>[1|2|3|4]?
-    - SEQuence:ELEMent[n]:WAVeform[m]?
+    - SEQuence:ELEMent[n]:WAVeform[m] [1|2|3|4] <wfm_name>
+    - SEQuence:ELEMent[n]:WAVeform[m]? [1|2|3|4]
     - SEQuence:JUMP:IMMediate <target>
     - SEQuence:LENGth <NR1>
     - SEQuence:LENGth?
@@ -38,6 +38,7 @@ from typing import Dict, Optional, TYPE_CHECKING
 from ..helpers import (
     DefaultDictPassKeyToFactory,
     SCPICmdRead,
+    SCPICmdReadWithArguments,
     SCPICmdWrite,
     ValidatedDynamicNumberCmd,
 )
@@ -137,23 +138,27 @@ class SequenceJump(SCPICmdRead):
         return self._immediate
 
 
-class SequenceElementItemWaveformItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
+class SequenceElementItemWaveformItem(
+    ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdReadWithArguments
+):
     """The ``SEQuence:ELEMent[n]:WAVeform[m]`` command.
 
     Description:
         - This command and query sets or returns the waveform for a sequence element.
 
     Usage:
-        - Using the ``.query()`` method will send the ``SEQuence:ELEMent[n]:WAVeform[m]?`` query.
-        - Using the ``.verify(value)`` method will send the ``SEQuence:ELEMent[n]:WAVeform[m]?``
-          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.query(argument)`` method will send the
+          ``SEQuence:ELEMent[n]:WAVeform[m]? argument`` query.
+        - Using the ``.verify(argument, value)`` method will send the
+          ``SEQuence:ELEMent[n]:WAVeform[m]? argument`` query and raise an AssertionError if the
+          returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``SEQuence:ELEMent[n]:WAVeform[m] value``
           command.
 
     SCPI Syntax:
         ```
-        - SEQuence:ELEMent[n]:WAVeform[m] [1|2|3|4] <wfm_name>[1|2|3|4]?
-        - SEQuence:ELEMent[n]:WAVeform[m]?
+        - SEQuence:ELEMent[n]:WAVeform[m] [1|2|3|4] <wfm_name>
+        - SEQuence:ELEMent[n]:WAVeform[m]? [1|2|3|4]
         ```
 
     Info:
@@ -771,17 +776,18 @@ class SequenceElementItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - This command and query sets or returns the waveform for a sequence element.
 
         Usage:
-            - Using the ``.query()`` method will send the ``SEQuence:ELEMent[n]:WAVeform[m]?``
-              query.
-            - Using the ``.verify(value)`` method will send the ``SEQuence:ELEMent[n]:WAVeform[m]?``
-              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.query(argument)`` method will send the
+              ``SEQuence:ELEMent[n]:WAVeform[m]? argument`` query.
+            - Using the ``.verify(argument, value)`` method will send the
+              ``SEQuence:ELEMent[n]:WAVeform[m]? argument`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``SEQuence:ELEMent[n]:WAVeform[m] value`` command.
 
         SCPI Syntax:
             ```
-            - SEQuence:ELEMent[n]:WAVeform[m] [1|2|3|4] <wfm_name>[1|2|3|4]?
-            - SEQuence:ELEMent[n]:WAVeform[m]?
+            - SEQuence:ELEMent[n]:WAVeform[m] [1|2|3|4] <wfm_name>
+            - SEQuence:ELEMent[n]:WAVeform[m]? [1|2|3|4]
             ```
 
         Info:

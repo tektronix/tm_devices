@@ -14,7 +14,7 @@ Commands and Queries:
     - ALIas:DEFine? <QString>
     - ALIas:DELEte:ALL
     - ALIas:DELEte:NAMe <QString>
-    - ALIas:STATE {<NR1>|OFF|ON}
+    - ALIas:STATE {ON|OFF|<NR1>}
     - ALIas:STATE?
     ```
 """
@@ -41,7 +41,7 @@ class AliasState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ALIas:STATE {<NR1>|OFF|ON}
+        - ALIas:STATE {ON|OFF|<NR1>}
         - ALIas:STATE?
         ```
 
@@ -294,7 +294,7 @@ class Alias(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ALIas:STATE {<NR1>|OFF|ON}
+            - ALIas:STATE {ON|OFF|<NR1>}
             - ALIas:STATE?
             ```
 

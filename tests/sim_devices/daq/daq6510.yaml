@@ -7,7 +7,7 @@ devices:
         r: KEITHLEY INSTRUMENTS,MODEL DAQ6510,04089762,1.6.3
       - q: waitcomplete()
       - q: opc()
-      - q: print([[1]])
+      - q: waitcomplete() print([[1]])
         r: 1
       - q: eventlog.clear()
       - q: status.clear()

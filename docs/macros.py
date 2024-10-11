@@ -10,7 +10,7 @@ from typing import Any, Generator, Optional, Set, Tuple
 
 import tomli
 
-from mkdocs_macros.plugin import MacrosPlugin  # pyright: ignore[reportMissingTypeStubs]
+from mkdocs_macros.plugin import MacrosPlugin
 
 HEADER_ONE_REGEX = re.compile(r"^#\s(.+)$", re.MULTILINE)
 PAGE_REPLACEMENTS = {
@@ -28,6 +28,7 @@ PAGE_REPLACEMENTS = {
         (" TSP ", " <TSP:>"),
         (" API ", " <API:>"),
         (" DPOJET ", " <DPOJET:>"),
+        (" SourceXpress ", " <SourceXpress:>"),
         (" ✅ ", " [](default:✅) "),
         (" 🚧 ", " [](default:🚧) "),
         (" ❌ ", " [](default:❌) "),
@@ -36,10 +37,16 @@ PAGE_REPLACEMENTS = {
             "> Visit the [Glossary",
             "    Hover over a link or icon to see its definition, or visit the [Glossary",
         ),
-        ("(https://tinyurl.com/tek-tm-devices/docs/glossary.md)", "(./glossary.md)"),
-        ("(https://tinyurl.com/tek-tm-devices/CODE_OF_CONDUCT.md)", "(./CODE_OF_CONDUCT.md)"),
-        ("(https://tinyurl.com/tek-tm-devices/CONTRIBUTING.md)", "(./CONTRIBUTING.md)"),
-        ("(https://tinyurl.com/tek-tm-devices/LICENSE.md)", "(./LICENSE.md)"),
+        ("(https://github.com/tektronix/tm_devices/blob/main/docs/glossary.md)", "(./glossary.md)"),
+        (
+            "(https://github.com/tektronix/tm_devices/blob/main/CODE_OF_CONDUCT.md)",
+            "(./CODE_OF_CONDUCT.md)",
+        ),
+        (
+            "(https://github.com/tektronix/tm_devices/blob/main/CONTRIBUTING.md)",
+            "(./CONTRIBUTING.md)",
+        ),
+        ("(https://github.com/tektronix/tm_devices/blob/main/LICENSE.md)", "(./LICENSE.md)"),
     ),
 }
 FILES_TO_REMOVE_BLACK_FORMATTER_DISABLE_COMMENT = {
@@ -205,14 +212,14 @@ def define_env(env: MacrosPlugin) -> None:
 def on_post_page_macros(env: MacrosPlugin) -> None:
     """Post-process pages."""
     # Check if there are any replacements to perform on the page
-    if env.page.file.src_path in PAGE_REPLACEMENTS:  # pyright: ignore[reportUnknownMemberType]
-        for search, replace in PAGE_REPLACEMENTS[env.page.file.src_path]:  # pyright: ignore[reportUnknownMemberType]
-            env.markdown = env.markdown.replace(search, replace)  # pyright: ignore[reportUnknownMemberType]
+    if env.page.file.src_path in PAGE_REPLACEMENTS:
+        for search, replace in PAGE_REPLACEMENTS[env.page.file.src_path]:
+            env.markdown = env.markdown.replace(search, replace)
     # Check if all black format disable comments should be removed from the page
-    if env.page.file.src_path in FILES_TO_REMOVE_BLACK_FORMATTER_DISABLE_COMMENT:  # pyright: ignore[reportUnknownMemberType]
-        env.markdown = env.markdown.replace("# fmt: off\n", "")  # pyright: ignore[reportUnknownMemberType]
+    if env.page.file.src_path in FILES_TO_REMOVE_BLACK_FORMATTER_DISABLE_COMMENT:
+        env.markdown = env.markdown.replace("# fmt: off\n", "")
     # Check if the title is correct
-    if actual_title_match := HEADER_ONE_REGEX.search(env.markdown):  # pyright: ignore[reportUnknownMemberType,reportUnknownArgumentType]
+    if actual_title_match := HEADER_ONE_REGEX.search(env.markdown):
         actual_title = actual_title_match.group(1)
         if env.page.title != actual_title:  # pyright: ignore[reportUnknownMemberType]
-            env.page.title = actual_title  # pyright: ignore[reportUnknownMemberType]
+            env.page.title = actual_title  # pyright: ignore[reportAttributeAccessIssue]

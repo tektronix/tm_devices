@@ -83,6 +83,9 @@ SESR
 SMU
 : Source Measure Unit
 
+SourceXpress
+: An application to load and play waveforms remotely for Tektronix Arbitrary Waveform Generators
+
 SRQ
 : Service Request
 
@@ -91,6 +94,9 @@ SS
 
 TCPIP
 : Transmission Control Protocol/Internet Protocol
+
+TekScopePC
+: A PC software application to view and analyze waveforms anywhere, anytime, with remote access to a Tektronix oscilloscope
 
 TSP
 : Test Script Processor

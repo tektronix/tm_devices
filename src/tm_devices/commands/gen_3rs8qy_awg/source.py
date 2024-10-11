@@ -12,6 +12,7 @@ Commands and Queries:
     - SOURce:FREQuency <frequency>
     - SOURce:FREQuency?
     - SOURce:RCCouple {0|1|ON|OFF}
+    - SOURce:RCCouple?
     - SOURce:ROSCillator:MULTiplier <NR1>
     - SOURce:ROSCillator:MULTiplier?
     - SOURce[n]:CASSet:SEQuence <sequence_name>, <track_number>[,<component_type>]
@@ -476,7 +477,7 @@ class SourceItemRmode(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``CONTinuous`` sets the Run Mode to Continuous (not waiting for trigger). TRIGgered sets
           the Run Mode to Triggered, waiting for a trigger event. One waveform play out cycle
-          completes, then play out stops, waiting for the next trigger event. TCONtinuous sets the
+          completes, then play out stops, waiting for the next trigger event.TCONtinuous sets the
           Run Mode to Triggered Continuous, waiting for a trigger. Once a trigger is received, the
           waveform plays out continuously.[n] determines the channel number. If omitted, interpreted
           as 1.
@@ -1484,7 +1485,7 @@ class SourceItem(ValidatedChannel, SCPICmdRead):
         Info:
             - ``CONTinuous`` sets the Run Mode to Continuous (not waiting for trigger). TRIGgered
               sets the Run Mode to Triggered, waiting for a trigger event. One waveform play out
-              cycle completes, then play out stops, waiting for the next trigger event. TCONtinuous
+              cycle completes, then play out stops, waiting for the next trigger event.TCONtinuous
               sets the Run Mode to Triggered Continuous, waiting for a trigger. Once a trigger is
               received, the waveform plays out continuously.[n] determines the channel number. If
               omitted, interpreted as 1.
@@ -1679,7 +1680,7 @@ class SourceRoscillator(SCPICmdRead):
         return self._multiplier
 
 
-class SourceRccouple(SCPICmdWrite):
+class SourceRccouple(SCPICmdWrite, SCPICmdRead):
     """The ``SOURce:RCCouple`` command.
 
     Description:
@@ -1690,11 +1691,15 @@ class SourceRccouple(SCPICmdWrite):
           all channels.
 
     Usage:
+        - Using the ``.query()`` method will send the ``SOURce:RCCouple?`` query.
+        - Using the ``.verify(value)`` method will send the ``SOURce:RCCouple?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``SOURce:RCCouple value`` command.
 
     SCPI Syntax:
         ```
         - SOURce:RCCouple {0|1|ON|OFF}
+        - SOURce:RCCouple?
         ```
 
     Info:
@@ -1784,11 +1789,15 @@ class Source(SCPICmdRead):
               channel affects all channels.
 
         Usage:
+            - Using the ``.query()`` method will send the ``SOURce:RCCouple?`` query.
+            - Using the ``.verify(value)`` method will send the ``SOURce:RCCouple?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``SOURce:RCCouple value`` command.
 
         SCPI Syntax:
             ```
             - SOURce:RCCouple {0|1|ON|OFF}
+            - SOURce:RCCouple?
             ```
 
         Info:

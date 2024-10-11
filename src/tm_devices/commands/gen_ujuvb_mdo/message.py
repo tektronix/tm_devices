@@ -18,11 +18,11 @@ Commands and Queries:
     - MESSage:MESSAGE1<x>:CLEAR
     - MESSage:MESSAGE1<x>:SHOW <Qstring>
     - MESSage:MESSAGE1<x>:SHOW?
-    - MESSage:MESSAGE1<x>:STATE {<NR1>|OFF|ON}
+    - MESSage:MESSAGE1<x>:STATE {ON|OFF|<NR1>}
     - MESSage:MESSAGE1<x>:STATE?
     - MESSage:SHOW <QString>
     - MESSage:SHOW?
-    - MESSage:STATE {OFF|ON|<NR1>}
+    - MESSage:STATE {ON|OFF|<NR1>}
     - MESSage:STATE?
     - MESSage?
     ```
@@ -56,7 +56,7 @@ class MessageState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MESSage:STATE {OFF|ON|<NR1>}
+        - MESSage:STATE {ON|OFF|<NR1>}
         - MESSage:STATE?
         ```
 
@@ -110,7 +110,7 @@ class MessageMessage1ItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MESSage:MESSAGE1<x>:STATE {<NR1>|OFF|ON}
+        - MESSage:MESSAGE1<x>:STATE {ON|OFF|<NR1>}
         - MESSage:MESSAGE1<x>:STATE?
         ```
 
@@ -334,7 +334,7 @@ class MessageMessage1Item(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MESSage:MESSAGE1<x>:STATE {<NR1>|OFF|ON}
+            - MESSage:MESSAGE1<x>:STATE {ON|OFF|<NR1>}
             - MESSage:MESSAGE1<x>:STATE?
             ```
 
@@ -550,7 +550,7 @@ class Message(SCPICmdWriteNoArguments, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MESSage:STATE {OFF|ON|<NR1>}
+            - MESSage:STATE {ON|OFF|<NR1>}
             - MESSage:STATE?
             ```
 

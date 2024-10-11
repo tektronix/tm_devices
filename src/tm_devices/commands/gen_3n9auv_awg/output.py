@@ -47,7 +47,7 @@ class OutputOff(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``0`` or OFF disables the All Output Off function, allowing the channel and marker outputs
-          to go to their defined state. 1 or ON enables the All Output Off function, disabling all
+          to go to their defined state.1 or ON enables the All Output Off function, disabling all
           channel outputs and marker outputs.
         - ``*RST`` sets all channels to 0.
     """
@@ -95,7 +95,7 @@ class Output(SCPICmdRead):
 
         Info:
             - ``0`` or OFF disables the All Output Off function, allowing the channel and marker
-              outputs to go to their defined state. 1 or ON enables the All Output Off function,
+              outputs to go to their defined state.1 or ON enables the All Output Off function,
               disabling all channel outputs and marker outputs.
             - ``*RST`` sets all channels to 0.
         """

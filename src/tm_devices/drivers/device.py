@@ -150,7 +150,6 @@ class Device(ExtendableMixin, ABC):
            A boolean indicating if device connected successfully.
         """
 
-    @abstractmethod
     def _reboot(self) -> None:
         """Perform the actual rebooting code."""
         raise NotImplementedError(
@@ -263,7 +262,7 @@ class Device(ExtendableMixin, ABC):
 
         Usually something like "SCOPE 1"
         """
-        return f"{self.device_type} {self.device_number}"
+        return f"{self.device_type} {max(0, self.device_number) or ''}".strip()
 
     @property
     def port(self) -> Optional[int]:
@@ -427,6 +426,11 @@ class Device(ExtendableMixin, ABC):
     @final
     def has_errors(self) -> bool:
         """Check if the device has any errors.
+
+        !!! warning
+            In v3 this method will return a tuple containing a bool and a list of instances of
+            device error info dataclasses (this will replace
+            [`get_eventlog_status()`][tm_devices.drivers.pi.pi_device.PIDevice]).
 
         Returns:
             A boolean indicating if any errors were found in the device.

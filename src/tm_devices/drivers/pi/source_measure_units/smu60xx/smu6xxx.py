@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import inspect
-
 from abc import ABC
 from typing import Optional, Tuple, TYPE_CHECKING, Union
 
@@ -124,9 +122,10 @@ class SMU6xxx(SourceMeasureUnit, ABC):
 
     def load_script(
         self,
-        file_path: Union[str, os.PathLike[str]],  # noqa: ARG002
-        script_name: str = "",  # noqa: ARG002
+        script_name: str,  # noqa: ARG002
         *,
+        script_body: str = "",  # noqa: ARG002
+        file_path: Union[str, os.PathLike[str], None] = None,  # noqa: ARG002
         run_script: bool = False,  # noqa: ARG002
         to_nv_memory: bool = False,  # noqa: ARG002
     ) -> None:
@@ -137,14 +136,3 @@ class SMU6xxx(SourceMeasureUnit, ABC):
     ################################################################################################
     # Private Methods
     ################################################################################################
-    def _reboot(self) -> None:
-        """Perform the actual rebooting code.
-
-        Raises:
-            NotImplementedError: Indicates the current driver has not implemented this method.
-        """
-        # TODO: implement
-        raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
-            f" is not yet implemented for the {self.__class__.__name__} driver"
-        )

@@ -168,8 +168,9 @@ first instantiated.
 
 In order to do this a few things will need to be created:
 
-1. A custom device class inheriting from one of the
-    [main device types](advanced/architecture.md#main-device-types).
+1. A custom device class. Ideally this would inherit from one of the
+    [main device types](advanced/architecture.md#main-device-types), though a custom class
+    representing an unsupported device type can also be created.
 2. A mapping of the parsed model series string to the Python class.
 
 ```python

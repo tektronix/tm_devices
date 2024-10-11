@@ -76,7 +76,11 @@ def test_device_types() -> None:
     """Verify that the DEVICE_TYPES is kept up to date."""
     abstract_device_list = tm_devices.drivers.DEVICE_TYPE_CLASSES
     supported_device_types = sorted(
-        [x for x in tm_devices.helpers.DeviceTypes.list_values() if "UNIT_TEST" not in x]
+        [
+            x
+            for x in tm_devices.helpers.DeviceTypes.list_values()
+            if "UNIT_TEST" not in x and "UNSUPPORTED" not in x
+        ]
     )
     if len(abstract_device_list) != len(supported_device_types):
         msg = (
@@ -151,7 +155,9 @@ def test_device_method_abstraction() -> None:
 def test_supported_models_in_device_driver_mapping() -> None:
     """Verify that all supported models are in the device driver mapping and drivers init file."""
     supported_models_list = sorted(x.value for x in tm_devices.SupportedModels)
-    device_driver_list = sorted(tm_devices.drivers.DEVICE_DRIVER_MODEL_MAPPING)
+    device_driver_list = sorted(
+        tm_devices.drivers.device_driver_mapping._DEVICE_DRIVER_MODEL_STR_MAPPING  # noqa: SLF001
+    )
     module_list: List[str] = list(tm_devices.drivers.__all__)
     # Remove a few non-driver items
     module_list.remove("DEVICE_DRIVER_MODEL_MAPPING")
@@ -169,3 +175,24 @@ def test_tm_devices() -> None:
         Version(tm_devices.__version__)
     except InvalidVersion as exc:
         pytest.fail(f"{tm_devices.__version__} is not a valid version:\n{exc}")
+
+
+def test_deprecated_tekscopesw() -> None:
+    """Verify the TekScopeSW deprecation warning is working."""
+    with pytest.warns(
+        DeprecationWarning,
+        match="TekScopeSW is deprecated and will be removed in a future version, "
+        "please use TekScopePC instead.",
+    ):
+        # pylint: disable=import-outside-toplevel
+        # noinspection PyProtectedMember
+        from tm_devices.drivers import TekScopeSW  # pylint: disable=no-name-in-module
+    assert TekScopeSW is tm_devices.drivers.TekScopePC
+
+    # Check normal drivers
+    # pylint: disable=import-outside-toplevel
+    # noinspection PyPep8Naming
+    from tm_devices.drivers import MSO6 as TempMSO6  # noqa: N811
+    from tm_devices.drivers.pi.scopes.tekscope.mso6 import MSO6
+
+    assert TempMSO6 is MSO6

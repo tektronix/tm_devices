@@ -13,7 +13,7 @@ Commands and Queries:
     - MATH:ADDNew <QString>
     - MATH:DELete <QString>
     - MATH:LIST?
-    - MATH:MATH<x>:AVG:MODE {<NR1>|OFF|ON}
+    - MATH:MATH<x>:AVG:MODE {ON|OFF|<NR1>}
     - MATH:MATH<x>:AVG:MODE?
     - MATH:MATH<x>:AVG:WEIGht <NR1>
     - MATH:MATH<x>:AVG:WEIGht?
@@ -31,15 +31,15 @@ Commands and Queries:
     - MATH:MATH<x>:INTERpolation?
     - MATH:MATH<x>:LABel:COLor <QString>
     - MATH:MATH<x>:LABel:COLor?
-    - MATH:MATH<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+    - MATH:MATH<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
     - MATH:MATH<x>:LABel:FONT:BOLD?
-    - MATH:MATH<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+    - MATH:MATH<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
     - MATH:MATH<x>:LABel:FONT:ITALic?
     - MATH:MATH<x>:LABel:FONT:SIZE <NR1>
     - MATH:MATH<x>:LABel:FONT:SIZE?
     - MATH:MATH<x>:LABel:FONT:TYPE <QString>
     - MATH:MATH<x>:LABel:FONT:TYPE?
-    - MATH:MATH<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+    - MATH:MATH<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
     - MATH:MATH<x>:LABel:FONT:UNDERline?
     - MATH:MATH<x>:LABel:NAMe <QString>
     - MATH:MATH<x>:LABel:NAMe?
@@ -774,7 +774,7 @@ class MathMathItemLabelFontUnderline(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+        - MATH:MATH<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
         - MATH:MATH<x>:LABel:FONT:UNDERline?
         ```
 
@@ -853,7 +853,7 @@ class MathMathItemLabelFontItalic(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+        - MATH:MATH<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
         - MATH:MATH<x>:LABel:FONT:ITALic?
         ```
 
@@ -880,7 +880,7 @@ class MathMathItemLabelFontBold(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+        - MATH:MATH<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
         - MATH:MATH<x>:LABel:FONT:BOLD?
         ```
 
@@ -932,7 +932,7 @@ class MathMathItemLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+            - MATH:MATH<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
             - MATH:MATH<x>:LABel:FONT:BOLD?
             ```
 
@@ -960,7 +960,7 @@ class MathMathItemLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
+            - MATH:MATH<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
             - MATH:MATH<x>:LABel:FONT:ITALic?
             ```
 
@@ -1042,7 +1042,7 @@ class MathMathItemLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
+            - MATH:MATH<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
             - MATH:MATH<x>:LABel:FONT:UNDERline?
             ```
 
@@ -1535,7 +1535,7 @@ class MathMathItemAvgMode(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:AVG:MODE {<NR1>|OFF|ON}
+        - MATH:MATH<x>:AVG:MODE {ON|OFF|<NR1>}
         - MATH:MATH<x>:AVG:MODE?
         ```
 
@@ -1581,7 +1581,7 @@ class MathMathItemAvg(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:AVG:MODE {<NR1>|OFF|ON}
+            - MATH:MATH<x>:AVG:MODE {ON|OFF|<NR1>}
             - MATH:MATH<x>:AVG:MODE?
             ```
 

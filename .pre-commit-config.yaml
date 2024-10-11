@@ -13,7 +13,7 @@ ci:
     - poetry-audit
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: cef0300fd0fc4d2a87a85fa2093c6b283ea36f4b  # frozen: v5.0.0
     hooks:
       - id: check-yaml
         args: [--unsafe]
@@ -34,32 +34,37 @@ repos:
       - id: pretty-format-json
         args: [--autofix, --indent=4]
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.5.5
+    rev: a30f0d816e5062a67d87c8de753cfe499672b959  # frozen: v1.5.5
     hooks:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.29.1
+    rev: aa1acdb72677dfbc5f507d2dfd45d8380bbcc2e0  # frozen: 0.29.3
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
       - id: check-github-actions
       - id: check-github-workflows
         args: [--verbose]
+  - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
+    rev: 27445053da613c660ed5895d9616662059a53ca7  # frozen: v1.7.3.17
+    hooks:
+      - id: actionlint
+        additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.28.0
+    rev: a3498aba5e94c9f7c4acb529b5e7eb6df65fd053  # frozen: v3.29.1
     hooks:
       - id: commitizen
         stages: [commit-msg]
   - repo: https://github.com/adamchainz/blacken-docs
-    rev: 1.18.0
+    rev: 4c97c4a0d921007af6fefae92d8447cfbf63720b  # frozen: 1.18.0
     hooks:
       - id: blacken-docs
         files: \.(rst|md|markdown|tex)$
         additional_dependencies: [black==24.4.2]  # This may need to be updated/removed in the future once ruff supports formatting python code blocks in markdown
         args: [--line-length=100]
   - repo: https://github.com/lyz-code/yamlfix
-    rev: 1.16.0
+    rev: 8072181c0f2eab9f2dd8db2eb3b9556d7cd0bd74  # frozen: 1.17.0
     hooks:
       - id: yamlfix
 # TODO: get this working
@@ -68,11 +73,11 @@ repos:
 #    hooks:
 #      - id: jinjalint
   - repo: https://github.com/thibaudcolas/curlylint
-    rev: v0.13.1
+    rev: 71adf4d34c290684fd9f94a4d21ac55bcfe640f0  # frozen: v0.13.1
     hooks:
       - id: curlylint
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.17
+    rev: 08fba30538869a440b5059de90af03e3502e35fb  # frozen: 0.7.17
     hooks:
       - id: mdformat
         args: [--number, --end-of-line, keep, --ignore-missing-references]
@@ -93,11 +98,11 @@ repos:
           - mdformat-web
           - mdformat-wikilink
   - repo: https://gitlab.com/smop/pre-commit-hooks
-    rev: v1.0.0
+    rev: df034f88cf92b394e6f00a78fa97a2aa4e270e60  # frozen: v1.0.0
     hooks:
       - id: check-poetry
   - repo: https://github.com/pappasam/toml-sort
-    rev: v0.23.1
+    rev: b9b6210da457c38122995e434b314f4c4a4a923e  # frozen: v0.23.1
     hooks:
       - id: toml-sort-fix
   - repo: local
@@ -139,13 +144,13 @@ repos:
         always_run: true
         args: [audit, --json, --ignore-code=CVE-2019-8341]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.5.5
+    rev: 75b98813cfb7e663870a28c74366a1e99d7bfe79  # frozen: v0.6.9
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
       - id: ruff-format
   - repo: https://github.com/PyCQA/docformatter
-    rev: v1.7.5
+    rev: dfefe062799848234b4cd60b04aa633c0608025e  # frozen: v1.7.5
     hooks:
       - id: docformatter
         additional_dependencies: [tomli]

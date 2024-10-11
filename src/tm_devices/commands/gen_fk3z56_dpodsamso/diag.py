@@ -10,12 +10,12 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - DIAg:CONTROL:HALT {<NR1>|ON|OFF}
+    - DIAg:CONTROL:HALT {ON|OFF|<NR1>}
     - DIAg:CONTROL:HALT?
-    - DIAg:CONTROL:LOOP {<NR1>|ON|OFF}
+    - DIAg:CONTROL:LOOP {ON|OFF|<NR1>}
     - DIAg:CONTROL:LOOP?
     - DIAg:EXECUTE
-    - DIAg:FAILURES:CLEAR {<NR1>|OFF|ON}
+    - DIAg:FAILURES:CLEAR {ON|OFF|<NR1>}
     - DIAg:FAILURES:CLEAR?
     - DIAg:ITEM:FAILURES? <NR1>
     - DIAg:ITEM:NAMe? <NR1>
@@ -969,7 +969,7 @@ class DiagFailuresClear(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DIAg:FAILURES:CLEAR {<NR1>|OFF|ON}
+        - DIAg:FAILURES:CLEAR {ON|OFF|<NR1>}
         - DIAg:FAILURES:CLEAR?
         ```
 
@@ -1015,7 +1015,7 @@ class DiagFailures(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DIAg:FAILURES:CLEAR {<NR1>|OFF|ON}
+            - DIAg:FAILURES:CLEAR {ON|OFF|<NR1>}
             - DIAg:FAILURES:CLEAR?
             ```
 
@@ -1065,7 +1065,7 @@ class DiagControlLoop(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DIAg:CONTROL:LOOP {<NR1>|ON|OFF}
+        - DIAg:CONTROL:LOOP {ON|OFF|<NR1>}
         - DIAg:CONTROL:LOOP?
         ```
 
@@ -1095,7 +1095,7 @@ class DiagControlHalt(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DIAg:CONTROL:HALT {<NR1>|ON|OFF}
+        - DIAg:CONTROL:HALT {ON|OFF|<NR1>}
         - DIAg:CONTROL:HALT?
         ```
 
@@ -1144,7 +1144,7 @@ class DiagControl(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DIAg:CONTROL:HALT {<NR1>|ON|OFF}
+            - DIAg:CONTROL:HALT {ON|OFF|<NR1>}
             - DIAg:CONTROL:HALT?
             ```
 
@@ -1176,7 +1176,7 @@ class DiagControl(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DIAg:CONTROL:LOOP {<NR1>|ON|OFF}
+            - DIAg:CONTROL:LOOP {ON|OFF|<NR1>}
             - DIAg:CONTROL:LOOP?
             ```
 

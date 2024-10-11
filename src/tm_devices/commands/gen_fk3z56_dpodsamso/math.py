@@ -56,7 +56,7 @@ Commands and Queries:
     - MATH<x>:THRESHold?
     - MATH<x>:UNITString <QString>
     - MATH<x>:UNITString?
-    - MATH<x>:VERTical:AUTOSCale {<NR1>|OFF|ON}
+    - MATH<x>:VERTical:AUTOSCale {ON|OFF|<NR1>}
     - MATH<x>:VERTical:AUTOSCale?
     - MATH<x>:VERTical:POSition <NR3>
     - MATH<x>:VERTical:POSition?
@@ -177,7 +177,7 @@ class MathItemVerticalAutoscale(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH<x>:VERTical:AUTOSCale {<NR1>|OFF|ON}
+        - MATH<x>:VERTical:AUTOSCale {ON|OFF|<NR1>}
         - MATH<x>:VERTical:AUTOSCale?
         ```
 
@@ -224,7 +224,7 @@ class MathItemVertical(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH<x>:VERTical:AUTOSCale {<NR1>|OFF|ON}
+            - MATH<x>:VERTical:AUTOSCale {ON|OFF|<NR1>}
             - MATH<x>:VERTical:AUTOSCale?
             ```
 

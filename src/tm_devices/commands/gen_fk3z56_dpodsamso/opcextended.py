@@ -10,7 +10,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - OPCEXtended {<NR1>|OFF|ON}
+    - OPCEXtended {ON|OFF|<NR1>}
     - OPCEXtended?
     ```
 """
@@ -66,7 +66,7 @@ class Opcextended(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - OPCEXtended {<NR1>|OFF|ON}
+        - OPCEXtended {ON|OFF|<NR1>}
         - OPCEXtended?
         ```
 

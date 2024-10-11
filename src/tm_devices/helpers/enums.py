@@ -80,6 +80,8 @@ class DeviceTypes(CustomStrEnum):
     """An enum member representing a Source Measure Unit."""
     SS = "SS"
     """An enum member representing a Systems Switch."""
+    UNSUPPORTED = "UNSUPPORTED"
+    """An enum member representing an unsupported device type."""
     _UNIT_TEST_ONLY_DEVICE_DO_NOT_USE = "_UNIT_TEST_ONLY_DEVICE_DO_NOT_USE"
 
 
@@ -141,7 +143,7 @@ class SupportedModels(CustomStrEnum):
     MSO70K = "MSO70K"
     MSO70KC = "MSO70KC"
     MSO70KDX = "MSO70KDX"
-    TEKSCOPESW = "TekScopeSW"
+    TEKSCOPEPC = "TekScopePC"
     TSOVU = "TSOVu"
     # Margin Testers
     TMT4 = "TMT4"

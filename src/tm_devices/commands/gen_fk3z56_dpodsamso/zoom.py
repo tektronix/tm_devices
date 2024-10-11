@@ -49,7 +49,7 @@ Commands and Queries:
     - ZOOm:VERTical:SCAle <NR3>
     - ZOOm:VERTical:SCAle?
     - ZOOm:ZOOM1 {RESET|RESETLive}
-    - ZOOm:ZOOM1:CH<x>:DISplay {<NR1>|OFF|ON}
+    - ZOOm:ZOOM1:CH<x>:DISplay {ON|OFF|<NR1>}
     - ZOOm:ZOOM1:CH<x>:DISplay?
     - ZOOm:ZOOM1:CH<x>:HORizontal:POSition <NR3>
     - ZOOm:ZOOM1:CH<x>:HORizontal:POSition?
@@ -59,7 +59,7 @@ Commands and Queries:
     - ZOOm:ZOOM1:CH<x>:VERTical:POSition?
     - ZOOm:ZOOM1:CH<x>:VERTical:SCAle <NR3>
     - ZOOm:ZOOM1:CH<x>:VERTical:SCAle?
-    - ZOOm:ZOOM1:D<x>:DISplay {<NR1>|OFF|ON}
+    - ZOOm:ZOOM1:D<x>:DISplay {ON|OFF|<NR1>}
     - ZOOm:ZOOM1:D<x>:DISplay?
     - ZOOm:ZOOM1:D<x>:HORizontal:POSition <NR3>
     - ZOOm:ZOOM1:D<x>:HORizontal:POSition?
@@ -69,9 +69,9 @@ Commands and Queries:
     - ZOOm:ZOOM1:D<x>:VERTical:POSition?
     - ZOOm:ZOOM1:D<x>:VERTical:SCAle <NR3>
     - ZOOm:ZOOM1:D<x>:VERTical:SCAle?
-    - ZOOm:ZOOM1:DCHAN:DISplay {<NR1>|OFF|ON}
+    - ZOOm:ZOOM1:DCHAN:DISplay {ON|OFF|<NR1>}
     - ZOOm:ZOOM1:DCHAN:DISplay?
-    - ZOOm:ZOOM1:MATH<x>:DISplay {<NR1>|OFF|ON}
+    - ZOOm:ZOOM1:MATH<x>:DISplay {ON|OFF|<NR1>}
     - ZOOm:ZOOM1:MATH<x>:DISplay?
     - ZOOm:ZOOM1:MATH<x>:HORizontal:POSition <NR3>
     - ZOOm:ZOOM1:MATH<x>:HORizontal:POSition?
@@ -81,7 +81,7 @@ Commands and Queries:
     - ZOOm:ZOOM1:MATH<x>:VERTical:POSition?
     - ZOOm:ZOOM1:MATH<x>:VERTical:SCAle <NR3>
     - ZOOm:ZOOM1:MATH<x>:VERTical:SCAle?
-    - ZOOm:ZOOM1:REF<x>:DISplay {<NR1>|OFF|ON}
+    - ZOOm:ZOOM1:REF<x>:DISplay {ON|OFF|<NR1>}
     - ZOOm:ZOOM1:REF<x>:DISplay?
     - ZOOm:ZOOM1:REF<x>:HORizontal:POSition <NR3>
     - ZOOm:ZOOM1:REF<x>:HORizontal:POSition?
@@ -469,7 +469,7 @@ class ZoomZoom1RefItemDisplay(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ZOOm:ZOOM1:REF<x>:DISplay {<NR1>|OFF|ON}
+        - ZOOm:ZOOM1:REF<x>:DISplay {ON|OFF|<NR1>}
         - ZOOm:ZOOM1:REF<x>:DISplay?
         ```
 
@@ -519,7 +519,7 @@ class ZoomZoom1RefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ZOOm:ZOOM1:REF<x>:DISplay {<NR1>|OFF|ON}
+            - ZOOm:ZOOM1:REF<x>:DISplay {ON|OFF|<NR1>}
             - ZOOm:ZOOM1:REF<x>:DISplay?
             ```
 
@@ -865,7 +865,7 @@ class ZoomZoom1MathItemDisplay(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ZOOm:ZOOM1:MATH<x>:DISplay {<NR1>|OFF|ON}
+        - ZOOm:ZOOM1:MATH<x>:DISplay {ON|OFF|<NR1>}
         - ZOOm:ZOOM1:MATH<x>:DISplay?
         ```
 
@@ -915,7 +915,7 @@ class ZoomZoom1MathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ZOOm:ZOOM1:MATH<x>:DISplay {<NR1>|OFF|ON}
+            - ZOOm:ZOOM1:MATH<x>:DISplay {ON|OFF|<NR1>}
             - ZOOm:ZOOM1:MATH<x>:DISplay?
             ```
 
@@ -977,7 +977,7 @@ class ZoomZoom1DchanDisplay(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ZOOm:ZOOM1:DCHAN:DISplay {<NR1>|OFF|ON}
+        - ZOOm:ZOOM1:DCHAN:DISplay {ON|OFF|<NR1>}
         - ZOOm:ZOOM1:DCHAN:DISplay?
         ```
 
@@ -1024,7 +1024,7 @@ class ZoomZoom1Dchan(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ZOOm:ZOOM1:DCHAN:DISplay {<NR1>|OFF|ON}
+            - ZOOm:ZOOM1:DCHAN:DISplay {ON|OFF|<NR1>}
             - ZOOm:ZOOM1:DCHAN:DISplay?
             ```
 
@@ -1335,7 +1335,7 @@ class ZoomZoom1DigitalBitDisplay(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ZOOm:ZOOM1:D<x>:DISplay {<NR1>|OFF|ON}
+        - ZOOm:ZOOM1:D<x>:DISplay {ON|OFF|<NR1>}
         - ZOOm:ZOOM1:D<x>:DISplay?
         ```
 
@@ -1385,7 +1385,7 @@ class ZoomZoom1DigitalBit(ValidatedDigitalBit, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ZOOm:ZOOM1:D<x>:DISplay {<NR1>|OFF|ON}
+            - ZOOm:ZOOM1:D<x>:DISplay {ON|OFF|<NR1>}
             - ZOOm:ZOOM1:D<x>:DISplay?
             ```
 
@@ -1727,7 +1727,7 @@ class ZoomZoom1ChannelDisplay(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ZOOm:ZOOM1:CH<x>:DISplay {<NR1>|OFF|ON}
+        - ZOOm:ZOOM1:CH<x>:DISplay {ON|OFF|<NR1>}
         - ZOOm:ZOOM1:CH<x>:DISplay?
         ```
 
@@ -1777,7 +1777,7 @@ class ZoomZoom1Channel(ValidatedChannel, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ZOOm:ZOOM1:CH<x>:DISplay {<NR1>|OFF|ON}
+            - ZOOm:ZOOM1:CH<x>:DISplay {ON|OFF|<NR1>}
             - ZOOm:ZOOM1:CH<x>:DISplay?
             ```
 

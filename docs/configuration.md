@@ -32,7 +32,7 @@ things change, but does not require modification with every script execution.
 
 A config file can be **overruled** by an
 [environment variable](#environment-variable) configuration. That means that if
-you have both a config file defined and the environment variables set, the
+you have both a config file defined and **either** of the environment variables set, the
 config parser will **always** prioritize the environment variables. Make sure to
 delete the environment variables if you want to switch back to the config file.
 
@@ -79,18 +79,24 @@ devices:
     alias: <alias>
     connection_type: <connection_type>
     device_type: <device_type>
-# usb connection
+# TCPIP connection
+  - address: <ip_address_or_hostname>
+    alias: <alias>
+    connection_type: TCPIP
+    device_type: <device_type>
+    lan_device_name: <lan_device_name>
+# USB connection
   - address: <model>-<serial_number>
     alias: <alias>
     connection_type: USB
     device_type: <device_type>
-# socket connection
+# SOCKET connection
   - address: <ip_address_or_hostname>
     alias: <alias>
     connection_type: SOCKET
     device_type: <device_type>
     lan_port: <port_number>
-# serial connection
+# SERIAL connection
   - address: <serial_port>
     alias: <alias>
     connection_type: SERIAL
@@ -101,7 +107,7 @@ devices:
       flow_control: xon_xoff
       parity: none
       end_input: none
-# gpib connection
+# GPIB connection
   - address: <gpib_address>
     gpib_board_number: <gpib_board_number>
     alias: <alias>
@@ -171,6 +177,9 @@ devices:
     - The open port, a number in the range 0 to 65535.
     - Required when the `<connection_type>` is `SOCKET`.
     - Optional when `<connection_type>` is `REST_API`
+- `lan_device_name`
+    - The LAN device name to connect on when `<connection_type>` is `TCPIP`.
+    - If no LAN device name is provided in the configuration, `inst0` is used.
 - `serial_config`
     - Configuration data for `SERIAL` connection type, which VISA documentation
         commonly refers to as ASRL.
@@ -219,6 +228,7 @@ options:
   setup_cleanup: false
   teardown_cleanup: false
   retry_visa_connection: false
+  default_visa_timeout: 5000
   check_for_updates: false
 ```
 
@@ -243,6 +253,9 @@ runtime behavior configuration.
 - `retry_visa_connection`
     - This config option will enable a second attempt when creating VISA connections,
         the second attempt is made after waiting, to allow the device time to become available.
+- `default_visa_timeout`
+    - This config option is used to set the default VISA timeout value in milliseconds.
+        The default value of this config option is 5000 ms.
 - `check_for_updates`
     - This config option will enable a check for any available updates on pypi.org for the
         package when the `DeviceManager` is instantiated.
@@ -263,6 +276,11 @@ devices:
     alias: my_smu_by_ip
     connection_type: TCPIP
     device_type: SMU
+# TCPIP connection to SCOPE using the High Speed LAN Instrument Protocol (HiSLIP)
+  - address: MSO54-123456
+    alias: my_scope_on_hislip0
+    device_type: SCOPE
+    lan_device_name: hislip0
 # SOCKET connection to SCOPE types needs lan_port number
   - address: 123.45.67.255
     alias: my_scope_port4000
@@ -300,6 +318,7 @@ options:
   verbose_mode: false
   verbose_visa: false
   retry_visa_connection: false
+  default_visa_timeout: 10000  # 10 second default VISA timeout
   check_for_updates: false
 ```
 
@@ -320,6 +339,14 @@ address = "123.45.67.255"
 alias = "my_smu_by_ip"
 connection_type = "TCPIP"
 device_type = "SMU"
+
+# TCPIP connection to SCOPE using the High Speed LAN Instrument Protocol (HiSLIP)
+[[devices]]
+address = "MSO54-123456"
+alias = "my_scope_by_hostname"
+connection_type = "TCPIP"
+device_type = "SCOPE"
+lan_device_name = "hislip0"
 
 # SOCKET connection to SCOPE types needs lan_port number
 [[devices]]
@@ -366,6 +393,7 @@ standalone = false
 verbose_mode = false
 verbose_visa = false
 retry_visa_connection = false
+default_visa_timeout = 10000  # 10 second default VISA timeout
 check_for_updates = false
 ```
 
@@ -377,7 +405,9 @@ Two environment variables, `TM_OPTIONS` and `TM_DEVICES`, can be used for
 runtime configurations and have a **HIGHER** priority than the config file.
 
 - `TM_OPTIONS` is a comma-delimited, all-uppercase list of enabled options
-    names.
+    names and values. Config options that act as boolean flags can be set simply by
+    adding the option name to the environment variable. Config options that require non-boolean
+    inputs should be specified with the option name followed by an equals sign and the value.
 - `TM_DEVICES` is a `~~~`-delimited list of device entries.
     - Each device entry is a comma-delimited list of `<key>=<value>` pairs.
 
@@ -387,8 +417,8 @@ execution scenarios where the list of devices needs to be temporary and
 workspace variables can be changed easily per script executor.
 
 There is no mechanism for merging the options and devices between the two config
-methods; if either of the `TM_DEVICES` or `TM_OPTIONS` environment variables is
-defined, the config file is ignored. If the environment variable(s) exist,
+methods; if **either** of the `TM_DEVICES` or `TM_OPTIONS` environment variables is
+defined, the config file is completely ignored. If **either** of the environment variable(s) exist,
 either permanently or temporarily, for the lifetime of the shell instance, they
 will override any existing config file you have.
 
@@ -402,8 +432,8 @@ environment variable)
 TM_OPTIONS = "STANDALONE"
 TM_DEVICES = "address=123.45.67.255,device_type=SMU"
 
-# Sample scope using hostname and AFG using IP address with cleanup
-TM_OPTIONS = "SETUP_CLEANUP,TEARDOWN_CLEANUP"
+# Sample scope using hostname and AFG using IP address with cleanup and a non-standard default VISA timeout
+TM_OPTIONS = "SETUP_CLEANUP,TEARDOWN_CLEANUP,DEFAULT_VISA_TIMEOUT=10000"
 TM_DEVICES = "address=MDO9876-C543210,device_type=SCOPE~~~address=123.45.67.255,device_type=AFG"
 
 # Sample scope using IP address and AWG using hostname

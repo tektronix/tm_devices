@@ -145,8 +145,8 @@ def test_awg7k_gen_waveform(device_manager: DeviceManager) -> None:
     awg7k06 = cast(AWG7K, device_manager.add_awg("awg7102opt06-hostname", alias="awg7k06"))
 
     error_match = (
-        "The offset can only be set on AWG7102 without an 02 or 06 option and with an output "
-        "signal path of DCA \(AWGCONTROL:DOUTPUT1:STATE set to 0\)."  # noqa: W605  # pylint: disable=anomalous-backslash-in-string  # pyright: ignore [reportInvalidStringEscapeSequence]
+        r"The offset can only be set on AWG7102 without an 02 or 06 option and with an output "
+        r"signal path of DCA \(AWGCONTROL:DOUTPUT1:STATE set to 0\)."
     )
     with pytest.raises(ValueError, match=error_match):
         awg7k06.source_channel["SOURCE1"].set_offset(0.2)
@@ -176,8 +176,8 @@ def test_awg7k_gen_waveform(device_manager: DeviceManager) -> None:
 
     # AWG7k with option 1 should not be able to set offset with DIR output signal path.
     error_match = (
-        "The offset can only be set on AWG7051 without an 02 or 06 option and with an output "
-        "signal path of DCA \(AWGCONTROL:DOUTPUT1:STATE set to 0\)."  # noqa: W605  # pylint: disable=anomalous-backslash-in-string  # pyright: ignore [reportInvalidStringEscapeSequence]
+        r"The offset can only be set on AWG7051 without an 02 or 06 option and with an output "
+        r"signal path of DCA \(AWGCONTROL:DOUTPUT1:STATE set to 0\)."
     )
     with pytest.raises(ValueError, match=error_match):
         awg7k01.generate_function(
@@ -251,8 +251,8 @@ def test_awg5k_gen_waveform(device_manager: DeviceManager) -> None:
 
     # Cannot set offset with DIR output signal path.
     offset_error = (
-        "The offset can only be set on AWG5012 with an output signal path of DCA "
-        "\(AWGCONTROL:DOUTPUT1:STATE set to 0\)."  # noqa: W605  # pylint: disable=anomalous-backslash-in-string  # pyright: ignore [reportInvalidStringEscapeSequence]
+        r"The offset can only be set on AWG5012 with an output signal path of DCA "
+        r"\(AWGCONTROL:DOUTPUT1:STATE set to 0\)."
     )
     with pytest.raises(ValueError, match=offset_error):
         awg5k.generate_function(

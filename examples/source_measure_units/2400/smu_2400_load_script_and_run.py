@@ -26,7 +26,7 @@ smu2400.enable_verification = False
 # Capture the path to the script file and load it to working memory.
 print(pathlib.Path.cwd())
 fileandpath = f"{pathlib.Path.cwd()}\\KEI2400_TTI_Driver\\simple_resistivity_measure.tsp"
-smu2400.load_script(fileandpath, script_name="resistivityscript", run_script=True)
+smu2400.load_script(script_name="resistivityscript", file_path=fileandpath, run_script=True)
 
 # Call the resistivity measurement function on the instrument with the desired current,
 # then print the result to the console.

@@ -44,7 +44,7 @@ class InstrumentMode(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``AWG`` sets the instrument to the Arbitrary Waveform Generator mode. FGEN sets the
+        - ``AWG`` sets the instrument to the Arbitrary Waveform Generator mode.FGEN sets the
           instrument to the Function generator mode.
         - ``*RST`` sets this to AWG.
     """
@@ -175,7 +175,7 @@ class Instrument(SCPICmdRead):
             ```
 
         Info:
-            - ``AWG`` sets the instrument to the Arbitrary Waveform Generator mode. FGEN sets the
+            - ``AWG`` sets the instrument to the Arbitrary Waveform Generator mode.FGEN sets the
               instrument to the Function generator mode.
             - ``*RST`` sets this to AWG.
         """

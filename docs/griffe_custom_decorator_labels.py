@@ -3,7 +3,6 @@
 This will cause them to be classified correctly when the documentation is built.
 """
 
-# noinspection PyProtectedMember
 from griffe import Extension, stdlib_decorators
 
 

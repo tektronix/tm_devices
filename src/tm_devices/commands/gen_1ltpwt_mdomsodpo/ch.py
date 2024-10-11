@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - CH<x>:AMPSVIAVOLTs:ENAble {<NR1>|OFF|ON}
+    - CH<x>:AMPSVIAVOLTs:ENAble {ON|OFF|<NR1>}
     - CH<x>:AMPSVIAVOLTs:ENAble?
     - CH<x>:AMPSVIAVOLTs:FACtor <NR3>
     - CH<x>:AMPSVIAVOLTs:FACtor?
@@ -1348,7 +1348,7 @@ class ChannelAmpsviavoltsEnable(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - CH<x>:AMPSVIAVOLTs:ENAble {<NR1>|OFF|ON}
+        - CH<x>:AMPSVIAVOLTs:ENAble {ON|OFF|<NR1>}
         - CH<x>:AMPSVIAVOLTs:ENAble?
         ```
 
@@ -1396,7 +1396,7 @@ class ChannelAmpsviavolts(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CH<x>:AMPSVIAVOLTs:ENAble {<NR1>|OFF|ON}
+            - CH<x>:AMPSVIAVOLTs:ENAble {ON|OFF|<NR1>}
             - CH<x>:AMPSVIAVOLTs:ENAble?
             ```
 

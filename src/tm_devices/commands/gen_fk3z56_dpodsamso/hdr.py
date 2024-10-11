@@ -10,7 +10,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - HDR {<NR1>|OFF|ON}
+    - HDR {ON|OFF|<NR1>}
     - HDR?
     ```
 """
@@ -38,7 +38,7 @@ class Hdr(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HDR {<NR1>|OFF|ON}
+        - HDR {ON|OFF|<NR1>}
         - HDR?
         ```
 

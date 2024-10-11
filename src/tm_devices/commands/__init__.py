@@ -77,6 +77,7 @@ from .smu2636b_commands import SMU2636BCommandConstants, SMU2636BCommands, SMU26
 from .smu2651a_commands import SMU2651ACommandConstants, SMU2651ACommands, SMU2651AMixin
 from .smu2657a_commands import SMU2657ACommandConstants, SMU2657ACommands, SMU2657AMixin
 from .ss3706a_commands import SS3706ACommandConstants, SS3706ACommands, SS3706AMixin
+from .tekscopepc_commands import TekScopePCCommandConstants, TekScopePCCommands, TekScopePCMixin
 
 __all__ = [
     "AFG3KBCommandConstants",
@@ -281,4 +282,7 @@ __all__ = [
     "SS3706ACommandConstants",
     "SS3706ACommands",
     "SS3706AMixin",
+    "TekScopePCCommandConstants",
+    "TekScopePCCommands",
+    "TekScopePCMixin",
 ]

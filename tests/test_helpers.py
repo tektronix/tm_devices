@@ -70,7 +70,8 @@ def test_create_ping_command() -> None:
 @pytest.mark.parametrize(
     ("input_string", "expected_abbrev_model"),
     [
-        ("TEKSCOPESW", "TekScopeSW"),
+        ("TEKSCOPESW", "TekScopePC"),
+        ("TEKSCOPEPC", "TekScopePC"),
         ("MSO54-123456", "MSO5"),
         ("MSO58B", "MSO5B"),
         ("MSO58LP", "MSO5LP"),

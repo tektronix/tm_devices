@@ -10,6 +10,7 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - SYSTem:DATE <year>,<month>,<day>
+    - SYSTem:DATE?
     - SYSTem:ERRor:ALL?
     - SYSTem:ERRor:CODE:ALL?
     - SYSTem:ERRor:CODE:NEXT?
@@ -515,7 +516,7 @@ class SystemErrorCmd(SCPICmdRead):
         return self._next
 
 
-class SystemDate(SCPICmdWrite):
+class SystemDate(SCPICmdWrite, SCPICmdRead):
     """The ``SYSTem:DATE`` command.
 
     Description:
@@ -523,11 +524,15 @@ class SystemDate(SCPICmdWrite):
           rounded off to nearest integral values.
 
     Usage:
+        - Using the ``.query()`` method will send the ``SYSTem:DATE?`` query.
+        - Using the ``.verify(value)`` method will send the ``SYSTem:DATE?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``SYSTem:DATE value`` command.
 
     SCPI Syntax:
         ```
         - SYSTem:DATE <year>,<month>,<day>
+        - SYSTem:DATE?
         ```
     """
 
@@ -565,11 +570,15 @@ class System(SCPICmdRead):
               are rounded off to nearest integral values.
 
         Usage:
+            - Using the ``.query()`` method will send the ``SYSTem:DATE?`` query.
+            - Using the ``.verify(value)`` method will send the ``SYSTem:DATE?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``SYSTem:DATE value`` command.
 
         SCPI Syntax:
             ```
             - SYSTem:DATE <year>,<month>,<day>
+            - SYSTem:DATE?
             ```
         """
         return self._date

@@ -122,9 +122,10 @@ class SMU24xxStandard(SourceMeasureUnit, ABC):
 
     def load_script(
         self,
-        file_path: Union[str, os.PathLike[str]],  # noqa: ARG002
-        script_name: str = "",  # noqa: ARG002
+        script_name: str,  # noqa: ARG002
         *,
+        script_body: str = "",  # noqa: ARG002
+        file_path: Union[str, os.PathLike[str], None] = None,  # noqa: ARG002
         run_script: bool = False,  # noqa: ARG002
         to_nv_memory: bool = False,  # noqa: ARG002
     ) -> None:
@@ -135,9 +136,3 @@ class SMU24xxStandard(SourceMeasureUnit, ABC):
     ################################################################################################
     # Private Methods
     ################################################################################################
-    def _reboot(self) -> None:
-        """Perform the actual rebooting code."""
-        # TODO: implement
-        raise NotImplementedError(
-            f"``.reboot()`` is not yet implemented for the {self.__class__.__name__} driver"
-        )

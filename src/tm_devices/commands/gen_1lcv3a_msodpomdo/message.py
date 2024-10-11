@@ -15,7 +15,7 @@ Commands and Queries:
     - MESSage:CLEAR
     - MESSage:SHOW <QString>
     - MESSage:SHOW?
-    - MESSage:STATE {OFF|ON|<NR1>}
+    - MESSage:STATE {ON|OFF|<NR1>}
     - MESSage:STATE?
     - MESSage?
     ```
@@ -43,7 +43,7 @@ class MessageState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MESSage:STATE {OFF|ON|<NR1>}
+        - MESSage:STATE {ON|OFF|<NR1>}
         - MESSage:STATE?
         ```
 
@@ -266,7 +266,7 @@ class Message(SCPICmdWriteNoArguments, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MESSage:STATE {OFF|ON|<NR1>}
+            - MESSage:STATE {ON|OFF|<NR1>}
             - MESSage:STATE?
             ```
 

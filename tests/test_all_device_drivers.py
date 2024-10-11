@@ -48,7 +48,7 @@ def test_all_device_drivers(
         ("SCOPE", "DPO70KDX-HOSTNAME", None, None, None),
         ("SCOPE", "DPO70KSX-HOSTNAME", None, None, None),
         ("SCOPE", "TSOVU-HOSTNAME", None, None, None),
-        ("SCOPE", "TEKSCOPESW-HOSTNAME", None, None, None),
+        ("SCOPE", "TEKSCOPEPC-HOSTNAME", None, None, None),
         ("SCOPE", "MSO2K-HOSTNAME", None, None, None),
         ("SCOPE", "MSO2KB-HOSTNAME", None, None, None),
         ("SCOPE", "DPO2K-HOSTNAME", None, None, None),

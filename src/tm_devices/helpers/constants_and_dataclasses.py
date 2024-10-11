@@ -4,7 +4,7 @@ import re
 
 from dataclasses import dataclass
 from types import MappingProxyType
-from typing import Final, FrozenSet, List, Mapping, Optional, Tuple, Union
+from typing import Dict, Final, FrozenSet, List, Mapping, Optional, Tuple, Union
 
 from pyvisa import constants as pyvisa_constants
 
@@ -12,7 +12,12 @@ from tm_devices.helpers.dataclass_mixins import (
     AsDictionaryMixin,
     AsDictionaryUseEnumNameUseCustEnumStrValueMixin,
 )
-from tm_devices.helpers.enums import ConnectionTypes, DeviceTypes, LoadImpedanceAFG, SupportedModels
+from tm_devices.helpers.enums import (
+    ConnectionTypes,
+    DeviceTypes,
+    LoadImpedanceAFG,
+    SupportedModels,
+)
 from tm_devices.helpers.standalone_functions import validate_address
 
 
@@ -185,6 +190,8 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     """An optional key/name used to retrieve this devices from the DeviceManager."""
     lan_port: Optional[int] = None
     """The port number to connect on, used for SOCKET/REST_API connections."""
+    lan_device_name: Optional[str] = None
+    """The LAN device name to connect on, used for TCPIP connections (defaults to 'inst0')."""
     serial_config: Optional[SerialConfig] = None
     """Serial configuration properties for connecting to a device over SERIAL (ASRL)."""
     device_driver: Optional[str] = None
@@ -193,7 +200,7 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     """The GPIB board number (also referred to as a controller) to be used when making a GPIB connection (defaults to 0)."""  # noqa: E501
 
     # pylint: disable=too-many-branches
-    def __post_init__(self) -> None:  # noqa: PLR0912,C901,PLR0915
+    def __post_init__(self) -> None:  # noqa: PLR0912, C901
         """Validate data after creation.
 
         Raises:
@@ -217,22 +224,23 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
                 object.__setattr__(self, "connection_type", ConnectionTypes(self.connection_type))
         except ValueError as error:
             # this is from an invalid enum name
-            raise TypeError(*error.args)  # noqa: TRY200,B904
+            raise TypeError(*error.args)  # noqa: B904
 
-        # Set the GPIB board number to 0 if it is not provided
-        if self.connection_type == ConnectionTypes.GPIB:
-            if self.gpib_board_number is None:
-                object.__setattr__(self, "gpib_board_number", 0)
-            if not isinstance(self.gpib_board_number, int):
-                try:
-                    # noinspection PyTypeChecker
-                    object.__setattr__(self, "gpib_board_number", int(self.gpib_board_number))  # pyright: ignore[reportArgumentType]
-                except ValueError:
-                    msg = (
-                        f'"{self.gpib_board_number}" is not a valid GPIB board number, '
-                        f"valid board numbers must be integers."
-                    )
-                    raise ValueError(msg)  # noqa: B904
+        # Validate the GPIB board number
+        if (
+            self.connection_type == ConnectionTypes.GPIB
+            and not isinstance(self.gpib_board_number, int)
+            and self.gpib_board_number is not None
+        ):
+            try:
+                # noinspection PyTypeChecker
+                object.__setattr__(self, "gpib_board_number", int(self.gpib_board_number))
+            except ValueError:
+                msg = (
+                    f'"{self.gpib_board_number}" is not a valid GPIB board number, '
+                    f"valid board numbers must be integers."
+                )
+                raise ValueError(msg)  # noqa: B904
 
         if (
             self.gpib_board_number is not None
@@ -370,8 +378,12 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
             from tm_devices.helpers.functions import get_model_series
 
             model_series = get_model_series(full_model)
+            model_id_lookup = {
+                **_externally_registered_usbtmc_model_id_lookup,
+                **_USB_MODEL_ID_STR_LOOKUP,
+            }
             try:
-                usbtmc_config = USB_MODEL_ID_LOOKUP[model_series]
+                usbtmc_config = model_id_lookup[model_series]
 
                 # This commented out block of code can help deal with devices where the specific
                 # model number is the USBTMC model_id but the Python driver is shared between
@@ -395,13 +407,16 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         elif self.connection_type == ConnectionTypes.SOCKET:
             resource_expr = f"TCPIP0::{self.address}::{self.lan_port}::SOCKET"
         elif self.connection_type == ConnectionTypes.TCPIP:
-            resource_expr = f"TCPIP0::{self.address}::inst0::INSTR"
+            # Set the LAN device name to "inst0" if one is not provided/
+            lan_device_name = "inst0" if self.lan_device_name is None else self.lan_device_name
+            resource_expr = f"TCPIP0::{self.address}::{lan_device_name}::INSTR"
         elif self.connection_type == ConnectionTypes.SERIAL:
             resource_expr = f"ASRL{self.address}::INSTR"
         elif self.connection_type == ConnectionTypes.MOCK:  # pragma: no cover
             resource_expr = f"MOCK0::{self.address}::INSTR"
         elif self.connection_type == ConnectionTypes.GPIB:
-            resource_expr = f"GPIB{self.gpib_board_number}::{self.address}::INSTR"
+            gpib_board_number = 0 if self.gpib_board_number is None else self.gpib_board_number
+            resource_expr = f"GPIB{gpib_board_number}::{self.address}::INSTR"
         else:
             msg = (
                 f"{self.connection_type.value} is not a valid connection "
@@ -427,6 +442,11 @@ class DMConfigOptions(AsDictionaryMixin):
     """A verbosity flag to enable extremely verbose VISA logging to stdout."""
     retry_visa_connection: Optional[bool] = None
     """A flag to enable retrying the first VISA connection attempt."""
+    default_visa_timeout: Optional[int] = None
+    """A default VISA timeout value (in milliseconds) to use when creating VISA connections.
+
+    When this option is not set, a default value of 5000 milliseconds (5 seconds) is used.
+    """
     check_for_updates: Optional[bool] = None
     """A flag indicating if a check for updates for the package should be performed on creation of the DeviceManager."""  # noqa: E501
 
@@ -434,7 +454,7 @@ class DMConfigOptions(AsDictionaryMixin):
         """Complete config entry line for an environment variable."""
         return ",".join(
             [
-                opt_key.upper()
+                opt_key.upper() + (f"={opt_val}" if not isinstance(opt_val, bool) else "")
                 for opt_key, opt_val in self.to_dict(ignore_none=True).items()
                 if opt_val
             ]
@@ -490,9 +510,6 @@ VISA_RESOURCE_EXPRESSION_REGEX: "Final[re.Pattern[str]]" = re.compile(  # pylint
     r"^(\w+)(?:::0X\w+)?::([-.\w]+)(?:::(\w+))?(?:::INST0?)?::(INSTR?|SOCKET)$"
 )
 """A regex pattern used to capture pieces of VISA resource expressions."""
-
-UNIT_TEST_TIMEOUT: Final[int] = 50
-"""The VISA timeout value to use during unit tests, in milliseconds."""
 
 VALID_DEVICE_CONNECTION_TYPES: Final[Mapping[DeviceTypes, Tuple[ConnectionTypes, ...]]] = (
     MappingProxyType(
@@ -553,6 +570,7 @@ VALID_DEVICE_CONNECTION_TYPES: Final[Mapping[DeviceTypes, Tuple[ConnectionTypes,
                 ConnectionTypes.SOCKET,
                 ConnectionTypes.GPIB,
             ),
+            DeviceTypes.UNSUPPORTED: tuple(ConnectionTypes),
         }
     )
 )
@@ -563,151 +581,158 @@ as well.
 """
 
 # USBTMC configuration defines
-_TEKTRONIX_USBTMC_VENDOR_ID: Final[str] = "0x0699"
-_KEITHLEY_USBTMC_VENDOR_ID: Final[str] = "0x05E6"
-USB_MODEL_ID_LOOKUP: Final[Mapping[str, USBTMCConfiguration]] = MappingProxyType(
+TEKTRONIX_USBTMC_VENDOR_ID: Final[str] = "0x0699"
+"""The USBTMC Vendor ID for Tektronix devices."""
+KEITHLEY_USBTMC_VENDOR_ID: Final[str] = "0x05E6"
+"""The USBTMC Vendor ID for Keithley devices."""
+USB_MODEL_ID_LOOKUP: Final[Mapping[SupportedModels, USBTMCConfiguration]] = MappingProxyType(
     {
-        SupportedModels.MDO3K.value: USBTMCConfiguration(
-            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0408"
+        SupportedModels.MDO3K: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0408"
         ),
-        SupportedModels.MSO2.value: USBTMCConfiguration(
-            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0105"
+        SupportedModels.MSO2: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0105"
         ),
-        SupportedModels.MSO2KB.value: USBTMCConfiguration(
-            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x03A4"
+        SupportedModels.MSO2KB: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x03A4"
         ),
-        SupportedModels.MSO4.value: USBTMCConfiguration(
-            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0527"
+        SupportedModels.MSO4: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0527"
         ),
-        SupportedModels.MSO4B.value: USBTMCConfiguration(
-            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0527"
+        SupportedModels.MSO4B: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0527"
         ),
-        SupportedModels.MSO5.value: USBTMCConfiguration(
-            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0522"
+        SupportedModels.MSO5: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0522"
         ),
-        SupportedModels.MSO5B.value: USBTMCConfiguration(
-            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0522"
+        SupportedModels.MSO5B: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0522"
         ),
-        SupportedModels.MSO5LP.value: USBTMCConfiguration(
-            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0529"
+        SupportedModels.MSO5LP: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0529"
         ),
-        SupportedModels.MSO6.value: USBTMCConfiguration(
-            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0528"
+        SupportedModels.MSO6: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0528"
         ),
-        SupportedModels.MSO6B.value: USBTMCConfiguration(
-            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0530"
+        SupportedModels.MSO6B: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0530"
         ),
-        SupportedModels.LPD6.value: USBTMCConfiguration(
-            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x052F"
+        SupportedModels.LPD6: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x052F"
         ),
-        SupportedModels.AFG3K.value: USBTMCConfiguration(
-            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0345"
+        SupportedModels.AFG3K: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0345"
         ),
-        SupportedModels.SMU2450.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2450"
+        SupportedModels.SMU2450: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2450"
         ),
-        SupportedModels.SMU2460.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2460"
+        SupportedModels.SMU2460: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2460"
         ),
-        SupportedModels.SMU2461.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2461"
+        SupportedModels.SMU2461: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2461"
         ),
-        SupportedModels.SMU2470.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2470"
+        SupportedModels.SMU2470: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2470"
         ),
-        SupportedModels.SMU2601A.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2601"
+        SupportedModels.SMU2601A: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2601"
         ),
-        SupportedModels.SMU2602A.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2602"
+        SupportedModels.SMU2602A: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2602"
         ),
-        SupportedModels.SMU2604A.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2604"
+        SupportedModels.SMU2604A: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2604"
         ),
-        SupportedModels.SMU2611A.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2611"
+        SupportedModels.SMU2611A: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2611"
         ),
-        SupportedModels.SMU2612A.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2612"
+        SupportedModels.SMU2612A: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2612"
         ),
-        SupportedModels.SMU2614A.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2614"
+        SupportedModels.SMU2614A: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2614"
         ),
-        SupportedModels.SMU2634A.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2634"
+        SupportedModels.SMU2634A: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2634"
         ),
-        SupportedModels.SMU2635A.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2635"
+        SupportedModels.SMU2635A: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2635"
         ),
-        SupportedModels.SMU2636A.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2636"
+        SupportedModels.SMU2636A: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2636"
         ),
-        SupportedModels.SMU2601B.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2601"
+        SupportedModels.SMU2601B: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2601"
         ),
-        SupportedModels.SMU2602B.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2602"
+        SupportedModels.SMU2602B: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2602"
         ),
-        SupportedModels.SMU2604B.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2604"
+        SupportedModels.SMU2604B: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2604"
         ),
-        SupportedModels.SMU2606B.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2606"
+        SupportedModels.SMU2606B: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2606"
         ),
-        SupportedModels.SMU2611B.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2611"
+        SupportedModels.SMU2611B: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2611"
         ),
-        SupportedModels.SMU2612B.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2612"
+        SupportedModels.SMU2612B: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2612"
         ),
-        SupportedModels.SMU2614B.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2614"
+        SupportedModels.SMU2614B: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2614"
         ),
-        SupportedModels.SMU2634B.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2634"
+        SupportedModels.SMU2634B: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2634"
         ),
-        SupportedModels.SMU2635B.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2635"
+        SupportedModels.SMU2635B: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2635"
         ),
-        SupportedModels.SMU2636B.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2636"
+        SupportedModels.SMU2636B: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2636"
         ),
-        SupportedModels.PSU2200.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2200"
+        SupportedModels.PSU2200: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2200"
         ),
-        SupportedModels.PSU2220.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2220"
+        SupportedModels.PSU2220: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2220"
         ),
-        SupportedModels.PSU2230.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2230"
+        SupportedModels.PSU2230: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2230"
         ),
-        SupportedModels.PSU2231.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2231"
+        SupportedModels.PSU2231: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2231"
         ),
-        SupportedModels.PSU2231A.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2231"
+        SupportedModels.PSU2231A: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2231"
         ),
-        SupportedModels.PSU2280.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2280"
+        SupportedModels.PSU2280: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2280"
         ),
-        SupportedModels.PSU2281.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2281"
+        SupportedModels.PSU2281: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2281"
         ),
-        SupportedModels.AWG5200.value: USBTMCConfiguration(
-            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0503"
+        SupportedModels.AWG5200: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0503"
         ),
-        SupportedModels.AWG70KA.value: USBTMCConfiguration(
-            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0503"
+        SupportedModels.AWG70KA: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0503"
         ),
-        SupportedModels.AWG70KB.value: USBTMCConfiguration(
-            vendor_id=_TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0503"
+        SupportedModels.AWG70KB: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0503"
         ),
-        SupportedModels.SS3706A.value: USBTMCConfiguration(
-            vendor_id=_KEITHLEY_USBTMC_VENDOR_ID, model_id="0x3706"
+        SupportedModels.SS3706A: USBTMCConfiguration(
+            vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x3706"
         ),
     }
 )
-"""A mapping of model USBTMC info."""
+"""A mapping of device model series to their USBTMC connection information.
+
+This lists the natively supported USBTMC connections of `tm_devices`, use
+[``register_additional_usbtmc_model_series()``][tm_devices.helpers.functions.register_additional_usbtmc_mapping]
+to register USBTMC connection information for devices not listed here.
+"""
 
 LOAD_IMPEDANCE_LOOKUP: Final[Mapping[Union[float, str], LoadImpedanceAFG]] = MappingProxyType(
     {
@@ -719,3 +744,12 @@ LOAD_IMPEDANCE_LOOKUP: Final[Mapping[Union[float, str], LoadImpedanceAFG]] = Map
     }
 )
 """Conversions of literal values representing impedances to Enum values representing impedances."""
+
+
+####################################################################################################
+# Private Attributes
+####################################################################################################
+_externally_registered_usbtmc_model_id_lookup: Dict[str, USBTMCConfiguration] = {}
+_USB_MODEL_ID_STR_LOOKUP: Mapping[str, USBTMCConfiguration] = MappingProxyType(
+    {key.value: value for key, value in USB_MODEL_ID_LOOKUP.items()}
+)

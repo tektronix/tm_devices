@@ -7,7 +7,7 @@ devices:
         r: KEITHLEY INSTRUMENTS,MODEL DMM7512,00000171,1.0.0
       - q: waitcomplete()
       - q: opc()
-      - q: print([[1]])
+      - q: waitcomplete() print([[1]])
         r: 1
       - q: eventlog.clear()
       - q: status.clear()

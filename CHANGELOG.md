@@ -20,6 +20,129 @@ Things to be included in the next release go here.
 
 ---
 
+## v2.4.0 (2024-09-19)
+
+### Merged Pull Requests
+
+- Update TSPDevice.load_script() to accept raw strings ([#308](https://github.com/tektronix/tm_devices/pull/308))
+- fix: Update stub generation helper function to handle classes followed by dataclasses ([#307](https://github.com/tektronix/tm_devices/pull/307))
+- Add function to register USBTMC connection information for devices that don't have native USBTMC connection support in tm_devices ([#306](https://github.com/tektronix/tm_devices/pull/306))
+- python-deps(deps-dev): Bump the python-dependencies group with 2 updates ([#304](https://github.com/tektronix/tm_devices/pull/304))
+- fix: Ensure that the default VISA timeout value is not overwritten if a new config is loaded that doesn't specify a default VISA timeout. ([#303](https://github.com/tektronix/tm_devices/pull/303))
+- gh-actions(deps): Bump tektronix/python-package-ci-cd ([#287](https://github.com/tektronix/tm_devices/pull/287))
+- chore: Bump the version of tektronix/python-package-ci-cd to v1.3.0 in workflows ([#301](https://github.com/tektronix/tm_devices/pull/301))
+- build: Update license identifier ([#299](https://github.com/tektronix/tm_devices/pull/299))
+- python-deps(deps): Bump the python-dependencies group with 3 updates ([#300](https://github.com/tektronix/tm_devices/pull/300))
+- Enable customizing the default visa timeout ([#293](https://github.com/tektronix/tm_devices/pull/293))
+- python-deps(deps-dev): Bump the python-dependencies group with 4 updates ([#296](https://github.com/tektronix/tm_devices/pull/296))
+- Update python-pacage-ci-cd to v1.1.0 and use tokens to upload to PyPI ([#291](https://github.com/tektronix/tm_devices/pull/291))
+- python-deps(deps): Bump the python-dependencies group across 1 directory with 2 updates ([#288](https://github.com/tektronix/tm_devices/pull/288))
+- chore: Remove an unneeded development dependency ([#286](https://github.com/tektronix/tm_devices/pull/286))
+- Convert to using reusable workflows from the `tektronix/python-package-ci-cd` repo ([#284](https://github.com/tektronix/tm_devices/pull/284))
+
+### Added
+
+- Added a config option (`default_visa_timeout`) to specify the default VISA timeout for all initial VISA device connections.
+- Added a new function, `register_additional_usbtmc_mapping()`, to enable users to add USBTMC connection information for devices that don't have native support for USBTMC connections in `tm_devices` yet.
+- Added `TSPDevice.export_buffers()` to write tsp buffer data fields to file, default is comma separated values with buffer names header.
+
+### Changed
+
+- Switched all workflows to use the new [`tektronix/python-package-ci-cd`](https://github.com/tektronix/python-package-ci-cd) reusable workflows.
+- Reduced the out-of-the box `default_visa_timeout` value from 30 seconds to 5 seconds.
+- _**SEMI-BREAKING CHANGE**_: Changed the `USB_MODEL_ID_LOOKUP` constant to use `SupportedModels` as keys instead of values to make the documentation clearer.
+- _**SEMI-BREAKING CHANGE**_: Changed the `DEVICE_DRIVER_MODEL_MAPPING` constant to use `SupportedModels` as keys instead of values to make the documentation clearer.
+- _**SEMI-BREAKING CHANGE**_: Changed the input parameter order in `TSPDevice.load_script()` and updated it to accept raw string input in addition to the `file_path` parameter for the script content.
+- Verbosity with `PIDevice.write()` now handles multiline input printouts.
+
+### Deprecated
+
+- Renamed `TSPDevice.write_buffers()` to `TSPDevice.export_buffers()` for clarity.
+
+### Fixed
+
+- Fixed a bug in the stubgen helper code responsible for adding dynamically added methods to stub files that caused invalid stub files to be created if a dataclass immediately followed a class that was being dynamically updated.
+
+---
+
+## v2.3.0 (2024-08-23)
+
+### Merged Pull Requests
+
+- feat: Added Full API support for TekscopePC. ([#282](https://github.com/tektronix/tm_devices/pull/282))
+- feat: Add curve query support for MSO2KB series scopes ([#269](https://github.com/tektronix/tm_devices/pull/269))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#279](https://github.com/tektronix/tm_devices/pull/279))
+- ci: Use nodeenv to install node during tox runs, and install node with nodeenv during initial contributor setup ([#278](https://github.com/tektronix/tm_devices/pull/278))
+
+### Added
+
+- Added curve query support for the MSO2KB series scopes
+- Full Python API support for TekScopePC device.
+
+---
+
+## v2.2.2 (2024-08-14)
+
+### Merged Pull Requests
+
+- Fix the stubgen helper function to attach stubs to the correct class in modules with multiple classes ([#276](https://github.com/tektronix/tm_devices/pull/276))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#273](https://github.com/tektronix/tm_devices/pull/273))
+- docs: Update the contribution guide to provide details on how to track the status of changes in the GitHub repo using issues ([#271](https://github.com/tektronix/tm_devices/pull/271))
+
+### Fixed
+
+- Fixed the stubgen helper to properly attach stubs to the correct class in modules that have multiple classes.
+
+---
+
+## v2.2.1 (2024-08-07)
+
+### Merged Pull Requests
+
+- feat: Custom LAN Device Name for TCPIP Connections ([#267](https://github.com/tektronix/tm_devices/pull/267))
+- docs: Update links on the Readme to point to the full GitHub URL ([#266](https://github.com/tektronix/tm_devices/pull/266))
+- ci: Update the script that updates the pre-commit dependencies to update them with frozen hashes ([#265](https://github.com/tektronix/tm_devices/pull/265))
+- Convert test-docs.yml to a reusable workflow ([#264](https://github.com/tektronix/tm_devices/pull/264))
+- python-deps(deps-dev): bump the python-dependencies group with 3 updates ([#263](https://github.com/tektronix/tm_devices/pull/263))
+
+### Changed
+
+- Changed `DeviceConfigEntry` dataclass by adding an optional `lan_device_name` field, which allows connecting to instruments through TCPIP on LAN device names other than `inst0`.
+
+---
+
+## v2.2.0 (2024-08-02)
+
+### Merged Pull Requests
+
+- Enable adding unsupported device types via the DeviceManager ([#262](https://github.com/tektronix/tm_devices/pull/262))
+- test: Ignore http-rate-limited warnings to avoid failure due to the abundance of GitHub URLs in the Changelog ([#261](https://github.com/tektronix/tm_devices/pull/261))
+
+### Added
+
+- Added a new method to the `DeviceManager` class, `add_unsupported_device()`, which enables adding an unsupported device type.
+
+---
+
+## v2.1.0 (2024-07-31)
+
+### Merged Pull Requests
+
+- feat: Added SourceXpress API support and AWG defects fix ([#260](https://github.com/tektronix/tm_devices/pull/260))
+- gh-actions(deps): bump hynek/build-and-inspect-python-package ([#258](https://github.com/tektronix/tm_devices/pull/258))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#257](https://github.com/tektronix/tm_devices/pull/257))
+- Update jinja templates ([#254](https://github.com/tektronix/tm_devices/pull/254))
+
+### Added
+
+- Full Python API support for SourceXpress to AWG70KA, AWG70KB and AWG7K models.
+
+### Fixed
+
+- Fixed APIs with writes and queries accepting arguments for AWG70KA and AWG70KB models drivers.
+
+---
+
 ## v2.0.0 (2024-07-24)
 
 ### Merged Pull Requests
