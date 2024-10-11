@@ -6,6 +6,7 @@ from typing import Tuple
 import pyvisa as visa
 
 from tm_devices.driver_mixins.device_control.device import family_base_class
+from tm_devices.driver_mixins.device_control.tsp_device import TSPDevice
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import (
     LegacyTSPIEEE4882Commands,
 )
@@ -14,7 +15,7 @@ from tm_devices.helpers import DeviceConfigEntry
 
 
 @family_base_class
-class DMM75xx(DigitalMultimeter, ABC):
+class DMM75xx(DigitalMultimeter, TSPDevice, ABC):
     """Base DMM75xx device driver."""
 
     _IEEE_COMMANDS_CLASS = LegacyTSPIEEE4882Commands

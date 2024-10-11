@@ -18,7 +18,7 @@ from conftest import UNIT_TEST_TIMEOUT
 from tm_devices import DeviceManager
 
 if TYPE_CHECKING:
-    from tm_devices.drivers import SMU2460, SMU2601B
+    from tm_devices.drivers import SMU2401, SMU2460, SMU2601B, SMU6430
 
 
 # pylint: disable=too-many-locals
@@ -290,17 +290,9 @@ def test_smu2401(device_manager: DeviceManager) -> None:
     Args:
         device_manager: The DeviceManager object.
     """
-    smu = device_manager.add_smu("SMU2401-HOSTNAME")
+    smu: SMU2401 = device_manager.add_smu("SMU2401-HOSTNAME")
     assert smu.get_eventlog_status() == (True, '0,"No error"')
     assert smu.set_and_check("OUTPUT1:STATE", 1) == "1"
-    with pytest.raises(
-        NotImplementedError, match="This functionality is not available on the SMU2401 instrument."
-    ):
-        smu.run_script("name")
-    with pytest.raises(
-        NotImplementedError, match="This functionality is not available on the SMU2401 instrument."
-    ):
-        smu.load_script("name")
     assert smu.all_channel_names_list == ("OUTPUT1",)
 
 
@@ -310,15 +302,7 @@ def test_smu6430(device_manager: DeviceManager) -> None:
     Args:
         device_manager: The DeviceManager object.
     """
-    smu = device_manager.add_smu("SMU6430-HOSTNAME")
+    smu: SMU6430 = device_manager.add_smu("SMU6430-HOSTNAME")
     assert smu.get_eventlog_status() == (True, '0,"No error"')
     assert smu.set_and_check("OUTPUT1:STATE", 1) == "1"
-    with pytest.raises(
-        NotImplementedError, match="This functionality is not available on the SMU6430 instrument."
-    ):
-        smu.run_script("name")
-    with pytest.raises(
-        NotImplementedError, match="This functionality is not available on the SMU6430 instrument."
-    ):
-        smu.load_script("name")
     assert smu.all_channel_names_list == ("SOURCE1",)

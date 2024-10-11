@@ -34,6 +34,7 @@ class AWGSourceDeviceConstants(SourceDeviceConstants):
     functions: Type[SignalGeneratorFunctionsAWG] = SignalGeneratorFunctionsAWG
 
 
+# TODO: nfelt14: remove PIDevice inheritance if possible
 class AWG(TekAFGAWG, ABC):
     """Base AWG device driver."""
 

@@ -14,6 +14,7 @@ from tm_devices.helpers import print_with_timestamp
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
+# TODO: nfelt14: remove PIDevice inheritance if possible
 class TekAFGAWG(PIDevice, SignalGeneratorMixin, ExtendableMixin, ABC):
     """A private mixin for common methods and attributes for Tektronix AFG and AWG devices."""
 

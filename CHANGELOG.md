@@ -30,6 +30,7 @@ deprecated functionality. Almost all changes only impacted the internal workings
 
 - <span style="color:red">BREAKING CHANGE</span>: Moved `SignalGenerator` class to the `driver_mixins` submodule and renamed it to `TekAFGAWG`.
 - <span style="color:red">BREAKING CHANGE</span>: Moved the `Device`, `PIDevice`, `TSPDevice`, and `RESTAPIDevice` classes into a mixin folder so that they can be used as mixins rather than being part of the required inheritance structure.
+    - Due to this change, it is recommended that the specific device driver (or at least the family base class) for the device being controlled is used for type hinting.
 - <span style="color:red">BREAKING CHANGE</span>: Moved all device type subpackages (AWGs, AFGs, Scopes, SMUs, etc.) up to the top level of the `drivers` subpackage.
 - <span style="color:red">BREAKING CHANGE</span>: Converted all family base classes to inherit from the device control mixins.
 

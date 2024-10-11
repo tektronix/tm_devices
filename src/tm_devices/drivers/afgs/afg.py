@@ -34,6 +34,7 @@ class AFGSourceDeviceConstants(SourceDeviceConstants):
     functions: Type[SignalGeneratorFunctionsAFG] = SignalGeneratorFunctionsAFG
 
 
+# TODO: nfelt14: remove PIDevice inheritance if possible
 @family_base_class
 class AFG(TekAFGAWG, ABC):
     """Base AFG device driver."""

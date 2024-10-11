@@ -6,12 +6,11 @@ PSUs include PI devices.
 from abc import ABC
 from typing import Tuple, Union
 
-from tm_devices.driver_mixins.device_control.pi_device import PIDevice
 from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TekAFGAWG
 from tm_devices.helpers import DeviceTypes
 
 
-class PowerSupplyUnit(PIDevice, ABC):
+class PowerSupplyUnit(ABC):  # noqa: B024
     """Base Power Supply Unit (PSU) device driver."""
 
     _DEVICE_TYPE = DeviceTypes.PSU.value
@@ -32,6 +31,7 @@ class PowerSupplyUnit(PIDevice, ABC):
         Returns:
             Boolean indicating if the check passed or failed and a string with the results.
         """
+        # TODO: nfelt14: Move this shared implementation into a mixin for all classes that use it
         return TekAFGAWG.expect_esr(self, esr, error_string)  # type: ignore[arg-type]
 
     def get_eventlog_status(self) -> Tuple[bool, str]:
@@ -40,4 +40,5 @@ class PowerSupplyUnit(PIDevice, ABC):
         Returns:
             Boolean indicating no error, String containing concatenated contents of event log.
         """
+        # TODO: nfelt14: Move this shared implementation into a mixin for all classes that use it
         return TekAFGAWG.get_eventlog_status(self)  # type: ignore[arg-type]

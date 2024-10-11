@@ -3,11 +3,10 @@
 from __future__ import annotations
 
 from abc import ABC
-from typing import Optional, Tuple, TYPE_CHECKING, Union
+from typing import Tuple, TYPE_CHECKING, Union
 
 from tm_devices.driver_mixins.device_control.device import family_base_class
 from tm_devices.driver_mixins.device_control.pi_device import PIDevice
-from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import IEEE4882Commands
 from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TekAFGAWG
 from tm_devices.drivers.source_measure_units.source_measure_unit import SourceMeasureUnit
 
@@ -15,14 +14,12 @@ from tm_devices.drivers.source_measure_units.source_measure_unit import SourceMe
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 if TYPE_CHECKING:
-    import os
+    from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import IEEE4882Commands
 
 
 @family_base_class
-class SMU24xxStandard(SourceMeasureUnit, ABC):
+class SMU24xxStandard(SourceMeasureUnit, PIDevice, ABC):
     """Base SMU24xxStandard device driver."""
-
-    _IEEE_COMMANDS_CLASS = IEEE4882Commands
 
     ################################################################################################
     # Magic Methods
@@ -37,7 +34,7 @@ class SMU24xxStandard(SourceMeasureUnit, ABC):
         return tuple(f"OUTPUT{x+1}" for x in range(self.total_channels))
 
     @property
-    def ieee_cmds(self) -> IEEE4882Commands:  # pyright: ignore [reportIncompatibleMethodOverride]
+    def ieee_cmds(self) -> IEEE4882Commands:
         """Return an internal class containing methods for the standard IEEE 488.2 command set."""
         return self._ieee_cmds
 
@@ -62,6 +59,7 @@ class SMU24xxStandard(SourceMeasureUnit, ABC):
         Returns:
             Boolean indicating if the check passed or failed and a string with the results.
         """
+        # TODO: nfelt14: Move this shared implementation into a mixin for all classes that use it
         return TekAFGAWG.expect_esr(self, esr, error_string)  # type: ignore[arg-type]
 
     def get_eventlog_status(self) -> Tuple[bool, str]:
@@ -70,68 +68,8 @@ class SMU24xxStandard(SourceMeasureUnit, ABC):
         Returns:
             Boolean indicating no error, String containing concatenated contents of event log.
         """
+        # TODO: nfelt14: Move this shared implementation into a mixin for all classes that use it
         return TekAFGAWG.get_eventlog_status(self)  # type: ignore[arg-type]
-
-    def run_script(self, script_name: str) -> None:  # noqa: ARG002
-        """Not Implemented."""
-        msg = f"This functionality is not available on the {self.__class__.__name__} instrument."
-        raise NotImplementedError(msg)
-
-    def set_and_check(  # noqa: PLR0913
-        self,
-        command: str,
-        value: Union[str, float],
-        tolerance: float = 0,
-        percentage: bool = False,
-        remove_quotes: bool = False,
-        custom_message_prefix: str = "",
-        *,
-        expected_value: Optional[Union[str, float]] = None,
-        opc: bool = False,
-    ) -> str:
-        """Send the given command with the given value and then verify the results.
-
-        Args:
-            command: The command to send.
-                For example: ``:AFG:FUNCTION``
-            value: The value being set by the command.
-                For example: ``SINE``
-            tolerance: The acceptable difference between two floating point values.
-            percentage: A boolean indicating what kind of tolerance check to perform.
-                 False means absolute tolerance: +/- tolerance.
-                 True means percent tolerance: +/- (tolerance / 100) * value.
-            remove_quotes: Set this to True to remove all double quotes from the returned value.
-            custom_message_prefix: A custom message to be prepended to the failure message.
-            expected_value: An optional, alternative value expected to be returned.
-            opc: Boolean indicating if ``*OPC?`` should be queried after sending the command.
-
-        Returns:
-            The output of the query portion of the method.
-        """
-        return PIDevice.set_and_check(
-            self,
-            command,
-            value,
-            tolerance,
-            percentage,
-            remove_quotes,
-            custom_message_prefix,
-            expected_value=expected_value,
-            opc=opc,
-        )
-
-    def load_script(
-        self,
-        script_name: str,  # noqa: ARG002
-        *,
-        script_body: str = "",  # noqa: ARG002
-        file_path: Union[str, os.PathLike[str], None] = None,  # noqa: ARG002
-        run_script: bool = False,  # noqa: ARG002
-        to_nv_memory: bool = False,  # noqa: ARG002
-    ) -> None:
-        """Not Implemented."""
-        msg = f"This functionality is not available on the {self.__class__.__name__} instrument."
-        raise NotImplementedError(msg)
 
     ################################################################################################
     # Private Methods

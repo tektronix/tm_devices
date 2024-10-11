@@ -12,6 +12,7 @@ from tm_devices.helpers import DeviceTypes
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
+# TODO: nfelt14: remove PIDevice inheritance if possible
 class Scope(PIDevice, ABC):
     """Base Scope device driver."""
 

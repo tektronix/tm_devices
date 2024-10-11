@@ -2,13 +2,11 @@
 
 from abc import ABC
 
-from tm_devices.driver_mixins.device_control.device import family_base_class
-from tm_devices.driver_mixins.device_control.tsp_device import TSPDevice
 from tm_devices.helpers import DeviceTypes
 
 
-@family_base_class
-class DataAcquisitionSystem(TSPDevice, ABC):
+# pylint: disable=too-few-public-methods
+class DataAcquisitionSystem(ABC):  # noqa: B024
     """Base Data Acquisition (DAQ) device driver."""
 
     _DEVICE_TYPE = DeviceTypes.DAQ.value

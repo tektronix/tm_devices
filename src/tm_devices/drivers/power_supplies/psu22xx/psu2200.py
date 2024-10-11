@@ -5,6 +5,7 @@ from typing import Tuple
 from packaging.version import Version
 
 from tm_devices.driver_mixins.device_control.device import family_base_class
+from tm_devices.driver_mixins.device_control.pi_device import PIDevice
 from tm_devices.drivers.power_supplies.power_supply import PowerSupplyUnit
 from tm_devices.helpers import get_version
 
@@ -13,7 +14,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class PSU2200(PowerSupplyUnit):
+class PSU2200(PowerSupplyUnit, PIDevice):
     """2200 Base device driver for the 22xx family of power supplies."""
 
     ################################################################################################

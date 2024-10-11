@@ -5,6 +5,8 @@ from typing import Tuple
 import pyvisa as visa
 
 from tm_devices.commands import DAQ6510Mixin
+from tm_devices.driver_mixins.device_control.device import family_base_class
+from tm_devices.driver_mixins.device_control.tsp_device import TSPDevice
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import (
     LegacyTSPIEEE4882Commands,
 )
@@ -17,7 +19,8 @@ from tm_devices.helpers import DeviceConfigEntry
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class DAQ6510(DAQ6510Mixin, DataAcquisitionSystem):
+@family_base_class
+class DAQ6510(DAQ6510Mixin, DataAcquisitionSystem, TSPDevice):
     """DAQ6510 device driver."""
 
     _IEEE_COMMANDS_CLASS = LegacyTSPIEEE4882Commands

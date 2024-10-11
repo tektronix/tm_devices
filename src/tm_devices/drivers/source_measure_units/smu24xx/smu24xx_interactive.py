@@ -10,6 +10,7 @@ from tm_devices.commands import (
     SMU2470Commands,
 )
 from tm_devices.driver_mixins.device_control.device import family_base_class
+from tm_devices.driver_mixins.device_control.tsp_device import TSPDevice
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import (
     LegacyTSPIEEE4882Commands,
 )
@@ -20,7 +21,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class SMU24xxInteractive(SourceMeasureUnit, ABC):
+class SMU24xxInteractive(SourceMeasureUnit, TSPDevice, ABC):
     """Base SMU24xxInteractive device driver."""
 
     _IEEE_COMMANDS_CLASS = LegacyTSPIEEE4882Commands
