@@ -6,7 +6,7 @@ PSUs include PI devices.
 from abc import ABC
 from typing import Tuple, Union
 
-from tm_devices.driver_mixins.tek_afg_awg_mixin import TekAFGAWG
+from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TekAFGAWG
 from tm_devices.drivers.pi.pi_device import PIDevice
 from tm_devices.helpers import DeviceTypes
 

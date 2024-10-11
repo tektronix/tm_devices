@@ -7,7 +7,7 @@ from typing import Any, cast, Dict, Mapping, Optional, Tuple
 
 from packaging.version import Version
 
-from tm_devices.drivers.api.rest_api.margin_testers.margin_tester import MarginTester
+from tm_devices.drivers.margin_testers.margin_tester import MarginTester
 from tm_devices.helpers import DeviceConfigEntry
 
 # noinspection PyPep8Naming

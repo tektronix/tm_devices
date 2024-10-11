@@ -5,13 +5,13 @@ from dataclasses import dataclass
 from types import MappingProxyType
 from typing import ClassVar, Dict, List, Literal, Optional, Tuple, Type
 
-from tm_devices.driver_mixins.class_extension_mixin import ExtendableMixin
-from tm_devices.driver_mixins.signal_generator_mixin import (
+from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin import (
     ExtendedSourceDeviceConstants,
     ParameterBounds,
     SourceDeviceConstants,
 )
-from tm_devices.driver_mixins.tek_afg_awg_mixin import TekAFGAWG
+from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
+from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TekAFGAWG
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.base_source_channel import BaseSourceChannel
 from tm_devices.helpers import DeviceTypes, LoadImpedanceAFG

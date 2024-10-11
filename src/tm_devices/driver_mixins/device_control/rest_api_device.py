@@ -9,11 +9,11 @@ from typing import Any, cast, Dict, Mapping, Optional, Tuple, Union
 
 import requests
 
-from tm_devices.drivers.api.api_device import APIDevice
+from tm_devices.drivers.device import Device
 from tm_devices.helpers import DeviceConfigEntry, print_with_timestamp, SupportedRequestTypes
 
 
-class RESTAPIDevice(APIDevice, ABC):
+class RESTAPIDevice(Device, ABC):
     """Base REST Application Programming Interface (API) device driver."""
 
     API_VERSIONS: Mapping[int, str] = MappingProxyType({})

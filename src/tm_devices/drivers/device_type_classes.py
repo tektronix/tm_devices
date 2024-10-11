@@ -2,8 +2,8 @@
 
 from typing import Final, Tuple, Type
 
-from tm_devices.drivers.api.rest_api.margin_testers.margin_tester import MarginTester
 from tm_devices.drivers.device import Device
+from tm_devices.drivers.margin_testers.margin_tester import MarginTester
 from tm_devices.drivers.pi.afgs.afg import AFG
 from tm_devices.drivers.pi.awgs.awg import AWG
 from tm_devices.drivers.pi.data_acquisition_systems.data_acquisition_system import (

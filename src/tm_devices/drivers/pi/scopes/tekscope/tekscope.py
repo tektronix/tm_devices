@@ -22,7 +22,7 @@ from tm_devices.commands import (
     MSO6BCommands,
     MSO6Commands,
 )
-from tm_devices.driver_mixins.analysis_object_mixins import (
+from tm_devices.driver_mixins.abstract_device_functionality.analysis_object_mixins import (
     BusMixin,
     HistogramMixin,
     MathMixin,
@@ -32,14 +32,14 @@ from tm_devices.driver_mixins.analysis_object_mixins import (
     ReferenceMixin,
     SearchMixin,
 )
-from tm_devices.driver_mixins.licensed_mixin import LicensedMixin
-from tm_devices.driver_mixins.signal_generator_mixin import (
+from tm_devices.driver_mixins.abstract_device_functionality.licensed_mixin import LicensedMixin
+from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin import (
     ExtendedSourceDeviceConstants,
     ParameterBounds,
     SignalGeneratorMixin,
     SourceDeviceConstants,
 )
-from tm_devices.driver_mixins.usb_drives_mixin import USBDrivesMixin
+from tm_devices.driver_mixins.abstract_device_functionality.usb_drives_mixin import USBDrivesMixin
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.base_afg_source_channel import BaseAFGSourceChannel
 from tm_devices.drivers.pi.scopes.scope import Scope

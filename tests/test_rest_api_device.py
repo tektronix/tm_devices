@@ -10,7 +10,10 @@ import requests
 from packaging.version import Version
 
 from mock_server import INDEX_RESPONSE, PORT
-from tm_devices.drivers.api.rest_api.rest_api_device import RESTAPIDevice, SupportedRequestTypes
+from tm_devices.driver_mixins.device_control.rest_api_device import (
+    RESTAPIDevice,
+    SupportedRequestTypes,
+)
 from tm_devices.drivers.device import family_base_class
 
 # noinspection PyPep8Naming

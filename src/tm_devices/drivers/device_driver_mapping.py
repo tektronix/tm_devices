@@ -3,8 +3,8 @@
 from types import MappingProxyType
 from typing import Mapping, Type
 
-from tm_devices.drivers.api.rest_api.margin_testers.tmt4 import TMT4
 from tm_devices.drivers.device import Device
+from tm_devices.drivers.margin_testers.tmt4 import TMT4
 from tm_devices.drivers.pi.afgs.afg3k import AFG3K
 from tm_devices.drivers.pi.afgs.afg3kb import AFG3KB
 from tm_devices.drivers.pi.afgs.afg3kc import AFG3KC

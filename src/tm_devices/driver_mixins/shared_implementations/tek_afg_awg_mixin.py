@@ -3,8 +3,10 @@
 from abc import ABC
 from typing import Tuple, Union
 
-from tm_devices.driver_mixins.class_extension_mixin import ExtendableMixin
-from tm_devices.driver_mixins.signal_generator_mixin import SignalGeneratorMixin
+from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin import (
+    SignalGeneratorMixin,
+)
+from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
 from tm_devices.drivers.pi.pi_device import PIDevice
 from tm_devices.helpers import print_with_timestamp
 

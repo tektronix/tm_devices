@@ -10,7 +10,7 @@ from packaging.version import Version
 
 from mock_server import MOCK_ABOUT_INFO, PORT
 from tm_devices import DeviceManager
-from tm_devices.drivers.api.rest_api.margin_testers.margin_tester import MarginTester
+from tm_devices.drivers.margin_testers.margin_tester import MarginTester
 
 AUTH_TOKEN_FILE_PATH = f"{Path(__file__).parent}/samples/token.auth_token_file_path"  # nosec
 

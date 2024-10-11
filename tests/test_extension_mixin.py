@@ -17,7 +17,7 @@ from unittest import mock
 import pytest
 
 from tm_devices import DeviceManager
-from tm_devices.driver_mixins.tek_afg_awg_mixin import TekAFGAWG
+from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TekAFGAWG
 from tm_devices.drivers import AFG3K, AFG3KC
 from tm_devices.drivers.device import Device
 from tm_devices.drivers.pi.afgs.afg import AFG

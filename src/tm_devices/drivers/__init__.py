@@ -103,7 +103,7 @@ from tm_devices.drivers.pi.source_measure_units.smu60xx.smu6430 import SMU6430
 from tm_devices.drivers.pi.source_measure_units.smu60xx.smu6514 import SMU6514
 from tm_devices.drivers.pi.source_measure_units.smu60xx.smu6517b import SMU6517B
 from tm_devices.drivers.pi.systems_switches.ss3706a import SS3706A
-from tm_devices.drivers.api.rest_api.margin_testers.tmt4 import TMT4
+from tm_devices.drivers.margin_testers.tmt4 import TMT4
 
 
 __all__ = [

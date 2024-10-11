@@ -5,7 +5,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Optional, Tuple, TYPE_CHECKING, Union
 
-from tm_devices.driver_mixins.tek_afg_awg_mixin import TekAFGAWG
+from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TekAFGAWG
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.pi.ieee488_2_commands import IEEE4882Commands
 from tm_devices.drivers.pi.pi_device import PIDevice

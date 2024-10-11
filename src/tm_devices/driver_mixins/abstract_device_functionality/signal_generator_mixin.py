@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import Literal, NamedTuple, Optional, Type, TypeVar
 
-from tm_devices.driver_mixins.class_extension_mixin import ExtendableMixin
+from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
 from tm_devices.helpers.enums import (
     LoadImpedanceAFG,
     SignalGeneratorFunctionBase,

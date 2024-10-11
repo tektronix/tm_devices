@@ -18,7 +18,7 @@ from typing import (
 
 from packaging.version import Version
 
-from tm_devices.driver_mixins.class_extension_mixin import ExtendableMixin
+from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
 from tm_devices.helpers import (
     check_network_connection,
     check_port_connection,

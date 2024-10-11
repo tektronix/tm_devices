@@ -17,14 +17,14 @@ from typing import cast, Dict, Mapping, Optional, Tuple, Type, TYPE_CHECKING, Un
 from typing_extensions import TypeVar
 
 from tm_devices.components import DMConfigParser
-from tm_devices.drivers.api.rest_api.margin_testers.margin_tester import MarginTester
-from tm_devices.drivers.api.rest_api.rest_api_device import RESTAPIDevice
+from tm_devices.driver_mixins.device_control.rest_api_device import RESTAPIDevice
 from tm_devices.drivers.device import Device
 
 # noinspection PyProtectedMember
 from tm_devices.drivers.device_driver_mapping import (
     _DEVICE_DRIVER_MODEL_STR_MAPPING,  # pyright: ignore[reportPrivateUsage]
 )
+from tm_devices.drivers.margin_testers.margin_tester import MarginTester
 from tm_devices.drivers.pi.afgs.afg import AFG
 from tm_devices.drivers.pi.awgs.awg import AWG
 from tm_devices.drivers.pi.data_acquisition_systems.data_acquisition_system import (
