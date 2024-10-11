@@ -509,11 +509,11 @@ def test_tekscope2k(device_manager: DeviceManager, tmp_path: pathlib.Path) -> No
     # Test toggle all channels on/off
     scope.turn_all_channels_on()
     for ch_name in scope.all_channel_names_list:
-        assert scope.query(f"SELECT:{ch_name}?") == "1"
+        assert scope.query(f"SELECT:{ch_name}?") == "1"  # or 'ON'
 
     scope.turn_all_channels_off()
     for ch_name in scope.all_channel_names_list:
-        assert scope.query(f"SELECT:{ch_name}?") == "0"
+        assert scope.query(f"SELECT:{ch_name}?") == "0"  # or 'OFF'
 
     filename = tmp_path / "temp.txt"
     curve = scope.curve_query(1, wfm_type="TimeDomain", output_csv_file=str(filename))
