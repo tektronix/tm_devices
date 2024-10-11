@@ -42,7 +42,7 @@ from typing import Dict, Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, DefaultDictDeviceCommunication, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_device import TSPDevice
 
 
 #  pylint: disable=too-many-instance-attributes,too-many-public-methods

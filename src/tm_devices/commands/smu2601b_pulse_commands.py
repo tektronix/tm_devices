@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.drivers.pi.tsp_device import TSPDevice
+from tm_devices.driver_mixins.device_control.tsp_device import TSPDevice
 
 from .gen_7s2p1p_smu.beeper import Beeper
 from .gen_7s2p1p_smu.buffervar import Buffervar

@@ -17,13 +17,13 @@ from unittest import mock
 import pytest
 
 from tm_devices import DeviceManager
+from tm_devices.driver_mixins.device_control.device import Device
+from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.tsp_device import TSPDevice
 from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TekAFGAWG
 from tm_devices.drivers import AFG3K, AFG3KC
-from tm_devices.drivers.device import Device
-from tm_devices.drivers.pi.afgs.afg import AFG
-from tm_devices.drivers.pi.pi_device import PIDevice
-from tm_devices.drivers.pi.scopes.scope import Scope
-from tm_devices.drivers.pi.tsp_device import TSPDevice
+from tm_devices.drivers.afgs.afg import AFG
+from tm_devices.drivers.scopes.scope import Scope
 
 INITIAL_DEVICE_INPUT = '''import abc
 from abc import ABC
@@ -137,9 +137,9 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
     local_count = gen_count()
 
     golden_stub_dir = Path(__file__).parent / "samples" / "golden_stubs"
-    stub_device_filepath = Path("drivers/device.pyi")
-    stub_pi_device_filepath = Path("drivers/pi/pi_device.pyi")
-    stub_tsp_device_filepath = Path("drivers/pi/tsp_device.pyi")
+    stub_device_filepath = Path("driver_mixins/device_control/device.pyi")
+    stub_pi_device_filepath = Path("driver_mixins/device_control/pi_device.pyi")
+    stub_tsp_device_filepath = Path("driver_mixins/device_control/tsp_device.pyi")
     generated_stub_dir = (
         Path(__file__).parent
         / "samples/generated_stubs"

@@ -7,7 +7,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.drivers.pi.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_device import PIDevice
 
 from .gen_3skc3w_dpo.trigger import Trigger
 from .gen_5xwdsk_dpodsamso.errordetector import Errordetector

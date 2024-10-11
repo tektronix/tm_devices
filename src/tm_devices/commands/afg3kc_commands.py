@@ -7,7 +7,7 @@ Please report an issue if one is found.
 
 from typing import Any, Optional
 
-from tm_devices.drivers.pi.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_device import PIDevice
 
 from .gen_22daqs_afg.afgcontrol import Afgcontrol
 from .gen_22daqs_afg.data import Data

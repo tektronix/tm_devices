@@ -16,7 +16,7 @@ from packaging.version import Version
 
 from tm_devices import DeviceManager, register_additional_usbtmc_mapping
 from tm_devices.drivers import MSO2, MSO2KB, MSO5, MSO5B, MSO6, MSO70KDX, TekScopePC
-from tm_devices.drivers.pi.scopes.tekscope.tekscope import (
+from tm_devices.drivers.scopes.tekscope.tekscope import (
     AbstractTekScope,
     ExtendedSourceDeviceConstants,
     ParameterBounds,
@@ -229,7 +229,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     assert mso2_scope.usb_drives == ("E:",)
     assert mso2_scope.ip_address == ""
     with mock.patch(
-        "tm_devices.drivers.pi.scopes.tekscope.mso2.MSO2.license_list",
+        "tm_devices.drivers.scopes.tekscope.mso2.MSO2.license_list",
         property(mock.MagicMock(return_value=("MSO",))),
     ):
         # reset the cache

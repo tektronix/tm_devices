@@ -13,7 +13,7 @@ from functools import total_ordering
 from typing import Any, Callable, DefaultDict, Optional, Type, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.device import Device
+    from tm_devices.driver_mixins.device_control.device import Device
 
 END_OF_STRING_DIGITS = re.compile(r"([-\d]+)]?$")
 MIDDLE_OF_STRING_DIGITS = re.compile(r"([-\d]+)]?")

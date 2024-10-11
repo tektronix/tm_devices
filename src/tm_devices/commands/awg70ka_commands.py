@@ -7,7 +7,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.drivers.pi.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_device import PIDevice
 
 from .gen_3n9auv_awg.active import Active
 from .gen_3n9auv_awg.calibration import Calibration

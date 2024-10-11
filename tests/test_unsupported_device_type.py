@@ -7,7 +7,7 @@ from typing import Tuple, Union
 import pytest
 
 from tm_devices import DeviceManager
-from tm_devices.drivers.pi.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_device import PIDevice
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813

@@ -24,7 +24,14 @@ Things to be included in the next release go here.
 
 ### Changed
 
+NOTE: Despite all the officially breaking changes, the actual drivers were only affected in
+very minor ways. The primary impact to the drivers was simply the removal of previously
+deprecated functionality.
+
 - <span style="color:red">BREAKING CHANGE</span>: Moved `SignalGenerator` class to the `driver_mixins` submodule and renamed it to `TekAFGAWG`.
+- <span style="color:red">BREAKING CHANGE</span>: Moved the `Device`, `PIDevice`, `TSPDevice`, and `RESTAPIDevice` classes into a mixin folder so that they can be used as mixins rather than being part of the required inheritance structure.
+- <span style="color:red">BREAKING CHANGE</span>: Moved all device type subpackages (AWGs, AFGs, Scopes, SMUs, etc.) up to the top level of the `drivers` subpackage.
+- <span style="color:red">BREAKING CHANGE</span>: Converted all family base classes to inherit from the device control mixins.
 
 ### Removed
 
@@ -148,7 +155,7 @@ Things to be included in the next release go here.
 
 - feat: Added SourceXpress API support and AWG defects fix ([#260](https://github.com/tektronix/tm_devices/pull/260))
 - gh-actions(deps): bump hynek/build-and-inspect-python-package ([#258](https://github.com/tektronix/tm_devices/pull/258))
-- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#257](https://github.com/tektronix/tm_devices/pull/257))
+- python-deps(deps-dev): bump the python-dependenc ies group with 2 updates ([#257](https://github.com/tektronix/tm_devices/pull/257))
 - Update jinja templates ([#254](https://github.com/tektronix/tm_devices/pull/254))
 
 ### Added

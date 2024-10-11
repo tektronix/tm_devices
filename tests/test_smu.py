@@ -140,7 +140,7 @@ def test_smu(  # noqa: PLR0915
     )
     print(smu)
     expected_stdout = f"""{'=' * 45} SMU {smu.device_number} {'=' * 45}
-  <class 'tm_devices.drivers.pi.source_measure_units.smu26xx.smu2601b.SMU2601B'> object at {id(smu)}
+  <class 'tm_devices.drivers.source_measure_units.smu26xx.smu2601b.SMU2601B'> object at {id(smu)}
     address='SMU2601B-HOSTNAME'
     alias='SMU-DEVICE'
     all_channel_names_list=('a',)

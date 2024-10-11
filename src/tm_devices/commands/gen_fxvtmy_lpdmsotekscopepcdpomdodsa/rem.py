@@ -20,7 +20,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_device import PIDevice
 
 
 class Rem(SCPICmdWrite):

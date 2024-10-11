@@ -9,8 +9,8 @@ from typing import Any, Dict, Mapping, MutableMapping, Tuple
 from packaging.version import Version
 from requests.structures import CaseInsensitiveDict
 
+from tm_devices.driver_mixins.device_control.device import family_base_class
 from tm_devices.driver_mixins.device_control.rest_api_device import RESTAPIDevice
-from tm_devices.drivers.device import family_base_class
 from tm_devices.helpers import DeviceConfigEntry, DeviceTypes
 
 # noinspection PyPep8Naming

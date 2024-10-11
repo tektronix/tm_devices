@@ -15,7 +15,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_device import TSPDevice
 
 
 # pylint: disable=too-few-public-methods

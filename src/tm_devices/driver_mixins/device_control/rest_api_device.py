@@ -9,7 +9,7 @@ from typing import Any, cast, Dict, Mapping, Optional, Tuple, Union
 
 import requests
 
-from tm_devices.drivers.device import Device
+from tm_devices.driver_mixins.device_control.device import Device
 from tm_devices.helpers import DeviceConfigEntry, print_with_timestamp, SupportedRequestTypes
 
 

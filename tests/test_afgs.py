@@ -10,7 +10,7 @@ from packaging.version import Version
 
 from conftest import UNIT_TEST_TIMEOUT
 from tm_devices import DeviceManager
-from tm_devices.drivers.pi.afgs.afg import (
+from tm_devices.drivers.afgs.afg import (
     AFGSourceDeviceConstants,
     ExtendedSourceDeviceConstants,
     ParameterBounds,

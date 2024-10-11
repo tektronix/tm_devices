@@ -15,7 +15,7 @@ from typing import Any, cast, DefaultDict, Optional, Set, Tuple, Type, TYPE_CHEC
 from .generic_commands import BaseCmd, END_OF_STRING_DIGITS, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_device import PIDevice
 
 MAX_CHANNELS = 8
 MAX_DIGITAL_BITS = 16

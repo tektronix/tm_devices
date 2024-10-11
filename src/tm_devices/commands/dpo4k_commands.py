@@ -8,7 +8,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.drivers.pi.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_device import PIDevice
 
 from .gen_1jzp7o_mdodpo.trigger import Trigger
 from .gen_1kozfv_dpo.search import Search

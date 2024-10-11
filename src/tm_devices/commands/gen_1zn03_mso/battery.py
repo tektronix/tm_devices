@@ -23,7 +23,7 @@ from typing import Dict, Optional, TYPE_CHECKING
 from ..helpers import DefaultDictPassKeyToFactory, SCPICmdRead, ValidatedDynamicNumberCmd
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_device import PIDevice
 
 
 class BatterySlotItemTimetofull(SCPICmdRead):
