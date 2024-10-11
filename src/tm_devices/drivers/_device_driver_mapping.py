@@ -1,9 +1,8 @@
 """The mapping for all device drivers."""
 
 from types import MappingProxyType
-from typing import Mapping, Type
+from typing import Mapping, Type, TYPE_CHECKING
 
-from tm_devices.driver_mixins.device_control.device import Device
 from tm_devices.drivers.afgs.afg3k import AFG3K
 from tm_devices.drivers.afgs.afg3kb import AFG3KB
 from tm_devices.drivers.afgs.afg3kc import AFG3KC
@@ -105,136 +104,121 @@ from tm_devices.drivers.source_measure_units.smu60xx.smu6517b import SMU6517B
 from tm_devices.drivers.systems_switches.ss3706a import SS3706A
 from tm_devices.helpers.enums import SupportedModels
 
-# IMPORTANT: Any additions to this class which support a USBTMC connection need to be added to the
-# tm_devices.helpers.constants_and_dataclasses.USB_MODEL_ID_LOOKUP constant as well.
-DEVICE_DRIVER_MODEL_MAPPING: Mapping[SupportedModels, Type[Device]] = MappingProxyType(
-    {
-        # AFGs
-        SupportedModels.AFG3K: AFG3K,
-        SupportedModels.AFG3KB: AFG3KB,
-        SupportedModels.AFG3KC: AFG3KC,
-        SupportedModels.AFG31K: AFG31K,
-        # AWGs
-        SupportedModels.AWG5200: AWG5200,
-        SupportedModels.AWG5K: AWG5K,
-        SupportedModels.AWG5KB: AWG5KB,
-        SupportedModels.AWG5KC: AWG5KC,
-        SupportedModels.AWG7K: AWG7K,
-        SupportedModels.AWG7KB: AWG7KB,
-        SupportedModels.AWG7KC: AWG7KC,
-        SupportedModels.AWG70KA: AWG70KA,
-        SupportedModels.AWG70KB: AWG70KB,
-        # Scopes
-        SupportedModels.DPO5K: DPO5K,
-        SupportedModels.DPO5KB: DPO5KB,
-        SupportedModels.DPO7K: DPO7K,
-        SupportedModels.DPO7KC: DPO7KC,
-        SupportedModels.DPO70K: DPO70K,
-        SupportedModels.DPO70KC: DPO70KC,
-        SupportedModels.DPO70KD: DPO70KD,
-        SupportedModels.DPO70KDX: DPO70KDX,
-        SupportedModels.DPO70KSX: DPO70KSX,
-        SupportedModels.DSA70K: DSA70K,
-        SupportedModels.DSA70KC: DSA70KC,
-        SupportedModels.DSA70KD: DSA70KD,
-        SupportedModels.LPD6: LPD6,
-        SupportedModels.MSO2K: MSO2K,
-        SupportedModels.MSO2KB: MSO2KB,
-        SupportedModels.DPO2K: DPO2K,
-        SupportedModels.DPO2KB: DPO2KB,
-        SupportedModels.MDO3: MDO3,
-        SupportedModels.MDO3K: MDO3K,
-        SupportedModels.MDO4K: MDO4K,
-        SupportedModels.MDO4KB: MDO4KB,
-        SupportedModels.MDO4KC: MDO4KC,
-        SupportedModels.MSO4K: MSO4K,
-        SupportedModels.MSO4KB: MSO4KB,
-        SupportedModels.DPO4K: DPO4K,
-        SupportedModels.DPO4KB: DPO4KB,
-        SupportedModels.MSO2: MSO2,
-        SupportedModels.MSO4: MSO4,
-        SupportedModels.MSO4B: MSO4B,
-        SupportedModels.MSO5: MSO5,
-        SupportedModels.MSO5B: MSO5B,
-        SupportedModels.MSO5LP: MSO5LP,
-        SupportedModels.MSO6: MSO6,
-        SupportedModels.MSO6B: MSO6B,
-        SupportedModels.MSO5K: MSO5K,
-        SupportedModels.MSO5KB: MSO5KB,
-        SupportedModels.MSO70K: MSO70K,
-        SupportedModels.MSO70KC: MSO70KC,
-        SupportedModels.MSO70KDX: MSO70KDX,
-        SupportedModels.TEKSCOPEPC: TekScopePC,
-        SupportedModels.TSOVU: TSOVu,
-        # Margin Testers
-        SupportedModels.TMT4: TMT4,
-        # Source Measure Units
-        SupportedModels.SMU2400: SMU2400,
-        SupportedModels.SMU2401: SMU2401,
-        SupportedModels.SMU2410: SMU2410,
-        SupportedModels.SMU2450: SMU2450,
-        SupportedModels.SMU2460: SMU2460,
-        SupportedModels.SMU2461: SMU2461,
-        SupportedModels.SMU2470: SMU2470,
-        SupportedModels.SMU2601B: SMU2601B,
-        SupportedModels.SMU2601B_PULSE: SMU2601BPulse,
-        SupportedModels.SMU2602B: SMU2602B,
-        SupportedModels.SMU2604B: SMU2604B,
-        SupportedModels.SMU2606B: SMU2606B,
-        SupportedModels.SMU2611B: SMU2611B,
-        SupportedModels.SMU2612B: SMU2612B,
-        SupportedModels.SMU2614B: SMU2614B,
-        SupportedModels.SMU2634B: SMU2634B,
-        SupportedModels.SMU2635B: SMU2635B,
-        SupportedModels.SMU2636B: SMU2636B,
-        SupportedModels.SMU2651A: SMU2651A,
-        SupportedModels.SMU2657A: SMU2657A,
-        SupportedModels.SMU2601A: SMU2601A,
-        SupportedModels.SMU2602A: SMU2602A,
-        SupportedModels.SMU2604A: SMU2604A,
-        SupportedModels.SMU2611A: SMU2611A,
-        SupportedModels.SMU2612A: SMU2612A,
-        SupportedModels.SMU2614A: SMU2614A,
-        SupportedModels.SMU2634A: SMU2634A,
-        SupportedModels.SMU2635A: SMU2635A,
-        SupportedModels.SMU2636A: SMU2636A,
-        SupportedModels.SMU6430: SMU6430,
-        SupportedModels.SMU6514: SMU6514,
-        SupportedModels.SMU6517B: SMU6517B,
-        # Power Supplies
-        SupportedModels.PSU2200: PSU2200,
-        SupportedModels.PSU2220: PSU2220,
-        SupportedModels.PSU2230: PSU2230,
-        SupportedModels.PSU2231: PSU2231,
-        SupportedModels.PSU2231A: PSU2231A,
-        SupportedModels.PSU2280: PSU2280,
-        SupportedModels.PSU2281: PSU2281,
-        # Digital Multimeters
-        SupportedModels.DMM6500: DMM6500,
-        SupportedModels.DMM7510: DMM7510,
-        SupportedModels.DMM7512: DMM7512,
-        # Data Acquisition System
-        SupportedModels.DAQ6510: DAQ6510,
-        # Systems Switches
-        SupportedModels.SS3706A: SS3706A,
-    }
-)
-"""A mapping of device model series names to their device driver objects.
-
-Any additions to this class which support a USBTMC connection need to be added to
-the [`tm_devices.helpers.constants_and_dataclasses.USB_MODEL_ID_LOOKUP`][] constant as well.
-
-!!! danger "Deprecated"
-    This mapping is deprecated since it is only used internally by the
-    [`DeviceManager`][tm_devices.DeviceManager].
-"""
+if TYPE_CHECKING:
+    from tm_devices.driver_mixins.device_control.device import Device
 
 ####################################################################################################
 # Private Attributes
 ####################################################################################################
-# TODO: deprecation: Move the contents of DEVICE_DRIVER_MODEL_MAPPING into this attribute,
-#  remove the old DEVICE_DRIVER_MODEL_MAPPING constant, and make this entire module (file) private
-#  in the next major release
 _DEVICE_DRIVER_MODEL_STR_MAPPING: "Mapping[str, Type[Device]]" = MappingProxyType(
-    {key.value: value for key, value in DEVICE_DRIVER_MODEL_MAPPING.items()}
+    {
+        # AFGs
+        SupportedModels.AFG3K.value: AFG3K,
+        SupportedModels.AFG3KB.value: AFG3KB,
+        SupportedModels.AFG3KC.value: AFG3KC,
+        SupportedModels.AFG31K.value: AFG31K,
+        # AWGs
+        SupportedModels.AWG5200.value: AWG5200,
+        SupportedModels.AWG5K.value: AWG5K,
+        SupportedModels.AWG5KB.value: AWG5KB,
+        SupportedModels.AWG5KC.value: AWG5KC,
+        SupportedModels.AWG7K.value: AWG7K,
+        SupportedModels.AWG7KB.value: AWG7KB,
+        SupportedModels.AWG7KC.value: AWG7KC,
+        SupportedModels.AWG70KA.value: AWG70KA,
+        SupportedModels.AWG70KB.value: AWG70KB,
+        # Scopes
+        SupportedModels.DPO5K.value: DPO5K,
+        SupportedModels.DPO5KB.value: DPO5KB,
+        SupportedModels.DPO7K.value: DPO7K,
+        SupportedModels.DPO7KC.value: DPO7KC,
+        SupportedModels.DPO70K.value: DPO70K,
+        SupportedModels.DPO70KC.value: DPO70KC,
+        SupportedModels.DPO70KD.value: DPO70KD,
+        SupportedModels.DPO70KDX.value: DPO70KDX,
+        SupportedModels.DPO70KSX.value: DPO70KSX,
+        SupportedModels.DSA70K.value: DSA70K,
+        SupportedModels.DSA70KC.value: DSA70KC,
+        SupportedModels.DSA70KD.value: DSA70KD,
+        SupportedModels.LPD6.value: LPD6,
+        SupportedModels.MSO2K.value: MSO2K,
+        SupportedModels.MSO2KB.value: MSO2KB,
+        SupportedModels.DPO2K.value: DPO2K,
+        SupportedModels.DPO2KB.value: DPO2KB,
+        SupportedModels.MDO3.value: MDO3,
+        SupportedModels.MDO3K.value: MDO3K,
+        SupportedModels.MDO4K.value: MDO4K,
+        SupportedModels.MDO4KB.value: MDO4KB,
+        SupportedModels.MDO4KC.value: MDO4KC,
+        SupportedModels.MSO4K.value: MSO4K,
+        SupportedModels.MSO4KB.value: MSO4KB,
+        SupportedModels.DPO4K.value: DPO4K,
+        SupportedModels.DPO4KB.value: DPO4KB,
+        SupportedModels.MSO2.value: MSO2,
+        SupportedModels.MSO4.value: MSO4,
+        SupportedModels.MSO4B.value: MSO4B,
+        SupportedModels.MSO5.value: MSO5,
+        SupportedModels.MSO5B.value: MSO5B,
+        SupportedModels.MSO5LP.value: MSO5LP,
+        SupportedModels.MSO6.value: MSO6,
+        SupportedModels.MSO6B.value: MSO6B,
+        SupportedModels.MSO5K.value: MSO5K,
+        SupportedModels.MSO5KB.value: MSO5KB,
+        SupportedModels.MSO70K.value: MSO70K,
+        SupportedModels.MSO70KC.value: MSO70KC,
+        SupportedModels.MSO70KDX.value: MSO70KDX,
+        SupportedModels.TEKSCOPEPC.value: TekScopePC,
+        SupportedModels.TSOVU.value: TSOVu,
+        # Margin Testers
+        SupportedModels.TMT4.value: TMT4,
+        # Source Measure Units
+        SupportedModels.SMU2400.value: SMU2400,
+        SupportedModels.SMU2401.value: SMU2401,
+        SupportedModels.SMU2410.value: SMU2410,
+        SupportedModels.SMU2450.value: SMU2450,
+        SupportedModels.SMU2460.value: SMU2460,
+        SupportedModels.SMU2461.value: SMU2461,
+        SupportedModels.SMU2470.value: SMU2470,
+        SupportedModels.SMU2601B.value: SMU2601B,
+        SupportedModels.SMU2601B_PULSE.value: SMU2601BPulse,
+        SupportedModels.SMU2602B.value: SMU2602B,
+        SupportedModels.SMU2604B.value: SMU2604B,
+        SupportedModels.SMU2606B.value: SMU2606B,
+        SupportedModels.SMU2611B.value: SMU2611B,
+        SupportedModels.SMU2612B.value: SMU2612B,
+        SupportedModels.SMU2614B.value: SMU2614B,
+        SupportedModels.SMU2634B.value: SMU2634B,
+        SupportedModels.SMU2635B.value: SMU2635B,
+        SupportedModels.SMU2636B.value: SMU2636B,
+        SupportedModels.SMU2651A.value: SMU2651A,
+        SupportedModels.SMU2657A.value: SMU2657A,
+        SupportedModels.SMU2601A.value: SMU2601A,
+        SupportedModels.SMU2602A.value: SMU2602A,
+        SupportedModels.SMU2604A.value: SMU2604A,
+        SupportedModels.SMU2611A.value: SMU2611A,
+        SupportedModels.SMU2612A.value: SMU2612A,
+        SupportedModels.SMU2614A.value: SMU2614A,
+        SupportedModels.SMU2634A.value: SMU2634A,
+        SupportedModels.SMU2635A.value: SMU2635A,
+        SupportedModels.SMU2636A.value: SMU2636A,
+        SupportedModels.SMU6430.value: SMU6430,
+        SupportedModels.SMU6514.value: SMU6514,
+        SupportedModels.SMU6517B.value: SMU6517B,
+        # Power Supplies
+        SupportedModels.PSU2200.value: PSU2200,
+        SupportedModels.PSU2220.value: PSU2220,
+        SupportedModels.PSU2230.value: PSU2230,
+        SupportedModels.PSU2231.value: PSU2231,
+        SupportedModels.PSU2231A.value: PSU2231A,
+        SupportedModels.PSU2280.value: PSU2280,
+        SupportedModels.PSU2281.value: PSU2281,
+        # Digital Multimeters
+        SupportedModels.DMM6500.value: DMM6500,
+        SupportedModels.DMM7510.value: DMM7510,
+        SupportedModels.DMM7512.value: DMM7512,
+        # Data Acquisition System
+        SupportedModels.DAQ6510.value: DAQ6510,
+        # Systems Switches
+        SupportedModels.SS3706A.value: SS3706A,
+    }
 )

@@ -2,8 +2,6 @@
 
 # NOTE: For documentation purposes, these imports must be sorted manually, not automatically
 # ruff: isort: skip_file
-from tm_devices.drivers.device_driver_mapping import DEVICE_DRIVER_MODEL_MAPPING
-from tm_devices.drivers.device_type_classes import DEVICE_TYPE_CLASSES
 from tm_devices.helpers.enums import SupportedModels
 from tm_devices.drivers.afgs.afg3k import AFG3K
 from tm_devices.drivers.afgs.afg3kb import AFG3KB
@@ -107,8 +105,6 @@ from tm_devices.drivers.margin_testers.tmt4 import TMT4
 
 
 __all__ = [
-    "DEVICE_DRIVER_MODEL_MAPPING",
-    "DEVICE_TYPE_CLASSES",
     "SupportedModels",
     "AFG3K",
     "AFG3KB",

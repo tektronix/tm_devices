@@ -26,7 +26,7 @@ Things to be included in the next release go here.
 
 NOTE: Despite all the officially breaking changes, the actual drivers were only affected in
 very minor ways. The primary impact to the drivers was simply the removal of previously
-deprecated functionality.
+deprecated functionality. Almost all changes only impacted the internal workings of `tm_devices`.
 
 - <span style="color:red">BREAKING CHANGE</span>: Moved `SignalGenerator` class to the `driver_mixins` submodule and renamed it to `TekAFGAWG`.
 - <span style="color:red">BREAKING CHANGE</span>: Moved the `Device`, `PIDevice`, `TSPDevice`, and `RESTAPIDevice` classes into a mixin folder so that they can be used as mixins rather than being part of the required inheritance structure.
@@ -38,6 +38,8 @@ deprecated functionality.
 - <span style="color:red">BREAKING CHANGE</span>: Removed previously deprecated `TekScopeSW` alias to the `TekScopePC` class
 - <span style="color:red">BREAKING CHANGE</span>: Removed previously deprecated `write_buffers()` from the `TSPDevice` class.
 - <span style="color:red">BREAKING CHANGE</span>: Removed Internal AFG methods from the `TekScopePC` driver, since they wouldn't have worked due to its lack of an IAFG.
+- <span style="color:red">BREAKING CHANGE</span>: Removed previously deprecated `DEVICE_DRIVER_MODEL_MAPPING` constant.
+- <span style="color:red">BREAKING CHANGE</span>: Removed the `DEVICE_TYPE_CLASSES` constant.
 
 ---
 

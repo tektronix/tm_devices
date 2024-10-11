@@ -20,15 +20,15 @@ from tm_devices.components import DMConfigParser
 from tm_devices.driver_mixins.device_control.device import Device
 from tm_devices.driver_mixins.device_control.pi_device import PIDevice
 from tm_devices.driver_mixins.device_control.rest_api_device import RESTAPIDevice
+
+# noinspection PyProtectedMember
+from tm_devices.drivers._device_driver_mapping import (
+    _DEVICE_DRIVER_MODEL_STR_MAPPING,  # pyright: ignore[reportPrivateUsage]
+)
 from tm_devices.drivers.afgs.afg import AFG
 from tm_devices.drivers.awgs.awg import AWG
 from tm_devices.drivers.data_acquisition_systems.data_acquisition_system import (
     DataAcquisitionSystem,
-)
-
-# noinspection PyProtectedMember
-from tm_devices.drivers.device_driver_mapping import (
-    _DEVICE_DRIVER_MODEL_STR_MAPPING,  # pyright: ignore[reportPrivateUsage]
 )
 from tm_devices.drivers.digital_multimeters.digital_multimeter import DigitalMultimeter
 from tm_devices.drivers.margin_testers.margin_tester import MarginTester

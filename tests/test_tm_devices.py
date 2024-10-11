@@ -1,4 +1,4 @@
-"""Temporary test file to get to 100% coverage."""
+"""Test design patterns and requirements of tm_devices."""
 
 import inspect
 import itertools
@@ -19,6 +19,7 @@ from packaging.version import InvalidVersion, Version
 import tm_devices
 import tm_devices.device_manager
 import tm_devices.drivers
+import tm_devices.drivers.device_type_classes
 import tm_devices.helpers
 
 
@@ -74,7 +75,7 @@ def is_defined_function(function: Any) -> bool:
 
 def test_device_types() -> None:
     """Verify that the DEVICE_TYPES is kept up to date."""
-    abstract_device_list = tm_devices.drivers.DEVICE_TYPE_CLASSES
+    abstract_device_list = tm_devices.drivers.device_type_classes.__all__
     supported_device_types = sorted(
         [
             x
@@ -85,7 +86,7 @@ def test_device_types() -> None:
     if len(abstract_device_list) != len(supported_device_types):
         msg = (
             f"Not all abstract device types are represented in "
-            f"abstract_device_list={sorted([x.__name__ for x in abstract_device_list])}\n"
+            f"abstract_device_list={sorted(abstract_device_list)}\n"
             f"Supported device type abbreviations are {supported_device_types}, "
             f"please update abstract_device_list in this test with any missing abstract classes."
         )
@@ -154,14 +155,14 @@ def test_device_method_abstraction() -> None:
 
 def test_supported_models_in_device_driver_mapping() -> None:
     """Verify that all supported models are in the device driver mapping and drivers init file."""
+    from tm_devices.drivers import _device_driver_mapping  # pylint: disable=import-outside-toplevel
+
     supported_models_list = sorted(x.value for x in tm_devices.SupportedModels)
     device_driver_list: List[str] = sorted(
-        tm_devices.drivers.device_driver_mapping._DEVICE_DRIVER_MODEL_STR_MAPPING  # noqa: SLF001  # pyright: ignore[reportUnknownMemberType,reportUnknownArgumentType,reportAttributeAccessIssue]
+        _device_driver_mapping._DEVICE_DRIVER_MODEL_STR_MAPPING  # noqa: SLF001  # pyright: ignore[reportPrivateUsage]
     )
     module_list: List[str] = list(tm_devices.drivers.__all__)
     # Remove a few non-driver items
-    module_list.remove("DEVICE_DRIVER_MODEL_MAPPING")
-    module_list.remove("DEVICE_TYPE_CLASSES")
     module_list.remove("SupportedModels")
     module_list.sort()
 

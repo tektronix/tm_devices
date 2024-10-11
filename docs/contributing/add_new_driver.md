@@ -33,8 +33,7 @@ This guide will walk through the steps needed to add a new device driver.
     `tm_devices/helpers/functions.py` to include a mapping of the new driver name (model series)
     to a regex string matching the appropriate model strings
 
-5. Update the [`DEVICE_DRIVER_MODEL_MAPPING`][tm_devices.drivers.DEVICE_DRIVER_MODEL_MAPPING] lookup inside
-    `tm_devices/drivers/device_driver_mapping.py`
+5. Update the `_DEVICE_DRIVER_MODEL_STR_MAPPING` lookup inside `tm_devices/drivers/_device_driver_mapping.py`
 
 6. Update the `__all__` variable inside `tm_devices/drivers/__init__.py` to
     include the new device driver
