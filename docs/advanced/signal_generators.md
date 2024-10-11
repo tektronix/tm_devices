@@ -33,18 +33,18 @@ classDiagram
 
 ```
 
-The [`SignalGenerator`][tm_devices.drivers.pi.signal_generators.signal_generator.SignalGenerator] class is responsible
-for most waveform generators, including the [`AFG`][tm_devices.drivers.pi.signal_generators.afgs.afg.AFG] and
-[`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG].
-Similarly, [`TekScope`][tm_devices.drivers.pi.scopes.tekscope.tekscope.TekScope] is responsible for the
+The [`TekAFGAWG`][tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin] class is responsible
+for most waveform generators, including the [`AFG`][tm_devices.drivers.afgs.afg.AFG] and
+[`AWG`][tm_devices.drivers.awgs.awg.AWG].
+Similarly, [`TekScope`][tm_devices.drivers.scopes.tekscope.tekscope.TekScope] is responsible for the
 [AFG](default:AFG) internal to the scopes themselves, commonly referred to as
 an [IAFG](default:IAFG). All of these classes inherit
-[`SignalGeneratorMixin`][tm_devices.driver_mixins.signal_generator_mixin.SignalGeneratorMixin],
-which includes a list of methods that share
+[`SignalGeneratorMixin`][tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin.SignalGeneratorMixin],
+which includes a list of methods that define common
 functionality throughout all signal generators.
 
 !!! note
-    [`SignalGeneratorMixin`][tm_devices.driver_mixins.signal_generator_mixin.SignalGeneratorMixin]
+    [`SignalGeneratorMixin`][tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin.SignalGeneratorMixin]
     only contains abstract methods; defining the class by itself and calling
     methods in it will only raise `NotImplemented` errors.
 
@@ -65,16 +65,15 @@ classDiagram
     AFG "1..n" *-- AFGSourceChannel
 ```
 
-Each [`SignalGenerator`][tm_devices.drivers.pi.signal_generators.signal_generator.SignalGenerator] class(
-[`AFG`][tm_devices.drivers.pi.signal_generators.afgs.afg.AFG],
-[`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG]) and
-[`TekScope`][tm_devices.drivers.pi.scopes.tekscope.tekscope.TekScope]
-(if the [AFG](default:AFG) license is installed) will contain a dictionary of source channel classes,
+Each signal generator class ([`AFG`][tm_devices.drivers.afgs.afg.AFG],
+[`AWG`][tm_devices.drivers.awgs.awg.AWG], and
+[`TekScope`][tm_devices.drivers.scopes.tekscope.tekscope.TekScope]
+if the [AFG](default:AFG) license is installed) will contain a dictionary of source channel classes,
 which are defined on first access.
 Each of these source channel classes (
-[`AFGSourceChannel`][tm_devices.drivers.pi.signal_generators.afgs.afg.AFGSourceChannel],
-[`AWGSourceChannel`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWGSourceChannel], and
-[`InternalAFGChannel`][tm_devices.drivers.pi.scopes.tekscope.tekscope.InternalAFGChannel]
+[`AFGSourceChannel`][tm_devices.drivers.afgs.afg.AFGSourceChannel],
+[`AWGSourceChannel`][tm_devices.drivers.awgs.awg.AWGSourceChannel], and
+[`InternalAFGChannel`][tm_devices.drivers.scopes.tekscope.tekscope.InternalAFGChannel]
 ) represents an output on the signal generator
 (or the [IAFG](default:IAFG) in the case of an oscilloscope).
 
@@ -205,14 +204,14 @@ Setting up bursts of an [IAFG](default:IAFG) involves setting it to burst mode a
 
 The amplitude and frequency range for the [IAFG](default:IAFG) vary based on the desired function.
 These ranges are the same for each of the classes listed:
-[`MSO2`][tm_devices.drivers.pi.scopes.tekscope.mso2.MSO2]
-[`MSO4`][tm_devices.drivers.pi.scopes.tekscope.mso4.MSO4]
-[`MSO4B`][tm_devices.drivers.pi.scopes.tekscope.mso4b.MSO4B]
-[`MSO5`][tm_devices.drivers.pi.scopes.tekscope.mso5.MSO5]
-[`MSO5LP`][tm_devices.drivers.pi.scopes.tekscope.mso5lp.MSO5LP]
-[`MSO6`][tm_devices.drivers.pi.scopes.tekscope.mso6.MSO6]
-[`MSO6B`][tm_devices.drivers.pi.scopes.tekscope.mso6b.MSO6B]
-[`LPD6`][tm_devices.drivers.pi.scopes.tekscope.lpd6.LPD6]
+[`MSO2`][tm_devices.drivers.scopes.tekscope.mso2.MSO2]
+[`MSO4`][tm_devices.drivers.scopes.tekscope.mso4.MSO4]
+[`MSO4B`][tm_devices.drivers.scopes.tekscope.mso4b.MSO4B]
+[`MSO5`][tm_devices.drivers.scopes.tekscope.mso5.MSO5]
+[`MSO5LP`][tm_devices.drivers.scopes.tekscope.mso5lp.MSO5LP]
+[`MSO6`][tm_devices.drivers.scopes.tekscope.mso6.MSO6]
+[`MSO6B`][tm_devices.drivers.scopes.tekscope.mso6b.MSO6B]
+[`LPD6`][tm_devices.drivers.scopes.tekscope.lpd6.LPD6]
 
 Sample rates are 250.0MS/s for `ARBITRARY` waveforms.
 
@@ -232,7 +231,7 @@ _[IAFG](default:IAFG) Constraints_
 
 ##### Constraints
 
-The constraints for the [`MSO5B`][tm_devices.drivers.pi.scopes.tekscope.mso5b.MSO5B] are identical to
+The constraints for the [`MSO5B`][tm_devices.drivers.scopes.tekscope.mso5b.MSO5B] are identical to
 [other tekscope models](#mso2-mso4-mso4b-mso5-mso5lp-mso6-mso6b-lpd6), except the upper frequency bound is doubled.
 
 ---
@@ -254,7 +253,7 @@ classDiagram
 except for the order in which the parameters are set.
 
 All functions that are shared by each [AFG](default:AFG) exist within the
-[`AFG`][tm_devices.drivers.pi.signal_generators.afgs.afg.AFG] class.
+[`AFG`][tm_devices.drivers.afgs.afg.AFG] class.
 
 Setting up bursts of the [AFG](default:AFG) involves setting the trigger on the device to external, so the burst does not activate
 on the internal trigger. Following this, the burst state is set to `ON` and mode set to `TRIGGERED`.
@@ -274,9 +273,9 @@ on the internal trigger. Following this, the burst state is set to `ON` and mode
 The AFG3K series instruments are function generating devices that also offer the capacity to generate arbitrary waveforms. They accept
 communication through [USB](default:USB), [TCPIP](default:TCPIP) and [GPIB](default:GPIB) interfaces. These instruments have their
 own class representations, corresponding to the
-[`AFG3K`][tm_devices.drivers.pi.signal_generators.afgs.afg3k.AFG3K],
-[`AFG3KB`][tm_devices.drivers.pi.signal_generators.afgs.afg3kb.AFG3KB], and
-[`AFG3KC`][tm_devices.drivers.pi.signal_generators.afgs.afg3kc.AFG3KC].
+[`AFG3K`][tm_devices.drivers.afgs.afg3k.AFG3K],
+[`AFG3KB`][tm_devices.drivers.afgs.afg3kb.AFG3KB], and
+[`AFG3KC`][tm_devices.drivers.afgs.afg3kc.AFG3KC].
 
 ##### Constraints
 
@@ -321,7 +320,7 @@ _AFG3K Constraints_
 The AFG31K series instruments are function generating devices that also offer the capacity to generate arbitrary waveforms. They accept
 communication through [USB](default:USB), [TCPIP](default:TCPIP), and [GPIB](default:GPIB) interfaces. The AFG31K has its
 own class representation, corresponding to
-[`AFG31K`][tm_devices.drivers.pi.signal_generators.afgs.afg31k.AFG31K].
+[`AFG31K`][tm_devices.drivers.afgs.afg31k.AFG31K].
 
 ##### Constraints
 
@@ -379,7 +378,7 @@ classDiagram
 ```
 
 All functions that are shared by each [AWG](default:AWG) exist within the
-[`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG] class.
+[`AWG`][tm_devices.drivers.awgs.awg.AWG] class.
 
 Function generation on [AWGs](default:AWG) is fundamentally different from [AFGs](default:AFG). The [AWG](default:AWG) is stopped and the source channel being used
 is turned off. Predefined waveforms provided with the [AWG](default:AWG)
@@ -391,11 +390,11 @@ is sent to begin the transmission of the waveform.
 !!! note
     If the waveform is `RAMP`, a symmetry of 50 will set the waveform to a `TRIANGLE`.
 
-The [`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG] class has some unique methods.
+The [`AWG`][tm_devices.drivers.awgs.awg.AWG] class has some unique methods.
 `generate_waveform()` allows for a waveform name from the waveform list
 to be provided, instead of a function. The method is also distinctly different from the generate function as it relies on a sample
 rate being provided to generate the waveform. All functions that are generic to the [AWG](default:AWG)
-exist within the [`AWG`][tm_devices.drivers.pi.signal_generators.awgs.awg.AWG] class.
+exist within the [`AWG`][tm_devices.drivers.awgs.awg.AWG] class.
 
 [AWGs](default:AWG) have access to the following functions, listed within
 [`SignalGeneratorFunctionsAWG`][tm_devices.helpers.enums.SignalGeneratorFunctionsAWG]:
@@ -422,9 +421,9 @@ out otherwise.
 
 The AWG5K series instruments have their
 own class representations, corresponding to the
-[`AWG5K`][tm_devices.drivers.pi.signal_generators.awgs.awg5k.AWG5K],
-[`AWG5KB`][tm_devices.drivers.pi.signal_generators.awgs.awg5kb.AWG5KB], and
-[`AWG5KC`][tm_devices.drivers.pi.signal_generators.awgs.awg5kc.AWG5KC].
+[`AWG5K`][tm_devices.drivers.awgs.awg5k.AWG5K],
+[`AWG5KB`][tm_devices.drivers.awgs.awg5kb.AWG5KB], and
+[`AWG5KC`][tm_devices.drivers.awgs.awg5kc.AWG5KC].
 
 ###### Constraints
 
@@ -452,9 +451,9 @@ _AWG5K Constraints_
 
 The AWG7K series instruments have their
 own class representations, corresponding to the
-[`AWG7K`][tm_devices.drivers.pi.signal_generators.awgs.awg7k.AWG7K],
-[`AWG7KB`][tm_devices.drivers.pi.signal_generators.awgs.awg7kb.AWG7KB], and
-[`AWG7KC`][tm_devices.drivers.pi.signal_generators.awgs.awg7kc.AWG7KC].
+[`AWG7K`][tm_devices.drivers.awgs.awg7k.AWG7K],
+[`AWG7KB`][tm_devices.drivers.awgs.awg7kb.AWG7KB], and
+[`AWG7KC`][tm_devices.drivers.awgs.awg7kc.AWG7KC].
 
 ###### Constraints
 
@@ -496,7 +495,7 @@ They accept communication through [USB](default:USB), [TCPIP](default:TCPIP), an
 
 The AWG52000 has its
 own class representation, corresponding to
-[`AWG5200`][tm_devices.drivers.pi.signal_generators.awgs.awg5200.AWG5200].
+[`AWG5200`][tm_devices.drivers.awgs.awg5200.AWG5200].
 
 `set_output_signal_path()` is uniquely defined within the AWG5200 as it has special output signal paths.
 
@@ -564,8 +563,8 @@ These instruments operate on the Windows operating system, and they accept commu
 [USB](default:USB), [TCPIP](default:TCPIP), and [GPIB](default:GPIB) interfaces.
 
 `set_output_signal_path()` is uniquely defined within the
-[`AWG70KA`][tm_devices.drivers.pi.signal_generators.awgs.awg70ka.AWG70KA] and
-[`AWG70KB`][tm_devices.drivers.pi.signal_generators.awgs.awg70kb.AWG70KB] classes.
+[`AWG70KA`][tm_devices.drivers.awgs.awg70ka.AWG70KA] and
+[`AWG70KB`][tm_devices.drivers.awgs.awg70kb.AWG70KB] classes.
 By default, it will first attempt to set the output signal path to [DCA](default:DCA).
 If this fails (implying an MDC4500-4B is not connected), then a direct signal path will be set.
 

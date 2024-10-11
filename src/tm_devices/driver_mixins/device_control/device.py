@@ -429,8 +429,7 @@ class Device(ExtendableMixin, ABC):
 
         !!! warning
             In v3 this method will return a tuple containing a bool and a list of instances of
-            device error info dataclasses (this will replace
-            [`get_eventlog_status()`][tm_devices.drivers.pi.pi_device.PIDevice]).
+            device error info dataclasses (this will replace `get_eventlog_status()`).
 
         Returns:
             A boolean indicating if any errors were found in the device.

@@ -34,8 +34,7 @@ This guide will walk through the steps needed to add a new device type.
 7. Create a new `get_<device_type>()` method with the appropriate signature
     inside `device_manager.py` (use other methods as examples)
 8. Add a new folder in `tests/sim_devices/<new_type>` for unit tests
-9. Add the new device type class to the [`DEVICE_TYPE_CLASSES`][tm_devices.drivers.DEVICE_TYPE_CLASSES] and `__all__`
-    variables inside of `tm_devices/drivers/device_type_drivers.py`.
+9. Add the new device type class to the `__all__` variable inside of `tm_devices/drivers/device_type_classes.py`.
 10. Update the
     [advanced architecture](../advanced/architecture.md#main-device-types) page
     to include the new device type

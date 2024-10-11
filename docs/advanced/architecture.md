@@ -45,7 +45,8 @@ and methods can be defined in higher-level classes (sometimes called parent
 classes) and inherited by subclasses (sometimes called child classes), to reduce
 the lines of code needed to create new device drivers.
 
-Every single device driver within a particular device type is guaranteed to have
+Every single device driver within a particular device family
+(referred to as the family base class) is guaranteed to have
 the same class signature (attribute and method names). Often times specific
 device drivers will need to implement the functionality for specific methods or
 even overwrite inherited functionality due to the differences that can occur
@@ -53,7 +54,7 @@ between different models of the same device type.
 
 ### Block Diagram
 
-{{ auto_class_diagram('tm_devices.drivers.device_type_classes', full=True, namespace='tm_devices.drivers') }}
+{{ auto_class_diagram('tm_devices.drivers.device_type_classes', full=True) }}
 
 ---
 
@@ -63,4 +64,4 @@ This package supports many devices, zoom in to see them all!
 
 ### Block Diagram
 
-{{ auto_class_diagram('tm_devices.drivers', full=True, namespace='tm_devices.drivers') }}
+{{ auto_class_diagram('tm_devices.drivers', full=True) }}
