@@ -1,5 +1,5 @@
 # pyright: reportPrivateUsage=none
-"""Test generic PIDevice functionality."""
+"""Test generic PIControl functionality."""
 
 from unittest import mock
 
@@ -9,10 +9,10 @@ import pyvisa as visa
 from tm_devices import DeviceManager
 
 
-def test_pi_device(  # noqa: PLR0915
+def test_pi_control(  # noqa: PLR0915
     device_manager: DeviceManager, capsys: pytest.CaptureFixture[str]
 ) -> None:
-    """Test generic PIDevice functionality.
+    """Test generic PIControl functionality.
 
     Args:
         device_manager: The DeviceManager object.

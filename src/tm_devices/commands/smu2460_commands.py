@@ -8,7 +8,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.driver_mixins.device_control.tsp_device import TSPDevice
+from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 from .gen_6ocqvh_smu.buffer import Buffer
 from .gen_6srh1x_smu.smu import Smu
@@ -492,7 +492,7 @@ class SMU2460Commands:
         - ``.waitcomplete()``: The ``waitcomplete()`` function.
     """
 
-    def __init__(self, device: Optional[TSPDevice] = None) -> None:
+    def __init__(self, device: Optional[TSPControl] = None) -> None:
         self._device = device
         self._beeper = Beeper(device)
         self._buffer = Buffer(device)
@@ -1439,7 +1439,7 @@ class SMU2460Commands:
                 f"print(available({functionality}))"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``available()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``available()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def createconfigscript(self, script_name: str) -> None:
@@ -1465,7 +1465,7 @@ class SMU2460Commands:
                 f'createconfigscript("{script_name}")'
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``createconfigscript()`` function."  # noqa: E501
+            msg = "No TSPControl object was provided, unable to run the ``createconfigscript()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def delay(self, seconds: int) -> None:
@@ -1490,7 +1490,7 @@ class SMU2460Commands:
                 f"delay({seconds})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``delay()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``delay()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def exit(self) -> None:
@@ -1512,7 +1512,7 @@ class SMU2460Commands:
                 "exit()"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``exit()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``exit()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def opc(self) -> None:
@@ -1535,7 +1535,7 @@ class SMU2460Commands:
                 "opc()"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``opc()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``opc()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def print(self, value: str) -> None:
@@ -1560,7 +1560,7 @@ class SMU2460Commands:
                 f"print({value})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``print()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``print()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def printbuffer(self, start_index: int, end_index: int, buffer_var: str) -> str:
@@ -1593,7 +1593,7 @@ class SMU2460Commands:
                 f"printbuffer({start_index}, {end_index}, {buffer_var})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``printbuffer()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``printbuffer()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def printnumber(self, value: str) -> str:
@@ -1621,7 +1621,7 @@ class SMU2460Commands:
                 f"printnumber({value})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``printnumber()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``printnumber()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def reset(self, system: Optional[str] = None) -> None:
@@ -1647,7 +1647,7 @@ class SMU2460Commands:
                 f"reset({function_args})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``reset()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``reset()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def waitcomplete(self, group: Optional[str] = None) -> None:
@@ -1673,7 +1673,9 @@ class SMU2460Commands:
                 f"waitcomplete({function_args})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``waitcomplete()`` function."
+            msg = (
+                "No TSPControl object was provided, unable to run the ``waitcomplete()`` function."
+            )
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -1687,7 +1689,7 @@ class SMU2460Mixin:
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
-        device = self if isinstance(self, TSPDevice) else None
+        device = self if isinstance(self, TSPControl) else None
         self._command_argument_constants = SMU2460CommandConstants()
         self._commands = SMU2460Commands(device)
 

@@ -5,7 +5,7 @@ import warnings
 import pyvisa as visa
 
 from tm_devices.commands import TekScopePCMixin
-from tm_devices.driver_mixins.device_control.device import family_base_class
+from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.scopes.tekscope.tekscope import AbstractTekScope
 from tm_devices.helpers import DeviceConfigEntry
 

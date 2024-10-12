@@ -43,7 +43,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SaveWaveformGating(SCPICmdWrite, SCPICmdRead):
@@ -136,7 +136,7 @@ class SaveWaveformFileformat(SCPICmdWrite, SCPICmdRead):
         - ``.rf_bb_iq``: The ``SAVe:WAVEform:FILEFormat:RF_BB_IQ`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._rf_bb_iq = SaveWaveformFileformatRfBbIq(device, f"{self._cmd_syntax}:RF_BB_IQ")
 
@@ -212,7 +212,7 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
         - ``.gating``: The ``SAVe:WAVEform:GATIng`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fileformat = SaveWaveformFileformat(device, f"{self._cmd_syntax}:FILEFormat")
         self._gating = SaveWaveformGating(device, f"{self._cmd_syntax}:GATIng")
@@ -442,7 +442,7 @@ class SaveImage(SCPICmdWrite, SCPICmdRead):
         - ``.layout``: The ``SAVe:IMAGe:LAYout`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fileformat = SaveImageFileformat(device, f"{self._cmd_syntax}:FILEFormat")
         self._inksaver = SaveImageInksaver(device, f"{self._cmd_syntax}:INKSaver")
@@ -584,7 +584,7 @@ class SaveEventtable(SCPICmdRead):
         - ``.b``: The ``SAVe:EVENTtable:B<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bus: Dict[int, SaveEventtableBusItem] = DefaultDictPassKeyToFactory(
             lambda x: SaveEventtableBusItem(device, f"{self._cmd_syntax}:BUS{x}")
@@ -698,7 +698,7 @@ class SaveAssign(SCPICmdRead):
         - ``.type``: The ``SAVe:ASSIgn:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._folder = SaveAssignFolder(device, f"{self._cmd_syntax}:FOLder")
         self._type = SaveAssignType(device, f"{self._cmd_syntax}:TYPe")
@@ -768,7 +768,7 @@ class Save(SCPICmdRead):
         - ``.waveform``: The ``SAVe:WAVEform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SAVe") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SAVe") -> None:
         super().__init__(device, cmd_syntax)
         self._assign = SaveAssign(device, f"{self._cmd_syntax}:ASSIgn")
         self._eventtable = SaveEventtable(device, f"{self._cmd_syntax}:EVENTtable")

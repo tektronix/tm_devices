@@ -26,10 +26,11 @@ Things to be included in the next release go here.
 
 NOTE: Despite all the officially breaking changes, the actual drivers were only affected in
 very minor ways. The primary impact to the drivers was simply the removal of previously
-deprecated functionality. Almost all changes only impacted the internal workings of `tm_devices`.
+deprecated functionality. Almost all changes only impacted the internal workings of `tm_devices`. 
+However, please read through all changes to be aware of what may potentially impact your code.
 
 - <span style="color:red">BREAKING CHANGE</span>: Moved `SignalGenerator` class to the `driver_mixins` submodule and renamed it to `TekAFGAWG`.
-- <span style="color:red">BREAKING CHANGE</span>: Moved the `Device`, `PIDevice`, `TSPDevice`, and `RESTAPIDevice` classes into a mixin folder so that they can be used as mixins rather than being part of the required inheritance structure.
+- <span style="color:red">BREAKING CHANGE</span>: Moved the `Device`, `PIControl`, `TSPControl`, and `RESTAPIControl` classes into a mixin folder so that they can be used as mixins rather than being part of the required inheritance structure.
     - Due to this change, it is recommended that the specific device driver (or at least the family base class) for the device being controlled is used for type hinting.
 - <span style="color:red">BREAKING CHANGE</span>: Moved all device type subpackages (AWGs, AFGs, Scopes, SMUs, etc.) up to the top level of the `drivers` subpackage.
 - <span style="color:red">BREAKING CHANGE</span>: Converted all family base classes to inherit from the device control mixins.
@@ -37,10 +38,11 @@ deprecated functionality. Almost all changes only impacted the internal workings
 ### Removed
 
 - <span style="color:red">BREAKING CHANGE</span>: Removed previously deprecated `TekScopeSW` alias to the `TekScopePC` class
-- <span style="color:red">BREAKING CHANGE</span>: Removed previously deprecated `write_buffers()` from the `TSPDevice` class.
+- <span style="color:red">BREAKING CHANGE</span>: Removed previously deprecated `write_buffers()` from the `TSPControl` class.
 - <span style="color:red">BREAKING CHANGE</span>: Removed Internal AFG methods from the `TekScopePC` driver, since they wouldn't have worked due to its lack of an IAFG.
 - <span style="color:red">BREAKING CHANGE</span>: Removed previously deprecated `DEVICE_DRIVER_MODEL_MAPPING` constant.
 - <span style="color:red">BREAKING CHANGE</span>: Removed the `DEVICE_TYPE_CLASSES` constant.
+- <span style="color:red">BREAKING CHANGE</span>: Removed many hacky implementations of `total_channels` and `all_channel_names_list` properties from drivers that don't need them anymore.
 
 ---
 
@@ -52,7 +54,7 @@ deprecated functionality. Almost all changes only impacted the internal workings
 
 ### Merged Pull Requests
 
-- Update TSPDevice.load_script() to accept raw strings ([#308](https://github.com/tektronix/tm_devices/pull/308))
+- Update TSPControl.load_script() to accept raw strings ([#308](https://github.com/tektronix/tm_devices/pull/308))
 - fix: Update stub generation helper function to handle classes followed by dataclasses ([#307](https://github.com/tektronix/tm_devices/pull/307))
 - Add function to register USBTMC connection information for devices that don't have native USBTMC connection support in tm_devices ([#306](https://github.com/tektronix/tm_devices/pull/306))
 - python-deps(deps-dev): Bump the python-dependencies group with 2 updates ([#304](https://github.com/tektronix/tm_devices/pull/304))
@@ -72,7 +74,7 @@ deprecated functionality. Almost all changes only impacted the internal workings
 
 - Added a config option (`default_visa_timeout`) to specify the default VISA timeout for all initial VISA device connections.
 - Added a new function, `register_additional_usbtmc_mapping()`, to enable users to add USBTMC connection information for devices that don't have native support for USBTMC connections in `tm_devices` yet.
-- Added `TSPDevice.export_buffers()` to write tsp buffer data fields to file, default is comma separated values with buffer names header.
+- Added `TSPControl.export_buffers()` to write tsp buffer data fields to file, default is comma separated values with buffer names header.
 
 ### Changed
 
@@ -80,12 +82,12 @@ deprecated functionality. Almost all changes only impacted the internal workings
 - Reduced the out-of-the box `default_visa_timeout` value from 30 seconds to 5 seconds.
 - _**SEMI-BREAKING CHANGE**_: Changed the `USB_MODEL_ID_LOOKUP` constant to use `SupportedModels` as keys instead of values to make the documentation clearer.
 - _**SEMI-BREAKING CHANGE**_: Changed the `DEVICE_DRIVER_MODEL_MAPPING` constant to use `SupportedModels` as keys instead of values to make the documentation clearer.
-- _**SEMI-BREAKING CHANGE**_: Changed the input parameter order in `TSPDevice.load_script()` and updated it to accept raw string input in addition to the `file_path` parameter for the script content.
-- Verbosity with `PIDevice.write()` now handles multiline input printouts.
+- _**SEMI-BREAKING CHANGE**_: Changed the input parameter order in `TSPControl.load_script()` and updated it to accept raw string input in addition to the `file_path` parameter for the script content.
+- Verbosity with `PIControl.write()` now handles multiline input printouts.
 
 ### Deprecated
 
-- Renamed `TSPDevice.write_buffers()` to `TSPDevice.export_buffers()` for clarity.
+- Renamed `TSPControl.write_buffers()` to `TSPControl.export_buffers()` for clarity.
 
 ### Fixed
 
@@ -484,7 +486,7 @@ deprecated functionality. Almost all changes only impacted the internal workings
 ### Merged Pull Requests
 
 - Fix import error on mac with system integrity protection ([#109](https://github.com/tektronix/tm_devices/issues/109))
-- feat(rest_api_device): Enable sending raw data for restful api devices. ([#107](https://github.com/tektronix/tm_devices/issues/107))
+- feat(rest_api_control): Enable sending raw data for restful api devices. ([#107](https://github.com/tektronix/tm_devices/issues/107))
 - build: Update package classifiers. ([#106](https://github.com/tektronix/tm_devices/issues/106))
 
 ### Added

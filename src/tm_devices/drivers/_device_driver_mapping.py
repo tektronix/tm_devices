@@ -105,7 +105,7 @@ from tm_devices.drivers.systems_switches.ss3706a import SS3706A
 from tm_devices.helpers.enums import SupportedModels
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control.device import Device
+    from tm_devices.drivers.device import Device
 
 ####################################################################################################
 # Private Attributes

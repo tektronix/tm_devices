@@ -1,4 +1,4 @@
-"""Base REST Application Programming Interface (API) device driver module."""
+"""Base REST Application Programming Interface (API) control class module."""
 
 import json
 import time
@@ -9,13 +9,27 @@ from typing import Any, cast, Dict, Mapping, Optional, Tuple, Union
 
 import requests
 
-from tm_devices.driver_mixins.device_control.device import Device
+# noinspection PyProtectedMember
+from tm_devices.driver_mixins.shared_implementations._verification_methods_mixin import (
+    VerificationMethodsMixin,
+)
 from tm_devices.helpers import DeviceConfigEntry, print_with_timestamp, SupportedRequestTypes
 
 
-class RESTAPIDevice(Device, ABC):
-    """Base REST Application Programming Interface (API) device driver."""
+class RESTAPIControl(VerificationMethodsMixin, ABC):
+    """Base REST Application Programming Interface (API) control class.
 
+    Any class that inherits this control Mixin must also inherit a descendant of the
+    [`Device`][tm_devices.drivers.device.Device] class in order to have access to the
+    attributes required by this class.
+    """
+
+    # These attributes are provided by the top-level Device class
+    ip_address: str
+    _name_and_alias: str
+    _verbose: bool
+
+    # These constants are defined by child classes
     API_VERSIONS: Mapping[int, str] = MappingProxyType({})
     """A mapping of supported API version numbers with the corresponding API URL."""
 

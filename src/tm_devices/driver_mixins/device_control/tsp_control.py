@@ -1,11 +1,11 @@
-"""Base Test Script Processing (TSP) device driver module."""
+"""Base Test Script Processing (TSP) control class module."""
 
 from __future__ import annotations
 
 from abc import ABC
 from typing import Any, Dict, List, Optional, Tuple, TYPE_CHECKING, Union
 
-from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import TSPIEEE4882Commands
 from tm_devices.helpers import print_with_timestamp
 
@@ -13,8 +13,13 @@ if TYPE_CHECKING:
     import os
 
 
-class TSPDevice(PIDevice, ABC):
-    """Base Test Script Processing (TSP) device driver."""
+class TSPControl(PIControl, ABC):
+    """Base Test Script Processing (TSP) control class.
+
+    Any class that inherits this control Mixin must also inherit a descendant of the
+    [`Device`][tm_devices.drivers.device.Device] class in order to have access to the
+    attributes required by this class.
+    """
 
     _IEEE_COMMANDS_CLASS = TSPIEEE4882Commands
 

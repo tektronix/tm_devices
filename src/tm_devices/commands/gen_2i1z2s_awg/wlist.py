@@ -144,7 +144,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class WlistWaveformType(SCPICmdReadWithArguments):
@@ -412,7 +412,7 @@ class WlistWaveformMarker(SCPICmdRead):
         - ``.data``: The ``WLISt:WAVeform:MARKer:DATA`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._data = WlistWaveformMarkerData(device, f"{self._cmd_syntax}:DATA")
 
@@ -682,7 +682,7 @@ class WlistWaveformData(SCPICmdWrite, SCPICmdReadWithArguments):
         - ``.q``: The ``WLISt:WAVeform:DATA:Q`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._i = WlistWaveformDataI(device, f"{self._cmd_syntax}:I")
         self._q = WlistWaveformDataQ(device, f"{self._cmd_syntax}:Q")
@@ -874,7 +874,7 @@ class WlistWaveformAcfileGaussian(SCPICmdWrite, SCPICmdRead):
         - ``.bandwidth``: The ``WLISt:WAVeform:ACFile:GAUSsian:BANDwidth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bandwidth = WlistWaveformAcfileGaussianBandwidth(
             device, f"{self._cmd_syntax}:BANDwidth"
@@ -929,7 +929,7 @@ class WlistWaveformAcfile(SCPICmdWrite, SCPICmdRead):
         - ``.skew``: The ``WLISt:WAVeform:ACFile:SKEW`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._gaussian = WlistWaveformAcfileGaussian(device, f"{self._cmd_syntax}:GAUSsian")
         self._rsinc = WlistWaveformAcfileRsinc(device, f"{self._cmd_syntax}:RSINc")
@@ -1043,7 +1043,7 @@ class WlistWaveform(SCPICmdRead):
         - ``.type``: The ``WLISt:WAVeform:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._acfile = WlistWaveformAcfile(device, f"{self._cmd_syntax}:ACFile")
         self._amplitude = WlistWaveformAmplitude(device, f"{self._cmd_syntax}:AMPLitude")
@@ -1879,7 +1879,7 @@ class WlistSparameterNcascadingAggressorItemSignal(SCPICmdWrite, SCPICmdRead):
         - ``.prbs``: The ``WLISt:SPARameter:NCAScading:AGGRessor[n]:SIGNal:PRBS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._file = WlistSparameterNcascadingAggressorItemSignalFile(
             device, f"{self._cmd_syntax}:FILE"
@@ -2026,7 +2026,7 @@ class WlistSparameterNcascadingAggressorItem(ValidatedDynamicNumberCmd, SCPICmdR
         - ``.signal``: The ``WLISt:SPARameter:NCAScading:AGGRessor[n]:SIGNal`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = WlistSparameterNcascadingAggressorItemAmplitude(
             device, f"{self._cmd_syntax}:AMPLitude"
@@ -2184,7 +2184,7 @@ class WlistSparameterNcascadingAggressor2(SCPICmdRead):
         - ``.enable``: The ``WLISt:SPARameter:NCAScading:AGGRessor2:ENABle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._enable = WlistSparameterNcascadingAggressor2Enable(
             device, f"{self._cmd_syntax}:ENABle"
@@ -2241,7 +2241,7 @@ class WlistSparameterNcascading(SCPICmdRead):
         - ``.type``: The ``WLISt:SPARameter:NCAScading:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aggressor2 = WlistSparameterNcascadingAggressor2(
             device, f"{self._cmd_syntax}:AGGRessor2"
@@ -2807,7 +2807,7 @@ class WlistSparameterCascadingStageItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.tx``: The ``WLISt:SPARameter:CASCading:STAGe[m]:TX[n]`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._drx: Dict[int, WlistSparameterCascadingStageItemDrxItem] = (
             DefaultDictPassKeyToFactory(
@@ -3105,7 +3105,7 @@ class WlistSparameterCascadingAggressorItemSignal(SCPICmdWrite, SCPICmdRead):
         - ``.prbs``: The ``WLISt:SPARameter:CASCading:AGGRessor[n]:SIGNal:PRBS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._file = WlistSparameterCascadingAggressorItemSignalFile(
             device, f"{self._cmd_syntax}:FILE"
@@ -3251,7 +3251,7 @@ class WlistSparameterCascadingAggressorItem(ValidatedDynamicNumberCmd, SCPICmdRe
         - ``.signal``: The ``WLISt:SPARameter:CASCading:AGGRessor[n]:SIGNal`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = WlistSparameterCascadingAggressorItemAmplitude(
             device, f"{self._cmd_syntax}:AMPLitude"
@@ -3407,7 +3407,7 @@ class WlistSparameterCascadingAggressor2(SCPICmdRead):
         - ``.enable``: The ``WLISt:SPARameter:CASCading:AGGRessor2:ENABle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._enable = WlistSparameterCascadingAggressor2Enable(
             device, f"{self._cmd_syntax}:ENABle"
@@ -3457,7 +3457,7 @@ class WlistSparameterCascading(SCPICmdRead):
         - ``.type``: The ``WLISt:SPARameter:CASCading:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aggressor2 = WlistSparameterCascadingAggressor2(
             device, f"{self._cmd_syntax}:AGGRessor2"
@@ -3654,7 +3654,7 @@ class WlistSparameterBandwidth(SCPICmdWrite, SCPICmdRead):
         - ``.auto``: The ``WLISt:SPARameter:BANDwidth:AUTO`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._auto = WlistSparameterBandwidthAuto(device, f"{self._cmd_syntax}:AUTO")
 
@@ -3719,7 +3719,7 @@ class WlistSparameter(SCPICmdRead):
         - ``.sformat``: The ``WLISt:SPARameter:SFORmat`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._apply = WlistSparameterApply(device, f"{self._cmd_syntax}:APPLy")
         self._bandwidth = WlistSparameterBandwidth(device, f"{self._cmd_syntax}:BANDwidth")
@@ -3958,7 +3958,7 @@ class Wlist(SCPICmdRead):
         - ``.waveform``: The ``WLISt:WAVeform`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "WLISt") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "WLISt") -> None:
         super().__init__(device, cmd_syntax)
         self._last = WlistLast(device, f"{self._cmd_syntax}:LAST")
         self._list = WlistList(device, f"{self._cmd_syntax}:LIST")

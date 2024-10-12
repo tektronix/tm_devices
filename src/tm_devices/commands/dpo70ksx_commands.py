@@ -7,7 +7,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 from .gen_4jiykk_dpo.channelmapping import Channelmapping
 from .gen_4jiykk_dpo.counter import Counter
@@ -908,7 +908,7 @@ class DPO70KSXCommands:
     """
 
     # pylint: disable=too-many-statements
-    def __init__(self, device: Optional[PIDevice] = None) -> None:  # noqa: PLR0915
+    def __init__(self, device: Optional[PIControl] = None) -> None:  # noqa: PLR0915
         self._acquire = Acquire(device)
         self._alias = Alias(device)
         self._allev = Allev(device)
@@ -3950,7 +3950,7 @@ class DPO70KSXMixin:
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIDevice) else None
+        device = self if isinstance(self, PIControl) else None
         self._command_argument_constants = DPO70KSXCommandConstants()
         self._commands = DPO70KSXCommands(device)
 

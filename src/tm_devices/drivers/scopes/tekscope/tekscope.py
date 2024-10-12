@@ -35,6 +35,9 @@ from tm_devices.driver_mixins.abstract_device_functionality.analysis_object_mixi
 from tm_devices.driver_mixins.abstract_device_functionality.base_afg_source_channel import (
     BaseAFGSourceChannel,
 )
+from tm_devices.driver_mixins.abstract_device_functionality.channel_control_mixin import (
+    ChannelControlMixin,
+)
 from tm_devices.driver_mixins.abstract_device_functionality.licensed_mixin import LicensedMixin
 from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin import (
     ExtendedSourceDeviceConstants,
@@ -43,7 +46,7 @@ from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mix
     SourceDeviceConstants,
 )
 from tm_devices.driver_mixins.abstract_device_functionality.usb_drives_mixin import USBDrivesMixin
-from tm_devices.driver_mixins.device_control.device import family_base_class
+from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.scopes.scope import Scope
 from tm_devices.helpers import DeviceConfigEntry, LoadImpedanceAFG
 
@@ -85,6 +88,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
     PlotMixin,
     PowerMixin,
     USBDrivesMixin,
+    ChannelControlMixin,
     ABC,
 ):
     """Base TekScope scope device driver."""
@@ -123,6 +127,11 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
     ################################################################################################
     # Properties
     ################################################################################################
+    @property
+    def all_channel_names_list(self) -> Tuple[str, ...]:
+        """Return a tuple containing all the channel names."""
+        return tuple(f"CH{x+1}" for x in range(self.total_channels))
+
     @cached_property
     def channel(self) -> "MappingProxyType[str, TekScopeChannel]":
         """Mapping of channel names to any detectable properties, attributes, and settings."""
@@ -918,7 +927,7 @@ class InternalAFGChannel(BaseAFGSourceChannel):
         Args:
             tekscope: A TekScope.
         """
-        super().__init__(pi_device=tekscope, channel_name="AFG")
+        super().__init__(pi_control=tekscope, channel_name="AFG")
         self._tekscope = tekscope
 
     def __getattribute__(self, item: Any) -> Any:

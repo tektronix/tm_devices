@@ -13,9 +13,9 @@ from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mix
     ParameterBounds,
     SourceDeviceConstants,
 )
-from tm_devices.driver_mixins.device_control.device import family_base_class
 from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
 from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TekAFGAWG
+from tm_devices.drivers.device import Device, family_base_class
 from tm_devices.helpers import DeviceTypes, LoadImpedanceAFG
 
 # noinspection PyPep8Naming
@@ -34,8 +34,8 @@ class AWGSourceDeviceConstants(SourceDeviceConstants):
     functions: Type[SignalGeneratorFunctionsAWG] = SignalGeneratorFunctionsAWG
 
 
-# TODO: nfelt14: remove PIDevice inheritance if possible
-class AWG(TekAFGAWG, ABC):
+# TODO: nfelt14: remove PIControl inheritance if possible
+class AWG(Device, TekAFGAWG, ABC):
     """Base AWG device driver."""
 
     OutputSignalPath = SignalGeneratorOutputPathsNon5200
@@ -368,7 +368,7 @@ class AWGSourceChannel(BaseSourceChannel, ExtendableMixin):
             awg: An AWG.
             channel_name: The channel name for the AWG source channel.
         """
-        super().__init__(pi_device=awg, channel_name=channel_name)
+        super().__init__(pi_control=awg, channel_name=channel_name)
         self._awg = awg
 
     ################################################################################################

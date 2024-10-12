@@ -7,7 +7,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 from .gen_3n9auv_awg.active import Active
 from .gen_3n9auv_awg.calibration import Calibration
@@ -124,7 +124,7 @@ class AWG70KACommands:
         - ``.wplugin``: The ``WPLugin`` command tree.
     """
 
-    def __init__(self, device: Optional[PIDevice] = None) -> None:
+    def __init__(self, device: Optional[PIControl] = None) -> None:
         self._active = Active(device)
         self._auxoutput: Dict[int, AuxoutputItem] = DefaultDictPassKeyToFactory(
             lambda x: AuxoutputItem(device, f"AUXoutput{x}")
@@ -939,7 +939,7 @@ class AWG70KAMixin:
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIDevice) else None
+        device = self if isinstance(self, PIControl) else None
         self._command_argument_constants = AWG70KACommandConstants()
         self._commands = AWG70KACommands(device)
 

@@ -2,11 +2,12 @@
 
 from abc import ABC
 
+from tm_devices.drivers.device import Device
 from tm_devices.helpers import DeviceTypes
 
 
 # pylint: disable=too-few-public-methods
-class DigitalMultimeter(ABC):  # noqa: B024
+class DigitalMultimeter(Device, ABC):
     """Base Digital Multimeter (DMM) device driver."""
 
     _DEVICE_TYPE = DeviceTypes.DMM.value

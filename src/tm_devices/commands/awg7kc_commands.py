@@ -7,7 +7,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 from .gen_32dszm_awg.awgcontrol import Awgcontrol
 from .gen_32dszm_awg.diagnostic import Diagnostic
@@ -107,7 +107,7 @@ class AWG7KCCommands:
         - ``.wlist``: The ``WLISt`` command tree.
     """
 
-    def __init__(self, device: Optional[PIDevice] = None) -> None:
+    def __init__(self, device: Optional[PIControl] = None) -> None:
         self._abort = Abort(device)
         self._awgcontrol = Awgcontrol(device)
         self._cal = Cal(device)
@@ -745,7 +745,7 @@ class AWG7KCMixin:
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIDevice) else None
+        device = self if isinstance(self, PIControl) else None
         self._command_argument_constants = AWG7KCCommandConstants()
         self._commands = AWG7KCCommands(device)
 

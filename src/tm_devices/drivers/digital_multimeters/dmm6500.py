@@ -5,17 +5,17 @@ from typing import Tuple
 import pyvisa as visa
 
 from tm_devices.commands import DMM6500Mixin
-from tm_devices.driver_mixins.device_control.device import family_base_class
-from tm_devices.driver_mixins.device_control.tsp_device import TSPDevice
+from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import (
     LegacyTSPIEEE4882Commands,
 )
+from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.digital_multimeters.digital_multimeter import DigitalMultimeter
 from tm_devices.helpers import DeviceConfigEntry
 
 
 @family_base_class
-class DMM6500(DMM6500Mixin, DigitalMultimeter, TSPDevice):
+class DMM6500(DMM6500Mixin, DigitalMultimeter, TSPControl):
     """DMM6500 device driver."""
 
     _IEEE_COMMANDS_CLASS = LegacyTSPIEEE4882Commands
@@ -44,10 +44,6 @@ class DMM6500(DMM6500Mixin, DigitalMultimeter, TSPDevice):
     ################################################################################################
     # Properties
     ################################################################################################
-    @property
-    def all_channel_names_list(self) -> Tuple[str, ...]:
-        """Return a tuple containing all the channel names."""
-        return ()
 
     @property
     def ieee_cmds(self) -> LegacyTSPIEEE4882Commands:

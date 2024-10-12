@@ -5,9 +5,9 @@ from __future__ import annotations
 from abc import ABC
 from typing import Tuple, TYPE_CHECKING, Union
 
-from tm_devices.driver_mixins.device_control.device import family_base_class
-from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TekAFGAWG
+from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.source_measure_units.source_measure_unit import SourceMeasureUnit
 
 # noinspection PyPep8Naming
@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 
 
 @family_base_class
-class SMU6xxx(SourceMeasureUnit, PIDevice, ABC):
+class SMU6xxx(SourceMeasureUnit, PIControl, ABC):
     """Base SMU6xxx device driver."""
 
     ################################################################################################

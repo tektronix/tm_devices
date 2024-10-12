@@ -4,7 +4,7 @@ from abc import ABC
 
 import pyvisa as visa
 
-from tm_devices.driver_mixins.device_control.device import family_base_class
+from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.scopes.scope import Scope
 from tm_devices.helpers import DeviceConfigEntry
 

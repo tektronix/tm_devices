@@ -48,7 +48,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MaskTestWaveforms(SCPICmdWrite, SCPICmdRead):
@@ -87,7 +87,7 @@ class MaskTest(SCPICmdRead):
         - ``.waveforms``: The ``MASK:TESt:WAVEforms`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._waveforms = MaskTestWaveforms(device, f"{self._cmd_syntax}:WAVEforms")
 
@@ -205,7 +205,7 @@ class MaskMaskItemTolerance(SCPICmdRead):
         - ``.vertical``: The ``MASK:MASK<x>:TOLerance:VERTical`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._horizontal = MaskMaskItemToleranceHorizontal(device, f"{self._cmd_syntax}:HORizontal")
         self._updatenow = MaskMaskItemToleranceUpdatenow(device, f"{self._cmd_syntax}:UPDatenow")
@@ -381,7 +381,7 @@ class MaskMaskItemTest(SCPICmdRead):
         - ``.threshold``: The ``MASK:MASK<x>:TESt:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = MaskMaskItemTestState(device, f"{self._cmd_syntax}:STATE")
         self._status = MaskMaskItemTestStatus(device, f"{self._cmd_syntax}:STATUS")
@@ -532,7 +532,7 @@ class MaskMaskItemSegcountItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.hits``: The ``MASK:MASK<x>:SEG<x>COUNT:HITS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hits = MaskMaskItemSegcountItemHits(device, f"{self._cmd_syntax}:HITS")
 
@@ -603,7 +603,7 @@ class MaskMaskItemSegItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.points``: The ``MASK:MASK<x>:SEG<x>:POINTS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._points = MaskMaskItemSegItemPoints(device, f"{self._cmd_syntax}:POINTS")
 
@@ -755,7 +755,7 @@ class MaskMaskItemCount(SCPICmdRead):
         - ``.hits``: The ``MASK:MASK<x>:COUNT:HITS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hits = MaskMaskItemCountHits(device, f"{self._cmd_syntax}:HITS")
 
@@ -807,7 +807,7 @@ class MaskMaskItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.tolerance``: The ``MASK:MASK<x>:TOLerance`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._count = MaskMaskItemCount(device, f"{self._cmd_syntax}:COUNT")
         self._definedby = MaskMaskItemDefinedby(device, f"{self._cmd_syntax}:DEFinedby")
@@ -1066,7 +1066,7 @@ class Mask(SCPICmdRead):
         - ``.test``: The ``MASK:TESt`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MASK") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MASK") -> None:
         super().__init__(device, cmd_syntax)
         self._delete = MaskDelete(device, f"{self._cmd_syntax}:DELete")
         self._mask: Dict[int, MaskMaskItem] = DefaultDictPassKeyToFactory(

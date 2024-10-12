@@ -1,46 +1,33 @@
 """Base Scope device driver module."""
 
-import inspect
-
 from abc import ABC
-from typing import Any, List, Optional, Tuple, Union
+from typing import Tuple, Union
 
-from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.drivers.device import Device
 from tm_devices.helpers import DeviceTypes
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-# TODO: nfelt14: remove PIDevice inheritance if possible
-class Scope(PIDevice, ABC):
+# TODO: nfelt14: remove PIControl inheritance if possible
+class Scope(PIControl, Device, ABC):
     """Base Scope device driver."""
 
     _DEVICE_TYPE = DeviceTypes.SCOPE.value
 
     ################################################################################################
+    # Abstract Properties
+    ################################################################################################
+
+    ################################################################################################
     # Abstract Methods
     ################################################################################################
-    def single_sequence(self) -> None:
-        """Perform a single sequence.
-
-        Raises:
-            NotImplementedError: Indicates the current driver has not implemented this method.
-        """
-        # TODO: implement for all driver subclasses then convert to abstractmethod
-        raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
-            f" is not yet implemented for the {self.__class__.__name__} driver"
-        )
 
     ################################################################################################
     # Properties
     ################################################################################################
-    @property
-    def all_channel_names_list(self) -> Tuple[str, ...]:
-        """Return a tuple containing all the channel names."""
-        return tuple(f"CH{x+1}" for x in range(self.total_channels))
-
     @cached_property
     def opt_string(self) -> str:
         r"""Return the string returned from the ``*OPT?`` query when the device was created."""
@@ -49,26 +36,6 @@ class Scope(PIDevice, ABC):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def curve_query(
-        self,
-        channel_num: int,
-        wfm_type: str = "TimeDomain",
-        output_csv_file: Optional[str] = None,
-    ) -> List[Any]:
-        """Perform a curve query on a specific channel.
-
-        Args:
-            channel_num: The channel number to perform the curve query on.
-            wfm_type: The type of waveform to query.
-            output_csv_file: An optional file path to a csv file to save the curve query data in.
-
-        Raises:
-            NotImplementedError: Indicates the current driver has not implemented this method.
-        """
-        raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
-            f" is not yet implemented for the {self.__class__.__name__} driver"
-        )
 
     def expect_esr(self, esr: Union[int, str], error_string: str = "") -> Tuple[bool, str]:
         r"""Check for the expected number of errors and output string.

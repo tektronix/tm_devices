@@ -6,7 +6,7 @@ from typing import Tuple, Union
 from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin import (
     SignalGeneratorMixin,
 )
-from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
 from tm_devices.helpers import print_with_timestamp
 
@@ -14,8 +14,8 @@ from tm_devices.helpers import print_with_timestamp
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-# TODO: nfelt14: remove PIDevice inheritance if possible, maybe even remove this class entirely?
-class TekAFGAWG(PIDevice, SignalGeneratorMixin, ExtendableMixin, ABC):
+# TODO: nfelt14: remove PIControl inheritance if possible, maybe even remove this class entirely?
+class TekAFGAWG(PIControl, SignalGeneratorMixin, ExtendableMixin, ABC):
     """A private mixin for common methods and attributes for Tektronix AFG and AWG devices."""
 
     ################################################################################################

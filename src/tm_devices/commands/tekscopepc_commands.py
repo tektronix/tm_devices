@@ -7,7 +7,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 from .gen_c3g61_tekscopepc.actonevent import Actonevent
 from .gen_c3g61_tekscopepc.bus import Bus
@@ -1192,7 +1192,7 @@ class TekScopePCCommands:
     """
 
     # pylint: disable=too-many-statements
-    def __init__(self, device: Optional[PIDevice] = None) -> None:  # noqa: PLR0915
+    def __init__(self, device: Optional[PIControl] = None) -> None:  # noqa: PLR0915
         self._actonevent = Actonevent(device)
         self._alias = Alias(device)
         self._allev = Allev(device)
@@ -3085,7 +3085,7 @@ class TekScopePCMixin:
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIDevice) else None
+        device = self if isinstance(self, PIControl) else None
         self._command_argument_constants = TekScopePCCommandConstants()
         self._commands = TekScopePCCommands(device)
 

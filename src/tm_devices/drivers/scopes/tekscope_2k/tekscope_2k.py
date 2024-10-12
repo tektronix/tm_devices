@@ -5,7 +5,10 @@ import warnings
 from abc import ABC
 from typing import Any, List, Optional
 
-from tm_devices.driver_mixins.device_control.device import family_base_class
+from tm_devices.driver_mixins.abstract_device_functionality.channel_control_mixin import (
+    ChannelControlMixin,
+)
+from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.scopes.scope import Scope
 
 # noinspection PyPep8Naming
@@ -13,7 +16,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class TekScope2k(Scope, ABC):
+class TekScope2k(Scope, ChannelControlMixin, ABC):
     """Base TekScope2k scope device driver."""
 
     ################################################################################################

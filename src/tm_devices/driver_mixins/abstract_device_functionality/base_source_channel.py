@@ -3,24 +3,24 @@
 from abc import ABC, abstractmethod
 from typing import Optional
 
-from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class BaseSourceChannel(ABC):
     """Base source channel driver."""
 
-    def __init__(self, pi_device: PIDevice, channel_name: str) -> None:
+    def __init__(self, pi_control: PIControl, channel_name: str) -> None:
         """Create a source channel.
 
         Args:
-            pi_device: A PI device.
+            pi_control: A PI device.
             channel_name: The channel name for the source channel.
         """
         self._name = channel_name
         self._num = None
         if channel_num := "".join(filter(str.isdigit, channel_name)):
             self._num = int(channel_num)
-        self._pi_device = pi_device
+        self._pi_control = pi_control
 
     @property
     def name(self) -> str:

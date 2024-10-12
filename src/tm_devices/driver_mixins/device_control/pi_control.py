@@ -1,7 +1,5 @@
-# pylint: disable=too-many-lines  # pyright: reportUnnecessaryTypeIgnoreComment=none
-"""Base Programmable Interface (PI) device driver module."""
+"""Base Programmable Interface (PI) control class module."""
 
-import inspect
 import os
 import socket
 import time
@@ -17,7 +15,6 @@ from packaging.version import Version
 from pyvisa import constants as visa_constants
 from pyvisa import VisaIOError
 
-from tm_devices.driver_mixins.device_control.device import Device
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import IEEE4882Commands
 from tm_devices.helpers import (
     check_visa_connection,
@@ -33,9 +30,23 @@ from tm_devices.helpers import (
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
+# noinspection PyProtectedMember
+from tm_devices.driver_mixins.shared_implementations._verification_methods_mixin import VerificationMethodsMixin
 
-class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
-    """Base Programmable Interface (PI) device driver."""
+
+class PIControl(VerificationMethodsMixin, ABC):  # pylint: disable=too-many-public-methods
+    """Base Programmable Interface (PI) control class.
+
+    Any class that inherits this control Mixin must also inherit a descendant of the
+    [`Device`][tm_devices.drivers.device.Device] class in order to have access to the
+    attributes required by this class.
+    """
+
+    # These attributes are provided by the top-level Device class
+    _config_entry: DeviceConfigEntry
+    _enable_verification: bool
+    _name_and_alias: str
+    _verbose: bool
 
     # This is a class constant that can be overwritten by children which defines
     # the class to use for the IEEE 488.2 commands.
@@ -77,15 +88,6 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
     ################################################################################################
     # Abstract Properties
     ################################################################################################
-    @property
-    @abstractmethod
-    def all_channel_names_list(self) -> Tuple[str, ...]:
-        """Return a tuple containing all the channel names."""
-
-    @cached_property
-    @abstractmethod
-    def total_channels(self) -> int:
-        """Return the total number of channels (all types)."""
 
     ################################################################################################
     # Abstract Methods
@@ -111,36 +113,6 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
             Boolean indicating no error, String containing concatenated contents of event log.
         """
         # TODO: nfelt14: in v3 - This will be deprecated by the has_errors
-
-    def turn_channel_off(self, channel_str: str) -> None:
-        """Turn off the specified channel.
-
-        Args:
-            channel_str: The name of the channel to turn off.
-
-        Raises:
-            NotImplementedError: Indicates the current driver has not implemented this method.
-        """
-        # TODO: implement for all driver subclasses then remove this blanket NotImplementedError
-        raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
-            f" is not yet implemented for the {self.__class__.__name__} driver"
-        )
-
-    def turn_channel_on(self, channel_str: str) -> None:
-        """Turn on the specified channel.
-
-        Args:
-            channel_str: The name of the channel to turn on.
-
-        Raises:
-            NotImplementedError: Indicates the current driver has not implemented this method.
-        """
-        # TODO: implement for all driver subclasses then remove this blanket NotImplementedError
-        raise NotImplementedError(
-            f"``.{inspect.currentframe().f_code.co_name}()``"  # pyright: ignore[reportOptionalMemberAccess]
-            f" is not yet implemented for the {self.__class__.__name__} driver"
-        )
 
     ################################################################################################
     # Properties
@@ -584,7 +556,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
         custom_message_prefix: str = "",
         allow_empty: bool = False,
     ) -> Tuple[bool, str]:
-        """Query the and verify the result.
+        """Query the device and verify the result.
 
         Args:
             query: The query that is being checked.
@@ -620,7 +592,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
         remove_quotes: bool = False,
         custom_message_prefix: str = "",
     ) -> Tuple[bool, str]:
-        """Query the and verify the result is not the given value.
+        """Query the device and verify the result is not the given value.
 
         Args:
             query: The query that is being checked.
@@ -768,18 +740,6 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
                 actual_value = ""
         return not query_passed, actual_value
 
-    @final
-    def turn_all_channels_off(self) -> None:
-        """Turn all channels off."""
-        for ch_str in self.all_channel_names_list:
-            self.turn_channel_off(ch_str)
-
-    @final
-    def turn_all_channels_on(self) -> None:
-        """Turn all channels on."""
-        for ch_str in self.all_channel_names_list:
-            self.turn_channel_on(ch_str)
-
     def wait_for_srq_event(self, timeout: int) -> visa.resources.resource.WaitResponse:
         """Wait for the service request event to happen, up to the given timeout.
 
@@ -870,7 +830,7 @@ class PIDevice(Device, ABC):  # pylint: disable=too-many-public-methods
         if self._verbose and verbose:
             if "\n" in command:
                 # Format any multiline command to print out with a single timestamp
-                # followed by as many (whitespace padded) f'>>  {cmd}' lines as it has
+                # followed by as many (whitespace padded) f">>  {cmd}" lines as it has
                 commands_iter = iter(repr(command.strip()).split("\\n"))
                 spaces = " " * len(
                     print_with_timestamp(

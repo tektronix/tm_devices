@@ -755,7 +755,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MeasurementWbgPdevice(SCPICmdWrite, SCPICmdRead):
@@ -795,7 +795,7 @@ class MeasurementWbg(SCPICmdRead):
         - ``.pdevice``: The ``MEASUrement:WBG:PDEVice`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._pdevice = MeasurementWbgPdevice(device, f"{self._cmd_syntax}:PDEVice")
 
@@ -868,7 +868,7 @@ class MeasurementStatistics(SCPICmdRead):
         - ``.cyclemode``: The ``MEASUrement:STATIstics:CYCLEMode`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._cyclemode = MeasurementStatisticsCyclemode(device, f"{self._cmd_syntax}:CYCLEMode")
 
@@ -974,7 +974,7 @@ class MeasurementResultsHistory(SCPICmdRead):
         - ``.stop``: The ``MEASUrement:RESUlts:HISTory:STOP`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._start = MeasurementResultsHistoryStart(device, f"{self._cmd_syntax}:STARt")
         self._stop = MeasurementResultsHistoryStop(device, f"{self._cmd_syntax}:STOP")
@@ -1053,7 +1053,7 @@ class MeasurementResults(SCPICmdRead):
         - ``.history``: The ``MEASUrement:RESUlts:HISTory`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._history = MeasurementResultsHistory(device, f"{self._cmd_syntax}:HISTory")
 
@@ -1343,7 +1343,7 @@ class MeasurementReflevelsPercent(SCPICmdRead):
         - ``.type``: The ``MEASUrement:REFLevels:PERCent:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fallhigh = MeasurementReflevelsPercentFallhigh(device, f"{self._cmd_syntax}:FALLHigh")
         self._falllow = MeasurementReflevelsPercentFalllow(device, f"{self._cmd_syntax}:FALLLow")
@@ -1947,7 +1947,7 @@ class MeasurementReflevelsAbsolute(SCPICmdRead):
         - ``.type``: The ``MEASUrement:REFLevels:ABSolute:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fallhigh = MeasurementReflevelsAbsoluteFallhigh(
             device, f"{self._cmd_syntax}:FALLHigh"
@@ -2208,7 +2208,7 @@ class MeasurementReflevels(SCPICmdRead):
         - ``.type``: The ``MEASUrement:REFLevels:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._absolute = MeasurementReflevelsAbsolute(device, f"{self._cmd_syntax}:ABSolute")
         self._basetop = MeasurementReflevelsBasetop(device, f"{self._cmd_syntax}:BASETop")
@@ -2656,7 +2656,7 @@ class MeasurementRefItemReflevelsPercent(SCPICmdRead):
         - ``.type``: The ``MEASUrement:REF<x>:REFLevels:PERCent:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fallhigh = MeasurementRefItemReflevelsPercentFallhigh(
             device, f"{self._cmd_syntax}:FALLHigh"
@@ -3225,7 +3225,7 @@ class MeasurementRefItemReflevelsAbsolute(SCPICmdRead):
         - ``.type``: The ``MEASUrement:REF<x>:REFLevels:ABSolute:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fallhigh = MeasurementRefItemReflevelsAbsoluteFallhigh(
             device, f"{self._cmd_syntax}:FALLHigh"
@@ -3497,7 +3497,7 @@ class MeasurementRefItemReflevels(SCPICmdRead):
         - ``.percent``: The ``MEASUrement:REF<x>:REFLevels:PERCent`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._absolute = MeasurementRefItemReflevelsAbsolute(device, f"{self._cmd_syntax}:ABSolute")
         self._basetop = MeasurementRefItemReflevelsBasetop(device, f"{self._cmd_syntax}:BASETop")
@@ -3626,7 +3626,7 @@ class MeasurementRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.reflevels``: The ``MEASUrement:REF<x>:REFLevels`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._reflevels = MeasurementRefItemReflevels(device, f"{self._cmd_syntax}:REFLevels")
 
@@ -3712,7 +3712,7 @@ class MeasurementPopulationLimit(SCPICmdRead):
         - ``.value``: The ``MEASUrement:POPUlation:LIMIT:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = MeasurementPopulationLimitState(device, f"{self._cmd_syntax}:STATE")
         self._value = MeasurementPopulationLimitValue(device, f"{self._cmd_syntax}:VALue")
@@ -3787,7 +3787,7 @@ class MeasurementPopulation(SCPICmdRead):
         - ``.limit``: The ``MEASUrement:POPUlation:LIMIT`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._limit = MeasurementPopulationLimit(device, f"{self._cmd_syntax}:LIMIT")
 
@@ -4032,7 +4032,7 @@ class MeasurementMech(SCPICmdRead):
         - ``.stype``: The ``MEASUrement:MECH:STYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._eindexz = MeasurementMechEindexz(device, f"{self._cmd_syntax}:EINDexz")
         self._gratio = MeasurementMechGratio(device, f"{self._cmd_syntax}:GRATio")
@@ -4326,7 +4326,7 @@ class MeasurementMeasrange(SCPICmdRead):
         - ``.state``: The ``MEASUrement:MEASRange:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._max = MeasurementMeasrangeMax(device, f"{self._cmd_syntax}:MAX")
         self._min = MeasurementMeasrangeMin(device, f"{self._cmd_syntax}:MIN")
@@ -5039,7 +5039,7 @@ class MeasurementMeasItemTosymbol(SCPICmdRead):
         - ``.measureat``: The ``MEASUrement:MEAS<x>:TOSYmbol:MEASUREAT`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._logic2source = MeasurementMeasItemTosymbolLogic2source(
             device, f"{self._cmd_syntax}:LOGIC2SOUrce"
@@ -5583,7 +5583,7 @@ class MeasurementMeasItemSscNominalfreq(SCPICmdWrite, SCPICmdRead):
         - ``.selectiontype``: The ``MEASUrement:MEAS<x>:SSC:NOMinalfreq:SELECTIONtype`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._selectiontype = MeasurementMeasItemSscNominalfreqSelectiontype(
             device, f"{self._cmd_syntax}:SELECTIONtype"
@@ -5635,7 +5635,7 @@ class MeasurementMeasItemSsc(SCPICmdRead):
         - ``.nominalfreq``: The ``MEASUrement:MEAS<x>:SSC:NOMinalfreq`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._nominalfreq = MeasurementMeasItemSscNominalfreq(
             device, f"{self._cmd_syntax}:NOMinalfreq"
@@ -6091,7 +6091,7 @@ class MeasurementMeasItemResultsHistory(SCPICmdRead):
         - ``.stddev``: The ``MEASUrement:MEAS<x>:RESUlts:HISTory:STDDev`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._maximum = MeasurementMeasItemResultsHistoryMaximum(
             device, f"{self._cmd_syntax}:MAXimum"
@@ -6386,7 +6386,7 @@ class MeasurementMeasItemResultsCurrentacq(SCPICmdRead):
         - ``.stddev``: The ``MEASUrement:MEAS<x>:RESUlts:CURRentacq:STDDev`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._maximum = MeasurementMeasItemResultsCurrentacqMaximum(
             device, f"{self._cmd_syntax}:MAXimum"
@@ -6680,7 +6680,7 @@ class MeasurementMeasItemResultsAllacqs(SCPICmdRead):
         - ``.stddev``: The ``MEASUrement:MEAS<x>:RESUlts:ALLAcqs:STDDev`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._maximum = MeasurementMeasItemResultsAllacqsMaximum(
             device, f"{self._cmd_syntax}:MAXimum"
@@ -6841,7 +6841,7 @@ class MeasurementMeasItemResults(SCPICmdRead):
         - ``.history``: The ``MEASUrement:MEAS<x>:RESUlts:HISTory`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._allacqs = MeasurementMeasItemResultsAllacqs(device, f"{self._cmd_syntax}:ALLAcqs")
         self._currentacq = MeasurementMeasItemResultsCurrentacq(
@@ -7040,7 +7040,7 @@ class MeasurementMeasItemReflevelsAbsolute(SCPICmdRead):
         - ``.fallhigh``: The ``MEASUrement:MEAS<x>:REFLevels:ABSolute:FALLHigh`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fallhigh = MeasurementMeasItemReflevelsAbsoluteFallhigh(
             device, f"{self._cmd_syntax}:FALLHigh"
@@ -7343,7 +7343,7 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
         - ``.type``: The ``MEASUrement:MEAS<x>:REFLevels1:PERCent:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fallhigh = MeasurementMeasItemReflevels1PercentFallhigh(
             device, f"{self._cmd_syntax}:FALLHigh"
@@ -7921,7 +7921,7 @@ class MeasurementMeasItemReflevels1Absolute(SCPICmdRead):
         - ``.type``: The ``MEASUrement:MEAS<x>:REFLevels1:ABSolute:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._falllow = MeasurementMeasItemReflevels1AbsoluteFalllow(
             device, f"{self._cmd_syntax}:FALLLow"
@@ -8175,7 +8175,7 @@ class MeasurementMeasItemReflevels1(SCPICmdRead):
         - ``.percent``: The ``MEASUrement:MEAS<x>:REFLevels1:PERCent`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._absolute = MeasurementMeasItemReflevels1Absolute(
             device, f"{self._cmd_syntax}:ABSolute"
@@ -8323,7 +8323,7 @@ class MeasurementMeasItemReflevels(SCPICmdRead):
         - ``.absolute``: The ``MEASUrement:MEAS<x>:REFLevels:ABSolute`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._absolute = MeasurementMeasItemReflevelsAbsolute(
             device, f"{self._cmd_syntax}:ABSolute"
@@ -8529,7 +8529,7 @@ class MeasurementMeasItemPopulationLimit(SCPICmdRead):
         - ``.value``: The ``MEASUrement:MEAS<x>:POPUlation:LIMIT:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = MeasurementMeasItemPopulationLimitState(device, f"{self._cmd_syntax}:STATE")
         self._value = MeasurementMeasItemPopulationLimitValue(device, f"{self._cmd_syntax}:VALue")
@@ -8646,7 +8646,7 @@ class MeasurementMeasItemPopulation(SCPICmdRead):
         - ``.limit``: The ``MEASUrement:MEAS<x>:POPUlation:LIMIT`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._global = MeasurementMeasItemPopulationGlobal(device, f"{self._cmd_syntax}:GLOBal")
         self._limit = MeasurementMeasItemPopulationLimit(device, f"{self._cmd_syntax}:LIMIT")
@@ -8775,7 +8775,7 @@ class MeasurementMeasItemPerfreq(SCPICmdRead):
         - ``.edge``: The ``MEASUrement:MEAS<x>:PERFREQ:EDGE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._edge = MeasurementMeasItemPerfreqEdge(device, f"{self._cmd_syntax}:EDGE")
 
@@ -9191,7 +9191,7 @@ class MeasurementMeasItemOutfiltersLowpass(SCPICmdRead):
         - ``.spec``: The ``MEASUrement:MEAS<x>:OUTFILTers:LOWPass:SPEC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._freq = MeasurementMeasItemOutfiltersLowpassFreq(device, f"{self._cmd_syntax}:FREQ")
         self._spec = MeasurementMeasItemOutfiltersLowpassSpec(device, f"{self._cmd_syntax}:SPEC")
@@ -9274,7 +9274,7 @@ class MeasurementMeasItemOutfilters(SCPICmdRead):
         - ``.lowpass``: The ``MEASUrement:MEAS<x>:OUTFILTers:LOWPass`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._lowpass = MeasurementMeasItemOutfiltersLowpass(device, f"{self._cmd_syntax}:LOWPass")
 
@@ -9432,7 +9432,7 @@ class MeasurementMeasItemOfiltersLowpass(SCPICmdRead):
         - ``.spec``: The ``MEASUrement:MEAS<x>:OFILters:LOWPass:SPEC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._freq = MeasurementMeasItemOfiltersLowpassFreq(device, f"{self._cmd_syntax}:FREQ")
         self._spec = MeasurementMeasItemOfiltersLowpassSpec(device, f"{self._cmd_syntax}:SPEC")
@@ -9515,7 +9515,7 @@ class MeasurementMeasItemOfilters(SCPICmdRead):
         - ``.lowpass``: The ``MEASUrement:MEAS<x>:OFILters:LOWPass`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._lowpass = MeasurementMeasItemOfiltersLowpass(device, f"{self._cmd_syntax}:LOWPass")
 
@@ -9772,7 +9772,7 @@ class MeasurementMeasItemMech(SCPICmdRead):
         - ``.stype``: The ``MEASUrement:MEAS<x>:MECH:STYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._eindexz = MeasurementMeasItemMechEindexz(device, f"{self._cmd_syntax}:EINDexz")
         self._gratio = MeasurementMeasItemMechGratio(device, f"{self._cmd_syntax}:GRATio")
@@ -10092,7 +10092,7 @@ class MeasurementMeasItemMeasrange(SCPICmdRead):
         - ``.state``: The ``MEASUrement:MEAS<x>:MEASRange:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._global = MeasurementMeasItemMeasrangeGlobal(device, f"{self._cmd_syntax}:GLOBal")
         self._max = MeasurementMeasItemMeasrangeMax(device, f"{self._cmd_syntax}:MAX")
@@ -10787,7 +10787,7 @@ class MeasurementMeasItemJittersummary(SCPICmdRead):
         - ``.tjber``: The ``MEASUrement:MEAS<x>:JITTERSummary:TJBER`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dcd = MeasurementMeasItemJittersummaryDcd(device, f"{self._cmd_syntax}:DCD")
         self._ddj = MeasurementMeasItemJittersummaryDdj(device, f"{self._cmd_syntax}:DDJ")
@@ -11240,7 +11240,7 @@ class MeasurementMeasItemHlevelOutput(SCPICmdRead):
         - ``.uglobal``: The ``MEASUrement:MEAS<x>:HLEVel:OUTPut:UGLobal`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._uglobal = MeasurementMeasItemHlevelOutputUglobal(
             device, f"{self._cmd_syntax}:UGLobal"
@@ -11288,7 +11288,7 @@ class MeasurementMeasItemHlevel(SCPICmdRead):
         - ``.output``: The ``MEASUrement:MEAS<x>:HLEVel:OUTPut`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._output = MeasurementMeasItemHlevelOutput(device, f"{self._cmd_syntax}:OUTPut")
 
@@ -11587,7 +11587,7 @@ class MeasurementMeasItemHighlevel(SCPICmdRead):
         - ``.wiring``: The ``MEASUrement:MEAS<x>:HIGHLEVel:WIRing`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._configuration = MeasurementMeasItemHighlevelConfiguration(
             device, f"{self._cmd_syntax}:CONFIGuration"
@@ -12247,7 +12247,7 @@ class MeasurementMeasItemGating(SCPICmdWrite, SCPICmdRead):
         - ``.starttime``: The ``MEASUrement:MEAS<x>:GATing:STARTtime`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._active = MeasurementMeasItemGatingActive(device, f"{self._cmd_syntax}:ACTive")
         self._endtime = MeasurementMeasItemGatingEndtime(device, f"{self._cmd_syntax}:ENDtime")
@@ -12714,7 +12714,7 @@ class MeasurementMeasItemFromsymbol(SCPICmdRead):
         - ``.measureat``: The ``MEASUrement:MEAS<x>:FROMSymbol:MEASUREAT`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._logic2source = MeasurementMeasItemFromsymbolLogic2source(
             device, f"{self._cmd_syntax}:LOGIC2SOUrce"
@@ -13044,7 +13044,7 @@ class MeasurementMeasItemFiltersLowpass(SCPICmdRead):
         - ``.spec``: The ``MEASUrement:MEAS<x>:FILTers:LOWPass:SPEC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._freq = MeasurementMeasItemFiltersLowpassFreq(device, f"{self._cmd_syntax}:FREQ")
         self._spec = MeasurementMeasItemFiltersLowpassSpec(device, f"{self._cmd_syntax}:SPEC")
@@ -13189,7 +13189,7 @@ class MeasurementMeasItemFiltersHighpass(SCPICmdRead):
         - ``.spec``: The ``MEASUrement:MEAS<x>:FILTers:HIGHPass:SPEC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._freq = MeasurementMeasItemFiltersHighpassFreq(device, f"{self._cmd_syntax}:FREQ")
         self._spec = MeasurementMeasItemFiltersHighpassSpec(device, f"{self._cmd_syntax}:SPEC")
@@ -13333,7 +13333,7 @@ class MeasurementMeasItemFilters(SCPICmdRead):
         - ``.ramptime``: The ``MEASUrement:MEAS<x>:FILTers:RAMPtime`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._blankingtime = MeasurementMeasItemFiltersBlankingtime(
             device, f"{self._cmd_syntax}:BLANKingtime"
@@ -13790,7 +13790,7 @@ class MeasurementMeasItemEdges(SCPICmdRead):
         - ``.upperfrequency``: The ``MEASUrement:MEAS<x>:EDGES:UPPERFREQuency`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fromlevel = MeasurementMeasItemEdgesFromlevel(device, f"{self._cmd_syntax}:FROMLevel")
         self._level = MeasurementMeasItemEdgesLevel(device, f"{self._cmd_syntax}:LEVel")
@@ -14192,7 +14192,7 @@ class MeasurementMeasItemDisplaystat(SCPICmdRead):
         - ``.enable``: The ``MEASUrement:MEAS<x>:DISPlaystat:ENABle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._enable = MeasurementMeasItemDisplaystatEnable(device, f"{self._cmd_syntax}:ENABle")
 
@@ -14276,7 +14276,7 @@ class MeasurementMeasItemDelay(SCPICmdRead):
         - ``.edge``: The ``MEASUrement:MEAS<x>:DELay:EDGE<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._edge: Dict[int, MeasurementMeasItemDelayEdgeItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementMeasItemDelayEdgeItem(device, f"{self._cmd_syntax}:EDGE{x}")
@@ -14475,7 +14475,7 @@ class MeasurementMeasItemCommonmodeFilters(SCPICmdRead):
         - ``.state``: The ``MEASUrement:MEAS<x>:COMMONMode:FILTers:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = MeasurementMeasItemCommonmodeFiltersState(device, f"{self._cmd_syntax}:STATE")
 
@@ -14528,7 +14528,7 @@ class MeasurementMeasItemCommonmode(SCPICmdRead):
         - ``.sources``: The ``MEASUrement:MEAS<x>:COMMONMode:SOURCEs`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._filters = MeasurementMeasItemCommonmodeFilters(device, f"{self._cmd_syntax}:FILTers")
         self._sources = MeasurementMeasItemCommonmodeSources(device, f"{self._cmd_syntax}:SOURCEs")
@@ -14664,7 +14664,7 @@ class MeasurementMeasItemClockrecoveryNominaloffset(SCPICmdWrite, SCPICmdRead):
           command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._selectiontype = MeasurementMeasItemClockrecoveryNominaloffsetSelectiontype(
             device, f"{self._cmd_syntax}:SELECTIONtype"
@@ -15122,7 +15122,7 @@ class MeasurementMeasItemClockrecoveryAdvanced(SCPICmdRead):
         - ``.method``: The ``MEASUrement:MEAS<x>:CLOCKRecovery:ADVanced:METHod`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._method = MeasurementMeasItemClockrecoveryAdvancedMethod(
             device, f"{self._cmd_syntax}:METHod"
@@ -15193,7 +15193,7 @@ class MeasurementMeasItemClockrecovery(SCPICmdRead):
         - ``.standard``: The ``MEASUrement:MEAS<x>:CLOCKRecovery:STAndard`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._advanced = MeasurementMeasItemClockrecoveryAdvanced(
             device, f"{self._cmd_syntax}:ADVanced"
@@ -15845,7 +15845,7 @@ class MeasurementMeasItemCcresultsCurrentacq(SCPICmdRead):
         - ``.stddev``: The ``MEASUrement:MEAS<x>:CCRESUlts:CURRentacq:STDDev`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._maximum = MeasurementMeasItemCcresultsCurrentacqMaximum(
             device, f"{self._cmd_syntax}:MAXimum"
@@ -16143,7 +16143,7 @@ class MeasurementMeasItemCcresultsAllacqs(SCPICmdRead):
         - ``.stddev``: The ``MEASUrement:MEAS<x>:CCRESUlts:ALLAcqs:STDDev`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._maximum = MeasurementMeasItemCcresultsAllacqsMaximum(
             device, f"{self._cmd_syntax}:MAXimum"
@@ -16307,7 +16307,7 @@ class MeasurementMeasItemCcresults(SCPICmdRead):
         - ``.currentacq``: The ``MEASUrement:MEAS<x>:CCRESUlts:CURRentacq`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._allacqs = MeasurementMeasItemCcresultsAllacqs(device, f"{self._cmd_syntax}:ALLAcqs")
         self._currentacq = MeasurementMeasItemCcresultsCurrentacq(
@@ -16599,7 +16599,7 @@ class MeasurementMeasItemBer(SCPICmdWrite, SCPICmdRead):
         - ``.targetber``: The ``MEASUrement:MEAS<x>:BER:TARGETBER`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._targetber = MeasurementMeasItemBerTargetber(device, f"{self._cmd_syntax}:TARGETBER")
 
@@ -16770,7 +16770,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
     # pylint: disable=too-many-statements
     def __init__(  # noqa: PLR0915
-        self, device: Optional["PIDevice"], cmd_syntax: str
+        self, device: Optional["PIControl"], cmd_syntax: str
     ) -> None:
         super().__init__(device, cmd_syntax)
         self._ber = MeasurementMeasItemBer(device, f"{self._cmd_syntax}:BER")
@@ -20766,7 +20766,7 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
         - ``.type``: The ``MEASUrement:MATH<x>:REFLevels:PERCent:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fallhigh = MeasurementMathItemReflevelsPercentFallhigh(
             device, f"{self._cmd_syntax}:FALLHigh"
@@ -21372,7 +21372,7 @@ class MeasurementMathItemReflevelsAbsolute(SCPICmdRead):
         - ``.type``: The ``MEASUrement:MATH<x>:REFLevels:ABSolute:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fallhigh = MeasurementMathItemReflevelsAbsoluteFallhigh(
             device, f"{self._cmd_syntax}:FALLHigh"
@@ -21662,7 +21662,7 @@ class MeasurementMathItemReflevels(SCPICmdRead):
         - ``.percent``: The ``MEASUrement:MATH<x>:REFLevels:PERCent`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._absolute = MeasurementMathItemReflevelsAbsolute(
             device, f"{self._cmd_syntax}:ABSolute"
@@ -21810,7 +21810,7 @@ class MeasurementMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.reflevels``: The ``MEASUrement:MATH<x>:REFLevels`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._reflevels = MeasurementMathItemReflevels(device, f"{self._cmd_syntax}:REFLevels")
 
@@ -22144,7 +22144,7 @@ class MeasurementHighlevelOutlowpass(SCPICmdRead):
         - ``.spec``: The ``MEASUrement:HIGHLEVel:OUTLOWPass:SPEC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._freq = MeasurementHighlevelOutlowpassFreq(device, f"{self._cmd_syntax}:FREQ")
         self._spec = MeasurementHighlevelOutlowpassSpec(device, f"{self._cmd_syntax}:SPEC")
@@ -22408,7 +22408,7 @@ class MeasurementHighlevelInlowpass(SCPICmdRead):
         - ``.spec``: The ``MEASUrement:HIGHLEVel:INLOWPass:SPEC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._freq = MeasurementHighlevelInlowpassFreq(device, f"{self._cmd_syntax}:FREQ")
         self._spec = MeasurementHighlevelInlowpassSpec(device, f"{self._cmd_syntax}:SPEC")
@@ -22551,7 +22551,7 @@ class MeasurementHighlevel(SCPICmdRead):
         - ``.wiring``: The ``MEASUrement:HIGHLEVel:WIRing`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._configuration = MeasurementHighlevelConfiguration(
             device, f"{self._cmd_syntax}:CONFIGuration"
@@ -23148,7 +23148,7 @@ class MeasurementGating(SCPICmdWrite, SCPICmdRead):
         - ``.starttime``: The ``MEASUrement:GATing:STARTtime`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._active = MeasurementGatingActive(device, f"{self._cmd_syntax}:ACTive")
         self._endtime = MeasurementGatingEndtime(device, f"{self._cmd_syntax}:ENDtime")
@@ -23430,7 +23430,7 @@ class MeasurementFiltersLowpass(SCPICmdRead):
         - ``.spec``: The ``MEASUrement:FILTers:LOWPass:SPEC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._freq = MeasurementFiltersLowpassFreq(device, f"{self._cmd_syntax}:FREQ")
         self._spec = MeasurementFiltersLowpassSpec(device, f"{self._cmd_syntax}:SPEC")
@@ -23558,7 +23558,7 @@ class MeasurementFiltersHighpass(SCPICmdRead):
         - ``.spec``: The ``MEASUrement:FILTers:HIGHPass:SPEC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._freq = MeasurementFiltersHighpassFreq(device, f"{self._cmd_syntax}:FREQ")
         self._spec = MeasurementFiltersHighpassSpec(device, f"{self._cmd_syntax}:SPEC")
@@ -23661,7 +23661,7 @@ class MeasurementFilters(SCPICmdRead):
         - ``.ramptime``: The ``MEASUrement:FILTers:RAMPtime`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._blankingtime = MeasurementFiltersBlankingtime(
             device, f"{self._cmd_syntax}:BLANKingtime"
@@ -24016,7 +24016,7 @@ class MeasurementClockrecoveryNominaloffset(SCPICmdWrite, SCPICmdRead):
         - ``.selectiontype``: The ``MEASUrement:CLOCKRecovery:NOMINALOFFset:SELECTIONtype`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._selectiontype = MeasurementClockrecoveryNominaloffsetSelectiontype(
             device, f"{self._cmd_syntax}:SELECTIONtype"
@@ -24431,7 +24431,7 @@ class MeasurementClockrecoveryAdvanced(SCPICmdRead):
         - ``.method``: The ``MEASUrement:CLOCKRecovery:ADVanced:METHod`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._method = MeasurementClockrecoveryAdvancedMethod(device, f"{self._cmd_syntax}:METHod")
 
@@ -24494,7 +24494,7 @@ class MeasurementClockrecovery(SCPICmdRead):
         - ``.standard``: The ``MEASUrement:CLOCKRecovery:STAndard`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._advanced = MeasurementClockrecoveryAdvanced(device, f"{self._cmd_syntax}:ADVanced")
         self._clockfrequency = MeasurementClockrecoveryClockfrequency(
@@ -25256,7 +25256,7 @@ class MeasurementChannelReflevelsPercent(SCPICmdRead):
         - ``.type``: The ``MEASUrement:CH<x>:REFLevels:PERCent:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fallhigh = MeasurementChannelReflevelsPercentFallhigh(
             device, f"{self._cmd_syntax}:FALLHigh"
@@ -25828,7 +25828,7 @@ class MeasurementChannelReflevelsAbsolute(SCPICmdRead):
         - ``.type``: The ``MEASUrement:CH<x>:REFLevels:ABSolute:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fallhigh = MeasurementChannelReflevelsAbsoluteFallhigh(
             device, f"{self._cmd_syntax}:FALLHigh"
@@ -26108,7 +26108,7 @@ class MeasurementChannelReflevels(SCPICmdRead):
         - ``.percent``: The ``MEASUrement:CH<x>:REFLevels:PERCent`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._absolute = MeasurementChannelReflevelsAbsolute(device, f"{self._cmd_syntax}:ABSolute")
         self._basetop = MeasurementChannelReflevelsBasetop(device, f"{self._cmd_syntax}:BASETop")
@@ -26239,7 +26239,7 @@ class MeasurementChannel(ValidatedChannel, SCPICmdRead):
         - ``.reflevels``: The ``MEASUrement:CH<x>:REFLevels`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._reflevels = MeasurementChannelReflevels(device, f"{self._cmd_syntax}:REFLevels")
 
@@ -26717,7 +26717,7 @@ class Measurement(SCPICmdRead):
     """
 
     def __init__(
-        self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MEASUrement"
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "MEASUrement"
     ) -> None:
         super().__init__(device, cmd_syntax)
         self._addmeas = MeasurementAddmeas(device, f"{self._cmd_syntax}:ADDMEAS")

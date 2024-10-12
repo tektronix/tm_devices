@@ -521,7 +521,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class PowerPowerItemWrapState(SCPICmdWrite, SCPICmdRead):
@@ -590,7 +590,7 @@ class PowerPowerItemWrap(SCPICmdRead):
         - ``.state``: The ``POWer:POWer<x>:WRAP:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._degrees = PowerPowerItemWrapDegrees(device, f"{self._cmd_syntax}:DEGrees")
         self._state = PowerPowerItemWrapState(device, f"{self._cmd_syntax}:STATE")
@@ -1366,7 +1366,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
         - ``.type``: The ``POWer:POWer<x>:TURNONtime:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = PowerPowerItemTurnontimeFrequency(device, f"{self._cmd_syntax}:FREQuency")
         self._inputlevel = PowerPowerItemTurnontimeInputlevel(
@@ -2783,7 +2783,7 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
         - ``.type``: The ``POWer:POWer<x>:TURNOFFtime:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = PowerPowerItemTurnofftimeFrequency(
             device, f"{self._cmd_syntax}:FREQuency"
@@ -3594,7 +3594,7 @@ class PowerPowerItemSwitchingripple(SCPICmdRead):
         - ``.lfrequency``: The ``POWer:POWer<x>:SWITCHINGRIPPLE:LFREQuency`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._inputsource = PowerPowerItemSwitchingrippleInputsource(
             device, f"{self._cmd_syntax}:INPUTSOurce"
@@ -4084,7 +4084,7 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
         - ``.vsource``: The ``POWer:POWer<x>:SWITCHINGLOSS:VSOURce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._devicetype = PowerPowerItemSwitchinglossDevicetype(
             device, f"{self._cmd_syntax}:DEVICEType"
@@ -4654,7 +4654,7 @@ class PowerPowerItemSoaSavemask(SCPICmdWriteNoArguments, SCPICmdRead):
         - ``.folder``: The ``POWer:POWer<x>:SOA:SAVemask:FOLDer`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoincrement = PowerPowerItemSoaSavemaskAutoincrement(
             device, f"{self._cmd_syntax}:AUTOINCrement"
@@ -4786,7 +4786,7 @@ class PowerPowerItemSoaRecallmask(SCPICmdWriteNoArguments, SCPICmdRead):
         - ``.filename``: The ``POWer:POWer<x>:SOA:RECAllmask:FILEName`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._filename = PowerPowerItemSoaRecallmaskFilename(device, f"{self._cmd_syntax}:FILEName")
 
@@ -4895,7 +4895,7 @@ class PowerPowerItemSoa(SCPICmdRead):
         - ``.vsource``: The ``POWer:POWer<x>:SOA:VSOURce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._isource = PowerPowerItemSoaIsource(device, f"{self._cmd_syntax}:ISOURce")
         self._point: Dict[int, PowerPowerItemSoaPointItem] = DefaultDictPassKeyToFactory(
@@ -5631,7 +5631,7 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
         - ``.vrms``: The ``POWer:POWer<x>:RESUlts:CURRentacq:VRMS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._f1mag = PowerPowerItemResultsCurrentacqF1mag(device, f"{self._cmd_syntax}:F1MAG")
         self._f3mag = PowerPowerItemResultsCurrentacqF3mag(device, f"{self._cmd_syntax}:F3MAG")
@@ -6359,7 +6359,7 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
         - ``.stddev``: The ``POWer:POWer<x>:RESUlts:ALLAcqs:STDDev`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._maximum = PowerPowerItemResultsAllacqsMaximum(device, f"{self._cmd_syntax}:MAXimum")
         self._mean = PowerPowerItemResultsAllacqsMean(device, f"{self._cmd_syntax}:MEAN")
@@ -6560,7 +6560,7 @@ class PowerPowerItemResults(SCPICmdRead):
         - ``.currentacq``: The ``POWer:POWer<x>:RESUlts:CURRentacq`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._allacqs = PowerPowerItemResultsAllacqs(device, f"{self._cmd_syntax}:ALLAcqs")
         self._currentacq = PowerPowerItemResultsCurrentacq(device, f"{self._cmd_syntax}:CURRentacq")
@@ -6874,7 +6874,7 @@ class PowerPowerItemReflevelsPercent(SCPICmdRead):
         - ``.type``: The ``POWer:POWer<x>:REFLevels:PERCent:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fallhigh = PowerPowerItemReflevelsPercentFallhigh(
             device, f"{self._cmd_syntax}:FALLHigh"
@@ -7442,7 +7442,7 @@ class PowerPowerItemReflevelsAbsolute(SCPICmdRead):
         - ``.type``: The ``POWer:POWer<x>:REFLevels:ABSolute:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fallhigh = PowerPowerItemReflevelsAbsoluteFallhigh(
             device, f"{self._cmd_syntax}:FALLHigh"
@@ -7725,7 +7725,7 @@ class PowerPowerItemReflevels(SCPICmdRead):
         - ``.percent``: The ``POWer:POWer<x>:REFLevels:PERCent`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._absolute = PowerPowerItemReflevelsAbsolute(device, f"{self._cmd_syntax}:ABSolute")
         self._basetop = PowerPowerItemReflevelsBasetop(device, f"{self._cmd_syntax}:BASETop")
@@ -7938,7 +7938,7 @@ class PowerPowerItemRdson(SCPICmdRead):
         - ``.vsource``: The ``POWer:POWer<x>:RDSON:VSOURce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._devicetype = PowerPowerItemRdsonDevicetype(device, f"{self._cmd_syntax}:DEVICEType")
         self._isource = PowerPowerItemRdsonIsource(device, f"{self._cmd_syntax}:ISOURce")
@@ -8499,7 +8499,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
         - ``.testconnection``: The ``POWer:POWer<x>:PSRR:TESTCONNection`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ampval: Dict[int, PowerPowerItemPsrrAmpvalItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItemPsrrAmpvalItem(device, f"{self._cmd_syntax}:AMP{x}Val")
@@ -9070,7 +9070,7 @@ class PowerPowerItemPpulsewidth(SCPICmdRead):
         - ``.inputsource``: The ``POWer:POWer<x>:PPULSEWIDTH:INPUTSOurce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._inputsource = PowerPowerItemPpulsewidthInputsource(
             device, f"{self._cmd_syntax}:INPUTSOurce"
@@ -9270,7 +9270,7 @@ class PowerPowerItemPowerquality(SCPICmdRead):
         - ``.vsource``: The ``POWer:POWer<x>:POWERQUALITY:VSOURce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ccycles = PowerPowerItemPowerqualityCcycles(device, f"{self._cmd_syntax}:CCYCles")
         self._freference = PowerPowerItemPowerqualityFreference(
@@ -9501,7 +9501,7 @@ class PowerPowerItemPeriod(SCPICmdRead):
         - ``.inputsource``: The ``POWer:POWer<x>:PERIOD:INPUTSOurce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._edge = PowerPowerItemPeriodEdge(device, f"{self._cmd_syntax}:EDGe")
         self._inputsource = PowerPowerItemPeriodInputsource(
@@ -9632,7 +9632,7 @@ class PowerPowerItemPdutycycle(SCPICmdRead):
         - ``.inputsource``: The ``POWer:POWer<x>:PDUTYCYCLE:INPUTSOurce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._edgetype = PowerPowerItemPdutycycleEdgetype(device, f"{self._cmd_syntax}:EDGEType")
         self._inputsource = PowerPowerItemPdutycycleInputsource(
@@ -9743,7 +9743,7 @@ class PowerPowerItemNpulsewidth(SCPICmdRead):
         - ``.inputsource``: The ``POWer:POWer<x>:NPULSEWIDTH:INPUTSOurce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._inputsource = PowerPowerItemNpulsewidthInputsource(
             device, f"{self._cmd_syntax}:INPUTSOurce"
@@ -9850,7 +9850,7 @@ class PowerPowerItemNdutycycle(SCPICmdRead):
         - ``.inputsource``: The ``POWer:POWer<x>:NDUTYCYCLE:INPUTSOurce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._edgetype = PowerPowerItemNdutycycleEdgetype(device, f"{self._cmd_syntax}:EDGEType")
         self._inputsource = PowerPowerItemNdutycycleInputsource(
@@ -10609,7 +10609,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
         - ``.vsource``: The ``POWer:POWer<x>:MAGPROPERTY:VSOURce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._areaofcrosssection = PowerPowerItemMagpropertyAreaofcrosssection(
             device, f"{self._cmd_syntax}:AREAofcrosssection"
@@ -11440,7 +11440,7 @@ class PowerPowerItemMagneticloss(SCPICmdRead):
         - ``.vsource``: The ``POWer:POWer<x>:MAGNETICLOSS:VSOURce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._isource = PowerPowerItemMagneticlossIsource(device, f"{self._cmd_syntax}:ISOURce")
         self._vsource = PowerPowerItemMagneticlossVsource(device, f"{self._cmd_syntax}:VSOURce")
@@ -11581,7 +11581,7 @@ class PowerPowerItemLineripple(SCPICmdRead):
         - ``.lfrequency``: The ``POWer:POWer<x>:LINERIPPLE:LFREQuency`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._inputsource = PowerPowerItemLinerippleInputsource(
             device, f"{self._cmd_syntax}:INPUTSOurce"
@@ -11748,7 +11748,7 @@ class PowerPowerItemIvsintegralv(SCPICmdRead):
         - ``.vsource``: The ``POWer:POWer<x>:IVSINTEGRALV:VSOURce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._isource = PowerPowerItemIvsintegralvIsource(device, f"{self._cmd_syntax}:ISOURce")
         self._vsource = PowerPowerItemIvsintegralvVsource(device, f"{self._cmd_syntax}:VSOURce")
@@ -11896,7 +11896,7 @@ class PowerPowerItemInrushcurrent(SCPICmdRead):
         - ``.peakcurrent``: The ``POWer:POWer<x>:INRUSHcurrent:PEAKCURRent`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._inputsource = PowerPowerItemInrushcurrentInputsource(
             device, f"{self._cmd_syntax}:INPUTSOurce"
@@ -12109,7 +12109,7 @@ class PowerPowerItemInputcap(SCPICmdRead):
         - ``.vsource``: The ``POWer:POWer<x>:INPUTCAP:VSOURce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._isource = PowerPowerItemInputcapIsource(device, f"{self._cmd_syntax}:ISOURce")
         self._peakcurrent = PowerPowerItemInputcapPeakcurrent(
@@ -12355,7 +12355,7 @@ class PowerPowerItemInductance(SCPICmdRead):
         - ``.vsource``: The ``POWer:POWer<x>:INDUCTANCE:VSOURce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._edgesource = PowerPowerItemInductanceEdgesource(
             device, f"{self._cmd_syntax}:EDGESource"
@@ -12933,7 +12933,7 @@ class PowerPowerItemImpedance(SCPICmdRead):
         - ``.testconnection``: The ``POWer:POWer<x>:IMPEDANCE:TESTCONNection`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ampval: Dict[int, PowerPowerItemImpedanceAmpvalItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItemImpedanceAmpvalItem(device, f"{self._cmd_syntax}:AMP{x}Val")
@@ -13942,7 +13942,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
         - ``.vsource``: The ``POWer:POWer<x>:HARMONICS:VSOURce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._class = PowerPowerItemHarmonicsClass(device, f"{self._cmd_syntax}:CLASs")
         self._clfile = PowerPowerItemHarmonicsClfile(device, f"{self._cmd_syntax}:CLFile")
@@ -14537,7 +14537,7 @@ class PowerPowerItemGating(SCPICmdWrite, SCPICmdRead):
         - ``.global``: The ``POWer:POWer<x>:GATing:GLOBal`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._global = PowerPowerItemGatingGlobal(device, f"{self._cmd_syntax}:GLOBal")
 
@@ -14644,7 +14644,7 @@ class PowerPowerItemFrequency(SCPICmdRead):
         - ``.inputsource``: The ``POWer:POWer<x>:FREQUENCY:INPUTSOurce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._edge = PowerPowerItemFrequencyEdge(device, f"{self._cmd_syntax}:EDGe")
         self._inputsource = PowerPowerItemFrequencyInputsource(
@@ -15167,7 +15167,7 @@ class PowerPowerItemEfficiency(SCPICmdRead):
         - ``.vsource``: The ``POWer:POWer<x>:EFFICIENCY:VSOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._inputtype = PowerPowerItemEfficiencyInputtype(device, f"{self._cmd_syntax}:INPUTType")
         self._iout1source = PowerPowerItemEfficiencyIout1source(
@@ -15725,7 +15725,7 @@ class PowerPowerItemDvdt(SCPICmdRead):
         - ``.sourceedgetype``: The ``POWer:POWer<x>:DVDT:SOURCEEDGEType`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._inputsource = PowerPowerItemDvdtInputsource(device, f"{self._cmd_syntax}:INPUTSOurce")
         self._sourceedgetype = PowerPowerItemDvdtSourceedgetype(
@@ -15855,7 +15855,7 @@ class PowerPowerItemDidt(SCPICmdRead):
         - ``.sourceedgetype``: The ``POWer:POWer<x>:DIDT:SOURCEEDGEType`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._inputsource = PowerPowerItemDidtInputsource(device, f"{self._cmd_syntax}:INPUTSOurce")
         self._sourceedgetype = PowerPowerItemDidtSourceedgetype(
@@ -15963,7 +15963,7 @@ class PowerPowerItemCycletop(SCPICmdRead):
         - ``.inputsource``: The ``POWer:POWer<x>:CYCLETop:INPUTSOurce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._inputsource = PowerPowerItemCycletopInputsource(
             device, f"{self._cmd_syntax}:INPUTSOurce"
@@ -16047,7 +16047,7 @@ class PowerPowerItemCyclepkpk(SCPICmdRead):
         - ``.inputsource``: The ``POWer:POWer<x>:CYCLEPKPK:INPUTSOurce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._inputsource = PowerPowerItemCyclepkpkInputsource(
             device, f"{self._cmd_syntax}:INPUTSOurce"
@@ -16130,7 +16130,7 @@ class PowerPowerItemCyclemin(SCPICmdRead):
         - ``.inputsource``: The ``POWer:POWer<x>:CYCLEMin:INPUTSOurce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._inputsource = PowerPowerItemCycleminInputsource(
             device, f"{self._cmd_syntax}:INPUTSOurce"
@@ -16213,7 +16213,7 @@ class PowerPowerItemCyclemax(SCPICmdRead):
         - ``.inputsource``: The ``POWer:POWer<x>:CYCLEMAX:INPUTSOurce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._inputsource = PowerPowerItemCyclemaxInputsource(
             device, f"{self._cmd_syntax}:INPUTSOurce"
@@ -16297,7 +16297,7 @@ class PowerPowerItemCyclebase(SCPICmdRead):
         - ``.inputsource``: The ``POWer:POWer<x>:CYCLEBase:INPUTSOurce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._inputsource = PowerPowerItemCyclebaseInputsource(
             device, f"{self._cmd_syntax}:INPUTSOurce"
@@ -16380,7 +16380,7 @@ class PowerPowerItemCycleamp(SCPICmdRead):
         - ``.inputsource``: The ``POWer:POWer<x>:CYCLEAmp:INPUTSOurce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._inputsource = PowerPowerItemCycleampInputsource(
             device, f"{self._cmd_syntax}:INPUTSOurce"
@@ -16932,7 +16932,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
         - ``.testconnection``: The ``POWer:POWer<x>:CLRESPONSE:TESTCONNection`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ampval: Dict[int, PowerPowerItemClresponseAmpvalItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItemClresponseAmpvalItem(device, f"{self._cmd_syntax}:AMP{x}Val")
@@ -17560,7 +17560,7 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.wrap``: The ``POWer:POWer<x>:WRAP`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoset = PowerPowerItemAutoset(device, f"{self._cmd_syntax}:AUTOSet")
         self._clresponse = PowerPowerItemClresponse(device, f"{self._cmd_syntax}:CLRESPONSE")
@@ -18545,7 +18545,7 @@ class Power(SCPICmdRead):
         - ``.power``: The ``POWer:POWer<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "POWer") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "POWer") -> None:
         super().__init__(device, cmd_syntax)
         self._addnew = PowerAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = PowerDelete(device, f"{self._cmd_syntax}:DELete")

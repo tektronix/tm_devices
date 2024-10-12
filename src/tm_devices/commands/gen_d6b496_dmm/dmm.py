@@ -108,7 +108,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class DmmTriggerMeasure(BaseTSPCmd):
@@ -147,7 +147,7 @@ class DmmTriggerMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.stimulus)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
@@ -182,7 +182,7 @@ class DmmTriggerMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.stimulus = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -222,7 +222,7 @@ class DmmTriggerDigitize(BaseTSPCmd):
                 f"print({self._cmd_syntax}.stimulus)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
@@ -257,7 +257,7 @@ class DmmTriggerDigitize(BaseTSPCmd):
                     f"{self._cmd_syntax}.stimulus = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -269,7 +269,7 @@ class DmmTrigger(BaseTSPCmd):
         - ``.measure``: The ``dmm.trigger.measure`` command tree.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._digitize = DmmTriggerDigitize(device, f"{self._cmd_syntax}.digitize")
         self._measure = DmmTriggerMeasure(device, f"{self._cmd_syntax}.measure")
@@ -331,7 +331,7 @@ class DmmMeasureThreshold(BaseTSPCmd):
                 f"print({self._cmd_syntax}.autorange)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorange`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorange`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @autorange.setter
@@ -366,7 +366,7 @@ class DmmMeasureThreshold(BaseTSPCmd):
                     f"{self._cmd_syntax}.autorange = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorange`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorange`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -398,7 +398,7 @@ class DmmMeasureThreshold(BaseTSPCmd):
                 f"print({self._cmd_syntax}.level)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @level.setter
@@ -433,7 +433,7 @@ class DmmMeasureThreshold(BaseTSPCmd):
                     f"{self._cmd_syntax}.level = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -464,7 +464,7 @@ class DmmMeasureThreshold(BaseTSPCmd):
                 f"print({self._cmd_syntax}.range)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.range`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.range`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @range.setter
@@ -498,7 +498,7 @@ class DmmMeasureThreshold(BaseTSPCmd):
                     f"{self._cmd_syntax}.range = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.range`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.range`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -538,7 +538,7 @@ class DmmMeasureSense(BaseTSPCmd):
                 f"print({self._cmd_syntax}.autorange)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorange`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorange`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @autorange.setter
@@ -572,7 +572,7 @@ class DmmMeasureSense(BaseTSPCmd):
                     f"{self._cmd_syntax}.autorange = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorange`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorange`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -603,7 +603,7 @@ class DmmMeasureSense(BaseTSPCmd):
                 f"print({self._cmd_syntax}.range)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.range`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.range`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @range.setter
@@ -637,7 +637,7 @@ class DmmMeasureSense(BaseTSPCmd):
                     f"{self._cmd_syntax}.range = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.range`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.range`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -679,7 +679,7 @@ class DmmMeasureRel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -714,7 +714,7 @@ class DmmMeasureRel(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -745,7 +745,7 @@ class DmmMeasureRel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.level)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @level.setter
@@ -779,7 +779,7 @@ class DmmMeasureRel(BaseTSPCmd):
                     f"{self._cmd_syntax}.level = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -811,7 +811,7 @@ class DmmMeasureRel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.method)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.method`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.method`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @method.setter
@@ -846,7 +846,7 @@ class DmmMeasureRel(BaseTSPCmd):
                     f"{self._cmd_syntax}.method = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.method`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.method`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -886,7 +886,7 @@ class DmmMeasureOffsetcompensation(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -921,7 +921,7 @@ class DmmMeasureOffsetcompensation(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -961,7 +961,7 @@ class DmmMeasureMathMxb(BaseTSPCmd):
                 f"print({self._cmd_syntax}.bfactor)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.bfactor`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.bfactor`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @bfactor.setter
@@ -995,7 +995,7 @@ class DmmMeasureMathMxb(BaseTSPCmd):
                     f"{self._cmd_syntax}.bfactor = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.bfactor`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.bfactor`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1026,7 +1026,7 @@ class DmmMeasureMathMxb(BaseTSPCmd):
                 f"print({self._cmd_syntax}.mfactor)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mfactor`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.mfactor`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @mfactor.setter
@@ -1060,7 +1060,7 @@ class DmmMeasureMathMxb(BaseTSPCmd):
                     f"{self._cmd_syntax}.mfactor = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mfactor`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.mfactor`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -1074,7 +1074,7 @@ class DmmMeasureMath(BaseTSPCmd):
         - ``.percent``: The ``dmm.measure.math.percent`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mxb = DmmMeasureMathMxb(device, f"{self._cmd_syntax}.mxb")
 
@@ -1107,7 +1107,7 @@ class DmmMeasureMath(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -1142,7 +1142,7 @@ class DmmMeasureMath(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1174,7 +1174,7 @@ class DmmMeasureMath(BaseTSPCmd):
                 f"print({self._cmd_syntax}.format)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.format`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.format`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @format.setter
@@ -1209,7 +1209,7 @@ class DmmMeasureMath(BaseTSPCmd):
                     f"{self._cmd_syntax}.format = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.format`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.format`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1251,7 +1251,7 @@ class DmmMeasureMath(BaseTSPCmd):
                 f"print({self._cmd_syntax}.percent)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.percent`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.percent`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @percent.setter
@@ -1286,7 +1286,7 @@ class DmmMeasureMath(BaseTSPCmd):
                     f"{self._cmd_syntax}.percent = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.percent`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.percent`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -1325,7 +1325,7 @@ class DmmMeasureLimitItemLow(BaseTSPCmd):
                 f"print({self._cmd_syntax}.value)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @value.setter
@@ -1359,7 +1359,7 @@ class DmmMeasureLimitItemLow(BaseTSPCmd):
                     f"{self._cmd_syntax}.value = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -1399,7 +1399,7 @@ class DmmMeasureLimitItemHigh(BaseTSPCmd):
                 f"print({self._cmd_syntax}.value)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @value.setter
@@ -1434,7 +1434,7 @@ class DmmMeasureLimitItemHigh(BaseTSPCmd):
                     f"{self._cmd_syntax}.value = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -1449,7 +1449,7 @@ class DmmMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
         - ``.low``: The ``dmm.measure.limit[r].low`` command tree.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._high = DmmMeasureLimitItemHigh(device, f"{self._cmd_syntax}.high")
         self._low = DmmMeasureLimitItemLow(device, f"{self._cmd_syntax}.low")
@@ -1483,7 +1483,7 @@ class DmmMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.autoclear)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autoclear`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autoclear`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @autoclear.setter
@@ -1518,7 +1518,7 @@ class DmmMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.autoclear = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autoclear`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autoclear`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1550,7 +1550,7 @@ class DmmMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -1585,7 +1585,7 @@ class DmmMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1613,7 +1613,7 @@ class DmmMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.fail)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.fail`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.fail`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1674,7 +1674,7 @@ class DmmMeasureFilter(BaseTSPCmd):
                 f"print({self._cmd_syntax}.count)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
@@ -1709,7 +1709,7 @@ class DmmMeasureFilter(BaseTSPCmd):
                     f"{self._cmd_syntax}.count = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1741,7 +1741,7 @@ class DmmMeasureFilter(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -1776,7 +1776,7 @@ class DmmMeasureFilter(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1808,7 +1808,7 @@ class DmmMeasureFilter(BaseTSPCmd):
                 f"print({self._cmd_syntax}.type)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.type`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.type`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @type.setter
@@ -1843,7 +1843,7 @@ class DmmMeasureFilter(BaseTSPCmd):
                     f"{self._cmd_syntax}.type = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.type`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.type`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1875,7 +1875,7 @@ class DmmMeasureFilter(BaseTSPCmd):
                 f"print({self._cmd_syntax}.window)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.window`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.window`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @window.setter
@@ -1910,7 +1910,7 @@ class DmmMeasureFilter(BaseTSPCmd):
                     f"{self._cmd_syntax}.window = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.window`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.window`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -1948,7 +1948,7 @@ class DmmMeasureBias(BaseTSPCmd):
                 f"print({self._cmd_syntax}.actual)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.actual`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.actual`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1980,7 +1980,7 @@ class DmmMeasureBias(BaseTSPCmd):
                 f"print({self._cmd_syntax}.level)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @level.setter
@@ -2015,7 +2015,7 @@ class DmmMeasureBias(BaseTSPCmd):
                     f"{self._cmd_syntax}.level = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -2055,7 +2055,7 @@ class DmmMeasureAutozero(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -2090,7 +2090,7 @@ class DmmMeasureAutozero(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -2133,7 +2133,7 @@ class DmmMeasureAnalogtriggerWindow(BaseTSPCmd):
                 f"print({self._cmd_syntax}.direction)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.direction`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.direction`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @direction.setter
@@ -2169,7 +2169,7 @@ class DmmMeasureAnalogtriggerWindow(BaseTSPCmd):
                     f"{self._cmd_syntax}.direction = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.direction`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.direction`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2201,7 +2201,7 @@ class DmmMeasureAnalogtriggerWindow(BaseTSPCmd):
                 f"print({self._cmd_syntax}.levelhigh)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levelhigh`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levelhigh`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @levelhigh.setter
@@ -2236,7 +2236,7 @@ class DmmMeasureAnalogtriggerWindow(BaseTSPCmd):
                     f"{self._cmd_syntax}.levelhigh = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levelhigh`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levelhigh`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2268,7 +2268,7 @@ class DmmMeasureAnalogtriggerWindow(BaseTSPCmd):
                 f"print({self._cmd_syntax}.levellow)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levellow`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levellow`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @levellow.setter
@@ -2303,7 +2303,7 @@ class DmmMeasureAnalogtriggerWindow(BaseTSPCmd):
                     f"{self._cmd_syntax}.levellow = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levellow`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levellow`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -2348,7 +2348,7 @@ class DmmMeasureAnalogtriggerPulse(BaseTSPCmd):
                 f"print({self._cmd_syntax}.condition)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @condition.setter
@@ -2385,7 +2385,7 @@ class DmmMeasureAnalogtriggerPulse(BaseTSPCmd):
                     f"{self._cmd_syntax}.condition = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2417,7 +2417,7 @@ class DmmMeasureAnalogtriggerPulse(BaseTSPCmd):
                 f"print({self._cmd_syntax}.level)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @level.setter
@@ -2452,7 +2452,7 @@ class DmmMeasureAnalogtriggerPulse(BaseTSPCmd):
                     f"{self._cmd_syntax}.level = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2485,7 +2485,7 @@ class DmmMeasureAnalogtriggerPulse(BaseTSPCmd):
                 f"print({self._cmd_syntax}.polarity)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.polarity`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.polarity`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @polarity.setter
@@ -2521,7 +2521,7 @@ class DmmMeasureAnalogtriggerPulse(BaseTSPCmd):
                     f"{self._cmd_syntax}.polarity = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.polarity`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.polarity`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2553,7 +2553,7 @@ class DmmMeasureAnalogtriggerPulse(BaseTSPCmd):
                 f"print({self._cmd_syntax}.width)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.width`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.width`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @width.setter
@@ -2588,7 +2588,7 @@ class DmmMeasureAnalogtriggerPulse(BaseTSPCmd):
                     f"{self._cmd_syntax}.width = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.width`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.width`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -2630,7 +2630,7 @@ class DmmMeasureAnalogtriggerEdge(BaseTSPCmd):
                 f"print({self._cmd_syntax}.level)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @level.setter
@@ -2666,7 +2666,7 @@ class DmmMeasureAnalogtriggerEdge(BaseTSPCmd):
                     f"{self._cmd_syntax}.level = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2698,7 +2698,7 @@ class DmmMeasureAnalogtriggerEdge(BaseTSPCmd):
                 f"print({self._cmd_syntax}.slope)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.slope`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.slope`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @slope.setter
@@ -2733,7 +2733,7 @@ class DmmMeasureAnalogtriggerEdge(BaseTSPCmd):
                     f"{self._cmd_syntax}.slope = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.slope`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.slope`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -2748,7 +2748,7 @@ class DmmMeasureAnalogtrigger(BaseTSPCmd):
         - ``.window``: The ``dmm.measure.analogtrigger.window`` command tree.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._edge = DmmMeasureAnalogtriggerEdge(device, f"{self._cmd_syntax}.edge")
         self._pulse = DmmMeasureAnalogtriggerPulse(device, f"{self._cmd_syntax}.pulse")
@@ -2793,7 +2793,7 @@ class DmmMeasureAnalogtrigger(BaseTSPCmd):
                 f"print({self._cmd_syntax}.highfreqreject)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.highfreqreject`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.highfreqreject`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @highfreqreject.setter
@@ -2828,7 +2828,7 @@ class DmmMeasureAnalogtrigger(BaseTSPCmd):
                     f"{self._cmd_syntax}.highfreqreject = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.highfreqreject`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.highfreqreject`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2860,7 +2860,7 @@ class DmmMeasureAnalogtrigger(BaseTSPCmd):
                 f"print({self._cmd_syntax}.mode)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
@@ -2895,7 +2895,7 @@ class DmmMeasureAnalogtrigger(BaseTSPCmd):
                     f"{self._cmd_syntax}.mode = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2965,7 +2965,7 @@ class DmmMeasure(BaseTSPCmd):
         - ``.unit``: The ``dmm.measure.unit`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._analogtrigger = DmmMeasureAnalogtrigger(device, f"{self._cmd_syntax}.analogtrigger")
         self._autozero = DmmMeasureAutozero(device, f"{self._cmd_syntax}.autozero")
@@ -3023,7 +3023,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.aperture)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.aperture`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.aperture`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @aperture.setter
@@ -3057,7 +3057,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.aperture = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.aperture`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.aperture`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3089,7 +3089,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.autodelay)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autodelay`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autodelay`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @autodelay.setter
@@ -3124,7 +3124,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.autodelay = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autodelay`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autodelay`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3156,7 +3156,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.autorange)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorange`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorange`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @autorange.setter
@@ -3191,7 +3191,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.autorange = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorange`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorange`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3241,7 +3241,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.count)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
@@ -3275,7 +3275,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.count = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3306,7 +3306,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.dbmreference)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.dbmreference`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.dbmreference`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @dbmreference.setter
@@ -3340,7 +3340,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.dbmreference = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.dbmreference`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.dbmreference`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3372,7 +3372,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.detectorbandwidth)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.detectorbandwidth`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.detectorbandwidth`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @detectorbandwidth.setter
@@ -3407,7 +3407,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.detectorbandwidth = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.detectorbandwidth`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.detectorbandwidth`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3439,7 +3439,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.displaydigits)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.displaydigits`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.displaydigits`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @displaydigits.setter
@@ -3474,7 +3474,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.displaydigits = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.displaydigits`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.displaydigits`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3506,7 +3506,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.drycircuit)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.drycircuit`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.drycircuit`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @drycircuit.setter
@@ -3541,7 +3541,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.drycircuit = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.drycircuit`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.drycircuit`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3584,7 +3584,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.fourrtd)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.fourrtd`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.fourrtd`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @fourrtd.setter
@@ -3618,7 +3618,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.fourrtd = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.fourrtd`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.fourrtd`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3648,7 +3648,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.func)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @func.setter
@@ -3681,7 +3681,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.func = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3712,7 +3712,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.inputimpedance)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.inputimpedance`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.inputimpedance`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @inputimpedance.setter
@@ -3746,7 +3746,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.inputimpedance = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.inputimpedance`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.inputimpedance`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3790,7 +3790,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.linesync)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.linesync`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.linesync`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @linesync.setter
@@ -3824,7 +3824,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.linesync = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.linesync`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.linesync`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3867,7 +3867,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.nplc)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.nplc`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.nplc`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @nplc.setter
@@ -3901,7 +3901,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.nplc = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.nplc`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.nplc`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3941,7 +3941,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.opendetector)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.opendetector`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.opendetector`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @opendetector.setter
@@ -3975,7 +3975,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.opendetector = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.opendetector`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.opendetector`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4005,7 +4005,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.range)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.range`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.range`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @range.setter
@@ -4038,7 +4038,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.range = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.range`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.range`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4080,7 +4080,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.rtdalpha)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rtdalpha`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rtdalpha`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @rtdalpha.setter
@@ -4114,7 +4114,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.rtdalpha = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rtdalpha`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rtdalpha`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4145,7 +4145,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.rtdbeta)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rtdbeta`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rtdbeta`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @rtdbeta.setter
@@ -4179,7 +4179,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.rtdbeta = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rtdbeta`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rtdbeta`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4210,7 +4210,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.rtddelta)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rtddelta`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rtddelta`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @rtddelta.setter
@@ -4244,7 +4244,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.rtddelta = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rtddelta`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rtddelta`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4275,7 +4275,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.rtdzero)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rtdzero`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rtdzero`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @rtdzero.setter
@@ -4309,7 +4309,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.rtdzero = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rtdzero`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rtdzero`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4350,7 +4350,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.thermistor)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.thermistor`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.thermistor`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @thermistor.setter
@@ -4384,7 +4384,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.thermistor = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.thermistor`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.thermistor`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4415,7 +4415,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.thermocouple)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.thermocouple`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.thermocouple`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @thermocouple.setter
@@ -4449,7 +4449,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.thermocouple = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.thermocouple`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.thermocouple`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4480,7 +4480,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.threertd)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.threertd`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.threertd`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @threertd.setter
@@ -4514,7 +4514,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.threertd = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.threertd`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.threertd`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4556,7 +4556,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.transducer)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.transducer`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.transducer`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @transducer.setter
@@ -4590,7 +4590,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.transducer = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.transducer`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.transducer`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4621,7 +4621,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.unit)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.unit`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.unit`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @unit.setter
@@ -4655,7 +4655,7 @@ class DmmMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.unit = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.unit`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.unit`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def read(self, buffer_name: Optional[str] = None) -> str:
@@ -4687,7 +4687,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.read({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.read()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.read()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setattribute(self, function: str, setting: str, value: str) -> None:
@@ -4716,7 +4716,7 @@ class DmmMeasure(BaseTSPCmd):
                 f"{self._cmd_syntax}.setattribute({function}, {setting}, {value})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setattribute()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setattribute()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -4757,7 +4757,7 @@ class DmmDigitizeCoupling(BaseTSPCmd):
                 f"print({self._cmd_syntax}.acfilter)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.acfilter`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.acfilter`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @acfilter.setter
@@ -4791,7 +4791,7 @@ class DmmDigitizeCoupling(BaseTSPCmd):
                     f"{self._cmd_syntax}.acfilter = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.acfilter`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.acfilter`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4824,7 +4824,7 @@ class DmmDigitizeCoupling(BaseTSPCmd):
                 f"print({self._cmd_syntax}.acfrequency)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.acfrequency`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.acfrequency`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @acfrequency.setter
@@ -4860,7 +4860,7 @@ class DmmDigitizeCoupling(BaseTSPCmd):
                     f"{self._cmd_syntax}.acfrequency = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.acfrequency`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.acfrequency`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4891,7 +4891,7 @@ class DmmDigitizeCoupling(BaseTSPCmd):
                 f"print({self._cmd_syntax}.type)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.type`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.type`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @type.setter
@@ -4925,7 +4925,7 @@ class DmmDigitizeCoupling(BaseTSPCmd):
                     f"{self._cmd_syntax}.type = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.type`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.type`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -4968,7 +4968,7 @@ class DmmDigitizeAnalogtriggerWindow(BaseTSPCmd):
                 f"print({self._cmd_syntax}.direction)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.direction`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.direction`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @direction.setter
@@ -5004,7 +5004,7 @@ class DmmDigitizeAnalogtriggerWindow(BaseTSPCmd):
                     f"{self._cmd_syntax}.direction = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.direction`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.direction`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5036,7 +5036,7 @@ class DmmDigitizeAnalogtriggerWindow(BaseTSPCmd):
                 f"print({self._cmd_syntax}.levelhigh)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levelhigh`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levelhigh`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @levelhigh.setter
@@ -5071,7 +5071,7 @@ class DmmDigitizeAnalogtriggerWindow(BaseTSPCmd):
                     f"{self._cmd_syntax}.levelhigh = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levelhigh`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levelhigh`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5103,7 +5103,7 @@ class DmmDigitizeAnalogtriggerWindow(BaseTSPCmd):
                 f"print({self._cmd_syntax}.levellow)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levellow`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levellow`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @levellow.setter
@@ -5138,7 +5138,7 @@ class DmmDigitizeAnalogtriggerWindow(BaseTSPCmd):
                     f"{self._cmd_syntax}.levellow = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levellow`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levellow`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -5183,7 +5183,7 @@ class DmmDigitizeAnalogtriggerPulse(BaseTSPCmd):
                 f"print({self._cmd_syntax}.condition)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @condition.setter
@@ -5220,7 +5220,7 @@ class DmmDigitizeAnalogtriggerPulse(BaseTSPCmd):
                     f"{self._cmd_syntax}.condition = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5252,7 +5252,7 @@ class DmmDigitizeAnalogtriggerPulse(BaseTSPCmd):
                 f"print({self._cmd_syntax}.level)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @level.setter
@@ -5287,7 +5287,7 @@ class DmmDigitizeAnalogtriggerPulse(BaseTSPCmd):
                     f"{self._cmd_syntax}.level = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5320,7 +5320,7 @@ class DmmDigitizeAnalogtriggerPulse(BaseTSPCmd):
                 f"print({self._cmd_syntax}.polarity)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.polarity`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.polarity`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @polarity.setter
@@ -5356,7 +5356,7 @@ class DmmDigitizeAnalogtriggerPulse(BaseTSPCmd):
                     f"{self._cmd_syntax}.polarity = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.polarity`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.polarity`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5388,7 +5388,7 @@ class DmmDigitizeAnalogtriggerPulse(BaseTSPCmd):
                 f"print({self._cmd_syntax}.width)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.width`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.width`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @width.setter
@@ -5423,7 +5423,7 @@ class DmmDigitizeAnalogtriggerPulse(BaseTSPCmd):
                     f"{self._cmd_syntax}.width = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.width`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.width`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -5465,7 +5465,7 @@ class DmmDigitizeAnalogtriggerEdge(BaseTSPCmd):
                 f"print({self._cmd_syntax}.level)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @level.setter
@@ -5501,7 +5501,7 @@ class DmmDigitizeAnalogtriggerEdge(BaseTSPCmd):
                     f"{self._cmd_syntax}.level = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5533,7 +5533,7 @@ class DmmDigitizeAnalogtriggerEdge(BaseTSPCmd):
                 f"print({self._cmd_syntax}.slope)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.slope`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.slope`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @slope.setter
@@ -5568,7 +5568,7 @@ class DmmDigitizeAnalogtriggerEdge(BaseTSPCmd):
                     f"{self._cmd_syntax}.slope = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.slope`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.slope`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -5583,7 +5583,7 @@ class DmmDigitizeAnalogtrigger(BaseTSPCmd):
         - ``.window``: The ``dmm.digitize.analogtrigger.window`` command tree.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._edge = DmmDigitizeAnalogtriggerEdge(device, f"{self._cmd_syntax}.edge")
         self._pulse = DmmDigitizeAnalogtriggerPulse(device, f"{self._cmd_syntax}.pulse")
@@ -5628,7 +5628,7 @@ class DmmDigitizeAnalogtrigger(BaseTSPCmd):
                 f"print({self._cmd_syntax}.highfreqreject)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.highfreqreject`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.highfreqreject`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @highfreqreject.setter
@@ -5663,7 +5663,7 @@ class DmmDigitizeAnalogtrigger(BaseTSPCmd):
                     f"{self._cmd_syntax}.highfreqreject = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.highfreqreject`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.highfreqreject`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5696,7 +5696,7 @@ class DmmDigitizeAnalogtrigger(BaseTSPCmd):
                 f"print({self._cmd_syntax}.mode)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
@@ -5732,7 +5732,7 @@ class DmmDigitizeAnalogtrigger(BaseTSPCmd):
                     f"{self._cmd_syntax}.mode = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5770,7 +5770,7 @@ class DmmDigitize(BaseTSPCmd):
         - ``.inputimpedance``: The ``dmm.digitize.inputimpedance`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._analogtrigger = DmmDigitizeAnalogtrigger(device, f"{self._cmd_syntax}.analogtrigger")
         self._coupling = DmmDigitizeCoupling(device, f"{self._cmd_syntax}.coupling")
@@ -5827,7 +5827,7 @@ class DmmDigitize(BaseTSPCmd):
                 f"print({self._cmd_syntax}.dbmreference)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.dbmreference`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.dbmreference`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @dbmreference.setter
@@ -5861,7 +5861,7 @@ class DmmDigitize(BaseTSPCmd):
                     f"{self._cmd_syntax}.dbmreference = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.dbmreference`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.dbmreference`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5892,7 +5892,7 @@ class DmmDigitize(BaseTSPCmd):
                 f"print({self._cmd_syntax}.dbreference)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.dbreference`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.dbreference`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @dbreference.setter
@@ -5926,7 +5926,7 @@ class DmmDigitize(BaseTSPCmd):
                     f"{self._cmd_syntax}.dbreference = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.dbreference`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.dbreference`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5957,7 +5957,7 @@ class DmmDigitize(BaseTSPCmd):
                 f"print({self._cmd_syntax}.inputimpedance)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.inputimpedance`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.inputimpedance`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @inputimpedance.setter
@@ -5991,7 +5991,7 @@ class DmmDigitize(BaseTSPCmd):
                     f"{self._cmd_syntax}.inputimpedance = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.inputimpedance`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.inputimpedance`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -6015,7 +6015,7 @@ class Dmm(BaseTSPCmd):
     ON = "dmm.ON"
     """str: Set the threshold range automatically."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "dmm") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "dmm") -> None:
         super().__init__(device, cmd_syntax)
         self._digitize = DmmDigitize(device, f"{self._cmd_syntax}.digitize")
         self._measure = DmmMeasure(device, f"{self._cmd_syntax}.measure")
@@ -6104,7 +6104,7 @@ class Dmm(BaseTSPCmd):
                 f"print({self._cmd_syntax}.terminals)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.terminals`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.terminals`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -6141,5 +6141,5 @@ class Dmm(BaseTSPCmd):
                 f"{self._cmd_syntax}.reset({scope})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

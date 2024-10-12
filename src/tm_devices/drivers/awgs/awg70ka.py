@@ -7,13 +7,13 @@ from typing import Dict, Literal, Optional, Tuple
 import pyvisa as visa
 
 from tm_devices.commands import AWG70KAMixin
-from tm_devices.driver_mixins.device_control.device import family_base_class
 from tm_devices.drivers.awgs.awg import (
     AWG,
     AWGSourceChannel,
     AWGSourceDeviceConstants,
     ParameterBounds,
 )
+from tm_devices.drivers.device import family_base_class
 from tm_devices.helpers import (
     DeviceConfigEntry,
     SASSetWaveformFileTypes,

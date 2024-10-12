@@ -21,7 +21,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class Header(SCPICmdWrite, SCPICmdRead):
@@ -54,5 +54,5 @@ class Header(SCPICmdWrite, SCPICmdRead):
           command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "HEADer") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "HEADer") -> None:
         super().__init__(device, cmd_syntax)

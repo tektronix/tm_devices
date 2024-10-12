@@ -8,7 +8,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 from .gen_1l4fot_mdomso.cursor import Cursor
 from .gen_1lcv3a_msodpomdo.message import Message
@@ -739,7 +739,7 @@ class MDO3KCommands:
     """
 
     # pylint: disable=too-many-statements
-    def __init__(self, device: Optional[PIDevice] = None) -> None:  # noqa: PLR0915
+    def __init__(self, device: Optional[PIControl] = None) -> None:  # noqa: PLR0915
         self._acquire = Acquire(device)
         self._actonevent = Actonevent(device)
         self._afg = Afg(device)
@@ -3290,7 +3290,7 @@ class MDO3KMixin:
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIDevice) else None
+        device = self if isinstance(self, PIControl) else None
         self._command_argument_constants = MDO3KCommandConstants()
         self._commands = MDO3KCommands(device)
 

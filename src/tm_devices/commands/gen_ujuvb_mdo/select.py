@@ -51,7 +51,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SelectRfNormal(SCPICmdWrite, SCPICmdRead):
@@ -435,7 +435,7 @@ class Select(SCPICmdRead):
         - ``.math1``: The ``SELect:MATH1`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SELect") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SELect") -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SelectChannel] = DefaultDictPassKeyToFactory(
             lambda x: SelectChannel(device, f"{self._cmd_syntax}:CH{x}")

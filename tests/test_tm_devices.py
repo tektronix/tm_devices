@@ -24,7 +24,7 @@ import tm_devices.helpers
 
 
 # noinspection PyProtectedMember
-from tm_devices.driver_mixins.device_control.device import (
+from tm_devices.drivers.device import (
     _FAMILY_BASE_CLASS_PROPERTY_NAME,  # pyright: ignore [reportPrivateUsage]
     Device,
 )

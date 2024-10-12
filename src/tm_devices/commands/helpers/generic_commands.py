@@ -10,10 +10,7 @@ import sys
 
 from collections import defaultdict
 from functools import total_ordering
-from typing import Any, Callable, DefaultDict, Optional, Type, TYPE_CHECKING, Union
-
-if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control.device import Device
+from typing import Any, Callable, DefaultDict, Optional, Type, Union
 
 END_OF_STRING_DIGITS = re.compile(r"([-\d]+)]?$")
 MIDDLE_OF_STRING_DIGITS = re.compile(r"([-\d]+)]?")
@@ -70,7 +67,7 @@ class BaseCmd:
     The syntax is accessible through the ``.cmd_syntax`` property.
     """
 
-    def __init__(self, device: Optional["Device"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional[Any], cmd_syntax: str) -> None:
         """Instantiate the command.
 
         Args:
@@ -114,7 +111,7 @@ class ValidatedDynamicNumberCmd(BaseCmd):  # pylint: disable=too-few-public-meth
     attribute) to determine if it is a valid dynamic item number (greater than or equal to 1).
     """
 
-    def __init__(self, device: Optional["Device"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional[Any], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
 
         # Validate the dynamic item number

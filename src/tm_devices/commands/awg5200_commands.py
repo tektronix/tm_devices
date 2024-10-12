@@ -7,7 +7,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 from .gen_2i1z2s_awg.abort import Abort
 from .gen_2i1z2s_awg.auxoutput import AuxoutputItem
@@ -125,7 +125,7 @@ class AWG5200Commands:
         - ``.wplugin``: The ``WPLugin`` command tree.
     """
 
-    def __init__(self, device: Optional[PIDevice] = None) -> None:
+    def __init__(self, device: Optional[PIControl] = None) -> None:
         self._abort = Abort(device)
         self._active = Active(device)
         self._auxoutput: Dict[int, AuxoutputItem] = DefaultDictPassKeyToFactory(
@@ -954,7 +954,7 @@ class AWG5200Mixin:
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIDevice) else None
+        device = self if isinstance(self, PIControl) else None
         self._command_argument_constants = AWG5200CommandConstants()
         self._commands = AWG5200Commands(device)
 

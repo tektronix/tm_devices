@@ -726,7 +726,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SearchStop(SCPICmdWrite, SCPICmdRead):
@@ -889,7 +889,7 @@ class SearchSearchItemTriggerAWindowThresholdLow(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:WINdow:THReshold:LOW:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerAWindowThresholdLowChannel] = (
             DefaultDictPassKeyToFactory(
@@ -1106,7 +1106,7 @@ class SearchSearchItemTriggerAWindowThresholdHigh(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:WINdow:THReshold:HIGH:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerAWindowThresholdHighChannel] = (
             DefaultDictPassKeyToFactory(
@@ -1232,7 +1232,7 @@ class SearchSearchItemTriggerAWindowThreshold(SCPICmdRead):
         - ``.low``: The ``SEARCH:SEARCH<x>:TRIGger:A:WINdow:THReshold:LOW`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._high = SearchSearchItemTriggerAWindowThresholdHigh(device, f"{self._cmd_syntax}:HIGH")
         self._low = SearchSearchItemTriggerAWindowThresholdLow(device, f"{self._cmd_syntax}:LOW")
@@ -1322,7 +1322,7 @@ class SearchSearchItemTriggerAWindow(SCPICmdRead):
         - ``.width``: The ``SEARCH:SEARCH<x>:TRIGger:A:WINdow:WIDth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._event = SearchSearchItemTriggerAWindowEvent(device, f"{self._cmd_syntax}:EVENT")
         self._threshold = SearchSearchItemTriggerAWindowThreshold(
@@ -1543,7 +1543,7 @@ class SearchSearchItemTriggerAWidthPolarity(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:WIDth:POLarity:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerAWidthPolarityChannel] = (
             DefaultDictPassKeyToFactory(
@@ -1724,7 +1724,7 @@ class SearchSearchItemTriggerAWidth(SCPICmdRead):
         - ``.when``: The ``SEARCH:SEARCH<x>:TRIGger:A:WIDth:WHEn`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._highlimit = SearchSearchItemTriggerAWidthHighlimit(
             device, f"{self._cmd_syntax}:HIGHLimit"
@@ -2028,7 +2028,7 @@ class SearchSearchItemTriggerATransitionThresholdLow(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:THReshold:LOW:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerATransitionThresholdLowChannel] = (
             DefaultDictPassKeyToFactory(
@@ -2246,7 +2246,7 @@ class SearchSearchItemTriggerATransitionThresholdHigh(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:THReshold:HIGH:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerATransitionThresholdHighChannel] = (
             DefaultDictPassKeyToFactory(
@@ -2373,7 +2373,7 @@ class SearchSearchItemTriggerATransitionThreshold(SCPICmdRead):
         - ``.low``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:THReshold:LOW`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._high = SearchSearchItemTriggerATransitionThresholdHigh(
             device, f"{self._cmd_syntax}:HIGH"
@@ -2536,7 +2536,7 @@ class SearchSearchItemTriggerATransitionPolarity(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:POLarity:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerATransitionPolarityChannel] = (
             DefaultDictPassKeyToFactory(
@@ -2702,7 +2702,7 @@ class SearchSearchItemTriggerATransition(SCPICmdRead):
         - ``.when``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:WHEn`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._deltatime = SearchSearchItemTriggerATransitionDeltatime(
             device, f"{self._cmd_syntax}:DELTATime"
@@ -2944,7 +2944,7 @@ class SearchSearchItemTriggerATimeoutPolarity(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:POLarity:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerATimeoutPolarityChannel] = (
             DefaultDictPassKeyToFactory(
@@ -3072,7 +3072,7 @@ class SearchSearchItemTriggerATimeout(SCPICmdRead):
         - ``.time``: The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:TIMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._polarity = SearchSearchItemTriggerATimeoutPolarity(
             device, f"{self._cmd_syntax}:POLarity"
@@ -3228,7 +3228,7 @@ class SearchSearchItemTriggerAStateClock(SCPICmdRead):
         - ``.source``: The ``SEARCH:SEARCH<x>:TRIGger:A:STATE:CLOCk:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._edge = SearchSearchItemTriggerAStateClockEdge(device, f"{self._cmd_syntax}:EDGE")
         self._source = SearchSearchItemTriggerAStateClockSource(
@@ -3311,7 +3311,7 @@ class SearchSearchItemTriggerAState(SCPICmdRead):
         - ``.when``: The ``SEARCH:SEARCH<x>:TRIGger:A:STATE:WHEn`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._clock = SearchSearchItemTriggerAStateClock(device, f"{self._cmd_syntax}:CLOCk")
         self._when = SearchSearchItemTriggerAStateWhen(device, f"{self._cmd_syntax}:WHEn")
@@ -3527,7 +3527,7 @@ class SearchSearchItemTriggerASetholdDataThreshold(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:DATa:THReshold:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerASetholdDataThresholdChannel] = (
             DefaultDictPassKeyToFactory(
@@ -3692,7 +3692,7 @@ class SearchSearchItemTriggerASetholdData(SCPICmdRead):
         - ``.threshold``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:DATa:THReshold`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._source = SearchSearchItemTriggerASetholdDataSource(
             device, f"{self._cmd_syntax}:SOUrce"
@@ -3861,7 +3861,7 @@ class SearchSearchItemTriggerASetholdClockThreshold(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:THReshold:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerASetholdClockThresholdChannel] = (
             DefaultDictPassKeyToFactory(
@@ -4052,7 +4052,7 @@ class SearchSearchItemTriggerASetholdClock(SCPICmdRead):
         - ``.threshold``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:THReshold`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._edge = SearchSearchItemTriggerASetholdClockEdge(device, f"{self._cmd_syntax}:EDGE")
         self._source = SearchSearchItemTriggerASetholdClockSource(
@@ -4157,7 +4157,7 @@ class SearchSearchItemTriggerASethold(SCPICmdRead):
         - ``.settime``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:SETTime`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._clock = SearchSearchItemTriggerASetholdClock(device, f"{self._cmd_syntax}:CLOCk")
         self._data = SearchSearchItemTriggerASetholdData(device, f"{self._cmd_syntax}:DATa")
@@ -4425,7 +4425,7 @@ class SearchSearchItemTriggerARuntThresholdLow(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:RUNT:THReshold:LOW:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerARuntThresholdLowChannel] = (
             DefaultDictPassKeyToFactory(
@@ -4640,7 +4640,7 @@ class SearchSearchItemTriggerARuntThresholdHigh(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:RUNT:THReshold:HIGH:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerARuntThresholdHighChannel] = (
             DefaultDictPassKeyToFactory(
@@ -4767,7 +4767,7 @@ class SearchSearchItemTriggerARuntThreshold(SCPICmdRead):
         - ``.low``: The ``SEARCH:SEARCH<x>:TRIGger:A:RUNT:THReshold:LOW`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._high = SearchSearchItemTriggerARuntThresholdHigh(device, f"{self._cmd_syntax}:HIGH")
         self._low = SearchSearchItemTriggerARuntThresholdLow(device, f"{self._cmd_syntax}:LOW")
@@ -4922,7 +4922,7 @@ class SearchSearchItemTriggerARuntPolarity(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:RUNT:POLarity:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerARuntPolarityChannel] = (
             DefaultDictPassKeyToFactory(
@@ -5065,7 +5065,7 @@ class SearchSearchItemTriggerARunt(SCPICmdRead):
         - ``.width``: The ``SEARCH:SEARCH<x>:TRIGger:A:RUNT:WIDth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._polarity = SearchSearchItemTriggerARuntPolarity(
             device, f"{self._cmd_syntax}:POLarity"
@@ -5217,7 +5217,7 @@ class SearchSearchItemTriggerAPulse(SCPICmdRead):
         - ``.source``: The ``SEARCH:SEARCH<x>:TRIGger:A:PULse:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._source = SearchSearchItemTriggerAPulseSource(device, f"{self._cmd_syntax}:SOUrce")
 
@@ -5341,7 +5341,7 @@ class SearchSearchItemTriggerAPatternWhen(SCPICmdWrite, SCPICmdRead):
         - ``.morelimit``: The ``SEARCH:SEARCH<x>:TRIGger:A:PATtern:WHEn:MORELimit`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._lesslimit = SearchSearchItemTriggerAPatternWhenLesslimit(
             device, f"{self._cmd_syntax}:LESSLimit"
@@ -5419,7 +5419,7 @@ class SearchSearchItemTriggerAPattern(SCPICmdRead):
         - ``.when``: The ``SEARCH:SEARCH<x>:TRIGger:A:PATtern:WHEn`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._when = SearchSearchItemTriggerAPatternWhen(device, f"{self._cmd_syntax}:WHEn")
 
@@ -5563,7 +5563,7 @@ class SearchSearchItemTriggerALogicThreshold(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:THReshold:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerALogicThresholdChannel] = (
             DefaultDictPassKeyToFactory(
@@ -5785,7 +5785,7 @@ class SearchSearchItemTriggerALogicInput(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerALogicInputChannel] = (
             DefaultDictPassKeyToFactory(
@@ -5947,7 +5947,7 @@ class SearchSearchItemTriggerALogic(SCPICmdRead):
         - ``.threshold``: The ``SEARCH:SEARCH<x>:TRIGger:A:LOGIc:THReshold`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._function = SearchSearchItemTriggerALogicFunction(
             device, f"{self._cmd_syntax}:FUNCtion"
@@ -6127,7 +6127,7 @@ class SearchSearchItemTriggerALevel(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:LEVel:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerALevelChannel] = DefaultDictPassKeyToFactory(
             lambda x: SearchSearchItemTriggerALevelChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -6393,7 +6393,7 @@ class SearchSearchItemTriggerAGlitchPolarity(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:GLItch:POLarity:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerAGlitchPolarityChannel] = (
             DefaultDictPassKeyToFactory(
@@ -6522,7 +6522,7 @@ class SearchSearchItemTriggerAGlitch(SCPICmdRead):
         - ``.width``: The ``SEARCH:SEARCH<x>:TRIGger:A:GLItch:WIDth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._polarity = SearchSearchItemTriggerAGlitchPolarity(
             device, f"{self._cmd_syntax}:POLarity"
@@ -6743,7 +6743,7 @@ class SearchSearchItemTriggerAEdgeSlope(SCPICmdRead):
         - ``.ref``: The ``SEARCH:SEARCH<x>:TRIGger:A:EDGE:SLOpe:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SearchSearchItemTriggerAEdgeSlopeChannel] = DefaultDictPassKeyToFactory(
             lambda x: SearchSearchItemTriggerAEdgeSlopeChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -6867,7 +6867,7 @@ class SearchSearchItemTriggerAEdge(SCPICmdRead):
         - ``.source``: The ``SEARCH:SEARCH<x>:TRIGger:A:EDGE:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._slope = SearchSearchItemTriggerAEdgeSlope(device, f"{self._cmd_syntax}:SLOpe")
         self._source = SearchSearchItemTriggerAEdgeSource(device, f"{self._cmd_syntax}:SOUrce")
@@ -7089,7 +7089,7 @@ class SearchSearchItemTriggerADdrmemoryReflevelStrobe(SCPICmdRead):
         - ``.mid``: The ``SEARCH:SEARCH<x>:TRIGger:A:DDRMemory:REFLevel:STROBE:MID`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._high = SearchSearchItemTriggerADdrmemoryReflevelStrobeHigh(
             device, f"{self._cmd_syntax}:HIGH"
@@ -7289,7 +7289,7 @@ class SearchSearchItemTriggerADdrmemoryReflevelData(SCPICmdRead):
         - ``.mid``: The ``SEARCH:SEARCH<x>:TRIGger:A:DDRMemory:REFLevel:DATa:MID`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._high = SearchSearchItemTriggerADdrmemoryReflevelDataHigh(
             device, f"{self._cmd_syntax}:HIGH"
@@ -7404,7 +7404,7 @@ class SearchSearchItemTriggerADdrmemoryReflevel(SCPICmdRead):
         - ``.strobe``: The ``SEARCH:SEARCH<x>:TRIGger:A:DDRMemory:REFLevel:STROBE`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._data = SearchSearchItemTriggerADdrmemoryReflevelData(
             device, f"{self._cmd_syntax}:DATa"
@@ -7819,7 +7819,7 @@ class SearchSearchItemTriggerADdrmemory(SCPICmdRead):
         - ``.strobesource``: The ``SEARCH:SEARCH<x>:TRIGger:A:DDRMemory:STROBEsource`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autobitrate = SearchSearchItemTriggerADdrmemoryAutobitrate(
             device, f"{self._cmd_syntax}:AUTOBitrate"
@@ -8378,7 +8378,7 @@ class SearchSearchItemTriggerABusUsbSplitSe(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SPLIT:SE:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = SearchSearchItemTriggerABusUsbSplitSeValue(
             device, f"{self._cmd_syntax}:VALue"
@@ -8464,7 +8464,7 @@ class SearchSearchItemTriggerABusUsbSplitSc(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SPLIT:SC:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = SearchSearchItemTriggerABusUsbSplitScValue(
             device, f"{self._cmd_syntax}:VALue"
@@ -8572,7 +8572,7 @@ class SearchSearchItemTriggerABusUsbSplitPort(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SPLIT:PORT:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusUsbSplitPortFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -8711,7 +8711,7 @@ class SearchSearchItemTriggerABusUsbSplitHub(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SPLIT:HUB:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusUsbSplitHubFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -8824,7 +8824,7 @@ class SearchSearchItemTriggerABusUsbSplitEt(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SPLIT:ET:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = SearchSearchItemTriggerABusUsbSplitEtValue(
             device, f"{self._cmd_syntax}:VALue"
@@ -8882,7 +8882,7 @@ class SearchSearchItemTriggerABusUsbSplit(SCPICmdRead):
         - ``.se``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SPLIT:SE`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._et = SearchSearchItemTriggerABusUsbSplitEt(device, f"{self._cmd_syntax}:ET")
         self._hub = SearchSearchItemTriggerABusUsbSplitHub(device, f"{self._cmd_syntax}:HUB")
@@ -9079,7 +9079,7 @@ class SearchSearchItemTriggerABusUsbSof(SCPICmdRead):
         - ``.framenumber``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:SOF:FRAMENUMber`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusUsbSofFormat(device, f"{self._cmd_syntax}:FORMat")
         self._framenumber = SearchSearchItemTriggerABusUsbSofFramenumber(
@@ -9252,7 +9252,7 @@ class SearchSearchItemTriggerABusUsbPatternSymbol(SCPICmdRead):
         - ``.plus``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PATtern:SYMbol:PLUS<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._minus: Dict[int, SearchSearchItemTriggerABusUsbPatternSymbolMinusItem] = (
             DefaultDictPassKeyToFactory(
@@ -9422,7 +9422,7 @@ class SearchSearchItemTriggerABusUsbPattern(SCPICmdRead):
         - ``.symbol``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PATtern:SYMbol`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._char: Dict[int, SearchSearchItemTriggerABusUsbPatternCharItem] = (
             DefaultDictPassKeyToFactory(
@@ -9643,7 +9643,7 @@ class SearchSearchItemTriggerABusUsbPackets(SCPICmdWrite, SCPICmdRead):
         - ``.tppackets``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:PACKets:TPPACKets`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._lmppackets = SearchSearchItemTriggerABusUsbPacketsLmppackets(
             device, f"{self._cmd_syntax}:LMPPACKets"
@@ -9942,7 +9942,7 @@ class SearchSearchItemTriggerABusUsbError(SCPICmdRead):
         - ``.orderedset``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ERROR:ORDERedset`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._char = SearchSearchItemTriggerABusUsbErrorChar(device, f"{self._cmd_syntax}:CHAR")
         self._disparity = SearchSearchItemTriggerABusUsbErrorDisparity(
@@ -10146,7 +10146,7 @@ class SearchSearchItemTriggerABusUsbEndpoint(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ENDPoint:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusUsbEndpointFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -10468,7 +10468,7 @@ class SearchSearchItemTriggerABusUsbData(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:DATa:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusUsbDataFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -10767,7 +10767,7 @@ class SearchSearchItemTriggerABusUsbCharacterSymbol(SCPICmdRead):
         - ``.plus``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter:SYMbol:PLUS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._minus = SearchSearchItemTriggerABusUsbCharacterSymbolMinus(
             device, f"{self._cmd_syntax}:MINus"
@@ -10874,7 +10874,7 @@ class SearchSearchItemTriggerABusUsbCharacter(SCPICmdRead):
         - ``.symbol``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:CHARacter:SYMbol`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._char = SearchSearchItemTriggerABusUsbCharacterChar(device, f"{self._cmd_syntax}:CHAR")
         self._symbol = SearchSearchItemTriggerABusUsbCharacterSymbol(
@@ -11031,7 +11031,7 @@ class SearchSearchItemTriggerABusUsbAddress(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:ADDress:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusUsbAddressFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -11166,7 +11166,7 @@ class SearchSearchItemTriggerABusUsb(SCPICmdRead):
         - ``.tokentype``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB:TOKENType`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._address = SearchSearchItemTriggerABusUsbAddress(device, f"{self._cmd_syntax}:ADDress")
         self._character = SearchSearchItemTriggerABusUsbCharacter(
@@ -11782,7 +11782,7 @@ class SearchSearchItemTriggerABusSpiData(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPI:DATa:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusSpiDataFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -11920,7 +11920,7 @@ class SearchSearchItemTriggerABusSpi(SCPICmdRead):
         - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SPI:DATa`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._condition = SearchSearchItemTriggerABusSpiCondition(
             device, f"{self._cmd_syntax}:CONDition"
@@ -12076,7 +12076,7 @@ class SearchSearchItemTriggerABusS8b10bPatternSymbol(SCPICmdRead):
         - ``.plus``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:PATtern:SYMbol:PLUS<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._minus: Dict[int, SearchSearchItemTriggerABusS8b10bPatternSymbolMinusItem] = (
             DefaultDictPassKeyToFactory(
@@ -12194,7 +12194,7 @@ class SearchSearchItemTriggerABusS8b10bPattern(SCPICmdRead):
         - ``.symbol``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:PATtern:SYMbol`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._char: Dict[int, SearchSearchItemTriggerABusS8b10bPatternCharItem] = (
             DefaultDictPassKeyToFactory(
@@ -12355,7 +12355,7 @@ class SearchSearchItemTriggerABusS8b10bError(SCPICmdRead):
         - ``.disparity``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:ERROR:DISParity`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._char = SearchSearchItemTriggerABusS8b10bErrorChar(device, f"{self._cmd_syntax}:CHAR")
         self._disparity = SearchSearchItemTriggerABusS8b10bErrorDisparity(
@@ -12558,7 +12558,7 @@ class SearchSearchItemTriggerABusS8b10bCharacterSymbol(SCPICmdRead):
         - ``.plus``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CHARacter:SYMbol:PLUS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._minus = SearchSearchItemTriggerABusS8b10bCharacterSymbolMinus(
             device, f"{self._cmd_syntax}:MINus"
@@ -12665,7 +12665,7 @@ class SearchSearchItemTriggerABusS8b10bCharacter(SCPICmdRead):
         - ``.symbol``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:CHARacter:SYMbol`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._char = SearchSearchItemTriggerABusS8b10bCharacterChar(
             device, f"{self._cmd_syntax}:CHAR"
@@ -12740,7 +12740,7 @@ class SearchSearchItemTriggerABusS8b10b(SCPICmdRead):
         - ``.pattern``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S8B10B:PATtern`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._character = SearchSearchItemTriggerABusS8b10bCharacter(
             device, f"{self._cmd_syntax}:CHARacter"
@@ -12978,7 +12978,7 @@ class SearchSearchItemTriggerABusS64b66bBlockonethentwo(SCPICmdRead):
           command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusS64b66bBlockonethentwoFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -13111,7 +13111,7 @@ class SearchSearchItemTriggerABusS64b66bBlockonePattern(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:BLOCKONE:PATtern:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusS64b66bBlockonePatternFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -13281,7 +13281,7 @@ class SearchSearchItemTriggerABusS64b66bBlockone(SCPICmdWrite, SCPICmdRead):
           tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._blocktype = SearchSearchItemTriggerABusS64b66bBlockoneBlocktype(
             device, f"{self._cmd_syntax}:BLOCKType"
@@ -13370,7 +13370,7 @@ class SearchSearchItemTriggerABusS64b66b(SCPICmdRead):
         - ``.condition``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:S64B66B:CONDition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._blockone = SearchSearchItemTriggerABusS64b66bBlockone(
             device, f"{self._cmd_syntax}:BLOCKONE"
@@ -13564,7 +13564,7 @@ class SearchSearchItemTriggerABusRs232cData(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C:DATa:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusRs232cDataFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -13708,7 +13708,7 @@ class SearchSearchItemTriggerABusRs232c(SCPICmdRead):
         - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:RS232C:DATa`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._condition = SearchSearchItemTriggerABusRs232cCondition(
             device, f"{self._cmd_syntax}:CONDition"
@@ -13839,7 +13839,7 @@ class SearchSearchItemTriggerABusPciePatternSymbol(SCPICmdRead):
         - ``.plus``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:PATtern:SYMbol:PLUS<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._minus: Dict[int, SearchSearchItemTriggerABusPciePatternSymbolMinusItem] = (
             DefaultDictPassKeyToFactory(
@@ -13992,7 +13992,7 @@ class SearchSearchItemTriggerABusPciePattern(SCPICmdRead):
         - ``.symbol``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:PATtern:SYMbol`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._char: Dict[int, SearchSearchItemTriggerABusPciePatternCharItem] = (
             DefaultDictPassKeyToFactory(
@@ -14279,7 +14279,7 @@ class SearchSearchItemTriggerABusPcieError(SCPICmdRead):
         - ``.sync``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:ERROR:SYNC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._char = SearchSearchItemTriggerABusPcieErrorChar(device, f"{self._cmd_syntax}:CHAR")
         self._disparity = SearchSearchItemTriggerABusPcieErrorDisparity(
@@ -14533,7 +14533,7 @@ class SearchSearchItemTriggerABusPcieCharacterSymbol(SCPICmdRead):
         - ``.plus``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHARacter:SYMbol:PLUS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._minus = SearchSearchItemTriggerABusPcieCharacterSymbolMinus(
             device, f"{self._cmd_syntax}:MINus"
@@ -14642,7 +14642,7 @@ class SearchSearchItemTriggerABusPcieCharacter(SCPICmdRead):
         - ``.symbol``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:CHARacter:SYMbol`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._char = SearchSearchItemTriggerABusPcieCharacterChar(
             device, f"{self._cmd_syntax}:CHAR"
@@ -14718,7 +14718,7 @@ class SearchSearchItemTriggerABusPcie(SCPICmdRead):
         - ``.pattern``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PCIE:PATtern`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._character = SearchSearchItemTriggerABusPcieCharacter(
             device, f"{self._cmd_syntax}:CHARacter"
@@ -14981,7 +14981,7 @@ class SearchSearchItemTriggerABusParallelData(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PARallel:DATa:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusParallelDataFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -15063,7 +15063,7 @@ class SearchSearchItemTriggerABusParallel(SCPICmdRead):
         - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:PARallel:DATa`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._data = SearchSearchItemTriggerABusParallelData(device, f"{self._cmd_syntax}:DATa")
 
@@ -15153,7 +15153,7 @@ class SearchSearchItemTriggerABusMipidsioneYcbcrY(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:YCBCR:Y:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._qualifier = SearchSearchItemTriggerABusMipidsioneYcbcrYQualifier(
             device, f"{self._cmd_syntax}:QUAlifier"
@@ -15285,7 +15285,7 @@ class SearchSearchItemTriggerABusMipidsioneYcbcrCr(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:YCBCR:CR:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._qualifier = SearchSearchItemTriggerABusMipidsioneYcbcrCrQualifier(
             device, f"{self._cmd_syntax}:QUAlifier"
@@ -15417,7 +15417,7 @@ class SearchSearchItemTriggerABusMipidsioneYcbcrCb(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:YCBCR:CB:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._qualifier = SearchSearchItemTriggerABusMipidsioneYcbcrCbQualifier(
             device, f"{self._cmd_syntax}:QUAlifier"
@@ -15497,7 +15497,7 @@ class SearchSearchItemTriggerABusMipidsioneYcbcr(SCPICmdRead):
         - ``.y``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:YCBCR:Y`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._cb = SearchSearchItemTriggerABusMipidsioneYcbcrCb(device, f"{self._cmd_syntax}:CB")
         self._cr = SearchSearchItemTriggerABusMipidsioneYcbcrCr(device, f"{self._cmd_syntax}:CR")
@@ -15600,7 +15600,7 @@ class SearchSearchItemTriggerABusMipidsioneWc(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:WC:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = SearchSearchItemTriggerABusMipidsioneWcValue(
             device, f"{self._cmd_syntax}:VALue"
@@ -15766,7 +15766,7 @@ class SearchSearchItemTriggerABusMipidsioneRgbRed(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:RGB:RED:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._qualifier = SearchSearchItemTriggerABusMipidsioneRgbRedQualifier(
             device, f"{self._cmd_syntax}:QUAlifier"
@@ -15910,7 +15910,7 @@ class SearchSearchItemTriggerABusMipidsioneRgbGreen(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:RGB:GREen:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._qualifier = SearchSearchItemTriggerABusMipidsioneRgbGreenQualifier(
             device, f"{self._cmd_syntax}:QUAlifier"
@@ -16054,7 +16054,7 @@ class SearchSearchItemTriggerABusMipidsioneRgbBlue(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:RGB:BLUe:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._qualifier = SearchSearchItemTriggerABusMipidsioneRgbBlueQualifier(
             device, f"{self._cmd_syntax}:QUAlifier"
@@ -16140,7 +16140,7 @@ class SearchSearchItemTriggerABusMipidsioneRgb(SCPICmdRead):
         - ``.red``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:RGB:RED`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._blue = SearchSearchItemTriggerABusMipidsioneRgbBlue(
             device, f"{self._cmd_syntax}:BLUe"
@@ -16247,7 +16247,7 @@ class SearchSearchItemTriggerABusMipidsionePixel(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:PIXel:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = SearchSearchItemTriggerABusMipidsionePixelValue(
             device, f"{self._cmd_syntax}:VALue"
@@ -16383,7 +16383,7 @@ class SearchSearchItemTriggerABusMipidsionePayload(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:PAYLoad:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusMipidsionePayloadFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -16589,7 +16589,7 @@ class SearchSearchItemTriggerABusMipidsionePacketdata(SCPICmdRead):
           command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusMipidsionePacketdataFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -16735,7 +16735,7 @@ class SearchSearchItemTriggerABusMipidsioneOffset(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:OFFset:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = SearchSearchItemTriggerABusMipidsioneOffsetValue(
             device, f"{self._cmd_syntax}:VALue"
@@ -17062,7 +17062,7 @@ class SearchSearchItemTriggerABusMipidsione(SCPICmdRead):
         - ``.ycbcr``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPIDSIOne:YCBCR`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ackerrreport = SearchSearchItemTriggerABusMipidsioneAckerrreport(
             device, f"{self._cmd_syntax}:ACKERRreport"
@@ -17629,7 +17629,7 @@ class SearchSearchItemTriggerABusMipicsitwoYuvY(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:YUV:Y:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._qualifier = SearchSearchItemTriggerABusMipicsitwoYuvYQualifier(
             device, f"{self._cmd_syntax}:QUAlifier"
@@ -17772,7 +17772,7 @@ class SearchSearchItemTriggerABusMipicsitwoYuvV(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:YUV:V:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._qualifier = SearchSearchItemTriggerABusMipicsitwoYuvVQualifier(
             device, f"{self._cmd_syntax}:QUAlifier"
@@ -17915,7 +17915,7 @@ class SearchSearchItemTriggerABusMipicsitwoYuvU(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:YUV:U:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._qualifier = SearchSearchItemTriggerABusMipicsitwoYuvUQualifier(
             device, f"{self._cmd_syntax}:QUAlifier"
@@ -18001,7 +18001,7 @@ class SearchSearchItemTriggerABusMipicsitwoYuv(SCPICmdRead):
         - ``.y``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:YUV:Y`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._u = SearchSearchItemTriggerABusMipicsitwoYuvU(device, f"{self._cmd_syntax}:U")
         self._v = SearchSearchItemTriggerABusMipicsitwoYuvV(device, f"{self._cmd_syntax}:V")
@@ -18104,7 +18104,7 @@ class SearchSearchItemTriggerABusMipicsitwoWc(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:WC:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = SearchSearchItemTriggerABusMipicsitwoWcValue(
             device, f"{self._cmd_syntax}:VALue"
@@ -18270,7 +18270,7 @@ class SearchSearchItemTriggerABusMipicsitwoRgbRed(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:RGB:RED:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._qualifier = SearchSearchItemTriggerABusMipicsitwoRgbRedQualifier(
             device, f"{self._cmd_syntax}:QUAlifier"
@@ -18414,7 +18414,7 @@ class SearchSearchItemTriggerABusMipicsitwoRgbGreen(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:RGB:GREen:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._qualifier = SearchSearchItemTriggerABusMipicsitwoRgbGreenQualifier(
             device, f"{self._cmd_syntax}:QUAlifier"
@@ -18558,7 +18558,7 @@ class SearchSearchItemTriggerABusMipicsitwoRgbBlue(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:RGB:BLUe:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._qualifier = SearchSearchItemTriggerABusMipicsitwoRgbBlueQualifier(
             device, f"{self._cmd_syntax}:QUAlifier"
@@ -18644,7 +18644,7 @@ class SearchSearchItemTriggerABusMipicsitwoRgb(SCPICmdRead):
         - ``.red``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:RGB:RED`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._blue = SearchSearchItemTriggerABusMipicsitwoRgbBlue(
             device, f"{self._cmd_syntax}:BLUe"
@@ -18781,7 +18781,7 @@ class SearchSearchItemTriggerABusMipicsitwoRaw(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:RAW:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._qualifier = SearchSearchItemTriggerABusMipicsitwoRawQualifier(
             device, f"{self._cmd_syntax}:QUAlifier"
@@ -18892,7 +18892,7 @@ class SearchSearchItemTriggerABusMipicsitwoPixel(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:PIXel:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = SearchSearchItemTriggerABusMipicsitwoPixelValue(
             device, f"{self._cmd_syntax}:VALue"
@@ -19027,7 +19027,7 @@ class SearchSearchItemTriggerABusMipicsitwoPayload(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:PAYLoad:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusMipicsitwoPayloadFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -19198,7 +19198,7 @@ class SearchSearchItemTriggerABusMipicsitwoPacketdata(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:PACKetdata:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusMipicsitwoPacketdataFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -19310,7 +19310,7 @@ class SearchSearchItemTriggerABusMipicsitwoOffset(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:OFFset:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = SearchSearchItemTriggerABusMipicsitwoOffsetValue(
             device, f"{self._cmd_syntax}:VALue"
@@ -19552,7 +19552,7 @@ class SearchSearchItemTriggerABusMipicsitwo(SCPICmdRead):
         - ``.yuv``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIPICSITWo:YUV`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._condition = SearchSearchItemTriggerABusMipicsitwoCondition(
             device, f"{self._cmd_syntax}:CONDition"
@@ -20075,7 +20075,7 @@ class SearchSearchItemTriggerABusMil1553bTime(SCPICmdRead):
         - ``.qualifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:TIME:QUALifier`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._lesslimit = SearchSearchItemTriggerABusMil1553bTimeLesslimit(
             device, f"{self._cmd_syntax}:LESSLimit"
@@ -20490,7 +20490,7 @@ class SearchSearchItemTriggerABusMil1553bStatusBit(SCPICmdRead):
         - ``.tf``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:STATUS:BIT:TF`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bcr = SearchSearchItemTriggerABusMil1553bStatusBitBcr(
             device, f"{self._cmd_syntax}:BCR"
@@ -20919,7 +20919,7 @@ class SearchSearchItemTriggerABusMil1553bStatusAddress(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:STATUS:ADDRess:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusMil1553bStatusAddressFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -21036,7 +21036,7 @@ class SearchSearchItemTriggerABusMil1553bStatus(SCPICmdRead):
         - ``.bit``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:STATUS:BIT`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._address = SearchSearchItemTriggerABusMil1553bStatusAddress(
             device, f"{self._cmd_syntax}:ADDRess"
@@ -21219,7 +21219,7 @@ class SearchSearchItemTriggerABusMil1553bData(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:DATA:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusMil1553bDataFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -21456,7 +21456,7 @@ class SearchSearchItemTriggerABusMil1553bCommandSubaddress(SCPICmdWrite, SCPICmd
 
     _WRAP_ARG_WITH_QUOTES = True
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusMil1553bCommandSubaddressFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -21588,7 +21588,7 @@ class SearchSearchItemTriggerABusMil1553bCommandCount(SCPICmdWrite, SCPICmdRead)
 
     _WRAP_ARG_WITH_QUOTES = True
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusMil1553bCommandCountFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -21733,7 +21733,7 @@ class SearchSearchItemTriggerABusMil1553bCommandAddress(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusMil1553bCommandAddressFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -21858,7 +21858,7 @@ class SearchSearchItemTriggerABusMil1553bCommand(SCPICmdRead):
         - ``.trbit``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:TRBit`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._address = SearchSearchItemTriggerABusMil1553bCommandAddress(
             device, f"{self._cmd_syntax}:ADDRess"
@@ -22051,7 +22051,7 @@ class SearchSearchItemTriggerABusMil1553b(SCPICmdRead):
         - ``.time``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:TIME`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._command = SearchSearchItemTriggerABusMil1553bCommand(
             device, f"{self._cmd_syntax}:COMMAND"
@@ -22286,7 +22286,7 @@ class SearchSearchItemTriggerABusLinIdentifier(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:IDentifier:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusLinIdentifierFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -22505,7 +22505,7 @@ class SearchSearchItemTriggerABusLinData(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:DATa:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusLinDataFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -22666,7 +22666,7 @@ class SearchSearchItemTriggerABusLin(SCPICmdRead):
         - ``.identifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:LIN:IDentifier`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._condition = SearchSearchItemTriggerABusLinCondition(
             device, f"{self._cmd_syntax}:CONDition"
@@ -22898,7 +22898,7 @@ class SearchSearchItemTriggerABusI2cData(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I2C:DATa:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._direction = SearchSearchItemTriggerABusI2cDataDirection(
             device, f"{self._cmd_syntax}:DIRection"
@@ -23194,7 +23194,7 @@ class SearchSearchItemTriggerABusI2cAddress(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I2C:ADDress:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusI2cAddressFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -23341,7 +23341,7 @@ class SearchSearchItemTriggerABusI2c(SCPICmdRead):
         - ``.data``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:I2C:DATa`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._address = SearchSearchItemTriggerABusI2cAddress(device, f"{self._cmd_syntax}:ADDress")
         self._condition = SearchSearchItemTriggerABusI2cCondition(
@@ -23518,7 +23518,7 @@ class SearchSearchItemTriggerABusFlexrayIdentifier(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:IDentifier:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusFlexrayIdentifierFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -23766,7 +23766,7 @@ class SearchSearchItemTriggerABusFlexrayHeader(SCPICmdRead):
         - ``.paylength``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:HEADER:PAYLENgth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._crc = SearchSearchItemTriggerABusFlexrayHeaderCrc(device, f"{self._cmd_syntax}:CRC")
         self._cyclecount = SearchSearchItemTriggerABusFlexrayHeaderCyclecount(
@@ -24159,7 +24159,7 @@ class SearchSearchItemTriggerABusFlexrayData(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusFlexrayDataFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -24411,7 +24411,7 @@ class SearchSearchItemTriggerABusFlexrayCyclecount(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusFlexrayCyclecountFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -24552,7 +24552,7 @@ class SearchSearchItemTriggerABusFlexray(SCPICmdRead):
         - ``.identifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:IDentifier`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._condition = SearchSearchItemTriggerABusFlexrayCondition(
             device, f"{self._cmd_syntax}:CONDition"
@@ -24849,7 +24849,7 @@ class SearchSearchItemTriggerABusEthernetTcpheaderSourceport(SCPICmdRead):
           command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusEthernetTcpheaderSourceportFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -25000,7 +25000,7 @@ class SearchSearchItemTriggerABusEthernetTcpheaderSeqnum(SCPICmdRead):
           command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusEthernetTcpheaderSeqnumFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -25151,7 +25151,7 @@ class SearchSearchItemTriggerABusEthernetTcpheaderAcknum(SCPICmdRead):
           command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusEthernetTcpheaderAcknumFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -25242,7 +25242,7 @@ class SearchSearchItemTriggerABusEthernetTcpheader(SCPICmdRead):
           command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._acknum = SearchSearchItemTriggerABusEthernetTcpheaderAcknum(
             device, f"{self._cmd_syntax}:ACKnum"
@@ -25419,7 +25419,7 @@ class SearchSearchItemTriggerABusEthernetQtag(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:QTAG:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusEthernetQtagFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -25559,7 +25559,7 @@ class SearchSearchItemTriggerABusEthernetMacType(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:MAC:TYPe:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusEthernetMacTypeFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -25695,7 +25695,7 @@ class SearchSearchItemTriggerABusEthernetMacLength(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:MAC:LENgth:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusEthernetMacLengthFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -25839,7 +25839,7 @@ class SearchSearchItemTriggerABusEthernetMacAddressSource(SCPICmdRead):
           command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusEthernetMacAddressSourceFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -25925,7 +25925,7 @@ class SearchSearchItemTriggerABusEthernetMacAddress(SCPICmdRead):
           tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._source = SearchSearchItemTriggerABusEthernetMacAddressSource(
             device, f"{self._cmd_syntax}:SOUrce"
@@ -25967,7 +25967,7 @@ class SearchSearchItemTriggerABusEthernetMac(SCPICmdRead):
         - ``.type``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:MAC:TYPe`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._address = SearchSearchItemTriggerABusEthernetMacAddress(
             device, f"{self._cmd_syntax}:ADDRess"
@@ -26077,7 +26077,7 @@ class SearchSearchItemTriggerABusEthernetIpheaderSourceaddr(SCPICmdRead):
           command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = SearchSearchItemTriggerABusEthernetIpheaderSourceaddrValue(
             device, f"{self._cmd_syntax}:VALue"
@@ -26193,7 +26193,7 @@ class SearchSearchItemTriggerABusEthernetIpheaderProtocol(SCPICmdRead):
           command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusEthernetIpheaderProtocolFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -26281,7 +26281,7 @@ class SearchSearchItemTriggerABusEthernetIpheader(SCPICmdRead):
           command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._protocol = SearchSearchItemTriggerABusEthernetIpheaderProtocol(
             device, f"{self._cmd_syntax}:PROTOcol"
@@ -26462,7 +26462,7 @@ class SearchSearchItemTriggerABusEthernetData(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusEthernetDataFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -26653,7 +26653,7 @@ class SearchSearchItemTriggerABusEthernet(SCPICmdRead):
         - ``.tcpheader``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._condition = SearchSearchItemTriggerABusEthernetCondition(
             device, f"{self._cmd_syntax}:CONDition"
@@ -26966,7 +26966,7 @@ class SearchSearchItemTriggerABusCanIdentifier(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:IDentifier:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._direction = SearchSearchItemTriggerABusCanIdentifierDirection(
             device, f"{self._cmd_syntax}:DIRection"
@@ -27261,7 +27261,7 @@ class SearchSearchItemTriggerABusCanData(SCPICmdRead):
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:DATa:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SearchSearchItemTriggerABusCanDataFormat(
             device, f"{self._cmd_syntax}:FORMat"
@@ -27430,7 +27430,7 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
         - ``.identifier``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:CAN:IDentifier`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._condition = SearchSearchItemTriggerABusCanCondition(
             device, f"{self._cmd_syntax}:CONDition"
@@ -27568,7 +27568,7 @@ class SearchSearchItemTriggerABus(SCPICmdRead):
         - ``.usb``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:USB`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._can = SearchSearchItemTriggerABusCan(device, f"{self._cmd_syntax}:CAN")
         self._ethernet = SearchSearchItemTriggerABusEthernet(device, f"{self._cmd_syntax}:ETHERnet")
@@ -27985,7 +27985,7 @@ class SearchSearchItemTriggerA(SCPICmdRead):
         - ``.window``: The ``SEARCH:SEARCH<x>:TRIGger:A:WINdow`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bus = SearchSearchItemTriggerABus(device, f"{self._cmd_syntax}:BUS")
         self._ddrmemory = SearchSearchItemTriggerADdrmemory(device, f"{self._cmd_syntax}:DDRMemory")
@@ -28363,7 +28363,7 @@ class SearchSearchItemTrigger(SCPICmdRead):
         - ``.a``: The ``SEARCH:SEARCH<x>:TRIGger:A`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._a = SearchSearchItemTriggerA(device, f"{self._cmd_syntax}:A")
 
@@ -28433,7 +28433,7 @@ class SearchSearchItemTrigerABusPcie(SCPICmdRead):
         - ``.syncheader``: The ``SEARCH:SEARCH<x>:TRIGer:A:BUS:PCIE:SYNCHeader`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._syncheader = SearchSearchItemTrigerABusPcieSyncheader(
             device, f"{self._cmd_syntax}:SYNCHeader"
@@ -28477,7 +28477,7 @@ class SearchSearchItemTrigerABus(SCPICmdRead):
         - ``.pcie``: The ``SEARCH:SEARCH<x>:TRIGer:A:BUS:PCIE`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._pcie = SearchSearchItemTrigerABusPcie(device, f"{self._cmd_syntax}:PCIE")
 
@@ -28510,7 +28510,7 @@ class SearchSearchItemTrigerA(SCPICmdRead):
         - ``.bus``: The ``SEARCH:SEARCH<x>:TRIGer:A:BUS`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bus = SearchSearchItemTrigerABus(device, f"{self._cmd_syntax}:BUS")
 
@@ -28541,7 +28541,7 @@ class SearchSearchItemTriger(SCPICmdRead):
         - ``.a``: The ``SEARCH:SEARCH<x>:TRIGer:A`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._a = SearchSearchItemTrigerA(device, f"{self._cmd_syntax}:A")
 
@@ -28658,7 +28658,7 @@ class SearchSearchItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
 
     _WRAP_ARG_WITH_QUOTES = True
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._copy = SearchSearchItemCopy(device, f"{self._cmd_syntax}:COPy")
         self._state = SearchSearchItemState(device, f"{self._cmd_syntax}:STATE")
@@ -28806,7 +28806,7 @@ class Search(SCPICmdRead):
         - ``.stop``: The ``SEARCH:STOP`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SEARCH") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SEARCH") -> None:
         super().__init__(device, cmd_syntax)
         self._markallevents = SearchMarkallevents(device, f"{self._cmd_syntax}:MARKALLevents")
         self._search: Dict[int, SearchSearchItem] = DefaultDictPassKeyToFactory(

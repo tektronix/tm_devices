@@ -7,13 +7,13 @@ from typing import Tuple, Union
 import pytest
 
 from tm_devices import DeviceManager
-from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class CustomUnsupportedDeviceUnitTestOnly(PIDevice):
+class CustomUnsupportedDeviceUnitTestOnly(PIControl):
     """A custom device that is not one of the officially supported devices for unit tests."""
 
     _DEVICE_TYPE = "CustomDeviceType"

@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.driver_mixins.device_control.tsp_device import TSPDevice
+from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 from .gen_7s2p1p_smu.beeper import Beeper
 from .gen_7s2p1p_smu.buffervar import Buffervar
@@ -641,7 +641,7 @@ class SMU2601BPulseCommands:
         - ``.tspnet``: The ``tspnet`` command tree.
     """
 
-    def __init__(self, device: Optional[TSPDevice] = None) -> None:
+    def __init__(self, device: Optional[TSPControl] = None) -> None:
         self._beeper = Beeper(device)
         self._buffer_var: Dict[str, Buffervar] = DefaultDictPassKeyToFactory(
             lambda x: Buffervar(device, str(x))
@@ -1174,7 +1174,7 @@ class SMU2601BPulseMixin:
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
-        device = self if isinstance(self, TSPDevice) else None
+        device = self if isinstance(self, TSPControl) else None
         self._command_argument_constants = SMU2601BPulseCommandConstants()
         self._commands = SMU2601BPulseCommands(device)
 

@@ -7,10 +7,11 @@ from abc import ABC
 from typing import Tuple, Union
 
 from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TekAFGAWG
+from tm_devices.drivers.device import Device
 from tm_devices.helpers import DeviceTypes
 
 
-class PowerSupplyUnit(ABC):  # noqa: B024
+class PowerSupplyUnit(Device, ABC):
     """Base Power Supply Unit (PSU) device driver."""
 
     _DEVICE_TYPE = DeviceTypes.PSU.value

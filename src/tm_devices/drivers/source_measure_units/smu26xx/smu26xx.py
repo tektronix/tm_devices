@@ -20,8 +20,8 @@ from tm_devices.commands import (
     SMU2651ACommands,
     SMU2657ACommands,
 )
-from tm_devices.driver_mixins.device_control.device import family_base_class
-from tm_devices.driver_mixins.device_control.tsp_device import TSPDevice
+from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
+from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.source_measure_units.source_measure_unit import SourceMeasureUnit
 
 # noinspection PyPep8Naming
@@ -29,7 +29,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class SMU26xx(SourceMeasureUnit, TSPDevice, ABC):
+class SMU26xx(TSPControl, SourceMeasureUnit, ABC):
     """Base SMU26xx device driver."""
 
     ################################################################################################

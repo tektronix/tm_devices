@@ -6,21 +6,21 @@ from typing import Literal
 from tm_devices.driver_mixins.abstract_device_functionality.base_source_channel import (
     BaseSourceChannel,
 )
-from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.helpers.enums import SignalGeneratorFunctionBase
 
 
 class BaseAFGSourceChannel(BaseSourceChannel):
     """Base AFG source channel driver."""
 
-    def __init__(self, pi_device: PIDevice, channel_name: str) -> None:
+    def __init__(self, pi_control: PIControl, channel_name: str) -> None:
         """Create an AFG source channel.
 
         Args:
-            pi_device: A PI device.
+            pi_control: A PI device.
             channel_name: The channel name for the AFG source channel.
         """
-        super().__init__(pi_device=pi_device, channel_name=channel_name)
+        super().__init__(pi_control=pi_control, channel_name=channel_name)
 
     @abstractmethod
     def set_function_properties(  # noqa: PLR0913

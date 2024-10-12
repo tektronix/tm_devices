@@ -117,7 +117,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MeasurementStatisticsWeighting(SCPICmdWrite, SCPICmdRead):
@@ -198,7 +198,7 @@ class MeasurementStatistics(SCPICmdWrite, SCPICmdRead):
         - ``.weighting``: The ``MEASUrement:STATIstics:WEIghting`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = MeasurementStatisticsMode(device, f"{self._cmd_syntax}:MODe")
         self._weighting = MeasurementStatisticsWeighting(device, f"{self._cmd_syntax}:WEIghting")
@@ -881,7 +881,7 @@ class MeasurementSnapshot(SCPICmdWriteNoArguments, SCPICmdRead):
         - ``.rms``: The ``MEASUrement:SNAPShot:RMS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = MeasurementSnapshotAmplitude(device, f"{self._cmd_syntax}:AMPlitude")
         self._area = MeasurementSnapshotArea(device, f"{self._cmd_syntax}:AREa")
@@ -1627,7 +1627,7 @@ class MeasurementReflevelPercent(SCPICmdRead):
         - ``.mid``: The ``MEASUrement:REFLevel:PERCent:MID<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._high = MeasurementReflevelPercentHigh(device, f"{self._cmd_syntax}:HIGH")
         self._low = MeasurementReflevelPercentLow(device, f"{self._cmd_syntax}:LOW")
@@ -1855,7 +1855,7 @@ class MeasurementReflevelAbsolute(SCPICmdRead):
         - ``.mid``: The ``MEASUrement:REFLevel:ABSolute:MID<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._high = MeasurementReflevelAbsoluteHigh(device, f"{self._cmd_syntax}:HIGH")
         self._low = MeasurementReflevelAbsoluteLow(device, f"{self._cmd_syntax}:LOW")
@@ -1977,7 +1977,7 @@ class MeasurementReflevel(SCPICmdRead):
         - ``.percent``: The ``MEASUrement:REFLevel:PERCent`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._absolute = MeasurementReflevelAbsolute(device, f"{self._cmd_syntax}:ABSolute")
         self._method = MeasurementReflevelMethod(device, f"{self._cmd_syntax}:METHod")
@@ -2472,7 +2472,7 @@ class MeasurementMeasItemDelay(SCPICmdRead):
         - ``.edge``: The ``MEASUrement:MEAS<x>:DELay:EDGE<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._direction = MeasurementMeasItemDelayDirection(device, f"{self._cmd_syntax}:DIRection")
         self._edge: Dict[int, MeasurementMeasItemDelayEdgeItem] = DefaultDictPassKeyToFactory(
@@ -2597,7 +2597,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.value``: The ``MEASUrement:MEAS<x>:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._count = MeasurementMeasItemCount(device, f"{self._cmd_syntax}:COUNt")
         self._delay = MeasurementMeasItemDelay(device, f"{self._cmd_syntax}:DELay")
@@ -3108,7 +3108,7 @@ class MeasurementIndicators(SCPICmdRead):
         - ``.vert``: The ``MEASUrement:INDICators:VERT<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._horz: Dict[int, MeasurementIndicatorsHorzItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementIndicatorsHorzItem(device, f"{self._cmd_syntax}:HORZ{x}")
@@ -3501,7 +3501,7 @@ class MeasurementImmedDelay(SCPICmdRead):
         - ``.edge``: The ``MEASUrement:IMMed:DELay:EDGE<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._direction = MeasurementImmedDelayDirection(device, f"{self._cmd_syntax}:DIRection")
         self._edge: Dict[int, MeasurementImmedDelayEdgeItem] = DefaultDictPassKeyToFactory(
@@ -3594,7 +3594,7 @@ class MeasurementImmed(SCPICmdRead):
         - ``.value``: The ``MEASUrement:IMMed:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delay = MeasurementImmedDelay(device, f"{self._cmd_syntax}:DELay")
         self._source1 = MeasurementImmedSource1(device, f"{self._cmd_syntax}:SOUrce1")
@@ -3902,7 +3902,7 @@ class Measurement(SCPICmdRead):
     """
 
     def __init__(
-        self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MEASUrement"
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "MEASUrement"
     ) -> None:
         super().__init__(device, cmd_syntax)
         self._clearsnapshot = MeasurementClearsnapshot(device, f"{self._cmd_syntax}:CLEARSNapshot")

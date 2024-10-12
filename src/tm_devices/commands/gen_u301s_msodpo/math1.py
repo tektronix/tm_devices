@@ -43,7 +43,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class Math1VerticalUnits(SCPICmdRead):
@@ -131,7 +131,7 @@ class Math1Vertical(SCPICmdRead):
         - ``.units``: The ``MATH1:VERTical:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = Math1VerticalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = Math1VerticalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -383,7 +383,7 @@ class Math1SpectralGatingIndicators(SCPICmdWrite, SCPICmdRead):
         - ``.start``: The ``MATH1:SPECTral:GATing:INDICators:STARt`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._end = Math1SpectralGatingIndicatorsEnd(device, f"{self._cmd_syntax}:END")
         self._start = Math1SpectralGatingIndicatorsStart(device, f"{self._cmd_syntax}:STARt")
@@ -444,7 +444,7 @@ class Math1SpectralGating(SCPICmdRead):
         - ``.indicators``: The ``MATH1:SPECTral:GATing:INDICators`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._indicators = Math1SpectralGatingIndicators(device, f"{self._cmd_syntax}:INDICators")
 
@@ -499,7 +499,7 @@ class Math1Spectral(SCPICmdRead):
         - ``.window``: The ``MATH1:SPECTral:WINdow`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._gating = Math1SpectralGating(device, f"{self._cmd_syntax}:GATing")
         self._mag = Math1SpectralMag(device, f"{self._cmd_syntax}:MAG")
@@ -706,7 +706,7 @@ class Math1Horizontal(SCPICmdRead):
         - ``.units``: The ``MATH1:HORizontal:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = Math1HorizontalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = Math1HorizontalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -911,7 +911,7 @@ class Math1(SCPICmdRead):
         - ``.vertical``: The ``MATH1:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MATH1") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MATH1") -> None:
         super().__init__(device, cmd_syntax)
         self._define = Math1Define(device, f"{self._cmd_syntax}:DEFine")
         self._horizontal = Math1Horizontal(device, f"{self._cmd_syntax}:HORizontal")

@@ -7,7 +7,7 @@ Please report an issue if one is found.
 
 from typing import Any, Optional
 
-from tm_devices.driver_mixins.device_control.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 from .gen_22daqs_afg.afgcontrol import Afgcontrol
 from .gen_22daqs_afg.data import Data
@@ -105,7 +105,7 @@ class AFG3KCommands:
         - ``.wai``: The ``*WAI`` command.
     """
 
-    def __init__(self, device: Optional[PIDevice] = None) -> None:
+    def __init__(self, device: Optional[PIControl] = None) -> None:
         self._abort = Abort(device)
         self._afgcontrol = Afgcontrol(device)
         self._cal = Cal(device)
@@ -853,7 +853,7 @@ class AFG3KMixin:
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIDevice) else None
+        device = self if isinstance(self, PIControl) else None
         self._command_argument_constants = AFG3KCommandConstants()
         self._commands = AFG3KCommands(device)
 
