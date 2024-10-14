@@ -17,7 +17,7 @@ from tm_devices.helpers import DeviceConfigEntry
 
 
 @family_base_class
-class DMM6500(DMM6500Mixin, CommonTSPErrorCheckMethods, DigitalMultimeter):
+class DMM6500(DMM6500Mixin, CommonTSPErrorCheckMethods, DigitalMultimeter):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
     """DMM6500 device driver."""
 
     _IEEE_COMMANDS_CLASS = LegacyTSPIEEE4882Commands

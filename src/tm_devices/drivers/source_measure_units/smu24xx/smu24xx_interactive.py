@@ -23,7 +23,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class SMU24xxInteractive(CommonTSPErrorCheckMethods, SourceMeasureUnit, ABC):
+class SMU24xxInteractive(CommonTSPErrorCheckMethods, SourceMeasureUnit, ABC):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
     """Base SMU24xxInteractive device driver."""
 
     _IEEE_COMMANDS_CLASS = LegacyTSPIEEE4882Commands
@@ -53,7 +53,7 @@ class SMU24xxInteractive(CommonTSPErrorCheckMethods, SourceMeasureUnit, ABC):
         return self._ieee_cmds  # pyright: ignore[reportReturnType]
 
     @cached_property
-    def total_channels(self) -> int:
+    def total_channels(self) -> int:  # pylint: disable=no-self-use
         """Return the total number of channels (all types)."""
         return 1
 

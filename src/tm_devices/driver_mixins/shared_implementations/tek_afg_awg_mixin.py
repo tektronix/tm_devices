@@ -1,6 +1,6 @@
 """A private mixin for common methods and attributes for Tektronix AFG and AWG devices."""
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Tuple, Union
 
 from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin import (
@@ -30,6 +30,11 @@ class TekAFGAWG(PIControl, SignalGeneratorMixin, ExtendableMixin, ABC):
     def opt_string(self) -> str:
         r"""Return the string returned from the ``*OPT?`` query when the device was created."""
         return self.query("*OPT?")
+
+    @cached_property
+    @abstractmethod
+    def total_channels(self) -> int:
+        """Return the total number of channels."""
 
     ################################################################################################
     # Public Methods

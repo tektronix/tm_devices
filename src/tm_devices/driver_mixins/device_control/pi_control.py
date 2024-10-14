@@ -5,7 +5,7 @@ import socket
 import time
 import warnings
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from contextlib import contextmanager
 from typing import final, Generator, List, Optional, Sequence, Tuple, Union
 
@@ -45,11 +45,16 @@ class PIControl(VerificationMethodsMixin, ExtendableMixin, ABC):  # pylint: disa
         attributes required by this class.
     """
 
-    # These attributes are provided by the top-level Device class
+    ################################################################################################
+    # Attributes and properties provided by the top-level Device class
+    ################################################################################################
+    # TODO: nfelt14: Look into moving these into an even higher-level abstract class that this
+    #  and Device can inherit from? There must be a better way to handle this multiple inheritance.
     _config_entry: DeviceConfigEntry
     _enable_verification: bool
     _name_and_alias: str
     _verbose: bool
+    _is_open: bool
 
     # This is a class constant that can be overwritten by children which defines
     # the class to use for the IEEE 488.2 commands.
@@ -73,7 +78,8 @@ class PIControl(VerificationMethodsMixin, ExtendableMixin, ABC):  # pylint: disa
             visa_resource: The VISA resource object.
             default_visa_timeout: The default VISA timeout value in milliseconds.
         """
-        super().__init__(config_entry, verbose)
+        # TODO: nfelt14: Figure out how to get this super call to not raise pyright errors
+        super().__init__(config_entry, verbose)  # pyright: ignore[reportCallIssue]
         self._visa_resource: visa.resources.MessageBasedResource = visa_resource
         self._resource_expression = str(self._visa_resource.resource_info.resource_name)
         self._visa_library_path = self._visa_resource.visalib.library_path.path
@@ -95,6 +101,22 @@ class PIControl(VerificationMethodsMixin, ExtendableMixin, ABC):  # pylint: disa
     ################################################################################################
     # Abstract Methods
     ################################################################################################
+    @abstractmethod
+    def expect_esr(self, esr: Union[int, str], error_string: str = "") -> Tuple[bool, str]:
+        r"""Check for the expected number of errors and output string.
+
+        Args:
+            esr: Expected ``*ESR?`` value
+            error_string: Expected error buffer string.
+                Multiple errors should be separated by a \n character
+
+        Returns:
+            Boolean indicating if the check passed or failed and a string with the results.
+
+        Raises:
+            AssertionError: Indicating that the device's ESR and error buffer string don't match the
+                expected values.
+        """
 
     ################################################################################################
     # Properties

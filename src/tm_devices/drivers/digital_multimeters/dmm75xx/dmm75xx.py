@@ -17,7 +17,7 @@ from tm_devices.helpers import DeviceConfigEntry
 
 
 @family_base_class
-class DMM75xx(CommonTSPErrorCheckMethods, DigitalMultimeter, ABC):
+class DMM75xx(CommonTSPErrorCheckMethods, DigitalMultimeter, ABC):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
     """Base DMM75xx device driver."""
 
     _IEEE_COMMANDS_CLASS = LegacyTSPIEEE4882Commands

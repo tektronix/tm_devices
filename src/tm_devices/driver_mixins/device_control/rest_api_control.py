@@ -15,6 +15,8 @@ from tm_devices.driver_mixins.shared_implementations._verification_methods_mixin
 )
 from tm_devices.helpers import DeviceConfigEntry, print_with_timestamp, SupportedRequestTypes
 
+# noinspection PyPep8Naming
+
 
 class RESTAPIControl(VerificationMethodsMixin, ABC):
     """Base REST Application Programming Interface (API) control class.
@@ -25,7 +27,11 @@ class RESTAPIControl(VerificationMethodsMixin, ABC):
         attributes required by this class.
     """
 
-    # These attributes are provided by the top-level Device class
+    ################################################################################################
+    # Attributes and properties provided by the top-level Device class
+    ################################################################################################
+    # TODO: nfelt14: Look into moving these into an even higher-level abstract class that this
+    #  and Device can inherit from? There must be a better way to handle this multiple inheritance.
     ip_address: str
     _name_and_alias: str
     _verbose: bool
@@ -44,7 +50,8 @@ class RESTAPIControl(VerificationMethodsMixin, ABC):
             config_entry: A config entry object parsed by the DMConfigParser.
             verbose: A boolean indicating if verbose output should be printed.
         """
-        super().__init__(config_entry, verbose)
+        # TODO: nfelt14: Figure out how to get this super call to not raise pyright errors
+        super().__init__(config_entry, verbose)  # pyright: ignore[reportCallIssue]
 
         # The URL to use for REST API requests
         self._base_url = f"https://{self.ip_address}"

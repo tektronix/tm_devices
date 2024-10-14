@@ -18,7 +18,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class MarginTester(Device, RESTAPIControl, ABC):
+class MarginTester(Device, RESTAPIControl, ABC):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
     """Base Margin Tester device driver."""
 
     _DEVICE_TYPE = DeviceTypes.MT.value

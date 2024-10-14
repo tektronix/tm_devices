@@ -232,14 +232,14 @@ class ValidatedChannel(BaseCmd):  # pylint: disable=too-few-public-methods
     channels on the device).
     """
 
-    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["Any"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
 
         # Validate the channel
         channel: Union[str, int]
         valid_channels: Set[Union[str, int]]
-        if device is not None:
-            valid_channel_strings = set(device.all_channel_names_list)
+        if device is not None and hasattr(device, "all_channel_names_list"):
+            valid_channel_strings: Set[str] = set(device.all_channel_names_list)
         else:
             valid_channel_numbers = set(range(1, MAX_CHANNELS + 1))
             valid_channel_strings = {f"CH{x}" for x in valid_channel_numbers}

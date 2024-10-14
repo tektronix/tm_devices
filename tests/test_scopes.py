@@ -355,7 +355,7 @@ def test_exceptions(device_manager: DeviceManager) -> None:
         device_manager: The DeviceManager object.
     """
     # Test that visa errors are caught appropriately
-    scope = device_manager.add_scope("mso22-timeout")
+    scope: MSO2 = device_manager.add_scope("mso22-timeout")
     with pytest.raises(visa.errors.Error):
         scope.turn_channel_on("CH1")
     with pytest.raises(AssertionError):

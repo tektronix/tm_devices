@@ -2,6 +2,7 @@
 """Test the usage of unsupported device types."""
 
 from pathlib import Path
+from typing import Tuple, Union
 
 import pytest
 
@@ -13,14 +14,17 @@ from tm_devices.drivers.device import Device
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class CustomUnsupportedDeviceUnitTestOnly(PIControl, Device):
+class CustomUnsupportedDeviceUnitTestOnly(PIControl, Device):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
     """A custom device that is not one of the officially supported devices for unit tests."""
 
     _DEVICE_TYPE = "CustomDeviceType"
 
     @cached_property
-    def total_channels(self) -> int:  # noqa: D102
+    def total_channels(self) -> int:  # noqa: D102  # pylint: disable=no-self-use
         return 4
+
+    def expect_esr(self, esr: Union[int, str], error_string: str = "") -> Tuple[bool, str]:  # noqa: D102,ARG002
+        return True, ""
 
 
 def test_unsupported_device_type_class(device_manager: DeviceManager) -> None:

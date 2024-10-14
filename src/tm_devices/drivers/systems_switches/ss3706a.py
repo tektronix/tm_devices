@@ -15,7 +15,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class SS3706A(SS3706AMixin, CommonTSPErrorCheckMethods, SystemsSwitch):
+class SS3706A(SS3706AMixin, CommonTSPErrorCheckMethods, SystemsSwitch):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
     """SS3706A device driver."""
 
     ################################################################################################
@@ -43,7 +43,7 @@ class SS3706A(SS3706AMixin, CommonTSPErrorCheckMethods, SystemsSwitch):
     # Properties
     ################################################################################################
     @cached_property
-    def total_channels(self) -> int:
+    def total_channels(self) -> int:  # pylint: disable=no-self-use
         """Return the total number of channels (all types)."""
         return 576
 

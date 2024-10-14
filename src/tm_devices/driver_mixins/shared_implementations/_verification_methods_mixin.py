@@ -16,7 +16,11 @@ class VerificationMethodsMixin(ABC):
         attributes required by this class.
     """
 
-    # These attributes are provided by the top-level Device class
+    ################################################################################################
+    # Attributes and properties provided by the top-level Device class
+    ################################################################################################
+    # TODO: nfelt14: Look into moving these into an even higher-level abstract class that this
+    #  and Device can inherit from? There must be a better way to handle this multiple inheritance.
     _name_and_alias: str
 
     ################################################################################################

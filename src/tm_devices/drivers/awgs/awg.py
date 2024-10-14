@@ -35,7 +35,7 @@ class AWGSourceDeviceConstants(SourceDeviceConstants):
 
 
 # TODO: nfelt14: remove PIControl inheritance if possible
-class AWG(TekAFGAWG, Device, ABC):
+class AWG(TekAFGAWG, Device, ABC):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
     """Base AWG device driver."""
 
     OutputSignalPath = SignalGeneratorOutputPathsNon5200

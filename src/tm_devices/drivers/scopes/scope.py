@@ -12,7 +12,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 # TODO: nfelt14: remove PIControl inheritance if possible
-class Scope(PIControl, Device, ABC):
+class Scope(PIControl, Device, ABC):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
     """Base Scope device driver."""
 
     _DEVICE_TYPE = DeviceTypes.SCOPE.value

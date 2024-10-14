@@ -27,7 +27,7 @@ from tm_devices.helpers.enums import ConnectionTypes, DeviceTypes
 ################################################################################################
 # noinspection PyAbstractClass
 @family_base_class
-class CustomRestApiDevice(RESTAPIControl, Device):
+class CustomRestApiDevice(RESTAPIControl, Device):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
     """Custom Rest API Device class."""
 
     _DEVICE_TYPE = "CUSTOM"

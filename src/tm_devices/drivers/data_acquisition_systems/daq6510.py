@@ -22,7 +22,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class DAQ6510(DAQ6510Mixin, CommonTSPErrorCheckMethods, DataAcquisitionSystem):
+class DAQ6510(DAQ6510Mixin, CommonTSPErrorCheckMethods, DataAcquisitionSystem):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
     """DAQ6510 device driver."""
 
     _IEEE_COMMANDS_CLASS = LegacyTSPIEEE4882Commands
@@ -56,7 +56,7 @@ class DAQ6510(DAQ6510Mixin, CommonTSPErrorCheckMethods, DataAcquisitionSystem):
         return self._ieee_cmds  # pyright: ignore[reportReturnType]
 
     @cached_property
-    def total_channels(self) -> int:
+    def total_channels(self) -> int:  # pylint: disable=no-self-use
         """Return the total number of channels (all types)."""
         return 1
 

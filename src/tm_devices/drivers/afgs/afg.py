@@ -36,7 +36,7 @@ class AFGSourceDeviceConstants(SourceDeviceConstants):
 
 # TODO: nfelt14: remove PIControl inheritance if possible
 @family_base_class
-class AFG(TekAFGAWG, Device, ABC):
+class AFG(TekAFGAWG, Device, ABC):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
     """Base AFG device driver."""
 
     _DEVICE_TYPE = DeviceTypes.AFG.value

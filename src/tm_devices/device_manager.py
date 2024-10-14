@@ -1284,7 +1284,7 @@ class DeviceManager(metaclass=Singleton):
         new_device: Device
         if device_config.connection_type == ConnectionTypes.REST_API:
             device_driver_class = device_drivers[str(device_config.device_driver)]
-            new_device = cast(Device, device_driver_class(device_config, self.__verbose))
+            new_device = device_driver_class(device_config, self.__verbose)
         else:
             # Create VISA connection and determine proper device driver
             try:

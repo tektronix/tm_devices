@@ -1,5 +1,7 @@
 """An example of external device support via a custom driver."""
 
+from typing import Tuple, Union
+
 from tm_devices import DeviceManager, register_additional_usbtmc_mapping
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.drivers import MSO5
@@ -30,11 +32,17 @@ class CustomScope(Scope):
 # a parent class further up the inheritance tree as well as a control mixin class to provide the
 # necessary methods for controlling the device. This custom class must also implement all abstract
 # methods defined by the abstract parent classes.
-class CustomDevice(PIControl, Device):
+class CustomDevice(PIControl, Device):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
     """A custom device that is not one of the officially supported devices."""
 
     # Custom device types not officially supported need to define what type of device they are.
     _DEVICE_TYPE = "CustomDevice"
+
+    # This is an abstract method that must be implemented by the custom device driver.
+    def expect_esr(self, esr: Union[int, str], error_string: str = "") -> Tuple[bool, str]:
+        # The contents of this method would need to be properly implemented,
+        # this is just example code. :)
+        return True, ""
 
     def custom_device_method(self, value: int) -> None:
         """Add a custom method to the custom device driver."""

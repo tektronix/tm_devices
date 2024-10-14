@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 
 
 @family_base_class
-class SMU6xxx(PIControl, SourceMeasureUnit, ABC):
+class SMU6xxx(PIControl, SourceMeasureUnit, ABC):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
     """Base SMU6xxx device driver."""
 
     ################################################################################################
@@ -39,7 +39,7 @@ class SMU6xxx(PIControl, SourceMeasureUnit, ABC):
         return self._ieee_cmds
 
     @cached_property
-    def total_channels(self) -> int:
+    def total_channels(self) -> int:  # pylint: disable=no-self-use
         """Return the total number of channels (all types)."""
         return 1
 
