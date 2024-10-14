@@ -18,6 +18,8 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+- fix: TekScope2K active channel query needs VERBOSE and HEADER options enabled to function properly
+
 ---
 
 ## v2.4.0 (2024-09-19)
