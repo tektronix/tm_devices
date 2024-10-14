@@ -1,4 +1,4 @@
-"""A mixin class that contains common TSP methods for checking the device for errors."""
+"""A mixin class that contains common methods for checking the TSP device for errors."""
 
 from abc import ABC
 from typing import Tuple, Union
@@ -8,7 +8,7 @@ from tm_devices.helpers import print_with_timestamp, raise_failure, verify_value
 
 
 class CommonTSPErrorCheckMethods(TSPControl, ABC):
-    """A mixin class that contains common TSP methods for checking the device for errors.
+    """A mixin class that contains common methods for checking the TSP device for errors.
 
     !!! note
         This class also inherits from the
