@@ -5,7 +5,7 @@ import socket
 import time
 import warnings
 
-from abc import ABC, abstractmethod
+from abc import ABC
 from contextlib import contextmanager
 from typing import final, Generator, List, Optional, Sequence, Tuple, Union
 
@@ -15,6 +15,11 @@ from packaging.version import Version
 from pyvisa import constants as visa_constants
 from pyvisa import VisaIOError
 
+# noinspection PyProtectedMember
+from tm_devices.driver_mixins.shared_implementations._verification_methods_mixin import (
+    VerificationMethodsMixin,
+)
+from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import IEEE4882Commands
 from tm_devices.helpers import (
     check_visa_connection,
@@ -30,16 +35,14 @@ from tm_devices.helpers import (
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
-# noinspection PyProtectedMember
-from tm_devices.driver_mixins.shared_implementations._verification_methods_mixin import VerificationMethodsMixin
 
-
-class PIControl(VerificationMethodsMixin, ABC):  # pylint: disable=too-many-public-methods
+class PIControl(VerificationMethodsMixin, ExtendableMixin, ABC):  # pylint: disable=too-many-public-methods
     """Base Programmable Interface (PI) control class.
 
-    Any class that inherits this control Mixin must also inherit a descendant of the
-    [`Device`][tm_devices.drivers.device.Device] class in order to have access to the
-    attributes required by this class.
+    !!! important
+        Any class that inherits this control Mixin must also inherit a descendant of the
+        [`Device`][tm_devices.drivers.device.Device] class in order to have access to the
+        attributes required by this class.
     """
 
     # These attributes are provided by the top-level Device class
@@ -92,27 +95,6 @@ class PIControl(VerificationMethodsMixin, ABC):  # pylint: disable=too-many-publ
     ################################################################################################
     # Abstract Methods
     ################################################################################################
-    @abstractmethod
-    def expect_esr(self, esr: Union[int, str], error_string: str = "") -> Tuple[bool, str]:
-        r"""Check for the expected number of errors and output string.
-
-        Args:
-            esr: Expected ``*ESR?`` value
-            error_string: Expected error buffer string.
-                Multiple errors should be separated by a \n character
-
-        Returns:
-            Boolean indicating if the check passed or failed and a string with the results.
-        """
-
-    @abstractmethod
-    def get_eventlog_status(self) -> Tuple[bool, str]:
-        """Help function for getting the eventlog status.
-
-        Returns:
-            Boolean indicating no error, String containing concatenated contents of event log.
-        """
-        # TODO: nfelt14: in v3 - This will be deprecated by the has_errors
 
     ################################################################################################
     # Properties

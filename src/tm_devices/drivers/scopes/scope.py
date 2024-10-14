@@ -1,6 +1,6 @@
 """Base Scope device driver module."""
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Tuple, Union
 
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
@@ -20,6 +20,10 @@ class Scope(PIControl, Device, ABC):
     ################################################################################################
     # Abstract Properties
     ################################################################################################
+    @cached_property
+    @abstractmethod
+    def total_channels(self) -> int:
+        """Return the total number of channels (all types)."""
 
     ################################################################################################
     # Abstract Methods
@@ -28,6 +32,11 @@ class Scope(PIControl, Device, ABC):
     ################################################################################################
     # Properties
     ################################################################################################
+    @property
+    def all_channel_names_list(self) -> Tuple[str, ...]:
+        """Return a tuple containing all the channel names."""
+        return tuple(f"CH{x+1}" for x in range(self.total_channels))
+
     @cached_property
     def opt_string(self) -> str:
         r"""Return the string returned from the ``*OPT?`` query when the device was created."""

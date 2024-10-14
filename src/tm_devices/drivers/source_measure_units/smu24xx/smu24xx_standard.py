@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 
 
 @family_base_class
-class SMU24xxStandard(SourceMeasureUnit, PIControl, ABC):
+class SMU24xxStandard(PIControl, SourceMeasureUnit, ABC):
     """Base SMU24xxStandard device driver."""
 
     ################################################################################################

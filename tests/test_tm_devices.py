@@ -40,6 +40,8 @@ def get_all_subclasses(class_object: Type[object]) -> Set[Type[object]]:
     Returns:
         The set of all subclasses for the given class.
     """
+    if not class_object:
+        return set()
     return set(class_object.__subclasses__()).union(
         [s for c in class_object.__subclasses__() for s in get_all_subclasses(c)]
     )
@@ -93,6 +95,8 @@ def test_device_types() -> None:
         raise ValueError(msg)
 
 
+# TODO: nfelt14: Consider breaking this up into smaller tests
+#  and updating to use parametrization to make failures more granular
 def test_device_method_abstraction() -> None:
     """Verify the abstract device inheritance structure is being followed."""
     # dynamically determine all device drivers

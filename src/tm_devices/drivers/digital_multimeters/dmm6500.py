@@ -5,7 +5,9 @@ from typing import Tuple
 import pyvisa as visa
 
 from tm_devices.commands import DMM6500Mixin
-from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
+from tm_devices.driver_mixins.shared_implementations.common_tsp_error_check_methods import (
+    CommonTSPErrorCheckMethods,
+)
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import (
     LegacyTSPIEEE4882Commands,
 )
@@ -15,7 +17,7 @@ from tm_devices.helpers import DeviceConfigEntry
 
 
 @family_base_class
-class DMM6500(DMM6500Mixin, DigitalMultimeter, TSPControl):
+class DMM6500(DMM6500Mixin, CommonTSPErrorCheckMethods, DigitalMultimeter):
     """DMM6500 device driver."""
 
     _IEEE_COMMANDS_CLASS = LegacyTSPIEEE4882Commands

@@ -1,10 +1,9 @@
 """An example of external device support via a custom driver."""
 
-from typing import Tuple, Union
-
 from tm_devices import DeviceManager, register_additional_usbtmc_mapping
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.drivers import MSO5
+from tm_devices.drivers.device import Device
 from tm_devices.drivers.scopes.scope import Scope
 
 # noinspection PyPep8Naming
@@ -28,25 +27,14 @@ class CustomScope(Scope):
 
 
 # Custom devices that do not inherit from a supported device type can be defined by inheriting from
-# a parent class further up the inheritance tree. This custom class must implement all abstract
+# a parent class further up the inheritance tree as well as a control mixin class to provide the
+# necessary methods for controlling the device. This custom class must also implement all abstract
 # methods defined by the abstract parent classes.
-class CustomDevice(PIControl):
+class CustomDevice(PIControl, Device):
     """A custom device that is not one of the officially supported devices."""
 
     # Custom device types not officially supported need to define what type of device they are.
     _DEVICE_TYPE = "CustomDevice"
-
-    # This is an abstract method that must be implemented by the custom device driver.
-    def expect_esr(self, esr: Union[int, str], error_string: str = "") -> Tuple[bool, str]:
-        # The contents of this method would need to be properly implemented,
-        # this is just example code. :)
-        return True, ""
-
-    # This is an abstract method that must be implemented by the custom device driver.
-    def get_eventlog_status(self) -> Tuple[bool, str]:
-        # The contents of this method would need to be properly implemented,
-        # this is just example code. :)
-        return True, ""
 
     def custom_device_method(self, value: int) -> None:
         """Add a custom method to the custom device driver."""
@@ -86,6 +74,6 @@ with DeviceManager(external_device_drivers=CUSTOM_DEVICE_DRIVERS) as device_mana
 
     # Custom device types still inherit methods from their parent classes, though device type
     # specific functionality is not defined by default
-    custom_device.expect_esr(0)  # check for no errors
+    assert not custom_device.has_errors()  # check for no errors
     # Custom devices can also use any custom methods added to the custom class
     custom_device.custom_device_method(10)

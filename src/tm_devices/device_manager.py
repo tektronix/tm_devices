@@ -18,7 +18,6 @@ from typing_extensions import TypeVar
 
 from tm_devices.components import DMConfigParser
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
-from tm_devices.driver_mixins.device_control.rest_api_control import RESTAPIControl
 
 # noinspection PyProtectedMember
 from tm_devices.drivers._device_driver_mapping import (
@@ -136,7 +135,7 @@ class DeviceManager(metaclass=Singleton):
         # Set up the DeviceManager
         self.__is_open = False
         self.__verbose_visa = False
-        self.__devices: Dict[str, Union[PIControl, RESTAPIControl]] = AliasDict()
+        self.__devices: Dict[str, Device] = AliasDict()
         self._external_device_drivers = external_device_drivers
         # initialize for __set_options()
         self.__verbose: bool = NotImplemented
@@ -198,7 +197,7 @@ class DeviceManager(metaclass=Singleton):
         self.__default_visa_timeout = value
 
     @property
-    def devices(self) -> Mapping[str, Union[RESTAPIControl, PIControl]]:
+    def devices(self) -> Mapping[str, Device]:
         """Return the dictionary of devices."""
         return MappingProxyType(self.__devices)
 
@@ -850,7 +849,7 @@ class DeviceManager(metaclass=Singleton):
         device_type: Optional[str] = None,
         device_number: Optional[Union[int, str]] = None,
         alias: Optional[str] = None,
-    ) -> Union[RESTAPIControl, PIControl]:
+    ) -> Device:
         """Get the driver for the given device.
 
         Either `device_type` and `device_number` or `alias` must be provided when using this method.
@@ -1118,7 +1117,7 @@ class DeviceManager(metaclass=Singleton):
         serial_config: Optional[SerialConfig] = None,
         device_driver: Optional[str] = None,
         gpib_board_number: Optional[int] = None,
-    ) -> Union[RESTAPIControl, PIControl]:
+    ) -> Device:
         """Add a device to the DeviceManager.
 
         Args:
@@ -1248,7 +1247,7 @@ class DeviceManager(metaclass=Singleton):
         device_config_name: str,
         device_config: DeviceConfigEntry,
         warning_stacklevel: int,
-    ) -> Union[RESTAPIControl, PIControl]:
+    ) -> Device:
         """Create a new device driver and add it to the device dictionary.
 
         Args:
@@ -1282,10 +1281,10 @@ class DeviceManager(metaclass=Singleton):
                 stacklevel=warning_stacklevel,
             )
         print_with_timestamp(f"Creating Connection to {device_config_name}{alias_string}")
-        new_device: Union[RESTAPIControl, PIControl]
+        new_device: Device
         if device_config.connection_type == ConnectionTypes.REST_API:
             device_driver_class = device_drivers[str(device_config.device_driver)]
-            new_device = cast(RESTAPIControl, device_driver_class(device_config, self.__verbose))
+            new_device = cast(Device, device_driver_class(device_config, self.__verbose))
         else:
             # Create VISA connection and determine proper device driver
             try:
@@ -1369,7 +1368,7 @@ class DeviceManager(metaclass=Singleton):
         visa_resource: MessageBasedResource,
         device_config: DeviceConfigEntry,
         device_drivers: Mapping[str, Type[Device]],
-    ) -> PIControl:
+    ) -> Device:
         """Select the correct VISA device driver based on the ``*IDN?`` response.
 
         Be sure to handle removing the device from the config on a SystemError.
@@ -1404,7 +1403,7 @@ class DeviceManager(metaclass=Singleton):
             message += f" *IDN? returned {idn_response!r}"
             raise SystemError(message) from error
 
-        return new_device
+        return cast(Device, new_device)
 
     def __set_options(self, verbose: bool) -> None:
         """Set the options for the DeviceManager.

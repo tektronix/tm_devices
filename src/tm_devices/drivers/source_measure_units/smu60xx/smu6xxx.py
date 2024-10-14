@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 
 
 @family_base_class
-class SMU6xxx(SourceMeasureUnit, PIControl, ABC):
+class SMU6xxx(PIControl, SourceMeasureUnit, ABC):
     """Base SMU6xxx device driver."""
 
     ################################################################################################

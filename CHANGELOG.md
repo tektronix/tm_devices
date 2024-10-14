@@ -26,7 +26,7 @@ Things to be included in the next release go here.
 
 NOTE: Despite all the officially breaking changes, the actual drivers were only affected in
 very minor ways. The primary impact to the drivers was simply the removal of previously
-deprecated functionality. Almost all changes only impacted the internal workings of `tm_devices`. 
+deprecated functionality. Almost all changes only impacted the internal workings of `tm_devices`.
 However, please read through all changes to be aware of what may potentially impact your code.
 
 - <span style="color:red">BREAKING CHANGE</span>: Moved `SignalGenerator` class to the `driver_mixins` submodule and renamed it to `TekAFGAWG`.

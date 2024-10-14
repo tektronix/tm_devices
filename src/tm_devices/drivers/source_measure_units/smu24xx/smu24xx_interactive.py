@@ -9,7 +9,9 @@ from tm_devices.commands import (
     SMU2461Commands,
     SMU2470Commands,
 )
-from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
+from tm_devices.driver_mixins.shared_implementations.common_tsp_error_check_methods import (
+    CommonTSPErrorCheckMethods,
+)
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import (
     LegacyTSPIEEE4882Commands,
 )
@@ -21,7 +23,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class SMU24xxInteractive(SourceMeasureUnit, TSPControl, ABC):
+class SMU24xxInteractive(CommonTSPErrorCheckMethods, SourceMeasureUnit, ABC):
     """Base SMU24xxInteractive device driver."""
 
     _IEEE_COMMANDS_CLASS = LegacyTSPIEEE4882Commands

@@ -35,7 +35,7 @@ class AWGSourceDeviceConstants(SourceDeviceConstants):
 
 
 # TODO: nfelt14: remove PIControl inheritance if possible
-class AWG(Device, TekAFGAWG, ABC):
+class AWG(TekAFGAWG, Device, ABC):
     """Base AWG device driver."""
 
     OutputSignalPath = SignalGeneratorOutputPathsNon5200

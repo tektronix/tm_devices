@@ -2,35 +2,25 @@
 """Test the usage of unsupported device types."""
 
 from pathlib import Path
-from typing import Tuple, Union
 
 import pytest
 
 from tm_devices import DeviceManager
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.drivers.device import Device
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class CustomUnsupportedDeviceUnitTestOnly(PIControl):
+class CustomUnsupportedDeviceUnitTestOnly(PIControl, Device):
     """A custom device that is not one of the officially supported devices for unit tests."""
 
     _DEVICE_TYPE = "CustomDeviceType"
 
-    @property
-    def all_channel_names_list(self) -> Tuple[str, ...]:  # noqa: D102
-        return tuple(f"CH{x+1}" for x in range(self.total_channels))
-
     @cached_property
     def total_channels(self) -> int:  # noqa: D102
         return 4
-
-    def expect_esr(self, esr: Union[int, str], error_string: str = "") -> Tuple[bool, str]:  # noqa: D102,ARG002
-        return True, ""
-
-    def get_eventlog_status(self) -> Tuple[bool, str]:  # noqa: D102
-        return True, ""
 
 
 def test_unsupported_device_type_class(device_manager: DeviceManager) -> None:

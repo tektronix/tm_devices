@@ -127,10 +127,6 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
     ################################################################################################
     # Properties
     ################################################################################################
-    @property
-    def all_channel_names_list(self) -> Tuple[str, ...]:
-        """Return a tuple containing all the channel names."""
-        return tuple(f"CH{x+1}" for x in range(self.total_channels))
 
     @cached_property
     def channel(self) -> "MappingProxyType[str, TekScopeChannel]":

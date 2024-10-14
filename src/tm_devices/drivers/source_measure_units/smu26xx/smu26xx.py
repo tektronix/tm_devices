@@ -20,7 +20,9 @@ from tm_devices.commands import (
     SMU2651ACommands,
     SMU2657ACommands,
 )
-from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
+from tm_devices.driver_mixins.shared_implementations.common_tsp_error_check_methods import (
+    CommonTSPErrorCheckMethods,
+)
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.source_measure_units.source_measure_unit import SourceMeasureUnit
 
@@ -29,7 +31,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class SMU26xx(TSPControl, SourceMeasureUnit, ABC):
+class SMU26xx(CommonTSPErrorCheckMethods, SourceMeasureUnit, ABC):
     """Base SMU26xx device driver."""
 
     ################################################################################################
@@ -74,22 +76,6 @@ class SMU26xx(TSPControl, SourceMeasureUnit, ABC):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def get_eventlog_status(self) -> Tuple[bool, str]:
-        """Help function for getting the eventlog status.
-
-        Returns:
-            Boolean indicating no error, String containing concatenated contents of event log.
-        """
-        result_allev = False
-        allev_result_str = '0,"No events to report - queue empty"'
-
-        # instrument returns exponential numbers so converting to float before int
-        if not (err_count := int(float(self.query("print(errorqueue.count)")))):
-            result_allev = True
-        else:
-            allev_result_list = [self.query("print(errorqueue.next())") for _ in range(err_count)]
-            allev_result_str = ",".join(allev_result_list)
-        return result_allev, allev_result_str
 
     ################################################################################################
     # Private Methods

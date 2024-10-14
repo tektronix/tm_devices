@@ -33,6 +33,4 @@ def test_ss(device_manager: DeviceManager) -> None:
     ), pytest.raises(visa.errors.Error):
         switch.query_expect_timeout("INVALID?", timeout_ms=1)
     assert switch.expect_esr(32, "Command error,No Error")[0]
-
-    expected_ch_names = tuple(str(x) for x in range(1, switch.total_channels + 1))
-    assert switch.all_channel_names_list == expected_ch_names
+    assert switch.total_channels == 576

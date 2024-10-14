@@ -12,7 +12,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class PSU2200(PowerSupplyUnit, PIControl):
+class PSU2200(PIControl, PowerSupplyUnit):
     """2200 Base device driver for the 22xx family of power supplies."""
 
     ################################################################################################
@@ -22,6 +22,10 @@ class PSU2200(PowerSupplyUnit, PIControl):
     ################################################################################################
     # Properties
     ################################################################################################
+    @cached_property
+    def total_channels(self) -> int:
+        """Return the total number of channels (all types)."""
+        return max(1, int(self.model[2])) if self.model[2].isdecimal() else 1
 
     ################################################################################################
     # Public Methods

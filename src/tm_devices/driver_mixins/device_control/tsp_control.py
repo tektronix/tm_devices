@@ -3,11 +3,10 @@
 from __future__ import annotations
 
 from abc import ABC
-from typing import Any, Dict, List, Optional, Tuple, TYPE_CHECKING, Union
+from typing import Any, Dict, List, Optional, TYPE_CHECKING, Union
 
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import TSPIEEE4882Commands
-from tm_devices.helpers import print_with_timestamp
 
 if TYPE_CHECKING:
     import os
@@ -16,9 +15,10 @@ if TYPE_CHECKING:
 class TSPControl(PIControl, ABC):
     """Base Test Script Processing (TSP) control class.
 
-    Any class that inherits this control Mixin must also inherit a descendant of the
-    [`Device`][tm_devices.drivers.device.Device] class in order to have access to the
-    attributes required by this class.
+    !!! important
+        Any class that inherits this control Mixin must also inherit a descendant of the
+        [`Device`][tm_devices.drivers.device.Device] class in order to have access to the
+        attributes required by this class.
     """
 
     _IEEE_COMMANDS_CLASS = TSPIEEE4882Commands
@@ -38,53 +38,6 @@ class TSPControl(PIControl, ABC):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def expect_esr(self, esr: Union[int, str], error_string: str = "") -> Tuple[bool, str]:
-        r"""Check for the expected number of errors and output string.
-
-        Sends the equivalent of ``*ESR?`` and system error queries.
-
-        Args:
-            esr: Expected ``*ESR?`` value.
-            error_string: Expected error buffer string.
-                Multiple errors should be separated by a \n character.
-
-        Returns:
-            Boolean indicating if the check passed or failed and a string with the results.
-        """
-        failure_message = ""
-        if not int(esr):
-            error_string = '0,"No events to report - queue empty"'
-
-        # Verify that an allev reply is specified
-        if not error_string:
-            raise AssertionError("No error string was provided.")  # noqa: TRY003,EM101
-
-        result = True
-        esr_result_str = self.query("print(status.standard.event)")
-        try:
-            self.verify_values(esr, esr_result_str)
-        except AssertionError as exc:
-            result &= False
-            print(exc)  # the exception already contains the timestamp
-        _, allev_result_str = self.get_eventlog_status()
-
-        if allev_result_str != error_string:
-            result &= False
-            print_with_timestamp(
-                f"FAILURE: ({self._name_and_alias}) : Incorrect eventlog status returned:\n"
-                f"  exp: {error_string!r}\n  act: {allev_result_str!r}"
-            )
-
-        if not result:
-            failure_message = (
-                f"expect_esr failed: "
-                f"print(status.standard.event) {esr_result_str!r} != {esr!r}, "
-                f"eventlog {allev_result_str!r} != {error_string!r}"
-            )
-            self.raise_failure(failure_message)
-
-        return result, failure_message
-
     def export_buffers(self, filepath: str, *args: str, sep: str = ",") -> None:
         """Export one or more of the device's buffers to the given filepath.
 

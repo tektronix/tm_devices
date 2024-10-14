@@ -137,7 +137,7 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
     local_count = gen_count()
 
     golden_stub_dir = Path(__file__).parent / "samples" / "golden_stubs"
-    stub_device_filepath = Path("driver_mixins/device_control/device.pyi")
+    stub_device_filepath = Path("drivers/device.pyi")
     stub_pi_control_filepath = Path("driver_mixins/device_control/pi_control.pyi")
     stub_tsp_control_filepath = Path("driver_mixins/device_control/tsp_control.pyi")
     generated_stub_dir = (

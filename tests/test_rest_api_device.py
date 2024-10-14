@@ -14,7 +14,7 @@ from tm_devices.driver_mixins.device_control.rest_api_control import (
     RESTAPIControl,
     SupportedRequestTypes,
 )
-from tm_devices.drivers.device import family_base_class
+from tm_devices.drivers.device import Device, family_base_class
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
@@ -27,7 +27,7 @@ from tm_devices.helpers.enums import ConnectionTypes, DeviceTypes
 ################################################################################################
 # noinspection PyAbstractClass
 @family_base_class
-class CustomRestApiDevice(RESTAPIControl):
+class CustomRestApiDevice(RESTAPIControl, Device):
     """Custom Rest API Device class."""
 
     _DEVICE_TYPE = "CUSTOM"

@@ -19,9 +19,10 @@ from tm_devices.helpers import DeviceConfigEntry, print_with_timestamp, Supporte
 class RESTAPIControl(VerificationMethodsMixin, ABC):
     """Base REST Application Programming Interface (API) control class.
 
-    Any class that inherits this control Mixin must also inherit a descendant of the
-    [`Device`][tm_devices.drivers.device.Device] class in order to have access to the
-    attributes required by this class.
+    !!! important
+        Any class that inherits this control Mixin must also inherit a descendant of the
+        [`Device`][tm_devices.drivers.device.Device] class in order to have access to the
+        attributes required by this class.
     """
 
     # These attributes are provided by the top-level Device class

@@ -1,6 +1,6 @@
 """A class that provides common methods for verifying values."""
 
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import final, Tuple, Union
 
 from tm_devices.helpers import get_timestamp_string
@@ -8,15 +8,16 @@ from tm_devices.helpers import get_timestamp_string
 
 # TODO: nfelt14: convert this entire class to a set of helper functions
 class VerificationMethodsMixin(ABC):
-    """A mixin class providing common methods for verifying values."""
+    """A mixin class providing common methods for verifying values.
 
-    ################################################################################################
-    # Abstract Properties
-    ################################################################################################
-    @property
-    @abstractmethod
-    def _name_and_alias(self) -> str:
-        """Return the name and alias of the device."""
+    !!! important
+        Any class that inherits this Mixin must also inherit a descendant of the
+        [`Device`][tm_devices.drivers.device.Device] class in order to have access to the
+        attributes required by this class.
+    """
+
+    # These attributes are provided by the top-level Device class
+    _name_and_alias: str
 
     ################################################################################################
     # Public Methods
