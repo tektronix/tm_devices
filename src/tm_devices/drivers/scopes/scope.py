@@ -6,8 +6,6 @@ from typing import Tuple, Union
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.drivers.device import Device
 from tm_devices.helpers import DeviceTypes, raise_failure, verify_values
-
-# noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 

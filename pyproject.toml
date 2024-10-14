@@ -170,6 +170,11 @@ good-names = ["_"]
 [tool.pylint.design]
 max-args = 7
 
+[tool.pylint.dunder]
+good-dunder-names = [
+  "__isabstractmethod__"
+]
+
 [tool.pylint.main]
 fail-under = 10.0
 ignore-patterns = [

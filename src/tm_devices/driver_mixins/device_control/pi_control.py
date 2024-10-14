@@ -30,8 +30,6 @@ from tm_devices.helpers import (
     raise_failure,
     verify_values,
 )
-
-# noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 

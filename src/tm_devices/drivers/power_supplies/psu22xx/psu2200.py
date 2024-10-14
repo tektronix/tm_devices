@@ -9,8 +9,6 @@ from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import Te
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.power_supplies.power_supply import PowerSupplyUnit
 from tm_devices.helpers import get_version
-
-# noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 

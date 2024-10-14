@@ -49,8 +49,6 @@ from tm_devices.driver_mixins.abstract_device_functionality.usb_drives_mixin imp
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.scopes.scope import Scope
 from tm_devices.helpers import DeviceConfigEntry, LoadImpedanceAFG, raise_error
-
-# noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 from tm_devices.helpers.enums import (
     SignalGeneratorFunctionsIAFG,

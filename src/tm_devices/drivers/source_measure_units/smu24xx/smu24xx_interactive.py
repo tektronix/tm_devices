@@ -17,8 +17,6 @@ from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import (
 )
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.source_measure_units.source_measure_unit import SourceMeasureUnit
-
-# noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 

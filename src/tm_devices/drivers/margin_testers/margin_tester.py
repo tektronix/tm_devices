@@ -12,8 +12,6 @@ from requests.structures import CaseInsensitiveDict
 from tm_devices.driver_mixins.device_control.rest_api_control import RESTAPIControl
 from tm_devices.drivers.device import Device, family_base_class
 from tm_devices.helpers import DeviceConfigEntry, DeviceTypes
-
-# noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 

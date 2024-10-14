@@ -17,8 +17,6 @@ from tm_devices.driver_mixins.shared_implementations.class_extension_mixin impor
 from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TekAFGAWG
 from tm_devices.drivers.device import Device, family_base_class
 from tm_devices.helpers import DeviceTypes, LoadImpedanceAFG
-
-# noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 from tm_devices.helpers.enums import (
     SignalGeneratorFunctionsAWG,

@@ -9,8 +9,6 @@ from tm_devices.driver_mixins.shared_implementations.common_tsp_error_check_meth
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.systems_switches.systems_switch import SystemsSwitch
 from tm_devices.helpers import DeviceConfigEntry
-
-# noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 

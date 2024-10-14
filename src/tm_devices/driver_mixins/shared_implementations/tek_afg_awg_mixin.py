@@ -9,8 +9,6 @@ from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mix
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
 from tm_devices.helpers import print_with_timestamp, raise_failure, verify_values
-
-# noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 

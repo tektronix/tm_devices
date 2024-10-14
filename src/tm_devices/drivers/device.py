@@ -26,8 +26,6 @@ from tm_devices.helpers import (
     DeviceConfigEntry,
     print_with_timestamp,
 )
-
-# noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 _T = TypeVar("_T")

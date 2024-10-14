@@ -5,6 +5,7 @@ import pyvisa as visa
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.scopes.scope import Scope
 from tm_devices.helpers import DeviceConfigEntry
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 @family_base_class
@@ -31,6 +32,14 @@ class TSOVu(Scope):
         """
         super().__init__(config_entry, verbose, visa_resource, default_visa_timeout)
         self.write("HEADER OFF", verbose=False)
+
+    ################################################################################################
+    # Properties
+    ################################################################################################
+    @cached_property
+    def total_channels(self) -> int:
+        """Return the total number of channels."""
+        return 0
 
     ################################################################################################
     # Private Methods

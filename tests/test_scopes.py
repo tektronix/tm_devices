@@ -15,7 +15,7 @@ import pyvisa as visa
 from packaging.version import Version
 
 from tm_devices import DeviceManager, register_additional_usbtmc_mapping
-from tm_devices.drivers import MSO2, MSO2KB, MSO5, MSO5B, MSO6, MSO70KDX, TekScopePC
+from tm_devices.drivers import MSO2, MSO2KB, MSO5, MSO5B, MSO6, MSO70KDX, TekScopePC, TSOVu
 from tm_devices.drivers.scopes.tekscope.tekscope import (
     AbstractTekScope,
     ExtendedSourceDeviceConstants,
@@ -530,3 +530,10 @@ def test_tekscope2k(device_manager: DeviceManager, tmp_path: pathlib.Path) -> No
         assert scope.curve_query(5, wfm_type="TimeDomain") == []
 
     assert scope.curve_query(0, wfm_type="Digital") == [1, 0, 1, 0, 1]
+
+
+def test_tsovu(device_manager: DeviceManager) -> None:
+    """Test the TSOVu device driver."""
+    scope: TSOVu = device_manager.add_scope("TSOVU-HOSTNAME")
+    assert scope.hostname == "TSOVU-HOSTNAME"
+    assert scope.total_channels == 0  # pylint: disable=use-implicit-booleaness-not-comparison-to-zero
