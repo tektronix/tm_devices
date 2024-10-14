@@ -17,6 +17,9 @@ class CustomUnsupportedDeviceUnitTestOnly(PIControl, Device):
 
     _DEVICE_TYPE = "CustomDeviceType"
 
+    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+        return 0, ()
+
     @cached_property
     def total_channels(self) -> int:  # noqa: D102  # pylint: disable=no-self-use
         return 4

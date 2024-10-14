@@ -288,7 +288,7 @@ def test_smu2401(device_manager: DeviceManager) -> None:
         device_manager: The DeviceManager object.
     """
     smu: SMU2401 = device_manager.add_smu("SMU2401-HOSTNAME")
-    assert smu.get_eventlog_status() == (True, '0,"No error"')
+    assert smu.get_errors() == (0, ('0,"No error"',))
     assert smu.set_and_check("OUTPUT1:STATE", 1) == "1"
     assert smu.all_channel_names_list == ("OUTPUT1",)
 
@@ -300,6 +300,6 @@ def test_smu6430(device_manager: DeviceManager) -> None:
         device_manager: The DeviceManager object.
     """
     smu: SMU6430 = device_manager.add_smu("SMU6430-HOSTNAME")
-    assert smu.get_eventlog_status() == (True, '0,"No error"')
+    assert smu.get_errors() == (0, ('0,"No error"',))
     assert smu.set_and_check("OUTPUT1:STATE", 1) == "1"
     assert smu.all_channel_names_list == ("SOURCE1",)

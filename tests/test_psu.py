@@ -28,4 +28,4 @@ def test_psu(device_manager: DeviceManager) -> None:
     assert psu.total_channels == 3
 
     assert psu.expect_esr(0)[0]
-    assert psu.get_eventlog_status() == (True, '0,"No error"')
+    assert psu.get_errors() == (0, ('0,"No error"',))

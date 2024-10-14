@@ -19,7 +19,7 @@ import pytest
 from tm_devices import DeviceManager
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
-from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TekAFGAWG
+from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TektronixAFGAWGMixin
 from tm_devices.drivers import AFG3K, AFG3KC
 from tm_devices.drivers.afgs.afg import AFG
 from tm_devices.drivers.device import Device
@@ -95,7 +95,7 @@ def _remove_added_methods() -> Iterator[None]:
         (Device, "already_exists"),
         (Scope, "custom_model_getter_scope"),
         (Scope, "custom_return"),
-        (TekAFGAWG, "custom_model_getter_sg"),
+        (TektronixAFGAWGMixin, "custom_model_getter_sg"),
         (AFG, "custom_model_getter_afg"),
         (AFG3K, "custom_model_getter_afg3k"),
         (AFG3KC, "custom_model_getter_afg3kc"),
@@ -220,8 +220,8 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
         """Return the model."""
         return f"Scope {device.model} {value}"
 
-    @TekAFGAWG.add_method
-    def custom_model_getter_sg(device: TekAFGAWG, value: str) -> str:
+    @TektronixAFGAWGMixin.add_method
+    def custom_model_getter_sg(device: TektronixAFGAWGMixin, value: str) -> str:
         """Return the model."""
         return f"TekAFGAWG {device.model} {value}"
 

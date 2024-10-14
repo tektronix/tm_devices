@@ -15,7 +15,9 @@ from packaging.version import Version
 from pyvisa import constants as visa_constants
 from pyvisa import VisaIOError
 
-from tm_devices.driver_mixins.device_control._abstract_device_control import AbstractDeviceControl
+from tm_devices.driver_mixins.device_control._abstract_device_control import (
+    _AbstractDeviceControl,  # pyright: ignore[reportPrivateUsage]
+)
 from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import IEEE4882Commands
 from tm_devices.helpers import (
@@ -33,7 +35,7 @@ from tm_devices.helpers import (
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class PIControl(AbstractDeviceControl, ExtendableMixin, ABC):  # pylint: disable=too-many-public-methods
+class PIControl(_AbstractDeviceControl, ExtendableMixin, ABC):  # pylint: disable=too-many-public-methods
     """Base Programmable Interface (PI) control class.
 
     !!! important
@@ -86,6 +88,8 @@ class PIControl(AbstractDeviceControl, ExtendableMixin, ABC):  # pylint: disable
     ################################################################################################
     # Abstract Methods
     ################################################################################################
+    # TODO: nfelt14: Determine if this really needs to be an abstract method here. If not,
+    #  remove it from the example code too.
     @abstractmethod
     def expect_esr(self, esr: Union[int, str], error_string: str = "") -> Tuple[bool, str]:
         r"""Check for the expected number of errors and output string.
@@ -927,14 +931,6 @@ class PIControl(AbstractDeviceControl, ExtendableMixin, ABC):  # pylint: disable
             )
         self._visa_resource = None  # pyright: ignore[reportAttributeAccessIssue]
         self._is_open = False
-
-    def _has_errors(self) -> bool:
-        """Check if the device has any errors.
-
-        Returns:
-            A boolean indicating if any errors were found in the device.
-        """
-        return not self.expect_esr(0)[0]
 
     def _open(self) -> bool:
         """Open necessary resources and components and return a boolean indicating success."""

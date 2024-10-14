@@ -7,14 +7,15 @@ from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mix
     SignalGeneratorMixin,
 )
 from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
-from tm_devices.driver_mixins.shared_implementations.common_pi_system_error_check_methods import (
-    CommonPISystemErrorCheckMethods,
+from tm_devices.driver_mixins.shared_implementations.common_pi_system_error_check_mixin import (
+    CommonPISystemErrorCheckMixin,
 )
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-# TODO: nfelt14: remove PIControl inheritance if possible, maybe even remove this class entirely?
-class TekAFGAWG(CommonPISystemErrorCheckMethods, SignalGeneratorMixin, ExtendableMixin, ABC):
+class TektronixAFGAWGMixin(
+    CommonPISystemErrorCheckMixin, SignalGeneratorMixin, ExtendableMixin, ABC
+):
     """A private mixin for common methods and attributes for Tektronix AFG and AWG devices."""
 
     ################################################################################################

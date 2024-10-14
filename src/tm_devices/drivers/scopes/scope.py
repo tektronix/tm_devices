@@ -43,7 +43,6 @@ class Scope(PIControl, Device, ABC):
     ################################################################################################
     # Public Methods
     ################################################################################################
-
     def expect_esr(self, esr: Union[int, str], error_string: str = "") -> Tuple[bool, str]:
         r"""Check for the expected number of errors and output string.
 
@@ -88,14 +87,23 @@ class Scope(PIControl, Device, ABC):
 
         return result, failure_message
 
-    def get_eventlog_status(self) -> Tuple[bool, str]:
-        """Help function for getting the eventlog status.
+    ################################################################################################
+    # Private Methods
+    ################################################################################################
+    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+        """Get the current errors from the device.
+
+        !!! note
+            This method will clear out the error queue after reading the current errors.
 
         Returns:
-            Boolean indicating no error, String containing concatenated contents of event log.
+            A tuple containing the current error code alongside a tuple of the current error
+            messages.
         """
-        result = not int(self.query("*ESR?").strip())
-
-        returned_errors = self.query(":ALLev?")
+        result = int(self.query("*ESR?").strip())
+        allev_list = [
+            x + ('"' if not x.endswith('"') else "") for x in self.query(":ALLev?").split('",')
+        ]
+        returned_errors = tuple(filter(None, allev_list))
 
         return result, returned_errors

@@ -127,14 +127,18 @@ class MarginTester(Device, RESTAPIControl, ABC):
         headers["Authorization"] = f"Bearer {token}"
         return headers
 
-    def _has_errors(self) -> bool:
-        """Check if the device has any errors.
+    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+        """Get the current errors from the device.
+
+        !!! note
+            This method will clear out the error queue after reading the current errors.
 
         Returns:
-            A boolean indicating if any errors were found in the device.
+            A tuple containing the current error code alongside a tuple of the current error
+            messages.
         """
         # TODO: implement
-        return False
+        return 0, ()
 
     def _open(self) -> bool:
         """Open necessary resources and components."""

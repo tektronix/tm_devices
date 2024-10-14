@@ -21,7 +21,7 @@ def test_ss(device_manager: DeviceManager) -> None:
     switch: SS3706A = device_manager.add_ss("ss3706a-hostname", alias="ss-device")
     assert id(device_manager.get_ss(number_or_alias="ss-device")) == id(switch)
     assert id(device_manager.get_ss(number_or_alias=switch.device_number)) == id(switch)
-    assert switch.get_eventlog_status() == (True, '0,"No events to report - queue empty"')
+    assert switch.get_errors() == (0, ())
 
     switch.expect_esr(0)
 

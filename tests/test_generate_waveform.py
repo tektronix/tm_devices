@@ -45,7 +45,7 @@ def test_awg5200_gen_waveform(
     assert source1_waveform_file == '"*DC"'
 
     assert awg520050.expect_esr(0)[0]
-    assert awg520050.get_eventlog_status() == (True, '0,"No error"')
+    assert awg520050.get_errors() == (0, ('0,"No error"',))
 
     # Frequency is too high to produce CLOCK function on this AWG.
     with pytest.raises(
@@ -115,7 +115,7 @@ def test_awg70k_gen_waveform(
     assert int(output1_state) == 1
 
     assert awg70ka150.expect_esr(0)[0]
-    assert awg70ka150.get_eventlog_status() == (True, '0,"No error"')
+    assert awg70ka150.get_errors() == (0, ('0,"No error"',))
     assert "MMEMORY:OPEN:SASSET" not in stdout
 
     # call generate_function with only *DC in the waveform list.
@@ -165,7 +165,7 @@ def test_awg7k_gen_waveform(device_manager: DeviceManager) -> None:
     assert int(output1_state) == 1
 
     assert awg7k06.expect_esr(0)[0]
-    assert awg7k06.get_eventlog_status() == (True, '0,"No error"')
+    assert awg7k06.get_errors() == (0, ('0,"No error"',))
 
     # AWG7k with option 1 should set offset.
     awg7k01.generate_function(
@@ -201,7 +201,7 @@ def test_awg7k_gen_waveform(device_manager: DeviceManager) -> None:
         )
 
     assert awg7k01.expect_esr(0)[0]
-    assert awg7k01.get_eventlog_status() == (True, '0,"No error"')
+    assert awg7k01.get_errors() == (0, ('0,"No error"',))
 
     # Clock
     awg7k01.generate_function(
@@ -359,7 +359,7 @@ def test_afg3k_gen_waveform(  # pylint: disable=too-many-locals
     assert float(pulse_dcycle) == 50
 
     assert afg3kc.expect_esr(0)[0]
-    assert afg3kc.get_eventlog_status() == (True, '0,"No error"')
+    assert afg3kc.get_errors() == (0, ('0,"No error"',))
 
 
 def test_internal_afg_gen_waveform(
@@ -385,8 +385,8 @@ def test_internal_afg_gen_waveform(
     offset = scope.query("AFG:OFFSET?")
     assert not float(offset)
     assert "AFG:RAMP:SYMMETRY" not in stdout
-    function = scope.query("AFG:FUNCTION?")
-    assert function == "SINE"
+    function_name = scope.query("AFG:FUNCTION?")
+    assert function_name == "SINE"
     impedance = scope.query("AFG:OUTPUT:LOAD:IMPEDANCE?")
     assert impedance == "FIFTY"
     amplitude = scope.query("AFG:AMPLITUDE?")
@@ -420,7 +420,7 @@ def test_internal_afg_gen_waveform(
     assert float(ramp_symmetry) == 50
     assert "AFG:BURST:TRIGGER" in stdout
     assert scope.expect_esr(0)[0]
-    assert scope.get_eventlog_status() == (True, '0,"No events to report - queue empty"')
+    assert scope.get_errors() == (0, ('0,"No events to report - queue empty"',))
 
     with pytest.raises(
         TypeError,

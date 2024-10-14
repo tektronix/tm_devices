@@ -2,6 +2,7 @@
 """Unit tests for rest_api_control.py."""
 
 from types import MappingProxyType
+from typing import Tuple
 from unittest import mock
 
 import pytest
@@ -40,9 +41,9 @@ class CustomRestApiDevice(RESTAPIControl, Device):
     def _cleanup(self) -> None:
         """Define abstract method _cleanup."""
 
-    def _has_errors(self) -> bool:
-        """Define abstract method _has_errors."""
-        return False
+    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+        """Define abstract method _get_errors."""
+        return 0, ()
 
     def _open(self) -> bool:
         """Define abstract method _open."""

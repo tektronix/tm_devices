@@ -21,6 +21,7 @@ Things to be included in the next release go here.
 ### Added
 
 - Testing/linting on Python 3.13.
+- Added the `get_errors()` method to the `Device` class to enable easy access to the current error code and messages on any device.
 
 ### Changed
 
@@ -34,6 +35,8 @@ However, please read through all changes to be aware of what may potentially imp
     - Due to this change, it is recommended that the specific device driver (or at least the family base class) for the device being controlled is used for type hinting.
 - <span style="color:red">BREAKING CHANGE</span>: Moved all device type subpackages (AWGs, AFGs, Scopes, SMUs, etc.) up to the top level of the `drivers` subpackage.
 - <span style="color:red">BREAKING CHANGE</span>: Converted all family base classes to inherit from the device control mixins.
+- <span style="color:red">BREAKING CHANGE</span>: Renamed the `get_eventlog_status()` method to `_get_errors()` and made it a required, abstract method for all devices to implement.
+    - To get similar functionality to the previous `get_eventlog_status()` method, switch to using the new `get_errors()` method.
 
 ### Removed
 

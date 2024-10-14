@@ -1,13 +1,13 @@
 """A mixin class that contains common methods for checking the PI device for SYSTEM:ERROR."""
 
 from abc import ABC
-from typing import Tuple, Union
+from typing import List, Tuple, Union
 
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.helpers import print_with_timestamp, raise_failure, verify_values
 
 
-class CommonPISystemErrorCheckMethods(PIControl, ABC):
+class CommonPISystemErrorCheckMixin(PIControl, ABC):
     """A mixin class that contains common methods for checking the PI device for SYSTEM:ERROR.
 
     !!! note
@@ -76,19 +76,23 @@ class CommonPISystemErrorCheckMethods(PIControl, ABC):
 
         return result, failure_message
 
-    def get_eventlog_status(self) -> Tuple[bool, str]:
-        """Help function for getting the eventlog status.
+    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+        """Get the current errors from the device.
+
+        !!! note
+            This method will clear out the error queue after reading the current errors.
 
         Returns:
-            Boolean indicating no error, String containing concatenated contents of event log.
+            A tuple containing the current error code alongside a tuple of the current error
+            messages.
         """
-        result = not int(self.query("*ESR?").strip())
+        result = int(self.query("*ESR?").strip())
 
         # return the errors if any
-        returned_errors = ""
+        returned_errors: List[str] = []
         error = ""
         while error != '0,"No error"':
-            error = str(self.query("SYSTEM:ERROR?"))
-            returned_errors += error
+            error = self.query("SYSTEM:ERROR?")
+            returned_errors.append(error)
 
-        return result, returned_errors.rstrip()
+        return result, tuple(returned_errors)

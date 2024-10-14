@@ -15,7 +15,7 @@ from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mix
     ParameterBounds,
     SourceDeviceConstants,
 )
-from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TekAFGAWG
+from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TektronixAFGAWGMixin
 from tm_devices.drivers.device import Device, family_base_class
 from tm_devices.helpers import DeviceTypes, LoadImpedanceAFG
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
@@ -34,7 +34,7 @@ class AFGSourceDeviceConstants(SourceDeviceConstants):
 
 # TODO: nfelt14: remove PIControl inheritance if possible
 @family_base_class
-class AFG(TekAFGAWG, Device, ABC):
+class AFG(TektronixAFGAWGMixin, Device, ABC):
     """Base AFG device driver."""
 
     _DEVICE_TYPE = DeviceTypes.AFG.value

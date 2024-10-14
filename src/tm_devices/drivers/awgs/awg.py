@@ -14,7 +14,7 @@ from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mix
     SourceDeviceConstants,
 )
 from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
-from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TekAFGAWG
+from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TektronixAFGAWGMixin
 from tm_devices.drivers.device import Device, family_base_class
 from tm_devices.helpers import DeviceTypes, LoadImpedanceAFG
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
@@ -33,7 +33,7 @@ class AWGSourceDeviceConstants(SourceDeviceConstants):
 
 
 # TODO: nfelt14: remove PIControl inheritance if possible
-class AWG(TekAFGAWG, Device, ABC):
+class AWG(TektronixAFGAWGMixin, Device, ABC):
     """Base AWG device driver."""
 
     OutputSignalPath = SignalGeneratorOutputPathsNon5200

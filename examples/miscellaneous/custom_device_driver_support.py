@@ -37,6 +37,12 @@ class CustomDevice(PIControl, Device):
     _DEVICE_TYPE = "CustomDevice"
 
     # This is an abstract method that must be implemented by the custom device driver.
+    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+        # The contents of this method would need to be properly implemented,
+        # this is just example code. :)
+        return 0, ()
+
+    # This is an abstract method that must be implemented by the custom device driver.
     def expect_esr(self, esr: Union[int, str], error_string: str = "") -> Tuple[bool, str]:
         # The contents of this method would need to be properly implemented,
         # this is just example code. :)

@@ -17,7 +17,9 @@ from typing import (
 
 from packaging.version import Version
 
-from tm_devices.driver_mixins.device_control._abstract_device_control import AbstractDeviceControl
+from tm_devices.driver_mixins.device_control._abstract_device_control import (
+    _AbstractDeviceControl,  # pyright: ignore[reportPrivateUsage]
+)
 from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
 from tm_devices.helpers import (
     check_network_connection,
@@ -43,7 +45,7 @@ def family_base_class(cls: _T) -> _T:
 
 
 # pylint: disable=too-many-instance-attributes,too-many-public-methods
-class Device(AbstractDeviceControl, ExtendableMixin, ABC):
+class Device(_AbstractDeviceControl, ExtendableMixin, ABC):
     """Base device driver that all devices inherit from."""
 
     _DEVICE_TYPE: str  # should be implemented by device type base classes
@@ -133,11 +135,15 @@ class Device(AbstractDeviceControl, ExtendableMixin, ABC):
         """Perform the actual closing code."""
 
     @abstractmethod
-    def _has_errors(self) -> bool:
-        """Check if the device has any errors.
+    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+        """Get the current errors from the device.
+
+        !!! note
+            This method will clear out the error queue after reading the current errors.
 
         Returns:
-            A boolean indicating if any errors were found in the device.
+            A tuple containing the current error code alongside a tuple of the current error
+            messages.
         """
 
     @abstractmethod
@@ -422,18 +428,30 @@ class Device(AbstractDeviceControl, ExtendableMixin, ABC):
         self._close()
 
     @final
+    def get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+        """Get the current errors from the device.
+
+        !!! note
+            This method will clear out the error queue after reading the current errors.
+
+        Returns:
+            A tuple containing the current error code alongside a tuple of the current error
+            messages.
+        """
+        return self._get_errors()
+
+    @final
     def has_errors(self) -> bool:
         """Check if the device has any errors.
 
-        !!! warning
-            In v3 this method will return a tuple containing a bool and a list of instances of
-            device error info dataclasses (this will replace `get_eventlog_status()`).
+        !!! note
+            This method will clear out the error queue after reading the current errors.
 
         Returns:
-            A boolean indicating if any errors were found in the device.
+            A boolean indicating if any errors were found in the device. True means there were
+            errors, False means no errors were found.
         """
-        # TODO: nfelt14: update this with new behavior
-        return self._has_errors()
+        return bool(self.get_errors()[0])
 
     @final
     def reboot(self, quiet_period: int = 0) -> bool:

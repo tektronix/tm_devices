@@ -5,8 +5,8 @@ from __future__ import annotations
 from abc import ABC
 from typing import Tuple, TYPE_CHECKING
 
-from tm_devices.driver_mixins.shared_implementations.common_pi_system_error_check_methods import (
-    CommonPISystemErrorCheckMethods,
+from tm_devices.driver_mixins.shared_implementations.common_pi_system_error_check_mixin import (
+    CommonPISystemErrorCheckMixin,
 )
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.source_measure_units.source_measure_unit import SourceMeasureUnit
@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 
 
 @family_base_class
-class SMU24xxStandard(CommonPISystemErrorCheckMethods, SourceMeasureUnit, ABC):
+class SMU24xxStandard(CommonPISystemErrorCheckMixin, SourceMeasureUnit, ABC):
     """Base SMU24xxStandard device driver."""
 
     ################################################################################################

@@ -218,7 +218,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
 
     # Assert no errors after completing testing
     scope.expect_esr(0, '0,"No events to report - queue empty"')
-    assert scope.get_eventlog_status() == (True, '0,"No events to report - queue empty"')
+    assert scope.get_errors() == (0, ('0,"No events to report - queue empty"',))
 
     # MSO2 overridden channel names implementation
     mso2_scope: MSO2 = device_manager.add_scope("MSO22-HOSTNAME", connection_type="TCPIP")
@@ -491,7 +491,7 @@ def test_tekscopepc(device_manager: DeviceManager) -> None:
 
 
 def test_tekscope2k(device_manager: DeviceManager, tmp_path: pathlib.Path) -> None:
-    """Test the tekscope2k implementation.
+    """Test the TekScope2k implementation.
 
     Args:
         device_manager: The DeviceManager object.

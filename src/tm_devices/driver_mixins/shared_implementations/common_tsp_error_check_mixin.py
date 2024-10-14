@@ -7,7 +7,7 @@ from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.helpers import print_with_timestamp, raise_failure, verify_values
 
 
-class CommonTSPErrorCheckMethods(TSPControl, ABC):
+class CommonTSPErrorCheckMixin(TSPControl, ABC):
     """A mixin class that contains common methods for checking the TSP device for errors.
 
     !!! note
@@ -34,10 +34,11 @@ class CommonTSPErrorCheckMethods(TSPControl, ABC):
         """
         failure_message = ""
         if not int(esr):
-            error_string = '0,"No events to report - queue empty"'
+            # TODO: nfelt14: Update this default error string
+            error_string = ""
 
-        # Verify that an allev reply is specified
-        if not error_string:
+        # Verify that an allev reply is specified when expecting an error
+        if int(esr) and not error_string:
             raise AssertionError("No error string was provided.")  # noqa: TRY003,EM101
 
         result = True
@@ -47,9 +48,8 @@ class CommonTSPErrorCheckMethods(TSPControl, ABC):
         except AssertionError as exc:
             result &= False
             print(exc)  # the exception already contains the timestamp
-        _, allev_result_str = self.get_eventlog_status()
-
-        if allev_result_str != error_string:
+        _, allev_result_tuple = self._get_errors()
+        if (allev_result_str := ",".join(allev_result_tuple)) != error_string:
             result &= False
             print_with_timestamp(
                 f"FAILURE: ({self._name_and_alias}) : Incorrect eventlog status returned:\n"
@@ -66,19 +66,19 @@ class CommonTSPErrorCheckMethods(TSPControl, ABC):
 
         return result, failure_message
 
-    def get_eventlog_status(self) -> Tuple[bool, str]:
-        """Help function for getting the eventlog status.
+    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+        """Get the current errors from the device.
+
+        !!! note
+            This method will clear out the error queue after reading the current errors.
 
         Returns:
-            Boolean indicating no error, String containing concatenated contents of event log.
+            A tuple containing the current error code alongside a tuple of the current error
+            messages.
         """
-        result_allev = False
-        allev_result_str = '0,"No events to report - queue empty"'
-
         # instrument returns exponential numbers so converting to float before int
-        if not (err_count := int(float(self.query("print(errorqueue.count)")))):
-            result_allev = True
-        else:
-            allev_result_list = [self.query("print(errorqueue.next())") for _ in range(err_count)]
-            allev_result_str = ",".join(allev_result_list)
-        return result_allev, allev_result_str
+        err_count = int(float(self.query("print(errorqueue.count)")))
+        error_message_list = []
+        if err_count:
+            error_message_list = [self.query("print(errorqueue.next())") for _ in range(err_count)]
+        return err_count, tuple(filter(None, error_message_list))

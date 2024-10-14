@@ -9,8 +9,8 @@ from tm_devices.commands import (
     SMU2461Commands,
     SMU2470Commands,
 )
-from tm_devices.driver_mixins.shared_implementations.common_tsp_error_check_methods import (
-    CommonTSPErrorCheckMethods,
+from tm_devices.driver_mixins.shared_implementations.common_tsp_error_check_mixin import (
+    CommonTSPErrorCheckMixin,
 )
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import (
     LegacyTSPIEEE4882Commands,
@@ -21,7 +21,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class SMU24xxInteractive(CommonTSPErrorCheckMethods, SourceMeasureUnit, ABC):
+class SMU24xxInteractive(CommonTSPErrorCheckMixin, SourceMeasureUnit, ABC):
     """Base SMU24xxInteractive device driver."""
 
     _IEEE_COMMANDS_CLASS = LegacyTSPIEEE4882Commands
@@ -58,21 +58,22 @@ class SMU24xxInteractive(CommonTSPErrorCheckMethods, SourceMeasureUnit, ABC):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def get_eventlog_status(self) -> Tuple[bool, str]:
-        """Help function for getting the eventlog status.
+    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+        """Get the current errors from the device.
+
+        !!! note
+            This method will clear out the error queue after reading the current errors.
 
         Returns:
-            Boolean indicating no error, String containing concatenated contents of event log.
+            A tuple containing the current error code alongside a tuple of the current error
+            messages.
         """
-        result_allev = False
-        allev_result_str = '0,"No events to report - queue empty"'
-
-        if not (err_count := int(self.query("print(eventlog.getcount(eventlog.SEV_ERROR))"))):
-            result_allev = True
-        else:
-            allev_result_list = [self.query("print(eventlog.next())") for _ in range(err_count)]
-            allev_result_str = ",".join(allev_result_list)
-        return result_allev, allev_result_str
+        # instrument returns exponential numbers so converting to float before int
+        err_count = int(self.query("print(eventlog.getcount(eventlog.SEV_ERROR))"))
+        error_message_list = []
+        if err_count:
+            error_message_list = [self.query("print(eventlog.next())") for _ in range(err_count)]
+        return err_count, tuple(filter(None, error_message_list))
 
     ################################################################################################
     # Private Methods

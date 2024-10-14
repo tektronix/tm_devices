@@ -89,7 +89,10 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
     ChannelControlMixin,
     ABC,
 ):
-    """Base TekScope scope device driver."""
+    """Base TekScope scope device driver.
+
+    This class contains shared functionality between physical TekScope devices and TekScopePC.
+    """
 
     # re-edit so it reflects the actual Internal AFG
     _DEVICE_CONSTANTS = TekScopeSourceDeviceConstants(
