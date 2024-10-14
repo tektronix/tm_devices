@@ -23,7 +23,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class SMU24xxInteractive(CommonTSPErrorCheckMethods, SourceMeasureUnit, ABC):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
+class SMU24xxInteractive(CommonTSPErrorCheckMethods, SourceMeasureUnit, ABC):
     """Base SMU24xxInteractive device driver."""
 
     _IEEE_COMMANDS_CLASS = LegacyTSPIEEE4882Commands

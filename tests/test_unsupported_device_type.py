@@ -14,7 +14,7 @@ from tm_devices.drivers.device import Device
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class CustomUnsupportedDeviceUnitTestOnly(PIControl, Device):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
+class CustomUnsupportedDeviceUnitTestOnly(PIControl, Device):
     """A custom device that is not one of the officially supported devices for unit tests."""
 
     _DEVICE_TYPE = "CustomDeviceType"

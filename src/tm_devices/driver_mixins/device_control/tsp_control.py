@@ -7,6 +7,7 @@ from typing import Any, Dict, List, Optional, TYPE_CHECKING, Union
 
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import TSPIEEE4882Commands
+from tm_devices.helpers import verify_values
 
 if TYPE_CHECKING:
     import os
@@ -206,7 +207,8 @@ class TSPControl(PIControl, ABC):
             message_prefix = f"Failed to set {command} to {value}"
             if custom_message_prefix:
                 message_prefix = f"{custom_message_prefix}\n{message_prefix}"
-            self.verify_values(
+            verify_values(
+                self._name_and_alias,
                 value if expected_value is None else expected_value,
                 check,
                 tolerance=tolerance,

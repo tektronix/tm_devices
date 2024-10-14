@@ -31,7 +31,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class SMU26xx(CommonTSPErrorCheckMethods, SourceMeasureUnit, ABC):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
+class SMU26xx(CommonTSPErrorCheckMethods, SourceMeasureUnit, ABC):
     """Base SMU26xx device driver."""
 
     ################################################################################################

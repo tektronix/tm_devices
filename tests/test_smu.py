@@ -179,9 +179,6 @@ def test_smu(  # noqa: PLR0915
     assert smu.address == "SMU2601B-HOSTNAME"
     assert smu.alias == "SMU-DEVICE"
     assert smu.connection_type == "TCPIP"
-    assert smu.verify_values(expected_value="True", actual_value="True")
-    with pytest.raises(AssertionError):
-        smu.verify_values(expected_value="0.1", actual_value="0.2", percentage=True, log_error=True)
     with mock.patch("socket.socket.connect", mock.MagicMock(return_value=None)), mock.patch(
         "socket.socket.shutdown", mock.MagicMock(return_value=None)
     ):

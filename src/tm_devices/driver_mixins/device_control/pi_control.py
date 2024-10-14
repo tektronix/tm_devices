@@ -15,10 +15,7 @@ from packaging.version import Version
 from pyvisa import constants as visa_constants
 from pyvisa import VisaIOError
 
-# noinspection PyProtectedMember
-from tm_devices.driver_mixins.shared_implementations._verification_methods_mixin import (
-    VerificationMethodsMixin,
-)
+from tm_devices.driver_mixins.device_control._abstract_device_control import AbstractDeviceControl
 from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import IEEE4882Commands
 from tm_devices.helpers import (
@@ -30,13 +27,15 @@ from tm_devices.helpers import (
     get_visa_backend,
     print_with_timestamp,
     PYVISA_PY_BACKEND,
+    raise_failure,
+    verify_values,
 )
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class PIControl(VerificationMethodsMixin, ExtendableMixin, ABC):  # pylint: disable=too-many-public-methods
+class PIControl(AbstractDeviceControl, ExtendableMixin, ABC):  # pylint: disable=too-many-public-methods
     """Base Programmable Interface (PI) control class.
 
     !!! important
@@ -44,17 +43,6 @@ class PIControl(VerificationMethodsMixin, ExtendableMixin, ABC):  # pylint: disa
         [`Device`][tm_devices.drivers.device.Device] class in order to have access to the
         attributes required by this class.
     """
-
-    ################################################################################################
-    # Attributes and properties provided by the top-level Device class
-    ################################################################################################
-    # TODO: nfelt14: Look into moving these into an even higher-level abstract class that this
-    #  and Device can inherit from? There must be a better way to handle this multiple inheritance.
-    _config_entry: DeviceConfigEntry
-    _enable_verification: bool
-    _name_and_alias: str
-    _verbose: bool
-    _is_open: bool
 
     # This is a class constant that can be overwritten by children which defines
     # the class to use for the IEEE 488.2 commands.
@@ -78,8 +66,7 @@ class PIControl(VerificationMethodsMixin, ExtendableMixin, ABC):  # pylint: disa
             visa_resource: The VISA resource object.
             default_visa_timeout: The default VISA timeout value in milliseconds.
         """
-        # TODO: nfelt14: Figure out how to get this super call to not raise pyright errors
-        super().__init__(config_entry, verbose)  # pyright: ignore[reportCallIssue]
+        super().__init__(config_entry, verbose)
         self._visa_resource: visa.resources.MessageBasedResource = visa_resource
         self._resource_expression = str(self._visa_resource.resource_info.resource_name)
         self._visa_library_path = self._visa_resource.visalib.library_path.path
@@ -505,10 +492,11 @@ class PIControl(VerificationMethodsMixin, ExtendableMixin, ABC):  # pylint: disa
             )
         ) or (not allow_equal and abs(actual_value) >= (abs(value) + tolerance)):
             max_value = value + tolerance
-            self.raise_failure(
+            raise_failure(
+                self._name_and_alias,
                 f"query_less_than failed for query: {query}\n  "
                 f"max ({'inclusive' if allow_equal else 'exclusive'}): "
-                f"{max_value}\n  act: {actual_value}"
+                f"{max_value}\n  act: {actual_value}",
             )
 
         return query_passed
@@ -580,7 +568,8 @@ class PIControl(VerificationMethodsMixin, ExtendableMixin, ABC):  # pylint: disa
         message_prefix = f"query_response failed for query: {query}"
         if custom_message_prefix:
             message_prefix = f"{custom_message_prefix}\n{message_prefix}"
-        query_passed = self.verify_values(
+        query_passed = verify_values(
+            self._name_and_alias,
             value,
             actual_value,
             tolerance=tolerance,
@@ -611,7 +600,8 @@ class PIControl(VerificationMethodsMixin, ExtendableMixin, ABC):  # pylint: disa
         message_prefix = f"query_response_not failed for query: {query}"
         if custom_message_prefix:
             message_prefix = f"{custom_message_prefix}\n{message_prefix}"
-        query_passed = self.verify_values(
+        query_passed = verify_values(
+            self._name_and_alias,
             value,
             actual_value,
             custom_message_prefix=message_prefix,
@@ -668,7 +658,8 @@ class PIControl(VerificationMethodsMixin, ExtendableMixin, ABC):  # pylint: disa
             message_prefix = f"Failed to set {command} to {value}"
             if custom_message_prefix:
                 message_prefix = f"{custom_message_prefix}\n{message_prefix}"
-            self.verify_values(
+            verify_values(
+                self._name_and_alias,
                 value if expected_value is None else expected_value,
                 check,
                 tolerance=tolerance,

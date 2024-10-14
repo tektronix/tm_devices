@@ -22,7 +22,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class DAQ6510(DAQ6510Mixin, CommonTSPErrorCheckMethods, DataAcquisitionSystem):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
+class DAQ6510(DAQ6510Mixin, CommonTSPErrorCheckMethods, DataAcquisitionSystem):
     """DAQ6510 device driver."""
 
     _IEEE_COMMANDS_CLASS = LegacyTSPIEEE4882Commands

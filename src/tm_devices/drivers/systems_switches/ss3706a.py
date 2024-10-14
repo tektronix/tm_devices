@@ -15,7 +15,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class SS3706A(SS3706AMixin, CommonTSPErrorCheckMethods, SystemsSwitch):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
+class SS3706A(SS3706AMixin, CommonTSPErrorCheckMethods, SystemsSwitch):
     """SS3706A device driver."""
 
     ################################################################################################

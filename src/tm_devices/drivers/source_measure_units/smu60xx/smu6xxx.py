@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 
 
 @family_base_class
-class SMU6xxx(PIControl, SourceMeasureUnit, ABC):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
+class SMU6xxx(PIControl, SourceMeasureUnit, ABC):
     """Base SMU6xxx device driver."""
 
     ################################################################################################

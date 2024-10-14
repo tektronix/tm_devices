@@ -32,7 +32,7 @@ class CustomScope(Scope):
 # a parent class further up the inheritance tree as well as a control mixin class to provide the
 # necessary methods for controlling the device. This custom class must also implement all abstract
 # methods defined by the abstract parent classes.
-class CustomDevice(PIControl, Device):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
+class CustomDevice(PIControl, Device):
     """A custom device that is not one of the officially supported devices."""
 
     # Custom device types not officially supported need to define what type of device they are.

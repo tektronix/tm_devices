@@ -9,16 +9,16 @@ from typing import Any, cast, Dict, Mapping, Optional, Tuple, Union
 
 import requests
 
-# noinspection PyProtectedMember
-from tm_devices.driver_mixins.shared_implementations._verification_methods_mixin import (
-    VerificationMethodsMixin,
+from tm_devices.driver_mixins.device_control._abstract_device_control import AbstractDeviceControl
+from tm_devices.helpers import (
+    DeviceConfigEntry,
+    print_with_timestamp,
+    raise_failure,
+    SupportedRequestTypes,
 )
-from tm_devices.helpers import DeviceConfigEntry, print_with_timestamp, SupportedRequestTypes
-
-# noinspection PyPep8Naming
 
 
-class RESTAPIControl(VerificationMethodsMixin, ABC):
+class RESTAPIControl(AbstractDeviceControl, ABC):
     """Base REST Application Programming Interface (API) control class.
 
     !!! important
@@ -26,15 +26,6 @@ class RESTAPIControl(VerificationMethodsMixin, ABC):
         [`Device`][tm_devices.drivers.device.Device] class in order to have access to the
         attributes required by this class.
     """
-
-    ################################################################################################
-    # Attributes and properties provided by the top-level Device class
-    ################################################################################################
-    # TODO: nfelt14: Look into moving these into an even higher-level abstract class that this
-    #  and Device can inherit from? There must be a better way to handle this multiple inheritance.
-    ip_address: str
-    _name_and_alias: str
-    _verbose: bool
 
     # These constants are defined by child classes
     API_VERSIONS: Mapping[int, str] = MappingProxyType({})
@@ -50,8 +41,7 @@ class RESTAPIControl(VerificationMethodsMixin, ABC):
             config_entry: A config entry object parsed by the DMConfigParser.
             verbose: A boolean indicating if verbose output should be printed.
         """
-        # TODO: nfelt14: Figure out how to get this super call to not raise pyright errors
-        super().__init__(config_entry, verbose)  # pyright: ignore[reportCallIssue]
+        super().__init__(config_entry, verbose)
 
         # The URL to use for REST API requests
         self._base_url = f"https://{self.ip_address}"
@@ -523,8 +513,9 @@ class RESTAPIControl(VerificationMethodsMixin, ABC):
             response.raise_for_status()
         except requests.exceptions.RequestException as error:
             if not allow_errors:
-                self.raise_failure(
-                    f"A RequestException occurred (status code {response.status_code}): {error}"
+                raise_failure(
+                    self._name_and_alias,
+                    f"A RequestException occurred (status code {response.status_code}): {error}",
                 )
             try:
                 status_code = response.status_code

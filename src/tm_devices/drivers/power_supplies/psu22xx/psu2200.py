@@ -15,7 +15,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class PSU2200(PIControl, PowerSupplyUnit):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
+class PSU2200(PIControl, PowerSupplyUnit):
     """2200 Base device driver for the 22xx family of power supplies."""
 
     ################################################################################################

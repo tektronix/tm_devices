@@ -43,6 +43,8 @@ However, please read through all changes to be aware of what may potentially imp
 - <span style="color:red">BREAKING CHANGE</span>: Removed previously deprecated `DEVICE_DRIVER_MODEL_MAPPING` constant.
 - <span style="color:red">BREAKING CHANGE</span>: Removed the `DEVICE_TYPE_CLASSES` constant.
 - <span style="color:red">BREAKING CHANGE</span>: Removed many hacky implementations of `total_channels` and `all_channel_names_list` properties from drivers that don't need them anymore.
+- <span style="color:red">BREAKING CHANGE</span>: Removed the `verify_values()`, `raise_failure()`, and `raise_error()` methods from all device drivers.
+    - These methods have been converted to helper functions and can be imported from the `tm_devices.helpers` subpackage now.
 
 ---
 

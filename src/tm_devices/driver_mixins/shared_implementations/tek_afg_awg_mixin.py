@@ -8,7 +8,7 @@ from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mix
 )
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
-from tm_devices.helpers import print_with_timestamp
+from tm_devices.helpers import print_with_timestamp, raise_failure, verify_values
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
@@ -64,7 +64,7 @@ class TekAFGAWG(PIControl, SignalGeneratorMixin, ExtendableMixin, ABC):
         result = True
         esr_result_str = self.query("*ESR?")
         try:
-            self.verify_values(esr, esr_result_str)
+            verify_values(self._name_and_alias, esr, esr_result_str)
         except AssertionError as exc:
             result &= False
             print(exc)  # the exception already contains the timestamp
@@ -92,7 +92,7 @@ class TekAFGAWG(PIControl, SignalGeneratorMixin, ExtendableMixin, ABC):
                 f"expect_esr failed: *ESR? {esr_result_str!r} != {esr!r}, "
                 f"SYSTEM:ERROR? {returned_errors!r} != {error_string!r}"
             )
-            self.raise_failure(failure_message)
+            raise_failure(self._name_and_alias, failure_message)
 
         return result, failure_message
 

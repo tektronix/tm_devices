@@ -4,13 +4,10 @@ from abc import ABC
 from typing import Tuple, Union
 
 from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
-from tm_devices.driver_mixins.shared_implementations._verification_methods_mixin import (
-    VerificationMethodsMixin,
-)
-from tm_devices.helpers import print_with_timestamp
+from tm_devices.helpers import print_with_timestamp, raise_failure, verify_values
 
 
-class CommonTSPErrorCheckMethods(TSPControl, VerificationMethodsMixin, ABC):
+class CommonTSPErrorCheckMethods(TSPControl, ABC):
     """A mixin class that contains common TSP methods for checking the device for errors.
 
     !!! note
@@ -46,7 +43,7 @@ class CommonTSPErrorCheckMethods(TSPControl, VerificationMethodsMixin, ABC):
         result = True
         esr_result_str = self.query("print(status.standard.event)")
         try:
-            self.verify_values(esr, esr_result_str)
+            verify_values(self._name_and_alias, esr, esr_result_str)
         except AssertionError as exc:
             result &= False
             print(exc)  # the exception already contains the timestamp
@@ -65,7 +62,7 @@ class CommonTSPErrorCheckMethods(TSPControl, VerificationMethodsMixin, ABC):
                 f"print(status.standard.event) {esr_result_str!r} != {esr!r}, "
                 f"eventlog {allev_result_str!r} != {error_string!r}"
             )
-            self.raise_failure(failure_message)
+            raise_failure(self._name_and_alias, failure_message)
 
         return result, failure_message
 

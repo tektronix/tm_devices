@@ -5,14 +5,14 @@ from typing import Tuple, Union
 
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.drivers.device import Device
-from tm_devices.helpers import DeviceTypes
+from tm_devices.helpers import DeviceTypes, raise_failure, verify_values
 
 # noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 # TODO: nfelt14: remove PIControl inheritance if possible
-class Scope(PIControl, Device, ABC):  # pyright: ignore[reportIncompatibleVariableOverride]  # TODO: nfelt14: figure out how to not need this
+class Scope(PIControl, Device, ABC):
     """Base Scope device driver."""
 
     _DEVICE_TYPE = DeviceTypes.SCOPE.value
@@ -70,13 +70,13 @@ class Scope(PIControl, Device, ABC):  # pyright: ignore[reportIncompatibleVariab
         result = True
         esr_result_str = self.ieee_cmds.esr()
         try:
-            self.verify_values(esr, esr_result_str)
+            verify_values(self._name_and_alias, esr, esr_result_str)
         except AssertionError as exc:
             result &= False
             print(exc)  # the exception already contains the timestamp
         allev_result_str = self.query(":ALLev?")
         try:
-            self.verify_values(error_string, allev_result_str)
+            verify_values(self._name_and_alias, error_string, allev_result_str)
         except AssertionError as exc:
             result &= False
             print(exc)  # the exception already contains the timestamp
@@ -86,7 +86,7 @@ class Scope(PIControl, Device, ABC):  # pyright: ignore[reportIncompatibleVariab
                 f"expect_esr failed: *ESR? {esr_result_str!r} != {esr!r}, "
                 f":ALLev? {allev_result_str!r} != {error_string!r}"
             )
-            self.raise_failure(failure_message)
+            raise_failure(self._name_and_alias, failure_message)
 
         return result, failure_message
 
