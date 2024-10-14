@@ -39,7 +39,7 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: aa1acdb72677dfbc5f507d2dfd45d8380bbcc2e0  # frozen: 0.29.3
+    rev: 37cd56d9d154dfb0648eaee8efc1040512700c47  # frozen: 0.29.4
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
