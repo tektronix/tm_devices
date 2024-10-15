@@ -75,8 +75,14 @@ def is_defined_function(function: Any) -> bool:
 
 
 def test_device_types() -> None:
-    """Verify that the DEVICE_TYPES is kept up to date."""
-    abstract_device_list = sorted({x.__name__ for x in Device.__subclasses__()})
+    """Verify that the DeviceTypes is kept up to date."""
+    abstract_device_list = sorted(
+        {
+            x.__name__
+            for x in Device.__subclasses__()
+            if not x.__name__.startswith(("Custom", "UnitTest"))
+        }
+    )
     supported_device_types = sorted(
         [
             x
@@ -87,7 +93,7 @@ def test_device_types() -> None:
     if len(abstract_device_list) != len(supported_device_types):
         msg = (
             f"Not all abstract device types are represented in "
-            f"abstract_device_list={sorted(abstract_device_list)}\n"
+            f"abstract_device_list={abstract_device_list}\n"
             f"Supported device type abbreviations are {supported_device_types}, "
             f"please update abstract_device_list in this test with any missing abstract classes."
         )
