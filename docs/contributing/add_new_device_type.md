@@ -35,7 +35,7 @@ This guide will walk through the steps needed to add a new device type.
     inside `device_manager.py` (use other methods as examples)
 8. Add a new folder in `tests/sim_devices/<new_type>` for unit tests
 9. Update the
-    [advanced architecture](../advanced/architecture.md#main-device-types) page
+    [advanced architecture](../advanced/architecture.md#device-types) page
     to include the new device type
 10. Update anything new that needs to be in
     [configuration.md](../configuration.md#legend-for-device-configuration)

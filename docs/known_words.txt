@@ -47,6 +47,7 @@ io
 js
 keithley
 licensor
+lightgreen
 linter
 linters
 linting
@@ -60,6 +61,7 @@ mv
 namespace
 noqa
 opensource
+orangered
 parallelization
 pi
 pre

@@ -90,7 +90,8 @@ plugins:
       use_default: true
       inline_refs: none
       markdown_links: true
-  - mermaid2
+  - mermaid2:
+      version: 11.3.0
   - mkdocstrings:  # additional customization takes place in docs/generate_api_pages.py
       # noinspection YAMLIncompatibleTypes
       enabled: !ENV [TM_DEVICES_API_GENERATION, true]

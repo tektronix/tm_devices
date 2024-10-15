@@ -1,5 +1,6 @@
 """Macros for the documentation."""
 
+import abc
 import inspect
 import os
 import pathlib
@@ -120,13 +121,15 @@ def get_classes(*cls_or_modules: str, strict: bool = False) -> Generator[Any, No
 ####################################################################################################
 # Macro functions
 ####################################################################################################
-def class_diagram(  # noqa: C901
+def class_diagram(  # noqa: C901  # pylint: disable=too-many-locals
     *cls_or_modules: str,
     full: bool = False,
     strict: bool = False,
     namespace: Optional[str] = None,
     tree_direction: str = "up",
     chart_direction: str = "LR",
+    highlight_family_base_classes: bool = False,
+    highlight_device_drivers: bool = False,
 ) -> str:
     """Create a mermaid classDiagram for the provided classes or modules.
 
@@ -141,6 +144,8 @@ def class_diagram(  # noqa: C901
         chart_direction: A string indicating the direction of the chart, either
             "LR" (left to right), "RL" (right to left),
             "TB" (top to bottom), or "BT" (bottom to top).
+        highlight_family_base_classes: Indicate to highlight the family base classes in cyan.
+        highlight_device_drivers: Indicate to highlight the device drivers in lightgreen.
 
     Returns:
         The mermaid code block with complete syntax for the classDiagram.
@@ -149,8 +154,15 @@ def class_diagram(  # noqa: C901
         ValueError: If no classDiagram can be created.
     """
     inheritances: Set[Tuple[str, str]] = set()
+    family_base_classes: Set[str] = set()
+    device_drivers: Set[str] = set()
 
     def get_tree_upwards(cls: Any) -> None:
+        if getattr(cls, "_product_family_base_class", None) == cls:
+            family_base_classes.add(cls.__name__)
+        if abc.ABC not in cls.__bases__:
+            device_drivers.add(cls.__name__)
+
         for base in cls.__bases__:
             if base.__name__ == "object":
                 continue
@@ -161,6 +173,11 @@ def class_diagram(  # noqa: C901
                 get_tree_upwards(base)
 
     def get_tree_downwards(cls: Any) -> None:
+        if getattr(cls, "_product_family_base_class", None) == cls:
+            family_base_classes.add(cls.__name__)
+        if abc.ABC not in cls.__bases__:
+            device_drivers.add(cls.__name__)
+
         for subclass in cls.__subclasses__():
             if namespace and not subclass.__module__.startswith(namespace):
                 continue
@@ -177,11 +194,18 @@ def class_diagram(  # noqa: C901
         msg = "No class hierarchy can be created."
         raise ValueError(msg)
 
-    return (
-        f"```mermaid\nclassDiagram\n  direction {chart_direction}\n"
-        + "\n".join(f"  {a} <|-- {b}" for a, b in sorted(inheritances))
-        + "\n```"
+    mermaid_code_block = f"```mermaid\nclassDiagram\n  direction {chart_direction}\n" + "\n".join(
+        f"  {a} <|-- {b}" for a, b in sorted(inheritances)
     )
+    if highlight_family_base_classes:
+        for family_base_class in sorted(family_base_classes):
+            mermaid_code_block += f"\n  style {family_base_class} stroke:orangered,stroke-width:4px"
+    if highlight_device_drivers:
+        for device_driver in sorted(device_drivers):
+            mermaid_code_block += f"\n  style {device_driver} fill:lightgreen"
+    mermaid_code_block += "\n```"
+
+    return mermaid_code_block
 
 
 def create_repo_link(link_text: str, base_repo_url: str, relative_repo_path: str) -> str:
