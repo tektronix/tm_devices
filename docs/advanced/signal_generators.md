@@ -151,21 +151,7 @@ This includes:
 
 ### TekScope Internal Arbitrary Function Generators
 
-```mermaid
-classDiagram
-    direction LR
-
-    Tekscope <|-- MSO2
-    Tekscope <|-- MSO4
-    MSO4 <|-- MSO4B
-    Tekscope <|-- MSO5
-    MSO5 <|-- MSO5B
-    MSO5 <|-- MSO5LP
-    Tekscope <|-- MSO6
-    MSO6 <|-- MSO6B
-    MSO6 <|-- LPD6
-
-```
+{{ auto_class_diagram('tm_devices.drivers.scopes.tekscope.tekscope.TekScope', full=True, namespace='tm_devices.drivers.scopes.tekscope', tree_direction='down') }}
 
 The TekScope series instruments are signal generators focused on waveform generation and operate on the Windows operating system.
 They accept communication through [USB](default:USB) and [TCPIP](default:TCPIP) interfaces.
@@ -204,13 +190,13 @@ Setting up bursts of an [IAFG](default:IAFG) involves setting it to burst mode a
 
 The amplitude and frequency range for the [IAFG](default:IAFG) vary based on the desired function.
 These ranges are the same for each of the classes listed:
-[`MSO2`][tm_devices.drivers.scopes.tekscope.mso2.MSO2]
-[`MSO4`][tm_devices.drivers.scopes.tekscope.mso4.MSO4]
-[`MSO4B`][tm_devices.drivers.scopes.tekscope.mso4b.MSO4B]
-[`MSO5`][tm_devices.drivers.scopes.tekscope.mso5.MSO5]
-[`MSO5LP`][tm_devices.drivers.scopes.tekscope.mso5lp.MSO5LP]
-[`MSO6`][tm_devices.drivers.scopes.tekscope.mso6.MSO6]
-[`MSO6B`][tm_devices.drivers.scopes.tekscope.mso6b.MSO6B]
+[`MSO2`][tm_devices.drivers.scopes.tekscope.mso2.MSO2],
+[`MSO4`][tm_devices.drivers.scopes.tekscope.mso4.MSO4],
+[`MSO4B`][tm_devices.drivers.scopes.tekscope.mso4b.MSO4B],
+[`MSO5`][tm_devices.drivers.scopes.tekscope.mso5.MSO5],
+[`MSO5LP`][tm_devices.drivers.scopes.tekscope.mso5lp.MSO5LP],
+[`MSO6`][tm_devices.drivers.scopes.tekscope.mso6.MSO6],
+[`MSO6B`][tm_devices.drivers.scopes.tekscope.mso6b.MSO6B], and
 [`LPD6`][tm_devices.drivers.scopes.tekscope.lpd6.LPD6]
 
 Sample rates are 250.0MS/s for `ARBITRARY` waveforms.
@@ -238,16 +224,7 @@ The constraints for the [`MSO5B`][tm_devices.drivers.scopes.tekscope.mso5b.MSO5B
 
 ### Arbitrary Function Generators
 
-```mermaid
-classDiagram
-    direction LR
-
-    AFG <|-- AFG3K
-    AFG3K <|-- AFG3KB
-    AFG3K <|-- AFG3KC
-    AFG <|-- AFG31K
-
-```
+{{ auto_class_diagram('tm_devices.drivers.afgs.afg.AFG', full=True, namespace='tm_devices.drivers.afgs', tree_direction='down') }}
 
 [AFGs](default:AFG) handle [function generation](#tekscope-internal-arbitrary-function-generators) identically to [IAFGs](default:IAFG)
 except for the order in which the parameters are set.
@@ -362,20 +339,7 @@ _AFG31K Constraints_
 
 ### Arbitrary Waveform Generators
 
-```mermaid
-classDiagram
-    direction LR
-
-    AWG <|-- AWG5K
-    AWG5K <|-- AWG5KB
-    AWG5KB <|-- AWG5KC
-    AWG <|-- AWG7K
-    AWG7K <|-- AWG7KB
-    AWG7KB <|-- AWG7KC
-    AWG <|-- AWG5200
-    AWG <|-- AWG70KA
-    AWG70KA <|-- AWG70KB
-```
+{{ auto_class_diagram('tm_devices.drivers.awgs.awg.AWG', full=True, namespace='tm_devices.drivers.awgs', tree_direction='down') }}
 
 All functions that are shared by each [AWG](default:AWG) exist within the
 [`AWG`][tm_devices.drivers.awgs.awg.AWG] class.

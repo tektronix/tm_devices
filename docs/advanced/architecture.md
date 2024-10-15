@@ -54,7 +54,7 @@ between different models of the same device type.
 
 ### Block Diagram
 
-{{ auto_class_diagram('tm_devices.drivers.device_type_classes', full=True) }}
+{{ auto_class_diagram('tm_devices.drivers.device.Device', full=False, namespace='tm_devices.drivers', tree_direction='down') }}
 
 ---
 
@@ -64,4 +64,4 @@ This package supports many devices, zoom in to see them all!
 
 ### Block Diagram
 
-{{ auto_class_diagram('tm_devices.drivers', full=True) }}
+{{ auto_class_diagram('tm_devices.drivers', full=True, namespace='tm_devices.drivers') }}

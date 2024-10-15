@@ -24,7 +24,6 @@ cov
 csv
 deps
 dev
-device_type_classes
 disable_command_verification
 dll
 docformatter

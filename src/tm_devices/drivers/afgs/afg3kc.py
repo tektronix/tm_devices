@@ -5,13 +5,13 @@ from typing import Tuple
 import pyvisa as visa
 
 from tm_devices.commands import AFG3KCMixin
-from tm_devices.drivers.afgs.afg3k import (
-    AFG3K,
+from tm_devices.drivers.afgs.afg3kb import (
+    AFG3KB,
 )
 from tm_devices.helpers import DeviceConfigEntry
 
 
-class AFG3KC(AFG3KCMixin, AFG3K):  # pyright: ignore[reportIncompatibleMethodOverride]
+class AFG3KC(AFG3KCMixin, AFG3KB):  # pyright: ignore[reportIncompatibleMethodOverride]
     """AFG3KC device driver."""
 
     ################################################################################################

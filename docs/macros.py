@@ -120,11 +120,13 @@ def get_classes(*cls_or_modules: str, strict: bool = False) -> Generator[Any, No
 ####################################################################################################
 # Macro functions
 ####################################################################################################
-def class_diagram(
+def class_diagram(  # noqa: C901
     *cls_or_modules: str,
     full: bool = False,
     strict: bool = False,
     namespace: Optional[str] = None,
+    tree_direction: str = "up",
+    chart_direction: str = "LR",
 ) -> str:
     """Create a mermaid classDiagram for the provided classes or modules.
 
@@ -134,6 +136,11 @@ def class_diagram(
         strict: A boolean indicating to only consider classes that are strictly defined in that
             module and not imported from somewhere else.
         namespace: Limits the diagram to only include classes defined in this namespace.
+        tree_direction: A string indicating the direction of traversal in the class hierarchy,
+            either "up" or "down".
+        chart_direction: A string indicating the direction of the chart, either
+            "LR" (left to right), "RL" (right to left),
+            "TB" (top to bottom), or "BT" (bottom to top).
 
     Returns:
         The mermaid code block with complete syntax for the classDiagram.
@@ -143,7 +150,7 @@ def class_diagram(
     """
     inheritances: Set[Tuple[str, str]] = set()
 
-    def get_tree(cls: Any) -> None:
+    def get_tree_upwards(cls: Any) -> None:
         for base in cls.__bases__:
             if base.__name__ == "object":
                 continue
@@ -151,7 +158,17 @@ def class_diagram(
                 continue
             inheritances.add((base.__name__, cls.__name__))
             if full:
-                get_tree(base)
+                get_tree_upwards(base)
+
+    def get_tree_downwards(cls: Any) -> None:
+        for subclass in cls.__subclasses__():
+            if namespace and not subclass.__module__.startswith(namespace):
+                continue
+            inheritances.add((cls.__name__, subclass.__name__))
+            if full:
+                get_tree_downwards(subclass)
+
+    get_tree = get_tree_upwards if tree_direction == "up" else get_tree_downwards
 
     for cls_item in get_classes(*cls_or_modules, strict=strict):
         get_tree(cls_item)
@@ -161,7 +178,7 @@ def class_diagram(
         raise ValueError(msg)
 
     return (
-        "```mermaid\nclassDiagram\n"
+        f"```mermaid\nclassDiagram\n  direction {chart_direction}\n"
         + "\n".join(f"  {a} <|-- {b}" for a, b in sorted(inheritances))
         + "\n```"
     )

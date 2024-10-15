@@ -19,7 +19,6 @@ from packaging.version import InvalidVersion, Version
 import tm_devices
 import tm_devices.device_manager
 import tm_devices.drivers
-import tm_devices.drivers.device_type_classes
 import tm_devices.helpers
 
 
@@ -77,7 +76,7 @@ def is_defined_function(function: Any) -> bool:
 
 def test_device_types() -> None:
     """Verify that the DEVICE_TYPES is kept up to date."""
-    abstract_device_list = tm_devices.drivers.device_type_classes.__all__
+    abstract_device_list = sorted({x.__name__ for x in Device.__subclasses__()})
     supported_device_types = sorted(
         [
             x
