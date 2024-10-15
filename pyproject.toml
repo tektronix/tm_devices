@@ -443,7 +443,7 @@ setenv =
     # Skip pre-commit checks that are not needed (yamlfix should be removed from this list once Python 3.8 support is dropped)
     SKIP = file-contents-sorter,yamlfix
 commands_pre =
-    poetry install --no-root --without=main
+    python -m poetry install --no-root --without=main
 commands =
     !tests: poetry build --output=dist_{envname}
     !tests: twine check --strict dist_{envname}/*
