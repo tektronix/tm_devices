@@ -89,7 +89,7 @@ class PIControl(AbstractDeviceControl, ExtendableMixin, ABC):  # pylint: disable
     # TODO: nfelt14: Determine if this really needs to be an abstract method here. If not,
     #  remove it from the example code too. It could also just be made a "final" method
     @abstractmethod
-    def expect_esr(self, esr: int, error_messages: Tuple[str] = ()) -> bool:
+    def expect_esr(self, esr: int, error_messages: Tuple[str, ...] = ()) -> bool:
         r"""Check for the expected error code and messages.
 
         Args:
