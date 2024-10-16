@@ -98,4 +98,4 @@ This package supports many devices, zoom in to see them all!
     - Family Base Classes are outlined in <span style="color: orangered;">orange red</span>.
     - Device Drivers are highlighted in <span style="color: lightgreen;">light green</span>.
 
-{{ auto_class_diagram('tm_devices.drivers', full=True, namespace='tm_devices.drivers', highlight_family_base_classes=True, highlight_device_drivers=True) }}
+{{ auto_class_diagram('tm_devices.drivers', full=True, namespace='tm_devices.drivers', highlight_family_base_classes=True, highlight_device_drivers=True, chart_direction='LR') }}

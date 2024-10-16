@@ -687,7 +687,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
 
 
 @family_base_class
-class TekScope(SignalGeneratorMixin, AbstractTekScope):
+class TekScope(SignalGeneratorMixin, AbstractTekScope, ABC):
     """A physical TekScope device.
 
     Physical TekScope devices all come with an Internal AFG.

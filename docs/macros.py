@@ -160,7 +160,7 @@ def class_diagram(  # noqa: C901  # pylint: disable=too-many-locals
     def get_tree_upwards(cls: Any) -> None:
         if getattr(cls, "_product_family_base_class", None) == cls:
             family_base_classes.add(cls.__name__)
-        if abc.ABC not in cls.__bases__ and not inspect.isabstract(cls):
+        if abc.ABC not in cls.__bases__:
             device_drivers.add(cls.__name__)
 
         for base in cls.__bases__:
@@ -175,7 +175,7 @@ def class_diagram(  # noqa: C901  # pylint: disable=too-many-locals
     def get_tree_downwards(cls: Any) -> None:
         if getattr(cls, "_product_family_base_class", None) == cls:
             family_base_classes.add(cls.__name__)
-        if abc.ABC not in cls.__bases__ and not inspect.isabstract(cls):
+        if abc.ABC not in cls.__bases__:
             device_drivers.add(cls.__name__)
 
         for subclass in cls.__subclasses__():
