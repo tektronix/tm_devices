@@ -20,7 +20,7 @@ Things to be included in the next release go here.
 
 ### Added
 
-- Now `collectgarbage()` is called with cleanup of TSPDevice children.
+- `collectgarbage()` is now called during cleanup of `TSPDevice` children.
 
 ---
 
