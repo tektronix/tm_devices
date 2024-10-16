@@ -1,5 +1,6 @@
 """Base device driver module."""
 
+import concurrent.futures
 import socket
 import time
 
@@ -281,12 +282,18 @@ class Device(AbstractDeviceControl, ExtendableMixin, ABC):
     @cached_property
     def hostname(self) -> str:
         """Return the hostname of the device or an empty string if unable to fetch that."""
-        if self._config_entry.connection_type not in {ConnectionTypes.USB}:
-            try:
-                # TODO: figure out a better way to lower the timeout for the gethostbyaddr() call
-                return socket.gethostbyaddr(self.address)[0]
-            except (socket.gaierror, socket.herror):
-                pass
+        if self._config_entry.connection_type not in {
+            ConnectionTypes.USB,
+            ConnectionTypes.SERIAL,
+            ConnectionTypes.GPIB,
+            ConnectionTypes.MOCK,
+        }:
+            with concurrent.futures.ThreadPoolExecutor() as executor:
+                future = executor.submit(socket.gethostbyaddr, self.address)
+                try:
+                    return future.result(timeout=2)[0]  # Use a two-second timeout for the lookup
+                except (socket.gaierror, socket.herror, concurrent.futures.TimeoutError):
+                    pass
         return ""
 
     @cached_property
