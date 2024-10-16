@@ -22,6 +22,7 @@ devices:
       - q: print([[0]])
         r: 0
       - q: waitcomplete()
+      - q: collectgarbage()
     error:
       status_register:
         - q: print(status.standard.event)

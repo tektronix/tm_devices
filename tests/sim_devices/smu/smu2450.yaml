@@ -12,6 +12,7 @@ devices:
       - q: eventlog.clear()
       - q: status.clear()
       - q: reset()
+      - q: collectgarbage()
     error:
       status_register:
         - q: print(status.standard.event)

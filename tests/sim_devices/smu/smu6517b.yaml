@@ -19,6 +19,7 @@ devices:
         r: '1'
       - q: '*RST'
       - q: '*CLS'
+      - q: collectgarbage()
     error:
       status_register:
         - q: '*ESR?'

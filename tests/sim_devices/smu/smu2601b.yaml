@@ -29,6 +29,7 @@ devices:
       - q: print([[0]])
         r: 0
       - q: waitcomplete()
+      - q: collectgarbage()
       - q: status.node_enable = 1
       - q: print(status.node_enable)
         r: 1
