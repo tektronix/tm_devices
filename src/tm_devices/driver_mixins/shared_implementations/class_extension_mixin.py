@@ -14,6 +14,7 @@ _P = ParamSpec(
 )
 
 
+# TODO: nfelt14: Look into making this private or filtering it out of the docs
 class ExtendableMixin:
     """A mixin class which adds methods for expanding a class."""
 

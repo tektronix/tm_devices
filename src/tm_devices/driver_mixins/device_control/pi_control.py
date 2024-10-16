@@ -15,9 +15,7 @@ from packaging.version import Version
 from pyvisa import constants as visa_constants
 from pyvisa import VisaIOError
 
-from tm_devices.driver_mixins.device_control._abstract_device_control import (
-    _AbstractDeviceControl,  # pyright: ignore[reportPrivateUsage]
-)
+from tm_devices.driver_mixins.device_control.abstract_device_control import AbstractDeviceControl
 from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import IEEE4882Commands
 from tm_devices.helpers import (
@@ -35,7 +33,7 @@ from tm_devices.helpers import (
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class PIControl(_AbstractDeviceControl, ExtendableMixin, ABC):  # pylint: disable=too-many-public-methods
+class PIControl(AbstractDeviceControl, ExtendableMixin, ABC):  # pylint: disable=too-many-public-methods
     """Base Programmable Interface (PI) control class.
 
     !!! important
@@ -89,21 +87,20 @@ class PIControl(_AbstractDeviceControl, ExtendableMixin, ABC):  # pylint: disabl
     # Abstract Methods
     ################################################################################################
     # TODO: nfelt14: Determine if this really needs to be an abstract method here. If not,
-    #  remove it from the example code too.
+    #  remove it from the example code too. It could also just be made a "final" method
     @abstractmethod
-    def expect_esr(self, esr: Union[int, str], error_string: str = "") -> Tuple[bool, str]:
-        r"""Check for the expected number of errors and output string.
+    def expect_esr(self, esr: int, error_messages: Tuple[str] = ()) -> bool:
+        r"""Check for the expected error code and messages.
 
         Args:
             esr: Expected ``*ESR?`` value
-            error_string: Expected error buffer string.
-                Multiple errors should be separated by a \n character
+            error_messages: Expected error buffer messages in a tuple.
 
         Returns:
-            Boolean indicating if the check passed or failed and a string with the results.
+            A boolean indicating if the check passed or failed.
 
         Raises:
-            AssertionError: Indicating that the device's ESR and error buffer string don't match the
+            AssertionError: Indicating that the device's error code and messages don't match the
                 expected values.
         """
 

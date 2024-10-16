@@ -17,8 +17,8 @@ from typing import (
 
 from packaging.version import Version
 
-from tm_devices.driver_mixins.device_control._abstract_device_control import (
-    _AbstractDeviceControl,  # pyright: ignore[reportPrivateUsage]
+from tm_devices.driver_mixins.device_control.abstract_device_control import (
+    AbstractDeviceControl,
 )
 from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
 from tm_devices.helpers import (
@@ -45,7 +45,7 @@ def family_base_class(cls: _T) -> _T:
 
 
 # pylint: disable=too-many-instance-attributes,too-many-public-methods
-class Device(_AbstractDeviceControl, ExtendableMixin, ABC):
+class Device(AbstractDeviceControl, ExtendableMixin, ABC):
     """Base device driver that all devices inherit from."""
 
     _DEVICE_TYPE: str  # should be implemented by device type base classes

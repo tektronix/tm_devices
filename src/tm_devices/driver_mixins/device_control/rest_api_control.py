@@ -9,9 +9,7 @@ from typing import Any, cast, Dict, Mapping, Optional, Tuple, Union
 
 import requests
 
-from tm_devices.driver_mixins.device_control._abstract_device_control import (
-    _AbstractDeviceControl,  # pyright: ignore[reportPrivateUsage]
-)
+from tm_devices.driver_mixins.device_control.abstract_device_control import AbstractDeviceControl
 from tm_devices.helpers import (
     DeviceConfigEntry,
     print_with_timestamp,
@@ -20,7 +18,7 @@ from tm_devices.helpers import (
 )
 
 
-class RESTAPIControl(_AbstractDeviceControl, ABC):
+class RESTAPIControl(AbstractDeviceControl, ABC):
     """Base REST Application Programming Interface (API) control class.
 
     !!! important
