@@ -2,6 +2,10 @@
 
 import pyvisa as visa
 
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.driver_mixins.shared_implementations.tektronix_pi_scope_mixin import (
+    TektronixPIScopeMixin,
+)
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.scopes.scope import Scope
 from tm_devices.helpers import DeviceConfigEntry
@@ -9,7 +13,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class TSOVu(Scope):
+class TSOVu(TektronixPIScopeMixin, PIControl, Scope):
     """TSOVu device driver."""
 
     ################################################################################################

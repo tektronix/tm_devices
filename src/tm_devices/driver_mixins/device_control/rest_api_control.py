@@ -22,7 +22,7 @@ class RESTAPIControl(AbstractDeviceControl, ABC):
     """Base REST Application Programming Interface (API) control class.
 
     !!! important
-        Any class that inherits this control Mixin must also inherit a descendant of the
+        Any class that inherits this control mixin must also inherit a descendant of the
         [`Device`][tm_devices.drivers.device.Device] class in order to have access to the
         attributes required by this class.
     """

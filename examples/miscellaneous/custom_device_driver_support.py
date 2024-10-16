@@ -1,6 +1,6 @@
 """An example of external device support via a custom driver."""
 
-from typing import Tuple, Union
+from typing import Tuple
 
 from tm_devices import DeviceManager, register_additional_usbtmc_mapping
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
@@ -13,13 +13,20 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 # Custom devices that inherit from a supported device type can be defined by inheriting from the
 # specific device type class. This custom class must implement all abstract methods defined by the
 # abstract parent classes.
-class CustomScope(Scope):
+class CustomScope(PIControl, Scope):
     """Custom scope class."""
 
     # This is an abstract method that must be implemented by the custom device driver
     @cached_property
     def total_channels(self) -> int:
         return 4
+
+    # This is an abstract method that must be implemented by the custom device driver.
+    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+        """Get the current errors from the device."""
+        # The contents of this method would need to be properly implemented,
+        # this is just example code. :)
+        return 0, ()
 
     def custom_method(self, value: str) -> None:
         """Add a custom method to the custom driver."""
@@ -38,15 +45,10 @@ class CustomDevice(PIControl, Device):
 
     # This is an abstract method that must be implemented by the custom device driver.
     def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+        """Get the current errors from the device."""
         # The contents of this method would need to be properly implemented,
         # this is just example code. :)
         return 0, ()
-
-    # This is an abstract method that must be implemented by the custom device driver.
-    def expect_esr(self, esr: Union[int, str], error_string: str = "") -> Tuple[bool, str]:
-        # The contents of this method would need to be properly implemented,
-        # this is just example code. :)
-        return True, ""
 
     def custom_device_method(self, value: int) -> None:
         """Add a custom method to the custom device driver."""
@@ -78,8 +80,8 @@ with DeviceManager(external_device_drivers=CUSTOM_DEVICE_DRIVERS) as device_mana
     #       the `device_type` key must be set to "UNSUPPORTED".
     custom_device: CustomDevice = device_manager.add_unsupported_device("192.168.0.3")
 
-    # Custom drivers inherit all methods
-    custom_scope.expect_esr(0)  # check for no errors
+    # Custom drivers inherit all methods and attributes
+    print(custom_scope.all_channel_names_list)  # print the channel names
     custom_scope.cleanup()  # cleanup the custom scope
     # Custom drivers can also use added methods
     custom_scope.custom_method("value")

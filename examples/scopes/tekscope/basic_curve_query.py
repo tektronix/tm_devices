@@ -1,12 +1,13 @@
 """An example showing a basic curve query."""
 
 from tm_devices import DeviceManager
+from tm_devices.drivers import AFG3KC, MSO5
 
 EXAMPLE_CSV_FILE = "example_curve_query.csv"
 
 with DeviceManager(verbose=True) as dm:
-    scope = dm.add_scope("MSO56-100083")
-    afg = dm.add_afg("192.168.0.1")
+    scope: MSO5 = dm.add_scope("MSO56-100083")
+    afg: AFG3KC = dm.add_afg("192.168.0.1")
 
     # Turn on AFG
     afg.set_and_check(":OUTPUT1:STATE", "1")

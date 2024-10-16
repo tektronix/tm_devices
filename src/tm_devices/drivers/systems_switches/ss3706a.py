@@ -3,6 +3,7 @@
 import pyvisa as visa
 
 from tm_devices.commands import SS3706AMixin
+from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.driver_mixins.shared_implementations.common_tsp_error_check_mixin import (
     CommonTSPErrorCheckMixin,
 )
@@ -13,7 +14,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class SS3706A(SS3706AMixin, CommonTSPErrorCheckMixin, SystemsSwitch):
+class SS3706A(SS3706AMixin, CommonTSPErrorCheckMixin, TSPControl, SystemsSwitch):
     """SS3706A device driver."""
 
     ################################################################################################

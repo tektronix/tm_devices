@@ -46,6 +46,10 @@ from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mix
     SourceDeviceConstants,
 )
 from tm_devices.driver_mixins.abstract_device_functionality.usb_drives_mixin import USBDrivesMixin
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.driver_mixins.shared_implementations.tektronix_pi_scope_mixin import (
+    TektronixPIScopeMixin,
+)
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.scopes.scope import Scope
 from tm_devices.helpers import DeviceConfigEntry, LoadImpedanceAFG, raise_error
@@ -75,6 +79,8 @@ class TekProbeData:
 # NOTE: This is no longer considered a family_base_class due to the
 # differences between the physical scope hardware devices and the TekScopePC device.
 class AbstractTekScope(  # pylint: disable=too-many-public-methods
+    TektronixPIScopeMixin,
+    PIControl,
     Scope,
     BusMixin,
     HistogramMixin,

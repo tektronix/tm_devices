@@ -13,10 +13,17 @@ from tm_devices.driver_mixins.shared_implementations.common_pi_system_error_chec
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class TektronixAFGAWGMixin(
+# TODO: nfelt14: Look into making this private
+class TektronixPIAFGAWGMixin(
     CommonPISystemErrorCheckMixin, SignalGeneratorMixin, ExtendableMixin, ABC
 ):
-    """A private mixin for common methods and attributes for Tektronix AFG and AWG devices."""
+    """A private mixin for common methods and attributes for Tektronix AFG and AWG devices.
+
+    !!! important
+        Any class that inherits this mixin must also inherit the
+        [`PIControl`][tm_devices.driver_mixins.device_control.pi_control.PIControl] mixin in order
+        to have access to the methods required by this class.
+    """
 
     ################################################################################################
     # Properties

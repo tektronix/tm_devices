@@ -1,14 +1,13 @@
 """A class containing properties and attributes shared between devices and control mixins."""
 
 from abc import ABC, abstractmethod
+from typing import Tuple
 
 from tm_devices.helpers import DeviceConfigEntry
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
 # TODO: nfelt14: Look into making this private or filtering it out of the docs
-# TODO: nfelt14: Look into moving the _get_errors() abstract method to this class for
-#  type hinting and usage in the control classes
 class AbstractDeviceControl(ABC):  # pylint: disable=too-few-public-methods
     """Abstract class with properties and attributes shared between devices and control mixins."""
 
@@ -33,3 +32,15 @@ class AbstractDeviceControl(ABC):  # pylint: disable=too-few-public-methods
     @abstractmethod
     def ip_address(self) -> str:
         """The IP address of the device."""
+
+    @abstractmethod
+    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+        """Get the current errors from the device.
+
+        !!! note
+            This method will clear out the error queue after reading the current errors.
+
+        Returns:
+            A tuple containing the current error code alongside a tuple of the current error
+            messages.
+        """

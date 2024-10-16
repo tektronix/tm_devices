@@ -20,6 +20,7 @@ from tm_devices.commands import (
     SMU2651ACommands,
     SMU2657ACommands,
 )
+from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.driver_mixins.shared_implementations.common_tsp_error_check_mixin import (
     CommonTSPErrorCheckMixin,
 )
@@ -29,7 +30,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class SMU26xx(CommonTSPErrorCheckMixin, SourceMeasureUnit, ABC):
+class SMU26xx(CommonTSPErrorCheckMixin, TSPControl, SourceMeasureUnit, ABC):
     """Base SMU26xx device driver."""
 
     ################################################################################################

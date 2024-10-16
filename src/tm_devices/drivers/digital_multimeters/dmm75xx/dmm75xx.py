@@ -5,6 +5,7 @@ from typing import Tuple
 
 import pyvisa as visa
 
+from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 from tm_devices.driver_mixins.shared_implementations.common_tsp_error_check_mixin import (
     CommonTSPErrorCheckMixin,
 )
@@ -17,7 +18,7 @@ from tm_devices.helpers import DeviceConfigEntry
 
 
 @family_base_class
-class DMM75xx(CommonTSPErrorCheckMixin, DigitalMultimeter, ABC):
+class DMM75xx(CommonTSPErrorCheckMixin, TSPControl, DigitalMultimeter, ABC):
     """Base DMM75xx device driver."""
 
     _IEEE_COMMANDS_CLASS = LegacyTSPIEEE4882Commands
@@ -70,8 +71,9 @@ class DMM75xx(CommonTSPErrorCheckMixin, DigitalMultimeter, ABC):
             messages.
         """
         # instrument returns exponential numbers so converting to float before int
+        error_code = int(float(self.query("print(status.standard.event)")))
         err_count = int(self.query("print(eventlog.getcount(eventlog.SEV_ERROR))"))
         error_message_list = []
         if err_count:
             error_message_list = [self.query("print(eventlog.next())") for _ in range(err_count)]
-        return err_count, tuple(filter(None, error_message_list))
+        return error_code, tuple(filter(None, error_message_list))

@@ -3,6 +3,7 @@
 import atexit
 
 from tm_devices import DeviceManager
+from tm_devices.drivers import MSO6B
 
 # Create the device manager
 dm = DeviceManager()
@@ -11,7 +12,7 @@ dm = DeviceManager()
 atexit.register(dm.close)
 
 # Add a device
-scope = dm.add_scope("192.168.1.102")
+scope: MSO6B = dm.add_scope("192.168.1.102")
 
 # Use the device
 print(scope)

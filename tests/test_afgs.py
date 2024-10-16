@@ -48,20 +48,17 @@ def test_afg3k(device_manager: DeviceManager) -> None:  # noqa: PLR0915  # pylin
     assert afg3252c.opt_string == "0"
     assert afg3252c.query("SYSTEM:ERROR?") == '0,"No error"'
     assert afg3252c.query("SYSTEM:ERROR?", remove_quotes=True) == "0,No error"
-    assert afg3252c.expect_esr(0)[0]
+    assert afg3252c.expect_esr(0)
     with mock.patch("pyvisa.highlevel.VisaLibraryBase.clear", mock.MagicMock(return_value=None)):
         assert afg3252c.query_expect_timeout("INVALID?", timeout_ms=1) == ""
     with mock.patch(
         "pyvisa.resources.messagebased.MessageBasedResource.query",
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
-        assert afg3252c.query_expect_timeout("INVALID?", timeout_ms=1) == ""
-    assert afg3252c.expect_esr(32, '1, Command error\n0,"No error"')[0]
+        afg3252c.query_expect_timeout("INVALID?", timeout_ms=1)
+    assert afg3252c.expect_esr(32, ("1, Command error", '0,"No error"'))
     with pytest.raises(AssertionError):
-        afg3252c.expect_esr(32, '1, Command error\n0,"No error"')
-
-    with pytest.raises(AssertionError, match="No error string was provided"):
-        afg3252c.expect_esr(1)
+        afg3252c.expect_esr(32, ("1, Command error", '0,"No error"'))
 
     with pytest.raises(AssertionError, match="Invalid channel name 'ch', valid items: "):
         afg3252c._validate_channels("ch")  # noqa: SLF001

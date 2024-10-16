@@ -135,18 +135,6 @@ class Device(AbstractDeviceControl, ExtendableMixin, ABC):
         """Perform the actual closing code."""
 
     @abstractmethod
-    def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
-        """Get the current errors from the device.
-
-        !!! note
-            This method will clear out the error queue after reading the current errors.
-
-        Returns:
-            A tuple containing the current error code alongside a tuple of the current error
-            messages.
-        """
-
-    @abstractmethod
     def _open(self) -> bool:
         """Perform the actual opening code.
 

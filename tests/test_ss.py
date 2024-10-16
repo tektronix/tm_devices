@@ -32,5 +32,5 @@ def test_ss(device_manager: DeviceManager) -> None:
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
         switch.query_expect_timeout("INVALID?", timeout_ms=1)
-    assert switch.expect_esr(32, "Command error,No Error")[0]
+    assert switch.expect_esr(32, ("Command error", "No Error"))
     assert switch.total_channels == 576

@@ -96,10 +96,10 @@ def test_smu(  # noqa: PLR0915
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
         smu.query_expect_timeout("INVALID?", timeout_ms=1)
-    assert smu.expect_esr(32, "Command error,No Error")[0]
+    assert smu.expect_esr(32, ("Command error", "No Error"))
 
     with pytest.raises(AssertionError):
-        smu.expect_esr(32, "ERROR")
+        smu.expect_esr(32, ("ERROR",))
 
     tspieee = smu._ieee_cmds  # noqa: SLF001
 
@@ -252,7 +252,7 @@ def test_smu(  # noqa: PLR0915
     smu.enable_verification = False
     assert smu.set_and_check("status.request_enable", 1) == ""
 
-    with pytest.raises(AssertionError, match="No error string was provided"):
+    with pytest.raises(AssertionError, match="error code 0 != 1"):
         smu.expect_esr(1)
 
 
@@ -277,7 +277,7 @@ def test_smu2450(device_manager: DeviceManager, capsys: pytest.CaptureFixture[st
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
         smu.query_expect_timeout("INVALID?", timeout_ms=1)
-    assert smu.expect_esr(32, "Command error,No Error")[0]
+    assert smu.expect_esr(32, ("Command error", "No Error"))
     assert smu.all_channel_names_list == ("OUTPUT1",)
 
 

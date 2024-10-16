@@ -1,15 +1,16 @@
-"""A mixin class that contains common methods for checking the PI device for SYSTEM:ERROR."""
+"""A private mixin for common methods and attributes for Tektronix scopes."""
 
 from abc import ABC
-from typing import List, Tuple
+from typing import Tuple
 
 from tm_devices.driver_mixins.device_control.abstract_device_visa_write_query_control import (
     AbstractDeviceVISAWriteQueryControl,
 )
 
 
-class CommonPISystemErrorCheckMixin(AbstractDeviceVISAWriteQueryControl, ABC):
-    """A mixin class that contains common methods for checking the PI device for SYSTEM:ERROR.
+# TODO: nfelt14: Look into making this private
+class TektronixPIScopeMixin(AbstractDeviceVISAWriteQueryControl, ABC):
+    """A private mixin for common methods and attributes for Tektronix scopes.
 
     !!! important
         Any class that inherits this mixin must also inherit the
@@ -20,7 +21,7 @@ class CommonPISystemErrorCheckMixin(AbstractDeviceVISAWriteQueryControl, ABC):
     @property
     def _no_error_string(self) -> str:
         """A string containing the expected error message when no error is present."""
-        return '0,"No error"'
+        return '0,"No events to report - queue empty"'
 
     def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
         """Get the current errors from the device.
@@ -33,12 +34,9 @@ class CommonPISystemErrorCheckMixin(AbstractDeviceVISAWriteQueryControl, ABC):
             messages.
         """
         result = int(self.query("*ESR?").strip())
+        allev_list = [
+            x + ('"' if not x.endswith('"') else "") for x in self.query(":ALLev?").split('",')
+        ]
+        returned_errors = tuple(filter(None, allev_list))
 
-        # return the errors if any
-        returned_errors: List[str] = []
-        error = ""
-        while error != '0,"No error"':
-            error = self.query("SYSTEM:ERROR?")
-            returned_errors.append(error)
-
-        return result, tuple(returned_errors)
+        return result, returned_errors

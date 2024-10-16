@@ -266,7 +266,7 @@ class AWG70KASourceChannel(AWGSourceChannel):
                     '-222,"Data out of range;Data Out of Range - '
                     f'OUTPUT{self.num}:PATH DCA\r\n"\n0,"No error"'
                 )
-                self._awg.expect_esr("16", expected_esr_message)
+                self._awg.expect_esr(16, (expected_esr_message,))
                 self._awg.set_and_check(
                     f"OUTPUT{self.num}:PATH", self._awg.OutputSignalPath.DIR.value
                 )

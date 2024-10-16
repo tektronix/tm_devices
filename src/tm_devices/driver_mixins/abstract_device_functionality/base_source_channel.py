@@ -4,9 +4,10 @@ from abc import ABC, abstractmethod
 from typing import Optional
 
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
 
 
-class BaseSourceChannel(ABC):
+class BaseSourceChannel(ExtendableMixin, ABC):
     """Base source channel driver."""
 
     def __init__(self, pi_control: PIControl, channel_name: str) -> None:

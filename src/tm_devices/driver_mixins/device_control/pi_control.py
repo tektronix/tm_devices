@@ -5,7 +5,7 @@ import socket
 import time
 import warnings
 
-from abc import ABC, abstractmethod
+from abc import ABC
 from contextlib import contextmanager
 from typing import final, Generator, List, Optional, Sequence, Tuple, Union
 
@@ -15,7 +15,9 @@ from packaging.version import Version
 from pyvisa import constants as visa_constants
 from pyvisa import VisaIOError
 
-from tm_devices.driver_mixins.device_control.abstract_device_control import AbstractDeviceControl
+from tm_devices.driver_mixins.device_control.abstract_device_visa_write_query_control import (
+    AbstractDeviceVISAWriteQueryControl,
+)
 from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import IEEE4882Commands
 from tm_devices.helpers import (
@@ -33,11 +35,11 @@ from tm_devices.helpers import (
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class PIControl(AbstractDeviceControl, ExtendableMixin, ABC):  # pylint: disable=too-many-public-methods
+class PIControl(AbstractDeviceVISAWriteQueryControl, ExtendableMixin, ABC):  # pylint: disable=too-many-public-methods
     """Base Programmable Interface (PI) control class.
 
     !!! important
-        Any class that inherits this control Mixin must also inherit a descendant of the
+        Any class that inherits this control mixin must also inherit a descendant of the
         [`Device`][tm_devices.drivers.device.Device] class in order to have access to the
         attributes required by this class.
     """
@@ -86,23 +88,6 @@ class PIControl(AbstractDeviceControl, ExtendableMixin, ABC):  # pylint: disable
     ################################################################################################
     # Abstract Methods
     ################################################################################################
-    # TODO: nfelt14: Determine if this really needs to be an abstract method here. If not,
-    #  remove it from the example code too. It could also just be made a "final" method
-    @abstractmethod
-    def expect_esr(self, esr: int, error_messages: Tuple[str, ...] = ()) -> bool:
-        r"""Check for the expected error code and messages.
-
-        Args:
-            esr: Expected ``*ESR?`` value
-            error_messages: Expected error buffer messages in a tuple.
-
-        Returns:
-            A boolean indicating if the check passed or failed.
-
-        Raises:
-            AssertionError: Indicating that the device's error code and messages don't match the
-                expected values.
-        """
 
     ################################################################################################
     # Properties
@@ -330,7 +315,7 @@ class PIControl(AbstractDeviceControl, ExtendableMixin, ABC):  # pylint: disable
             f"returned {wanted_val}, received:\n{query_list}"
         )
 
-    def query(
+    def query(  # pylint: disable=arguments-differ
         self,
         query: str,
         *,
@@ -809,7 +794,7 @@ class PIControl(AbstractDeviceControl, ExtendableMixin, ABC):  # pylint: disable
 
         return visa_connection
 
-    def write(self, command: str, opc: bool = False, verbose: bool = True) -> None:
+    def write(self, command: str, opc: bool = False, verbose: bool = True) -> None:  # pylint: disable=arguments-differ
         r"""Write a command to the device.
 
         Args:

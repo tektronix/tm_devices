@@ -2,6 +2,7 @@
 
 from packaging.version import Version
 
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.driver_mixins.shared_implementations.common_pi_system_error_check_mixin import (
     CommonPISystemErrorCheckMixin,
 )
@@ -12,7 +13,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class PSU2200(CommonPISystemErrorCheckMixin, PowerSupplyUnit):
+class PSU2200(CommonPISystemErrorCheckMixin, PIControl, PowerSupplyUnit):
     """2200 Base device driver for the 22xx family of power supplies."""
 
     ################################################################################################

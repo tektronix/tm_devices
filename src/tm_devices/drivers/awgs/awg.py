@@ -13,8 +13,10 @@ from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mix
     ParameterBounds,
     SourceDeviceConstants,
 )
-from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
-from tm_devices.driver_mixins.shared_implementations.tek_afg_awg_mixin import TektronixAFGAWGMixin
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.driver_mixins.shared_implementations.tektronix_pi_afg_awg_mixin import (
+    TektronixPIAFGAWGMixin,
+)
 from tm_devices.drivers.device import Device, family_base_class
 from tm_devices.helpers import DeviceTypes, LoadImpedanceAFG
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
@@ -32,8 +34,12 @@ class AWGSourceDeviceConstants(SourceDeviceConstants):
     functions: Type[SignalGeneratorFunctionsAWG] = SignalGeneratorFunctionsAWG
 
 
-# TODO: nfelt14: remove PIControl inheritance if possible
-class AWG(TektronixAFGAWGMixin, Device, ABC):
+# NOTE: Currently all AWGs are controlled via PI, hence the usage of the PIControl mixin here. If
+# this changes in the future, the class inheritance structure may need to be modified and the
+# control class inheritance responsibility moved to the Family Base Classes. The other option
+# would be to create two abstract AWG parent classes and two distinct AWGSourceChannel classes,
+# with one set using the PIControl mixin and one set using another control mixin.
+class AWG(TektronixPIAFGAWGMixin, PIControl, Device, ABC):
     """Base AWG device driver."""
 
     OutputSignalPath = SignalGeneratorOutputPathsNon5200
@@ -292,7 +298,7 @@ class AWG(TektronixAFGAWGMixin, Device, ABC):
     def _get_predefined_waveform_name(
         self,
         frequency: float,
-        function: SignalGeneratorFunctionsAWG,
+        selected_function: SignalGeneratorFunctionsAWG,
         output_signal_path: Optional[SignalGeneratorOutputPathsBase],
         symmetry: Optional[float] = 50.0,
     ) -> Tuple[str, float]:
@@ -300,22 +306,27 @@ class AWG(TektronixAFGAWGMixin, Device, ABC):
 
         Args:
             frequency: The frequency of the waveform to generate.
-            function: The waveform shape to generate.
+            selected_function: The waveform shape to generate.
             output_signal_path: The output signal path of the specified channel.
             symmetry: The symmetry to set the signal to, only applicable to certain functions.
 
         Returns:
             A tuple containing the best waveform from the predefined files and the sample rate.
         """
-        if function == function.RAMP and symmetry == 50:  # noqa: PLR2004
-            function = function.TRIANGLE
-        if function != SignalGeneratorFunctionsAWG.DC and not function.value.startswith("*"):
+        if selected_function == selected_function.RAMP and symmetry == 50:  # noqa: PLR2004
+            selected_function = selected_function.TRIANGLE
+        if (
+            selected_function != SignalGeneratorFunctionsAWG.DC
+            and not selected_function.value.startswith("*")
+        ):
             device_constraints = self.get_waveform_constraints(
-                function=function, frequency=frequency, output_signal_path=output_signal_path
+                function=selected_function,
+                frequency=frequency,
+                output_signal_path=output_signal_path,
             )
-            if function == SignalGeneratorFunctionsAWG.SIN:
+            if selected_function == SignalGeneratorFunctionsAWG.SIN:
                 premade_signal_rl = self._PRE_DEFINED_SIGNAL_RECORD_LENGTH_SIN
-            elif function == SignalGeneratorFunctionsAWG.CLOCK:
+            elif selected_function == SignalGeneratorFunctionsAWG.CLOCK:
                 premade_signal_rl = self._PRE_DEFINED_SIGNAL_RECORD_LENGTH_CLOCK
             else:
                 premade_signal_rl = self._PRE_DEFINED_SIGNAL_RECORD_LENGTH_DEFAULT
@@ -329,13 +340,13 @@ class AWG(TektronixAFGAWGMixin, Device, ABC):
                     <= needed_sample_rate
                     <= device_constraints.sample_rate_range.upper
                 ):
-                    predefined_name = f"*{function.value.title()}{record_length}"
+                    predefined_name = f"*{selected_function.value.title()}{record_length}"
                     break
             else:
                 # This clause is skipped if break is called in for loop.
                 error_message = (
-                    f"Unable to generate {function.value} waveform with provided frequency of "
-                    f"{frequency} Hz."
+                    f"Unable to generate {selected_function.value} waveform with "
+                    f"provided frequency of {frequency} Hz."
                 )
                 raise ValueError(error_message)
         else:
@@ -353,7 +364,7 @@ class AWG(TektronixAFGAWGMixin, Device, ABC):
 
 
 @family_base_class
-class AWGSourceChannel(BaseSourceChannel, ExtendableMixin):
+class AWGSourceChannel(BaseSourceChannel):
     """AWG signal source channel composite."""
 
     ################################################################################################

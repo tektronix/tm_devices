@@ -29,7 +29,7 @@ def test_dmm6500(device_manager: DeviceManager) -> None:
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
         dmm.query_expect_timeout("INVALID?", timeout_ms=1)
-    assert dmm.expect_esr(32, "Command error,No Error")[0]
+    assert dmm.expect_esr(32, ("Command error", "No Error"))
 
 
 def test_dmm75xx(device_manager: DeviceManager) -> None:
@@ -47,7 +47,7 @@ def test_dmm75xx(device_manager: DeviceManager) -> None:
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
         dmm.query_expect_timeout("INVALID?", timeout_ms=1)
-    assert dmm.expect_esr(32, "Command error,No Error")[0]
+    assert dmm.expect_esr(32, ("Command error", "No Error"))
 
 
 def test_daq6510(device_manager: DeviceManager) -> None:
@@ -67,5 +67,5 @@ def test_daq6510(device_manager: DeviceManager) -> None:
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
         daq.query_expect_timeout("INVALID?", timeout_ms=1)
-    assert daq.expect_esr(32, "Command error,No Error")[0]
+    assert daq.expect_esr(32, ("Command error", "No Error"))
     assert daq.total_channels == 1
