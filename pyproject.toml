@@ -98,8 +98,6 @@ urllib3 = "^2.0"
 zeroconf = "^0.135.0"
 
 [tool.poetry.group.dev.dependencies]
-docutils = "^0.20"  # TODO: remove this when the minimum Python version is >=3.9
-docutils-stubs = "^0.0.22"
 nodeenv = "^1.9.1"
 pip = "^24.0"
 poetry = "^1.8.0"

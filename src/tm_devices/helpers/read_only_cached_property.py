@@ -7,7 +7,7 @@ from typing import TypeVar
 
 _T = TypeVar("_T")
 
-# TODO: Remove the pragmas and exception block when support for Python 3.8 is dropped
+# TODO: Drop Python 3.8: Remove pragmas and exception block when support for Python 3.8 is dropped
 try:  # pragma: py-lt-39
     # pylint: disable=unsubscriptable-object,useless-suppression
     class ReadOnlyCachedProperty(cached_property[_T]):  # pyright: ignore[reportRedeclaration]

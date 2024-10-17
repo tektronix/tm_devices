@@ -128,7 +128,6 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
         super().__init__(config_entry, verbose, visa_resource, default_visa_timeout)
         self.write("HEADER OFF", verbose=False)
 
-        # TODO: this should be a property of the probe attribute on the channel object
         self._num_dig_bits_in_ch: int = 8
 
     ################################################################################################

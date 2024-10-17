@@ -14,7 +14,8 @@ from typing import Any, Callable, DefaultDict, Optional, Type, Union
 
 END_OF_STRING_DIGITS = re.compile(r"([-\d]+)]?$")
 MIDDLE_OF_STRING_DIGITS = re.compile(r"([-\d]+)]?")
-# TODO: Once Python 3.8 is no longer supported, the dynamic parent class can be removed
+# TODO: Drop Python 3.8: Once Python 3.8 is no longer supported,
+#  the dynamic parent class can be removed
 # pylint: disable=unsubscriptable-object,useless-suppression
 ParentDefaultDictClass: Type[DefaultDict[Any, Any]] = (
     defaultdict if sys.version_info < (3, 9) else defaultdict[Any, Any]
