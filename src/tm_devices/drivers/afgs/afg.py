@@ -39,11 +39,14 @@ class AFGSourceDeviceConstants(SourceDeviceConstants):
 class AFG(_TektronixPIAFGAWGMixin, PIControl, Device, ABC):
     """Base AFG device driver."""
 
-    _DEVICE_TYPE = DeviceTypes.AFG.value
-
     ################################################################################################
     # Properties
     ################################################################################################
+    @cached_property
+    def device_type(self) -> str:
+        """Return a string representing the device type."""
+        return DeviceTypes.AFG.value
+
     @cached_property
     def source_channel(self) -> "MappingProxyType[str, AFGSourceChannel]":
         """Mapping of channel names to AFGSourceChannel objects."""

@@ -51,12 +51,10 @@ def family_base_class(cls: _T) -> _T:
 class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
     """Base device driver that all devices inherit from."""
 
-    _DEVICE_TYPE: str  # should be implemented by device type base classes
-
     ################################################################################################
     # Categories:
     # - Magic Methods
-    # - Abstract Cached Properties
+    # - Abstract Properties
     # - Abstract Methods - Private and Public
     # - Properties - Private and Public
     # - Cached Properties
@@ -104,8 +102,13 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         return retval
 
     ################################################################################################
-    # Abstract Cached Properties
+    # Abstract Properties
     ################################################################################################
+    @cached_property
+    @abstractmethod
+    def device_type(self) -> str:
+        """Return a string representing the device type."""
+
     @cached_property
     @abstractmethod
     def manufacturer(self) -> str:
@@ -227,11 +230,6 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
     def device_number(self) -> int:
         """Return the device number, if it was not created by the DeviceManager it will be -1."""
         return self._device_number
-
-    @property
-    def device_type(self) -> str:
-        """Return a string representing the device type."""
-        return self._DEVICE_TYPE
 
     @property
     def enable_verification(self) -> bool:

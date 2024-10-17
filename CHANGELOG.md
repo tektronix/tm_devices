@@ -40,6 +40,7 @@ However, please read through all changes to be aware of what may potentially imp
 - <span style="color:red">BREAKING CHANGE</span>: Renamed the `get_eventlog_status()` method to `_get_errors()` and made it a required, abstract method for all devices to implement.
     - To get similar functionality to the previous `get_eventlog_status()` method, switch to using the new `get_errors()` method.
 - <span style="color:red">BREAKING CHANGE</span>: Changed the behavior of the `expect_esr()` method to expect an integer error code input and an optional tuple of error messages to compare against the actual error code and messages returned by the `_get_errors()` private method.
+- <span style="color:red">BREAKING CHANGE</span>: Converted the `device_type` property into an abstract, cached property to force all children of the `Device` class to specify what type of device they are.
 
 ### Removed
 

@@ -1,4 +1,4 @@
-"""Module containing an inner class to use for an API for IEEE 488.2 commands."""
+"""Module containing inner classes to use for APIs for IEEE 488.2 commands."""
 
 from typing import Optional, TYPE_CHECKING
 

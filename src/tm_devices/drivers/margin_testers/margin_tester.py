@@ -19,8 +19,6 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 class MarginTester(Device, RESTAPIControl, ABC):
     """Base Margin Tester device driver."""
 
-    _DEVICE_TYPE = DeviceTypes.MT.value
-
     ################################################################################################
     # Magic Methods
     ################################################################################################
@@ -83,6 +81,11 @@ class MarginTester(Device, RESTAPIControl, ABC):
     ################################################################################################
     # Properties
     ################################################################################################
+    @cached_property
+    def device_type(self) -> str:
+        """Return a string representing the device type."""
+        return DeviceTypes.MT.value
+
     @property
     def auth_token_file_path(self) -> str:
         """Return the path to the file containing the auth token."""

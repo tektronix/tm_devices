@@ -26,8 +26,6 @@ from tm_devices.helpers.enums import ConnectionTypes, DeviceTypes, SupportedRequ
 class CustomRestApiDevice(RESTAPIControl, Device):
     """Custom Rest API Device class."""
 
-    _DEVICE_TYPE = "CUSTOM"
-
     def _check_api_connection(self) -> bool:
         """Define abstract method _check_api_connection."""
         return self.get("/api", verbose=False, allow_errors=True)[0]
@@ -45,6 +43,11 @@ class CustomRestApiDevice(RESTAPIControl, Device):
     def _open(self) -> bool:
         """Define abstract method _open."""
         return True
+
+    @cached_property
+    def device_type(self) -> str:
+        """Return the device type."""
+        return "CUSTOM"
 
     @cached_property
     def manufacturer(self) -> str:

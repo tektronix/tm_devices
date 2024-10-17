@@ -11,8 +11,6 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 class Scope(Device, ABC):
     """Base Scope device driver."""
 
-    _DEVICE_TYPE = DeviceTypes.SCOPE.value
-
     ################################################################################################
     # Abstract Properties
     ################################################################################################
@@ -28,6 +26,11 @@ class Scope(Device, ABC):
     ################################################################################################
     # Properties
     ################################################################################################
+    @cached_property
+    def device_type(self) -> str:
+        """Return a string representing the device type."""
+        return DeviceTypes.SCOPE.value
+
     @property
     def all_channel_names_list(self) -> Tuple[str, ...]:
         """Return a tuple containing all the channel names."""

@@ -44,7 +44,6 @@ class AWG(_TektronixPIAFGAWGMixin, PIControl, Device, ABC):
 
     OutputSignalPath = SignalGeneratorOutputPathsNon5200
 
-    _DEVICE_TYPE = DeviceTypes.AWG.value
     # The record lengths for the predefined SIN waveforms.
     _PRE_DEFINED_SIGNAL_RECORD_LENGTH_SIN: ClassVar[List[int]] = [3600, 1000, 960, 360, 100, 36, 10]
     # The record lengths for the predefined CLOCK waveforms.
@@ -59,6 +58,11 @@ class AWG(_TektronixPIAFGAWGMixin, PIControl, Device, ABC):
     ################################################################################################
     # Properties
     ################################################################################################
+    @cached_property
+    def device_type(self) -> str:
+        """Return a string representing the device type."""
+        return DeviceTypes.AWG.value
+
     @cached_property
     def source_channel(self) -> "MappingProxyType[str, AWGSourceChannel]":  # pragma: no cover
         """Mapping of channel names to AWGSourceChannel objects.

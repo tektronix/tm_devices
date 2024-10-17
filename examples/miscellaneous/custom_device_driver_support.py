@@ -41,7 +41,10 @@ class CustomDevice(PIControl, Device):
     """A custom device that is not one of the officially supported devices."""
 
     # Custom device types not officially supported need to define what type of device they are.
-    _DEVICE_TYPE = "CustomDevice"
+    @cached_property
+    def device_type(self) -> str:
+        """Return the device type."""
+        return "CustomDevice"
 
     # This is an abstract method that must be implemented by the custom device driver.
     def _get_errors(self) -> Tuple[int, Tuple[str, ...]]:
