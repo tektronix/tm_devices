@@ -4,9 +4,9 @@ from abc import ABC
 
 import pyvisa as visa
 
-from tm_devices.driver_mixins.device_control.pi_control import PIControl
-from tm_devices.driver_mixins.shared_implementations.tektronix_pi_scope_mixin import (
-    TektronixPIScopeMixin,
+from tm_devices.driver_mixins.device_control import PIControl
+from tm_devices.driver_mixins.shared_implementations._tektronix_pi_scope_mixin import (
+    _TektronixPIScopeMixin,  # pyright: ignore[reportPrivateUsage]
 )
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.scopes.scope import Scope
@@ -15,7 +15,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class TekScope5k7k70k(TektronixPIScopeMixin, PIControl, Scope, ABC):
+class TekScope5k7k70k(_TektronixPIScopeMixin, PIControl, Scope, ABC):
     """Base TekScope5k7k70k scope device driver."""
 
     ################################################################################################
@@ -55,6 +55,7 @@ class TekScope5k7k70k(TektronixPIScopeMixin, PIControl, Scope, ABC):
     def num_dig_bits_in_ch(self) -> int:
         """Return the number of digital bits expected in a digital channel."""
         # TODO: should be part of self.channel
+        #  https://github.com/tektronix/tm_devices/issues/329
         return self._num_dig_bits_in_ch
 
     @cached_property

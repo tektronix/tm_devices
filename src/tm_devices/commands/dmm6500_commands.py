@@ -8,7 +8,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
+from tm_devices.driver_mixins.device_control import TSPControl
 
 from .gen_d83qe0_dmm.buffer import Buffer
 from .gen_d83qe0_dmm.buffervar import Buffervar

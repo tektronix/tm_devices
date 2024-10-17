@@ -2,7 +2,7 @@
 
 from packaging.version import Version
 
-from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.driver_mixins.device_control import PIControl
 from tm_devices.driver_mixins.shared_implementations.common_pi_system_error_check_mixin import (
     CommonPISystemErrorCheckMixin,
 )

@@ -3,12 +3,13 @@
 from abc import abstractmethod
 from typing import Any, final, Tuple
 
-from tm_devices.driver_mixins.device_control.abstract_device_control import AbstractDeviceControl
+from tm_devices.driver_mixins.device_control._abstract_device_control import (
+    _AbstractDeviceControl,  # pyright: ignore[reportPrivateUsage]
+)
 from tm_devices.helpers import raise_failure, verify_values
 
 
-# TODO: nfelt14: Look into making this private or filtering it out of the docs
-class AbstractDeviceVISAWriteQueryControl(AbstractDeviceControl):
+class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: ignore[reportUnusedClass]
     """Abstract class defining methods that VISA devices and control mixins must have."""
 
     @property

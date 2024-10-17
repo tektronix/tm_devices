@@ -6,22 +6,23 @@ from typing import Tuple
 from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin import (
     SignalGeneratorMixin,
 )
-from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
+from tm_devices.driver_mixins.shared_implementations._extension_mixin import (
+    _ExtendableMixin,  # pyright: ignore[reportPrivateUsage]
+)
 from tm_devices.driver_mixins.shared_implementations.common_pi_system_error_check_mixin import (
     CommonPISystemErrorCheckMixin,
 )
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-# TODO: nfelt14: Look into making this private
-class TektronixPIAFGAWGMixin(
-    CommonPISystemErrorCheckMixin, SignalGeneratorMixin, ExtendableMixin, ABC
+class _TektronixPIAFGAWGMixin(  # pyright: ignore[reportUnusedClass]
+    CommonPISystemErrorCheckMixin, SignalGeneratorMixin, _ExtendableMixin, ABC
 ):
     """A private mixin for common methods and attributes for Tektronix AFG and AWG devices.
 
     !!! important
         Any class that inherits this mixin must also inherit the
-        [`PIControl`][tm_devices.driver_mixins.device_control.pi_control.PIControl] mixin in order
+        [`PIControl`][tm_devices.driver_mixins.device_control.PIControl] mixin in order
         to have access to the methods required by this class.
     """
 

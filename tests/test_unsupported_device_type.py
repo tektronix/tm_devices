@@ -7,7 +7,7 @@ from typing import Tuple
 import pytest
 
 from tm_devices import DeviceManager
-from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.driver_mixins.device_control import PIControl
 from tm_devices.drivers.device import Device
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 

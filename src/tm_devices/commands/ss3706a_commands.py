@@ -8,7 +8,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
+from tm_devices.driver_mixins.device_control import TSPControl
 
 from .gen_e3pief_ss.beeper import Beeper
 from .gen_e3pief_ss.buffervar import Buffervar

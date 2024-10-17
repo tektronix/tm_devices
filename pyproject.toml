@@ -216,6 +216,7 @@ disable = [
   "duplicate-code",
   "fixme",  # caught by ruff
   "global-statement",  # caught by ruff
+  "import-private-name",  # caught by pyright
   "invalid-name",  # caught by ruff
   "line-too-long",  # caught by ruff
   "locally-disabled",  # allowed

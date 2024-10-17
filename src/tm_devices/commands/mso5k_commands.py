@@ -7,7 +7,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.driver_mixins.device_control import PIControl
 
 from .gen_ffz2xs_dpodsamso.bus import Bus
 from .gen_fhrp27_msodpomdodsa.curve import Curve

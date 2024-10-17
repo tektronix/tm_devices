@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
+from tm_devices.driver_mixins.device_control import TSPControl
 
 from .gen_8ojdkz_smu.display import Display
 from .gen_8ojdkz_smu.node import NodeItem

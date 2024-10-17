@@ -4,8 +4,7 @@ import inspect
 
 from abc import ABC
 
-# pylint: disable=import-private-name
-# noinspection PyUnresolvedReferences,PyProtectedMember
+# noinspection PyUnresolvedReferences
 from functools import _lru_cache_wrapper, cached_property  # pyright: ignore [reportPrivateUsage]
 from types import FunctionType
 from typing import Any, Generator, List, Set, Type
@@ -19,8 +18,6 @@ import tm_devices.device_manager
 import tm_devices.drivers
 import tm_devices.helpers
 
-
-# noinspection PyProtectedMember
 from tm_devices.drivers.device import (
     _FAMILY_BASE_CLASS_PROPERTY_NAME,  # pyright: ignore [reportPrivateUsage]
     Device,

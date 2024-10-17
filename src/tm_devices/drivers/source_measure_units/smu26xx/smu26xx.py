@@ -20,7 +20,7 @@ from tm_devices.commands import (
     SMU2651ACommands,
     SMU2657ACommands,
 )
-from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
+from tm_devices.driver_mixins.device_control import TSPControl
 from tm_devices.driver_mixins.shared_implementations.common_tsp_error_check_mixin import (
     CommonTSPErrorCheckMixin,
 )

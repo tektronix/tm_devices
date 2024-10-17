@@ -101,29 +101,34 @@ plugins:
         python:  # see https://mkdocstrings.github.io/python/usage/
           paths: [src]
           options:
+            # General options
             extensions: [docs/griffe_custom_decorator_labels.py]
-            docstring_options:
-              ignore_init_summary: true
-              trim_doctest_flags: true
-            merge_init_into_class: true
-            members_order: alphabetical
             show_inheritance_diagram: true
-            inherited_members: true
             show_source: false  # a link is included at the top of each page
-            docstring_section_style: list
-            filters: ['!^_', ^__init__]
-            summary: true
-            show_signature_annotations: true
-            separate_signature: true
-            line_length: 100
-            signature_crossrefs: true
-            show_labels: true
+            # Headings options
             heading_level: 1
             show_root_heading: true
             show_root_full_path: false
             show_category_heading: false
             show_symbol_type_heading: true
             show_symbol_type_toc: false
+            # Members options
+            inherited_members: true
+            members_order: alphabetical
+            filters: ['!^_', ^__init__]
+            summary: false  # Currently implemented with custom templates
+            show_labels: true
+            # Docstrings options
+            docstring_options:
+              ignore_init_summary: true
+              trim_doctest_flags: true
+            docstring_section_style: list
+            merge_init_into_class: true
+            # Signature options
+            line_length: 100
+            show_signature_annotations: true
+            signature_crossrefs: true
+            separate_signature: true
           import:
             - url: https://docs.python.org/3/objects.inv
               domains: [std, py]

@@ -33,9 +33,9 @@ classDiagram
 
 ```
 
-The [`TekAFGAWG`][tm_devices.driver_mixins.shared_implementations.tektronix_pi_afg_awg_mixin.TektronixPIAFGAWGMixin] class is responsible
-for most waveform generators, including the [`AFG`][tm_devices.drivers.afgs.afg.AFG] and
-[`AWG`][tm_devices.drivers.awgs.awg.AWG].
+The [`AFG`][tm_devices.drivers.afgs.afg.AFG] and
+[`AWG`][tm_devices.drivers.awgs.awg.AWG] drivers both inherit from a shared, private mixin class
+that provides common functionality.
 Similarly, [`TekScope`][tm_devices.drivers.scopes.tekscope.tekscope.TekScope] is responsible for the
 [AFG](default:AFG) internal to the scopes themselves, commonly referred to as
 an [IAFG](default:IAFG). All of these classes inherit

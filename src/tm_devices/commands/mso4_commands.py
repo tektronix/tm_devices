@@ -7,7 +7,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.driver_mixins.device_control import PIControl
 
 from .gen_e3e9uu_lpdmso.acquire import Acquire
 from .gen_e3e9uu_lpdmso.actonevent import Actonevent

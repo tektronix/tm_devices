@@ -4,7 +4,9 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import Literal, NamedTuple, Optional, Type, TypeVar
 
-from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
+from tm_devices.driver_mixins.shared_implementations._extension_mixin import (
+    _ExtendableMixin,  # pyright: ignore[reportPrivateUsage]
+)
 from tm_devices.helpers.enums import (
     LoadImpedanceAFG,
     SignalGeneratorFunctionBase,
@@ -45,7 +47,7 @@ class SourceDeviceConstants:
     functions: Type[SignalGeneratorFunctionBase]
 
 
-class SignalGeneratorMixin(ExtendableMixin, ABC):
+class SignalGeneratorMixin(_ExtendableMixin, ABC):
     """A mixin class which adds methods and properties for generating signals."""
 
     @staticmethod

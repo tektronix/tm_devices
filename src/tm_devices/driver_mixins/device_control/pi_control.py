@@ -15,10 +15,12 @@ from packaging.version import Version
 from pyvisa import constants as visa_constants
 from pyvisa import VisaIOError
 
-from tm_devices.driver_mixins.device_control.abstract_device_visa_write_query_control import (
-    AbstractDeviceVISAWriteQueryControl,
+from tm_devices.driver_mixins.device_control._abstract_device_visa_write_query_control import (
+    _AbstractDeviceVISAWriteQueryControl,  # pyright: ignore[reportPrivateUsage]
 )
-from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
+from tm_devices.driver_mixins.shared_implementations._extension_mixin import (
+    _ExtendableMixin,  # pyright: ignore[reportPrivateUsage]
+)
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import IEEE4882Commands
 from tm_devices.helpers import (
     check_visa_connection,
@@ -35,7 +37,7 @@ from tm_devices.helpers import (
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class PIControl(AbstractDeviceVISAWriteQueryControl, ExtendableMixin, ABC):  # pylint: disable=too-many-public-methods
+class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  # pylint: disable=too-many-public-methods
     """Base Programmable Interface (PI) control class.
 
     !!! important

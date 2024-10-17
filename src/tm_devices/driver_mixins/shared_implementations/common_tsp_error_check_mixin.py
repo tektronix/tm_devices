@@ -3,17 +3,17 @@
 from abc import ABC
 from typing import Tuple
 
-from tm_devices.driver_mixins.device_control.abstract_device_visa_write_query_control import (
-    AbstractDeviceVISAWriteQueryControl,
+from tm_devices.driver_mixins.device_control._abstract_device_visa_write_query_control import (
+    _AbstractDeviceVISAWriteQueryControl,  # pyright: ignore[reportPrivateUsage]
 )
 
 
-class CommonTSPErrorCheckMixin(AbstractDeviceVISAWriteQueryControl, ABC):
+class CommonTSPErrorCheckMixin(_AbstractDeviceVISAWriteQueryControl, ABC):
     """A mixin class that contains common methods for checking the TSP device for errors.
 
     !!! important
         Any class that inherits this mixin must also inherit the
-        [`TSPControl`][tm_devices.driver_mixins.device_control.tsp_control.TSPControl] mixin in
+        [`TSPControl`][tm_devices.driver_mixins.device_control.TSPControl] mixin in
         order to have access to the methods required by this class.
     """
 

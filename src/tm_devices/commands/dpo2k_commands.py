@@ -8,7 +8,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.driver_mixins.device_control import PIControl
 
 from .gen_1lcv3a_msodpomdo.message import Message
 from .gen_1lcv3a_msodpomdo.setup_1 import SetupItem

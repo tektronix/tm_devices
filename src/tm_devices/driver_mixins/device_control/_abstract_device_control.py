@@ -7,8 +7,7 @@ from tm_devices.helpers import DeviceConfigEntry
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-# TODO: nfelt14: Look into making this private or filtering it out of the docs
-class AbstractDeviceControl(ABC):  # pylint: disable=too-few-public-methods
+class _AbstractDeviceControl(ABC):  # pylint: disable=too-few-public-methods  # pyright: ignore[reportUnusedClass]
     """Abstract class with properties and attributes shared between devices and control mixins."""
 
     def __init__(self, config_entry: DeviceConfigEntry, verbose: bool) -> None:

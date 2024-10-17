@@ -15,9 +15,9 @@ from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mix
     ParameterBounds,
     SourceDeviceConstants,
 )
-from tm_devices.driver_mixins.device_control.pi_control import PIControl
-from tm_devices.driver_mixins.shared_implementations.tektronix_pi_afg_awg_mixin import (
-    TektronixPIAFGAWGMixin,
+from tm_devices.driver_mixins.device_control import PIControl
+from tm_devices.driver_mixins.shared_implementations._tektronix_pi_afg_awg_mixin import (
+    _TektronixPIAFGAWGMixin,  # pyright: ignore[reportPrivateUsage]
 )
 from tm_devices.drivers.device import Device, family_base_class
 from tm_devices.helpers import DeviceTypes, LoadImpedanceAFG
@@ -36,7 +36,7 @@ class AFGSourceDeviceConstants(SourceDeviceConstants):
 
 
 @family_base_class
-class AFG(TektronixPIAFGAWGMixin, PIControl, Device, ABC):
+class AFG(_TektronixPIAFGAWGMixin, PIControl, Device, ABC):
     """Base AFG device driver."""
 
     _DEVICE_TYPE = DeviceTypes.AFG.value

@@ -1,14 +1,16 @@
-"""Base source channel driver module."""
+"""Base source channel module."""
 
 from abc import ABC, abstractmethod
 from typing import Optional
 
-from tm_devices.driver_mixins.device_control.pi_control import PIControl
-from tm_devices.driver_mixins.shared_implementations.class_extension_mixin import ExtendableMixin
+from tm_devices.driver_mixins.device_control import PIControl
+from tm_devices.driver_mixins.shared_implementations._extension_mixin import (
+    _ExtendableMixin,  # pyright: ignore[reportPrivateUsage]
+)
 
 
-class BaseSourceChannel(ExtendableMixin, ABC):
-    """Base source channel driver."""
+class BaseSourceChannel(_ExtendableMixin, ABC):
+    """Base source channel."""
 
     def __init__(self, pi_control: PIControl, channel_name: str) -> None:
         """Create a source channel.

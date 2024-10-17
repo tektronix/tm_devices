@@ -3,18 +3,17 @@
 from abc import ABC
 from typing import Tuple
 
-from tm_devices.driver_mixins.device_control.abstract_device_visa_write_query_control import (
-    AbstractDeviceVISAWriteQueryControl,
+from tm_devices.driver_mixins.device_control._abstract_device_visa_write_query_control import (
+    _AbstractDeviceVISAWriteQueryControl,  # pyright: ignore[reportPrivateUsage]
 )
 
 
-# TODO: nfelt14: Look into making this private
-class TektronixPIScopeMixin(AbstractDeviceVISAWriteQueryControl, ABC):
+class _TektronixPIScopeMixin(_AbstractDeviceVISAWriteQueryControl, ABC):  # pyright: ignore[reportUnusedClass]
     """A private mixin for common methods and attributes for Tektronix scopes.
 
     !!! important
         Any class that inherits this mixin must also inherit the
-        [`PIControl`][tm_devices.driver_mixins.device_control.pi_control.PIControl] mixin in order
+        [`PIControl`][tm_devices.driver_mixins.device_control.PIControl] mixin in order
         to have access to the methods required by this class.
     """
 

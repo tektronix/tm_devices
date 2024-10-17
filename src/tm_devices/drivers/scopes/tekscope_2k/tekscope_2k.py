@@ -8,9 +8,9 @@ from typing import Any, List, Optional
 from tm_devices.driver_mixins.abstract_device_functionality.channel_control_mixin import (
     ChannelControlMixin,
 )
-from tm_devices.driver_mixins.device_control.pi_control import PIControl
-from tm_devices.driver_mixins.shared_implementations.tektronix_pi_scope_mixin import (
-    TektronixPIScopeMixin,
+from tm_devices.driver_mixins.device_control import PIControl
+from tm_devices.driver_mixins.shared_implementations._tektronix_pi_scope_mixin import (
+    _TektronixPIScopeMixin,  # pyright: ignore[reportPrivateUsage]
 )
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.scopes.scope import Scope
@@ -18,7 +18,7 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 @family_base_class
-class TekScope2k(TektronixPIScopeMixin, PIControl, Scope, ChannelControlMixin, ABC):
+class TekScope2k(_TektronixPIScopeMixin, PIControl, Scope, ChannelControlMixin, ABC):
     """Base TekScope2k scope device driver."""
 
     ################################################################################################

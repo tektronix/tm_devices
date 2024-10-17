@@ -11,14 +11,11 @@ import requests
 from packaging.version import Version
 
 from mock_server import INDEX_RESPONSE, PORT
-from tm_devices.driver_mixins.device_control.rest_api_control import (
-    RESTAPIControl,
-    SupportedRequestTypes,
-)
+from tm_devices.driver_mixins.device_control import RESTAPIControl
 from tm_devices.drivers.device import Device, family_base_class
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 from tm_devices.helpers.constants_and_dataclasses import DeviceConfigEntry
-from tm_devices.helpers.enums import ConnectionTypes, DeviceTypes
+from tm_devices.helpers.enums import ConnectionTypes, DeviceTypes, SupportedRequestTypes
 
 
 ################################################################################################
@@ -91,7 +88,6 @@ def fixture_rest_api_control(mock_http_server: None) -> CustomRestApiDevice:  # 
         ),
         verbose=False,
     )
-    # noinspection PyProtectedMember
     # Change base_url from https to http as the mock server
     # can only handle http requests. Also add port number.
     rest_api_control._base_url = (  # noqa: SLF001

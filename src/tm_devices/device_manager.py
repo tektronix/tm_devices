@@ -17,9 +17,7 @@ from typing import cast, Dict, Mapping, Optional, Tuple, Type, TYPE_CHECKING, Un
 from typing_extensions import TypeVar
 
 from tm_devices.components import DMConfigParser
-from tm_devices.driver_mixins.device_control.pi_control import PIControl
-
-# noinspection PyProtectedMember
+from tm_devices.driver_mixins.device_control import PIControl
 from tm_devices.drivers._device_driver_mapping import (
     _DEVICE_DRIVER_MODEL_STR_MAPPING,  # pyright: ignore[reportPrivateUsage]
 )

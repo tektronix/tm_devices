@@ -1,17 +1,17 @@
-"""Base AFG source channel driver module."""
+"""Base AFG source channel module."""
 
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 from typing import Literal
 
 from tm_devices.driver_mixins.abstract_device_functionality.base_source_channel import (
     BaseSourceChannel,
 )
-from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.driver_mixins.device_control import PIControl
 from tm_devices.helpers.enums import SignalGeneratorFunctionBase
 
 
-class BaseAFGSourceChannel(BaseSourceChannel):
-    """Base AFG source channel driver."""
+class BaseAFGSourceChannel(BaseSourceChannel, ABC):
+    """Base AFG source channel."""
 
     def __init__(self, pi_control: PIControl, channel_name: str) -> None:
         """Create an AFG source channel.

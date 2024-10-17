@@ -100,7 +100,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control.pi_control import PIControl
+    from tm_devices.driver_mixins.device_control import PIControl
 
 
 class SvWindow(SCPICmdWrite, SCPICmdRead):

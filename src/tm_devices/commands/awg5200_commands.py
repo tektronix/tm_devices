@@ -7,7 +7,7 @@ Please report an issue if one is found.
 
 from typing import Any, Dict, Optional
 
-from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.driver_mixins.device_control import PIControl
 
 from .gen_2i1z2s_awg.abort import Abort
 from .gen_2i1z2s_awg.auxoutput import AuxoutputItem

@@ -46,9 +46,9 @@ from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mix
     SourceDeviceConstants,
 )
 from tm_devices.driver_mixins.abstract_device_functionality.usb_drives_mixin import USBDrivesMixin
-from tm_devices.driver_mixins.device_control.pi_control import PIControl
-from tm_devices.driver_mixins.shared_implementations.tektronix_pi_scope_mixin import (
-    TektronixPIScopeMixin,
+from tm_devices.driver_mixins.device_control import PIControl
+from tm_devices.driver_mixins.shared_implementations._tektronix_pi_scope_mixin import (
+    _TektronixPIScopeMixin,  # pyright: ignore[reportPrivateUsage]
 )
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.scopes.scope import Scope
@@ -79,7 +79,7 @@ class TekProbeData:
 # NOTE: This is no longer considered a family_base_class due to the
 # differences between the physical scope hardware devices and the TekScopePC device.
 class AbstractTekScope(  # pylint: disable=too-many-public-methods
-    TektronixPIScopeMixin,
+    _TektronixPIScopeMixin,
     PIControl,
     Scope,
     BusMixin,
@@ -219,6 +219,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
     def num_dig_bits_in_ch(self) -> int:
         """Return the number of digital bits expected in a digital channel."""
         # TODO: should be part of self.channel
+        #  https://github.com/tektronix/tm_devices/issues/329
         return self._num_dig_bits_in_ch
 
     @cached_property

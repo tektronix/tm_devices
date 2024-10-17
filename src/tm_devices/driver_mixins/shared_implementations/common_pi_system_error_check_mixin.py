@@ -3,17 +3,17 @@
 from abc import ABC
 from typing import List, Tuple
 
-from tm_devices.driver_mixins.device_control.abstract_device_visa_write_query_control import (
-    AbstractDeviceVISAWriteQueryControl,
+from tm_devices.driver_mixins.device_control._abstract_device_visa_write_query_control import (
+    _AbstractDeviceVISAWriteQueryControl,  # pyright: ignore[reportPrivateUsage]
 )
 
 
-class CommonPISystemErrorCheckMixin(AbstractDeviceVISAWriteQueryControl, ABC):
+class CommonPISystemErrorCheckMixin(_AbstractDeviceVISAWriteQueryControl, ABC):
     """A mixin class that contains common methods for checking the PI device for SYSTEM:ERROR.
 
     !!! important
         Any class that inherits this mixin must also inherit the
-        [`PIControl`][tm_devices.driver_mixins.device_control.pi_control.PIControl] mixin in order
+        [`PIControl`][tm_devices.driver_mixins.device_control.PIControl] mixin in order
         to have access to the methods required by this class.
     """
 

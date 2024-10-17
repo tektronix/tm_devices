@@ -7,15 +7,14 @@ from typing import Callable, Optional, overload, Type, TypeVar, Union
 from typing_extensions import Concatenate, ParamSpec
 
 # bound is used to allow anything that subclasses from Device
-_EM = TypeVar("_EM", bound="ExtendableMixin")
+_EM = TypeVar("_EM", bound="_ExtendableMixin")
 _T = TypeVar("_T")
 _P = ParamSpec(
     "_P",
 )
 
 
-# TODO: nfelt14: Look into making this private or filtering it out of the docs
-class ExtendableMixin:
+class _ExtendableMixin:
     """A mixin class which adds methods for expanding a class."""
 
     ################################################################################################
