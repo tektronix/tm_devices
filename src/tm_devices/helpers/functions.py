@@ -398,7 +398,8 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
         filtered_usb_model_keys = [
             key
             for key, value in model_id_lookup.items()
-            if value.model_id == match_groups_list[1].lower()
+            # Model id also has an alpha character which needs to be converted to lowercase
+            if value.model_id.lower() == match_groups_list[1].lower()
         ]
         if filtered_usb_model_keys:
             # SMU and PSU need to be removed from the string to prevent issues

@@ -587,6 +587,9 @@ KEITHLEY_USBTMC_VENDOR_ID: Final[str] = "0x05E6"
 """The USBTMC Vendor ID for Keithley devices."""
 USB_MODEL_ID_LOOKUP: Final[Mapping[SupportedModels, USBTMCConfiguration]] = MappingProxyType(
     {
+        SupportedModels.MDO3: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x052C"
+        ),
         SupportedModels.MDO3K: USBTMCConfiguration(
             vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0408"
         ),
@@ -622,6 +625,9 @@ USB_MODEL_ID_LOOKUP: Final[Mapping[SupportedModels, USBTMCConfiguration]] = Mapp
         ),
         SupportedModels.AFG3K: USBTMCConfiguration(
             vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x0345"
+        ),
+        SupportedModels.AFG31K: USBTMCConfiguration(
+            vendor_id=TEKTRONIX_USBTMC_VENDOR_ID, model_id="0x035E"
         ),
         SupportedModels.SMU2450: USBTMCConfiguration(
             vendor_id=KEITHLEY_USBTMC_VENDOR_ID, model_id="0x2450"
