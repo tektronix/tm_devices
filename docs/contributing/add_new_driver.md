@@ -2,7 +2,7 @@
 
 This guide will walk through the steps needed to add a new device driver.
 
-`drivers\<interface_type>\<device_type>[\<device_series>]\<device_driver>.py`
+`drivers\<device_type>[\<device_series>]\<device_driver>.py`
 
 ## Steps to follow
 
@@ -12,7 +12,7 @@ This guide will walk through the steps needed to add a new device driver.
 2. Create the new device driver python file and class that inherits the
     appropriate device type/series base class
 
-    1. If the new device(s) are part of a series (also referred to as a family),
+    1. If the new device is part of a series (also referred to as a family),
         add a new series subpackage for them (e.g. `power_supplies/psu2200/`)
 
     2. Create the device driver python file, create a class that inherits from
@@ -64,10 +64,10 @@ defines abstract functions that all device drivers must implement.
 
 !!! note
     The filename should be a snake-case version of the new class name. In this example
-    the filepath would be `tm_devices/drivers/pi/power_supplies/psu2200/new_psu.py`
+    the filepath would be `tm_devices/drivers/power_supplies/psu2200/new_psu.py`
 
 ```python
-### drivers/pi/power_supplies/new_series_psu/fancy_power_supply.py
+### drivers/power_supplies/new_series_psu/fancy_power_supply.py
 """Fancy PSU Base device driver for the new series/family of fancy power supplies."""
 from abc import ABC
 from tm_devices.drivers.power_supplies.power_supply import PowerSupplyUnit
@@ -82,7 +82,7 @@ class BaseFancyPSU(PowerSupplyUnit, ABC):
 ```
 
 ```python
-### drivers/pi/power_supplies/new_series_psu/fancy_psu_123.py
+### drivers/ower_supplies/new_series_psu/fancy_psu_123.py
 """BaseFancyPSU device driver."""
 from tm_devices.drivers.power_supplies.new_series_psu.fancy_power_supply import (
     BaseFancyPSU,
@@ -106,7 +106,7 @@ series:
 
 !!! note
     The filename should be a snake-case version of the new class name. In this example
-    the filepath would be `tm_devices/drivers/pi/power_supplies/psu2200/new_psu.py`
+    the filepath would be `tm_devices/drivers/power_supplies/psu2200/new_psu.py`
 
 ```python
 """NewPSU device driver."""

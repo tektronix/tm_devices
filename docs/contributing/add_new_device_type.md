@@ -2,7 +2,7 @@
 
 This guide will walk through the steps needed to add a new device type.
 
-`drivers\<interface_type>\<device_type>[\<device_series>]\<device_driver>.py`
+`drivers\<device_type>[\<device_series>]\<device_driver>.py`
 
 ## Steps to follow
 
