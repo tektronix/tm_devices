@@ -46,10 +46,17 @@ devices:
       verbosity:
         default: 0
         getter:
-          q: :VERBose?
+          q: VERBOSE?
           r: '{:s}'
         setter:
-          q: :VERBose {:s}
+          q: VERBOSE {:s}
+      header:
+        default: 0
+        getter:
+          q: HEADER?
+          r: '{:s}'
+        setter:
+          q: HEADER {:s}
       channel_select:
         default: :SELECT:BUS1 0;BUS2 0;CH1 1;CH2 0;CH3 0;CH4 0;MATH 0;REF1 0;REF2
           0;D0 1;D1 0;D2 0;D3 0;D4 0;D5 0;D6 0;D7 0;D8 0;D9 0;D10 0;D11 0;D12 0;D13
