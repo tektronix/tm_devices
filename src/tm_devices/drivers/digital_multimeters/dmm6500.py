@@ -2,8 +2,6 @@
 
 from typing import Tuple
 
-import pyvisa as visa
-
 from tm_devices.commands import DMM6500Mixin
 from tm_devices.driver_mixins.device_control import TSPControl
 from tm_devices.driver_mixins.shared_implementations.common_tsp_error_check_mixin import (
@@ -14,7 +12,6 @@ from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import (
 )
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.digital_multimeters.digital_multimeter import DigitalMultimeter
-from tm_devices.helpers import DeviceConfigEntry
 
 
 @family_base_class
@@ -26,23 +23,6 @@ class DMM6500(DMM6500Mixin, CommonTSPErrorCheckMixin, TSPControl, DigitalMultime
     ################################################################################################
     # Magic Methods
     ################################################################################################
-    def __init__(
-        self,
-        config_entry: DeviceConfigEntry,
-        verbose: bool,
-        visa_resource: visa.resources.MessageBasedResource,
-        default_visa_timeout: int,
-    ) -> None:
-        """Create a DMM6500 device.
-
-        Args:
-            config_entry: A config entry object parsed by the DMConfigParser.
-            verbose: A boolean indicating if verbose output should be printed.
-            visa_resource: The VISA resource object.
-            default_visa_timeout: The default VISA timeout value in milliseconds.
-        """
-        # NOTE: This method must be defined for the documentation to properly generate
-        super().__init__(config_entry, verbose, visa_resource, default_visa_timeout)
 
     ################################################################################################
     # Properties

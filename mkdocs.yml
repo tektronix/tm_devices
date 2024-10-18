@@ -105,6 +105,10 @@ plugins:
             extensions: [docs/griffe_custom_decorator_labels.py]
             show_inheritance_diagram: true
             show_source: false  # a link is included at the top of each page
+# TODO: nfelt14: Figure out if we need to preload modules
+#            preload_modules:
+#              - tm_devices.commands
+#              - tm_devices.drivers
             # Headings options
             heading_level: 1
             show_root_heading: true
