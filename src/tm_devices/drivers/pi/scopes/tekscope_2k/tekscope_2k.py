@@ -42,7 +42,7 @@ class TekScope2k(Scope, ABC):
         previous_header_state = self.query("HEADER?").split(" ")[-1]  # Read previous header state
         self.write("HEADER 1")  # Turn on header state so SELECT query works correctly
         source_string = self.query("SELECT?")
-        self.write("HEADER" + previous_header_state)  # Return header state back to original
+        self.write(f"HEADER {previous_header_state}")  # Return header state back to original
 
         source_string = source_string.split(":")[-1]  # Remove :SELECT: from beginning
         source_list = source_string.split(";")
