@@ -5,9 +5,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
 from tm_devices.driver_mixins.device_control import PIControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_e3e9uu_lpdmso.acquire import Acquire
 from .gen_e3e9uu_lpdmso.actonevent import Actonevent
@@ -3817,22 +3818,16 @@ class MSO6BMixin:
         - ``.commands``: The MSO6B commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIControl) else None
-        self._command_argument_constants = MSO6BCommandConstants()
-        self._commands = MSO6BCommands(device)
-
-    @property
-    def command_argument_constants(self) -> MSO6BCommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> MSO6BCommandConstants:  # pylint: disable=no-self-use
         """Return the MSO6B command argument constants.
 
         This provides access to all the string constants which can be used as arguments for MSO6B
         commands.
         """
-        return self._command_argument_constants
+        return MSO6BCommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> MSO6BCommands:
         """Return the MSO6B commands.
 
@@ -3942,4 +3937,5 @@ class MSO6BMixin:
             - ``.wavfrm``: The ``WAVFrm`` command.
             - ``.wfmoutpre``: The ``WFMOutpre`` command.
         """
-        return self._commands
+        device = self if isinstance(self, PIControl) else None
+        return MSO6BCommands(device)

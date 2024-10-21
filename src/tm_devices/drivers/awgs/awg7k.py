@@ -3,8 +3,6 @@
 from types import MappingProxyType
 from typing import cast, Dict, Optional, Tuple
 
-import pyvisa as visa
-
 from tm_devices.commands import AWG7KMixin
 from tm_devices.drivers.awgs.awg import (
     AWG,
@@ -17,7 +15,6 @@ from tm_devices.drivers.awgs.awg5k import (
     AWG5KSourceChannel,
 )
 from tm_devices.drivers.device import family_base_class
-from tm_devices.helpers import DeviceConfigEntry
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 from tm_devices.helpers.enums import SignalGeneratorOutputPathsBase
 
@@ -35,23 +32,6 @@ class AWG7K(AWG7KMixin, AWG):
     ################################################################################################
     # Magic Methods
     ################################################################################################
-    def __init__(
-        self,
-        config_entry: DeviceConfigEntry,
-        verbose: bool,
-        visa_resource: visa.resources.MessageBasedResource,
-        default_visa_timeout: int,
-    ) -> None:
-        """Create an AWG7K device.
-
-        Args:
-            config_entry: A config entry object parsed by the DMConfigParser.
-            verbose: A boolean indicating if verbose output should be printed.
-            visa_resource: The VISA resource object.
-            default_visa_timeout: The default VISA timeout value in milliseconds.
-        """
-        # NOTE: This method must be defined for the documentation to properly generate
-        super().__init__(config_entry, verbose, visa_resource, default_visa_timeout)
 
     ################################################################################################
     # Properties

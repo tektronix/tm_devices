@@ -7,9 +7,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
 from tm_devices.driver_mixins.device_control import TSPControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_ahkybr_smu.beeper import Beeper
 from .gen_ahkybr_smu.buffervar import Buffervar
@@ -2981,22 +2982,16 @@ class SMU2636BMixin:
         - ``.commands``: The SMU2636B commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, TSPControl) else None
-        self._command_argument_constants = SMU2636BCommandConstants()
-        self._commands = SMU2636BCommands(device)
-
-    @property
-    def command_argument_constants(self) -> SMU2636BCommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> SMU2636BCommandConstants:  # pylint: disable=no-self-use
         """Return the SMU2636B command argument constants.
 
         This provides access to all the string constants which can be used as arguments for SMU2636B
         commands.
         """
-        return self._command_argument_constants
+        return SMU2636BCommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> SMU2636BCommands:
         """Return the SMU2636B commands.
 
@@ -3072,4 +3067,5 @@ class SMU2636BMixin:
             - ``.userstring``: The ``userstring`` command tree.
             - ``.waitcomplete()``: The ``waitcomplete()`` function.
         """
-        return self._commands
+        device = self if isinstance(self, TSPControl) else None
+        return SMU2636BCommands(device)

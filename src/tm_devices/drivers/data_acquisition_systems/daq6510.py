@@ -2,8 +2,6 @@
 
 from typing import Tuple
 
-import pyvisa as visa
-
 from tm_devices.commands import DAQ6510Mixin
 from tm_devices.driver_mixins.device_control import TSPControl
 from tm_devices.driver_mixins.shared_implementations.common_tsp_error_check_mixin import (
@@ -16,7 +14,6 @@ from tm_devices.drivers.data_acquisition_systems.data_acquisition_system import 
     DataAcquisitionSystem,
 )
 from tm_devices.drivers.device import family_base_class
-from tm_devices.helpers import DeviceConfigEntry
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
@@ -29,22 +26,6 @@ class DAQ6510(DAQ6510Mixin, CommonTSPErrorCheckMixin, TSPControl, DataAcquisitio
     ################################################################################################
     # Magic Methods
     ################################################################################################
-    def __init__(
-        self,
-        config_entry: DeviceConfigEntry,
-        verbose: bool,
-        visa_resource: visa.resources.MessageBasedResource,
-        default_visa_timeout: int,
-    ) -> None:
-        """Create a DAQ6510 device.
-
-        Args:
-            config_entry: A config entry object parsed by the DMConfigParser.
-            verbose: A boolean indicating if verbose output should be printed.
-            visa_resource: The VISA resource object.
-            default_visa_timeout: The default VISA timeout value in milliseconds.
-        """
-        super().__init__(config_entry, verbose, visa_resource, default_visa_timeout)
 
     ################################################################################################
     # Properties

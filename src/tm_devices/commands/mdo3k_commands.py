@@ -6,9 +6,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
 from tm_devices.driver_mixins.device_control import PIControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_1l4fot_mdomso.cursor import Cursor
 from .gen_1lcv3a_msodpomdo.message import Message
@@ -3288,22 +3289,16 @@ class MDO3KMixin:
         - ``.commands``: The MDO3K commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIControl) else None
-        self._command_argument_constants = MDO3KCommandConstants()
-        self._commands = MDO3KCommands(device)
-
-    @property
-    def command_argument_constants(self) -> MDO3KCommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> MDO3KCommandConstants:  # pylint: disable=no-self-use
         """Return the MDO3K command argument constants.
 
         This provides access to all the string constants which can be used as arguments for MDO3K
         commands.
         """
-        return self._command_argument_constants
+        return MDO3KCommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> MDO3KCommands:
         """Return the MDO3K commands.
 
@@ -3410,4 +3405,5 @@ class MDO3KMixin:
             - ``.wfmoutpre``: The ``WFMOutpre`` command.
             - ``.zoom``: The ``ZOOm`` command.
         """
-        return self._commands
+        device = self if isinstance(self, PIControl) else None
+        return MDO3KCommands(device)

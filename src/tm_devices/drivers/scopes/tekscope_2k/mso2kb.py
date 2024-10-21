@@ -4,7 +4,7 @@ from tm_devices.commands import MSO2KBMixin
 from tm_devices.drivers.scopes.tekscope_2k.mso2k import MSO2K
 
 
-class MSO2KB(MSO2KBMixin, MSO2K):  # pyright: ignore[reportIncompatibleMethodOverride]
+class MSO2KB(MSO2KBMixin, MSO2K):  # pyright: ignore[reportIncompatibleVariableOverride]
     """MSO2KB device driver."""
 
     ################################################################################################

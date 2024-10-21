@@ -1,6 +1,8 @@
 # pyright: reportPrivateUsage=none
 """Verify that all device drivers and connection types can be used."""
 
+import contextlib
+
 from collections import Counter
 from typing import Generator, List, Optional
 
@@ -165,12 +167,11 @@ def test_device_driver(
     )
     device.cleanup()
     assert not device.has_errors()
-    assert device.commands is not None
-    assert device.command_argument_constants is not None
     created_models_list.append(device.__class__.__name__)
     created_connections_list.append(device.connection_type)
-    if device.commands != NotImplemented:
-        drivers_with_auto_generated_commands.append(device.__class__.__name__)
+    with contextlib.suppress(NotImplementedError):
+        if device.commands != NotImplemented:
+            drivers_with_auto_generated_commands.append(device.__class__.__name__)
 
 
 @pytest.mark.order(2)

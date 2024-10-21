@@ -5,9 +5,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
 from tm_devices.driver_mixins.device_control import PIControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_5vmwut_dpodsamso.trigger import Trigger
 from .gen_5xwdsk_dpodsamso.errordetector import Errordetector
@@ -3852,22 +3853,16 @@ class DPO70KCMixin:
         - ``.commands``: The DPO70KC commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIControl) else None
-        self._command_argument_constants = DPO70KCCommandConstants()
-        self._commands = DPO70KCCommands(device)
-
-    @property
-    def command_argument_constants(self) -> DPO70KCCommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> DPO70KCCommandConstants:  # pylint: disable=no-self-use
         """Return the DPO70KC command argument constants.
 
         This provides access to all the string constants which can be used as arguments for DPO70KC
         commands.
         """
-        return self._command_argument_constants
+        return DPO70KCCommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> DPO70KCCommands:
         """Return the DPO70KC commands.
 
@@ -3984,4 +3979,5 @@ class DPO70KCMixin:
             - ``.wfmpre``: The ``WFMPre`` command tree.
             - ``.zoom``: The ``ZOOm`` command.
         """
-        return self._commands
+        device = self if isinstance(self, PIControl) else None
+        return DPO70KCCommands(device)

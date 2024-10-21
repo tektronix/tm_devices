@@ -6,9 +6,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
 from tm_devices.driver_mixins.device_control import TSPControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_d6b496_dmm.acal import Acal
 from .gen_d6b496_dmm.buffer import Buffer
@@ -1405,22 +1406,16 @@ class DMM7510Mixin:
         - ``.commands``: The DMM7510 commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, TSPControl) else None
-        self._command_argument_constants = DMM7510CommandConstants()
-        self._commands = DMM7510Commands(device)
-
-    @property
-    def command_argument_constants(self) -> DMM7510CommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> DMM7510CommandConstants:  # pylint: disable=no-self-use
         """Return the DMM7510 command argument constants.
 
         This provides access to all the string constants which can be used as arguments for DMM7510
         commands.
         """
-        return self._command_argument_constants
+        return DMM7510CommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> DMM7510Commands:
         """Return the DMM7510 commands.
 
@@ -1466,4 +1461,5 @@ class DMM7510Mixin:
             - ``.userstring``: The ``userstring`` command tree.
             - ``.waitcomplete()``: The ``waitcomplete()`` function.
         """
-        return self._commands
+        device = self if isinstance(self, TSPControl) else None
+        return DMM7510Commands(device)

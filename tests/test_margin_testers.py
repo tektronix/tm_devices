@@ -48,8 +48,10 @@ def test_margin_tester(tmt4: MarginTester, device_manager: DeviceManager) -> Non
     assert id(device_manager.get_mt(number_or_alias="tmt4")) == id(tmt4)
     assert id(device_manager.get_mt(number_or_alias=tmt4.device_number)) == id(tmt4)
 
-    assert tmt4.commands == NotImplemented
-    assert tmt4.command_argument_constants == NotImplemented
+    with pytest.raises(NotImplementedError):
+        _ = tmt4.commands
+    with pytest.raises(NotImplementedError):
+        _ = tmt4.command_argument_constants
     assert tmt4.series == "TMT4"
     assert tmt4.adapter == MOCK_ABOUT_INFO["adapter"]
 

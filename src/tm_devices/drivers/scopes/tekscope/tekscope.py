@@ -186,7 +186,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
             self.set_and_check(":VERBose", old_pi_verbosity)
         return MappingProxyType(channel_map)
 
-    @property
+    @cached_property
     def commands(
         self,
     ) -> Union[
@@ -200,7 +200,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
         MSO6BCommands,
     ]:
         """Return the device commands."""
-        return self._commands  # pragma: no cover
+        return super().commands  # pragma: no cover
 
     @cached_property
     def hostname(self) -> str:

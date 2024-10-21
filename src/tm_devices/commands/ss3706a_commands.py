@@ -6,9 +6,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
 from tm_devices.driver_mixins.device_control import TSPControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_e3pief_ss.beeper import Beeper
 from .gen_e3pief_ss.buffervar import Buffervar
@@ -1168,22 +1169,16 @@ class SS3706AMixin:
         - ``.commands``: The SS3706A commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, TSPControl) else None
-        self._command_argument_constants = SS3706ACommandConstants()
-        self._commands = SS3706ACommands(device)
-
-    @property
-    def command_argument_constants(self) -> SS3706ACommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> SS3706ACommandConstants:  # pylint: disable=no-self-use
         """Return the SS3706A command argument constants.
 
         This provides access to all the string constants which can be used as arguments for SS3706A
         commands.
         """
-        return self._command_argument_constants
+        return SS3706ACommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> SS3706ACommands:
         """Return the SS3706A commands.
 
@@ -1240,4 +1235,5 @@ class SS3706AMixin:
             - ``.userstring``: The ``userstring`` command tree.
             - ``.waitcomplete()``: The ``waitcomplete()`` function.
         """
-        return self._commands
+        device = self if isinstance(self, TSPControl) else None
+        return SS3706ACommands(device)

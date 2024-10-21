@@ -6,9 +6,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
 from tm_devices.driver_mixins.device_control import TSPControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_6ocqvh_smu.buffer import Buffer
 from .gen_6vynmi_smu.acal import Acal
@@ -1695,22 +1696,16 @@ class SMU2461Mixin:
         - ``.commands``: The SMU2461 commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, TSPControl) else None
-        self._command_argument_constants = SMU2461CommandConstants()
-        self._commands = SMU2461Commands(device)
-
-    @property
-    def command_argument_constants(self) -> SMU2461CommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> SMU2461CommandConstants:  # pylint: disable=no-self-use
         """Return the SMU2461 command argument constants.
 
         This provides access to all the string constants which can be used as arguments for SMU2461
         commands.
         """
-        return self._command_argument_constants
+        return SMU2461CommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> SMU2461Commands:
         """Return the SMU2461 commands.
 
@@ -1754,4 +1749,5 @@ class SMU2461Mixin:
             - ``.userstring``: The ``userstring`` command tree.
             - ``.waitcomplete()``: The ``waitcomplete()`` function.
         """
-        return self._commands
+        device = self if isinstance(self, TSPControl) else None
+        return SMU2461Commands(device)

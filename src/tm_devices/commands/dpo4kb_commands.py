@@ -6,9 +6,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
 from tm_devices.driver_mixins.device_control import PIControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_1la1ym_msomdodpo.trigger import Trigger
 from .gen_1lcv3a_msodpomdo.message import Message
@@ -3295,22 +3296,16 @@ class DPO4KBMixin:
         - ``.commands``: The DPO4KB commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIControl) else None
-        self._command_argument_constants = DPO4KBCommandConstants()
-        self._commands = DPO4KBCommands(device)
-
-    @property
-    def command_argument_constants(self) -> DPO4KBCommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> DPO4KBCommandConstants:  # pylint: disable=no-self-use
         """Return the DPO4KB command argument constants.
 
         This provides access to all the string constants which can be used as arguments for DPO4KB
         commands.
         """
-        return self._command_argument_constants
+        return DPO4KBCommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> DPO4KBCommands:
         """Return the DPO4KB commands.
 
@@ -3417,4 +3412,5 @@ class DPO4KBMixin:
             - ``.wfmoutpre``: The ``WFMOutpre`` command.
             - ``.zoom``: The ``ZOOm`` command.
         """
-        return self._commands
+        device = self if isinstance(self, PIControl) else None
+        return DPO4KBCommands(device)

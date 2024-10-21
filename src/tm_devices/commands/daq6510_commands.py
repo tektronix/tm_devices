@@ -6,9 +6,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
 from tm_devices.driver_mixins.device_control import TSPControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_by991s_smudaq.digio import Digio
 from .gen_by991s_smudaq.status import Status
@@ -2078,22 +2079,16 @@ class DAQ6510Mixin:
         - ``.commands``: The DAQ6510 commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, TSPControl) else None
-        self._command_argument_constants = DAQ6510CommandConstants()
-        self._commands = DAQ6510Commands(device)
-
-    @property
-    def command_argument_constants(self) -> DAQ6510CommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> DAQ6510CommandConstants:  # pylint: disable=no-self-use
         """Return the DAQ6510 command argument constants.
 
         This provides access to all the string constants which can be used as arguments for DAQ6510
         commands.
         """
-        return self._command_argument_constants
+        return DAQ6510CommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> DAQ6510Commands:
         """Return the DAQ6510 commands.
 
@@ -2141,4 +2136,5 @@ class DAQ6510Mixin:
             - ``.userstring``: The ``userstring`` command tree.
             - ``.waitcomplete()``: The ``waitcomplete()`` function.
         """
-        return self._commands
+        device = self if isinstance(self, TSPControl) else None
+        return DAQ6510Commands(device)

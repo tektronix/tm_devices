@@ -10,7 +10,7 @@ from tm_devices.helpers import DeviceConfigEntry
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 
-class MSO2(MSO2Mixin, TekScope):
+class MSO2(MSO2Mixin, TekScope):  # pyright: ignore[reportIncompatibleVariableOverride]
     """MSO2 device driver."""
 
     ################################################################################################

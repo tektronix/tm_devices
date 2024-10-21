@@ -51,7 +51,7 @@ class SMU26xx(CommonTSPErrorCheckMixin, TSPControl, SourceMeasureUnit, ABC):
         # Grab the total channel count based on whether the last digit in the model is even/odd
         return 2 if (not int([x for x in self.model if x.isdigit()][-1]) % 2) else 1
 
-    @property
+    @cached_property
     def commands(
         self,
     ) -> Union[
@@ -70,7 +70,7 @@ class SMU26xx(CommonTSPErrorCheckMixin, TSPControl, SourceMeasureUnit, ABC):
         SMU2657ACommands,
     ]:
         """Return the device commands."""
-        return self._commands  # pragma: no cover
+        return super().commands
 
     ################################################################################################
     # Public Methods

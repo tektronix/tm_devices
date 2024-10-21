@@ -82,9 +82,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         self._reboot_quiet_period = 0
         self._series = self.__class__.__name__
 
-        # These are private attributes to be overwritten by generated drivers
-        self._commands: Any = NotImplemented
-        self._command_argument_constants: Any = NotImplemented
+        # These private attributes are used by the auto-generated commands subpackage
         self._command_verification_enabled = False
         self._command_syntax_enabled = False
 
@@ -178,10 +176,12 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         """Return the alias if it exists, otherwise an empty string."""
         return self._config_entry.alias if self._config_entry.alias is not None else ""
 
-    @property
+    @cached_property
     def command_argument_constants(self) -> Any:
         """Return the device command argument constants."""
-        return self._command_argument_constants
+        raise NotImplementedError(
+            f"The {self.__class__.__name__} driver does not have a Python API for its commands yet."
+        )
 
     @property
     def command_syntax_enabled(self) -> bool:
@@ -211,10 +211,12 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         """
         return self._command_verification_enabled
 
-    @property
+    @cached_property
     def commands(self) -> Any:
         """Return the device commands."""
-        return self._commands
+        raise NotImplementedError(
+            f"The {self.__class__.__name__} driver does not have a Python API for its commands yet."
+        )
 
     @cached_property
     def config_entry(self) -> DeviceConfigEntry:

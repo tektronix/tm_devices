@@ -92,7 +92,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:NRZ:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:BLOCKDATa:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition {STARt|STATus|DATa|BLOCkid|SENSORSTATus|ERRors|STARTBIT|FUNCTIONCODe|ECUDATa|SENSORADDRess|REGISTERADDRess|SENSORSTATus|CRCERRor}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition {STARt|STATus|DATa|BLOCkid|SENSORSTATus|ERRors|STARTBIT|FUNCTIONCODe|ECUDATa|SENSORADDRess|REGISTERADDRess|CRCERRor}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs {FOURBIT|EIGHTBIT|TWENTYBIT}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:DATABITs?
@@ -48872,7 +48872,7 @@ class SearchSearchItemTriggerABusBPsifiveCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition {STARt|STATus|DATa|BLOCkid|SENSORSTATus|ERRors|STARTBIT|FUNCTIONCODe|ECUDATa|SENSORADDRess|REGISTERADDRess|SENSORSTATus|CRCERRor}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition {STARt|STATus|DATa|BLOCkid|SENSORSTATus|ERRors|STARTBIT|FUNCTIONCODe|ECUDATa|SENSORADDRess|REGISTERADDRess|CRCERRor}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition?
         ```
 
@@ -48888,7 +48888,6 @@ class SearchSearchItemTriggerABusBPsifiveCondition(SCPICmdWrite, SCPICmdRead):
         - ``ECUDATa`` specifies the search condition as ECU Data.
         - ``SENSORADDRess`` specifies the search condition as Sensor Address.
         - ``REGISTERADDRess`` specifies the search condition as Register Address.
-        - ``SENSORSTATus`` specifies the search condition as Sensor Status.
         - ``CRCERRor`` specifies the search condition as CRC Error.
     """  # noqa: E501
 
@@ -49068,7 +49067,7 @@ class SearchSearchItemTriggerABusBPsifive(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition {STARt|STATus|DATa|BLOCkid|SENSORSTATus|ERRors|STARTBIT|FUNCTIONCODe|ECUDATa|SENSORADDRess|REGISTERADDRess|SENSORSTATus|CRCERRor}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition {STARt|STATus|DATa|BLOCkid|SENSORSTATus|ERRors|STARTBIT|FUNCTIONCODe|ECUDATa|SENSORADDRess|REGISTERADDRess|CRCERRor}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:B:PSIFIVe:CONDition?
             ```
 
@@ -49084,7 +49083,6 @@ class SearchSearchItemTriggerABusBPsifive(SCPICmdRead):
             - ``ECUDATa`` specifies the search condition as ECU Data.
             - ``SENSORADDRess`` specifies the search condition as Sensor Address.
             - ``REGISTERADDRess`` specifies the search condition as Register Address.
-            - ``SENSORSTATus`` specifies the search condition as Sensor Status.
             - ``CRCERRor`` specifies the search condition as CRC Error.
         """  # noqa: E501
         return self._condition
