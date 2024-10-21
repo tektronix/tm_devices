@@ -5,7 +5,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Any, Dict, List, Optional, TYPE_CHECKING, Union
 
-from tm_devices.driver_mixins.device_control import PIControl
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.driver_mixins.shared_implementations.ieee488_2_commands import TSPIEEE4882Commands
 from tm_devices.helpers import verify_values
 
