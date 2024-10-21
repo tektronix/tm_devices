@@ -32,7 +32,7 @@ very minor ways. The primary impact to the drivers was simply the removal of pre
 deprecated functionality. Almost all changes only impacted the internal workings of `tm_devices`.
 However, please read through all changes to be aware of what may potentially impact your code.
 
-- <span style="color:red">BREAKING CHANGE</span>: Moved `SignalGenerator` class to the `driver_mixins` submodule and renamed it to `TekAFGAWG`.
+- <span style="color:red">BREAKING CHANGE</span>: Moved `SignalGenerator` class to the `driver_mixins` submodule and renamed it to `_TektronixPIAFGAWGMixin` (also made it a private mixin).
 - <span style="color:red">BREAKING CHANGE</span>: Moved the `Device`, `PIControl`, `TSPControl`, and `RESTAPIControl` classes into a mixin folder so that they can be used as mixins rather than being part of the required inheritance structure.
     - Due to this change, it is recommended that the specific device driver (or at least the family base class) for the device being controlled is used for type hinting.
 - <span style="color:red">BREAKING CHANGE</span>: Moved all device type subpackages (AWGs, AFGs, Scopes, SMUs, etc.) up to the top level of the `drivers` subpackage.

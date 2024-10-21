@@ -57,7 +57,7 @@ class AFG(_TektronixPIAFGAWGMixin, PIControl, Device, ABC):
 
     @property
     def source_device_constants(self) -> AFGSourceDeviceConstants:
-        """Return the device constants."""
+        """The constants defining what functions and memory sizes are allowed for the device."""
         return self._DEVICE_CONSTANTS  # type: ignore[attr-defined]
 
     @cached_property

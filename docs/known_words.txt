@@ -1,6 +1,8 @@
 __none__
 add_new
 adding_devices
+afg
+afgs
 alias_usage
 analyze
 api

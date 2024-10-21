@@ -698,7 +698,7 @@ class TekScope(SignalGeneratorMixin, AbstractTekScope, ABC):
     ################################################################################################
     @property
     def source_device_constants(self) -> TekScopeSourceDeviceConstants:
-        """Return the device constants."""
+        """The constants defining what functions and memory sizes are allowed for the device."""
         return self._DEVICE_CONSTANTS
 
     @cached_property

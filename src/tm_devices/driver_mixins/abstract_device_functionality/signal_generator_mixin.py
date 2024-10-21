@@ -73,7 +73,7 @@ class SignalGeneratorMixin(_ExtendableMixin, ABC):
     def source_device_constants(
         self,
     ) -> _SourceDeviceTypeVar:  # pyright: ignore[reportInvalidTypeVarUse]
-        """Return the device constants."""
+        """The constants defining what functions and memory sizes are allowed for the device."""
 
     @abstractmethod
     def generate_function(  # noqa: PLR0913
