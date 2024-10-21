@@ -32,15 +32,15 @@ very minor ways. The primary impact to the drivers was simply the removal of pre
 deprecated functionality. Almost all changes only impacted the internal workings of `tm_devices`.
 However, please read through all changes to be aware of what may potentially impact your code.
 
-- <span style="color:red">BREAKING CHANGE</span>: Moved `SignalGenerator` class to the `driver_mixins` submodule and renamed it to `_TektronixPIAFGAWGMixin` (also made it a private mixin).
-- <span style="color:red">BREAKING CHANGE</span>: Moved the `Device`, `PIControl`, `TSPControl`, and `RESTAPIControl` classes into a mixin folder so that they can be used as mixins rather than being part of the required inheritance structure.
+- <span style="color:orange">minor breaking change</span>: Moved `SignalGenerator` class to the `driver_mixins` submodule and renamed it to `_TektronixPIAFGAWGMixin` (also made it a private mixin).
+- <span style="color:orange">minor breaking change</span>: Moved the `Device`, `PIControl`, `TSPControl`, and `RESTAPIControl` classes into a mixin folder so that they can be used as mixins rather than being part of the required inheritance structure.
     - Due to this change, it is recommended that the specific device driver (or at least the family base class) for the device being controlled is used for type hinting.
-- <span style="color:red">BREAKING CHANGE</span>: Moved all device type subpackages (AWGs, AFGs, Scopes, SMUs, etc.) up to the top level of the `drivers` subpackage.
-- <span style="color:red">BREAKING CHANGE</span>: Converted all family base classes to inherit from the device control mixins.
+- <span style="color:orange">minor breaking change</span>: Moved all device type subpackages (AWGs, AFGs, Scopes, SMUs, etc.) up to the top level of the `drivers` subpackage.
+- <span style="color:orange">minor breaking change</span>: Converted all family base classes to inherit from the device control mixins.
 - <span style="color:red">BREAKING CHANGE</span>: Renamed the `get_eventlog_status()` method to `_get_errors()` and made it a required, abstract method for all devices to implement.
     - To get similar functionality to the previous `get_eventlog_status()` method, switch to using the new `get_errors()` method.
 - <span style="color:red">BREAKING CHANGE</span>: Changed the behavior of the `expect_esr()` method to expect an integer error code input and an optional tuple of error messages to compare against the actual error code and messages returned by the `_get_errors()` private method.
-- <span style="color:red">BREAKING CHANGE</span>: Converted the `device_type` property into an abstract, cached property to force all children of the `Device` class to specify what type of device they are.
+- <span style="color:orange">minor breaking change</span>: Converted the `device_type` property into an abstract, cached property to force all children of the `Device` class to specify what type of device they are.
 - Updated the auto-generated command mixin classes to no longer use an `__init__()` method to enable the driver API documentation to render in a more usable way.
 
 ### Removed
