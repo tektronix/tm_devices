@@ -20,6 +20,7 @@ Things to be included in the next release go here.
 
 ### Added
 
+- Added USBTMC Support for the AFG31K and MDO3 drivers.
 - Testing/linting on Python 3.13.
 - Added the `get_errors()` method to the `Device` class to enable easy access to the current error code and messages on any device.
 - Added more details to the Architectural Overview page of the documentation as well as highlighting to the device driver diagram on the page.
@@ -55,10 +56,6 @@ However, please read through all changes to be aware of what may potentially imp
     - These methods have been converted to helper functions and can be imported from the `tm_devices.helpers` subpackage now.
 
 ---
-
-### Added
-
-- Added USB Support for AFG31K and MDO3 models.
 
 ## v2.4.0 (2024-09-19)
 
