@@ -207,18 +207,11 @@ class AWG70KA(AWG70KAMixin, AWG):
 class AWG70KASourceChannel(AWGSourceChannel):
     """AWG70KA signal source channel composite."""
 
+    _awg: AWG70KA
+
     ################################################################################################
     # Magic Methods
     ################################################################################################
-    def __init__(self, awg: AWG70KA, channel_name: str) -> None:
-        """Create an AWG5200 source channel.
-
-        Args:
-            awg: An AWG.
-            channel_name: The channel name for the AWG source channel.
-        """
-        super().__init__(awg=awg, channel_name=channel_name)
-        self._awg = awg
 
     ################################################################################################
     # Public Methods

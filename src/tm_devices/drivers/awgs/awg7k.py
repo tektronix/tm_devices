@@ -1,7 +1,7 @@
 """AWG7K device driver module."""
 
 from types import MappingProxyType
-from typing import cast, Dict, Optional, Tuple
+from typing import Dict, Optional, Tuple
 
 from tm_devices.commands import AWG7KMixin
 from tm_devices.drivers.awgs.awg import (
@@ -11,7 +11,6 @@ from tm_devices.drivers.awgs.awg import (
     ParameterBounds,
 )
 from tm_devices.drivers.awgs.awg5k import (
-    AWG5K,
     AWG5KSourceChannel,
 )
 from tm_devices.drivers.device import family_base_class
@@ -83,18 +82,11 @@ class AWG7K(AWG7KMixin, AWG):
 class AWG7KSourceChannel(AWG5KSourceChannel):
     """AWG7K signal source channel composite."""
 
+    _awg: AWG7K  # pyright: ignore[reportIncompatibleVariableOverride]
+
     ################################################################################################
     # Magic Methods
     ################################################################################################
-    def __init__(self, awg: AWG7K, channel_name: str) -> None:
-        """Create an AWG5200 source channel.
-
-        Args:
-            awg: An AWG.
-            channel_name: The channel name for the AWG source channel.
-        """
-        super().__init__(awg=cast(AWG5K, awg), channel_name=channel_name)
-        self._awg = awg
 
     ################################################################################################
     # Public Methods

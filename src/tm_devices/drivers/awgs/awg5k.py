@@ -78,18 +78,11 @@ class AWG5K(AWG5KMixin, AWG):
 class AWG5KSourceChannel(AWGSourceChannel):
     """AWG5K signal source channel composite."""
 
+    _awg: AWG5K
+
     ################################################################################################
     # Magic Methods
     ################################################################################################
-    def __init__(self, awg: "AWG5K", channel_name: str) -> None:
-        """Create an AWG5200 source channel.
-
-        Args:
-            awg: An AWG.
-            channel_name: The channel name for the AWG source channel.
-        """
-        super().__init__(awg=awg, channel_name=channel_name)
-        self._awg = awg
 
     ################################################################################################
     # Public Methods

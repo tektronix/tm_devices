@@ -75,10 +75,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         """
         super().__init__(config_entry, verbose)
         self._is_open = True
-        self._verbose = verbose
-        self._config_entry = config_entry
         self._device_number: int = -1  # set after creation by DeviceManager
-        self._enable_verification = True
         self._reboot_quiet_period = 0
         self._series = self.__class__.__name__
 
