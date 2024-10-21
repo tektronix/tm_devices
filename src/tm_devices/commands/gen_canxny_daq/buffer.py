@@ -28,7 +28,7 @@ from typing import Any, Dict, Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control import TSPControl
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class BufferWrite(BaseTSPCmd):

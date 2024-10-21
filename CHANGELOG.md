@@ -61,7 +61,7 @@ However, please read through all changes to be aware of what may potentially imp
 
 ### Merged Pull Requests
 
-- Update TSPControl.load_script() to accept raw strings ([#308](https://github.com/tektronix/tm_devices/pull/308))
+- Update TSPDevice.load_script() to accept raw strings ([#308](https://github.com/tektronix/tm_devices/pull/308))
 - fix: Update stub generation helper function to handle classes followed by dataclasses ([#307](https://github.com/tektronix/tm_devices/pull/307))
 - Add function to register USBTMC connection information for devices that don't have native USBTMC connection support in tm_devices ([#306](https://github.com/tektronix/tm_devices/pull/306))
 - python-deps(deps-dev): Bump the python-dependencies group with 2 updates ([#304](https://github.com/tektronix/tm_devices/pull/304))
@@ -81,7 +81,7 @@ However, please read through all changes to be aware of what may potentially imp
 
 - Added a config option (`default_visa_timeout`) to specify the default VISA timeout for all initial VISA device connections.
 - Added a new function, `register_additional_usbtmc_mapping()`, to enable users to add USBTMC connection information for devices that don't have native support for USBTMC connections in `tm_devices` yet.
-- Added `TSPControl.export_buffers()` to write tsp buffer data fields to file, default is comma separated values with buffer names header.
+- Added `TSPDevice.export_buffers()` to write tsp buffer data fields to file, default is comma separated values with buffer names header.
 
 ### Changed
 
@@ -89,12 +89,12 @@ However, please read through all changes to be aware of what may potentially imp
 - Reduced the out-of-the box `default_visa_timeout` value from 30 seconds to 5 seconds.
 - _**SEMI-BREAKING CHANGE**_: Changed the `USB_MODEL_ID_LOOKUP` constant to use `SupportedModels` as keys instead of values to make the documentation clearer.
 - _**SEMI-BREAKING CHANGE**_: Changed the `DEVICE_DRIVER_MODEL_MAPPING` constant to use `SupportedModels` as keys instead of values to make the documentation clearer.
-- _**SEMI-BREAKING CHANGE**_: Changed the input parameter order in `TSPControl.load_script()` and updated it to accept raw string input in addition to the `file_path` parameter for the script content.
-- Verbosity with `PIControl.write()` now handles multiline input printouts.
+- _**SEMI-BREAKING CHANGE**_: Changed the input parameter order in `TSPDevice.load_script()` and updated it to accept raw string input in addition to the `file_path` parameter for the script content.
+- Verbosity with `PIDevice.write()` now handles multiline input printouts.
 
 ### Deprecated
 
-- Renamed `TSPControl.write_buffers()` to `TSPControl.export_buffers()` for clarity.
+- Renamed `TSPDevice.write_buffers()` to `TSPDevice.export_buffers()` for clarity.
 
 ### Fixed
 
@@ -167,7 +167,7 @@ However, please read through all changes to be aware of what may potentially imp
 
 - feat: Added SourceXpress API support and AWG defects fix ([#260](https://github.com/tektronix/tm_devices/pull/260))
 - gh-actions(deps): bump hynek/build-and-inspect-python-package ([#258](https://github.com/tektronix/tm_devices/pull/258))
-- python-deps(deps-dev): bump the python-dependenc ies group with 2 updates ([#257](https://github.com/tektronix/tm_devices/pull/257))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#257](https://github.com/tektronix/tm_devices/pull/257))
 - Update jinja templates ([#254](https://github.com/tektronix/tm_devices/pull/254))
 
 ### Added
@@ -493,7 +493,7 @@ However, please read through all changes to be aware of what may potentially imp
 ### Merged Pull Requests
 
 - Fix import error on mac with system integrity protection ([#109](https://github.com/tektronix/tm_devices/issues/109))
-- feat(rest_api_control): Enable sending raw data for restful api devices. ([#107](https://github.com/tektronix/tm_devices/issues/107))
+- feat(rest_api_device): Enable sending raw data for restful api devices. ([#107](https://github.com/tektronix/tm_devices/issues/107))
 - build: Update package classifiers. ([#106](https://github.com/tektronix/tm_devices/issues/106))
 
 ### Added

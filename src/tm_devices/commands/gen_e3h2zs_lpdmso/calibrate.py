@@ -22,7 +22,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control import PIControl
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class CalibratePwrupstatus(SCPICmdRead):

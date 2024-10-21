@@ -7,7 +7,7 @@ Please report an issue if one is found.
 
 from typing import Dict, Optional
 
-from tm_devices.driver_mixins.device_control import PIControl
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_3skc3w_dpo.trigger import Trigger

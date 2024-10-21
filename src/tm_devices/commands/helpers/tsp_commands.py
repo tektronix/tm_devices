@@ -10,7 +10,7 @@ from typing import Any, Dict, Optional, TYPE_CHECKING
 from .generic_commands import BaseCmd
 
 if TYPE_CHECKING:
-    from tm_devices.driver_mixins.device_control import TSPControl
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 ####################################################################################################
