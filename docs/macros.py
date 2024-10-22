@@ -54,11 +54,44 @@ FILES_TO_REMOVE_BLACK_FORMATTER_DISABLE_COMMENT = {
     "configuration.md",
     "basic_usage.md",
 }
+CONVERSION_PATTERN = re.compile(
+    r"> \[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|DANGER)]\s*>\s*(.*?)(?=\n[^>]|$)",
+    re.IGNORECASE | re.DOTALL,
+)
 
 
 ####################################################################################################
 # Helper functions
 ####################################################################################################
+def convert_gfm_alerts_to_admonitions(content: str) -> str:
+    """Convert GitHub Flavored Markdown (GFM) alerts to MkDocs admonitions.
+
+    Args:
+        content: The content to convert.
+
+    Returns:
+        The updated content with GFM alerts converted to markdown admonitions.
+    """
+
+    def replace_match(match: "re.Match[str]") -> str:
+        """Replace the matched GFM alert with an admonition.
+
+        Args:
+            match: The matched GFM alert.
+
+        Returns:
+            The replacement text.
+        """
+        alert_type = match.group(1).lower()
+        text = match.group(2).strip()
+        # Replace initial '>' from subsequent lines
+        text = text.replace("\n>", "\n")
+        # Replace with admonition format
+        return f"!!! {alert_type}\n    " + text.replace("\n", "\n    ")
+
+    return re.sub(CONVERSION_PATTERN, replace_match, content)
+
+
 def import_object(objname: str) -> Any:
     """Import a python object by its qualified name.
 
@@ -259,6 +292,8 @@ def on_post_page_macros(env: MacrosPlugin) -> None:
     # Check if all black format disable comments should be removed from the page
     if env.page.file.src_path in FILES_TO_REMOVE_BLACK_FORMATTER_DISABLE_COMMENT:
         env.markdown = env.markdown.replace("# fmt: off\n", "")
+    # Check if there are any admonitions to replace on the page
+    env.markdown = convert_gfm_alerts_to_admonitions(env.markdown)
     # Check if the title is correct
     if actual_title_match := HEADER_ONE_REGEX.search(env.markdown):
         actual_title = actual_title_match.group(1)
