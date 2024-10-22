@@ -13,6 +13,7 @@ devices:
       - q: status.clear()
       - q: reset()
       - q: smu.source.sweeplinear("SolarCell", 0, 0.53, 56, 0.1)
+      - q: collectgarbage()
     error:
       status_register:
         - q: print(status.standard.event)

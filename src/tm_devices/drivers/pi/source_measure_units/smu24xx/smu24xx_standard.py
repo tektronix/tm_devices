@@ -136,3 +136,7 @@ class SMU24xxStandard(SourceMeasureUnit, ABC):
     ################################################################################################
     # Private Methods
     ################################################################################################
+
+    def _cleanup(self) -> None:
+        """Perform the cleanup defined for the device."""
+        PIDevice._cleanup(self)  # noqa: SLF001
