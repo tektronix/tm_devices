@@ -112,7 +112,6 @@ pre-commit = [
 pylint = "3.2.7"
 pyright = "1.1.385"
 pyroma = "^4.2"
-safety_schemas = "<=0.0.5"  # TODO: Drop Python 3.8: once Python 3.8 support is dropped, this can be removed, v0.0.6 does not on Python 3.8
 tox = "^4.0"
 tox-gh-actions = "^3.1.0"
 twine = "^5.0.0"
