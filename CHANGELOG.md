@@ -18,8 +18,11 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
 ### Added
 
+- `collectgarbage()` is now called during cleanup of `TSPControl` children.
 - Added USBTMC Support for the AFG31K and MDO3 drivers.
 - Testing/linting on Python 3.13.
 - Added the `get_errors()` method to the `Device` class to enable easy access to the current error code and messages on any device.

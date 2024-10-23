@@ -231,3 +231,7 @@ class TSPControl(PIControl, ABC):
     ################################################################################################
     # Private Methods
     ################################################################################################
+    def _cleanup(self) -> None:
+        """Perform the cleanup defined for the device."""
+        super()._cleanup()
+        self.write("collectgarbage()")
