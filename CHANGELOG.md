@@ -21,12 +21,9 @@ Things to be included in the next release go here.
 ### Added
 
 - `collectgarbage()` is now called during cleanup of `TSPDevice` children.
+- Added USB Support for AFG31K and MDO3 models.
 
 ---
-
-### Added
-
-- Added USB Support for AFG31K and MDO3 models.
 
 ## v2.4.0 (2024-09-19)
 
