@@ -39,6 +39,7 @@ However, please read through all changes to be aware of what may potentially imp
 - _**<span style="color:orange">minor breaking change</span>**_: Moved `SignalGenerator` class to the `driver_mixins` submodule and renamed it to `_TektronixPIAFGAWGMixin` (also made it a private mixin).
 - _**<span style="color:orange">minor breaking change</span>**_: Renamed the `PIDevice`, `TSPDevice`, and `RESTAPIDevice` classes to `PIControl`, `TSPControl`, and `RESTAPIControl` respectively.
 - _**<span style="color:orange">minor breaking change</span>**_: Moved the `PIControl`, `TSPControl`, and `RESTAPIControl` classes into a mixin folder so that they can be used as mixins rather than being part of the required inheritance structure.
+    - In order to use these control mixins, they must be inherited at the family base class level in the driver hierarchy, along with the device type class (or any class that inherits from the base `Device` class and defines a `device_type` property and the other required abstract property implementations).
     - Due to this change, it is recommended that the specific device driver (or at least the family base class) for the device being controlled is used for type hinting.
 - _**<span style="color:orange">minor breaking change</span>**_: Moved all device type subpackages (AWGs, AFGs, Scopes, SMUs, etc.) up to the top level of the `drivers` subpackage.
 - _**<span style="color:orange">minor breaking change</span>**_: Converted all family base classes to inherit from the device control mixins.
