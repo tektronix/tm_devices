@@ -9,7 +9,7 @@ on:
     types: [published]
 jobs:
   sbom-scan:
-    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-sbom-scan.yml@v1.4.1
+    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-sbom-scan.yml@v1.5.0
     permissions:
       security-events: write
       contents: write
