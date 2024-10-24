@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- fix: TekScope2K active channel query needs HEADER options enabled to function properly
+
 ### Added
 
 - `collectgarbage()` is now called during cleanup of `TSPDevice` children.
