@@ -178,7 +178,7 @@ def class_diagram(  # noqa: C901  # pylint: disable=too-many-locals
             "LR" (left to right), "RL" (right to left),
             "TB" (top to bottom), or "BT" (bottom to top).
         highlight_family_base_classes: Indicate to highlight the family base classes in cyan.
-        highlight_device_drivers: Indicate to highlight the device drivers in lightgreen.
+        highlight_device_drivers: Indicate to highlight the device drivers in lawngreen.
 
     Returns:
         The mermaid code block with complete syntax for the classDiagram.
@@ -235,7 +235,7 @@ def class_diagram(  # noqa: C901  # pylint: disable=too-many-locals
             mermaid_code_block += f"\n  style {family_base_class} stroke:orangered,stroke-width:4px"
     if highlight_device_drivers:
         for device_driver in sorted(device_drivers):
-            mermaid_code_block += f"\n  style {device_driver} fill:lightgreen"
+            mermaid_code_block += f"\n  style {device_driver} fill:lawngreen"
     mermaid_code_block += "\n```"
 
     return mermaid_code_block
