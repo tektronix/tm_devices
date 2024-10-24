@@ -39,11 +39,7 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-<<<<<<< HEAD
     rev: aa1acdb72677dfbc5f507d2dfd45d8380bbcc2e0  # frozen: 0.29.3
-=======
-    rev: 5c70e3d884fdbe99af42f2714a444e39f321498d  # frozen: 0.29.2
->>>>>>> 409230f (feat(mso2kb.py): added support for mso2024b oscilloscope)
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
@@ -51,11 +47,7 @@ repos:
       - id: check-github-workflows
         args: [--verbose]
   - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
-<<<<<<< HEAD
     rev: 27445053da613c660ed5895d9616662059a53ca7  # frozen: v1.7.3.17
-=======
-    rev: c01fb5723b54075325cd9b5e5665a9ae84baf950  # frozen: v1.7.1.15
->>>>>>> 409230f (feat(mso2kb.py): added support for mso2024b oscilloscope)
     hooks:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
