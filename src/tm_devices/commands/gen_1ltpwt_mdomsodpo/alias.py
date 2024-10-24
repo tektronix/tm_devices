@@ -24,7 +24,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class AliasState(SCPICmdWrite, SCPICmdRead):
@@ -104,7 +104,7 @@ class AliasDelete(SCPICmdRead):
         - ``.name``: The ``ALIas:DELEte:NAMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._all = AliasDeleteAll(device, f"{self._cmd_syntax}:ALL")
         self._name = AliasDeleteName(device, f"{self._cmd_syntax}:NAMe")
@@ -209,7 +209,7 @@ class Alias(SCPICmdRead):
         - ``.state``: The ``ALIas:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "ALIas") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "ALIas") -> None:
         super().__init__(device, cmd_syntax)
         self._catalog = AliasCatalog(device, f"{self._cmd_syntax}:CATalog")
         self._define = AliasDefine(device, f"{self._cmd_syntax}:DEFine")

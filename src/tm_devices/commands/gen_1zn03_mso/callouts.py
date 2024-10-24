@@ -48,7 +48,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class CalloutsDelete(SCPICmdWrite):
@@ -269,7 +269,7 @@ class CalloutsCalloutItemFont(SCPICmdRead):
         - ``.underline``: The ``CALLOUTS:CALLOUT<x>:FONT:UNDERLine`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bold = CalloutsCalloutItemFontBold(device, f"{self._cmd_syntax}:BOLD")
         self._italic = CalloutsCalloutItemFontItalic(device, f"{self._cmd_syntax}:ITALIC")
@@ -477,7 +477,7 @@ class CalloutsCalloutItemDisplayposition(SCPICmdRead):
         - ``.y``: The ``CALLOUTS:CALLOUT<x>:DISPLAYPOSition:Y`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._x = CalloutsCalloutItemDisplaypositionX(device, f"{self._cmd_syntax}:X")
         self._y = CalloutsCalloutItemDisplaypositionY(device, f"{self._cmd_syntax}:Y")
@@ -628,7 +628,7 @@ class CalloutsCalloutItemBookmark(SCPICmdRead):
         - ``.xpos``: The ``CALLOUTS:CALLOUT<x>:BOOKMark:XPOS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._source = CalloutsCalloutItemBookmarkSource(device, f"{self._cmd_syntax}:SOURCE")
         self._xpos = CalloutsCalloutItemBookmarkXpos(device, f"{self._cmd_syntax}:XPOS")
@@ -709,7 +709,7 @@ class CalloutsCalloutItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.type``: The ``CALLOUTS:CALLOUT<x>:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bookmark = CalloutsCalloutItemBookmark(device, f"{self._cmd_syntax}:BOOKMark")
         self._color = CalloutsCalloutItemColor(device, f"{self._cmd_syntax}:COLOR")
@@ -885,7 +885,7 @@ class Callouts(SCPICmdRead):
         - ``.delete``: The ``CALLOUTS:DELete`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CALLOUTS") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CALLOUTS") -> None:
         super().__init__(device, cmd_syntax)
         self._addnew = CalloutsAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._callout: Dict[int, CalloutsCalloutItem] = DefaultDictPassKeyToFactory(

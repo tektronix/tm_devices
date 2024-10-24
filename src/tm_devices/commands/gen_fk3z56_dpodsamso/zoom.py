@@ -112,7 +112,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ZoomZoom1State(SCPICmdWrite, SCPICmdRead):
@@ -241,7 +241,7 @@ class ZoomZoom1RefItemVertical(SCPICmdRead):
         - ``.scale``: The ``ZOOm:ZOOM1:REF<x>:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = ZoomZoom1RefItemVerticalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = ZoomZoom1RefItemVerticalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -383,7 +383,7 @@ class ZoomZoom1RefItemHorizontal(SCPICmdRead):
         - ``.scale``: The ``ZOOm:ZOOM1:REF<x>:HORizontal:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = ZoomZoom1RefItemHorizontalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = ZoomZoom1RefItemHorizontalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -494,7 +494,7 @@ class ZoomZoom1RefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.vertical``: The ``ZOOm:ZOOM1:REF<x>:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._display = ZoomZoom1RefItemDisplay(device, f"{self._cmd_syntax}:DISplay")
         self._horizontal = ZoomZoom1RefItemHorizontal(device, f"{self._cmd_syntax}:HORizontal")
@@ -636,7 +636,7 @@ class ZoomZoom1MathItemVertical(SCPICmdRead):
         - ``.scale``: The ``ZOOm:ZOOM1:MATH<x>:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = ZoomZoom1MathItemVerticalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = ZoomZoom1MathItemVerticalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -779,7 +779,7 @@ class ZoomZoom1MathItemHorizontal(SCPICmdRead):
         - ``.scale``: The ``ZOOm:ZOOM1:MATH<x>:HORizontal:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = ZoomZoom1MathItemHorizontalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = ZoomZoom1MathItemHorizontalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -890,7 +890,7 @@ class ZoomZoom1MathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.vertical``: The ``ZOOm:ZOOM1:MATH<x>:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._display = ZoomZoom1MathItemDisplay(device, f"{self._cmd_syntax}:DISplay")
         self._horizontal = ZoomZoom1MathItemHorizontal(device, f"{self._cmd_syntax}:HORizontal")
@@ -1000,7 +1000,7 @@ class ZoomZoom1Dchan(SCPICmdRead):
         - ``.display``: The ``ZOOm:ZOOM1:DCHAN:DISplay`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._display = ZoomZoom1DchanDisplay(device, f"{self._cmd_syntax}:DISplay")
 
@@ -1108,7 +1108,7 @@ class ZoomZoom1DigitalBitVertical(SCPICmdRead):
         - ``.scale``: The ``ZOOm:ZOOM1:D<x>:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = ZoomZoom1DigitalBitVerticalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = ZoomZoom1DigitalBitVerticalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -1247,7 +1247,7 @@ class ZoomZoom1DigitalBitHorizontal(SCPICmdRead):
         - ``.scale``: The ``ZOOm:ZOOM1:D<x>:HORizontal:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = ZoomZoom1DigitalBitHorizontalPosition(
             device, f"{self._cmd_syntax}:POSition"
@@ -1360,7 +1360,7 @@ class ZoomZoom1DigitalBit(ValidatedDigitalBit, SCPICmdRead):
         - ``.vertical``: The ``ZOOm:ZOOM1:D<x>:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._display = ZoomZoom1DigitalBitDisplay(device, f"{self._cmd_syntax}:DISplay")
         self._horizontal = ZoomZoom1DigitalBitHorizontal(device, f"{self._cmd_syntax}:HORizontal")
@@ -1500,7 +1500,7 @@ class ZoomZoom1ChannelVertical(SCPICmdRead):
         - ``.scale``: The ``ZOOm:ZOOM1:CH<x>:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = ZoomZoom1ChannelVerticalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = ZoomZoom1ChannelVerticalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -1641,7 +1641,7 @@ class ZoomZoom1ChannelHorizontal(SCPICmdRead):
         - ``.scale``: The ``ZOOm:ZOOM1:CH<x>:HORizontal:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = ZoomZoom1ChannelHorizontalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = ZoomZoom1ChannelHorizontalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -1752,7 +1752,7 @@ class ZoomZoom1Channel(ValidatedChannel, SCPICmdRead):
         - ``.vertical``: The ``ZOOm:ZOOM1:CH<x>:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._display = ZoomZoom1ChannelDisplay(device, f"{self._cmd_syntax}:DISplay")
         self._horizontal = ZoomZoom1ChannelHorizontal(device, f"{self._cmd_syntax}:HORizontal")
@@ -1857,7 +1857,7 @@ class ZoomZoom1(SCPICmdWrite, SCPICmdRead):
         - ``.d``: The ``ZOOm:ZOOM1:D<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dchan = ZoomZoom1Dchan(device, f"{self._cmd_syntax}:DCHAN")
         self._scrolllock = ZoomZoom1Scrolllock(device, f"{self._cmd_syntax}:SCROLLLock")
@@ -2073,7 +2073,7 @@ class ZoomVertical(SCPICmdRead):
         - ``.scale``: The ``ZOOm:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = ZoomVerticalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = ZoomVerticalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -2249,7 +2249,7 @@ class ZoomScroll(SCPICmdRead):
         - ``.speed``: The ``ZOOm:SCROLL:SPEED`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._direction = ZoomScrollDirection(device, f"{self._cmd_syntax}:DIREction")
         self._lock = ZoomScrollLock(device, f"{self._cmd_syntax}:LOCk")
@@ -2399,7 +2399,7 @@ class ZoomRefItemVertical(SCPICmdRead):
         - ``.scale``: The ``ZOOm:REF<x>:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = ZoomRefItemVerticalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = ZoomRefItemVerticalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -2521,7 +2521,7 @@ class ZoomRefItemHorizontal(SCPICmdRead):
         - ``.scale``: The ``ZOOm:REF<x>:HORizontal:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = ZoomRefItemHorizontalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = ZoomRefItemHorizontalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -2594,7 +2594,7 @@ class ZoomRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.vertical``: The ``ZOOm:REF<x>:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._horizontal = ZoomRefItemHorizontal(device, f"{self._cmd_syntax}:HORizontal")
         self._vertical = ZoomRefItemVertical(device, f"{self._cmd_syntax}:VERTical")
@@ -2713,7 +2713,7 @@ class ZoomMathItemVertical(SCPICmdRead):
         - ``.scale``: The ``ZOOm:MATH<x>:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = ZoomMathItemVerticalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = ZoomMathItemVerticalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -2832,7 +2832,7 @@ class ZoomMathItemHorizontal(SCPICmdRead):
         - ``.scale``: The ``ZOOm:MATH<x>:HORizontal:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = ZoomMathItemHorizontalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = ZoomMathItemHorizontalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -2905,7 +2905,7 @@ class ZoomMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.vertical``: The ``ZOOm:MATH<x>:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._horizontal = ZoomMathItemHorizontal(device, f"{self._cmd_syntax}:HORizontal")
         self._vertical = ZoomMathItemVertical(device, f"{self._cmd_syntax}:VERTical")
@@ -3005,7 +3005,7 @@ class ZoomHorizontal(SCPICmdRead):
         - ``.scale``: The ``ZOOm:HORizontal:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = ZoomHorizontalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = ZoomHorizontalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -3132,7 +3132,7 @@ class ZoomGraticule(SCPICmdRead):
         - ``.split``: The ``ZOOm:GRAticule:SPLit`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._size = ZoomGraticuleSize(device, f"{self._cmd_syntax}:SIZE")
         self._split = ZoomGraticuleSplit(device, f"{self._cmd_syntax}:SPLit")
@@ -3233,7 +3233,7 @@ class Zoom(SCPICmdWrite, SCPICmdRead):
         - ``.zoom1``: The ``ZOOm:ZOOM1`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "ZOOm") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "ZOOm") -> None:
         super().__init__(device, cmd_syntax)
         self._graticule = ZoomGraticule(device, f"{self._cmd_syntax}:GRAticule")
         self._horizontal = ZoomHorizontal(device, f"{self._cmd_syntax}:HORizontal")

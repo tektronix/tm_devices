@@ -34,7 +34,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SlistSubsequenceTstamp(SCPICmdReadWithArguments):
@@ -175,7 +175,7 @@ class SlistSubsequenceElementItemLoop(SCPICmdRead):
         - ``.count``: The ``SLISt:SUBSequence:ELEMent[n]:LOOP:COUNt`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._count = SlistSubsequenceElementItemLoopCount(device, f"{self._cmd_syntax}:COUNt")
 
@@ -218,7 +218,7 @@ class SlistSubsequenceElementItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.waveform``: The ``SLISt:SUBSequence:ELEMent[n]:WAVeform[n]`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._loop = SlistSubsequenceElementItemLoop(device, f"{self._cmd_syntax}:LOOP")
         self._waveform: Dict[int, SlistSubsequenceElementItemWaveformItem] = (
@@ -313,7 +313,7 @@ class SlistSubsequence(SCPICmdRead):
         - ``.tstamp``: The ``SLISt:SUBSequence:TSTamp`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delete = SlistSubsequenceDelete(device, f"{self._cmd_syntax}:DELete")
         self._element: Dict[int, SlistSubsequenceElementItem] = DefaultDictPassKeyToFactory(
@@ -489,7 +489,7 @@ class Slist(SCPICmdRead):
         - ``.subsequence``: The ``SLISt:SUBSequence`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SLISt") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SLISt") -> None:
         super().__init__(device, cmd_syntax)
         self._name = SlistName(device, f"{self._cmd_syntax}:NAME")
         self._size = SlistSize(device, f"{self._cmd_syntax}:SIZE")

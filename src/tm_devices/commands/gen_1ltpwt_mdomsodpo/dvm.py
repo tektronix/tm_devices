@@ -33,7 +33,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DvmSource(SCPICmdWrite, SCPICmdRead):
@@ -215,7 +215,7 @@ class DvmMeasurementHistory(SCPICmdRead):
         - ``.minimum``: The ``DVM:MEASUrement:HIStory:MINImum`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._average = DvmMeasurementHistoryAverage(device, f"{self._cmd_syntax}:AVErage")
         self._maximum = DvmMeasurementHistoryMaximum(device, f"{self._cmd_syntax}:MAXimum")
@@ -319,7 +319,7 @@ class DvmMeasurement(SCPICmdRead):
         - ``.value``: The ``DVM:MEASUrement:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = DvmMeasurementFrequency(device, f"{self._cmd_syntax}:FREQuency")
         self._history = DvmMeasurementHistory(device, f"{self._cmd_syntax}:HIStory")
@@ -494,7 +494,7 @@ class Dvm(SCPICmdWrite, SCPICmdRead):
         - ``.source``: The ``DVM:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DVM") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DVM") -> None:
         super().__init__(device, cmd_syntax)
         self._autorange = DvmAutorange(device, f"{self._cmd_syntax}:AUTORange")
         self._displaystyle = DvmDisplaystyle(device, f"{self._cmd_syntax}:DISPLAYSTYle")

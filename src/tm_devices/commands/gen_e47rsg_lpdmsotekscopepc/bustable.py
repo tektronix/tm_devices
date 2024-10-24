@@ -20,7 +20,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class BustableList(SCPICmdRead):
@@ -97,7 +97,7 @@ class Bustable(SCPICmdRead):
         - ``.list``: The ``BUSTABle:LIST`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "BUSTABle") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "BUSTABle") -> None:
         super().__init__(device, cmd_syntax)
         self._addnew = BustableAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = BustableDelete(device, f"{self._cmd_syntax}:DELete")

@@ -28,7 +28,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Io(BaseTSPCmd):
@@ -45,7 +45,7 @@ class Io(BaseTSPCmd):
         - ``.write()``: The ``io.write()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "io") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "io") -> None:
         super().__init__(device, cmd_syntax)
 
     def close(self, file: Optional[str] = None) -> None:
@@ -71,7 +71,7 @@ class Io(BaseTSPCmd):
                 f"{self._cmd_syntax}.close({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.close()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.close()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def flush(self) -> None:
@@ -93,7 +93,7 @@ class Io(BaseTSPCmd):
                 f"{self._cmd_syntax}.flush()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.flush()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.flush()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def input(self, newfile: Optional[str] = None) -> str:
@@ -126,7 +126,7 @@ class Io(BaseTSPCmd):
                 f"print({self._cmd_syntax}.input({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.input()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.input()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def open(self, path: str, mode: Optional[str] = None) -> str:
@@ -164,7 +164,7 @@ class Io(BaseTSPCmd):
                 f"print({self._cmd_syntax}.open({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.open()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.open()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def output(self, newfile: Optional[str] = None) -> str:
@@ -197,7 +197,7 @@ class Io(BaseTSPCmd):
                 f"print({self._cmd_syntax}.output({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.output()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.output()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def read(self, format_: Optional[str] = None) -> str:
@@ -228,7 +228,7 @@ class Io(BaseTSPCmd):
                 f"print({self._cmd_syntax}.read({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.read()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.read()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def type(self, obj: str) -> str:
@@ -256,7 +256,7 @@ class Io(BaseTSPCmd):
                 f"print({self._cmd_syntax}.type({obj}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.type()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.type()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def write(self, data: Optional[str] = None) -> None:
@@ -282,5 +282,5 @@ class Io(BaseTSPCmd):
                 f"{self._cmd_syntax}.write({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.write()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.write()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

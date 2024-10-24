@@ -24,7 +24,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments, ValidatedDigitalBit
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DigitalBitThreshold(SCPICmdWrite, SCPICmdRead):
@@ -126,7 +126,7 @@ class DigitalBit(ValidatedDigitalBit, SCPICmdWriteNoArguments, SCPICmdRead):
         - ``.threshold``: The ``D<x>:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "D<x>") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "D<x>") -> None:
         super().__init__(device, cmd_syntax)
         self._label = DigitalBitLabel(device, f"{self._cmd_syntax}:LABel")
         self._position = DigitalBitPosition(device, f"{self._cmd_syntax}:POSition")

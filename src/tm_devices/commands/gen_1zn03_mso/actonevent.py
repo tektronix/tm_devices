@@ -71,7 +71,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ActoneventTriggerActionStopacqState(SCPICmdWrite, SCPICmdRead):
@@ -116,7 +116,7 @@ class ActoneventTriggerActionStopacq(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:TRIGger:ACTION:STOPACQ:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventTriggerActionStopacqState(device, f"{self._cmd_syntax}:STATE")
 
@@ -194,7 +194,7 @@ class ActoneventTriggerActionSrq(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:TRIGger:ACTION:SRQ:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventTriggerActionSrqState(device, f"{self._cmd_syntax}:STATE")
 
@@ -276,7 +276,7 @@ class ActoneventTriggerActionSavewaveform(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:TRIGger:ACTION:SAVEWAVEform:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventTriggerActionSavewaveformState(device, f"{self._cmd_syntax}:STATE")
 
@@ -360,7 +360,7 @@ class ActoneventTriggerActionSaveimage(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:TRIGger:ACTION:SAVEIMAGe:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventTriggerActionSaveimageState(device, f"{self._cmd_syntax}:STATE")
 
@@ -414,7 +414,7 @@ class ActoneventTriggerAction(SCPICmdRead):
         - ``.stopacq``: The ``ACTONEVent:TRIGger:ACTION:STOPACQ`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._saveimage = ActoneventTriggerActionSaveimage(device, f"{self._cmd_syntax}:SAVEIMAGe")
         self._savewaveform = ActoneventTriggerActionSavewaveform(
@@ -498,7 +498,7 @@ class ActoneventTrigger(SCPICmdRead):
         - ``.action``: The ``ACTONEVent:TRIGger:ACTION`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._action = ActoneventTriggerAction(device, f"{self._cmd_syntax}:ACTION")
 
@@ -562,7 +562,7 @@ class ActoneventSearchActionStopacq(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:SEARCH:ACTION:STOPACQ:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventSearchActionStopacqState(device, f"{self._cmd_syntax}:STATE")
 
@@ -638,7 +638,7 @@ class ActoneventSearchActionSrq(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:SEARCH:ACTION:SRQ:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventSearchActionSrqState(device, f"{self._cmd_syntax}:STATE")
 
@@ -718,7 +718,7 @@ class ActoneventSearchActionSavewaveform(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:SEARCH:ACTION:SAVEWAVEform:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventSearchActionSavewaveformState(device, f"{self._cmd_syntax}:STATE")
 
@@ -796,7 +796,7 @@ class ActoneventSearchActionSaveimage(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:SEARCH:ACTION:SAVEIMAGe:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventSearchActionSaveimageState(device, f"{self._cmd_syntax}:STATE")
 
@@ -847,7 +847,7 @@ class ActoneventSearchAction(SCPICmdRead):
         - ``.stopacq``: The ``ACTONEVent:SEARCH:ACTION:STOPACQ`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._saveimage = ActoneventSearchActionSaveimage(device, f"{self._cmd_syntax}:SAVEIMAGe")
         self._savewaveform = ActoneventSearchActionSavewaveform(
@@ -931,7 +931,7 @@ class ActoneventSearch(SCPICmdRead):
         - ``.action``: The ``ACTONEVent:SEARCH:ACTION`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._action = ActoneventSearchAction(device, f"{self._cmd_syntax}:ACTION")
 
@@ -997,7 +997,7 @@ class ActoneventMeasurementActionStopacq(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MEASUrement:ACTION:STOPACQ:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMeasurementActionStopacqState(device, f"{self._cmd_syntax}:STATE")
 
@@ -1078,7 +1078,7 @@ class ActoneventMeasurementActionSrq(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MEASUrement:ACTION:SRQ:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMeasurementActionSrqState(device, f"{self._cmd_syntax}:STATE")
 
@@ -1163,7 +1163,7 @@ class ActoneventMeasurementActionSavewaveform(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MEASUrement:ACTION:SAVEWAVEform:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMeasurementActionSavewaveformState(
             device, f"{self._cmd_syntax}:STATE"
@@ -1248,7 +1248,7 @@ class ActoneventMeasurementActionSaveimage(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MEASUrement:ACTION:SAVEIMAGe:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMeasurementActionSaveimageState(device, f"{self._cmd_syntax}:STATE")
 
@@ -1300,7 +1300,7 @@ class ActoneventMeasurementAction(SCPICmdRead):
         - ``.stopacq``: The ``ACTONEVent:MEASUrement:ACTION:STOPACQ`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._saveimage = ActoneventMeasurementActionSaveimage(
             device, f"{self._cmd_syntax}:SAVEIMAGe"
@@ -1388,7 +1388,7 @@ class ActoneventMeasurement(SCPICmdRead):
         - ``.action``: The ``ACTONEVent:MEASUrement:ACTION`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._action = ActoneventMeasurementAction(device, f"{self._cmd_syntax}:ACTION")
 
@@ -1452,7 +1452,7 @@ class ActoneventMaskpassActionStopacq(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MASKPass:ACTION:STOPACQ:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMaskpassActionStopacqState(device, f"{self._cmd_syntax}:STATE")
 
@@ -1530,7 +1530,7 @@ class ActoneventMaskpassActionSrq(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MASKPass:ACTION:SRQ:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMaskpassActionSrqState(device, f"{self._cmd_syntax}:STATE")
 
@@ -1610,7 +1610,7 @@ class ActoneventMaskpassActionSavewaveform(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MASKPass:ACTION:SAVEWAVEform:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMaskpassActionSavewaveformState(device, f"{self._cmd_syntax}:STATE")
 
@@ -1690,7 +1690,7 @@ class ActoneventMaskpassActionSaveimage(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MASKPass:ACTION:SAVEIMAGe:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMaskpassActionSaveimageState(device, f"{self._cmd_syntax}:STATE")
 
@@ -1741,7 +1741,7 @@ class ActoneventMaskpassAction(SCPICmdRead):
         - ``.stopacq``: The ``ACTONEVent:MASKPass:ACTION:STOPACQ`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._saveimage = ActoneventMaskpassActionSaveimage(device, f"{self._cmd_syntax}:SAVEIMAGe")
         self._savewaveform = ActoneventMaskpassActionSavewaveform(
@@ -1825,7 +1825,7 @@ class ActoneventMaskpass(SCPICmdRead):
         - ``.action``: The ``ACTONEVent:MASKPass:ACTION`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._action = ActoneventMaskpassAction(device, f"{self._cmd_syntax}:ACTION")
 
@@ -1889,7 +1889,7 @@ class ActoneventMaskhitActionStopacq(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MASKHit:ACTION:STOPACQ:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMaskhitActionStopacqState(device, f"{self._cmd_syntax}:STATE")
 
@@ -1966,7 +1966,7 @@ class ActoneventMaskhitActionSrq(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MASKHit:ACTION:SRQ:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMaskhitActionSrqState(device, f"{self._cmd_syntax}:STATE")
 
@@ -2046,7 +2046,7 @@ class ActoneventMaskhitActionSavewaveform(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MASKHit:ACTION:SAVEWAVEform:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMaskhitActionSavewaveformState(device, f"{self._cmd_syntax}:STATE")
 
@@ -2125,7 +2125,7 @@ class ActoneventMaskhitActionSaveimage(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MASKHit:ACTION:SAVEIMAGe:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMaskhitActionSaveimageState(device, f"{self._cmd_syntax}:STATE")
 
@@ -2176,7 +2176,7 @@ class ActoneventMaskhitAction(SCPICmdRead):
         - ``.stopacq``: The ``ACTONEVent:MASKHit:ACTION:STOPACQ`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._saveimage = ActoneventMaskhitActionSaveimage(device, f"{self._cmd_syntax}:SAVEIMAGe")
         self._savewaveform = ActoneventMaskhitActionSavewaveform(
@@ -2260,7 +2260,7 @@ class ActoneventMaskhit(SCPICmdRead):
         - ``.action``: The ``ACTONEVent:MASKHit:ACTION`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._action = ActoneventMaskhitAction(device, f"{self._cmd_syntax}:ACTION")
 
@@ -2323,7 +2323,7 @@ class ActoneventMaskfailActionStopacq(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MASKFail:ACTION:STOPACQ:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMaskfailActionStopacqState(device, f"{self._cmd_syntax}:STATE")
 
@@ -2400,7 +2400,7 @@ class ActoneventMaskfailActionSrq(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MASKFail:ACTION:SRQ:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMaskfailActionSrqState(device, f"{self._cmd_syntax}:STATE")
 
@@ -2480,7 +2480,7 @@ class ActoneventMaskfailActionSavewaveform(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MASKFail:ACTION:SAVEWAVEform:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMaskfailActionSavewaveformState(device, f"{self._cmd_syntax}:STATE")
 
@@ -2559,7 +2559,7 @@ class ActoneventMaskfailActionSaveimage(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:MASKFail:ACTION:SAVEIMAGe:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventMaskfailActionSaveimageState(device, f"{self._cmd_syntax}:STATE")
 
@@ -2610,7 +2610,7 @@ class ActoneventMaskfailAction(SCPICmdRead):
         - ``.stopacq``: The ``ACTONEVent:MASKFail:ACTION:STOPACQ`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._saveimage = ActoneventMaskfailActionSaveimage(device, f"{self._cmd_syntax}:SAVEIMAGe")
         self._savewaveform = ActoneventMaskfailActionSavewaveform(
@@ -2694,7 +2694,7 @@ class ActoneventMaskfail(SCPICmdRead):
         - ``.action``: The ``ACTONEVent:MASKFail:ACTION`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._action = ActoneventMaskfailAction(device, f"{self._cmd_syntax}:ACTION")
 
@@ -2813,7 +2813,9 @@ class Actonevent(SCPICmdRead):
         - ``.trigger``: The ``ACTONEVent:TRIGger`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "ACTONEVent") -> None:
+    def __init__(
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "ACTONEVent"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._enable = ActoneventEnable(device, f"{self._cmd_syntax}:ENable")
         self._limitcount = ActoneventLimitcount(device, f"{self._cmd_syntax}:LIMITCount")

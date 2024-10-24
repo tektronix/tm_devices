@@ -48,7 +48,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SaveWaveformSourcelist(SCPICmdRead):
@@ -128,7 +128,7 @@ class SaveWaveformGating(SCPICmdWrite, SCPICmdRead):
         - ``.resamplerate``: The ``SAVe:WAVEform:GATing:RESAMPLErate`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._resamplerate = SaveWaveformGatingResamplerate(
             device, f"{self._cmd_syntax}:RESAMPLErate"
@@ -201,7 +201,7 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
         - ``.sourcelist``: The ``SAVe:WAVEform:SOURCELIst`` command.
     """  # noqa: E501
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._gating = SaveWaveformGating(device, f"{self._cmd_syntax}:GATing")
         self._sourcelist = SaveWaveformSourcelist(device, f"{self._cmd_syntax}:SOURCELIst")
@@ -318,7 +318,7 @@ class SaveSetup(SCPICmdWrite, SCPICmdRead):
 
     _WRAP_ARG_WITH_QUOTES = True
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._includerefs = SaveSetupIncluderefs(device, f"{self._cmd_syntax}:INCLUDEREFs")
 
@@ -425,7 +425,7 @@ class SaveReport(SCPICmdWrite, SCPICmdRead):
 
     _WRAP_ARG_WITH_QUOTES = True
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._comments = SaveReportComments(device, f"{self._cmd_syntax}:COMMents")
 
@@ -555,7 +555,7 @@ class SaveImage(SCPICmdWrite, SCPICmdRead):
 
     _WRAP_ARG_WITH_QUOTES = True
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._composition = SaveImageComposition(device, f"{self._cmd_syntax}:COMPosition")
         self._viewtype = SaveImageViewtype(device, f"{self._cmd_syntax}:VIEWTYpe")
@@ -791,7 +791,7 @@ class SaveEventtableCustom(SCPICmdWrite, SCPICmdRead):
 
     _WRAP_ARG_WITH_QUOTES = True
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._comments = SaveEventtableCustomComments(device, f"{self._cmd_syntax}:COMMents")
         self._dataformat = SaveEventtableCustomDataformat(device, f"{self._cmd_syntax}:DATAFormat")
@@ -927,7 +927,7 @@ class SaveEventtable(SCPICmdRead):
         - ``.searchtable``: The ``SAVe:EVENTtable:SEARCHTable`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bus = SaveEventtableBus(device, f"{self._cmd_syntax}:BUS")
         self._custom = SaveEventtableCustom(device, f"{self._cmd_syntax}:CUSTom")
@@ -1074,7 +1074,7 @@ class Save(SCPICmdRead):
         - ``.waveform``: The ``SAVe:WAVEform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SAVe") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SAVe") -> None:
         super().__init__(device, cmd_syntax)
         self._eventtable = SaveEventtable(device, f"{self._cmd_syntax}:EVENTtable")
         self._image = SaveImage(device, f"{self._cmd_syntax}:IMAGe")

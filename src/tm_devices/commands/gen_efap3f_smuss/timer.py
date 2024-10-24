@@ -22,7 +22,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class TimerMeasure(BaseTSPCmd):
@@ -54,7 +54,7 @@ class TimerMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.t())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.t()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.t()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -66,7 +66,7 @@ class Timer(BaseTSPCmd):
         - ``.reset()``: The ``timer.reset()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "timer") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "timer") -> None:
         super().__init__(device, cmd_syntax)
         self._measure = TimerMeasure(device, f"{self._cmd_syntax}.measure")
 
@@ -98,5 +98,5 @@ class Timer(BaseTSPCmd):
                 f"{self._cmd_syntax}.reset()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

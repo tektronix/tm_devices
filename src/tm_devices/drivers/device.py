@@ -1,5 +1,6 @@
 """Base device driver module."""
 
+import concurrent.futures
 import socket
 import time
 
@@ -13,22 +14,23 @@ from typing import (
     Optional,
     Tuple,
     TypeVar,
-    Union,
 )
 
 from packaging.version import Version
 
-from tm_devices.driver_mixins.class_extension_mixin import ExtendableMixin
+from tm_devices.driver_mixins.device_control._abstract_device_control import (
+    _AbstractDeviceControl,  # pyright: ignore[reportPrivateUsage]
+)
+from tm_devices.driver_mixins.shared_implementations._extension_mixin import (
+    _ExtendableMixin,  # pyright: ignore[reportPrivateUsage]
+)
 from tm_devices.helpers import (
     check_network_connection,
     check_port_connection,
     ConnectionTypes,
     DeviceConfigEntry,
-    get_timestamp_string,
     print_with_timestamp,
 )
-
-# noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 _T = TypeVar("_T")
@@ -46,15 +48,13 @@ def family_base_class(cls: _T) -> _T:
 
 
 # pylint: disable=too-many-instance-attributes,too-many-public-methods
-class Device(ExtendableMixin, ABC):
+class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
     """Base device driver that all devices inherit from."""
-
-    _DEVICE_TYPE: str  # should be implemented by device type base classes
 
     ################################################################################################
     # Categories:
     # - Magic Methods
-    # - Abstract Cached Properties
+    # - Abstract Properties
     # - Abstract Methods - Private and Public
     # - Properties - Private and Public
     # - Cached Properties
@@ -73,17 +73,13 @@ class Device(ExtendableMixin, ABC):
             config_entry: A config entry object parsed by the DMConfigParser.
             verbose: A boolean indicating if verbose output should be printed.
         """
+        super().__init__(config_entry, verbose)
         self._is_open = True
-        self._verbose = verbose
-        self._config_entry = config_entry
         self._device_number: int = -1  # set after creation by DeviceManager
-        self._enable_verification = True
         self._reboot_quiet_period = 0
         self._series = self.__class__.__name__
 
-        # These are private attributes to be overwritten by generated drivers
-        self._commands: Any = NotImplemented
-        self._command_argument_constants: Any = NotImplemented
+        # These private attributes are used by the auto-generated commands subpackage
         self._command_verification_enabled = False
         self._command_syntax_enabled = False
 
@@ -101,8 +97,13 @@ class Device(ExtendableMixin, ABC):
         return retval
 
     ################################################################################################
-    # Abstract Cached Properties
+    # Abstract Properties
     ################################################################################################
+    @cached_property
+    @abstractmethod
+    def device_type(self) -> str:
+        """Return a string representing the device type."""
+
     @cached_property
     @abstractmethod
     def manufacturer(self) -> str:
@@ -133,14 +134,6 @@ class Device(ExtendableMixin, ABC):
     @abstractmethod
     def _close(self) -> None:
         """Perform the actual closing code."""
-
-    @abstractmethod
-    def _has_errors(self) -> bool:
-        """Check if the device has any errors.
-
-        Returns:
-            A boolean indicating if any errors were found in the device.
-        """
 
     @abstractmethod
     def _open(self) -> bool:
@@ -180,10 +173,12 @@ class Device(ExtendableMixin, ABC):
         """Return the alias if it exists, otherwise an empty string."""
         return self._config_entry.alias if self._config_entry.alias is not None else ""
 
-    @property
+    @cached_property
     def command_argument_constants(self) -> Any:
         """Return the device command argument constants."""
-        return self._command_argument_constants
+        raise NotImplementedError(
+            f"The {self.__class__.__name__} driver does not have a Python API for its commands yet."
+        )
 
     @property
     def command_syntax_enabled(self) -> bool:
@@ -213,12 +208,14 @@ class Device(ExtendableMixin, ABC):
         """
         return self._command_verification_enabled
 
-    @property
+    @cached_property
     def commands(self) -> Any:
         """Return the device commands."""
-        return self._commands
+        raise NotImplementedError(
+            f"The {self.__class__.__name__} driver does not have a Python API for its commands yet."
+        )
 
-    @property
+    @cached_property
     def config_entry(self) -> DeviceConfigEntry:
         """Return the device config."""
         return self._config_entry
@@ -232,11 +229,6 @@ class Device(ExtendableMixin, ABC):
     def device_number(self) -> int:
         """Return the device number, if it was not created by the DeviceManager it will be -1."""
         return self._device_number
-
-    @property
-    def device_type(self) -> str:
-        """Return a string representing the device type."""
-        return self._DEVICE_TYPE
 
     @property
     def enable_verification(self) -> bool:
@@ -289,12 +281,18 @@ class Device(ExtendableMixin, ABC):
     @cached_property
     def hostname(self) -> str:
         """Return the hostname of the device or an empty string if unable to fetch that."""
-        if self._config_entry.connection_type not in {ConnectionTypes.USB}:
-            try:
-                # TODO: figure out a better way to lower the timeout for the gethostbyaddr() call
-                return socket.gethostbyaddr(self.address)[0]
-            except (socket.gaierror, socket.herror):
-                pass
+        if self._config_entry.connection_type not in {
+            ConnectionTypes.USB,
+            ConnectionTypes.SERIAL,
+            ConnectionTypes.GPIB,
+            ConnectionTypes.MOCK,
+        }:
+            with concurrent.futures.ThreadPoolExecutor() as executor:
+                future = executor.submit(socket.gethostbyaddr, self.address)
+                try:
+                    return future.result(timeout=2)[0]  # Use a two-second timeout for the lookup
+                except (socket.gaierror, socket.herror, concurrent.futures.TimeoutError):
+                    pass
         return ""
 
     @cached_property
@@ -424,48 +422,30 @@ class Device(ExtendableMixin, ABC):
         self._close()
 
     @final
+    def get_errors(self) -> Tuple[int, Tuple[str, ...]]:
+        """Get the current errors from the device.
+
+        !!! note
+            This method will clear out the error queue after reading the current errors.
+
+        Returns:
+            A tuple containing the current error code alongside a tuple of the current error
+            messages.
+        """
+        return self._get_errors()
+
+    @final
     def has_errors(self) -> bool:
         """Check if the device has any errors.
 
-        !!! warning
-            In v3 this method will return a tuple containing a bool and a list of instances of
-            device error info dataclasses (this will replace
-            [`get_eventlog_status()`][tm_devices.drivers.pi.pi_device.PIDevice]).
+        !!! note
+            This method will clear out the error queue after reading the current errors.
 
         Returns:
-            A boolean indicating if any errors were found in the device.
+            A boolean indicating if any errors were found in the device. True means there were
+            errors, False means no errors were found.
         """
-        return self._has_errors()
-
-    @final
-    def raise_error(self, message: str) -> None:
-        """Raise an AssertionError with the provided message indicating there was an error.
-
-        Args:
-            message: The message to add to the AssertionError.
-
-        Raises:
-            AssertionError: Prints out the error message with a traceback.
-        """
-        # Make the message smaller
-        message = ", ".join([x.strip() for x in message.split("\n")])
-        message = f"{get_timestamp_string()} - ERROR: ({self._name_and_alias}) : {message}"
-        raise AssertionError(message)
-
-    @final
-    def raise_failure(self, message: str) -> None:
-        """Raise an AssertionError with the provided message indicating there was a failure.
-
-        Args:
-            message: The message to add to the AssertionError.
-
-        Raises:
-            AssertionError: Prints out the failure message with a traceback.
-        """
-        # Make the message smaller
-        message = ", ".join([x.strip() for x in message.split("\n")])
-        message = f"{get_timestamp_string()} - FAILURE: ({self._name_and_alias}) : {message}"
-        raise AssertionError(message)
+        return bool(self.get_errors()[0])
 
     @final
     def reboot(self, quiet_period: int = 0) -> bool:
@@ -503,66 +483,6 @@ class Device(ExtendableMixin, ABC):
                 f"Failed to reestablish the connection with {self._name_and_alias}"
             )
         return rebooted
-
-    @final
-    def verify_values(
-        self,
-        expected_value: Union[str, float],
-        actual_value: Union[str, float],
-        tolerance: float = 0,
-        percentage: bool = False,
-        custom_message_prefix: str = "",
-        log_error: bool = False,
-        expect_fail: bool = False,
-    ) -> bool:
-        """Compare and verify actual value with expected value.
-
-        Args:
-            expected_value: The expected value.
-            actual_value: The actual value.
-            tolerance: The acceptable difference between two floating point values, e.g. 0.0005
-            percentage: A boolean indicating what kind of tolerance check to perform.
-                False means absolute tolerance: +/- tolerance.
-                True means percent tolerance: +/- (tolerance / 100) * value.
-            custom_message_prefix: A custom message to be prepended to the failure message.
-            log_error: Indicate if an error should be logged instead of a failure
-            expect_fail: Indicate if a failure is expected and should be treated as a pass
-
-        Returns:
-            Boolean indicating whether the check passed or failed.
-        """
-        message = custom_message_prefix + "\n" if custom_message_prefix else ""
-
-        try:
-            _ = float(tolerance)
-            _ = float(expected_value)
-            _ = float(actual_value)
-            number_comparison = True
-        except ValueError:
-            number_comparison = False
-
-        if number_comparison:
-            expected_value = float(expected_value)
-            actual_value = float(actual_value)
-            if percentage:
-                tolerance = abs((tolerance / 100.0) * expected_value)
-            message, verify_passed = self._verify_numerical_value(
-                expected_value, actual_value, tolerance, message, expect_fail
-            )
-        else:
-            expected_value = str(expected_value)
-            actual_value = str(actual_value)
-            message, verify_passed = self._verify_string_value(
-                expected_value, actual_value, message, expect_fail
-            )
-        # Mark as pass/fail
-        if not verify_passed:
-            if log_error:
-                self.raise_error(message)
-            else:
-                self.raise_failure(message)
-
-        return verify_passed
 
     @final
     def wait_for_network_connection(
@@ -691,7 +611,6 @@ class Device(ExtendableMixin, ABC):
     ################################################################################################
     # Private Methods
     ################################################################################################
-
     def _get_self_properties(self) -> Tuple[str, ...]:
         """Get a complete list of all the properties of the device."""
         return tuple(
@@ -699,91 +618,3 @@ class Device(ExtendableMixin, ABC):
             for p in dir(self.__class__)
             if isinstance(getattr(self.__class__, p), (functools_cached_property, property))
         )
-
-    @staticmethod
-    @final
-    def _verify_numerical_value(
-        expected_value: float,
-        actual_value: float,
-        tolerance: float,
-        message: str,
-        expect_fail: bool,
-    ) -> Tuple[str, bool]:
-        """Compare and verify a numerical value with expected value.
-
-        Args:
-             expected_value: The expected value.
-             actual_value: The actual value.
-             tolerance: The acceptable difference between two floating point values, e.g. 0.0005
-             message: The failure message to edit and return.
-             expect_fail: Indicate if a failure is expected and should be treated as a pass
-
-        Returns:
-            Tuple containing the failure message and a boolean indicating if the check passed.
-        """
-        max_value = expected_value + tolerance
-        min_value = expected_value - tolerance
-        # Verify that the number is within the tolerance.
-        # Also check to make sure that the string of each number is
-        # identical, this prevents issues from returned values that have
-        # a trailing zero or some other non-contributing character that
-        # will cause comparison issues.
-        if (
-            not expect_fail
-            and (
-                abs(expected_value - actual_value) <= tolerance
-                or str(expected_value) == str(actual_value)
-            )
-        ) or (
-            expect_fail
-            and not (
-                abs(expected_value - actual_value) <= tolerance
-                or str(expected_value) == str(actual_value)
-            )
-        ):
-            verify_passed = True
-        else:
-            message += (
-                f"Actual result {'does not match' if not expect_fail else 'matches'} "
-                f"the expected result within a tolerance of {tolerance}"
-                f"\n  max: {max_value}"
-                f"\n  act: {actual_value}"
-                f"\n  min: {min_value}"
-            )
-            verify_passed = False
-
-        return message, verify_passed
-
-    @staticmethod
-    @final
-    def _verify_string_value(
-        expected_value: str,
-        actual_value: str,
-        message: str,
-        expect_fail: bool,
-    ) -> Tuple[str, bool]:
-        """Compare and verify a string value with expected value.
-
-        Args:
-             expected_value: The expected value.
-             actual_value: The actual value.
-             message: The failure message to edit and return.
-             expect_fail: Indicate if a failure is expected and should be treated as a pass
-
-        Returns:
-            Tuple containing the failure message and a boolean indicating if the check passed.
-        """
-        if (not expect_fail and expected_value == actual_value) or (
-            expect_fail and expected_value != actual_value
-        ):
-            verify_passed = True
-        else:
-            message += (
-                f"Actual result {'does not match' if not expect_fail else 'matches'} "
-                f"the expected result"
-                f"\n  exp{' != ' if expect_fail else ': '}{expected_value}"
-                f"\n  act{' == ' if expect_fail else ': '}{actual_value}"
-            )
-            verify_passed = False
-
-        return message, verify_passed

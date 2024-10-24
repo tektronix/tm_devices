@@ -61,7 +61,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ConfigurationRosc(SCPICmdRead):
@@ -176,7 +176,7 @@ class ConfigurationRf(SCPICmdRead):
         - ``.numchannels``: The ``CONFIGuration:RF:NUMCHANnels`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._advtrig = ConfigurationRfAdvtrig(device, f"{self._cmd_syntax}:ADVTRIG")
         self._bandwidth = ConfigurationRfBandwidth(device, f"{self._cmd_syntax}:BANDWidth")
@@ -296,7 +296,7 @@ class ConfigurationRefs(SCPICmdRead):
         - ``.numrefs``: The ``CONFIGuration:REFS:NUMREFS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._numrefs = ConfigurationRefsNumrefs(device, f"{self._cmd_syntax}:NUMREFS")
 
@@ -484,7 +484,7 @@ class ConfigurationDigital(SCPICmdRead):
         - ``.numchannels``: The ``CONFIGuration:DIGITAl:NUMCHANnels`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._magnivu = ConfigurationDigitalMagnivu(device, f"{self._cmd_syntax}:MAGnivu")
         self._maxsamplerate = ConfigurationDigitalMaxsamplerate(
@@ -602,7 +602,7 @@ class ConfigurationBuswaveformsUsb(SCPICmdRead):
         - ``.hs``: The ``CONFIGuration:BUSWAVEFORMS:USB:HS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hs = ConfigurationBuswaveformsUsbHs(device, f"{self._cmd_syntax}:HS")
 
@@ -910,7 +910,7 @@ class ConfigurationBuswaveforms(SCPICmdRead):
         - ``.usb``: The ``CONFIGuration:BUSWAVEFORMS:USB`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._arinc429a = ConfigurationBuswaveformsArinc429a(
             device, f"{self._cmd_syntax}:ARINC429A"
@@ -1384,7 +1384,7 @@ class ConfigurationApplications(SCPICmdRead):
         - ``.vidpic``: The ``CONFIGuration:APPLications:VIDPIC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._custommask = ConfigurationApplicationsCustommask(
             device, f"{self._cmd_syntax}:CUSTOMMask"
@@ -1633,7 +1633,7 @@ class ConfigurationAnalog(SCPICmdRead):
         - ``.vertinvert``: The ``CONFIGuration:ANALOg:VERTINVert`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bandwidth = ConfigurationAnalogBandwidth(device, f"{self._cmd_syntax}:BANDWidth")
         self._maxbandwidth = ConfigurationAnalogMaxbandwidth(
@@ -1839,7 +1839,7 @@ class Configuration(SCPICmdRead):
     """
 
     def __init__(
-        self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CONFIGuration"
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "CONFIGuration"
     ) -> None:
         super().__init__(device, cmd_syntax)
         self._advmath = ConfigurationAdvmath(device, f"{self._cmd_syntax}:ADVMATH")

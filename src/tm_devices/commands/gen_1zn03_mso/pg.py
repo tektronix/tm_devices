@@ -38,7 +38,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class PgPatterndefinition(SCPICmdWrite, SCPICmdRead):
@@ -104,7 +104,7 @@ class PgOutput(SCPICmdRead):
         - ``.mode``: The ``PG:OUTPut:MODe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = PgOutputMode(device, f"{self._cmd_syntax}:MODe")
 
@@ -174,7 +174,7 @@ class PgFile(SCPICmdRead):
         - ``.pattern``: The ``PG:FILE:PATTern`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._pattern = PgFilePattern(device, f"{self._cmd_syntax}:PATTern")
 
@@ -260,7 +260,7 @@ class PgBurst(SCPICmdRead):
         - ``.trigger``: The ``PG:BURSt:TRIGger`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ccount = PgBurstCcount(device, f"{self._cmd_syntax}:CCOUnt")
         self._trigger = PgBurstTrigger(device, f"{self._cmd_syntax}:TRIGger")
@@ -458,7 +458,7 @@ class PgBit(SCPICmdRead):
         - ``.zero``: The ``PG:BIT:ZERO`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._one = PgBitOne(device, f"{self._cmd_syntax}:ONE")
         self._three = PgBitThree(device, f"{self._cmd_syntax}:THREE")
@@ -623,7 +623,7 @@ class Pg(SCPICmdRead):
         - ``.patterndefinition``: The ``PG:PATTERNdefinition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "PG") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "PG") -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = PgAmplitude(device, f"{self._cmd_syntax}:AMPlitude")
         self._bit = PgBit(device, f"{self._cmd_syntax}:BIT")

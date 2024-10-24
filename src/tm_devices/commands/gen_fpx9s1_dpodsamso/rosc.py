@@ -25,7 +25,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class RoscTracking(SCPICmdWrite, SCPICmdRead):
@@ -142,7 +142,7 @@ class RoscOut(SCPICmdRead):
         - ``.frequency``: The ``ROSc:OUT:FREQuency`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = RoscOutFrequency(device, f"{self._cmd_syntax}:FREQuency")
 
@@ -188,7 +188,7 @@ class Rosc(SCPICmdRead):
         - ``.tracking``: The ``ROSc:TRACking`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "ROSc") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "ROSc") -> None:
         super().__init__(device, cmd_syntax)
         self._out = RoscOut(device, f"{self._cmd_syntax}:OUT")
         self._source = RoscSource(device, f"{self._cmd_syntax}:SOUrce")

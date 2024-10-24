@@ -41,7 +41,7 @@ from typing import Dict, Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, DefaultDictDeviceCommunication, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 #  pylint: disable=too-many-instance-attributes,too-many-public-methods
@@ -76,7 +76,9 @@ class Buffervar(BaseTSPCmd):
         - ``.timestamps``: The ``bufferVar.timestamps[N]`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "bufferVar") -> None:
+    def __init__(
+        self, device: Optional["TSPControl"] = None, cmd_syntax: str = "bufferVar"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._measurefunctions: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.measurefunctions[{{key}}]",
@@ -156,7 +158,7 @@ class Buffervar(BaseTSPCmd):
                 f"print({self._cmd_syntax}.appendmode)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.appendmode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.appendmode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @appendmode.setter
@@ -194,7 +196,7 @@ class Buffervar(BaseTSPCmd):
                     f"{self._cmd_syntax}.appendmode = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.appendmode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.appendmode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -227,7 +229,7 @@ class Buffervar(BaseTSPCmd):
                 f"print({self._cmd_syntax}.basetimestamp)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.basetimestamp`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.basetimestamp`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -262,7 +264,7 @@ class Buffervar(BaseTSPCmd):
                 f"print({self._cmd_syntax}.cachemode)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.cachemode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.cachemode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @cachemode.setter
@@ -300,7 +302,7 @@ class Buffervar(BaseTSPCmd):
                     f"{self._cmd_syntax}.cachemode = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.cachemode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.cachemode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -332,7 +334,7 @@ class Buffervar(BaseTSPCmd):
                 f"print({self._cmd_syntax}.capacity)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.capacity`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.capacity`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -368,7 +370,7 @@ class Buffervar(BaseTSPCmd):
                 f"print({self._cmd_syntax}.collectsourcevalues)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.collectsourcevalues`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.collectsourcevalues`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @collectsourcevalues.setter
@@ -407,7 +409,7 @@ class Buffervar(BaseTSPCmd):
                     f"{self._cmd_syntax}.collectsourcevalues = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.collectsourcevalues`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.collectsourcevalues`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -443,7 +445,7 @@ class Buffervar(BaseTSPCmd):
                 f"print({self._cmd_syntax}.collecttimestamps)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.collecttimestamps`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.collecttimestamps`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @collecttimestamps.setter
@@ -482,7 +484,7 @@ class Buffervar(BaseTSPCmd):
                     f"{self._cmd_syntax}.collecttimestamps = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.collecttimestamps`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.collecttimestamps`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -517,7 +519,7 @@ class Buffervar(BaseTSPCmd):
                 f"print({self._cmd_syntax}.fillcount)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.fillcount`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.fillcount`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @fillcount.setter
@@ -555,7 +557,7 @@ class Buffervar(BaseTSPCmd):
                     f"{self._cmd_syntax}.fillcount = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.fillcount`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.fillcount`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -589,7 +591,7 @@ class Buffervar(BaseTSPCmd):
                 f"print({self._cmd_syntax}.fillmode)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.fillmode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.fillmode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @fillmode.setter
@@ -626,7 +628,7 @@ class Buffervar(BaseTSPCmd):
                     f"{self._cmd_syntax}.fillmode = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.fillmode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.fillmode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -712,7 +714,7 @@ class Buffervar(BaseTSPCmd):
                 f"print({self._cmd_syntax}.n)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.n`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.n`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -911,7 +913,7 @@ class Buffervar(BaseTSPCmd):
                 f"print({self._cmd_syntax}.timestampresolution)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.timestampresolution`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.timestampresolution`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @timestampresolution.setter
@@ -951,7 +953,7 @@ class Buffervar(BaseTSPCmd):
                     f"{self._cmd_syntax}.timestampresolution = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.timestampresolution`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.timestampresolution`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1004,7 +1006,7 @@ class Buffervar(BaseTSPCmd):
                 f"{self._cmd_syntax}.clear()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def clearcache(self) -> None:
@@ -1030,5 +1032,5 @@ class Buffervar(BaseTSPCmd):
                 f"{self._cmd_syntax}.clearcache()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clearcache()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clearcache()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

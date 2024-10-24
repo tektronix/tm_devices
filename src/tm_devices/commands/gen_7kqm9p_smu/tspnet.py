@@ -34,7 +34,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class TspnetTsp(BaseTSPCmd):
@@ -75,7 +75,7 @@ class TspnetTsp(BaseTSPCmd):
                 f"print({self._cmd_syntax}.abortonconnect)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.abortonconnect`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.abortonconnect`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @abortonconnect.setter
@@ -109,7 +109,7 @@ class TspnetTsp(BaseTSPCmd):
                     f"{self._cmd_syntax}.abortonconnect = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.abortonconnect`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.abortonconnect`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def abort(self, connection_id: str) -> None:
@@ -135,7 +135,7 @@ class TspnetTsp(BaseTSPCmd):
                 f"{self._cmd_syntax}.abort({connection_id})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.abort()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.abort()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def rbtablecopy(
@@ -183,7 +183,7 @@ class TspnetTsp(BaseTSPCmd):
                 f"print({self._cmd_syntax}.rbtablecopy({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.rbtablecopy()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.rbtablecopy()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def runscript(self, connection_id: str, name: str, script: str) -> None:
@@ -210,7 +210,7 @@ class TspnetTsp(BaseTSPCmd):
                 f'{self._cmd_syntax}.runscript({connection_id}, "{name}", "{script}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.runscript()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.runscript()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -247,7 +247,7 @@ class Tspnet(BaseTSPCmd):
     TERM_LFCR = "tspnet.TERM_LFCR"
     """str: Set the device line termination sequence to LFCR."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "tspnet") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "tspnet") -> None:
         super().__init__(device, cmd_syntax)
         self._tsp = TspnetTsp(device, f"{self._cmd_syntax}.tsp")
 
@@ -279,7 +279,7 @@ class Tspnet(BaseTSPCmd):
                 f"print({self._cmd_syntax}.timeout)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.timeout`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.timeout`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @timeout.setter
@@ -313,7 +313,7 @@ class Tspnet(BaseTSPCmd):
                     f"{self._cmd_syntax}.timeout = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.timeout`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.timeout`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -350,7 +350,7 @@ class Tspnet(BaseTSPCmd):
                 f"{self._cmd_syntax}.clear({connection_id})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def connect(
@@ -401,7 +401,7 @@ class Tspnet(BaseTSPCmd):
                 f"print({self._cmd_syntax}.connect({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.connect()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.connect()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def disconnect(self, connection_id: str) -> None:
@@ -426,7 +426,7 @@ class Tspnet(BaseTSPCmd):
                 f"{self._cmd_syntax}.disconnect({connection_id})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.disconnect()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.disconnect()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def execute(
@@ -467,7 +467,7 @@ class Tspnet(BaseTSPCmd):
                 f"print({self._cmd_syntax}.execute({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.execute()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.execute()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def idn(self, connection_id: str) -> str:
@@ -495,7 +495,7 @@ class Tspnet(BaseTSPCmd):
                 f"print({self._cmd_syntax}.idn({connection_id}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.idn()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.idn()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def read(self, connection_id: str, format_string: Optional[str] = None) -> str:
@@ -532,7 +532,7 @@ class Tspnet(BaseTSPCmd):
                 f"print({self._cmd_syntax}.read({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.read()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.read()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def readavailable(self, connection_id: str) -> str:
@@ -560,7 +560,7 @@ class Tspnet(BaseTSPCmd):
                 f"print({self._cmd_syntax}.readavailable({connection_id}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.readavailable()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.readavailable()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def reset(self) -> None:
@@ -582,7 +582,7 @@ class Tspnet(BaseTSPCmd):
                 f"{self._cmd_syntax}.reset()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def termination(self, connection_id: str, term_sequence: Optional[str] = None) -> str:
@@ -619,7 +619,7 @@ class Tspnet(BaseTSPCmd):
                 f"print({self._cmd_syntax}.termination({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.termination()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.termination()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def write(self, connection_id: str, input_string: str) -> None:
@@ -645,5 +645,5 @@ class Tspnet(BaseTSPCmd):
                 f'{self._cmd_syntax}.write({connection_id}, "{input_string}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.write()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.write()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

@@ -23,7 +23,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class RecallWaveform(SCPICmdWrite):
@@ -112,7 +112,7 @@ class RecallSetup(SCPICmdWrite, SCPICmdRead):
         - ``.deskew``: The ``RECAll:SETUp:DESKew`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._deskew = RecallSetupDeskew(device, f"{self._cmd_syntax}:DESKew")
 
@@ -184,7 +184,7 @@ class Recall(SCPICmdRead):
         - ``.waveform``: The ``RECAll:WAVEform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "RECAll") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "RECAll") -> None:
         super().__init__(device, cmd_syntax)
         self._mask = RecallMask(device, f"{self._cmd_syntax}:MASK")
         self._setup = RecallSetup(device, f"{self._cmd_syntax}:SETUp")

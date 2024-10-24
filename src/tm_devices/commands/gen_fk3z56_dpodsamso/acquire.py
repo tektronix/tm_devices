@@ -43,7 +43,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class AcquireSyncsamples(SCPICmdWrite, SCPICmdRead):
@@ -364,7 +364,7 @@ class AcquireMode(SCPICmdWrite, SCPICmdRead):
         - ``.actual``: The ``ACQuire:MODe:ACTUal`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._actual = AcquireModeActual(device, f"{self._cmd_syntax}:ACTUal")
 
@@ -492,7 +492,7 @@ class AcquireEnhancedenob(SCPICmdWrite, SCPICmdRead):
         - ``.state``: The ``ACQuire:ENHANCEDEnob:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = AcquireEnhancedenobState(device, f"{self._cmd_syntax}:STATE")
 
@@ -541,7 +541,7 @@ class Acquire(SCPICmdRead):
         - ``.syncsamples``: The ``ACQuire:SYNcsamples`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "ACQuire") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "ACQuire") -> None:
         super().__init__(device, cmd_syntax)
         self._enhancedenob = AcquireEnhancedenob(device, f"{self._cmd_syntax}:ENHANCEDEnob")
         self._interpeightbit = AcquireInterpeightbit(device, f"{self._cmd_syntax}:INTERPEightbit")

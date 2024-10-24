@@ -15,12 +15,13 @@ from typing import Any, cast, DefaultDict, Optional, Set, Tuple, Type, TYPE_CHEC
 from .generic_commands import BaseCmd, END_OF_STRING_DIGITS, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 MAX_CHANNELS = 8
 MAX_DIGITAL_BITS = 16
 END_OF_STRING_NUMBER = re.compile(r"(\d+)$")
-# TODO: Once Python 3.8 is no longer supported, the dynamic parent class can be removed
+# TODO: Drop Python 3.8: Once Python 3.8 is no longer supported,
+#  the dynamic parent class can be removed
 # pylint: disable=unsubscriptable-object,useless-suppression
 ParentDefaultDictClass: Type[DefaultDict[Any, Any]] = (
     defaultdict if sys.version_info < (3, 9) else defaultdict[Any, Any]
@@ -33,9 +34,9 @@ ParentDefaultDictClass: Type[DefaultDict[Any, Any]] = (
 class BaseSCPICmd(BaseCmd):  # pylint: disable=too-few-public-methods
     """A class to better type hint a member of a SCPI command tree."""
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._device: Optional["PIDevice"] = device
+        self._device: Optional["PIControl"] = device
 
 
 class SCPICmdRead(BaseSCPICmd):
@@ -58,7 +59,7 @@ class SCPICmdRead(BaseSCPICmd):
         try:
             return self._device.query(self._cmd_syntax + "?")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No PIDevice object was provided, the .query() method cannot be used."
+            msg = "No PIControl object was provided, the .query() method cannot be used."
             raise NoDeviceProvidedError(msg) from error
 
     def verify(self, value: Union[float, str]) -> Tuple[bool, str]:
@@ -85,7 +86,7 @@ class SCPICmdRead(BaseSCPICmd):
                 self._cmd_syntax + "?", value
             )
         except AttributeError as error:
-            msg = "No PIDevice object was provided, the .verify() method cannot be used."
+            msg = "No PIControl object was provided, the .verify() method cannot be used."
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -117,7 +118,7 @@ class SCPICmdReadWithArguments(BaseSCPICmd):
                 self._cmd_syntax + f"? {argument}".strip()
             )
         except AttributeError as error:
-            msg = "No PIDevice object was provided, the .query() method cannot be used."
+            msg = "No PIControl object was provided, the .query() method cannot be used."
             raise NoDeviceProvidedError(msg) from error
 
     def verify(self, argument: str, value: Union[float, str]) -> Tuple[bool, str]:
@@ -146,7 +147,7 @@ class SCPICmdReadWithArguments(BaseSCPICmd):
                 self._cmd_syntax + f"? {argument}".strip(), value
             )
         except AttributeError as error:
-            msg = "No PIDevice object was provided, the .verify() method cannot be used."
+            msg = "No PIControl object was provided, the .verify() method cannot be used."
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -180,7 +181,7 @@ class SCPICmdWrite(BaseSCPICmd):
                 )
             self._device.write(f"{self._cmd_syntax} {value}")  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No PIDevice object was provided, the .write() method cannot be used."
+            msg = "No PIControl object was provided, the .write() method cannot be used."
             raise NoDeviceProvidedError(msg) from error
         return ""
 
@@ -199,7 +200,7 @@ class SCPICmdWriteNoArguments(BaseSCPICmd):
         try:
             self._device.write(self._cmd_syntax)  # type: ignore[union-attr]
         except AttributeError as error:
-            msg = "No PIDevice object was provided, the .write() method cannot be used."
+            msg = "No PIControl object was provided, the .write() method cannot be used."
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -211,7 +212,7 @@ class ValidatedDigitalBit(BaseSCPICmd):  # pylint: disable=too-few-public-method
     maximum number of digital bits on the device).
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
 
         # Validate the bit number is correct
@@ -232,14 +233,14 @@ class ValidatedChannel(BaseCmd):  # pylint: disable=too-few-public-methods
     channels on the device).
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["Any"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
 
         # Validate the channel
         channel: Union[str, int]
         valid_channels: Set[Union[str, int]]
-        if device is not None:
-            valid_channel_strings = set(device.all_channel_names_list)
+        if device is not None and hasattr(device, "all_channel_names_list"):
+            valid_channel_strings: Set[str] = set(device.all_channel_names_list)
         else:
             valid_channel_numbers = set(range(1, MAX_CHANNELS + 1))
             valid_channel_strings = {f"CH{x}" for x in valid_channel_numbers}
@@ -286,7 +287,7 @@ class DefaultDictDeviceCommunication(ParentDefaultDictClass):
         cmd_syntax: str,
         query_syntax: str,
         write_syntax: Optional[str] = None,
-        device: Optional["PIDevice"] = None,
+        device: Optional["PIControl"] = None,
         **kwargs: Any,
     ) -> None:
         """Create an instance of the class.

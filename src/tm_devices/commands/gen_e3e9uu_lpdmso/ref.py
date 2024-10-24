@@ -45,7 +45,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class RefRefItemSource(SCPICmdWrite):
@@ -293,7 +293,7 @@ class RefRefItemLabelFont(SCPICmdRead):
         - ``.underline``: The ``REF:REF<x>:LABel:FONT:UNDERline`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bold = RefRefItemLabelFontBold(device, f"{self._cmd_syntax}:BOLD")
         self._italic = RefRefItemLabelFontItalic(device, f"{self._cmd_syntax}:ITALic")
@@ -477,7 +477,7 @@ class RefRefItemLabel(SCPICmdRead):
         - ``.ypos``: The ``REF:REF<x>:LABel:YPOS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._color = RefRefItemLabelColor(device, f"{self._cmd_syntax}:COLor")
         self._font = RefRefItemLabelFont(device, f"{self._cmd_syntax}:FONT")
@@ -646,7 +646,7 @@ class RefRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.source``: The ``REF:REF<x>:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._deskew = RefRefItemDeskew(device, f"{self._cmd_syntax}:DESKew")
         self._label = RefRefItemLabel(device, f"{self._cmd_syntax}:LABel")
@@ -789,7 +789,7 @@ class Ref(SCPICmdRead):
         - ``.ref``: The ``REF:REF<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "REF") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "REF") -> None:
         super().__init__(device, cmd_syntax)
         self._addnew = RefAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = RefDelete(device, f"{self._cmd_syntax}:DELete")

@@ -409,7 +409,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DisplayWaveform(SCPICmdWrite, SCPICmdRead):
@@ -509,7 +509,7 @@ class DisplayWaveviewCursorCursor1(SCPICmdRead):
         - ``.rolocation``: The ``DISplay:WAVEView:CURSor:CURSOR1:ROLOCATION`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._rolocation = DisplayWaveviewCursorCursor1Rolocation(
             device, f"{self._cmd_syntax}:ROLOCATION"
@@ -559,7 +559,7 @@ class DisplayWaveviewCursor(SCPICmdRead):
         - ``.cursor1``: The ``DISplay:WAVEView:CURSor:CURSOR1`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._cursor1 = DisplayWaveviewCursorCursor1(device, f"{self._cmd_syntax}:CURSOR1")
 
@@ -656,7 +656,7 @@ class DisplayWaveview1ZoomZoom1Vertical(SCPICmdRead):
         - ``.scale``: The ``DISplay:WAVEView1:ZOOM:ZOOM1:VERTical:SCALe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = DisplayWaveview1ZoomZoom1VerticalPosition(
             device, f"{self._cmd_syntax}:POSition"
@@ -862,7 +862,7 @@ class DisplayWaveview1ZoomZoom1Horizontal(SCPICmdRead):
         - ``.winscale``: The ``DISplay:WAVEView1:ZOOM:ZOOM1:HORizontal:WINSCALe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = DisplayWaveview1ZoomZoom1HorizontalPosition(
             device, f"{self._cmd_syntax}:POSition"
@@ -990,7 +990,7 @@ class DisplayWaveview1ZoomZoom1(SCPICmdRead):
         - ``.vertical``: The ``DISplay:WAVEView1:ZOOM:ZOOM1:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._horizontal = DisplayWaveview1ZoomZoom1Horizontal(
             device, f"{self._cmd_syntax}:HORizontal"
@@ -1085,7 +1085,7 @@ class DisplayWaveview1Zoom(SCPICmdRead):
         - ``.zoom1``: The ``DISplay:WAVEView1:ZOOM:ZOOM1`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._zoom1 = DisplayWaveview1ZoomZoom1(device, f"{self._cmd_syntax}:ZOOM1")
 
@@ -1244,7 +1244,7 @@ class DisplayWaveview1RfPhaseItemVertical(SCPICmdRead):
         - ``.scale``: The ``DISplay:WAVEView1:RF_PHASe<x>:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = DisplayWaveview1RfPhaseItemVerticalPosition(
             device, f"{self._cmd_syntax}:POSition"
@@ -1328,7 +1328,7 @@ class DisplayWaveview1RfPhaseItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.vertical``: The ``DISplay:WAVEView1:RF_PHASe<x>:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._vertical = DisplayWaveview1RfPhaseItemVertical(device, f"{self._cmd_syntax}:VERTical")
 
@@ -1433,7 +1433,7 @@ class DisplayWaveview1RfMagnitudeItemVertical(SCPICmdRead):
         - ``.scale``: The ``DISplay:WAVEView1:RF_MAGnitude<x>:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = DisplayWaveview1RfMagnitudeItemVerticalPosition(
             device, f"{self._cmd_syntax}:POSition"
@@ -1522,7 +1522,7 @@ class DisplayWaveview1RfMagnitudeItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.vertical``: The ``DISplay:WAVEView1:RF_MAGnitude<x>:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._vertical = DisplayWaveview1RfMagnitudeItemVertical(
             device, f"{self._cmd_syntax}:VERTical"
@@ -1626,7 +1626,7 @@ class DisplayWaveview1RfFrequencyItemVertical(SCPICmdRead):
         - ``.scale``: The ``DISplay:WAVEView1:RF_FREQuency<x>:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = DisplayWaveview1RfFrequencyItemVerticalPosition(
             device, f"{self._cmd_syntax}:POSition"
@@ -1712,7 +1712,7 @@ class DisplayWaveview1RfFrequencyItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.vertical``: The ``DISplay:WAVEView1:RF_FREQuency<x>:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._vertical = DisplayWaveview1RfFrequencyItemVertical(
             device, f"{self._cmd_syntax}:VERTical"
@@ -1777,7 +1777,7 @@ class DisplayWaveview1RefItemDall(SCPICmdRead):
         - ``.frame``: The ``DISplay:WAVEView1:REF<x>_DALL:FRAMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frame = DisplayWaveview1RefItemDallFrame(device, f"{self._cmd_syntax}:FRAMe")
 
@@ -1822,7 +1822,7 @@ class DisplayWaveview1RefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.dall``: The ``DISplay:WAVEView1:REF<x>_DALL`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dall = DisplayWaveview1RefItemDall(device, f"{self._cmd_syntax}_DALL")
 
@@ -1910,7 +1910,7 @@ class DisplayWaveview1RefRefItemVertical(SCPICmdRead):
         - ``.scale``: The ``DISplay:WAVEView1:REF:REF<x>:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = DisplayWaveview1RefRefItemVerticalPosition(
             device, f"{self._cmd_syntax}:POSition"
@@ -2041,7 +2041,7 @@ class DisplayWaveview1RefRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.frame``: The ``DISplay:WAVEView1:REF:REF<x>:FRAMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DisplayWaveview1RefRefItemState(device, f"{self._cmd_syntax}:STATE")
         self._vertical = DisplayWaveview1RefRefItemVertical(device, f"{self._cmd_syntax}:VERTical")
@@ -2136,7 +2136,7 @@ class DisplayWaveview1Ref(SCPICmdRead):
         - ``.ref``: The ``DISplay:WAVEView1:REF:REF<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ref: Dict[int, DisplayWaveview1RefRefItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayWaveview1RefRefItem(device, f"{self._cmd_syntax}:REF{x}")
@@ -2228,7 +2228,7 @@ class DisplayWaveview1PlotPlotItemVertical(SCPICmdRead):
         - ``.scale``: The ``DISplay:WAVEView1:PLOT:PLOT<x>:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = DisplayWaveview1PlotPlotItemVerticalPosition(
             device, f"{self._cmd_syntax}:POSition"
@@ -2366,7 +2366,7 @@ class DisplayWaveview1PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.vertical``: The ``DISplay:WAVEView1:PLOT:PLOT<x>:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoscale = DisplayWaveview1PlotPlotItemAutoscale(
             device, f"{self._cmd_syntax}:AUTOScale"
@@ -2468,7 +2468,7 @@ class DisplayWaveview1Plot(SCPICmdRead):
         - ``.plot``: The ``DISplay:WAVEView1:PLOT:PLOT<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._plot: Dict[int, DisplayWaveview1PlotPlotItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayWaveview1PlotPlotItem(device, f"{self._cmd_syntax}:PLOT{x}")
@@ -2560,7 +2560,7 @@ class DisplayWaveview1MathMathItemVertical(SCPICmdRead):
         - ``.scale``: The ``DISplay:WAVEView1:MATH:MATH<x>:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = DisplayWaveview1MathMathItemVerticalPosition(
             device, f"{self._cmd_syntax}:POSition"
@@ -2698,7 +2698,7 @@ class DisplayWaveview1MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.vertical``: The ``DISplay:WAVEView1:MATH:MATH<x>:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoscale = DisplayWaveview1MathMathItemAutoscale(
             device, f"{self._cmd_syntax}:AUTOScale"
@@ -2800,7 +2800,7 @@ class DisplayWaveview1Math(SCPICmdRead):
         - ``.math``: The ``DISplay:WAVEView1:MATH:MATH<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._math: Dict[int, DisplayWaveview1MathMathItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayWaveview1MathMathItem(device, f"{self._cmd_syntax}:MATH{x}")
@@ -2888,7 +2888,7 @@ class DisplayWaveview1Intensity(SCPICmdRead):
         - ``.waveform``: The ``DISplay:WAVEView1:INTENSITy:WAVEform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._graticule = DisplayWaveview1IntensityGraticule(
             device, f"{self._cmd_syntax}:GRATicule"
@@ -3088,7 +3088,7 @@ class DisplayWaveview1CursorCursorWaveformAll(SCPICmdRead):
         - ``.values``: The ``DISplay:WAVEView1:CURSor:CURSOR:WAVEform:ALL:Values`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._values = DisplayWaveview1CursorCursorWaveformAllValues(
             device, f"{self._cmd_syntax}:Values"
@@ -3133,7 +3133,7 @@ class DisplayWaveview1CursorCursorWaveform(SCPICmdRead):
         - ``.bvposition``: The ``DISplay:WAVEView1:CURSor:CURSOR:WAVEform:BVPOSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._all = DisplayWaveview1CursorCursorWaveformAll(device, f"{self._cmd_syntax}:ALL")
         self._avposition = DisplayWaveview1CursorCursorWaveformAvposition(
@@ -3283,7 +3283,7 @@ class DisplayWaveview1CursorCursor1Waveform(SCPICmdRead):
         - ``.bposition``: The ``DISplay:WAVEView1:CURSor:CURSOR1:WAVEform:BPOSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aposition = DisplayWaveview1CursorCursor1WaveformAposition(
             device, f"{self._cmd_syntax}:APOSition"
@@ -3466,7 +3466,7 @@ class DisplayWaveview1CursorCursor1Vbars(SCPICmdRead):
         - ``.units``: The ``DISplay:WAVEView1:CURSor:CURSOR1:VBArs:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aposition = DisplayWaveview1CursorCursor1VbarsAposition(
             device, f"{self._cmd_syntax}:APOSition"
@@ -3766,7 +3766,7 @@ class DisplayWaveview1CursorCursor1Screen(SCPICmdRead):
         - ``.byposition``: The ``DISplay:WAVEView1:CURSor:CURSOR1:SCREEN:BYPOSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._axposition = DisplayWaveview1CursorCursor1ScreenAxposition(
             device, f"{self._cmd_syntax}:AXPOSition"
@@ -4085,7 +4085,7 @@ class DisplayWaveview1CursorCursor1Hbars(SCPICmdRead):
         - ``.delta``: The ``DISplay:WAVEView1:CURSor:CURSOR1:HBArs:DELTa`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aposition = DisplayWaveview1CursorCursor1HbarsAposition(
             device, f"{self._cmd_syntax}:APOSition"
@@ -4384,7 +4384,7 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
         - ``.waveform``: The ``DISplay:WAVEView1:CURSor:CURSOR1:WAVEform`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._asource = DisplayWaveview1CursorCursor1Asource(device, f"{self._cmd_syntax}:ASOUrce")
         self._bsource = DisplayWaveview1CursorCursor1Bsource(device, f"{self._cmd_syntax}:BSOUrce")
@@ -4724,7 +4724,7 @@ class DisplayWaveview1CursorCursor(SCPICmdRead):
         - ``.waveform``: The ``DISplay:WAVEView1:CURSor:CURSOR:WAVEform`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._waveform = DisplayWaveview1CursorCursorWaveform(
             device, f"{self._cmd_syntax}:WAVEform"
@@ -4770,7 +4770,7 @@ class DisplayWaveview1Cursor(SCPICmdRead):
         - ``.cursor1``: The ``DISplay:WAVEView1:CURSor:CURSOR1`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._cursor = DisplayWaveview1CursorCursor(device, f"{self._cmd_syntax}:CURSOR")
         self._cursor1 = DisplayWaveview1CursorCursor1(device, f"{self._cmd_syntax}:CURSOR1")
@@ -4870,7 +4870,7 @@ class DisplayWaveview1ChannelDallVertical(SCPICmdRead):
         - ``.position``: The ``DISplay:WAVEView1:CH<x>_DALL:VERTical:POSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = DisplayWaveview1ChannelDallVerticalPosition(
             device, f"{self._cmd_syntax}:POSition"
@@ -4948,7 +4948,7 @@ class DisplayWaveview1ChannelDall(SCPICmdRead):
         - ``.vertical``: The ``DISplay:WAVEView1:CH<x>_DALL:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DisplayWaveview1ChannelDallState(device, f"{self._cmd_syntax}:STATE")
         self._vertical = DisplayWaveview1ChannelDallVertical(device, f"{self._cmd_syntax}:VERTical")
@@ -5041,7 +5041,7 @@ class DisplayWaveview1ChannelDigitalBit(ValidatedDigitalBit, SCPICmdRead):
         - ``.state``: The ``DISplay:WAVEView1:CH<x>_D<x>:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DisplayWaveview1ChannelDigitalBitState(device, f"{self._cmd_syntax}:STATE")
 
@@ -5146,7 +5146,7 @@ class DisplayWaveview1ChannelVertical(SCPICmdRead):
         - ``.scale``: The ``DISplay:WAVEView1:CH<x>:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = DisplayWaveview1ChannelVerticalPosition(
             device, f"{self._cmd_syntax}:POSition"
@@ -5254,7 +5254,7 @@ class DisplayWaveview1Channel(ValidatedChannel, SCPICmdRead):
         - ``.dall``: The ``DISplay:WAVEView1:CH<x>_DALL`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DisplayWaveview1ChannelState(device, f"{self._cmd_syntax}:STATE")
         self._vertical = DisplayWaveview1ChannelVertical(device, f"{self._cmd_syntax}:VERTical")
@@ -5377,7 +5377,7 @@ class DisplayWaveview1BusBItemVertical(SCPICmdRead):
         - ``.position``: The ``DISplay:WAVEView1:BUS:B<x>:VERTical:POSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = DisplayWaveview1BusBItemVerticalPosition(
             device, f"{self._cmd_syntax}:POSition"
@@ -5452,7 +5452,7 @@ class DisplayWaveview1BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.vertical``: The ``DISplay:WAVEView1:BUS:B<x>:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DisplayWaveview1BusBItemState(device, f"{self._cmd_syntax}:STATE")
         self._vertical = DisplayWaveview1BusBItemVertical(device, f"{self._cmd_syntax}:VERTical")
@@ -5516,7 +5516,7 @@ class DisplayWaveview1Bus(SCPICmdRead):
         - ``.b``: The ``DISplay:WAVEView1:BUS:B<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._b: Dict[int, DisplayWaveview1BusBItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayWaveview1BusBItem(device, f"{self._cmd_syntax}:B{x}")
@@ -5566,7 +5566,7 @@ class DisplayWaveview1(SCPICmdRead):
         - ``.refx``: The ``DISplay:WAVEView1:REF<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bus = DisplayWaveview1Bus(device, f"{self._cmd_syntax}:BUS")
         self._ch: Dict[int, DisplayWaveview1Channel] = DefaultDictPassKeyToFactory(
@@ -5928,7 +5928,7 @@ class DisplayWaveview(SCPICmdRead):
         - ``.gridtype``: The ``DISplay:WAVEView:GRIDTYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._cursor = DisplayWaveviewCursor(device, f"{self._cmd_syntax}:CURSor")
         self._gridtype = DisplayWaveviewGridtype(device, f"{self._cmd_syntax}:GRIDTYPE")
@@ -6099,7 +6099,7 @@ class DisplaySpecview1Intensity(SCPICmdRead):
         - ``.waveform``: The ``DISplay:SPECView1:INTENSITy:WAVEform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._graticule = DisplaySpecview1IntensityGraticule(
             device, f"{self._cmd_syntax}:GRATicule"
@@ -6296,7 +6296,7 @@ class DisplaySpecview1CursorCursorWaveform(SCPICmdRead):
         - ``.bposition``: The ``DISplay:SPECView1:CURSor:CURSOR:WAVEform:BPOSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aposition = DisplaySpecview1CursorCursorWaveformAposition(
             device, f"{self._cmd_syntax}:APOSition"
@@ -6465,7 +6465,7 @@ class DisplaySpecview1CursorCursorVbars(SCPICmdRead):
         - ``.units``: The ``DISplay:SPECView1:CURSor:CURSOR:VBArs:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aposition = DisplaySpecview1CursorCursorVbarsAposition(
             device, f"{self._cmd_syntax}:APOSition"
@@ -6760,7 +6760,7 @@ class DisplaySpecview1CursorCursorHbars(SCPICmdRead):
         - ``.bunits``: The ``DISplay:SPECView1:CURSor:CURSOR:HBArs:BUNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aposition = DisplaySpecview1CursorCursorHbarsAposition(
             device, f"{self._cmd_syntax}:APOSition"
@@ -6991,7 +6991,7 @@ class DisplaySpecview1CursorCursor(SCPICmdRead):
         - ``.waveform``: The ``DISplay:SPECView1:CURSor:CURSOR:WAVEform`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._anoisedensity = DisplaySpecview1CursorCursorAnoisedensity(
             device, f"{self._cmd_syntax}:ANOISEDensity"
@@ -7267,7 +7267,7 @@ class DisplaySpecview1Cursor(SCPICmdRead):
         - ``.cursor``: The ``DISplay:SPECView1:CURSor:CURSOR`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._cursor = DisplaySpecview1CursorCursor(device, f"{self._cmd_syntax}:CURSOR")
 
@@ -7312,7 +7312,7 @@ class DisplaySpecview1(SCPICmdRead):
         - ``.viewstyle``: The ``DISplay:SPECView1:VIEWStyle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._cursor = DisplaySpecview1Cursor(device, f"{self._cmd_syntax}:CURSor")
         self._graticule = DisplaySpecview1Graticule(device, f"{self._cmd_syntax}:GRAticule")
@@ -7480,7 +7480,7 @@ class DisplaySelectWaveview1(SCPICmdRead):
         - ``.source``: The ``DISplay:SELect:WAVEView1:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._source = DisplaySelectWaveview1Source(device, f"{self._cmd_syntax}:SOUrce")
 
@@ -7580,7 +7580,7 @@ class DisplaySelectSpecview1(SCPICmdRead):
         - ``.source``: The ``DISplay:SELect:SPECView1:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._source = DisplaySelectSpecview1Source(device, f"{self._cmd_syntax}:SOUrce")
 
@@ -7736,7 +7736,7 @@ class DisplaySelect(SCPICmdRead):
         - ``.waveview1``: The ``DISplay:SELect:WAVEView1`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bus = DisplaySelectBus(device, f"{self._cmd_syntax}:BUS")
         self._math = DisplaySelectMath(device, f"{self._cmd_syntax}:MATH")
@@ -7978,7 +7978,7 @@ class DisplayReffftviewItemZoomYaxis(SCPICmdRead):
         - ``.to``: The ``DISplay:REFFFTView<x>:ZOOM:YAXIS:TO`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._from = DisplayReffftviewItemZoomYaxisFrom(device, f"{self._cmd_syntax}:FROM")
         self._to = DisplayReffftviewItemZoomYaxisTo(device, f"{self._cmd_syntax}:TO")
@@ -8104,7 +8104,7 @@ class DisplayReffftviewItemZoomXaxis(SCPICmdRead):
         - ``.to``: The ``DISplay:REFFFTView<x>:ZOOM:XAXIS:TO`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._from = DisplayReffftviewItemZoomXaxisFrom(device, f"{self._cmd_syntax}:FROM")
         self._to = DisplayReffftviewItemZoomXaxisTo(device, f"{self._cmd_syntax}:TO")
@@ -8179,7 +8179,7 @@ class DisplayReffftviewItemZoom(SCPICmdRead):
         - ``.yaxis``: The ``DISplay:REFFFTView<x>:ZOOM:YAXIS`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._xaxis = DisplayReffftviewItemZoomXaxis(device, f"{self._cmd_syntax}:XAXIS")
         self._yaxis = DisplayReffftviewItemZoomYaxis(device, f"{self._cmd_syntax}:YAXIS")
@@ -8256,7 +8256,7 @@ class DisplayReffftviewItemXaxis(SCPICmdRead):
         - ``.scale``: The ``DISplay:REFFFTView<x>:XAXIS:SCALE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._scale = DisplayReffftviewItemXaxisScale(device, f"{self._cmd_syntax}:SCALE")
 
@@ -8330,7 +8330,7 @@ class DisplayReffftviewItemRefRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.state``: The ``DISplay:REFFFTView<x>:REF:REF<x>:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DisplayReffftviewItemRefRefItemState(device, f"{self._cmd_syntax}:STATE")
 
@@ -8377,7 +8377,7 @@ class DisplayReffftviewItemRef(SCPICmdRead):
         - ``.ref``: The ``DISplay:REFFFTView<x>:REF:REF<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ref: Dict[int, DisplayReffftviewItemRefRefItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayReffftviewItemRefRefItem(device, f"{self._cmd_syntax}:REF{x}")
@@ -8595,7 +8595,7 @@ class DisplayReffftviewItemCursorWaveform(SCPICmdRead):
         - ``.bvposition``: The ``DISplay:REFFFTView<x>:CURSor:WAVEform:BVPOSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ahposition = DisplayReffftviewItemCursorWaveformAhposition(
             device, f"{self._cmd_syntax}:AHPOSition"
@@ -8893,7 +8893,7 @@ class DisplayReffftviewItemCursorVbars(SCPICmdRead):
         - ``.units``: The ``DISplay:REFFFTView<x>:CURSor:VBArs:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aposition = DisplayReffftviewItemCursorVbarsAposition(
             device, f"{self._cmd_syntax}:APOSition"
@@ -9205,7 +9205,7 @@ class DisplayReffftviewItemCursorScreen(SCPICmdRead):
         - ``.byposition``: The ``DISplay:REFFFTView<x>:CURSor:SCREEN:BYPOSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._axposition = DisplayReffftviewItemCursorScreenAxposition(
             device, f"{self._cmd_syntax}:AXPOSition"
@@ -9572,7 +9572,7 @@ class DisplayReffftviewItemCursorHbars(SCPICmdRead):
         - ``.delta``: The ``DISplay:REFFFTView<x>:CURSor:HBArs:DELTa`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aposition = DisplayReffftviewItemCursorHbarsAposition(
             device, f"{self._cmd_syntax}:APOSition"
@@ -9852,7 +9852,7 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
         - ``.waveform``: The ``DISplay:REFFFTView<x>:CURSor:WAVEform`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._asource = DisplayReffftviewItemCursorAsource(device, f"{self._cmd_syntax}:ASOUrce")
         self._bsource = DisplayReffftviewItemCursorBsource(device, f"{self._cmd_syntax}:BSOUrce")
@@ -10274,7 +10274,7 @@ class DisplayReffftviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.zoom``: The ``DISplay:REFFFTView<x>:ZOOM`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoscale = DisplayReffftviewItemAutoscale(device, f"{self._cmd_syntax}:AUTOScale")
         self._cursor = DisplayReffftviewItemCursor(device, f"{self._cmd_syntax}:CURSor")
@@ -10491,7 +10491,7 @@ class DisplayRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.normalcolor``: The ``DISplay:REF<x>:NORMALColor`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._invertcolor = DisplayRefItemInvertcolor(device, f"{self._cmd_syntax}:INVERTColor")
         self._normalcolor = DisplayRefItemNormalcolor(device, f"{self._cmd_syntax}:NORMALColor")
@@ -10623,7 +10623,7 @@ class DisplayPlotview1ZoomYaxis(SCPICmdRead):
         - ``.to``: The ``DISplay:PLOTView1:ZOOM:YAXIS:TO`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._from = DisplayPlotview1ZoomYaxisFrom(device, f"{self._cmd_syntax}:FROM")
         self._to = DisplayPlotview1ZoomYaxisTo(device, f"{self._cmd_syntax}:TO")
@@ -10749,7 +10749,7 @@ class DisplayPlotview1ZoomXaxis(SCPICmdRead):
         - ``.to``: The ``DISplay:PLOTView1:ZOOM:XAXIS:TO`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._from = DisplayPlotview1ZoomXaxisFrom(device, f"{self._cmd_syntax}:FROM")
         self._to = DisplayPlotview1ZoomXaxisTo(device, f"{self._cmd_syntax}:TO")
@@ -10823,7 +10823,7 @@ class DisplayPlotview1Zoom(SCPICmdRead):
         - ``.yaxis``: The ``DISplay:PLOTView1:ZOOM:YAXIS`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._xaxis = DisplayPlotview1ZoomXaxis(device, f"{self._cmd_syntax}:XAXIS")
         self._yaxis = DisplayPlotview1ZoomYaxis(device, f"{self._cmd_syntax}:YAXIS")
@@ -10957,7 +10957,7 @@ class DisplayPlotview1CursorWaveform(SCPICmdRead):
         - ``.bposition``: The ``DISplay:PLOTView1:CURSor:WAVEform:BPOSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aposition = DisplayPlotview1CursorWaveformAposition(
             device, f"{self._cmd_syntax}:APOSition"
@@ -11144,7 +11144,7 @@ class DisplayPlotview1CursorVbars(SCPICmdRead):
         - ``.units``: The ``DISplay:PLOTView1:CURSor:VBArs:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aposition = DisplayPlotview1CursorVbarsAposition(
             device, f"{self._cmd_syntax}:APOSition"
@@ -11445,7 +11445,7 @@ class DisplayPlotview1CursorScreen(SCPICmdRead):
         - ``.byposition``: The ``DISplay:PLOTView1:CURSor:SCREEN:BYPOSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._axposition = DisplayPlotview1CursorScreenAxposition(
             device, f"{self._cmd_syntax}:AXPOSition"
@@ -11795,7 +11795,7 @@ class DisplayPlotview1CursorHbars(SCPICmdRead):
         - ``.delta``: The ``DISplay:PLOTView1:CURSor:HBArs:DELTa`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aposition = DisplayPlotview1CursorHbarsAposition(
             device, f"{self._cmd_syntax}:APOSition"
@@ -12056,7 +12056,7 @@ class DisplayPlotview1Cursor(SCPICmdRead):
         - ``.waveform``: The ``DISplay:PLOTView1:CURSor:WAVEform`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._rolocation = DisplayPlotview1CursorRolocation(
             device, f"{self._cmd_syntax}:ROLOCATION"
@@ -12440,7 +12440,7 @@ class DisplayPlotview1(SCPICmdRead):
         - ``.zoom``: The ``DISplay:PLOTView1:ZOOM`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoscale = DisplayPlotview1Autoscale(device, f"{self._cmd_syntax}:AUTOScale")
         self._cursor = DisplayPlotview1Cursor(device, f"{self._cmd_syntax}:CURSor")
@@ -12587,7 +12587,7 @@ class DisplayPlotviewItemYaxis(SCPICmdRead):
         - ``.scale``: The ``DISplay:PLOTVIEW<x>:YAXIS:SCALE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._scale = DisplayPlotviewItemYaxisScale(device, f"{self._cmd_syntax}:SCALE")
 
@@ -12660,7 +12660,7 @@ class DisplayPlotviewItemXaxis(SCPICmdRead):
         - ``.scale``: The ``DISplay:PLOTVIEW<x>:XAXIS:SCALE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._scale = DisplayPlotviewItemXaxisScale(device, f"{self._cmd_syntax}:SCALE")
 
@@ -12707,7 +12707,7 @@ class DisplayPlotviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.yaxis``: The ``DISplay:PLOTVIEW<x>:YAXIS`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._xaxis = DisplayPlotviewItemXaxis(device, f"{self._cmd_syntax}:XAXIS")
         self._yaxis = DisplayPlotviewItemYaxis(device, f"{self._cmd_syntax}:YAXIS")
@@ -12791,7 +12791,7 @@ class DisplayPersistence(SCPICmdWrite, SCPICmdRead):
         - ``.reset``: The ``DISplay:PERSistence:RESET`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._reset = DisplayPersistenceReset(device, f"{self._cmd_syntax}:RESET")
 
@@ -12881,7 +12881,7 @@ class DisplayMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.normalcolor``: The ``DISplay:Math<x>:NORMALColor`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._invertcolor = DisplayMathItemInvertcolor(device, f"{self._cmd_syntax}:INVERTColor")
         self._normalcolor = DisplayMathItemNormalcolor(device, f"{self._cmd_syntax}:NORMALColor")
@@ -13012,7 +13012,7 @@ class DisplayMathfftview1ZoomYaxis(SCPICmdRead):
         - ``.to``: The ``DISplay:MATHFFTView1:ZOOM:YAXIS:TO`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._from = DisplayMathfftview1ZoomYaxisFrom(device, f"{self._cmd_syntax}:FROM")
         self._to = DisplayMathfftview1ZoomYaxisTo(device, f"{self._cmd_syntax}:TO")
@@ -13139,7 +13139,7 @@ class DisplayMathfftview1ZoomXaxis(SCPICmdRead):
         - ``.to``: The ``DISplay:MATHFFTView1:ZOOM:XAXIS:TO`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._from = DisplayMathfftview1ZoomXaxisFrom(device, f"{self._cmd_syntax}:FROM")
         self._to = DisplayMathfftview1ZoomXaxisTo(device, f"{self._cmd_syntax}:TO")
@@ -13211,7 +13211,7 @@ class DisplayMathfftview1Zoom(SCPICmdRead):
         - ``.yaxis``: The ``DISplay:MATHFFTView1:ZOOM:YAXIS`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._xaxis = DisplayMathfftview1ZoomXaxis(device, f"{self._cmd_syntax}:XAXIS")
         self._yaxis = DisplayMathfftview1ZoomYaxis(device, f"{self._cmd_syntax}:YAXIS")
@@ -13288,7 +13288,7 @@ class DisplayMathfftview1Yaxis(SCPICmdRead):
         - ``.scale``: The ``DISplay:MATHFFTView1:YAXIS:SCALE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._scale = DisplayMathfftview1YaxisScale(device, f"{self._cmd_syntax}:SCALE")
 
@@ -13362,7 +13362,7 @@ class DisplayMathfftview1Xaxis(SCPICmdRead):
         - ``.scale``: The ``DISplay:MATHFFTView1:XAXIS:SCALE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._scale = DisplayMathfftview1XaxisScale(device, f"{self._cmd_syntax}:SCALE")
 
@@ -13440,7 +13440,7 @@ class DisplayMathfftview1MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.state``: The ``DISplay:MATHFFTView1:MATH:MATH<x>:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DisplayMathfftview1MathMathItemState(device, f"{self._cmd_syntax}:STATE")
 
@@ -13489,7 +13489,7 @@ class DisplayMathfftview1Math(SCPICmdRead):
         - ``.math``: The ``DISplay:MATHFFTView1:MATH:MATH<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._math: Dict[int, DisplayMathfftview1MathMathItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayMathfftview1MathMathItem(device, f"{self._cmd_syntax}:MATH{x}")
@@ -13610,7 +13610,7 @@ class DisplayMathfftview1CursorWaveform(SCPICmdRead):
         - ``.bposition``: The ``DISplay:MATHFFTView1:CURSor:WAVEform:BPOSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aposition = DisplayMathfftview1CursorWaveformAposition(
             device, f"{self._cmd_syntax}:APOSition"
@@ -13822,7 +13822,7 @@ class DisplayMathfftview1CursorVbars(SCPICmdRead):
         - ``.delta``: The ``DISplay:MATHFFTView1:CURSor:VBArs:DELTa`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aposition = DisplayMathfftview1CursorVbarsAposition(
             device, f"{self._cmd_syntax}:APOSition"
@@ -14125,7 +14125,7 @@ class DisplayMathfftview1CursorScreen(SCPICmdRead):
         - ``.byposition``: The ``DISplay:MATHFFTView1:CURSor:SCREEN:BYPOSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._axposition = DisplayMathfftview1CursorScreenAxposition(
             device, f"{self._cmd_syntax}:AXPOSition"
@@ -14485,7 +14485,7 @@ class DisplayMathfftview1CursorHbars(SCPICmdRead):
         - ``.delta``: The ``DISplay:MATHFFTView1:CURSor:HBArs:DELTa`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aposition = DisplayMathfftview1CursorHbarsAposition(
             device, f"{self._cmd_syntax}:APOSition"
@@ -14755,7 +14755,7 @@ class DisplayMathfftview1Cursor(SCPICmdRead):
         - ``.waveform``: The ``DISplay:MATHFFTView1:CURSor:WAVEform`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._rolocation = DisplayMathfftview1CursorRolocation(
             device, f"{self._cmd_syntax}:ROLOCATION"
@@ -15125,7 +15125,7 @@ class DisplayMathfftview1(SCPICmdRead):
         - ``.zoom``: The ``DISplay:MATHFFTView1:ZOOM`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoscale = DisplayMathfftview1Autoscale(device, f"{self._cmd_syntax}:AUTOScale")
         self._cursor = DisplayMathfftview1Cursor(device, f"{self._cmd_syntax}:CURSor")
@@ -15348,7 +15348,7 @@ class DisplayIntensityBacklightAutodim(SCPICmdRead):
         - ``.time``: The ``DISplay:INTENSITy:BACKLight:AUTODim:TIMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._enable = DisplayIntensityBacklightAutodimEnable(device, f"{self._cmd_syntax}:ENAble")
         self._time = DisplayIntensityBacklightAutodimTime(device, f"{self._cmd_syntax}:TIMe")
@@ -15442,7 +15442,7 @@ class DisplayIntensityBacklight(SCPICmdWrite, SCPICmdRead):
         - ``.autodim``: The ``DISplay:INTENSITy:BACKLight:AUTODim`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autodim = DisplayIntensityBacklightAutodim(device, f"{self._cmd_syntax}:AUTODim")
 
@@ -15484,7 +15484,7 @@ class DisplayIntensity(SCPICmdRead):
         - ``.backlight``: The ``DISplay:INTENSITy:BACKLight`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._backlight = DisplayIntensityBacklight(device, f"{self._cmd_syntax}:BACKLight")
 
@@ -15566,7 +15566,7 @@ class DisplayGlobalRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.state``: The ``DISplay:GLObal:REF<x>:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DisplayGlobalRefItemState(device, f"{self._cmd_syntax}:STATE")
 
@@ -15650,7 +15650,7 @@ class DisplayGlobalPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.state``: The ``DISplay:GLObal:PLOT<x>:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DisplayGlobalPlotItemState(device, f"{self._cmd_syntax}:STATE")
 
@@ -15730,7 +15730,7 @@ class DisplayGlobalMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.state``: The ``DISplay:GLObal:MATH<x>:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DisplayGlobalMathItemState(device, f"{self._cmd_syntax}:STATE")
 
@@ -15810,7 +15810,7 @@ class DisplayGlobalChannel(ValidatedChannel, SCPICmdRead):
         - ``.state``: The ``DISplay:GLObal:CH<x>:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DisplayGlobalChannelState(device, f"{self._cmd_syntax}:STATE")
 
@@ -15889,7 +15889,7 @@ class DisplayGlobalBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.state``: The ``DISplay:GLObal:B<x>:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DisplayGlobalBItemState(device, f"{self._cmd_syntax}:STATE")
 
@@ -15941,7 +15941,7 @@ class DisplayGlobal(SCPICmdRead):
         - ``.ref``: The ``DISplay:GLObal:REF<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._b: Dict[int, DisplayGlobalBItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayGlobalBItem(device, f"{self._cmd_syntax}:B{x}")
@@ -16135,7 +16135,7 @@ class DisplayChannel(ValidatedChannel, SCPICmdRead):
         - ``.normalcolor``: The ``DISplay:CH<x>:NORMALColor`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._invertcolor = DisplayChannelInvertcolor(device, f"{self._cmd_syntax}:INVERTColor")
         self._normalcolor = DisplayChannelNormalcolor(device, f"{self._cmd_syntax}:NORMALColor")
@@ -16240,7 +16240,7 @@ class Display(SCPICmdRead):
         - ``.ref``: The ``DISplay:REF<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DISplay") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DISplay") -> None:
         super().__init__(device, cmd_syntax)
         self._colors = DisplayColors(device, f"{self._cmd_syntax}:COLors")
         self._global = DisplayGlobal(device, f"{self._cmd_syntax}:GLObal")

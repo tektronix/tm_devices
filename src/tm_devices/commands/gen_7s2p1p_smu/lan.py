@@ -25,7 +25,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 # pylint: disable=too-few-public-methods
@@ -40,7 +40,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
     EVENT_ID = "lan.trigger[N].EVENT_ID"
     """str: Selects the event that causes a trigger to be asserted on the digital output line as the appropriate LXI trigger packet received on LAN trigger object N."""  # noqa: E501
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         # pylint: disable=invalid-name
         self.EVENT_ID = self.EVENT_ID.replace(
@@ -83,7 +83,7 @@ class LanConfigDns(BaseTSPCmd):
                 f"print({self._cmd_syntax}.hostname)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.hostname`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.hostname`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @hostname.setter
@@ -117,7 +117,7 @@ class LanConfigDns(BaseTSPCmd):
                     f"{self._cmd_syntax}.hostname = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.hostname`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.hostname`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -128,7 +128,7 @@ class LanConfig(BaseTSPCmd):
         - ``.dns``: The ``lan.config.dns`` command tree.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dns = LanConfigDns(device, f"{self._cmd_syntax}.dns")
 
@@ -212,7 +212,7 @@ class Lan(BaseTSPCmd):
     UDP = "lan.UDP"
     """str: Use UDP protocol."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "lan") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "lan") -> None:
         super().__init__(device, cmd_syntax)
         self._config = LanConfig(device, f"{self._cmd_syntax}.config")
         self._trigger: Dict[int, LanTriggerItem] = DefaultDictPassKeyToFactory(

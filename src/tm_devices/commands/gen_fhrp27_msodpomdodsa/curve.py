@@ -21,7 +21,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class Curve(SCPICmdWrite, SCPICmdRead):
@@ -66,5 +66,5 @@ class Curve(SCPICmdWrite, SCPICmdRead):
           waveforms, the data is transmitted as 4-byte floating point values (NR2 or NR3).
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CURVe") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CURVe") -> None:
         super().__init__(device, cmd_syntax)

@@ -93,7 +93,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SvSpectrogramCursorB(SCPICmdWrite, SCPICmdRead):
@@ -165,7 +165,7 @@ class SvSpectrogramCursor(SCPICmdRead):
         - ``.b``: The ``SV:SPECtrogram:CURSor:B`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._a = SvSpectrogramCursorA(device, f"{self._cmd_syntax}:A")
         self._b = SvSpectrogramCursorB(device, f"{self._cmd_syntax}:B")
@@ -296,7 +296,7 @@ class SvSpectrogramCscale(SCPICmdRead):
         - ``.min``: The ``SV:SPECtrogram:CSCale:MIN`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._max = SvSpectrogramCscaleMax(device, f"{self._cmd_syntax}:MAX")
         self._min = SvSpectrogramCscaleMin(device, f"{self._cmd_syntax}:MIN")
@@ -371,7 +371,7 @@ class SvSpectrogram(SCPICmdRead):
         - ``.cursor``: The ``SV:SPECtrogram:CURSor`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._cscale = SvSpectrogramCscale(device, f"{self._cmd_syntax}:CSCale")
         self._cursor = SvSpectrogramCursor(device, f"{self._cmd_syntax}:CURSor")
@@ -511,7 +511,7 @@ class SvSItemChannelSquelch(SCPICmdRead):
         - ``.threshold``: The ``SV:S<x>_CH<x>:SQUELCH:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = SvSItemChannelSquelchState(device, f"{self._cmd_syntax}:STATE")
         self._threshold = SvSItemChannelSquelchThreshold(device, f"{self._cmd_syntax}:THReshold")
@@ -823,7 +823,7 @@ class SvSItemChannelSelectRf(SCPICmdRead):
         - ``.phase``: The ``SV:S<x>_CH<x>:SELect:RF_PHASe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._average = SvSItemChannelSelectRfAverage(device, f"{self._cmd_syntax}_AVErage")
         self._frequency = SvSItemChannelSelectRfFrequency(device, f"{self._cmd_syntax}_FREQuency")
@@ -1058,7 +1058,7 @@ class SvSItemChannelSelect(SCPICmdRead):
         - ``.spectrogram``: The ``SV:S<x>_CH<x>:SELect:SPECtrogram`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._rf = SvSItemChannelSelectRf(device, f"{self._cmd_syntax}:RF")
         self._spectrogram = SvSItemChannelSelectSpectrogram(
@@ -1223,7 +1223,7 @@ class SvSItemChannelRfPhaseWrap(SCPICmdRead):
         - ``.state``: The ``SV:S<x>_CH<x>:RF_PHASe:WRAP:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._degrees = SvSItemChannelRfPhaseWrapDegrees(device, f"{self._cmd_syntax}:DEGrees")
         self._state = SvSItemChannelRfPhaseWrapState(device, f"{self._cmd_syntax}:STATE")
@@ -1399,7 +1399,7 @@ class SvSItemChannelRfPhaseReference(SCPICmdRead):
         - ``.time``: The ``SV:S<x>_CH<x>:RF_PHASe:REFerence:TIMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._degrees = SvSItemChannelRfPhaseReferenceDegrees(device, f"{self._cmd_syntax}:DEGrees")
         self._position = SvSItemChannelRfPhaseReferencePosition(
@@ -1519,7 +1519,7 @@ class SvSItemChannelRfPhase(SCPICmdRead):
         - ``.wrap``: The ``SV:S<x>_CH<x>:RF_PHASe:WRAP`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._reference = SvSItemChannelRfPhaseReference(device, f"{self._cmd_syntax}:REFerence")
         self._wrap = SvSItemChannelRfPhaseWrap(device, f"{self._cmd_syntax}:WRAP")
@@ -1604,7 +1604,7 @@ class SvSItemChannelRfMagnitude(SCPICmdRead):
         - ``.format``: The ``SV:S<x>_CH<x>:RF_MAGnitude:FORMat`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = SvSItemChannelRfMagnitudeFormat(device, f"{self._cmd_syntax}:FORMat")
 
@@ -1684,7 +1684,7 @@ class SvSItemChannelRfAverage(SCPICmdRead):
         - ``.numavg``: The ``SV:S<x>_CH<x>:RF_AVErage:NUMAVg`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._numavg = SvSItemChannelRfAverageNumavg(device, f"{self._cmd_syntax}:NUMAVg")
 
@@ -1734,7 +1734,7 @@ class SvSItemChannelRf(SCPICmdRead):
         - ``.phase``: The ``SV:S<x>_CH<x>:RF_PHASe`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._average = SvSItemChannelRfAverage(device, f"{self._cmd_syntax}_AVErage")
         self._magnitude = SvSItemChannelRfMagnitude(device, f"{self._cmd_syntax}_MAGnitude")
@@ -1800,7 +1800,7 @@ class SvSItemChannel(ValidatedChannel, SCPICmdRead):
         - ``.units``: The ``SV:S<x>_CH<x>:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._rf = SvSItemChannelRf(device, f"{self._cmd_syntax}:RF")
         self._seltrace = SvSItemChannelSeltrace(device, f"{self._cmd_syntax}:SELTrace")
@@ -1940,7 +1940,7 @@ class SvSItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.ch``: The ``SV:S<x>_CH<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SvSItemChannel] = DefaultDictPassKeyToFactory(
             lambda x: SvSItemChannel(device, f"{self._cmd_syntax}_CH{x}")
@@ -2002,7 +2002,7 @@ class SvRfPhaseReference(SCPICmdRead):
         - ``.master``: The ``SV:RF_PHASe:REFerence:MASTer`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._master = SvRfPhaseReferenceMaster(device, f"{self._cmd_syntax}:MASTer")
 
@@ -2045,7 +2045,7 @@ class SvRfPhase(SCPICmdRead):
         - ``.reference``: The ``SV:RF_PHASe:REFerence`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._reference = SvRfPhaseReference(device, f"{self._cmd_syntax}:REFerence")
 
@@ -2156,7 +2156,7 @@ class SvMarkerReference(SCPICmdWriteNoArguments, SCPICmdRead):
         - ``.frequency``: The ``SV:MARKER:REFERence:FREQuency`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = SvMarkerReferenceAmplitude(device, f"{self._cmd_syntax}:AMPLITUDE")
         self._frequency = SvMarkerReferenceFrequency(device, f"{self._cmd_syntax}:FREQuency")
@@ -2252,7 +2252,7 @@ class SvMarkerPeaks(SCPICmdRead):
         - ``.frequency``: The ``SV:MARKER:PEAKS:FREQuency`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = SvMarkerPeaksAmplitude(device, f"{self._cmd_syntax}:AMPLITUDE")
         self._frequency = SvMarkerPeaksFrequency(device, f"{self._cmd_syntax}:FREQuency")
@@ -2427,7 +2427,7 @@ class SvMarkerPeak(SCPICmdRead):
         - ``.threshold``: The ``SV:MARKER:PEAK:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._excursion = SvMarkerPeakExcursion(device, f"{self._cmd_syntax}:EXCURsion")
         self._maximum = SvMarkerPeakMaximum(device, f"{self._cmd_syntax}:MAXimum")
@@ -2575,7 +2575,7 @@ class SvMarker(SCPICmdRead):
         - ``.type``: The ``SV:MARKER:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._peak = SvMarkerPeak(device, f"{self._cmd_syntax}:PEAK")
         self._peaks = SvMarkerPeaks(device, f"{self._cmd_syntax}:PEAKS")
@@ -2775,7 +2775,7 @@ class SvChannelSelect(SCPICmdRead):
         - ``.spectrogram``: The ``SV:CH<x>:SELect:SPECtrogram`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._spectrogram = SvChannelSelectSpectrogram(device, f"{self._cmd_syntax}:SPECtrogram")
 
@@ -2819,7 +2819,7 @@ class SvChannel(ValidatedChannel, SCPICmdRead):
         - ``.select``: The ``SV:CH<x>:SELect`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._select = SvChannelSelect(device, f"{self._cmd_syntax}:SELect")
 
@@ -2856,7 +2856,7 @@ class Sv(SCPICmdRead):
         - ``.spectrogram``: The ``SV:SPECtrogram`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SV") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SV") -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SvChannel] = DefaultDictPassKeyToFactory(
             lambda x: SvChannel(device, f"{self._cmd_syntax}:CH{x}")

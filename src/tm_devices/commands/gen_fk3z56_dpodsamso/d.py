@@ -26,7 +26,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, ValidatedDigitalBit
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DigitalBitThreshold(SCPICmdWrite, SCPICmdRead):
@@ -102,7 +102,7 @@ class DigitalBitProbeId(SCPICmdRead):
         - ``.type``: The ``D<x>:PROBE:ID:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._sernumber = DigitalBitProbeIdSernumber(device, f"{self._cmd_syntax}:SERnumber")
         self._type = DigitalBitProbeIdType(device, f"{self._cmd_syntax}:TYPe")
@@ -160,7 +160,7 @@ class DigitalBitProbe(SCPICmdRead):
         - ``.id``: The ``D<x>:PROBE:ID`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._id = DigitalBitProbeId(device, f"{self._cmd_syntax}:ID")
 
@@ -248,7 +248,7 @@ class DigitalBit(ValidatedDigitalBit, SCPICmdRead):
         - ``.threshold``: The ``D<x>:THRESHold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "D<x>") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "D<x>") -> None:
         super().__init__(device, cmd_syntax)
         self._label = DigitalBitLabel(device, f"{self._cmd_syntax}:LABEL")
         self._position = DigitalBitPosition(device, f"{self._cmd_syntax}:POSition")

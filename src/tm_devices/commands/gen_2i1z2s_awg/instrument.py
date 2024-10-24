@@ -21,7 +21,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class InstrumentMode(SCPICmdWrite, SCPICmdRead):
@@ -89,7 +89,7 @@ class InstrumentCouple(SCPICmdRead):
         - ``.source``: The ``INSTrument:COUPle:SOURce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._source = InstrumentCoupleSource(device, f"{self._cmd_syntax}:SOURce")
 
@@ -136,7 +136,9 @@ class Instrument(SCPICmdRead):
         - ``.mode``: The ``INSTrument:MODE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "INSTrument") -> None:
+    def __init__(
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "INSTrument"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._couple = InstrumentCouple(device, f"{self._cmd_syntax}:COUPle")
         self._mode = InstrumentMode(device, f"{self._cmd_syntax}:MODE")

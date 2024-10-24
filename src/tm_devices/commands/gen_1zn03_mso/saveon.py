@@ -33,7 +33,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SaveonWaveformSource(SCPICmdWrite, SCPICmdRead):
@@ -125,7 +125,7 @@ class SaveonWaveform(SCPICmdWrite, SCPICmdRead):
         - ``.source``: The ``SAVEON:WAVEform:SOURce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fileformat = SaveonWaveformFileformat(device, f"{self._cmd_syntax}:FILEFormat")
         self._source = SaveonWaveformSource(device, f"{self._cmd_syntax}:SOURce")
@@ -280,7 +280,7 @@ class SaveonImage(SCPICmdWrite, SCPICmdRead):
         - ``.fileformat``: The ``SAVEON:IMAGe:FILEFormat`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fileformat = SaveonImageFileformat(device, f"{self._cmd_syntax}:FILEFormat")
 
@@ -379,7 +379,7 @@ class SaveonFile(SCPICmdRead):
         - ``.name``: The ``SAVEON:FILE:NAME`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dest = SaveonFileDest(device, f"{self._cmd_syntax}:DEST")
         self._name = SaveonFileName(device, f"{self._cmd_syntax}:NAME")
@@ -451,7 +451,7 @@ class Saveon(SCPICmdRead):
         - ``.waveform``: The ``SAVEON:WAVEform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SAVEON") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SAVEON") -> None:
         super().__init__(device, cmd_syntax)
         self._file = SaveonFile(device, f"{self._cmd_syntax}:FILE")
         self._image = SaveonImage(device, f"{self._cmd_syntax}:IMAGe")

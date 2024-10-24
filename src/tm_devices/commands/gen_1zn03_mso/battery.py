@@ -23,7 +23,7 @@ from typing import Dict, Optional, TYPE_CHECKING
 from ..helpers import DefaultDictPassKeyToFactory, SCPICmdRead, ValidatedDynamicNumberCmd
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class BatterySlotItemTimetofull(SCPICmdRead):
@@ -132,7 +132,7 @@ class BatterySlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.timetofull``: The ``BATTery:SLOT<1,2>:TIMETOFULL`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._charge = BatterySlotItemCharge(device, f"{self._cmd_syntax}:CHARGE")
         self._installed = BatterySlotItemInstalled(device, f"{self._cmd_syntax}:INSTalled")
@@ -267,7 +267,7 @@ class Battery(SCPICmdRead):
         - ``.slot``: The ``BATTery:SLOT<1,2>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "BATTery") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "BATTery") -> None:
         super().__init__(device, cmd_syntax)
         self._acpower = BatteryAcpower(device, f"{self._cmd_syntax}:ACPOWer")
         self._slot: Dict[int, BatterySlotItem] = DefaultDictPassKeyToFactory(

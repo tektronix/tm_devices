@@ -74,7 +74,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class HistogramList(SCPICmdRead):
@@ -679,7 +679,7 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
         - ``.twosigma``: The ``HISTogram:HISTogram<x>:MEASurement:TWOSigma`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._count = HistogramHistogramItemMeasurementCount(device, f"{self._cmd_syntax}:COUNt")
         self._hits = HistogramHistogramItemMeasurementHits(device, f"{self._cmd_syntax}:HITS")
@@ -1296,7 +1296,7 @@ class HistogramHistogramItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.transparency``: The ``HISTogram:HISTogram<x>:TRANsparency`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._box = HistogramHistogramItemBox(device, f"{self._cmd_syntax}:BOX")
         self._bstate = HistogramHistogramItemBstate(device, f"{self._cmd_syntax}:BSTate")
@@ -1692,7 +1692,7 @@ class Histogram(SCPICmdRead):
         - ``.list``: The ``HISTogram:LIST`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "HISTogram") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "HISTogram") -> None:
         super().__init__(device, cmd_syntax)
         self._addnew = HistogramAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._deleteall = HistogramDeleteall(device, f"{self._cmd_syntax}:DELETEALL")

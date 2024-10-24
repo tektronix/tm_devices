@@ -185,7 +185,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MaskUserWidth(SCPICmdWrite, SCPICmdRead):
@@ -398,7 +398,7 @@ class MaskUserSegItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
         - ``.points``: The ``MASK:USER:SEG<m>:POINTS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._nr_pt = MaskUserSegItemNrPt(device, f"{self._cmd_syntax}:NR_Pt")
         self._points = MaskUserSegItemPoints(device, f"{self._cmd_syntax}:POINTS")
@@ -689,7 +689,7 @@ class MaskUser(SCPICmdRead):
         - ``.width``: The ``MASK:USER:WIDth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = MaskUserAmplitude(device, f"{self._cmd_syntax}:AMPlitude")
         self._bitrate = MaskUserBitrate(device, f"{self._cmd_syntax}:BITRate")
@@ -1182,7 +1182,7 @@ class MaskTestStop(SCPICmdRead):
         - ``.failure``: The ``MASK:TESt:STOP:FAILure`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._failure = MaskTestStopFailure(device, f"{self._cmd_syntax}:FAILure")
 
@@ -1337,7 +1337,7 @@ class MaskTestSrq(SCPICmdRead):
         - ``.failure``: The ``MASK:TESt:SRQ:FAILure`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._completion = MaskTestSrqCompletion(device, f"{self._cmd_syntax}:COMPLetion")
         self._failure = MaskTestSrqFailure(device, f"{self._cmd_syntax}:FAILure")
@@ -1468,7 +1468,7 @@ class MaskTestSavewfm(SCPICmdWrite, SCPICmdRead):
         - ``.filename``: The ``MASK:TESt:SAVEWFM:FILEName`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._filename = MaskTestSavewfmFilename(device, f"{self._cmd_syntax}:FILEName")
 
@@ -1556,7 +1556,7 @@ class MaskTestSample(SCPICmdWrite, SCPICmdRead):
         - ``.threshold``: The ``MASK:TESt:SAMple:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._threshold = MaskTestSampleThreshold(device, f"{self._cmd_syntax}:THReshold")
 
@@ -1657,7 +1657,7 @@ class MaskTestLog(SCPICmdRead):
         - ``.failure``: The ``MASK:TESt:LOG:FAILure`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._failure = MaskTestLogFailure(device, f"{self._cmd_syntax}:FAILure")
 
@@ -1819,7 +1819,7 @@ class MaskTestBeep(SCPICmdRead):
         - ``.failure``: The ``MASK:TESt:BEEP:FAILure`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._completion = MaskTestBeepCompletion(device, f"{self._cmd_syntax}:COMPLetion")
         self._failure = MaskTestBeepFailure(device, f"{self._cmd_syntax}:FAILure")
@@ -1954,7 +1954,7 @@ class MaskTestAux(SCPICmdRead):
         - ``.failure``: The ``MASK:TESt:AUX:FAILure`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._completion = MaskTestAuxCompletion(device, f"{self._cmd_syntax}:COMPLetion")
         self._failure = MaskTestAuxFailure(device, f"{self._cmd_syntax}:FAILure")
@@ -2046,7 +2046,7 @@ class MaskTest(SCPICmdRead):
         - ``.waveform``: The ``MASK:TESt:WAVEform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aux = MaskTestAux(device, f"{self._cmd_syntax}:AUX")
         self._beep = MaskTestBeep(device, f"{self._cmd_syntax}:BEEP")
@@ -2722,7 +2722,7 @@ class MaskSegItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
         - ``.points``: The ``MASK:SEG<m>:POINTS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._nr_pt = MaskSegItemNrPt(device, f"{self._cmd_syntax}:NR_Pt")
         self._points = MaskSegItemPoints(device, f"{self._cmd_syntax}:POINTS")
@@ -3158,7 +3158,7 @@ class MaskMaskpre(SCPICmdRead):
         - ``.width``: The ``MASK:MASKPRE:WIDth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = MaskMaskpreAmplitude(device, f"{self._cmd_syntax}:AMPlitude")
         self._hscale = MaskMaskpreHscale(device, f"{self._cmd_syntax}:HSCAle")
@@ -3583,7 +3583,7 @@ class MaskMargin(SCPICmdRead):
         - ``.state``: The ``MASK:MARgin:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._percent = MaskMarginPercent(device, f"{self._cmd_syntax}:PERCent")
         self._state = MaskMarginState(device, f"{self._cmd_syntax}:STATE")
@@ -3755,7 +3755,7 @@ class MaskFilterOrr(SCPICmdRead):
         - ``.vert_index``: The ``MASK:FILTer:ORR:VERT_INDEX`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._vert_index = MaskFilterOrrVertIndex(device, f"{self._cmd_syntax}:VERT_INDEX")
 
@@ -3813,7 +3813,7 @@ class MaskFilter(SCPICmdWrite, SCPICmdRead):
         - ``.orr``: The ``MASK:FILTer:ORR`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._orr = MaskFilterOrr(device, f"{self._cmd_syntax}:ORR")
 
@@ -4000,7 +4000,7 @@ class MaskCountSegItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.hits``: The ``MASK:COUNt:SEG<m>:HITS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hits = MaskCountSegItemHits(device, f"{self._cmd_syntax}:HITS")
 
@@ -4091,7 +4091,7 @@ class MaskCount(SCPICmdWrite, SCPICmdRead):
         - ``.waveforms``: The ``MASK:COUNt:WAVEFORMS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._failures = MaskCountFailures(device, f"{self._cmd_syntax}:FAILURES")
         self._hits = MaskCountHits(device, f"{self._cmd_syntax}:HITS")
@@ -4304,7 +4304,7 @@ class MaskCopy(SCPICmdRead):
         - ``.user``: The ``MASK:COPy:USER`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._user = MaskCopyUser(device, f"{self._cmd_syntax}:USER")
 
@@ -4469,7 +4469,7 @@ class MaskAutosetUser(SCPICmdRead):
         - ``.zero``: The ``MASK:AUTOSet:USER:ZERo`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._one = MaskAutosetUserOne(device, f"{self._cmd_syntax}:ONE")
         self._type = MaskAutosetUserType(device, f"{self._cmd_syntax}:TYPe")
@@ -4908,7 +4908,7 @@ class MaskAutoset(SCPICmdRead):
         - ``.vscale``: The ``MASK:AUTOSet:VSCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoadjust = MaskAutosetAutoadjust(device, f"{self._cmd_syntax}:AUTOAdjust")
         self._hpos = MaskAutosetHpos(device, f"{self._cmd_syntax}:HPOS")
@@ -5428,7 +5428,7 @@ class MaskAutoadjust(SCPICmdWrite, SCPICmdRead):
         - ``.vdelta``: The ``MASK:AUTOAdjust:VDELTA`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hdelta = MaskAutoadjustHdelta(device, f"{self._cmd_syntax}:HDELTA")
         self._vdelta = MaskAutoadjustVdelta(device, f"{self._cmd_syntax}:VDELTA")
@@ -5530,7 +5530,7 @@ class Mask(SCPICmdRead):
         - ``.user``: The ``MASK:USER`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MASK") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MASK") -> None:
         super().__init__(device, cmd_syntax)
         self._autoadjust = MaskAutoadjust(device, f"{self._cmd_syntax}:AUTOAdjust")
         self._autoset = MaskAutoset(device, f"{self._cmd_syntax}:AUTOSet")

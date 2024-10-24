@@ -52,7 +52,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DiagStop(SCPICmdWriteNoArguments):
@@ -250,7 +250,7 @@ class DiagSelect(SCPICmdRead):
         - ``.test``: The ``DIAg:SELect:TEST`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._all = DiagSelectAll(device, f"{self._cmd_syntax}:ALL")
         self._area = DiagSelectArea(device, f"{self._cmd_syntax}:AREA")
@@ -441,7 +441,7 @@ class DiagResults(SCPICmdRead):
         - ``.verbose``: The ``DIAg:RESults:VERBose`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._verbose = DiagResultsVerbose(device, f"{self._cmd_syntax}:VERBose")
 
@@ -577,7 +577,7 @@ class DiagName(SCPICmdRead):
         - ``.test``: The ``DIAg:NAMe:TEST`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._area = DiagNameArea(device, f"{self._cmd_syntax}:AREA")
         self._subsys = DiagNameSubsys(device, f"{self._cmd_syntax}:SUBSYS")
@@ -833,7 +833,7 @@ class DiagItem(SCPICmdReadWithArguments):
         - ``.subitems``: The ``DIAg:ITEM:SUBITEMS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._failures = DiagItemFailures(device, f"{self._cmd_syntax}:FAILURES")
         self._name = DiagItemName(device, f"{self._cmd_syntax}:NAMe")
@@ -994,7 +994,7 @@ class DiagFailures(SCPICmdRead):
         - ``.clear``: The ``DIAg:FAILURES:CLEAR`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._clear = DiagFailuresClear(device, f"{self._cmd_syntax}:CLEAR")
 
@@ -1121,7 +1121,7 @@ class DiagControl(SCPICmdRead):
         - ``.loop``: The ``DIAg:CONTROL:LOOP`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._halt = DiagControlHalt(device, f"{self._cmd_syntax}:HALT")
         self._loop = DiagControlLoop(device, f"{self._cmd_syntax}:LOOP")
@@ -1214,7 +1214,7 @@ class Diag(SCPICmdRead):
         - ``.stop``: The ``DIAg:STOP`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DIAg") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DIAg") -> None:
         super().__init__(device, cmd_syntax)
         self._control = DiagControl(device, f"{self._cmd_syntax}:CONTROL")
         self._execute = DiagExecute(device, f"{self._cmd_syntax}:EXECUTE")

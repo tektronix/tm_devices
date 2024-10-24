@@ -21,7 +21,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class PiloggerState(SCPICmdWrite, SCPICmdRead):
@@ -94,7 +94,7 @@ class Pilogger(SCPICmdRead):
         - ``.state``: The ``PILOGger:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "PILOGger") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "PILOGger") -> None:
         super().__init__(device, cmd_syntax)
         self._filename = PiloggerFilename(device, f"{self._cmd_syntax}:FILEName")
         self._state = PiloggerState(device, f"{self._cmd_syntax}:STATE")

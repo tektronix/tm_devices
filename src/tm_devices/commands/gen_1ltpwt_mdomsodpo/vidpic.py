@@ -47,7 +47,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class VidpicStandard(SCPICmdWrite, SCPICmdRead):
@@ -218,7 +218,7 @@ class VidpicLocationStart(SCPICmdRead):
         - ``.pixel``: The ``VIDPic:LOCation:STARt:PIXel`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._line = VidpicLocationStartLine(device, f"{self._cmd_syntax}:LINE")
         self._pixel = VidpicLocationStartPixel(device, f"{self._cmd_syntax}:PIXel")
@@ -332,7 +332,7 @@ class VidpicLocation(SCPICmdRead):
         - ``.y``: The ``VIDPic:LOCation:Y`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._height = VidpicLocationHeight(device, f"{self._cmd_syntax}:HEIght")
         self._offset = VidpicLocationOffset(device, f"{self._cmd_syntax}:OFFSet")
@@ -606,7 +606,7 @@ class VidpicAutocontrast(SCPICmdWrite, SCPICmdRead):
         - ``.updaterate``: The ``VIDPic:AUTOContrast:UPDATERate`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._updaterate = VidpicAutocontrastUpdaterate(device, f"{self._cmd_syntax}:UPDATERate")
 
@@ -653,7 +653,7 @@ class Vidpic(SCPICmdRead):
         - ``.standard``: The ``VIDPic:STANdard`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "VIDPic") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "VIDPic") -> None:
         super().__init__(device, cmd_syntax)
         self._autocontrast = VidpicAutocontrast(device, f"{self._cmd_syntax}:AUTOContrast")
         self._brightness = VidpicBrightness(device, f"{self._cmd_syntax}:BRIGHTNess")

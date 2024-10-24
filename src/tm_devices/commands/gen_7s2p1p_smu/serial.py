@@ -22,7 +22,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Serial(BaseTSPCmd):
@@ -34,7 +34,7 @@ class Serial(BaseTSPCmd):
         - ``.parity``: The ``serial.parity`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "serial") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "serial") -> None:
         super().__init__(device, cmd_syntax)
 
     @property
@@ -64,7 +64,7 @@ class Serial(BaseTSPCmd):
                 f"print({self._cmd_syntax}.baud)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.baud`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.baud`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @baud.setter
@@ -97,7 +97,7 @@ class Serial(BaseTSPCmd):
                     f"{self._cmd_syntax}.baud = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.baud`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.baud`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -130,7 +130,7 @@ class Serial(BaseTSPCmd):
                 f"print({self._cmd_syntax}.databits)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.databits`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.databits`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @databits.setter
@@ -166,7 +166,7 @@ class Serial(BaseTSPCmd):
                     f"{self._cmd_syntax}.databits = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.databits`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.databits`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -196,7 +196,7 @@ class Serial(BaseTSPCmd):
                 f"print({self._cmd_syntax}.parity)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.parity`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.parity`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @parity.setter
@@ -229,5 +229,5 @@ class Serial(BaseTSPCmd):
                     f"{self._cmd_syntax}.parity = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.parity`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.parity`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

@@ -53,7 +53,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class AfgSquareDuty(SCPICmdWrite, SCPICmdRead):
@@ -93,7 +93,7 @@ class AfgSquare(SCPICmdRead):
         - ``.duty``: The ``AFG:SQUare:DUty`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._duty = AfgSquareDuty(device, f"{self._cmd_syntax}:DUty")
 
@@ -161,7 +161,7 @@ class AfgRamp(SCPICmdRead):
         - ``.symmetry``: The ``AFG:RAMP:SYMmetry`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._symmetry = AfgRampSymmetry(device, f"{self._cmd_syntax}:SYMmetry")
 
@@ -227,7 +227,7 @@ class AfgPulse(SCPICmdRead):
         - ``.width``: The ``AFG:PULse:WIDth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._width = AfgPulseWidth(device, f"{self._cmd_syntax}:WIDth")
 
@@ -365,7 +365,7 @@ class AfgOutputLoad(SCPICmdRead):
         - ``.impedance``: The ``AFG:OUTPut:LOAd:IMPEDance`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._impedance = AfgOutputLoadImpedance(device, f"{self._cmd_syntax}:IMPEDance")
 
@@ -410,7 +410,7 @@ class AfgOutput(SCPICmdRead):
         - ``.state``: The ``AFG:OUTPut:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._load = AfgOutputLoad(device, f"{self._cmd_syntax}:LOAd")
         self._mode = AfgOutputMode(device, f"{self._cmd_syntax}:MODe")
@@ -567,7 +567,7 @@ class AfgNoiseadd(SCPICmdRead):
         - ``.state``: The ``AFG:NOISEAdd:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._percent = AfgNoiseaddPercent(device, f"{self._cmd_syntax}:PERCent")
         self._state = AfgNoiseaddState(device, f"{self._cmd_syntax}:STATE")
@@ -784,7 +784,7 @@ class AfgBurst(SCPICmdRead):
         - ``.trigger``: The ``AFG:BURSt:TRIGger`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ccount = AfgBurstCcount(device, f"{self._cmd_syntax}:CCOUnt")
         self._trigger = AfgBurstTrigger(device, f"{self._cmd_syntax}:TRIGger")
@@ -869,7 +869,7 @@ class AfgArbitrary(SCPICmdRead):
         - ``.source``: The ``AFG:ARBitrary:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._source = AfgArbitrarySource(device, f"{self._cmd_syntax}:SOUrce")
 
@@ -950,7 +950,7 @@ class Afg(SCPICmdRead):
         - ``.square``: The ``AFG:SQUare`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "AFG") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "AFG") -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = AfgAmplitude(device, f"{self._cmd_syntax}:AMPLitude")
         self._arbitrary = AfgArbitrary(device, f"{self._cmd_syntax}:ARBitrary")

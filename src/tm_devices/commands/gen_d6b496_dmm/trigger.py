@@ -114,7 +114,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
@@ -162,7 +162,7 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.logic)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @logic.setter
@@ -199,7 +199,7 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.logic = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -236,7 +236,7 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.pulsewidth)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.pulsewidth`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.pulsewidth`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @pulsewidth.setter
@@ -276,7 +276,7 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.pulsewidth = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.pulsewidth`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.pulsewidth`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -311,7 +311,7 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.stimulus)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
@@ -349,7 +349,7 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.stimulus = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def assert_(self) -> None:
@@ -375,7 +375,7 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.assert()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.assert()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.assert()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def release(self) -> None:
@@ -400,7 +400,7 @@ class TriggerTsplinkoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.release()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.release()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.release()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -449,7 +449,7 @@ class TriggerTsplinkinItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.edge)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @edge.setter
@@ -487,7 +487,7 @@ class TriggerTsplinkinItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.edge = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -519,7 +519,7 @@ class TriggerTsplinkinItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.overrun)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.overrun`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.overrun`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def clear(self) -> None:
@@ -544,7 +544,7 @@ class TriggerTsplinkinItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.clear()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def wait(self, timeout: float) -> str:
@@ -572,7 +572,7 @@ class TriggerTsplinkinItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.wait({timeout}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -623,7 +623,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
                 f"print({self._cmd_syntax}.fractionalseconds)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.fractionalseconds`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.fractionalseconds`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @fractionalseconds.setter
@@ -662,7 +662,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
                     f"{self._cmd_syntax}.fractionalseconds = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.fractionalseconds`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.fractionalseconds`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -697,7 +697,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
                 f"print({self._cmd_syntax}.generate)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.generate`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.generate`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @generate.setter
@@ -735,7 +735,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
                     f"{self._cmd_syntax}.generate = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.generate`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.generate`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -766,7 +766,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
                 f"print({self._cmd_syntax}.overrun)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.overrun`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.overrun`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -801,7 +801,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
                 f"print({self._cmd_syntax}.seconds)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.seconds`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.seconds`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @seconds.setter
@@ -839,7 +839,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
                     f"{self._cmd_syntax}.seconds = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.seconds`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.seconds`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -874,7 +874,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
                 f"print({self._cmd_syntax}.stimulus)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
@@ -912,7 +912,7 @@ class TriggerTimerItemStart(BaseTSPCmd):
                     f"{self._cmd_syntax}.stimulus = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -933,7 +933,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
         - ``.wait()``: The ``trigger.timer[N].wait()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._start = TriggerTimerItemStart(device, f"{self._cmd_syntax}.start")
 
@@ -969,7 +969,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.count)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
@@ -1007,7 +1007,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.count = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1041,7 +1041,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.delay)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
@@ -1078,7 +1078,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.delay = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1112,7 +1112,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.delaylist)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.delaylist`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.delaylist`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @delaylist.setter
@@ -1149,7 +1149,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.delaylist = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.delaylist`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.delaylist`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1183,7 +1183,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -1220,7 +1220,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1262,7 +1262,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.clear()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def reset(self) -> None:
@@ -1287,7 +1287,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.reset()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def wait(self, timeout: float) -> str:
@@ -1315,7 +1315,7 @@ class TriggerTimerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.wait({timeout}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -1393,7 +1393,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.abort()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.abort()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.abort()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def getblocklist(self) -> str:
@@ -1418,7 +1418,7 @@ class TriggerModel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.getblocklist())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getblocklist()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getblocklist()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def getbranchcount(self, block_number: int) -> str:
@@ -1446,7 +1446,7 @@ class TriggerModel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.getbranchcount({block_number}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getbranchcount()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getbranchcount()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def initiate(self) -> None:
@@ -1468,7 +1468,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.initiate()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.initiate()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.initiate()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def load_duration_loop(
@@ -1510,7 +1510,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.load({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def load_empty(self) -> None:
@@ -1532,7 +1532,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.load()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     # pylint: disable=too-many-arguments
@@ -1595,7 +1595,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{trig_delay})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def load_logic_trigger(
@@ -1650,7 +1650,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.load({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def load_loop_until_event(
@@ -1704,7 +1704,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.load({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def load_simple_loop(
@@ -1747,7 +1747,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.load({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def pause(self) -> None:
@@ -1769,7 +1769,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.pause()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.pause()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.pause()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def resume(self) -> None:
@@ -1791,7 +1791,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.resume()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.resume()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.resume()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_branch_always(self, block_number: int, branch_to_block: str) -> None:
@@ -1820,7 +1820,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{branch_to_block})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_branch_counter(
@@ -1854,7 +1854,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{branch_to_block})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_branch_delta(
@@ -1904,7 +1904,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.setblock({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_branch_limit_constant(
@@ -1959,7 +1959,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.setblock({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_branch_limit_dynamic(
@@ -2011,7 +2011,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.setblock({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_branch_once(self, block_number: int, branch_to_block: str) -> None:
@@ -2041,7 +2041,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{branch_to_block})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_branch_once_excluded(
@@ -2074,7 +2074,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{branch_to_block})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_branch_on_event(
@@ -2107,7 +2107,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{branch_to_block})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_buffer_clear(
@@ -2145,7 +2145,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.setblock({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_delay_constant(self, block_number: int, time: str) -> None:
@@ -2171,7 +2171,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.setblock({block_number}, trigger.BLOCK_DELAY_CONSTANT, {time})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_delay_dynamic(self, block_number: int, n: int) -> None:
@@ -2198,7 +2198,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.setblock({block_number}, trigger.BLOCK_DELAY_DYNAMIC, {n})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_digital_io(
@@ -2234,7 +2234,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{bit_mask})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_log_event(
@@ -2267,7 +2267,7 @@ class TriggerModel(BaseTSPCmd):
                 f'"{message}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_measure_digitize(
@@ -2308,7 +2308,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.setblock({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_nop(self, block_number: int) -> None:
@@ -2334,7 +2334,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.setblock({block_number})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_notify(self, block_number: int, n: str) -> None:
@@ -2361,7 +2361,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.setblock({block_number}, trigger.BLOCK_NOTIFY, {n})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_reset_branch_count(self, block_number: int, counter: str) -> None:
@@ -2389,7 +2389,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{counter})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setblock_trigger_block_wait(
@@ -2445,7 +2445,7 @@ class TriggerModel(BaseTSPCmd):
                 f"{self._cmd_syntax}.setblock({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setblock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -2494,7 +2494,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.connected)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.connected`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.connected`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2529,7 +2529,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.ipaddress)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ipaddress`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ipaddress`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @ipaddress.setter
@@ -2567,7 +2567,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.ipaddress = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ipaddress`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ipaddress`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2602,7 +2602,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.logic)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @logic.setter
@@ -2640,7 +2640,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.logic = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2674,7 +2674,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.protocol)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.protocol`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.protocol`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @protocol.setter
@@ -2711,7 +2711,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.protocol = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.protocol`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.protocol`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2746,7 +2746,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.stimulus)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
@@ -2784,7 +2784,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.stimulus = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def assert_(self) -> None:
@@ -2810,7 +2810,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.assert()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.assert()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.assert()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def connect(self) -> None:
@@ -2835,7 +2835,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.connect()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.connect()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.connect()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def disconnect(self) -> None:
@@ -2860,7 +2860,7 @@ class TriggerLanoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.disconnect()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.disconnect()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.disconnect()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -2909,7 +2909,7 @@ class TriggerLaninItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.edge)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @edge.setter
@@ -2947,7 +2947,7 @@ class TriggerLaninItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.edge = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2978,7 +2978,7 @@ class TriggerLaninItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.overrun)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.overrun`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.overrun`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def clear(self) -> None:
@@ -3003,7 +3003,7 @@ class TriggerLaninItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.clear()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def wait(self, timeout: float) -> str:
@@ -3031,7 +3031,7 @@ class TriggerLaninItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.wait({timeout}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -3073,7 +3073,7 @@ class TriggerExtout(BaseTSPCmd):
                 f"print({self._cmd_syntax}.logic)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @logic.setter
@@ -3108,7 +3108,7 @@ class TriggerExtout(BaseTSPCmd):
                     f"{self._cmd_syntax}.logic = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3140,7 +3140,7 @@ class TriggerExtout(BaseTSPCmd):
                 f"print({self._cmd_syntax}.stimulus)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
@@ -3175,7 +3175,7 @@ class TriggerExtout(BaseTSPCmd):
                     f"{self._cmd_syntax}.stimulus = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def assert_(self) -> None:
@@ -3197,7 +3197,7 @@ class TriggerExtout(BaseTSPCmd):
                 f"{self._cmd_syntax}.assert()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.assert()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.assert()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -3239,7 +3239,7 @@ class TriggerExtin(BaseTSPCmd):
                 f"print({self._cmd_syntax}.edge)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @edge.setter
@@ -3273,7 +3273,7 @@ class TriggerExtin(BaseTSPCmd):
                     f"{self._cmd_syntax}.edge = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3301,7 +3301,7 @@ class TriggerExtin(BaseTSPCmd):
                 f"print({self._cmd_syntax}.overrun)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.overrun`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.overrun`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def clear(self) -> None:
@@ -3324,7 +3324,7 @@ class TriggerExtin(BaseTSPCmd):
                 f"{self._cmd_syntax}.clear()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def wait(self, timeout: float) -> str:
@@ -3352,7 +3352,7 @@ class TriggerExtin(BaseTSPCmd):
                 f"print({self._cmd_syntax}.wait({timeout}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -3383,7 +3383,7 @@ class TriggerExt(BaseTSPCmd):
                 f"{self._cmd_syntax}.reset()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -3433,7 +3433,7 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.logic)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @logic.setter
@@ -3471,7 +3471,7 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.logic = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.logic`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3510,7 +3510,7 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.pulsewidth)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.pulsewidth`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.pulsewidth`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @pulsewidth.setter
@@ -3552,7 +3552,7 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.pulsewidth = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.pulsewidth`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.pulsewidth`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3587,7 +3587,7 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.stimulus)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
@@ -3625,7 +3625,7 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.stimulus = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def assert_(self) -> None:
@@ -3650,7 +3650,7 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.assert()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.assert()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.assert()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def release(self) -> None:
@@ -3675,7 +3675,7 @@ class TriggerDigoutItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.release()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.release()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.release()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -3724,7 +3724,7 @@ class TriggerDiginItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.edge)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @edge.setter
@@ -3762,7 +3762,7 @@ class TriggerDiginItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.edge = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.edge`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3793,7 +3793,7 @@ class TriggerDiginItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.overrun)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.overrun`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.overrun`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def clear(self) -> None:
@@ -3822,7 +3822,7 @@ class TriggerDiginItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.clear()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def wait(self, timeout: float) -> str:
@@ -3850,7 +3850,7 @@ class TriggerDiginItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.wait({timeout}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -3869,7 +3869,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
         - ``.wait()``: The ``trigger.blender[N].wait()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._stimulus: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.stimulus[{{key}}]",
@@ -3909,7 +3909,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.orenable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.orenable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.orenable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @orenable.setter
@@ -3946,7 +3946,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.orenable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.orenable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.orenable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3978,7 +3978,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.overrun)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.overrun`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.overrun`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4032,7 +4032,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.clear()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def reset(self) -> None:
@@ -4057,7 +4057,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.reset()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def wait(self, timeout: float) -> str:
@@ -4085,7 +4085,7 @@ class TriggerBlenderItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.wait({timeout}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -4382,7 +4382,7 @@ class Trigger(BaseTSPCmd):
     WAIT_OR = "trigger.WAIT_OR"
     """str: At least one of the events must occur before the trigger model continues."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "trigger") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "trigger") -> None:
         super().__init__(device, cmd_syntax)
         self._blender: Dict[int, TriggerBlenderItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBlenderItem(device, f"{self._cmd_syntax}.blender[{x}]")
@@ -4457,7 +4457,7 @@ class Trigger(BaseTSPCmd):
                 f"print({self._cmd_syntax}.continuous)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.continuous`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.continuous`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @continuous.setter
@@ -4490,7 +4490,7 @@ class Trigger(BaseTSPCmd):
                     f"{self._cmd_syntax}.continuous = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.continuous`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.continuous`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4715,7 +4715,7 @@ class Trigger(BaseTSPCmd):
                 f"{self._cmd_syntax}.clear()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def wait(self, timeout: float) -> str:
@@ -4743,5 +4743,5 @@ class Trigger(BaseTSPCmd):
                 f"print({self._cmd_syntax}.wait({timeout}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

@@ -36,7 +36,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DataWidth(SCPICmdWrite, SCPICmdRead):
@@ -311,7 +311,7 @@ class DataComposition(SCPICmdWrite, SCPICmdRead):
         - ``.available``: The ``DATa:COMPosition:AVAILable`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._available = DataCompositionAvailable(device, f"{self._cmd_syntax}:AVAILable")
 
@@ -375,7 +375,7 @@ class Data(SCPICmdWrite, SCPICmdRead):
         - ``.width``: The ``DATa:WIDth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DATa") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DATa") -> None:
         super().__init__(device, cmd_syntax)
         self._composition = DataComposition(device, f"{self._cmd_syntax}:COMPosition")
         self._destination = DataDestination(device, f"{self._cmd_syntax}:DESTination")

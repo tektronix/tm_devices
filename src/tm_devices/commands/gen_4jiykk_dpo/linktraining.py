@@ -40,7 +40,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class LinktrainingTriggeron(SCPICmdWrite):
@@ -432,7 +432,7 @@ class Linktraining(SCPICmdRead):
     """
 
     def __init__(
-        self, device: Optional["PIDevice"] = None, cmd_syntax: str = "LINKTRaining"
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "LINKTRaining"
     ) -> None:
         super().__init__(device, cmd_syntax)
         self._acqtime = LinktrainingAcqtime(device, f"{self._cmd_syntax}:ACQTime")

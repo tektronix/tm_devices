@@ -26,7 +26,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class File(BaseTSPCmd):
@@ -67,7 +67,7 @@ class File(BaseTSPCmd):
     READ_NUMBER = "file.READ_NUMBER"
     """str: Return a string that represents the number found; returns an event string if no number was found; returns nil if the current file position is at the end of file."""  # noqa: E501
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "file") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "file") -> None:
         super().__init__(device, cmd_syntax)
 
     def close(self, file_number: int) -> None:
@@ -92,7 +92,7 @@ class File(BaseTSPCmd):
                 f"{self._cmd_syntax}.close({file_number})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.close()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.close()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def flush(self, file_number: int) -> None:
@@ -117,7 +117,7 @@ class File(BaseTSPCmd):
                 f"{self._cmd_syntax}.flush({file_number})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.flush()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.flush()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def mkdir(self, path: str) -> None:
@@ -142,7 +142,7 @@ class File(BaseTSPCmd):
                 f'{self._cmd_syntax}.mkdir("{path}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.mkdir()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.mkdir()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def open(self, file_name: str, access_type: str) -> str:
@@ -172,7 +172,7 @@ class File(BaseTSPCmd):
                 f'print({self._cmd_syntax}.open("{file_name}", {access_type}))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.open()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.open()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def read(self, file_number: int, read_action: str) -> str:
@@ -201,7 +201,7 @@ class File(BaseTSPCmd):
                 f"print({self._cmd_syntax}.read({file_number}, {read_action}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.read()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.read()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def usbdriveexists(self) -> str:
@@ -226,7 +226,7 @@ class File(BaseTSPCmd):
                 f"print({self._cmd_syntax}.usbdriveexists())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.usbdriveexists()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.usbdriveexists()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def write(self, file_number: int, string: str) -> None:
@@ -252,5 +252,5 @@ class File(BaseTSPCmd):
                 f'{self._cmd_syntax}.write({file_number}, "{string}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.write()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.write()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

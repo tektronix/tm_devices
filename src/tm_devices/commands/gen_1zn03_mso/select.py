@@ -27,7 +27,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SelectDchItemDall(SCPICmdWrite, SCPICmdRead):
@@ -72,7 +72,7 @@ class SelectDchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.dall``: The ``SELect:DCH<x>:DAll`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dall = SelectDchItemDall(device, f"{self._cmd_syntax}:DAll")
 
@@ -148,7 +148,7 @@ class Select(SCPICmdRead):
         - ``.dch``: The ``SELect:DCH<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SELect") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SELect") -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SelectChannel] = DefaultDictPassKeyToFactory(
             lambda x: SelectChannel(device, f"{self._cmd_syntax}:CH{x}")

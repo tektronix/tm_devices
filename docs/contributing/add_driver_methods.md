@@ -6,7 +6,7 @@ device drivers.
 ## Device Type Abstraction
 
 Because of the inheritance structure of the device drivers (see the
-[architecture diagrams](../advanced/architecture.md#main-device-types)), new
+[architecture diagrams](../advanced/architecture.md#device-types)), new
 methods should be added to the highest applicable class in the tree. All methods
 for each family of device (TekScope, SMU26xx, PSU2200, etc.) need to be defined in that
 device family's abstract class, or higher up the tree, to enable accurate type

@@ -39,7 +39,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class FilesystemWritefile(SCPICmdWrite):
@@ -124,7 +124,7 @@ class FilesystemUnmount(SCPICmdRead):
         - ``.tekdrive``: The ``FILESystem:UNMOUNT:TEKDrive`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._drive = FilesystemUnmountDrive(device, f"{self._cmd_syntax}:DRIve")
         self._tekdrive = FilesystemUnmountTekdrive(device, f"{self._cmd_syntax}:TEKDrive")
@@ -236,7 +236,7 @@ class FilesystemTekdriveCode(SCPICmdRead):
         - ``.status``: The ``FILESystem:TEKDrive:CODE:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._expirytime = FilesystemTekdriveCodeExpirytime(
             device, f"{self._cmd_syntax}:EXPirytime"
@@ -299,7 +299,7 @@ class FilesystemTekdrive(SCPICmdRead):
         - ``.code``: The ``FILESystem:TEKDrive:CODE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._code = FilesystemTekdriveCode(device, f"{self._cmd_syntax}:CODE")
 
@@ -486,7 +486,7 @@ class FilesystemMount(SCPICmdRead):
         - ``.tekdrive``: The ``FILESystem:MOUNT:TEKDrive`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._drive = FilesystemMountDrive(device, f"{self._cmd_syntax}:DRIVE")
         self._tekdrive = FilesystemMountTekdrive(device, f"{self._cmd_syntax}:TEKDrive")
@@ -755,7 +755,9 @@ class Filesystem(SCPICmdRead):
         - ``.writefile``: The ``FILESystem:WRITEFile`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "FILESystem") -> None:
+    def __init__(
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "FILESystem"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._copy = FilesystemCopy(device, f"{self._cmd_syntax}:COPy")
         self._cwd = FilesystemCwd(device, f"{self._cmd_syntax}:CWD")

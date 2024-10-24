@@ -40,7 +40,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DisplayStyleDotsonly(SCPICmdWrite, SCPICmdRead):
@@ -80,7 +80,7 @@ class DisplayStyle(SCPICmdRead):
         - ``.dotsonly``: The ``DISplay:STYle:DOTsonly`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dotsonly = DisplayStyleDotsonly(device, f"{self._cmd_syntax}:DOTsonly")
 
@@ -269,7 +269,7 @@ class DisplayIntensity(SCPICmdRead):
         - ``.waveform``: The ``DISplay:INTENSITy:WAVEform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._backlight = DisplayIntensityBacklight(device, f"{self._cmd_syntax}:BACKLight")
         self._glitch = DisplayIntensityGlitch(device, f"{self._cmd_syntax}:GLITch")
@@ -495,7 +495,7 @@ class DisplayDigital(SCPICmdRead):
         - ``.height``: The ``DISplay:DIGital:HEIght`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._height = DisplayDigitalHeight(device, f"{self._cmd_syntax}:HEIght")
 
@@ -584,7 +584,7 @@ class Display(SCPICmdRead):
         - ``.style``: The ``DISplay:STYle`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DISplay") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DISplay") -> None:
         super().__init__(device, cmd_syntax)
         self._clock = DisplayClock(device, f"{self._cmd_syntax}:CLOCk")
         self._digital = DisplayDigital(device, f"{self._cmd_syntax}:DIGital")

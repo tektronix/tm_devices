@@ -27,7 +27,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DisplayWindowTextData(SCPICmdWrite, SCPICmdRead):
@@ -83,7 +83,7 @@ class DisplayWindowText(SCPICmdRead):
         - ``.data``: The ``DISPlay:WINDow:TEXT:DATA`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._clear = DisplayWindowTextClear(device, f"{self._cmd_syntax}:CLEar")
         self._data = DisplayWindowTextData(device, f"{self._cmd_syntax}:DATA")
@@ -144,7 +144,7 @@ class DisplayWindow(SCPICmdRead):
         - ``.text``: The ``DISPlay:WINDow:TEXT`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._text = DisplayWindowText(device, f"{self._cmd_syntax}:TEXT")
 
@@ -217,7 +217,7 @@ class DisplaySaver(SCPICmdRead):
         - ``.state``: The ``DISPlay:SAVer:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._immediate = DisplaySaverImmediate(device, f"{self._cmd_syntax}:IMMediate")
         self._state = DisplaySaverState(device, f"{self._cmd_syntax}:STATe")
@@ -323,7 +323,7 @@ class Display(SCPICmdRead):
         - ``.window``: The ``DISPlay:WINDow`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DISPlay") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DISPlay") -> None:
         super().__init__(device, cmd_syntax)
         self._brightness = DisplayBrightness(device, f"{self._cmd_syntax}:BRIGHtness")
         self._contrast = DisplayContrast(device, f"{self._cmd_syntax}:CONTrast")

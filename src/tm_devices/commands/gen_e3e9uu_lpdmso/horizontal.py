@@ -92,7 +92,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class HorizontalScale(SCPICmdWrite, SCPICmdRead):
@@ -190,7 +190,7 @@ class HorizontalSamplerateAnalyzemodeMinimum(SCPICmdRead):
         - ``.value``: The ``HORizontal:SAMPLERate:ANALYZemode:MINimum:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._override = HorizontalSamplerateAnalyzemodeMinimumOverride(
             device, f"{self._cmd_syntax}:OVERRide"
@@ -271,7 +271,7 @@ class HorizontalSamplerateAnalyzemode(SCPICmdRead):
         - ``.minimum``: The ``HORizontal:SAMPLERate:ANALYZemode:MINimum`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._minimum = HorizontalSamplerateAnalyzemodeMinimum(
             device, f"{self._cmd_syntax}:MINimum"
@@ -320,7 +320,7 @@ class HorizontalSamplerate(SCPICmdWrite, SCPICmdRead):
         - ``.analyzemode``: The ``HORizontal:SAMPLERate:ANALYZemode`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._analyzemode = HorizontalSamplerateAnalyzemode(
             device, f"{self._cmd_syntax}:ANALYZemode"
@@ -543,7 +543,7 @@ class HorizontalModeManual(SCPICmdRead):
         - ``.configure``: The ``HORizontal:MODe:MANual:CONFIGure`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._configure = HorizontalModeManualConfigure(device, f"{self._cmd_syntax}:CONFIGure")
 
@@ -651,7 +651,7 @@ class HorizontalModeAutomaticFastacqRecordlengthMaximum(SCPICmdRead):
           ``HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = HorizontalModeAutomaticFastacqRecordlengthMaximumValue(
             device, f"{self._cmd_syntax}:VALue"
@@ -733,7 +733,7 @@ class HorizontalModeAutomaticFastacqRecordlength(SCPICmdRead):
         - ``.maximum``: The ``HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._maximum = HorizontalModeAutomaticFastacqRecordlengthMaximum(
             device, f"{self._cmd_syntax}:MAXimum"
@@ -771,7 +771,7 @@ class HorizontalModeAutomaticFastacq(SCPICmdRead):
         - ``.recordlength``: The ``HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._recordlength = HorizontalModeAutomaticFastacqRecordlength(
             device, f"{self._cmd_syntax}:RECOrdlength"
@@ -807,7 +807,7 @@ class HorizontalModeAutomatic(SCPICmdRead):
         - ``.fastacq``: The ``HORizontal:MODe:AUTOmatic:FASTAcq`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fastacq = HorizontalModeAutomaticFastacq(device, f"{self._cmd_syntax}:FASTAcq")
 
@@ -863,7 +863,7 @@ class HorizontalMode(SCPICmdWrite, SCPICmdRead):
         - ``.scale``: The ``HORizontal:MODe:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._automatic = HorizontalModeAutomatic(device, f"{self._cmd_syntax}:AUTOmatic")
         self._manual = HorizontalModeManual(device, f"{self._cmd_syntax}:MANual")
@@ -1006,7 +1006,7 @@ class HorizontalMain(SCPICmdRead):
         - ``.interpratio``: The ``HORizontal:MAIn:INTERPRatio`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._interpratio = HorizontalMainInterpratio(device, f"{self._cmd_syntax}:INTERPRatio")
 
@@ -1103,7 +1103,7 @@ class HorizontalHistoryTimestamp(SCPICmdRead):
         - ``.selected``: The ``HORizontal:HISTory:TIMEStamp:SELECTED`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = HorizontalHistoryTimestampDelta(device, f"{self._cmd_syntax}:DELTa")
         self._reference = HorizontalHistoryTimestampReference(
@@ -1297,7 +1297,7 @@ class HorizontalHistoryRef(SCPICmdRead):
         - ``.include``: The ``HORizontal:HISTory:REF:INClude`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._acq = HorizontalHistoryRefAcq(device, f"{self._cmd_syntax}:ACQ")
         self._include = HorizontalHistoryRefInclude(device, f"{self._cmd_syntax}:INClude")
@@ -1430,7 +1430,7 @@ class HorizontalHistory(SCPICmdRead):
         - ``.timestamp``: The ``HORizontal:HISTory:TIMEStamp`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._cstats = HorizontalHistoryCstats(device, f"{self._cmd_syntax}:CSTAts")
         self._overlay = HorizontalHistoryOverlay(device, f"{self._cmd_syntax}:OVERlay")
@@ -1666,7 +1666,7 @@ class HorizontalFastframeXzero(SCPICmdRead):
         - ``.selected``: The ``HORizontal:FASTframe:XZEro:SELECTED`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._all = HorizontalFastframeXzeroAll(device, f"{self._cmd_syntax}:ALL")
         self._ref = HorizontalFastframeXzeroRef(device, f"{self._cmd_syntax}:REF")
@@ -1837,7 +1837,7 @@ class HorizontalFastframeTimestamp(SCPICmdRead):
         - ``.selected``: The ``HORizontal:FASTframe:TIMEStamp:SELECTED`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._all = HorizontalFastframeTimestampAll(device, f"{self._cmd_syntax}:ALL")
         self._delta = HorizontalFastframeTimestampDelta(device, f"{self._cmd_syntax}:DELTa")
@@ -1992,7 +1992,7 @@ class HorizontalFastframeSumframe(SCPICmdWrite, SCPICmdRead):
         - ``.state``: The ``HORizontal:FASTframe:SUMFrame:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = HorizontalFastframeSumframeState(device, f"{self._cmd_syntax}:STATE")
 
@@ -2148,7 +2148,7 @@ class HorizontalFastframeRef(SCPICmdRead):
         - ``.include``: The ``HORizontal:FASTframe:REF:INCLUde`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frame = HorizontalFastframeRefFrame(device, f"{self._cmd_syntax}:FRAme")
         self._include = HorizontalFastframeRefInclude(device, f"{self._cmd_syntax}:INCLUde")
@@ -2252,7 +2252,7 @@ class HorizontalFastframeMultipleframes(SCPICmdRead):
         - ``.mode``: The ``HORizontal:FASTframe:MULtipleframes:MODe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = HorizontalFastframeMultipleframesMode(device, f"{self._cmd_syntax}:MODe")
 
@@ -2358,7 +2358,7 @@ class HorizontalFastframe(SCPICmdRead):
         - ``.xzero``: The ``HORizontal:FASTframe:XZEro`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._count = HorizontalFastframeCount(device, f"{self._cmd_syntax}:COUNt")
         self._maxframes = HorizontalFastframeMaxframes(device, f"{self._cmd_syntax}:MAXFRames")
@@ -2647,7 +2647,7 @@ class HorizontalDelay(SCPICmdRead):
         - ``.time``: The ``HORizontal:DELay:TIMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = HorizontalDelayMode(device, f"{self._cmd_syntax}:MODe")
         self._time = HorizontalDelayTime(device, f"{self._cmd_syntax}:TIMe")
@@ -2760,7 +2760,9 @@ class Horizontal(SCPICmdRead):
         - ``.scale``: The ``HORizontal:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "HORizontal") -> None:
+    def __init__(
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "HORizontal"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._acqduration = HorizontalAcqduration(device, f"{self._cmd_syntax}:ACQDURATION")
         self._delay = HorizontalDelay(device, f"{self._cmd_syntax}:DELay")

@@ -29,7 +29,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MeasuMeas1SubgroupResultsCurrentacqStddev(SCPICmdReadWithArguments):
@@ -263,7 +263,7 @@ class MeasuMeas1SubgroupResultsCurrentacq(SCPICmdRead):
         - ``.stddev``: The ``MEASU:MEAS1:SUBGROUP:RESUlts:CURRentacq:STDDev`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._maximum = MeasuMeas1SubgroupResultsCurrentacqMaximum(
             device, f"{self._cmd_syntax}:MAXimum"
@@ -700,7 +700,7 @@ class MeasuMeas1SubgroupResultsAllacqs(SCPICmdRead):
         - ``.stddev``: The ``MEASU:MEAS1:SUBGROUP:RESUlts:ALLAcqs:STDDev`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._maximum = MeasuMeas1SubgroupResultsAllacqsMaximum(
             device, f"{self._cmd_syntax}:MAXimum"
@@ -915,7 +915,7 @@ class MeasuMeas1SubgroupResults(SCPICmdRead):
         - ``.currentacq``: The ``MEASU:MEAS1:SUBGROUP:RESUlts:CURRentacq`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._allacqs = MeasuMeas1SubgroupResultsAllacqs(device, f"{self._cmd_syntax}:ALLAcqs")
         self._currentacq = MeasuMeas1SubgroupResultsCurrentacq(
@@ -977,7 +977,7 @@ class MeasuMeas1Subgroup(SCPICmdRead):
         - ``.results``: The ``MEASU:MEAS1:SUBGROUP:RESUlts`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._results = MeasuMeas1SubgroupResults(device, f"{self._cmd_syntax}:RESUlts")
 
@@ -1009,7 +1009,7 @@ class MeasuMeas1(SCPICmdRead):
         - ``.subgroup``: The ``MEASU:MEAS1:SUBGROUP`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._subgroup = MeasuMeas1Subgroup(device, f"{self._cmd_syntax}:SUBGROUP")
 
@@ -1040,7 +1040,7 @@ class Measu(SCPICmdRead):
         - ``.meas1``: The ``MEASU:MEAS1`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MEASU") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MEASU") -> None:
         super().__init__(device, cmd_syntax)
         self._meas1 = MeasuMeas1(device, f"{self._cmd_syntax}:MEAS1")
 

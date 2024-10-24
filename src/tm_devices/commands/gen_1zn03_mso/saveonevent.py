@@ -27,7 +27,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SaveoneventWaveformSource(SCPICmdWrite, SCPICmdRead):
@@ -104,7 +104,7 @@ class SaveoneventWaveform(SCPICmdRead):
         - ``.source``: The ``SAVEONEVent:WAVEform:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fileformat = SaveoneventWaveformFileformat(device, f"{self._cmd_syntax}:FILEFormat")
         self._source = SaveoneventWaveformSource(device, f"{self._cmd_syntax}:SOUrce")
@@ -214,7 +214,7 @@ class SaveoneventImage(SCPICmdRead):
         - ``.fileformat``: The ``SAVEONEVent:IMAGe:FILEFormat`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fileformat = SaveoneventImageFileformat(device, f"{self._cmd_syntax}:FILEFormat")
 
@@ -314,7 +314,7 @@ class Saveonevent(SCPICmdRead):
     """
 
     def __init__(
-        self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SAVEONEVent"
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "SAVEONEVent"
     ) -> None:
         super().__init__(device, cmd_syntax)
         self._filedest = SaveoneventFiledest(device, f"{self._cmd_syntax}:FILEDest")

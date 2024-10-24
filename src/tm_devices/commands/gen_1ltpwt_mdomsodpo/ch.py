@@ -70,7 +70,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, ValidatedChannel
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ChannelYunits(SCPICmdWrite, SCPICmdRead):
@@ -379,7 +379,7 @@ class ChannelProbeId(SCPICmdRead):
         - ``.type``: The ``CH<x>:PRObe:ID:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._sernumber = ChannelProbeIdSernumber(device, f"{self._cmd_syntax}:SERnumber")
         self._type = ChannelProbeIdType(device, f"{self._cmd_syntax}:TYPe")
@@ -520,7 +520,7 @@ class ChannelProbeDegauss(SCPICmdWrite, SCPICmdRead):
         - ``.state``: The ``CH<x>:PRObe:DEGAUss:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ChannelProbeDegaussState(device, f"{self._cmd_syntax}:STATE")
 
@@ -638,7 +638,7 @@ class ChannelProbeCalibrate(SCPICmdWrite, SCPICmdRead):
         - ``.state``: The ``CH<x>:PRObe:CALibrate:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._calibratable = ChannelProbeCalibrateCalibratable(
             device, f"{self._cmd_syntax}:CALIBRATABLe"
@@ -748,7 +748,7 @@ class ChannelProbe(SCPICmdRead):
         - ``.units``: The ``CH<x>:PRObe:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autozero = ChannelProbeAutozero(device, f"{self._cmd_syntax}:AUTOZero")
         self._calibrate = ChannelProbeCalibrate(device, f"{self._cmd_syntax}:CALibrate")
@@ -1373,7 +1373,7 @@ class ChannelAmpsviavolts(SCPICmdRead):
         - ``.factor``: The ``CH<x>:AMPSVIAVOLTs:FACtor`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._enable = ChannelAmpsviavoltsEnable(device, f"{self._cmd_syntax}:ENAble")
         self._factor = ChannelAmpsviavoltsFactor(device, f"{self._cmd_syntax}:FACtor")
@@ -1470,7 +1470,7 @@ class Channel(ValidatedChannel, SCPICmdRead):
         - ``.yunits``: The ``CH<x>:YUNits`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CH<x>") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CH<x>") -> None:
         super().__init__(device, cmd_syntax)
         self._ampsviavolts = ChannelAmpsviavolts(device, f"{self._cmd_syntax}:AMPSVIAVOLTs")
         self._bandwidth = ChannelBandwidth(device, f"{self._cmd_syntax}:BANdwidth")

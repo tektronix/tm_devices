@@ -57,7 +57,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class PowerPowerItemResultsCurrentacqMinimum(SCPICmdReadWithArguments):
@@ -174,7 +174,7 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
         - ``.minimum``: The ``POWer:POWer<x>:RESUlts:CURRentacq:MINimum`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._maximum = PowerPowerItemResultsCurrentacqMaximum(
             device, f"{self._cmd_syntax}:MAXimum"
@@ -300,7 +300,7 @@ class PowerPowerItemResults(SCPICmdRead):
         - ``.currentacq``: The ``POWer:POWer<x>:RESUlts:CURRentacq`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._currentacq = PowerPowerItemResultsCurrentacq(device, f"{self._cmd_syntax}:CURRentacq")
 
@@ -797,7 +797,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
         - ``.testconnection``: The ``POWer:POWer<x>:CLRESPONSE:TESTCONNection`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ampval: Dict[int, PowerPowerItemClresponseAmpvalItem] = DefaultDictPassKeyToFactory(
             lambda x: PowerPowerItemClresponseAmpvalItem(device, f"{self._cmd_syntax}:AMP{x}Val")
@@ -1296,7 +1296,7 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.results``: The ``POWer:POWer<x>:RESUlts`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._clresponse = PowerPowerItemClresponse(device, f"{self._cmd_syntax}:CLRESPONSE")
         self._preset = PowerPowerItemPreset(device, f"{self._cmd_syntax}:PRESET")
@@ -1420,7 +1420,7 @@ class Power(SCPICmdRead):
         - ``.power``: The ``POWer:POWer<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "POWer") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "POWer") -> None:
         super().__init__(device, cmd_syntax)
         self._addnew = PowerAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = PowerDelete(device, f"{self._cmd_syntax}:DELete")

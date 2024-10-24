@@ -58,7 +58,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class VisualShowequation(SCPICmdWrite, SCPICmdRead):
@@ -529,7 +529,7 @@ class VisualAreaItemFlip(SCPICmdRead):
         - ``.vertical``: The ``VISual:AREA<x>:FLIP:VERTical`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._horizontal = VisualAreaItemFlipHorizontal(device, f"{self._cmd_syntax}:HORizontal")
         self._vertical = VisualAreaItemFlipVertical(device, f"{self._cmd_syntax}:VERTical")
@@ -629,7 +629,7 @@ class VisualAreaItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.yposition``: The ``VISual:AREA<x>:YPOSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aspectratio = VisualAreaItemAspectratio(device, f"{self._cmd_syntax}:ASPEctratio")
         self._flip = VisualAreaItemFlip(device, f"{self._cmd_syntax}:FLIP")
@@ -994,7 +994,7 @@ class Visual(SCPICmdRead):
         - ``.showequation``: The ``VISual:SHOWEQuation`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "VISual") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "VISual") -> None:
         super().__init__(device, cmd_syntax)
         self._area: Dict[int, VisualAreaItem] = DefaultDictPassKeyToFactory(
             lambda x: VisualAreaItem(device, f"{self._cmd_syntax}:AREA{x}")

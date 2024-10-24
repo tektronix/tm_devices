@@ -27,7 +27,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Fs(BaseTSPCmd):
@@ -43,7 +43,7 @@ class Fs(BaseTSPCmd):
         - ``.rmdir()``: The ``fs.rmdir()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "fs") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "fs") -> None:
         super().__init__(device, cmd_syntax)
 
     def chdir(self, path: str) -> str:
@@ -71,7 +71,7 @@ class Fs(BaseTSPCmd):
                 f'print({self._cmd_syntax}.chdir("{path}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.chdir()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.chdir()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def cwd(self) -> str:
@@ -96,7 +96,7 @@ class Fs(BaseTSPCmd):
                 f"print({self._cmd_syntax}.cwd())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.cwd()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.cwd()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def is_dir(self, path: str) -> str:
@@ -124,7 +124,7 @@ class Fs(BaseTSPCmd):
                 f'print({self._cmd_syntax}.is_dir("{path}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.is_dir()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.is_dir()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def is_file(self, path: str) -> str:
@@ -152,7 +152,7 @@ class Fs(BaseTSPCmd):
                 f'print({self._cmd_syntax}.is_file("{path}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.is_file()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.is_file()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def mkdir(self, new_path: str) -> str:
@@ -180,7 +180,7 @@ class Fs(BaseTSPCmd):
                 f'print({self._cmd_syntax}.mkdir("{new_path}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.mkdir()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.mkdir()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def readdir(self, path: str) -> str:
@@ -208,7 +208,7 @@ class Fs(BaseTSPCmd):
                 f'print({self._cmd_syntax}.readdir("{path}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.readdir()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.readdir()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def rmdir(self, path: str) -> None:
@@ -233,5 +233,5 @@ class Fs(BaseTSPCmd):
                 f'{self._cmd_syntax}.rmdir("{path}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.rmdir()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.rmdir()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

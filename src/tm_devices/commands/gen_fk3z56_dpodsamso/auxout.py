@@ -23,7 +23,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class AuxoutSource(SCPICmdWrite, SCPICmdRead):
@@ -103,7 +103,7 @@ class Auxout(SCPICmdRead):
         - ``.source``: The ``AUXout:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "AUXout") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "AUXout") -> None:
         super().__init__(device, cmd_syntax)
         self._edge = AuxoutEdge(device, f"{self._cmd_syntax}:EDGE")
         self._source = AuxoutSource(device, f"{self._cmd_syntax}:SOUrce")

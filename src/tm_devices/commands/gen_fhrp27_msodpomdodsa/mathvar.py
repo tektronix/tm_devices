@@ -27,7 +27,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MathvarVarItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
@@ -79,7 +79,7 @@ class Mathvar(SCPICmdRead):
         - ``.var``: The ``MATHVAR:VAR<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MATHVAR") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MATHVAR") -> None:
         super().__init__(device, cmd_syntax)
         self._var: Dict[int, MathvarVarItem] = DefaultDictPassKeyToFactory(
             lambda x: MathvarVarItem(device, f"{self._cmd_syntax}:VAR{x}")

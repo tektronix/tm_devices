@@ -71,7 +71,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, ValidatedDynamicNumberCmd
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MathItemVerticalScale(SCPICmdWrite, SCPICmdRead):
@@ -202,7 +202,7 @@ class MathItemVertical(SCPICmdRead):
         - ``.scale``: The ``MATH<x>:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoscale = MathItemVerticalAutoscale(device, f"{self._cmd_syntax}:AUTOSCale")
         self._position = MathItemVerticalPosition(device, f"{self._cmd_syntax}:POSition")
@@ -814,7 +814,7 @@ class MathItemSpectral(SCPICmdRead):
         - ``.window``: The ``MATH<x>:SPECTral:WINdow`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._center = MathItemSpectralCenter(device, f"{self._cmd_syntax}:CENTER")
         self._gatepos = MathItemSpectralGatepos(device, f"{self._cmd_syntax}:GATEPOS")
@@ -1376,7 +1376,7 @@ class MathItemLabel(SCPICmdRead):
         - ``.ypos``: The ``MATH<x>:LABel:YPOS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._name = MathItemLabelName(device, f"{self._cmd_syntax}:NAMe")
         self._xpos = MathItemLabelXpos(device, f"{self._cmd_syntax}:XPOS")
@@ -1535,7 +1535,7 @@ class MathItemFilter(SCPICmdRead):
         - ``.risetime``: The ``MATH<x>:FILTer:RISetime`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = MathItemFilterMode(device, f"{self._cmd_syntax}:MODe")
         self._risetime = MathItemFilterRisetime(device, f"{self._cmd_syntax}:RISetime")
@@ -1668,7 +1668,7 @@ class MathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.vertical``: The ``MATH<x>:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MATH<x>") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MATH<x>") -> None:
         super().__init__(device, cmd_syntax)
         self._define = MathItemDefine(device, f"{self._cmd_syntax}:DEFine")
         self._filter = MathItemFilter(device, f"{self._cmd_syntax}:FILTer")

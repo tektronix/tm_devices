@@ -30,7 +30,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class AutosetVerticalOptimize(SCPICmdWrite, SCPICmdRead):
@@ -103,7 +103,7 @@ class AutosetVertical(SCPICmdRead):
         - ``.optimize``: The ``AUTOSet:VERTical:OPTIMize`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._enable = AutosetVerticalEnable(device, f"{self._cmd_syntax}:ENAble")
         self._optimize = AutosetVerticalOptimize(device, f"{self._cmd_syntax}:OPTIMize")
@@ -206,7 +206,7 @@ class AutosetTrigger(SCPICmdRead):
         - ``.enable``: The ``AUTOSet:TRIGger:ENAble`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._enable = AutosetTriggerEnable(device, f"{self._cmd_syntax}:ENAble")
 
@@ -278,7 +278,7 @@ class AutosetHorizontal(SCPICmdRead):
         - ``.enable``: The ``AUTOSet:HORizontal:ENAble`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._enable = AutosetHorizontalEnable(device, f"{self._cmd_syntax}:ENAble")
 
@@ -375,7 +375,7 @@ class AutosetAcquisition(SCPICmdRead):
         - ``.enable``: The ``AUTOSet:ACQuisition:ENAble`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._enable = AutosetAcquisitionEnable(device, f"{self._cmd_syntax}:ENAble")
 
@@ -434,7 +434,7 @@ class Autoset(SCPICmdWrite, SCPICmdRead):
         - ``.vertical``: The ``AUTOSet:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "AUTOSet") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "AUTOSet") -> None:
         super().__init__(device, cmd_syntax)
         self._acquisition = AutosetAcquisition(device, f"{self._cmd_syntax}:ACQuisition")
         self._enable = AutosetEnable(device, f"{self._cmd_syntax}:ENAble")

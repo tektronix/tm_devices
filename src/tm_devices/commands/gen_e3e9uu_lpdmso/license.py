@@ -28,7 +28,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class LicenseValidate(SCPICmdReadWithArguments):
@@ -266,7 +266,7 @@ class License(SCPICmdRead):
         - ``.validate``: The ``LICense:VALidate`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "LICense") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "LICense") -> None:
         super().__init__(device, cmd_syntax)
         self._appid = LicenseAppid(device, f"{self._cmd_syntax}:APPID")
         self._count = LicenseCount(device, f"{self._cmd_syntax}:COUNt")

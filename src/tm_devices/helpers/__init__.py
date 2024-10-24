@@ -41,6 +41,7 @@ from tm_devices.helpers.functions import (
 from tm_devices.helpers.read_only_cached_property import ReadOnlyCachedProperty
 from tm_devices.helpers.singleton_metaclass import Singleton
 from tm_devices.helpers.standalone_functions import validate_address
+from tm_devices.helpers.verification_functions import raise_error, raise_failure, verify_values
 
 __all__ = [
     "AliasDict",
@@ -63,6 +64,8 @@ __all__ = [
     "ping_address",
     "print_with_timestamp",
     "PYVISA_PY_BACKEND",
+    "raise_error",
+    "raise_failure",
     "register_additional_usbtmc_mapping",
     "sanitize_enum",
     "SerialConfig",
@@ -74,6 +77,7 @@ __all__ = [
     "USBTMCConfiguration",
     "VALID_DEVICE_CONNECTION_TYPES",
     "validate_address",
+    "verify_values",
     "VISA_RESOURCE_EXPRESSION_REGEX",
     "ReadOnlyCachedProperty",
     "SASSetWaveformFileTypes",

@@ -45,7 +45,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ClockSrate(SCPICmdWrite, SCPICmdRead):
@@ -108,7 +108,7 @@ class ClockSout(SCPICmdRead):
         - ``.state``: The ``CLOCk:SOUT:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ClockSoutState(device, f"{self._cmd_syntax}:STATe")
 
@@ -225,7 +225,7 @@ class ClockPhaseAdjust(SCPICmdRead):
         - ``.time``: The ``CLOCk:PHASe:ADJust:TIMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._degrees = ClockPhaseAdjustDegrees(device, f"{self._cmd_syntax}:DEGRees")
         self._time = ClockPhaseAdjustTime(device, f"{self._cmd_syntax}:TIMe")
@@ -297,7 +297,7 @@ class ClockPhase(SCPICmdRead):
         - ``.adjust``: The ``CLOCk:PHASe:ADJust`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._adjust = ClockPhaseAdjust(device, f"{self._cmd_syntax}:ADJust")
 
@@ -373,7 +373,7 @@ class ClockOutput(SCPICmdRead):
         - ``.state``: The ``CLOCk:OUTPut:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = ClockOutputFrequency(device, f"{self._cmd_syntax}:FREQuency")
         self._state = ClockOutputState(device, f"{self._cmd_syntax}:STATe")
@@ -519,7 +519,7 @@ class ClockEreferenceFrequency(SCPICmdWrite, SCPICmdRead):
         - ``.detect``: The ``CLOCk:EREFerence:FREQuency:DETect`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._detect = ClockEreferenceFrequencyDetect(device, f"{self._cmd_syntax}:DETect")
 
@@ -586,7 +586,7 @@ class ClockEreference(SCPICmdRead):
         - ``.multiplier``: The ``CLOCk:EREFerence:MULTiplier`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._divider = ClockEreferenceDivider(device, f"{self._cmd_syntax}:DIVider")
         self._frequency = ClockEreferenceFrequency(device, f"{self._cmd_syntax}:FREQuency")
@@ -741,7 +741,7 @@ class ClockEclockFrequency(SCPICmdWrite, SCPICmdRead):
         - ``.detect``: The ``CLOCk:ECLock:FREQuency:DETect`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._detect = ClockEclockFrequencyDetect(device, f"{self._cmd_syntax}:DETect")
 
@@ -803,7 +803,7 @@ class ClockEclock(SCPICmdRead):
         - ``.multiplier``: The ``CLOCk:ECLock:MULTiplier`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._divider = ClockEclockDivider(device, f"{self._cmd_syntax}:DIVider")
         self._frequency = ClockEclockFrequency(device, f"{self._cmd_syntax}:FREQuency")
@@ -909,7 +909,7 @@ class Clock(SCPICmdRead):
         - ``.srate``: The ``CLOCk:SRATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CLOCk") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CLOCk") -> None:
         super().__init__(device, cmd_syntax)
         self._eclock = ClockEclock(device, f"{self._cmd_syntax}:ECLock")
         self._ereference = ClockEreference(device, f"{self._cmd_syntax}:EREFerence")

@@ -22,7 +22,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Setup(BaseTSPCmd):
@@ -34,7 +34,7 @@ class Setup(BaseTSPCmd):
         - ``.save()``: The ``setup.save()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "setup") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "setup") -> None:
         super().__init__(device, cmd_syntax)
 
     @property
@@ -64,7 +64,7 @@ class Setup(BaseTSPCmd):
                 f"print({self._cmd_syntax}.poweron)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.poweron`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.poweron`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @poweron.setter
@@ -97,7 +97,7 @@ class Setup(BaseTSPCmd):
                     f"{self._cmd_syntax}.poweron = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.poweron`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.poweron`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def recall(self, id_: str) -> None:
@@ -122,7 +122,7 @@ class Setup(BaseTSPCmd):
                 f"{self._cmd_syntax}.recall({id_})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.recall()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.recall()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def save(self, id_: Optional[str] = None) -> None:
@@ -151,5 +151,5 @@ class Setup(BaseTSPCmd):
                 f"{self._cmd_syntax}.save({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.save()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.save()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

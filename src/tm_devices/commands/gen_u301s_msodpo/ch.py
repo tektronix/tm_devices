@@ -58,7 +58,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments, ValidatedChannel
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ChannelYunits(SCPICmdWrite, SCPICmdRead):
@@ -294,7 +294,7 @@ class ChannelProbeId(SCPICmdRead):
         - ``.type``: The ``CH<x>:PRObe:ID:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._sernumber = ChannelProbeIdSernumber(device, f"{self._cmd_syntax}:SERnumber")
         self._type = ChannelProbeIdType(device, f"{self._cmd_syntax}:TYPE")
@@ -436,7 +436,7 @@ class ChannelProbeDegauss(SCPICmdWrite, SCPICmdRead):
         - ``.state``: The ``CH<x>:PRObe:DEGAUss:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ChannelProbeDegaussState(device, f"{self._cmd_syntax}:STATE")
 
@@ -539,7 +539,7 @@ class ChannelProbe(SCPICmdRead):
         - ``.units``: The ``CH<x>:PRObe:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autozero = ChannelProbeAutozero(device, f"{self._cmd_syntax}:AUTOZero")
         self._command = ChannelProbeCommand(device, f"{self._cmd_syntax}:COMMAND")
@@ -1018,7 +1018,7 @@ class Channel(ValidatedChannel, SCPICmdRead):
         - ``.yunits``: The ``CH<x>:YUNits`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CH<x>") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CH<x>") -> None:
         super().__init__(device, cmd_syntax)
         self._bandwidth = ChannelBandwidth(device, f"{self._cmd_syntax}:BANdwidth")
         self._coupling = ChannelCoupling(device, f"{self._cmd_syntax}:COUPling")

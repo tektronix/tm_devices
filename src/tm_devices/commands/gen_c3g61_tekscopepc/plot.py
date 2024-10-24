@@ -79,7 +79,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class PlotPlotItemType(SCPICmdWrite):
@@ -187,7 +187,7 @@ class PlotPlotItemSpectrum(SCPICmdRead):
         - ``.dynrange``: The ``PLOT:PLOT<x>:SPECtrum:DYNRange`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._base = PlotPlotItemSpectrumBase(device, f"{self._cmd_syntax}:BASE")
         self._dynrange = PlotPlotItemSpectrumDynrange(device, f"{self._cmd_syntax}:DYNRange")
@@ -416,7 +416,7 @@ class PlotPlotItemMaskoffsetPercentui(SCPICmdRead):
         - ``.to``: The ``PLOT:PLOT<x>:MASKOffset:PERCENTui:TO`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._from = PlotPlotItemMaskoffsetPercentuiFrom(device, f"{self._cmd_syntax}:FROM")
         self._to = PlotPlotItemMaskoffsetPercentuiTo(device, f"{self._cmd_syntax}:TO")
@@ -525,7 +525,7 @@ class PlotPlotItemMaskoffsetHorizontal(SCPICmdRead):
         - ``.autofit``: The ``PLOT:PLOT<x>:MASKOffset:HORizontal:AUTOfit`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autofit = PlotPlotItemMaskoffsetHorizontalAutofit(
             device, f"{self._cmd_syntax}:AUTOfit"
@@ -577,7 +577,7 @@ class PlotPlotItemMaskoffset(SCPICmdRead):
         - ``.percentui``: The ``PLOT:PLOT<x>:MASKOffset:PERCENTui`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._horizontal = PlotPlotItemMaskoffsetHorizontal(
             device, f"{self._cmd_syntax}:HORizontal"
@@ -876,7 +876,7 @@ class PlotPlotItemLabelFont(SCPICmdRead):
         - ``.underline``: The ``PLOT:PLOT<x>:LABel:FONT:UNDERline`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bold = PlotPlotItemLabelFontBold(device, f"{self._cmd_syntax}:BOLD")
         self._italic = PlotPlotItemLabelFontItalic(device, f"{self._cmd_syntax}:ITALic")
@@ -1069,7 +1069,7 @@ class PlotPlotItemLabel(SCPICmdRead):
         - ``.ypos``: The ``PLOT:PLOT<x>:LABel:YPOS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._color = PlotPlotItemLabelColor(device, f"{self._cmd_syntax}:COLor")
         self._font = PlotPlotItemLabelFont(device, f"{self._cmd_syntax}:FONT")
@@ -1303,7 +1303,7 @@ class PlotPlotItemImda(SCPICmdRead):
         - ``.meas``: The ``PLOT:PLOT<x>:IMDA:MEAS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._meas = PlotPlotItemImdaMeas(device, f"{self._cmd_syntax}:MEAS")
 
@@ -1517,7 +1517,7 @@ class PlotPlotItemBathtub(SCPICmdRead):
         - ``.xaxisunits``: The ``PLOT:PLOT<x>:BATHtub:XAXISUnits`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ber = PlotPlotItemBathtubBer(device, f"{self._cmd_syntax}:BER")
         self._xaxisunits = PlotPlotItemBathtubXaxisunits(device, f"{self._cmd_syntax}:XAXISUnits")
@@ -1603,7 +1603,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.type``: The ``PLOT:PLOT<x>:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bathtub = PlotPlotItemBathtub(device, f"{self._cmd_syntax}:BATHtub")
         self._bittype = PlotPlotItemBittype(device, f"{self._cmd_syntax}:BITType")
@@ -2109,7 +2109,7 @@ class Plot(SCPICmdRead):
         - ``.plot``: The ``PLOT:PLOT<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "PLOT") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "PLOT") -> None:
         super().__init__(device, cmd_syntax)
         self._addnew = PlotAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = PlotDelete(device, f"{self._cmd_syntax}:DELete")

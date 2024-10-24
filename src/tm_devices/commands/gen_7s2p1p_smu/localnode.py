@@ -20,7 +20,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Localnode(BaseTSPCmd):
@@ -45,7 +45,9 @@ class Localnode(BaseTSPCmd):
     PASSWORD_WEB = "localnode.PASSWORD_WEB"
     """str: Use passwords on the web interface only."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "localnode") -> None:
+    def __init__(
+        self, device: Optional["TSPControl"] = None, cmd_syntax: str = "localnode"
+    ) -> None:
         super().__init__(device, cmd_syntax)
 
     @property
@@ -73,5 +75,5 @@ class Localnode(BaseTSPCmd):
                 f"print({self._cmd_syntax}.model)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.model`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.model`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

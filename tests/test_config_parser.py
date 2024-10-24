@@ -267,7 +267,6 @@ def test_file_config_non_default_path(
     ), f"\nDevice dictionaries don't match:\n{expected_devices}\n{config_2.devices}"
 
 
-# TODO: test with duplicated device address, one with domain name, one without
 @pytest.mark.parametrize(
     ("os_environ", "expected_exception"),
     [
@@ -286,6 +285,14 @@ def test_file_config_non_default_path(
             {
                 "TM_DEVICES": "device_type=SCOPE,address=MSO54-123456~~~"
                 "device_type=SCOPE,address=MSO54-123456"
+            },
+            ValueError,
+        ),
+        # test with duplicate device addresses, one with domain name, one without
+        (
+            {
+                "TM_DEVICES": "device_type=SCOPE,address=MSO54-123456,alias=foo1"
+                "~~~device_type=SCOPE,address=MSO54-123456.unit.test.domain,alias=foo2"
             },
             ValueError,
         ),

@@ -25,7 +25,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class VerticalDeskewToSource(SCPICmdWrite, SCPICmdRead):
@@ -89,7 +89,7 @@ class VerticalDeskewTo(SCPICmdRead):
         - ``.source``: The ``VERTical:DESKew:TO:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._custompropagation = VerticalDeskewToCustompropagation(
             device, f"{self._cmd_syntax}:CUSTOMPROPAgation"
@@ -234,7 +234,7 @@ class VerticalDeskewFrom(SCPICmdRead):
         - ``.source``: The ``VERTical:DESKew:FROM:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._custompropagation = VerticalDeskewFromCustompropagation(
             device, f"{self._cmd_syntax}:CUSTOMPROPAgation"
@@ -312,7 +312,7 @@ class VerticalDeskew(SCPICmdRead):
         - ``.to``: The ``VERTical:DESKew:TO`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._from = VerticalDeskewFrom(device, f"{self._cmd_syntax}:FROM")
         self._static = VerticalDeskewStatic(device, f"{self._cmd_syntax}:STATIC")
@@ -382,7 +382,7 @@ class Vertical(SCPICmdRead):
         - ``.deskew``: The ``VERTical:DESKew`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "VERTical") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "VERTical") -> None:
         super().__init__(device, cmd_syntax)
         self._deskew = VerticalDeskew(device, f"{self._cmd_syntax}:DESKew")
 

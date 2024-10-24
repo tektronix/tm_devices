@@ -20,7 +20,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MainwindowRrbdisplaystate(SCPICmdWrite):
@@ -97,7 +97,7 @@ class MainwindowBadge(SCPICmdRead):
         - ``.bringtoview``: The ``MAINWindow:BADGe:BRINgtoview`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bringtoview = MainwindowBadgeBringtoview(device, f"{self._cmd_syntax}:BRINgtoview")
 
@@ -138,7 +138,9 @@ class Mainwindow(SCPICmdRead):
         - ``.rrbdisplaystate``: The ``MAINWindow:RRBDisplaystate`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MAINWindow") -> None:
+    def __init__(
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "MAINWindow"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._badge = MainwindowBadge(device, f"{self._cmd_syntax}:BADGe")
         self._fontsize = MainwindowFontsize(device, f"{self._cmd_syntax}:FONTSize")

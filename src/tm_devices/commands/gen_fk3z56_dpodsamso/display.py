@@ -120,7 +120,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DisplayWaveform(SCPICmdWrite, SCPICmdRead):
@@ -586,7 +586,7 @@ class DisplayScreentextLabelItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.ypos``: The ``DISplay:SCREENTExt:LABel<x>:YPOS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fontcolor = DisplayScreentextLabelItemFontcolor(
             device, f"{self._cmd_syntax}:FONTCOlor"
@@ -873,7 +873,7 @@ class DisplayScreentext(SCPICmdRead):
         - ``.state``: The ``DISplay:SCREENTExt:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._label: Dict[int, DisplayScreentextLabelItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplayScreentextLabelItem(device, f"{self._cmd_syntax}:LABel{x}")
@@ -982,7 +982,7 @@ class DisplayPersistence(SCPICmdWrite, SCPICmdRead):
         - ``.reset``: The ``DISplay:PERSistence:RESET`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._reset = DisplayPersistenceReset(device, f"{self._cmd_syntax}:RESET")
 
@@ -1070,7 +1070,7 @@ class DisplayIntensityWaveform(SCPICmdRead):
         - ``.recordview``: The ``DISplay:INTENSITy:WAVEform:RECORDView`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._imageview = DisplayIntensityWaveformImageview(device, f"{self._cmd_syntax}:IMAGEView")
         self._recordview = DisplayIntensityWaveformRecordview(
@@ -1311,7 +1311,7 @@ class DisplayIntensity(SCPICmdRead):
         - ``.waveform``: The ``DISplay:INTENSITy:WAVEform`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autobright = DisplayIntensityAutobright(device, f"{self._cmd_syntax}:AUTOBright")
         self._backlight = DisplayIntensityBacklight(device, f"{self._cmd_syntax}:BACKLight")
@@ -1660,7 +1660,7 @@ class DisplayDigital(SCPICmdRead):
         - ``.height``: The ``DISplay:DIGital:HEIght`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._height = DisplayDigitalHeight(device, f"{self._cmd_syntax}:HEIght")
 
@@ -2074,7 +2074,7 @@ class DisplayColorPaletteUser(SCPICmdWrite, SCPICmdRead):
         - ``.waveform``: The ``DISplay:COLOr:PALEtte:USEr:WAVEform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._caret = DisplayColorPaletteUserCaret(device, f"{self._cmd_syntax}:CARet")
         self._ch: Dict[int, DisplayColorPaletteUserChannel] = DefaultDictPassKeyToFactory(
@@ -2453,7 +2453,7 @@ class DisplayColorPalette(SCPICmdRead):
         - ``.user``: The ``DISplay:COLOr:PALEtte:USEr`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._imageview = DisplayColorPaletteImageview(device, f"{self._cmd_syntax}:IMAGEView")
         self._recordview = DisplayColorPaletteRecordview(device, f"{self._cmd_syntax}:RECORDView")
@@ -2622,7 +2622,7 @@ class DisplayColor(SCPICmdRead):
         - ``.refcolor``: The ``DISplay:COLOr:REFCOLOr`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mathcolor = DisplayColorMathcolor(device, f"{self._cmd_syntax}:MATHCOLOr")
         self._palette = DisplayColorPalette(device, f"{self._cmd_syntax}:PALEtte")
@@ -2770,7 +2770,7 @@ class Display(SCPICmdRead):
         - ``.waveform``: The ``DISplay:WAVEform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DISplay") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DISplay") -> None:
         super().__init__(device, cmd_syntax)
         self._clock = DisplayClock(device, f"{self._cmd_syntax}:CLOCk")
         self._color = DisplayColor(device, f"{self._cmd_syntax}:COLOr")

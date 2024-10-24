@@ -389,6 +389,7 @@ options:
         assert stdout.count("Closing Connection to AFG 1") == num_closes
         assert stdout.count("DeviceManager Closed") == num_closes
 
+    # noinspection PyUnresolvedReferences
     def test_loading_isolated_config_file(
         self, device_manager: DeviceManager, capsys: pytest.CaptureFixture[str]
     ) -> None:

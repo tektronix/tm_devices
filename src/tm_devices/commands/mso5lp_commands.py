@@ -5,9 +5,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
-from tm_devices.drivers.pi.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_e3e9uu_lpdmso.acquire import Acquire
 from .gen_e3e9uu_lpdmso.actonevent import Actonevent
@@ -1365,7 +1366,7 @@ class MSO5LPCommands:
     """
 
     # pylint: disable=too-many-statements
-    def __init__(self, device: Optional[PIDevice] = None) -> None:  # noqa: PLR0915
+    def __init__(self, device: Optional[PIControl] = None) -> None:  # noqa: PLR0915
         self._acquire = Acquire(device)
         self._actonevent = Actonevent(device)
         self._afg = Afg(device)
@@ -3817,22 +3818,16 @@ class MSO5LPMixin:
         - ``.commands``: The MSO5LP commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIDevice) else None
-        self._command_argument_constants = MSO5LPCommandConstants()
-        self._commands = MSO5LPCommands(device)
-
-    @property
-    def command_argument_constants(self) -> MSO5LPCommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> MSO5LPCommandConstants:  # pylint: disable=no-self-use
         """Return the MSO5LP command argument constants.
 
         This provides access to all the string constants which can be used as arguments for MSO5LP
         commands.
         """
-        return self._command_argument_constants
+        return MSO5LPCommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> MSO5LPCommands:
         """Return the MSO5LP commands.
 
@@ -3942,4 +3937,5 @@ class MSO5LPMixin:
             - ``.wavfrm``: The ``WAVFrm`` command.
             - ``.wfmoutpre``: The ``WFMOutpre`` command.
         """
-        return self._commands
+        device = self if isinstance(self, PIControl) else None
+        return MSO5LPCommands(device)

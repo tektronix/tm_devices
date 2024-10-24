@@ -60,7 +60,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class VisualFileSave(SCPICmdWrite):
@@ -114,7 +114,7 @@ class VisualFile(SCPICmdRead):
         - ``.save``: The ``VISual:FILE:SAVE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._recall = VisualFileRecall(device, f"{self._cmd_syntax}:RECALL")
         self._save = VisualFileSave(device, f"{self._cmd_syntax}:SAVE")
@@ -608,7 +608,7 @@ class VisualAreaItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.yposition``: The ``VISual:AREA<x>:YPOSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._display = VisualAreaItemDisplay(device, f"{self._cmd_syntax}:DISplay")
         self._flip = VisualAreaItemFlip(device, f"{self._cmd_syntax}:FLIP")
@@ -996,7 +996,7 @@ class Visual(SCPICmdRead):
         - ``.file``: The ``VISual:FILE`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "VISual") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "VISual") -> None:
         super().__init__(device, cmd_syntax)
         self._area: Dict[int, VisualAreaItem] = DefaultDictPassKeyToFactory(
             lambda x: VisualAreaItem(device, f"{self._cmd_syntax}:AREA{x}")

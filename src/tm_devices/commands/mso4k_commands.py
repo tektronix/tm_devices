@@ -6,9 +6,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
-from tm_devices.drivers.pi.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_1la1ym_msomdodpo.trigger import Trigger
 from .gen_1lcv3a_msodpomdo.message import Message
@@ -747,7 +748,7 @@ class MSO4KCommands:
     """
 
     # pylint: disable=too-many-statements
-    def __init__(self, device: Optional[PIDevice] = None) -> None:  # noqa: PLR0915
+    def __init__(self, device: Optional[PIControl] = None) -> None:  # noqa: PLR0915
         self._acquire = Acquire(device)
         self._actonevent = Actonevent(device)
         self._afg = Afg(device)
@@ -3295,22 +3296,16 @@ class MSO4KMixin:
         - ``.commands``: The MSO4K commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIDevice) else None
-        self._command_argument_constants = MSO4KCommandConstants()
-        self._commands = MSO4KCommands(device)
-
-    @property
-    def command_argument_constants(self) -> MSO4KCommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> MSO4KCommandConstants:  # pylint: disable=no-self-use
         """Return the MSO4K command argument constants.
 
         This provides access to all the string constants which can be used as arguments for MSO4K
         commands.
         """
-        return self._command_argument_constants
+        return MSO4KCommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> MSO4KCommands:
         """Return the MSO4K commands.
 
@@ -3417,4 +3412,5 @@ class MSO4KMixin:
             - ``.wfmoutpre``: The ``WFMOutpre`` command.
             - ``.zoom``: The ``ZOOm`` command.
         """
-        return self._commands
+        device = self if isinstance(self, PIControl) else None
+        return MSO4KCommands(device)

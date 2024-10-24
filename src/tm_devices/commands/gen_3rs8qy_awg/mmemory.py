@@ -47,7 +47,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MmemorySaveWaveformWfmx(SCPICmdWrite):
@@ -157,7 +157,7 @@ class MmemorySaveWaveform(SCPICmdRead):
         - ``.wfmx``: The ``MMEMory:SAVE:WAVeform:WFMX`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mat = MmemorySaveWaveformMat(device, f"{self._cmd_syntax}:MAT")
         self._tiq = MmemorySaveWaveformTiq(device, f"{self._cmd_syntax}:TIQ")
@@ -310,7 +310,7 @@ class MmemorySave(SCPICmdRead):
         - ``.waveform``: The ``MMEMory:SAVE:WAVeform`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._sequence = MmemorySaveSequence(device, f"{self._cmd_syntax}:SEQuence")
         self._setup = MmemorySaveSetup(device, f"{self._cmd_syntax}:SETup")
@@ -469,7 +469,7 @@ class MmemoryOpenSassetSequence(SCPICmdWrite, SCPICmdRead):
         - ``.mropened``: The ``MMEMory:OPEN:SASSet:SEQuence:MROPened`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mropened = MmemoryOpenSassetSequenceMropened(device, f"{self._cmd_syntax}:MROPened")
 
@@ -509,7 +509,7 @@ class MmemoryOpenSasset(SCPICmdRead):
         - ``.waveform``: The ``MMEMory:OPEN:SASSet:WAVeform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._sequence = MmemoryOpenSassetSequence(device, f"{self._cmd_syntax}:SEQuence")
         self._waveform = MmemoryOpenSassetWaveform(device, f"{self._cmd_syntax}:WAVeform")
@@ -629,7 +629,7 @@ class MmemoryOpenParameter(SCPICmdRead):
         - ``.siq``: The ``MMEMory:OPEN:PARameter:SIQ`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._normalize = MmemoryOpenParameterNormalize(device, f"{self._cmd_syntax}:NORMalize")
         self._siq = MmemoryOpenParameterSiq(device, f"{self._cmd_syntax}:SIQ")
@@ -723,7 +723,7 @@ class MmemoryOpen(SCPICmdWrite, SCPICmdRead):
         - ``.parameter``: The ``MMEMory:OPEN:PARameter`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._sasset = MmemoryOpenSasset(device, f"{self._cmd_syntax}:SASSet")
         self._setup = MmemoryOpenSetup(device, f"{self._cmd_syntax}:SETup")
@@ -877,7 +877,7 @@ class MmemoryImportParameter(SCPICmdRead):
         - ``.normalize``: The ``MMEMory:IMPort:PARameter:NORMalize`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._normalize = MmemoryImportParameterNormalize(device, f"{self._cmd_syntax}:NORMalize")
 
@@ -940,7 +940,7 @@ class MmemoryImport(SCPICmdWrite, SCPICmdRead):
         - ``.parameter``: The ``MMEMory:IMPort:PARameter`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._parameter = MmemoryImportParameter(device, f"{self._cmd_syntax}:PARameter")
 
@@ -1017,7 +1017,7 @@ class MmemoryData(SCPICmdWrite, SCPICmdReadWithArguments):
         - ``.size``: The ``MMEMory:DATA:SIZE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._size = MmemoryDataSize(device, f"{self._cmd_syntax}:SIZE")
 
@@ -1102,7 +1102,7 @@ class Mmemory(SCPICmdRead):
         - ``.save``: The ``MMEMory:SAVE`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MMEMory") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MMEMory") -> None:
         super().__init__(device, cmd_syntax)
         self._catalog = MmemoryCatalog(device, f"{self._cmd_syntax}:CATalog")
         self._cdirectory = MmemoryCdirectory(device, f"{self._cmd_syntax}:CDIRectory")

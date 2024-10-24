@@ -143,7 +143,7 @@ class DMConfigParser:
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def add_device(  # noqa: PLR0913
+    def add_device(  # noqa: PLR0913  # pylint: disable=too-many-locals
         self,
         *,
         device_type: Union[DeviceTypes, str],
@@ -209,7 +209,14 @@ class DMConfigParser:
 
         # Validate the connection is unique
         for dev_entry in self.__devices.values():
-            if new_entry.get_address_expression() == dev_entry.get_address_expression():
+            new_entry_potential_hostname = new_entry.address.split(".")[0]
+            dev_entry_potential_hostname = dev_entry.address.split(".")[0]
+            if (new_entry.get_address_expression() == dev_entry.get_address_expression()) or (
+                new_entry_potential_hostname == dev_entry_potential_hostname
+                and not (
+                    new_entry_potential_hostname.isdigit() or dev_entry_potential_hostname.isdigit()
+                )
+            ):
                 message = (
                     f"Found duplicate addresses in the "
                     f'configuration for "{new_entry.get_address_expression()}":'

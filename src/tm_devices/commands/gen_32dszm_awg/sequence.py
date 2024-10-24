@@ -44,7 +44,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SequenceLength(SCPICmdWrite, SCPICmdRead):
@@ -110,7 +110,7 @@ class SequenceJump(SCPICmdRead):
         - ``.immediate``: The ``SEQuence:JUMP:IMMediate`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._immediate = SequenceJumpImmediate(device, f"{self._cmd_syntax}:IMMediate")
 
@@ -289,7 +289,7 @@ class SequenceElementItemLoop(SCPICmdRead):
         - ``.infinite``: The ``SEQuence:ELEMent[n]:LOOP:INFinite`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._count = SequenceElementItemLoopCount(device, f"{self._cmd_syntax}:COUNt")
         self._infinite = SequenceElementItemLoopInfinite(device, f"{self._cmd_syntax}:INFinite")
@@ -426,7 +426,7 @@ class SequenceElementItemJtarget(SCPICmdRead):
         - ``.type``: The ``SEQuence:ELEMent[n]:JTARget:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._index = SequenceElementItemJtargetIndex(device, f"{self._cmd_syntax}:INDex")
         self._type = SequenceElementItemJtargetType(device, f"{self._cmd_syntax}:TYPE")
@@ -567,7 +567,7 @@ class SequenceElementItemGoto(SCPICmdRead):
         - ``.state``: The ``SEQuence:ELEMent[n]:GOTO:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._index = SequenceElementItemGotoIndex(device, f"{self._cmd_syntax}:INDex")
         self._state = SequenceElementItemGotoState(device, f"{self._cmd_syntax}:STATe")
@@ -651,7 +651,7 @@ class SequenceElementItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.waveform``: The ``SEQuence:ELEMent[n]:WAVeform[m]`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._goto = SequenceElementItemGoto(device, f"{self._cmd_syntax}:GOTO")
         self._jtarget = SequenceElementItemJtarget(device, f"{self._cmd_syntax}:JTARget")
@@ -810,7 +810,7 @@ class Sequence(SCPICmdRead):
         - ``.length``: The ``SEQuence:LENGth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SEQuence") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SEQuence") -> None:
         super().__init__(device, cmd_syntax)
         self._element: Dict[int, SequenceElementItem] = DefaultDictPassKeyToFactory(
             lambda x: SequenceElementItem(device, f"{self._cmd_syntax}:ELEMent{x}")

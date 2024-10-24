@@ -23,7 +23,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class Output2State(SCPICmdWrite, SCPICmdRead):
@@ -107,7 +107,7 @@ class Output2(SCPICmdRead):
         - ``.state``: The ``OUTPut2:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "OUTPut2") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "OUTPut2") -> None:
         super().__init__(device, cmd_syntax)
         self._impedance = Output2Impedance(device, f"{self._cmd_syntax}:IMPedance")
         self._polarity = Output2Polarity(device, f"{self._cmd_syntax}:POLarity")

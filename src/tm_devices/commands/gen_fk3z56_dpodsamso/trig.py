@@ -20,7 +20,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class TrigAPlockStandard(SCPICmdWrite, SCPICmdRead):
@@ -59,7 +59,7 @@ class TrigAPlock(SCPICmdRead):
         - ``.standard``: The ``TRIG:A:PLOCK:STANDARD`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._standard = TrigAPlockStandard(device, f"{self._cmd_syntax}:STANDARD")
 
@@ -103,7 +103,7 @@ class TrigA(SCPICmdRead):
         - ``.plock``: The ``TRIG:A:PLOCK`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._plock = TrigAPlock(device, f"{self._cmd_syntax}:PLOCK")
 
@@ -134,7 +134,7 @@ class Trig(SCPICmdRead):
         - ``.a``: The ``TRIG:A`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "TRIG") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "TRIG") -> None:
         super().__init__(device, cmd_syntax)
         self._a = TrigA(device, f"{self._cmd_syntax}:A")
 

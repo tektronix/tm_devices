@@ -128,7 +128,7 @@ from typing import Any, Dict, Optional, Sequence, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedChannel
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class SmuxItemTriggerSource(BaseTSPCmd):
@@ -177,7 +177,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.action)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @action.setter
@@ -211,7 +211,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.action = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -242,7 +242,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.limiti)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.limiti`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.limiti`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @limiti.setter
@@ -276,7 +276,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.limiti = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.limiti`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.limiti`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -307,7 +307,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.limitv)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.limitv`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.limitv`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @limitv.setter
@@ -341,7 +341,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.limitv = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.limitv`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.limitv`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -373,7 +373,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.pulsewidth)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.pulsewidth`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.pulsewidth`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @pulsewidth.setter
@@ -408,7 +408,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.pulsewidth = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.pulsewidth`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.pulsewidth`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -440,7 +440,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.stimulus)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
@@ -475,7 +475,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.stimulus = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def lineari(self, start_value: float, end_value: float, points: int) -> None:
@@ -502,7 +502,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                 f"{self._cmd_syntax}.lineari({start_value}, {end_value}, {points})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.lineari()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.lineari()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def linearv(self, start_value: float, end_value: float, points: int) -> None:
@@ -529,7 +529,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                 f"{self._cmd_syntax}.linearv({start_value}, {end_value}, {points})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.linearv()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.linearv()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def listi(self, sweep_list: Sequence[Union[str, float]]) -> None:
@@ -554,7 +554,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                 f"{self._cmd_syntax}.listi({{{', '.join([str(x) for x in sweep_list])}}})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.listi()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.listi()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def listv(self, sweep_list: Sequence[Union[str, float]]) -> None:
@@ -579,7 +579,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                 f"{self._cmd_syntax}.listv({{{', '.join([str(x) for x in sweep_list])}}})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.listv()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.listv()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def logi(self, start_value: float, end_value: float, points: int, asymptote: str) -> None:
@@ -608,7 +608,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                 f"{self._cmd_syntax}.logi({start_value}, {end_value}, {points}, {asymptote})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.logi()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.logi()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def logv(self, start_value: float, end_value: float, points: int, asymptote: str) -> None:
@@ -637,7 +637,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                 f"{self._cmd_syntax}.logv({start_value}, {end_value}, {points}, {asymptote})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.logv()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.logv()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def set_(self) -> None:
@@ -659,7 +659,7 @@ class SmuxItemTriggerSource(BaseTSPCmd):
                 f"{self._cmd_syntax}.set()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.set()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.set()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -705,7 +705,7 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.action)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @action.setter
@@ -739,7 +739,7 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.action = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -771,7 +771,7 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.stimulus)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
@@ -806,7 +806,7 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.stimulus = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def i(self, rbuffer: str) -> None:
@@ -832,7 +832,7 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
                 f"{self._cmd_syntax}.i({rbuffer})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.i()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.i()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def iv(self, ibuffer: str, vbuffer: str) -> None:
@@ -859,7 +859,7 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
                 f"{self._cmd_syntax}.iv({ibuffer}, {vbuffer})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.iv()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.iv()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def p(self, rbuffer: str) -> None:
@@ -885,7 +885,7 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
                 f"{self._cmd_syntax}.p({rbuffer})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.p()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.p()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def r(self, rbuffer: str) -> None:
@@ -911,7 +911,7 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
                 f"{self._cmd_syntax}.r({rbuffer})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.r()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.r()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def v(self, rbuffer: str) -> None:
@@ -937,7 +937,7 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
                 f"{self._cmd_syntax}.v({rbuffer})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.v()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.v()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def set_(self) -> None:
@@ -959,7 +959,7 @@ class SmuxItemTriggerMeasure(BaseTSPCmd):
                 f"{self._cmd_syntax}.set()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.set()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.set()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -998,7 +998,7 @@ class SmuxItemTriggerEndsweep(BaseTSPCmd):
                 f"print({self._cmd_syntax}.action)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @action.setter
@@ -1032,7 +1032,7 @@ class SmuxItemTriggerEndsweep(BaseTSPCmd):
                     f"{self._cmd_syntax}.action = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -1073,7 +1073,7 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
                 f"print({self._cmd_syntax}.action)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @action.setter
@@ -1107,7 +1107,7 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
                     f"{self._cmd_syntax}.action = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.action`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1139,7 +1139,7 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
                 f"print({self._cmd_syntax}.stimulus)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
@@ -1174,7 +1174,7 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
                     f"{self._cmd_syntax}.stimulus = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def set_(self) -> None:
@@ -1196,7 +1196,7 @@ class SmuxItemTriggerEndpulse(BaseTSPCmd):
                 f"{self._cmd_syntax}.set()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.set()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.set()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -1237,7 +1237,7 @@ class SmuxItemTriggerArm(BaseTSPCmd):
                 f"print({self._cmd_syntax}.count)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
@@ -1271,7 +1271,7 @@ class SmuxItemTriggerArm(BaseTSPCmd):
                     f"{self._cmd_syntax}.count = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1303,7 +1303,7 @@ class SmuxItemTriggerArm(BaseTSPCmd):
                 f"print({self._cmd_syntax}.stimulus)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
@@ -1338,7 +1338,7 @@ class SmuxItemTriggerArm(BaseTSPCmd):
                     f"{self._cmd_syntax}.stimulus = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def set_(self) -> None:
@@ -1360,7 +1360,7 @@ class SmuxItemTriggerArm(BaseTSPCmd):
                 f"{self._cmd_syntax}.set()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.set()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.set()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -1403,7 +1403,7 @@ class SmuxItemTrigger(BaseTSPCmd):
     SWEEP_COMPLETE_EVENT_ID = "smuX.trigger.SWEEP_COMPLETE_EVENT_ID"
     """str: The sweep complete event number."""
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         # pylint: disable=invalid-name
         self.ARMED_EVENT_ID = self.ARMED_EVENT_ID.replace("smuX", f"smu{self._cmd_syntax[3]}")
@@ -1472,7 +1472,7 @@ class SmuxItemTrigger(BaseTSPCmd):
                 f"print({self._cmd_syntax}.autoclear)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autoclear`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autoclear`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @autoclear.setter
@@ -1506,7 +1506,7 @@ class SmuxItemTrigger(BaseTSPCmd):
                     f"{self._cmd_syntax}.autoclear = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autoclear`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autoclear`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1536,7 +1536,7 @@ class SmuxItemTrigger(BaseTSPCmd):
                 f"print({self._cmd_syntax}.count)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
@@ -1569,7 +1569,7 @@ class SmuxItemTrigger(BaseTSPCmd):
                     f"{self._cmd_syntax}.count = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1647,7 +1647,7 @@ class SmuxItemTrigger(BaseTSPCmd):
                 f"{self._cmd_syntax}.initiate()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.initiate()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.initiate()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -1711,7 +1711,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.autorangei)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorangei`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorangei`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @autorangei.setter
@@ -1746,7 +1746,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.autorangei = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorangei`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorangei`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1778,7 +1778,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.autorangev)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorangev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorangev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @autorangev.setter
@@ -1813,7 +1813,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.autorangev = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorangev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorangev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1841,7 +1841,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.compliance)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.compliance`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.compliance`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1871,7 +1871,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.delay)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
@@ -1904,7 +1904,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.delay = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1934,7 +1934,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.func)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @func.setter
@@ -1967,7 +1967,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.func = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1997,7 +1997,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.highc)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.highc`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.highc`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @highc.setter
@@ -2030,7 +2030,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.highc = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.highc`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.highc`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2060,7 +2060,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.leveli)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.leveli`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.leveli`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @leveli.setter
@@ -2093,7 +2093,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.leveli = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.leveli`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.leveli`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2123,7 +2123,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.levelv)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levelv`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levelv`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @levelv.setter
@@ -2156,7 +2156,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.levelv = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levelv`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levelv`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2186,7 +2186,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.limiti)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.limiti`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.limiti`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @limiti.setter
@@ -2219,7 +2219,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.limiti = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.limiti`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.limiti`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2249,7 +2249,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.limitp)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.limitp`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.limitp`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @limitp.setter
@@ -2282,7 +2282,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.limitp = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.limitp`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.limitp`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2312,7 +2312,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.limitv)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.limitv`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.limitv`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @limitv.setter
@@ -2345,7 +2345,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.limitv = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.limitv`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.limitv`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2377,7 +2377,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.lowrangei)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.lowrangei`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.lowrangei`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangei.setter
@@ -2412,7 +2412,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.lowrangei = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.lowrangei`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.lowrangei`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2444,7 +2444,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.lowrangev)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.lowrangev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.lowrangev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangev.setter
@@ -2479,7 +2479,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.lowrangev = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.lowrangev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.lowrangev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2511,7 +2511,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.offfunc)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.offfunc`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.offfunc`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @offfunc.setter
@@ -2546,7 +2546,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.offfunc = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.offfunc`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.offfunc`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2578,7 +2578,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.offlimiti)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.offlimiti`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.offlimiti`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @offlimiti.setter
@@ -2613,7 +2613,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.offlimiti = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.offlimiti`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.offlimiti`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2645,7 +2645,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.offlimitv)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.offlimitv`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.offlimitv`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @offlimitv.setter
@@ -2680,7 +2680,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.offlimitv = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.offlimitv`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.offlimitv`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2711,7 +2711,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.offmode)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.offmode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.offmode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @offmode.setter
@@ -2745,7 +2745,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.offmode = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.offmode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.offmode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2775,7 +2775,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.output)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.output`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.output`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @output.setter
@@ -2808,7 +2808,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.output = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.output`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.output`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2838,7 +2838,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.rangei)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rangei`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rangei`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @rangei.setter
@@ -2871,7 +2871,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.rangei = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rangei`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rangei`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2901,7 +2901,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.rangev)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rangev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rangev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @rangev.setter
@@ -2934,7 +2934,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.rangev = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rangev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rangev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -2965,7 +2965,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.settling)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.settling`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.settling`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @settling.setter
@@ -2999,7 +2999,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.settling = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.settling`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.settling`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3029,7 +3029,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"print({self._cmd_syntax}.sink)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.sink`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.sink`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @sink.setter
@@ -3062,7 +3062,7 @@ class SmuxItemSource(BaseTSPCmd):
                     f"{self._cmd_syntax}.sink = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.sink`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.sink`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def calibratei(
@@ -3103,7 +3103,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"{cp2_reference})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.calibratei()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.calibratei()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def calibratev(
@@ -3144,7 +3144,7 @@ class SmuxItemSource(BaseTSPCmd):
                 f"{cp2_reference})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.calibratev()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.calibratev()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -3193,7 +3193,7 @@ class SmuxItemPulserSource(BaseTSPCmd):
                 f"{cp2_reference})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.calibratebiasi()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.calibratebiasi()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def calibratei(
@@ -3233,7 +3233,7 @@ class SmuxItemPulserSource(BaseTSPCmd):
                 f"{cp2_reference})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.calibratei()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.calibratei()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -3275,7 +3275,7 @@ class SmuxItemPulserProtect(BaseTSPCmd):
                 f"print({self._cmd_syntax}.sensev)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.sensev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.sensev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @sensev.setter
@@ -3310,7 +3310,7 @@ class SmuxItemPulserProtect(BaseTSPCmd):
                     f"{self._cmd_syntax}.sensev = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.sensev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.sensev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3342,7 +3342,7 @@ class SmuxItemPulserProtect(BaseTSPCmd):
                 f"print({self._cmd_syntax}.sourcev)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.sourcev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.sourcev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @sourcev.setter
@@ -3377,7 +3377,7 @@ class SmuxItemPulserProtect(BaseTSPCmd):
                     f"{self._cmd_syntax}.sourcev = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.sourcev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.sourcev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3405,7 +3405,7 @@ class SmuxItemPulserProtect(BaseTSPCmd):
                 f"print({self._cmd_syntax}.tripped)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.tripped`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.tripped`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -3447,7 +3447,7 @@ class SmuxItemPulserMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.aperture)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.aperture`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.aperture`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @aperture.setter
@@ -3481,7 +3481,7 @@ class SmuxItemPulserMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.aperture = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.aperture`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.aperture`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3512,7 +3512,7 @@ class SmuxItemPulserMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.delay)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
@@ -3546,7 +3546,7 @@ class SmuxItemPulserMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.delay = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def calibratei(
@@ -3587,7 +3587,7 @@ class SmuxItemPulserMeasure(BaseTSPCmd):
                 f"{cp2_reference})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.calibratei()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.calibratei()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def calibratev(
@@ -3628,7 +3628,7 @@ class SmuxItemPulserMeasure(BaseTSPCmd):
                 f"{cp2_reference})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.calibratev()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.calibratev()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -3642,7 +3642,7 @@ class SmuxItemPulser(BaseTSPCmd):
         - ``.source``: The ``smuX.pulser.source`` command tree.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._measure = SmuxItemPulserMeasure(device, f"{self._cmd_syntax}.measure")
         self._protect = SmuxItemPulserProtect(device, f"{self._cmd_syntax}.protect")
@@ -3675,7 +3675,7 @@ class SmuxItemPulser(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -3708,7 +3708,7 @@ class SmuxItemPulser(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3787,7 +3787,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enablei)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enablei`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enablei`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enablei.setter
@@ -3821,7 +3821,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                     f"{self._cmd_syntax}.enablei = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enablei`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enablei`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3852,7 +3852,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enablep)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enablep`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enablep`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enablep.setter
@@ -3886,7 +3886,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                     f"{self._cmd_syntax}.enablep = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enablep`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enablep`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3917,7 +3917,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enabler)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enabler`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enabler`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enabler.setter
@@ -3951,7 +3951,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                     f"{self._cmd_syntax}.enabler = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enabler`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enabler`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -3982,7 +3982,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enablev)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enablev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enablev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enablev.setter
@@ -4016,7 +4016,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                     f"{self._cmd_syntax}.enablev = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enablev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enablev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4048,7 +4048,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.leveli)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.leveli`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.leveli`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @leveli.setter
@@ -4083,7 +4083,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                     f"{self._cmd_syntax}.leveli = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.leveli`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.leveli`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4114,7 +4114,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.levelp)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levelp`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levelp`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @levelp.setter
@@ -4148,7 +4148,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                     f"{self._cmd_syntax}.levelp = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levelp`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levelp`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4180,7 +4180,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.levelr)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levelr`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levelr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @levelr.setter
@@ -4215,7 +4215,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                     f"{self._cmd_syntax}.levelr = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levelr`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levelr`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4246,7 +4246,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.levelv)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levelv`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levelv`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @levelv.setter
@@ -4280,7 +4280,7 @@ class SmuxItemMeasureRel(BaseTSPCmd):
                     f"{self._cmd_syntax}.levelv = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.levelv`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.levelv`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -4322,7 +4322,7 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
                 f"print({self._cmd_syntax}.count)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
@@ -4357,7 +4357,7 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
                     f"{self._cmd_syntax}.count = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4388,7 +4388,7 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -4422,7 +4422,7 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4454,7 +4454,7 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
                 f"print({self._cmd_syntax}.type)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.type`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.type`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @type.setter
@@ -4489,7 +4489,7 @@ class SmuxItemMeasureFilter(BaseTSPCmd):
                     f"{self._cmd_syntax}.type = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.type`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.type`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -4527,7 +4527,7 @@ class SmuxItemMeasure(BaseTSPCmd):
         - ``.rel``: The ``smuX.measure.rel`` command tree.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._filter = SmuxItemMeasureFilter(device, f"{self._cmd_syntax}.filter")
         self._rel = SmuxItemMeasureRel(device, f"{self._cmd_syntax}.rel")
@@ -4560,7 +4560,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.autorangei)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorangei`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorangei`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @autorangei.setter
@@ -4594,7 +4594,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.autorangei = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorangei`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorangei`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4625,7 +4625,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.autorangev)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorangev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorangev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @autorangev.setter
@@ -4659,7 +4659,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.autorangev = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorangev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorangev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4691,7 +4691,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.autozero)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autozero`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autozero`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @autozero.setter
@@ -4726,7 +4726,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.autozero = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autozero`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autozero`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4756,7 +4756,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.count)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @count.setter
@@ -4789,7 +4789,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.count = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4819,7 +4819,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.delay)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @delay.setter
@@ -4852,7 +4852,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.delay = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.delay`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4884,7 +4884,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.delayfactor)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.delayfactor`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.delayfactor`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @delayfactor.setter
@@ -4919,7 +4919,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.delayfactor = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.delayfactor`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.delayfactor`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -4963,7 +4963,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.highcrangedelayfactor)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.highcrangedelayfactor`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.highcrangedelayfactor`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @highcrangedelayfactor.setter
@@ -4999,7 +4999,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.highcrangedelayfactor = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.highcrangedelayfactor`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.highcrangedelayfactor`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5030,7 +5030,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.interval)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.interval`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.interval`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @interval.setter
@@ -5064,7 +5064,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.interval = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.interval`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.interval`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5096,7 +5096,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.lowrangei)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.lowrangei`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.lowrangei`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangei.setter
@@ -5131,7 +5131,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.lowrangei = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.lowrangei`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.lowrangei`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5163,7 +5163,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.lowrangev)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.lowrangev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.lowrangev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @lowrangev.setter
@@ -5198,7 +5198,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.lowrangev = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.lowrangev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.lowrangev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5229,7 +5229,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.nplc)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.nplc`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.nplc`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @nplc.setter
@@ -5263,7 +5263,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.nplc = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.nplc`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.nplc`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5295,7 +5295,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.rangei)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rangei`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rangei`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @rangei.setter
@@ -5330,7 +5330,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.rangei = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rangei`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rangei`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5362,7 +5362,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.rangev)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rangev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rangev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @rangev.setter
@@ -5397,7 +5397,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.rangev = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rangev`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rangev`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5442,7 +5442,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.i({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.i()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.i()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def iv(
@@ -5482,7 +5482,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.iv({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.iv()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.iv()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def p(self, reading_buffer: Optional[str] = None) -> str:
@@ -5511,7 +5511,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.p({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.p()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.p()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def r(self, reading_buffer: Optional[str] = None) -> str:
@@ -5540,7 +5540,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.r({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.r()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.r()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def v(self, reading_buffer: Optional[str] = None) -> str:
@@ -5569,7 +5569,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.v({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.v()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.v()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def calibratei(
@@ -5610,7 +5610,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"{cp2_reference})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.calibratei()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.calibratei()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def calibratev(
@@ -5651,7 +5651,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"{cp2_reference})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.calibratev()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.calibratev()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def overlappedi(self, rbuffer: str) -> None:
@@ -5677,7 +5677,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"{self._cmd_syntax}.overlappedi({rbuffer})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.overlappedi()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.overlappedi()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def overlappediv(self, ibuffer: str, vbuffer: str) -> None:
@@ -5704,7 +5704,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"{self._cmd_syntax}.overlappediv({ibuffer}, {vbuffer})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.overlappediv()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.overlappediv()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def overlappedp(self, rbuffer: str) -> None:
@@ -5729,7 +5729,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"{self._cmd_syntax}.overlappedp({rbuffer})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.overlappedp()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.overlappedp()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def overlappedr(self, rbuffer: str) -> None:
@@ -5755,7 +5755,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"{self._cmd_syntax}.overlappedr({rbuffer})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.overlappedr()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.overlappedr()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def overlappedv(self, rbuffer: str) -> None:
@@ -5780,7 +5780,7 @@ class SmuxItemMeasure(BaseTSPCmd):
                 f"{self._cmd_syntax}.overlappedv({rbuffer})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.overlappedv()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.overlappedv()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -5819,7 +5819,7 @@ class SmuxItemInterlock(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -5853,7 +5853,7 @@ class SmuxItemInterlock(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -5896,7 +5896,7 @@ class SmuxItemContact(BaseTSPCmd):
                 f"print({self._cmd_syntax}.speed)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.speed`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.speed`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @speed.setter
@@ -5929,7 +5929,7 @@ class SmuxItemContact(BaseTSPCmd):
                     f"{self._cmd_syntax}.speed = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.speed`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.speed`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -5960,7 +5960,7 @@ class SmuxItemContact(BaseTSPCmd):
                 f"print({self._cmd_syntax}.threshold)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.threshold`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.threshold`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @threshold.setter
@@ -5994,7 +5994,7 @@ class SmuxItemContact(BaseTSPCmd):
                     f"{self._cmd_syntax}.threshold = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.threshold`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.threshold`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def calibratehi(
@@ -6027,7 +6027,7 @@ class SmuxItemContact(BaseTSPCmd):
                 f"{cp2_reference})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.calibratehi()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.calibratehi()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def calibratelo(
@@ -6060,7 +6060,7 @@ class SmuxItemContact(BaseTSPCmd):
                 f"{cp2_reference})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.calibratelo()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.calibratelo()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def check(self) -> None:
@@ -6082,7 +6082,7 @@ class SmuxItemContact(BaseTSPCmd):
                 f"{self._cmd_syntax}.check()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.check()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.check()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def r(self) -> str:
@@ -6107,7 +6107,7 @@ class SmuxItemContact(BaseTSPCmd):
                 f"print({self._cmd_syntax}.r())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.r()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.r()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -6155,7 +6155,7 @@ class SmuxItemCal(BaseTSPCmd):
                 f"print({self._cmd_syntax}.adjustdate)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.adjustdate`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.adjustdate`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @adjustdate.setter
@@ -6189,7 +6189,7 @@ class SmuxItemCal(BaseTSPCmd):
                     f"{self._cmd_syntax}.adjustdate = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.adjustdate`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.adjustdate`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -6219,7 +6219,7 @@ class SmuxItemCal(BaseTSPCmd):
                 f"print({self._cmd_syntax}.date)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.date`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.date`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @date.setter
@@ -6252,7 +6252,7 @@ class SmuxItemCal(BaseTSPCmd):
                     f"{self._cmd_syntax}.date = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.date`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.date`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -6282,7 +6282,7 @@ class SmuxItemCal(BaseTSPCmd):
                 f"print({self._cmd_syntax}.due)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.due`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.due`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @due.setter
@@ -6315,7 +6315,7 @@ class SmuxItemCal(BaseTSPCmd):
                     f"{self._cmd_syntax}.due = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.due`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.due`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -6364,7 +6364,7 @@ class SmuxItemCal(BaseTSPCmd):
                 f"{self._cmd_syntax}.password = {value}"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.password`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.password`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -6395,7 +6395,7 @@ class SmuxItemCal(BaseTSPCmd):
                 f"print({self._cmd_syntax}.polarity)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.polarity`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.polarity`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @polarity.setter
@@ -6429,7 +6429,7 @@ class SmuxItemCal(BaseTSPCmd):
                     f"{self._cmd_syntax}.polarity = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.polarity`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.polarity`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -6457,7 +6457,7 @@ class SmuxItemCal(BaseTSPCmd):
                 f"print({self._cmd_syntax}.state)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def lock(self) -> None:
@@ -6479,7 +6479,7 @@ class SmuxItemCal(BaseTSPCmd):
                 f"{self._cmd_syntax}.lock()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.lock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.lock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def restore(self, calset: Optional[str] = None) -> None:
@@ -6506,7 +6506,7 @@ class SmuxItemCal(BaseTSPCmd):
                 f"{self._cmd_syntax}.restore({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.restore()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.restore()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def save(self) -> None:
@@ -6528,7 +6528,7 @@ class SmuxItemCal(BaseTSPCmd):
                 f"{self._cmd_syntax}.save()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.save()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.save()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def unlock(self, password: str) -> None:
@@ -6553,7 +6553,7 @@ class SmuxItemCal(BaseTSPCmd):
                 f"{self._cmd_syntax}.unlock({password})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.unlock()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.unlock()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -6593,7 +6593,7 @@ class SmuxItemBuffer(BaseTSPCmd):
             self._device.write("tempvar = nil")  # type: ignore[union-attr]
             return retval  # noqa: TRY300
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getstats()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getstats()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def recalculatestats(self, buffer_var: str) -> None:
@@ -6618,7 +6618,7 @@ class SmuxItemBuffer(BaseTSPCmd):
                 f"{self._cmd_syntax}.recalculatestats({buffer_var})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.recalculatestats()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.recalculatestats()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -6822,7 +6822,7 @@ reading at index bufferVar.fillcount."""
 
     # pylint: disable=too-many-statements
     def __init__(  # noqa: PLR0915
-        self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "smuX"
+        self, device: Optional["TSPControl"] = None, cmd_syntax: str = "smuX"
     ) -> None:
         super().__init__(device, cmd_syntax)
         # pylint: disable=invalid-name
@@ -7055,7 +7055,7 @@ reading at index bufferVar.fillcount."""
                 f"print({self._cmd_syntax}.nvbuffer1)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.nvbuffer1`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.nvbuffer1`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -7083,7 +7083,7 @@ reading at index bufferVar.fillcount."""
                 f"print({self._cmd_syntax}.nvbuffer2)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.nvbuffer2`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.nvbuffer2`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -7125,7 +7125,7 @@ reading at index bufferVar.fillcount."""
                 f"print({self._cmd_syntax}.sense)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.sense`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.sense`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @sense.setter
@@ -7158,7 +7158,7 @@ reading at index bufferVar.fillcount."""
                     f"{self._cmd_syntax}.sense = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.sense`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.sense`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -7237,7 +7237,7 @@ reading at index bufferVar.fillcount."""
                 f"{self._cmd_syntax}.abort()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.abort()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.abort()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def makebuffer(self, buffer_size: str) -> str:
@@ -7265,7 +7265,7 @@ reading at index bufferVar.fillcount."""
                 f"print({self._cmd_syntax}.makebuffer({buffer_size}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.makebuffer()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.makebuffer()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def measureiandstep(self, source_value: float) -> str:
@@ -7294,7 +7294,7 @@ reading at index bufferVar.fillcount."""
                 f"print({self._cmd_syntax}.measureiandstep({source_value}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.measureiandstep()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.measureiandstep()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def measureivandstep(self, source_value: float) -> str:
@@ -7323,7 +7323,7 @@ reading at index bufferVar.fillcount."""
                 f"print({self._cmd_syntax}.measureivandstep({source_value}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.measureivandstep()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.measureivandstep()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def measurepandstep(self, source_value: float) -> str:
@@ -7352,7 +7352,7 @@ reading at index bufferVar.fillcount."""
                 f"print({self._cmd_syntax}.measurepandstep({source_value}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.measurepandstep()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.measurepandstep()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def measurerandstep(self, source_value: float) -> str:
@@ -7381,7 +7381,7 @@ reading at index bufferVar.fillcount."""
                 f"print({self._cmd_syntax}.measurerandstep({source_value}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.measurerandstep()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.measurerandstep()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def measurevandstep(self, source_value: float) -> str:
@@ -7410,7 +7410,7 @@ reading at index bufferVar.fillcount."""
                 f"print({self._cmd_syntax}.measurevandstep({source_value}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.measurevandstep()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.measurevandstep()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def reset(self) -> None:
@@ -7433,7 +7433,7 @@ reading at index bufferVar.fillcount."""
                 f"{self._cmd_syntax}.reset()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def savebuffer(self, y: str) -> None:
@@ -7459,5 +7459,5 @@ reading at index bufferVar.fillcount."""
                 f"{self._cmd_syntax}.savebuffer({y})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.savebuffer()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.savebuffer()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

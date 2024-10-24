@@ -45,7 +45,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class WfmoutpreYzero(SCPICmdRead):
@@ -572,7 +572,7 @@ class Wfmoutpre(SCPICmdRead):
         - ``.yzero``: The ``WFMOutpre:YZEro`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "WFMOutpre") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "WFMOutpre") -> None:
         super().__init__(device, cmd_syntax)
         self._bit_nr = WfmoutpreBitNr(device, f"{self._cmd_syntax}:BIT_Nr")
         self._bn_fmt = WfmoutpreBnFmt(device, f"{self._cmd_syntax}:BN_Fmt")

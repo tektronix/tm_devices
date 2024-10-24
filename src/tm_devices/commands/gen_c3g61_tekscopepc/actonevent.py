@@ -31,7 +31,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ActoneventType(SCPICmdRead):
@@ -149,7 +149,7 @@ class ActoneventTimerActionSavewaveform(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:TIMER:ACTION:SAVEWAVEform:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventTimerActionSavewaveformState(device, f"{self._cmd_syntax}:STATE")
 
@@ -229,7 +229,7 @@ class ActoneventTimerActionSavetable(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:TIMER:ACTION:SAVETable:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventTimerActionSavetableState(device, f"{self._cmd_syntax}:STATE")
 
@@ -309,7 +309,7 @@ class ActoneventTimerActionSaveimage(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:TIMER:ACTION:SAVEIMAGe:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventTimerActionSaveimageState(device, f"{self._cmd_syntax}:STATE")
 
@@ -359,7 +359,7 @@ class ActoneventTimerAction(SCPICmdRead):
         - ``.savewaveform``: The ``ACTONEVent:TIMER:ACTION:SAVEWAVEform`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._saveimage = ActoneventTimerActionSaveimage(device, f"{self._cmd_syntax}:SAVEIMAGe")
         self._savetable = ActoneventTimerActionSavetable(device, f"{self._cmd_syntax}:SAVETable")
@@ -428,7 +428,7 @@ class ActoneventTimer(SCPICmdRead):
         - ``.action``: The ``ACTONEVent:TIMER:ACTION`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._action = ActoneventTimerAction(device, f"{self._cmd_syntax}:ACTION")
 
@@ -509,7 +509,9 @@ class Actonevent(SCPICmdRead):
         - ``.type``: The ``ACTONEVent:Type`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "ACTONEVent") -> None:
+    def __init__(
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "ACTONEVent"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._enable = ActoneventEnable(device, f"{self._cmd_syntax}:ENable")
         self._numsaves = ActoneventNumsaves(device, f"{self._cmd_syntax}:NUMSAVEs")

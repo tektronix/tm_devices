@@ -17,13 +17,14 @@ from unittest import mock
 import pytest
 
 from tm_devices import DeviceManager
+from tm_devices.driver_mixins.device_control import PIControl, TSPControl
+from tm_devices.driver_mixins.shared_implementations._tektronix_pi_afg_awg_mixin import (
+    _TektronixPIAFGAWGMixin,  # pyright: ignore[reportPrivateUsage]
+)
 from tm_devices.drivers import AFG3K, AFG3KC
+from tm_devices.drivers.afgs.afg import AFG
 from tm_devices.drivers.device import Device
-from tm_devices.drivers.pi.pi_device import PIDevice
-from tm_devices.drivers.pi.scopes.scope import Scope
-from tm_devices.drivers.pi.signal_generators.afgs.afg import AFG
-from tm_devices.drivers.pi.signal_generators.signal_generator import SignalGenerator
-from tm_devices.drivers.pi.tsp_device import TSPDevice
+from tm_devices.drivers.scopes.scope import Scope
 
 INITIAL_DEVICE_INPUT = '''import abc
 from abc import ABC
@@ -53,7 +54,7 @@ from abc import ABC
 
 from tm_devices.helpers import DeviceConfigEntry
 
-class PIDevice(ABC, metaclass=abc.ABCMeta):
+class PIControl(ABC, metaclass=abc.ABCMeta):
     def __init__(self, config_entry: DeviceConfigEntry, verbose: bool) -> None: ...
     def already_exists(self) -> None:
         """Return nothing."""
@@ -67,7 +68,7 @@ from abc import ABC
 from dataclasses import dataclass
 from tm_devices.helpers import DeviceConfigEntry
 
-class TSPDevice(ABC, metaclass=abc.ABCMeta):
+class TSPControl(ABC, metaclass=abc.ABCMeta):
     def __init__(self, config_entry: DeviceConfigEntry, verbose: bool) -> None: ...
     def already_exists(self) -> None:
         """Return nothing."""
@@ -95,12 +96,12 @@ def _remove_added_methods() -> Iterator[None]:
         (Device, "already_exists"),
         (Scope, "custom_model_getter_scope"),
         (Scope, "custom_return"),
-        (SignalGenerator, "custom_model_getter_ss"),
+        (_TektronixPIAFGAWGMixin, "custom_model_getter_sg"),
         (AFG, "custom_model_getter_afg"),
         (AFG3K, "custom_model_getter_afg3k"),
         (AFG3KC, "custom_model_getter_afg3kc"),
-        (PIDevice, "added_method"),
-        (TSPDevice, "added_tsp_method"),
+        (PIControl, "added_method"),
+        (TSPControl, "added_tsp_method"),
     ):
         with contextlib.suppress(AttributeError):
             delattr(obj, name)
@@ -138,8 +139,8 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
 
     golden_stub_dir = Path(__file__).parent / "samples" / "golden_stubs"
     stub_device_filepath = Path("drivers/device.pyi")
-    stub_pi_device_filepath = Path("drivers/pi/pi_device.pyi")
-    stub_tsp_device_filepath = Path("drivers/pi/tsp_device.pyi")
+    stub_pi_control_filepath = Path("driver_mixins/device_control/pi_control.pyi")
+    stub_tsp_control_filepath = Path("driver_mixins/device_control/tsp_control.pyi")
     generated_stub_dir = (
         Path(__file__).parent
         / "samples/generated_stubs"
@@ -147,12 +148,12 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
     )
     generated_device_stub_file = generated_stub_dir / stub_device_filepath
     generated_device_stub_file.parent.mkdir(parents=True, exist_ok=True)
-    generated_pi_device_stub_file = generated_stub_dir / stub_pi_device_filepath
-    generated_tsp_device_stub_file = generated_stub_dir / stub_tsp_device_filepath
-    generated_pi_device_stub_file.parent.mkdir(parents=True, exist_ok=True)
+    generated_pi_control_stub_file = generated_stub_dir / stub_pi_control_filepath
+    generated_tsp_control_stub_file = generated_stub_dir / stub_tsp_control_filepath
+    generated_pi_control_stub_file.parent.mkdir(parents=True, exist_ok=True)
     generated_device_stub_file.write_text(INITIAL_DEVICE_INPUT, encoding="utf-8")
-    generated_pi_device_stub_file.write_text(INITIAL_PI_DEVICE_INPUT, encoding="utf-8")
-    generated_tsp_device_stub_file.write_text(INITIAL_TSP_DEVICE_INPUT, encoding="utf-8")
+    generated_pi_control_stub_file.write_text(INITIAL_PI_DEVICE_INPUT, encoding="utf-8")
+    generated_tsp_control_stub_file.write_text(INITIAL_TSP_DEVICE_INPUT, encoding="utf-8")
     with mock.patch.dict("os.environ", {"TM_DEVICES_STUB_DIR": str(generated_stub_dir)}):
         # noinspection PyUnusedLocal,PyShadowingNames
         @Device.add_property(is_cached=True)
@@ -201,11 +202,11 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
         def already_exists() -> None:
             """Return nothing."""
 
-        @PIDevice.add_method
+        @PIControl.add_method
         def added_method() -> None:
             """Return nothing."""
 
-        @TSPDevice.add_method
+        @TSPControl.add_method
         def added_tsp_method() -> None:
             """Return nothing."""
 
@@ -220,10 +221,11 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
         """Return the model."""
         return f"Scope {device.model} {value}"
 
-    @SignalGenerator.add_method
-    def custom_model_getter_sg(device: SignalGenerator, value: str) -> str:
+    @_TektronixPIAFGAWGMixin.add_method
+    def custom_model_getter_sg(device: _TektronixPIAFGAWGMixin, value: str) -> str:
         """Return the model."""
-        return f"SignalGenerator {device.model} {value}"
+        # noinspection PyUnresolvedReferences
+        return f"TekAFGAWG {device.model} {value}"
 
     @AFG.add_method
     def custom_model_getter_afg(device: AFG, value: str) -> str:
@@ -273,16 +275,16 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
     golden_device_contents = (golden_stub_dir / stub_device_filepath).read_text(encoding="utf-8")
     generated_device_contents = generated_device_stub_file.read_text(encoding="utf-8")
     assert generated_device_contents == golden_device_contents
-    golden_pi_device_contents = (golden_stub_dir / stub_pi_device_filepath).read_text(
+    golden_pi_control_contents = (golden_stub_dir / stub_pi_control_filepath).read_text(
         encoding="utf-8"
     )
-    generated_pi_device_contents = generated_pi_device_stub_file.read_text(encoding="utf-8")
-    assert generated_pi_device_contents == golden_pi_device_contents
-    golden_tsp_device_contents = (golden_stub_dir / stub_tsp_device_filepath).read_text(
+    generated_pi_control_contents = generated_pi_control_stub_file.read_text(encoding="utf-8")
+    assert generated_pi_control_contents == golden_pi_control_contents
+    golden_tsp_control_contents = (golden_stub_dir / stub_tsp_control_filepath).read_text(
         encoding="utf-8"
     )
-    generated_tsp_device_contents = generated_tsp_device_stub_file.read_text(encoding="utf-8")
-    assert generated_tsp_device_contents == golden_tsp_device_contents
+    generated_tsp_control_contents = generated_tsp_control_stub_file.read_text(encoding="utf-8")
+    assert generated_tsp_control_contents == golden_tsp_control_contents
 
     # Test the custom added properties
     afg = device_manager.add_afg("afg3252c-hostname", alias="testing")
@@ -301,7 +303,7 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
     # noinspection PyUnresolvedReferences
     assert afg.custom_model_getter("a", "b", "c", 0.1) == "Device AFG3252C a b c 0.1"
     # noinspection PyUnresolvedReferences
-    assert afg.custom_model_getter_sg("hello") == "SignalGenerator AFG3252C hello"
+    assert afg.custom_model_getter_sg("hello") == "TekAFGAWG AFG3252C hello"
     # noinspection PyUnresolvedReferences
     assert afg.custom_model_getter_afg("hello") == "AFG AFG3252C hello"
     # noinspection PyUnresolvedReferences

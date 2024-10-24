@@ -20,7 +20,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DeskewDisplay(SCPICmdWrite, SCPICmdRead):
@@ -69,7 +69,7 @@ class Deskew(SCPICmdWrite, SCPICmdRead):
         - ``.display``: The ``DESkew:DISPlay`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DESkew") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DESkew") -> None:
         super().__init__(device, cmd_syntax)
         self._display = DeskewDisplay(device, f"{self._cmd_syntax}:DISPlay")
 

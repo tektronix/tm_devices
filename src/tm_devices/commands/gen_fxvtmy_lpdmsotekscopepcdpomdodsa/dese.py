@@ -21,7 +21,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class Dese(SCPICmdWrite, SCPICmdRead):
@@ -52,5 +52,5 @@ class Dese(SCPICmdWrite, SCPICmdRead):
           1, the next bit to 0, etc.).
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DESE") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DESE") -> None:
         super().__init__(device, cmd_syntax)

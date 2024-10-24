@@ -40,8 +40,6 @@ from tm_devices.helpers import (
     SupportedModels,
     VALID_DEVICE_CONNECTION_TYPES,
 )
-
-# noinspection PyPep8Naming
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 MODEL_SERIES_LIST = SupportedModels.list_values()

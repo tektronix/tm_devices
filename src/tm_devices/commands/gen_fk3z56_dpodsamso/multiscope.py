@@ -22,7 +22,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MultiscopeStatus(SCPICmdRead):
@@ -118,7 +118,9 @@ class Multiscope(SCPICmdRead):
         - ``.status``: The ``MULTiscope:STATUS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MULTiscope") -> None:
+    def __init__(
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "MULTiscope"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._config = MultiscopeConfig(device, f"{self._cmd_syntax}:CONFig")
         self._exit = MultiscopeExit(device, f"{self._cmd_syntax}:EXIT")

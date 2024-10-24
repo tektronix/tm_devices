@@ -25,7 +25,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MemoryStateValid(SCPICmdReadWithArguments):
@@ -84,7 +84,7 @@ class MemoryStateRecall(SCPICmdRead):
         - ``.auto``: The ``MEMory:STATe:RECall:AUTo`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._auto = MemoryStateRecallAuto(device, f"{self._cmd_syntax}:AUTo")
 
@@ -170,7 +170,7 @@ class MemoryState(SCPICmdRead):
         - ``.valid``: The ``MEMory:STATe:VALid`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delete = MemoryStateDelete(device, f"{self._cmd_syntax}:DELete")
         self._lock = MemoryStateLock(device, f"{self._cmd_syntax}:LOCK")
@@ -269,7 +269,7 @@ class Memory(SCPICmdRead):
         - ``.state``: The ``MEMory:STATe`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MEMory") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MEMory") -> None:
         super().__init__(device, cmd_syntax)
         self._state = MemoryState(device, f"{self._cmd_syntax}:STATe")
 
@@ -309,7 +309,7 @@ class Sav(SCPICmdWrite):
         ```
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*SAV") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*SAV") -> None:
         super().__init__(device, cmd_syntax)
 
 
@@ -330,5 +330,5 @@ class Rcl(SCPICmdWrite):
         ```
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*RCL") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*RCL") -> None:
         super().__init__(device, cmd_syntax)

@@ -40,7 +40,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class CalibrateTemperature(SCPICmdRead):
@@ -116,7 +116,7 @@ class CalibrateRf(SCPICmdWriteNoArguments, SCPICmdRead):
         - ``.status``: The ``CALibrate:RF:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._start = CalibrateRfStart(device, f"{self._cmd_syntax}:STARt")
         self._status = CalibrateRfStatus(device, f"{self._cmd_syntax}:STATus")
@@ -219,7 +219,7 @@ class CalibrateResultsSpc(SCPICmdRead):
         - ``.scope``: The ``CALibrate:RESults:SPC:SCOPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._rf = CalibrateResultsSpcRf(device, f"{self._cmd_syntax}:RF")
         self._scope = CalibrateResultsSpcScope(device, f"{self._cmd_syntax}:SCOPE")
@@ -349,7 +349,7 @@ class CalibrateResultsFactory(SCPICmdRead):
         - ``.scope``: The ``CALibrate:RESults:FACtory:SCOPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._afg = CalibrateResultsFactoryAfg(device, f"{self._cmd_syntax}:AFG")
         self._rf = CalibrateResultsFactoryRf(device, f"{self._cmd_syntax}:RF")
@@ -446,7 +446,7 @@ class CalibrateResults(SCPICmdRead):
         - ``.spc``: The ``CALibrate:RESults:SPC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._factory = CalibrateResultsFactory(device, f"{self._cmd_syntax}:FACtory")
         self._spc = CalibrateResultsSpc(device, f"{self._cmd_syntax}:SPC")
@@ -580,7 +580,7 @@ class CalibrateInternalStatus(SCPICmdRead):
         - ``.scope``: The ``CALibrate:INTERNal:STATus:SCOPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._rf = CalibrateInternalStatusRf(device, f"{self._cmd_syntax}:RF")
         self._scope = CalibrateInternalStatusScope(device, f"{self._cmd_syntax}:SCOPE")
@@ -670,7 +670,7 @@ class CalibrateInternal(SCPICmdWriteNoArguments, SCPICmdRead):
         - ``.status``: The ``CALibrate:INTERNal:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._start = CalibrateInternalStart(device, f"{self._cmd_syntax}:STARt")
         self._status = CalibrateInternalStatus(device, f"{self._cmd_syntax}:STATus")
@@ -801,7 +801,7 @@ class CalibrateFactoryStatus(SCPICmdRead):
         - ``.scope``: The ``CALibrate:FACtory:STATus:SCOPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._afg = CalibrateFactoryStatusAfg(device, f"{self._cmd_syntax}:AFG")
         self._rf = CalibrateFactoryStatusRf(device, f"{self._cmd_syntax}:RF")
@@ -901,7 +901,7 @@ class CalibrateFactoryAfg(SCPICmdRead):
         - ``.value``: The ``CALibrate:FACtory:AFG:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = CalibrateFactoryAfgValue(device, f"{self._cmd_syntax}:VALue")
 
@@ -938,7 +938,7 @@ class CalibrateFactory(SCPICmdRead):
         - ``.status``: The ``CALibrate:FACtory:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._afg = CalibrateFactoryAfg(device, f"{self._cmd_syntax}:AFG")
         self._status = CalibrateFactoryStatus(device, f"{self._cmd_syntax}:STATus")
@@ -999,7 +999,7 @@ class Calibrate(SCPICmdRead):
         - ``.temperature``: The ``CALibrate:TEMPerature`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CALibrate") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CALibrate") -> None:
         super().__init__(device, cmd_syntax)
         self._factory = CalibrateFactory(device, f"{self._cmd_syntax}:FACtory")
         self._internal = CalibrateInternal(device, f"{self._cmd_syntax}:INTERNal")

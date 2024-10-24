@@ -32,7 +32,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class TriggerWvalue(SCPICmdWrite, SCPICmdRead):
@@ -245,7 +245,7 @@ class Trigger(SCPICmdRead):
         - ``.immediate``: The ``TRIGger:IMMediate`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "TRIGger") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "TRIGger") -> None:
         super().__init__(device, cmd_syntax)
         self._impedance = TriggerImpedance(device, f"{self._cmd_syntax}:IMPedance")
         self._interval = TriggerInterval(device, f"{self._cmd_syntax}:INTerval")

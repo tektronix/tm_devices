@@ -1,6 +1,7 @@
 # pyright: reportPrivateUsage=none
-"""Test generic PIDevice functionality."""
+"""Test generic PIControl functionality."""
 
+from typing import TYPE_CHECKING
 from unittest import mock
 
 import pytest
@@ -8,17 +9,20 @@ import pyvisa as visa
 
 from tm_devices import DeviceManager
 
+if TYPE_CHECKING:
+    from tm_devices.drivers import MSO2
 
-def test_pi_device(  # noqa: PLR0915
+
+def test_pi_control(  # noqa: PLR0915
     device_manager: DeviceManager, capsys: pytest.CaptureFixture[str]
 ) -> None:
-    """Test generic PIDevice functionality.
+    """Test generic PIControl functionality.
 
     Args:
         device_manager: The DeviceManager object.
         capsys: The captured stdout and stderr.
     """
-    scope = device_manager.add_scope("MSO22-HOSTNAME")
+    scope: MSO2 = device_manager.add_scope("MSO22-HOSTNAME")
     assert scope._open()  # noqa: SLF001
     assert scope.query_binary("CURVE?") == [0.0]
     assert "Query Binary Values >>  " in capsys.readouterr().out

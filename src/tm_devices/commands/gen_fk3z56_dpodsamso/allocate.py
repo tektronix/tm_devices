@@ -19,7 +19,7 @@ from typing import Dict, Optional, TYPE_CHECKING
 from ..helpers import DefaultDictPassKeyToFactory, SCPICmdRead, ValidatedDynamicNumberCmd
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class AllocateWaveformRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
@@ -53,7 +53,7 @@ class AllocateWaveform(SCPICmdRead):
         - ``.ref``: The ``ALLOcate:WAVEform:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ref: Dict[int, AllocateWaveformRefItem] = DefaultDictPassKeyToFactory(
             lambda x: AllocateWaveformRefItem(device, f"{self._cmd_syntax}:REF{x}")
@@ -93,7 +93,7 @@ class Allocate(SCPICmdRead):
         - ``.waveform``: The ``ALLOcate:WAVEform`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "ALLOcate") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "ALLOcate") -> None:
         super().__init__(device, cmd_syntax)
         self._waveform = AllocateWaveform(device, f"{self._cmd_syntax}:WAVEform")
 

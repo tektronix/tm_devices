@@ -63,7 +63,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class AuxinVtermDualB(SCPICmdWrite, SCPICmdRead):
@@ -127,7 +127,7 @@ class AuxinVtermDual(SCPICmdRead):
         - ``.b``: The ``AUXIn:VTERm:DUAL:B`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._a = AuxinVtermDualA(device, f"{self._cmd_syntax}:A")
         self._b = AuxinVtermDualB(device, f"{self._cmd_syntax}:B")
@@ -195,7 +195,7 @@ class AuxinVterm(SCPICmdRead):
         - ``.dual``: The ``AUXIn:VTERm:DUAL`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dual = AuxinVtermDual(device, f"{self._cmd_syntax}:DUAL")
 
@@ -499,7 +499,7 @@ class AuxinProbeInputmode(SCPICmdWrite, SCPICmdRead):
         - ``.dmoffset``: The ``AUXIn:PRObe:INPUTMode:DMOFFSet`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aoffset = AuxinProbeInputmodeAoffset(device, f"{self._cmd_syntax}:AOFFSet")
         self._boffset = AuxinProbeInputmodeBoffset(device, f"{self._cmd_syntax}:BOFFSet")
@@ -660,7 +660,7 @@ class AuxinProbeId(SCPICmdRead):
         - ``.type``: The ``AUXIn:PRObe:ID:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._sernumber = AuxinProbeIdSernumber(device, f"{self._cmd_syntax}:SERnumber")
         self._type = AuxinProbeIdType(device, f"{self._cmd_syntax}:TYPe")
@@ -789,7 +789,7 @@ class AuxinProbeDegauss(SCPICmdWrite, SCPICmdRead):
         - ``.state``: The ``AUXIn:PRObe:DEGAUSS:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = AuxinProbeDegaussState(device, f"{self._cmd_syntax}:STATE")
 
@@ -856,7 +856,7 @@ class AuxinProbe(SCPICmdRead):
         - ``.units``: The ``AUXIn:PRObe:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autozero = AuxinProbeAutozero(device, f"{self._cmd_syntax}:AUTOZero")
         self._degauss = AuxinProbeDegauss(device, f"{self._cmd_syntax}:DEGAUSS")
@@ -1284,7 +1284,7 @@ class AuxinProbefunc(SCPICmdRead):
         - ``.extunits``: The ``AUXIn:PROBEFunc:EXTUnits`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._extatten = AuxinProbefuncExtatten(device, f"{self._cmd_syntax}:EXTAtten")
         self._extdbatten = AuxinProbefuncExtdbatten(device, f"{self._cmd_syntax}:EXTDBatten")
@@ -1491,7 +1491,7 @@ class Auxin(SCPICmdRead):
         - ``.vterm``: The ``AUXIn:VTERm`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "AUXIn") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "AUXIn") -> None:
         super().__init__(device, cmd_syntax)
         self._bandwidth = AuxinBandwidth(device, f"{self._cmd_syntax}:BANdwidth")
         self._coupling = AuxinCoupling(device, f"{self._cmd_syntax}:COUPling")

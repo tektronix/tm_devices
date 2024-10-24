@@ -45,7 +45,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SItemChannelScale(SCPICmdWrite):
@@ -319,7 +319,7 @@ class SItemChannelLabelFont(SCPICmdRead):
         - ``.underline``: The ``S<x>_CH<x>:LABel:FONT:UNDERline`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bold = SItemChannelLabelFontBold(device, f"{self._cmd_syntax}:BOLD")
         self._italic = SItemChannelLabelFontItalic(device, f"{self._cmd_syntax}:ITALic")
@@ -484,7 +484,7 @@ class SItemChannelLabel(SCPICmdRead):
         - ``.ypos``: The ``S<x>_CH<x>:LABel:YPOS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._color = SItemChannelLabelColor(device, f"{self._cmd_syntax}:COLor")
         self._font = SItemChannelLabelFont(device, f"{self._cmd_syntax}:FONT")
@@ -717,7 +717,7 @@ class SItemChannelBandwidth(SCPICmdRead):
         - ``.actual``: The ``S<x>_CH<x>:BANdwidth:ACTUal`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._actual = SItemChannelBandwidthActual(device, f"{self._cmd_syntax}:ACTUal")
 
@@ -762,7 +762,7 @@ class SItemChannel(ValidatedChannel, SCPICmdRead):
         - ``.scale``: The ``S<x>_CH<x>:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bandwidth = SItemChannelBandwidth(device, f"{self._cmd_syntax}:BANdwidth")
         self._clipping = SItemChannelClipping(device, f"{self._cmd_syntax}:CLIPping")
@@ -962,7 +962,7 @@ class SItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.ch``: The ``S<x>_CH<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "S<x>") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "S<x>") -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SItemChannel] = DefaultDictPassKeyToFactory(
             lambda x: SItemChannel(device, f"{self._cmd_syntax}_CH{x}")

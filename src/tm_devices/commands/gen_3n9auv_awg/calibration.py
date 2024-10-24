@@ -34,7 +34,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class CalibrationStopState(SCPICmdRead):
@@ -67,7 +67,7 @@ class CalibrationStop(SCPICmdRead):
         - ``.state``: The ``CALibration:STOP:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = CalibrationStopState(device, f"{self._cmd_syntax}:STATe")
 
@@ -154,7 +154,7 @@ class CalibrationState(SCPICmdRead):
         - ``.user``: The ``CALibration:STATe:USER`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._factory = CalibrationStateFactory(device, f"{self._cmd_syntax}:FACTory")
         self._user = CalibrationStateUser(device, f"{self._cmd_syntax}:USER")
@@ -305,7 +305,7 @@ class CalibrationResult(SCPICmdRead):
         - ``.time``: The ``CALibration:RESult:TIME`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._temperature = CalibrationResultTemperature(device, f"{self._cmd_syntax}:TEMPerature")
         self._time = CalibrationResultTime(device, f"{self._cmd_syntax}:TIME")
@@ -436,7 +436,7 @@ class CalibrationLog(SCPICmdRead):
         - ``.failuresonly``: The ``CALibration:LOG:FAILuresonly`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._clear = CalibrationLogClear(device, f"{self._cmd_syntax}:CLEar")
         self._failuresonly = CalibrationLogFailuresonly(device, f"{self._cmd_syntax}:FAILuresonly")
@@ -572,7 +572,7 @@ class Calibration(SCPICmdRead):
     """
 
     def __init__(
-        self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CALibration"
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "CALibration"
     ) -> None:
         super().__init__(device, cmd_syntax)
         self._abort = CalibrationAbort(device, f"{self._cmd_syntax}:ABORt")

@@ -19,7 +19,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class Source4PowerLevelImmediateAmplitude(SCPICmdWrite, SCPICmdRead):
@@ -61,7 +61,7 @@ class Source4PowerLevelImmediate(SCPICmdRead):
         - ``.amplitude``: The ``SOURce4:POWer:LEVel:IMMediate:AMPLitude`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = Source4PowerLevelImmediateAmplitude(
             device, f"{self._cmd_syntax}:AMPLitude"
@@ -109,7 +109,7 @@ class Source4PowerLevel(SCPICmdRead):
         - ``.immediate``: The ``SOURce4:POWer:LEVel:IMMediate`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._immediate = Source4PowerLevelImmediate(device, f"{self._cmd_syntax}:IMMediate")
 
@@ -140,7 +140,7 @@ class Source4Power(SCPICmdRead):
         - ``.level``: The ``SOURce4:POWer:LEVel`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._level = Source4PowerLevel(device, f"{self._cmd_syntax}:LEVel")
 
@@ -171,7 +171,7 @@ class Source4(SCPICmdRead):
         - ``.power``: The ``SOURce4:POWer`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SOURce4") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SOURce4") -> None:
         super().__init__(device, cmd_syntax)
         self._power = Source4Power(device, f"{self._cmd_syntax}:POWer")
 

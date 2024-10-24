@@ -42,7 +42,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MmemoryMsis(SCPICmdWrite, SCPICmdRead):
@@ -157,7 +157,7 @@ class MmemoryImportParameterResampling(SCPICmdRead):
         - ``.state``: The ``MMEMory:IMPort:PARameter:RESampling:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = MmemoryImportParameterResamplingFrequency(
             device, f"{self._cmd_syntax}:FREQuency"
@@ -361,7 +361,7 @@ class MmemoryImportParameterLevelUpdate(SCPICmdRead):
         - ``.state``: The ``MMEMory:IMPort:PARameter:LEVel:UPDate:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._channel = MmemoryImportParameterLevelUpdateChannel(
             device, f"{self._cmd_syntax}:CHANnel"
@@ -474,7 +474,7 @@ class MmemoryImportParameterLevel(SCPICmdRead):
         - ``.update``: The ``MMEMory:IMPort:PARameter:LEVel:UPDate`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._update = MmemoryImportParameterLevelUpdate(device, f"{self._cmd_syntax}:UPDate")
 
@@ -541,7 +541,7 @@ class MmemoryImportParameterFrequencyUpdate(SCPICmdRead):
         - ``.state``: The ``MMEMory:IMPort:PARameter:FREQuency:UPDate:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = MmemoryImportParameterFrequencyUpdateState(
             device, f"{self._cmd_syntax}:STATe"
@@ -591,7 +591,7 @@ class MmemoryImportParameterFrequency(SCPICmdRead):
         - ``.update``: The ``MMEMory:IMPort:PARameter:FREQuency:UPDate`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._update = MmemoryImportParameterFrequencyUpdate(device, f"{self._cmd_syntax}:UPDate")
 
@@ -627,7 +627,7 @@ class MmemoryImportParameter(SCPICmdRead):
         - ``.resampling``: The ``MMEMory:IMPort:PARameter:RESampling`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = MmemoryImportParameterFrequency(device, f"{self._cmd_syntax}:FREQuency")
         self._level = MmemoryImportParameterLevel(device, f"{self._cmd_syntax}:LEVel")
@@ -749,7 +749,7 @@ class MmemoryImport(SCPICmdWrite, SCPICmdRead):
         - ``.parameter``: The ``MMEMory:IMPort:PARameter`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._parameter = MmemoryImportParameter(device, f"{self._cmd_syntax}:PARameter")
 
@@ -899,7 +899,7 @@ class Mmemory(SCPICmdRead):
         - ``.msis``: The ``MMEMory:MSIS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MMEMory") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MMEMory") -> None:
         super().__init__(device, cmd_syntax)
         self._catalog = MmemoryCatalog(device, f"{self._cmd_syntax}:CATalog")
         self._cdirectory = MmemoryCdirectory(device, f"{self._cmd_syntax}:CDIRectory")

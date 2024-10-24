@@ -34,7 +34,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class HorizontalScale(SCPICmdWrite, SCPICmdRead):
@@ -200,7 +200,7 @@ class HorizontalDigitalSamplerate(SCPICmdRead):
         - ``.main``: The ``HORizontal:DIGital:SAMPLERate:MAIn`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._magnivu = HorizontalDigitalSamplerateMagnivu(device, f"{self._cmd_syntax}:MAGnivu")
         self._main = HorizontalDigitalSamplerateMain(device, f"{self._cmd_syntax}:MAIn")
@@ -301,7 +301,7 @@ class HorizontalDigitalRecordlength(SCPICmdRead):
         - ``.main``: The ``HORizontal:DIGital:RECOrdlength:MAIn`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._magnivu = HorizontalDigitalRecordlengthMagnivu(device, f"{self._cmd_syntax}:MAGnivu")
         self._main = HorizontalDigitalRecordlengthMain(device, f"{self._cmd_syntax}:MAIn")
@@ -362,7 +362,7 @@ class HorizontalDigital(SCPICmdRead):
         - ``.samplerate``: The ``HORizontal:DIGital:SAMPLERate`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._recordlength = HorizontalDigitalRecordlength(
             device, f"{self._cmd_syntax}:RECOrdlength"
@@ -464,7 +464,7 @@ class HorizontalDelay(SCPICmdRead):
         - ``.time``: The ``HORizontal:DELay:TIMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = HorizontalDelayMode(device, f"{self._cmd_syntax}:MODe")
         self._time = HorizontalDelayTime(device, f"{self._cmd_syntax}:TIMe")
@@ -552,7 +552,9 @@ class Horizontal(SCPICmdRead):
         - ``.scale``: The ``HORizontal:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "HORizontal") -> None:
+    def __init__(
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "HORizontal"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._delay = HorizontalDelay(device, f"{self._cmd_syntax}:DELay")
         self._digital = HorizontalDigital(device, f"{self._cmd_syntax}:DIGital")

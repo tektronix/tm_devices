@@ -37,7 +37,7 @@ from typing import Dict, Optional, TYPE_CHECKING
 from ..helpers import DefaultDictPassKeyToFactory, SCPICmdRead, SCPICmdWrite, ValidatedChannel
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class TriggerBType(SCPICmdWrite, SCPICmdRead):
@@ -116,7 +116,7 @@ class TriggerBLevel(SCPICmdRead):
         - ``.ch``: The ``TRIGger:B:LEVel:CH<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, TriggerBLevelChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerBLevelChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -253,7 +253,7 @@ class TriggerBEdge(SCPICmdRead):
         - ``.source``: The ``TRIGger:B:EDGE:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._coupling = TriggerBEdgeCoupling(device, f"{self._cmd_syntax}:COUPling")
         self._slope = TriggerBEdgeSlope(device, f"{self._cmd_syntax}:SLOpe")
@@ -368,7 +368,7 @@ class TriggerB(SCPICmdRead):
         - ``.type``: The ``TRIGger:B:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._edge = TriggerBEdge(device, f"{self._cmd_syntax}:EDGE")
         self._level = TriggerBLevel(device, f"{self._cmd_syntax}:LEVel")
@@ -521,7 +521,7 @@ class TriggerALevel(SCPICmdRead):
         - ``.ch``: The ``TRIGger:A:LEVel:CH<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, TriggerALevelChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALevelChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -658,7 +658,7 @@ class TriggerAEdge(SCPICmdRead):
         - ``.source``: The ``TRIGger:A:EDGE:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._coupling = TriggerAEdgeCoupling(device, f"{self._cmd_syntax}:COUPling")
         self._slope = TriggerAEdgeSlope(device, f"{self._cmd_syntax}:SLOpe")
@@ -773,7 +773,7 @@ class TriggerA(SCPICmdRead):
         - ``.type``: The ``TRIGger:A:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._edge = TriggerAEdge(device, f"{self._cmd_syntax}:EDGE")
         self._level = TriggerALevel(device, f"{self._cmd_syntax}:LEVel")
@@ -863,7 +863,7 @@ class Trigger(SCPICmdRead):
         - ``.b``: The ``TRIGger:B`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "TRIGger") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "TRIGger") -> None:
         super().__init__(device, cmd_syntax)
         self._a = TriggerA(device, f"{self._cmd_syntax}:A")
         self._b = TriggerB(device, f"{self._cmd_syntax}:B")

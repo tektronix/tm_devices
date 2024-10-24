@@ -46,7 +46,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SaveonWaveform(SCPICmdWrite, SCPICmdRead):
@@ -446,7 +446,7 @@ class SaveonFile(SCPICmdRead):
         - ``.type``: The ``SAVEON:FILE:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoinc = SaveonFileAutoinc(device, f"{self._cmd_syntax}:AUTOInc")
         self._count = SaveonFileCount(device, f"{self._cmd_syntax}:COUNt")
@@ -660,7 +660,7 @@ class Saveon(SCPICmdWrite, SCPICmdRead):
         - ``.waveform``: The ``SAVEON:WAVEform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SAVEON") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SAVEON") -> None:
         super().__init__(device, cmd_syntax)
         self._count = SaveonCount(device, f"{self._cmd_syntax}:COUNt")
         self._file = SaveonFile(device, f"{self._cmd_syntax}:FILE")

@@ -6,7 +6,7 @@ import pathlib
 import subprocess
 import sys
 
-from typing import cast
+from typing import cast, TYPE_CHECKING
 from unittest import mock
 
 import pytest
@@ -15,16 +15,19 @@ import pyvisa as visa
 from packaging.version import Version
 
 from tm_devices import DeviceManager, register_additional_usbtmc_mapping
-from tm_devices.drivers import MSO2, MSO2KB, MSO5, MSO5B, MSO6, MSO70KDX, TekScopePC
-from tm_devices.drivers.pi.scopes.tekscope.tekscope import (
+from tm_devices.drivers import MSO2, MSO2KB, MSO5, MSO5B, MSO6, MSO70KDX, TekScopePC, TSOVu
+from tm_devices.drivers.scopes.tekscope.tekscope import (
+    AbstractTekScope,
     ExtendedSourceDeviceConstants,
     ParameterBounds,
     TekProbeData,
-    TekScope,
     TekScopeChannel,
 )
 from tm_devices.helpers.constants_and_dataclasses import TEKTRONIX_USBTMC_VENDOR_ID
 from tm_devices.helpers.enums import SignalGeneratorFunctionsIAFG
+
+if TYPE_CHECKING:
+    from tm_devices.drivers.scopes.tekscope_5k_7k_70k.tekscope_5k_7k_70k import TekScope5k7k70k
 
 
 class TmDevicesUnitTestOnlyCustomMSO5(MSO5):
@@ -46,7 +49,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     scope: MSO5 = device_manager.add_scope("MSO56-SERIAL1", alias="mso56", connection_type="USB")
 
     # cheeky super() call for coverage of USB connection type on Device's hostname implementation
-    assert super(TekScope, scope).hostname == ""
+    assert super(AbstractTekScope, scope).hostname == ""
     # clear cached property so that the scope instance will use the proper implementation
     # noinspection PyPropertyAccess
     del scope.hostname
@@ -58,7 +61,6 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     assert scope.all_channel_names_list == ("CH1", "CH2", "CH3", "CH4", "CH5", "CH6")
     assert scope.usb_drives == ("E:",)
     assert scope.ip_address == ""
-    assert scope.opt_string == "0"
     assert scope.channel["CH1"].probe == TekProbeData(
         probetype="ANALOG",
         probe_id_sernumber="N/A",
@@ -77,12 +79,12 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
 
     # Test that invalid PI commands are caught properly
     scope.write("EXAMPLE_COMMAND")
-    scope.expect_esr(32, '113,"Undefined header; Command not found; EXAMPLE_COMMAND"')
+    scope.expect_esr(32, ('113,"Undefined header; Command not found; EXAMPLE_COMMAND"',))
     # Test that querying the status register clears it
     with pytest.raises(AssertionError):
-        scope.expect_esr(32, '113,"Undefined header; Command not found; EXAMPLE_COMMAND"')
+        scope.expect_esr(32, ('113,"Undefined header; Command not found; EXAMPLE_COMMAND"',))
     # Assert there are no errors before proceeding with tests
-    scope.expect_esr(0, '0,"No events to report - queue empty"')
+    scope.expect_esr(0, ('0,"No events to report - queue empty"',))
 
     # Test that features can be added
     scope.add_new_bus("B1", "I3C")
@@ -98,7 +100,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     with pytest.raises(AssertionError):
         scope.add_power(1)
     # Assert there are no errors after testing feature additions
-    scope.expect_esr(0, '0,"No events to report - queue empty"')
+    scope.expect_esr(0, ('0,"No events to report - queue empty"',))
 
     # Simulate successful feature deletion by replacing name of item with BLANK
     scope.write(":BUS:ADDNew BLANK")
@@ -122,7 +124,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     with pytest.raises(AssertionError):
         scope.delete_search(1)
     # Assert there are no errors after testing feature deletions
-    scope.expect_esr(0, '0,"No events to report - queue empty"')
+    scope.expect_esr(0, ('0,"No events to report - queue empty"',))
     assert scope.query("EMPTY:STRING?", allow_empty=True) == ""
     with pytest.raises(SystemError):
         scope.query("EMPTY:STRING?")
@@ -148,7 +150,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     # Test saving waveform functionality
     scope.save_waveform_to_reference("temp.wfm", "REF1")
     # Assert there are no errors after testing waveform generations and saving
-    scope.expect_esr(0, '0,"No events to report - queue empty"')
+    scope.expect_esr(0, ('0,"No events to report - queue empty"',))
 
     # Test curve query write to csv functionality with multi-frame curve
     filepath = f"temp_{sys.version_info.major}{sys.version_info.minor}.csv"
@@ -184,7 +186,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     with pytest.warns(UserWarning):
         assert scope.curve_query(1, wfm_type="TimeDomain") == []
     # Assert there are no errors after testing curve query
-    scope.expect_esr(0, '0,"No events to report - queue empty"')
+    scope.expect_esr(0, ('0,"No events to report - queue empty"',))
 
     # Assert that getting license list returns the correct tuple
     assert scope.license_list == ("LIC5", "LIC4", "AFG")
@@ -213,12 +215,9 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     with pytest.raises(AssertionError, match="none is not a valid item.*"):
         scope._add_or_delete_dynamic_item("none", 1)  # noqa: SLF001
 
-    with pytest.raises(AssertionError, match="No error string was provided"):
-        scope.expect_esr(1)
-
     # Assert no errors after completing testing
-    scope.expect_esr(0, '0,"No events to report - queue empty"')
-    assert scope.get_eventlog_status() == (True, '0,"No events to report - queue empty"')
+    scope.expect_esr(0, ('0,"No events to report - queue empty"',))
+    assert scope.get_errors() == (0, ('0,"No events to report - queue empty"',))
 
     # MSO2 overridden channel names implementation
     mso2_scope: MSO2 = device_manager.add_scope("MSO22-HOSTNAME", connection_type="TCPIP")
@@ -229,7 +228,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     assert mso2_scope.usb_drives == ("E:",)
     assert mso2_scope.ip_address == ""
     with mock.patch(
-        "tm_devices.drivers.pi.scopes.tekscope.mso2.MSO2.license_list",
+        "tm_devices.drivers.scopes.tekscope.mso2.MSO2.license_list",
         property(mock.MagicMock(return_value=("MSO",))),
     ):
         # reset the cache
@@ -355,7 +354,7 @@ def test_exceptions(device_manager: DeviceManager) -> None:
         device_manager: The DeviceManager object.
     """
     # Test that visa errors are caught appropriately
-    scope = device_manager.add_scope("mso22-timeout")
+    scope: MSO2 = device_manager.add_scope("mso22-timeout")
     with pytest.raises(visa.errors.Error):
         scope.turn_channel_on("CH1")
     with pytest.raises(AssertionError):
@@ -370,7 +369,7 @@ def test_tekscope70k(device_manager: DeviceManager, capsys: pytest.CaptureFixtur
         device_manager: The DeviceManager object.
         capsys: The captured stdout and stderr.
     """
-    scope = device_manager.add_scope("127.0.0.1")
+    scope: TekScope5k7k70k = device_manager.add_scope("127.0.0.1")
     assert scope.ip_address == "127.0.0.1"
     assert scope.hostname == ""
     # Test some generic device functionality
@@ -486,10 +485,12 @@ def test_tekscopepc(device_manager: DeviceManager) -> None:
     assert scope.usb_drives == ("E:",)
     assert scope.ip_address == ""
     assert scope.total_channels == 8
+    with pytest.warns(UserWarning, match="Rebooting is not supported for the TekScopePC driver."):
+        scope.reboot()
 
 
 def test_tekscope2k(device_manager: DeviceManager, tmp_path: pathlib.Path) -> None:
-    """Test the tekscope2k implementation.
+    """Test the TekScope2k implementation.
 
     Args:
         device_manager: The DeviceManager object.
@@ -528,3 +529,10 @@ def test_tekscope2k(device_manager: DeviceManager, tmp_path: pathlib.Path) -> No
         assert scope.curve_query(5, wfm_type="TimeDomain") == []
 
     assert scope.curve_query(0, wfm_type="Digital") == [1, 0, 1, 0, 1]
+
+
+def test_tsovu(device_manager: DeviceManager) -> None:
+    """Test the TSOVu device driver."""
+    scope: TSOVu = device_manager.add_scope("TSOVU-HOSTNAME")
+    assert scope.hostname == "TSOVU-HOSTNAME"
+    assert scope.total_channels == 0  # pylint: disable=use-implicit-booleaness-not-comparison-to-zero

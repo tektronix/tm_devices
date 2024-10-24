@@ -31,7 +31,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class WlistWaveformType(SCPICmdReadWithArguments):
@@ -197,7 +197,7 @@ class WlistWaveformMarker(SCPICmdRead):
         - ``.data``: The ``WLISt:WAVeform:MARKer:DATA`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._data = WlistWaveformMarkerData(device, f"{self._cmd_syntax}:DATA")
 
@@ -327,7 +327,7 @@ class WlistWaveform(SCPICmdRead):
         - ``.type``: The ``WLISt:WAVeform:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._data = WlistWaveformData(device, f"{self._cmd_syntax}:DATA")
         self._delete = WlistWaveformDelete(device, f"{self._cmd_syntax}:DELete")
@@ -620,7 +620,7 @@ class Wlist(SCPICmdRead):
         - ``.waveform``: The ``WLISt:WAVeform`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "WLISt") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "WLISt") -> None:
         super().__init__(device, cmd_syntax)
         self._name = WlistName(device, f"{self._cmd_syntax}:NAME")
         self._size = WlistSize(device, f"{self._cmd_syntax}:SIZE")

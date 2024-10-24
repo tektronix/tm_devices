@@ -66,7 +66,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SourceItemWaveform(SCPICmdWrite, SCPICmdRead):
@@ -205,7 +205,7 @@ class SourceItemVoltageLevelImmediate(SCPICmdRead):
         - ``.amplitude``: The ``SOURce[n]:VOLTage:LEVel:IMMediate:AMPLitude`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._high = SourceItemVoltageLevelImmediateHigh(device, f"{self._cmd_syntax}:HIGH")
         self._low = SourceItemVoltageLevelImmediateLow(device, f"{self._cmd_syntax}:LOW")
@@ -332,7 +332,7 @@ class SourceItemVoltageLevel(SCPICmdRead):
         - ``.immediate``: The ``SOURce[n]:VOLTage:LEVel:IMMediate`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._immediate = SourceItemVoltageLevelImmediate(device, f"{self._cmd_syntax}:IMMediate")
 
@@ -368,7 +368,7 @@ class SourceItemVoltage(SCPICmdRead):
         - ``.level``: The ``SOURce[n]:VOLTage:LEVel`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._level = SourceItemVoltageLevel(device, f"{self._cmd_syntax}:LEVel")
 
@@ -523,7 +523,7 @@ class SourceItemPowerLevelImmediate(SCPICmdRead):
         - ``.amplitude``: The ``SOURce[n]:POWer:LEVel:IMMediate:AMPLitude`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = SourceItemPowerLevelImmediateAmplitude(
             device, f"{self._cmd_syntax}:AMPLitude"
@@ -569,7 +569,7 @@ class SourceItemPowerLevel(SCPICmdRead):
         - ``.immediate``: The ``SOURce[n]:POWer:LEVel:IMMediate`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._immediate = SourceItemPowerLevelImmediate(device, f"{self._cmd_syntax}:IMMediate")
 
@@ -601,7 +601,7 @@ class SourceItemPower(SCPICmdRead):
         - ``.level``: The ``SOURce[n]:POWer:LEVel`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._level = SourceItemPowerLevel(device, f"{self._cmd_syntax}:LEVel")
 
@@ -745,7 +745,7 @@ class SourceItemMarkerItemVoltageLevelImmediate(SCPICmdRead):
         - ``.amplitude``: The ``SOURce[n]:MARKer[m]:VOLTage:LEVel:IMMediate:AMPLitude`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._high = SourceItemMarkerItemVoltageLevelImmediateHigh(
             device, f"{self._cmd_syntax}:HIGH"
@@ -883,7 +883,7 @@ class SourceItemMarkerItemVoltageLevel(SCPICmdRead):
         - ``.immediate``: The ``SOURce[n]:MARKer[m]:VOLTage:LEVel:IMMediate`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._immediate = SourceItemMarkerItemVoltageLevelImmediate(
             device, f"{self._cmd_syntax}:IMMediate"
@@ -921,7 +921,7 @@ class SourceItemMarkerItemVoltage(SCPICmdRead):
         - ``.level``: The ``SOURce[n]:MARKer[m]:VOLTage:LEVel`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._level = SourceItemMarkerItemVoltageLevel(device, f"{self._cmd_syntax}:LEVel")
 
@@ -980,7 +980,7 @@ class SourceItemMarkerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.voltage``: The ``SOURce[n]:MARKer[m]:VOLTage`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delay = SourceItemMarkerItemDelay(device, f"{self._cmd_syntax}:DELay")
         self._voltage = SourceItemMarkerItemVoltage(device, f"{self._cmd_syntax}:VOLTage")
@@ -1057,7 +1057,7 @@ class SourceItemJumpPattern(SCPICmdRead):
         - ``.force``: The ``SOURce[n]:JUMP:PATTern:FORCe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._force = SourceItemJumpPatternForce(device, f"{self._cmd_syntax}:FORCe")
 
@@ -1112,7 +1112,7 @@ class SourceItemJump(SCPICmdRead):
         - ``.pattern``: The ``SOURce[n]:JUMP:PATTern`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._force = SourceItemJumpForce(device, f"{self._cmd_syntax}:FORCe")
         self._pattern = SourceItemJumpPattern(device, f"{self._cmd_syntax}:PATTern")
@@ -1187,7 +1187,7 @@ class SourceItemDac(SCPICmdRead):
         - ``.resolution``: The ``SOURce[n]:DAC:RESolution`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._resolution = SourceItemDacResolution(device, f"{self._cmd_syntax}:RESolution")
 
@@ -1292,7 +1292,7 @@ class SourceItemCasset(SCPICmdRead):
         - ``.waveform``: The ``SOURce[n]:CASSet:WAVeform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._sequence = SourceItemCassetSequence(device, f"{self._cmd_syntax}:SEQuence")
         self._type = SourceItemCassetType(device, f"{self._cmd_syntax}:TYPE")
@@ -1379,7 +1379,7 @@ class SourceItem(ValidatedChannel, SCPICmdRead):
         - ``.jump``: The ``SOURce[n]:JUMP`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SOURce[n]") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SOURce[n]") -> None:
         super().__init__(device, cmd_syntax)
         self._casset = SourceItemCasset(device, f"{self._cmd_syntax}:CASSet")
         self._dac = SourceItemDac(device, f"{self._cmd_syntax}:DAC")
@@ -1652,7 +1652,7 @@ class SourceRoscillator(SCPICmdRead):
         - ``.multiplier``: The ``SOURce:ROSCillator:MULTiplier`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._multiplier = SourceRoscillatorMultiplier(device, f"{self._cmd_syntax}:MULTiplier")
 
@@ -1745,7 +1745,7 @@ class Source(SCPICmdRead):
         - ``.roscillator``: The ``SOURce:ROSCillator`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SOURce") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SOURce") -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = SourceFrequency(device, f"{self._cmd_syntax}:FREQuency")
         self._rccouple = SourceRccouple(device, f"{self._cmd_syntax}:RCCouple")

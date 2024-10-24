@@ -20,7 +20,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 # pylint: disable=too-few-public-methods
@@ -35,7 +35,7 @@ class TsplinkTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
     EVENT_ID = "tsplink.trigger[N].EVENT_ID"
     """str: Selects the event that causes a trigger to be asserted on the digital output line as the edge detected on the specified TSP-Link line."""  # noqa: E501
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         # pylint: disable=invalid-name
         self.EVENT_ID = self.EVENT_ID.replace(
@@ -95,7 +95,7 @@ Use tsplink.TRIG_RISINGM if the line is in the low output state."""  # noqa: E50
     TRIG_SYNCHRONOUSM = "tsplink.TRIG_SYNCHRONOUSM"
     """str: Detects rising-edge triggers as an input. Asserts a TTL-low pulse for output."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "tsplink") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "tsplink") -> None:
         super().__init__(device, cmd_syntax)
         self._trigger: Dict[int, TsplinkTriggerItem] = DefaultDictPassKeyToFactory(
             lambda x: TsplinkTriggerItem(device, f"{self._cmd_syntax}.trigger[{x}]")
