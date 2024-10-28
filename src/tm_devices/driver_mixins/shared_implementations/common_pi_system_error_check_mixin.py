@@ -37,7 +37,7 @@ class CommonPISystemErrorCheckMixin(_AbstractDeviceVISAWriteQueryControl, ABC):
         # return the errors if any
         returned_errors: List[str] = []
         error = ""
-        while error != '0,"No error"':
+        while error != self._no_error_string:
             error = self.query("SYSTEM:ERROR?")
             returned_errors.append(error)
 

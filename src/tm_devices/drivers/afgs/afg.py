@@ -35,6 +35,11 @@ class AFGSourceDeviceConstants(SourceDeviceConstants):
     functions: Type[SignalGeneratorFunctionsAFG] = SignalGeneratorFunctionsAFG
 
 
+# NOTE: Currently all AFGs are controlled via PI, hence the usage of the PIControl mixin here. If
+# this changes in the future, the class inheritance structure may need to be modified and the
+# control class inheritance responsibility moved to the newly created Family Base Classes. The other
+# option would be to create two abstract AFG parent classes and two distinct AFGSourceChannel
+# classes, with one set using the PIControl mixin and one set using another control mixin.
 @family_base_class
 class AFG(_TektronixPIAFGAWGMixin, PIControl, Device, ABC):
     """Base AFG device driver."""
