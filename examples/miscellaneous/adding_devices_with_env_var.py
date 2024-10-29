@@ -23,7 +23,7 @@ os.environ["TM_DEVICES"] = (
 with DeviceManager(verbose=True) as dm:
     # Scope
     scope: MSO2 = dm.get_scope(1)
-    print(scope.query("IDN?"))
+    print(scope.query("*IDN?"))
 
     # Set horizontal scale and verify success
     scope.set_and_check(":HORIZONTAL:SCALE", 400e-9)
