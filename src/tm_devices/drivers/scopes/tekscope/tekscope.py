@@ -3,10 +3,12 @@
 # pylint: disable=too-many-lines
 import math
 import os
+import time
 import warnings
 
 from abc import ABC
 from dataclasses import dataclass
+from pathlib import Path
 from types import MappingProxyType
 from typing import Any, cast, Dict, List, Literal, Optional, Tuple, Type, Union
 
@@ -22,30 +24,27 @@ from tm_devices.commands import (
     MSO6BCommands,
     MSO6Commands,
 )
-from tm_devices.driver_mixins.abstract_device_functionality.analysis_object_mixins import (
+from tm_devices.driver_mixins.abstract_device_functionality import (
+    BaseAFGSourceChannel,
     BusMixin,
+    ChannelControlMixin,
     HistogramMixin,
+    LicensedMixin,
     MathMixin,
     MeasurementsMixin,
     PlotMixin,
     PowerMixin,
     ReferenceMixin,
+    ScreenCaptureMixin,
     SearchMixin,
+    USBDrivesMixin,
 )
-from tm_devices.driver_mixins.abstract_device_functionality.base_afg_source_channel import (
-    BaseAFGSourceChannel,
-)
-from tm_devices.driver_mixins.abstract_device_functionality.channel_control_mixin import (
-    ChannelControlMixin,
-)
-from tm_devices.driver_mixins.abstract_device_functionality.licensed_mixin import LicensedMixin
 from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin import (
     ExtendedSourceDeviceConstants,
     ParameterBounds,
     SignalGeneratorMixin,
     SourceDeviceConstants,
 )
-from tm_devices.driver_mixins.abstract_device_functionality.usb_drives_mixin import USBDrivesMixin
 from tm_devices.driver_mixins.device_control import PIControl
 from tm_devices.driver_mixins.shared_implementations._tektronix_pi_scope_mixin import (
     _TektronixPIScopeMixin,  # pyright: ignore[reportPrivateUsage]
@@ -93,6 +92,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
     PowerMixin,
     USBDrivesMixin,
     ChannelControlMixin,
+    ScreenCaptureMixin,
     ABC,
 ):
     """Base TekScope scope device driver.
@@ -248,6 +248,18 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
             # Set the directory back to where it was originally
             self.write(f":FILESystem:CWD {original_dir}")
         return tuple(usb_drives)
+
+    @property
+    def valid_image_extensions(self) -> Tuple[str, ...]:
+        """Return a tuple of valid image extensions for this device.
+
+        The extensions will be in the format '.ext', where 'ext' is the lowercase extension,
+        e.g. (".png", ".jpg").
+
+        Returns:
+            Tuple[str, ...]: A tuple of valid, lowercase image extensions for this device.
+        """
+        return ".png", ".bmp", ".jpg", ".jpeg"
 
     ################################################################################################
     # Public Methods
@@ -652,6 +664,39 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
                 f"Failed to add {item_name}\n"
                 f":{item_type}:LIST? returned \"{','.join(item_list)}\"",
             )
+
+    def _capture_screen(
+        self,
+        filename: Path,
+        *,
+        colors: Optional[str],
+        view_type: Optional[str],  # noqa: ARG002
+        local_folder: Path,
+        device_folder: Path,
+        keep_device_file: bool = False,
+    ) -> None:
+        """Capture a screenshot from the device and save it locally.
+
+        Args:
+            filename: The name of the file to save the screenshot as.
+            colors: The color scheme to use for the screenshot.
+            view_type: The type of view to capture.
+            local_folder: The local folder to save the screenshot in. Defaults to "./".
+            device_folder: The folder on the device to save the screenshot in. Defaults to "./".
+            keep_device_file: Whether to keep the file on the device after downloading it.
+                Defaults to False.
+        """
+        if colors:
+            self.set_and_check("SAVE:IMAGE:COMPOSITION", colors)
+        else:
+            self.set_and_check("SAVE:IMAGE:COMPOSITION", "NORMAL")
+        self.write(f'SAVE:IMAGE "{(device_folder / filename).as_posix()}"', opc=True)
+        self.write(f'FILESYSTEM:READFILE "{(device_folder / filename).as_posix()}"')
+        data = self.read_raw()
+        (local_folder / filename).write_bytes(data)
+        if not keep_device_file:
+            self.write(f'FILESYSTEM:DELETE "{(device_folder / filename).as_posix()}"', opc=True)
+            time.sleep(0.5)  # wait to ensure the file is deleted
 
     def _reboot(self) -> None:
         """Reboot the device."""

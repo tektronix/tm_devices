@@ -14,6 +14,7 @@ from .base_afg_source_channel import BaseAFGSourceChannel
 from .base_source_channel import BaseSourceChannel
 from .channel_control_mixin import ChannelControlMixin
 from .licensed_mixin import LicensedMixin
+from .screen_capture_mixin import ScreenCaptureMixin
 from .signal_generator_mixin import SignalGeneratorMixin
 from .usb_drives_mixin import USBDrivesMixin
 
@@ -29,6 +30,7 @@ __all__ = [
     "PlotMixin",
     "PowerMixin",
     "ReferenceMixin",
+    "ScreenCaptureMixin",
     "SearchMixin",
     "SignalGeneratorMixin",
     "USBDrivesMixin",

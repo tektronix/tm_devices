@@ -471,11 +471,15 @@ def test_tekscope3k_4k(device_manager: DeviceManager, capsys: pytest.CaptureFixt
     assert scope2.total_channels == 2
 
 
-def test_tekscopepc(device_manager: DeviceManager) -> None:
+def test_tekscopepc(
+    device_manager: DeviceManager, tmp_path: pathlib.Path, capsys: pytest.CaptureFixture[str]
+) -> None:
     """Test the TekScopePC implementation.
 
     Args:
         device_manager: The DeviceManager object.
+        tmp_path: pytest temporary directory fixture.
+        capsys: The captured stdout and stderr.
     """
     scope: TekScopePC = device_manager.add_scope("TEKSCOPEPC-HOSTNAME")
     # Assert TekScopePC device was added and aliased properly
@@ -487,6 +491,39 @@ def test_tekscopepc(device_manager: DeviceManager) -> None:
     assert scope.total_channels == 8
     with pytest.warns(UserWarning, match="Rebooting is not supported for the TekScopePC driver."):
         scope.reboot()
+
+    with pytest.raises(ValueError, match="Invalid image extension: '.txt', valid extensions are"):
+        scope.capture_screen("temp.txt")
+
+    filename = pathlib.Path("temp.png")
+    local_file = tmp_path / filename
+    with mock.patch(
+        "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
+        mock.MagicMock(return_value=b"1234"),
+    ):
+        scope.capture_screen(filename, local_folder=tmp_path)
+        assert local_file.read_bytes() == b"1234"
+        stdout = capsys.readouterr().out
+        assert "SAVE:IMAGE:COMPOSITION NORMAL" in stdout
+        assert f'SAVE:IMAGE "{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:READFILE "{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:DELETE "{filename.as_posix()}"' in stdout
+
+    with mock.patch(
+        "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
+        mock.MagicMock(return_value=b"5678"),
+    ):
+        scope.capture_screen(
+            filename, local_folder=tmp_path, colors="INVERTED", keep_device_file=True
+        )
+        assert local_file.read_bytes() == b"5678"
+        stdout = capsys.readouterr().out
+        assert "SAVE:IMAGE:COMPOSITION INVERTED" in stdout
+        assert f'SAVE:IMAGE "{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:READFILE "{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:DELETE "{filename.as_posix()}"' not in stdout
+
+    scope.expect_esr(0)
 
 
 def test_tekscope2k(device_manager: DeviceManager, tmp_path: pathlib.Path) -> None:

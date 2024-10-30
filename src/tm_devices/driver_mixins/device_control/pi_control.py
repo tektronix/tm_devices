@@ -599,9 +599,17 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         """Return the read results from the VISA resource."""
         return self._visa_resource.read()
 
-    def read_raw(self) -> bytes:
-        """Return the read_raw results from the VISA resource."""
-        return self._visa_resource.read_raw()
+    def read_raw(self, size: Optional[int] = None) -> bytes:
+        """Return the read_raw results from the VISA resource.
+
+        Args:
+            size: The chunk size to use to perform the reading. Defaults to None,
+                meaning the resource wide set value is set.
+
+        Returns:
+            The bytes read from the device.
+        """
+        return self._visa_resource.read_raw(size)
 
     def reset_visa_timeout(self) -> None:
         """Reset the VISA timeout to the default value."""

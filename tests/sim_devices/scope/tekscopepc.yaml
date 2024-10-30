@@ -33,6 +33,20 @@ devices:
         r: '1'
       - q: '*RST'
       - q: '*CLS'
+      - q: SAVE:IMAGE "temp.png"
+      - q: FILESYSTEM:READFILE "temp.png"
+      - q: FILESYSTEM:DELETE "temp.png"
+    properties:
+      save_image_composition:
+        default: NORMAL
+        getter:
+          q: SAVE:IMAGE:COMPOSITION?
+          r: '{:s}'
+        setter:
+          q: SAVE:IMAGE:COMPOSITION {:s}
+        specs:
+          type: str
+          valid: [NORMAL, INVERTED]
     error:
       status_register:
         - q: '*ESR?'
