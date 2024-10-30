@@ -33,7 +33,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class EyemaskMaskItemTestStatus(SCPICmdRead):
@@ -101,7 +101,7 @@ class EyemaskMaskItemTestSample(SCPICmdRead):
         - ``.threshold``: The ``EYEMASK:MASK<x>:TESt:SAMple:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._threshold = EyemaskMaskItemTestSampleThreshold(
             device, f"{self._cmd_syntax}:THReshold"
@@ -154,7 +154,7 @@ class EyemaskMaskItemTest(SCPICmdRead):
         - ``.status``: The ``EYEMASK:MASK<x>:TESt:STATUS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._sample = EyemaskMaskItemTestSample(device, f"{self._cmd_syntax}:SAMple")
         self._status = EyemaskMaskItemTestStatus(device, f"{self._cmd_syntax}:STATUS")
@@ -263,7 +263,7 @@ class EyemaskMaskItemMaskoffsetHorizontal(SCPICmdRead):
         - ``.autofit``: The ``EYEMASK:MASK<x>:MASKOffset:HORizontal:AUTOfit`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autofit = EyemaskMaskItemMaskoffsetHorizontalAutofit(
             device, f"{self._cmd_syntax}:AUTOfit"
@@ -304,7 +304,7 @@ class EyemaskMaskItemMaskoffset(SCPICmdRead):
         - ``.horizontal``: The ``EYEMASK:MASK<x>:MASKOffset:HORizontal`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._horizontal = EyemaskMaskItemMaskoffsetHorizontal(
             device, f"{self._cmd_syntax}:HORizontal"
@@ -410,7 +410,7 @@ class EyemaskMaskItemCountSegItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.hits``: The ``EYEMASK:MASK<x>:COUNt:SEG<y>:HITS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hits = EyemaskMaskItemCountSegItemHits(device, f"{self._cmd_syntax}:HITS")
 
@@ -478,7 +478,7 @@ class EyemaskMaskItemCount(SCPICmdRead):
         - ``.seg``: The ``EYEMASK:MASK<x>:COUNt:SEG<y>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hits = EyemaskMaskItemCountHits(device, f"{self._cmd_syntax}:HITS")
         self._seg: Dict[int, EyemaskMaskItemCountSegItem] = DefaultDictPassKeyToFactory(
@@ -547,7 +547,7 @@ class EyemaskMaskItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.test``: The ``EYEMASK:MASK<x>:TESt`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._count = EyemaskMaskItemCount(device, f"{self._cmd_syntax}:COUNt")
         self._creator = EyemaskMaskItemCreator(device, f"{self._cmd_syntax}:CREATor")
@@ -697,7 +697,7 @@ class Eyemask(SCPICmdRead):
         - ``.mask``: The ``EYEMASK:MASK<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "EYEMASK") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "EYEMASK") -> None:
         super().__init__(device, cmd_syntax)
         self._mask: Dict[int, EyemaskMaskItem] = DefaultDictPassKeyToFactory(
             lambda x: EyemaskMaskItem(device, f"{self._cmd_syntax}:MASK{x}")

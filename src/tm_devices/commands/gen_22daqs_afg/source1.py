@@ -148,7 +148,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class Source1VoltageUnit(SCPICmdWrite, SCPICmdRead):
@@ -239,7 +239,7 @@ class Source1VoltageLimit(SCPICmdRead):
         - ``.low``: The ``SOURce1:VOLTage:LIMit:LOW`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._high = Source1VoltageLimitHigh(device, f"{self._cmd_syntax}:HIGH")
         self._low = Source1VoltageLimitLow(device, f"{self._cmd_syntax}:LOW")
@@ -414,7 +414,7 @@ class Source1VoltageLevelImmediate(SCPICmdRead):
         - ``.amplitude``: The ``SOURce1:VOLTage:LEVel:IMMediate:AMPLitude`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._high = Source1VoltageLevelImmediateHigh(device, f"{self._cmd_syntax}:HIGH")
         self._low = Source1VoltageLevelImmediateLow(device, f"{self._cmd_syntax}:LOW")
@@ -545,7 +545,7 @@ class Source1VoltageLevel(SCPICmdRead):
         - ``.immediate``: The ``SOURce1:VOLTage:LEVel:IMMediate`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._immediate = Source1VoltageLevelImmediate(device, f"{self._cmd_syntax}:IMMediate")
 
@@ -606,7 +606,7 @@ class Source1VoltageConcurrent(SCPICmdRead):
         - ``.state``: The ``SOURce1:VOLTage:CONCurrent:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = Source1VoltageConcurrentState(device, f"{self._cmd_syntax}:STATe")
 
@@ -655,7 +655,7 @@ class Source1Voltage(SCPICmdRead):
         - ``.level``: The ``SOURce1:VOLTage:LEVel`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._concurrent = Source1VoltageConcurrent(device, f"{self._cmd_syntax}:CONCurrent")
         self._limit = Source1VoltageLimit(device, f"{self._cmd_syntax}:LIMit")
@@ -857,7 +857,7 @@ class Source1Sweep(SCPICmdRead):
         - ``.time``: The ``SOURce1:SWEep:TIME`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._htime = Source1SweepHtime(device, f"{self._cmd_syntax}:HTIMe")
         self._mode = Source1SweepMode(device, f"{self._cmd_syntax}:MODE")
@@ -1090,7 +1090,7 @@ class Source1PwmInternalFunction(SCPICmdWrite, SCPICmdRead):
         - ``.efile``: The ``SOURce1:PWM:INTernal:FUNCtion:EFILe`` command.
     """  # noqa: E501
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._efile = Source1PwmInternalFunctionEfile(device, f"{self._cmd_syntax}:EFILe")
 
@@ -1159,7 +1159,7 @@ class Source1PwmInternal(SCPICmdRead):
         - ``.function``: The ``SOURce1:PWM:INTernal:FUNCtion`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = Source1PwmInternalFrequency(device, f"{self._cmd_syntax}:FREQuency")
         self._function = Source1PwmInternalFunction(device, f"{self._cmd_syntax}:FUNCtion")
@@ -1271,7 +1271,7 @@ class Source1PwmDeviation(SCPICmdRead):
         - ``.dcycle``: The ``SOURce1:PWM:DEViation:DCYCle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dcycle = Source1PwmDeviationDcycle(device, f"{self._cmd_syntax}:DCYCle")
 
@@ -1317,7 +1317,7 @@ class Source1Pwm(SCPICmdRead):
         - ``.deviation``: The ``SOURce1:PWM:DEViation`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._internal = Source1PwmInternal(device, f"{self._cmd_syntax}:INTernal")
         self._source = Source1PwmSource(device, f"{self._cmd_syntax}:SOURce")
@@ -1479,7 +1479,7 @@ class Source1PulseTransition(SCPICmdRead):
         - ``.leading``: The ``SOURce1:PULSe:TRANsition:LEADing`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._trailing = Source1PulseTransitionTrailing(device, f"{self._cmd_syntax}:TRAiling")
         self._leading = Source1PulseTransitionLeading(device, f"{self._cmd_syntax}:LEADing")
@@ -1636,7 +1636,7 @@ class Source1Pulse(SCPICmdRead):
         - ``.width``: The ``SOURce1:PULSe:WIDTh`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dcycle = Source1PulseDcycle(device, f"{self._cmd_syntax}:DCYCle")
         self._delay = Source1PulseDelay(device, f"{self._cmd_syntax}:DELay")
@@ -1889,7 +1889,7 @@ class Source1PmInternalFunction(SCPICmdWrite, SCPICmdRead):
         - ``.efile``: The ``SOURce1:PM:INTernal:FUNCtion:EFILe`` command.
     """  # noqa: E501
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._efile = Source1PmInternalFunctionEfile(device, f"{self._cmd_syntax}:EFILe")
 
@@ -1958,7 +1958,7 @@ class Source1PmInternal(SCPICmdRead):
         - ``.function``: The ``SOURce1:PM:INTernal:FUNCtion`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = Source1PmInternalFrequency(device, f"{self._cmd_syntax}:FREQuency")
         self._function = Source1PmInternalFunction(device, f"{self._cmd_syntax}:FUNCtion")
@@ -2068,7 +2068,7 @@ class Source1Pm(SCPICmdRead):
         - ``.deviation``: The ``SOURce1:PM:DEViation`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._internal = Source1PmInternal(device, f"{self._cmd_syntax}:INTernal")
         self._source = Source1PmSource(device, f"{self._cmd_syntax}:SOURce")
@@ -2214,7 +2214,7 @@ class Source1Phase(SCPICmdRead):
         - ``.adjust``: The ``SOURce1:PHASe:ADJust`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._initiate = Source1PhaseInitiate(device, f"{self._cmd_syntax}:INITiate")
         self._adjust = Source1PhaseAdjust(device, f"{self._cmd_syntax}:ADJust")
@@ -2334,7 +2334,7 @@ class Source1FunctionRamp(SCPICmdRead):
         - ``.symmetry``: The ``SOURce1:FUNCtion:RAMP:SYMMetry`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._symmetry = Source1FunctionRampSymmetry(device, f"{self._cmd_syntax}:SYMMetry")
 
@@ -2398,7 +2398,7 @@ class Source1Function(SCPICmdRead):
         - ``.shape``: The ``SOURce1:FUNCtion:SHAPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._efile = Source1FunctionEfile(device, f"{self._cmd_syntax}:EFILe")
         self._ramp = Source1FunctionRamp(device, f"{self._cmd_syntax}:RAMP")
@@ -2558,7 +2558,7 @@ class Source1FskeyInternal(SCPICmdRead):
         - ``.rate``: The ``SOURce1:FSKey:INTernal:RATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._rate = Source1FskeyInternalRate(device, f"{self._cmd_syntax}:RATE")
 
@@ -2624,7 +2624,7 @@ class Source1Fskey(SCPICmdRead):
         - ``.frequency``: The ``SOURce1:FSKey:FREQuency`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._internal = Source1FskeyInternal(device, f"{self._cmd_syntax}:INTernal")
         self._source = Source1FskeySource(device, f"{self._cmd_syntax}:SOURce")
@@ -2899,7 +2899,7 @@ class Source1FrequencyConcurrent(SCPICmdRead):
         - ``.state``: The ``SOURce1:FREQuency:CONCurrent:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = Source1FrequencyConcurrentState(device, f"{self._cmd_syntax}:STATe")
 
@@ -2977,7 +2977,7 @@ class Source1Frequency(SCPICmdRead):
         - ``.fixed``: The ``SOURce1:FREQuency:FIXed`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._center = Source1FrequencyCenter(device, f"{self._cmd_syntax}:CENTer")
         self._concurrent = Source1FrequencyConcurrent(device, f"{self._cmd_syntax}:CONCurrent")
@@ -3289,7 +3289,7 @@ class Source1FmInternalFunction(SCPICmdWrite, SCPICmdRead):
         - ``.efile``: The ``SOURce1:FM:INTernal:FUNCtion:EFILe`` command.
     """  # noqa: E501
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._efile = Source1FmInternalFunctionEfile(device, f"{self._cmd_syntax}:EFILe")
 
@@ -3358,7 +3358,7 @@ class Source1FmInternal(SCPICmdRead):
         - ``.function``: The ``SOURce1:FM:INTernal:FUNCtion`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = Source1FmInternalFrequency(device, f"{self._cmd_syntax}:FREQuency")
         self._function = Source1FmInternalFunction(device, f"{self._cmd_syntax}:FUNCtion")
@@ -3472,7 +3472,7 @@ class Source1Fm(SCPICmdRead):
         - ``.deviation``: The ``SOURce1:FM:DEViation`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._internal = Source1FmInternal(device, f"{self._cmd_syntax}:INTernal")
         self._source = Source1FmSource(device, f"{self._cmd_syntax}:SOURce")
@@ -3605,7 +3605,7 @@ class Source1Combine(SCPICmdRead):
         - ``.feed``: The ``SOURce1:COMBine:FEED`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._feed = Source1CombineFeed(device, f"{self._cmd_syntax}:FEED")
 
@@ -3741,7 +3741,7 @@ class Source1Burst(SCPICmdRead):
         - ``.state``: The ``SOURce1:BURSt:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = Source1BurstMode(device, f"{self._cmd_syntax}:MODE")
         self._ncycles = Source1BurstNcycles(device, f"{self._cmd_syntax}:NCYCles")
@@ -3948,7 +3948,7 @@ class Source1AmInternalFunction(SCPICmdWrite, SCPICmdRead):
         - ``.efile``: The ``SOURce1:AM:INTernal:FUNCtion:EFILe`` command.
     """  # noqa: E501
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._efile = Source1AmInternalFunctionEfile(device, f"{self._cmd_syntax}:EFILe")
 
@@ -4017,7 +4017,7 @@ class Source1AmInternal(SCPICmdRead):
         - ``.function``: The ``SOURce1:AM:INTernal:FUNCtion`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = Source1AmInternalFrequency(device, f"{self._cmd_syntax}:FREQuency")
         self._function = Source1AmInternalFunction(device, f"{self._cmd_syntax}:FUNCtion")
@@ -4128,7 +4128,7 @@ class Source1Am(SCPICmdRead):
         - ``.depth``: The ``SOURce1:AM:DEPTh`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._internal = Source1AmInternal(device, f"{self._cmd_syntax}:INTernal")
         self._source = Source1AmSource(device, f"{self._cmd_syntax}:SOURce")
@@ -4242,7 +4242,7 @@ class Source1(SCPICmdRead):
         - ``.voltage``: The ``SOURce1:VOLTage`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SOURce1") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SOURce1") -> None:
         super().__init__(device, cmd_syntax)
         self._am = Source1Am(device, f"{self._cmd_syntax}:AM")
         self._burst = Source1Burst(device, f"{self._cmd_syntax}:BURSt")

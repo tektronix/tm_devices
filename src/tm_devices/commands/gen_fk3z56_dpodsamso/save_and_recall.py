@@ -19,7 +19,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class Sds(SCPICmdWrite):
@@ -44,5 +44,5 @@ class Sds(SCPICmdWrite):
           from 1 through 10; using an out-of-range value causes an error.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*SDS") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*SDS") -> None:
         super().__init__(device, cmd_syntax)

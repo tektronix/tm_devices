@@ -6,9 +6,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
-from tm_devices.drivers.pi.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_1lcv3a_msodpomdo.message import Message
 from .gen_1lcv3a_msodpomdo.setup_1 import SetupItem
@@ -539,7 +540,7 @@ class DPO2KBCommands:
     """
 
     # pylint: disable=too-many-statements
-    def __init__(self, device: Optional[PIDevice] = None) -> None:  # noqa: PLR0915
+    def __init__(self, device: Optional[PIControl] = None) -> None:  # noqa: PLR0915
         self._acquire = Acquire(device)
         self._alias = Alias(device)
         self._allev = Allev(device)
@@ -2664,22 +2665,16 @@ class DPO2KBMixin:
         - ``.commands``: The DPO2KB commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIDevice) else None
-        self._command_argument_constants = DPO2KBCommandConstants()
-        self._commands = DPO2KBCommands(device)
-
-    @property
-    def command_argument_constants(self) -> DPO2KBCommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> DPO2KBCommandConstants:  # pylint: disable=no-self-use
         """Return the DPO2KB command argument constants.
 
         This provides access to all the string constants which can be used as arguments for DPO2KB
         commands.
         """
-        return self._command_argument_constants
+        return DPO2KBCommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> DPO2KBCommands:
         """Return the DPO2KB commands.
 
@@ -2768,4 +2763,5 @@ class DPO2KBMixin:
             - ``.wfmoutpre``: The ``WFMOutpre`` command.
             - ``.zoom``: The ``ZOOm`` command.
         """
-        return self._commands
+        device = self if isinstance(self, PIControl) else None
+        return DPO2KBCommands(device)

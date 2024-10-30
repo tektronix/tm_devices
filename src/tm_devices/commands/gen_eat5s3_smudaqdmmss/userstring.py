@@ -23,7 +23,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Userstring(BaseTSPCmd):
@@ -36,7 +36,7 @@ class Userstring(BaseTSPCmd):
     """
 
     def __init__(
-        self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "userstring"
+        self, device: Optional["TSPControl"] = None, cmd_syntax: str = "userstring"
     ) -> None:
         super().__init__(device, cmd_syntax)
 
@@ -63,7 +63,7 @@ class Userstring(BaseTSPCmd):
                 f'{self._cmd_syntax}.add("{name}", "{value}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.add()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.add()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def delete(self, name: str) -> None:
@@ -88,7 +88,7 @@ class Userstring(BaseTSPCmd):
                 f'{self._cmd_syntax}.delete("{name}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def get(self, name: str) -> str:
@@ -116,5 +116,5 @@ class Userstring(BaseTSPCmd):
                 f'print({self._cmd_syntax}.get("{name}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.get()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.get()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

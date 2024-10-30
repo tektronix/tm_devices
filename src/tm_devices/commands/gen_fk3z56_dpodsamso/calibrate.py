@@ -31,7 +31,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class CalibrateResultsSpc(SCPICmdRead):
@@ -78,7 +78,7 @@ class CalibrateResults(SCPICmdRead):
         - ``.spc``: The ``CALibrate:RESults:SPC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._spc = CalibrateResultsSpc(device, f"{self._cmd_syntax}:SPC")
 
@@ -133,7 +133,7 @@ class CalibrateProbestate(SCPICmdRead):
         - ``.ch``: The ``CALibrate:PRObestate:CH<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, CalibrateProbestateChannel] = DefaultDictPassKeyToFactory(
             lambda x: CalibrateProbestateChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -218,7 +218,7 @@ class CalibrateInternal(SCPICmdWriteNoArguments, SCPICmdRead):
         - ``.status``: The ``CALibrate:INTERNal:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._start = CalibrateInternalStart(device, f"{self._cmd_syntax}:STARt")
         self._status = CalibrateInternalStatus(device, f"{self._cmd_syntax}:STATus")
@@ -296,7 +296,7 @@ class CalibrateCalprobe(SCPICmdRead):
         - ``.ch``: The ``CALibrate:CALProbe:CH<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, CalibrateCalprobeChannel] = DefaultDictPassKeyToFactory(
             lambda x: CalibrateCalprobeChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -348,7 +348,7 @@ class Calibrate(SCPICmdRead):
         - ``.results``: The ``CALibrate:RESults`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CALibrate") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CALibrate") -> None:
         super().__init__(device, cmd_syntax)
         self._calprobe = CalibrateCalprobe(device, f"{self._cmd_syntax}:CALProbe")
         self._internal = CalibrateInternal(device, f"{self._cmd_syntax}:INTERNal")

@@ -59,7 +59,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class RefItemDallLabelYpos(SCPICmdWrite, SCPICmdRead):
@@ -287,7 +287,7 @@ class RefItemDallLabelFont(SCPICmdRead):
         - ``.underline``: The ``REF<x>_DALL:LABel:FONT:UNDERline`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bold = RefItemDallLabelFontBold(device, f"{self._cmd_syntax}:BOLD")
         self._italic = RefItemDallLabelFontItalic(device, f"{self._cmd_syntax}:ITALic")
@@ -478,7 +478,7 @@ class RefItemDallLabel(SCPICmdRead):
         - ``.ypos``: The ``REF<x>_DALL:LABel:YPOS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._color = RefItemDallLabelColor(device, f"{self._cmd_syntax}:COLor")
         self._font = RefItemDallLabelFont(device, f"{self._cmd_syntax}:FONT")
@@ -624,7 +624,7 @@ class RefItemDall(SCPICmdRead):
         - ``.label``: The ``REF<x>_DALL:LABel`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._label = RefItemDallLabel(device, f"{self._cmd_syntax}:LABel")
 
@@ -871,7 +871,7 @@ class RefItemDigitalBitLabelFont(SCPICmdRead):
         - ``.underline``: The ``REF<x>_D<x>:LABel:FONT:UNDERline`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bold = RefItemDigitalBitLabelFontBold(device, f"{self._cmd_syntax}:BOLD")
         self._italic = RefItemDigitalBitLabelFontItalic(device, f"{self._cmd_syntax}:ITALic")
@@ -1064,7 +1064,7 @@ class RefItemDigitalBitLabel(SCPICmdRead):
         - ``.ypos``: The ``REF<x>_D<x>:LABel:YPOS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._color = RefItemDigitalBitLabelColor(device, f"{self._cmd_syntax}:COLor")
         self._font = RefItemDigitalBitLabelFont(device, f"{self._cmd_syntax}:FONT")
@@ -1209,7 +1209,7 @@ class RefItemDigitalBit(ValidatedDigitalBit, SCPICmdRead):
         - ``.label``: The ``REF<x>_D<x>:LABel`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._label = RefItemDigitalBitLabel(device, f"{self._cmd_syntax}:LABel")
 
@@ -1245,7 +1245,7 @@ class RefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.dall``: The ``REF<x>_DALL`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "REF<x>") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "REF<x>") -> None:
         super().__init__(device, cmd_syntax)
         self._d: Dict[int, RefItemDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: RefItemDigitalBit(device, f"{self._cmd_syntax}_D{x}")

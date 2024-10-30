@@ -33,7 +33,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SystemVersion(SCPICmdRead):
@@ -106,7 +106,7 @@ class SystemSecurity(SCPICmdRead):
         - ``.immediate``: The ``SYSTem:SECurity:IMMediate`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._immediate = SystemSecurityImmediate(device, f"{self._cmd_syntax}:IMMediate")
 
@@ -186,7 +186,7 @@ class SystemPasswordCenable(SCPICmdWrite, SCPICmdRead):
         - ``.state``: The ``SYSTem:PASSword:CENable:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = SystemPasswordCenableState(device, f"{self._cmd_syntax}:STATe")
 
@@ -243,7 +243,7 @@ class SystemPassword(SCPICmdRead):
         - ``.cenable``: The ``SYSTem:PASSword:CENable`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._cdisable = SystemPasswordCdisable(device, f"{self._cmd_syntax}:CDISable")
         self._new = SystemPasswordNew(device, f"{self._cmd_syntax}:NEW")
@@ -344,7 +344,7 @@ class SystemKlock(SCPICmdRead):
         - ``.state``: The ``SYSTem:KLOCk:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = SystemKlockState(device, f"{self._cmd_syntax}:STATe")
 
@@ -404,7 +404,7 @@ class SystemKclick(SCPICmdRead):
         - ``.state``: The ``SYSTem:KCLick:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = SystemKclickState(device, f"{self._cmd_syntax}:STATe")
 
@@ -462,7 +462,7 @@ class SystemErrorCmd(SCPICmdRead):
         - ``.next``: The ``SYSTem:ERRor:NEXT`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._next = SystemErrorNext(device, f"{self._cmd_syntax}:NEXT")
 
@@ -539,7 +539,7 @@ class SystemBeeper(SCPICmdRead):
         - ``.immediate``: The ``SYSTem:BEEPer:IMMediate`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = SystemBeeperState(device, f"{self._cmd_syntax}:STATe")
         self._immediate = SystemBeeperImmediate(device, f"{self._cmd_syntax}:IMMediate")
@@ -608,7 +608,7 @@ class System(SCPICmdRead):
         - ``.version``: The ``SYSTem:VERSion`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SYSTem") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SYSTem") -> None:
         super().__init__(device, cmd_syntax)
         self._beeper = SystemBeeper(device, f"{self._cmd_syntax}:BEEPer")
         self._error = SystemError(device, f"{self._cmd_syntax}:ERRor")

@@ -18,6 +18,44 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Testing/linting on Python 3.13.
+- Added the `get_errors()` method to the `Device` class to enable easy access to the current error code and messages on any device.
+- Added more details to the Architectural Overview page of the documentation as well as highlighting to the device driver diagram on the page.
+- Added regex matching to the `verify_values()` helper function to allow for more flexible value verification.
+
+### Changed
+
+NOTE: Despite all the officially breaking changes, the actual drivers were only affected in
+very minor ways. The primary impact to the drivers was simply the removal of previously
+deprecated functionality. Almost all changes only impacted the internal workings of `tm_devices`.
+However, please read through all changes to be aware of what may potentially impact your code.
+
+- _**<span style="color:orange">minor breaking change</span>**_: Moved `SignalGenerator` class to the `driver_mixins` submodule and renamed it to `_TektronixPIAFGAWGMixin` (also made it a private mixin).
+- _**<span style="color:orange">minor breaking change</span>**_: Renamed the `PIDevice`, `TSPDevice`, and `RESTAPIDevice` classes to `PIControl`, `TSPControl`, and `RESTAPIControl` respectively.
+- _**<span style="color:orange">minor breaking change</span>**_: Moved the `PIControl`, `TSPControl`, and `RESTAPIControl` classes into a mixin folder so that they can be used as mixins rather than being part of the required inheritance structure.
+    - In order to use these control mixins, they must be inherited at the family base class level in the driver hierarchy, along with the device type class (or any class that inherits from the base `Device` class and defines a `device_type` property and the other required abstract property implementations).
+    - Due to this change, it is recommended that the specific device driver (or at least the family base class) for the device being controlled is used for type hinting.
+- _**<span style="color:orange">minor breaking change</span>**_: Moved all device type subpackages (AWGs, AFGs, Scopes, SMUs, etc.) up to the top level of the `drivers` subpackage.
+- _**<span style="color:orange">minor breaking change</span>**_: Converted all family base classes to inherit from the device control mixins.
+- _**<span style="color:red">BREAKING CHANGE</span>**_: Renamed the `get_eventlog_status()` method to `_get_errors()` and made it a required, abstract method for all devices to implement.
+    - To get similar functionality to the previous `get_eventlog_status()` method, switch to using the new `get_errors()` method.
+- _**<span style="color:red">BREAKING CHANGE</span>**_: Changed the behavior of the `expect_esr()` method to expect an integer error code input and an optional tuple of error messages to compare against the actual error code and messages returned by the `_get_errors()` private method.
+- _**<span style="color:orange">minor breaking change</span>**_: Converted the `device_type` property into an abstract, cached property to force all children of the `Device` class to specify what type of device they are.
+- Updated the auto-generated command mixin classes to no longer use an `__init__()` method to enable the driver API documentation to render in a more usable way.
+
+### Removed
+
+- _**<span style="color:red">BREAKING CHANGE</span>**_: Removed previously deprecated `TekScopeSW` alias to the `TekScopePC` class
+- _**<span style="color:red">BREAKING CHANGE</span>**_: Removed previously deprecated `write_buffers()` from the `TSPControl` class.
+- _**<span style="color:red">BREAKING CHANGE</span>**_: Removed Internal AFG methods from the `TekScopePC` driver, since they wouldn't have worked due to its lack of an IAFG.
+- _**<span style="color:red">BREAKING CHANGE</span>**_: Removed previously deprecated `DEVICE_DRIVER_MODEL_MAPPING` constant.
+- _**<span style="color:red">BREAKING CHANGE</span>**_: Removed the `DEVICE_TYPE_CLASSES` constant and the `device_type_classes.py` module.
+- _**<span style="color:red">BREAKING CHANGE</span>**_: Removed many hacky implementations of `total_channels` and `all_channel_names_list` properties from drivers that don't need them anymore.
+- _**<span style="color:red">BREAKING CHANGE</span>**_: Removed the `verify_values()`, `raise_failure()`, and `raise_error()` methods from all device drivers.
+    - These methods have been converted to helper functions and can be imported from the `tm_devices.helpers` subpackage now.
+
 ---
 
 ## v2.5.0 (2024-10-30)
@@ -42,8 +80,8 @@ Things to be included in the next release go here.
 
 ### Added
 
-- `collectgarbage()` is now called during cleanup of `TSPDevice` children.
-- Added USB Support for AFG31K and MDO3 models.
+- `collectgarbage()` is now called during cleanup of `TSPControl` children.
+- Added USBTMC Support for the AFG31K and MDO3 drivers.
 
 ---
 
@@ -203,11 +241,11 @@ Things to be included in the next release go here.
 
 ### Changed
 
-- <span style="color:red">BREAKING CHANGE</span>. Changed the term "signal source" to "signal generator".
+- _**<span style="color:red">BREAKING CHANGE</span>**_. Changed the term "signal source" to "signal generator".
     - All uses of this term are changed. Import paths now use `signal_generator` instead of `signal_source`.
-- <span style="color:red">BREAKING CHANGE</span>. Changed the function name of `generate_waveform()` to `generate_function()`.
+- _**<span style="color:red">BREAKING CHANGE</span>**_. Changed the function name of `generate_waveform()` to `generate_function()`.
     - `generate_waveform()` only exists on AWGs now, however the functionality is entirely changed.
-- <span style="color:red">BREAKING CHANGE</span>. Changed the `generate_function()` function by removing burst functionality.
+- _**<span style="color:red">BREAKING CHANGE</span>**_. Changed the `generate_function()` function by removing burst functionality.
     - Any use of burst now must use `setup_burst()` and `generate_burst()` instead.
 - Updated AWGs such that the `family_base_class` is at the series level.
 

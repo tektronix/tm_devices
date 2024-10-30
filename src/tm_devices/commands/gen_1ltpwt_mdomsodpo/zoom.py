@@ -33,7 +33,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ZoomZoom1Trigpos(SCPICmdRead):
@@ -193,7 +193,7 @@ class ZoomZoom1Horizontal(SCPICmdRead):
         - ``.scale``: The ``ZOOm:ZOOM1:HORizontal:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = ZoomZoom1HorizontalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = ZoomZoom1HorizontalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -296,7 +296,7 @@ class ZoomZoom1(SCPICmdRead):
         - ``.trigpos``: The ``ZOOm:ZOOM1:TRIGPOS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._factor = ZoomZoom1Factor(device, f"{self._cmd_syntax}:FACtor")
         self._horizontal = ZoomZoom1Horizontal(device, f"{self._cmd_syntax}:HORizontal")
@@ -505,7 +505,7 @@ class Zoom(SCPICmdRead):
         - ``.state``: The ``ZOOm:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "ZOOm") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "ZOOm") -> None:
         super().__init__(device, cmd_syntax)
         self._zoom1 = ZoomZoom1(device, f"{self._cmd_syntax}:ZOOM1")
         self._mode = ZoomMode(device, f"{self._cmd_syntax}:MODe")

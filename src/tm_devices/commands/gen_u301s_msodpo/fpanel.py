@@ -19,7 +19,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class FpanelTurn(SCPICmdWrite):
@@ -119,7 +119,7 @@ class Fpanel(SCPICmdRead):
         - ``.turn``: The ``FPAnel:TURN`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "FPAnel") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "FPAnel") -> None:
         super().__init__(device, cmd_syntax)
         self._press = FpanelPress(device, f"{self._cmd_syntax}:PRESS")
         self._turn = FpanelTurn(device, f"{self._cmd_syntax}:TURN")

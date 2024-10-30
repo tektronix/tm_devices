@@ -26,7 +26,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MessageState(SCPICmdWrite, SCPICmdRead):
@@ -159,7 +159,7 @@ class Message(SCPICmdWriteNoArguments, SCPICmdRead):
         - ``.state``: The ``MESSage:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MESSage") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MESSage") -> None:
         super().__init__(device, cmd_syntax)
         self._box = MessageBox(device, f"{self._cmd_syntax}:BOX")
         self._clear = MessageClear(device, f"{self._cmd_syntax}:CLEAR")

@@ -23,7 +23,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Errorqueue(BaseTSPCmd):
@@ -36,7 +36,7 @@ class Errorqueue(BaseTSPCmd):
     """
 
     def __init__(
-        self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "errorqueue"
+        self, device: Optional["TSPControl"] = None, cmd_syntax: str = "errorqueue"
     ) -> None:
         super().__init__(device, cmd_syntax)
 
@@ -65,7 +65,7 @@ class Errorqueue(BaseTSPCmd):
                 f"print({self._cmd_syntax}.count)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def clear(self) -> None:
@@ -87,7 +87,7 @@ class Errorqueue(BaseTSPCmd):
                 f"{self._cmd_syntax}.clear()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def next(self) -> str:
@@ -113,5 +113,5 @@ class Errorqueue(BaseTSPCmd):
                 f"print({self._cmd_syntax}.next())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.next()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.next()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

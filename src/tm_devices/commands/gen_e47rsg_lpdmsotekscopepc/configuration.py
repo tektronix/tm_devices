@@ -18,7 +18,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ConfigurationAnalogBandwidth(SCPICmdRead):
@@ -51,7 +51,7 @@ class ConfigurationAnalog(SCPICmdRead):
         - ``.bandwidth``: The ``CONFIGuration:ANALOg:BANDWidth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bandwidth = ConfigurationAnalogBandwidth(device, f"{self._cmd_syntax}:BANDWidth")
 
@@ -88,7 +88,7 @@ class Configuration(SCPICmdRead):
     """
 
     def __init__(
-        self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CONFIGuration"
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "CONFIGuration"
     ) -> None:
         super().__init__(device, cmd_syntax)
         self._analog = ConfigurationAnalog(device, f"{self._cmd_syntax}:ANALOg")

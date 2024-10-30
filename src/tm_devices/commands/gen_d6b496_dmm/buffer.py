@@ -25,7 +25,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class BufferWrite(BaseTSPCmd):
@@ -84,7 +84,7 @@ class BufferWrite(BaseTSPCmd):
                 f"{self._cmd_syntax}.format({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.format()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.format()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -387,7 +387,7 @@ class Buffer(BaseTSPCmd):
     UNIT_X = "buffer.UNIT_X"
     """str: Set units of measure to buffer.UNIT_X."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "buffer") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "buffer") -> None:
         super().__init__(device, cmd_syntax)
         self._write = BufferWrite(device, f"{self._cmd_syntax}.write")
 
@@ -425,7 +425,7 @@ class Buffer(BaseTSPCmd):
                 f"{self._cmd_syntax}.clearstats({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clearstats()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clearstats()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def delete(self, buffer_name: str) -> None:
@@ -450,7 +450,7 @@ class Buffer(BaseTSPCmd):
                 f"{self._cmd_syntax}.delete({buffer_name})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def make(self, buffer_size: int, style: Optional[str] = None) -> str:
@@ -488,7 +488,7 @@ class Buffer(BaseTSPCmd):
                 f"print({self._cmd_syntax}.make({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.make()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.make()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def save(
@@ -537,7 +537,7 @@ class Buffer(BaseTSPCmd):
                 f"{self._cmd_syntax}.save({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.save()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.save()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def saveappend(
@@ -588,5 +588,5 @@ class Buffer(BaseTSPCmd):
                 f"{self._cmd_syntax}.saveappend({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.saveappend()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.saveappend()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

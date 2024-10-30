@@ -5,9 +5,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
-from tm_devices.drivers.pi.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_32dszm_awg.awgcontrol import Awgcontrol
 from .gen_32dszm_awg.diagnostic import Diagnostic
@@ -107,7 +108,7 @@ class AWG5KCommands:
         - ``.wlist``: The ``WLISt`` command tree.
     """
 
-    def __init__(self, device: Optional[PIDevice] = None) -> None:
+    def __init__(self, device: Optional[PIControl] = None) -> None:
         self._abort = Abort(device)
         self._awgcontrol = Awgcontrol(device)
         self._cal = Cal(device)
@@ -743,22 +744,16 @@ class AWG5KMixin:
         - ``.commands``: The AWG5K commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIDevice) else None
-        self._command_argument_constants = AWG5KCommandConstants()
-        self._commands = AWG5KCommands(device)
-
-    @property
-    def command_argument_constants(self) -> AWG5KCommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> AWG5KCommandConstants:  # pylint: disable=no-self-use
         """Return the AWG5K command argument constants.
 
         This provides access to all the string constants which can be used as arguments for AWG5K
         commands.
         """
-        return self._command_argument_constants
+        return AWG5KCommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> AWG5KCommands:
         """Return the AWG5K commands.
 
@@ -796,4 +791,5 @@ class AWG5KMixin:
             - ``.wai``: The ``*WAI`` command.
             - ``.wlist``: The ``WLISt`` command tree.
         """
-        return self._commands
+        device = self if isinstance(self, PIControl) else None
+        return AWG5KCommands(device)

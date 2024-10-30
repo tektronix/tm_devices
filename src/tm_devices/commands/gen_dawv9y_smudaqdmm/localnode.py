@@ -30,7 +30,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Localnode(BaseTSPCmd):
@@ -74,7 +74,9 @@ class Localnode(BaseTSPCmd):
     ENABLE = "localnode.ENABLE"
     """str: Generate prompts in response to command messages."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "localnode") -> None:
+    def __init__(
+        self, device: Optional["TSPControl"] = None, cmd_syntax: str = "localnode"
+    ) -> None:
         super().__init__(device, cmd_syntax)
 
     @property
@@ -105,7 +107,7 @@ class Localnode(BaseTSPCmd):
                 f"print({self._cmd_syntax}.access)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.access`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.access`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @access.setter
@@ -139,7 +141,7 @@ class Localnode(BaseTSPCmd):
                     f"{self._cmd_syntax}.access = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.access`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.access`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -168,7 +170,7 @@ class Localnode(BaseTSPCmd):
                 f"print({self._cmd_syntax}.linefreq)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.linefreq`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.linefreq`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -196,7 +198,7 @@ class Localnode(BaseTSPCmd):
                 f"print({self._cmd_syntax}.model)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.model`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.model`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -245,7 +247,7 @@ class Localnode(BaseTSPCmd):
                 f"{self._cmd_syntax}.password = {value}"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.password`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.password`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -276,7 +278,7 @@ class Localnode(BaseTSPCmd):
                 f"print({self._cmd_syntax}.prompts)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.prompts`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.prompts`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @prompts.setter
@@ -310,7 +312,7 @@ class Localnode(BaseTSPCmd):
                     f"{self._cmd_syntax}.prompts = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.prompts`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.prompts`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -342,7 +344,7 @@ class Localnode(BaseTSPCmd):
                 f"print({self._cmd_syntax}.prompts4882)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.prompts4882`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.prompts4882`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @prompts4882.setter
@@ -377,7 +379,7 @@ class Localnode(BaseTSPCmd):
                     f"{self._cmd_syntax}.prompts4882 = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.prompts4882`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.prompts4882`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -405,7 +407,7 @@ class Localnode(BaseTSPCmd):
                 f"print({self._cmd_syntax}.serialno)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.serialno`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.serialno`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -437,7 +439,7 @@ class Localnode(BaseTSPCmd):
                 f"print({self._cmd_syntax}.showevents)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.showevents`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.showevents`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @showevents.setter
@@ -472,7 +474,7 @@ class Localnode(BaseTSPCmd):
                     f"{self._cmd_syntax}.showevents = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.showevents`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.showevents`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -500,7 +502,7 @@ class Localnode(BaseTSPCmd):
                 f"print({self._cmd_syntax}.version)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.version`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.version`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def gettime(self) -> None:
@@ -522,7 +524,7 @@ class Localnode(BaseTSPCmd):
                 f"{self._cmd_syntax}.gettime()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.gettime()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.gettime()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def settime(
@@ -572,5 +574,5 @@ class Localnode(BaseTSPCmd):
                 f"{self._cmd_syntax}.settime({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.settime()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.settime()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

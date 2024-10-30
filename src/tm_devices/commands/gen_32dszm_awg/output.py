@@ -21,7 +21,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, ValidatedDynamicNumberCmd
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class OutputItemState(SCPICmdWrite, SCPICmdRead):
@@ -89,7 +89,7 @@ class OutputItemFilterLpass(SCPICmdRead):
         - ``.frequency``: The ``OUTPut[n]:FILTer:LPASs:FREQuency`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = OutputItemFilterLpassFrequency(device, f"{self._cmd_syntax}:FREQuency")
 
@@ -135,7 +135,7 @@ class OutputItemFilter(SCPICmdRead):
         - ``.lpass``: The ``OUTPut[n]:FILTer:LPASs`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._lpass = OutputItemFilterLpass(device, f"{self._cmd_syntax}:LPASs")
 
@@ -167,7 +167,7 @@ class OutputItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.state``: The ``OUTPut[n]:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "OUTPut[n]") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "OUTPut[n]") -> None:
         super().__init__(device, cmd_syntax)
         self._filter = OutputItemFilter(device, f"{self._cmd_syntax}:FILTer")
         self._state = OutputItemState(device, f"{self._cmd_syntax}:STATe")

@@ -17,25 +17,22 @@ from typing import cast, Dict, Mapping, Optional, Tuple, Type, TYPE_CHECKING, Un
 from typing_extensions import TypeVar
 
 from tm_devices.components import DMConfigParser
-from tm_devices.drivers.api.rest_api.margin_testers.margin_tester import MarginTester
-from tm_devices.drivers.api.rest_api.rest_api_device import RESTAPIDevice
-from tm_devices.drivers.device import Device
-
-# noinspection PyProtectedMember
-from tm_devices.drivers.device_driver_mapping import (
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.drivers._device_driver_mapping import (
     _DEVICE_DRIVER_MODEL_STR_MAPPING,  # pyright: ignore[reportPrivateUsage]
 )
-from tm_devices.drivers.pi.data_acquisition_systems.data_acquisition_system import (
+from tm_devices.drivers.afgs.afg import AFG
+from tm_devices.drivers.awgs.awg import AWG
+from tm_devices.drivers.data_acquisition_systems.data_acquisition_system import (
     DataAcquisitionSystem,
 )
-from tm_devices.drivers.pi.digital_multimeters.digital_multimeter import DigitalMultimeter
-from tm_devices.drivers.pi.pi_device import PIDevice
-from tm_devices.drivers.pi.power_supplies.power_supply import PowerSupplyUnit
-from tm_devices.drivers.pi.scopes.scope import Scope
-from tm_devices.drivers.pi.signal_generators.afgs.afg import AFG
-from tm_devices.drivers.pi.signal_generators.awgs.awg import AWG
-from tm_devices.drivers.pi.source_measure_units.source_measure_unit import SourceMeasureUnit
-from tm_devices.drivers.pi.systems_switches.systems_switch import SystemsSwitch
+from tm_devices.drivers.device import Device
+from tm_devices.drivers.digital_multimeters.digital_multimeter import DigitalMultimeter
+from tm_devices.drivers.margin_testers.margin_tester import MarginTester
+from tm_devices.drivers.power_supplies.power_supply import PowerSupplyUnit
+from tm_devices.drivers.scopes.scope import Scope
+from tm_devices.drivers.source_measure_units.source_measure_unit import SourceMeasureUnit
+from tm_devices.drivers.systems_switches.systems_switch import SystemsSwitch
 from tm_devices.helpers import (
     AliasDict,
     check_for_update,
@@ -136,7 +133,7 @@ class DeviceManager(metaclass=Singleton):
         # Set up the DeviceManager
         self.__is_open = False
         self.__verbose_visa = False
-        self.__devices: Dict[str, Union[PIDevice, RESTAPIDevice]] = AliasDict()
+        self.__devices: Dict[str, Device] = AliasDict()
         self._external_device_drivers = external_device_drivers
         # initialize for __set_options()
         self.__verbose: bool = NotImplemented
@@ -198,7 +195,7 @@ class DeviceManager(metaclass=Singleton):
         self.__default_visa_timeout = value
 
     @property
-    def devices(self) -> Mapping[str, Union[RESTAPIDevice, PIDevice]]:
+    def devices(self) -> Mapping[str, Device]:
         """Return the dictionary of devices."""
         return MappingProxyType(self.__devices)
 
@@ -850,7 +847,7 @@ class DeviceManager(metaclass=Singleton):
         device_type: Optional[str] = None,
         device_number: Optional[Union[int, str]] = None,
         alias: Optional[str] = None,
-    ) -> Union[RESTAPIDevice, PIDevice]:
+    ) -> Device:
         """Get the driver for the given device.
 
         Either `device_type` and `device_number` or `alias` must be provided when using this method.
@@ -1118,7 +1115,7 @@ class DeviceManager(metaclass=Singleton):
         serial_config: Optional[SerialConfig] = None,
         device_driver: Optional[str] = None,
         gpib_board_number: Optional[int] = None,
-    ) -> Union[RESTAPIDevice, PIDevice]:
+    ) -> Device:
         """Add a device to the DeviceManager.
 
         Args:
@@ -1248,7 +1245,7 @@ class DeviceManager(metaclass=Singleton):
         device_config_name: str,
         device_config: DeviceConfigEntry,
         warning_stacklevel: int,
-    ) -> Union[RESTAPIDevice, PIDevice]:
+    ) -> Device:
         """Create a new device driver and add it to the device dictionary.
 
         Args:
@@ -1282,10 +1279,10 @@ class DeviceManager(metaclass=Singleton):
                 stacklevel=warning_stacklevel,
             )
         print_with_timestamp(f"Creating Connection to {device_config_name}{alias_string}")
-        new_device: Union[RESTAPIDevice, PIDevice]
+        new_device: Device
         if device_config.connection_type == ConnectionTypes.REST_API:
             device_driver_class = device_drivers[str(device_config.device_driver)]
-            new_device = cast(RESTAPIDevice, device_driver_class(device_config, self.__verbose))
+            new_device = device_driver_class(device_config, self.__verbose)
         else:
             # Create VISA connection and determine proper device driver
             try:
@@ -1369,7 +1366,7 @@ class DeviceManager(metaclass=Singleton):
         visa_resource: MessageBasedResource,
         device_config: DeviceConfigEntry,
         device_drivers: Mapping[str, Type[Device]],
-    ) -> PIDevice:
+    ) -> Device:
         """Select the correct VISA device driver based on the ``*IDN?`` response.
 
         Be sure to handle removing the device from the config on a SystemError.
@@ -1389,7 +1386,7 @@ class DeviceManager(metaclass=Singleton):
         model_series = ""
         try:
             model_series = get_model_series(idn_response.split(",")[1])
-            device_driver = cast(Type[PIDevice], device_drivers[model_series])
+            device_driver = cast(Type[PIControl], device_drivers[model_series])
             new_device = device_driver(
                 device_config,
                 self.__verbose,
@@ -1404,7 +1401,7 @@ class DeviceManager(metaclass=Singleton):
             message += f" *IDN? returned {idn_response!r}"
             raise SystemError(message) from error
 
-        return new_device
+        return cast(Device, new_device)
 
     def __set_options(self, verbose: bool) -> None:
         """Set the options for the DeviceManager.

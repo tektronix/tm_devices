@@ -19,7 +19,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DisplayPlotState(SCPICmdWrite, SCPICmdRead):
@@ -59,7 +59,7 @@ class DisplayPlot(SCPICmdRead):
         - ``.state``: The ``DISPlay:PLOT:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DisplayPlotState(device, f"{self._cmd_syntax}:STATe")
 
@@ -102,7 +102,7 @@ class Display(SCPICmdRead):
         - ``.plot``: The ``DISPlay:PLOT`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DISPlay") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DISPlay") -> None:
         super().__init__(device, cmd_syntax)
         self._plot = DisplayPlot(device, f"{self._cmd_syntax}:PLOT")
 

@@ -208,7 +208,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class TriggerState(SCPICmdRead):
@@ -294,7 +294,7 @@ class TriggerHysteresisUser(SCPICmdRead):
         - ``.value``: The ``TRIGger:HYSTeresis:USER:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = TriggerHysteresisUserState(device, f"{self._cmd_syntax}:STATe")
         self._value = TriggerHysteresisUserValue(device, f"{self._cmd_syntax}:VALue")
@@ -366,7 +366,7 @@ class TriggerHysteresis(SCPICmdRead):
         - ``.user``: The ``TRIGger:HYSTeresis:USER`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._user = TriggerHysteresisUser(device, f"{self._cmd_syntax}:USER")
 
@@ -449,7 +449,7 @@ class TriggerAUpperthreshold(SCPICmdRead):
         - ``.ch``: The ``TRIGger:A:UPPerthreshold:CH<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, TriggerAUpperthresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerAUpperthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -618,7 +618,7 @@ class TriggerATimeout(SCPICmdRead):
         - ``.time``: The ``TRIGger:A:TIMEOut:TIMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._polarity = TriggerATimeoutPolarity(device, f"{self._cmd_syntax}:POLarity")
         self._source = TriggerATimeoutSource(device, f"{self._cmd_syntax}:SOUrce")
@@ -833,7 +833,7 @@ class TriggerASetholdClock(SCPICmdRead):
         - ``.source``: The ``TRIGger:A:SETHold:CLOCk:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._edge = TriggerASetholdClockEdge(device, f"{self._cmd_syntax}:EDGE")
         self._source = TriggerASetholdClockSource(device, f"{self._cmd_syntax}:SOUrce")
@@ -907,7 +907,7 @@ class TriggerASethold(SCPICmdRead):
         - ``.settime``: The ``TRIGger:A:SETHold:SETTime`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._clock = TriggerASetholdClock(device, f"{self._cmd_syntax}:CLOCk")
         self._holdtime = TriggerASetholdHoldtime(device, f"{self._cmd_syntax}:HOLDTime")
@@ -1029,7 +1029,7 @@ class TriggerASetholdlogicvalDchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.d``: The ``TRIGger:A:SETHOLDLOGICVAL:DCH<x>_D<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._d: Dict[int, TriggerASetholdlogicvalDchItemDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: TriggerASetholdlogicvalDchItemDigitalBit(device, f"{self._cmd_syntax}_D{x}")
@@ -1080,7 +1080,7 @@ class TriggerASetholdlogicval(SCPICmdRead):
         - ``.dch``: The ``TRIGger:A:SETHOLDLOGICVAL:DCH<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dch: Dict[int, TriggerASetholdlogicvalDchItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerASetholdlogicvalDchItem(device, f"{self._cmd_syntax}:DCH{x}")
@@ -1227,7 +1227,7 @@ class TriggerARunt(SCPICmdRead):
         - ``.width``: The ``TRIGger:A:RUNT:WIDth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._polarity = TriggerARuntPolarity(device, f"{self._cmd_syntax}:POLarity")
         self._source = TriggerARuntSource(device, f"{self._cmd_syntax}:SOUrce")
@@ -1514,7 +1514,7 @@ class TriggerAPulsewidth(SCPICmdRead):
         - ``.when``: The ``TRIGger:A:PULSEWidth:WHEn`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._highlimit = TriggerAPulsewidthHighlimit(device, f"{self._cmd_syntax}:HIGHLimit")
         self._lowlimit = TriggerAPulsewidthLowlimit(device, f"{self._cmd_syntax}:LOWLimit")
@@ -1737,7 +1737,7 @@ class TriggerALowerthreshold(SCPICmdRead):
         - ``.ch``: The ``TRIGger:A:LOWerthreshold:CH<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, TriggerALowerthresholdChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALowerthresholdChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -1900,7 +1900,7 @@ class TriggerALogicInputClock(SCPICmdRead):
         - ``.source``: The ``TRIGger:A:LOGIc:INPut:CLOCk:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._source = TriggerALogicInputClockSource(device, f"{self._cmd_syntax}:SOUrce")
 
@@ -1947,7 +1947,7 @@ class TriggerALogicInput(SCPICmdRead):
         - ``.clock``: The ``TRIGger:A:LOGIc:INPut:CLOCk`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._clock = TriggerALogicInputClock(device, f"{self._cmd_syntax}:CLOCk")
 
@@ -2038,7 +2038,7 @@ class TriggerALogic(SCPICmdRead):
         - ``.when``: The ``TRIGger:A:LOGIc:WHEn`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._deltatime = TriggerALogicDeltatime(device, f"{self._cmd_syntax}:DELTatime")
         self._function = TriggerALogicFunction(device, f"{self._cmd_syntax}:FUNCtion")
@@ -2256,7 +2256,7 @@ class TriggerALogicpatternDchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.d``: The ``TRIGger:A:LOGICPattern:DCH<x>_D<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._d: Dict[int, TriggerALogicpatternDchItemDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALogicpatternDchItemDigitalBit(device, f"{self._cmd_syntax}_D{x}")
@@ -2338,7 +2338,7 @@ class TriggerALogicpattern(SCPICmdRead):
         - ``.dch``: The ``TRIGger:A:LOGICPattern:DCH<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, TriggerALogicpatternChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALogicpatternChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -2430,7 +2430,7 @@ class TriggerALevel(SCPICmdRead):
         - ``.ch``: The ``TRIGger:A:LEVel:CH<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, TriggerALevelChannel] = DefaultDictPassKeyToFactory(
             lambda x: TriggerALevelChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -2503,7 +2503,7 @@ class TriggerAHoldoff(SCPICmdRead):
         - ``.time``: The ``TRIGger:A:HOLDoff:TIMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._time = TriggerAHoldoffTime(device, f"{self._cmd_syntax}:TIMe")
 
@@ -2640,7 +2640,7 @@ class TriggerAEdge(SCPICmdRead):
         - ``.source``: The ``TRIGger:A:EDGE:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._coupling = TriggerAEdgeCoupling(device, f"{self._cmd_syntax}:COUPling")
         self._slope = TriggerAEdgeSlope(device, f"{self._cmd_syntax}:SLOpe")
@@ -2831,7 +2831,7 @@ class TriggerABusBItemSpiData(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:SPI:DATa:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._size = TriggerABusBItemSpiDataSize(device, f"{self._cmd_syntax}:SIZe")
         self._value = TriggerABusBItemSpiDataValue(device, f"{self._cmd_syntax}:VALue")
@@ -2936,7 +2936,7 @@ class TriggerABusBItemSpi(SCPICmdRead):
         - ``.data``: The ``TRIGger:A:BUS:B<x>:SPI:DATa`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._condition = TriggerABusBItemSpiCondition(device, f"{self._cmd_syntax}:CONDition")
         self._data = TriggerABusBItemSpiData(device, f"{self._cmd_syntax}:DATa")
@@ -3030,7 +3030,7 @@ class TriggerABusBItemSentSlowIdentifier(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = TriggerABusBItemSentSlowIdentifierValue(device, f"{self._cmd_syntax}:VALue")
 
@@ -3167,7 +3167,7 @@ class TriggerABusBItemSentSlowData(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hivalue = TriggerABusBItemSentSlowDataHivalue(device, f"{self._cmd_syntax}:HIVALue")
         self._qualifier = TriggerABusBItemSentSlowDataQualifier(
@@ -3280,7 +3280,7 @@ class TriggerABusBItemSentSlow(SCPICmdRead):
         - ``.identifier``: The ``TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._data = TriggerABusBItemSentSlowData(device, f"{self._cmd_syntax}:DATA")
         self._identifier = TriggerABusBItemSentSlowIdentifier(
@@ -3368,7 +3368,7 @@ class TriggerABusBItemSentPause(SCPICmdRead):
         - ``.qualifier``: The ``TRIGger:A:BUS:B<x>:SENT:PAUSE:QUALifier`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._qualifier = TriggerABusBItemSentPauseQualifier(
             device, f"{self._cmd_syntax}:QUALifier"
@@ -3450,7 +3450,7 @@ class TriggerABusBItemSentFastStatus(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:SENT:FAST:STATus:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = TriggerABusBItemSentFastStatusValue(device, f"{self._cmd_syntax}:VALue")
 
@@ -3524,7 +3524,7 @@ class TriggerABusBItemSentFastInvertnibble(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = TriggerABusBItemSentFastInvertnibbleValue(device, f"{self._cmd_syntax}:VALue")
 
@@ -3663,7 +3663,7 @@ class TriggerABusBItemSentFastCounter(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hivalue = TriggerABusBItemSentFastCounterHivalue(
             device, f"{self._cmd_syntax}:HIVALue"
@@ -3872,7 +3872,7 @@ class TriggerABusBItemSentFastChan2b(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hivalue = TriggerABusBItemSentFastChan2bHivalue(device, f"{self._cmd_syntax}:HIVALue")
         self._qualifier = TriggerABusBItemSentFastChan2bQualifier(
@@ -4078,7 +4078,7 @@ class TriggerABusBItemSentFastChan1a(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hivalue = TriggerABusBItemSentFastChan1aHivalue(device, f"{self._cmd_syntax}:HIVALue")
         self._qualifier = TriggerABusBItemSentFastChan1aQualifier(
@@ -4194,7 +4194,7 @@ class TriggerABusBItemSentFast(SCPICmdRead):
         - ``.status``: The ``TRIGger:A:BUS:B<x>:SENT:FAST:STATus`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._chan1a = TriggerABusBItemSentFastChan1a(device, f"{self._cmd_syntax}:CHAN1A")
         self._chan2b = TriggerABusBItemSentFastChan2b(device, f"{self._cmd_syntax}:CHAN2B")
@@ -4345,7 +4345,7 @@ class TriggerABusBItemSentErrtype(SCPICmdWrite, SCPICmdRead):
         - ``.crc``: The ``TRIGger:A:BUS:B<x>:SENT:ERRType:CRC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._crc = TriggerABusBItemSentErrtypeCrc(device, f"{self._cmd_syntax}:CRC")
 
@@ -4427,7 +4427,7 @@ class TriggerABusBItemSent(SCPICmdRead):
         - ``.slow``: The ``TRIGger:A:BUS:B<x>:SENT:SLOW`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._condition = TriggerABusBItemSentCondition(device, f"{self._cmd_syntax}:CONDition")
         self._errtype = TriggerABusBItemSentErrtype(device, f"{self._cmd_syntax}:ERRType")
@@ -4613,7 +4613,7 @@ class TriggerABusBItemRs232cData(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:RS232C:DATa:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._size = TriggerABusBItemRs232cDataSize(device, f"{self._cmd_syntax}:SIZe")
         self._value = TriggerABusBItemRs232cDataValue(device, f"{self._cmd_syntax}:VALue")
@@ -4718,7 +4718,7 @@ class TriggerABusBItemRs232c(SCPICmdRead):
         - ``.data``: The ``TRIGger:A:BUS:B<x>:RS232C:DATa`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._condition = TriggerABusBItemRs232cCondition(device, f"{self._cmd_syntax}:CONDition")
         self._data = TriggerABusBItemRs232cData(device, f"{self._cmd_syntax}:DATa")
@@ -4811,7 +4811,7 @@ class TriggerABusBItemParallelData(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:PARallel:DATa:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = TriggerABusBItemParallelDataValue(device, f"{self._cmd_syntax}:VALue")
 
@@ -4856,7 +4856,7 @@ class TriggerABusBItemParallel(SCPICmdRead):
         - ``.data``: The ``TRIGger:A:BUS:B<x>:PARallel:DATa`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._data = TriggerABusBItemParallelData(device, f"{self._cmd_syntax}:DATa")
 
@@ -4919,7 +4919,7 @@ class TriggerABusBItemLinIdentifier(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:LIN:IDentifier:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = TriggerABusBItemLinIdentifierValue(device, f"{self._cmd_syntax}:VALue")
 
@@ -5111,7 +5111,7 @@ class TriggerABusBItemLinData(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:LIN:DATa:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hivalue = TriggerABusBItemLinDataHivalue(device, f"{self._cmd_syntax}:HIVALue")
         self._qualifier = TriggerABusBItemLinDataQualifier(device, f"{self._cmd_syntax}:QUALifier")
@@ -5285,7 +5285,7 @@ class TriggerABusBItemLin(SCPICmdRead):
         - ``.identifier``: The ``TRIGger:A:BUS:B<x>:LIN:IDentifier`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._condition = TriggerABusBItemLinCondition(device, f"{self._cmd_syntax}:CONDition")
         self._data = TriggerABusBItemLinData(device, f"{self._cmd_syntax}:DATa")
@@ -5486,7 +5486,7 @@ class TriggerABusBItemI2cData(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:I2C:DATa:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._direction = TriggerABusBItemI2cDataDirection(device, f"{self._cmd_syntax}:DIRection")
         self._size = TriggerABusBItemI2cDataSize(device, f"{self._cmd_syntax}:SIZe")
@@ -5683,7 +5683,7 @@ class TriggerABusBItemI2cAddress(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:I2C:ADDRess:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = TriggerABusBItemI2cAddressMode(device, f"{self._cmd_syntax}:MODe")
         self._value = TriggerABusBItemI2cAddressValue(device, f"{self._cmd_syntax}:VALue")
@@ -5761,7 +5761,7 @@ class TriggerABusBItemI2c(SCPICmdRead):
         - ``.data``: The ``TRIGger:A:BUS:B<x>:I2C:DATa`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._address = TriggerABusBItemI2cAddress(device, f"{self._cmd_syntax}:ADDRess")
         self._condition = TriggerABusBItemI2cCondition(device, f"{self._cmd_syntax}:CONDition")
@@ -5906,7 +5906,7 @@ class TriggerABusBItemCanIdentifier(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:CAN:IDentifier:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = TriggerABusBItemCanIdentifierMode(device, f"{self._cmd_syntax}:MODe")
         self._value = TriggerABusBItemCanIdentifierValue(device, f"{self._cmd_syntax}:VALue")
@@ -6075,7 +6075,7 @@ class TriggerABusBItemCanFd(SCPICmdRead):
         - ``.esibit``: The ``TRIGger:A:BUS:B<x>:CAN:FD:ESIBit`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._brsbit = TriggerABusBItemCanFdBrsbit(device, f"{self._cmd_syntax}:BRSBit")
         self._esibit = TriggerABusBItemCanFdEsibit(device, f"{self._cmd_syntax}:ESIBit")
@@ -6342,7 +6342,7 @@ class TriggerABusBItemCanData(SCPICmdRead):
         - ``.value``: The ``TRIGger:A:BUS:B<x>:CAN:DATa:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._direction = TriggerABusBItemCanDataDirection(device, f"{self._cmd_syntax}:DIRection")
         self._offset = TriggerABusBItemCanDataOffset(device, f"{self._cmd_syntax}:OFFSet")
@@ -6561,7 +6561,7 @@ class TriggerABusBItemCan(SCPICmdRead):
         - ``.identifier``: The ``TRIGger:A:BUS:B<x>:CAN:IDentifier`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._condition = TriggerABusBItemCanCondition(device, f"{self._cmd_syntax}:CONDition")
         self._data = TriggerABusBItemCanData(device, f"{self._cmd_syntax}:DATa")
@@ -6738,7 +6738,7 @@ class TriggerABusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.spi``: The ``TRIGger:A:BUS:B<x>:SPI`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._can = TriggerABusBItemCan(device, f"{self._cmd_syntax}:CAN")
         self._i2c = TriggerABusBItemI2c(device, f"{self._cmd_syntax}:I2C")
@@ -6879,7 +6879,7 @@ class TriggerABus(SCPICmdRead):
         - ``.source``: The ``TRIGger:A:BUS:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._b: Dict[int, TriggerABusBItem] = DefaultDictPassKeyToFactory(
             lambda x: TriggerABusBItem(device, f"{self._cmd_syntax}:B{x}")
@@ -6977,7 +6977,7 @@ class TriggerA(SCPICmdWrite, SCPICmdRead):
         - ``.upperthreshold``: The ``TRIGger:A:UPPerthreshold`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bus = TriggerABus(device, f"{self._cmd_syntax}:BUS")
         self._edge = TriggerAEdge(device, f"{self._cmd_syntax}:EDGE")
@@ -7299,7 +7299,7 @@ class Trigger(SCPICmdWrite, SCPICmdRead):
         - ``.state``: The ``TRIGger:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "TRIGger") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "TRIGger") -> None:
         super().__init__(device, cmd_syntax)
         self._a = TriggerA(device, f"{self._cmd_syntax}:A")
         self._auxlevel = TriggerAuxlevel(device, f"{self._cmd_syntax}:AUXLevel")

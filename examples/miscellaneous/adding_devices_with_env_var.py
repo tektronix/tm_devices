@@ -7,6 +7,7 @@ to execute the Python script.
 import os
 
 from tm_devices import DeviceManager
+from tm_devices.drivers import AFG31K, MSO2, SMU2601B
 
 # Indicate to use the PyVISA-py backend rather than any installed VISA backends.
 os.environ["TM_OPTIONS"] = "STANDALONE"
@@ -21,22 +22,22 @@ os.environ["TM_DEVICES"] = (
 
 with DeviceManager(verbose=True) as dm:
     # Scope
-    scope = dm.get_scope(1)
-    print(scope.query("IDN?"))
+    scope: MSO2 = dm.get_scope(1)
+    print(scope.query("*IDN?"))
 
     # Set horizontal scale and verify success
     scope.set_and_check(":HORIZONTAL:SCALE", 400e-9)
     scope.expect_esr(0)
 
     # AFG
-    afg = dm.get_afg(1)
+    afg: AFG31K = dm.get_afg(1)
     print(afg.idn_string)
 
     # Turn on AFG and verify success
     afg.set_and_check(":OUTPUT1:STATE", "1")
 
     # SMU
-    smu = dm.get_smu(1)
+    smu: SMU2601B = dm.get_smu(1)
 
     # Get device information
     print(smu.query("print(localnode.model)"))

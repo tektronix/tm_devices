@@ -15,7 +15,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 # pylint: disable=too-few-public-methods
@@ -29,5 +29,7 @@ class Dataqueue(BaseTSPCmd):
     CAPACITY = "dataqueue.CAPACITY"
     """str: The maximum number of entries that you can store in the data queue."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "dataqueue") -> None:
+    def __init__(
+        self, device: Optional["TSPControl"] = None, cmd_syntax: str = "dataqueue"
+    ) -> None:
         super().__init__(device, cmd_syntax)

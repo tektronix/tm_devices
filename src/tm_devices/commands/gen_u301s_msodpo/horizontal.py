@@ -47,7 +47,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class HorizontalTriggerPosition(SCPICmdWriteNoArguments, SCPICmdRead):
@@ -83,7 +83,7 @@ class HorizontalTrigger(SCPICmdRead):
         - ``.position``: The ``HORizontal:TRIGger:POSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = HorizontalTriggerPosition(device, f"{self._cmd_syntax}:POSition")
 
@@ -285,7 +285,7 @@ class HorizontalMainUnits(SCPICmdRead):
         - ``.string``: The ``HORizontal:MAIn:UNIts:STRing`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._string = HorizontalMainUnitsString(device, f"{self._cmd_syntax}:STRing")
 
@@ -376,7 +376,7 @@ class HorizontalMain(SCPICmdRead):
         - ``.scale``: The ``HORizontal:MAIn:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._samplerate = HorizontalMainSamplerate(device, f"{self._cmd_syntax}:SAMPLERate")
         self._units = HorizontalMainUnits(device, f"{self._cmd_syntax}:UNIts")
@@ -502,7 +502,7 @@ class HorizontalDigitalSamplerate(SCPICmdRead):
         - ``.main``: The ``HORizontal:DIGital:SAMPLERate:MAIN`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._magnivu = HorizontalDigitalSamplerateMagnivu(device, f"{self._cmd_syntax}:MAGnivu")
         self._main = HorizontalDigitalSamplerateMain(device, f"{self._cmd_syntax}:MAIN")
@@ -603,7 +603,7 @@ class HorizontalDigitalRecordlength(SCPICmdRead):
         - ``.main``: The ``HORizontal:DIGital:RECOrdlength:MAIN`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._magnivu = HorizontalDigitalRecordlengthMagnivu(device, f"{self._cmd_syntax}:MAGnivu")
         self._main = HorizontalDigitalRecordlengthMain(device, f"{self._cmd_syntax}:MAIN")
@@ -664,7 +664,7 @@ class HorizontalDigital(SCPICmdRead):
         - ``.samplerate``: The ``HORizontal:DIGital:SAMPLERate`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._recordlength = HorizontalDigitalRecordlength(
             device, f"{self._cmd_syntax}:RECOrdlength"
@@ -787,7 +787,7 @@ class HorizontalDelay(SCPICmdRead):
         - ``.time``: The ``HORizontal:DELay:TIMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = HorizontalDelayMode(device, f"{self._cmd_syntax}:MODe")
         self._position = HorizontalDelayPosition(device, f"{self._cmd_syntax}:POSition")
@@ -920,7 +920,9 @@ class Horizontal(SCPICmdRead):
         - ``.trigger``: The ``HORizontal:TRIGger`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "HORizontal") -> None:
+    def __init__(
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "HORizontal"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._acqlength = HorizontalAcqlength(device, f"{self._cmd_syntax}:ACQLENGTH")
         self._delay = HorizontalDelay(device, f"{self._cmd_syntax}:DELay")

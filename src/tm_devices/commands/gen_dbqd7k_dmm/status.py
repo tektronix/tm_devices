@@ -35,7 +35,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class StatusStandard(BaseTSPCmd):
@@ -75,7 +75,7 @@ class StatusStandard(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -110,7 +110,7 @@ class StatusStandard(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -139,7 +139,7 @@ class StatusStandard(BaseTSPCmd):
                 f"print({self._cmd_syntax}.event)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -179,7 +179,7 @@ class StatusQuestionable(BaseTSPCmd):
                 f"print({self._cmd_syntax}.condition)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -211,7 +211,7 @@ class StatusQuestionable(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -246,7 +246,7 @@ class StatusQuestionable(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -274,7 +274,7 @@ class StatusQuestionable(BaseTSPCmd):
                 f"print({self._cmd_syntax}.event)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def getmap(self, bit_number: int) -> str:
@@ -303,7 +303,7 @@ class StatusQuestionable(BaseTSPCmd):
                 f"print({self._cmd_syntax}.getmap({bit_number}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getmap()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getmap()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setmap(self, bit_number: int, set_event: int, clear_event: Optional[int] = None) -> None:
@@ -341,7 +341,7 @@ class StatusQuestionable(BaseTSPCmd):
                 f"{self._cmd_syntax}.setmap({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setmap()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setmap()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -381,7 +381,7 @@ class StatusOperation(BaseTSPCmd):
                 f"print({self._cmd_syntax}.condition)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -413,7 +413,7 @@ class StatusOperation(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -448,7 +448,7 @@ class StatusOperation(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -476,7 +476,7 @@ class StatusOperation(BaseTSPCmd):
                 f"print({self._cmd_syntax}.event)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.event`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def getmap(self, bit_number: int) -> str:
@@ -505,7 +505,7 @@ class StatusOperation(BaseTSPCmd):
                 f"print({self._cmd_syntax}.getmap({bit_number}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getmap()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getmap()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setmap(self, bit_number: int, set_event: int, clear_event: Optional[int] = None) -> None:
@@ -543,7 +543,7 @@ class StatusOperation(BaseTSPCmd):
                 f"{self._cmd_syntax}.setmap({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setmap()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setmap()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -560,7 +560,7 @@ class Status(BaseTSPCmd):
         - ``.standard``: The ``status.standard`` command tree.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "status") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "status") -> None:
         super().__init__(device, cmd_syntax)
         self._operation = StatusOperation(device, f"{self._cmd_syntax}.operation")
         self._questionable = StatusQuestionable(device, f"{self._cmd_syntax}.questionable")
@@ -591,7 +591,7 @@ class Status(BaseTSPCmd):
                 f"print({self._cmd_syntax}.condition)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.condition`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -648,7 +648,7 @@ class Status(BaseTSPCmd):
                 f"print({self._cmd_syntax}.request_enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.request_enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.request_enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @request_enable.setter
@@ -682,7 +682,7 @@ class Status(BaseTSPCmd):
                     f"{self._cmd_syntax}.request_enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.request_enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.request_enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -714,7 +714,7 @@ class Status(BaseTSPCmd):
                 f"{self._cmd_syntax}.clear()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def preset(self) -> None:
@@ -736,5 +736,5 @@ class Status(BaseTSPCmd):
                 f"{self._cmd_syntax}.preset()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.preset()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.preset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

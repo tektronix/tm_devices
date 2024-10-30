@@ -18,7 +18,7 @@ from conftest import UNIT_TEST_TIMEOUT
 from tm_devices import DeviceManager
 
 if TYPE_CHECKING:
-    from tm_devices.drivers import SMU2460, SMU2601B
+    from tm_devices.drivers import SMU2401, SMU2460, SMU2601B, SMU6430
 
 
 # pylint: disable=too-many-locals
@@ -96,10 +96,10 @@ def test_smu(  # noqa: PLR0915
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
         smu.query_expect_timeout("INVALID?", timeout_ms=1)
-    assert smu.expect_esr(32, "Command error,No Error")[0]
+    assert smu.expect_esr(32, ("Command error", "No Error"))
 
     with pytest.raises(AssertionError):
-        smu.expect_esr(32, "ERROR")
+        smu.expect_esr(32, ("ERROR",))
 
     tspieee = smu._ieee_cmds  # noqa: SLF001
 
@@ -140,7 +140,7 @@ def test_smu(  # noqa: PLR0915
     )
     print(smu)
     expected_stdout = f"""{'=' * 45} SMU {smu.device_number} {'=' * 45}
-  <class 'tm_devices.drivers.pi.source_measure_units.smu26xx.smu2601b.SMU2601B'> object at {id(smu)}
+  <class 'tm_devices.drivers.source_measure_units.smu26xx.smu2601b.SMU2601B'> object at {id(smu)}
     address='SMU2601B-HOSTNAME'
     alias='SMU-DEVICE'
     all_channel_names_list=('a',)
@@ -179,9 +179,6 @@ def test_smu(  # noqa: PLR0915
     assert smu.address == "SMU2601B-HOSTNAME"
     assert smu.alias == "SMU-DEVICE"
     assert smu.connection_type == "TCPIP"
-    assert smu.verify_values(expected_value="True", actual_value="True")
-    with pytest.raises(AssertionError):
-        smu.verify_values(expected_value="0.1", actual_value="0.2", percentage=True, log_error=True)
     with mock.patch("socket.socket.connect", mock.MagicMock(return_value=None)), mock.patch(
         "socket.socket.shutdown", mock.MagicMock(return_value=None)
     ):
@@ -232,13 +229,6 @@ def test_smu(  # noqa: PLR0915
 
     filepath = f"./temp_test_{sys.version_info.major}{sys.version_info.minor}.csv"
 
-    # TODO: remove this deprecation check in v3
-    with mock.patch(
-        "tm_devices.drivers.pi.tsp_device.TSPDevice.export_buffers", mock.MagicMock()
-    ) as mock_obj, pytest.warns(DeprecationWarning, match=r"Use export_buffers\(\.\.\.\) instead"):
-        smu.write_buffers(filepath, "smua.nvbuffer1")
-        assert mock_obj.called
-
     try:
         smu.export_buffers(filepath, "smua.nvbuffer1")
         assert os.path.exists(filepath)  # noqa: PTH110
@@ -262,7 +252,7 @@ def test_smu(  # noqa: PLR0915
     smu.enable_verification = False
     assert smu.set_and_check("status.request_enable", 1) == ""
 
-    with pytest.raises(AssertionError, match="No error string was provided"):
+    with pytest.raises(AssertionError, match="error code 0 != 1"):
         smu.expect_esr(1)
 
 
@@ -287,7 +277,7 @@ def test_smu2450(device_manager: DeviceManager, capsys: pytest.CaptureFixture[st
         mock.MagicMock(side_effect=visa.errors.Error("custom error")),
     ), pytest.raises(visa.errors.Error):
         smu.query_expect_timeout("INVALID?", timeout_ms=1)
-    assert smu.expect_esr(32, "Command error,No Error")[0]
+    assert smu.expect_esr(32, ("Command error", "No Error"))
     assert smu.all_channel_names_list == ("OUTPUT1",)
 
 
@@ -297,17 +287,9 @@ def test_smu2401(device_manager: DeviceManager) -> None:
     Args:
         device_manager: The DeviceManager object.
     """
-    smu = device_manager.add_smu("SMU2401-HOSTNAME")
-    assert smu.get_eventlog_status() == (True, '0,"No error"')
+    smu: SMU2401 = device_manager.add_smu("SMU2401-HOSTNAME")
+    assert smu.get_errors() == (0, ('0,"No error"',))
     assert smu.set_and_check("OUTPUT1:STATE", 1) == "1"
-    with pytest.raises(
-        NotImplementedError, match="This functionality is not available on the SMU2401 instrument."
-    ):
-        smu.run_script("name")
-    with pytest.raises(
-        NotImplementedError, match="This functionality is not available on the SMU2401 instrument."
-    ):
-        smu.load_script("name")
     assert smu.all_channel_names_list == ("OUTPUT1",)
 
 
@@ -317,15 +299,7 @@ def test_smu6430(device_manager: DeviceManager) -> None:
     Args:
         device_manager: The DeviceManager object.
     """
-    smu = device_manager.add_smu("SMU6430-HOSTNAME")
-    assert smu.get_eventlog_status() == (True, '0,"No error"')
+    smu: SMU6430 = device_manager.add_smu("SMU6430-HOSTNAME")
+    assert smu.get_errors() == (0, ('0,"No error"',))
     assert smu.set_and_check("OUTPUT1:STATE", 1) == "1"
-    with pytest.raises(
-        NotImplementedError, match="This functionality is not available on the SMU6430 instrument."
-    ):
-        smu.run_script("name")
-    with pytest.raises(
-        NotImplementedError, match="This functionality is not available on the SMU6430 instrument."
-    ):
-        smu.load_script("name")
     assert smu.all_channel_names_list == ("SOURCE1",)

@@ -7,9 +7,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
-from tm_devices.drivers.pi.tsp_device import TSPDevice
+from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_ahkybr_smu.beeper import Beeper
 from .gen_ahkybr_smu.buffervar import Buffervar
@@ -699,7 +700,7 @@ class SMU2657ACommands:
         - ``.waitcomplete()``: The ``waitcomplete()`` function.
     """
 
-    def __init__(self, device: Optional[TSPDevice] = None) -> None:
+    def __init__(self, device: Optional[TSPControl] = None) -> None:
         self._device = device
         self._beeper = Beeper(device)
         self._bit = Bit(device)
@@ -1573,7 +1574,7 @@ class SMU2657ACommands:
                 f"print(ConfigPulseIMeasureV({function_args}))"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``ConfigPulseIMeasureV()`` function."  # noqa: E501
+            msg = "No TSPControl object was provided, unable to run the ``ConfigPulseIMeasureV()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     # pylint: disable=too-many-arguments,too-many-locals
@@ -1658,7 +1659,7 @@ class SMU2657ACommands:
                 f"print(ConfigPulseIMeasureVSweepLin({function_args}))"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``ConfigPulseIMeasureVSweepLin()`` function."  # noqa: E501
+            msg = "No TSPControl object was provided, unable to run the ``ConfigPulseIMeasureVSweepLin()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     # pylint: disable=too-many-arguments,too-many-locals
@@ -1743,7 +1744,7 @@ class SMU2657ACommands:
                 f"print(ConfigPulseIMeasureVSweepLog({function_args}))"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``ConfigPulseIMeasureVSweepLog()`` function."  # noqa: E501
+            msg = "No TSPControl object was provided, unable to run the ``ConfigPulseIMeasureVSweepLog()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     # pylint: disable=too-many-arguments,too-many-locals
@@ -1825,7 +1826,7 @@ class SMU2657ACommands:
                 f"print(ConfigPulseVMeasureI({function_args}))"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``ConfigPulseVMeasureI()`` function."  # noqa: E501
+            msg = "No TSPControl object was provided, unable to run the ``ConfigPulseVMeasureI()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     # pylint: disable=too-many-arguments,too-many-locals
@@ -1910,7 +1911,7 @@ class SMU2657ACommands:
                 f"print(ConfigPulseVMeasureISweepLin({function_args}))"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``ConfigPulseVMeasureISweepLin()`` function."  # noqa: E501
+            msg = "No TSPControl object was provided, unable to run the ``ConfigPulseVMeasureISweepLin()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     # pylint: disable=too-many-arguments,too-many-locals
@@ -1995,7 +1996,7 @@ class SMU2657ACommands:
                 f"print(ConfigPulseVMeasureISweepLog({function_args}))"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``ConfigPulseVMeasureISweepLog()`` function."  # noqa: E501
+            msg = "No TSPControl object was provided, unable to run the ``ConfigPulseVMeasureISweepLog()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def initiate_pulse_test(self, tag: int) -> str:
@@ -2024,7 +2025,7 @@ class SMU2657ACommands:
                 f"print(InitiatePulseTest({tag}))"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``InitiatePulseTest()`` function."  # noqa: E501
+            msg = "No TSPControl object was provided, unable to run the ``InitiatePulseTest()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def pulse_i_measure_v(
@@ -2057,9 +2058,7 @@ class SMU2657ACommands:
                 f"PulseIMeasureV({smu}, {bias}, {level}, {ton}, {toff}, {points})"
             )
         except AttributeError as error:
-            msg = (
-                "No TSPDevice object was provided, unable to run the ``PulseIMeasureV()`` function."
-            )
+            msg = "No TSPControl object was provided, unable to run the ``PulseIMeasureV()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def pulse_v_measure_i(
@@ -2092,9 +2091,7 @@ class SMU2657ACommands:
                 f"PulseVMeasureI({smu}, {bias}, {level}, {ton}, {toff}, {points})"
             )
         except AttributeError as error:
-            msg = (
-                "No TSPDevice object was provided, unable to run the ``PulseVMeasureI()`` function."
-            )
+            msg = "No TSPControl object was provided, unable to run the ``PulseVMeasureI()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def query_pulse_config(self, tag: int) -> str:
@@ -2123,7 +2120,7 @@ class SMU2657ACommands:
                 f"print(QueryPulseConfig({tag}))"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``QueryPulseConfig()`` function."  # noqa: E501
+            msg = "No TSPControl object was provided, unable to run the ``QueryPulseConfig()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def delay(self, seconds: int) -> None:
@@ -2148,7 +2145,7 @@ class SMU2657ACommands:
                 f"delay({seconds})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``delay()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``delay()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def exit(self) -> None:
@@ -2170,7 +2167,7 @@ class SMU2657ACommands:
                 "exit()"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``exit()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``exit()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def gettimezone(self) -> str:
@@ -2195,7 +2192,7 @@ class SMU2657ACommands:
                 "print(gettimezone())"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``gettimezone()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``gettimezone()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def gm_isweep(self, smu: str, start_i: str, stop_i: str, points: str) -> str:
@@ -2227,7 +2224,7 @@ class SMU2657ACommands:
                 f"print(gm_isweep({smu}, {start_i}, {stop_i}, {points}))"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``gm_isweep()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``gm_isweep()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def gm_vsweep(self, smu: str, start_v: str, stop_v: str, points: str) -> str:
@@ -2259,7 +2256,7 @@ class SMU2657ACommands:
                 f"print(gm_vsweep({smu}, {start_v}, {stop_v}, {points}))"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``gm_vsweep()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``gm_vsweep()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def makegetter(self, table: str, attribute_name: str) -> str:
@@ -2288,7 +2285,7 @@ class SMU2657ACommands:
                 f'print(makegetter({table}, "{attribute_name}"))'
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``makegetter()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``makegetter()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def makesetter(self, table: str, attribute_name: str) -> str:
@@ -2317,7 +2314,7 @@ class SMU2657ACommands:
                 f'print(makesetter({table}, "{attribute_name}"))'
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``makesetter()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``makesetter()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def meminfo(self) -> str:
@@ -2343,7 +2340,7 @@ class SMU2657ACommands:
                 "print(meminfo())"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``meminfo()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``meminfo()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def opc(self) -> None:
@@ -2366,7 +2363,7 @@ class SMU2657ACommands:
                 "opc()"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``opc()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``opc()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def print(self, value: str) -> None:
@@ -2391,7 +2388,7 @@ class SMU2657ACommands:
                 f"print({value})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``print()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``print()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def printbuffer(self, start_index: int, end_index: int, buffer_var: str) -> str:
@@ -2423,7 +2420,7 @@ class SMU2657ACommands:
                 f"printbuffer({start_index}, {end_index}, {buffer_var})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``printbuffer()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``printbuffer()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def printnumber(self, value: str) -> str:
@@ -2451,7 +2448,7 @@ class SMU2657ACommands:
                 f"printnumber({value})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``printnumber()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``printnumber()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def reset(self, system: Optional[str] = None) -> None:
@@ -2477,7 +2474,7 @@ class SMU2657ACommands:
                 f"reset({function_args})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``reset()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``reset()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def savebuffer(self, buffer: str, format_type: str, file_name: str) -> None:
@@ -2505,7 +2502,7 @@ class SMU2657ACommands:
                 f'savebuffer({buffer}, "{format_type}", "{file_name}")'
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``savebuffer()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``savebuffer()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def settime(self, time: str) -> None:
@@ -2530,7 +2527,7 @@ class SMU2657ACommands:
                 f"settime({time})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``settime()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``settime()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def settimezone(
@@ -2574,7 +2571,7 @@ class SMU2657ACommands:
                 f"settimezone({function_args})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``settimezone()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``settimezone()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def waitcomplete(self, group: Optional[str] = None) -> None:
@@ -2600,7 +2597,9 @@ class SMU2657ACommands:
                 f"waitcomplete({function_args})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``waitcomplete()`` function."
+            msg = (
+                "No TSPControl object was provided, unable to run the ``waitcomplete()`` function."
+            )
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -2612,22 +2611,16 @@ class SMU2657AMixin:
         - ``.commands``: The SMU2657A commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, TSPDevice) else None
-        self._command_argument_constants = SMU2657ACommandConstants()
-        self._commands = SMU2657ACommands(device)
-
-    @property
-    def command_argument_constants(self) -> SMU2657ACommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> SMU2657ACommandConstants:  # pylint: disable=no-self-use
         """Return the SMU2657A command argument constants.
 
         This provides access to all the string constants which can be used as arguments for SMU2657A
         commands.
         """
-        return self._command_argument_constants
+        return SMU2657ACommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> SMU2657ACommands:
         """Return the SMU2657A commands.
 
@@ -2694,4 +2687,5 @@ class SMU2657AMixin:
             - ``.userstring``: The ``userstring`` command tree.
             - ``.waitcomplete()``: The ``waitcomplete()`` function.
         """
-        return self._commands
+        device = self if isinstance(self, TSPControl) else None
+        return SMU2657ACommands(device)

@@ -144,7 +144,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class RfWindow(SCPICmdWrite, SCPICmdRead):
@@ -317,7 +317,7 @@ class RfSquelch(SCPICmdRead):
         - ``.threshold``: The ``RF:SQUELCH:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = RfSquelchState(device, f"{self._cmd_syntax}:STATE")
         self._threshold = RfSquelchThreshold(device, f"{self._cmd_syntax}:THReshold")
@@ -525,7 +525,7 @@ class RfSpectrogram(SCPICmdWrite, SCPICmdRead):
         - ``.time``: The ``RF:SPECTRogram:TIMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._numslices = RfSpectrogramNumslices(device, f"{self._cmd_syntax}:NUMSLICEs")
         self._sliceselect = RfSpectrogramSliceselect(device, f"{self._cmd_syntax}:SLICESELect")
@@ -827,7 +827,7 @@ class RfRfVTime(SCPICmdRead):
         - ``.bandwidth``: The ``RF:RF_V_TIMe:BANDWidth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bandwidth = RfRfVTimeBandwidth(device, f"{self._cmd_syntax}:BANDWidth")
 
@@ -913,7 +913,7 @@ class RfRfPhaseWrap(SCPICmdRead):
         - ``.state``: The ``RF:RF_PHASe:WRAP:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._degrees = RfRfPhaseWrapDegrees(device, f"{self._cmd_syntax}:DEGrees")
         self._state = RfRfPhaseWrapState(device, f"{self._cmd_syntax}:STATE")
@@ -1034,7 +1034,7 @@ class RfRfPhaseVertical(SCPICmdRead):
         - ``.scale``: The ``RF:RF_PHASe:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = RfRfPhaseVerticalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = RfRfPhaseVerticalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -1131,7 +1131,7 @@ class RfRfPhaseReference(SCPICmdRead):
         - ``.degrees``: The ``RF:RF_PHASe:REFERence:DEGrees`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._degrees = RfRfPhaseReferenceDegrees(device, f"{self._cmd_syntax}:DEGrees")
 
@@ -1197,7 +1197,7 @@ class RfRfPhase(SCPICmdRead):
         - ``.wrap``: The ``RF:RF_PHASe:WRAP`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._label = RfRfPhaseLabel(device, f"{self._cmd_syntax}:LABel")
         self._reference = RfRfPhaseReference(device, f"{self._cmd_syntax}:REFERence")
@@ -1337,7 +1337,7 @@ class RfRfFrequencyVertical(SCPICmdRead):
         - ``.scale``: The ``RF:RF_FREQuency:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = RfRfFrequencyVerticalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = RfRfFrequencyVerticalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -1436,7 +1436,7 @@ class RfRfFrequency(SCPICmdRead):
         - ``.vertical``: The ``RF:RF_FREQuency:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._label = RfRfFrequencyLabel(device, f"{self._cmd_syntax}:LABel")
         self._vertical = RfRfFrequencyVertical(device, f"{self._cmd_syntax}:VERTical")
@@ -1536,7 +1536,7 @@ class RfRfAverage(SCPICmdRead):
         - ``.numavg``: The ``RF:RF_AVErage:NUMAVg`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._count = RfRfAverageCount(device, f"{self._cmd_syntax}:COUNt")
         self._numavg = RfRfAverageNumavg(device, f"{self._cmd_syntax}:NUMAVg")
@@ -1656,7 +1656,7 @@ class RfRfAmplitudeVertical(SCPICmdRead):
         - ``.scale``: The ``RF:RF_AMPlitude:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = RfRfAmplitudeVerticalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = RfRfAmplitudeVerticalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -1755,7 +1755,7 @@ class RfRfAmplitude(SCPICmdRead):
         - ``.vertical``: The ``RF:RF_AMPlitude:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._label = RfRfAmplitudeLabel(device, f"{self._cmd_syntax}:LABel")
         self._vertical = RfRfAmplitudeVertical(device, f"{self._cmd_syntax}:VERTical")
@@ -1886,7 +1886,7 @@ class RfRbw(SCPICmdWrite, SCPICmdRead):
         - ``.mode``: The ``RF:RBW:MODe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = RfRbwMode(device, f"{self._cmd_syntax}:MODe")
 
@@ -2053,7 +2053,7 @@ class RfProbePreamp(SCPICmdRead):
         - ``.status``: The ``RF:PRObe:PREAmp:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = RfProbePreampMode(device, f"{self._cmd_syntax}:MODe")
         self._status = RfProbePreampStatus(device, f"{self._cmd_syntax}:STATus")
@@ -2170,7 +2170,7 @@ class RfProbeId(SCPICmdRead):
         - ``.type``: The ``RF:PRObe:ID:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._sernumber = RfProbeIdSernumber(device, f"{self._cmd_syntax}:SERnumber")
         self._type = RfProbeIdType(device, f"{self._cmd_syntax}:TYPe")
@@ -2300,7 +2300,7 @@ class RfProbeDegauss(SCPICmdWrite, SCPICmdRead):
         - ``.state``: The ``RF:PRObe:DEGAUss:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = RfProbeDegaussState(device, f"{self._cmd_syntax}:STATE")
 
@@ -2415,7 +2415,7 @@ class RfProbeCalibrate(SCPICmdWrite, SCPICmdRead):
         - ``.state``: The ``RF:PRObe:CALibrate:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._calibratable = RfProbeCalibrateCalibratable(
             device, f"{self._cmd_syntax}:CALIBRATABLe"
@@ -2503,7 +2503,7 @@ class RfProbe(SCPICmdRead):
         - ``.units``: The ``RF:PRObe:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autozero = RfProbeAutozero(device, f"{self._cmd_syntax}:AUTOZero")
         self._calibrate = RfProbeCalibrate(device, f"{self._cmd_syntax}:CALibrate")
@@ -2960,7 +2960,7 @@ class RfMeasureObw(SCPICmdRead):
         - ``.upperfreq``: The ``RF:MEASUre:OBW:UPPERFreq`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._chanbw = RfMeasureObwChanbw(device, f"{self._cmd_syntax}:CHANBW")
         self._lowerfreq = RfMeasureObwLowerfreq(device, f"{self._cmd_syntax}:LOWERFreq")
@@ -3146,7 +3146,7 @@ class RfMeasureCp(SCPICmdRead):
         - ``.power``: The ``RF:MEASUre:CP:POWer`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._chanbw = RfMeasureCpChanbw(device, f"{self._cmd_syntax}:CHANBW")
         self._power = RfMeasureCpPower(device, f"{self._cmd_syntax}:POWer")
@@ -3460,7 +3460,7 @@ class RfMeasureAcpr(SCPICmdRead):
         - ``.ua3db``: The ``RF:MEASUre:ACPR:UA3DB`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._adjacentpairs = RfMeasureAcprAdjacentpairs(
             device, f"{self._cmd_syntax}:ADJACENTPAIRs"
@@ -3740,7 +3740,7 @@ class RfMeasure(SCPICmdRead):
         - ``.type``: The ``RF:MEASUre:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._acpr = RfMeasureAcpr(device, f"{self._cmd_syntax}:ACPR")
         self._cp = RfMeasureCp(device, f"{self._cmd_syntax}:CP")
@@ -4070,7 +4070,7 @@ class RfDetectionmethod(SCPICmdRead):
         - ``.rf_normal``: The ``RF:DETECTionmethod:RF_NORMal`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = RfDetectionmethodMode(device, f"{self._cmd_syntax}:MODe")
         self._rf_average = RfDetectionmethodRfAverage(device, f"{self._cmd_syntax}:RF_AVErage")
@@ -4303,7 +4303,7 @@ class Rf(SCPICmdRead):
         - ``.window``: The ``RF:WINdow`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "RF") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "RF") -> None:
         super().__init__(device, cmd_syntax)
         self._clipping = RfClipping(device, f"{self._cmd_syntax}:CLIPPing")
         self._detectionmethod = RfDetectionmethod(device, f"{self._cmd_syntax}:DETECTionmethod")

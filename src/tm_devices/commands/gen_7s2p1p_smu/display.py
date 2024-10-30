@@ -31,7 +31,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 # pylint: disable=too-few-public-methods
@@ -82,7 +82,7 @@ class DisplaySmuxItemMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.func)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @func.setter
@@ -116,7 +116,7 @@ class DisplaySmuxItemMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.func = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -155,7 +155,7 @@ class DisplaySmuxItemLimit(BaseTSPCmd):
                 f"print({self._cmd_syntax}.func)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @func.setter
@@ -189,7 +189,7 @@ class DisplaySmuxItemLimit(BaseTSPCmd):
                     f"{self._cmd_syntax}.func = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.func`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -202,7 +202,7 @@ class DisplaySmuxItem(ValidatedChannel, BaseTSPCmd):
         - ``.measure``: The ``display.smuX.measure`` command tree.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._limit = DisplaySmuxItemLimit(device, f"{self._cmd_syntax}.limit")
         self._measure = DisplaySmuxItemMeasure(device, f"{self._cmd_syntax}.measure")
@@ -235,7 +235,7 @@ class DisplaySmuxItem(ValidatedChannel, BaseTSPCmd):
                 f"print({self._cmd_syntax}.digits)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.digits`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.digits`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @digits.setter
@@ -269,7 +269,7 @@ class DisplaySmuxItem(ValidatedChannel, BaseTSPCmd):
                     f"{self._cmd_syntax}.digits = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.digits`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.digits`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -507,7 +507,7 @@ For two-channel products, this is the SRC key for Channel A."""
     WHEEL_RIGHT = "display.WHEEL_RIGHT"
     """str: Represents turning the Navigation wheel right."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "display") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "display") -> None:
         super().__init__(device, cmd_syntax)
         self._smu: Dict[str, DisplaySmuxItem] = DefaultDictPassKeyToFactory(
             lambda x: DisplaySmuxItem(device, f"{self._cmd_syntax}.smu{x}")
@@ -541,7 +541,7 @@ For two-channel products, this is the SRC key for Channel A."""
                 f"print({self._cmd_syntax}.screen)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.screen`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.screen`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @screen.setter
@@ -574,7 +574,7 @@ For two-channel products, this is the SRC key for Channel A."""
                     f"{self._cmd_syntax}.screen = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.screen`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.screen`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -620,7 +620,7 @@ For two-channel products, this is the SRC key for Channel A."""
                 f"print({self._cmd_syntax}.getlastkey())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getlastkey()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getlastkey()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def sendkey(self, key_code: str) -> None:
@@ -646,7 +646,7 @@ For two-channel products, this is the SRC key for Channel A."""
                 f"{self._cmd_syntax}.sendkey({key_code})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.sendkey()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.sendkey()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def waitkey(self) -> str:
@@ -671,5 +671,5 @@ For two-channel products, this is the SRC key for Channel A."""
                 f"print({self._cmd_syntax}.waitkey())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.waitkey()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.waitkey()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

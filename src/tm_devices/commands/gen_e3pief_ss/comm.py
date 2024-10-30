@@ -25,7 +25,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class CommLanWeb(BaseTSPCmd):
@@ -64,7 +64,7 @@ class CommLanWeb(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -99,7 +99,7 @@ class CommLanWeb(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -139,7 +139,7 @@ class CommLanVxi11(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -174,7 +174,7 @@ class CommLanVxi11(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -213,7 +213,7 @@ class CommLanTelnet(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -247,7 +247,7 @@ class CommLanTelnet(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -286,7 +286,7 @@ class CommLanRawsockets(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -320,7 +320,7 @@ class CommLanRawsockets(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -335,7 +335,7 @@ class CommLan(BaseTSPCmd):
         - ``.web``: The ``comm.lan.web`` command tree.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._rawsockets = CommLanRawsockets(device, f"{self._cmd_syntax}.rawsockets")
         self._telnet = CommLanTelnet(device, f"{self._cmd_syntax}.telnet")
@@ -370,7 +370,7 @@ class CommLan(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -404,7 +404,7 @@ class CommLan(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -479,7 +479,7 @@ class CommGpib(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -513,7 +513,7 @@ class CommGpib(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -525,7 +525,7 @@ class Comm(BaseTSPCmd):
         - ``.lan``: The ``comm.lan`` command tree.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "comm") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "comm") -> None:
         super().__init__(device, cmd_syntax)
         self._gpib = CommGpib(device, f"{self._cmd_syntax}.gpib")
         self._lan = CommLan(device, f"{self._cmd_syntax}.lan")

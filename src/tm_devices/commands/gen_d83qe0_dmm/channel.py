@@ -33,7 +33,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class ChannelMultiple(BaseTSPCmd):
@@ -66,7 +66,7 @@ class ChannelMultiple(BaseTSPCmd):
                 f'{self._cmd_syntax}.close("{channel_list}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.close()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.close()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def open(self, channel_list: str) -> None:
@@ -91,7 +91,7 @@ class ChannelMultiple(BaseTSPCmd):
                 f'{self._cmd_syntax}.open("{channel_list}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.open()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.open()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -114,7 +114,7 @@ class Channel(BaseTSPCmd):
         - ``.setlabel()``: The ``channel.setlabel()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "channel") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "channel") -> None:
         super().__init__(device, cmd_syntax)
         self._multiple = ChannelMultiple(device, f"{self._cmd_syntax}.multiple")
 
@@ -151,7 +151,7 @@ class Channel(BaseTSPCmd):
                 f'{self._cmd_syntax}.close("{channel_list}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.close()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.close()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def getclose(self, channel_list: Optional[str] = None) -> str:
@@ -185,7 +185,7 @@ class Channel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.getclose({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getclose()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getclose()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def getcount(self, channel_list: Optional[str] = None) -> str:
@@ -219,7 +219,7 @@ class Channel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.getcount({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getcount()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getcount()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def getdelay(self, channel_list: str) -> str:
@@ -248,7 +248,7 @@ class Channel(BaseTSPCmd):
                 f'print({self._cmd_syntax}.getdelay("{channel_list}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getdelay()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getdelay()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def getdmm(self, channel_list: str, setting: str) -> str:
@@ -277,7 +277,7 @@ class Channel(BaseTSPCmd):
                 f'print({self._cmd_syntax}.getdmm("{channel_list}", {setting}))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getdmm()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getdmm()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def getlabel(self, channel_number: str) -> str:
@@ -305,7 +305,7 @@ class Channel(BaseTSPCmd):
                 f'print({self._cmd_syntax}.getlabel("{channel_number}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getlabel()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getlabel()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def getstate(self, channel_list: Optional[str] = None) -> str:
@@ -340,7 +340,7 @@ class Channel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.getstate({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getstate()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getstate()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def gettype(self, channel_list: str) -> str:
@@ -368,7 +368,7 @@ class Channel(BaseTSPCmd):
                 f'print({self._cmd_syntax}.gettype("{channel_list}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.gettype()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.gettype()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def open(self, channel_list: str) -> None:
@@ -395,7 +395,7 @@ class Channel(BaseTSPCmd):
                 f'{self._cmd_syntax}.open("{channel_list}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.open()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.open()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setdelay(self, channel_list: str, delay: float) -> None:
@@ -421,7 +421,7 @@ class Channel(BaseTSPCmd):
                 f'{self._cmd_syntax}.setdelay("{channel_list}", {delay})'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setdelay()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setdelay()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setdmm(self, channel_list: str, setting: str, value: str) -> None:
@@ -449,7 +449,7 @@ class Channel(BaseTSPCmd):
                 f'{self._cmd_syntax}.setdmm("{channel_list}", {setting}, {value})'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setdmm()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setdmm()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setlabel(self, channel_number: str, labelname: str) -> None:
@@ -476,5 +476,5 @@ class Channel(BaseTSPCmd):
                 f'{self._cmd_syntax}.setlabel("{channel_number}", "{labelname}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setlabel()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setlabel()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

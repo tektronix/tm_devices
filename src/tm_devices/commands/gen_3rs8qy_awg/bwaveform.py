@@ -49,7 +49,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class BwaveformSrate(SCPICmdWrite, SCPICmdRead):
@@ -383,7 +383,7 @@ class BwaveformCompile(SCPICmdWriteNoArguments, SCPICmdRead):
         - ``.play``: The ``BWAVeform:COMPile:PLAY`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._cassign = BwaveformCompileCassign(device, f"{self._cmd_syntax}:CASSign")
         self._channel = BwaveformCompileChannel(device, f"{self._cmd_syntax}:CHANnel")
@@ -558,7 +558,7 @@ class Bwaveform(SCPICmdRead):
         - ``.srate``: The ``BWAVeform:SRATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "BWAVeform") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "BWAVeform") -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = BwaveformAmplitude(device, f"{self._cmd_syntax}:AMPLitude")
         self._auto = BwaveformAuto(device, f"{self._cmd_syntax}:AUTO")

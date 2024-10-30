@@ -33,7 +33,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DvmTriggerFrequencyCounter(SCPICmdWrite, SCPICmdRead):
@@ -74,7 +74,7 @@ class DvmTriggerFrequency(SCPICmdRead):
         - ``.counter``: The ``DVM:TRIGger:FREQuency:COUNTer`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._counter = DvmTriggerFrequencyCounter(device, f"{self._cmd_syntax}:COUNTer")
 
@@ -118,7 +118,7 @@ class DvmTrigger(SCPICmdRead):
         - ``.frequency``: The ``DVM:TRIGger:FREQuency`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = DvmTriggerFrequency(device, f"{self._cmd_syntax}:FREQuency")
 
@@ -314,7 +314,7 @@ class DvmMeasurementHistory(SCPICmdRead):
         - ``.minimum``: The ``DVM:MEASUrement:HIStory:MINImum`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._average = DvmMeasurementHistoryAverage(device, f"{self._cmd_syntax}:AVErage")
         self._maximum = DvmMeasurementHistoryMaximum(device, f"{self._cmd_syntax}:MAXimum")
@@ -418,7 +418,7 @@ class DvmMeasurement(SCPICmdRead):
         - ``.value``: The ``DVM:MEASUrement:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = DvmMeasurementFrequency(device, f"{self._cmd_syntax}:FREQuency")
         self._history = DvmMeasurementHistory(device, f"{self._cmd_syntax}:HIStory")
@@ -572,7 +572,7 @@ class Dvm(SCPICmdWrite, SCPICmdRead):
         - ``.trigger``: The ``DVM:TRIGger`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DVM") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DVM") -> None:
         super().__init__(device, cmd_syntax)
         self._autorange = DvmAutorange(device, f"{self._cmd_syntax}:AUTORange")
         self._measurement = DvmMeasurement(device, f"{self._cmd_syntax}:MEASUrement")

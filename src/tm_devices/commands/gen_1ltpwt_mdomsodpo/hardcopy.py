@@ -28,7 +28,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class HardcopyPrinterRename(SCPICmdWrite):
@@ -146,7 +146,7 @@ class HardcopyPrinter(SCPICmdRead):
         - ``.rename``: The ``HARDCopy:PRINTer:REName`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._add = HardcopyPrinterAdd(device, f"{self._cmd_syntax}:ADD")
         self._delete = HardcopyPrinterDelete(device, f"{self._cmd_syntax}:DELete")
@@ -394,7 +394,7 @@ class Hardcopy(SCPICmdWrite, SCPICmdRead):
         - ``.printer``: The ``HARDCopy:PRINTer`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "HARDCopy") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "HARDCopy") -> None:
         super().__init__(device, cmd_syntax)
         self._activeprinter = HardcopyActiveprinter(device, f"{self._cmd_syntax}:ACTIVeprinter")
         self._inksaver = HardcopyInksaver(device, f"{self._cmd_syntax}:INKSaver")

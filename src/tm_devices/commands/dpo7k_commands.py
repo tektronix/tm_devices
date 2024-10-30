@@ -5,9 +5,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
-from tm_devices.drivers.pi.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_ffz2xs_dpodsamso.bus import Bus
 from .gen_fhrp27_msodpomdodsa.curve import Curve
@@ -896,7 +897,7 @@ class DPO7KCommands:
     """
 
     # pylint: disable=too-many-statements
-    def __init__(self, device: Optional[PIDevice] = None) -> None:  # noqa: PLR0915
+    def __init__(self, device: Optional[PIControl] = None) -> None:  # noqa: PLR0915
         self._acquire = Acquire(device)
         self._alias = Alias(device)
         self._allev = Allev(device)
@@ -3782,22 +3783,16 @@ class DPO7KMixin:
         - ``.commands``: The DPO7K commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIDevice) else None
-        self._command_argument_constants = DPO7KCommandConstants()
-        self._commands = DPO7KCommands(device)
-
-    @property
-    def command_argument_constants(self) -> DPO7KCommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> DPO7KCommandConstants:  # pylint: disable=no-self-use
         """Return the DPO7K command argument constants.
 
         This provides access to all the string constants which can be used as arguments for DPO7K
         commands.
         """
-        return self._command_argument_constants
+        return DPO7KCommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> DPO7KCommands:
         """Return the DPO7K commands.
 
@@ -3913,4 +3908,5 @@ class DPO7KMixin:
             - ``.wfmpre``: The ``WFMPre`` command tree.
             - ``.zoom``: The ``ZOOm`` command.
         """
-        return self._commands
+        device = self if isinstance(self, PIControl) else None
+        return DPO7KCommands(device)

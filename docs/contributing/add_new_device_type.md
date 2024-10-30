@@ -2,19 +2,19 @@
 
 This guide will walk through the steps needed to add a new device type.
 
-`drivers\<interface_type>\<device_type>[\<device_series>]\<device_driver>.py`
+`drivers\<device_type>[\<device_series>]\<device_driver>.py`
 
 ## Steps to follow
 
 1. Create an abstract device type class within the `drivers/` subpackage
     1. Create a new subpackage for the new device type alongside the existing
         device type subpackages at the appropriate spot in the file tree (e.g.
-        `pi/power_supplies`, `api/rest_api/margin_testers`, `pi/scopes`)
+        `power_supplies/`, `margin_testers/`, `scopes/`)
     2. Create a new Python file and class with appropriate inheritance for the
         new device type (e.g. `power_supply.py`, `margin_tester.py`, `scope.py`)
     3. Add an `__init__.py` file within the new device type subpackage
-        containing the new device type class and any other classes defined at
-        that level (See other `__init__.py` files for examples)
+        containing a short docstring explaining what is in the new subpackage.
+        (See other `__init__.py` files for examples)
 2. Update the [`DeviceTypes`][tm_devices.helpers.DeviceTypes] enum exposed in
     `tm_devices/helpers/__init__.py`
 3. Add the DeviceType enum value to the newly created device driver class as a
@@ -34,10 +34,8 @@ This guide will walk through the steps needed to add a new device type.
 7. Create a new `get_<device_type>()` method with the appropriate signature
     inside `device_manager.py` (use other methods as examples)
 8. Add a new folder in `tests/sim_devices/<new_type>` for unit tests
-9. Add the new device type class to the [`DEVICE_TYPE_CLASSES`][tm_devices.drivers.DEVICE_TYPE_CLASSES] and `__all__`
-    variables inside of `tm_devices/drivers/device_type_drivers.py`.
-10. Update the
-    [advanced architecture](../advanced/architecture.md#main-device-types) page
+9. Update the
+    [advanced architecture](../advanced/architecture.md#device-types) page
     to include the new device type
-11. Update anything new that needs to be in
+10. Update anything new that needs to be in
     [configuration.md](../configuration.md#legend-for-device-configuration)

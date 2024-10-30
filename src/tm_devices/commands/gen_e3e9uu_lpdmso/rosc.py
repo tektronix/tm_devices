@@ -20,7 +20,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class RoscState(SCPICmdRead):
@@ -85,7 +85,7 @@ class Rosc(SCPICmdRead):
         - ``.state``: The ``ROSc:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "ROSc") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "ROSc") -> None:
         super().__init__(device, cmd_syntax)
         self._source = RoscSource(device, f"{self._cmd_syntax}:SOUrce")
         self._state = RoscState(device, f"{self._cmd_syntax}:STATE")

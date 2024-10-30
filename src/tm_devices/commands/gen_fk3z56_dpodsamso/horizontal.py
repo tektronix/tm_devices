@@ -146,7 +146,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class HorizontalTimestampRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
@@ -200,7 +200,7 @@ class HorizontalTimestamp(SCPICmdRead):
         - ``.ref``: The ``HORizontal:TIMEStamp:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, HorizontalTimestampChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalTimestampChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -414,7 +414,7 @@ class HorizontalModeAuto(SCPICmdRead):
         - ``.limitrecordlen``: The ``HORizontal:MODE:AUTO:LIMITrecordlen`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._limitrecordlen = HorizontalModeAutoLimitrecordlen(
             device, f"{self._cmd_syntax}:LIMITrecordlen"
@@ -481,7 +481,7 @@ class HorizontalMode(SCPICmdWrite, SCPICmdRead):
         - ``.scale``: The ``HORizontal:MODE:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._auto = HorizontalModeAuto(device, f"{self._cmd_syntax}:AUTO")
         self._recordlength = HorizontalModeRecordlength(device, f"{self._cmd_syntax}:RECOrdlength")
@@ -633,7 +633,7 @@ class HorizontalMainUnits(SCPICmdWrite, SCPICmdRead):
 
     _WRAP_ARG_WITH_QUOTES = True
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._string = HorizontalMainUnitsString(device, f"{self._cmd_syntax}:STRing")
 
@@ -796,7 +796,7 @@ class HorizontalMainDelay(SCPICmdRead):
         - ``.time``: The ``HORizontal:MAIn:DELay:TIMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = HorizontalMainDelayMode(device, f"{self._cmd_syntax}:MODe")
         self._position = HorizontalMainDelayPosition(device, f"{self._cmd_syntax}:POSition")
@@ -912,7 +912,7 @@ class HorizontalMain(SCPICmdRead):
         - ``.delay``: The ``HORizontal:MAIn:DELay`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._interpratio = HorizontalMainInterpratio(device, f"{self._cmd_syntax}:INTERPRatio")
         self._scale = HorizontalMainScale(device, f"{self._cmd_syntax}:SCAle")
@@ -1061,7 +1061,7 @@ class HorizontalFastframeXzeroSelected(SCPICmdRead):
         - ``.ref``: The ``HORizontal:FASTframe:XZEro:SELECTED:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, HorizontalFastframeXzeroSelectedChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeXzeroSelectedChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -1197,7 +1197,7 @@ class HorizontalFastframeXzeroFrame(SCPICmdRead):
         - ``.ref``: The ``HORizontal:FASTframe:XZEro:FRAme:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, HorizontalFastframeXzeroFrameChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeXzeroFrameChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -1318,7 +1318,7 @@ class HorizontalFastframeXzeroAll(SCPICmdRead):
         - ``.ref``: The ``HORizontal:FASTframe:XZEro:ALL:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, HorizontalFastframeXzeroAllChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeXzeroAllChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -1393,7 +1393,7 @@ class HorizontalFastframeXzero(SCPICmdRead):
         - ``.selected``: The ``HORizontal:FASTframe:XZEro:SELECTED`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._all = HorizontalFastframeXzeroAll(device, f"{self._cmd_syntax}:ALL")
         self._frame = HorizontalFastframeXzeroFrame(device, f"{self._cmd_syntax}:FRAme")
@@ -1628,7 +1628,7 @@ class HorizontalFastframeTimestampSelected(SCPICmdRead):
         - ``.d``: The ``HORizontal:FASTframe:TIMEStamp:SELECTED:D<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, HorizontalFastframeTimestampSelectedChannel] = (
             DefaultDictPassKeyToFactory(
@@ -1900,7 +1900,7 @@ class HorizontalFastframeTimestampFrame(SCPICmdRead):
         - ``.d``: The ``HORizontal:FASTframe:TIMEStamp:FRAMe:D<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, HorizontalFastframeTimestampFrameChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampFrameChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -2149,7 +2149,7 @@ class HorizontalFastframeTimestampDelta(SCPICmdRead):
         - ``.d``: The ``HORizontal:FASTframe:TIMEStamp:DELTa:D<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, HorizontalFastframeTimestampDeltaChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampDeltaChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -2398,7 +2398,7 @@ class HorizontalFastframeTimestampBetween(SCPICmdRead):
         - ``.d``: The ``HORizontal:FASTframe:TIMEStamp:BETWeen:D<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, HorizontalFastframeTimestampBetweenChannel] = (
             DefaultDictPassKeyToFactory(
@@ -2649,7 +2649,7 @@ class HorizontalFastframeTimestampAll(SCPICmdRead):
         - ``.d``: The ``HORizontal:FASTframe:TIMEStamp:ALL:D<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, HorizontalFastframeTimestampAllChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeTimestampAllChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -2794,7 +2794,7 @@ class HorizontalFastframeTimestamp(SCPICmdRead):
         - ``.selected``: The ``HORizontal:FASTframe:TIMEStamp:SELECTED`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._all = HorizontalFastframeTimestampAll(device, f"{self._cmd_syntax}:ALL")
         self._between = HorizontalFastframeTimestampBetween(device, f"{self._cmd_syntax}:BETWeen")
@@ -3190,7 +3190,7 @@ class HorizontalFastframeSelected(SCPICmdRead):
         - ``.source``: The ``HORizontal:FASTframe:SELECTED:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, HorizontalFastframeSelectedChannel] = DefaultDictPassKeyToFactory(
             lambda x: HorizontalFastframeSelectedChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -3381,7 +3381,7 @@ class HorizontalFastframeRef(SCPICmdRead):
         - ``.source``: The ``HORizontal:FASTframe:REF:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._frame = HorizontalFastframeRefFrame(device, f"{self._cmd_syntax}:FRAme")
         self._source = HorizontalFastframeRefSource(device, f"{self._cmd_syntax}:SOUrce")
@@ -3583,7 +3583,7 @@ class HorizontalFastframeMultipleframesNumframes(SCPICmdRead):
         - ``.d``: The ``HORizontal:FASTframe:MULtipleframes:NUMFRames:D<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, HorizontalFastframeMultipleframesNumframesChannel] = (
             DefaultDictPassKeyToFactory(
@@ -3904,7 +3904,7 @@ class HorizontalFastframeMultipleframesFramestart(SCPICmdRead):
         - ``.d``: The ``HORizontal:FASTframe:MULtipleframes:FRAMESTart:D<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, HorizontalFastframeMultipleframesFramestartChannel] = (
             DefaultDictPassKeyToFactory(
@@ -4071,7 +4071,7 @@ class HorizontalFastframeMultipleframes(SCPICmdRead):
         - ``.numframes``: The ``HORizontal:FASTframe:MULtipleframes:NUMFRames`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._framestart = HorizontalFastframeMultipleframesFramestart(
             device, f"{self._cmd_syntax}:FRAMESTart"
@@ -4281,7 +4281,7 @@ class HorizontalFastframe(SCPICmdRead):
         - ``.xzero``: The ``HORizontal:FASTframe:XZEro`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._count = HorizontalFastframeCount(device, f"{self._cmd_syntax}:COUNt")
         self._framelock = HorizontalFastframeFramelock(device, f"{self._cmd_syntax}:FRAMELock")
@@ -4755,7 +4755,7 @@ class HorizontalDigitalSamplerate(SCPICmdRead):
         - ``.main``: The ``HORizontal:DIGital:SAMPLERate:MAIn`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._magnivu = HorizontalDigitalSamplerateMagnivu(device, f"{self._cmd_syntax}:MAGnivu")
         self._main = HorizontalDigitalSamplerateMain(device, f"{self._cmd_syntax}:MAIn")
@@ -4864,7 +4864,7 @@ class HorizontalDigitalRecordlength(SCPICmdRead):
         - ``.main``: The ``HORizontal:DIGital:RECOrdlength:MAIn`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._magnivu = HorizontalDigitalRecordlengthMagnivu(device, f"{self._cmd_syntax}:MAGnivu")
         self._main = HorizontalDigitalRecordlengthMain(device, f"{self._cmd_syntax}:MAIn")
@@ -4947,7 +4947,7 @@ class HorizontalDigitalMagnivu(SCPICmdRead):
         - ``.position``: The ``HORizontal:DIGital:MAGnivu:POSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = HorizontalDigitalMagnivuPosition(device, f"{self._cmd_syntax}:POSition")
 
@@ -4991,7 +4991,7 @@ class HorizontalDigital(SCPICmdRead):
         - ``.samplerate``: The ``HORizontal:DIGital:SAMPLERate`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._magnivu = HorizontalDigitalMagnivu(device, f"{self._cmd_syntax}:MAGnivu")
         self._recordlength = HorizontalDigitalRecordlength(
@@ -5127,7 +5127,9 @@ class Horizontal(SCPICmdRead):
         - ``.timestamp``: The ``HORizontal:TIMEStamp`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "HORizontal") -> None:
+    def __init__(
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "HORizontal"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._acqduration = HorizontalAcqduration(device, f"{self._cmd_syntax}:ACQDURATION")
         self._acqlength = HorizontalAcqlength(device, f"{self._cmd_syntax}:ACQLENGTH")

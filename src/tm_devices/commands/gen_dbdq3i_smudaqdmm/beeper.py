@@ -20,7 +20,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Beeper(BaseTSPCmd):
@@ -30,7 +30,7 @@ class Beeper(BaseTSPCmd):
         - ``.beep()``: The ``beeper.beep()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "beeper") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "beeper") -> None:
         super().__init__(device, cmd_syntax)
 
     def beep(self, duration: float, frequency: float) -> None:
@@ -56,5 +56,5 @@ class Beeper(BaseTSPCmd):
                 f"{self._cmd_syntax}.beep({duration}, {frequency})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.beep()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.beep()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

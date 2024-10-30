@@ -27,7 +27,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DiagState(SCPICmdWrite):
@@ -130,7 +130,7 @@ class DiagResult(SCPICmdRead):
         - ``.log``: The ``DIAg:RESUlt:LOG`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._flag = DiagResultFlag(device, f"{self._cmd_syntax}:FLAg")
         self._log = DiagResultLog(device, f"{self._cmd_syntax}:LOG")
@@ -243,7 +243,7 @@ class DiagLoopOption(SCPICmdWrite, SCPICmdRead):
         - ``.ntimes``: The ``DIAg:LOOP:OPTion:NTIMes`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ntimes = DiagLoopOptionNtimes(device, f"{self._cmd_syntax}:NTIMes")
 
@@ -286,7 +286,7 @@ class DiagLoop(SCPICmdRead):
         - ``.stop``: The ``DIAg:LOOP:STOP`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._option = DiagLoopOption(device, f"{self._cmd_syntax}:OPTion")
         self._stop = DiagLoopStop(device, f"{self._cmd_syntax}:STOP")
@@ -374,7 +374,7 @@ class DiagIndividual(SCPICmdRead):
         - ``.testnumber``: The ``DIAg:INDIvidual:TESTnumber`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._testnumber = DiagIndividualTestnumber(device, f"{self._cmd_syntax}:TESTnumber")
 
@@ -419,7 +419,7 @@ class Diag(SCPICmdRead):
         - ``.state``: The ``DIAg:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DIAg") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DIAg") -> None:
         super().__init__(device, cmd_syntax)
         self._individual = DiagIndividual(device, f"{self._cmd_syntax}:INDIvidual")
         self._loop = DiagLoop(device, f"{self._cmd_syntax}:LOOP")

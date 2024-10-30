@@ -21,7 +21,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Timer(BaseTSPCmd):
@@ -32,7 +32,7 @@ class Timer(BaseTSPCmd):
         - ``.gettime()``: The ``timer.gettime()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "timer") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "timer") -> None:
         super().__init__(device, cmd_syntax)
 
     def cleartime(self) -> None:
@@ -54,7 +54,7 @@ class Timer(BaseTSPCmd):
                 f"{self._cmd_syntax}.cleartime()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.cleartime()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.cleartime()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def gettime(self) -> str:
@@ -79,5 +79,5 @@ class Timer(BaseTSPCmd):
                 f"print({self._cmd_syntax}.gettime())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.gettime()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.gettime()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

@@ -28,7 +28,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class PlotPlotItemType(SCPICmdWrite):
@@ -89,7 +89,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.type``: The ``PLOT:PLOT<x>:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._source1 = PlotPlotItemSource1(device, f"{self._cmd_syntax}:SOUrce1")
         self._type = PlotPlotItemType(device, f"{self._cmd_syntax}:TYPe")
@@ -220,7 +220,7 @@ class Plot(SCPICmdRead):
         - ``.plot``: The ``PLOT:PLOT<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "PLOT") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "PLOT") -> None:
         super().__init__(device, cmd_syntax)
         self._addnew = PlotAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = PlotDelete(device, f"{self._cmd_syntax}:DELete")

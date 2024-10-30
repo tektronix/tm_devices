@@ -21,7 +21,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DisplayWindow2State(SCPICmdWrite, SCPICmdRead):
@@ -64,7 +64,7 @@ class DisplayWindow2(SCPICmdRead):
         - ``.state``: The ``DISPlay:WINDow2:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DisplayWindow2State(device, f"{self._cmd_syntax}:STATe")
 
@@ -139,7 +139,7 @@ class DisplayWindow1(SCPICmdRead):
         - ``.state``: The ``DISPlay:WINDow1:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DisplayWindow1State(device, f"{self._cmd_syntax}:STATe")
 
@@ -187,7 +187,7 @@ class Display(SCPICmdRead):
         - ``.window2``: The ``DISPlay:WINDow2`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DISPlay") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DISPlay") -> None:
         super().__init__(device, cmd_syntax)
         self._window1 = DisplayWindow1(device, f"{self._cmd_syntax}:WINDow1")
         self._window2 = DisplayWindow2(device, f"{self._cmd_syntax}:WINDow2")

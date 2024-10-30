@@ -24,7 +24,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ConnectivityStatus(SCPICmdReadWithArguments):
@@ -95,7 +95,7 @@ class ConnectivityGang(SCPICmdRead):
         - ``.create``: The ``CONNectivity:GANG:CREAte`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._create = ConnectivityGangCreate(device, f"{self._cmd_syntax}:CREAte")
 
@@ -198,7 +198,7 @@ class Connectivity(SCPICmdRead):
     """
 
     def __init__(
-        self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CONNectivity"
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "CONNectivity"
     ) -> None:
         super().__init__(device, cmd_syntax)
         self._active = ConnectivityActive(device, f"{self._cmd_syntax}:ACTive")

@@ -26,7 +26,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class PtpDs(BaseTSPCmd):
@@ -59,7 +59,7 @@ class PtpDs(BaseTSPCmd):
                 f"print({self._cmd_syntax}.info())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.info()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.info()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -76,7 +76,7 @@ class Ptp(BaseTSPCmd):
         - ``.utcoffset``: The ``ptp.utcoffset`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "ptp") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "ptp") -> None:
         super().__init__(device, cmd_syntax)
         self._ds = PtpDs(device, f"{self._cmd_syntax}.ds")
 
@@ -107,7 +107,7 @@ class Ptp(BaseTSPCmd):
                 f"print({self._cmd_syntax}.domain)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.domain`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.domain`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @domain.setter
@@ -140,7 +140,7 @@ class Ptp(BaseTSPCmd):
                     f"{self._cmd_syntax}.domain = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.domain`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.domain`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -180,7 +180,7 @@ class Ptp(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -214,7 +214,7 @@ class Ptp(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -255,7 +255,7 @@ class Ptp(BaseTSPCmd):
                 f"print({self._cmd_syntax}.portstate)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.portstate`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.portstate`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -286,7 +286,7 @@ class Ptp(BaseTSPCmd):
                 f"print({self._cmd_syntax}.slavepreferred)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.slavepreferred`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.slavepreferred`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @slavepreferred.setter
@@ -320,7 +320,7 @@ class Ptp(BaseTSPCmd):
                     f"{self._cmd_syntax}.slavepreferred = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.slavepreferred`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.slavepreferred`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -350,7 +350,7 @@ class Ptp(BaseTSPCmd):
                 f"print({self._cmd_syntax}.utcoffset)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.utcoffset`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.utcoffset`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @utcoffset.setter
@@ -383,7 +383,7 @@ class Ptp(BaseTSPCmd):
                     f"{self._cmd_syntax}.utcoffset = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.utcoffset`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.utcoffset`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def time(self) -> str:
@@ -409,5 +409,5 @@ class Ptp(BaseTSPCmd):
                 f"print({self._cmd_syntax}.time())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.time()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.time()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

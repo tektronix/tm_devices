@@ -32,7 +32,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DataPoints(SCPICmdWrite, SCPICmdReadWithArguments):
@@ -100,7 +100,7 @@ class DataLock(SCPICmdRead):
         - ``.state``: The ``DATA:LOCK:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DataLockState(device, f"{self._cmd_syntax}:STATe")
 
@@ -188,7 +188,7 @@ class DataDelete(SCPICmdRead):
         - ``.name``: The ``DATA:DELete:NAME`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._name = DataDeleteName(device, f"{self._cmd_syntax}:NAME")
 
@@ -331,7 +331,7 @@ class DataData(SCPICmdWrite, SCPICmdReadWithArguments):
         - ``.value``: The ``DATA:DATA:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._line = DataDataLine(device, f"{self._cmd_syntax}:LINE")
         self._value = DataDataValue(device, f"{self._cmd_syntax}:VALue")
@@ -452,7 +452,7 @@ class Data(SCPICmdRead):
         - ``.data``: The ``DATA:DATA`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DATA") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DATA") -> None:
         super().__init__(device, cmd_syntax)
         self._catalog = DataCatalog(device, f"{self._cmd_syntax}:CATalog")
         self._copy = DataCopy(device, f"{self._cmd_syntax}:COPY")

@@ -96,7 +96,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class RemoteUsbdescriptors(SCPICmdWrite, SCPICmdRead):
@@ -289,7 +289,7 @@ class RemoteSv(SCPICmdRead):
         - ``.window``: The ``REMOTE:SV:WINDOW`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._rbw = RemoteSvRbw(device, f"{self._cmd_syntax}:RBW")
         self._rbwmode = RemoteSvRbwmode(device, f"{self._cmd_syntax}:RBWMode")
@@ -511,7 +511,7 @@ class RemoteSequence(SCPICmdRead):
         - ``.numsequence``: The ``REMOTE:SEQuence:NUMSEQuence`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._current = RemoteSequenceCurrent(device, f"{self._cmd_syntax}:CURrent")
         self._numsequence = RemoteSequenceNumsequence(device, f"{self._cmd_syntax}:NUMSEQuence")
@@ -759,7 +759,7 @@ class RemoteScopeItemHorizontalFastframeSumframe(SCPICmdRead):
         - ``.state``: The ``REMOTE:SCOPe<x>:HORizontal:FASTframe:SUMFrame:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = RemoteScopeItemHorizontalFastframeSumframeState(
             device, f"{self._cmd_syntax}:STATE"
@@ -915,7 +915,7 @@ class RemoteScopeItemHorizontalFastframe(SCPICmdRead):
         - ``.sumframe``: The ``REMOTE:SCOPe<x>:HORizontal:FASTframe:SUMFrame`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._count = RemoteScopeItemHorizontalFastframeCount(device, f"{self._cmd_syntax}:COUNt")
         self._maxframes = RemoteScopeItemHorizontalFastframeMaxframes(
@@ -1080,7 +1080,7 @@ class RemoteScopeItemHorizontal(SCPICmdRead):
         - ``.fastframe``: The ``REMOTE:SCOPe<x>:HORizontal:FASTframe`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fastframe = RemoteScopeItemHorizontalFastframe(
             device, f"{self._cmd_syntax}:FASTframe"
@@ -1241,7 +1241,7 @@ class RemoteScopeItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.visaconnectiontype``: The ``REMOTE:SCOPe<x>:VISACONNectiontype`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bandwidth = RemoteScopeItemBandwidth(device, f"{self._cmd_syntax}:BANDWidth")
         self._connect = RemoteScopeItemConnect(device, f"{self._cmd_syntax}:CONNECT")
@@ -1577,7 +1577,7 @@ class RemoteSItemDchItemSelect(SCPICmdRead):
         - ``.dall``: The ``REMOTE:S<x>_DCH<x>:SELect:DAll`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dall = RemoteSItemDchItemSelectDall(device, f"{self._cmd_syntax}:DAll")
 
@@ -1663,7 +1663,7 @@ class RemoteSItemDchItemDigitalBit(ValidatedDigitalBit, SCPICmdRead):
         - ``.threshold``: The ``REMOTE:S<x>_DCH<x>:D<x>:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._threshold = RemoteSItemDchItemDigitalBitThreshold(
             device, f"{self._cmd_syntax}:THReshold"
@@ -1709,7 +1709,7 @@ class RemoteSItemDchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.select``: The ``REMOTE:S<x>_DCH<x>:SELect`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._d: Dict[int, RemoteSItemDchItemDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: RemoteSItemDchItemDigitalBit(device, f"{self._cmd_syntax}:D{x}")
@@ -1914,7 +1914,7 @@ class RemoteSItemChannelSv(SCPICmdRead):
         - ``.stopfrequency``: The ``REMOTE:S<x>_CH<x>:SV:STOPFrequency`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._centerfrequency = RemoteSItemChannelSvCenterfrequency(
             device, f"{self._cmd_syntax}:CENTERFrequency"
@@ -2130,7 +2130,7 @@ class RemoteSItemChannelSelectDiggrp(SCPICmdRead):
         - ``.dall``: The ``REMOTE:S<x>_CH<x>:SELect:DIGGRP:Dall`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dall = RemoteSItemChannelSelectDiggrpDall(device, f"{self._cmd_syntax}:Dall")
 
@@ -2178,7 +2178,7 @@ class RemoteSItemChannelSelect(SCPICmdRead):
         - ``.diggrp``: The ``REMOTE:S<x>_CH<x>:SELect:DIGGRP`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._diggrp = RemoteSItemChannelSelectDiggrp(device, f"{self._cmd_syntax}:DIGGRP")
 
@@ -2282,7 +2282,7 @@ class RemoteSItemChannelDiggrpDigitalBit(ValidatedDigitalBit, SCPICmdRead):
         - ``.threshold``: The ``REMOTE:S<x>_CH<x>:DIGGRP:D<x>:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._threshold = RemoteSItemChannelDiggrpDigitalBitThreshold(
             device, f"{self._cmd_syntax}:THReshold"
@@ -2331,7 +2331,7 @@ class RemoteSItemChannelDiggrp(SCPICmdRead):
         - ``.threshold``: The ``REMOTE:S<x>_CH<x>:DIGGRP:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._d: Dict[int, RemoteSItemChannelDiggrpDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: RemoteSItemChannelDiggrpDigitalBit(device, f"{self._cmd_syntax}:D{x}")
@@ -2398,7 +2398,7 @@ class RemoteSItemChannel(ValidatedChannel, SCPICmdRead):
         - ``.sv``: The ``REMOTE:S<x>_CH<x>:SV`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._diggrp = RemoteSItemChannelDiggrp(device, f"{self._cmd_syntax}:DIGGRP")
         self._probetype = RemoteSItemChannelProbetype(device, f"{self._cmd_syntax}:PROBETYPE")
@@ -2516,7 +2516,7 @@ class RemoteSItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.dch``: The ``REMOTE:S<x>_DCH<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, RemoteSItemChannel] = DefaultDictPassKeyToFactory(
             lambda x: RemoteSItemChannel(device, f"{self._cmd_syntax}_CH{x}")
@@ -2785,7 +2785,7 @@ class Remote(SCPICmdRead):
         - ``.usbdescriptors``: The ``REMOTE:USBDEscriptors`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "REMOTE") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "REMOTE") -> None:
         super().__init__(device, cmd_syntax)
         self._acqmethod = RemoteAcqmethod(device, f"{self._cmd_syntax}:ACQMethod")
         self._acqstatus = RemoteAcqstatus(device, f"{self._cmd_syntax}:ACQStatus")

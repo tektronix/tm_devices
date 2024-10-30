@@ -35,7 +35,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 # pylint: disable=too-few-public-methods
@@ -93,7 +93,7 @@ class DisplayLoadmenu(BaseTSPCmd):
                 f"{self._cmd_syntax}.add({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.add()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.add()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def delete(self, display_name: str) -> None:
@@ -119,7 +119,7 @@ class DisplayLoadmenu(BaseTSPCmd):
                 f'{self._cmd_syntax}.delete("{display_name}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -145,7 +145,7 @@ class Display(BaseTSPCmd):
         - ``.waitkey()``: The ``display.waitkey()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "display") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "display") -> None:
         super().__init__(device, cmd_syntax)
         self._loadmenu = DisplayLoadmenu(device, f"{self._cmd_syntax}.loadmenu")
         self._trigger = DisplayTrigger(device, f"{self._cmd_syntax}.trigger")
@@ -193,7 +193,7 @@ class Display(BaseTSPCmd):
                 f"print({self._cmd_syntax}.locallockout)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.locallockout`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.locallockout`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @locallockout.setter
@@ -232,7 +232,7 @@ class Display(BaseTSPCmd):
                     f"{self._cmd_syntax}.locallockout = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.locallockout`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.locallockout`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -262,7 +262,7 @@ class Display(BaseTSPCmd):
                 f"print({self._cmd_syntax}.screen)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.screen`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.screen`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @screen.setter
@@ -295,7 +295,7 @@ class Display(BaseTSPCmd):
                     f"{self._cmd_syntax}.screen = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.screen`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.screen`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -327,7 +327,7 @@ class Display(BaseTSPCmd):
                 f"{self._cmd_syntax}.clear()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def getannunciators(self) -> str:
@@ -352,7 +352,7 @@ class Display(BaseTSPCmd):
                 f"print({self._cmd_syntax}.getannunciators())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getannunciators()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getannunciators()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def getcursor(self) -> str:
@@ -378,7 +378,7 @@ class Display(BaseTSPCmd):
                 f"print({self._cmd_syntax}.getcursor())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getcursor()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getcursor()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def getlastkey(self) -> str:
@@ -403,7 +403,7 @@ class Display(BaseTSPCmd):
                 f"print({self._cmd_syntax}.getlastkey())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getlastkey()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getlastkey()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def gettext(
@@ -454,7 +454,7 @@ class Display(BaseTSPCmd):
                 f"print({self._cmd_syntax}.gettext({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.gettext()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.gettext()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def inputvalue(
@@ -503,7 +503,7 @@ class Display(BaseTSPCmd):
                 f"print({self._cmd_syntax}.inputvalue({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.inputvalue()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.inputvalue()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def menu(self, name: str, items: str) -> str:
@@ -532,7 +532,7 @@ class Display(BaseTSPCmd):
                 f'print({self._cmd_syntax}.menu("{name}", "{items}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.menu()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.menu()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def prompt(self, button_id: str, prompt_text: str) -> str:
@@ -562,7 +562,7 @@ class Display(BaseTSPCmd):
                 f'print({self._cmd_syntax}.prompt({button_id}, "{prompt_text}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.prompt()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.prompt()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def sendkey(self, key_code: str) -> None:
@@ -588,7 +588,7 @@ class Display(BaseTSPCmd):
                 f"{self._cmd_syntax}.sendkey({key_code})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.sendkey()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.sendkey()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setcursor(self, row: str, column: str, style: Optional[str] = None) -> None:
@@ -625,7 +625,7 @@ class Display(BaseTSPCmd):
                 f"{self._cmd_syntax}.setcursor({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setcursor()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setcursor()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def settext(
@@ -663,7 +663,7 @@ class Display(BaseTSPCmd):
                 f"{self._cmd_syntax}.settext({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.settext()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.settext()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def waitkey(self) -> str:
@@ -688,5 +688,5 @@ class Display(BaseTSPCmd):
                 f"print({self._cmd_syntax}.waitkey())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.waitkey()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.waitkey()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

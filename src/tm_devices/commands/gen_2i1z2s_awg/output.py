@@ -34,7 +34,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class OutputItemWvalueMarkerItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
@@ -111,7 +111,7 @@ class OutputItemWvalueAnalog(SCPICmdRead):
         - ``.state``: The ``OUTPut[n]:WVALue:ANALog:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = OutputItemWvalueAnalogState(device, f"{self._cmd_syntax}:STATe")
 
@@ -160,7 +160,7 @@ class OutputItemWvalue(SCPICmdRead):
         - ``.analog``: The ``OUTPut[n]:WVALue:ANALog`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._marker: Dict[int, OutputItemWvalueMarkerItem] = DefaultDictPassKeyToFactory(
             lambda x: OutputItemWvalueMarkerItem(device, f"{self._cmd_syntax}:MARKer{x}")
@@ -284,7 +284,7 @@ class OutputItemSvalueAnalog(SCPICmdRead):
         - ``.state``: The ``OUTPut[n]:SVALue:ANALog:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = OutputItemSvalueAnalogState(device, f"{self._cmd_syntax}:STATe")
 
@@ -331,7 +331,7 @@ class OutputItemSvalue(SCPICmdRead):
         - ``.analog``: The ``OUTPut[n]:SVALue:ANALog`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._marker: Dict[int, OutputItemSvalueMarkerItem] = DefaultDictPassKeyToFactory(
             lambda x: OutputItemSvalueMarkerItem(device, f"{self._cmd_syntax}:MARKer{x}")
@@ -452,7 +452,7 @@ class OutputItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.state``: The ``OUTPut[n]:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "OUTPut[n]") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "OUTPut[n]") -> None:
         super().__init__(device, cmd_syntax)
         self._path = OutputItemPath(device, f"{self._cmd_syntax}:PATH")
         self._svalue = OutputItemSvalue(device, f"{self._cmd_syntax}:SVALue")

@@ -27,7 +27,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class CustomSelectGateItem(ValidatedDynamicNumberCmd, SCPICmdWrite):
@@ -64,7 +64,7 @@ class CustomSelect(SCPICmdRead):
         - ``.gate``: The ``CUSTOM:SELECT:GATE<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._gate: Dict[int, CustomSelectGateItem] = DefaultDictPassKeyToFactory(
             lambda x: CustomSelectGateItem(device, f"{self._cmd_syntax}:GATE{x}")
@@ -157,7 +157,7 @@ class CustomGateItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.width``: The ``CUSTOM:GATE<x>:WIDth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._source = CustomGateItemSource(device, f"{self._cmd_syntax}:SOUrce")
         self._start = CustomGateItemStart(device, f"{self._cmd_syntax}:START")
@@ -231,7 +231,7 @@ class Custom(SCPICmdRead):
         - ``.select``: The ``CUSTOM:SELECT`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CUSTOM") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CUSTOM") -> None:
         super().__init__(device, cmd_syntax)
         self._gate: Dict[int, CustomGateItem] = DefaultDictPassKeyToFactory(
             lambda x: CustomGateItem(device, f"{self._cmd_syntax}:GATE{x}")

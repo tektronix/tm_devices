@@ -21,7 +21,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ConnectedUsageTrackStatus(SCPICmdRead):
@@ -81,7 +81,7 @@ class ConnectedUsageTrackRequested(SCPICmdRead):
         - ``.status``: The ``CONNected:USAGe:TRack:REQUested:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = ConnectedUsageTrackRequestedStatus(device, f"{self._cmd_syntax}:STATus")
 
@@ -125,7 +125,7 @@ class ConnectedUsageTrack(SCPICmdRead):
         - ``.status``: The ``CONNected:USAGe:TRack:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._requested = ConnectedUsageTrackRequested(device, f"{self._cmd_syntax}:REQUested")
         self._status = ConnectedUsageTrackStatus(device, f"{self._cmd_syntax}:STATus")
@@ -179,7 +179,7 @@ class ConnectedUsage(SCPICmdRead):
         - ``.track``: The ``CONNected:USAGe:TRack`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._track = ConnectedUsageTrack(device, f"{self._cmd_syntax}:TRack")
 
@@ -255,7 +255,7 @@ class ConnectedRequested(SCPICmdRead):
         - ``.status``: The ``CONNected:REQUested:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = ConnectedRequestedStatus(device, f"{self._cmd_syntax}:STATus")
 
@@ -299,7 +299,7 @@ class Connected(SCPICmdRead):
         - ``.usage``: The ``CONNected:USAGe`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CONNected") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CONNected") -> None:
         super().__init__(device, cmd_syntax)
         self._requested = ConnectedRequested(device, f"{self._cmd_syntax}:REQUested")
         self._status = ConnectedStatus(device, f"{self._cmd_syntax}:STATus")

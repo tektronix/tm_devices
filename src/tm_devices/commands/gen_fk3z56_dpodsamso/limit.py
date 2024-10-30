@@ -66,7 +66,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class LimitTemplateToleranceVertical(SCPICmdWrite, SCPICmdRead):
@@ -137,7 +137,7 @@ class LimitTemplateTolerance(SCPICmdRead):
         - ``.vertical``: The ``LIMit:TEMPlate:TOLerance:VERTical`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._horizontal = LimitTemplateToleranceHorizontal(
             device, f"{self._cmd_syntax}:HORizontal"
@@ -301,7 +301,7 @@ class LimitTemplate(SCPICmdRead):
         - ``.tolerance``: The ``LIMit:TEMPlate:TOLerance`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._destination = LimitTemplateDestination(device, f"{self._cmd_syntax}:DESTination")
         self._source = LimitTemplateSource(device, f"{self._cmd_syntax}:SOUrce")
@@ -576,7 +576,7 @@ class LimitSavewfm(SCPICmdWrite, SCPICmdRead):
         - ``.filename``: The ``LIMit:SAVEWFM:FILEName`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._filename = LimitSavewfmFilename(device, f"{self._cmd_syntax}:FILEName")
 
@@ -713,7 +713,7 @@ class LimitHighlighthits(SCPICmdWrite, SCPICmdRead):
         - ``.reset``: The ``LIMit:HIGHLIGHTHits:RESet`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._reset = LimitHighlighthitsReset(device, f"{self._cmd_syntax}:RESet")
 
@@ -902,7 +902,7 @@ class LimitCompare(SCPICmdWrite, SCPICmdRead):
         - ``.ref``: The ``LIMit:COMpare:REF<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, LimitCompareChannel] = DefaultDictPassKeyToFactory(
             lambda x: LimitCompareChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -1063,7 +1063,7 @@ class Limit(SCPICmdRead):
         - ``.template``: The ``LIMit:TEMPlate`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "LIMit") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "LIMit") -> None:
         super().__init__(device, cmd_syntax)
         self._beep = LimitBeep(device, f"{self._cmd_syntax}:BEEP")
         self._compare = LimitCompare(device, f"{self._cmd_syntax}:COMpare")

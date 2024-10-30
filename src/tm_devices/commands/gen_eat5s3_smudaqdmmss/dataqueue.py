@@ -24,7 +24,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Dataqueue(BaseTSPCmd):
@@ -43,7 +43,9 @@ class Dataqueue(BaseTSPCmd):
     CAPACITY = "dataqueue.CAPACITY"
     """str: The maximum number of entries that you can store in the data queue."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "dataqueue") -> None:
+    def __init__(
+        self, device: Optional["TSPControl"] = None, cmd_syntax: str = "dataqueue"
+    ) -> None:
         super().__init__(device, cmd_syntax)
 
     @property
@@ -71,7 +73,7 @@ class Dataqueue(BaseTSPCmd):
                 f"print({self._cmd_syntax}.count)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def add(self, value: str, timeout: Optional[float] = None) -> str:
@@ -108,7 +110,7 @@ class Dataqueue(BaseTSPCmd):
                 f"print({self._cmd_syntax}.add({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.add()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.add()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def clear(self) -> None:
@@ -130,7 +132,7 @@ class Dataqueue(BaseTSPCmd):
                 f"{self._cmd_syntax}.clear()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def next(self, timeout: Optional[float] = None) -> str:
@@ -159,5 +161,5 @@ class Dataqueue(BaseTSPCmd):
                 f"print({self._cmd_syntax}.next({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.next()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.next()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

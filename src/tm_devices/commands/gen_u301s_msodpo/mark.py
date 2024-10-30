@@ -31,7 +31,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MarkTotal(SCPICmdRead):
@@ -82,7 +82,7 @@ class MarkSelectedZoom(SCPICmdRead):
         - ``.position``: The ``MARK:SELected:ZOOm:POSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = MarkSelectedZoomPosition(device, f"{self._cmd_syntax}:POSition")
 
@@ -254,7 +254,7 @@ class MarkSelected(SCPICmdRead):
         - ``.zoom``: The ``MARK:SELected:ZOOm`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._end = MarkSelectedEnd(device, f"{self._cmd_syntax}:END")
         self._focus = MarkSelectedFocus(device, f"{self._cmd_syntax}:FOCUS")
@@ -517,7 +517,7 @@ class Mark(SCPICmdWrite, SCPICmdRead):
         - ``.total``: The ``MARK:TOTal`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MARK") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MARK") -> None:
         super().__init__(device, cmd_syntax)
         self._create = MarkCreate(device, f"{self._cmd_syntax}:CREATE")
         self._delete = MarkDelete(device, f"{self._cmd_syntax}:DELEte")

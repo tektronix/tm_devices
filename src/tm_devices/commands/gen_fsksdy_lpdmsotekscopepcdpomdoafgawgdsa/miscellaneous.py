@@ -22,7 +22,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class Tst(SCPICmdRead):
@@ -42,7 +42,7 @@ class Tst(SCPICmdRead):
         ```
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*TST") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*TST") -> None:
         super().__init__(device, cmd_syntax)
 
 
@@ -63,5 +63,5 @@ class Idn(SCPICmdRead):
         ```
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*IDN") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*IDN") -> None:
         super().__init__(device, cmd_syntax)

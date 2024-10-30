@@ -10,7 +10,7 @@ from typing import Any, Dict, Optional, TYPE_CHECKING
 from .generic_commands import BaseCmd
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 ####################################################################################################
@@ -19,9 +19,9 @@ if TYPE_CHECKING:
 class BaseTSPCmd(BaseCmd):  # pylint: disable=too-few-public-methods
     """A class to better type hint a member of a TSP command tree."""
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._device: Optional["TSPDevice"] = device
+        self._device: Optional["TSPControl"] = device
 
     def _get_tsp_table_dict(self, table: str) -> Dict[Any, Any]:
         """Get the full content of a TSP table variable.

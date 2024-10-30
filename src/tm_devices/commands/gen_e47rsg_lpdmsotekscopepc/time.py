@@ -23,7 +23,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class TimeZoneUtcdelta(SCPICmdWrite, SCPICmdRead):
@@ -81,7 +81,7 @@ class TimeZone(SCPICmdWrite, SCPICmdRead):
 
     _WRAP_ARG_WITH_QUOTES = True
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._utcdelta = TimeZoneUtcdelta(device, f"{self._cmd_syntax}:UTCDELTa")
 
@@ -144,7 +144,7 @@ class Time(SCPICmdWrite, SCPICmdRead):
 
     _WRAP_ARG_WITH_QUOTES = True
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "TIMe") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "TIMe") -> None:
         super().__init__(device, cmd_syntax)
         self._zone = TimeZone(device, f"{self._cmd_syntax}:ZONe")
 

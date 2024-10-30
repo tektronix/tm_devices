@@ -19,7 +19,7 @@ from typing import Dict, Optional, TYPE_CHECKING
 from ..helpers import DefaultDictPassKeyToFactory, SCPICmdRead, SCPICmdWrite, ValidatedChannel
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SelectChannel(ValidatedChannel, SCPICmdWrite, SCPICmdRead):
@@ -64,7 +64,7 @@ class Select(SCPICmdRead):
         - ``.ch``: The ``SELect:CH<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SELect") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SELect") -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, SelectChannel] = DefaultDictPassKeyToFactory(
             lambda x: SelectChannel(device, f"{self._cmd_syntax}:CH{x}")

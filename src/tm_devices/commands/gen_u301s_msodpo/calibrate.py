@@ -27,7 +27,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class CalibrateTemperature(SCPICmdRead):
@@ -112,7 +112,7 @@ class CalibrateResults(SCPICmdRead):
         - ``.spc``: The ``CALibrate:RESults:SPC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._factory = CalibrateResultsFactory(device, f"{self._cmd_syntax}:FACtory")
         self._spc = CalibrateResultsSpc(device, f"{self._cmd_syntax}:SPC")
@@ -233,7 +233,7 @@ class CalibrateInternal(SCPICmdWriteNoArguments, SCPICmdRead):
         - ``.status``: The ``CALibrate:INTERNal:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._start = CalibrateInternalStart(device, f"{self._cmd_syntax}:STARt")
         self._status = CalibrateInternalStatus(device, f"{self._cmd_syntax}:STATus")
@@ -323,7 +323,7 @@ class CalibrateFactory(SCPICmdWrite, SCPICmdRead):
         - ``.status``: The ``CALibrate:FACtory:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = CalibrateFactoryStatus(device, f"{self._cmd_syntax}:STATus")
 
@@ -363,7 +363,7 @@ class Calibrate(SCPICmdRead):
         - ``.temperature``: The ``CALibrate:TEMPerature`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CALibrate") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CALibrate") -> None:
         super().__init__(device, cmd_syntax)
         self._factory = CalibrateFactory(device, f"{self._cmd_syntax}:FACtory")
         self._internal = CalibrateInternal(device, f"{self._cmd_syntax}:INTERNal")

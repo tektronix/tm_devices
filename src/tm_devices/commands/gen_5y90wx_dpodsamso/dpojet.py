@@ -717,7 +717,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DpojetVersion(SCPICmdRead):
@@ -896,7 +896,7 @@ class DpojetSourceautosetHorizontal(SCPICmdRead):
         - ``.uivalue``: The ``DPOJET:SOURCEAutoset:HORizontal:UIValue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._uicount = DpojetSourceautosetHorizontalUicount(device, f"{self._cmd_syntax}:UICount")
         self._uivalue = DpojetSourceautosetHorizontalUivalue(device, f"{self._cmd_syntax}:UIValue")
@@ -970,7 +970,7 @@ class DpojetSourceautoset(SCPICmdWrite, SCPICmdRead):
         - ``.state``: The ``DPOJET:SOURCEAutoset:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._horizontal = DpojetSourceautosetHorizontal(device, f"{self._cmd_syntax}:HORizontal")
         self._state = DpojetSourceautosetState(device, f"{self._cmd_syntax}:STATE")
@@ -1057,7 +1057,7 @@ class DpojetSnc(SCPICmdRead):
         - ``.close``: The ``DPOJET:SNC:CLOse`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._activate = DpojetSncActivate(device, f"{self._cmd_syntax}:ACTIvate")
         self._close = DpojetSncClose(device, f"{self._cmd_syntax}:CLOse")
@@ -1282,7 +1282,7 @@ class DpojetResults(SCPICmdRead):
         - ``.view``: The ``DPOJET:RESULts:VIew`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._getallresults = DpojetResultsGetallresults(
             device, f"{self._cmd_syntax}:GETALLResults"
@@ -1731,7 +1731,7 @@ class DpojetReport(SCPICmdWrite, SCPICmdRead):
         - ``.viewreport``: The ``DPOJET:REPORT:VIEWreport`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._applicationconfig = DpojetReportApplicationconfig(
             device, f"{self._cmd_syntax}:APPlicationconfig"
@@ -2339,7 +2339,7 @@ class DpojetReflevelsChannelPercent(SCPICmdRead):
         - ``.risemid``: The ``DPOJET:REFLevels:CH<x>:PERcent:RISEMid`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fallhigh = DpojetReflevelsChannelPercentFallhigh(
             device, f"{self._cmd_syntax}:FALLHigh"
@@ -2790,7 +2790,7 @@ class DpojetReflevelsChannelAbsolute(SCPICmdRead):
         - ``.risemid``: The ``DPOJET:REFLevels:CH<x>:ABSolute:RISEMid`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fallhigh = DpojetReflevelsChannelAbsoluteFallhigh(
             device, f"{self._cmd_syntax}:FALLHigh"
@@ -2996,7 +2996,7 @@ class DpojetReflevelsChannel(ValidatedChannel, SCPICmdRead):
         - ``.percent``: The ``DPOJET:REFLevels:CH<x>:PERcent`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._absolute = DpojetReflevelsChannelAbsolute(device, f"{self._cmd_syntax}:ABSolute")
         self._autoset = DpojetReflevelsChannelAutoset(device, f"{self._cmd_syntax}:AUTOSet")
@@ -3152,7 +3152,7 @@ class DpojetReflevelsAutoset(SCPICmdWrite, SCPICmdRead):
         - ``.state``: The ``DPOJET:REFLevels:AUTOset:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DpojetReflevelsAutosetState(device, f"{self._cmd_syntax}:STATE")
 
@@ -3189,7 +3189,7 @@ class DpojetReflevels(SCPICmdRead):
         - ``.ch``: The ``DPOJET:REFLevels:CH<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoset = DpojetReflevelsAutoset(device, f"{self._cmd_syntax}:AUTOset")
         self._ch: Dict[int, DpojetReflevelsChannel] = DefaultDictPassKeyToFactory(
@@ -3272,7 +3272,7 @@ class DpojetReflevelChannel(ValidatedChannel, SCPICmdRead):
         - ``.midzero``: The ``DPOJET:REFLevel:CH<x>:MIDZero`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._midzero = DpojetReflevelChannelMidzero(device, f"{self._cmd_syntax}:MIDZero")
 
@@ -3311,7 +3311,7 @@ class DpojetReflevel(SCPICmdRead):
         - ``.ch``: The ``DPOJET:REFLevel:CH<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ch: Dict[int, DpojetReflevelChannel] = DefaultDictPassKeyToFactory(
             lambda x: DpojetReflevelChannel(device, f"{self._cmd_syntax}:CH{x}")
@@ -3406,7 +3406,7 @@ class DpojetQualify(SCPICmdRead):
         - ``.state``: The ``DPOJET:QUALify:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._active = DpojetQualifyActive(device, f"{self._cmd_syntax}:ACTIVE")
         self._source = DpojetQualifySource(device, f"{self._cmd_syntax}:SOUrce")
@@ -3578,7 +3578,7 @@ class DpojetPopulation(SCPICmdRead):
         - ``.state``: The ``DPOJET:POPULATION:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._condition = DpojetPopulationCondition(device, f"{self._cmd_syntax}:CONDition")
         self._limit = DpojetPopulationLimit(device, f"{self._cmd_syntax}:LIMIT")
@@ -3774,7 +3774,7 @@ class DpojetPlotItemVertbathtubHorizontal(SCPICmdRead):
         - ``.scale``: The ``DPOJET:PLOT<x>:VERTBATHtub:HORizontal:SCALE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._scale = DpojetPlotItemVertbathtubHorizontalScale(device, f"{self._cmd_syntax}:SCALE")
 
@@ -3839,7 +3839,7 @@ class DpojetPlotItemVertbathtub(SCPICmdRead):
         - ``.yaxisunits``: The ``DPOJET:PLOT<x>:VERTBATHtub:YAXISUnits`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ber = DpojetPlotItemVertbathtubBer(device, f"{self._cmd_syntax}:BER")
         self._horizontal = DpojetPlotItemVertbathtubHorizontal(
@@ -3963,7 +3963,7 @@ class DpojetPlotItemTrend(SCPICmdRead):
         - ``.type``: The ``DPOJET:PLOT<x>:TREND:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._type = DpojetPlotItemTrendType(device, f"{self._cmd_syntax}:TYPe")
 
@@ -4026,7 +4026,7 @@ class DpojetPlotItemTransferVertical(SCPICmdRead):
         - ``.scale``: The ``DPOJET:PLOT<x>:TRANSfer:VERTical:SCALE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._scale = DpojetPlotItemTransferVerticalScale(device, f"{self._cmd_syntax}:SCALE")
 
@@ -4134,7 +4134,7 @@ class DpojetPlotItemTransferHorizontal(SCPICmdRead):
         - ``.scale``: The ``DPOJET:PLOT<x>:TRANSfer:HORizontal:SCALE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._scale = DpojetPlotItemTransferHorizontalScale(device, f"{self._cmd_syntax}:SCALE")
 
@@ -4203,7 +4203,7 @@ class DpojetPlotItemTransfer(SCPICmdRead):
         - ``.vertical``: The ``DPOJET:PLOT<x>:TRANSfer:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._denominator = DpojetPlotItemTransferDenominator(
             device, f"{self._cmd_syntax}:DENominator"
@@ -4392,7 +4392,7 @@ class DpojetPlotItemSpectrumVertical(SCPICmdRead):
         - ``.scale``: The ``DPOJET:PLOT<x>:SPECtrum:VERTical:SCALE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._scale = DpojetPlotItemSpectrumVerticalScale(device, f"{self._cmd_syntax}:SCALE")
 
@@ -4479,7 +4479,7 @@ class DpojetPlotItemSpectrumHorizontal(SCPICmdRead):
         - ``.scale``: The ``DPOJET:PLOT<x>:SPECtrum:HORizontal:SCALE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._scale = DpojetPlotItemSpectrumHorizontalScale(device, f"{self._cmd_syntax}:SCALE")
 
@@ -4545,7 +4545,7 @@ class DpojetPlotItemSpectrum(SCPICmdRead):
         - ``.vertical``: The ``DPOJET:PLOT<x>:SPECtrum:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._base = DpojetPlotItemSpectrumBase(device, f"{self._cmd_syntax}:BASE")
         self._horizontal = DpojetPlotItemSpectrumHorizontal(
@@ -4706,7 +4706,7 @@ class DpojetPlotItemPhasenoise(SCPICmdRead):
         - ``.smootheningfilter``: The ``DPOJET:PLOT<x>:PHASEnoise:SMOOTHENINGFilter`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._baseline = DpojetPlotItemPhasenoiseBaseline(device, f"{self._cmd_syntax}:BASEline")
         self._smootheningfilter = DpojetPlotItemPhasenoiseSmootheningfilter(
@@ -4906,7 +4906,7 @@ class DpojetPlotItemPdfeye(SCPICmdRead):
         - ``.targetber``: The ``DPOJET:PLOT<x>:PDFEye:TARGETBER`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ber1e12v = DpojetPlotItemPdfeyeBer1e12v(device, f"{self._cmd_syntax}:BER1E12V")
         self._ber1e15v = DpojetPlotItemPdfeyeBer1e15v(device, f"{self._cmd_syntax}:BER1E15V")
@@ -5084,7 +5084,7 @@ class DpojetPlotItemNoisebathtub(SCPICmdRead):
         - ``.yaxisunits``: The ``DPOJET:PLOT<x>:NOISEBATHtub:YAXISUnits`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._yaxisunits = DpojetPlotItemNoisebathtubYaxisunits(
             device, f"{self._cmd_syntax}:YAXISUnits"
@@ -5151,7 +5151,7 @@ class DpojetPlotItemHistogramVertical(SCPICmdRead):
         - ``.scale``: The ``DPOJET:PLOT<x>:HISTOgram:VERTical:SCALE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._scale = DpojetPlotItemHistogramVerticalScale(device, f"{self._cmd_syntax}:SCALE")
 
@@ -5288,7 +5288,7 @@ class DpojetPlotItemHistogramHorizontal(SCPICmdRead):
         - ``.span``: The ``DPOJET:PLOT<x>:HISTOgram:HORizontal:SPAN`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoscale = DpojetPlotItemHistogramHorizontalAutoscale(
             device, f"{self._cmd_syntax}:AUTOscale"
@@ -5403,7 +5403,7 @@ class DpojetPlotItemHistogram(SCPICmdRead):
         - ``.vertical``: The ``DPOJET:PLOT<x>:HISTOgram:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoset = DpojetPlotItemHistogramAutoset(device, f"{self._cmd_syntax}:AUTOset")
         self._horizontal = DpojetPlotItemHistogramHorizontal(
@@ -5550,7 +5550,7 @@ class DpojetPlotItemEyeVertical(SCPICmdRead):
         - ``.yaxismin``: The ``DPOJET:PLOT<x>:EYE:VERTical:YAXISMIn`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._yaxismax = DpojetPlotItemEyeVerticalYaxismax(device, f"{self._cmd_syntax}:YAXISMAx")
         self._yaxismin = DpojetPlotItemEyeVerticalYaxismin(device, f"{self._cmd_syntax}:YAXISMIn")
@@ -5865,7 +5865,7 @@ class DpojetPlotItemEyeHorizontal(SCPICmdRead):
         - ``.xaxismin``: The ``DPOJET:PLOT<x>:EYE:HORizontal:XAXISMIn`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoscale = DpojetPlotItemEyeHorizontalAutoscale(
             device, f"{self._cmd_syntax}:AUTOscale"
@@ -6063,7 +6063,7 @@ class DpojetPlotItemEye(SCPICmdRead):
         - ``.vertical``: The ``DPOJET:PLOT<x>:EYE:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._alignment = DpojetPlotItemEyeAlignment(device, f"{self._cmd_syntax}:ALIGNment")
         self._eyeverticalscale = DpojetPlotItemEyeEyeverticalscale(
@@ -6612,7 +6612,7 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
         - ``.tn``: The ``DPOJET:PLOT<x>:DATA:YDATa:TN`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ddjdcd = DpojetPlotItemDataYdataDdjdcd(device, f"{self._cmd_syntax}:DDJDCD")
         self._ddnone = DpojetPlotItemDataYdataDdnone(device, f"{self._cmd_syntax}:DDNONE")
@@ -7085,7 +7085,7 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
         - ``.tn``: The ``DPOJET:PLOT<x>:DATA:XDATa:TN`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ddjdcd = DpojetPlotItemDataXdataDdjdcd(device, f"{self._cmd_syntax}:DDJDCD")
         self._ddnone = DpojetPlotItemDataXdataDdnone(device, f"{self._cmd_syntax}:DDNONE")
@@ -7329,7 +7329,7 @@ class DpojetPlotItemData(SCPICmdRead):
         - ``.ydata``: The ``DPOJET:PLOT<x>:DATA:YDATa`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._xdata = DpojetPlotItemDataXdata(device, f"{self._cmd_syntax}:XDATa")
         self._ydata = DpojetPlotItemDataYdata(device, f"{self._cmd_syntax}:YDATa")
@@ -7647,7 +7647,7 @@ class DpojetPlotItemCorrelatedeye(SCPICmdRead):
         - ``.targetber``: The ``DPOJET:PLOT<x>:CORRELATEDEye:TARGETBER`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ber1e12v = DpojetPlotItemCorrelatedeyeBer1e12v(device, f"{self._cmd_syntax}:BER1E12V")
         self._ber1e15v = DpojetPlotItemCorrelatedeyeBer1e15v(device, f"{self._cmd_syntax}:BER1E15V")
@@ -7985,7 +7985,7 @@ class DpojetPlotItemCompositenoisehistHorizontal(SCPICmdRead):
         - ``.scale``: The ``DPOJET:PLOT<x>:COMPOSITENoisehist:HORizontal:SCALE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._scale = DpojetPlotItemCompositenoisehistHorizontalScale(
             device, f"{self._cmd_syntax}:SCALE"
@@ -8081,7 +8081,7 @@ class DpojetPlotItemCompositenoisehist(SCPICmdRead):
         - ``.tn``: The ``DPOJET:PLOT<x>:COMPOSITENoisehist:TN`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ddnone = DpojetPlotItemCompositenoisehistDdnone(device, f"{self._cmd_syntax}:DDNONE")
         self._ddnzero = DpojetPlotItemCompositenoisehistDdnzero(
@@ -8296,7 +8296,7 @@ class DpojetPlotItemCompositejitterhistVertical(SCPICmdRead):
         - ``.scale``: The ``DPOJET:PLOT<x>:COMPOSITEJitterhist:VERTical:SCALE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._scale = DpojetPlotItemCompositejitterhistVerticalScale(
             device, f"{self._cmd_syntax}:SCALE"
@@ -8465,7 +8465,7 @@ class DpojetPlotItemCompositejitterhist(SCPICmdRead):
         - ``.vertical``: The ``DPOJET:PLOT<x>:COMPOSITEJitterhist:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ddjdcd = DpojetPlotItemCompositejitterhistDdjdcd(device, f"{self._cmd_syntax}:DDJDCD")
         self._numbins = DpojetPlotItemCompositejitterhistNumbins(
@@ -8763,7 +8763,7 @@ class DpojetPlotItemBereye(SCPICmdRead):
         - ``.targetber``: The ``DPOJET:PLOT<x>:BEREye:TARGETBER`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ber1e12v = DpojetPlotItemBereyeBer1e12v(device, f"{self._cmd_syntax}:BER1E12V")
         self._ber1e15v = DpojetPlotItemBereyeBer1e15v(device, f"{self._cmd_syntax}:BER1E15V")
@@ -9054,7 +9054,7 @@ class DpojetPlotItemBercontourHorizontal(SCPICmdRead):
         - ``.resolution``: The ``DPOJET:PLOT<x>:BERContour:HORizontal:RESolution`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autoscale = DpojetPlotItemBercontourHorizontalAutoscale(
             device, f"{self._cmd_syntax}:AUTOscale"
@@ -9262,7 +9262,7 @@ class DpojetPlotItemBercontour(SCPICmdRead):
         - ``.targetber``: The ``DPOJET:PLOT<x>:BERContour:TARGETBER`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._alignment = DpojetPlotItemBercontourAlignment(device, f"{self._cmd_syntax}:ALIGNment")
         self._ber1e12v = DpojetPlotItemBercontourBer1e12v(device, f"{self._cmd_syntax}:BER1E12V")
@@ -9593,7 +9593,7 @@ class DpojetPlotItemBathtubVertical(SCPICmdRead):
         - ``.scale``: The ``DPOJET:PLOT<x>:BATHtub:VERTical:SCALE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._scale = DpojetPlotItemBathtubVerticalScale(device, f"{self._cmd_syntax}:SCALE")
 
@@ -9658,7 +9658,7 @@ class DpojetPlotItemBathtub(SCPICmdRead):
         - ``.xaxisunits``: The ``DPOJET:PLOT<x>:BATHtub:XAXISUnits`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ber = DpojetPlotItemBathtubBer(device, f"{self._cmd_syntax}:BER")
         self._vertical = DpojetPlotItemBathtubVertical(device, f"{self._cmd_syntax}:VERTical")
@@ -9763,7 +9763,7 @@ class DpojetPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.yunits``: The ``DPOJET:PLOT<x>:YUnits`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bathtub = DpojetPlotItemBathtub(device, f"{self._cmd_syntax}:BATHtub")
         self._bercontour = DpojetPlotItemBercontour(device, f"{self._cmd_syntax}:BERContour")
@@ -10516,7 +10516,7 @@ class DpojetMeasItemSscNominalfreq(SCPICmdRead):
         - ``.selectiontype``: The ``DPOJET:MEAS<x>:SSC:NOMinalfreq:SELECTIONtype`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._auto = DpojetMeasItemSscNominalfreqAuto(device, f"{self._cmd_syntax}:AUTO")
         self._manual = DpojetMeasItemSscNominalfreqManual(device, f"{self._cmd_syntax}:MANual")
@@ -10609,7 +10609,7 @@ class DpojetMeasItemSsc(SCPICmdRead):
         - ``.nominalfreq``: The ``DPOJET:MEAS<x>:SSC:NOMinalfreq`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._nominalfreq = DpojetMeasItemSscNominalfreq(device, f"{self._cmd_syntax}:NOMinalfreq")
 
@@ -10884,7 +10884,7 @@ class DpojetMeasItemRndn(SCPICmdRead):
         - ``.windowlength``: The ``DPOJET:MEAS<x>:RNDN:WINDOwlength`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autodetectpattern = DpojetMeasItemRndnAutodetectpattern(
             device, f"{self._cmd_syntax}:AUTODETECTpattern"
@@ -11270,7 +11270,7 @@ class DpojetMeasItemRjdj(SCPICmdRead):
         - ``.windowlength``: The ``DPOJET:MEAS<x>:RJDJ:WINDOwlength`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ber = DpojetMeasItemRjdjBer(device, f"{self._cmd_syntax}:BER")
         self._detectplen = DpojetMeasItemRjdjDetectplen(device, f"{self._cmd_syntax}:DETECTPLEN")
@@ -11564,7 +11564,7 @@ class DpojetMeasItemResultsCurrentacqStddev(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:CURRentacq:STDDev:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = DpojetMeasItemResultsCurrentacqStddevStatus(
             device, f"{self._cmd_syntax}:STATus"
@@ -11638,7 +11638,7 @@ class DpojetMeasItemResultsCurrentacqPopulation(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:CURRentacq:POPUlation:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = DpojetMeasItemResultsCurrentacqPopulationStatus(
             device, f"{self._cmd_syntax}:STATus"
@@ -11711,7 +11711,7 @@ class DpojetMeasItemResultsCurrentacqPk2pk(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:CURRentacq:PK2PK:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = DpojetMeasItemResultsCurrentacqPk2pkStatus(
             device, f"{self._cmd_syntax}:STATus"
@@ -11784,7 +11784,7 @@ class DpojetMeasItemResultsCurrentacqMincc(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:CURRentacq:MINCC:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = DpojetMeasItemResultsCurrentacqMinccStatus(
             device, f"{self._cmd_syntax}:STATus"
@@ -11858,7 +11858,7 @@ class DpojetMeasItemResultsCurrentacqMin(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:CURRentacq:MIN:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = DpojetMeasItemResultsCurrentacqMinStatus(
             device, f"{self._cmd_syntax}:STATus"
@@ -11931,7 +11931,7 @@ class DpojetMeasItemResultsCurrentacqMean(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:CURRentacq:MEAN:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = DpojetMeasItemResultsCurrentacqMeanStatus(
             device, f"{self._cmd_syntax}:STATus"
@@ -12004,7 +12004,7 @@ class DpojetMeasItemResultsCurrentacqMaxcc(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:CURRentacq:MAXCC:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = DpojetMeasItemResultsCurrentacqMaxccStatus(
             device, f"{self._cmd_syntax}:STATus"
@@ -12078,7 +12078,7 @@ class DpojetMeasItemResultsCurrentacqMax(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:CURRentacq:MAX:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = DpojetMeasItemResultsCurrentacqMaxStatus(
             device, f"{self._cmd_syntax}:STATus"
@@ -12127,7 +12127,7 @@ class DpojetMeasItemResultsCurrentacq(SCPICmdRead):
         - ``.stddev``: The ``DPOJET:MEAS<x>:RESULts:CURRentacq:STDDev`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._max = DpojetMeasItemResultsCurrentacqMax(device, f"{self._cmd_syntax}:MAX")
         self._maxcc = DpojetMeasItemResultsCurrentacqMaxcc(device, f"{self._cmd_syntax}:MAXCC")
@@ -12385,7 +12385,7 @@ class DpojetMeasItemResultsAllacqsStddev(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:ALLAcqs:STDDev:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = DpojetMeasItemResultsAllacqsStddevStatus(
             device, f"{self._cmd_syntax}:STATus"
@@ -12493,7 +12493,7 @@ class DpojetMeasItemResultsAllacqsSegItem(ValidatedDynamicNumberCmd, SCPICmdRead
         - ``.minhits``: The ``DPOJET:MEAS<x>:RESULts:ALLAcqs:SEG<x>:MINHits`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hits = DpojetMeasItemResultsAllacqsSegItemHits(device, f"{self._cmd_syntax}:Hits")
         self._maxhits = DpojetMeasItemResultsAllacqsSegItemMaxhits(
@@ -12614,7 +12614,7 @@ class DpojetMeasItemResultsAllacqsPopulation(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:ALLAcqs:POPUlation:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = DpojetMeasItemResultsAllacqsPopulationStatus(
             device, f"{self._cmd_syntax}:STATus"
@@ -12687,7 +12687,7 @@ class DpojetMeasItemResultsAllacqsPk2pk(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:ALLAcqs:PK2PK:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = DpojetMeasItemResultsAllacqsPk2pkStatus(device, f"{self._cmd_syntax}:STATus")
 
@@ -12778,7 +12778,7 @@ class DpojetMeasItemResultsAllacqsMincc(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:ALLAcqs:MINCC:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = DpojetMeasItemResultsAllacqsMinccStatus(device, f"{self._cmd_syntax}:STATus")
 
@@ -12889,7 +12889,7 @@ class DpojetMeasItemResultsAllacqsMin(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:ALLAcqs:MIN:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._lowlimit = DpojetMeasItemResultsAllacqsMinLowlimit(
             device, f"{self._cmd_syntax}:LOWLimit"
@@ -13028,7 +13028,7 @@ class DpojetMeasItemResultsAllacqsMean(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:ALLAcqs:MEAN:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._highlimit = DpojetMeasItemResultsAllacqsMeanHighlimit(
             device, f"{self._cmd_syntax}:HIGHLimit"
@@ -13143,7 +13143,7 @@ class DpojetMeasItemResultsAllacqsMaxcc(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:ALLAcqs:MAXCC:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = DpojetMeasItemResultsAllacqsMaxccStatus(device, f"{self._cmd_syntax}:STATus")
 
@@ -13255,7 +13255,7 @@ class DpojetMeasItemResultsAllacqsMax(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:ALLAcqs:MAX:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._highlimit = DpojetMeasItemResultsAllacqsMaxHighlimit(
             device, f"{self._cmd_syntax}:HIGHLimit"
@@ -13385,7 +13385,7 @@ class DpojetMeasItemResultsAllacqsLimitsLow(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:ALLAcqs:LIMits:LOw:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = DpojetMeasItemResultsAllacqsLimitsLowStatus(
             device, f"{self._cmd_syntax}:STATus"
@@ -13447,7 +13447,7 @@ class DpojetMeasItemResultsAllacqsLimitsHigh(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:ALLAcqs:LIMits:HIgh:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = DpojetMeasItemResultsAllacqsLimitsHighStatus(
             device, f"{self._cmd_syntax}:STATus"
@@ -13491,7 +13491,7 @@ class DpojetMeasItemResultsAllacqsLimits(SCPICmdRead):
         - ``.status``: The ``DPOJET:MEAS<x>:RESULts:ALLAcqs:LIMits:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._high = DpojetMeasItemResultsAllacqsLimitsHigh(device, f"{self._cmd_syntax}:HIgh")
         self._low = DpojetMeasItemResultsAllacqsLimitsLow(device, f"{self._cmd_syntax}:LOw")
@@ -13627,7 +13627,7 @@ class DpojetMeasItemResultsAllacqs(SCPICmdRead):
         - ``.stddev``: The ``DPOJET:MEAS<x>:RESULts:ALLAcqs:STDDev`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hitpopulation = DpojetMeasItemResultsAllacqsHitpopulation(
             device, f"{self._cmd_syntax}:HITPopulation"
@@ -14001,7 +14001,7 @@ class DpojetMeasItemResults(SCPICmdRead):
         - ``.view``: The ``DPOJET:MEAS<x>:RESULts:VIew`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._allacqs = DpojetMeasItemResultsAllacqs(device, f"{self._cmd_syntax}:ALLAcqs")
         self._currentacq = DpojetMeasItemResultsCurrentacq(device, f"{self._cmd_syntax}:CURRentacq")
@@ -14222,7 +14222,7 @@ class DpojetMeasItemPhasenoise(SCPICmdRead):
         - ``.lowlimit``: The ``DPOJET:MEAS<x>:PHASENoise:LOWLimit`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._highlimit = DpojetMeasItemPhasenoiseHighlimit(device, f"{self._cmd_syntax}:HIGHLimit")
         self._lowlimit = DpojetMeasItemPhasenoiseLowlimit(device, f"{self._cmd_syntax}:LOWLimit")
@@ -14419,7 +14419,7 @@ class DpojetMeasItemOptical(SCPICmdRead):
         - ``.wfmtype``: The ``DPOJET:MEAS<x>:OPTIcal:WFMTYpe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bandwidth = DpojetMeasItemOpticalBandwidth(device, f"{self._cmd_syntax}:BANDWIDth")
         self._btfilter = DpojetMeasItemOpticalBtfilter(device, f"{self._cmd_syntax}:BTFILTEr")
@@ -14704,7 +14704,7 @@ class DpojetMeasItemMeasrange(SCPICmdRead):
         - ``.state``: The ``DPOJET:MEAS<x>:MEASRange:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._max = DpojetMeasItemMeasrangeMax(device, f"{self._cmd_syntax}:MAX")
         self._min = DpojetMeasItemMeasrangeMin(device, f"{self._cmd_syntax}:MIN")
@@ -14884,7 +14884,7 @@ class DpojetMeasItemMaskoffsetHorizontal(SCPICmdRead):
         - ``.selectiontype``: The ``DPOJET:MEAS<x>:MASKOffset:HORizontal:SELECTIONtype`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autofit = DpojetMeasItemMaskoffsetHorizontalAutofit(
             device, f"{self._cmd_syntax}:AUTOfit"
@@ -14982,7 +14982,7 @@ class DpojetMeasItemMaskoffset(SCPICmdRead):
         - ``.horizontal``: The ``DPOJET:MEAS<x>:MASKOffset:HORizontal`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._horizontal = DpojetMeasItemMaskoffsetHorizontal(
             device, f"{self._cmd_syntax}:HORizontal"
@@ -15110,7 +15110,7 @@ class DpojetMeasItemMargin(SCPICmdRead):
         - ``.resolution``: The ``DPOJET:MEAS<x>:MARGIN:RESOlution`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hitcountvalue = DpojetMeasItemMarginHitcountvalue(
             device, f"{self._cmd_syntax}:HITCOUNTValue"
@@ -15279,7 +15279,7 @@ class DpojetMeasItemLoggingWorstcase(SCPICmdRead):
         - ``.select``: The ``DPOJET:MEAS<x>:LOGging:WORSTcase:SELect`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._select = DpojetMeasItemLoggingWorstcaseSelect(device, f"{self._cmd_syntax}:SELect")
 
@@ -15346,7 +15346,7 @@ class DpojetMeasItemLoggingStatistics(SCPICmdRead):
         - ``.select``: The ``DPOJET:MEAS<x>:LOGging:STATistics:SELect`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._select = DpojetMeasItemLoggingStatisticsSelect(device, f"{self._cmd_syntax}:SELect")
 
@@ -15437,7 +15437,7 @@ class DpojetMeasItemLoggingMeasurements(SCPICmdRead):
         - ``.select``: The ``DPOJET:MEAS<x>:LOGging:MEASurements:SELect`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._filename = DpojetMeasItemLoggingMeasurementsFilename(
             device, f"{self._cmd_syntax}:FILEname"
@@ -15507,7 +15507,7 @@ class DpojetMeasItemLogging(SCPICmdRead):
         - ``.worstcase``: The ``DPOJET:MEAS<x>:LOGging:WORSTcase`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._measurements = DpojetMeasItemLoggingMeasurements(
             device, f"{self._cmd_syntax}:MEASurements"
@@ -15730,7 +15730,7 @@ class DpojetMeasItemFiltersLowpass(SCPICmdRead):
         - ``.spec``: The ``DPOJET:MEAS<x>:FILTers:LOWPass:SPEC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._freq = DpojetMeasItemFiltersLowpassFreq(device, f"{self._cmd_syntax}:FREQ")
         self._spec = DpojetMeasItemFiltersLowpassSpec(device, f"{self._cmd_syntax}:SPEC")
@@ -15843,7 +15843,7 @@ class DpojetMeasItemFiltersHighpass(SCPICmdRead):
         - ``.spec``: The ``DPOJET:MEAS<x>:FILTers:HIGHPass:SPEC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._freq = DpojetMeasItemFiltersHighpassFreq(device, f"{self._cmd_syntax}:FREQ")
         self._spec = DpojetMeasItemFiltersHighpassSpec(device, f"{self._cmd_syntax}:SPEC")
@@ -15936,7 +15936,7 @@ class DpojetMeasItemFilters(SCPICmdRead):
         - ``.sjfrequency``: The ``DPOJET:MEAS<x>:FILTers:SJFRequency`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._blankingtime = DpojetMeasItemFiltersBlankingtime(
             device, f"{self._cmd_syntax}:BLANKingtime"
@@ -16275,7 +16275,7 @@ class DpojetMeasItemEdges(SCPICmdRead):
         - ``.voltagestate``: The ``DPOJET:MEAS<x>:EDGES:VOLTAGEState`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._eyeheightstate = DpojetMeasItemEdgesEyeheightstate(
             device, f"{self._cmd_syntax}:EYEHeightstate"
@@ -16806,7 +16806,7 @@ class DpojetMeasItemDfe(SCPICmdRead):
         - ``.tapvalue``: The ``DPOJET:MEAS<x>:DFE:TAPValue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._absolutetimestate = DpojetMeasItemDfeAbsolutetimestate(
             device, f"{self._cmd_syntax}:ABSOLUTETIMEState"
@@ -17240,7 +17240,7 @@ class DpojetMeasItemCustomgating(SCPICmdRead):
         - ``.toedge``: The ``DPOJET:MEAS<x>:CUSTOMGATING:TOedge`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fromedge = DpojetMeasItemCustomgatingFromedge(device, f"{self._cmd_syntax}:FROMedge")
         self._measurementedge = DpojetMeasItemCustomgatingMeasurementedge(
@@ -17410,7 +17410,7 @@ class DpojetMeasItemCommonmodeFilters(SCPICmdRead):
         - ``.state``: The ``DPOJET:MEAS<x>:COMMONMode:FILTers:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = DpojetMeasItemCommonmodeFiltersState(device, f"{self._cmd_syntax}:STATE")
 
@@ -17451,7 +17451,7 @@ class DpojetMeasItemCommonmode(SCPICmdRead):
         - ``.filters``: The ``DPOJET:MEAS<x>:COMMONMode:FILTers`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._filters = DpojetMeasItemCommonmodeFilters(device, f"{self._cmd_syntax}:FILTers")
 
@@ -17641,7 +17641,7 @@ class DpojetMeasItemClockrecoveryNominaloffset(SCPICmdWrite, SCPICmdRead):
           command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._auto = DpojetMeasItemClockrecoveryNominaloffsetAuto(
             device, f"{self._cmd_syntax}:AUTO"
@@ -18057,7 +18057,7 @@ class DpojetMeasItemClockrecovery(SCPICmdRead):
         - ``.standard``: The ``DPOJET:MEAS<x>:CLOCKRecovery:STAndard`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bhvrstandard = DpojetMeasItemClockrecoveryBhvrstandard(
             device, f"{self._cmd_syntax}:BHVRSTANdard"
@@ -18657,7 +18657,7 @@ class DpojetMeasItemBusstate(SCPICmdRead):
         - ``.tosymbol``: The ``DPOJET:MEAS<x>:BUSState:TOSymbol`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._clockpolarity = DpojetMeasItemBusstateClockpolarity(
             device, f"{self._cmd_syntax}:CLOCKPolarity"
@@ -19017,7 +19017,7 @@ class DpojetMeasItemBitconfig(SCPICmdRead):
         - ``.startpercent``: The ``DPOJET:MEAS<x>:BITConfig:STARTPercent`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._absrelstate = DpojetMeasItemBitconfigAbsrelstate(
             device, f"{self._cmd_syntax}:ABSRELstate"
@@ -19184,7 +19184,7 @@ class DpojetMeasItemBer(SCPICmdRead):
         - ``.targetber``: The ``DPOJET:MEAS<x>:BER:TARGETBER`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._targetber = DpojetMeasItemBerTargetber(device, f"{self._cmd_syntax}:TARGETBER")
 
@@ -19269,7 +19269,7 @@ class DpojetMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.zoomevent``: The ``DPOJET:MEAS<x>:ZOOMEVENT`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ber = DpojetMeasItemBer(device, f"{self._cmd_syntax}:BER")
         self._bitcfgmethod = DpojetMeasItemBitcfgmethod(device, f"{self._cmd_syntax}:BITCfgmethod")
@@ -20269,7 +20269,7 @@ class DpojetLoggingWorstcase(SCPICmdRead):
         - ``.state``: The ``DPOJET:LOGging:WORSTcase:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._folder = DpojetLoggingWorstcaseFolder(device, f"{self._cmd_syntax}:FOLDer")
         self._state = DpojetLoggingWorstcaseState(device, f"{self._cmd_syntax}:STATE")
@@ -20383,7 +20383,7 @@ class DpojetLoggingStatistics(SCPICmdRead):
         - ``.state``: The ``DPOJET:LOGging:STATistics:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._filename = DpojetLoggingStatisticsFilename(device, f"{self._cmd_syntax}:FILEName")
         self._state = DpojetLoggingStatisticsState(device, f"{self._cmd_syntax}:STATE")
@@ -20513,7 +20513,7 @@ class DpojetLoggingMeasurements(SCPICmdRead):
         - ``.state``: The ``DPOJET:LOGging:MEASurements:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._folder = DpojetLoggingMeasurementsFolder(device, f"{self._cmd_syntax}:FOLDer")
         self._state = DpojetLoggingMeasurementsState(device, f"{self._cmd_syntax}:STATE")
@@ -20584,7 +20584,7 @@ class DpojetLogging(SCPICmdRead):
         - ``.worstcase``: The ``DPOJET:LOGging:WORSTcase`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._measurements = DpojetLoggingMeasurements(device, f"{self._cmd_syntax}:MEASurements")
         self._snapshot = DpojetLoggingSnapshot(device, f"{self._cmd_syntax}:SNAPshot")
@@ -20751,7 +20751,7 @@ class DpojetLimits(SCPICmdRead):
         - ``.state``: The ``DPOJET:LIMits:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._filename = DpojetLimitsFilename(device, f"{self._cmd_syntax}:FILEName")
         self._state = DpojetLimitsState(device, f"{self._cmd_syntax}:STATE")
@@ -21239,7 +21239,7 @@ class DpojetDeskew(SCPICmdWrite, SCPICmdRead):
         - ``.refmidlevel``: The ``DPOJET:DESKEW:REFMidlevel`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._deskewhysteresis = DpojetDeskewDeskewhysteresis(
             device, f"{self._cmd_syntax}:DESKEWHysteresis"
@@ -21677,7 +21677,7 @@ class Dpojet(SCPICmdRead):
 
     # pylint: disable=too-many-statements
     def __init__(  # noqa: PLR0915
-        self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DPOJET"
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "DPOJET"
     ) -> None:
         super().__init__(device, cmd_syntax)
         self._activate = DpojetActivate(device, f"{self._cmd_syntax}:ACTIVATE")

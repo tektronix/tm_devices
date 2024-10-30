@@ -6,9 +6,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
-from tm_devices.drivers.pi.tsp_device import TSPDevice
+from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_d6b496_dmm.acal import Acal
 from .gen_d6b496_dmm.buffer import Buffer
@@ -354,7 +355,7 @@ class DMM7510Commands:
         - ``.waitcomplete()``: The ``waitcomplete()`` function.
     """
 
-    def __init__(self, device: Optional[TSPDevice] = None) -> None:
+    def __init__(self, device: Optional[TSPControl] = None) -> None:
         self._device = device
         self._acal = Acal(device)
         self._beeper = Beeper(device)
@@ -1157,7 +1158,7 @@ class DMM7510Commands:
                 f"print(available({functionality}))"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``available()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``available()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def createconfigscript(self, script_name: str) -> None:
@@ -1183,7 +1184,7 @@ class DMM7510Commands:
                 f'createconfigscript("{script_name}")'
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``createconfigscript()`` function."  # noqa: E501
+            msg = "No TSPControl object was provided, unable to run the ``createconfigscript()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def delay(self, seconds: int) -> None:
@@ -1208,7 +1209,7 @@ class DMM7510Commands:
                 f"delay({seconds})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``delay()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``delay()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def exit(self) -> None:
@@ -1230,7 +1231,7 @@ class DMM7510Commands:
                 "exit()"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``exit()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``exit()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def opc(self) -> None:
@@ -1253,7 +1254,7 @@ class DMM7510Commands:
                 "opc()"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``opc()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``opc()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def print(self, value: str) -> None:
@@ -1278,7 +1279,7 @@ class DMM7510Commands:
                 f"print({value})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``print()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``print()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def printbuffer(self, start_index: int, end_index: int, buffer_var: str) -> str:
@@ -1311,7 +1312,7 @@ class DMM7510Commands:
                 f"printbuffer({start_index}, {end_index}, {buffer_var})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``printbuffer()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``printbuffer()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def printnumber(self, value: str) -> str:
@@ -1339,7 +1340,7 @@ class DMM7510Commands:
                 f"printnumber({value})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``printnumber()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``printnumber()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def reset(self, system: Optional[str] = None) -> None:
@@ -1365,7 +1366,7 @@ class DMM7510Commands:
                 f"reset({function_args})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``reset()`` function."
+            msg = "No TSPControl object was provided, unable to run the ``reset()`` function."
             raise NoDeviceProvidedError(msg) from error
 
     def waitcomplete(self, group: Optional[str] = None) -> None:
@@ -1391,7 +1392,9 @@ class DMM7510Commands:
                 f"waitcomplete({function_args})"
             )
         except AttributeError as error:
-            msg = "No TSPDevice object was provided, unable to run the ``waitcomplete()`` function."
+            msg = (
+                "No TSPControl object was provided, unable to run the ``waitcomplete()`` function."
+            )
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -1403,22 +1406,16 @@ class DMM7510Mixin:
         - ``.commands``: The DMM7510 commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, TSPDevice) else None
-        self._command_argument_constants = DMM7510CommandConstants()
-        self._commands = DMM7510Commands(device)
-
-    @property
-    def command_argument_constants(self) -> DMM7510CommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> DMM7510CommandConstants:  # pylint: disable=no-self-use
         """Return the DMM7510 command argument constants.
 
         This provides access to all the string constants which can be used as arguments for DMM7510
         commands.
         """
-        return self._command_argument_constants
+        return DMM7510CommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> DMM7510Commands:
         """Return the DMM7510 commands.
 
@@ -1464,4 +1461,5 @@ class DMM7510Mixin:
             - ``.userstring``: The ``userstring`` command tree.
             - ``.waitcomplete()``: The ``waitcomplete()`` function.
         """
-        return self._commands
+        device = self if isinstance(self, TSPControl) else None
+        return DMM7510Commands(device)

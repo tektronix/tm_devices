@@ -163,7 +163,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MathMathItemVunit(SCPICmdWrite):
@@ -225,7 +225,7 @@ class MathMathItemUsb(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:USB:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemUsbSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -323,7 +323,7 @@ class MathMathItemSvid(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:SVID:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemSvidSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -398,7 +398,7 @@ class MathMathItemSpmi(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:SPMI:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemSpmiSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -476,7 +476,7 @@ class MathMathItemSpi(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:SPI:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemSpiSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -613,7 +613,7 @@ class MathMathItemSpectralUnwrap(SCPICmdWrite, SCPICmdRead):
         - ``.degrees``: The ``MATH:MATH<x>:SPECTral:UNWRap:DEGrees`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._degrees = MathMathItemSpectralUnwrapDegrees(device, f"{self._cmd_syntax}:DEGrees")
 
@@ -734,7 +734,7 @@ class MathMathItemSpectralSuppress(SCPICmdWrite, SCPICmdRead):
         - ``.value``: The ``MATH:MATH<x>:SPECTral:SUPPress:VALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = MathMathItemSpectralSuppressValue(device, f"{self._cmd_syntax}:VALue")
 
@@ -896,7 +896,7 @@ class MathMathItemSpectral(SCPICmdRead):
         - ``.window``: The ``MATH:MATH<x>:SPECTral:WINdow`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._horz = MathMathItemSpectralHorz(device, f"{self._cmd_syntax}:HORZ")
         self._mag = MathMathItemSpectralMag(device, f"{self._cmd_syntax}:MAG")
@@ -1193,7 +1193,7 @@ class MathMathItemSpacewire(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:SPACEWIRe:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemSpacewireSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -1292,7 +1292,7 @@ class MathMathItemSmbus(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:SMBUS:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemSmbusSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -1397,7 +1397,7 @@ class MathMathItemSent(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:SENT:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemSentSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -1474,7 +1474,7 @@ class MathMathItemSdlc(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:SDLC:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemSdlcSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -1551,7 +1551,7 @@ class MathMathItemRs232c(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:RS232C:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemRs232cSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -1632,7 +1632,7 @@ class MathMathItemPsifive(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:PSIFIVe:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemPsifiveSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -1709,7 +1709,7 @@ class MathMathItemParallel(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:PARallel:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemParallelSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -1783,7 +1783,7 @@ class MathMathItemOnewire(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:ONEWIRe:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemOnewireSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -1858,7 +1858,7 @@ class MathMathItemMil1553b(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:MIL1553B:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemMil1553bSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -1931,7 +1931,7 @@ class MathMathItemMdio(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:MDIO:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemMdioSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -2003,7 +2003,7 @@ class MathMathItemLin(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:LIN:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemLinSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -2247,7 +2247,7 @@ class MathMathItemLabelFont(SCPICmdRead):
         - ``.underline``: The ``MATH:MATH<x>:LABel:FONT:UNDERline`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bold = MathMathItemLabelFontBold(device, f"{self._cmd_syntax}:BOLD")
         self._italic = MathMathItemLabelFontItalic(device, f"{self._cmd_syntax}:ITALic")
@@ -2412,7 +2412,7 @@ class MathMathItemLabel(SCPICmdRead):
         - ``.ypos``: The ``MATH:MATH<x>:LABel:YPOS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._color = MathMathItemLabelColor(device, f"{self._cmd_syntax}:COLor")
         self._font = MathMathItemLabelFont(device, f"{self._cmd_syntax}:FONT")
@@ -2603,7 +2603,7 @@ class MathMathItemI3c(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:I3C:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemI3cSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -2675,7 +2675,7 @@ class MathMathItemI2c(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:I2C:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemI2cSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -2799,7 +2799,7 @@ class MathMathItemFlexray(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:FLEXray:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemFlexraySupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -3044,7 +3044,7 @@ class MathMathItemFilterSave(SCPICmdWrite, SCPICmdRead):
 
     _WRAP_ARG_WITH_QUOTES = True
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._response = MathMathItemFilterSaveResponse(device, f"{self._cmd_syntax}:RESPonse")
 
@@ -3258,7 +3258,7 @@ class MathMathItemFilterLoad(SCPICmdWrite, SCPICmdRead):
 
     _WRAP_ARG_WITH_QUOTES = True
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._response = MathMathItemFilterLoadResponse(device, f"{self._cmd_syntax}:RESPonse")
 
@@ -3465,7 +3465,7 @@ class MathMathItemFilter(SCPICmdRead):
         - ``.type``: The ``MATH:MATH<x>:FILTer:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._cfreq = MathMathItemFilterCfreq(device, f"{self._cmd_syntax}:CFReq")
         self._delay = MathMathItemFilterDelay(device, f"{self._cmd_syntax}:DELay")
@@ -4029,7 +4029,7 @@ class MathMathItemEusb(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:EUSB:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemEusbSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -4107,7 +4107,7 @@ class MathMathItemEthernet(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:ETHERnet:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemEthernetSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -4185,7 +4185,7 @@ class MathMathItemEthercat(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:ETHERCAT:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemEthercatSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -4261,7 +4261,7 @@ class MathMathItemEspi(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:ESPI:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemEspiSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -4371,7 +4371,7 @@ class MathMathItemCxpi(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:CXPI:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemCxpiSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -4443,7 +4443,7 @@ class MathMathItemCan(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:CAN:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemCanSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -4535,7 +4535,7 @@ class MathMathItemAvg(SCPICmdRead):
         - ``.weight``: The ``MATH:MATH<x>:AVG:WEIGht`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = MathMathItemAvgMode(device, f"{self._cmd_syntax}:MODE")
         self._weight = MathMathItemAvgWeight(device, f"{self._cmd_syntax}:WEIGht")
@@ -4629,7 +4629,7 @@ class MathMathItemAutoethernet(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:AUTOETHERnet:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemAutoethernetSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -4705,7 +4705,7 @@ class MathMathItemAudio(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:AUDIO:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemAudioSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -4781,7 +4781,7 @@ class MathMathItemArinc429a(SCPICmdRead):
         - ``.supportedfields``: The ``MATH:MATH<x>:ARINC429A:SUPPortedfields`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._supportedfields = MathMathItemArinc429aSupportedfields(
             device, f"{self._cmd_syntax}:SUPPortedfields"
@@ -4867,7 +4867,7 @@ class MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.vunit``: The ``MATH:MATH<x>:VUNIT`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._arinc429a = MathMathItemArinc429a(device, f"{self._cmd_syntax}:ARINC429A")
         self._audio = MathMathItemAudio(device, f"{self._cmd_syntax}:AUDIO")
@@ -5671,7 +5671,7 @@ class Math(SCPICmdRead):
         - ``.math``: The ``MATH:MATH<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MATH") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MATH") -> None:
         super().__init__(device, cmd_syntax)
         self._addnew = MathAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = MathDelete(device, f"{self._cmd_syntax}:DELete")

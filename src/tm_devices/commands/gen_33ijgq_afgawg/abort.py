@@ -18,7 +18,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class Abort(SCPICmdWriteNoArguments):
@@ -36,5 +36,5 @@ class Abort(SCPICmdWriteNoArguments):
         ```
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "ABORt") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "ABORt") -> None:
         super().__init__(device, cmd_syntax)

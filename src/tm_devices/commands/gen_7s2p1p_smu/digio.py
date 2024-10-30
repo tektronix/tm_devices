@@ -19,7 +19,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 # pylint: disable=too-few-public-methods
@@ -34,7 +34,7 @@ class DigioTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
     EVENT_ID = "digio.trigger[N].EVENT_ID"
     """str: Selects the event that causes a trigger to be asserted on the digital output line as the edge detected on the specified digital I/O line."""  # noqa: E501
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         # pylint: disable=invalid-name
         self.EVENT_ID = self.EVENT_ID.replace(
@@ -101,7 +101,7 @@ class Digio(BaseTSPCmd):
     TRIG_SYNCHRONOUSM = "digio.TRIG_SYNCHRONOUSM"
     """str: Sets the mode in which the trigger event detector and the output trigger generator operate on the specified trigger line to detect rising-edge triggers as input and assert a TTL-low pulse for output."""  # noqa: E501
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "digio") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "digio") -> None:
         super().__init__(device, cmd_syntax)
         self._trigger: Dict[int, DigioTriggerItem] = DefaultDictPassKeyToFactory(
             lambda x: DigioTriggerItem(device, f"{self._cmd_syntax}.trigger[{x}]")

@@ -39,7 +39,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DchItemDigitalBitThreshold(SCPICmdWrite, SCPICmdRead):
@@ -258,7 +258,7 @@ class DchItemDigitalBitLabelFont(SCPICmdRead):
         - ``.underline``: The ``DCH<x>_D<x>:LABel:FONT:UNDERline`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bold = DchItemDigitalBitLabelFontBold(device, f"{self._cmd_syntax}:BOLD")
         self._italic = DchItemDigitalBitLabelFontItalic(device, f"{self._cmd_syntax}:ITALic")
@@ -462,7 +462,7 @@ class DchItemDigitalBitLabel(SCPICmdRead):
         - ``.name``: The ``DCH<x>_D<x>:LABel:NAMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._color = DchItemDigitalBitLabelColor(device, f"{self._cmd_syntax}:COLor")
         self._font = DchItemDigitalBitLabelFont(device, f"{self._cmd_syntax}:FONT")
@@ -564,7 +564,7 @@ class DchItemDigitalBit(ValidatedDigitalBit, SCPICmdRead):
         - ``.threshold``: The ``DCH<x>_D<x>:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._label = DchItemDigitalBitLabel(device, f"{self._cmd_syntax}:LABel")
         self._threshold = DchItemDigitalBitThreshold(device, f"{self._cmd_syntax}:THReshold")
@@ -635,7 +635,7 @@ class DchItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.d``: The ``DCH<x>_D<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DCH<x>") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DCH<x>") -> None:
         super().__init__(device, cmd_syntax)
         self._d: Dict[int, DchItemDigitalBit] = DefaultDictPassKeyToFactory(
             lambda x: DchItemDigitalBit(device, f"{self._cmd_syntax}_D{x}")

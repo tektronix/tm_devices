@@ -27,7 +27,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Script(BaseTSPCmd):
@@ -43,7 +43,7 @@ class Script(BaseTSPCmd):
         - ``.run()``: The ``script.run()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "script") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "script") -> None:
         super().__init__(device, cmd_syntax)
 
     @property
@@ -71,7 +71,7 @@ class Script(BaseTSPCmd):
                 f"print({self._cmd_syntax}.anonymous)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.anonymous`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.anonymous`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def delete(self, script_name: str) -> None:
@@ -96,7 +96,7 @@ class Script(BaseTSPCmd):
                 f'{self._cmd_syntax}.delete("{script_name}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def load(self, file: str, name: Optional[str] = None) -> str:
@@ -133,7 +133,7 @@ class Script(BaseTSPCmd):
                 f"print({self._cmd_syntax}.load({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def new(self, code: str, name: Optional[str] = None) -> str:
@@ -170,7 +170,7 @@ class Script(BaseTSPCmd):
                 f"print({self._cmd_syntax}.new({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.new()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.new()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def newautorun(self, code: str, name: Optional[str] = None) -> str:
@@ -207,7 +207,7 @@ class Script(BaseTSPCmd):
                 f"print({self._cmd_syntax}.newautorun({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.newautorun()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.newautorun()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def restore(self, name: str) -> None:
@@ -232,7 +232,7 @@ class Script(BaseTSPCmd):
                 f"{self._cmd_syntax}.restore({name})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.restore()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.restore()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def run(self) -> None:
@@ -254,5 +254,5 @@ class Script(BaseTSPCmd):
                 f"{self._cmd_syntax}.run()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.run()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.run()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

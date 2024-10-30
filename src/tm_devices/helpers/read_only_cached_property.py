@@ -7,7 +7,7 @@ from typing import TypeVar
 
 _T = TypeVar("_T")
 
-# TODO: Remove the pragmas and exception block when support for Python 3.8 is dropped
+# TODO: Drop Python 3.8: Remove pragmas and exception block when support for Python 3.8 is dropped
 try:  # pragma: py-lt-39
     # pylint: disable=unsubscriptable-object,useless-suppression
     class ReadOnlyCachedProperty(cached_property[_T]):  # pyright: ignore[reportRedeclaration]
@@ -44,6 +44,11 @@ try:  # pragma: py-lt-39
             with contextlib.suppress(KeyError):
                 del cache[self.attrname]  # pyright: ignore[reportArgumentType]
 
+        @property
+        def __isabstractmethod__(self) -> bool:
+            """Provide a way to check if the decorated method is an abstract method."""
+            return getattr(self.func, "__isabstractmethod__", False)
+
 except TypeError:  # pragma: py-gte-39
     # pylint: disable=unsubscriptable-object,useless-suppression
     class ReadOnlyCachedProperty(cached_property):  # pyright: ignore[reportMissingTypeArgument]
@@ -79,3 +84,8 @@ except TypeError:  # pragma: py-gte-39
             # attribute already doesn't exist and therefore doesn't need to be deleted.
             with contextlib.suppress(KeyError):
                 del cache[self.attrname]  # pyright: ignore[reportArgumentType]
+
+        @property
+        def __isabstractmethod__(self) -> bool:
+            """Provide a way to check if the decorated method is an abstract method."""
+            return getattr(self.func, "__isabstractmethod__", False)

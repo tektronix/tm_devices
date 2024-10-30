@@ -28,7 +28,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SystemVersion(SCPICmdRead):
@@ -181,7 +181,7 @@ class SystemErrorCode(SCPICmdRead):
         - ``.next``: The ``SYSTem:ERRor:CODE:NEXT`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._all = SystemErrorCodeAll(device, f"{self._cmd_syntax}:ALL")
         self._next = SystemErrorCodeNext(device, f"{self._cmd_syntax}:NEXT")
@@ -262,7 +262,7 @@ class SystemErrorCmd(SCPICmdRead):
         - ``.next``: The ``SYSTem:ERRor:NEXT`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._all = SystemErrorAll(device, f"{self._cmd_syntax}:ALL")
         self._code = SystemErrorCode(device, f"{self._cmd_syntax}:CODE")
@@ -402,7 +402,7 @@ class System(SCPICmdRead):
         - ``.version``: The ``SYSTem:VERSion`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SYSTem") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SYSTem") -> None:
         super().__init__(device, cmd_syntax)
         self._date = SystemDate(device, f"{self._cmd_syntax}:DATE")
         self._error = SystemError(device, f"{self._cmd_syntax}:ERRor")

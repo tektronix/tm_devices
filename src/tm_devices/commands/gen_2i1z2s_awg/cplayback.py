@@ -45,7 +45,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class CplaybackCompileSrateAuto(SCPICmdWrite, SCPICmdRead):
@@ -96,7 +96,7 @@ class CplaybackCompileSrate(SCPICmdWrite, SCPICmdRead):
         - ``.auto``: The ``CPLayback:COMPile:SRATe:AUTO`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._auto = CplaybackCompileSrateAuto(device, f"{self._cmd_syntax}:AUTO")
 
@@ -219,7 +219,7 @@ class CplaybackCompile(SCPICmdWriteNoArguments, SCPICmdRead):
         - ``.srate``: The ``CPLayback:COMPile:SRATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._cfrequency = CplaybackCompileCfrequency(device, f"{self._cmd_syntax}:CFRequency")
         self._lsequence = CplaybackCompileLsequence(device, f"{self._cmd_syntax}:LSEQuence")
@@ -472,7 +472,7 @@ class CplaybackClistSignalWaveform(SCPICmdRead):
         - ``.srate``: The ``CPLayback:CLISt:SIGNal:WAVeform:SRATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._foffset = CplaybackClistSignalWaveformFoffset(device, f"{self._cmd_syntax}:FOFFset")
         self._name = CplaybackClistSignalWaveformName(device, f"{self._cmd_syntax}:NAME")
@@ -636,7 +636,7 @@ class CplaybackClistSignal(SCPICmdRead):
         - ``.wcount``: The ``CPLayback:CLISt:SIGNal:WCOunt`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delete = CplaybackClistSignalDelete(device, f"{self._cmd_syntax}:DELete")
         self._scompile = CplaybackClistSignalScompile(device, f"{self._cmd_syntax}:SCOMpile")
@@ -766,7 +766,7 @@ class CplaybackClist(SCPICmdRead):
         - ``.size``: The ``CPLayback:CLISt:SIZE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._name = CplaybackClistName(device, f"{self._cmd_syntax}:NAME")
         self._signal = CplaybackClistSignal(device, f"{self._cmd_syntax}:SIGNal")
@@ -882,7 +882,7 @@ class CplaybackCaptureInstrument(SCPICmdRead):
         - ``.rsa``: The ``CPLayback:CAPTure:INSTrument:RSA`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._oscilloscope = CplaybackCaptureInstrumentOscilloscope(
             device, f"{self._cmd_syntax}:OSCilloscope"
@@ -970,7 +970,7 @@ class CplaybackCapture(SCPICmdRead):
         - ``.instrument``: The ``CPLayback:CAPTure:INSTrument`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._file = CplaybackCaptureFile(device, f"{self._cmd_syntax}:FILE")
         self._instrument = CplaybackCaptureInstrument(device, f"{self._cmd_syntax}:INSTrument")
@@ -1034,7 +1034,7 @@ class Cplayback(SCPICmdRead):
         - ``.compile``: The ``CPLayback:COMPile`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CPLayback") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CPLayback") -> None:
         super().__init__(device, cmd_syntax)
         self._capture = CplaybackCapture(device, f"{self._cmd_syntax}:CAPTure")
         self._clist = CplaybackClist(device, f"{self._cmd_syntax}:CLISt")

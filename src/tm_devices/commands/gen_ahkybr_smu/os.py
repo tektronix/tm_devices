@@ -23,7 +23,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Os(BaseTSPCmd):
@@ -35,7 +35,7 @@ class Os(BaseTSPCmd):
         - ``.time()``: The ``os.time()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "os") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "os") -> None:
         super().__init__(device, cmd_syntax)
 
     def remove(self, filename: str) -> str:
@@ -63,7 +63,7 @@ class Os(BaseTSPCmd):
                 f'print({self._cmd_syntax}.remove("{filename}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.remove()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.remove()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def rename(self, oldname: str, newname: str) -> str:
@@ -92,7 +92,7 @@ class Os(BaseTSPCmd):
                 f'print({self._cmd_syntax}.rename("{oldname}", "{newname}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.rename()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.rename()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def time(self, timespec: Optional[str] = None) -> str:
@@ -121,5 +121,5 @@ class Os(BaseTSPCmd):
                 f"print({self._cmd_syntax}.time({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.time()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.time()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

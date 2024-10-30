@@ -15,7 +15,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 # pylint: disable=too-few-public-methods
@@ -86,5 +86,5 @@ printbuffer() functions to be single-precision IEEE Std 754 binary format."""
     """str: Sets the binary byte order for the data that is printed using the printnumber() and
 printbuffer() functions to be least significant byte first."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "format") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "format") -> None:
         super().__init__(device, cmd_syntax)

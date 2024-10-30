@@ -27,7 +27,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class PeakstableTableItemFresolution(SCPICmdWrite, SCPICmdRead):
@@ -68,7 +68,7 @@ class PeakstableTableItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.fresolution``: The ``PEAKSTABle:TABle<x>:FRESolution`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._fresolution = PeakstableTableItemFresolution(
             device, f"{self._cmd_syntax}:FRESolution"
@@ -180,7 +180,9 @@ class Peakstable(SCPICmdRead):
         - ``.table``: The ``PEAKSTABle:TABle<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "PEAKSTABle") -> None:
+    def __init__(
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "PEAKSTABle"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._addnew = PeakstableAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = PeakstableDelete(device, f"{self._cmd_syntax}:DELete")

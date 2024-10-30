@@ -69,7 +69,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class CursorXyRectangularYUnits(SCPICmdRead):
@@ -148,7 +148,7 @@ class CursorXyRectangularY(SCPICmdRead):
         - ``.units``: The ``CURSor:XY:RECTangular:Y:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorXyRectangularYDelta(device, f"{self._cmd_syntax}:DELta")
         self._position: Dict[int, CursorXyRectangularYPositionItem] = DefaultDictPassKeyToFactory(
@@ -299,7 +299,7 @@ class CursorXyRectangularX(SCPICmdRead):
         - ``.units``: The ``CURSor:XY:RECTangular:X:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorXyRectangularXDelta(device, f"{self._cmd_syntax}:DELta")
         self._position: Dict[int, CursorXyRectangularXPositionItem] = DefaultDictPassKeyToFactory(
@@ -387,7 +387,7 @@ class CursorXyRectangular(SCPICmdRead):
         - ``.y``: The ``CURSor:XY:RECTangular:Y`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._x = CursorXyRectangularX(device, f"{self._cmd_syntax}:X")
         self._y = CursorXyRectangularY(device, f"{self._cmd_syntax}:Y")
@@ -521,7 +521,7 @@ class CursorXyRatio(SCPICmdRead):
         - ``.units``: The ``CURSor:XY:RATIO:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorXyRatioDelta(device, f"{self._cmd_syntax}:DELta")
         self._position: Dict[int, CursorXyRatioPositionItem] = DefaultDictPassKeyToFactory(
@@ -661,7 +661,7 @@ class CursorXyProduct(SCPICmdRead):
         - ``.units``: The ``CURSor:XY:PRODUCT:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorXyProductDelta(device, f"{self._cmd_syntax}:DELta")
         self._position: Dict[int, CursorXyProductPositionItem] = DefaultDictPassKeyToFactory(
@@ -798,7 +798,7 @@ class CursorXyPolarTheta(SCPICmdRead):
         - ``.units``: The ``CURSor:XY:POLar:THETA:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorXyPolarThetaDelta(device, f"{self._cmd_syntax}:DELta")
         self._position: Dict[int, CursorXyPolarThetaPositionItem] = DefaultDictPassKeyToFactory(
@@ -935,7 +935,7 @@ class CursorXyPolarRadius(SCPICmdRead):
         - ``.units``: The ``CURSor:XY:POLar:RADIUS:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorXyPolarRadiusDelta(device, f"{self._cmd_syntax}:DELta")
         self._position: Dict[int, CursorXyPolarRadiusPositionItem] = DefaultDictPassKeyToFactory(
@@ -1017,7 +1017,7 @@ class CursorXyPolar(SCPICmdRead):
         - ``.theta``: The ``CURSor:XY:POLar:THETA`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._radius = CursorXyPolarRadius(device, f"{self._cmd_syntax}:RADIUS")
         self._theta = CursorXyPolarTheta(device, f"{self._cmd_syntax}:THETA")
@@ -1071,7 +1071,7 @@ class CursorXy(SCPICmdRead):
         - ``.rectangular``: The ``CURSor:XY:RECTangular`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._polar = CursorXyPolar(device, f"{self._cmd_syntax}:POLar")
         self._product = CursorXyProduct(device, f"{self._cmd_syntax}:PRODUCT")
@@ -1353,7 +1353,7 @@ class CursorVbars(SCPICmdRead):
         - ``.vdelta``: The ``CURSor:VBArs:VDELTa`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._alternate: Dict[int, CursorVbarsAlternateItem] = DefaultDictPassKeyToFactory(
             lambda x: CursorVbarsAlternateItem(device, f"{self._cmd_syntax}:ALTERNATE{x}")
@@ -1729,7 +1729,7 @@ class CursorHbars(SCPICmdRead):
         - ``.use``: The ``CURSor:HBArs:USE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorHbarsDelta(device, f"{self._cmd_syntax}:DELTa")
         self._position: Dict[int, CursorHbarsPositionItem] = DefaultDictPassKeyToFactory(
@@ -1911,7 +1911,7 @@ class Cursor(SCPICmdRead):
         - ``.xy``: The ``CURSor:XY`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CURSor") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CURSor") -> None:
         super().__init__(device, cmd_syntax)
         self._ddt = CursorDdt(device, f"{self._cmd_syntax}:DDT")
         self._function = CursorFunction(device, f"{self._cmd_syntax}:FUNCtion")

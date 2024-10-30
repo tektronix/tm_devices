@@ -48,7 +48,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class EthernetSubnetmask(SCPICmdWrite, SCPICmdRead):
@@ -113,7 +113,7 @@ class EthernetPing(SCPICmdWrite, SCPICmdRead):
         - ``.status``: The ``ETHERnet:PING:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._status = EthernetPingStatus(device, f"{self._cmd_syntax}:STATus")
 
@@ -337,7 +337,7 @@ class EthernetLxiLanPassword(SCPICmdRead):
         - ``.escopeenable``: The ``ETHERnet:LXI:LAN:PASSWord:ESCOPEENABle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._enable = EthernetLxiLanPasswordEnable(device, f"{self._cmd_syntax}:ENABle")
         self._escopeenable = EthernetLxiLanPasswordEscopeenable(
@@ -419,7 +419,7 @@ class EthernetLxiLan(SCPICmdRead):
         - ``.status``: The ``ETHERnet:LXI:LAN:STATus`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._password = EthernetLxiLanPassword(device, f"{self._cmd_syntax}:PASSWord")
         self._reset = EthernetLxiLanReset(device, f"{self._cmd_syntax}:RESET")
@@ -513,7 +513,7 @@ class EthernetLxi(SCPICmdRead):
         - ``.lan``: The ``ETHERnet:LXI:LAN`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._lan = EthernetLxiLan(device, f"{self._cmd_syntax}:LAN")
 
@@ -623,7 +623,7 @@ class EthernetGateway(SCPICmdRead):
         - ``.ipaddress``: The ``ETHERnet:GATEWay:IPADDress`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ipaddress = EthernetGatewayIpaddress(device, f"{self._cmd_syntax}:IPADDress")
 
@@ -684,7 +684,7 @@ class EthernetEnet(SCPICmdRead):
         - ``.address``: The ``ETHERnet:ENET:ADDress`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._address = EthernetEnetAddress(device, f"{self._cmd_syntax}:ADDress")
 
@@ -769,7 +769,7 @@ class EthernetDns(SCPICmdRead):
         - ``.ipaddress``: The ``ETHERnet:DNS:IPADDress`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ipaddress = EthernetDnsIpaddress(device, f"{self._cmd_syntax}:IPADDress")
 
@@ -850,7 +850,7 @@ class Ethernet(SCPICmdRead):
         - ``.subnetmask``: The ``ETHERnet:SUBNETMask`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "ETHERnet") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "ETHERnet") -> None:
         super().__init__(device, cmd_syntax)
         self._dhcpbootp = EthernetDhcpbootp(device, f"{self._cmd_syntax}:DHCPbootp")
         self._dns = EthernetDns(device, f"{self._cmd_syntax}:DNS")

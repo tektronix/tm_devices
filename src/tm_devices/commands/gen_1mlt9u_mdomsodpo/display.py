@@ -49,7 +49,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class DisplayXyWithyt(SCPICmdWrite, SCPICmdRead):
@@ -108,7 +108,7 @@ class DisplayXy(SCPICmdWrite, SCPICmdRead):
         - ``.withyt``: The ``DISplay:XY:WITHYT`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._withyt = DisplayXyWithyt(device, f"{self._cmd_syntax}:WITHYT")
 
@@ -200,7 +200,7 @@ class DisplayStyle(SCPICmdRead):
         - ``.dotsonly``: The ``DISplay:STYle:DOTsonly`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dotsonly = DisplayStyleDotsonly(device, f"{self._cmd_syntax}:DOTsonly")
 
@@ -382,7 +382,7 @@ class DisplayIntensityBacklightAutodim(SCPICmdRead):
         - ``.time``: The ``DISplay:INTENSITy:BACKLight:AUTODim:TIMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._enable = DisplayIntensityBacklightAutodimEnable(device, f"{self._cmd_syntax}:ENAble")
         self._time = DisplayIntensityBacklightAutodimTime(device, f"{self._cmd_syntax}:TIMe")
@@ -476,7 +476,7 @@ class DisplayIntensityBacklight(SCPICmdWrite, SCPICmdRead):
         - ``.autodim``: The ``DISplay:INTENSITy:BACKLight:AUTODim`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autodim = DisplayIntensityBacklightAutodim(device, f"{self._cmd_syntax}:AUTODim")
 
@@ -520,7 +520,7 @@ class DisplayIntensity(SCPICmdRead):
         - ``.waveform``: The ``DISplay:INTENSITy:WAVEform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._backlight = DisplayIntensityBacklight(device, f"{self._cmd_syntax}:BACKLight")
         self._graticule = DisplayIntensityGraticule(device, f"{self._cmd_syntax}:GRAticule")
@@ -702,7 +702,7 @@ class DisplayDigital(SCPICmdRead):
         - ``.height``: The ``DISplay:DIGital:HEIght`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._activity = DisplayDigitalActivity(device, f"{self._cmd_syntax}:ACTIVity")
         self._height = DisplayDigitalHeight(device, f"{self._cmd_syntax}:HEIght")
@@ -805,7 +805,7 @@ class DisplayConfigure(SCPICmdRead):
         - ``.readout``: The ``DISplay:CONFIGure:READOut`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._readout = DisplayConfigureReadout(device, f"{self._cmd_syntax}:READOut")
 
@@ -894,7 +894,7 @@ class Display(SCPICmdRead):
         - ``.xy``: The ``DISplay:XY`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "DISplay") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DISplay") -> None:
         super().__init__(device, cmd_syntax)
         self._clock = DisplayClock(device, f"{self._cmd_syntax}:CLOCk")
         self._configure = DisplayConfigure(device, f"{self._cmd_syntax}:CONFIGure")

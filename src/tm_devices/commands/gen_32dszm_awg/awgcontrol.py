@@ -70,7 +70,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class AwgcontrolStopImmediate(SCPICmdWriteNoArguments):
@@ -101,7 +101,7 @@ class AwgcontrolStop(SCPICmdRead):
         - ``.immediate``: The ``AWGControl:STOP:IMMediate`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._immediate = AwgcontrolStopImmediate(device, f"{self._cmd_syntax}:IMMediate")
 
@@ -237,7 +237,7 @@ class AwgcontrolSequencer(SCPICmdRead):
         - ``.type``: The ``AWGControl:SEQuencer:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = AwgcontrolSequencerPosition(device, f"{self._cmd_syntax}:POSition")
         self._type = AwgcontrolSequencerType(device, f"{self._cmd_syntax}:TYPE")
@@ -312,7 +312,7 @@ class AwgcontrolRun(SCPICmdRead):
         - ``.immediate``: The ``AWGControl:RUN:IMMediate`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._immediate = AwgcontrolRunImmediate(device, f"{self._cmd_syntax}:IMMediate")
 
@@ -408,7 +408,7 @@ class AwgcontrolRrate(SCPICmdWrite, SCPICmdRead):
         - ``.hold``: The ``AWGControl:RRATe:HOLD`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hold = AwgcontrolRrateHold(device, f"{self._cmd_syntax}:HOLD")
 
@@ -597,7 +597,7 @@ class AwgcontrolInterleaveAdjustment(SCPICmdRead):
         - ``.phase``: The ``AWGControl:INTerleave:ADJustment:PHASe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = AwgcontrolInterleaveAdjustmentAmplitude(
             device, f"{self._cmd_syntax}:AMPLitude"
@@ -677,7 +677,7 @@ class AwgcontrolInterleave(SCPICmdRead):
         - ``.state``: The ``AWGControl:INTerleave:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._adjustment = AwgcontrolInterleaveAdjustment(device, f"{self._cmd_syntax}:ADJustment")
         self._zeroing = AwgcontrolInterleaveZeroing(device, f"{self._cmd_syntax}:ZERoing")
@@ -794,7 +794,7 @@ class AwgcontrolEventTable(SCPICmdRead):
         - ``.immediate``: The ``AWGControl:EVENt:TABLe:IMMediate`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._immediate = AwgcontrolEventTableImmediate(device, f"{self._cmd_syntax}:IMMediate")
 
@@ -854,7 +854,7 @@ class AwgcontrolEventSoftware(SCPICmdRead):
         - ``.immediate``: The ``AWGControl:EVENt:SOFTware:IMMediate`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._immediate = AwgcontrolEventSoftwareImmediate(device, f"{self._cmd_syntax}:IMMediate")
 
@@ -952,7 +952,7 @@ class AwgcontrolEventDjump(SCPICmdRead):
         - ``.define``: The ``AWGControl:EVENt:DJUMp:DEFine`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._define = AwgcontrolEventDjumpDefine(device, f"{self._cmd_syntax}:DEFine")
 
@@ -1005,7 +1005,7 @@ class AwgcontrolEvent(SCPICmdRead):
         - ``.table``: The ``AWGControl:EVENt:TABLe`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._djump = AwgcontrolEventDjump(device, f"{self._cmd_syntax}:DJUMp")
         self._jmode = AwgcontrolEventJmode(device, f"{self._cmd_syntax}:JMODe")
@@ -1127,7 +1127,7 @@ class AwgcontrolEnhancedSequence(SCPICmdRead):
         - ``.jmode``: The ``AWGControl:ENHanced:SEQuence:JMODe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._jmode = AwgcontrolEnhancedSequenceJmode(device, f"{self._cmd_syntax}:JMODe")
 
@@ -1178,7 +1178,7 @@ class AwgcontrolEnhanced(SCPICmdRead):
         - ``.sequence``: The ``AWGControl:ENHanced:SEQuence`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._sequence = AwgcontrolEnhancedSequence(device, f"{self._cmd_syntax}:SEQuence")
 
@@ -1238,7 +1238,7 @@ class AwgcontrolDoutputItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.state``: The ``AWGControl:DOUTput[n]:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = AwgcontrolDoutputItemState(device, f"{self._cmd_syntax}:STATe")
 
@@ -1313,7 +1313,7 @@ class AwgcontrolDcItemVoltageLevelImmediate(SCPICmdRead):
         - ``.offset``: The ``AWGControl:DC[n]:VOLTage:LEVel:IMMediate:OFFSet`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._offset = AwgcontrolDcItemVoltageLevelImmediateOffset(
             device, f"{self._cmd_syntax}:OFFSet"
@@ -1359,7 +1359,7 @@ class AwgcontrolDcItemVoltageLevel(SCPICmdRead):
         - ``.immediate``: The ``AWGControl:DC[n]:VOLTage:LEVel:IMMediate`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._immediate = AwgcontrolDcItemVoltageLevelImmediate(
             device, f"{self._cmd_syntax}:IMMediate"
@@ -1394,7 +1394,7 @@ class AwgcontrolDcItemVoltage(SCPICmdRead):
         - ``.level``: The ``AWGControl:DC[n]:VOLTage:LEVel`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._level = AwgcontrolDcItemVoltageLevel(device, f"{self._cmd_syntax}:LEVel")
 
@@ -1454,7 +1454,7 @@ class AwgcontrolDcItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.state``: The ``AWGControl:DC[n]:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._voltage = AwgcontrolDcItemVoltage(device, f"{self._cmd_syntax}:VOLTage")
         self._state = AwgcontrolDcItemState(device, f"{self._cmd_syntax}:STATe")
@@ -1535,7 +1535,7 @@ class AwgcontrolConfigure(SCPICmdRead):
         - ``.cnumber``: The ``AWGControl:CONFigure:CNUMber`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._cnumber = AwgcontrolConfigureCnumber(device, f"{self._cmd_syntax}:CNUMber")
 
@@ -1646,7 +1646,7 @@ class AwgcontrolClockPhase(SCPICmdRead):
         - ``.adjust``: The ``AWGControl:CLOCk:PHASe:ADJust`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._adjust = AwgcontrolClockPhaseAdjust(device, f"{self._cmd_syntax}:ADJust")
 
@@ -1723,7 +1723,7 @@ class AwgcontrolClock(SCPICmdRead):
         - ``.source``: The ``AWGControl:CLOCk:SOURce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._drate = AwgcontrolClockDrate(device, f"{self._cmd_syntax}:DRATe")
         self._phase = AwgcontrolClockPhase(device, f"{self._cmd_syntax}:PHASe")
@@ -1861,7 +1861,7 @@ class AwgcontrolApplication(SCPICmdRead):
         - ``.state``: The ``AWGControl:APPLication:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._run = AwgcontrolApplicationRun(device, f"{self._cmd_syntax}:RUN")
         self._state = AwgcontrolApplicationState(device, f"{self._cmd_syntax}:STATe")
@@ -1942,7 +1942,9 @@ class Awgcontrol(SCPICmdRead):
         - ``.stop``: The ``AWGControl:STOP`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "AWGControl") -> None:
+    def __init__(
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "AWGControl"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._application = AwgcontrolApplication(device, f"{self._cmd_syntax}:APPLication")
         self._clock = AwgcontrolClock(device, f"{self._cmd_syntax}:CLOCk")

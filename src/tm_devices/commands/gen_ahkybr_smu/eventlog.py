@@ -26,7 +26,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Eventlog(BaseTSPCmd):
@@ -56,7 +56,7 @@ class Eventlog(BaseTSPCmd):
     ENABLE = "eventlog.ENABLE"
     """str: Enable the event log."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "eventlog") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "eventlog") -> None:
         super().__init__(device, cmd_syntax)
 
     @property
@@ -84,7 +84,7 @@ class Eventlog(BaseTSPCmd):
                 f"print({self._cmd_syntax}.count)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -114,7 +114,7 @@ class Eventlog(BaseTSPCmd):
                 f"print({self._cmd_syntax}.enable)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @enable.setter
@@ -147,7 +147,7 @@ class Eventlog(BaseTSPCmd):
                     f"{self._cmd_syntax}.enable = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.enable`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -184,7 +184,7 @@ class Eventlog(BaseTSPCmd):
                 f"print({self._cmd_syntax}.overwritemethod)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.overwritemethod`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.overwritemethod`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @overwritemethod.setter
@@ -224,7 +224,7 @@ class Eventlog(BaseTSPCmd):
                     f"{self._cmd_syntax}.overwritemethod = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.overwritemethod`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.overwritemethod`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def all(self) -> str:
@@ -250,7 +250,7 @@ class Eventlog(BaseTSPCmd):
                 f"print({self._cmd_syntax}.all())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.all()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.all()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def clear(self) -> None:
@@ -272,7 +272,7 @@ class Eventlog(BaseTSPCmd):
                 f"{self._cmd_syntax}.clear()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def next(self) -> str:
@@ -298,5 +298,5 @@ class Eventlog(BaseTSPCmd):
                 f"print({self._cmd_syntax}.next())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.next()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.next()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

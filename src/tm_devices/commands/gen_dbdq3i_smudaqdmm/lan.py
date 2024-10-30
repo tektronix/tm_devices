@@ -22,7 +22,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Lan(BaseTSPCmd):
@@ -62,7 +62,7 @@ class Lan(BaseTSPCmd):
     PROTOCOL_UDP = "lan.PROTOCOL_UDP"
     """str: Sets the LAN protocol to use for sending trigger messages to UDP."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "lan") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "lan") -> None:
         super().__init__(device, cmd_syntax)
 
     @property
@@ -95,7 +95,7 @@ class Lan(BaseTSPCmd):
                 f"print({self._cmd_syntax}.lxidomain)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.lxidomain`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.lxidomain`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @lxidomain.setter
@@ -131,7 +131,7 @@ class Lan(BaseTSPCmd):
                     f"{self._cmd_syntax}.lxidomain = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.lxidomain`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.lxidomain`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -159,7 +159,7 @@ class Lan(BaseTSPCmd):
                 f"print({self._cmd_syntax}.macaddress)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.macaddress`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.macaddress`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def ipconfig(
@@ -210,5 +210,5 @@ class Lan(BaseTSPCmd):
                 f"print({self._cmd_syntax}.ipconfig({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.ipconfig()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.ipconfig()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

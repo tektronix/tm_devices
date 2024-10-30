@@ -44,7 +44,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MarkerType(SCPICmdWrite, SCPICmdRead):
@@ -146,7 +146,7 @@ class MarkerReference(SCPICmdWrite, SCPICmdRead):
         - ``.frequency``: The ``MARKER:REFERence:FREQuency`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = MarkerReferenceAmplitude(device, f"{self._cmd_syntax}:AMPlitude")
         self._frequency = MarkerReferenceFrequency(device, f"{self._cmd_syntax}:FREQuency")
@@ -334,7 +334,7 @@ class MarkerPeak(SCPICmdRead):
         - ``.threshold``: The ``MARKER:PEAK:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._excursion = MarkerPeakExcursion(device, f"{self._cmd_syntax}:EXCURsion")
         self._maximum = MarkerPeakMaximum(device, f"{self._cmd_syntax}:MAXimum")
@@ -603,7 +603,7 @@ class MarkerMItemFrequency(SCPICmdRead):
         - ``.delta``: The ``MARKER:M<x>:FREQuency:DELTa`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._absolute = MarkerMItemFrequencyAbsolute(device, f"{self._cmd_syntax}:ABSolute")
         self._delta = MarkerMItemFrequencyDelta(device, f"{self._cmd_syntax}:DELTa")
@@ -715,7 +715,7 @@ class MarkerMItemAmplitude(SCPICmdRead):
         - ``.delta``: The ``MARKER:M<x>:AMPLitude:DELTa`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._absolute = MarkerMItemAmplitudeAbsolute(device, f"{self._cmd_syntax}:ABSolute")
         self._delta = MarkerMItemAmplitudeDelta(device, f"{self._cmd_syntax}:DELTa")
@@ -780,7 +780,7 @@ class MarkerMItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.phasenoise``: The ``MARKER:M<x>:PHASENoise`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = MarkerMItemAmplitude(device, f"{self._cmd_syntax}:AMPLitude")
         self._frequency = MarkerMItemFrequency(device, f"{self._cmd_syntax}:FREQuency")
@@ -875,7 +875,7 @@ class Marker(SCPICmdRead):
         - ``.type``: The ``MARKER:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MARKER") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MARKER") -> None:
         super().__init__(device, cmd_syntax)
         self._m: Dict[int, MarkerMItem] = DefaultDictPassKeyToFactory(
             lambda x: MarkerMItem(device, f"{self._cmd_syntax}:M{x}")

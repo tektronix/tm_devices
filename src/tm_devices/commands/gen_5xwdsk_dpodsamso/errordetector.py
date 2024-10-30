@@ -209,7 +209,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ErrordetectorType(SCPICmdWrite, SCPICmdRead):
@@ -364,7 +364,7 @@ class ErrordetectorSymbolTestTime(SCPICmdRead):
         - ``.seconds``: The ``ERRORDetector:SYMBOL:TEST:TIME:SECOnds`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._days = ErrordetectorSymbolTestTimeDays(device, f"{self._cmd_syntax}:DAYS")
         self._hours = ErrordetectorSymbolTestTimeHours(device, f"{self._cmd_syntax}:HOURS")
@@ -559,7 +559,7 @@ class ErrordetectorSymbolTestStatus(SCPICmdRead):
         - ``.start``: The ``ERRORDetector:SYMBOL:TEST:STATUS:START`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._lock = ErrordetectorSymbolTestStatusLock(device, f"{self._cmd_syntax}:LOCK")
         self._max_ap = ErrordetectorSymbolTestStatusMaxAp(device, f"{self._cmd_syntax}:MAX_AP")
@@ -901,7 +901,7 @@ class ErrordetectorSymbolTest(SCPICmdWrite, SCPICmdRead):
         - ``.time``: The ``ERRORDetector:SYMBOL:TEST:TIME`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._badchars = ErrordetectorSymbolTestBadchars(device, f"{self._cmd_syntax}:BADCHARS")
         self._bitcount = ErrordetectorSymbolTestBitcount(device, f"{self._cmd_syntax}:BITCOUNT")
@@ -1225,7 +1225,7 @@ class ErrordetectorSymbol(SCPICmdRead):
         - ``.test``: The ``ERRORDetector:SYMBOL:TEST`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._test = ErrordetectorSymbolTest(device, f"{self._cmd_syntax}:TEST")
 
@@ -1551,7 +1551,7 @@ class ErrordetectorSkipsetprimitive(SCPICmdRead):
         - ``.symbols``: The ``ERRORDetector:SKIPSETPRIMitive:SYMBOLS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._minus: Dict[int, ErrordetectorSkipsetprimitiveMinusItem] = (
             DefaultDictPassKeyToFactory(
@@ -1896,7 +1896,7 @@ class ErrordetectorPreset(SCPICmdWrite, SCPICmdRead):
         - ``.apply``: The ``ERRORDetector:PREset:APPLY`` command.
     """  # noqa: E501
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._apply = ErrordetectorPresetApply(device, f"{self._cmd_syntax}:APPLY")
 
@@ -2073,7 +2073,7 @@ class ErrordetectorFrameTestTime(SCPICmdRead):
         - ``.seconds``: The ``ERRORDetector:FRAme:TEST:TIME:SECOnds`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._days = ErrordetectorFrameTestTimeDays(device, f"{self._cmd_syntax}:DAYS")
         self._hours = ErrordetectorFrameTestTimeHours(device, f"{self._cmd_syntax}:HOURS")
@@ -2268,7 +2268,7 @@ class ErrordetectorFrameTestStatus(SCPICmdRead):
         - ``.start``: The ``ERRORDetector:FRAme:TEST:STATUS:START`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._lock = ErrordetectorFrameTestStatusLock(device, f"{self._cmd_syntax}:LOCK")
         self._max_ap = ErrordetectorFrameTestStatusMaxAp(device, f"{self._cmd_syntax}:MAX_AP")
@@ -2546,7 +2546,7 @@ class ErrordetectorFrameTest(SCPICmdWrite, SCPICmdRead):
         - ``.time``: The ``ERRORDetector:FRAme:TEST:TIME`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._badchars = ErrordetectorFrameTestBadchars(device, f"{self._cmd_syntax}:BADCHARS")
         self._count = ErrordetectorFrameTestCount(device, f"{self._cmd_syntax}:COUNt")
@@ -2874,7 +2874,7 @@ class ErrordetectorFrame(SCPICmdRead):
         - ``.test``: The ``ERRORDetector:FRAme:TEST`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._eof = ErrordetectorFrameEof(device, f"{self._cmd_syntax}:EOF")
         self._initialcrcvalue = ErrordetectorFrameInitialcrcvalue(
@@ -3092,7 +3092,7 @@ class ErrordetectorFile(SCPICmdRead):
         - ``.save``: The ``ERRORDetector:FILE:SAVe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._recall = ErrordetectorFileRecall(device, f"{self._cmd_syntax}:RECAll")
         self._save = ErrordetectorFileSave(device, f"{self._cmd_syntax}:SAVe")
@@ -3302,7 +3302,7 @@ class ErrordetectorDurationTime(SCPICmdWrite, SCPICmdRead):
         - ``.seconds``: The ``ERRORDetector:DURATION:TIME:SECOnds`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._days = ErrordetectorDurationTimeDays(device, f"{self._cmd_syntax}:DAYS")
         self._hours = ErrordetectorDurationTimeHours(device, f"{self._cmd_syntax}:HOURS")
@@ -3486,7 +3486,7 @@ class ErrordetectorDuration(SCPICmdRead):
         - ``.time``: The ``ERRORDetector:DURATION:TIME`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._count = ErrordetectorDurationCount(device, f"{self._cmd_syntax}:COUNt")
         self._seconds = ErrordetectorDurationSeconds(device, f"{self._cmd_syntax}:SECOnds")
@@ -3684,7 +3684,7 @@ class ErrordetectorCharacterTestTime(SCPICmdRead):
         - ``.seconds``: The ``ERRORDetector:CHARacter:TEST:TIME:SECOnds`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._days = ErrordetectorCharacterTestTimeDays(device, f"{self._cmd_syntax}:DAYS")
         self._hours = ErrordetectorCharacterTestTimeHours(device, f"{self._cmd_syntax}:HOURS")
@@ -3880,7 +3880,7 @@ class ErrordetectorCharacterTestStatus(SCPICmdRead):
         - ``.start``: The ``ERRORDetector:CHARacter:TEST:STATUS:START`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._lock = ErrordetectorCharacterTestStatusLock(device, f"{self._cmd_syntax}:LOCK")
         self._max_ap = ErrordetectorCharacterTestStatusMaxAp(device, f"{self._cmd_syntax}:MAX_AP")
@@ -4170,7 +4170,7 @@ class ErrordetectorCharacterTest(SCPICmdWrite, SCPICmdRead):
         - ``.time``: The ``ERRORDetector:CHARacter:TEST:TIME`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._count = ErrordetectorCharacterTestCount(device, f"{self._cmd_syntax}:COUNt")
         self._dispcount = ErrordetectorCharacterTestDispcount(
@@ -4436,7 +4436,7 @@ class ErrordetectorCharacter(SCPICmdRead):
         - ``.test``: The ``ERRORDetector:CHARacter:TEST`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._test = ErrordetectorCharacterTest(device, f"{self._cmd_syntax}:TEST")
 
@@ -4560,7 +4560,7 @@ class ErrordetectorBitrate(SCPICmdWrite, SCPICmdRead):
         - ``.value``: The ``ERRORDetector:BITRate:VALue`` command.
     """  # noqa: E501
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = ErrordetectorBitrateValue(device, f"{self._cmd_syntax}:VALue")
 
@@ -4691,7 +4691,7 @@ class ErrordetectorBitTestTime(SCPICmdRead):
         - ``.seconds``: The ``ERRORDetector:BIT:TEST:TIME:SECOnds`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._days = ErrordetectorBitTestTimeDays(device, f"{self._cmd_syntax}:DAYS")
         self._hours = ErrordetectorBitTestTimeHours(device, f"{self._cmd_syntax}:HOURS")
@@ -4902,7 +4902,7 @@ class ErrordetectorBitTestStatus(SCPICmdRead):
         - ``.sync``: The ``ERRORDetector:BIT:TEST:STATUS:SYNC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._lock = ErrordetectorBitTestStatusLock(device, f"{self._cmd_syntax}:LOCK")
         self._max_ap = ErrordetectorBitTestStatusMaxAp(device, f"{self._cmd_syntax}:MAX_AP")
@@ -5162,7 +5162,7 @@ class ErrordetectorBitTest(SCPICmdWrite, SCPICmdRead):
         - ``.time``: The ``ERRORDetector:BIT:TEST:TIME`` command.
     """  # noqa: E501
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._count = ErrordetectorBitTestCount(device, f"{self._cmd_syntax}:COUNt")
         self._duration = ErrordetectorBitTestDuration(device, f"{self._cmd_syntax}:DURATION")
@@ -5563,7 +5563,7 @@ class ErrordetectorBitSyncpattern(SCPICmdRead):
         - ``.symbols``: The ``ERRORDetector:BIT:SYNCPATtern:SYMBOLS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._advanced = ErrordetectorBitSyncpatternAdvanced(device, f"{self._cmd_syntax}:ADVanced")
         self._bitstring = ErrordetectorBitSyncpatternBitstring(
@@ -5817,7 +5817,7 @@ class ErrordetectorBit(SCPICmdRead):
         - ``.test``: The ``ERRORDetector:BIT:TEST`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._length = ErrordetectorBitLength(device, f"{self._cmd_syntax}:LENgth")
         self._syncpattern = ErrordetectorBitSyncpattern(device, f"{self._cmd_syntax}:SYNCPATtern")
@@ -6115,7 +6115,7 @@ class ErrordetectorAlignprimitive(SCPICmdRead):
         - ``.symbols``: The ``ERRORDetector:ALIGNPRIMitive:SYMBOLS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._minus = ErrordetectorAlignprimitiveMinus(device, f"{self._cmd_syntax}:MINUS")
         self._minusx: Dict[int, ErrordetectorAlignprimitiveMinusItem] = DefaultDictPassKeyToFactory(
@@ -6398,7 +6398,7 @@ class ErrordetectorAligncharacter(SCPICmdRead):
         - ``.symbol``: The ``ERRORDetector:ALIGNCHARacter:SYMBOL`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._minus = ErrordetectorAligncharacterMinus(device, f"{self._cmd_syntax}:MINus")
         self._plus = ErrordetectorAligncharacterPlus(device, f"{self._cmd_syntax}:PLUS")
@@ -6546,7 +6546,7 @@ class Errordetector(SCPICmdRead):
     """
 
     def __init__(
-        self, device: Optional["PIDevice"] = None, cmd_syntax: str = "ERRORDetector"
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "ERRORDetector"
     ) -> None:
         super().__init__(device, cmd_syntax)
         self._alert = ErrordetectorAlert(device, f"{self._cmd_syntax}:ALERT")

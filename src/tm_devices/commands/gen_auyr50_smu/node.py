@@ -22,7 +22,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedDynamicNumberCmd
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class NodeItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
@@ -37,7 +37,7 @@ class NodeItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
         - ``.setglobal()``: The ``node[N].setglobal()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "node[N]") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "node[N]") -> None:
         super().__init__(device, cmd_syntax)
 
     def execute(self, script_code: str) -> None:
@@ -63,7 +63,7 @@ class NodeItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f'{self._cmd_syntax}.execute("{script_code}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.execute()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.execute()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def getglobal(self, name: str) -> str:
@@ -92,7 +92,7 @@ class NodeItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f'print({self._cmd_syntax}.getglobal("{name}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getglobal()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getglobal()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setglobal(self, name: str, value: str) -> None:
@@ -119,5 +119,5 @@ class NodeItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f'{self._cmd_syntax}.setglobal("{name}", {value})'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setglobal()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setglobal()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

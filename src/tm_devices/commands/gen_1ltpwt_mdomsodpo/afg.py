@@ -69,7 +69,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class AfgSquareDuty(SCPICmdWrite, SCPICmdRead):
@@ -109,7 +109,7 @@ class AfgSquare(SCPICmdRead):
         - ``.duty``: The ``AFG:SQUare:DUty`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._duty = AfgSquareDuty(device, f"{self._cmd_syntax}:DUty")
 
@@ -177,7 +177,7 @@ class AfgRamp(SCPICmdRead):
         - ``.symmetry``: The ``AFG:RAMP:SYMmetry`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._symmetry = AfgRampSymmetry(device, f"{self._cmd_syntax}:SYMmetry")
 
@@ -243,7 +243,7 @@ class AfgPulse(SCPICmdRead):
         - ``.width``: The ``AFG:PULse:WIDth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._width = AfgPulseWidth(device, f"{self._cmd_syntax}:WIDth")
 
@@ -378,7 +378,7 @@ class AfgOutputLoad(SCPICmdRead):
         - ``.impedance``: The ``AFG:OUTPut:LOAd:IMPEDance`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._impedance = AfgOutputLoadImpedance(device, f"{self._cmd_syntax}:IMPEDance")
 
@@ -422,7 +422,7 @@ class AfgOutput(SCPICmdRead):
         - ``.state``: The ``AFG:OUTPut:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._load = AfgOutputLoad(device, f"{self._cmd_syntax}:LOAd")
         self._state = AfgOutputState(device, f"{self._cmd_syntax}:STATE")
@@ -552,7 +552,7 @@ class AfgNoiseadd(SCPICmdRead):
         - ``.state``: The ``AFG:NOISEAdd:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._percent = AfgNoiseaddPercent(device, f"{self._cmd_syntax}:PERCent")
         self._state = AfgNoiseaddState(device, f"{self._cmd_syntax}:STATE")
@@ -855,7 +855,7 @@ class AfgArbitraryEmemPoints(SCPICmdWrite, SCPICmdRead):
         - ``.encdg``: The ``AFG:ARBitrary:EMEM:POINTS:ENCdg`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._byteorder = AfgArbitraryEmemPointsByteorder(device, f"{self._cmd_syntax}:BYTEORDer")
         self._encdg = AfgArbitraryEmemPointsEncdg(device, f"{self._cmd_syntax}:ENCdg")
@@ -1020,7 +1020,7 @@ class AfgArbitraryEmem(SCPICmdRead):
         - ``.points``: The ``AFG:ARBitrary:EMEM:POINTS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._function = AfgArbitraryEmemFunction(device, f"{self._cmd_syntax}:FUNCtion")
         self._generate = AfgArbitraryEmemGenerate(device, f"{self._cmd_syntax}:GENerate")
@@ -1230,7 +1230,7 @@ class AfgArbitraryArbItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.time``: The ``AFG:ARBitrary:ARB<x>:TIMe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._date = AfgArbitraryArbItemDate(device, f"{self._cmd_syntax}:DATE")
         self._label = AfgArbitraryArbItemLabel(device, f"{self._cmd_syntax}:LABel")
@@ -1310,7 +1310,7 @@ class AfgArbitrary(SCPICmdRead):
         - ``.emem``: The ``AFG:ARBitrary:EMEM`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._arb: Dict[int, AfgArbitraryArbItem] = DefaultDictPassKeyToFactory(
             lambda x: AfgArbitraryArbItem(device, f"{self._cmd_syntax}:ARB{x}")
@@ -1402,7 +1402,7 @@ class Afg(SCPICmdRead):
         - ``.square``: The ``AFG:SQUare`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "AFG") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "AFG") -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = AfgAmplitude(device, f"{self._cmd_syntax}:AMPLitude")
         self._arbitrary = AfgArbitrary(device, f"{self._cmd_syntax}:ARBitrary")

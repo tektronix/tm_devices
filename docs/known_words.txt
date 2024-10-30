@@ -1,6 +1,8 @@
 __none__
 add_new
 adding_devices
+afg
+afgs
 alias_usage
 analyze
 api
@@ -24,7 +26,6 @@ cov
 csv
 deps
 dev
-device_type_classes
 disable_command_verification
 dll
 docformatter
@@ -47,6 +48,7 @@ https
 io
 js
 keithley
+lawngreen
 licensor
 linter
 linters
@@ -61,6 +63,7 @@ mv
 namespace
 noqa
 opensource
+orangered
 parallelization
 pi
 pre

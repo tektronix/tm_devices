@@ -39,7 +39,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MessageState(SCPICmdWrite, SCPICmdRead):
@@ -221,7 +221,7 @@ class MessageMessage1Item(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.state``: The ``MESSage:MESSAGE1<x>:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._box = MessageMessage1ItemBox(device, f"{self._cmd_syntax}:BOX")
         self._clear = MessageMessage1ItemClear(device, f"{self._cmd_syntax}:CLEAR")
@@ -423,7 +423,7 @@ class Message(SCPICmdWriteNoArguments, SCPICmdRead):
         - ``.state``: The ``MESSage:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MESSage") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MESSage") -> None:
         super().__init__(device, cmd_syntax)
         self._box = MessageBox(device, f"{self._cmd_syntax}:BOX")
         self._clear = MessageClear(device, f"{self._cmd_syntax}:CLEAR")

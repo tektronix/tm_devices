@@ -35,7 +35,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SaveWaveformForcesamefilesize(SCPICmdWrite, SCPICmdRead):
@@ -181,7 +181,7 @@ class SaveWaveformData(SCPICmdRead):
         - ``.stop``: The ``SAVe:WAVEform:DATa:STOP`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._start = SaveWaveformDataStart(device, f"{self._cmd_syntax}:STARt")
         self._stop = SaveWaveformDataStop(device, f"{self._cmd_syntax}:STOP")
@@ -261,7 +261,7 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
         - ``.forcesamefilesize``: The ``SAVe:WAVEform:FORCESAMEFilesize`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._data = SaveWaveformData(device, f"{self._cmd_syntax}:DATa")
         self._fileformat = SaveWaveformFileformat(device, f"{self._cmd_syntax}:FILEFormat")
@@ -478,7 +478,7 @@ class SaveEventtable(SCPICmdRead):
         - ``.bus``: The ``SAVe:EVENTtable:BUS<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bus: Dict[int, SaveEventtableBusItem] = DefaultDictPassKeyToFactory(
             lambda x: SaveEventtableBusItem(device, f"{self._cmd_syntax}:BUS{x}")
@@ -520,7 +520,7 @@ class Save(SCPICmdRead):
         - ``.waveform``: The ``SAVe:WAVEform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SAVe") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SAVe") -> None:
         super().__init__(device, cmd_syntax)
         self._eventtable = SaveEventtable(device, f"{self._cmd_syntax}:EVENTtable")
         self._marks = SaveMarks(device, f"{self._cmd_syntax}:MARKS")

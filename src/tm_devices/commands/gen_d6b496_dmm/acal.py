@@ -27,7 +27,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class AcalNextrun(BaseTSPCmd):
@@ -63,7 +63,7 @@ class AcalNextrun(BaseTSPCmd):
                 f"print({self._cmd_syntax}.time)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.time`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.time`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -102,7 +102,7 @@ class AcalLastrun(BaseTSPCmd):
                 f"print({self._cmd_syntax}.internaltemp)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.internaltemp`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.internaltemp`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -131,7 +131,7 @@ class AcalLastrun(BaseTSPCmd):
                 f"print({self._cmd_syntax}.tempdiff)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.tempdiff`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.tempdiff`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -159,7 +159,7 @@ class AcalLastrun(BaseTSPCmd):
                 f"print({self._cmd_syntax}.time)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.time`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.time`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -175,7 +175,7 @@ class Acal(BaseTSPCmd):
         - ``.schedule()``: The ``acal.schedule()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "acal") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "acal") -> None:
         super().__init__(device, cmd_syntax)
         self._lastrun = AcalLastrun(device, f"{self._cmd_syntax}.lastrun")
         self._nextrun = AcalNextrun(device, f"{self._cmd_syntax}.nextrun")
@@ -205,7 +205,7 @@ class Acal(BaseTSPCmd):
                 f"print({self._cmd_syntax}.count)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.count`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -250,7 +250,7 @@ class Acal(BaseTSPCmd):
                 f"print({self._cmd_syntax}.revert())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.revert()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.revert()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def run(self) -> None:
@@ -272,7 +272,7 @@ class Acal(BaseTSPCmd):
                 f"{self._cmd_syntax}.run()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.run()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.run()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def schedule(
@@ -319,5 +319,5 @@ class Acal(BaseTSPCmd):
                 f"print({self._cmd_syntax}.schedule({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.schedule()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.schedule()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

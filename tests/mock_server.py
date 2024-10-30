@@ -7,7 +7,7 @@ from typing import Any, Dict
 from flask import request
 from http_server_mock import HttpServerMock  # pyright: ignore[reportMissingTypeStubs]
 
-from tm_devices.drivers.api.rest_api.rest_api_device import SupportedRequestTypes
+from tm_devices.helpers import SupportedRequestTypes
 
 ################################################################################################
 # Mock Data

@@ -33,7 +33,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class TsplinkLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
@@ -78,7 +78,7 @@ class TsplinkLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.state)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @state.setter
@@ -115,7 +115,7 @@ class TsplinkLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.state = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def reset(self) -> None:
@@ -141,7 +141,7 @@ class TsplinkLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.reset()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -180,7 +180,7 @@ class Tsplink(BaseTSPCmd):
     STATE_LOW = "tsplink.STATE_LOW"
     """str: Low state of the synchronization line."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "tsplink") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "tsplink") -> None:
         super().__init__(device, cmd_syntax)
         self._line: Dict[int, TsplinkLineItem] = DefaultDictPassKeyToFactory(
             lambda x: TsplinkLineItem(device, f"{self._cmd_syntax}.line[{x}]")
@@ -213,7 +213,7 @@ class Tsplink(BaseTSPCmd):
                 f"print({self._cmd_syntax}.group)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.group`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.group`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @group.setter
@@ -246,7 +246,7 @@ class Tsplink(BaseTSPCmd):
                     f"{self._cmd_syntax}.group = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.group`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.group`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -287,7 +287,7 @@ class Tsplink(BaseTSPCmd):
                 f"print({self._cmd_syntax}.master)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.master`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.master`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -317,7 +317,7 @@ class Tsplink(BaseTSPCmd):
                 f"print({self._cmd_syntax}.node)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.node`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.node`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @node.setter
@@ -350,7 +350,7 @@ class Tsplink(BaseTSPCmd):
                     f"{self._cmd_syntax}.node = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.node`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.node`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -378,7 +378,7 @@ class Tsplink(BaseTSPCmd):
                 f"print({self._cmd_syntax}.state)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def initialize(self, expected_nodes: Optional[int] = None) -> str:
@@ -407,7 +407,7 @@ class Tsplink(BaseTSPCmd):
                 f"print({self._cmd_syntax}.initialize({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.initialize()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.initialize()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def readport(self) -> str:
@@ -432,7 +432,7 @@ class Tsplink(BaseTSPCmd):
                 f"print({self._cmd_syntax}.readport())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.readport()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.readport()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def writeport(self, data: int) -> None:
@@ -457,5 +457,5 @@ class Tsplink(BaseTSPCmd):
                 f"{self._cmd_syntax}.writeport({data})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.writeport()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.writeport()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

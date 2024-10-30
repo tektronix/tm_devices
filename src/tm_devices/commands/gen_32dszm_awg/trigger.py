@@ -34,7 +34,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class TriggerSequenceWvalue(SCPICmdWrite, SCPICmdRead):
@@ -276,7 +276,7 @@ class TriggerSequence(SCPICmdRead):
         - ``.immediate``: The ``TRIGger:SEQuence:IMMediate`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._impedance = TriggerSequenceImpedance(device, f"{self._cmd_syntax}:IMPedance")
         self._level = TriggerSequenceLevel(device, f"{self._cmd_syntax}:LEVel")
@@ -532,7 +532,7 @@ class Trigger(SCPICmdRead):
         - ``.sequence``: The ``TRIGger:SEQuence`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "TRIGger") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "TRIGger") -> None:
         super().__init__(device, cmd_syntax)
         self._sequence = TriggerSequence(device, f"{self._cmd_syntax}:SEQuence")
 

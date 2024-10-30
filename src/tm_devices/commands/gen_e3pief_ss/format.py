@@ -22,7 +22,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Format(BaseTSPCmd):
@@ -34,7 +34,7 @@ class Format(BaseTSPCmd):
         - ``.data``: The ``format.data`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "format") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "format") -> None:
         super().__init__(device, cmd_syntax)
 
     @property
@@ -72,7 +72,7 @@ class Format(BaseTSPCmd):
                 f"print({self._cmd_syntax}.asciiprecision)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.asciiprecision`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.asciiprecision`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @asciiprecision.setter
@@ -113,7 +113,7 @@ class Format(BaseTSPCmd):
                     f"{self._cmd_syntax}.asciiprecision = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.asciiprecision`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.asciiprecision`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -150,7 +150,7 @@ class Format(BaseTSPCmd):
                 f"print({self._cmd_syntax}.byteorder)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.byteorder`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.byteorder`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @byteorder.setter
@@ -190,7 +190,7 @@ class Format(BaseTSPCmd):
                     f"{self._cmd_syntax}.byteorder = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.byteorder`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.byteorder`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -221,7 +221,7 @@ class Format(BaseTSPCmd):
                 f"print({self._cmd_syntax}.data)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.data`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.data`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @data.setter
@@ -255,5 +255,5 @@ class Format(BaseTSPCmd):
                     f"{self._cmd_syntax}.data = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.data`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.data`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

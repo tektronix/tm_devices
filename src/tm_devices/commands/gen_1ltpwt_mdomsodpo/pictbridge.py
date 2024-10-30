@@ -31,7 +31,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class PictbridgePrintqual(SCPICmdWrite, SCPICmdRead):
@@ -268,7 +268,9 @@ class Pictbridge(SCPICmdRead):
         - ``.printqual``: The ``PICTBridge:PRINTQual`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "PICTBridge") -> None:
+    def __init__(
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "PICTBridge"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._dateprint = PictbridgeDateprint(device, f"{self._cmd_syntax}:DATEPrint")
         self._default = PictbridgeDefault(device, f"{self._cmd_syntax}:DEFault")

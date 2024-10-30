@@ -30,7 +30,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ExportView(SCPICmdWrite, SCPICmdRead):
@@ -193,7 +193,7 @@ class Export(SCPICmdWrite, SCPICmdRead):
         - ``.view``: The ``EXPort:VIEW`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "EXPort") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "EXPort") -> None:
         super().__init__(device, cmd_syntax)
         self._filename = ExportFilename(device, f"{self._cmd_syntax}:FILEName")
         self._format = ExportFormat(device, f"{self._cmd_syntax}:FORMat")

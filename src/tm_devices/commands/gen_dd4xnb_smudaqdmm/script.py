@@ -21,7 +21,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Script(BaseTSPCmd):
@@ -32,7 +32,7 @@ class Script(BaseTSPCmd):
         - ``.load()``: The ``script.load()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "script") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "script") -> None:
         super().__init__(device, cmd_syntax)
 
     def delete(self, script_name: str) -> None:
@@ -57,7 +57,7 @@ class Script(BaseTSPCmd):
                 f'{self._cmd_syntax}.delete("{script_name}")'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def load(self, file: str) -> str:
@@ -87,5 +87,5 @@ class Script(BaseTSPCmd):
                 f'print({self._cmd_syntax}.load("{file}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.load()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

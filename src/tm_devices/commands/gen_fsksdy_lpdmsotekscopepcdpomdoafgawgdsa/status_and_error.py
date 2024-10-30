@@ -27,7 +27,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class Wai(SCPICmdWriteNoArguments):
@@ -48,7 +48,7 @@ class Wai(SCPICmdWriteNoArguments):
         ```
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*WAI") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*WAI") -> None:
         super().__init__(device, cmd_syntax)
 
 
@@ -70,7 +70,7 @@ class Stb(SCPICmdRead):
         ```
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*STB") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*STB") -> None:
         super().__init__(device, cmd_syntax)
 
 
@@ -110,7 +110,7 @@ class Rst(SCPICmdWriteNoArguments):
         ```
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*RST") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*RST") -> None:
         super().__init__(device, cmd_syntax)
 
 
@@ -141,7 +141,7 @@ class Opc(SCPICmdWriteNoArguments, SCPICmdRead):
         ```
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*OPC") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*OPC") -> None:
         super().__init__(device, cmd_syntax)
 
 
@@ -164,7 +164,7 @@ class Esr(SCPICmdRead):
         ```
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*ESR") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*ESR") -> None:
         super().__init__(device, cmd_syntax)
 
 
@@ -190,5 +190,5 @@ class Cls(SCPICmdWriteNoArguments):
         ```
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*CLS") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*CLS") -> None:
         super().__init__(device, cmd_syntax)

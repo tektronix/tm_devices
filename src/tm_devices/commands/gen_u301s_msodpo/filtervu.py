@@ -20,7 +20,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class FiltervuFrequencyAvailable(SCPICmdRead):
@@ -69,7 +69,7 @@ class FiltervuFrequency(SCPICmdWrite, SCPICmdRead):
         - ``.available``: The ``FILTERVu:FREQuency:AVAILable`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._available = FiltervuFrequencyAvailable(device, f"{self._cmd_syntax}:AVAILable")
 
@@ -107,7 +107,7 @@ class Filtervu(SCPICmdRead):
         - ``.frequency``: The ``FILTERVu:FREQuency`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "FILTERVu") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "FILTERVu") -> None:
         super().__init__(device, cmd_syntax)
         self._frequency = FiltervuFrequency(device, f"{self._cmd_syntax}:FREQuency")
 

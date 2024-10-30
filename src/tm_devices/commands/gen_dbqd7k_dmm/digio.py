@@ -29,7 +29,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class DigioLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
@@ -74,7 +74,7 @@ class DigioLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.mode)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
@@ -110,7 +110,7 @@ class DigioLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.mode = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -145,7 +145,7 @@ class DigioLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.state)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @state.setter
@@ -183,7 +183,7 @@ class DigioLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.state = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def reset(self) -> None:
@@ -208,7 +208,7 @@ class DigioLineItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.reset()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -254,7 +254,7 @@ class Digio(BaseTSPCmd):
     STATE_LOW = "digio.STATE_LOW"
     """str: Set the line low."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "digio") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "digio") -> None:
         super().__init__(device, cmd_syntax)
         self._line: Dict[int, DigioLineItem] = DefaultDictPassKeyToFactory(
             lambda x: DigioLineItem(device, f"{self._cmd_syntax}.line[{x}]")
@@ -296,7 +296,7 @@ class Digio(BaseTSPCmd):
                 f"print({self._cmd_syntax}.readport())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.readport()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.readport()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def writeport(self, data: int) -> None:
@@ -321,5 +321,5 @@ class Digio(BaseTSPCmd):
                 f"{self._cmd_syntax}.writeport({data})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.writeport()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.writeport()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

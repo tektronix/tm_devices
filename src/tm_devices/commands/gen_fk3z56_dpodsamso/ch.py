@@ -113,7 +113,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, ValidatedChannel
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ChannelVtermDualB(SCPICmdWrite, SCPICmdRead):
@@ -177,7 +177,7 @@ class ChannelVtermDual(SCPICmdRead):
         - ``.b``: The ``CH<x>:VTERm:DUAL:B`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._a = ChannelVtermDualA(device, f"{self._cmd_syntax}:A")
         self._b = ChannelVtermDualB(device, f"{self._cmd_syntax}:B")
@@ -274,7 +274,7 @@ class ChannelVterm(SCPICmdRead):
         - ``.dual``: The ``CH<x>:VTERm:DUAL`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bias = ChannelVtermBias(device, f"{self._cmd_syntax}:BIAS")
         self._dual = ChannelVtermDual(device, f"{self._cmd_syntax}:DUAL")
@@ -681,7 +681,7 @@ class ChannelProbeInputmode(SCPICmdWrite, SCPICmdRead):
         - ``.dmoffset``: The ``CH<x>:PRObe:INPUTMode:DMOFFSet`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aoffset = ChannelProbeInputmodeAoffset(device, f"{self._cmd_syntax}:AOFFSet")
         self._boffset = ChannelProbeInputmodeBoffset(device, f"{self._cmd_syntax}:BOFFSet")
@@ -855,7 +855,7 @@ class ChannelProbeId(SCPICmdRead):
         - ``.type``: The ``CH<x>:PRObe:ID:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._sernumber = ChannelProbeIdSernumber(device, f"{self._cmd_syntax}:SERnumber")
         self._type = ChannelProbeIdType(device, f"{self._cmd_syntax}:TYPe")
@@ -998,7 +998,7 @@ class ChannelProbeDegauss(SCPICmdWrite, SCPICmdRead):
         - ``.state``: The ``CH<x>:PRObe:DEGAUSS:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ChannelProbeDegaussState(device, f"{self._cmd_syntax}:STATE")
 
@@ -1077,7 +1077,7 @@ class ChannelProbeDcCalibrationLast(SCPICmdRead):
         - ``.time``: The ``CH<x>:PRObe:DC:CALibration:LAST:TIME`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hardware = ChannelProbeDcCalibrationLastHardware(
             device, f"{self._cmd_syntax}:HARDware"
@@ -1140,7 +1140,7 @@ class ChannelProbeDcCalibration(SCPICmdRead):
         - ``.last``: The ``CH<x>:PRObe:DC:CALibration:LAST`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._last = ChannelProbeDcCalibrationLast(device, f"{self._cmd_syntax}:LAST")
 
@@ -1173,7 +1173,7 @@ class ChannelProbeDc(SCPICmdRead):
         - ``.calibration``: The ``CH<x>:PRObe:DC:CALibration`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._calibration = ChannelProbeDcCalibration(device, f"{self._cmd_syntax}:CALibration")
 
@@ -1248,7 +1248,7 @@ class ChannelProbe(SCPICmdRead):
         - ``.units``: The ``CH<x>:PRObe:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autozero = ChannelProbeAutozero(device, f"{self._cmd_syntax}:AUTOZero")
         self._dc = ChannelProbeDc(device, f"{self._cmd_syntax}:DC")
@@ -1708,7 +1708,7 @@ class ChannelProbefunc(SCPICmdRead):
         - ``.extunits``: The ``CH<x>:PROBEFunc:EXTUnits`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._extatten = ChannelProbefuncExtatten(device, f"{self._cmd_syntax}:EXTAtten")
         self._extdbatten = ChannelProbefuncExtdbatten(device, f"{self._cmd_syntax}:EXTDBatten")
@@ -1931,7 +1931,7 @@ class ChannelOpticalWlength(SCPICmdWrite, SCPICmdRead):
         - ``.list``: The ``CH<x>:OPTIcal:WLENgth:LIST`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._list = ChannelOpticalWlengthList(device, f"{self._cmd_syntax}:LIST")
 
@@ -1996,7 +1996,7 @@ class ChannelOpticalRcvr(SCPICmdWrite, SCPICmdRead):
         - ``.uservalue``: The ``CH<x>:OPTIcal:RCVR:USERVALue`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._uservalue = ChannelOpticalRcvrUservalue(device, f"{self._cmd_syntax}:USERVALue")
 
@@ -2034,7 +2034,7 @@ class ChannelOptical(SCPICmdRead):
         - ``.wlength``: The ``CH<x>:OPTIcal:WLENgth`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._rcvr = ChannelOpticalRcvr(device, f"{self._cmd_syntax}:RCVR")
         self._wlength = ChannelOpticalWlength(device, f"{self._cmd_syntax}:WLENgth")
@@ -2129,7 +2129,7 @@ class ChannelOpti(SCPICmdRead):
         - ``.power``: The ``CH<x>:OPTI:POWER`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._power = ChannelOptiPower(device, f"{self._cmd_syntax}:POWER")
 
@@ -2281,7 +2281,7 @@ class ChannelLabel(SCPICmdRead):
         - ``.ypos``: The ``CH<x>:LABel:YPOS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._name = ChannelLabelName(device, f"{self._cmd_syntax}:NAMe")
         self._xpos = ChannelLabelXpos(device, f"{self._cmd_syntax}:XPOS")
@@ -2464,7 +2464,7 @@ class ChannelIcapture(SCPICmdRead):
         - ``.state``: The ``CH<x>:ICAPture:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._source = ChannelIcaptureSource(device, f"{self._cmd_syntax}:SOUrce")
         self._state = ChannelIcaptureState(device, f"{self._cmd_syntax}:STATE")
@@ -2753,7 +2753,7 @@ class ChannelBandwidthEnhanced(SCPICmdWrite, SCPICmdRead):
         - ``.state``: The ``CH<x>:BANdwidth:ENHanced:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._allmatched = ChannelBandwidthEnhancedAllmatched(
             device, f"{self._cmd_syntax}:ALLMatched"
@@ -2915,7 +2915,7 @@ class ChannelBandwidth(SCPICmdWrite, SCPICmdRead):
         - ``.enhanced``: The ``CH<x>:BANdwidth:ENHanced`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._enhanced = ChannelBandwidthEnhanced(device, f"{self._cmd_syntax}:ENHanced")
 
@@ -3032,7 +3032,7 @@ class Channel(ValidatedChannel, SCPICmdRead):
         - ``.vterm``: The ``CH<x>:VTERm`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CH<x>") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CH<x>") -> None:
         super().__init__(device, cmd_syntax)
         self._atiactive = ChannelAtiactive(device, f"{self._cmd_syntax}:ATIACTive")
         self._available = ChannelAvailable(device, f"{self._cmd_syntax}:AVAILable")

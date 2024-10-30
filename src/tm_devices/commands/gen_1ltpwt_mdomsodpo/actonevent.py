@@ -41,7 +41,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ActoneventRepeatcount(SCPICmdWrite, SCPICmdRead):
@@ -158,7 +158,7 @@ class ActoneventActionVisual(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:ACTION:VISUAL:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventActionVisualState(device, f"{self._cmd_syntax}:STATE")
 
@@ -230,7 +230,7 @@ class ActoneventActionStopacq(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:ACTION:STOPACQ:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventActionStopacqState(device, f"{self._cmd_syntax}:STATE")
 
@@ -309,7 +309,7 @@ class ActoneventActionSrq(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:ACTION:SRQ:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventActionSrqState(device, f"{self._cmd_syntax}:STATE")
 
@@ -387,7 +387,7 @@ class ActoneventActionSavewfm(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:ACTION:SAVEWFM:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventActionSavewfmState(device, f"{self._cmd_syntax}:STATE")
 
@@ -460,7 +460,7 @@ class ActoneventActionSaveimage(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:ACTION:SAVEIMAGE:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventActionSaveimageState(device, f"{self._cmd_syntax}:STATE")
 
@@ -534,7 +534,7 @@ class ActoneventActionPrint(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:ACTION:PRINT:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventActionPrintState(device, f"{self._cmd_syntax}:STATE")
 
@@ -634,7 +634,7 @@ class ActoneventActionEmailSetup(SCPICmdRead):
         - ``.toaddress``: The ``ACTONEVent:ACTION:EMAIL:SETUp:TOADDRess`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._toaddress = ActoneventActionEmailSetupToaddress(
             device, f"{self._cmd_syntax}:TOADDRess"
@@ -680,7 +680,7 @@ class ActoneventActionEmail(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:ACTION:EMAIL:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._setup = ActoneventActionEmailSetup(device, f"{self._cmd_syntax}:SETUp")
         self._state = ActoneventActionEmailState(device, f"{self._cmd_syntax}:STATE")
@@ -768,7 +768,7 @@ class ActoneventActionAuxout(SCPICmdRead):
         - ``.state``: The ``ACTONEVent:ACTION:AUXOUT:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ActoneventActionAuxoutState(device, f"{self._cmd_syntax}:STATE")
 
@@ -821,7 +821,7 @@ class ActoneventAction(SCPICmdRead):
         - ``.visual``: The ``ACTONEVent:ACTION:VISUAL`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._auxout = ActoneventActionAuxout(device, f"{self._cmd_syntax}:AUXOUT")
         self._email = ActoneventActionEmail(device, f"{self._cmd_syntax}:EMAIL")
@@ -961,7 +961,9 @@ class Actonevent(SCPICmdRead):
         - ``.repeatcount``: The ``ACTONEVent:REPEATCount`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "ACTONEVent") -> None:
+    def __init__(
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "ACTONEVent"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._action = ActoneventAction(device, f"{self._cmd_syntax}:ACTION")
         self._eventtype = ActoneventEventtype(device, f"{self._cmd_syntax}:EVENTTYPe")

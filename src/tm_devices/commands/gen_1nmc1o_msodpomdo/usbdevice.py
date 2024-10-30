@@ -19,7 +19,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class UsbdeviceConfigure(SCPICmdWrite, SCPICmdRead):
@@ -59,7 +59,7 @@ class Usbdevice(SCPICmdRead):
         - ``.configure``: The ``USBDevice:CONFigure`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "USBDevice") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "USBDevice") -> None:
         super().__init__(device, cmd_syntax)
         self._configure = UsbdeviceConfigure(device, f"{self._cmd_syntax}:CONFigure")
 

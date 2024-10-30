@@ -37,7 +37,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedDynamicNumberCmd
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class SlotItemThermal(BaseTSPCmd):
@@ -78,7 +78,7 @@ class SlotItemThermal(BaseTSPCmd):
                 f"print({self._cmd_syntax}.state)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -121,7 +121,7 @@ class SlotItemRows(BaseTSPCmd):
                 f"print({self._cmd_syntax}.matrix)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.matrix`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.matrix`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -166,7 +166,7 @@ class SlotItemPoles(BaseTSPCmd):
                 f"print({self._cmd_syntax}.four)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.four`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.four`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -198,7 +198,7 @@ class SlotItemPoles(BaseTSPCmd):
                 f"print({self._cmd_syntax}.one)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.one`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.one`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -230,7 +230,7 @@ class SlotItemPoles(BaseTSPCmd):
                 f"print({self._cmd_syntax}.two)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.two`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.two`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -277,7 +277,7 @@ class SlotItemInterlock(BaseTSPCmd):
                 f"print({self._cmd_syntax}.override)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.override`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.override`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @override.setter
@@ -315,7 +315,7 @@ class SlotItemInterlock(BaseTSPCmd):
                     f"{self._cmd_syntax}.override = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.override`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.override`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -347,7 +347,7 @@ class SlotItemInterlock(BaseTSPCmd):
                 f"print({self._cmd_syntax}.state)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.state`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -390,7 +390,7 @@ class SlotItemColumns(BaseTSPCmd):
                 f"print({self._cmd_syntax}.matrix)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.matrix`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.matrix`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -432,7 +432,7 @@ class SlotItemBanks(BaseTSPCmd):
                 f"print({self._cmd_syntax}.matrix)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.matrix`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.matrix`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -461,7 +461,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
     """
 
     def __init__(
-        self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "slot[slot]"
+        self, device: Optional["TSPControl"] = None, cmd_syntax: str = "slot[slot]"
     ) -> None:
         super().__init__(device, cmd_syntax)
         self._banks = SlotItemBanks(device, f"{self._cmd_syntax}.banks")
@@ -524,7 +524,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.commonsideohms)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.commonsideohms`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.commonsideohms`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -556,7 +556,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.digio)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.digio`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.digio`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -587,7 +587,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.idn)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.idn`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.idn`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -632,7 +632,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.isolated)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.isolated`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.isolated`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -663,7 +663,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.matrix)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.matrix`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.matrix`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -695,7 +695,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.maxvoltage)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.maxvoltage`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.maxvoltage`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -727,7 +727,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.multiplexer)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.multiplexer`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.multiplexer`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -775,7 +775,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.pseudocard)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.pseudocard`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.pseudocard`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @pseudocard.setter
@@ -812,7 +812,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.pseudocard = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.pseudocard`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.pseudocard`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -856,7 +856,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.tempsensor)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.tempsensor`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.tempsensor`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property

@@ -28,7 +28,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MmemoryStoreTrace(SCPICmdWrite):
@@ -82,7 +82,7 @@ class MmemoryStore(SCPICmdRead):
         - ``.trace``: The ``MMEMory:STORe:TRACe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = MmemoryStoreState(device, f"{self._cmd_syntax}:STATe")
         self._trace = MmemoryStoreTrace(device, f"{self._cmd_syntax}:TRACe")
@@ -180,7 +180,7 @@ class MmemoryLock(SCPICmdRead):
         - ``.state``: The ``MMEMory:LOCK:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = MmemoryLockState(device, f"{self._cmd_syntax}:STATe")
 
@@ -256,7 +256,7 @@ class MmemoryLoad(SCPICmdRead):
         - ``.trace``: The ``MMEMory:LOAD:TRACe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = MmemoryLoadState(device, f"{self._cmd_syntax}:STATe")
         self._trace = MmemoryLoadTrace(device, f"{self._cmd_syntax}:TRACe")
@@ -374,7 +374,7 @@ class Mmemory(SCPICmdRead):
         - ``.store``: The ``MMEMory:STORe`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MMEMory") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MMEMory") -> None:
         super().__init__(device, cmd_syntax)
         self._catalog = MmemoryCatalog(device, f"{self._cmd_syntax}:CATalog")
         self._cdirectory = MmemoryCdirectory(device, f"{self._cmd_syntax}:CDIRectory")

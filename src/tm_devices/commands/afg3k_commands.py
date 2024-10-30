@@ -5,9 +5,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Optional
+from typing import Optional
 
-from tm_devices.drivers.pi.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_22daqs_afg.afgcontrol import Afgcontrol
 from .gen_22daqs_afg.data import Data
@@ -105,7 +106,7 @@ class AFG3KCommands:
         - ``.wai``: The ``*WAI`` command.
     """
 
-    def __init__(self, device: Optional[PIDevice] = None) -> None:
+    def __init__(self, device: Optional[PIControl] = None) -> None:
         self._abort = Abort(device)
         self._afgcontrol = Afgcontrol(device)
         self._cal = Cal(device)
@@ -851,22 +852,16 @@ class AFG3KMixin:
         - ``.commands``: The AFG3K commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIDevice) else None
-        self._command_argument_constants = AFG3KCommandConstants()
-        self._commands = AFG3KCommands(device)
-
-    @property
-    def command_argument_constants(self) -> AFG3KCommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> AFG3KCommandConstants:  # pylint: disable=no-self-use
         """Return the AFG3K command argument constants.
 
         This provides access to all the string constants which can be used as arguments for AFG3K
         commands.
         """
-        return self._command_argument_constants
+        return AFG3KCommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> AFG3KCommands:
         """Return the AFG3K commands.
 
@@ -911,4 +906,5 @@ class AFG3KMixin:
             - ``.tst``: The ``*TST`` command.
             - ``.wai``: The ``*WAI`` command.
         """
-        return self._commands
+        device = self if isinstance(self, PIControl) else None
+        return AFG3KCommands(device)

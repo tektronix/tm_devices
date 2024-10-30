@@ -15,7 +15,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 # pylint: disable=too-few-public-methods
@@ -41,5 +41,5 @@ class Smu(BaseTSPCmd):
     ON = "smu.ON"
     """str: Only allow the output to be turned on if the interlock is engaged."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "smu") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "smu") -> None:
         super().__init__(device, cmd_syntax)

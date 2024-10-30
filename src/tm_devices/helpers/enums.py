@@ -199,7 +199,7 @@ class SupportedModels(CustomStrEnum):
 
 
 class SupportedRequestTypes(CustomStrEnum):
-    """All request types supported by a [`RESTAPIDevice`][tm_devices.drivers.api.rest_api.rest_api_device.RESTAPIDevice]."""  # noqa: E501
+    """All request types supported by a [`RESTAPIControl`][tm_devices.driver_mixins.device_control.RESTAPIControl]."""  # noqa: E501
 
     GET = "GET"
     POST = "POST"

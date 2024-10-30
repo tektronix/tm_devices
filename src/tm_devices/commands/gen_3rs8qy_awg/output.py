@@ -46,7 +46,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class OutputItemWvalueMarkerItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
@@ -123,7 +123,7 @@ class OutputItemWvalueAnalog(SCPICmdRead):
         - ``.state``: The ``OUTPut[n]:WVALue:ANALog:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = OutputItemWvalueAnalogState(device, f"{self._cmd_syntax}:STATe")
 
@@ -172,7 +172,7 @@ class OutputItemWvalue(SCPICmdRead):
         - ``.analog``: The ``OUTPut[n]:WVALue:ANALog`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._marker: Dict[int, OutputItemWvalueMarkerItem] = DefaultDictPassKeyToFactory(
             lambda x: OutputItemWvalueMarkerItem(device, f"{self._cmd_syntax}:MARKer{x}")
@@ -296,7 +296,7 @@ class OutputItemSvalueAnalog(SCPICmdRead):
         - ``.state``: The ``OUTPut[n]:SVALue:ANALog:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = OutputItemSvalueAnalogState(device, f"{self._cmd_syntax}:STATe")
 
@@ -343,7 +343,7 @@ class OutputItemSvalue(SCPICmdRead):
         - ``.analog``: The ``OUTPut[n]:SVALue:ANALog`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._marker: Dict[int, OutputItemSvalueMarkerItem] = DefaultDictPassKeyToFactory(
             lambda x: OutputItemSvalueMarkerItem(device, f"{self._cmd_syntax}:MARKer{x}")
@@ -486,7 +486,7 @@ class OutputItemFilterBpass(SCPICmdRead):
         - ``.range``: The ``OUTPut[n]:FILTer:BPASs:RANGe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._range = OutputItemFilterBpassRange(device, f"{self._cmd_syntax}:RANGe")
 
@@ -540,7 +540,7 @@ class OutputItemFilter(SCPICmdWrite, SCPICmdRead):
         - ``.bpass``: The ``OUTPut[n]:FILTer:BPASs`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bpass = OutputItemFilterBpass(device, f"{self._cmd_syntax}:BPASs")
 
@@ -673,7 +673,7 @@ class OutputItemAttenuator(SCPICmdRead):
         - ``.dac``: The ``OUTPut[n]:ATTenuator:DAC`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._a1 = OutputItemAttenuatorA1(device, f"{self._cmd_syntax}:A1")
         self._a2 = OutputItemAttenuatorA2(device, f"{self._cmd_syntax}:A2")
@@ -801,7 +801,7 @@ class OutputItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.state``: The ``OUTPut[n]:STATe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "OUTPut[n]") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "OUTPut[n]") -> None:
         super().__init__(device, cmd_syntax)
         self._attenuator = OutputItemAttenuator(device, f"{self._cmd_syntax}:ATTenuator")
         self._filter = OutputItemFilter(device, f"{self._cmd_syntax}:FILTer")

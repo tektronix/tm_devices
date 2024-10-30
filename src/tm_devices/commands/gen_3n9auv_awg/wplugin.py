@@ -20,7 +20,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class WpluginPlugins(SCPICmdRead):
@@ -75,7 +75,7 @@ class Wplugin(SCPICmdRead):
         - ``.plugins``: The ``WPLugin:PLUGins`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "WPLugin") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "WPLugin") -> None:
         super().__init__(device, cmd_syntax)
         self._active = WpluginActive(device, f"{self._cmd_syntax}:ACTive")
         self._plugins = WpluginPlugins(device, f"{self._cmd_syntax}:PLUGins")

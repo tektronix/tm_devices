@@ -33,7 +33,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class DisplayInput(BaseTSPCmd):
@@ -95,7 +95,7 @@ class DisplayInput(BaseTSPCmd):
                 f"print({self._cmd_syntax}.number({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.number()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.number()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def option(self, dialog_title: str, button_title1: str, button_title2: str) -> str:
@@ -130,7 +130,7 @@ class DisplayInput(BaseTSPCmd):
                 f'"{button_title2}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.option()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.option()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def prompt(self, button_set: str, dialog_title: str) -> str:
@@ -161,7 +161,7 @@ class DisplayInput(BaseTSPCmd):
                 f'print({self._cmd_syntax}.prompt({button_set}, "{dialog_title}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.prompt()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.prompt()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def string(self, dialog_title: str, text_format: Optional[str] = None) -> str:
@@ -200,7 +200,7 @@ class DisplayInput(BaseTSPCmd):
                 f"print({self._cmd_syntax}.string({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.string()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.string()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -350,7 +350,7 @@ the instrument."""  # noqa: E501
     STATE_LCD_OFF = "display.STATE_LCD_OFF"
     """str: Set display to off."""
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "display") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "display") -> None:
         super().__init__(device, cmd_syntax)
         self._input = DisplayInput(device, f"{self._cmd_syntax}.input")
 
@@ -383,7 +383,7 @@ the instrument."""  # noqa: E501
                 f"print({self._cmd_syntax}.activebuffer)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.activebuffer`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.activebuffer`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @activebuffer.setter
@@ -418,7 +418,7 @@ the instrument."""  # noqa: E501
                     f"{self._cmd_syntax}.activebuffer = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.activebuffer`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.activebuffer`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -460,7 +460,7 @@ the instrument."""  # noqa: E501
                 f"print({self._cmd_syntax}.lightstate)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.lightstate`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.lightstate`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @lightstate.setter
@@ -493,7 +493,7 @@ the instrument."""  # noqa: E501
                     f"{self._cmd_syntax}.lightstate = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.lightstate`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.lightstate`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -529,7 +529,7 @@ the instrument."""  # noqa: E501
                 f"print({self._cmd_syntax}.readingformat)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.readingformat`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.readingformat`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @readingformat.setter
@@ -568,7 +568,7 @@ the instrument."""  # noqa: E501
                     f"{self._cmd_syntax}.readingformat = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.readingformat`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.readingformat`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -600,7 +600,7 @@ the instrument."""  # noqa: E501
                 f"print({self._cmd_syntax}.watchchannels)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.watchchannels`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.watchchannels`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @watchchannels.setter
@@ -635,7 +635,7 @@ the instrument."""  # noqa: E501
                     f"{self._cmd_syntax}.watchchannels = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.watchchannels`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.watchchannels`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def changescreen(self, screen_name: str) -> None:
@@ -660,7 +660,7 @@ the instrument."""  # noqa: E501
                 f"{self._cmd_syntax}.changescreen({screen_name})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.changescreen()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.changescreen()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def clear(self) -> None:
@@ -682,7 +682,7 @@ the instrument."""  # noqa: E501
                 f"{self._cmd_syntax}.clear()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def delete(self, prompt_id: str) -> None:
@@ -708,7 +708,7 @@ the instrument."""  # noqa: E501
                 f"{self._cmd_syntax}.delete({prompt_id})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.delete()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def prompt(self, button_id: str, prompt_text: str) -> str:
@@ -738,7 +738,7 @@ the instrument."""  # noqa: E501
                 f'print({self._cmd_syntax}.prompt({button_id}, "{prompt_text}"))'
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.prompt()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.prompt()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def settext(
@@ -776,7 +776,7 @@ the instrument."""  # noqa: E501
                 f"{self._cmd_syntax}.settext({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.settext()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.settext()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def waitevent(self, timeout: Optional[float] = None) -> str:
@@ -807,5 +807,5 @@ the instrument."""  # noqa: E501
                 f"print({self._cmd_syntax}.waitevent({function_args}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.waitevent()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.waitevent()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

@@ -84,7 +84,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class CursorXyYdelta(SCPICmdRead):
@@ -387,7 +387,7 @@ class CursorXy(SCPICmdRead):
         - ``.ydelta``: The ``CURSor:XY:YDELta`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._proddelta = CursorXyProddelta(device, f"{self._cmd_syntax}:PRODDELta")
         self._product: Dict[int, CursorXyProductItem] = DefaultDictPassKeyToFactory(
@@ -900,7 +900,7 @@ class CursorWaveform(SCPICmdWrite, SCPICmdRead):
         - ``.vdelta``: The ``CURSor:WAVEform:VDELTA`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hdelta = CursorWaveformHdelta(device, f"{self._cmd_syntax}:HDELTA")
         self._hpos: Dict[int, CursorWaveformHposItem] = DefaultDictPassKeyToFactory(
@@ -1223,7 +1223,7 @@ class CursorVbars(SCPICmdWrite, SCPICmdRead):
         - ``.units``: The ``CURSor:VBArs:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorVbarsDelta(device, f"{self._cmd_syntax}:DELTa")
         self._pos: Dict[int, CursorVbarsPosItem] = DefaultDictPassKeyToFactory(
@@ -1489,7 +1489,7 @@ class CursorScreen(SCPICmdRead):
         - ``.yposition``: The ``CURSor:SCREEN:YPOSITION<x>`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._style = CursorScreenStyle(device, f"{self._cmd_syntax}:STYle")
         self._xposition: Dict[int, CursorScreenXpositionItem] = DefaultDictPassKeyToFactory(
@@ -1721,7 +1721,7 @@ class CursorHbars(SCPICmdRead):
         - ``.units``: The ``CURSor:HBArs:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._delta = CursorHbarsDelta(device, f"{self._cmd_syntax}:DELTa")
         self._position: Dict[int, CursorHbarsPositionItem] = DefaultDictPassKeyToFactory(
@@ -1861,7 +1861,7 @@ class Cursor(SCPICmdRead):
         - ``.xy``: The ``CURSor:XY`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CURSor") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CURSor") -> None:
         super().__init__(device, cmd_syntax)
         self._function = CursorFunction(device, f"{self._cmd_syntax}:FUNCtion")
         self._hbars = CursorHbars(device, f"{self._cmd_syntax}:HBArs")

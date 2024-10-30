@@ -74,7 +74,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SlistSize(SCPICmdRead):
@@ -177,7 +177,7 @@ class SlistSequenceTrack(SCPICmdReadWithArguments):
         - ``.max``: The ``SLISt:SEQuence:TRACk:MAX`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._max = SlistSequenceTrackMax(device, f"{self._cmd_syntax}:MAX")
 
@@ -370,7 +370,7 @@ class SlistSequenceStepItemTflagItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.dflag``: The ``SLISt:SEQuence:STEP[n]:TFLag[m]:DFLag`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._aflag = SlistSequenceStepItemTflagItemAflag(device, f"{self._cmd_syntax}:AFLag")
         self._bflag = SlistSequenceStepItemTflagItemBflag(device, f"{self._cmd_syntax}:BFLag")
@@ -567,7 +567,7 @@ class SlistSequenceStepItemTassetItem(ValidatedDynamicNumberCmd, SCPICmdReadWith
         - ``.waveform``: The ``SLISt:SEQuence:STEP[n]:TASSet[m]:WAVeform`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._type = SlistSequenceStepItemTassetItemType(device, f"{self._cmd_syntax}:TYPE")
         self._waveform = SlistSequenceStepItemTassetItemWaveform(
@@ -646,7 +646,7 @@ class SlistSequenceStepItemTasset(SCPICmdRead):
         - ``.sequence``: The ``SLISt:SEQuence:STEP[n]:TASSet:SEQuence`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._sequence = SlistSequenceStepItemTassetSequence(device, f"{self._cmd_syntax}:SEQuence")
 
@@ -815,7 +815,7 @@ class SlistSequenceStepItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.winput``: The ``SLISt:SEQuence:STEP[n]:WINPut`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._ejinput = SlistSequenceStepItemEjinput(device, f"{self._cmd_syntax}:EJINput")
         self._ejump = SlistSequenceStepItemEjump(device, f"{self._cmd_syntax}:EJUMp")
@@ -1086,7 +1086,7 @@ class SlistSequenceStepRcount(SCPICmdRead):
         - ``.max``: The ``SLISt:SEQuence:STEP:RCOunt:MAX`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._max = SlistSequenceStepRcountMax(device, f"{self._cmd_syntax}:MAX")
 
@@ -1165,7 +1165,7 @@ class SlistSequenceStep(SCPICmdRead):
         - ``.rcount``: The ``SLISt:SEQuence:STEP:RCOunt`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._add = SlistSequenceStepAdd(device, f"{self._cmd_syntax}:ADD")
         self._max = SlistSequenceStepMax(device, f"{self._cmd_syntax}:MAX")
@@ -1447,7 +1447,7 @@ class SlistSequenceEventPjump(SCPICmdRead):
         - ``.size``: The ``SLISt:SEQuence:EVENt:PJUMp:SIZE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._define = SlistSequenceEventPjumpDefine(device, f"{self._cmd_syntax}:DEFine")
         self._enable = SlistSequenceEventPjumpEnable(device, f"{self._cmd_syntax}:ENABle")
@@ -1575,7 +1575,7 @@ class SlistSequenceEvent(SCPICmdRead):
         - ``.pjump``: The ``SLISt:SEQuence:EVENt:PJUMp`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._jtiming = SlistSequenceEventJtiming(device, f"{self._cmd_syntax}:JTIMing")
         self._pjump = SlistSequenceEventPjump(device, f"{self._cmd_syntax}:PJUMp")
@@ -1694,7 +1694,7 @@ class SlistSequence(SCPICmdRead):
         - ``.wmusage``: The ``SLISt:SEQuence:WMUSage`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._amplitude = SlistSequenceAmplitude(device, f"{self._cmd_syntax}:AMPLitude")
         self._delete = SlistSequenceDelete(device, f"{self._cmd_syntax}:DELete")
@@ -2049,7 +2049,7 @@ class Slist(SCPICmdRead):
         - ``.size``: The ``SLISt:SIZE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SLISt") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SLISt") -> None:
         super().__init__(device, cmd_syntax)
         self._name = SlistName(device, f"{self._cmd_syntax}:NAME")
         self._sequence = SlistSequence(device, f"{self._cmd_syntax}:SEQuence")

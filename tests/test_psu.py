@@ -27,7 +27,5 @@ def test_psu(device_manager: DeviceManager) -> None:
     assert psu.fpga_version == Version("1.06")
     assert psu.total_channels == 3
 
-    assert psu.expect_esr(0)[0]
-    assert psu.get_eventlog_status() == (True, '0,"No error"')
-
-    assert psu.all_channel_names_list == ("SOURCE1", "SOURCE2", "SOURCE3")
+    assert psu.expect_esr(0)
+    assert psu.get_errors() == (0, ('0,"No error"',))

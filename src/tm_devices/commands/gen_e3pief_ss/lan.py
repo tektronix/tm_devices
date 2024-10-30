@@ -63,7 +63,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
@@ -94,7 +94,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
     EVENT_ID = "lan.trigger[N].EVENT_ID"
     """str: The event identifier used to route the LAN trigger to other subsystems (using stimulus properties)."""  # noqa: E501
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         # pylint: disable=invalid-name
         self.EVENT_ID = self.EVENT_ID.replace(
@@ -129,7 +129,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.connected)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.connected`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.connected`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -164,7 +164,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.ipaddress)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ipaddress`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ipaddress`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @ipaddress.setter
@@ -202,7 +202,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.ipaddress = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ipaddress`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ipaddress`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -237,7 +237,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.mode)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
@@ -275,7 +275,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.mode = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -306,7 +306,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.overrun)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.overrun`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.overrun`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -340,7 +340,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.protocol)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.protocol`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.protocol`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @protocol.setter
@@ -377,7 +377,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.protocol = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.protocol`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.protocol`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -411,7 +411,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.pseudostate)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.pseudostate`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.pseudostate`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @pseudostate.setter
@@ -448,7 +448,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.pseudostate = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.pseudostate`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.pseudostate`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -483,7 +483,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.stimulus)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
@@ -521,7 +521,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.stimulus = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def assert_(self) -> None:
@@ -547,7 +547,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.assert()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.assert()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.assert()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def clear(self) -> None:
@@ -572,7 +572,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.clear()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def connect(self) -> None:
@@ -597,7 +597,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.connect()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.connect()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.connect()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def disconnect(self) -> None:
@@ -622,7 +622,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"{self._cmd_syntax}.disconnect()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.disconnect()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.disconnect()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def wait(self, timeout: float) -> str:
@@ -650,7 +650,7 @@ class LanTriggerItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.wait({timeout}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.wait()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -695,7 +695,7 @@ class LanStatusPort(BaseTSPCmd):
                 f"print({self._cmd_syntax}.dst)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.dst`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.dst`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -726,7 +726,7 @@ class LanStatusPort(BaseTSPCmd):
                 f"print({self._cmd_syntax}.rawsocket)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.rawsocket`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.rawsocket`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -757,7 +757,7 @@ class LanStatusPort(BaseTSPCmd):
                 f"print({self._cmd_syntax}.telnet)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.telnet`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.telnet`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -788,7 +788,7 @@ class LanStatusPort(BaseTSPCmd):
                 f"print({self._cmd_syntax}.vxi11)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.vxi11`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.vxi11`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -800,7 +800,7 @@ class LanStatusDns(BaseTSPCmd):
         - ``.name``: The ``lan.status.dns.name`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._address: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.address[{{key}}]",
@@ -857,7 +857,7 @@ class LanStatusDns(BaseTSPCmd):
                 f"print({self._cmd_syntax}.name)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.name`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.name`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -875,7 +875,7 @@ class LanStatus(BaseTSPCmd):
         - ``.subnetmask``: The ``lan.status.subnetmask`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dns = LanStatusDns(device, f"{self._cmd_syntax}.dns")
         self._port = LanStatusPort(device, f"{self._cmd_syntax}.port")
@@ -915,7 +915,7 @@ class LanStatus(BaseTSPCmd):
                 f"print({self._cmd_syntax}.duplex)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.duplex`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.duplex`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -943,7 +943,7 @@ class LanStatus(BaseTSPCmd):
                 f"print({self._cmd_syntax}.gateway)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.gateway`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.gateway`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -971,7 +971,7 @@ class LanStatus(BaseTSPCmd):
                 f"print({self._cmd_syntax}.ipaddress)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ipaddress`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ipaddress`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -999,7 +999,7 @@ class LanStatus(BaseTSPCmd):
                 f"print({self._cmd_syntax}.macaddress)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.macaddress`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.macaddress`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1042,7 +1042,7 @@ class LanStatus(BaseTSPCmd):
                 f"print({self._cmd_syntax}.speed)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.speed`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.speed`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1074,7 +1074,7 @@ class LanStatus(BaseTSPCmd):
                 f"print({self._cmd_syntax}.subnetmask)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.subnetmask`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.subnetmask`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -1089,7 +1089,7 @@ class LanConfigDns(BaseTSPCmd):
         - ``.verify``: The ``lan.config.dns.verify`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._address: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.address[{{key}}]",
@@ -1153,7 +1153,7 @@ class LanConfigDns(BaseTSPCmd):
                 f"print({self._cmd_syntax}.domain)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.domain`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.domain`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @domain.setter
@@ -1187,7 +1187,7 @@ class LanConfigDns(BaseTSPCmd):
                     f"{self._cmd_syntax}.domain = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.domain`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.domain`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1218,7 +1218,7 @@ class LanConfigDns(BaseTSPCmd):
                 f"print({self._cmd_syntax}.dynamic)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.dynamic`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.dynamic`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @dynamic.setter
@@ -1252,7 +1252,7 @@ class LanConfigDns(BaseTSPCmd):
                     f"{self._cmd_syntax}.dynamic = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.dynamic`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.dynamic`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1283,7 +1283,7 @@ class LanConfigDns(BaseTSPCmd):
                 f"print({self._cmd_syntax}.hostname)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.hostname`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.hostname`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @hostname.setter
@@ -1317,7 +1317,7 @@ class LanConfigDns(BaseTSPCmd):
                     f"{self._cmd_syntax}.hostname = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.hostname`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.hostname`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1348,7 +1348,7 @@ class LanConfigDns(BaseTSPCmd):
                 f"print({self._cmd_syntax}.verify)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.verify`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.verify`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @verify.setter
@@ -1382,7 +1382,7 @@ class LanConfigDns(BaseTSPCmd):
                     f"{self._cmd_syntax}.verify = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.verify`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.verify`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -1397,7 +1397,7 @@ class LanConfig(BaseTSPCmd):
         - ``.subnetmask``: The ``lan.config.subnetmask`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._dns = LanConfigDns(device, f"{self._cmd_syntax}.dns")
 
@@ -1441,7 +1441,7 @@ class LanConfig(BaseTSPCmd):
                 f"print({self._cmd_syntax}.gateway)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.gateway`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.gateway`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @gateway.setter
@@ -1474,7 +1474,7 @@ class LanConfig(BaseTSPCmd):
                     f"{self._cmd_syntax}.gateway = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.gateway`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.gateway`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1505,7 +1505,7 @@ class LanConfig(BaseTSPCmd):
                 f"print({self._cmd_syntax}.ipaddress)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ipaddress`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ipaddress`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @ipaddress.setter
@@ -1539,7 +1539,7 @@ class LanConfig(BaseTSPCmd):
                     f"{self._cmd_syntax}.ipaddress = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.ipaddress`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.ipaddress`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1569,7 +1569,7 @@ class LanConfig(BaseTSPCmd):
                 f"print({self._cmd_syntax}.method)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.method`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.method`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @method.setter
@@ -1602,7 +1602,7 @@ class LanConfig(BaseTSPCmd):
                     f"{self._cmd_syntax}.method = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.method`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.method`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1637,7 +1637,7 @@ class LanConfig(BaseTSPCmd):
                 f"print({self._cmd_syntax}.subnetmask)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.subnetmask`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.subnetmask`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @subnetmask.setter
@@ -1675,7 +1675,7 @@ class LanConfig(BaseTSPCmd):
                     f"{self._cmd_syntax}.subnetmask = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.subnetmask`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.subnetmask`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -1693,7 +1693,7 @@ class Lan(BaseTSPCmd):
         - ``.trigger``: The ``lan.trigger[N]`` command tree.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "lan") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "lan") -> None:
         super().__init__(device, cmd_syntax)
         self._config = LanConfig(device, f"{self._cmd_syntax}.config")
         self._status = LanStatus(device, f"{self._cmd_syntax}.status")
@@ -1744,7 +1744,7 @@ class Lan(BaseTSPCmd):
                 f"print({self._cmd_syntax}.lxidomain)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.lxidomain`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.lxidomain`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @lxidomain.setter
@@ -1780,7 +1780,7 @@ class Lan(BaseTSPCmd):
                     f"{self._cmd_syntax}.lxidomain = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.lxidomain`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.lxidomain`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1810,7 +1810,7 @@ class Lan(BaseTSPCmd):
                 f"print({self._cmd_syntax}.nagle)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.nagle`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.nagle`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @nagle.setter
@@ -1843,7 +1843,7 @@ class Lan(BaseTSPCmd):
                     f"{self._cmd_syntax}.nagle = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.nagle`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.nagle`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1908,7 +1908,7 @@ class Lan(BaseTSPCmd):
                 f"{self._cmd_syntax}.applysettings()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.applysettings()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.applysettings()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def reset(self) -> None:
@@ -1930,7 +1930,7 @@ class Lan(BaseTSPCmd):
                 f"{self._cmd_syntax}.reset()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.reset()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def restoredefaults(self) -> None:
@@ -1952,5 +1952,5 @@ class Lan(BaseTSPCmd):
                 f"{self._cmd_syntax}.restoredefaults()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.restoredefaults()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.restoredefaults()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

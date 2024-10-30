@@ -1,5 +1,6 @@
 """Macros for the documentation."""
 
+import abc
 import inspect
 import os
 import pathlib
@@ -53,11 +54,44 @@ FILES_TO_REMOVE_BLACK_FORMATTER_DISABLE_COMMENT = {
     "configuration.md",
     "basic_usage.md",
 }
+CONVERSION_PATTERN = re.compile(
+    r"> \[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|DANGER)]\s*>\s*(.*?)(?=\n[^>]|$)",
+    re.IGNORECASE | re.DOTALL,
+)
 
 
 ####################################################################################################
 # Helper functions
 ####################################################################################################
+def convert_gfm_alerts_to_admonitions(content: str) -> str:
+    """Convert GitHub Flavored Markdown (GFM) alerts to MkDocs admonitions.
+
+    Args:
+        content: The content to convert.
+
+    Returns:
+        The updated content with GFM alerts converted to markdown admonitions.
+    """
+
+    def replace_match(match: "re.Match[str]") -> str:
+        """Replace the matched GFM alert with an admonition.
+
+        Args:
+            match: The matched GFM alert.
+
+        Returns:
+            The replacement text.
+        """
+        alert_type = match.group(1).lower()
+        text = match.group(2).strip()
+        # Replace initial '>' from subsequent lines
+        text = text.replace("\n>", "\n")
+        # Replace with admonition format
+        return f"!!! {alert_type}\n    " + text.replace("\n", "\n    ")
+
+    return re.sub(CONVERSION_PATTERN, replace_match, content)
+
+
 def import_object(objname: str) -> Any:
     """Import a python object by its qualified name.
 
@@ -120,11 +154,15 @@ def get_classes(*cls_or_modules: str, strict: bool = False) -> Generator[Any, No
 ####################################################################################################
 # Macro functions
 ####################################################################################################
-def class_diagram(
+def class_diagram(  # noqa: C901  # pylint: disable=too-many-locals
     *cls_or_modules: str,
     full: bool = False,
     strict: bool = False,
     namespace: Optional[str] = None,
+    tree_direction: str = "up",
+    chart_direction: str = "LR",
+    highlight_family_base_classes: bool = False,
+    highlight_device_drivers: bool = False,
 ) -> str:
     """Create a mermaid classDiagram for the provided classes or modules.
 
@@ -134,6 +172,13 @@ def class_diagram(
         strict: A boolean indicating to only consider classes that are strictly defined in that
             module and not imported from somewhere else.
         namespace: Limits the diagram to only include classes defined in this namespace.
+        tree_direction: A string indicating the direction of traversal in the class hierarchy,
+            either "up" or "down".
+        chart_direction: A string indicating the direction of the chart, either
+            "LR" (left to right), "RL" (right to left),
+            "TB" (top to bottom), or "BT" (bottom to top).
+        highlight_family_base_classes: Indicate to highlight the family base classes in cyan.
+        highlight_device_drivers: Indicate to highlight the device drivers in lawngreen.
 
     Returns:
         The mermaid code block with complete syntax for the classDiagram.
@@ -142,8 +187,15 @@ def class_diagram(
         ValueError: If no classDiagram can be created.
     """
     inheritances: Set[Tuple[str, str]] = set()
+    family_base_classes: Set[str] = set()
+    device_drivers: Set[str] = set()
 
-    def get_tree(cls: Any) -> None:
+    def get_tree_upwards(cls: Any) -> None:
+        if getattr(cls, "_product_family_base_class", None) == cls:
+            family_base_classes.add(cls.__name__)
+        if abc.ABC not in cls.__bases__:
+            device_drivers.add(cls.__name__)
+
         for base in cls.__bases__:
             if base.__name__ == "object":
                 continue
@@ -151,7 +203,22 @@ def class_diagram(
                 continue
             inheritances.add((base.__name__, cls.__name__))
             if full:
-                get_tree(base)
+                get_tree_upwards(base)
+
+    def get_tree_downwards(cls: Any) -> None:
+        if getattr(cls, "_product_family_base_class", None) == cls:
+            family_base_classes.add(cls.__name__)
+        if abc.ABC not in cls.__bases__:
+            device_drivers.add(cls.__name__)
+
+        for subclass in cls.__subclasses__():
+            if namespace and not subclass.__module__.startswith(namespace):
+                continue
+            inheritances.add((cls.__name__, subclass.__name__))
+            if full:
+                get_tree_downwards(subclass)
+
+    get_tree = get_tree_upwards if tree_direction == "up" else get_tree_downwards
 
     for cls_item in get_classes(*cls_or_modules, strict=strict):
         get_tree(cls_item)
@@ -160,11 +227,18 @@ def class_diagram(
         msg = "No class hierarchy can be created."
         raise ValueError(msg)
 
-    return (
-        "```mermaid\nclassDiagram\n"
-        + "\n".join(f"  {a} <|-- {b}" for a, b in sorted(inheritances))
-        + "\n```"
+    mermaid_code_block = f"```mermaid\nclassDiagram\n  direction {chart_direction}\n" + "\n".join(
+        f"  {a} <|-- {b}" for a, b in sorted(inheritances)
     )
+    if highlight_family_base_classes:
+        for family_base_class in sorted(family_base_classes):
+            mermaid_code_block += f"\n  style {family_base_class} stroke:orangered,stroke-width:4px"
+    if highlight_device_drivers:
+        for device_driver in sorted(device_drivers):
+            mermaid_code_block += f"\n  style {device_driver} fill:lawngreen"
+    mermaid_code_block += "\n```"
+
+    return mermaid_code_block
 
 
 def create_repo_link(link_text: str, base_repo_url: str, relative_repo_path: str) -> str:
@@ -218,6 +292,8 @@ def on_post_page_macros(env: MacrosPlugin) -> None:
     # Check if all black format disable comments should be removed from the page
     if env.page.file.src_path in FILES_TO_REMOVE_BLACK_FORMATTER_DISABLE_COMMENT:
         env.markdown = env.markdown.replace("# fmt: off\n", "")
+    # Check if there are any admonitions to replace on the page
+    env.markdown = convert_gfm_alerts_to_admonitions(env.markdown)
     # Check if the title is correct
     if actual_title_match := HEADER_ONE_REGEX.search(env.markdown):
         actual_title = actual_title_match.group(1)

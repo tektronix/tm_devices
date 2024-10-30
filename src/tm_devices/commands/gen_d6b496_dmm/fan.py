@@ -20,7 +20,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Fan(BaseTSPCmd):
@@ -30,7 +30,7 @@ class Fan(BaseTSPCmd):
         - ``.level``: The ``fan.level`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "fan") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "fan") -> None:
         super().__init__(device, cmd_syntax)
 
     @property
@@ -60,7 +60,7 @@ class Fan(BaseTSPCmd):
                 f"print({self._cmd_syntax}.level)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @level.setter
@@ -93,5 +93,5 @@ class Fan(BaseTSPCmd):
                     f"{self._cmd_syntax}.level = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.level`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

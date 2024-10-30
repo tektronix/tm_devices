@@ -24,7 +24,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedDynamicNumberCmd
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class SlotItemVoltage(BaseTSPCmd):
@@ -60,7 +60,7 @@ class SlotItemVoltage(BaseTSPCmd):
                 f"print({self._cmd_syntax}.endchannel)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.endchannel`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.endchannel`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -89,7 +89,7 @@ class SlotItemVoltage(BaseTSPCmd):
                 f"print({self._cmd_syntax}.startchannel)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.startchannel`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.startchannel`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -103,7 +103,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
         - ``.voltage``: The ``slot[1].voltage`` command tree.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "slot[1]") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "slot[1]") -> None:
         super().__init__(device, cmd_syntax)
         self._voltage = SlotItemVoltage(device, f"{self._cmd_syntax}.voltage")
 
@@ -132,7 +132,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.idn)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.idn`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.idn`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -161,7 +161,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.maxvoltage)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.maxvoltage`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.maxvoltage`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -191,7 +191,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                 f"print({self._cmd_syntax}.pseudocard)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.pseudocard`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.pseudocard`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @pseudocard.setter
@@ -224,7 +224,7 @@ class SlotItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
                     f"{self._cmd_syntax}.pseudocard = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.pseudocard`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.pseudocard`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property

@@ -21,7 +21,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Upgrade(BaseTSPCmd):
@@ -32,7 +32,7 @@ class Upgrade(BaseTSPCmd):
         - ``.unit()``: The ``upgrade.unit()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "upgrade") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "upgrade") -> None:
         super().__init__(device, cmd_syntax)
 
     def previous(self) -> str:
@@ -57,7 +57,7 @@ class Upgrade(BaseTSPCmd):
                 f"print({self._cmd_syntax}.previous())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.previous()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.previous()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def unit(self) -> None:
@@ -79,5 +79,5 @@ class Upgrade(BaseTSPCmd):
                 f"{self._cmd_syntax}.unit()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.unit()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.unit()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

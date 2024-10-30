@@ -25,7 +25,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SynchronizeType(SCPICmdWrite, SCPICmdRead):
@@ -135,7 +135,7 @@ class SynchronizeDeskew(SCPICmdRead):
         - ``.start``: The ``SYNChronize:DESKew:STARt`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._abort = SynchronizeDeskewAbort(device, f"{self._cmd_syntax}:ABORt")
         self._state = SynchronizeDeskewState(device, f"{self._cmd_syntax}:STATe")
@@ -224,7 +224,7 @@ class SynchronizeAdjust(SCPICmdRead):
         - ``.start``: The ``SYNChronize:ADJust:STARt`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._start = SynchronizeAdjustStart(device, f"{self._cmd_syntax}:STARt")
 
@@ -263,7 +263,7 @@ class Synchronize(SCPICmdRead):
     """
 
     def __init__(
-        self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SYNChronize"
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "SYNChronize"
     ) -> None:
         super().__init__(device, cmd_syntax)
         self._adjust = SynchronizeAdjust(device, f"{self._cmd_syntax}:ADJust")

@@ -40,7 +40,7 @@ from typing import Dict, Optional, TYPE_CHECKING
 from ..helpers import DefaultDictPassKeyToFactory, SCPICmdRead, SCPICmdWrite, ValidatedChannel
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class FgenChannelItemType(SCPICmdWrite, SCPICmdRead):
@@ -338,7 +338,7 @@ class FgenChannelItemAmplitude(SCPICmdRead):
         - ``.voltage``: The ``FGEN:CHANnel[n]:AMPLitude:VOLTage`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._power = FgenChannelItemAmplitudePower(device, f"{self._cmd_syntax}:POWer")
         self._voltage = FgenChannelItemAmplitudeVoltage(device, f"{self._cmd_syntax}:VOLTage")
@@ -419,7 +419,7 @@ class FgenChannelItem(ValidatedChannel, SCPICmdRead):
         - ``.type``: The ``FGEN:CHANnel[n]:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._path = FgenChannelItemPath(device, f"{self._cmd_syntax}:PATH")
         self._amplitude = FgenChannelItemAmplitude(device, f"{self._cmd_syntax}:AMPLitude")
@@ -714,7 +714,7 @@ class Fgen(SCPICmdRead):
         - ``.channel``: The ``FGEN:CHANnel[n]`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "FGEN") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "FGEN") -> None:
         super().__init__(device, cmd_syntax)
         self._channel: Dict[int, FgenChannelItem] = DefaultDictPassKeyToFactory(
             lambda x: FgenChannelItem(device, f"{self._cmd_syntax}:CHANnel{x}")

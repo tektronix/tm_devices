@@ -33,7 +33,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, ValidatedDynamicNumberCmd
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class RefItemVerticalScale(SCPICmdWrite, SCPICmdRead):
@@ -106,7 +106,7 @@ class RefItemVertical(SCPICmdRead):
         - ``.scale``: The ``REF<x>:VERTical:SCAle`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = RefItemVerticalPosition(device, f"{self._cmd_syntax}:POSition")
         self._scale = RefItemVerticalScale(device, f"{self._cmd_syntax}:SCAle")
@@ -313,7 +313,7 @@ class RefItemLabel(SCPICmdRead):
         - ``.ypos``: The ``REF<x>:LABel:YPOS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._name = RefItemLabelName(device, f"{self._cmd_syntax}:NAMe")
         self._xpos = RefItemLabelXpos(device, f"{self._cmd_syntax}:XPOS")
@@ -455,7 +455,7 @@ class RefItemHorizontal(SCPICmdRead):
         - ``.position``: The ``REF<x>:HORizontal:POSition`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._position = RefItemHorizontalPosition(device, f"{self._cmd_syntax}:POSition")
 
@@ -506,7 +506,7 @@ class RefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.vertical``: The ``REF<x>:VERTical`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "REF<x>") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "REF<x>") -> None:
         super().__init__(device, cmd_syntax)
         self._horizontal = RefItemHorizontal(device, f"{self._cmd_syntax}:HORizontal")
         self._label = RefItemLabel(device, f"{self._cmd_syntax}:LABel")

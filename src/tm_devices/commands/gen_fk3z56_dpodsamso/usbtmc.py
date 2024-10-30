@@ -23,7 +23,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class UsbtmcVendoridHexadecimal(SCPICmdRead):
@@ -79,7 +79,7 @@ class UsbtmcVendorid(SCPICmdRead):
         - ``.hexadecimal``: The ``USBTMC:VENDORID:HEXadecimal`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._decimal = UsbtmcVendoridDecimal(device, f"{self._cmd_syntax}:DECimal")
         self._hexadecimal = UsbtmcVendoridHexadecimal(device, f"{self._cmd_syntax}:HEXadecimal")
@@ -201,7 +201,7 @@ class UsbtmcProductid(SCPICmdRead):
         - ``.hexadecimal``: The ``USBTMC:PRODUCTID:HEXadecimal`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._decimal = UsbtmcProductidDecimal(device, f"{self._cmd_syntax}:DECimal")
         self._hexadecimal = UsbtmcProductidHexadecimal(device, f"{self._cmd_syntax}:HEXadecimal")
@@ -265,7 +265,7 @@ class Usbtmc(SCPICmdRead):
         - ``.vendorid``: The ``USBTMC:VENDORID`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "USBTMC") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "USBTMC") -> None:
         super().__init__(device, cmd_syntax)
         self._productid = UsbtmcProductid(device, f"{self._cmd_syntax}:PRODUCTID")
         self._serialnumber = UsbtmcSerialnumber(device, f"{self._cmd_syntax}:SERIALnumber")

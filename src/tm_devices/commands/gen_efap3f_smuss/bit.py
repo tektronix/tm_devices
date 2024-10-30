@@ -30,7 +30,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Bit(BaseTSPCmd):
@@ -49,7 +49,7 @@ class Bit(BaseTSPCmd):
         - ``.toggle()``: The ``bit.toggle()`` function.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "bit") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "bit") -> None:
         super().__init__(device, cmd_syntax)
 
     def bitand(self, value1: str, value2: str) -> str:
@@ -78,7 +78,7 @@ class Bit(BaseTSPCmd):
                 f"print({self._cmd_syntax}.bitand({value1}, {value2}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.bitand()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.bitand()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def bitor(self, value1: str, value2: str) -> str:
@@ -107,7 +107,7 @@ class Bit(BaseTSPCmd):
                 f"print({self._cmd_syntax}.bitor({value1}, {value2}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.bitor()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.bitor()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def bitxor(self, value1: str, value2: str) -> str:
@@ -136,7 +136,7 @@ class Bit(BaseTSPCmd):
                 f"print({self._cmd_syntax}.bitxor({value1}, {value2}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.bitxor()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.bitxor()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def clear(self, value: str, index: int) -> str:
@@ -165,7 +165,7 @@ class Bit(BaseTSPCmd):
                 f"print({self._cmd_syntax}.clear({value}, {index}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.clear()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def get(self, value: str, index: int) -> str:
@@ -194,7 +194,7 @@ class Bit(BaseTSPCmd):
                 f"print({self._cmd_syntax}.get({value}, {index}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.get()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.get()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def getfield(self, value: str, index: int, width: int) -> str:
@@ -225,7 +225,7 @@ class Bit(BaseTSPCmd):
                 f"print({self._cmd_syntax}.getfield({value}, {index}, {width}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.getfield()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.getfield()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def set_(self, value: str, index: int) -> str:
@@ -254,7 +254,7 @@ class Bit(BaseTSPCmd):
                 f"print({self._cmd_syntax}.set({value}, {index}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.set()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.set()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def setfield(self, value: str, index: int, width: int, field_value: str) -> str:
@@ -285,7 +285,7 @@ class Bit(BaseTSPCmd):
                 f"print({self._cmd_syntax}.setfield({value}, {index}, {width}, {field_value}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.setfield()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.setfield()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def test(self, value: str, index: int) -> str:
@@ -315,7 +315,7 @@ class Bit(BaseTSPCmd):
                 f"print({self._cmd_syntax}.test({value}, {index}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.test()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.test()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def toggle(self, value: str, index: int) -> str:
@@ -344,5 +344,5 @@ class Bit(BaseTSPCmd):
                 f"print({self._cmd_syntax}.toggle({value}, {index}))"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.toggle()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.toggle()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

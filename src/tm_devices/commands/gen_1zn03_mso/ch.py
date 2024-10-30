@@ -67,7 +67,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, ValidatedChannel
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ChannelVtermBias(SCPICmdWrite, SCPICmdRead):
@@ -110,7 +110,7 @@ class ChannelVterm(SCPICmdRead):
         - ``.bias``: The ``CH<x>:VTERm:BIAS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bias = ChannelVtermBias(device, f"{self._cmd_syntax}:BIAS")
 
@@ -277,7 +277,7 @@ class ChannelProbefuncExtunits(SCPICmdWrite, SCPICmdRead):
 
     _WRAP_ARG_WITH_QUOTES = True
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = ChannelProbefuncExtunitsState(device, f"{self._cmd_syntax}:STATE")
 
@@ -387,7 +387,7 @@ class ChannelProbefunc(SCPICmdRead):
         - ``.extunits``: The ``CH<x>:PROBEFunc:EXTUnits`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._extatten = ChannelProbefuncExtatten(device, f"{self._cmd_syntax}:EXTAtten")
         self._extdbatten = ChannelProbefuncExtdbatten(device, f"{self._cmd_syntax}:EXTDBatten")
@@ -768,7 +768,7 @@ class ChannelLabelFont(SCPICmdRead):
         - ``.underline``: The ``CH<x>:LABel:FONT:UNDERline`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bold = ChannelLabelFontBold(device, f"{self._cmd_syntax}:BOLD")
         self._italic = ChannelLabelFontItalic(device, f"{self._cmd_syntax}:ITALic")
@@ -965,7 +965,7 @@ class ChannelLabel(SCPICmdRead):
         - ``.ypos``: The ``CH<x>:LABel:YPOS`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._color = ChannelLabelColor(device, f"{self._cmd_syntax}:COLor")
         self._font = ChannelLabelFont(device, f"{self._cmd_syntax}:FONT")
@@ -1294,7 +1294,7 @@ class Channel(ValidatedChannel, SCPICmdRead):
         - ``.vterm``: The ``CH<x>:VTERm`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CH<x>") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CH<x>") -> None:
         super().__init__(device, cmd_syntax)
         self._bandwidth = ChannelBandwidth(device, f"{self._cmd_syntax}:BANdwidth")
         self._clipping = ChannelClipping(device, f"{self._cmd_syntax}:CLIPping")

@@ -2,7 +2,7 @@
 
 This guide will walk through the steps needed to add a new device driver.
 
-`drivers\<interface_type>\<device_type>[\<device_series>]\<device_driver>.py`
+`drivers\<device_type>[\<device_series>]\<device_driver>.py`
 
 ## Steps to follow
 
@@ -12,7 +12,7 @@ This guide will walk through the steps needed to add a new device driver.
 2. Create the new device driver python file and class that inherits the
     appropriate device type/series base class
 
-    1. If the new device(s) are part of a series (also referred to as a family),
+    1. If the new device is part of a series (also referred to as a family),
         add a new series subpackage for them (e.g. `power_supplies/psu2200/`)
 
     2. Create the device driver python file, create a class that inherits from
@@ -33,8 +33,7 @@ This guide will walk through the steps needed to add a new device driver.
     `tm_devices/helpers/functions.py` to include a mapping of the new driver name (model series)
     to a regex string matching the appropriate model strings
 
-5. Update the [`DEVICE_DRIVER_MODEL_MAPPING`][tm_devices.drivers.DEVICE_DRIVER_MODEL_MAPPING] lookup inside
-    `tm_devices/drivers/device_driver_mapping.py`
+5. Update the `_DEVICE_DRIVER_MODEL_STR_MAPPING` lookup inside `tm_devices/drivers/_device_driver_mapping.py`
 
 6. Update the `__all__` variable inside `tm_devices/drivers/__init__.py` to
     include the new device driver
@@ -65,13 +64,13 @@ defines abstract functions that all device drivers must implement.
 
 !!! note
     The filename should be a snake-case version of the new class name. In this example
-    the filepath would be `tm_devices/drivers/pi/power_supplies/psu2200/new_psu.py`
+    the filepath would be `tm_devices/drivers/power_supplies/psu2200/new_psu.py`
 
 ```python
-### drivers/pi/power_supplies/new_series_psu/fancy_power_supply.py
+### drivers/power_supplies/new_series_psu/fancy_power_supply.py
 """Fancy PSU Base device driver for the new series/family of fancy power supplies."""
 from abc import ABC
-from tm_devices.drivers.pi.power_supplies.power_supply import PowerSupplyUnit
+from tm_devices.drivers.power_supplies.power_supply import PowerSupplyUnit
 from tm_devices.drivers.device import family_base_class
 
 
@@ -83,9 +82,9 @@ class BaseFancyPSU(PowerSupplyUnit, ABC):
 ```
 
 ```python
-### drivers/pi/power_supplies/new_series_psu/fancy_psu_123.py
+### drivers/ower_supplies/new_series_psu/fancy_psu_123.py
 """BaseFancyPSU device driver."""
-from tm_devices.drivers.pi.power_supplies.new_series_psu.fancy_power_supply import (
+from tm_devices.drivers.power_supplies.new_series_psu.fancy_power_supply import (
     BaseFancyPSU,
 )
 
@@ -107,12 +106,12 @@ series:
 
 !!! note
     The filename should be a snake-case version of the new class name. In this example
-    the filepath would be `tm_devices/drivers/pi/power_supplies/psu2200/new_psu.py`
+    the filepath would be `tm_devices/drivers/power_supplies/psu2200/new_psu.py`
 
 ```python
 """NewPSU device driver."""
 
-from tm_devices.drivers.pi.power_supplies.psu2200.psu2200 import PSU2200
+from tm_devices.drivers.power_supplies.psu22xx.psu2200 import PSU2200
 
 
 class NewPSU(PSU2200):

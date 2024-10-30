@@ -5,9 +5,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
-from tm_devices.drivers.pi.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_5xwdsk_dpodsamso.errordetector import Errordetector
 from .gen_5y90wx_dpodsamso.dpojet import Dpojet
@@ -901,7 +902,7 @@ class MSO70KDXCommands:
     """
 
     # pylint: disable=too-many-statements
-    def __init__(self, device: Optional[PIDevice] = None) -> None:  # noqa: PLR0915
+    def __init__(self, device: Optional[PIControl] = None) -> None:  # noqa: PLR0915
         self._acquire = Acquire(device)
         self._alias = Alias(device)
         self._allev = Allev(device)
@@ -3854,22 +3855,16 @@ class MSO70KDXMixin:
         - ``.commands``: The MSO70KDX commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIDevice) else None
-        self._command_argument_constants = MSO70KDXCommandConstants()
-        self._commands = MSO70KDXCommands(device)
-
-    @property
-    def command_argument_constants(self) -> MSO70KDXCommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> MSO70KDXCommandConstants:  # pylint: disable=no-self-use
         """Return the MSO70KDX command argument constants.
 
         This provides access to all the string constants which can be used as arguments for MSO70KDX
         commands.
         """
-        return self._command_argument_constants
+        return MSO70KDXCommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> MSO70KDXCommands:
         """Return the MSO70KDX commands.
 
@@ -3986,4 +3981,5 @@ class MSO70KDXMixin:
             - ``.wfmpre``: The ``WFMPre`` command tree.
             - ``.zoom``: The ``ZOOm`` command.
         """
-        return self._commands
+        device = self if isinstance(self, PIControl) else None
+        return MSO70KDXCommands(device)

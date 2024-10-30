@@ -60,11 +60,6 @@ repos:
     rev: 8072181c0f2eab9f2dd8db2eb3b9556d7cd0bd74  # frozen: 1.17.0
     hooks:
       - id: yamlfix
-# TODO: get this working
-#  - repo: https://github.com/motet-a/jinjalint
-#    rev: "0.5"
-#    hooks:
-#      - id: jinjalint
   - repo: https://github.com/thibaudcolas/curlylint
     rev: 71adf4d34c290684fd9f94a4d21ac55bcfe640f0  # frozen: v0.13.1
     hooks:

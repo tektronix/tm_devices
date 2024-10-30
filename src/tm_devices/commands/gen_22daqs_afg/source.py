@@ -19,7 +19,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class SourceRoscillatorSource(SCPICmdWrite, SCPICmdRead):
@@ -55,7 +55,7 @@ class SourceRoscillator(SCPICmdRead):
         - ``.source``: The ``SOURce:ROSCillator:SOURce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._source = SourceRoscillatorSource(device, f"{self._cmd_syntax}:SOURce")
 
@@ -94,7 +94,7 @@ class Source(SCPICmdRead):
         - ``.roscillator``: The ``SOURce:ROSCillator`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "SOURce") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "SOURce") -> None:
         super().__init__(device, cmd_syntax)
         self._roscillator = SourceRoscillator(device, f"{self._cmd_syntax}:ROSCillator")
 

@@ -34,7 +34,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class AuxinProbeUnits(SCPICmdRead):
@@ -148,7 +148,7 @@ class AuxinProbeId(SCPICmdRead):
         - ``.type``: The ``AUXin:PRObe:ID:TYPE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._sernumber = AuxinProbeIdSernumber(device, f"{self._cmd_syntax}:SERnumber")
         self._type = AuxinProbeIdType(device, f"{self._cmd_syntax}:TYPE")
@@ -283,7 +283,7 @@ class AuxinProbeDegauss(SCPICmdWrite, SCPICmdRead):
         - ``.state``: The ``AUXin:PRObe:DEGAUss:STATE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._state = AuxinProbeDegaussState(device, f"{self._cmd_syntax}:STATE")
 
@@ -382,7 +382,7 @@ class AuxinProbe(SCPICmdWriteNoArguments, SCPICmdRead):
         - ``.units``: The ``AUXin:PRObe:UNIts`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._autozero = AuxinProbeAutozero(device, f"{self._cmd_syntax}:AUTOZero")
         self._command = AuxinProbeCommand(device, f"{self._cmd_syntax}:COMMAND")
@@ -621,7 +621,7 @@ class Auxin(SCPICmdRead):
         - ``.probe``: The ``AUXin:PRObe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "AUXin") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "AUXin") -> None:
         super().__init__(device, cmd_syntax)
         self._probe = AuxinProbe(device, f"{self._cmd_syntax}:PRObe")
 

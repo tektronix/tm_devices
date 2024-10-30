@@ -34,7 +34,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class FilesystemWritefile(SCPICmdWrite):
@@ -91,7 +91,7 @@ class FilesystemUnmount(SCPICmdRead):
         - ``.drive``: The ``FILESystem:UNMOUNT:DRIve`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._drive = FilesystemUnmountDrive(device, f"{self._cmd_syntax}:DRIve")
 
@@ -265,7 +265,7 @@ class FilesystemMount(SCPICmdRead):
         - ``.list``: The ``FILESystem:MOUNT:LIST`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._available = FilesystemMountAvailable(device, f"{self._cmd_syntax}:AVAILable")
         self._drive = FilesystemMountDrive(device, f"{self._cmd_syntax}:DRIve")
@@ -555,7 +555,9 @@ class Filesystem(SCPICmdRead):
         - ``.writefile``: The ``FILESystem:WRITEFile`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "FILESystem") -> None:
+    def __init__(
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "FILESystem"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._copy = FilesystemCopy(device, f"{self._cmd_syntax}:COPy")
         self._cwd = FilesystemCwd(device, f"{self._cmd_syntax}:CWD")

@@ -21,7 +21,7 @@ from typing import Dict, Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, DefaultDictDeviceCommunication, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Buffervar(BaseTSPCmd):
@@ -36,7 +36,9 @@ class Buffervar(BaseTSPCmd):
         - ``.statuses``: The ``bufferVar.statuses[N]`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "bufferVar") -> None:
+    def __init__(
+        self, device: Optional["TSPControl"] = None, cmd_syntax: str = "bufferVar"
+    ) -> None:
         super().__init__(device, cmd_syntax)
         self._statuses: Dict[int, Union[str, float]] = DefaultDictDeviceCommunication(
             cmd_syntax=f"{self._cmd_syntax}.statuses[{{key}}]",
@@ -73,7 +75,7 @@ class Buffervar(BaseTSPCmd):
                 f"print({self._cmd_syntax}.capacity)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.capacity`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.capacity`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property

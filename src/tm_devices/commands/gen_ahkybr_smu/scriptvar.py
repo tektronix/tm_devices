@@ -26,7 +26,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class Scriptvar(BaseTSPCmd):
@@ -44,7 +44,9 @@ class Scriptvar(BaseTSPCmd):
         - ``.source``: The ``scriptVar.source`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "scriptVar") -> None:
+    def __init__(
+        self, device: Optional["TSPControl"] = None, cmd_syntax: str = "scriptVar"
+    ) -> None:
         super().__init__(device, cmd_syntax)
 
     @property
@@ -77,7 +79,7 @@ class Scriptvar(BaseTSPCmd):
                 f"print({self._cmd_syntax}.autorun)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorun`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorun`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @autorun.setter
@@ -113,7 +115,7 @@ class Scriptvar(BaseTSPCmd):
                     f"{self._cmd_syntax}.autorun = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.autorun`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.autorun`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -146,7 +148,7 @@ class Scriptvar(BaseTSPCmd):
                 f"print({self._cmd_syntax}.name)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.name`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.name`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @name.setter
@@ -182,7 +184,7 @@ class Scriptvar(BaseTSPCmd):
                     f"{self._cmd_syntax}.name = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.name`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.name`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -216,7 +218,7 @@ class Scriptvar(BaseTSPCmd):
                 f"print({self._cmd_syntax}.source)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.source`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.source`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @source.setter
@@ -253,7 +255,7 @@ class Scriptvar(BaseTSPCmd):
                     f"{self._cmd_syntax}.source = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.source`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.source`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def list(self) -> None:
@@ -278,7 +280,7 @@ class Scriptvar(BaseTSPCmd):
                 f"{self._cmd_syntax}.list()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.list()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.list()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def run(self) -> None:
@@ -303,7 +305,7 @@ class Scriptvar(BaseTSPCmd):
                 f"{self._cmd_syntax}.run()"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.run()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.run()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def save(self, filename: Optional[str] = None) -> None:
@@ -334,5 +336,5 @@ class Scriptvar(BaseTSPCmd):
                 f"{self._cmd_syntax}.save({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.save()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.save()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

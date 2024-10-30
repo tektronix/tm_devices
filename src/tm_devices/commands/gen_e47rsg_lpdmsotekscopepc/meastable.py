@@ -19,7 +19,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class MeastableDelete(SCPICmdWrite):
@@ -79,7 +79,7 @@ class Meastable(SCPICmdRead):
         - ``.delete``: The ``MEASTABle:DELETE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "MEASTABle") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MEASTABle") -> None:
         super().__init__(device, cmd_syntax)
         self._addnew = MeastableAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._delete = MeastableDelete(device, f"{self._cmd_syntax}:DELETE")

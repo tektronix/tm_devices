@@ -188,7 +188,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class BusList(SCPICmdRead):
@@ -364,7 +364,7 @@ class BusBItemSpiSelect(SCPICmdRead):
         - ``.threshold``: The ``BUS:B<x>:SPI:SELect:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._polarity = BusBItemSpiSelectPolarity(device, f"{self._cmd_syntax}:POLarity")
         self._source = BusBItemSpiSelectSource(device, f"{self._cmd_syntax}:SOUrce")
@@ -501,7 +501,7 @@ class BusBItemSpiNumber(SCPICmdRead):
         - ``.inputs``: The ``BUS:B<x>:SPI:NUMBer:INputs`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._inputs = BusBItemSpiNumberInputs(device, f"{self._cmd_syntax}:INputs")
 
@@ -632,7 +632,7 @@ class BusBItemSpiMosiData(SCPICmdRead):
         - ``.polarity``: The ``BUS:B<x>:SPI:MOSi:DATa:POLarity`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._polarity = BusBItemSpiMosiDataPolarity(device, f"{self._cmd_syntax}:POLarity")
 
@@ -683,7 +683,7 @@ class BusBItemSpiMosi(SCPICmdRead):
         - ``.threshold``: The ``BUS:B<x>:SPI:MOSi:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._data = BusBItemSpiMosiData(device, f"{self._cmd_syntax}:DATa")
         self._input = BusBItemSpiMosiInput(device, f"{self._cmd_syntax}:INPut")
@@ -864,7 +864,7 @@ class BusBItemSpiMisoData(SCPICmdRead):
         - ``.polarity``: The ``BUS:B<x>:SPI:MISo:DATa:POLarity`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._polarity = BusBItemSpiMisoDataPolarity(device, f"{self._cmd_syntax}:POLarity")
 
@@ -915,7 +915,7 @@ class BusBItemSpiMiso(SCPICmdRead):
         - ``.threshold``: The ``BUS:B<x>:SPI:MISo:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._data = BusBItemSpiMisoData(device, f"{self._cmd_syntax}:DATa")
         self._input = BusBItemSpiMisoInput(device, f"{self._cmd_syntax}:INPut")
@@ -1177,7 +1177,7 @@ class BusBItemSpiData(SCPICmdRead):
         - ``.threshold``: The ``BUS:B<x>:SPI:DATa:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._polarity = BusBItemSpiDataPolarity(device, f"{self._cmd_syntax}:POLarity")
         self._size = BusBItemSpiDataSize(device, f"{self._cmd_syntax}:SIZe")
@@ -1403,7 +1403,7 @@ class BusBItemSpiClock(SCPICmdRead):
         - ``.threshold``: The ``BUS:B<x>:SPI:CLOCk:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._polarity = BusBItemSpiClockPolarity(device, f"{self._cmd_syntax}:POLarity")
         self._source = BusBItemSpiClockSource(device, f"{self._cmd_syntax}:SOUrce")
@@ -1551,7 +1551,7 @@ class BusBItemSpi(SCPICmdRead):
         - ``.select``: The ``BUS:B<x>:SPI:SELect`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bitorder = BusBItemSpiBitorder(device, f"{self._cmd_syntax}:BITOrder")
         self._clock = BusBItemSpiClock(device, f"{self._cmd_syntax}:CLOCk")
@@ -2052,7 +2052,7 @@ class BusBItemSent(SCPICmdRead):
         - ``.ticktolerance``: The ``BUS:B<x>:SENT:TICKTOLerance`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._chanwidth = BusBItemSentChanwidth(device, f"{self._cmd_syntax}:CHANWidth")
         self._nibblecount = BusBItemSentNibblecount(device, f"{self._cmd_syntax}:NIBBLECount")
@@ -2405,7 +2405,7 @@ class BusBItemRs232cSource(SCPICmdWrite, SCPICmdRead):
         - ``.threshold``: The ``BUS:B<x>:RS232C:SOUrce:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._threshold = BusBItemRs232cSourceThreshold(device, f"{self._cmd_syntax}:THReshold")
 
@@ -2631,7 +2631,7 @@ class BusBItemRs232cBitrate(SCPICmdWrite, SCPICmdRead):
         - ``.custom``: The ``BUS:B<x>:RS232C:BITRate:CUSTom`` command.
     """  # noqa: E501
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._custom = BusBItemRs232cBitrateCustom(device, f"{self._cmd_syntax}:CUSTom")
 
@@ -2684,7 +2684,7 @@ class BusBItemRs232c(SCPICmdRead):
         - ``.source``: The ``BUS:B<x>:RS232C:SOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bitrate = BusBItemRs232cBitrate(device, f"{self._cmd_syntax}:BITRate")
         self._databits = BusBItemRs232cDatabits(device, f"{self._cmd_syntax}:DATABits")
@@ -2969,7 +2969,7 @@ class BusBItemParallelClocksource(SCPICmdWrite, SCPICmdRead):
         - ``.threshold``: The ``BUS:B<x>:PARallel:CLOCkSOUrce:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._threshold = BusBItemParallelClocksourceThreshold(
             device, f"{self._cmd_syntax}:THReshold"
@@ -3076,7 +3076,7 @@ class BusBItemParallelClock(SCPICmdRead):
         - ``.isclocked``: The ``BUS:B<x>:PARallel:CLOCk:ISCLOCKED`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._edge = BusBItemParallelClockEdge(device, f"{self._cmd_syntax}:EDGE")
         self._isclocked = BusBItemParallelClockIsclocked(device, f"{self._cmd_syntax}:ISCLOCKED")
@@ -3208,7 +3208,7 @@ class BusBItemParallelBitsourceItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCP
         - ``.threshold``: The ``BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._threshold = BusBItemParallelBitsourceItemThreshold(
             device, f"{self._cmd_syntax}:THReshold"
@@ -3296,7 +3296,7 @@ class BusBItemParallelAllthresholds(SCPICmdWrite, SCPICmdRead):
         - ``.apply``: The ``BUS:B<x>:PARallel:ALLTHResholds:APPly`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._apply = BusBItemParallelAllthresholdsApply(device, f"{self._cmd_syntax}:APPly")
 
@@ -3341,7 +3341,7 @@ class BusBItemParallel(SCPICmdRead):
         - ``.clocksource``: The ``BUS:B<x>:PARallel:CLOCkSOUrce`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._allthresholds = BusBItemParallelAllthresholds(
             device, f"{self._cmd_syntax}:ALLTHResholds"
@@ -3565,7 +3565,7 @@ class BusBItemLinSource(SCPICmdWrite, SCPICmdRead):
         - ``.threshold``: The ``BUS:B<x>:LIN:SOUrce:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._threshold = BusBItemLinSourceThreshold(device, f"{self._cmd_syntax}:THReshold")
 
@@ -3725,7 +3725,7 @@ class BusBItemLinBitrate(SCPICmdWrite, SCPICmdRead):
         - ``.custom``: The ``BUS:B<x>:LIN:BITRate:CUSTom`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._custom = BusBItemLinBitrateCustom(device, f"{self._cmd_syntax}:CUSTom")
 
@@ -3777,7 +3777,7 @@ class BusBItemLin(SCPICmdRead):
         - ``.standard``: The ``BUS:B<x>:LIN:STANDard`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bitrate = BusBItemLinBitrate(device, f"{self._cmd_syntax}:BITRate")
         self._idformat = BusBItemLinIdformat(device, f"{self._cmd_syntax}:IDFORmat")
@@ -4202,7 +4202,7 @@ class BusBItemLabelFont(SCPICmdRead):
         - ``.underline``: The ``BUS:B<x>:LABel:FONT:UNDERline`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bold = BusBItemLabelFontBold(device, f"{self._cmd_syntax}:BOLD")
         self._italic = BusBItemLabelFontItalic(device, f"{self._cmd_syntax}:ITALic")
@@ -4404,7 +4404,7 @@ class BusBItemLabel(SCPICmdRead):
         - ``.name``: The ``BUS:B<x>:LABel:name`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._color = BusBItemLabelColor(device, f"{self._cmd_syntax}:COLor")
         self._font = BusBItemLabelFont(device, f"{self._cmd_syntax}:FONT")
@@ -4650,7 +4650,7 @@ class BusBItemI2cData(SCPICmdRead):
         - ``.threshold``: The ``BUS:B<x>:I2C:DATa:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._source = BusBItemI2cDataSource(device, f"{self._cmd_syntax}:SOUrce")
         self._threshold = BusBItemI2cDataThreshold(device, f"{self._cmd_syntax}:THReshold")
@@ -4790,7 +4790,7 @@ class BusBItemI2cClock(SCPICmdRead):
         - ``.threshold``: The ``BUS:B<x>:I2C:CLOCk:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._source = BusBItemI2cClockSource(device, f"{self._cmd_syntax}:SOUrce")
         self._threshold = BusBItemI2cClockThreshold(device, f"{self._cmd_syntax}:THReshold")
@@ -4873,7 +4873,7 @@ class BusBItemI2c(SCPICmdRead):
         - ``.rwinaddr``: The ``BUS:B<x>:I2C:RWINADDR`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._clock = BusBItemI2cClock(device, f"{self._cmd_syntax}:CLOCk")
         self._data = BusBItemI2cData(device, f"{self._cmd_syntax}:DATa")
@@ -5025,7 +5025,7 @@ class BusBItemDisplay(SCPICmdRead):
         - ``.layout``: The ``BUS:B<x>:DISplay:LAYout`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._format = BusBItemDisplayFormat(device, f"{self._cmd_syntax}:FORMat")
         self._layout = BusBItemDisplayLayout(device, f"{self._cmd_syntax}:LAYout")
@@ -5280,7 +5280,7 @@ class BusBItemCanFdBitrate(SCPICmdWrite, SCPICmdRead):
         - ``.custom``: The ``BUS:B<x>:CAN:FD:BITRate:CUSTom`` command.
     """  # noqa: E501
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._custom = BusBItemCanFdBitrateCustom(device, f"{self._cmd_syntax}:CUSTom")
 
@@ -5327,7 +5327,7 @@ class BusBItemCanFd(SCPICmdRead):
         - ``.bitrate``: The ``BUS:B<x>:CAN:FD:BITRate`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bitrate = BusBItemCanFdBitrate(device, f"{self._cmd_syntax}:BITRate")
 
@@ -5414,7 +5414,7 @@ class BusBItemCanBitrate(SCPICmdWrite, SCPICmdRead):
         - ``.value``: The ``BUS:B<x>:CAN:BITRate:VALue`` command.
     """  # noqa: E501
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._value = BusBItemCanBitrateValue(device, f"{self._cmd_syntax}:VALue")
 
@@ -5467,7 +5467,7 @@ class BusBItemCan(SCPICmdRead):
         - ``.threshold``: The ``BUS:B<x>:CAN:THReshold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._bitrate = BusBItemCanBitrate(device, f"{self._cmd_syntax}:BITRate")
         self._fd = BusBItemCanFd(device, f"{self._cmd_syntax}:FD")
@@ -5690,7 +5690,7 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.type``: The ``BUS:B<x>:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._can = BusBItemCan(device, f"{self._cmd_syntax}:CAN")
         self._display = BusBItemDisplay(device, f"{self._cmd_syntax}:DISplay")
@@ -5972,7 +5972,7 @@ class Bus(SCPICmdRead):
         - ``.list``: The ``BUS:LIST`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "BUS") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "BUS") -> None:
         super().__init__(device, cmd_syntax)
         self._addnew = BusAddnew(device, f"{self._cmd_syntax}:ADDNew")
         self._b: Dict[int, BusBItem] = DefaultDictPassKeyToFactory(

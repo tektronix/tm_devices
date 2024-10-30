@@ -5,9 +5,10 @@ THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 Please report an issue if one is found.
 """
 
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
-from tm_devices.drivers.pi.pi_device import PIDevice
+from tm_devices.driver_mixins.device_control.pi_control import PIControl
+from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 from .gen_5vmwut_dpodsamso.trigger import Trigger
 from .gen_5xwdsk_dpodsamso.errordetector import Errordetector
@@ -899,7 +900,7 @@ class DPO70KDXCommands:
     """
 
     # pylint: disable=too-many-statements
-    def __init__(self, device: Optional[PIDevice] = None) -> None:  # noqa: PLR0915
+    def __init__(self, device: Optional[PIControl] = None) -> None:  # noqa: PLR0915
         self._acquire = Acquire(device)
         self._alias = Alias(device)
         self._allev = Allev(device)
@@ -3852,22 +3853,16 @@ class DPO70KDXMixin:
         - ``.commands``: The DPO70KDX commands.
     """
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
-        device = self if isinstance(self, PIDevice) else None
-        self._command_argument_constants = DPO70KDXCommandConstants()
-        self._commands = DPO70KDXCommands(device)
-
-    @property
-    def command_argument_constants(self) -> DPO70KDXCommandConstants:
+    @cached_property
+    def command_argument_constants(self) -> DPO70KDXCommandConstants:  # pylint: disable=no-self-use
         """Return the DPO70KDX command argument constants.
 
         This provides access to all the string constants which can be used as arguments for DPO70KDX
         commands.
         """
-        return self._command_argument_constants
+        return DPO70KDXCommandConstants()
 
-    @property
+    @cached_property
     def commands(self) -> DPO70KDXCommands:
         """Return the DPO70KDX commands.
 
@@ -3984,4 +3979,5 @@ class DPO70KDXMixin:
             - ``.wfmpre``: The ``WFMPre`` command tree.
             - ``.zoom``: The ``ZOOm`` command.
         """
-        return self._commands
+        device = self if isinstance(self, PIControl) else None
+        return DPO70KDXCommands(device)

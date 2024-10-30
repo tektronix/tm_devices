@@ -21,7 +21,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ErrlogNumentries(SCPICmdRead):
@@ -101,7 +101,7 @@ class Errlog(SCPICmdWrite, SCPICmdRead):
         - ``.numentries``: The ``ERRlog:NUMENTries`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "ERRlog") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "ERRlog") -> None:
         super().__init__(device, cmd_syntax)
         self._first = ErrlogFirst(device, f"{self._cmd_syntax}:FIRst")
         self._next = ErrlogNext(device, f"{self._cmd_syntax}:NEXt")

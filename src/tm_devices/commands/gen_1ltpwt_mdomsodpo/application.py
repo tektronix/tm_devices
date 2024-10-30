@@ -27,7 +27,7 @@ from ..helpers import (
 )
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class ApplicationType(SCPICmdWrite, SCPICmdRead):
@@ -141,7 +141,7 @@ class ApplicationLicenseSlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.type``: The ``APPLication:LICENSE:SLOT<x>:TYPe`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._location = ApplicationLicenseSlotItemLocation(device, f"{self._cmd_syntax}:LOCation")
         self._transfer = ApplicationLicenseSlotItemTransfer(device, f"{self._cmd_syntax}:TRANSFER")
@@ -233,7 +233,7 @@ class ApplicationLicense(SCPICmdRead):
         - ``.slot``: The ``APPLication:LICENSE:SLOT<x>`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._slot: Dict[int, ApplicationLicenseSlotItem] = DefaultDictPassKeyToFactory(
             lambda x: ApplicationLicenseSlotItem(device, f"{self._cmd_syntax}:SLOT{x}")
@@ -270,7 +270,7 @@ class Application(SCPICmdRead):
     """
 
     def __init__(
-        self, device: Optional["PIDevice"] = None, cmd_syntax: str = "APPLication"
+        self, device: Optional["PIControl"] = None, cmd_syntax: str = "APPLication"
     ) -> None:
         super().__init__(device, cmd_syntax)
         self._license = ApplicationLicense(device, f"{self._cmd_syntax}:LICENSE")

@@ -20,7 +20,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite, ValidatedDynamicNumberCmd
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class CqItemThreshold(SCPICmdWrite, SCPICmdRead):
@@ -59,7 +59,7 @@ class CqItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.threshold``: The ``CQ<x>:THRESHold`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "CQ<x>") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CQ<x>") -> None:
         super().__init__(device, cmd_syntax)
         self._threshold = CqItemThreshold(device, f"{self._cmd_syntax}:THRESHold")
 

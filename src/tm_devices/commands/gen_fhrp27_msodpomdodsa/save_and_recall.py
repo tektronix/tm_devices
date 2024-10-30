@@ -21,7 +21,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class Sav(SCPICmdWrite):
@@ -45,7 +45,7 @@ class Sav(SCPICmdWrite):
           error. Any settings that have been stored previously at this location will be overwritten.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*SAV") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*SAV") -> None:
         super().__init__(device, cmd_syntax)
 
 
@@ -69,5 +69,5 @@ class Rcl(SCPICmdWrite):
           location.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "*RCL") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*RCL") -> None:
         super().__init__(device, cmd_syntax)

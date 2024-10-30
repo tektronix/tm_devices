@@ -40,7 +40,7 @@ from typing import Optional, TYPE_CHECKING, Union
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.tsp_device import TSPDevice
+    from tm_devices.driver_mixins.device_control.tsp_control import TSPControl
 
 
 class ScanStart(BaseTSPCmd):
@@ -78,7 +78,7 @@ class ScanStart(BaseTSPCmd):
                 f"print({self._cmd_syntax}.stimulus)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
@@ -112,7 +112,7 @@ class ScanStart(BaseTSPCmd):
                     f"{self._cmd_syntax}.stimulus = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -151,7 +151,7 @@ class ScanMonitorLimitLow(BaseTSPCmd):
                 f"print({self._cmd_syntax}.value)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @value.setter
@@ -185,7 +185,7 @@ class ScanMonitorLimitLow(BaseTSPCmd):
                     f"{self._cmd_syntax}.value = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -224,7 +224,7 @@ class ScanMonitorLimitHigh(BaseTSPCmd):
                 f"print({self._cmd_syntax}.value)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @value.setter
@@ -258,7 +258,7 @@ class ScanMonitorLimitHigh(BaseTSPCmd):
                     f"{self._cmd_syntax}.value = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -270,7 +270,7 @@ class ScanMonitorLimit(BaseTSPCmd):
         - ``.low``: The ``scan.monitor.limit.low`` command tree.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._high = ScanMonitorLimitHigh(device, f"{self._cmd_syntax}.high")
         self._low = ScanMonitorLimitLow(device, f"{self._cmd_syntax}.low")
@@ -303,7 +303,7 @@ class ScanMonitor(BaseTSPCmd):
         - ``.mode``: The ``scan.monitor.mode`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._limit = ScanMonitorLimit(device, f"{self._cmd_syntax}.limit")
 
@@ -336,7 +336,7 @@ class ScanMonitor(BaseTSPCmd):
                 f"print({self._cmd_syntax}.channel)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.channel`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.channel`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @channel.setter
@@ -371,7 +371,7 @@ class ScanMonitor(BaseTSPCmd):
                     f"{self._cmd_syntax}.channel = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.channel`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.channel`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -412,7 +412,7 @@ class ScanMonitor(BaseTSPCmd):
                 f"print({self._cmd_syntax}.mode)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
@@ -446,7 +446,7 @@ class ScanMonitor(BaseTSPCmd):
                     f"{self._cmd_syntax}.mode = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -486,7 +486,7 @@ class ScanMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.interval)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.interval`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.interval`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @interval.setter
@@ -520,7 +520,7 @@ class ScanMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.interval = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.interval`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.interval`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -551,7 +551,7 @@ class ScanMeasure(BaseTSPCmd):
                 f"print({self._cmd_syntax}.stimulus)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
@@ -585,7 +585,7 @@ class ScanMeasure(BaseTSPCmd):
                     f"{self._cmd_syntax}.stimulus = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -624,7 +624,7 @@ class ScanChannel(BaseTSPCmd):
                 f"print({self._cmd_syntax}.stimulus)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @stimulus.setter
@@ -658,7 +658,7 @@ class ScanChannel(BaseTSPCmd):
                     f"{self._cmd_syntax}.stimulus = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stimulus`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
 
@@ -685,7 +685,7 @@ class Scan(BaseTSPCmd):
         - ``.stepcount``: The ``scan.stepcount`` attribute.
     """
 
-    def __init__(self, device: Optional["TSPDevice"] = None, cmd_syntax: str = "scan") -> None:
+    def __init__(self, device: Optional["TSPControl"] = None, cmd_syntax: str = "scan") -> None:
         super().__init__(device, cmd_syntax)
         self._channel = ScanChannel(device, f"{self._cmd_syntax}.channel")
         self._measure = ScanMeasure(device, f"{self._cmd_syntax}.measure")
@@ -719,7 +719,7 @@ class Scan(BaseTSPCmd):
                 f"print({self._cmd_syntax}.buffer)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.buffer`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.buffer`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @buffer.setter
@@ -752,7 +752,7 @@ class Scan(BaseTSPCmd):
                     f"{self._cmd_syntax}.buffer = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.buffer`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.buffer`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -783,7 +783,7 @@ class Scan(BaseTSPCmd):
                 f"print({self._cmd_syntax}.bypass)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.bypass`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.bypass`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @bypass.setter
@@ -817,7 +817,7 @@ class Scan(BaseTSPCmd):
                     f"{self._cmd_syntax}.bypass = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.bypass`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.bypass`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -866,7 +866,7 @@ class Scan(BaseTSPCmd):
                 f"print({self._cmd_syntax}.mode)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @mode.setter
@@ -899,7 +899,7 @@ class Scan(BaseTSPCmd):
                     f"{self._cmd_syntax}.mode = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.mode`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -941,7 +941,7 @@ class Scan(BaseTSPCmd):
                 f"print({self._cmd_syntax}.restart)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.restart`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.restart`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @restart.setter
@@ -975,7 +975,7 @@ class Scan(BaseTSPCmd):
                     f"{self._cmd_syntax}.restart = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.restart`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.restart`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1005,7 +1005,7 @@ class Scan(BaseTSPCmd):
                 f"print({self._cmd_syntax}.scancount)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.scancount`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.scancount`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @scancount.setter
@@ -1038,7 +1038,7 @@ class Scan(BaseTSPCmd):
                     f"{self._cmd_syntax}.scancount = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.scancount`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.scancount`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1069,7 +1069,7 @@ class Scan(BaseTSPCmd):
                 f"print({self._cmd_syntax}.scaninterval)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.scaninterval`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.scaninterval`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @scaninterval.setter
@@ -1103,7 +1103,7 @@ class Scan(BaseTSPCmd):
                     f"{self._cmd_syntax}.scaninterval = {value}"
                 )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.scaninterval`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.scaninterval`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     @property
@@ -1140,7 +1140,7 @@ class Scan(BaseTSPCmd):
                 f"print({self._cmd_syntax}.stepcount)"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to access the ``{self._cmd_syntax}.stepcount`` attribute."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.stepcount`` attribute."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def add(
@@ -1180,7 +1180,7 @@ class Scan(BaseTSPCmd):
                 f"{self._cmd_syntax}.add({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.add()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.add()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def addsinglestep(
@@ -1220,7 +1220,7 @@ class Scan(BaseTSPCmd):
                 f"{self._cmd_syntax}.addsinglestep({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.addsinglestep()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.addsinglestep()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def create(
@@ -1263,7 +1263,7 @@ class Scan(BaseTSPCmd):
                 f"{self._cmd_syntax}.create({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.create()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.create()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def export(self, filename: str, when: str, what: Optional[str] = None) -> None:
@@ -1299,7 +1299,7 @@ class Scan(BaseTSPCmd):
                 f"{self._cmd_syntax}.export({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.export()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.export()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def learnlimits(self, window: str, iterations: Optional[str] = None) -> None:
@@ -1334,7 +1334,7 @@ class Scan(BaseTSPCmd):
                 f"{self._cmd_syntax}.learnlimits({function_args})"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.learnlimits()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.learnlimits()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error
 
     def list(self) -> str:
@@ -1359,5 +1359,5 @@ class Scan(BaseTSPCmd):
                 f"print({self._cmd_syntax}.list())"
             )
         except AttributeError as error:
-            msg = f"No TSPDevice object was provided, unable to run the ``{self._cmd_syntax}.list()`` function."  # noqa: E501
+            msg = f"No TSPControl object was provided, unable to run the ``{self._cmd_syntax}.list()`` function."  # noqa: E501
             raise NoDeviceProvidedError(msg) from error

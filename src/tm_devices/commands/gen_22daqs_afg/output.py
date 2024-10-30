@@ -19,7 +19,7 @@ from typing import Optional, TYPE_CHECKING
 from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
-    from tm_devices.drivers.pi.pi_device import PIDevice
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
 class OutputTriggerMode(SCPICmdWrite, SCPICmdRead):
@@ -59,7 +59,7 @@ class OutputTrigger(SCPICmdRead):
         - ``.mode``: The ``OUTPut:TRIGger:MODE`` command.
     """
 
-    def __init__(self, device: Optional["PIDevice"], cmd_syntax: str) -> None:
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._mode = OutputTriggerMode(device, f"{self._cmd_syntax}:MODE")
 
@@ -104,7 +104,7 @@ class Output(SCPICmdRead):
         - ``.trigger``: The ``OUTPut:TRIGger`` command tree.
     """
 
-    def __init__(self, device: Optional["PIDevice"] = None, cmd_syntax: str = "OUTPut") -> None:
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "OUTPut") -> None:
         super().__init__(device, cmd_syntax)
         self._trigger = OutputTrigger(device, f"{self._cmd_syntax}:TRIGger")
 
