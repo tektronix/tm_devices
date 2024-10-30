@@ -709,7 +709,7 @@ class TekScope(SignalGeneratorMixin, AbstractTekScope, ABC):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def generate_function(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
+    def generate_function(  # noqa: PLR0913
         self,
         frequency: float,
         function: SignalGeneratorFunctionsIAFG,
@@ -754,7 +754,7 @@ class TekScope(SignalGeneratorMixin, AbstractTekScope, ABC):
         self.internal_afg.set_state(1)
         # Don't check for errors as any measurement with low amplitude will generate an error
 
-    def setup_burst(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
+    def setup_burst(  # noqa: PLR0913
         self,
         frequency: float,
         function: SignalGeneratorFunctionsIAFG,

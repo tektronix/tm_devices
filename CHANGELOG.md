@@ -18,6 +18,24 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v2.5.0 (2024-10-30)
+
+### Merged Pull Requests
+
+- TekScope2K - turn on HEADER and VERBOSE options to query available data sources correctly ([#327](https://github.com/tektronix/tm_devices/pull/327))
+- fix: line fix ([#339](https://github.com/tektronix/tm_devices/pull/339))
+- ci: Skip updating the mdformat repo during the dependency updater workflow ([#335](https://github.com/tektronix/tm_devices/pull/335))
+- gh-actions(deps): bump tektronix/python-package-ci-cd ([#320](https://github.com/tektronix/tm_devices/pull/320))
+- TSP environment cleanup ([#328](https://github.com/tektronix/tm_devices/pull/328))
+- feat: Added USB support for AFG31K and MDO3 models ([#331](https://github.com/tektronix/tm_devices/pull/331))
+- ci: Remove pre-commit hook that no longer works on Python 3.8 and replace with one that does ([#323](https://github.com/tektronix/tm_devices/pull/323))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#311](https://github.com/tektronix/tm_devices/pull/311))
+- python-deps(deps): bump the python-dependencies group with 3 updates ([#318](https://github.com/tektronix/tm_devices/pull/318))
+- test: Ignore googletagmanager links during doctests ([#312](https://github.com/tektronix/tm_devices/pull/312))
+- ci: Enable testing for Python 3.13 ([#309](https://github.com/tektronix/tm_devices/pull/309))
+
 ### Fixed
 
 - fix: TekScope2K active channel query needs HEADER options enabled to function properly

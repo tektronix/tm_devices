@@ -75,7 +75,7 @@ class AFG(_TektronixPIAFGAWGMixin, PIControl, Device, ABC):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def generate_function(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
+    def generate_function(  # noqa: PLR0913
         self,
         frequency: float,
         function: SignalGeneratorFunctionsAFG,
@@ -139,7 +139,7 @@ class AFG(_TektronixPIAFGAWGMixin, PIControl, Device, ABC):
             # Check for system errors
             self.expect_esr(0)
 
-    def setup_burst(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
+    def setup_burst(  # noqa: PLR0913
         self,
         frequency: float,
         function: SignalGeneratorFunctionsAFG,

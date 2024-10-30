@@ -103,7 +103,7 @@ class AWG(_TektronixPIAFGAWGMixin, PIControl, Device, ABC):
         self.write(f'MMEMory:IMPort "{wfm_name}", {waveform_file_path}, {wfm_type}')
         self._ieee_cmds.opc()
 
-    def generate_function(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
+    def generate_function(  # noqa: PLR0913
         self,
         frequency: float,
         function: SignalGeneratorFunctionsAWG,
@@ -187,7 +187,7 @@ class AWG(_TektronixPIAFGAWGMixin, PIControl, Device, ABC):
         self.write("AWGCONTROL:RUN")
         self.expect_esr(0)
 
-    def setup_burst(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
+    def setup_burst(  # noqa: PLR0913
         self,
         frequency: float,
         function: SignalGeneratorFunctionsAWG,
