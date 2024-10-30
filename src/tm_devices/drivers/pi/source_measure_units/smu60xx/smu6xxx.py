@@ -72,7 +72,7 @@ class SMU6xxx(SourceMeasureUnit, ABC):
         """
         return SignalGenerator.get_eventlog_status(self)  # type: ignore[arg-type]
 
-    def run_script(self, script_name: str) -> None:  # noqa: ARG002
+    def run_script(self, script_name: str) -> None:
         """Not Implemented."""
         msg = f"This functionality is not available on the {self.__class__.__name__} instrument."
         raise NotImplementedError(msg)
@@ -122,12 +122,12 @@ class SMU6xxx(SourceMeasureUnit, ABC):
 
     def load_script(
         self,
-        script_name: str,  # noqa: ARG002
+        script_name: str,
         *,
-        script_body: str = "",  # noqa: ARG002
-        file_path: Union[str, os.PathLike[str], None] = None,  # noqa: ARG002
-        run_script: bool = False,  # noqa: ARG002
-        to_nv_memory: bool = False,  # noqa: ARG002
+        script_body: str = "",
+        file_path: Union[str, os.PathLike[str], None] = None,
+        run_script: bool = False,
+        to_nv_memory: bool = False,
     ) -> None:
         """Not Implemented."""
         msg = f"This functionality is not available on the {self.__class__.__name__} instrument."
