@@ -386,7 +386,7 @@ class TekScope(
 
         return wfm_data  # return list of frames
 
-    def generate_function(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
+    def generate_function(  # noqa: PLR0913
         self,
         frequency: float,
         function: SignalGeneratorFunctionsIAFG,
@@ -431,7 +431,7 @@ class TekScope(
         self.internal_afg.set_state(1)
         # Don't check for errors as any measurement with low amplitude will generate an error
 
-    def setup_burst(  # noqa: PLR0913  # pyright: ignore[reportIncompatibleMethodOverride]
+    def setup_burst(  # noqa: PLR0913
         self,
         frequency: float,
         function: SignalGeneratorFunctionsIAFG,
