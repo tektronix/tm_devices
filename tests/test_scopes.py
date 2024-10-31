@@ -6,12 +6,14 @@ import pathlib
 import subprocess
 import sys
 
+from datetime import datetime
 from typing import cast, TYPE_CHECKING
 from unittest import mock
 
 import pytest
 import pyvisa as visa
 
+from dateutil.tz import tzlocal
 from packaging.version import Version
 
 from tm_devices import DeviceManager, register_additional_usbtmc_mapping
@@ -471,11 +473,15 @@ def test_tekscope3k_4k(device_manager: DeviceManager, capsys: pytest.CaptureFixt
     assert scope2.total_channels == 2
 
 
-def test_tekscopepc(device_manager: DeviceManager) -> None:
+def test_tekscopepc(
+    device_manager: DeviceManager, tmp_path: pathlib.Path, capsys: pytest.CaptureFixture[str]
+) -> None:
     """Test the TekScopePC implementation.
 
     Args:
         device_manager: The DeviceManager object.
+        tmp_path: pytest temporary directory fixture.
+        capsys: The captured stdout and stderr.
     """
     scope: TekScopePC = device_manager.add_scope("TEKSCOPEPC-HOSTNAME")
     # Assert TekScopePC device was added and aliased properly
@@ -487,6 +493,63 @@ def test_tekscopepc(device_manager: DeviceManager) -> None:
     assert scope.total_channels == 8
     with pytest.warns(UserWarning, match="Rebooting is not supported for the TekScopePC driver."):
         scope.reboot()
+
+    with pytest.raises(ValueError, match="Invalid image extension: '.txt', valid extensions are"):
+        scope.save_screenshot("temp.txt")
+    with pytest.raises(
+        ValueError, match=r"Local folder path \(filename.txt\) is a file, not a directory."
+    ):
+        scope.save_screenshot("temp.png", local_folder="filename.txt")
+    with pytest.raises(
+        ValueError, match=r"Device folder path \(filename.txt\) is a file, not a directory."
+    ):
+        scope.save_screenshot("temp.png", device_folder="filename.txt")
+
+    with mock.patch(
+        "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
+        mock.MagicMock(return_value=b"1234"),
+    ), mock.patch(
+        "pyvisa.resources.messagebased.MessageBasedResource.write",
+        mock.MagicMock(return_value=None),
+    ), mock.patch(
+        "pyvisa.resources.messagebased.MessageBasedResource.read",
+        mock.MagicMock(return_value="1"),  # this mocks the *OPC? query return value
+    ):
+        scope.enable_verification = False
+        filename = pathlib.Path(
+            datetime.now(tz=tzlocal()).strftime(f"%Y%m%d_%H%M%S{scope.valid_image_extensions[0]}")
+        )
+        local_file = tmp_path / filename
+        scope.save_screenshot(local_folder=tmp_path)
+        assert local_file.read_bytes() == b"1234"
+        stdout = capsys.readouterr().out
+        assert "SAVE:IMAGE:COMPOSITION NORMAL" in stdout
+        assert f'SAVE:IMAGE "./{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:READFILE "./{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:DELETE "./{filename.as_posix()}"' in stdout
+
+    with mock.patch(
+        "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
+        mock.MagicMock(return_value=b"5678"),
+    ):
+        scope.enable_verification = True
+        filename = pathlib.Path("temp.png")
+        local_file = tmp_path / "folder" / filename
+        scope.save_screenshot(
+            filename,
+            local_folder=local_file.parent,
+            device_folder="./new_folder",
+            colors="INVERTED",
+            keep_device_file=True,
+        )
+        assert local_file.read_bytes() == b"5678"
+        stdout = capsys.readouterr().out
+        assert "SAVE:IMAGE:COMPOSITION INVERTED" in stdout
+        assert f'SAVE:IMAGE "./new_folder/{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:READFILE "./new_folder/{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:DELETE "./new_folder/{filename.as_posix()}"' not in stdout
+
+    scope.expect_esr(0)
 
 
 def test_tekscope2k(device_manager: DeviceManager, tmp_path: pathlib.Path) -> None:

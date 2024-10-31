@@ -20,6 +20,8 @@ Things to be included in the next release go here.
 
 ### Added
 
+- Added a new mixin, `ScreenCaptureMixin`, that defines methods/properties used for capturing screenshots from devices.
+- Added screen capture capabilities to the `TekScope` family of device drivers.
 - Testing/linting on Python 3.13.
 - Added the `get_errors()` method to the `Device` class to enable easy access to the current error code and messages on any device.
 - Added more details to the Architectural Overview page of the documentation as well as highlighting to the device driver diagram on the page.
