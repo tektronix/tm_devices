@@ -3,8 +3,11 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from datetime import datetime
 from pathlib import Path
 from typing import final, Optional, Tuple, TYPE_CHECKING, Union
+
+from dateutil.tz import tzlocal
 
 if TYPE_CHECKING:
     import os
@@ -28,7 +31,7 @@ class ScreenCaptureMixin(ABC):
     @final
     def save_screenshot(
         self,
-        filename: Union[str, os.PathLike[str]],
+        filename: Optional[Union[str, os.PathLike[str]]] = None,
         *,
         colors: Optional[str] = None,
         view_type: Optional[str] = None,
@@ -39,7 +42,8 @@ class ScreenCaptureMixin(ABC):
         """Capture a screenshot from the device and save it locally.
 
         Args:
-            filename: The name of the file to save the screenshot as.
+            filename: The name of the file to save the screenshot as. Defaults to a timestamped
+                name using the first valid image extension.
             colors: The color scheme to use for the screenshot. (Not used by all devices)
             view_type: The type of view to capture. (Not used by all devices)
             local_folder: The local folder to save the screenshot in. Defaults to "./".
@@ -47,7 +51,14 @@ class ScreenCaptureMixin(ABC):
             keep_device_file: Whether to keep the file on the device after downloading it.
                 Defaults to False.
         """
-        filename_path = Path(filename)
+        if not filename:
+            filename_path = Path(
+                datetime.now(tz=tzlocal()).strftime(
+                    f"%Y%m%d_%H%M%S{self.valid_image_extensions[0]}"
+                )
+            )
+        else:
+            filename_path = Path(filename)
         if filename_path.suffix.lower() not in self.valid_image_extensions:
             msg = (
                 f"Invalid image extension: {filename_path.suffix!r}, "
