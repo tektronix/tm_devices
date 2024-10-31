@@ -734,7 +734,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
         (local_folder / filename).write_bytes(data)
         if not keep_device_file:
             self.write(f"FILESYSTEM:DELETE {device_filepath_string}", opc=True)
-            time.sleep(0.5)  # wait to ensure the file is deleted
+            time.sleep(0.2)  # wait to ensure the file is deleted
 
     def _reboot(self) -> None:
         """Reboot the device."""
