@@ -713,7 +713,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
         Args:
             filename: The name of the file to save the screenshot as.
             colors: The color scheme to use for the screenshot.
-            view_type: The type of view to capture.
+            view_type: The type of view to capture. (Not used in any TekScope drivers)
             local_folder: The local folder to save the screenshot in. Defaults to "./".
             device_folder: The folder on the device to save the screenshot in. Defaults to "./".
             keep_device_file: Whether to keep the file on the device after downloading it.
