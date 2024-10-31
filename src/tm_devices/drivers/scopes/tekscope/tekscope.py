@@ -665,7 +665,40 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
                 f":{item_type}:LIST? returned \"{','.join(item_list)}\"",
             )
 
-    def _capture_screen(
+    def _ensure_directory_exists_on_device(self, filepath: Path) -> None:
+        """Ensure that the directory of the filepath exists on the device, creating it if necessary.
+
+        Args:
+            filepath: The filepath to check.
+        """
+        with self.temporary_verbose(False):
+            original_dir = self.query(":FILESystem:CWD?")
+            # Remove the current working directory from the front of the input filepath
+            try:
+                relative_filepath = Path(filepath.relative_to(original_dir.replace('"', "")))
+            except ValueError:
+                # The input filepath is already a relative path
+                relative_filepath = filepath
+            changed_dir = False
+            try:
+                for path_part in relative_filepath.parents:  # pragma: no cover
+                    if path_part.is_file() or path_part.suffix or not path_part.name:
+                        break
+                    path_part_string = path_part.as_posix()
+                    if path_part_string not in {
+                        x.split(";")[0]
+                        for x in self.query(
+                            ":FILESystem:LDIR?", remove_quotes=True, allow_empty=True
+                        ).split(",")
+                    }:
+                        self.write(f':FILESystem:MKDir "{path_part_string}"')
+                    changed_dir = True
+                    self.write(f':FILESystem:CWD "./{path_part_string}"')
+            finally:
+                if changed_dir:
+                    self.write(f":FILESystem:CWD {original_dir}")
+
+    def _save_screenshot(
         self,
         filename: Path,
         *,
@@ -690,12 +723,17 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
             self.set_and_check("SAVE:IMAGE:COMPOSITION", colors)
         else:
             self.set_and_check("SAVE:IMAGE:COMPOSITION", "NORMAL")
-        self.write(f'SAVE:IMAGE "{(device_folder / filename).as_posix()}"', opc=True)
-        self.write(f'FILESYSTEM:READFILE "{(device_folder / filename).as_posix()}"')
+        device_filepath = device_folder / filename
+        device_filepath_string = (
+            f'"{"./" if not device_filepath.drive else ""}{device_filepath.as_posix()}"'
+        )
+        self._ensure_directory_exists_on_device(device_filepath)
+        self.write(f"SAVE:IMAGE {device_filepath_string}", opc=True)
+        self.write(f"FILESYSTEM:READFILE {device_filepath_string}")
         data = self.read_raw()
         (local_folder / filename).write_bytes(data)
         if not keep_device_file:
-            self.write(f'FILESYSTEM:DELETE "{(device_folder / filename).as_posix()}"', opc=True)
+            self.write(f"FILESYSTEM:DELETE {device_filepath_string}", opc=True)
             time.sleep(0.5)  # wait to ensure the file is deleted
 
     def _reboot(self) -> None:

@@ -83,6 +83,17 @@ on CH1 of the SCOPE.
 --8<-- "examples/scopes/tekscope/generate_internal_afg_signal.py"
 ```
 
+## Save a screenshot from the device to the local machine
+
+`tm_devices` provides the ability to save a screenshot with device drivers that inherit from the
+[`ScreenCaptureMixin`][tm_devices.driver_mixins.abstract_device_functionality.screen_capture_mixin.ScreenCaptureMixin],
+and then copy that screenshot to the local machine running the Python script.
+
+```python
+# fmt: off
+--8<-- "examples/scopes/tekscope/save_screenshot.py"
+```
+
 ## Curve query saved to csv
 
 Perform a curve query and save the results to a csv file.

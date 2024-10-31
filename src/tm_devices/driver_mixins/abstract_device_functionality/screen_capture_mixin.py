@@ -1,10 +1,13 @@
 """A mixin class providing common methods for devices that can perform screen captures."""
 
-import os
+from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import final, Optional, Tuple, Union
+from typing import final, Optional, Tuple, TYPE_CHECKING, Union
+
+if TYPE_CHECKING:
+    import os
 
 
 class ScreenCaptureMixin(ABC):
@@ -23,7 +26,7 @@ class ScreenCaptureMixin(ABC):
         """
 
     @final
-    def capture_screen(
+    def save_screenshot(
         self,
         filename: Union[str, os.PathLike[str]],
         *,
@@ -51,7 +54,19 @@ class ScreenCaptureMixin(ABC):
                 f"valid extensions are {self.valid_image_extensions!r}"
             )
             raise ValueError(msg)
-        self._capture_screen(
+        local_folder_path = Path(local_folder)
+        device_folder_path = Path(device_folder)
+        if local_folder_path.is_file() or local_folder_path.suffix:
+            msg = f"Local folder path ({local_folder_path.as_posix()}) is a file, not a directory."
+            raise ValueError(msg)
+        if device_folder_path.is_file() or device_folder_path.suffix:
+            msg = (
+                f"Device folder path ({device_folder_path.as_posix()}) is a file, not a directory."
+            )
+            raise ValueError(msg)
+        if not local_folder_path.exists():
+            local_folder_path.mkdir(parents=True)
+        self._save_screenshot(
             filename=filename_path,
             colors=colors,
             view_type=view_type,
@@ -61,7 +76,7 @@ class ScreenCaptureMixin(ABC):
         )
 
     @abstractmethod
-    def _capture_screen(
+    def _save_screenshot(
         self,
         filename: Path,
         *,

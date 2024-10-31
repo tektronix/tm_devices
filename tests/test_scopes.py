@@ -493,7 +493,15 @@ def test_tekscopepc(
         scope.reboot()
 
     with pytest.raises(ValueError, match="Invalid image extension: '.txt', valid extensions are"):
-        scope.capture_screen("temp.txt")
+        scope.save_screenshot("temp.txt")
+    with pytest.raises(
+        ValueError, match=r"Local folder path \(filename.txt\) is a file, not a directory."
+    ):
+        scope.save_screenshot("temp.png", local_folder="filename.txt")
+    with pytest.raises(
+        ValueError, match=r"Device folder path \(filename.txt\) is a file, not a directory."
+    ):
+        scope.save_screenshot("temp.png", device_folder="filename.txt")
 
     filename = pathlib.Path("temp.png")
     local_file = tmp_path / filename
@@ -501,27 +509,32 @@ def test_tekscopepc(
         "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
         mock.MagicMock(return_value=b"1234"),
     ):
-        scope.capture_screen(filename, local_folder=tmp_path)
+        scope.save_screenshot(filename, local_folder=tmp_path)
         assert local_file.read_bytes() == b"1234"
         stdout = capsys.readouterr().out
         assert "SAVE:IMAGE:COMPOSITION NORMAL" in stdout
-        assert f'SAVE:IMAGE "{filename.as_posix()}"' in stdout
-        assert f'FILESYSTEM:READFILE "{filename.as_posix()}"' in stdout
-        assert f'FILESYSTEM:DELETE "{filename.as_posix()}"' in stdout
+        assert f'SAVE:IMAGE "./{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:READFILE "./{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:DELETE "./{filename.as_posix()}"' in stdout
 
+    local_file = tmp_path / "folder" / filename
     with mock.patch(
         "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
         mock.MagicMock(return_value=b"5678"),
     ):
-        scope.capture_screen(
-            filename, local_folder=tmp_path, colors="INVERTED", keep_device_file=True
+        scope.save_screenshot(
+            filename,
+            local_folder=local_file.parent,
+            device_folder="./new_folder",
+            colors="INVERTED",
+            keep_device_file=True,
         )
         assert local_file.read_bytes() == b"5678"
         stdout = capsys.readouterr().out
         assert "SAVE:IMAGE:COMPOSITION INVERTED" in stdout
-        assert f'SAVE:IMAGE "{filename.as_posix()}"' in stdout
-        assert f'FILESYSTEM:READFILE "{filename.as_posix()}"' in stdout
-        assert f'FILESYSTEM:DELETE "{filename.as_posix()}"' not in stdout
+        assert f'SAVE:IMAGE "./new_folder/{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:READFILE "./new_folder/{filename.as_posix()}"' in stdout
+        assert f'FILESYSTEM:DELETE "./new_folder/{filename.as_posix()}"' not in stdout
 
     scope.expect_esr(0)
 

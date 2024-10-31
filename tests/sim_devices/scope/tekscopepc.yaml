@@ -33,9 +33,14 @@ devices:
         r: '1'
       - q: '*RST'
       - q: '*CLS'
-      - q: SAVE:IMAGE "temp.png"
-      - q: FILESYSTEM:READFILE "temp.png"
-      - q: FILESYSTEM:DELETE "temp.png"
+      - q: SAVE:IMAGE "./temp.png"
+      - q: FILESYSTEM:READFILE "./temp.png"
+      - q: FILESYSTEM:DELETE "./temp.png"
+      - q: SAVE:IMAGE "./new_folder/temp.png"
+      - q: FILESYSTEM:READFILE "./new_folder/temp.png"
+      - q: FILESYSTEM:DELETE "./new_folder/temp.png"
+      - q: :FILESystem:MKDir "new_folder"
+      - q: :FILESystem:CWD "./new_folder"
     properties:
       save_image_composition:
         default: NORMAL
