@@ -76,6 +76,7 @@ repository = "https://github.com/tektronix/tm_devices"
 version = "2.5.0"
 
 [tool.poetry.dependencies]
+colorlog = "^6.9.0"
 gpib-ctypes = "^0.3.0"
 libusb-package = "^1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.12
 packaging = "^24.0"
@@ -94,6 +95,7 @@ tomli = "^2.0.1"
 tomli-w = "^1.0.0"
 traceback-with-variables = "^2.0.4"
 typing-extensions = "^4.10.0"
+tzlocal = "^5.2"
 urllib3 = "^2.0"
 zeroconf = "^0.136.0"
 
@@ -235,6 +237,7 @@ disable = [
   "too-many-lines",  # not necessary to check for
   "too-many-statements",  # caught by ruff
   "too-many-statements",  # caught by ruff
+  "unexpected-keyword-arg",  # caught by pyright
   "unused-argument",  # caught by ruff
   "unused-import",  # caught by ruff
   "use-implicit-booleaness-not-comparison-to-string",  # caught by ruff
@@ -328,7 +331,6 @@ ignore = [
   "PTH123",  # `open()` should be replaced by `Path.open()`
   "PTH207",  # Replace `iglob` with `Path.glob` or `Path.rglob`
   "PYI021",  # Docstrings should not be included in stubs
-  "T20",  # flake8-print
   "TD002",  # Missing author in TO DO
   "TD003",  # Missing issue link on the line following this TO DO
   "TRY301",  # Abstract raise to an inner function
@@ -357,7 +359,8 @@ order-by-type = false
 
 [tool.ruff.lint.per-file-ignores]
 "examples/**" = [
-  "S101"  # Use of assert detected
+  "S101",  # Use of assert detected
+  "T201"  # `print` found
 ]
 "examples/miscellaneous/custom_device_driver_support.py" = [
   "ARG002",  # Unused method argument

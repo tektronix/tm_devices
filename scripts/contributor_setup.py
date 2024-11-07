@@ -24,7 +24,7 @@ def create_virtual_environment(virtual_env_dir: str | os.PathLike[str]) -> None:
     Args:
         virtual_env_dir: The directory where the virtual environment should be created
     """
-    print(f"\nCreating virtualenv located at '{virtual_env_dir}'")
+    print(f"\nCreating virtualenv located at '{virtual_env_dir}'")  # noqa: T201
     _run_cmd_in_subprocess(f'"{sys.executable}" -m venv "{virtual_env_dir}" --clear')
 
 
@@ -35,7 +35,7 @@ def _run_cmd_in_subprocess(command: str) -> None:
         command: The command string to send.
     """
     command = command.replace("\\", "/")
-    print(f"\nExecuting command: {command}")
+    print(f"\nExecuting command: {command}")  # noqa: T201
     subprocess.check_call(shlex.split(command))  # noqa: S603
 
 

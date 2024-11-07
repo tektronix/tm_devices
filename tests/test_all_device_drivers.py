@@ -205,7 +205,7 @@ def test_all_device_drivers() -> None:
         sorted_created_connections_list == supported_connections_list
     ), f"Some connections are not tested: {connections_without_testing=}"
 
-    print(f"\nVerified all {len(SIMULATED_DEVICE_LIST)} device drivers")
-    print(
+    print(f"\nVerified all {len(SIMULATED_DEVICE_LIST)} device drivers")  # noqa: T201
+    print(  # noqa: T201
         f"{len(drivers_with_auto_generated_commands)} device drivers have auto-generated commands"
     )

@@ -1,9 +1,9 @@
 """Module containing helpers for the `tm_devices` package."""
 
 import contextlib
-import datetime
 import importlib.metadata
 import json
+import logging
 import platform
 import re
 import shlex
@@ -18,7 +18,6 @@ from typing import Any, Dict, Optional, Tuple, Type
 
 import requests
 
-from dateutil.tz import tzlocal
 from packaging.version import InvalidVersion, Version
 
 from tm_devices.helpers.constants_and_dataclasses import (
@@ -33,6 +32,8 @@ from tm_devices.helpers.constants_and_dataclasses import (
 )
 from tm_devices.helpers.enums import CustomStrEnum, SupportedModels
 from tm_devices.helpers.standalone_functions import validate_address
+
+_logger: logging.Logger = logging.getLogger(__name__)
 
 with warnings.catch_warnings():
     warnings.simplefilter("ignore", UserWarning)
@@ -186,54 +187,56 @@ def check_for_update(package_name: str = PACKAGE_NAME, index_name: str = "pypi")
         latest_version = version_list[0]
 
         if installed_version != latest_version:
-            print(
-                f"\n\n\033[91mVersion {latest_version} of "
-                f"{package_name} is available on {index_name}.org.\n"
-                f"Version {installed_version} of "
-                f"{package_name} is currently installed.\n\n"
-                f"To upgrade {package_name} run the following command: "
-                f"python -m pip install -U {package_name}\n\n\033[0m"
+            _logger.debug(
+                "\n\n\033[91mVersion %(latest_version)s of "
+                "%(package_name)s is available on %(index_name)s.org.\n"
+                "Version %(installed_version)s of "
+                "%(package_name)s is currently installed.\n\n"
+                "To upgrade %(package_name)s run the following command: "
+                "python -m pip install -U %(package_name)s\n\n\033[0m",
+                {
+                    "latest_version": latest_version,
+                    "package_name": package_name,
+                    "index_name": index_name,
+                    "installed_version": installed_version,
+                },
             )
     except ModuleNotFoundError:
-        print(
-            f"\n\n\033[91m{package_name} is not installed, "
-            f"unable to check for updates.\n\n\033[0m"
+        _logger.warning(
+            "\n\n\033[91m%s is not installed, unable to check for updates.\n\n\033[0m",
+            package_name,
         )
     except (IndexError, ValueError):
-        print(
-            f"\n\n\033[91m{package_name} is not available on {index_name}.org, "
-            f"unable to check for updates.\n\n\033[0m"
+        _logger.warning(
+            "\n\n\033[91m%s is not available on %s.org, unable to check for updates.\n\n\033[0m",
+            package_name,
+            index_name,
         )
 
 
-def check_network_connection(
-    device_name: str, ip_address: str, verbose: bool = True
-) -> Tuple[bool, str]:
+def check_network_connection(device_name: str, ip_address: str) -> Tuple[bool, str]:
     """Check the network connection to the device using the external ping command.
 
     Args:
         device_name: The name of the device.
         ip_address: The ip address of the device.
-        verbose: Set this to False in order to disable printouts.
 
     Returns:
         A boolean indicating if there is a network connection and
         a string with the result of the ping command.
     """
-    if verbose:
-        print_with_timestamp(f"({device_name}) ping >> {ip_address}")
-        print(f"{get_timestamp_string()} - ")
+    _logger.debug("(%s) ping >> %s", device_name, ip_address)
     ping_result = ping_address(ip_address)
-    if verbose:
-        print_with_timestamp("Response from ping >>")
-        for line in ping_result.strip().split("\n"):
-            print(f"    {line}")
+    _logger.debug(
+        "Response from ping >>\n%s",
+        ping_result.strip(),
+    )
 
     return "ttl=" in ping_result.lower(), ping_result
 
 
 def check_port_connection(
-    device_name: str, ip_address: str, port: int, timeout_seconds: int = 5, verbose: bool = True
+    device_name: str, ip_address: str, port: int, timeout_seconds: int = 5
 ) -> bool:
     """Check if the given port is open on the device.
 
@@ -242,13 +245,11 @@ def check_port_connection(
         ip_address: The ip address.
         port: The port to check.
         timeout_seconds: The number of seconds to use as the socket timeout.
-        verbose: Set this to False in order to disable printouts.
 
     Returns:
         A boolean indicating if the port is open.
     """
-    if verbose:
-        print_with_timestamp(f"({device_name}) >> checking if port {port} is open on {ip_address}")
+    _logger.debug("(%s) >> checking if port %d is open on %s", device_name, port, ip_address)
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as temp_socket:
         try:
@@ -259,13 +260,12 @@ def check_port_connection(
         except (socket.error, socket.gaierror, socket.herror):
             port_open = False
 
-    if verbose:
-        print_with_timestamp(f"Result >> {port_open}")
+    _logger.debug("(%s) port %d open = %s", device_name, port, port_open)
     return port_open
 
 
 def check_visa_connection(
-    config_entry: DeviceConfigEntry, visa_library: str, device_name: str, verbose: bool = True
+    config_entry: DeviceConfigEntry, visa_library: str, device_name: str
 ) -> bool:
     """Check if a VISA connection can be made to the device.
 
@@ -273,16 +273,15 @@ def check_visa_connection(
         config_entry: The device listed in the config of the framework to check.
         visa_library: Indicates which visa library to use for the connection.
         device_name: The name of the device.
-        verbose: Set this to False in order to disable printouts.
 
     Returns:
         a boolean indicating if the visa connection was successful
     """
-    if verbose:
-        print_with_timestamp(
-            f"({device_name}) >> checking if a VISA connection can be made to "
-            f"{config_entry.get_visa_resource_expression()}"
-        )
+    _logger.debug(
+        "(%s) >> checking if a VISA connection can be made to %s",
+        device_name,
+        config_entry.get_visa_resource_expression(),
+    )
     try:
         # Create new VISA connection
         temp_resource = create_visa_connection(
@@ -294,8 +293,7 @@ def check_visa_connection(
     except ConnectionError:  # raised by the create_visa_connection() function
         visa_connected = False
 
-    if verbose:
-        print_with_timestamp(f"Result >> {visa_connected}")
+    _logger.debug("(%s) VISA connected = %s", device_name, visa_connected)
     return visa_connected
 
 
@@ -331,12 +329,15 @@ def create_visa_connection(
         if (
             visa_object.visalib.library_path.path == "py" and visa_library != PYVISA_PY_BACKEND
         ):  # pragma: no cover
-            warnings.warn(
+            warning_msg = (
                 "No VISA installation was detected, defaulting to using "
                 "PyVISA-py as the VISA backend.\n\n"
-                'Add the "STANDALONE" option to the configuration to silence this warning.',
-                stacklevel=4,
+                'Add the "STANDALONE" option to the configuration or set the '
+                "`DeviceManager.visa_library` attribute to a valid VISA library to "
+                "silence this warning."
             )
+            warnings.warn(warning_msg, stacklevel=4)
+            _logger.warning(warning_msg)
     # The broad except is because pyvisa_py can throw a base exception in the tcpip.py file
     except Exception as error_1:
         if not retry_connection:
@@ -466,13 +467,9 @@ def get_model_series(model: str) -> str:
     if not model_series:
         if model not in SupportedModels.list_values():
             warnings.warn(f'The "{model}" model is not supported by {PACKAGE_NAME}', stacklevel=2)
+            _logger.warning('The "%s" model is not supported by %s', model, PACKAGE_NAME)
         model_series = model
     return model_series
-
-
-def get_timestamp_string() -> str:
-    """Return a string containing the current timestamp."""
-    return str(datetime.datetime.now(tz=tzlocal()))[:-3]
 
 
 def get_version(version_string: str) -> Version:
@@ -562,18 +559,6 @@ def ping_address(address: str, timeout: int = 2) -> str:
     except subprocess.CalledProcessError:
         output = ""
     return output.replace("\r\n", "\n")
-
-
-def print_with_timestamp(message: str, end: str = "\n") -> str:
-    """Print and return a string prepended with a timestamp.
-
-    Args:
-        message: The message to print.
-        end: The end of the line to print.
-    """
-    message = f"{get_timestamp_string()} - {message}"
-    print(message, end=end)
-    return message
 
 
 def register_additional_usbtmc_mapping(model_series: str, *, model_id: str, vendor_id: str) -> None:

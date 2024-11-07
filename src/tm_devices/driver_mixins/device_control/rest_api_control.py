@@ -1,6 +1,7 @@
 """Base REST Application Programming Interface (API) control class module."""
 
 import json
+import logging
 import time
 
 from abc import ABC, abstractmethod
@@ -14,10 +15,11 @@ from tm_devices.driver_mixins.device_control._abstract_device_control import (
 )
 from tm_devices.helpers import (
     DeviceConfigEntry,
-    print_with_timestamp,
     raise_failure,
     SupportedRequestTypes,
 )
+
+_logger: logging.Logger = logging.getLogger(__name__)
 
 
 class RESTAPIControl(_AbstractDeviceControl, ABC):
@@ -307,23 +309,25 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             verbose=verbose,
         )
 
-    def set_api_version(self, api_version: int, verbose: bool = True) -> None:
+    def set_api_version(self, api_version: int) -> None:
         """Set the API version used by the device.
 
         Args:
             api_version: The API version to use for this device
-            verbose: Set this to False in order to disable printouts.
         """
         self._api_url = self._base_url + self.API_VERSIONS[api_version]
-        if self._verbose and verbose:
-            print(f"{self._name_and_alias} API version set to: {api_version} ({self._api_url})")
+        _logger.debug(
+            "%s API version set to: %d (%s)",
+            self._name_and_alias,
+            api_version,
+            self._api_url,
+        )
 
     def wait_for_api_connection(
         self,
         wait_time: float,
         sleep_seconds: int = 5,
         accept_immediate_connection: bool = False,
-        verbose: bool = True,
     ) -> bool:
         """Wait for an API call to go through to the device.
 
@@ -334,7 +338,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             sleep_seconds: The number of seconds to sleep in between connection attempts.
             accept_immediate_connection: A boolean indicating if a connection on the
                                          first attempt is a valid connection.
-            verbose: Set this to False in order to disable printouts.
 
         Returns:
             A boolean indicating if an API connection was made within the given time limit.
@@ -344,8 +347,11 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         """
         attempt_num = 0
         api_connection = False
-        if verbose:
-            print_with_timestamp(f"Attempting to establish an API connection with {self._api_url}")
+        _logger.log(
+            logging.INFO if self._verbose else logging.DEBUG,
+            "Attempting to establish an API connection with %s",
+            self._api_url,
+        )
         start_time = time.perf_counter()
         while (time.perf_counter() - start_time) <= wait_time:
             if api_connection := self._check_api_connection():
@@ -364,17 +370,19 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         end_time = time.perf_counter()
         total_time = end_time - start_time
 
-        if verbose:
-            if api_connection:
-                print_with_timestamp(
-                    f"Successfully established an API connection with {self._api_url} "
-                    f"after {total_time:.2f} seconds"
-                )
-            else:
-                print_with_timestamp(
-                    f"Unable to establish an API connection with {self._api_url} "
-                    f"after {total_time:.2f} seconds"
-                )
+        if api_connection:
+            _logger.log(
+                logging.INFO if self._verbose else logging.DEBUG,
+                "Successfully established an API connection with %s after %.2f seconds",
+                self._api_url,
+                total_time,
+            )
+        else:
+            _logger.warning(
+                "Unable to establish an API connection with %s after %.2f seconds",
+                self._api_url,
+                total_time,
+            )
         return api_connection
 
     ################################################################################################
@@ -441,13 +449,15 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
                 url = self._api_url + url
         response = cast(requests.Response, None)
         retval: Union[Dict[str, Any], bytes] = {}
-        if self._verbose and verbose:
-            print_with_timestamp(f"({self._name_and_alias}) {request_type.value} >> {url}", end="")
-            if headers:
-                print(f", {headers=}", end="")
-            if json_body:
-                print(f", {json_body=}", end="")
-            print()
+        _logger.log(
+            logging.INFO if verbose else logging.DEBUG,
+            "(%s) %s >> %s%s%s",
+            self._name_and_alias,
+            request_type.value,
+            url,
+            f", {headers=}" if headers else "",
+            f", {json_body=}" if json_body else "",
+        )
         try:
             if request_type == SupportedRequestTypes.DELETE:
                 response = requests.delete(
@@ -503,13 +513,13 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             else:
                 msg = f"{request_type} is an unsupported request type."
                 raise ValueError(msg)
-            if self._verbose and verbose:
-                print_with_timestamp(f"Response from {request_type.value} >>")
-                if not return_bytes:
-                    print(f"{json.dumps(response.json(), indent=2)}")
-                else:
-                    # Print .zip files as byte strings, response.content.decode() throws errors
-                    print(f"\n{response.text}")
+
+            _logger.log(
+                logging.INFO if verbose else logging.DEBUG,
+                "Response from %s >>\n%s",
+                request_type.value,
+                json.dumps(response.json(), indent=2) if not return_bytes else response.text,
+            )
             retval = response.content if return_bytes else response.json()
             # If the response was successful, no Exception will be raised
             response.raise_for_status()

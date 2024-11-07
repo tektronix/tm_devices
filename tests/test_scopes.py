@@ -376,14 +376,14 @@ def test_tekscope70k(device_manager: DeviceManager, capsys: pytest.CaptureFixtur
     assert scope.hostname == ""
     # Test some generic device functionality
     assert scope.wait_for_network_connection(
-        wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True, verbose=True
+        wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True
     )
     assert (
         f"Successfully established a network connection with {scope.ip_address}"
         in capsys.readouterr().out
     )
     assert scope.wait_for_network_connection(
-        wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True, verbose=False
+        wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True
     )
     assert (
         f"Successfully established a network connection with {scope.ip_address}"
@@ -393,7 +393,7 @@ def test_tekscope70k(device_manager: DeviceManager, capsys: pytest.CaptureFixtur
         "subprocess.check_output", mock.MagicMock(side_effect=subprocess.CalledProcessError(1, ""))
     ):
         assert not scope.wait_for_network_connection(
-            wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True, verbose=True
+            wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True
         )
         assert (
             f"Unable to establish a network connection with {scope.ip_address}"
@@ -401,7 +401,7 @@ def test_tekscope70k(device_manager: DeviceManager, capsys: pytest.CaptureFixtur
         )
     with pytest.raises(AssertionError):
         scope.wait_for_network_connection(
-            wait_time=0.05, sleep_seconds=1, accept_immediate_connection=False, verbose=False
+            wait_time=0.05, sleep_seconds=1, accept_immediate_connection=False
         )
     scope.expect_esr(0)
     with pytest.raises(SystemError):

@@ -11,7 +11,7 @@ import pytest
 import pyvisa.constants
 
 from mock_server import mocker_server, PORT
-from tm_devices import DeviceManager
+from tm_devices import configure_logging, DeviceManager, LoggingLevels
 from tm_devices.components import DMConfigParser
 from tm_devices.helpers import DMConfigOptions, validate_address
 
@@ -58,9 +58,9 @@ def _auto_add_newline_to_test_start() -> (  # pyright: ignore [reportUnusedFunct
     Generator[None, None, None]
 ):
     """Automatically add a newline at the start of each test."""
-    print(f"\n{'#' * 90}\nExecuting {os.environ['PYTEST_CURRENT_TEST'].split(' ')[0]}\n")
+    print(f"\n{'#' * 90}\nExecuting {os.environ['PYTEST_CURRENT_TEST'].split(' ')[0]}\n")  # noqa: T201
     yield
-    print(f"\n\nFinished {os.environ['PYTEST_CURRENT_TEST'].split(' ')[0]}\n{'#' * 90}")
+    print(f"\n\nFinished {os.environ['PYTEST_CURRENT_TEST'].split(' ')[0]}\n{'#' * 90}")  # noqa: T201
 
 
 @pytest.fixture(name="device_manager", scope="session")
@@ -70,7 +70,8 @@ def fixture_device_manager() -> Generator[DeviceManager, None, None]:
     Yields:
         The DeviceManager instance.
     """
-    print()
+    configure_logging(console_logging_level=LoggingLevels.DEBUG)
+    print()  # noqa: T201
     with mock.patch(
         "socket.gethostbyname", mock.MagicMock(side_effect=mock_gethostbyname)
     ), mock.patch(

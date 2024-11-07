@@ -1,5 +1,7 @@
 """A class defining methods that VISA devices and control mixins must have."""
 
+import logging
+
 from abc import abstractmethod
 from typing import Any, final, Tuple
 
@@ -7,6 +9,8 @@ from tm_devices.driver_mixins.device_control._abstract_device_control import (
     _AbstractDeviceControl,  # pyright: ignore[reportPrivateUsage]
 )
 from tm_devices.helpers import raise_failure, verify_values
+
+_logger: logging.Logger = logging.getLogger(__name__)
 
 
 class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: ignore[reportUnusedClass]
@@ -64,7 +68,7 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
             )
         except AssertionError as exc:
             check_passed &= False
-            print(exc)  # the exception already contains the timestamp
+            _logger.warning(exc)
 
         # Compare the error messages
         for expected_message, actual_message in zip(error_messages, actual_error_messages):
@@ -79,7 +83,7 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
                 )
             except AssertionError as exc:  # noqa: PERF203
                 check_passed &= False
-                print(exc)
+                _logger.warning(exc)
 
         if not check_passed:
             failure_message = (

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import logging
+
 from abc import ABC
 from typing import Any, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -11,6 +13,9 @@ from tm_devices.helpers import verify_values
 
 if TYPE_CHECKING:
     import os
+
+
+_logger: logging.Logger = logging.getLogger(__name__)
 
 
 class TSPControl(PIControl, ABC):
@@ -164,9 +169,9 @@ class TSPControl(PIControl, ABC):
         def fix_width(key: str, value: Any) -> str:  # Function to add spaces if needed
             return str(value) + " " * (column_widths[key] - len(str(value)))
 
-        print(*[fix_width(x, x) for x in buffer_data])
+        print(*[fix_width(x, x) for x in buffer_data])  # noqa: T201
         for index in range(column_length):
-            print(
+            print(  # noqa: T201
                 *[fix_width(k, v[index] if index < len(v) else "") for k, v in buffer_data.items()]
             )
 

@@ -1,5 +1,6 @@
 """Base Programmable Interface (PI) control class module."""
 
+import logging
 import os
 import socket
 import time
@@ -29,12 +30,13 @@ from tm_devices.helpers import (
     get_model_series,
     get_version,
     get_visa_backend,
-    print_with_timestamp,
     PYVISA_PY_BACKEND,
     raise_failure,
     verify_values,
 )
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
+
+_logger: logging.Logger = logging.getLogger(__name__)
 
 
 class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  # pylint: disable=too-many-public-methods
@@ -122,8 +124,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             timeout_ms: The new VISA timeout, in milliseconds.
         """
         self._visa_resource.timeout = timeout_ms
-        if self._verbose:
-            print(f"{self._name_and_alias} VISA timeout set to: {timeout_ms}ms")
+        _logger.debug("%s VISA timeout set to: %fms", self._name_and_alias, timeout_ms)
 
     @property
     def visa_resource(self) -> visa.resources.MessageBasedResource:
@@ -210,19 +211,15 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
     # Public Methods
     ################################################################################################
     @final
-    def check_visa_connection(self, verbose: bool = True) -> bool:
+    def check_visa_connection(self) -> bool:
         """Check if a VISA connection can be made to the device.
 
         Wrapper function for [`check_visa_connection`][tm_devices.helpers.check_visa_connection].
-
-        Args:
-            verbose: Set this to False in order to disable printouts.
         """
         return check_visa_connection(
             self._config_entry,
             self._visa_library_path,
             self._name_and_alias,
-            verbose=verbose and self._verbose,
         )
 
     def device_clear(self) -> None:  # pragma: no cover
@@ -340,8 +337,13 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             Error: An error occurred while sending the command.
             SystemError: An empty string was returned from the device.
         """
-        if self._verbose and verbose:
-            print_with_timestamp(f"({self._name_and_alias}) Query >>  {query!r}")
+        # TODO: logging: Log just the query to a device specific file
+        _logger.log(
+            logging.INFO if self._verbose and verbose else logging.DEBUG,
+            "(%s) Query >>  %r",
+            self._name_and_alias,
+            query,
+        )
 
         try:
             response = self._visa_resource.query(query).strip()
@@ -352,8 +354,12 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             msg = f"The query{pi_cmd_repr}failed with the following message: {error!r}"
             raise visa.Error(msg) from error
 
-        if self._verbose and verbose:
-            print_with_timestamp(f"Response from {query!r} >>  {response!r}")
+        _logger.log(
+            logging.INFO if self._verbose and verbose else logging.DEBUG,
+            "Response from %r >>  %r",
+            query,
+            response,
+        )
 
         if not allow_empty and not response:
             pi_cmd_repr = (
@@ -378,8 +384,13 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             Error: An error occurred while sending the command.
             SystemError: An empty string was returned from the device.
         """
-        if self._verbose and verbose:
-            print_with_timestamp(f"({self._name_and_alias}) Query Binary Values >>  {query!r}")
+        # TODO: logging: Log just the query to a device specific file
+        _logger.log(
+            logging.INFO if self._verbose and verbose else logging.DEBUG,
+            "(%s) Query Binary Values >>  %r",
+            self._name_and_alias,
+            query,
+        )
 
         try:
             response = self._visa_resource.query_binary_values(query)  # pyright: ignore[reportUnknownMemberType]
@@ -388,10 +399,12 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             msg = f"The query{pi_cmd_repr}failed with the following message: {error!r}"
             raise visa.Error(msg) from error
 
-        if self._verbose and verbose:
-            print_with_timestamp(
-                f"Response from {query!r} >>  {', '.join([str(x) for x in response])!r}"
-            )
+        _logger.log(
+            logging.INFO if self._verbose and verbose else logging.DEBUG,
+            "Response from %r >>  %r",
+            query,
+            response,
+        )
 
         if not response:
             pi_cmd_repr = (
@@ -501,8 +514,13 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             Error: An error occurred while sending the command.
             SystemError: An empty string was returned from the device.
         """
-        if self._verbose and verbose:
-            print_with_timestamp(f"({self._name_and_alias}) Query Raw Binary >>  {query!r}")
+        # TODO: logging: Log just the query to a device specific file
+        _logger.log(
+            logging.INFO if self._verbose and verbose else logging.DEBUG,
+            "(%s) Query Raw Binary >>  %r",
+            self._name_and_alias,
+            query,
+        )
 
         try:
             self._visa_resource.write(query)
@@ -512,8 +530,12 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             msg = f"The query{pi_cmd_repr}failed with the following message: {error!r}"
             raise visa.Error(msg) from error
 
-        if self._verbose and verbose:
-            print_with_timestamp(f"Response from {query!r} >>  {response!r}")
+        _logger.log(
+            logging.INFO if self._verbose and verbose else logging.DEBUG,
+            "Response from %r >>  %r",
+            query,
+            response,
+        )
 
         if not response.strip():
             pi_cmd_repr = (
@@ -768,13 +790,14 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         """
         attempt_num = 0
         visa_connection = False
-        if verbose:
-            print_with_timestamp(
-                f"Attempting to establish a VISA connection with {self._resource_expression}"
-            )
+        _logger.log(
+            logging.INFO if verbose else logging.DEBUG,
+            "Attempting to establish a VISA connection with %s",
+            self._resource_expression,
+        )
         start_time = time.perf_counter()
         while (time.perf_counter() - start_time) <= wait_time:
-            if visa_connection := self.check_visa_connection(verbose=False):
+            if visa_connection := self.check_visa_connection():
                 # pylint: disable=compare-to-zero
                 if not (attempt_num == 0 and not accept_immediate_connection):
                     break
@@ -790,17 +813,19 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         end_time = time.perf_counter()
         total_time = end_time - start_time
 
-        if verbose:
-            if visa_connection:
-                print_with_timestamp(
-                    f"Successfully established a VISA connection with {self._resource_expression} "
-                    f"after {total_time:.2f} seconds"
-                )
-            else:
-                print_with_timestamp(
-                    f"Unable to establish a VISA connection with {self._resource_expression} "
-                    f"after {total_time:.2f} seconds"
-                )
+        if visa_connection:
+            _logger.log(
+                logging.INFO if verbose else logging.DEBUG,
+                "Successfully established a VISA connection with %s after %.2f seconds",
+                self._resource_expression,
+                total_time,
+            )
+        else:
+            _logger.warning(
+                "Unable to establish a VISA connection with %s after %.2f seconds",
+                self._resource_expression,
+                total_time,
+            )
 
         return visa_connection
 
@@ -816,19 +841,21 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             Error: An error occurred while sending the command.
             SystemError: ``*OPC?`` did not return "1" after sending the command.
         """
-        if self._verbose and verbose:
-            if "\n" in command:
-                # Format any multiline command to print out with a single timestamp
-                # followed by as many (whitespace padded) f">>  {cmd}" lines as it has
-                commands_iter = iter(repr(command.strip()).split("\\n"))
-                spaces = " " * len(
-                    print_with_timestamp(
-                        f"({self._name_and_alias}) Write >>  {next(commands_iter)}"
-                    ).split(">>  ")[0]
-                )
-                print(*[f"{spaces}>>  {cmd}" for cmd in commands_iter], sep="\n")
-            else:
-                print_with_timestamp(f"({self._name_and_alias}) Write >>  {command!r}")
+        # TODO: logging: Log just the write to a device specific file
+        if "\n" in command:
+            _logger.log(
+                logging.INFO if self._verbose and verbose else logging.DEBUG,
+                "(%s) Write >>\n%s",
+                self._name_and_alias,
+                command,
+            )
+        else:
+            _logger.log(
+                logging.INFO if self._verbose and verbose else logging.DEBUG,
+                "(%s) Write >>  %r",
+                self._name_and_alias,
+                command,
+            )
 
         try:
             self._visa_resource.write(command)
@@ -852,8 +879,13 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         Raises:
             Error: An error occurred while sending the command.
         """
-        if self._verbose and verbose:
-            print_with_timestamp(f"({self._name_and_alias}) Write Raw >>  {command!r}")
+        # TODO: logging: Log just the write to a device specific file
+        _logger.log(
+            logging.INFO if self._verbose and verbose else logging.DEBUG,
+            "(%s) Write Raw >>  %r",
+            self._name_and_alias,
+            command,
+        )
 
         try:
             self._visa_resource.write_raw(command)
@@ -918,9 +950,9 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         try:
             self._visa_resource.close()
         except VisaIOError as error:
-            warnings.warn(
-                f"Error encountered while closing the visa resource:\n{error}", stacklevel=2
-            )
+            error_msg = f"Error encountered while closing the visa resource:\n{error}"
+            warnings.warn(error_msg, stacklevel=2)
+            _logger.exception(error_msg)
         self._visa_resource = None  # pyright: ignore[reportAttributeAccessIssue]
         self._is_open = False
 

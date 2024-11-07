@@ -6,6 +6,7 @@ from __future__ import annotations
 import contextlib
 import inspect
 import json
+import logging
 import os
 import pathlib
 import socket
@@ -44,7 +45,6 @@ from tm_devices.helpers import (
     DMConfigOptions,
     get_model_series,
     PACKAGE_NAME,
-    print_with_timestamp,
     PYVISA_PY_BACKEND,
     SerialConfig,
     Singleton,
@@ -98,6 +98,8 @@ SystemsSwitchAlias = TypeVar("SystemsSwitchAlias", bound=SystemsSwitch, default=
 UnsupportedDeviceAlias = TypeVar("UnsupportedDeviceAlias", bound=Device, default=Device)
 """An alias to a custom device driver for an unsupported device type."""
 
+_logger: logging.Logger = logging.getLogger(__name__)
+
 
 ####################################################################################################
 # DeviceManager class
@@ -124,11 +126,20 @@ class DeviceManager(metaclass=Singleton):
         """Create the instance of the DeviceManager.
 
         Args:
-            verbose: A boolean indicating if verbose output should be printed.
+            verbose: A boolean indicating if verbose output should be printed. This flag cascades
+                down to all connected devices. Setting it to False **will not** remove all printouts
+                to stdout. To remove all console output, use
+                [`configure_logging()`][tm_devices.configure_logging] before instantiating the
+                DeviceManager.
             config_options: An optional set of configuration options to use
                 (updates the current configuration options).
             external_device_drivers: An optional dict for passing in additional device drivers.
         """
+        # pylint: disable=import-outside-toplevel
+        if not logging.getLogger(PACKAGE_NAME).hasHandlers():
+            from tm_devices.helpers.logging import configure_logging
+
+            configure_logging()
         self._suppress_protection = False
         # Set up the DeviceManager
         self.__is_open = False
@@ -683,21 +694,20 @@ class DeviceManager(metaclass=Singleton):
             try:
                 device_object.cleanup(verbose=bool(self.__config.options.verbose_mode))
             except (visa.errors.Error, socket.error, RPCError, AttributeError):  # noqa: PERF203
-                print(f"Device cleanup of {device_name} failed. Retrying...")
+                _logger.warning("Device cleanup of %s failed. Retrying...", device_name)
                 device_object.cleanup()
 
     def close(self) -> None:
         """Close the DeviceManager."""
         self.__protect_access()
-        print()
         if self.__devices:
-            print_with_timestamp("Closing Connections to Devices")
+            _logger.info("Closing Connections to Devices")
             if self.__teardown_cleanup_enabled:
                 self.cleanup_all_devices()
             for device_object in list(self.__devices.values()):
                 device_object.close()
         self.__is_open = False
-        print_with_timestamp(f"{self.__class__.__name__} Closed")
+        _logger.info("%s Closed", self.__class__.__name__)
 
     def disable_device_command_checking(self) -> None:
         """Set the `.enable_verification` attribute of each device to `False`.
@@ -1007,13 +1017,11 @@ class DeviceManager(metaclass=Singleton):
         Args:
             config_file_path: The path to the config file to load.
         """
-        print_with_timestamp(
-            f"Loading Configuration from {pathlib.Path(config_file_path).resolve()}"
-        )
+        _logger.info("Loading Configuration from %s", pathlib.Path(config_file_path).resolve())
         self.__config.load_config_file(config_file_path)
         self.__set_options(self.__verbose)
         if len(self.__config.devices) != len(self.__devices):
-            print_with_timestamp("Opening Connections to Devices")
+            _logger.info("Opening Connections to Devices")
             for device_name, device_config in self.__config.devices.items():
                 if device_name not in self.__devices:
                     self.__create_device(device_name, device_config, 3)
@@ -1031,10 +1039,10 @@ class DeviceManager(metaclass=Singleton):
                 f"{self.__class__.__name__} has already been closed."
             )
             raise AssertionError(msg)
-        print_with_timestamp(f"Opening {self.__class__.__name__}")
+        _logger.info("Opening %s", self.__class__.__name__)
         # Create the devices
         if self.__config.devices:
-            print_with_timestamp("Opening Connections to Devices")
+            _logger.info("Opening Connections to Devices")
         for device_name, device_config in self.__config.devices.items():
             self.__create_device(device_name, device_config, 3)
         if self.__setup_cleanup_enabled:
@@ -1093,9 +1101,9 @@ class DeviceManager(metaclass=Singleton):
         Args:
             config_file_path: The path to the config file. If ends in ".toml" will create toml file.
         """
-        print_with_timestamp("Writing Configuration to file")
+        _logger.info("Writing Configuration to file")
         new_file_path = pathlib.Path(self.__config.write_config_to_file(config_file_path)).resolve()
-        print_with_timestamp(f"Wrote Configuration to {new_file_path}")
+        _logger.info("Wrote Configuration to %s", new_file_path)
 
     def get_current_configuration_as_environment_variable_strings(self) -> str:
         """Return the current configuration represented as environment variables."""
@@ -1191,23 +1199,25 @@ class DeviceManager(metaclass=Singleton):
                 # 16 is the MAV bit (Message Available) from the Status Byte register
                 # MAV flag is only one bit and turns off after a single response is
                 # successfully read, even if there is more in the buffer.
-                warnings.warn(
+                msg = (
                     f"\nThe device `{visa_resource.resource_info.resource_name}` had data "
                     "sitting in the VISA Output Buffer on first connection. "
                     "\nDetected data in the buffer via the Status Byte register. "
-                    "\nThe device_clear() will be called so VISA I/O buffers get flushed.",
-                    stacklevel=1,
+                    "\nThe device_clear() will be called so VISA I/O buffers get flushed."
                 )
+                warnings.warn(msg, stacklevel=1)
+                _logger.warning(msg)
             # always flush the VISA I/O Buffers on the device to clean up any stale data.
             # (note: the Events are kept in different buffers, so *ESR? is not impacted)
             visa_resource.clear()
         except visa.VisaIOError as e:
-            warnings.warn(
+            msg = (
                 f"A VISA IO error occurred when attempting to read the status byte or clear the "
                 f"output buffer of the resource `{visa_resource.resource_info.resource_name}`.\n"
-                f"Error: {e}",
-                stacklevel=1,
+                f"Error: {e}"
             )
+            warnings.warn(msg, stacklevel=1)
+            _logger.warning(msg)
         visa_resource.write("*IDN?")
         idn_response = ""
         error_msg = None
@@ -1271,14 +1281,15 @@ class DeviceManager(metaclass=Singleton):
 
         alias_string = f' "{device_config.alias}"' if device_config.alias else ""
         if device_config.device_type == DeviceTypes.UNSUPPORTED:
-            warnings.warn(
+            msg = (
                 f"An unsupported device type is being added to the {self.__class__.__name__}. "
                 f"Not all functionality will be available in the device driver. "
                 f"Please consider contributing to {PACKAGE_NAME} to implement official "
-                f"support for this device type.",
-                stacklevel=warning_stacklevel,
+                f"support for this device type."
             )
-        print_with_timestamp(f"Creating Connection to {device_config_name}{alias_string}")
+            warnings.warn(msg, stacklevel=warning_stacklevel)
+            _logger.warning(msg)
+        _logger.info("Creating Connection to %s%s", device_config_name, alias_string)
         new_device: Device
         if device_config.connection_type == ConnectionTypes.REST_API:
             device_driver_class = device_drivers[str(device_config.device_driver)]
@@ -1436,4 +1447,4 @@ def print_available_visa_devices() -> None:  # pragma: no cover
     """Print all available VISA devices to the console."""
     with contextlib.redirect_stdout(None), contextlib.redirect_stderr(None), DeviceManager() as dm:
         available_devices = dm.get_available_devices()
-    print(json.dumps(available_devices["local"], indent=2))
+    print(json.dumps(available_devices["local"], indent=2))  # noqa: T201

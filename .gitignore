@@ -5,6 +5,7 @@ tm_devices.yaml
 tm_devices.yml
 *.log
 *.dat
+**/logs/**
 
 # Poetry lock file
 poetry.lock

@@ -103,7 +103,7 @@ verbose_visa = false
             )
             with open("./temp_config.yaml", encoding="utf-8") as temp_config:
                 text = temp_config.read()
-                print(text)
+                print(text)  # noqa: T201
             assert (
                 text
                 == f"""---

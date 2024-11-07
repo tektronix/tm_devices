@@ -1,5 +1,6 @@
 """Base TekScope2k scope device driver module."""
 
+import logging
 import warnings
 
 from abc import ABC
@@ -15,6 +16,8 @@ from tm_devices.driver_mixins.shared_implementations._tektronix_pi_scope_mixin i
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.scopes.scope import Scope
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
+
+_logger: logging.Logger = logging.getLogger(__name__)
 
 
 @family_base_class
@@ -97,6 +100,7 @@ class TekScope2k(_TektronixPIScopeMixin, PIControl, Scope, ChannelControlMixin, 
                 break  # break out of loop
         if not found:
             warnings.warn(f"source not available for curve query: CH{channel_num}", stacklevel=2)
+            _logger.warning("source not available for curve query: CH%d", channel_num)
             return []
 
         self.set_and_check(":DATA:ENC", "ASCI")

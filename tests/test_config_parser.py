@@ -64,7 +64,7 @@ def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None
         f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT=10000,STANDALONE\n"
         f"TM_DEVICES=~~~{expected_device_string}~~~"
     )
-    print(config)
+    print(config)  # noqa: T201
     assert capsys.readouterr().out.strip() == expected_entry_string
 
     # test smu with serial properties
@@ -104,7 +104,7 @@ def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None
         f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT=10000,STANDALONE\n"
         f"TM_DEVICES=~~~{expected_device_string}~~~"
     )
-    print(config)
+    print(config)  # noqa: T201
     assert capsys.readouterr().out.strip() == expected_entry_string
 
     expected_device = DeviceConfigEntry(

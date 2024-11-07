@@ -148,12 +148,10 @@ class MarginTester(Device, RESTAPIControl, ABC):
         time.sleep(15)
         self._is_open = self.wait_for_network_connection(
             120,
-            verbose=False,
             accept_immediate_connection=bool(os.environ.get("TM_DEVICES_UNIT_TESTS_RUNNING")),
         )
         self._is_open &= self.wait_for_api_connection(
             120,
-            verbose=False,
             accept_immediate_connection=True,
         )
         return self._is_open

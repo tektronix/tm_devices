@@ -1,5 +1,7 @@
 """Base TekScope scope device driver module."""
 
+import logging
+
 # pylint: disable=too-many-lines
 import math
 import os
@@ -57,6 +59,8 @@ from tm_devices.helpers.enums import (
     SignalGeneratorFunctionsIAFG,
     SignalGeneratorOutputPathsBase,
 )
+
+_logger: logging.Logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -376,6 +380,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
                 break  # break out of loop
         if not found:
             warnings.warn(f"source not available for curve query: CH{channel_num}", stacklevel=2)
+            _logger.warning("source not available for curve query: CH%d", channel_num)
             return []
 
         self.set_and_check(":DATA:ENC", "ASCII")

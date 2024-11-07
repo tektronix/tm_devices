@@ -1,7 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Tests for the helpers subpackage."""
 
-import datetime
 import random
 import socket
 
@@ -12,11 +11,9 @@ from subprocess import CalledProcessError, SubprocessError
 from typing import Any, ClassVar, Dict, List, Optional, Tuple
 from unittest import mock
 
-import dateutil.parser
 import pytest
 import pyvisa as visa
 
-from dateutil.tz import tzlocal
 from packaging.version import InvalidVersion, Version
 from requests import Response
 
@@ -35,7 +32,6 @@ from tm_devices.helpers import (
     get_version,
     get_visa_backend,
     ping_address,
-    print_with_timestamp,
     sanitize_enum,
     SupportedModels,
     VALID_DEVICE_CONNECTION_TYPES,
@@ -138,7 +134,7 @@ def test_check_network_connection() -> None:
 
     stdout = StringIO()
     with redirect_stdout(stdout):
-        assert check_network_connection("name", "127.0.0.1", verbose=False)[0]
+        assert check_network_connection("name", "127.0.0.1")[0]
     assert stdout.getvalue() == ""
 
 
@@ -157,33 +153,8 @@ def test_check_port_connection() -> None:
     with redirect_stdout(stdout), mock.patch(
         "socket.socket.connect", mock.MagicMock(side_effect=socket.error(""))
     ):
-        assert not check_port_connection(
-            "name", "127.0.0.1", 55555, timeout_seconds=1, verbose=False
-        )
+        assert not check_port_connection("name", "127.0.0.1", 55555, timeout_seconds=1)
     assert stdout.getvalue() == ""
-
-
-def test_print_with_timestamp() -> None:
-    """Test the print_with_timestamp helper function."""
-    stdout = StringIO()
-    with redirect_stdout(stdout):
-        now = datetime.datetime.now(tz=tzlocal())
-        print_with_timestamp("message")
-
-    message = stdout.getvalue()
-    message_parts = message.split(" - ")
-    assert len(message_parts) == 2
-    assert message_parts[1] == "message\n"
-    parsed_datetime = dateutil.parser.parse(message_parts[0].strip())
-    allowed_difference = datetime.timedelta(
-        days=0,
-        hours=0,
-        minutes=0,
-        seconds=1,
-        microseconds=0,
-    )
-    calculated_difference = abs(parsed_datetime - now)
-    assert calculated_difference <= allowed_difference
 
 
 def test_sanitizing_enums() -> None:
@@ -260,15 +231,13 @@ def test_create_and_check_visa_connection(capsys: pytest.CaptureFixture[str]) ->
     assert "checking if a VISA connection can be made to " in stdout
     assert "Result >> True" in stdout
 
-    assert check_visa_connection(dev_config_3, SIMULATED_VISA_LIB, "dev_config_3", verbose=False)
+    assert check_visa_connection(dev_config_3, SIMULATED_VISA_LIB, "dev_config_3")
     stdout = capsys.readouterr().out
     assert "checking if a VISA connection can be made to " not in stdout
     assert "Result >> True" not in stdout
 
     with mock.patch("pyvisa.ResourceManager", mock.MagicMock(side_effect=visa.Error())):
-        assert not check_visa_connection(
-            dev_config_3, SIMULATED_VISA_LIB, "dev_config_3", verbose=False
-        )
+        assert not check_visa_connection(dev_config_3, SIMULATED_VISA_LIB, "dev_config_3")
 
 
 def test_check_for_update(capsys: pytest.CaptureFixture[str]) -> None:

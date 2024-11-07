@@ -1,6 +1,7 @@
 """Base device driver module."""
 
 import concurrent.futures
+import logging
 import socket
 import time
 
@@ -29,12 +30,13 @@ from tm_devices.helpers import (
     check_port_connection,
     ConnectionTypes,
     DeviceConfigEntry,
-    print_with_timestamp,
 )
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 _T = TypeVar("_T")
 _FAMILY_BASE_CLASS_PROPERTY_NAME = "_product_family_base_class"
+
+_logger: logging.Logger = logging.getLogger(__name__)
 
 
 def family_base_class(cls: _T) -> _T:
@@ -362,27 +364,20 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
     # Public Methods
     ################################################################################################
     @final
-    def check_network_connection(self, verbose: bool = True) -> Tuple[bool, str]:
+    def check_network_connection(self) -> Tuple[bool, str]:
         """Check the network connection to the device using an external ping command.
 
         Wrapper function for
         [`check_network_connection`][tm_devices.helpers.check_network_connection].
 
-        Args:
-            verbose: Set this to False in order to disable printouts.
-
         Returns:
             A tuple containing a boolean indicating if there is a network connection and
             a string with the result of the ping command.
         """
-        return check_network_connection(
-            self._name_and_alias, self.ip_address, verbose=verbose and self._verbose
-        )
+        return check_network_connection(self._name_and_alias, self.ip_address)
 
     @final
-    def check_port_connection(
-        self, port: int, timeout_seconds: int = 5, verbose: bool = True
-    ) -> bool:
+    def check_port_connection(self, port: int, timeout_seconds: int = 5) -> bool:
         """Check if the given port is open on the device.
 
         Wrapper function for [`check_port_connection`][tm_devices.helpers.check_port_connection].
@@ -390,7 +385,6 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         Args:
             port: The port to check.
             timeout_seconds: The number of seconds to use as the socket timeout.
-            verbose: Set this to False in order to disable printouts.
 
         Returns:
             A boolean indicating if the port is open.
@@ -400,7 +394,6 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
             self.ip_address,
             port,
             timeout_seconds=timeout_seconds,
-            verbose=verbose and self._verbose,
         )
 
     @final
@@ -411,14 +404,14 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
             verbose: Set this to False in order to disable printouts.
         """
         with self.temporary_verbose(verbose):
-            print(f"Beginning Device Cleanup on {self._name_and_alias}")
+            _logger.info("Beginning Device Cleanup on %s", self._name_and_alias)
             self._cleanup()
-            print(f"Finished Device Cleanup on {self._name_and_alias}")
+            _logger.info("Finished Device Cleanup on %s", self._name_and_alias)
 
     @final
     def close(self) -> None:
         """Close this device and all its used resources and components."""
-        print_with_timestamp(f"Closing Connection to {self._name_and_alias}")
+        _logger.info("Closing Connection to %s", self._name_and_alias)
         self._close()
 
     @final
@@ -467,21 +460,19 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
                     self.__delattr__(prop)  # pylint: disable=unnecessary-dunder-call
 
         # Reboot the device
-        print_with_timestamp(f"Rebooting {self._name_and_alias}")
+        _logger.info("Rebooting %s", self._name_and_alias)
         self._reboot()
         self.close()
         # Depending on the instrument model, shutdown time or reboot time can take longer
         if quiet_period or self._reboot_quiet_period:
             sleep_time = max(self._reboot_quiet_period, quiet_period)
-            print_with_timestamp(f"Waiting for {sleep_time} seconds")
+            _logger.info("Waiting for %d seconds", sleep_time)
             time.sleep(sleep_time)
-        print_with_timestamp(f"Reopening Connection to {self._name_and_alias}")
+        _logger.info("Reopening Connection to %s", self._name_and_alias)
         if rebooted := self._open():
-            print_with_timestamp(f"Connection Reestablished with {self._name_and_alias}")
+            _logger.info("Connection Reestablished with %s", self._name_and_alias)
         else:
-            print_with_timestamp(
-                f"Failed to reestablish the connection with {self._name_and_alias}"
-            )
+            _logger.error("Failed to reestablish the connection with %s", self._name_and_alias)
         return rebooted
 
     @final
@@ -490,7 +481,6 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         wait_time: float,
         sleep_seconds: int = 2,
         accept_immediate_connection: bool = False,
-        verbose: bool = True,
     ) -> bool:
         """Wait for a network connection to the device.
 
@@ -499,7 +489,6 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
             sleep_seconds: The number of seconds to sleep in between connection attempts.
             accept_immediate_connection: A boolean indicating if a connection on the
                                          first attempt is a valid connection.
-            verbose: Set this to False in order to disable printouts.
 
         Returns:
             A boolean indicating if a network connection was made within the given time limit.
@@ -509,13 +498,14 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         """
         attempt_num = 0
         network_connection = False
-        if verbose:
-            print_with_timestamp(
-                f"Attempting to establish a network connection with {self.ip_address}"
-            )
+        _logger.log(
+            logging.INFO if self._verbose else logging.DEBUG,
+            "Attempting to establish a network connection with %s",
+            self.ip_address,
+        )
         start_time = time.perf_counter()
         while (time.perf_counter() - start_time) <= wait_time:
-            if network_connection := self.check_network_connection(verbose=False)[0]:
+            if network_connection := self.check_network_connection()[0]:
                 # pylint: disable=compare-to-zero
                 if not (attempt_num == 0 and not accept_immediate_connection):
                     break
@@ -531,17 +521,19 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         end_time = time.perf_counter()
         total_time = end_time - start_time
 
-        if verbose:
-            if network_connection:
-                print_with_timestamp(
-                    f"Successfully established a network connection with {self.ip_address} "
-                    f"after {total_time:.2f} seconds"
-                )
-            else:
-                print_with_timestamp(
-                    f"Unable to establish a network connection with {self.ip_address} "
-                    f"after {total_time:.2f} seconds"
-                )
+        if network_connection:
+            _logger.log(
+                logging.INFO if self._verbose else logging.DEBUG,
+                "Successfully established a network connection with %s after %.2f seconds",
+                self.ip_address,
+                total_time,
+            )
+        else:
+            _logger.warning(
+                "Unable to establish a network connection with %s after %.2f seconds",
+                self.ip_address,
+                total_time,
+            )
         return network_connection
 
     def wait_for_port_connection(
@@ -550,7 +542,6 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         wait_time: float,
         sleep_seconds: int = 5,
         accept_immediate_connection: bool = False,
-        verbose: bool = True,
     ) -> bool:
         """Wait for a connection to be made to the given port on the device.
 
@@ -560,7 +551,6 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
             sleep_seconds: The number of seconds to sleep in between connection attempts.
             accept_immediate_connection: A boolean indicating if a connection on the
                                          first attempt is a valid connection.
-            verbose: Set this to False in order to disable printouts.
 
         Returns:
             A boolean indicating if a connection was made to the port within the given time limit.
@@ -570,16 +560,15 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         """
         attempt_num = 0
         port_connection = False
-        if verbose:
-            print_with_timestamp(
-                f"Attempting to establish a connection to port {port} on {self.ip_address}"
-            )
+        _logger.log(
+            logging.INFO if self._verbose else logging.DEBUG,
+            "Attempting to establish a connection to port %d on %s",
+            port,
+            self.ip_address,
+        )
         start_time = time.perf_counter()
         while (time.perf_counter() - start_time) <= wait_time:
-            port_connection = self.check_port_connection(
-                port, timeout_seconds=sleep_seconds, verbose=False
-            )
-            if port_connection:
+            if port_connection := self.check_port_connection(port, timeout_seconds=sleep_seconds):
                 # pylint: disable=compare-to-zero
                 if not (attempt_num == 0 and not accept_immediate_connection):
                     break
@@ -595,17 +584,21 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         end_time = time.perf_counter()
         total_time = end_time - start_time
 
-        if verbose:
-            if port_connection:
-                print_with_timestamp(
-                    f"Successfully established a connection to port {port} on {self.ip_address} "
-                    f"after {total_time:.2f} seconds"
-                )
-            else:
-                print_with_timestamp(
-                    f"Unable to establish a connection to port {port} on {self.ip_address} "
-                    f"after {total_time:.2f} seconds"
-                )
+        if port_connection:
+            _logger.log(
+                logging.INFO if self._verbose else logging.DEBUG,
+                "Successfully established a connection to port %d on %s after %.2f seconds",
+                port,
+                self.ip_address,
+                total_time,
+            )
+        else:
+            _logger.warning(
+                "Unable to establish a connection to port %d on %s after %.2f seconds",
+                port,
+                self.ip_address,
+                total_time,
+            )
         return port_connection
 
     ################################################################################################

@@ -138,7 +138,7 @@ def test_smu(  # noqa: PLR0915
         f"<tm_devices.commands.smu2601b_commands.SMU2601BCommands object at "
         f"{str(smu.commands).split(' at ', maxsplit=1)[-1]}"
     )
-    print(smu)
+    print(smu)  # noqa: T201
     expected_stdout = f"""{'=' * 45} SMU {smu.device_number} {'=' * 45}
   <class 'tm_devices.drivers.source_measure_units.smu26xx.smu2601b.SMU2601B'> object at {id(smu)}
     address='SMU2601B-HOSTNAME'
@@ -183,14 +183,14 @@ def test_smu(  # noqa: PLR0915
         "socket.socket.shutdown", mock.MagicMock(return_value=None)
     ):
         assert smu.wait_for_port_connection(
-            4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True, verbose=True
+            4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True
         )
         assert (
             f"Successfully established a connection to port 4000 on {smu.ip_address}"
             in capsys.readouterr().out
         )
         assert smu.wait_for_port_connection(
-            4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True, verbose=False
+            4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True
         )
         assert (
             f"Successfully established a connection to port 4000 on {smu.ip_address}"
@@ -202,11 +202,10 @@ def test_smu(  # noqa: PLR0915
                 wait_time=0.05,
                 sleep_seconds=0,
                 accept_immediate_connection=False,
-                verbose=False,
             )
     with mock.patch("socket.socket.connect", mock.MagicMock(side_effect=socket.error(""))):
         assert not smu.wait_for_port_connection(
-            4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True, verbose=True
+            4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True
         )
         assert (
             f"Successfully established a connection to port 4000 on {smu.ip_address}"
