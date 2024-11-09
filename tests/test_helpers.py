@@ -132,11 +132,6 @@ def test_check_network_connection() -> None:
     assert "ping >> 127.0.0.1" in message
     assert "Response from ping >>" in message
 
-    stdout = StringIO()
-    with redirect_stdout(stdout):
-        assert check_network_connection("name", "127.0.0.1")[0]
-    assert stdout.getvalue() == ""
-
 
 def test_check_port_connection() -> None:
     """Test checking a port connection."""
@@ -147,14 +142,10 @@ def test_check_port_connection() -> None:
         assert check_port_connection("name", "127.0.0.1", 80, timeout_seconds=1)
     message = stdout.getvalue()
     assert "(name) >> checking if port 80 is open on 127.0.0.1" in message
-    assert message.endswith("Result >> True\n")
+    assert message.endswith("(name) port 80 open = True\n")
 
-    stdout = StringIO()
-    with redirect_stdout(stdout), mock.patch(
-        "socket.socket.connect", mock.MagicMock(side_effect=socket.error(""))
-    ):
+    with mock.patch("socket.socket.connect", mock.MagicMock(side_effect=socket.error(""))):
         assert not check_port_connection("name", "127.0.0.1", 55555, timeout_seconds=1)
-    assert stdout.getvalue() == ""
 
 
 def test_sanitizing_enums() -> None:
@@ -228,13 +219,8 @@ def test_create_and_check_visa_connection(capsys: pytest.CaptureFixture[str]) ->
 
     assert check_visa_connection(dev_config_3, SIMULATED_VISA_LIB, "dev_config_3")
     stdout = capsys.readouterr().out
-    assert "checking if a VISA connection can be made to " in stdout
-    assert "Result >> True" in stdout
-
-    assert check_visa_connection(dev_config_3, SIMULATED_VISA_LIB, "dev_config_3")
-    stdout = capsys.readouterr().out
-    assert "checking if a VISA connection can be made to " not in stdout
-    assert "Result >> True" not in stdout
+    assert "(dev_config_3) >> checking if a VISA connection can be made to " in stdout
+    assert "(dev_config_3) VISA connected = True" in stdout
 
     with mock.patch("pyvisa.ResourceManager", mock.MagicMock(side_effect=visa.Error())):
         assert not check_visa_connection(dev_config_3, SIMULATED_VISA_LIB, "dev_config_3")

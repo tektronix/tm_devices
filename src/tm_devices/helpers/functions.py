@@ -229,7 +229,7 @@ def check_network_connection(device_name: str, ip_address: str) -> Tuple[bool, s
     ping_result = ping_address(ip_address)
     _logger.debug(
         "Response from ping >>\n%s",
-        ping_result.strip(),
+        "\n".join(["    " + x for x in ping_result.strip().split("\n")]),
     )
 
     return "ttl=" in ping_result.lower(), ping_result

@@ -15,7 +15,9 @@ class _AbstractDeviceControl(ABC):  # pylint: disable=too-few-public-methods  # 
 
         Args:
             config_entry: A config entry object parsed by the DMConfigParser.
-            verbose: A boolean indicating if verbose output should be printed.
+            verbose: A boolean indicating if verbose output should be printed. If True,
+                communication printouts will be logged with a level of INFO. If False,
+                communication printouts will be logged with a level of DEBUG.
         """
         self._is_open = False
         self._verbose = verbose

@@ -23,13 +23,16 @@ if TYPE_CHECKING:
 
 # pylint: disable=too-many-locals
 def test_smu(  # noqa: PLR0915
-    device_manager: DeviceManager, capsys: pytest.CaptureFixture[str]
+    device_manager: DeviceManager,
+    capsys: pytest.CaptureFixture[str],
+    caplog: pytest.LogCaptureFixture,
 ) -> None:
     """Test the SMU driver and TSP's IEEE commands.
 
     Args:
         device_manager: The DeviceManager object.
         capsys: The captured stdout and stderr.
+        caplog: The captured log messages.
     """
     smu: SMU2601B = device_manager.add_smu("smu2601b-hostname", alias="smu-device")
     assert id(device_manager.get_smu(number_or_alias="smu-device")) == id(smu)
@@ -187,15 +190,18 @@ def test_smu(  # noqa: PLR0915
         )
         assert (
             f"Successfully established a connection to port 4000 on {smu.ip_address}"
-            in capsys.readouterr().out
+            in caplog.records[-1].message
         )
-        assert smu.wait_for_port_connection(
-            4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True
-        )
+        assert caplog.records[-1].levelname == "INFO"
+        with smu.temporary_verbose(False):
+            assert smu.wait_for_port_connection(
+                4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True
+            )
         assert (
             f"Successfully established a connection to port 4000 on {smu.ip_address}"
-            not in capsys.readouterr().out
+            in caplog.records[-1].message
         )
+        assert caplog.records[-1].levelname == "DEBUG"
         with pytest.raises(AssertionError):
             smu.wait_for_port_connection(
                 4000,
@@ -207,10 +213,11 @@ def test_smu(  # noqa: PLR0915
         assert not smu.wait_for_port_connection(
             4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True
         )
-        assert (
-            f"Successfully established a connection to port 4000 on {smu.ip_address}"
-            not in capsys.readouterr().out
+        assert caplog.records[-1].message == (
+            f"Unable to establish a connection to port 4000 "
+            f"on {smu.ip_address} after 0.05 seconds"
         )
+        assert caplog.records[-1].levelname == "WARNING"
 
     buffer = smu.get_buffers("smua.nvbuffer1")
     expected_buffer = {"smua.nvbuffer1": [1.0, 2.0, 3.0, 4.0, 5.0]}

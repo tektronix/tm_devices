@@ -27,7 +27,9 @@ class MarginTester(Device, RESTAPIControl, ABC):
 
         Args:
             config_entry: A config entry object parsed by the DMConfigParser.
-            verbose: A boolean indicating if verbose output should be printed.
+            verbose: A boolean indicating if verbose output should be printed. If True,
+                communication printouts will be logged with a level of INFO. If False,
+                communication printouts will be logged with a level of DEBUG.
         """
         super().__init__(config_entry, verbose)
 

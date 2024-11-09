@@ -66,7 +66,9 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
 
         Args:
             config_entry: A config entry object parsed by the DMConfigParser.
-            verbose: A boolean indicating if verbose output should be printed.
+            verbose: A boolean indicating if verbose output should be printed. If True,
+                communication printouts will be logged with a level of INFO. If False,
+                communication printouts will be logged with a level of DEBUG.
             visa_resource: The VISA resource object.
             default_visa_timeout: The default VISA timeout value in milliseconds.
         """
@@ -124,7 +126,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             timeout_ms: The new VISA timeout, in milliseconds.
         """
         self._visa_resource.timeout = timeout_ms
-        _logger.debug("%s VISA timeout set to: %fms", self._name_and_alias, timeout_ms)
+        _logger.debug("%s VISA timeout set to: %.3fms", self._name_and_alias, timeout_ms)
 
     @property
     def visa_resource(self) -> visa.resources.MessageBasedResource:
@@ -771,7 +773,6 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         wait_time: float,
         sleep_seconds: int = 5,
         accept_immediate_connection: bool = False,
-        verbose: bool = True,
     ) -> bool:
         """Wait for a VISA connection to be made to the device.
 
@@ -780,7 +781,6 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             sleep_seconds: The number of seconds to sleep in between connection attempts.
             accept_immediate_connection: A boolean indicating if a connection on the
                                          first attempt is a valid connection.
-            verbose: Set this to False in order to disable printouts.
 
         Returns:
             A boolean indicating if a VISA connection was made within the given time limit.
@@ -791,7 +791,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         attempt_num = 0
         visa_connection = False
         _logger.log(
-            logging.INFO if verbose else logging.DEBUG,
+            logging.INFO if self._verbose else logging.DEBUG,
             "Attempting to establish a VISA connection with %s",
             self._resource_expression,
         )
@@ -815,7 +815,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
 
         if visa_connection:
             _logger.log(
-                logging.INFO if verbose else logging.DEBUG,
+                logging.INFO if self._verbose else logging.DEBUG,
                 "Successfully established a VISA connection with %s after %.2f seconds",
                 self._resource_expression,
                 total_time,

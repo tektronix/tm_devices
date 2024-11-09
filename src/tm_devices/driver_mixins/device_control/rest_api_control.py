@@ -43,7 +43,9 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
 
         Args:
             config_entry: A config entry object parsed by the DMConfigParser.
-            verbose: A boolean indicating if verbose output should be printed.
+            verbose: A boolean indicating if verbose output should be printed. If True,
+                communication printouts will be logged with a level of INFO. If False,
+                communication printouts will be logged with a level of DEBUG.
         """
         super().__init__(config_entry, verbose)
 
@@ -78,7 +80,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-        verbose: bool = True,
     ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, Optional[requests.RequestException]]:
         """Perform a DELETE request with the given url and headers.
 
@@ -92,7 +93,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             verify_ssl: A bool that indicates if the SSL certificate should be verified.
             allow_redirects: A bool that indicates if URL redirects should be allowed.
             allow_errors: A boolean indicating if errors are allowed.
-            verbose: Set this to False in order to disable printouts.
 
         Returns:
             A tuple containing a success boolean, the response data, status code, and any errors
@@ -107,7 +107,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             allow_errors=allow_errors,
             verify_ssl=verify_ssl,
             allow_redirects=allow_redirects,
-            verbose=verbose,
         )
 
     # pylint: disable=too-many-arguments
@@ -121,7 +120,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-        verbose: bool = True,
     ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, Optional[requests.RequestException]]:
         """Perform a GET request with the given url and headers.
 
@@ -135,7 +133,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             verify_ssl: A bool that indicates if the SSL certificate should be verified.
             allow_redirects: A bool that indicates if URL redirects should be allowed.
             allow_errors: A boolean indicating if errors are allowed.
-            verbose: Set this to False in order to disable printouts.
 
         Returns:
             A tuple containing a success boolean, the response data, status code, and any errors
@@ -150,7 +147,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             allow_errors=allow_errors,
             verify_ssl=verify_ssl,
             allow_redirects=allow_redirects,
-            verbose=verbose,
         )
 
     # pylint: disable=too-many-arguments
@@ -166,7 +162,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-        verbose: bool = True,
     ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, Optional[requests.RequestException]]:
         """Perform a PATCH request with the given url and headers.
 
@@ -185,7 +180,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             verify_ssl: A bool that indicates if the SSL certificate should be verified.
             allow_redirects: A bool that indicates if URL redirects should be allowed.
             allow_errors: A boolean indicating if errors are allowed.
-            verbose: Set this to False in order to disable printouts.
 
         Returns:
             A tuple containing a success boolean, the response data, status code, and any errors
@@ -202,7 +196,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             allow_errors=allow_errors,
             verify_ssl=verify_ssl,
             allow_redirects=allow_redirects,
-            verbose=verbose,
         )
 
     # pylint: disable=too-many-arguments
@@ -218,7 +211,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-        verbose: bool = True,
     ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, Optional[requests.RequestException]]:
         """Perform a POST request with the given url and headers.
 
@@ -237,7 +229,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             verify_ssl: A bool that indicates if the SSL certificate should be verified.
             allow_redirects: A bool that indicates if URL redirects should be allowed.
             allow_errors: A boolean indicating if errors are allowed.
-            verbose: Set this to False in order to disable printouts.
 
         Returns:
             A tuple containing a success boolean, the response data, status code, and any errors
@@ -254,7 +245,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             allow_errors=allow_errors,
             verify_ssl=verify_ssl,
             allow_redirects=allow_redirects,
-            verbose=verbose,
         )
 
     # pylint: disable=too-many-arguments
@@ -270,7 +260,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-        verbose: bool = True,
     ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, Optional[requests.RequestException]]:
         """Perform a PUT request with the given url and headers.
 
@@ -289,7 +278,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             verify_ssl: A bool that indicates if the SSL certificate should be verified.
             allow_redirects: A bool that indicates if URL redirects should be allowed.
             allow_errors: A boolean indicating if errors are allowed.
-            verbose: Set this to False in order to disable printouts.
 
         Returns:
             A tuple containing a success boolean, the response data, status code, and any errors
@@ -306,7 +294,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             allow_errors=allow_errors,
             verify_ssl=verify_ssl,
             allow_redirects=allow_redirects,
-            verbose=verbose,
         )
 
     def set_api_version(self, api_version: int) -> None:
@@ -411,7 +398,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         allow_errors: bool = False,
         verify_ssl: bool = True,
         allow_redirects: bool = False,
-        verbose: bool = True,
     ) -> Tuple[bool, Union[Dict[str, Any], bytes], int, Optional[requests.RequestException]]:
         """Perform a request with the given url and headers.
 
@@ -431,7 +417,6 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
             verify_ssl: A bool that indicates if the SSL certificate should be verified.
             allow_redirects: A bool that indicates if URL redirects should be allowed.
             allow_errors: A boolean indicating if errors are allowed.
-            verbose: Set this to False in order to disable printouts.
 
         Returns:
             A tuple containing a success boolean, the response data, status code, and any errors
@@ -450,10 +435,10 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         response = cast(requests.Response, None)
         retval: Union[Dict[str, Any], bytes] = {}
         _logger.log(
-            logging.INFO if verbose else logging.DEBUG,
+            logging.INFO if self._verbose else logging.DEBUG,
             "(%s) %s >> %s%s%s",
             self._name_and_alias,
-            request_type.value,
+            getattr(request_type, "value", request_type),
             url,
             f", {headers=}" if headers else "",
             f", {json_body=}" if json_body else "",
@@ -515,7 +500,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
                 raise ValueError(msg)
 
             _logger.log(
-                logging.INFO if verbose else logging.DEBUG,
+                logging.INFO if self._verbose else logging.DEBUG,
                 "Response from %s >>\n%s",
                 request_type.value,
                 json.dumps(response.json(), indent=2) if not return_bytes else response.text,

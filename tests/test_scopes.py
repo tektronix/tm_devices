@@ -364,12 +364,15 @@ def test_exceptions(device_manager: DeviceManager) -> None:
     device_manager.remove_all_devices()
 
 
-def test_tekscope70k(device_manager: DeviceManager, capsys: pytest.CaptureFixture[str]) -> None:
+def test_tekscope70k(
+    device_manager: DeviceManager,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     """Test the tekscope_70k implementation.
 
     Args:
         device_manager: The DeviceManager object.
-        capsys: The captured stdout and stderr.
+        caplog: The captured log messages.
     """
     scope: TekScope5k7k70k = device_manager.add_scope("127.0.0.1")
     assert scope.ip_address == "127.0.0.1"
@@ -378,27 +381,32 @@ def test_tekscope70k(device_manager: DeviceManager, capsys: pytest.CaptureFixtur
     assert scope.wait_for_network_connection(
         wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True
     )
-    assert (
+    assert caplog.records[-1].message.startswith(
         f"Successfully established a network connection with {scope.ip_address}"
-        in capsys.readouterr().out
     )
-    assert scope.wait_for_network_connection(
-        wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True
-    )
-    assert (
-        f"Successfully established a network connection with {scope.ip_address}"
-        not in capsys.readouterr().out
-    )
+    assert caplog.records[-1].levelname == "INFO"
+
+    with scope.temporary_verbose(False):
+        assert scope.wait_for_network_connection(
+            wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True
+        )
+        assert caplog.records[-1].message.startswith(
+            f"Successfully established a network connection with {scope.ip_address}"
+        )
+        assert caplog.records[-1].levelname == "DEBUG"
+
     with mock.patch(
         "subprocess.check_output", mock.MagicMock(side_effect=subprocess.CalledProcessError(1, ""))
     ):
         assert not scope.wait_for_network_connection(
             wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True
         )
-        assert (
-            f"Unable to establish a network connection with {scope.ip_address}"
-            in capsys.readouterr().out
+        assert caplog.records[-1].message == (
+            f"Unable to establish a network connection with "
+            f"{scope.ip_address} after 0.05 seconds"
         )
+        assert caplog.records[-1].levelname == "WARNING"
+
     with pytest.raises(AssertionError):
         scope.wait_for_network_connection(
             wait_time=0.05, sleep_seconds=1, accept_immediate_connection=False

@@ -169,11 +169,18 @@ class TSPControl(PIControl, ABC):
         def fix_width(key: str, value: Any) -> str:  # Function to add spaces if needed
             return str(value) + " " * (column_widths[key] - len(str(value)))
 
-        print(*[fix_width(x, x) for x in buffer_data])  # noqa: T201
-        for index in range(column_length):
-            print(  # noqa: T201
-                *[fix_width(k, v[index] if index < len(v) else "") for k, v in buffer_data.items()]
-            )
+        buffer_headers = [fix_width(x, x) for x in buffer_data]
+        buffer_rows: List[List[Any]] = [
+            [fix_width(k, v[index] if index < len(v) else "") for k, v in buffer_data.items()]
+            for index in range(column_length)
+        ]
+        _logger.info(
+            "(%s) Printing Buffers %s >>\n%s\n%s",
+            self._name_and_alias,
+            buffer_headers,
+            " ".join(buffer_headers),
+            "\n".join(" ".join(row) for row in buffer_rows),
+        )
 
     def run_script(self, script_name: str) -> None:
         """Run a TSP script on the instrument.

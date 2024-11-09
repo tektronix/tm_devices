@@ -1,7 +1,9 @@
 """Pytest configuration file."""
 
+import logging
 import os
 import socket
+import sys
 
 from pathlib import Path
 from typing import Generator, List, Tuple
@@ -22,6 +24,29 @@ os.environ[DMConfigParser.CONFIG_FILE_PATH_ENV_VARIABLE] = ""
 PROJECT_ROOT_DIR = Path(__file__).parent.parent
 SIMULATED_VISA_LIB = str(Path(__file__).parent / "sim_devices/devices.yaml@sim")
 UNIT_TEST_TIMEOUT = 50
+
+
+####################################################################################################
+# Configure the logging for the package that will run during unit tests
+class _DynamicStreamHandler(logging.StreamHandler):  # pyright: ignore[reportMissingTypeArgument]
+    def emit(self, record: logging.LogRecord) -> None:
+        self.stream = sys.stdout
+        super().emit(record)
+
+
+_logger = configure_logging(
+    console_logging_level=LoggingLevels.NONE,
+    file_logging_level=LoggingLevels.NONE,
+)
+_unit_test_console_handler = _DynamicStreamHandler(stream=sys.stdout)
+_unit_test_console_handler.setLevel(logging.DEBUG)
+_unit_test_console_formatter = logging.Formatter("%(asctime)s - %(message)s")
+_unit_test_console_formatter.default_msec_format = (
+    "%s.%06d"  # Use 6 digits of precision for milliseconds
+)
+_unit_test_console_handler.setFormatter(_unit_test_console_formatter)
+_logger.addHandler(_unit_test_console_handler)
+####################################################################################################
 
 
 def mock_gethostbyname(address: str) -> str:
@@ -70,7 +95,6 @@ def fixture_device_manager() -> Generator[DeviceManager, None, None]:
     Yields:
         The DeviceManager instance.
     """
-    configure_logging(console_logging_level=LoggingLevels.DEBUG)
     print()  # noqa: T201
     with mock.patch(
         "socket.gethostbyname", mock.MagicMock(side_effect=mock_gethostbyname)

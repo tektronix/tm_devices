@@ -46,6 +46,9 @@ However, please read through all changes to be aware of what may potentially imp
 - _**<span style="color:red">BREAKING CHANGE</span>**_: Changed the behavior of the `expect_esr()` method to expect an integer error code input and an optional tuple of error messages to compare against the actual error code and messages returned by the `_get_errors()` private method.
 - _**<span style="color:orange">minor breaking change</span>**_: Converted the `device_type` property into an abstract, cached property to force all children of the `Device` class to specify what type of device they are.
 - Updated the auto-generated command mixin classes to no longer use an `__init__()` method to enable the driver API documentation to render in a more usable way.
+- Switched from using standard `print()` calls to using the `logging` module for all logging in the `tm_devices` package.
+    - A configuration function provides the ability to set different logging levels for stdout and file logging.
+    - The debug logging from the `pyvisa` package is also included in the log file by default.
 
 ### Removed
 

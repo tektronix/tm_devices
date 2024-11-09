@@ -36,6 +36,7 @@ from tm_devices.helpers.functions import (
     register_additional_usbtmc_mapping,
     sanitize_enum,
 )
+from tm_devices.helpers.logging import configure_logging
 from tm_devices.helpers.read_only_cached_property import ReadOnlyCachedProperty
 from tm_devices.helpers.singleton_metaclass import Singleton
 from tm_devices.helpers.standalone_functions import validate_address
@@ -49,6 +50,7 @@ __all__ = [
     "check_network_connection",
     "check_port_connection",
     "check_visa_connection",
+    "configure_logging",
     "create_visa_connection",
     "detect_visa_resource_expression",
     "DeviceConfigEntry",

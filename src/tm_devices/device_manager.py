@@ -37,6 +37,7 @@ from tm_devices.drivers.systems_switches.systems_switch import SystemsSwitch
 from tm_devices.helpers import (
     AliasDict,
     check_for_update,
+    configure_logging,
     ConnectionTypes,
     create_visa_connection,
     detect_visa_resource_expression,
@@ -135,11 +136,7 @@ class DeviceManager(metaclass=Singleton):
                 (updates the current configuration options).
             external_device_drivers: An optional dict for passing in additional device drivers.
         """
-        # pylint: disable=import-outside-toplevel
-        if not logging.getLogger(PACKAGE_NAME).hasHandlers():
-            from tm_devices.helpers.logging import configure_logging
-
-            configure_logging()
+        configure_logging()
         self._suppress_protection = False
         # Set up the DeviceManager
         self.__is_open = False
@@ -260,8 +257,11 @@ class DeviceManager(metaclass=Singleton):
             visa.log_to_screen()
         else:
             for handler in visa.logger.handlers.copy():
-                if "DEBUG" in str(handler):
-                    visa.logger.removeHandler(handler)
+                if "DEBUG" in str(handler) and (
+                    isinstance(handler, logging.StreamHandler)
+                    and not isinstance(handler, logging.FileHandler)
+                ):
+                    visa.logger.removeHandler(handler)  # pyright: ignore[reportUnknownArgumentType]
         self.__config.options.verbose_visa = value
         self.__verbose_visa = value
 

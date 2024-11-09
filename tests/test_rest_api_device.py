@@ -28,7 +28,7 @@ class CustomRestApiDevice(RESTAPIControl, Device):
 
     def _check_api_connection(self) -> bool:
         """Define abstract method _check_api_connection."""
-        return self.get("/api", verbose=False, allow_errors=True)[0]
+        return self.get("/api", allow_errors=True)[0]
 
     def _close(self) -> None:
         """Define abstract method _close."""
