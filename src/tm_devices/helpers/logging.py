@@ -78,7 +78,6 @@ def configure_logging(
         log_file_name = f"{PACKAGE_NAME}_{time.strftime('%m-%d-%Y_%H-%M-%S', time.localtime())}.log"
     log_filepath = log_file_directory / log_file_name
 
-    # TODO: logging: look into rotating log files
     if file_logging_level != LoggingLevels.NONE:
         # Set up logger for tm_devices
         log_filepath.parent.mkdir(parents=True, exist_ok=True)

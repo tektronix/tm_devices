@@ -26,6 +26,12 @@ Things to be included in the next release go here.
 - Added the `get_errors()` method to the `Device` class to enable easy access to the current error code and messages on any device.
 - Added more details to the Architectural Overview page of the documentation as well as highlighting to the device driver diagram on the page.
 - Added regex matching to the `verify_values()` helper function to allow for more flexible value verification.
+- A main logfile is now created by default (can be disabled if desired) that contains all the logging output of the entire tm_devices package during execution.
+    - Use the `configure_logging()` function to set the logging levels for stdout and file logging.
+    - The default settings will log all messages to the log file and maintain the current printout functionality on stdout.
+- A logfile is now created that contains each command sent to a VISA device.
+    - This file is located next to the main log file and will start with the same name, but have the unique address of the device appended.
+    - This file will only be created if file logging is enabled for the package (which is the default behavior).
 
 ### Changed
 

@@ -1,6 +1,8 @@
 """Base Programmable Interface (PI) control class module."""
 
+import contextlib
 import logging
+import logging.handlers
 import os
 import socket
 import time
@@ -8,6 +10,7 @@ import warnings
 
 from abc import ABC
 from contextlib import contextmanager
+from pathlib import Path
 from typing import final, Generator, List, Optional, Sequence, Tuple, Union
 
 import pyvisa as visa
@@ -35,6 +38,7 @@ from tm_devices.helpers import (
     verify_values,
 )
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
+from tm_devices.helpers.constants_and_dataclasses import PACKAGE_NAME
 
 _logger: logging.Logger = logging.getLogger(__name__)
 
@@ -339,14 +343,13 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             Error: An error occurred while sending the command.
             SystemError: An empty string was returned from the device.
         """
-        # TODO: logging: Log just the query to a device specific file
         _logger.log(
             logging.INFO if self._verbose and verbose else logging.DEBUG,
             "(%s) Query >>  %r",
             self._name_and_alias,
             query,
         )
-
+        self._command_logger.debug(query)
         try:
             response = self._visa_resource.query(query).strip()
             if remove_quotes:
@@ -386,14 +389,13 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             Error: An error occurred while sending the command.
             SystemError: An empty string was returned from the device.
         """
-        # TODO: logging: Log just the query to a device specific file
         _logger.log(
             logging.INFO if self._verbose and verbose else logging.DEBUG,
             "(%s) Query Binary Values >>  %r",
             self._name_and_alias,
             query,
         )
-
+        self._command_logger.debug(query)
         try:
             response = self._visa_resource.query_binary_values(query)  # pyright: ignore[reportUnknownMemberType]
         except (visa.VisaIOError, socket.error) as error:
@@ -516,14 +518,13 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             Error: An error occurred while sending the command.
             SystemError: An empty string was returned from the device.
         """
-        # TODO: logging: Log just the query to a device specific file
         _logger.log(
             logging.INFO if self._verbose and verbose else logging.DEBUG,
             "(%s) Query Raw Binary >>  %r",
             self._name_and_alias,
             query,
         )
-
+        self._command_logger.debug(query)
         try:
             self._visa_resource.write(query)
             response = self.read_raw()
@@ -841,7 +842,6 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             Error: An error occurred while sending the command.
             SystemError: ``*OPC?`` did not return "1" after sending the command.
         """
-        # TODO: logging: Log just the write to a device specific file
         if "\n" in command:
             _logger.log(
                 logging.INFO if self._verbose and verbose else logging.DEBUG,
@@ -856,7 +856,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
                 self._name_and_alias,
                 command,
             )
-
+        self._command_logger.debug(command)
         try:
             self._visa_resource.write(command)
         except (visa.VisaIOError, socket.error) as error:
@@ -879,14 +879,13 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         Raises:
             Error: An error occurred while sending the command.
         """
-        # TODO: logging: Log just the write to a device specific file
         _logger.log(
             logging.INFO if self._verbose and verbose else logging.DEBUG,
             "(%s) Write Raw >>  %r",
             self._name_and_alias,
             command,
         )
-
+        self._command_logger.debug(command)
         try:
             self._visa_resource.write_raw(command)
         except (visa.VisaIOError, socket.error) as error:
@@ -955,6 +954,38 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             _logger.exception(error_msg)
         self._visa_resource = None  # pyright: ignore[reportAttributeAccessIssue]
         self._is_open = False
+
+    @cached_property
+    def _command_logger(self) -> logging.Logger:
+        """Create a logger that will be used to log commands sent via write/query-like methods."""
+        # Create the logger
+        command_logger = logging.getLogger(f"{self._config_entry.address}-visa_logger")
+        command_logger.setLevel(logging.DEBUG)
+        command_logger.propagate = False
+        command_logger.addHandler(logging.NullHandler())
+        with contextlib.suppress(IndexError, StopIteration):
+            # Get the top-level log filepath
+            main_log_file = Path(
+                next(
+                    x
+                    for x in logging.getLogger(PACKAGE_NAME).handlers
+                    if isinstance(x, logging.FileHandler)
+                ).baseFilename
+            )
+            # Create the handler with the filename based on the main log file
+            command_log_handler = logging.FileHandler(
+                main_log_file.as_posix().replace(
+                    main_log_file.suffix, f"_visa_commands_{self._config_entry.address}.log"
+                ),
+                mode="w",
+                encoding="utf-8",
+            )
+            # Create the formatter
+            command_log_formatter = logging.Formatter("%(message)s")
+            command_log_handler.setFormatter(command_log_formatter)
+            command_log_handler.setLevel(logging.DEBUG)
+            command_logger.addHandler(command_log_handler)
+        return command_logger
 
     def _open(self) -> bool:
         """Open necessary resources and components and return a boolean indicating success."""
