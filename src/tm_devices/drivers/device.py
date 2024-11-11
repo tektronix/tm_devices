@@ -150,7 +150,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
     def _reboot(self) -> None:
         """Perform the actual rebooting code."""
         raise NotImplementedError(
-            f"``._reboot()`` is not yet implemented for the {self.__class__.__name__} driver"
+            f"``._reboot()`` is not yet implemented for the {self.__class__.__name__} driver",  # noqa: EM102
         )
 
     ################################################################################################
@@ -181,7 +181,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
     def command_argument_constants(self) -> Any:
         """Return the device command argument constants."""
         raise NotImplementedError(
-            f"The {self.__class__.__name__} driver does not have a Python API for its commands yet."
+            f"The {self.__class__.__name__} driver does not have a Python API for its commands yet."  # noqa: EM102
         )
 
     @property
@@ -216,7 +216,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
     def commands(self) -> Any:
         """Return the device commands."""
         raise NotImplementedError(
-            f"The {self.__class__.__name__} driver does not have a Python API for its commands yet."
+            f"The {self.__class__.__name__} driver does not have a Python API for its commands yet."  # noqa: EM102
         )
 
     @cached_property

@@ -136,7 +136,6 @@ class DeviceManager(metaclass=Singleton):
                 (updates the current configuration options).
             external_device_drivers: An optional dict for passing in additional device drivers.
         """
-        configure_logging()
         self._suppress_protection = False
         # Set up the DeviceManager
         self.__is_open = False
@@ -158,6 +157,9 @@ class DeviceManager(metaclass=Singleton):
             check_for_update()
         # actually populate the options
         self.__set_options(verbose)
+
+        # TODO: logging: pass in necessary config options to the logger
+        configure_logging()
 
         self.open()
 

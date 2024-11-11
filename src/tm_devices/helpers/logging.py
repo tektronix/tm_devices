@@ -33,10 +33,14 @@ def configure_logging(
     file_logging_level: LoggingLevels = LoggingLevels.DEBUG,
     log_file_directory: Optional[Path] = None,
     log_file_name: Optional[str] = None,
-    colored_output: bool = True,
+    colored_output: bool = False,
     include_pyvisa_logs: bool = True,
 ) -> logging.Logger:  # pragma: no cover
     """Configure the logging for this package.
+
+    !!! note
+        After this function is called once, if it is called again, it will not perform any
+        additional configuration. It will simply return the base logger for the package.
 
     Args:
         console_logging_level: The logging level to set for the console. Defaults to INFO. Set to
@@ -49,7 +53,7 @@ def configure_logging(
             current working directory.
         log_file_name: The name of the log file to save the logs to. Defaults to a timestamped name.
         colored_output: Whether to use colored output from the `colorlog` package for the console.
-            Defaults to True.
+            Defaults to False.
         include_pyvisa_logs: Whether to include logs from the `pyvisa` package in the log file. The
             logging level will match the `file_logging_level`. Defaults to True.
 

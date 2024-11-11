@@ -155,10 +155,10 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     scope.expect_esr(0, ('0,"No events to report - queue empty"',))
 
     # Test curve query write to csv functionality with multi-frame curve
-    filepath = f"temp_{sys.version_info.major}{sys.version_info.minor}.csv"
+    filepath = pathlib.Path(f"temp_{sys.version_info.major}{sys.version_info.minor}.csv")
     try:
-        curve = scope.curve_query(1, wfm_type="TimeDomain", output_csv_file=filepath)
-        with open(filepath, encoding="utf8") as curve_csv:
+        curve = scope.curve_query(1, wfm_type="TimeDomain", output_csv_file=filepath.as_posix())
+        with filepath.open(encoding="utf8") as curve_csv:
             # Remove trailing command a format string as list of ints based on commas
             curve_reformatted_from_file = list(map(int, curve_csv.read()[:-1].split(",")))
             # Flatten list of lists returned from multi-frame curve query
@@ -589,7 +589,7 @@ def test_tekscope2k(device_manager: DeviceManager, tmp_path: pathlib.Path) -> No
 
     filename = tmp_path / "temp.txt"
     curve = scope.curve_query(1, wfm_type="TimeDomain", output_csv_file=str(filename))
-    with open(filename, encoding="utf8") as curve_csv:
+    with filename.open(encoding="utf8") as curve_csv:
         curve_reformatted_from_file = list(map(float, curve_csv.read()[:-1].split(",")))
         assert curve == curve_reformatted_from_file
 

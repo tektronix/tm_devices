@@ -233,12 +233,12 @@ def test_smu(  # noqa: PLR0915
     for value in (1.0, 2.0, 3.0, 4.0, 5.0):
         assert str(value) in stdout
 
-    filepath = f"./temp_test_{sys.version_info.major}{sys.version_info.minor}.csv"
+    filepath = Path(f"./temp_test_{sys.version_info.major}{sys.version_info.minor}.csv")
 
     try:
-        smu.export_buffers(filepath, "smua.nvbuffer1")
-        assert os.path.exists(filepath)  # noqa: PTH110
-        with open(filepath, encoding="utf-8") as file:
+        smu.export_buffers(filepath.as_posix(), "smua.nvbuffer1")
+        assert filepath.exists()
+        with filepath.open(encoding="utf-8") as file:
             lines = file.readlines()
             for index, value in enumerate(["smua.nvbuffer1", "1.0", "2.0", "3.0", "4.0", "5.0"]):
                 assert value in lines[index]

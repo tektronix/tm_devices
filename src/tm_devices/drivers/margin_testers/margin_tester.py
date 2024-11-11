@@ -4,7 +4,8 @@ import os
 import time
 
 from abc import ABC, abstractmethod
-from typing import Any, Dict, Mapping, MutableMapping, Tuple
+from pathlib import Path
+from typing import Any, Dict, Mapping, MutableMapping, Tuple, Union
 
 from packaging.version import Version
 from requests.structures import CaseInsensitiveDict
@@ -33,7 +34,7 @@ class MarginTester(Device, RESTAPIControl, ABC):
         """
         super().__init__(config_entry, verbose)
 
-        self._auth_token_file_path = ""
+        self._auth_token_file_path: Path = Path()
 
     ################################################################################################
     # Abstract Cached Properties
@@ -91,12 +92,12 @@ class MarginTester(Device, RESTAPIControl, ABC):
     @property
     def auth_token_file_path(self) -> str:
         """Return the path to the file containing the auth token."""
-        return self._auth_token_file_path
+        return self._auth_token_file_path.as_posix()
 
     @auth_token_file_path.setter
-    def auth_token_file_path(self, value: str) -> None:
+    def auth_token_file_path(self, value: Union[str, os.PathLike[str]]) -> None:
         """Set the path to the file containing the auth token."""
-        self._auth_token_file_path = value
+        self._auth_token_file_path = Path(value)
 
     ################################################################################################
     # Public Methods
@@ -119,7 +120,11 @@ class MarginTester(Device, RESTAPIControl, ABC):
         Raises:
             AssertionError: Indicates that no auth token file is available.
         """
-        if not self._auth_token_file_path:
+        if not (
+            self._auth_token_file_path
+            and self._auth_token_file_path.exists()
+            and self._auth_token_file_path.is_file()
+        ):
             msg = (
                 "No auth token file set! Please set the ``.auth_token_file_path`` attribute "
                 "to point to a file with an authorization token."
@@ -127,8 +132,7 @@ class MarginTester(Device, RESTAPIControl, ABC):
             raise AssertionError(msg)
         headers: MutableMapping[str, str] = CaseInsensitiveDict()
         headers["Accept"] = "application/json"
-        with open(self._auth_token_file_path, encoding="utf-8") as auth_file:
-            token = auth_file.read().replace("\n", "")
+        token = self._auth_token_file_path.read_text(encoding="utf-8").replace("\n", "")
         headers["Authorization"] = f"Bearer {token}"
         return headers
 

@@ -265,8 +265,8 @@ def define_env(env: MacrosPlugin) -> None:
             used to perform a transformation
     """
     # Read in the current package version number to use in templates and files
-    with open(
-        pathlib.Path(f"{pathlib.Path(__file__).parents[1]}") / "pyproject.toml", "rb"
+    with (pathlib.Path(f"{pathlib.Path(__file__).parents[1]}") / "pyproject.toml").open(
+        "rb"
     ) as file_handle:
         pyproject_data = tomli.load(file_handle)
         package_version = "v" + pyproject_data["tool"]["poetry"]["version"]

@@ -5,6 +5,7 @@ from __future__ import annotations
 import logging
 
 from abc import ABC
+from pathlib import Path
 from typing import Any, Dict, List, Optional, TYPE_CHECKING, Union
 
 from tm_devices.driver_mixins.device_control.pi_control import PIControl
@@ -52,7 +53,9 @@ class TSPControl(PIControl, ABC):
     ################################################################################################
     # Public Methods
     ################################################################################################
-    def export_buffers(self, filepath: str, *args: str, sep: str = ",") -> None:
+    def export_buffers(
+        self, filepath: Union[str, os.PathLike[str]], *args: str, sep: str = ","
+    ) -> None:
         """Export one or more of the device's buffers to the given filepath.
 
         Args:
@@ -60,7 +63,7 @@ class TSPControl(PIControl, ABC):
             args: The buffer name(s) to export.
             sep: The delimiter used to separate data. Defaults to ",".
         """
-        with open(filepath, mode="w", encoding="utf-8") as file:
+        with Path(filepath).open(mode="w", encoding="utf-8") as file:
             buffer_data = self.get_buffers(*args)
             column_length = max(len(x) for x in buffer_data.values())
             file.write(sep.join(buffer_data) + "\n")
@@ -137,8 +140,7 @@ class TSPControl(PIControl, ABC):
         """
         if file_path is not None:
             # script_body argument is overwritten by file contents
-            with open(file_path, encoding="utf-8") as script_tsp:
-                script_body = script_tsp.read().strip()
+            script_body = Path(file_path).read_text(encoding="utf-8").strip()
 
         # Check if the script exists, delete it if it does
         self.write(f"if {script_name} ~= nil then script.delete('{script_name}') end")

@@ -319,26 +319,19 @@ fixable = ["ALL"]
 flake8-pytest-style = {mark-parentheses = false}
 flake8-quotes = {docstring-quotes = "double"}
 ignore = [
-  "ANN101",  # Missing type annotation for self in method
-  "ANN102",  # Missing type annotation for cls in method
-  "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in *args and **kwargs
-  "COM812",  # Trailing comma missing
-  "EM102",  # Exception must not use an f-string literal, assign to variable first
-  "FA100",  # Missing `from __future__ import annotations`, but uses ...
-  "FBT",  # flake8-boolean-trap
-  "FIX002",  # Line contains TO DO
+  "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in *args and **kwargs (allowed in this package)
+  "COM812",  # Trailing comma missing (allowed in this package)
+  "FA100",  # Missing `from __future__ import annotations`, but uses ... (allowed in this package)
+  "FBT",  # flake8-boolean-trap  # TODO: logging: remove this exclusion?
+  "FIX002",  # Line contains TO DO (allowed in this package)
   "ISC001",  # single-line-implicit-string-concatenation (handled by formatter)
-  "PTH109",  # `os.getcwd()` should be replaced by `Path.cwd()`
-  "PTH123",  # `open()` should be replaced by `Path.open()`
-  "PTH207",  # Replace `iglob` with `Path.glob` or `Path.rglob`
-  "PYI021",  # Docstrings should not be included in stubs
-  "TD002",  # Missing author in TO DO
-  "TD003",  # Missing issue link on the line following this TO DO
-  "TRY301",  # Abstract raise to an inner function
-  "UP006",  # Use {to} instead of {from} for type annotation
-  "UP007",  # Use `X | Y` for type annotations
-  "UP024",  # Replace aliased errors with `OSError`
-  "UP037"  # Remove quotes from type annotation
+  "PYI021",  # Docstrings should not be included in stubs (allowed in this package)
+  "TD002",  # Missing author in TO DO (allowed in this package)
+  "TD003",  # Missing issue link on the line following this TO DO (allowed in this package)
+  "UP006",  # Use {to} instead of {from} for type annotation (allowed in this package)
+  "UP007",  # Use `X | Y` for type annotations (allowed in this package)
+  "UP024",  # Replace aliased errors with `OSError` (allowed in this package)
+  "UP037"  # Remove quotes from type annotation (allowed in this package)
 ]
 pydocstyle = {convention = "google"}
 pylint = {max-args = 7}

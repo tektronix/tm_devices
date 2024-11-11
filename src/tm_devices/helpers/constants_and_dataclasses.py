@@ -306,7 +306,7 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
                     )
                 )
             ):
-                raise ValueError
+                raise ValueError  # noqa: TRY301
         except ValueError as exc:
             msg = f"""Found invalid value of `address={self.address}`
         Must provide an valid address format for the `connection_type={self.connection_type.value}':

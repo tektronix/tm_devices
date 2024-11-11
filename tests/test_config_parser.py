@@ -179,7 +179,7 @@ options:
     }
     with mock.patch.dict("os.environ", {}, clear=True), mock.patch(
         "pathlib.Path.is_file", mock.MagicMock(return_value=True)
-    ), mock.patch("builtins.open", mock.mock_open(read_data=file_contents)):
+    ), mock.patch("pathlib.Path.open", mock.mock_open(read_data=file_contents)):
         config = DMConfigParser()
 
     assert expected_options == config.options
@@ -251,9 +251,7 @@ def test_file_config_non_default_path(
     config_2.load_config_file(os_environ["TM_DEVICES_CONFIG"])
 
     # Read in the golden files
-    with open(os_environ["TM_DEVICES_CONFIG"], encoding="utf-8") as config_file:
-        text = config_file.read()
-
+    text = Path(os_environ["TM_DEVICES_CONFIG"]).read_text(encoding="utf-8")
     assert config.to_config_file_text(file_type) == text, "issue generating config file text"
     assert config_2.to_config_file_text(file_type) == text, "issue generating config file text"
 

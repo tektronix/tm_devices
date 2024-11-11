@@ -57,7 +57,7 @@ def mock_gethostbyname(address: str) -> str:
         is_hostname = validate_address(address)
         if not is_hostname:  # pylint: disable=consider-using-assignment-expr
             return address
-        raise ValueError
+        raise ValueError  # noqa: TRY301
     except ValueError as error:
         raise socket.herror from error
 
@@ -68,7 +68,7 @@ def mock_gethostbyaddr(address: str) -> Tuple[str, List[str], List[str]]:
         is_hostname = validate_address(address)
         if is_hostname:  # pylint: disable=consider-using-assignment-expr
             return address, [], []
-        raise ValueError
+        raise ValueError  # noqa: TRY301
     except ValueError as error:
         raise socket.herror from error
 

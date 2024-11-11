@@ -327,7 +327,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
         self,
         channel_num: int,
         wfm_type: str = "TimeDomain",
-        output_csv_file: Optional[str] = None,
+        output_csv_file: Optional[Union[str, os.PathLike[str]]] = None,
     ) -> List[Any]:
         """Perform a curve query on a specific channel.
 
@@ -397,7 +397,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
                 wfm_data.append([float(b) for b in frame.split(",")])  # noqa: PERF401
 
         if output_csv_file:
-            with open(output_csv_file, "w", encoding="UTF-8") as csv_file:
+            with Path(output_csv_file).open("w", encoding="UTF-8") as csv_file:
                 for frame in frames:
                     csv_file.write(frame)
                     csv_file.write(",")

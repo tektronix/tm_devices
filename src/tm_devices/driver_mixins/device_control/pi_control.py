@@ -250,7 +250,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         """Return the VISA status byte."""
         return self._visa_resource.read_stb()
 
-    def poll_query(  # noqa: PLR0913
+    def poll_query(  # noqa: PLR0913  # pylint: disable=too-many-locals
         self,
         number_of_polls: int,
         query: str,
@@ -315,10 +315,11 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
                     return
             time.sleep(sleep_time)
             poll_number += 1
-        raise AssertionError(  # noqa: TRY003
+        msg = (
             f"{query} {'never' if not invert_range else 'always'} "
             f"returned {wanted_val}, received:\n{query_list}"
         )
+        raise AssertionError(msg)
 
     def query(  # pylint: disable=arguments-differ
         self,

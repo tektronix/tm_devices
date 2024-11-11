@@ -48,7 +48,7 @@ def main() -> None:
     starting_dir = Path.cwd()
     try:
         if RUNNING_IN_VIRTUALENV:
-            raise IndexError
+            raise IndexError  # noqa: TRY301
         # This requires contributors to use newer versions of Python even
         # though the package supports older versions.
         if sys.version_info < (3, 9):
@@ -76,7 +76,7 @@ def main() -> None:
         files = list(
             filter(
                 lambda x: "site-packages" not in x and "pythonw" not in x,
-                glob.iglob(
+                glob.iglob(  # noqa: PTH207
                     f"{virtual_env_dir}/{'bin' if RUNNING_ON_LINUX else 'Scripts'}/**/python*",
                     recursive=True,
                 ),

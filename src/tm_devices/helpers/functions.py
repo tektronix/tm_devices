@@ -524,7 +524,7 @@ def get_visa_backend(visa_lib_path: str) -> str:
         if visa_lib_path == "py":
             visa_name = "PyVISA-py"
         else:
-            raise KeyError
+            raise KeyError  # noqa: TRY301
     except KeyError:
         found_visa = False
         for visa_type in visa_backends:

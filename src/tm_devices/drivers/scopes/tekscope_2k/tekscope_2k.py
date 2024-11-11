@@ -1,10 +1,13 @@
 """Base TekScope2k scope device driver module."""
 
+from __future__ import annotations
+
 import logging
 import warnings
 
 from abc import ABC
-from typing import Any, List, Optional
+from pathlib import Path
+from typing import Any, List, Optional, TYPE_CHECKING, Union
 
 from tm_devices.driver_mixins.abstract_device_functionality.channel_control_mixin import (
     ChannelControlMixin,
@@ -16,6 +19,9 @@ from tm_devices.driver_mixins.shared_implementations._tektronix_pi_scope_mixin i
 from tm_devices.drivers.device import family_base_class
 from tm_devices.drivers.scopes.scope import Scope
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
+
+if TYPE_CHECKING:
+    import os
 
 _logger: logging.Logger = logging.getLogger(__name__)
 
@@ -65,7 +71,7 @@ class TekScope2k(_TektronixPIScopeMixin, PIControl, Scope, ChannelControlMixin, 
         self,
         channel_num: int,
         wfm_type: str = "TimeDomain",
-        output_csv_file: Optional[str] = None,
+        output_csv_file: Optional[Union[str, os.PathLike[str]]] = None,
     ) -> List[Any]:
         """Perform a curve query on a specific channel.
 
@@ -116,7 +122,7 @@ class TekScope2k(_TektronixPIScopeMixin, PIControl, Scope, ChannelControlMixin, 
         wfm_data = [round(i, 3) for i in data]
 
         if output_csv_file:
-            with open(output_csv_file, "w", encoding="UTF-8") as csv_file:
+            with Path(output_csv_file).open("w", encoding="UTF-8") as csv_file:
                 for frame in wfm_data:
                     csv_file.write(str(frame))
                     csv_file.write(",")
