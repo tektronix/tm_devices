@@ -59,6 +59,7 @@ coverage.xml
 .pytest_cache/
 .results*/
 tests/samples/generated_stubs/*
+tests/generated_**/*
 tests/verify_devices.yaml
 prof/
 

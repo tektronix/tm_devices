@@ -59,7 +59,7 @@ def configure_logging(
     log_file_name: Optional[str] = None,
     log_colored_output: bool = False,
     log_pyvisa_messages: bool = False,
-) -> logging.Logger:  # pragma: no cover
+) -> logging.Logger:
     """Configure the logging for this package.
 
     !!! note
@@ -110,9 +110,9 @@ def configure_logging(
     # the message is even added to the line.
     logging_file_format_string = "[%(asctime)s] [%(package_name)10s] [%(levelname)8s] %(message)s"
     logging_console_format_string = "%(asctime)s - %(message)s"
-    if not log_file_directory:
+    if not log_file_directory:  # pragma: no cover
         log_file_directory = Path("./logs")
-    if not log_file_name:
+    if not log_file_name:  # pragma: no cover
         log_file_name = f"{PACKAGE_NAME}_{time.strftime('%m-%d-%Y_%H-%M-%S', time.localtime())}.log"
     log_filepath = Path(log_file_directory) / log_file_name
 
