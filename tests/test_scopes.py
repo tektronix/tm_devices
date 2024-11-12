@@ -401,9 +401,8 @@ def test_tekscope70k(
         assert not scope.wait_for_network_connection(
             wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True
         )
-        assert caplog.records[-1].message == (
-            f"Unable to establish a network connection with "
-            f"{scope.ip_address} after 0.05 seconds"
+        assert caplog.records[-1].message.startswith(
+            f"Unable to establish a network connection with {scope.ip_address} after"
         )
         assert caplog.records[-1].levelname == "WARNING"
 

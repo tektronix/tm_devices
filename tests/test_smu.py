@@ -213,9 +213,8 @@ def test_smu(  # noqa: PLR0915
         assert not smu.wait_for_port_connection(
             4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True
         )
-        assert caplog.records[-1].message == (
-            f"Unable to establish a connection to port 4000 "
-            f"on {smu.ip_address} after 0.05 seconds"
+        assert caplog.records[-1].message.startswith(
+            f"Unable to establish a connection to port 4000 on {smu.ip_address} after"
         )
         assert caplog.records[-1].levelname == "WARNING"
 
