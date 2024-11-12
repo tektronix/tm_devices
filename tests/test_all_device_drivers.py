@@ -2,6 +2,7 @@
 """Verify that all device drivers and connection types can be used."""
 
 import contextlib
+import sys
 
 from collections import Counter
 from pathlib import Path
@@ -216,7 +217,10 @@ def test_all_device_drivers() -> None:
 @pytest.mark.depends(on=["test_device_driver"])
 def test_visa_device_command_logging() -> None:
     """Test the VISA command log file contents."""
-    generated_file = Path(__file__).parent / "logs/unit_test_visa_commands_SMU2410-HOSTNAME.log"
+    generated_file = (
+        Path(__file__).parent / f"logs/unit_test_py{sys.version_info.major}{sys.version_info.minor}"
+        f"_visa_commands_SMU2410-HOSTNAME.log"
+    )
     assert generated_file.exists(), f"File not found: {generated_file}"
     assert (
         generated_file.read_text()

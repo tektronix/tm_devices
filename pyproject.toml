@@ -322,7 +322,7 @@ ignore = [
   "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in *args and **kwargs (allowed in this package)
   "COM812",  # Trailing comma missing (allowed in this package)
   "FA100",  # Missing `from __future__ import annotations`, but uses ... (allowed in this package)
-  "FBT",  # flake8-boolean-trap  # TODO: remove this exclusion?
+  "FBT",  # flake8-boolean-trap  # TODO: enable this
   "FIX002",  # Line contains TO DO (allowed in this package)
   "ISC001",  # single-line-implicit-string-concatenation (handled by formatter)
   "PYI021",  # Docstrings should not be included in stubs (allowed in this package)
@@ -443,6 +443,7 @@ setenv =
 commands_pre =
     python -m poetry install --no-root --without=main
 commands =
+    !tests: python -c "import shutil; shutil.rmtree('dist_{envname}', ignore_errors=True)"
     !tests: poetry build --output=dist_{envname}
     !tests: twine check --strict dist_{envname}/*
     !tests: pre-commit run --all-files

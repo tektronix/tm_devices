@@ -1,19 +1,23 @@
 """Base Margin Tester device driver module."""
 
+from __future__ import annotations
+
 import os
 import time
 
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Any, Dict, Mapping, MutableMapping, Tuple, Union
+from typing import Any, Dict, Mapping, MutableMapping, Tuple, TYPE_CHECKING, Union
 
-from packaging.version import Version
 from requests.structures import CaseInsensitiveDict
 
 from tm_devices.driver_mixins.device_control import RESTAPIControl
 from tm_devices.drivers.device import Device, family_base_class
 from tm_devices.helpers import DeviceConfigEntry, DeviceTypes
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
+
+if TYPE_CHECKING:
+    from packaging.version import Version
 
 
 @family_base_class

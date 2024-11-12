@@ -38,7 +38,7 @@ _logger = configure_logging(
     log_console_level=LoggingLevels.NONE,
     log_file_level=LoggingLevels.DEBUG,
     log_file_directory=Path(__file__).parent / "logs",
-    log_file_name="unit_test.log",
+    log_file_name=f"unit_test_py{sys.version_info.major}{sys.version_info.minor}.log",
 )
 _unit_test_console_handler = _DynamicStreamHandler(stream=sys.stdout)
 _unit_test_console_handler.setLevel(logging.DEBUG)

@@ -1,5 +1,7 @@
 """Base TekScope scope device driver module."""
 
+from __future__ import annotations
+
 import logging
 
 # pylint: disable=too-many-lines
@@ -12,20 +14,10 @@ from abc import ABC
 from dataclasses import dataclass
 from pathlib import Path
 from types import MappingProxyType
-from typing import Any, cast, Dict, List, Literal, Optional, Tuple, Type, Union
+from typing import Any, cast, Dict, List, Literal, Optional, Tuple, Type, TYPE_CHECKING, Union
 
 import pyvisa as visa
 
-from tm_devices.commands import (
-    LPD6Commands,
-    MSO2Commands,
-    MSO4Commands,
-    MSO5BCommands,
-    MSO5Commands,
-    MSO5LPCommands,
-    MSO6BCommands,
-    MSO6Commands,
-)
 from tm_devices.driver_mixins.abstract_device_functionality import (
     BaseAFGSourceChannel,
     BusMixin,
@@ -59,6 +51,18 @@ from tm_devices.helpers.enums import (
     SignalGeneratorFunctionsIAFG,
     SignalGeneratorOutputPathsBase,
 )
+
+if TYPE_CHECKING:
+    from tm_devices.commands import (
+        LPD6Commands,
+        MSO2Commands,
+        MSO4Commands,
+        MSO5BCommands,
+        MSO5Commands,
+        MSO5LPCommands,
+        MSO6BCommands,
+        MSO6Commands,
+    )
 
 _logger: logging.Logger = logging.getLogger(__name__)
 

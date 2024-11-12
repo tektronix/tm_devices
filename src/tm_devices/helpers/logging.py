@@ -1,20 +1,27 @@
+# pyright: reportUnnecessaryTypeIgnoreComment=none
 """Helpers for logging."""
+
+from __future__ import annotations
 
 import importlib.metadata
 import logging
-import os
 import sys
 import time
 
 from pathlib import Path
-from typing import Optional, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 import colorlog
 import pyvisa
 
-from tzlocal import get_localzone  # pyright: ignore[reportUnknownVariableType]
+from tzlocal import (
+    get_localzone,  # pyright: ignore[reportUnknownVariableType]
+)
 
 from tm_devices.helpers.enums import CustomStrEnum
+
+if TYPE_CHECKING:
+    import os
 
 _logger_initialized = False
 
@@ -126,7 +133,7 @@ def configure_logging(
             pyvisa.logger.addHandler(file_handler)
 
     # Log a few things to just the file
-    _logger.debug("timezone==%s", get_localzone())  # pyright: ignore[reportUnknownArgumentType]
+    _logger.debug("timezone==%s", get_localzone())  # pyright: ignore[reportUnknownArgumentType,reportUnnecessaryTypeIgnoreComment]
     _logger.debug("%s==%s", PACKAGE_NAME, importlib.metadata.version(PACKAGE_NAME))
 
     if log_console_level != LoggingLevels.NONE:
