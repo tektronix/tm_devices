@@ -14,7 +14,7 @@ configure_logging(
 )
 
 with DeviceManager(verbose=False) as dm:
-    scope: MSO6B = dm.add_scope("192.168.1.5")
+    scope: MSO6B = dm.add_scope("192.168.0.1")
     scope.curve_query(1)
     scope.check_port_connection(4000)
     scope.check_network_connection()

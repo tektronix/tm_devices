@@ -50,7 +50,7 @@ pip install tm_devices
 ```console
 $ list-visa-resources
 [
-  "TCPIP0::192.168.0.100::inst0::INSTR",
+  "TCPIP0::192.168.0.1::inst0::INSTR",
   "ASRL4::INSTR"
 ]
 ```
@@ -61,7 +61,7 @@ $ list-visa-resources
 from tm_devices import DeviceManager
 
 with DeviceManager() as device_manager:
-    scope = device_manager.add_scope("192.168.0.100")
+    scope = device_manager.add_scope("192.168.0.1")
     scope.query("*IDN?")
     print(scope)
 ```

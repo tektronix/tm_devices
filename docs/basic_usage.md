@@ -10,7 +10,7 @@ This will print the available VISA devices to the console when run from a shell 
 ```console
 $ list-visa-resources
 [
-  "TCPIP0::192.168.0.100::inst0::INSTR",
+  "TCPIP0::192.168.0.1::inst0::INSTR",
   "ASRL4::INSTR"
 ]
 ```
