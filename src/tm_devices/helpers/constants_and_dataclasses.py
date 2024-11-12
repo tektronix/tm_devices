@@ -18,6 +18,7 @@ from tm_devices.helpers.enums import (
     LoadImpedanceAFG,
     SupportedModels,
 )
+from tm_devices.helpers.logging import LoggingLevels
 from tm_devices.helpers.standalone_functions import validate_address
 
 
@@ -449,6 +450,67 @@ class DMConfigOptions(AsDictionaryMixin):
     """
     check_for_updates: Optional[bool] = None
     """A flag indicating if a check for updates for the package should be performed on creation of the DeviceManager."""  # noqa: E501
+    log_console_level: Optional[str] = None
+    """The logging level to set for the console.
+
+    One of `["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL", "NONE"]`, see the
+    [`LoggingLevels`][tm_devices.helpers.logging.LoggingLevels] enum for details.
+    Defaults to `"INFO"`. See the
+    [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more
+    information.
+    """
+    log_file_level: Optional[str] = None
+    """The logging level to set for the log file.
+
+    One of `["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL", "NONE"]`, see the
+    [`LoggingLevels`][tm_devices.helpers.logging.LoggingLevels] enum for details.
+    Defaults to `"DEBUG"`. See the
+    [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more
+    information.
+    """
+    log_file_directory: Optional[str] = None
+    """The directory to save log files to.
+
+    Defaults to "./logs". See the
+    [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more
+    information and default values.
+    """
+    log_file_name: Optional[str] = None
+    """The name of the log file to save the logs to.
+
+    Defaults to a timestamped filename with the .log extension. See the
+    [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more
+    information and default values.
+    """
+    log_colored_output: Optional[bool] = None
+    """Whether to use colored output from the `colorlog` package for the console.
+
+    Defaults to False. See the [`configure_logging()`][tm_devices.helpers.logging.configure_logging]
+    function for more information and default values.
+    """
+    log_pyvisa_messages: Optional[bool] = None
+    """Whether to include logs from the `pyvisa` package in the log file.
+
+    Defaults to False. See the [`configure_logging()`][tm_devices.helpers.logging.configure_logging]
+    function for more information and default values.
+    """
+
+    def __post_init__(self) -> None:
+        """Validate data after creation.
+
+        Raises:
+            ValueError: Indicates a bad input value.
+        """
+        for attribute in ("log_console_level", "log_file_level"):
+            try:
+                if (value := getattr(self, attribute)) is not None:
+                    _ = LoggingLevels(value)
+            except ValueError as error:  # noqa: PERF203
+                msg = (
+                    f'Invalid value for {attribute}: "{getattr(self, attribute)}". '
+                    f"Valid values are {LoggingLevels.list_values()}"
+                )
+                raise ValueError(msg) from error
 
     def __str__(self) -> str:
         """Complete config entry line for an environment variable."""

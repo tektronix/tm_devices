@@ -144,7 +144,7 @@ class MarginTester(Device, RESTAPIControl, ABC):
 
         Returns:
             A tuple containing the current error code alongside a tuple of the current error
-            messages.
+                messages.
         """
         return 0, ()
 

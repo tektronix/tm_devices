@@ -19,9 +19,9 @@ from tm_devices.helpers.constants_and_dataclasses import (
     PYVISA_PY_BACKEND,
     SYSTEM_DEFAULT_VISA_BACKEND,
 )
-from tm_devices.helpers.enums import LoggingLevels, SupportedModels
+from tm_devices.helpers.enums import SupportedModels
 from tm_devices.helpers.functions import register_additional_usbtmc_mapping
-from tm_devices.helpers.logging import configure_logging
+from tm_devices.helpers.logging import configure_logging, LoggingLevels
 
 # Read version from installed package.
 __version__ = version(PACKAGE_NAME)

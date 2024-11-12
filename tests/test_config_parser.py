@@ -32,7 +32,7 @@ def test_nested_config_prefix_mapping() -> None:
 
 def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None:
     """Test the environment variable config method."""
-    options = ["STANDALONE", "DEFAULT_VISA_TIMEOUT=10000"]
+    options = ["STANDALONE", "DEFAULT_VISA_TIMEOUT=10000", "LOG_FILE_LEVEL=NONE"]
     expected_device_string = (
         "address=MSO54-123456,connection_type=TCPIP,device_type=SCOPE,lan_device_name=hislip0"
     )
@@ -54,6 +54,7 @@ def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None
     assert str(expected_device) == expected_device_string
     assert not config.options.teardown_cleanup
     assert config.options.standalone
+    assert config.options.log_file_level == "NONE"
     assert config.options.default_visa_timeout == 10000
     assert (
         config.devices == expected_entry
@@ -61,7 +62,7 @@ def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None
 
     # test that the config string representation looks like env declaration
     expected_entry_string = (
-        f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT=10000,STANDALONE\n"
+        f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT=10000,LOG_FILE_LEVEL=NONE,STANDALONE\n"
         f"TM_DEVICES=~~~{expected_device_string}~~~"
     )
     print(config)  # noqa: T201
@@ -101,7 +102,7 @@ def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None
         config.devices == expected_entry
     ), f"\nDevice dictionaries don't match:\n{expected_entry}\n{config.devices}"
     expected_entry_string = (
-        f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT=10000,STANDALONE\n"
+        f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT=10000,LOG_FILE_LEVEL=NONE,STANDALONE\n"
         f"TM_DEVICES=~~~{expected_device_string}~~~"
     )
     print(config)  # noqa: T201
@@ -149,6 +150,7 @@ options:
   verbose_mode: false
   verbose_visa: false
   default_visa_timeout: 10000
+  log_console_level: DEBUG
   """
     expected_options = DMConfigOptions(
         standalone=False,
@@ -157,6 +159,7 @@ options:
         verbose_mode=False,
         verbose_visa=False,
         default_visa_timeout=10000,
+        log_console_level="DEBUG",
     )
     expected_devices = {
         "SCOPE 1": DeviceConfigEntry(
@@ -214,6 +217,7 @@ def test_file_config_non_default_path(
         verbose_mode=False,
         verbose_visa=False,
         default_visa_timeout=1000,
+        log_file_level="WARNING",
     )
     expected_devices = {
         "SCOPE 1": DeviceConfigEntry(
@@ -368,6 +372,11 @@ def test_file_config_non_default_path(
         # Test REST_API connection with no device driver
         (
             {"TM_DEVICES": "device_type=MT,connection_type=REST_API,address=localhost"},
+            ValueError,
+        ),
+        # Test invalid configuration options
+        (
+            {"TM_OPTIONS": "STANDALONE,LOG_FILE_LEVEL=INVALID"},
             ValueError,
         ),
     ],

@@ -322,7 +322,7 @@ ignore = [
   "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in *args and **kwargs (allowed in this package)
   "COM812",  # Trailing comma missing (allowed in this package)
   "FA100",  # Missing `from __future__ import annotations`, but uses ... (allowed in this package)
-  "FBT",  # flake8-boolean-trap  # TODO: logging: remove this exclusion?
+  "FBT",  # flake8-boolean-trap  # TODO: remove this exclusion?
   "FIX002",  # Line contains TO DO (allowed in this package)
   "ISC001",  # single-line-implicit-string-concatenation (handled by formatter)
   "PYI021",  # Docstrings should not be included in stubs (allowed in this package)
@@ -353,6 +353,7 @@ order-by-type = false
 
 [tool.ruff.lint.per-file-ignores]
 "examples/**" = [
+  "FBT",  # flake8-boolean-trap
   "S101",  # Use of assert detected
   "T201"  # `print` found
 ]

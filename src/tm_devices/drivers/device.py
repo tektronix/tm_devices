@@ -374,7 +374,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
 
         Returns:
             A tuple containing a boolean indicating if there is a network connection and
-            a string with the result of the ping command.
+                a string with the result of the ping command.
         """
         return check_network_connection(self._name_and_alias, self.ip_address)
 
@@ -425,7 +425,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
 
         Returns:
             A tuple containing the current error code alongside a tuple of the current error
-            messages.
+                messages.
         """
         return self._get_errors()
 
@@ -438,7 +438,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
 
         Returns:
             A boolean indicating if any errors were found in the device. True means there were
-            errors, False means no errors were found.
+                errors, False means no errors were found.
         """
         return bool(self.get_errors()[0])
 

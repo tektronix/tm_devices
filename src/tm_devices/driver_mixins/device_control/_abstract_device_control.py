@@ -43,5 +43,5 @@ class _AbstractDeviceControl(ABC):  # pylint: disable=too-few-public-methods  # 
 
         Returns:
             A tuple containing the current error code alongside a tuple of the current error
-            messages.
+                messages.
         """

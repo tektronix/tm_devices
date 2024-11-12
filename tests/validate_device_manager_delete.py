@@ -14,7 +14,7 @@ from conftest import mock_gethostbyaddr, mock_gethostbyname, SIMULATED_VISA_LIB
 from tm_devices import configure_logging, DeviceManager, LoggingLevels, PYVISA_PY_BACKEND
 from tm_devices.helpers import DMConfigOptions
 
-configure_logging(console_logging_level=LoggingLevels.DEBUG)
+configure_logging(log_console_level=LoggingLevels.DEBUG)
 
 
 @mock.patch("socket.gethostbyname", mock.MagicMock(side_effect=mock_gethostbyname))

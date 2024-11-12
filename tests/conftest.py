@@ -35,10 +35,10 @@ class _DynamicStreamHandler(logging.StreamHandler):  # pyright: ignore[reportMis
 
 
 _logger = configure_logging(
-    console_logging_level=LoggingLevels.NONE,
-    file_logging_level=LoggingLevels.DEBUG,
-    log_file_name="unit_test.log",
+    log_console_level=LoggingLevels.NONE,
+    log_file_level=LoggingLevels.DEBUG,
     log_file_directory=Path(__file__).parent / "logs",
+    log_file_name="unit_test.log",
 )
 _unit_test_console_handler = _DynamicStreamHandler(stream=sys.stdout)
 _unit_test_console_handler.setLevel(logging.DEBUG)

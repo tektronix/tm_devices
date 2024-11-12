@@ -223,7 +223,7 @@ def check_network_connection(device_name: str, ip_address: str) -> Tuple[bool, s
 
     Returns:
         A boolean indicating if there is a network connection and
-        a string with the result of the ping command.
+            a string with the result of the ping command.
     """
     _logger.debug("(%s) ping >> %s", device_name, ip_address)
     ping_result = ping_address(ip_address)

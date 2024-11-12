@@ -59,6 +59,23 @@ outside the Python code for ease of automation
 --8<-- "examples/miscellaneous/adding_devices_with_env_var.py"
 ```
 
+## Customize logging and console output
+
+The amount of console output and logging saved to the log file can be customized as needed. This
+configuration can be done in the Python code itself as demonstrated here, or by using the
+[config file](configuration.md#config-options) or
+[environment variable](configuration.md#environment-variable).
+
+!!! important
+    If any configuration is performed in the Python code prior to instantiating the
+    [`DeviceManager`][tm_devices.DeviceManager], all other logging configuration methods
+    (config file, env var) will be ignored.
+
+```python
+# fmt: off
+--8<-- "examples/miscellaneous/customize_logging.py"
+```
+
 ## Disable command checking
 
 This removes an extra query that verifies the property was set to the expected

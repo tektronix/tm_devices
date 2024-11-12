@@ -14,3 +14,4 @@ complex examples.
         IntelliSense.
 - Organize connections to an entire "Test Bench" of devices with one package!
     - Full support for all VISA connection types (some require external drivers).
+- Customizable logging to both the console and a log file.

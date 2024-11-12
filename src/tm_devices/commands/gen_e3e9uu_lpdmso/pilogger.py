@@ -47,8 +47,8 @@ class PiloggerState(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``<NR1>`` = 0 disables the PI command logger; any other value turns the PI command logger
           on.
-        - ``OFF`` disables the PI command _logger.
-        - ``ON`` enables the PI command _logger.
+        - ``OFF`` disables the PI command logger.
+        - ``ON`` enables the PI command logger.
     """
 
 
@@ -152,7 +152,7 @@ class Pilogger(SCPICmdRead):
         Info:
             - ``<NR1>`` = 0 disables the PI command logger; any other value turns the PI command
               logger on.
-            - ``OFF`` disables the PI command _logger.
-            - ``ON`` enables the PI command _logger.
+            - ``OFF`` disables the PI command logger.
+            - ``ON`` enables the PI command logger.
         """
         return self._state

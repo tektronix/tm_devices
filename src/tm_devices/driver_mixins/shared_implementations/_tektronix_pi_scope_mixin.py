@@ -30,7 +30,7 @@ class _TektronixPIScopeMixin(_AbstractDeviceVISAWriteQueryControl, ABC):  # pyri
 
         Returns:
             A tuple containing the current error code alongside a tuple of the current error
-            messages.
+                messages.
         """
         result = int(self.query("*ESR?").strip())
         allev_list = [

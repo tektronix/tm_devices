@@ -26,23 +26,6 @@ class CustomStrEnum(Enum):
         return [enum_entry.value for enum_entry in cls]
 
 
-class LoggingLevels(CustomStrEnum):
-    """A class holding the valid logging levels supported."""
-
-    DEBUG = "DEBUG"
-    """An enum member representing the DEBUG logging level."""
-    INFO = "INFO"
-    """An enum member representing the INFO logging level."""
-    WARNING = "WARNING"
-    """An enum member representing the WARNING logging level."""
-    ERROR = "ERROR"
-    """An enum member representing the ERROR logging level."""
-    CRITICAL = "CRITICAL"
-    """An enum member representing the CRITICAL logging level."""
-    NONE = "NONE"
-    """An enum member indicating no logging messages should be captured."""
-
-
 class ConfigFileType(CustomStrEnum):
     """Class holding valid config file extensions."""
 

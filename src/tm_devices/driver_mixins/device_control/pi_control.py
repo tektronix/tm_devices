@@ -9,7 +9,6 @@ import time
 import warnings
 
 from abc import ABC
-from contextlib import contextmanager
 from pathlib import Path
 from typing import final, Generator, List, Optional, Sequence, Tuple, Union
 
@@ -197,7 +196,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
     ################################################################################################
     # Context Manager Methods
     ################################################################################################
-    @contextmanager
+    @contextlib.contextmanager
     def temporary_visa_timeout(self, temporary_timeout_ms: float) -> Generator[None, None, None]:
         """Set a temporary VISA timeout value for the duration of the context.
 
@@ -725,7 +724,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
 
         Returns:
             Tuple containing the boolean value indicating if the command needed to be set and
-            the value returned from the query.
+                the value returned from the query.
         """
         try:
             query_passed, actual_value = self.query_response(

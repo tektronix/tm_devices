@@ -36,7 +36,7 @@ from tm_devices.helpers.functions import (
     register_additional_usbtmc_mapping,
     sanitize_enum,
 )
-from tm_devices.helpers.logging import configure_logging
+from tm_devices.helpers.logging import configure_logging, LoggingLevels
 from tm_devices.helpers.read_only_cached_property import ReadOnlyCachedProperty
 from tm_devices.helpers.singleton_metaclass import Singleton
 from tm_devices.helpers.standalone_functions import validate_address
@@ -59,6 +59,7 @@ __all__ = [
     "get_model_series",
     "get_version",
     "get_visa_backend",
+    "LoggingLevels",
     "PACKAGE_NAME",
     "ping_address",
     "PYVISA_PY_BACKEND",

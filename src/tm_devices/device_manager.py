@@ -158,8 +158,13 @@ class DeviceManager(metaclass=Singleton):
         # actually populate the options
         self.__set_options(verbose)
 
-        # TODO: logging: pass in necessary config options to the logger
-        configure_logging()
+        # Pass in the options from the config file or environment variable to the logger
+        logging_options = {
+            key: value
+            for key, value in self.__config.options.to_dict(ignore_none=True).items()
+            if key.startswith("log_")
+        }
+        configure_logging(**logging_options)
 
         self.open()
 

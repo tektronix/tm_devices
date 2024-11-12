@@ -43,8 +43,8 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
 
         Returns:
             A boolean indicating if the check passed or failed, True means the check passed,
-            False means the check failed (however, failing the check will always result in an
-            AssertionError being raised, so the result will not really be usable).
+                False means the check failed (however, failing the check will always result in an
+                AssertionError being raised, so the result will not really be usable).
 
         Raises:
             AssertionError: Indicating that the device's error code and messages don't match the
