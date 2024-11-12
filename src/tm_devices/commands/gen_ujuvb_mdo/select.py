@@ -306,13 +306,12 @@ class SelectControl(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` specifies a channel waveform as the waveform affected by the front-panel
-          controls. x has a minimum of 1 and a maximum of 4.
+          controls.
         - ``MATH`` specifies the math waveform as the waveform that is affected by the front-panel
           controls.
         - ``BUS<x>`` specifies a bus waveform as the waveform affected by the front-panel controls.
-          x has a minimum of 1 and a maximum of 4.
         - ``D<x>`` specifies a digital waveform as the waveform affected by the front-panel
-          controls. (Requires option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+          controls. (Requires option 3-MSO.).
         - ``RF_NORMal`` specify an RF trace as the waveform affected by the front-panel controls.
         - ``RF_AVErage`` specify an RF trace as the waveform affected by the front-panel controls.
         - ``RF_MAXHold`` specify an RF trace as the waveform affected by the front-panel controls.
@@ -515,13 +514,13 @@ class Select(SCPICmdRead):
 
         Info:
             - ``CH<x>`` specifies a channel waveform as the waveform affected by the front-panel
-              controls. x has a minimum of 1 and a maximum of 4.
+              controls.
             - ``MATH`` specifies the math waveform as the waveform that is affected by the
               front-panel controls.
             - ``BUS<x>`` specifies a bus waveform as the waveform affected by the front-panel
-              controls. x has a minimum of 1 and a maximum of 4.
+              controls.
             - ``D<x>`` specifies a digital waveform as the waveform affected by the front-panel
-              controls. (Requires option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+              controls. (Requires option 3-MSO.).
             - ``RF_NORMal`` specify an RF trace as the waveform affected by the front-panel
               controls.
             - ``RF_AVErage`` specify an RF trace as the waveform affected by the front-panel

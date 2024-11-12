@@ -41,7 +41,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:MAXimum?
     - MEASUrement:MEAS<x>:MEAN?
     - MEASUrement:MEAS<x>:MINImum?
-    - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>}
+    - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|REF<x>|D<x>}
     - MEASUrement:MEAS<x>:SOUrce1?
     - MEASUrement:MEAS<x>:STATE {ON|OFF|<NR1>}
     - MEASUrement:MEAS<x>:STATE?
@@ -2295,7 +2295,7 @@ class MeasurementMeasItemSource1(SCPICmdWrite, SCPICmdRead):
     Description:
         - For SOURce1: This command specifies the source for all single channel measurements. For
           delay or phase measurements, This command specifies the waveform to measure 'from'. This
-          is equivalent to setting the 'From:' waveform in the 'Measure Delay' side menu or the
+          is equivalent  to setting the 'From:' waveform in the 'Measure Delay' side menu or the
           'Measure Phase' side menu. SOUrce is equivalent to SOURCE1. For SOUrce2: This command
           specifies the waveform to measure 'to' when taking a delay measurement or phase
           measurement. This is equivalent to setting the 'To:' waveform in the 'Measure Delay' side
@@ -2311,18 +2311,16 @@ class MeasurementMeasItemSource1(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>}
+        - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|REF<x>|D<x>}
         - MEASUrement:MEAS<x>:SOUrce1?
         ```
 
     Info:
-        - ``CH<x>`` is an analog channel to use as the source waveform. x has a minimum of 1 and a
-          maximum of 4.
+        - ``CH<x>`` is an analog channel to use as the source waveform.
         - ``MATH`` is the math waveform.
-        - ``REF<x>`` is a reference waveform to use as the source waveform. x has a minimum of 1 and
-          a maximum of 4.
+        - ``REF<x>`` is a reference waveform to use as the source waveform.
         - ``D<x>`` is a digital channel to use as the source waveform. (Requires installation of
-          option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+          option 3-MSO.).
     """
 
 
@@ -2717,12 +2715,12 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         Description:
             - For SOURce1: This command specifies the source for all single channel measurements.
               For delay or phase measurements, This command specifies the waveform to measure
-              'from'. This is equivalent to setting the 'From:' waveform in the 'Measure Delay' side
-              menu or the 'Measure Phase' side menu. SOUrce is equivalent to SOURCE1. For SOUrce2:
-              This command specifies the waveform to measure 'to' when taking a delay measurement or
-              phase measurement. This is equivalent to setting the 'To:' waveform in the 'Measure
-              Delay' side menu or the 'Measure Phase' side menu. Measurements are specified by <x>,
-              which ranges from 1 to 8.
+              'from'. This is equivalent  to setting the 'From:' waveform in the 'Measure Delay'
+              side menu or the 'Measure Phase' side menu. SOUrce is equivalent to SOURCE1. For
+              SOUrce2: This command specifies the waveform to measure 'to' when taking a delay
+              measurement or phase measurement. This is equivalent to setting the 'To:' waveform in
+              the 'Measure Delay' side menu or the 'Measure Phase' side menu. Measurements are
+              specified by <x>, which ranges from 1 to 8.
 
         Usage:
             - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:SOUrce1?`` query.
@@ -2733,18 +2731,16 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|R<x>|D<x>}
+            - MEASUrement:MEAS<x>:SOUrce1 {CH<x>|MATH|REF<x>|D<x>}
             - MEASUrement:MEAS<x>:SOUrce1?
             ```
 
         Info:
-            - ``CH<x>`` is an analog channel to use as the source waveform. x has a minimum of 1 and
-              a maximum of 4.
+            - ``CH<x>`` is an analog channel to use as the source waveform.
             - ``MATH`` is the math waveform.
-            - ``REF<x>`` is a reference waveform to use as the source waveform. x has a minimum of 1
-              and a maximum of 4.
+            - ``REF<x>`` is a reference waveform to use as the source waveform.
             - ``D<x>`` is a digital channel to use as the source waveform. (Requires installation of
-              option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+              option 3-MSO.).
         """
         return self._source1
 
@@ -3401,10 +3397,9 @@ class MeasurementImmedSource1(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` is the analog channel to use as the source waveform. x has a minimum of 1 and a
-          maximum of 4.
+        - ``CH<x>`` is the analog channel to use as the source waveform.
         - ``MATH`` is the math waveform.
-        - ``D0 - D15`` is the digital waveform to use as the source waveform. (On models with option
+        - ``D<x>`` is the digital waveform to use as the source waveform. (On models with option
           3-MSO installed.).
         - ``HIStogram`` indicates the histogram as the object to be measured. HIStogram only applies
           to SOUrce1; it is not available for SOUrce2.
@@ -3641,11 +3636,10 @@ class MeasurementImmed(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` is the analog channel to use as the source waveform. x has a minimum of 1
-              and a maximum of 4.
+            - ``CH<x>`` is the analog channel to use as the source waveform.
             - ``MATH`` is the math waveform.
-            - ``D0 - D15`` is the digital waveform to use as the source waveform. (On models with
-              option 3-MSO installed.).
+            - ``D<x>`` is the digital waveform to use as the source waveform. (On models with option
+              3-MSO installed.).
             - ``HIStogram`` indicates the histogram as the object to be measured. HIStogram only
               applies to SOUrce1; it is not available for SOUrce2.
         """  # noqa: E501

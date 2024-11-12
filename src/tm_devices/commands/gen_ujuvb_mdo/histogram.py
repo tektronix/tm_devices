@@ -1,7 +1,7 @@
 """The histogram commands module.
 
 These commands are used in the following models:
-DPO4K, DPO4KB, MDO3, MDO3K, MDO4K, MDO4KB, MDO4KC, MSO4K, MSO4KB
+MDO3
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
@@ -20,7 +20,7 @@ Commands and Queries:
     - HIStogram:END?
     - HIStogram:MODe {HORizontal|VERTical|OFF}
     - HIStogram:MODe?
-    - HIStogram:SOUrce {CH1|CH2|CH3|CH4|MATH|REF1|CH2|CH3|CH4}
+    - HIStogram:SOUrce {CH<x>|MATH|REF<x>}
     - HIStogram:SOUrce?
     - HIStogram:STARt?
     - HIStogram?
@@ -43,7 +43,7 @@ class HistogramStart(SCPICmdRead):
           the histogram data starts. The ``HISTOGRAM:MODE`` must be either HORizontal or VERTical
           for a value to be returned. If the mode is OFF, an error event is set and nothing is
           returned. If the ``HISTOGRAM:MODE`` is HORizontal, the value returned is the time of the
-          left bin. If the ``HISTOGRAM:MODE`` is VERTical the value returned is the vertical units
+          left bin. If the ``HISTOGRAM:MODE`` is VERTical the value returned is  the vertical units
           value of the top bin. The returned value is an <NR3>.
 
     Usage:
@@ -73,16 +73,15 @@ class HistogramSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HIStogram:SOUrce {CH1|CH2|CH3|CH4|MATH|REF1|CH2|CH3|CH4}
+        - HIStogram:SOUrce {CH<x>|MATH|REF<x>}
         - HIStogram:SOUrce?
         ```
 
     Info:
         - ``CH<x>`` selects the analog channel waveform to use as the source for the histogram. The
-          x variable can be expressed as an integer ranging from 1 through 4. x has a minimum of 1
-          and a maximum of 4.
+          x variable can be expressed as an integer ranging from 1 through 4.
         - ``MATH`` selects the math waveform as the source for the histogram.
-        - ``REF<1-4>`` selects a reference waveform as the source for the histogram. The x variable
+        - ``REF<x>`` selects a reference waveform as the source for the histogram. The x variable
           can be expressed as an integer ranging from 1 through 4.
     """
 
@@ -123,7 +122,7 @@ class HistogramEnd(SCPICmdRead):
           histogram data ends. The ``HISTOGRAM:MODE`` must be either HORizontal or VERTical for a
           value to be returned. If the mode is OFF, an error event is set and nothing is returned.
           If the ``HISTOGRAM:MODE`` is HORizontal, the value returned is the time of the right bin.
-          If the ``HISTOGRAM:MODE`` is VERTical the value returned is the vertical units value of
+          If the ``HISTOGRAM:MODE`` is VERTical the value returned is  the vertical units value of
           the bottom bin. The returned value is an <NR3>.
 
     Usage:
@@ -474,7 +473,7 @@ class Histogram(SCPICmdRead):
               the histogram data ends. The ``HISTOGRAM:MODE`` must be either HORizontal or VERTical
               for a value to be returned. If the mode is OFF, an error event is set and nothing is
               returned. If the ``HISTOGRAM:MODE`` is HORizontal, the value returned is the time of
-              the right bin. If the ``HISTOGRAM:MODE`` is VERTical the value returned is the
+              the right bin. If the ``HISTOGRAM:MODE`` is VERTical the value returned is  the
               vertical units value of the bottom bin. The returned value is an <NR3>.
 
         Usage:
@@ -535,16 +534,15 @@ class Histogram(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HIStogram:SOUrce {CH1|CH2|CH3|CH4|MATH|REF1|CH2|CH3|CH4}
+            - HIStogram:SOUrce {CH<x>|MATH|REF<x>}
             - HIStogram:SOUrce?
             ```
 
         Info:
             - ``CH<x>`` selects the analog channel waveform to use as the source for the histogram.
-              The x variable can be expressed as an integer ranging from 1 through 4. x has a
-              minimum of 1 and a maximum of 4.
+              The x variable can be expressed as an integer ranging from 1 through 4.
             - ``MATH`` selects the math waveform as the source for the histogram.
-            - ``REF<1-4>`` selects a reference waveform as the source for the histogram. The x
+            - ``REF<x>`` selects a reference waveform as the source for the histogram. The x
               variable can be expressed as an integer ranging from 1 through 4.
         """
         return self._source

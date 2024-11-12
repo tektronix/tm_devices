@@ -596,7 +596,7 @@ class ChannelProbeCalibrateCalibratable(SCPICmdRead):
     """The ``CH<x>:PRObe:CALibrate:CALIBRATABLe`` command.
 
     Description:
-        - This query returns the state of the probe attached to channel 1-4, either 0 if the probe
+        - This query returns the state of the probe attached to channel 1-4,  either  0 if the probe
           is not calibratable, or 1 if the probe is calibratable. The channel is specified by x,
           which can range from 1 through 4.
 
@@ -650,7 +650,7 @@ class ChannelProbeCalibrate(SCPICmdWrite, SCPICmdRead):
         """Return the ``CH<x>:PRObe:CALibrate:CALIBRATABLe`` command.
 
         Description:
-            - This query returns the state of the probe attached to channel 1-4, either 0 if the
+            - This query returns the state of the probe attached to channel 1-4,  either  0 if the
               probe is not calibratable, or 1 if the probe is calibratable. The channel is specified
               by x, which can range from 1 through 4.
 

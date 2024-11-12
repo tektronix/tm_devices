@@ -200,11 +200,11 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:RS232C:CONDition?
     - TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe <NR1>
     - TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe?
-    - TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue
+    - TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue <Qstring>
     - TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue?
     - TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe <NR1>
     - TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe?
-    - TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue
+    - TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue <Qstring>
     - TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue?
     - TRIGger:A:BUS:B<x>:SPI:CONDition {SS|STARTofframe|MISO|MOSI|MISOMOSI}
     - TRIGger:A:BUS:B<x>:SPI:CONDition?
@@ -439,7 +439,6 @@ from ..helpers import (
     DefaultDictPassKeyToFactory,
     SCPICmdRead,
     SCPICmdWrite,
-    SCPICmdWriteNoArguments,
     ValidatedChannel,
     ValidatedDigitalBit,
     ValidatedDynamicNumberCmd,
@@ -1063,8 +1062,7 @@ class TriggerBEdgeSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the B trigger source. x has a minimum of 1 and a
-          maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the B trigger source.
         - ``AUX`` specifies an external trigger using the Aux In connector located on the front
           panel of the oscilloscope as the B trigger source. (For 2-channel MDO32 model only.).
         - ``LINE`` specifies the AC power line as the B trigger source.
@@ -1225,8 +1223,7 @@ class TriggerBEdge(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the B trigger source. x has a minimum of 1
-              and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the B trigger source.
             - ``AUX`` specifies an external trigger using the Aux In connector located on the front
               panel of the oscilloscope as the B trigger source. (For 2-channel MDO32 model only.).
             - ``LINE`` specifies the AC power line as the B trigger source.
@@ -2086,7 +2083,7 @@ class TriggerATransitionSource(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` specifies one of the analog channels to be used as the source for a transition
-          trigger. x has a minimum of 1 and a maximum of 4.
+          trigger.
     """
 
 
@@ -2250,7 +2247,7 @@ class TriggerATransition(SCPICmdRead):
 
         Info:
             - ``CH<x>`` specifies one of the analog channels to be used as the source for a
-              transition trigger. x has a minimum of 1 and a maximum of 4.
+              transition trigger.
         """
         return self._source
 
@@ -2337,13 +2334,12 @@ class TriggerATimeoutSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the timeout trigger source. x has a minimum of 1
-          and a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the timeout trigger source.
         - ``AUX`` specifies an external trigger using the Aux In connector located on the front
           panel of the oscilloscope. (For 2-channel MDO32 model only.).
         - ``LINE`` specifies the AC line as the timeout trigger source.
         - ``D<x>`` specifies a digital channel as the timeout trigger source. (Requires option
-          3-MSO.) x has a minimum of 0 and a maximum of 15.
+          3-MSO.).
     """
 
 
@@ -2452,13 +2448,12 @@ class TriggerATimeout(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the timeout trigger source. x has a minimum
-              of 1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the timeout trigger source.
             - ``AUX`` specifies an external trigger using the Aux In connector located on the front
               panel of the oscilloscope. (For 2-channel MDO32 model only.).
             - ``LINE`` specifies the AC line as the timeout trigger source.
             - ``D<x>`` specifies a digital channel as the timeout trigger source. (Requires option
-              3-MSO.) x has a minimum of 0 and a maximum of 15.
+              3-MSO.).
         """
         return self._source
 
@@ -2733,9 +2728,8 @@ class TriggerASetholdDataSource(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` specifies an analog input channel as the data source for the setup and hold
-          trigger. x has a minimum of 1 and a maximum of 4.
-        - ``D<x>`` specifies a digital channel as the source. Requires option 3-MSO. x has a minimum
-          of 0 and a maximum of 15.
+          trigger.
+        - ``D<x>`` specifies a digital channel as the source. Requires option 3-MSO.
         - ``AUX`` specifies an external trigger using the Aux In connector located on the front
           panel of the oscilloscope. (For 2-channel MDO32 only.).
     """
@@ -2793,9 +2787,8 @@ class TriggerASetholdData(SCPICmdRead):
 
         Info:
             - ``CH<x>`` specifies an analog input channel as the data source for the setup and hold
-              trigger. x has a minimum of 1 and a maximum of 4.
-            - ``D<x>`` specifies a digital channel as the source. Requires option 3-MSO. x has a
-              minimum of 0 and a maximum of 15.
+              trigger.
+            - ``D<x>`` specifies a digital channel as the source. Requires option 3-MSO.
             - ``AUX`` specifies an external trigger using the Aux In connector located on the front
               panel of the oscilloscope. (For 2-channel MDO32 only.).
         """
@@ -2877,10 +2870,9 @@ class TriggerASetholdClockSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies the analog channel to use as the clock source waveform. x has a
-          minimum of 1 and a maximum of 4.
+        - ``CH<x>`` specifies the analog channel to use as the clock source waveform.
         - ``D<x>`` specifies the digital channel to use as the clock source waveform. (Requires
-          option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+          option 3-MSO.).
         - ``AUX`` specifies an external trigger using the Aux In connector located on the front
           panel of the oscilloscope. (Available for 2-channel MDO32, as it has an Aux Input
           connector.).
@@ -2989,10 +2981,9 @@ class TriggerASetholdClock(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies the analog channel to use as the clock source waveform. x has a
-              minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specifies the analog channel to use as the clock source waveform.
             - ``D<x>`` specifies the digital channel to use as the clock source waveform. (Requires
-              option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+              option 3-MSO.).
             - ``AUX`` specifies an external trigger using the Aux In connector located on the front
               panel of the oscilloscope. (Available for 2-channel MDO32, as it has an Aux Input
               connector.).
@@ -3493,7 +3484,7 @@ class TriggerARisefallSource(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` specifies one of the analog channels to be used as the source for a transition
-          trigger. x has a minimum of 1 and a maximum of 4.
+          trigger.
     """
 
 
@@ -3657,7 +3648,7 @@ class TriggerARisefall(SCPICmdRead):
 
         Info:
             - ``CH<x>`` specifies one of the analog channels to be used as the source for a
-              transition trigger. x has a minimum of 1 and a maximum of 4.
+              transition trigger.
         """
         return self._source
 
@@ -3889,13 +3880,11 @@ class TriggerAPulsewidthSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog input channel as the pulse-width trigger source. x has a
-          minimum of 1 and a maximum of 4.
+        - ``CH<x>`` specifies an analog input channel as the pulse-width trigger source.
         - ``AUX`` specifies an external trigger using the Aux In connector located on the front
           panel of the oscilloscope. (Only for 2-channel model MDO32.).
         - ``LINE`` specifies AC line voltage as the trigger source.
-        - ``D<x>`` specifies a digital channel as the trigger source. x has a minimum of 0 and a
-          maximum of 15.
+        - ``D<x>`` specifies a digital channel as the trigger source.
     """
 
 
@@ -4109,13 +4098,11 @@ class TriggerAPulsewidth(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog input channel as the pulse-width trigger source. x has a
-              minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog input channel as the pulse-width trigger source.
             - ``AUX`` specifies an external trigger using the Aux In connector located on the front
               panel of the oscilloscope. (Only for 2-channel model MDO32.).
             - ``LINE`` specifies AC line voltage as the trigger source.
-            - ``D<x>`` specifies a digital channel as the trigger source. x has a minimum of 0 and a
-              maximum of 15.
+            - ``D<x>`` specifies a digital channel as the trigger source.
         """
         return self._source
 
@@ -4837,10 +4824,8 @@ class TriggerALogicInputClockSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the clock source. x has a minimum of 1 and a
-          maximum of 4.
-        - ``D<x>`` specifies a digital channel as the clock source. (Requires option 3-MSO.) x has a
-          minimum of 0 and a maximum of 15.
+        - ``CH<x>`` specifies an analog channel as the clock source.
+        - ``D<x>`` specifies a digital channel as the clock source. (Requires option 3-MSO.).
         - ``NONE`` specifies a Pattern trigger.
     """
 
@@ -4941,10 +4926,8 @@ class TriggerALogicInputClock(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the clock source. x has a minimum of 1 and a
-              maximum of 4.
-            - ``D<x>`` specifies a digital channel as the clock source. (Requires option 3-MSO.) x
-              has a minimum of 0 and a maximum of 15.
+            - ``CH<x>`` specifies an analog channel as the clock source.
+            - ``D<x>`` specifies a digital channel as the clock source. (Requires option 3-MSO.).
             - ``NONE`` specifies a Pattern trigger.
         """
         return self._source
@@ -5665,10 +5648,8 @@ class TriggerAEdgeSource(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``AUX`` specifies an external trigger using the auxiliary input connector located on the
           front panel of the oscilloscope. (For 2-channel MDO32 model only.).
-        - ``CH<x>`` specifies an analog input channel as the A edge trigger source. x has a minimum
-          of 1 and a maximum of 4.
-        - ``D<x>`` specifies a digital channel as the source (only with option 3-MSO installed). x
-          has a minimum of 0 and a maximum of 15.
+        - ``CH<x>`` specifies an analog input channel as the A edge trigger source.
+        - ``D<x>`` specifies a digital channel as the source (only with option 3-MSO installed).
         - ``LINE`` specifies the AC power line as the trigger source.
     """
 
@@ -5843,10 +5824,8 @@ class TriggerAEdge(SCPICmdRead):
         Info:
             - ``AUX`` specifies an external trigger using the auxiliary input connector located on
               the front panel of the oscilloscope. (For 2-channel MDO32 model only.).
-            - ``CH<x>`` specifies an analog input channel as the A edge trigger source. x has a
-              minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog input channel as the A edge trigger source.
             - ``D<x>`` specifies a digital channel as the source (only with option 3-MSO installed).
-              x has a minimum of 0 and a maximum of 15.
             - ``LINE`` specifies the AC power line as the trigger source.
         """
         return self._source
@@ -7864,7 +7843,7 @@ class TriggerABusBItemSpi(SCPICmdRead):
         return self._data
 
 
-class TriggerABusBItemRs232cTxDataValue(SCPICmdWriteNoArguments, SCPICmdRead):
+class TriggerABusBItemRs232cTxDataValue(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue`` command.
 
     Description:
@@ -7877,12 +7856,12 @@ class TriggerABusBItemRs232cTxDataValue(SCPICmdWriteNoArguments, SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue?`` query and raise an AssertionError if the
           returned value does not match ``value``.
-        - Using the ``.write()`` method will send the ``TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue``
-          command.
+        - Using the ``.write(value)`` method will send the
+          ``TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue value`` command.
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue
+        - TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue <Qstring>
         - TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue?
         ```
 
@@ -7978,12 +7957,12 @@ class TriggerABusBItemRs232cTxData(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue?`` query and raise an AssertionError if the
               returned value does not match ``value``.
-            - Using the ``.write()`` method will send the
-              ``TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue`` command.
+            - Using the ``.write(value)`` method will send the
+              ``TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue value`` command.
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue
+            - TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue <Qstring>
             - TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue?
             ```
 
@@ -8027,7 +8006,7 @@ class TriggerABusBItemRs232cTx(SCPICmdRead):
         return self._data
 
 
-class TriggerABusBItemRs232cRxDataValue(SCPICmdWriteNoArguments, SCPICmdRead):
+class TriggerABusBItemRs232cRxDataValue(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue`` command.
 
     Description:
@@ -8040,12 +8019,12 @@ class TriggerABusBItemRs232cRxDataValue(SCPICmdWriteNoArguments, SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue?`` query and raise an AssertionError if the
           returned value does not match ``value``.
-        - Using the ``.write()`` method will send the ``TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue``
-          command.
+        - Using the ``.write(value)`` method will send the
+          ``TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue value`` command.
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue
+        - TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue <Qstring>
         - TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue?
         ```
 
@@ -8141,12 +8120,12 @@ class TriggerABusBItemRs232cRxData(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue?`` query and raise an AssertionError if the
               returned value does not match ``value``.
-            - Using the ``.write()`` method will send the
-              ``TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue`` command.
+            - Using the ``.write(value)`` method will send the
+              ``TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue value`` command.
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue
+            - TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue <Qstring>
             - TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue?
             ```
 

@@ -422,7 +422,7 @@ class Math1HorizontalScale(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command specifies the math horizontal display scale for FFT or for dual math
           waveforms that have source waveforms that are reference waveforms. The horizontal scale of
-          a dual math waveform with a channel source waveform is set through the command.
+          a dual math waveform with a channel source waveform is set through the  command.
 
     Usage:
         - Using the ``.query()`` method will send the ``MATH1:HORizontal:SCAle?`` query.
@@ -682,7 +682,7 @@ class Math1Autoscale(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``1`` or ON enables automatic vertical scaling of the math waveform when the RF reference
           level falls below -25.0 dBm. Reference levels greater than or equal to -25.0 dBm cause the
-          probe to go into BYPassmode. The reference level is set/queried using the command
+          probe to go into BYPass mode. The reference level is set/queried using the command
           ``RF:REFLevel``.
         - ``0`` or OFF disables math autoscaling.
     """
@@ -748,7 +748,7 @@ class Math1(SCPICmdRead):
         Info:
             - ``1`` or ON enables automatic vertical scaling of the math waveform when the RF
               reference level falls below -25.0 dBm. Reference levels greater than or equal to -25.0
-              dBm cause the probe to go into BYPassmode. The reference level is set/queried using
+              dBm cause the probe to go into BYPass mode. The reference level is set/queried using
               the command ``RF:REFLevel``.
             - ``0`` or OFF disables math autoscaling.
         """

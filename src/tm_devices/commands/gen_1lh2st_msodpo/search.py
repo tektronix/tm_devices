@@ -400,8 +400,6 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:THReshold:REF<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:POLarity {STAYSHigh|STAYSLow|EITher}
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:POLarity?
-    - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>|MATH|REF<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|RF_AMPlitude|RF_FREQuency|RF_PHASe}
-    - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:TIMe <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:TIMe?
     - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:DELTatime <NR3>
@@ -754,9 +752,9 @@ class SearchSearchItemTriggerATransitionSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies one input channel as the source. x has a minimum of 1 and a maximum of
-          4.
+        - ``CH<x>`` specifies one input channel as the source.
         - ``MATH`` specifies the math waveform as the source.
+        - ``REF<x>`` specifies the reference waveform as the source.
     """  # noqa: E501
 
 
@@ -934,9 +932,9 @@ class SearchSearchItemTriggerATransition(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies one input channel as the source. x has a minimum of 1 and a
-              maximum of 4.
+            - ``CH<x>`` specifies one input channel as the source.
             - ``MATH`` specifies the math waveform as the source.
+            - ``REF<x>`` specifies the reference waveform as the source.
         """  # noqa: E501
         return self._source
 
@@ -1003,41 +1001,6 @@ class SearchSearchItemTriggerATimeoutTime(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class SearchSearchItemTriggerATimeoutSource(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce`` command.
-
-    Description:
-        - When searching using the TIMEOut search type, this command specifies the source. The
-          available sources are live channels, reference waveforms, the math waveform, or the
-          digital channels. The default is channel 1. The timeout search type is selected using
-          ``SEARCH:SEARCHX:TRIGGER:A:TYPE``. SEARCH<x> is the search number, which is always 1.
-
-    Usage:
-        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?``
-          query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?`` query and raise an AssertionError if the
-          returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce value`` command.
-
-    SCPI Syntax:
-        ```
-        - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>|MATH|REF<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|RF_AMPlitude|RF_FREQuency|RF_PHASe}
-        - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?
-        ```
-
-    Info:
-        - ``CH<x>`` specifies to use one of the analog channels as the source waveform. x has a
-          minimum of 1 and a maximum of 4.
-        - ``MATH`` specifies to use the math waveform as the as the source waveform.
-        - ``REF<x>`` specifies to use one of the reference waveforms 1-4 as the as the source
-          waveform. x has a minimum of 1 and a maximum of 4.
-        - ``D<x>`` specifies to use one of the digital channels as the source waveform. (Requires
-          option 3-MSO.) x has a minimum of 0 and a maximum of 15.
-    """  # noqa: E501
-
-
 class SearchSearchItemTriggerATimeoutPolarity(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:POLarity`` command.
 
@@ -1076,7 +1039,6 @@ class SearchSearchItemTriggerATimeout(SCPICmdRead):
 
     Properties:
         - ``.polarity``: The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:POLarity`` command.
-        - ``.source``: The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce`` command.
         - ``.time``: The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:TIMe`` command.
     """
 
@@ -1085,7 +1047,6 @@ class SearchSearchItemTriggerATimeout(SCPICmdRead):
         self._polarity = SearchSearchItemTriggerATimeoutPolarity(
             device, f"{self._cmd_syntax}:POLarity"
         )
-        self._source = SearchSearchItemTriggerATimeoutSource(device, f"{self._cmd_syntax}:SOUrce")
         self._time = SearchSearchItemTriggerATimeoutTime(device, f"{self._cmd_syntax}:TIMe")
 
     @property
@@ -1116,42 +1077,6 @@ class SearchSearchItemTriggerATimeout(SCPICmdRead):
             - ``EITher`` specifies the polarity stays HIGH or stays LOW.
         """
         return self._polarity
-
-    @property
-    def source(self) -> SearchSearchItemTriggerATimeoutSource:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce`` command.
-
-        Description:
-            - When searching using the TIMEOut search type, this command specifies the source. The
-              available sources are live channels, reference waveforms, the math waveform, or the
-              digital channels. The default is channel 1. The timeout search type is selected using
-              ``SEARCH:SEARCHX:TRIGGER:A:TYPE``. SEARCH<x> is the search number, which is always 1.
-
-        Usage:
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?`` query and raise an AssertionError if
-              the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce value`` command.
-
-        SCPI Syntax:
-            ```
-            - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>|MATH|REF<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|RF_AMPlitude|RF_FREQuency|RF_PHASe}
-            - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?
-            ```
-
-        Info:
-            - ``CH<x>`` specifies to use one of the analog channels as the source waveform. x has a
-              minimum of 1 and a maximum of 4.
-            - ``MATH`` specifies to use the math waveform as the as the source waveform.
-            - ``REF<x>`` specifies to use one of the reference waveforms 1-4 as the as the source
-              waveform. x has a minimum of 1 and a maximum of 4.
-            - ``D<x>`` specifies to use one of the digital channels as the source waveform.
-              (Requires option 3-MSO.) x has a minimum of 0 and a maximum of 15.
-        """  # noqa: E501
-        return self._source
 
     @property
     def time(self) -> SearchSearchItemTriggerATimeoutTime:
@@ -1495,13 +1420,11 @@ class SearchSearchItemTriggerASetholdDataSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the data source. x has a minimum of 1 and a
-          maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the data source.
         - ``MATH`` specifies the math waveform as the data source.
-        - ``REF<x>`` specifies a reference waveform as the data source. x has a minimum of 1 and a
-          maximum of 4.
+        - ``REF<x>`` specifies a reference waveform as the data source.
         - ``D<x>`` specifies a digital input as the data source (models with option 3-MSO
-          installed.) x has a minimum of 0 and a maximum of 15.
+          installed.).
     """  # noqa: E501
 
 
@@ -1516,8 +1439,7 @@ class SearchSearchItemTriggerASetholdData(SCPICmdRead):
           returned value does not match ``value``.
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the data source. x has a minimum of 1 and a
-          maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the data source.
 
     Properties:
         - ``.source``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:DATa:SOUrce`` command.
@@ -1558,13 +1480,11 @@ class SearchSearchItemTriggerASetholdData(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the data source. x has a minimum of 1 and a
-              maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the data source.
             - ``MATH`` specifies the math waveform as the data source.
-            - ``REF<x>`` specifies a reference waveform as the data source. x has a minimum of 1 and
-              a maximum of 4.
+            - ``REF<x>`` specifies a reference waveform as the data source.
             - ``D<x>`` specifies a digital input as the data source (models with option 3-MSO
-              installed.) x has a minimum of 0 and a maximum of 15.
+              installed.).
         """  # noqa: E501
         return self._source
 
@@ -1657,6 +1577,12 @@ class SearchSearchItemTriggerASetholdClockSource(SCPICmdWrite, SCPICmdRead):
           1 and a maximum of 4.
         - ``D<x>`` specifies a digital channel as the clock source waveform. x has a minimum of 0
           and a maximum of 15.
+        - ``RF_AMPlitude`` specifies an RF time domain trace as the clock source waveform.
+          (MDO4000/B/C only.).
+        - ``RF_FREQuency`` specifies an RF time domain trace as the clock source waveform.
+          (MDO4000/B/C only.).
+        - ``RF_PHASe`` specifies an RF time domain trace as the clock source waveform. (MDO4000/B/C
+          only.).
     """  # noqa: E501
 
 
@@ -1774,6 +1700,12 @@ class SearchSearchItemTriggerASetholdClock(SCPICmdRead):
               minimum of 1 and a maximum of 4.
             - ``D<x>`` specifies a digital channel as the clock source waveform. x has a minimum of
               0 and a maximum of 15.
+            - ``RF_AMPlitude`` specifies an RF time domain trace as the clock source waveform.
+              (MDO4000/B/C only.).
+            - ``RF_FREQuency`` specifies an RF time domain trace as the clock source waveform.
+              (MDO4000/B/C only.).
+            - ``RF_PHASe`` specifies an RF time domain trace as the clock source waveform.
+              (MDO4000/B/C only.).
         """  # noqa: E501
         return self._source
 
@@ -1868,8 +1800,7 @@ class SearchSearchItemTriggerASethold(SCPICmdRead):
               returned value does not match ``value``.
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the data source. x has a minimum of 1 and a
-              maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the data source.
 
         Sub-properties:
             - ``.source``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:DATa:SOUrce`` command.
@@ -2040,11 +1971,9 @@ class SearchSearchItemTriggerARuntSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the runt search source. x has a minimum of 1 and
-          a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the runt search source.
         - ``MATH`` specifies the math waveform as the runt search source.
-        - ``REF<x>`` specifies a reference waveform as the runt search source. x has a minimum of 1
-          and a maximum of 4.
+        - ``REF<x>`` specifies a reference waveform as the runt search source.
     """  # noqa: E501
 
 
@@ -2161,11 +2090,9 @@ class SearchSearchItemTriggerARunt(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the runt search source. x has a minimum of 1
-              and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the runt search source.
             - ``MATH`` specifies the math waveform as the runt search source.
-            - ``REF<x>`` specifies a reference waveform as the runt search source. x has a minimum
-              of 1 and a maximum of 4.
+            - ``REF<x>`` specifies a reference waveform as the runt search source.
         """  # noqa: E501
         return self._source
 
@@ -2294,9 +2221,9 @@ class SearchSearchItemTriggerARisefallSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies one input channel as the source. x has a minimum of 1 and a maximum of
-          4.
+        - ``CH<x>`` specifies one input channel as the source.
         - ``MATH`` specifies the math waveform as the source.
+        - ``REF<x>`` specifies the reference waveform as the source.
     """  # noqa: E501
 
 
@@ -2471,9 +2398,9 @@ class SearchSearchItemTriggerARisefall(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies one input channel as the source. x has a minimum of 1 and a
-              maximum of 4.
+            - ``CH<x>`` specifies one input channel as the source.
             - ``MATH`` specifies the math waveform as the source.
+            - ``REF<x>`` specifies the reference waveform as the source.
         """  # noqa: E501
         return self._source
 
@@ -3952,6 +3879,9 @@ class SearchSearchItemTriggerALogicInputClockSource(SCPICmdWrite, SCPICmdRead):
         - ``NONe`` specifies no clock source.
         - ``D<x>`` specifies a digital channel as the clock source. x has a minimum of 0 and a
           maximum of 15.
+        - ``RF_AMPlitude`` specify an RF time domain trace as the clock source. (MDO4000/B/C only.).
+        - ``RF_FREQuency`` specify an RF time domain trace as the clock source. (MDO4000/B/C only.).
+        - ``RF_PHASe`` specify an RF time domain trace as the clock source. (MDO4000/B/C only.).
     """  # noqa: E501
 
 
@@ -4068,6 +3998,11 @@ class SearchSearchItemTriggerALogicInputClock(SCPICmdRead):
             - ``NONe`` specifies no clock source.
             - ``D<x>`` specifies a digital channel as the clock source. x has a minimum of 0 and a
               maximum of 15.
+            - ``RF_AMPlitude`` specify an RF time domain trace as the clock source. (MDO4000/B/C
+              only.).
+            - ``RF_FREQuency`` specify an RF time domain trace as the clock source. (MDO4000/B/C
+              only.).
+            - ``RF_PHASe`` specify an RF time domain trace as the clock source. (MDO4000/B/C only.).
         """  # noqa: E501
         return self._source
 
@@ -4852,13 +4787,10 @@ class SearchSearchItemTriggerAEdgeSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the source waveform. x has a minimum of 1 and a
-          maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the source waveform.
         - ``MATH`` specifies the math waveform as the source waveform.
-        - ``REF<x>`` specifies a reference waveform as the source waveform. x has a minimum of 1 and
-          a maximum of 4.
-        - ``D<x>`` specifies a digital channel as the source waveform. x has a minimum of 0 and a
-          maximum of 15.
+        - ``REF<x>`` specifies a reference waveform as the source waveform.
+        - ``D<x>`` specifies a digital channel as the source waveform.
     """  # noqa: E501
 
 
@@ -4963,13 +4895,10 @@ class SearchSearchItemTriggerAEdge(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the source waveform. x has a minimum of 1 and
-              a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the source waveform.
             - ``MATH`` specifies the math waveform as the source waveform.
-            - ``REF<x>`` specifies a reference waveform as the source waveform. x has a minimum of 1
-              and a maximum of 4.
-            - ``D<x>`` specifies a digital channel as the source waveform. x has a minimum of 0 and
-              a maximum of 15.
+            - ``REF<x>`` specifies a reference waveform as the source waveform.
+            - ``D<x>`` specifies a digital channel as the source waveform.
         """  # noqa: E501
         return self._source
 
@@ -14527,7 +14456,8 @@ class SearchSearchItemTriggerABusBItemCanDataQualifier(SCPICmdWrite, SCPICmdRead
         - This command sets the qualifier (<, >, =, not =, <=) to be used to search on CAN bus data.
           This only applies if the search condition has been set to IDANDDATA or DATA (using
           ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:CONDITION``). SEARCH<x> is the search number, which
-          is always 1, and B<x> is the bus number (1-2).
+          is always 1, and B<x> is the bus number (1-4). 1-3 for the MDO4000C and 1-2 for the
+          MDO3000.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -14722,7 +14652,8 @@ class SearchSearchItemTriggerABusBItemCanData(SCPICmdRead):
             - This command sets the qualifier (<, >, =, not =, <=) to be used to search on CAN bus
               data. This only applies if the search condition has been set to IDANDDATA or DATA
               (using ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:CONDITION``). SEARCH<x> is the search
-              number, which is always 1, and B<x> is the bus number (1-2).
+              number, which is always 1, and B<x> is the bus number (1-4). 1-3 for the MDO4000C and
+              1-2 for the MDO3000.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -16772,7 +16703,6 @@ class SearchSearchItemTriggerA(SCPICmdRead):
 
         Sub-properties:
             - ``.polarity``: The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:POLarity`` command.
-            - ``.source``: The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce`` command.
             - ``.time``: The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:TIMe`` command.
         """
         return self._timeout

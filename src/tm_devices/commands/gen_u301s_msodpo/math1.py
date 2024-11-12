@@ -647,7 +647,7 @@ class Math1HorizontalScale(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command specifies the math horizontal display scale for FFT or for dual math
           waveforms that have source waveforms that are reference waveforms. The horizontal scale of
-          a dual math waveform with a channel source waveform is set through the command.
+          a dual math waveform with a channel source waveform is set through the  command.
 
     Usage:
         - Using the ``.query()`` method will send the ``MATH1:HORizontal:SCAle?`` query.

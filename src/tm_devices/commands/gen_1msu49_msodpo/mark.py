@@ -1,8 +1,7 @@
-# pylint: disable=line-too-long
 """The mark commands module.
 
 These commands are used in the following models:
-DPO4K, DPO4KB, MDO3, MDO3K, MDO4K, MDO4KB, MDO4KC, MSO4K, MSO4KB
+DPO4K, DPO4KB, MSO4K
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
@@ -11,8 +10,6 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - MARK {NEXT|PREVious}
-    - MARK:CREATE {CH<x>|MATH|REF1|REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2|REF3|REF4|DIGital|COLUMN|RF_AMPlitude|RF_FREQuency|RF_PHASe}
-    - MARK:DELEte {CH<x>|MATH|REF1|REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2|REF3|REF4|DIGital|COLUMN|SELECTED|ALL||RF_AMPlitude|RF_FREQuency|RF_PHASe}
     - MARK:FREE?
     - MARK:SAVEALL TOUSER
     - MARK:SELected:END?
@@ -28,7 +25,7 @@ Commands and Queries:
     - MARK:USERLIST?
     - MARK?
     ```
-"""  # noqa: E501
+"""
 
 from typing import Optional, TYPE_CHECKING
 
@@ -492,59 +489,6 @@ class MarkFree(SCPICmdRead):
     """
 
 
-class MarkDelete(SCPICmdWrite):
-    """The ``MARK:DELEte`` command.
-
-    Description:
-        - This command deletes a mark on a particular waveform, all waveforms in a column, the
-          selected mark, or all marks.
-
-    Usage:
-        - Using the ``.write(value)`` method will send the ``MARK:DELEte value`` command.
-
-    SCPI Syntax:
-        ```
-        - MARK:DELEte {CH<x>|MATH|REF1|REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2|REF3|REF4|DIGital|COLUMN|SELECTED|ALL||RF_AMPlitude|RF_FREQuency|RF_PHASe}
-        ```
-
-    Info:
-        - ``CH<x>`` deletes the mark on a channel waveform, where <x> is the channel number.
-        - ``MATH`` deletes the mark on the math waveform.
-        - ``B<x>`` deletes the mark on a bus waveform, where <x>.
-        - ``REF<x>`` deletes the mark on a reference waveform, where <x> is the reference waveform
-          number.
-        - ``DIGital`` deletes all marks on all digital channels. (Requires installation of option
-          3-MSO.).
-        - ``COLUMN`` deletes marks on all waveforms in the current zoom pixel column.
-    """  # noqa: E501
-
-
-class MarkCreate(SCPICmdWrite):
-    """The ``MARK:CREATE`` command.
-
-    Description:
-        - Creates a mark on a specified waveform or all waveforms in a column.
-
-    Usage:
-        - Using the ``.write(value)`` method will send the ``MARK:CREATE value`` command.
-
-    SCPI Syntax:
-        ```
-        - MARK:CREATE {CH<x>|MATH|REF1|REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2|REF3|REF4|DIGital|COLUMN|RF_AMPlitude|RF_FREQuency|RF_PHASe}
-        ```
-
-    Info:
-        - ``CH<x>`` creates the mark on a channel waveform, where <x> is the channel number.
-        - ``MATH`` creates the mark on the math waveform.
-        - ``B<x>`` creates the mark on a bus waveform, where <x>.
-        - ``REF<x>`` creates the mark on a reference waveform, where <x> is the reference waveform
-          number.
-        - ``DIGital`` creates the mark on a digital waveform. (An error will result if no digital
-          channel is turned on.) (Requires installation of option 3-MSO.).
-        - ``COLUMN`` creates marks on all waveforms in the current zoom pixel column.
-    """  # noqa: E501
-
-
 class Mark(SCPICmdWrite, SCPICmdRead):
     """The ``MARK`` command.
 
@@ -569,8 +513,6 @@ class Mark(SCPICmdWrite, SCPICmdRead):
         - ``PREVious`` moves to the next reference mark on the left.
 
     Properties:
-        - ``.create``: The ``MARK:CREATE`` command.
-        - ``.delete``: The ``MARK:DELEte`` command.
         - ``.free``: The ``MARK:FREE`` command.
         - ``.saveall``: The ``MARK:SAVEALL`` command.
         - ``.selected``: The ``MARK:SELected`` command tree.
@@ -580,68 +522,11 @@ class Mark(SCPICmdWrite, SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "MARK") -> None:
         super().__init__(device, cmd_syntax)
-        self._create = MarkCreate(device, f"{self._cmd_syntax}:CREATE")
-        self._delete = MarkDelete(device, f"{self._cmd_syntax}:DELEte")
         self._free = MarkFree(device, f"{self._cmd_syntax}:FREE")
         self._saveall = MarkSaveall(device, f"{self._cmd_syntax}:SAVEALL")
         self._selected = MarkSelected(device, f"{self._cmd_syntax}:SELected")
         self._total = MarkTotal(device, f"{self._cmd_syntax}:TOTal")
         self._userlist = MarkUserlist(device, f"{self._cmd_syntax}:USERLIST")
-
-    @property
-    def create(self) -> MarkCreate:
-        """Return the ``MARK:CREATE`` command.
-
-        Description:
-            - Creates a mark on a specified waveform or all waveforms in a column.
-
-        Usage:
-            - Using the ``.write(value)`` method will send the ``MARK:CREATE value`` command.
-
-        SCPI Syntax:
-            ```
-            - MARK:CREATE {CH<x>|MATH|REF1|REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2|REF3|REF4|DIGital|COLUMN|RF_AMPlitude|RF_FREQuency|RF_PHASe}
-            ```
-
-        Info:
-            - ``CH<x>`` creates the mark on a channel waveform, where <x> is the channel number.
-            - ``MATH`` creates the mark on the math waveform.
-            - ``B<x>`` creates the mark on a bus waveform, where <x>.
-            - ``REF<x>`` creates the mark on a reference waveform, where <x> is the reference
-              waveform number.
-            - ``DIGital`` creates the mark on a digital waveform. (An error will result if no
-              digital channel is turned on.) (Requires installation of option 3-MSO.).
-            - ``COLUMN`` creates marks on all waveforms in the current zoom pixel column.
-        """  # noqa: E501
-        return self._create
-
-    @property
-    def delete(self) -> MarkDelete:
-        """Return the ``MARK:DELEte`` command.
-
-        Description:
-            - This command deletes a mark on a particular waveform, all waveforms in a column, the
-              selected mark, or all marks.
-
-        Usage:
-            - Using the ``.write(value)`` method will send the ``MARK:DELEte value`` command.
-
-        SCPI Syntax:
-            ```
-            - MARK:DELEte {CH<x>|MATH|REF1|REF2|REF3|REF4|B1|B2|B3|B4|REF1|REF2|REF3|REF4|DIGital|COLUMN|SELECTED|ALL||RF_AMPlitude|RF_FREQuency|RF_PHASe}
-            ```
-
-        Info:
-            - ``CH<x>`` deletes the mark on a channel waveform, where <x> is the channel number.
-            - ``MATH`` deletes the mark on the math waveform.
-            - ``B<x>`` deletes the mark on a bus waveform, where <x>.
-            - ``REF<x>`` deletes the mark on a reference waveform, where <x> is the reference
-              waveform number.
-            - ``DIGital`` deletes all marks on all digital channels. (Requires installation of
-              option 3-MSO.).
-            - ``COLUMN`` deletes marks on all waveforms in the current zoom pixel column.
-        """  # noqa: E501
-        return self._delete
 
     @property
     def free(self) -> MarkFree:

@@ -26,6 +26,7 @@ Things to be included in the next release go here.
 - Added the `get_errors()` method to the `Device` class to enable easy access to the current error code and messages on any device.
 - Added more details to the Architectural Overview page of the documentation as well as highlighting to the device driver diagram on the page.
 - Added regex matching to the `verify_values()` helper function to allow for more flexible value verification.
+- Full Python API support for MDO3 model.
 
 ### Changed
 
