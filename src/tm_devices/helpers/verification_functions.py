@@ -4,8 +4,6 @@ import re
 
 from typing import Tuple, Union
 
-from tm_devices.helpers.functions import get_timestamp_string
-
 
 def raise_error(unique_identifier: str, message: str, *, condense_printout: bool = True) -> None:
     """Raise an AssertionError with the provided message indicating there was an error.
@@ -18,12 +16,10 @@ def raise_error(unique_identifier: str, message: str, *, condense_printout: bool
     Raises:
         AssertionError: Prints out the error message with a traceback.
     """
-    # TODO: integrate this with logging
-    #  https://github.com/tektronix/tm_devices/issues/316
     if condense_printout:
         # Make the message smaller
         message = ", ".join([x.strip() for x in message.split("\n")])
-    message = f"{get_timestamp_string()} - ERROR: ({unique_identifier}) : {message}"
+    message = f"ERROR: ({unique_identifier}) : {message}"
     raise AssertionError(message)
 
 
@@ -38,12 +34,10 @@ def raise_failure(unique_identifier: str, message: str, *, condense_printout: bo
     Raises:
         AssertionError: Prints out the failure message with a traceback.
     """
-    # TODO: integrate this with logging
-    #  https://github.com/tektronix/tm_devices/issues/316
     if condense_printout:
         # Make the message smaller
         message = ", ".join([x.strip() for x in message.split("\n")])
-    message = f"{get_timestamp_string()} - FAILURE: ({unique_identifier}) : {message}"
+    message = f"FAILURE: ({unique_identifier}) : {message}"
     raise AssertionError(message)
 
 

@@ -51,7 +51,7 @@ def fixture_site_dir(pytestconfig: pytest.Config) -> str:
 @pytest.fixture(scope="module", autouse=True)
 def _docs_tests_setup() -> Generator[None, None, None]:  # pyright: ignore [reportUnusedFunction]
     """Setup for docs tests.."""
-    starting_directory = os.getcwd()
+    starting_directory = Path.cwd()
     try:
         os.chdir(PROJECT_ROOT_DIR)
         yield

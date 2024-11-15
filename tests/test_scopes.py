@@ -155,10 +155,10 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     scope.expect_esr(0, ('0,"No events to report - queue empty"',))
 
     # Test curve query write to csv functionality with multi-frame curve
-    filepath = f"temp_{sys.version_info.major}{sys.version_info.minor}.csv"
+    filepath = pathlib.Path(f"temp_{sys.version_info.major}{sys.version_info.minor}.csv")
     try:
-        curve = scope.curve_query(1, wfm_type="TimeDomain", output_csv_file=filepath)
-        with open(filepath, encoding="utf8") as curve_csv:
+        curve = scope.curve_query(1, wfm_type="TimeDomain", output_csv_file=filepath.as_posix())
+        with filepath.open(encoding="utf8") as curve_csv:
             # Remove trailing command a format string as list of ints based on commas
             curve_reformatted_from_file = list(map(int, curve_csv.read()[:-1].split(",")))
             # Flatten list of lists returned from multi-frame curve query
@@ -364,44 +364,51 @@ def test_exceptions(device_manager: DeviceManager) -> None:
     device_manager.remove_all_devices()
 
 
-def test_tekscope70k(device_manager: DeviceManager, capsys: pytest.CaptureFixture[str]) -> None:
+def test_tekscope70k(
+    device_manager: DeviceManager,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     """Test the tekscope_70k implementation.
 
     Args:
         device_manager: The DeviceManager object.
-        capsys: The captured stdout and stderr.
+        caplog: The captured log messages.
     """
     scope: TekScope5k7k70k = device_manager.add_scope("127.0.0.1")
     assert scope.ip_address == "127.0.0.1"
     assert scope.hostname == ""
     # Test some generic device functionality
     assert scope.wait_for_network_connection(
-        wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True, verbose=True
+        wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True
     )
-    assert (
+    assert caplog.records[-1].message.startswith(
         f"Successfully established a network connection with {scope.ip_address}"
-        in capsys.readouterr().out
     )
-    assert scope.wait_for_network_connection(
-        wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True, verbose=False
-    )
-    assert (
-        f"Successfully established a network connection with {scope.ip_address}"
-        not in capsys.readouterr().out
-    )
+    assert caplog.records[-1].levelname == "INFO"
+
+    with scope.temporary_verbose(False):
+        assert scope.wait_for_network_connection(
+            wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True
+        )
+        assert caplog.records[-1].message.startswith(
+            f"Successfully established a network connection with {scope.ip_address}"
+        )
+        assert caplog.records[-1].levelname == "DEBUG"
+
     with mock.patch(
         "subprocess.check_output", mock.MagicMock(side_effect=subprocess.CalledProcessError(1, ""))
     ):
         assert not scope.wait_for_network_connection(
-            wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True, verbose=True
+            wait_time=0.05, sleep_seconds=1, accept_immediate_connection=True
         )
-        assert (
-            f"Unable to establish a network connection with {scope.ip_address}"
-            in capsys.readouterr().out
+        assert caplog.records[-1].message.startswith(
+            f"Unable to establish a network connection with {scope.ip_address} after"
         )
+        assert caplog.records[-1].levelname == "WARNING"
+
     with pytest.raises(AssertionError):
         scope.wait_for_network_connection(
-            wait_time=0.05, sleep_seconds=1, accept_immediate_connection=False, verbose=False
+            wait_time=0.05, sleep_seconds=1, accept_immediate_connection=False
         )
     scope.expect_esr(0)
     with pytest.raises(SystemError):
@@ -581,7 +588,7 @@ def test_tekscope2k(device_manager: DeviceManager, tmp_path: pathlib.Path) -> No
 
     filename = tmp_path / "temp.txt"
     curve = scope.curve_query(1, wfm_type="TimeDomain", output_csv_file=str(filename))
-    with open(filename, encoding="utf8") as curve_csv:
+    with filename.open(encoding="utf8") as curve_csv:
         curve_reformatted_from_file = list(map(float, curve_csv.read()[:-1].split(",")))
         assert curve == curve_reformatted_from_file
 

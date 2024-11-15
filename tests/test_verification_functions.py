@@ -23,7 +23,7 @@ def test_verify_values_fail() -> None:
             log_error=True,
         )
     assert (
-        " - ERROR: (failing-check) : Actual result does not match the expected "
+        "ERROR: (failing-check) : Actual result does not match the expected "
         "result within a tolerance of 0.0, max: 0.1, act: 0.2, min: 0.1"
     ) in str(assertion_info.value)
 
@@ -48,7 +48,7 @@ def test_verify_values_regex_match_fail() -> None:
             use_regex_match=True,
         )
     assert (
-        " - FAILURE: (regex-fail-check) : Actual result does not match the expected result, "
+        "FAILURE: (regex-fail-check) : Actual result does not match the expected result, "
         "exp: ^test.*value$, act: fail123value"
     ) in str(assertion_info.value)
 
@@ -71,7 +71,7 @@ def test_verify_values_condense_printout(log_error: bool, message_level: str) ->
             log_error=log_error,
         )
     assert (
-        f" - {message_level}: (condense-printout-check) : "
+        f"{message_level}: (condense-printout-check) : "
         f"Actual result does not match the expected result"
         "\n  exp: expected"
         "\n  act: actual"

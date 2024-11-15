@@ -430,7 +430,7 @@ class DMConfigParser:
         if not config_path.is_file():
             raise FileNotFoundError(config_path)
         # read in data
-        with open(config_path, encoding="utf-8") as config_file:
+        with config_path.open(encoding="utf-8") as config_file:
             if config_path.suffix == ".toml":
                 data = tomli.loads(config_file.read())
             else:  # ["yaml", "yml"]

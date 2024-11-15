@@ -1,7 +1,9 @@
 """Pytest configuration file."""
 
+import logging
 import os
 import socket
+import sys
 
 from pathlib import Path
 from typing import Generator, List, Tuple
@@ -11,7 +13,7 @@ import pytest
 import pyvisa.constants
 
 from mock_server import mocker_server, PORT
-from tm_devices import DeviceManager
+from tm_devices import configure_logging, DeviceManager, LoggingLevels
 from tm_devices.components import DMConfigParser
 from tm_devices.helpers import DMConfigOptions, validate_address
 
@@ -24,13 +26,38 @@ SIMULATED_VISA_LIB = str(Path(__file__).parent / "sim_devices/devices.yaml@sim")
 UNIT_TEST_TIMEOUT = 50
 
 
+####################################################################################################
+# Configure the logging for the package that will run during unit tests
+class _DynamicStreamHandler(logging.StreamHandler):  # pyright: ignore[reportMissingTypeArgument]
+    def emit(self, record: logging.LogRecord) -> None:
+        self.stream = sys.stdout
+        super().emit(record)
+
+
+_logger = configure_logging(
+    log_console_level=LoggingLevels.NONE,
+    log_file_level=LoggingLevels.DEBUG,
+    log_file_directory=Path(__file__).parent / "logs",
+    log_file_name=f"unit_test_py{sys.version_info.major}{sys.version_info.minor}.log",
+)
+_unit_test_console_handler = _DynamicStreamHandler(stream=sys.stdout)
+_unit_test_console_handler.setLevel(logging.DEBUG)
+_unit_test_console_formatter = logging.Formatter("%(asctime)s - %(message)s")
+_unit_test_console_formatter.default_msec_format = (
+    "%s.%06d"  # Use 6 digits of precision for milliseconds
+)
+_unit_test_console_handler.setFormatter(_unit_test_console_formatter)
+_logger.addHandler(_unit_test_console_handler)
+####################################################################################################
+
+
 def mock_gethostbyname(address: str) -> str:
     """Mock the socket.gethostbyname function."""
     try:
         is_hostname = validate_address(address)
         if not is_hostname:  # pylint: disable=consider-using-assignment-expr
             return address
-        raise ValueError
+        raise ValueError  # noqa: TRY301
     except ValueError as error:
         raise socket.herror from error
 
@@ -41,7 +68,7 @@ def mock_gethostbyaddr(address: str) -> Tuple[str, List[str], List[str]]:
         is_hostname = validate_address(address)
         if is_hostname:  # pylint: disable=consider-using-assignment-expr
             return address, [], []
-        raise ValueError
+        raise ValueError  # noqa: TRY301
     except ValueError as error:
         raise socket.herror from error
 
@@ -58,9 +85,9 @@ def _auto_add_newline_to_test_start() -> (  # pyright: ignore [reportUnusedFunct
     Generator[None, None, None]
 ):
     """Automatically add a newline at the start of each test."""
-    print(f"\n{'#' * 90}\nExecuting {os.environ['PYTEST_CURRENT_TEST'].split(' ')[0]}\n")
+    print(f"\n{'#' * 90}\nExecuting {os.environ['PYTEST_CURRENT_TEST'].split(' ')[0]}\n")  # noqa: T201
     yield
-    print(f"\n\nFinished {os.environ['PYTEST_CURRENT_TEST'].split(' ')[0]}\n{'#' * 90}")
+    print(f"\n\nFinished {os.environ['PYTEST_CURRENT_TEST'].split(' ')[0]}\n{'#' * 90}")  # noqa: T201
 
 
 @pytest.fixture(name="device_manager", scope="session")
@@ -70,7 +97,7 @@ def fixture_device_manager() -> Generator[DeviceManager, None, None]:
     Yields:
         The DeviceManager instance.
     """
-    print()
+    print()  # noqa: T201
     with mock.patch(
         "socket.gethostbyname", mock.MagicMock(side_effect=mock_gethostbyname)
     ), mock.patch(
