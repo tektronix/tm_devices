@@ -112,7 +112,7 @@ pre-commit = [
   {python = "3.8", version = "^3.5"}
 ]
 pylint = "3.2.7"
-pyright = {extras = ["nodejs"], version = "^1.1.387"}
+pyright = {extras = ["nodejs"], version = "1.1.389"}
 pyroma = "^4.2"
 tox = "^4.0"
 tox-gh-actions = "^3.1.0"

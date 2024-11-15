@@ -847,7 +847,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
                 logging.INFO if self._verbose and verbose else logging.DEBUG,
                 "(%s) Write >>\n%s",
                 self._name_and_alias,
-                command,
+                "\n".join(["    " + x for x in command.split("\n")]),
             )
         else:
             _logger.log(

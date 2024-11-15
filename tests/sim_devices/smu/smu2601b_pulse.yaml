@@ -10,7 +10,7 @@ devices:
       - q: loadscript tsp_script
       - q: loadscript tsp_function
       - q: print("TEK")
-      - q: '"""Sample script used in test_smu.py."""'
+      - q: -- Sample script used in test_smu.py.
       - q: endscript
       - q: tsp_script.save()
       - q: tsp_script()
