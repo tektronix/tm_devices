@@ -1,2 +1,2 @@
-"""Sample script used in test_smu.py."""
+-- Sample script used in test_smu.py.
 print("TEK")

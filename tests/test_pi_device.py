@@ -14,24 +14,23 @@ if TYPE_CHECKING:
 
 
 def test_pi_control(  # noqa: PLR0915
-    device_manager: DeviceManager, capsys: pytest.CaptureFixture[str]
+    device_manager: DeviceManager,
+    capsys: pytest.CaptureFixture[str],
+    caplog: pytest.LogCaptureFixture,
 ) -> None:
     """Test generic PIControl functionality.
 
     Args:
         device_manager: The DeviceManager object.
         capsys: The captured stdout and stderr.
+        caplog: The captured log messages.
     """
     scope: MSO2 = device_manager.add_scope("MSO22-HOSTNAME")
     assert scope._open()  # noqa: SLF001
     assert scope.query_binary("CURVE?") == [0.0]
     assert "Query Binary Values >>  " in capsys.readouterr().out
-    assert scope.query_binary("CURVE?", verbose=False) == [0.0]
-    assert "Query Binary Values >>  " not in capsys.readouterr().out
     assert scope.query_raw_binary("CURVE?") == b"#14\x00\x00\x00\x00\n"
     assert "Query Raw Binary >>  " in capsys.readouterr().out
-    assert scope.query_raw_binary("CURVE?", verbose=False) == b"#14\x00\x00\x00\x00\n"
-    assert "Query Raw Binary >>  " not in capsys.readouterr().out
     scope.factory_reset()
     assert "Write >>  'FACTORY'" in capsys.readouterr().out
     with pytest.raises(AssertionError) as error:
@@ -48,8 +47,6 @@ def test_pi_control(  # noqa: PLR0915
     with pytest.raises(AssertionError):
         scope.query_less_than("*OPC?", 1)
 
-    scope.write_raw(b"FACTORY", verbose=False)
-    assert "Write Raw >>  " not in capsys.readouterr().out
     with mock.patch(
         "pyvisa.resources.messagebased.MessageBasedResource.write_raw",
         mock.MagicMock(side_effect=visa.VisaIOError(123)),
@@ -85,12 +82,7 @@ def test_pi_control(  # noqa: PLR0915
     stdout = capsys.readouterr().out
     assert f"Attempting to establish a VISA connection with {scope.resource_expression}" in stdout
     assert f"Successfully established a VISA connection with {scope.resource_expression} " in stdout
-    assert scope.wait_for_visa_connection(
-        0.1, sleep_seconds=1, accept_immediate_connection=True, verbose=False
-    )
-    stdout = capsys.readouterr().out
-    assert "Attempting to establish a VISA connection with " not in stdout
-    assert "Successfully established a VISA connection with " not in stdout
+
     with pytest.raises(AssertionError):
         scope.wait_for_visa_connection(0.1, sleep_seconds=0, accept_immediate_connection=False)
     with mock.patch("pyvisa.ResourceManager", mock.MagicMock(side_effect=visa.Error())):
@@ -106,17 +98,17 @@ def test_pi_control(  # noqa: PLR0915
         stdout = capsys.readouterr().out
         assert scope.visa_timeout != old_timeout
         assert scope.visa_timeout == 6000
-        assert "VISA timeout set to: 6000ms" in stdout
+        assert "VISA timeout set to: 6000.000ms" in stdout
         # test a temporary verbose OFF
         with scope.temporary_verbose(False):
             assert scope.verbose != old_verbose
             # do something that would normally cause a printout
             scope.visa_timeout = 5000
-            stdout = capsys.readouterr().out
-            assert stdout == ""
             assert scope.visa_timeout == 5000
+            assert caplog.records[-1].levelname == "DEBUG"
+            assert caplog.records[-1].message.endswith("VISA timeout set to: 5000.000ms")
     stdout = capsys.readouterr().out
-    assert f"VISA timeout set to: {old_timeout}ms" in stdout
+    assert f"VISA timeout set to: {old_timeout}.000ms" in stdout
     assert scope.visa_timeout == old_timeout
 
     # Test closing a device that is powered off

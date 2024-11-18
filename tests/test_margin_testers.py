@@ -12,7 +12,7 @@ from mock_server import MOCK_ABOUT_INFO, PORT
 from tm_devices import DeviceManager
 from tm_devices.drivers.margin_testers.margin_tester import MarginTester
 
-AUTH_TOKEN_FILE_PATH = f"{Path(__file__).parent}/samples/token.auth_token_file_path"  # nosec
+AUTH_TOKEN_FILE_PATH = Path(__file__).parent / "samples/token.auth_token_file_path"  # nosec
 
 
 ################################################################################################
@@ -121,6 +121,6 @@ def test_generate_headers(tmt4: MarginTester) -> None:
         tmt4: Margin Tester device.
     """
     tmt4.auth_token_file_path = AUTH_TOKEN_FILE_PATH
-    assert tmt4.auth_token_file_path == AUTH_TOKEN_FILE_PATH
+    assert tmt4.auth_token_file_path == AUTH_TOKEN_FILE_PATH.as_posix()
     headers = tmt4._generate_headers()  # noqa: SLF001
     assert headers["Authorization"] == "Bearer UNIT-TEST"

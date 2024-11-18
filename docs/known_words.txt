@@ -19,11 +19,13 @@ ci
 classdiagram
 codebase
 codecov
+colored
 config
 conftest
 cookiecutter
 cov
 csv
+customizable
 deps
 dev
 disable_command_verification
@@ -33,6 +35,7 @@ docstring
 docstrings
 en
 enum
+env
 executables
 filepath
 generate_function

@@ -30,7 +30,7 @@ class CommonPISystemErrorCheckMixin(_AbstractDeviceVISAWriteQueryControl, ABC):
 
         Returns:
             A tuple containing the current error code alongside a tuple of the current error
-            messages.
+                messages.
         """
         result = int(self.query("*ESR?").strip())
 

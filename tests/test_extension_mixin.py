@@ -243,7 +243,7 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
         return f"AFG3KC {device.model} {value}"
 
     ############################################################################################
-    start_dir = os.getcwd()
+    start_dir = Path.cwd()
     try:
         os.chdir(generated_stub_dir)
         subprocess.check_call(  # noqa: S603

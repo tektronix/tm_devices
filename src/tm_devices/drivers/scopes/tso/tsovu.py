@@ -30,7 +30,9 @@ class TSOVu(_TektronixPIScopeMixin, PIControl, Scope):
 
         Args:
             config_entry: A config entry object parsed by the DMConfigParser.
-            verbose: A boolean indicating if verbose output should be printed.
+            verbose: A boolean indicating if verbose output should be printed. If True,
+                communication printouts will be logged with a level of INFO. If False,
+                communication printouts will be logged with a level of DEBUG.
             visa_resource: The VISA resource object.
             default_visa_timeout: The default VISA timeout value in milliseconds.
         """

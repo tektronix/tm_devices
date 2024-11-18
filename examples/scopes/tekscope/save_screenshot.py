@@ -5,7 +5,7 @@ from tm_devices.drivers import MSO6B
 
 with DeviceManager(verbose=True) as dm:
     # Add a scope
-    scope: MSO6B = dm.add_scope("192.168.1.5")
+    scope: MSO6B = dm.add_scope("192.168.0.1")
 
     # Send some commands
     scope.add_new_math("MATH1", "CH1")  # add MATH1 to CH1

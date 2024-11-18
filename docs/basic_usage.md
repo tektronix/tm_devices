@@ -10,7 +10,7 @@ This will print the available VISA devices to the console when run from a shell 
 ```console
 $ list-visa-resources
 [
-  "TCPIP0::192.168.0.100::inst0::INSTR",
+  "TCPIP0::192.168.0.1::inst0::INSTR",
   "ASRL4::INSTR"
 ]
 ```
@@ -57,6 +57,23 @@ outside the Python code for ease of automation
 ```python
 # fmt: off
 --8<-- "examples/miscellaneous/adding_devices_with_env_var.py"
+```
+
+## Customize logging and console output
+
+The amount of console output and logging saved to the log file can be customized as needed. This
+configuration can be done in the Python code itself as demonstrated here, or by using the
+[config file](configuration.md#config-options) or
+[environment variable](configuration.md#environment-variable).
+
+!!! important
+    If any configuration is performed in the Python code prior to instantiating the
+    [`DeviceManager`][tm_devices.DeviceManager], all other logging configuration methods
+    (config file, env var) will be ignored.
+
+```python
+# fmt: off
+--8<-- "examples/miscellaneous/customize_logging.py"
 ```
 
 ## Disable command checking

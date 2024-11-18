@@ -215,8 +215,7 @@ devices:
 
 ### Config Options
 
-These options are flags that enable/disable runtime behaviors of the Device
-Manager.
+These options are used to configure runtime behaviors of `tm_devices`.
 
 #### Yaml Options Syntax
 
@@ -230,6 +229,12 @@ options:
   retry_visa_connection: false
   default_visa_timeout: 5000
   check_for_updates: false
+  log_console_level: INFO
+  log_file_level: DEBUG
+  log_file_directory: ./logs
+  log_file_name: tm_devices_<timestamp>.log
+  log_colored_output: false
+  log_pyvisa_messages: false
 ```
 
 These are all `false` by default if not defined, set to `true` to modify the
@@ -259,6 +264,30 @@ runtime behavior configuration.
 - `check_for_updates`
     - This config option will enable a check for any available updates on pypi.org for the
         package when the `DeviceManager` is instantiated.
+- `log_console_level`
+    - This config option is used to set the log level for the console output.
+        The default value of this config option is "INFO". See the
+        [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
+- `log_file_level`
+    - This config option is used to set the log level for the file output.
+        The default value of this config option is "DEBUG". See the
+        [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
+- `log_file_directory`
+    - This config option is used to set the directory where the log files will be saved.
+        The default value of this config option is "./logs". See the
+        [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
+- `log_file_name`
+    - This config option is used to set the name of the log file.
+        The default value of this config option is a timestamped filename with the .log extension. See the
+        [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
+- `log_colored_output`
+    - This config option is used to enable or disable colored output in the console.
+        The default value of this config option is false. See the
+        [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
+- `log_pyvisa_messages`
+    - This config option is used to enable or disable logging of PyVISA messages within the
+        configured log file. The default value of this config option is false. See the
+        [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
 
 ### Sample Config File
 
@@ -320,6 +349,12 @@ options:
   retry_visa_connection: false
   default_visa_timeout: 10000  # 10 second default VISA timeout
   check_for_updates: false
+  log_console_level: NONE    # completely disable console output
+  log_file_level: DEBUG
+  log_file_directory: ./logs
+  log_file_name: custom_logfile.log    # customize the log file name
+  log_colored_output: false
+  log_pyvisa_messages: true  # log PyVISA messages in the log file
 ```
 
 #### TOML
@@ -393,8 +428,14 @@ standalone = false
 verbose_mode = false
 verbose_visa = false
 retry_visa_connection = false
-default_visa_timeout = 10000  # 10 second default VISA timeout
+default_visa_timeout = 10000         # 10 second default VISA timeout
 check_for_updates = false
+log_console_level = "NONE"           # completely disable console output
+log_file_level = "DEBUG"
+log_file_directory = "./logs"
+log_file_name = "custom_logfile.log" # customize the log file name
+log_colored_output = false
+log_pyvisa_messages = true           # log PyVISA messages in the log file
 ```
 
 ---

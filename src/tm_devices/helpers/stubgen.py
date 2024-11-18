@@ -18,7 +18,7 @@ def _get_data_type(data_object: Any) -> str:
     """
     try:
         if "." in str(data_object):
-            raise AttributeError
+            raise AttributeError  # noqa: TRY301
         data_type = str(data_object.__name__) if data_object else str(data_object)
     except AttributeError:
         data_type = str(
@@ -46,15 +46,14 @@ def add_info_to_stub(cls: Any, method: Any, is_property: bool = False) -> None: 
     """
     if stub_dir := os.getenv("TM_DEVICES_STUB_DIR"):
         method_filepath = inspect.getfile(cls)
-        stub_dir = str(
-            Path(stub_dir) / "tm_devices" if not stub_dir.endswith("tm_devices") else stub_dir
+        stub_dir_path = Path(stub_dir) / (
+            "tm_devices" if not stub_dir.endswith("tm_devices") else stub_dir
         )
-        method_filepath = str(
-            Path(stub_dir)
-            / method_filepath.rsplit("tm_devices", maxsplit=1)[-1].lstrip(os.path.sep)
+        # stub files have the .pyi extension
+        method_path_obj = stub_dir_path / (
+            method_filepath.rsplit("tm_devices", maxsplit=1)[-1].lstrip(os.path.sep) + "i"
         )
-        method_filepath += "i"  # stub files have the .pyi extension
-        if not os.path.exists(method_filepath):  # noqa: PTH110
+        if not method_path_obj.exists():
             msg = (
                 f'The stub file "{method_filepath}" must already exist in order to use this '
                 f"functionality to add method stubs."
@@ -86,8 +85,7 @@ def add_info_to_stub(cls: Any, method: Any, is_property: bool = False) -> None: 
             method_signature = "    @property\n" + method_signature
         method_stub_content = method_signature + "        " + '"""' + method.__doc__ + '"""' + "\n"
         # Read in the content of the stub file to avoid adding duplicate methods
-        with open(method_filepath, encoding="utf-8") as file_pointer:
-            contents = file_pointer.read()
+        contents = method_path_obj.read_text(encoding="utf-8")
         if f" def {method.__name__}(" not in contents:
             if typing_imports:
                 contents = f"from typing import {', '.join(typing_imports)}\n" + contents
@@ -105,5 +103,4 @@ def add_info_to_stub(cls: Any, method: Any, is_property: bool = False) -> None: 
                 msg = f"Could not find the end of the {cls.__name__} class."
                 raise ValueError(msg)
 
-            with open(method_filepath, "w", encoding="utf-8") as file_pointer:
-                file_pointer.write(contents)
+            method_path_obj.write_text(contents, encoding="utf-8")

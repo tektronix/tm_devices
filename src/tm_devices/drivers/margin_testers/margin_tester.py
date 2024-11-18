@@ -1,18 +1,23 @@
 """Base Margin Tester device driver module."""
 
+from __future__ import annotations
+
 import os
 import time
 
 from abc import ABC, abstractmethod
-from typing import Any, Dict, Mapping, MutableMapping, Tuple
+from pathlib import Path
+from typing import Any, Dict, Mapping, MutableMapping, Tuple, TYPE_CHECKING, Union
 
-from packaging.version import Version
 from requests.structures import CaseInsensitiveDict
 
 from tm_devices.driver_mixins.device_control import RESTAPIControl
 from tm_devices.drivers.device import Device, family_base_class
 from tm_devices.helpers import DeviceConfigEntry, DeviceTypes
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
+
+if TYPE_CHECKING:
+    from packaging.version import Version
 
 
 @family_base_class
@@ -27,11 +32,13 @@ class MarginTester(Device, RESTAPIControl, ABC):
 
         Args:
             config_entry: A config entry object parsed by the DMConfigParser.
-            verbose: A boolean indicating if verbose output should be printed.
+            verbose: A boolean indicating if verbose output should be printed. If True,
+                communication printouts will be logged with a level of INFO. If False,
+                communication printouts will be logged with a level of DEBUG.
         """
         super().__init__(config_entry, verbose)
 
-        self._auth_token_file_path = ""
+        self._auth_token_file_path: Path = Path()
 
     ################################################################################################
     # Abstract Cached Properties
@@ -89,12 +96,12 @@ class MarginTester(Device, RESTAPIControl, ABC):
     @property
     def auth_token_file_path(self) -> str:
         """Return the path to the file containing the auth token."""
-        return self._auth_token_file_path
+        return self._auth_token_file_path.as_posix()
 
     @auth_token_file_path.setter
-    def auth_token_file_path(self, value: str) -> None:
+    def auth_token_file_path(self, value: Union[str, os.PathLike[str]]) -> None:
         """Set the path to the file containing the auth token."""
-        self._auth_token_file_path = value
+        self._auth_token_file_path = Path(value)
 
     ################################################################################################
     # Public Methods
@@ -117,7 +124,11 @@ class MarginTester(Device, RESTAPIControl, ABC):
         Raises:
             AssertionError: Indicates that no auth token file is available.
         """
-        if not self._auth_token_file_path:
+        if not (
+            self._auth_token_file_path
+            and self._auth_token_file_path.exists()
+            and self._auth_token_file_path.is_file()
+        ):
             msg = (
                 "No auth token file set! Please set the ``.auth_token_file_path`` attribute "
                 "to point to a file with an authorization token."
@@ -125,8 +136,7 @@ class MarginTester(Device, RESTAPIControl, ABC):
             raise AssertionError(msg)
         headers: MutableMapping[str, str] = CaseInsensitiveDict()
         headers["Accept"] = "application/json"
-        with open(self._auth_token_file_path, encoding="utf-8") as auth_file:
-            token = auth_file.read().replace("\n", "")
+        token = self._auth_token_file_path.read_text(encoding="utf-8").replace("\n", "")
         headers["Authorization"] = f"Bearer {token}"
         return headers
 
@@ -138,7 +148,7 @@ class MarginTester(Device, RESTAPIControl, ABC):
 
         Returns:
             A tuple containing the current error code alongside a tuple of the current error
-            messages.
+                messages.
         """
         return 0, ()
 
@@ -148,12 +158,10 @@ class MarginTester(Device, RESTAPIControl, ABC):
         time.sleep(15)
         self._is_open = self.wait_for_network_connection(
             120,
-            verbose=False,
             accept_immediate_connection=bool(os.environ.get("TM_DEVICES_UNIT_TESTS_RUNNING")),
         )
         self._is_open &= self.wait_for_api_connection(
             120,
-            verbose=False,
             accept_immediate_connection=True,
         )
         return self._is_open

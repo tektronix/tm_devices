@@ -12,7 +12,7 @@ dm = DeviceManager()
 atexit.register(dm.close)
 
 # Add a device
-scope: MSO6B = dm.add_scope("192.168.1.102")
+scope: MSO6B = dm.add_scope("192.168.0.1")
 
 # Use the device
 print(scope)

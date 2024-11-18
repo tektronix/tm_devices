@@ -28,7 +28,7 @@ class CustomRestApiDevice(RESTAPIControl, Device):
 
     def _check_api_connection(self) -> bool:
         """Define abstract method _check_api_connection."""
-        return self.get("/api", verbose=False, allow_errors=True)[0]
+        return self.get("/api", allow_errors=True)[0]
 
     def _close(self) -> None:
         """Define abstract method _close."""
@@ -182,7 +182,7 @@ def test_set_api_version_non_verbose(rest_api_control: CustomRestApiDevice) -> N
         rest_api_control: Rest API Device.
     """
     rest_api_control.API_VERSIONS = MappingProxyType({1: "/api", 2: "/api2"})
-    rest_api_control.set_api_version(api_version=2, verbose=False)
+    rest_api_control.set_api_version(api_version=2)
     assert rest_api_control.api_url == rest_api_control.base_url + rest_api_control.API_VERSIONS[2]
 
 

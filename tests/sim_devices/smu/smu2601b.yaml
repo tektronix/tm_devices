@@ -7,8 +7,8 @@ devices:
         r: Keithley Instruments Inc., Model 2601B, 4498311, 3.3.5
       - q: print(available(gpib))
         r: 'true'
-      - q: loadscript loadfuncs\n"""Sample script used in test_smu.py."""\nprint("TEK")\nendscript
-      - q: loadscript tsp_function\n"""Sample script used in test_smu.py."""\nprint("TEK")\nendscript
+      - q: loadscript loadfuncs\n-- Sample script used in test_smu.py.\nprint("TEK")\nendscript
+      - q: loadscript tsp_function\n-- Sample script used in test_smu.py.\nprint("TEK")\nendscript
       - q: loadfuncs.save()
       - q: loadfuncs()
       - q: errorqueue.clear()

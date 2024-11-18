@@ -23,13 +23,16 @@ if TYPE_CHECKING:
 
 # pylint: disable=too-many-locals
 def test_smu(  # noqa: PLR0915
-    device_manager: DeviceManager, capsys: pytest.CaptureFixture[str]
+    device_manager: DeviceManager,
+    capsys: pytest.CaptureFixture[str],
+    caplog: pytest.LogCaptureFixture,
 ) -> None:
     """Test the SMU driver and TSP's IEEE commands.
 
     Args:
         device_manager: The DeviceManager object.
         capsys: The captured stdout and stderr.
+        caplog: The captured log messages.
     """
     smu: SMU2601B = device_manager.add_smu("smu2601b-hostname", alias="smu-device")
     assert id(device_manager.get_smu(number_or_alias="smu-device")) == id(smu)
@@ -138,7 +141,7 @@ def test_smu(  # noqa: PLR0915
         f"<tm_devices.commands.smu2601b_commands.SMU2601BCommands object at "
         f"{str(smu.commands).split(' at ', maxsplit=1)[-1]}"
     )
-    print(smu)
+    print(smu)  # noqa: T201
     expected_stdout = f"""{'=' * 45} SMU {smu.device_number} {'=' * 45}
   <class 'tm_devices.drivers.source_measure_units.smu26xx.smu2601b.SMU2601B'> object at {id(smu)}
     address='SMU2601B-HOSTNAME'
@@ -183,35 +186,37 @@ def test_smu(  # noqa: PLR0915
         "socket.socket.shutdown", mock.MagicMock(return_value=None)
     ):
         assert smu.wait_for_port_connection(
-            4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True, verbose=True
+            4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True
         )
         assert (
             f"Successfully established a connection to port 4000 on {smu.ip_address}"
-            in capsys.readouterr().out
+            in caplog.records[-1].message
         )
-        assert smu.wait_for_port_connection(
-            4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True, verbose=False
-        )
+        assert caplog.records[-1].levelname == "INFO"
+        with smu.temporary_verbose(False):
+            assert smu.wait_for_port_connection(
+                4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True
+            )
         assert (
             f"Successfully established a connection to port 4000 on {smu.ip_address}"
-            not in capsys.readouterr().out
+            in caplog.records[-1].message
         )
+        assert caplog.records[-1].levelname == "DEBUG"
         with pytest.raises(AssertionError):
             smu.wait_for_port_connection(
                 4000,
                 wait_time=0.05,
                 sleep_seconds=0,
                 accept_immediate_connection=False,
-                verbose=False,
             )
     with mock.patch("socket.socket.connect", mock.MagicMock(side_effect=socket.error(""))):
         assert not smu.wait_for_port_connection(
-            4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True, verbose=True
+            4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True
         )
-        assert (
-            f"Successfully established a connection to port 4000 on {smu.ip_address}"
-            not in capsys.readouterr().out
+        assert caplog.records[-1].message.startswith(
+            f"Unable to establish a connection to port 4000 on {smu.ip_address} after"
         )
+        assert caplog.records[-1].levelname == "WARNING"
 
     buffer = smu.get_buffers("smua.nvbuffer1")
     expected_buffer = {"smua.nvbuffer1": [1.0, 2.0, 3.0, 4.0, 5.0]}
@@ -227,12 +232,12 @@ def test_smu(  # noqa: PLR0915
     for value in (1.0, 2.0, 3.0, 4.0, 5.0):
         assert str(value) in stdout
 
-    filepath = f"./temp_test_{sys.version_info.major}{sys.version_info.minor}.csv"
+    filepath = Path(f"./temp_test_{sys.version_info.major}{sys.version_info.minor}.csv")
 
     try:
-        smu.export_buffers(filepath, "smua.nvbuffer1")
-        assert os.path.exists(filepath)  # noqa: PTH110
-        with open(filepath, encoding="utf-8") as file:
+        smu.export_buffers(filepath.as_posix(), "smua.nvbuffer1")
+        assert filepath.exists()
+        with filepath.open(encoding="utf-8") as file:
             lines = file.readlines()
             for index, value in enumerate(["smua.nvbuffer1", "1.0", "2.0", "3.0", "4.0", "5.0"]):
                 assert value in lines[index]

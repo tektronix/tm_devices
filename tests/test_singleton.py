@@ -13,7 +13,7 @@ class DummyClass(metaclass=Singleton):
 
     def __init__(self, value: bool = False) -> None:
         """Create an instance of the dummy class."""
-        print("running init")
+        print("running init")  # noqa: T201
         self.init_count += 1
         self.value = value
 
