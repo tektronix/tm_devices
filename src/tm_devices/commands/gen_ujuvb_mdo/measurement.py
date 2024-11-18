@@ -2295,7 +2295,7 @@ class MeasurementMeasItemSource1(SCPICmdWrite, SCPICmdRead):
     Description:
         - For SOURce1: This command specifies the source for all single channel measurements. For
           delay or phase measurements, This command specifies the waveform to measure 'from'. This
-          is equivalent  to setting the 'From:' waveform in the 'Measure Delay' side menu or the
+          is equivalent to setting the 'From:' waveform in the 'Measure Delay' side menu or the
           'Measure Phase' side menu. SOUrce is equivalent to SOURCE1. For SOUrce2: This command
           specifies the waveform to measure 'to' when taking a delay measurement or phase
           measurement. This is equivalent to setting the 'To:' waveform in the 'Measure Delay' side
@@ -2715,12 +2715,12 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         Description:
             - For SOURce1: This command specifies the source for all single channel measurements.
               For delay or phase measurements, This command specifies the waveform to measure
-              'from'. This is equivalent  to setting the 'From:' waveform in the 'Measure Delay'
-              side menu or the 'Measure Phase' side menu. SOUrce is equivalent to SOURCE1. For
-              SOUrce2: This command specifies the waveform to measure 'to' when taking a delay
-              measurement or phase measurement. This is equivalent to setting the 'To:' waveform in
-              the 'Measure Delay' side menu or the 'Measure Phase' side menu. Measurements are
-              specified by <x>, which ranges from 1 to 8.
+              'from'. This is equivalent to setting the 'From:' waveform in the 'Measure Delay' side
+              menu or the 'Measure Phase' side menu. SOUrce is equivalent to SOURCE1. For SOUrce2:
+              This command specifies the waveform to measure 'to' when taking a delay measurement or
+              phase measurement. This is equivalent to setting the 'To:' waveform in the 'Measure
+              Delay' side menu or the 'Measure Phase' side menu. Measurements are specified by <x>,
+              which ranges from 1 to 8.
 
         Usage:
             - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:SOUrce1?`` query.

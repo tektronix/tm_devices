@@ -32,7 +32,7 @@ Things to be included in the next release go here.
 - A logfile is now created that contains each command sent to a VISA device.
     - This file is located next to the main log file and will start with the same name, but have the unique address of the device appended.
     - This file will only be created if file logging is enabled for the package (which is the default behavior).
-- Full Python API support for MDO3 model.
+- Full Python API support for the MDO3 model.
 
 ### Changed
 

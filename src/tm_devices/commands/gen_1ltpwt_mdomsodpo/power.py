@@ -6764,9 +6764,8 @@ class PowerHarmonicsResultsHarItemLimit(SCPICmdRead):
 
     Description:
         - The IEC and MIL standards specify a limit for each harmonic magnitude. Returns the limit
-          in absolute units, or as a percentage of the fundamental as specified by the  standard.
-          IEC Class C (Table 2) and MIL standards specify the limit as a percentage of the
-          fundamental.
+          in absolute units, or as a percentage of the fundamental as specified by the standard. IEC
+          Class C (Table 2) and MIL standards specify the limit as a percentage of the fundamental.
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:HARMonics:RESults:HAR<x>:LIMit?``

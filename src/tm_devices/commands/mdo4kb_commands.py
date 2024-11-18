@@ -17,7 +17,6 @@ from .gen_1l4fot_mdomso.bus import Bus
 from .gen_1l4fot_mdomso.cursor import Cursor
 from .gen_1lcv3a_msodpomdo.message import Message
 from .gen_1lcv3a_msodpomdo.setup_1 import SetupItem
-from .gen_1le9o2_mdo.mark import Mark
 from .gen_1ltpwt_mdomsodpo.actonevent import Actonevent
 from .gen_1ltpwt_mdomsodpo.afg import Afg
 from .gen_1ltpwt_mdomsodpo.alias import Alias
@@ -38,6 +37,7 @@ from .gen_1ltpwt_mdomsodpo.fpanel import Fpanel
 from .gen_1ltpwt_mdomsodpo.gpibusb import Gpibusb
 from .gen_1ltpwt_mdomsodpo.hardcopy import Hardcopy
 from .gen_1ltpwt_mdomsodpo.horizontal import Horizontal
+from .gen_1ltpwt_mdomsodpo.mark import Mark
 from .gen_1ltpwt_mdomsodpo.marker import Marker
 from .gen_1ltpwt_mdomsodpo.math1 import Math1
 from .gen_1ltpwt_mdomsodpo.pictbridge import Pictbridge

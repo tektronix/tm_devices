@@ -31,6 +31,7 @@ from .gen_1ltpwt_mdomsodpo.fpanel import Fpanel
 from .gen_1ltpwt_mdomsodpo.gpibusb import Gpibusb
 from .gen_1ltpwt_mdomsodpo.hardcopy import Hardcopy
 from .gen_1ltpwt_mdomsodpo.horizontal import Horizontal
+from .gen_1ltpwt_mdomsodpo.mark import Mark
 from .gen_1ltpwt_mdomsodpo.marker import Marker
 from .gen_1ltpwt_mdomsodpo.math1 import Math1
 from .gen_1ltpwt_mdomsodpo.pictbridge import Pictbridge
@@ -97,7 +98,6 @@ from .gen_ujuvb_mdo.display import Display
 from .gen_ujuvb_mdo.header import Header
 from .gen_ujuvb_mdo.histogram import Histogram
 from .gen_ujuvb_mdo.lock import Lock
-from .gen_ujuvb_mdo.mark import Mark
 from .gen_ujuvb_mdo.mask import Mask
 from .gen_ujuvb_mdo.measurement import Measurement
 from .gen_ujuvb_mdo.message import Message
@@ -1172,7 +1172,7 @@ class MDO3Commands:
         """Return the ``CLEAR`` command.
 
         Description:
-            - This command  clears acquisitions, measurements, and waveforms.
+            - This command clears acquisitions, measurements, and waveforms.
 
         Usage:
             - Using the ``.write()`` method will send the ``CLEAR`` command.

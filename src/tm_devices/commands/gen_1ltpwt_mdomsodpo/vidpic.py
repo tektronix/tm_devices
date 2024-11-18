@@ -166,7 +166,7 @@ class VidpicLocationStartPixel(SCPICmdWrite, SCPICmdRead):
           nominally 63.5us duration (10.9us blanking + 52.6us active video) that can be sampled from
           1MS/s to 100MS/s, giving from 52.6 to 5260 video samples or 'pixels' per output line. The
           start pixel is the starting sample in each line; it is limited to a single line at the
-          current sample rate, i.e. ranges between  -10.9 to 52.6  and -1090 to +5260.
+          current sample rate, i.e. ranges between -10.9 to 52.6 and -1090 to +5260.
 
     Usage:
         - Using the ``.query()`` method will send the ``VIDPic:LOCation:STARt:PIXel?`` query.
@@ -254,8 +254,8 @@ class VidpicLocationStart(SCPICmdRead):
               of nominally 63.5us duration (10.9us blanking + 52.6us active video) that can be
               sampled from 1MS/s to 100MS/s, giving from 52.6 to 5260 video samples or 'pixels' per
               output line. The start pixel is the starting sample in each line; it is limited to a
-              single line at the current sample rate, i.e. ranges between  -10.9 to 52.6  and -1090
-              to +5260.
+              single line at the current sample rate, i.e. ranges between -10.9 to 52.6 and -1090 to
+              +5260.
 
         Usage:
             - Using the ``.query()`` method will send the ``VIDPic:LOCation:STARt:PIXel?`` query.

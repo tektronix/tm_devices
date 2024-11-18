@@ -422,7 +422,7 @@ class Math1HorizontalScale(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command specifies the math horizontal display scale for FFT or for dual math
           waveforms that have source waveforms that are reference waveforms. The horizontal scale of
-          a dual math waveform with a channel source waveform is set through the  command.
+          a dual math waveform with a channel source waveform is set through the command.
 
     Usage:
         - Using the ``.query()`` method will send the ``MATH1:HORizontal:SCAle?`` query.
@@ -578,7 +578,7 @@ class Math1Define(SCPICmdWrite, SCPICmdRead):
           advanced math functions, measurements, and operators. Spectrum math (MDO models)
           expressions are strings of the form <wfm><operation><wfm>, where the waveforms are any
           combination of live RF or reference traces in the frequency domain display, the
-          <operation> is either  + or  -, and type has been set to SPECTRUM.
+          <operation> is either + or -, and type has been set to SPECTRUM.
 
     Usage:
         - Using the ``.query()`` method will send the ``MATH1:DEFine?`` query.
@@ -770,7 +770,7 @@ class Math1(SCPICmdRead):
               combinations of advanced math functions, measurements, and operators. Spectrum math
               (MDO models) expressions are strings of the form <wfm><operation><wfm>, where the
               waveforms are any combination of live RF or reference traces in the frequency domain
-              display, the <operation> is either  + or  -, and type has been set to SPECTRUM.
+              display, the <operation> is either + or -, and type has been set to SPECTRUM.
 
         Usage:
             - Using the ``.query()`` method will send the ``MATH1:DEFine?`` query.

@@ -358,7 +358,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:THReshold:REF<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:POLarity {STAYSHigh|STAYSLow|EITher}
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:POLarity?
-    - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>|MATH|REF<x>|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe}
+    - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>|MATH|REF<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|RF_AMPlitude|RF_FREQuency|RF_PHASe}
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:TIMe <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:TIMe?
@@ -980,7 +980,7 @@ class SearchSearchItemTriggerATimeoutSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>|MATH|REF<x>|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe}
+        - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>|MATH|REF<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|RF_AMPlitude|RF_FREQuency|RF_PHASe}
         - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?
         ```
 
@@ -1094,7 +1094,7 @@ class SearchSearchItemTriggerATimeout(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>|MATH|REF<x>|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe}
+            - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>|MATH|REF<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|RF_AMPlitude|RF_FREQuency|RF_PHASe}
             - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?
             ```
 

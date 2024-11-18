@@ -1315,19 +1315,12 @@ class SearchSearchItemTriggerATimeoutSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies to use one of the analog channels as the source waveform. x has a
-          minimum of 1 and a maximum of 4.
+        - ``CH<x>`` specifies to use one of the analog channels as the source waveform.
         - ``MATH`` specifies to use the math waveform as the as the source waveform.
         - ``REF<x>`` specifies to use one of the reference waveforms 1-4 as the as the source
-          waveform. x has a minimum of 1 and a maximum of 4.
-        - ``D<x>`` specifies to use one of the digital channels as the source waveform.
-          (MSO/MDO4000/B models only as well as MDO3000 and MDO400C models with option MDO3MSO or
-          MDO4MSO installed.) x has a minimum of 0 and a maximum of 15.
-        - ``RF_AMPlitude`` specify an RF time domain trace as the source. (MDO4000/B/C models
-          only.).
-        - ``RF_FREQuency`` specify an RF time domain trace as the source. (MDO4000/B/C models
-          only.).
-        - ``RF_PHASe`` specify an RF time domain trace as the source. (MDO4000/B/C models only.).
+          waveform.
+        - ``D<x>`` specifies to use one of the digital channels as the source waveform. (Requires
+          option 3-MSO.).
     """  # noqa: E501
 
 
@@ -1436,20 +1429,12 @@ class SearchSearchItemTriggerATimeout(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies to use one of the analog channels as the source waveform. x has a
-              minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specifies to use one of the analog channels as the source waveform.
             - ``MATH`` specifies to use the math waveform as the as the source waveform.
             - ``REF<x>`` specifies to use one of the reference waveforms 1-4 as the as the source
-              waveform. x has a minimum of 1 and a maximum of 4.
+              waveform.
             - ``D<x>`` specifies to use one of the digital channels as the source waveform.
-              (MSO/MDO4000/B models only as well as MDO3000 and MDO400C models with option MDO3MSO
-              or MDO4MSO installed.) x has a minimum of 0 and a maximum of 15.
-            - ``RF_AMPlitude`` specify an RF time domain trace as the source. (MDO4000/B/C models
-              only.).
-            - ``RF_FREQuency`` specify an RF time domain trace as the source. (MDO4000/B/C models
-              only.).
-            - ``RF_PHASe`` specify an RF time domain trace as the source. (MDO4000/B/C models
-              only.).
+              (Requires option 3-MSO.).
         """  # noqa: E501
         return self._source
 

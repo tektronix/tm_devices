@@ -219,8 +219,8 @@ class DiagnosticSelectVerify(SCPICmdReadWithArguments):
 
     Description:
         - This command returns selection status of one specific test. A specific test requires the
-          'subsystem',  'area', and 'test'. This is context sensitive and is dependent on the type
-          as set with the command ``DIAGNOSTIC:TYPE``.
+          'subsystem', 'area', and 'test'. This is context sensitive and is dependent on the type as
+          set with the command ``DIAGNOSTIC:TYPE``.
 
     Usage:
         - Using the ``.query(argument)`` method will send the ``DIAGnostic:SELect:VERify? argument``
@@ -270,8 +270,8 @@ class DiagnosticSelect(SCPICmdWrite, SCPICmdRead):
 
         Description:
             - This command returns selection status of one specific test. A specific test requires
-              the 'subsystem',  'area', and 'test'. This is context sensitive and is dependent on
-              the type as set with the command ``DIAGNOSTIC:TYPE``.
+              the 'subsystem', 'area', and 'test'. This is context sensitive and is dependent on the
+              type as set with the command ``DIAGNOSTIC:TYPE``.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -603,7 +603,7 @@ class DiagnosticImmediate(SCPICmdWriteNoArguments, SCPICmdRead):
     Description:
         - This command executes all of the NORMal diagnostic tests. The query form of this command
           executes all of the NORMal diagnostics and returns the results in the form of numeric of
-          values of 0 for no errors or  -330 for one or more tests failed. This changes the active
+          values of 0 for no errors or -330 for one or more tests failed. This changes the active
           mode to DIAGnostic, if necessary, and returns back to the original active mode when done.
           This makes a single pass of all of the NORMal diagnostics.
 
@@ -1226,7 +1226,7 @@ class Diagnostic(SCPICmdRead):
         Description:
             - This command executes all of the NORMal diagnostic tests. The query form of this
               command executes all of the NORMal diagnostics and returns the results in the form of
-              numeric of values of 0 for no errors or  -330 for one or more tests failed. This
+              numeric of values of 0 for no errors or -330 for one or more tests failed. This
               changes the active mode to DIAGnostic, if necessary, and returns back to the original
               active mode when done. This makes a single pass of all of the NORMal diagnostics.
 

@@ -35,6 +35,7 @@ from .gen_1ltpwt_mdomsodpo.fpanel import Fpanel
 from .gen_1ltpwt_mdomsodpo.gpibusb import Gpibusb
 from .gen_1ltpwt_mdomsodpo.hardcopy import Hardcopy
 from .gen_1ltpwt_mdomsodpo.horizontal import Horizontal
+from .gen_1ltpwt_mdomsodpo.mark import Mark
 from .gen_1ltpwt_mdomsodpo.marker import Marker
 from .gen_1ltpwt_mdomsodpo.math1 import Math1
 from .gen_1ltpwt_mdomsodpo.pictbridge import Pictbridge
@@ -64,7 +65,6 @@ from .gen_1nmc1o_msodpomdo.language import Language
 from .gen_1nmc1o_msodpomdo.status_and_error import Psc
 from .gen_1nmc1o_msodpomdo.usbdevice import Usbdevice
 from .gen_1nmc1o_msodpomdo.usbtmc import Usbtmc
-from .gen_16opiv_mdomso.mark import Mark
 from .gen_e6bmgw_lpdmsotekscopepcdpomdo.totaluptime import Totaluptime
 from .gen_e6wozn_lpdmsotekscopepcmdodpo.pause import Pause
 from .gen_fhrp27_msodpomdodsa.curve import Curve
@@ -2087,6 +2087,7 @@ class MDO3KCommands:
 
         Sub-properties:
             - ``.create``: The ``MARK:CREATE`` command.
+            - ``.delete``: The ``MARK:DELEte`` command.
             - ``.free``: The ``MARK:FREE`` command.
             - ``.saveall``: The ``MARK:SAVEALL`` command.
             - ``.selected``: The ``MARK:SELected`` command tree.

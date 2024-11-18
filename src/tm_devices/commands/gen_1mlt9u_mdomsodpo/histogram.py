@@ -43,7 +43,7 @@ class HistogramStart(SCPICmdRead):
           the histogram data starts. The ``HISTOGRAM:MODE`` must be either HORizontal or VERTical
           for a value to be returned. If the mode is OFF, an error event is set and nothing is
           returned. If the ``HISTOGRAM:MODE`` is HORizontal, the value returned is the time of the
-          left bin. If the ``HISTOGRAM:MODE`` is VERTical the value returned is  the vertical units
+          left bin. If the ``HISTOGRAM:MODE`` is VERTical the value returned is the vertical units
           value of the top bin. The returned value is an <NR3>.
 
     Usage:
@@ -123,7 +123,7 @@ class HistogramEnd(SCPICmdRead):
           histogram data ends. The ``HISTOGRAM:MODE`` must be either HORizontal or VERTical for a
           value to be returned. If the mode is OFF, an error event is set and nothing is returned.
           If the ``HISTOGRAM:MODE`` is HORizontal, the value returned is the time of the right bin.
-          If the ``HISTOGRAM:MODE`` is VERTical the value returned is  the vertical units value of
+          If the ``HISTOGRAM:MODE`` is VERTical the value returned is the vertical units value of
           the bottom bin. The returned value is an <NR3>.
 
     Usage:
@@ -474,7 +474,7 @@ class Histogram(SCPICmdRead):
               the histogram data ends. The ``HISTOGRAM:MODE`` must be either HORizontal or VERTical
               for a value to be returned. If the mode is OFF, an error event is set and nothing is
               returned. If the ``HISTOGRAM:MODE`` is HORizontal, the value returned is the time of
-              the right bin. If the ``HISTOGRAM:MODE`` is VERTical the value returned is  the
+              the right bin. If the ``HISTOGRAM:MODE`` is VERTical the value returned is the
               vertical units value of the bottom bin. The returned value is an <NR3>.
 
         Usage:

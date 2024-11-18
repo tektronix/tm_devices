@@ -788,9 +788,9 @@ class AfgArbitraryEmemPointsByteorder(SCPICmdWrite, SCPICmdRead):
     Description:
         - ``:BYTEORDer This`` command specifies the byte order for the
           ``AFG:ARBITRARY:EMEM:POINTS?`` query when the ``AFG:ARBITRARY:EMEM:POINTS:ENCDG`` is set
-          to BINary and when binary block data is sent for the  ``AFG:ARBITRARY:EMEM:POINTS``
-          command. LSB  - Least significant byte first (little endian) MSB  - Most significant byte
-          first (big endian)  The default is LSB. This setting is non-volatile and is reset by
+          to BINary and when binary block data is sent for the ``AFG:ARBITRARY:EMEM:POINTS``
+          command. LSB - Least significant byte first (little endian) MSB - Most significant byte
+          first (big endian) The default is LSB. This setting is non-volatile and is reset by
           default setup or TekSecure. Refer to the ``AFG:ARBITRARY:EMEM:POINTS`` command description
           for more information.
 
@@ -819,20 +819,19 @@ class AfgArbitraryEmemPoints(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - Specifies which points to load into the AFG arbitrary waveform edit memory. The point data
-          to be loaded may be specified as an IEEE488.2  binary block with 4-byte floating point
-          data values, or as a comma-separated list of NR2 or NR3 data values. The  data values must
-          be in the range of -1.0 to 1.0. The ``AFG:ARBITRARY:EMEM:POINTS:BYTEORDER`` command is
-          used when the data  is binary block format. The minimum number of points is 2 and maximum
-          is 131072. Upon successful transfer of the data points, the
-          ``AFG:ARBITRARY:EMEM:NUMPOINTS`` query will return the number of points loaded into
-          arbitrary waveform edit memory and the ``AFG:ARBITRARY:EMEM:FUNCTION`` query will return
-          USER. Note that the output, if turned on, will not change unless or until the AFG function
-          is set to ARBitrary using the ``AFG:FUNCTION`` command. Point values may be coerced to the
-          nearest valid step size. The query form returns the points stored in the AFG  arbitrary
-          waveform edit memory in the format specified by the ``AFG:ARBITRARY:EMEM:POINTS:ENCDG``
-          command and, for binary encoding, the byte order specified by the
-          ``AFG:ARBITRARY:EMEM:POINTS:BYTEORDER`` command. Refer to the
-          ``AFG:ARBITRARY:EMEM:POINTS:ENCDG`` command description for more information.
+          to be loaded may be specified as an IEEE488.2 binary block with 4-byte floating point data
+          values, or as a comma-separated list of NR2 or NR3 data values. The data values must be in
+          the range of -1.0 to 1.0. The ``AFG:ARBITRARY:EMEM:POINTS:BYTEORDER`` command is used when
+          the data is binary block format. The minimum number of points is 2 and maximum is 131072.
+          Upon successful transfer of the data points, the ``AFG:ARBITRARY:EMEM:NUMPOINTS`` query
+          will return the number of points loaded into arbitrary waveform edit memory and the
+          ``AFG:ARBITRARY:EMEM:FUNCTION`` query will return USER. Note that the output, if turned
+          on, will not change unless or until the AFG function is set to ARBitrary using the
+          ``AFG:FUNCTION`` command. Point values may be coerced to the nearest valid step size. The
+          query form returns the points stored in the AFG arbitrary waveform edit memory in the
+          format specified by the ``AFG:ARBITRARY:EMEM:POINTS:ENCDG`` command and, for binary
+          encoding, the byte order specified by the ``AFG:ARBITRARY:EMEM:POINTS:BYTEORDER`` command.
+          Refer to the ``AFG:ARBITRARY:EMEM:POINTS:ENCDG`` command description for more information.
 
     Usage:
         - Using the ``.query()`` method will send the ``AFG:ARBitrary:EMEM:POINTS?`` query.
@@ -868,11 +867,11 @@ class AfgArbitraryEmemPoints(SCPICmdWrite, SCPICmdRead):
         Description:
             - ``:BYTEORDer This`` command specifies the byte order for the
               ``AFG:ARBITRARY:EMEM:POINTS?`` query when the ``AFG:ARBITRARY:EMEM:POINTS:ENCDG`` is
-              set to BINary and when binary block data is sent for the
-              ``AFG:ARBITRARY:EMEM:POINTS`` command. LSB  - Least significant byte first (little
-              endian) MSB  - Most significant byte first (big endian)  The default is LSB. This
-              setting is non-volatile and is reset by default setup or TekSecure. Refer to the
-              ``AFG:ARBITRARY:EMEM:POINTS`` command description for more information.
+              set to BINary and when binary block data is sent for the ``AFG:ARBITRARY:EMEM:POINTS``
+              command. LSB - Least significant byte first (little endian) MSB - Most significant
+              byte first (big endian) The default is LSB. This setting is non-volatile and is reset
+              by default setup or TekSecure. Refer to the ``AFG:ARBITRARY:EMEM:POINTS`` command
+              description for more information.
 
         Usage:
             - Using the ``.query()`` method will send the ``AFG:ARBitrary:EMEM:POINTS:BYTEORDer?``
@@ -1118,17 +1117,17 @@ class AfgArbitraryEmem(SCPICmdRead):
 
         Description:
             - Specifies which points to load into the AFG arbitrary waveform edit memory. The point
-              data to be loaded may be specified as an IEEE488.2  binary block with 4-byte floating
-              point data values, or as a comma-separated list of NR2 or NR3 data values. The  data
+              data to be loaded may be specified as an IEEE488.2 binary block with 4-byte floating
+              point data values, or as a comma-separated list of NR2 or NR3 data values. The data
               values must be in the range of -1.0 to 1.0. The
-              ``AFG:ARBITRARY:EMEM:POINTS:BYTEORDER`` command is used when the data  is binary block
+              ``AFG:ARBITRARY:EMEM:POINTS:BYTEORDER`` command is used when the data is binary block
               format. The minimum number of points is 2 and maximum is 131072. Upon successful
               transfer of the data points, the ``AFG:ARBITRARY:EMEM:NUMPOINTS`` query will return
               the number of points loaded into arbitrary waveform edit memory and the
               ``AFG:ARBITRARY:EMEM:FUNCTION`` query will return USER. Note that the output, if
               turned on, will not change unless or until the AFG function is set to ARBitrary using
               the ``AFG:FUNCTION`` command. Point values may be coerced to the nearest valid step
-              size. The query form returns the points stored in the AFG  arbitrary waveform edit
+              size. The query form returns the points stored in the AFG arbitrary waveform edit
               memory in the format specified by the ``AFG:ARBITRARY:EMEM:POINTS:ENCDG`` command and,
               for binary encoding, the byte order specified by the
               ``AFG:ARBITRARY:EMEM:POINTS:BYTEORDER`` command. Refer to the

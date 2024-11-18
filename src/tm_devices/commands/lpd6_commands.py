@@ -1880,7 +1880,7 @@ class LPD6Commands:
         """Return the ``CLEAR`` command.
 
         Description:
-            - This command  clears acquisitions, measurements, and waveforms.
+            - This command clears acquisitions, measurements, and waveforms.
 
         Usage:
             - Using the ``.write()`` method will send the ``CLEAR`` command.

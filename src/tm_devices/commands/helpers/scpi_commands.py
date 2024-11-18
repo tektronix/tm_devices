@@ -76,7 +76,7 @@ class SCPICmdRead(BaseSCPICmd):
 
         Returns:
             A tuple containing a boolean indicating if the values match and a string with the actual
-                return value from the device.
+            return value from the device.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -136,7 +136,7 @@ class SCPICmdReadWithArguments(BaseSCPICmd):
 
         Returns:
             A tuple containing a boolean indicating if the values match and a string with the actual
-                return value from the device.
+            return value from the device.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.

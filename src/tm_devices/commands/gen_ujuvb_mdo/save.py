@@ -175,7 +175,7 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
     """The ``SAVe:WAVEform`` command.
 
     Description:
-        - This command saves the specified waveform to the specified destination  reference memory,
+        - This command saves the specified waveform to the specified destination reference memory,
           or saves the specified waveform(s) to the specified destination file.
 
     Usage:
@@ -856,7 +856,7 @@ class Save(SCPICmdRead):
         """Return the ``SAVe:WAVEform`` command.
 
         Description:
-            - This command saves the specified waveform to the specified destination  reference
+            - This command saves the specified waveform to the specified destination reference
               memory, or saves the specified waveform(s) to the specified destination file.
 
         Usage:

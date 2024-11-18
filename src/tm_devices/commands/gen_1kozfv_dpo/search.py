@@ -362,6 +362,8 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:THReshold:REF<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:POLarity {STAYSHigh|STAYSLow|EITher}
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:POLarity?
+    - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>|MATH|REF<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|RF_AMPlitude|RF_FREQuency|RF_PHASe}
+    - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:TIMe <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:TIMe?
     - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:DELTatime <NR3>
@@ -963,6 +965,40 @@ class SearchSearchItemTriggerATimeoutTime(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class SearchSearchItemTriggerATimeoutSource(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce`` command.
+
+    Description:
+        - When searching using the TIMEOut search type, this command specifies the source. The
+          available sources are live channels, reference waveforms, the math waveform, or the
+          digital channels. The default is channel 1. The timeout search type is selected using
+          ``SEARCH:SEARCHX:TRIGGER:A:TYPE``. SEARCH<x> is the search number, which is always 1.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>|MATH|REF<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|RF_AMPlitude|RF_FREQuency|RF_PHASe}
+        - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?
+        ```
+
+    Info:
+        - ``CH<x>`` specifies to use one of the analog channels as the source waveform.
+        - ``MATH`` specifies to use the math waveform as the as the source waveform.
+        - ``REF<x>`` specifies to use one of the reference waveforms 1-4 as the as the source
+          waveform.
+        - ``D<x>`` specifies to use one of the digital channels as the source waveform. (Requires
+          option 3-MSO.).
+    """  # noqa: E501
+
+
 class SearchSearchItemTriggerATimeoutPolarity(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:POLarity`` command.
 
@@ -1001,6 +1037,7 @@ class SearchSearchItemTriggerATimeout(SCPICmdRead):
 
     Properties:
         - ``.polarity``: The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:POLarity`` command.
+        - ``.source``: The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce`` command.
         - ``.time``: The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:TIMe`` command.
     """
 
@@ -1009,6 +1046,7 @@ class SearchSearchItemTriggerATimeout(SCPICmdRead):
         self._polarity = SearchSearchItemTriggerATimeoutPolarity(
             device, f"{self._cmd_syntax}:POLarity"
         )
+        self._source = SearchSearchItemTriggerATimeoutSource(device, f"{self._cmd_syntax}:SOUrce")
         self._time = SearchSearchItemTriggerATimeoutTime(device, f"{self._cmd_syntax}:TIMe")
 
     @property
@@ -1039,6 +1077,41 @@ class SearchSearchItemTriggerATimeout(SCPICmdRead):
             - ``EITher`` specifies the polarity stays HIGH or stays LOW.
         """
         return self._polarity
+
+    @property
+    def source(self) -> SearchSearchItemTriggerATimeoutSource:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce`` command.
+
+        Description:
+            - When searching using the TIMEOut search type, this command specifies the source. The
+              available sources are live channels, reference waveforms, the math waveform, or the
+              digital channels. The default is channel 1. The timeout search type is selected using
+              ``SEARCH:SEARCHX:TRIGGER:A:TYPE``. SEARCH<x> is the search number, which is always 1.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?`` query and raise an AssertionError if
+              the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce {CH<x>|MATH|REF<x>|D0|D1|D2|D3|D4|D5|D6|D7|D8|D9|D10|D11|D12|D13|D14|D15|RF_AMPlitude|RF_FREQuency|RF_PHASe}
+            - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce?
+            ```
+
+        Info:
+            - ``CH<x>`` specifies to use one of the analog channels as the source waveform.
+            - ``MATH`` specifies to use the math waveform as the as the source waveform.
+            - ``REF<x>`` specifies to use one of the reference waveforms 1-4 as the as the source
+              waveform.
+            - ``D<x>`` specifies to use one of the digital channels as the source waveform.
+              (Requires option 3-MSO.).
+        """  # noqa: E501
+        return self._source
 
     @property
     def time(self) -> SearchSearchItemTriggerATimeoutTime:
@@ -15252,6 +15325,7 @@ class SearchSearchItemTriggerA(SCPICmdRead):
 
         Sub-properties:
             - ``.polarity``: The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:POLarity`` command.
+            - ``.source``: The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:SOUrce`` command.
             - ``.time``: The ``SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:TIMe`` command.
         """
         return self._timeout

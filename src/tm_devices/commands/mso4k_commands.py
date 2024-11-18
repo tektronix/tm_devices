@@ -35,6 +35,7 @@ from .gen_1ltpwt_mdomsodpo.fpanel import Fpanel
 from .gen_1ltpwt_mdomsodpo.gpibusb import Gpibusb
 from .gen_1ltpwt_mdomsodpo.hardcopy import Hardcopy
 from .gen_1ltpwt_mdomsodpo.horizontal import Horizontal
+from .gen_1ltpwt_mdomsodpo.mark import Mark
 from .gen_1ltpwt_mdomsodpo.marker import Marker
 from .gen_1ltpwt_mdomsodpo.math1 import Math1
 from .gen_1ltpwt_mdomsodpo.pictbridge import Pictbridge
@@ -61,7 +62,6 @@ from .gen_1mlt9u_mdomsodpo.recall import Recall
 from .gen_1mlt9u_mdomsodpo.save import Save
 from .gen_1mlt9u_mdomsodpo.select import Select
 from .gen_1mq0z9_msodpo.rf import Rf
-from .gen_1msu49_msodpo.mark import Mark
 from .gen_1nmc1o_msodpomdo.clearmenu import Clearmenu
 from .gen_1nmc1o_msodpomdo.errlog import Errlog
 from .gen_1nmc1o_msodpomdo.language import Language
@@ -212,6 +212,7 @@ class MSO4KCommandConstants:
     CMOS_2_5V = "CMOS_2_5V"
     CMOS_3_3V = "CMOS_3_3V"
     CMOS_5_0V = "CMOS_5_0V"
+    COLUMN = "COLUMN"
     COMMAND = "COMMAND"
     COPYACTIVE = "COPYACTIVE"  # COPYACTive
     CPU = "CPU"
@@ -2092,6 +2093,8 @@ class MSO4KCommands:
             - ``PREVious`` moves to the next reference mark on the left.
 
         Sub-properties:
+            - ``.create``: The ``MARK:CREATE`` command.
+            - ``.delete``: The ``MARK:DELEte`` command.
             - ``.free``: The ``MARK:FREE`` command.
             - ``.saveall``: The ``MARK:SAVEALL`` command.
             - ``.selected``: The ``MARK:SELected`` command tree.
