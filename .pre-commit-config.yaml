@@ -91,7 +91,7 @@ repos:
     hooks:
       - id: check-poetry
   - repo: https://github.com/pappasam/toml-sort
-    rev: 463d576e0d409069bfdfcdf65acece4b8a0a3df7  # frozen: v0.24.1
+    rev: b9b6210da457c38122995e434b314f4c4a4a923e  # frozen: v0.23.1
     hooks:
       - id: toml-sort-fix
   - repo: local
