@@ -104,6 +104,7 @@ tm_devices
 tmdevicessupport
 toml
 usb
+venv
 walkthrough
 www
 yaml
