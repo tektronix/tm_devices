@@ -76,6 +76,7 @@ repository = "https://github.com/tektronix/tm_devices"
 version = "2.5.0"
 
 [tool.poetry.dependencies]
+colorlog = "^6.9.0"
 gpib-ctypes = "^0.3.0"
 libusb-package = "^1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.12
 packaging = "^24.0"
@@ -94,6 +95,7 @@ tomli = "^2.0.1"
 tomli-w = "^1.0.0"
 traceback-with-variables = "^2.0.4"
 typing-extensions = "^4.10.0"
+tzlocal = "^5.2"
 urllib3 = "^2.0"
 zeroconf = "^0.136.0"
 
@@ -110,7 +112,7 @@ pre-commit = [
   {python = "3.8", version = "^3.5"}
 ]
 pylint = "3.2.7"
-pyright = {extras = ["nodejs"], version = "^1.1.387"}
+pyright = {extras = ["nodejs"], version = "1.1.389"}
 pyroma = "^4.2"
 tox = "^4.0"
 tox-gh-actions = "^3.1.0"
@@ -237,6 +239,7 @@ disable = [
   "too-many-lines",  # not necessary to check for
   "too-many-statements",  # caught by ruff
   "too-many-statements",  # caught by ruff
+  "unexpected-keyword-arg",  # caught by pyright
   "unused-argument",  # caught by ruff
   "unused-import",  # caught by ruff
   "use-implicit-booleaness-not-comparison-to-string",  # caught by ruff
@@ -289,6 +292,7 @@ filterwarnings = [
 ]
 junit_family = "xunit2"
 junit_logging = "all"
+log_format = "[%(asctime)s] [%(levelname)8s] %(message)s"
 markers = [
   'docs',
   'order',
@@ -317,27 +321,19 @@ fixable = ["ALL"]
 flake8-pytest-style = {mark-parentheses = false}
 flake8-quotes = {docstring-quotes = "double"}
 ignore = [
-  "ANN101",  # Missing type annotation for self in method
-  "ANN102",  # Missing type annotation for cls in method
-  "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in *args and **kwargs
-  "COM812",  # Trailing comma missing
-  "EM102",  # Exception must not use an f-string literal, assign to variable first
-  "FA100",  # Missing `from __future__ import annotations`, but uses ...
-  "FBT",  # flake8-boolean-trap
-  "FIX002",  # Line contains TO DO
+  "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in *args and **kwargs (allowed in this package)
+  "COM812",  # Trailing comma missing (allowed in this package)
+  "FA100",  # Missing `from __future__ import annotations`, but uses ... (allowed in this package)
+  "FBT",  # flake8-boolean-trap  # TODO: enable this
+  "FIX002",  # Line contains TO DO (allowed in this package)
   "ISC001",  # single-line-implicit-string-concatenation (handled by formatter)
-  "PTH109",  # `os.getcwd()` should be replaced by `Path.cwd()`
-  "PTH123",  # `open()` should be replaced by `Path.open()`
-  "PTH207",  # Replace `iglob` with `Path.glob` or `Path.rglob`
-  "PYI021",  # Docstrings should not be included in stubs
-  "T20",  # flake8-print
-  "TD002",  # Missing author in TO DO
-  "TD003",  # Missing issue link on the line following this TO DO
-  "TRY301",  # Abstract raise to an inner function
-  "UP006",  # Use {to} instead of {from} for type annotation
-  "UP007",  # Use `X | Y` for type annotations
-  "UP024",  # Replace aliased errors with `OSError`
-  "UP037"  # Remove quotes from type annotation
+  "PYI021",  # Docstrings should not be included in stubs (allowed in this package)
+  "TD002",  # Missing author in TO DO (allowed in this package)
+  "TD003",  # Missing issue link on the line following this TO DO (allowed in this package)
+  "UP006",  # Use {to} instead of {from} for type annotation (allowed in this package)
+  "UP007",  # Use `X | Y` for type annotations (allowed in this package)
+  "UP024",  # Replace aliased errors with `OSError` (allowed in this package)
+  "UP037"  # Remove quotes from type annotation (allowed in this package)
 ]
 pydocstyle = {convention = "google"}
 pylint = {max-args = 7}
@@ -359,7 +355,9 @@ order-by-type = false
 
 [tool.ruff.lint.per-file-ignores]
 "examples/**" = [
-  "S101"  # Use of assert detected
+  "FBT",  # flake8-boolean-trap
+  "S101",  # Use of assert detected
+  "T201"  # `print` found
 ]
 "examples/miscellaneous/custom_device_driver_support.py" = [
   "ARG002",  # Unused method argument
@@ -447,6 +445,7 @@ setenv =
 commands_pre =
     python -m poetry install --no-root --without=main
 commands =
+    !tests: python -c "import shutil; shutil.rmtree('dist_{envname}', ignore_errors=True)"
     !tests: poetry build --output=dist_{envname}
     !tests: twine check --strict dist_{envname}/*
     !tests: pre-commit run --all-files

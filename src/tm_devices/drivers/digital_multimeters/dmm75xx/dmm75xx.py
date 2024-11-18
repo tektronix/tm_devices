@@ -48,7 +48,7 @@ class DMM75xx(CommonTSPErrorCheckMixin, TSPControl, DigitalMultimeter, ABC):
 
         Returns:
             A tuple containing the current error code alongside a tuple of the current error
-            messages.
+                messages.
         """
         # instrument returns exponential numbers so converting to float before int
         error_code = int(float(self.query("print(status.standard.event)")))

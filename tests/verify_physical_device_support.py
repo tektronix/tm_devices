@@ -18,6 +18,6 @@ if __name__ == "__main__":
         device_manager.setup_cleanup_enabled = False
         device_manager.teardown_cleanup_enabled = False
         for device in device_manager.devices.values():
-            print(device)
+            print(device)  # noqa: T201
             device.cleanup()
             assert not device.has_errors()

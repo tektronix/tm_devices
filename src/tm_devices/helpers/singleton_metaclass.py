@@ -1,9 +1,12 @@
 """A Module containing a metaclass that converts any class into a Singleton."""
 
+import logging
 import warnings
 
 from typing import Any, MutableMapping
 from weakref import WeakValueDictionary
+
+_logger: logging.Logger = logging.getLogger(__name__)
 
 
 class Singleton(type):
@@ -23,10 +26,11 @@ class Singleton(type):
             new_instance = super(Singleton, cls).__call__(*args, **kwargs)  # noqa: UP008
             cls._class_instances[cls] = new_instance
         else:
-            warnings.warn(
+            msg = (
                 f"The {cls.__name__} has already been created and is not "
                 f"allowed to be instantiated twice. Previously created instance "
-                f"will be used instead.\n",
-                stacklevel=3,
+                f"will be used instead."
             )
+            warnings.warn(msg, stacklevel=3)
+            _logger.warning(msg)
         return cls._class_instances[cls]

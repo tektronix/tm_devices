@@ -26,7 +26,9 @@ class TMT4(MarginTester):
 
         Args:
             config_entry: A config entry object parsed by the DMConfigParser.
-            verbose: A boolean indicating if verbose output should be printed.
+            verbose: A boolean indicating if verbose output should be printed. If True,
+                communication printouts will be logged with a level of INFO. If False,
+                communication printouts will be logged with a level of DEBUG.
 
         Notes:
             The default port is 5000, but device could be configured for any specific port.
@@ -110,11 +112,12 @@ class TMT4(MarginTester):
             A Dictionary with information about the Margin device.
         """
         # Make get request to about and version endpoints
-        _, res_json, _, _ = self.get("/device/about", verbose=verbose)
-        res_json = cast(Dict[str, Any], res_json)
-        _, res_json2, _, _ = self.get("/device/version", verbose=verbose)
-        res_json2 = cast(Dict[str, Any], res_json2)
-        res_json.update(res_json2)
+        with self.temporary_verbose(verbose):
+            _, res_json, _, _ = self.get("/device/about")
+            res_json = cast(Dict[str, Any], res_json)
+            _, res_json2, _, _ = self.get("/device/version")
+            res_json2 = cast(Dict[str, Any], res_json2)
+            res_json.update(res_json2)
         return res_json
 
     def wait_till_unlocked(self, timeout: int = 120) -> None:
@@ -144,8 +147,9 @@ class TMT4(MarginTester):
         Returns:
             A boolean indicating if the call was successful.
         """
-        # allow_errors is set to True since this is just checking if the API is reachable
-        return self.get("/device/about", allow_errors=True, verbose=False)[0]
+        with self.temporary_verbose(False):
+            # allow_errors is set to True since this is just checking if the API is reachable
+            return self.get("/device/about", allow_errors=True)[0]
 
     def _cleanup(self) -> None:
         """Perform the cleanup defined for the device."""

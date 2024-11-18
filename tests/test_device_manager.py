@@ -69,8 +69,7 @@ class TestDeviceManager:  # pylint: disable=no-self-use
                 device_manager.write_current_configuration_to_config_file()
                 # respect the env var if no path is given
                 device_manager.write_current_configuration_to_config_file("./temp_config.yaml")
-            with open("./temp_config.toml", encoding="utf-8") as temp_config:
-                text = temp_config.read()
+            text = Path("./temp_config.toml").read_text(encoding="utf-8")
             assert (
                 text
                 == f"""[[devices]]
@@ -101,9 +100,8 @@ verbose_mode = true
 verbose_visa = false
 """
             )
-            with open("./temp_config.yaml", encoding="utf-8") as temp_config:
-                text = temp_config.read()
-                print(text)
+            text = Path("./temp_config.yaml").read_text(encoding="utf-8")
+            print(text)  # noqa: T201
             assert (
                 text
                 == f"""---
