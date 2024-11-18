@@ -489,4 +489,10 @@ commands_pre =
     python scripts/install_insiders_packages.py
 commands =
     pytest -v -k "test_docs" --showlocals --junitxml={tox_root}/.results_{envname}/results.xml --self-contained-html --html={tox_root}/.results_{envname}/results.html
+
+[testenv:export-reqs]
+commands =
+    poetry export --without-hashes --without-urls --all-extras --only=docs --output=docs/requirements.txt
+    poetry export --without-hashes --without-urls --all-extras --only=tests --output=tests/requirements.txt
+    - pre-commit run -a requirements-txt-fixer
 """
