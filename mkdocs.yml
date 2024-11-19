@@ -103,7 +103,7 @@ plugins:
           options:
             # General options
             extensions: [docs/griffe_custom_decorator_labels.py]
-#            show_inheritance_diagram: true  # INSIDERS FEATURE  # TODO: insiders docs: enable
+            show_inheritance_diagram: true  # INSIDERS FEATURE
             show_source: false  # a link is included at the top of each page
             # Headings options
             heading_level: 1
@@ -124,11 +124,11 @@ plugins:
               trim_doctest_flags: true
             docstring_section_style: list
             merge_init_into_class: true
-#            relative_crossrefs: true  # INSIDERS FEATURE  # TODO: insiders docs: enable
-#            scoped_crossrefs: true  # INSIDERS FEATURE  # TODO: insiders docs: enable
+            relative_crossrefs: true  # INSIDERS FEATURE
+            scoped_crossrefs: true  # INSIDERS FEATURE
             # Signature options
             line_length: 100
-#            modernize_annotations: true  # INSIDERS FEATURE  # TODO: enable after https://github.com/pawamoy-insiders/griffe/issues/2 is resolved
+            modernize_annotations: false  # INSIDERS FEATURE
             show_signature_annotations: true
             signature_crossrefs: true
             separate_signature: true
