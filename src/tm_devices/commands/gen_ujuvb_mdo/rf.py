@@ -89,7 +89,7 @@ Commands and Queries:
     - RF:RF_AVErage:NUMAVg?
     - RF:RF_PHASe:WRAP:STATE <Boolean>
     - RF:RF_PHASe:WRAP:STATE?
-    - RF:RF_V_TIMe:BANDWidth
+    - RF:RF_V_TIMe:BANDWidth <NR3>
     - RF:RF_V_TIMe:BANDWidth?
     - RF:SCAle <NR3>
     - RF:SCAle?
@@ -119,7 +119,7 @@ Commands and Queries:
 
 from typing import Optional, TYPE_CHECKING
 
-from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite, SCPICmdWriteNoArguments
+from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
 
 if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.pi_control import PIControl
@@ -624,7 +624,7 @@ class RfScale(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class RfRfVTimeBandwidth(SCPICmdWriteNoArguments, SCPICmdRead):
+class RfRfVTimeBandwidth(SCPICmdWrite, SCPICmdRead):
     """The ``RF:RF_V_TIMe:BANDWidth`` command.
 
     Description:
@@ -636,13 +636,16 @@ class RfRfVTimeBandwidth(SCPICmdWriteNoArguments, SCPICmdRead):
         - Using the ``.query()`` method will send the ``RF:RF_V_TIMe:BANDWidth?`` query.
         - Using the ``.verify(value)`` method will send the ``RF:RF_V_TIMe:BANDWidth?`` query and
           raise an AssertionError if the returned value does not match ``value``.
-        - Using the ``.write()`` method will send the ``RF:RF_V_TIMe:BANDWidth`` command.
+        - Using the ``.write(value)`` method will send the ``RF:RF_V_TIMe:BANDWidth value`` command.
 
     SCPI Syntax:
         ```
-        - RF:RF_V_TIMe:BANDWidth
+        - RF:RF_V_TIMe:BANDWidth <NR3>
         - RF:RF_V_TIMe:BANDWidth?
         ```
+
+    Info:
+        - ``<NR3>`` is the RF versus time bandwidth.
     """
 
 
@@ -675,13 +678,17 @@ class RfRfVTime(SCPICmdRead):
             - Using the ``.query()`` method will send the ``RF:RF_V_TIMe:BANDWidth?`` query.
             - Using the ``.verify(value)`` method will send the ``RF:RF_V_TIMe:BANDWidth?`` query
               and raise an AssertionError if the returned value does not match ``value``.
-            - Using the ``.write()`` method will send the ``RF:RF_V_TIMe:BANDWidth`` command.
+            - Using the ``.write(value)`` method will send the ``RF:RF_V_TIMe:BANDWidth value``
+              command.
 
         SCPI Syntax:
             ```
-            - RF:RF_V_TIMe:BANDWidth
+            - RF:RF_V_TIMe:BANDWidth <NR3>
             - RF:RF_V_TIMe:BANDWidth?
             ```
+
+        Info:
+            - ``<NR3>`` is the RF versus time bandwidth.
         """
         return self._bandwidth
 

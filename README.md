@@ -88,7 +88,7 @@ _Device Support Levels_
 |        | **AWG7000**              | PI              | ✅               | ✅                                 |
 |        | **AWG70000**             | PI              | ✅               | ✅                                 |
 | Scopes | **2 Series MSO**         | PI              | ✅               | ✅                                 |
-|        | **3 Series MDO**         | PI              | ✅               |                                    |
+|        | **3 Series MDO**         | PI              | ✅               | ✅                                 |
 |        | **4 Series MSO**         | PI              | ✅               | ✅                                 |
 |        | **4 Series B MSO**       | PI              | ✅               | ✅                                 |
 |        | **5 Series MSO**         | PI              | ✅               | ✅                                 |

@@ -1559,16 +1559,13 @@ class CursorSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` - specifies one of the analog waveforms as the cursor source. x has a minimum of
-          1 and a maximum of 4.
-        - ``REF<x>`` - specifies one of the reference waveforms as the cursor source. x has a
-          minimum of 1 and a maximum of 4.
-        - ``MATH`` - specifies the cursor source as the math waveform.
-        - ``BUS<x>`` - specifies the cursor source as one of the bus waveforms. x has a minimum of 1
-          and a maximum of 4.
-        - ``D<x>`` - specifies the cursor source as one of the digital waveforms. (Requires option
-          3-MSO.) x has a minimum of 0 and a maximum of 15.
-        - ``AUTO`` - specifies the currently selected waveform. The selected waveform can be
+        - ``CH<x>`` specifies one of the analog waveforms as the cursor source.
+        - ``REF<x>`` specifies one of the reference waveforms as the cursor source.
+        - ``MATH`` specifies the cursor source as the math waveform.
+        - ``BUS<x>`` specifies the cursor source as one of the bus waveforms.
+        - ``D<x>`` specifies the cursor source as one of the digital waveforms. (Requires option
+          3-MSO.).
+        - ``AUTO`` specifies the currently selected waveform. The selected waveform can be
           determined by querying ``SELECT:CONTROL``.
     """
 
@@ -2038,16 +2035,13 @@ class Cursor(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` - specifies one of the analog waveforms as the cursor source. x has a
-              minimum of 1 and a maximum of 4.
-            - ``REF<x>`` - specifies one of the reference waveforms as the cursor source. x has a
-              minimum of 1 and a maximum of 4.
-            - ``MATH`` - specifies the cursor source as the math waveform.
-            - ``BUS<x>`` - specifies the cursor source as one of the bus waveforms. x has a minimum
-              of 1 and a maximum of 4.
-            - ``D<x>`` - specifies the cursor source as one of the digital waveforms. (Requires
-              option 3-MSO.) x has a minimum of 0 and a maximum of 15.
-            - ``AUTO`` - specifies the currently selected waveform. The selected waveform can be
+            - ``CH<x>`` specifies one of the analog waveforms as the cursor source.
+            - ``REF<x>`` specifies one of the reference waveforms as the cursor source.
+            - ``MATH`` specifies the cursor source as the math waveform.
+            - ``BUS<x>`` specifies the cursor source as one of the bus waveforms.
+            - ``D<x>`` specifies the cursor source as one of the digital waveforms. (Requires option
+              3-MSO.).
+            - ``AUTO`` specifies the currently selected waveform. The selected waveform can be
               determined by querying ``SELECT:CONTROL``.
         """
         return self._source

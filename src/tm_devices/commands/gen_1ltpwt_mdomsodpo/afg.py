@@ -788,7 +788,7 @@ class AfgArbitraryEmemPointsByteorder(SCPICmdWrite, SCPICmdRead):
     Description:
         - ``:BYTEORDer This`` command specifies the byte order for the
           ``AFG:ARBITRARY:EMEM:POINTS?`` query when the ``AFG:ARBITRARY:EMEM:POINTS:ENCDG`` is set
-          to BINary and when binary block data is sent for the  ``AFG:ARBITRARY:EMEM:POINTS``
+          to BINary and when binary block data is sent for the ``AFG:ARBITRARY:EMEM:POINTS``
           command. LSB - Least significant byte first (little endian) MSB - Most significant byte
           first (big endian) The default is LSB. This setting is non-volatile and is reset by
           default setup or TekSecure. Refer to the ``AFG:ARBITRARY:EMEM:POINTS`` command description
@@ -867,11 +867,11 @@ class AfgArbitraryEmemPoints(SCPICmdWrite, SCPICmdRead):
         Description:
             - ``:BYTEORDer This`` command specifies the byte order for the
               ``AFG:ARBITRARY:EMEM:POINTS?`` query when the ``AFG:ARBITRARY:EMEM:POINTS:ENCDG`` is
-              set to BINary and when binary block data is sent for the
-              ``AFG:ARBITRARY:EMEM:POINTS`` command. LSB - Least significant byte first (little
-              endian) MSB - Most significant byte first (big endian) The default is LSB. This
-              setting is non-volatile and is reset by default setup or TekSecure. Refer to the
-              ``AFG:ARBITRARY:EMEM:POINTS`` command description for more information.
+              set to BINary and when binary block data is sent for the ``AFG:ARBITRARY:EMEM:POINTS``
+              command. LSB - Least significant byte first (little endian) MSB - Most significant
+              byte first (big endian) The default is LSB. This setting is non-volatile and is reset
+              by default setup or TekSecure. Refer to the ``AFG:ARBITRARY:EMEM:POINTS`` command
+              description for more information.
 
         Usage:
             - Using the ``.query()`` method will send the ``AFG:ARBitrary:EMEM:POINTS:BYTEORDer?``

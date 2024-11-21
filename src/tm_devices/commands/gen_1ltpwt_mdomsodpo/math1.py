@@ -578,7 +578,7 @@ class Math1Define(SCPICmdWrite, SCPICmdRead):
           advanced math functions, measurements, and operators. Spectrum math (MDO models)
           expressions are strings of the form <wfm><operation><wfm>, where the waveforms are any
           combination of live RF or reference traces in the frequency domain display, the
-          <operation> is either  + or  -, and type has been set to SPECTRUM.
+          <operation> is either + or -, and type has been set to SPECTRUM.
 
     Usage:
         - Using the ``.query()`` method will send the ``MATH1:DEFine?`` query.
@@ -682,7 +682,7 @@ class Math1Autoscale(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``1`` or ON enables automatic vertical scaling of the math waveform when the RF reference
           level falls below -25.0 dBm. Reference levels greater than or equal to -25.0 dBm cause the
-          probe to go into BYPassmode. The reference level is set/queried using the command
+          probe to go into BYPass mode. The reference level is set/queried using the command
           ``RF:REFLevel``.
         - ``0`` or OFF disables math autoscaling.
     """
@@ -748,7 +748,7 @@ class Math1(SCPICmdRead):
         Info:
             - ``1`` or ON enables automatic vertical scaling of the math waveform when the RF
               reference level falls below -25.0 dBm. Reference levels greater than or equal to -25.0
-              dBm cause the probe to go into BYPassmode. The reference level is set/queried using
+              dBm cause the probe to go into BYPass mode. The reference level is set/queried using
               the command ``RF:REFLevel``.
             - ``0`` or OFF disables math autoscaling.
         """
@@ -770,7 +770,7 @@ class Math1(SCPICmdRead):
               combinations of advanced math functions, measurements, and operators. Spectrum math
               (MDO models) expressions are strings of the form <wfm><operation><wfm>, where the
               waveforms are any combination of live RF or reference traces in the frequency domain
-              display, the <operation> is either  + or  -, and type has been set to SPECTRUM.
+              display, the <operation> is either + or -, and type has been set to SPECTRUM.
 
         Usage:
             - Using the ``.query()`` method will send the ``MATH1:DEFine?`` query.

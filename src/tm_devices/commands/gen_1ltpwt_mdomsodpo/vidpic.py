@@ -93,8 +93,7 @@ class VidpicSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specify which channel to use for the video picture source waveform. x has a
-          minimum of 1 and a maximum of 4.
+        - ``CH<x>`` specify which channel to use for the video picture source waveform.
     """
 
 
@@ -829,8 +828,7 @@ class Vidpic(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specify which channel to use for the video picture source waveform. x has a
-              minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specify which channel to use for the video picture source waveform.
         """
         return self._source
 

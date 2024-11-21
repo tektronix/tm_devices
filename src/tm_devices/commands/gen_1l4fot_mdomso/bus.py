@@ -2,7 +2,7 @@
 """The bus commands module.
 
 These commands are used in the following models:
-DPO4K, DPO4KB, MDO3, MDO3K, MDO4K, MDO4KB, MDO4KC, MSO4K, MSO4KB
+MDO3K, MDO4KB, MDO4KC, MSO4KB
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
@@ -924,10 +924,9 @@ class BusBItemUsbSourceDplus(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the source waveform for D+ input. x has a minimum
-          of 1 and a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the source waveform for D+ input.
         - ``D<x>`` specifies a digital channel as the source waveform for D+ input. (Requires option
-          3-MSO.) x has a minimum of 0 and a maximum of 15.
+          3-MSO.).
     """
 
 
@@ -952,10 +951,9 @@ class BusBItemUsbSourceDminus(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the source waveform for the D- input. x has a
-          minimum of 1 and a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the source waveform for the D- input.
         - ``D<x>`` specifies a digital channel as the source waveform for the D- input. (Requires
-          option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+          option 3-MSO.).
     """
 
 
@@ -981,10 +979,9 @@ class BusBItemUsbSourceDifferential(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` specifies an analog waveform as the source. This channel should have an attached
-          differential probe. x has a minimum of 1 and a maximum of 4.
+          differential probe.
         - ``MATH`` specifies the math waveform as the source.
-        - ``REF<x>`` specifies a reference waveform as the source. x has a minimum of 1 and a
-          maximum of 4.
+        - ``REF<x>`` specifies a reference waveform as the source.
     """
 
 
@@ -1035,10 +1032,9 @@ class BusBItemUsbSource(SCPICmdRead):
 
         Info:
             - ``CH<x>`` specifies an analog waveform as the source. This channel should have an
-              attached differential probe. x has a minimum of 1 and a maximum of 4.
+              attached differential probe.
             - ``MATH`` specifies the math waveform as the source.
-            - ``REF<x>`` specifies a reference waveform as the source. x has a minimum of 1 and a
-              maximum of 4.
+            - ``REF<x>`` specifies a reference waveform as the source.
         """
         return self._differential
 
@@ -1064,10 +1060,9 @@ class BusBItemUsbSource(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the source waveform for the D- input. x has a
-              minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the source waveform for the D- input.
             - ``D<x>`` specifies a digital channel as the source waveform for the D- input.
-              (Requires option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+              (Requires option 3-MSO.).
         """
         return self._dminus
 
@@ -1093,10 +1088,9 @@ class BusBItemUsbSource(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the source waveform for D+ input. x has a
-              minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the source waveform for D+ input.
             - ``D<x>`` specifies a digital channel as the source waveform for D+ input. (Requires
-              option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+              option 3-MSO.).
         """
         return self._dplus
 
@@ -1319,10 +1313,8 @@ class BusBItemSpiSsSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the source waveform. x has a minimum of 1 and a
-          maximum of 4.
-        - ``D<x>`` specifies a digital channel as the source waveform. (Requires option 3-MSO.) x
-          has a minimum of 0 and a maximum of 15.
+        - ``CH<x>`` specifies an analog channel as the source waveform.
+        - ``D<x>`` specifies a digital channel as the source waveform. (Requires option 3-MSO.).
     """
 
 
@@ -1416,10 +1408,8 @@ class BusBItemSpiSs(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the source waveform. x has a minimum of 1 and
-              a maximum of 4.
-            - ``D<x>`` specifies a digital channel as the source waveform. (Requires option 3-MSO.)
-              x has a minimum of 0 and a maximum of 15.
+            - ``CH<x>`` specifies an analog channel as the source waveform.
+            - ``D<x>`` specifies a digital channel as the source waveform. (Requires option 3-MSO.).
         """
         return self._source
 
@@ -1444,10 +1434,8 @@ class BusBItemSpiSelectSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the source waveform. x has a minimum of 1 and a
-          maximum of 4.
-        - ``D<x>`` specifies a digital channel as the source waveform. (Requires option 3-MSO.) x
-          has a minimum of 0 and a maximum of 15.
+        - ``CH<x>`` specifies an analog channel as the source waveform.
+        - ``D<x>`` specifies a digital channel as the source waveform. (Requires option 3-MSO.).
     """
 
 
@@ -1541,10 +1529,8 @@ class BusBItemSpiSelect(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the source waveform. x has a minimum of 1 and
-              a maximum of 4.
-            - ``D<x>`` specifies a digital channel as the source waveform. (Requires option 3-MSO.)
-              x has a minimum of 0 and a maximum of 15.
+            - ``CH<x>`` specifies an analog channel as the source waveform.
+            - ``D<x>`` specifies a digital channel as the source waveform. (Requires option 3-MSO.).
         """
         return self._source
 
@@ -1569,10 +1555,9 @@ class BusBItemSpiSclkSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the SCLK source waveform. x has a minimum of 1
-          and a maximum of 4.
-        - ``D<x>`` specifies a digital channel as the SCLK source waveform. (Requires option 3-MSO.)
-          x has a minimum of 0 and a maximum of 15.
+        - ``CH<x>`` specifies an analog channel as the SCLK source waveform.
+        - ``D<x>`` specifies a digital channel as the SCLK source waveform. (Requires option
+          3-MSO.).
     """
 
 
@@ -1666,10 +1651,9 @@ class BusBItemSpiSclk(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the SCLK source waveform. x has a minimum of
-              1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the SCLK source waveform.
             - ``D<x>`` specifies a digital channel as the SCLK source waveform. (Requires option
-              3-MSO.) x has a minimum of 0 and a maximum of 15.
+              3-MSO.).
         """
         return self._source
 
@@ -1765,10 +1749,9 @@ class BusBItemSpiDataOutSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the MOSI source waveform. x has a minimum of 1
-          and a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the MOSI source waveform.
         - ``D<x>`` specifies a digital channel as the SPI MOSI source waveform. (Requires option
-          3-MSO.) x has a minimum of 0 and a maximum of 15.
+          3-MSO.).
     """
 
 
@@ -1862,10 +1845,9 @@ class BusBItemSpiDataOut(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the MOSI source waveform. x has a minimum of
-              1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the MOSI source waveform.
             - ``D<x>`` specifies a digital channel as the SPI MOSI source waveform. (Requires option
-              3-MSO.) x has a minimum of 0 and a maximum of 15.
+              3-MSO.).
         """
         return self._source
 
@@ -1890,10 +1872,9 @@ class BusBItemSpiDataMosiSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the MOSI source waveform. x has a minimum of 1
-          and a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the MOSI source waveform.
         - ``D<x>`` specifies a digital channel as the SPI MOSI source waveform. (Requires option
-          3-MSO.) x has a minimum of 0 and a maximum of 15.
+          3-MSO.).
     """
 
 
@@ -1988,10 +1969,9 @@ class BusBItemSpiDataMosi(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the MOSI source waveform. x has a minimum of
-              1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the MOSI source waveform.
             - ``D<x>`` specifies a digital channel as the SPI MOSI source waveform. (Requires option
-              3-MSO.) x has a minimum of 0 and a maximum of 15.
+              3-MSO.).
         """
         return self._source
 
@@ -2016,10 +1996,9 @@ class BusBItemSpiDataMisoSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the MISO source waveform. x has a minimum of 1
-          and a maximum of 4.
-        - ``D<x>`` specifies a digital channel as the MISO source waveform. (Requires 3-MSO option.)
-          x has a minimum of 0 and a maximum of 15.
+        - ``CH<x>`` specifies an analog channel as the MISO source waveform.
+        - ``D<x>`` specifies a digital channel as the MISO source waveform. (Requires 3-MSO
+          option.).
     """
 
 
@@ -2114,10 +2093,9 @@ class BusBItemSpiDataMiso(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the MISO source waveform. x has a minimum of
-              1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the MISO source waveform.
             - ``D<x>`` specifies a digital channel as the MISO source waveform. (Requires 3-MSO
-              option.) x has a minimum of 0 and a maximum of 15.
+              option.).
         """
         return self._source
 
@@ -2142,10 +2120,9 @@ class BusBItemSpiDataInSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the MISO source waveform. x has a minimum of 1
-          and a maximum of 4.
-        - ``D<x>`` specifies a digital channel as the MISO source waveform. (Requires 3-MSO option.)
-          x has a minimum of 0 and a maximum of 15.
+        - ``CH<x>`` specifies an analog channel as the MISO source waveform.
+        - ``D<x>`` specifies a digital channel as the MISO source waveform. (Requires 3-MSO
+          option.).
     """
 
 
@@ -2239,10 +2216,9 @@ class BusBItemSpiDataIn(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the MISO source waveform. x has a minimum of
-              1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the MISO source waveform.
             - ``D<x>`` specifies a digital channel as the MISO source waveform. (Requires 3-MSO
-              option.) x has a minimum of 0 and a maximum of 15.
+              option.).
         """
         return self._source
 
@@ -2383,10 +2359,9 @@ class BusBItemSpiClockSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the SCLK source waveform. x has a minimum of 1
-          and a maximum of 4.
-        - ``D<x>`` specifies a digital channel as the SCLK source waveform. (Requires option 3-MSO.)
-          x has a minimum of 0 and a maximum of 15.
+        - ``CH<x>`` specifies an analog channel as the SCLK source waveform.
+        - ``D<x>`` specifies a digital channel as the SCLK source waveform. (Requires option
+          3-MSO.).
     """
 
 
@@ -2480,10 +2455,9 @@ class BusBItemSpiClock(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the SCLK source waveform. x has a minimum of
-              1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the SCLK source waveform.
             - ``D<x>`` specifies a digital channel as the SCLK source waveform. (Requires option
-              3-MSO.) x has a minimum of 0 and a maximum of 15.
+              3-MSO.).
         """
         return self._source
 
@@ -2733,10 +2707,8 @@ class BusBItemRs232cTxSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the TX source waveform. x has a minimum of 1 and
-          a maximum of 4.
-        - ``D<x>`` specifies a digital channel as the TX source waveform. (Requires option 3-MSO.) x
-          has a minimum of 0 and a maximum of 15.
+        - ``CH<x>`` specifies an analog channel as the TX source waveform.
+        - ``D<x>`` specifies a digital channel as the TX source waveform. (Requires option 3-MSO.).
         - ``Off`` sets the specified bus input to off.
     """
 
@@ -2778,10 +2750,9 @@ class BusBItemRs232cTx(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the TX source waveform. x has a minimum of 1
-              and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the TX source waveform.
             - ``D<x>`` specifies a digital channel as the TX source waveform. (Requires option
-              3-MSO.) x has a minimum of 0 and a maximum of 15.
+              3-MSO.).
             - ``Off`` sets the specified bus input to off.
         """
         return self._source
@@ -2807,10 +2778,8 @@ class BusBItemRs232cRxSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the RX source waveform. x has a minimum of 1 and
-          a maximum of 4.
-        - ``D<x>`` specifies a digital channel as the RX source waveform. (Requires option 3-MSO.) x
-          has a minimum of 0 and a maximum of 15.
+        - ``CH<x>`` specifies an analog channel as the RX source waveform.
+        - ``D<x>`` specifies a digital channel as the RX source waveform. (Requires option 3-MSO.).
         - ``Off`` sets the specified bus input to off.
     """
 
@@ -2852,10 +2821,9 @@ class BusBItemRs232cRx(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the RX source waveform. x has a minimum of 1
-              and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the RX source waveform.
             - ``D<x>`` specifies a digital channel as the RX source waveform. (Requires option
-              3-MSO.) x has a minimum of 0 and a maximum of 15.
+              3-MSO.).
             - ``Off`` sets the specified bus input to off.
         """
         return self._source
@@ -3312,10 +3280,8 @@ class BusBItemParallelClockSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel to use the clock source waveform. x has a minimum of
-          1 and a maximum of 4.
-        - ``D<x>`` specifies a digital channels the clock source waveform. (Requires option 3-MSO.)
-          x has a minimum of 0 and a maximum of 15.
+        - ``CH<x>`` specifies an analog channel to use the clock source waveform.
+        - ``D<x>`` specifies a digital channels the clock source waveform. (Requires option 3-MSO.).
     """
 
 
@@ -3466,10 +3432,9 @@ class BusBItemParallelClock(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel to use the clock source waveform. x has a
-              minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel to use the clock source waveform.
             - ``D<x>`` specifies a digital channels the clock source waveform. (Requires option
-              3-MSO.) x has a minimum of 0 and a maximum of 15.
+              3-MSO.).
         """
         return self._source
 
@@ -3494,10 +3459,8 @@ class BusBItemParallelBitItemSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the bit source waveform. x has a minimum of 1 and
-          a maximum of 4.
-        - ``D<x>`` specifies a digital channel as the bit source waveform. (Requires option 3-MSO.)
-          x has a minimum of 0 and a maximum of 15.
+        - ``CH<x>`` specifies an analog channel as the bit source waveform.
+        - ``D<x>`` specifies a digital channel as the bit source waveform. (Requires option 3-MSO.).
     """
 
 
@@ -3539,10 +3502,9 @@ class BusBItemParallelBitItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the bit source waveform. x has a minimum of 1
-              and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the bit source waveform.
             - ``D<x>`` specifies a digital channel as the bit source waveform. (Requires option
-              3-MSO.) x has a minimum of 0 and a maximum of 15.
+              3-MSO.).
         """
         return self._source
 
@@ -3647,12 +3609,10 @@ class BusBItemMil1553bSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the source for differential input. x has a
-          minimum of 1 and a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the source for differential input.
         - ``MATH`` specifies the math waveform as the MIL-STD-1553 bus source for differential
           input.
-        - ``REF<x>`` specifies a reference waveform as the source for differential input. x has a
-          minimum of 1 and a maximum of 4.
+        - ``REF<x>`` specifies a reference waveform as the source for differential input.
     """
 
 
@@ -3915,12 +3875,10 @@ class BusBItemMil1553b(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the source for differential input. x has a
-              minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the source for differential input.
             - ``MATH`` specifies the math waveform as the MIL-STD-1553 bus source for differential
               input.
-            - ``REF<x>`` specifies a reference waveform as the source for differential input. x has
-              a minimum of 1 and a maximum of 4.
+            - ``REF<x>`` specifies a reference waveform as the source for differential input.
         """
         return self._source
 
@@ -3969,10 +3927,8 @@ class BusBItemLinSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the source waveform. x has a minimum of 1 and a
-          maximum of 4.
-        - ``D<x>`` specifies a digital channel as the source waveform. (Requires option 3-MSO.) x
-          has a minimum of 0 and a maximum of 15.
+        - ``CH<x>`` specifies an analog channel as the source waveform.
+        - ``D<x>`` specifies a digital channel as the source waveform. (Requires option 3-MSO.).
     """
 
 
@@ -4281,10 +4237,8 @@ class BusBItemLin(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the source waveform. x has a minimum of 1 and
-              a maximum of 4.
-            - ``D<x>`` specifies a digital channel as the source waveform. (Requires option 3-MSO.)
-              x has a minimum of 0 and a maximum of 15.
+            - ``CH<x>`` specifies an analog channel as the source waveform.
+            - ``D<x>`` specifies a digital channel as the source waveform. (Requires option 3-MSO.).
         """
         return self._source
 
@@ -4360,10 +4314,9 @@ class BusBItemI2cSdataSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the I2C SDATA source waveform. x has a minimum of
-          1 and a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the I2C SDATA source waveform.
         - ``D<x>`` specifies a digital channel as the I2C SDATA source waveform. (Requires option
-          3-MSO.) x has a minimum of 0 and a maximum of 15.
+          3-MSO.).
     """
 
 
@@ -4404,10 +4357,9 @@ class BusBItemI2cSdata(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the I2C SDATA source waveform. x has a
-              minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the I2C SDATA source waveform.
             - ``D<x>`` specifies a digital channel as the I2C SDATA source waveform. (Requires
-              option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+              option 3-MSO.).
         """
         return self._source
 
@@ -4432,10 +4384,9 @@ class BusBItemI2cSclkSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the SCLK source waveform. x has a minimum of 1
-          and a maximum of 4.
-        - ``D<x>`` specifies a digital channel as the SCLK source waveform. (Requires option 3-MSO.)
-          x has a minimum of 0 and a maximum of 15.
+        - ``CH<x>`` specifies an analog channel as the SCLK source waveform.
+        - ``D<x>`` specifies a digital channel as the SCLK source waveform. (Requires option
+          3-MSO.).
     """
 
 
@@ -4476,10 +4427,9 @@ class BusBItemI2cSclk(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the SCLK source waveform. x has a minimum of
-              1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the SCLK source waveform.
             - ``D<x>`` specifies a digital channel as the SCLK source waveform. (Requires option
-              3-MSO.) x has a minimum of 0 and a maximum of 15.
+              3-MSO.).
         """
         return self._source
 
@@ -4504,10 +4454,9 @@ class BusBItemI2cDataSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the I2C SDATA source waveform. x has a minimum of
-          1 and a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the I2C SDATA source waveform.
         - ``D<x>`` specifies a digital channel as the I2C SDATA source waveform. (Requires option
-          3-MSO.) x has a minimum of 0 and a maximum of 15.
+          3-MSO.).
     """
 
 
@@ -4548,10 +4497,9 @@ class BusBItemI2cData(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the I2C SDATA source waveform. x has a
-              minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the I2C SDATA source waveform.
             - ``D<x>`` specifies a digital channel as the I2C SDATA source waveform. (Requires
-              option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+              option 3-MSO.).
         """
         return self._source
 
@@ -4576,10 +4524,9 @@ class BusBItemI2cClockSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the SCLK source waveform. x has a minimum of 1
-          and a maximum of 4.
-        - ``D<x>`` specifies a digital channel as the SCLK source waveform. (Requires option 3-MSO.)
-          x has a minimum of 0 and a maximum of 15.
+        - ``CH<x>`` specifies an analog channel as the SCLK source waveform.
+        - ``D<x>`` specifies a digital channel as the SCLK source waveform. (Requires option
+          3-MSO.).
     """
 
 
@@ -4620,10 +4567,9 @@ class BusBItemI2cClock(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the SCLK source waveform. x has a minimum of
-              1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the SCLK source waveform.
             - ``D<x>`` specifies a digital channel as the SCLK source waveform. (Requires option
-              3-MSO.) x has a minimum of 0 and a maximum of 15.
+              3-MSO.).
         """
         return self._source
 
@@ -4811,8 +4757,7 @@ class BusBItemFlexraySource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the source waveform. x has a minimum of 1 and a
-          maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the source waveform.
     """
 
 
@@ -5022,8 +4967,7 @@ class BusBItemFlexray(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the source waveform. x has a minimum of 1 and
-              a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the source waveform.
         """
         return self._source
 
@@ -5079,7 +5023,8 @@ class BusBItemEthernetSourceDplus(SCPICmdWrite, SCPICmdRead):
         - ``CH<x>`` specifies to use one of the analog channels 1-4 as the Ethernet data source for
           the D+ input. x has a minimum of 1 and a maximum of 4.
         - ``D<x>`` specifies to use one of the digital channels D0 - D15 as the Ethernet data source
-          for the D+ input. Requires option 3-MSO. x has a minimum of 0 and a maximum of 15.
+          for the D+ input. (MSO/MDO4000/B models only as well as MDO3000 and MDO400C models with
+          option MDO3MSO or MDO4MSO installed.) x has a minimum of 0 and a maximum of 15.
     """  # noqa: E501
 
 
@@ -5105,9 +5050,9 @@ class BusBItemEthernetSourceDminus(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` specifies to use one of the analog channels as the Ethernet data source for the
-          D- input. x has a minimum of 1 and a maximum of 4.
+          D- input.
         - ``D<x>`` specifies to use one of the digital channels D0 - D15 as the Ethernet data source
-          for the D- input. x has a minimum of 0 and a maximum of 15.
+          for the D- input.
     """
 
 
@@ -5136,11 +5081,11 @@ class BusBItemEthernetSourceDifferential(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` specifies to use one of the channels 1-4 as the Ethernet data source for
-          differential input. x has a minimum of 1 and a maximum of 4.
+          differential input.
         - ``MATH`` specifies to use the math waveform as the source for Ethernet data differential
           input.
         - ``REF<x>`` specifies to use one of the reference waveforms 1-4 as the source for Ethernet
-          data differential input. x has a minimum of 1 and a maximum of 4.
+          data differential input.
     """
 
 
@@ -5192,11 +5137,11 @@ class BusBItemEthernetSource(SCPICmdRead):
 
         Info:
             - ``CH<x>`` specifies to use one of the channels 1-4 as the Ethernet data source for
-              differential input. x has a minimum of 1 and a maximum of 4.
+              differential input.
             - ``MATH`` specifies to use the math waveform as the source for Ethernet data
               differential input.
             - ``REF<x>`` specifies to use one of the reference waveforms 1-4 as the source for
-              Ethernet data differential input. x has a minimum of 1 and a maximum of 4.
+              Ethernet data differential input.
         """
         return self._differential
 
@@ -5224,9 +5169,9 @@ class BusBItemEthernetSource(SCPICmdRead):
 
         Info:
             - ``CH<x>`` specifies to use one of the analog channels as the Ethernet data source for
-              the D- input. x has a minimum of 1 and a maximum of 4.
+              the D- input.
             - ``D<x>`` specifies to use one of the digital channels D0 - D15 as the Ethernet data
-              source for the D- input. x has a minimum of 0 and a maximum of 15.
+              source for the D- input.
         """
         return self._dminus
 
@@ -5255,8 +5200,9 @@ class BusBItemEthernetSource(SCPICmdRead):
             - ``CH<x>`` specifies to use one of the analog channels 1-4 as the Ethernet data source
               for the D+ input. x has a minimum of 1 and a maximum of 4.
             - ``D<x>`` specifies to use one of the digital channels D0 - D15 as the Ethernet data
-              source for the D+ input. Requires option 3-MSO. x has a minimum of 0 and a maximum of
-              15.
+              source for the D+ input. (MSO/MDO4000/B models only as well as MDO3000 and MDO400C
+              models with option MDO3MSO or MDO4MSO installed.) x has a minimum of 0 and a maximum
+              of 15.
         """  # noqa: E501
         return self._dplus
 
@@ -5629,10 +5575,9 @@ class BusBItemCanSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the data source waveform. x has a minimum of 1
-          and a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the data source waveform.
         - ``D<x>`` specifies a digital channel as the data source waveform. (Requires installation
-          of option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+          of option 3-MSO.).
     """
 
 
@@ -5983,10 +5928,9 @@ class BusBItemCan(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the data source waveform. x has a minimum of
-              1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the data source waveform.
             - ``D<x>`` specifies a digital channel as the data source waveform. (Requires
-              installation of option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+              installation of option 3-MSO.).
         """
         return self._source
 
@@ -6037,10 +5981,9 @@ class BusBItemAudioWordselSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the word select source waveform . x has a minimum
-          of 1 and a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the word select source waveform .
         - ``D<x>`` specifies a digital channel as the word select source waveform. (Requires option
-          3-MSO.) x has a minimum of 0 and a maximum of 15.
+          3-MSO.).
     """
 
 
@@ -6142,10 +6085,9 @@ class BusBItemAudioWordsel(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the word select source waveform . x has a
-              minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the word select source waveform .
             - ``D<x>`` specifies a digital channel as the word select source waveform. (Requires
-              option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+              option 3-MSO.).
         """
         return self._source
 
@@ -6198,10 +6140,9 @@ class BusBItemAudioFramesyncSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the frame sync source waveform. x has a minimum
-          of 1 and a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the frame sync source waveform.
         - ``D<x>`` specifies a digital channel as the frame sync source waveform. (Requires option
-          3-MSO.) x has a minimum of 0 and a maximum of 15.
+          3-MSO.).
     """
 
 
@@ -6298,10 +6239,9 @@ class BusBItemAudioFramesync(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the frame sync source waveform. x has a
-              minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the frame sync source waveform.
             - ``D<x>`` specifies a digital channel as the frame sync source waveform. (Requires
-              option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+              option 3-MSO.).
         """
         return self._source
 
@@ -6469,10 +6409,9 @@ class BusBItemAudioDataSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the data source waveform for the audio bus. x has
-          a minimum of 1 and a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the data source waveform for the audio bus.
         - ``D<x>`` specifies a digital channel as the data source waveform for the audio bus.
-          (Requires option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+          (Requires option 3-MSO.).
     """
 
 
@@ -6621,10 +6560,9 @@ class BusBItemAudioData(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the data source waveform for the audio bus. x
-              has a minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the data source waveform for the audio bus.
             - ``D<x>`` specifies a digital channel as the data source waveform for the audio bus.
-              (Requires option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+              (Requires option 3-MSO.).
         """
         return self._source
 
@@ -6649,10 +6587,9 @@ class BusBItemAudioClockSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the clock source waveform for the audio bus. x
-          has a minimum of 1 and a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the clock source waveform for the audio bus.
         - ``D<x>`` specifies a digital channel as the clock source waveform for the audio bus.
-          (Requires installation of option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+          (Requires installation of option 3-MSO.).
     """
 
 
@@ -6747,9 +6684,8 @@ class BusBItemAudioClock(SCPICmdRead):
 
         Info:
             - ``CH<x>`` specifies an analog channel as the clock source waveform for the audio bus.
-              x has a minimum of 1 and a maximum of 4.
             - ``D<x>`` specifies a digital channel as the clock source waveform for the audio bus.
-              (Requires installation of option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+              (Requires installation of option 3-MSO.).
         """
         return self._source
 
@@ -7126,11 +7062,9 @@ class BusBItemArinc429aSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the source for the differential input. x has a
-          minimum of 1 and a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the source for the differential input.
         - ``MATH`` specifies the math waveform as the source for differential input.
-        - ``REF<x>`` specifies a reference waveform as the source for differential input. x has a
-          minimum of 1 and a maximum of 4.
+        - ``REF<x>`` specifies a reference waveform as the source for differential input.
     """
 
 
@@ -7380,11 +7314,9 @@ class BusBItemArinc429a(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the source for the differential input. x has
-              a minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the source for the differential input.
             - ``MATH`` specifies the math waveform as the source for differential input.
-            - ``REF<x>`` specifies a reference waveform as the source for differential input. x has
-              a minimum of 1 and a maximum of 4.
+            - ``REF<x>`` specifies a reference waveform as the source for differential input.
         """
         return self._source
 

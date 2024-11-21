@@ -61,7 +61,7 @@ class DiagnosticImmediate(SCPICmdWriteNoArguments, SCPICmdRead):
     Description:
         - This command executes all of the NORMal diagnostic tests. The query form of this command
           executes all of the NORMal diagnostics and returns the results in the form of numeric of
-          values of 0 for no errors or  -330 for one or more tests failed. This changes the active
+          values of 0 for no errors or -330 for one or more tests failed. This changes the active
           mode to DIAGnostic, if necessary, and returns back to the original active mode when done.
           This makes a single pass of all of the NORMal diagnostics.
 
@@ -181,7 +181,7 @@ class Diagnostic(SCPICmdRead):
         Description:
             - This command executes all of the NORMal diagnostic tests. The query form of this
               command executes all of the NORMal diagnostics and returns the results in the form of
-              numeric of values of 0 for no errors or  -330 for one or more tests failed. This
+              numeric of values of 0 for no errors or -330 for one or more tests failed. This
               changes the active mode to DIAGnostic, if necessary, and returns back to the original
               active mode when done. This makes a single pass of all of the NORMal diagnostics.
 

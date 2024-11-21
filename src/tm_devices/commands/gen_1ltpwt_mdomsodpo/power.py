@@ -268,8 +268,8 @@ class PowerVoltagesource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` sets the analog channel 1-4 or reference waveform 1-4 as the voltage source. x
-          has a minimum of 1 and a maximum of 4.
+        - ``CH<x>`` sets the analog channel as the voltage source.
+        - ``REF<x>`` sets the reference waveform as the voltage source.
     """
 
 
@@ -8426,10 +8426,8 @@ class PowerGatesource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` sets an analog channel as the gate source. x has a minimum of 1 and a maximum of
-          4.
-        - ``REF<x>`` sets a reference waveform as the gate source. x has a minimum of 1 and a
-          maximum of 4.
+        - ``CH<x>`` sets an analog channel as the gate source.
+        - ``REF<x>`` sets a reference waveform as the gate source.
         - ``NONe`` is set when the gate source is not used in the application.
     """
 
@@ -8479,10 +8477,8 @@ class PowerCurrentsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` sets an analog channel as the current source. x has a minimum of 1 and a maximum
-          of 4.
-        - ``REF<x>`` sets a reference waveform as the current source. x has a minimum of 1 and a
-          maximum of 4.
+        - ``CH<x>`` sets an analog channel as the current source.
+        - ``REF<x>`` sets a reference waveform as the current source.
     """
 
 
@@ -8552,10 +8548,8 @@ class Power(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` sets an analog channel as the current source. x has a minimum of 1 and a
-              maximum of 4.
-            - ``REF<x>`` sets a reference waveform as the current source. x has a minimum of 1 and a
-              maximum of 4.
+            - ``CH<x>`` sets an analog channel as the current source.
+            - ``REF<x>`` sets a reference waveform as the current source.
         """
         return self._currentsource
 
@@ -8606,10 +8600,8 @@ class Power(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` sets an analog channel as the gate source. x has a minimum of 1 and a
-              maximum of 4.
-            - ``REF<x>`` sets a reference waveform as the gate source. x has a minimum of 1 and a
-              maximum of 4.
+            - ``CH<x>`` sets an analog channel as the gate source.
+            - ``REF<x>`` sets a reference waveform as the gate source.
             - ``NONe`` is set when the gate source is not used in the application.
         """
         return self._gatesource
@@ -8911,7 +8903,7 @@ class Power(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` sets the analog channel 1-4 or reference waveform 1-4 as the voltage source.
-              x has a minimum of 1 and a maximum of 4.
+            - ``CH<x>`` sets the analog channel as the voltage source.
+            - ``REF<x>`` sets the reference waveform as the voltage source.
         """
         return self._voltagesource

@@ -152,15 +152,13 @@ class DataSource(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` specifies which analog channel waveform data will be transferred from the
-          oscilloscope to the controller, channels 1 through 4. x has a minimum of 1 and a maximum
-          of 4.
+          oscilloscope to the controller, channels 1 through 4.
         - ``MATH`` specifies that the Math waveform data will be transferred from the oscilloscope
           to the controller.
         - ``REF<x>`` specifies which Reference waveform data will be transferred from the
-          oscilloscope to the controller. x has a minimum of 1 and a maximum of 4.
+          oscilloscope to the controller.
         - ``D<x>`` specifies which digital channel waveform data will be transferred from the
-          oscilloscope to the controller. (Requires installation of option 3-MSO.) x has a minimum
-          of 0 and a maximum of 15.
+          oscilloscope to the controller. (Requires installation of option 3-MSO.).
         - ``DIGital`` specifies that the Digital Collection waveform data will be transferred from
           the oscilloscope to the controller. (Requires installation of option 3-MSO.).
         - ``RF_NORMal`` specify that the RF data will be transferred from the oscilloscope to the
@@ -201,7 +199,7 @@ class DataEncdg(SCPICmdWrite, SCPICmdRead):
           values for Digital Collection data with 4 or 8 bytes per point. The maximum number of
           ASCII data points that can be queried using the CURVe? query is 1 million points. If more
           than 1 million points are desired, you must use one of the binary encodings. If ASCII is
-          the value, then ``BN_Fmtand`` ``BYT_Or`` are ignored.
+          the value, then ``BN_Fmt`` and ``BYT_Or`` are ignored.
         - ``FAStest`` specifies the encoding which results in the fastest waveform data transfer
           rate. This sets the following: ``WFMOutpre:ENCdg BINary``, ``WFMOutpre:BIN_Fmt RI`` and
           ``WFMOutpre:BYT_Or MSB``.
@@ -218,14 +216,14 @@ class DataEncdg(SCPICmdWrite, SCPICmdRead):
           range of data values is 0 to 65,535. The center of the screen is 127 for 1-byte data and
           is 32768 for 2-byte data. The upper limit is the top of the screen and the lower limit is
           the bottom of the screen. This sets the following:
-          ``:WFMOutpre:ENCdg BINary``,``:WFMOutpre:BN_Fmt RPand`` ``WFMOutpre:BYT_Or MSB``.
+          ``:WFMOutpre:ENCdg BINary``,``:WFMOutpre:BN_Fmt RP`` and ``WFMOutpre:BYT_Or MSB``.
         - ``SRIbinary`` specifies the signed integer format. It is the same as RIBinary except that
           the byte order is swapped, meaning that the least significant byte is transferred first.
-          This sets the following: ``WFMOutpre:ENCdg BINary``, ``WFMOutpre:BIN_Fmt RIand``
+          This sets the following: ``WFMOutpre:ENCdg BINary``, ``WFMOutpre:BIN_Fmt RI`` and
           ``WFMOutpre:BYT_Or LSB``.
         - ``SRPbinary`` specifies the positive integer format. It is the same as RPBinary except
           that the byte order is swapped, meaning that the least significant byte is transferred
-          first. This sets the following: ``WFMOutpre:ENCdg BINary``, ``WFMOutpre:BN_Fmt RPand``
+          first. This sets the following: ``WFMOutpre:ENCdg BINary``, ``WFMOutpre:BN_Fmt RP`` and
           ``WFMOutpre:BYT_Or LSB``.
         - ``FPbinary`` specifies floating point binary. It automatically forces ``DATa:WIDTH`` to 4
           and ``BYT_OR`` to MSB (most significant byte transmitted first).
@@ -357,7 +355,7 @@ class Data(SCPICmdWrite, SCPICmdRead):
               hexadecimal values for Digital Collection data with 4 or 8 bytes per point. The
               maximum number of ASCII data points that can be queried using the CURVe? query is 1
               million points. If more than 1 million points are desired, you must use one of the
-              binary encodings. If ASCII is the value, then ``BN_Fmtand`` ``BYT_Or`` are ignored.
+              binary encodings. If ASCII is the value, then ``BN_Fmt`` and ``BYT_Or`` are ignored.
             - ``FAStest`` specifies the encoding which results in the fastest waveform data transfer
               rate. This sets the following: ``WFMOutpre:ENCdg BINary``, ``WFMOutpre:BIN_Fmt RI``
               and ``WFMOutpre:BYT_Or MSB``.
@@ -374,15 +372,15 @@ class Data(SCPICmdWrite, SCPICmdRead):
               range of data values is 0 to 65,535. The center of the screen is 127 for 1-byte data
               and is 32768 for 2-byte data. The upper limit is the top of the screen and the lower
               limit is the bottom of the screen. This sets the following:
-              ``:WFMOutpre:ENCdg BINary``,``:WFMOutpre:BN_Fmt RPand`` ``WFMOutpre:BYT_Or MSB``.
+              ``:WFMOutpre:ENCdg BINary``,``:WFMOutpre:BN_Fmt RP`` and ``WFMOutpre:BYT_Or MSB``.
             - ``SRIbinary`` specifies the signed integer format. It is the same as RIBinary except
               that the byte order is swapped, meaning that the least significant byte is transferred
-              first. This sets the following: ``WFMOutpre:ENCdg BINary``,
-              ``WFMOutpre:BIN_Fmt RIand`` ``WFMOutpre:BYT_Or LSB``.
+              first. This sets the following: ``WFMOutpre:ENCdg BINary``, ``WFMOutpre:BIN_Fmt RI``
+              and ``WFMOutpre:BYT_Or LSB``.
             - ``SRPbinary`` specifies the positive integer format. It is the same as RPBinary except
               that the byte order is swapped, meaning that the least significant byte is transferred
-              first. This sets the following: ``WFMOutpre:ENCdg BINary``, ``WFMOutpre:BN_Fmt RPand``
-              ``WFMOutpre:BYT_Or LSB``.
+              first. This sets the following: ``WFMOutpre:ENCdg BINary``, ``WFMOutpre:BN_Fmt RP``
+              and ``WFMOutpre:BYT_Or LSB``.
             - ``FPbinary`` specifies floating point binary. It automatically forces ``DATa:WIDTH``
               to 4 and ``BYT_OR`` to MSB (most significant byte transmitted first).
             - ``SFPbinary`` specifies floating point binary. It automatically forces ``DATa:WIDTH``
@@ -416,15 +414,13 @@ class Data(SCPICmdWrite, SCPICmdRead):
 
         Info:
             - ``CH<x>`` specifies which analog channel waveform data will be transferred from the
-              oscilloscope to the controller, channels 1 through 4. x has a minimum of 1 and a
-              maximum of 4.
+              oscilloscope to the controller, channels 1 through 4.
             - ``MATH`` specifies that the Math waveform data will be transferred from the
               oscilloscope to the controller.
             - ``REF<x>`` specifies which Reference waveform data will be transferred from the
-              oscilloscope to the controller. x has a minimum of 1 and a maximum of 4.
+              oscilloscope to the controller.
             - ``D<x>`` specifies which digital channel waveform data will be transferred from the
-              oscilloscope to the controller. (Requires installation of option 3-MSO.) x has a
-              minimum of 0 and a maximum of 15.
+              oscilloscope to the controller. (Requires installation of option 3-MSO.).
             - ``DIGital`` specifies that the Digital Collection waveform data will be transferred
               from the oscilloscope to the controller. (Requires installation of option 3-MSO.).
             - ``RF_NORMal`` specify that the RF data will be transferred from the oscilloscope to

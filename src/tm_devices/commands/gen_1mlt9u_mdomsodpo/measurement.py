@@ -3413,10 +3413,9 @@ class MeasurementImmedSource1(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` is the analog channel to use as the source waveform. x has a minimum of 1 and a
-          maximum of 4.
+        - ``CH<x>`` is the analog channel to use as the source waveform.
         - ``MATH`` is the math waveform.
-        - ``D0 - D15`` is the digital waveform to use as the source waveform. (On models with option
+        - ``D<x>`` is the digital waveform to use as the source waveform. (On models with option
           3-MSO installed.).
         - ``HIStogram`` indicates the histogram as the object to be measured. HIStogram only applies
           to SOUrce1; it is not available for SOUrce2.
@@ -3653,11 +3652,10 @@ class MeasurementImmed(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` is the analog channel to use as the source waveform. x has a minimum of 1
-              and a maximum of 4.
+            - ``CH<x>`` is the analog channel to use as the source waveform.
             - ``MATH`` is the math waveform.
-            - ``D0 - D15`` is the digital waveform to use as the source waveform. (On models with
-              option 3-MSO installed.).
+            - ``D<x>`` is the digital waveform to use as the source waveform. (On models with option
+              3-MSO installed.).
             - ``HIStogram`` indicates the histogram as the object to be measured. HIStogram only
               applies to SOUrce1; it is not available for SOUrce2.
         """  # noqa: E501

@@ -1,7 +1,7 @@
 """The save commands module.
 
 These commands are used in the following models:
-DPO4K, DPO4KB, MDO3, MDO3K, MDO4K, MDO4KB, MDO4KC, MSO4K, MSO4KB
+MDO3
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
@@ -9,8 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - SAVe:ASSIgn:FOLder?
-    - SAVe:ASSIgn:TYPe {IMAGe|WAVEform|SETUp}
+    - SAVe:ASSIgn:TYPe {IMAGe|WAVEform|SETUp|UNASsigned}
     - SAVe:ASSIgn:TYPe?
     - SAVe:EVENTtable:B<x> <file path>
     - SAVe:EVENTtable:BUS<x> <file path>
@@ -655,7 +654,7 @@ class SaveAssignType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVe:ASSIgn:TYPe {IMAGe|WAVEform|SETUp}
+        - SAVe:ASSIgn:TYPe {IMAGe|WAVEform|SETUp|UNASsigned}
         - SAVe:ASSIgn:TYPe?
         ```
 
@@ -663,25 +662,7 @@ class SaveAssignType(SCPICmdWrite, SCPICmdRead):
         - ``IMAGe`` assigns the Save button to save screen images.
         - ``WAVEform`` assigns the Save button to save waveforms.
         - ``SETUp`` assigns the Save button to save setups.
-    """
-
-
-class SaveAssignFolder(SCPICmdRead):
-    """The ``SAVe:ASSIgn:FOLder`` command.
-
-    Description:
-        - Returns the file name that the next front-panel Save button operation will save the
-          requested save type data to.
-
-    Usage:
-        - Using the ``.query()`` method will send the ``SAVe:ASSIgn:FOLder?`` query.
-        - Using the ``.verify(value)`` method will send the ``SAVe:ASSIgn:FOLder?`` query and raise
-          an AssertionError if the returned value does not match ``value``.
-
-    SCPI Syntax:
-        ```
-        - SAVe:ASSIgn:FOLder?
-        ```
+        - ``UNASsigned`` sets the Save button to unassigned.
     """
 
 
@@ -694,34 +675,12 @@ class SaveAssign(SCPICmdRead):
           AssertionError if the returned value does not match ``value``.
 
     Properties:
-        - ``.folder``: The ``SAVe:ASSIgn:FOLder`` command.
         - ``.type``: The ``SAVe:ASSIgn:TYPe`` command.
     """
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._folder = SaveAssignFolder(device, f"{self._cmd_syntax}:FOLder")
         self._type = SaveAssignType(device, f"{self._cmd_syntax}:TYPe")
-
-    @property
-    def folder(self) -> SaveAssignFolder:
-        """Return the ``SAVe:ASSIgn:FOLder`` command.
-
-        Description:
-            - Returns the file name that the next front-panel Save button operation will save the
-              requested save type data to.
-
-        Usage:
-            - Using the ``.query()`` method will send the ``SAVe:ASSIgn:FOLder?`` query.
-            - Using the ``.verify(value)`` method will send the ``SAVe:ASSIgn:FOLder?`` query and
-              raise an AssertionError if the returned value does not match ``value``.
-
-        SCPI Syntax:
-            ```
-            - SAVe:ASSIgn:FOLder?
-            ```
-        """
-        return self._folder
 
     @property
     def type(self) -> SaveAssignType:
@@ -739,7 +698,7 @@ class SaveAssign(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVe:ASSIgn:TYPe {IMAGe|WAVEform|SETUp}
+            - SAVe:ASSIgn:TYPe {IMAGe|WAVEform|SETUp|UNASsigned}
             - SAVe:ASSIgn:TYPe?
             ```
 
@@ -747,6 +706,7 @@ class SaveAssign(SCPICmdRead):
             - ``IMAGe`` assigns the Save button to save screen images.
             - ``WAVEform`` assigns the Save button to save waveforms.
             - ``SETUp`` assigns the Save button to save setups.
+            - ``UNASsigned`` sets the Save button to unassigned.
         """
         return self._type
 
@@ -787,7 +747,6 @@ class Save(SCPICmdRead):
               AssertionError if the returned value does not match ``value``.
 
         Sub-properties:
-            - ``.folder``: The ``SAVe:ASSIgn:FOLder`` command.
             - ``.type``: The ``SAVe:ASSIgn:TYPe`` command.
         """
         return self._assign

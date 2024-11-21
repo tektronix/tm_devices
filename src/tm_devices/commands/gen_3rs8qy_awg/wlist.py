@@ -4102,7 +4102,7 @@ class WlistLast(SCPICmdRead):
     """The ``WLISt:LAST`` command.
 
     Description:
-        - This command returns the name of  the most recently added waveform in the waveform list.
+        - This command returns the name of the most recently added waveform in the waveform list.
 
     Usage:
         - Using the ``.query()`` method will send the ``WLISt:LAST?`` query.
@@ -4147,7 +4147,7 @@ class Wlist(SCPICmdRead):
         """Return the ``WLISt:LAST`` command.
 
         Description:
-            - This command returns the name of  the most recently added waveform in the waveform
+            - This command returns the name of the most recently added waveform in the waveform
               list.
 
         Usage:

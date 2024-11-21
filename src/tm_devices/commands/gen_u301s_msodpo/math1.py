@@ -803,7 +803,7 @@ class Math1Define(SCPICmdWrite, SCPICmdRead):
           advanced math functions, measurements, and operators. Spectrum math (MDO models)
           expressions are strings of the form <wfm><operation><wfm>, where the waveforms are any
           combination of live RF or reference traces in the frequency domain display, the
-          <operation> is either  + or  -, and type has been set to SPECTRUM.
+          <operation> is either + or -, and type has been set to SPECTRUM.
 
     Usage:
         - Using the ``.query()`` method will send the ``MATH1:DEFine?`` query.
@@ -936,7 +936,7 @@ class Math1(SCPICmdRead):
               combinations of advanced math functions, measurements, and operators. Spectrum math
               (MDO models) expressions are strings of the form <wfm><operation><wfm>, where the
               waveforms are any combination of live RF or reference traces in the frequency domain
-              display, the <operation> is either  + or  -, and type has been set to SPECTRUM.
+              display, the <operation> is either + or -, and type has been set to SPECTRUM.
 
         Usage:
             - Using the ``.query()`` method will send the ``MATH1:DEFine?`` query.

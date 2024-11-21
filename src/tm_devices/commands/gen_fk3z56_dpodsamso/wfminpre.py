@@ -80,7 +80,7 @@ class WfminpreYzero(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<NR3>`` is a floating point number that specifies the offset in in units specified by
-          the ``WFMInpre:YUNitcommand`` (YUNits).
+          the ``WFMInpre:YUNit`` command (YUNits).
     """
 
 
@@ -1051,6 +1051,6 @@ class Wfminpre(SCPICmdRead):
 
         Info:
             - ``<NR3>`` is a floating point number that specifies the offset in in units specified
-              by the ``WFMInpre:YUNitcommand`` (YUNits).
+              by the ``WFMInpre:YUNit`` command (YUNits).
         """
         return self._yzero
