@@ -128,7 +128,7 @@ plugins:
             scoped_crossrefs: true  # INSIDERS FEATURE
             # Signature options
             line_length: 100
-            modernize_annotations: false  # INSIDERS FEATURE
+            modernize_annotations: false  # INSIDERS FEATURE (if the source code annotations format changes, update this to true)
             show_signature_annotations: true
             signature_crossrefs: true
             separate_signature: true
