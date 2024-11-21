@@ -53,10 +53,14 @@ However, please read through all changes to be aware of what may potentially imp
 - _**<span style="color:red">BREAKING CHANGE</span>**_: Changed the behavior of the `expect_esr()` method to expect an integer error code input and an optional tuple of error messages to compare against the actual error code and messages returned by the `_get_errors()` private method.
 - _**<span style="color:orange">minor breaking change</span>**_: Converted the `device_type` property into an abstract, cached property to force all children of the `Device` class to specify what type of device they are.
 - Updated the auto-generated command mixin classes to no longer use an `__init__()` method to enable the driver API documentation to render in a more usable way.
+- Switched from using standard `print()` calls to using the `logging` module for all logging in the `tm_devices` package.
+    - A configuration function provides the ability to set different logging levels for stdout and file logging.
+    - The config file and environment variable can also be used to control the logging functionality.
+    - The debug logging from the `pyvisa` package is also included in the log file by default.
 
 ### Removed
 
-- _**<span style="color:red">BREAKING CHANGE</span>**_: Removed previously deprecated `TekScopeSW` alias to the `TekScopePC` class
+- _**<span style="color:red">BREAKING CHANGE</span>**_: Removed previously deprecated `TekScopeSW` alias to the `TekScopePC` class.
 - _**<span style="color:red">BREAKING CHANGE</span>**_: Removed previously deprecated `write_buffers()` from the `TSPControl` class.
 - _**<span style="color:red">BREAKING CHANGE</span>**_: Removed Internal AFG methods from the `TekScopePC` driver, since they wouldn't have worked due to its lack of an IAFG.
 - _**<span style="color:red">BREAKING CHANGE</span>**_: Removed previously deprecated `DEVICE_DRIVER_MODEL_MAPPING` constant.
@@ -64,6 +68,8 @@ However, please read through all changes to be aware of what may potentially imp
 - _**<span style="color:red">BREAKING CHANGE</span>**_: Removed many hacky implementations of `total_channels` and `all_channel_names_list` properties from drivers that don't need them anymore.
 - _**<span style="color:red">BREAKING CHANGE</span>**_: Removed the `verify_values()`, `raise_failure()`, and `raise_error()` methods from all device drivers.
     - These methods have been converted to helper functions and can be imported from the `tm_devices.helpers` subpackage now.
+- _**<span style="color:red">BREAKING CHANGE</span>**_: Removed the `print_with_timestamp()` function since this functionality is now handled by the `logging` module.
+- _**<span style="color:red">BREAKING CHANGE</span>**_: Removed the `get_timestamp_string()` function since this functionality is now handled by the `logging` module.
 
 ---
 
