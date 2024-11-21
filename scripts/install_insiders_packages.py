@@ -102,6 +102,9 @@ def install_package(package_name: str, repo_url_str: str, tag: str, github_token
 def main() -> None:
     """Install insiders packages."""
     if not (github_token := os.environ.get("GITHUB_PAT")):
+        if FAIL_ON_ACCESS_ERROR:
+            msg = "\nGITHUB_PAT environment variable is not set, exiting with error"
+            raise SystemExit(msg)
         logger.info(
             "GITHUB_PAT environment variable is not set, no insiders packages will be installed."
         )
