@@ -22,6 +22,7 @@ PACKAGE_LIST = {
     "mkdocstrings-python": "https://github.com/pawamoy-insiders/mkdocstrings-python",
     "griffe": "https://github.com/pawamoy-insiders/griffe",
 }
+FAIL_ON_ACCESS_ERROR = bool(os.getenv("FAIL_ON_ACCESS_ERROR"))
 
 
 def get_github_tags(repo_url_str: str, github_token: str) -> List[str]:
@@ -127,6 +128,9 @@ def main() -> None:
                 install_package(package, repo_url, newest_tag, github_token)
             else:
                 logger.info("No matching tags found for %s with version %s", package, version)
+        elif FAIL_ON_ACCESS_ERROR:
+            msg = f"\nFailed to access {repo_url}, exiting with error"
+            raise SystemExit(msg)
 
 
 if __name__ == "__main__":
