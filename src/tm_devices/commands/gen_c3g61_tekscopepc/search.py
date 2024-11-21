@@ -2812,7 +2812,7 @@ class SearchSearchItemTriggerASetholdLogicpatternRefItem(
 
     Description:
         - This command sets and returns the conditions used for generating an A logic pattern, with
-          respect to the defined input pattern,  and identifies the time that the selected pattern
+          respect to the defined input pattern, and identifies the time that the selected pattern
           may be true and still generate the trigger. The search number is specified by x.
 
     Usage:
@@ -3097,7 +3097,7 @@ class SearchSearchItemTriggerASetholdLogicpattern(SCPICmdRead):
 
         Description:
             - This command sets and returns the conditions used for generating an A logic pattern,
-              with respect to the defined input pattern,  and identifies the time that the selected
+              with respect to the defined input pattern, and identifies the time that the selected
               pattern may be true and still generate the trigger. The search number is specified by
               x.
 
@@ -20653,8 +20653,8 @@ class SearchSearchItemTriggerABusRs232cDataSize(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the length of the data string in bytes to be used for an
-          RS232 bus search  to determine where to place a mark when the search condition is Data.
-          The search number is specified by x.
+          RS232 bus search to determine where to place a mark when the search condition is Data. The
+          search number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -20704,8 +20704,8 @@ class SearchSearchItemTriggerABusRs232cData(SCPICmdRead):
 
         Description:
             - This command sets or queries the length of the data string in bytes to be used for an
-              RS232 bus search  to determine where to place a mark when the search condition is
-              Data. The search number is specified by x.
+              RS232 bus search to determine where to place a mark when the search condition is Data.
+              The search number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -30953,7 +30953,7 @@ class SearchSearchItemTriggerABusEusbSyncbitsMinSize(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:SYNCBITS:MIN:SIZe`` command.
 
     Description:
-        - This command sets the number of  sync bits, in bits, to be used when triggering on a eUSB
+        - This command sets the number of sync bits, in bits, to be used when triggering on a eUSB
           bus signal. The trigger condition must be set to SYNC. The search number is specified by
           x.
 
@@ -31003,7 +31003,7 @@ class SearchSearchItemTriggerABusEusbSyncbitsMin(SCPICmdRead):
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:SYNCBITS:MIN:SIZe`` command.
 
         Description:
-            - This command sets the number of  sync bits, in bits, to be used when triggering on a
+            - This command sets the number of sync bits, in bits, to be used when triggering on a
               eUSB bus signal. The trigger condition must be set to SYNC. The search number is
               specified by x.
 
@@ -31033,7 +31033,7 @@ class SearchSearchItemTriggerABusEusbSyncbitsMaxSize(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:SYNCBITS:MAX:SIZe`` command.
 
     Description:
-        - This command sets the number of  sync bits, to be used when triggering on a eUSB bus
+        - This command sets the number of sync bits, to be used when triggering on a eUSB bus
           signal. The trigger condition must be set to SYNC. The search number is specified by x.
 
     Usage:
@@ -31082,7 +31082,7 @@ class SearchSearchItemTriggerABusEusbSyncbitsMax(SCPICmdRead):
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:SYNCBITS:MAX:SIZe`` command.
 
         Description:
-            - This command sets the number of  sync bits, to be used when triggering on a eUSB bus
+            - This command sets the number of sync bits, to be used when triggering on a eUSB bus
               signal. The trigger condition must be set to SYNC. The search number is specified by
               x.
 
@@ -32253,7 +32253,7 @@ class SearchSearchItemTriggerABusEusbEopbitsMinSize(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:EOPBITS:MIN:SIZe`` command.
 
     Description:
-        - This command sets the number of  EOP bits to be used when triggering on a eUSB bus signal.
+        - This command sets the number of EOP bits to be used when triggering on a eUSB bus signal.
           The trigger condition must be set to EOP. The search number is specified by x.
 
     Usage:
@@ -32302,7 +32302,7 @@ class SearchSearchItemTriggerABusEusbEopbitsMin(SCPICmdRead):
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:EOPBITS:MIN:SIZe`` command.
 
         Description:
-            - This command sets the number of  EOP bits to be used when triggering on a eUSB bus
+            - This command sets the number of EOP bits to be used when triggering on a eUSB bus
               signal. The trigger condition must be set to EOP. The search number is specified by x.
 
         Usage:
@@ -32331,7 +32331,7 @@ class SearchSearchItemTriggerABusEusbEopbitsMaxSize(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:EOPBITS:MAX:SIZe`` command.
 
     Description:
-        - This command sets the number of  EOP bits to be used when triggering on a eUSB bus signal.
+        - This command sets the number of EOP bits to be used when triggering on a eUSB bus signal.
           The trigger condition must be set to EOP. The search number is specified by x.
 
     Usage:
@@ -32380,7 +32380,7 @@ class SearchSearchItemTriggerABusEusbEopbitsMax(SCPICmdRead):
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:EOPBITS:MAX:SIZe`` command.
 
         Description:
-            - This command sets the number of  EOP bits to be used when triggering on a eUSB bus
+            - This command sets the number of EOP bits to be used when triggering on a eUSB bus
               signal. The trigger condition must be set to EOP. The search number is specified by x.
 
         Usage:
@@ -32496,7 +32496,7 @@ class SearchSearchItemTriggerABusEusbEopDatabitsSize(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:EOP:DATABITS:SIZe`` command.
 
     Description:
-        - This command sets the number of  EOP bits, in bytes, to be used when triggering on a eUSB
+        - This command sets the number of EOP bits, in bytes, to be used when triggering on a eUSB
           bus signal. The trigger condition must be set to EOP. The search number is specified by x.
 
     Usage:
@@ -32545,7 +32545,7 @@ class SearchSearchItemTriggerABusEusbEopDatabits(SCPICmdRead):
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:EOP:DATABITS:SIZe`` command.
 
         Description:
-            - This command sets the number of  EOP bits, in bytes, to be used when triggering on a
+            - This command sets the number of EOP bits, in bytes, to be used when triggering on a
               eUSB bus signal. The trigger condition must be set to EOP. The search number is
               specified by x.
 
@@ -33166,7 +33166,7 @@ class SearchSearchItemTriggerABusEusbDatabitsSize(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATABITS:SIZe`` command.
 
     Description:
-        - This command sets the number of  Sync bits, in bytes, to be used when triggering on a eUSB
+        - This command sets the number of Sync bits, in bytes, to be used when triggering on a eUSB
           bus signal. The trigger condition must be set to SYNC. The search number is specified by
           x.
 
@@ -33214,7 +33214,7 @@ class SearchSearchItemTriggerABusEusbDatabits(SCPICmdRead):
         """Return the ``SEARCH:SEARCH<x>:TRIGger:A:BUS:EUSB:DATABITS:SIZe`` command.
 
         Description:
-            - This command sets the number of  Sync bits, in bytes, to be used when triggering on a
+            - This command sets the number of Sync bits, in bytes, to be used when triggering on a
               eUSB bus signal. The trigger condition must be set to SYNC. The search number is
               specified by x.
 
@@ -45226,7 +45226,7 @@ class SearchSearchItemTriggerABusCphyWordcountValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the word count data string used for CPHY triggering if the trigger
-          condition is on any rgb/ycbcr/yuv  packet. The search number is specified by x.
+          condition is on any rgb/ycbcr/yuv packet. The search number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -45277,8 +45277,7 @@ class SearchSearchItemTriggerABusCphyWordcount(SCPICmdRead):
 
         Description:
             - This command specifies the word count data string used for CPHY triggering if the
-              trigger condition is on any rgb/ycbcr/yuv  packet. The search number is specified by
-              x.
+              trigger condition is on any rgb/ycbcr/yuv packet. The search number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the

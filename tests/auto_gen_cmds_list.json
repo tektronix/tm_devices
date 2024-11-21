@@ -2160,6 +2160,7 @@
         "HCOPy:SDUMp[:IMMediate]",
         "HDR",
         "HEADer",
+        "HEADer|:HDR",
         "HISTogram:ADDNew",
         "HISTogram:DELETEALL",
         "HISTogram:DELete",

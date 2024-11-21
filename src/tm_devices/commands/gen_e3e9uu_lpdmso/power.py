@@ -4743,7 +4743,7 @@ class PowerPowerItemSoaRecallmaskFilename(SCPICmdWriteNoArguments, SCPICmdRead):
     """The ``POWer:POWer<x>:SOA:RECAllmask:FILEName`` command.
 
     Description:
-        - This command  sets or queries the file name for saving SOA mask file name in the specified
+        - This command sets or queries the file name for saving SOA mask file name in the specified
           power measurement number. The power measurement number is specified by x.
 
     Usage:
@@ -4795,7 +4795,7 @@ class PowerPowerItemSoaRecallmask(SCPICmdWriteNoArguments, SCPICmdRead):
         """Return the ``POWer:POWer<x>:SOA:RECAllmask:FILEName`` command.
 
         Description:
-            - This command  sets or queries the file name for saving SOA mask file name in the
+            - This command sets or queries the file name for saving SOA mask file name in the
               specified power measurement number. The power measurement number is specified by x.
 
         Usage:
@@ -7193,8 +7193,8 @@ class PowerPowerItemReflevelsAbsoluteType(SCPICmdWrite, SCPICmdRead):
     """The ``POWer:POWer<x>:REFLevels:ABSolute:TYPE`` command.
 
     Description:
-        - This  command sets or queries the type of measurement levels when reference level is set
-          to absolute for the specified power measurement number.
+        - This command sets or queries the type of measurement levels when reference level is set to
+          absolute for the specified power measurement number.
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:REFLevels:ABSolute:TYPE?``
@@ -7682,7 +7682,7 @@ class PowerPowerItemReflevelsAbsolute(SCPICmdRead):
         """Return the ``POWer:POWer<x>:REFLevels:ABSolute:TYPE`` command.
 
         Description:
-            - This  command sets or queries the type of measurement levels when reference level is
+            - This command sets or queries the type of measurement levels when reference level is
               set to absolute for the specified power measurement number.
 
         Usage:
@@ -12822,7 +12822,7 @@ class PowerPowerItemImpedanceAnalysismethod(SCPICmdWrite, SCPICmdRead):
     """The ``POWer:POWer<x>:IMPEDANCE:ANALYSISMethod`` command.
 
     Description:
-        - This command sets or queries the Analysis Method for  Impedance measurements.
+        - This command sets or queries the Analysis Method for Impedance measurements.
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:IMPEDANCE:ANALYSISMethod?``
@@ -13040,7 +13040,7 @@ class PowerPowerItemImpedance(SCPICmdRead):
         """Return the ``POWer:POWer<x>:IMPEDANCE:ANALYSISMethod`` command.
 
         Description:
-            - This command sets or queries the Analysis Method for  Impedance measurements.
+            - This command sets or queries the Analysis Method for Impedance measurements.
 
         Usage:
             - Using the ``.query()`` method will send the

@@ -12,7 +12,7 @@ Commands and Queries:
     ```
     - ROSc:OUT:FREQuency {MHZ10|MHZ100}
     - ROSc:OUT:FREQuency?
-    - ROSc:SOUrce {EXTernal|INTERnal|ULTRAsync|TEKLink}
+    - ROSc:SOUrce {ULTRAsync|TEKLink|INTERnal|EXTernal}
     - ROSc:SOUrce?
     - ROSc:STATE?
     - ROSc:TRACking {STABle|FAST}
@@ -93,7 +93,7 @@ class RoscSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ROSc:SOUrce {EXTernal|INTERnal|ULTRAsync|TEKLink}
+        - ROSc:SOUrce {ULTRAsync|TEKLink|INTERnal|EXTernal}
         - ROSc:SOUrce?
         ```
 
@@ -228,7 +228,7 @@ class Rosc(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ROSc:SOUrce {EXTernal|INTERnal|ULTRAsync|TEKLink}
+            - ROSc:SOUrce {ULTRAsync|TEKLink|INTERnal|EXTernal}
             - ROSc:SOUrce?
             ```
 

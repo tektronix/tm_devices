@@ -13268,7 +13268,7 @@ class MeasurementMeasItemHlevelOutputUglobal(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:HLEVel:OUTPut:UGLobal`` command.
 
     Description:
-        - This command turns on or off  output global settings for measurement. Measurements are
+        - This command turns on or off output global settings for measurement. Measurements are
           specified by x.
 
     Usage:
@@ -13315,7 +13315,7 @@ class MeasurementMeasItemHlevelOutput(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:HLEVel:OUTPut:UGLobal`` command.
 
         Description:
-            - This command turns on or off  output global settings for measurement. Measurements are
+            - This command turns on or off output global settings for measurement. Measurements are
               specified by x.
 
         Usage:

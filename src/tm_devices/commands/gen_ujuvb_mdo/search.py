@@ -57,7 +57,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:DIRection?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:OFFSet <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:OFFSet?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|EQual}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:SIZe?
@@ -201,13 +201,13 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:PARallel:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:CONDition {RXSTArt|RXDATA|RXENDPacket|TXSTArt|TXDATA|TXENDPacket}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:CONDition?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue <QString>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:SPI:CONDition {SS|STARTofframe|MISO|MOSI|MISOMOSI}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:SPI:CONDition?
@@ -280,7 +280,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:CH<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:CLOCk:EDGE {FALL|RISe}
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:CLOCk:EDGE?
-    - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:CLOCk:SOUrce {CH<x>|MATH|REF|NONe|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe}
+    - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:CLOCk:SOUrce {CH<x>|MATH|REF<x>|NONe|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe}
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:CLOCk:SOUrce?
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:D<x> {HIGH|LOW|X}
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:D<x>?
@@ -338,7 +338,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:RUNT:WIDth?
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:EDGE {FALL|RISe}
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:EDGE?
-    - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>|MATH|REF1|REF3|REF3|REF4|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe}
+    - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>|MATH|REF<x>|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe}
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce?
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:THReshold {<NR3>|TTL|ECL}
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:THReshold?
@@ -388,7 +388,6 @@ from ..helpers import (
     DefaultDictPassKeyToFactory,
     SCPICmdRead,
     SCPICmdWrite,
-    SCPICmdWriteNoArguments,
     ValidatedChannel,
     ValidatedDigitalBit,
     ValidatedDynamicNumberCmd,
@@ -712,9 +711,9 @@ class SearchSearchItemTriggerATransitionSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies one input channel as the source. x has a minimum of 1 and a maximum of
-          4.
+        - ``CH<x>`` specifies one input channel as the source.
         - ``MATH`` specifies the math waveform as the source.
+        - ``REF<x>`` specifies the reference waveform as the source.
     """  # noqa: E501
 
 
@@ -892,9 +891,9 @@ class SearchSearchItemTriggerATransition(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies one input channel as the source. x has a minimum of 1 and a
-              maximum of 4.
+            - ``CH<x>`` specifies one input channel as the source.
             - ``MATH`` specifies the math waveform as the source.
+            - ``REF<x>`` specifies the reference waveform as the source.
         """  # noqa: E501
         return self._source
 
@@ -986,13 +985,12 @@ class SearchSearchItemTriggerATimeoutSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies to use one of the analog channels as the source waveform. x has a
-          minimum of 1 and a maximum of 4.
+        - ``CH<x>`` specifies to use one of the analog channels as the source waveform.
         - ``MATH`` specifies to use the math waveform as the as the source waveform.
         - ``REF<x>`` specifies to use one of the reference waveforms 1-4 as the as the source
-          waveform. x has a minimum of 1 and a maximum of 4.
+          waveform.
         - ``D<x>`` specifies to use one of the digital channels as the source waveform. (Requires
-          option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+          option 3-MSO.).
     """  # noqa: E501
 
 
@@ -1101,13 +1099,12 @@ class SearchSearchItemTriggerATimeout(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies to use one of the analog channels as the source waveform. x has a
-              minimum of 1 and a maximum of 4.
+            - ``CH<x>`` specifies to use one of the analog channels as the source waveform.
             - ``MATH`` specifies to use the math waveform as the as the source waveform.
             - ``REF<x>`` specifies to use one of the reference waveforms 1-4 as the as the source
-              waveform. x has a minimum of 1 and a maximum of 4.
+              waveform.
             - ``D<x>`` specifies to use one of the digital channels as the source waveform.
-              (Requires option 3-MSO.) x has a minimum of 0 and a maximum of 15.
+              (Requires option 3-MSO.).
         """  # noqa: E501
         return self._source
 
@@ -1453,13 +1450,11 @@ class SearchSearchItemTriggerASetholdDataSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the data source. x has a minimum of 1 and a
-          maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the data source.
         - ``MATH`` specifies the math waveform as the data source.
-        - ``REF<x>`` specifies a reference waveform as the data source. x has a minimum of 1 and a
-          maximum of 4.
+        - ``REF<x>`` specifies a reference waveform as the data source.
         - ``D<x>`` specifies a digital input as the data source (models with option 3-MSO
-          installed.) x has a minimum of 0 and a maximum of 15.
+          installed.).
     """  # noqa: E501
 
 
@@ -1474,8 +1469,7 @@ class SearchSearchItemTriggerASetholdData(SCPICmdRead):
           returned value does not match ``value``.
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the data source. x has a minimum of 1 and a
-          maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the data source.
 
     Properties:
         - ``.source``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:DATa:SOUrce`` command.
@@ -1516,13 +1510,11 @@ class SearchSearchItemTriggerASetholdData(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the data source. x has a minimum of 1 and a
-              maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the data source.
             - ``MATH`` specifies the math waveform as the data source.
-            - ``REF<x>`` specifies a reference waveform as the data source. x has a minimum of 1 and
-              a maximum of 4.
+            - ``REF<x>`` specifies a reference waveform as the data source.
             - ``D<x>`` specifies a digital input as the data source (models with option 3-MSO
-              installed.) x has a minimum of 0 and a maximum of 15.
+              installed.).
         """  # noqa: E501
         return self._source
 
@@ -1603,18 +1595,15 @@ class SearchSearchItemTriggerASetholdClockSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>|MATH|REF1|REF3|REF3|REF4|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe}
+        - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>|MATH|REF<x>|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe}
         - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce?
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the clock source waveform. x has a minimum of 1
-          and a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the clock source waveform.
         - ``MATH`` specifies the math waveform as the clock source waveform.
-        - ``REF<x>`` specifies a reference waveform as the clock source waveform. x has a minimum of
-          1 and a maximum of 4.
-        - ``D<x>`` specifies a digital channel as the clock source waveform. x has a minimum of 0
-          and a maximum of 15.
+        - ``REF<x>`` specifies a reference waveform as the clock source waveform.
+        - ``D<x>`` specifies a digital channel as the clock source waveform.
     """  # noqa: E501
 
 
@@ -1720,18 +1709,15 @@ class SearchSearchItemTriggerASetholdClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>|MATH|REF1|REF3|REF3|REF4|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe}
+            - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>|MATH|REF<x>|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe}
             - SEARCH:SEARCH<x>:TRIGger:A:SETHold:CLOCk:SOUrce?
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the clock source waveform. x has a minimum of
-              1 and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the clock source waveform.
             - ``MATH`` specifies the math waveform as the clock source waveform.
-            - ``REF<x>`` specifies a reference waveform as the clock source waveform. x has a
-              minimum of 1 and a maximum of 4.
-            - ``D<x>`` specifies a digital channel as the clock source waveform. x has a minimum of
-              0 and a maximum of 15.
+            - ``REF<x>`` specifies a reference waveform as the clock source waveform.
+            - ``D<x>`` specifies a digital channel as the clock source waveform.
         """  # noqa: E501
         return self._source
 
@@ -1826,8 +1812,7 @@ class SearchSearchItemTriggerASethold(SCPICmdRead):
               returned value does not match ``value``.
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the data source. x has a minimum of 1 and a
-              maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the data source.
 
         Sub-properties:
             - ``.source``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:DATa:SOUrce`` command.
@@ -1998,11 +1983,9 @@ class SearchSearchItemTriggerARuntSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the runt search source. x has a minimum of 1 and
-          a maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the runt search source.
         - ``MATH`` specifies the math waveform as the runt search source.
-        - ``REF<x>`` specifies a reference waveform as the runt search source. x has a minimum of 1
-          and a maximum of 4.
+        - ``REF<x>`` specifies a reference waveform as the runt search source.
     """  # noqa: E501
 
 
@@ -2119,11 +2102,9 @@ class SearchSearchItemTriggerARunt(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the runt search source. x has a minimum of 1
-              and a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the runt search source.
             - ``MATH`` specifies the math waveform as the runt search source.
-            - ``REF<x>`` specifies a reference waveform as the runt search source. x has a minimum
-              of 1 and a maximum of 4.
+            - ``REF<x>`` specifies a reference waveform as the runt search source.
         """  # noqa: E501
         return self._source
 
@@ -2252,9 +2233,9 @@ class SearchSearchItemTriggerARisefallSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies one input channel as the source. x has a minimum of 1 and a maximum of
-          4.
+        - ``CH<x>`` specifies one input channel as the source.
         - ``MATH`` specifies the math waveform as the source.
+        - ``REF<x>`` specifies the reference waveform as the source.
     """  # noqa: E501
 
 
@@ -2429,9 +2410,9 @@ class SearchSearchItemTriggerARisefall(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies one input channel as the source. x has a minimum of 1 and a
-              maximum of 4.
+            - ``CH<x>`` specifies one input channel as the source.
             - ``MATH`` specifies the math waveform as the source.
+            - ``REF<x>`` specifies the reference waveform as the source.
         """  # noqa: E501
         return self._source
 
@@ -2563,13 +2544,10 @@ class SearchSearchItemTriggerAPulsewidthSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the source waveform. x has a minimum of 1 and a
-          maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the source waveform.
         - ``MATH`` specifies the math waveform as the source waveform.
-        - ``REF<x>`` specifies a reference waveform as the source waveform. x has a minimum of 1 and
-          a maximum of 4.
-        - ``D<x>`` specifies a digital channel as the source waveform. x has a minimum of 0 and a
-          maximum of 15.
+        - ``REF<x>`` specifies a reference waveform as the source waveform.
+        - ``D<x>`` specifies a digital channel as the source waveform.
     """
 
 
@@ -2804,13 +2782,10 @@ class SearchSearchItemTriggerAPulsewidth(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the source waveform. x has a minimum of 1 and
-              a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the source waveform.
             - ``MATH`` specifies the math waveform as the source waveform.
-            - ``REF<x>`` specifies a reference waveform as the source waveform. x has a minimum of 1
-              and a maximum of 4.
-            - ``D<x>`` specifies a digital channel as the source waveform. x has a minimum of 0 and
-              a maximum of 15.
+            - ``REF<x>`` specifies a reference waveform as the source waveform.
+            - ``D<x>`` specifies a digital channel as the source waveform.
         """
         return self._source
 
@@ -3757,18 +3732,16 @@ class SearchSearchItemTriggerALogicInputClockSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:CLOCk:SOUrce {CH<x>|MATH|REF|NONe|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe}
+        - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:CLOCk:SOUrce {CH<x>|MATH|REF<x>|NONe|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe}
         - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:CLOCk:SOUrce?
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the clock source. x has a minimum of 1 and a
-          maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the clock source.
         - ``MATH`` specifies the math waveform as the clock source.
-        - ``REF`` specifies the reference waveform as the clock source.
+        - ``REF<x>`` specifies the reference waveform as the clock source.
         - ``NONe`` specifies no clock source.
-        - ``D<x>`` specifies a digital channel as the clock source. x has a minimum of 0 and a
-          maximum of 15.
+        - ``D<x>`` specifies a digital channel as the clock source.
     """  # noqa: E501
 
 
@@ -3873,18 +3846,16 @@ class SearchSearchItemTriggerALogicInputClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:CLOCk:SOUrce {CH<x>|MATH|REF|NONe|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe}
+            - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:CLOCk:SOUrce {CH<x>|MATH|REF<x>|NONe|D<x>|RF_AMPlitude|RF_FREQuency|RF_PHASe}
             - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:INPut:CLOCk:SOUrce?
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the clock source. x has a minimum of 1 and a
-              maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the clock source.
             - ``MATH`` specifies the math waveform as the clock source.
-            - ``REF`` specifies the reference waveform as the clock source.
+            - ``REF<x>`` specifies the reference waveform as the clock source.
             - ``NONe`` specifies no clock source.
-            - ``D<x>`` specifies a digital channel as the clock source. x has a minimum of 0 and a
-              maximum of 15.
+            - ``D<x>`` specifies a digital channel as the clock source.
         """  # noqa: E501
         return self._source
 
@@ -4474,13 +4445,10 @@ class SearchSearchItemTriggerAEdgeSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the source waveform. x has a minimum of 1 and a
-          maximum of 4.
+        - ``CH<x>`` specifies an analog channel as the source waveform.
         - ``MATH`` specifies the math waveform as the source waveform.
-        - ``REF<x>`` specifies a reference waveform as the source waveform. x has a minimum of 1 and
-          a maximum of 4.
-        - ``D<x>`` specifies a digital channel as the source waveform. x has a minimum of 0 and a
-          maximum of 15.
+        - ``REF<x>`` specifies a reference waveform as the source waveform.
+        - ``D<x>`` specifies a digital channel as the source waveform.
     """  # noqa: E501
 
 
@@ -4585,13 +4553,10 @@ class SearchSearchItemTriggerAEdge(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the source waveform. x has a minimum of 1 and
-              a maximum of 4.
+            - ``CH<x>`` specifies an analog channel as the source waveform.
             - ``MATH`` specifies the math waveform as the source waveform.
-            - ``REF<x>`` specifies a reference waveform as the source waveform. x has a minimum of 1
-              and a maximum of 4.
-            - ``D<x>`` specifies a digital channel as the source waveform. x has a minimum of 0 and
-              a maximum of 15.
+            - ``REF<x>`` specifies a reference waveform as the source waveform.
+            - ``D<x>`` specifies a digital channel as the source waveform.
         """  # noqa: E501
         return self._source
 
@@ -6870,7 +6835,7 @@ class SearchSearchItemTriggerABusBItemSpi(SCPICmdRead):
         return self._data
 
 
-class SearchSearchItemTriggerABusBItemRs232cTxDataValue(SCPICmdWriteNoArguments, SCPICmdRead):
+class SearchSearchItemTriggerABusBItemRs232cTxDataValue(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue`` command.
 
     Description:
@@ -6883,24 +6848,29 @@ class SearchSearchItemTriggerABusBItemRs232cTxDataValue(SCPICmdWriteNoArguments,
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue?`` query and raise an
           AssertionError if the returned value does not match ``value``.
-        - Using the ``.write()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue`` command.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue value`` command.
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue?
         ```
+
+    Info:
+        - ``<QString>`` is the binary data string.
     """
 
+    _WRAP_ARG_WITH_QUOTES = True
 
-class SearchSearchItemTriggerABusBItemRs232cTxDataSize(SCPICmdWriteNoArguments, SCPICmdRead):
+
+class SearchSearchItemTriggerABusBItemRs232cTxDataSize(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe`` command.
 
     Description:
         - This command specifies the length of the data string to be used for an RS-232 search if
           the search condition is set to TXDATA. SEARCH<x> is the search number, which is always 1,
-          and B<x>
+          and B<x>.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -6908,12 +6878,12 @@ class SearchSearchItemTriggerABusBItemRs232cTxDataSize(SCPICmdWriteNoArguments, 
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe?`` query and raise an
           AssertionError if the returned value does not match ``value``.
-        - Using the ``.write()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe`` command.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe value`` command.
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe <NR1>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe?
         ```
 
@@ -6953,7 +6923,7 @@ class SearchSearchItemTriggerABusBItemRs232cTxData(SCPICmdRead):
         Description:
             - This command specifies the length of the data string to be used for an RS-232 search
               if the search condition is set to TXDATA. SEARCH<x> is the search number, which is
-              always 1, and B<x>
+              always 1, and B<x>.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -6961,12 +6931,12 @@ class SearchSearchItemTriggerABusBItemRs232cTxData(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe?`` query and raise an
               AssertionError if the returned value does not match ``value``.
-            - Using the ``.write()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe`` command.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe value`` command.
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe <NR1>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:SIZe?
             ```
 
@@ -6990,14 +6960,17 @@ class SearchSearchItemTriggerABusBItemRs232cTxData(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue?`` query and raise an
               AssertionError if the returned value does not match ``value``.
-            - Using the ``.write()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue`` command.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue value`` command.
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:TX:DATa:VALue?
             ```
+
+        Info:
+            - ``<QString>`` is the binary data string.
         """
         return self._value
 
@@ -7040,12 +7013,12 @@ class SearchSearchItemTriggerABusBItemRs232cTx(SCPICmdRead):
         return self._data
 
 
-class SearchSearchItemTriggerABusBItemRs232cRxDataValue(SCPICmdWriteNoArguments, SCPICmdRead):
+class SearchSearchItemTriggerABusBItemRs232cRxDataValue(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue`` command.
 
     Description:
         - This command specifies the data value to be used in an RS-232 search, if the condition is
-          set to RXDATA. SEARCH<x> is the search number, which is always 1, and B<x>
+          set to RXDATA. SEARCH<x> is the search number, which is always 1, and B<x>.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -7053,18 +7026,23 @@ class SearchSearchItemTriggerABusBItemRs232cRxDataValue(SCPICmdWriteNoArguments,
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue?`` query and raise an
           AssertionError if the returned value does not match ``value``.
-        - Using the ``.write()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue`` command.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue value`` command.
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue?
         ```
+
+    Info:
+        - ``<QString>`` is the binary data string.
     """
 
+    _WRAP_ARG_WITH_QUOTES = True
 
-class SearchSearchItemTriggerABusBItemRs232cRxDataSize(SCPICmdWriteNoArguments, SCPICmdRead):
+
+class SearchSearchItemTriggerABusBItemRs232cRxDataSize(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe`` command.
 
     Description:
@@ -7078,12 +7056,12 @@ class SearchSearchItemTriggerABusBItemRs232cRxDataSize(SCPICmdWriteNoArguments, 
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe?`` query and raise an
           AssertionError if the returned value does not match ``value``.
-        - Using the ``.write()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe`` command.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe value`` command.
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe <NR1>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe?
         ```
 
@@ -7131,12 +7109,12 @@ class SearchSearchItemTriggerABusBItemRs232cRxData(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe?`` query and raise an
               AssertionError if the returned value does not match ``value``.
-            - Using the ``.write()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe`` command.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe value`` command.
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe <NR1>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:SIZe?
             ```
 
@@ -7151,7 +7129,7 @@ class SearchSearchItemTriggerABusBItemRs232cRxData(SCPICmdRead):
 
         Description:
             - This command specifies the data value to be used in an RS-232 search, if the condition
-              is set to RXDATA. SEARCH<x> is the search number, which is always 1, and B<x>
+              is set to RXDATA. SEARCH<x> is the search number, which is always 1, and B<x>.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -7159,14 +7137,17 @@ class SearchSearchItemTriggerABusBItemRs232cRxData(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue?`` query and raise an
               AssertionError if the returned value does not match ``value``.
-            - Using the ``.write()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue`` command.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue value`` command.
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:RS232C:RX:DATa:VALue?
             ```
+
+        Info:
+            - ``<QString>`` is the binary data string.
         """
         return self._value
 
@@ -12838,7 +12819,7 @@ class SearchSearchItemTriggerABusBItemCanDataQualifier(SCPICmdWrite, SCPICmdRead
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|EQual}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier?
         ```
 
@@ -12852,6 +12833,8 @@ class SearchSearchItemTriggerABusBItemCanDataQualifier(SCPICmdWrite, SCPICmdRead
         - ``UNEQual`` searches for bus data not equal to the value specified by
           ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:DATA:VALUE``.
         - ``LESSEQual`` searches for bus data less equal to the value specified by
+          ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:DATA:VALUE``.
+        - ``EQual`` searches for bus data equal to the value specified by
           ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:DATA:VALUE``.
     """  # noqa: E501
 
@@ -13033,7 +13016,7 @@ class SearchSearchItemTriggerABusBItemCanData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|EQual}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier?
             ```
 
@@ -13047,6 +13030,8 @@ class SearchSearchItemTriggerABusBItemCanData(SCPICmdRead):
             - ``UNEQual`` searches for bus data not equal to the value specified by
               ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:DATA:VALUE``.
             - ``LESSEQual`` searches for bus data less equal to the value specified by
+              ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:DATA:VALUE``.
+            - ``EQual`` searches for bus data equal to the value specified by
               ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:DATA:VALUE``.
         """  # noqa: E501
         return self._qualifier

@@ -15827,7 +15827,7 @@ class BusBItemEspiDatatwoPolarity(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:ESPI:DATATWO:POLarity`` command.
 
     Description:
-        - This command sets or queries the ESPI  response (single mode)/ IO[1] (dual mode) polarity
+        - This command sets or queries the ESPI response (single mode)/ IO[1] (dual mode) polarity
           for the specified bus. The bus is specified by x.
 
     Usage:
@@ -15878,7 +15878,7 @@ class BusBItemEspiDatatwo(SCPICmdRead):
         """Return the ``BUS:B<x>:ESPI:DATATWO:POLarity`` command.
 
         Description:
-            - This command sets or queries the ESPI  response (single mode)/ IO[1] (dual mode)
+            - This command sets or queries the ESPI response (single mode)/ IO[1] (dual mode)
               polarity for the specified bus. The bus is specified by x.
 
         Usage:
