@@ -16,13 +16,11 @@ Context:
         {%- for item in item_list %}
             {%- if item.docstring %}
                 <tr>
-                    {%- filter stash_crossref(length=item.canonical_path|length) -%}
                     <td>
-                        <span data-autorefs-optional-hover="{{ item.canonical_path }}">
+                        <autoref identifier="{{ item.canonical_path }}" optional hover>
                             <code class="subpackage-summary-link-text">{{ item.name }}</code>
-                        </span>
+                        </autoref>
                     </td>
-                    {%- endfilter -%}
                     <td>{{ item.docstring.parsed[0].value.split("\n")[0]|convert_markdown(heading_level, html_id) }}</td>
                 </tr>
             {%- endif %}

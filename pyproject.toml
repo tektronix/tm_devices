@@ -138,8 +138,10 @@ mkdocs-spellcheck = "^1.1.0"
 mkdocstrings = "^0.26.0"
 mkdocstrings-python = "^1.10.2"
 nodeenv = "^1.9.1"
+packaging = "^24.0"
 pygments = "^2.17.2"
 pymdown-extensions = "^10.8.1"
+requests = "^2.31.0"
 symspellpy = "^6.7.7"
 tomli = "^2.0.1"
 
@@ -464,21 +466,33 @@ commands_pre =
 
 [testenv:docs]
 basepython = {env:DOC_PYTHON_VERSION}
+passenv =
+    GITHUB_PAT
 deps =
     -rdocs/requirements.txt
 commands_pre =
     nodeenv --python-virtualenv --clean-src
+    python scripts/install_insiders_packages.py
 commands =
     python -c "import shutil; shutil.rmtree('.results_{envname}', ignore_errors=True)"
     mkdocs --verbose build --site-dir .results_{envname}
 
 [testenv:doctests]
 basepython = {env:DOC_PYTHON_VERSION}
+passenv =
+    GITHUB_PAT
 deps =
     -rdocs/requirements.txt
     -rtests/requirements.txt
 commands_pre =
     nodeenv --python-virtualenv --clean-src
+    python scripts/install_insiders_packages.py
 commands =
     pytest -v -k "test_docs" --showlocals --junitxml={tox_root}/.results_{envname}/results.xml --self-contained-html --html={tox_root}/.results_{envname}/results.html
+
+[testenv:export-reqs]
+commands =
+    poetry export --without-hashes --without-urls --all-extras --only=docs --output=docs/requirements.txt
+    poetry export --without-hashes --without-urls --all-extras --only=tests --output=tests/requirements.txt
+    - pre-commit run -a requirements-txt-fixer
 """

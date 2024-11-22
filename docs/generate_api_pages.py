@@ -77,6 +77,7 @@ for path in file_list:
                 "    options:\n"
                 "        inherited_members: false\n"
                 "        merge_init_into_class: false\n"
+                "        show_inheritance_diagram: false\n"
                 "        filters: ['!^_']\n"
             )
         if module_path.parts[-2:] == ("drivers", "__init__"):
