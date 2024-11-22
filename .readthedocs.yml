@@ -6,8 +6,7 @@ build:
     python: '3.11'  # This needs to stay in sync with the tox config in pyproject.toml and any CI scripts
     nodejs: '20'  # This needs to stay in sync with any CI scripts
   jobs:
-    post_install:
-      - FAIL_ON_ACCESS_ERROR=true python scripts/install_insiders_packages.py
+    post_install: [python scripts/install_insiders_packages.py]
 python:
   install:
     - requirements: docs/requirements.txt
