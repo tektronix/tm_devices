@@ -136,3 +136,8 @@ li:has(> a[href^="gen_"]),
 li:has(> a[href*="/gen_"]) {
     display: none;
 }
+
+/* Remove the mermaidTooltip */
+.mermaidTooltip {
+    display: none !important;
+}
