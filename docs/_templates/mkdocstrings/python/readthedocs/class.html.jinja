@@ -34,8 +34,9 @@
               click {{ base.path }} href "" "{{ base.path }}"
               {% endfor %}
             </div>
-            <script>
-              let diagram = document.getElementById('mermaid-diagram-{{ class.path }}');
+            <!--suppress ES6ConvertVarToLetConst -->
+              <script>
+              var diagram = document.getElementById('mermaid-diagram-{{ class.path }}');
               diagram.innerHTML = diagram.innerHTML.replace(/click ([\w.]+) href "" "\1"/g, function(match, nodeID, offset) {
                 try {
                   const link = document.getElementById("mermaid-link-" + nodeID).href;
