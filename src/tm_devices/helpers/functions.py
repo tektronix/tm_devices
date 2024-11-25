@@ -527,10 +527,13 @@ def get_visa_backend(visa_lib_path: str) -> str:
             raise KeyError  # noqa: TRY301
     except KeyError:
         found_visa = False
-        for visa_type in visa_backends:
-            for visa_implementation in visa_backends[visa_type]:
-                if visa_lib_path in visa_implementation:
-                    vendor = visa_backends[visa_type][visa_implementation]["Vendor"]
+        for visa_type, visa_implementation_dict in visa_backends.items():
+            for (
+                visa_implementation_name,
+                visa_implementation_details,
+            ) in visa_implementation_dict.items():
+                if visa_lib_path in visa_implementation_name:
+                    vendor = visa_implementation_details["Vendor"]
                     visa_name = "NI-VISA" if "National Instruments" in vendor else f"{vendor} VISA"
                     found_visa = True
                 elif visa_lib_path.endswith("yaml") and visa_type == "sim":

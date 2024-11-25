@@ -4,4 +4,4 @@ from .pi_control import PIControl
 from .rest_api_control import RESTAPIControl
 from .tsp_control import TSPControl
 
-__all__ = ["PIControl", "TSPControl", "RESTAPIControl"]
+__all__ = ["PIControl", "RESTAPIControl", "TSPControl"]

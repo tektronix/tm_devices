@@ -305,11 +305,8 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
                     <= float(wanted_val) + tolerance
                 )
                 str_comparison = isinstance(wanted_val, str) and queried_value == wanted_val
-                if (
-                    not invert_range
-                    and (float_comparison or str_comparison)
-                    or invert_range
-                    and not (float_comparison or str_comparison)
+                if (not invert_range and (float_comparison or str_comparison)) or (
+                    invert_range and not (float_comparison or str_comparison)
                 ):
                     return
             time.sleep(sleep_time)
