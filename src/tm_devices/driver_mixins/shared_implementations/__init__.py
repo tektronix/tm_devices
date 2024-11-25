@@ -8,6 +8,6 @@ __all__ = [
     "CommonPISystemErrorCheckMixin",
     "CommonTSPErrorCheckMixin",
     "IEEE4882Commands",
-    "TSPIEEE4882Commands",
     "LegacyTSPIEEE4882Commands",
+    "TSPIEEE4882Commands",
 ]

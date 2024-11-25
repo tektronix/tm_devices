@@ -28,12 +28,12 @@ __version__ = version(PACKAGE_NAME)
 
 
 __all__ = [
-    "configure_logging",
+    "PYVISA_PY_BACKEND",
+    "SYSTEM_DEFAULT_VISA_BACKEND",
     "DeviceManager",
     "LoggingLevels",
-    "print_available_visa_devices",
-    "PYVISA_PY_BACKEND",
-    "register_additional_usbtmc_mapping",
     "SupportedModels",
-    "SYSTEM_DEFAULT_VISA_BACKEND",
+    "configure_logging",
+    "print_available_visa_devices",
+    "register_additional_usbtmc_mapping",
 ]
