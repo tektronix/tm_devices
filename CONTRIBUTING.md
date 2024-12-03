@@ -3,11 +3,6 @@
 Contributions are welcome, and they are greatly appreciated! Every bit helps,
 and credit will always be given.
 
-## Commit Guidelines
-
-- Commit messages should follow the
-    [Angular style](https://python-semantic-release.readthedocs.io/en/latest/commit-parsing.html#semantic-release-commit-parser-angularcommitparser).
-
 ## Types of Contributions
 
 There are several types of contributions that can be made:
