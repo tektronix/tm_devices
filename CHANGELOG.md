@@ -57,6 +57,7 @@ However, please read through all changes to be aware of what may potentially imp
     - A configuration function provides the ability to set different logging levels for stdout and file logging.
     - The config file and environment variable can also be used to control the logging functionality.
     - The debug logging from the `pyvisa` package is also included in the log file by default.
+- Updated `get_buffers()` in `TSPControl` to not error out if query returns with empty string.
 
 ### Removed
 
@@ -97,6 +98,7 @@ However, please read through all changes to be aware of what may potentially imp
 
 - `collectgarbage()` is now called during cleanup of `TSPControl` children.
 - Added USBTMC Support for the AFG31K and MDO3 drivers.
+-
 
 ---
 

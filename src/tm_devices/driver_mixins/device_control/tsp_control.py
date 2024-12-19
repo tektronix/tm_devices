@@ -116,7 +116,9 @@ class TSPControl(PIControl, ABC):
                 if buffer_name.endswith(attr_name):
                     buffer_size_name = buffer_name.rstrip(attr_name)
                     break
-            buffer_str = self.query(f"printbuffer(1, {buffer_size_name}.n, {buffer_name})")
+            buffer_str = self.query(
+                f"printbuffer(1, {buffer_size_name}.n, {buffer_name})", allow_empty=True
+            )
             buffer_data[buffer_name] = [float(x) for x in buffer_str.split(", ") if buffer_str]
         return buffer_data
 
