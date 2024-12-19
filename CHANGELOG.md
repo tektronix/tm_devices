@@ -98,7 +98,6 @@ However, please read through all changes to be aware of what may potentially imp
 
 - `collectgarbage()` is now called during cleanup of `TSPControl` children.
 - Added USBTMC Support for the AFG31K and MDO3 drivers.
--
 
 ---
 
