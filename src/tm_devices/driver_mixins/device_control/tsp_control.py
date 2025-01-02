@@ -116,10 +116,16 @@ class TSPControl(PIControl, ABC):
                 if buffer_name.endswith(attr_name):
                     buffer_size_name = buffer_name.rstrip(attr_name)
                     break
+            empty_str = f"{buffer_size_name} was found to be empty"
             buffer_str = self.query(
-                f"printbuffer(1, {buffer_size_name}.n, {buffer_name})", allow_empty=True
+                f"if {buffer_size_name}.n == 0 then "
+                f"print({empty_str!r}) else printbuffer(1, {buffer_size_name}.n, {buffer_name}) end"
             )
-            buffer_data[buffer_name] = [float(x) for x in buffer_str.split(", ") if buffer_str]
+            if buffer_str == empty_str:
+                _logger.warning(empty_str)
+                buffer_data[buffer_name] = []
+            else:
+                buffer_data[buffer_name] = [float(data) for data in buffer_str.split(", ") if data]
         return buffer_data
 
     def load_script(
