@@ -35,10 +35,15 @@ devices:
         r: 1
       - q: if loadfuncs ~= nil then script.delete('loadfuncs') end
       - q: if tsp_function ~= nil then script.delete('tsp_function') end
-      - q: printbuffer(1, smua.nvbuffer1.n, smua.nvbuffer1)
+      - q: if smua.nvbuffer1.n == 0 then print('smua.nvbuffer1 was found to be empty')
+          else printbuffer(1, smua.nvbuffer1.n, smua.nvbuffer1) end
         r: 1, 2, 3, 4, 5
-      - q: printbuffer(1, smua.nvbuffer1.n, smua.nvbuffer1.timestamps)
-        r: 2, 4, 6, 8, 10
+      - q: if smua.nvbuffer1.n == 0 then print('smua.nvbuffer1 was found to be empty')
+          else printbuffer(1, smua.nvbuffer1.n, smua.nvbuffer1.timestamps) end
+        r: 0.0, 0.1, 0.2, 0.3, 0.4
+      - q: if smub.nvbuffer1.n == 0 then print('smub.nvbuffer1 was found to be empty')
+          else printbuffer(1, smub.nvbuffer1.n, smub.nvbuffer1) end
+        r: smub.nvbuffer1 was found to be empty
     error:
       status_register:
         - q: print(status.standard.event)

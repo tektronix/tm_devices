@@ -18,6 +18,8 @@ from conftest import UNIT_TEST_TIMEOUT
 from tm_devices import DeviceManager
 
 if TYPE_CHECKING:
+    from typing import Dict, List
+
     from tm_devices.drivers import SMU2401, SMU2460, SMU2601B, SMU6430
 
 
@@ -218,12 +220,18 @@ def test_smu(  # noqa: PLR0915
         )
         assert caplog.records[-1].levelname == "WARNING"
 
+    buffer = smu.get_buffers("smub.nvbuffer1")
+    expected_buffer: Dict[str, List[float]] = {"smub.nvbuffer1": []}
+    assert caplog.records[-1].message == "smub.nvbuffer1 was found to be empty"
+    assert caplog.records[-1].levelname == "WARNING"
+    assert buffer == expected_buffer
+
     buffer = smu.get_buffers("smua.nvbuffer1")
     expected_buffer = {"smua.nvbuffer1": [1.0, 2.0, 3.0, 4.0, 5.0]}
     assert buffer == expected_buffer
 
     buffer = smu.get_buffers("smua.nvbuffer1.timestamps")
-    expected_buffer = {"smua.nvbuffer1.timestamps": [2.0, 4.0, 6.0, 8.0, 10.0]}
+    expected_buffer = {"smua.nvbuffer1.timestamps": [0.0, 0.1, 0.2, 0.3, 0.4]}
     assert buffer == expected_buffer
 
     smu.print_buffers("smua.nvbuffer1")
