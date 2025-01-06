@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 jobs:
   test-docs:
-    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-test-docs.yml@v1.5.3
+    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-test-docs.yml@v1.6.1
     with:
       node-version: 20  # The node version needs to stay in sync with .readthedocs.yml
       python-version: '3.11'  # This needs to stay in sync with .readthedocs.yml and the tox config in pyproject.toml
