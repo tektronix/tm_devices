@@ -6,7 +6,7 @@ An external trigger signal will also be generated when channel closed
 DMM_Ext_Trigger will run the program
 
 DMM_Ext_Trigger
-Using 3706 with switching card with a the STP in Slot 1
+Using 3706 with switching card with the STP in Slot 1
 
 To Run:
 
@@ -39,7 +39,7 @@ with DeviceManager() as dev_man:
     def dmm_ext_trigger(
         scan_count: int,
     ) -> None:  # Function Name that is used to pass the number of scans
-        """adsf.
+        """Run scans with an external trigger.
 
         Args:
             scan_count : number of scans to be taken
