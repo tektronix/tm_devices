@@ -47,7 +47,7 @@ repos:
       - id: check-github-workflows
         args: [--verbose]
   - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
-    rev: 2d5ccf5135f92e8fbf9dc3b8b8f17ddc4f1e0a62  # frozen: v1.7.5.21
+    rev: 5ac309d551626abaea3b3353a0330703d1a8a8d5  # frozen: v1.7.6.22
     hooks:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
@@ -65,7 +65,7 @@ repos:
     hooks:
       - id: curlylint
   - repo: https://github.com/executablebooks/mdformat
-    rev: 08fba30538869a440b5059de90af03e3502e35fb  # frozen: 0.7.17
+    rev: e20b1ac5acb8aba0b49d3a9109c6e6b58684ee83  # frozen: 0.7.21
     hooks:
       - id: mdformat
         args: [--number, --end-of-line, keep, --ignore-missing-references]
@@ -91,7 +91,7 @@ repos:
     hooks:
       - id: check-poetry
   - repo: https://github.com/pappasam/toml-sort
-    rev: b9b6210da457c38122995e434b314f4c4a4a923e  # frozen: v0.23.1
+    rev: 4ec24891e200ae663aa2a7cecd19516080777133  # frozen: v0.24.2
     hooks:
       - id: toml-sort-fix
   - repo: local
