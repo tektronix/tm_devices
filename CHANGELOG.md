@@ -33,7 +33,7 @@ Things to be included in the next release go here.
     - This file is located next to the main log file and will start with the same name, but have the unique address of the device appended.
     - This file will only be created if file logging is enabled for the package (which is the default behavior).
 - Full Python API support for the MDO3 model.
-- Added fast acquisition support for the MSO2 model.
+- Added fast acquisition command support for the MSO2 model.
 
 ### Changed
 
