@@ -57,7 +57,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:DIRection?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:OFFSet <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:OFFSet?
-    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|EQual}
+    - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual}
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier?
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:SIZe <NR1>
     - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:SIZe?
@@ -12819,7 +12819,7 @@ class SearchSearchItemTriggerABusBItemCanDataQualifier(SCPICmdWrite, SCPICmdRead
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|EQual}
+        - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier?
         ```
 
@@ -12833,8 +12833,6 @@ class SearchSearchItemTriggerABusBItemCanDataQualifier(SCPICmdWrite, SCPICmdRead
         - ``UNEQual`` searches for bus data not equal to the value specified by
           ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:DATA:VALUE``.
         - ``LESSEQual`` searches for bus data less equal to the value specified by
-          ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:DATA:VALUE``.
-        - ``EQual`` searches for bus data equal to the value specified by
           ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:DATA:VALUE``.
     """  # noqa: E501
 
@@ -13016,7 +13014,7 @@ class SearchSearchItemTriggerABusBItemCanData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|EQual}
+            - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier?
             ```
 
@@ -13030,8 +13028,6 @@ class SearchSearchItemTriggerABusBItemCanData(SCPICmdRead):
             - ``UNEQual`` searches for bus data not equal to the value specified by
               ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:DATA:VALUE``.
             - ``LESSEQual`` searches for bus data less equal to the value specified by
-              ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:DATA:VALUE``.
-            - ``EQual`` searches for bus data equal to the value specified by
               ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:DATA:VALUE``.
         """  # noqa: E501
         return self._qualifier

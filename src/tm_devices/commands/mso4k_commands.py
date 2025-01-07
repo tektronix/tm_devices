@@ -65,7 +65,6 @@ from .gen_1mq0z9_msodpo.rf import Rf
 from .gen_1nmc1o_msodpomdo.clearmenu import Clearmenu
 from .gen_1nmc1o_msodpomdo.errlog import Errlog
 from .gen_1nmc1o_msodpomdo.language import Language
-from .gen_1nmc1o_msodpomdo.status_and_error import Psc
 from .gen_1nmc1o_msodpomdo.usbdevice import Usbdevice
 from .gen_1nmc1o_msodpomdo.usbtmc import Usbtmc
 from .gen_e6bmgw_lpdmsotekscopepcdpomdo.totaluptime import Totaluptime
@@ -102,7 +101,7 @@ from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.id import Id
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.miscellaneous import Lrn
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.rem import Rem
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.set import Set
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.status_and_error import Pud
+from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.status_and_error import Psc, Pud
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.verbose import Verbose
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.wavfrm import Wavfrm
 from .gen_fzd77z_lpdmsotekscopepcdpomdodsa.header import Header
@@ -2431,10 +2430,10 @@ class MSO4KCommands:
         """Return the ``*PSC`` command.
 
         Description:
-            - This command specifies the power-on status flag that controls the automatic power-on
-              handling of the DESER, SRER, and ESER registers. When ``*PSC`` is true, the DESER
-              register is set to 255 and the SRER and ESER registers are set to 0 at power-on. When
-              ``*PSC`` is false, the current values in the DESER, SRER, and ESER registers are
+            - This command sets and queries the power-on status flag that controls the automatic
+              power-on handling of the DESER, SRER, and ESER registers. When ``*PSC`` is true, the
+              DESER register is set to 255 and the SRER and ESER registers are set to 0 at power-on.
+              When ``*PSC`` is false, the current values in the DESER, SRER, and ESER registers are
               preserved in nonvolatile memory when power is shut off and are restored at power-on.
 
         Usage:
@@ -2445,17 +2444,19 @@ class MSO4KCommands:
 
         SCPI Syntax:
             ```
-            - *PSC {OFF|ON|NR1>}
+            - *PSC {ON|OFF|<NR1>}
             - *PSC?
             ```
 
         Info:
-            - ``OFF`` sets the power-on status clear flag to false.
-            - ``ON`` sets the power-on status clear flag to true.
-            - ``<NR1>`` = 0 sets the power-on status clear flag to false. This disables the power-on
-              clear allowing the oscilloscope to possibly assert SRQ after power-on; any other value
-              sets the power-on status clear flag to true, enabling the power-on status clear
-              preventing any SRQ assertion after power on.
+            - ``<NR1>`` = 0 sets the power-on status clear flag to false, disables the power-on
+              clear and allows the instrument to possibly assert SRQ after power-on; any other value
+              sets the power-on status clear flag to true, enabling the power-on status clear and
+              prevents any SRQ assertion after power on.
+            - ``OFF`` sets the power-on status clear flag to false, disables the power-on clear and
+              allows the instrument to possibly assert SRQ after power-on.
+            - ``ON`` sets the power-on status clear flag to true, enabling the power-on status clear
+              and prevents any SRQ assertion after power on.
         """
         return self._psc
 

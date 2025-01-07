@@ -132,7 +132,7 @@ Commands and Queries:
     - TRIGger:A:EDGE:COUPling?
     - TRIGger:A:EDGE:SLOpe {RISe|FALL}
     - TRIGger:A:EDGE:SLOpe?
-    - TRIGger:A:EDGE:SOUrce {{CH<x>|D<x>|EXT|LINE|AUX}
+    - TRIGger:A:EDGE:SOUrce {CH<x>|D<x>|EXT|LINE|AUX}
     - TRIGger:A:EDGE:SOUrce?
     - TRIGger:A:EDGE?
     - TRIGger:A:HOLDoff:TIMe <NR3>
@@ -185,7 +185,7 @@ Commands and Queries:
     - TRIGger:A:MODe?
     - TRIGger:A:PULSEWidth:POLarity {NEGative|POSitive}
     - TRIGger:A:PULSEWidth:POLarity?
-    - TRIGger:A:PULSEWidth:SOUrce {{CH<x>|D<x>|LINE|EXT}
+    - TRIGger:A:PULSEWidth:SOUrce {CH<x>|D<x>|LINE|EXT}
     - TRIGger:A:PULSEWidth:SOUrce?
     - TRIGger:A:PULSEWidth:WHEn {LESSthan|MOREthan|EQual|UNEQual}
     - TRIGger:A:PULSEWidth:WHEn?
@@ -3260,7 +3260,7 @@ class TriggerAPulsewidthSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:PULSEWidth:SOUrce {{CH<x>|D<x>|LINE|EXT}
+        - TRIGger:A:PULSEWidth:SOUrce {CH<x>|D<x>|LINE|EXT}
         - TRIGger:A:PULSEWidth:SOUrce?
         ```
 
@@ -3372,7 +3372,7 @@ class TriggerAPulsewidth(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:PULSEWidth:SOUrce {{CH<x>|D<x>|LINE|EXT}
+            - TRIGger:A:PULSEWidth:SOUrce {CH<x>|D<x>|LINE|EXT}
             - TRIGger:A:PULSEWidth:SOUrce?
             ```
 
@@ -5022,7 +5022,7 @@ class TriggerAEdgeSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:EDGE:SOUrce {{CH<x>|D<x>|EXT|LINE|AUX}
+        - TRIGger:A:EDGE:SOUrce {CH<x>|D<x>|EXT|LINE|AUX}
         - TRIGger:A:EDGE:SOUrce?
         ```
 
@@ -5202,7 +5202,7 @@ class TriggerAEdge(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:EDGE:SOUrce {{CH<x>|D<x>|EXT|LINE|AUX}
+            - TRIGger:A:EDGE:SOUrce {CH<x>|D<x>|EXT|LINE|AUX}
             - TRIGger:A:EDGE:SOUrce?
             ```
 
