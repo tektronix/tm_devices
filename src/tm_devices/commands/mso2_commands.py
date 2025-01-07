@@ -38,6 +38,7 @@ from .gen_1zn03_mso.search import Search
 from .gen_1zn03_mso.select import Select
 from .gen_1zn03_mso.touchscreen import Touchscreen
 from .gen_1zn03_mso.trigger import Trigger
+from .gen_1zn03_mso.vxi import Vxi
 from .gen_c69az_msotekscopepc.lic import Lic
 from .gen_c69az_msotekscopepc.license import License
 from .gen_e3h2zs_lpdmso.afg import Afg
@@ -400,6 +401,7 @@ class MSO2CommandConstants:
     SNAP = "SNAP"  # SNAp
     SOF = "SOF"
     SPACE = "SPACE"  # SPace
+    SPECTRAL = "SPECTRAL"  # SPECtral
     SPI = "SPI"
     SPLIT = "SPLIT"
     SRIBINARY = "SRIBINARY"  # SRIbinary
@@ -417,6 +419,7 @@ class MSO2CommandConstants:
     SYNC = "SYNC"
     SYNCFIELD = "SYNCFIELD"  # SYNCfield
     TEKEXPONENTIAL = "TEKEXPONENTIAL"  # TEKEXPonential
+    TEMPERATURE = "TEMPERATURE"  # TEMPerature
     TENNINETY = "TENNINETY"  # TENNinety
     THREE = "THREE"
     TIMEOUT = "TIMEOUT"  # TIMEOut
@@ -558,6 +561,7 @@ class MSO2Commands:
         - ``.usbdevice``: The ``USBDevice`` command tree.
         - ``.verbose``: The ``VERBose`` command.
         - ``.vertical``: The ``VERTical`` command tree.
+        - ``.vxi``: The ``VXI`` command tree.
         - ``.wai``: The ``*WAI`` command.
         - ``.wavfrm``: The ``WAVFrm`` command.
         - ``.wfmoutpre``: The ``WFMOutpre`` command.
@@ -658,6 +662,7 @@ class MSO2Commands:
         self._usbdevice = Usbdevice(device)
         self._verbose = Verbose(device)
         self._vertical = Vertical(device)
+        self._vxi = Vxi(device)
         self._wai = Wai(device)
         self._wavfrm = Wavfrm(device)
         self._wfmoutpre = Wfmoutpre(device)
@@ -680,6 +685,7 @@ class MSO2Commands:
             ```
 
         Sub-properties:
+            - ``.fastacq``: The ``ACQuire:FASTAcq`` command tree.
             - ``.maxsamplerate``: The ``ACQuire:MAXSamplerate`` command.
             - ``.mode``: The ``ACQuire:MODe`` command.
             - ``.numacq``: The ``ACQuire:NUMACq`` command.
@@ -2710,6 +2716,21 @@ class MSO2Commands:
         return self._vertical
 
     @property
+    def vxi(self) -> Vxi:
+        """Return the ``VXI`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``VXI?`` query.
+            - Using the ``.verify(value)`` method will send the ``VXI?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.enable``: The ``VXI:ENAble`` command.
+            - ``.port``: The ``VXI:PORT`` command tree.
+        """
+        return self._vxi
+
+    @property
     def wai(self) -> Wai:
         """Return the ``*WAI`` command.
 
@@ -2913,6 +2934,7 @@ class MSO2Mixin:
             - ``.usbdevice``: The ``USBDevice`` command tree.
             - ``.verbose``: The ``VERBose`` command.
             - ``.vertical``: The ``VERTical`` command tree.
+            - ``.vxi``: The ``VXI`` command tree.
             - ``.wai``: The ``*WAI`` command.
             - ``.wavfrm``: The ``WAVFrm`` command.
             - ``.wfmoutpre``: The ``WFMOutpre`` command.

@@ -11,6 +11,7 @@ Commands and Queries:
     ```
     - MASK:DELete 'MASK<x>'
     - MASK:MASK<x>:COUNT:HITS?
+    - MASK:MASK<x>:COUNT:SEG<x>:HITS?
     - MASK:MASK<x>:COUNT?
     - MASK:MASK<x>:DEFinedby {SEGments|TOLerances}
     - MASK:MASK<x>:DEFinedby?
@@ -19,7 +20,6 @@ Commands and Queries:
     - MASK:MASK<x>:LIST?
     - MASK:MASK<x>:SEG<x>:POINTS
     - MASK:MASK<x>:SEG<x>:POINTS?
-    - MASK:MASK<x>:SEG<x>COUNT:HITS?
     - MASK:MASK<x>:SOUrce {CH<x>|REF<x>|MATH<x>|RFvsTime}
     - MASK:MASK<x>:SOUrce?
     - MASK:MASK<x>:TESt:STATE {ON|OFF}
@@ -493,74 +493,6 @@ class MaskMaskItemSource(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class MaskMaskItemSegcountItemHits(SCPICmdRead):
-    """The ``MASK:MASK<x>:SEG<x>COUNT:HITS`` command.
-
-    Description:
-        - The command returns the total number of mask hits in the specified mask segment of the
-          specified mask test.
-
-    Usage:
-        - Using the ``.query()`` method will send the ``MASK:MASK<x>:SEG<x>COUNT:HITS?`` query.
-        - Using the ``.verify(value)`` method will send the ``MASK:MASK<x>:SEG<x>COUNT:HITS?`` query
-          and raise an AssertionError if the returned value does not match ``value``.
-
-    SCPI Syntax:
-        ```
-        - MASK:MASK<x>:SEG<x>COUNT:HITS?
-        ```
-
-    Info:
-        - ``MASK<x>`` specifies the mask test.
-        - ``SEG<x>`` specifies the mask segment.
-    """
-
-
-class MaskMaskItemSegcountItem(ValidatedDynamicNumberCmd, SCPICmdRead):
-    """The ``MASK:MASK<x>:SEG<x>COUNT`` command tree.
-
-    Usage:
-        - Using the ``.query()`` method will send the ``MASK:MASK<x>:SEG<x>COUNT?`` query.
-        - Using the ``.verify(value)`` method will send the ``MASK:MASK<x>:SEG<x>COUNT?`` query and
-          raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``MASK<x>`` specifies the mask test.
-        - ``SEG<x>`` specifies the mask segment.
-
-    Properties:
-        - ``.hits``: The ``MASK:MASK<x>:SEG<x>COUNT:HITS`` command.
-    """
-
-    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._hits = MaskMaskItemSegcountItemHits(device, f"{self._cmd_syntax}:HITS")
-
-    @property
-    def hits(self) -> MaskMaskItemSegcountItemHits:
-        """Return the ``MASK:MASK<x>:SEG<x>COUNT:HITS`` command.
-
-        Description:
-            - The command returns the total number of mask hits in the specified mask segment of the
-              specified mask test.
-
-        Usage:
-            - Using the ``.query()`` method will send the ``MASK:MASK<x>:SEG<x>COUNT:HITS?`` query.
-            - Using the ``.verify(value)`` method will send the ``MASK:MASK<x>:SEG<x>COUNT:HITS?``
-              query and raise an AssertionError if the returned value does not match ``value``.
-
-        SCPI Syntax:
-            ```
-            - MASK:MASK<x>:SEG<x>COUNT:HITS?
-            ```
-
-        Info:
-            - ``MASK<x>`` specifies the mask test.
-            - ``SEG<x>`` specifies the mask segment.
-        """
-        return self._hits
-
-
 class MaskMaskItemSegItemPoints(SCPICmdWriteNoArguments, SCPICmdRead):
     """The ``MASK:MASK<x>:SEG<x>:POINTS`` command.
 
@@ -709,6 +641,74 @@ class MaskMaskItemDefinedby(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class MaskMaskItemCountSegItemHits(SCPICmdRead):
+    """The ``MASK:MASK<x>:COUNT:SEG<x>:HITS`` command.
+
+    Description:
+        - The command returns the total number of mask hits in the specified mask segment of the
+          specified mask test.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``MASK:MASK<x>:COUNT:SEG<x>:HITS?`` query.
+        - Using the ``.verify(value)`` method will send the ``MASK:MASK<x>:COUNT:SEG<x>:HITS?``
+          query and raise an AssertionError if the returned value does not match ``value``.
+
+    SCPI Syntax:
+        ```
+        - MASK:MASK<x>:COUNT:SEG<x>:HITS?
+        ```
+
+    Info:
+        - ``MASK<x>`` specifies the mask test.
+        - ``SEG<x>`` specifies the mask segment.
+    """
+
+
+class MaskMaskItemCountSegItem(ValidatedDynamicNumberCmd, SCPICmdRead):
+    """The ``MASK:MASK<x>:COUNT:SEG<x>`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``MASK:MASK<x>:COUNT:SEG<x>?`` query.
+        - Using the ``.verify(value)`` method will send the ``MASK:MASK<x>:COUNT:SEG<x>?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``MASK<x>`` specifies the mask test.
+        - ``SEG<x>`` specifies the mask segment.
+
+    Properties:
+        - ``.hits``: The ``MASK:MASK<x>:COUNT:SEG<x>:HITS`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._hits = MaskMaskItemCountSegItemHits(device, f"{self._cmd_syntax}:HITS")
+
+    @property
+    def hits(self) -> MaskMaskItemCountSegItemHits:
+        """Return the ``MASK:MASK<x>:COUNT:SEG<x>:HITS`` command.
+
+        Description:
+            - The command returns the total number of mask hits in the specified mask segment of the
+              specified mask test.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``MASK:MASK<x>:COUNT:SEG<x>:HITS?`` query.
+            - Using the ``.verify(value)`` method will send the ``MASK:MASK<x>:COUNT:SEG<x>:HITS?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+
+        SCPI Syntax:
+            ```
+            - MASK:MASK<x>:COUNT:SEG<x>:HITS?
+            ```
+
+        Info:
+            - ``MASK<x>`` specifies the mask test.
+            - ``SEG<x>`` specifies the mask segment.
+        """
+        return self._hits
+
+
 class MaskMaskItemCountHits(SCPICmdRead):
     """The ``MASK:MASK<x>:COUNT:HITS`` command.
 
@@ -753,11 +753,15 @@ class MaskMaskItemCount(SCPICmdRead):
 
     Properties:
         - ``.hits``: The ``MASK:MASK<x>:COUNT:HITS`` command.
+        - ``.seg``: The ``MASK:MASK<x>:COUNT:SEG<x>`` command tree.
     """
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._hits = MaskMaskItemCountHits(device, f"{self._cmd_syntax}:HITS")
+        self._seg: Dict[int, MaskMaskItemCountSegItem] = DefaultDictPassKeyToFactory(
+            lambda x: MaskMaskItemCountSegItem(device, f"{self._cmd_syntax}:SEG{x}")
+        )
 
     @property
     def hits(self) -> MaskMaskItemCountHits:
@@ -782,6 +786,24 @@ class MaskMaskItemCount(SCPICmdRead):
         """
         return self._hits
 
+    @property
+    def seg(self) -> Dict[int, MaskMaskItemCountSegItem]:
+        """Return the ``MASK:MASK<x>:COUNT:SEG<x>`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``MASK:MASK<x>:COUNT:SEG<x>?`` query.
+            - Using the ``.verify(value)`` method will send the ``MASK:MASK<x>:COUNT:SEG<x>?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``MASK<x>`` specifies the mask test.
+            - ``SEG<x>`` specifies the mask segment.
+
+        Sub-properties:
+            - ``.hits``: The ``MASK:MASK<x>:COUNT:SEG<x>:HITS`` command.
+        """
+        return self._seg
+
 
 #  pylint: disable=too-many-instance-attributes
 class MaskMaskItem(ValidatedDynamicNumberCmd, SCPICmdRead):
@@ -801,7 +823,6 @@ class MaskMaskItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.display``: The ``MASK:MASK<x>:DISplay`` command.
         - ``.list``: The ``MASK:MASK<x>:LIST`` command.
         - ``.seg``: The ``MASK:MASK<x>:SEG<x>`` command tree.
-        - ``.segcount``: The ``MASK:MASK<x>:SEG<x>COUNT`` command tree.
         - ``.source``: The ``MASK:MASK<x>:SOUrce`` command.
         - ``.test``: The ``MASK:MASK<x>:TESt`` command tree.
         - ``.tolerance``: The ``MASK:MASK<x>:TOLerance`` command tree.
@@ -815,9 +836,6 @@ class MaskMaskItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._list = MaskMaskItemList(device, f"{self._cmd_syntax}:LIST")
         self._seg: Dict[int, MaskMaskItemSegItem] = DefaultDictPassKeyToFactory(
             lambda x: MaskMaskItemSegItem(device, f"{self._cmd_syntax}:SEG{x}")
-        )
-        self._segcount: Dict[int, MaskMaskItemSegcountItem] = DefaultDictPassKeyToFactory(
-            lambda x: MaskMaskItemSegcountItem(device, f"{self._cmd_syntax}:SEG{x}COUNT")
         )
         self._source = MaskMaskItemSource(device, f"{self._cmd_syntax}:SOUrce")
         self._test = MaskMaskItemTest(device, f"{self._cmd_syntax}:TESt")
@@ -846,6 +864,7 @@ class MaskMaskItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Sub-properties:
             - ``.hits``: The ``MASK:MASK<x>:COUNT:HITS`` command.
+            - ``.seg``: The ``MASK:MASK<x>:COUNT:SEG<x>`` command tree.
         """
         return self._count
 
@@ -946,24 +965,6 @@ class MaskMaskItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``.points``: The ``MASK:MASK<x>:SEG<x>:POINTS`` command.
         """
         return self._seg
-
-    @property
-    def segcount(self) -> Dict[int, MaskMaskItemSegcountItem]:
-        """Return the ``MASK:MASK<x>:SEG<x>COUNT`` command tree.
-
-        Usage:
-            - Using the ``.query()`` method will send the ``MASK:MASK<x>:SEG<x>COUNT?`` query.
-            - Using the ``.verify(value)`` method will send the ``MASK:MASK<x>:SEG<x>COUNT?`` query
-              and raise an AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``MASK<x>`` specifies the mask test.
-            - ``SEG<x>`` specifies the mask segment.
-
-        Sub-properties:
-            - ``.hits``: The ``MASK:MASK<x>:SEG<x>COUNT:HITS`` command.
-        """
-        return self._segcount
 
     @property
     def source(self) -> MaskMaskItemSource:
@@ -1112,7 +1113,6 @@ class Mask(SCPICmdRead):
             - ``.display``: The ``MASK:MASK<x>:DISplay`` command.
             - ``.list``: The ``MASK:MASK<x>:LIST`` command.
             - ``.seg``: The ``MASK:MASK<x>:SEG<x>`` command tree.
-            - ``.segcount``: The ``MASK:MASK<x>:SEG<x>COUNT`` command tree.
             - ``.source``: The ``MASK:MASK<x>:SOUrce`` command.
             - ``.test``: The ``MASK:MASK<x>:TESt`` command tree.
             - ``.tolerance``: The ``MASK:MASK<x>:TOLerance`` command tree.
