@@ -72,7 +72,6 @@ from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import (
 from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
 from .gen_fu6dog_lpdmsotekscopepcdpomdoawgdsa.status_and_error import Ese, Sre
 from .gen_fuq1mi_lpdmsotekscopepcdpodsa.alias import Alias
-from .gen_fuq1mi_lpdmsotekscopepcdpodsa.status_and_error import Psc
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.allev import Allev
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.busy import Busy
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.dese import Dese
@@ -84,7 +83,7 @@ from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.id import Id
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.miscellaneous import Lrn
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.rem import Rem
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.set import Set
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.status_and_error import Pud
+from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.status_and_error import Psc, Pud
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.verbose import Verbose
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.wavfrm import Wavfrm
 from .gen_fzd77z_lpdmsotekscopepcdpomdodsa.header import Header

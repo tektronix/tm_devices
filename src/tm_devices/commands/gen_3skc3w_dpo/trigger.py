@@ -722,7 +722,7 @@ Commands and Queries:
     - TRIGger:A:SPI:SS:LEVel?
     - TRIGger:A:SPI:SS:SOUrce CH<x>
     - TRIGger:A:SPI:SS:SOUrce?
-    - TRIGger:A:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
+    - TRIGger:A:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}
     - TRIGger:A:TYPe?
     - TRIGger:A:UPPerthreshold:CH<x> {ECL|TTL|<NR3>}
     - TRIGger:A:UPPerthreshold:CH<x>?
@@ -983,7 +983,7 @@ Commands and Queries:
     - TRIGger:B:STATE?
     - TRIGger:B:TIMe <NR3>
     - TRIGger:B:TIMe?
-    - TRIGger:B:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
+    - TRIGger:B:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}
     - TRIGger:B:TYPe?
     - TRIGger:B:UPPerthreshold:CH<x> {ECL|TTL|<NR3>}
     - TRIGger:B:UPPerthreshold:CH<x>?
@@ -2285,7 +2285,7 @@ class TriggerBType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
+        - TRIGger:B:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}
         - TRIGger:B:TYPe?
         ```
 
@@ -10586,7 +10586,7 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
+            - TRIGger:B:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}
             - TRIGger:B:TYPe?
             ```
 
@@ -11571,7 +11571,7 @@ class TriggerAType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
+        - TRIGger:A:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}
         - TRIGger:A:TYPe?
         ```
 
@@ -36831,7 +36831,7 @@ class TriggerA(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}}
+            - TRIGger:A:TYPe {EDGE|LOGIc|PULse|VIDeo|I2C|CAN|SPI|COMMunication|SERIAL|RS232}
             - TRIGger:A:TYPe?
             ```
 

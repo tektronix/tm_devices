@@ -9,6 +9,10 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
+    - ACQuire:FASTAcq:PALEtte {NORMal|TEMPerature|SPECtral|INVErted}
+    - ACQuire:FASTAcq:PALEtte?
+    - ACQuire:FASTAcq:STATE {ON|OFF|<NR1>}
+    - ACQuire:FASTAcq:STATE?
     - ACQuire:MAXSamplerate?
     - ACQuire:MODe {SAMple|PEAKdetect|HIRes|AVErage|ENVelope}
     - ACQuire:MODe?
@@ -354,6 +358,145 @@ class AcquireMaxsamplerate(SCPICmdRead):
     """
 
 
+class AcquireFastacqState(SCPICmdWrite, SCPICmdRead):
+    """The ``ACQuire:FASTAcq:STATE`` command.
+
+    Description:
+        - Sets or queries the state of fast acquisition mode.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``ACQuire:FASTAcq:STATE?`` query.
+        - Using the ``.verify(value)`` method will send the ``ACQuire:FASTAcq:STATE?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``ACQuire:FASTAcq:STATE value`` command.
+
+    SCPI Syntax:
+        ```
+        - ACQuire:FASTAcq:STATE {ON|OFF|<NR1>}
+        - ACQuire:FASTAcq:STATE?
+        ```
+
+    Info:
+        - ``<NR1>`` = 0 disables FASTAcq; any other value turns this feature on.
+        - ``OFF`` disables the FASTAcq feature.
+        - ``ON`` enables the FASTAcq feature.
+    """
+
+
+class AcquireFastacqPalette(SCPICmdWrite, SCPICmdRead):
+    """The ``ACQuire:FASTAcq:PALEtte`` command.
+
+    Description:
+        - Sets or queries the waveform grading for fast acquisition mode.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``ACQuire:FASTAcq:PALEtte?`` query.
+        - Using the ``.verify(value)`` method will send the ``ACQuire:FASTAcq:PALEtte?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``ACQuire:FASTAcq:PALEtte value``
+          command.
+
+    SCPI Syntax:
+        ```
+        - ACQuire:FASTAcq:PALEtte {NORMal|TEMPerature|SPECtral|INVErted}
+        - ACQuire:FASTAcq:PALEtte?
+        ```
+
+    Info:
+        - ``NORMal`` colors traces according to their channel.
+        - ``TEMPerature`` colors all traces using a multicolored palette, where 'intensity' is
+          represented by hue; blue for least frequently hit, red for most frequently hit. All traces
+          share this palette. This is the default color palette.
+        - ``SPECtral`` colors all traces using a multicolored palette, where 'intensity' is
+          represented by hue; red for least frequently hit, blue for most frequently hit. All traces
+          share this palette.
+        - ``INVErted`` Inverts the normal display hues and lightness levels based on sample
+          intensity. The areas of lowest sample density appear the brightest, while the areas with
+          the highest sample density appear the darkest.
+    """
+
+
+class AcquireFastacq(SCPICmdRead):
+    """The ``ACQuire:FASTAcq`` command tree.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``ACQuire:FASTAcq?`` query.
+        - Using the ``.verify(value)`` method will send the ``ACQuire:FASTAcq?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    Properties:
+        - ``.palette``: The ``ACQuire:FASTAcq:PALEtte`` command.
+        - ``.state``: The ``ACQuire:FASTAcq:STATE`` command.
+    """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._palette = AcquireFastacqPalette(device, f"{self._cmd_syntax}:PALEtte")
+        self._state = AcquireFastacqState(device, f"{self._cmd_syntax}:STATE")
+
+    @property
+    def palette(self) -> AcquireFastacqPalette:
+        """Return the ``ACQuire:FASTAcq:PALEtte`` command.
+
+        Description:
+            - Sets or queries the waveform grading for fast acquisition mode.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``ACQuire:FASTAcq:PALEtte?`` query.
+            - Using the ``.verify(value)`` method will send the ``ACQuire:FASTAcq:PALEtte?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``ACQuire:FASTAcq:PALEtte value``
+              command.
+
+        SCPI Syntax:
+            ```
+            - ACQuire:FASTAcq:PALEtte {NORMal|TEMPerature|SPECtral|INVErted}
+            - ACQuire:FASTAcq:PALEtte?
+            ```
+
+        Info:
+            - ``NORMal`` colors traces according to their channel.
+            - ``TEMPerature`` colors all traces using a multicolored palette, where 'intensity' is
+              represented by hue; blue for least frequently hit, red for most frequently hit. All
+              traces share this palette. This is the default color palette.
+            - ``SPECtral`` colors all traces using a multicolored palette, where 'intensity' is
+              represented by hue; red for least frequently hit, blue for most frequently hit. All
+              traces share this palette.
+            - ``INVErted`` Inverts the normal display hues and lightness levels based on sample
+              intensity. The areas of lowest sample density appear the brightest, while the areas
+              with the highest sample density appear the darkest.
+        """
+        return self._palette
+
+    @property
+    def state(self) -> AcquireFastacqState:
+        """Return the ``ACQuire:FASTAcq:STATE`` command.
+
+        Description:
+            - Sets or queries the state of fast acquisition mode.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``ACQuire:FASTAcq:STATE?`` query.
+            - Using the ``.verify(value)`` method will send the ``ACQuire:FASTAcq:STATE?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``ACQuire:FASTAcq:STATE value``
+              command.
+
+        SCPI Syntax:
+            ```
+            - ACQuire:FASTAcq:STATE {ON|OFF|<NR1>}
+            - ACQuire:FASTAcq:STATE?
+            ```
+
+        Info:
+            - ``<NR1>`` = 0 disables FASTAcq; any other value turns this feature on.
+            - ``OFF`` disables the FASTAcq feature.
+            - ``ON`` enables the FASTAcq feature.
+        """
+        return self._state
+
+
+#  pylint: disable=too-many-instance-attributes
 class Acquire(SCPICmdRead):
     """The ``ACQuire`` command.
 
@@ -371,6 +514,7 @@ class Acquire(SCPICmdRead):
         ```
 
     Properties:
+        - ``.fastacq``: The ``ACQuire:FASTAcq`` command tree.
         - ``.maxsamplerate``: The ``ACQuire:MAXSamplerate`` command.
         - ``.mode``: The ``ACQuire:MODe`` command.
         - ``.numacq``: The ``ACQuire:NUMACq`` command.
@@ -382,6 +526,7 @@ class Acquire(SCPICmdRead):
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "ACQuire") -> None:
         super().__init__(device, cmd_syntax)
+        self._fastacq = AcquireFastacq(device, f"{self._cmd_syntax}:FASTAcq")
         self._maxsamplerate = AcquireMaxsamplerate(device, f"{self._cmd_syntax}:MAXSamplerate")
         self._mode = AcquireMode(device, f"{self._cmd_syntax}:MODe")
         self._numacq = AcquireNumacq(device, f"{self._cmd_syntax}:NUMACq")
@@ -389,6 +534,21 @@ class Acquire(SCPICmdRead):
         self._sequence = AcquireSequence(device, f"{self._cmd_syntax}:SEQuence")
         self._state = AcquireState(device, f"{self._cmd_syntax}:STATE")
         self._stopafter = AcquireStopafter(device, f"{self._cmd_syntax}:STOPAfter")
+
+    @property
+    def fastacq(self) -> AcquireFastacq:
+        """Return the ``ACQuire:FASTAcq`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``ACQuire:FASTAcq?`` query.
+            - Using the ``.verify(value)`` method will send the ``ACQuire:FASTAcq?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.palette``: The ``ACQuire:FASTAcq:PALEtte`` command.
+            - ``.state``: The ``ACQuire:FASTAcq:STATE`` command.
+        """
+        return self._fastacq
 
     @property
     def maxsamplerate(self) -> AcquireMaxsamplerate:

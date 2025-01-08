@@ -122,7 +122,7 @@ Commands and Queries:
     - ERRORDetector:SCRAMBLED?
     - ERRORDetector:SENDEMAIL {OFF|ON}
     - ERRORDetector:SENDEMAIL?
-    - ERRORDetector:SIGnaltype {PCIEGEN<x>|PRBS11|CUSTOM|ANY8B10B|USB3|PRBS9|PRBS16|PRBS23|PRBS7|SATAGEN<x>}
+    - ERRORDetector:SIGnaltype {ANY8B10B|CUSTOM|PCIEGEN<x>|PRBS11|PRBS16|PRBS23|PRBS7|PRBS9|SATAGEN<x>|USB3}
     - ERRORDetector:SIGnaltype?
     - ERRORDetector:SSC {ON|OFF}
     - ERRORDetector:SSC?
@@ -1391,7 +1391,7 @@ class ErrordetectorSignaltype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ERRORDetector:SIGnaltype {PCIEGEN<x>|PRBS11|CUSTOM|ANY8B10B|USB3|PRBS9|PRBS16|PRBS23|PRBS7|SATAGEN<x>}
+        - ERRORDetector:SIGnaltype {ANY8B10B|CUSTOM|PCIEGEN<x>|PRBS11|PRBS16|PRBS23|PRBS7|PRBS9|SATAGEN<x>|USB3}
         - ERRORDetector:SIGnaltype?
         ```
 
@@ -5654,7 +5654,7 @@ class Errordetector(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ERRORDetector:SIGnaltype {PCIEGEN<x>|PRBS11|CUSTOM|ANY8B10B|USB3|PRBS9|PRBS16|PRBS23|PRBS7|SATAGEN<x>}
+            - ERRORDetector:SIGnaltype {ANY8B10B|CUSTOM|PCIEGEN<x>|PRBS11|PRBS16|PRBS23|PRBS7|PRBS9|SATAGEN<x>|USB3}
             - ERRORDetector:SIGnaltype?
             ```
 

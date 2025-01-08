@@ -15290,8 +15290,7 @@ class SearchSearchItemTriggerABusBItemCanDataQualifier(SCPICmdWrite, SCPICmdRead
         - This command sets the qualifier (<, >, =, not =, <=) to be used to search on CAN bus data.
           This only applies if the search condition has been set to IDANDDATA or DATA (using
           ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:CONDITION``). SEARCH<x> is the search number, which
-          is always 1, and B<x> is the bus number (1-4). 1-3 for the MDO4000C and 1-2 for the
-          MDO3000.
+          is always 1, and B<x> is the bus number (1-2).
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -15486,8 +15485,7 @@ class SearchSearchItemTriggerABusBItemCanData(SCPICmdRead):
             - This command sets the qualifier (<, >, =, not =, <=) to be used to search on CAN bus
               data. This only applies if the search condition has been set to IDANDDATA or DATA
               (using ``SEARCH:SEARCHX:TRIGGER:A:BUS:BX:CAN:CONDITION``). SEARCH<x> is the search
-              number, which is always 1, and B<x> is the bus number (1-4). 1-3 for the MDO4000C and
-              1-2 for the MDO3000.
+              number, which is always 1, and B<x> is the bus number (1-2).
 
         Usage:
             - Using the ``.query()`` method will send the
