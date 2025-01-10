@@ -52,9 +52,10 @@ class AsDictionaryMixin:
 class AsDictionaryUseEnumNameUseCustEnumStrValueMixin(AsDictionaryMixin):
     """Format the class's public attributes as a dictionary with string values from enums.
 
-    On Enums will use the ``name`` property.
+    For [`Enum`][enum.Enum] types, this class will use the ``name`` property.
 
-    On CustomStrEnum types will use their ``value`` property.
+    For [`CustomStrEnum`][tm_devices.helpers.enums.CustomStrEnum] types, this class will use
+    the ``value`` property.
     """
 
     @staticmethod

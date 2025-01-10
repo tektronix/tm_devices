@@ -38,4 +38,4 @@ This guide will walk through the steps needed to add a new device type.
     [advanced architecture](../advanced/architecture.md#device-types) page
     to include the new device type
 10. Update anything new that needs to be in
-    [configuration.md](../configuration.md#legend-for-device-configuration)
+    [configuration.md](../configuration.md#device-configuration-definitions)

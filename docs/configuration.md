@@ -122,98 +122,117 @@ devices:
     device_driver: <device_driver>
 ```
 
-#### Legend for Device Configuration
+#### Device Configuration Definitions
 
-- `device_type`
-    - Valid options for `<device_type>`:
-        - `AFG`: An Arbitrary Function Generator
-        - `AWG`: An Arbitrary Waveform Generator
-        - `DAQ`: An Data Acquisition Unit
-        - `DMM`: An Digital Multimeter
-        - `MT`: A Margin Tester
-        - `PSU`: A Power Supply Unit
-        - `SCOPE`: An Oscilloscope
-        - `SMU`: A Source Measure Unit
-        - `SS`: A Systems Switch
-- `connection_type`
-    - Defaults to `TCPIP` when not explicitly defined.
-    - Valid options for `<connection_type>`:
-        - VISA connection types:
-            - `TCPIP`: A VISA connection over the TCPIP interface (default)
-            - `USB`: A VISA connection over a physical USBTMC interface
-            - `SERIAL`: A VISA connection over the serial (ASRL / RS-232 / RS-485) interface
-            - `SOCKET`: A VISA connection over the SOCKET interface
-            - `GPIB` : A VISA connection over the GPIB interface
-        - Other valid connection types:
-            - `REST_API`: A REST API connection over the network
-- `address`
-    - `<ip_address_or_hostname>`
-        - Either the full IP address or system hostname is required to initialize
-            the connection to the device.
-        - Hostname is preferable, since it will gracefully handle a new DHCP lease
-            which results in a potentially new IP address, but sometimes hostnames
-            have resolution problems. In that case, an IP address usually works.
-    - `<model>-<serial_number>`
-        - If using the `USB` connection type for a VISA connection, address must be
-            specified in the format `<model>-<serial_number>` so that the proper VISA
-            resource expression can be created.
-    - `<serial_port>`
-        - The COM port to use, usually a number. For example, an usb-to-serial
-            adapter connected to the USB port number 1 would show up as "COM1", so
-            `address='1'`.
-    - `<gpib_address>`
-        - The GPIB address, a number in the range 0 to 30.
-- `alias`
-    - An optional field for a case-insensitive string that can be used as a key to
-        select the device in the Device Manager instead of the device type and
-        number. Without an alias, the device can still be accessed through a key
-        generated from `<device_type>` string and the number of devices of the same
-        type that were defined before it. For example: If there are two SCOPEs in
-        the device list, one should be `SCOPE 1` and the other should be `SCOPE 2`.
-    - Underscores and dashes are allowed, but other special characters are not
-        allowed. Any alias provided will be converted into all capital letters for
-        use later.
-- `lan_port`
-    - The open port, a number in the range 0 to 65535.
-    - Required when the `<connection_type>` is `SOCKET`.
-    - Optional when `<connection_type>` is `REST_API`
-- `lan_device_name`
-    - The LAN device name to connect on when `<connection_type>` is `TCPIP`.
-    - If no LAN device name is provided in the configuration, `inst0` is used.
-- `serial_config`
-    - Configuration data for `SERIAL` connection type, which VISA documentation
-        commonly refers to as ASRL.
-    - **Both sides must be using the same settings, otherwise data looks like
-        gibberish.**
-        - `baud_rate:` The baud rate controls the communication frequency:.
-            - Common rates: \[115200, 57600, 38400, 19200, 9600, 4800, 2400, 1200,
-                600, 300\].
-            - Different products may support ranges outside the commonly used rates
-                listed here.
-        - `data_bits:` The number of data bits in each character.
-            - One of \[5, 6, 7, 8\].
-        - `flow_control:` Control for pausing/resuming data stream between slower
-            devices.
-            - Valid options: `none`, `xon_xoff`, `dtr_dsr`, or `rts_cts`
-        - `parity:` Parity controls checksum bit (added to each data character)
-            behavior.
-            - Valid options: `none`, `odd` ,`even`, `mark`, or `space`.
-        - `stop_bits:` Number of bits to use to indicate end of a character.
-            - Valid options: `one`, `one_and_a_half`, or `two`.
-        - `end_input:` Character(s) to indicate the end of a message transmission.
-            - Valid options: `termination_break`, `termination_char`, `last_bit`, or
-                `none`.
-- `gpib_board_number`
-    - The GPIB board number (also referred to as a controller) that the device is connected to.
-    - If no board number is provided in the configuration, a board number of `0` is assumed.
-- `device_driver`
-    - The name of the Python driver class to use for the device (see the
-        [`tm_devices.drivers`][] API reference for a complete list of all driver
-        names).
-    - Required when `<connection_type>` is `REST_API`
-    - Ignored when `<connection_type>` is not `REST_API`
+##### `device_type`
 
-### Config Options
+- Valid options for `<device_type>`:
+    - `AFG`: An Arbitrary Function Generator
+    - `AWG`: An Arbitrary Waveform Generator
+    - `DAQ`: An Data Acquisition Unit
+    - `DMM`: An Digital Multimeter
+    - `MT`: A Margin Tester
+    - `PSU`: A Power Supply Unit
+    - `SCOPE`: An Oscilloscope
+    - `SMU`: A Source Measure Unit
+    - `SS`: A Systems Switch
+
+##### `connection_type`
+
+- Defaults to `TCPIP` when not explicitly defined.
+- Valid options for `<connection_type>`:
+    - VISA connection types:
+        - `TCPIP`: A VISA connection over the TCPIP interface (default)
+        - `USB`: A VISA connection over a physical USBTMC interface
+        - `SERIAL`: A VISA connection over the serial (ASRL / RS-232 / RS-485) interface
+        - `SOCKET`: A VISA connection over the SOCKET interface
+        - `GPIB` : A VISA connection over the GPIB interface
+    - Other valid connection types:
+        - `REST_API`: A REST API connection over the network
+
+##### `address`
+
+- `<ip_address_or_hostname>`
+    - Either the full IP address or system hostname is required to initialize
+        the connection to the device.
+    - Hostname is preferable, since it will gracefully handle a new DHCP lease
+        which results in a potentially new IP address, but sometimes hostnames
+        have resolution problems. In that case, an IP address usually works.
+- `<model>-<serial_number>`
+    - If using the `USB` connection type for a VISA connection, address must be
+        specified in the format `<model>-<serial_number>` so that the proper VISA
+        resource expression can be created.
+- `<serial_port>`
+    - The COM port to use, usually a number. For example, an usb-to-serial
+        adapter connected to the USB port number 1 would show up as "COM1", so
+        `address='1'`.
+- `<gpib_address>`
+    - The GPIB address, a number in the range 0 to 30.
+- For a breakdown of what is needed for each connection type, see
+    [`DeviceConfigEntry.address`][tm_devices.helpers.constants_and_dataclasses.DeviceConfigEntry.address]
+
+##### `alias`
+
+- An optional field for a case-insensitive string that can be used as a key to
+    select the device in the Device Manager instead of the device type and
+    number. Without an alias, the device can still be accessed through a key
+    generated from `<device_type>` string and the number of devices of the same
+    type that were defined before it. For example: If there are two SCOPEs in
+    the device list, one should be `SCOPE 1` and the other should be `SCOPE 2`.
+- Underscores and dashes are allowed, but other special characters are not
+    allowed. Any alias provided will be converted into all capital letters for
+    use later.
+
+##### `lan_port`
+
+- The open port, a number in the range 0 to 65535.
+- Required when the `<connection_type>` is `SOCKET`.
+- Optional when `<connection_type>` is `REST_API`
+
+##### `lan_device_name`
+
+- The LAN device name to connect on when `<connection_type>` is `TCPIP`.
+- If no LAN device name is provided in the configuration, `inst0` is used.
+
+##### `serial_config`
+
+- Configuration data for the `SERIAL` connection type, which VISA documentation
+    commonly refers to as ASRL.
+- **Both sides must be using the same settings, otherwise data looks like gibberish.**
+- `serial_config` settings:
+    - `baud_rate:` The baud rate controls the communication frequency:.
+        - Common rates: \[115200, 57600, 38400, 19200, 9600, 4800, 2400, 1200,
+            600, 300\].
+        - Different products may support ranges outside the commonly used rates
+            listed here.
+    - `data_bits:` The number of data bits in each character.
+        - One of \[5, 6, 7, 8\].
+    - `flow_control:` Control for pausing/resuming data stream between slower
+        devices.
+        - Valid options: `none`, `xon_xoff`, `dtr_dsr`, or `rts_cts`
+    - `parity:` Parity controls checksum bit (added to each data character)
+        behavior.
+        - Valid options: `none`, `odd` ,`even`, `mark`, or `space`.
+    - `stop_bits:` Number of bits to use to indicate end of a character.
+        - Valid options: `one`, `one_and_a_half`, or `two`.
+    - `end_input:` Character(s) to indicate the end of a message transmission.
+        - Valid options: `termination_break`, `termination_char`, `last_bit`, or
+            `none`.
+
+##### `gpib_board_number`
+
+- The GPIB board number (also referred to as a controller) that the device is connected to.
+- If no board number is provided in the configuration, a board number of `0` is assumed.
+
+##### `device_driver`
+
+- The name of the Python driver class to use for the device (see the
+    [`tm_devices.drivers`][] API reference for a complete list of all driver
+    names).
+- Required when `<connection_type>` is `REST_API`
+- Ignored when `<connection_type>` is not `REST_API`
+
+### General Configuration Options
 
 These options are used to configure runtime behaviors of `tm_devices`.
 
@@ -238,62 +257,91 @@ options:
   log_uncaught_exceptions: true
 ```
 
-These are all `false` by default if not defined, set to `true` to modify the
-runtime behavior configuration.
+#### General Configuration Options Definitions
 
-- `verbose_mode`
-    - This config option will turn on more printouts to stdout.
-- `verbose_visa`
-    - This config option will turn on extremely verbose VISA logging to stdout.
-- `standalone`
-    - This config option specifies to use the PyVISA-py VISA backend, which
-        does not require any actual visa.dll to exist on the system to work.
-    - By default, the Device Manager will default to using whatever visa.dll it
-        can find on the system.
-- `setup_cleanup`
-    - This config option will make the Device Manager run a cleanup on setup, so
-        devices will get reset on connection.
-- `teardown_cleanup`
-    - This config option will make the Device Manager run a cleanup on teardown,
-        so devices will get reset on close.
-- `retry_visa_connection`
-    - This config option will enable a second attempt when creating VISA connections,
-        the second attempt is made after waiting, to allow the device time to become available.
-- `default_visa_timeout`
-    - This config option is used to set the default VISA timeout value in milliseconds.
-        The default value of this config option is 5000 ms.
-- `check_for_updates`
-    - This config option will enable a check for any available updates on pypi.org for the
-        package when the `DeviceManager` is instantiated.
-- `log_console_level`
-    - This config option is used to set the log level for the console output.
-        The default value of this config option is "INFO". See the
-        [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
-- `log_file_level`
-    - This config option is used to set the log level for the file output.
-        The default value of this config option is "DEBUG". See the
-        [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
-- `log_file_directory`
-    - This config option is used to set the directory where the log files will be saved.
-        The default value of this config option is "./logs". See the
-        [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
-- `log_file_name`
-    - This config option is used to set the name of the log file.
-        The default value of this config option is a timestamped filename with the .log extension. See the
-        [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
-- `log_colored_output`
-    - This config option is used to enable or disable colored output in the console.
-        The default value of this config option is false. See the
-        [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
-- `log_pyvisa_messages`
-    - This config option is used to enable or disable logging of PyVISA messages within the
-        configured log file. The default value of this config option is false. See the
-        [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
-- `log_uncaught_exceptions`
-    - This config option is used to enable or disable logging uncaught exceptions in the log file. The
-        default value of this config option is true. Setting the `log_file_level` parameter
-        to "NONE" will disable this feature regardless of the value of `log_uncaught_exceptions`. See the
-        [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
+##### `verbose_mode`
+
+- This config option will turn on more printouts to stdout.
+
+##### `verbose_visa`
+
+- This config option will turn on extremely verbose VISA logging to stdout.
+
+##### `standalone`
+
+- This config option specifies to use the PyVISA-py VISA backend, which
+    does not require any actual visa.dll to exist on the system to work.
+- By default, the Device Manager will default to using whatever visa.dll it
+    can find on the system and fall back to using PyVISA-py's backend if no other
+    VISA backends are found.
+
+##### `setup_cleanup`
+
+- This config option will make the Device Manager run a cleanup on setup, so
+    devices will get reset on connection.
+
+##### `teardown_cleanup`
+
+- This config option will make the Device Manager run a cleanup on teardown,
+    so devices will get reset on close.
+
+##### `retry_visa_connection`
+
+- This config option will enable a second attempt when creating VISA connections,
+    the second attempt is made after waiting, to allow the device time to become available.
+
+##### `default_visa_timeout`
+
+- This config option is used to set the default VISA timeout value in milliseconds.
+    The default value of this config option is 5000 ms.
+
+##### `check_for_updates`
+
+- This config option will enable a check for any available updates on pypi.org for the
+    package when the `DeviceManager` is instantiated.
+
+##### `log_console_level`
+
+- This config option is used to set the log level for the console output.
+    The default value of this config option is "INFO". See the
+    [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
+
+##### `log_file_level`
+
+- This config option is used to set the log level for the file output.
+    The default value of this config option is "DEBUG". See the
+    [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
+
+##### `log_file_directory`
+
+- This config option is used to set the directory where the log files will be saved.
+    The default value of this config option is "./logs". See the
+    [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
+
+##### `log_file_name`
+
+- This config option is used to set the name of the log file.
+    The default value of this config option is a timestamped filename with the .log extension. See the
+    [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
+
+##### `log_colored_output`
+
+- This config option is used to enable or disable colored output in the console.
+    The default value of this config option is false. See the
+    [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
+
+##### `log_pyvisa_messages`
+
+- This config option is used to enable or disable logging of PyVISA messages within the
+    configured log file. The default value of this config option is false. See the
+    [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
+
+##### `log_uncaught_exceptions`
+
+- This config option is used to enable or disable logging uncaught exceptions in the log file. The
+    default value of this config option is true. Setting the `log_file_level` parameter
+    to "NONE" will disable this feature regardless of the value of `log_uncaught_exceptions`. See the
+    [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
 
 ### Sample Config File
 

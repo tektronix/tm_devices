@@ -99,7 +99,9 @@ urllib3 = "^2.0"
 zeroconf = "^0.136.0"
 
 [tool.poetry.group.dev.dependencies]
+dc-schema = {python = ">=3.9", version = "^0.0.8"}  # TODO: Drop Python 3.8: remove python requirement
 docutils = "^0.20"  # TODO: Drop Python 3.8: remove this when the minimum Python version is >=3.9
+jsonschema = {extras = ["format-nongpl"], version = "^4.23.0"}
 nodeenv = "^1.9.1"
 pip = "^25.0"
 poetry = "^1.8.0"

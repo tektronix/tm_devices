@@ -2,11 +2,13 @@
 
 import re
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from types import MappingProxyType
-from typing import Dict, Final, FrozenSet, List, Mapping, Optional, Tuple, Union
+from typing import Any, cast, Dict, Final, FrozenSet, List, Literal, Mapping, Optional, Tuple, Union
 
+from dc_schema import SchemaAnnotation  # pyright: ignore[reportMissingTypeStubs]
 from pyvisa import constants as pyvisa_constants
+from typing_extensions import Annotated
 
 from tm_devices.helpers.dataclass_mixins import (
     AsDictionaryMixin,
@@ -119,19 +121,59 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
     attribute when creating a
     [`SerialConfig`][tm_devices.helpers.constants_and_dataclasses.SerialConfig] object.
     """
-    baud_rate: Optional[int] = None
+    baud_rate: Annotated[
+        Optional[int],
+        SchemaAnnotation(
+            title="Baud Rate",
+            description=(
+                "The baud rate of the communication, this controls the communication frequency\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#serial_config"
+            ),
+        ),
+    ] = None
     """The baud rate controls the communication frequency."""
-    data_bits: Optional[int] = None
+    data_bits: Annotated[
+        Optional[Literal[5, 6, 7, 8]],
+        SchemaAnnotation(
+            title="Data Bits",
+            description=(
+                "The number of data bits in each character\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#serial_config"
+            ),
+        ),
+    ] = None
     """The number of data bits in each character.
 
     One of ``[5, 6, 7, 8]``.
     """
-    flow_control: Optional[FlowControl] = None
+    # TODO: schema: Figure out how to get this to show up as an enum in the schema,
+    #  maybe remove the convenience enums and use Literals
+    flow_control: Annotated[
+        Optional[FlowControl],
+        SchemaAnnotation(
+            title="Flow Control",
+            description=(
+                "The control for pausing/resuming data streaming between slower devices\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#serial_config"
+            ),
+        ),
+    ] = None
     """Control for pausing/resuming data stream between slower devices.
 
     One of ``SerialConfig.FlowControl.[none|xon_xoff|dtr_dsr|rts_cts]``.
     """
-    parity: Optional[Parity] = None
+    # TODO: schema: Figure out how to get this to show up as an enum in the schema,
+    #  maybe remove the convenience enums and use Literals
+    parity: Annotated[
+        Optional[Parity],
+        SchemaAnnotation(
+            title="Parity",
+            description=(
+                "Define if and where a checksum bit should be added to each data character\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#serial_config"
+            ),
+        ),
+    ] = None
     """Parity adds a checksum bit to each data character.
 
     This checksum bit enables the target device to determine whether the data was received
@@ -139,14 +181,36 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
 
     One of ``SerialConfig.Parity.[none|odd|even|mark|space]``.
     """
-    stop_bits: Optional[StopBits] = None
+    # TODO: schema: Figure out how to get this to show up as an enum in the schema,
+    #  maybe remove the convenience enums and use Literals
+    stop_bits: Annotated[
+        Optional[StopBits],
+        SchemaAnnotation(
+            title="Stop Bits",
+            description=(
+                "The number of bits to use to indicate the end of a frame/character\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#serial_config"
+            ),
+        ),
+    ] = None
     """Number of bits to use to indicate end of a character.
 
     The number of stop bits that indicate the end of a frame on a serial resource.
 
     One of ``SerialConfig.StopBits.[one|one_and_a_half|two]``.
     """
-    end_input: Optional[Termination] = None
+    # TODO: schema: Figure out how to get this to show up as an enum in the schema,
+    #  maybe remove the convenience enums and use Literals
+    end_input: Annotated[
+        Optional[Termination],
+        SchemaAnnotation(
+            title="End Input Character(s)",
+            description=(
+                "The specific character(s) that indicate the end of a message transmission\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#serial_config"
+            ),
+        ),
+    ] = None
     """Character(s) to indicate the end of a message transmission.
 
     One of ``SerialConfig.Termination.[termination_break|termination_char|last_bit|none]``.
@@ -157,7 +221,7 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
         if isinstance(self.baud_rate, str):
             self.baud_rate = int(self.baud_rate)
         if isinstance(self.data_bits, str):
-            self.data_bits = int(self.data_bits)
+            self.data_bits = cast(Literal[5, 6, 7, 8], int(self.data_bits))
         if isinstance(self.flow_control, str):
             self.flow_control = getattr(self.FlowControl, self.flow_control)
         if isinstance(self.parity, str):
@@ -167,15 +231,38 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
         if isinstance(self.end_input, str):
             self.end_input = getattr(self.Termination, self.end_input)
 
+    class SchemaConfig:  # pylint: disable=too-few-public-methods
+        """Schema configuration for the SerialConfig dataclass."""
+
+        annotation: Any = SchemaAnnotation(title="")
+
 
 # pylint: disable=too-many-instance-attributes
 @dataclass(frozen=True)
 class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntryEnvStrMixin):
     """Dataclass for holding configuration information for a single device."""
 
-    device_type: DeviceTypes
+    device_type: Annotated[
+        DeviceTypes,
+        SchemaAnnotation(
+            title="Device Type",
+            description=(
+                "The specific type of device to connect to\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#device_type"
+            ),
+        ),
+    ]
     """The specific device type defined in the config entry."""
-    address: str
+    address: Annotated[
+        str,
+        SchemaAnnotation(
+            title="Device Address",
+            description=(
+                "The address to use to connect to the device\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#address"
+            ),
+        ),
+    ]
     """The address used to connect to the device.
 
     Notes:
@@ -185,19 +272,83 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         - SERIAL/ASRL: serial COM port number.
         - USB: use expression format `f"{model}-{serial_number}"` (ex: `"MSO24-ABC0123"`).
     """
-    connection_type: ConnectionTypes = ConnectionTypes.TCPIP
+    connection_type: Annotated[
+        ConnectionTypes,
+        SchemaAnnotation(
+            title="Device Connection Type",
+            description=(
+                "The connection type to use to connect with the device\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#connection_type"
+            ),
+        ),
+    ] = ConnectionTypes.TCPIP
     """The specific type of connection defined in the config entry."""
-    alias: Optional[str] = None
+    alias: Annotated[
+        Optional[str],
+        SchemaAnnotation(
+            title="Device Alias",
+            description=(
+                "An alias used to access the device via the DeviceManager\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#alias"
+            ),
+        ),
+    ] = None
     """An optional key/name used to retrieve this devices from the DeviceManager."""
-    lan_port: Optional[int] = None
+    lan_port: Annotated[
+        Optional[int],
+        SchemaAnnotation(
+            title="LAN Port",
+            description=(
+                "The LAN port number to connect on, used for SOCKET/REST_API connections\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#lan_port"
+            ),
+        ),
+    ] = None
     """The port number to connect on, used for SOCKET/REST_API connections."""
-    lan_device_name: Optional[str] = None
+    lan_device_name: Annotated[
+        Optional[str],
+        SchemaAnnotation(
+            title="LAN Device Name",
+            description=(
+                "The LAN device name (e.g. 'inst0') to connect via, used for TCPIP connections\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#lan_device_name"
+            ),
+        ),
+    ] = None
     """The LAN device name to connect on, used for TCPIP connections (defaults to 'inst0')."""
-    serial_config: Optional[SerialConfig] = None
+    serial_config: Annotated[
+        Optional[SerialConfig],
+        SchemaAnnotation(
+            title="Serial Configuration Settings",
+            description=(
+                "The configuration options for SERIAL (ASRL) connections\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#serial_config"
+            ),
+        ),
+    ] = None
     """Serial configuration properties for connecting to a device over SERIAL (ASRL)."""
-    device_driver: Optional[str] = None
+    device_driver: Annotated[
+        Optional[str],
+        SchemaAnnotation(
+            title="Specific Python Device Driver Class",
+            description=(
+                "The name of a specific device driver class to use for the device, only used for "
+                "REST_API connections\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#device_driver"
+            ),
+        ),
+    ] = None
     """The name of the Python driver to use for the device (required for connection_type=REST_API, ignored otherwise)."""  # noqa: E501
-    gpib_board_number: Optional[int] = None
+    gpib_board_number: Annotated[
+        Optional[int],
+        SchemaAnnotation(
+            title="GPIB Board Number",
+            description=(
+                "The GPIB board number to use, only used for GPIB connections\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#gpib_board_number"
+            ),
+        ),
+    ] = None
     """The GPIB board number (also referred to as a controller) to be used when making a GPIB connection (defaults to 0)."""  # noqa: E501
 
     # pylint: disable=too-many-branches
@@ -425,31 +576,125 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
             raise ValueError(msg)
         return resource_expr
 
+    class SchemaConfig:  # pylint: disable=too-few-public-methods
+        """Schema configuration for the DeviceConfigEntry dataclass."""
 
+        annotation: Any = SchemaAnnotation(title="")
+
+
+# TODO: schema: Update default values to the actual value that is default?
+#  This will cause writing back the config to always write all options, but is that a bad thing?
 @dataclass
 class DMConfigOptions(AsDictionaryMixin):
     """Device Management Configuration options."""
 
-    standalone: Optional[bool] = None
+    standalone: Annotated[
+        Optional[bool],
+        SchemaAnnotation(
+            title="Standalone VISA",
+            description=(
+                "Indicate if PyVISA-py's pure Python VISA backend should be used\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#standalone"
+            ),
+        ),
+    ] = None
     """An option indicating to use PyVISA-py's pure Python VISA backend."""
-    setup_cleanup: Optional[bool] = None
+    setup_cleanup: Annotated[
+        Optional[bool],
+        SchemaAnnotation(
+            title="Cleanup device on open",
+            description=(
+                "Indicate if a device's `cleanup()` method should be run when opening "
+                "the connection\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#setup_cleanup"
+            ),
+        ),
+    ] = None
     """An option indicating to run a device's ``cleanup()`` method when opening the connection."""
-    teardown_cleanup: Optional[bool] = None
+    teardown_cleanup: Annotated[
+        Optional[bool],
+        SchemaAnnotation(
+            title="Cleanup device on close",
+            description=(
+                "Indicate if a device's `cleanup()` method should be run when closing "
+                "the connection\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#teardown_cleanup"
+            ),
+        ),
+    ] = None
     """An option indicating to run a device's ``cleanup()`` method when closing the connection."""
-    verbose_mode: Optional[bool] = None
+    verbose_mode: Annotated[
+        Optional[bool],
+        SchemaAnnotation(
+            title="Verbose mode",
+            description=(
+                "Indicate if more verbose output should be printed to stdout instead of "
+                "just the log file\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#verbose_mode"
+            ),
+        ),
+    ] = None
     """A verbosity flag to turn on more printouts to stdout."""
-    verbose_visa: Optional[bool] = None
+    verbose_visa: Annotated[
+        Optional[bool],
+        SchemaAnnotation(
+            title="Verbose VISA logging",
+            description=(
+                "Indicate if verbose VISA logging should be printed to stdout instead of "
+                "just the log file\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#verbose_visa"
+            ),
+        ),
+    ] = None
     """A verbosity flag to enable extremely verbose VISA logging to stdout."""
-    retry_visa_connection: Optional[bool] = None
+    retry_visa_connection: Annotated[
+        Optional[bool],
+        SchemaAnnotation(
+            title="Retry VISA connection",
+            description=(
+                "Indicate if the VISA connection attempt should be retried after a failure\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#retry_visa_connection"
+            ),
+        ),
+    ] = None
     """A flag to enable retrying the first VISA connection attempt."""
-    default_visa_timeout: Optional[int] = None
+    default_visa_timeout: Annotated[
+        Optional[int],
+        SchemaAnnotation(
+            title="Default VISA timeout",
+            description=(
+                "The default VISA timeout value (in milliseconds) to use when creating "
+                "VISA connections\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#default_visa_timeout"
+            ),
+        ),
+    ] = None
     """A default VISA timeout value (in milliseconds) to use when creating VISA connections.
 
     When this option is not set, a default value of 5000 milliseconds (5 seconds) is used.
     """
-    check_for_updates: Optional[bool] = None
+    check_for_updates: Annotated[
+        Optional[bool],
+        SchemaAnnotation(
+            title="Check for package updates",
+            description=(
+                "Indicate if the package should check for updates on creation of the "
+                "DeviceManager\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#check_for_updates"
+            ),
+        ),
+    ] = None
     """A flag indicating if a check for updates for the package should be performed on creation of the DeviceManager."""  # noqa: E501
-    log_console_level: Optional[str] = None
+    log_console_level: Annotated[
+        Optional[str],
+        SchemaAnnotation(
+            title="Console logging level",
+            description=(
+                "Set the logging level for the console\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#log_console_level"
+            ),
+        ),
+    ] = None
     """The logging level to set for the console.
 
     One of `["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL", "NONE"]`, see the
@@ -458,7 +703,16 @@ class DMConfigOptions(AsDictionaryMixin):
     [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more
     information.
     """
-    log_file_level: Optional[str] = None
+    log_file_level: Annotated[
+        Optional[str],
+        SchemaAnnotation(
+            title="File logging level",
+            description=(
+                "Set the logging level for the log file\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#log_file_level"
+            ),
+        ),
+    ] = None
     """The logging level to set for the log file.
 
     One of `["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL", "NONE"]`, see the
@@ -467,27 +721,63 @@ class DMConfigOptions(AsDictionaryMixin):
     [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more
     information.
     """
-    log_file_directory: Optional[str] = None
+    log_file_directory: Annotated[
+        Optional[str],
+        SchemaAnnotation(
+            title="Log file directory",
+            description=(
+                "Set the directory to save log files to\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#log_file_directory"
+            ),
+        ),
+    ] = None
     """The directory to save log files to.
 
     Defaults to "./logs". See the
     [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more
     information and default values.
     """
-    log_file_name: Optional[str] = None
+    log_file_name: Annotated[
+        Optional[str],
+        SchemaAnnotation(
+            title="Log file name",
+            description=(
+                "Set the name of the log file to save the logs to\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#log_file_name"
+            ),
+        ),
+    ] = None
     """The name of the log file to save the logs to.
 
     Defaults to a timestamped filename with the .log extension. See the
     [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more
     information and default values.
     """
-    log_colored_output: Optional[bool] = None
+    log_colored_output: Annotated[
+        Optional[bool],
+        SchemaAnnotation(
+            title="Log colored output",
+            description=(
+                "Indicate if colored output should be used for the console logging\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#log_colored_output"
+            ),
+        ),
+    ] = None
     """Whether to use colored output from the `colorlog` package for the console.
 
     Defaults to False. See the [`configure_logging()`][tm_devices.helpers.logging.configure_logging]
     function for more information and default values.
     """
-    log_pyvisa_messages: Optional[bool] = None
+    log_pyvisa_messages: Annotated[
+        Optional[bool],
+        SchemaAnnotation(
+            title="Log PyVISA messages",
+            description=(
+                "Indicate if PyVISA logs should be included in the log file\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#log_pyvisa_messages"
+            ),
+        ),
+    ] = None
     """Whether to include logs from the `pyvisa` package in the log file.
 
     Defaults to False. See the [`configure_logging()`][tm_devices.helpers.logging.configure_logging]
@@ -530,6 +820,50 @@ class DMConfigOptions(AsDictionaryMixin):
                 for opt_key, opt_val in self.to_dict(ignore_none=True).items()
                 if opt_val
             ]
+        )
+
+    class SchemaConfig:  # pylint: disable=too-few-public-methods
+        """Schema configuration for the DMConfigOptions dataclass."""
+
+        annotation: Any = SchemaAnnotation(title="")
+
+
+@dataclass
+class TMDevicesConfigFileSchema:
+    """Configuration file schema for the tm_devices package."""
+
+    devices: Annotated[
+        List[DeviceConfigEntry],
+        SchemaAnnotation(
+            title="List of devices",
+            description=(
+                "A list of devices for the DeviceManager to connect to\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#device-configuration"
+            ),
+        ),
+    ] = field(default_factory=list)
+    """A list of devices for the DeviceManager to connect to."""
+    options: Annotated[
+        DMConfigOptions,
+        SchemaAnnotation(
+            title="tm_devices config options",
+            description=(
+                "The options controlling the behavior of the tm_devices package\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#general-configuration-options"
+            ),
+        ),
+    ] = field(default_factory=DMConfigOptions)
+    """The options controlling the behavior of the tm_devices package."""
+
+    class SchemaConfig:  # pylint: disable=too-few-public-methods
+        """Schema configuration for the TMDevicesConfigFileSchema dataclass."""
+
+        annotation: Any = SchemaAnnotation(
+            title="tm_devices Configuration File JSON Schema",
+            description=(
+                "Configuration options for the tm_devices Python package\n"
+                "https://github.com/tektronix/tm_devices"
+            ),
         )
 
 

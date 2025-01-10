@@ -63,7 +63,7 @@ outside the Python code for ease of automation
 
 The amount of console output and logging saved to the log file can be customized as needed. This
 configuration can be done in the Python code itself as demonstrated here, or by using the
-[config file](configuration.md#config-options) or
+[config file](configuration.md#general-configuration-options) or
 [environment variable](configuration.md#environment-variable). See the
 [`configure_logging()` API documentation][tm_devices.helpers.logging.configure_logging] for more
 details about logging configuration.
