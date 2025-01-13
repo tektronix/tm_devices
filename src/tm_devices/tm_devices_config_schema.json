@@ -12,8 +12,7 @@
                 "USB",
                 "GPIB",
                 "MOCK"
-            ],
-            "title": "ConnectionTypes"
+            ]
         },
         "DMConfigOptions": {
             "additionalProperties": false,
@@ -297,8 +296,7 @@
                 "SMU",
                 "SS",
                 "UNSUPPORTED"
-            ],
-            "title": "DeviceTypes"
+            ]
         },
         "SerialConfig": {
             "additionalProperties": false,

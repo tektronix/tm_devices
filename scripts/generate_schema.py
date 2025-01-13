@@ -14,6 +14,7 @@ This script does the following:
 """
 
 # TODO: add a step that validates the links in the schema are still working
+# TODO: add pre-commit hook to check that the schema file is always up-to-date
 
 import json
 import logging
@@ -263,10 +264,13 @@ def main() -> None:
     logger.info(
         "Testing the generated schema file against samples from the tests/samples/ directory"
     )
+    sample_file_dir = Path(__file__).parents[1] / "tests/samples"
     for ajv_test_file, expected_status in (
-        (Path(__file__).parents[1] / Path("tests/samples/sample_devices.yaml"), "valid"),
-        # TODO: get this working: (Path(__file__).parents[1] / Path("tests/samples/sample_devices.toml"), "valid"),  # noqa: E501
-        (Path(__file__).parents[1] / Path("tests/samples/invalid_config_option.yaml"), "invalid"),
+        (sample_file_dir / "sample_devices.yaml", "valid"),
+        (sample_file_dir / "simulated_config_no_cleanup.yaml", "valid"),
+        (sample_file_dir / "simulated_config_no_devices.yaml", "valid"),
+        (sample_file_dir / "unsupported_device_type_config.yaml", "valid"),
+        (sample_file_dir / "invalid_config_option.yaml", "invalid"),
     ):
         ajv_test_cmd = [
             f"ajv{'.cmd' if platform.system().upper() == 'WINDOWS' else ''}",

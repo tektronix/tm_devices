@@ -259,7 +259,8 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         - TCPIP: IP address or the hostname.
         - SOCKET: IP address or the hostname (must define `lan_port` field).
         - REST_API: IP address or the hostname (must define `lan_port` field).
-        - SERIAL/ASRL: serial COM port number.
+        - SERIAL/ASRL: serial COM port number (as a string).
+        - GPIB: the GPIB address number (as a string).
         - USB: use expression format `f"{model}-{serial_number}"` (ex: `"MSO24-ABC0123"`).
     """
     connection_type: Annotated[

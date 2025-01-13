@@ -25,7 +25,8 @@ Also see the [`DeviceManager`][tm_devices.DeviceManager] API reference.
 
 Use a yaml (or toml) configuration file to avoid hard coding specific devices
 into your scripts. The config file stores a list of device entries and runtime
-behavior options.
+behavior options. The yaml file is preferred as it will provide better
+autocomplete support and a cleaner, easier to read file structure.
 
 The file allows you to set up a list of devices once and is easy to edit when
 things change, but does not require modification with every script execution.
@@ -165,9 +166,14 @@ devices:
 - `<serial_port>`
     - The COM port to use, usually a number. For example, an usb-to-serial
         adapter connected to the USB port number 1 would show up as "COM1", so
-        `address='1'`.
+        `address='1'`. Note, the number must be enclosed in quotes to avoid the
+        schema validation flagging it as a violation of the expected data type,
+        which is a string.
 - `<gpib_address>`
-    - The GPIB address, a number in the range 0 to 30.
+    - The GPIB address, a number in the range 0 to 30. For example, a device
+        connected to the GPIB bus at address 5 would have `address='5'`. Note, the
+        number must be enclosed in quotes to avoid the schema validation flagging it as a
+        violation of the expected data type, which is a string.
 - For a breakdown of what is needed for each connection type, see
     [`DeviceConfigEntry.address`][tm_devices.helpers.constants_and_dataclasses.DeviceConfigEntry.address]
 
