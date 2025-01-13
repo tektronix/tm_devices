@@ -40,26 +40,29 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-STRICT_JSON_METASCHEMA_URL = (
-    "https://json.schemastore.org/metaschema-draft-07-unofficial-strict.json"
-)
-STRICT_JSON_METASCHEMA_FILE = Path(__file__).parents[1] / Path(
-    "temp_metaschema-draft-07-unofficial-strict.json"
-)
+JSON_METASCHEMA_URL = "https://json.schemastore.org/metaschema-draft-07-unofficial-strict.json"
+JSON_METASCHEMA_FILE = Path(__file__).parents[1] / Path("temp_metaschema.json")
 SCHEMA_OUTPUT_FILE = Path(__file__).parents[1] / Path(
     "src/tm_devices/tm_devices_config_schema.json"
 )
 LOGGING_SPACE_OFFSET = " " * 37
 
 
-def download_strict_json_metaschema() -> None:
-    """Download the strict json metaschema."""
+def download_json_metaschema() -> None:
+    """Download the json metaschema and slightly modify it."""
     # Download the file
-    response = requests.get(STRICT_JSON_METASCHEMA_URL, timeout=10)
+    response = requests.get(JSON_METASCHEMA_URL, timeout=10)
     response.raise_for_status()  # Check for HTTP errors
+    schema_str = response.text
+    # Slightly modify the schema to remove an unneeded attribute that causes warnings to be thrown
+    schema_str = schema_str.replace("\r\n", "\n").replace('"format": "regex",', "")
+    # Remove the type and title requirements, since those don't add much value
+    schema_str = schema_str.replace(
+        '"required": ["title", "description", "type"]', '"required": ["description"]'
+    )
     # Write the file locally, removing an unneeded attribute that causes warnings to be thrown
-    STRICT_JSON_METASCHEMA_FILE.write_text(
-        response.text.replace("\r\n", "\n").replace('"format": "regex",', "")
+    JSON_METASCHEMA_FILE.write_text(
+        schema_str,
     )
 
 
@@ -175,11 +178,6 @@ def recursively_post_process_schema(  # noqa: C901,PLR0912
         # Remove empty titles
         if schema.get("title") == "":
             schema.pop("title")
-        # Add types to properties that are missing them
-        if schema.get("serial_config"):
-            schema["serial_config"]["type"] = "object"
-        if schema.get("data_bits"):
-            schema["data_bits"]["type"] = "integer"
 
         for key, value in list(schema.items()):
             if key == "allOf" and isinstance(value, list) and len(value) == 1:  # pyright: ignore[reportUnknownArgumentType]
@@ -196,14 +194,6 @@ def recursively_post_process_schema(  # noqa: C901,PLR0912
                         schema["type"] = "string"
                     else:
                         schema["type"] = "object"
-            elif (
-                key == "anyOf"
-                and isinstance(value, list)
-                and len(value) == 2  # noqa: PLR2004  # pyright: ignore[reportUnknownArgumentType]
-                and all(next(iter(y.keys())) == "type" for y in value)  # pyright: ignore[reportUnknownArgumentType,reportUnknownMemberType,reportUnknownVariableType]
-                and any(x.get("type") == "null" for x in value)  # pyright: ignore[reportUnknownArgumentType,reportUnknownMemberType,reportUnknownVariableType]
-            ):
-                schema["type"] = value[0].get("type")  # pyright: ignore[reportUnknownMemberType]
             elif key == "enum" and isinstance(value, list):
                 # Filter out items that start with "_UNIT_TEST"
                 schema[key] = [item for item in value if not str(item).startswith("_UNIT_TEST")]  # pyright: ignore[reportUnknownArgumentType,reportUnknownVariableType]
@@ -218,9 +208,9 @@ def recursively_post_process_schema(  # noqa: C901,PLR0912
 def main() -> None:
     """Run the script."""
     # Download and install dependencies
-    logger.info("Beginning download of the strict json metaschema")
-    download_strict_json_metaschema()
-    logger.info("Finished downloading the strict json metaschema")
+    logger.info("Beginning download of the json metaschema")
+    download_json_metaschema()
+    logger.info("Finished downloading the json metaschema")
     if not shutil.which("ajv"):
         logger.info("Beginning installation of ajv-cli via npm")
         ajv_install_command = [
@@ -261,7 +251,7 @@ def main() -> None:
         "-d",
         SCHEMA_OUTPUT_FILE.as_posix(),
         "-s",
-        STRICT_JSON_METASCHEMA_FILE.as_posix(),
+        JSON_METASCHEMA_FILE.as_posix(),
         "--strict=false",
         "--spec=draft7",
         "--all-errors",
@@ -294,6 +284,8 @@ def main() -> None:
         logger.info("Testing against %s, expected to be %s", ajv_test_file, expected_status)
         run_command(ajv_test_cmd, replace_commas_in_failure_stderr_with_newlines=True)
         logger.info("Test passed, %s is %s", ajv_test_file, expected_status)
+
+    logger.info("Successfully generated the schema for the tm_devices configuration file")
 
 
 if __name__ == "__main__":

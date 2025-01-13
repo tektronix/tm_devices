@@ -12,7 +12,8 @@
                 "USB",
                 "GPIB",
                 "MOCK"
-            ]
+            ],
+            "title": "ConnectionTypes"
         },
         "DMConfigOptions": {
             "additionalProperties": false,
@@ -27,9 +28,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "Indicate if the package should check for updates on creation of the DeviceManager\nhttps://tm-devices.readthedocs.io/stable/configuration/#check_for_updates",
-                    "title": "Check for package updates",
-                    "type": "boolean"
+                    "description": "Indicate if the package should check for updates on creation of the DeviceManager\nhttps://tm-devices.readthedocs.io/stable/configuration/#check_for_updates"
                 },
                 "default_visa_timeout": {
                     "anyOf": [
@@ -41,9 +40,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "The default VISA timeout value (in milliseconds) to use when creating VISA connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#default_visa_timeout",
-                    "title": "Default VISA timeout",
-                    "type": "integer"
+                    "description": "The default VISA timeout value (in milliseconds) to use when creating VISA connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#default_visa_timeout"
                 },
                 "log_colored_output": {
                     "anyOf": [
@@ -55,9 +52,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "Indicate if colored output should be used for the console logging\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_colored_output",
-                    "title": "Log colored output",
-                    "type": "boolean"
+                    "description": "Indicate if colored output should be used for the console logging\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_colored_output"
                 },
                 "log_console_level": {
                     "anyOf": [
@@ -69,9 +64,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "Set the logging level for the console\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_console_level",
-                    "title": "Console logging level",
-                    "type": "string"
+                    "description": "Set the logging level for the console\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_console_level"
                 },
                 "log_file_directory": {
                     "anyOf": [
@@ -83,9 +76,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "Set the directory to save log files to\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_file_directory",
-                    "title": "Log file directory",
-                    "type": "string"
+                    "description": "Set the directory to save log files to\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_file_directory"
                 },
                 "log_file_level": {
                     "anyOf": [
@@ -97,9 +88,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "Set the logging level for the log file\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_file_level",
-                    "title": "File logging level",
-                    "type": "string"
+                    "description": "Set the logging level for the log file\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_file_level"
                 },
                 "log_file_name": {
                     "anyOf": [
@@ -111,9 +100,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "Set the name of the log file to save the logs to\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_file_name",
-                    "title": "Log file name",
-                    "type": "string"
+                    "description": "Set the name of the log file to save the logs to\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_file_name"
                 },
                 "log_pyvisa_messages": {
                     "anyOf": [
@@ -125,9 +112,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "Indicate if PyVISA logs should be included in the log file\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_pyvisa_messages",
-                    "title": "Log PyVISA messages",
-                    "type": "boolean"
+                    "description": "Indicate if PyVISA logs should be included in the log file\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_pyvisa_messages"
                 },
                 "retry_visa_connection": {
                     "anyOf": [
@@ -139,9 +124,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "Indicate if the VISA connection attempt should be retried after a failure\nhttps://tm-devices.readthedocs.io/stable/configuration/#retry_visa_connection",
-                    "title": "Retry VISA connection",
-                    "type": "boolean"
+                    "description": "Indicate if the VISA connection attempt should be retried after a failure\nhttps://tm-devices.readthedocs.io/stable/configuration/#retry_visa_connection"
                 },
                 "setup_cleanup": {
                     "anyOf": [
@@ -153,9 +136,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "Indicate if a device's `cleanup()` method should be run when opening the connection\nhttps://tm-devices.readthedocs.io/stable/configuration/#setup_cleanup",
-                    "title": "Cleanup device on open",
-                    "type": "boolean"
+                    "description": "Indicate if a device's `cleanup()` method should be run when opening the connection\nhttps://tm-devices.readthedocs.io/stable/configuration/#setup_cleanup"
                 },
                 "standalone": {
                     "anyOf": [
@@ -167,9 +148,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "Indicate if PyVISA-py's pure Python VISA backend should be used\nhttps://tm-devices.readthedocs.io/stable/configuration/#standalone",
-                    "title": "Standalone VISA",
-                    "type": "boolean"
+                    "description": "Indicate if PyVISA-py's pure Python VISA backend should be used\nhttps://tm-devices.readthedocs.io/stable/configuration/#standalone"
                 },
                 "teardown_cleanup": {
                     "anyOf": [
@@ -181,9 +160,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "Indicate if a device's `cleanup()` method should be run when closing the connection\nhttps://tm-devices.readthedocs.io/stable/configuration/#teardown_cleanup",
-                    "title": "Cleanup device on close",
-                    "type": "boolean"
+                    "description": "Indicate if a device's `cleanup()` method should be run when closing the connection\nhttps://tm-devices.readthedocs.io/stable/configuration/#teardown_cleanup"
                 },
                 "verbose_mode": {
                     "anyOf": [
@@ -195,9 +172,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "Indicate if more verbose output should be printed to stdout instead of just the log file\nhttps://tm-devices.readthedocs.io/stable/configuration/#verbose_mode",
-                    "title": "Verbose mode",
-                    "type": "boolean"
+                    "description": "Indicate if more verbose output should be printed to stdout instead of just the log file\nhttps://tm-devices.readthedocs.io/stable/configuration/#verbose_mode"
                 },
                 "verbose_visa": {
                     "anyOf": [
@@ -209,9 +184,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "Indicate if verbose VISA logging should be printed to stdout instead of just the log file\nhttps://tm-devices.readthedocs.io/stable/configuration/#verbose_visa",
-                    "title": "Verbose VISA logging",
-                    "type": "boolean"
+                    "description": "Indicate if verbose VISA logging should be printed to stdout instead of just the log file\nhttps://tm-devices.readthedocs.io/stable/configuration/#verbose_visa"
                 }
             },
             "type": "object"
@@ -221,7 +194,6 @@
             "properties": {
                 "address": {
                     "description": "The address to use to connect to the device\nhttps://tm-devices.readthedocs.io/stable/configuration/#address",
-                    "title": "Device Address",
                     "type": "string"
                 },
                 "alias": {
@@ -234,16 +206,12 @@
                         }
                     ],
                     "default": null,
-                    "description": "An alias used to access the device via the DeviceManager\nhttps://tm-devices.readthedocs.io/stable/configuration/#alias",
-                    "title": "Device Alias",
-                    "type": "string"
+                    "description": "An alias used to access the device via the DeviceManager\nhttps://tm-devices.readthedocs.io/stable/configuration/#alias"
                 },
                 "connection_type": {
                     "$ref": "#/definitions/ConnectionTypes",
                     "default": "TCPIP",
-                    "description": "The connection type to use to connect with the device\nhttps://tm-devices.readthedocs.io/stable/configuration/#connection_type",
-                    "title": "Device Connection Type",
-                    "type": "string"
+                    "description": "The connection type to use to connect with the device\nhttps://tm-devices.readthedocs.io/stable/configuration/#connection_type"
                 },
                 "device_driver": {
                     "anyOf": [
@@ -255,15 +223,11 @@
                         }
                     ],
                     "default": null,
-                    "description": "The name of a specific device driver class to use for the device, only used for REST_API connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#device_driver",
-                    "title": "Specific Python Device Driver Class",
-                    "type": "string"
+                    "description": "The name of a specific device driver class to use for the device, only used for REST_API connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#device_driver"
                 },
                 "device_type": {
                     "$ref": "#/definitions/DeviceTypes",
-                    "description": "The specific type of device to connect to\nhttps://tm-devices.readthedocs.io/stable/configuration/#device_type",
-                    "title": "Device Type",
-                    "type": "string"
+                    "description": "The specific type of device to connect to\nhttps://tm-devices.readthedocs.io/stable/configuration/#device_type"
                 },
                 "gpib_board_number": {
                     "anyOf": [
@@ -275,9 +239,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "The GPIB board number to use, only used for GPIB connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#gpib_board_number",
-                    "title": "GPIB Board Number",
-                    "type": "integer"
+                    "description": "The GPIB board number to use, only used for GPIB connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#gpib_board_number"
                 },
                 "lan_device_name": {
                     "anyOf": [
@@ -289,9 +251,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "The LAN device name (e.g. 'inst0') to connect via, used for TCPIP connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#lan_device_name",
-                    "title": "LAN Device Name",
-                    "type": "string"
+                    "description": "The LAN device name (e.g. 'inst0') to connect via, used for TCPIP connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#lan_device_name"
                 },
                 "lan_port": {
                     "anyOf": [
@@ -303,9 +263,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "The LAN port number to connect on, used for SOCKET/REST_API connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#lan_port",
-                    "title": "LAN Port",
-                    "type": "integer"
+                    "description": "The LAN port number to connect on, used for SOCKET/REST_API connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#lan_port"
                 },
                 "serial_config": {
                     "anyOf": [
@@ -318,9 +276,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "The configuration options for SERIAL (ASRL) connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#serial_config",
-                    "title": "Serial Configuration Settings",
-                    "type": "object"
+                    "description": "The configuration options for SERIAL (ASRL) connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#serial_config"
                 }
             },
             "required": [
@@ -341,7 +297,8 @@
                 "SMU",
                 "SS",
                 "UNSUPPORTED"
-            ]
+            ],
+            "title": "DeviceTypes"
         },
         "SerialConfig": {
             "additionalProperties": false,
@@ -356,9 +313,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "The baud rate of the communication, this controls the communication frequency\nhttps://tm-devices.readthedocs.io/stable/configuration/#serial_config",
-                    "title": "Baud Rate",
-                    "type": "integer"
+                    "description": "The baud rate of the communication, this controls the communication frequency\nhttps://tm-devices.readthedocs.io/stable/configuration/#serial_config"
                 },
                 "data_bits": {
                     "anyOf": [
@@ -375,9 +330,7 @@
                         }
                     ],
                     "default": null,
-                    "description": "The number of data bits in each character\nhttps://tm-devices.readthedocs.io/stable/configuration/#serial_config",
-                    "title": "Data Bits",
-                    "type": "integer"
+                    "description": "The number of data bits in each character\nhttps://tm-devices.readthedocs.io/stable/configuration/#serial_config"
                 },
                 "end_input": {
                     "anyOf": [
@@ -385,13 +338,19 @@
                             "type": "number"
                         },
                         {
+                            "enum": [
+                                "termination_break",
+                                "termination_char",
+                                "last_bit",
+                                "none"
+                            ]
+                        },
+                        {
                             "type": "null"
                         }
                     ],
                     "default": null,
-                    "description": "The specific character(s) that indicate the end of a message transmission\nhttps://tm-devices.readthedocs.io/stable/configuration/#serial_config",
-                    "title": "End Input Character(s)",
-                    "type": "number"
+                    "description": "The specific character(s) that indicate the end of a message transmission\nhttps://tm-devices.readthedocs.io/stable/configuration/#serial_config"
                 },
                 "flow_control": {
                     "anyOf": [
@@ -399,13 +358,19 @@
                             "type": "number"
                         },
                         {
+                            "enum": [
+                                "none",
+                                "xon_xoff",
+                                "dtr_dsr",
+                                "rts_cts"
+                            ]
+                        },
+                        {
                             "type": "null"
                         }
                     ],
                     "default": null,
-                    "description": "The control for pausing/resuming data streaming between slower devices\nhttps://tm-devices.readthedocs.io/stable/configuration/#serial_config",
-                    "title": "Flow Control",
-                    "type": "number"
+                    "description": "The control for pausing/resuming data streaming between slower devices\nhttps://tm-devices.readthedocs.io/stable/configuration/#serial_config"
                 },
                 "parity": {
                     "anyOf": [
@@ -413,13 +378,20 @@
                             "type": "number"
                         },
                         {
+                            "enum": [
+                                "none",
+                                "odd",
+                                "even",
+                                "mark",
+                                "space"
+                            ]
+                        },
+                        {
                             "type": "null"
                         }
                     ],
                     "default": null,
-                    "description": "Define if and where a checksum bit should be added to each data character\nhttps://tm-devices.readthedocs.io/stable/configuration/#serial_config",
-                    "title": "Parity",
-                    "type": "number"
+                    "description": "Define if and where a checksum bit should be added to each data character\nhttps://tm-devices.readthedocs.io/stable/configuration/#serial_config"
                 },
                 "stop_bits": {
                     "anyOf": [
@@ -427,13 +399,18 @@
                             "type": "number"
                         },
                         {
+                            "enum": [
+                                "one",
+                                "one_and_a_half",
+                                "two"
+                            ]
+                        },
+                        {
                             "type": "null"
                         }
                     ],
                     "default": null,
-                    "description": "The number of bits to use to indicate the end of a frame/character\nhttps://tm-devices.readthedocs.io/stable/configuration/#serial_config",
-                    "title": "Stop Bits",
-                    "type": "number"
+                    "description": "The number of bits to use to indicate the end of a frame/character\nhttps://tm-devices.readthedocs.io/stable/configuration/#serial_config"
                 }
             },
             "type": "object"
@@ -447,14 +424,11 @@
                 "$ref": "#/definitions/DeviceConfigEntry",
                 "type": "object"
             },
-            "title": "List of devices",
             "type": "array"
         },
         "options": {
             "$ref": "#/definitions/DMConfigOptions",
-            "description": "The options controlling the behavior of the tm_devices package\nhttps://tm-devices.readthedocs.io/stable/configuration/#general-configuration-options",
-            "title": "tm_devices config options",
-            "type": "object"
+            "description": "The options controlling the behavior of the tm_devices package\nhttps://tm-devices.readthedocs.io/stable/configuration/#general-configuration-options"
         }
     },
     "title": "tm_devices Configuration File JSON Schema",

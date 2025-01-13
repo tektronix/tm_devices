@@ -124,18 +124,20 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
     baud_rate: Annotated[
         Optional[int],
         SchemaAnnotation(
-            title="Baud Rate",
             description=(
                 "The baud rate of the communication, this controls the communication frequency\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#serial_config"
             ),
         ),
     ] = None
-    """The baud rate controls the communication frequency."""
+    """The baud rate controls the communication frequency.
+
+    This is a list of common baud rates:
+    ``[115200, 57600, 38400, 19200, 9600, 4800, 2400, 1200, 600, 300]``
+    """
     data_bits: Annotated[
         Optional[Literal[5, 6, 7, 8]],
         SchemaAnnotation(
-            title="Data Bits",
             description=(
                 "The number of data bits in each character\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#serial_config"
@@ -146,12 +148,9 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
 
     One of ``[5, 6, 7, 8]``.
     """
-    # TODO: schema: Figure out how to get this to show up as an enum in the schema,
-    #  maybe remove the convenience enums and use Literals
     flow_control: Annotated[
-        Optional[FlowControl],
+        Optional[Union[FlowControl, Literal["none", "xon_xoff", "dtr_dsr", "rts_cts"]]],
         SchemaAnnotation(
-            title="Flow Control",
             description=(
                 "The control for pausing/resuming data streaming between slower devices\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#serial_config"
@@ -162,12 +161,9 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
 
     One of ``SerialConfig.FlowControl.[none|xon_xoff|dtr_dsr|rts_cts]``.
     """
-    # TODO: schema: Figure out how to get this to show up as an enum in the schema,
-    #  maybe remove the convenience enums and use Literals
     parity: Annotated[
-        Optional[Parity],
+        Optional[Union[Parity, Literal["none", "odd", "even", "mark", "space"]]],
         SchemaAnnotation(
-            title="Parity",
             description=(
                 "Define if and where a checksum bit should be added to each data character\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#serial_config"
@@ -181,12 +177,9 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
 
     One of ``SerialConfig.Parity.[none|odd|even|mark|space]``.
     """
-    # TODO: schema: Figure out how to get this to show up as an enum in the schema,
-    #  maybe remove the convenience enums and use Literals
     stop_bits: Annotated[
-        Optional[StopBits],
+        Optional[Union[StopBits, Literal["one", "one_and_a_half", "two"]]],
         SchemaAnnotation(
-            title="Stop Bits",
             description=(
                 "The number of bits to use to indicate the end of a frame/character\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#serial_config"
@@ -199,12 +192,11 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
 
     One of ``SerialConfig.StopBits.[one|one_and_a_half|two]``.
     """
-    # TODO: schema: Figure out how to get this to show up as an enum in the schema,
-    #  maybe remove the convenience enums and use Literals
     end_input: Annotated[
-        Optional[Termination],
+        Optional[
+            Union[Termination, Literal["termination_break", "termination_char", "last_bit", "none"]]
+        ],
         SchemaAnnotation(
-            title="End Input Character(s)",
             description=(
                 "The specific character(s) that indicate the end of a message transmission\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#serial_config"
@@ -245,7 +237,6 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     device_type: Annotated[
         DeviceTypes,
         SchemaAnnotation(
-            title="Device Type",
             description=(
                 "The specific type of device to connect to\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#device_type"
@@ -256,7 +247,6 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     address: Annotated[
         str,
         SchemaAnnotation(
-            title="Device Address",
             description=(
                 "The address to use to connect to the device\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#address"
@@ -275,7 +265,6 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     connection_type: Annotated[
         ConnectionTypes,
         SchemaAnnotation(
-            title="Device Connection Type",
             description=(
                 "The connection type to use to connect with the device\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#connection_type"
@@ -286,7 +275,6 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     alias: Annotated[
         Optional[str],
         SchemaAnnotation(
-            title="Device Alias",
             description=(
                 "An alias used to access the device via the DeviceManager\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#alias"
@@ -297,7 +285,6 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     lan_port: Annotated[
         Optional[int],
         SchemaAnnotation(
-            title="LAN Port",
             description=(
                 "The LAN port number to connect on, used for SOCKET/REST_API connections\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#lan_port"
@@ -308,7 +295,6 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     lan_device_name: Annotated[
         Optional[str],
         SchemaAnnotation(
-            title="LAN Device Name",
             description=(
                 "The LAN device name (e.g. 'inst0') to connect via, used for TCPIP connections\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#lan_device_name"
@@ -319,7 +305,6 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     serial_config: Annotated[
         Optional[SerialConfig],
         SchemaAnnotation(
-            title="Serial Configuration Settings",
             description=(
                 "The configuration options for SERIAL (ASRL) connections\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#serial_config"
@@ -330,7 +315,6 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     device_driver: Annotated[
         Optional[str],
         SchemaAnnotation(
-            title="Specific Python Device Driver Class",
             description=(
                 "The name of a specific device driver class to use for the device, only used for "
                 "REST_API connections\n"
@@ -342,7 +326,6 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
     gpib_board_number: Annotated[
         Optional[int],
         SchemaAnnotation(
-            title="GPIB Board Number",
             description=(
                 "The GPIB board number to use, only used for GPIB connections\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#gpib_board_number"
@@ -582,8 +565,6 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         annotation: Any = SchemaAnnotation(title="")
 
 
-# TODO: schema: Update default values to the actual value that is default?
-#  This will cause writing back the config to always write all options, but is that a bad thing?
 @dataclass
 class DMConfigOptions(AsDictionaryMixin):
     """Device Management Configuration options."""
@@ -591,7 +572,6 @@ class DMConfigOptions(AsDictionaryMixin):
     standalone: Annotated[
         Optional[bool],
         SchemaAnnotation(
-            title="Standalone VISA",
             description=(
                 "Indicate if PyVISA-py's pure Python VISA backend should be used\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#standalone"
@@ -602,7 +582,6 @@ class DMConfigOptions(AsDictionaryMixin):
     setup_cleanup: Annotated[
         Optional[bool],
         SchemaAnnotation(
-            title="Cleanup device on open",
             description=(
                 "Indicate if a device's `cleanup()` method should be run when opening "
                 "the connection\n"
@@ -614,7 +593,6 @@ class DMConfigOptions(AsDictionaryMixin):
     teardown_cleanup: Annotated[
         Optional[bool],
         SchemaAnnotation(
-            title="Cleanup device on close",
             description=(
                 "Indicate if a device's `cleanup()` method should be run when closing "
                 "the connection\n"
@@ -626,7 +604,6 @@ class DMConfigOptions(AsDictionaryMixin):
     verbose_mode: Annotated[
         Optional[bool],
         SchemaAnnotation(
-            title="Verbose mode",
             description=(
                 "Indicate if more verbose output should be printed to stdout instead of "
                 "just the log file\n"
@@ -638,7 +615,6 @@ class DMConfigOptions(AsDictionaryMixin):
     verbose_visa: Annotated[
         Optional[bool],
         SchemaAnnotation(
-            title="Verbose VISA logging",
             description=(
                 "Indicate if verbose VISA logging should be printed to stdout instead of "
                 "just the log file\n"
@@ -650,7 +626,6 @@ class DMConfigOptions(AsDictionaryMixin):
     retry_visa_connection: Annotated[
         Optional[bool],
         SchemaAnnotation(
-            title="Retry VISA connection",
             description=(
                 "Indicate if the VISA connection attempt should be retried after a failure\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#retry_visa_connection"
@@ -661,7 +636,6 @@ class DMConfigOptions(AsDictionaryMixin):
     default_visa_timeout: Annotated[
         Optional[int],
         SchemaAnnotation(
-            title="Default VISA timeout",
             description=(
                 "The default VISA timeout value (in milliseconds) to use when creating "
                 "VISA connections\n"
@@ -676,7 +650,6 @@ class DMConfigOptions(AsDictionaryMixin):
     check_for_updates: Annotated[
         Optional[bool],
         SchemaAnnotation(
-            title="Check for package updates",
             description=(
                 "Indicate if the package should check for updates on creation of the "
                 "DeviceManager\n"
@@ -688,7 +661,6 @@ class DMConfigOptions(AsDictionaryMixin):
     log_console_level: Annotated[
         Optional[str],
         SchemaAnnotation(
-            title="Console logging level",
             description=(
                 "Set the logging level for the console\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#log_console_level"
@@ -706,7 +678,6 @@ class DMConfigOptions(AsDictionaryMixin):
     log_file_level: Annotated[
         Optional[str],
         SchemaAnnotation(
-            title="File logging level",
             description=(
                 "Set the logging level for the log file\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#log_file_level"
@@ -724,7 +695,6 @@ class DMConfigOptions(AsDictionaryMixin):
     log_file_directory: Annotated[
         Optional[str],
         SchemaAnnotation(
-            title="Log file directory",
             description=(
                 "Set the directory to save log files to\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#log_file_directory"
@@ -740,7 +710,6 @@ class DMConfigOptions(AsDictionaryMixin):
     log_file_name: Annotated[
         Optional[str],
         SchemaAnnotation(
-            title="Log file name",
             description=(
                 "Set the name of the log file to save the logs to\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#log_file_name"
@@ -756,7 +725,6 @@ class DMConfigOptions(AsDictionaryMixin):
     log_colored_output: Annotated[
         Optional[bool],
         SchemaAnnotation(
-            title="Log colored output",
             description=(
                 "Indicate if colored output should be used for the console logging\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#log_colored_output"
@@ -771,7 +739,6 @@ class DMConfigOptions(AsDictionaryMixin):
     log_pyvisa_messages: Annotated[
         Optional[bool],
         SchemaAnnotation(
-            title="Log PyVISA messages",
             description=(
                 "Indicate if PyVISA logs should be included in the log file\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#log_pyvisa_messages"
@@ -835,7 +802,6 @@ class TMDevicesConfigFileSchema:
     devices: Annotated[
         List[DeviceConfigEntry],
         SchemaAnnotation(
-            title="List of devices",
             description=(
                 "A list of devices for the DeviceManager to connect to\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#device-configuration"
@@ -846,7 +812,6 @@ class TMDevicesConfigFileSchema:
     options: Annotated[
         DMConfigOptions,
         SchemaAnnotation(
-            title="tm_devices config options",
             description=(
                 "The options controlling the behavior of the tm_devices package\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#general-configuration-options"
