@@ -18,6 +18,33 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.0.0 (2025-01-13)
+
+### Merged Pull Requests
+
+- feat: added fast acq support for the mso2 model. ([#368](https://github.com/tektronix/tm_devices/pull/368))
+- python-deps(deps-dev): update ruff requirement from 0.8.4 to 0.8.6 in the python-dependencies group ([#366](https://github.com/tektronix/tm_devices/pull/366))
+- gh-actions(deps): bump tektronix/python-package-ci-cd ([#346](https://github.com/tektronix/tm_devices/pull/346))
+- fix: updated get_buffers() with logic to handle empty buffer ([#364](https://github.com/tektronix/tm_devices/pull/364))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#347](https://github.com/tektronix/tm_devices/pull/347))
+- fix: allow empty returns from tsp_device.get_buffers() ([#362](https://github.com/tektronix/tm_devices/pull/362))
+- python-deps(deps-dev): update ruff requirement from 0.8.2 to 0.8.3 in the python-dependencies group ([#361](https://github.com/tektronix/tm_devices/pull/361))
+- docs: Remove section of contribution guide that duplicates a later section ([#358](https://github.com/tektronix/tm_devices/pull/358))
+- python-deps(deps-dev): update ruff requirement from 0.7.4 to 0.8.0 in the python-dependencies group ([#355](https://github.com/tektronix/tm_devices/pull/355))
+- fix: Fix the documentation to not show the mermaid tooltip clipping at the top of each page with an inheritance diagram ([#354](https://github.com/tektronix/tm_devices/pull/354))
+- chore: Remove unused env var from .readthedocs.yml ([#353](https://github.com/tektronix/tm_devices/pull/353))
+- Enable pawamoy insiders docs features ([#352](https://github.com/tektronix/tm_devices/pull/352))
+- feat: Added Full python API support for MDO3 model. ([#349](https://github.com/tektronix/tm_devices/pull/349))
+- python-deps(deps-dev): update ruff requirement from 0.7.3 to 0.7.4 in the python-dependencies group ([#351](https://github.com/tektronix/tm_devices/pull/351))
+- Use logging module instead of prints ([#345](https://github.com/tektronix/tm_devices/pull/345))
+- chore: Update pyright dependency and use more reliable method of installing local nodejs for it ([#344](https://github.com/tektronix/tm_devices/pull/344))
+- python-deps(deps-dev): update ruff requirement from 0.7.1 to 0.7.2 in the python-dependencies group ([#343](https://github.com/tektronix/tm_devices/pull/343))
+- Add screen capture functionality for TekScope device driver family ([#342](https://github.com/tektronix/tm_devices/pull/342))
+- Refactor the internal package structure and change how driver classes inherit functionality ([#333](https://github.com/tektronix/tm_devices/pull/333))
+- python-deps(deps): bump the python-dependencies group with 3 updates ([#341](https://github.com/tektronix/tm_devices/pull/341))
+
 ### Added
 
 - Added a new mixin, `ScreenCaptureMixin`, that defines methods/properties used for capturing screenshots from devices.
