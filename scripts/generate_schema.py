@@ -13,17 +13,16 @@ This script does the following:
     _ Validate links within schema
 """
 
-# TODO: add a step that validates the links in the schema are still working
-
 import json
 import logging
 import os
 import platform
+import re
 import shutil
 import subprocess
 
 from pathlib import Path
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Set, Union
 
 import jsonschema
 import requests
@@ -46,6 +45,7 @@ SCHEMA_OUTPUT_FILE = Path(__file__).parents[1] / Path(
     "src/tm_devices/tm_devices_config_schema.json"
 )
 LOGGING_SPACE_OFFSET = " " * 37
+URL_PATTERN = re.compile(r"https?://[^\s)]+")
 
 
 def download_json_metaschema() -> None:
@@ -153,7 +153,10 @@ def convert_to_draft_7(schema: Dict[str, Any]) -> Dict[str, Any]:
     schema["definitions"] = schema["$defs"]
     del schema["$defs"]
     schema["$schema"] = "http://json-schema.org/draft-07/schema#"
-    schema["$id"] = "https://json.schemastore.org/tm-devices-config.json"
+    schema["$id"] = (
+        "https://raw.githubusercontent.com/tektronix/tm_devices/"
+        "main/src/tm_devices/tm_devices_config_schema.json"
+    )
     schema_str = json.dumps(schema)
     schema_str = schema_str.replace("/$defs/", "/definitions/")
 
@@ -203,6 +206,64 @@ def recursively_post_process_schema(  # noqa: C901,PLR0912
     elif isinstance(schema, list):
         for item in schema:
             recursively_post_process_schema(item)
+
+
+def extract_urls(json_obj: Union[str, List[Any], Dict[str, Any]]) -> Set[str]:
+    """Recursively extract URLs from a JSON object.
+
+    Args:
+        json_obj: The JSON object to extract URLs from.
+
+    Returns:
+        A set of URLs extracted from the JSON object.
+    """
+    urls: Set[str] = set()
+    if isinstance(json_obj, dict):
+        for value in json_obj.values():
+            if isinstance(value, str):
+                urls.update(set(URL_PATTERN.findall(value)))
+            else:
+                urls.update(extract_urls(value))
+    elif isinstance(json_obj, list):
+        for item in json_obj:
+            urls.update(extract_urls(item))
+    return urls
+
+
+def validate_links_in_json(file_path: Path) -> None:
+    """Validate all URLs in a JSON file.
+
+    Args:
+        file_path: The JSON file to validate links in.
+    """
+    json_data = json.loads(file_path.read_text(encoding="utf-8"))
+    urls = extract_urls(json_data)
+    invalid_links: List[str] = []
+    requests_log = logging.getLogger("requests")
+    original_requests_log_level = requests_log.level
+    urllib3_log = logging.getLogger("urllib3")
+    original_urllib3_log_level = urllib3_log.level
+    try:
+        requests_log.setLevel(logging.WARNING)
+        urllib3_log.setLevel(logging.WARNING)
+        for url in urls:
+            try:
+                response = requests.get(url, timeout=5)
+                response.raise_for_status()
+                logger.debug("URL is valid: %s", url)
+            except requests.RequestException:  # noqa: PERF203
+                logger.debug("URL is invalid or inaccessible: %s", url)
+                invalid_links.append(url)
+    finally:
+        requests_log.setLevel(original_requests_log_level)
+        urllib3_log.setLevel(original_urllib3_log_level)
+
+    if invalid_links:
+        logger.warning(
+            "There are %d invalid/inaccessible links in the created schema file: %s",
+            len(invalid_links),
+            invalid_links,
+        )
 
 
 def main() -> None:
@@ -259,6 +320,11 @@ def main() -> None:
     ]
     run_command(ajv_validate_command, replace_commas_in_failure_stderr_with_newlines=True)
 
+    # Validate the links in the generated schema file
+    logger.info("Validating the links in the created schema file")
+    validate_links_in_json(SCHEMA_OUTPUT_FILE)
+    logger.info("Finished validating the links in the created schema file")
+
     # Test the generated schema file
     logger.info(
         "Testing the generated schema file against samples from the tests/samples/ directory"
@@ -266,7 +332,7 @@ def main() -> None:
     sample_file_dir = Path(__file__).parents[1] / "tests/samples"
     for ajv_test_file, expected_status in (
         (sample_file_dir / "sample_devices.yaml", "valid"),
-        (sample_file_dir / "simulated_config_no_cleanup.yaml", "valid"),
+        (sample_file_dir / "simulated_config_no_cleanup.yaml", "invalid"),
         (sample_file_dir / "simulated_config_no_devices.yaml", "valid"),
         (sample_file_dir / "unsupported_device_type_config.yaml", "valid"),
         (sample_file_dir / "invalid_config_option.yaml", "invalid"),

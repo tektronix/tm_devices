@@ -1,5 +1,5 @@
 {
-    "$id": "https://json.schemastore.org/tm-devices-config.json",
+    "$id": "https://raw.githubusercontent.com/tektronix/tm_devices/main/src/tm_devices/tm_devices_config_schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": false,
     "definitions": {
