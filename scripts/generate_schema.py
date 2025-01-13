@@ -14,7 +14,6 @@ This script does the following:
 """
 
 # TODO: add a step that validates the links in the schema are still working
-# TODO: add pre-commit hook to check that the schema file is always up-to-date
 
 import json
 import logging
