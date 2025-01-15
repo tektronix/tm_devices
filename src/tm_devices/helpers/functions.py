@@ -31,6 +31,9 @@ from tm_devices.helpers.constants_and_dataclasses import (
     VISA_RESOURCE_EXPRESSION_REGEX,
 )
 from tm_devices.helpers.enums import CustomStrEnum, SupportedModels
+from tm_devices.helpers.logging import (
+    _log_to_specific_handler_type_only,  # pyright: ignore[reportPrivateUsage]
+)
 from tm_devices.helpers.standalone_functions import validate_address
 
 _logger: logging.Logger = logging.getLogger(__name__)
@@ -302,6 +305,7 @@ def create_visa_connection(
     visa_library: str,
     *,
     retry_connection: bool = False,
+    second_connection_attempt_delay: int = 60,
 ) -> MessageBasedResource:
     """Create a VISA resource.
 
@@ -309,8 +313,10 @@ def create_visa_connection(
         device_config_entry: The device config entry.
         visa_library: A string containing the VISA library to use to create a ResourceManager.
         retry_connection: Boolean indicating if a second connection attempt should be made. If True,
-            two attempts are made to establish a VISA connection, with a 60-second delay in between
-            each attempt.
+            two attempts are made to establish a VISA connection, with a configurable delay in
+            between each attempt.
+        second_connection_attempt_delay: The number of seconds to wait in between the first and
+            second connection attempts when `retry_connection=True`.
 
     Returns:
         A VISA resource that can be passed into the device driver.
@@ -341,9 +347,24 @@ def create_visa_connection(
     # The broad except is because pyvisa_py can throw a base exception in the tcpip.py file
     except Exception as error_1:
         if not retry_connection:
-            message = f"Unable to establish a VISA connection to {resource_expression}"
+            message = (
+                f"Unable to establish a VISA connection to the "
+                f"{device_config_entry.device_type.value}"
+                f"{(' with the alias '+repr(device_config_entry.alias)) if device_config_entry.alias else ''}"  # noqa: E501
+                f" using the resource expression '{resource_expression}'"
+                f" and the {repr(visa_library) if visa_library else 'default'} VISA library\n\n"
+                f"Original exception: "
+                f"{error_1.__class__.__module__}.{error_1.__class__.__qualname__}: {error_1}"
+            )
+            _log_to_specific_handler_type_only("FileHandler", message + "\n\n", "EXCEPTION")
+            _log_to_specific_handler_type_only("StreamHandler", message, "CRITICAL")
             raise ConnectionError(message) from error_1
-        time.sleep(60)  # wait 60 seconds and try again
+        _logger.debug(
+            "Initial connection attempt failed, waiting %d second(s) "
+            "before re-attempting to create the VISA connection",
+            second_connection_attempt_delay,
+        )
+        time.sleep(second_connection_attempt_delay)
         try:
             # noinspection PyTypeChecker
             visa_object: MessageBasedResource = visa.ResourceManager(  # pyright: ignore[reportAssignmentType]
@@ -351,15 +372,28 @@ def create_visa_connection(
             ).open_resource(resource_expression)
         # The broad except is because pyvisa_py can throw a base exception in the tcpip.py file
         except Exception as error_2:
-            message = f"Unable to establish a VISA connection to {resource_expression}\n\n"
+            message = (
+                f"Unable to establish a VISA connection (after two tries) to the "
+                f"{device_config_entry.device_type.value}"
+                f"{(' with the alias '+repr(device_config_entry.alias)) if device_config_entry.alias else ''}"  # noqa: E501
+                f" using the resource expression '{resource_expression}'"
+                f" and the {repr(visa_library) if visa_library else 'default'} VISA library\n\n"
+                f"1st exception: "
+                f"{error_1.__class__.__module__}.{error_1.__class__.__qualname__}: {error_1}\n"
+                f"2nd exception: "
+                f"{error_2.__class__.__module__}.{error_2.__class__.__qualname__}: {error_2}"
+            )
             if device_config_entry.connection_type in {
                 ConnectionTypes.TCPIP,
                 ConnectionTypes.SOCKET,
             }:
                 message += (
-                    f"This is the current ping output for the device at "
-                    f"{device_config_entry.address}:\n{ping_address(device_config_entry.address)}"
+                    f"\n\nThis is the current ping output for the device at "
+                    f"{device_config_entry.address}:\n"
+                    f"{ping_address(device_config_entry.address) or 'no response returned or unable to find device'}"  # noqa: E501
                 )
+            _log_to_specific_handler_type_only("FileHandler", message + "\n\n", "EXCEPTION")
+            _log_to_specific_handler_type_only("StreamHandler", message, "CRITICAL")
             raise ConnectionError(message) from error_2
 
     return _configure_visa_object(visa_object, device_config_entry, visa_library)

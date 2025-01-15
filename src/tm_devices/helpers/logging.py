@@ -9,7 +9,7 @@ import sys
 import time
 
 from pathlib import Path
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Literal, Optional, TYPE_CHECKING, Union
 
 import colorlog
 import pyvisa
@@ -156,3 +156,47 @@ def configure_logging(
 
     _logger_initialized = True
     return _logger
+
+
+def _format_multiline_message_for_log(message: str) -> str:
+    """Format a multiline message for logging.
+
+    Args:
+        message: The message to format.
+
+    Returns:
+        The formatted message.
+    """
+    return f"\n{' ' * 29}".join(message.splitlines())
+
+
+def _log_to_specific_handler_type_only(  # pyright: ignore[reportUnusedFunction]
+    handler_type: Literal["StreamHandler", "FileHandler"],
+    message: str,
+    logging_level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL", "EXCEPTION"],
+) -> None:
+    """Log a message to handlers of a specific type only.
+
+    This should only be used when absolutely necessary, usually during custom error handling.
+
+    Args:
+        handler_type: The type of handler to log the message to.
+        message: The message to log.
+        logging_level: The logging level to log the message at.
+    """
+    exception_info = sys.exc_info() if logging_level == "EXCEPTION" else None
+    try:
+        log_level = getattr(logging, logging_level)
+    except AttributeError:
+        # This is from the EXCEPTION case, so we need to handle it differently
+        log_level = logging.CRITICAL
+    if handler_type == "StreamHandler":
+        message = _format_multiline_message_for_log(message)
+    _logger = configure_logging()
+    for handler in _logger.handlers:
+        if handler.__class__.__name__ == handler_type:
+            temp_logger = logging.getLogger(f"{__name__}_{handler_type}_only")
+            temp_logger.addHandler(handler)
+            temp_logger.setLevel(log_level)
+            temp_logger.propagate = False
+            temp_logger.log(log_level, message, exc_info=exception_info)

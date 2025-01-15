@@ -22,6 +22,10 @@ Things to be included in the next release go here.
 
 - Removed the `traceback-with-variables` package as a dependency. If users would like to maintain the functionality, they will need to install this package separately and activate it within their code.
 
+### Changed
+
+- Updated the error messages when VISA connections fail so that the messages are more informative and are logged to the main log file.
+
 ---
 
 ## v3.0.0 (2025-01-13)
