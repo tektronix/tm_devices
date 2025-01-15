@@ -113,6 +113,7 @@ repos:
         name: pyright-verifytypes
         entry: pyright
         language: system
+        files: ^src/
         types: [python]
         pass_filenames: false
         args: [--verifytypes, tm_devices, --ignoreexternal]

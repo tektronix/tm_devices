@@ -197,7 +197,7 @@ def test_create_and_check_visa_connection(capsys: pytest.CaptureFixture[str]) ->
     with mock.patch("pyvisa.ResourceManager", mock.MagicMock(side_effect=visa.Error())):
         with pytest.raises(ConnectionError) as error:
             create_visa_connection(dev_config_1, "", retry_connection=True)
-        assert "Unable to establish a VISA connection to " in str(error.value)
+        assert "Unable to establish a VISA connection (after two tries) to " in str(error.value)
         assert "This is the current ping output" in str(error.value)
         with pytest.raises(ConnectionError) as error:
             create_visa_connection(dev_config_1, "", retry_connection=False)
@@ -205,7 +205,7 @@ def test_create_and_check_visa_connection(capsys: pytest.CaptureFixture[str]) ->
         assert "This is the current ping output" not in str(error.value)
         with pytest.raises(ConnectionError) as error:
             create_visa_connection(dev_config_2, "", retry_connection=True)
-        assert "Unable to establish a VISA connection to " in str(error.value)
+        assert "Unable to establish a VISA connection (after two tries) to " in str(error.value)
         assert "This is the current ping output" not in str(error.value)
     dev_config_3 = DeviceConfigEntry(
         device_type=DeviceTypes.AFG,
