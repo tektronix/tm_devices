@@ -181,8 +181,6 @@ def check_for_update(package_name: str = PACKAGE_NAME, index_name: str = "pypi")
         installed_version = importlib.metadata.version(package_name)
 
         # Get the version from the index
-        # This code mirrors code found in scripts/pypi_latest_version.py.
-        # If this code is updated, the script should be updated too.
         url = f"https://{index_name}.org/pypi/{package_name}/json"
         response = requests.get(url, timeout=10)
         releases = json.loads(response.text)["releases"]
