@@ -57,11 +57,6 @@ with warnings.catch_warnings():
 
     from pyvisa_py.protocols.rpc import RPCError  # pyright: ignore[reportMissingTypeStubs]
 
-# pylint: disable=unused-import,wrong-import-order
-# noinspection PyUnresolvedReferences
-from traceback_with_variables import (  # pyright: ignore[reportMissingTypeStubs]
-    activate_by_import,  # noqa: F401  # pyright: ignore[reportUnusedImport]
-)
 
 if TYPE_CHECKING:
     from pyvisa.resources import MessageBasedResource
