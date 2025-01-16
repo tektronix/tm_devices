@@ -498,8 +498,9 @@ class DMConfigOptions(AsDictionaryMixin):
     """Whether to log uncaught exceptions to the log file with full tracebacks.
 
     This behavior also reduces the traceback size of exceptions in the console. Setting
-    `log_file_level` to `"NONE"` will disable this feature regardless of the value of
-    `log_uncaught_exceptions`.
+    [`log_file_level`][tm_devices.helpers.constants_and_dataclasses.DMConfigOptions.log_file_level]
+    to `"NONE"` will disable this feature regardless of the value of
+    [`log_uncaught_exceptions`][tm_devices.helpers.constants_and_dataclasses.DMConfigOptions.log_uncaught_exceptions].
 
     Defaults to True. See the [`configure_logging()`][tm_devices.helpers.logging.configure_logging]
     function for more information and default values.

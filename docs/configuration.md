@@ -290,8 +290,8 @@ runtime behavior configuration.
         configured log file. The default value of this config option is false. See the
         [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
 - `log_uncaught_exceptions`
-    - This config option is used to enable or disable logging uncaught exceptions in the log file.
-        The default value of this config option is true. Setting the `log_file_level` parameter
+    - This config option is used to enable or disable logging uncaught exceptions in the log file. The
+        default value of this config option is true. Setting the `log_file_level` parameter
         to "NONE" will disable this feature regardless of the value of `log_uncaught_exceptions`. See the
         [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
 

@@ -79,13 +79,14 @@ def configure_logging(  # pylint: disable=too-many-locals
         in the config file or environment variables will be ignored.
 
     !!! important
-        This function will overwrite the `sys.excepthook` function in order to log uncaught
-        exceptions if logging to a log file is enabled. The custom hook function used by this
-        package will call `sys.__excepthook__` after the custom code is run, so exceptions and
-        tracebacks will still get printed to the console. If you have a custom `sys.excepthook`
-        function you need to use, you will need to overwrite the `sys.excepthook` function after
-        this package's logging is configured. To opt out of this behavior and keep Python's default
-        exception handling (which means exceptions will not be logged to the log file), set the
+        This function will overwrite the [`sys.excepthook`][sys.excepthook] function in order to
+        log uncaught exceptions if logging to a log file is enabled. The custom hook function
+        used by this package will call [`sys.__excepthook__`][sys.__excepthook__] after the custom
+        code is run, so exceptions and tracebacks will still get printed to the console. If you
+        have a custom exception hook function you need to use, you will need to overwrite the
+        [`sys.excepthook`][sys.excepthook] function after this package's logging is configured.
+        To opt out of this behavior and keep Python's default exception handling
+        (which means exceptions will not be logged to the log file), set the
         `log_uncaught_exceptions` parameter to `False`.
 
     Args:
@@ -102,11 +103,13 @@ def configure_logging(  # pylint: disable=too-many-locals
         log_colored_output: Whether to use colored output from the `colorlog` package for the
             console. Defaults to False.
         log_pyvisa_messages: Whether to include logs from the `pyvisa` package in the log file. The
-            logging level will match the `file_logging_level`. Defaults to False.
+            logging level used for these additional log entries will match
+            `log_file_level`. Defaults to False.
         log_uncaught_exceptions: Whether to log uncaught exceptions to the log file with full
             tracebacks and reduce the traceback size of exceptions in the console. Defaults to True.
-            Setting the `log_file_level` parameter to `LoggingLevels.NONE` will
-            disable this feature regardless of the value of `log_uncaught_exceptions`.
+            Setting the `log_file_level` parameter to
+            [`LoggingLevels.NONE`][tm_devices.helpers.logging.LoggingLevels.NONE] will disable
+            this feature regardless of the value of `log_uncaught_exceptions`.
 
     Returns:
         The base logger for the package, this base logger can also be accessed using
