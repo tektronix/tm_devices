@@ -170,6 +170,7 @@ def configure_logging(
         console_handler.setFormatter(console_formatter)
         _logger.addHandler(console_handler)
 
+    # TODO: error handling: Consider adding an opt-out flag for this behavior
     sys.excepthook = __exception_handler
     _logger_initialized = True
     return _logger
