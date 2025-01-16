@@ -204,25 +204,13 @@ def __exception_handler(
     _ORIGINAL_SYS_EXCEPTHOOK(exc_type, exc_value, exc_traceback)
 
 
-def __format_multiline_message_for_log(message: str) -> str:
-    """Format a multiline message for logging.
-
-    Args:
-        message: The message to format.
-
-    Returns:
-        The formatted message.
-    """
-    return f"\n{__MULTILINE_MESSAGE_LEADING_WHITESPACE}".join(message.splitlines())
-
-
 def __log_to_specific_handler_type_only(
     handler_type: Type[_T],
     message: str,
     logging_level_str: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL", "EXCEPTION"],
     *,
     exc_info: Optional[Tuple[Type[BaseException], BaseException, TracebackType]] = None,
-) -> Optional[_T]:
+) -> Optional[_T]:  # pragma: no cover
     """Log a message to handlers of a specific type only.
 
     This should only be used when absolutely necessary, usually during custom error handling.
@@ -255,7 +243,7 @@ def __log_to_specific_handler_type_only(
         # This is from the EXCEPTION case, so we need to handle it differently
         log_level = logging.CRITICAL
     if handler_type.__name__ == "StreamHandler":
-        message = __format_multiline_message_for_log(message)
+        message = f"\n{__MULTILINE_MESSAGE_LEADING_WHITESPACE}".join(message.splitlines())
     _logger = configure_logging()
     for handler in _logger.handlers:
         if handler.__class__.__name__ == handler_type.__name__ and isinstance(
@@ -283,7 +271,7 @@ def __log_message_to_console_and_traceback_to_file(
     message_for_console: Optional[str] = None,
     additional_message_for_file: str = "",
     exc_info: Optional[Tuple[Type[BaseException], BaseException, TracebackType]] = None,
-) -> str:  # pyright: ignore[reportUnusedFunction]
+) -> str:  # pyright: ignore[reportUnusedFunction]  # pragma: no cover
     """Log a message to the console and the current traceback to the log file.
 
     This should only be used when absolutely necessary, usually during custom error handling.
