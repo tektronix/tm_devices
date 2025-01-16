@@ -418,7 +418,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
 
         if not response:
             pi_cmd_repr = (
-                f" for the following query: {query!r}" if self._verbose and verbose else ""
+                f" for the following binary query: {query!r}" if self._verbose and verbose else ""
             )
             msg = f"An empty string was returned from {self._name_and_alias}{pi_cmd_repr}"
             _logger.error(msg)
@@ -553,7 +553,9 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
 
         if not response.strip():
             pi_cmd_repr = (
-                f" for the following query: {query!r}" if self._verbose and verbose else ""
+                f" for the following raw binary query: {query!r}"
+                if self._verbose and verbose
+                else ""
             )
             msg = f"An empty string was returned from {self._name_and_alias}{pi_cmd_repr}"
             _logger.error(msg)

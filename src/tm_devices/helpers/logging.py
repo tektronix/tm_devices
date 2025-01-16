@@ -180,8 +180,6 @@ def configure_logging(  # pylint: disable=too-many-locals
 
     if log_uncaught_exceptions and log_file_level != LoggingLevels.NONE:
         sys.excepthook = __exception_handler
-    else:
-        sys.excepthook = sys.__excepthook__
     _logger_initialized = True
     return _logger
 

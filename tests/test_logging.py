@@ -85,6 +85,7 @@ def test_configure_logger_full(reset_package_logger: None) -> None:  # noqa: ARG
 
     assert not any(isinstance(handler, logging.FileHandler) for handler in pyvisa.logger.handlers)
     assert len(logging.getLogger(PACKAGE_NAME).handlers) == 0  # pylint: disable=use-implicit-booleaness-not-comparison-to-zero
+    sys.excepthook = sys.__excepthook__
     logger = configure_logging(
         log_console_level="DEBUG",
         log_file_level="DEBUG",
