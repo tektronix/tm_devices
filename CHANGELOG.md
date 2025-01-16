@@ -25,6 +25,7 @@ Things to be included in the next release go here.
 ### Changed
 
 - Updated the error messages when VISA connections fail so that the messages are more informative and are logged to the main log file.
+- Updated the error messages which occur when VISA communication fails (write/query) to be more concise on the console while still maintaining the verbosity needed for debugging in the log file.
 
 ---
 

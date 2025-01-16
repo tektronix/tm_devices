@@ -354,6 +354,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         except (visa.VisaIOError, socket.error) as error:
             pi_cmd_repr = f" for {query!r} " if self._verbose and verbose else " "
             msg = f"The query{pi_cmd_repr}failed with the following message: {error!r}"
+            _logger.error(msg)  # noqa: TRY400
             raise visa.Error(msg) from error
 
         _logger.log(
@@ -365,9 +366,10 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
 
         if not allow_empty and not response:
             pi_cmd_repr = (
-                f" for the following query: {query!r} " if self._verbose and verbose else ""
+                f" for the following query: {query!r}" if self._verbose and verbose else ""
             )
             msg = f"An empty string was returned{pi_cmd_repr}"
+            _logger.error(msg)
             raise SystemError(msg)
 
         return response
@@ -398,6 +400,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         except (visa.VisaIOError, socket.error) as error:
             pi_cmd_repr = f" for {query!r} " if self._verbose and verbose else " "
             msg = f"The query{pi_cmd_repr}failed with the following message: {error!r}"
+            _logger.error(msg)  # noqa: TRY400
             raise visa.Error(msg) from error
 
         _logger.log(
@@ -409,9 +412,10 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
 
         if not response:
             pi_cmd_repr = (
-                f" for the following query: {query!r} " if self._verbose and verbose else ""
+                f" for the following query: {query!r}" if self._verbose and verbose else ""
             )
             msg = f"An empty string was returned{pi_cmd_repr}"
+            _logger.error(msg)
             raise SystemError(msg)
 
         return response
@@ -528,6 +532,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         except (visa.VisaIOError, socket.error) as error:
             pi_cmd_repr = f" for {query!r} " if self._verbose and verbose else " "
             msg = f"The query{pi_cmd_repr}failed with the following message: {error!r}"
+            _logger.error(msg)  # noqa: TRY400
             raise visa.Error(msg) from error
 
         _logger.log(
@@ -539,9 +544,10 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
 
         if not response.strip():
             pi_cmd_repr = (
-                f" for the following query: {query!r} " if self._verbose and verbose else ""
+                f" for the following query: {query!r}" if self._verbose and verbose else ""
             )
             msg = f"An empty string was returned{pi_cmd_repr}"
+            _logger.error(msg)
             raise SystemError(msg)
 
         return response
@@ -859,11 +865,13 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         except (visa.VisaIOError, socket.error) as error:
             pi_cmd_repr = f" for {command!r} " if self._verbose and verbose else " "
             msg = f"The write{pi_cmd_repr}failed with the following message: {error!r}"
+            _logger.error(msg)  # noqa: TRY400
             raise visa.Error(msg) from error
 
         if opc and (result := self.ieee_cmds.opc()) != "1":
             pi_cmd_repr = f" {command!r}" if self._verbose and verbose else " the command"
             msg = f"After issuing{pi_cmd_repr}, OPC returned incorrect data: {result!r}"
+            _logger.error(msg)
             raise SystemError(msg)
 
     def write_raw(self, command: bytes, verbose: bool = True) -> None:
@@ -888,6 +896,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         except (visa.VisaIOError, socket.error) as error:
             pi_cmd_repr = f" for {command!r} " if self._verbose and verbose else " "
             msg = f"The raw write{pi_cmd_repr}failed with the following message: {error!r}"
+            _logger.error(msg)  # noqa: TRY400
             raise visa.Error(msg) from error
 
     ################################################################################################
