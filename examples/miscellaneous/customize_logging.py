@@ -11,6 +11,7 @@ configure_logging(
     log_file_directory="./log_files",  # save the log file in the "./log_files" directory
     log_file_name="custom_log_filename.log",  # customize the filename
     log_pyvisa_messages=True,  # include all the pyvisa debug messages in the same log file
+    log_uncaught_exceptions=True,  # log uncaught exceptions (this is the default behavior)
 )
 
 with DeviceManager(verbose=False) as dm:

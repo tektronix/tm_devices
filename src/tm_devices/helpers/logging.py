@@ -60,7 +60,7 @@ class LoggingLevels(CustomStrEnum):
     """An enum member indicating no logging messages should be captured."""
 
 
-def configure_logging(
+def configure_logging(  # pylint: disable=too-many-locals
     *,
     log_console_level: Union[str, LoggingLevels] = LoggingLevels.INFO,
     log_file_level: Union[str, LoggingLevels] = LoggingLevels.DEBUG,
@@ -68,6 +68,7 @@ def configure_logging(
     log_file_name: Optional[str] = None,
     log_colored_output: bool = False,
     log_pyvisa_messages: bool = False,
+    log_uncaught_exceptions: bool = True,
 ) -> logging.Logger:
     """Configure the logging for this package.
 
@@ -79,10 +80,13 @@ def configure_logging(
 
     !!! important
         This function will overwrite the `sys.excepthook` function in order to log uncaught
-        exceptions. The custom hook function used by this package will call `sys.__excepthook__`
-        after the custom code is run, so exceptions and tracebacks will still get printed to
-        the console. If you have a custom `sys.excepthook` function you need to use, you will
-        need to overwrite the `sys.excepthook` function after this package's logging is configured.
+        exceptions if logging to a log file is enabled. The custom hook function used by this
+        package will call `sys.__excepthook__` after the custom code is run, so exceptions and
+        tracebacks will still get printed to the console. If you have a custom `sys.excepthook`
+        function you need to use, you will need to overwrite the `sys.excepthook` function after
+        this package's logging is configured. To opt out of this behavior and keep Python's default
+        exception handling (which means exceptions will not be logged to the log file), set the
+        `log_uncaught_exceptions` parameter to `False`.
 
     Args:
         log_console_level: The logging level to set for the console. Defaults to INFO. Set to
@@ -99,6 +103,10 @@ def configure_logging(
             console. Defaults to False.
         log_pyvisa_messages: Whether to include logs from the `pyvisa` package in the log file. The
             logging level will match the `file_logging_level`. Defaults to False.
+        log_uncaught_exceptions: Whether to log uncaught exceptions to the log file with full
+            tracebacks and reduce the traceback size of exceptions in the console. Defaults to True.
+            Setting the `log_file_level` parameter to `LoggingLevels.NONE` will
+            disable this feature regardless of the value of `log_uncaught_exceptions`.
 
     Returns:
         The base logger for the package, this base logger can also be accessed using
@@ -170,8 +178,10 @@ def configure_logging(
         console_handler.setFormatter(console_formatter)
         _logger.addHandler(console_handler)
 
-    # TODO: error handling: Consider adding an opt-out flag for this behavior
-    sys.excepthook = __exception_handler
+    if log_uncaught_exceptions and log_file_level != LoggingLevels.NONE:
+        sys.excepthook = __exception_handler
+    else:
+        sys.excepthook = sys.__excepthook__
     _logger_initialized = True
     return _logger
 

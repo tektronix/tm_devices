@@ -494,6 +494,16 @@ class DMConfigOptions(AsDictionaryMixin):
     Defaults to False. See the [`configure_logging()`][tm_devices.helpers.logging.configure_logging]
     function for more information and default values.
     """
+    log_uncaught_exceptions: Optional[bool] = None
+    """Whether to log uncaught exceptions to the log file with full tracebacks.
+
+    This behavior also reduces the traceback size of exceptions in the console. Setting
+    `log_file_level` to `"NONE"` will disable this feature regardless of the value of
+    `log_uncaught_exceptions`.
+
+    Defaults to True. See the [`configure_logging()`][tm_devices.helpers.logging.configure_logging]
+    function for more information and default values.
+    """
 
     def __post_init__(self) -> None:
         """Validate data after creation.

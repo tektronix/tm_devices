@@ -65,12 +65,14 @@ def _reset_package_logger() -> Generator[None, None, None]:  # pyright: ignore[r
     for handler in handlers_copy:
         logger.removeHandler(handler)
     tm_devices_logging._logger_initialized = False  # noqa: SLF001  # pyright: ignore[reportPrivateUsage]
+    temp_excepthook = sys.excepthook
     yield
     # Reset the handlers back to what they were
     for handler in logger.handlers.copy():
         logger.removeHandler(handler)
     for handler in handlers_copy:
         logger.addHandler(handler)
+    sys.excepthook = temp_excepthook
 
 
 def test_configure_logger_full(reset_package_logger: None) -> None:  # noqa: ARG001
@@ -90,6 +92,7 @@ def test_configure_logger_full(reset_package_logger: None) -> None:  # noqa: ARG
         log_file_name=log_name,
         log_colored_output=False,
         log_pyvisa_messages=True,
+        log_uncaught_exceptions=False,
     )
     assert len(logger.handlers) == 3
     assert any(isinstance(handler, logging.FileHandler) for handler in pyvisa.logger.handlers)
@@ -104,6 +107,7 @@ def test_configure_logger_full(reset_package_logger: None) -> None:  # noqa: ARG
         logging.FileHandler,
         logging.StreamHandler,
     ]
+    assert sys.excepthook == sys.__excepthook__  # pylint: disable=comparison-with-callable
 
 
 def test_configure_logger_no_file(reset_package_logger: None) -> None:  # noqa: ARG001

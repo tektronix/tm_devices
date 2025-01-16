@@ -22,6 +22,10 @@ Things to be included in the next release go here.
 
 - Removed the `traceback-with-variables` package as a dependency. If users would like to maintain the functionality, they will need to install this package separately and activate it within their code.
 
+### Added
+
+- Added a new configuration option `log_uncaught_exceptions` to enable/disable logging uncaught exceptions in the log file that is created. The default behavior is to enable logging uncaught exceptions to the log file.
+
 ### Changed
 
 - Updated the error messages when VISA connections fail so that the messages are more informative and are logged to the main log file.
