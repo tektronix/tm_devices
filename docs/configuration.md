@@ -235,6 +235,7 @@ options:
   log_file_name: tm_devices_<timestamp>.log
   log_colored_output: false
   log_pyvisa_messages: false
+  log_uncaught_exceptions: true
 ```
 
 These are all `false` by default if not defined, set to `true` to modify the
@@ -287,6 +288,11 @@ runtime behavior configuration.
 - `log_pyvisa_messages`
     - This config option is used to enable or disable logging of PyVISA messages within the
         configured log file. The default value of this config option is false. See the
+        [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
+- `log_uncaught_exceptions`
+    - This config option is used to enable or disable logging uncaught exceptions in the log file. The
+        default value of this config option is true. Setting the `log_file_level` parameter
+        to "NONE" will disable this feature regardless of the value of `log_uncaught_exceptions`. See the
         [`configure_logging()`][tm_devices.helpers.logging.configure_logging] function for more information.
 
 ### Sample Config File
@@ -355,6 +361,7 @@ options:
   log_file_name: custom_logfile.log    # customize the log file name
   log_colored_output: false
   log_pyvisa_messages: true  # log PyVISA messages in the log file
+  log_uncaught_exceptions: true
 ```
 
 #### TOML
@@ -436,6 +443,7 @@ log_file_directory = "./logs"
 log_file_name = "custom_logfile.log" # customize the log file name
 log_colored_output = false
 log_pyvisa_messages = true           # log PyVISA messages in the log file
+log_uncaught_exceptions = true
 ```
 
 ---

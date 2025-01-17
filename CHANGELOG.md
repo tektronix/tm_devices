@@ -18,6 +18,20 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Removed
+
+- Removed the `traceback-with-variables` package as a dependency. If users would like to maintain the functionality, they will need to install this package separately and activate it within their code.
+
+### Added
+
+- Added a new configuration option `log_uncaught_exceptions` to enable/disable logging uncaught exceptions in the log file that is created. The default behavior is to enable logging uncaught exceptions to the log file.
+
+### Changed
+
+- Updated the error messages when VISA connections fail so that the messages are more informative (they now include the device type, resource expression, and VISA backend) and are logged to the main log file.
+- Updated the error messages which occur when VISA communication fails (write/query) to be more concise on the console while still maintaining the verbosity needed for debugging in the log file.
+- Updated the VISA communication error messages to include the device name and alias for faster identification when debugging.
+
 ---
 
 ## v3.0.0 (2025-01-13)
