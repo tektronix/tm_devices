@@ -162,6 +162,8 @@ __SUPPORTED_MODEL_REGEX_STRING = (
 # For this reason, the regex string itself is stored in a separate, private constant.
 _SUPPORTED_MODEL_REGEX_MAPPING = re.compile(__SUPPORTED_MODEL_REGEX_STRING)
 
+_VALID_VERSION_REGEX = re.compile(r"^\d+\.\d+(\.\d+)*$")
+
 
 ####################################################################################################
 # Public Functions
@@ -537,6 +539,10 @@ def get_version(version_string: str) -> Version:
             version = Version(
                 version_string.replace("." + version_parts[-1], "+" + version_parts[-1])
             )
+        elif version_string.count("-") == 1 and _VALID_VERSION_REGEX.match(
+            version_string.split("-")[0]
+        ):
+            version = Version(version_string.replace("-", "+"))
         else:
             output_str = ""
             for char in version_parts[-1]:
