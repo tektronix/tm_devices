@@ -409,6 +409,9 @@ def test_detect_visa_resource_expression(
         ("1.2.3.4abc", Version("1.2.3.4+abc")),
         ("1.20.345.abc", Version("1.20.345+abc")),
         ("1.20.345.4abc123", Version("1.20.345.4+abc123")),
+        ("1.2.3-alpha.4", Version("1.2.3.alpha.4")),
+        ("1.2.3-custom.52", Version("1.2.3+custom.52")),
+        ("1.2.3-123custom.52", Version("1.2.3+123custom.52")),
     ],
 )
 def test_get_version(version_string: str, expected_result: Version) -> None:
@@ -422,6 +425,8 @@ def test_get_version_error() -> None:
         get_version("1a.2.3.abc")
     with pytest.raises(InvalidVersion):
         get_version("invalid-version")
+    with pytest.raises(InvalidVersion):
+        get_version("1.2.3-invalid-version.1234")
 
 
 def test_read_only_cached_property() -> None:

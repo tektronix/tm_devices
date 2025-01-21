@@ -149,10 +149,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         sw_version = id_string_parts[-1]
         if ":" in id_string_parts[-1]:
             sw_version = id_string_parts[-1].rsplit(":", 1)[-1]
-        if "-" in sw_version:
-            split_sw = sw_version.split("-")
-            retval = get_version(split_sw[0])
-        elif " " in sw_version.lstrip():
+        if " " in sw_version.lstrip():
             split_sw = sw_version.split(" ")
             retval = get_version(split_sw[0])
         else:
