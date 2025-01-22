@@ -18,6 +18,16 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.1.0 (2025-01-22)
+
+### Merged Pull Requests
+
+- refactor: Separate out the custom handling of different devices' software/firmware version parsing ([#373](https://github.com/tektronix/tm_devices/pull/373))
+- fix: Remove unused commands files ([#371](https://github.com/tektronix/tm_devices/pull/371))
+- feat: Improved VISA device error messages ([#370](https://github.com/tektronix/tm_devices/pull/370))
+
 ### Removed
 
 - Removed the `traceback-with-variables` package as a dependency. If users would like to maintain the functionality, they will need to install this package separately and activate it within their code.
