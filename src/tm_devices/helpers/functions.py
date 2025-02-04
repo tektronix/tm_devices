@@ -542,7 +542,10 @@ def get_version(version_string: str) -> Version:
         elif version_string.count("-") == 1 and _VALID_VERSION_REGEX.match(
             version_string.split("-")[0]
         ):
-            version = Version(version_string.replace("-", "+"))
+            new_version_string = version_string.replace("-", "+", 1)
+            if new_version_string.count("+") == 2:  # noqa: PLR2004
+                new_version_string = "-".join(new_version_string.rsplit("+", 1))
+            version = Version(new_version_string)
         else:
             output_str = ""
             for char in version_parts[-1]:
