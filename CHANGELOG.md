@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Changed
+
+- Updated the `get_version()` function to support more custom version string formats, e.g. `"1.2.3-custom.1234+abcdefghi"`.
+
 ---
 
 ## v3.1.0 (2025-01-22)
