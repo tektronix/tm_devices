@@ -18,6 +18,14 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.1.1 (2025-02-04)
+
+### Merged Pull Requests
+
+- feat: Added support for a new custom version string format, `"1.2.3-custom.1234+abcdefghi"` ([#376](https://github.com/tektronix/tm_devices/pull/376))
+
 ### Added
 
 - Updated the `get_version()` function to support more custom version string formats, e.g. `"1.2.3-custom.1234+abcdefghi"`.
