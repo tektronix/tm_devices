@@ -18,6 +18,15 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.1.2 (2025-02-12)
+
+### Merged Pull Requests
+
+- feat: Enable turning down the verbosity of failure messages during reboot of a VISA device ([#381](https://github.com/tektronix/tm_devices/pull/381))
+- gh-actions(deps): bump tektronix/python-package-ci-cd ([#378](https://github.com/tektronix/tm_devices/pull/378))
+
 ### Added
 
 - Added a new parameter to the `create_visa_connection()` function which can be used to turn down the verbosity of the printouts to stdout during a reboot from `ERROR` to `DEBUG` to avoid cluttering the console with unnecessary failures while the device is still rebooting.
