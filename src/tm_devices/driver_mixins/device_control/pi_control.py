@@ -1028,6 +1028,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
                     self._visa_resource = create_visa_connection(
                         self._config_entry,
                         visa_library=self._visa_library_path,
+                        verbose_connection_failure_logging=False,
                     )
                     opened = True
                     if iteration < 1 and not bool(

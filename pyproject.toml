@@ -82,7 +82,7 @@ libusb-package = "^1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.1
 packaging = "^24.0"
 psutil = "^6.0.0"
 pyserial = "^3.5"
-python = "^3.8"  # This is the main Python version requirement
+python = "^3.8,!=3.9.0,!=3.9.1"  # This is the main Python version requirement, the excluded versions of Python had major bugs and shouldn't be used
 python-dateutil = "^2.8.2"
 pyusb = "^1.2.1"
 pyvicp = "^1.1.0"

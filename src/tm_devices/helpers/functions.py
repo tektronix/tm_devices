@@ -303,6 +303,7 @@ def create_visa_connection(
     *,
     retry_connection: bool = False,
     second_connection_attempt_delay: int = 60,
+    verbose_connection_failure_logging: bool = True,
 ) -> MessageBasedResource:
     """Create a VISA resource.
 
@@ -314,6 +315,8 @@ def create_visa_connection(
             between each attempt.
         second_connection_attempt_delay: The number of seconds to wait in between the first and
             second connection attempts when `retry_connection=True`.
+        verbose_connection_failure_logging: Indicates if the connections failures should be logged
+            with an ERROR level. If False, the failures will be logged with a DEBUG level.
 
     Returns:
         A VISA resource that can be passed into the device driver.
@@ -321,6 +324,7 @@ def create_visa_connection(
     Raises:
         ConnectionError: The VISA connection couldn't be created to the device.
     """
+    failure_logging_level = logging.ERROR if verbose_connection_failure_logging else logging.DEBUG
     # Set up the VISA resource that will be used for communicating with the VISA device
     resource_expression = device_config_entry.get_visa_resource_expression()
     try:
@@ -351,8 +355,9 @@ def create_visa_connection(
                 f" using the resource expression '{resource_expression}'"
                 f" and the {repr(visa_library) if visa_library else 'default'} VISA library"
             )
-            _logger.error(error_message)  # noqa: TRY400
-            _logger.error(  # noqa: TRY400
+            _logger.log(failure_logging_level, error_message)
+            _logger.log(
+                failure_logging_level,
                 "1st exception: %s.%s: %s",
                 error_1.__class__.__module__,
                 error_1.__class__.__qualname__,
@@ -379,14 +384,16 @@ def create_visa_connection(
                 f" using the resource expression '{resource_expression}'"
                 f" and the {repr(visa_library) if visa_library else 'default'} VISA library"
             )
-            _logger.error(error_message)  # noqa: TRY400
-            _logger.error(  # noqa: TRY400
+            _logger.log(failure_logging_level, error_message)
+            _logger.log(
+                failure_logging_level,
                 "1st exception: %s.%s: %s",
                 error_1.__class__.__module__,
                 error_1.__class__.__qualname__,
                 error_1,
             )
-            _logger.error(  # noqa: TRY400
+            _logger.log(
+                failure_logging_level,
                 "2nd exception: %s.%s: %s:",
                 error_2.__class__.__module__,
                 error_2.__class__.__qualname__,
