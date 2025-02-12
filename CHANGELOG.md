@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added a new parameter to the `create_visa_connection()` function which can be used to turn down the verbosity of the printouts to stdout during a reboot from `ERROR` to `DEBUG` to avoid cluttering the console with unnecessary failures while the device is still rebooting.
+
 ---
 
 ## v3.1.1 (2025-02-04)
