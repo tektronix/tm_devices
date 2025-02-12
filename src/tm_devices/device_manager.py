@@ -1047,8 +1047,6 @@ class DeviceManager(metaclass=Singleton):
             _logger.info("Opening Connections to Devices")
         for device_name, device_config in self.__config.devices.items():
             self.__create_device(device_name, device_config, 3)
-        if self.__setup_cleanup_enabled:
-            self.cleanup_all_devices()
         self.__is_open = True
         self._suppress_protection = False
 
