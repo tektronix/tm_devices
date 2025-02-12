@@ -99,6 +99,10 @@ urllib3 = "^2.0"
 zeroconf = "^0.136.0"
 
 [tool.poetry.group.dev.dependencies]
+cryptography = [
+  {python = ">=3.10", version = "^44.0.1"},
+  {python = "<3.10", version = "^43.0"}
+]
 docutils = "^0.20"  # TODO: Drop Python 3.8: remove this when the minimum Python version is >=3.9
 nodeenv = "^1.9.1"
 pip = "^24.0"
