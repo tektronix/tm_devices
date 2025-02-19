@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Changed
+
+- The error messages for exceptions raised during VISA communication have been updated to always include the command that was being executed when the error occurred, unless the method was explicitly called with the `verbose` parameter set to False.
+
 ---
 
 ## v3.1.2 (2025-02-12)
