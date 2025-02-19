@@ -349,7 +349,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             if remove_quotes:
                 response = response.replace('"', "")
         except (visa.VisaIOError, socket.error) as error:
-            pi_cmd_repr = f" for {query!r} " if self._verbose and verbose else " "
+            pi_cmd_repr = f" for {query!r} " if verbose else " "
             msg = (
                 f"The query of {self._name_and_alias}{pi_cmd_repr}"
                 f"failed with the following message: {error!r}"
@@ -365,9 +365,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         )
 
         if not allow_empty and not response:
-            pi_cmd_repr = (
-                f" for the following query: {query!r}" if self._verbose and verbose else ""
-            )
+            pi_cmd_repr = f" for the following query: {query!r}" if verbose else ""
             msg = f"An empty string was returned from {self._name_and_alias}{pi_cmd_repr}"
             _logger.error(msg)
             raise SystemError(msg)
@@ -398,7 +396,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         try:
             response = self._visa_resource.query_binary_values(query)  # pyright: ignore[reportUnknownMemberType]
         except (visa.VisaIOError, socket.error) as error:
-            pi_cmd_repr = f" for {query!r} " if self._verbose and verbose else " "
+            pi_cmd_repr = f" for {query!r} " if verbose else " "
             msg = (
                 f"The binary query of {self._name_and_alias}{pi_cmd_repr}"
                 f"failed with the following message: {error!r}"
@@ -414,9 +412,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         )
 
         if not response:
-            pi_cmd_repr = (
-                f" for the following binary query: {query!r}" if self._verbose and verbose else ""
-            )
+            pi_cmd_repr = f" for the following binary query: {query!r}" if verbose else ""
             msg = f"An empty string was returned from {self._name_and_alias}{pi_cmd_repr}"
             _logger.error(msg)
             raise SystemError(msg)
@@ -533,7 +529,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             self._visa_resource.write(query)
             response = self.read_raw()
         except (visa.VisaIOError, socket.error) as error:
-            pi_cmd_repr = f" for {query!r} " if self._verbose and verbose else " "
+            pi_cmd_repr = f" for {query!r} " if verbose else " "
             msg = (
                 f"The raw binary query of {self._name_and_alias}{pi_cmd_repr}"
                 f"failed with the following message: {error!r}"
@@ -549,11 +545,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         )
 
         if not response.strip():
-            pi_cmd_repr = (
-                f" for the following raw binary query: {query!r}"
-                if self._verbose and verbose
-                else ""
-            )
+            pi_cmd_repr = f" for the following raw binary query: {query!r}" if verbose else ""
             msg = f"An empty string was returned from {self._name_and_alias}{pi_cmd_repr}"
             _logger.error(msg)
             raise SystemError(msg)
@@ -871,7 +863,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         try:
             self._visa_resource.write(command)
         except (visa.VisaIOError, socket.error) as error:
-            pi_cmd_repr = f" for {command!r} " if self._verbose and verbose else " "
+            pi_cmd_repr = f" for {command!r} " if verbose else " "
             msg = (
                 f"The write to {self._name_and_alias}{pi_cmd_repr}"
                 f"failed with the following message: {error!r}"
@@ -880,7 +872,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             raise visa.Error(msg) from error
 
         if opc and (result := self.ieee_cmds.opc()) != "1":
-            pi_cmd_repr = f" {command!r}" if self._verbose and verbose else " the command"
+            pi_cmd_repr = f" {command!r}" if verbose else " the command"
             msg = (
                 f"After issuing{pi_cmd_repr} to {self._name_and_alias}, "
                 f"OPC returned incorrect data: {result!r}"
@@ -908,7 +900,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         try:
             self._visa_resource.write_raw(command)
         except (visa.VisaIOError, socket.error) as error:
-            pi_cmd_repr = f" for {command!r} " if self._verbose and verbose else " "
+            pi_cmd_repr = f" for {command!r} " if verbose else " "
             msg = (
                 f"The raw write to {self._name_and_alias}"
                 f"{pi_cmd_repr}failed with the following message: {error!r}"
