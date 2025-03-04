@@ -18,6 +18,15 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.1.4 (2025-03-04)
+
+### Merged Pull Requests
+
+- feat: Converted the previously private `_name_and_alias` property on the `Device` class into a public, cached property called `name_and_alias` ([#388](https://github.com/tektronix/tm_devices/pull/388))
+- test: Ignore pull request URLs when checking links ([#384](https://github.com/tektronix/tm_devices/pull/384))
+
 ### Added
 
 - Added a new `name_and_alias` cached property to the `Device` class that all drivers inherit from to provide easy access to a unique identifier for the device.
