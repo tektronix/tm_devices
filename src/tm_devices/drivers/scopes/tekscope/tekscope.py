@@ -665,13 +665,13 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
         if delete_item:
             if item_name in item_list:
                 raise_error(
-                    self._name_and_alias,
+                    self.name_and_alias,
                     f"Failed to delete {item_name}\n"
                     f":{item_type}:LIST? returned \"{','.join(item_list)}\"",
                 )
         elif item_name not in item_list:
             raise_error(
-                self._name_and_alias,
+                self.name_and_alias,
                 f"Failed to add {item_name}\n"
                 f":{item_type}:LIST? returned \"{','.join(item_list)}\"",
             )

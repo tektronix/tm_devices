@@ -1315,6 +1315,13 @@ class DeviceManager(metaclass=Singleton):
         new_device._device_number = int(  # noqa: SLF001  # pyright: ignore [reportPrivateUsage]
             device_config_name.rsplit(" ", 1)[1]
         )
+        # Reset cached properties by deleting them
+        # noinspection PyPropertyAccess
+        del new_device.name
+        # noinspection PyPropertyAccess
+        del new_device.alias
+        # noinspection PyPropertyAccess
+        del new_device.name_and_alias
 
         if device_config_name in self.__devices:
             del self.__devices[device_config_name]

@@ -156,11 +156,11 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
     ################################################################################################
     # Properties - Private and Public
     ################################################################################################
-    @property
-    def _name_and_alias(self) -> str:
+    @cached_property
+    def name_and_alias(self) -> str:
         """Return string for easy ID of device in console output prints."""
         retval = self.name
-        if self.alias:
+        if self.alias:  # pylint: disable=using-constant-test
             retval += f' "{self.alias}"'
         return retval.replace(" NotImplemented", "")
 
@@ -172,7 +172,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         """
         return self._config_entry.address
 
-    @property
+    @cached_property
     def alias(self) -> str:
         """Return the alias if it exists, otherwise an empty string."""
         return self._config_entry.alias if self._config_entry.alias is not None else ""
@@ -252,7 +252,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         """Return a boolean indicating if the connection to the device is currently open."""
         return self._is_open
 
-    @property
+    @cached_property
     def name(self) -> str:
         """Return the device name.
 
@@ -376,7 +376,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
             A tuple containing a boolean indicating if there is a network connection and
                 a string with the result of the ping command.
         """
-        return check_network_connection(self._name_and_alias, self.ip_address)
+        return check_network_connection(self.name_and_alias, self.ip_address)
 
     @final
     def check_port_connection(self, port: int, timeout_seconds: int = 5) -> bool:
@@ -392,7 +392,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
             A boolean indicating if the port is open.
         """
         return check_port_connection(
-            self._name_and_alias,
+            self.name_and_alias,
             self.ip_address,
             port,
             timeout_seconds=timeout_seconds,
@@ -406,14 +406,14 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
             verbose: Set this to False in order to disable printouts.
         """
         with self.temporary_verbose(verbose):
-            _logger.info("Beginning Device Cleanup on %s", self._name_and_alias)
+            _logger.info("Beginning Device Cleanup on %s", self.name_and_alias)
             self._cleanup()
-            _logger.info("Finished Device Cleanup on %s", self._name_and_alias)
+            _logger.info("Finished Device Cleanup on %s", self.name_and_alias)
 
     @final
     def close(self) -> None:
         """Close this device and all its used resources and components."""
-        _logger.info("Closing Connection to %s", self._name_and_alias)
+        _logger.info("Closing Connection to %s", self.name_and_alias)
         self._close()
 
     @final
@@ -462,7 +462,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
                     self.__delattr__(prop)  # pylint: disable=unnecessary-dunder-call
 
         # Reboot the device
-        _logger.info("Rebooting %s", self._name_and_alias)
+        _logger.info("Rebooting %s", self.name_and_alias)
         self._reboot()
         self.close()
         # Depending on the instrument model, shutdown time or reboot time can take longer
@@ -470,11 +470,11 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
             sleep_time = max(self._reboot_quiet_period, quiet_period)
             _logger.info("Waiting for %d seconds", sleep_time)
             time.sleep(sleep_time)
-        _logger.info("Reopening Connection to %s", self._name_and_alias)
+        _logger.info("Reopening Connection to %s", self.name_and_alias)
         if rebooted := self._open():
-            _logger.info("Connection Reestablished with %s", self._name_and_alias)
+            _logger.info("Connection Reestablished with %s", self.name_and_alias)
         else:
-            _logger.error("Failed to reestablish the connection with %s", self._name_and_alias)
+            _logger.error("Failed to reestablish the connection with %s", self.name_and_alias)
         return rebooted
 
     @final

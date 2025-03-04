@@ -305,7 +305,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         self._api_url = self._base_url + self.API_VERSIONS[api_version]
         _logger.debug(
             "%s API version set to: %d (%s)",
-            self._name_and_alias,
+            self.name_and_alias,
             api_version,
             self._api_url,
         )
@@ -437,7 +437,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         _logger.log(
             logging.INFO if self._verbose else logging.DEBUG,
             "(%s) %s >> %s%s%s",
-            self._name_and_alias,
+            self.name_and_alias,
             getattr(request_type, "value", request_type),
             url,
             f", {headers=}" if headers else "",
@@ -511,7 +511,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
         except requests.exceptions.RequestException as error:
             if not allow_errors:
                 raise_failure(
-                    self._name_and_alias,
+                    self.name_and_alias,
                     f"A RequestException occurred (status code {response.status_code}): {error}",
                 )
             try:

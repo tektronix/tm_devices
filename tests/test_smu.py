@@ -167,6 +167,7 @@ def test_smu(  # noqa: PLR0915
     manufacturer='Keithley Instruments Inc.'
     model='Model 2601B'
     name='SMU {smu.device_number}'
+    name_and_alias='SMU {smu.device_number} "SMU-DEVICE"'
     port=None
     resource_expression='TCPIP0::SMU2601B-HOSTNAME::inst0::INSTR'
     serial='4498311'

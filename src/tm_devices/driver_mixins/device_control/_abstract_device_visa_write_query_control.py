@@ -60,7 +60,7 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
         # Compare the esr value
         try:
             verify_values(
-                self._name_and_alias,
+                self.name_and_alias,
                 esr,
                 actual_esr,
                 custom_message_prefix="expect_esr() error code check:",
@@ -74,7 +74,7 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
         for expected_message, actual_message in zip(error_messages, actual_error_messages):
             try:
                 verify_values(
-                    self._name_and_alias,
+                    self.name_and_alias,
                     expected_message,
                     actual_message,
                     use_regex_match=use_regex_match,
@@ -90,6 +90,6 @@ class _AbstractDeviceVISAWriteQueryControl(_AbstractDeviceControl):  # pyright: 
                 f"expect_esr() failed: error code {actual_esr!r} != {esr!r}; "
                 f"error messages {actual_error_messages!r} != {error_messages!r}"
             )
-            raise_failure(self._name_and_alias, failure_message, condense_printout=False)
+            raise_failure(self.name_and_alias, failure_message, condense_printout=False)
 
         return check_passed

@@ -186,7 +186,7 @@ class TSPControl(PIControl, ABC):
         ]
         _logger.info(
             "(%s) Printing Buffers %s >>\n%s\n%s",
-            self._name_and_alias,
+            self.name_and_alias,
             buffer_headers,
             " ".join(buffer_headers),
             "\n".join(" ".join(row) for row in buffer_rows),
@@ -238,7 +238,7 @@ class TSPControl(PIControl, ABC):
             if custom_message_prefix:
                 message_prefix = f"{custom_message_prefix}\n{message_prefix}"
             verify_values(
-                self._name_and_alias,
+                self.name_and_alias,
                 value if expected_value is None else expected_value,
                 check,
                 tolerance=tolerance,

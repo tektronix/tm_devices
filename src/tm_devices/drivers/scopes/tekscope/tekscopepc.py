@@ -36,7 +36,7 @@ class TekScopePC(TekScopePCMixin, AbstractTekScope):  # pyright: ignore[reportIn
         """Reboot the device."""
         msg = (
             f"Rebooting is not supported for the {self.__class__.__name__} driver, "
-            f"{self._name_and_alias} will not be rebooted."
+            f"{self.name_and_alias} will not be rebooted."
         )
         _logger.warning(msg)
         warnings.warn(msg, stacklevel=3)
