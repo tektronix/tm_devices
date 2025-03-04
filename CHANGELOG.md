@@ -18,6 +18,11 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added a new `name_and_alias` cached property to the `Device` class that all drivers inherit from to provide easy access to a unique identifier for the device.
+    - This property was previously implemented as the private `_name_and_alias` property, now it is a public, cached property.
+
 ---
 
 ## v3.1.3 (2025-02-19)
