@@ -351,7 +351,7 @@ def create_visa_connection(
             error_message = (
                 f"Unable to establish a VISA connection to the "
                 f"{device_config_entry.device_type.value}"
-                f"{(' with the alias '+repr(device_config_entry.alias)) if device_config_entry.alias else ''}"  # noqa: E501
+                f"{(' with the alias ' + repr(device_config_entry.alias)) if device_config_entry.alias else ''}"  # noqa: E501
                 f" using the resource expression '{resource_expression}'"
                 f" and the {repr(visa_library) if visa_library else 'default'} VISA library"
             )
@@ -380,7 +380,7 @@ def create_visa_connection(
             error_message = (
                 f"Unable to establish a VISA connection (after two tries) to the "
                 f"{device_config_entry.device_type.value}"
-                f"{(' with the alias '+repr(device_config_entry.alias)) if device_config_entry.alias else ''}"  # noqa: E501
+                f"{(' with the alias ' + repr(device_config_entry.alias)) if device_config_entry.alias else ''}"  # noqa: E501
                 f" using the resource expression '{resource_expression}'"
                 f" and the {repr(visa_library) if visa_library else 'default'} VISA library"
             )

@@ -32,7 +32,7 @@ class _TektronixPIAFGAWGMixin(  # pyright: ignore[reportUnusedClass]
     @property
     def all_channel_names_list(self) -> Tuple[str, ...]:
         """Return a tuple containing all the channel names."""
-        return tuple(f"SOURCE{x+1}" for x in range(self.total_channels))
+        return tuple(f"SOURCE{x + 1}" for x in range(self.total_channels))
 
     @cached_property
     def opt_string(self) -> str:

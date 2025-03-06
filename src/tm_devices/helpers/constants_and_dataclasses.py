@@ -420,8 +420,7 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
             resource_expr = f"GPIB{gpib_board_number}::{self.address}::INSTR"
         else:
             msg = (
-                f"{self.connection_type.value} is not a valid connection "
-                f"type for a VISA resource."
+                f"{self.connection_type.value} is not a valid connection type for a VISA resource."
             )
             raise ValueError(msg)
         return resource_expr

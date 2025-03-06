@@ -67,4 +67,4 @@ with DeviceManager(verbose=False) as device_manager:
         )
         buffer1_data.append(inst.commands.buffer_var["defbuffer1"].readings[x])  # pyright: ignore[reportUnknownMemberType]
 
-        print(f"{x}, {timestamp_data[x-1]}, {buffer1_data[x-1]}")
+        print(f"{x}, {timestamp_data[x - 1]}, {buffer1_data[x - 1]}")

@@ -667,13 +667,12 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
                 raise_error(
                     self.name_and_alias,
                     f"Failed to delete {item_name}\n"
-                    f":{item_type}:LIST? returned \"{','.join(item_list)}\"",
+                    f':{item_type}:LIST? returned "{",".join(item_list)}"',
                 )
         elif item_name not in item_list:
             raise_error(
                 self.name_and_alias,
-                f"Failed to add {item_name}\n"
-                f":{item_type}:LIST? returned \"{','.join(item_list)}\"",
+                f'Failed to add {item_name}\n:{item_type}:LIST? returned "{",".join(item_list)}"',
             )
 
     def _ensure_directory_exists_on_device(self, filepath: Path) -> None:

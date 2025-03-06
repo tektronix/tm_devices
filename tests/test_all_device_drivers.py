@@ -192,20 +192,20 @@ def test_all_device_drivers() -> None:
     # Verify all supported models
     models_without_testing = set(supported_models_list) - set(created_models_list)
     created_counts = Counter(created_models_list)
-    assert all(
-        count == 1 for _, count in created_counts.items()
-    ), f"Some drivers were instantiated more than once: {created_counts.most_common(1)[0]}"
-    assert (
-        created_models_list == supported_models_list
-    ), f"Some models are not tested: {models_without_testing=}"
+    assert all(count == 1 for _, count in created_counts.items()), (
+        f"Some drivers were instantiated more than once: {created_counts.most_common(1)[0]}"
+    )
+    assert created_models_list == supported_models_list, (
+        f"Some models are not tested: {models_without_testing=}"
+    )
 
     # Verify all supported connections
     connections_without_testing = set(supported_connections_list) - set(
         sorted_created_connections_list
     )
-    assert (
-        sorted_created_connections_list == supported_connections_list
-    ), f"Some connections are not tested: {connections_without_testing=}"
+    assert sorted_created_connections_list == supported_connections_list, (
+        f"Some connections are not tested: {connections_without_testing=}"
+    )
 
     print(f"\nVerified all {len(SIMULATED_DEVICE_LIST)} device drivers")  # noqa: T201
     print(  # noqa: T201

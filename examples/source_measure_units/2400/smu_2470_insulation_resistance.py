@@ -57,4 +57,4 @@ with DeviceManager(verbose=False) as device_manager:
         res.append(float(defbuffer1.readings[cnt]))
     print("Rdg #\tTime (s)\tResistance (Ohm)")
     for cnt in num:
-        print(f"{cnt}\t{tmst[cnt-1]:f}\t{res[cnt-1]:+e}")
+        print(f"{cnt}\t{tmst[cnt - 1]:f}\t{res[cnt - 1]:+e}")
