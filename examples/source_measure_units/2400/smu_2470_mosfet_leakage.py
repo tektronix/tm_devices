@@ -54,4 +54,4 @@ with DeviceManager(verbose=False) as device_manager:
         curr.append(float(defbuffer1.readings[cnt]))
     print("Rdg #\tTime (s)\tCurrent (A)")
     for cnt in n:
-        print(f"{cnt}\t{tmst[cnt-1]:.6f}\t{curr[cnt-1]:+e}")
+        print(f"{cnt}\t{tmst[cnt - 1]:.6f}\t{curr[cnt - 1]:+e}")

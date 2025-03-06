@@ -205,4 +205,4 @@ with DeviceManager() as device_manager:
             volt.append(float(defbuffer1.readings[cnt]))
         print("Rdg\tCurrent\t\tVoltage")
         for cnt in range(1, RDG_CNT + 1):
-            print(f"{cnt}\t{curr[cnt-1]:+e}\t{volt[cnt-1]:+e}")
+            print(f"{cnt}\t{curr[cnt - 1]:+e}\t{volt[cnt - 1]:+e}")

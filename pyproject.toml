@@ -342,6 +342,9 @@ select = [
 ]
 task-tags = ["FIXME", "FUTURE", "RELIC", "TODO"]
 
+[tool.ruff.lint.flake8-builtins]
+builtins-strict-checking = false  # This makes the comparison with builtins use the full module path, rather than just the module name
+
 [tool.ruff.lint.isort]
 force-sort-within-sections = false
 known-first-party = [

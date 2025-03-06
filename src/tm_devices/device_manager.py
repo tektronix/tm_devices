@@ -1374,8 +1374,7 @@ class DeviceManager(metaclass=Singleton):
             )
             with contextlib.suppress(AttributeError):
                 message += (
-                    f"Called from {previous_frame.f_code.co_filename}:"
-                    f"{previous_frame.f_lineno}\n"
+                    f"Called from {previous_frame.f_code.co_filename}:{previous_frame.f_lineno}\n"
                 )
             raise AttributeError(message)
 

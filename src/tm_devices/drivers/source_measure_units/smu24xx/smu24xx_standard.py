@@ -31,7 +31,7 @@ class SMU24xxStandard(CommonPISystemErrorCheckMixin, PIControl, SourceMeasureUni
     @property
     def all_channel_names_list(self) -> Tuple[str, ...]:
         """Return a tuple containing all the channel names."""
-        return tuple(f"OUTPUT{x+1}" for x in range(self.total_channels))
+        return tuple(f"OUTPUT{x + 1}" for x in range(self.total_channels))
 
     @property
     def ieee_cmds(self) -> IEEE4882Commands:

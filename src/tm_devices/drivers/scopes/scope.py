@@ -34,4 +34,4 @@ class Scope(Device, ABC):
     @property
     def all_channel_names_list(self) -> Tuple[str, ...]:
         """Return a tuple containing all the channel names."""
-        return tuple(f"CH{x+1}" for x in range(self.total_channels))
+        return tuple(f"CH{x + 1}" for x in range(self.total_channels))

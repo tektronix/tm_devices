@@ -56,9 +56,9 @@ def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None
     assert config.options.standalone
     assert config.options.log_file_level == "NONE"
     assert config.options.default_visa_timeout == 10000
-    assert (
-        config.devices == expected_entry
-    ), f"\nDevice dictionaries don't match:\n{expected_entry}\n{config.devices}"
+    assert config.devices == expected_entry, (
+        f"\nDevice dictionaries don't match:\n{expected_entry}\n{config.devices}"
+    )
 
     # test that the config string representation looks like env declaration
     expected_entry_string = (
@@ -98,9 +98,9 @@ def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None
         config = DMConfigParser()
 
     assert str(expected_device) == expected_device_string
-    assert (
-        config.devices == expected_entry
-    ), f"\nDevice dictionaries don't match:\n{expected_entry}\n{config.devices}"
+    assert config.devices == expected_entry, (
+        f"\nDevice dictionaries don't match:\n{expected_entry}\n{config.devices}"
+    )
     expected_entry_string = (
         f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT=10000,LOG_FILE_LEVEL=NONE,STANDALONE\n"
         f"TM_DEVICES=~~~{expected_device_string}~~~"
@@ -122,9 +122,9 @@ def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None
         clear=True,
     ):
         config = DMConfigParser()
-    assert (
-        expected_entry == config.devices
-    ), f"\nDevice dictionaries don't match:\n{expected_entry}\n{config.devices}"
+    assert expected_entry == config.devices, (
+        f"\nDevice dictionaries don't match:\n{expected_entry}\n{config.devices}"
+    )
 
 
 def test_file_config_default_path() -> None:
@@ -186,9 +186,9 @@ options:
         config = DMConfigParser()
 
     assert expected_options == config.options
-    assert (
-        expected_devices == config.devices
-    ), f"\nDevice dictionaries don't match:\n{expected_devices}\n{config.devices}"
+    assert expected_devices == config.devices, (
+        f"\nDevice dictionaries don't match:\n{expected_devices}\n{config.devices}"
+    )
 
 
 @pytest.mark.parametrize(
@@ -260,13 +260,13 @@ def test_file_config_non_default_path(
     assert config_2.to_config_file_text(file_type) == text, "issue generating config file text"
 
     assert expected_options == config.options
-    assert (
-        expected_devices == config.devices
-    ), f"\nDevice dictionaries don't match:\n{expected_devices}\n{config.devices}"
+    assert expected_devices == config.devices, (
+        f"\nDevice dictionaries don't match:\n{expected_devices}\n{config.devices}"
+    )
     assert expected_options == config_2.options
-    assert (
-        expected_devices == config_2.devices
-    ), f"\nDevice dictionaries don't match:\n{expected_devices}\n{config_2.devices}"
+    assert expected_devices == config_2.devices, (
+        f"\nDevice dictionaries don't match:\n{expected_devices}\n{config_2.devices}"
+    )
 
 
 @pytest.mark.parametrize(
@@ -433,9 +433,9 @@ def test_sequential_env_var_devices() -> None:
 
     with mock.patch.dict("os.environ", {"TM_DEVICES": device_string}, clear=True):
         config = DMConfigParser()
-    assert (
-        expected_devices == config.devices
-    ), f"\nDevice dictionaries don't match:\n{expected_devices}\n{config.devices}"
+    assert expected_devices == config.devices, (
+        f"\nDevice dictionaries don't match:\n{expected_devices}\n{config.devices}"
+    )
     assert expected_devices["SCOPE 2"] == config.devices["MY-ALIAS"]
 
 
@@ -446,9 +446,9 @@ def test_add_device() -> None:
     ):
         config = DMConfigParser()
     expected_devices_1: Mapping[str, DeviceConfigEntry] = MappingProxyType({})
-    assert (
-        expected_devices_1 == config.devices
-    ), f"\nDevice dictionaries don't match:\n{expected_devices_1}\n{config.devices}"
+    assert expected_devices_1 == config.devices, (
+        f"\nDevice dictionaries don't match:\n{expected_devices_1}\n{config.devices}"
+    )
     config.add_device(
         device_type="SCOPE",
         connection_type="TCPIP",
@@ -465,9 +465,9 @@ def test_add_device() -> None:
             )
         }
     )
-    assert (
-        expected_devices_2 == config.devices
-    ), f"\nDevice dictionaries don't match:\n{expected_devices_2}\n{config.devices}"
+    assert expected_devices_2 == config.devices, (
+        f"\nDevice dictionaries don't match:\n{expected_devices_2}\n{config.devices}"
+    )
 
     # Verify that adding a device with a duplicate alias is not allowed
     with pytest.raises(KeyError):
@@ -483,9 +483,9 @@ def test_remove_device() -> None:
     ):
         config = DMConfigParser()
     config.remove_device("SCOPE 1")
-    assert (
-        expected_devices == config.devices
-    ), f"\nDevice dictionaries don't match:\n{expected_devices}\n{config.devices}"
+    assert expected_devices == config.devices, (
+        f"\nDevice dictionaries don't match:\n{expected_devices}\n{config.devices}"
+    )
 
 
 @pytest.mark.parametrize(

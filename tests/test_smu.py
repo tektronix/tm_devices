@@ -144,7 +144,7 @@ def test_smu(  # noqa: PLR0915
         f"{str(smu.commands).split(' at ', maxsplit=1)[-1]}"
     )
     print(smu)  # noqa: T201
-    expected_stdout = f"""{'=' * 45} SMU {smu.device_number} {'=' * 45}
+    expected_stdout = f"""{"=" * 45} SMU {smu.device_number} {"=" * 45}
   <class 'tm_devices.drivers.source_measure_units.smu26xx.smu2601b.SMU2601B'> object at {id(smu)}
     address='SMU2601B-HOSTNAME'
     alias='SMU-DEVICE'
@@ -178,7 +178,7 @@ def test_smu(  # noqa: PLR0915
     visa_backend='{smu.visa_backend}'
     visa_resource=<'TCPIPInstrument'('TCPIP0::SMU2601B-HOSTNAME::inst0::INSTR')>
     visa_timeout={UNIT_TEST_TIMEOUT}
-{'=' * (97 + (1 if smu.device_number >= 10 else 0))}
+{"=" * (97 + (1 if smu.device_number >= 10 else 0))}
 """
     stdout = capsys.readouterr().out
     assert stdout == expected_stdout

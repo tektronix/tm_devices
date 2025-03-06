@@ -110,7 +110,7 @@ class DMConfigParser:
         return (
             f"{self.OPTIONS_ENV_VARIABLE}={self.__options}\n"
             f"{self.DEVICES_ENV_VARIABLE}="
-            f"{'~~~'.join( ['', *map(str, self.__devices.values()), ''])}"
+            f"{'~~~'.join(['', *map(str, self.__devices.values()), ''])}"
         )
 
     ################################################################################################
