@@ -10,6 +10,7 @@ import sys
 import time
 import traceback
 
+from datetime import datetime
 from pathlib import Path
 from typing import Literal, Optional, Tuple, Type, TYPE_CHECKING, TypeVar, Union
 
@@ -35,7 +36,19 @@ __MULTILINE_MESSAGE_LEADING_WHITESPACE = " " * 29
 _ORIGINAL_SYS_EXCEPTHOOK = sys.__excepthook__
 
 
-class _CustomFormatter(logging.Formatter):  # pragma: no cover
+class _CustomFormatterWithMicroseconds(logging.Formatter):  # pragma: no cover
+    converter = datetime.fromtimestamp  # pyright: ignore[reportAssignmentType]
+
+    def formatTime(self, record: logging.LogRecord, datefmt: str | None = None) -> str:  # noqa: N802
+        ct: datetime = self.converter(record.created)  # pyright: ignore[reportAssignmentType]
+        if datefmt:
+            s = ct.strftime(datefmt)
+        else:
+            t = ct.strftime("%Y-%m-%d %H:%M:%S")
+            # Use microseconds in the time format for 6 digits of precision
+            s = f"{t:s}.{ct.microsecond:06d}"
+        return s
+
     def format(self, record: logging.LogRecord) -> str:
         # Add the package name to the log record
         record.package_name = record.name.split(".", maxsplit=1)[0]
@@ -147,8 +160,7 @@ def configure_logging(  # pylint: disable=too-many-locals
         # Set up logger for tm_devices
         log_filepath.parent.mkdir(parents=True, exist_ok=True)
         file_handler = logging.FileHandler(log_filepath, mode="w", encoding="utf-8")
-        file_formatter = _CustomFormatter(logging_file_format_string)
-        file_formatter.default_msec_format = "%s.%06d"  # Use 6 digits of precision for milliseconds
+        file_formatter = _CustomFormatterWithMicroseconds(logging_file_format_string)
 
         file_handler.setLevel(getattr(logging, log_file_level.value))
         file_handler.setFormatter(file_formatter)
@@ -172,10 +184,7 @@ def configure_logging(  # pylint: disable=too-many-locals
             )
         else:
             console_handler = logging.StreamHandler(stream=sys.stdout)
-            console_formatter = logging.Formatter(logging_console_format_string)
-        console_formatter.default_msec_format = (
-            "%s.%06d"  # Use 6 digits of precision for milliseconds
-        )
+            console_formatter = _CustomFormatterWithMicroseconds(logging_console_format_string)
 
         console_handler.setLevel(getattr(logging, log_console_level.value))
         console_handler.setFormatter(console_formatter)
