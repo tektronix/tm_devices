@@ -49,6 +49,10 @@ class _CustomFormatterWithMicroseconds(logging.Formatter):  # pragma: no cover
             s = f"{t:s}.{ct.microsecond:06d}"
         return s
 
+
+class _CustomFormatterWithPackageNameAndMicroseconds(
+    _CustomFormatterWithMicroseconds
+):  # pragma: no cover
     def format(self, record: logging.LogRecord) -> str:
         # Add the package name to the log record
         record.package_name = record.name.split(".", maxsplit=1)[0]
@@ -160,7 +164,7 @@ def configure_logging(  # pylint: disable=too-many-locals
         # Set up logger for tm_devices
         log_filepath.parent.mkdir(parents=True, exist_ok=True)
         file_handler = logging.FileHandler(log_filepath, mode="w", encoding="utf-8")
-        file_formatter = _CustomFormatterWithMicroseconds(logging_file_format_string)
+        file_formatter = _CustomFormatterWithPackageNameAndMicroseconds(logging_file_format_string)
 
         file_handler.setLevel(getattr(logging, log_file_level.value))
         file_handler.setFormatter(file_formatter)
