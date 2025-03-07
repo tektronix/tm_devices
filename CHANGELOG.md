@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Changed
+
+- Modified the logging time format to use microseconds for more precise logging.
+
 ---
 
 ## v3.1.4 (2025-03-04)
