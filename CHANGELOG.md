@@ -18,6 +18,18 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.1.5 (2025-03-10)
+
+### Merged Pull Requests
+
+- python-deps(deps): bump the python-dependencies group across 1 directory with 2 updates ([#395](https://github.com/tektronix/tm_devices/pull/395))
+- ci: Allow retries for CI testing on MacOS. ([#394](https://github.com/tektronix/tm_devices/pull/394))
+- gh-actions(deps): bump tektronix/python-package-ci-cd ([#393](https://github.com/tektronix/tm_devices/pull/393))
+- Fixed microsecond representation in log formatting ([#392](https://github.com/tektronix/tm_devices/pull/392))
+- chore: Bump development dependencies ([#390](https://github.com/tektronix/tm_devices/pull/390))
+
 ### Changed
 
 - Modified the logging time format to use microseconds for more precise logging.
