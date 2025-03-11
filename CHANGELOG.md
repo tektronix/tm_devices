@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- Updated the expected error message for the `set_output_signal_path()` method in the AWG70K driver.
+
 ---
 
 ## v3.1.5 (2025-03-10)
