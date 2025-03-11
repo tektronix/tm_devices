@@ -18,6 +18,14 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.1.6 (2025-03-11)
+
+### Merged Pull Requests
+
+- Update AWG70K driver to properly handle when the DCA output signal path is not supported ([#398](https://github.com/tektronix/tm_devices/pull/398))
+
 ### Fixed
 
 - Updated the expected error message for the `set_output_signal_path()` method in the AWG70K driver.
