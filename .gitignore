@@ -58,6 +58,7 @@ coverage.xml
 *.py,cover
 .pytest_cache/
 .results*/
+.dist*/
 tests/samples/generated_stubs/*
 tests/generated_**/*
 tests/verify_devices.yaml
