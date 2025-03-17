@@ -1,16 +1,19 @@
 # pyright: reportPrivateUsage=none
 """Test generate_function."""
 
-from typing import cast
+from typing import cast, TYPE_CHECKING
 
 import pytest
 
 from tm_devices import DeviceManager
-from tm_devices.drivers import AWG5K, AWG7K, AWG70KA, AWG5200, MSO2, MSO5
 from tm_devices.helpers.enums import (
     SignalGeneratorOutputPaths5200,
     SignalGeneratorOutputPathsNon5200,
 )
+
+if TYPE_CHECKING:
+    # noinspection PyUnresolvedReferences
+    from tm_devices.drivers import AWG5K, AWG7K, AWG70KA, AWG5200, MSO2, MSO5
 
 
 def test_awg5200_gen_waveform(
@@ -22,7 +25,7 @@ def test_awg5200_gen_waveform(
         device_manager: The DeviceManager object.
         capsys: The captured stdout and stderr.
     """
-    awg520050 = cast(AWG5200, device_manager.add_awg("awg5200opt50-hostname", alias="awg520050a"))
+    awg520050 = cast("AWG5200", device_manager.add_awg("awg5200opt50-hostname", alias="awg520050a"))
 
     awg520050.generate_function(
         10e3, awg520050.source_device_constants.functions.SIN, 1.0, 0.2, channel="SOURCE1"
@@ -68,7 +71,7 @@ def test_awg5200_gen_waveform(
         )
 
     # Call generate_function with only *DC in the waveform list.
-    awg520025 = cast(AWG5200, device_manager.add_awg("awg5200opt25-hostname", alias="awg520025a"))
+    awg520025 = cast("AWG5200", device_manager.add_awg("awg5200opt25-hostname", alias="awg520025a"))
     _ = capsys.readouterr().out  # throw away stdout
     awg520025.generate_function(
         10e3,
@@ -91,7 +94,7 @@ def test_awg70k_gen_waveform(
         capsys: The captured stdout and stderr.
     """
     awg70ka150 = cast(
-        AWG70KA, device_manager.add_awg("awg70001aopt150-hostname", alias="awg70ka150")
+        "AWG70KA", device_manager.add_awg("awg70001aopt150-hostname", alias="awg70ka150")
     )
     _ = capsys.readouterr().out
     awg70ka150.generate_function(
@@ -120,7 +123,7 @@ def test_awg70k_gen_waveform(
 
     # call generate_function with only *DC in the waveform list.
     awg70ka225 = cast(
-        AWG70KA, device_manager.add_awg("awg70002aopt225-hostname", alias="awg70ka225")
+        "AWG70KA", device_manager.add_awg("awg70002aopt225-hostname", alias="awg70ka225")
     )
     _ = capsys.readouterr().out  # throw away stdout
     awg70ka225.generate_function(
@@ -141,8 +144,8 @@ def test_awg7k_gen_waveform(device_manager: DeviceManager) -> None:
     Args:
         device_manager: The DeviceManager object.
     """
-    awg7k01 = cast(AWG7K, device_manager.add_awg("awg7051opt01-hostname", alias="awg7k01"))
-    awg7k06 = cast(AWG7K, device_manager.add_awg("awg7102opt06-hostname", alias="awg7k06"))
+    awg7k01 = cast("AWG7K", device_manager.add_awg("awg7051opt01-hostname", alias="awg7k01"))
+    awg7k06 = cast("AWG7K", device_manager.add_awg("awg7102opt06-hostname", alias="awg7k06"))
 
     error_match = (
         r"The offset can only be set on AWG7102 without an 02 or 06 option and with an output "
@@ -233,7 +236,7 @@ def test_awg5k_gen_waveform(device_manager: DeviceManager) -> None:
     Args:
         device_manager: The DeviceManager object.
     """
-    awg5k = cast(AWG5K, device_manager.add_awg("AWG5012-hostname", alias="awg5k"))
+    awg5k = cast("AWG5K", device_manager.add_awg("AWG5012-hostname", alias="awg5k"))
     # Sine
     awg5k.generate_function(
         10e3, awg5k.source_device_constants.functions.SIN, 2.0, 2.0, channel="SOURCE1"
@@ -372,7 +375,7 @@ def test_internal_afg_gen_waveform(
         capsys: The captured stdout and stderr.
     """
     scope: MSO5 = cast(
-        MSO5, device_manager.add_scope("MSO56-SERIAL1", alias="mso56", connection_type="USB")
+        "MSO5", device_manager.add_scope("MSO56-SERIAL1", alias="mso56", connection_type="USB")
     )
 
     _ = capsys.readouterr().out

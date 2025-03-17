@@ -165,7 +165,7 @@ class AbstractTekScope(  # pylint: disable=too-many-public-methods
                 try:
                     # Channels that support the PROBETYPE query are dynamically assigned
                     probetype = cast(
-                        Literal["ANALOG", "DIGITAL"], self.query(f"{channel}:PROBETYPE?")
+                        "Literal['ANALOG', 'DIGITAL']", self.query(f"{channel}:PROBETYPE?")
                     )
                     probe_id_sernumber = self.query(
                         f"{channel}:PROBE:ID:SERNUMBER?", remove_quotes=True

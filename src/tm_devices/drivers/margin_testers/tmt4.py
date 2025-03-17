@@ -114,9 +114,9 @@ class TMT4(MarginTester):
         # Make get request to about and version endpoints
         with self.temporary_verbose(verbose):
             _, res_json, _, _ = self.get("/device/about")
-            res_json = cast(Dict[str, Any], res_json)
+            res_json = cast("Dict[str, Any]", res_json)
             _, res_json2, _, _ = self.get("/device/version")
-            res_json2 = cast(Dict[str, Any], res_json2)
+            res_json2 = cast("Dict[str, Any]", res_json2)
             res_json.update(res_json2)
         return res_json
 

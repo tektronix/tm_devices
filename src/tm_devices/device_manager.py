@@ -18,7 +18,6 @@ from typing import cast, Dict, Mapping, Optional, Tuple, Type, TYPE_CHECKING, Un
 from typing_extensions import TypeVar
 
 from tm_devices.components import DMConfigParser
-from tm_devices.driver_mixins.device_control.pi_control import PIControl
 from tm_devices.drivers._device_driver_mapping import (
     _DEVICE_DRIVER_MODEL_STR_MAPPING,  # pyright: ignore[reportPrivateUsage]
 )
@@ -61,6 +60,9 @@ with warnings.catch_warnings():
 if TYPE_CHECKING:
     from pyvisa.resources import MessageBasedResource
     from typing_extensions import Self
+
+    # noinspection PyUnresolvedReferences
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 ####################################################################################################
 # Type Aliases
@@ -311,7 +313,7 @@ class DeviceManager(metaclass=Singleton):
         """
         self.__protect_access()
         return cast(
-            AFGAlias,
+            "AFGAlias",
             self._add_device(
                 device_type=DeviceTypes.AFG.value,
                 address=address,
@@ -353,7 +355,7 @@ class DeviceManager(metaclass=Singleton):
         """
         self.__protect_access()
         return cast(
-            AWGAlias,
+            "AWGAlias",
             self._add_device(
                 device_type=DeviceTypes.AWG.value,
                 address=address,
@@ -395,7 +397,7 @@ class DeviceManager(metaclass=Singleton):
         """
         self.__protect_access()
         return cast(
-            DataAcquisitionSystemAlias,
+            "DataAcquisitionSystemAlias",
             self._add_device(
                 device_type=DeviceTypes.DAQ.value,
                 address=address,
@@ -437,7 +439,7 @@ class DeviceManager(metaclass=Singleton):
         """
         self.__protect_access()
         return cast(
-            DigitalMultimeterAlias,
+            "DigitalMultimeterAlias",
             self._add_device(
                 device_type=DeviceTypes.DMM.value,
                 address=address,
@@ -471,7 +473,7 @@ class DeviceManager(metaclass=Singleton):
         """
         self.__protect_access()
         return cast(
-            MarginTesterAlias,
+            "MarginTesterAlias",
             self._add_device(
                 device_type=DeviceTypes.MT.value,
                 address=address,
@@ -512,7 +514,7 @@ class DeviceManager(metaclass=Singleton):
         """
         self.__protect_access()
         return cast(
-            PowerSupplyUnitAlias,
+            "PowerSupplyUnitAlias",
             self._add_device(
                 device_type=DeviceTypes.PSU.value,
                 address=address,
@@ -554,7 +556,7 @@ class DeviceManager(metaclass=Singleton):
         """
         self.__protect_access()
         return cast(
-            ScopeAlias,
+            "ScopeAlias",
             self._add_device(
                 device_type=DeviceTypes.SCOPE.value,
                 address=address,
@@ -596,7 +598,7 @@ class DeviceManager(metaclass=Singleton):
         """
         self.__protect_access()
         return cast(
-            SourceMeasureUnitAlias,
+            "SourceMeasureUnitAlias",
             self._add_device(
                 device_type=DeviceTypes.SMU.value,
                 address=address,
@@ -636,7 +638,7 @@ class DeviceManager(metaclass=Singleton):
         """
         self.__protect_access()
         return cast(
-            SystemsSwitchAlias,
+            "SystemsSwitchAlias",
             self._add_device(
                 device_type=DeviceTypes.SS.value,
                 address=address,
@@ -678,7 +680,7 @@ class DeviceManager(metaclass=Singleton):
         """
         self.__protect_access()
         return cast(
-            UnsupportedDeviceAlias,
+            "UnsupportedDeviceAlias",
             self._add_device(
                 device_type=DeviceTypes.UNSUPPORTED.value,
                 address=address,
@@ -781,11 +783,11 @@ class DeviceManager(metaclass=Singleton):
         self.__protect_access()
         if isinstance(number_or_alias, int):
             return cast(
-                AFGAlias,
+                "AFGAlias",
                 self.get_device(device_type=DeviceTypes.AFG.value, device_number=number_or_alias),
             )
         return cast(
-            AFGAlias, self.get_device(device_type=DeviceTypes.AFG.value, alias=number_or_alias)
+            "AFGAlias", self.get_device(device_type=DeviceTypes.AFG.value, alias=number_or_alias)
         )
 
     def get_awg(self, number_or_alias: Union[int, str]) -> AWGAlias:
@@ -802,11 +804,11 @@ class DeviceManager(metaclass=Singleton):
         self.__protect_access()
         if isinstance(number_or_alias, int):
             return cast(
-                AWGAlias,
+                "AWGAlias",
                 self.get_device(device_type=DeviceTypes.AWG.value, device_number=number_or_alias),
             )
         return cast(
-            AWGAlias, self.get_device(device_type=DeviceTypes.AWG.value, alias=number_or_alias)
+            "AWGAlias", self.get_device(device_type=DeviceTypes.AWG.value, alias=number_or_alias)
         )
 
     def get_daq(self, number_or_alias: Union[int, str]) -> DataAcquisitionSystemAlias:
@@ -823,11 +825,11 @@ class DeviceManager(metaclass=Singleton):
         self.__protect_access()
         if isinstance(number_or_alias, int):
             return cast(
-                DataAcquisitionSystemAlias,
+                "DataAcquisitionSystemAlias",
                 self.get_device(device_type=DeviceTypes.DAQ.value, device_number=number_or_alias),
             )
         return cast(
-            DataAcquisitionSystemAlias,
+            "DataAcquisitionSystemAlias",
             self.get_device(device_type=DeviceTypes.DAQ.value, alias=number_or_alias),
         )
 
@@ -845,11 +847,11 @@ class DeviceManager(metaclass=Singleton):
         self.__protect_access()
         if isinstance(number_or_alias, int):
             return cast(
-                DigitalMultimeterAlias,
+                "DigitalMultimeterAlias",
                 self.get_device(device_type=DeviceTypes.DMM.value, device_number=number_or_alias),
             )
         return cast(
-            DigitalMultimeterAlias,
+            "DigitalMultimeterAlias",
             self.get_device(device_type=DeviceTypes.DMM.value, alias=number_or_alias),
         )
 
@@ -915,11 +917,11 @@ class DeviceManager(metaclass=Singleton):
         self.__protect_access()
         if isinstance(number_or_alias, int):
             return cast(
-                MarginTesterAlias,
+                "MarginTesterAlias",
                 self.get_device(device_type=DeviceTypes.MT.value, device_number=number_or_alias),
             )
         return cast(
-            MarginTesterAlias,
+            "MarginTesterAlias",
             self.get_device(device_type=DeviceTypes.MT.value, alias=number_or_alias),
         )
 
@@ -937,11 +939,11 @@ class DeviceManager(metaclass=Singleton):
         self.__protect_access()
         if isinstance(number_or_alias, int):
             return cast(
-                PowerSupplyUnitAlias,
+                "PowerSupplyUnitAlias",
                 self.get_device(device_type=DeviceTypes.PSU.value, device_number=number_or_alias),
             )
         return cast(
-            PowerSupplyUnitAlias,
+            "PowerSupplyUnitAlias",
             self.get_device(device_type=DeviceTypes.PSU.value, alias=number_or_alias),
         )
 
@@ -959,11 +961,12 @@ class DeviceManager(metaclass=Singleton):
         self.__protect_access()
         if isinstance(number_or_alias, int):
             return cast(
-                ScopeAlias,
+                "ScopeAlias",
                 self.get_device(device_type=DeviceTypes.SCOPE.value, device_number=number_or_alias),
             )
         return cast(
-            ScopeAlias, self.get_device(device_type=DeviceTypes.SCOPE.value, alias=number_or_alias)
+            "ScopeAlias",
+            self.get_device(device_type=DeviceTypes.SCOPE.value, alias=number_or_alias),
         )
 
     def get_smu(self, number_or_alias: Union[int, str]) -> SourceMeasureUnitAlias:
@@ -980,11 +983,11 @@ class DeviceManager(metaclass=Singleton):
         self.__protect_access()
         if isinstance(number_or_alias, int):
             return cast(
-                SourceMeasureUnitAlias,
+                "SourceMeasureUnitAlias",
                 self.get_device(device_type=DeviceTypes.SMU.value, device_number=number_or_alias),
             )
         return cast(
-            SourceMeasureUnitAlias,
+            "SourceMeasureUnitAlias",
             self.get_device(device_type=DeviceTypes.SMU.value, alias=number_or_alias),
         )
 
@@ -1002,11 +1005,11 @@ class DeviceManager(metaclass=Singleton):
         self.__protect_access()
         if isinstance(number_or_alias, int):
             return cast(
-                SystemsSwitchAlias,
+                "SystemsSwitchAlias",
                 self.get_device(device_type=DeviceTypes.SS.value, device_number=number_or_alias),
             )
         return cast(
-            SystemsSwitchAlias,
+            "SystemsSwitchAlias",
             self.get_device(device_type=DeviceTypes.SS.value, alias=number_or_alias),
         )
 
@@ -1367,7 +1370,7 @@ class DeviceManager(metaclass=Singleton):
             AttributeError: Indicates that the calling method should not have been used.
         """
         if not self.__is_open and not self._suppress_protection:
-            previous_frame = cast(FrameType, inspect.currentframe().f_back.f_back)  # pyright: ignore[reportOptionalMemberAccess]
+            previous_frame = cast("FrameType", inspect.currentframe().f_back.f_back)  # pyright: ignore[reportOptionalMemberAccess]
             message = (
                 f"The {self.__class__.__name__} is closed, please use the .open() "
                 f"method before continuing to use the {self.__class__.__name__}.\n"
@@ -1403,7 +1406,7 @@ class DeviceManager(metaclass=Singleton):
         model_series = ""
         try:
             model_series = get_model_series(idn_response.split(",")[1])
-            device_driver = cast(Type[PIControl], device_drivers[model_series])
+            device_driver = cast("Type[PIControl]", device_drivers[model_series])
             new_device = device_driver(
                 device_config,
                 self.__verbose,
@@ -1418,7 +1421,7 @@ class DeviceManager(metaclass=Singleton):
             message += f" *IDN? returned {idn_response!r}"
             raise SystemError(message) from error
 
-        return cast(Device, new_device)
+        return cast("Device", new_device)
 
     def __set_options(self, verbose: bool) -> None:
         """Set the options for the DeviceManager.

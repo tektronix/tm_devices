@@ -254,7 +254,7 @@ def test_iafg(device_manager: DeviceManager) -> None:
     Args:
         device_manager: The DeviceManager object.
     """
-    mso64: MSO6 = cast(MSO6, device_manager.add_scope("MSO64-HOSTNAME", alias="mso64"))
+    mso64: MSO6 = cast("MSO6", device_manager.add_scope("MSO64-HOSTNAME", alias="mso64"))
     mso64_constraints = mso64.get_waveform_constraints(
         SignalGeneratorFunctionsIAFG.SIN,
         frequency=25.0e6,
@@ -327,7 +327,7 @@ def test_iafg(device_manager: DeviceManager) -> None:
         ramp_symmetry_range=ParameterBounds(lower=0.0, upper=100.0),
     )
 
-    mso56b: MSO5 = cast(MSO5B, device_manager.add_scope("MSO58B-HOSTNAME", alias="mso56b"))
+    mso56b: MSO5 = cast("MSO5B", device_manager.add_scope("MSO58B-HOSTNAME", alias="mso56b"))
     mso56b_constraints = mso56b.get_waveform_constraints(
         SignalGeneratorFunctionsIAFG.SIN,
     )
