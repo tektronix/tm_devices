@@ -88,7 +88,7 @@ class DMConfigParser:
     def __init__(self) -> None:
         """Initialize the DMConfigParser and read the configuration."""
         # Create a count of the number of each type of device created
-        self.__dev_count: Dict[str, int] = {dev: 0 for dev in DeviceTypes.list_values()}
+        self.__dev_count: Dict[str, int] = dict.fromkeys(DeviceTypes.list_values(), 0)
 
         self.__devices: Dict[str, DeviceConfigEntry] = AliasDict()
         self.__options = DMConfigOptions()
@@ -182,8 +182,8 @@ class DMConfigParser:
         Raises:
             ValueError: invalid config options, trouble creating (or a duplicate) device entry.
         """
-        device_type = cast(DeviceTypes, device_type)
-        connection_type = cast(ConnectionTypes, connection_type)
+        device_type = cast("DeviceTypes", device_type)
+        connection_type = cast("ConnectionTypes", connection_type)
         # device and connection type conversion to enum from string is handled on initialization
         new_entry = DeviceConfigEntry(
             device_type=device_type,

@@ -45,7 +45,7 @@ python-dateutil==2.9.0.post0 ; python_version >= "3.8" and python_full_version !
 pyyaml==6.0.2 ; python_version >= "3.8" and python_full_version != "3.9.0" and python_full_version != "3.9.1" and python_version < "4.0"
 pyyaml-env-tag==0.1 ; python_version >= "3.8" and python_full_version != "3.9.0" and python_full_version != "3.9.1" and python_version < "4.0"
 requests==2.32.3 ; python_version >= "3.8" and python_full_version != "3.9.0" and python_full_version != "3.9.1" and python_version < "4.0"
-setuptools==75.3.0 ; python_version >= "3.8" and python_full_version != "3.9.0" and python_full_version != "3.9.1" and python_version < "4.0"
+setuptools==75.3.2 ; python_version >= "3.8" and python_full_version != "3.9.0" and python_full_version != "3.9.1" and python_version < "4.0"
 six==1.17.0 ; python_version >= "3.8" and python_full_version != "3.9.0" and python_full_version != "3.9.1" and python_version < "4.0"
 soupsieve==2.6 ; python_version >= "3.8" and python_full_version != "3.9.0" and python_full_version != "3.9.1" and python_version < "4.0"
 super-collections==0.5.3 ; python_version >= "3.8" and python_full_version != "3.9.0" and python_full_version != "3.9.1" and python_version < "4.0"

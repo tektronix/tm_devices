@@ -259,7 +259,7 @@ class ValidatedChannel(BaseCmd):  # pylint: disable=too-few-public-methods
                 msg = f"No channel number was detected in the command syntax '{self._cmd_syntax}'"
                 raise ValueError(msg)
         else:
-            valid_channels = cast(Set[Union[str, int]], valid_channel_strings)
+            valid_channels = cast("Set[Union[str, int]]", valid_channel_strings)
             # Check if the channel "number" is actually a letter
             if (last_letter := self._cmd_syntax[-1]) in string.ascii_lowercase:
                 channel = last_letter

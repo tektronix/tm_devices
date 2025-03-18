@@ -157,7 +157,7 @@ class AWG5200(AWG5200Mixin, AWG):
             self.load_waveform_set()
         for channel_name in self._validate_channels(channel):
             self.set_sample_rate(needed_sample_rate)
-            source_channel = cast(AWG5200SourceChannel, self.source_channel[channel_name])
+            source_channel = cast("AWG5200SourceChannel", self.source_channel[channel_name])
             # turn channel off
             self.set_and_check(f"OUTPUT{source_channel.num}:STATE", "0")
             source_channel.set_waveform_properties(

@@ -18,7 +18,7 @@ class CustomStrEnum(Enum):
     @property
     def value(self) -> str:  # pylint: disable=invalid-overridden-method
         """Return the value of the Enum member."""
-        return cast(str, self._value_)  # pylint: disable=no-member
+        return cast("str", self._value_)  # pylint: disable=no-member
 
     @classmethod
     def list_values(cls) -> List[str]:

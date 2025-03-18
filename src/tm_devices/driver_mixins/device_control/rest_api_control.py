@@ -432,7 +432,7 @@ class RESTAPIControl(_AbstractDeviceControl, ABC):
                 url = self._base_url + url
             else:
                 url = self._api_url + url
-        response = cast(requests.Response, None)
+        response = cast("requests.Response", None)
         retval: Union[Dict[str, Any], bytes] = {}
         _logger.log(
             logging.INFO if self._verbose else logging.DEBUG,
