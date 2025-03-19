@@ -37,6 +37,8 @@ _ORIGINAL_SYS_EXCEPTHOOK = sys.__excepthook__
 
 
 class _CustomFormatterWithMicroseconds(logging.Formatter):  # pragma: no cover
+    """A formatter that includes microsecond precision in the timestamp."""
+
     converter = datetime.fromtimestamp  # pyright: ignore[reportAssignmentType]
 
     def formatTime(self, record: logging.LogRecord, datefmt: str | None = None) -> str:  # noqa: N802
@@ -50,9 +52,17 @@ class _CustomFormatterWithMicroseconds(logging.Formatter):  # pragma: no cover
         return s
 
 
+class _CustomFormatterWithColorAndMicroseconds(
+    colorlog.ColoredFormatter, _CustomFormatterWithMicroseconds
+):  # pragma: no cover
+    """A formatter that includes color and microsecond precision in the timestamp."""
+
+
 class _CustomFormatterWithPackageNameAndMicroseconds(
     _CustomFormatterWithMicroseconds
 ):  # pragma: no cover
+    """A formatter that includes the package name and microsecond precision in the timestamp."""
+
     def format(self, record: logging.LogRecord) -> str:
         # Add the package name to the log record
         record.package_name = record.name.split(".", maxsplit=1)[0]
@@ -182,7 +192,7 @@ def configure_logging(  # pylint: disable=too-many-locals
     if log_console_level != LoggingLevels.NONE:
         if log_colored_output:
             console_handler = colorlog.StreamHandler(stream=sys.stdout)
-            console_formatter = colorlog.ColoredFormatter(
+            console_formatter = _CustomFormatterWithColorAndMicroseconds(
                 "%(log_color)s" + logging_console_format_string,
                 log_colors=colorlog.default_log_colors,
             )
