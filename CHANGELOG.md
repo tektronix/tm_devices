@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- Updated the logging configuration function to properly display the correct timestamp precision when using colored console logging.
+
 ---
 
 ## v3.1.6 (2025-03-11)
