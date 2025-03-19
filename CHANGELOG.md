@@ -18,6 +18,16 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.1.7 (2025-03-19)
+
+### Merged Pull Requests
+
+- fix: Updated the logging configuration function to properly display the correct timestamp precision when using colored console logging ([#401](https://github.com/tektronix/tm_devices/pull/401))
+- python-deps(deps-dev): update ruff requirement from 0.9.10 to 0.11.0 in the python-dependencies group ([#400](https://github.com/tektronix/tm_devices/pull/400))
+- test: Move all distributions built during tox into a subdirectory ([#399](https://github.com/tektronix/tm_devices/pull/399))
+
 ### Fixed
 
 - Updated the logging configuration function to properly display the correct timestamp precision when using colored console logging.
