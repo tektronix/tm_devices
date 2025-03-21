@@ -18,6 +18,14 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.1.8 (2025-03-21)
+
+### Merged Pull Requests
+
+- chore: Relax psutil version requirement to >=6.0.0 ([#402](https://github.com/tektronix/tm_devices/pull/402))
+
 ### Changed
 
 - Relaxed the required version of `psutil` to allow for easier installation of `tm_devices` into more environments.
