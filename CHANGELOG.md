@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Changed
+
+- Relaxed the required version of `psutil` to allow for easier installation of `tm_devices` into more environments.
+
 ---
 
 ## v3.1.7 (2025-03-19)
