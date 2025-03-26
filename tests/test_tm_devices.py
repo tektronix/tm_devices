@@ -14,7 +14,6 @@ import pytest
 from packaging.version import InvalidVersion, Version
 
 import tm_devices
-import tm_devices.device_manager
 import tm_devices.drivers
 import tm_devices.helpers
 
