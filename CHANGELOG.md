@@ -18,6 +18,17 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.1.9 (2025-04-03)
+
+### Merged Pull Requests
+
+- fix: Fixed the method of determining the total number of physical channel connectors on the 70kSX scope series ([#408](https://github.com/tektronix/tm_devices/pull/408))
+- python-deps(deps-dev): update pyright requirement from 1.1.397 to 1.1.398 in the python-dependencies group ([#405](https://github.com/tektronix/tm_devices/pull/405))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#404](https://github.com/tektronix/tm_devices/pull/404))
+- gh-actions(deps): bump tektronix/python-package-ci-cd ([#403](https://github.com/tektronix/tm_devices/pull/403))
+
 ### Fixed
 
 - Fixed the method of determining the total number of physical channel connectors on the 70kSX scope series to properly list all physical channels, even if not all channels can be used simultaneously, as is the case on SX scopes with the Asynchronous Time Interleaving (ATI) feature.
