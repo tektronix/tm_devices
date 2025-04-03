@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Fixed
+
+- Fixed the method of determining the total number of physical channel connectors on the 70kSX scope series to properly list all physical channels, even if not all channels can be used simultaneously, as is the case on SX scopes with the Asynchronous Time Interleaving (ATI) feature.
+
 ---
 
 ## v3.1.8 (2025-03-21)
