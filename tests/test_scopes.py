@@ -423,6 +423,9 @@ def test_tekscope70k(
     # Assert the total number of digital channels.
     assert scope_70k.num_dig_bits_in_ch == 16
 
+    dpo70ksx = device_manager.add_scope("DPO70KSX-HOSTNAME")
+    assert dpo70ksx.total_channels == 3
+
 
 def test_long_device_name(device_manager: DeviceManager) -> None:
     """Test a device with a long name.
