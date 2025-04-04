@@ -1069,10 +1069,10 @@ class InternalAFGChannel(BaseAFGSourceChannel):
         if burst_count > 0:
             self.setup_burst_waveform(burst_count)
         # Generate the waveform from the Internal AFG
+        # Frequency
+        self.set_frequency(frequency)
         # Function
         self.set_function(function)
-        # Frequency, needs to be set after function so that the frequency is properly adjusted
-        self.set_frequency(frequency)
         # Duty Cycle
         if function == SignalGeneratorFunctionsIAFG.SQUARE:
             self.set_square_duty_cycle(duty_cycle)
