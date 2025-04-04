@@ -1071,8 +1071,6 @@ class InternalAFGChannel(BaseAFGSourceChannel):
         # Generate the waveform from the Internal AFG
         # Frequency
         self.set_frequency(frequency)
-        # Offset
-        self.set_offset(offset)
         # Function
         self.set_function(function)
         # Duty Cycle
@@ -1085,6 +1083,8 @@ class InternalAFGChannel(BaseAFGSourceChannel):
         self.set_impedance(termination)
         # Amplitude, needs to be after termination so that the amplitude is properly adjusted
         self.set_amplitude(amplitude)
+        # Offset, needs to be after termination so that the offset is properly adjusted
+        self.set_offset(offset)
 
     def set_amplitude(self, value: float, absolute_tolerance: float = 0) -> None:
         """Set the amplitude on the internal AFG.
