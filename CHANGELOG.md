@@ -18,6 +18,14 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.1.10 (2025-04-04)
+
+### Merged Pull Requests
+
+- Set offset after impedance so that it is properly adjusted  ([#411](https://github.com/tektronix/tm_devices/pull/411))
+
 ### Fixed
 
 - Fixed a bug in `set_function_properties` in the drivers for the internal AFG of the TekScope that could cause the offset value to change after setting impedance.
