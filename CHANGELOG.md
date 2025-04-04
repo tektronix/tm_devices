@@ -16,6 +16,8 @@ Valid subsections within a version are:
 
 ## Unreleased
 
+### Fixed
+
 - Fixed a bug in `set_function_properties` in the drivers for the internal AFG of the TekScope that could cause the offset value to change after setting impedance.
 
 ---
