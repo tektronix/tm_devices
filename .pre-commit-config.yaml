@@ -39,7 +39,7 @@ repos:
       - id: remove-tabs
       - id: forbid-tabs
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: cb3c2be894b151dff143b1baf6acbd55f2b7faed  # frozen: 0.30.0
+    rev: a167de9d5f4e87e1cdb16cb560aa704b79b6f655  # frozen: 0.32.1
     hooks:
       - id: check-readthedocs
       - id: check-dependabot
@@ -65,7 +65,7 @@ repos:
     hooks:
       - id: curlylint
   - repo: https://github.com/executablebooks/mdformat
-    rev: 08fba30538869a440b5059de90af03e3502e35fb  # frozen: 0.7.17
+    rev: ff29be1a1ba8029d9375882aa2c812b62112a593  # frozen: 0.7.22
     hooks:
       - id: mdformat
         args: [--number, --end-of-line, keep, --ignore-missing-references]
@@ -91,7 +91,7 @@ repos:
     hooks:
       - id: check-poetry
   - repo: https://github.com/pappasam/toml-sort
-    rev: b9b6210da457c38122995e434b314f4c4a4a923e  # frozen: v0.23.1
+    rev: 4ec24891e200ae663aa2a7cecd19516080777133  # frozen: v0.24.2
     hooks:
       - id: toml-sort-fix
   - repo: local
