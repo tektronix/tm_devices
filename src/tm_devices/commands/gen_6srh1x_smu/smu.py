@@ -34,13 +34,13 @@ Attributes and Functions:
     - smu.measure.filter.type
     - smu.measure.func
     - smu.measure.getattribute()
+    - smu.measure.limit[Y].audible
+    - smu.measure.limit[Y].autoclear
     - smu.measure.limit[Y].clear()
-    - smu.measure.limit[r].audible
-    - smu.measure.limit[r].autoclear
-    - smu.measure.limit[r].enable
-    - smu.measure.limit[r].fail
-    - smu.measure.limit[r].high.value
-    - smu.measure.limit[r].low.value
+    - smu.measure.limit[Y].enable
+    - smu.measure.limit[Y].fail
+    - smu.measure.limit[Y].high.value
+    - smu.measure.limit[Y].low.value
     - smu.measure.math.enable
     - smu.measure.math.format
     - smu.measure.math.mxb.bfactor
@@ -2328,29 +2328,35 @@ class SmuMeasureMath(BaseTSPCmd):
 
 
 class SmuMeasureLimitItemLow(BaseTSPCmd):
-    """The ``smu.measure.limit[r].low`` command tree.
+    """The ``smu.measure.limit[Y].low`` command tree.
+
+    Info:
+        - ``Y``, the limit number: 1 or 2.
 
     Properties and methods:
-        - ``.value``: The ``smu.measure.limit[r].low.value`` attribute.
+        - ``.value``: The ``smu.measure.limit[Y].low.value`` attribute.
     """
 
     @property
     def value(self) -> str:
-        """Access the ``smu.measure.limit[r].low.value`` attribute.
+        """Access the ``smu.measure.limit[Y].low.value`` attribute.
 
         Description:
-            - This attribute specifies the lower limit for a limit test. (r = resistance in ohms)
+            - This attribute specifies the lower limit for a limit test.
 
         Usage:
-            - Accessing this property will send the ``print(smu.measure.limit[r].low.value)`` query.
+            - Accessing this property will send the ``print(smu.measure.limit[Y].low.value)`` query.
             - Setting this property to a value will send the
-              ``smu.measure.limit[r].low.value = value`` command.
+              ``smu.measure.limit[Y].low.value = value`` command.
 
         TSP Syntax:
             ```
-            - smu.measure.limit[r].low.value = value
-            - print(smu.measure.limit[r].low.value)
+            - smu.measure.limit[Y].low.value = value
+            - print(smu.measure.limit[Y].low.value)
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2367,21 +2373,24 @@ class SmuMeasureLimitItemLow(BaseTSPCmd):
 
     @value.setter
     def value(self, value: Union[str, float]) -> None:
-        """Access the ``smu.measure.limit[r].low.value`` attribute.
+        """Access the ``smu.measure.limit[Y].low.value`` attribute.
 
         Description:
-            - This attribute specifies the lower limit for a limit test. (r = resistance in ohms)
+            - This attribute specifies the lower limit for a limit test.
 
         Usage:
-            - Accessing this property will send the ``print(smu.measure.limit[r].low.value)`` query.
+            - Accessing this property will send the ``print(smu.measure.limit[Y].low.value)`` query.
             - Setting this property to a value will send the
-              ``smu.measure.limit[r].low.value = value`` command.
+              ``smu.measure.limit[Y].low.value = value`` command.
 
         TSP Syntax:
             ```
-            - smu.measure.limit[r].low.value = value
-            - print(smu.measure.limit[r].low.value)
+            - smu.measure.limit[Y].low.value = value
+            - print(smu.measure.limit[Y].low.value)
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2401,30 +2410,36 @@ class SmuMeasureLimitItemLow(BaseTSPCmd):
 
 
 class SmuMeasureLimitItemHigh(BaseTSPCmd):
-    """The ``smu.measure.limit[r].high`` command tree.
+    """The ``smu.measure.limit[Y].high`` command tree.
+
+    Info:
+        - ``Y``, the limit number: 1 or 2.
 
     Properties and methods:
-        - ``.value``: The ``smu.measure.limit[r].high.value`` attribute.
+        - ``.value``: The ``smu.measure.limit[Y].high.value`` attribute.
     """
 
     @property
     def value(self) -> str:
-        """Access the ``smu.measure.limit[r].high.value`` attribute.
+        """Access the ``smu.measure.limit[Y].high.value`` attribute.
 
         Description:
-            - This attribute specifies the upper limit for a limit test. (r = resistance in ohms)
+            - This attribute specifies the upper limit for a limit test.
 
         Usage:
-            - Accessing this property will send the ``print(smu.measure.limit[r].high.value)``
+            - Accessing this property will send the ``print(smu.measure.limit[Y].high.value)``
               query.
             - Setting this property to a value will send the
-              ``smu.measure.limit[r].high.value = value`` command.
+              ``smu.measure.limit[Y].high.value = value`` command.
 
         TSP Syntax:
             ```
-            - smu.measure.limit[r].high.value = value
-            - print(smu.measure.limit[r].high.value)
+            - smu.measure.limit[Y].high.value = value
+            - print(smu.measure.limit[Y].high.value)
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2441,22 +2456,25 @@ class SmuMeasureLimitItemHigh(BaseTSPCmd):
 
     @value.setter
     def value(self, value: Union[str, float]) -> None:
-        """Access the ``smu.measure.limit[r].high.value`` attribute.
+        """Access the ``smu.measure.limit[Y].high.value`` attribute.
 
         Description:
-            - This attribute specifies the upper limit for a limit test. (r = resistance in ohms)
+            - This attribute specifies the upper limit for a limit test.
 
         Usage:
-            - Accessing this property will send the ``print(smu.measure.limit[r].high.value)``
+            - Accessing this property will send the ``print(smu.measure.limit[Y].high.value)``
               query.
             - Setting this property to a value will send the
-              ``smu.measure.limit[r].high.value = value`` command.
+              ``smu.measure.limit[Y].high.value = value`` command.
 
         TSP Syntax:
             ```
-            - smu.measure.limit[r].high.value = value
-            - print(smu.measure.limit[r].high.value)
+            - smu.measure.limit[Y].high.value = value
+            - print(smu.measure.limit[Y].high.value)
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2476,16 +2494,19 @@ class SmuMeasureLimitItemHigh(BaseTSPCmd):
 
 
 class SmuMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
-    """The ``smu.measure.limit[r]`` command tree.
+    """The ``smu.measure.limit[Y]`` command tree.
+
+    Info:
+        - ``Y``, the limit number: 1 or 2.
 
     Properties and methods:
-        - ``.audible``: The ``smu.measure.limit[r].audible`` attribute.
-        - ``.autoclear``: The ``smu.measure.limit[r].autoclear`` attribute.
-        - ``.clear()``: The ``smu.measure.limit[r].clear()`` function.
-        - ``.enable``: The ``smu.measure.limit[r].enable`` attribute.
-        - ``.fail``: The ``smu.measure.limit[r].fail`` attribute.
-        - ``.high``: The ``smu.measure.limit[r].high`` command tree.
-        - ``.low``: The ``smu.measure.limit[r].low`` command tree.
+        - ``.audible``: The ``smu.measure.limit[Y].audible`` attribute.
+        - ``.autoclear``: The ``smu.measure.limit[Y].autoclear`` attribute.
+        - ``.clear()``: The ``smu.measure.limit[Y].clear()`` function.
+        - ``.enable``: The ``smu.measure.limit[Y].enable`` attribute.
+        - ``.fail``: The ``smu.measure.limit[Y].fail`` attribute.
+        - ``.high``: The ``smu.measure.limit[Y].high`` command tree.
+        - ``.low``: The ``smu.measure.limit[Y].low`` command tree.
     """
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
@@ -2495,22 +2516,25 @@ class SmuMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
     @property
     def audible(self) -> str:
-        """Access the ``smu.measure.limit[r].audible`` attribute.
+        """Access the ``smu.measure.limit[Y].audible`` attribute.
 
         Description:
             - This attribute determines if the instrument beeper sounds when a limit test passes or
-              fails. (r = resistance in ohms)
+              fails.
 
         Usage:
-            - Accessing this property will send the ``print(smu.measure.limit[r].audible)`` query.
+            - Accessing this property will send the ``print(smu.measure.limit[Y].audible)`` query.
             - Setting this property to a value will send the
-              ``smu.measure.limit[r].audible = value`` command.
+              ``smu.measure.limit[Y].audible = value`` command.
 
         TSP Syntax:
             ```
-            - smu.measure.limit[r].audible = value
-            - print(smu.measure.limit[r].audible)
+            - smu.measure.limit[Y].audible = value
+            - print(smu.measure.limit[Y].audible)
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2527,22 +2551,25 @@ class SmuMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
     @audible.setter
     def audible(self, value: Union[str, float]) -> None:
-        """Access the ``smu.measure.limit[r].audible`` attribute.
+        """Access the ``smu.measure.limit[Y].audible`` attribute.
 
         Description:
             - This attribute determines if the instrument beeper sounds when a limit test passes or
-              fails. (r = resistance in ohms)
+              fails.
 
         Usage:
-            - Accessing this property will send the ``print(smu.measure.limit[r].audible)`` query.
+            - Accessing this property will send the ``print(smu.measure.limit[Y].audible)`` query.
             - Setting this property to a value will send the
-              ``smu.measure.limit[r].audible = value`` command.
+              ``smu.measure.limit[Y].audible = value`` command.
 
         TSP Syntax:
             ```
-            - smu.measure.limit[r].audible = value
-            - print(smu.measure.limit[r].audible)
+            - smu.measure.limit[Y].audible = value
+            - print(smu.measure.limit[Y].audible)
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2562,22 +2589,25 @@ class SmuMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
     @property
     def autoclear(self) -> str:
-        """Access the ``smu.measure.limit[r].autoclear`` attribute.
+        """Access the ``smu.measure.limit[Y].autoclear`` attribute.
 
         Description:
             - This attribute indicates if the test result for limit Y should be cleared
-              automatically or not. (r = resistance in ohms)
+              automatically or not.
 
         Usage:
-            - Accessing this property will send the ``print(smu.measure.limit[r].autoclear)`` query.
+            - Accessing this property will send the ``print(smu.measure.limit[Y].autoclear)`` query.
             - Setting this property to a value will send the
-              ``smu.measure.limit[r].autoclear = value`` command.
+              ``smu.measure.limit[Y].autoclear = value`` command.
 
         TSP Syntax:
             ```
-            - smu.measure.limit[r].autoclear = value
-            - print(smu.measure.limit[r].autoclear)
+            - smu.measure.limit[Y].autoclear = value
+            - print(smu.measure.limit[Y].autoclear)
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2594,22 +2624,25 @@ class SmuMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
     @autoclear.setter
     def autoclear(self, value: Union[str, float]) -> None:
-        """Access the ``smu.measure.limit[r].autoclear`` attribute.
+        """Access the ``smu.measure.limit[Y].autoclear`` attribute.
 
         Description:
             - This attribute indicates if the test result for limit Y should be cleared
-              automatically or not. (r = resistance in ohms)
+              automatically or not.
 
         Usage:
-            - Accessing this property will send the ``print(smu.measure.limit[r].autoclear)`` query.
+            - Accessing this property will send the ``print(smu.measure.limit[Y].autoclear)`` query.
             - Setting this property to a value will send the
-              ``smu.measure.limit[r].autoclear = value`` command.
+              ``smu.measure.limit[Y].autoclear = value`` command.
 
         TSP Syntax:
             ```
-            - smu.measure.limit[r].autoclear = value
-            - print(smu.measure.limit[r].autoclear)
+            - smu.measure.limit[Y].autoclear = value
+            - print(smu.measure.limit[Y].autoclear)
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2629,22 +2662,25 @@ class SmuMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
     @property
     def enable(self) -> str:
-        """Access the ``smu.measure.limit[r].enable`` attribute.
+        """Access the ``smu.measure.limit[Y].enable`` attribute.
 
         Description:
             - This attribute enables or disables a limit test on the measurement from the selected
-              measure function. (r = resistance in ohms)
+              measure function.
 
         Usage:
-            - Accessing this property will send the ``print(smu.measure.limit[r].enable)`` query.
-            - Setting this property to a value will send the ``smu.measure.limit[r].enable = value``
+            - Accessing this property will send the ``print(smu.measure.limit[Y].enable)`` query.
+            - Setting this property to a value will send the ``smu.measure.limit[Y].enable = value``
               command.
 
         TSP Syntax:
             ```
-            - smu.measure.limit[r].enable = value
-            - print(smu.measure.limit[r].enable)
+            - smu.measure.limit[Y].enable = value
+            - print(smu.measure.limit[Y].enable)
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2661,22 +2697,25 @@ class SmuMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
     @enable.setter
     def enable(self, value: Union[str, float]) -> None:
-        """Access the ``smu.measure.limit[r].enable`` attribute.
+        """Access the ``smu.measure.limit[Y].enable`` attribute.
 
         Description:
             - This attribute enables or disables a limit test on the measurement from the selected
-              measure function. (r = resistance in ohms)
+              measure function.
 
         Usage:
-            - Accessing this property will send the ``print(smu.measure.limit[r].enable)`` query.
-            - Setting this property to a value will send the ``smu.measure.limit[r].enable = value``
+            - Accessing this property will send the ``print(smu.measure.limit[Y].enable)`` query.
+            - Setting this property to a value will send the ``smu.measure.limit[Y].enable = value``
               command.
 
         TSP Syntax:
             ```
-            - smu.measure.limit[r].enable = value
-            - print(smu.measure.limit[r].enable)
+            - smu.measure.limit[Y].enable = value
+            - print(smu.measure.limit[Y].enable)
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2696,18 +2735,21 @@ class SmuMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
     @property
     def fail(self) -> str:
-        """Access the ``smu.measure.limit[r].fail`` attribute.
+        """Access the ``smu.measure.limit[Y].fail`` attribute.
 
         Description:
-            - This attribute queries the results of a limit test. (r = resistance in ohms)
+            - This attribute queries the results of a limit test.
 
         Usage:
-            - Accessing this property will send the ``print(smu.measure.limit[r].fail)`` query.
+            - Accessing this property will send the ``print(smu.measure.limit[Y].fail)`` query.
 
         TSP Syntax:
             ```
-            - print(smu.measure.limit[r].fail)
+            - print(smu.measure.limit[Y].fail)
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -2724,33 +2766,42 @@ class SmuMeasureLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
     @property
     def high(self) -> SmuMeasureLimitItemHigh:
-        """Return the ``smu.measure.limit[r].high`` command tree.
+        """Return the ``smu.measure.limit[Y].high`` command tree.
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Sub-properties and sub-methods:
-            - ``.value``: The ``smu.measure.limit[r].high.value`` attribute.
+            - ``.value``: The ``smu.measure.limit[Y].high.value`` attribute.
         """
         return self._high
 
     @property
     def low(self) -> SmuMeasureLimitItemLow:
-        """Return the ``smu.measure.limit[r].low`` command tree.
+        """Return the ``smu.measure.limit[Y].low`` command tree.
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Sub-properties and sub-methods:
-            - ``.value``: The ``smu.measure.limit[r].low.value`` attribute.
+            - ``.value``: The ``smu.measure.limit[Y].low.value`` attribute.
         """
         return self._low
 
     def clear(self) -> None:
-        """Run the ``smu.measure.limit[r].clear()`` function.
+        """Run the ``smu.measure.limit[Y].clear()`` function.
 
         Description:
             - This function clears the results of the limit test defined by Y for the selected
-              measurement function. (r = resistance in ohms)
+              measurement function.
 
         TSP Syntax:
             ```
-            - smu.measure.limit[r].clear()
+            - smu.measure.limit[Y].clear()
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -3382,7 +3433,7 @@ class SmuMeasure(BaseTSPCmd):
         - ``.filter``: The ``smu.measure.filter`` command tree.
         - ``.func``: The ``smu.measure.func`` attribute.
         - ``.getattribute()``: The ``smu.measure.getattribute()`` function.
-        - ``.limit``: The ``smu.measure.limit[r]`` command tree.
+        - ``.limit``: The ``smu.measure.limit[Y]`` command tree.
         - ``.math``: The ``smu.measure.math`` command tree.
         - ``.nplc``: The ``smu.measure.nplc`` attribute.
         - ``.offsetcompensation``: The ``smu.measure.offsetcompensation`` attribute.
@@ -3927,16 +3978,19 @@ class SmuMeasure(BaseTSPCmd):
 
     @property
     def limit(self) -> Dict[int, SmuMeasureLimitItem]:
-        """Return the ``smu.measure.limit[r]`` command tree.
+        """Return the ``smu.measure.limit[Y]`` command tree.
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Sub-properties and sub-methods:
-            - ``.audible``: The ``smu.measure.limit[r].audible`` attribute.
-            - ``.autoclear``: The ``smu.measure.limit[r].autoclear`` attribute.
-            - ``.clear()``: The ``smu.measure.limit[r].clear()`` function.
-            - ``.enable``: The ``smu.measure.limit[r].enable`` attribute.
-            - ``.fail``: The ``smu.measure.limit[r].fail`` attribute.
-            - ``.high``: The ``smu.measure.limit[r].high`` command tree.
-            - ``.low``: The ``smu.measure.limit[r].low`` command tree.
+            - ``.audible``: The ``smu.measure.limit[Y].audible`` attribute.
+            - ``.autoclear``: The ``smu.measure.limit[Y].autoclear`` attribute.
+            - ``.clear()``: The ``smu.measure.limit[Y].clear()`` function.
+            - ``.enable``: The ``smu.measure.limit[Y].enable`` attribute.
+            - ``.fail``: The ``smu.measure.limit[Y].fail`` attribute.
+            - ``.high``: The ``smu.measure.limit[Y].high`` command tree.
+            - ``.low``: The ``smu.measure.limit[Y].low`` command tree.
         """
         return self._limit
 
@@ -4890,7 +4944,7 @@ class Smu(BaseTSPCmd):
             - ``.filter``: The ``smu.measure.filter`` command tree.
             - ``.func``: The ``smu.measure.func`` attribute.
             - ``.getattribute()``: The ``smu.measure.getattribute()`` function.
-            - ``.limit``: The ``smu.measure.limit[r]`` command tree.
+            - ``.limit``: The ``smu.measure.limit[Y]`` command tree.
             - ``.math``: The ``smu.measure.math`` command tree.
             - ``.nplc``: The ``smu.measure.nplc`` attribute.
             - ``.offsetcompensation``: The ``smu.measure.offsetcompensation`` attribute.

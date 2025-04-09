@@ -43,11 +43,13 @@ Attributes and Functions:
     - dmm.func
     - dmm.getconfig()
     - dmm.inputdivider
+    - dmm.limit[Y].autoclear
     - dmm.limit[Y].clear()
-    - dmm.limit[r].autoclear
-    - dmm.limit[r].enable
-    - dmm.limit[r].high.fail
-    - dmm.limit[r].high.value
+    - dmm.limit[Y].enable
+    - dmm.limit[Y].high.fail
+    - dmm.limit[Y].high.value
+    - dmm.limit[Y].low.fail
+    - dmm.limit[Y].low.value
     - dmm.linesync
     - dmm.makebuffer()
     - dmm.math.enable
@@ -684,28 +686,34 @@ class DmmMath(BaseTSPCmd):
             raise NoDeviceProvidedError(msg) from error
 
 
-class DmmLimitItemHigh(BaseTSPCmd):
-    """The ``dmm.limit[r].high`` command tree.
+class DmmLimitItemLow(BaseTSPCmd):
+    """The ``dmm.limit[Y].low`` command tree.
+
+    Info:
+        - ``Y``, the 1 or 2 for limit number.
 
     Properties and methods:
-        - ``.fail``: The ``dmm.limit[r].high.fail`` attribute.
-        - ``.value``: The ``dmm.limit[r].high.value`` attribute.
+        - ``.fail``: The ``dmm.limit[Y].low.fail`` attribute.
+        - ``.value``: The ``dmm.limit[Y].low.value`` attribute.
     """
 
     @property
     def fail(self) -> str:
-        """Access the ``dmm.limit[r].high.fail`` attribute.
+        """Access the ``dmm.limit[Y].low.fail`` attribute.
 
         Description:
-            - This attribute queries for the high test results of limit Y. (r = resistance in ohms)
+            - This attribute queries for the low test results of limit Y.
 
         Usage:
-            - Accessing this property will send the ``print(dmm.limit[r].high.fail)`` query.
+            - Accessing this property will send the ``print(dmm.limit[Y].low.fail)`` query.
 
         TSP Syntax:
             ```
-            - print(dmm.limit[r].high.fail)
+            - print(dmm.limit[Y].low.fail)
             ```
+
+        Info:
+            - ``Y``, the 1 or 2 for limit number.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -722,21 +730,24 @@ class DmmLimitItemHigh(BaseTSPCmd):
 
     @property
     def value(self) -> str:
-        """Access the ``dmm.limit[r].high.value`` attribute.
+        """Access the ``dmm.limit[Y].low.value`` attribute.
 
         Description:
-            - This attribute specifies the upper limit for a limit test. (r = resistance in ohms)
+            - This attribute specifies the lower limit for a limit test.
 
         Usage:
-            - Accessing this property will send the ``print(dmm.limit[r].high.value)`` query.
-            - Setting this property to a value will send the ``dmm.limit[r].high.value = value``
+            - Accessing this property will send the ``print(dmm.limit[Y].low.value)`` query.
+            - Setting this property to a value will send the ``dmm.limit[Y].low.value = value``
               command.
 
         TSP Syntax:
             ```
-            - dmm.limit[r].high.value = value
-            - print(dmm.limit[r].high.value)
+            - dmm.limit[Y].low.value = value
+            - print(dmm.limit[Y].low.value)
             ```
+
+        Info:
+            - ``Y``, the limit number 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -753,21 +764,138 @@ class DmmLimitItemHigh(BaseTSPCmd):
 
     @value.setter
     def value(self, value: Union[str, float]) -> None:
-        """Access the ``dmm.limit[r].high.value`` attribute.
+        """Access the ``dmm.limit[Y].low.value`` attribute.
 
         Description:
-            - This attribute specifies the upper limit for a limit test. (r = resistance in ohms)
+            - This attribute specifies the lower limit for a limit test.
 
         Usage:
-            - Accessing this property will send the ``print(dmm.limit[r].high.value)`` query.
-            - Setting this property to a value will send the ``dmm.limit[r].high.value = value``
+            - Accessing this property will send the ``print(dmm.limit[Y].low.value)`` query.
+            - Setting this property to a value will send the ``dmm.limit[Y].low.value = value``
               command.
 
         TSP Syntax:
             ```
-            - dmm.limit[r].high.value = value
-            - print(dmm.limit[r].high.value)
+            - dmm.limit[Y].low.value = value
+            - print(dmm.limit[Y].low.value)
             ```
+
+        Info:
+            - ``Y``, the limit number 1 or 2.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_verification_enabled:  # type: ignore[union-attr]
+                self._device.set_and_check(  # type: ignore[union-attr]
+                    self._cmd_syntax + ".value", value
+                )
+            else:
+                self._device.write(  # type: ignore[union-attr]
+                    f"{self._cmd_syntax}.value = {value}"
+                )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+
+class DmmLimitItemHigh(BaseTSPCmd):
+    """The ``dmm.limit[Y].high`` command tree.
+
+    Info:
+        - ``Y``, the limit number: 1 or 2.
+
+    Properties and methods:
+        - ``.fail``: The ``dmm.limit[Y].high.fail`` attribute.
+        - ``.value``: The ``dmm.limit[Y].high.value`` attribute.
+    """
+
+    @property
+    def fail(self) -> str:
+        """Access the ``dmm.limit[Y].high.fail`` attribute.
+
+        Description:
+            - This attribute queries for the high test results of limit Y.
+
+        Usage:
+            - Accessing this property will send the ``print(dmm.limit[Y].high.fail)`` query.
+
+        TSP Syntax:
+            ```
+            - print(dmm.limit[Y].high.fail)
+            ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".fail"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.fail)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.fail`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @property
+    def value(self) -> str:
+        """Access the ``dmm.limit[Y].high.value`` attribute.
+
+        Description:
+            - This attribute specifies the upper limit for a limit test.
+
+        Usage:
+            - Accessing this property will send the ``print(dmm.limit[Y].high.value)`` query.
+            - Setting this property to a value will send the ``dmm.limit[Y].high.value = value``
+              command.
+
+        TSP Syntax:
+            ```
+            - dmm.limit[Y].high.value = value
+            - print(dmm.limit[Y].high.value)
+            ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
+
+        Raises:
+            tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
+        """
+        try:
+            if self._device.command_syntax_enabled:  # type: ignore[union-attr]
+                return self._cmd_syntax + ".value"
+            return self._device.query(  # type: ignore[union-attr]
+                f"print({self._cmd_syntax}.value)"
+            )
+        except AttributeError as error:
+            msg = f"No TSPControl object was provided, unable to access the ``{self._cmd_syntax}.value`` attribute."  # noqa: E501
+            raise NoDeviceProvidedError(msg) from error
+
+    @value.setter
+    def value(self, value: Union[str, float]) -> None:
+        """Access the ``dmm.limit[Y].high.value`` attribute.
+
+        Description:
+            - This attribute specifies the upper limit for a limit test.
+
+        Usage:
+            - Accessing this property will send the ``print(dmm.limit[Y].high.value)`` query.
+            - Setting this property to a value will send the ``dmm.limit[Y].high.value = value``
+              command.
+
+        TSP Syntax:
+            ```
+            - dmm.limit[Y].high.value = value
+            - print(dmm.limit[Y].high.value)
+            ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -787,37 +915,45 @@ class DmmLimitItemHigh(BaseTSPCmd):
 
 
 class DmmLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
-    """The ``dmm.limit[r]`` command tree.
+    """The ``dmm.limit[Y]`` command tree.
+
+    Info:
+        - ``Y``, the limit number: 1 or 2.
 
     Properties and methods:
-        - ``.autoclear``: The ``dmm.limit[r].autoclear`` attribute.
-        - ``.clear()``: The ``dmm.limit[r].clear()`` function.
-        - ``.enable``: The ``dmm.limit[r].enable`` attribute.
-        - ``.high``: The ``dmm.limit[r].high`` command tree.
+        - ``.autoclear``: The ``dmm.limit[Y].autoclear`` attribute.
+        - ``.clear()``: The ``dmm.limit[Y].clear()`` function.
+        - ``.enable``: The ``dmm.limit[Y].enable`` attribute.
+        - ``.high``: The ``dmm.limit[Y].high`` command tree.
+        - ``.low``: The ``dmm.limit[Y].low`` command tree.
     """
 
     def __init__(self, device: Optional["TSPControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._high = DmmLimitItemHigh(device, f"{self._cmd_syntax}.high")
+        self._low = DmmLimitItemLow(device, f"{self._cmd_syntax}.low")
 
     @property
     def autoclear(self) -> str:
-        """Access the ``dmm.limit[r].autoclear`` attribute.
+        """Access the ``dmm.limit[Y].autoclear`` attribute.
 
         Description:
             - This attribute indicates if the test result for limit Y should be cleared
-              automatically or not. (r = resistance in ohms)
+              automatically or not.
 
         Usage:
-            - Accessing this property will send the ``print(dmm.limit[r].autoclear)`` query.
-            - Setting this property to a value will send the ``dmm.limit[r].autoclear = value``
+            - Accessing this property will send the ``print(dmm.limit[Y].autoclear)`` query.
+            - Setting this property to a value will send the ``dmm.limit[Y].autoclear = value``
               command.
 
         TSP Syntax:
             ```
-            - dmm.limit[r].autoclear = value
-            - print(dmm.limit[r].autoclear)
+            - dmm.limit[Y].autoclear = value
+            - print(dmm.limit[Y].autoclear)
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -834,22 +970,25 @@ class DmmLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
     @autoclear.setter
     def autoclear(self, value: Union[str, float]) -> None:
-        """Access the ``dmm.limit[r].autoclear`` attribute.
+        """Access the ``dmm.limit[Y].autoclear`` attribute.
 
         Description:
             - This attribute indicates if the test result for limit Y should be cleared
-              automatically or not. (r = resistance in ohms)
+              automatically or not.
 
         Usage:
-            - Accessing this property will send the ``print(dmm.limit[r].autoclear)`` query.
-            - Setting this property to a value will send the ``dmm.limit[r].autoclear = value``
+            - Accessing this property will send the ``print(dmm.limit[Y].autoclear)`` query.
+            - Setting this property to a value will send the ``dmm.limit[Y].autoclear = value``
               command.
 
         TSP Syntax:
             ```
-            - dmm.limit[r].autoclear = value
-            - print(dmm.limit[r].autoclear)
+            - dmm.limit[Y].autoclear = value
+            - print(dmm.limit[Y].autoclear)
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -869,22 +1008,25 @@ class DmmLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
     @property
     def enable(self) -> str:
-        """Access the ``dmm.limit[r].enable`` attribute.
+        """Access the ``dmm.limit[Y].enable`` attribute.
 
         Description:
             - This attribute enables or disables a limit test on the measurement from the selected
-              measure function. (r = resistance in ohms)
+              measure function.
 
         Usage:
-            - Accessing this property will send the ``print(dmm.limit[r].enable)`` query.
-            - Setting this property to a value will send the ``dmm.limit[r].enable = value``
+            - Accessing this property will send the ``print(dmm.limit[Y].enable)`` query.
+            - Setting this property to a value will send the ``dmm.limit[Y].enable = value``
               command.
 
         TSP Syntax:
             ```
-            - dmm.limit[r].enable = value
-            - print(dmm.limit[r].enable)
+            - dmm.limit[Y].enable = value
+            - print(dmm.limit[Y].enable)
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -901,22 +1043,25 @@ class DmmLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
     @enable.setter
     def enable(self, value: Union[str, float]) -> None:
-        """Access the ``dmm.limit[r].enable`` attribute.
+        """Access the ``dmm.limit[Y].enable`` attribute.
 
         Description:
             - This attribute enables or disables a limit test on the measurement from the selected
-              measure function. (r = resistance in ohms)
+              measure function.
 
         Usage:
-            - Accessing this property will send the ``print(dmm.limit[r].enable)`` query.
-            - Setting this property to a value will send the ``dmm.limit[r].enable = value``
+            - Accessing this property will send the ``print(dmm.limit[Y].enable)`` query.
+            - Setting this property to a value will send the ``dmm.limit[Y].enable = value``
               command.
 
         TSP Syntax:
             ```
-            - dmm.limit[r].enable = value
-            - print(dmm.limit[r].enable)
+            - dmm.limit[Y].enable = value
+            - print(dmm.limit[Y].enable)
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -936,25 +1081,43 @@ class DmmLimitItem(ValidatedDynamicNumberCmd, BaseTSPCmd):
 
     @property
     def high(self) -> DmmLimitItemHigh:
-        """Return the ``dmm.limit[r].high`` command tree.
+        """Return the ``dmm.limit[Y].high`` command tree.
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Sub-properties and sub-methods:
-            - ``.fail``: The ``dmm.limit[r].high.fail`` attribute.
-            - ``.value``: The ``dmm.limit[r].high.value`` attribute.
+            - ``.fail``: The ``dmm.limit[Y].high.fail`` attribute.
+            - ``.value``: The ``dmm.limit[Y].high.value`` attribute.
         """
         return self._high
 
+    @property
+    def low(self) -> DmmLimitItemLow:
+        """Return the ``dmm.limit[Y].low`` command tree.
+
+        Info:
+            - ``Y``, the 1 or 2 for limit number.
+
+        Sub-properties and sub-methods:
+            - ``.fail``: The ``dmm.limit[Y].low.fail`` attribute.
+            - ``.value``: The ``dmm.limit[Y].low.value`` attribute.
+        """
+        return self._low
+
     def clear(self) -> None:
-        """Run the ``dmm.limit[r].clear()`` function.
+        """Run the ``dmm.limit[Y].clear()`` function.
 
         Description:
-            - This function clears the results of the limit test defined by Y. (r = resistance in
-              ohms)
+            - This function clears the results of the limit test defined by Y.
 
         TSP Syntax:
             ```
-            - dmm.limit[r].clear()
+            - dmm.limit[Y].clear()
             ```
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Raises:
             tm_devices.commands.NoDeviceProvidedError: Indicates that no device connection exists.
@@ -1728,7 +1891,7 @@ class Dmm(BaseTSPCmd):
         - ``.func``: The ``dmm.func`` attribute.
         - ``.getconfig()``: The ``dmm.getconfig()`` function.
         - ``.inputdivider``: The ``dmm.inputdivider`` attribute.
-        - ``.limit``: The ``dmm.limit[r]`` command tree.
+        - ``.limit``: The ``dmm.limit[Y]`` command tree.
         - ``.linesync``: The ``dmm.linesync`` attribute.
         - ``.makebuffer()``: The ``dmm.makebuffer()`` function.
         - ``.math``: The ``dmm.math`` command tree.
@@ -2533,13 +2696,17 @@ class Dmm(BaseTSPCmd):
 
     @property
     def limit(self) -> Dict[int, DmmLimitItem]:
-        """Return the ``dmm.limit[r]`` command tree.
+        """Return the ``dmm.limit[Y]`` command tree.
+
+        Info:
+            - ``Y``, the limit number: 1 or 2.
 
         Sub-properties and sub-methods:
-            - ``.autoclear``: The ``dmm.limit[r].autoclear`` attribute.
-            - ``.clear()``: The ``dmm.limit[r].clear()`` function.
-            - ``.enable``: The ``dmm.limit[r].enable`` attribute.
-            - ``.high``: The ``dmm.limit[r].high`` command tree.
+            - ``.autoclear``: The ``dmm.limit[Y].autoclear`` attribute.
+            - ``.clear()``: The ``dmm.limit[Y].clear()`` function.
+            - ``.enable``: The ``dmm.limit[Y].enable`` attribute.
+            - ``.high``: The ``dmm.limit[Y].high`` command tree.
+            - ``.low``: The ``dmm.limit[Y].low`` command tree.
         """
         return self._limit
 

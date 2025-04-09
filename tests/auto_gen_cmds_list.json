@@ -7467,6 +7467,8 @@
         "dmm.limit[Y].enable",
         "dmm.limit[Y].high.fail",
         "dmm.limit[Y].high.value",
+        "dmm.limit[Y].low.fail",
+        "dmm.limit[Y].low.value",
         "dmm.linesync",
         "dmm.makebuffer()",
         "dmm.math.enable",
