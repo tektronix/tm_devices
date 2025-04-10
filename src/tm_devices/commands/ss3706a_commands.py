@@ -368,7 +368,7 @@ class SS3706ACommands:
             - ``.func``: The ``dmm.func`` attribute.
             - ``.getconfig()``: The ``dmm.getconfig()`` function.
             - ``.inputdivider``: The ``dmm.inputdivider`` attribute.
-            - ``.limit``: The ``dmm.limit[r]`` command tree.
+            - ``.limit``: The ``dmm.limit[Y]`` command tree.
             - ``.linesync``: The ``dmm.linesync`` attribute.
             - ``.makebuffer()``: The ``dmm.makebuffer()`` function.
             - ``.math``: The ``dmm.math`` command tree.
