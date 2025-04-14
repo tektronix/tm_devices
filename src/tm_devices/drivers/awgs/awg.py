@@ -39,7 +39,12 @@ class AWGSourceDeviceConstants(SourceDeviceConstants):
 # control class inheritance responsibility moved to the Family Base Classes. The other option
 # would be to create two abstract AWG parent classes and two distinct AWGSourceChannel classes,
 # with one set using the PIControl mixin and one set using another control mixin.
-class AWG(_TektronixPIAFGAWGMixin, PIControl, Device, ABC):
+class AWG(
+    _TektronixPIAFGAWGMixin[SignalGeneratorFunctionsAWG, AWGSourceDeviceConstants],
+    PIControl,
+    Device,
+    ABC,
+):
     """Base AWG device driver."""
 
     OutputSignalPath = SignalGeneratorOutputPathsNon5200

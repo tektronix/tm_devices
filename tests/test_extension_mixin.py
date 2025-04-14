@@ -11,7 +11,7 @@ import subprocess
 import sys
 
 from pathlib import Path
-from typing import Iterator, List
+from typing import Any, Iterator, List
 from unittest import mock
 
 import pytest
@@ -222,7 +222,7 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
         return f"Scope {device.model} {value}"
 
     @_TektronixPIAFGAWGMixin.add_method
-    def custom_model_getter_sg(device: _TektronixPIAFGAWGMixin, value: str) -> str:
+    def custom_model_getter_sg(device: _TektronixPIAFGAWGMixin[Any, Any], value: str) -> str:
         """Return the model."""
         # noinspection PyUnresolvedReferences
         return f"TekAFGAWG {device.model} {value}"
