@@ -41,7 +41,12 @@ class AFGSourceDeviceConstants(SourceDeviceConstants):
 # option would be to create two abstract AFG parent classes and two distinct AFGSourceChannel
 # classes, with one set using the PIControl mixin and one set using another control mixin.
 @family_base_class
-class AFG(_TektronixPIAFGAWGMixin, PIControl, Device, ABC):
+class AFG(
+    _TektronixPIAFGAWGMixin[SignalGeneratorFunctionsAFG, AFGSourceDeviceConstants],
+    PIControl,
+    Device,
+    ABC,
+):
     """Base AFG device driver."""
 
     ################################################################################################

@@ -1,9 +1,11 @@
 """A private mixin for common methods and attributes for Tektronix AFG and AWG devices."""
 
 from abc import ABC, abstractmethod
-from typing import Tuple
+from typing import Generic, Tuple
 
 from tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin import (
+    _SignalGeneratorFunctionsTypeVar,  # pyright: ignore[reportPrivateUsage]
+    _SourceDeviceConstantsTypeVar,  # pyright: ignore[reportPrivateUsage]
     SignalGeneratorMixin,
 )
 from tm_devices.driver_mixins.shared_implementations._extension_mixin import (
@@ -16,7 +18,11 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 
 class _TektronixPIAFGAWGMixin(  # pyright: ignore[reportUnusedClass]
-    CommonPISystemErrorCheckMixin, SignalGeneratorMixin, _ExtendableMixin, ABC
+    CommonPISystemErrorCheckMixin,
+    Generic[_SignalGeneratorFunctionsTypeVar, _SourceDeviceConstantsTypeVar],
+    SignalGeneratorMixin[_SignalGeneratorFunctionsTypeVar, _SourceDeviceConstantsTypeVar],
+    _ExtendableMixin,
+    ABC,
 ):
     """A private mixin for common methods and attributes for Tektronix AFG and AWG devices.
 

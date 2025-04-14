@@ -2,7 +2,7 @@
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import Literal, NamedTuple, Optional, Type, TypeVar
+from typing import Generic, Literal, NamedTuple, Optional, Type, TypeVar, Union
 
 from tm_devices.driver_mixins.shared_implementations._extension_mixin import (
     _ExtendableMixin,  # pyright: ignore[reportPrivateUsage]
@@ -13,8 +13,12 @@ from tm_devices.helpers.enums import (
     SignalGeneratorOutputPathsBase,
 )
 
-_SourceDeviceTypeVar = TypeVar("_SourceDeviceTypeVar", bound="SourceDeviceConstants")
-_SignalSourceTypeVar = TypeVar("_SignalSourceTypeVar", bound=SignalGeneratorFunctionBase)
+_SourceDeviceConstantsTypeVar = TypeVar(
+    "_SourceDeviceConstantsTypeVar", bound="SourceDeviceConstants"
+)
+_SignalGeneratorFunctionsTypeVar = TypeVar(
+    "_SignalGeneratorFunctionsTypeVar", bound="SignalGeneratorFunctionBase"
+)
 
 
 class ParameterBounds(NamedTuple):
@@ -47,11 +51,15 @@ class SourceDeviceConstants:
     functions: Type[SignalGeneratorFunctionBase]
 
 
-class SignalGeneratorMixin(_ExtendableMixin, ABC):
+class SignalGeneratorMixin(
+    _ExtendableMixin, Generic[_SignalGeneratorFunctionsTypeVar, _SourceDeviceConstantsTypeVar], ABC
+):
     """A mixin class which adds methods and properties for generating signals."""
 
     @staticmethod
-    def _validate_generated_function(function: _SignalSourceTypeVar) -> _SignalSourceTypeVar:
+    def _validate_generated_function(
+        function: Union[str, _SignalGeneratorFunctionsTypeVar],
+    ) -> _SignalGeneratorFunctionsTypeVar:
         """Validate the functions within the waveform generation method.
 
         Args:
@@ -60,7 +68,7 @@ class SignalGeneratorMixin(_ExtendableMixin, ABC):
         Raises:
             TypeError: Tells the user that they are using an incorrect function type.
         """
-        if not issubclass(type(function), SignalGeneratorFunctionBase):  # pyright: ignore[reportUnnecessaryIsInstance]
+        if not isinstance(function, SignalGeneratorFunctionBase):
             msg = (
                 "Generate Waveform does not accept functions as non Enums. "
                 "Please use 'source_device_constants.functions'."
@@ -70,16 +78,14 @@ class SignalGeneratorMixin(_ExtendableMixin, ABC):
 
     @property
     @abstractmethod
-    def source_device_constants(
-        self,
-    ) -> _SourceDeviceTypeVar:  # pyright: ignore[reportInvalidTypeVarUse]
+    def source_device_constants(self) -> _SourceDeviceConstantsTypeVar:
         """The constants defining what functions and memory sizes are allowed for the device."""
 
     @abstractmethod
     def generate_function(  # noqa: PLR0913
         self,
         frequency: float,
-        function: _SignalSourceTypeVar,  # pyright: ignore[reportInvalidTypeVarUse]
+        function: _SignalGeneratorFunctionsTypeVar,
         amplitude: float,
         offset: float,
         channel: str = "all",
@@ -109,7 +115,7 @@ class SignalGeneratorMixin(_ExtendableMixin, ABC):
     def setup_burst(  # noqa: PLR0913
         self,
         frequency: float,
-        function: _SignalSourceTypeVar,  # pyright: ignore[reportInvalidTypeVarUse]
+        function: _SignalGeneratorFunctionsTypeVar,
         amplitude: float,
         offset: float,
         burst_count: int,
