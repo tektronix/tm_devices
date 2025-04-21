@@ -3,6 +3,9 @@
 Contributions are welcome, and they are greatly appreciated! Every bit helps,
 and credit will always be given.
 
+> [!TIP]
+> View this page in the [online documentation](https://tm-devices.readthedocs.io/latest/CONTRIBUTING) for the best experience.
+
 ## Types of Contributions
 
 There are several types of contributions that can be made:

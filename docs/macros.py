@@ -33,7 +33,7 @@ PAGE_REPLACEMENTS = {
         (" ✅ ", " [](default:✅) "),
         (" 🚧 ", " [](default:🚧) "),
         (" ❌ ", " [](default:❌) "),
-        (r"> [!TIP]", "!!! tip"),
+        (r"> [!TIP]", "!!! hint"),
         (
             "> Visit the [Glossary",
             "    Hover over a link or icon to see its definition, or visit the [Glossary",
@@ -48,6 +48,14 @@ PAGE_REPLACEMENTS = {
             "(./CONTRIBUTING.md)",
         ),
         ("(https://github.com/tektronix/tm_devices/blob/main/LICENSE.md)", "(./LICENSE.md)"),
+    ),
+    "CONTRIBUTING.md": (
+        ("> [!TIP]", ""),
+        (
+            "> View this page in the [online documentation]"
+            "(https://tm-devices.readthedocs.io/latest/CONTRIBUTING) for the best experience.",
+            "",
+        ),
     ),
 }
 FILES_TO_REMOVE_BLACK_FORMATTER_DISABLE_COMMENT = {
@@ -86,6 +94,9 @@ def convert_gfm_alerts_to_admonitions(content: str) -> str:
         text = match.group(2).strip()
         # Replace initial '>' from subsequent lines
         text = text.replace("\n>", "\n")
+        # Check if the alert type "tip" should be converted to "hint"
+        if alert_type == "tip":
+            alert_type = "hint"
         # Replace with admonition format
         return f"!!! {alert_type}\n    " + text.replace("\n", "\n    ")
 
