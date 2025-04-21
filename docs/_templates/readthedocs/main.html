@@ -11,7 +11,7 @@ the blocks defined in base.html and its included child templates.
 
 {%- block scripts %}
     <div class="rst-versions" role="note" aria-label="{% trans %}Versions{% endtrans %}">
-      <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="rst-current-version">
         {% if config.repo_name == 'GitHub' %}
             <span>
               <a href="{{ config.repo_url }}" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
