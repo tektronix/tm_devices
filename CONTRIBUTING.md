@@ -3,7 +3,7 @@
 Contributions are welcome, and they are greatly appreciated! Every bit helps,
 and credit will always be given.
 
-> [!NOTE]
+> [!TIP]
 > This page is best viewed via the
 > [online documentation](https://tm-devices.readthedocs.io/latest/CONTRIBUTING).
 
