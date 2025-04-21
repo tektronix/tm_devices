@@ -54,9 +54,9 @@ Ready to contribute? Here's how to set up `tm_devices` for local development.
 
 1. Set up commit signing, see [GitHub's documentation](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification) for details.
 
-    !!! hint
-        All commits going into the main repository are required to be signed, so make sure
-        to set up commit signing before starting to make changes.
+    > [!TIP]
+    > All commits going into the main repository are required to be signed, so make sure
+    > to set up commit signing before starting to make changes.
 
 2. Fork `tm_devices` into a new repository.
 
