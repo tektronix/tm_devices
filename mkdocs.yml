@@ -1,6 +1,7 @@
 ---
 site_name: tm_devices
 repo_url: https://github.com/tektronix/tm_devices
+repo_name: GitHub
 edit_uri: ''
 site_author: Tektronix
 site_description: Manage connections and interactions with Test & Measurement devices.
