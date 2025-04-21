@@ -3,6 +3,10 @@
 Contributions are welcome, and they are greatly appreciated! Every bit helps,
 and credit will always be given.
 
+> [!NOTE]
+> This page is best viewed via the
+> [online documentation](https://tm-devices.readthedocs.io/latest/CONTRIBUTING).
+
 ## Types of Contributions
 
 There are several types of contributions that can be made:
@@ -54,9 +58,9 @@ Ready to contribute? Here's how to set up `tm_devices` for local development.
 
 1. Set up commit signing, see [GitHub's documentation](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification) for details.
 
-    > [!TIP]
-    > All commits going into the main repository are required to be signed, so make sure
-    > to set up commit signing before starting to make changes.
+    !!! hint
+        All commits going into the main repository are required to be signed, so make sure
+        to set up commit signing before starting to make changes.
 
 2. Fork `tm_devices` into a new repository.
 
