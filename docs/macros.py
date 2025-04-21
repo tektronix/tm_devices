@@ -49,6 +49,14 @@ PAGE_REPLACEMENTS = {
         ),
         ("(https://github.com/tektronix/tm_devices/blob/main/LICENSE.md)", "(./LICENSE.md)"),
     ),
+    "CONTRIBUTING.md": (
+        ("> [!TIP]", ""),
+        (
+            "> View this page in the [online documentation]"
+            "(https://tm-devices.readthedocs.io/latest/CONTRIBUTING) for the best experience.",
+            "",
+        ),
+    ),
 }
 FILES_TO_REMOVE_BLACK_FORMATTER_DISABLE_COMMENT = {
     "configuration.md",
