@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{#
+The entry point for the ReadTheDocs Theme.
+
+Any theme customisations should override this file to redefine blocks defined in
+the various templates. The custom theme should only need to define a main.html
+which `{% extends "base.html" %}` and defines various blocks which will replace
+the blocks defined in base.html and its included child templates.
+#}
+
+{%- block scripts %}
+    <div class="rst-versions" role="note" aria-label="{% trans %}Versions{% endtrans %}">
+      <span class="rst-current-version" data-toggle="rst-current-version">
+        {% if config.repo_name == 'GitHub' %}
+            <span>
+              <a href="{{ config.repo_url }}" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+            </span>
+        {% elif config.repo_name == 'Bitbucket' %}
+            <span>
+              <a href="{{ config.repo_url }}" class="icon icon-bitbucket" style="color: #fcfcfc"> BitBucket</a>
+            </span>
+        {% elif config.repo_name == 'GitLab' %}
+            <span>
+              <a href="{{ config.repo_url }}" class="icon icon-gitlab" style="color: #fcfcfc"> GitLab</a>
+            </span>
+        {% elif config.repo_name %}
+            <span>
+              <a href="{{ config.repo_url }}" class="fa fa-code-fork" style="color: #fcfcfc"> {{ config.repo_name }}</a>
+            </span>
+        {% endif %}
+        {% if page.previous_page %}
+          <span><a href="{{ page.previous_page.url|url }}" style="color: #fcfcfc">&laquo; {% trans %}Previous{% endtrans %}</a></span>
+        {% endif %}
+        {% if page.next_page %}
+          <span><a href="{{ page.next_page.url|url }}" style="color: #fcfcfc">{% trans %}Next{% endtrans %} &raquo;</a></span>
+        {% endif %}
+      </span>
+    </div>
+
+    <script src="{{ 'js/jquery-3.6.0.min.js'|url }}"></script>
+    <script>var base_url = {{ base_url|tojson }};</script>
+    <script src="{{ 'js/theme_extra.js'|url }}"></script>
+    <script src="{{ 'js/theme.js'|url }}"></script>
+    {%- for script in config.extra_javascript %}
+      {{ script|script_tag }}
+    {%- endfor %}
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable({{ 'true' if config.theme.sticky_navigation else 'false' }});
+        });
+    </script>
+{%- endblock %}
