@@ -16,6 +16,7 @@ import pyvisa as visa
 from dateutil.tz import tzlocal
 from packaging.version import Version
 
+from conftest import UNIT_TEST_TIMEOUT
 from tm_devices import DeviceManager, register_additional_usbtmc_mapping
 from tm_devices.drivers import MSO2, MSO2KB, MSO5, MSO5B, MSO6, MSO70KDX, TekScopePC, TSOVu
 from tm_devices.drivers.scopes.tekscope.tekscope import (
@@ -210,8 +211,11 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     # Test that single sequence can be set
     scope.single_sequence()
 
-    # simulate a reboot
+    # simulate a reboot and verify the visa timeout has been reset to the default value
+    scope.visa_timeout = 1000
+    assert scope.visa_timeout == 1000
     scope.reboot()
+    assert scope.visa_timeout == UNIT_TEST_TIMEOUT
 
     # test some internal assertions
     with pytest.raises(AssertionError, match="none is not a valid item.*"):
