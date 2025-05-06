@@ -30,7 +30,7 @@ with DeviceManager(verbose=True) as dm:
     # Disable just for the scope
     scope.enable_verification = False
     # Disable command verification for all devices
-    dm.disable_device_command_checking()
+    dm.disable_command_verification = True
 
     #
     # Set some values, but now **no verification** will happen in any of these method calls.

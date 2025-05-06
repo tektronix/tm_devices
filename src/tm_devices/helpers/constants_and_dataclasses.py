@@ -438,6 +438,12 @@ class DMConfigOptions(AsDictionaryMixin):
     """An option indicating to run a device's ``cleanup()`` method when closing the connection."""
     verbose_mode: Optional[bool] = None
     """A verbosity flag to turn on more printouts to stdout."""
+    disable_command_verification: Optional[bool] = None
+    """A flag that disables command verification for all devices.
+
+    This can have the effect of speeding up automation scripts by no longer checking each
+    command after it is sent via the `.set_and_check()` method.
+    """
     verbose_visa: Optional[bool] = None
     """A verbosity flag to enable extremely verbose VISA logging to stdout."""
     retry_visa_connection: Optional[bool] = None
