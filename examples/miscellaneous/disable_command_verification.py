@@ -50,6 +50,7 @@ with DeviceManager(verbose=True) as dm:
 
     #
     # Temporarily enable verification for a few commands
+    #
     with scope.temporary_enable_verification(True):
         # This will be verified
         scope.set_and_check(":HORIZONTAL:SCALE", 500e-9)
