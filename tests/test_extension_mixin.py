@@ -9,6 +9,7 @@ import contextlib
 import os
 import subprocess
 import sys
+import warnings
 
 from pathlib import Path
 from typing import Any, Iterator, List
@@ -317,7 +318,9 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
     # Test VISA methods
     assert afg.set_and_check("OUTPUT1:STATE", "1", custom_message_prefix="Custom prefix") == "1"
     assert not device_manager.disable_command_verification
-    device_manager.disable_device_command_checking()
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", DeprecationWarning)
+        device_manager.disable_device_command_checking()
     assert device_manager.disable_command_verification
     assert afg.set_and_check("OUTPUT1:STATE", "0") == ""
     device_manager.cleanup_all_devices()

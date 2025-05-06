@@ -239,6 +239,14 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
         """Return the boolean which indicates if verification checks should happen.
 
         This can be disabled after developing a script in order to increase the speed of the script.
+
+        Notes:
+            - If ``.enable_verification`` is set to ``False``, then no verification of any
+              commands sent using the ``.set_and_check()`` method will occur
+              (the "check" portion of "set" and "check" will be skipped).
+            - If ``.enable_verification`` is set to ``True``, then
+              verification will happen for commands sent using the ``.set_and_check()`` method
+              (both the "set" and "check" portions will be executed).
         """
         return self._enable_verification
 
@@ -361,6 +369,27 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
             yield
         finally:
             self._verbose = old_verbose
+
+    @contextmanager
+    def temporary_enable_verification(
+        self, temporary_enable_verification: bool
+    ) -> Generator[None, None, None]:
+        """Enable (or disable) all verification of communication for the duration of the context.
+
+        This will temporarily set the
+        [`Device.enable_verification`][tm_devices.drivers.device.Device.enable_verification]
+        property to the specified value, and then reset it to the previous value
+        when the context exits.
+
+        Args:
+            temporary_enable_verification: The temporary verification value (True or False).
+        """
+        old_enable_verification = self.enable_verification
+        self.enable_verification = temporary_enable_verification
+        try:
+            yield
+        finally:
+            self.enable_verification = old_enable_verification
 
     ################################################################################################
     # Public Methods
