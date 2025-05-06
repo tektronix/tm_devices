@@ -21,6 +21,7 @@ Things to be included in the next release go here.
 ### Fixed
 
 - Fixed a bug in the auto-generated commands for certain models where the `limit[Y]` commands were incorrectly generated.
+- Ensure the VISA timeout is reset after a VISA device is rebooted.
 
 ---
 
