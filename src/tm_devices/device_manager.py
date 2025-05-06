@@ -214,7 +214,7 @@ class DeviceManager(metaclass=Singleton):
 
     @property
     def disable_command_verification(self) -> bool:
-        """Return a boolean indicating if command verification is disabled for all devices."""
+        """Indicate if command verification is disabled for all devices."""
         return self.__disable_command_verification
 
     @disable_command_verification.setter
@@ -228,12 +228,12 @@ class DeviceManager(metaclass=Singleton):
 
     @property
     def is_open(self) -> bool:
-        """Return a boolean indicating if the DeviceManager has closed all device connections."""
+        """Indicate if the DeviceManager has closed all device connections."""
         return self.__is_open
 
     @property
     def teardown_cleanup_enabled(self) -> bool:
-        """Return a boolean indicating if cleanup at teardown is enabled for devices."""
+        """Indicate if cleanup at teardown is enabled for devices."""
         return self.__teardown_cleanup_enabled
 
     @teardown_cleanup_enabled.setter
@@ -244,7 +244,7 @@ class DeviceManager(metaclass=Singleton):
 
     @property
     def setup_cleanup_enabled(self) -> bool:
-        """Return a boolean indicating if cleanup at setup is enabled for devices."""
+        """Indicate if cleanup at setup is enabled for devices."""
         return self.__setup_cleanup_enabled
 
     @setup_cleanup_enabled.setter

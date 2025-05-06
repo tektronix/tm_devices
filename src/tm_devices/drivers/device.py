@@ -195,7 +195,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
 
     @property
     def command_verification_enabled(self) -> bool:
-        """Return a boolean indicating if command verification is enabled.
+        """Indicate if command verification is enabled.
 
         This property only applies to commands sent using the ``.commands`` property of the
         device.
@@ -257,7 +257,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
 
     @property
     def is_open(self) -> bool:
-        """Return a boolean indicating if the connection to the device is currently open."""
+        """Indicate if the connection to the device is currently open."""
         return self._is_open
 
     @cached_property
