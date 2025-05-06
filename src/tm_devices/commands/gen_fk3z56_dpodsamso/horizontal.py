@@ -1119,10 +1119,8 @@ class HorizontalFastframeXzeroRef(SCPICmdRead):
     """The ``HORizontal:FASTframe:XZEro:REF`` command.
 
     Description:
-        - This query-only command returns the sub-sample time between the trigger sample (designated
-          by ``PT_OFF``) and the occurrence of the actual trigger for the waveform specified by the
-          ``DATa:SOUrce`` command for the reference frame. This value is in units of
-          ``WFMOutpre:XUNit``.
+        - This command sets or queries the time from the trigger to the trigger sample on the
+          reference waveform.
 
     Usage:
         - Using the ``.query()`` method will send the ``HORizontal:FASTframe:XZEro:REF?`` query.
@@ -1437,10 +1435,8 @@ class HorizontalFastframeXzero(SCPICmdRead):
         """Return the ``HORizontal:FASTframe:XZEro:REF`` command.
 
         Description:
-            - This query-only command returns the sub-sample time between the trigger sample
-              (designated by ``PT_OFF``) and the occurrence of the actual trigger for the waveform
-              specified by the ``DATa:SOUrce`` command for the reference frame. This value is in
-              units of ``WFMOutpre:XUNit``.
+            - This command sets or queries the time from the trigger to the trigger sample on the
+              reference waveform.
 
         Usage:
             - Using the ``.query()`` method will send the ``HORizontal:FASTframe:XZEro:REF?`` query.
@@ -2961,10 +2957,11 @@ class HorizontalFastframeState(SCPICmdWrite, SCPICmdRead):
     """The ``HORizontal:FASTframe:STATE`` command.
 
     Description:
-        - This command sets or returns the state of FastFrame. Acquisition modes Envelope and
-          Average are not compatible with FastFrame. If FastFrame is on, an attempted set to those
-          acquisition modes will fail and revert to Sample mode. If FastFrame is turned on while in
-          one of those acquisition modes, the acquisition mode is changed to Sample.
+        - This command sets or queries the state of FastFrame acquisition. This is equivalent to
+          setting FastFrame to On in the FastFrame Setup menu. FastFrame lets users capture a series
+          of triggered acquisitions with minimal time between them. The digitizing instrument in
+          FastFrame mode is ready to accept a continuous burst of triggers 400 ms after the
+          controller sends the ``ACQUIRE:STATE RUN`` command.
 
     Usage:
         - Using the ``.query()`` method will send the ``HORizontal:FASTframe:STATE?`` query.
@@ -2980,9 +2977,10 @@ class HorizontalFastframeState(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``ON`` indicates FastFrame is active.
-        - ``OFF`` indicates that FastFrame is off.
-        - ``<NR1>`` A 0 turns off FastFrame; any other value activates FastFrame.
+        - ``<NR1>`` = 0 turns off horizontal FastFrame; any other value turns on horizontal
+          FastFrame.
+        - ``<ON>`` turns on horizontal FastFrame.
+        - ``<OFF>`` turns off horizontal FastFrame.
     """
 
 
@@ -3348,7 +3346,10 @@ class HorizontalFastframeRefFrame(SCPICmdWrite, SCPICmdRead):
     """The ``HORizontal:FASTframe:REF:FRAme`` command.
 
     Description:
-        - This command sets or returns the reference frame number.
+        - This command sets or queries the FastFrame reference frame number. The Reference Frame
+          number is used to calculate time differences for each frame and displays those differences
+          in the graticule. This command is equivalent to selecting FastFrame Setup in the Horiz/Acq
+          menu and entering a value in the Time Stamps/Frame box.
 
     Usage:
         - Using the ``.query()`` method will send the ``HORizontal:FASTframe:REF:FRAme?`` query.
@@ -3364,7 +3365,7 @@ class HorizontalFastframeRefFrame(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>`` is the reference frame number.
+        - ``<NR1>`` specifies the FastFrame reference frame.
     """
 
 
@@ -3391,7 +3392,10 @@ class HorizontalFastframeRef(SCPICmdRead):
         """Return the ``HORizontal:FASTframe:REF:FRAme`` command.
 
         Description:
-            - This command sets or returns the reference frame number.
+            - This command sets or queries the FastFrame reference frame number. The Reference Frame
+              number is used to calculate time differences for each frame and displays those
+              differences in the graticule. This command is equivalent to selecting FastFrame Setup
+              in the Horiz/Acq menu and entering a value in the Time Stamps/Frame box.
 
         Usage:
             - Using the ``.query()`` method will send the ``HORizontal:FASTframe:REF:FRAme?`` query.
@@ -3407,7 +3411,7 @@ class HorizontalFastframeRef(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR1>`` is the reference frame number.
+            - ``<NR1>`` specifies the FastFrame reference frame.
         """
         return self._frame
 
@@ -4153,7 +4157,8 @@ class HorizontalFastframeMaxframes(SCPICmdRead):
     """The ``HORizontal:FASTframe:MAXFRames`` command.
 
     Description:
-        - This query returns the maximum number of frames.
+        - This query only command returns the maximum number of FastFrame frames which can be
+          acquired at the current frame length.
 
     Usage:
         - Using the ``.query()`` method will send the ``HORizontal:FASTframe:MAXFRames?`` query.
@@ -4226,7 +4231,9 @@ class HorizontalFastframeCount(SCPICmdWrite, SCPICmdRead):
     """The ``HORizontal:FASTframe:COUNt`` command.
 
     Description:
-        - This command sets or returns the number of frames.
+        - This command sets or queries FastFrame frame count. This command is equivalent to
+          selecting Fast Frame Setup from the Horiz/Acq menu and entering a value in the Frame Count
+          box. FastFrame captures a series of triggered acquisitions with minimal intervening time.
 
     Usage:
         - Using the ``.query()`` method will send the ``HORizontal:FASTframe:COUNt?`` query.
@@ -4242,7 +4249,7 @@ class HorizontalFastframeCount(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>`` is the number of frames.
+        - ``<NR1>`` indicates the number of frames to acquire.
     """
 
 
@@ -4251,7 +4258,7 @@ class HorizontalFastframe(SCPICmdRead):
     """The ``HORizontal:FASTframe`` command.
 
     Description:
-        - This query returns all information under ``horizontal:fastframe``.
+        - This query-only command returns all of the settings for the horizontal FastFrame commands.
 
     Usage:
         - Using the ``.query()`` method will send the ``HORizontal:FASTframe?`` query.
@@ -4308,7 +4315,10 @@ class HorizontalFastframe(SCPICmdRead):
         """Return the ``HORizontal:FASTframe:COUNt`` command.
 
         Description:
-            - This command sets or returns the number of frames.
+            - This command sets or queries FastFrame frame count. This command is equivalent to
+              selecting Fast Frame Setup from the Horiz/Acq menu and entering a value in the Frame
+              Count box. FastFrame captures a series of triggered acquisitions with minimal
+              intervening time.
 
         Usage:
             - Using the ``.query()`` method will send the ``HORizontal:FASTframe:COUNt?`` query.
@@ -4324,7 +4334,7 @@ class HorizontalFastframe(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR1>`` is the number of frames.
+            - ``<NR1>`` indicates the number of frames to acquire.
         """
         return self._count
 
@@ -4390,7 +4400,8 @@ class HorizontalFastframe(SCPICmdRead):
         """Return the ``HORizontal:FASTframe:MAXFRames`` command.
 
         Description:
-            - This query returns the maximum number of frames.
+            - This query only command returns the maximum number of FastFrame frames which can be
+              acquired at the current frame length.
 
         Usage:
             - Using the ``.query()`` method will send the ``HORizontal:FASTframe:MAXFRames?`` query.
@@ -4543,10 +4554,11 @@ class HorizontalFastframe(SCPICmdRead):
         """Return the ``HORizontal:FASTframe:STATE`` command.
 
         Description:
-            - This command sets or returns the state of FastFrame. Acquisition modes Envelope and
-              Average are not compatible with FastFrame. If FastFrame is on, an attempted set to
-              those acquisition modes will fail and revert to Sample mode. If FastFrame is turned on
-              while in one of those acquisition modes, the acquisition mode is changed to Sample.
+            - This command sets or queries the state of FastFrame acquisition. This is equivalent to
+              setting FastFrame to On in the FastFrame Setup menu. FastFrame lets users capture a
+              series of triggered acquisitions with minimal time between them. The digitizing
+              instrument in FastFrame mode is ready to accept a continuous burst of triggers 400 ms
+              after the controller sends the ``ACQUIRE:STATE RUN`` command.
 
         Usage:
             - Using the ``.query()`` method will send the ``HORizontal:FASTframe:STATE?`` query.
@@ -4562,9 +4574,10 @@ class HorizontalFastframe(SCPICmdRead):
             ```
 
         Info:
-            - ``ON`` indicates FastFrame is active.
-            - ``OFF`` indicates that FastFrame is off.
-            - ``<NR1>`` A 0 turns off FastFrame; any other value activates FastFrame.
+            - ``<NR1>`` = 0 turns off horizontal FastFrame; any other value turns on horizontal
+              FastFrame.
+            - ``<ON>`` turns on horizontal FastFrame.
+            - ``<OFF>`` turns off horizontal FastFrame.
         """
         return self._state
 
@@ -5220,7 +5233,8 @@ class Horizontal(SCPICmdRead):
         """Return the ``HORizontal:FASTframe`` command.
 
         Description:
-            - This query returns all information under ``horizontal:fastframe``.
+            - This query-only command returns all of the settings for the horizontal FastFrame
+              commands.
 
         Usage:
             - Using the ``.query()`` method will send the ``HORizontal:FASTframe?`` query.

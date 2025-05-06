@@ -84,7 +84,7 @@ Commands and Queries:
     - SV:SPECtrogram:CURSor:A?
     - SV:SPECtrogram:CURSor:B {1|0|ON|OFF}
     - SV:SPECtrogram:CURSor:B?
-    - SV:WINDOW {KAISerbessel|RECTangular|HAMMing|HANNing|BLACkmanharris|FLATtop2}
+    - SV:WINDOW {KAISerbessel|RECTangular|HAMMing|
     - SV:WINDOW?
     ```
 """
@@ -120,7 +120,7 @@ class SvWindow(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SV:WINDOW {KAISerbessel|RECTangular|HAMMing|HANNing|BLACkmanharris|FLATtop2}
+        - SV:WINDOW {KAISerbessel|RECTangular|HAMMing|
         - SV:WINDOW?
         ```
 
@@ -687,7 +687,7 @@ class SvMarkerType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``DELTa`` specifies to display the frequency and amplitude of the peak markers relative to
+        - ``DELta`` specifies to display the frequency and amplitude of the peak markers relative to
           the Reference Marker. The relative amplitude is in dBc (dB below carrier amplitude); the
           relative frequency is in Hz.
         - ``ABSolute`` specifies to display the actual frequency and amplitude of each peak marker.
@@ -944,12 +944,6 @@ class SvMarkerPeakState(SCPICmdWrite, SCPICmdRead):
         - SV:MARKER:PEAK:STATE {ON|1|OFF|0}
         - SV:MARKER:PEAK:STATE?
         ```
-
-    Info:
-        - ``1`` enables showing peak marker icons on spectrum trace waveforms.
-        - ``ON`` enables showing peak marker icons on spectrum trace waveforms.
-        - ``0`` disables showing peak marker icons on spectrum trace waveforms.
-        - ``OFF`` disables showing peak marker icons on spectrum trace waveforms.
     """
 
 
@@ -958,7 +952,7 @@ class SvMarkerPeakMaximum(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the maximum number of Spectrum View peak markers that can be
-          placed on spectrum traces. the Spectrum View window can show between 1 and 11 peak markers
+          placed on spectrum traces. The Spectrum View window can show between 1 and 11 peak markers
           on all spectrum traces. The default is 5. To turn on the peak markers, use the command
           ``SV:MARKER:PEAK:STATE``. The actual number of peak markers may be less than the maximum,
           depending on the threshold and excursion values and the spectral content of the RF signal.
@@ -1072,7 +1066,7 @@ class SvMarkerPeak(SCPICmdRead):
 
         Description:
             - This command sets or queries the maximum number of Spectrum View peak markers that can
-              be placed on spectrum traces. the Spectrum View window can show between 1 and 11 peak
+              be placed on spectrum traces. The Spectrum View window can show between 1 and 11 peak
               markers on all spectrum traces. The default is 5. To turn on the peak markers, use the
               command ``SV:MARKER:PEAK:STATE``. The actual number of peak markers may be less than
               the maximum, depending on the threshold and excursion values and the spectral content
@@ -1124,12 +1118,6 @@ class SvMarkerPeak(SCPICmdRead):
             - SV:MARKER:PEAK:STATE {ON|1|OFF|0}
             - SV:MARKER:PEAK:STATE?
             ```
-
-        Info:
-            - ``1`` enables showing peak marker icons on spectrum trace waveforms.
-            - ``ON`` enables showing peak marker icons on spectrum trace waveforms.
-            - ``0`` disables showing peak marker icons on spectrum trace waveforms.
-            - ``OFF`` disables showing peak marker icons on spectrum trace waveforms.
         """
         return self._state
 
@@ -1265,7 +1253,7 @@ class SvMarker(SCPICmdRead):
             ```
 
         Info:
-            - ``DELTa`` specifies to display the frequency and amplitude of the peak markers
+            - ``DELta`` specifies to display the frequency and amplitude of the peak markers
               relative to the Reference Marker. The relative amplitude is in dBc (dB below carrier
               amplitude); the relative frequency is in Hz.
             - ``ABSolute`` specifies to display the actual frequency and amplitude of each peak
@@ -1297,9 +1285,6 @@ class SvLockspectrum(SCPICmdWrite, SCPICmdRead):
         - ``ON`` sets all spectrum traces channels in the Spectrum View window to use the same
           Spectrum Time value. When the Spectrum Time of any channel is changed, the Spectrum Time
           of all other channels is automatically changed to match that value.
-        - ``1`` sets all spectrum traces channels in the Spectrum View window to use the same
-          Spectrum Time value. When the Spectrum Time of any channel is changed, the Spectrum Time
-          of all other channels is automatically changed to match that value.
         - ``0`` enables use of different Spectrum Time values for each spectrum trace channel. The
           Spectrum Time of all channels are independent.
         - ``OFF`` enables use of different Spectrum Time values for each spectrum trace channel. The
@@ -1329,7 +1314,7 @@ class SvLockcenter(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``ON`` sets all spectrum traces channels in the Spectrum View window to use the same
           center frequency value. When the center frequency of any channel is changed, the center
-          frequency of all other channels is automatically changed to match that value.
+          frequency of all other channels is automatically changed tomatch that value.
         - ``1`` sets all spectrum traces channels in the Spectrum View window to use the same center
           frequency value. When the center frequency of any channel is changed, the center frequency
           of all other channels is automatically changed to match that value.
@@ -1362,11 +1347,11 @@ class SvChannelUnits(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``CH<x>`` specifies the analog channel to use as the Spectrum View source.
         - ``DBM`` specifies Decibel milliwatts (dBm).
-        - ``DBUW`` specifies Decibel microwatts (dBµW).
+        - ``DBUW`` specifies Decibel microwatts (dBμW).
         - ``DBMV`` specifies Decibel millivolts (dBmV).
-        - ``DBUV`` specifies Decibel microvolts (dBµV).
+        - ``DBUV`` specifies Decibel microvolts (dBμV).
         - ``DBMA`` specifies Decibel milliamperes (dBmA).
-        - ``DBUA`` specifies Decibel microamperes (dBµA).
+        - ``DBUA`` specifies Decibel microamperes (dBμA).
     """
 
 
@@ -1374,8 +1359,8 @@ class SvChannelSquelchThreshold(SCPICmdWrite, SCPICmdRead):
     """The ``SV:CH<x>:SQUELCH:THReshold`` command.
 
     Description:
-        - This command sets or queries the Squelch threshold value for the RF vs Time traces for the
-          specified channel.
+        - This command sets or queries the Squelch threshold value for the RF versus Time traces for
+          the specified channel.
 
     Usage:
         - Using the ``.query()`` method will send the ``SV:CH<x>:SQUELCH:THReshold?`` query.
@@ -1391,10 +1376,10 @@ class SvChannelSquelchThreshold(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` is the channel number of the Magnitude vs. Time trace.
-        - ``NR3`` sets the threshold value, in volts, applied to the Magnitude vs. Time trace that
-          determines whether or not to show the Frequency and Phase vs. Time traces for the same
-          channel.
+        - ``CH<x>`` is the channel number of the Magnitude versus Time trace.
+        - ``<NR3>`` sets the threshold value, in volts, applied to the Magnitude versus Time trace
+          that determines whether or not to show the Frequency and Phase versus Time traces for the
+          same channel.
     """
 
 
@@ -1402,13 +1387,13 @@ class SvChannelSquelchState(SCPICmdWrite, SCPICmdRead):
     """The ``SV:CH<x>:SQUELCH:STATE`` command.
 
     Description:
-        - This command sets or queries whether Squelch is enabled for the RF vs Time traces for the
-          specified channel. The frequency vs. time and phase vs. time traces aren't meaningful when
-          the transmitting signal is turned off, as they just show broadband noise that clutters up
-          the display. With squelch, a threshold may be defined for the magnitude vs. time trace to
-          indicate when the transmitter is on/off. Then the frequency and phase vs. time traces are
-          shown only when the magnitude vs. time trace is above the threshold and they are blanked
-          out when it's below the threshold.
+        - This command sets or queries whether Squelch is enabled for the RF versus Time traces for
+          the specified channel. The frequency versus time and phase versus time traces aren't
+          meaningful when the transmitting signal is turned off, as they just show broadband noise
+          that clutters up the display. With squelch, a threshold may be defined for the magnitude
+          versus time trace to indicate when the transmitter is on/off. Then the frequency and phase
+          versus time traces are shown only when the magnitude vs. time trace is above the threshold
+          and they are blanked out when it's below the threshold.
 
     Usage:
         - Using the ``.query()`` method will send the ``SV:CH<x>:SQUELCH:STATE?`` query.
@@ -1423,7 +1408,7 @@ class SvChannelSquelchState(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` is the channel number of the Frequency or Phase vs. Time trace.
+        - ``CH<x>`` is the channel number of the Frequency or Phase versus Time trace.
         - ``ON`` enables (turns on) Squelch calculations.
         - ``OFF`` disables (turns off) Squelch calculations.
     """
@@ -1438,7 +1423,7 @@ class SvChannelSquelch(SCPICmdRead):
           AssertionError if the returned value does not match ``value``.
 
     Info:
-        - ``CH<x>`` is the channel number of the Frequency or Phase vs. Time trace.
+        - ``CH<x>`` is the channel number of the Frequency or Phase versus Time trace.
 
     Properties:
         - ``.state``: The ``SV:CH<x>:SQUELCH:STATE`` command.
@@ -1455,13 +1440,13 @@ class SvChannelSquelch(SCPICmdRead):
         """Return the ``SV:CH<x>:SQUELCH:STATE`` command.
 
         Description:
-            - This command sets or queries whether Squelch is enabled for the RF vs Time traces for
-              the specified channel. The frequency vs. time and phase vs. time traces aren't
-              meaningful when the transmitting signal is turned off, as they just show broadband
-              noise that clutters up the display. With squelch, a threshold may be defined for the
-              magnitude vs. time trace to indicate when the transmitter is on/off. Then the
-              frequency and phase vs. time traces are shown only when the magnitude vs. time trace
-              is above the threshold and they are blanked out when it's below the threshold.
+            - This command sets or queries whether Squelch is enabled for the RF versus Time traces
+              for the specified channel. The frequency versus time and phase versus time traces
+              aren't meaningful when the transmitting signal is turned off, as they just show
+              broadband noise that clutters up the display. With squelch, a threshold may be defined
+              for the magnitude versus time trace to indicate when the transmitter is on/off. Then
+              the frequency and phase versus time traces are shown only when the magnitude vs. time
+              trace is above the threshold and they are blanked out when it's below the threshold.
 
         Usage:
             - Using the ``.query()`` method will send the ``SV:CH<x>:SQUELCH:STATE?`` query.
@@ -1477,7 +1462,7 @@ class SvChannelSquelch(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` is the channel number of the Frequency or Phase vs. Time trace.
+            - ``CH<x>`` is the channel number of the Frequency or Phase versus Time trace.
             - ``ON`` enables (turns on) Squelch calculations.
             - ``OFF`` disables (turns off) Squelch calculations.
         """
@@ -1488,8 +1473,8 @@ class SvChannelSquelch(SCPICmdRead):
         """Return the ``SV:CH<x>:SQUELCH:THReshold`` command.
 
         Description:
-            - This command sets or queries the Squelch threshold value for the RF vs Time traces for
-              the specified channel.
+            - This command sets or queries the Squelch threshold value for the RF versus Time traces
+              for the specified channel.
 
         Usage:
             - Using the ``.query()`` method will send the ``SV:CH<x>:SQUELCH:THReshold?`` query.
@@ -1505,10 +1490,10 @@ class SvChannelSquelch(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` is the channel number of the Magnitude vs. Time trace.
-            - ``NR3`` sets the threshold value, in volts, applied to the Magnitude vs. Time trace
-              that determines whether or not to show the Frequency and Phase vs. Time traces for the
-              same channel.
+            - ``CH<x>`` is the channel number of the Magnitude versus Time trace.
+            - ``<NR3>`` sets the threshold value, in volts, applied to the Magnitude versus Time
+              trace that determines whether or not to show the Frequency and Phase versus Time
+              traces for the same channel.
         """
         return self._threshold
 
@@ -2026,7 +2011,7 @@ class SvChannelSeltrace(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the spectrum trace type to show for the specified channel in
-          the Spectrum View. Each channel's spectrum trace can display up to four traces; a Normal
+          the Spectrum View. Each channel's spectrum trace can display up to  four traces; a Normal
           trace (default), a Max Hold trace, a Min Hold trace and an Average trace.
 
     Usage:
@@ -2212,12 +2197,7 @@ class SvChannelRfPhaseReferenceTime(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``CH<x>`` is the channel number of the Phase vs. Time trace.
         - ``NR3`` is the Phase Reference time, in seconds. This indicates the time at which the
-          phase value set by ``SV:CH<x>:RF_PHASe:REFerence:DEGrees`` is applied. If the phase
-          position set by ``SV:CH<x>:RF_PHASe:REFerence:POSition`` is TRIGger, then the phase time
-          is fixed at 0 seconds and cannot be changed. If the phase position is CURSor, then the
-          phase time may be set to any value, and is initialized to the position of Cursor A. If
-          CH<x> is the master phase reference, then the time is used to calculate the phase values
-          of all other channels.
+          phase value set by.
     """
 
 
@@ -2246,8 +2226,7 @@ class SvChannelRfPhaseReferencePosition(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``CH<x>`` is the channel number of the Phase vs. Time trace.
         - ``TRIGger`` sets the Phase Reference location to the Trigger position.
-        - ``CURSor`` sets the channel Phase Reference location to the phase time set by
-          ``SV:CH<x>:RF_PHASe:REFerence:TIMe``, which defaults to the Cursor A position.
+        - ``CURSor`` sets the channel Phase Reference location to the phase time set by.
     """
 
 
@@ -2273,9 +2252,8 @@ class SvChannelRfPhaseReferenceDegrees(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` is the channel number of the Phase vs. Time trace.
-        - ``NR3`` is the Phase Reference value, in degrees. This indicates a fixed phase value at
-          the phase time set by ``SV:CH<x>:RF_PHASe:REFerence:TIMe``. If CH<x> is the master phase
-          reference, then the value is used to calculate the phase values of all other channels.
+        - ``SV:CH<x>:RF_PHASe:REFerence:TIMe. If CH<x>`` is the master phase reference, then the
+          value is used to calculate the phase values of all other channels.
     """
 
 
@@ -2326,10 +2304,8 @@ class SvChannelRfPhaseReference(SCPICmdRead):
 
         Info:
             - ``CH<x>`` is the channel number of the Phase vs. Time trace.
-            - ``NR3`` is the Phase Reference value, in degrees. This indicates a fixed phase value
-              at the phase time set by ``SV:CH<x>:RF_PHASe:REFerence:TIMe``. If CH<x> is the master
-              phase reference, then the value is used to calculate the phase values of all other
-              channels.
+            - ``SV:CH<x>:RF_PHASe:REFerence:TIMe. If CH<x>`` is the master phase reference, then the
+              value is used to calculate the phase values of all other channels.
         """
         return self._degrees
 
@@ -2359,8 +2335,7 @@ class SvChannelRfPhaseReference(SCPICmdRead):
         Info:
             - ``CH<x>`` is the channel number of the Phase vs. Time trace.
             - ``TRIGger`` sets the Phase Reference location to the Trigger position.
-            - ``CURSor`` sets the channel Phase Reference location to the phase time set by
-              ``SV:CH<x>:RF_PHASe:REFerence:TIMe``, which defaults to the Cursor A position.
+            - ``CURSor`` sets the channel Phase Reference location to the phase time set by.
         """
         return self._position
 
@@ -2389,12 +2364,7 @@ class SvChannelRfPhaseReference(SCPICmdRead):
         Info:
             - ``CH<x>`` is the channel number of the Phase vs. Time trace.
             - ``NR3`` is the Phase Reference time, in seconds. This indicates the time at which the
-              phase value set by ``SV:CH<x>:RF_PHASe:REFerence:DEGrees`` is applied. If the phase
-              position set by ``SV:CH<x>:RF_PHASe:REFerence:POSition`` is TRIGger, then the phase
-              time is fixed at 0 seconds and cannot be changed. If the phase position is CURSor,
-              then the phase time may be set to any value, and is initialized to the position of
-              Cursor A. If CH<x> is the master phase reference, then the time is used to calculate
-              the phase values of all other channels.
+              phase value set by.
         """
         return self._time
 
@@ -2708,7 +2678,7 @@ class SvChannel(ValidatedChannel, SCPICmdRead):
 
         Description:
             - This command sets or queries the spectrum trace type to show for the specified channel
-              in the Spectrum View. Each channel's spectrum trace can display up to four traces; a
+              in the Spectrum View. Each channel's spectrum trace can display up to  four traces; a
               Normal trace (default), a Max Hold trace, a Min Hold trace and an Average trace.
 
         Usage:
@@ -2774,7 +2744,7 @@ class SvChannel(ValidatedChannel, SCPICmdRead):
               raise an AssertionError if the returned value does not match ``value``.
 
         Info:
-            - ``CH<x>`` is the channel number of the Frequency or Phase vs. Time trace.
+            - ``CH<x>`` is the channel number of the Frequency or Phase versus Time trace.
 
         Sub-properties:
             - ``.state``: The ``SV:CH<x>:SQUELCH:STATE`` command.
@@ -2805,11 +2775,11 @@ class SvChannel(ValidatedChannel, SCPICmdRead):
         Info:
             - ``CH<x>`` specifies the analog channel to use as the Spectrum View source.
             - ``DBM`` specifies Decibel milliwatts (dBm).
-            - ``DBUW`` specifies Decibel microwatts (dBµW).
+            - ``DBUW`` specifies Decibel microwatts (dBμW).
             - ``DBMV`` specifies Decibel millivolts (dBmV).
-            - ``DBUV`` specifies Decibel microvolts (dBµV).
+            - ``DBUV`` specifies Decibel microvolts (dBμV).
             - ``DBMA`` specifies Decibel milliamperes (dBmA).
-            - ``DBUA`` specifies Decibel microamperes (dBµA).
+            - ``DBUA`` specifies Decibel microamperes (dBμA).
         """
         return self._units
 
@@ -2899,7 +2869,7 @@ class Sv(SCPICmdRead):
         Info:
             - ``ON`` sets all spectrum traces channels in the Spectrum View window to use the same
               center frequency value. When the center frequency of any channel is changed, the
-              center frequency of all other channels is automatically changed to match that value.
+              center frequency of all other channels is automatically changed tomatch that value.
             - ``1`` sets all spectrum traces channels in the Spectrum View window to use the same
               center frequency value. When the center frequency of any channel is changed, the
               center frequency of all other channels is automatically changed to match that value.
@@ -2932,9 +2902,6 @@ class Sv(SCPICmdRead):
 
         Info:
             - ``ON`` sets all spectrum traces channels in the Spectrum View window to use the same
-              Spectrum Time value. When the Spectrum Time of any channel is changed, the Spectrum
-              Time of all other channels is automatically changed to match that value.
-            - ``1`` sets all spectrum traces channels in the Spectrum View window to use the same
               Spectrum Time value. When the Spectrum Time of any channel is changed, the Spectrum
               Time of all other channels is automatically changed to match that value.
             - ``0`` enables use of different Spectrum Time values for each spectrum trace channel.
@@ -3125,7 +3092,7 @@ class Sv(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SV:WINDOW {KAISerbessel|RECTangular|HAMMing|HANNing|BLACkmanharris|FLATtop2}
+            - SV:WINDOW {KAISerbessel|RECTangular|HAMMing|
             - SV:WINDOW?
             ```
 

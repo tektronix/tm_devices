@@ -45,6 +45,7 @@ from .gen_1ltpwt_mdomsodpo.wfminpre import Wfminpre
 from .gen_1ltpwt_mdomsodpo.wfmoutpre import Wfmoutpre
 from .gen_1ltpwt_mdomsodpo.zoom import Zoom
 from .gen_1lwj1r_msomdodpo.rosc import Rosc
+from .gen_1mn7uf_msotekscopepcmdodpo.pause import Pause
 from .gen_1nmc1o_msodpomdo.clearmenu import Clearmenu
 from .gen_1nmc1o_msodpomdo.errlog import Errlog
 from .gen_1nmc1o_msodpomdo.language import Language
@@ -52,41 +53,35 @@ from .gen_1nmc1o_msodpomdo.usbdevice import Usbdevice
 from .gen_1nmc1o_msodpomdo.usbtmc import Usbtmc
 from .gen_e4de2d_lpdmsomdo.clear import Clear
 from .gen_e6bmgw_lpdmsotekscopepcdpomdo.totaluptime import Totaluptime
-from .gen_e6wozn_lpdmsotekscopepcmdodpo.pause import Pause
 from .gen_fhrp27_msodpomdodsa.curve import Curve
 from .gen_fhrp27_msodpomdodsa.date import Date
 from .gen_fhrp27_msodpomdodsa.mathvar import Mathvar
 from .gen_fhrp27_msodpomdodsa.save_and_recall import Rcl, Sav
+from .gen_fhui75_msodpomdodsa.miscellaneous import Ddt
+from .gen_fhui75_msodpomdodsa.password import Password
+from .gen_fhui75_msodpomdodsa.teksecure import Teksecure
+from .gen_fil6zt_msotekscopepcdpomdodsa.busy import Busy
+from .gen_fil6zt_msotekscopepcdpomdodsa.dese import Dese
+from .gen_fil6zt_msotekscopepcdpomdodsa.event import Event
+from .gen_fil6zt_msotekscopepcdpomdodsa.evmsg import Evmsg
+from .gen_fil6zt_msotekscopepcdpomdodsa.evqty import Evqty
+from .gen_fil6zt_msotekscopepcdpomdodsa.factory import Factory
+from .gen_fil6zt_msotekscopepcdpomdodsa.miscellaneous import Lrn
+from .gen_fil6zt_msotekscopepcdpomdodsa.set import Set
+from .gen_fil6zt_msotekscopepcdpomdodsa.status_and_error import Psc
+from .gen_fil6zt_msotekscopepcdpomdodsa.verbose import Verbose
+from .gen_fj69if_msotekscopepcdpomdoafgawgdsa.status_and_error import Opc, Rst, Stb
+from .gen_fjrc1d_msodpomdoafgawgdsa.calibration import Cal
+from .gen_fkrusx_msotekscopepcdpomdoawgdsa.status_and_error import Ese, Sre
 from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
-from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import (
-    Cls,
-    Esr,
-    Opc,
-    Rst,
-    Stb,
-    Wai,
-)
+from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Wai
 from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
-from .gen_ft5uww_lpdmsodpomdoafgawgdsa.calibration import Cal
 from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
-from .gen_fu6dog_lpdmsotekscopepcdpomdoawgdsa.status_and_error import Ese, Sre
-from .gen_fx54ua_lpdmsodpomdodsa.miscellaneous import Ddt
 from .gen_fx54ua_lpdmsodpomdodsa.newpass import Newpass
-from .gen_fx54ua_lpdmsodpomdodsa.password import Password
-from .gen_fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.allev import Allev
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.busy import Busy
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.dese import Dese
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.event import Event
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.evmsg import Evmsg
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.evqty import Evqty
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.factory import Factory
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.id import Id
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.miscellaneous import Lrn
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.rem import Rem
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.set import Set
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.status_and_error import Psc, Pud
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.verbose import Verbose
+from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.status_and_error import Pud
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.wavfrm import Wavfrm
 from .gen_ujuvb_mdo.acquire import Acquire
 from .gen_ujuvb_mdo.bus import Bus
@@ -543,7 +538,6 @@ class MDO3CommandConstants:
     # SETUP = "SETUp"
     SFPBINARY = "SFPBINARY"  # SFPbinary
     SIGNEDDECIMAL = "SIGNEDDECIMAL"  # SIGNEDDECimal
-    SINC = "SINC"
     SINE = "SINE"
     SINGLEENDED = "SINGLEENDED"  # SINGleended
     SIX = "SIX"

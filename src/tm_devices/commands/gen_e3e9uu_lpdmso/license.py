@@ -9,29 +9,29 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - LICense:APPID? {<QString>}
+    - LICense:APPID {<QString>}
     - LICense:COUNt?
     - LICense:ERRor?
     - LICense:GMT?
     - LICense:HID?
     - LICense:INSTall <Block>
-    - LICense:ITEM? <NR1>
+    - LICense:ITEM ? <NR1>
     - LICense:LIST?
-    - LICense:UNINSTALL? <QString>
-    - LICense:VALidate? <QString>
+    - LICense:UNINSTALL ? <QString>
+    - LICense:VALidate ? <QString>
     - LICense?
     ```
 """
 
 from typing import Optional, TYPE_CHECKING
 
-from ..helpers import SCPICmdRead, SCPICmdReadWithArguments, SCPICmdWrite
+from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
-class LicenseValidate(SCPICmdReadWithArguments):
+class LicenseValidate(SCPICmdWrite):
     """The ``LICense:VALidate`` command.
 
     Description:
@@ -40,13 +40,11 @@ class LicenseValidate(SCPICmdReadWithArguments):
           nomenclature is not active or required hardware is not installed.
 
     Usage:
-        - Using the ``.query(argument)`` method will send the ``LICense:VALidate? argument`` query.
-        - Using the ``.verify(argument, value)`` method will send the ``LICense:VALidate? argument``
-          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``LICense:VALidate value`` command.
 
     SCPI Syntax:
         ```
-        - LICense:VALidate? <QString>
+        - LICense:VALidate ? <QString>
         ```
 
     Info:
@@ -54,7 +52,7 @@ class LicenseValidate(SCPICmdReadWithArguments):
     """
 
 
-class LicenseUninstall(SCPICmdReadWithArguments):
+class LicenseUninstall(SCPICmdWrite):
     """The ``LICense:UNINSTALL`` command.
 
     Description:
@@ -64,14 +62,11 @@ class LicenseUninstall(SCPICmdReadWithArguments):
           returned as block data.
 
     Usage:
-        - Using the ``.query(argument)`` method will send the ``LICense:UNINSTALL? argument`` query.
-        - Using the ``.verify(argument, value)`` method will send the
-          ``LICense:UNINSTALL? argument`` query and raise an AssertionError if the returned value
-          does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``LICense:UNINSTALL value`` command.
 
     SCPI Syntax:
         ```
-        - LICense:UNINSTALL? <QString>
+        - LICense:UNINSTALL ? <QString>
         ```
 
     Info:
@@ -100,7 +95,7 @@ class LicenseList(SCPICmdRead):
     """
 
 
-class LicenseItem(SCPICmdReadWithArguments):
+class LicenseItem(SCPICmdWrite):
     """The ``LICense:ITEM`` command.
 
     Description:
@@ -108,14 +103,15 @@ class LicenseItem(SCPICmdReadWithArguments):
           zero-indexed. If no argument is provided, zero is assumed.
 
     Usage:
-        - Using the ``.query(argument)`` method will send the ``LICense:ITEM? argument`` query.
-        - Using the ``.verify(argument, value)`` method will send the ``LICense:ITEM? argument``
-          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``LICense:ITEM value`` command.
 
     SCPI Syntax:
         ```
-        - LICense:ITEM? <NR1>
+        - LICense:ITEM ? <NR1>
         ```
+
+    Info:
+        - ``<NR1>`` is the zero-indexed argument specifying a specific license.
     """
 
 
@@ -216,22 +212,20 @@ class LicenseCount(SCPICmdRead):
     """
 
 
-class LicenseAppid(SCPICmdReadWithArguments):
+class LicenseAppid(SCPICmdWrite):
     """The ``LICense:APPID`` command.
 
     Description:
         - This query returns a comma-separated list of the active application IDs. If a string
-          argument is provided, a '0' or '1' is returned, according to whether the string matches an
+          argument is provided, a “0” or “1” is returned, according to whether the string matches an
           active application ID.
 
     Usage:
-        - Using the ``.query(argument)`` method will send the ``LICense:APPID? argument`` query.
-        - Using the ``.verify(argument, value)`` method will send the ``LICense:APPID? argument``
-          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``LICense:APPID value`` command.
 
     SCPI Syntax:
         ```
-        - LICense:APPID? {<QString>}
+        - LICense:APPID {<QString>}
         ```
     """
 
@@ -285,18 +279,15 @@ class License(SCPICmdRead):
 
         Description:
             - This query returns a comma-separated list of the active application IDs. If a string
-              argument is provided, a '0' or '1' is returned, according to whether the string
+              argument is provided, a “0” or “1” is returned, according to whether the string
               matches an active application ID.
 
         Usage:
-            - Using the ``.query(argument)`` method will send the ``LICense:APPID? argument`` query.
-            - Using the ``.verify(argument, value)`` method will send the
-              ``LICense:APPID? argument`` query and raise an AssertionError if the returned value
-              does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``LICense:APPID value`` command.
 
         SCPI Syntax:
             ```
-            - LICense:APPID? {<QString>}
+            - LICense:APPID {<QString>}
             ```
         """
         return self._appid
@@ -412,14 +403,15 @@ class License(SCPICmdRead):
               zero-indexed. If no argument is provided, zero is assumed.
 
         Usage:
-            - Using the ``.query(argument)`` method will send the ``LICense:ITEM? argument`` query.
-            - Using the ``.verify(argument, value)`` method will send the ``LICense:ITEM? argument``
-              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``LICense:ITEM value`` command.
 
         SCPI Syntax:
             ```
-            - LICense:ITEM? <NR1>
+            - LICense:ITEM ? <NR1>
             ```
+
+        Info:
+            - ``<NR1>`` is the zero-indexed argument specifying a specific license.
         """
         return self._item
 
@@ -455,15 +447,11 @@ class License(SCPICmdRead):
               exit-license is returned as block data.
 
         Usage:
-            - Using the ``.query(argument)`` method will send the ``LICense:UNINSTALL? argument``
-              query.
-            - Using the ``.verify(argument, value)`` method will send the
-              ``LICense:UNINSTALL? argument`` query and raise an AssertionError if the returned
-              value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``LICense:UNINSTALL value`` command.
 
         SCPI Syntax:
             ```
-            - LICense:UNINSTALL? <QString>
+            - LICense:UNINSTALL ? <QString>
             ```
 
         Info:
@@ -482,15 +470,11 @@ class License(SCPICmdRead):
               the nomenclature is not active or required hardware is not installed.
 
         Usage:
-            - Using the ``.query(argument)`` method will send the ``LICense:VALidate? argument``
-              query.
-            - Using the ``.verify(argument, value)`` method will send the
-              ``LICense:VALidate? argument`` query and raise an AssertionError if the returned value
-              does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``LICense:VALidate value`` command.
 
         SCPI Syntax:
             ```
-            - LICense:VALidate? <QString>
+            - LICense:VALidate ? <QString>
             ```
 
         Info:

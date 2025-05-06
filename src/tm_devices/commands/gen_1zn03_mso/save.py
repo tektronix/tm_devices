@@ -452,15 +452,7 @@ class SavePlotdata(SCPICmdWrite):
 
     Description:
         - Saves the plot data of the currently selected plot to a specified file. Supported file
-          format is CSV. When specifying the file name with this command, use the correct file
-          extension (.CSV). If a file name or path is specified, the file is expected to be located
-          in a directory relative to the current working directory (specified by ``FILESYSTEM:CWD``)
-          unless a complete path is specified. If the file argument begins with a drive designator
-          (such as C:), then the file name is interpreted as a full path. If the file argument
-          begins with '.' or '', or has a file path separator appearing anywhere other than the
-          first character position, then the file name is treated as a path that is relative to the
-          current working directory. To export an eye diagram plot data to a .csv file, the
-          prerequisite command is ``MEASUrement:ADDMEAS TIE``
+          format is CSV.
 
     Usage:
         - Using the ``.write(value)`` method will send the ``SAVe:PLOTData value`` command.
@@ -471,7 +463,11 @@ class SavePlotdata(SCPICmdWrite):
         ```
 
     Info:
-        - ``<Qstring>`` sets the file name and location used to store the plot data.
+        - ``Qstring`` sets the file name and location used to store the plot data. When specifying
+          the file name with this command, use the correct file extension (.CSV). If a file name or
+          path is specified, the file is expected to be located in a directory relative to the
+          current working directory (specified by ``FILESYSTEM:CWD``) unless a complete path is
+          specified.
     """
 
 
@@ -841,16 +837,7 @@ class Save(SCPICmdRead):
 
         Description:
             - Saves the plot data of the currently selected plot to a specified file. Supported file
-              format is CSV. When specifying the file name with this command, use the correct file
-              extension (.CSV). If a file name or path is specified, the file is expected to be
-              located in a directory relative to the current working directory (specified by
-              ``FILESYSTEM:CWD``) unless a complete path is specified. If the file argument begins
-              with a drive designator (such as C:), then the file name is interpreted as a full
-              path. If the file argument begins with '.' or '', or has a file path separator
-              appearing anywhere other than the first character position, then the file name is
-              treated as a path that is relative to the current working directory. To export an eye
-              diagram plot data to a .csv file, the prerequisite command is
-              ``MEASUrement:ADDMEAS TIE``
+              format is CSV.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``SAVe:PLOTData value`` command.
@@ -861,7 +848,11 @@ class Save(SCPICmdRead):
             ```
 
         Info:
-            - ``<Qstring>`` sets the file name and location used to store the plot data.
+            - ``Qstring`` sets the file name and location used to store the plot data. When
+              specifying the file name with this command, use the correct file extension (.CSV). If
+              a file name or path is specified, the file is expected to be located in a directory
+              relative to the current working directory (specified by ``FILESYSTEM:CWD``) unless a
+              complete path is specified.
         """
         return self._plotdata
 

@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added support for updated commands in MSO4, MSO4B, MSO5, MSO5B, MSO5LP, MSO6, MSO6B, and LPD6 models.
+
 ### Fixed
 
 - Fixed a bug in the auto-generated commands for certain models where the `limit[Y]` commands were incorrectly generated.

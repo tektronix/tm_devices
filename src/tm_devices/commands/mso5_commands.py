@@ -12,104 +12,99 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 
 from .gen_e3e9uu_lpdmso.acquire import Acquire
 from .gen_e3e9uu_lpdmso.actonevent import Actonevent
+from .gen_e3e9uu_lpdmso.afg import Afg
+from .gen_e3e9uu_lpdmso.alias import Alias
 from .gen_e3e9uu_lpdmso.application import Application
+from .gen_e3e9uu_lpdmso.autoset import Autoset
 from .gen_e3e9uu_lpdmso.auxout import Auxout
 from .gen_e3e9uu_lpdmso.bus import Bus
+from .gen_e3e9uu_lpdmso.busy import Busy
+from .gen_e3e9uu_lpdmso.calibrate import Calibrate
+from .gen_e3e9uu_lpdmso.calibration import Cal
 from .gen_e3e9uu_lpdmso.callouts import Callouts
 from .gen_e3e9uu_lpdmso.ch import Channel
+from .gen_e3e9uu_lpdmso.connected import Connected
+from .gen_e3e9uu_lpdmso.curve import Curve
+from .gen_e3e9uu_lpdmso.curvestream import Curvestream
+from .gen_e3e9uu_lpdmso.customtable import Customtable
+from .gen_e3e9uu_lpdmso.data import Data
+from .gen_e3e9uu_lpdmso.dese import Dese
 from .gen_e3e9uu_lpdmso.diag import Diag
 from .gen_e3e9uu_lpdmso.diggrp import DiggrpItem
 from .gen_e3e9uu_lpdmso.display import Display
 from .gen_e3e9uu_lpdmso.dvm import Dvm
+from .gen_e3e9uu_lpdmso.ethernet import Ethernet
+from .gen_e3e9uu_lpdmso.event import Event
+from .gen_e3e9uu_lpdmso.evmsg import Evmsg
+from .gen_e3e9uu_lpdmso.evqty import Evqty
+from .gen_e3e9uu_lpdmso.eyemask import Eyemask
+from .gen_e3e9uu_lpdmso.factory import Factory
+from .gen_e3e9uu_lpdmso.filesystem import Filesystem
 from .gen_e3e9uu_lpdmso.fpanel import Fpanel
+from .gen_e3e9uu_lpdmso.header import Header
 from .gen_e3e9uu_lpdmso.histogram import Histogram
 from .gen_e3e9uu_lpdmso.horizontal import Horizontal
+from .gen_e3e9uu_lpdmso.hsinterface import Hsinterface
 from .gen_e3e9uu_lpdmso.license import License
+from .gen_e3e9uu_lpdmso.lock import Lock
+from .gen_e3e9uu_lpdmso.mainwindow import Mainwindow
 from .gen_e3e9uu_lpdmso.mask import Mask
 from .gen_e3e9uu_lpdmso.math import Math
+from .gen_e3e9uu_lpdmso.matharbflt import MatharbfltItem
 from .gen_e3e9uu_lpdmso.measurement import Measurement
+from .gen_e3e9uu_lpdmso.miscellaneous import Ddt
+from .gen_e3e9uu_lpdmso.password import Password
+from .gen_e3e9uu_lpdmso.pause import Pause
+from .gen_e3e9uu_lpdmso.peakstable import Peakstable
 from .gen_e3e9uu_lpdmso.pilogger import Pilogger
 from .gen_e3e9uu_lpdmso.plot import Plot
 from .gen_e3e9uu_lpdmso.power import Power
+from .gen_e3e9uu_lpdmso.recall import Recall
 from .gen_e3e9uu_lpdmso.ref import Ref
+from .gen_e3e9uu_lpdmso.riddick_pi_manual import Lrn
 from .gen_e3e9uu_lpdmso.rosc import Rosc
 from .gen_e3e9uu_lpdmso.save import Save
 from .gen_e3e9uu_lpdmso.saveon import Saveon
 from .gen_e3e9uu_lpdmso.saveonevent import Saveonevent
+from .gen_e3e9uu_lpdmso.scopeappreboot import Scopeappreboot
 from .gen_e3e9uu_lpdmso.search import Search
 from .gen_e3e9uu_lpdmso.searchtable import Searchtable
 from .gen_e3e9uu_lpdmso.select import Select
+from .gen_e3e9uu_lpdmso.set import Set
+from .gen_e3e9uu_lpdmso.socketserver import Socketserver
+from .gen_e3e9uu_lpdmso.status_and_error import Ese, Opc, Psc, Rst
 from .gen_e3e9uu_lpdmso.sv import Sv
+from .gen_e3e9uu_lpdmso.time import Time
 from .gen_e3e9uu_lpdmso.touchscreen import Touchscreen
 from .gen_e3e9uu_lpdmso.trigger import Trigger
 from .gen_e3e9uu_lpdmso.tstamptable import Tstamptable
-from .gen_e3h2zs_lpdmso.afg import Afg
-from .gen_e3h2zs_lpdmso.autoset import Autoset
-from .gen_e3h2zs_lpdmso.calibrate import Calibrate
-from .gen_e3h2zs_lpdmso.connected import Connected
-from .gen_e3h2zs_lpdmso.ethernet import Ethernet
+from .gen_e3e9uu_lpdmso.unlock import Unlock
+from .gen_e3e9uu_lpdmso.verbose import Verbose
+from .gen_e3e9uu_lpdmso.vertical import Vertical
+from .gen_e3e9uu_lpdmso.visual import Visual
+from .gen_e3e9uu_lpdmso.vxi import Vxi
+from .gen_e3e9uu_lpdmso.wfmoutpre import Wfmoutpre
 from .gen_e3h2zs_lpdmso.usbdevice import Usbdevice
 from .gen_e4de2d_lpdmsomdo.clear import Clear
 from .gen_e6bmgw_lpdmsotekscopepcdpomdo.totaluptime import Totaluptime
-from .gen_e6wozn_lpdmsotekscopepcmdodpo.pause import Pause
-from .gen_e44yni_lpdmsotekscopepc.data import Data
-from .gen_e44yni_lpdmsotekscopepc.eyemask import Eyemask
-from .gen_e44yni_lpdmsotekscopepc.matharbflt import MatharbfltItem
-from .gen_e44yni_lpdmsotekscopepc.peakstable import Peakstable
 from .gen_e44yni_lpdmsotekscopepc.ref import RefItem
-from .gen_e44yni_lpdmsotekscopepc.visual import Visual
 from .gen_e47rsg_lpdmsotekscopepc.autosavepitimeout import Autosavepitimeout
 from .gen_e47rsg_lpdmsotekscopepc.autosaveuitimeout import Autosaveuitimeout
 from .gen_e47rsg_lpdmsotekscopepc.bustable import Bustable
 from .gen_e47rsg_lpdmsotekscopepc.configuration import Configuration
-from .gen_e47rsg_lpdmsotekscopepc.curve import Curve
-from .gen_e47rsg_lpdmsotekscopepc.curvestream import Curvestream
-from .gen_e47rsg_lpdmsotekscopepc.customtable import Customtable
 from .gen_e47rsg_lpdmsotekscopepc.date import Date
-from .gen_e47rsg_lpdmsotekscopepc.filesystem import Filesystem
-from .gen_e47rsg_lpdmsotekscopepc.mainwindow import Mainwindow
 from .gen_e47rsg_lpdmsotekscopepc.meastable import Meastable
-from .gen_e47rsg_lpdmsotekscopepc.recall import Recall
-from .gen_e47rsg_lpdmsotekscopepc.socketserver import Socketserver
-from .gen_e47rsg_lpdmsotekscopepc.time import Time
 from .gen_e47rsg_lpdmsotekscopepc.undo import Undo
-from .gen_e47rsg_lpdmsotekscopepc.vertical import Vertical
-from .gen_e47rsg_lpdmsotekscopepc.wfmoutpre import Wfmoutpre
 from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
-from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import (
-    Cls,
-    Esr,
-    Opc,
-    Rst,
-    Stb,
-    Wai,
-)
+from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Wai
 from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
-from .gen_ft5uww_lpdmsodpomdoafgawgdsa.calibration import Cal
 from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
-from .gen_fu6dog_lpdmsotekscopepcdpomdoawgdsa.status_and_error import Ese, Sre
-from .gen_fuq1mi_lpdmsotekscopepcdpodsa.alias import Alias
-from .gen_fx54ua_lpdmsodpomdodsa.miscellaneous import Ddt
 from .gen_fx54ua_lpdmsodpomdodsa.newpass import Newpass
-from .gen_fx54ua_lpdmsodpomdodsa.password import Password
-from .gen_fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.allev import Allev
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.busy import Busy
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.dese import Dese
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.event import Event
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.evmsg import Evmsg
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.evqty import Evqty
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.factory import Factory
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.id import Id
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.miscellaneous import Lrn
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.rem import Rem
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.set import Set
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.status_and_error import Psc, Pud
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.verbose import Verbose
+from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.status_and_error import Pud
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.wavfrm import Wavfrm
-from .gen_fzd77z_lpdmsotekscopepcdpomdodsa.header import Header
-from .gen_fzn174_lpdmsodpomdodsa.lock import Lock
-from .gen_fzn174_lpdmsodpomdodsa.unlock import Unlock
 from .helpers import DefaultDictPassKeyToFactory
 
 
@@ -121,8 +116,6 @@ class MSO5CommandConstants:
     commands.
     """
 
-    A = "A"
-    AACQS = "AACQS"  # AACQs
     ABC = "ABC"
     ABCB = "ABCB"
     ABORT = "ABORT"
@@ -142,24 +135,34 @@ class MSO5CommandConstants:
     ACRMS = "ACRMS"
     ADD = "ADD"
     ADDR10 = "ADDR10"
+    ADDR32 = "ADDR32"
+    ADDR64 = "ADDR64"
     ADDR7 = "ADDR7"
     ADDRANDDATA = "ADDRANDDATA"
     ADDRESS = "ADDRESS"  # ADDRess
+    ADH = "ADH"
+    ADS = "ADS"
     ADVANCED = "ADVANCED"  # ADVanced
+    AF = "AF"
     AFG = "AFG"
     AFG31000 = "AFG31000"
+    AFI = "AFI"
     AFREQUENCIES = "AFREQUENCIES"  # AFREQuencies
+    AL1 = "AL1"
     ALARMSEARCH = "ALARMSEARCH"  # ALARMSEARch
     ALL = "ALL"
     ALLBITS = "ALLBITS"  # ALLBits
     ALLFIELDS = "ALLFIELDS"  # ALLFields
     ALLLINES = "ALLLINES"  # ALLLines
+    ALWAYS = "ALWAYS"
     AMPLINEAR = "AMPLINEAR"  # AMPLINear
     AN = "AN"
     ANALOG = "ANALOG"
     AND = "AND"
     ANY = "ANY"
+    # ANY = "Any"
     ANYERROR = "ANYERROR"  # ANYERRor
+    AOPERATION = "AOPERATION"
     APASS = "APASS"  # APASs
     APPLY = "APPLY"
     APPPWR = "APPPWR"
@@ -170,13 +173,17 @@ class MSO5CommandConstants:
     ARBITRARY = "ARBITRARY"  # ARBitrary
     ARINC429 = "ARINC429"
     ARMW = "ARMW"
-    ARROW = "ARROW"
-    ASCII = "ASCII"
-    # ASCII = "ASCIi"
+    ASCII = "ASCII"  # ASCIi
     # ASCII = "ASCii"
     ASIC = "ASIC"
+    ATQBCOMP = "ATQBCOMP"
+    ATQBPROP = "ATQBPROP"
     ATRIGGER = "ATRIGGER"  # ATRIGger
+    ATRREQ = "ATRREQ"  # ATRReq
+    ATRRES = "ATRRES"  # ATRRes
+    ATTRIB = "ATTRIB"
     AUDIO = "AUDIO"  # AUDio
+    AUTHCRYPTO = "AUTHCRYPTO"  # AUTHCRYPto
     AUTHENTICATE = "AUTHENTICATE"  # AUTHenticate
     AUTO = "AUTO"
     # AUTO = "Auto"
@@ -184,28 +191,20 @@ class MSO5CommandConstants:
     AUTOSET = "AUTOSET"  # AUTOset
     AUXILIARY = "AUXILIARY"  # AUXiliary
     AVERAGE = "AVERAGE"  # AVErage
-    B = "B"
     BACA = "BACA"
     BACKWARD = "BACKWARD"
     # BACKWARD = "BACKWard"
     BADDR = "BADDR"  # BADDr
     BADGE = "BADGE"
     BASIC = "BASIC"  # BASic
-    BDIFFBP = "BDIFFBP"
-    BEACON = "BEACON"  # BEACon
     BESSELCUSTOM = "BESSELCUSTOM"  # BESSelCUSTom
-    BINARY = "BINARY"
-    # BINARY = "BINary"
-    BITS = "BITS"
+    BINARY = "BINARY"  # BINary
     BITSTUFFING = "BITSTUFFING"  # BITSTUFFing
     BLACKMANHARRIS = "BLACKMANHARRIS"  # BLACKMANHarris
-    # BLACKMANHARRIS = "BLACkmanharris"
     BLOCKID = "BLOCKID"  # BLOCkid
-    BM = "BM"
     BMP = "BMP"
     BMSGEND = "BMSGEND"  # BMSGEnd
     BN = "BN"
-    BOOKMARK = "BOOKMARK"
     BOTH = "BOTH"
     BPASS = "BPASS"  # BPASs
     BRD = "BRD"
@@ -215,17 +214,17 @@ class MSO5CommandConstants:
     BURST = "BURST"  # BURSt
     BUS = "BUS"
     # BUS = "Bus"
-    BUSANDWAVEFORM = "BUSANDWAVEFORM"
     BUSTURNAROUND = "BUSTURNAROUND"  # BUSTURNAROUnd
     BUSY = "BUSY"
     BUTTERWORTH = "BUTTERWORTH"  # BUTTerworth
     BWR = "BWR"
-    BYTE = "BYTE"  # BYTe
     CAN = "CAN"
-    CAN2X = "CAN2X"
+    CAS = "CAS"
     CDATA = "CDATA"  # CDATa
     CGS = "CGS"
+    CHALLENGE = "CHALLENGE"  # CHALlenge
     CHANNEL = "CHANNEL"  # CHANnel
+    CHARACTER = "CHARACTER"  # CHARacter
     CHEBYONE = "CHEBYONE"  # CHEBYONe
     CHEBYTWO = "CHEBYTWO"  # CHEBYTWo
     CHECKSUM = "CHECKSUM"  # CHecksum
@@ -241,33 +240,43 @@ class MSO5CommandConstants:
     CLOCK = "CLOCK"
     CLOCKEDGE = "CLOCKEDGE"  # ClockEdge
     CMD = "CMD"
+    CMDCODE = "CMDCODE"  # CMDCODe
     CMDOPCODE = "CMDOPCODE"  # CMDOPCODe
     CN = "CN"
     CNT = "CNT"
+    COM = "COM"
     COMMAND = "COMMAND"
     # COMMAND = "COMMand"
-    COMMONMODE = "COMMONMODE"
+    COMPATTERN = "COMPATTERN"  # COMPATTern
     COMPLETE = "COMPLETE"  # COMPlete
+    COMPLETION = "COMPLETION"
     COMPRESSION = "COMPRESSION"  # COMPression
-    CONFIGURE = "CONFIGURE"  # CONFigure
+    CONFIG = "CONFIG"
     CONNECT = "CONNECT"
     # CONNECT = "CONNect"
     CONSTANT = "CONSTANT"  # CONSTant
     CONSTANTCLOCK = "CONSTANTCLOCK"
     CONTINUOUS = "CONTINUOUS"  # CONTinuous
-    CONTROL = "CONTROL"  # CONTrol
-    CONTROLCHAR = "CONTROLCHAR"
-    CONTROLCODE = "CONTROLCODE"  # CONTROLCODe
+    CONTROL = "CONTROL"
+    # CONTROL = "CONTrol"
+    CONTROLCH = "CONTROLCH"
     CONTROLMESSAGE = "CONTROLMESSAGE"  # CONTROLMESSage
     COUNTER = "COUNTER"  # COUNter
-    CR = "CR"
+    CP0 = "CP0"
+    CP1 = "CP1"
+    CP2 = "CP2"
+    CP3 = "CP3"
+    CP4 = "CP4"
+    CP56 = "CP56"
+    CP78 = "CP78"
     CRC = "CRC"
     CRC16 = "CRC16"
+    CRC32 = "CRC32"
     CRC5 = "CRC5"
     CRCERROR = "CRCERROR"  # CRCERRor
     CRCHEADER = "CRCHEADER"  # CRCHeader
     CRCTRAILER = "CRCTRAILER"  # CRCTrailer
-    CSI = "CSI"
+    CRCTYPES = "CRCTYPES"  # CRCTYPes
     CSPLIT = "CSPLIT"
     CURRENT = "CURRENT"
     # CURRENT = "CURRent"
@@ -276,10 +285,13 @@ class MSO5CommandConstants:
     # CURSOR = "CURsor"
     CUSTOM = "CUSTOM"
     # CUSTOM = "CUSTom"
+    # CUSTOM = "custom"
     CYCLE = "CYCLE"
     CYCLECOUNT = "CYCLECOUNT"  # CYCLEcount
     CYCLETYPE = "CYCLETYPE"  # CYCLETYPe
     DADDR = "DADDR"  # DADDr
+    DAH = "DAH"
+    DAS = "DAS"
     DATA = "DATA"
     # DATA = "DATa"
     DATA0 = "DATA0"
@@ -298,53 +310,57 @@ class MSO5CommandConstants:
     DCDC = "DCDC"
     DCP1W2 = "DCP1W2"
     DCPWR = "DCPWR"
-    DCREJECT = "DCREJECT"  # DCREJect
     DDATA = "DDATA"  # DDATa
     DDR = "DDR"
     DDR3 = "DDR3"
     DDRREAD = "DDRREAD"  # DDRRead
     DDRREADWRITE = "DDRREADWRITE"  # DDRREADWrite
     DDRWRITE = "DDRWRITE"  # DDRWrite
-    DECIMAL = "DECIMAL"
     DEFAULTSETUP = "DEFAULTSETUP"  # DEFaultsetup
     DEFECT = "DEFECT"  # DEFect
     DEFER = "DEFER"  # DEFer
     DEFGRPA = "DEFGRPA"  # DEFGRPa
     DEGREES = "DEGREES"
+    # DEGREES = "DEGrees"
     DELTA = "DELTA"
+    # DELTA = "DELta"
+    DEPREQ = "DEPREQ"  # DEPReq
+    DEPRES = "DEPRES"  # DEPRes
     DETAIL = "DETAIL"  # DETail
     DEVERROR = "DEVERROR"  # DEVERRor
     DEVICE = "DEVICE"  # DEVice
-    DEVICEADDR = "DEVICEADDR"
     DEVICECHIRP = "DEVICECHIRP"  # DEVICEChirp
     DEVICEDESCMASTERREAD = "DEVICEDESCMASTERREAD"  # DEVICEDESCMASTERREAd
     DEVICEDESCSLAVEREAD = "DEVICEDESCSLAVEREAD"  # DEVICEDESCSLAVEREAd
     DEVICETYPE = "DEVICETYPE"  # DEVICETYPe
+    DEVNOTIF = "DEVNOTIF"  # DEVNOTif
+    DH1 = "DH1"
+    DH2 = "DH2"
     DIFF = "DIFF"
     DIFFERENTIAL = "DIFFERENTIAL"
     DIFFERENTIATOR = "DIFFERENTIATOR"  # DIFFerentiator
-    DIRECT = "DIRECT"  # DIRect
+    DIREC = "DIREC"  # DIRec
     DISABLED = "DISABLED"  # DISabled
-    DISCMODE = "DISCMODE"  # DISCMODe
-    DISCRETE = "DISCRETE"  # DISCrete
     DISLAVE = "DISLAVE"  # DISLave
     DISPARITY = "DISPARITY"  # DISParity
     DIVIDE = "DIVIDE"  # DIVide
+    DL1 = "DL1"
     DLC = "DLC"
     DLSLAVE = "DLSLAVE"  # DLSLave
     DMSGEND = "DMSGEND"  # DMSGEnd
     DONTCARE = "DONTCARE"  # DONTcare
     DONTINCLUDE = "DONTINCLUDE"  # DONTInclude
-    DOTS = "DOTS"  # DOTs
+    DOTSONLY = "DOTSONLY"  # DOTsonly
     DOUBLE = "DOUBLE"
-    DPMAUTOSET = "DPMAUTOSET"  # DPMAutoset
-    DPMPRESET = "DPMPRESET"  # DPMPReset
-    DQ0 = "DQ0"
+    DP = "DP"
+    DPPABORT = "DPPABORT"
+    DPPEND = "DPPEND"
+    DPPSTART = "DPPSTART"
     DQDQS = "DQDQS"
     DRA = "DRA"
     DRB = "DRB"
-    DSI = "DSI"
-    DUAL = "DUAL"
+    DSLREQ = "DSLREQ"  # DSLReq
+    DSLRES = "DSLRES"  # DSLRes
     DYNAMIC = "DYNAMIC"
     # DYNAMIC = "DYNAMic"
     EACHCLOCKCYCLE = "EACHCLOCKCYCLE"
@@ -352,43 +368,45 @@ class MSO5CommandConstants:
     ECATHEADERLENGTH = "ECATHEADERLENGTH"  # ECATHEADERLENGth
     ECC = "ECC"
     ECUDATA = "ECUDATA"  # ECUDATa
-    ECUSENSOR = "ECUSENSOR"  # ECUSENSor
+    EDB = "EDB"
     EDGE = "EDGE"
-    EEP = "EEP"
     EFFICIENCY = "EFFICIENCY"  # EFFiciency
+    EIEOS = "EIEOS"
     EIGHT = "EIGHT"  # EIGHt
     EIGHTBIT = "EIGHTBIT"
     EIGHTHUNDREDHZ = "EIGHTHUNDREDHZ"  # EIGHTHUNDREdhz
+    EIOS = "EIOS"
     EITHER = "EITHER"
     # EITHER = "EITHer"
     # EITHER = "EITher"
     ELLIPTICAL = "ELLIPTICAL"  # ELLiptical
     END = "END"
-    ENDOFPACKET = "ENDOFPACKET"  # ENDOFPACKet
     ENDXFER = "ENDXFER"
+    ENEND = "ENEND"
     ENET100 = "ENET100"
     ENET1000 = "ENET1000"
-    ENGINEERING = "ENGINEERING"  # ENGineering
     ENSLAVE = "ENSLAVE"  # ENSLave
     ENTASX = "ENTASX"  # ENTasx
     ENTERSWINDOW = "ENTERSWINDOW"  # ENTERSWindow
     ENTRDYA = "ENTRDYA"  # ENTRDya
     ENTRTSTMODE = "ENTRTSTMODE"  # ENTRTSTMode
-    ENVELOPE = "ENVELOPE"  # ENVelope
+    EOC = "EOC"
     EOF = "EOF"
     EOP = "EOP"
     # EOP = "EOp"
+    EOS = "EOS"
     EOT = "EOT"
     EOTPDATA = "EOTPDATA"  # EOTPDATa
     EOW = "EOW"
-    EQUAL = "EQUAL"  # EQUal
-    # EQUAL = "EQual"
+    EPF = "EPF"
+    EQUAL = "EQUAL"  # EQual
     EQUALS = "EQUALS"  # Equals
+    ERDY = "ERDY"
+    ERR8B10B = "ERR8B10B"
     ERROR = "ERROR"  # ERROr
     # ERROR = "ERRor"
     ERRORS = "ERRORS"  # ERRors
     ERRSERVICEDATA = "ERRSERVICEDATA"  # ERRSERVICEDATa
-    ESC = "ESC"
     ESCAPEMODE = "ESCAPEMODE"  # ESCAPEMODe
     ETHERNET = "ETHERNET"  # ETHernet
     EUSB = "EUSB"
@@ -398,8 +416,13 @@ class MSO5CommandConstants:
     EXECUTE = "EXECUTE"
     # EXECUTE = "EXECute"
     # EXECUTE = "Execute"
+    EXGETMBSSTATUS = "EXGETMBSSTATUS"  # EXGETMBSSTATus
+    EXGETSYSTINFO = "EXGETSYSTINFO"  # EXGETSYSTINFo
     EXITSWINDOW = "EXITSWINDOW"  # EXITSWindow
+    EXLOCKBLOCK = "EXLOCKBLOCK"  # EXLOCKBLOCk
     EXPLICITCLOCK = "EXPLICITCLOCK"
+    EXRDMBLOCK = "EXRDMBLOCK"  # EXRDMBLOCk
+    EXRDSBLOCK = "EXRDSBLOCK"  # EXRDSBLOCk
     EXTDLC = "EXTDLC"
     EXTENDED = "EXTENDED"
     # EXTENDED = "EXTENDed"
@@ -407,16 +430,15 @@ class MSO5CommandConstants:
     EXTIME = "EXTIME"  # EXTime
     EXTREGREAD = "EXTREGREAD"  # EXTREGREAd
     EXTREGWRITE = "EXTREGWRITE"  # EXTREGWRIte
+    EXWRSBLOCK = "EXWRSBLOCK"  # EXWRSBLOCk
     EYEHISTOGRAM = "EYEHISTOGRAM"  # EYEhistogram
     FACHANNEL = "FACHANNEL"  # FACHANnel
-    FACTORY = "FACTORY"  # FACtory
+    FADD = "FADD"
+    FAIL = "FAIL"
     FALL = "FALL"
-    FALLING = "FALLING"
-    # FALLING = "FALLing"
-    # FALLING = "FALling"
+    FALLING = "FALLING"  # FALling
     FALSE = "FALSE"  # FALSe
     # FALSE = "False"
-    # FALSE = "false"
     FAST = "FAST"
     # FAST = "FAst"
     FASTACQ = "FASTACQ"  # FASTAcq
@@ -436,13 +458,12 @@ class MSO5CommandConstants:
     FCDATA = "FCDATA"  # FCData
     FCDFIRST = "FCDFIRST"  # FCDFirst
     FCDTWO = "FCDTWO"  # FCDTwo
+    FCRC = "FCRC"
     FCS = "FCS"
     FCSERROR = "FCSERROR"  # FCSERRor
     # FCSERROR = "FCSError"
-    FCT = "FCT"
     FDBITS = "FDBITS"
-    FDISO = "FDISO"
-    FDNONISO = "FDNONISO"
+    FEXRDMBLOCKS = "FEXRDMBLOCKS"  # FEXRDMBLOCks
     FFREQUENCY = "FFREQUENCY"  # FFREQuency
     FFT = "FFT"
     FIBRECHANNEL = "FIBRECHANNEL"  # FIBREchannel
@@ -461,9 +482,7 @@ class MSO5CommandConstants:
     FLASHERASE = "FLASHERASE"  # FLASHERASe
     FLASHREAD = "FLASHREAD"
     FLASHWRITE = "FLASHWRITE"  # FLASHWRITe
-    FLATNESS = "FLATNESS"
     FLATTOP2 = "FLATTOP2"
-    # FLATTOP2 = "FLATtop2"
     FLEXRAY = "FLEXRAY"
     FLSUCCESSDATA = "FLSUCCESSDATA"  # FLSUCCESSDATa
     FLSUCCESSNODATA = "FLSUCCESSNODATA"  # FLSUCCESSNODATa
@@ -474,12 +493,10 @@ class MSO5CommandConstants:
     FORMERROR = "FORMERROR"  # FORMERRor
     FORWARD = "FORWARD"
     # FORWARD = "FORWard"
-    # FORWARD = "forward"
     FOUR = "FOUR"
     FOURBIT = "FOURBIT"
     FOURHUNDREDHZ = "FOURHUNDREDHZ"
     # FOURHUNDREDHZ = "FOURHUNDREdhz"
-    FOURTEENTEN = "FOURTEENTEN"  # FOURTEENten
     FP = "FP"
     FPBINARY = "FPBINARY"  # FPBinary
     FPRD = "FPRD"
@@ -487,16 +504,15 @@ class MSO5CommandConstants:
     FPULSE = "FPULSE"  # FPULse
     FPWR = "FPWR"
     FRAME = "FRAME"  # FRAMe
-    # FRAME = "FRame"
     FRAMEID = "FRAMEID"
-    FRAMELENGTH = "FRAMELENGTH"  # FRAMELENgth
-    FRAMEREJ = "FRAMEREJ"
     FRAMES = "FRAMES"  # FRAMes
     FRAMETYPE = "FRAMETYPE"  # FRAMEType
     # FRAMETYPE = "FRAMEtype"
+    FRDMBLOCK = "FRDMBLOCK"  # FRDMBLOCk
     FREQUENCY = "FREQUENCY"  # FREQuency
     FRMW = "FRMW"
     FTLB = "FTLB"
+    FTS = "FTS"
     FULL = "FULL"
     FULLSCREEN = "FULLSCREEN"  # FULLScreen
     FULLSPEED = "FULLSPEED"
@@ -508,21 +524,20 @@ class MSO5CommandConstants:
     GAUSSIAN = "GAUSSIAN"  # GAUSSian
     # GAUSSIAN = "GAUSsian"
     GDELAY = "GDELAY"
-    GE = "GE"  # ge
     GET = "GET"
     GETBUSCH = "GETBUSCH"  # GETBusch
     GETCAPS = "GETCAPS"
     GETCONFIG = "GETCONFIG"  # GETCONFig
     GETDEVCH = "GETDEVCH"  # GETDevch
     GETFLASHNP = "GETFLASHNP"
+    GETMBSECSYSTEM = "GETMBSECSYSTEM"  # GETMBSECSYSTem
     GETMRDL = "GETMRDL"  # GETMRdl
     GETMWRL = "GETMWRL"  # GETMWrl
     GETNP = "GETNP"
     GETOOB = "GETOOB"
     GETPC = "GETPC"
     GETPRID = "GETPRID"  # GETPrid
-    GETREG = "GETREG"
-    # GETREG = "GETReg"
+    GETREG = "GETREG"  # GETReg
     GETREGPKTALERT = "GETREGPKTALERT"  # GETREGPKTALERt
     # GETREGPKTALERT = "GETRegpktalert"
     GETREGPKTBAD = "GETREGPKTBAD"
@@ -537,6 +552,7 @@ class MSO5CommandConstants:
     # GETREGVREVENT = "GETRegvrevent"
     GETSLAVE = "GETSLAVE"  # GETSlave
     GETSTATUS = "GETSTATUS"  # GETSTATus
+    GETSYSTEMINFO = "GETSYSTEMINFO"  # GETSYSTEMINFo
     GETVWIRE = "GETVWIRE"  # GETVWIRe
     GETXTIME = "GETXTIME"  # GETXTime
     GLOBAL = "GLOBAL"  # GLOBal
@@ -544,6 +560,7 @@ class MSO5CommandConstants:
     GPKNOB2 = "GPKNOB2"
     GRATICULE = "GRATICULE"
     GREATERTHAN = "GREATERTHAN"  # GREATERthan
+    GROUPDELAY = "GROUPDELAY"  # GROUPDelay
     GRPDELAY = "GRPDELAY"
     H = "H"
     HAMMING = "HAMMING"  # HAMMing
@@ -555,33 +572,27 @@ class MSO5CommandConstants:
     HDREXIT = "HDREXIT"  # HDRExit
     HDRRESTART = "HDRRESTART"  # HDRRestart
     HEADER = "HEADER"  # HEADer
-    HEX = "HEX"
     HEXAGON = "HEXAGON"  # HEXAgon
     HFREJ = "HFREJ"  # HFRej
-    HI = "HI"
     HIGH = "HIGH"
     HIGHRES = "HIGHRES"
     HIGHZ = "HIGHZ"
     HILBERT = "HILBERT"  # HILBert
-    HIRES = "HIRES"  # HIRes
     HISTOGRAM = "HISTOGRAM"  # HISTogram
-    HONLY = "HONLY"  # HONLy
+    HLTA = "HLTA"  # HLTa
+    HLTB = "HLTB"
     HORIZONTAL = "HORIZONTAL"  # HORizontal
-    HORIZONTALSCALE = "HORIZONTALSCALE"  # HORIZontalscale
     HORZPOS = "HORZPOS"
     HORZSCALE = "HORZSCALE"  # HORZScale
-    HOSTADDR = "HOSTADDR"
     HOSTCHIRP = "HOSTCHIRP"  # HOSTChirp
     HOTJOIN = "HOTJOIN"  # HOTJoin
     HPASS = "HPASS"  # HPASs
+    HPSTART = "HPSTART"
     HS = "HS"
     HSENSOR = "HSENSOR"
     HUNDRED = "HUNDRED"  # HUNdred
-    HUNDREDBASET1 = "HUNDREDBASET1"
-    HUNDREDBASETX = "HUNDREDBASETX"
     HZ = "HZ"
     I2C = "I2C"
-    I2S = "I2S"
     I3C = "I3C"
     IBA2500 = "IBA2500"
     IBA_GEN2 = "IBA_GEN2"
@@ -589,11 +600,11 @@ class MSO5CommandConstants:
     IC = "IC"
     ID = "ID"
     IDANDDATA = "IDANDDATA"
-    IDENTIFIER = "IDENTIFIER"  # IDentifier
+    IDENTIFIER = "IDENTIFIER"  # IDEntifier
+    # IDENTIFIER = "IDentifier"
     IDLE = "IDLE"
     # IDLE = "IDLe"
     IDX = "IDX"
-    IEEE = "IEEE"  # ieee
     IGBT = "IGBT"
     IMAGINARY = "IMAGINARY"  # IMAGinary
     IN = "IN"
@@ -601,10 +612,7 @@ class MSO5CommandConstants:
     INCLUDE = "INCLUDE"  # INCLude
     INDEPENDENT = "INDEPENDENT"
     INDEX = "INDEX"  # INDex
-    INFINITE = "INFINITE"  # INFInite
     INFORMATION = "INFORMATION"  # INFormation
-    INFPERSIST = "INFPERSIST"  # INFPersist
-    INIT = "INIT"
     INPUT = "INPUT"
     INPWR = "INPWR"
     INPWRSUM = "INPWRSUM"
@@ -612,7 +620,8 @@ class MSO5CommandConstants:
     # INRANGE = "Inrange"
     INSIDEGREATER = "INSIDEGREATER"  # INSIDEGreater
     INSIDERANGE = "INSIDERANGE"  # INSIDErange
-    INVERT = "INVERT"  # INVert
+    INVALID = "INVALID"
+    INVENTORY = "INVENTORY"  # INVentory
     INVERTED = "INVERTED"  # INVERTed
     # INVERTED = "INVErted"
     # INVERTED = "INVerted"
@@ -626,27 +635,33 @@ class MSO5CommandConstants:
     ISOEND = "ISOEND"
     ISOMID = "ISOMID"
     ISOSTART = "ISOSTART"
+    ITP = "ITP"
     JPG = "JPG"
     KAISERBESSEL = "KAISERBESSEL"  # KAISERBessel
     # KAISERBESSEL = "KAISerbessel"
+    KEYUPDATE = "KEYUPDATE"  # KEYUPDate
     L = "L"
     LABEL = "LABEL"  # LABel
     LABELANDDATA = "LABELANDDATA"
     LATCH = "LATCH"  # LATCh
     LCHANNEL = "LCHANNEL"  # LCHannel
+    LCSTART = "LCSTART"
     LEFT = "LEFT"  # LEFt
     LEN = "LEN"
     LENGTH = "LENGTH"  # LENGth
     LESSEQUAL = "LESSEQUAL"  # LESSEQual
     LESSTHAN = "LESSTHAN"  # LESSthan
-    LF = "LF"
     LFREJ = "LFREJ"  # LFRej
     LIN = "LIN"
     LINE = "LINE"
     LINEAR = "LINEAR"
     # LINEAR = "LINEAr"
     # LINEAR = "LINear"
-    LJ = "LJ"
+    LMP = "LMP"
+    LOCAL = "LOCAL"
+    LOCKAFI = "LOCKAFI"
+    LOCKBLOCK = "LOCKBLOCK"  # LOCKBLOCk
+    LOCKDSFID = "LOCKDSFID"
     LOG = "LOG"
     LOGARITHM = "LOGARITHM"
     LOGIC = "LOGIC"  # LOGIc
@@ -664,6 +679,7 @@ class MSO5CommandConstants:
     LRD = "LRD"
     LRW = "LRW"
     LSB = "LSB"
+    LSLAVE = "LSLAVE"  # LSLave
     LTR = "LTR"
     LWR = "LWR"
     MACADDRESS = "MACADDRESS"  # MACADDRess
@@ -690,9 +706,7 @@ class MSO5CommandConstants:
     MDIO = "MDIO"
     MEAN = "MEAN"
     MEANHISTOGRAM = "MEANHISTOGRAM"  # MEANhistogram
-    MEASURED = "MEASURED"  # MEASured
     MEDIAN = "MEDIAN"  # MEDian
-    MEDIUM = "MEDIUM"  # MEDium
     MEMORY = "MEMORY"
     MEMRD32 = "MEMRD32"
     MEMRD64 = "MEMRD64"
@@ -700,17 +714,15 @@ class MSO5CommandConstants:
     MEMRDWR64 = "MEMRDWR64"
     MEMWR32 = "MEMWR32"
     MEMWR64 = "MEMWR64"
-    MESSAGE = "MESSAGE"  # MESSage
+    MESSAGE = "MESSAGE"
+    # MESSAGE = "MESSage"
     MID = "MID"
     MIL1553B = "MIL1553B"
     MINHOLD = "MINHOLD"  # MINHold
     MINMAX = "MINMAX"  # MINMax
     MISO = "MISO"  # MISo
     MISODATA = "MISODATA"  # MISOdata
-    MIXED = "MIXED"
-    # MIXED = "MIXed"
-    MIXEDASCII = "MIXEDASCII"
-    MIXEDHEX = "MIXEDHEX"
+    MIXED = "MIXED"  # MIXed
     MLANE = "MLANE"  # MLANe
     MODE = "MODE"
     # MODE = "MODe"
@@ -730,40 +742,29 @@ class MSO5CommandConstants:
     NACK = "NACK"
     NAK = "NAK"
     NAND = "NAND"  # NANd
-    NATIVE = "NATIVE"  # NATive
     NEGATIVE = "NEGATIVE"  # NEGAtive
     # NEGATIVE = "NEGative"
     NETMN = "NETMN"
     NETWORKVARIABLE = "NETWORKVARIABLE"  # NETWORKVARiable
     NETWORKVARIABLES = "NETWORKVARIABLES"  # NETWORKVARiables
     NEXT = "NEXT"  # NEXt
-    NFC14443A = "NFC14443A"
-    NFC14443B = "NFC14443B"
-    NFC15693 = "NFC15693"
-    NFCFELICA = "NFCFELICA"  # NFCFELica
-    NIBBLE = "NIBBLE"  # NIBBLe
     NINE = "NINE"  # NINe
     NM = "NM"
-    NO = "NO"
     NOCARE = "NOCARE"
     NOISEREJ = "NOISEREJ"  # NOISErej
     NOMINAL = "NOMINAL"  # NOMinal
     NONFATAL = "NONFATAL"  # NONFATal
     NONTRANSITION = "NONTRANSITION"  # NONTRANsition
     NOP = "NOP"
-    NOPARITY = "NOPARITY"  # NOPARity
     NOR = "NOR"
     NORESPONSE = "NORESPONSE"  # NORESPonse
     NORMAL = "NORMAL"  # NORMal
-    # NORMAL = "NORmal"
     NOSTATION = "NOSTATION"  # NOSTATion
-    NOTE = "NOTE"
-    NOTEQUAL = "NOTEQUAL"  # NOTEQual
     NOTEQUALS = "NOTEQUALS"  # NOTEQuals
-    NR3 = "NR3"
+    NRDY = "NRDY"
+    NTIMES = "NTIMES"
     NTSC = "NTSC"  # NTSc
     NULL = "NULL"
-    # NULL = "NULl"
     NULLFRDYNAMIC = "NULLFRDYNAMIC"  # NULLFRDynamic
     NULLFRSTATIC = "NULLFRSTATIC"  # NULLFRStatic
     NUMACQS = "NUMACQS"  # NUMACQs
@@ -783,10 +784,9 @@ class MSO5CommandConstants:
     OFF = "OFF"
     OFFSET = "OFFSET"  # OFFSet
     ON = "ON"
+    ONCE = "ONCE"
     ONE = "ONE"
-    ONEPAIRI = "ONEPAIRI"
-    ONEPAIRV = "ONEPAIRV"
-    ONEPAIRVI = "ONEPAIRVI"
+    ONFAIL = "ONFAIL"
     OOBCHANNEL = "OOBCHANNEL"  # OOBCHANnel
     OOBSMBUS = "OOBSMBUS"
     OPCODEERROR = "OPCODEERROR"  # OPCODEERRor
@@ -794,6 +794,8 @@ class MSO5CommandConstants:
     OPTIONAL = "OPTIONAL"  # OPTional
     OPTIONALPARAM = "OPTIONALPARAM"  # OPTIONALPARam
     OR = "OR"
+    ORDSET = "ORDSET"
+    OSET = "OSET"
     OTHER = "OTHER"
     OUT = "OUT"
     OUTPUT = "OUTPUT"
@@ -803,9 +805,7 @@ class MSO5CommandConstants:
     OUTSIDE = "OUTSIDE"  # OUTside
     OUTSIDEGREATER = "OUTSIDEGREATER"  # OUTSIDEGreater
     OUTSIDERANGE = "OUTSIDERANGE"  # OUTSIDErange
-    OVERDRIVE = "OVERDRIVE"  # OVErdrive
-    OVERLAY = "OVERLAY"  # OVERlay
-    # OVERLAY = "OVErlay"
+    OVERLAY = "OVERLAY"  # OVErlay
     OVERLOAD = "OVERLOAD"  # OVERLoad
     OZINCH = "OZINCH"
     P1W2V1I1 = "P1W2V1I1"
@@ -814,7 +814,7 @@ class MSO5CommandConstants:
     P3W3V2I2 = "P3W3V2I2"
     P3W3V3I3 = "P3W3V3I3"
     P3W4 = "P3W4"
-    PACKET = "PACKET"
+    PACKET = "PACKET"  # PACKet
     PACKETOFFDATA = "PACKETOFFDATA"  # packetOffData
     PACKETS = "PACKETS"  # PACKets
     PAL = "PAL"
@@ -822,16 +822,16 @@ class MSO5CommandConstants:
     PARAMETRIC = "PARAMETRIC"  # PARAmetric
     PARITY = "PARITY"  # PARity
     PARITYERROR = "PARITYERROR"  # PARItyerror
-    PAUSE = "PAUSE"
     PAYLOAD = "PAYLOAD"  # PAYLoad
     # PAYLOAD = "PAYload"
+    PCIE = "PCIE"
     PCIEXPRESS = "PCIEXPRESS"  # PCIExpress
     PCIE_GEN1 = "PCIE_GEN1"
     PCIE_GEN2 = "PCIE_GEN2"
     PCIE_GEN3 = "PCIE_GEN3"
+    PCRC = "PCRC"
     PDU = "PDU"
     PEAKDETECT = "PEAKDETECT"  # PEAKdetect
-    PEC = "PEC"
     PERCENT = "PERCENT"  # PERCent
     PERCOFPWR = "PERCOFPWR"  # percOfPwr
     PERICHANNEL = "PERICHANNEL"  # PERICHANnel
@@ -839,12 +839,10 @@ class MSO5CommandConstants:
     PFC = "PFC"
     PHASE = "PHASE"
     # PHASE = "PHASe"
-    PHASEONE = "PHASEONE"
-    PHASETHREE = "PHASETHREE"
-    PHASETWO = "PHASETWO"
     PHYSICALADDRESS = "PHYSICALADDRESS"  # PHYSICALADDRess
     PID = "PID"
     PING = "PING"
+    PINGRSP = "PINGRSP"
     PIXELNUMBER = "PIXELNUMBER"  # PIXELNUMBer
     PIXELVALUE = "PIXELVALUE"  # PIXELVALue
     PIXMAP = "PIXMAP"  # PIXmap
@@ -853,8 +851,11 @@ class MSO5CommandConstants:
     PNJUNCTION = "PNJUNCTION"
     POLLINGLONG = "POLLINGLONG"
     POLLINGNORMAL = "POLLINGNORMAL"  # POLLINGNORMal
+    PORTCAP = "PORTCAP"
+    PORTCFG = "PORTCFG"
     PORTCONFIGURATION = "PORTCONFIGURATION"  # PORTConfiguration
     PORTRESET = "PORTRESET"  # PORTReset
+    PORTRSP = "PORTRSP"
     POSITION = "POSITION"  # POSition
     POSITIVE = "POSITIVE"  # POSITIVe
     # POSITIVE = "POSitive"
@@ -863,15 +864,20 @@ class MSO5CommandConstants:
     POWLOG = "POWLOG"
     PREAMBLE = "PREAMBLE"  # PREamble
     PRECISE = "PRECISE"
+    PRECTM = "PRECTM"
+    PREFIX = "PREFIX"
     PRESENCE = "PRESENCE"  # PREsence
     PREV = "PREV"  # PREv
     PRIORITY = "PRIORITY"  # PRIority
     PROFILE = "PROFILE"  # PROFile
+    PROPRIETARY = "PROPRIETARY"  # PROPrietary
     PROTOCOL = "PROTOCOL"  # PROTocol
+    PSLREQ = "PSLREQ"  # PSLReq
+    PSLRES = "PSLRES"  # PSLRes
     PTYPE = "PTYPE"  # PTYPe
     PUBHEADER = "PUBHEADER"  # PUBHEADer
-    PULSEWIDTH = "PULSEWIDTH"  # PULSEWIDTh
-    # PULSEWIDTH = "PULSEWidth"
+    PULSEWIDTH = "PULSEWIDTH"  # PULSEWidth
+    PUPI = "PUPI"  # PUPi
     PUTFLASHC = "PUTFLASHC"
     PUTIORDSHORT = "PUTIORDSHORT"  # PUTIORDSHORt
     PUTIOWRSHORT = "PUTIOWRSHORT"  # PUTIOWRSHORt
@@ -885,21 +891,22 @@ class MSO5CommandConstants:
     QEI = "QEI"
     QTAG = "QTAG"
     RADIANS = "RADIANS"
+    # RADIANS = "RADians"
     RANDOM = "RANDOM"  # RANDom
     RAP = "RAP"
     RAPDATA = "RAPDATA"  # RAPDATa
-    RATED = "RATED"  # RATed
     RC = "RC"
     RCHANNEL = "RCHANNEL"  # RCHannel
     RDATA = "RDATA"  # RDATa
+    RDMBLOCK = "RDMBLOCK"  # RDMBLOCk
+    RDSBLOCK = "RDSBLOCK"  # RDSBLOCk
     READ = "READ"
+    READBUFFER = "READBUFFER"  # READBUFFer
     READROM = "READROM"
     READY = "READY"  # READy
     REAL = "REAL"
     RECORD = "RECORD"
-    RECORDLENGTH = "RECORDLENGTH"  # RECORDLength
-    RECTANGLE = "RECTANGLE"
-    # RECTANGLE = "RECTangle"
+    RECTANGLE = "RECTANGLE"  # RECTangle
     RECTANGULAR = "RECTANGULAR"  # RECTANGular
     # RECTANGULAR = "RECTangular"
     REF = "REF"
@@ -915,16 +922,13 @@ class MSO5CommandConstants:
     REJ = "REJ"
     REJECT = "REJECT"  # REJect
     REMOTE = "REMOTE"  # REMote
-    REPEATERHOST = "REPEATERHOST"  # REPEATERHOSt
-    REPEATERPERIPHERAL = "REPEATERPERIPHERAL"
     REPEATING = "REPEATING"  # REPeating
-    REPEATSTART = "REPEATSTART"  # REPEATSTARt
-    # REPEATSTART = "REPEATStart"
+    REPEATSTART = "REPEATSTART"  # REPEATStart
     # REPEATSTART = "REPEATstart"
     REPWR = "REPWR"
     REPWRSUM = "REPWRSUM"
-    REQDISCONNECT = "REQDISCONNECT"  # REQDISConnect
-    REQSETINIT = "REQSETINIT"
+    REQA = "REQA"  # REQa
+    REQB = "REQB"
     RERUN = "RERUN"
     RESERVED = "RESERVED"  # RESERVed
     # RESERVED = "RESERved"
@@ -934,13 +938,14 @@ class MSO5CommandConstants:
     RESETTRIGGER = "RESETTRIGGER"  # RESETTRIGger
     RESOLUTION = "RESOLUTION"  # RESOlution
     RESOLVER = "RESOLVER"
+    RESPCODE = "RESPCODE"  # RESPCODe
     RESPONSE = "RESPONSE"
     # RESPONSE = "RESPonse"
     RESPONSECODE = "RESPONSECODE"  # RESPONSECODe
     RESPONSEHEADER = "RESPONSEHEADER"  # RESPONSEHEADer
     RESPONSENOHEADER = "RESPONSENOHEADER"  # RESPONSENOHEADer
     RESUME = "RESUME"
-    REVERSE = "REVERSE"  # reverse
+    RFU = "RFU"
     RFVSTIME = "RFVSTIME"  # RFvsTime
     RI = "RI"
     RIBINARY = "RIBINARY"  # RIBinary
@@ -950,9 +955,9 @@ class MSO5CommandConstants:
     RIO3125 = "RIO3125"
     RISE = "RISE"
     # RISE = "RISe"
-    RISING = "RISING"
-    # RISING = "RISing"
-    RJ = "RJ"
+    RISING = "RISING"  # RISing
+    RLSREQ = "RLSREQ"  # RLSReq
+    RLSRES = "RLSRES"  # RLSRes
     RMS = "RMS"
     RNR = "RNR"
     ROTATION = "ROTATION"
@@ -965,12 +970,14 @@ class MSO5CommandConstants:
     RSTACT = "RSTACT"
     RSTDYA = "RSTDYA"  # RSTDya
     RSTGRPA = "RSTGRPA"  # RSTGRPa
+    RSTTOREADY = "RSTTOREADY"  # RSTTOREADy
     RUN = "RUN"
     RUNSTOP = "RUNSTOP"  # RUNSTop
     RUNT = "RUNT"
     # RUNT = "RUNt"
     RX = "RX"
     RXDATA = "RXDATA"  # RXData
+    SAK = "SAK"
     SAME = "SAME"
     SAMEAS = "SAMEAS"  # SAMEas
     SAMPLE = "SAMPLE"  # SAMple
@@ -986,24 +993,28 @@ class MSO5CommandConstants:
     SATA_GEN2 = "SATA_GEN2"
     SATA_GEN3 = "SATA_GEN3"
     SAVG = "SAVG"
-    SCIENTIFIC = "SCIENTIFIC"  # SCIentific
+    SBC = "SBC"
     SCRAMBLING = "SCRAMBLING"  # SCRambling
     SCREEN = "SCREEN"
     # SCREEN = "SCReen"
     SDATA = "SDATA"  # SDATa
-    SDIDATA = "SDIDATA"
-    SDIDATASSM = "SDIDATASSM"
+    SDP = "SDP"
     SDRBROADCAST = "SDRBROADCAST"  # SDRBroadcast
     SDRDIRECT = "SDRDIRECT"  # SDRDirect
+    SDS = "SDS"
+    SDT = "SDT"
     SEARCH1 = "SEARCH1"
     SEARCHROM = "SEARCHROM"
     SEARCHTOTRIGGER = "SEARCHTOTRIGGER"  # SEARCHtotrigger
+    SEC = "SEC"
     SECAM = "SECAM"
+    SECURECRYPTO = "SECURECRYPTO"  # SECURECRYPto
     SEGMENTS = "SEGMENTS"  # SEGments
+    SELECT14443A = "SELECT14443A"
+    SELECT15693SET = "SELECT15693SET"
     SELECTED = "SELECTED"
     SENSOR = "SENSOR"
     SENSORADDRESS = "SENSORADDRESS"  # SENSORADDRess
-    SENSORECU = "SENSORECU"
     SENSORSTATUS = "SENSORSTATUS"  # SENSORSTATus
     SENT = "SENT"
     SEQUENCE = "SEQUENCE"  # SEQuence
@@ -1022,6 +1033,7 @@ class MSO5CommandConstants:
     SETGRPA = "SETGRPA"  # SETGRPa
     SETHOLD = "SETHOLD"  # SETHold
     SETLEVEL = "SETLEVEL"  # SETLevel
+    SETLF = "SETLF"
     SETMRDL = "SETMRDL"  # SETMrdl
     SETMWRL = "SETMWRL"  # SETMwrl
     SETNDYA = "SETNDYA"  # SETNdya
@@ -1047,40 +1059,39 @@ class MSO5CommandConstants:
     SFD = "SFD"
     SFPBINARY = "SFPBINARY"  # SFPbinary
     SHORT = "SHORT"  # SHORt
+    SHP = "SHP"
     SHUTDOWN = "SHUTDOWN"  # SHUTdown
     SI = "SI"
     SIGNAL = "SIGNAL"
-    SINC = "SINC"
     SINGLE = "SINGLE"
-    # SINGLE = "SINGle"
     SINGLESEQ = "SINGLESEQ"  # SINGleseq
     SINX = "SINX"
     SIX = "SIX"
     SIXBIT = "SIXBIT"
     SIXFIFTYHZ = "SIXFIFTYHZ"  # SIXFIFTyhz
-    SIXTEENEIGHT = "SIXTEENEIGHT"  # SIXTEENeight
+    SIXTYFOURBIT = "SIXTYFOURBIT"
     SIXTYHZ = "SIXTYHZ"
     # SIXTYHZ = "SIXTyhz"
     SKIPROM = "SKIPROM"
+    SKP = "SKP"
     SLAVE = "SLAVE"  # SLAVe
     SLAVEADDRESS = "SLAVEADDRESS"  # SLAVEADDRess
+    SLC = "SLC"
     SLEEP = "SLEEP"
     # SLEEP = "SLEep"
+    SLOTMARKER = "SLOTMARKER"
     SLOW = "SLOW"
     SLOWER = "SLOWER"  # SLOWer
     SLOWERTHAN = "SLOWERTHAN"  # SLOWERthan
     SMPS = "SMPS"
-    SNAP = "SNAP"  # SNAp
-    SNRM = "SNRM"
-    SNRME = "SNRME"
+    SOC = "SOC"
     SOF = "SOF"
+    SOS = "SOS"
     SOT = "SOT"
     SOW = "SOW"
-    SPACE = "SPACE"  # SPace
     SPAYLOAD = "SPAYLOAD"  # SPAYload
     SPECIALPACKET = "SPECIALPACKET"  # SPECIALPacket
     SPECTRAL = "SPECTRAL"
-    # SPECTRAL = "SPECtral"
     SPECTRALBUJ = "SPECTRALBUJ"
     SPI = "SPI"
     SPLIT = "SPLIT"
@@ -1096,8 +1107,8 @@ class MSO5CommandConstants:
     SSPLIT = "SSPLIT"
     STACKED = "STACKED"  # STAcked
     STALL = "STALL"
-    STANDARD = "STANDARD"  # STAndard
-    # STANDARD = "STandard"
+    # STALL = "STALl"
+    STANDARD = "STANDARD"  # STandard
     START = "START"
     # START = "STARt"
     # START = "Start"
@@ -1111,12 +1122,13 @@ class MSO5CommandConstants:
     # STATIC = "STATic"
     STATIONADDR = "STATIONADDR"  # STATIONADDr
     STATUS = "STATUS"  # STATus
+    STAYQUIET = "STAYQUIET"  # STAYQUIet
     STAYSHIGH = "STAYSHIGH"  # STAYSHigh
     STAYSLOW = "STAYSLOW"  # STAYSLow
-    STEPRESPONSE = "STEPRESPONSE"
     STOP = "STOP"
     # STOP = "STop"
     # STOP = "Stop"
+    SUB = "SUB"
     SUBTRACT = "SUBTRACT"  # SUBtract
     SUCCESSDATA = "SUCCESSDATA"  # SUCCESSDATa
     SUCCESSNODATA = "SUCCESSNODATA"  # SUCCESSNODATa
@@ -1124,10 +1136,10 @@ class MSO5CommandConstants:
     SUSPEND = "SUSPEND"
     SV = "SV"
     SVID = "SVID"
+    SWAP = "SWAP"
     SWITCHING = "SWITCHING"
     SYMB = "SYMB"
     SYMBOL = "SYMBOL"  # SYMBol
-    # SYMBOL = "Symbol"
     SYMBOLS = "SYMBOLS"  # SYMbols
     SYNC = "SYNC"
     SYNCBITS = "SYNCBITS"
@@ -1138,27 +1150,20 @@ class MSO5CommandConstants:
     TCI = "TCI"
     TCPHEADER = "TCPHEADER"  # TCPHeader
     TDATA = "TDATA"  # TDATa
-    TDM = "TDM"
     TDMCHANNEL = "TDMCHANNEL"  # TDMChannel
     TEKEXPONENTIAL = "TEKEXPONENTIAL"  # TEKEXPonential
-    TEMPERATURE = "TEMPERATURE"  # TEMPerature
-    TENBASET = "TENBASET"
     TENNINETY = "TENNINETY"  # TENNinety
-    TEST = "TEST"
     TESTMODE = "TESTMODE"  # TESTMODe
     # TESTMODE = "TESTmode"
-    THREE = "THREE"
-    # THREE = "THRee"
-    THREEPHASEAUTOSET = "THREEPHASEAUTOSET"  # THREEPHASEAUTOset
+    THREE = "THREE"  # THRee
     THREESIXTYHZ = "THREESIXTYHZ"  # THREESIXTyhz
     TIME = "TIME"  # TIMe
-    TIMECODE = "TIMECODE"  # TIMECODe
     TIMEOUT = "TIMEOUT"  # TIMEOut
     TOKENPACKET = "TOKENPACKET"  # TOKENPacket
     TOLERANCES = "TOLERANCES"  # TOLerances
-    TOOTHGAP = "TOOTHGAP"
     TOTALEFFICIENCY = "TOTALEFFICIENCY"  # TOTALEFFiciency
     TOUCHSCREEN = "TOUCHSCREEN"  # TOUCHSCReen
+    TP = "TP"
     TRACK = "TRACK"
     TRAILER = "TRAILER"  # TRAiler
     TRANSFERBUSOWNERSHIP = "TRANSFERBUSOWNERSHIP"  # TRANSferbusownership
@@ -1174,8 +1179,9 @@ class MSO5CommandConstants:
     TRPWRSUM = "TRPWRSUM"
     TRUE = "TRUE"  # TRUe
     # TRUE = "True"
-    # TRUE = "true"
-    TWELVETWELVE = "TWELVETWELVE"  # TWELVEtwelve
+    TS1 = "TS1"
+    TS2 = "TS2"
+    TSEQ = "TSEQ"
     TWENTYBIT = "TWENTYBIT"
     TWENTYEIGHTY = "TWENTYEIGHTY"  # TWENtyeighty
     TWENTYFIVE = "TWENTYFIVE"  # TWENtyfive
@@ -1186,28 +1192,28 @@ class MSO5CommandConstants:
     TWOTHOUSAND = "TWOTHOUSAND"  # TWOThousand
     TX = "TX"
     TXDATA = "TXDATA"  # TXData
-    TXRX = "TXRX"
     TYPE = "TYPE"  # TYPe
-    UACK = "UACK"
-    UDIDDATA = "UDIDDATA"  # UDIDDATa
+    U2IT = "U2IT"
     UDPIP = "UDPIP"
     UDPIPHEADER = "UDPIPHEADER"  # UDPIPHEADer
-    UI = "UI"
+    UID = "UID"
     ULPS = "ULPS"
     UNEQUAL = "UNEQUAL"  # UNEQual
     UNIQUE = "UNIQUE"  # UNIQue
     UNLOCKED = "UNLOCKED"  # UNLocked
     UNNUMBERED = "UNNUMBERED"  # UNNumbered
     UNSUCCESSNODATA = "UNSUCCESSNODATA"  # UNSUCCESSNODATa
-    UP = "UP"
     USB = "USB"
     USB3 = "USB3"
+    USB31G1 = "USB31G1"
+    USB32G1 = "USB32G1"
+    USB3O = "USB3O"
     USBTMC = "USBTMC"  # USBTmc
     USER = "USER"
-    V1X = "V1X"
-    V2X = "V2X"
     VBARS = "VBARS"  # VBArs
     VCE = "VCE"
+    VCID = "VCID"
+    VDEVTEST = "VDEVTEST"
     VDS = "VDS"
     VECTOR = "VECTOR"  # VECtor
     VECTORS = "VECTORS"  # VECtors
@@ -1224,33 +1230,39 @@ class MSO5CommandConstants:
     WAKEUP = "WAKEUP"  # WAKEup
     # WAKEUP = "WAKeup"
     WAVEFORM = "WAVEFORM"
-    # WAVEFORM = "WAVEform"
     WAVEVIEW1 = "WAVEVIEW1"
-    WBGDESKEWEXEC = "WBGDESKEWEXEC"  # WBGDeskewexec
-    WBGGSTIM = "WBGGSTIM"
-    WBGPRESET = "WBGPRESET"  # WBGPREset
     WIDTH = "WIDTH"  # WIDth
     WINDOW = "WINDOW"  # WINdow
     WITHIN = "WITHIN"  # WIThin
     WKC = "WKC"
     WORD = "WORD"
-    # WORD = "Word"
     WRITE = "WRITE"
     # WRITE = "WRITe"
+    WRITEAFI = "WRITEAFI"
+    WRITEDSFID = "WRITEDSFID"
+    WRMBLOCK = "WRMBLOCK"  # WRMBLOCk
+    WRSBLOCK = "WRSBLOCK"  # WRSBLOCk
+    WUPA = "WUPA"  # WUPa
+    WUPB = "WUPB"
+    WUPREQ = "WUPREQ"  # WUPReq
+    WUPRES = "WUPRES"  # WUPRes
     X = "X"
     XAUI = "XAUI"
     XAUI_GEN2 = "XAUI_GEN2"
-    XFF = "XFF"
-    XID = "XID"
+    XLDATA = "XLDATA"  # xldata
+    XLFORMERROR = "XLFORMERROR"  # xlFormError
     XN = "XN"
     XYZY = "XYZY"
     XZYZ = "XZYZ"
-    YES = "YES"
     YN = "YN"
     YXZX = "YXZX"
     ZERO = "ZERO"  # ZERo
     ZN = "ZN"
     ZOOM = "ZOOM"
+    _DALL = "_DALL"
+    _SV_AVERAGE = "_SV_AVERAGE"  # _SV_AVErage
+    _SV_MAXHOLD = "_SV_MAXHOLD"  # _SV_MAXHold
+    _SV_NORMAL = "_SV_NORMAL"  # _SV_NORMal
 
 
 #  pylint: disable=too-many-instance-attributes,too-many-public-methods
@@ -1306,6 +1318,7 @@ class MSO5Commands:
         - ``.header``: The ``HEADer`` command.
         - ``.histogram``: The ``HISTogram`` command tree.
         - ``.horizontal``: The ``HORizontal`` command.
+        - ``.hsinterface``: The ``HSInterface`` command tree.
         - ``.id``: The ``ID`` command.
         - ``.idn``: The ``*IDN`` command.
         - ``.license``: The ``LICense`` command.
@@ -1337,15 +1350,13 @@ class MSO5Commands:
         - ``.save``: The ``SAVe`` command tree.
         - ``.saveon``: The ``SAVEON`` command tree.
         - ``.saveonevent``: The ``SAVEONEVent`` command tree.
+        - ``.scopeappreboot``: The ``SCOPEAppREBOOT`` command.
         - ``.search``: The ``SEARCH`` command tree.
         - ``.searchtable``: The ``SEARCHTABle`` command tree.
         - ``.select``: The ``SELect`` command tree.
         - ``.set``: The ``SET`` command.
         - ``.socketserver``: The ``SOCKETServer`` command tree.
-        - ``.sre``: The ``*SRE`` command.
-        - ``.stb``: The ``*STB`` command.
         - ``.sv``: The ``SV`` command tree.
-        - ``.teksecure``: The ``TEKSecure`` command.
         - ``.time``: The ``TIMe`` command.
         - ``.totaluptime``: The ``TOTaluptime`` command.
         - ``.touchscreen``: The ``TOUCHSCReen`` command tree.
@@ -1359,6 +1370,7 @@ class MSO5Commands:
         - ``.verbose``: The ``VERBose`` command.
         - ``.vertical``: The ``VERTical`` command tree.
         - ``.visual``: The ``VISual`` command tree.
+        - ``.vxi``: The ``VXI`` command tree.
         - ``.wai``: The ``*WAI`` command.
         - ``.wavfrm``: The ``WAVFrm`` command.
         - ``.wfmoutpre``: The ``WFMOutpre`` command.
@@ -1415,6 +1427,7 @@ class MSO5Commands:
         self._header = Header(device)
         self._histogram = Histogram(device)
         self._horizontal = Horizontal(device)
+        self._hsinterface = Hsinterface(device)
         self._id = Id(device)
         self._idn = Idn(device)
         self._license = License(device)
@@ -1450,15 +1463,13 @@ class MSO5Commands:
         self._save = Save(device)
         self._saveon = Saveon(device)
         self._saveonevent = Saveonevent(device)
+        self._scopeappreboot = Scopeappreboot(device)
         self._search = Search(device)
         self._searchtable = Searchtable(device)
         self._select = Select(device)
         self._set = Set(device)
         self._socketserver = Socketserver(device)
-        self._sre = Sre(device)
-        self._stb = Stb(device)
         self._sv = Sv(device)
-        self._teksecure = Teksecure(device)
         self._time = Time(device)
         self._totaluptime = Totaluptime(device)
         self._touchscreen = Touchscreen(device)
@@ -1472,6 +1483,7 @@ class MSO5Commands:
         self._verbose = Verbose(device)
         self._vertical = Vertical(device)
         self._visual = Visual(device)
+        self._vxi = Vxi(device)
         self._wai = Wai(device)
         self._wavfrm = Wavfrm(device)
         self._wfmoutpre = Wfmoutpre(device)
@@ -1572,7 +1584,7 @@ class MSO5Commands:
 
         SCPI Syntax:
             ```
-            - ALIas {ON|OFF|<NR1>}
+            - ALIas {OFF|ON|<NR1>}
             - ALIas?
             ```
 
@@ -1580,7 +1592,7 @@ class MSO5Commands:
             - ``OFF`` turns Alias expansion off.
             - ``ON`` turns Alias expansion on. When a defined alias is received, the specified
               command sequence is substituted for the alias and executed.
-            - ``<NR1>`` = 0 disables Alias mode; any other value enables Alias mode.
+            - ``<NR1> = 0`` disables Alias mode; any other value enables Alias mode.
 
         Sub-properties:
             - ``.catalog``: The ``ALIas:CATalog`` command.
@@ -1693,8 +1705,8 @@ class MSO5Commands:
             ```
 
         Info:
-            - ``EXECute`` autosets the displayed waveform; this is equivalent to pressing the front
-              panel Autoset button.
+            - ``EXECute`` autosets the displayed waveform; this is equivalent to pressing the
+              frontpanel Autoset button.
 
         Sub-properties:
             - ``.acquisition``: The ``AUTOSet:ACQuisition`` command tree.
@@ -1770,6 +1782,12 @@ class MSO5Commands:
             ```
             - BUSY?
             ```
+
+        Info:
+            - ``<NR1> = 0`` means that the instrument is not busy processing a command whose
+              execution time is extensive.
+            - ``<NR1> = 1`` means that the instrument is busy processing Commands that Generate an
+              OPC Message (.
         """
         return self._busy
 
@@ -1779,7 +1797,10 @@ class MSO5Commands:
 
         Description:
             - This query-only command starts signal path calibration (SPC) and returns the status
-              upon completion.
+              upon completion.When running SPC through the remote interface, calibration status
+              cannotbe obtained until after the SPC completes. SPC takes approximately 15 minutesper
+              channel which means a total of 2 hours on an 8-channel model. Any remotecommand that
+              performs an action on the instrument is also disabled until theSPC is complete.
 
         Usage:
             - Using the ``.query()`` method will send the ``*CAL?`` query.
@@ -1798,7 +1819,9 @@ class MSO5Commands:
         """Return the ``CALibrate`` command.
 
         Description:
-            - This query returns the status of signal path calibration.
+            - This query returns the status of signal path calibration.When running SPC through the
+              remote interface, calibration status cannot be obtained until after the SPC completes,
+              which can take several minutes.
 
         Usage:
             - Using the ``.query()`` method will send the ``CALibrate?`` query.
@@ -1828,6 +1851,7 @@ class MSO5Commands:
         Sub-properties:
             - ``.addnew``: The ``CALLOUTS:ADDNew`` command.
             - ``.callout``: The ``CALLOUTS:CALLOUT<x>`` command tree.
+            - ``.delete``: The ``CALLOUTS:DELete`` command.
         """
         return self._callouts
 
@@ -1953,8 +1977,8 @@ class MSO5Commands:
             - This command transfers waveform data from the instrument. Each waveform that is
               transferred has an associated waveform preamble that contains information such as data
               format and scale. The ``CURVe?`` query transfers data from the instrument. The data
-              source is specified by the ``DATA:SOURCE`` command. The first and last data points are
-              specified by the ``DATA:START`` and ``DATA:STOP`` commands. For digital sources,
+              source is specified by the ``DATa:SOUrce`` command. The first and last data points are
+              specified by the ``DATa:STARt`` and ``DATa:STOP`` commands. For digital sources,
               ``CH<x>_D<x>`` or CH<x> _DALL, when the ``:DATa:WIDth`` is 1, the returned data is
               state only. When the ``:DATa:WIDth`` is 2, the returned data is transition data with 2
               bits per digital channel representing the transition information as follows: 0 0 low 0
@@ -1980,12 +2004,18 @@ class MSO5Commands:
               (if ``DATA:MODe`` is PIXmap). The number of rows in the pixmap will vary based on how
               many ch<x> sources are turned on and how they are grouped in acquisition HW. The
               grouping can vary from model to model. The number of columns in pixmap data is fixed
-              to 1000. For example, on a MSO58 instrument, Ch1 to Ch4 is 'group1' and Ch5 to Ch8 is
-              'group2'. If Ch1 is turned on (in group1) then Ch1 rows will be 500. If Ch2 and Ch3
+              to 1000. For example, on a MSO58 instrument, Ch1 to Ch4 is “group1” and Ch5 to Ch8 is
+              “group2”. If Ch1 is turned on (in group1) then Ch1 rows will be 500. If Ch2 and Ch3
               are turned on (in group1) then Ch2 and Ch3 rows will be 250 each. When all Ch1/2/3/4
               are turned on (in group1) then 125 rows per channel. If Ch1 (in group1) and Ch8 (in
               group2) are turned on then 500 rows will be returned for each channel. To calculate
-              the number of rows, you can use- (number of bytes from curve header/``BYT_NR``)/1000.
+              the number of rows, you can use- (number of bytes from curve
+              header/``BYT_NR``)/1000.Curve data is transferred from the instrument asynchronously
+              and,depending upon the length of the curve record, such transfers can require
+              severalseconds to complete. During this time, the instrument will not respond to
+              usercontrols. You can interrupt these asynchronous data transfers by sending adevice
+              clear message to the instrument or by interrupting the query with anothercommand or
+              query. Verify that curve data is completely transferred.
 
         Usage:
             - Using the ``.query()`` method will send the ``CURVe?`` query.
@@ -2007,23 +2037,28 @@ class MSO5Commands:
             - This query-only command continuously transfers waveform data from the instrument as it
               is acquired. This command puts the instrument into a streaming data mode, allowing the
               controller to receive waveform records as fast as they are acquired. Use the
-              ``DATA:SOURCE`` command to specify the waveform sources. The command supports all the
-              same data formatting options as the CURVE command. Control of the instrument through
+              ``DATa:SOUrce`` command to specify the waveform sources. The command supports all the
+              same data formatting options as the CURVe? command. Control of the instrument through
               the user interface or other external clients is not allowed while in streaming data
               mode. The GPIB controller must take the instrument out of this streaming data mode to
               terminate the query and allow other input sources to resume communication with the
               instrument. The following options are available to transition out of streaming data
               mode: Send a device clear over the bus Send another command or query to the instrument
-              Turning the waveform screen display mode off ( ``:DISplay:WAVEform OFF`` ) may
-              increase waveform throughput during streaming mode. Using a data encoding of SRIbinary
-              ( ``DATa:ENCdg SRIbinary`` ) may also increase the waveform throughput since that is
-              the raw native data format of the oscilloscope. While in streaming data mode, two
-              extreme conditions can occur. If the waveform records are being acquired slowly (high
+              Turning the waveform screen display mode off (``:DISplay:WAVEform OFF``) may increase
+              waveform throughput during streaming mode. Using a data encoding of SRIbinary
+              (``DATa:ENCdg SRIbinary``) may also increase the waveform throughput since that is the
+              raw native data format of the oscilloscope. While in streaming data mode, two extreme
+              conditions can occur. If the waveform records are being acquired slowly (high
               resolution), configure the controller for a long time-out threshold, as the data is
               not sent out until each complete record is acquired. If the waveform records are being
               acquired rapidly (low resolution), and the controller is not reading the data off the
               bus fast enough, the trigger rate is slowed to allow each waveform to be sent
-              sequentially.
+              sequentially.Curve data is transferred from the instrument asynchronously
+              and,depending upon the length of the curve record, such transfers can require
+              severalseconds to complete. During this time, the instrument will not respond to
+              usercontrols. You can interrupt these asynchronous data transfers by sending adevice
+              clear message to the instrument or by interrupting the query with anothercommand or
+              query. Verify that curve data is completely transferred.
 
         Usage:
             - Using the ``.query()`` method will send the ``CURVEStream?`` query.
@@ -2059,7 +2094,7 @@ class MSO5Commands:
 
         Description:
             - This command sets or queries the format and location of the waveform data that is
-              transferred with the CURVE command.
+              transferred with the CURVe? command.
 
         Usage:
             - Using the ``.query()`` method will send the ``DATa?`` query.
@@ -2072,14 +2107,6 @@ class MSO5Commands:
             - DATa {INIT|SNAp}
             - DATa?
             ```
-
-        Info:
-            - ``INIT`` initializes the waveform data parameters to their factory defaults except for
-              ``DATa:STOP``, which isset to the current acquisition record length.
-            - ``SNAp`` Sets ``DATa:STARt`` and ``DATa:STOP`` to match the current waveform cursor
-              positions of WAVEVIEW1 CURSOR1 if these waveform cursors are currently on. If these
-              waveform cursors are not on when the ``DATa SNAp`` command is sent, it is silently
-              ignored and ``DATa:STARt`` and ``:STOP`` remain unchanged.
 
         Sub-properties:
             - ``.encdg``: The ``DATa:ENCdg`` command.
@@ -2119,7 +2146,7 @@ class MSO5Commands:
 
         Description:
             - This command allows you to specify a command or a list of commands that are executed
-              when the instrument receives a TRG command. Define Device Trigger ( ``*DDT`` ) is a
+              when the instrument receives a ``*TRG`` command. Define Device Trigger (``*DDT``) is a
               special alias that the ``*TRG`` command uses.
 
         Usage:
@@ -2133,15 +2160,6 @@ class MSO5Commands:
             - *DDT {<Block>|<QString>}
             - *DDT?
             ```
-
-        Info:
-            - ``<Block>`` is a complete sequence of program messages. The messages can contain only
-              valid commands that must be separated by semicolons and must follow all rules for
-              concatenating commands. The sequence must be less than or equal to 80 characters. The
-              format of this argument is always returned as a query.
-            - ``<QString>`` is a complete sequence of program messages. The messages can contain
-              only valid commands that must be separated by semicolons and must follow all rules for
-              concatenating commands. The sequence must be less than or equal to 80 characters.
         """
         return self._ddt
 
@@ -2153,7 +2171,10 @@ class MSO5Commands:
             - This command sets and queries the bits in the Device Event Status Enable Register
               (DESER). The DESER is the mask that determines whether events are reported to the
               Standard Event Status Register (SESR), and entered into the Event Queue. For a more
-              detailed discussion of the use of these registers, see Registers.
+              detailed discussion of the use of these registers, see Registers.Setting the DESER and
+              ESER to the same value allows only those codes to be entered into the Event Queue and
+              summarized on the ESB bit (bit 5) of the Status Byte Register. Use the ``*ESE``
+              command to set the ESER.
 
         Usage:
             - Using the ``.query()`` method will send the ``DESE?`` query.
@@ -2166,12 +2187,6 @@ class MSO5Commands:
             - DESE <NR1>
             - DESE?
             ```
-
-        Info:
-            - ``<NR1>`` The binary bits of the DESER are set according to this value, which ranges
-              from 1 through 255. For example, ``DESE 209`` sets the DESER to the binary value
-              11010001 (that is, the most significant bit in the register is set to 1, the next most
-              significant bit to 1, the next bit to 0, etc.).
         """
         return self._dese
 
@@ -2230,10 +2245,6 @@ class MSO5Commands:
         Sub-properties:
             - ``.colors``: The ``DISplay:COLors`` command.
             - ``.global``: The ``DISplay:GLObal`` command tree.
-            - ``.intensity``: The ``DISplay:INTENSITy`` command.
-            - ``.mathfftview1``: The ``DISplay:MATHFFTView1`` command tree.
-            - ``.persistence``: The ``DISplay:PERSistence`` command.
-            - ``.plotview1``: The ``DISplay:PLOTView1`` command tree.
             - ``.reffftview``: The ``DISplay:REFFFTView<x>`` command tree.
             - ``.select``: The ``DISplay:SELect`` command tree.
             - ``.specview1``: The ``DISplay:SPECView1`` command tree.
@@ -2242,7 +2253,7 @@ class MSO5Commands:
             - ``.waveview1``: The ``DISplay:WAVEView1`` command tree.
             - ``.waveform``: The ``DISplay:WAVEform`` command.
             - ``.ch``: The ``DISplay:CH<x>`` command tree.
-            - ``.math``: The ``DISplay:Math<x>`` command tree.
+            - ``.math``: The ``DISplay:MATH<x>`` command tree.
             - ``.ref``: The ``DISplay:REF<x>`` command tree.
         """
         return self._display
@@ -2281,7 +2292,10 @@ class MSO5Commands:
         Description:
             - This command sets and queries the bits in the Event Status Enable Register (ESER). The
               ESER prevents events from being reported to the Status Byte Register (STB). For a more
-              detailed discussion of the use of these registers, see Registers.
+              detailed discussion of the use of these registers, see Registers.Setting the DESER and
+              the ESER to the same values allows only those codes to be entered into the Event Queue
+              and summarized on the ESB bit (bit 5) of the Status Byte Register. Use the DESE
+              command to set the DESER.
 
         Usage:
             - Using the ``.query()`` method will send the ``*ESE?`` query.
@@ -2352,7 +2366,7 @@ class MSO5Commands:
 
         Description:
             - This query-only command returns an event code from the Event Queue that provides
-              information about the results of the last ESR read. ``EVENT?`` also removes the
+              information about the results of the last ``*ESR?`` read. ``EVENT?`` also removes the
               returned value from the Event Queue.
 
         Usage:
@@ -2373,8 +2387,8 @@ class MSO5Commands:
 
         Description:
             - This query-only command removes a single event code from the Event Queue that is
-              associated with the results of the last ESR read and returns the event code with an
-              explanatory message. For more information, see Event Handling.
+              associated with the results of the last ``*ESR?`` read and returns the event code with
+              an explanatory message. For more information, see Event Handling.
 
         Usage:
             - Using the ``.query()`` method will send the ``EVMsg?`` query.
@@ -2394,7 +2408,7 @@ class MSO5Commands:
 
         Description:
             - This query-only command returns the number of events that are enabled in the queue.
-              This is useful when using the ALLEV query, since it lets you know exactly how many
+              This is useful when using the ALLEv? query, since it lets you know exactly how many
               events will be returned.
 
         Usage:
@@ -2432,10 +2446,10 @@ class MSO5Commands:
               This command is equivalent to pressing the DEFAULT SETUP button located on the
               instrument front panel or selecting Default Setup from the File menu. This command
               Performs the following in addition to what is done for the ``*RST`` command: Clears
-              any pending OPC operations. Resets the following IEEE488.2 registers: ``*ESE 0``
-              (Event Status Enable Register) ``*SRE 0`` (Service Request Enable Register) DESE 255
-              (Device Event Status Enable Register) ``*PSC 1`` (Power-on Status Clear Flag) Deletes
-              all defined aliases. Enables command headers (``:HEADer 1``).
+              any pending OPC operations. Resets the following IEEE488.2 registers: ``*ESE0`` (Event
+              Status Enable Register) ``*SRE 0`` (Service Request Enable Register) DESE255 (Device
+              Event Status Enable Register) ``*PSC1`` (Power-on Status Clear Flag) Deletes all
+              defined aliases. Enables command headers (``:HEADer 1``).
 
         Usage:
             - Using the ``.write()`` method will send the ``FACtory`` command.
@@ -2506,7 +2520,8 @@ class MSO5Commands:
             - This command sets or queries the Response Header Enable State that causes the
               instrument to either include or omit headers on query responses. Whether the long or
               short form of header keywords and enumerations are returned is dependent upon the
-              state of ``:VERBose``.
+              state of ``:VERBose``.This command does not affect IEEE Std 488.2-1987 Common Commands
+              (those starting with an asterisk); these commands never return headers.
 
         Usage:
             - Using the ``.query()`` method will send the ``HEADer?`` query.
@@ -2516,18 +2531,9 @@ class MSO5Commands:
 
         SCPI Syntax:
             ```
-            - HEADer {ON|OFF|<NR1>}
+            - HEADer {<NR1>|OFF|ON}
             - HEADer?
             ```
-
-        Info:
-            - ``<NR1>`` = 0 sets the Response Header Enable State to false; any other value sets
-              this state to true.
-            - ``OFF`` sets the Response Header Enable State to false. This causes the instrument to
-              omit headers on query responses, so that only the argument is returned.
-            - ``ON`` sets the Response Header Enable State to true. This causes the instrument to
-              include headers on applicable query responses. You can then use the query response as
-              a command.
         """
         return self._header
 
@@ -2582,6 +2588,22 @@ class MSO5Commands:
             - ``.scale``: The ``HORizontal:SCAle`` command.
         """
         return self._horizontal
+
+    @property
+    def hsinterface(self) -> Hsinterface:
+        """Return the ``HSInterface`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``HSInterface?`` query.
+            - Using the ``.verify(value)`` method will send the ``HSInterface?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.port``: The ``HSInterface:PORT`` command.
+            - ``.state``: The ``HSInterface:STATe`` command.
+            - ``.timeout``: The ``HSInterface:TIMeout`` command.
+        """
+        return self._hsinterface
 
     @property
     def id(self) -> Id:
@@ -2680,11 +2702,10 @@ class MSO5Commands:
 
         Info:
             - ``ALL`` disables all front panel controls and the touch screen.
-            - ``NONe`` enables all front panel controls and the touch screen. The UNLock ALL command
-              only unlocks the front panel controls.
-            - ``NONe`` command has no effect. For more information, see the ANSI/IEEE Std 488.1-1987
-              Standard Digital Interface for Programmable Instrumentation, section 2.8.3 on RL State
-              Descriptions.
+            - ``NONe`` enables all front panel controls and the touch screen. The.
+            - ``LOCk NONe`` command has no effect. For more information, see the ANSI/IEEE Std
+              488.1-1987 Standard Digital Interface for Programmable Instrumentation, section 2.8.3
+              on RL State Descriptions.
         """
         return self._lock
 
@@ -2694,9 +2715,9 @@ class MSO5Commands:
 
         Description:
             - This query-only command returns the commands that list the instrument settings,
-              allowing you to record or 'learn' the current instrument settings. You can use these
+              allowing you to record or “learn” the current instrument settings. You can use these
               commands to return the instrument to the state it was in when you made the ``*LRN?``
-              query. This command is identical to the SET command.
+              query. This command is identical to the SET? command.
 
         Usage:
             - Using the ``.query()`` method will send the ``*LRN?`` query.
@@ -2707,6 +2728,9 @@ class MSO5Commands:
             ```
             - *LRN?
             ```
+
+        Info:
+            - ``<QString>`` is the license nomenclature.
         """
         return self._lrn
 
@@ -2809,9 +2833,9 @@ class MSO5Commands:
             - ``.addmeas``: The ``MEASUrement:ADDMEAS`` command.
             - ``.addnew``: The ``MEASUrement:ADDNew`` command.
             - ``.annotate``: The ``MEASUrement:ANNOTate`` command.
-            - ``.autoset``: The ``MEASUrement:AUTOset`` command.
             - ``.ch``: The ``MEASUrement:CH<x>`` command tree.
             - ``.clockrecovery``: The ``MEASUrement:CLOCKRecovery`` command tree.
+            - ``.ddjmethod``: The ``MEASUrement:DDJMethod`` command.
             - ``.deleteall``: The ``MEASUrement:DELETEALL`` command.
             - ``.delete``: The ``MEASUrement:DELete`` command.
             - ``.diracmodel``: The ``MEASUrement:DIRacmodel`` command.
@@ -2869,13 +2893,13 @@ class MSO5Commands:
         Description:
             - This command generates the operation complete message in the Standard Event Status
               Register (SESR) when all pending commands that generate an OPC message are complete.
-              The ``*OPC?`` query places the ASCII character '1' into the output queue when all such
+              The ``*OPC?`` query places the ASCII character “1” into the output queue when all such
               OPC commands are complete. The ``*OPC?`` response is not available to read until all
               pending operations finish. For a complete discussion of the use of these registers and
               the output queue, see Registers and Queues. The ``*OPC`` command allows you to
               synchronize the operation of the instrument with your application program. For more
               information, see Synchronization Methods. Refer to the Oscilloscope operations that
-              can generate OPC table for a list of commands that generate an OPC message.
+              can generate OPC
 
         Usage:
             - Using the ``.query()`` method will send the ``*OPC?`` query.
@@ -2937,7 +2961,7 @@ class MSO5Commands:
 
         Info:
             - ``<QString>`` is the password, which can contain up to 10 characters. The factory
-              default password is 'XYZZY' and is always valid.
+              default password is “XYZZY” and is always valid.
         """
         return self._password
 
@@ -2954,13 +2978,12 @@ class MSO5Commands:
 
         SCPI Syntax:
             ```
-            - PAUSe <NR3>
+            - PAUSe PEAKSTABle:ADDNew <QString>
             ```
 
         Info:
-            - ``<NR3>`` is the specified number of seconds the interface is to pause before
-              processing any other commands. The pause time is specified as a floating point value
-              in seconds and must be > 0.0 and ≥1800.0.
+            - ``<QString>`` is a quoted string that is the name of the new peak markers table. The
+              argument is of the form “.
         """
         return self._pause
 
@@ -3048,7 +3071,7 @@ class MSO5Commands:
 
         SCPI Syntax:
             ```
-            - *PSC {ON|OFF|<NR1>}
+            - *PSC {<NR1>|OFF|ON}
             - *PSC?
             ```
 
@@ -3186,22 +3209,24 @@ class MSO5Commands:
               This command does the following: Recalls the default instrument setup. Clears the
               current ``*DDT`` command. Disables aliases (``:ALIAS:STATE 0``). Disables the user
               password (for the ``*PUD`` command). The ``*RST`` command does not change the
-              following: The current working directory ( ``:FILESystem:CWD`` command). The state of
-              command headers ( ``:HEADer`` command). The state of keyword and enumeration verbosity
-              ( ``:VERBose`` command). The Power-on Status Clear Flag ( ``*PSC`` command). The Event
-              Status Enable Register ( ``*ESE`` command). The Service Request Enable Register (
-              ``*SRE`` command). The Device Event Status Enable Register ( DESE command). The user
-              password for protected user data ( ``:PASSWord`` command). The content of protected
-              user data ( ``*PUD`` command). The enabled state of the socket server (
-              ``:SOCKETServer:ENAble`` command). The socket server port number (
-              ``:SOCKETServer:PORT`` command). The socket server protocol (
-              ``:SOCKETServer:PROTOCol`` command). The USBTMC port configuration (
-              ``:USBDevice:CONFigure`` command). The destination reference waveform or file path for
-              the ``:CURVe`` command ( ``:DATa:DESTination`` command). The source waveform for the
-              ``:CURVe?`` or ``:WAVFrm?`` queries ( ``:DATa:SOUrce`` command). The waveform data
-              encoding for the ``:CURVe`` command or query or the ``:WAVFrm?`` query (
-              ``:DATa:ENCdg`` command). The starting point for ``:CURVe?`` queries ( ``:DATa:STARt``
-              command). The ending point for ``:CURVe?`` queries ( ``:DATa:STOP`` command). All
+              following: The current working directory (``:FILESystem:CWD`` command). The state of
+              command headers (``:HEADer`` command). The state of keyword and enumeration verbosity
+              (``:VERBose`` command). The Power-on Status Clear Flag (``*PSC`` command). The Event
+              Status Enable Register (``*ESE`` command). The Service Request Enable Register
+              (``*SRE`` command). The Event Status Enable Register (``*ESE`` command). The Service
+              Request Enable Register (``*SRE`` command). The Device Event Status Enable Register
+              (DESE command). The user password for protected user data (``:PASSWord`` command). The
+              content of protected user data (``*PUD`` command). The enabled state of the socket
+              server (``:SOCKETServer:ENAble`` command). The socket server port number
+              (``:SOCKETServer:PORT`` command). The socket server protocol
+              (``:SOCKETServer:PROTOCol`` command). The USBTMC port configuration
+              (``:USBDevice:CONFigure`` command). The destination reference waveform or file path
+              for the ``:CURVe`` command (``:DATa:DESTination`` command). The source waveform for
+              the ``:CURVe?`` or ``:WAVFrm?`` queries (``:DATa:SOUrce`` command). The source
+              waveform for the ``:CURVe?`` or ``:WAVFrm?`` queries (``:DATa:SOUrce`` command). The
+              waveform data encoding for the ``:CURVe`` command or query or the ``:WAVFrm?`` query
+              (``:DATa:ENCdg`` command). The starting point for ``:CURVe?`` queries (``:DATa:STARt``
+              command). The ending point for ``:CURVe?`` queries (``:DATa:STOP`` command). All
               settings associated the ``:WFMInpre`` commands. All user settable settings associated
               with the WFMOutpre commands. ``*RST`` only resets the programmable interface settings,
               it does not change the user interface settings.
@@ -3229,7 +3254,6 @@ class MSO5Commands:
             - ``.eventtable``: The ``SAVe:EVENTtable`` command tree.
             - ``.image``: The ``SAVe:IMAGe`` command.
             - ``.mask``: The ``SAVe:MASK`` command.
-            - ``.plotdata``: The ``SAVe:PLOTData`` command.
             - ``.report``: The ``SAVe:REPOrt`` command.
             - ``.session``: The ``SAVe:SESsion`` command.
             - ``.setup``: The ``SAVe:SETUp`` command.
@@ -3270,6 +3294,23 @@ class MSO5Commands:
             - ``.waveform``: The ``SAVEONEVent:WAVEform`` command tree.
         """
         return self._saveonevent
+
+    @property
+    def scopeappreboot(self) -> Scopeappreboot:
+        """Return the ``SCOPEAppREBOOT`` command.
+
+        Description:
+            - This command reboots the scope.
+
+        Usage:
+            - Using the ``.write(value)`` method will send the ``SCOPEAppREBOOT value`` command.
+
+        SCPI Syntax:
+            ```
+            - SCOPEAppREBOOT SCOPEApp REBOOT
+            ```
+        """
+        return self._scopeappreboot
 
     @property
     def search(self) -> Search:
@@ -3328,11 +3369,11 @@ class MSO5Commands:
             - This query-only command returns the commands that list the instrument settings, except
               for configuration information for the calibration values. You can use these commands
               to return the instrument to the state it was in when you made the ``SET?`` query. The
-              ``SET?`` query always returns command headers, regardless of the setting of the HEADER
+              ``SET?`` query always returns command headers, regardless of the setting of the HEADer
               command. This is because the returned commands are intended to be sent back to the
-              instrument as a command string. The VERBOSE command can still be used to specify
+              instrument as a command string. The VERBose command can still be used to specify
               whether the returned headers should be abbreviated or full-length. This command is
-              identical to the LRN command.
+              identical to the ``*LRN?`` command.
 
         Usage:
             - Using the ``.query()`` method will send the ``SET?`` query.
@@ -3357,59 +3398,8 @@ class MSO5Commands:
 
         Sub-properties:
             - ``.enable``: The ``SOCKETServer:ENAble`` command.
-            - ``.port``: The ``SOCKETServer:PORT`` command.
-            - ``.protocol``: The ``SOCKETServer:PROTOCol`` command.
         """
         return self._socketserver
-
-    @property
-    def sre(self) -> Sre:
-        """Return the ``*SRE`` command.
-
-        Description:
-            - The ``*SRE`` (Service Request Enable) command sets and queries the bits in the Service
-              Request Enable Register. For more information, refer to Registers.
-
-        Usage:
-            - Using the ``.query()`` method will send the ``*SRE?`` query.
-            - Using the ``.verify(value)`` method will send the ``*SRE?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the ``*SRE value`` command.
-
-        SCPI Syntax:
-            ```
-            - *SRE <NR1>
-            - *SRE?
-            ```
-
-        Info:
-            - ``<NR1>`` is a value in the range from 0 through 255. The binary bits of the SRER are
-              set according to this value. Using an out-of-range value causes an execution error.
-              The power-on default for SRER is 0 if ``*PSC`` is 1. If ``*PSC`` is 0, the SRER
-              maintains the previous power cycle value through the current power cycle.
-        """
-        return self._sre
-
-    @property
-    def stb(self) -> Stb:
-        """Return the ``*STB`` command.
-
-        Description:
-            - The ``*STB?`` (Read Status Byte) query returns the contents of the Status Byte
-              Register (SBR) using the Master Summary Status (MSS) bit. For more information, refer
-              to Registers.
-
-        Usage:
-            - Using the ``.query()`` method will send the ``*STB?`` query.
-            - Using the ``.verify(value)`` method will send the ``*STB?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-
-        SCPI Syntax:
-            ```
-            - *STB?
-            ```
-        """
-        return self._stb
 
     @property
     def sv(self) -> Sv:
@@ -3436,33 +3426,11 @@ class MSO5Commands:
         return self._sv
 
     @property
-    def teksecure(self) -> Teksecure:
-        """Return the ``TEKSecure`` command.
-
-        Description:
-            - This command initializes, for the current user, both waveform and setup memories,
-              overwriting any previously stored data. Equivalent to invoking Teksecure from the
-              Utility menu. This is a time-consuming operation (3 to 5 minutes) and the instrument
-              is inoperable until the TekSecure operation is complete.
-
-        Usage:
-            - Using the ``.write()`` method will send the ``TEKSecure`` command.
-
-        SCPI Syntax:
-            ```
-            - TEKSecure
-            ```
-        """
-        return self._teksecure
-
-    @property
     def time(self) -> Time:
         """Return the ``TIMe`` command.
 
         Description:
-            - This command sets the time in the form ``hh:mm:ss`` where hh refers to a two-digit
-              hour number, mm refers to a two-digit minute number from 01 to 60, and ss refers to a
-              two-digit second number from 01 to 60.
+            - This command sets the time in the form ``hh:mm:ss``
 
         Usage:
             - Using the ``.query()`` method will send the ``TIMe?`` query.
@@ -3631,7 +3599,10 @@ class MSO5Commands:
         Description:
             - This command (no query form) unlocks the front panel controls only. To unlock the
               front panel controls and the touch screen use the LOCk NONe command. The command
-              ``TOUCHSCReen:STATE ON`` enables the touch screen only.
+              ``TOUCHSCReen:STATE ON`` enables the touch screen only.If the instrument is in the
+              Remote With Lockout State (RWLS), the UNLockcommand has no effect. For more
+              information, see the ANSI-IEEE Std 488.1-1987Standard Digital Interface for
+              Programmable Instrumentation, section 2.8.3 onRL State Descriptions.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``UNLock value`` command.
@@ -3640,9 +3611,6 @@ class MSO5Commands:
             ```
             - UNLock ALL
             ```
-
-        Info:
-            - ``ALL`` specifies that all front panel buttons and knobs are unlocked.
         """
         return self._unlock
 
@@ -3673,7 +3641,7 @@ class MSO5Commands:
 
         SCPI Syntax:
             ```
-            - VERBose {ON|OFF|<NR1>}
+            - VERBose {<NR1>|OFF|ON}
             ```
 
         Info:
@@ -3682,6 +3650,8 @@ class MSO5Commands:
               applicable setting queries.
             - ``ON`` sets the Verbose state to true, which returns full-length keywords for
               applicable setting queries.
+            - ``0`` returns minimum-length keywords for applicable setting queries; any other value
+              returns full-length keywords.
         """
         return self._verbose
 
@@ -3718,6 +3688,21 @@ class MSO5Commands:
             - ``.showequation``: The ``VISual:SHOWEQuation`` command.
         """
         return self._visual
+
+    @property
+    def vxi(self) -> Vxi:
+        """Return the ``VXI`` command tree.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``VXI?`` query.
+            - Using the ``.verify(value)`` method will send the ``VXI?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        Sub-properties:
+            - ``.enable``: The ``VXI:ENAble`` command.
+            - ``.port``: The ``VXI:PORT`` command tree.
+        """
+        return self._vxi
 
     @property
     def wai(self) -> Wai:
@@ -3766,7 +3751,7 @@ class MSO5Commands:
 
         Description:
             - This query-only command queries the waveform formatting data for the waveform
-              specified by the ``DATA:SOURCE`` command. The preamble components are considered to be
+              specified by the ``DATa:SOUrce`` command. The preamble components are considered to be
               of two types; formatting and interpretation. The formatting components are: ENCdg,
               ``BN_Fmt``, ``BYT_Or``, ``BYT_Nr``, ``BIT_Nr``. The interpretation components are
               derived from the ``DATa:SOUrce`` specified waveform.
@@ -3879,6 +3864,7 @@ class MSO5Mixin:
             - ``.header``: The ``HEADer`` command.
             - ``.histogram``: The ``HISTogram`` command tree.
             - ``.horizontal``: The ``HORizontal`` command.
+            - ``.hsinterface``: The ``HSInterface`` command tree.
             - ``.id``: The ``ID`` command.
             - ``.idn``: The ``*IDN`` command.
             - ``.license``: The ``LICense`` command.
@@ -3910,15 +3896,13 @@ class MSO5Mixin:
             - ``.save``: The ``SAVe`` command tree.
             - ``.saveon``: The ``SAVEON`` command tree.
             - ``.saveonevent``: The ``SAVEONEVent`` command tree.
+            - ``.scopeappreboot``: The ``SCOPEAppREBOOT`` command.
             - ``.search``: The ``SEARCH`` command tree.
             - ``.searchtable``: The ``SEARCHTABle`` command tree.
             - ``.select``: The ``SELect`` command tree.
             - ``.set``: The ``SET`` command.
             - ``.socketserver``: The ``SOCKETServer`` command tree.
-            - ``.sre``: The ``*SRE`` command.
-            - ``.stb``: The ``*STB`` command.
             - ``.sv``: The ``SV`` command tree.
-            - ``.teksecure``: The ``TEKSecure`` command.
             - ``.time``: The ``TIMe`` command.
             - ``.totaluptime``: The ``TOTaluptime`` command.
             - ``.touchscreen``: The ``TOUCHSCReen`` command tree.
@@ -3932,6 +3916,7 @@ class MSO5Mixin:
             - ``.verbose``: The ``VERBose`` command.
             - ``.vertical``: The ``VERTical`` command tree.
             - ``.visual``: The ``VISual`` command tree.
+            - ``.vxi``: The ``VXI`` command tree.
             - ``.wai``: The ``*WAI`` command.
             - ``.wavfrm``: The ``WAVFrm`` command.
             - ``.wfmoutpre``: The ``WFMOutpre`` command.

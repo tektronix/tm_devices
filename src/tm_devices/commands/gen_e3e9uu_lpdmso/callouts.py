@@ -10,7 +10,7 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - CALLOUTS:ADDNew <QString>
-    - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE {CH<x>}
+    - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE CH<x>
     - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE?
     - CALLOUTS:CALLOUT<x>:BOOKMark:XPOS <NR1>
     - CALLOUTS:CALLOUT<x>:BOOKMark:XPOS?
@@ -34,6 +34,7 @@ Commands and Queries:
     - CALLOUTS:CALLOUT<x>:TEXT?
     - CALLOUTS:CALLOUT<x>:TYPE {NOTE|ARROW|RECTANGLE|BOOKMARK}
     - CALLOUTS:CALLOUT<x>:TYPE?
+    - CALLOUTS:DELete <QString>
     ```
 """
 
@@ -48,6 +49,24 @@ from ..helpers import (
 
 if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.pi_control import PIControl
+
+
+class CalloutsDelete(SCPICmdWrite):
+    """The ``CALLOUTS:DELete`` command.
+
+    Description:
+        - This command deletes the specified callout. A Note is the default callout type.
+
+    Usage:
+        - Using the ``.write(value)`` method will send the ``CALLOUTS:DELete value`` command.
+
+    SCPI Syntax:
+        ```
+        - CALLOUTS:DELete <QString>
+        ```
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class CalloutsCalloutItemType(SCPICmdWrite, SCPICmdRead):
@@ -68,12 +87,6 @@ class CalloutsCalloutItemType(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:TYPE {NOTE|ARROW|RECTANGLE|BOOKMARK}
         - CALLOUTS:CALLOUT<x>:TYPE?
         ```
-
-    Info:
-        - ``NOTE`` specifies callout type as note.
-        - ``ARROW`` specifies callout type as arrow.
-        - ``RECTANGLE`` specifies callout type as rectangle.
-        - ``BOOKMARK`` specifies callout type as bookmark.
     """
 
 
@@ -95,9 +108,6 @@ class CalloutsCalloutItemText(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:TEXT <QString>
         - CALLOUTS:CALLOUT<x>:TEXT?
         ```
-
-    Info:
-        - ``<QString>`` specifies the callout text.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -121,10 +131,6 @@ class CalloutsCalloutItemFontUnderline(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:FONT:UNDERLine {1|0}
         - CALLOUTS:CALLOUT<x>:FONT:UNDERLine?
         ```
-
-    Info:
-        - ``1`` underlines the callout text.
-        - ``0`` does not underline the callout text.
     """
 
 
@@ -146,11 +152,6 @@ class CalloutsCalloutItemFontType(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:FONT:TYPE <QString>
         - CALLOUTS:CALLOUT<x>:FONT:TYPE?
         ```
-
-    Info:
-        - ``<QString>`` specifies the type of font for the callout text. The available font types
-          include: DejaVu Sans, DejaVu Sans Mono, DejaVu Serif, Frutiger LT Std, Monospace, Sans
-          Serif, Serif, Ubuntu, Ubuntu Condensed, and Ubuntu Mono.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -174,9 +175,6 @@ class CalloutsCalloutItemFontSize(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:FONT:SIZE <NR1>
         - CALLOUTS:CALLOUT<x>:FONT:SIZE?
         ```
-
-    Info:
-        - ``<NR1>`` specifies the font size in points.
     """
 
 
@@ -198,10 +196,6 @@ class CalloutsCalloutItemFontItalic(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:FONT:ITALIC {1|0}
         - CALLOUTS:CALLOUT<x>:FONT:ITALIC?
         ```
-
-    Info:
-        - ``1`` specifies the callout font style as italic.
-        - ``0`` does not specify the font style as italic.
     """
 
 
@@ -223,10 +217,6 @@ class CalloutsCalloutItemFontBold(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:FONT:BOLD {1|0}
         - CALLOUTS:CALLOUT<x>:FONT:BOLD?
         ```
-
-    Info:
-        - ``1`` specifies the callout font weight as bold.
-        - ``0`` specifies the callout font weight as normal.
     """
 
 
@@ -273,10 +263,6 @@ class CalloutsCalloutItemFont(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:FONT:BOLD {1|0}
             - CALLOUTS:CALLOUT<x>:FONT:BOLD?
             ```
-
-        Info:
-            - ``1`` specifies the callout font weight as bold.
-            - ``0`` specifies the callout font weight as normal.
         """
         return self._bold
 
@@ -300,10 +286,6 @@ class CalloutsCalloutItemFont(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:FONT:ITALIC {1|0}
             - CALLOUTS:CALLOUT<x>:FONT:ITALIC?
             ```
-
-        Info:
-            - ``1`` specifies the callout font style as italic.
-            - ``0`` does not specify the font style as italic.
         """
         return self._italic
 
@@ -326,9 +308,6 @@ class CalloutsCalloutItemFont(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:FONT:SIZE <NR1>
             - CALLOUTS:CALLOUT<x>:FONT:SIZE?
             ```
-
-        Info:
-            - ``<NR1>`` specifies the font size in points.
         """
         return self._size
 
@@ -351,11 +330,6 @@ class CalloutsCalloutItemFont(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:FONT:TYPE <QString>
             - CALLOUTS:CALLOUT<x>:FONT:TYPE?
             ```
-
-        Info:
-            - ``<QString>`` specifies the type of font for the callout text. The available font
-              types include: DejaVu Sans, DejaVu Sans Mono, DejaVu Serif, Frutiger LT Std,
-              Monospace, Sans Serif, Serif, Ubuntu, Ubuntu Condensed, and Ubuntu Mono.
         """
         return self._type
 
@@ -380,10 +354,6 @@ class CalloutsCalloutItemFont(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:FONT:UNDERLine {1|0}
             - CALLOUTS:CALLOUT<x>:FONT:UNDERLine?
             ```
-
-        Info:
-            - ``1`` underlines the callout text.
-            - ``0`` does not underline the callout text.
         """
         return self._underline
 
@@ -408,9 +378,6 @@ class CalloutsCalloutItemDisplaypositionY(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:Y <NR1>
         - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:Y?
         ```
-
-    Info:
-        - ``<NR1>`` specifies the callout vertical display position.
     """
 
 
@@ -434,9 +401,6 @@ class CalloutsCalloutItemDisplaypositionX(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:X <NR1>
         - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:X?
         ```
-
-    Info:
-        - ``<NR1>`` specifies the callout horizontal display position.
     """
 
 
@@ -480,9 +444,6 @@ class CalloutsCalloutItemDisplayposition(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:X <NR1>
             - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:X?
             ```
-
-        Info:
-            - ``<NR1>`` specifies the callout horizontal display position.
         """
         return self._x
 
@@ -507,9 +468,6 @@ class CalloutsCalloutItemDisplayposition(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:Y <NR1>
             - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:Y?
             ```
-
-        Info:
-            - ``<NR1>`` specifies the callout vertical display position.
         """
         return self._y
 
@@ -532,9 +490,6 @@ class CalloutsCalloutItemColor(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:COLOR <QString>
         - CALLOUTS:CALLOUT<x>:COLOR?
         ```
-
-    Info:
-        - ``<QString>`` specifies the callout text color using hexadecimal color values.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -558,9 +513,6 @@ class CalloutsCalloutItemBookmarkXpos(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:BOOKMark:XPOS <NR1>
         - CALLOUTS:CALLOUT<x>:BOOKMark:XPOS?
         ```
-
-    Info:
-        - ``<NR1>`` specifies the location of the bookmark linked to the source waveform in X-axis.
     """
 
 
@@ -580,15 +532,9 @@ class CalloutsCalloutItemBookmarkSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE {CH<x>}
+        - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE CH<x>
         - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE?
         ```
-
-    Info:
-        - ``CH1`` specifies the bookmark callout source as Ch1.
-        - ``CH2`` specifies the bookmark callout source as Ch2.
-        - ``CH3`` specifies the bookmark callout source as Ch3.
-        - ``CH4`` specifies the bookmark callout source as Ch4.
     """
 
 
@@ -628,15 +574,9 @@ class CalloutsCalloutItemBookmark(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE {CH<x>}
+            - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE CH<x>
             - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE?
             ```
-
-        Info:
-            - ``CH1`` specifies the bookmark callout source as Ch1.
-            - ``CH2`` specifies the bookmark callout source as Ch2.
-            - ``CH3`` specifies the bookmark callout source as Ch3.
-            - ``CH4`` specifies the bookmark callout source as Ch4.
         """
         return self._source
 
@@ -661,10 +601,6 @@ class CalloutsCalloutItemBookmark(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:BOOKMark:XPOS <NR1>
             - CALLOUTS:CALLOUT<x>:BOOKMark:XPOS?
             ```
-
-        Info:
-            - ``<NR1>`` specifies the location of the bookmark linked to the source waveform in
-              X-axis.
         """
         return self._xpos
 
@@ -731,9 +667,6 @@ class CalloutsCalloutItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:COLOR <QString>
             - CALLOUTS:CALLOUT<x>:COLOR?
             ```
-
-        Info:
-            - ``<QString>`` specifies the callout text color using hexadecimal color values.
         """
         return self._color
 
@@ -791,9 +724,6 @@ class CalloutsCalloutItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:TEXT <QString>
             - CALLOUTS:CALLOUT<x>:TEXT?
             ```
-
-        Info:
-            - ``<QString>`` specifies the callout text.
         """
         return self._text
 
@@ -816,12 +746,6 @@ class CalloutsCalloutItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:TYPE {NOTE|ARROW|RECTANGLE|BOOKMARK}
             - CALLOUTS:CALLOUT<x>:TYPE?
             ```
-
-        Info:
-            - ``NOTE`` specifies callout type as note.
-            - ``ARROW`` specifies callout type as arrow.
-            - ``RECTANGLE`` specifies callout type as rectangle.
-            - ``BOOKMARK`` specifies callout type as bookmark.
         """
         return self._type
 
@@ -839,10 +763,6 @@ class CalloutsAddnew(SCPICmdWrite):
         ```
         - CALLOUTS:ADDNew <QString>
         ```
-
-    Info:
-        - ``<QString>`` specifies the callout. The argument is of the form 'CALLOUT<NR1>', where
-          <NR1> is a number value ≥ 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -859,6 +779,7 @@ class Callouts(SCPICmdRead):
     Properties:
         - ``.addnew``: The ``CALLOUTS:ADDNew`` command.
         - ``.callout``: The ``CALLOUTS:CALLOUT<x>`` command tree.
+        - ``.delete``: The ``CALLOUTS:DELete`` command.
     """
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "CALLOUTS") -> None:
@@ -867,6 +788,7 @@ class Callouts(SCPICmdRead):
         self._callout: Dict[int, CalloutsCalloutItem] = DefaultDictPassKeyToFactory(
             lambda x: CalloutsCalloutItem(device, f"{self._cmd_syntax}:CALLOUT{x}")
         )
+        self._delete = CalloutsDelete(device, f"{self._cmd_syntax}:DELete")
 
     @property
     def addnew(self) -> CalloutsAddnew:
@@ -882,10 +804,6 @@ class Callouts(SCPICmdRead):
             ```
             - CALLOUTS:ADDNew <QString>
             ```
-
-        Info:
-            - ``<QString>`` specifies the callout. The argument is of the form 'CALLOUT<NR1>', where
-              <NR1> is a number value ≥ 1.
         """
         return self._addnew
 
@@ -907,3 +825,20 @@ class Callouts(SCPICmdRead):
             - ``.type``: The ``CALLOUTS:CALLOUT<x>:TYPE`` command.
         """
         return self._callout
+
+    @property
+    def delete(self) -> CalloutsDelete:
+        """Return the ``CALLOUTS:DELete`` command.
+
+        Description:
+            - This command deletes the specified callout. A Note is the default callout type.
+
+        Usage:
+            - Using the ``.write(value)`` method will send the ``CALLOUTS:DELete value`` command.
+
+        SCPI Syntax:
+            ```
+            - CALLOUTS:DELete <QString>
+            ```
+        """
+        return self._delete

@@ -37,7 +37,7 @@ class ApplicationActivate(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` is the name of the application that you want to start. Enter the application
+        - ``<QString>`` is the name of the application that you want to start. Enter theapplication
           name exactly as it appears in the oscilloscope Applications menu.
     """
 
@@ -80,7 +80,7 @@ class Application(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the name of the application that you want to start. Enter the
-              application name exactly as it appears in the oscilloscope Applications menu.
+            - ``<QString>`` is the name of the application that you want to start. Enter
+              theapplication name exactly as it appears in the oscilloscope Applications menu.
         """
         return self._activate

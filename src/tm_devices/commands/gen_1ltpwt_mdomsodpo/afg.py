@@ -92,8 +92,7 @@ class AfgSquareDuty(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` is the floating point number that represents the AFG duty cycle, as a
-          percentage.
+        - ``NR3`` is a floating point number that represents the AFG duty cycle as a percentage.
     """
 
 
@@ -134,8 +133,7 @@ class AfgSquare(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` is the floating point number that represents the AFG duty cycle, as a
-              percentage.
+            - ``NR3`` is a floating point number that represents the AFG duty cycle as a percentage.
         """
         return self._duty
 
@@ -160,8 +158,7 @@ class AfgRampSymmetry(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` is the floating point number that represents the AFG ramp symmetry, as a
-          percentage.
+        - ``NR3`` is a floating point number that represents the AFG ramp symmetry as a percentage.
     """
 
 
@@ -202,7 +199,7 @@ class AfgRamp(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` is the floating point number that represents the AFG ramp symmetry, as a
+            - ``NR3`` is a floating point number that represents the AFG ramp symmetry as a
               percentage.
         """
         return self._symmetry
@@ -227,7 +224,7 @@ class AfgPulseWidth(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` is the floating point number that represents the pulse width, in seconds.
+        - ``NR3`` is the floating point number that represents the pulse width, in seconds.
     """
 
 
@@ -267,7 +264,7 @@ class AfgPulse(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` is the floating point number that represents the pulse width, in seconds.
+            - ``NR3`` is the floating point number that represents the pulse width, in seconds.
         """
         return self._width
 
@@ -534,7 +531,7 @@ class AfgNoiseaddPercent(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` is the floating point number that represents the AFG additive noise level, as a
+        - ``NR3`` is the floating point number that represents the AFG additive noise level as a
           percentage.
     """
 
@@ -579,8 +576,8 @@ class AfgNoiseadd(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` is the floating point number that represents the AFG additive noise level,
-              as a percentage.
+            - ``NR3`` is the floating point number that represents the AFG additive noise level as a
+              percentage.
         """
         return self._percent
 
@@ -630,7 +627,7 @@ class AfgLowlevel(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` is the floating point number that represents the AFG low level value, in volts.
+        - ``NR3`` is the floating point number that represents the AFG low level value, in volts.
     """
 
 
@@ -719,8 +716,8 @@ class AfgFunction(SCPICmdWrite, SCPICmdRead):
         - ``PULSe``
         - ``RAMP``
         - ``NOISe``
-        - ``DC`` . The DC level is controlled by ``AFG:OFFSET``.
-        - ``SINC`` (Sin(x)/x).
+        - ``DC`` - The DC level is controlled by ``AFG:OFFSET``.
+        - ``SINC (Sin(x)/x)``
         - ``GAUSsian``
         - ``LORENtz``
         - ``ERISe``
@@ -1509,8 +1506,8 @@ class Afg(SCPICmdRead):
             - ``PULSe``
             - ``RAMP``
             - ``NOISe``
-            - ``DC`` . The DC level is controlled by ``AFG:OFFSET``.
-            - ``SINC`` (Sin(x)/x).
+            - ``DC`` - The DC level is controlled by ``AFG:OFFSET``.
+            - ``SINC (Sin(x)/x)``
             - ``GAUSsian``
             - ``LORENtz``
             - ``ERISe``
@@ -1607,7 +1604,7 @@ class Afg(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` is the floating point number that represents the AFG low level value, in
+            - ``NR3`` is the floating point number that represents the AFG low level value, in
               volts.
         """
         return self._lowlevel

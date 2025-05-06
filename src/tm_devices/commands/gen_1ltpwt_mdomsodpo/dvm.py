@@ -40,7 +40,7 @@ class DvmSource(SCPICmdWrite, SCPICmdRead):
     """The ``DVM:SOUrce`` command.
 
     Description:
-        - This command sets (or queries) the source for the DVM.
+        - Sets (or queries) the source for the Digital Voltmeter: Channel 1 - 4.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:SOUrce?`` query.
@@ -92,7 +92,8 @@ class DvmMeasurementValue(SCPICmdRead):
     """The ``DVM:MEASUrement:VALue`` command.
 
     Description:
-        - Returns the DVM readout value (the largest displayed value at the top of the DVM screen).
+        - Returns the Digital Voltmeter value. Any qualifier, such as 'Measurement warning, Clipping
+          positive', is automatically set as an error event.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:MEASUrement:VALue?`` query.
@@ -110,8 +111,10 @@ class DvmMeasurementInfminimum(SCPICmdRead):
     """The ``DVM:MEASUrement:INFMINimum`` command.
 
     Description:
-        - Returns the minimum readout value of the DVM over the entire time that the DVM has been on
-          since the last change using the ``DVM:MODE`` or ``DVM:SOURCE`` commands or DVM RESET.
+        - Returns the minimum readout value of the DVM function over the entire time that the DVM
+          has been on since the last change using the ``DVM:MODE`` or ``DVM:SOURCE`` commands or DVM
+          RESET. Any qualifier, such as 'Measurement warning, Clipping positive', is automatically
+          set as an error event.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:MEASUrement:INFMINimum?`` query.
@@ -130,7 +133,9 @@ class DvmMeasurementInfmaximum(SCPICmdRead):
 
     Description:
         - Returns the maximum DVM readout value over the entire time that the DVM has been on since
-          the last change using the ``DVM:MODE`` or ``DVM:SOURCE`` commands or DVM RESET.
+          the last change using the ``DVM:MODE`` or ``DVM:SOURCE`` commands or DVM RESET. Any
+          qualifier, such as 'Measurement warning, Clipping positive', is automatically set as an
+          error event.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:MEASUrement:INFMAXimum?`` query.
@@ -148,8 +153,9 @@ class DvmMeasurementHistoryMinimum(SCPICmdRead):
     """The ``DVM:MEASUrement:HIStory:MINImum`` command.
 
     Description:
-        - Returns the minimum readout value for the DVM over the history period. The history period
-          is a constant period of 5 seconds.
+        - Returns the minimum readout value for the DVM function over the history period. Any
+          qualifier, such as 'Measurement warning, Clipping positive', is automatically set as an
+          error event.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:MEASUrement:HIStory:MINImum?`` query.
@@ -167,8 +173,9 @@ class DvmMeasurementHistoryMaximum(SCPICmdRead):
     """The ``DVM:MEASUrement:HIStory:MAXimum`` command.
 
     Description:
-        - Returns the maximum readout value for the DVM function over the history period. The
-          history period is a constant period of 5 seconds.
+        - Returns the maximum readout value for the DVM function over the history period. Any
+          qualifier, such as 'Measurement warning, Clipping positive', is automatically set as an
+          error event.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:MEASUrement:HIStory:MAXimum?`` query.
@@ -186,8 +193,9 @@ class DvmMeasurementHistoryAverage(SCPICmdRead):
     """The ``DVM:MEASUrement:HIStory:AVErage`` command.
 
     Description:
-        - Returns the average DVM readout value over the history period. The history period is a
-          constant period of 5 seconds.
+        - Returns the average readout value for the Digital Voltmeter function over the history
+          period. Any qualifier, such as 'Measurement warning, Clipping positive', is automatically
+          set as an error event.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:MEASUrement:HIStory:AVErage?`` query.
@@ -226,8 +234,9 @@ class DvmMeasurementHistory(SCPICmdRead):
         """Return the ``DVM:MEASUrement:HIStory:AVErage`` command.
 
         Description:
-            - Returns the average DVM readout value over the history period. The history period is a
-              constant period of 5 seconds.
+            - Returns the average readout value for the Digital Voltmeter function over the history
+              period. Any qualifier, such as 'Measurement warning, Clipping positive', is
+              automatically set as an error event.
 
         Usage:
             - Using the ``.query()`` method will send the ``DVM:MEASUrement:HIStory:AVErage?``
@@ -247,8 +256,9 @@ class DvmMeasurementHistory(SCPICmdRead):
         """Return the ``DVM:MEASUrement:HIStory:MAXimum`` command.
 
         Description:
-            - Returns the maximum readout value for the DVM function over the history period. The
-              history period is a constant period of 5 seconds.
+            - Returns the maximum readout value for the DVM function over the history period. Any
+              qualifier, such as 'Measurement warning, Clipping positive', is automatically set as
+              an error event.
 
         Usage:
             - Using the ``.query()`` method will send the ``DVM:MEASUrement:HIStory:MAXimum?``
@@ -268,8 +278,9 @@ class DvmMeasurementHistory(SCPICmdRead):
         """Return the ``DVM:MEASUrement:HIStory:MINImum`` command.
 
         Description:
-            - Returns the minimum readout value for the DVM over the history period. The history
-              period is a constant period of 5 seconds.
+            - Returns the minimum readout value for the DVM function over the history period. Any
+              qualifier, such as 'Measurement warning, Clipping positive', is automatically set as
+              an error event.
 
         Usage:
             - Using the ``.query()`` method will send the ``DVM:MEASUrement:HIStory:MINImum?``
@@ -289,7 +300,8 @@ class DvmMeasurementFrequency(SCPICmdRead):
     """The ``DVM:MEASUrement:FREQuency`` command.
 
     Description:
-        - This command returns the current frequency value for the DVM.
+        - Returns the current frequency value for the Digital Voltmeter. Any qualifier, such as
+          'Measurement warning, Clipping positive', is automatically set as an error event.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:MEASUrement:FREQuency?`` query.
@@ -332,7 +344,8 @@ class DvmMeasurement(SCPICmdRead):
         """Return the ``DVM:MEASUrement:FREQuency`` command.
 
         Description:
-            - This command returns the current frequency value for the DVM.
+            - Returns the current frequency value for the Digital Voltmeter. Any qualifier, such as
+              'Measurement warning, Clipping positive', is automatically set as an error event.
 
         Usage:
             - Using the ``.query()`` method will send the ``DVM:MEASUrement:FREQuency?`` query.
@@ -369,6 +382,8 @@ class DvmMeasurement(SCPICmdRead):
         Description:
             - Returns the maximum DVM readout value over the entire time that the DVM has been on
               since the last change using the ``DVM:MODE`` or ``DVM:SOURCE`` commands or DVM RESET.
+              Any qualifier, such as 'Measurement warning, Clipping positive', is automatically set
+              as an error event.
 
         Usage:
             - Using the ``.query()`` method will send the ``DVM:MEASUrement:INFMAXimum?`` query.
@@ -387,9 +402,10 @@ class DvmMeasurement(SCPICmdRead):
         """Return the ``DVM:MEASUrement:INFMINimum`` command.
 
         Description:
-            - Returns the minimum readout value of the DVM over the entire time that the DVM has
-              been on since the last change using the ``DVM:MODE`` or ``DVM:SOURCE`` commands or DVM
-              RESET.
+            - Returns the minimum readout value of the DVM function over the entire time that the
+              DVM has been on since the last change using the ``DVM:MODE`` or ``DVM:SOURCE``
+              commands or DVM RESET. Any qualifier, such as 'Measurement warning, Clipping
+              positive', is automatically set as an error event.
 
         Usage:
             - Using the ``.query()`` method will send the ``DVM:MEASUrement:INFMINimum?`` query.
@@ -408,8 +424,8 @@ class DvmMeasurement(SCPICmdRead):
         """Return the ``DVM:MEASUrement:VALue`` command.
 
         Description:
-            - Returns the DVM readout value (the largest displayed value at the top of the DVM
-              screen).
+            - Returns the Digital Voltmeter value. Any qualifier, such as 'Measurement warning,
+              Clipping positive', is automatically set as an error event.
 
         Usage:
             - Using the ``.query()`` method will send the ``DVM:MEASUrement:VALue?`` query.
@@ -452,7 +468,7 @@ class DvmAutorange(SCPICmdWrite, SCPICmdRead):
     """The ``DVM:AUTORange`` command.
 
     Description:
-        - Sets (or queries) the autorange state for the Digital Voltmeter.
+        - Sets (or queries) the auto range state for the Digital Voltmeter.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:AUTORange?`` query.
@@ -467,8 +483,8 @@ class DvmAutorange(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``1`` or ON turns on autorange for the Digital Voltmeter.
-        - ``0`` or OFF turns autorange off.
+        - ``1`` or ON turns on the auto range state for the Digital Voltmeter.
+        - ``0`` or OFF turns it off.
     """
 
 
@@ -507,7 +523,7 @@ class Dvm(SCPICmdWrite, SCPICmdRead):
         """Return the ``DVM:AUTORange`` command.
 
         Description:
-            - Sets (or queries) the autorange state for the Digital Voltmeter.
+            - Sets (or queries) the auto range state for the Digital Voltmeter.
 
         Usage:
             - Using the ``.query()`` method will send the ``DVM:AUTORange?`` query.
@@ -522,8 +538,8 @@ class Dvm(SCPICmdWrite, SCPICmdRead):
             ```
 
         Info:
-            - ``1`` or ON turns on autorange for the Digital Voltmeter.
-            - ``0`` or OFF turns autorange off.
+            - ``1`` or ON turns on the auto range state for the Digital Voltmeter.
+            - ``0`` or OFF turns it off.
         """
         return self._autorange
 
@@ -605,7 +621,7 @@ class Dvm(SCPICmdWrite, SCPICmdRead):
         """Return the ``DVM:SOUrce`` command.
 
         Description:
-            - This command sets (or queries) the source for the DVM.
+            - Sets (or queries) the source for the Digital Voltmeter: Channel 1 - 4.
 
         Usage:
             - Using the ``.query()`` method will send the ``DVM:SOUrce?`` query.

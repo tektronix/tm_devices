@@ -332,15 +332,6 @@ class PlotPlotItemNumbins(SCPICmdWrite, SCPICmdRead):
         - PLOT:PLOT<x>:NUMBins {TWENtyfive|FIFTY|HUNdred|TWOFifty|FIVEHundred|TWOThousand|MAXimum}
         - PLOT:PLOT<x>:NUMBins?
         ```
-
-    Info:
-        - ``TWENtyfive`` sets the number of bins to 25.
-        - ``FIFTY`` sets the number of bins to 50.
-        - ``HUNdred`` sets the number of bins to 100.
-        - ``TWOFifty`` sets the number of bins to 250.
-        - ``FIVEHundred`` sets the number of bins to 500.
-        - ``TWOThousand`` sets the number of bins to 2000.
-        - ``MAXimum`` sets the number of bins to the maximum value.
     """
 
 
@@ -1882,15 +1873,6 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - PLOT:PLOT<x>:NUMBins {TWENtyfive|FIFTY|HUNdred|TWOFifty|FIVEHundred|TWOThousand|MAXimum}
             - PLOT:PLOT<x>:NUMBins?
             ```
-
-        Info:
-            - ``TWENtyfive`` sets the number of bins to 25.
-            - ``FIFTY`` sets the number of bins to 50.
-            - ``HUNdred`` sets the number of bins to 100.
-            - ``TWOFifty`` sets the number of bins to 250.
-            - ``FIVEHundred`` sets the number of bins to 500.
-            - ``TWOThousand`` sets the number of bins to 2000.
-            - ``MAXimum`` sets the number of bins to the maximum value.
         """  # noqa: E501
         return self._numbins
 

@@ -3477,8 +3477,7 @@ class BusBItemRs232cDatabits(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:RS232C:DATABits`` command.
 
     Description:
-        - This command sets or queries the RS-232C data width for bus<x>, where the bus number is
-          specified by x.
+        - This command specifies the number of bits in the data frame for the RS-232 bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:RS232C:DATABits?`` query.
@@ -3494,10 +3493,8 @@ class BusBItemRs232cDatabits(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
-        - ``7`` specifies the number of bits as 7 in the RS-232C data frame.
-        - ``8`` specifies the number of bits as 8 in the RS-232C data frame.
-        - ``9`` specifies the number of bits as 9 in the RS-232C data frame.
+        - ``7`` specifies seven bits in the RS-232 data frame.
+        - ``8`` specifies eight bits in the RS-232 data frame.
     """
 
 
@@ -3588,8 +3585,7 @@ class BusBItemRs232c(SCPICmdRead):
         """Return the ``BUS:B<x>:RS232C:DATABits`` command.
 
         Description:
-            - This command sets or queries the RS-232C data width for bus<x>, where the bus number
-              is specified by x.
+            - This command specifies the number of bits in the data frame for the RS-232 bus.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:RS232C:DATABits?`` query.
@@ -3605,10 +3601,8 @@ class BusBItemRs232c(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
-            - ``7`` specifies the number of bits as 7 in the RS-232C data frame.
-            - ``8`` specifies the number of bits as 8 in the RS-232C data frame.
-            - ``9`` specifies the number of bits as 9 in the RS-232C data frame.
+            - ``7`` specifies seven bits in the RS-232 data frame.
+            - ``8`` specifies eight bits in the RS-232 data frame.
         """
         return self._databits
 
@@ -4159,8 +4153,8 @@ class BusBItemMil1553bResponsetimeMinimum(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:MIL1553B:RESPonsetime:MINimum`` command.
 
     Description:
-        - This command sets or queries the minimum response time to a valid command issued for the
-          specified MIL-STD-1553 bus. The bus is specified by x.
+        - This command specifies the minimum response time to a valid command issued for the
+          MIL-STD-1553 bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime:MINimum?``
@@ -4178,8 +4172,7 @@ class BusBItemMil1553bResponsetimeMinimum(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
-        - ``<NR3>`` is a floating point number that specifies the minimum response time, in seconds.
+        - ``<NR3>`` is a floating point number that specifies the minimum response time in seconds.
     """
 
 
@@ -4187,8 +4180,8 @@ class BusBItemMil1553bResponsetimeMaximum(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum`` command.
 
     Description:
-        - This command sets or queries the maximum response time to a valid command issued for the
-          specified MIL-STD-1553 bus. The bus is specified by x.
+        - This command specifies the maximum response time to a valid command issued for the
+          MIL-STD-1553 bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum?``
@@ -4206,7 +4199,6 @@ class BusBItemMil1553bResponsetimeMaximum(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
         - ``<NR3>`` is a floating point number that specifies the maximum response time, in seconds.
     """
 
@@ -4218,9 +4210,6 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime?``
           query and raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.maximum``: The ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum`` command.
@@ -4237,8 +4226,8 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
         """Return the ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum`` command.
 
         Description:
-            - This command sets or queries the maximum response time to a valid command issued for
-              the specified MIL-STD-1553 bus. The bus is specified by x.
+            - This command specifies the maximum response time to a valid command issued for the
+              MIL-STD-1553 bus.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -4256,7 +4245,6 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
             - ``<NR3>`` is a floating point number that specifies the maximum response time, in
               seconds.
         """
@@ -4267,8 +4255,8 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
         """Return the ``BUS:B<x>:MIL1553B:RESPonsetime:MINimum`` command.
 
         Description:
-            - This command sets or queries the minimum response time to a valid command issued for
-              the specified MIL-STD-1553 bus. The bus is specified by x.
+            - This command specifies the minimum response time to a valid command issued for the
+              MIL-STD-1553 bus.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -4286,8 +4274,7 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
-            - ``<NR3>`` is a floating point number that specifies the minimum response time, in
+            - ``<NR3>`` is a floating point number that specifies the minimum response time in
               seconds.
         """
         return self._minimum
@@ -4297,8 +4284,7 @@ class BusBItemMil1553bPolarity(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:MIL1553B:POLarity`` command.
 
     Description:
-        - This command sets or queries the source polarity for the specified MIL-STD-1553 bus. The
-          bus is specified by x.
+        - This command sets the polarity of the MIL-STD-1553 bus (normal or inverted).
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:POLarity?`` query.
@@ -4314,9 +4300,8 @@ class BusBItemMil1553bPolarity(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
-        - ``NORMal`` specifies normal polarity.
-        - ``INVERTed`` specifies inverted polarity.
+        - ``NORMal`` - A high-low transition represents a 1 on the Data+ line.
+        - ``INVERTed`` - A high-low transition represents a 0 on the Data+ line.
     """
 
 
@@ -4327,9 +4312,6 @@ class BusBItemMil1553b(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B?`` query and raise
           an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:MIL1553B:POLarity`` command.
@@ -4350,8 +4332,7 @@ class BusBItemMil1553b(SCPICmdRead):
         """Return the ``BUS:B<x>:MIL1553B:POLarity`` command.
 
         Description:
-            - This command sets or queries the source polarity for the specified MIL-STD-1553 bus.
-              The bus is specified by x.
+            - This command sets the polarity of the MIL-STD-1553 bus (normal or inverted).
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:POLarity?`` query.
@@ -4367,9 +4348,8 @@ class BusBItemMil1553b(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
-            - ``NORMal`` specifies normal polarity.
-            - ``INVERTed`` specifies inverted polarity.
+            - ``NORMal`` - A high-low transition represents a 1 on the Data+ line.
+            - ``INVERTed`` - A high-low transition represents a 0 on the Data+ line.
         """
         return self._polarity
 
@@ -4381,9 +4361,6 @@ class BusBItemMil1553b(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime?``
               query and raise an AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.maximum``: The ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum`` command.
@@ -5304,8 +5281,7 @@ class BusBItemFlexraySignal(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:FLEXray:SIGnal`` command.
 
     Description:
-        - This command sets or queries the FlexRay signal type for the specified bus. The bus number
-          is specified by x.
+        - Specifies the FlexRay bus standard.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:FLEXray:SIGnal?`` query.
@@ -5321,10 +5297,9 @@ class BusBItemFlexraySignal(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
-        - ``BDIFFBP`` sets the FlexRay signal type to BDIFFBP.
-        - ``BM`` sets the FlexRay signal type to BM.
-        - ``TXRX`` sets the FlexRay signal type to TXRX.
+        - ``BDIFFBP`` sets the FlexRay standard to BDIFFBP.
+        - ``BM`` sets the FlexRay standard to BM.
+        - ``TXRX`` sets the FlexRay standard to TXRX.
     """
 
 
@@ -5332,8 +5307,7 @@ class BusBItemFlexrayChannel(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:FLEXray:CHannel`` command.
 
     Description:
-        - This command sets or queries the FlexRay channel type for the specified bus. The bus
-          number is specified by x.
+        - Specifies the FlexRay bus ID format.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:FLEXray:CHannel?`` query.
@@ -5349,9 +5323,8 @@ class BusBItemFlexrayChannel(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
-        - ``A`` specifies the A channel.
-        - ``B`` specifies the B channel.
+        - ``A`` sets the FlexRay ID format to channel A.
+        - ``B`` sets the FlexRay ID format to channel B.
     """
 
 
@@ -5433,8 +5406,7 @@ class BusBItemFlexray(SCPICmdRead):
         """Return the ``BUS:B<x>:FLEXray:CHannel`` command.
 
         Description:
-            - This command sets or queries the FlexRay channel type for the specified bus. The bus
-              number is specified by x.
+            - Specifies the FlexRay bus ID format.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:FLEXray:CHannel?`` query.
@@ -5450,9 +5422,8 @@ class BusBItemFlexray(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
-            - ``A`` specifies the A channel.
-            - ``B`` specifies the B channel.
+            - ``A`` sets the FlexRay ID format to channel A.
+            - ``B`` sets the FlexRay ID format to channel B.
         """
         return self._channel
 
@@ -5461,8 +5432,7 @@ class BusBItemFlexray(SCPICmdRead):
         """Return the ``BUS:B<x>:FLEXray:SIGnal`` command.
 
         Description:
-            - This command sets or queries the FlexRay signal type for the specified bus. The bus
-              number is specified by x.
+            - Specifies the FlexRay bus standard.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:FLEXray:SIGnal?`` query.
@@ -5478,10 +5448,9 @@ class BusBItemFlexray(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
-            - ``BDIFFBP`` sets the FlexRay signal type to BDIFFBP.
-            - ``BM`` sets the FlexRay signal type to BM.
-            - ``TXRX`` sets the FlexRay signal type to TXRX.
+            - ``BDIFFBP`` sets the FlexRay standard to BDIFFBP.
+            - ``BM`` sets the FlexRay standard to BM.
+            - ``TXRX`` sets the FlexRay standard to TXRX.
         """
         return self._signal
 
@@ -6527,8 +6496,7 @@ class BusBItemAudioWordselPolarity(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:AUDio:WORDSel:POLarity`` command.
 
     Description:
-        - This command sets or queries the word select source polarity for the specified audio bus.
-          The bus is specified by x.
+        - Specifies the word select polarity for the AUDIO bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:WORDSel:POLarity?`` query.
@@ -6544,9 +6512,8 @@ class BusBItemAudioWordselPolarity(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
-        - ``NORMal`` specifies positive polarity.
-        - ``INVERTed`` specifies negative polarity.
+        - ``NORMal`` specifies positive WORDSel polarity.
+        - ``INVERTed`` specifies negative WORDSel polarity.
     """
 
 
@@ -6557,9 +6524,6 @@ class BusBItemAudioWordsel(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query and
           raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:AUDio:WORDSel:POLarity`` command.
@@ -6576,8 +6540,7 @@ class BusBItemAudioWordsel(SCPICmdRead):
         """Return the ``BUS:B<x>:AUDio:WORDSel:POLarity`` command.
 
         Description:
-            - This command sets or queries the word select source polarity for the specified audio
-              bus. The bus is specified by x.
+            - Specifies the word select polarity for the AUDIO bus.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:WORDSel:POLarity?``
@@ -6594,9 +6557,8 @@ class BusBItemAudioWordsel(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
-            - ``NORMal`` specifies positive polarity.
-            - ``INVERTed`` specifies negative polarity.
+            - ``NORMal`` specifies positive WORDSel polarity.
+            - ``INVERTed`` specifies negative WORDSel polarity.
         """
         return self._polarity
 
@@ -6632,8 +6594,7 @@ class BusBItemAudioType(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:AUDio:TYPe`` command.
 
     Description:
-        - This command sets or queries the audio format (type) for the specified audio bus. The bus
-          is specified by x.
+        - Specifies the audio format (type) for the AUDIO bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:TYPe?`` query.
@@ -6648,10 +6609,9 @@ class BusBItemAudioType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
         - ``I2S`` specifies the I2S audio format.
         - ``LJ`` specifies the left-justified audio format.
-        - ``RJ`` specifies the right-justified audio format.
+        - ``RJ`` specifies the right justified audio format.
         - ``TDM`` specifies the time-division multiplexing audio format.
     """
 
@@ -6786,8 +6746,7 @@ class BusBItemAudioFrameSize(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:AUDio:FRAME:SIZe`` command.
 
     Description:
-        - This command sets or queries the number of audio channels in each frame for the specified
-          AUDIO bus. The bus is specified by x.
+        - Specifies the number of channels in each frame for the AUDIO bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:FRAME:SIZe?`` query.
@@ -6803,7 +6762,6 @@ class BusBItemAudioFrameSize(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
         - ``<NR1>`` specifies the number of channels in each frame.
     """
 
@@ -6815,9 +6773,6 @@ class BusBItemAudioFrame(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:FRAME?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:FRAME?`` query and
           raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.size``: The ``BUS:B<x>:AUDio:FRAME:SIZe`` command.
@@ -6832,8 +6787,7 @@ class BusBItemAudioFrame(SCPICmdRead):
         """Return the ``BUS:B<x>:AUDio:FRAME:SIZe`` command.
 
         Description:
-            - This command sets or queries the number of audio channels in each frame for the
-              specified AUDIO bus. The bus is specified by x.
+            - Specifies the number of channels in each frame for the AUDIO bus.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:FRAME:SIZe?`` query.
@@ -6849,7 +6803,6 @@ class BusBItemAudioFrame(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
             - ``<NR1>`` specifies the number of channels in each frame.
         """
         return self._size
@@ -6955,8 +6908,7 @@ class BusBItemAudioDataSize(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:AUDio:DATa:SIZe`` command.
 
     Description:
-        - This command sets or queries the number of bits per channel for the specified audio bus.
-          This command only applies to the TDM Audio type. The bus is specified by x.
+        - Specifies the number of bits per word for the AUDIO bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:DATa:SIZe?`` query.
@@ -6972,7 +6924,6 @@ class BusBItemAudioDataSize(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
         - ``NR1`` specifies the number of bits per word.
     """
 
@@ -7053,8 +7004,7 @@ class BusBItemAudioData(SCPICmdRead):
         """Return the ``BUS:B<x>:AUDio:DATa:SIZe`` command.
 
         Description:
-            - This command sets or queries the number of bits per channel for the specified audio
-              bus. This command only applies to the TDM Audio type. The bus is specified by x.
+            - Specifies the number of bits per word for the AUDIO bus.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:DATa:SIZe?`` query.
@@ -7070,7 +7020,6 @@ class BusBItemAudioData(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
             - ``NR1`` specifies the number of bits per word.
         """
         return self._size
@@ -7298,7 +7247,7 @@ class BusBItemAudioBitorder(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:AUDio:BITOrder`` command.
 
     Description:
-        - Specifies the bit order for the specified AUDIO bus. The bus is specified by x.
+        - Specifies the bit order for the AUDIO bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:BITOrder?`` query.
@@ -7314,7 +7263,6 @@ class BusBItemAudioBitorder(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
         - ``MSB`` specifies that the most significant bit will be expected first in the order.
         - ``LSB`` specifies that the least significant bit will be expected first in the order.
     """
@@ -7324,8 +7272,7 @@ class BusBItemAudioBitdelay(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:AUDio:BITDelay`` command.
 
     Description:
-        - This command sets or queries the number of delay bits for the specified AUDIO bus. The bus
-          is specified by x.
+        - Specifies the number of delay bits for the AUDIO bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:BITDelay?`` query.
@@ -7341,7 +7288,6 @@ class BusBItemAudioBitdelay(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
         - ``<NR1>`` specifies the number of delay bits.
     """
 
@@ -7354,9 +7300,6 @@ class BusBItemAudio(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio?`` query and raise an
           AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.bitdelay``: The ``BUS:B<x>:AUDio:BITDelay`` command.
@@ -7389,8 +7332,7 @@ class BusBItemAudio(SCPICmdRead):
         """Return the ``BUS:B<x>:AUDio:BITDelay`` command.
 
         Description:
-            - This command sets or queries the number of delay bits for the specified AUDIO bus. The
-              bus is specified by x.
+            - Specifies the number of delay bits for the AUDIO bus.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:BITDelay?`` query.
@@ -7406,7 +7348,6 @@ class BusBItemAudio(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
             - ``<NR1>`` specifies the number of delay bits.
         """
         return self._bitdelay
@@ -7416,7 +7357,7 @@ class BusBItemAudio(SCPICmdRead):
         """Return the ``BUS:B<x>:AUDio:BITOrder`` command.
 
         Description:
-            - Specifies the bit order for the specified AUDIO bus. The bus is specified by x.
+            - Specifies the bit order for the AUDIO bus.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:BITOrder?`` query.
@@ -7432,7 +7373,6 @@ class BusBItemAudio(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
             - ``MSB`` specifies that the most significant bit will be expected first in the order.
             - ``LSB`` specifies that the least significant bit will be expected first in the order.
         """
@@ -7506,9 +7446,6 @@ class BusBItemAudio(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:FRAME?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
-        Info:
-            - ``B<x>`` is the number of the bus.
-
         Sub-properties:
             - ``.size``: The ``BUS:B<x>:AUDio:FRAME:SIZe`` command.
         """
@@ -7534,8 +7471,7 @@ class BusBItemAudio(SCPICmdRead):
         """Return the ``BUS:B<x>:AUDio:TYPe`` command.
 
         Description:
-            - This command sets or queries the audio format (type) for the specified audio bus. The
-              bus is specified by x.
+            - Specifies the audio format (type) for the AUDIO bus.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:TYPe?`` query.
@@ -7551,10 +7487,9 @@ class BusBItemAudio(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
             - ``I2S`` specifies the I2S audio format.
             - ``LJ`` specifies the left-justified audio format.
-            - ``RJ`` specifies the right-justified audio format.
+            - ``RJ`` specifies the right justified audio format.
             - ``TDM`` specifies the time-division multiplexing audio format.
         """
         return self._type
@@ -7567,9 +7502,6 @@ class BusBItemAudio(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query
               and raise an AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:AUDio:WORDSel:POLarity`` command.
@@ -7934,9 +7866,6 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio?`` query and raise
               an AssertionError if the returned value does not match ``value``.
 
-        Info:
-            - ``B<x>`` is the number of the bus.
-
         Sub-properties:
             - ``.bitdelay``: The ``BUS:B<x>:AUDio:BITDelay`` command.
             - ``.bitorder``: The ``BUS:B<x>:AUDio:BITOrder`` command.
@@ -8090,9 +8019,6 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B?`` query and
               raise an AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:MIL1553B:POLarity`` command.

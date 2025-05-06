@@ -1,0 +1,50 @@
+"""The dese commands module.
+
+These commands are used in the following models:
+LPD6, MSO4, MSO4B, MSO5, MSO5B, MSO5LP, MSO6, MSO6B
+
+THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
+
+Please report an issue if one is found.
+
+Commands and Queries:
+    ```
+    - DESE <NR1>
+    - DESE?
+    ```
+"""
+
+from typing import Optional, TYPE_CHECKING
+
+from ..helpers import SCPICmdRead, SCPICmdWrite
+
+if TYPE_CHECKING:
+    from tm_devices.driver_mixins.device_control.pi_control import PIControl
+
+
+class Dese(SCPICmdWrite, SCPICmdRead):
+    """The ``DESE`` command.
+
+    Description:
+        - This command sets and queries the bits in the Device Event Status Enable Register (DESER).
+          The DESER is the mask that determines whether events are reported to the Standard Event
+          Status Register (SESR), and entered into the Event Queue. For a more detailed discussion
+          of the use of these registers, see Registers.Setting the DESER and ESER to the same value
+          allows only those codes to be entered into the Event Queue and summarized on the ESB bit
+          (bit 5) of the Status Byte Register. Use the ``*ESE`` command to set the ESER.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``DESE?`` query.
+        - Using the ``.verify(value)`` method will send the ``DESE?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``DESE value`` command.
+
+    SCPI Syntax:
+        ```
+        - DESE <NR1>
+        - DESE?
+        ```
+    """
+
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DESE") -> None:
+        super().__init__(device, cmd_syntax)

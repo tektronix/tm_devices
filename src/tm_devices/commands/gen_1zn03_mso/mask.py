@@ -486,10 +486,6 @@ class MaskMaskItemSource(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``MASK<x>`` specifies the mask test.
-        - ``CH<x>`` specifies an analog channel as source.
-        - ``MATH<x>`` specifies a math channel as source.
-        - ``REF<x>`` specifies a reference waveform as the source.
-        - ``RFvsTime`` specifies a RF vs Time as the source.
     """
 
 
@@ -988,10 +984,6 @@ class MaskMaskItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``MASK<x>`` specifies the mask test.
-            - ``CH<x>`` specifies an analog channel as source.
-            - ``MATH<x>`` specifies a math channel as source.
-            - ``REF<x>`` specifies a reference waveform as the source.
-            - ``RFvsTime`` specifies a RF vs Time as the source.
         """
         return self._source
 

@@ -1884,10 +1884,8 @@ class SearchSearchItemTriggerARuntSource(SCPICmdWrite):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as the search source, where the channel number is
-          specified by x.
-        - ``REF<x>`` specifies the reference waveform as the search source, where the reference
-          number is specified by x.
+        - ``CH<x>`` Arguments are the following available sources.
+        - ``REF<x>`` Arguments are the following available sources.
     """
 
 
@@ -2058,10 +2056,8 @@ class SearchSearchItemTriggerARunt(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as the search source, where the channel number
-              is specified by x.
-            - ``REF<x>`` specifies the reference waveform as the search source, where the reference
-              number is specified by x.
+            - ``CH<x>`` Arguments are the following available sources.
+            - ``REF<x>`` Arguments are the following available sources.
         """
         return self._source
 
@@ -6702,14 +6698,14 @@ class SearchSearchItemTriggerABusLinDataQualifier(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``EQual`` sets the data qualifier to equal.
-        - ``LESSEQual`` sets the data qualifier to less equal.
-        - ``MOREEQual`` sets the data qualifier to more equal.
-        - ``UNEQual`` sets the data qualifier to unequal.
-        - ``LESSthan`` sets the data qualifier to less than.
-        - ``MOREthan`` sets the data qualifier to more than.
-        - ``INrange`` sets the data qualifier to in range.
-        - ``OUTrange`` sets the data qualifier out of range.
+        - ``EQual`` Arguments are the following available data qualifiers.
+        - ``LESSEQual`` Arguments are the following available data qualifiers.
+        - ``MOREEQual`` Arguments are the following available data qualifiers.
+        - ``UNEQual`` Arguments are the following available data qualifiers.
+        - ``LESSthan`` Arguments are the following available data qualifiers.
+        - ``MOREthan`` Arguments are the following available data qualifiers.
+        - ``INrange`` Arguments are the following available data qualifiers.
+        - ``OUTrange`` Arguments are the following available data qualifiers.
     """  # noqa: E501
 
 
@@ -6828,14 +6824,14 @@ class SearchSearchItemTriggerABusLinData(SCPICmdRead):
             ```
 
         Info:
-            - ``EQual`` sets the data qualifier to equal.
-            - ``LESSEQual`` sets the data qualifier to less equal.
-            - ``MOREEQual`` sets the data qualifier to more equal.
-            - ``UNEQual`` sets the data qualifier to unequal.
-            - ``LESSthan`` sets the data qualifier to less than.
-            - ``MOREthan`` sets the data qualifier to more than.
-            - ``INrange`` sets the data qualifier to in range.
-            - ``OUTrange`` sets the data qualifier out of range.
+            - ``EQual`` Arguments are the following available data qualifiers.
+            - ``LESSEQual`` Arguments are the following available data qualifiers.
+            - ``MOREEQual`` Arguments are the following available data qualifiers.
+            - ``UNEQual`` Arguments are the following available data qualifiers.
+            - ``LESSthan`` Arguments are the following available data qualifiers.
+            - ``MOREthan`` Arguments are the following available data qualifiers.
+            - ``INrange`` Arguments are the following available data qualifiers.
+            - ``OUTrange`` Arguments are the following available data qualifiers.
         """  # noqa: E501
         return self._qualifier
 
@@ -6919,13 +6915,13 @@ class SearchSearchItemTriggerABusLinCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``DATA`` sets the trigger condition to data.
-        - ``IDANDDATA`` sets the trigger condition to ID and data.
-        - ``ERRor`` sets the trigger condition to error.
-        - ``IDentifier`` sets the trigger condition to identifier.
-        - ``SLEEP`` sets the trigger condition to sleep.
-        - ``SYNCfield`` sets the trigger condition to sync field.
-        - ``WAKEup`` sets the trigger condition to wakeup.
+        - ``DATA`` Arguments are the following available trigger conditions.
+        - ``IDANDDATA`` Arguments are the following available trigger conditions.
+        - ``ERRor`` Arguments are the following available trigger conditions.
+        - ``IDentifier`` Arguments are the following available trigger conditions.
+        - ``SLEEP`` Arguments are the following available trigger conditions.
+        - ``SYNCfield`` Arguments are the following available trigger conditions.
+        - ``WAKEup`` Arguments are the following available trigger conditions.
     """  # noqa: E501
 
 
@@ -6979,13 +6975,13 @@ class SearchSearchItemTriggerABusLin(SCPICmdRead):
             ```
 
         Info:
-            - ``DATA`` sets the trigger condition to data.
-            - ``IDANDDATA`` sets the trigger condition to ID and data.
-            - ``ERRor`` sets the trigger condition to error.
-            - ``IDentifier`` sets the trigger condition to identifier.
-            - ``SLEEP`` sets the trigger condition to sleep.
-            - ``SYNCfield`` sets the trigger condition to sync field.
-            - ``WAKEup`` sets the trigger condition to wakeup.
+            - ``DATA`` Arguments are the following available trigger conditions.
+            - ``IDANDDATA`` Arguments are the following available trigger conditions.
+            - ``ERRor`` Arguments are the following available trigger conditions.
+            - ``IDentifier`` Arguments are the following available trigger conditions.
+            - ``SLEEP`` Arguments are the following available trigger conditions.
+            - ``SYNCfield`` Arguments are the following available trigger conditions.
+            - ``WAKEup`` Arguments are the following available trigger conditions.
         """  # noqa: E501
         return self._condition
 
@@ -7693,10 +7689,10 @@ class SearchSearchItemTriggerABusCanFrametype(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``DATa`` sets the frame type to data.
-        - ``ERRor`` sets the frame type to error.
-        - ``OVERLoad`` sets the frame type to overload.
-        - ``REMote`` sets the frame type to remote.
+        - ``DATa``
+        - ``ERRor``
+        - ``OVERLoad``
+        - ``REMote``
     """
 
 
@@ -7962,12 +7958,12 @@ class SearchSearchItemTriggerABusCanDataQualifier(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``EQUal`` sets the data qualifier to equal.
-        - ``LESSEQual`` sets the data qualifier to less equal.
-        - ``MOREEQua`` sets the data qualifier to more equal.
-        - ``UNEQual`` sets the data qualifier to unequal.
-        - ``LESSthan`` sets the data qualifier to less than.
-        - ``MOREthan`` sets the data qualifier to more than.
+        - ``EQUal`` Arguments are the following data qualifier types.
+        - ``LESSEQual`` Arguments are the following data qualifier types.
+        - ``MOREEQua`` Arguments are the following data qualifier types.
+        - ``UNEQual`` Arguments are the following data qualifier types.
+        - ``LESSthan`` Arguments are the following data qualifier types.
+        - ``MOREthan`` Arguments are the following data qualifier types.
     """  # noqa: E501
 
 
@@ -8156,12 +8152,12 @@ class SearchSearchItemTriggerABusCanData(SCPICmdRead):
             ```
 
         Info:
-            - ``EQUal`` sets the data qualifier to equal.
-            - ``LESSEQual`` sets the data qualifier to less equal.
-            - ``MOREEQua`` sets the data qualifier to more equal.
-            - ``UNEQual`` sets the data qualifier to unequal.
-            - ``LESSthan`` sets the data qualifier to less than.
-            - ``MOREthan`` sets the data qualifier to more than.
+            - ``EQUal`` Arguments are the following data qualifier types.
+            - ``LESSEQual`` Arguments are the following data qualifier types.
+            - ``MOREEQua`` Arguments are the following data qualifier types.
+            - ``UNEQual`` Arguments are the following data qualifier types.
+            - ``LESSthan`` Arguments are the following data qualifier types.
+            - ``MOREthan`` Arguments are the following data qualifier types.
         """  # noqa: E501
         return self._qualifier
 
@@ -8246,13 +8242,14 @@ class SearchSearchItemTriggerABusCanCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``SOF`` specifies the search condition for a CAN bus as start of frame.
-        - ``FRAMEtype`` specifies the search condition for a CAN bus as frame type.
-        - ``IDentifier`` specifies the search condition for a CAN bus as identifier.
-        - ``IDANDDATA`` specifies the search condition for a CAN bus as ID and data.
-        - ``EOF`` specifies the search condition for a CAN bus as end of frame.
-        - ``ERRor`` specifies the search condition for a CAN bus as error.
-        - ``FDBITS`` specifies the search condition for a CAN bus as FD bits.
+        - ``SOF`` Arguments specify the following CAN bus trigger conditions.
+        - ``FRAMEtype`` Arguments specify the following CAN bus trigger conditions.
+        - ``IDentifier`` Arguments specify the following CAN bus trigger conditions.
+        - ``DATa`` Arguments specify the following CAN bus trigger conditions.
+        - ``IDANDDATA`` Arguments specify the following CAN bus trigger conditions.
+        - ``EOF`` Arguments specify the following CAN bus trigger conditions.
+        - ``ERRor`` Arguments specify the following CAN bus trigger conditions.
+        - ``FDBITS`` Arguments specify the following CAN bus trigger conditions.
     """  # noqa: E501
 
 
@@ -8312,13 +8309,14 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
             ```
 
         Info:
-            - ``SOF`` specifies the search condition for a CAN bus as start of frame.
-            - ``FRAMEtype`` specifies the search condition for a CAN bus as frame type.
-            - ``IDentifier`` specifies the search condition for a CAN bus as identifier.
-            - ``IDANDDATA`` specifies the search condition for a CAN bus as ID and data.
-            - ``EOF`` specifies the search condition for a CAN bus as end of frame.
-            - ``ERRor`` specifies the search condition for a CAN bus as error.
-            - ``FDBITS`` specifies the search condition for a CAN bus as FD bits.
+            - ``SOF`` Arguments specify the following CAN bus trigger conditions.
+            - ``FRAMEtype`` Arguments specify the following CAN bus trigger conditions.
+            - ``IDentifier`` Arguments specify the following CAN bus trigger conditions.
+            - ``DATa`` Arguments specify the following CAN bus trigger conditions.
+            - ``IDANDDATA`` Arguments specify the following CAN bus trigger conditions.
+            - ``EOF`` Arguments specify the following CAN bus trigger conditions.
+            - ``ERRor`` Arguments specify the following CAN bus trigger conditions.
+            - ``FDBITS`` Arguments specify the following CAN bus trigger conditions.
         """  # noqa: E501
         return self._condition
 
@@ -8416,10 +8414,10 @@ class SearchSearchItemTriggerABusCan(SCPICmdRead):
             ```
 
         Info:
-            - ``DATa`` sets the frame type to data.
-            - ``ERRor`` sets the frame type to error.
-            - ``OVERLoad`` sets the frame type to overload.
-            - ``REMote`` sets the frame type to remote.
+            - ``DATa``
+            - ``ERRor``
+            - ``OVERLoad``
+            - ``REMote``
         """
         return self._frametype
 

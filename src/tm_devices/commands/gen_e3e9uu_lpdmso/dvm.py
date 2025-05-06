@@ -13,7 +13,7 @@ Commands and Queries:
     - DVM:AUTORange {0|1|OFF|ON}
     - DVM:AUTORange?
     - DVM:MEASUrement:FREQuency?
-    - DVM:MEASUrement:HIStory:AVErage?
+    - DVM:MEASUrement:HIStory:AVErage D?
     - DVM:MEASUrement:HIStory:MAXimum?
     - DVM:MEASUrement:HIStory:MINImum?
     - DVM:MEASUrement:INFMAXimum?
@@ -57,8 +57,10 @@ class DvmTriggerFrequencyCounter(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``1`` or ON turns on the trigger frequency counter for the Digital Voltmeter.
-        - ``0`` or OFF turns it off.
+        - ``ON`` turns on the trigger frequency counter for the Digital Voltmeter.
+        - ``OFF`` turns it off.
+        - ``1`` turns on the trigger frequency counter for the Digital Voltmeter.
+        - ``0`` turns it off.
     """
 
 
@@ -100,8 +102,10 @@ class DvmTriggerFrequency(SCPICmdRead):
             ```
 
         Info:
-            - ``1`` or ON turns on the trigger frequency counter for the Digital Voltmeter.
-            - ``0`` or OFF turns it off.
+            - ``ON`` turns on the trigger frequency counter for the Digital Voltmeter.
+            - ``OFF`` turns it off.
+            - ``1`` turns on the trigger frequency counter for the Digital Voltmeter.
+            - ``0`` turns it off.
         """
         return self._counter
 
@@ -210,7 +214,7 @@ class DvmMeasurementInfminimum(SCPICmdRead):
 
     Description:
         - Returns the minimum readout value of the DVM over the entire time that the DVM has been on
-          since the last change using the ``DVM:MODE`` or ``DVM:SOURCE`` commands or DVM RESET.
+          since the last change using the ``DVM:MODe`` or ``DVM:SOUrce`` commands or DVM RESET.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:MEASUrement:INFMINimum?`` query.
@@ -229,7 +233,7 @@ class DvmMeasurementInfmaximum(SCPICmdRead):
 
     Description:
         - Returns the maximum DVM readout value over the entire time that the DVM has been on since
-          the last change using the ``DVM:MODE`` or ``DVM:SOURCE`` commands or DVM RESET.
+          the last change using the ``DVM:MODe`` or ``DVM:SOUrce`` commands or DVM RESET.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:MEASUrement:INFMAXimum?`` query.
@@ -281,7 +285,7 @@ class DvmMeasurementHistoryMaximum(SCPICmdRead):
     """
 
 
-class DvmMeasurementHistoryAverage(SCPICmdRead):
+class DvmMeasurementHistoryAverage(SCPICmdWrite):
     """The ``DVM:MEASUrement:HIStory:AVErage`` command.
 
     Description:
@@ -289,13 +293,12 @@ class DvmMeasurementHistoryAverage(SCPICmdRead):
           constant period of 5 seconds.
 
     Usage:
-        - Using the ``.query()`` method will send the ``DVM:MEASUrement:HIStory:AVErage?`` query.
-        - Using the ``.verify(value)`` method will send the ``DVM:MEASUrement:HIStory:AVErage?``
-          query and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``DVM:MEASUrement:HIStory:AVErage value``
+          command.
 
     SCPI Syntax:
         ```
-        - DVM:MEASUrement:HIStory:AVErage?
+        - DVM:MEASUrement:HIStory:AVErage D?
         ```
     """
 
@@ -329,14 +332,12 @@ class DvmMeasurementHistory(SCPICmdRead):
               constant period of 5 seconds.
 
         Usage:
-            - Using the ``.query()`` method will send the ``DVM:MEASUrement:HIStory:AVErage?``
-              query.
-            - Using the ``.verify(value)`` method will send the ``DVM:MEASUrement:HIStory:AVErage?``
-              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``DVM:MEASUrement:HIStory:AVErage value`` command.
 
         SCPI Syntax:
             ```
-            - DVM:MEASUrement:HIStory:AVErage?
+            - DVM:MEASUrement:HIStory:AVErage D?
             ```
         """
         return self._average
@@ -467,7 +468,7 @@ class DvmMeasurement(SCPICmdRead):
 
         Description:
             - Returns the maximum DVM readout value over the entire time that the DVM has been on
-              since the last change using the ``DVM:MODE`` or ``DVM:SOURCE`` commands or DVM RESET.
+              since the last change using the ``DVM:MODe`` or ``DVM:SOUrce`` commands or DVM RESET.
 
         Usage:
             - Using the ``.query()`` method will send the ``DVM:MEASUrement:INFMAXimum?`` query.
@@ -487,7 +488,7 @@ class DvmMeasurement(SCPICmdRead):
 
         Description:
             - Returns the minimum readout value of the DVM over the entire time that the DVM has
-              been on since the last change using the ``DVM:MODE`` or ``DVM:SOURCE`` commands or DVM
+              been on since the last change using the ``DVM:MODe`` or ``DVM:SOUrce`` commands or DVM
               RESET.
 
         Usage:
@@ -527,7 +528,8 @@ class DvmAutorange(SCPICmdWrite, SCPICmdRead):
     """The ``DVM:AUTORange`` command.
 
     Description:
-        - Sets (or queries) the autorange state for the Digital Voltmeter.
+        - Sets (or queries) the autorange state for the Digital Voltmeter.The DVM will not autorange
+          as long as the DVM source is the same channel as the trigger source.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:AUTORange?`` query.
@@ -542,8 +544,10 @@ class DvmAutorange(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``1`` or ON turns on autorange for the Digital Voltmeter.
-        - ``0`` or OFF turns autorange off.
+        - ``ON`` turns on autorange for the Digital Voltmeter.
+        - ``OFF`` turns autorange off.
+        - ``1`` turns on autorange for the Digital Voltmeter.
+        - ``0`` turns autorange off.
     """
 
 
@@ -585,7 +589,8 @@ class Dvm(SCPICmdWrite, SCPICmdRead):
         """Return the ``DVM:AUTORange`` command.
 
         Description:
-            - Sets (or queries) the autorange state for the Digital Voltmeter.
+            - Sets (or queries) the autorange state for the Digital Voltmeter.The DVM will not
+              autorange as long as the DVM source is the same channel as the trigger source.
 
         Usage:
             - Using the ``.query()`` method will send the ``DVM:AUTORange?`` query.
@@ -600,8 +605,10 @@ class Dvm(SCPICmdWrite, SCPICmdRead):
             ```
 
         Info:
-            - ``1`` or ON turns on autorange for the Digital Voltmeter.
-            - ``0`` or OFF turns autorange off.
+            - ``ON`` turns on autorange for the Digital Voltmeter.
+            - ``OFF`` turns autorange off.
+            - ``1`` turns on autorange for the Digital Voltmeter.
+            - ``0`` turns autorange off.
         """
         return self._autorange
 

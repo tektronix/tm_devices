@@ -1191,8 +1191,8 @@ class DisplayWaveview1RfPhaseItemVerticalScale(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``1`` is always WAVEView1.
-        - ``RF_PHAse<x>`` specifies the number of the Phase vs. Time Frequency waveform.
-        - ``<NR3>`` sets the vertical scale, in degrees per division.
+        - ``RF_MAGnitude<x>`` specifies the number of the Phase vs. Time Frequency waveform.
+        - ``NR3`` sets the vertical scale, in degrees per division.
     """
 
 
@@ -1307,8 +1307,8 @@ class DisplayWaveview1RfPhaseItemVertical(SCPICmdRead):
 
         Info:
             - ``1`` is always WAVEView1.
-            - ``RF_PHAse<x>`` specifies the number of the Phase vs. Time Frequency waveform.
-            - ``<NR3>`` sets the vertical scale, in degrees per division.
+            - ``RF_MAGnitude<x>`` specifies the number of the Phase vs. Time Frequency waveform.
+            - ``NR3`` sets the vertical scale, in degrees per division.
         """
         return self._scale
 
@@ -3058,7 +3058,7 @@ class DisplayWaveview1CursorCursorWaveformAllValues(SCPICmdRead):
 
     Description:
         - This query returns all values (Time, Voltage, Delta) associated with all the active
-          sources in the Waveform View.
+          sources in the Waveform View. 1 is the specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -3100,7 +3100,7 @@ class DisplayWaveview1CursorCursorWaveformAll(SCPICmdRead):
 
         Description:
             - This query returns all values (Time, Voltage, Delta) associated with all the active
-              sources in the Waveform View.
+              sources in the Waveform View. 1 is the specified Waveform View and must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -4259,7 +4259,7 @@ class DisplayWaveview1CursorCursor1Function(SCPICmdWrite, SCPICmdRead):
         - ``SCREEN`` specifies both horizontal and vertical bar cursors, which measure in horizontal
           and vertical units specified by the Cursor 1 and Cursor 2 Sources. Use these cursors to
           measure anywhere in the waveform display area.
-        - ``WAVEform`` specifies paired or split cursors in YT display format for measuring waveform
+        - ``WAVEFORM`` specifies paired or split cursors in YT display format for measuring waveform
           amplitude and time. In XY and XYZ format, these cursors indicate the amplitude positions
           of an XY pair (Ch1 vs Ch2 voltage, where Ch1 is the X axis and Ch2 is the Y axis) relative
           to the trigger.
@@ -4310,9 +4310,9 @@ class DisplayWaveview1CursorCursor1Bsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as source.
-        - ``MATH<x>`` specifies a math channel as source.
-        - ``BUS<x>`` specifies a bus as source.
+        - ``S<x>_Ch<x>`` specifies the remote scope number and the analog channel as the source.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``Math<x>`` specifies a math waveform as the source.
         - ``REF<x>`` specifies a reference waveform as the source.
         - ``PLOT<x>`` specifies a plot as the source.
     """
@@ -4341,10 +4341,9 @@ class DisplayWaveview1CursorCursor1Asource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``AUTO`` specifies to use the selected source.
-        - ``CH<x>`` specifies an analog channel as source.
-        - ``MATH<x>`` specifies a math channel as source.
-        - ``BUS<x>`` specifies a bus as source.
+        - ``AUTO`` automatically specifies the source.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``Math<x>`` specifies a math waveform as the source.
         - ``REF<x>`` specifies a reference waveform as the source.
         - ``PLOT<x>`` specifies a plot as the source.
     """
@@ -4431,10 +4430,9 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
             ```
 
         Info:
-            - ``AUTO`` specifies to use the selected source.
-            - ``CH<x>`` specifies an analog channel as source.
-            - ``MATH<x>`` specifies a math channel as source.
-            - ``BUS<x>`` specifies a bus as source.
+            - ``AUTO`` automatically specifies the source.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``Math<x>`` specifies a math waveform as the source.
             - ``REF<x>`` specifies a reference waveform as the source.
             - ``PLOT<x>`` specifies a plot as the source.
         """
@@ -4464,9 +4462,9 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as source.
-            - ``MATH<x>`` specifies a math channel as source.
-            - ``BUS<x>`` specifies a bus as source.
+            - ``S<x>_Ch<x>`` specifies the remote scope number and the analog channel as the source.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``Math<x>`` specifies a math waveform as the source.
             - ``REF<x>`` specifies a reference waveform as the source.
             - ``PLOT<x>`` specifies a plot as the source.
         """
@@ -4523,7 +4521,7 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
             - ``SCREEN`` specifies both horizontal and vertical bar cursors, which measure in
               horizontal and vertical units specified by the Cursor 1 and Cursor 2 Sources. Use
               these cursors to measure anywhere in the waveform display area.
-            - ``WAVEform`` specifies paired or split cursors in YT display format for measuring
+            - ``WAVEFORM`` specifies paired or split cursors in YT display format for measuring
               waveform amplitude and time. In XY and XYZ format, these cursors indicate the
               amplitude positions of an XY pair (Ch1 vs Ch2 voltage, where Ch1 is the X axis and Ch2
               is the Y axis) relative to the trigger.
@@ -8420,7 +8418,6 @@ class DisplayReffftviewItemGridlines(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``HORizontal`` specifies horizontal grid lines.
         - ``VERTical`` specifies vertical grid lines.
         - ``BOTH`` specifies both horizontal and vertical grid lines.
@@ -8444,9 +8441,6 @@ class DisplayReffftviewItemCursorWaveformBvposition(SCPICmdRead):
         ```
         - DISplay:REFFFTView<x>:CURSor:WAVEform:BVPOSition?
         ```
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
     """
 
 
@@ -8472,7 +8466,6 @@ class DisplayReffftviewItemCursorWaveformBposition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``<NR3>`` is the waveform cursor B position in the specified plot view.
     """
 
@@ -8494,9 +8487,6 @@ class DisplayReffftviewItemCursorWaveformBhposition(SCPICmdRead):
         ```
         - DISplay:REFFFTView<x>:CURSor:WAVEform:BHPOSition?
         ```
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
     """
 
 
@@ -8517,9 +8507,6 @@ class DisplayReffftviewItemCursorWaveformAvposition(SCPICmdRead):
         ```
         - DISplay:REFFFTView<x>:CURSor:WAVEform:AVPOSition?
         ```
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
     """
 
 
@@ -8545,7 +8532,6 @@ class DisplayReffftviewItemCursorWaveformAposition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``<NR3>`` is the waveform cursor A position in the specified plot view.
     """
 
@@ -8567,9 +8553,6 @@ class DisplayReffftviewItemCursorWaveformAhposition(SCPICmdRead):
         ```
         - DISplay:REFFFTView<x>:CURSor:WAVEform:AHPOSition?
         ```
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
     """
 
 
@@ -8582,9 +8565,6 @@ class DisplayReffftviewItemCursorWaveform(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``DISplay:REFFFTView<x>:CURSor:WAVEform?`` query and raise an AssertionError if the
           returned value does not match ``value``.
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
 
     Properties:
         - ``.ahposition``: The ``DISplay:REFFFTView<x>:CURSor:WAVEform:AHPOSition`` command.
@@ -8634,9 +8614,6 @@ class DisplayReffftviewItemCursorWaveform(SCPICmdRead):
             ```
             - DISplay:REFFFTView<x>:CURSor:WAVEform:AHPOSition?
             ```
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
         """
         return self._ahposition
 
@@ -8663,7 +8640,6 @@ class DisplayReffftviewItemCursorWaveform(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``<NR3>`` is the waveform cursor A position in the specified plot view.
         """
         return self._aposition
@@ -8686,9 +8662,6 @@ class DisplayReffftviewItemCursorWaveform(SCPICmdRead):
             ```
             - DISplay:REFFFTView<x>:CURSor:WAVEform:AVPOSition?
             ```
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
         """
         return self._avposition
 
@@ -8710,9 +8683,6 @@ class DisplayReffftviewItemCursorWaveform(SCPICmdRead):
             ```
             - DISplay:REFFFTView<x>:CURSor:WAVEform:BHPOSition?
             ```
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
         """
         return self._bhposition
 
@@ -8739,7 +8709,6 @@ class DisplayReffftviewItemCursorWaveform(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``<NR3>`` is the waveform cursor B position in the specified plot view.
         """
         return self._bposition
@@ -8762,9 +8731,6 @@ class DisplayReffftviewItemCursorWaveform(SCPICmdRead):
             ```
             - DISplay:REFFFTView<x>:CURSor:WAVEform:BVPOSition?
             ```
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
         """
         return self._bvposition
 
@@ -8787,9 +8753,6 @@ class DisplayReffftviewItemCursorVbarsUnits(SCPICmdRead):
         ```
         - DISplay:REFFFTView<x>:CURSor:VBArs:UNIts?
         ```
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
     """
 
 
@@ -8811,9 +8774,6 @@ class DisplayReffftviewItemCursorVbarsDelta(SCPICmdRead):
         ```
         - DISplay:REFFFTView<x>:CURSor:VBArs:DELTa?
         ```
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
     """
 
 
@@ -8840,7 +8800,6 @@ class DisplayReffftviewItemCursorVbarsBposition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``<NR3>`` is the horizontal cursor B position of the specified cursor in the specified
           view.
     """
@@ -8869,7 +8828,6 @@ class DisplayReffftviewItemCursorVbarsAposition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``<NR3>`` is the horizontal cursor A position of the specified cursor in the specified
           view.
     """
@@ -8882,9 +8840,6 @@ class DisplayReffftviewItemCursorVbars(SCPICmdRead):
         - Using the ``.query()`` method will send the ``DISplay:REFFFTView<x>:CURSor:VBArs?`` query.
         - Using the ``.verify(value)`` method will send the ``DISplay:REFFFTView<x>:CURSor:VBArs?``
           query and raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
 
     Properties:
         - ``.aposition``: The ``DISplay:REFFFTView<x>:CURSor:VBArs:APOSition`` command.
@@ -8928,7 +8883,6 @@ class DisplayReffftviewItemCursorVbars(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``<NR3>`` is the horizontal cursor A position of the specified cursor in the specified
               view.
         """
@@ -8958,7 +8912,6 @@ class DisplayReffftviewItemCursorVbars(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``<NR3>`` is the horizontal cursor B position of the specified cursor in the specified
               view.
         """
@@ -8983,9 +8936,6 @@ class DisplayReffftviewItemCursorVbars(SCPICmdRead):
             ```
             - DISplay:REFFFTView<x>:CURSor:VBArs:DELTa?
             ```
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
         """
         return self._delta
 
@@ -9008,9 +8958,6 @@ class DisplayReffftviewItemCursorVbars(SCPICmdRead):
             ```
             - DISplay:REFFFTView<x>:CURSor:VBArs:UNIts?
             ```
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
         """
         return self._units
 
@@ -9036,11 +8983,9 @@ class DisplayReffftviewItemCursorState(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
+        - ``<NR1>`` = 0 specifies the cursor is not visible; any other value displays the cursor.
         - ``OFF`` specifies the cursor is not visible.
-        - ``0`` specifies the cursor is not visible.
         - ``ON`` displays the cursor.
-        - ``1`` displays the cursor.
     """
 
 
@@ -9066,7 +9011,6 @@ class DisplayReffftviewItemCursorSplitmode(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``SAME`` specifies both cursors have the same sources.
         - ``SPLIT`` specifies both cursors have different sources.
     """
@@ -9095,7 +9039,6 @@ class DisplayReffftviewItemCursorScreenByposition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``<NR3>`` is the vertical cursor B position of the specified cursor in the specified view.
     """
 
@@ -9123,7 +9066,6 @@ class DisplayReffftviewItemCursorScreenBxposition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``<NR3>`` is the horizontal cursor B position of the specified cursor in the specified
           view.
     """
@@ -9152,7 +9094,6 @@ class DisplayReffftviewItemCursorScreenAyposition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``<NR3>`` is the vertical cursor A position of the specified cursor in the specified view.
     """
 
@@ -9180,7 +9121,6 @@ class DisplayReffftviewItemCursorScreenAxposition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``<NR3>`` is the horizontal cursor A position of the specified cursor in the specified
           view.
     """
@@ -9194,9 +9134,6 @@ class DisplayReffftviewItemCursorScreen(SCPICmdRead):
           query.
         - Using the ``.verify(value)`` method will send the ``DISplay:REFFFTView<x>:CURSor:SCREEN?``
           query and raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
 
     Properties:
         - ``.axposition``: The ``DISplay:REFFFTView<x>:CURSor:SCREEN:AXPOSition`` command.
@@ -9244,7 +9181,6 @@ class DisplayReffftviewItemCursorScreen(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``<NR3>`` is the horizontal cursor A position of the specified cursor in the specified
               view.
         """
@@ -9274,7 +9210,6 @@ class DisplayReffftviewItemCursorScreen(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``<NR3>`` is the vertical cursor A position of the specified cursor in the specified
               view.
         """
@@ -9304,7 +9239,6 @@ class DisplayReffftviewItemCursorScreen(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``<NR3>`` is the horizontal cursor B position of the specified cursor in the specified
               view.
         """
@@ -9334,7 +9268,6 @@ class DisplayReffftviewItemCursorScreen(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``<NR3>`` is the vertical cursor B position of the specified cursor in the specified
               view.
         """
@@ -9364,7 +9297,7 @@ class DisplayReffftviewItemCursorRolocation(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
+        - ``PLOTView<x>`` is the Reference FFT plot number.
         - ``GRATICULE`` sets the Reference FFT plot cursor readouts to display as part of the
           cursors in the plot view.
         - ``BADGE`` removes the Reference FFT plot cursor readouts from the cursors in the graticule
@@ -9390,9 +9323,6 @@ class DisplayReffftviewItemCursorOneoverdeltatvalue(SCPICmdRead):
         ```
         - DISplay:REFFFTView<x>:CURSor:ONEOVERDELTATVALUE?
         ```
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
     """
 
 
@@ -9417,7 +9347,6 @@ class DisplayReffftviewItemCursorMode(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``TRACK`` ties the navigational functionality of the two cursors together. For cursor A
           adjustments, this ties the movement of the two cursors together; however, cursor B
           continues to move independently of cursor A.
@@ -9443,9 +9372,6 @@ class DisplayReffftviewItemCursorHbarsDelta(SCPICmdRead):
         ```
         - DISplay:REFFFTView<x>:CURSor:HBArs:DELTa?
         ```
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
     """
 
 
@@ -9467,9 +9393,6 @@ class DisplayReffftviewItemCursorHbarsBunits(SCPICmdRead):
         ```
         - DISplay:REFFFTView<x>:CURSor:HBArs:BUNIts?
         ```
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
     """
 
 
@@ -9496,7 +9419,6 @@ class DisplayReffftviewItemCursorHbarsBposition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``<NR3>`` is the vertical cursor B position of the specified cursor in the specified view.
     """
 
@@ -9519,9 +9441,6 @@ class DisplayReffftviewItemCursorHbarsAunits(SCPICmdRead):
         ```
         - DISplay:REFFFTView<x>:CURSor:HBArs:AUNIts?
         ```
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
     """
 
 
@@ -9548,7 +9467,6 @@ class DisplayReffftviewItemCursorHbarsAposition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``<NR3>`` is the vertical cursor A position of the specified cursor in the specified view.
     """
 
@@ -9560,9 +9478,6 @@ class DisplayReffftviewItemCursorHbars(SCPICmdRead):
         - Using the ``.query()`` method will send the ``DISplay:REFFFTView<x>:CURSor:HBArs?`` query.
         - Using the ``.verify(value)`` method will send the ``DISplay:REFFFTView<x>:CURSor:HBArs?``
           query and raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
 
     Properties:
         - ``.aposition``: The ``DISplay:REFFFTView<x>:CURSor:HBArs:APOSition`` command.
@@ -9608,7 +9523,6 @@ class DisplayReffftviewItemCursorHbars(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``<NR3>`` is the vertical cursor A position of the specified cursor in the specified
               view.
         """
@@ -9633,9 +9547,6 @@ class DisplayReffftviewItemCursorHbars(SCPICmdRead):
             ```
             - DISplay:REFFFTView<x>:CURSor:HBArs:AUNIts?
             ```
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
         """
         return self._aunits
 
@@ -9663,7 +9574,6 @@ class DisplayReffftviewItemCursorHbars(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``<NR3>`` is the vertical cursor B position of the specified cursor in the specified
               view.
         """
@@ -9688,9 +9598,6 @@ class DisplayReffftviewItemCursorHbars(SCPICmdRead):
             ```
             - DISplay:REFFFTView<x>:CURSor:HBArs:BUNIts?
             ```
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
         """
         return self._bunits
 
@@ -9713,9 +9620,6 @@ class DisplayReffftviewItemCursorHbars(SCPICmdRead):
             ```
             - DISplay:REFFFTView<x>:CURSor:HBArs:DELTa?
             ```
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
         """
         return self._delta
 
@@ -9743,7 +9647,6 @@ class DisplayReffftviewItemCursorFunction(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``HBArs`` specifies horizontal bar cursors, which measure in vertical units.
         - ``VBArs`` specifies vertical bar cursors, which measure in horizontal units.
         - ``SCREEN`` specifies both horizontal and vertical bar cursors, which measure in horizontal
@@ -9772,9 +9675,6 @@ class DisplayReffftviewItemCursorDdt(SCPICmdRead):
         ```
         - DISplay:REFFFTView<x>:CURSor:DDT?
         ```
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
     """
 
 
@@ -9795,9 +9695,6 @@ class DisplayReffftviewItemCursorBsource(SCPICmdRead):
         ```
         - DISplay:REFFFTView<x>:CURSor:BSOUrce?
         ```
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
     """
 
 
@@ -9820,7 +9717,7 @@ class DisplayReffftviewItemCursorAsource(SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
+        - ``PLOTView<x>`` is the Plot waveform number.
     """
 
 
@@ -9832,9 +9729,6 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
         - Using the ``.query()`` method will send the ``DISplay:REFFFTView<x>:CURSor?`` query.
         - Using the ``.verify(value)`` method will send the ``DISplay:REFFFTView<x>:CURSor?`` query
           and raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
 
     Properties:
         - ``.asource``: The ``DISplay:REFFFTView<x>:CURSor:ASOUrce`` command.
@@ -9894,7 +9788,7 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
+            - ``PLOTView<x>`` is the Plot waveform number.
         """
         return self._asource
 
@@ -9916,9 +9810,6 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
             ```
             - DISplay:REFFFTView<x>:CURSor:BSOUrce?
             ```
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
         """
         return self._bsource
 
@@ -9941,9 +9832,6 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
             ```
             - DISplay:REFFFTView<x>:CURSor:DDT?
             ```
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
         """
         return self._ddt
 
@@ -9971,7 +9859,6 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``HBArs`` specifies horizontal bar cursors, which measure in vertical units.
             - ``VBArs`` specifies vertical bar cursors, which measure in horizontal units.
             - ``SCREEN`` specifies both horizontal and vertical bar cursors, which measure in
@@ -9994,9 +9881,6 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``DISplay:REFFFTView<x>:CURSor:HBArs?`` query and raise an AssertionError if the
               returned value does not match ``value``.
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
 
         Sub-properties:
             - ``.aposition``: The ``DISplay:REFFFTView<x>:CURSor:HBArs:APOSition`` command.
@@ -10031,7 +9915,6 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``TRACK`` ties the navigational functionality of the two cursors together. For cursor
               A adjustments, this ties the movement of the two cursors together; however, cursor B
               continues to move independently of cursor A.
@@ -10058,9 +9941,6 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
             ```
             - DISplay:REFFFTView<x>:CURSor:ONEOVERDELTATVALUE?
             ```
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
         """
         return self._oneoverdeltatvalue
 
@@ -10088,7 +9968,7 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
+            - ``PLOTView<x>`` is the Reference FFT plot number.
             - ``GRATICULE`` sets the Reference FFT plot cursor readouts to display as part of the
               cursors in the plot view.
             - ``BADGE`` removes the Reference FFT plot cursor readouts from the cursors in the
@@ -10106,9 +9986,6 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``DISplay:REFFFTView<x>:CURSor:SCREEN?`` query and raise an AssertionError if the
               returned value does not match ``value``.
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
 
         Sub-properties:
             - ``.axposition``: The ``DISplay:REFFFTView<x>:CURSor:SCREEN:AXPOSition`` command.
@@ -10141,7 +10018,6 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``SAME`` specifies both cursors have the same sources.
             - ``SPLIT`` specifies both cursors have different sources.
         """
@@ -10171,11 +10047,10 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
+            - ``<NR1>`` = 0 specifies the cursor is not visible; any other value displays the
+              cursor.
             - ``OFF`` specifies the cursor is not visible.
-            - ``0`` specifies the cursor is not visible.
             - ``ON`` displays the cursor.
-            - ``1`` displays the cursor.
         """
         return self._state
 
@@ -10189,9 +10064,6 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``DISplay:REFFFTView<x>:CURSor:VBArs?`` query and raise an AssertionError if the
               returned value does not match ``value``.
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
 
         Sub-properties:
             - ``.aposition``: The ``DISplay:REFFFTView<x>:CURSor:VBArs:APOSition`` command.
@@ -10211,9 +10083,6 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``DISplay:REFFFTView<x>:CURSor:WAVEform?`` query and raise an AssertionError if the
               returned value does not match ``value``.
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
 
         Sub-properties:
             - ``.ahposition``: The ``DISplay:REFFFTView<x>:CURSor:WAVEform:AHPOSition`` command.
@@ -10246,11 +10115,11 @@ class DisplayReffftviewItemAutoscale(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
+        - ``REFFFTView<x>`` is the plot number.
+        - ``<NR1>`` = 0 disables auto-scale on the specified reffftview; any other value turns this
+          feature on.
         - ``OFF`` disables auto-scale on the specified reffftview.
-        - ``0`` disables auto-scale on the specified reffftview.
         - ``ON`` enables the specified channel on the specified Waveform View.
-        - ``1`` enables the specified channel on the specified Waveform View.
     """
 
 
@@ -10263,7 +10132,7 @@ class DisplayReffftviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
           raise an AssertionError if the returned value does not match ``value``.
 
     Info:
-        - ``REFFFTView<x>`` is the Reference FFT plot number.
+        - ``REFFFTView<x>`` is the plot number.
 
     Properties:
         - ``.autoscale``: The ``DISplay:REFFFTView<x>:AUTOScale`` command.
@@ -10305,11 +10174,11 @@ class DisplayReffftviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
+            - ``REFFFTView<x>`` is the plot number.
+            - ``<NR1>`` = 0 disables auto-scale on the specified reffftview; any other value turns
+              this feature on.
             - ``OFF`` disables auto-scale on the specified reffftview.
-            - ``0`` disables auto-scale on the specified reffftview.
             - ``ON`` enables the specified channel on the specified Waveform View.
-            - ``1`` enables the specified channel on the specified Waveform View.
         """
         return self._autoscale
 
@@ -10321,9 +10190,6 @@ class DisplayReffftviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``DISplay:REFFFTView<x>:CURSor?`` query.
             - Using the ``.verify(value)`` method will send the ``DISplay:REFFFTView<x>:CURSor?``
               query and raise an AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
 
         Sub-properties:
             - ``.asource``: The ``DISplay:REFFFTView<x>:CURSor:ASOUrce`` command.
@@ -10365,7 +10231,6 @@ class DisplayReffftviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``HORizontal`` specifies horizontal grid lines.
             - ``VERTical`` specifies vertical grid lines.
             - ``BOTH`` specifies both horizontal and vertical grid lines.
@@ -12837,6 +12702,8 @@ class DisplayMathItemNormalcolor(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``Math<x>`` specifies the math waveform for which you want to change the waveform color,
+          where <x> is the math waveform number.
         - ``COLOR<y>`` specifies the color to assign to the specified waveform, where <y> = 0 to 47.
     """
 
@@ -12864,6 +12731,8 @@ class DisplayMathItemInvertcolor(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``Math<x>`` specifies the math waveform for which you want to change the waveform color,
+          where <x> is the math waveform number.
         - ``COLOR<y>`` specifies the color to assign to the specified waveform, where <y> = 0 to 47.
     """
 
@@ -12875,6 +12744,10 @@ class DisplayMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - Using the ``.query()`` method will send the ``DISplay:Math<x>?`` query.
         - Using the ``.verify(value)`` method will send the ``DISplay:Math<x>?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``Math<x>`` specifies the math waveform for which you want to change the waveform color,
+          where <x> is the math waveform number.
 
     Properties:
         - ``.invertcolor``: The ``DISplay:Math<x>:INVERTColor`` command.
@@ -12910,6 +12783,8 @@ class DisplayMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
+            - ``Math<x>`` specifies the math waveform for which you want to change the waveform
+              color, where <x> is the math waveform number.
             - ``COLOR<y>`` specifies the color to assign to the specified waveform, where <y> = 0 to
               47.
         """
@@ -12939,6 +12814,8 @@ class DisplayMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
+            - ``Math<x>`` specifies the math waveform for which you want to change the waveform
+              color, where <x> is the math waveform number.
             - ``COLOR<y>`` specifies the color to assign to the specified waveform, where <y> = 0 to
               47.
         """
@@ -16435,7 +16312,7 @@ class Display(SCPICmdRead):
               raise an AssertionError if the returned value does not match ``value``.
 
         Info:
-            - ``REFFFTView<x>`` is the Reference FFT plot number.
+            - ``REFFFTView<x>`` is the plot number.
 
         Sub-properties:
             - ``.autoscale``: The ``DISplay:REFFFTView<x>:AUTOScale`` command.
@@ -16610,6 +16487,10 @@ class Display(SCPICmdRead):
             - Using the ``.query()`` method will send the ``DISplay:Math<x>?`` query.
             - Using the ``.verify(value)`` method will send the ``DISplay:Math<x>?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``Math<x>`` specifies the math waveform for which you want to change the waveform
+              color, where <x> is the math waveform number.
 
         Sub-properties:
             - ``.invertcolor``: The ``DISplay:Math<x>:INVERTColor`` command.

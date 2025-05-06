@@ -58,7 +58,7 @@ class SearchtableDelete(SCPICmdWrite):
         ```
 
     Info:
-        - ``<qstring>`` contains the name of the search table. 'TABLE' should be the argument prefix
+        - ``<qstring>`` contains the name of the search table. “TABLE” should be the argument prefix
           followed by a non-zero integer.
     """
 
@@ -79,7 +79,7 @@ class SearchtableAddnew(SCPICmdWrite):
         ```
 
     Info:
-        - ``<qstring>`` contains the name of the search table. 'TABLE' should be the argument prefix
+        - ``<qstring>`` contains the name of the search table. “TABLE” should be the argument prefix
           followed by a non-zero integer.
     """
 
@@ -123,7 +123,7 @@ class Searchtable(SCPICmdRead):
             ```
 
         Info:
-            - ``<qstring>`` contains the name of the search table. 'TABLE' should be the argument
+            - ``<qstring>`` contains the name of the search table. “TABLE” should be the argument
               prefix followed by a non-zero integer.
         """
         return self._addnew
@@ -145,7 +145,7 @@ class Searchtable(SCPICmdRead):
             ```
 
         Info:
-            - ``<qstring>`` contains the name of the search table. 'TABLE' should be the argument
+            - ``<qstring>`` contains the name of the search table. “TABLE” should be the argument
               prefix followed by a non-zero integer.
         """
         return self._delete

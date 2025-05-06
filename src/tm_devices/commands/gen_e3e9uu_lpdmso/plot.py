@@ -26,23 +26,23 @@ Commands and Queries:
     - PLOT:PLOT<x>:EXTENDuis?
     - PLOT:PLOT<x>:EYERender {FAst|COMPlete}
     - PLOT:PLOT<x>:EYERender?
-    - PLOT:PLOT<x>:IMDA:MEAS {VRMS|IRMS|PHASE|FREQuency|TRPWR|REPWR|APPPWR|TRPWRSUM|REPWRSUM|APPPWRSUM|DCPWR|INPWR|OUTPWR|EFFiciency|TOTALEFFiciency|INPWRSUM|OUTPWRSUM}
+    - PLOT:PLOT<x>:IMDA:MEAS {ON|OFF}
     - PLOT:PLOT<x>:IMDA:MEAS?
-    - PLOT:PLOT<x>:IMDAPLOTDisplay {ALL|ONEPAIRVI|ONEPAIRV|ONEPAIRI|PHASEONE|PHASETWO|PHASETHREE|ABC|DQ0}
+    - PLOT:PLOT<x>:IMDAPLOTDisplay {VRMS |IRMS |PHASE |FREQuency |TRPWR|REPWR |APPPWR |TRPWRSUM |REPWRSUM |APPPWRSUM |DCPWR |INPWR|OUTPWR |EFFiciency |TOTALEFFiciency |INPWRSUM |OUTPWRSUM}
     - PLOT:PLOT<x>:IMDAPLOTDisplay?
     - PLOT:PLOT<x>:INTerpolate {ON|OFF}
     - PLOT:PLOT<x>:INTerpolate?
     - PLOT:PLOT<x>:LABel:COLor <QString>
     - PLOT:PLOT<x>:LABel:COLor?
-    - PLOT:PLOT<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
+    - PLOT:PLOT<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
     - PLOT:PLOT<x>:LABel:FONT:BOLD?
-    - PLOT:PLOT<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
+    - PLOT:PLOT<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
     - PLOT:PLOT<x>:LABel:FONT:ITALic?
     - PLOT:PLOT<x>:LABel:FONT:SIZE <NR1>
     - PLOT:PLOT<x>:LABel:FONT:SIZE?
     - PLOT:PLOT<x>:LABel:FONT:TYPE <QString>
     - PLOT:PLOT<x>:LABel:FONT:TYPE?
-    - PLOT:PLOT<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
+    - PLOT:PLOT<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
     - PLOT:PLOT<x>:LABel:FONT:UNDERline?
     - PLOT:PLOT<x>:LABel:NAMe <QString>
     - PLOT:PLOT<x>:LABel:NAMe?
@@ -57,7 +57,7 @@ Commands and Queries:
     - PLOT:PLOT<x>:MASKOffset:PERCENTui:FROM?
     - PLOT:PLOT<x>:MASKOffset:PERCENTui:TO <NR3>
     - PLOT:PLOT<x>:MASKOffset:PERCENTui:TO?
-    - PLOT:PLOT<x>:NUMBins {TWENtyfive|FIFTY|HUNdred|TWOFifty|FIVEHundred|TWOThousand|MAXimum}
+    - PLOT:PLOT<x>:NUMBins {TWENtyfive| FIFTY| HUNdred| TWOFifty| FIVEHundred| TWOThousand| MAXimum}
     - PLOT:PLOT<x>:NUMBins?
     - PLOT:PLOT<x>:PREGion {SELECTED|ALL}
     - PLOT:PLOT<x>:PREGion?
@@ -71,9 +71,9 @@ Commands and Queries:
     - PLOT:PLOT<x>:SPECtrum:BASE?
     - PLOT:PLOT<x>:SPECtrum:DYNRange <NR3>
     - PLOT:PLOT<x>:SPECtrum:DYNRange?
-    - PLOT:PLOT<x>:TRESponse:RTYPe {PHASE|GRPDELAY|GDELAY}
+    - PLOT:PLOT<x>:TRESponse:RTYPe {PHASE| GRPDELAY| GDELAY}
     - PLOT:PLOT<x>:TRESponse:RTYPe?
-    - PLOT:PLOT<x>:TYPe {NONE|BATHTUB|EYEDIAGRAM|HARMONICS|HISTOGRAM|IMDATIMETREND|IMDAACQTREND|INDUCTANCE|IVSINTEGRALV|MAGPROPERTY|PHASENOISE|PHASOR|RECOVERY|SOA|SPECTRUM|SSCPROFILE|SWL|TIEHISTOGRAM|TIETIMETREND|TIESPECTRUM|TIMETREND|TRESPONSE|XY|XYZ}
+    - PLOT:PLOT<x>:TYPe {NONE |BATHTUB |EYEDIAGRAM |HARMONICS|HISTOGRAM |IMDATIMETREND|IMDAACQTREND |INDUCTANCE|IVSINTEGRALV |MAGPROPERTY |PHASENOISE |PHASOR |RECOVERY|SOA |SPECTRUM |SSCPROFILE |SWL |TIEHISTOGRAM |TIETIMETREND|TIESPECTRUM |TIMETREND |TRESPONSE |XY |XYZ}
     ```
 """  # noqa: E501
 
@@ -101,7 +101,7 @@ class PlotPlotItemType(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - PLOT:PLOT<x>:TYPe {NONE|BATHTUB|EYEDIAGRAM|HARMONICS|HISTOGRAM|IMDATIMETREND|IMDAACQTREND|INDUCTANCE|IVSINTEGRALV|MAGPROPERTY|PHASENOISE|PHASOR|RECOVERY|SOA|SPECTRUM|SSCPROFILE|SWL|TIEHISTOGRAM|TIETIMETREND|TIESPECTRUM|TIMETREND|TRESPONSE|XY|XYZ}
+        - PLOT:PLOT<x>:TYPe {NONE |BATHTUB |EYEDIAGRAM |HARMONICS|HISTOGRAM |IMDATIMETREND|IMDAACQTREND |INDUCTANCE|IVSINTEGRALV |MAGPROPERTY |PHASENOISE |PHASOR |RECOVERY|SOA |SPECTRUM |SSCPROFILE |SWL |TIEHISTOGRAM |TIETIMETREND|TIESPECTRUM |TIMETREND |TRESPONSE |XY |XYZ}
         ```
 
     Info:
@@ -151,7 +151,7 @@ class PlotPlotItemTresponseRtype(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - PLOT:PLOT<x>:TRESponse:RTYPe {PHASE|GRPDELAY|GDELAY}
+        - PLOT:PLOT<x>:TRESponse:RTYPe {PHASE| GRPDELAY| GDELAY}
         - PLOT:PLOT<x>:TRESponse:RTYPe?
         ```
 
@@ -200,7 +200,7 @@ class PlotPlotItemTresponse(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - PLOT:PLOT<x>:TRESponse:RTYPe {PHASE|GRPDELAY|GDELAY}
+            - PLOT:PLOT<x>:TRESponse:RTYPe {PHASE| GRPDELAY| GDELAY}
             - PLOT:PLOT<x>:TRESponse:RTYPe?
             ```
 
@@ -374,7 +374,7 @@ class PlotPlotItemRailnum(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``PLOT<x>`` is the plot number.
-        - ``Rail<x>`` is the rail number. x has a minimum of 1 and a maximum of 7.
+        - ``RAIL<x>`` is the rail number. Valid values are 1 to 7.
     """
 
 
@@ -442,7 +442,7 @@ class PlotPlotItemNumbins(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - PLOT:PLOT<x>:NUMBins {TWENtyfive|FIFTY|HUNdred|TWOFifty|FIVEHundred|TWOThousand|MAXimum}
+        - PLOT:PLOT<x>:NUMBins {TWENtyfive| FIFTY| HUNdred| TWOFifty| FIVEHundred| TWOThousand| MAXimum}
         - PLOT:PLOT<x>:NUMBins?
         ```
 
@@ -454,7 +454,7 @@ class PlotPlotItemNumbins(SCPICmdWrite, SCPICmdRead):
         - ``FIVEHundred`` sets the number of bins to 500.
         - ``TWOThousand`` sets the number of bins to 2000.
         - ``MAXimum`` sets the number of bins to the maximum value.
-    """
+    """  # noqa: E501
 
 
 class PlotPlotItemMaskoffsetPercentuiTo(SCPICmdWrite, SCPICmdRead):
@@ -780,7 +780,7 @@ class PlotPlotItemLabelYpos(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` is the x-position, in pixels relative to the baseline of the waveform, of the
+        - ``<NR3>`` is the x-position, in pixels relative to the left edge of the display, of the
           label.
     """
 
@@ -854,7 +854,7 @@ class PlotPlotItemLabelFontUnderline(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - PLOT:PLOT<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
+        - PLOT:PLOT<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
         - PLOT:PLOT<x>:LABel:FONT:UNDERline?
         ```
 
@@ -935,7 +935,7 @@ class PlotPlotItemLabelFontItalic(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - PLOT:PLOT<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
+        - PLOT:PLOT<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
         - PLOT:PLOT<x>:LABel:FONT:ITALic?
         ```
 
@@ -962,7 +962,7 @@ class PlotPlotItemLabelFontBold(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - PLOT:PLOT<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
+        - PLOT:PLOT<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
         - PLOT:PLOT<x>:LABel:FONT:BOLD?
         ```
 
@@ -1014,7 +1014,7 @@ class PlotPlotItemLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - PLOT:PLOT<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
+            - PLOT:PLOT<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
             - PLOT:PLOT<x>:LABel:FONT:BOLD?
             ```
 
@@ -1042,7 +1042,7 @@ class PlotPlotItemLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - PLOT:PLOT<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
+            - PLOT:PLOT<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
             - PLOT:PLOT<x>:LABel:FONT:ITALic?
             ```
 
@@ -1126,7 +1126,7 @@ class PlotPlotItemLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - PLOT:PLOT<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
+            - PLOT:PLOT<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
             - PLOT:PLOT<x>:LABel:FONT:UNDERline?
             ```
 
@@ -1310,7 +1310,7 @@ class PlotPlotItemLabel(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` is the x-position, in pixels relative to the baseline of the waveform, of
+            - ``<NR3>`` is the x-position, in pixels relative to the left edge of the display, of
               the label.
         """
         return self._ypos
@@ -1357,46 +1357,8 @@ class PlotPlotItemImdaplotdisplay(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - PLOT:PLOT<x>:IMDAPLOTDisplay {ALL|ONEPAIRVI|ONEPAIRV|ONEPAIRI|PHASEONE|PHASETWO|PHASETHREE|ABC|DQ0}
+        - PLOT:PLOT<x>:IMDAPLOTDisplay {VRMS |IRMS |PHASE |FREQuency |TRPWR|REPWR |APPPWR |TRPWRSUM |REPWRSUM |APPPWRSUM |DCPWR |INPWR|OUTPWR |EFFiciency |TOTALEFFiciency |INPWRSUM |OUTPWRSUM}
         - PLOT:PLOT<x>:IMDAPLOTDisplay?
-        ```
-
-    Info:
-        - ``PLOT<x>`` is the plot number.
-        - ``ALL`` sets the IMDA time trend and acq trend plot display configuration to ALL.
-        - ``ONEPAIRVI`` sets the IMDA time trend and acq trend plot display configuration to
-          ONEPAIRVI.
-        - ``ONEPAIRV`` sets the IMDA time trend and acq trend plot display configuration to
-          ONEPAIRV.
-        - ``ONEPAIRI`` sets the IMDA time trend and acq trend plot display configuration to
-          ONEPAIRI.
-        - ``PHASEONE`` sets the IMDA time trend and acq trend plot display configuration to
-          PHASEONE.
-        - ``PHASETWO`` sets the IMDA time trend and acq trend plot display configuration to
-          PHASETWO.
-        - ``PHASETHREE`` sets the IMDA time trend and acq trend plot display configuration to
-          PHASETHREE.
-        - ``ABC`` sets the IMDA time trend plot display to ABC.
-        - ``DQ0`` sets the IMDA time trend plot display to DQ0.
-    """  # noqa: E501
-
-
-class PlotPlotItemImdaMeas(SCPICmdWrite, SCPICmdRead):
-    """The ``PLOT:PLOT<x>:IMDA:MEAS`` command.
-
-    Description:
-        - This command sets or returns the measurement selection of trend plot and acq trend plot.
-
-    Usage:
-        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:IMDA:MEAS?`` query.
-        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:IMDA:MEAS?`` query and
-          raise an AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:IMDA:MEAS value`` command.
-
-    SCPI Syntax:
-        ```
-        - PLOT:PLOT<x>:IMDA:MEAS {VRMS|IRMS|PHASE|FREQuency|TRPWR|REPWR|APPPWR|TRPWRSUM|REPWRSUM|APPPWRSUM|DCPWR|INPWR|OUTPWR|EFFiciency|TOTALEFFiciency|INPWRSUM|OUTPWRSUM}
-        - PLOT:PLOT<x>:IMDA:MEAS?
         ```
 
     Info:
@@ -1425,6 +1387,31 @@ class PlotPlotItemImdaMeas(SCPICmdWrite, SCPICmdRead):
         - ``OUTPWRSUM`` sets the IMDA measurement selection to OUTPWRSUM. This selection is
           applicable only for acq trend plots.
     """  # noqa: E501
+
+
+class PlotPlotItemImdaMeas(SCPICmdWrite, SCPICmdRead):
+    """The ``PLOT:PLOT<x>:IMDA:MEAS`` command.
+
+    Description:
+        - This command sets or returns the measurement selection of trend plot and acq trend plot.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:IMDA:MEAS?`` query.
+        - Using the ``.verify(value)`` method will send the ``PLOT:PLOT<x>:IMDA:MEAS?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``PLOT:PLOT<x>:IMDA:MEAS value`` command.
+
+    SCPI Syntax:
+        ```
+        - PLOT:PLOT<x>:IMDA:MEAS {ON|OFF}
+        - PLOT:PLOT<x>:IMDA:MEAS?
+        ```
+
+    Info:
+        - ``PLOT<x>`` is the plot number.
+        - ``ON`` specifies the interpolation state has been turned on for SOA plot.
+        - ``OFF`` specifies the interpolation state has been turned off for SOA plot.
+    """
 
 
 class PlotPlotItemImda(SCPICmdRead):
@@ -1463,36 +1450,15 @@ class PlotPlotItemImda(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - PLOT:PLOT<x>:IMDA:MEAS {VRMS|IRMS|PHASE|FREQuency|TRPWR|REPWR|APPPWR|TRPWRSUM|REPWRSUM|APPPWRSUM|DCPWR|INPWR|OUTPWR|EFFiciency|TOTALEFFiciency|INPWRSUM|OUTPWRSUM}
+            - PLOT:PLOT<x>:IMDA:MEAS {ON|OFF}
             - PLOT:PLOT<x>:IMDA:MEAS?
             ```
 
         Info:
             - ``PLOT<x>`` is the plot number.
-            - ``VRMS`` sets the IMDA measurement selection to VRMS.
-            - ``IRMS`` sets the IMDA measurement selection to IRMS.
-            - ``PHASE`` sets the IMDA measurement selection to PHASE.
-            - ``FREQuency`` sets the IMDA measurement selection to FREQuency.
-            - ``TRPWR`` sets the IMDA measurement selection to TRPWR.
-            - ``REPWR`` sets the IMDA measurement selection to REPWR.
-            - ``APPPWR`` sets the IMDA measurement selection to APPPWR.
-            - ``TRPWRSUM`` sets the IMDA measurement selection to TRPWRSUM.
-            - ``REPWRSUM`` sets the IMDA measurement selection to REPWRSUM.
-            - ``APPPWRSUM`` sets the IMDA measurement selection to APPPWRSUM.
-            - ``DCPWR`` sets the IMDA measurement selection to DCPWR. This selection is applicable
-              only for acq trend plots.
-            - ``INPWR`` sets the IMDA measurement selection to INPWR. This selection is applicable
-              only for acq trend plots.
-            - ``OUTPWR`` sets the IMDA measurement selection to OUTPWR. This selection is applicable
-              only for acq trend plots.
-            - ``EFFiciency`` sets the IMDA measurement selection to EFFiciency.
-            - ``TOTALEFFiciency`` sets the IMDA measurement selection to TOTALEFFiciency. This
-              selection is applicable only for acq trend plots.
-            - ``INPWRSUM`` sets the IMDA measurement selection to INPWRSUM. This selection is
-              applicable only for acq trend plots.
-            - ``OUTPWRSUM`` sets the IMDA measurement selection to OUTPWRSUM. This selection is
-              applicable only for acq trend plots.
-        """  # noqa: E501
+            - ``ON`` specifies the interpolation state has been turned on for SOA plot.
+            - ``OFF`` specifies the interpolation state has been turned off for SOA plot.
+        """
         return self._meas
 
 
@@ -1551,8 +1517,8 @@ class PlotPlotItemExportraw(SCPICmdRead):
 
     Description:
         - This command returns a binary stream of double values containing the x,y and hits value.
-          Use this command along with ``MEASUREMENT:ADDMEAS TIE``, ``PLOT:PLOT1:TYPE EYEDIAGRAM``,
-          ``DISplay:SELect:VIEW`` plotview1 to export the eye diagram plot data.
+          Use this command along with ``MEASUREMENT:ADDMEAS TIE`` ``PLOT:PLOT1:TYPE EYEDIAGRAM``
+          ``DISplay:SELect:VIEW`` plotview1
 
     Usage:
         - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:EXPORTRaw?`` query.
@@ -1878,9 +1844,8 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Description:
             - This command returns a binary stream of double values containing the x,y and hits
-              value. Use this command along with ``MEASUREMENT:ADDMEAS TIE``,
-              ``PLOT:PLOT1:TYPE EYEDIAGRAM``, ``DISplay:SELect:VIEW`` plotview1 to export the eye
-              diagram plot data.
+              value. Use this command along with ``MEASUREMENT:ADDMEAS TIE``
+              ``PLOT:PLOT1:TYPE EYEDIAGRAM`` ``DISplay:SELect:VIEW`` plotview1
 
         Usage:
             - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:EXPORTRaw?`` query.
@@ -1982,27 +1947,35 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - PLOT:PLOT<x>:IMDAPLOTDisplay {ALL|ONEPAIRVI|ONEPAIRV|ONEPAIRI|PHASEONE|PHASETWO|PHASETHREE|ABC|DQ0}
+            - PLOT:PLOT<x>:IMDAPLOTDisplay {VRMS |IRMS |PHASE |FREQuency |TRPWR|REPWR |APPPWR |TRPWRSUM |REPWRSUM |APPPWRSUM |DCPWR |INPWR|OUTPWR |EFFiciency |TOTALEFFiciency |INPWRSUM |OUTPWRSUM}
             - PLOT:PLOT<x>:IMDAPLOTDisplay?
             ```
 
         Info:
             - ``PLOT<x>`` is the plot number.
-            - ``ALL`` sets the IMDA time trend and acq trend plot display configuration to ALL.
-            - ``ONEPAIRVI`` sets the IMDA time trend and acq trend plot display configuration to
-              ONEPAIRVI.
-            - ``ONEPAIRV`` sets the IMDA time trend and acq trend plot display configuration to
-              ONEPAIRV.
-            - ``ONEPAIRI`` sets the IMDA time trend and acq trend plot display configuration to
-              ONEPAIRI.
-            - ``PHASEONE`` sets the IMDA time trend and acq trend plot display configuration to
-              PHASEONE.
-            - ``PHASETWO`` sets the IMDA time trend and acq trend plot display configuration to
-              PHASETWO.
-            - ``PHASETHREE`` sets the IMDA time trend and acq trend plot display configuration to
-              PHASETHREE.
-            - ``ABC`` sets the IMDA time trend plot display to ABC.
-            - ``DQ0`` sets the IMDA time trend plot display to DQ0.
+            - ``VRMS`` sets the IMDA measurement selection to VRMS.
+            - ``IRMS`` sets the IMDA measurement selection to IRMS.
+            - ``PHASE`` sets the IMDA measurement selection to PHASE.
+            - ``FREQuency`` sets the IMDA measurement selection to FREQuency.
+            - ``TRPWR`` sets the IMDA measurement selection to TRPWR.
+            - ``REPWR`` sets the IMDA measurement selection to REPWR.
+            - ``APPPWR`` sets the IMDA measurement selection to APPPWR.
+            - ``TRPWRSUM`` sets the IMDA measurement selection to TRPWRSUM.
+            - ``REPWRSUM`` sets the IMDA measurement selection to REPWRSUM.
+            - ``APPPWRSUM`` sets the IMDA measurement selection to APPPWRSUM.
+            - ``DCPWR`` sets the IMDA measurement selection to DCPWR. This selection is applicable
+              only for acq trend plots.
+            - ``INPWR`` sets the IMDA measurement selection to INPWR. This selection is applicable
+              only for acq trend plots.
+            - ``OUTPWR`` sets the IMDA measurement selection to OUTPWR. This selection is applicable
+              only for acq trend plots.
+            - ``EFFiciency`` sets the IMDA measurement selection to EFFiciency.
+            - ``TOTALEFFiciency`` sets the IMDA measurement selection to TOTALEFFiciency. This
+              selection is applicable only for acq trend plots.
+            - ``INPWRSUM`` sets the IMDA measurement selection to INPWRSUM. This selection is
+              applicable only for acq trend plots.
+            - ``OUTPWRSUM`` sets the IMDA measurement selection to OUTPWRSUM. This selection is
+              applicable only for acq trend plots.
         """  # noqa: E501
         return self._imdaplotdisplay
 
@@ -2108,7 +2081,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - PLOT:PLOT<x>:NUMBins {TWENtyfive|FIFTY|HUNdred|TWOFifty|FIVEHundred|TWOThousand|MAXimum}
+            - PLOT:PLOT<x>:NUMBins {TWENtyfive| FIFTY| HUNdred| TWOFifty| FIVEHundred| TWOThousand| MAXimum}
             - PLOT:PLOT<x>:NUMBins?
             ```
 
@@ -2198,7 +2171,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``PLOT<x>`` is the plot number.
-            - ``Rail<x>`` is the rail number. x has a minimum of 1 and a maximum of 7.
+            - ``RAIL<x>`` is the rail number. Valid values are 1 to 7.
         """
         return self._railnum
 
@@ -2272,7 +2245,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - PLOT:PLOT<x>:TYPe {NONE|BATHTUB|EYEDIAGRAM|HARMONICS|HISTOGRAM|IMDATIMETREND|IMDAACQTREND|INDUCTANCE|IVSINTEGRALV|MAGPROPERTY|PHASENOISE|PHASOR|RECOVERY|SOA|SPECTRUM|SSCPROFILE|SWL|TIEHISTOGRAM|TIETIMETREND|TIESPECTRUM|TIMETREND|TRESPONSE|XY|XYZ}
+            - PLOT:PLOT<x>:TYPe {NONE |BATHTUB |EYEDIAGRAM |HARMONICS|HISTOGRAM |IMDATIMETREND|IMDAACQTREND |INDUCTANCE|IVSINTEGRALV |MAGPROPERTY |PHASENOISE |PHASOR |RECOVERY|SOA |SPECTRUM |SSCPROFILE |SWL |TIEHISTOGRAM |TIETIMETREND|TIESPECTRUM |TIMETREND |TRESPONSE |XY |XYZ}
             ```
 
         Info:
@@ -2341,8 +2314,7 @@ class PlotDelete(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` is the specified plot. Argument is of the form 'PLOT<NR1>, where <NR1> is ≥
-          1).
+        - ``<QString>`` is the specified plot. Argument is of the form “.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -2363,8 +2335,7 @@ class PlotAddnew(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` is the specified plot. The argument is of the form 'PLOT<NR1>', where <NR1>
-          ≥ 1.
+        - ``<QString>`` is the specified plot. The argument is of the form “.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -2410,8 +2381,7 @@ class Plot(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the specified plot. The argument is of the form 'PLOT<NR1>', where
-              <NR1> ≥ 1.
+            - ``<QString>`` is the specified plot. The argument is of the form “.
         """
         return self._addnew
 
@@ -2431,8 +2401,7 @@ class Plot(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the specified plot. Argument is of the form 'PLOT<NR1>, where <NR1>
-              is ≥ 1).
+            - ``<QString>`` is the specified plot. Argument is of the form “.
         """
         return self._delete
 

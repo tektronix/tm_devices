@@ -45,6 +45,7 @@ class TouchscreenState(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``1`` enables the touch screen.
         - ``0`` disables the touch screen.
         - ``ON`` enables the touch screen.
         - ``OFF`` disables the touch screen.
@@ -137,6 +138,7 @@ class Touchscreen(SCPICmdRead):
             ```
 
         Info:
+            - ``1`` enables the touch screen.
             - ``0`` disables the touch screen.
             - ``ON`` enables the touch screen.
             - ``OFF`` disables the touch screen.

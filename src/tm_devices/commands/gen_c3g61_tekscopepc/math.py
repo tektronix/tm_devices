@@ -2186,9 +2186,6 @@ class MathMathItemLabelFontSize(SCPICmdWrite):
         ```
         - MATH:MATH<x>:LABel:FONT:SIZE <NR1>
         ```
-
-    Info:
-        - ``<NR1>`` sets the label size in points.
     """
 
 
@@ -2326,9 +2323,6 @@ class MathMathItemLabelFont(SCPICmdRead):
             ```
             - MATH:MATH<x>:LABel:FONT:SIZE <NR1>
             ```
-
-        Info:
-            - ``<NR1>`` sets the label size in points.
         """
         return self._size
 
@@ -2758,12 +2752,6 @@ class MathMathItemFunction(SCPICmdWrite):
         ```
         - MATH:MATH<x>:FUNCtion {ADD|SUBtract|MULTiply|DIVide}
         ```
-
-    Info:
-        - ``ADD`` sets the basic math function to add.
-        - ``SUBtract`` sets the basic math function to subtract.
-        - ``MULTiply`` sets the basic math function to multiply.
-        - ``DIVide`` sets the basic math function to divide.
     """
 
 
@@ -2869,7 +2857,7 @@ class MathMathItemFilterType(SCPICmdWrite, SCPICmdRead):
         - ``HILBert`` specifies the filter type as HILBert.
         - ``DIFFerentiator`` specifies the filter type as DIFFerentiator.
         - ``RC`` specifies the filter type as RC.
-        - ``RRC`` specifies the filter type as RRC.
+        - ``RCC`` specifies the filter type as RCC.
     """
 
 
@@ -3986,7 +3974,7 @@ class MathMathItemFilter(SCPICmdRead):
             - ``HILBert`` specifies the filter type as HILBert.
             - ``DIFFerentiator`` specifies the filter type as DIFFerentiator.
             - ``RC`` specifies the filter type as RC.
-            - ``RRC`` specifies the filter type as RRC.
+            - ``RCC`` specifies the filter type as RCC.
         """
         return self._type
 
@@ -5150,12 +5138,6 @@ class MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
             - MATH:MATH<x>:FUNCtion {ADD|SUBtract|MULTiply|DIVide}
             ```
-
-        Info:
-            - ``ADD`` sets the basic math function to add.
-            - ``SUBtract`` sets the basic math function to subtract.
-            - ``MULTiply`` sets the basic math function to multiply.
-            - ``DIVide`` sets the basic math function to divide.
         """
         return self._function
 

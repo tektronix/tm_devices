@@ -19,7 +19,7 @@ Commands and Queries:
     - MATH:MATH<x>:AUDIO:SUPPortedfields?
     - MATH:MATH<x>:AUTOETHERnet:SUPPortedfields {DATa|IPData|TDATa}
     - MATH:MATH<x>:AUTOETHERnet:SUPPortedfields?
-    - MATH:MATH<x>:AVG:MODE {ON|OFF|<NR1>}
+    - MATH:MATH<x>:AVG:MODE {<NR1>|OFF|ON}
     - MATH:MATH<x>:AVG:WEIGht <NR1>
     - MATH:MATH<x>:CAN:SUPPortedfields {DATa}
     - MATH:MATH<x>:CAN:SUPPortedfields?
@@ -52,7 +52,7 @@ Commands and Queries:
     - MATH:MATH<x>:FILTer:ORDer?
     - MATH:MATH<x>:FILTer:PRIPple <NR3>
     - MATH:MATH<x>:FILTer:PRIPple?
-    - MATH:MATH<x>:FILTer:RESPonse {BUTTerworth|CHEBYONe|CHEBYTWo|ELLiptical|GAUSsian|BESSelCUSTom}
+    - MATH:MATH<x>:FILTer:RESPonse {BUTTerworth| CHEBYONe| CHEBYTWo| ELLiptical| GAUSsian| BESSelCUSTom}
     - MATH:MATH<x>:FILTer:RESPonse?
     - MATH:MATH<x>:FILTer:ROFactor <NR1>
     - MATH:MATH<x>:FILTer:ROFactor?
@@ -71,7 +71,7 @@ Commands and Queries:
     - MATH:MATH<x>:FILTer:SYMBols?
     - MATH:MATH<x>:FILTer:TWIDth <NR3>
     - MATH:MATH<x>:FILTer:TWIDth?
-    - MATH:MATH<x>:FILTer:TYPe {LPASs|HPASs|BPASs|BSTop|APASs|HILBert|DIFFerentiator|RC|RRC}
+    - MATH:MATH<x>:FILTer:TYPe {LPASs| HPASs| BPASs| BSTop| APASs| HILBert| DIFFerentiator| RC| RRC}
     - MATH:MATH<x>:FILTer:TYPe?
     - MATH:MATH<x>:FLEXray:SUPPortedfields {DATa}
     - MATH:MATH<x>:FLEXray:SUPPortedfields?
@@ -83,12 +83,13 @@ Commands and Queries:
     - MATH:MATH<x>:I3C:SUPPortedfields {DATa}
     - MATH:MATH<x>:I3C:SUPPortedfields?
     - MATH:MATH<x>:INTERpolation {ON|OFF}
+    - MATH:MATH<x>:INTERpolation?
     - MATH:MATH<x>:LABel:COLor <QString>
-    - MATH:MATH<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
-    - MATH:MATH<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
+    - MATH:MATH<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
+    - MATH:MATH<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
     - MATH:MATH<x>:LABel:FONT:SIZE <NR1>
     - MATH:MATH<x>:LABel:FONT:TYPE <QString>
-    - MATH:MATH<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
+    - MATH:MATH<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
     - MATH:MATH<x>:LABel:NAMe <QString>
     - MATH:MATH<x>:LABel:NAMe?
     - MATH:MATH<x>:LABel:XPOS <NR1>
@@ -124,7 +125,7 @@ Commands and Queries:
     - MATH:MATH<x>:SPECTral:HORZ?
     - MATH:MATH<x>:SPECTral:MAG {LINEAr|DBM}
     - MATH:MATH<x>:SPECTral:MAG?
-    - MATH:MATH<x>:SPECTral:PHASE {DEGrees|RADians|GROUPDelay}
+    - MATH:MATH<x>:SPECTral:PHASE {DEGrees| RADians| GROUPDelay}
     - MATH:MATH<x>:SPECTral:PHASE?
     - MATH:MATH<x>:SPECTral:SOUrce {CH<x>|MATH<x>|REF<x>}
     - MATH:MATH<x>:SPECTral:SOUrce?
@@ -135,10 +136,10 @@ Commands and Queries:
     - MATH:MATH<x>:SPECTral:TYPE {MAGNitude|PHASe|REAL|IMAGinary}
     - MATH:MATH<x>:SPECTral:TYPE?
     - MATH:MATH<x>:SPECTral:UNWRap {OFF|ON|0|1}
-    - MATH:MATH<x>:SPECTral:UNWRap:DEGrees <NR3>
+    - MATH:MATH<x>:SPECTral:UNWRap:DEGrees M <NR3>
     - MATH:MATH<x>:SPECTral:UNWRap:DEGrees?
     - MATH:MATH<x>:SPECTral:UNWRap?
-    - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing|HANNing|BLACKMANHarris|KAISERBessel|GAUSSian|FLATTOP2|TEKEXPonential}
+    - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing| HANNing|BLACKMANHarris|KAISERBessel|GAUSSian| FLATTOP2|TEKEXPonential}
     - MATH:MATH<x>:SPECTral:WINdow?
     - MATH:MATH<x>:SPI:SUPPortedfields {DATa|MOSIdata|MISOdata}
     - MATH:MATH<x>:SPI:SUPPortedfields?
@@ -180,9 +181,6 @@ class MathMathItemVunit(SCPICmdWrite):
         ```
         - MATH:MATH<x>:VUNIT <QString>
         ```
-
-    Info:
-        - ``<QString>`` is the custom vertical units.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -280,7 +278,7 @@ class MathMathItemType(SCPICmdWrite):
           instruments and Tekscope (Offline).
         - ``FFT`` sets the type to FFT math, which can use any live analog or reference waveform in
           the time domain. NOTE. You can also use FFT as part of a math expression by declaring the
-          type.
+          type ADVanced. See examples for the command ``MATH:MATH<x>:DEFine``.
         - ``ADVanced`` sets the type to advanced math.
     """
 
@@ -536,7 +534,7 @@ class MathMathItemSpectralWindow(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing|HANNing|BLACKMANHarris|KAISERBessel|GAUSSian|FLATTOP2|TEKEXPonential}
+        - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing| HANNing|BLACKMANHarris|KAISERBessel|GAUSSian| FLATTOP2|TEKEXPonential}
         - MATH:MATH<x>:SPECTral:WINdow?
         ```
 
@@ -574,7 +572,7 @@ class MathMathItemSpectralUnwrapDegrees(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:SPECTral:UNWRap:DEGrees <NR3>
+        - MATH:MATH<x>:SPECTral:UNWRap:DEGrees M <NR3>
         - MATH:MATH<x>:SPECTral:UNWRap:DEGrees?
         ```
 
@@ -637,7 +635,7 @@ class MathMathItemSpectralUnwrap(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:SPECTral:UNWRap:DEGrees <NR3>
+            - MATH:MATH<x>:SPECTral:UNWRap:DEGrees M <NR3>
             - MATH:MATH<x>:SPECTral:UNWRap:DEGrees?
             ```
 
@@ -775,7 +773,8 @@ class MathMathItemSpectralSource(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the specified spectral math source. This only works with a
-          math of type FFT. The math waveform is specified by x.
+          math of type FFT. The math waveform is specified by x. This command is for use when the
+          ``MATH:MATH<x>:TYPE`` is FFT.
 
     Usage:
         - Using the ``.query()`` method will send the ``MATH:MATH<x>:SPECTral:SOUrce?`` query.
@@ -791,7 +790,9 @@ class MathMathItemSpectralSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``MATH:MATH<x>:SPECTRAL:SOURCE`` is for use when the ``MATH:MATH<x>:TYPE`` is FFT.
+        - ``CH<x>`` specifies an analog channel as source.
+        - ``MATH<x>`` specifies a math channel as source.
+        - ``REF<x>`` specifies a reference waveform as the source.
     """
 
 
@@ -811,14 +812,14 @@ class MathMathItemSpectralPhase(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:SPECTral:PHASE {DEGrees|RADians|GROUPDelay}
+        - MATH:MATH<x>:SPECTral:PHASE {DEGrees| RADians| GROUPDelay}
         - MATH:MATH<x>:SPECTral:PHASE?
         ```
 
     Info:
-        - ``DEGREES`` sets the SpectralPhase units to degrees.
-        - ``RADIANS`` sets the SpectralPhase units to radians.
-        - ``GROUPDELAY`` sets the SpectralPhase units to groupdelay, which computes the derivative
+        - ``DEGrees`` sets the SpectralPhase units to degrees.
+        - ``RADians`` sets the SpectralPhase units to radians.
+        - ``GROUPDelay`` sets the SpectralPhase units to groupdelay, which computes the derivative
           of unwrapped phase spectrum. Units are expressed in seconds.
     """
 
@@ -844,7 +845,7 @@ class MathMathItemSpectralMag(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``LINEAR`` sets the SpectralMag units to linear.
+        - ``LINEAr`` sets the SpectralMag units to linear.
         - ``DBM`` sets the SpectralMag units to decibels. It also sets the Ref Level Offset to a
           value that is the equivalent of 1 mW into 50 Ω.
     """
@@ -956,7 +957,7 @@ class MathMathItemSpectral(SCPICmdRead):
             ```
 
         Info:
-            - ``LINEAR`` sets the SpectralMag units to linear.
+            - ``LINEAr`` sets the SpectralMag units to linear.
             - ``DBM`` sets the SpectralMag units to decibels. It also sets the Ref Level Offset to a
               value that is the equivalent of 1 mW into 50 Ω.
         """
@@ -979,14 +980,14 @@ class MathMathItemSpectral(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:SPECTral:PHASE {DEGrees|RADians|GROUPDelay}
+            - MATH:MATH<x>:SPECTral:PHASE {DEGrees| RADians| GROUPDelay}
             - MATH:MATH<x>:SPECTral:PHASE?
             ```
 
         Info:
-            - ``DEGREES`` sets the SpectralPhase units to degrees.
-            - ``RADIANS`` sets the SpectralPhase units to radians.
-            - ``GROUPDELAY`` sets the SpectralPhase units to groupdelay, which computes the
+            - ``DEGrees`` sets the SpectralPhase units to degrees.
+            - ``RADians`` sets the SpectralPhase units to radians.
+            - ``GROUPDelay`` sets the SpectralPhase units to groupdelay, which computes the
               derivative of unwrapped phase spectrum. Units are expressed in seconds.
         """
         return self._phase
@@ -997,7 +998,8 @@ class MathMathItemSpectral(SCPICmdRead):
 
         Description:
             - This command sets or queries the specified spectral math source. This only works with
-              a math of type FFT. The math waveform is specified by x.
+              a math of type FFT. The math waveform is specified by x. This command is for use when
+              the ``MATH:MATH<x>:TYPE`` is FFT.
 
         Usage:
             - Using the ``.query()`` method will send the ``MATH:MATH<x>:SPECTral:SOUrce?`` query.
@@ -1013,7 +1015,9 @@ class MathMathItemSpectral(SCPICmdRead):
             ```
 
         Info:
-            - ``MATH:MATH<x>:SPECTRAL:SOURCE`` is for use when the ``MATH:MATH<x>:TYPE`` is FFT.
+            - ``CH<x>`` specifies an analog channel as source.
+            - ``MATH<x>`` specifies a math channel as source.
+            - ``REF<x>`` specifies a reference waveform as the source.
         """
         return self._source
 
@@ -1134,7 +1138,7 @@ class MathMathItemSpectral(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing|HANNing|BLACKMANHarris|KAISERBessel|GAUSSian|FLATTOP2|TEKEXPonential}
+            - MATH:MATH<x>:SPECTral:WINdow {RECTANGular|HAMMing| HANNing|BLACKMANHarris|KAISERBessel|GAUSSian| FLATTOP2|TEKEXPonential}
             - MATH:MATH<x>:SPECTral:WINdow?
             ```
 
@@ -2131,7 +2135,7 @@ class MathMathItemLabelFontUnderline(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
+        - MATH:MATH<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
         ```
 
     Info:
@@ -2198,7 +2202,7 @@ class MathMathItemLabelFontItalic(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
+        - MATH:MATH<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
         ```
 
     Info:
@@ -2221,7 +2225,7 @@ class MathMathItemLabelFontBold(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
+        - MATH:MATH<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
         ```
 
     Info:
@@ -2269,7 +2273,7 @@ class MathMathItemLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
+            - MATH:MATH<x>:LABel:FONT:BOLD {<NR1>|OFF|ON}
             ```
 
         Info:
@@ -2293,7 +2297,7 @@ class MathMathItemLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
+            - MATH:MATH<x>:LABel:FONT:ITALic {<NR1>|OFF|ON}
             ```
 
         Info:
@@ -2361,7 +2365,7 @@ class MathMathItemLabelFont(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
+            - MATH:MATH<x>:LABel:FONT:UNDERline {<NR1>|OFF|ON}
             ```
 
         Info:
@@ -2389,8 +2393,8 @@ class MathMathItemLabelColor(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString`` > is the color of the label. To return the color to the default color, send
-          an empty string as in this example: ``:MATH:MATH1:LABEL:COLOR`` ''.
+        - ``<QString>`` is the color of the label. To return the color to the default color, send an
+          empty string as in this example: ``:MATH:MATH1:LABEL:COLOR`` ''.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -2438,7 +2442,7 @@ class MathMathItemLabel(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString`` > is the color of the label. To return the color to the default color,
+            - ``<QString>`` is the color of the label. To return the color to the default color,
               send an empty string as in this example: ``:MATH:MATH1:LABEL:COLOR`` ''.
         """
         return self._color
@@ -2543,7 +2547,7 @@ class MathMathItemLabel(SCPICmdRead):
         return self._ypos
 
 
-class MathMathItemInterpolation(SCPICmdWrite):
+class MathMathItemInterpolation(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:INTERpolation`` command.
 
     Description:
@@ -2551,18 +2555,22 @@ class MathMathItemInterpolation(SCPICmdWrite):
           The math waveform is specified by x.
 
     Usage:
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:INTERpolation?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:INTERpolation?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:INTERpolation value``
           command.
 
     SCPI Syntax:
         ```
         - MATH:MATH<x>:INTERpolation {ON|OFF}
+        - MATH:MATH<x>:INTERpolation?
         ```
 
     Info:
         - ``ON`` indicates that the sinc interpolation is used for math waveform.
         - ``OFF`` indicates no interpolation is used for math waveform. Waveform will appear
-          'stair-steppy' in this case.
+          “stair-steppy” in this case.
     """
 
 
@@ -2742,7 +2750,8 @@ class MathMathItemFunction(SCPICmdWrite):
 
     Description:
         - This command sets or queries the basic math arithmetic function. The math waveform is
-          specified by x.
+          specified by x.This command does not affect the same Math equation in Advanced math (also
+          accessed via the command
 
     Usage:
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FUNCtion value`` command.
@@ -2849,7 +2858,7 @@ class MathMathItemFilterType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:FILTer:TYPe {LPASs|HPASs|BPASs|BSTop|APASs|HILBert|DIFFerentiator|RC|RRC}
+        - MATH:MATH<x>:FILTer:TYPe {LPASs| HPASs| BPASs| BSTop| APASs| HILBert| DIFFerentiator| RC| RRC}
         - MATH:MATH<x>:FILTer:TYPe?
         ```
 
@@ -2863,7 +2872,7 @@ class MathMathItemFilterType(SCPICmdWrite, SCPICmdRead):
         - ``DIFFerentiator`` specifies the filter type as DIFFerentiator.
         - ``RC`` specifies the filter type as RC.
         - ``RRC`` specifies the filter type as RRC.
-    """
+    """  # noqa: E501
 
 
 class MathMathItemFilterTwidth(SCPICmdWrite, SCPICmdRead):
@@ -3144,7 +3153,7 @@ class MathMathItemFilterResponse(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:FILTer:RESPonse {BUTTerworth|CHEBYONe|CHEBYTWo|ELLiptical|GAUSsian|BESSelCUSTom}
+        - MATH:MATH<x>:FILTer:RESPonse {BUTTerworth| CHEBYONe| CHEBYTWo| ELLiptical| GAUSsian| BESSelCUSTom}
         - MATH:MATH<x>:FILTer:RESPonse?
         ```
 
@@ -3730,7 +3739,7 @@ class MathMathItemFilter(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:FILTer:RESPonse {BUTTerworth|CHEBYONe|CHEBYTWo|ELLiptical|GAUSsian|BESSelCUSTom}
+            - MATH:MATH<x>:FILTer:RESPonse {BUTTerworth| CHEBYONe| CHEBYTWo| ELLiptical| GAUSsian| BESSelCUSTom}
             - MATH:MATH<x>:FILTer:RESPonse?
             ```
 
@@ -3972,7 +3981,7 @@ class MathMathItemFilter(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:FILTer:TYPe {LPASs|HPASs|BPASs|BSTop|APASs|HILBert|DIFFerentiator|RC|RRC}
+            - MATH:MATH<x>:FILTer:TYPe {LPASs| HPASs| BPASs| BSTop| APASs| HILBert| DIFFerentiator| RC| RRC}
             - MATH:MATH<x>:FILTer:TYPe?
             ```
 
@@ -3986,7 +3995,7 @@ class MathMathItemFilter(SCPICmdRead):
             - ``DIFFerentiator`` specifies the filter type as DIFFerentiator.
             - ``RC`` specifies the filter type as RC.
             - ``RRC`` specifies the filter type as RRC.
-        """
+        """  # noqa: E501
         return self._type
 
 
@@ -4512,7 +4521,7 @@ class MathMathItemAvgMode(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:AVG:MODE {ON|OFF|<NR1>}
+        - MATH:MATH<x>:AVG:MODE {<NR1>|OFF|ON}
         ```
 
     Info:
@@ -4554,7 +4563,7 @@ class MathMathItemAvg(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:AVG:MODE {ON|OFF|<NR1>}
+            - MATH:MATH<x>:AVG:MODE {<NR1>|OFF|ON}
             ```
 
         Info:
@@ -5139,7 +5148,8 @@ class MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Description:
             - This command sets or queries the basic math arithmetic function. The math waveform is
-              specified by x.
+              specified by x.This command does not affect the same Math equation in Advanced math
+              (also accessed via the command
 
         Usage:
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FUNCtion value``
@@ -5224,18 +5234,22 @@ class MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               source. The math waveform is specified by x.
 
         Usage:
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:INTERpolation?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:INTERpolation?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:INTERpolation value``
               command.
 
         SCPI Syntax:
             ```
             - MATH:MATH<x>:INTERpolation {ON|OFF}
+            - MATH:MATH<x>:INTERpolation?
             ```
 
         Info:
             - ``ON`` indicates that the sinc interpolation is used for math waveform.
             - ``OFF`` indicates no interpolation is used for math waveform. Waveform will appear
-              'stair-steppy' in this case.
+              “stair-steppy” in this case.
         """
         return self._interpolation
 
@@ -5553,7 +5567,7 @@ class MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               instruments and Tekscope (Offline).
             - ``FFT`` sets the type to FFT math, which can use any live analog or reference waveform
               in the time domain. NOTE. You can also use FFT as part of a math expression by
-              declaring the type.
+              declaring the type ADVanced. See examples for the command ``MATH:MATH<x>:DEFine``.
             - ``ADVanced`` sets the type to advanced math.
         """
         return self._type
@@ -5587,9 +5601,6 @@ class MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
             - MATH:MATH<x>:VUNIT <QString>
             ```
-
-        Info:
-            - ``<QString>`` is the custom vertical units.
         """
         return self._vunit
 
@@ -5628,7 +5639,7 @@ class MathDelete(SCPICmdWrite):
 
     Info:
         - ``<QString>`` is a quoted string specifying the math waveform to delete. The quoted string
-          is of the form 'MATH<NR1>', where <NR1> is ≥1.
+          is of the form 'MATH<NR1>”, where <NR1> is ≥1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -5650,7 +5661,7 @@ class MathAddnew(SCPICmdWrite):
 
     Info:
         - ``<QString>`` is the quoted string specifying the math waveform to add. The argument is of
-          the form 'MATH<NR1>', where <NR1> is ≥1.
+          the form 'MATH<NR1>”, where <NR1> is ≥1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -5697,7 +5708,7 @@ class Math(SCPICmdRead):
 
         Info:
             - ``<QString>`` is the quoted string specifying the math waveform to add. The argument
-              is of the form 'MATH<NR1>', where <NR1> is ≥1.
+              is of the form 'MATH<NR1>”, where <NR1> is ≥1.
         """
         return self._addnew
 
@@ -5718,7 +5729,7 @@ class Math(SCPICmdRead):
 
         Info:
             - ``<QString>`` is a quoted string specifying the math waveform to delete. The quoted
-              string is of the form 'MATH<NR1>', where <NR1> is ≥1.
+              string is of the form 'MATH<NR1>”, where <NR1> is ≥1.
         """
         return self._delete
 

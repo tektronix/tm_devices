@@ -721,8 +721,7 @@ class BusBItemUsbBitrate(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:USB:BITRate`` command.
 
     Description:
-        - This command sets or queries the USB data rate for bus <x>, where the bus number is
-          specified by x.
+        - This command sets or queries the USB bit rate for bus <x>, where x is the bus number.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:USB:BITRate?`` query.
@@ -737,7 +736,6 @@ class BusBItemUsbBitrate(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus waveform.
         - ``FULL`` indicates the bit rate is 12 Mbps.
         - ``HIGH`` indicates the bit rate is 480 Mbps.
         - ``LOW`` indicates the bit rate is 1.5 Mbps.
@@ -751,9 +749,6 @@ class BusBItemUsb(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:USB?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:USB?`` query and raise an
           AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the number of the bus waveform.
 
     Properties:
         - ``.bitrate``: The ``BUS:B<x>:USB:BITRate`` command.
@@ -772,8 +767,7 @@ class BusBItemUsb(SCPICmdRead):
         """Return the ``BUS:B<x>:USB:BITRate`` command.
 
         Description:
-            - This command sets or queries the USB data rate for bus <x>, where the bus number is
-              specified by x.
+            - This command sets or queries the USB bit rate for bus <x>, where x is the bus number.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:USB:BITRate?`` query.
@@ -789,7 +783,6 @@ class BusBItemUsb(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus waveform.
             - ``FULL`` indicates the bit rate is 12 Mbps.
             - ``HIGH`` indicates the bit rate is 480 Mbps.
             - ``LOW`` indicates the bit rate is 1.5 Mbps.
@@ -4145,8 +4138,8 @@ class BusBItemMil1553bResponsetimeMinimum(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:MIL1553B:RESPonsetime:MINimum`` command.
 
     Description:
-        - This command sets or queries the minimum response time to a valid command issued for the
-          specified MIL-STD-1553 bus. The bus is specified by x.
+        - This command specifies the minimum response time to a valid command issued for the
+          MIL-STD-1553 bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime:MINimum?``
@@ -4164,8 +4157,7 @@ class BusBItemMil1553bResponsetimeMinimum(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
-        - ``<NR3>`` is a floating point number that specifies the minimum response time, in seconds.
+        - ``<NR3>`` is a floating point number that specifies the minimum response time in seconds.
     """
 
 
@@ -4173,8 +4165,8 @@ class BusBItemMil1553bResponsetimeMaximum(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum`` command.
 
     Description:
-        - This command sets or queries the maximum response time to a valid command issued for the
-          specified MIL-STD-1553 bus. The bus is specified by x.
+        - This command specifies the maximum response time to a valid command issued for the
+          MIL-STD-1553 bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum?``
@@ -4192,7 +4184,6 @@ class BusBItemMil1553bResponsetimeMaximum(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
         - ``<NR3>`` is a floating point number that specifies the maximum response time, in seconds.
     """
 
@@ -4204,9 +4195,6 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime?``
           query and raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.maximum``: The ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum`` command.
@@ -4223,8 +4211,8 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
         """Return the ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum`` command.
 
         Description:
-            - This command sets or queries the maximum response time to a valid command issued for
-              the specified MIL-STD-1553 bus. The bus is specified by x.
+            - This command specifies the maximum response time to a valid command issued for the
+              MIL-STD-1553 bus.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -4242,7 +4230,6 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
             - ``<NR3>`` is a floating point number that specifies the maximum response time, in
               seconds.
         """
@@ -4253,8 +4240,8 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
         """Return the ``BUS:B<x>:MIL1553B:RESPonsetime:MINimum`` command.
 
         Description:
-            - This command sets or queries the minimum response time to a valid command issued for
-              the specified MIL-STD-1553 bus. The bus is specified by x.
+            - This command specifies the minimum response time to a valid command issued for the
+              MIL-STD-1553 bus.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -4272,8 +4259,7 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
-            - ``<NR3>`` is a floating point number that specifies the minimum response time, in
+            - ``<NR3>`` is a floating point number that specifies the minimum response time in
               seconds.
         """
         return self._minimum
@@ -4362,9 +4348,6 @@ class BusBItemMil1553b(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime?``
               query and raise an AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.maximum``: The ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum`` command.
@@ -6501,9 +6484,6 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:USB?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:USB?`` query and raise an
               AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``B<x>`` is the number of the bus waveform.
 
         Sub-properties:
             - ``.bitrate``: The ``BUS:B<x>:USB:BITRate`` command.

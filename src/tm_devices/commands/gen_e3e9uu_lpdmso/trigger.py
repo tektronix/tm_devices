@@ -11,11 +11,11 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - TRIGger FORCe
-    - TRIGger:A:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA|EOW|ERRor}
+    - TRIGger:A:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA |EOW|ERRor}
     - TRIGger:A:BUS:B<x>:ARINC429A:CONDition?
     - TRIGger:A:BUS:B<x>:ARINC429A:DATa:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:ARINC429A:DATa:HIVALue?
-    - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier {A|B}:BUS:B<x>:ARINC429A:DATa: QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier?
     - TRIGger:A:BUS:B<x>:ARINC429A:DATa:VALue <QString>
     - TRIGger:A:BUS:B<x>:ARINC429A:DATa:VALue?
@@ -23,7 +23,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:ARINC429A:ERRTYPe?
     - TRIGger:A:BUS:B<x>:ARINC429A:LABel:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:ARINC429A:LABel:HIVALue?
-    - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {A|B}:BUS:B<x>:ARINC429A:LABel: QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier?
     - TRIGger:A:BUS:B<x>:ARINC429A:LABel:VALue <QString>
     - TRIGger:A:BUS:B<x>:ARINC429A:LABel:VALue?
@@ -97,7 +97,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:ETHERnet:MAC:LENgth:HIVALue?
     - TRIGger:A:BUS:B<x>:ETHERnet:MAC:LENgth:VALue <QString>
     - TRIGger:A:BUS:B<x>:ETHERnet:MAC:LENgth:VALue?
-    - TRIGger:A:BUS:B<x>:ETHERnet:QTAG:VALue <QString>
+    - TRIGger:A:BUS:B<x>:ETHERnet:QTAG:VALue T <QString>
     - TRIGger:A:BUS:B<x>:ETHERnet:QTAG:VALue?
     - TRIGger:A:BUS:B<x>:ETHERnet:TCPHeader:ACKnum:VALue <QString>
     - TRIGger:A:BUS:B<x>:ETHERnet:TCPHeader:ACKnum:VALue?
@@ -111,7 +111,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:FLEXray:CONDition?
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:HIVALue?
-    - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:VALue <QString>
     - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:VALue?
@@ -163,7 +163,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:I3C:ADDRess:MODe?
     - TRIGger:A:BUS:B<x>:I3C:ADDRess:VALue <QString>
     - TRIGger:A:BUS:B<x>:I3C:ADDRess:VALue?
-    - TRIGger:A:BUS:B<x>:I3C:CONDition {STARt|REPEATStart|ADDRess|DATa|SDRDirect|SDRBroadcast|ERRors|HOTJoin|HDRRestart|HDRExit|STOP}
+    - TRIGger:A:BUS:B<x>:I3C:CONDition {STARt| REPEATStart|ADDRess| DATa| SDRDirect| SDRBroadcast| ERRors| HOTJoin|HDRRestart| HDRExit| STOP}
     - TRIGger:A:BUS:B<x>:I3C:CONDition?
     - TRIGger:A:BUS:B<x>:I3C:DATa:DIRection {READ|WRITE|NOCARE}
     - TRIGger:A:BUS:B<x>:I3C:DATa:DIRection?
@@ -173,9 +173,9 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:I3C:DATa:VALue?
     - TRIGger:A:BUS:B<x>:I3C:ERRORTYPe {NACK|TBIT|BADDr}
     - TRIGger:A:BUS:B<x>:I3C:ERRORTYPe?
-    - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya|ENTRDya|SETMwrl|SETMrdl|DLSLave|ENTRTSTMode|EXTime|SETaasa|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe|SETBUSCON}
+    - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave|ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT|DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
     - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket?
-    - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya|SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl|GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt|MDATASpeed|HDRCapability|GETXTime|GETCAPS|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe}
+    - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya|SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch|GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime|GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
     - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket?
     - TRIGger:A:BUS:B<x>:I3C:TBIT:DIREction {READ|WRITe}
     - TRIGger:A:BUS:B<x>:I3C:TBIT:DIREction?
@@ -207,7 +207,7 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:SUBADdress?
     - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:TRBit {RX|TX|X}
     - TRIGger:A:BUS:B<x>:MIL1553B:COMMAND:TRBit?
-    - TRIGger:A:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA|TIMe|ERRor}
+    - TRIGger:A:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA |TIMe|ERRor}
     - TRIGger:A:BUS:B<x>:MIL1553B:CONDition?
     - TRIGger:A:BUS:B<x>:MIL1553B:DATa:PARity {ONE|ZERo|NOCARE}
     - TRIGger:A:BUS:B<x>:MIL1553B:DATa:PARity?
@@ -263,23 +263,23 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:HIVALue?
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier?
-    - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:VALue <Qstring>
+    - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:VALue <QString>
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:VALue?
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:HIVALue?
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier?
-    - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:VALue <Qstring>
+    - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:VALue <QString>
     - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:VALue?
     - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:HIVALue <QString>
     - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:HIVALue?
     - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:QUALifier?
-    - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:VALue <Qstring>
+    - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:VALue <QString>
     - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:VALue?
-    - TRIGger:A:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue <Qstring>
+    - TRIGger:A:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue <QString>
     - TRIGger:A:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue?
-    - TRIGger:A:BUS:B<x>:SENT:FAST:STATus:VALue <Qstring>
+    - TRIGger:A:BUS:B<x>:SENT:FAST:STATus:VALue <QString>
     - TRIGger:A:BUS:B<x>:SENT:FAST:STATus:VALue?
     - TRIGger:A:BUS:B<x>:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|Inrange|OUTrange}
     - TRIGger:A:BUS:B<x>:SENT:PAUSE:QUALifier?
@@ -287,9 +287,9 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:HIVALue?
     - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:QUALifier?
-    - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue <Qstring>
+    - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue <QString>
     - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue?
-    - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue <Qstring>
+    - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue <QString>
     - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?
     - TRIGger:A:BUS:B<x>:SPI:CONDition {SS|STARTofframe|DATa}
     - TRIGger:A:BUS:B<x>:SPI:CONDition?
@@ -299,23 +299,19 @@ Commands and Queries:
     - TRIGger:A:BUS:B<x>:SPI:DATa:VALue?
     - TRIGger:A:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep|SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte|DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd|EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte|AUTHenticate|TRANSferbusownership|PARItyerror}
     - TRIGger:A:BUS:B<x>:SPMI:CONDition?
-    - TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe <NR2>
-    - TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe?
-    - TRIGger:A:BUS:B<x>:SPMI:DATa:VALue <Qstring>
-    - TRIGger:A:BUS:B<x>:SPMI:DATa:VALue?
-    - TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue <Qstring>
-    - TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue?
-    - TRIGger:A:BUS:B<x>:SPMI:NORESPonse <Qstring>
+    - TRIGger:A:BUS:B<x>:SPMI:DATa:VALue ?
+    - TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue ?
+    - TRIGger:A:BUS:B<x>:SPMI:NORESPonse <QString>
     - TRIGger:A:BUS:B<x>:SPMI:NORESPonse?
-    - TRIGger:A:BUS:B<x>:SPMI:REGISTERADDRess:VALue <Qstring>
+    - TRIGger:A:BUS:B<x>:SPMI:REGISTERADDRess:VALue <QString>
     - TRIGger:A:BUS:B<x>:SPMI:REGISTERADDRess:VALue?
-    - TRIGger:A:BUS:B<x>:SPMI:SLAVEADDRess:VALue <Qstring>
+    - TRIGger:A:BUS:B<x>:SPMI:SLAVEADDRess:VALue <QString>
     - TRIGger:A:BUS:B<x>:SPMI:SLAVEADDRess:VALue?
     - TRIGger:A:BUS:B<x>:SVID:COMMand:RESPonse {GETREG|GETREGVENDor|GETREGTESTCFG|SETVIDFAST|SETVIDSLOW|SETVIDDECay|SETPS|SETREGADDR|SETREGDATa|SETREGADDRVENDor|SETREGDATAVENDor|SETREGADDRTESTCONFg|SETREGDATATESTCONFg|TESTMODe|SETWP|GETREGPKTRECent|GETREGPKTALERt|GETREGPKTBAD|GETREGVREVENt}
     - TRIGger:A:BUS:B<x>:SVID:COMMand:RESPonse?
     - TRIGger:A:BUS:B<x>:SVID:COMMand:TYPe {GET|SET|OPTional}
     - TRIGger:A:BUS:B<x>:SVID:COMMand:TYPe?
-    - TRIGger:A:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess|COMMand|PAYLoad|ERRors}
+    - TRIGger:A:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess| COMMand| PAYLoad| ERRors}
     - TRIGger:A:BUS:B<x>:SVID:CONDition?
     - TRIGger:A:BUS:B<x>:SVID:ERRor:TYPe {NACK|REJect|MIXed|PARity}
     - TRIGger:A:BUS:B<x>:SVID:ERRor:TYPe?
@@ -383,19 +379,19 @@ Commands and Queries:
     - TRIGger:A:LEVel:CH<x>?
     - TRIGger:A:LOGICPattern:A {HIGH|LOW|X}
     - TRIGger:A:LOGICPattern:A?
-    - TRIGger:A:LOGICQUALification {AND|OR|NAND|NOR}
+    - TRIGger:A:LOGICQUALification {AND|OR|NANd|NOR}
     - TRIGger:A:LOGICQUALification?
     - TRIGger:A:LOGIc:DELTatime <NR3>
     - TRIGger:A:LOGIc:DELTatime?
     - TRIGger:A:LOGIc:FUNCtion {AND|NANd|NOR|OR}
     - TRIGger:A:LOGIc:FUNCtion?
-    - TRIGger:A:LOGIc:INPut:CLOCk:SOUrce {CH<x>|CH<x>_D<y>}
+    - TRIGger:A:LOGIc:INPut:CLOCk:SOUrce {CH<x>|CH<x>_D<x>}
     - TRIGger:A:LOGIc:INPut:CLOCk:SOUrce?
     - TRIGger:A:LOGIc:POLarity {POSitive|NEGative|EITher}
     - TRIGger:A:LOGIc:POLarity?
     - TRIGger:A:LOGIc:USECLockedge {OFF|ON|0|1}
     - TRIGger:A:LOGIc:USECLockedge?
-    - TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
+    - TRIGger:A:LOGIc:WHEn {A|B}:LOGIc:WHEn{TRUe|FALSe|MOREthan|LESSThan|EQual| UNEQual}
     - TRIGger:A:LOGIc:WHEn?
     - TRIGger:A:LOWerthreshold:CH<x> <NR3>
     - TRIGger:A:LOWerthreshold:CH<x>?
@@ -427,7 +423,7 @@ Commands and Queries:
     - TRIGger:A:SETHOLDLogicval:A?
     - TRIGger:A:SETHold:CLOCk:EDGE {FALL|RISe}
     - TRIGger:A:SETHold:CLOCk:EDGE?
-    - TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>|CH<x>_D<y>}
+    - TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>|CH<x>_D<x>}
     - TRIGger:A:SETHold:CLOCk:SOUrce?
     - TRIGger:A:SETHold:HOLDTime <NR3>
     - TRIGger:A:SETHold:HOLDTime?
@@ -455,7 +451,7 @@ Commands and Queries:
     - TRIGger:A:TYPe?
     - TRIGger:A:UPPerthreshold:CH<x> <NR3>
     - TRIGger:A:UPPerthreshold:CH<x>?
-    - TRIGger:A:VIDeo:FIELD {ALLLines|NUMERic|ODD|EVEN|ALLFields}
+    - TRIGger:A:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN|ALLFields}
     - TRIGger:A:VIDeo:FIELD?
     - TRIGger:A:VIDeo:LINE <NR1>
     - TRIGger:A:VIDeo:LINE?
@@ -477,11 +473,11 @@ Commands and Queries:
     - TRIGger:A:WINdow:WIDth?
     - TRIGger:AUXLevel {<NR3>|ECL|TTL}
     - TRIGger:AUXLevel?
-    - TRIGger:B:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA|EOW|ERRor}
+    - TRIGger:B:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA |EOW|ERRor}
     - TRIGger:B:BUS:B<x>:ARINC429A:CONDition?
     - TRIGger:B:BUS:B<x>:ARINC429A:DATa:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:ARINC429A:DATa:HIVALue?
-    - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier {A|B}:BUS:B<x>:ARINC429A:DATa: QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier?
     - TRIGger:B:BUS:B<x>:ARINC429A:DATa:VALue <QString>
     - TRIGger:B:BUS:B<x>:ARINC429A:DATa:VALue?
@@ -489,7 +485,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:ARINC429A:ERRTYPe?
     - TRIGger:B:BUS:B<x>:ARINC429A:LABel:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:ARINC429A:LABel:HIVALue?
-    - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier {A|B}:BUS:B<x>:ARINC429A:LABel: QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier?
     - TRIGger:B:BUS:B<x>:ARINC429A:LABel:VALue <QString>
     - TRIGger:B:BUS:B<x>:ARINC429A:LABel:VALue?
@@ -563,7 +559,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:ETHERnet:MAC:LENgth:HIVALue?
     - TRIGger:B:BUS:B<x>:ETHERnet:MAC:LENgth:VALue <QString>
     - TRIGger:B:BUS:B<x>:ETHERnet:MAC:LENgth:VALue?
-    - TRIGger:B:BUS:B<x>:ETHERnet:QTAG:VALue <QString>
+    - TRIGger:B:BUS:B<x>:ETHERnet:QTAG:VALue T <QString>
     - TRIGger:B:BUS:B<x>:ETHERnet:QTAG:VALue?
     - TRIGger:B:BUS:B<x>:ETHERnet:TCPHeader:ACKnum:VALue <QString>
     - TRIGger:B:BUS:B<x>:ETHERnet:TCPHeader:ACKnum:VALue?
@@ -577,7 +573,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:FLEXray:CONDition?
     - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:HIVALue?
-    - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+    - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier
     - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
     - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:VALue <QString>
     - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:VALue?
@@ -629,7 +625,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:I3C:ADDRess:MODe?
     - TRIGger:B:BUS:B<x>:I3C:ADDRess:VALue <QString>
     - TRIGger:B:BUS:B<x>:I3C:ADDRess:VALue?
-    - TRIGger:B:BUS:B<x>:I3C:CONDition {STARt|REPEATStart|ADDRess|DATa|SDRDirect|SDRBroadcast|ERRors|HOTJoin|HDRRestart|HDRExit|STOP}
+    - TRIGger:B:BUS:B<x>:I3C:CONDition {STARt| REPEATStart|ADDRess| DATa| SDRDirect| SDRBroadcast| ERRors| HOTJoin|HDRRestart| HDRExit| STOP}
     - TRIGger:B:BUS:B<x>:I3C:CONDition?
     - TRIGger:B:BUS:B<x>:I3C:DATa:DIRection {READ|WRITE|NOCARE}
     - TRIGger:B:BUS:B<x>:I3C:DATa:DIRection?
@@ -639,9 +635,9 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:I3C:DATa:VALue?
     - TRIGger:B:BUS:B<x>:I3C:ERRORTYPe {NACK|TBIT|BADDr}
     - TRIGger:B:BUS:B<x>:I3C:ERRORTYPe?
-    - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya|ENTRDya|SETMwrl|SETMrdl|DLSLave|ENTRTSTMode|EXTime|SETaasa|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe|SETBUSCON}
+    - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave|ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT|DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
     - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket?
-    - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya|SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl|GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt|MDATASpeed|HDRCapability|GETXTime|GETCAPS|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe}
+    - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya|SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch|GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime|GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
     - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket?
     - TRIGger:B:BUS:B<x>:I3C:TBIT:DIREction {READ|WRITe}
     - TRIGger:B:BUS:B<x>:I3C:TBIT:DIREction?
@@ -673,7 +669,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:SUBADdress?
     - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:TRBit {RX|TX|X}
     - TRIGger:B:BUS:B<x>:MIL1553B:COMMAND:TRBit?
-    - TRIGger:B:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA|TIMe|ERRor}
+    - TRIGger:B:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA |TIMe|ERRor}
     - TRIGger:B:BUS:B<x>:MIL1553B:CONDition?
     - TRIGger:B:BUS:B<x>:MIL1553B:DATa:PARity {ONE|ZERo|NOCARE}
     - TRIGger:B:BUS:B<x>:MIL1553B:DATa:PARity?
@@ -729,23 +725,23 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:HIVALue?
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:QUALifier?
-    - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:VALue <Qstring>
+    - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:VALue <QString>
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:VALue?
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:HIVALue?
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:QUALifier?
-    - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:VALue <Qstring>
+    - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:VALue <QString>
     - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:VALue?
     - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:HIVALue <QString>
     - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:HIVALue?
     - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:QUALifier?
-    - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:VALue <Qstring>
+    - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:VALue <QString>
     - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:VALue?
-    - TRIGger:B:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue <Qstring>
+    - TRIGger:B:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue <QString>
     - TRIGger:B:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue?
-    - TRIGger:B:BUS:B<x>:SENT:FAST:STATus:VALue <Qstring>
+    - TRIGger:B:BUS:B<x>:SENT:FAST:STATus:VALue <QString>
     - TRIGger:B:BUS:B<x>:SENT:FAST:STATus:VALue?
     - TRIGger:B:BUS:B<x>:SENT:PAUSE:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|Inrange|OUTrange}
     - TRIGger:B:BUS:B<x>:SENT:PAUSE:QUALifier?
@@ -753,9 +749,9 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:HIVALue?
     - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
     - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:QUALifier?
-    - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:VALue <Qstring>
+    - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:VALue <QString>
     - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:VALue?
-    - TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue <Qstring>
+    - TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue <QString>
     - TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue?
     - TRIGger:B:BUS:B<x>:SPI:CONDition {SS|STARTofframe|DATa}
     - TRIGger:B:BUS:B<x>:SPI:CONDition?
@@ -765,23 +761,19 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:SPI:DATa:VALue?
     - TRIGger:B:BUS:B<x>:SPMI:CONDition {SSC|RESet|SLEep|SHUTdown|WAKeup|MASTERREAd|MASTERWRIte|REGREAd|REGWRIte|DEVICEDESCMASTERREAd|DEVICEDESCSLAVEREAd|EXTREGREAd|EXTREGWRIte|LONGEXTREGREAd|LONGEXTREGWRIte|REG0WRIte|AUTHenticate|TRANSferbusownership|PARItyerror}
     - TRIGger:B:BUS:B<x>:SPMI:CONDition?
-    - TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe <NR2>
-    - TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe?
-    - TRIGger:B:BUS:B<x>:SPMI:DATa:VALue <Qstring>
-    - TRIGger:B:BUS:B<x>:SPMI:DATa:VALue?
-    - TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue <Qstring>
-    - TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue?
-    - TRIGger:B:BUS:B<x>:SPMI:NORESPonse <Qstring>
+    - TRIGger:B:BUS:B<x>:SPMI:DATa:VALue ?
+    - TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue ?
+    - TRIGger:B:BUS:B<x>:SPMI:NORESPonse <QString>
     - TRIGger:B:BUS:B<x>:SPMI:NORESPonse?
-    - TRIGger:B:BUS:B<x>:SPMI:REGISTERADDRess:VALue <Qstring>
+    - TRIGger:B:BUS:B<x>:SPMI:REGISTERADDRess:VALue <QString>
     - TRIGger:B:BUS:B<x>:SPMI:REGISTERADDRess:VALue?
-    - TRIGger:B:BUS:B<x>:SPMI:SLAVEADDRess:VALue <Qstring>
+    - TRIGger:B:BUS:B<x>:SPMI:SLAVEADDRess:VALue <QString>
     - TRIGger:B:BUS:B<x>:SPMI:SLAVEADDRess:VALue?
     - TRIGger:B:BUS:B<x>:SVID:COMMand:RESPonse {GETREG|GETREGVENDor|GETREGTESTCFG|SETVIDFAST|SETVIDSLOW|SETVIDDECay|SETPS|SETREGADDR|SETREGDATa|SETREGADDRVENDor|SETREGDATAVENDor|SETREGADDRTESTCONFg|SETREGDATATESTCONFg|TESTMODe|SETWP|GETREGPKTRECent|GETREGPKTALERt|GETREGPKTBAD|GETREGVREVENt}
     - TRIGger:B:BUS:B<x>:SVID:COMMand:RESPonse?
     - TRIGger:B:BUS:B<x>:SVID:COMMand:TYPe {GET|SET|OPTional}
     - TRIGger:B:BUS:B<x>:SVID:COMMand:TYPe?
-    - TRIGger:B:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess|COMMand|PAYLoad|ERRors}
+    - TRIGger:B:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess| COMMand| PAYLoad| ERRors}
     - TRIGger:B:BUS:B<x>:SVID:CONDition?
     - TRIGger:B:BUS:B<x>:SVID:ERRor:TYPe {NACK|REJect|MIXed|PARity}
     - TRIGger:B:BUS:B<x>:SVID:ERRor:TYPe?
@@ -853,13 +845,13 @@ Commands and Queries:
     - TRIGger:B:LOGIc:DELTatime?
     - TRIGger:B:LOGIc:FUNCtion {AND|NANd|NOR|OR}
     - TRIGger:B:LOGIc:FUNCtion?
-    - TRIGger:B:LOGIc:INPut:CLOCk:SOUrce {CH<x>|CH<x>_D<y>}
+    - TRIGger:B:LOGIc:INPut:CLOCk:SOUrce {CH<x>|CH<x>_D<x>}
     - TRIGger:B:LOGIc:INPut:CLOCk:SOUrce?
     - TRIGger:B:LOGIc:POLarity {POSitive|NEGative|EITher}
     - TRIGger:B:LOGIc:POLarity?
     - TRIGger:B:LOGIc:USECLockedge {OFF|ON|0|1}
     - TRIGger:B:LOGIc:USECLockedge?
-    - TRIGger:B:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
+    - TRIGger:B:LOGIc:WHEn {A|B}:LOGIc:WHEn{TRUe|FALSe|MOREthan|LESSThan|EQual| UNEQual}
     - TRIGger:B:LOGIc:WHEn?
     - TRIGger:B:LOWerthreshold:CH<x> <NR3>
     - TRIGger:B:LOWerthreshold:CH<x>?
@@ -901,7 +893,7 @@ Commands and Queries:
     - TRIGger:B:SETHOLDLogicval:B?
     - TRIGger:B:SETHold:CLOCk:EDGE {FALL|RISe}
     - TRIGger:B:SETHold:CLOCk:EDGE?
-    - TRIGger:B:SETHold:CLOCk:SOUrce {CH<x>|CH<x>_D<y>}
+    - TRIGger:B:SETHold:CLOCk:SOUrce {CH<x>|CH<x>_D<x>}
     - TRIGger:B:SETHold:CLOCk:SOUrce?
     - TRIGger:B:SETHold:HOLDTime <NR3>
     - TRIGger:B:SETHold:HOLDTime?
@@ -933,7 +925,7 @@ Commands and Queries:
     - TRIGger:B:TYPe?
     - TRIGger:B:UPPerthreshold:CH<x> <NR3>
     - TRIGger:B:UPPerthreshold:CH<x>?
-    - TRIGger:B:VIDeo:FIELD {ALLLines|NUMERic|ODD|EVEN|ALLFields}
+    - TRIGger:B:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN|ALLFields}
     - TRIGger:B:VIDeo:FIELD?
     - TRIGger:B:VIDeo:LINE <NR1>
     - TRIGger:B:VIDeo:LINE?
@@ -969,6 +961,7 @@ from ..helpers import (
     DefaultDictPassKeyToFactory,
     SCPICmdRead,
     SCPICmdWrite,
+    SCPICmdWriteNoArguments,
     ValidatedChannel,
     ValidatedDynamicNumberCmd,
 )
@@ -1200,7 +1193,8 @@ class TriggerBWindowWhen(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the window trigger event. This command is equivalent to
-          selecting Window Setup from the Trig menu and selecting from the Window Trigger When box.
+          selecting Window Setup from the Trig menu and selecting from the Window Trigger When
+          box.Digital channels are not supported as window trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:WINdow:WHEn?`` query.
@@ -1230,7 +1224,8 @@ class TriggerBWindowSource(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B:WINdow:SOUrce`` command.
 
     Description:
-        - This command sets or queries the source for a window trigger.
+        - This command sets or queries the source for a window trigger.Digital channels are not
+          supported as window trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:WINdow:SOUrce?`` query.
@@ -1298,34 +1293,34 @@ class TriggerBWindowCrossing(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``UPPer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument triggers
-          when the signal remains between the upper and lower thresholds for longer than the time
-          limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits through the upper threshold.
-          If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater, the instrument triggers when the
-          signal remains above the upper threshold for longer than the time limit
-          (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crosses downward through the upper
+        - ``UPPer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrumenttriggers
+          when the signal remains between the upper and lower thresholds for longerthan the time
+          limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits throughthe upper threshold. If
+          ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater,the instrument triggers when the
+          signal remains above the upper threshold forlonger than the time limit
+          (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crossesdownward through the upper
           threshold.
-        - ``LOWer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument triggers
-          when the signal remains between the upper and lower thresholds for longer than the time
-          limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits through the lower threshold.
-          If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater, the instrument triggers when the
-          signal remains below the lower threshold for longer than the time limit
-          (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crosses upwards through the lower
+        - ``LOWer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrumenttriggers
+          when the signal remains between the upper and lower thresholds for longerthan the time
+          limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits throughthe lower threshold. If
+          ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater,the instrument triggers when the
+          signal remains below the lower threshold forlonger than the time limit
+          (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crossesupwards through the lower
           threshold.
-        - ``EITher`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument
-          triggers when the signal remains between the upper and lower thresholds for longer than
-          the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits through either the
-          upper or lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater, the
-          instrument triggers when the signal remains either above the upper threshold or below the
-          lower threshold for longer than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and
-          then crosses a threshold.
-        - ``NONe`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument triggers
-          when the signal remains between the upper and lower thresholds for longer than the time
-          limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) without crossing through either the upper or
-          lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater, the instrument
-          triggers when the signal remains outside the upper and lower thresholds for longer than
-          the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) without crossing through either the
-          upper or lower threshold.
+        - ``EITher`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrumenttriggers
+          when the signal remains between the upper and lower thresholds forlonger than the time
+          limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exitsthrough either the upper or
+          lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEnis OUTSIDEGreater``, the instrument
+          triggers when the signal remains eitherabove the upper threshold or below the lower
+          threshold for longer than the timelimit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then
+          crosses a threshold.
+        - ``NONe`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrumenttriggers
+          when the signal remains between the upper and lower thresholds forlonger than the time
+          limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) without crossingthrough either the upper or
+          lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEnis OUTSIDEGreater``, the instrument
+          triggers when the signal remainsoutside the upper and lower thresholds for longer than the
+          time limit(``:TRIGger``:{A\|B}``:WINdow:WIDTH``) without crossing through either the
+          upperor lower threshold.
     """
 
 
@@ -1378,34 +1373,36 @@ class TriggerBWindow(SCPICmdRead):
             ```
 
         Info:
-            - ``UPPer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument
-              triggers when the signal remains between the upper and lower thresholds for longer
-              than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits through the
-              upper threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater, the
-              instrument triggers when the signal remains above the upper threshold for longer than
-              the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crosses downward
-              through the upper threshold.
-            - ``LOWer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument
-              triggers when the signal remains between the upper and lower thresholds for longer
-              than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits through the
-              lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater, the
-              instrument triggers when the signal remains below the lower threshold for longer than
-              the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crosses upwards through
-              the lower threshold.
-            - ``EITher`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument
-              triggers when the signal remains between the upper and lower thresholds for longer
-              than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits through
-              either the upper or lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is
-              OUTSIDEGreater, the instrument triggers when the signal remains either above the upper
-              threshold or below the lower threshold for longer than the time limit
-              (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crosses a threshold.
-            - ``NONe`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument
-              triggers when the signal remains between the upper and lower thresholds for longer
-              than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) without crossing through
-              either the upper or lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is
-              OUTSIDEGreater, the instrument triggers when the signal remains outside the upper and
-              lower thresholds for longer than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``)
-              without crossing through either the upper or lower threshold.
+            - ``UPPer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the
+              instrumenttriggers when the signal remains between the upper and lower thresholds for
+              longerthan the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits
+              throughthe upper threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is
+              OUTSIDEGreater,the instrument triggers when the signal remains above the upper
+              threshold forlonger than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and
+              then crossesdownward through the upper threshold.
+            - ``LOWer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the
+              instrumenttriggers when the signal remains between the upper and lower thresholds for
+              longerthan the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits
+              throughthe lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is
+              OUTSIDEGreater,the instrument triggers when the signal remains below the lower
+              threshold forlonger than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and
+              then crossesupwards through the lower threshold.
+            - ``EITher`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the
+              instrumenttriggers when the signal remains between the upper and lower thresholds
+              forlonger than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then
+              exitsthrough either the upper or lower threshold. If
+              ``:TRIGger``:{A\|B}``:WINdow:WHEnis OUTSIDEGreater``, the instrument triggers when the
+              signal remains eitherabove the upper threshold or below the lower threshold for longer
+              than the timelimit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crosses a
+              threshold.
+            - ``NONe`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the
+              instrumenttriggers when the signal remains between the upper and lower thresholds
+              forlonger than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) without
+              crossingthrough either the upper or lower threshold. If
+              ``:TRIGger``:{A\|B}``:WINdow:WHEnis OUTSIDEGreater``, the instrument triggers when the
+              signal remainsoutside the upper and lower thresholds for longer than the time
+              limit(``:TRIGger``:{A\|B}``:WINdow:WIDTH``) without crossing through either the
+              upperor lower threshold.
         """
         return self._crossing
 
@@ -1442,7 +1439,8 @@ class TriggerBWindow(SCPICmdRead):
         """Return the ``TRIGger:B:WINdow:SOUrce`` command.
 
         Description:
-            - This command sets or queries the source for a window trigger.
+            - This command sets or queries the source for a window trigger.Digital channels are not
+              supported as window trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:WINdow:SOUrce?`` query.
@@ -1469,7 +1467,7 @@ class TriggerBWindow(SCPICmdRead):
         Description:
             - This command sets or queries the window trigger event. This command is equivalent to
               selecting Window Setup from the Trig menu and selecting from the Window Trigger When
-              box.
+              box.Digital channels are not supported as window trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:WINdow:WHEn?`` query.
@@ -1635,7 +1633,7 @@ class TriggerBVideoField(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:VIDeo:FIELD {ALLLines|NUMERic|ODD|EVEN|ALLFields}
+        - TRIGger:B:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN|ALLFields}
         - TRIGger:B:VIDeo:FIELD?
         ```
 
@@ -1689,7 +1687,7 @@ class TriggerBVideo(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:VIDeo:FIELD {ALLLines|NUMERic|ODD|EVEN|ALLFields}
+            - TRIGger:B:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN|ALLFields}
             - TRIGger:B:VIDeo:FIELD?
             ```
 
@@ -1910,6 +1908,8 @@ class TriggerBType(SCPICmdWrite, SCPICmdRead):
           controlled by the TRIGger:{A\|B}``:LOGIc`` commands.
         - ``SETHold`` specifies that a trigger occurs when a signal is found that meets the setup
           and hold parameters.
+        - ``TRANsition`` specifies that a trigger occurs when a specified pulse is found that meets
+          the transition trigger parameters.
         - ``BUS`` specifies that a trigger occurs when a signal is found that meets the specified
           bus setup parameters.
     """
@@ -1951,7 +1951,8 @@ class TriggerBTransitionSource(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B:TRANsition:SOUrce`` command.
 
     Description:
-        - This command specifies the source waveform for a transition trigger.
+        - This command specifies the source waveform for a transition trigger.Digital channels are
+          not supported as transition trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:TRANsition:SOUrce?`` query.
@@ -2167,7 +2168,8 @@ class TriggerBTransition(SCPICmdRead):
         """Return the ``TRIGger:B:TRANsition:SOUrce`` command.
 
         Description:
-            - This command specifies the source waveform for a transition trigger.
+            - This command specifies the source waveform for a transition trigger.Digital channels
+              are not supported as transition trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:TRANsition:SOUrce?`` query.
@@ -2252,7 +2254,8 @@ class TriggerBTimeoutTime(SCPICmdWrite, SCPICmdRead):
     Description:
         - When triggering using the TIMEOut trigger type, this command specifies the timeout time,
           in seconds. This command is equivalent to selecting Timeout from the Trig menu and setting
-          a value for Time Limit. The timeout trigger type is selected using TIMEOut
+          a value for Time Limit. The timeout trigger type is selected using
+          TRIGger:{A|B}``:TYPe TIMEOut``
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:TIMEOut:TIMe?`` query.
@@ -2277,7 +2280,7 @@ class TriggerBTimeoutSource(SCPICmdWrite, SCPICmdRead):
     Description:
         - When triggering using the TIMEOut trigger type, this command specifies the source. The
           available sources are live channels and digital channels. The default is channel 1. The
-          timeout trigger type is selected using TIMEOut.
+          timeout trigger type is selected using TRIGger:{A|B}``:TYPe TIMEOut``.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:TIMEOut:SOUrce?`` query.
@@ -2299,7 +2302,7 @@ class TriggerBTimeoutSource(SCPICmdWrite, SCPICmdRead):
 
 
 class TriggerBTimeoutPolarity(SCPICmdWrite, SCPICmdRead):
-    """The ``TRIGger:B:TIMEOut:POLarity`` command.
+    r"""The ``TRIGger:B:TIMEOut:POLarity`` command.
 
     Description:
         - When triggering using the TIMEOut trigger type, this commands specifies the polarity to be
@@ -2320,11 +2323,11 @@ class TriggerBTimeoutPolarity(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``STAYSHigh`` triggers when the signal stays high during the timeout time specified by the
-          command.
+          command TRIGger:{A\|B}``:TIMEOut:TIMe``.
         - ``STAYSLow`` triggers when the signal stays low during the timeout time specified by the
-          command.
+          command TRIGger:{A\|B}``:TIMEOut:TIMe``.
         - ``EITher`` triggers when the signal is either high or low during the timeout time
-          specified by the command.
+          specified by the command TRIGger:{A\|B}``:TIMEOut:TIMe``.
     """
 
 
@@ -2410,7 +2413,7 @@ class TriggerBTimeout(SCPICmdRead):
 
     @property
     def polarity(self) -> TriggerBTimeoutPolarity:
-        """Return the ``TRIGger:B:TIMEOut:POLarity`` command.
+        r"""Return the ``TRIGger:B:TIMEOut:POLarity`` command.
 
         Description:
             - When triggering using the TIMEOut trigger type, this commands specifies the polarity
@@ -2431,11 +2434,11 @@ class TriggerBTimeout(SCPICmdRead):
 
         Info:
             - ``STAYSHigh`` triggers when the signal stays high during the timeout time specified by
-              the command.
+              the command TRIGger:{A\|B}``:TIMEOut:TIMe``.
             - ``STAYSLow`` triggers when the signal stays low during the timeout time specified by
-              the command.
+              the command TRIGger:{A\|B}``:TIMEOut:TIMe``.
             - ``EITher`` triggers when the signal is either high or low during the timeout time
-              specified by the command.
+              specified by the command TRIGger:{A\|B}``:TIMEOut:TIMe``.
         """
         return self._polarity
 
@@ -2446,7 +2449,7 @@ class TriggerBTimeout(SCPICmdRead):
         Description:
             - When triggering using the TIMEOut trigger type, this command specifies the source. The
               available sources are live channels and digital channels. The default is channel 1.
-              The timeout trigger type is selected using TIMEOut.
+              The timeout trigger type is selected using TRIGger:{A|B}``:TYPe TIMEOut``.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:TIMEOut:SOUrce?`` query.
@@ -2474,7 +2477,8 @@ class TriggerBTimeout(SCPICmdRead):
         Description:
             - When triggering using the TIMEOut trigger type, this command specifies the timeout
               time, in seconds. This command is equivalent to selecting Timeout from the Trig menu
-              and setting a value for Time Limit. The timeout trigger type is selected using TIMEOut
+              and setting a value for Time Limit. The timeout trigger type is selected using
+              TRIGger:{A|B}``:TYPe TIMEOut``
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:TIMEOut:TIMe?`` query.
@@ -2595,13 +2599,13 @@ class TriggerBSetholdClockSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:SETHold:CLOCk:SOUrce {CH<x>|CH<x>_D<y>}
+        - TRIGger:B:SETHold:CLOCk:SOUrce {CH<x>|CH<x>_D<x>}
         - TRIGger:B:SETHold:CLOCk:SOUrce?
         ```
 
     Info:
         - ``CH<x>`` specifies the analog channel to use as the clock source waveform.
-        - ``CH<x>_D<y>`` specifies the digital channel to use as the clock source waveform.
+        - ``CH<x>_D<x>`` specifies the digital channel to use as the clock source waveform.
     """
 
 
@@ -2691,13 +2695,13 @@ class TriggerBSetholdClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:SETHold:CLOCk:SOUrce {CH<x>|CH<x>_D<y>}
+            - TRIGger:B:SETHold:CLOCk:SOUrce {CH<x>|CH<x>_D<x>}
             - TRIGger:B:SETHold:CLOCk:SOUrce?
             ```
 
         Info:
             - ``CH<x>`` specifies the analog channel to use as the clock source waveform.
-            - ``CH<x>_D<y>`` specifies the digital channel to use as the clock source waveform.
+            - ``CH<x>_D<x>`` specifies the digital channel to use as the clock source waveform.
         """
         return self._source
 
@@ -2895,7 +2899,7 @@ class TriggerBRuntWidth(SCPICmdWrite, SCPICmdRead):
 
 
 class TriggerBRuntWhen(SCPICmdWrite, SCPICmdRead):
-    """The ``TRIGger:B:RUNT:WHEn`` command.
+    r"""The ``TRIGger:B:RUNT:WHEn`` command.
 
     Description:
         - This command specifies the type of pulse width the trigger checks for when it detects a
@@ -2916,21 +2920,23 @@ class TriggerBRuntWhen(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``OCCURS`` sets the instrument to trigger if a runt signal of any detectable width occurs.
         - ``LESSthan`` sets the instrument to trigger if the a runt pulse is detected with width
-          less than the time set by the.
+          less than the time set by the TRIGger:{A\|B}``:RUNT:WIDth`` command.
         - ``MOREthan`` sets the instrument to trigger if the a runt pulse is detected with width
-          greater than the time set by the.
+          greater than the time set by the TRIGger:{A\|B}``:RUNT:WIDth`` command.
         - ``EQual`` sets the instrument to trigger if a runt pulse is detected with width equal to
-          the time period specified in.
+          the time period specified in TRIGger:{A\|B}``:RUNT:WIDth`` within a ±5% tolerance.
         - ``UNEQual`` sets the instrument to trigger if a runt pulse is detected with width greater
-          than or less than (but not equal to) the time period specified in.
+          than or less than (but not equal to) the time period specified in
+          TRIGger:{A\|B}``:RUNT:WIDth`` within a ±5% tolerance.
     """
 
 
 class TriggerBRuntSource(SCPICmdWrite, SCPICmdRead):
-    """The ``TRIGger:B:RUNT:SOUrce`` command.
+    r"""The ``TRIGger:B:RUNT:SOUrce`` command.
 
     Description:
-        - This command specifies the source waveform for the runt trigger.
+        - This command specifies the source waveform for the runt trigger.Digital channels are not
+          supported as runt trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:RUNT:SOUrce?`` query.
@@ -2946,7 +2952,8 @@ class TriggerBRuntSource(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` specifies the analog channel number to use as the source waveform for the runt
-          trigger. To specify the threshold levels when using CH<x> as the source, use.
+          trigger. To specify the threshold levels when using CH<x> as the source, use
+          TRIGger:{A\|B}``:LOWerthreshold:CH<x>`` and TRIGger:{A\|B}``:UPPerthreshold:CH<x>``.
     """
 
 
@@ -3088,10 +3095,11 @@ class TriggerBRunt(SCPICmdRead):
 
     @property
     def source(self) -> TriggerBRuntSource:
-        """Return the ``TRIGger:B:RUNT:SOUrce`` command.
+        r"""Return the ``TRIGger:B:RUNT:SOUrce`` command.
 
         Description:
-            - This command specifies the source waveform for the runt trigger.
+            - This command specifies the source waveform for the runt trigger.Digital channels are
+              not supported as runt trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:RUNT:SOUrce?`` query.
@@ -3108,13 +3116,14 @@ class TriggerBRunt(SCPICmdRead):
 
         Info:
             - ``CH<x>`` specifies the analog channel number to use as the source waveform for the
-              runt trigger. To specify the threshold levels when using CH<x> as the source, use.
+              runt trigger. To specify the threshold levels when using CH<x> as the source, use
+              TRIGger:{A\|B}``:LOWerthreshold:CH<x>`` and TRIGger:{A\|B}``:UPPerthreshold:CH<x>``.
         """
         return self._source
 
     @property
     def when(self) -> TriggerBRuntWhen:
-        """Return the ``TRIGger:B:RUNT:WHEn`` command.
+        r"""Return the ``TRIGger:B:RUNT:WHEn`` command.
 
         Description:
             - This command specifies the type of pulse width the trigger checks for when it detects
@@ -3137,13 +3146,14 @@ class TriggerBRunt(SCPICmdRead):
             - ``OCCURS`` sets the instrument to trigger if a runt signal of any detectable width
               occurs.
             - ``LESSthan`` sets the instrument to trigger if the a runt pulse is detected with width
-              less than the time set by the.
+              less than the time set by the TRIGger:{A\|B}``:RUNT:WIDth`` command.
             - ``MOREthan`` sets the instrument to trigger if the a runt pulse is detected with width
-              greater than the time set by the.
+              greater than the time set by the TRIGger:{A\|B}``:RUNT:WIDth`` command.
             - ``EQual`` sets the instrument to trigger if a runt pulse is detected with width equal
-              to the time period specified in.
+              to the time period specified in TRIGger:{A\|B}``:RUNT:WIDth`` within a ±5% tolerance.
             - ``UNEQual`` sets the instrument to trigger if a runt pulse is detected with width
-              greater than or less than (but not equal to) the time period specified in.
+              greater than or less than (but not equal to) the time period specified in
+              TRIGger:{A\|B}``:RUNT:WIDth`` within a ±5% tolerance.
         """
         return self._when
 
@@ -3181,7 +3191,8 @@ class TriggerBResetType(SCPICmdWrite, SCPICmdRead):
           reset is active, the reset criteria are part of the B triggering sequence. If the reset
           conditions defined by the reset type are met, the instrument must start over searching for
           a new occurrence of the A event. You must identify a trigger Source and Threshold for each
-          reset type, except for the Timeout trigger type.
+          reset type, except for the Timeout trigger type.If a reset condition occurs, the reset
+          criteria itself is reset and must start over.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:RESET:TYPe?`` query.
@@ -3317,7 +3328,7 @@ class TriggerBResetEdgeSlope(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``RISe`` specifies to reset the trigger on the rising or positive edge of a signal.
         - ``FALL`` specifies to reset the trigger on the falling or negative edge of a signal.
-        - ``EITHER`` specified to reset the trigger on either the rising or falling edge of a
+        - ``EITher`` specified to reset the trigger on either the rising or falling edge of a
           signal.
     """
 
@@ -3469,7 +3480,7 @@ class TriggerBResetEdge(SCPICmdRead):
         Info:
             - ``RISe`` specifies to reset the trigger on the rising or positive edge of a signal.
             - ``FALL`` specifies to reset the trigger on the falling or negative edge of a signal.
-            - ``EITHER`` specified to reset the trigger on either the rising or falling edge of a
+            - ``EITher`` specified to reset the trigger on either the rising or falling edge of a
               signal.
         """
         return self._slope
@@ -3571,7 +3582,8 @@ class TriggerBReset(SCPICmdWrite, SCPICmdRead):
               trigger reset is active, the reset criteria are part of the B triggering sequence. If
               the reset conditions defined by the reset type are met, the instrument must start over
               searching for a new occurrence of the A event. You must identify a trigger Source and
-              Threshold for each reset type, except for the Timeout trigger type.
+              Threshold for each reset type, except for the Timeout trigger type.If a reset
+              condition occurs, the reset criteria itself is reset and must start over.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:RESET:TYPe?`` query.
@@ -3596,12 +3608,14 @@ class TriggerBReset(SCPICmdWrite, SCPICmdRead):
 
 
 class TriggerBPulsewidthWhen(SCPICmdWrite, SCPICmdRead):
-    """The ``TRIGger:B:PULSEWidth:WHEn`` command.
+    r"""The ``TRIGger:B:PULSEWidth:WHEn`` command.
 
     Description:
         - This command specifies to trigger when a pulse is detected with a width (duration) that is
-          less than, greater than, equal to, or unequal to a specified value (set using ), OR whose
-          width falls outside of or within a specified range of two values (set using and ).
+          less than, greater than, equal to, or unequal to a specified value (set using
+          TRIGger:{A|B}``:PULSEWidth:LOWLimit``), OR whose width falls outside of or within a
+          specified range of two values (set using TRIGger:{A|B}``:PULSEWidth``: LOWLimit and
+          TRIGger:{A|B}``:PULSEWidth:HIGHLimit``).
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:PULSEWidth:WHEn?`` query.
@@ -3618,13 +3632,14 @@ class TriggerBPulsewidthWhen(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``LESSthan`` causes a trigger when a pulse is detected with a width less than the time set
-          by the.
+          by the TRIGger:{A\|B}``:PULSEWidth:LOWLimit`` command.
         - ``MOREthan`` causes a trigger when a pulse is detected with a width greater than the time
-          set by the.
+          set by the TRIGger:{A\|B}``:PULSEWidth:LOWLimit`` command.
         - ``EQual`` causes a trigger when a pulse is detected with a width equal to the time period
-          specified in.
+          specified in TRIGger:{A\|B}``:PULSEWidth:LOWLimit`` within a ±5% tolerance.
         - ``UNEQual`` causes a trigger when a pulse is detected with a width greater than or less
-          than (but not equal) the time period specified in.
+          than (but not equal) the time period specified in TRIGger:{A\|B}``:PULSEWidth:LOWLimit``
+          within a ±5% tolerance.
         - ``WIThin`` causes a trigger when a pulse is detected that is within a range set by two
           values.
         - ``OUTside`` causes a trigger when a pulse is detected that is outside of a range set by
@@ -3687,10 +3702,11 @@ class TriggerBPulsewidthLowlimit(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the lower limit to use, in seconds, when triggering on detection of
-          a pulse whose duration is inside or outside a range of two values. (Use to specify the
-          upper limit of the range.) This command also specifies the single limit to use, in
-          seconds, when triggering on detection of a pulse whose duration is less than, greater
-          than, equal to, or not equal to this time limit.
+          a pulse whose duration is inside or outside a range of two values. (Use
+          TRIGger:{A|B}``:PULSEWidth:HIGHLimit`` to specify the upper limit of the range.) This
+          command also specifies the single limit to use, in seconds, when triggering on detection
+          of a pulse whose duration is less than, greater than, equal to, or not equal to this time
+          limit.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:PULSEWidth:LOWLimit?`` query.
@@ -3743,8 +3759,8 @@ class TriggerBPulsewidthHighlimit(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the upper limit to use, in seconds, when triggering on detection of
-          a pulse whose duration is inside or outside a range of two values. (Use to specify the
-          lower value of the range.)
+          a pulse whose duration is inside or outside a range of two values. (Use
+          TRIGger:{A|B}``:PULSEWidth:LOWLimit`` to specify the lower value of the range.)
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:PULSEWidth:HIGHLimit?`` query.
@@ -3799,7 +3815,7 @@ class TriggerBPulsewidth(SCPICmdRead):
         Description:
             - This command specifies the upper limit to use, in seconds, when triggering on
               detection of a pulse whose duration is inside or outside a range of two values. (Use
-              to specify the lower value of the range.)
+              TRIGger:{A|B}``:PULSEWidth:LOWLimit`` to specify the lower value of the range.)
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:PULSEWidth:HIGHLimit?`` query.
@@ -3855,9 +3871,10 @@ class TriggerBPulsewidth(SCPICmdRead):
         Description:
             - This command specifies the lower limit to use, in seconds, when triggering on
               detection of a pulse whose duration is inside or outside a range of two values. (Use
-              to specify the upper limit of the range.) This command also specifies the single limit
-              to use, in seconds, when triggering on detection of a pulse whose duration is less
-              than, greater than, equal to, or not equal to this time limit.
+              TRIGger:{A|B}``:PULSEWidth:HIGHLimit`` to specify the upper limit of the range.) This
+              command also specifies the single limit to use, in seconds, when triggering on
+              detection of a pulse whose duration is less than, greater than, equal to, or not equal
+              to this time limit.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:PULSEWidth:LOWLimit?`` query.
@@ -3931,13 +3948,14 @@ class TriggerBPulsewidth(SCPICmdRead):
 
     @property
     def when(self) -> TriggerBPulsewidthWhen:
-        """Return the ``TRIGger:B:PULSEWidth:WHEn`` command.
+        r"""Return the ``TRIGger:B:PULSEWidth:WHEn`` command.
 
         Description:
             - This command specifies to trigger when a pulse is detected with a width (duration)
               that is less than, greater than, equal to, or unequal to a specified value (set using
-              ), OR whose width falls outside of or within a specified range of two values (set
-              using and ).
+              TRIGger:{A|B}``:PULSEWidth:LOWLimit``), OR whose width falls outside of or within a
+              specified range of two values (set using TRIGger:{A|B}``:PULSEWidth``: LOWLimit and
+              TRIGger:{A|B}``:PULSEWidth:HIGHLimit``).
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:PULSEWidth:WHEn?`` query.
@@ -3954,13 +3972,14 @@ class TriggerBPulsewidth(SCPICmdRead):
 
         Info:
             - ``LESSthan`` causes a trigger when a pulse is detected with a width less than the time
-              set by the.
+              set by the TRIGger:{A\|B}``:PULSEWidth:LOWLimit`` command.
             - ``MOREthan`` causes a trigger when a pulse is detected with a width greater than the
-              time set by the.
+              time set by the TRIGger:{A\|B}``:PULSEWidth:LOWLimit`` command.
             - ``EQual`` causes a trigger when a pulse is detected with a width equal to the time
-              period specified in.
+              period specified in TRIGger:{A\|B}``:PULSEWidth:LOWLimit`` within a ±5% tolerance.
             - ``UNEQual`` causes a trigger when a pulse is detected with a width greater than or
-              less than (but not equal) the time period specified in.
+              less than (but not equal) the time period specified in
+              TRIGger:{A\|B}``:PULSEWidth:LOWLimit`` within a ±5% tolerance.
             - ``WIThin`` causes a trigger when a pulse is detected that is within a range set by two
               values.
             - ``OUTside`` causes a trigger when a pulse is detected that is outside of a range set
@@ -4056,13 +4075,15 @@ class TriggerBLogicWhen(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
+        - TRIGger:B:LOGIc:WHEn {A|B}:LOGIc:WHEn{TRUe|FALSe|MOREthan|LESSThan|EQual| UNEQual}
         - TRIGger:B:LOGIc:WHEn?
         ```
 
     Info:
         - ``TRUe`` triggers on an input pattern that is true.
         - ``FALSe`` triggers on an input pattern that is false.
+        - ``MOREthan`` triggers on an input pattern that is true for a time period greater than a
+          user defined Time Limit (DELTatime) value.
         - ``EQual`` triggers on an input pattern that is true for a time period equal to a user
           defined Time Limit (DELTatime) value.
         - ``UNEQual`` triggers on an input pattern that is true for a time period not equal to a
@@ -4120,6 +4141,7 @@ class TriggerBLogicPolarity(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``NEGative`` specifies negative polarity.
+        - ``POSitive`` specifies positive polarity.
         - ``EITher`` specifies either polarity.
     """
 
@@ -4139,14 +4161,14 @@ class TriggerBLogicInputClockSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:LOGIc:INPut:CLOCk:SOUrce {CH<x>|CH<x>_D<y>}
+        - TRIGger:B:LOGIc:INPut:CLOCk:SOUrce {CH<x>|CH<x>_D<x>}
         - TRIGger:B:LOGIc:INPut:CLOCk:SOUrce?
         ```
 
     Info:
         - ``CH<x>`` specifies an analog channel as the clock source. Number of channels depends on
           instrument configuration.
-        - ``CH<x>_D<y>`` specifies a digital channel as the clock source. Number of channels depends
+        - ``CH<x>_D<x>`` specifies a digital channel as the clock source. Number of channels depends
           on instrument configuration.
     """
 
@@ -4185,14 +4207,14 @@ class TriggerBLogicInputClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:LOGIc:INPut:CLOCk:SOUrce {CH<x>|CH<x>_D<y>}
+            - TRIGger:B:LOGIc:INPut:CLOCk:SOUrce {CH<x>|CH<x>_D<x>}
             - TRIGger:B:LOGIc:INPut:CLOCk:SOUrce?
             ```
 
         Info:
             - ``CH<x>`` specifies an analog channel as the clock source. Number of channels depends
               on instrument configuration.
-            - ``CH<x>_D<y>`` specifies a digital channel as the clock source. Number of channels
+            - ``CH<x>_D<x>`` specifies a digital channel as the clock source. Number of channels
               depends on instrument configuration.
         """
         return self._source
@@ -4404,6 +4426,7 @@ class TriggerBLogic(SCPICmdRead):
 
         Info:
             - ``NEGative`` specifies negative polarity.
+            - ``POSitive`` specifies positive polarity.
             - ``EITher`` specifies either polarity.
         """
         return self._polarity
@@ -4456,13 +4479,15 @@ class TriggerBLogic(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
+            - TRIGger:B:LOGIc:WHEn {A|B}:LOGIc:WHEn{TRUe|FALSe|MOREthan|LESSThan|EQual| UNEQual}
             - TRIGger:B:LOGIc:WHEn?
             ```
 
         Info:
             - ``TRUe`` triggers on an input pattern that is true.
             - ``FALSe`` triggers on an input pattern that is false.
+            - ``MOREthan`` triggers on an input pattern that is true for a time period greater than
+              a user defined Time Limit (DELTatime) value.
             - ``EQual`` triggers on an input pattern that is true for a time period equal to a user
               defined Time Limit (DELTatime) value.
             - ``UNEQual`` triggers on an input pattern that is true for a time period not equal to a
@@ -4734,6 +4759,7 @@ class TriggerBEdgeSlope(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``RISe`` specifies to trigger on the rising or positive edge of a signal.
         - ``FALL`` specifies to trigger on the falling or negative edge of a signal.
+        - ``EITher`` specifies to trigger on either the rising or falling edge of a signal.
     """
 
 
@@ -4766,8 +4792,6 @@ class TriggerBEdgeCoupling(SCPICmdWrite, SCPICmdRead):
         - ``LFRej`` coupling attenuates signals below 80 kHz before passing the signals to the
           trigger circuitry.
         - ``NOISErej`` coupling provides stable triggering by increasing the trigger hysteresis.
-          Increased hysteresis reduces the trigger sensitivity to noise but can require greater
-          trigger signal amplitude.
     """
 
 
@@ -4821,8 +4845,6 @@ class TriggerBEdge(SCPICmdRead):
             - ``LFRej`` coupling attenuates signals below 80 kHz before passing the signals to the
               trigger circuitry.
             - ``NOISErej`` coupling provides stable triggering by increasing the trigger hysteresis.
-              Increased hysteresis reduces the trigger sensitivity to noise but can require greater
-              trigger signal amplitude.
         """
         return self._coupling
 
@@ -4852,6 +4874,7 @@ class TriggerBEdge(SCPICmdRead):
         Info:
             - ``RISe`` specifies to trigger on the rising or positive edge of a signal.
             - ``FALL`` specifies to trigger on the falling or negative edge of a signal.
+            - ``EITher`` specifies to trigger on either the rising or falling edge of a signal.
         """
         return self._slope
 
@@ -4970,7 +4993,8 @@ class TriggerBBusBItemUsbSplitSeValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - When triggering on a high-speed USB split transaction, this command specifies the split
-          transaction start/end bit value to trigger on. The bus number is specified by x.
+          transaction start/end bit value to trigger on. The bus number is specified by x.The start
+          and end bits are interpreted based on the type of split transaction:
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:USB:SPLit:SE:VALue?``
@@ -4988,13 +5012,13 @@ class TriggerBBusBItemUsbSplitSeValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NOCARE`` - any combination of S and E bits.
-        - ``FULLSPEED`` - S bit = 0, E bit = 0.
-        - ``LOWSPEED`` - S bit = 1, E bit = 0.
-        - ``ISOSTART`` - S bit = 1, E bit = 0.
-        - ``ISOMID`` - see note above.
-        - ``ISOEND`` - see note above.
-        - ``ISOALL`` - see note above.
+        - ``NOCARE`` — any combination of S and E bits.
+        - ``FULLSPEED`` — S bit = 0, E bit = 0.
+        - ``LOWSPEED`` — S bit = 1, E bit = 0.
+        - ``ISOSTART`` — S bit = 1, E bit = 0.
+        - ``ISOMID`` — see note above.
+        - ``ISOEND`` — see note above.
+        - ``ISOALL`` — see note above.
     """  # noqa: E501
 
 
@@ -5020,7 +5044,8 @@ class TriggerBBusBItemUsbSplitSe(SCPICmdRead):
 
         Description:
             - When triggering on a high-speed USB split transaction, this command specifies the
-              split transaction start/end bit value to trigger on. The bus number is specified by x.
+              split transaction start/end bit value to trigger on. The bus number is specified by
+              x.The start and end bits are interpreted based on the type of split transaction:
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:USB:SPLit:SE:VALue?``
@@ -5038,13 +5063,13 @@ class TriggerBBusBItemUsbSplitSe(SCPICmdRead):
             ```
 
         Info:
-            - ``NOCARE`` - any combination of S and E bits.
-            - ``FULLSPEED`` - S bit = 0, E bit = 0.
-            - ``LOWSPEED`` - S bit = 1, E bit = 0.
-            - ``ISOSTART`` - S bit = 1, E bit = 0.
-            - ``ISOMID`` - see note above.
-            - ``ISOEND`` - see note above.
-            - ``ISOALL`` - see note above.
+            - ``NOCARE`` — any combination of S and E bits.
+            - ``FULLSPEED`` — S bit = 0, E bit = 0.
+            - ``LOWSPEED`` — S bit = 1, E bit = 0.
+            - ``ISOSTART`` — S bit = 1, E bit = 0.
+            - ``ISOMID`` — see note above.
+            - ``ISOEND`` — see note above.
+            - ``ISOALL`` — see note above.
         """  # noqa: E501
         return self._value
 
@@ -5074,9 +5099,9 @@ class TriggerBBusBItemUsbSplitScValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NOCARE`` - trigger on either the start or complete phase of the split transaction.
-        - ``SSPLIT`` - trigger on the start phase of the split transaction.
-        - ``CSPLIT`` - trigger on the complete phase of the split transaction.
+        - ``NOCARE`` — trigger on either the start or complete phase of the split transaction.
+        - ``SSPLIT`` — trigger on the start phase of the split transaction.
+        - ``CSPLIT`` — trigger on the complete phase of the split transaction.
     """
 
 
@@ -5122,9 +5147,9 @@ class TriggerBBusBItemUsbSplitSc(SCPICmdRead):
             ```
 
         Info:
-            - ``NOCARE`` - trigger on either the start or complete phase of the split transaction.
-            - ``SSPLIT`` - trigger on the start phase of the split transaction.
-            - ``CSPLIT`` - trigger on the complete phase of the split transaction.
+            - ``NOCARE`` — trigger on either the start or complete phase of the split transaction.
+            - ``SSPLIT`` — trigger on the start phase of the split transaction.
+            - ``CSPLIT`` — trigger on the complete phase of the split transaction.
         """
         return self._value
 
@@ -5154,7 +5179,7 @@ class TriggerBBusBItemUsbSplitPortValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``QString`` is a quoted string of up to 7 characters. The valid characters are 0 and 1.
+        - ``<QString>`` is a quoted string of up to 7 characters. The valid characters are 0 and 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -5202,7 +5227,7 @@ class TriggerBBusBItemUsbSplitPort(SCPICmdRead):
             ```
 
         Info:
-            - ``QString`` is a quoted string of up to 7 characters. The valid characters are 0 and
+            - ``<QString>`` is a quoted string of up to 7 characters. The valid characters are 0 and
               1.
         """
         return self._value
@@ -5233,7 +5258,7 @@ class TriggerBBusBItemUsbSplitHubValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``QString`` is a quoted string of up to 7 characters. The valid characters are 0 and 1.
+        - ``<QString>`` is a quoted string of up to 7 characters. The valid characters are 0 and 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -5281,7 +5306,7 @@ class TriggerBBusBItemUsbSplitHub(SCPICmdRead):
             ```
 
         Info:
-            - ``QString`` is a quoted string of up to 7 characters. The valid characters are 0 and
+            - ``<QString>`` is a quoted string of up to 7 characters. The valid characters are 0 and
               1.
         """
         return self._value
@@ -5310,11 +5335,11 @@ class TriggerBBusBItemUsbSplitEtValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NOCARE`` - any endpoint type.
-        - ``CONTRol`` - control endpoint type.
-        - ``ISOchronous`` - isochronous endpoint type.
-        - ``BULK`` - bulk endpoint type (BULK-IN or BULK-OUT).
-        - ``INTERRUPT`` - interrupt endpoint type (Interrupt-IN).
+        - ``NOCARE`` — any endpoint type.
+        - ``CONTRol`` — control endpoint type.
+        - ``ISOchronous`` — isochronous endpoint type.
+        - ``BULK`` — bulk endpoint type (BULK-IN or BULK-OUT).
+        - ``INTERRUPT`` — interrupt endpoint type (Interrupt-IN).
     """
 
 
@@ -5358,11 +5383,11 @@ class TriggerBBusBItemUsbSplitEt(SCPICmdRead):
             ```
 
         Info:
-            - ``NOCARE`` - any endpoint type.
-            - ``CONTRol`` - control endpoint type.
-            - ``ISOchronous`` - isochronous endpoint type.
-            - ``BULK`` - bulk endpoint type (BULK-IN or BULK-OUT).
-            - ``INTERRUPT`` - interrupt endpoint type (Interrupt-IN).
+            - ``NOCARE`` — any endpoint type.
+            - ``CONTRol`` — control endpoint type.
+            - ``ISOchronous`` — isochronous endpoint type.
+            - ``BULK`` — bulk endpoint type (BULK-IN or BULK-OUT).
+            - ``INTERRUPT`` — interrupt endpoint type (Interrupt-IN).
         """
         return self._value
 
@@ -5762,6 +5787,7 @@ class TriggerBBusBItemUsbDataQualifier(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``EQual`` specifies the qualifier as Equal.
         - ``INrange`` specifies the qualifier as Inside Range.
         - ``LESSEQual`` specifies the qualifier as Less Than or Equal to.
         - ``MOREEQual`` specifies the qualifier as More Than or Equal to.
@@ -5803,7 +5829,8 @@ class TriggerBBusBItemUsbDataHivalue(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command specifies the binary data string for the upper limit for inside-of-range and
           outside-of-range qualifiers for the USB trigger when the trigger condition is DATA. Use
-          the command to set the lower limit. The bus number is specified by x.
+          the command TRIGger:{A|B}``:BUS:B<x>:USB:DATa:VALue`` to set the lower limit. The bus
+          number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:USB:DATa:HIVALue?``
@@ -5859,7 +5886,8 @@ class TriggerBBusBItemUsbData(SCPICmdRead):
         Description:
             - This command specifies the binary data string for the upper limit for inside-of-range
               and outside-of-range qualifiers for the USB trigger when the trigger condition is
-              DATA. Use the command to set the lower limit. The bus number is specified by x.
+              DATA. Use the command TRIGger:{A|B}``:BUS:B<x>:USB:DATa:VALue`` to set the lower
+              limit. The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:USB:DATa:HIVALue?``
@@ -5933,6 +5961,7 @@ class TriggerBBusBItemUsbData(SCPICmdRead):
             ```
 
         Info:
+            - ``EQual`` specifies the qualifier as Equal.
             - ``INrange`` specifies the qualifier as Inside Range.
             - ``LESSEQual`` specifies the qualifier as Less Than or Equal to.
             - ``MOREEQual`` specifies the qualifier as More Than or Equal to.
@@ -6098,8 +6127,9 @@ class TriggerBBusBItemUsbAddressHivalue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the binary address string for the upper limit for inside-of-range
-          and outside-of-range qualifiers for the USB trigger. Use the command to set the lower
-          limit. The bus number is specified by x.
+          and outside-of-range qualifiers for the USB trigger. Use the command
+          TRIGger:{A|B}``:BUS:B<x>:USB:ADDRess:VALue`` to set the lower limit. The bus number is
+          specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:USB:ADDRess:HIVALue?``
@@ -6152,7 +6182,8 @@ class TriggerBBusBItemUsbAddress(SCPICmdRead):
         Description:
             - This command specifies the binary address string for the upper limit for
               inside-of-range and outside-of-range qualifiers for the USB trigger. Use the command
-              to set the lower limit. The bus number is specified by x.
+              TRIGger:{A|B}``:BUS:B<x>:USB:ADDRess:VALue`` to set the lower limit. The bus number is
+              specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -6890,11 +6921,12 @@ class TriggerBBusBItemSvidCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess|COMMand|PAYLoad|ERRors}
+        - TRIGger:B:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess| COMMand| PAYLoad| ERRors}
         - TRIGger:B:BUS:B<x>:SVID:CONDition?
         ```
 
     Info:
+        - ``B<x>`` is the bus identifier number.
         - ``STARTCONDition`` sets the trigger condition to start condition. This is the default
           value.
         - ``SLAVEADDRess`` sets the trigger condition to slave address.
@@ -6956,7 +6988,6 @@ class TriggerBBusBItemSvidCommandResponse(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``GETREG`` sets the command response to GetReg. This is the default value.
         - ``GETREGVENDor`` sets the command response to GetRegVendor.
         - ``GETREGTESTCFG`` sets the command response to GetRegTestCfg.
         - ``SETVIDFAST`` sets the command response to SetVID Fast.
@@ -7020,7 +7051,6 @@ class TriggerBBusBItemSvidCommand(SCPICmdRead):
             ```
 
         Info:
-            - ``GETREG`` sets the command response to GetReg. This is the default value.
             - ``GETREGVENDor`` sets the command response to GetRegVendor.
             - ``GETREGTESTCFG`` sets the command response to GetRegTestCfg.
             - ``SETVIDFAST`` sets the command response to SetVID Fast.
@@ -7134,18 +7164,19 @@ class TriggerBBusBItemSvid(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess|COMMand|PAYLoad|ERRors}
+            - TRIGger:B:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess| COMMand| PAYLoad| ERRors}
             - TRIGger:B:BUS:B<x>:SVID:CONDition?
             ```
 
         Info:
+            - ``B<x>`` is the bus identifier number.
             - ``STARTCONDition`` sets the trigger condition to start condition. This is the default
               value.
             - ``SLAVEADDRess`` sets the trigger condition to slave address.
             - ``COMMand`` sets the trigger condition to command.
             - ``PAYLoad`` sets the trigger condition to payload.
             - ``ERRors`` sets the trigger condition to errors.
-        """
+        """  # noqa: E501
         return self._condition
 
     @property
@@ -7227,15 +7258,17 @@ class TriggerBBusBItemSpmiSlaveaddressValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SPMI:SLAVEADDRess:VALue <Qstring>
+        - TRIGger:B:BUS:B<x>:SPMI:SLAVEADDRess:VALue <QString>
         - TRIGger:B:BUS:B<x>:SPMI:SLAVEADDRess:VALue?
         ```
 
     Info:
         - ``B<x>`` is the bus identifier number.
-        - ``<Qstring>`` is the binary data string that identifies the slave address on which to
+        - ``<QString>`` is the binary data string that identifies the slave address on which to
           trigger.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerBBusBItemSpmiSlaveaddress(SCPICmdRead):
@@ -7280,13 +7313,13 @@ class TriggerBBusBItemSpmiSlaveaddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SPMI:SLAVEADDRess:VALue <Qstring>
+            - TRIGger:B:BUS:B<x>:SPMI:SLAVEADDRess:VALue <QString>
             - TRIGger:B:BUS:B<x>:SPMI:SLAVEADDRess:VALue?
             ```
 
         Info:
             - ``B<x>`` is the bus identifier number.
-            - ``<Qstring>`` is the binary data string that identifies the slave address on which to
+            - ``<QString>`` is the binary data string that identifies the slave address on which to
               trigger.
         """
         return self._value
@@ -7297,8 +7330,8 @@ class TriggerBBusBItemSpmiRegisteraddressValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the binary data string that identifies the register address
-          used in SPMI triggering if the trigger condition is MASTERREAd, MASTERWRIte, REGREAd,
-          REGWRIte, EXTREGREAd, EXTREGWRIte, LONGEXTREGREAd, or LONGEXTREGWRIte.
+          used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte REGREAd
+          REGWRIte EXTREGREAd EXTREGWRIte LONGEXTREGREAd LONGEXTREGWRIte
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -7311,14 +7344,16 @@ class TriggerBBusBItemSpmiRegisteraddressValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SPMI:REGISTERADDRess:VALue <Qstring>
+        - TRIGger:B:BUS:B<x>:SPMI:REGISTERADDRess:VALue <QString>
         - TRIGger:B:BUS:B<x>:SPMI:REGISTERADDRess:VALue?
         ```
 
     Info:
         - ``B<x>`` is the bus identifier number.
-        - ``<Qstring>`` is the binary data string that identifies the register address.
+        - ``<QString>`` is the binary data string that identifies the register address.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerBBusBItemSpmiRegisteraddress(SCPICmdRead):
@@ -7348,8 +7383,8 @@ class TriggerBBusBItemSpmiRegisteraddress(SCPICmdRead):
 
         Description:
             - This command sets or queries the binary data string that identifies the register
-              address used in SPMI triggering if the trigger condition is MASTERREAd, MASTERWRIte,
-              REGREAd, REGWRIte, EXTREGREAd, EXTREGWRIte, LONGEXTREGREAd, or LONGEXTREGWRIte.
+              address used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte
+              REGREAd REGWRIte EXTREGREAd EXTREGWRIte LONGEXTREGREAd LONGEXTREGWRIte
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -7362,13 +7397,13 @@ class TriggerBBusBItemSpmiRegisteraddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SPMI:REGISTERADDRess:VALue <Qstring>
+            - TRIGger:B:BUS:B<x>:SPMI:REGISTERADDRess:VALue <QString>
             - TRIGger:B:BUS:B<x>:SPMI:REGISTERADDRess:VALue?
             ```
 
         Info:
             - ``B<x>`` is the bus identifier number.
-            - ``<Qstring>`` is the binary data string that identifies the register address.
+            - ``<QString>`` is the binary data string that identifies the register address.
         """
         return self._value
 
@@ -7388,43 +7423,37 @@ class TriggerBBusBItemSpmiNoresponse(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SPMI:NORESPonse <Qstring>
+        - TRIGger:B:BUS:B<x>:SPMI:NORESPonse <QString>
         - TRIGger:B:BUS:B<x>:SPMI:NORESPonse?
         ```
 
     Info:
         - ``B<x>`` is the bus identifier number.
-        - ``<Qstring>`` is either TRUE or FALSE boolean value.
+        - ``<QString>`` is either TRUE or FALSE boolean value.
     """
 
+    _WRAP_ARG_WITH_QUOTES = True
 
-class TriggerBBusBItemSpmiMasteraddressValue(SCPICmdWrite, SCPICmdRead):
+
+class TriggerBBusBItemSpmiMasteraddressValue(SCPICmdWrite):
     """The ``TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue`` command.
 
     Description:
         - This command sets or queries the binary data string that identifies the master address
-          used in SPMI triggering if the trigger condition is MASTERREAd, MASTERWRIte, or
-          DEVICEDESCMASTERREAd.
+          used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte
+          DEVICEDESCMASTERREAd
 
     Usage:
-        - Using the ``.query()`` method will send the
-          ``TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue?`` query and raise an AssertionError if the
-          returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue value`` command.
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue <Qstring>
-        - TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue?
+        - TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue ?
         ```
 
     Info:
         - ``B<x>`` is the bus identifier number.
-        - ``<Qstring>`` is the binary data string that identifies the master address on which to
-          trigger.
     """
 
 
@@ -7455,83 +7484,43 @@ class TriggerBBusBItemSpmiMasteraddress(SCPICmdRead):
 
         Description:
             - This command sets or queries the binary data string that identifies the master address
-              used in SPMI triggering if the trigger condition is MASTERREAd, MASTERWRIte, or
-              DEVICEDESCMASTERREAd.
+              used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte
+              DEVICEDESCMASTERREAd
 
         Usage:
-            - Using the ``.query()`` method will send the
-              ``TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue?`` query and raise an AssertionError if
-              the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue value`` command.
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue <Qstring>
-            - TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue?
+            - TRIGger:B:BUS:B<x>:SPMI:MASTERADDRess:VALue ?
             ```
 
         Info:
             - ``B<x>`` is the bus identifier number.
-            - ``<Qstring>`` is the binary data string that identifies the master address on which to
-              trigger.
         """
         return self._value
 
 
-class TriggerBBusBItemSpmiDataValue(SCPICmdWrite, SCPICmdRead):
+class TriggerBBusBItemSpmiDataValue(SCPICmdWrite):
     """The ``TRIGger:B:BUS:B<x>:SPMI:DATa:VALue`` command.
 
     Description:
         - This command sets or queries the binary data string used for SPMI triggering if the
-          trigger condition is MASTERREAd, MASTERWRIte, REGREAd, REGWRIte, EXTREGREAd, EXTREGWRIte,
-          LONGEXTREGREAd, LONGEXTREGWRIte, or REG0WRIte.
+          trigger condition is MASTERREAd MASTERWRIte REGREAd REGWRIte EXTREGREAd EXTREGWRIte
+          LONGEXTREGREAd LONGEXTREGWRIte REG0WRIte
 
     Usage:
-        - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:SPMI:DATa:VALue?`` query.
-        - Using the ``.verify(value)`` method will send the ``TRIGger:B:BUS:B<x>:SPMI:DATa:VALue?``
-          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``TRIGger:B:BUS:B<x>:SPMI:DATa:VALue value`` command.
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SPMI:DATa:VALue <Qstring>
-        - TRIGger:B:BUS:B<x>:SPMI:DATa:VALue?
+        - TRIGger:B:BUS:B<x>:SPMI:DATa:VALue ?
         ```
 
     Info:
         - ``B<x>`` is the bus identifier number.
-        - ``<Qstring>`` is the binary data string that identifies the data value on which to
-          trigger.
-    """
-
-
-class TriggerBBusBItemSpmiDataSize(SCPICmdWrite, SCPICmdRead):
-    """The ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe`` command.
-
-    Description:
-        - This command sets or queries the length of the data string, in bytes, to be used when
-          triggering on an SPMI bus signal.
-
-    Usage:
-        - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe?`` query.
-        - Using the ``.verify(value)`` method will send the ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe?``
-          query and raise an AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe value`` command.
-
-    SCPI Syntax:
-        ```
-        - TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe <NR2>
-        - TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe?
-        ```
-
-    Info:
-        - ``B<x>`` is the bus identifier number.
-        - ``<NR2>`` is the size of the data string in bytes.
     """
 
 
@@ -7547,43 +7536,12 @@ class TriggerBBusBItemSpmiData(SCPICmdRead):
         - ``B<x>`` is the bus identifier number.
 
     Properties:
-        - ``.size``: The ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe`` command.
         - ``.value``: The ``TRIGger:B:BUS:B<x>:SPMI:DATa:VALue`` command.
     """
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._size = TriggerBBusBItemSpmiDataSize(device, f"{self._cmd_syntax}:SIZe")
         self._value = TriggerBBusBItemSpmiDataValue(device, f"{self._cmd_syntax}:VALue")
-
-    @property
-    def size(self) -> TriggerBBusBItemSpmiDataSize:
-        """Return the ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe`` command.
-
-        Description:
-            - This command sets or queries the length of the data string, in bytes, to be used when
-              triggering on an SPMI bus signal.
-
-        Usage:
-            - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe?``
-              query.
-            - Using the ``.verify(value)`` method will send the
-              ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe?`` query and raise an AssertionError if the
-              returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe value`` command.
-
-        SCPI Syntax:
-            ```
-            - TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe <NR2>
-            - TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe?
-            ```
-
-        Info:
-            - ``B<x>`` is the bus identifier number.
-            - ``<NR2>`` is the size of the data string in bytes.
-        """
-        return self._size
 
     @property
     def value(self) -> TriggerBBusBItemSpmiDataValue:
@@ -7591,28 +7549,20 @@ class TriggerBBusBItemSpmiData(SCPICmdRead):
 
         Description:
             - This command sets or queries the binary data string used for SPMI triggering if the
-              trigger condition is MASTERREAd, MASTERWRIte, REGREAd, REGWRIte, EXTREGREAd,
-              EXTREGWRIte, LONGEXTREGREAd, LONGEXTREGWRIte, or REG0WRIte.
+              trigger condition is MASTERREAd MASTERWRIte REGREAd REGWRIte EXTREGREAd EXTREGWRIte
+              LONGEXTREGREAd LONGEXTREGWRIte REG0WRIte
 
         Usage:
-            - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:SPMI:DATa:VALue?``
-              query.
-            - Using the ``.verify(value)`` method will send the
-              ``TRIGger:B:BUS:B<x>:SPMI:DATa:VALue?`` query and raise an AssertionError if the
-              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``TRIGger:B:BUS:B<x>:SPMI:DATa:VALue value`` command.
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SPMI:DATa:VALue <Qstring>
-            - TRIGger:B:BUS:B<x>:SPMI:DATa:VALue?
+            - TRIGger:B:BUS:B<x>:SPMI:DATa:VALue ?
             ```
 
         Info:
             - ``B<x>`` is the bus identifier number.
-            - ``<Qstring>`` is the binary data string that identifies the data value on which to
-              trigger.
         """
         return self._value
 
@@ -7640,7 +7590,7 @@ class TriggerBBusBItemSpmiCondition(SCPICmdWrite, SCPICmdRead):
         - ``B<x>`` is the bus identifier number.
         - ``SSC`` specifies triggering on the Sequence Start Condition.
         - ``RESet`` specifies triggering on the Reset command sequence.
-        - ``SLEep`` specifies triggering on the Sleep command sequnce.
+        - ``SLEep`` specifies triggering on the Sleep command sequence.
         - ``SHUTdown`` specifies triggering on the Shutdown command sequence.
         - ``WAKeup`` specifies triggering on the Wakeup command sequence.
         - ``MASTERREAd`` specifies triggering on the Master Read command sequence.
@@ -7726,7 +7676,7 @@ class TriggerBBusBItemSpmi(SCPICmdRead):
             - ``B<x>`` is the bus identifier number.
             - ``SSC`` specifies triggering on the Sequence Start Condition.
             - ``RESet`` specifies triggering on the Reset command sequence.
-            - ``SLEep`` specifies triggering on the Sleep command sequnce.
+            - ``SLEep`` specifies triggering on the Sleep command sequence.
             - ``SHUTdown`` specifies triggering on the Shutdown command sequence.
             - ``WAKeup`` specifies triggering on the Wakeup command sequence.
             - ``MASTERREAd`` specifies triggering on the Master Read command sequence.
@@ -7764,7 +7714,6 @@ class TriggerBBusBItemSpmi(SCPICmdRead):
             - ``B<x>`` is the bus identifier number.
 
         Sub-properties:
-            - ``.size``: The ``TRIGger:B:BUS:B<x>:SPMI:DATa:SIZe`` command.
             - ``.value``: The ``TRIGger:B:BUS:B<x>:SPMI:DATa:VALue`` command.
         """
         return self._data
@@ -7806,13 +7755,13 @@ class TriggerBBusBItemSpmi(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SPMI:NORESPonse <Qstring>
+            - TRIGger:B:BUS:B<x>:SPMI:NORESPonse <QString>
             - TRIGger:B:BUS:B<x>:SPMI:NORESPonse?
             ```
 
         Info:
             - ``B<x>`` is the bus identifier number.
-            - ``<Qstring>`` is either TRUE or FALSE boolean value.
+            - ``<QString>`` is either TRUE or FALSE boolean value.
         """
         return self._noresponse
 
@@ -8112,14 +8061,16 @@ class TriggerBBusBItemSentSlowIdentifierValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue <Qstring>
+        - TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue <QString>
         - TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue?
         ```
 
     Info:
         - ``B<x>`` is the bus identifier number.
-        - ``<Qstring>`` is the binary identifier value.
+        - ``<QString>`` is the binary identifier value.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerBBusBItemSentSlowIdentifier(SCPICmdRead):
@@ -8162,13 +8113,13 @@ class TriggerBBusBItemSentSlowIdentifier(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue <Qstring>
+            - TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue <QString>
             - TRIGger:B:BUS:B<x>:SENT:SLOW:IDentifier:VALue?
             ```
 
         Info:
             - ``B<x>`` is the bus identifier number.
-            - ``<Qstring>`` is the binary identifier value.
+            - ``<QString>`` is the binary identifier value.
         """
         return self._value
 
@@ -8191,14 +8142,16 @@ class TriggerBBusBItemSentSlowDataValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:VALue <Qstring>
+        - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:VALue <QString>
         - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:VALue?
         ```
 
     Info:
         - ``B<x>`` is the bus identifier number.
-        - ``<Qstring>`` is the binary slow channel data value.
+        - ``<QString>`` is the binary slow channel data value.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerBBusBItemSentSlowDataQualifier(SCPICmdWrite, SCPICmdRead):
@@ -8225,6 +8178,7 @@ class TriggerBBusBItemSentSlowDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the bus identifier number.
+        - ``EQual`` specifies the qualifier as Equal.
         - ``UNEQual`` specifies the qualifier as Not Equal to.
         - ``LESSthan`` specifies the qualifier as Less Than.
         - ``MOREthan`` specifies the qualifier as More Than.
@@ -8259,6 +8213,7 @@ class TriggerBBusBItemSentSlowDataHivalue(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the bus identifier number.
+        - ``<QString>`` sets the binary Slow channel data value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -8314,6 +8269,7 @@ class TriggerBBusBItemSentSlowData(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the bus identifier number.
+            - ``<QString>`` sets the binary Slow channel data value.
         """
         return self._hivalue
 
@@ -8342,6 +8298,7 @@ class TriggerBBusBItemSentSlowData(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the bus identifier number.
+            - ``EQual`` specifies the qualifier as Equal.
             - ``UNEQual`` specifies the qualifier as Not Equal to.
             - ``LESSthan`` specifies the qualifier as Less Than.
             - ``MOREthan`` specifies the qualifier as More Than.
@@ -8371,13 +8328,13 @@ class TriggerBBusBItemSentSlowData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:VALue <Qstring>
+            - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:VALue <QString>
             - TRIGger:B:BUS:B<x>:SENT:SLOW:DATA:VALue?
             ```
 
         Info:
             - ``B<x>`` is the bus identifier number.
-            - ``<Qstring>`` is the binary slow channel data value.
+            - ``<QString>`` is the binary slow channel data value.
         """
         return self._value
 
@@ -8470,8 +8427,10 @@ class TriggerBBusBItemSentPauseQualifier(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the bus identifier number.
+        - ``EQual`` sets the qualifier as Equal.
         - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
         - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+        - ``MOREthan`` sets the qualifier as More Than.
         - ``OUTrange`` sets the qualifier to out of range.
         - ``UNEQual`` sets the qualifier as Unequal.
     """  # noqa: E501
@@ -8523,8 +8482,10 @@ class TriggerBBusBItemSentPause(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the bus identifier number.
+            - ``EQual`` sets the qualifier as Equal.
             - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
             - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+            - ``MOREthan`` sets the qualifier as More Than.
             - ``OUTrange`` sets the qualifier to out of range.
             - ``UNEQual`` sets the qualifier as Unequal.
         """  # noqa: E501
@@ -8549,14 +8510,16 @@ class TriggerBBusBItemSentFastStatusValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SENT:FAST:STATus:VALue <Qstring>
+        - TRIGger:B:BUS:B<x>:SENT:FAST:STATus:VALue <QString>
         - TRIGger:B:BUS:B<x>:SENT:FAST:STATus:VALue?
         ```
 
     Info:
         - ``B<x>`` is the number of the bus waveform.
-        - ``<Qstring>`` is the binary status value on which to trigger.
+        - ``<QString>`` is the binary status value on which to trigger.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerBBusBItemSentFastStatus(SCPICmdRead):
@@ -8598,13 +8561,13 @@ class TriggerBBusBItemSentFastStatus(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SENT:FAST:STATus:VALue <Qstring>
+            - TRIGger:B:BUS:B<x>:SENT:FAST:STATus:VALue <QString>
             - TRIGger:B:BUS:B<x>:SENT:FAST:STATus:VALue?
             ```
 
         Info:
             - ``B<x>`` is the number of the bus waveform.
-            - ``<Qstring>`` is the binary status value on which to trigger.
+            - ``<QString>`` is the binary status value on which to trigger.
         """
         return self._value
 
@@ -8627,14 +8590,16 @@ class TriggerBBusBItemSentFastInvertnibbleValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue <Qstring>
+        - TRIGger:B:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue <QString>
         - TRIGger:B:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue?
         ```
 
     Info:
         - ``B<x>`` is the number of the bus waveform.
-        - ``<Qstring>`` is the Fast Channel 1 inverted nibble binary value on which to trigger.
+        - ``<QString>`` is the Fast Channel 1 inverted nibble binary value on which to trigger.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerBBusBItemSentFastInvertnibble(SCPICmdRead):
@@ -8677,13 +8642,13 @@ class TriggerBBusBItemSentFastInvertnibble(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue <Qstring>
+            - TRIGger:B:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue <QString>
             - TRIGger:B:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue?
             ```
 
         Info:
             - ``B<x>`` is the number of the bus waveform.
-            - ``<Qstring>`` is the Fast Channel 1 inverted nibble binary value on which to trigger.
+            - ``<QString>`` is the Fast Channel 1 inverted nibble binary value on which to trigger.
         """
         return self._value
 
@@ -8706,14 +8671,16 @@ class TriggerBBusBItemSentFastCounterValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:VALue <Qstring>
+        - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:VALue <QString>
         - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:VALue?
         ```
 
     Info:
         - ``B<x>`` is the number of the bus waveform.
-        - ``<Qstring>`` is the Fast Channel 1 fast message counter binary value on which to trigger.
+        - ``<QString>`` is the Fast Channel 1 fast message counter binary value on which to trigger.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerBBusBItemSentFastCounterQualifier(SCPICmdWrite, SCPICmdRead):
@@ -8740,8 +8707,10 @@ class TriggerBBusBItemSentFastCounterQualifier(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the number of the bus.
+        - ``EQual`` sets the qualifier as Equal.
         - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
         - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+        - ``MOREthan`` sets the qualifier as More Than.
         - ``UNEQual`` sets the qualifier as Unequal.
         - ``INrange`` sets the qualifier to inside a range.
         - ``OUTrange`` sets the qualifier to outside a range.
@@ -8772,6 +8741,7 @@ class TriggerBBusBItemSentFastCounterHivalue(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the bus identifier number.
+        - ``<QString>`` sets the Fast Channel 1 counter binary value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -8831,6 +8801,7 @@ class TriggerBBusBItemSentFastCounter(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the bus identifier number.
+            - ``<QString>`` sets the Fast Channel 1 counter binary value.
         """
         return self._hivalue
 
@@ -8859,8 +8830,10 @@ class TriggerBBusBItemSentFastCounter(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the number of the bus.
+            - ``EQual`` sets the qualifier as Equal.
             - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
             - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+            - ``MOREthan`` sets the qualifier as More Than.
             - ``UNEQual`` sets the qualifier as Unequal.
             - ``INrange`` sets the qualifier to inside a range.
             - ``OUTrange`` sets the qualifier to outside a range.
@@ -8886,13 +8859,13 @@ class TriggerBBusBItemSentFastCounter(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:VALue <Qstring>
+            - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:VALue <QString>
             - TRIGger:B:BUS:B<x>:SENT:FAST:COUNTer:VALue?
             ```
 
         Info:
             - ``B<x>`` is the number of the bus waveform.
-            - ``<Qstring>`` is the Fast Channel 1 fast message counter binary value on which to
+            - ``<QString>`` is the Fast Channel 1 fast message counter binary value on which to
               trigger.
         """
         return self._value
@@ -8916,14 +8889,16 @@ class TriggerBBusBItemSentFastChan2bValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:VALue <Qstring>
+        - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:VALue <QString>
         - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:VALue?
         ```
 
     Info:
         - ``B<x>`` is the number of the bus waveform.
-        - ``<Qstring>`` is the Fast Channel 2 binary value on which to trigger.
+        - ``<QString>`` is the Fast Channel 2 binary value on which to trigger.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerBBusBItemSentFastChan2bQualifier(SCPICmdWrite, SCPICmdRead):
@@ -8950,8 +8925,10 @@ class TriggerBBusBItemSentFastChan2bQualifier(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the number of the bus.
+        - ``EQual`` sets the qualifier as Equal.
         - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
         - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+        - ``MOREthan`` sets the qualifier as More Than.
         - ``UNEQual`` sets the qualifier as Unequal.
         - ``INrange`` sets the qualifier to inside a range.
         - ``OUTrange`` sets the qualifier to outside a range.
@@ -8982,6 +8959,7 @@ class TriggerBBusBItemSentFastChan2bHivalue(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the bus identifier number.
+        - ``<QString>`` sets the Fast Channel 2 high binary data value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -9038,6 +9016,7 @@ class TriggerBBusBItemSentFastChan2b(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the bus identifier number.
+            - ``<QString>`` sets the Fast Channel 2 high binary data value.
         """
         return self._hivalue
 
@@ -9066,8 +9045,10 @@ class TriggerBBusBItemSentFastChan2b(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the number of the bus.
+            - ``EQual`` sets the qualifier as Equal.
             - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
             - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+            - ``MOREthan`` sets the qualifier as More Than.
             - ``UNEQual`` sets the qualifier as Unequal.
             - ``INrange`` sets the qualifier to inside a range.
             - ``OUTrange`` sets the qualifier to outside a range.
@@ -9093,13 +9074,13 @@ class TriggerBBusBItemSentFastChan2b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:VALue <Qstring>
+            - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:VALue <QString>
             - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN2B:VALue?
             ```
 
         Info:
             - ``B<x>`` is the number of the bus waveform.
-            - ``<Qstring>`` is the Fast Channel 2 binary value on which to trigger.
+            - ``<QString>`` is the Fast Channel 2 binary value on which to trigger.
         """
         return self._value
 
@@ -9122,14 +9103,16 @@ class TriggerBBusBItemSentFastChan1aValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:VALue <Qstring>
+        - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:VALue <QString>
         - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:VALue?
         ```
 
     Info:
         - ``B<x>`` is the number of the bus waveform.
-        - ``<Qstring>`` is the Fast Channel 1 value on which to trigger.
+        - ``<QString>`` is the Fast Channel 1 value on which to trigger.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerBBusBItemSentFastChan1aQualifier(SCPICmdWrite, SCPICmdRead):
@@ -9156,8 +9139,10 @@ class TriggerBBusBItemSentFastChan1aQualifier(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the number of the bus.
+        - ``EQual`` sets the qualifier as Equal.
         - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
         - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+        - ``MOREthan`` sets the qualifier as More Than.
         - ``UNEQual`` sets the qualifier as Unequal.
         - ``INrange`` sets the qualifier to inside a range.
         - ``OUTrange`` sets the qualifier to outside a range.
@@ -9188,6 +9173,7 @@ class TriggerBBusBItemSentFastChan1aHivalue(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the bus identifier number.
+        - ``<QString>`` sets the Fast Channel 1 binary data high value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -9244,6 +9230,7 @@ class TriggerBBusBItemSentFastChan1a(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the bus identifier number.
+            - ``<QString>`` sets the Fast Channel 1 binary data high value.
         """
         return self._hivalue
 
@@ -9272,8 +9259,10 @@ class TriggerBBusBItemSentFastChan1a(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the number of the bus.
+            - ``EQual`` sets the qualifier as Equal.
             - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
             - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+            - ``MOREthan`` sets the qualifier as More Than.
             - ``UNEQual`` sets the qualifier as Unequal.
             - ``INrange`` sets the qualifier to inside a range.
             - ``OUTrange`` sets the qualifier to outside a range.
@@ -9299,13 +9288,13 @@ class TriggerBBusBItemSentFastChan1a(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:VALue <Qstring>
+            - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:VALue <QString>
             - TRIGger:B:BUS:B<x>:SENT:FAST:CHAN1A:VALue?
             ```
 
         Info:
             - ``B<x>`` is the number of the bus waveform.
-            - ``<Qstring>`` is the Fast Channel 1 value on which to trigger.
+            - ``<QString>`` is the Fast Channel 1 value on which to trigger.
         """
         return self._value
 
@@ -11296,7 +11285,7 @@ class TriggerBBusBItemMil1553bCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA|TIMe|ERRor}
+        - TRIGger:B:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA |TIMe|ERRor}
         - TRIGger:B:BUS:B<x>:MIL1553B:CONDition?
         ```
 
@@ -11883,7 +11872,7 @@ class TriggerBBusBItemMil1553b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA|TIMe|ERRor}
+            - TRIGger:B:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA |TIMe|ERRor}
             - TRIGger:B:BUS:B<x>:MIL1553B:CONDition?
             ```
 
@@ -12586,7 +12575,7 @@ class TriggerBBusBItemI3cSdrDirectpacket(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya|SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl|GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt|MDATASpeed|HDRCapability|GETXTime|GETCAPS|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe}
+        - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya|SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch|GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime|GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
         - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket?
         ```
 
@@ -12639,7 +12628,7 @@ class TriggerBBusBItemI3cSdrBroadcastpacket(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya|ENTRDya|SETMwrl|SETMrdl|DLSLave|ENTRTSTMode|EXTime|SETaasa|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe|SETBUSCON}
+        - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave|ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT|DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
         - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket?
         ```
 
@@ -12706,7 +12695,7 @@ class TriggerBBusBItemI3cSdr(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya|ENTRDya|SETMwrl|SETMrdl|DLSLave|ENTRTSTMode|EXTime|SETaasa|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe|SETBUSCON}
+            - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave|ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT|DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
             - TRIGger:B:BUS:B<x>:I3C:SDR:BROADCASTPacket?
             ```
 
@@ -12751,7 +12740,7 @@ class TriggerBBusBItemI3cSdr(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya|SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl|GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt|MDATASpeed|HDRCapability|GETXTime|GETCAPS|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe}
+            - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya|SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch|GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime|GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
             - TRIGger:B:BUS:B<x>:I3C:SDR:DIRECTPacket?
             ```
 
@@ -13020,7 +13009,7 @@ class TriggerBBusBItemI3cCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:I3C:CONDition {STARt|REPEATStart|ADDRess|DATa|SDRDirect|SDRBroadcast|ERRors|HOTJoin|HDRRestart|HDRExit|STOP}
+        - TRIGger:B:BUS:B<x>:I3C:CONDition {STARt| REPEATStart|ADDRess| DATa| SDRDirect| SDRBroadcast| ERRors| HOTJoin|HDRRestart| HDRExit| STOP}
         - TRIGger:B:BUS:B<x>:I3C:CONDition?
         ```
 
@@ -13233,7 +13222,7 @@ class TriggerBBusBItemI3c(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:I3C:CONDition {STARt|REPEATStart|ADDRess|DATa|SDRDirect|SDRBroadcast|ERRors|HOTJoin|HDRRestart|HDRExit|STOP}
+            - TRIGger:B:BUS:B<x>:I3C:CONDition {STARt| REPEATStart|ADDRess| DATa| SDRDirect| SDRBroadcast| ERRors| HOTJoin|HDRRestart| HDRExit| STOP}
             - TRIGger:B:BUS:B<x>:I3C:CONDition?
             ```
 
@@ -13386,8 +13375,8 @@ class TriggerBBusBItemI2cDataDirection(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B:BUS:B<x>:I2C:DATa:DIRection`` command.
 
     Description:
-        - This command specifies the I 2 C trigger type to be valid on a Read, Write, or Either
-          condition. Read or write is indicated by the R/W bit in the I 2 C protocol. The bus number
+        - This command specifies the I2C trigger type to be valid on a Read, Write, or Either
+          condition. Read or write is indicated by the R/W bit in the I2C protocol. The bus number
           is specified by x.
 
     Usage:
@@ -13437,8 +13426,8 @@ class TriggerBBusBItemI2cData(SCPICmdRead):
         """Return the ``TRIGger:B:BUS:B<x>:I2C:DATa:DIRection`` command.
 
         Description:
-            - This command specifies the I 2 C trigger type to be valid on a Read, Write, or Either
-              condition. Read or write is indicated by the R/W bit in the I 2 C protocol. The bus
+            - This command specifies the I2C trigger type to be valid on a Read, Write, or Either
+              condition. Read or write is indicated by the R/W bit in the I2C protocol. The bus
               number is specified by x.
 
         Usage:
@@ -13526,7 +13515,7 @@ class TriggerBBusBItemI2cCondition(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B:BUS:B<x>:I2C:CONDition`` command.
 
     Description:
-        - This command specifies the trigger condition for an I 2 C trigger. The bus number is
+        - This command specifies the trigger condition for an I2C trigger. The bus number is
           specified by x.
 
     Usage:
@@ -13557,7 +13546,7 @@ class TriggerBBusBItemI2cAddressValue(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B:BUS:B<x>:I2C:ADDRess:VALue`` command.
 
     Description:
-        - This command specifies the binary address string used for the I 2 C trigger if the trigger
+        - This command specifies the binary address string used for the I2C trigger if the trigger
           condition is ADDRESS or ADDRANDDATA. The bus number is specified by x.
 
     Usage:
@@ -13587,8 +13576,8 @@ class TriggerBBusBItemI2cAddressMode(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B:BUS:B<x>:I2C:ADDRess:MODe`` command.
 
     Description:
-        - This command specifies the I 2 C address mode to 7 or 10-bit. The bus number is specified
-          by x.
+        - This command specifies the I2C address mode to 7 or 10-bit. The bus number is specified by
+          x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:I2C:ADDRess:MODe?``
@@ -13633,7 +13622,7 @@ class TriggerBBusBItemI2cAddress(SCPICmdRead):
         """Return the ``TRIGger:B:BUS:B<x>:I2C:ADDRess:MODe`` command.
 
         Description:
-            - This command specifies the I 2 C address mode to 7 or 10-bit. The bus number is
+            - This command specifies the I2C address mode to 7 or 10-bit. The bus number is
               specified by x.
 
         Usage:
@@ -13662,7 +13651,7 @@ class TriggerBBusBItemI2cAddress(SCPICmdRead):
         """Return the ``TRIGger:B:BUS:B<x>:I2C:ADDRess:VALue`` command.
 
         Description:
-            - This command specifies the binary address string used for the I 2 C trigger if the
+            - This command specifies the binary address string used for the I2C trigger if the
               trigger condition is ADDRESS or ADDRANDDATA. The bus number is specified by x.
 
         Usage:
@@ -13727,7 +13716,7 @@ class TriggerBBusBItemI2c(SCPICmdRead):
         """Return the ``TRIGger:B:BUS:B<x>:I2C:CONDition`` command.
 
         Description:
-            - This command specifies the trigger condition for an I 2 C trigger. The bus number is
+            - This command specifies the trigger condition for an I2C trigger. The bus number is
               specified by x.
 
         Usage:
@@ -13779,7 +13768,7 @@ class TriggerBBusBItemFlexrayHeaderPaylength(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command specifies the payload length portion of the binary header string when
           triggering on the FlexRay bus header. The trigger condition needs to be set to HEADer
-          (using ).The bus number is specified by x.
+          (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -13809,7 +13798,7 @@ class TriggerBBusBItemFlexrayHeaderIndbits(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command specifies the indicator bits portion of the binary header string when
           triggering on the FlexRay bus header. The trigger condition needs to be set to HEADer
-          (using ). The bus number is specified by x.
+          (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:HEADER:INDBits?``
@@ -13839,8 +13828,8 @@ class TriggerBBusBItemFlexrayHeaderFrameid(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the frame ID portion of the binary header string when triggering on
-          the FlexRay bus header. The trigger condition needs to be set to HEADer (using ). The bus
-          number is specified by x.
+          the FlexRay bus header. The trigger condition needs to be set to HEADer (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:HEADER:FRAMEID?``
@@ -13870,8 +13859,8 @@ class TriggerBBusBItemFlexrayHeaderCyclecount(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the cycle count portion of the binary header string when triggering
-          on the FlexRay bus header. The trigger condition needs to be set to HEADer (using ). The
-          bus number is specified by x.
+          on the FlexRay bus header. The trigger condition needs to be set to HEADer (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -13901,8 +13890,8 @@ class TriggerBBusBItemFlexrayHeaderCrc(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the CRC portion of the binary header string when triggering on the
-          FlexRay bus signal. The trigger condition needs to be set to HEADer (using ). The bus
-          number is specified by x.
+          FlexRay bus signal. The trigger condition needs to be set to HEADer (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:HEADER:CRC?``
@@ -13960,8 +13949,8 @@ class TriggerBBusBItemFlexrayHeader(SCPICmdRead):
 
         Description:
             - This command specifies the CRC portion of the binary header string when triggering on
-              the FlexRay bus signal. The trigger condition needs to be set to HEADer (using ). The
-              bus number is specified by x.
+              the FlexRay bus signal. The trigger condition needs to be set to HEADer (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:HEADER:CRC?``
@@ -13990,7 +13979,8 @@ class TriggerBBusBItemFlexrayHeader(SCPICmdRead):
         Description:
             - This command specifies the cycle count portion of the binary header string when
               triggering on the FlexRay bus header. The trigger condition needs to be set to HEADer
-              (using ). The bus number is specified by x.
+              (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by
+              x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -14020,7 +14010,8 @@ class TriggerBBusBItemFlexrayHeader(SCPICmdRead):
         Description:
             - This command specifies the frame ID portion of the binary header string when
               triggering on the FlexRay bus header. The trigger condition needs to be set to HEADer
-              (using ). The bus number is specified by x.
+              (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by
+              x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -14050,7 +14041,8 @@ class TriggerBBusBItemFlexrayHeader(SCPICmdRead):
         Description:
             - This command specifies the indicator bits portion of the binary header string when
               triggering on the FlexRay bus header. The trigger condition needs to be set to HEADer
-              (using ). The bus number is specified by x.
+              (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by
+              x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -14080,7 +14072,7 @@ class TriggerBBusBItemFlexrayHeader(SCPICmdRead):
         Description:
             - This command specifies the payload length portion of the binary header string when
               triggering on the FlexRay bus header. The trigger condition needs to be set to HEADer
-              (using ).The bus number is specified by x.
+              (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -14109,7 +14101,7 @@ class TriggerBBusBItemFlexrayFrametype(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command specifies the frame type (normal, payload, null, sync or startup) when
           triggering on the FlexRay bus signal. The trigger condition needs to be set to FRAMEType
-          (using ). The bus number is specified by x.
+          (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:FRAMEType?``
@@ -14140,8 +14132,9 @@ class TriggerBBusBItemFlexrayFrameidValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the low value when triggering on the FlexRay bus frame ID field.
-          (Use to set the high value.) The trigger condition needs to be set to IDentifier (using ).
-          The bus number is specified by x.
+          (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:FRAMEID:HIVALue`` to set the high value.) The
+          trigger condition needs to be set to IDentifier (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:FRAMEID:VALue?``
@@ -14170,8 +14163,8 @@ class TriggerBBusBItemFlexrayFrameidQualifier(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the qualifier to use when triggering on the FlexRay bus frame ID
-          field. The trigger condition needs to be set to IDentifier (using ). The bus number is
-          specified by x.
+          field. The trigger condition needs to be set to IDentifier (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -14205,8 +14198,9 @@ class TriggerBBusBItemFlexrayFrameidHivalue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the high value when triggering on the FlexRay bus frame ID field.
-          (Use to set the low value.) The trigger condition needs to be set to IDentifier (using ).
-          The bus number is specified by x.
+          (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:FRAMEID:VALue`` to set the low value.) The trigger
+          condition needs to be set to IDentifier (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -14258,8 +14252,9 @@ class TriggerBBusBItemFlexrayFrameid(SCPICmdRead):
 
         Description:
             - This command specifies the high value when triggering on the FlexRay bus frame ID
-              field. (Use to set the low value.) The trigger condition needs to be set to IDentifier
-              (using ). The bus number is specified by x.
+              field. (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:FRAMEID:VALue`` to set the low value.)
+              The trigger condition needs to be set to IDentifier (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -14287,8 +14282,8 @@ class TriggerBBusBItemFlexrayFrameid(SCPICmdRead):
 
         Description:
             - This command specifies the qualifier to use when triggering on the FlexRay bus frame
-              ID field. The trigger condition needs to be set to IDentifier (using ). The bus number
-              is specified by x.
+              ID field. The trigger condition needs to be set to IDentifier (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -14323,8 +14318,9 @@ class TriggerBBusBItemFlexrayFrameid(SCPICmdRead):
 
         Description:
             - This command specifies the low value when triggering on the FlexRay bus frame ID
-              field. (Use to set the high value.) The trigger condition needs to be set to
-              IDentifier (using ). The bus number is specified by x.
+              field. (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:FRAMEID:HIVALue`` to set the high value.)
+              The trigger condition needs to be set to IDentifier (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -14352,7 +14348,8 @@ class TriggerBBusBItemFlexrayErrtype(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the error type when triggering on the FlexRay bus signal. The
-          trigger condition needs to be set to ERROR (using ). The bus number is specified by x.
+          trigger condition needs to be set to ERROR (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:ERRTYPE?`` query.
@@ -14382,8 +14379,8 @@ class TriggerBBusBItemFlexrayEoftype(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the end of file type (static, dynamic or any) when triggering on
-          the FlexRay bus EOF field. The trigger condition needs to be set to EOF (using ). The bus
-          number is specified by x.
+          the FlexRay bus EOF field. The trigger condition needs to be set to EOF (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:EOFTYPE?`` query.
@@ -14410,8 +14407,9 @@ class TriggerBBusBItemFlexrayDataValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the low value when triggering on the FlexRay bus data field. (Use
-          to set the upper value.) The trigger condition needs to be set to ID or IDANDDATA (using
-          ). The bus number is specified by x.
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:DATa:HIVALue`` to set the upper value.) The trigger
+          condition needs to be set to ID or IDANDDATA (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:DATa:VALue?``
@@ -14440,8 +14438,8 @@ class TriggerBBusBItemFlexrayDataSize(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the length of the data string, in bytes, when triggering on the
-          FlexRay bus data field. The trigger condition needs to be set to ID or IDANDDATA (using ).
-          The bus number is specified by x.
+          FlexRay bus data field. The trigger condition needs to be set to ID or IDANDDATA (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:DATa:SIZe?``
@@ -14469,7 +14467,8 @@ class TriggerBBusBItemFlexrayDataQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command specifies the qualifier (<, >, =, <=, >=, not =, in range, out of range) to
           use when triggering on the FlexRay bus data field. The trigger condition needs to be set
-          to ID or IDANDDATA (using ). The bus number is specified by x.
+          to ID or IDANDDATA (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is
+          specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:DATa:QUALifier?``
@@ -14503,8 +14502,8 @@ class TriggerBBusBItemFlexrayDataOffset(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the offset of the data string, in bytes, when triggering on the
-          FlexRay bus data field. The trigger condition needs to be set to ID or IDANDDATA (using ).
-          The bus number is specified by x.
+          FlexRay bus data field. The trigger condition needs to be set to ID or IDANDDATA (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:DATa:OFFSet?``
@@ -14522,8 +14521,8 @@ class TriggerBBusBItemFlexrayDataOffset(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>`` is the offset of the data string in bytes. A byte offset of -1 signifies 'don't
-          care', and no byte offset is used. The instrument will trigger on or match any byte value
+        - ``<NR1>`` is the offset of the data string in bytes. A byte offset of -1 signifies “don't
+          care”, and no byte offset is used. The instrument will trigger on or match any byte value
           that fits.
     """
 
@@ -14533,8 +14532,9 @@ class TriggerBBusBItemFlexrayDataHivalue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the high value when triggering on the FlexRay bus data field. (Use
-          to set the lower value.) The trigger condition needs to be set to ID or IDANDDATA (using
-          ).The bus number is specified by x.
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:DATa:VALue`` to set the lower value.) The trigger
+          condition needs to be set to ID or IDANDDATA (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:DATa:HIVALue?``
@@ -14590,8 +14590,9 @@ class TriggerBBusBItemFlexrayData(SCPICmdRead):
 
         Description:
             - This command specifies the high value when triggering on the FlexRay bus data field.
-              (Use to set the lower value.) The trigger condition needs to be set to ID or IDANDDATA
-              (using ).The bus number is specified by x.
+              (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:DATa:VALue`` to set the lower value.) The
+              trigger condition needs to be set to ID or IDANDDATA (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -14620,7 +14621,8 @@ class TriggerBBusBItemFlexrayData(SCPICmdRead):
         Description:
             - This command specifies the offset of the data string, in bytes, when triggering on the
               FlexRay bus data field. The trigger condition needs to be set to ID or IDANDDATA
-              (using ). The bus number is specified by x.
+              (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by
+              x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -14639,7 +14641,7 @@ class TriggerBBusBItemFlexrayData(SCPICmdRead):
 
         Info:
             - ``<NR1>`` is the offset of the data string in bytes. A byte offset of -1 signifies
-              'don't care', and no byte offset is used. The instrument will trigger on or match any
+              “don't care”, and no byte offset is used. The instrument will trigger on or match any
               byte value that fits.
         """
         return self._offset
@@ -14651,7 +14653,8 @@ class TriggerBBusBItemFlexrayData(SCPICmdRead):
         Description:
             - This command specifies the qualifier (<, >, =, <=, >=, not =, in range, out of range)
               to use when triggering on the FlexRay bus data field. The trigger condition needs to
-              be set to ID or IDANDDATA (using ). The bus number is specified by x.
+              be set to ID or IDANDDATA (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The
+              bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -14687,7 +14690,8 @@ class TriggerBBusBItemFlexrayData(SCPICmdRead):
         Description:
             - This command specifies the length of the data string, in bytes, when triggering on the
               FlexRay bus data field. The trigger condition needs to be set to ID or IDANDDATA
-              (using ). The bus number is specified by x.
+              (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by
+              x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:DATa:SIZe?``
@@ -14715,8 +14719,9 @@ class TriggerBBusBItemFlexrayData(SCPICmdRead):
 
         Description:
             - This command specifies the low value when triggering on the FlexRay bus data field.
-              (Use to set the upper value.) The trigger condition needs to be set to ID or IDANDDATA
-              (using ). The bus number is specified by x.
+              (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:DATa:HIVALue`` to set the upper value.) The
+              trigger condition needs to be set to ID or IDANDDATA (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:DATa:VALue?``
@@ -14744,8 +14749,9 @@ class TriggerBBusBItemFlexrayCyclecountValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the low value when triggering on the FlexRay bus cycle count field.
-          (Use to set the upper value.) The trigger condition must be set to CYCLEcount (using ).The
-          bus number is specified by x.
+          (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:CYCLEcount:HIVALue`` to set the upper value.) The
+          trigger condition must be set to CYCLEcount (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -14769,13 +14775,14 @@ class TriggerBBusBItemFlexrayCyclecountValue(SCPICmdWrite, SCPICmdRead):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class TriggerBBusBItemFlexrayCyclecountQualifier(SCPICmdWrite, SCPICmdRead):
+class TriggerBBusBItemFlexrayCyclecountQualifier(SCPICmdWriteNoArguments, SCPICmdRead):
     """The ``TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier`` command.
 
     Description:
         - This command specifies the qualifier (<, >, =, <=, >=, not =, in range, out of range) to
           use when triggering on the FlexRay bus cycle count field. The trigger condition must be
-          set to CYCLEcount (using ).The bus number is specified by x.
+          set to CYCLEcount (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus number is
+          specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -14783,25 +14790,15 @@ class TriggerBBusBItemFlexrayCyclecountQualifier(SCPICmdWrite, SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?`` query and raise an AssertionError if
           the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier value`` command.
+        - Using the ``.write()`` method will send the
+          ``TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier`` command.
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier
         - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
         ```
-
-    Info:
-        - ``LESSthan`` sets the cycle count qualifier to less than.
-        - ``MOREthan`` sets the cycle count qualifier to more than.
-        - ``EQual`` sets the cycle count qualifier to equal.
-        - ``UNEQual`` sets the cycle count qualifier to not equal.
-        - ``LESSEQual`` sets the cycle count qualifier to less than or equal.
-        - ``MOREEQual`` sets the cycle count qualifier to greater than or equal.
-        - ``INrange`` sets the cycle count qualifier to in range.
-        - ``OUTrange`` sets the cycle count qualifier to out of range.
-    """  # noqa: E501
+    """
 
 
 class TriggerBBusBItemFlexrayCyclecountHivalue(SCPICmdWrite, SCPICmdRead):
@@ -14809,8 +14806,9 @@ class TriggerBBusBItemFlexrayCyclecountHivalue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the high value when triggering on a FlexRay bus cycle count field.
-          (Use to set the low value.) The trigger condition must be set to CYCLEcount (using ). The
-          bus number is specified by x.
+          (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:CYCLEcount:VALue`` to set the low value.) The
+          trigger condition must be set to CYCLEcount (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -14866,8 +14864,9 @@ class TriggerBBusBItemFlexrayCyclecount(SCPICmdRead):
 
         Description:
             - This command specifies the high value when triggering on a FlexRay bus cycle count
-              field. (Use to set the low value.) The trigger condition must be set to CYCLEcount
-              (using ). The bus number is specified by x.
+              field. (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:CYCLEcount:VALue`` to set the low value.)
+              The trigger condition must be set to CYCLEcount (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -14896,7 +14895,8 @@ class TriggerBBusBItemFlexrayCyclecount(SCPICmdRead):
         Description:
             - This command specifies the qualifier (<, >, =, <=, >=, not =, in range, out of range)
               to use when triggering on the FlexRay bus cycle count field. The trigger condition
-              must be set to CYCLEcount (using ).The bus number is specified by x.
+              must be set to CYCLEcount (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus
+              number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -14904,25 +14904,15 @@ class TriggerBBusBItemFlexrayCyclecount(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?`` query and raise an AssertionError
               if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier value`` command.
+            - Using the ``.write()`` method will send the
+              ``TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier`` command.
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier
             - TRIGger:B:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
             ```
-
-        Info:
-            - ``LESSthan`` sets the cycle count qualifier to less than.
-            - ``MOREthan`` sets the cycle count qualifier to more than.
-            - ``EQual`` sets the cycle count qualifier to equal.
-            - ``UNEQual`` sets the cycle count qualifier to not equal.
-            - ``LESSEQual`` sets the cycle count qualifier to less than or equal.
-            - ``MOREEQual`` sets the cycle count qualifier to greater than or equal.
-            - ``INrange`` sets the cycle count qualifier to in range.
-            - ``OUTrange`` sets the cycle count qualifier to out of range.
-        """  # noqa: E501
+        """
         return self._qualifier
 
     @property
@@ -14931,8 +14921,9 @@ class TriggerBBusBItemFlexrayCyclecount(SCPICmdRead):
 
         Description:
             - This command specifies the low value when triggering on the FlexRay bus cycle count
-              field. (Use to set the upper value.) The trigger condition must be set to CYCLEcount
-              (using ).The bus number is specified by x.
+              field. (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:CYCLEcount:HIVALue`` to set the upper
+              value.) The trigger condition must be set to CYCLEcount (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -15105,8 +15096,8 @@ class TriggerBBusBItemFlexray(SCPICmdRead):
 
         Description:
             - This command specifies the end of file type (static, dynamic or any) when triggering
-              on the FlexRay bus EOF field. The trigger condition needs to be set to EOF (using ).
-              The bus number is specified by x.
+              on the FlexRay bus EOF field. The trigger condition needs to be set to EOF (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:EOFTYPE?``
@@ -15136,7 +15127,8 @@ class TriggerBBusBItemFlexray(SCPICmdRead):
 
         Description:
             - This command specifies the error type when triggering on the FlexRay bus signal. The
-              trigger condition needs to be set to ERROR (using ). The bus number is specified by x.
+              trigger condition needs to be set to ERROR (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:ERRTYPE?``
@@ -15188,7 +15180,8 @@ class TriggerBBusBItemFlexray(SCPICmdRead):
         Description:
             - This command specifies the frame type (normal, payload, null, sync or startup) when
               triggering on the FlexRay bus signal. The trigger condition needs to be set to
-              FRAMEType (using ). The bus number is specified by x.
+              FRAMEType (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is
+              specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:FLEXray:FRAMEType?``
@@ -15693,7 +15686,7 @@ class TriggerBBusBItemEthernetQtagValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:ETHERnet:QTAG:VALue <QString>
+        - TRIGger:B:BUS:B<x>:ETHERnet:QTAG:VALue T <QString>
         - TRIGger:B:BUS:B<x>:ETHERnet:QTAG:VALue?
         ```
 
@@ -15702,8 +15695,6 @@ class TriggerBBusBItemEthernetQtagValue(SCPICmdWrite, SCPICmdRead):
           0, 1, and X. The bits specified in the quoted string replace the least significant bits,
           leaving any unspecified upper bits unchanged.
     """
-
-    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerBBusBItemEthernetQtag(SCPICmdRead):
@@ -15742,7 +15733,7 @@ class TriggerBBusBItemEthernetQtag(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:ETHERnet:QTAG:VALue <QString>
+            - TRIGger:B:BUS:B<x>:ETHERnet:QTAG:VALue T <QString>
             - TRIGger:B:BUS:B<x>:ETHERnet:QTAG:VALue?
             ```
 
@@ -15761,7 +15752,8 @@ class TriggerBBusBItemEthernetMacLengthValue(SCPICmdWrite, SCPICmdRead):
         - When the Ethernet trigger condition is set to MACLENgth, and the qualifier is set to
           LESSthan, MOREthan, EQual, UNEQual, LESSEQual or MOREEQual, this command specifies the
           16-bit value to trigger on. When the qualifier is set to INrange or OUTrange, this command
-          specifies the lower limit of the range. (Use the command to set the upper limit of the
+          specifies the lower limit of the range. (Use the command
+          TRIGger:{A|B}``:BUS:B<x>:ETHERnet:MAC:LENgth:HIVALue`` to set the upper limit of the
           range.) The default is all X's (don't care). The bus number is specified by x.
 
     Usage:
@@ -15794,8 +15786,8 @@ class TriggerBBusBItemEthernetMacLengthHivalue(SCPICmdWrite, SCPICmdRead):
     Description:
         - When the Ethernet trigger condition is set to MACLENgth, and the qualifier is set to
           INrange or OUTrange, this command specifies the upper data value of the range. (Use the
-          command to specify the lower limit of the range.) The default is all X's (don't care). The
-          bus number is specified by x.
+          command TRIGger:{A|B}``:BUS:B<x>:ETHERnet:MAC:LENgth:VALue`` to specify the lower limit of
+          the range.) The default is all X's (don't care). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -15850,8 +15842,9 @@ class TriggerBBusBItemEthernetMacLength(SCPICmdRead):
         Description:
             - When the Ethernet trigger condition is set to MACLENgth, and the qualifier is set to
               INrange or OUTrange, this command specifies the upper data value of the range. (Use
-              the command to specify the lower limit of the range.) The default is all X's (don't
-              care). The bus number is specified by x.
+              the command TRIGger:{A|B}``:BUS:B<x>:ETHERnet:MAC:LENgth:VALue`` to specify the lower
+              limit of the range.) The default is all X's (don't care). The bus number is specified
+              by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -15883,9 +15876,9 @@ class TriggerBBusBItemEthernetMacLength(SCPICmdRead):
             - When the Ethernet trigger condition is set to MACLENgth, and the qualifier is set to
               LESSthan, MOREthan, EQual, UNEQual, LESSEQual or MOREEQual, this command specifies the
               16-bit value to trigger on. When the qualifier is set to INrange or OUTrange, this
-              command specifies the lower limit of the range. (Use the command to set the upper
-              limit of the range.) The default is all X's (don't care). The bus number is specified
-              by x.
+              command specifies the lower limit of the range. (Use the command
+              TRIGger:{A|B}``:BUS:B<x>:ETHERnet:MAC:LENgth:HIVALue`` to set the upper limit of the
+              range.) The default is all X's (don't care). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -15917,7 +15910,7 @@ class TriggerBBusBItemEthernetMacAddressSourceValue(SCPICmdWrite, SCPICmdRead):
         - When the Ethernet trigger condition is set to MACADDress, this command specifies the
           48-bit MAC source address value that is to be used in the trigger (along with the
           destination address value). The default is all X's (don't care). The bus number is
-          specified by x.
+          specified by x.MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -15971,7 +15964,7 @@ class TriggerBBusBItemEthernetMacAddressSource(SCPICmdRead):
             - When the Ethernet trigger condition is set to MACADDress, this command specifies the
               48-bit MAC source address value that is to be used in the trigger (along with the
               destination address value). The default is all X's (don't care). The bus number is
-              specified by x.
+              specified by x.MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -16002,7 +15995,8 @@ class TriggerBBusBItemEthernetMacAddressDestinationValue(SCPICmdWrite, SCPICmdRe
     Description:
         - When the Ethernet trigger condition is set to MACADDress, this command specifies the
           48-bit MAC destination address that is to be used in the trigger (along with the source
-          address value). The default is all X's (don't care). The bus number is specified by x.
+          address value). The default is all X's (don't care). The bus number is specified by x.MAC
+          Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -16056,7 +16050,7 @@ class TriggerBBusBItemEthernetMacAddressDestination(SCPICmdRead):
             - When the Ethernet trigger condition is set to MACADDress, this command specifies the
               48-bit MAC destination address that is to be used in the trigger (along with the
               source address value). The default is all X's (don't care). The bus number is
-              specified by x.
+              specified by x.MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -16287,7 +16281,7 @@ class TriggerBBusBItemEthernetIpheaderProtocolValue(SCPICmdWrite, SCPICmdRead):
         - When the Ethernet trigger condition is set to IPHeader, this command specifies the value
           of the 8-bit protocol field that is to be used in the trigger (along with the source and
           destination addresses). The default is all X's (don't care). The bus number is specified
-          by x.
+          by x.Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP) and 17 (UDP).
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -16305,7 +16299,7 @@ class TriggerBBusBItemEthernetIpheaderProtocolValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<QString>`` is a quoted string of up to 8 characters where the allowable characters are
+        - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters are
           0, 1, and X. The bits specified in the quoted string replace the least significant bits,
           leaving any unspecified upper bits unchanged.
     """
@@ -16341,7 +16335,8 @@ class TriggerBBusBItemEthernetIpheaderProtocol(SCPICmdRead):
             - When the Ethernet trigger condition is set to IPHeader, this command specifies the
               value of the 8-bit protocol field that is to be used in the trigger (along with the
               source and destination addresses). The default is all X's (don't care). The bus number
-              is specified by x.
+              is specified by x.Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP) and 17
+              (UDP).
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -16359,7 +16354,7 @@ class TriggerBBusBItemEthernetIpheaderProtocol(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is a quoted string of up to 8 characters where the allowable characters
+            - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters
               are 0, 1, and X. The bits specified in the quoted string replace the least significant
               bits, leaving any unspecified upper bits unchanged.
         """
@@ -16540,8 +16535,8 @@ class TriggerBBusBItemEthernetDataValue(SCPICmdWrite, SCPICmdRead):
           MOREthan, EQual, UNEQual, LESSEQual or MOREEQual, this command specifies the value to
           trigger on. When the Ethernet trigger condition is set to DATa, and the qualifier is set
           to INrange or OUTrange, this command specifies the lower limit of the range. (Use the
-          command to set the upper limit of the range.) The default is all X's (don't care). The bus
-          number is specified by x.
+          command TRIGger:{A|B}``:BUS:B<x>:ETHERnet:DATa:HIVALue`` to set the upper limit of the
+          range.) The default is all X's (don't care). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:ETHERnet:DATa:VALue?``
@@ -16662,13 +16657,13 @@ class TriggerBBusBItemEthernetDataOffset(SCPICmdWrite, SCPICmdRead):
 
 
 class TriggerBBusBItemEthernetDataHivalue(SCPICmdWrite, SCPICmdRead):
-    """The ``TRIGger:B:BUS:B<x>:ETHERnet:DATa:HIVALue`` command.
+    r"""The ``TRIGger:B:BUS:B<x>:ETHERnet:DATa:HIVALue`` command.
 
     Description:
         - When the Ethernet trigger condition is set to DATa, and the qualifier is set to either
           INrange or OUTrange, this command specifies the upper data value of the range. (Use the
-          command to specify the lower limit of the range.) The default is all X's (don't care). The
-          bus number is specified by x.
+          command TRIGger:{A|B}``:BUS:B<x>:ETHERnet:DATa:VALue`` to specify the lower limit of the
+          range.) The default is all X's (don't care). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:ETHERnet:DATa:HIVALue?``
@@ -16686,8 +16681,10 @@ class TriggerBBusBItemEthernetDataHivalue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<QString>`` is a quoted string whose length varies depending on the size setting, up to
-          32 bits. (Use the command.
+        - ``<QString>`` is a quoted string whose length varies depending on the size setting, upto
+          32 bits. (Use the command TRIGger:{A\|B}``:BUS:B<x>:ETHERnet:DATa:SIZeto`` specify the
+          size.) The allowable characters are 0, 1, and X. The bits specifiedin the quoted string
+          replace the least significant bits, leaving any unspecifiedupper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -16721,13 +16718,13 @@ class TriggerBBusBItemEthernetData(SCPICmdRead):
 
     @property
     def hivalue(self) -> TriggerBBusBItemEthernetDataHivalue:
-        """Return the ``TRIGger:B:BUS:B<x>:ETHERnet:DATa:HIVALue`` command.
+        r"""Return the ``TRIGger:B:BUS:B<x>:ETHERnet:DATa:HIVALue`` command.
 
         Description:
             - When the Ethernet trigger condition is set to DATa, and the qualifier is set to either
               INrange or OUTrange, this command specifies the upper data value of the range. (Use
-              the command to specify the lower limit of the range.) The default is all X's (don't
-              care). The bus number is specified by x.
+              the command TRIGger:{A|B}``:BUS:B<x>:ETHERnet:DATa:VALue`` to specify the lower limit
+              of the range.) The default is all X's (don't care). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -16745,8 +16742,11 @@ class TriggerBBusBItemEthernetData(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is a quoted string whose length varies depending on the size setting, up
-              to 32 bits. (Use the command.
+            - ``<QString>`` is a quoted string whose length varies depending on the size setting,
+              upto 32 bits. (Use the command TRIGger:{A\|B}``:BUS:B<x>:ETHERnet:DATa:SIZeto``
+              specify the size.) The allowable characters are 0, 1, and X. The bits specifiedin the
+              quoted string replace the least significant bits, leaving any unspecifiedupper bits
+              unchanged.
         """
         return self._hivalue
 
@@ -16857,8 +16857,9 @@ class TriggerBBusBItemEthernetData(SCPICmdRead):
               LESSthan, MOREthan, EQual, UNEQual, LESSEQual or MOREEQual, this command specifies the
               value to trigger on. When the Ethernet trigger condition is set to DATa, and the
               qualifier is set to INrange or OUTrange, this command specifies the lower limit of the
-              range. (Use the command to set the upper limit of the range.) The default is all X's
-              (don't care). The bus number is specified by x.
+              range. (Use the command TRIGger:{A|B}``:BUS:B<x>:ETHERnet:DATa:HIVALue`` to set the
+              upper limit of the range.) The default is all X's (don't care). The bus number is
+              specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -16907,19 +16908,18 @@ class TriggerBBusBItemEthernetCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``SFD`` - Start of frame delimiter.
-        - ``MACADDRess`` - MAC addresses field.
-        - ``MACLENgth`` - MAC length/type field.
-        - ``IPHeader`` - IP header field. This argument is only available when PROTOCOL is set to
+        - ``SFD`` — Start of frame delimiter.
+        - ``MACADDRess`` — MAC addresses field.
+        - ``MACLENgth`` — MAC length/type field.
+        - ``IPHeader`` — IP header field. This argument is only available when PROTOCOL is set to
           IPv4.
-        - ``TCPHeader`` - TCP header field. This argument is only available when PROTOCOL is set to
-          IPv4.
-        - ``DATa`` - TCP/IPv4 or MAC protocol client data field. If the protocol is set to OTHER,
+        - ``TCPHeader`` — TCP header field. This argument is only available when.
+        - ``DATa`` — TCP/IPv4 or MAC protocol client data field. If the protocol is set to OTHER,
           then DATa refers to the MAC client data.
-        - ``EOP`` - End of Packet field.
-        - ``IDLe`` - Idle field.
-        - ``FCSError`` - Frame Check Sequence Error (CRC) field.
-        - ``QTAG`` - IEEE 802.1Q (VLAN) control information field. In order to use QTAG as a trigger
+        - ``EOP`` — End of Packet field.
+        - ``IDLe`` — Idle field.
+        - ``FCSError`` — Frame Check Sequence Error (CRC) field.
+        - ``QTAG`` — IEEE 802.1Q (VLAN) control information field. In order to use QTAG as a trigger
           condition, the frame type must be set to QTAG ).
     """  # noqa: E501
 
@@ -16974,19 +16974,18 @@ class TriggerBBusBItemEthernet(SCPICmdRead):
             ```
 
         Info:
-            - ``SFD`` - Start of frame delimiter.
-            - ``MACADDRess`` - MAC addresses field.
-            - ``MACLENgth`` - MAC length/type field.
-            - ``IPHeader`` - IP header field. This argument is only available when PROTOCOL is set
+            - ``SFD`` — Start of frame delimiter.
+            - ``MACADDRess`` — MAC addresses field.
+            - ``MACLENgth`` — MAC length/type field.
+            - ``IPHeader`` — IP header field. This argument is only available when PROTOCOL is set
               to IPv4.
-            - ``TCPHeader`` - TCP header field. This argument is only available when PROTOCOL is set
-              to IPv4.
-            - ``DATa`` - TCP/IPv4 or MAC protocol client data field. If the protocol is set to
+            - ``TCPHeader`` — TCP header field. This argument is only available when.
+            - ``DATa`` — TCP/IPv4 or MAC protocol client data field. If the protocol is set to
               OTHER, then DATa refers to the MAC client data.
-            - ``EOP`` - End of Packet field.
-            - ``IDLe`` - Idle field.
-            - ``FCSError`` - Frame Check Sequence Error (CRC) field.
-            - ``QTAG`` - IEEE 802.1Q (VLAN) control information field. In order to use QTAG as a
+            - ``EOP`` — End of Packet field.
+            - ``IDLe`` — Idle field.
+            - ``FCSError`` — Frame Check Sequence Error (CRC) field.
+            - ``QTAG`` — IEEE 802.1Q (VLAN) control information field. In order to use QTAG as a
               trigger condition, the frame type must be set to QTAG ).
         """  # noqa: E501
         return self._condition
@@ -17089,8 +17088,8 @@ class TriggerBBusBItemCanIdentifierValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the binary address value to be used when triggering on a CAN bus signal.
-          The trigger condition must be set to IDANDDATA or DATa (using ). The bus number is
-          specified by x.
+          The trigger condition must be set to IDANDDATA or DATa (using
+          TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:CAN:IDentifier:VALue?``
@@ -17121,7 +17120,7 @@ class TriggerBBusBItemCanIdentifierMode(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets the addressing mode (standard or extended format) to be used when
           triggering on a CAN bus signal. The trigger condition must be set to IDANDDATA or DATa
-          (using ). The bus number is specified by x.
+          (using TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:CAN:IDentifier:MODe?``
@@ -17169,7 +17168,7 @@ class TriggerBBusBItemCanIdentifier(SCPICmdRead):
         Description:
             - This command sets the addressing mode (standard or extended format) to be used when
               triggering on a CAN bus signal. The trigger condition must be set to IDANDDATA or DATa
-              (using ). The bus number is specified by x.
+              (using TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -17198,8 +17197,8 @@ class TriggerBBusBItemCanIdentifier(SCPICmdRead):
 
         Description:
             - This command sets the binary address value to be used when triggering on a CAN bus
-              signal. The trigger condition must be set to IDANDDATA or DATa (using ). The bus
-              number is specified by x.
+              signal. The trigger condition must be set to IDANDDATA or DATa (using
+              TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -17228,8 +17227,9 @@ class TriggerBBusBItemCanFrametype(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the frame type (data, remote, error or overload) to be used when
-          triggering on a CAN bus signal. The trigger condition must be set to FRAMEtype (using ).
-          B<x> is the bus number.The bus number is specified by x.
+          triggering on a CAN bus signal. The trigger condition must be set to FRAMEtype (using
+          TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). B<x> is the bus number.The bus number is
+          specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:CAN:FRAMEtype?`` query.
@@ -17431,8 +17431,8 @@ class TriggerBBusBItemCanDataValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the binary data value to be used when triggering on a CAN bus signal.
-          The trigger condition must be set to IDANDDATA or DATa (using ). The bus number is
-          specified by x.
+          The trigger condition must be set to IDANDDATA or DATa (using
+          TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:CAN:DATa:VALue?`` query.
@@ -17460,8 +17460,8 @@ class TriggerBBusBItemCanDataSize(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the length of the data string, in bytes, to be used when triggering on a
-          CAN bus signal. The trigger condition must be set to IDANDDATA or DATa (using ). The bus
-          number is specified by x.
+          CAN bus signal. The trigger condition must be set to IDANDDATA or DATa (using
+          TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:CAN:DATa:SIZe?`` query.
@@ -17486,8 +17486,8 @@ class TriggerBBusBItemCanDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the qualifier (<, >, =, ≠, ≤, ≥) to be used when triggering on a CAN bus
-          signal. The trigger condition must be set to IDANDDATA or DATa (using ). The bus number is
-          specified by x.
+          signal. The trigger condition must be set to IDANDDATA or DATa (using
+          TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:CAN:DATa:QUALifier?``
@@ -17550,9 +17550,9 @@ class TriggerBBusBItemCanDataDirection(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B:BUS:B<x>:CAN:DATa:DIRection`` command.
 
     Description:
-        - This command sets the data direction (read, write or 'nocare') to be used to search on a
-          CAN bus signal. The trigger condition must be set to IDentifier (using ). The bus number
-          is specified by x.
+        - This command sets the data direction (read, write or “nocare”) to be used to search on a
+          CAN bus signal. The trigger condition must be set to IDentifier (using
+          TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:CAN:DATa:DIRection?``
@@ -17605,9 +17605,9 @@ class TriggerBBusBItemCanData(SCPICmdRead):
         """Return the ``TRIGger:B:BUS:B<x>:CAN:DATa:DIRection`` command.
 
         Description:
-            - This command sets the data direction (read, write or 'nocare') to be used to search on
-              a CAN bus signal. The trigger condition must be set to IDentifier (using ). The bus
-              number is specified by x.
+            - This command sets the data direction (read, write or “nocare”) to be used to search on
+              a CAN bus signal. The trigger condition must be set to IDentifier (using
+              TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:CAN:DATa:DIRection?``
@@ -17667,8 +17667,8 @@ class TriggerBBusBItemCanData(SCPICmdRead):
 
         Description:
             - This command sets the qualifier (<, >, =, ≠, ≤, ≥) to be used when triggering on a CAN
-              bus signal. The trigger condition must be set to IDANDDATA or DATa (using ). The bus
-              number is specified by x.
+              bus signal. The trigger condition must be set to IDANDDATA or DATa (using
+              TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:CAN:DATa:QUALifier?``
@@ -17707,8 +17707,8 @@ class TriggerBBusBItemCanData(SCPICmdRead):
 
         Description:
             - This command sets the length of the data string, in bytes, to be used when triggering
-              on a CAN bus signal. The trigger condition must be set to IDANDDATA or DATa (using ).
-              The bus number is specified by x.
+              on a CAN bus signal. The trigger condition must be set to IDANDDATA or DATa (using
+              TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:CAN:DATa:SIZe?``
@@ -17736,8 +17736,8 @@ class TriggerBBusBItemCanData(SCPICmdRead):
 
         Description:
             - This command sets the binary data value to be used when triggering on a CAN bus
-              signal. The trigger condition must be set to IDANDDATA or DATa (using ). The bus
-              number is specified by x.
+              signal. The trigger condition must be set to IDANDDATA or DATa (using
+              TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:CAN:DATa:VALue?``
@@ -17926,7 +17926,8 @@ class TriggerBBusBItemCan(SCPICmdRead):
         Description:
             - This command sets the frame type (data, remote, error or overload) to be used when
               triggering on a CAN bus signal. The trigger condition must be set to FRAMEtype (using
-              ). B<x> is the bus number.The bus number is specified by x.
+              TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). B<x> is the bus number.The bus number is
+              specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:CAN:FRAMEtype?``
@@ -17974,8 +17975,8 @@ class TriggerBBusBItemAudioDataWord(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the alignment of the data (left, right or either) to be used to trigger
-          on an audio bus signal. The trigger condition must be set to DATa using . The bus number
-          is specified by x.
+          on an audio bus signal. The trigger condition must be set to DATa using
+          TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:AUDio:DATa:WORD?`` query.
@@ -18002,7 +18003,8 @@ class TriggerBBusBItemAudioDataValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the lower word value to be used when triggering on an audio bus signal.
-          The trigger condition must be set to DATa using . The bus number is specified by x.
+          The trigger condition must be set to DATa using
+          TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:AUDio:DATa:VALue?``
@@ -18061,7 +18063,8 @@ class TriggerBBusBItemAudioDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the qualifier to be used when triggering on an audio bus signal. The
-          trigger condition must be set to DATa using . The bus number is specified by x.
+          trigger condition must be set to DATa using TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``.
+          The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:AUDio:DATa:QUALifier?``
@@ -18095,7 +18098,8 @@ class TriggerBBusBItemAudioDataOffset(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the data offset value to be used when triggering on an audio bus signal.
-          The trigger condition must be set to DATa using . The bus number is specified by x.
+          The trigger condition must be set to DATa using
+          TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:AUDio:DATa:OFFSet?``
@@ -18122,7 +18126,8 @@ class TriggerBBusBItemAudioDataHivalue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the upper word value to be used when triggering on an audio bus signal.
-          The trigger condition must be set to DATA using . The bus number is specified by x.
+          The trigger condition must be set to DATA using
+          TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:AUDio:DATa:HIVALue?``
@@ -18245,8 +18250,8 @@ class TriggerBBusBItemAudioData(SCPICmdRead):
 
         Description:
             - This command sets the upper word value to be used when triggering on an audio bus
-              signal. The trigger condition must be set to DATA using . The bus number is specified
-              by x.
+              signal. The trigger condition must be set to DATA using
+              TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:AUDio:DATa:HIVALue?``
@@ -18275,8 +18280,8 @@ class TriggerBBusBItemAudioData(SCPICmdRead):
 
         Description:
             - This command sets the data offset value to be used when triggering on an audio bus
-              signal. The trigger condition must be set to DATa using . The bus number is specified
-              by x.
+              signal. The trigger condition must be set to DATa using
+              TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:AUDio:DATa:OFFSet?``
@@ -18304,7 +18309,8 @@ class TriggerBBusBItemAudioData(SCPICmdRead):
 
         Description:
             - This command sets the qualifier to be used when triggering on an audio bus signal. The
-              trigger condition must be set to DATa using . The bus number is specified by x.
+              trigger condition must be set to DATa using
+              TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -18369,8 +18375,8 @@ class TriggerBBusBItemAudioData(SCPICmdRead):
 
         Description:
             - This command sets the lower word value to be used when triggering on an audio bus
-              signal. The trigger condition must be set to DATa using . The bus number is specified
-              by x.
+              signal. The trigger condition must be set to DATa using
+              TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:AUDio:DATa:VALue?``
@@ -18398,8 +18404,8 @@ class TriggerBBusBItemAudioData(SCPICmdRead):
 
         Description:
             - This command sets the alignment of the data (left, right or either) to be used to
-              trigger on an audio bus signal. The trigger condition must be set to DATa using . The
-              bus number is specified by x.
+              trigger on an audio bus signal. The trigger condition must be set to DATa using
+              TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:AUDio:DATa:WORD?``
@@ -18706,7 +18712,8 @@ class TriggerBBusBItemArinc429aLabelQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on label data for an
           ARINC429 bus signal. The bus number is specified by x. The trigger condition must be set
-          to LABel or LABELANDDATA.
+          to LABel or LABELANDDATA.If the trigger condition is set to LABELANDDATA, the label
+          qualifier will be locked to Equal until the trigger condition is changed again.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -18719,7 +18726,7 @@ class TriggerBBusBItemArinc429aLabelQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier {A|B}:BUS:B<x>:ARINC429A:LABel: QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier?
         ```
 
@@ -18823,7 +18830,9 @@ class TriggerBBusBItemArinc429aLabel(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on label data
               for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-              must be set to LABel or LABELANDDATA.
+              must be set to LABel or LABELANDDATA.If the trigger condition is set to LABELANDDATA,
+              the label qualifier will be locked to Equal until the trigger condition is changed
+              again.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -18836,7 +18845,7 @@ class TriggerBBusBItemArinc429aLabel(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier {A|B}:BUS:B<x>:ARINC429A:LABel: QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:ARINC429A:LABel:QUALifier?
             ```
 
@@ -18906,6 +18915,8 @@ class TriggerBBusBItemArinc429aErrtype(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``ANY`` sets the error type to match any of the other available error types.
+        - ``PARity`` sets the error type to match on parity errors (parity value results in even
+          parity count for a word).
         - ``WORD`` sets the error type to match on word errors (any unframed or unknown decode
           data).
         - ``GAP`` sets the error type to match on gap violations (less than 4 bits idle time between
@@ -18918,7 +18929,8 @@ class TriggerBBusBItemArinc429aDataValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the low value when triggering on an ARINC429 data field. The
-          bus number is specified by x. The trigger condition must be set to DATa or LABELANDDATA.
+          bus number is specified by x. The trigger condition must be set to DATa or
+          LABELANDDATA.The size of the QString is dependent on the data field format selected using
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:ARINC429A:DATa:VALue?``
@@ -18948,7 +18960,8 @@ class TriggerBBusBItemArinc429aDataQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on data in the DATA
           field for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-          must be set to DATa or LABELANDDATA.
+          must be set to DATa or LABELANDDATA.The trigger qualifier only applies to the bits defined
+          as the data field via the bus data field format specifier (using
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -18961,7 +18974,7 @@ class TriggerBBusBItemArinc429aDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier {A|B}:BUS:B<x>:ARINC429A:DATa: QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier?
         ```
 
@@ -18983,7 +18996,8 @@ class TriggerBBusBItemArinc429aDataHivalue(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the high value when trigger on an ARINC429 data field. The
           bus number is specified by x. The trigger condition must be set to DATa or LABELANDDATA,
-          and the data qualifier must be INrange or OUTrange.
+          and the data qualifier must be INrange or OUTrange.The size of the QString is dependent on
+          the data field format selected using
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:ARINC429A:DATa:HIVALue?``
@@ -19036,7 +19050,8 @@ class TriggerBBusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the high value when trigger on an ARINC429 data field.
               The bus number is specified by x. The trigger condition must be set to DATa or
-              LABELANDDATA, and the data qualifier must be INrange or OUTrange.
+              LABELANDDATA, and the data qualifier must be INrange or OUTrange.The size of the
+              QString is dependent on the data field format selected using
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -19065,7 +19080,8 @@ class TriggerBBusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on data in the
               DATA field for an ARINC429 bus signal. The bus number is specified by x. The trigger
-              condition must be set to DATa or LABELANDDATA.
+              condition must be set to DATa or LABELANDDATA.The trigger qualifier only applies to
+              the bits defined as the data field via the bus data field format specifier (using
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -19078,7 +19094,7 @@ class TriggerBBusBItemArinc429aData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier {A|B}:BUS:B<x>:ARINC429A:DATa: QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:B:BUS:B<x>:ARINC429A:DATa:QUALifier?
             ```
 
@@ -19101,7 +19117,8 @@ class TriggerBBusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the low value when triggering on an ARINC429 data field.
               The bus number is specified by x. The trigger condition must be set to DATa or
-              LABELANDDATA.
+              LABELANDDATA.The size of the QString is dependent on the data field format selected
+              using
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -19142,7 +19159,7 @@ class TriggerBBusBItemArinc429aCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA|EOW|ERRor}
+        - TRIGger:B:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA |EOW|ERRor}
         - TRIGger:B:BUS:B<x>:ARINC429A:CONDition?
         ```
 
@@ -19204,7 +19221,7 @@ class TriggerBBusBItemArinc429a(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA|EOW|ERRor}
+            - TRIGger:B:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA |EOW|ERRor}
             - TRIGger:B:BUS:B<x>:ARINC429A:CONDition?
             ```
 
@@ -19262,6 +19279,8 @@ class TriggerBBusBItemArinc429a(SCPICmdRead):
 
         Info:
             - ``ANY`` sets the error type to match any of the other available error types.
+            - ``PARity`` sets the error type to match on parity errors (parity value results in even
+              parity count for a word).
             - ``WORD`` sets the error type to match on word errors (any unframed or unknown decode
               data).
             - ``GAP`` sets the error type to match on gap violations (less than 4 bits idle time
@@ -20153,6 +20172,8 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
               controlled by the TRIGger:{A\|B}``:LOGIc`` commands.
             - ``SETHold`` specifies that a trigger occurs when a signal is found that meets the
               setup and hold parameters.
+            - ``TRANsition`` specifies that a trigger occurs when a specified pulse is found that
+              meets the transition trigger parameters.
             - ``BUS`` specifies that a trigger occurs when a signal is found that meets the
               specified bus setup parameters.
         """
@@ -20265,7 +20286,8 @@ class TriggerAWindowWhen(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the window trigger event. This command is equivalent to
-          selecting Window Setup from the Trig menu and selecting from the Window Trigger When box.
+          selecting Window Setup from the Trig menu and selecting from the Window Trigger When
+          box.Digital channels are not supported as window trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:WINdow:WHEn?`` query.
@@ -20295,7 +20317,8 @@ class TriggerAWindowSource(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:A:WINdow:SOUrce`` command.
 
     Description:
-        - This command sets or queries the source for a window trigger.
+        - This command sets or queries the source for a window trigger.Digital channels are not
+          supported as window trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:WINdow:SOUrce?`` query.
@@ -20363,34 +20386,34 @@ class TriggerAWindowCrossing(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``UPPer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument triggers
-          when the signal remains between the upper and lower thresholds for longer than the time
-          limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits through the upper threshold.
-          If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater, the instrument triggers when the
-          signal remains above the upper threshold for longer than the time limit
-          (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crosses downward through the upper
+        - ``UPPer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrumenttriggers
+          when the signal remains between the upper and lower thresholds for longerthan the time
+          limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits throughthe upper threshold. If
+          ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater,the instrument triggers when the
+          signal remains above the upper threshold forlonger than the time limit
+          (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crossesdownward through the upper
           threshold.
-        - ``LOWer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument triggers
-          when the signal remains between the upper and lower thresholds for longer than the time
-          limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits through the lower threshold.
-          If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater, the instrument triggers when the
-          signal remains below the lower threshold for longer than the time limit
-          (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crosses upwards through the lower
+        - ``LOWer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrumenttriggers
+          when the signal remains between the upper and lower thresholds for longerthan the time
+          limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits throughthe lower threshold. If
+          ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater,the instrument triggers when the
+          signal remains below the lower threshold forlonger than the time limit
+          (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crossesupwards through the lower
           threshold.
-        - ``EITher`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument
-          triggers when the signal remains between the upper and lower thresholds for longer than
-          the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits through either the
-          upper or lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater, the
-          instrument triggers when the signal remains either above the upper threshold or below the
-          lower threshold for longer than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and
-          then crosses a threshold.
-        - ``NONe`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument triggers
-          when the signal remains between the upper and lower thresholds for longer than the time
-          limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) without crossing through either the upper or
-          lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater, the instrument
-          triggers when the signal remains outside the upper and lower thresholds for longer than
-          the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) without crossing through either the
-          upper or lower threshold.
+        - ``EITher`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrumenttriggers
+          when the signal remains between the upper and lower thresholds forlonger than the time
+          limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exitsthrough either the upper or
+          lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEnis OUTSIDEGreater``, the instrument
+          triggers when the signal remains eitherabove the upper threshold or below the lower
+          threshold for longer than the timelimit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then
+          crosses a threshold.
+        - ``NONe`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrumenttriggers
+          when the signal remains between the upper and lower thresholds forlonger than the time
+          limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) without crossingthrough either the upper or
+          lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEnis OUTSIDEGreater``, the instrument
+          triggers when the signal remainsoutside the upper and lower thresholds for longer than the
+          time limit(``:TRIGger``:{A\|B}``:WINdow:WIDTH``) without crossing through either the
+          upperor lower threshold.
     """
 
 
@@ -20443,34 +20466,36 @@ class TriggerAWindow(SCPICmdRead):
             ```
 
         Info:
-            - ``UPPer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument
-              triggers when the signal remains between the upper and lower thresholds for longer
-              than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits through the
-              upper threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater, the
-              instrument triggers when the signal remains above the upper threshold for longer than
-              the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crosses downward
-              through the upper threshold.
-            - ``LOWer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument
-              triggers when the signal remains between the upper and lower thresholds for longer
-              than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits through the
-              lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is OUTSIDEGreater, the
-              instrument triggers when the signal remains below the lower threshold for longer than
-              the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crosses upwards through
-              the lower threshold.
-            - ``EITher`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument
-              triggers when the signal remains between the upper and lower thresholds for longer
-              than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits through
-              either the upper or lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is
-              OUTSIDEGreater, the instrument triggers when the signal remains either above the upper
-              threshold or below the lower threshold for longer than the time limit
-              (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crosses a threshold.
-            - ``NONe`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the instrument
-              triggers when the signal remains between the upper and lower thresholds for longer
-              than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) without crossing through
-              either the upper or lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is
-              OUTSIDEGreater, the instrument triggers when the signal remains outside the upper and
-              lower thresholds for longer than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``)
-              without crossing through either the upper or lower threshold.
+            - ``UPPer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the
+              instrumenttriggers when the signal remains between the upper and lower thresholds for
+              longerthan the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits
+              throughthe upper threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is
+              OUTSIDEGreater,the instrument triggers when the signal remains above the upper
+              threshold forlonger than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and
+              then crossesdownward through the upper threshold.
+            - ``LOWer`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the
+              instrumenttriggers when the signal remains between the upper and lower thresholds for
+              longerthan the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then exits
+              throughthe lower threshold. If ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is
+              OUTSIDEGreater,the instrument triggers when the signal remains below the lower
+              threshold forlonger than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and
+              then crossesupwards through the lower threshold.
+            - ``EITher`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the
+              instrumenttriggers when the signal remains between the upper and lower thresholds
+              forlonger than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then
+              exitsthrough either the upper or lower threshold. If
+              ``:TRIGger``:{A\|B}``:WINdow:WHEnis OUTSIDEGreater``, the instrument triggers when the
+              signal remains eitherabove the upper threshold or below the lower threshold for longer
+              than the timelimit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) and then crosses a
+              threshold.
+            - ``NONe`` if ``:TRIGger``:{A\|B}``:WINdow:WHEn`` is INSIDEGreater, the
+              instrumenttriggers when the signal remains between the upper and lower thresholds
+              forlonger than the time limit (``:TRIGger``:{A\|B}``:WINdow:WIDTH``) without
+              crossingthrough either the upper or lower threshold. If
+              ``:TRIGger``:{A\|B}``:WINdow:WHEnis OUTSIDEGreater``, the instrument triggers when the
+              signal remainsoutside the upper and lower thresholds for longer than the time
+              limit(``:TRIGger``:{A\|B}``:WINdow:WIDTH``) without crossing through either the
+              upperor lower threshold.
         """
         return self._crossing
 
@@ -20507,7 +20532,8 @@ class TriggerAWindow(SCPICmdRead):
         """Return the ``TRIGger:A:WINdow:SOUrce`` command.
 
         Description:
-            - This command sets or queries the source for a window trigger.
+            - This command sets or queries the source for a window trigger.Digital channels are not
+              supported as window trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:WINdow:SOUrce?`` query.
@@ -20534,7 +20560,7 @@ class TriggerAWindow(SCPICmdRead):
         Description:
             - This command sets or queries the window trigger event. This command is equivalent to
               selecting Window Setup from the Trig menu and selecting from the Window Trigger When
-              box.
+              box.Digital channels are not supported as window trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:WINdow:WHEn?`` query.
@@ -20700,7 +20726,7 @@ class TriggerAVideoField(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:VIDeo:FIELD {ALLLines|NUMERic|ODD|EVEN|ALLFields}
+        - TRIGger:A:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN|ALLFields}
         - TRIGger:A:VIDeo:FIELD?
         ```
 
@@ -20754,7 +20780,7 @@ class TriggerAVideo(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:VIDeo:FIELD {ALLLines|NUMERic|ODD|EVEN|ALLFields}
+            - TRIGger:A:VIDeo:FIELD {ALLLines| NUMERic| ODD| EVEN|ALLFields}
             - TRIGger:A:VIDeo:FIELD?
             ```
 
@@ -20975,6 +21001,8 @@ class TriggerAType(SCPICmdWrite, SCPICmdRead):
           controlled by the TRIGger:{A\|B}``:LOGIc`` commands.
         - ``SETHold`` specifies that a trigger occurs when a signal is found that meets the setup
           and hold parameters.
+        - ``TRANsition`` specifies that a trigger occurs when a specified pulse is found that meets
+          the transition trigger parameters.
         - ``BUS`` specifies that a trigger occurs when a signal is found that meets the specified
           bus setup parameters.
     """
@@ -21016,7 +21044,8 @@ class TriggerATransitionSource(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:A:TRANsition:SOUrce`` command.
 
     Description:
-        - This command specifies the source waveform for a transition trigger.
+        - This command specifies the source waveform for a transition trigger.Digital channels are
+          not supported as transition trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:TRANsition:SOUrce?`` query.
@@ -21232,7 +21261,8 @@ class TriggerATransition(SCPICmdRead):
         """Return the ``TRIGger:A:TRANsition:SOUrce`` command.
 
         Description:
-            - This command specifies the source waveform for a transition trigger.
+            - This command specifies the source waveform for a transition trigger.Digital channels
+              are not supported as transition trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:TRANsition:SOUrce?`` query.
@@ -21293,7 +21323,8 @@ class TriggerATimeoutTime(SCPICmdWrite, SCPICmdRead):
     Description:
         - When triggering using the TIMEOut trigger type, this command specifies the timeout time,
           in seconds. This command is equivalent to selecting Timeout from the Trig menu and setting
-          a value for Time Limit. The timeout trigger type is selected using TIMEOut
+          a value for Time Limit. The timeout trigger type is selected using
+          TRIGger:{A|B}``:TYPe TIMEOut``
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:TIMEOut:TIMe?`` query.
@@ -21318,7 +21349,7 @@ class TriggerATimeoutSource(SCPICmdWrite, SCPICmdRead):
     Description:
         - When triggering using the TIMEOut trigger type, this command specifies the source. The
           available sources are live channels and digital channels. The default is channel 1. The
-          timeout trigger type is selected using TIMEOut.
+          timeout trigger type is selected using TRIGger:{A|B}``:TYPe TIMEOut``.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:TIMEOut:SOUrce?`` query.
@@ -21340,7 +21371,7 @@ class TriggerATimeoutSource(SCPICmdWrite, SCPICmdRead):
 
 
 class TriggerATimeoutPolarity(SCPICmdWrite, SCPICmdRead):
-    """The ``TRIGger:A:TIMEOut:POLarity`` command.
+    r"""The ``TRIGger:A:TIMEOut:POLarity`` command.
 
     Description:
         - When triggering using the TIMEOut trigger type, this commands specifies the polarity to be
@@ -21361,11 +21392,11 @@ class TriggerATimeoutPolarity(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``STAYSHigh`` triggers when the signal stays high during the timeout time specified by the
-          command.
+          command TRIGger:{A\|B}``:TIMEOut:TIMe``.
         - ``STAYSLow`` triggers when the signal stays low during the timeout time specified by the
-          command.
+          command TRIGger:{A\|B}``:TIMEOut:TIMe``.
         - ``EITher`` triggers when the signal is either high or low during the timeout time
-          specified by the command.
+          specified by the command TRIGger:{A\|B}``:TIMEOut:TIMe``.
     """
 
 
@@ -21451,7 +21482,7 @@ class TriggerATimeout(SCPICmdRead):
 
     @property
     def polarity(self) -> TriggerATimeoutPolarity:
-        """Return the ``TRIGger:A:TIMEOut:POLarity`` command.
+        r"""Return the ``TRIGger:A:TIMEOut:POLarity`` command.
 
         Description:
             - When triggering using the TIMEOut trigger type, this commands specifies the polarity
@@ -21472,11 +21503,11 @@ class TriggerATimeout(SCPICmdRead):
 
         Info:
             - ``STAYSHigh`` triggers when the signal stays high during the timeout time specified by
-              the command.
+              the command TRIGger:{A\|B}``:TIMEOut:TIMe``.
             - ``STAYSLow`` triggers when the signal stays low during the timeout time specified by
-              the command.
+              the command TRIGger:{A\|B}``:TIMEOut:TIMe``.
             - ``EITher`` triggers when the signal is either high or low during the timeout time
-              specified by the command.
+              specified by the command TRIGger:{A\|B}``:TIMEOut:TIMe``.
         """
         return self._polarity
 
@@ -21487,7 +21518,7 @@ class TriggerATimeout(SCPICmdRead):
         Description:
             - When triggering using the TIMEOut trigger type, this command specifies the source. The
               available sources are live channels and digital channels. The default is channel 1.
-              The timeout trigger type is selected using TIMEOut.
+              The timeout trigger type is selected using TRIGger:{A|B}``:TYPe TIMEOut``.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:TIMEOut:SOUrce?`` query.
@@ -21515,7 +21546,8 @@ class TriggerATimeout(SCPICmdRead):
         Description:
             - When triggering using the TIMEOut trigger type, this command specifies the timeout
               time, in seconds. This command is equivalent to selecting Timeout from the Trig menu
-              and setting a value for Time Limit. The timeout trigger type is selected using TIMEOut
+              and setting a value for Time Limit. The timeout trigger type is selected using
+              TRIGger:{A|B}``:TYPe TIMEOut``
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:TIMEOut:TIMe?`` query.
@@ -21607,13 +21639,13 @@ class TriggerASetholdClockSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>|CH<x>_D<y>}
+        - TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>|CH<x>_D<x>}
         - TRIGger:A:SETHold:CLOCk:SOUrce?
         ```
 
     Info:
         - ``CH<x>`` specifies the analog channel to use as the clock source waveform.
-        - ``CH<x>_D<y>`` specifies the digital channel to use as the clock source waveform.
+        - ``CH<x>_D<x>`` specifies the digital channel to use as the clock source waveform.
     """
 
 
@@ -21703,13 +21735,13 @@ class TriggerASetholdClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>|CH<x>_D<y>}
+            - TRIGger:A:SETHold:CLOCk:SOUrce {CH<x>|CH<x>_D<x>}
             - TRIGger:A:SETHold:CLOCk:SOUrce?
             ```
 
         Info:
             - ``CH<x>`` specifies the analog channel to use as the clock source waveform.
-            - ``CH<x>_D<y>`` specifies the digital channel to use as the clock source waveform.
+            - ``CH<x>_D<x>`` specifies the digital channel to use as the clock source waveform.
         """
         return self._source
 
@@ -21907,7 +21939,7 @@ class TriggerARuntWidth(SCPICmdWrite, SCPICmdRead):
 
 
 class TriggerARuntWhen(SCPICmdWrite, SCPICmdRead):
-    """The ``TRIGger:A:RUNT:WHEn`` command.
+    r"""The ``TRIGger:A:RUNT:WHEn`` command.
 
     Description:
         - This command specifies the type of pulse width the trigger checks for when it detects a
@@ -21928,21 +21960,23 @@ class TriggerARuntWhen(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``OCCURS`` sets the instrument to trigger if a runt signal of any detectable width occurs.
         - ``LESSthan`` sets the instrument to trigger if the a runt pulse is detected with width
-          less than the time set by the.
+          less than the time set by the TRIGger:{A\|B}``:RUNT:WIDth`` command.
         - ``MOREthan`` sets the instrument to trigger if the a runt pulse is detected with width
-          greater than the time set by the.
+          greater than the time set by the TRIGger:{A\|B}``:RUNT:WIDth`` command.
         - ``EQual`` sets the instrument to trigger if a runt pulse is detected with width equal to
-          the time period specified in.
+          the time period specified in TRIGger:{A\|B}``:RUNT:WIDth`` within a ±5% tolerance.
         - ``UNEQual`` sets the instrument to trigger if a runt pulse is detected with width greater
-          than or less than (but not equal to) the time period specified in.
+          than or less than (but not equal to) the time period specified in
+          TRIGger:{A\|B}``:RUNT:WIDth`` within a ±5% tolerance.
     """
 
 
 class TriggerARuntSource(SCPICmdWrite, SCPICmdRead):
-    """The ``TRIGger:A:RUNT:SOUrce`` command.
+    r"""The ``TRIGger:A:RUNT:SOUrce`` command.
 
     Description:
-        - This command specifies the source waveform for the runt trigger.
+        - This command specifies the source waveform for the runt trigger.Digital channels are not
+          supported as runt trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:RUNT:SOUrce?`` query.
@@ -21958,7 +21992,8 @@ class TriggerARuntSource(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` specifies the analog channel number to use as the source waveform for the runt
-          trigger. To specify the threshold levels when using CH<x> as the source, use.
+          trigger. To specify the threshold levels when using CH<x> as the source, use
+          TRIGger:{A\|B}``:LOWerthreshold:CH<x>`` and TRIGger:{A\|B}``:UPPerthreshold:CH<x>``.
     """
 
 
@@ -22100,10 +22135,11 @@ class TriggerARunt(SCPICmdRead):
 
     @property
     def source(self) -> TriggerARuntSource:
-        """Return the ``TRIGger:A:RUNT:SOUrce`` command.
+        r"""Return the ``TRIGger:A:RUNT:SOUrce`` command.
 
         Description:
-            - This command specifies the source waveform for the runt trigger.
+            - This command specifies the source waveform for the runt trigger.Digital channels are
+              not supported as runt trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:RUNT:SOUrce?`` query.
@@ -22120,13 +22156,14 @@ class TriggerARunt(SCPICmdRead):
 
         Info:
             - ``CH<x>`` specifies the analog channel number to use as the source waveform for the
-              runt trigger. To specify the threshold levels when using CH<x> as the source, use.
+              runt trigger. To specify the threshold levels when using CH<x> as the source, use
+              TRIGger:{A\|B}``:LOWerthreshold:CH<x>`` and TRIGger:{A\|B}``:UPPerthreshold:CH<x>``.
         """
         return self._source
 
     @property
     def when(self) -> TriggerARuntWhen:
-        """Return the ``TRIGger:A:RUNT:WHEn`` command.
+        r"""Return the ``TRIGger:A:RUNT:WHEn`` command.
 
         Description:
             - This command specifies the type of pulse width the trigger checks for when it detects
@@ -22149,13 +22186,14 @@ class TriggerARunt(SCPICmdRead):
             - ``OCCURS`` sets the instrument to trigger if a runt signal of any detectable width
               occurs.
             - ``LESSthan`` sets the instrument to trigger if the a runt pulse is detected with width
-              less than the time set by the.
+              less than the time set by the TRIGger:{A\|B}``:RUNT:WIDth`` command.
             - ``MOREthan`` sets the instrument to trigger if the a runt pulse is detected with width
-              greater than the time set by the.
+              greater than the time set by the TRIGger:{A\|B}``:RUNT:WIDth`` command.
             - ``EQual`` sets the instrument to trigger if a runt pulse is detected with width equal
-              to the time period specified in.
+              to the time period specified in TRIGger:{A\|B}``:RUNT:WIDth`` within a ±5% tolerance.
             - ``UNEQual`` sets the instrument to trigger if a runt pulse is detected with width
-              greater than or less than (but not equal to) the time period specified in.
+              greater than or less than (but not equal to) the time period specified in
+              TRIGger:{A\|B}``:RUNT:WIDth`` within a ±5% tolerance.
         """
         return self._when
 
@@ -22186,12 +22224,14 @@ class TriggerARunt(SCPICmdRead):
 
 
 class TriggerAPulsewidthWhen(SCPICmdWrite, SCPICmdRead):
-    """The ``TRIGger:A:PULSEWidth:WHEn`` command.
+    r"""The ``TRIGger:A:PULSEWidth:WHEn`` command.
 
     Description:
         - This command specifies to trigger when a pulse is detected with a width (duration) that is
-          less than, greater than, equal to, or unequal to a specified value (set using ), OR whose
-          width falls outside of or within a specified range of two values (set using and ).
+          less than, greater than, equal to, or unequal to a specified value (set using
+          TRIGger:{A|B}``:PULSEWidth:LOWLimit``), OR whose width falls outside of or within a
+          specified range of two values (set using TRIGger:{A|B}``:PULSEWidth``: LOWLimit and
+          TRIGger:{A|B}``:PULSEWidth:HIGHLimit``).
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:PULSEWidth:WHEn?`` query.
@@ -22208,13 +22248,14 @@ class TriggerAPulsewidthWhen(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``LESSthan`` causes a trigger when a pulse is detected with a width less than the time set
-          by the.
+          by the TRIGger:{A\|B}``:PULSEWidth:LOWLimit`` command.
         - ``MOREthan`` causes a trigger when a pulse is detected with a width greater than the time
-          set by the.
+          set by the TRIGger:{A\|B}``:PULSEWidth:LOWLimit`` command.
         - ``EQual`` causes a trigger when a pulse is detected with a width equal to the time period
-          specified in.
+          specified in TRIGger:{A\|B}``:PULSEWidth:LOWLimit`` within a ±5% tolerance.
         - ``UNEQual`` causes a trigger when a pulse is detected with a width greater than or less
-          than (but not equal) the time period specified in.
+          than (but not equal) the time period specified in TRIGger:{A\|B}``:PULSEWidth:LOWLimit``
+          within a ±5% tolerance.
         - ``WIThin`` causes a trigger when a pulse is detected that is within a range set by two
           values.
         - ``OUTside`` causes a trigger when a pulse is detected that is outside of a range set by
@@ -22277,10 +22318,11 @@ class TriggerAPulsewidthLowlimit(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the lower limit to use, in seconds, when triggering on detection of
-          a pulse whose duration is inside or outside a range of two values. (Use to specify the
-          upper limit of the range.) This command also specifies the single limit to use, in
-          seconds, when triggering on detection of a pulse whose duration is less than, greater
-          than, equal to, or not equal to this time limit.
+          a pulse whose duration is inside or outside a range of two values. (Use
+          TRIGger:{A|B}``:PULSEWidth:HIGHLimit`` to specify the upper limit of the range.) This
+          command also specifies the single limit to use, in seconds, when triggering on detection
+          of a pulse whose duration is less than, greater than, equal to, or not equal to this time
+          limit.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:PULSEWidth:LOWLimit?`` query.
@@ -22333,8 +22375,8 @@ class TriggerAPulsewidthHighlimit(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the upper limit to use, in seconds, when triggering on detection of
-          a pulse whose duration is inside or outside a range of two values. (Use to specify the
-          lower value of the range.)
+          a pulse whose duration is inside or outside a range of two values. (Use
+          TRIGger:{A|B}``:PULSEWidth:LOWLimit`` to specify the lower value of the range.)
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:PULSEWidth:HIGHLimit?`` query.
@@ -22389,7 +22431,7 @@ class TriggerAPulsewidth(SCPICmdRead):
         Description:
             - This command specifies the upper limit to use, in seconds, when triggering on
               detection of a pulse whose duration is inside or outside a range of two values. (Use
-              to specify the lower value of the range.)
+              TRIGger:{A|B}``:PULSEWidth:LOWLimit`` to specify the lower value of the range.)
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:PULSEWidth:HIGHLimit?`` query.
@@ -22445,9 +22487,10 @@ class TriggerAPulsewidth(SCPICmdRead):
         Description:
             - This command specifies the lower limit to use, in seconds, when triggering on
               detection of a pulse whose duration is inside or outside a range of two values. (Use
-              to specify the upper limit of the range.) This command also specifies the single limit
-              to use, in seconds, when triggering on detection of a pulse whose duration is less
-              than, greater than, equal to, or not equal to this time limit.
+              TRIGger:{A|B}``:PULSEWidth:HIGHLimit`` to specify the upper limit of the range.) This
+              command also specifies the single limit to use, in seconds, when triggering on
+              detection of a pulse whose duration is less than, greater than, equal to, or not equal
+              to this time limit.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:PULSEWidth:LOWLimit?`` query.
@@ -22521,13 +22564,14 @@ class TriggerAPulsewidth(SCPICmdRead):
 
     @property
     def when(self) -> TriggerAPulsewidthWhen:
-        """Return the ``TRIGger:A:PULSEWidth:WHEn`` command.
+        r"""Return the ``TRIGger:A:PULSEWidth:WHEn`` command.
 
         Description:
             - This command specifies to trigger when a pulse is detected with a width (duration)
               that is less than, greater than, equal to, or unequal to a specified value (set using
-              ), OR whose width falls outside of or within a specified range of two values (set
-              using and ).
+              TRIGger:{A|B}``:PULSEWidth:LOWLimit``), OR whose width falls outside of or within a
+              specified range of two values (set using TRIGger:{A|B}``:PULSEWidth``: LOWLimit and
+              TRIGger:{A|B}``:PULSEWidth:HIGHLimit``).
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:PULSEWidth:WHEn?`` query.
@@ -22544,13 +22588,14 @@ class TriggerAPulsewidth(SCPICmdRead):
 
         Info:
             - ``LESSthan`` causes a trigger when a pulse is detected with a width less than the time
-              set by the.
+              set by the TRIGger:{A\|B}``:PULSEWidth:LOWLimit`` command.
             - ``MOREthan`` causes a trigger when a pulse is detected with a width greater than the
-              time set by the.
+              time set by the TRIGger:{A\|B}``:PULSEWidth:LOWLimit`` command.
             - ``EQual`` causes a trigger when a pulse is detected with a width equal to the time
-              period specified in.
+              period specified in TRIGger:{A\|B}``:PULSEWidth:LOWLimit`` within a ±5% tolerance.
             - ``UNEQual`` causes a trigger when a pulse is detected with a width greater than or
-              less than (but not equal) the time period specified in.
+              less than (but not equal) the time period specified in
+              TRIGger:{A\|B}``:PULSEWidth:LOWLimit`` within a ±5% tolerance.
             - ``WIThin`` causes a trigger when a pulse is detected that is within a range set by two
               values.
             - ``OUTside`` causes a trigger when a pulse is detected that is outside of a range set
@@ -22671,13 +22716,15 @@ class TriggerALogicWhen(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
+        - TRIGger:A:LOGIc:WHEn {A|B}:LOGIc:WHEn{TRUe|FALSe|MOREthan|LESSThan|EQual| UNEQual}
         - TRIGger:A:LOGIc:WHEn?
         ```
 
     Info:
         - ``TRUe`` triggers on an input pattern that is true.
         - ``FALSe`` triggers on an input pattern that is false.
+        - ``MOREthan`` triggers on an input pattern that is true for a time period greater than a
+          user defined Time Limit (DELTatime) value.
         - ``EQual`` triggers on an input pattern that is true for a time period equal to a user
           defined Time Limit (DELTatime) value.
         - ``UNEQual`` triggers on an input pattern that is true for a time period not equal to a
@@ -22735,6 +22782,7 @@ class TriggerALogicPolarity(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``NEGative`` specifies negative polarity.
+        - ``POSitive`` specifies positive polarity.
         - ``EITher`` specifies either polarity.
     """
 
@@ -22754,14 +22802,14 @@ class TriggerALogicInputClockSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:LOGIc:INPut:CLOCk:SOUrce {CH<x>|CH<x>_D<y>}
+        - TRIGger:A:LOGIc:INPut:CLOCk:SOUrce {CH<x>|CH<x>_D<x>}
         - TRIGger:A:LOGIc:INPut:CLOCk:SOUrce?
         ```
 
     Info:
         - ``CH<x>`` specifies an analog channel as the clock source. Number of channels depends on
           instrument configuration.
-        - ``CH<x>_D<y>`` specifies a digital channel as the clock source. Number of channels depends
+        - ``CH<x>_D<x>`` specifies a digital channel as the clock source. Number of channels depends
           on instrument configuration.
     """
 
@@ -22800,14 +22848,14 @@ class TriggerALogicInputClock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:LOGIc:INPut:CLOCk:SOUrce {CH<x>|CH<x>_D<y>}
+            - TRIGger:A:LOGIc:INPut:CLOCk:SOUrce {CH<x>|CH<x>_D<x>}
             - TRIGger:A:LOGIc:INPut:CLOCk:SOUrce?
             ```
 
         Info:
             - ``CH<x>`` specifies an analog channel as the clock source. Number of channels depends
               on instrument configuration.
-            - ``CH<x>_D<y>`` specifies a digital channel as the clock source. Number of channels
+            - ``CH<x>_D<x>`` specifies a digital channel as the clock source. Number of channels
               depends on instrument configuration.
         """
         return self._source
@@ -23019,6 +23067,7 @@ class TriggerALogic(SCPICmdRead):
 
         Info:
             - ``NEGative`` specifies negative polarity.
+            - ``POSitive`` specifies positive polarity.
             - ``EITher`` specifies either polarity.
         """
         return self._polarity
@@ -23071,13 +23120,15 @@ class TriggerALogic(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
+            - TRIGger:A:LOGIc:WHEn {A|B}:LOGIc:WHEn{TRUe|FALSe|MOREthan|LESSThan|EQual| UNEQual}
             - TRIGger:A:LOGIc:WHEn?
             ```
 
         Info:
             - ``TRUe`` triggers on an input pattern that is true.
             - ``FALSe`` triggers on an input pattern that is false.
+            - ``MOREthan`` triggers on an input pattern that is true for a time period greater than
+              a user defined Time Limit (DELTatime) value.
             - ``EQual`` triggers on an input pattern that is true for a time period equal to a user
               defined Time Limit (DELTatime) value.
             - ``UNEQual`` triggers on an input pattern that is true for a time period not equal to a
@@ -23101,7 +23152,7 @@ class TriggerALogicqualification(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:LOGICQUALification {AND|OR|NAND|NOR}
+        - TRIGger:A:LOGICQUALification {AND|OR|NANd|NOR}
         - TRIGger:A:LOGICQUALification?
         ```
 
@@ -23306,7 +23357,7 @@ class TriggerAHoldoffBy(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``TIMe`` enables you to set the holdoff time via the ``TRIGGER:A:HOLDOFF:TIME`` command.
+        - ``TIMe`` enables you to set the holdoff time via the ``TRIGger:A:HOLDoff:TIMe`` command.
         - ``RANDom`` specifies a random time value.
     """
 
@@ -23353,7 +23404,7 @@ class TriggerAHoldoff(SCPICmdRead):
             ```
 
         Info:
-            - ``TIMe`` enables you to set the holdoff time via the ``TRIGGER:A:HOLDOFF:TIME``
+            - ``TIMe`` enables you to set the holdoff time via the ``TRIGger:A:HOLDoff:TIMe``
               command.
             - ``RANDom`` specifies a random time value.
         """
@@ -23439,6 +23490,7 @@ class TriggerAEdgeSlope(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``RISe`` specifies to trigger on the rising or positive edge of a signal.
         - ``FALL`` specifies to trigger on the falling or negative edge of a signal.
+        - ``EITher`` specifies to trigger on either the rising or falling edge of a signal.
     """
 
 
@@ -23471,8 +23523,6 @@ class TriggerAEdgeCoupling(SCPICmdWrite, SCPICmdRead):
         - ``LFRej`` coupling attenuates signals below 80 kHz before passing the signals to the
           trigger circuitry.
         - ``NOISErej`` coupling provides stable triggering by increasing the trigger hysteresis.
-          Increased hysteresis reduces the trigger sensitivity to noise but can require greater
-          trigger signal amplitude.
     """
 
 
@@ -23526,8 +23576,6 @@ class TriggerAEdge(SCPICmdRead):
             - ``LFRej`` coupling attenuates signals below 80 kHz before passing the signals to the
               trigger circuitry.
             - ``NOISErej`` coupling provides stable triggering by increasing the trigger hysteresis.
-              Increased hysteresis reduces the trigger sensitivity to noise but can require greater
-              trigger signal amplitude.
         """
         return self._coupling
 
@@ -23557,6 +23605,7 @@ class TriggerAEdge(SCPICmdRead):
         Info:
             - ``RISe`` specifies to trigger on the rising or positive edge of a signal.
             - ``FALL`` specifies to trigger on the falling or negative edge of a signal.
+            - ``EITher`` specifies to trigger on either the rising or falling edge of a signal.
         """
         return self._slope
 
@@ -23648,7 +23697,8 @@ class TriggerABusBItemUsbSplitSeValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - When triggering on a high-speed USB split transaction, this command specifies the split
-          transaction start/end bit value to trigger on. The bus number is specified by x.
+          transaction start/end bit value to trigger on. The bus number is specified by x.The start
+          and end bits are interpreted based on the type of split transaction:
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:USB:SPLit:SE:VALue?``
@@ -23666,13 +23716,13 @@ class TriggerABusBItemUsbSplitSeValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NOCARE`` - any combination of S and E bits.
-        - ``FULLSPEED`` - S bit = 0, E bit = 0.
-        - ``LOWSPEED`` - S bit = 1, E bit = 0.
-        - ``ISOSTART`` - S bit = 1, E bit = 0.
-        - ``ISOMID`` - see note above.
-        - ``ISOEND`` - see note above.
-        - ``ISOALL`` - see note above.
+        - ``NOCARE`` — any combination of S and E bits.
+        - ``FULLSPEED`` — S bit = 0, E bit = 0.
+        - ``LOWSPEED`` — S bit = 1, E bit = 0.
+        - ``ISOSTART`` — S bit = 1, E bit = 0.
+        - ``ISOMID`` — see note above.
+        - ``ISOEND`` — see note above.
+        - ``ISOALL`` — see note above.
     """  # noqa: E501
 
 
@@ -23698,7 +23748,8 @@ class TriggerABusBItemUsbSplitSe(SCPICmdRead):
 
         Description:
             - When triggering on a high-speed USB split transaction, this command specifies the
-              split transaction start/end bit value to trigger on. The bus number is specified by x.
+              split transaction start/end bit value to trigger on. The bus number is specified by
+              x.The start and end bits are interpreted based on the type of split transaction:
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:USB:SPLit:SE:VALue?``
@@ -23716,13 +23767,13 @@ class TriggerABusBItemUsbSplitSe(SCPICmdRead):
             ```
 
         Info:
-            - ``NOCARE`` - any combination of S and E bits.
-            - ``FULLSPEED`` - S bit = 0, E bit = 0.
-            - ``LOWSPEED`` - S bit = 1, E bit = 0.
-            - ``ISOSTART`` - S bit = 1, E bit = 0.
-            - ``ISOMID`` - see note above.
-            - ``ISOEND`` - see note above.
-            - ``ISOALL`` - see note above.
+            - ``NOCARE`` — any combination of S and E bits.
+            - ``FULLSPEED`` — S bit = 0, E bit = 0.
+            - ``LOWSPEED`` — S bit = 1, E bit = 0.
+            - ``ISOSTART`` — S bit = 1, E bit = 0.
+            - ``ISOMID`` — see note above.
+            - ``ISOEND`` — see note above.
+            - ``ISOALL`` — see note above.
         """  # noqa: E501
         return self._value
 
@@ -23752,9 +23803,9 @@ class TriggerABusBItemUsbSplitScValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NOCARE`` - trigger on either the start or complete phase of the split transaction.
-        - ``SSPLIT`` - trigger on the start phase of the split transaction.
-        - ``CSPLIT`` - trigger on the complete phase of the split transaction.
+        - ``NOCARE`` — trigger on either the start or complete phase of the split transaction.
+        - ``SSPLIT`` — trigger on the start phase of the split transaction.
+        - ``CSPLIT`` — trigger on the complete phase of the split transaction.
     """
 
 
@@ -23800,9 +23851,9 @@ class TriggerABusBItemUsbSplitSc(SCPICmdRead):
             ```
 
         Info:
-            - ``NOCARE`` - trigger on either the start or complete phase of the split transaction.
-            - ``SSPLIT`` - trigger on the start phase of the split transaction.
-            - ``CSPLIT`` - trigger on the complete phase of the split transaction.
+            - ``NOCARE`` — trigger on either the start or complete phase of the split transaction.
+            - ``SSPLIT`` — trigger on the start phase of the split transaction.
+            - ``CSPLIT`` — trigger on the complete phase of the split transaction.
         """
         return self._value
 
@@ -23832,7 +23883,7 @@ class TriggerABusBItemUsbSplitPortValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``QString`` is a quoted string of up to 7 characters. The valid characters are 0 and 1.
+        - ``<QString>`` is a quoted string of up to 7 characters. The valid characters are 0 and 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -23880,7 +23931,7 @@ class TriggerABusBItemUsbSplitPort(SCPICmdRead):
             ```
 
         Info:
-            - ``QString`` is a quoted string of up to 7 characters. The valid characters are 0 and
+            - ``<QString>`` is a quoted string of up to 7 characters. The valid characters are 0 and
               1.
         """
         return self._value
@@ -23911,7 +23962,7 @@ class TriggerABusBItemUsbSplitHubValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``QString`` is a quoted string of up to 7 characters. The valid characters are 0 and 1.
+        - ``<QString>`` is a quoted string of up to 7 characters. The valid characters are 0 and 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -23959,7 +24010,7 @@ class TriggerABusBItemUsbSplitHub(SCPICmdRead):
             ```
 
         Info:
-            - ``QString`` is a quoted string of up to 7 characters. The valid characters are 0 and
+            - ``<QString>`` is a quoted string of up to 7 characters. The valid characters are 0 and
               1.
         """
         return self._value
@@ -23988,11 +24039,11 @@ class TriggerABusBItemUsbSplitEtValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NOCARE`` - any endpoint type.
-        - ``CONTRol`` - control endpoint type.
-        - ``ISOchronous`` - isochronous endpoint type.
-        - ``BULK`` - bulk endpoint type (BULK-IN or BULK-OUT).
-        - ``INTERRUPT`` - interrupt endpoint type (Interrupt-IN).
+        - ``NOCARE`` — any endpoint type.
+        - ``CONTRol`` — control endpoint type.
+        - ``ISOchronous`` — isochronous endpoint type.
+        - ``BULK`` — bulk endpoint type (BULK-IN or BULK-OUT).
+        - ``INTERRUPT`` — interrupt endpoint type (Interrupt-IN).
     """
 
 
@@ -24036,11 +24087,11 @@ class TriggerABusBItemUsbSplitEt(SCPICmdRead):
             ```
 
         Info:
-            - ``NOCARE`` - any endpoint type.
-            - ``CONTRol`` - control endpoint type.
-            - ``ISOchronous`` - isochronous endpoint type.
-            - ``BULK`` - bulk endpoint type (BULK-IN or BULK-OUT).
-            - ``INTERRUPT`` - interrupt endpoint type (Interrupt-IN).
+            - ``NOCARE`` — any endpoint type.
+            - ``CONTRol`` — control endpoint type.
+            - ``ISOchronous`` — isochronous endpoint type.
+            - ``BULK`` — bulk endpoint type (BULK-IN or BULK-OUT).
+            - ``INTERRUPT`` — interrupt endpoint type (Interrupt-IN).
         """
         return self._value
 
@@ -24440,6 +24491,7 @@ class TriggerABusBItemUsbDataQualifier(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``EQual`` specifies the qualifier as Equal.
         - ``INrange`` specifies the qualifier as Inside Range.
         - ``LESSEQual`` specifies the qualifier as Less Than or Equal to.
         - ``MOREEQual`` specifies the qualifier as More Than or Equal to.
@@ -24481,7 +24533,8 @@ class TriggerABusBItemUsbDataHivalue(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command specifies the binary data string for the upper limit for inside-of-range and
           outside-of-range qualifiers for the USB trigger when the trigger condition is DATA. Use
-          the command to set the lower limit. The bus number is specified by x.
+          the command TRIGger:{A|B}``:BUS:B<x>:USB:DATa:VALue`` to set the lower limit. The bus
+          number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:USB:DATa:HIVALue?``
@@ -24537,7 +24590,8 @@ class TriggerABusBItemUsbData(SCPICmdRead):
         Description:
             - This command specifies the binary data string for the upper limit for inside-of-range
               and outside-of-range qualifiers for the USB trigger when the trigger condition is
-              DATA. Use the command to set the lower limit. The bus number is specified by x.
+              DATA. Use the command TRIGger:{A|B}``:BUS:B<x>:USB:DATa:VALue`` to set the lower
+              limit. The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:USB:DATa:HIVALue?``
@@ -24611,6 +24665,7 @@ class TriggerABusBItemUsbData(SCPICmdRead):
             ```
 
         Info:
+            - ``EQual`` specifies the qualifier as Equal.
             - ``INrange`` specifies the qualifier as Inside Range.
             - ``LESSEQual`` specifies the qualifier as Less Than or Equal to.
             - ``MOREEQual`` specifies the qualifier as More Than or Equal to.
@@ -24776,8 +24831,9 @@ class TriggerABusBItemUsbAddressHivalue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the binary address string for the upper limit for inside-of-range
-          and outside-of-range qualifiers for the USB trigger. Use the command to set the lower
-          limit. The bus number is specified by x.
+          and outside-of-range qualifiers for the USB trigger. Use the command
+          TRIGger:{A|B}``:BUS:B<x>:USB:ADDRess:VALue`` to set the lower limit. The bus number is
+          specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:USB:ADDRess:HIVALue?``
@@ -24830,7 +24886,8 @@ class TriggerABusBItemUsbAddress(SCPICmdRead):
         Description:
             - This command specifies the binary address string for the upper limit for
               inside-of-range and outside-of-range qualifiers for the USB trigger. Use the command
-              to set the lower limit. The bus number is specified by x.
+              TRIGger:{A|B}``:BUS:B<x>:USB:ADDRess:VALue`` to set the lower limit. The bus number is
+              specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -25568,11 +25625,12 @@ class TriggerABusBItemSvidCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess|COMMand|PAYLoad|ERRors}
+        - TRIGger:A:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess| COMMand| PAYLoad| ERRors}
         - TRIGger:A:BUS:B<x>:SVID:CONDition?
         ```
 
     Info:
+        - ``B<x>`` is the bus identifier number.
         - ``STARTCONDition`` sets the trigger condition to start condition. This is the default
           value.
         - ``SLAVEADDRess`` sets the trigger condition to slave address.
@@ -25634,7 +25692,6 @@ class TriggerABusBItemSvidCommandResponse(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``GETREG`` sets the command response to GetReg. This is the default value.
         - ``GETREGVENDor`` sets the command response to GetRegVendor.
         - ``GETREGTESTCFG`` sets the command response to GetRegTestCfg.
         - ``SETVIDFAST`` sets the command response to SetVID Fast.
@@ -25698,7 +25755,6 @@ class TriggerABusBItemSvidCommand(SCPICmdRead):
             ```
 
         Info:
-            - ``GETREG`` sets the command response to GetReg. This is the default value.
             - ``GETREGVENDor`` sets the command response to GetRegVendor.
             - ``GETREGTESTCFG`` sets the command response to GetRegTestCfg.
             - ``SETVIDFAST`` sets the command response to SetVID Fast.
@@ -25812,18 +25868,19 @@ class TriggerABusBItemSvid(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess|COMMand|PAYLoad|ERRors}
+            - TRIGger:A:BUS:B<x>:SVID:CONDition {STARTCONDition|SLAVEADDRess| COMMand| PAYLoad| ERRors}
             - TRIGger:A:BUS:B<x>:SVID:CONDition?
             ```
 
         Info:
+            - ``B<x>`` is the bus identifier number.
             - ``STARTCONDition`` sets the trigger condition to start condition. This is the default
               value.
             - ``SLAVEADDRess`` sets the trigger condition to slave address.
             - ``COMMand`` sets the trigger condition to command.
             - ``PAYLoad`` sets the trigger condition to payload.
             - ``ERRors`` sets the trigger condition to errors.
-        """
+        """  # noqa: E501
         return self._condition
 
     @property
@@ -25905,15 +25962,17 @@ class TriggerABusBItemSpmiSlaveaddressValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SPMI:SLAVEADDRess:VALue <Qstring>
+        - TRIGger:A:BUS:B<x>:SPMI:SLAVEADDRess:VALue <QString>
         - TRIGger:A:BUS:B<x>:SPMI:SLAVEADDRess:VALue?
         ```
 
     Info:
         - ``B<x>`` is the bus identifier number.
-        - ``<Qstring>`` is the binary data string that identifies the slave address on which to
+        - ``<QString>`` is the binary data string that identifies the slave address on which to
           trigger.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerABusBItemSpmiSlaveaddress(SCPICmdRead):
@@ -25958,13 +26017,13 @@ class TriggerABusBItemSpmiSlaveaddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SPMI:SLAVEADDRess:VALue <Qstring>
+            - TRIGger:A:BUS:B<x>:SPMI:SLAVEADDRess:VALue <QString>
             - TRIGger:A:BUS:B<x>:SPMI:SLAVEADDRess:VALue?
             ```
 
         Info:
             - ``B<x>`` is the bus identifier number.
-            - ``<Qstring>`` is the binary data string that identifies the slave address on which to
+            - ``<QString>`` is the binary data string that identifies the slave address on which to
               trigger.
         """
         return self._value
@@ -25975,8 +26034,8 @@ class TriggerABusBItemSpmiRegisteraddressValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the binary data string that identifies the register address
-          used in SPMI triggering if the trigger condition is MASTERREAd, MASTERWRIte, REGREAd,
-          REGWRIte, EXTREGREAd, EXTREGWRIte, LONGEXTREGREAd, or LONGEXTREGWRIte.
+          used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte REGREAd
+          REGWRIte EXTREGREAd EXTREGWRIte LONGEXTREGREAd LONGEXTREGWRIte
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -25989,14 +26048,16 @@ class TriggerABusBItemSpmiRegisteraddressValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SPMI:REGISTERADDRess:VALue <Qstring>
+        - TRIGger:A:BUS:B<x>:SPMI:REGISTERADDRess:VALue <QString>
         - TRIGger:A:BUS:B<x>:SPMI:REGISTERADDRess:VALue?
         ```
 
     Info:
         - ``B<x>`` is the bus identifier number.
-        - ``<Qstring>`` is the binary data string that identifies the register address.
+        - ``<QString>`` is the binary data string that identifies the register address.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerABusBItemSpmiRegisteraddress(SCPICmdRead):
@@ -26026,8 +26087,8 @@ class TriggerABusBItemSpmiRegisteraddress(SCPICmdRead):
 
         Description:
             - This command sets or queries the binary data string that identifies the register
-              address used in SPMI triggering if the trigger condition is MASTERREAd, MASTERWRIte,
-              REGREAd, REGWRIte, EXTREGREAd, EXTREGWRIte, LONGEXTREGREAd, or LONGEXTREGWRIte.
+              address used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte
+              REGREAd REGWRIte EXTREGREAd EXTREGWRIte LONGEXTREGREAd LONGEXTREGWRIte
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -26040,13 +26101,13 @@ class TriggerABusBItemSpmiRegisteraddress(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SPMI:REGISTERADDRess:VALue <Qstring>
+            - TRIGger:A:BUS:B<x>:SPMI:REGISTERADDRess:VALue <QString>
             - TRIGger:A:BUS:B<x>:SPMI:REGISTERADDRess:VALue?
             ```
 
         Info:
             - ``B<x>`` is the bus identifier number.
-            - ``<Qstring>`` is the binary data string that identifies the register address.
+            - ``<QString>`` is the binary data string that identifies the register address.
         """
         return self._value
 
@@ -26066,43 +26127,37 @@ class TriggerABusBItemSpmiNoresponse(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SPMI:NORESPonse <Qstring>
+        - TRIGger:A:BUS:B<x>:SPMI:NORESPonse <QString>
         - TRIGger:A:BUS:B<x>:SPMI:NORESPonse?
         ```
 
     Info:
         - ``B<x>`` is the bus identifier number.
-        - ``<Qstring>`` is either TRUE or FALSE boolean value.
+        - ``<QString>`` is either TRUE or FALSE boolean value.
     """
 
+    _WRAP_ARG_WITH_QUOTES = True
 
-class TriggerABusBItemSpmiMasteraddressValue(SCPICmdWrite, SCPICmdRead):
+
+class TriggerABusBItemSpmiMasteraddressValue(SCPICmdWrite):
     """The ``TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue`` command.
 
     Description:
         - This command sets or queries the binary data string that identifies the master address
-          used in SPMI triggering if the trigger condition is MASTERREAd, MASTERWRIte, or
-          DEVICEDESCMASTERREAd.
+          used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte
+          DEVICEDESCMASTERREAd
 
     Usage:
-        - Using the ``.query()`` method will send the
-          ``TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue?`` query and raise an AssertionError if the
-          returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue value`` command.
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue <Qstring>
-        - TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue?
+        - TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue ?
         ```
 
     Info:
         - ``B<x>`` is the bus identifier number.
-        - ``<Qstring>`` is the binary data string that identifies the master address on which to
-          trigger.
     """
 
 
@@ -26133,83 +26188,43 @@ class TriggerABusBItemSpmiMasteraddress(SCPICmdRead):
 
         Description:
             - This command sets or queries the binary data string that identifies the master address
-              used in SPMI triggering if the trigger condition is MASTERREAd, MASTERWRIte, or
-              DEVICEDESCMASTERREAd.
+              used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte
+              DEVICEDESCMASTERREAd
 
         Usage:
-            - Using the ``.query()`` method will send the
-              ``TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue?`` query and raise an AssertionError if
-              the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue value`` command.
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue <Qstring>
-            - TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue?
+            - TRIGger:A:BUS:B<x>:SPMI:MASTERADDRess:VALue ?
             ```
 
         Info:
             - ``B<x>`` is the bus identifier number.
-            - ``<Qstring>`` is the binary data string that identifies the master address on which to
-              trigger.
         """
         return self._value
 
 
-class TriggerABusBItemSpmiDataValue(SCPICmdWrite, SCPICmdRead):
+class TriggerABusBItemSpmiDataValue(SCPICmdWrite):
     """The ``TRIGger:A:BUS:B<x>:SPMI:DATa:VALue`` command.
 
     Description:
         - This command sets or queries the binary data string used for SPMI triggering if the
-          trigger condition is MASTERREAd, MASTERWRIte, REGREAd, REGWRIte, EXTREGREAd, EXTREGWRIte,
-          LONGEXTREGREAd, LONGEXTREGWRIte, or REG0WRIte.
+          trigger condition is MASTERREAd MASTERWRIte REGREAd REGWRIte EXTREGREAd EXTREGWRIte
+          LONGEXTREGREAd LONGEXTREGWRIte REG0WRIte
 
     Usage:
-        - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:SPMI:DATa:VALue?`` query.
-        - Using the ``.verify(value)`` method will send the ``TRIGger:A:BUS:B<x>:SPMI:DATa:VALue?``
-          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``TRIGger:A:BUS:B<x>:SPMI:DATa:VALue value`` command.
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SPMI:DATa:VALue <Qstring>
-        - TRIGger:A:BUS:B<x>:SPMI:DATa:VALue?
+        - TRIGger:A:BUS:B<x>:SPMI:DATa:VALue ?
         ```
 
     Info:
         - ``B<x>`` is the bus identifier number.
-        - ``<Qstring>`` is the binary data string that identifies the data value on which to
-          trigger.
-    """
-
-
-class TriggerABusBItemSpmiDataSize(SCPICmdWrite, SCPICmdRead):
-    """The ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe`` command.
-
-    Description:
-        - This command sets or queries the length of the data string, in bytes, to be used when
-          triggering on an SPMI bus signal.
-
-    Usage:
-        - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe?`` query.
-        - Using the ``.verify(value)`` method will send the ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe?``
-          query and raise an AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe value`` command.
-
-    SCPI Syntax:
-        ```
-        - TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe <NR2>
-        - TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe?
-        ```
-
-    Info:
-        - ``B<x>`` is the bus identifier number.
-        - ``<NR2>`` is the size of the data string in bytes.
     """
 
 
@@ -26225,43 +26240,12 @@ class TriggerABusBItemSpmiData(SCPICmdRead):
         - ``B<x>`` is the bus identifier number.
 
     Properties:
-        - ``.size``: The ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe`` command.
         - ``.value``: The ``TRIGger:A:BUS:B<x>:SPMI:DATa:VALue`` command.
     """
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
-        self._size = TriggerABusBItemSpmiDataSize(device, f"{self._cmd_syntax}:SIZe")
         self._value = TriggerABusBItemSpmiDataValue(device, f"{self._cmd_syntax}:VALue")
-
-    @property
-    def size(self) -> TriggerABusBItemSpmiDataSize:
-        """Return the ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe`` command.
-
-        Description:
-            - This command sets or queries the length of the data string, in bytes, to be used when
-              triggering on an SPMI bus signal.
-
-        Usage:
-            - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe?``
-              query.
-            - Using the ``.verify(value)`` method will send the
-              ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe?`` query and raise an AssertionError if the
-              returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe value`` command.
-
-        SCPI Syntax:
-            ```
-            - TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe <NR2>
-            - TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe?
-            ```
-
-        Info:
-            - ``B<x>`` is the bus identifier number.
-            - ``<NR2>`` is the size of the data string in bytes.
-        """
-        return self._size
 
     @property
     def value(self) -> TriggerABusBItemSpmiDataValue:
@@ -26269,28 +26253,20 @@ class TriggerABusBItemSpmiData(SCPICmdRead):
 
         Description:
             - This command sets or queries the binary data string used for SPMI triggering if the
-              trigger condition is MASTERREAd, MASTERWRIte, REGREAd, REGWRIte, EXTREGREAd,
-              EXTREGWRIte, LONGEXTREGREAd, LONGEXTREGWRIte, or REG0WRIte.
+              trigger condition is MASTERREAd MASTERWRIte REGREAd REGWRIte EXTREGREAd EXTREGWRIte
+              LONGEXTREGREAd LONGEXTREGWRIte REG0WRIte
 
         Usage:
-            - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:SPMI:DATa:VALue?``
-              query.
-            - Using the ``.verify(value)`` method will send the
-              ``TRIGger:A:BUS:B<x>:SPMI:DATa:VALue?`` query and raise an AssertionError if the
-              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``TRIGger:A:BUS:B<x>:SPMI:DATa:VALue value`` command.
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SPMI:DATa:VALue <Qstring>
-            - TRIGger:A:BUS:B<x>:SPMI:DATa:VALue?
+            - TRIGger:A:BUS:B<x>:SPMI:DATa:VALue ?
             ```
 
         Info:
             - ``B<x>`` is the bus identifier number.
-            - ``<Qstring>`` is the binary data string that identifies the data value on which to
-              trigger.
         """
         return self._value
 
@@ -26318,7 +26294,7 @@ class TriggerABusBItemSpmiCondition(SCPICmdWrite, SCPICmdRead):
         - ``B<x>`` is the bus identifier number.
         - ``SSC`` specifies triggering on the Sequence Start Condition.
         - ``RESet`` specifies triggering on the Reset command sequence.
-        - ``SLEep`` specifies triggering on the Sleep command sequnce.
+        - ``SLEep`` specifies triggering on the Sleep command sequence.
         - ``SHUTdown`` specifies triggering on the Shutdown command sequence.
         - ``WAKeup`` specifies triggering on the Wakeup command sequence.
         - ``MASTERREAd`` specifies triggering on the Master Read command sequence.
@@ -26404,7 +26380,7 @@ class TriggerABusBItemSpmi(SCPICmdRead):
             - ``B<x>`` is the bus identifier number.
             - ``SSC`` specifies triggering on the Sequence Start Condition.
             - ``RESet`` specifies triggering on the Reset command sequence.
-            - ``SLEep`` specifies triggering on the Sleep command sequnce.
+            - ``SLEep`` specifies triggering on the Sleep command sequence.
             - ``SHUTdown`` specifies triggering on the Shutdown command sequence.
             - ``WAKeup`` specifies triggering on the Wakeup command sequence.
             - ``MASTERREAd`` specifies triggering on the Master Read command sequence.
@@ -26442,7 +26418,6 @@ class TriggerABusBItemSpmi(SCPICmdRead):
             - ``B<x>`` is the bus identifier number.
 
         Sub-properties:
-            - ``.size``: The ``TRIGger:A:BUS:B<x>:SPMI:DATa:SIZe`` command.
             - ``.value``: The ``TRIGger:A:BUS:B<x>:SPMI:DATa:VALue`` command.
         """
         return self._data
@@ -26484,13 +26459,13 @@ class TriggerABusBItemSpmi(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SPMI:NORESPonse <Qstring>
+            - TRIGger:A:BUS:B<x>:SPMI:NORESPonse <QString>
             - TRIGger:A:BUS:B<x>:SPMI:NORESPonse?
             ```
 
         Info:
             - ``B<x>`` is the bus identifier number.
-            - ``<Qstring>`` is either TRUE or FALSE boolean value.
+            - ``<QString>`` is either TRUE or FALSE boolean value.
         """
         return self._noresponse
 
@@ -26790,14 +26765,16 @@ class TriggerABusBItemSentSlowIdentifierValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue <Qstring>
+        - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue <QString>
         - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?
         ```
 
     Info:
         - ``B<x>`` is the bus identifier number.
-        - ``<Qstring>`` is the binary identifier value.
+        - ``<QString>`` is the binary identifier value.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerABusBItemSentSlowIdentifier(SCPICmdRead):
@@ -26840,13 +26817,13 @@ class TriggerABusBItemSentSlowIdentifier(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue <Qstring>
+            - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue <QString>
             - TRIGger:A:BUS:B<x>:SENT:SLOW:IDentifier:VALue?
             ```
 
         Info:
             - ``B<x>`` is the bus identifier number.
-            - ``<Qstring>`` is the binary identifier value.
+            - ``<QString>`` is the binary identifier value.
         """
         return self._value
 
@@ -26869,14 +26846,16 @@ class TriggerABusBItemSentSlowDataValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue <Qstring>
+        - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue <QString>
         - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue?
         ```
 
     Info:
         - ``B<x>`` is the bus identifier number.
-        - ``<Qstring>`` is the binary slow channel data value.
+        - ``<QString>`` is the binary slow channel data value.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerABusBItemSentSlowDataQualifier(SCPICmdWrite, SCPICmdRead):
@@ -26903,6 +26882,7 @@ class TriggerABusBItemSentSlowDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the bus identifier number.
+        - ``EQual`` specifies the qualifier as Equal.
         - ``UNEQual`` specifies the qualifier as Not Equal to.
         - ``LESSthan`` specifies the qualifier as Less Than.
         - ``MOREthan`` specifies the qualifier as More Than.
@@ -26937,6 +26917,7 @@ class TriggerABusBItemSentSlowDataHivalue(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the bus identifier number.
+        - ``<QString>`` sets the binary Slow channel data value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -26992,6 +26973,7 @@ class TriggerABusBItemSentSlowData(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the bus identifier number.
+            - ``<QString>`` sets the binary Slow channel data value.
         """
         return self._hivalue
 
@@ -27020,6 +27002,7 @@ class TriggerABusBItemSentSlowData(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the bus identifier number.
+            - ``EQual`` specifies the qualifier as Equal.
             - ``UNEQual`` specifies the qualifier as Not Equal to.
             - ``LESSthan`` specifies the qualifier as Less Than.
             - ``MOREthan`` specifies the qualifier as More Than.
@@ -27049,13 +27032,13 @@ class TriggerABusBItemSentSlowData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue <Qstring>
+            - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue <QString>
             - TRIGger:A:BUS:B<x>:SENT:SLOW:DATA:VALue?
             ```
 
         Info:
             - ``B<x>`` is the bus identifier number.
-            - ``<Qstring>`` is the binary slow channel data value.
+            - ``<QString>`` is the binary slow channel data value.
         """
         return self._value
 
@@ -27148,8 +27131,10 @@ class TriggerABusBItemSentPauseQualifier(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the bus identifier number.
+        - ``EQual`` sets the qualifier as Equal.
         - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
         - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+        - ``MOREthan`` sets the qualifier as More Than.
         - ``OUTrange`` sets the qualifier to out of range.
         - ``UNEQual`` sets the qualifier as Unequal.
     """  # noqa: E501
@@ -27201,8 +27186,10 @@ class TriggerABusBItemSentPause(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the bus identifier number.
+            - ``EQual`` sets the qualifier as Equal.
             - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
             - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+            - ``MOREthan`` sets the qualifier as More Than.
             - ``OUTrange`` sets the qualifier to out of range.
             - ``UNEQual`` sets the qualifier as Unequal.
         """  # noqa: E501
@@ -27227,14 +27214,16 @@ class TriggerABusBItemSentFastStatusValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SENT:FAST:STATus:VALue <Qstring>
+        - TRIGger:A:BUS:B<x>:SENT:FAST:STATus:VALue <QString>
         - TRIGger:A:BUS:B<x>:SENT:FAST:STATus:VALue?
         ```
 
     Info:
         - ``B<x>`` is the number of the bus waveform.
-        - ``<Qstring>`` is the binary status value on which to trigger.
+        - ``<QString>`` is the binary status value on which to trigger.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerABusBItemSentFastStatus(SCPICmdRead):
@@ -27276,13 +27265,13 @@ class TriggerABusBItemSentFastStatus(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SENT:FAST:STATus:VALue <Qstring>
+            - TRIGger:A:BUS:B<x>:SENT:FAST:STATus:VALue <QString>
             - TRIGger:A:BUS:B<x>:SENT:FAST:STATus:VALue?
             ```
 
         Info:
             - ``B<x>`` is the number of the bus waveform.
-            - ``<Qstring>`` is the binary status value on which to trigger.
+            - ``<QString>`` is the binary status value on which to trigger.
         """
         return self._value
 
@@ -27305,14 +27294,16 @@ class TriggerABusBItemSentFastInvertnibbleValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue <Qstring>
+        - TRIGger:A:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue <QString>
         - TRIGger:A:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue?
         ```
 
     Info:
         - ``B<x>`` is the number of the bus waveform.
-        - ``<Qstring>`` is the Fast Channel 1 inverted nibble binary value on which to trigger.
+        - ``<QString>`` is the Fast Channel 1 inverted nibble binary value on which to trigger.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerABusBItemSentFastInvertnibble(SCPICmdRead):
@@ -27355,13 +27346,13 @@ class TriggerABusBItemSentFastInvertnibble(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue <Qstring>
+            - TRIGger:A:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue <QString>
             - TRIGger:A:BUS:B<x>:SENT:FAST:INVERTNIBble:VALue?
             ```
 
         Info:
             - ``B<x>`` is the number of the bus waveform.
-            - ``<Qstring>`` is the Fast Channel 1 inverted nibble binary value on which to trigger.
+            - ``<QString>`` is the Fast Channel 1 inverted nibble binary value on which to trigger.
         """
         return self._value
 
@@ -27384,14 +27375,16 @@ class TriggerABusBItemSentFastCounterValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:VALue <Qstring>
+        - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:VALue <QString>
         - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:VALue?
         ```
 
     Info:
         - ``B<x>`` is the number of the bus waveform.
-        - ``<Qstring>`` is the Fast Channel 1 fast message counter binary value on which to trigger.
+        - ``<QString>`` is the Fast Channel 1 fast message counter binary value on which to trigger.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerABusBItemSentFastCounterQualifier(SCPICmdWrite, SCPICmdRead):
@@ -27418,8 +27411,10 @@ class TriggerABusBItemSentFastCounterQualifier(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the number of the bus.
+        - ``EQual`` sets the qualifier as Equal.
         - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
         - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+        - ``MOREthan`` sets the qualifier as More Than.
         - ``UNEQual`` sets the qualifier as Unequal.
         - ``INrange`` sets the qualifier to inside a range.
         - ``OUTrange`` sets the qualifier to outside a range.
@@ -27450,6 +27445,7 @@ class TriggerABusBItemSentFastCounterHivalue(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the bus identifier number.
+        - ``<QString>`` sets the Fast Channel 1 counter binary value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -27509,6 +27505,7 @@ class TriggerABusBItemSentFastCounter(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the bus identifier number.
+            - ``<QString>`` sets the Fast Channel 1 counter binary value.
         """
         return self._hivalue
 
@@ -27537,8 +27534,10 @@ class TriggerABusBItemSentFastCounter(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the number of the bus.
+            - ``EQual`` sets the qualifier as Equal.
             - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
             - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+            - ``MOREthan`` sets the qualifier as More Than.
             - ``UNEQual`` sets the qualifier as Unequal.
             - ``INrange`` sets the qualifier to inside a range.
             - ``OUTrange`` sets the qualifier to outside a range.
@@ -27564,13 +27563,13 @@ class TriggerABusBItemSentFastCounter(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:VALue <Qstring>
+            - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:VALue <QString>
             - TRIGger:A:BUS:B<x>:SENT:FAST:COUNTer:VALue?
             ```
 
         Info:
             - ``B<x>`` is the number of the bus waveform.
-            - ``<Qstring>`` is the Fast Channel 1 fast message counter binary value on which to
+            - ``<QString>`` is the Fast Channel 1 fast message counter binary value on which to
               trigger.
         """
         return self._value
@@ -27594,14 +27593,16 @@ class TriggerABusBItemSentFastChan2bValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:VALue <Qstring>
+        - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:VALue <QString>
         - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:VALue?
         ```
 
     Info:
         - ``B<x>`` is the number of the bus waveform.
-        - ``<Qstring>`` is the Fast Channel 2 binary value on which to trigger.
+        - ``<QString>`` is the Fast Channel 2 binary value on which to trigger.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerABusBItemSentFastChan2bQualifier(SCPICmdWrite, SCPICmdRead):
@@ -27628,8 +27629,10 @@ class TriggerABusBItemSentFastChan2bQualifier(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the number of the bus.
+        - ``EQual`` sets the qualifier as Equal.
         - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
         - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+        - ``MOREthan`` sets the qualifier as More Than.
         - ``UNEQual`` sets the qualifier as Unequal.
         - ``INrange`` sets the qualifier to inside a range.
         - ``OUTrange`` sets the qualifier to outside a range.
@@ -27660,6 +27663,7 @@ class TriggerABusBItemSentFastChan2bHivalue(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the bus identifier number.
+        - ``<QString>`` sets the Fast Channel 2 high binary data value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -27716,6 +27720,7 @@ class TriggerABusBItemSentFastChan2b(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the bus identifier number.
+            - ``<QString>`` sets the Fast Channel 2 high binary data value.
         """
         return self._hivalue
 
@@ -27744,8 +27749,10 @@ class TriggerABusBItemSentFastChan2b(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the number of the bus.
+            - ``EQual`` sets the qualifier as Equal.
             - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
             - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+            - ``MOREthan`` sets the qualifier as More Than.
             - ``UNEQual`` sets the qualifier as Unequal.
             - ``INrange`` sets the qualifier to inside a range.
             - ``OUTrange`` sets the qualifier to outside a range.
@@ -27771,13 +27778,13 @@ class TriggerABusBItemSentFastChan2b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:VALue <Qstring>
+            - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:VALue <QString>
             - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN2B:VALue?
             ```
 
         Info:
             - ``B<x>`` is the number of the bus waveform.
-            - ``<Qstring>`` is the Fast Channel 2 binary value on which to trigger.
+            - ``<QString>`` is the Fast Channel 2 binary value on which to trigger.
         """
         return self._value
 
@@ -27800,14 +27807,16 @@ class TriggerABusBItemSentFastChan1aValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:VALue <Qstring>
+        - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:VALue <QString>
         - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:VALue?
         ```
 
     Info:
         - ``B<x>`` is the number of the bus waveform.
-        - ``<Qstring>`` is the Fast Channel 1 value on which to trigger.
+        - ``<QString>`` is the Fast Channel 1 value on which to trigger.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerABusBItemSentFastChan1aQualifier(SCPICmdWrite, SCPICmdRead):
@@ -27834,8 +27843,10 @@ class TriggerABusBItemSentFastChan1aQualifier(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the number of the bus.
+        - ``EQual`` sets the qualifier as Equal.
         - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
         - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+        - ``MOREthan`` sets the qualifier as More Than.
         - ``UNEQual`` sets the qualifier as Unequal.
         - ``INrange`` sets the qualifier to inside a range.
         - ``OUTrange`` sets the qualifier to outside a range.
@@ -27866,6 +27877,7 @@ class TriggerABusBItemSentFastChan1aHivalue(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the bus identifier number.
+        - ``<QString>`` sets the Fast Channel 1 binary data high value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -27922,6 +27934,7 @@ class TriggerABusBItemSentFastChan1a(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the bus identifier number.
+            - ``<QString>`` sets the Fast Channel 1 binary data high value.
         """
         return self._hivalue
 
@@ -27950,8 +27963,10 @@ class TriggerABusBItemSentFastChan1a(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the number of the bus.
+            - ``EQual`` sets the qualifier as Equal.
             - ``LESSEQual`` sets the qualifier as Less Than or Equal to.
             - ``MOREEQual`` sets the qualifier as More Than or Equal to.
+            - ``MOREthan`` sets the qualifier as More Than.
             - ``UNEQual`` sets the qualifier as Unequal.
             - ``INrange`` sets the qualifier to inside a range.
             - ``OUTrange`` sets the qualifier to outside a range.
@@ -27977,13 +27992,13 @@ class TriggerABusBItemSentFastChan1a(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:VALue <Qstring>
+            - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:VALue <QString>
             - TRIGger:A:BUS:B<x>:SENT:FAST:CHAN1A:VALue?
             ```
 
         Info:
             - ``B<x>`` is the number of the bus waveform.
-            - ``<Qstring>`` is the Fast Channel 1 value on which to trigger.
+            - ``<QString>`` is the Fast Channel 1 value on which to trigger.
         """
         return self._value
 
@@ -29974,7 +29989,7 @@ class TriggerABusBItemMil1553bCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA|TIMe|ERRor}
+        - TRIGger:A:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA |TIMe|ERRor}
         - TRIGger:A:BUS:B<x>:MIL1553B:CONDition?
         ```
 
@@ -30561,7 +30576,7 @@ class TriggerABusBItemMil1553b(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA|TIMe|ERRor}
+            - TRIGger:A:BUS:B<x>:MIL1553B:CONDition {SYNC|COMMAND|STATus|DATA |TIMe|ERRor}
             - TRIGger:A:BUS:B<x>:MIL1553B:CONDition?
             ```
 
@@ -31264,7 +31279,7 @@ class TriggerABusBItemI3cSdrDirectpacket(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya|SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl|GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt|MDATASpeed|HDRCapability|GETXTime|GETCAPS|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe}
+        - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya|SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch|GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime|GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
         - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket?
         ```
 
@@ -31317,7 +31332,7 @@ class TriggerABusBItemI3cSdrBroadcastpacket(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya|ENTRDya|SETMwrl|SETMrdl|DLSLave|ENTRTSTMode|EXTime|SETaasa|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe|SETBUSCON}
+        - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave|ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT|DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
         - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket?
         ```
 
@@ -31384,7 +31399,7 @@ class TriggerABusBItemI3cSdr(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave|ENTasx|RSTDya|ENTRDya|SETMwrl|SETMrdl|DLSLave|ENTRTSTMode|EXTime|SETaasa|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe|SETBUSCON}
+            - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket {ENSLave|DISLave| ENTasx| RSTDya| ENTRDya| SETMwrl| SETMrdl| DLSLave|ENTRTSTMode| EXTime| SETaasa| ENDXFER| SETGRPa| RSTACT|DEFGRPa| RSTGRPa| MLANe| SETBUSCON}
             - TRIGger:A:BUS:B<x>:I3C:SDR:BROADCASTPacket?
             ```
 
@@ -31429,7 +31444,7 @@ class TriggerABusBItemI3cSdr(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave|ENTasx|RSTDya|SETMwrl|SETMrdl|SEText|SETDya|SETNdya|GETMWrl|GETMRdl|GETPrid|GETBusch|GETDevch|GETSlave|ACCM|SETBrt|MDATASpeed|HDRCapability|GETXTime|GETCAPS|ENDXFER|SETGRPa|RSTACT|DEFGRPa|RSTGRPa|MLANe}
+            - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket {ENSLave|DISLave| ENTasx| RSTDya| SETMwrl| SETMrdl| SEText| SETDya|SETNdya| GETMWrl| GETMRdl| GETPrid| GETBusch| GETDevch|GETSlave| ACCM| SETBrt| MDATASpeed| HDRCapability| GETXTime|GETCAPS| ENDXFER| SETGRPa| RSTACT| DEFGRPa| RSTGRPa| MLANe}
             - TRIGger:A:BUS:B<x>:I3C:SDR:DIRECTPacket?
             ```
 
@@ -31698,7 +31713,7 @@ class TriggerABusBItemI3cCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:I3C:CONDition {STARt|REPEATStart|ADDRess|DATa|SDRDirect|SDRBroadcast|ERRors|HOTJoin|HDRRestart|HDRExit|STOP}
+        - TRIGger:A:BUS:B<x>:I3C:CONDition {STARt| REPEATStart|ADDRess| DATa| SDRDirect| SDRBroadcast| ERRors| HOTJoin|HDRRestart| HDRExit| STOP}
         - TRIGger:A:BUS:B<x>:I3C:CONDition?
         ```
 
@@ -31911,7 +31926,7 @@ class TriggerABusBItemI3c(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:I3C:CONDition {STARt|REPEATStart|ADDRess|DATa|SDRDirect|SDRBroadcast|ERRors|HOTJoin|HDRRestart|HDRExit|STOP}
+            - TRIGger:A:BUS:B<x>:I3C:CONDition {STARt| REPEATStart|ADDRess| DATa| SDRDirect| SDRBroadcast| ERRors| HOTJoin|HDRRestart| HDRExit| STOP}
             - TRIGger:A:BUS:B<x>:I3C:CONDition?
             ```
 
@@ -32064,8 +32079,8 @@ class TriggerABusBItemI2cDataDirection(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:A:BUS:B<x>:I2C:DATa:DIRection`` command.
 
     Description:
-        - This command specifies the I 2 C trigger type to be valid on a Read, Write, or Either
-          condition. Read or write is indicated by the R/W bit in the I 2 C protocol. The bus number
+        - This command specifies the I2C trigger type to be valid on a Read, Write, or Either
+          condition. Read or write is indicated by the R/W bit in the I2C protocol. The bus number
           is specified by x.
 
     Usage:
@@ -32115,8 +32130,8 @@ class TriggerABusBItemI2cData(SCPICmdRead):
         """Return the ``TRIGger:A:BUS:B<x>:I2C:DATa:DIRection`` command.
 
         Description:
-            - This command specifies the I 2 C trigger type to be valid on a Read, Write, or Either
-              condition. Read or write is indicated by the R/W bit in the I 2 C protocol. The bus
+            - This command specifies the I2C trigger type to be valid on a Read, Write, or Either
+              condition. Read or write is indicated by the R/W bit in the I2C protocol. The bus
               number is specified by x.
 
         Usage:
@@ -32204,7 +32219,7 @@ class TriggerABusBItemI2cCondition(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:A:BUS:B<x>:I2C:CONDition`` command.
 
     Description:
-        - This command specifies the trigger condition for an I 2 C trigger. The bus number is
+        - This command specifies the trigger condition for an I2C trigger. The bus number is
           specified by x.
 
     Usage:
@@ -32235,7 +32250,7 @@ class TriggerABusBItemI2cAddressValue(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:A:BUS:B<x>:I2C:ADDRess:VALue`` command.
 
     Description:
-        - This command specifies the binary address string used for the I 2 C trigger if the trigger
+        - This command specifies the binary address string used for the I2C trigger if the trigger
           condition is ADDRESS or ADDRANDDATA. The bus number is specified by x.
 
     Usage:
@@ -32265,8 +32280,8 @@ class TriggerABusBItemI2cAddressMode(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:A:BUS:B<x>:I2C:ADDRess:MODe`` command.
 
     Description:
-        - This command specifies the I 2 C address mode to 7 or 10-bit. The bus number is specified
-          by x.
+        - This command specifies the I2C address mode to 7 or 10-bit. The bus number is specified by
+          x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:I2C:ADDRess:MODe?``
@@ -32311,7 +32326,7 @@ class TriggerABusBItemI2cAddress(SCPICmdRead):
         """Return the ``TRIGger:A:BUS:B<x>:I2C:ADDRess:MODe`` command.
 
         Description:
-            - This command specifies the I 2 C address mode to 7 or 10-bit. The bus number is
+            - This command specifies the I2C address mode to 7 or 10-bit. The bus number is
               specified by x.
 
         Usage:
@@ -32340,7 +32355,7 @@ class TriggerABusBItemI2cAddress(SCPICmdRead):
         """Return the ``TRIGger:A:BUS:B<x>:I2C:ADDRess:VALue`` command.
 
         Description:
-            - This command specifies the binary address string used for the I 2 C trigger if the
+            - This command specifies the binary address string used for the I2C trigger if the
               trigger condition is ADDRESS or ADDRANDDATA. The bus number is specified by x.
 
         Usage:
@@ -32405,7 +32420,7 @@ class TriggerABusBItemI2c(SCPICmdRead):
         """Return the ``TRIGger:A:BUS:B<x>:I2C:CONDition`` command.
 
         Description:
-            - This command specifies the trigger condition for an I 2 C trigger. The bus number is
+            - This command specifies the trigger condition for an I2C trigger. The bus number is
               specified by x.
 
         Usage:
@@ -32457,7 +32472,7 @@ class TriggerABusBItemFlexrayHeaderPaylength(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command specifies the payload length portion of the binary header string when
           triggering on the FlexRay bus header. The trigger condition needs to be set to HEADer
-          (using ).The bus number is specified by x.
+          (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -32487,7 +32502,7 @@ class TriggerABusBItemFlexrayHeaderIndbits(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command specifies the indicator bits portion of the binary header string when
           triggering on the FlexRay bus header. The trigger condition needs to be set to HEADer
-          (using ). The bus number is specified by x.
+          (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:HEADER:INDBits?``
@@ -32517,8 +32532,8 @@ class TriggerABusBItemFlexrayHeaderFrameid(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the frame ID portion of the binary header string when triggering on
-          the FlexRay bus header. The trigger condition needs to be set to HEADer (using ). The bus
-          number is specified by x.
+          the FlexRay bus header. The trigger condition needs to be set to HEADer (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:HEADER:FRAMEID?``
@@ -32548,8 +32563,8 @@ class TriggerABusBItemFlexrayHeaderCyclecount(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the cycle count portion of the binary header string when triggering
-          on the FlexRay bus header. The trigger condition needs to be set to HEADer (using ). The
-          bus number is specified by x.
+          on the FlexRay bus header. The trigger condition needs to be set to HEADer (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -32579,8 +32594,8 @@ class TriggerABusBItemFlexrayHeaderCrc(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the CRC portion of the binary header string when triggering on the
-          FlexRay bus signal. The trigger condition needs to be set to HEADer (using ). The bus
-          number is specified by x.
+          FlexRay bus signal. The trigger condition needs to be set to HEADer (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:HEADER:CRC?``
@@ -32638,8 +32653,8 @@ class TriggerABusBItemFlexrayHeader(SCPICmdRead):
 
         Description:
             - This command specifies the CRC portion of the binary header string when triggering on
-              the FlexRay bus signal. The trigger condition needs to be set to HEADer (using ). The
-              bus number is specified by x.
+              the FlexRay bus signal. The trigger condition needs to be set to HEADer (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:HEADER:CRC?``
@@ -32668,7 +32683,8 @@ class TriggerABusBItemFlexrayHeader(SCPICmdRead):
         Description:
             - This command specifies the cycle count portion of the binary header string when
               triggering on the FlexRay bus header. The trigger condition needs to be set to HEADer
-              (using ). The bus number is specified by x.
+              (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by
+              x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -32698,7 +32714,8 @@ class TriggerABusBItemFlexrayHeader(SCPICmdRead):
         Description:
             - This command specifies the frame ID portion of the binary header string when
               triggering on the FlexRay bus header. The trigger condition needs to be set to HEADer
-              (using ). The bus number is specified by x.
+              (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by
+              x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -32728,7 +32745,8 @@ class TriggerABusBItemFlexrayHeader(SCPICmdRead):
         Description:
             - This command specifies the indicator bits portion of the binary header string when
               triggering on the FlexRay bus header. The trigger condition needs to be set to HEADer
-              (using ). The bus number is specified by x.
+              (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by
+              x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -32758,7 +32776,7 @@ class TriggerABusBItemFlexrayHeader(SCPICmdRead):
         Description:
             - This command specifies the payload length portion of the binary header string when
               triggering on the FlexRay bus header. The trigger condition needs to be set to HEADer
-              (using ).The bus number is specified by x.
+              (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -32787,7 +32805,7 @@ class TriggerABusBItemFlexrayFrametype(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command specifies the frame type (normal, payload, null, sync or startup) when
           triggering on the FlexRay bus signal. The trigger condition needs to be set to FRAMEType
-          (using ). The bus number is specified by x.
+          (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:FRAMEType?``
@@ -32818,8 +32836,9 @@ class TriggerABusBItemFlexrayFrameidValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the low value when triggering on the FlexRay bus frame ID field.
-          (Use to set the high value.) The trigger condition needs to be set to IDentifier (using ).
-          The bus number is specified by x.
+          (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:FRAMEID:HIVALue`` to set the high value.) The
+          trigger condition needs to be set to IDentifier (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:FRAMEID:VALue?``
@@ -32848,8 +32867,8 @@ class TriggerABusBItemFlexrayFrameidQualifier(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the qualifier to use when triggering on the FlexRay bus frame ID
-          field. The trigger condition needs to be set to IDentifier (using ). The bus number is
-          specified by x.
+          field. The trigger condition needs to be set to IDentifier (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -32883,8 +32902,9 @@ class TriggerABusBItemFlexrayFrameidHivalue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the high value when triggering on the FlexRay bus frame ID field.
-          (Use to set the low value.) The trigger condition needs to be set to IDentifier (using ).
-          The bus number is specified by x.
+          (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:FRAMEID:VALue`` to set the low value.) The trigger
+          condition needs to be set to IDentifier (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -32936,8 +32956,9 @@ class TriggerABusBItemFlexrayFrameid(SCPICmdRead):
 
         Description:
             - This command specifies the high value when triggering on the FlexRay bus frame ID
-              field. (Use to set the low value.) The trigger condition needs to be set to IDentifier
-              (using ). The bus number is specified by x.
+              field. (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:FRAMEID:VALue`` to set the low value.)
+              The trigger condition needs to be set to IDentifier (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -32965,8 +32986,8 @@ class TriggerABusBItemFlexrayFrameid(SCPICmdRead):
 
         Description:
             - This command specifies the qualifier to use when triggering on the FlexRay bus frame
-              ID field. The trigger condition needs to be set to IDentifier (using ). The bus number
-              is specified by x.
+              ID field. The trigger condition needs to be set to IDentifier (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -33001,8 +33022,9 @@ class TriggerABusBItemFlexrayFrameid(SCPICmdRead):
 
         Description:
             - This command specifies the low value when triggering on the FlexRay bus frame ID
-              field. (Use to set the high value.) The trigger condition needs to be set to
-              IDentifier (using ). The bus number is specified by x.
+              field. (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:FRAMEID:HIVALue`` to set the high value.)
+              The trigger condition needs to be set to IDentifier (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -33030,7 +33052,8 @@ class TriggerABusBItemFlexrayErrtype(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the error type when triggering on the FlexRay bus signal. The
-          trigger condition needs to be set to ERROR (using ). The bus number is specified by x.
+          trigger condition needs to be set to ERROR (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE?`` query.
@@ -33060,8 +33083,8 @@ class TriggerABusBItemFlexrayEoftype(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the end of file type (static, dynamic or any) when triggering on
-          the FlexRay bus EOF field. The trigger condition needs to be set to EOF (using ). The bus
-          number is specified by x.
+          the FlexRay bus EOF field. The trigger condition needs to be set to EOF (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:EOFTYPE?`` query.
@@ -33088,8 +33111,9 @@ class TriggerABusBItemFlexrayDataValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the low value when triggering on the FlexRay bus data field. (Use
-          to set the upper value.) The trigger condition needs to be set to ID or IDANDDATA (using
-          ). The bus number is specified by x.
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:DATa:HIVALue`` to set the upper value.) The trigger
+          condition needs to be set to ID or IDANDDATA (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:DATa:VALue?``
@@ -33118,8 +33142,8 @@ class TriggerABusBItemFlexrayDataSize(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the length of the data string, in bytes, when triggering on the
-          FlexRay bus data field. The trigger condition needs to be set to ID or IDANDDATA (using ).
-          The bus number is specified by x.
+          FlexRay bus data field. The trigger condition needs to be set to ID or IDANDDATA (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:DATa:SIZe?``
@@ -33147,7 +33171,8 @@ class TriggerABusBItemFlexrayDataQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command specifies the qualifier (<, >, =, <=, >=, not =, in range, out of range) to
           use when triggering on the FlexRay bus data field. The trigger condition needs to be set
-          to ID or IDANDDATA (using ). The bus number is specified by x.
+          to ID or IDANDDATA (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is
+          specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:DATa:QUALifier?``
@@ -33181,8 +33206,8 @@ class TriggerABusBItemFlexrayDataOffset(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the offset of the data string, in bytes, when triggering on the
-          FlexRay bus data field. The trigger condition needs to be set to ID or IDANDDATA (using ).
-          The bus number is specified by x.
+          FlexRay bus data field. The trigger condition needs to be set to ID or IDANDDATA (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:DATa:OFFSet?``
@@ -33200,8 +33225,8 @@ class TriggerABusBItemFlexrayDataOffset(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>`` is the offset of the data string in bytes. A byte offset of -1 signifies 'don't
-          care', and no byte offset is used. The instrument will trigger on or match any byte value
+        - ``<NR1>`` is the offset of the data string in bytes. A byte offset of -1 signifies “don't
+          care”, and no byte offset is used. The instrument will trigger on or match any byte value
           that fits.
     """
 
@@ -33211,8 +33236,9 @@ class TriggerABusBItemFlexrayDataHivalue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the high value when triggering on the FlexRay bus data field. (Use
-          to set the lower value.) The trigger condition needs to be set to ID or IDANDDATA (using
-          ).The bus number is specified by x.
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:DATa:VALue`` to set the lower value.) The trigger
+          condition needs to be set to ID or IDANDDATA (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:DATa:HIVALue?``
@@ -33268,8 +33294,9 @@ class TriggerABusBItemFlexrayData(SCPICmdRead):
 
         Description:
             - This command specifies the high value when triggering on the FlexRay bus data field.
-              (Use to set the lower value.) The trigger condition needs to be set to ID or IDANDDATA
-              (using ).The bus number is specified by x.
+              (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:DATa:VALue`` to set the lower value.) The
+              trigger condition needs to be set to ID or IDANDDATA (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -33298,7 +33325,8 @@ class TriggerABusBItemFlexrayData(SCPICmdRead):
         Description:
             - This command specifies the offset of the data string, in bytes, when triggering on the
               FlexRay bus data field. The trigger condition needs to be set to ID or IDANDDATA
-              (using ). The bus number is specified by x.
+              (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by
+              x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -33317,7 +33345,7 @@ class TriggerABusBItemFlexrayData(SCPICmdRead):
 
         Info:
             - ``<NR1>`` is the offset of the data string in bytes. A byte offset of -1 signifies
-              'don't care', and no byte offset is used. The instrument will trigger on or match any
+              “don't care”, and no byte offset is used. The instrument will trigger on or match any
               byte value that fits.
         """
         return self._offset
@@ -33329,7 +33357,8 @@ class TriggerABusBItemFlexrayData(SCPICmdRead):
         Description:
             - This command specifies the qualifier (<, >, =, <=, >=, not =, in range, out of range)
               to use when triggering on the FlexRay bus data field. The trigger condition needs to
-              be set to ID or IDANDDATA (using ). The bus number is specified by x.
+              be set to ID or IDANDDATA (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The
+              bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -33365,7 +33394,8 @@ class TriggerABusBItemFlexrayData(SCPICmdRead):
         Description:
             - This command specifies the length of the data string, in bytes, when triggering on the
               FlexRay bus data field. The trigger condition needs to be set to ID or IDANDDATA
-              (using ). The bus number is specified by x.
+              (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by
+              x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:DATa:SIZe?``
@@ -33393,8 +33423,9 @@ class TriggerABusBItemFlexrayData(SCPICmdRead):
 
         Description:
             - This command specifies the low value when triggering on the FlexRay bus data field.
-              (Use to set the upper value.) The trigger condition needs to be set to ID or IDANDDATA
-              (using ). The bus number is specified by x.
+              (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:DATa:HIVALue`` to set the upper value.) The
+              trigger condition needs to be set to ID or IDANDDATA (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:DATa:VALue?``
@@ -33422,8 +33453,9 @@ class TriggerABusBItemFlexrayCyclecountValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the low value when triggering on the FlexRay bus cycle count field.
-          (Use to set the upper value.) The trigger condition must be set to CYCLEcount (using ).The
-          bus number is specified by x.
+          (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:CYCLEcount:HIVALue`` to set the upper value.) The
+          trigger condition must be set to CYCLEcount (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -33447,13 +33479,14 @@ class TriggerABusBItemFlexrayCyclecountValue(SCPICmdWrite, SCPICmdRead):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class TriggerABusBItemFlexrayCyclecountQualifier(SCPICmdWrite, SCPICmdRead):
+class TriggerABusBItemFlexrayCyclecountQualifier(SCPICmdWriteNoArguments, SCPICmdRead):
     """The ``TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier`` command.
 
     Description:
         - This command specifies the qualifier (<, >, =, <=, >=, not =, in range, out of range) to
           use when triggering on the FlexRay bus cycle count field. The trigger condition must be
-          set to CYCLEcount (using ).The bus number is specified by x.
+          set to CYCLEcount (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus number is
+          specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -33461,25 +33494,15 @@ class TriggerABusBItemFlexrayCyclecountQualifier(SCPICmdWrite, SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?`` query and raise an AssertionError if
           the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier value`` command.
+        - Using the ``.write()`` method will send the
+          ``TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier`` command.
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier
         - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
         ```
-
-    Info:
-        - ``LESSthan`` sets the cycle count qualifier to less than.
-        - ``MOREthan`` sets the cycle count qualifier to more than.
-        - ``EQual`` sets the cycle count qualifier to equal.
-        - ``UNEQual`` sets the cycle count qualifier to not equal.
-        - ``LESSEQual`` sets the cycle count qualifier to less than or equal.
-        - ``MOREEQual`` sets the cycle count qualifier to greater than or equal.
-        - ``INrange`` sets the cycle count qualifier to in range.
-        - ``OUTrange`` sets the cycle count qualifier to out of range.
-    """  # noqa: E501
+    """
 
 
 class TriggerABusBItemFlexrayCyclecountHivalue(SCPICmdWrite, SCPICmdRead):
@@ -33487,8 +33510,9 @@ class TriggerABusBItemFlexrayCyclecountHivalue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command specifies the high value when triggering on a FlexRay bus cycle count field.
-          (Use to set the low value.) The trigger condition must be set to CYCLEcount (using ). The
-          bus number is specified by x.
+          (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:CYCLEcount:VALue`` to set the low value.) The
+          trigger condition must be set to CYCLEcount (using
+          TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -33544,8 +33568,9 @@ class TriggerABusBItemFlexrayCyclecount(SCPICmdRead):
 
         Description:
             - This command specifies the high value when triggering on a FlexRay bus cycle count
-              field. (Use to set the low value.) The trigger condition must be set to CYCLEcount
-              (using ). The bus number is specified by x.
+              field. (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:CYCLEcount:VALue`` to set the low value.)
+              The trigger condition must be set to CYCLEcount (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -33574,7 +33599,8 @@ class TriggerABusBItemFlexrayCyclecount(SCPICmdRead):
         Description:
             - This command specifies the qualifier (<, >, =, <=, >=, not =, in range, out of range)
               to use when triggering on the FlexRay bus cycle count field. The trigger condition
-              must be set to CYCLEcount (using ).The bus number is specified by x.
+              must be set to CYCLEcount (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus
+              number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -33582,25 +33608,15 @@ class TriggerABusBItemFlexrayCyclecount(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?`` query and raise an AssertionError
               if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier value`` command.
+            - Using the ``.write()`` method will send the
+              ``TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier`` command.
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier {LESSthan|MOREthan|EQual|UNEQual|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier
             - TRIGger:A:BUS:B<x>:FLEXray:CYCLEcount:QUALifier?
             ```
-
-        Info:
-            - ``LESSthan`` sets the cycle count qualifier to less than.
-            - ``MOREthan`` sets the cycle count qualifier to more than.
-            - ``EQual`` sets the cycle count qualifier to equal.
-            - ``UNEQual`` sets the cycle count qualifier to not equal.
-            - ``LESSEQual`` sets the cycle count qualifier to less than or equal.
-            - ``MOREEQual`` sets the cycle count qualifier to greater than or equal.
-            - ``INrange`` sets the cycle count qualifier to in range.
-            - ``OUTrange`` sets the cycle count qualifier to out of range.
-        """  # noqa: E501
+        """
         return self._qualifier
 
     @property
@@ -33609,8 +33625,9 @@ class TriggerABusBItemFlexrayCyclecount(SCPICmdRead):
 
         Description:
             - This command specifies the low value when triggering on the FlexRay bus cycle count
-              field. (Use to set the upper value.) The trigger condition must be set to CYCLEcount
-              (using ).The bus number is specified by x.
+              field. (Use TRIGger:{A|B}``:BUS:B<x>:FLEXray:CYCLEcount:HIVALue`` to set the upper
+              value.) The trigger condition must be set to CYCLEcount (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``).The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -33783,8 +33800,8 @@ class TriggerABusBItemFlexray(SCPICmdRead):
 
         Description:
             - This command specifies the end of file type (static, dynamic or any) when triggering
-              on the FlexRay bus EOF field. The trigger condition needs to be set to EOF (using ).
-              The bus number is specified by x.
+              on the FlexRay bus EOF field. The trigger condition needs to be set to EOF (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:EOFTYPE?``
@@ -33814,7 +33831,8 @@ class TriggerABusBItemFlexray(SCPICmdRead):
 
         Description:
             - This command specifies the error type when triggering on the FlexRay bus signal. The
-              trigger condition needs to be set to ERROR (using ). The bus number is specified by x.
+              trigger condition needs to be set to ERROR (using
+              TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:ERRTYPE?``
@@ -33866,7 +33884,8 @@ class TriggerABusBItemFlexray(SCPICmdRead):
         Description:
             - This command specifies the frame type (normal, payload, null, sync or startup) when
               triggering on the FlexRay bus signal. The trigger condition needs to be set to
-              FRAMEType (using ). The bus number is specified by x.
+              FRAMEType (using TRIGger:{A|B}``:BUS:B<x>:FLEXray:CONDition``). The bus number is
+              specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:FLEXray:FRAMEType?``
@@ -34371,7 +34390,7 @@ class TriggerABusBItemEthernetQtagValue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:ETHERnet:QTAG:VALue <QString>
+        - TRIGger:A:BUS:B<x>:ETHERnet:QTAG:VALue T <QString>
         - TRIGger:A:BUS:B<x>:ETHERnet:QTAG:VALue?
         ```
 
@@ -34380,8 +34399,6 @@ class TriggerABusBItemEthernetQtagValue(SCPICmdWrite, SCPICmdRead):
           0, 1, and X. The bits specified in the quoted string replace the least significant bits,
           leaving any unspecified upper bits unchanged.
     """
-
-    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TriggerABusBItemEthernetQtag(SCPICmdRead):
@@ -34420,7 +34437,7 @@ class TriggerABusBItemEthernetQtag(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:ETHERnet:QTAG:VALue <QString>
+            - TRIGger:A:BUS:B<x>:ETHERnet:QTAG:VALue T <QString>
             - TRIGger:A:BUS:B<x>:ETHERnet:QTAG:VALue?
             ```
 
@@ -34439,7 +34456,8 @@ class TriggerABusBItemEthernetMacLengthValue(SCPICmdWrite, SCPICmdRead):
         - When the Ethernet trigger condition is set to MACLENgth, and the qualifier is set to
           LESSthan, MOREthan, EQual, UNEQual, LESSEQual or MOREEQual, this command specifies the
           16-bit value to trigger on. When the qualifier is set to INrange or OUTrange, this command
-          specifies the lower limit of the range. (Use the command to set the upper limit of the
+          specifies the lower limit of the range. (Use the command
+          TRIGger:{A|B}``:BUS:B<x>:ETHERnet:MAC:LENgth:HIVALue`` to set the upper limit of the
           range.) The default is all X's (don't care). The bus number is specified by x.
 
     Usage:
@@ -34472,8 +34490,8 @@ class TriggerABusBItemEthernetMacLengthHivalue(SCPICmdWrite, SCPICmdRead):
     Description:
         - When the Ethernet trigger condition is set to MACLENgth, and the qualifier is set to
           INrange or OUTrange, this command specifies the upper data value of the range. (Use the
-          command to specify the lower limit of the range.) The default is all X's (don't care). The
-          bus number is specified by x.
+          command TRIGger:{A|B}``:BUS:B<x>:ETHERnet:MAC:LENgth:VALue`` to specify the lower limit of
+          the range.) The default is all X's (don't care). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -34528,8 +34546,9 @@ class TriggerABusBItemEthernetMacLength(SCPICmdRead):
         Description:
             - When the Ethernet trigger condition is set to MACLENgth, and the qualifier is set to
               INrange or OUTrange, this command specifies the upper data value of the range. (Use
-              the command to specify the lower limit of the range.) The default is all X's (don't
-              care). The bus number is specified by x.
+              the command TRIGger:{A|B}``:BUS:B<x>:ETHERnet:MAC:LENgth:VALue`` to specify the lower
+              limit of the range.) The default is all X's (don't care). The bus number is specified
+              by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -34561,9 +34580,9 @@ class TriggerABusBItemEthernetMacLength(SCPICmdRead):
             - When the Ethernet trigger condition is set to MACLENgth, and the qualifier is set to
               LESSthan, MOREthan, EQual, UNEQual, LESSEQual or MOREEQual, this command specifies the
               16-bit value to trigger on. When the qualifier is set to INrange or OUTrange, this
-              command specifies the lower limit of the range. (Use the command to set the upper
-              limit of the range.) The default is all X's (don't care). The bus number is specified
-              by x.
+              command specifies the lower limit of the range. (Use the command
+              TRIGger:{A|B}``:BUS:B<x>:ETHERnet:MAC:LENgth:HIVALue`` to set the upper limit of the
+              range.) The default is all X's (don't care). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -34595,7 +34614,7 @@ class TriggerABusBItemEthernetMacAddressSourceValue(SCPICmdWrite, SCPICmdRead):
         - When the Ethernet trigger condition is set to MACADDress, this command specifies the
           48-bit MAC source address value that is to be used in the trigger (along with the
           destination address value). The default is all X's (don't care). The bus number is
-          specified by x.
+          specified by x.MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -34649,7 +34668,7 @@ class TriggerABusBItemEthernetMacAddressSource(SCPICmdRead):
             - When the Ethernet trigger condition is set to MACADDress, this command specifies the
               48-bit MAC source address value that is to be used in the trigger (along with the
               destination address value). The default is all X's (don't care). The bus number is
-              specified by x.
+              specified by x.MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -34680,7 +34699,8 @@ class TriggerABusBItemEthernetMacAddressDestinationValue(SCPICmdWrite, SCPICmdRe
     Description:
         - When the Ethernet trigger condition is set to MACADDress, this command specifies the
           48-bit MAC destination address that is to be used in the trigger (along with the source
-          address value). The default is all X's (don't care). The bus number is specified by x.
+          address value). The default is all X's (don't care). The bus number is specified by x.MAC
+          Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -34734,7 +34754,7 @@ class TriggerABusBItemEthernetMacAddressDestination(SCPICmdRead):
             - When the Ethernet trigger condition is set to MACADDress, this command specifies the
               48-bit MAC destination address that is to be used in the trigger (along with the
               source address value). The default is all X's (don't care). The bus number is
-              specified by x.
+              specified by x.MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -34965,7 +34985,7 @@ class TriggerABusBItemEthernetIpheaderProtocolValue(SCPICmdWrite, SCPICmdRead):
         - When the Ethernet trigger condition is set to IPHeader, this command specifies the value
           of the 8-bit protocol field that is to be used in the trigger (along with the source and
           destination addresses). The default is all X's (don't care). The bus number is specified
-          by x.
+          by x.Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP) and 17 (UDP).
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -34983,7 +35003,7 @@ class TriggerABusBItemEthernetIpheaderProtocolValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<QString>`` is a quoted string of up to 8 characters where the allowable characters are
+        - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters are
           0, 1, and X. The bits specified in the quoted string replace the least significant bits,
           leaving any unspecified upper bits unchanged.
     """
@@ -35019,7 +35039,8 @@ class TriggerABusBItemEthernetIpheaderProtocol(SCPICmdRead):
             - When the Ethernet trigger condition is set to IPHeader, this command specifies the
               value of the 8-bit protocol field that is to be used in the trigger (along with the
               source and destination addresses). The default is all X's (don't care). The bus number
-              is specified by x.
+              is specified by x.Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP) and 17
+              (UDP).
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -35037,7 +35058,7 @@ class TriggerABusBItemEthernetIpheaderProtocol(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is a quoted string of up to 8 characters where the allowable characters
+            - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters
               are 0, 1, and X. The bits specified in the quoted string replace the least significant
               bits, leaving any unspecified upper bits unchanged.
         """
@@ -35218,8 +35239,8 @@ class TriggerABusBItemEthernetDataValue(SCPICmdWrite, SCPICmdRead):
           MOREthan, EQual, UNEQual, LESSEQual or MOREEQual, this command specifies the value to
           trigger on. When the Ethernet trigger condition is set to DATa, and the qualifier is set
           to INrange or OUTrange, this command specifies the lower limit of the range. (Use the
-          command to set the upper limit of the range.) The default is all X's (don't care). The bus
-          number is specified by x.
+          command TRIGger:{A|B}``:BUS:B<x>:ETHERnet:DATa:HIVALue`` to set the upper limit of the
+          range.) The default is all X's (don't care). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:ETHERnet:DATa:VALue?``
@@ -35340,13 +35361,13 @@ class TriggerABusBItemEthernetDataOffset(SCPICmdWrite, SCPICmdRead):
 
 
 class TriggerABusBItemEthernetDataHivalue(SCPICmdWrite, SCPICmdRead):
-    """The ``TRIGger:A:BUS:B<x>:ETHERnet:DATa:HIVALue`` command.
+    r"""The ``TRIGger:A:BUS:B<x>:ETHERnet:DATa:HIVALue`` command.
 
     Description:
         - When the Ethernet trigger condition is set to DATa, and the qualifier is set to either
           INrange or OUTrange, this command specifies the upper data value of the range. (Use the
-          command to specify the lower limit of the range.) The default is all X's (don't care). The
-          bus number is specified by x.
+          command TRIGger:{A|B}``:BUS:B<x>:ETHERnet:DATa:VALue`` to specify the lower limit of the
+          range.) The default is all X's (don't care). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:ETHERnet:DATa:HIVALue?``
@@ -35364,8 +35385,10 @@ class TriggerABusBItemEthernetDataHivalue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<QString>`` is a quoted string whose length varies depending on the size setting, up to
-          32 bits. (Use the command.
+        - ``<QString>`` is a quoted string whose length varies depending on the size setting, upto
+          32 bits. (Use the command TRIGger:{A\|B}``:BUS:B<x>:ETHERnet:DATa:SIZeto`` specify the
+          size.) The allowable characters are 0, 1, and X. The bits specifiedin the quoted string
+          replace the least significant bits, leaving any unspecifiedupper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -35399,13 +35422,13 @@ class TriggerABusBItemEthernetData(SCPICmdRead):
 
     @property
     def hivalue(self) -> TriggerABusBItemEthernetDataHivalue:
-        """Return the ``TRIGger:A:BUS:B<x>:ETHERnet:DATa:HIVALue`` command.
+        r"""Return the ``TRIGger:A:BUS:B<x>:ETHERnet:DATa:HIVALue`` command.
 
         Description:
             - When the Ethernet trigger condition is set to DATa, and the qualifier is set to either
               INrange or OUTrange, this command specifies the upper data value of the range. (Use
-              the command to specify the lower limit of the range.) The default is all X's (don't
-              care). The bus number is specified by x.
+              the command TRIGger:{A|B}``:BUS:B<x>:ETHERnet:DATa:VALue`` to specify the lower limit
+              of the range.) The default is all X's (don't care). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -35423,8 +35446,11 @@ class TriggerABusBItemEthernetData(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is a quoted string whose length varies depending on the size setting, up
-              to 32 bits. (Use the command.
+            - ``<QString>`` is a quoted string whose length varies depending on the size setting,
+              upto 32 bits. (Use the command TRIGger:{A\|B}``:BUS:B<x>:ETHERnet:DATa:SIZeto``
+              specify the size.) The allowable characters are 0, 1, and X. The bits specifiedin the
+              quoted string replace the least significant bits, leaving any unspecifiedupper bits
+              unchanged.
         """
         return self._hivalue
 
@@ -35535,8 +35561,9 @@ class TriggerABusBItemEthernetData(SCPICmdRead):
               LESSthan, MOREthan, EQual, UNEQual, LESSEQual or MOREEQual, this command specifies the
               value to trigger on. When the Ethernet trigger condition is set to DATa, and the
               qualifier is set to INrange or OUTrange, this command specifies the lower limit of the
-              range. (Use the command to set the upper limit of the range.) The default is all X's
-              (don't care). The bus number is specified by x.
+              range. (Use the command TRIGger:{A|B}``:BUS:B<x>:ETHERnet:DATa:HIVALue`` to set the
+              upper limit of the range.) The default is all X's (don't care). The bus number is
+              specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -35585,19 +35612,18 @@ class TriggerABusBItemEthernetCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``SFD`` - Start of frame delimiter.
-        - ``MACADDRess`` - MAC addresses field.
-        - ``MACLENgth`` - MAC length/type field.
-        - ``IPHeader`` - IP header field. This argument is only available when PROTOCOL is set to
+        - ``SFD`` — Start of frame delimiter.
+        - ``MACADDRess`` — MAC addresses field.
+        - ``MACLENgth`` — MAC length/type field.
+        - ``IPHeader`` — IP header field. This argument is only available when PROTOCOL is set to
           IPv4.
-        - ``TCPHeader`` - TCP header field. This argument is only available when PROTOCOL is set to
-          IPv4.
-        - ``DATa`` - TCP/IPv4 or MAC protocol client data field. If the protocol is set to OTHER,
+        - ``TCPHeader`` — TCP header field. This argument is only available when.
+        - ``DATa`` — TCP/IPv4 or MAC protocol client data field. If the protocol is set to OTHER,
           then DATa refers to the MAC client data.
-        - ``EOP`` - End of Packet field.
-        - ``IDLe`` - Idle field.
-        - ``FCSError`` - Frame Check Sequence Error (CRC) field.
-        - ``QTAG`` - IEEE 802.1Q (VLAN) control information field. In order to use QTAG as a trigger
+        - ``EOP`` — End of Packet field.
+        - ``IDLe`` — Idle field.
+        - ``FCSError`` — Frame Check Sequence Error (CRC) field.
+        - ``QTAG`` — IEEE 802.1Q (VLAN) control information field. In order to use QTAG as a trigger
           condition, the frame type must be set to QTAG ).
     """  # noqa: E501
 
@@ -35652,19 +35678,18 @@ class TriggerABusBItemEthernet(SCPICmdRead):
             ```
 
         Info:
-            - ``SFD`` - Start of frame delimiter.
-            - ``MACADDRess`` - MAC addresses field.
-            - ``MACLENgth`` - MAC length/type field.
-            - ``IPHeader`` - IP header field. This argument is only available when PROTOCOL is set
+            - ``SFD`` — Start of frame delimiter.
+            - ``MACADDRess`` — MAC addresses field.
+            - ``MACLENgth`` — MAC length/type field.
+            - ``IPHeader`` — IP header field. This argument is only available when PROTOCOL is set
               to IPv4.
-            - ``TCPHeader`` - TCP header field. This argument is only available when PROTOCOL is set
-              to IPv4.
-            - ``DATa`` - TCP/IPv4 or MAC protocol client data field. If the protocol is set to
+            - ``TCPHeader`` — TCP header field. This argument is only available when.
+            - ``DATa`` — TCP/IPv4 or MAC protocol client data field. If the protocol is set to
               OTHER, then DATa refers to the MAC client data.
-            - ``EOP`` - End of Packet field.
-            - ``IDLe`` - Idle field.
-            - ``FCSError`` - Frame Check Sequence Error (CRC) field.
-            - ``QTAG`` - IEEE 802.1Q (VLAN) control information field. In order to use QTAG as a
+            - ``EOP`` — End of Packet field.
+            - ``IDLe`` — Idle field.
+            - ``FCSError`` — Frame Check Sequence Error (CRC) field.
+            - ``QTAG`` — IEEE 802.1Q (VLAN) control information field. In order to use QTAG as a
               trigger condition, the frame type must be set to QTAG ).
         """  # noqa: E501
         return self._condition
@@ -35767,8 +35792,8 @@ class TriggerABusBItemCanIdentifierValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the binary address value to be used when triggering on a CAN bus signal.
-          The trigger condition must be set to IDANDDATA or DATa (using ). The bus number is
-          specified by x.
+          The trigger condition must be set to IDANDDATA or DATa (using
+          TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:CAN:IDentifier:VALue?``
@@ -35799,7 +35824,7 @@ class TriggerABusBItemCanIdentifierMode(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets the addressing mode (standard or extended format) to be used when
           triggering on a CAN bus signal. The trigger condition must be set to IDANDDATA or DATa
-          (using ). The bus number is specified by x.
+          (using TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:CAN:IDentifier:MODe?``
@@ -35847,7 +35872,7 @@ class TriggerABusBItemCanIdentifier(SCPICmdRead):
         Description:
             - This command sets the addressing mode (standard or extended format) to be used when
               triggering on a CAN bus signal. The trigger condition must be set to IDANDDATA or DATa
-              (using ). The bus number is specified by x.
+              (using TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -35876,8 +35901,8 @@ class TriggerABusBItemCanIdentifier(SCPICmdRead):
 
         Description:
             - This command sets the binary address value to be used when triggering on a CAN bus
-              signal. The trigger condition must be set to IDANDDATA or DATa (using ). The bus
-              number is specified by x.
+              signal. The trigger condition must be set to IDANDDATA or DATa (using
+              TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -35906,8 +35931,9 @@ class TriggerABusBItemCanFrametype(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the frame type (data, remote, error or overload) to be used when
-          triggering on a CAN bus signal. The trigger condition must be set to FRAMEtype (using ).
-          B<x> is the bus number.The bus number is specified by x.
+          triggering on a CAN bus signal. The trigger condition must be set to FRAMEtype (using
+          TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). B<x> is the bus number.The bus number is
+          specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:CAN:FRAMEtype?`` query.
@@ -36109,8 +36135,8 @@ class TriggerABusBItemCanDataValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the binary data value to be used when triggering on a CAN bus signal.
-          The trigger condition must be set to IDANDDATA or DATa (using ). The bus number is
-          specified by x.
+          The trigger condition must be set to IDANDDATA or DATa (using
+          TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:CAN:DATa:VALue?`` query.
@@ -36138,8 +36164,8 @@ class TriggerABusBItemCanDataSize(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the length of the data string, in bytes, to be used when triggering on a
-          CAN bus signal. The trigger condition must be set to IDANDDATA or DATa (using ). The bus
-          number is specified by x.
+          CAN bus signal. The trigger condition must be set to IDANDDATA or DATa (using
+          TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:CAN:DATa:SIZe?`` query.
@@ -36164,8 +36190,8 @@ class TriggerABusBItemCanDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the qualifier (<, >, =, ≠, ≤, ≥) to be used when triggering on a CAN bus
-          signal. The trigger condition must be set to IDANDDATA or DATa (using ). The bus number is
-          specified by x.
+          signal. The trigger condition must be set to IDANDDATA or DATa (using
+          TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier?``
@@ -36228,9 +36254,9 @@ class TriggerABusBItemCanDataDirection(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:A:BUS:B<x>:CAN:DATa:DIRection`` command.
 
     Description:
-        - This command sets the data direction (read, write or 'nocare') to be used to search on a
-          CAN bus signal. The trigger condition must be set to IDentifier (using ). The bus number
-          is specified by x.
+        - This command sets the data direction (read, write or “nocare”) to be used to search on a
+          CAN bus signal. The trigger condition must be set to IDentifier (using
+          TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:CAN:DATa:DIRection?``
@@ -36283,9 +36309,9 @@ class TriggerABusBItemCanData(SCPICmdRead):
         """Return the ``TRIGger:A:BUS:B<x>:CAN:DATa:DIRection`` command.
 
         Description:
-            - This command sets the data direction (read, write or 'nocare') to be used to search on
-              a CAN bus signal. The trigger condition must be set to IDentifier (using ). The bus
-              number is specified by x.
+            - This command sets the data direction (read, write or “nocare”) to be used to search on
+              a CAN bus signal. The trigger condition must be set to IDentifier (using
+              TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:CAN:DATa:DIRection?``
@@ -36345,8 +36371,8 @@ class TriggerABusBItemCanData(SCPICmdRead):
 
         Description:
             - This command sets the qualifier (<, >, =, ≠, ≤, ≥) to be used when triggering on a CAN
-              bus signal. The trigger condition must be set to IDANDDATA or DATa (using ). The bus
-              number is specified by x.
+              bus signal. The trigger condition must be set to IDANDDATA or DATa (using
+              TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:CAN:DATa:QUALifier?``
@@ -36385,8 +36411,8 @@ class TriggerABusBItemCanData(SCPICmdRead):
 
         Description:
             - This command sets the length of the data string, in bytes, to be used when triggering
-              on a CAN bus signal. The trigger condition must be set to IDANDDATA or DATa (using ).
-              The bus number is specified by x.
+              on a CAN bus signal. The trigger condition must be set to IDANDDATA or DATa (using
+              TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:CAN:DATa:SIZe?``
@@ -36414,8 +36440,8 @@ class TriggerABusBItemCanData(SCPICmdRead):
 
         Description:
             - This command sets the binary data value to be used when triggering on a CAN bus
-              signal. The trigger condition must be set to IDANDDATA or DATa (using ). The bus
-              number is specified by x.
+              signal. The trigger condition must be set to IDANDDATA or DATa (using
+              TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:CAN:DATa:VALue?``
@@ -36604,7 +36630,8 @@ class TriggerABusBItemCan(SCPICmdRead):
         Description:
             - This command sets the frame type (data, remote, error or overload) to be used when
               triggering on a CAN bus signal. The trigger condition must be set to FRAMEtype (using
-              ). B<x> is the bus number.The bus number is specified by x.
+              TRIGger:{A|B}``:BUS:B<x>:CAN:CONDition``). B<x> is the bus number.The bus number is
+              specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:CAN:FRAMEtype?``
@@ -36652,8 +36679,8 @@ class TriggerABusBItemAudioDataWord(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the alignment of the data (left, right or either) to be used to trigger
-          on an audio bus signal. The trigger condition must be set to DATa using . The bus number
-          is specified by x.
+          on an audio bus signal. The trigger condition must be set to DATa using
+          TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:AUDio:DATa:WORD?`` query.
@@ -36680,7 +36707,8 @@ class TriggerABusBItemAudioDataValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the lower word value to be used when triggering on an audio bus signal.
-          The trigger condition must be set to DATa using . The bus number is specified by x.
+          The trigger condition must be set to DATa using
+          TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:AUDio:DATa:VALue?``
@@ -36739,7 +36767,8 @@ class TriggerABusBItemAudioDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the qualifier to be used when triggering on an audio bus signal. The
-          trigger condition must be set to DATa using . The bus number is specified by x.
+          trigger condition must be set to DATa using TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``.
+          The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:AUDio:DATa:QUALifier?``
@@ -36773,7 +36802,8 @@ class TriggerABusBItemAudioDataOffset(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the data offset value to be used when triggering on an audio bus signal.
-          The trigger condition must be set to DATa using . The bus number is specified by x.
+          The trigger condition must be set to DATa using
+          TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:AUDio:DATa:OFFSet?``
@@ -36800,7 +36830,8 @@ class TriggerABusBItemAudioDataHivalue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets the upper word value to be used when triggering on an audio bus signal.
-          The trigger condition must be set to DATA using . The bus number is specified by x.
+          The trigger condition must be set to DATA using
+          TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:AUDio:DATa:HIVALue?``
@@ -36923,8 +36954,8 @@ class TriggerABusBItemAudioData(SCPICmdRead):
 
         Description:
             - This command sets the upper word value to be used when triggering on an audio bus
-              signal. The trigger condition must be set to DATA using . The bus number is specified
-              by x.
+              signal. The trigger condition must be set to DATA using
+              TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:AUDio:DATa:HIVALue?``
@@ -36953,8 +36984,8 @@ class TriggerABusBItemAudioData(SCPICmdRead):
 
         Description:
             - This command sets the data offset value to be used when triggering on an audio bus
-              signal. The trigger condition must be set to DATa using . The bus number is specified
-              by x.
+              signal. The trigger condition must be set to DATa using
+              TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:AUDio:DATa:OFFSet?``
@@ -36982,7 +37013,8 @@ class TriggerABusBItemAudioData(SCPICmdRead):
 
         Description:
             - This command sets the qualifier to be used when triggering on an audio bus signal. The
-              trigger condition must be set to DATa using . The bus number is specified by x.
+              trigger condition must be set to DATa using
+              TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -37047,8 +37079,8 @@ class TriggerABusBItemAudioData(SCPICmdRead):
 
         Description:
             - This command sets the lower word value to be used when triggering on an audio bus
-              signal. The trigger condition must be set to DATa using . The bus number is specified
-              by x.
+              signal. The trigger condition must be set to DATa using
+              TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:AUDio:DATa:VALue?``
@@ -37076,8 +37108,8 @@ class TriggerABusBItemAudioData(SCPICmdRead):
 
         Description:
             - This command sets the alignment of the data (left, right or either) to be used to
-              trigger on an audio bus signal. The trigger condition must be set to DATa using . The
-              bus number is specified by x.
+              trigger on an audio bus signal. The trigger condition must be set to DATa using
+              TRIGger:{A|B}``:BUS:B<x>:AUDio:CONDition``. The bus number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:AUDio:DATa:WORD?``
@@ -37384,7 +37416,8 @@ class TriggerABusBItemArinc429aLabelQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on label data for an
           ARINC429 bus signal. The bus number is specified by x. The trigger condition must be set
-          to LABel or LABELANDDATA.
+          to LABel or LABELANDDATA.If the trigger condition is set to LABELANDDATA, the label
+          qualifier will be locked to Equal until the trigger condition is changed again.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -37397,7 +37430,7 @@ class TriggerABusBItemArinc429aLabelQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {A|B}:BUS:B<x>:ARINC429A:LABel: QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier?
         ```
 
@@ -37501,7 +37534,9 @@ class TriggerABusBItemArinc429aLabel(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on label data
               for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-              must be set to LABel or LABELANDDATA.
+              must be set to LABel or LABELANDDATA.If the trigger condition is set to LABELANDDATA,
+              the label qualifier will be locked to Equal until the trigger condition is changed
+              again.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -37514,7 +37549,7 @@ class TriggerABusBItemArinc429aLabel(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier {A|B}:BUS:B<x>:ARINC429A:LABel: QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:ARINC429A:LABel:QUALifier?
             ```
 
@@ -37584,6 +37619,8 @@ class TriggerABusBItemArinc429aErrtype(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``ANY`` sets the error type to match any of the other available error types.
+        - ``PARity`` sets the error type to match on parity errors (parity value results in even
+          parity count for a word).
         - ``WORD`` sets the error type to match on word errors (any unframed or unknown decode
           data).
         - ``GAP`` sets the error type to match on gap violations (less than 4 bits idle time between
@@ -37596,7 +37633,8 @@ class TriggerABusBItemArinc429aDataValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the low value when triggering on an ARINC429 data field. The
-          bus number is specified by x. The trigger condition must be set to DATa or LABELANDDATA.
+          bus number is specified by x. The trigger condition must be set to DATa or
+          LABELANDDATA.The size of the QString is dependent on the data field format selected using
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:ARINC429A:DATa:VALue?``
@@ -37626,7 +37664,8 @@ class TriggerABusBItemArinc429aDataQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on data in the DATA
           field for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-          must be set to DATa or LABELANDDATA.
+          must be set to DATa or LABELANDDATA.The trigger qualifier only applies to the bits defined
+          as the data field via the bus data field format specifier (using
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -37639,7 +37678,7 @@ class TriggerABusBItemArinc429aDataQualifier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+        - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier {A|B}:BUS:B<x>:ARINC429A:DATa: QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
         - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier?
         ```
 
@@ -37661,7 +37700,8 @@ class TriggerABusBItemArinc429aDataHivalue(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the high value when trigger on an ARINC429 data field. The
           bus number is specified by x. The trigger condition must be set to DATa or LABELANDDATA,
-          and the data qualifier must be INrange or OUTrange.
+          and the data qualifier must be INrange or OUTrange.The size of the QString is dependent on
+          the data field format selected using
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:ARINC429A:DATa:HIVALue?``
@@ -37714,7 +37754,8 @@ class TriggerABusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the high value when trigger on an ARINC429 data field.
               The bus number is specified by x. The trigger condition must be set to DATa or
-              LABELANDDATA, and the data qualifier must be INrange or OUTrange.
+              LABELANDDATA, and the data qualifier must be INrange or OUTrange.The size of the
+              QString is dependent on the data field format selected using
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -37743,7 +37784,8 @@ class TriggerABusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on data in the
               DATA field for an ARINC429 bus signal. The bus number is specified by x. The trigger
-              condition must be set to DATa or LABELANDDATA.
+              condition must be set to DATa or LABELANDDATA.The trigger qualifier only applies to
+              the bits defined as the data field via the bus data field format specifier (using
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -37756,7 +37798,7 @@ class TriggerABusBItemArinc429aData(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
+            - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier {A|B}:BUS:B<x>:ARINC429A:DATa: QUALifier {EQual|UNEQual|LESSthan|MOREthan|LESSEQual|MOREEQual|INrange|OUTrange}
             - TRIGger:A:BUS:B<x>:ARINC429A:DATa:QUALifier?
             ```
 
@@ -37779,7 +37821,8 @@ class TriggerABusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the low value when triggering on an ARINC429 data field.
               The bus number is specified by x. The trigger condition must be set to DATa or
-              LABELANDDATA.
+              LABELANDDATA.The size of the QString is dependent on the data field format selected
+              using
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -37820,7 +37863,7 @@ class TriggerABusBItemArinc429aCondition(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA|EOW|ERRor}
+        - TRIGger:A:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA |EOW|ERRor}
         - TRIGger:A:BUS:B<x>:ARINC429A:CONDition?
         ```
 
@@ -37882,7 +37925,7 @@ class TriggerABusBItemArinc429a(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA|EOW|ERRor}
+            - TRIGger:A:BUS:B<x>:ARINC429A:CONDition {SOW|LABel|DATa|LABELANDDATA |EOW|ERRor}
             - TRIGger:A:BUS:B<x>:ARINC429A:CONDition?
             ```
 
@@ -37940,6 +37983,8 @@ class TriggerABusBItemArinc429a(SCPICmdRead):
 
         Info:
             - ``ANY`` sets the error type to match any of the other available error types.
+            - ``PARity`` sets the error type to match on parity errors (parity value results in even
+              parity count for a word).
             - ``WORD`` sets the error type to match on word errors (any unframed or unknown decode
               data).
             - ``GAP`` sets the error type to match on gap violations (less than 4 bits idle time
@@ -38508,7 +38553,7 @@ class TriggerA(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:LOGICQUALification {AND|OR|NAND|NOR}
+            - TRIGger:A:LOGICQUALification {AND|OR|NANd|NOR}
             - TRIGger:A:LOGICQUALification?
             ```
 
@@ -38775,6 +38820,8 @@ class TriggerA(SCPICmdWrite, SCPICmdRead):
               controlled by the TRIGger:{A\|B}``:LOGIc`` commands.
             - ``SETHold`` specifies that a trigger occurs when a signal is found that meets the
               setup and hold parameters.
+            - ``TRANsition`` specifies that a trigger occurs when a specified pulse is found that
+              meets the transition trigger parameters.
             - ``BUS`` specifies that a trigger occurs when a signal is found that meets the
               specified bus setup parameters.
         """

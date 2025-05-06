@@ -20,26 +20,26 @@ Commands and Queries:
     - DPOJET:BITRatestate?
     - DPOJET:CLEARALLMeas
     - DPOJET:CLEARALLPlots
-    - DPOJET:DATAratelimits  <NR3>
+    - DPOJET:DATAratelimits <NR3>
     - DPOJET:DATAratelimits?
     - DPOJET:DESKEW {EXEcute}
-    - DPOJET:DESKEW:DESKEWHysteresis  <NR3>
+    - DPOJET:DESKEW:DESKEWHysteresis <NR3>
     - DPOJET:DESKEW:DESKEWHysteresis?
-    - DPOJET:DESKEW:DESKEWMidlevel  <NR3>
+    - DPOJET:DESKEW:DESKEWMidlevel <NR3>
     - DPOJET:DESKEW:DESKEWMidlevel?
     - DPOJET:DESKEW:DESKEWchannel {CH<x>}
     - DPOJET:DESKEW:DESKEWchannel?
     - DPOJET:DESKEW:EDGE {RISE | FALL | BOTH}
     - DPOJET:DESKEW:EDGE?
-    - DPOJET:DESKEW:MAXimum  <NR3>
+    - DPOJET:DESKEW:MAXimum <NR3>
     - DPOJET:DESKEW:MAXimum?
-    - DPOJET:DESKEW:MINimum  <NR3>
+    - DPOJET:DESKEW:MINimum <NR3>
     - DPOJET:DESKEW:MINimum?
     - DPOJET:DESKEW:REFChannel {CH1 - CH4}
     - DPOJET:DESKEW:REFChannel?
-    - DPOJET:DESKEW:REFHysteresis  <NR3>
+    - DPOJET:DESKEW:REFHysteresis <NR3>
     - DPOJET:DESKEW:REFHysteresis?
-    - DPOJET:DESKEW:REFMidlevel  <NR3>
+    - DPOJET:DESKEW:REFMidlevel <NR3>
     - DPOJET:DESKEW:REFMidlevel?
     - DPOJET:DESKEW?
     - DPOJET:DIRacmodel {FIBREchannel | PCIExpress}
@@ -50,7 +50,7 @@ Commands and Queries:
     - DPOJET:GATING?
     - DPOJET:HALTFreerunonlimfail {1 | 0}
     - DPOJET:HALTFreerunonlimfail?
-    - DPOJET:HIGHPerfrendering  <NR1>
+    - DPOJET:HIGHPerfrendering <NR1>
     - DPOJET:HIGHPerfrendering?
     - DPOJET:INTERp {LINear | SINX}
     - DPOJET:INTERp?
@@ -60,48 +60,48 @@ Commands and Queries:
     - DPOJET:LASTError?
     - DPOJET:LIMITRise {1 | 0}
     - DPOJET:LIMITRise?
-    - DPOJET:LIMits:FILEName  <string>
+    - DPOJET:LIMits:FILEName <string>
     - DPOJET:LIMits:FILEName?
     - DPOJET:LIMits:STATE {1 | 0}
     - DPOJET:LIMits:STATE?
     - DPOJET:LOCKRJ {1 | 0 }
     - DPOJET:LOCKRJ?
-    - DPOJET:LOCKRJValue  <NR3>
+    - DPOJET:LOCKRJValue <NR3>
     - DPOJET:LOCKRJValue?
-    - DPOJET:LOGging:MEASurements:FOLDer  <string>
+    - DPOJET:LOGging:MEASurements:FOLDer <string>
     - DPOJET:LOGging:MEASurements:FOLDer?
     - DPOJET:LOGging:MEASurements:STATE {1 | 0}
     - DPOJET:LOGging:MEASurements:STATE?
     - DPOJET:LOGging:SNAPshot {STATistics | MEASurements}
-    - DPOJET:LOGging:STATistics:FILEName  <string>
+    - DPOJET:LOGging:STATistics:FILEName <string>
     - DPOJET:LOGging:STATistics:FILEName?
     - DPOJET:LOGging:STATistics:STATE {1 | 0}
     - DPOJET:LOGging:STATistics:STATE?
-    - DPOJET:LOGging:WORSTcase:FOLDer  <string>
+    - DPOJET:LOGging:WORSTcase:FOLDer <string>
     - DPOJET:LOGging:WORSTcase:FOLDer?
     - DPOJET:LOGging:WORSTcase:STATE {1 | 0}
     - DPOJET:LOGging:WORSTcase:STATE?
-    - DPOJET:MEAS<x>:BER:TARGETBER  <NR3>
+    - DPOJET:MEAS<x>:BER:TARGETBER <NR3>
     - DPOJET:MEAS<x>:BER:TARGETBER?
     - DPOJET:MEAS<x>:BITCfgmethod {MEAN | MODE}
     - DPOJET:MEAS<x>:BITCfgmethod?
     - DPOJET:MEAS<x>:BITConfig:ABSRELstate {0|1}
     - DPOJET:MEAS<x>:BITConfig:ABSRELstate?
-    - DPOJET:MEAS<x>:BITConfig:ENDPercent  <NR3>
+    - DPOJET:MEAS<x>:BITConfig:ENDPercent <NR3>
     - DPOJET:MEAS<x>:BITConfig:ENDPercent?
-    - DPOJET:MEAS<x>:BITConfig:NUMBins  <NR3>
+    - DPOJET:MEAS<x>:BITConfig:NUMBins <NR3>
     - DPOJET:MEAS<x>:BITConfig:NUMBins?
-    - DPOJET:MEAS<x>:BITConfig:STARTPercent  <NR3>
+    - DPOJET:MEAS<x>:BITConfig:STARTPercent <NR3>
     - DPOJET:MEAS<x>:BITConfig:STARTPercent?
-    - DPOJET:MEAS<x>:BITPcnt  <NR3>
+    - DPOJET:MEAS<x>:BITPcnt <NR3>
     - DPOJET:MEAS<x>:BITPcnt?
     - DPOJET:MEAS<x>:BITType {ALLBits | NONTRANsition | TRANsition}
     - DPOJET:MEAS<x>:BITType?
     - DPOJET:MEAS<x>:BUSState:CLOCKPolarity {RISING | FALLING}
     - DPOJET:MEAS<x>:BUSState:CLOCKPolarity?
-    - DPOJET:MEAS<x>:BUSState:FROMPattern  <string>
+    - DPOJET:MEAS<x>:BUSState:FROMPattern <string>
     - DPOJET:MEAS<x>:BUSState:FROMPattern?
-    - DPOJET:MEAS<x>:BUSState:FROMSymbol  <string>
+    - DPOJET:MEAS<x>:BUSState:FROMSymbol <string>
     - DPOJET:MEAS<x>:BUSState:FROMSymbol?
     - DPOJET:MEAS<x>:BUSState:MEASUREFrom {CLOCKEdge | START | STOP}
     - DPOJET:MEAS<x>:BUSState:MEASUREFrom?
@@ -109,27 +109,27 @@ Commands and Queries:
     - DPOJET:MEAS<x>:BUSState:MEASURETO?
     - DPOJET:MEAS<x>:BUSState:MEASUREType {SYMbol | PATTern}
     - DPOJET:MEAS<x>:BUSState:MEASUREType?
-    - DPOJET:MEAS<x>:BUSState:TOPattern  <string>
+    - DPOJET:MEAS<x>:BUSState:TOPattern <string>
     - DPOJET:MEAS<x>:BUSState:TOPattern?
-    - DPOJET:MEAS<x>:BUSState:TOSymbol  <string>
+    - DPOJET:MEAS<x>:BUSState:TOSymbol <string>
     - DPOJET:MEAS<x>:BUSState:TOSymbol?
-    - DPOJET:MEAS<x>:CLOCKRecovery:BHVRSTANdard  <string>
+    - DPOJET:MEAS<x>:CLOCKRecovery:BHVRSTANdard <string>
     - DPOJET:MEAS<x>:CLOCKRecovery:BHVRSTANdard?
     - DPOJET:MEAS<x>:CLOCKRecovery:BWType {LOOPBW | JTFBW}
     - DPOJET:MEAS<x>:CLOCKRecovery:BWType?
-    - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKBitrate  <NR3>
+    - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKBitrate <NR3>
     - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKBitrate?
-    - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKFrequency  <NR3>
+    - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKFrequency <NR3>
     - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKFrequency?
-    - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKMultiplier  <NR3>
+    - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKMultiplier <NR3>
     - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKMultiplier?
-    - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKPath  <string>
+    - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKPath <string>
     - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKPath?
-    - DPOJET:MEAS<x>:CLOCKRecovery:DAMPing  <NR3>
+    - DPOJET:MEAS<x>:CLOCKRecovery:DAMPing <NR3>
     - DPOJET:MEAS<x>:CLOCKRecovery:DAMPing?
     - DPOJET:MEAS<x>:CLOCKRecovery:DATARate {1 | 0}
     - DPOJET:MEAS<x>:CLOCKRecovery:DATARate?
-    - DPOJET:MEAS<x>:CLOCKRecovery:LOOPBandwidth  <NR3>
+    - DPOJET:MEAS<x>:CLOCKRecovery:LOOPBandwidth <NR3>
     - DPOJET:MEAS<x>:CLOCKRecovery:LOOPBandwidth?
     - DPOJET:MEAS<x>:CLOCKRecovery:MEANAUTOCalculate {FIRST | EVERY}
     - DPOJET:MEAS<x>:CLOCKRecovery:MEANAUTOCalculate?
@@ -137,9 +137,9 @@ Commands and Queries:
     - DPOJET:MEAS<x>:CLOCKRecovery:METHod?
     - DPOJET:MEAS<x>:CLOCKRecovery:MODel {ONE | TWO}
     - DPOJET:MEAS<x>:CLOCKRecovery:MODel?
-    - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset  <NR3>
+    - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset <NR3>
     - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset:AUTO?
-    - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset:MANual  <NR3>
+    - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset:MANual <NR3>
     - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset:MANual?
     - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset:Recalctype {FIRST | EVERY}
     - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset:Recalctype?
@@ -148,7 +148,7 @@ Commands and Queries:
     - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset?
     - DPOJET:MEAS<x>:CLOCKRecovery:PATTern {1 | 0}
     - DPOJET:MEAS<x>:CLOCKRecovery:PATTern?
-    - DPOJET:MEAS<x>:CLOCKRecovery:STAndard  <string>
+    - DPOJET:MEAS<x>:CLOCKRecovery:STAndard <string>
     - DPOJET:MEAS<x>:CLOCKRecovery:STAndard?
     - DPOJET:MEAS<x>:COMMONMode:FILTers:STATE {ON | OFF}
     - DPOJET:MEAS<x>:COMMONMode:FILTers:STATE?
@@ -162,35 +162,35 @@ Commands and Queries:
     - DPOJET:MEAS<x>:CUSTOMGATING:SOURCE2GATE?
     - DPOJET:MEAS<x>:CUSTOMGATING:TOedge {RISe | FALL | BOTH}
     - DPOJET:MEAS<x>:CUSTOMGATING:TOedge?
-    - DPOJET:MEAS<x>:CUSTomname  <string>
+    - DPOJET:MEAS<x>:CUSTomname <string>
     - DPOJET:MEAS<x>:CUSTomname?
     - DPOJET:MEAS<x>:DATA?
     - DPOJET:MEAS<x>:DFE:ABSOLUTETIMEState {0 | 1 | ON | OFF}
     - DPOJET:MEAS<x>:DFE:ABSOLUTETIMEState?
-    - DPOJET:MEAS<x>:DFE:ABSOLUTETIMEValue  <NR3>
+    - DPOJET:MEAS<x>:DFE:ABSOLUTETIMEValue <NR3>
     - DPOJET:MEAS<x>:DFE:ABSOLUTETIMEValue?
     - DPOJET:MEAS<x>:DFE:ABSOLUTEVOLTAGEState {0 | 1 | ON | OFF}
     - DPOJET:MEAS<x>:DFE:ABSOLUTEVOLTAGEState?
-    - DPOJET:MEAS<x>:DFE:ABSOLUTEVOLTAGEValue  <NR3>
+    - DPOJET:MEAS<x>:DFE:ABSOLUTEVOLTAGEValue <NR3>
     - DPOJET:MEAS<x>:DFE:ABSOLUTEVOLTAGEValue?
     - DPOJET:MEAS<x>:DFE:DELAYCOMPENSATION {MANUAL,AUTO}
     - DPOJET:MEAS<x>:DFE:DELAYCOMPENSATION?
-    - DPOJET:MEAS<x>:DFE:MANUALDELAY  <NR3>
+    - DPOJET:MEAS<x>:DFE:MANUALDELAY <NR3>
     - DPOJET:MEAS<x>:DFE:MANUALDELAY?
-    - DPOJET:MEAS<x>:DFE:MEASatpercent  <NR3>
+    - DPOJET:MEAS<x>:DFE:MEASatpercent <NR3>
     - DPOJET:MEAS<x>:DFE:MEASatpercent?
-    - DPOJET:MEAS<x>:DFE:RESOlution  <NR3>
+    - DPOJET:MEAS<x>:DFE:RESOlution <NR3>
     - DPOJET:MEAS<x>:DFE:RESOlution?
     - DPOJET:MEAS<x>:DFE:TAPState {0|1}
     - DPOJET:MEAS<x>:DFE:TAPState?
-    - DPOJET:MEAS<x>:DFE:TAPValue  <NR3>
+    - DPOJET:MEAS<x>:DFE:TAPValue <NR3>
     - DPOJET:MEAS<x>:DFE:TAPValue?
     - DPOJET:MEAS<x>:DISPLAYNAME?
     - DPOJET:MEAS<x>:EDGE1 {RISe | FALL | BOTH}
     - DPOJET:MEAS<x>:EDGE1?
     - DPOJET:MEAS<x>:EDGE2 {RISe | FALL | BOTH}
     - DPOJET:MEAS<x>:EDGE2?
-    - DPOJET:MEAS<x>:EDGEIncre  <NR3>
+    - DPOJET:MEAS<x>:EDGEIncre <NR3>
     - DPOJET:MEAS<x>:EDGEIncre?
     - DPOJET:MEAS<x>:EDGES:EYEHeightstate {1 | 0}
     - DPOJET:MEAS<x>:EDGES:EYEHeightstate?
@@ -204,29 +204,29 @@ Commands and Queries:
     - DPOJET:MEAS<x>:EDGES:SUBRATEDivisor?
     - DPOJET:MEAS<x>:EDGES:TOLevel {HIGH | MID | LOW}
     - DPOJET:MEAS<x>:EDGES:TOLevel?
-    - DPOJET:MEAS<x>:EDGES:USERDefinedvoltage  <NR3>
+    - DPOJET:MEAS<x>:EDGES:USERDefinedvoltage <NR3>
     - DPOJET:MEAS<x>:EDGES:USERDefinedvoltage?
     - DPOJET:MEAS<x>:EDGES:VOLTAGEState {1 | 0}
     - DPOJET:MEAS<x>:EDGES:VOLTAGEState?
-    - DPOJET:MEAS<x>:FILTers:BLANKingtime  <NR3>
+    - DPOJET:MEAS<x>:FILTers:BLANKingtime <NR3>
     - DPOJET:MEAS<x>:FILTers:BLANKingtime?
-    - DPOJET:MEAS<x>:FILTers:HIGHPass:FREQ  <NR3>
+    - DPOJET:MEAS<x>:FILTers:HIGHPass:FREQ <NR3>
     - DPOJET:MEAS<x>:FILTers:HIGHPass:FREQ?
     - DPOJET:MEAS<x>:FILTers:HIGHPass:SPEC {NONE | FIRST | SECOND | THIRD}
     - DPOJET:MEAS<x>:FILTers:HIGHPass:SPEC?
-    - DPOJET:MEAS<x>:FILTers:LOWPass:FREQ  <NR3>
+    - DPOJET:MEAS<x>:FILTers:LOWPass:FREQ <NR3>
     - DPOJET:MEAS<x>:FILTers:LOWPass:FREQ?
     - DPOJET:MEAS<x>:FILTers:LOWPass:SPEC {NONE | FIRST | SECOND | THIRD}
     - DPOJET:MEAS<x>:FILTers:LOWPass:SPEC?
-    - DPOJET:MEAS<x>:FILTers:RAMPtime  <NR3>
+    - DPOJET:MEAS<x>:FILTers:RAMPtime <NR3>
     - DPOJET:MEAS<x>:FILTers:RAMPtime?
-    - DPOJET:MEAS<x>:FILTers:SJBAndwidth  <NR3>
+    - DPOJET:MEAS<x>:FILTers:SJBAndwidth <NR3>
     - DPOJET:MEAS<x>:FILTers:SJBAndwidth?
-    - DPOJET:MEAS<x>:FILTers:SJFRequency  <NR3>
+    - DPOJET:MEAS<x>:FILTers:SJFRequency <NR3>
     - DPOJET:MEAS<x>:FILTers:SJFRequency?
     - DPOJET:MEAS<x>:FROMedge {RISe | FALL | BOTH}
     - DPOJET:MEAS<x>:FROMedge?
-    - DPOJET:MEAS<x>:HIGHREFVoltage  <NR3>
+    - DPOJET:MEAS<x>:HIGHREFVoltage <NR3>
     - DPOJET:MEAS<x>:HIGHREFVoltage?
     - DPOJET:MEAS<x>:LOGging:MEASurements:FILEname?
     - DPOJET:MEAS<x>:LOGging:MEASurements:SELect {1 | 0}
@@ -235,49 +235,49 @@ Commands and Queries:
     - DPOJET:MEAS<x>:LOGging:STATistics:SELect?
     - DPOJET:MEAS<x>:LOGging:WORSTcase:SELect {1 | 0}
     - DPOJET:MEAS<x>:LOGging:WORSTcase:SELect?
-    - DPOJET:MEAS<x>:LOWREFVoltage  <NR3>
+    - DPOJET:MEAS<x>:LOWREFVoltage <NR3>
     - DPOJET:MEAS<x>:LOWREFVoltage?
-    - DPOJET:MEAS<x>:MARGIN:HITCOUNTValue  <NR3>
+    - DPOJET:MEAS<x>:MARGIN:HITCOUNTValue <NR3>
     - DPOJET:MEAS<x>:MARGIN:HITCOUNTValue?
     - DPOJET:MEAS<x>:MARGIN:HITRATIOState {1 | 0}
     - DPOJET:MEAS<x>:MARGIN:HITRATIOState?
-    - DPOJET:MEAS<x>:MARGIN:HITRATIOValue  <NR3>
+    - DPOJET:MEAS<x>:MARGIN:HITRATIOValue <NR3>
     - DPOJET:MEAS<x>:MARGIN:HITRATIOValue?
-    - DPOJET:MEAS<x>:MARGIN:RESOlution  <NR3>
+    - DPOJET:MEAS<x>:MARGIN:RESOlution <NR3>
     - DPOJET:MEAS<x>:MARGIN:RESOlution?
     - DPOJET:MEAS<x>:MASKOffset:HORizontal:AUTOfit?
-    - DPOJET:MEAS<x>:MASKOffset:HORizontal:MANual  <NR3>
+    - DPOJET:MEAS<x>:MASKOffset:HORizontal:MANual <NR3>
     - DPOJET:MEAS<x>:MASKOffset:HORizontal:MANual?
     - DPOJET:MEAS<x>:MASKOffset:HORizontal:SELECTIONtype { AUTOFIT | MANUAL}
     - DPOJET:MEAS<x>:MASKOffset:HORizontal:SELECTIONtype?
-    - DPOJET:MEAS<x>:MASKfile  <string>
+    - DPOJET:MEAS<x>:MASKfile <string>
     - DPOJET:MEAS<x>:MASKfile?
-    - DPOJET:MEAS<x>:MEASRange:MAX  <NR3>
+    - DPOJET:MEAS<x>:MEASRange:MAX <NR3>
     - DPOJET:MEAS<x>:MEASRange:MAX?
-    - DPOJET:MEAS<x>:MEASRange:MIN  <NR3>
+    - DPOJET:MEAS<x>:MEASRange:MIN <NR3>
     - DPOJET:MEAS<x>:MEASRange:MIN?
     - DPOJET:MEAS<x>:MEASRange:STATE {1 | 0}
     - DPOJET:MEAS<x>:MEASRange:STATE?
-    - DPOJET:MEAS<x>:MEASStart  <NR3>
+    - DPOJET:MEAS<x>:MEASStart <NR3>
     - DPOJET:MEAS<x>:MEASStart?
-    - DPOJET:MEAS<x>:N  <NR3>
+    - DPOJET:MEAS<x>:N <NR3>
     - DPOJET:MEAS<x>:N?
     - DPOJET:MEAS<x>:NAME?
-    - DPOJET:MEAS<x>:OPTIcal:BANDWIDth  <NR3>
+    - DPOJET:MEAS<x>:OPTIcal:BANDWIDth <NR3>
     - DPOJET:MEAS<x>:OPTIcal:BANDWIDth?
-    - DPOJET:MEAS<x>:OPTIcal:BTFILTEr  <string>
+    - DPOJET:MEAS<x>:OPTIcal:BTFILTEr <string>
     - DPOJET:MEAS<x>:OPTIcal:BTFILTEr?
-    - DPOJET:MEAS<x>:OPTIcal:FFETAPS  <string>
+    - DPOJET:MEAS<x>:OPTIcal:FFETAPS <string>
     - DPOJET:MEAS<x>:OPTIcal:FFETAPS?
-    - DPOJET:MEAS<x>:OPTIcal:SCOPERN  <NR3>
+    - DPOJET:MEAS<x>:OPTIcal:SCOPERN <NR3>
     - DPOJET:MEAS<x>:OPTIcal:SCOPERN?
-    - DPOJET:MEAS<x>:OPTIcal:TARGETBer  <NR3>
+    - DPOJET:MEAS<x>:OPTIcal:TARGETBer <NR3>
     - DPOJET:MEAS<x>:OPTIcal:TARGETBer?
     - DPOJET:MEAS<x>:OPTIcal:WFMTYpe {CONTINUOUS | MODULATED}
     - DPOJET:MEAS<x>:OPTIcal:WFMTYpe?
-    - DPOJET:MEAS<x>:PHASENoise:HIGHLimit  <NR3>
+    - DPOJET:MEAS<x>:PHASENoise:HIGHLimit <NR3>
     - DPOJET:MEAS<x>:PHASENoise:HIGHLimit?
-    - DPOJET:MEAS<x>:PHASENoise:LOWLimit  <NR3>
+    - DPOJET:MEAS<x>:PHASENoise:LOWLimit <NR3>
     - DPOJET:MEAS<x>:PHASENoise:LOWLimit?
     - DPOJET:MEAS<x>:PLOTFILES?
     - DPOJET:MEAS<x>:REFVoltage {100 | —100}
@@ -334,37 +334,37 @@ Commands and Queries:
     - DPOJET:MEAS<x>:RESULts:STATus?
     - DPOJET:MEAS<x>:RESULts:VIew?
     - DPOJET:MEAS<x>:RESULts?
-    - DPOJET:MEAS<x>:RJDJ:BER  <NR3>
+    - DPOJET:MEAS<x>:RJDJ:BER <NR3>
     - DPOJET:MEAS<x>:RJDJ:BER?
     - DPOJET:MEAS<x>:RJDJ:DETECTPLEN {0 | 1 | ON | OFF}
     - DPOJET:MEAS<x>:RJDJ:DETECTPLEN?
     - DPOJET:MEAS<x>:RJDJ:NCMODe {1 | 0}
     - DPOJET:MEAS<x>:RJDJ:NCMODe?
-    - DPOJET:MEAS<x>:RJDJ:PATLen  <NR3>
+    - DPOJET:MEAS<x>:RJDJ:PATLen <NR3>
     - DPOJET:MEAS<x>:RJDJ:PATLen?
-    - DPOJET:MEAS<x>:RJDJ:SCOPERN  <NR3>
+    - DPOJET:MEAS<x>:RJDJ:SCOPERN <NR3>
     - DPOJET:MEAS<x>:RJDJ:SCOPERN?
-    - DPOJET:MEAS<x>:RJDJ:SNCREFID  <string>
+    - DPOJET:MEAS<x>:RJDJ:SNCREFID <string>
     - DPOJET:MEAS<x>:RJDJ:SNCREFID?
     - DPOJET:MEAS<x>:RJDJ:TYPe {ARBITrary | REPEating}
     - DPOJET:MEAS<x>:RJDJ:TYPe?
-    - DPOJET:MEAS<x>:RJDJ:WINDOwlength  <NR3>
+    - DPOJET:MEAS<x>:RJDJ:WINDOwlength <NR3>
     - DPOJET:MEAS<x>:RJDJ:WINDOwlength?
     - DPOJET:MEAS<x>:RNDN:AUTODETECTpattern {1 | 0 | ON | OFF}
     - DPOJET:MEAS<x>:RNDN:AUTODETECTpattern?
-    - DPOJET:MEAS<x>:RNDN:BER  <NR3>
+    - DPOJET:MEAS<x>:RNDN:BER <NR3>
     - DPOJET:MEAS<x>:RNDN:BER?
     - DPOJET:MEAS<x>:RNDN:NCMODe {1 | 0}
     - DPOJET:MEAS<x>:RNDN:NCMODe?
-    - DPOJET:MEAS<x>:RNDN:PATLen  <NR3>
+    - DPOJET:MEAS<x>:RNDN:PATLen <NR3>
     - DPOJET:MEAS<x>:RNDN:PATLen?
-    - DPOJET:MEAS<x>:RNDN:SCOPERN  <NR3>
+    - DPOJET:MEAS<x>:RNDN:SCOPERN <NR3>
     - DPOJET:MEAS<x>:RNDN:SCOPERN?
-    - DPOJET:MEAS<x>:RNDN:SNCREFID  <string>
+    - DPOJET:MEAS<x>:RNDN:SNCREFID <string>
     - DPOJET:MEAS<x>:RNDN:SNCREFID?
     - DPOJET:MEAS<x>:RNDN:TYPe {ARBITrary | REPEating}
     - DPOJET:MEAS<x>:RNDN:TYPe?
-    - DPOJET:MEAS<x>:RNDN:WINDOwlength  <NR3>
+    - DPOJET:MEAS<x>:RNDN:WINDOwlength <NR3>
     - DPOJET:MEAS<x>:RNDN:WINDOwlength?
     - DPOJET:MEAS<x>:SIGNALType {CLOCK | DATA | AUTO}
     - DPOJET:MEAS<x>:SIGNALType?
@@ -373,7 +373,7 @@ Commands and Queries:
     - DPOJET:MEAS<x>:SOUrce2 {CH1 - CH4 | MATH1 - MATH4 | REF1 - REF4 | D0 — D15}
     - DPOJET:MEAS<x>:SOUrce2?
     - DPOJET:MEAS<x>:SSC:NOMinalfreq:AUTO?
-    - DPOJET:MEAS<x>:SSC:NOMinalfreq:MANual  <NR3>
+    - DPOJET:MEAS<x>:SSC:NOMinalfreq:MANual <NR3>
     - DPOJET:MEAS<x>:SSC:NOMinalfreq:MANual?
     - DPOJET:MEAS<x>:SSC:NOMinalfreq:SELECTIONtype {AUTO | MANUAL}
     - DPOJET:MEAS<x>:SSC:NOMinalfreq:SELECTIONtype?
@@ -381,14 +381,14 @@ Commands and Queries:
     - DPOJET:MEAS<x>:TOEdge {SAMEas | OPPositeas}
     - DPOJET:MEAS<x>:TOEdge?
     - DPOJET:MEAS<x>:ZOOMEVENT {MAX | MIN}
-    - DPOJET:MINBUJUI  <NR3>
+    - DPOJET:MINBUJUI <NR3>
     - DPOJET:MINBUJUI?
     - DPOJET:NOISEENABLED {1 | 0 | ON | OFF}
     - DPOJET:NUMMeas?
     - DPOJET:NUMPlot?
     - DPOJET:OPTICALUNITType {WATT | DBM}
     - DPOJET:OPTICALUNITType?
-    - DPOJET:PLOT<x>:BATHtub:BER  <NR3>
+    - DPOJET:PLOT<x>:BATHtub:BER <NR3>
     - DPOJET:PLOT<x>:BATHtub:BER?
     - DPOJET:PLOT<x>:BATHtub:VERTical:SCALE {LINEAR | LOG}
     - DPOJET:PLOT<x>:BATHtub:VERTical:SCALE?
@@ -408,11 +408,11 @@ Commands and Queries:
     - DPOJET:PLOT<x>:BERContour:BER1E9V?
     - DPOJET:PLOT<x>:BERContour:HORizontal:AUTOscale {1 | 0}
     - DPOJET:PLOT<x>:BERContour:HORizontal:AUTOscale?
-    - DPOJET:PLOT<x>:BERContour:HORizontal:RESolution  <NR3>
+    - DPOJET:PLOT<x>:BERContour:HORizontal:RESolution <NR3>
     - DPOJET:PLOT<x>:BERContour:HORizontal:RESolution?
     - DPOJET:PLOT<x>:BERContour:MASK {1 | 0}
     - DPOJET:PLOT<x>:BERContour:MASK?
-    - DPOJET:PLOT<x>:BERContour:MASKFile  <string>
+    - DPOJET:PLOT<x>:BERContour:MASKFile <string>
     - DPOJET:PLOT<x>:BERContour:MASKFile?
     - DPOJET:PLOT<x>:BERContour:SUPERImpose {1 | 0}
     - DPOJET:PLOT<x>:BERContour:SUPERImpose?
@@ -466,9 +466,9 @@ Commands and Queries:
     - DPOJET:PLOT<x>:CORRELATEDEye:BER1E6V?
     - DPOJET:PLOT<x>:CORRELATEDEye:BER1E9V {1 | 0}
     - DPOJET:PLOT<x>:CORRELATEDEye:BER1E9V?
-    - DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT  <NR2>
+    - DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT <NR2>
     - DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT?
-    - DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH  <NR2>
+    - DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH <NR2>
     - DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH?
     - DPOJET:PLOT<x>:CORRELATEDEye:TARGETBER {1 | 0}
     - DPOJET:PLOT<x>:CORRELATEDEye:TARGETBER?
@@ -503,17 +503,17 @@ Commands and Queries:
     - DPOJET:PLOT<x>:EYE:HORIZScale?
     - DPOJET:PLOT<x>:EYE:HORizontal:AUTOscale {1 | 0}
     - DPOJET:PLOT<x>:EYE:HORizontal:AUTOscale?
-    - DPOJET:PLOT<x>:EYE:HORizontal:RESolution  <NR3>
+    - DPOJET:PLOT<x>:EYE:HORizontal:RESolution <NR3>
     - DPOJET:PLOT<x>:EYE:HORizontal:RESolution?
-    - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMAx  <NR3>
+    - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMAx <NR3>
     - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMAx?
-    - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMIn  <NR3>
+    - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMIn <NR3>
     - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMIn?
     - DPOJET:PLOT<x>:EYE:INTERPOLATIONFactor {AUTO, TWELVEPOINTEIGHT, SIXTEEN}
     - DPOJET:PLOT<x>:EYE:INTERPOLATIONFactor?
     - DPOJET:PLOT<x>:EYE:INTERPolationtype { INTERPOLATION | NONINTERPOLATION }
     - DPOJET:PLOT<x>:EYE:INTERPolationtype?
-    - DPOJET:PLOT<x>:EYE:MASKfile  <string>
+    - DPOJET:PLOT<x>:EYE:MASKfile <string>
     - DPOJET:PLOT<x>:EYE:MASKfile?
     - DPOJET:PLOT<x>:EYE:STATE {1 | 0}
     - DPOJET:PLOT<x>:EYE:STATE?
@@ -523,16 +523,16 @@ Commands and Queries:
     - DPOJET:PLOT<x>:EYE:VERTICALAlignment?
     - DPOJET:PLOT<x>:EYE:VERTScale {1 | 0}
     - DPOJET:PLOT<x>:EYE:VERTScale?
-    - DPOJET:PLOT<x>:EYE:VERTical:YAXISMAx  <NR3>
+    - DPOJET:PLOT<x>:EYE:VERTical:YAXISMAx <NR3>
     - DPOJET:PLOT<x>:EYE:VERTical:YAXISMAx?
-    - DPOJET:PLOT<x>:EYE:VERTical:YAXISMIn  <NR3>
+    - DPOJET:PLOT<x>:EYE:VERTical:YAXISMIn <NR3>
     - DPOJET:PLOT<x>:EYE:VERTical:YAXISMIn?
     - DPOJET:PLOT<x>:HISTOgram:AUTOset {EXECute}
     - DPOJET:PLOT<x>:HISTOgram:HORizontal:AUTOscale {1 | 0}
     - DPOJET:PLOT<x>:HISTOgram:HORizontal:AUTOscale?
-    - DPOJET:PLOT<x>:HISTOgram:HORizontal:CENter  <NR3>
+    - DPOJET:PLOT<x>:HISTOgram:HORizontal:CENter <NR3>
     - DPOJET:PLOT<x>:HISTOgram:HORizontal:CENter?
-    - DPOJET:PLOT<x>:HISTOgram:HORizontal:SPAN  <NR3>
+    - DPOJET:PLOT<x>:HISTOgram:HORizontal:SPAN <NR3>
     - DPOJET:PLOT<x>:HISTOgram:HORizontal:SPAN?
     - DPOJET:PLOT<x>:HISTOgram:NUMBins {TWENtyfive | FIFTY | HUNdred | TWOFifty | FIVEHundred | TWOThousand | MAXimum}
     - DPOJET:PLOT<x>:HISTOgram:NUMBins?
@@ -552,12 +552,12 @@ Commands and Queries:
     - DPOJET:PLOT<x>:PDFEye:BER1E9V?
     - DPOJET:PLOT<x>:PDFEye:TARGETBER {1 | 0}
     - DPOJET:PLOT<x>:PDFEye:TARGETBER?
-    - DPOJET:PLOT<x>:PHASEnoise:BASEline  <NR3>
+    - DPOJET:PLOT<x>:PHASEnoise:BASEline <NR3>
     - DPOJET:PLOT<x>:PHASEnoise:BASEline?
     - DPOJET:PLOT<x>:PHASEnoise:SMOOTHENINGFilter {ONEBYHUNDREDTHdecade | ONEBYTENTHDECADE | ONEDECADE}
     - DPOJET:PLOT<x>:PHASEnoise:SMOOTHENINGFilter?
     - DPOJET:PLOT<x>:SOUrce?
-    - DPOJET:PLOT<x>:SPECtrum:BASE  <NR3>
+    - DPOJET:PLOT<x>:SPECtrum:BASE <NR3>
     - DPOJET:PLOT<x>:SPECtrum:BASE?
     - DPOJET:PLOT<x>:SPECtrum:HORizontal:SCALE {LINEAR | LOG}
     - DPOJET:PLOT<x>:SPECtrum:HORizontal:SCALE?
@@ -580,7 +580,7 @@ Commands and Queries:
     - DPOJET:PLOT<x>:TREND:TYPe {VECTOR | BAR}
     - DPOJET:PLOT<x>:TREND:TYPe?
     - DPOJET:PLOT<x>:TYPe?
-    - DPOJET:PLOT<x>:VERTBATHtub:BER   <NR3>
+    - DPOJET:PLOT<x>:VERTBATHtub:BER <NR3>
     - DPOJET:PLOT<x>:VERTBATHtub:BER?
     - DPOJET:PLOT<x>:VERTBATHtub:HORizontal:SCALE {LINEAR | LOG}
     - DPOJET:PLOT<x>:VERTBATHtub:HORizontal:SCALE?
@@ -590,7 +590,7 @@ Commands and Queries:
     - DPOJET:PLOT<x>:YUnits?
     - DPOJET:POPULATION:CONDition {EACHmeas | LASTmeas}
     - DPOJET:POPULATION:CONDition?
-    - DPOJET:POPULATION:LIMIT  <NR3>
+    - DPOJET:POPULATION:LIMIT <NR3>
     - DPOJET:POPULATION:LIMIT?
     - DPOJET:POPULATION:LIMITBY {ACQuisitions | POPUlation}
     - DPOJET:POPULATION:LIMITBY?
@@ -606,39 +606,39 @@ Commands and Queries:
     - DPOJET:REFLevel:CH<x>:MIDZero?
     - DPOJET:REFLevels:AUTOset {EXECute}
     - DPOJET:REFLevels:AUTOset:STATE?
-    - DPOJET:REFLevels:CH<x>:ABSolute:FALLHigh  <NR3>
+    - DPOJET:REFLevels:CH<x>:ABSolute:FALLHigh <NR3>
     - DPOJET:REFLevels:CH<x>:ABSolute:FALLHigh?
-    - DPOJET:REFLevels:CH<x>:ABSolute:FALLLow  <NR3>
+    - DPOJET:REFLevels:CH<x>:ABSolute:FALLLow <NR3>
     - DPOJET:REFLevels:CH<x>:ABSolute:FALLLow?
-    - DPOJET:REFLevels:CH<x>:ABSolute:FALLMid  <NR3>
+    - DPOJET:REFLevels:CH<x>:ABSolute:FALLMid <NR3>
     - DPOJET:REFLevels:CH<x>:ABSolute:FALLMid?
-    - DPOJET:REFLevels:CH<x>:ABSolute:HYSTeresis  <NR3>
+    - DPOJET:REFLevels:CH<x>:ABSolute:HYSTeresis <NR3>
     - DPOJET:REFLevels:CH<x>:ABSolute:HYSTeresis?
-    - DPOJET:REFLevels:CH<x>:ABSolute:RISEHigh  <NR3>
+    - DPOJET:REFLevels:CH<x>:ABSolute:RISEHigh <NR3>
     - DPOJET:REFLevels:CH<x>:ABSolute:RISEHigh?
-    - DPOJET:REFLevels:CH<x>:ABSolute:RISELow  <NR3>
+    - DPOJET:REFLevels:CH<x>:ABSolute:RISELow <NR3>
     - DPOJET:REFLevels:CH<x>:ABSolute:RISELow?
-    - DPOJET:REFLevels:CH<x>:ABSolute:RISEMid  <NR3>
+    - DPOJET:REFLevels:CH<x>:ABSolute:RISEMid <NR3>
     - DPOJET:REFLevels:CH<x>:ABSolute:RISEMid?
     - DPOJET:REFLevels:CH<x>:ABSolute?
     - DPOJET:REFLevels:CH<x>:AUTOSet {1 | 0}
     - DPOJET:REFLevels:CH<x>:BASETop {MINMax | FULLhistogram | EYEhistogram | AUTO}
     - DPOJET:REFLevels:CH<x>:BASETop?
-    - DPOJET:REFLevels:CH<x>:PERcent:FALLHigh  <NR3>
+    - DPOJET:REFLevels:CH<x>:PERcent:FALLHigh <NR3>
     - DPOJET:REFLevels:CH<x>:PERcent:FALLHigh?
-    - DPOJET:REFLevels:CH<x>:PERcent:FALLLow  <NR3>
+    - DPOJET:REFLevels:CH<x>:PERcent:FALLLow <NR3>
     - DPOJET:REFLevels:CH<x>:PERcent:FALLLow?
-    - DPOJET:REFLevels:CH<x>:PERcent:FALLMid  <NR3>
+    - DPOJET:REFLevels:CH<x>:PERcent:FALLMid <NR3>
     - DPOJET:REFLevels:CH<x>:PERcent:FALLMid?
-    - DPOJET:REFLevels:CH<x>:PERcent:HYSTeresis  <NR3>
+    - DPOJET:REFLevels:CH<x>:PERcent:HYSTeresis <NR3>
     - DPOJET:REFLevels:CH<x>:PERcent:HYSTeresis?
     - DPOJET:REFLevels:CH<x>:PERcent:PERCENTReflevel { 1 | 0 }
     - DPOJET:REFLevels:CH<x>:PERcent:PERCENTReflevel?
-    - DPOJET:REFLevels:CH<x>:PERcent:RISEHigh  <NR3>
+    - DPOJET:REFLevels:CH<x>:PERcent:RISEHigh <NR3>
     - DPOJET:REFLevels:CH<x>:PERcent:RISEHigh?
-    - DPOJET:REFLevels:CH<x>:PERcent:RISELow  <NR3>
+    - DPOJET:REFLevels:CH<x>:PERcent:RISELow <NR3>
     - DPOJET:REFLevels:CH<x>:PERcent:RISELow?
-    - DPOJET:REFLevels:CH<x>:PERcent:RISEMid  <NR3>
+    - DPOJET:REFLevels:CH<x>:PERcent:RISEMid <NR3>
     - DPOJET:REFLevels:CH<x>:PERcent:RISEMid?
     - DPOJET:REFLevels:CH<x>:PERcent?
     - DPOJET:REPORT {EXECute | APPEnd}
@@ -646,7 +646,7 @@ Commands and Queries:
     - DPOJET:REPORT:APPlicationconfig?
     - DPOJET:REPORT:AUTOincrement {1 | 0}
     - DPOJET:REPORT:AUTOincrement?
-    - DPOJET:REPORT:COMments  <string>
+    - DPOJET:REPORT:COMments <string>
     - DPOJET:REPORT:COMments?
     - DPOJET:REPORT:DETailedresults {1 | 0}
     - DPOJET:REPORT:DETailedresults?
@@ -659,11 +659,11 @@ Commands and Queries:
     - DPOJET:REPORT:PASSFailresults?
     - DPOJET:REPORT:PLOTimages {1 | 0}
     - DPOJET:REPORT:PLOTimages?
-    - DPOJET:REPORT:REPORTName  <string>
+    - DPOJET:REPORT:REPORTName <string>
     - DPOJET:REPORT:REPORTName?
     - DPOJET:REPORT:SAVEWaveforms {1 | 0}
     - DPOJET:REPORT:SAVEWaveforms?
-    - DPOJET:REPORT:SETIMAGEPath  <file string>
+    - DPOJET:REPORT:SETIMAGEPath <file string>
     - DPOJET:REPORT:SETupconfig {1 | 0}
     - DPOJET:REPORT:SETupconfig?
     - DPOJET:REPORT:STATE?
@@ -677,20 +677,20 @@ Commands and Queries:
     - DPOJET:RESULts:VIew?
     - DPOJET:SAVE {MEAS<x> | REF<x>}
     - DPOJET:SAVEALLPLOTS
-    - DPOJET:SETIMAGETPath  <file string>
+    - DPOJET:SETIMAGETPath <file string>
     - DPOJET:SETIMAGETPath?
-    - DPOJET:SETLOGGINGPath  <file string>
+    - DPOJET:SETLOGGINGPath <file string>
     - DPOJET:SETLOGGINGPath?
-    - DPOJET:SETREPORTPath  <file string>
+    - DPOJET:SETREPORTPath <file string>
     - DPOJET:SETREPORTPath?
     - DPOJET:SHOWMEASWARNing {1|0}
     - DPOJET:SHOWMEASWARNing?
     - DPOJET:SNC:ACTIvate
     - DPOJET:SNC:CLOse
     - DPOJET:SOURCEAutoset {HORizontal | VERTical | BOTH}
-    - DPOJET:SOURCEAutoset:HORizontal:UICount  <NR3>
+    - DPOJET:SOURCEAutoset:HORizontal:UICount <NR3>
     - DPOJET:SOURCEAutoset:HORizontal:UICount?
-    - DPOJET:SOURCEAutoset:HORizontal:UIValue  <NR3>
+    - DPOJET:SOURCEAutoset:HORizontal:UIValue <NR3>
     - DPOJET:SOURCEAutoset:HORizontal:UIValue?
     - DPOJET:SOURCEAutoset:STATE?
     - DPOJET:STATE {RUN | SINGLE | RECALC | CLEAR | STOP}
@@ -854,7 +854,7 @@ class DpojetSourceautosetHorizontalUivalue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:SOURCEAutoset:HORizontal:UIValue  <NR3>
+        - DPOJET:SOURCEAutoset:HORizontal:UIValue <NR3>
         - DPOJET:SOURCEAutoset:HORizontal:UIValue?
         ```
     """
@@ -877,7 +877,7 @@ class DpojetSourceautosetHorizontalUicount(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:SOURCEAutoset:HORizontal:UICount  <NR3>
+        - DPOJET:SOURCEAutoset:HORizontal:UICount <NR3>
         - DPOJET:SOURCEAutoset:HORizontal:UICount?
         ```
     """
@@ -919,7 +919,7 @@ class DpojetSourceautosetHorizontal(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:SOURCEAutoset:HORizontal:UICount  <NR3>
+            - DPOJET:SOURCEAutoset:HORizontal:UICount <NR3>
             - DPOJET:SOURCEAutoset:HORizontal:UICount?
             ```
         """
@@ -943,7 +943,7 @@ class DpojetSourceautosetHorizontal(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:SOURCEAutoset:HORizontal:UIValue  <NR3>
+            - DPOJET:SOURCEAutoset:HORizontal:UIValue <NR3>
             - DPOJET:SOURCEAutoset:HORizontal:UIValue?
             ```
         """
@@ -1132,7 +1132,7 @@ class DpojetSetreportpath(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:SETREPORTPath  <file string>
+        - DPOJET:SETREPORTPath <file string>
         - DPOJET:SETREPORTPath?
         ```
     """
@@ -1152,7 +1152,7 @@ class DpojetSetloggingpath(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:SETLOGGINGPath  <file string>
+        - DPOJET:SETLOGGINGPath <file string>
         - DPOJET:SETLOGGINGPath?
         ```
     """
@@ -1172,7 +1172,7 @@ class DpojetSetimagetpath(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:SETIMAGETPath  <file string>
+        - DPOJET:SETIMAGETPath <file string>
         - DPOJET:SETIMAGETPath?
         ```
     """
@@ -1445,7 +1445,7 @@ class DpojetReportSetimagepath(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - DPOJET:REPORT:SETIMAGEPath  <file string>
+        - DPOJET:REPORT:SETIMAGEPath <file string>
         ```
     """
 
@@ -1486,7 +1486,7 @@ class DpojetReportReportname(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REPORT:REPORTName  <string>
+        - DPOJET:REPORT:REPORTName <string>
         - DPOJET:REPORT:REPORTName?
         ```
     """
@@ -1556,8 +1556,8 @@ class DpojetReportGetimagename(SCPICmdRead):
     """The ``DPOJET:REPORT:GETIMAGEName`` command.
 
     Description:
-        - This query only commands gets all the PNG format image names from this
-          directoryC:Users<userName>TektronixTekApplicationsDPOJETReportsResources
+        - This query only commands gets all the PNG format image names from this directory
+          C:Users<userName>TektronixTekApplicationsDPOJETReportsResources
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:REPORT:GETIMAGEName?`` query.
@@ -1646,7 +1646,7 @@ class DpojetReportComments(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REPORT:COMments  <string>
+        - DPOJET:REPORT:COMments <string>
         - DPOJET:REPORT:COMments?
         ```
     """
@@ -1820,7 +1820,7 @@ class DpojetReport(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REPORT:COMments  <string>
+            - DPOJET:REPORT:COMments <string>
             - DPOJET:REPORT:COMments?
             ```
         """
@@ -1895,8 +1895,8 @@ class DpojetReport(SCPICmdWrite, SCPICmdRead):
         """Return the ``DPOJET:REPORT:GETIMAGEName`` command.
 
         Description:
-            - This query only commands gets all the PNG format image names from this
-              directoryC:Users<userName>TektronixTekApplicationsDPOJETReportsResources
+            - This query only commands gets all the PNG format image names from this directory
+              C:Users<userName>TektronixTekApplicationsDPOJETReportsResources
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:REPORT:GETIMAGEName?`` query.
@@ -1989,7 +1989,7 @@ class DpojetReport(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REPORT:REPORTName  <string>
+            - DPOJET:REPORT:REPORTName <string>
             - DPOJET:REPORT:REPORTName?
             ```
         """
@@ -2031,7 +2031,7 @@ class DpojetReport(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REPORT:SETIMAGEPath  <file string>
+            - DPOJET:REPORT:SETIMAGEPath <file string>
             ```
         """
         return self._setimagepath
@@ -2138,7 +2138,7 @@ class DpojetReflevelsChannelPercentRisemid(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REFLevels:CH<x>:PERcent:RISEMid  <NR3>
+        - DPOJET:REFLevels:CH<x>:PERcent:RISEMid <NR3>
         - DPOJET:REFLevels:CH<x>:PERcent:RISEMid?
         ```
     """
@@ -2161,7 +2161,7 @@ class DpojetReflevelsChannelPercentRiselow(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REFLevels:CH<x>:PERcent:RISELow  <NR3>
+        - DPOJET:REFLevels:CH<x>:PERcent:RISELow <NR3>
         - DPOJET:REFLevels:CH<x>:PERcent:RISELow?
         ```
     """
@@ -2184,7 +2184,7 @@ class DpojetReflevelsChannelPercentRisehigh(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REFLevels:CH<x>:PERcent:RISEHigh  <NR3>
+        - DPOJET:REFLevels:CH<x>:PERcent:RISEHigh <NR3>
         - DPOJET:REFLevels:CH<x>:PERcent:RISEHigh?
         ```
     """
@@ -2233,7 +2233,7 @@ class DpojetReflevelsChannelPercentHysteresis(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REFLevels:CH<x>:PERcent:HYSTeresis  <NR3>
+        - DPOJET:REFLevels:CH<x>:PERcent:HYSTeresis <NR3>
         - DPOJET:REFLevels:CH<x>:PERcent:HYSTeresis?
         ```
     """
@@ -2256,7 +2256,7 @@ class DpojetReflevelsChannelPercentFallmid(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REFLevels:CH<x>:PERcent:FALLMid  <NR3>
+        - DPOJET:REFLevels:CH<x>:PERcent:FALLMid <NR3>
         - DPOJET:REFLevels:CH<x>:PERcent:FALLMid?
         ```
     """
@@ -2279,7 +2279,7 @@ class DpojetReflevelsChannelPercentFalllow(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REFLevels:CH<x>:PERcent:FALLLow  <NR3>
+        - DPOJET:REFLevels:CH<x>:PERcent:FALLLow <NR3>
         - DPOJET:REFLevels:CH<x>:PERcent:FALLLow?
         ```
     """
@@ -2302,7 +2302,7 @@ class DpojetReflevelsChannelPercentFallhigh(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REFLevels:CH<x>:PERcent:FALLHigh  <NR3>
+        - DPOJET:REFLevels:CH<x>:PERcent:FALLHigh <NR3>
         - DPOJET:REFLevels:CH<x>:PERcent:FALLHigh?
         ```
     """
@@ -2376,7 +2376,7 @@ class DpojetReflevelsChannelPercent(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REFLevels:CH<x>:PERcent:FALLHigh  <NR3>
+            - DPOJET:REFLevels:CH<x>:PERcent:FALLHigh <NR3>
             - DPOJET:REFLevels:CH<x>:PERcent:FALLHigh?
             ```
         """
@@ -2400,7 +2400,7 @@ class DpojetReflevelsChannelPercent(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REFLevels:CH<x>:PERcent:FALLLow  <NR3>
+            - DPOJET:REFLevels:CH<x>:PERcent:FALLLow <NR3>
             - DPOJET:REFLevels:CH<x>:PERcent:FALLLow?
             ```
         """
@@ -2424,7 +2424,7 @@ class DpojetReflevelsChannelPercent(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REFLevels:CH<x>:PERcent:FALLMid  <NR3>
+            - DPOJET:REFLevels:CH<x>:PERcent:FALLMid <NR3>
             - DPOJET:REFLevels:CH<x>:PERcent:FALLMid?
             ```
         """
@@ -2448,7 +2448,7 @@ class DpojetReflevelsChannelPercent(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REFLevels:CH<x>:PERcent:HYSTeresis  <NR3>
+            - DPOJET:REFLevels:CH<x>:PERcent:HYSTeresis <NR3>
             - DPOJET:REFLevels:CH<x>:PERcent:HYSTeresis?
             ```
         """
@@ -2499,7 +2499,7 @@ class DpojetReflevelsChannelPercent(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REFLevels:CH<x>:PERcent:RISEHigh  <NR3>
+            - DPOJET:REFLevels:CH<x>:PERcent:RISEHigh <NR3>
             - DPOJET:REFLevels:CH<x>:PERcent:RISEHigh?
             ```
         """
@@ -2523,7 +2523,7 @@ class DpojetReflevelsChannelPercent(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REFLevels:CH<x>:PERcent:RISELow  <NR3>
+            - DPOJET:REFLevels:CH<x>:PERcent:RISELow <NR3>
             - DPOJET:REFLevels:CH<x>:PERcent:RISELow?
             ```
         """
@@ -2547,7 +2547,7 @@ class DpojetReflevelsChannelPercent(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REFLevels:CH<x>:PERcent:RISEMid  <NR3>
+            - DPOJET:REFLevels:CH<x>:PERcent:RISEMid <NR3>
             - DPOJET:REFLevels:CH<x>:PERcent:RISEMid?
             ```
         """
@@ -2613,7 +2613,7 @@ class DpojetReflevelsChannelAbsoluteRisemid(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REFLevels:CH<x>:ABSolute:RISEMid  <NR3>
+        - DPOJET:REFLevels:CH<x>:ABSolute:RISEMid <NR3>
         - DPOJET:REFLevels:CH<x>:ABSolute:RISEMid?
         ```
     """
@@ -2637,7 +2637,7 @@ class DpojetReflevelsChannelAbsoluteRiselow(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REFLevels:CH<x>:ABSolute:RISELow  <NR3>
+        - DPOJET:REFLevels:CH<x>:ABSolute:RISELow <NR3>
         - DPOJET:REFLevels:CH<x>:ABSolute:RISELow?
         ```
     """
@@ -2661,7 +2661,7 @@ class DpojetReflevelsChannelAbsoluteRisehigh(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REFLevels:CH<x>:ABSolute:RISEHigh  <NR3>
+        - DPOJET:REFLevels:CH<x>:ABSolute:RISEHigh <NR3>
         - DPOJET:REFLevels:CH<x>:ABSolute:RISEHigh?
         ```
     """
@@ -2684,7 +2684,7 @@ class DpojetReflevelsChannelAbsoluteHysteresis(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REFLevels:CH<x>:ABSolute:HYSTeresis  <NR3>
+        - DPOJET:REFLevels:CH<x>:ABSolute:HYSTeresis <NR3>
         - DPOJET:REFLevels:CH<x>:ABSolute:HYSTeresis?
         ```
     """
@@ -2708,7 +2708,7 @@ class DpojetReflevelsChannelAbsoluteFallmid(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REFLevels:CH<x>:ABSolute:FALLMid  <NR3>
+        - DPOJET:REFLevels:CH<x>:ABSolute:FALLMid <NR3>
         - DPOJET:REFLevels:CH<x>:ABSolute:FALLMid?
         ```
     """
@@ -2732,7 +2732,7 @@ class DpojetReflevelsChannelAbsoluteFalllow(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REFLevels:CH<x>:ABSolute:FALLLow  <NR3>
+        - DPOJET:REFLevels:CH<x>:ABSolute:FALLLow <NR3>
         - DPOJET:REFLevels:CH<x>:ABSolute:FALLLow?
         ```
     """
@@ -2756,7 +2756,7 @@ class DpojetReflevelsChannelAbsoluteFallhigh(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:REFLevels:CH<x>:ABSolute:FALLHigh  <NR3>
+        - DPOJET:REFLevels:CH<x>:ABSolute:FALLHigh <NR3>
         - DPOJET:REFLevels:CH<x>:ABSolute:FALLHigh?
         ```
     """
@@ -2825,7 +2825,7 @@ class DpojetReflevelsChannelAbsolute(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REFLevels:CH<x>:ABSolute:FALLHigh  <NR3>
+            - DPOJET:REFLevels:CH<x>:ABSolute:FALLHigh <NR3>
             - DPOJET:REFLevels:CH<x>:ABSolute:FALLHigh?
             ```
         """
@@ -2850,7 +2850,7 @@ class DpojetReflevelsChannelAbsolute(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REFLevels:CH<x>:ABSolute:FALLLow  <NR3>
+            - DPOJET:REFLevels:CH<x>:ABSolute:FALLLow <NR3>
             - DPOJET:REFLevels:CH<x>:ABSolute:FALLLow?
             ```
         """
@@ -2875,7 +2875,7 @@ class DpojetReflevelsChannelAbsolute(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REFLevels:CH<x>:ABSolute:FALLMid  <NR3>
+            - DPOJET:REFLevels:CH<x>:ABSolute:FALLMid <NR3>
             - DPOJET:REFLevels:CH<x>:ABSolute:FALLMid?
             ```
         """
@@ -2899,7 +2899,7 @@ class DpojetReflevelsChannelAbsolute(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REFLevels:CH<x>:ABSolute:HYSTeresis  <NR3>
+            - DPOJET:REFLevels:CH<x>:ABSolute:HYSTeresis <NR3>
             - DPOJET:REFLevels:CH<x>:ABSolute:HYSTeresis?
             ```
         """
@@ -2924,7 +2924,7 @@ class DpojetReflevelsChannelAbsolute(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REFLevels:CH<x>:ABSolute:RISEHigh  <NR3>
+            - DPOJET:REFLevels:CH<x>:ABSolute:RISEHigh <NR3>
             - DPOJET:REFLevels:CH<x>:ABSolute:RISEHigh?
             ```
         """
@@ -2949,7 +2949,7 @@ class DpojetReflevelsChannelAbsolute(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REFLevels:CH<x>:ABSolute:RISELow  <NR3>
+            - DPOJET:REFLevels:CH<x>:ABSolute:RISELow <NR3>
             - DPOJET:REFLevels:CH<x>:ABSolute:RISELow?
             ```
         """
@@ -2974,7 +2974,7 @@ class DpojetReflevelsChannelAbsolute(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:REFLevels:CH<x>:ABSolute:RISEMid  <NR3>
+            - DPOJET:REFLevels:CH<x>:ABSolute:RISEMid <NR3>
             - DPOJET:REFLevels:CH<x>:ABSolute:RISEMid?
             ```
         """
@@ -3536,7 +3536,7 @@ class DpojetPopulationLimit(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:POPULATION:LIMIT  <NR3>
+        - DPOJET:POPULATION:LIMIT <NR3>
         - DPOJET:POPULATION:LIMIT?
         ```
     """
@@ -3623,7 +3623,7 @@ class DpojetPopulation(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:POPULATION:LIMIT  <NR3>
+            - DPOJET:POPULATION:LIMIT <NR3>
             - DPOJET:POPULATION:LIMIT?
             ```
         """
@@ -3819,7 +3819,7 @@ class DpojetPlotItemVertbathtubBer(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:VERTBATHtub:BER   <NR3>
+        - DPOJET:PLOT<x>:VERTBATHtub:BER <NR3>
         - DPOJET:PLOT<x>:VERTBATHtub:BER?
         ```
     """
@@ -3865,7 +3865,7 @@ class DpojetPlotItemVertbathtub(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:VERTBATHtub:BER   <NR3>
+            - DPOJET:PLOT<x>:VERTBATHtub:BER <NR3>
             - DPOJET:PLOT<x>:VERTBATHtub:BER?
             ```
         """
@@ -4524,7 +4524,7 @@ class DpojetPlotItemSpectrumBase(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:SPECtrum:BASE  <NR3>
+        - DPOJET:PLOT<x>:SPECtrum:BASE <NR3>
         - DPOJET:PLOT<x>:SPECtrum:BASE?
         ```
     """
@@ -4570,7 +4570,7 @@ class DpojetPlotItemSpectrum(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:SPECtrum:BASE  <NR3>
+            - DPOJET:PLOT<x>:SPECtrum:BASE <NR3>
             - DPOJET:PLOT<x>:SPECtrum:BASE?
             ```
         """
@@ -4687,7 +4687,7 @@ class DpojetPlotItemPhasenoiseBaseline(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:PHASEnoise:BASEline  <NR3>
+        - DPOJET:PLOT<x>:PHASEnoise:BASEline <NR3>
         - DPOJET:PLOT<x>:PHASEnoise:BASEline?
         ```
     """
@@ -4732,7 +4732,7 @@ class DpojetPlotItemPhasenoise(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:PHASEnoise:BASEline  <NR3>
+            - DPOJET:PLOT<x>:PHASEnoise:BASEline <NR3>
             - DPOJET:PLOT<x>:PHASEnoise:BASEline?
             ```
         """
@@ -5220,7 +5220,7 @@ class DpojetPlotItemHistogramHorizontalSpan(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:HISTOgram:HORizontal:SPAN  <NR3>
+        - DPOJET:PLOT<x>:HISTOgram:HORizontal:SPAN <NR3>
         - DPOJET:PLOT<x>:HISTOgram:HORizontal:SPAN?
         ```
     """
@@ -5243,7 +5243,7 @@ class DpojetPlotItemHistogramHorizontalCenter(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:HISTOgram:HORizontal:CENter  <NR3>
+        - DPOJET:PLOT<x>:HISTOgram:HORizontal:CENter <NR3>
         - DPOJET:PLOT<x>:HISTOgram:HORizontal:CENter?
         ```
     """
@@ -5339,7 +5339,7 @@ class DpojetPlotItemHistogramHorizontal(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:HISTOgram:HORizontal:CENter  <NR3>
+            - DPOJET:PLOT<x>:HISTOgram:HORizontal:CENter <NR3>
             - DPOJET:PLOT<x>:HISTOgram:HORizontal:CENter?
             ```
         """
@@ -5363,7 +5363,7 @@ class DpojetPlotItemHistogramHorizontal(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:HISTOgram:HORizontal:SPAN  <NR3>
+            - DPOJET:PLOT<x>:HISTOgram:HORizontal:SPAN <NR3>
             - DPOJET:PLOT<x>:HISTOgram:HORizontal:SPAN?
             ```
         """
@@ -5508,7 +5508,7 @@ class DpojetPlotItemEyeVerticalYaxismin(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:EYE:VERTical:YAXISMIn  <NR3>
+        - DPOJET:PLOT<x>:EYE:VERTical:YAXISMIn <NR3>
         - DPOJET:PLOT<x>:EYE:VERTical:YAXISMIn?
         ```
     """
@@ -5531,7 +5531,7 @@ class DpojetPlotItemEyeVerticalYaxismax(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:EYE:VERTical:YAXISMAx  <NR3>
+        - DPOJET:PLOT<x>:EYE:VERTical:YAXISMAx <NR3>
         - DPOJET:PLOT<x>:EYE:VERTical:YAXISMAx?
         ```
     """
@@ -5573,7 +5573,7 @@ class DpojetPlotItemEyeVertical(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:EYE:VERTical:YAXISMAx  <NR3>
+            - DPOJET:PLOT<x>:EYE:VERTical:YAXISMAx <NR3>
             - DPOJET:PLOT<x>:EYE:VERTical:YAXISMAx?
             ```
         """
@@ -5597,7 +5597,7 @@ class DpojetPlotItemEyeVertical(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:EYE:VERTical:YAXISMIn  <NR3>
+            - DPOJET:PLOT<x>:EYE:VERTical:YAXISMIn <NR3>
             - DPOJET:PLOT<x>:EYE:VERTical:YAXISMIn?
             ```
         """
@@ -5706,7 +5706,7 @@ class DpojetPlotItemEyeMaskfile(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:EYE:MASKfile  <string>
+        - DPOJET:PLOT<x>:EYE:MASKfile <string>
         - DPOJET:PLOT<x>:EYE:MASKfile?
         ```
     """
@@ -5775,7 +5775,7 @@ class DpojetPlotItemEyeHorizontalXaxismin(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMIn  <NR3>
+        - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMIn <NR3>
         - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMIn?
         ```
     """
@@ -5798,7 +5798,7 @@ class DpojetPlotItemEyeHorizontalXaxismax(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMAx  <NR3>
+        - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMAx <NR3>
         - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMAx?
         ```
     """
@@ -5821,7 +5821,7 @@ class DpojetPlotItemEyeHorizontalResolution(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:EYE:HORizontal:RESolution  <NR3>
+        - DPOJET:PLOT<x>:EYE:HORizontal:RESolution <NR3>
         - DPOJET:PLOT<x>:EYE:HORizontal:RESolution?
         ```
     """
@@ -5919,7 +5919,7 @@ class DpojetPlotItemEyeHorizontal(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:EYE:HORizontal:RESolution  <NR3>
+            - DPOJET:PLOT<x>:EYE:HORizontal:RESolution <NR3>
             - DPOJET:PLOT<x>:EYE:HORizontal:RESolution?
             ```
         """
@@ -5943,7 +5943,7 @@ class DpojetPlotItemEyeHorizontal(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMAx  <NR3>
+            - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMAx <NR3>
             - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMAx?
             ```
         """
@@ -5967,7 +5967,7 @@ class DpojetPlotItemEyeHorizontal(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMIn  <NR3>
+            - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMIn <NR3>
             - DPOJET:PLOT<x>:EYE:HORizontal:XAXISMIn?
             ```
         """
@@ -6237,7 +6237,7 @@ class DpojetPlotItemEye(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:EYE:MASKfile  <string>
+            - DPOJET:PLOT<x>:EYE:MASKfile <string>
             - DPOJET:PLOT<x>:EYE:MASKfile?
             ```
         """
@@ -6376,10 +6376,10 @@ class DpojetPlotItemDataYdataTn(SCPICmdRead):
     Description:
         - This command returns the TN plot Y data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of y bytes between 10 and 15 digits.<yyy> is the number of bytes to
-          transfer.<data> is curve data.<newline> is a single-byte new line character at the end of
-          the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of y bytes between 10 and 15 digits. <yyy> is the number of bytes to
+          transfer. <data> is curve data. <newline> is a single-byte new line character at the end
+          of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:YDATa:TN?`` query.
@@ -6399,10 +6399,10 @@ class DpojetPlotItemDataYdataTj(SCPICmdRead):
     Description:
         - This command returns the TJ plot Y data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of y bytes between 10 and 15 digits.<yyy> is the number of bytes to
-          transfer.<data> is curve data.<newline> is a single-byte new line character at the end of
-          the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of y bytes between 10 and 15 digits. <yyy> is the number of bytes to
+          transfer. <data> is curve data. <newline> is a single-byte new line character at the end
+          of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:YDATa:TJ?`` query.
@@ -6422,10 +6422,10 @@ class DpojetPlotItemDataYdataRnnpn(SCPICmdRead):
     Description:
         - This command returns the RNNPN plot Y data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of y bytes between 10 and 15 digits.<yyy> is the number of bytes to
-          transfer.<data> is curve data.<newline> is a single-byte new line character at the end of
-          the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of y bytes between 10 and 15 digits. <yyy> is the number of bytes to
+          transfer. <data> is curve data. <newline> is a single-byte new line character at the end
+          of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:YDATa:RNNPN?`` query.
@@ -6445,10 +6445,10 @@ class DpojetPlotItemDataYdataRjbuj(SCPICmdRead):
     Description:
         - This command returns the RJ+BUJ plot Y data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of <y> bytes between 10 and 15 digits.<yyy> is the number of bytes to
-          transfer.<data> is curve data.<newline> is a single-byte new line character at the end of
-          the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of <y> bytes between 10 and 15 digits. <yyy> is the number of bytes to
+          transfer. <data> is curve data. <newline> is a single-byte new line character at the end
+          of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:YDATa:RJBUJ?`` query.
@@ -6468,10 +6468,10 @@ class DpojetPlotItemDataYdataPn(SCPICmdRead):
     Description:
         - This command returns the PN plot Y data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of y bytes between 10 and 15 digits.<yyy> is the number of bytes to
-          transfer.<data> is curve data.<newline> is a single-byte new line character at the end of
-          the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of y bytes between 10 and 15 digits. <yyy> is the number of bytes to
+          transfer. <data> is curve data. <newline> is a single-byte new line character at the end
+          of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:YDATa:PN?`` query.
@@ -6491,10 +6491,10 @@ class DpojetPlotItemDataYdataPj(SCPICmdRead):
     Description:
         - This command returns the PJ plot Y data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of <y> bytes between 10 and 15 digits.<yyy> is the number of bytes to
-          transfer.<data> is curve data.<newline> is a single-byte new line character at the end of
-          the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of <y> bytes between 10 and 15 digits. <yyy> is the number of bytes to
+          transfer. <data> is curve data. <newline> is a single-byte new line character at the end
+          of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:YDATa:PJ?`` query.
@@ -6514,10 +6514,10 @@ class DpojetPlotItemDataYdataDdnzero(SCPICmdRead):
     Description:
         - This command returns the DDNZERO plot Y data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of y bytes between 10 and 15 digits.<yyy> is the number of bytes to
-          transfer.<data> is curve data.<newline> is a single-byte new line character at the end of
-          the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of y bytes between 10 and 15 digits. <yyy> is the number of bytes to
+          transfer. <data> is curve data. <newline> is a single-byte new line character at the end
+          of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:YDATa:DDNZERO?`` query.
@@ -6537,10 +6537,10 @@ class DpojetPlotItemDataYdataDdnone(SCPICmdRead):
     Description:
         - This command returns the DDNONE plot Y data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of y bytes between 10 and 15 digits.<yyy> is the number of bytes to
-          transfer.<data> is curve data.<newline> is a single-byte new line character at the end of
-          the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of y bytes between 10 and 15 digits. <yyy> is the number of bytes to
+          transfer. <data> is curve data. <newline> is a single-byte new line character at the end
+          of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:YDATa:DDNONE?`` query.
@@ -6560,10 +6560,10 @@ class DpojetPlotItemDataYdataDdjdcd(SCPICmdRead):
     Description:
         - This command returns the DDJ+DCD plot Y data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of <y> bytes between 10 and 15 digits.<yyy> is the number of bytes to
-          transfer.<data> is curve data.<newline> is a single-byte new line character at the end of
-          the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of <y> bytes between 10 and 15 digits. <yyy> is the number of bytes to
+          transfer. <data> is curve data. <newline> is a single-byte new line character at the end
+          of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:YDATa:DDJDCD?`` query.
@@ -6584,10 +6584,10 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
     Description:
         - This command returns the plot Y data values. This command is similar to the curve query,
           where the output is in the format #<x><yyy><data><newline>, where <x> is the number of <y>
-          bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F denote
-          the number of y bytes between 10 and 15 digits.<yyy> is the number of bytes to
-          transfer.<data> is curve data.<newline> is a single-byte new line character at the end of
-          the data.This command does not support plots such as the Eye Diagram Height plot, Waveform
+          bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F denote
+          the number of y bytes between 10 and 15 digits. <yyy> is the number of bytes to transfer.
+          <data> is curve data. <newline> is a single-byte new line character at the end of the
+          data.This command does not support plots such as the Eye Diagram Height plot, Waveform
           Plot and Eye diagram with mask hits.
 
     Usage:
@@ -6631,9 +6631,9 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
         Description:
             - This command returns the DDJ+DCD plot Y data values. This command is similar to the
               curve query, where the output is in the format #<x><yyy><data><newline>, where <x> is
-              the number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of <y> bytes between 10 and 15 digits.<yyy> is the
-              number of bytes to transfer.<data> is curve data.<newline> is a single-byte new line
+              the number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format.
+              The letters A-F denote the number of <y> bytes between 10 and 15 digits. <yyy> is the
+              number of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
               character at the end of the data.
 
         Usage:
@@ -6657,9 +6657,9 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
         Description:
             - This command returns the DDNONE plot Y data values. This command is similar to the
               curve query, where the output is in the format #<x><yyy><data><newline>, where <x> is
-              the number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of y bytes between 10 and 15 digits.<yyy> is the number
-              of bytes to transfer.<data> is curve data.<newline> is a single-byte new line
+              the number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format.
+              The letters A-F denote the number of y bytes between 10 and 15 digits. <yyy> is the
+              number of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
               character at the end of the data.
 
         Usage:
@@ -6683,9 +6683,9 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
         Description:
             - This command returns the DDNZERO plot Y data values. This command is similar to the
               curve query, where the output is in the format #<x><yyy><data><newline>, where <x> is
-              the number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of y bytes between 10 and 15 digits.<yyy> is the number
-              of bytes to transfer.<data> is curve data.<newline> is a single-byte new line
+              the number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format.
+              The letters A-F denote the number of y bytes between 10 and 15 digits. <yyy> is the
+              number of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
               character at the end of the data.
 
         Usage:
@@ -6709,9 +6709,9 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
         Description:
             - This command returns the PJ plot Y data values. This command is similar to the curve
               query, where the output is in the format #<x><yyy><data><newline>, where <x> is the
-              number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of <y> bytes between 10 and 15 digits.<yyy> is the
-              number of bytes to transfer.<data> is curve data.<newline> is a single-byte new line
+              number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The
+              letters A-F denote the number of <y> bytes between 10 and 15 digits. <yyy> is the
+              number of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
               character at the end of the data.
 
         Usage:
@@ -6733,9 +6733,9 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
         Description:
             - This command returns the PN plot Y data values. This command is similar to the curve
               query, where the output is in the format #<x><yyy><data><newline>, where <x> is the
-              number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of y bytes between 10 and 15 digits.<yyy> is the number
-              of bytes to transfer.<data> is curve data.<newline> is a single-byte new line
+              number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The
+              letters A-F denote the number of y bytes between 10 and 15 digits. <yyy> is the number
+              of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
               character at the end of the data.
 
         Usage:
@@ -6757,9 +6757,9 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
         Description:
             - This command returns the RJ+BUJ plot Y data values. This command is similar to the
               curve query, where the output is in the format #<x><yyy><data><newline>, where <x> is
-              the number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of <y> bytes between 10 and 15 digits.<yyy> is the
-              number of bytes to transfer.<data> is curve data.<newline> is a single-byte new line
+              the number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format.
+              The letters A-F denote the number of <y> bytes between 10 and 15 digits. <yyy> is the
+              number of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
               character at the end of the data.
 
         Usage:
@@ -6782,9 +6782,9 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
         Description:
             - This command returns the RNNPN plot Y data values. This command is similar to the
               curve query, where the output is in the format #<x><yyy><data><newline>, where <x> is
-              the number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of y bytes between 10 and 15 digits.<yyy> is the number
-              of bytes to transfer.<data> is curve data.<newline> is a single-byte new line
+              the number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format.
+              The letters A-F denote the number of y bytes between 10 and 15 digits. <yyy> is the
+              number of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
               character at the end of the data.
 
         Usage:
@@ -6807,9 +6807,9 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
         Description:
             - This command returns the TJ plot Y data values. This command is similar to the curve
               query, where the output is in the format #<x><yyy><data><newline>, where <x> is the
-              number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of y bytes between 10 and 15 digits.<yyy> is the number
-              of bytes to transfer.<data> is curve data.<newline> is a single-byte new line
+              number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The
+              letters A-F denote the number of y bytes between 10 and 15 digits. <yyy> is the number
+              of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
               character at the end of the data.
 
         Usage:
@@ -6831,9 +6831,9 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
         Description:
             - This command returns the TN plot Y data values. This command is similar to the curve
               query, where the output is in the format #<x><yyy><data><newline>, where <x> is the
-              number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of y bytes between 10 and 15 digits.<yyy> is the number
-              of bytes to transfer.<data> is curve data.<newline> is a single-byte new line
+              number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The
+              letters A-F denote the number of y bytes between 10 and 15 digits. <yyy> is the number
+              of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
               character at the end of the data.
 
         Usage:
@@ -6855,9 +6855,9 @@ class DpojetPlotItemDataXdataTn(SCPICmdRead):
     Description:
         - This command returns the TN plot X data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of y bytes between 10 and 15 digits.<data> is curve data.<newline> is a
-          single-byte new line character at the end of the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of y bytes between 10 and 15 digits. <data> is curve data. <newline> is
+          a single-byte new line character at the end of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa:TN?`` query.
@@ -6877,9 +6877,9 @@ class DpojetPlotItemDataXdataTj(SCPICmdRead):
     Description:
         - This command returns the TJ plot X data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of y bytes between 10 and 15 digits.<data> is curve data.<newline> is a
-          single-byte new line character at the end of the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of y bytes between 10 and 15 digits. <data> is curve data. <newline> is
+          a single-byte new line character at the end of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa:TJ?`` query.
@@ -6899,9 +6899,9 @@ class DpojetPlotItemDataXdataRnnpn(SCPICmdRead):
     Description:
         - This command returns the RNNPN plot X data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of y bytes between 10 and 15 digits.<data> is curve data.<newline> is a
-          single-byte new line character at the end of the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of y bytes between 10 and 15 digits. <data> is curve data. <newline> is
+          a single-byte new line character at the end of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa:RNNPN?`` query.
@@ -6921,10 +6921,10 @@ class DpojetPlotItemDataXdataRjbuj(SCPICmdRead):
     Description:
         - This command returns the RJ+BUJ plot X data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of <y> bytes between 10 and 15 digits.<yyy> is the number of bytes to
-          transfer.<data> is curve data.<newline> is a single-byte new line character at the end of
-          the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of <y> bytes between 10 and 15 digits. <yyy> is the number of bytes to
+          transfer. <data> is curve data. <newline> is a single-byte new line character at the end
+          of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa:RJBUJ?`` query.
@@ -6944,9 +6944,9 @@ class DpojetPlotItemDataXdataPn(SCPICmdRead):
     Description:
         - This command returns the PN plot X data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of y bytes between 10 and 15 digits.<data> is curve data.<newline> is a
-          single-byte new line character at the end of the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of y bytes between 10 and 15 digits. <data> is curve data. <newline> is
+          a single-byte new line character at the end of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa:PN?`` query.
@@ -6966,10 +6966,10 @@ class DpojetPlotItemDataXdataPj(SCPICmdRead):
     Description:
         - This command returns the PJ plot X data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of <y> bytes between 10 and 15 digits.<yyy> is the number of bytes to
-          transfer.<data> is curve data.<newline> is a single-byte new line character at the end of
-          the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of <y> bytes between 10 and 15 digits. <yyy> is the number of bytes to
+          transfer. <data> is curve data. <newline> is a single-byte new line character at the end
+          of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa:PJ?`` query.
@@ -6989,9 +6989,9 @@ class DpojetPlotItemDataXdataDdnzero(SCPICmdRead):
     Description:
         - This command returns the DDNZERO plot X data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of y bytes between 10 and 15 digits.<data> is curve data.<newline> is a
-          single-byte new line character at the end of the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of y bytes between 10 and 15 digits. <data> is curve data. <newline> is
+          a single-byte new line character at the end of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa:DDNZERO?`` query.
@@ -7011,9 +7011,9 @@ class DpojetPlotItemDataXdataDdnone(SCPICmdRead):
     Description:
         - This command returns the DDNONE plot X data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of y bytes between 10 and 15 digits.<data> is curve data.<newline> is a
-          single-byte new line character at the end of the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of y bytes between 10 and 15 digits. <data> is curve data. <newline> is
+          a single-byte new line character at the end of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa:DDNONE?`` query.
@@ -7033,10 +7033,10 @@ class DpojetPlotItemDataXdataDdjdcd(SCPICmdRead):
     Description:
         - This command returns the DDJ+DCD plot X data values. This command is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of <y> bytes between 10 and 15 digits.<yyy> is the number of bytes to
-          transfer.<data> is curve data.<newline> is a single-byte new line character at the end of
-          the data.
+          of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of <y> bytes between 10 and 15 digits. <yyy> is the number of bytes to
+          transfer. <data> is curve data. <newline> is a single-byte new line character at the end
+          of the data.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa:DDJDCD?`` query.
@@ -7057,10 +7057,10 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
     Description:
         - This command returns the plot X data values. This command is similar to the curve query,
           where the output is in the format #<x><yyy><data><newline>, where <x> is the number of <y>
-          bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F denote
-          the number of y bytes between 10 and 15 digits.<yyy> is the number of bytes to
-          transfer.<data> is curve data.<newline> is a single-byte new line character at the end of
-          the data.This command does not support plots such as the Eye Diagram Height plot, Waveform
+          bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F denote
+          the number of y bytes between 10 and 15 digits. <yyy> is the number of bytes to transfer.
+          <data> is curve data. <newline> is a single-byte new line character at the end of the
+          data.This command does not support plots such as the Eye Diagram Height plot, Waveform
           Plot and Eye diagram with mask hits.
 
     Usage:
@@ -7104,9 +7104,9 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
         Description:
             - This command returns the DDJ+DCD plot X data values. This command is similar to the
               curve query, where the output is in the format #<x><yyy><data><newline>, where <x> is
-              the number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of <y> bytes between 10 and 15 digits.<yyy> is the
-              number of bytes to transfer.<data> is curve data.<newline> is a single-byte new line
+              the number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format.
+              The letters A-F denote the number of <y> bytes between 10 and 15 digits. <yyy> is the
+              number of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
               character at the end of the data.
 
         Usage:
@@ -7130,9 +7130,9 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
         Description:
             - This command returns the DDNONE plot X data values. This command is similar to the
               curve query, where the output is in the format #<x><yyy><data><newline>, where <x> is
-              the number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of y bytes between 10 and 15 digits.<data> is curve
-              data.<newline> is a single-byte new line character at the end of the data.
+              the number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format.
+              The letters A-F denote the number of y bytes between 10 and 15 digits. <data> is curve
+              data. <newline> is a single-byte new line character at the end of the data.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa:DDNONE?``
@@ -7155,9 +7155,9 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
         Description:
             - This command returns the DDNZERO plot X data values. This command is similar to the
               curve query, where the output is in the format #<x><yyy><data><newline>, where <x> is
-              the number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of y bytes between 10 and 15 digits.<data> is curve
-              data.<newline> is a single-byte new line character at the end of the data.
+              the number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format.
+              The letters A-F denote the number of y bytes between 10 and 15 digits. <data> is curve
+              data. <newline> is a single-byte new line character at the end of the data.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa:DDNZERO?``
@@ -7180,9 +7180,9 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
         Description:
             - This command returns the PJ plot X data values. This command is similar to the curve
               query, where the output is in the format #<x><yyy><data><newline>, where <x> is the
-              number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of <y> bytes between 10 and 15 digits.<yyy> is the
-              number of bytes to transfer.<data> is curve data.<newline> is a single-byte new line
+              number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The
+              letters A-F denote the number of <y> bytes between 10 and 15 digits. <yyy> is the
+              number of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
               character at the end of the data.
 
         Usage:
@@ -7204,9 +7204,9 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
         Description:
             - This command returns the PN plot X data values. This command is similar to the curve
               query, where the output is in the format #<x><yyy><data><newline>, where <x> is the
-              number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of y bytes between 10 and 15 digits.<data> is curve
-              data.<newline> is a single-byte new line character at the end of the data.
+              number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The
+              letters A-F denote the number of y bytes between 10 and 15 digits. <data> is curve
+              data. <newline> is a single-byte new line character at the end of the data.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa:PN?`` query.
@@ -7227,9 +7227,9 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
         Description:
             - This command returns the RJ+BUJ plot X data values. This command is similar to the
               curve query, where the output is in the format #<x><yyy><data><newline>, where <x> is
-              the number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of <y> bytes between 10 and 15 digits.<yyy> is the
-              number of bytes to transfer.<data> is curve data.<newline> is a single-byte new line
+              the number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format.
+              The letters A-F denote the number of <y> bytes between 10 and 15 digits. <yyy> is the
+              number of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
               character at the end of the data.
 
         Usage:
@@ -7252,9 +7252,9 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
         Description:
             - This command returns the RNNPN plot X data values. This command is similar to the
               curve query, where the output is in the format #<x><yyy><data><newline>, where <x> is
-              the number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of y bytes between 10 and 15 digits.<data> is curve
-              data.<newline> is a single-byte new line character at the end of the data.
+              the number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format.
+              The letters A-F denote the number of y bytes between 10 and 15 digits. <data> is curve
+              data. <newline> is a single-byte new line character at the end of the data.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa:RNNPN?``
@@ -7276,9 +7276,9 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
         Description:
             - This command returns the TJ plot X data values. This command is similar to the curve
               query, where the output is in the format #<x><yyy><data><newline>, where <x> is the
-              number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of y bytes between 10 and 15 digits.<data> is curve
-              data.<newline> is a single-byte new line character at the end of the data.
+              number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The
+              letters A-F denote the number of y bytes between 10 and 15 digits. <data> is curve
+              data. <newline> is a single-byte new line character at the end of the data.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa:TJ?`` query.
@@ -7299,9 +7299,9 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
         Description:
             - This command returns the TN plot X data values. This command is similar to the curve
               query, where the output is in the format #<x><yyy><data><newline>, where <x> is the
-              number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of y bytes between 10 and 15 digits.<data> is curve
-              data.<newline> is a single-byte new line character at the end of the data.
+              number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The
+              letters A-F denote the number of y bytes between 10 and 15 digits. <data> is curve
+              data. <newline> is a single-byte new line character at the end of the data.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa:TN?`` query.
@@ -7341,9 +7341,9 @@ class DpojetPlotItemData(SCPICmdRead):
         Description:
             - This command returns the plot X data values. This command is similar to the curve
               query, where the output is in the format #<x><yyy><data><newline>, where <x> is the
-              number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of y bytes between 10 and 15 digits.<yyy> is the number
-              of bytes to transfer.<data> is curve data.<newline> is a single-byte new line
+              number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The
+              letters A-F denote the number of y bytes between 10 and 15 digits. <yyy> is the number
+              of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
               character at the end of the data.This command does not support plots such as the Eye
               Diagram Height plot, Waveform Plot and Eye diagram with mask hits.
 
@@ -7377,9 +7377,9 @@ class DpojetPlotItemData(SCPICmdRead):
         Description:
             - This command returns the plot Y data values. This command is similar to the curve
               query, where the output is in the format #<x><yyy><data><newline>, where <x> is the
-              number of <y> bytes.For example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of y bytes between 10 and 15 digits.<yyy> is the number
-              of bytes to transfer.<data> is curve data.<newline> is a single-byte new line
+              number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The
+              letters A-F denote the number of y bytes between 10 and 15 digits. <yyy> is the number
+              of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
               character at the end of the data.This command does not support plots such as the Eye
               Diagram Height plot, Waveform Plot and Eye diagram with mask hits.
 
@@ -7483,7 +7483,7 @@ class DpojetPlotItemCorrelatedeyeEyewidth(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH  <NR2>
+        - DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH <NR2>
         - DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH?
         ```
     """
@@ -7506,7 +7506,7 @@ class DpojetPlotItemCorrelatedeyeEyeheight(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT  <NR2>
+        - DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT <NR2>
         - DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT?
         ```
     """
@@ -7800,7 +7800,7 @@ class DpojetPlotItemCorrelatedeye(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT  <NR2>
+            - DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT <NR2>
             - DPOJET:PLOT<x>:CORRELATEDEye:EYEHEIGHT?
             ```
         """
@@ -7824,7 +7824,7 @@ class DpojetPlotItemCorrelatedeye(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH  <NR2>
+            - DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH <NR2>
             - DPOJET:PLOT<x>:CORRELATEDEye:EYEWIDTH?
             ```
         """
@@ -8966,7 +8966,7 @@ class DpojetPlotItemBercontourMaskfile(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:BERContour:MASKFile  <string>
+        - DPOJET:PLOT<x>:BERContour:MASKFile <string>
         - DPOJET:PLOT<x>:BERContour:MASKFile?
         ```
     """
@@ -9010,7 +9010,7 @@ class DpojetPlotItemBercontourHorizontalResolution(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:BERContour:HORizontal:RESolution  <NR3>
+        - DPOJET:PLOT<x>:BERContour:HORizontal:RESolution <NR3>
         - DPOJET:PLOT<x>:BERContour:HORizontal:RESolution?
         ```
     """
@@ -9105,7 +9105,7 @@ class DpojetPlotItemBercontourHorizontal(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:BERContour:HORizontal:RESolution  <NR3>
+            - DPOJET:PLOT<x>:BERContour:HORizontal:RESolution <NR3>
             - DPOJET:PLOT<x>:BERContour:HORizontal:RESolution?
             ```
         """
@@ -9481,7 +9481,7 @@ class DpojetPlotItemBercontour(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:BERContour:MASKFile  <string>
+            - DPOJET:PLOT<x>:BERContour:MASKFile <string>
             - DPOJET:PLOT<x>:BERContour:MASKFile?
             ```
         """
@@ -9638,7 +9638,7 @@ class DpojetPlotItemBathtubBer(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:PLOT<x>:BATHtub:BER  <NR3>
+        - DPOJET:PLOT<x>:BATHtub:BER <NR3>
         - DPOJET:PLOT<x>:BATHtub:BER?
         ```
     """
@@ -9680,7 +9680,7 @@ class DpojetPlotItemBathtub(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:PLOT<x>:BATHtub:BER  <NR3>
+            - DPOJET:PLOT<x>:BATHtub:BER <NR3>
             - DPOJET:PLOT<x>:BATHtub:BER?
             ```
         """
@@ -10367,7 +10367,7 @@ class DpojetMinbujui(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MINBUJUI  <NR3>
+        - DPOJET:MINBUJUI <NR3>
         - DPOJET:MINBUJUI?
         ```
     """
@@ -10416,10 +10416,10 @@ class DpojetMeasItemTimedata(SCPICmdRead):
     Description:
         - This query-only command returns the measurement time data. It is similar to the curve
           query, where the output is in the format #<x><yyy><data><newline>, where <x> is the number
-          of <y> bytes.For Example: If <yyy>=500, <x>=3<x> is hexadecimal format. The letters A-F
-          denote the number of y bytes between 10 and 15 digits.<yyy> is the number of bytes to
-          transfer.<data> is curve data.<newline> is a single-byte new line character at the end of
-          the data.Time data is not available for all measurements. For Example: Scalar
+          of <y> bytes. For Example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
+          denote the number of y bytes between 10 and 15 digits. <yyy> is the number of bytes to
+          transfer. <data> is curve data. <newline> is a single-byte new line character at the end
+          of the data.Time data is not available for all measurements. For Example: Scalar
           measurements.
 
     Usage:
@@ -10476,7 +10476,7 @@ class DpojetMeasItemSscNominalfreqManual(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:SSC:NOMinalfreq:MANual  <NR3>
+        - DPOJET:MEAS<x>:SSC:NOMinalfreq:MANual <NR3>
         - DPOJET:MEAS<x>:SSC:NOMinalfreq:MANual?
         ```
     """
@@ -10565,7 +10565,7 @@ class DpojetMeasItemSscNominalfreq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:SSC:NOMinalfreq:MANual  <NR3>
+            - DPOJET:MEAS<x>:SSC:NOMinalfreq:MANual <NR3>
             - DPOJET:MEAS<x>:SSC:NOMinalfreq:MANual?
             ```
         """
@@ -10709,7 +10709,7 @@ class DpojetMeasItemRndnWindowlength(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:RNDN:WINDOwlength  <NR3>
+        - DPOJET:MEAS<x>:RNDN:WINDOwlength <NR3>
         - DPOJET:MEAS<x>:RNDN:WINDOwlength?
         ```
     """
@@ -10751,7 +10751,7 @@ class DpojetMeasItemRndnSncrefid(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:RNDN:SNCREFID  <string>
+        - DPOJET:MEAS<x>:RNDN:SNCREFID <string>
         - DPOJET:MEAS<x>:RNDN:SNCREFID?
         ```
     """
@@ -10772,7 +10772,7 @@ class DpojetMeasItemRndnScopern(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:RNDN:SCOPERN  <NR3>
+        - DPOJET:MEAS<x>:RNDN:SCOPERN <NR3>
         - DPOJET:MEAS<x>:RNDN:SCOPERN?
         ```
     """
@@ -10793,7 +10793,7 @@ class DpojetMeasItemRndnPatlen(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:RNDN:PATLen  <NR3>
+        - DPOJET:MEAS<x>:RNDN:PATLen <NR3>
         - DPOJET:MEAS<x>:RNDN:PATLen?
         ```
     """
@@ -10835,7 +10835,7 @@ class DpojetMeasItemRndnBer(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:RNDN:BER  <NR3>
+        - DPOJET:MEAS<x>:RNDN:BER <NR3>
         - DPOJET:MEAS<x>:RNDN:BER?
         ```
     """
@@ -10939,7 +10939,7 @@ class DpojetMeasItemRndn(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:RNDN:BER  <NR3>
+            - DPOJET:MEAS<x>:RNDN:BER <NR3>
             - DPOJET:MEAS<x>:RNDN:BER?
             ```
         """
@@ -10983,7 +10983,7 @@ class DpojetMeasItemRndn(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:RNDN:PATLen  <NR3>
+            - DPOJET:MEAS<x>:RNDN:PATLen <NR3>
             - DPOJET:MEAS<x>:RNDN:PATLen?
             ```
         """
@@ -11006,7 +11006,7 @@ class DpojetMeasItemRndn(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:RNDN:SCOPERN  <NR3>
+            - DPOJET:MEAS<x>:RNDN:SCOPERN <NR3>
             - DPOJET:MEAS<x>:RNDN:SCOPERN?
             ```
         """
@@ -11029,7 +11029,7 @@ class DpojetMeasItemRndn(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:RNDN:SNCREFID  <string>
+            - DPOJET:MEAS<x>:RNDN:SNCREFID <string>
             - DPOJET:MEAS<x>:RNDN:SNCREFID?
             ```
         """
@@ -11075,7 +11075,7 @@ class DpojetMeasItemRndn(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:RNDN:WINDOwlength  <NR3>
+            - DPOJET:MEAS<x>:RNDN:WINDOwlength <NR3>
             - DPOJET:MEAS<x>:RNDN:WINDOwlength?
             ```
         """
@@ -11097,7 +11097,7 @@ class DpojetMeasItemRjdjWindowlength(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:RJDJ:WINDOwlength  <NR3>
+        - DPOJET:MEAS<x>:RJDJ:WINDOwlength <NR3>
         - DPOJET:MEAS<x>:RJDJ:WINDOwlength?
         ```
     """
@@ -11139,7 +11139,7 @@ class DpojetMeasItemRjdjSncrefid(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:RJDJ:SNCREFID  <string>
+        - DPOJET:MEAS<x>:RJDJ:SNCREFID <string>
         - DPOJET:MEAS<x>:RJDJ:SNCREFID?
         ```
     """
@@ -11160,7 +11160,7 @@ class DpojetMeasItemRjdjScopern(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:RJDJ:SCOPERN  <NR3>
+        - DPOJET:MEAS<x>:RJDJ:SCOPERN <NR3>
         - DPOJET:MEAS<x>:RJDJ:SCOPERN?
         ```
     """
@@ -11181,7 +11181,7 @@ class DpojetMeasItemRjdjPatlen(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:RJDJ:PATLen  <NR3>
+        - DPOJET:MEAS<x>:RJDJ:PATLen <NR3>
         - DPOJET:MEAS<x>:RJDJ:PATLen?
         ```
     """
@@ -11244,7 +11244,7 @@ class DpojetMeasItemRjdjBer(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:RJDJ:BER  <NR3>
+        - DPOJET:MEAS<x>:RJDJ:BER <NR3>
         - DPOJET:MEAS<x>:RJDJ:BER?
         ```
     """
@@ -11299,7 +11299,7 @@ class DpojetMeasItemRjdj(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:RJDJ:BER  <NR3>
+            - DPOJET:MEAS<x>:RJDJ:BER <NR3>
             - DPOJET:MEAS<x>:RJDJ:BER?
             ```
         """
@@ -11365,7 +11365,7 @@ class DpojetMeasItemRjdj(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:RJDJ:PATLen  <NR3>
+            - DPOJET:MEAS<x>:RJDJ:PATLen <NR3>
             - DPOJET:MEAS<x>:RJDJ:PATLen?
             ```
         """
@@ -11388,7 +11388,7 @@ class DpojetMeasItemRjdj(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:RJDJ:SCOPERN  <NR3>
+            - DPOJET:MEAS<x>:RJDJ:SCOPERN <NR3>
             - DPOJET:MEAS<x>:RJDJ:SCOPERN?
             ```
         """
@@ -11411,7 +11411,7 @@ class DpojetMeasItemRjdj(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:RJDJ:SNCREFID  <string>
+            - DPOJET:MEAS<x>:RJDJ:SNCREFID <string>
             - DPOJET:MEAS<x>:RJDJ:SNCREFID?
             ```
         """
@@ -11457,7 +11457,7 @@ class DpojetMeasItemRjdj(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:RJDJ:WINDOwlength  <NR3>
+            - DPOJET:MEAS<x>:RJDJ:WINDOwlength <NR3>
             - DPOJET:MEAS<x>:RJDJ:WINDOwlength?
             ```
         """
@@ -14181,7 +14181,7 @@ class DpojetMeasItemPhasenoiseLowlimit(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:PHASENoise:LOWLimit  <NR3>
+        - DPOJET:MEAS<x>:PHASENoise:LOWLimit <NR3>
         - DPOJET:MEAS<x>:PHASENoise:LOWLimit?
         ```
     """
@@ -14203,7 +14203,7 @@ class DpojetMeasItemPhasenoiseHighlimit(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:PHASENoise:HIGHLimit  <NR3>
+        - DPOJET:MEAS<x>:PHASENoise:HIGHLimit <NR3>
         - DPOJET:MEAS<x>:PHASENoise:HIGHLimit?
         ```
     """
@@ -14245,7 +14245,7 @@ class DpojetMeasItemPhasenoise(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:PHASENoise:HIGHLimit  <NR3>
+            - DPOJET:MEAS<x>:PHASENoise:HIGHLimit <NR3>
             - DPOJET:MEAS<x>:PHASENoise:HIGHLimit?
             ```
         """
@@ -14269,7 +14269,7 @@ class DpojetMeasItemPhasenoise(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:PHASENoise:LOWLimit  <NR3>
+            - DPOJET:MEAS<x>:PHASENoise:LOWLimit <NR3>
             - DPOJET:MEAS<x>:PHASENoise:LOWLimit?
             ```
         """
@@ -14301,7 +14301,7 @@ class DpojetMeasItemOpticalTargetber(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:MEAS<x>:OPTIcal:TARGETBer`` command.
 
     Description:
-        - This command sets or queries the Target BER value display. The 1E-Value = 10-Value
+        - This command sets or queries the Target BER value display. The 1E-Value = 10 -Value
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:MEAS<x>:OPTIcal:TARGETBer?`` query.
@@ -14312,7 +14312,7 @@ class DpojetMeasItemOpticalTargetber(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:OPTIcal:TARGETBer  <NR3>
+        - DPOJET:MEAS<x>:OPTIcal:TARGETBer <NR3>
         - DPOJET:MEAS<x>:OPTIcal:TARGETBer?
         ```
     """
@@ -14333,7 +14333,7 @@ class DpojetMeasItemOpticalScopern(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:OPTIcal:SCOPERN  <NR3>
+        - DPOJET:MEAS<x>:OPTIcal:SCOPERN <NR3>
         - DPOJET:MEAS<x>:OPTIcal:SCOPERN?
         ```
     """
@@ -14354,7 +14354,7 @@ class DpojetMeasItemOpticalFfetaps(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:OPTIcal:FFETAPS  <string>
+        - DPOJET:MEAS<x>:OPTIcal:FFETAPS <string>
         - DPOJET:MEAS<x>:OPTIcal:FFETAPS?
         ```
     """
@@ -14375,7 +14375,7 @@ class DpojetMeasItemOpticalBtfilter(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:OPTIcal:BTFILTEr  <string>
+        - DPOJET:MEAS<x>:OPTIcal:BTFILTEr <string>
         - DPOJET:MEAS<x>:OPTIcal:BTFILTEr?
         ```
     """
@@ -14396,7 +14396,7 @@ class DpojetMeasItemOpticalBandwidth(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:OPTIcal:BANDWIDth  <NR3>
+        - DPOJET:MEAS<x>:OPTIcal:BANDWIDth <NR3>
         - DPOJET:MEAS<x>:OPTIcal:BANDWIDth?
         ```
     """
@@ -14446,7 +14446,7 @@ class DpojetMeasItemOptical(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:OPTIcal:BANDWIDth  <NR3>
+            - DPOJET:MEAS<x>:OPTIcal:BANDWIDth <NR3>
             - DPOJET:MEAS<x>:OPTIcal:BANDWIDth?
             ```
         """
@@ -14469,7 +14469,7 @@ class DpojetMeasItemOptical(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:OPTIcal:BTFILTEr  <string>
+            - DPOJET:MEAS<x>:OPTIcal:BTFILTEr <string>
             - DPOJET:MEAS<x>:OPTIcal:BTFILTEr?
             ```
         """
@@ -14491,7 +14491,7 @@ class DpojetMeasItemOptical(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:OPTIcal:FFETAPS  <string>
+            - DPOJET:MEAS<x>:OPTIcal:FFETAPS <string>
             - DPOJET:MEAS<x>:OPTIcal:FFETAPS?
             ```
         """
@@ -14513,7 +14513,7 @@ class DpojetMeasItemOptical(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:OPTIcal:SCOPERN  <NR3>
+            - DPOJET:MEAS<x>:OPTIcal:SCOPERN <NR3>
             - DPOJET:MEAS<x>:OPTIcal:SCOPERN?
             ```
         """
@@ -14524,7 +14524,7 @@ class DpojetMeasItemOptical(SCPICmdRead):
         """Return the ``DPOJET:MEAS<x>:OPTIcal:TARGETBer`` command.
 
         Description:
-            - This command sets or queries the Target BER value display. The 1E-Value = 10-Value
+            - This command sets or queries the Target BER value display. The 1E-Value = 10 -Value
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:MEAS<x>:OPTIcal:TARGETBer?``
@@ -14537,7 +14537,7 @@ class DpojetMeasItemOptical(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:OPTIcal:TARGETBer  <NR3>
+            - DPOJET:MEAS<x>:OPTIcal:TARGETBer <NR3>
             - DPOJET:MEAS<x>:OPTIcal:TARGETBer?
             ```
         """
@@ -14600,7 +14600,7 @@ class DpojetMeasItemN(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:N  <NR3>
+        - DPOJET:MEAS<x>:N <NR3>
         - DPOJET:MEAS<x>:N?
         ```
     """
@@ -14621,7 +14621,7 @@ class DpojetMeasItemMeasstart(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:MEASStart  <NR3>
+        - DPOJET:MEAS<x>:MEASStart <NR3>
         - DPOJET:MEAS<x>:MEASStart?
         ```
     """
@@ -14663,7 +14663,7 @@ class DpojetMeasItemMeasrangeMin(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:MEASRange:MIN  <NR3>
+        - DPOJET:MEAS<x>:MEASRange:MIN <NR3>
         - DPOJET:MEAS<x>:MEASRange:MIN?
         ```
     """
@@ -14684,7 +14684,7 @@ class DpojetMeasItemMeasrangeMax(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:MEASRange:MAX  <NR3>
+        - DPOJET:MEAS<x>:MEASRange:MAX <NR3>
         - DPOJET:MEAS<x>:MEASRange:MAX?
         ```
     """
@@ -14726,7 +14726,7 @@ class DpojetMeasItemMeasrange(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:MEASRange:MAX  <NR3>
+            - DPOJET:MEAS<x>:MEASRange:MAX <NR3>
             - DPOJET:MEAS<x>:MEASRange:MAX?
             ```
         """
@@ -14748,7 +14748,7 @@ class DpojetMeasItemMeasrange(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:MEASRange:MIN  <NR3>
+            - DPOJET:MEAS<x>:MEASRange:MIN <NR3>
             - DPOJET:MEAS<x>:MEASRange:MIN?
             ```
         """
@@ -14792,7 +14792,7 @@ class DpojetMeasItemMaskfile(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:MASKfile  <string>
+        - DPOJET:MEAS<x>:MASKfile <string>
         - DPOJET:MEAS<x>:MASKfile?
         ```
     """
@@ -14838,7 +14838,7 @@ class DpojetMeasItemMaskoffsetHorizontalManual(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:MASKOffset:HORizontal:MANual  <NR3>
+        - DPOJET:MEAS<x>:MASKOffset:HORizontal:MANual <NR3>
         - DPOJET:MEAS<x>:MASKOffset:HORizontal:MANual?
         ```
     """
@@ -14939,7 +14939,7 @@ class DpojetMeasItemMaskoffsetHorizontal(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:MASKOffset:HORizontal:MANual  <NR3>
+            - DPOJET:MEAS<x>:MASKOffset:HORizontal:MANual <NR3>
             - DPOJET:MEAS<x>:MASKOffset:HORizontal:MANual?
             ```
         """
@@ -15023,7 +15023,7 @@ class DpojetMeasItemMarginResolution(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:MARGIN:RESOlution  <NR3>
+        - DPOJET:MEAS<x>:MARGIN:RESOlution <NR3>
         - DPOJET:MEAS<x>:MARGIN:RESOlution?
         ```
     """
@@ -15045,7 +15045,7 @@ class DpojetMeasItemMarginHitratiovalue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:MARGIN:HITRATIOValue  <NR3>
+        - DPOJET:MEAS<x>:MARGIN:HITRATIOValue <NR3>
         - DPOJET:MEAS<x>:MARGIN:HITRATIOValue?
         ```
     """
@@ -15089,7 +15089,7 @@ class DpojetMeasItemMarginHitcountvalue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:MARGIN:HITCOUNTValue  <NR3>
+        - DPOJET:MEAS<x>:MARGIN:HITCOUNTValue <NR3>
         - DPOJET:MEAS<x>:MARGIN:HITCOUNTValue?
         ```
     """
@@ -15141,7 +15141,7 @@ class DpojetMeasItemMargin(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:MARGIN:HITCOUNTValue  <NR3>
+            - DPOJET:MEAS<x>:MARGIN:HITCOUNTValue <NR3>
             - DPOJET:MEAS<x>:MARGIN:HITCOUNTValue?
             ```
         """
@@ -15189,7 +15189,7 @@ class DpojetMeasItemMargin(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:MARGIN:HITRATIOValue  <NR3>
+            - DPOJET:MEAS<x>:MARGIN:HITRATIOValue <NR3>
             - DPOJET:MEAS<x>:MARGIN:HITRATIOValue?
             ```
         """
@@ -15213,7 +15213,7 @@ class DpojetMeasItemMargin(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:MARGIN:RESOlution  <NR3>
+            - DPOJET:MEAS<x>:MARGIN:RESOlution <NR3>
             - DPOJET:MEAS<x>:MARGIN:RESOlution?
             ```
         """
@@ -15236,7 +15236,7 @@ class DpojetMeasItemLowrefvoltage(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:LOWREFVoltage  <NR3>
+        - DPOJET:MEAS<x>:LOWREFVoltage <NR3>
         - DPOJET:MEAS<x>:LOWREFVoltage?
         ```
     """
@@ -15581,7 +15581,7 @@ class DpojetMeasItemHighrefvoltage(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:HIGHREFVoltage  <NR3>
+        - DPOJET:MEAS<x>:HIGHREFVoltage <NR3>
         - DPOJET:MEAS<x>:HIGHREFVoltage?
         ```
     """
@@ -15624,7 +15624,7 @@ class DpojetMeasItemFiltersSjfrequency(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:FILTers:SJFRequency  <NR3>
+        - DPOJET:MEAS<x>:FILTers:SJFRequency <NR3>
         - DPOJET:MEAS<x>:FILTers:SJFRequency?
         ```
     """
@@ -15646,7 +15646,7 @@ class DpojetMeasItemFiltersSjbandwidth(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:FILTers:SJBAndwidth  <NR3>
+        - DPOJET:MEAS<x>:FILTers:SJBAndwidth <NR3>
         - DPOJET:MEAS<x>:FILTers:SJBAndwidth?
         ```
     """
@@ -15667,7 +15667,7 @@ class DpojetMeasItemFiltersRamptime(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:FILTers:RAMPtime  <NR3>
+        - DPOJET:MEAS<x>:FILTers:RAMPtime <NR3>
         - DPOJET:MEAS<x>:FILTers:RAMPtime?
         ```
     """
@@ -15711,7 +15711,7 @@ class DpojetMeasItemFiltersLowpassFreq(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:FILTers:LOWPass:FREQ  <NR3>
+        - DPOJET:MEAS<x>:FILTers:LOWPass:FREQ <NR3>
         - DPOJET:MEAS<x>:FILTers:LOWPass:FREQ?
         ```
     """
@@ -15753,7 +15753,7 @@ class DpojetMeasItemFiltersLowpass(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:FILTers:LOWPass:FREQ  <NR3>
+            - DPOJET:MEAS<x>:FILTers:LOWPass:FREQ <NR3>
             - DPOJET:MEAS<x>:FILTers:LOWPass:FREQ?
             ```
         """
@@ -15824,7 +15824,7 @@ class DpojetMeasItemFiltersHighpassFreq(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:FILTers:HIGHPass:FREQ  <NR3>
+        - DPOJET:MEAS<x>:FILTers:HIGHPass:FREQ <NR3>
         - DPOJET:MEAS<x>:FILTers:HIGHPass:FREQ?
         ```
     """
@@ -15866,7 +15866,7 @@ class DpojetMeasItemFiltersHighpass(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:FILTers:HIGHPass:FREQ  <NR3>
+            - DPOJET:MEAS<x>:FILTers:HIGHPass:FREQ <NR3>
             - DPOJET:MEAS<x>:FILTers:HIGHPass:FREQ?
             ```
         """
@@ -15913,7 +15913,7 @@ class DpojetMeasItemFiltersBlankingtime(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:FILTers:BLANKingtime  <NR3>
+        - DPOJET:MEAS<x>:FILTers:BLANKingtime <NR3>
         - DPOJET:MEAS<x>:FILTers:BLANKingtime?
         ```
     """
@@ -15969,7 +15969,7 @@ class DpojetMeasItemFilters(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:FILTers:BLANKingtime  <NR3>
+            - DPOJET:MEAS<x>:FILTers:BLANKingtime <NR3>
             - DPOJET:MEAS<x>:FILTers:BLANKingtime?
             ```
         """
@@ -16023,7 +16023,7 @@ class DpojetMeasItemFilters(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:FILTers:RAMPtime  <NR3>
+            - DPOJET:MEAS<x>:FILTers:RAMPtime <NR3>
             - DPOJET:MEAS<x>:FILTers:RAMPtime?
             ```
         """
@@ -16048,7 +16048,7 @@ class DpojetMeasItemFilters(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:FILTers:SJBAndwidth  <NR3>
+            - DPOJET:MEAS<x>:FILTers:SJBAndwidth <NR3>
             - DPOJET:MEAS<x>:FILTers:SJBAndwidth?
             ```
         """
@@ -16073,7 +16073,7 @@ class DpojetMeasItemFilters(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:FILTers:SJFRequency  <NR3>
+            - DPOJET:MEAS<x>:FILTers:SJFRequency <NR3>
             - DPOJET:MEAS<x>:FILTers:SJFRequency?
             ```
         """
@@ -16118,7 +16118,7 @@ class DpojetMeasItemEdgesUserdefinedvoltage(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:EDGES:USERDefinedvoltage  <NR3>
+        - DPOJET:MEAS<x>:EDGES:USERDefinedvoltage <NR3>
         - DPOJET:MEAS<x>:EDGES:USERDefinedvoltage?
         ```
     """
@@ -16453,7 +16453,7 @@ class DpojetMeasItemEdges(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:EDGES:USERDefinedvoltage  <NR3>
+            - DPOJET:MEAS<x>:EDGES:USERDefinedvoltage <NR3>
             - DPOJET:MEAS<x>:EDGES:USERDefinedvoltage?
             ```
         """
@@ -16499,7 +16499,7 @@ class DpojetMeasItemEdgeincre(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:EDGEIncre  <NR3>
+        - DPOJET:MEAS<x>:EDGEIncre <NR3>
         - DPOJET:MEAS<x>:EDGEIncre?
         ```
     """
@@ -16579,7 +16579,7 @@ class DpojetMeasItemDfeTapvalue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:DFE:TAPValue  <NR3>
+        - DPOJET:MEAS<x>:DFE:TAPValue <NR3>
         - DPOJET:MEAS<x>:DFE:TAPValue?
         ```
     """
@@ -16621,7 +16621,7 @@ class DpojetMeasItemDfeResolution(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:DFE:RESOlution  <NR3>
+        - DPOJET:MEAS<x>:DFE:RESOlution <NR3>
         - DPOJET:MEAS<x>:DFE:RESOlution?
         ```
     """
@@ -16642,7 +16642,7 @@ class DpojetMeasItemDfeMeasatpercent(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:DFE:MEASatpercent  <NR3>
+        - DPOJET:MEAS<x>:DFE:MEASatpercent <NR3>
         - DPOJET:MEAS<x>:DFE:MEASatpercent?
         ```
     """
@@ -16663,7 +16663,7 @@ class DpojetMeasItemDfeManualdelay(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:DFE:MANUALDELAY  <NR3>
+        - DPOJET:MEAS<x>:DFE:MANUALDELAY <NR3>
         - DPOJET:MEAS<x>:DFE:MANUALDELAY?
         ```
     """
@@ -16709,7 +16709,7 @@ class DpojetMeasItemDfeAbsolutevoltagevalue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:DFE:ABSOLUTEVOLTAGEValue  <NR3>
+        - DPOJET:MEAS<x>:DFE:ABSOLUTEVOLTAGEValue <NR3>
         - DPOJET:MEAS<x>:DFE:ABSOLUTEVOLTAGEValue?
         ```
     """
@@ -16755,7 +16755,7 @@ class DpojetMeasItemDfeAbsolutetimevalue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:DFE:ABSOLUTETIMEValue  <NR3>
+        - DPOJET:MEAS<x>:DFE:ABSOLUTETIMEValue <NR3>
         - DPOJET:MEAS<x>:DFE:ABSOLUTETIMEValue?
         ```
     """
@@ -16875,7 +16875,7 @@ class DpojetMeasItemDfe(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:DFE:ABSOLUTETIMEValue  <NR3>
+            - DPOJET:MEAS<x>:DFE:ABSOLUTETIMEValue <NR3>
             - DPOJET:MEAS<x>:DFE:ABSOLUTETIMEValue?
             ```
         """
@@ -16925,7 +16925,7 @@ class DpojetMeasItemDfe(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:DFE:ABSOLUTEVOLTAGEValue  <NR3>
+            - DPOJET:MEAS<x>:DFE:ABSOLUTEVOLTAGEValue <NR3>
             - DPOJET:MEAS<x>:DFE:ABSOLUTEVOLTAGEValue?
             ```
         """
@@ -16971,7 +16971,7 @@ class DpojetMeasItemDfe(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:DFE:MANUALDELAY  <NR3>
+            - DPOJET:MEAS<x>:DFE:MANUALDELAY <NR3>
             - DPOJET:MEAS<x>:DFE:MANUALDELAY?
             ```
         """
@@ -16995,7 +16995,7 @@ class DpojetMeasItemDfe(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:DFE:MEASatpercent  <NR3>
+            - DPOJET:MEAS<x>:DFE:MEASatpercent <NR3>
             - DPOJET:MEAS<x>:DFE:MEASatpercent?
             ```
         """
@@ -17017,7 +17017,7 @@ class DpojetMeasItemDfe(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:DFE:RESOlution  <NR3>
+            - DPOJET:MEAS<x>:DFE:RESOlution <NR3>
             - DPOJET:MEAS<x>:DFE:RESOlution?
             ```
         """
@@ -17061,7 +17061,7 @@ class DpojetMeasItemDfe(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:DFE:TAPValue  <NR3>
+            - DPOJET:MEAS<x>:DFE:TAPValue <NR3>
             - DPOJET:MEAS<x>:DFE:TAPValue?
             ```
         """
@@ -17074,8 +17074,8 @@ class DpojetMeasItemData(SCPICmdRead):
     Description:
         - This query-only command returns the measurement data. This is similar to the curve query,
           where the output is in the format #<x><yyy><data><newline>, where <x> is the number of <y>
-          bytes.For Example: If <yyy>=500, <x>=3<yyy> is the number of bytes to transfer.<data> is
-          curve data.<newline> is a single-byte new line character at the end of the data.<x> is
+          bytes. For Example: If <yyy>=500, <x>=3 <yyy> is the number of bytes to transfer. <data>
+          is curve data. <newline> is a single-byte new line character at the end of the data.<x> is
           hexadecimal format. The letters A-F denote the number of y bytes between 10 and 15 digits.
 
     Usage:
@@ -17105,7 +17105,7 @@ class DpojetMeasItemCustomname(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:CUSTomname  <string>
+        - DPOJET:MEAS<x>:CUSTomname <string>
         - DPOJET:MEAS<x>:CUSTomname?
         ```
     """
@@ -17490,7 +17490,7 @@ class DpojetMeasItemClockrecoveryStandard(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:CLOCKRecovery:STAndard  <string>
+        - DPOJET:MEAS<x>:CLOCKRecovery:STAndard <string>
         - DPOJET:MEAS<x>:CLOCKRecovery:STAndard?
         ```
     """
@@ -17582,7 +17582,7 @@ class DpojetMeasItemClockrecoveryNominaloffsetManual(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset:MANual  <NR3>
+        - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset:MANual <NR3>
         - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset:MANual?
         ```
     """
@@ -17629,7 +17629,7 @@ class DpojetMeasItemClockrecoveryNominaloffset(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset  <NR3>
+        - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset <NR3>
         - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset?
         ```
 
@@ -17700,7 +17700,7 @@ class DpojetMeasItemClockrecoveryNominaloffset(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset:MANual  <NR3>
+            - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset:MANual <NR3>
             - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset:MANual?
             ```
         """
@@ -17839,7 +17839,7 @@ class DpojetMeasItemClockrecoveryLoopbandwidth(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:CLOCKRecovery:LOOPBandwidth  <NR3>
+        - DPOJET:MEAS<x>:CLOCKRecovery:LOOPBandwidth <NR3>
         - DPOJET:MEAS<x>:CLOCKRecovery:LOOPBandwidth?
         ```
     """
@@ -17885,7 +17885,7 @@ class DpojetMeasItemClockrecoveryDamping(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:CLOCKRecovery:DAMPing  <NR3>
+        - DPOJET:MEAS<x>:CLOCKRecovery:DAMPing <NR3>
         - DPOJET:MEAS<x>:CLOCKRecovery:DAMPing?
         ```
     """
@@ -17908,7 +17908,7 @@ class DpojetMeasItemClockrecoveryClockpath(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKPath  <string>
+        - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKPath <string>
         - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKPath?
         ```
     """
@@ -17931,7 +17931,7 @@ class DpojetMeasItemClockrecoveryClockmultiplier(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKMultiplier  <NR3>
+        - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKMultiplier <NR3>
         - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKMultiplier?
         ```
     """
@@ -17955,7 +17955,7 @@ class DpojetMeasItemClockrecoveryClockfrequency(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKFrequency  <NR3>
+        - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKFrequency <NR3>
         - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKFrequency?
         ```
     """
@@ -17978,7 +17978,7 @@ class DpojetMeasItemClockrecoveryClockbitrate(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKBitrate  <NR3>
+        - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKBitrate <NR3>
         - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKBitrate?
         ```
     """
@@ -18024,7 +18024,7 @@ class DpojetMeasItemClockrecoveryBhvrstandard(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:CLOCKRecovery:BHVRSTANdard  <string>
+        - DPOJET:MEAS<x>:CLOCKRecovery:BHVRSTANdard <string>
         - DPOJET:MEAS<x>:CLOCKRecovery:BHVRSTANdard?
         ```
     """
@@ -18110,7 +18110,7 @@ class DpojetMeasItemClockrecovery(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:CLOCKRecovery:BHVRSTANdard  <string>
+            - DPOJET:MEAS<x>:CLOCKRecovery:BHVRSTANdard <string>
             - DPOJET:MEAS<x>:CLOCKRecovery:BHVRSTANdard?
             ```
         """
@@ -18158,7 +18158,7 @@ class DpojetMeasItemClockrecovery(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKBitrate  <NR3>
+            - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKBitrate <NR3>
             - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKBitrate?
             ```
         """
@@ -18183,7 +18183,7 @@ class DpojetMeasItemClockrecovery(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKFrequency  <NR3>
+            - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKFrequency <NR3>
             - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKFrequency?
             ```
         """
@@ -18207,7 +18207,7 @@ class DpojetMeasItemClockrecovery(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKMultiplier  <NR3>
+            - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKMultiplier <NR3>
             - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKMultiplier?
             ```
         """
@@ -18231,7 +18231,7 @@ class DpojetMeasItemClockrecovery(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKPath  <string>
+            - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKPath <string>
             - DPOJET:MEAS<x>:CLOCKRecovery:CLOCKPath?
             ```
         """
@@ -18255,7 +18255,7 @@ class DpojetMeasItemClockrecovery(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:CLOCKRecovery:DAMPing  <NR3>
+            - DPOJET:MEAS<x>:CLOCKRecovery:DAMPing <NR3>
             - DPOJET:MEAS<x>:CLOCKRecovery:DAMPing?
             ```
         """
@@ -18303,7 +18303,7 @@ class DpojetMeasItemClockrecovery(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:CLOCKRecovery:LOOPBandwidth  <NR3>
+            - DPOJET:MEAS<x>:CLOCKRecovery:LOOPBandwidth <NR3>
             - DPOJET:MEAS<x>:CLOCKRecovery:LOOPBandwidth?
             ```
         """
@@ -18400,7 +18400,7 @@ class DpojetMeasItemClockrecovery(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset  <NR3>
+            - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset <NR3>
             - DPOJET:MEAS<x>:CLOCKRecovery:NOMINALOFFset?
             ```
 
@@ -18457,7 +18457,7 @@ class DpojetMeasItemClockrecovery(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:CLOCKRecovery:STAndard  <string>
+            - DPOJET:MEAS<x>:CLOCKRecovery:STAndard <string>
             - DPOJET:MEAS<x>:CLOCKRecovery:STAndard?
             ```
         """
@@ -18479,7 +18479,7 @@ class DpojetMeasItemBusstateTosymbol(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:BUSState:TOSymbol  <string>
+        - DPOJET:MEAS<x>:BUSState:TOSymbol <string>
         - DPOJET:MEAS<x>:BUSState:TOSymbol?
         ```
     """
@@ -18500,7 +18500,7 @@ class DpojetMeasItemBusstateTopattern(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:BUSState:TOPattern  <string>
+        - DPOJET:MEAS<x>:BUSState:TOPattern <string>
         - DPOJET:MEAS<x>:BUSState:TOPattern?
         ```
     """
@@ -18586,7 +18586,7 @@ class DpojetMeasItemBusstateFromsymbol(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:BUSState:FROMSymbol  <string>
+        - DPOJET:MEAS<x>:BUSState:FROMSymbol <string>
         - DPOJET:MEAS<x>:BUSState:FROMSymbol?
         ```
     """
@@ -18608,7 +18608,7 @@ class DpojetMeasItemBusstateFrompattern(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:BUSState:FROMPattern  <string>
+        - DPOJET:MEAS<x>:BUSState:FROMPattern <string>
         - DPOJET:MEAS<x>:BUSState:FROMPattern?
         ```
     """
@@ -18720,7 +18720,7 @@ class DpojetMeasItemBusstate(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:BUSState:FROMPattern  <string>
+            - DPOJET:MEAS<x>:BUSState:FROMPattern <string>
             - DPOJET:MEAS<x>:BUSState:FROMPattern?
             ```
         """
@@ -18744,7 +18744,7 @@ class DpojetMeasItemBusstate(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:BUSState:FROMSymbol  <string>
+            - DPOJET:MEAS<x>:BUSState:FROMSymbol <string>
             - DPOJET:MEAS<x>:BUSState:FROMSymbol?
             ```
         """
@@ -18840,7 +18840,7 @@ class DpojetMeasItemBusstate(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:BUSState:TOPattern  <string>
+            - DPOJET:MEAS<x>:BUSState:TOPattern <string>
             - DPOJET:MEAS<x>:BUSState:TOPattern?
             ```
         """
@@ -18864,7 +18864,7 @@ class DpojetMeasItemBusstate(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:BUSState:TOSymbol  <string>
+            - DPOJET:MEAS<x>:BUSState:TOSymbol <string>
             - DPOJET:MEAS<x>:BUSState:TOSymbol?
             ```
         """
@@ -18906,7 +18906,7 @@ class DpojetMeasItemBitpcnt(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:BITPcnt  <NR3>
+        - DPOJET:MEAS<x>:BITPcnt <NR3>
         - DPOJET:MEAS<x>:BITPcnt?
         ```
     """
@@ -18929,7 +18929,7 @@ class DpojetMeasItemBitconfigStartpercent(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:BITConfig:STARTPercent  <NR3>
+        - DPOJET:MEAS<x>:BITConfig:STARTPercent <NR3>
         - DPOJET:MEAS<x>:BITConfig:STARTPercent?
         ```
     """
@@ -18950,7 +18950,7 @@ class DpojetMeasItemBitconfigNumbins(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:BITConfig:NUMBins  <NR3>
+        - DPOJET:MEAS<x>:BITConfig:NUMBins <NR3>
         - DPOJET:MEAS<x>:BITConfig:NUMBins?
         ```
     """
@@ -18972,7 +18972,7 @@ class DpojetMeasItemBitconfigEndpercent(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:BITConfig:ENDPercent  <NR3>
+        - DPOJET:MEAS<x>:BITConfig:ENDPercent <NR3>
         - DPOJET:MEAS<x>:BITConfig:ENDPercent?
         ```
     """
@@ -18982,8 +18982,8 @@ class DpojetMeasItemBitconfigAbsrelstate(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:MEAS<x>:BITConfig:ABSRELstate`` command.
 
     Description:
-        - This command sets or queries the user absolute/relative state, either on or off.0-> sets
-          the Absolute1-> sets the Relative
+        - This command sets or queries the user absolute/relative state, either on or off. 0-> sets
+          the Absolute 1-> sets the Relative
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:MEAS<x>:BITConfig:ABSRELstate?``
@@ -19035,8 +19035,8 @@ class DpojetMeasItemBitconfig(SCPICmdRead):
         """Return the ``DPOJET:MEAS<x>:BITConfig:ABSRELstate`` command.
 
         Description:
-            - This command sets or queries the user absolute/relative state, either on or off.0->
-              sets the Absolute1-> sets the Relative
+            - This command sets or queries the user absolute/relative state, either on or off. 0->
+              sets the Absolute 1-> sets the Relative
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:MEAS<x>:BITConfig:ABSRELstate?``
@@ -19073,7 +19073,7 @@ class DpojetMeasItemBitconfig(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:BITConfig:ENDPercent  <NR3>
+            - DPOJET:MEAS<x>:BITConfig:ENDPercent <NR3>
             - DPOJET:MEAS<x>:BITConfig:ENDPercent?
             ```
         """
@@ -19097,7 +19097,7 @@ class DpojetMeasItemBitconfig(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:BITConfig:NUMBins  <NR3>
+            - DPOJET:MEAS<x>:BITConfig:NUMBins <NR3>
             - DPOJET:MEAS<x>:BITConfig:NUMBins?
             ```
         """
@@ -19121,7 +19121,7 @@ class DpojetMeasItemBitconfig(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:BITConfig:STARTPercent  <NR3>
+            - DPOJET:MEAS<x>:BITConfig:STARTPercent <NR3>
             - DPOJET:MEAS<x>:BITConfig:STARTPercent?
             ```
         """
@@ -19166,7 +19166,7 @@ class DpojetMeasItemBerTargetber(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:MEAS<x>:BER:TARGETBER  <NR3>
+        - DPOJET:MEAS<x>:BER:TARGETBER <NR3>
         - DPOJET:MEAS<x>:BER:TARGETBER?
         ```
     """
@@ -19207,7 +19207,7 @@ class DpojetMeasItemBer(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:BER:TARGETBER  <NR3>
+            - DPOJET:MEAS<x>:BER:TARGETBER <NR3>
             - DPOJET:MEAS<x>:BER:TARGETBER?
             ```
         """
@@ -19391,7 +19391,7 @@ class DpojetMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:BITPcnt  <NR3>
+            - DPOJET:MEAS<x>:BITPcnt <NR3>
             - DPOJET:MEAS<x>:BITPcnt?
             ```
         """
@@ -19518,7 +19518,7 @@ class DpojetMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:CUSTomname  <string>
+            - DPOJET:MEAS<x>:CUSTomname <string>
             - DPOJET:MEAS<x>:CUSTomname?
             ```
         """
@@ -19531,10 +19531,10 @@ class DpojetMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         Description:
             - This query-only command returns the measurement data. This is similar to the curve
               query, where the output is in the format #<x><yyy><data><newline>, where <x> is the
-              number of <y> bytes.For Example: If <yyy>=500, <x>=3<yyy> is the number of bytes to
-              transfer.<data> is curve data.<newline> is a single-byte new line character at the end
-              of the data.<x> is hexadecimal format. The letters A-F denote the number of y bytes
-              between 10 and 15 digits.
+              number of <y> bytes. For Example: If <yyy>=500, <x>=3 <yyy> is the number of bytes to
+              transfer. <data> is curve data. <newline> is a single-byte new line character at the
+              end of the data.<x> is hexadecimal format. The letters A-F denote the number of y
+              bytes between 10 and 15 digits.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:MEAS<x>:DATA?`` query.
@@ -19651,7 +19651,7 @@ class DpojetMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:EDGEIncre  <NR3>
+            - DPOJET:MEAS<x>:EDGEIncre <NR3>
             - DPOJET:MEAS<x>:EDGEIncre?
             ```
         """
@@ -19736,7 +19736,7 @@ class DpojetMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:HIGHREFVoltage  <NR3>
+            - DPOJET:MEAS<x>:HIGHREFVoltage <NR3>
             - DPOJET:MEAS<x>:HIGHREFVoltage?
             ```
         """
@@ -19775,7 +19775,7 @@ class DpojetMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:LOWREFVoltage  <NR3>
+            - DPOJET:MEAS<x>:LOWREFVoltage <NR3>
             - DPOJET:MEAS<x>:LOWREFVoltage?
             ```
         """
@@ -19828,7 +19828,7 @@ class DpojetMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:MASKfile  <string>
+            - DPOJET:MEAS<x>:MASKfile <string>
             - DPOJET:MEAS<x>:MASKfile?
             ```
         """
@@ -19866,7 +19866,7 @@ class DpojetMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:MEASStart  <NR3>
+            - DPOJET:MEAS<x>:MEASStart <NR3>
             - DPOJET:MEAS<x>:MEASStart?
             ```
         """
@@ -19887,7 +19887,7 @@ class DpojetMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MEAS<x>:N  <NR3>
+            - DPOJET:MEAS<x>:N <NR3>
             - DPOJET:MEAS<x>:N?
             ```
         """
@@ -20149,9 +20149,9 @@ class DpojetMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         Description:
             - This query-only command returns the measurement time data. It is similar to the curve
               query, where the output is in the format #<x><yyy><data><newline>, where <x> is the
-              number of <y> bytes.For Example: If <yyy>=500, <x>=3<x> is hexadecimal format. The
-              letters A-F denote the number of y bytes between 10 and 15 digits.<yyy> is the number
-              of bytes to transfer.<data> is curve data.<newline> is a single-byte new line
+              number of <y> bytes. For Example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The
+              letters A-F denote the number of y bytes between 10 and 15 digits. <yyy> is the number
+              of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
               character at the end of the data.Time data is not available for all measurements. For
               Example: Scalar measurements.
 
@@ -20250,7 +20250,7 @@ class DpojetLoggingWorstcaseFolder(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:LOGging:WORSTcase:FOLDer  <string>
+        - DPOJET:LOGging:WORSTcase:FOLDer <string>
         - DPOJET:LOGging:WORSTcase:FOLDer?
         ```
     """
@@ -20295,7 +20295,7 @@ class DpojetLoggingWorstcase(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:LOGging:WORSTcase:FOLDer  <string>
+            - DPOJET:LOGging:WORSTcase:FOLDer <string>
             - DPOJET:LOGging:WORSTcase:FOLDer?
             ```
         """
@@ -20364,7 +20364,7 @@ class DpojetLoggingStatisticsFilename(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:LOGging:STATistics:FILEName  <string>
+        - DPOJET:LOGging:STATistics:FILEName <string>
         - DPOJET:LOGging:STATistics:FILEName?
         ```
     """
@@ -20406,7 +20406,7 @@ class DpojetLoggingStatistics(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:LOGging:STATistics:FILEName  <string>
+            - DPOJET:LOGging:STATistics:FILEName <string>
             - DPOJET:LOGging:STATistics:FILEName?
             ```
         """
@@ -20494,7 +20494,7 @@ class DpojetLoggingMeasurementsFolder(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:LOGging:MEASurements:FOLDer  <string>
+        - DPOJET:LOGging:MEASurements:FOLDer <string>
         - DPOJET:LOGging:MEASurements:FOLDer?
         ```
     """
@@ -20536,7 +20536,7 @@ class DpojetLoggingMeasurements(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:LOGging:MEASurements:FOLDer  <string>
+            - DPOJET:LOGging:MEASurements:FOLDer <string>
             - DPOJET:LOGging:MEASurements:FOLDer?
             ```
         """
@@ -20671,7 +20671,7 @@ class DpojetLockrjvalue(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:LOCKRJValue  <NR3>
+        - DPOJET:LOCKRJValue <NR3>
         - DPOJET:LOCKRJValue?
         ```
     """
@@ -20732,7 +20732,7 @@ class DpojetLimitsFilename(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:LIMits:FILEName  <string>
+        - DPOJET:LIMits:FILEName <string>
         - DPOJET:LIMits:FILEName?
         ```
     """
@@ -20772,7 +20772,7 @@ class DpojetLimits(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:LIMits:FILEName  <string>
+            - DPOJET:LIMits:FILEName <string>
             - DPOJET:LIMits:FILEName?
             ```
         """
@@ -20916,7 +20916,7 @@ class DpojetHighperfrendering(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:HIGHPerfrendering  <NR1>
+        - DPOJET:HIGHPerfrendering <NR1>
         - DPOJET:HIGHPerfrendering?
         ```
     """
@@ -20988,7 +20988,7 @@ class DpojetExport(SCPICmdWrite):
     Description:
         - This set-only command saves the specified DPOJET plot to the specified file path. The
           Format is determined through the filename extension, with a default of png if no extension
-          is specified.Supported extensions include jpeg, jpg, tif, tiff, bmp, emf, .mat, .csv and
+          is specified. Supported extensions include jpeg, jpg, tif, tiff, bmp, emf, .mat, .csv and
           png.
 
     Usage:
@@ -21036,7 +21036,7 @@ class DpojetDeskewRefmidlevel(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:DESKEW:REFMidlevel  <NR3>
+        - DPOJET:DESKEW:REFMidlevel <NR3>
         - DPOJET:DESKEW:REFMidlevel?
         ```
     """
@@ -21057,7 +21057,7 @@ class DpojetDeskewRefhysteresis(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:DESKEW:REFHysteresis  <NR3>
+        - DPOJET:DESKEW:REFHysteresis <NR3>
         - DPOJET:DESKEW:REFHysteresis?
         ```
     """
@@ -21098,7 +21098,7 @@ class DpojetDeskewMinimum(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:DESKEW:MINimum  <NR3>
+        - DPOJET:DESKEW:MINimum <NR3>
         - DPOJET:DESKEW:MINimum?
         ```
     """
@@ -21118,7 +21118,7 @@ class DpojetDeskewMaximum(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:DESKEW:MAXimum  <NR3>
+        - DPOJET:DESKEW:MAXimum <NR3>
         - DPOJET:DESKEW:MAXimum?
         ```
     """
@@ -21180,7 +21180,7 @@ class DpojetDeskewDeskewmidlevel(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:DESKEW:DESKEWMidlevel  <NR3>
+        - DPOJET:DESKEW:DESKEWMidlevel <NR3>
         - DPOJET:DESKEW:DESKEWMidlevel?
         ```
     """
@@ -21201,7 +21201,7 @@ class DpojetDeskewDeskewhysteresis(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:DESKEW:DESKEWHysteresis  <NR3>
+        - DPOJET:DESKEW:DESKEWHysteresis <NR3>
         - DPOJET:DESKEW:DESKEWHysteresis?
         ```
     """
@@ -21271,7 +21271,7 @@ class DpojetDeskew(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:DESKEW:DESKEWHysteresis  <NR3>
+            - DPOJET:DESKEW:DESKEWHysteresis <NR3>
             - DPOJET:DESKEW:DESKEWHysteresis?
             ```
         """
@@ -21293,7 +21293,7 @@ class DpojetDeskew(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:DESKEW:DESKEWMidlevel  <NR3>
+            - DPOJET:DESKEW:DESKEWMidlevel <NR3>
             - DPOJET:DESKEW:DESKEWMidlevel?
             ```
         """
@@ -21358,7 +21358,7 @@ class DpojetDeskew(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:DESKEW:MAXimum  <NR3>
+            - DPOJET:DESKEW:MAXimum <NR3>
             - DPOJET:DESKEW:MAXimum?
             ```
         """
@@ -21380,7 +21380,7 @@ class DpojetDeskew(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:DESKEW:MINimum  <NR3>
+            - DPOJET:DESKEW:MINimum <NR3>
             - DPOJET:DESKEW:MINimum?
             ```
         """
@@ -21424,7 +21424,7 @@ class DpojetDeskew(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:DESKEW:REFHysteresis  <NR3>
+            - DPOJET:DESKEW:REFHysteresis <NR3>
             - DPOJET:DESKEW:REFHysteresis?
             ```
         """
@@ -21446,7 +21446,7 @@ class DpojetDeskew(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:DESKEW:REFMidlevel  <NR3>
+            - DPOJET:DESKEW:REFMidlevel <NR3>
             - DPOJET:DESKEW:REFMidlevel?
             ```
         """
@@ -21467,7 +21467,7 @@ class DpojetDataratelimits(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DPOJET:DATAratelimits  <NR3>
+        - DPOJET:DATAratelimits <NR3>
         - DPOJET:DATAratelimits?
         ```
     """
@@ -21906,7 +21906,7 @@ class Dpojet(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:DATAratelimits  <NR3>
+            - DPOJET:DATAratelimits <NR3>
             - DPOJET:DATAratelimits?
             ```
         """
@@ -21973,7 +21973,7 @@ class Dpojet(SCPICmdRead):
         Description:
             - This set-only command saves the specified DPOJET plot to the specified file path. The
               Format is determined through the filename extension, with a default of png if no
-              extension is specified.Supported extensions include jpeg, jpg, tif, tiff, bmp, emf,
+              extension is specified. Supported extensions include jpeg, jpg, tif, tiff, bmp, emf,
               .mat, .csv and png.
 
         Usage:
@@ -22065,7 +22065,7 @@ class Dpojet(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:HIGHPerfrendering  <NR1>
+            - DPOJET:HIGHPerfrendering <NR1>
             - DPOJET:HIGHPerfrendering?
             ```
         """
@@ -22227,7 +22227,7 @@ class Dpojet(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:LOCKRJValue  <NR3>
+            - DPOJET:LOCKRJValue <NR3>
             - DPOJET:LOCKRJValue?
             ```
         """
@@ -22321,7 +22321,7 @@ class Dpojet(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:MINBUJUI  <NR3>
+            - DPOJET:MINBUJUI <NR3>
             - DPOJET:MINBUJUI?
             ```
         """
@@ -22613,7 +22613,7 @@ class Dpojet(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:SETIMAGETPath  <file string>
+            - DPOJET:SETIMAGETPath <file string>
             - DPOJET:SETIMAGETPath?
             ```
         """
@@ -22635,7 +22635,7 @@ class Dpojet(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:SETLOGGINGPath  <file string>
+            - DPOJET:SETLOGGINGPath <file string>
             - DPOJET:SETLOGGINGPath?
             ```
         """
@@ -22657,7 +22657,7 @@ class Dpojet(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:SETREPORTPath  <file string>
+            - DPOJET:SETREPORTPath <file string>
             - DPOJET:SETREPORTPath?
             ```
         """
