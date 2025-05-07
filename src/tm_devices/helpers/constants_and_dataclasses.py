@@ -442,8 +442,8 @@ class DMConfigOptions(AsDictionaryMixin):
     disable_command_verification: Optional[bool] = None
     """A flag that disables command verification for all devices.
 
-    This can have the effect of speeding up automation scripts by no longer checking each
-    command after it is sent via the `.set_and_check()` method.
+    This can have the effect of speeding up automation scripts by no longer checking each command
+    after it is sent via the `.set_and_check()` method.
     """
     verbose_visa: Optional[bool] = None
     """A verbosity flag to enable extremely verbose VISA logging to stdout."""
