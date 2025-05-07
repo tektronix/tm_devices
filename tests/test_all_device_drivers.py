@@ -5,8 +5,9 @@ import contextlib
 import sys
 
 from collections import Counter
+from collections.abc import Generator
 from pathlib import Path
-from typing import Generator, List, Optional
+from typing import List, Optional
 
 import pytest
 

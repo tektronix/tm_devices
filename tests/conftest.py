@@ -5,8 +5,9 @@ import os
 import socket
 import sys
 
+from collections.abc import Generator
 from pathlib import Path
-from typing import Generator, List, Tuple
+from typing import List, Tuple
 from unittest import mock
 
 import pytest
@@ -98,20 +99,24 @@ def fixture_device_manager() -> Generator[DeviceManager, None, None]:
         The DeviceManager instance.
     """
     print()  # noqa: T201
-    with mock.patch(
-        "socket.gethostbyname", mock.MagicMock(side_effect=mock_gethostbyname)
-    ), mock.patch(
-        "socket.gethostbyaddr",
-        mock.MagicMock(side_effect=mock_gethostbyaddr),
-    ), mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.read_stb",
-        mock.MagicMock(return_value=0),
-    ), mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.clear",
-        mock.MagicMock(return_value=pyvisa.constants.StatusCode.success),
-    ), DeviceManager(
-        verbose=True, config_options=DMConfigOptions(default_visa_timeout=UNIT_TEST_TIMEOUT)
-    ) as dev_manager:
+    with (
+        mock.patch("socket.gethostbyname", mock.MagicMock(side_effect=mock_gethostbyname)),
+        mock.patch(
+            "socket.gethostbyaddr",
+            mock.MagicMock(side_effect=mock_gethostbyaddr),
+        ),
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read_stb",
+            mock.MagicMock(return_value=0),
+        ),
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.clear",
+            mock.MagicMock(return_value=pyvisa.constants.StatusCode.success),
+        ),
+        DeviceManager(
+            verbose=True, config_options=DMConfigOptions(default_visa_timeout=UNIT_TEST_TIMEOUT)
+        ) as dev_manager,
+    ):
         dev_manager.visa_library = SIMULATED_VISA_LIB
         yield dev_manager
 

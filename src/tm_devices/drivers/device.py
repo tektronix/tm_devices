@@ -6,12 +6,12 @@ import socket
 import time
 
 from abc import ABC, abstractmethod
+from collections.abc import Generator
 from contextlib import contextmanager, suppress
 from functools import cached_property as functools_cached_property
 from typing import (
     Any,
     final,
-    Generator,
     Optional,
     Tuple,
     TypeVar,

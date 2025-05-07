@@ -7,7 +7,7 @@ import time
 
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Any, Dict, Mapping, MutableMapping, Tuple, TYPE_CHECKING, Union
+from typing import Any, Dict, Tuple, TYPE_CHECKING, Union
 
 from requests.structures import CaseInsensitiveDict
 
@@ -17,6 +17,8 @@ from tm_devices.helpers import DeviceConfigEntry, DeviceTypes
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
 if TYPE_CHECKING:
+    from collections.abc import Mapping, MutableMapping
+
     from packaging.version import Version
 
 

@@ -11,18 +11,18 @@ py-lt-39 = "sys_version_info < (3, 9)"
 [tool.coverage.paths]
 source = [
   ".tox/**/site-packages/tm_devices",
-  "src/tm_devices"
+  "src/tm_devices",
 ]
 
 [tool.coverage.report]
 exclude_lines = [
   "if TYPE_CHECKING:",
   "pragma: no cover",
-  "raise NotImplementedError"
+  "raise NotImplementedError",
 ]
 fail_under = 100
 omit = [
-  "**/tm_devices/commands/**"  # TODO: remove this exclusion
+  "**/tm_devices/commands/**",  # TODO: remove this exclusion
 ]
 show_missing = true
 skip_empty = true
@@ -43,7 +43,7 @@ wrap-summaries = 0
 [tool.poetry]
 authors = [
   "Tektronix <opensource@tektronix.com>",
-  "Nicholas Felt <nicholas.felt@tektronix.com>"
+  "Nicholas Felt <nicholas.felt@tektronix.com>",
 ]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
@@ -52,7 +52,7 @@ classifiers = [
   "Operating System :: OS Independent",
   "Topic :: Scientific/Engineering :: Interface Engine/Protocol Translator",
   "Topic :: Scientific/Engineering",
-  "Topic :: System :: Hardware :: Hardware Drivers"
+  "Topic :: System :: Hardware :: Hardware Drivers",
 ]
 description = "Manage connections and interactions with Test & Measurement devices."
 documentation = "https://tm-devices.readthedocs.io/stable/"
@@ -63,12 +63,12 @@ keywords = [
   "TSP",
   "Tektronix",
   "Test & Measurement",
-  "VISA"
+  "VISA",
 ]
 license = "Apache-2.0"
 maintainers = [
   "Tektronix <opensource@tektronix.com>",
-  "Nicholas Felt <nicholas.felt@tektronix.com>"
+  "Nicholas Felt <nicholas.felt@tektronix.com>",
 ]
 name = "tm_devices"
 readme = "README.md"
@@ -82,7 +82,7 @@ libusb-package = "^1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.1
 packaging = ">=24.0"
 psutil = ">=6.0.0"
 pyserial = "^3.5"
-python = "^3.8,!=3.9.0,!=3.9.1"  # This is the main Python version requirement, the excluded versions of Python had major bugs and shouldn't be used
+python = "^3.9.2"  # This is the main Python version requirement
 python-dateutil = "^2.8.2"
 pyusb = "^1.2.1"
 pyvicp = "^1.1.0"
@@ -99,18 +99,14 @@ urllib3 = "^2.0"
 zeroconf = "^0.136.0"
 
 [tool.poetry.group.dev.dependencies]
-docutils = "^0.20"  # TODO: Drop Python 3.8: remove this when the minimum Python version is >=3.9
 nodeenv = "^1.9.1"
 pip = "^25.0"
 poetry = "^1.8.0"
 poetry-audit-plugin = "^0.4.0"
 poetry-plugin-export = "^1.7.1"
 poetry-pre-commit-plugin = "^0.2.2"
-pre-commit = [
-  {python = ">=3.9", version = "^3.7"},
-  {python = "3.8", version = "^3.5"}
-]
-pylint = "3.2.7"
+pre-commit = "^3.7"
+pylint = "3.3.7"
 pyright = {extras = ["nodejs"], version = "1.1.400"}
 pyroma = "^4.2"
 tox = "^4.0"
@@ -174,7 +170,7 @@ max-args = 7
 
 [tool.pylint.dunder]
 good-dunder-names = [
-  "__isabstractmethod__"
+  "__isabstractmethod__",
 ]
 
 [tool.pylint.main]
@@ -189,7 +185,7 @@ ignore-patterns = [
   "^\\.tox",
   "^\\.venv.*",
   "^\\.vscode",
-  "^temp_.*\\..*"
+  "^temp_.*\\..*",
 ]
 jobs = 0
 load-plugins = """
@@ -210,13 +206,14 @@ pylint.extensions.set_membership,
 pylint.extensions.typing,
 pylint.extensions.while_used
 """
-py-version = "3.8"
+py-version = "3.9"
 recursive = true
 
 [tool.pylint."messages control"]
 enable = ["all"]
 disable = [
   "broad-exception-caught",  # caught by ruff
+  "deprecated-typing-alias",  # caught by ruff
   "duplicate-code",
   "fixme",  # caught by ruff
   "global-statement",  # caught by ruff
@@ -236,14 +233,16 @@ disable = [
   "too-many-arguments",  # caught by ruff
   "too-many-branches",  # caught by ruff
   "too-many-lines",  # not necessary to check for
+  "too-many-positional-arguments",  # not necessary to check for
   "too-many-statements",  # caught by ruff
   "too-many-statements",  # caught by ruff
   "unexpected-keyword-arg",  # caught by pyright
+  "unnecessary-default-type-args",  # not necessary to check for
   "unused-argument",  # caught by ruff
   "unused-import",  # caught by ruff
   "use-implicit-booleaness-not-comparison-to-string",  # caught by ruff
   "while-used",  # using while loops in example scripts
-  "wrong-import-order"  # caught by ruff
+  "wrong-import-order",  # caught by ruff
 ]
 
 [tool.pylint.reports]
@@ -260,10 +259,10 @@ output-format = "text"  # colorized could be another option
 ignore = [
   "**/output_*/**",
   "site/**",
-  "temp_*.py"
+  "temp_*.py",
 ]
 pythonPlatform = "All"
-pythonVersion = "3.8"
+pythonVersion = "3.9"
 reportCallInDefaultInitializer = "error"
 reportImplicitOverride = "none"  # this check is not needed
 reportImplicitStringConcatenation = "none"  # this is allowed by this project's formatting standard
@@ -287,7 +286,7 @@ filterwarnings = [
   "ignore:'xdrlib' is deprecated:DeprecationWarning",
   "ignore::DeprecationWarning:pkg_resources",
   "ignore:GPIB library not found:UserWarning",
-  "ignore:pkg_resources is deprecated:DeprecationWarning"
+  "ignore:pkg_resources is deprecated:DeprecationWarning",
 ]
 junit_family = "xunit2"
 junit_logging = "all"
@@ -295,7 +294,7 @@ log_format = "[%(asctime)s] [%(levelname)8s] %(message)s"
 markers = [
   'docs',
   'order',
-  'slow'
+  'slow',
 ]
 xfail_strict = true
 
@@ -304,7 +303,7 @@ pytest_report_title = {skip_if_set = true, value = "Test Results"}
 
 [tool.rstcheck]
 ignore_directives = [
-  "autoapisummary"  # This is added by sphinx-autoapi
+  "autoapisummary",  # This is added by sphinx-autoapi
 ]
 
 [tool.ruff]
@@ -312,7 +311,7 @@ line-length = 100
 namespace-packages = ["docs/**", "examples/**", "scripts/**", "tests/**"]
 output-format = "concise"
 src = ["docs", "examples", "scripts", "src", "tests"]
-target-version = "py38"  # always generate Python 3.8 compatible code
+target-version = "py39"  # always generate Python 3.9 compatible code
 
 [tool.ruff.lint]
 allowed-confusables = ["¸", "×"]
@@ -329,16 +328,17 @@ ignore = [
   "PYI021",  # Docstrings should not be included in stubs (allowed in this package)
   "TD002",  # Missing author in TO DO (allowed in this package)
   "TD003",  # Missing issue link on the line following this TO DO (allowed in this package)
-  "UP006",  # Use {to} instead of {from} for type annotation (allowed in this package)
-  "UP007",  # Use `X | Y` for type annotations (allowed in this package)
+  "UP006",  # Use {to} instead of {from} for type annotation # TODO: Drop Python 3.9: enable this check
+  "UP007",  # Use `X | Y` for type annotations # TODO: Drop Python 3.9: enable this check
   "UP024",  # Replace aliased errors with `OSError` (allowed in this package)
-  "UP037"  # Remove quotes from type annotation (allowed in this package)
+  "UP035",  # `X` is deprecated, use `Y` instead # TODO: Drop Python 3.9: enable this check
+  "UP037",  # Remove quotes from type annotation # TODO: Drop Python 3.9: enable this check
 ]
 pydocstyle = {convention = "google"}
 pylint = {max-args = 7}
 # https://beta.ruff.rs/docs/rules/
 select = [
-  "ALL"
+  "ALL",
 ]
 task-tags = ["FIXME", "FUTURE", "RELIC", "TODO"]
 
@@ -350,7 +350,7 @@ force-sort-within-sections = false
 known-first-party = [
   "conftest",
   "mock_server",
-  "tm_devices"
+  "tm_devices",
 ]
 lines-between-types = 1
 order-by-type = false
@@ -359,11 +359,11 @@ order-by-type = false
 "examples/**" = [
   "FBT",  # flake8-boolean-trap
   "S101",  # Use of assert detected
-  "T201"  # `print` found
+  "T201",  # `print` found
 ]
 "examples/miscellaneous/custom_device_driver_support.py" = [
   "ARG002",  # Unused method argument
-  "D102"  # Missing docstring in public method
+  "D102",  # Missing docstring in public method
 ]
 "src/tm_devices/commands/**" = [
   "A003",  # Class attribute is shadowing a python builtin
@@ -371,24 +371,24 @@ order-by-type = false
   "D107",  # Missing docstring in `__init__`
   "ERA001",  # Found commented-out code
   "S105",  # Possible hardcoded password
-  "TID252"  # Relative imports from parent modules are banned
+  "TID252",  # Relative imports from parent modules are banned
 ]
 "tests/**" = [
   "PLC1901",  # compare-to-empty-string
   "PLR2004",  # Magic value used in comparison
   "PTH107",  # `os.remove()` should be replaced by `Path.unlink()`
-  "S101"  # Use of assert detected
+  "S101",  # Use of assert detected
 ]
 "tests/samples/golden_stubs/**" = [
   "D100",  # Missing docstring in public module
   "D101",  # Missing docstring in public class
   "D107",  # Missing docstring in `__init__`
-  "PYI053"  # String and bytes literals longer than 50 characters are not permitted
+  "PYI053",  # String and bytes literals longer than 50 characters are not permitted
 ]
 
 [tool.semantic_release]
 version_toml = [
-  "pyproject.toml:tool.poetry.version"
+  "pyproject.toml:tool.poetry.version",
 ]
 
 [tool.semantic_release.changelog]
@@ -408,6 +408,7 @@ patch_tags = []
 all = true
 in_place = true
 spaces_before_inline_comment = 2
+trailing_comma_inline_array = true
 overrides."tool.poetry.*".inline_arrays = false
 overrides."tool.pylint.*".table_keys = false
 
@@ -417,15 +418,14 @@ legacy_tox_ini = """
 [tox]
 requires = tox>4
 isolated_build = True
-envlist = py38,py39,py310,py311,py312,py313,tests,docs,doctests
+envlist = py39,py310,py311,py312,py313,tests,docs,doctests
 skip_missing_interpreters = True
 labels =
-  basic = py38,py39,py310,py311,py312,py313,tests
+  basic = py39,py310,py311,py312,py313,tests
   documentation = docs,doctests
 
 [gh-actions]
 python =
-    3.8: py38
     3.9: py39
     3.10: py310
     3.11: py311
@@ -442,12 +442,12 @@ passenv =
 setenv =
     COVERAGE_FILE = .coverage_{envname}
     DOC_PYTHON_VERSION = python3.11  # Keep this in sync with .readthedocs.yml and any CI scripts
-    # Skip pre-commit checks that are not needed (yamlfix should be removed from this list once Python 3.8 support is dropped)
-    SKIP = file-contents-sorter,yamlfix
+    # Skip pre-commit checks that are not needed
+    SKIP = file-contents-sorter
 commands_pre =
     python -m poetry install --no-root --without=main
 commands =
-    !tests: python -c "import shutil; shutil.rmtree('dist_{envname}', ignore_errors=True)"
+    !tests: python -c "import shutil; shutil.rmtree('.dist/{envname}', ignore_errors=True)"
     !tests: poetry build --output=.dist/{envname}
     !tests: twine check --strict .dist/{envname}/*
     !tests: pre-commit run --all-files

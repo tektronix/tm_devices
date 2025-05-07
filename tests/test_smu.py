@@ -96,10 +96,13 @@ def test_smu(  # noqa: PLR0915
 
     with mock.patch("pyvisa.highlevel.VisaLibraryBase.clear", mock.MagicMock(return_value=None)):
         assert smu.query_expect_timeout("INVALID?", timeout_ms=1) == ""
-    with mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.query",
-        mock.MagicMock(side_effect=visa.errors.Error("custom error")),
-    ), pytest.raises(visa.errors.Error):
+    with (
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.query",
+            mock.MagicMock(side_effect=visa.errors.Error("custom error")),
+        ),
+        pytest.raises(visa.errors.Error),
+    ):
         smu.query_expect_timeout("INVALID?", timeout_ms=1)
     assert smu.expect_esr(32, ("Command error", "No Error"))
 
@@ -185,8 +188,9 @@ def test_smu(  # noqa: PLR0915
     assert smu.address == "SMU2601B-HOSTNAME"
     assert smu.alias == "SMU-DEVICE"
     assert smu.connection_type == "TCPIP"
-    with mock.patch("socket.socket.connect", mock.MagicMock(return_value=None)), mock.patch(
-        "socket.socket.shutdown", mock.MagicMock(return_value=None)
+    with (
+        mock.patch("socket.socket.connect", mock.MagicMock(return_value=None)),
+        mock.patch("socket.socket.shutdown", mock.MagicMock(return_value=None)),
     ):
         assert smu.wait_for_port_connection(
             4000, wait_time=0.05, sleep_seconds=0, accept_immediate_connection=True
@@ -286,10 +290,13 @@ def test_smu2450(device_manager: DeviceManager, capsys: pytest.CaptureFixture[st
 
     with mock.patch("pyvisa.highlevel.VisaLibraryBase.clear", mock.MagicMock(return_value=None)):
         assert smu.query_expect_timeout("INVALID?", timeout_ms=1) == ""
-    with mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.query",
-        mock.MagicMock(side_effect=visa.errors.Error("custom error")),
-    ), pytest.raises(visa.errors.Error):
+    with (
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.query",
+            mock.MagicMock(side_effect=visa.errors.Error("custom error")),
+        ),
+        pytest.raises(visa.errors.Error),
+    ):
         smu.query_expect_timeout("INVALID?", timeout_ms=1)
     assert smu.expect_esr(32, ("Command error", "No Error"))
     assert smu.all_channel_names_list == ("OUTPUT1",)

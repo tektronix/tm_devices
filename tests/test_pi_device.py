@@ -47,10 +47,13 @@ def test_pi_control(  # noqa: PLR0915
     with pytest.raises(AssertionError):
         scope.query_less_than("*OPC?", 1)
 
-    with mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.write_raw",
-        mock.MagicMock(side_effect=visa.VisaIOError(123)),
-    ), pytest.raises(visa.Error):
+    with (
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.write_raw",
+            mock.MagicMock(side_effect=visa.VisaIOError(123)),
+        ),
+        pytest.raises(visa.Error),
+    ):
         scope.write_raw(b"INVALID")
     with pytest.raises(visa.Error):
         scope.query_binary("INVALID?")
@@ -60,20 +63,26 @@ def test_pi_control(  # noqa: PLR0915
         scope.query_raw_binary("INVALID?")
     with pytest.raises(SystemError):
         scope.query_raw_binary("EMPTY?")
-    with mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.write",
-        mock.MagicMock(side_effect=visa.VisaIOError(123)),
-    ), pytest.raises(visa.Error):
+    with (
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.write",
+            mock.MagicMock(side_effect=visa.VisaIOError(123)),
+        ),
+        pytest.raises(visa.Error),
+    ):
         scope.write("INVALID")
     with mock.patch(
         "pyvisa.resources.resource.Resource.wait_on_event",
         mock.MagicMock(return_value=object()),
     ):
         assert scope.wait_for_srq_event(1)
-    with mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.read",
-        mock.MagicMock(return_value="2"),
-    ), pytest.raises(SystemError):
+    with (
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read",
+            mock.MagicMock(return_value="2"),
+        ),
+        pytest.raises(SystemError),
+    ):
         scope.write("FACTORY", opc=True)
     # from OPC return which was previously mocked and unable to be read
     assert scope.read() == "1"
@@ -112,10 +121,13 @@ def test_pi_control(  # noqa: PLR0915
     assert scope.visa_timeout == old_timeout
 
     # Test closing a device that is powered off
-    with mock.patch(
-        "pyvisa.resources.resource.Resource.close",
-        mock.MagicMock(side_effect=visa.VisaIOError(123)),
-    ), pytest.warns(Warning):
+    with (
+        mock.patch(
+            "pyvisa.resources.resource.Resource.close",
+            mock.MagicMock(side_effect=visa.VisaIOError(123)),
+        ),
+        pytest.warns(Warning),
+    ):
         scope._close()  # noqa: SLF001
         assert scope._visa_resource is None  # noqa: SLF001
         assert not scope._is_open  # noqa: SLF001

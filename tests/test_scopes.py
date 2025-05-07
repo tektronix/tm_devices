@@ -519,15 +519,19 @@ def test_tekscopepc(
     ):
         scope.save_screenshot("temp.png", device_folder="filename.txt")
 
-    with mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
-        mock.MagicMock(return_value=b"1234"),
-    ), mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.write",
-        mock.MagicMock(return_value=None),
-    ), mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.read",
-        mock.MagicMock(return_value="1"),  # this mocks the *OPC? query return value
+    with (
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
+            mock.MagicMock(return_value=b"1234"),
+        ),
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.write",
+            mock.MagicMock(return_value=None),
+        ),
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read",
+            mock.MagicMock(return_value="1"),  # this mocks the *OPC? query return value
+        ),
     ):
         scope.enable_verification = False
         filename = pathlib.Path(
@@ -542,10 +546,13 @@ def test_tekscopepc(
         assert f'FILESYSTEM:READFILE "./{filename.as_posix()}"' in stdout
         assert f'FILESYSTEM:DELETE "./{filename.as_posix()}"' in stdout
 
-    with mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
-        mock.MagicMock(return_value=b"5678"),
-    ), scope.temporary_enable_verification(True):
+    with (
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
+            mock.MagicMock(return_value=b"5678"),
+        ),
+        scope.temporary_enable_verification(True),
+    ):
         filename = pathlib.Path("temp.png")
         local_file = tmp_path / "folder" / filename
         scope.save_screenshot(

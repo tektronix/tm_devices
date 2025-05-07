@@ -27,10 +27,13 @@ def test_ss(device_manager: DeviceManager) -> None:
 
     with mock.patch("pyvisa.highlevel.VisaLibraryBase.clear", mock.MagicMock(return_value=None)):
         assert switch.query_expect_timeout("INVALID?", timeout_ms=1) == ""
-    with mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.query",
-        mock.MagicMock(side_effect=visa.errors.Error("custom error")),
-    ), pytest.raises(visa.errors.Error):
+    with (
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.query",
+            mock.MagicMock(side_effect=visa.errors.Error("custom error")),
+        ),
+        pytest.raises(visa.errors.Error),
+    ):
         switch.query_expect_timeout("INVALID?", timeout_ms=1)
     assert switch.expect_esr(32, ("Command error", "No Error"))
     assert switch.total_channels == 576

@@ -136,9 +136,11 @@ def test_check_network_connection() -> None:
 def test_check_port_connection() -> None:
     """Test checking a port connection."""
     stdout = StringIO()
-    with redirect_stdout(stdout), mock.patch(
-        "socket.socket.connect", mock.MagicMock(return_value=None)
-    ), mock.patch("socket.socket.shutdown", mock.MagicMock(return_value=None)):
+    with (
+        redirect_stdout(stdout),
+        mock.patch("socket.socket.connect", mock.MagicMock(return_value=None)),
+        mock.patch("socket.socket.shutdown", mock.MagicMock(return_value=None)),
+    ):
         assert check_port_connection("name", "127.0.0.1", 80, timeout_seconds=1)
     message = stdout.getvalue()
     assert "(name) >> checking if port 80 is open on 127.0.0.1" in message
@@ -323,12 +325,15 @@ def test_get_visa_backend() -> None:
 
     try:
         _get_system_visa_info.cache_clear()
-        with mock.patch(
-            "pyvisa.util.get_system_details",
-            mock.MagicMock(return_value=testing_system_details),
-        ), mock.patch(
-            "platform.system",
-            mock.MagicMock(return_value="windows"),
+        with (
+            mock.patch(
+                "pyvisa.util.get_system_details",
+                mock.MagicMock(return_value=testing_system_details),
+            ),
+            mock.patch(
+                "platform.system",
+                mock.MagicMock(return_value="windows"),
+            ),
         ):
             assert get_visa_backend("tests/sim_devices/devices.yaml") == "PyVISA-sim"
             assert get_visa_backend("py") == "PyVISA-py"

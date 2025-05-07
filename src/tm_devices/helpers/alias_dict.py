@@ -1,18 +1,12 @@
 """A Module containing a custom dictionary class that works with alias keys."""
 
-import sys
+from typing import Any, TYPE_CHECKING
 
-from typing import Any, Dict, MutableMapping, Type
-
-# TODO: Drop Python 3.8: Once Python 3.8 is no longer supported,
-#  the dynamic parent class can be removed
-# pylint: disable=unsubscriptable-object,useless-suppression
-ParentDictClass: Type[Dict[Any, Any]] = dict if sys.version_info < (3, 9) else dict[Any, Any]
+if TYPE_CHECKING:
+    from collections.abc import MutableMapping
 
 
-# TODO: Drop Python 3.8: Once Python 3.8 is no longer supported,
-#  replace the parent class with `dict[Any, Any]`
-class AliasDict(ParentDictClass):
+class AliasDict(dict[Any, Any]):
     """A custom dictionary class that supports aliases as secondary keys.
 
     Each alias and key that is added must be unique, no duplicate aliases or keys are allowed.

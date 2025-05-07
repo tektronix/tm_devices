@@ -191,7 +191,7 @@ devices:
             - Different products may support ranges outside the commonly used rates
                 listed here.
         - `data_bits:` The number of data bits in each character.
-            - One of \[5, 6, 7, 8\].
+            - One of [5, 6, 7, 8].
         - `flow_control:` Control for pausing/resuming data stream between slower
             devices.
             - Valid options: `none`, `xon_xoff`, `dtr_dsr`, or `rts_cts`

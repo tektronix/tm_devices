@@ -14,12 +14,12 @@ from typing import (
     Dict,
     get_type_hints,
     List,
-    Mapping,
     Optional,
     Protocol,
     runtime_checkable,
     Tuple,
     Type,
+    TYPE_CHECKING,
     Union,
 )
 
@@ -39,6 +39,9 @@ from tm_devices.helpers import (
 from tm_devices.helpers.constants_and_dataclasses import (
     CONFIG_CLASS_STR_PREFIX_MAPPING,
 )
+
+if TYPE_CHECKING:
+    from collections.abc import Mapping
 
 
 @runtime_checkable
@@ -452,7 +455,7 @@ class DMConfigParser:
         for entry in devices_list:
             # Bundle any prefixed pairs into a nested kwarg-style dict.
             for to_class, prefix in CONFIG_CLASS_STR_PREFIX_MAPPING.items():
-                config_dict: Dict[str, str]
+                config_dict: Dict[str, str] = {}
                 if config_dict := {
                     key.replace(prefix, ""): entry.pop(key)
                     for key in list(entry.keys())

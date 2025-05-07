@@ -13,7 +13,7 @@ import time
 import warnings
 
 from enum import EnumMeta
-from functools import lru_cache
+from functools import cache
 from typing import Any, Dict, Optional, Tuple, Type
 
 import requests
@@ -758,7 +758,7 @@ def _configure_visa_object(
     return visa_object
 
 
-@lru_cache(maxsize=None)
+@cache
 def _get_system_visa_info() -> Dict[str, Any]:
     """Get the VISA information for the current system.
 

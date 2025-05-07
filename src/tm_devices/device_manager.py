@@ -13,7 +13,7 @@ import socket
 import warnings
 
 from types import FrameType, MappingProxyType, TracebackType
-from typing import cast, Dict, Mapping, Optional, Tuple, Type, TYPE_CHECKING, Union
+from typing import cast, Dict, Optional, Tuple, Type, TYPE_CHECKING, Union
 
 from typing_extensions import TypeVar
 
@@ -58,6 +58,8 @@ with warnings.catch_warnings():
 
 
 if TYPE_CHECKING:
+    from collections.abc import Mapping
+
     from pyvisa.resources import MessageBasedResource
     from typing_extensions import Self
 

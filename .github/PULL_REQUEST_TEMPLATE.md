@@ -2,7 +2,7 @@
 
 Please include a summary of the changes and any links to related issues. Please also include relevant motivation and context.
 
-Addresses #\< fill in issue number here >
+Addresses #< fill in issue number here >
 
 ## Types of changes
 
