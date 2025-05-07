@@ -30,7 +30,7 @@ with DeviceManager(verbose=True) as dm:
     # Disable just for the scope
     scope.enable_verification = False
     # Disable command verification for all devices
-    dm.disable_device_command_checking()
+    dm.disable_command_verification = True
 
     #
     # Set some values, but now **no verification** will happen in any of these method calls.
@@ -47,3 +47,10 @@ with DeviceManager(verbose=True) as dm:
     # using the command verification context manager on the auto-generated commands
     with smu.command_verification():
         smu.commands.beeper.enable = 0
+
+    #
+    # Temporarily enable verification for a few commands
+    #
+    with scope.temporary_enable_verification(True):
+        # This will be verified
+        scope.set_and_check(":HORIZONTAL:SCALE", 500e-9)

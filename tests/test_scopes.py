@@ -549,8 +549,7 @@ def test_tekscopepc(
     with mock.patch(
         "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
         mock.MagicMock(return_value=b"5678"),
-    ):
-        scope.enable_verification = True
+    ), scope.temporary_enable_verification(True):
         filename = pathlib.Path("temp.png")
         local_file = tmp_path / "folder" / filename
         scope.save_screenshot(
