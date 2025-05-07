@@ -18,6 +18,21 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+---
+
+## v3.2.0 (2025-05-07)
+
+### Merged Pull Requests
+
+- feat: Add disable_command_verification config file and environment variable option to enable speeding up automation scripts ([#428](https://github.com/tektronix/tm_devices/pull/428))
+- python-deps(deps-dev): update ruff requirement from 0.11.7 to 0.11.8 in the python-dependencies group ([#422](https://github.com/tektronix/tm_devices/pull/422))
+- fix: Ensure VISA timeout is reset after reboot in pi_control ([#425](https://github.com/tektronix/tm_devices/pull/425))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#416](https://github.com/tektronix/tm_devices/pull/416))
+- Add tip in contribution guide pointing users to online docs for better viewing ([#419](https://github.com/tektronix/tm_devices/pull/419))
+- fix: Fixed the `limit[Y]` commands on certain models which were being generated incorrectly ([#415](https://github.com/tektronix/tm_devices/pull/415))
+- gh-actions(deps): bump tektronix/python-package-ci-cd ([#412](https://github.com/tektronix/tm_devices/pull/412))
+- python-deps(deps-dev): update ruff requirement from 0.11.2 to 0.11.4 in the python-dependencies group ([#413](https://github.com/tektronix/tm_devices/pull/413))
+
 ### Added
 
 - Added a new config option (settable via config file or environment variable) to allow users to
