@@ -143,6 +143,7 @@ class DeviceManager(metaclass=Singleton):
         self.__verbose: bool = NotImplemented
         self.__teardown_cleanup_enabled: bool = NotImplemented
         self.__setup_cleanup_enabled: bool = NotImplemented
+        self.__disable_command_verification: bool = NotImplemented
         self.__visa_library: str = NotImplemented
         self.__default_visa_timeout: int = NotImplemented
 
@@ -212,13 +213,27 @@ class DeviceManager(metaclass=Singleton):
         return MappingProxyType(self.__devices)
 
     @property
+    def disable_command_verification(self) -> bool:
+        """Indicate if command verification is disabled for all devices."""
+        return self.__disable_command_verification
+
+    @disable_command_verification.setter
+    def disable_command_verification(self, value: bool) -> None:
+        """Set the property which will disable (or enable) command verification for all devices."""
+        self.__protect_access()
+        self.__config.options.disable_command_verification = value
+        self.__disable_command_verification = value
+        for device in self.__devices.values():
+            device.enable_verification = not value
+
+    @property
     def is_open(self) -> bool:
-        """Return a boolean indicating if the DeviceManager has closed all device connections."""
+        """Indicate if the DeviceManager has closed all device connections."""
         return self.__is_open
 
     @property
     def teardown_cleanup_enabled(self) -> bool:
-        """Return a boolean indicating if cleanup at teardown is enabled for devices."""
+        """Indicate if cleanup at teardown is enabled for devices."""
         return self.__teardown_cleanup_enabled
 
     @teardown_cleanup_enabled.setter
@@ -229,7 +244,7 @@ class DeviceManager(metaclass=Singleton):
 
     @property
     def setup_cleanup_enabled(self) -> bool:
-        """Return a boolean indicating if cleanup at setup is enabled for devices."""
+        """Indicate if cleanup at setup is enabled for devices."""
         return self.__setup_cleanup_enabled
 
     @setup_cleanup_enabled.setter
@@ -716,12 +731,16 @@ class DeviceManager(metaclass=Singleton):
     def disable_device_command_checking(self) -> None:
         """Set the `.enable_verification` attribute of each device to `False`.
 
-        This has the effect of speeding up automation scripts that no longer require checking each
-        command after it is sent.
+        This can have the effect of speeding up automation scripts by no longer checking each
+        command after it is sent via the `.set_and_check()` method.
         """
-        self.__protect_access()
-        for device in self.__devices.values():
-            device.enable_verification = False
+        deprecation_msg = (
+            "``DeviceManager.disable_device_command_checking()`` is deprecated. "
+            "Use the ``DeviceManager.disable_command_verification`` property instead."
+        )
+        _logger.warning(deprecation_msg)
+        warnings.warn(deprecation_msg, DeprecationWarning, stacklevel=2)
+        self.disable_command_verification = True
 
     def get_available_devices(
         self, search: str = "", configured: bool = True, local: bool = True
@@ -1434,6 +1453,9 @@ class DeviceManager(metaclass=Singleton):
         )
         self.__teardown_cleanup_enabled = bool(self.__config.options.teardown_cleanup)
         self.__setup_cleanup_enabled = bool(self.__config.options.setup_cleanup)
+        self.__disable_command_verification = bool(
+            self.__config.options.disable_command_verification
+        )
         self.__default_visa_timeout = (
             5000
             if self.__config.options.default_visa_timeout is None

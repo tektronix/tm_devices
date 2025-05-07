@@ -226,6 +226,7 @@ options:
   standalone: false
   setup_cleanup: false
   teardown_cleanup: false
+  disable_command_verification: false
   retry_visa_connection: false
   default_visa_timeout: 5000
   check_for_updates: false
@@ -256,6 +257,11 @@ runtime behavior configuration.
 - `teardown_cleanup`
     - This config option will make the Device Manager run a cleanup on teardown,
         so devices will get reset on close.
+- `disable_command_verification`
+    - This config option will disable command verification for all devices.
+        - By default, command verification is enabled for all devices. Disabling the command verification
+            (after verifying the script is working as intended) can have the effect of speeding up
+            automation scripts by no longer checking each command after it is sent via the `.set_and_check()` method.
 - `retry_visa_connection`
     - This config option will enable a second attempt when creating VISA connections,
         the second attempt is made after waiting, to allow the device time to become available.
@@ -349,6 +355,7 @@ devices:
 options:
   setup_cleanup: true
   teardown_cleanup: true
+  disable_command_verification: true
   standalone: false
   verbose_mode: false
   verbose_visa: false
@@ -431,6 +438,7 @@ lan_port = 5000
 [options]
 setup_cleanup = true
 teardown_cleanup = true
+disable_command_verification = true
 standalone = false
 verbose_mode = false
 verbose_visa = false

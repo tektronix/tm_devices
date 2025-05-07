@@ -18,6 +18,12 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added a new config option (settable via config file or environment variable) to allow users to
+    disable command verification (primarily affecting the `.set_and_check()` method) in order to
+    speed up automation scripts that have verified, known good command sequences.
+
 ### Fixed
 
 - Fixed a bug in the auto-generated commands for certain models where the `limit[Y]` commands were incorrectly generated.

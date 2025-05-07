@@ -1,10 +1,9 @@
+# pylint: disable=too-many-lines
 """Base TekScope scope device driver module."""
 
 from __future__ import annotations
 
 import logging
-
-# pylint: disable=too-many-lines
 import math
 import os
 import time
