@@ -1,7 +1,7 @@
 """The mapping for all device drivers."""
 
 from types import MappingProxyType
-from typing import Mapping, Type, TYPE_CHECKING
+from typing import Type, TYPE_CHECKING
 
 from tm_devices.drivers.afgs.afg3k import AFG3K
 from tm_devices.drivers.afgs.afg3kb import AFG3KB
@@ -105,6 +105,8 @@ from tm_devices.drivers.systems_switches.ss3706a import SS3706A
 from tm_devices.helpers.enums import SupportedModels
 
 if TYPE_CHECKING:
+    from collections.abc import Mapping
+
     from tm_devices.drivers.device import Device
 
 ####################################################################################################

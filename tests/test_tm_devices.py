@@ -3,11 +3,12 @@
 import inspect
 
 from abc import ABC
+from collections.abc import Generator
 
 # noinspection PyUnresolvedReferences
 from functools import _lru_cache_wrapper, cached_property  # pyright: ignore [reportPrivateUsage]
 from types import FunctionType
-from typing import Any, Generator, List, Set, Type
+from typing import Any, List, Set, Type
 
 import pytest
 

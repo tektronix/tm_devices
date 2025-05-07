@@ -37,14 +37,17 @@ def test_unsupported_device_type_class(device_manager: DeviceManager) -> None:
             "UNSUPPORTED": CustomUnsupportedDeviceUnitTestOnly
         }
 
-        with pytest.warns(
-            UserWarning,
-            match="An unsupported device type is being added to the DeviceManager. "
-            "Not all functionality will be available in the device driver. "
-            "Please consider contributing to tm_devices to implement official support for "
-            "this device type.",
-        ), pytest.warns(
-            UserWarning, match='The "UNSUPPORTED" model is not supported by tm_devices'
+        with (
+            pytest.warns(
+                UserWarning,
+                match="An unsupported device type is being added to the DeviceManager. "
+                "Not all functionality will be available in the device driver. "
+                "Please consider contributing to tm_devices to implement official support for "
+                "this device type.",
+            ),
+            pytest.warns(
+                UserWarning, match='The "UNSUPPORTED" model is not supported by tm_devices'
+            ),
         ):
             unsupported_device: CustomUnsupportedDeviceUnitTestOnly = (
                 device_manager.add_unsupported_device(
@@ -62,14 +65,17 @@ def test_unsupported_device_type_class(device_manager: DeviceManager) -> None:
         assert device_manager.devices == {}
 
         # Load in the device from a config file
-        with pytest.warns(
-            UserWarning,
-            match="An unsupported device type is being added to the DeviceManager. "
-            "Not all functionality will be available in the device driver. "
-            "Please consider contributing to tm_devices to implement official support for "
-            "this device type.",
-        ), pytest.warns(
-            UserWarning, match='The "UNSUPPORTED" model is not supported by tm_devices'
+        with (
+            pytest.warns(
+                UserWarning,
+                match="An unsupported device type is being added to the DeviceManager. "
+                "Not all functionality will be available in the device driver. "
+                "Please consider contributing to tm_devices to implement official support for "
+                "this device type.",
+            ),
+            pytest.warns(
+                UserWarning, match='The "UNSUPPORTED" model is not supported by tm_devices'
+            ),
         ):
             device_manager.load_config_file(
                 Path(__file__).parent / "samples/unsupported_device_type_config.yaml"

@@ -6,20 +6,13 @@ Please report an issue if one is found.
 """
 
 import re
-import sys
 
 from collections import defaultdict
 from functools import total_ordering
-from typing import Any, Callable, DefaultDict, Optional, Type, Union
+from typing import Any, Callable, Optional, Union
 
 END_OF_STRING_DIGITS = re.compile(r"([-\d]+)]?$")
 MIDDLE_OF_STRING_DIGITS = re.compile(r"([-\d]+)]?")
-# TODO: Drop Python 3.8: Once Python 3.8 is no longer supported,
-#  the dynamic parent class can be removed
-# pylint: disable=unsubscriptable-object,useless-suppression
-ParentDefaultDictClass: Type[DefaultDict[Any, Any]] = (
-    defaultdict if sys.version_info < (3, 9) else defaultdict[Any, Any]
-)
 
 
 ####################################################################################################
@@ -32,7 +25,7 @@ class NoDeviceProvidedError(Exception):
 ####################################################################################################
 # Classes
 ####################################################################################################
-class DefaultDictPassKeyToFactory(ParentDefaultDictClass):
+class DefaultDictPassKeyToFactory(defaultdict[Any, Any]):
     """A custom defaultdict.
 
     This custom defaultdict passes the key used to access a missing value into the stored

@@ -3,7 +3,8 @@
 import logging
 import warnings
 
-from typing import Any, MutableMapping
+from collections.abc import MutableMapping
+from typing import Any
 from weakref import WeakValueDictionary
 
 _logger: logging.Logger = logging.getLogger(__name__)

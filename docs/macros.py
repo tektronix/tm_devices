@@ -6,8 +6,9 @@ import os
 import pathlib
 import re
 
+from collections.abc import Generator
 from importlib import import_module
-from typing import Any, Generator, Optional, Set, Tuple
+from typing import Any, Optional, Set, Tuple
 
 import tomli
 

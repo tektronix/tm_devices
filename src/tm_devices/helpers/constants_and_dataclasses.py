@@ -2,9 +2,10 @@
 
 import re
 
+from collections.abc import Mapping
 from dataclasses import dataclass
 from types import MappingProxyType
-from typing import Dict, Final, FrozenSet, List, Mapping, Optional, Tuple, Union
+from typing import Dict, Final, FrozenSet, List, Optional, Tuple, Union
 
 from pyvisa import constants as pyvisa_constants
 
