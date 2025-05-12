@@ -52,7 +52,7 @@ repos:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: e177141ec11f6bf72a6661c6a9fabebe3b670251  # frozen: v4.6.3
+    rev: be02801f92cb948ba86d8c1a9a306be4172e4efe  # frozen: v4.7.0
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -134,7 +134,7 @@ repos:
         always_run: true
         args: [audit, --json, --ignore-code=CVE-2019-8341]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: f0fe93c067104b76ffb58852abe79673a8429bd1  # frozen: v0.11.8
+    rev: 24e02b24b8ab2b7c76225602d13fa60e12d114e6  # frozen: v0.11.9
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
