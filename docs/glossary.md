@@ -33,7 +33,7 @@ DMM
 : Digital Multimeter
 
 DPOJET
-:  A jitter, noise, timing, and eye diagram analysis tool for Tektronix Performance Digital Oscilloscopes
+: A jitter, noise, timing, and eye diagram analysis tool for Tektronix Performance Digital Oscilloscopes
 
 GPIB
 : General Purpose Interface Bus

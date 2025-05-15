@@ -212,7 +212,7 @@ devices:
         - Different products may support ranges outside the commonly used rates
             listed here.
     - `data_bits:` The number of data bits in each character.
-        - One of \[5, 6, 7, 8\].
+        - One of [5, 6, 7, 8].
     - `flow_control:` Control for pausing/resuming data stream between slower
         devices.
         - Valid options: `none`, `xon_xoff`, `dtr_dsr`, or `rts_cts`
@@ -251,6 +251,7 @@ options:
   standalone: false
   setup_cleanup: false
   teardown_cleanup: false
+  disable_command_verification: false
   retry_visa_connection: false
   default_visa_timeout: 5000
   check_for_updates: false
@@ -290,6 +291,13 @@ options:
 
 - This config option will make the Device Manager run a cleanup on teardown,
     so devices will get reset on close.
+
+##### `disable_command_verification`
+
+- This config option will disable command verification for all devices.
+    - By default, command verification is enabled for all devices. Disabling the command verification
+        (after verifying the script is working as intended) can have the effect of speeding up
+        automation scripts by no longer checking each command after it is sent via the `.set_and_check()` method.
 
 ##### `retry_visa_connection`
 
@@ -403,6 +411,7 @@ devices:
 options:
   setup_cleanup: true
   teardown_cleanup: true
+  disable_command_verification: true
   standalone: false
   verbose_mode: false
   verbose_visa: false
@@ -485,6 +494,7 @@ lan_port = 5000
 [options]
 setup_cleanup = true
 teardown_cleanup = true
+disable_command_verification = true
 standalone = false
 verbose_mode = false
 verbose_visa = false

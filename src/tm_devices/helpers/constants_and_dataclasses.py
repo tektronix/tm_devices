@@ -2,9 +2,10 @@
 
 import re
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from types import MappingProxyType
-from typing import Any, cast, Dict, Final, FrozenSet, List, Literal, Mapping, Optional, Tuple, Union
+from typing import Any, cast, Dict, Final, FrozenSet, List, Literal, Optional, Tuple, Union
 
 from dc_schema import SchemaAnnotation  # pyright: ignore[reportMissingTypeStubs]
 from pyvisa import constants as pyvisa_constants
@@ -213,7 +214,7 @@ class SerialConfig(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _ConfigEntry
         if isinstance(self.baud_rate, str):
             self.baud_rate = int(self.baud_rate)
         if isinstance(self.data_bits, str):
-            self.data_bits = cast(Literal[5, 6, 7, 8], int(self.data_bits))
+            self.data_bits = cast("Literal[5, 6, 7, 8]", int(self.data_bits))
         if isinstance(self.flow_control, str):
             self.flow_control = getattr(self.FlowControl, self.flow_control)
         if isinstance(self.parity, str):
@@ -613,6 +614,20 @@ class DMConfigOptions(AsDictionaryMixin):
         ),
     ] = None
     """A verbosity flag to turn on more printouts to stdout."""
+    disable_command_verification: Annotated[
+        Optional[bool],
+        SchemaAnnotation(
+            description=(
+                "Indicate if command verification should be disabled for all devices\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#disable_command_verification"
+            ),
+        ),
+    ] = None
+    """A flag that disables command verification for all devices.
+
+    This can have the effect of speeding up automation scripts by no longer checking each command
+    after it is sent via the `.set_and_check()` method.
+    """
     verbose_visa: Annotated[
         Optional[bool],
         SchemaAnnotation(
@@ -751,7 +766,15 @@ class DMConfigOptions(AsDictionaryMixin):
     Defaults to False. See the [`configure_logging()`][tm_devices.helpers.logging.configure_logging]
     function for more information and default values.
     """
-    log_uncaught_exceptions: Optional[bool] = None
+    log_uncaught_exceptions: Annotated[
+        Optional[bool],
+        SchemaAnnotation(
+            description=(
+                "Indicate if uncaught exceptions should be logged to the log file with full tracebacks\n"
+                "https://tm-devices.readthedocs.io/stable/configuration/#log_uncaught_exceptions"
+            )
+        ),
+    ] = None
     """Whether to log uncaught exceptions to the log file with full tracebacks.
 
     This behavior also reduces the traceback size of exceptions in the console. Setting

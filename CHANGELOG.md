@@ -18,9 +18,35 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Removed
+
+- Python 3.8 support has been removed from the package. The minimum supported version is now Python 3.9.
+
+---
+
+## v3.2.0 (2025-05-07)
+
+### Merged Pull Requests
+
+- feat: Add disable_command_verification config file and environment variable option to enable speeding up automation scripts ([#428](https://github.com/tektronix/tm_devices/pull/428))
+- python-deps(deps-dev): update ruff requirement from 0.11.7 to 0.11.8 in the python-dependencies group ([#422](https://github.com/tektronix/tm_devices/pull/422))
+- fix: Ensure VISA timeout is reset after reboot in pi_control ([#425](https://github.com/tektronix/tm_devices/pull/425))
+- python-deps(deps-dev): bump the python-dependencies group with 2 updates ([#416](https://github.com/tektronix/tm_devices/pull/416))
+- Add tip in contribution guide pointing users to online docs for better viewing ([#419](https://github.com/tektronix/tm_devices/pull/419))
+- fix: Fixed the `limit[Y]` commands on certain models which were being generated incorrectly ([#415](https://github.com/tektronix/tm_devices/pull/415))
+- gh-actions(deps): bump tektronix/python-package-ci-cd ([#412](https://github.com/tektronix/tm_devices/pull/412))
+- python-deps(deps-dev): update ruff requirement from 0.11.2 to 0.11.4 in the python-dependencies group ([#413](https://github.com/tektronix/tm_devices/pull/413))
+
+### Added
+
+- Added a new config option (settable via config file or environment variable) to allow users to
+    disable command verification (primarily affecting the `.set_and_check()` method) in order to
+    speed up automation scripts that have verified, known good command sequences.
+
 ### Fixed
 
 - Fixed a bug in the auto-generated commands for certain models where the `limit[Y]` commands were incorrectly generated.
+- Ensure the VISA timeout is reset after a VISA device is rebooted.
 
 ---
 
@@ -28,7 +54,7 @@ Things to be included in the next release go here.
 
 ### Merged Pull Requests
 
-- Set offset after impedance so that it is properly adjusted  ([#411](https://github.com/tektronix/tm_devices/pull/411))
+- Set offset after impedance so that it is properly adjusted ([#411](https://github.com/tektronix/tm_devices/pull/411))
 
 ### Fixed
 
@@ -666,7 +692,7 @@ However, please read through all changes to be aware of what may potentially imp
 ### Merged Pull Requests
 
 - fix: Removed unused command files. ([#143](https://github.com/tektronix/tm_devices/issues/143))
-- fix: modified API under MSO 2,4,5,6 modules  ([#142](https://github.com/tektronix/tm_devices/issues/142))
+- fix: modified API under MSO 2,4,5,6 modules ([#142](https://github.com/tektronix/tm_devices/issues/142))
 - Update PI Device close method to catch VisaIOErrors ([#141](https://github.com/tektronix/tm_devices/issues/141))
 - ci: Update pre-commit hooks and linter versions. ([#139](https://github.com/tektronix/tm_devices/issues/139))
 - gh-actions(deps): Bump the gh-actions-dependencies group with 1 update ([#123](https://github.com/tektronix/tm_devices/issues/123))

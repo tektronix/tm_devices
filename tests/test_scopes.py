@@ -16,6 +16,7 @@ import pyvisa as visa
 from dateutil.tz import tzlocal
 from packaging.version import Version
 
+from conftest import UNIT_TEST_TIMEOUT
 from tm_devices import DeviceManager, register_additional_usbtmc_mapping
 from tm_devices.drivers import MSO2, MSO2KB, MSO5, MSO5B, MSO6, MSO70KDX, TekScopePC, TSOVu
 from tm_devices.drivers.scopes.tekscope.tekscope import (
@@ -210,8 +211,11 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     # Test that single sequence can be set
     scope.single_sequence()
 
-    # simulate a reboot
+    # simulate a reboot and verify the visa timeout has been reset to the default value
+    scope.visa_timeout = 1000
+    assert scope.visa_timeout == 1000
     scope.reboot()
+    assert scope.visa_timeout == UNIT_TEST_TIMEOUT
 
     # test some internal assertions
     with pytest.raises(AssertionError, match="none is not a valid item.*"):
@@ -515,15 +519,19 @@ def test_tekscopepc(
     ):
         scope.save_screenshot("temp.png", device_folder="filename.txt")
 
-    with mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
-        mock.MagicMock(return_value=b"1234"),
-    ), mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.write",
-        mock.MagicMock(return_value=None),
-    ), mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.read",
-        mock.MagicMock(return_value="1"),  # this mocks the *OPC? query return value
+    with (
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
+            mock.MagicMock(return_value=b"1234"),
+        ),
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.write",
+            mock.MagicMock(return_value=None),
+        ),
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read",
+            mock.MagicMock(return_value="1"),  # this mocks the *OPC? query return value
+        ),
     ):
         scope.enable_verification = False
         filename = pathlib.Path(
@@ -538,11 +546,13 @@ def test_tekscopepc(
         assert f'FILESYSTEM:READFILE "./{filename.as_posix()}"' in stdout
         assert f'FILESYSTEM:DELETE "./{filename.as_posix()}"' in stdout
 
-    with mock.patch(
-        "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
-        mock.MagicMock(return_value=b"5678"),
+    with (
+        mock.patch(
+            "pyvisa.resources.messagebased.MessageBasedResource.read_raw",
+            mock.MagicMock(return_value=b"5678"),
+        ),
+        scope.temporary_enable_verification(True),
     ):
-        scope.enable_verification = True
         filename = pathlib.Path("temp.png")
         local_file = tmp_path / "folder" / filename
         scope.save_screenshot(

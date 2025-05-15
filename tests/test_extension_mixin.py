@@ -9,9 +9,11 @@ import contextlib
 import os
 import subprocess
 import sys
+import warnings
 
+from collections.abc import Iterator
 from pathlib import Path
-from typing import Any, Iterator, List
+from typing import Any, List
 from unittest import mock
 
 import pytest
@@ -316,10 +318,18 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
 
     # Test VISA methods
     assert afg.set_and_check("OUTPUT1:STATE", "1", custom_message_prefix="Custom prefix") == "1"
-    device_manager.disable_device_command_checking()
+    assert not device_manager.disable_command_verification
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", DeprecationWarning)
+        device_manager.disable_device_command_checking()
+    assert device_manager.disable_command_verification
     assert afg.set_and_check("OUTPUT1:STATE", "0") == ""
     device_manager.cleanup_all_devices()
     console_output = capsys.readouterr()
+    assert (
+        "``DeviceManager.disable_device_command_checking()`` is deprecated. "
+        "Use the ``DeviceManager.disable_command_verification`` property instead."
+    ) in console_output.out
     assert "Beginning Device Cleanup on AFG " in console_output.out
     assert "Response from 'OUTPUT1:STATE?' >>  '1'" in console_output.out
     assert "Response from 'OUTPUT1:STATE?' >>  '0'" not in console_output.out

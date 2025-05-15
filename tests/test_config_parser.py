@@ -3,7 +3,7 @@
 
 from pathlib import Path
 from types import MappingProxyType
-from typing import Dict, Mapping, Optional, Type
+from typing import Dict, Optional, Type, TYPE_CHECKING
 from unittest import mock
 
 import pytest
@@ -19,6 +19,9 @@ from tm_devices.helpers import (
 )
 from tm_devices.helpers.constants_and_dataclasses import CONFIG_CLASS_STR_PREFIX_MAPPING
 
+if TYPE_CHECKING:
+    from collections.abc import Mapping
+
 
 def test_nested_config_prefix_mapping() -> None:
     """Test the DMConfigParser knows about all the things in CONFIG_CLASS_STR_PREFIX_MAPPING."""
@@ -32,7 +35,12 @@ def test_nested_config_prefix_mapping() -> None:
 
 def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None:
     """Test the environment variable config method."""
-    options = ["STANDALONE", "DEFAULT_VISA_TIMEOUT=10000", "LOG_FILE_LEVEL=NONE"]
+    options = [
+        "STANDALONE",
+        "DEFAULT_VISA_TIMEOUT=10000",
+        "LOG_FILE_LEVEL=NONE",
+        "DISABLE_COMMAND_VERIFICATION",
+    ]
     expected_device_string = (
         "address=MSO54-123456,connection_type=TCPIP,device_type=SCOPE,lan_device_name=hislip0"
     )
@@ -56,13 +64,15 @@ def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None
     assert config.options.standalone
     assert config.options.log_file_level == "NONE"
     assert config.options.default_visa_timeout == 10000
+    assert config.options.disable_command_verification
     assert config.devices == expected_entry, (
         f"\nDevice dictionaries don't match:\n{expected_entry}\n{config.devices}"
     )
 
     # test that the config string representation looks like env declaration
     expected_entry_string = (
-        f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT=10000,LOG_FILE_LEVEL=NONE,STANDALONE\n"
+        f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT=10000,DISABLE_COMMAND_VERIFICATION,"
+        f"LOG_FILE_LEVEL=NONE,STANDALONE\n"
         f"TM_DEVICES=~~~{expected_device_string}~~~"
     )
     print(config)  # noqa: T201
@@ -102,7 +112,8 @@ def test_environment_variable_config(capsys: pytest.CaptureFixture[str]) -> None
         f"\nDevice dictionaries don't match:\n{expected_entry}\n{config.devices}"
     )
     expected_entry_string = (
-        f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT=10000,LOG_FILE_LEVEL=NONE,STANDALONE\n"
+        f"TM_OPTIONS=DEFAULT_VISA_TIMEOUT=10000,DISABLE_COMMAND_VERIFICATION,"
+        f"LOG_FILE_LEVEL=NONE,STANDALONE\n"
         f"TM_DEVICES=~~~{expected_device_string}~~~"
     )
     print(config)  # noqa: T201
@@ -180,15 +191,18 @@ options:
             alias=None,
         ),
     }
-    with mock.patch.dict("os.environ", {}, clear=True), mock.patch(
-        "pathlib.Path.is_file", mock.MagicMock(return_value=True)
-    ), mock.patch("pathlib.Path.open", mock.mock_open(read_data=file_contents)):
+    with (
+        mock.patch.dict("os.environ", {}, clear=True),
+        mock.patch("pathlib.Path.is_file", mock.MagicMock(return_value=True)),
+        mock.patch("pathlib.Path.open", mock.mock_open(read_data=file_contents)),
+    ):
         config = DMConfigParser()
 
     assert expected_options == config.options
     assert expected_devices == config.devices, (
         f"\nDevice dictionaries don't match:\n{expected_devices}\n{config.devices}"
     )
+    assert not config.options.disable_command_verification
 
 
 @pytest.mark.parametrize(
@@ -441,8 +455,9 @@ def test_sequential_env_var_devices() -> None:
 
 def test_add_device() -> None:
     """Verify a device can be added to an empty config."""
-    with mock.patch.dict("os.environ", {}, clear=True), mock.patch(
-        "os.path.isfile", mock.MagicMock(return_value=False)
+    with (
+        mock.patch.dict("os.environ", {}, clear=True),
+        mock.patch("os.path.isfile", mock.MagicMock(return_value=False)),
     ):
         config = DMConfigParser()
     expected_devices_1: Mapping[str, DeviceConfigEntry] = MappingProxyType({})
@@ -571,11 +586,14 @@ def test_get_visa_resource_expression(
 def test_get_visa_resource_expression_errors() -> None:
     """Test creating a resource expression throws the proper errors."""
     # Test trying to connect to a USB device that doesn't exist
-    with mock.patch.dict(
-        "os.environ",
-        {"TM_DEVICES": "device_type=SCOPE,connection_type=USB,address=MSO123456-3000260000"},
-        clear=True,
-    ), pytest.warns(UserWarning):
+    with (
+        mock.patch.dict(
+            "os.environ",
+            {"TM_DEVICES": "device_type=SCOPE,connection_type=USB,address=MSO123456-3000260000"},
+            clear=True,
+        ),
+        pytest.warns(UserWarning),
+    ):
         config = DMConfigParser()
         device = config.devices["SCOPE 1"]
         with pytest.raises(NotImplementedError):

@@ -8,8 +8,9 @@ import time
 import warnings
 
 from abc import ABC
+from collections.abc import Generator, Sequence
 from pathlib import Path
-from typing import final, Generator, List, Optional, Sequence, Tuple, Union
+from typing import final, List, Optional, Tuple, Union
 
 import pyvisa as visa
 
@@ -1033,5 +1034,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
                     # raised by the create_visa_connection() function
                     pass
 
+        if self._visa_resource is not None:  # pyright: ignore[reportUnnecessaryComparison]
+            self.reset_visa_timeout()
         self._is_open = opened
         return opened

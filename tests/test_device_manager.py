@@ -195,24 +195,30 @@ options:
         # Remove all previous devices
         device_manager.remove_all_devices()
         # Test the warning logged with bad read_stb() call
-        with mock.patch(
-            "pyvisa.resources.messagebased.MessageBasedResource.read_stb",
-            mock.MagicMock(side_effect=visa.VisaIOError(pyvisa.constants.VI_ERROR_INV_SETUP)),
-        ), pytest.warns(
-            UserWarning,
-            match="A VISA IO error occurred when attempting to read the status byte or "
-            "clear the output buffer of the resource",
+        with (
+            mock.patch(
+                "pyvisa.resources.messagebased.MessageBasedResource.read_stb",
+                mock.MagicMock(side_effect=visa.VisaIOError(pyvisa.constants.VI_ERROR_INV_SETUP)),
+            ),
+            pytest.warns(
+                UserWarning,
+                match="A VISA IO error occurred when attempting to read the status byte or "
+                "clear the output buffer of the resource",
+            ),
         ):
             device_manager.add_afg("afg3252c-hostname", alias="warning_bad_read_stb")
         device_manager.remove_device(alias="warning_bad_read_stb")
 
         # Test the warning logged with message available (MAV) bit set
         # patched the stb to return 16 (message available)
-        with mock.patch(
-            "pyvisa.resources.messagebased.MessageBasedResource.read_stb",
-            mock.MagicMock(return_value=16),
-        ), pytest.warns(
-            UserWarning, match="had data sitting in the VISA Output Buffer on first connection."
+        with (
+            mock.patch(
+                "pyvisa.resources.messagebased.MessageBasedResource.read_stb",
+                mock.MagicMock(return_value=16),
+            ),
+            pytest.warns(
+                UserWarning, match="had data sitting in the VISA Output Buffer on first connection."
+            ),
         ):
             device_manager.add_afg("afg3252c-hostname", alias="warning_mav")
         device_manager.remove_device(alias="warning_mav")
@@ -234,15 +240,19 @@ options:
 
         # Test the error raised with bad *idn? return data
         # patched the stb to return 80 = 64 (Service Request) + 16 (message available)
-        with mock.patch(
-            "pyvisa.resources.messagebased.MessageBasedResource.read_stb",
-            mock.MagicMock(return_value=80),
-        ), mock.patch(
-            "pyvisa.resources.messagebased.MessageBasedResource.write",
-            mock.MagicMock(return_value=5),
-        ), mock.patch(
-            "pyvisa.resources.messagebased.MessageBasedResource.read",
-            mock.MagicMock(return_value="data"),
+        with (
+            mock.patch(
+                "pyvisa.resources.messagebased.MessageBasedResource.read_stb",
+                mock.MagicMock(return_value=80),
+            ),
+            mock.patch(
+                "pyvisa.resources.messagebased.MessageBasedResource.write",
+                mock.MagicMock(return_value=5),
+            ),
+            mock.patch(
+                "pyvisa.resources.messagebased.MessageBasedResource.read",
+                mock.MagicMock(return_value="data"),
+            ),
         ):
             with pytest.warns(UserWarning), pytest.raises(SystemError) as error:
                 device_manager.add_afg("afg3252c-hostname")
@@ -253,15 +263,19 @@ options:
             )
 
         # Test the error raised with timeout on *idn? query
-        with mock.patch(
-            "pyvisa.resources.messagebased.MessageBasedResource.read_stb",
-            mock.MagicMock(return_value=16),
-        ), mock.patch(
-            "pyvisa.resources.messagebased.MessageBasedResource.write",
-            mock.MagicMock(return_value=5),
-        ), mock.patch(
-            "pyvisa.resources.messagebased.MessageBasedResource.read",
-            mock.MagicMock(side_effect=visa.VisaIOError(pyvisa.constants.VI_ERROR_TMO)),
+        with (
+            mock.patch(
+                "pyvisa.resources.messagebased.MessageBasedResource.read_stb",
+                mock.MagicMock(return_value=16),
+            ),
+            mock.patch(
+                "pyvisa.resources.messagebased.MessageBasedResource.write",
+                mock.MagicMock(return_value=5),
+            ),
+            mock.patch(
+                "pyvisa.resources.messagebased.MessageBasedResource.read",
+                mock.MagicMock(side_effect=visa.VisaIOError(pyvisa.constants.VI_ERROR_TMO)),
+            ),
         ):
             # patched the stb to return 16 (message available)
             with pytest.warns(UserWarning), pytest.raises(SystemError) as error:
@@ -305,14 +319,18 @@ options:
         with pytest.raises(SystemError):
             device_manager.add_afg("BAD-IDN")
 
-        with mock.patch(
-            "pyvisa.ResourceManager", mock.MagicMock(side_effect=visa.Error())
-        ), pytest.raises(AssertionError):
+        with (
+            mock.patch("pyvisa.ResourceManager", mock.MagicMock(side_effect=visa.Error())),
+            pytest.raises(AssertionError),
+        ):
             device_manager.get_available_devices()
 
-        with mock.patch(
-            "pyvisa.ResourceManager.list_resources", mock.MagicMock(side_effect=visa.Error())
-        ), pytest.raises(AssertionError):
+        with (
+            mock.patch(
+                "pyvisa.ResourceManager.list_resources", mock.MagicMock(side_effect=visa.Error())
+            ),
+            pytest.raises(AssertionError),
+        ):
             device_manager.get_available_devices()
 
         with pytest.raises(TypeError):

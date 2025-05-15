@@ -5,8 +5,9 @@ import logging
 import time
 
 from abc import ABC, abstractmethod
+from collections.abc import Mapping
 from types import MappingProxyType
-from typing import Any, cast, Dict, Mapping, Optional, Tuple, Union
+from typing import Any, cast, Dict, Optional, Tuple, Union
 
 import requests
 

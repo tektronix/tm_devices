@@ -5,8 +5,9 @@ import logging
 import shutil
 import sys
 
+from collections.abc import Generator
 from pathlib import Path
-from typing import Generator, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 import colorlog
 import pytest

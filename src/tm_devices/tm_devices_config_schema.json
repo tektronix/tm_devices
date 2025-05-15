@@ -41,6 +41,18 @@
                     "default": null,
                     "description": "The default VISA timeout value (in milliseconds) to use when creating VISA connections\nhttps://tm-devices.readthedocs.io/stable/configuration/#default_visa_timeout"
                 },
+                "disable_command_verification": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Indicate if command verification should be disabled for all devices\nhttps://tm-devices.readthedocs.io/stable/configuration/#disable_command_verification"
+                },
                 "log_colored_output": {
                     "anyOf": [
                         {
@@ -112,6 +124,18 @@
                     ],
                     "default": null,
                     "description": "Indicate if PyVISA logs should be included in the log file\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_pyvisa_messages"
+                },
+                "log_uncaught_exceptions": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "Indicate if uncaught exceptions should be logged to the log file with full tracebacks\nhttps://tm-devices.readthedocs.io/stable/configuration/#log_uncaught_exceptions"
                 },
                 "retry_visa_connection": {
                     "anyOf": [
