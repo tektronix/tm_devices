@@ -77,7 +77,9 @@ version = "3.2.0"
 
 [tool.poetry.dependencies]
 colorlog = "^6.9.0"
+dc-schema = "^0.0.8"
 gpib-ctypes = "^0.3.0"
+jsonschema = {extras = ["format-nongpl"], version = "^4.23.0"}
 libusb-package = "^1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.12
 packaging = ">=24.0"
 psutil = ">=6.0.0"
@@ -99,8 +101,6 @@ urllib3 = "^2.0"
 zeroconf = "^0.136.0"
 
 [tool.poetry.group.dev.dependencies]
-dc-schema = "^0.0.8"
-jsonschema = {extras = ["format-nongpl"], version = "^4.23.0"}
 nodeenv = "^1.9.1"
 pip = "^25.0"
 poetry = "^1.8.0"
