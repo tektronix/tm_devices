@@ -44,6 +44,7 @@ which includes a list of methods that define common
 functionality throughout all signal generators.
 
 !!! note
+
     [`SignalGeneratorMixin`][tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin.SignalGeneratorMixin]
     only contains abstract methods; defining the class by itself and calling
     methods in it will only raise `NotImplemented` errors.
@@ -83,6 +84,7 @@ For example: the `afg.source_channel["SOURCE1"].set_amplitude()` call,
 will change the amplitude only for source output 1.
 
 !!! tip
+
     The source channel classes not only provide easy access to basic [SCPI](default:SCPI) commands but also helper
     functions, like [`set_function_properties()`][tm_devices.driver_mixins.abstract_device_functionality.base_afg_source_channel.BaseAFGSourceChannel.set_function_properties]
 
@@ -91,6 +93,7 @@ will change the amplitude only for source output 1.
 ### SignalGeneratorMixin Methods
 
 !!! warning
+
     Each method performs little to no validation, as the end user can change aspects outside its purview.
     There are several distinct instances where this can cause unwanted behavior, depending on the signal generator and what
     state it was in previously. Attempting validation when changes can occur outside its scope leads to many redundant checks.
@@ -103,6 +106,7 @@ methods handle similarly, regardless of the different [PI](default:PI) commands 
 is a property that holds information about what functions and memory sizes are allowed.
 
 !!! tip
+
     `source_device_constants.functions` will provide an enum of possible functions to generate on the current signal generator.
 
 [`generate_function()`][tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin.SignalGeneratorMixin.generate_function]
@@ -114,6 +118,7 @@ specified using `HIGHZ` or `FIFTY` string literals. If the output needs to be in
 the polarity can be changed on [AFGs](default:AFG).
 
 !!! warning
+
     [`generate_function()`][tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin.SignalGeneratorMixin.generate_function]
     allows function parameters that can exceed actual generation bounds.
     [`get_waveform_constraints()`][tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin.SignalGeneratorMixin.get_waveform_constraints]
@@ -128,6 +133,7 @@ of times. All parameters passed into the method are functionally identical to
 besides `burst_count`. `burst_count` specifies how many cycles of the waveform are to be generated.
 
 !!! warning
+
     [`setup_burst()`][tm_devices.driver_mixins.abstract_device_functionality.signal_generator_mixin.SignalGeneratorMixin.setup_burst]
     will set parameters that can affect the signal generator's behavior. Changing these parameters
     manually will likely cause burst to stop functioning.
@@ -183,19 +189,24 @@ Setting up bursts of an [IAFG](default:IAFG) involves setting it to burst mode a
 `SIN`, `SQUARE`, `RAMP`, `PULSE`, `PRNOISE`, `DC`, `SINC`, `GAUSSIAN`, `LORENTZ`, `ERISE`, `EDECAY`, `HAVERSINE`, `CARDIAC`, `ARBITRARY`
 
 !!! note
+
     [IAFGs](default:IAFG) are only accessible if the oscilloscope has the `AFG` license installed.
 
 !!! note
+
     [IAFGs](default:IAFG) contain no waveform list, editable memory, or user-defined waveforms. This means arbitrary waveforms
     must be loaded from the hard drive.
 
 !!! note
+
     Some functions, like `SINC`, `GAUSSIAN`, `LORENTZ`, `ERISE`, `EDECAY`, and `HAVERSINE` already have an inbuilt offset.
 
 !!! note
+
     If the output termination matching is set to FIFTY instead of HIGHZ, then the offset and amplitude bounds will be halved.
 
 !!! caution
+
     Although `ARBITRARY` is a valid function, it will not generate properly when using
     [`generate_function()`][tm_devices.drivers.scopes.tekscope.tekscope.TekScope.generate_function].
 
@@ -255,9 +266,11 @@ on the internal trigger. Following this, the burst state is set to `ON` and mode
 `SIN`, `SQUARE`, `RAMP`, `PULSE`, `DC`, `SINC`, `GAUSSIAN`, `LORENTZ`, `ERISE`, `EDECAY`, `HAVERSINE`, `CARDIAC`, `NOISE`, `ARBITRARY`
 
 !!! note
+
     If the output termination matching is set to 50.0Ω instead of INFINITY, then the offset and amplitude bounds will be halved.
 
 !!! caution
+
     Although `ARBITRARY` is a valid function, it will not generate properly when using
     [`generate_function()`][tm_devices.drivers.scopes.tekscope.tekscope.TekScope.generate_function].
 
@@ -368,6 +381,7 @@ These attributes can take a while to be set, though once complete, the source ch
 is sent to begin the transmission of the waveform.
 
 !!! note
+
     If the waveform is `RAMP`, a symmetry of 50 will set the waveform to a `TRIANGLE`.
 
 The [`AWG`][tm_devices.drivers.awgs.awg.AWG] class has some unique methods.
@@ -394,9 +408,11 @@ that the [AWG](default:AWG) output signal path is not DIR, as the [VISA](default
 out otherwise.
 
 !!! note
+
     Operation complete commands will always return 1 on the AWG5K/7K series.
 
 !!! caution
+
     All waveforms must be the same length when sending the `AWGCONTROL:RUN` command.
 
 ##### AWG5K, AWG5KB, AWG5KC
@@ -429,6 +445,7 @@ _AWG5K Constraints_
 | <span style="font-size:0.7em;">Offset      | <span style="font-size:0.7em;">-2.25V–2.25V       | <span style="font-size:0.7em;">-2.25V–2.25V     | <span style="font-size:0.7em;">N/A           |
 
 !!! note
+
     AWG5K's have digitized outputs on the rear of the device.
 
 ##### AWG7K, AWG7KB, AWG7KC
@@ -520,6 +537,7 @@ Blocking commands are very similar to Sequential commands. The main difference b
 Blocking commands often take longer to execute.
 
 !!! caution
+
     Due to the length of Blocking commands, a query may time out when sent if performed immediately after a large series of consecutive Blocking commands.
 
 Some commands can perform data analysis on another thread; these are referred to as Overlapping commands. They allow any command to be started
@@ -527,18 +545,22 @@ while they are being executed. They cannot begin if the previous command was blo
 not set.
 
 !!! tip
+
     Overlapping commands run in parallel with any other command, so placing them first in a sequence is always preferable.
 
 !!! tip
+
     There are multiple ways of synchronizing overlapping commands. This includes using [OPC](default:OPC) or [WAI](default:WAI) to
     wait for the operation complete to clear in the [SESR](default:SESR). This can also be done using an [SRQ](default:SRQ),
     along with waiting for the trigger bit in the [OCR](default:OCR).
 
 !!! caution
+
     The operation complete register will only wait for the first overlapping command to finish before clearing. This means
     that if multiple overlapping commands are run, then subsequent overlapping commands being finished will be ignored.
 
 !!! danger
+
     Overlapping commands can cause unintended behavior when performed alongside critical hardware functionality.
     If the AWG5200 is experiencing problems, this may be a cause.
 
@@ -571,6 +593,7 @@ The first number in the option provides the number of source channels the AWG70K
 indicate the sample rate in Gigahertz.
 
 !!! tip
+
     Though the AWG70K has no offset by default, one can be simulated by changing the raw data in the waveform.
     As long as all points are within the amplitude bounds, this can be achieved using `WLIST:WAVEFORM:AOFFSET`.
 
