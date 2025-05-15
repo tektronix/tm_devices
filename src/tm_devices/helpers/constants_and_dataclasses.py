@@ -1,7 +1,5 @@
 """Module containing constants and dataclasses for the `tm_devices` package."""
 
-import re
-
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from types import MappingProxyType
@@ -22,7 +20,7 @@ from tm_devices.helpers.enums import (
     SupportedModels,
 )
 from tm_devices.helpers.logging import LoggingLevels
-from tm_devices.helpers.standalone_functions import validate_address
+from tm_devices.helpers.standalone_helpers import validate_address
 
 
 @dataclass
@@ -770,7 +768,8 @@ class DMConfigOptions(AsDictionaryMixin):
         Optional[bool],
         SchemaAnnotation(
             description=(
-                "Indicate if uncaught exceptions should be logged to the log file with full tracebacks\n"
+                "Indicate if uncaught exceptions should be logged to "
+                "the log file with full tracebacks\n"
                 "https://tm-devices.readthedocs.io/stable/configuration/#log_uncaught_exceptions"
             )
         ),
@@ -831,7 +830,7 @@ class TMDevicesConfigFileSchema:
                 "https://tm-devices.readthedocs.io/stable/configuration/#device-configuration"
             ),
         ),
-    ] = field(default_factory=list)
+    ] = field(default_factory=list[DeviceConfigEntry])
     """A list of devices for the DeviceManager to connect to."""
     options: Annotated[
         DMConfigOptions,
@@ -891,20 +890,6 @@ VALID_SERIAL_BAUD: Final[FrozenSet[int]] = frozenset(
 )
 # don't include this in the __init__
 VALID_SERIAL_DATA_BITS: Final[FrozenSet[int]] = frozenset([5, 6, 7, 8])
-
-PYVISA_PY_BACKEND: Final[str] = "@py"
-"""Constant string which indicates to use the pure Python PyVISA-py backend when creating VISA connections."""  # noqa: E501
-
-SYSTEM_DEFAULT_VISA_BACKEND: Final[str] = ""
-"""Constant string which indicates to use the current system's default VISA backend when creating VISA connections."""  # noqa: E501
-
-PACKAGE_NAME: Final[str] = "tm_devices"
-"""Constant string with the name of this package."""
-
-VISA_RESOURCE_EXPRESSION_REGEX: "Final[re.Pattern[str]]" = re.compile(  # pylint: disable=unsubscriptable-object,useless-suppression
-    r"^(\w+)(?:::0X\w+)?::([-.\w]+)(?:::(\w+))?(?:::INST0?)?::(INSTR?|SOCKET)$"
-)
-"""A regex pattern used to capture pieces of VISA resource expressions."""
 
 VALID_DEVICE_CONNECTION_TYPES: Final[Mapping[DeviceTypes, Tuple[ConnectionTypes, ...]]] = (
     MappingProxyType(

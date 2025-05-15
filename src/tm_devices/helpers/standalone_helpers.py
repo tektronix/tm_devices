@@ -3,6 +3,8 @@
 import ipaddress
 import re
 
+from typing import Final
+
 ####################################################################################################
 # Private Constants
 ####################################################################################################
@@ -11,12 +13,27 @@ _HOSTNAME_REGEX = re.compile(
     r"([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$"
 )
 
+####################################################################################################
+# Public Constants
+####################################################################################################
+PYVISA_PY_BACKEND: Final[str] = "@py"
+"""Constant string which indicates to use the pure Python PyVISA-py backend when creating VISA connections."""  # noqa: E501
+
+SYSTEM_DEFAULT_VISA_BACKEND: Final[str] = ""
+"""Constant string which indicates to use the current system's default VISA backend when creating VISA connections."""  # noqa: E501
+
+PACKAGE_NAME: Final[str] = "tm_devices"
+"""Constant string with the name of this package."""
+
+VISA_RESOURCE_EXPRESSION_REGEX: "Final[re.Pattern[str]]" = re.compile(  # pylint: disable=unsubscriptable-object,useless-suppression
+    r"^(\w+)(?:::0X\w+)?::([-.\w]+)(?:::(\w+))?(?:::INST0?)?::(INSTR?|SOCKET)$"
+)
+"""A regex pattern used to capture pieces of VISA resource expressions."""
+
 
 ####################################################################################################
 # Public Functions
 ####################################################################################################
-
-
 def validate_address(address: str) -> bool:
     """Validate an IP address or hostname.
 

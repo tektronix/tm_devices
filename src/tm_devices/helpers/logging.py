@@ -22,6 +22,7 @@ from tzlocal import (
 )
 
 from tm_devices.helpers.enums import CustomStrEnum
+from tm_devices.helpers.standalone_helpers import PACKAGE_NAME
 
 if TYPE_CHECKING:
     import os
@@ -87,7 +88,7 @@ class LoggingLevels(CustomStrEnum):
     """An enum member indicating no logging messages should be captured."""
 
 
-def configure_logging(  # pylint: disable=too-many-locals
+def configure_logging(
     *,
     log_console_level: Union[str, LoggingLevels] = LoggingLevels.INFO,
     log_file_level: Union[str, LoggingLevels] = LoggingLevels.DEBUG,
@@ -142,10 +143,6 @@ def configure_logging(  # pylint: disable=too-many-locals
         The base logger for the package, this base logger can also be accessed using
             `logging.getLogger(tm_devices.PACKAGE_NAME)`.
     """
-    from tm_devices.helpers.constants_and_dataclasses import (  # pylint: disable=import-outside-toplevel
-        PACKAGE_NAME,
-    )
-
     global _logger_initialized  # noqa: PLW0603
 
     _logger: logging.Logger = logging.getLogger(PACKAGE_NAME)
@@ -214,10 +211,6 @@ def __exception_handler(
     exc_type: Type[BaseException], exc_value: BaseException, exc_traceback: TracebackType
 ) -> None:  # pragma: no cover
     """Log uncaught exceptions."""
-    from tm_devices.helpers.constants_and_dataclasses import (  # pylint: disable=import-outside-toplevel
-        PACKAGE_NAME,
-    )
-
     additional_message_for_file = (
         f"\n\nAn uncaught exception occurred. If the exception was explicitly raised by "
         f"the {PACKAGE_NAME} package, look for the most recent previous ERROR log entry "

@@ -4,14 +4,10 @@ from tm_devices.helpers.alias_dict import AliasDict
 from tm_devices.helpers.constants_and_dataclasses import (
     DeviceConfigEntry,
     DMConfigOptions,
-    PACKAGE_NAME,
-    PYVISA_PY_BACKEND,
     SerialConfig,
-    SYSTEM_DEFAULT_VISA_BACKEND,
     USB_MODEL_ID_LOOKUP,
     USBTMCConfiguration,
     VALID_DEVICE_CONNECTION_TYPES,
-    VISA_RESOURCE_EXPRESSION_REGEX,
 )
 from tm_devices.helpers.enums import (
     ConfigFileType,
@@ -39,7 +35,13 @@ from tm_devices.helpers.functions import (
 from tm_devices.helpers.logging import configure_logging, LoggingLevels
 from tm_devices.helpers.read_only_cached_property import ReadOnlyCachedProperty
 from tm_devices.helpers.singleton_metaclass import Singleton
-from tm_devices.helpers.standalone_functions import validate_address
+from tm_devices.helpers.standalone_helpers import (
+    PACKAGE_NAME,
+    PYVISA_PY_BACKEND,
+    SYSTEM_DEFAULT_VISA_BACKEND,
+    validate_address,
+    VISA_RESOURCE_EXPRESSION_REGEX,
+)
 from tm_devices.helpers.verification_functions import raise_error, raise_failure, verify_values
 
 __all__ = [

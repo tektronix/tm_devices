@@ -14,14 +14,14 @@ Examples:
 from importlib.metadata import version
 
 from tm_devices.device_manager import DeviceManager, print_available_visa_devices
-from tm_devices.helpers.constants_and_dataclasses import (
+from tm_devices.helpers.enums import SupportedModels
+from tm_devices.helpers.functions import register_additional_usbtmc_mapping
+from tm_devices.helpers.logging import configure_logging, LoggingLevels
+from tm_devices.helpers.standalone_helpers import (
     PACKAGE_NAME,
     PYVISA_PY_BACKEND,
     SYSTEM_DEFAULT_VISA_BACKEND,
 )
-from tm_devices.helpers.enums import SupportedModels
-from tm_devices.helpers.functions import register_additional_usbtmc_mapping
-from tm_devices.helpers.logging import configure_logging, LoggingLevels
 
 # Read version from installed package.
 __version__ = version(PACKAGE_NAME)
