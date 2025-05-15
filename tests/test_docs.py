@@ -6,9 +6,9 @@ import subprocess
 import sys
 import time
 
+from collections.abc import Generator
 from importlib.util import find_spec
 from pathlib import Path
-from typing import Generator
 
 import pytest
 

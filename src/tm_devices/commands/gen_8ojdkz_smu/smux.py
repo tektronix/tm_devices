@@ -112,7 +112,8 @@ Attributes and Functions:
     ```
 """
 
-from typing import Any, Dict, Optional, Sequence, TYPE_CHECKING, Union
+from collections.abc import Sequence
+from typing import Any, Dict, Optional, TYPE_CHECKING, Union
 
 from ..helpers import BaseTSPCmd, NoDeviceProvidedError, ValidatedChannel
 

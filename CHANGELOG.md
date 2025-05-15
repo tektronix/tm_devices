@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Removed
+
+- Python 3.8 support has been removed from the package. The minimum supported version is now Python 3.9.
+
 ---
 
 ## v3.2.0 (2025-05-07)
@@ -50,7 +54,7 @@ Things to be included in the next release go here.
 
 ### Merged Pull Requests
 
-- Set offset after impedance so that it is properly adjusted  ([#411](https://github.com/tektronix/tm_devices/pull/411))
+- Set offset after impedance so that it is properly adjusted ([#411](https://github.com/tektronix/tm_devices/pull/411))
 
 ### Fixed
 
@@ -688,7 +692,7 @@ However, please read through all changes to be aware of what may potentially imp
 ### Merged Pull Requests
 
 - fix: Removed unused command files. ([#143](https://github.com/tektronix/tm_devices/issues/143))
-- fix: modified API under MSO 2,4,5,6 modules  ([#142](https://github.com/tektronix/tm_devices/issues/142))
+- fix: modified API under MSO 2,4,5,6 modules ([#142](https://github.com/tektronix/tm_devices/issues/142))
 - Update PI Device close method to catch VisaIOErrors ([#141](https://github.com/tektronix/tm_devices/issues/141))
 - ci: Update pre-commit hooks and linter versions. ([#139](https://github.com/tektronix/tm_devices/issues/139))
 - gh-actions(deps): Bump the gh-actions-dependencies group with 1 update ([#123](https://github.com/tektronix/tm_devices/issues/123))

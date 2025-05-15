@@ -3,7 +3,7 @@
 
 from pathlib import Path
 from types import MappingProxyType
-from typing import Dict, Mapping, Optional, Type
+from typing import Dict, Optional, Type, TYPE_CHECKING
 from unittest import mock
 
 import pytest
@@ -18,6 +18,9 @@ from tm_devices.helpers import (
     SerialConfig,
 )
 from tm_devices.helpers.constants_and_dataclasses import CONFIG_CLASS_STR_PREFIX_MAPPING
+
+if TYPE_CHECKING:
+    from collections.abc import Mapping
 
 
 def test_nested_config_prefix_mapping() -> None:
@@ -188,9 +191,11 @@ options:
             alias=None,
         ),
     }
-    with mock.patch.dict("os.environ", {}, clear=True), mock.patch(
-        "pathlib.Path.is_file", mock.MagicMock(return_value=True)
-    ), mock.patch("pathlib.Path.open", mock.mock_open(read_data=file_contents)):
+    with (
+        mock.patch.dict("os.environ", {}, clear=True),
+        mock.patch("pathlib.Path.is_file", mock.MagicMock(return_value=True)),
+        mock.patch("pathlib.Path.open", mock.mock_open(read_data=file_contents)),
+    ):
         config = DMConfigParser()
 
     assert expected_options == config.options
@@ -450,8 +455,9 @@ def test_sequential_env_var_devices() -> None:
 
 def test_add_device() -> None:
     """Verify a device can be added to an empty config."""
-    with mock.patch.dict("os.environ", {}, clear=True), mock.patch(
-        "os.path.isfile", mock.MagicMock(return_value=False)
+    with (
+        mock.patch.dict("os.environ", {}, clear=True),
+        mock.patch("os.path.isfile", mock.MagicMock(return_value=False)),
     ):
         config = DMConfigParser()
     expected_devices_1: Mapping[str, DeviceConfigEntry] = MappingProxyType({})
@@ -580,11 +586,14 @@ def test_get_visa_resource_expression(
 def test_get_visa_resource_expression_errors() -> None:
     """Test creating a resource expression throws the proper errors."""
     # Test trying to connect to a USB device that doesn't exist
-    with mock.patch.dict(
-        "os.environ",
-        {"TM_DEVICES": "device_type=SCOPE,connection_type=USB,address=MSO123456-3000260000"},
-        clear=True,
-    ), pytest.warns(UserWarning):
+    with (
+        mock.patch.dict(
+            "os.environ",
+            {"TM_DEVICES": "device_type=SCOPE,connection_type=USB,address=MSO123456-3000260000"},
+            clear=True,
+        ),
+        pytest.warns(UserWarning),
+    ):
         config = DMConfigParser()
         device = config.devices["SCOPE 1"]
         with pytest.raises(NotImplementedError):

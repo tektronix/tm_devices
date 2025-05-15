@@ -2,8 +2,9 @@
 
 import time
 
+from collections.abc import Mapping
 from types import MappingProxyType
-from typing import Any, cast, Dict, Mapping, Optional, Tuple
+from typing import Any, cast, Dict, Optional, Tuple
 
 from packaging.version import Version
 

@@ -11,8 +11,9 @@ import subprocess
 import sys
 import warnings
 
+from collections.abc import Iterator
 from pathlib import Path
-from typing import Any, Iterator, List
+from typing import Any, List
 from unittest import mock
 
 import pytest
