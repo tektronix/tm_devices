@@ -24,6 +24,7 @@ This guide will walk through the steps needed to add a new device driver.
         below.
 
         !!! note
+
             For documentation to render for the new driver properly, an `__init__()` method must be defined.
 
 3. Update the [`SupportedModels`][tm_devices.SupportedModels] enum exposed in
@@ -63,6 +64,7 @@ A device series driver parent should inherit the abstracted type base class and
 defines abstract functions that all device drivers must implement.
 
 !!! note
+
     The filename should be a snake-case version of the new class name. In this example
     the filepath would be `tm_devices/drivers/power_supplies/psu2200/new_psu.py`
 
@@ -105,6 +107,7 @@ To add a new device driver within the `PowerSupply` device type and `PSU2200`
 series:
 
 !!! note
+
     The filename should be a snake-case version of the new class name. In this example
     the filepath would be `tm_devices/drivers/power_supplies/psu2200/new_psu.py`
 

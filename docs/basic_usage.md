@@ -69,6 +69,7 @@ configuration can be done in the Python code itself as demonstrated here, or by 
 details about logging configuration.
 
 !!! important
+
     If any configuration is performed in the Python code prior to instantiating the
     [`DeviceManager`][tm_devices.DeviceManager], all other logging configuration methods
     (config file, env var) will be ignored.
