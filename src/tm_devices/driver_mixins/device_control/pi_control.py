@@ -37,7 +37,7 @@ from tm_devices.helpers import (
     verify_values,
 )
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
-from tm_devices.helpers.constants_and_dataclasses import PACKAGE_NAME
+from tm_devices.helpers.standalone_helpers import PACKAGE_NAME
 
 _logger: logging.Logger = logging.getLogger(__name__)
 

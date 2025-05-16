@@ -25,13 +25,15 @@ from tm_devices.helpers.constants_and_dataclasses import (
     _USB_MODEL_ID_STR_LOOKUP,  # pyright: ignore[reportPrivateUsage]
     ConnectionTypes,
     DeviceConfigEntry,
-    PACKAGE_NAME,
-    PYVISA_PY_BACKEND,
     USBTMCConfiguration,
-    VISA_RESOURCE_EXPRESSION_REGEX,
 )
 from tm_devices.helpers.enums import CustomStrEnum, SupportedModels
-from tm_devices.helpers.standalone_functions import validate_address
+from tm_devices.helpers.standalone_helpers import (
+    PACKAGE_NAME,
+    PYVISA_PY_BACKEND,
+    validate_address,
+    VISA_RESOURCE_EXPRESSION_REGEX,
+)
 
 _logger: logging.Logger = logging.getLogger(__name__)
 

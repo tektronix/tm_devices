@@ -115,7 +115,7 @@ plugins:
             # Members options
             inherited_members: true
             members_order: alphabetical
-            filters: ['!^_', ^__init__]
+            filters: ['!^_', ^__init__, '!SchemaConfig']
             summary: false  # Currently implemented with custom templates
             show_labels: true
             # Docstrings options
@@ -132,6 +132,7 @@ plugins:
             show_signature_annotations: true
             signature_crossrefs: true
             separate_signature: true
+            unwrap_annotated: true
           import:
             - url: https://docs.python.org/3/objects.inv
               domains: [std, py]

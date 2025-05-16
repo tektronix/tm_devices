@@ -5,7 +5,7 @@ devices:
   - address: MSO58B-HOSTNAME
     alias: MSO58B
     device_type: SCOPE
-  - address: 1
+  - address: 1  # This is an intentional integer that won't pass schema validation in order to test the parser's ability to convert integers to strings
     device_type: SMU
     connection_type: GPIB
 options:

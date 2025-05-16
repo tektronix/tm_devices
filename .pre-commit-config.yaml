@@ -11,6 +11,7 @@ ci:
     - pyright-verifytypes
     - pyroma
     - poetry-audit
+    - check-tm-devices-schema-file
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: cef0300fd0fc4d2a87a85fa2093c6b283ea36f4b  # frozen: v5.0.0
@@ -132,6 +133,13 @@ repos:
         pass_filenames: false
         always_run: true
         args: [audit, --json, --ignore-code=CVE-2019-8341]
+      - id: check-tm-devices-schema-file
+        name: check-tm-devices-schema-file
+        entry: python
+        language: system
+        types: [python]
+        pass_filenames: false
+        args: [scripts/generate_schema.py]
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: 24e02b24b8ab2b7c76225602d13fa60e12d114e6  # frozen: v0.11.9
     hooks:

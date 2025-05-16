@@ -1,0 +1,30 @@
+---
+devices:
+  - address: MSO54-123456
+    connection_type: TCPIP
+    device_type: SCOPE
+    lan_device_name: hislip0
+  - address: 789.56.4.123
+    alias: foo
+    connection_type: SOCKET123
+    device_type: SCOPE
+    lan_port: 4000
+  - address: 123.45.6.789
+    alias: afg
+    connection_type: TCPIP
+    device_type: AFG
+  - address: '1'
+    alias: serial_smu
+    connection_type: SERIAL
+    device_type: SMU
+    serial_config:
+      baud_rate: 9600
+      end_input: none_invalid
+options:
+  default_visa_timeout: 1000
+  log_file_level: WARNING
+  setup_cleanup: false
+  standalone: true
+  teardown_cleanup: false
+  verbose_mode: false
+  verbose_visa: false
