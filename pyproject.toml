@@ -259,6 +259,8 @@ output-format = "text"  # colorized could be another option
 
 [tool.pyright]
 ignore = [
+  "**/*env*/**",
+  "**/.tox/**",
   "**/output_*/**",
   "site/**",
   "temp_*.py",
