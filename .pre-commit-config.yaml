@@ -53,7 +53,7 @@ repos:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 8d573069ff591f909c9b9725da769fbab05d5bb0  # frozen: v4.7.2
+    rev: a8094aebad266040ef07f118a96c88a93f4aecf8  # frozen: v4.8.2
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -141,9 +141,9 @@ repos:
         pass_filenames: false
         args: [scripts/generate_schema.py]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 12753357c00c3fb8615100354c9fdc6ab80b044d  # frozen: v0.11.10
+    rev: 76e47323a83cd9795e4ff9a1de1c0d2eef610f17  # frozen: v0.11.11
     hooks:
-      - id: ruff
+      - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
       - id: ruff-format
   - repo: https://github.com/PyCQA/docformatter
