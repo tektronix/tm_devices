@@ -28,7 +28,7 @@ def test_afg3k(device_manager: DeviceManager) -> None:  # noqa: PLR0915  # pylin
         "afg3252c-hostname", alias="afg3252c", connection_type="SOCKET", port=10001
     )
     assert id(device_manager.get_afg(number_or_alias="afg3252c")) == id(afg3252c)
-    assert id(device_manager.get_afg(number_or_alias=1)) == id(afg3252c)
+    assert id(device_manager.get_afg(number_or_alias=afg3252c.device_number)) == id(afg3252c)
     assert afg3252c.visa_timeout == UNIT_TEST_TIMEOUT
     assert afg3252c.default_visa_timeout == UNIT_TEST_TIMEOUT
     assert afg3252c.resource_expression == "TCPIP0::AFG3252C-HOSTNAME::10001::SOCKET"

@@ -43,7 +43,7 @@ def fixture_site_dir(pytestconfig: pytest.Config) -> str:
         Path(__file__).parent.parent / f".site_{sys.version_info.major}{sys.version_info.minor}/"
     ).resolve()
     if xml_path := pytestconfig.getoption("xmlpath"):
-        site_path = (Path(xml_path).parent / ".site_html/").resolve()  # pyright: ignore[reportArgumentType]
+        site_path = (Path(xml_path).parent / ".site_html/").resolve()
     site_path.mkdir(parents=True, exist_ok=True)
     return site_path.as_posix()
 

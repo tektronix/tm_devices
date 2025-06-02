@@ -294,13 +294,6 @@ devices:
           r: '{:s}'
         setter:
           q: :MEASTABLE:ADDNew {:s}
-      table:
-        default: TABLE1
-        getter:
-          q: :MEASTABLE:LIST?
-          r: '{:s}'
-        setter:
-          q: :TABLE:ADDNew {:s}
       histogram:
         default: HIST1
         getter:
@@ -315,13 +308,6 @@ devices:
           r: '{:s}'
         setter:
           q: :MEASUREMENT:ADDNew {:s}
-      meas:
-        default: MEAS1
-        getter:
-          q: :MEASUREMENT:LIST?
-          r: '{:s}'
-        setter:
-          q: :MEAS:ADDNew {:s}
       math_define:
         default: LOG10
         getter:

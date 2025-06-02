@@ -84,7 +84,7 @@ class CustomDataclass:
 '''
 
 
-@pytest.fixture(scope="module", autouse=True)
+@pytest.fixture(autouse=True)
 def _remove_added_methods() -> Iterator[None]:
     """Remove custom added methods from devices."""
     yield
@@ -120,11 +120,11 @@ def test_visa_device_methods_and_method_adding(  # noqa: C901,PLR0915
         capsys: The captured stdout and stderr.
     """
     # Remove all previous devices
-    device_manager.remove_all_devices()
     # Read the captured stdout to clear it
     _ = capsys.readouterr().out
     device_manager.setup_cleanup_enabled = True
     device_manager.teardown_cleanup_enabled = True
+    device_manager.disable_command_verification = False
 
     ############################################################################################
     # Make sure to add all methods to the remove_added_methods() fixture
