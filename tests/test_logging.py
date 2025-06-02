@@ -24,9 +24,8 @@ if TYPE_CHECKING:
 
 
 @pytest.fixture(name="remove_log_file_handler")
-def _remove_log_file_handler(device_manager: DeviceManager) -> Generator[None, None, None]:  # pyright: ignore[reportUnusedFunction]
+def _remove_log_file_handler() -> Generator[None, None, None]:  # pyright: ignore[reportUnusedFunction]
     """Remove the file handler from the logger."""
-    device_manager.remove_all_devices()
     logger = logging.getLogger(PACKAGE_NAME)
     file_handler = None
     with contextlib.suppress(StopIteration):
@@ -37,7 +36,6 @@ def _remove_log_file_handler(device_manager: DeviceManager) -> Generator[None, N
     yield
     if file_handler is not None:
         logger.addHandler(file_handler)
-    device_manager.remove_all_devices()
 
 
 def test_visa_command_logging_edge_cases(
@@ -64,8 +62,11 @@ def _reset_package_logger() -> Generator[None, None, None]:  # pyright: ignore[r
     """Reset the package logger."""
     logger = logging.getLogger(PACKAGE_NAME)
     handlers_copy = logger.handlers.copy()
+    pyvisa_handlers_copy = pyvisa.logger.handlers.copy()
     for handler in handlers_copy:
         logger.removeHandler(handler)
+    for handler in pyvisa_handlers_copy:
+        pyvisa.logger.removeHandler(handler)
     tm_devices_logging._logger_initialized = False  # noqa: SLF001  # pyright: ignore[reportPrivateUsage]
     temp_excepthook = sys.excepthook
     yield
@@ -74,6 +75,10 @@ def _reset_package_logger() -> Generator[None, None, None]:  # pyright: ignore[r
         logger.removeHandler(handler)
     for handler in handlers_copy:
         logger.addHandler(handler)
+    for handler in pyvisa.logger.handlers.copy():
+        pyvisa.logger.removeHandler(handler)
+    for handler in pyvisa_handlers_copy:
+        pyvisa.logger.addHandler(handler)
     sys.excepthook = temp_excepthook
 
 

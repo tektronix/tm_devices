@@ -181,7 +181,7 @@ def test_smu(  # noqa: PLR0915
     visa_backend='{smu.visa_backend}'
     visa_resource=<'TCPIPInstrument'('TCPIP0::SMU2601B-HOSTNAME::inst0::INSTR')>
     visa_timeout={UNIT_TEST_TIMEOUT}
-{"=" * (97 + (1 if smu.device_number >= 10 else 0))}
+{"=" * (97 + len(str(smu.device_number)) - 1)}
 """
     stdout = capsys.readouterr().out
     assert stdout == expected_stdout

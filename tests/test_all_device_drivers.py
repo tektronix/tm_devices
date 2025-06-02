@@ -5,7 +5,6 @@ import contextlib
 import sys
 
 from collections import Counter
-from collections.abc import Generator
 from pathlib import Path
 from typing import List, Optional
 
@@ -124,18 +123,6 @@ created_models_list: List[str] = []
 drivers_with_auto_generated_commands: List[str] = []
 
 
-@pytest.fixture(autouse=True, scope="module")
-def _reset_dm(device_manager: DeviceManager) -> Generator[None, None, None]:  # pyright: ignore[reportUnusedFunction]
-    """Reset the device_manager settings before and after running the tests in this module.
-
-    Args:
-        device_manager: The device manager fixture.
-    """
-    device_manager.remove_all_devices()
-    yield
-    device_manager.remove_all_devices()
-
-
 # noinspection PyUnusedLocal
 @pytest.mark.order(1)
 @pytest.mark.parametrize(
@@ -179,8 +166,11 @@ def test_device_driver(
 
 @pytest.mark.order(2)
 @pytest.mark.depends(on=["test_device_driver"])
-def test_all_device_drivers() -> None:
+def test_all_device_drivers(pytestconfig: pytest.Config) -> None:
     """Verify all device drivers can be created and all connection types are tested."""
+    # Check if the test was run with the --count option
+    test_execution_count = pytestconfig.getoption("count") or 1
+
     # Create a list of all supported models and connections
     supported_connections_list: List[str] = sorted(
         x.value for x in ConnectionTypes if not str(x.value).startswith(("_", "MOCK"))
@@ -193,10 +183,10 @@ def test_all_device_drivers() -> None:
     # Verify all supported models
     models_without_testing = set(supported_models_list) - set(created_models_list)
     created_counts = Counter(created_models_list)
-    assert all(count == 1 for _, count in created_counts.items()), (
+    assert all(count == test_execution_count for _, count in created_counts.items()), (
         f"Some drivers were instantiated more than once: {created_counts.most_common(1)[0]}"
     )
-    assert created_models_list == supported_models_list, (
+    assert sorted(set(created_models_list)) == supported_models_list, (
         f"Some models are not tested: {models_without_testing=}"
     )
 
@@ -210,27 +200,23 @@ def test_all_device_drivers() -> None:
 
     print(f"\nVerified all {len(SIMULATED_DEVICE_LIST)} device drivers")  # noqa: T201
     print(  # noqa: T201
-        f"{len(drivers_with_auto_generated_commands)} device drivers have auto-generated commands"
+        f"{len(set(drivers_with_auto_generated_commands))} device drivers "
+        f"have auto-generated commands"
     )
 
 
 @pytest.mark.order(3)
 @pytest.mark.depends(on=["test_device_driver"])
-def test_visa_device_command_logging() -> None:
+def test_visa_device_command_logging(pytestconfig: pytest.Config) -> None:
     """Test the VISA command log file contents."""
     generated_file = (
         Path(__file__).parent / f"logs/unit_test_py{sys.version_info.major}{sys.version_info.minor}"
         f"_visa_commands_SMU2410-HOSTNAME.log"
     )
     assert generated_file.exists(), f"File not found: {generated_file}"
-    assert (
-        generated_file.read_text()
-        == """*CLS
-*RST
-*OPC?
-*ESR?
-SYSTEM:ERROR?
-*ESR?
-SYSTEM:ERROR?
-"""
-    )
+    file_text = generated_file.read_text()
+    expected_text = "*CLS\n*RST\n*OPC?\n*ESR?\nSYSTEM:ERROR?\n*ESR?\nSYSTEM:ERROR?\n"
+    if pytestconfig.getoption("count"):
+        assert file_text.startswith(expected_text)
+    else:
+        assert file_text == expected_text

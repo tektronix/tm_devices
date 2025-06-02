@@ -91,6 +91,7 @@ def fixture_rest_api_control(mock_http_server: None) -> CustomRestApiDevice:  # 
         ),
         verbose=False,
     )
+    rest_api_control.API_VERSIONS = MappingProxyType({1: "/api", 2: "/api2"})
     # Change base_url from https to http as the mock server
     # can only handle http requests. Also add port number.
     rest_api_control._base_url = (  # noqa: SLF001
@@ -98,6 +99,12 @@ def fixture_rest_api_control(mock_http_server: None) -> CustomRestApiDevice:  # 
     )
     rest_api_control._api_url = rest_api_control.base_url + "/api"  # noqa: SLF001
     return rest_api_control
+
+
+@pytest.fixture(autouse=True)
+def _reset_rest_api_control(rest_api_control: CustomRestApiDevice) -> None:  # pyright: ignore[reportUnusedFunction]
+    """Reset the Rest API Device to its initial state."""
+    rest_api_control.set_api_version(1)
 
 
 ################################################################################################
@@ -181,7 +188,6 @@ def test_set_api_version_non_verbose(rest_api_control: CustomRestApiDevice) -> N
     Args:
         rest_api_control: Rest API Device.
     """
-    rest_api_control.API_VERSIONS = MappingProxyType({1: "/api", 2: "/api2"})
     rest_api_control.set_api_version(api_version=2)
     assert rest_api_control.api_url == rest_api_control.base_url + rest_api_control.API_VERSIONS[2]
 

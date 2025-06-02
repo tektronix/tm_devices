@@ -1,7 +1,6 @@
 # pyright: reportPrivateUsage=none
 """Test the Scopes."""
 
-import os
 import pathlib
 import subprocess
 import sys
@@ -47,7 +46,6 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     Args:
         device_manager: The DeviceManager object.
     """
-    device_manager.remove_all_devices()
     # Verify hostname can be determined when only the IP is provided
     scope: MSO5 = device_manager.add_scope("MSO56-SERIAL1", alias="mso56", connection_type="USB")
 
@@ -109,8 +107,8 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     scope.write(":BUS:ADDNew BLANK")
     scope.write(":HISTOGRAM:ADDNew BLANK")
     scope.write(":MATH:ADDNew BLANK")
-    scope.write(":MEAS:ADDNew BLANK")
-    scope.write(":TABLE:ADDNew BLANK")
+    scope.write(":MEASUREMENT:ADDNew BLANK")
+    scope.write(":MEASTABLE:ADDNew BLANK")
     scope.write(":PLOT:ADDNew BLANK")
     scope.write(":POWER:ADDNew BLANK")
     scope.write(":REF:ADDNew BLANK")
@@ -156,9 +154,18 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
     scope.expect_esr(0, ('0,"No events to report - queue empty"',))
 
     # Test curve query write to csv functionality with multi-frame curve
+    scope.write(":DATA:SOURCE:AVAIL CH1")  # Simulate CH1 being available
     filepath = pathlib.Path(f"temp_{sys.version_info.major}{sys.version_info.minor}.csv")
     try:
-        curve = scope.curve_query(1, wfm_type="TimeDomain", output_csv_file=filepath.as_posix())
+        _original_query = scope.query
+        with mock.patch.object(
+            scope,
+            "query",
+            side_effect=lambda cmd, *a, **kw: "1;0;1;0;1"  # pyright: ignore[reportUnknownLambdaType]
+            if cmd == ":CURVE?"
+            else _original_query(cmd, *a, **kw),  # pyright: ignore[reportUnknownArgumentType]
+        ):
+            curve = scope.curve_query(1, wfm_type="TimeDomain", output_csv_file=filepath.as_posix())
         with filepath.open(encoding="utf8") as curve_csv:
             # Remove trailing command a format string as list of ints based on commas
             curve_reformatted_from_file = list(map(int, curve_csv.read()[:-1].split(",")))
@@ -167,7 +174,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
             # Assert what was saved in file matches what was returned, after formatting is applied
             assert curve_flattened_return_list == curve_reformatted_from_file
     finally:
-        os.remove(filepath)
+        filepath.unlink(missing_ok=True)
     # Simulate single frame curve
     scope.write(":CURVE 1,0,1,0")
     # Simulate an available source list able to accommodate all waveform types
@@ -365,7 +372,6 @@ def test_exceptions(device_manager: DeviceManager) -> None:
         scope.turn_channel_on("CH1")
     with pytest.raises(AssertionError):
         scope.expect_esr(0)
-    device_manager.remove_all_devices()
 
 
 def test_tekscope70k(
@@ -579,7 +585,6 @@ def test_tekscope2k(device_manager: DeviceManager, tmp_path: pathlib.Path) -> No
         device_manager: The DeviceManager object.
         tmp_path: pytest temporary directory function
     """
-    device_manager.remove_all_devices()
     # Verify hostname can be determined when only the IP is provided
     scope: MSO2KB = device_manager.add_scope(
         "MSO2KB-SERIAL1", alias="mso2kb", connection_type="USB"

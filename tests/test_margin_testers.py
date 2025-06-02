@@ -18,7 +18,7 @@ AUTH_TOKEN_FILE_PATH = Path(__file__).parent / "samples/token.auth_token_file_pa
 ################################################################################################
 # Fixtures
 ################################################################################################
-@pytest.fixture(scope="module", name="tmt4")
+@pytest.fixture(name="tmt4")
 def fixture_tmt4(
     device_manager: DeviceManager,
     mock_http_server: None,  # noqa: ARG001

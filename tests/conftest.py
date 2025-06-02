@@ -40,6 +40,7 @@ _logger = configure_logging(
     log_file_level=LoggingLevels.DEBUG,
     log_file_directory=Path(__file__).parent / "logs",
     log_file_name=f"unit_test_py{sys.version_info.major}{sys.version_info.minor}.log",
+    log_pyvisa_messages=False,
 )
 _unit_test_console_handler = _DynamicStreamHandler(stream=sys.stdout)
 _unit_test_console_handler.setLevel(logging.DEBUG)
@@ -148,6 +149,7 @@ def _reset_dm(  # pyright: ignore[reportUnusedFunction]
     """
     saved_setup_enable = device_manager.setup_cleanup_enabled
     saved_teardown_enable = device_manager.teardown_cleanup_enabled
+    device_manager.remove_all_devices()
     yield
     device_manager.setup_cleanup_enabled = saved_setup_enable
     device_manager.teardown_cleanup_enabled = saved_teardown_enable

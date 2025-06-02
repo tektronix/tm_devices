@@ -145,7 +145,6 @@ def test_alternative_connection_methods(
         connection: The connection type of the device.
         expected_info: The expected information of the device.
     """
-    device_manager.remove_all_devices()
     device = device_manager._add_device(  # noqa: SLF001
         device_type, address, connection_type=connection
     )

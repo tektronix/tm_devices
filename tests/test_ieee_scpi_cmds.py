@@ -3,12 +3,23 @@
 import pytest
 
 from tm_devices import DeviceManager
+from tm_devices.drivers.afgs.afg import AFG
+
+_DEVICE_ALIAS = "TESTING_AFG_IEEE"
 
 
-def test_ieee_scpi_cmds(device_manager: DeviceManager) -> None:
+@pytest.fixture(name="device")
+def _device(device_manager: DeviceManager) -> AFG:  # pyright: ignore[reportUnusedFunction]
+    """Reset the device after each test."""
+    afg = device_manager.add_afg("afg3252c-hostname", alias=_DEVICE_ALIAS)
+    afg.ieee_cmds.ese(0)
+    afg.ieee_cmds.sre(0)
+    afg.ieee_cmds.psc(True)
+    return afg
+
+
+def test_ieee_scpi_cmds(device: AFG) -> None:
     """Test the IEEE 488.2 SCPI commands."""
-    device_manager.remove_all_devices()
-    device = device_manager.add_afg("afg3252c-hostname")
     assert device.ieee_cmds.esr() == "0"
     assert device.ieee_cmds.tst() == "1"
     assert device.ieee_cmds.stb() == "4"
