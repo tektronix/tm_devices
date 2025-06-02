@@ -4,6 +4,7 @@ import contextlib
 import logging
 import shutil
 import sys
+import time
 
 from collections.abc import Generator
 from pathlib import Path
@@ -83,6 +84,8 @@ def test_configure_logger_full(reset_package_logger: None) -> None:  # noqa: ARG
     )
     log_name = "custom_log.log"
     shutil.rmtree(log_dir, ignore_errors=True)
+
+    time.sleep(1)  # wait to ensure previous tests have disconnected from all devices
 
     assert not any(isinstance(handler, logging.FileHandler) for handler in pyvisa.logger.handlers)
     assert len(logging.getLogger(PACKAGE_NAME).handlers) == 0  # pylint: disable=use-implicit-booleaness-not-comparison-to-zero
