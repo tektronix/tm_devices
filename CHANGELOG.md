@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Changed
+
+- Added PyVISA-compatible arguments to query_binary method.
+
 ### Removed
 
 - Python 3.8 support has been removed from the package. The minimum supported version is now Python 3.9.
