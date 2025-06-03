@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Changed
+
+- Updated the `PIControl.query_binary()` method to include PyVISA-compatible arguments, enabling users to fully utilize the complete functionality of the PyVISA method.
+
 ### Removed
 
 - Python 3.8 support has been removed from the package. The minimum supported version is now Python 3.9.

@@ -8,15 +8,28 @@ import time
 import warnings
 
 from abc import ABC
-from collections.abc import Generator, Sequence
 from pathlib import Path
-from typing import final, List, Optional, Tuple, Union
+from typing import (
+    Any,
+    Callable,
+    cast,
+    final,
+    Generator,
+    Iterable,
+    List,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    TypeVar,
+    Union,
+)
 
 import pyvisa as visa
 
 from packaging.version import Version
 from pyvisa import constants as visa_constants
-from pyvisa import VisaIOError
+from pyvisa import util, VisaIOError
 
 from tm_devices.driver_mixins.device_control._abstract_device_visa_write_query_control import (
     _AbstractDeviceVISAWriteQueryControl,  # pyright: ignore[reportPrivateUsage]
@@ -40,6 +53,8 @@ from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa
 from tm_devices.helpers.standalone_helpers import PACKAGE_NAME
 
 _logger: logging.Logger = logging.getLogger(__name__)
+
+T = TypeVar("T", bound=Sequence[Union[int, float]])
 
 
 class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  # pylint: disable=too-many-public-methods
@@ -372,12 +387,39 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
 
         return response
 
-    def query_binary(self, query: str, verbose: bool = True) -> Sequence[float]:
+    def query_binary(  # noqa: PLR0913
+        self,
+        query: str,
+        verbose: bool = True,
+        datatype: util.BINARY_DATATYPES = "f",
+        is_big_endian: bool = False,
+        container: Union[Type[T], Callable[[Iterable[Any]], T]] = list,
+        delay: Optional[float] = None,
+        header_fmt: util.BINARY_HEADERS = "ieee",
+        expect_termination: bool = True,
+        data_points: int = 0,
+        chunk_size: Optional[int] = None,
+    ) -> T:
         """Send a query to the device and return the binary values.
 
         Args:
             query: The query to send to the device.
             verbose: Set this to False in order to disable printouts.
+            datatype: Format string for a single element. See struct module. 'h' by default.
+            is_big_endian: Are the data in big or little endian order. Defaults to False.
+            container: Container type to use for the output data. Possible values are: list,
+                tuple, np.ndarray, etc. Default to list.
+            delay: Delay in seconds between write and read operations. If None,
+                defaults to self.query_delay.
+            header_fmt: Format of the header prefixing the data. Defaults to 'ieee'.
+            expect_termination: When set to False, the expected length of the binary values block
+                does not account for the final termination character
+                (the read termination). Defaults to True.
+            data_points: Number of points expected in the block. This is used only if the
+                 instrument does not report it itself. This will be converted in a
+                 number of bytes based on the datatype. Defaults to 0.
+            chunk_size: Size of the chunks to read from the device. Using larger chunks may
+                be faster for large amount of data.
 
         Returns:
             The results of the query.
@@ -394,7 +436,17 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
         )
         self._command_logger.debug(query)
         try:
-            response = self._visa_resource.query_binary_values(query)  # pyright: ignore[reportUnknownMemberType]
+            response = self._visa_resource.query_binary_values(  # pyright: ignore[reportUnknownMemberType]
+                query,
+                datatype=datatype,
+                is_big_endian=is_big_endian,
+                container=container,
+                delay=delay,
+                header_fmt=header_fmt,
+                expect_termination=expect_termination,
+                data_points=data_points,
+                chunk_size=chunk_size,
+            )
         except (visa.VisaIOError, socket.error) as error:
             pi_cmd_repr = f" for {query!r} " if verbose else " "
             msg = (
@@ -417,7 +469,7 @@ class PIControl(_AbstractDeviceVISAWriteQueryControl, _ExtendableMixin, ABC):  #
             _logger.error(msg)
             raise SystemError(msg)
 
-        return response
+        return cast("T", response)
 
     def query_expect_timeout(
         self, invalid_command: str, timeout_ms: int = 200, verbose: bool = True
