@@ -20,7 +20,7 @@ Things to be included in the next release go here.
 
 ### Changed
 
-- Updated the PIControl.query_binary() method to include PyVISA-compatible arguments, enabling users to fully utilize the complete functionality of the PyVISA method.
+- Updated the `PIControl.query_binary()` method to include PyVISA-compatible arguments, enabling users to fully utilize the complete functionality of the PyVISA method.
 
 ### Removed
 
