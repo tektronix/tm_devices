@@ -394,7 +394,7 @@ options:
         The script tests manually deleting, manually closing, and just leaving the DeviceManager
         open.
         """
-        num_closes = 3
+        num_closes = 1  # Only a single closing log message is expected
         args = [
             sys.executable,
             str(Path(__file__).parent / "validate_device_manager_delete.py"),
@@ -402,7 +402,8 @@ options:
         stdout = subprocess.check_output(args).decode("utf-8")  # noqa: S603
 
         assert stdout.count("Closing Connections to Devices") == num_closes
-        assert stdout.count("Closing Connection to AFG 1") == num_closes
+        assert stdout.count("Closing Connection to AFG 1") == num_closes + 1
+        assert stdout.count("AFG 1 was previously closed, no need to close it again") == 1
         assert stdout.count("DeviceManager Closed") == num_closes
 
     # noinspection PyUnresolvedReferences

@@ -12,9 +12,10 @@ import subprocess  # nosec
 import time
 import warnings
 
+from contextlib import contextmanager
 from enum import EnumMeta
 from functools import cache
-from typing import Any, Dict, Optional, Tuple, Type
+from typing import Any, Dict, Generator, Optional, Tuple, Type
 
 import requests
 
@@ -475,6 +476,14 @@ def detect_visa_resource_expression(input_str: str) -> Optional[Tuple[str, str]]
                 "-".join(match_groups_list[1:]).lstrip("0X"),
             )
     return retval
+
+
+@contextmanager
+def disable_all_loggers() -> Generator[None, None, None]:
+    """Temporarily disable all logging within this context manager block."""
+    logging.disable(logging.CRITICAL)
+    yield
+    logging.disable(logging.NOTSET)
 
 
 def get_model_series(model: str) -> str:

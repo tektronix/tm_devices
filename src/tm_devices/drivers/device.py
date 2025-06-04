@@ -5,7 +5,7 @@ import logging
 import socket
 import time
 
-from abc import ABC, abstractmethod
+from abc import ABC
 from collections.abc import Generator
 from contextlib import contextmanager, suppress
 from functools import cached_property as functools_cached_property
@@ -16,8 +16,6 @@ from typing import (
     Tuple,
     TypeVar,
 )
-
-from packaging.version import Version
 
 from tm_devices.driver_mixins.device_control._abstract_device_control import (
     _AbstractDeviceControl,  # pyright: ignore[reportPrivateUsage]
@@ -99,59 +97,6 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
 
         retval += f"\n{'=' * (line_break_length + 2 + len(self.name))}"
         return retval
-
-    ################################################################################################
-    # Abstract Properties
-    ################################################################################################
-    @cached_property
-    @abstractmethod
-    def device_type(self) -> str:
-        """Return a string representing the device type."""
-
-    @cached_property
-    @abstractmethod
-    def manufacturer(self) -> str:
-        """Return the manufacturer of the device."""
-
-    @cached_property
-    @abstractmethod
-    def model(self) -> str:
-        """Return the full model of the device."""
-
-    @cached_property
-    @abstractmethod
-    def serial(self) -> str:
-        """Return the serial number of the device."""
-
-    @cached_property
-    @abstractmethod
-    def sw_version(self) -> Version:
-        """Return the software version of the device."""
-
-    ################################################################################################
-    # Abstract Methods - Private and Public
-    ################################################################################################
-    @abstractmethod
-    def _cleanup(self) -> None:
-        """Perform the actual cleanup code."""
-
-    @abstractmethod
-    def _close(self) -> None:
-        """Perform the actual closing code."""
-
-    @abstractmethod
-    def _open(self) -> bool:
-        """Perform the actual opening code.
-
-        Returns:
-           A boolean indicating if device connected successfully.
-        """
-
-    def _reboot(self) -> None:
-        """Perform the actual rebooting code."""
-        raise NotImplementedError(
-            f"``._reboot()`` is not yet implemented for the {self.__class__.__name__} driver",  # noqa: EM102
-        )
 
     ################################################################################################
     # Properties - Private and Public

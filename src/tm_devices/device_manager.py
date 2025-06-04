@@ -42,6 +42,7 @@ from tm_devices.helpers import (
     detect_visa_resource_expression,
     DeviceConfigEntry,
     DeviceTypes,
+    disable_all_loggers,
     DMConfigOptions,
     get_model_series,
     PACKAGE_NAME,
@@ -171,7 +172,7 @@ class DeviceManager(metaclass=Singleton):
     def __del__(self) -> None:
         """Delete the instance of the DeviceManger."""
         if self.__is_open:
-            self.close()
+            self.close(suppress_logging=True)
 
     def __enter__(self) -> Self:
         """Provide access to the DeviceManager class instance.
@@ -718,17 +719,24 @@ class DeviceManager(metaclass=Singleton):
                 _logger.warning("Device cleanup of %s failed. Retrying...", device_name)
                 device_object.cleanup()
 
-    def close(self) -> None:
+    def close(self, *, suppress_logging: bool = False) -> None:
         """Close the DeviceManager."""
         self.__protect_access()
-        if self.__devices:
-            _logger.info("Closing Connections to Devices")
-            if self.__teardown_cleanup_enabled:
-                self.cleanup_all_devices()
-            for device_object in list(self.__devices.values()):
-                device_object.close()
-        self.__is_open = False
-        _logger.info("%s Closed", self.__class__.__name__)
+        with disable_all_loggers() if suppress_logging else contextlib.nullcontext():
+            if self.__devices:
+                _logger.info("Closing Connections to Devices")
+                if self.__teardown_cleanup_enabled:
+                    self.cleanup_all_devices()
+                for device_object in self.__devices.values():
+                    try:
+                        device_object.close()
+                    except AttributeError:  # noqa: PERF203
+                        _logger.warning(
+                            "%s was previously closed, no need to close it again",
+                            device_object.name,
+                        )
+            self.__is_open = False
+            _logger.info("%s Closed", self.__class__.__name__)
 
     def disable_device_command_checking(self) -> None:
         """Set the `.enable_verification` attribute of each device to `False`.
