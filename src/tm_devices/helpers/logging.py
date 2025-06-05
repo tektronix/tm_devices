@@ -10,9 +10,10 @@ import sys
 import time
 import traceback
 
+from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
-from typing import Literal, Optional, Tuple, Type, TYPE_CHECKING, TypeVar, Union
+from typing import Generator, Literal, Optional, Tuple, Type, TYPE_CHECKING, TypeVar, Union
 
 import colorlog
 import pyvisa
@@ -86,6 +87,14 @@ class LoggingLevels(CustomStrEnum):
     """An enum member representing the CRITICAL logging level."""
     NONE = "NONE"
     """An enum member indicating no logging messages should be captured."""
+
+
+@contextmanager
+def disable_all_loggers() -> Generator[None, None, None]:
+    """Temporarily disable all logging within this context manager block."""
+    logging.disable(logging.CRITICAL)
+    yield
+    logging.disable(logging.NOTSET)
 
 
 def configure_logging(

@@ -3,6 +3,8 @@
 from abc import ABC, abstractmethod
 from typing import Tuple
 
+from packaging.version import Version
+
 from tm_devices.helpers import DeviceConfigEntry
 from tm_devices.helpers import ReadOnlyCachedProperty as cached_property  # noqa: N813
 
@@ -45,3 +47,50 @@ class _AbstractDeviceControl(ABC):  # pyright: ignore[reportUnusedClass]
             A tuple containing the current error code alongside a tuple of the current error
                 messages.
         """
+
+    @cached_property
+    @abstractmethod
+    def device_type(self) -> str:
+        """Return a string representing the device type."""
+
+    @cached_property
+    @abstractmethod
+    def manufacturer(self) -> str:
+        """Return the manufacturer of the device."""
+
+    @cached_property
+    @abstractmethod
+    def model(self) -> str:
+        """Return the full model of the device."""
+
+    @cached_property
+    @abstractmethod
+    def serial(self) -> str:
+        """Return the serial number of the device."""
+
+    @cached_property
+    @abstractmethod
+    def sw_version(self) -> Version:
+        """Return the software version of the device."""
+
+    @abstractmethod
+    def _cleanup(self) -> None:
+        """Perform the actual cleanup code."""
+
+    @abstractmethod
+    def _close(self) -> None:
+        """Perform the actual closing code."""
+
+    @abstractmethod
+    def _open(self) -> bool:
+        """Perform the actual opening code.
+
+        Returns:
+           A boolean indicating if device connected successfully.
+        """
+
+    def _reboot(self) -> None:
+        """Perform the actual rebooting code."""
+        raise NotImplementedError(
+            f"``._reboot()`` is not yet implemented for the {self.__class__.__name__} driver",  # noqa: EM102
+        )

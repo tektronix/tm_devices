@@ -51,16 +51,15 @@ def verify_deleting_device_manager() -> None:
 
     stdout = stdout_buffer.getvalue()
     print(stdout)  # noqa: T201
-    assert "Closing Connections to Devices" in stdout
-    assert "Closing Connection to AFG 1" in stdout
-    assert "DeviceManager Closed" in stdout
+    assert not stdout  # The __del__ method should not print anything
 
     # Test the .close() method closes and the __del__ method skips
     dev_manager = DeviceManager(verbose=True)
     dev_manager.visa_library = SIMULATED_VISA_LIB
     # Set up the device manager with a single device
     assert not dev_manager.devices
-    dev_manager.add_afg("afg3252c-hostname")
+    afg = dev_manager.add_afg("afg3252c-hostname")
+    afg.close()
     dev_manager.close()
     assert len(dev_manager.devices) == 1
     # Delete the device manager
