@@ -39,7 +39,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-JSON_METASCHEMA_URL = "https://json.schemastore.org/metaschema-draft-07-unofficial-strict.json"
+JSON_METASCHEMA_URL = "https://schemastore.org/metaschema-draft-07-unofficial-strict.json"
 JSON_METASCHEMA_FILE = Path(__file__).parents[1] / Path("temp_metaschema.json")
 SCHEMA_OUTPUT_FILE = Path(__file__).parents[1] / Path(
     "src/tm_devices/tm_devices_config_schema.json"
