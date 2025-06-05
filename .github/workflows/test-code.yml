@@ -14,7 +14,7 @@ jobs:
     with:
       repo-name: tektronix/tm_devices
       operating-systems-array: '["ubuntu", "windows", "macos"]'
-      # TODO: revert back to just "3.13" once the issue with building on 3.13.4 is resolved
+      # TODO: revert back to just "3.13" once https://github.com/mammothb/editdistpy/issues/15 is resolved
       python-versions-array: '["3.9", "3.10", "3.11", "3.12", "3.13.3"]'  # when updating this, make sure to update all workflows that use this strategy
       upload-to-codecov: true
       enable-retry-os-array: '["macos"]'
