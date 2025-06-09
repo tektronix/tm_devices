@@ -1078,7 +1078,15 @@ class DeviceManager(metaclass=Singleton):
         if self.__config.devices:
             _logger.info("Opening Connections to Devices")
         for device_name, device_config in self.__config.devices.items():
-            self.__create_device(device_name, device_config, 3)
+            if device_config in {x.config_entry for x in self.__devices.values()}:
+                device_object = self.__devices[device_name]
+                _logger.info("Re-opening Connection with %s", device_object.name_and_alias)
+                # Re-open an existing device
+                device_object._open()  # noqa: SLF001  # pyright: ignore[reportPrivateUsage]
+            else:
+                # Create a new device
+                self.__create_device(device_name, device_config, 3)
+
         self.__is_open = True
         self._suppress_protection = False
 
@@ -1355,7 +1363,7 @@ class DeviceManager(metaclass=Singleton):
         # noinspection PyPropertyAccess
         del new_device.name_and_alias
 
-        if device_config_name in self.__devices:
+        if device_config_name in self.__devices:  # pragma: no cover
             del self.__devices[device_config_name]
         self.__devices[device_config_name] = new_device
         if device_config.alias:
