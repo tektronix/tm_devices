@@ -29,20 +29,22 @@ configure_logging(log_console_level=LoggingLevels.DEBUG)
 def verify_deleting_device_manager() -> None:
     """Test the behavior of deleting the DeviceManager instance."""
     # Test the __del__ method is run correctly
-    with mock.patch.dict("os.environ", {"TM_OPTIONS": "STANDALONE,TEARDOWN_CLEANUP"}):
+    with mock.patch.dict(
+        "os.environ",
+        {
+            "TM_OPTIONS": "TEARDOWN_CLEANUP",
+            "TM_DEVICES": "address=AFG3252C-HOSTNAME,device_type=AFG",
+            "TM_DEVICES_VISA_LIBRARY": SIMULATED_VISA_LIB,
+        },
+    ):
         dev_manager = DeviceManager(
             verbose=True, config_options=DMConfigOptions(setup_cleanup=True, teardown_cleanup=False)
         )
-    assert dev_manager.visa_library == PYVISA_PY_BACKEND
+    assert dev_manager.visa_library == SIMULATED_VISA_LIB
     assert dev_manager.verbose
     assert not dev_manager.verbose_visa
     assert not dev_manager.teardown_cleanup_enabled
     assert dev_manager.setup_cleanup_enabled
-    # Switch to the simulated visa library
-    dev_manager.visa_library = SIMULATED_VISA_LIB
-    # Set up the device manager with a single device
-    assert not dev_manager.devices
-    dev_manager.add_afg("afg3252c-hostname")
     assert len(dev_manager.devices) == 1
     # Delete the device manager
     stdout_buffer = StringIO()
@@ -54,8 +56,10 @@ def verify_deleting_device_manager() -> None:
     assert not stdout  # The __del__ method should not print anything
 
     # Test the .close() method closes and the __del__ method skips
-    dev_manager = DeviceManager(verbose=True)
+    dev_manager = DeviceManager(verbose=True, config_options=DMConfigOptions(standalone=True))
+    assert dev_manager.visa_library == PYVISA_PY_BACKEND
     dev_manager.visa_library = SIMULATED_VISA_LIB
+    assert dev_manager.visa_library == SIMULATED_VISA_LIB
     # Set up the device manager with a single device
     assert not dev_manager.devices
     afg = dev_manager.add_afg("afg3252c-hostname")

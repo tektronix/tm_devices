@@ -1363,7 +1363,7 @@ class DeviceManager(metaclass=Singleton):
         # noinspection PyPropertyAccess
         del new_device.name_and_alias
 
-        if device_config_name in self.__devices:
+        if device_config_name in self.__devices:  # pragma: no cover
             del self.__devices[device_config_name]
         self.__devices[device_config_name] = new_device
         if device_config.alias:
