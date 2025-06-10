@@ -29,7 +29,7 @@ class PiloggerState(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the state of the programmatic interface command log. If the
-          location specified by ``PILOGGER:FILENAME`` does not exist or is not writable, attempts to
+          location specified by ``PILOGger:FILEName`` does not exist or is not writable, attempts to
           turn the PI command logger ON will fail, and the state will be set to 0 (OFF).
 
     Usage:
@@ -75,7 +75,7 @@ class PiloggerFilename(SCPICmdWrite, SCPICmdRead):
         - ``<QString>`` is a quoted string that defines the file path that specifies the location to
           save the command log, in the format '[<path>]<filename.ext>'. Specifying a path is
           optional. If no path is entered, the instrument will search in the current working
-          directory as set in ``FILESYSTEM:CWD``.
+          directory as set in ``FILESystem:CWD``.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -123,7 +123,7 @@ class Pilogger(SCPICmdRead):
             - ``<QString>`` is a quoted string that defines the file path that specifies the
               location to save the command log, in the format '[<path>]<filename.ext>'. Specifying a
               path is optional. If no path is entered, the instrument will search in the current
-              working directory as set in ``FILESYSTEM:CWD``.
+              working directory as set in ``FILESystem:CWD``.
         """
         return self._filename
 
@@ -133,7 +133,7 @@ class Pilogger(SCPICmdRead):
 
         Description:
             - This command sets or queries the state of the programmatic interface command log. If
-              the location specified by ``PILOGGER:FILENAME`` does not exist or is not writable,
+              the location specified by ``PILOGger:FILEName`` does not exist or is not writable,
               attempts to turn the PI command logger ON will fail, and the state will be set to 0
               (OFF).
 

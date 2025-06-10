@@ -10,9 +10,9 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - SELect:B<x> {OFF|ON|0|1}
+    - SELect:B<x> {ON|OFF|1|0}
     - SELect:B<x>?
-    - SELect:BUS<x> {OFF|ON|0|1}
+    - SELect:BUS<x> {ON|OFF|1|0}
     - SELect:BUS<x>?
     - SELect:CH<x> {ON|OFF|1|0}
     - SELect:CH<x>?
@@ -20,26 +20,26 @@ Commands and Queries:
     - SELect:CONTROl?
     - SELect:D<x> {ON|OFF|<NR1>}
     - SELect:D<x>?
-    - SELect:DAll {ON|OFF|0|1}
+    - SELect:DAll {ON|OFF|1|0}
     - SELect:MATH {ON|OFF|<NR1>}
     - SELect:MATH1 {ON|OFF|<NR1>}
     - SELect:MATH1?
     - SELect:MATH?
     - SELect:REF<x> {ON|OFF|<NR1>}
     - SELect:REF<x>?
-    - SELect:RF_AMPlitude {OFF|ON|0|1}
+    - SELect:RF_AMPlitude {ON|OFF|1|0}
     - SELect:RF_AMPlitude?
-    - SELect:RF_AVErage {OFF|ON|0|1}
+    - SELect:RF_AVErage {ON|OFF|1|0}
     - SELect:RF_AVErage?
-    - SELect:RF_FREQuency {OFF|ON|0|1}
+    - SELect:RF_FREQuency {ON|OFF|1|0}
     - SELect:RF_FREQuency?
-    - SELect:RF_MAXHold {OFF|ON|0|1}
+    - SELect:RF_MAXHold {ON|OFF|1|0}
     - SELect:RF_MAXHold?
-    - SELect:RF_MINHold {OFF|ON|0|1}
+    - SELect:RF_MINHold {ON|OFF|1|0}
     - SELect:RF_MINHold?
-    - SELect:RF_NORMal {OFF|ON|0|1}
+    - SELect:RF_NORMal {ON|OFF|1|0}
     - SELect:RF_NORMal?
-    - SELect:RF_PHASe {OFF|ON|0|1}
+    - SELect:RF_PHASe {ON|OFF|1|0}
     - SELect:RF_PHASe?
     - SELect?
     ```
@@ -75,7 +75,7 @@ class SelectRfPhase(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:RF_PHASe {OFF|ON|0|1}
+        - SELect:RF_PHASe {ON|OFF|1|0}
         - SELect:RF_PHASe?
         ```
 
@@ -100,7 +100,7 @@ class SelectRfNormal(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:RF_NORMal {OFF|ON|0|1}
+        - SELect:RF_NORMal {ON|OFF|1|0}
         - SELect:RF_NORMal?
         ```
 
@@ -125,7 +125,7 @@ class SelectRfMinhold(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:RF_MINHold {OFF|ON|0|1}
+        - SELect:RF_MINHold {ON|OFF|1|0}
         - SELect:RF_MINHold?
         ```
 
@@ -150,7 +150,7 @@ class SelectRfMaxhold(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:RF_MAXHold {OFF|ON|0|1}
+        - SELect:RF_MAXHold {ON|OFF|1|0}
         - SELect:RF_MAXHold?
         ```
 
@@ -175,7 +175,7 @@ class SelectRfFrequency(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:RF_FREQuency {OFF|ON|0|1}
+        - SELect:RF_FREQuency {ON|OFF|1|0}
         - SELect:RF_FREQuency?
         ```
 
@@ -200,7 +200,7 @@ class SelectRfAverage(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:RF_AVErage {OFF|ON|0|1}
+        - SELect:RF_AVErage {ON|OFF|1|0}
         - SELect:RF_AVErage?
         ```
 
@@ -225,7 +225,7 @@ class SelectRfAmplitude(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:RF_AMPlitude {OFF|ON|0|1}
+        - SELect:RF_AMPlitude {ON|OFF|1|0}
         - SELect:RF_AMPlitude?
         ```
 
@@ -331,7 +331,7 @@ class SelectDall(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - SELect:DAll {ON|OFF|0|1}
+        - SELect:DAll {ON|OFF|1|0}
         ```
     """
 
@@ -446,7 +446,7 @@ class SelectBusItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:BUS<x> {OFF|ON|0|1}
+        - SELect:BUS<x> {ON|OFF|1|0}
         - SELect:BUS<x>?
         ```
 
@@ -472,7 +472,7 @@ class SelectBItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SELect:B<x> {OFF|ON|0|1}
+        - SELect:B<x> {ON|OFF|1|0}
         - SELect:B<x>?
         ```
 
@@ -661,7 +661,7 @@ class Select(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:DAll {ON|OFF|0|1}
+            - SELect:DAll {ON|OFF|1|0}
             ```
         """
         return self._dall
@@ -713,7 +713,7 @@ class Select(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:RF_AMPlitude {OFF|ON|0|1}
+            - SELect:RF_AMPlitude {ON|OFF|1|0}
             - SELect:RF_AMPlitude?
             ```
 
@@ -739,7 +739,7 @@ class Select(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:RF_AVErage {OFF|ON|0|1}
+            - SELect:RF_AVErage {ON|OFF|1|0}
             - SELect:RF_AVErage?
             ```
 
@@ -766,7 +766,7 @@ class Select(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:RF_FREQuency {OFF|ON|0|1}
+            - SELect:RF_FREQuency {ON|OFF|1|0}
             - SELect:RF_FREQuency?
             ```
 
@@ -792,7 +792,7 @@ class Select(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:RF_MAXHold {OFF|ON|0|1}
+            - SELect:RF_MAXHold {ON|OFF|1|0}
             - SELect:RF_MAXHold?
             ```
 
@@ -818,7 +818,7 @@ class Select(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:RF_MINHold {OFF|ON|0|1}
+            - SELect:RF_MINHold {ON|OFF|1|0}
             - SELect:RF_MINHold?
             ```
 
@@ -844,7 +844,7 @@ class Select(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:RF_NORMal {OFF|ON|0|1}
+            - SELect:RF_NORMal {ON|OFF|1|0}
             - SELect:RF_NORMal?
             ```
 
@@ -870,7 +870,7 @@ class Select(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:RF_PHASe {OFF|ON|0|1}
+            - SELect:RF_PHASe {ON|OFF|1|0}
             - SELect:RF_PHASe?
             ```
 
@@ -897,7 +897,7 @@ class Select(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:BUS<x> {OFF|ON|0|1}
+            - SELect:BUS<x> {ON|OFF|1|0}
             - SELect:BUS<x>?
             ```
 
@@ -924,7 +924,7 @@ class Select(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SELect:B<x> {OFF|ON|0|1}
+            - SELect:B<x> {ON|OFF|1|0}
             - SELect:B<x>?
             ```
 

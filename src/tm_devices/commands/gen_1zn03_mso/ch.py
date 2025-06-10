@@ -250,9 +250,10 @@ class ChannelProbefuncExtunits(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>:PROBEFunc:EXTUnits`` command.
 
     Description:
-        - This command sets the unit of measurement for the external attenuator of the specified
-          channel. The channel is specified by x. The alternate units are used if they are enabled.
-          Use the ``CHX:PROBEFUNC:EXTUNITS:STATE`` command to enable or disable the alternate units.
+        - This command Sets or queries the units of the specified channel. The channel is specified
+          by x. This command can only be set to 'V' or 'A', which corresponds to selecting a voltage
+          or current probe respectively. The ``CHX:PROBEFUNC:EXTUNITS`` command can only select 'V'
+          if the ``CHX:PROBEFUNC:EXTUNITS:STATE`` is disabled (set to 0).
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PROBEFunc:EXTUnits?`` query.
@@ -269,7 +270,8 @@ class ChannelProbefuncExtunits(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` is the channel number.
-        - ``<QString>`` indicates the attenuation unit of measurement for the specified channel.
+        - ``<QString>`` a quoted string that indicates the units of the specified channel. Only
+          units 'V' or 'A' are supported. This command is case sensitive.
 
     Properties:
         - ``.state``: The ``CH<x>:PROBEFunc:EXTUnits:STATE`` command.
@@ -457,10 +459,11 @@ class ChannelProbefunc(SCPICmdRead):
         """Return the ``CH<x>:PROBEFunc:EXTUnits`` command.
 
         Description:
-            - This command sets the unit of measurement for the external attenuator of the specified
-              channel. The channel is specified by x. The alternate units are used if they are
-              enabled. Use the ``CHX:PROBEFUNC:EXTUNITS:STATE`` command to enable or disable the
-              alternate units.
+            - This command Sets or queries the units of the specified channel. The channel is
+              specified by x. This command can only be set to 'V' or 'A', which corresponds to
+              selecting a voltage or current probe respectively. The ``CHX:PROBEFUNC:EXTUNITS``
+              command can only select 'V' if the ``CHX:PROBEFUNC:EXTUNITS:STATE`` is disabled (set
+              to 0).
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PROBEFunc:EXTUnits?`` query.
@@ -477,7 +480,8 @@ class ChannelProbefunc(SCPICmdRead):
 
         Info:
             - ``CH<x>`` is the channel number.
-            - ``<QString>`` indicates the attenuation unit of measurement for the specified channel.
+            - ``<QString>`` a quoted string that indicates the units of the specified channel. Only
+              units 'V' or 'A' are supported. This command is case sensitive.
 
         Sub-properties:
             - ``.state``: The ``CH<x>:PROBEFunc:EXTUnits:STATE`` command.
@@ -1188,7 +1192,7 @@ class ChannelCoupling(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the input coupling setting for the specified analog channel.
-          The channel is specified by x. The available arguments depend on the attached accessories.
+          The channel is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:COUPling?`` query.
@@ -1369,8 +1373,7 @@ class Channel(ValidatedChannel, SCPICmdRead):
 
         Description:
             - This command sets or queries the input coupling setting for the specified analog
-              channel. The channel is specified by x. The available arguments depend on the attached
-              accessories.
+              channel. The channel is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:COUPling?`` query.

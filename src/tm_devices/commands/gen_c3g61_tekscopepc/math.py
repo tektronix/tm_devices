@@ -127,13 +127,13 @@ Commands and Queries:
     - MATH:MATH<x>:SPECTral:PHASE?
     - MATH:MATH<x>:SPECTral:SOUrce {S<x>_Ch<x>|CH<x>|MATH<x>|REF<x>}
     - MATH:MATH<x>:SPECTral:SOUrce?
-    - MATH:MATH<x>:SPECTral:SUPPress {OFF|ON|0|1}
+    - MATH:MATH<x>:SPECTral:SUPPress {ON|OFF|1|0}
     - MATH:MATH<x>:SPECTral:SUPPress:VALue <NR3>
     - MATH:MATH<x>:SPECTral:SUPPress:VALue?
     - MATH:MATH<x>:SPECTral:SUPPress?
     - MATH:MATH<x>:SPECTral:TYPE {MAGNitude|PHASe|REAL|IMAGinary}
     - MATH:MATH<x>:SPECTral:TYPE?
-    - MATH:MATH<x>:SPECTral:UNWRap {OFF|ON|0|1}
+    - MATH:MATH<x>:SPECTral:UNWRap {ON|OFF|1|0}
     - MATH:MATH<x>:SPECTral:UNWRap:DEGrees <NR3>
     - MATH:MATH<x>:SPECTral:UNWRap:DEGrees?
     - MATH:MATH<x>:SPECTral:UNWRap?
@@ -598,7 +598,7 @@ class MathMathItemSpectralUnwrap(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:SPECTral:UNWRap {OFF|ON|0|1}
+        - MATH:MATH<x>:SPECTral:UNWRap {ON|OFF|1|0}
         - MATH:MATH<x>:SPECTral:UNWRap?
         ```
 
@@ -719,7 +719,7 @@ class MathMathItemSpectralSuppress(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:SPECTral:SUPPress {OFF|ON|0|1}
+        - MATH:MATH<x>:SPECTral:SUPPress {ON|OFF|1|0}
         - MATH:MATH<x>:SPECTral:SUPPress?
         ```
 
@@ -1042,7 +1042,7 @@ class MathMathItemSpectral(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:SPECTral:SUPPress {OFF|ON|0|1}
+            - MATH:MATH<x>:SPECTral:SUPPress {ON|OFF|1|0}
             - MATH:MATH<x>:SPECTral:SUPPress?
             ```
 
@@ -1103,7 +1103,7 @@ class MathMathItemSpectral(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:SPECTral:UNWRap {OFF|ON|0|1}
+            - MATH:MATH<x>:SPECTral:UNWRap {ON|OFF|1|0}
             - MATH:MATH<x>:SPECTral:UNWRap?
             ```
 
@@ -2869,7 +2869,7 @@ class MathMathItemFilterType(SCPICmdWrite, SCPICmdRead):
         - ``HILBert`` specifies the filter type as HILBert.
         - ``DIFFerentiator`` specifies the filter type as DIFFerentiator.
         - ``RC`` specifies the filter type as RC.
-        - ``RRC`` specifies the filter type as RRC.
+        - ``RCC`` specifies the filter type as RCC.
     """
 
 
@@ -3986,7 +3986,7 @@ class MathMathItemFilter(SCPICmdRead):
             - ``HILBert`` specifies the filter type as HILBert.
             - ``DIFFerentiator`` specifies the filter type as DIFFerentiator.
             - ``RC`` specifies the filter type as RC.
-            - ``RRC`` specifies the filter type as RRC.
+            - ``RCC`` specifies the filter type as RCC.
         """
         return self._type
 

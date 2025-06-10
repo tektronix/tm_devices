@@ -48,9 +48,8 @@ class MatharbfltItemFilepath(SCPICmdWrite, SCPICmdRead):
     """The ``MATHArbflt<x>:FILepath`` command.
 
     Description:
-        - This command or query sets the file path for a file of filter coefficients for the
-          specified arbitrary filter. Setting a path will read that file and load the filter for
-          ARBFLT<x>. Access these filters using a Math with an expression of the form 'ARBFlt<x>()'.
+        - This command or query sets the file path for a file of filter coefficients. Setting a path
+          will read that file and load the filter for ARBFLT<x>, where x can be 1 to 8.
 
     Usage:
         - Using the ``.query()`` method will send the ``MATHArbflt<x>:FILepath?`` query.
@@ -96,10 +95,8 @@ class MatharbfltItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         """Return the ``MATHArbflt<x>:FILepath`` command.
 
         Description:
-            - This command or query sets the file path for a file of filter coefficients for the
-              specified arbitrary filter. Setting a path will read that file and load the filter for
-              ARBFLT<x>. Access these filters using a Math with an expression of the form
-              'ARBFlt<x>()'.
+            - This command or query sets the file path for a file of filter coefficients. Setting a
+              path will read that file and load the filter for ARBFLT<x>, where x can be 1 to 8.
 
         Usage:
             - Using the ``.query()`` method will send the ``MATHArbflt<x>:FILepath?`` query.

@@ -11,7 +11,7 @@ Commands and Queries:
     ```
     - OUTPut[n]:PATH {DCHB|ACDirect|ACAMplified|DCHV}
     - OUTPut[n]:PATH?
-    - OUTPut[n]:STATe {0|1|OFF|ON}
+    - OUTPut[n]:STATe {ON|OFF|1|0}
     - OUTPut[n]:STATe?
     - OUTPut[n]:SVALue:ANALog:STATe {OFF|ZERO}
     - OUTPut[n]:SVALue:ANALog:STATe?
@@ -397,7 +397,7 @@ class OutputItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - OUTPut[n]:STATe {0|1|OFF|ON}
+        - OUTPut[n]:STATe {ON|OFF|1|0}
         - OUTPut[n]:STATe?
         ```
 
@@ -534,7 +534,7 @@ class OutputItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - OUTPut[n]:STATe {0|1|OFF|ON}
+            - OUTPut[n]:STATe {ON|OFF|1|0}
             - OUTPut[n]:STATe?
             ```
 

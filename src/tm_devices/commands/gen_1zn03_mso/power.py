@@ -342,8 +342,8 @@ class PowerPowerItemPreset(SCPICmdWrite):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge. This must be POWer1.
         - ``EXECute`` runs the power preset action.
     """
 
@@ -365,7 +365,7 @@ class PowerPowerItemClresponseTestconnection(SCPICmdWrite):
         ```
 
     Info:
-        - ``POWer<x>`` is the number of the PSRR power measurement.
+        - ``POWer<x>`` is the number of the PSRR power measurement. This must be POWer1.
         - ``EXECute`` runs the test connection function.
     """
 
@@ -393,8 +393,8 @@ class PowerPowerItemClresponseStopfrequency(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge. This must be POWer1.
         - ``<NR3>`` is the stop frequency for the measurement, in the range of 10 Hz to 50 MHz.
     """
 
@@ -422,8 +422,8 @@ class PowerPowerItemClresponseStartfrequency(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge. This must be POWer1.
         - ``<NR3>`` is the starting frequency for the measurement, in the range of 10 Hz to 50 MHz.
     """
 
@@ -449,8 +449,8 @@ class PowerPowerItemClresponsePpd(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge. This must be POWer1.
         - ``<NR3>`` is the PPD value for the measurement, in the range of 10 to 100 points.
     """
 
@@ -478,8 +478,8 @@ class PowerPowerItemClresponseOutputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge. This must be POWer1.
         - ``CH<x>`` sets the channel to use for the output signal source.
     """
 
@@ -507,8 +507,8 @@ class PowerPowerItemClresponseInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge. This must be POWer1.
         - ``CH<x>`` sets the channel to use for the output signal source.
     """
 
@@ -535,8 +535,8 @@ class PowerPowerItemClresponseImpedance(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge. This must be POWer1.
         - ``FIFTy`` sets the impedance to be 50 Ω.
         - ``HIGHZ`` sets the impedance to be 1 MΩ.
     """
@@ -546,8 +546,8 @@ class PowerPowerItemClresponseGenerator(SCPICmdWrite, SCPICmdRead):
     """The ``POWer:POWer<x>:CLRESPONSE:GENerator`` command.
 
     Description:
-        - Sets or queries the generator source for the specified Control Loop Response power
-          measurement.
+        - This command sets or queries the generator source for the specified Control Loop Response
+          power measurement.
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:CLRESPONSE:GENerator?``
@@ -564,8 +564,9 @@ class PowerPowerItemClresponseGenerator(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``POWer<x>`` is the number of the power measurement.INTernal sets the internal generator
-          as the source for the Control Loop Response power measurement.
+        - ``POWer<x>`` is the number of the power measurement. This must be POWer1.
+        - ``INTernal`` sets the internal generator as the source for the Control Loop Response power
+          measurement.
         - ``EXTernal`` sets the external generator as the source for the Control Loop Response power
           measurement.
     """
@@ -575,8 +576,8 @@ class PowerPowerItemClresponseGenipaddress(SCPICmdWrite, SCPICmdRead):
     """The ``POWer:POWer<x>:CLRESPONSE:GENIPADDress`` command.
 
     Description:
-        - Sets or queries the IP address of the external generator to be used with the specified
-          Control Loop Response measurement.
+        - This command sets or queries the IP address of the external generator to be used with the
+          specified Control Loop Response measurement.
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:CLRESPONSE:GENIPADDress?``
@@ -594,8 +595,8 @@ class PowerPowerItemClresponseGenipaddress(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``POWer<x>`` is the number of the power measurement.<NR2> is the IP address of the
-          generator.
+        - ``POWer<x>`` is the number of the power measurement. This must be POWer1.
+        - ``<NR2>`` is the IP address of the generator.
     """
 
 
@@ -623,7 +624,7 @@ class PowerPowerItemClresponseFreqvalItem(ValidatedDynamicNumberCmd, SCPICmdWrit
 
     Info:
         - ``Power<x>`` sets the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
+          in the UI for a power measurement badge. This must be POWer1.
         - ``FREQ<x>`` sets the configuration step number, in the range of 1 to 11. Values outside
           this range will report an error.
         - ``<NR3>`` sets the frequency of the specified configuration step number, in the range of
@@ -655,9 +656,9 @@ class PowerPowerItemClresponseConstamplitude(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``<NR3>`` is the constant amplitude voltage value for the measurement, in the range of
-          -100 V to 100 V.
+          in the UI for a power measurement badge. This must be POWer1.
+        - ``<NR3>`` is the constant amplitude voltage value for the measurement, in the range of 10
+          mV to 100 V.
     """
 
 
@@ -665,8 +666,8 @@ class PowerPowerItemClresponseConnectstatus(SCPICmdRead):
     """The ``POWer:POWer<x>:CLRESPONSE:CONNECTSTATus`` command.
 
     Description:
-        - Queries connection status to the external generator used with the specified Control Loop
-          Response power measurement.
+        - This command queries connection status to the external generator used with the specified
+          Control Loop Response power measurement.
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:CLRESPONSE:CONNECTSTATus?``
@@ -681,7 +682,7 @@ class PowerPowerItemClresponseConnectstatus(SCPICmdRead):
         ```
 
     Info:
-        - ``POWer<x>`` is the number of the power measurement.
+        - ``POWer<x>`` is the number of the power measurement. This must be POWer1.
     """
 
 
@@ -730,8 +731,8 @@ class PowerPowerItemClresponseAmpmode(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge. This must be POWer1.
         - ``CONSTant`` sets the amplitude mode to output a constant amplitude signal from the DUT
           stimulus generator for all frequency bands.
         - ``PROFile`` enables configuring the generator to set amplitude values for each frequency
@@ -761,12 +762,12 @@ class PowerPowerItemClresponseAmpvalItem(ValidatedDynamicNumberCmd, SCPICmdWrite
         ```
 
     Info:
-        - ``Power<x>`` sets the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
+        - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge. This must be POWer1.
         - ``AMP<x>`` sets the configuration step number, in the range of 1 to 10. Values outside
           this range will report an error.
         - ``<NR3>`` sets the generator amplitude for the specified configuration step, in the range
-          of -100 V to 100 V.
+          of -10 mV to 100 V.
     """
 
 
@@ -778,6 +779,10 @@ class PowerPowerItemClresponse(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:CLRESPONSE?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CLRESPONSE?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge. This must be POWer1.
 
     Properties:
         - ``.ampval``: The ``POWer:POWer<x>:CLRESPONSE:AMP<x>Val`` command.
@@ -861,12 +866,12 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` sets the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
+            - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge. This must be POWer1.
             - ``AMP<x>`` sets the configuration step number, in the range of 1 to 10. Values outside
               this range will report an error.
             - ``<NR3>`` sets the generator amplitude for the specified configuration step, in the
-              range of -100 V to 100 V.
+              range of -10 mV to 100 V.
         """
         return self._ampval
 
@@ -894,8 +899,8 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge. This must be POWer1.
             - ``CONSTant`` sets the amplitude mode to output a constant amplitude signal from the
               DUT stimulus generator for all frequency bands.
             - ``PROFile`` enables configuring the generator to set amplitude values for each
@@ -934,8 +939,8 @@ class PowerPowerItemClresponse(SCPICmdRead):
         """Return the ``POWer:POWer<x>:CLRESPONSE:CONNECTSTATus`` command.
 
         Description:
-            - Queries connection status to the external generator used with the specified Control
-              Loop Response power measurement.
+            - This command queries connection status to the external generator used with the
+              specified Control Loop Response power measurement.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -950,7 +955,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``POWer<x>`` is the number of the power measurement.
+            - ``POWer<x>`` is the number of the power measurement. This must be POWer1.
         """
         return self._connectstatus
 
@@ -979,9 +984,9 @@ class PowerPowerItemClresponse(SCPICmdRead):
 
         Info:
             - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
+              shown in the UI for a power measurement badge. This must be POWer1.
             - ``<NR3>`` is the constant amplitude voltage value for the measurement, in the range of
-              -100 V to 100 V.
+              10 mV to 100 V.
         """
         return self._constamplitude
 
@@ -1010,7 +1015,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
 
         Info:
             - ``Power<x>`` sets the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
+              shown in the UI for a power measurement badge. This must be POWer1.
             - ``FREQ<x>`` sets the configuration step number, in the range of 1 to 11. Values
               outside this range will report an error.
             - ``<NR3>`` sets the frequency of the specified configuration step number, in the range
@@ -1023,8 +1028,8 @@ class PowerPowerItemClresponse(SCPICmdRead):
         """Return the ``POWer:POWer<x>:CLRESPONSE:GENIPADDress`` command.
 
         Description:
-            - Sets or queries the IP address of the external generator to be used with the specified
-              Control Loop Response measurement.
+            - This command sets or queries the IP address of the external generator to be used with
+              the specified Control Loop Response measurement.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -1042,8 +1047,8 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``POWer<x>`` is the number of the power measurement.<NR2> is the IP address of the
-              generator.
+            - ``POWer<x>`` is the number of the power measurement. This must be POWer1.
+            - ``<NR2>`` is the IP address of the generator.
         """
         return self._genipaddress
 
@@ -1052,8 +1057,8 @@ class PowerPowerItemClresponse(SCPICmdRead):
         """Return the ``POWer:POWer<x>:CLRESPONSE:GENerator`` command.
 
         Description:
-            - Sets or queries the generator source for the specified Control Loop Response power
-              measurement.
+            - This command sets or queries the generator source for the specified Control Loop
+              Response power measurement.
 
         Usage:
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:CLRESPONSE:GENerator?``
@@ -1071,8 +1076,9 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``POWer<x>`` is the number of the power measurement.INTernal sets the internal
-              generator as the source for the Control Loop Response power measurement.
+            - ``POWer<x>`` is the number of the power measurement. This must be POWer1.
+            - ``INTernal`` sets the internal generator as the source for the Control Loop Response
+              power measurement.
             - ``EXTernal`` sets the external generator as the source for the Control Loop Response
               power measurement.
         """
@@ -1102,8 +1108,8 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge. This must be POWer1.
             - ``FIFTy`` sets the impedance to be 50 Ω.
             - ``HIGHZ`` sets the impedance to be 1 MΩ.
         """
@@ -1133,8 +1139,8 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge. This must be POWer1.
             - ``CH<x>`` sets the channel to use for the output signal source.
         """
         return self._inputsource
@@ -1163,8 +1169,8 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge. This must be POWer1.
             - ``CH<x>`` sets the channel to use for the output signal source.
         """
         return self._outputsource
@@ -1191,8 +1197,8 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge. This must be POWer1.
             - ``<NR3>`` is the PPD value for the measurement, in the range of 10 to 100 points.
         """
         return self._ppd
@@ -1221,8 +1227,8 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge. This must be POWer1.
             - ``<NR3>`` is the starting frequency for the measurement, in the range of 10 Hz to 50
               MHz.
         """
@@ -1252,8 +1258,8 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge. This must be POWer1.
             - ``<NR3>`` is the stop frequency for the measurement, in the range of 10 Hz to 50 MHz.
         """
         return self._stopfrequency
@@ -1276,7 +1282,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``POWer<x>`` is the number of the PSRR power measurement.
+            - ``POWer<x>`` is the number of the PSRR power measurement. This must be POWer1.
             - ``EXECute`` runs the test connection function.
         """
         return self._testconnection
@@ -1289,6 +1295,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge. This must be POWer1.
 
     Properties:
         - ``.clresponse``: The ``POWer:POWer<x>:CLRESPONSE`` command tree.
@@ -1310,6 +1320,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:CLRESPONSE?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CLRESPONSE?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge. This must be POWer1.
 
         Sub-properties:
             - ``.ampval``: The ``POWer:POWer<x>:CLRESPONSE:AMP<x>Val`` command.
@@ -1347,8 +1361,8 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge. This must be POWer1.
             - ``EXECute`` runs the power preset action.
         """
         return self._preset
@@ -1386,6 +1400,9 @@ class PowerDelete(SCPICmdWrite):
         ```
         - POWer:DELete 'POWER<x>'
         ```
+
+    Info:
+        - ``'POWER<x>'`` is the Power Measurement Badge and must be POWER1.
     """
 
 
@@ -1403,6 +1420,9 @@ class PowerAddnew(SCPICmdWrite):
         ```
         - POWer:ADDNew 'POWER<x>'
         ```
+
+    Info:
+        - ``'POWER<x>'`` is the Power Measurement Badge and must be POWER1.
     """
 
 
@@ -1443,6 +1463,9 @@ class Power(SCPICmdRead):
             ```
             - POWer:ADDNew 'POWER<x>'
             ```
+
+        Info:
+            - ``'POWER<x>'`` is the Power Measurement Badge and must be POWER1.
         """
         return self._addnew
 
@@ -1461,6 +1484,9 @@ class Power(SCPICmdRead):
             ```
             - POWer:DELete 'POWER<x>'
             ```
+
+        Info:
+            - ``'POWER<x>'`` is the Power Measurement Badge and must be POWER1.
         """
         return self._delete
 
@@ -1472,6 +1498,10 @@ class Power(SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge. This must be POWer1.
 
         Sub-properties:
             - ``.clresponse``: The ``POWer:POWer<x>:CLRESPONSE`` command tree.

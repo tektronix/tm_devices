@@ -374,7 +374,7 @@ class PlotPlotItemRailnum(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``PLOT<x>`` is the plot number.
-        - ``Rail<x>`` is the rail number. x has a minimum of 1 and a maximum of 7.
+        - ``RAIL<x>`` is the rail number. Valid values are 1 to 7.
     """
 
 
@@ -780,7 +780,7 @@ class PlotPlotItemLabelYpos(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` is the x-position, in pixels relative to the baseline of the waveform, of the
+        - ``<NR3>`` is the x-position, in pixels relative to the left edge of the display, of the
           label.
     """
 
@@ -1310,7 +1310,7 @@ class PlotPlotItemLabel(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` is the x-position, in pixels relative to the baseline of the waveform, of
+            - ``<NR3>`` is the x-position, in pixels relative to the left edge of the display, of
               the label.
         """
         return self._ypos
@@ -1551,8 +1551,8 @@ class PlotPlotItemExportraw(SCPICmdRead):
 
     Description:
         - This command returns a binary stream of double values containing the x,y and hits value.
-          Use this command along with ``MEASUREMENT:ADDMEAS TIE``, ``PLOT:PLOT1:TYPE EYEDIAGRAM``,
-          ``DISplay:SELect:VIEW`` plotview1 to export the eye diagram plot data.
+          Use this command along with ``MEASUREMENT:ADDMEAS TIE`` ``PLOT:PLOT1:TYPE EYEDIAGRAM``
+          ``DISplay:SELect:VIEW`` plotview1
 
     Usage:
         - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:EXPORTRaw?`` query.
@@ -1878,9 +1878,8 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Description:
             - This command returns a binary stream of double values containing the x,y and hits
-              value. Use this command along with ``MEASUREMENT:ADDMEAS TIE``,
-              ``PLOT:PLOT1:TYPE EYEDIAGRAM``, ``DISplay:SELect:VIEW`` plotview1 to export the eye
-              diagram plot data.
+              value. Use this command along with ``MEASUREMENT:ADDMEAS TIE``
+              ``PLOT:PLOT1:TYPE EYEDIAGRAM`` ``DISplay:SELect:VIEW`` plotview1
 
         Usage:
             - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:EXPORTRaw?`` query.
@@ -2198,7 +2197,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``PLOT<x>`` is the plot number.
-            - ``Rail<x>`` is the rail number. x has a minimum of 1 and a maximum of 7.
+            - ``RAIL<x>`` is the rail number. Valid values are 1 to 7.
         """
         return self._railnum
 
@@ -2341,8 +2340,7 @@ class PlotDelete(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` is the specified plot. Argument is of the form 'PLOT<NR1>, where <NR1> is ≥
-          1).
+        - ``<QString>`` is the specified plot. Argument is of the form '.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -2363,8 +2361,7 @@ class PlotAddnew(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` is the specified plot. The argument is of the form 'PLOT<NR1>', where <NR1>
-          ≥ 1.
+        - ``<QString>`` is the specified plot. The argument is of the form '.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -2410,8 +2407,7 @@ class Plot(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the specified plot. The argument is of the form 'PLOT<NR1>', where
-              <NR1> ≥ 1.
+            - ``<QString>`` is the specified plot. The argument is of the form '.
         """
         return self._addnew
 
@@ -2431,8 +2427,7 @@ class Plot(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the specified plot. Argument is of the form 'PLOT<NR1>, where <NR1>
-              is ≥ 1).
+            - ``<QString>`` is the specified plot. Argument is of the form '.
         """
         return self._delete
 

@@ -318,7 +318,7 @@ class ActoneventTriggerActionSaveimageState(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command saves a screen capture on a trigger event from a single sequence or sequence
           of N acquisition. Each acquisition in the sequence of N will perform a save operation.
-          This command replaces ``SAVE:IMAGE`` (still valid command, but only an alias for this new
+          This command replaces ``SAVe:IMAGe`` (still valid command, but only an alias for this new
           command).
 
     Usage:
@@ -368,7 +368,7 @@ class ActoneventTriggerActionSaveimage(SCPICmdRead):
         Description:
             - This command saves a screen capture on a trigger event from a single sequence or
               sequence of N acquisition. Each acquisition in the sequence of N will perform a save
-              operation. This command replaces ``SAVE:IMAGE`` (still valid command, but only an
+              operation. This command replaces ``SAVe:IMAGe`` (still valid command, but only an
               alias for this new command).
 
         Usage:
@@ -1430,7 +1430,7 @@ class ActoneventMaskpassActionStopacqState(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``ON`` enables the stop acquisitions when a mask test passes feature.
-        - ``OFF`` disables the stop acquisitions when a mask test passes feature.
+        - ``OFF`` disables the stop acquisitions event when a mask test passes feature.
         - ``<NR1>`` is a number that enables or disables the stop acquisitions when a mask test
           passes feature. The number zero disables the feature, all other numbers enable the
           feature.
@@ -1477,7 +1477,7 @@ class ActoneventMaskpassActionStopacq(SCPICmdRead):
 
         Info:
             - ``ON`` enables the stop acquisitions when a mask test passes feature.
-            - ``OFF`` disables the stop acquisitions when a mask test passes feature.
+            - ``OFF`` disables the stop acquisitions event when a mask test passes feature.
             - ``<NR1>`` is a number that enables or disables the stop acquisitions when a mask test
               passes feature. The number zero disables the feature, all other numbers enable the
               feature.
@@ -1507,9 +1507,9 @@ class ActoneventMaskpassActionSrqState(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``ON`` enables the generate an SRQ event when a mask passes feature.
-        - ``OFF`` disables the generate an SRQ event when a mask passes feature.
-        - ``<NR1>`` is a number that enables or disables the generate an SRQ event when a mask
+        - ``ON`` enables the generate an SRQ event when a mask test passes feature.
+        - ``OFF`` disables the generate an SRQ event when a mask test passes feature.
+        - ``<NR1>`` is a number that enables or disables the generate an SRQ event when a mask test
           passes feature. The number zero disables the feature, all other numbers enable the
           feature.
     """
@@ -1554,11 +1554,11 @@ class ActoneventMaskpassActionSrq(SCPICmdRead):
             ```
 
         Info:
-            - ``ON`` enables the generate an SRQ event when a mask passes feature.
-            - ``OFF`` disables the generate an SRQ event when a mask passes feature.
+            - ``ON`` enables the generate an SRQ event when a mask test passes feature.
+            - ``OFF`` disables the generate an SRQ event when a mask test passes feature.
             - ``<NR1>`` is a number that enables or disables the generate an SRQ event when a mask
-              passes feature. The number zero disables the feature, all other numbers enable the
-              feature.
+              test passes feature. The number zero disables the feature, all other numbers enable
+              the feature.
         """
         return self._state
 
@@ -1587,8 +1587,8 @@ class ActoneventMaskpassActionSavewaveformState(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``ON`` enables the save source waveform(s) when a mask test passes feature.
         - ``OFF`` disables the save source waveform(s) when a mask test passes feature.
-        - ``<NR1>`` is a number that enables or disables the save source waveform(s) when a mask
-          test passes feature. The number zero disables the feature, all other numbers enable the
+        - ``<NR1>`` is a number that enables or disables the source waveform(s) when a mask test
+          passes feature. The number zero disables the feature, all other numbers enable the
           feature.
     """
 
@@ -1636,9 +1636,9 @@ class ActoneventMaskpassActionSavewaveform(SCPICmdRead):
         Info:
             - ``ON`` enables the save source waveform(s) when a mask test passes feature.
             - ``OFF`` disables the save source waveform(s) when a mask test passes feature.
-            - ``<NR1>`` is a number that enables or disables the save source waveform(s) when a mask
-              test passes feature. The number zero disables the feature, all other numbers enable
-              the feature.
+            - ``<NR1>`` is a number that enables or disables the source waveform(s) when a mask test
+              passes feature. The number zero disables the feature, all other numbers enable the
+              feature.
         """
         return self._state
 
@@ -2378,8 +2378,6 @@ class ActoneventMaskfailActionSrqState(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``ON`` enables the generate an SRQ event when a mask fails feature.
-        - ``OFF`` disables the generate an SRQ event when a mask fails feature.
         - ``<NR1>`` is a number that enables or disables the generate an SRQ event when a mask fails
           feature. The number zero disables the feature, all other numbers enable the feature.
     """
@@ -2424,8 +2422,6 @@ class ActoneventMaskfailActionSrq(SCPICmdRead):
             ```
 
         Info:
-            - ``ON`` enables the generate an SRQ event when a mask fails feature.
-            - ``OFF`` disables the generate an SRQ event when a mask fails feature.
             - ``<NR1>`` is a number that enables or disables the generate an SRQ event when a mask
               fails feature. The number zero disables the feature, all other numbers enable the
               feature.
@@ -2743,8 +2739,7 @@ class ActoneventLimitcount(SCPICmdWrite, SCPICmdRead):
     """The ``ACTONEVent:LIMITCount`` command.
 
     Description:
-        - This command sets the limit of act on even saves. The ``ACTONEVent:LIMit`` command must be
-          enabled.
+        - This command sets the limit of act on even saves. The ``ACTONEVent:LIMit``
 
     Usage:
         - Using the ``.query()`` method will send the ``ACTONEVent:LIMITCount?`` query.
@@ -2855,8 +2850,7 @@ class Actonevent(SCPICmdRead):
         """Return the ``ACTONEVent:LIMITCount`` command.
 
         Description:
-            - This command sets the limit of act on even saves. The ``ACTONEVent:LIMit`` command
-              must be enabled.
+            - This command sets the limit of act on even saves. The ``ACTONEVent:LIMit``
 
         Usage:
             - Using the ``.query()`` method will send the ``ACTONEVent:LIMITCount?`` query.

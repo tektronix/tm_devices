@@ -20,6 +20,7 @@ Commands and Queries:
     - MATH:MATH<x>:AUTOETHERnet:SUPPortedfields {DATa|IPData|TDATa}
     - MATH:MATH<x>:AUTOETHERnet:SUPPortedfields?
     - MATH:MATH<x>:AVG:MODE {ON|OFF|<NR1>}
+    - MATH:MATH<x>:AVG:MODE?
     - MATH:MATH<x>:AVG:WEIGht <NR1>
     - MATH:MATH<x>:CAN:SUPPortedfields {DATa}
     - MATH:MATH<x>:CAN:SUPPortedfields?
@@ -76,6 +77,7 @@ Commands and Queries:
     - MATH:MATH<x>:FLEXray:SUPPortedfields {DATa}
     - MATH:MATH<x>:FLEXray:SUPPortedfields?
     - MATH:MATH<x>:FUNCtion {ADD|SUBtract|MULTiply|DIVide}
+    - MATH:MATH<x>:FUNCtion?
     - MATH:MATH<x>:GATing {NONE|SCREEN|CURSor}
     - MATH:MATH<x>:GATing?
     - MATH:MATH<x>:I2C:SUPPortedfields {DATa}
@@ -83,12 +85,19 @@ Commands and Queries:
     - MATH:MATH<x>:I3C:SUPPortedfields {DATa}
     - MATH:MATH<x>:I3C:SUPPortedfields?
     - MATH:MATH<x>:INTERpolation {ON|OFF}
+    - MATH:MATH<x>:INTERpolation?
     - MATH:MATH<x>:LABel:COLor <QString>
+    - MATH:MATH<x>:LABel:COLor?
     - MATH:MATH<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
+    - MATH:MATH<x>:LABel:FONT:BOLD?
     - MATH:MATH<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
+    - MATH:MATH<x>:LABel:FONT:ITALic?
     - MATH:MATH<x>:LABel:FONT:SIZE <NR1>
+    - MATH:MATH<x>:LABel:FONT:SIZE?
     - MATH:MATH<x>:LABel:FONT:TYPE <QString>
+    - MATH:MATH<x>:LABel:FONT:TYPE?
     - MATH:MATH<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
+    - MATH:MATH<x>:LABel:FONT:UNDERline?
     - MATH:MATH<x>:LABel:NAMe <QString>
     - MATH:MATH<x>:LABel:NAMe?
     - MATH:MATH<x>:LABel:XPOS <NR1>
@@ -118,6 +127,7 @@ Commands and Queries:
     - MATH:MATH<x>:SMBUS:SUPPortedfields {DATa}
     - MATH:MATH<x>:SMBUS:SUPPortedfields?
     - MATH:MATH<x>:SOUrce1 {CH<x>|MATH<x>|REF<x>}
+    - MATH:MATH<x>:SOUrce1?
     - MATH:MATH<x>:SPACEWIRe:SUPPortedfields {DATa}
     - MATH:MATH<x>:SPACEWIRe:SUPPortedfields?
     - MATH:MATH<x>:SPECTral:HORZ {LOG|LINEAr}
@@ -128,13 +138,13 @@ Commands and Queries:
     - MATH:MATH<x>:SPECTral:PHASE?
     - MATH:MATH<x>:SPECTral:SOUrce {CH<x>|MATH<x>|REF<x>}
     - MATH:MATH<x>:SPECTral:SOUrce?
-    - MATH:MATH<x>:SPECTral:SUPPress {OFF|ON|0|1}
+    - MATH:MATH<x>:SPECTral:SUPPress {ON|OFF|1|0}
     - MATH:MATH<x>:SPECTral:SUPPress:VALue <NR3>
     - MATH:MATH<x>:SPECTral:SUPPress:VALue?
     - MATH:MATH<x>:SPECTral:SUPPress?
     - MATH:MATH<x>:SPECTral:TYPE {MAGNitude|PHASe|REAL|IMAGinary}
     - MATH:MATH<x>:SPECTral:TYPE?
-    - MATH:MATH<x>:SPECTral:UNWRap {OFF|ON|0|1}
+    - MATH:MATH<x>:SPECTral:UNWRap {ON|OFF|1|0}
     - MATH:MATH<x>:SPECTral:UNWRap:DEGrees <NR3>
     - MATH:MATH<x>:SPECTral:UNWRap:DEGrees?
     - MATH:MATH<x>:SPECTral:UNWRap?
@@ -150,6 +160,7 @@ Commands and Queries:
     - MATH:MATH<x>:USB:SUPPortedfields {DATa}
     - MATH:MATH<x>:USB:SUPPortedfields?
     - MATH:MATH<x>:VUNIT <QString>
+    - MATH:MATH<x>:VUNIT?
     ```
 """  # noqa: E501
 
@@ -166,7 +177,7 @@ if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.pi_control import PIControl
 
 
-class MathMathItemVunit(SCPICmdWrite):
+class MathMathItemVunit(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:VUNIT`` command.
 
     Description:
@@ -174,15 +185,16 @@ class MathMathItemVunit(SCPICmdWrite):
           specified by x.
 
     Usage:
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:VUNIT?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:VUNIT?`` query and raise
+          an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:VUNIT value`` command.
 
     SCPI Syntax:
         ```
         - MATH:MATH<x>:VUNIT <QString>
+        - MATH:MATH<x>:VUNIT?
         ```
-
-    Info:
-        - ``<QString>`` is the custom vertical units.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -280,7 +292,7 @@ class MathMathItemType(SCPICmdWrite):
           instruments and Tekscope (Offline).
         - ``FFT`` sets the type to FFT math, which can use any live analog or reference waveform in
           the time domain. NOTE. You can also use FFT as part of a math expression by declaring the
-          type.
+          type ADVanced. See examples for the command ``MATH:MATH<x>:DEFine``.
         - ``ADVanced`` sets the type to advanced math.
     """
 
@@ -599,7 +611,7 @@ class MathMathItemSpectralUnwrap(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:SPECTral:UNWRap {OFF|ON|0|1}
+        - MATH:MATH<x>:SPECTral:UNWRap {ON|OFF|1|0}
         - MATH:MATH<x>:SPECTral:UNWRap?
         ```
 
@@ -720,7 +732,7 @@ class MathMathItemSpectralSuppress(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH:MATH<x>:SPECTral:SUPPress {OFF|ON|0|1}
+        - MATH:MATH<x>:SPECTral:SUPPress {ON|OFF|1|0}
         - MATH:MATH<x>:SPECTral:SUPPress?
         ```
 
@@ -775,7 +787,8 @@ class MathMathItemSpectralSource(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the specified spectral math source. This only works with a
-          math of type FFT. The math waveform is specified by x.
+          math of type FFT. The math waveform is specified by x. This command is for use when the
+          ``MATH:MATH<x>:TYPE`` is FFT.
 
     Usage:
         - Using the ``.query()`` method will send the ``MATH:MATH<x>:SPECTral:SOUrce?`` query.
@@ -791,7 +804,9 @@ class MathMathItemSpectralSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``MATH:MATH<x>:SPECTRAL:SOURCE`` is for use when the ``MATH:MATH<x>:TYPE`` is FFT.
+        - ``CH<x>`` specifies an analog channel as source.
+        - ``MATH<x>`` specifies a math channel as source.
+        - ``REF<x>`` specifies a reference waveform as the source.
     """
 
 
@@ -816,9 +831,9 @@ class MathMathItemSpectralPhase(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``DEGREES`` sets the SpectralPhase units to degrees.
-        - ``RADIANS`` sets the SpectralPhase units to radians.
-        - ``GROUPDELAY`` sets the SpectralPhase units to groupdelay, which computes the derivative
+        - ``DEGrees`` sets the SpectralPhase units to degrees.
+        - ``RADians`` sets the SpectralPhase units to radians.
+        - ``GROUPDelay`` sets the SpectralPhase units to groupdelay, which computes the derivative
           of unwrapped phase spectrum. Units are expressed in seconds.
     """
 
@@ -844,7 +859,7 @@ class MathMathItemSpectralMag(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``LINEAR`` sets the SpectralMag units to linear.
+        - ``LINEAr`` sets the SpectralMag units to linear.
         - ``DBM`` sets the SpectralMag units to decibels. It also sets the Ref Level Offset to a
           value that is the equivalent of 1 mW into 50 Ω.
     """
@@ -956,7 +971,7 @@ class MathMathItemSpectral(SCPICmdRead):
             ```
 
         Info:
-            - ``LINEAR`` sets the SpectralMag units to linear.
+            - ``LINEAr`` sets the SpectralMag units to linear.
             - ``DBM`` sets the SpectralMag units to decibels. It also sets the Ref Level Offset to a
               value that is the equivalent of 1 mW into 50 Ω.
         """
@@ -984,9 +999,9 @@ class MathMathItemSpectral(SCPICmdRead):
             ```
 
         Info:
-            - ``DEGREES`` sets the SpectralPhase units to degrees.
-            - ``RADIANS`` sets the SpectralPhase units to radians.
-            - ``GROUPDELAY`` sets the SpectralPhase units to groupdelay, which computes the
+            - ``DEGrees`` sets the SpectralPhase units to degrees.
+            - ``RADians`` sets the SpectralPhase units to radians.
+            - ``GROUPDelay`` sets the SpectralPhase units to groupdelay, which computes the
               derivative of unwrapped phase spectrum. Units are expressed in seconds.
         """
         return self._phase
@@ -997,7 +1012,8 @@ class MathMathItemSpectral(SCPICmdRead):
 
         Description:
             - This command sets or queries the specified spectral math source. This only works with
-              a math of type FFT. The math waveform is specified by x.
+              a math of type FFT. The math waveform is specified by x. This command is for use when
+              the ``MATH:MATH<x>:TYPE`` is FFT.
 
         Usage:
             - Using the ``.query()`` method will send the ``MATH:MATH<x>:SPECTral:SOUrce?`` query.
@@ -1013,7 +1029,9 @@ class MathMathItemSpectral(SCPICmdRead):
             ```
 
         Info:
-            - ``MATH:MATH<x>:SPECTRAL:SOURCE`` is for use when the ``MATH:MATH<x>:TYPE`` is FFT.
+            - ``CH<x>`` specifies an analog channel as source.
+            - ``MATH<x>`` specifies a math channel as source.
+            - ``REF<x>`` specifies a reference waveform as the source.
         """
         return self._source
 
@@ -1035,7 +1053,7 @@ class MathMathItemSpectral(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:SPECTral:SUPPress {OFF|ON|0|1}
+            - MATH:MATH<x>:SPECTral:SUPPress {ON|OFF|1|0}
             - MATH:MATH<x>:SPECTral:SUPPress?
             ```
 
@@ -1096,7 +1114,7 @@ class MathMathItemSpectral(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH:MATH<x>:SPECTral:UNWRap {OFF|ON|0|1}
+            - MATH:MATH<x>:SPECTral:UNWRap {ON|OFF|1|0}
             - MATH:MATH<x>:SPECTral:UNWRap?
             ```
 
@@ -1228,7 +1246,7 @@ class MathMathItemSpacewire(SCPICmdRead):
         return self._supportedfields
 
 
-class MathMathItemSource1(SCPICmdWrite):
+class MathMathItemSource1(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:SOUrce1`` command.
 
     Description:
@@ -1239,11 +1257,15 @@ class MathMathItemSource1(SCPICmdWrite):
           waveform and source are specified by x.
 
     Usage:
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:SOUrce1?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:SOUrce1?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:SOUrce1 value`` command.
 
     SCPI Syntax:
         ```
         - MATH:MATH<x>:SOUrce1 {CH<x>|MATH<x>|REF<x>}
+        - MATH:MATH<x>:SOUrce1?
         ```
 
     Info:
@@ -2118,7 +2140,7 @@ class MathMathItemLabelName(SCPICmdWrite, SCPICmdRead):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class MathMathItemLabelFontUnderline(SCPICmdWrite):
+class MathMathItemLabelFontUnderline(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:LABel:FONT:UNDERline`` command.
 
     Description:
@@ -2126,12 +2148,16 @@ class MathMathItemLabelFontUnderline(SCPICmdWrite):
           waveform is specified by x.
 
     Usage:
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:LABel:FONT:UNDERline?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:LABel:FONT:UNDERline?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the
           ``MATH:MATH<x>:LABel:FONT:UNDERline value`` command.
 
     SCPI Syntax:
         ```
         - MATH:MATH<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
+        - MATH:MATH<x>:LABel:FONT:UNDERline?
         ```
 
     Info:
@@ -2141,7 +2167,7 @@ class MathMathItemLabelFontUnderline(SCPICmdWrite):
     """
 
 
-class MathMathItemLabelFontType(SCPICmdWrite):
+class MathMathItemLabelFontType(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:LABel:FONT:TYPE`` command.
 
     Description:
@@ -2149,12 +2175,16 @@ class MathMathItemLabelFontType(SCPICmdWrite):
           New Roman. The math waveform is specified by x.
 
     Usage:
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:LABel:FONT:TYPE?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:LABel:FONT:TYPE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:LABel:FONT:TYPE value``
           command.
 
     SCPI Syntax:
         ```
         - MATH:MATH<x>:LABel:FONT:TYPE <QString>
+        - MATH:MATH<x>:LABel:FONT:TYPE?
         ```
 
     Info:
@@ -2164,7 +2194,7 @@ class MathMathItemLabelFontType(SCPICmdWrite):
     _WRAP_ARG_WITH_QUOTES = True
 
 
-class MathMathItemLabelFontSize(SCPICmdWrite):
+class MathMathItemLabelFontSize(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:LABel:FONT:SIZE`` command.
 
     Description:
@@ -2172,12 +2202,16 @@ class MathMathItemLabelFontSize(SCPICmdWrite):
           specified by x.
 
     Usage:
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:LABel:FONT:SIZE?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:LABel:FONT:SIZE?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:LABel:FONT:SIZE value``
           command.
 
     SCPI Syntax:
         ```
         - MATH:MATH<x>:LABel:FONT:SIZE <NR1>
+        - MATH:MATH<x>:LABel:FONT:SIZE?
         ```
 
     Info:
@@ -2185,7 +2219,7 @@ class MathMathItemLabelFontSize(SCPICmdWrite):
     """
 
 
-class MathMathItemLabelFontItalic(SCPICmdWrite):
+class MathMathItemLabelFontItalic(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:LABel:FONT:ITALic`` command.
 
     Description:
@@ -2193,12 +2227,16 @@ class MathMathItemLabelFontItalic(SCPICmdWrite):
           is specified by x.
 
     Usage:
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:LABel:FONT:ITALic?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:LABel:FONT:ITALic?``
+          query and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:LABel:FONT:ITALic value``
           command.
 
     SCPI Syntax:
         ```
         - MATH:MATH<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
+        - MATH:MATH<x>:LABel:FONT:ITALic?
         ```
 
     Info:
@@ -2208,7 +2246,7 @@ class MathMathItemLabelFontItalic(SCPICmdWrite):
     """
 
 
-class MathMathItemLabelFontBold(SCPICmdWrite):
+class MathMathItemLabelFontBold(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:LABel:FONT:BOLD`` command.
 
     Description:
@@ -2216,12 +2254,16 @@ class MathMathItemLabelFontBold(SCPICmdWrite):
           is specified by x.
 
     Usage:
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:LABel:FONT:BOLD?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:LABel:FONT:BOLD?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:LABel:FONT:BOLD value``
           command.
 
     SCPI Syntax:
         ```
         - MATH:MATH<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
+        - MATH:MATH<x>:LABel:FONT:BOLD?
         ```
 
     Info:
@@ -2264,12 +2306,16 @@ class MathMathItemLabelFont(SCPICmdRead):
               waveform is specified by x.
 
         Usage:
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:LABel:FONT:BOLD?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:LABel:FONT:BOLD?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``MATH:MATH<x>:LABel:FONT:BOLD value`` command.
 
         SCPI Syntax:
             ```
             - MATH:MATH<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
+            - MATH:MATH<x>:LABel:FONT:BOLD?
             ```
 
         Info:
@@ -2288,12 +2334,16 @@ class MathMathItemLabelFont(SCPICmdRead):
               waveform is specified by x.
 
         Usage:
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:LABel:FONT:ITALic?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:LABel:FONT:ITALic?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``MATH:MATH<x>:LABel:FONT:ITALic value`` command.
 
         SCPI Syntax:
             ```
             - MATH:MATH<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
+            - MATH:MATH<x>:LABel:FONT:ITALic?
             ```
 
         Info:
@@ -2312,12 +2362,16 @@ class MathMathItemLabelFont(SCPICmdRead):
               is specified by x.
 
         Usage:
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:LABel:FONT:SIZE?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:LABel:FONT:SIZE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``MATH:MATH<x>:LABel:FONT:SIZE value`` command.
 
         SCPI Syntax:
             ```
             - MATH:MATH<x>:LABel:FONT:SIZE <NR1>
+            - MATH:MATH<x>:LABel:FONT:SIZE?
             ```
 
         Info:
@@ -2334,12 +2388,16 @@ class MathMathItemLabelFont(SCPICmdRead):
               Times New Roman. The math waveform is specified by x.
 
         Usage:
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:LABel:FONT:TYPE?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:LABel:FONT:TYPE?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``MATH:MATH<x>:LABel:FONT:TYPE value`` command.
 
         SCPI Syntax:
             ```
             - MATH:MATH<x>:LABel:FONT:TYPE <QString>
+            - MATH:MATH<x>:LABel:FONT:TYPE?
             ```
 
         Info:
@@ -2356,12 +2414,18 @@ class MathMathItemLabelFont(SCPICmdRead):
               waveform is specified by x.
 
         Usage:
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:LABel:FONT:UNDERline?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MATH:MATH<x>:LABel:FONT:UNDERline?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``MATH:MATH<x>:LABel:FONT:UNDERline value`` command.
 
         SCPI Syntax:
             ```
             - MATH:MATH<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
+            - MATH:MATH<x>:LABel:FONT:UNDERline?
             ```
 
         Info:
@@ -2372,7 +2436,7 @@ class MathMathItemLabelFont(SCPICmdRead):
         return self._underline
 
 
-class MathMathItemLabelColor(SCPICmdWrite):
+class MathMathItemLabelColor(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:LABel:COLor`` command.
 
     Description:
@@ -2380,17 +2444,21 @@ class MathMathItemLabelColor(SCPICmdWrite):
           specified by x.
 
     Usage:
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:LABel:COLor?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:LABel:COLor?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:LABel:COLor value``
           command.
 
     SCPI Syntax:
         ```
         - MATH:MATH<x>:LABel:COLor <QString>
+        - MATH:MATH<x>:LABel:COLor?
         ```
 
     Info:
-        - ``<QString`` > is the color of the label. To return the color to the default color, send
-          an empty string as in this example: ``:MATH:MATH1:LABEL:COLOR`` ''.
+        - ``<QString>`` is the color of the label. To return the color to the default color, send an
+          empty string as in this example: ``:MATH:MATH1:LABEL:COLOR`` ''.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -2429,16 +2497,20 @@ class MathMathItemLabel(SCPICmdRead):
               specified by x.
 
         Usage:
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:LABel:COLor?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:LABel:COLor?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:LABel:COLor value``
               command.
 
         SCPI Syntax:
             ```
             - MATH:MATH<x>:LABel:COLor <QString>
+            - MATH:MATH<x>:LABel:COLor?
             ```
 
         Info:
-            - ``<QString`` > is the color of the label. To return the color to the default color,
+            - ``<QString>`` is the color of the label. To return the color to the default color,
               send an empty string as in this example: ``:MATH:MATH1:LABEL:COLOR`` ''.
         """
         return self._color
@@ -2543,7 +2615,7 @@ class MathMathItemLabel(SCPICmdRead):
         return self._ypos
 
 
-class MathMathItemInterpolation(SCPICmdWrite):
+class MathMathItemInterpolation(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:INTERpolation`` command.
 
     Description:
@@ -2551,12 +2623,16 @@ class MathMathItemInterpolation(SCPICmdWrite):
           The math waveform is specified by x.
 
     Usage:
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:INTERpolation?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:INTERpolation?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:INTERpolation value``
           command.
 
     SCPI Syntax:
         ```
         - MATH:MATH<x>:INTERpolation {ON|OFF}
+        - MATH:MATH<x>:INTERpolation?
         ```
 
     Info:
@@ -2737,19 +2813,24 @@ class MathMathItemGating(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class MathMathItemFunction(SCPICmdWrite):
+class MathMathItemFunction(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:FUNCtion`` command.
 
     Description:
         - This command sets or queries the basic math arithmetic function. The math waveform is
-          specified by x.
+          specified by x.This command does not affect the same Math equation in Advanced math (also
+          accessed via the command
 
     Usage:
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:FUNCtion?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FUNCtion?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FUNCtion value`` command.
 
     SCPI Syntax:
         ```
         - MATH:MATH<x>:FUNCtion {ADD|SUBtract|MULTiply|DIVide}
+        - MATH:MATH<x>:FUNCtion?
         ```
 
     Info:
@@ -4500,7 +4581,7 @@ class MathMathItemAvgWeight(SCPICmdWrite):
     """
 
 
-class MathMathItemAvgMode(SCPICmdWrite):
+class MathMathItemAvgMode(SCPICmdWrite, SCPICmdRead):
     """The ``MATH:MATH<x>:AVG:MODE`` command.
 
     Description:
@@ -4508,11 +4589,15 @@ class MathMathItemAvgMode(SCPICmdWrite):
           averaging is turned on. The math waveform is specified by x.
 
     Usage:
+        - Using the ``.query()`` method will send the ``MATH:MATH<x>:AVG:MODE?`` query.
+        - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:AVG:MODE?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:AVG:MODE value`` command.
 
     SCPI Syntax:
         ```
         - MATH:MATH<x>:AVG:MODE {ON|OFF|<NR1>}
+        - MATH:MATH<x>:AVG:MODE?
         ```
 
     Info:
@@ -4549,12 +4634,16 @@ class MathMathItemAvg(SCPICmdRead):
               averaging is turned on. The math waveform is specified by x.
 
         Usage:
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:AVG:MODE?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:AVG:MODE?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:AVG:MODE value``
               command.
 
         SCPI Syntax:
             ```
             - MATH:MATH<x>:AVG:MODE {ON|OFF|<NR1>}
+            - MATH:MATH<x>:AVG:MODE?
             ```
 
         Info:
@@ -5139,15 +5228,20 @@ class MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Description:
             - This command sets or queries the basic math arithmetic function. The math waveform is
-              specified by x.
+              specified by x.This command does not affect the same Math equation in Advanced math
+              (also accessed via the command
 
         Usage:
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:FUNCtion?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:FUNCtion?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:FUNCtion value``
               command.
 
         SCPI Syntax:
             ```
             - MATH:MATH<x>:FUNCtion {ADD|SUBtract|MULTiply|DIVide}
+            - MATH:MATH<x>:FUNCtion?
             ```
 
         Info:
@@ -5224,12 +5318,16 @@ class MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               source. The math waveform is specified by x.
 
         Usage:
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:INTERpolation?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:INTERpolation?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:INTERpolation value``
               command.
 
         SCPI Syntax:
             ```
             - MATH:MATH<x>:INTERpolation {ON|OFF}
+            - MATH:MATH<x>:INTERpolation?
             ```
 
         Info:
@@ -5438,12 +5536,16 @@ class MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               interface. The math waveform and source are specified by x.
 
         Usage:
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:SOUrce1?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:SOUrce1?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:SOUrce1 value``
               command.
 
         SCPI Syntax:
             ```
             - MATH:MATH<x>:SOUrce1 {CH<x>|MATH<x>|REF<x>}
+            - MATH:MATH<x>:SOUrce1?
             ```
 
         Info:
@@ -5553,7 +5655,7 @@ class MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               instruments and Tekscope (Offline).
             - ``FFT`` sets the type to FFT math, which can use any live analog or reference waveform
               in the time domain. NOTE. You can also use FFT as part of a math expression by
-              declaring the type.
+              declaring the type ADVanced. See examples for the command ``MATH:MATH<x>:DEFine``.
             - ``ADVanced`` sets the type to advanced math.
         """
         return self._type
@@ -5581,15 +5683,16 @@ class MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               specified by x.
 
         Usage:
+            - Using the ``.query()`` method will send the ``MATH:MATH<x>:VUNIT?`` query.
+            - Using the ``.verify(value)`` method will send the ``MATH:MATH<x>:VUNIT?`` query and
+              raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``MATH:MATH<x>:VUNIT value`` command.
 
         SCPI Syntax:
             ```
             - MATH:MATH<x>:VUNIT <QString>
+            - MATH:MATH<x>:VUNIT?
             ```
-
-        Info:
-            - ``<QString>`` is the custom vertical units.
         """
         return self._vunit
 

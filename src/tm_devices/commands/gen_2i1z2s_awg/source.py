@@ -13,7 +13,7 @@ Commands and Queries:
     - SOURce:FREQuency?
     - SOURce:IQIMode {I2X|I4X}
     - SOURce:IQIMode?
-    - SOURce:RCCouple {0|1|ON|OFF}
+    - SOURce:RCCouple {ON|OFF|1|0}
     - SOURce:ROSCillator:MULTiplier <NR1>
     - SOURce:ROSCillator:MULTiplier?
     - SOURce[n]:CASSet:CLEar
@@ -24,7 +24,7 @@ Commands and Queries:
     - SOURce[n]:CFRequency <center_frequency>
     - SOURce[n]:DAC:RESolution {12|13|14|15|16}
     - SOURce[n]:DAC:RESolution?
-    - SOURce[n]:DDR {OFF|ON|0|1}
+    - SOURce[n]:DDR {ON|OFF|1|0}
     - SOURce[n]:DDR?
     - SOURce[n]:DMODe {NRZ|MIX|RZ}
     - SOURce[n]:DMODe?
@@ -52,7 +52,7 @@ Commands and Queries:
     - SOURce[n]:VOLTage:LEVel:IMMediate:AMPLitude <NRf>
     - SOURce[n]:VOLTage:LEVel:IMMediate:AMPLitude?
     - SOURce[n]:VOLTage:LEVel:IMMediate:BIAS <NRf>
-    - SOURce[n]:VOLTage:LEVel:IMMediate:BIAS:ENABle {0|1|OFF|ON}
+    - SOURce[n]:VOLTage:LEVel:IMMediate:BIAS:ENABle {ON|OFF|1|0}
     - SOURce[n]:VOLTage:LEVel:IMMediate:BIAS:ENABle?
     - SOURce[n]:VOLTage:LEVel:IMMediate:BIAS?
     - SOURce[n]:VOLTage:LEVel:IMMediate:HIGH <NRf>
@@ -198,7 +198,7 @@ class SourceItemVoltageLevelImmediateBiasEnable(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SOURce[n]:VOLTage:LEVel:IMMediate:BIAS:ENABle {0|1|OFF|ON}
+        - SOURce[n]:VOLTage:LEVel:IMMediate:BIAS:ENABle {ON|OFF|1|0}
         - SOURce[n]:VOLTage:LEVel:IMMediate:BIAS:ENABle?
         ```
 
@@ -260,7 +260,7 @@ class SourceItemVoltageLevelImmediateBias(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SOURce[n]:VOLTage:LEVel:IMMediate:BIAS:ENABle {0|1|OFF|ON}
+            - SOURce[n]:VOLTage:LEVel:IMMediate:BIAS:ENABle {ON|OFF|1|0}
             - SOURce[n]:VOLTage:LEVel:IMMediate:BIAS:ENABle?
             ```
 
@@ -1332,7 +1332,7 @@ class SourceItemDdr(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SOURce[n]:DDR {OFF|ON|0|1}
+        - SOURce[n]:DDR {ON|OFF|1|0}
         - SOURce[n]:DDR?
         ```
     """
@@ -1715,7 +1715,7 @@ class SourceItem(ValidatedChannel, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SOURce[n]:DDR {OFF|ON|0|1}
+            - SOURce[n]:DDR {ON|OFF|1|0}
             - SOURce[n]:DDR?
             ```
         """
@@ -2002,7 +2002,7 @@ class SourceRccouple(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - SOURce:RCCouple {0|1|ON|OFF}
+        - SOURce:RCCouple {ON|OFF|1|0}
         ```
 
     Info:
@@ -2140,7 +2140,7 @@ class Source(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SOURce:RCCouple {0|1|ON|OFF}
+            - SOURce:RCCouple {ON|OFF|1|0}
             ```
 
         Info:

@@ -11,7 +11,7 @@ Commands and Queries:
     ```
     - ACQuire:FASTAVerage:LIMit <NR1>
     - ACQuire:FASTAVerage:LIMit?
-    - ACQuire:FASTAVerage:STATE {0|1|OFF|ON}
+    - ACQuire:FASTAVerage:STATE {ON|OFF|1|0}
     - ACQuire:FASTAVerage:STATE?
     - ACQuire:FASTAVerage:STOPafter <NR1>
     - ACQuire:FASTAVerage:STOPafter?
@@ -20,7 +20,7 @@ Commands and Queries:
     - ACQuire:FASTAcq:STATE {ON|OFF|<NR1>}
     - ACQuire:FASTAcq:STATE?
     - ACQuire:MAXSamplerate?
-    - ACQuire:MODe {SAMple|PEAKdetect|HIRes|AVErage|ENVelope}
+    - ACQuire:MODe {SAMple|PEAKdetect}
     - ACQuire:MODe?
     - ACQuire:NUMACq?
     - ACQuire:NUMAVg <NR1>
@@ -52,7 +52,7 @@ class AcquireStopafter(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries whether the instrument continually acquires acquisitions or
           acquires a single sequence. Pressing SINGLE on the front panel button is equivalent to
-          sending these commands: ``ACQUIRE:STOPAFTER SEQUENCE`` and ``ACQUIRE:STATE 1``.
+          sending these commands: ``ACQUIRE:STOPAFTER SEQUENCE`` ``ACQUIRE:STATE 1``
 
     Usage:
         - Using the ``.query()`` method will send the ``ACQuire:STOPAfter?`` query.
@@ -84,9 +84,7 @@ class AcquireState(SCPICmdWrite, SCPICmdRead):
           single sequence acquisition (for example, averaging or enveloping), the acquisition
           sequence is restarted, and any accumulated data is discarded. Also, the instrument resets
           the number of acquisitions. If the RUN argument is issued while in continuous mode, a
-          reset occurs and acquired data continues to acquire. If ``acquire:stopafter`` is SEQUENCE,
-          this command leaves the instrument in single sequence, unlike the run/stop button which
-          takes the instrument out of single sequence.
+          reset occurs and acquired data continues to acquire. If ``acquire:stopafter``
 
     Usage:
         - Using the ``.query()`` method will send the ``ACQuire:STATE?`` query.
@@ -101,7 +99,7 @@ class AcquireState(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>`` = 0 stops acquisitions; any other value starts acquisitions.
+        - ``<NR1> = 0`` stops acquisitions; any other value starts acquisitions.
         - ``OFF`` stops acquisitions.
         - ``ON`` starts acquisitions.
         - ``RUN`` starts acquisitions.
@@ -337,13 +335,13 @@ class AcquireMode(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ACQuire:MODe {SAMple|PEAKdetect|HIRes|AVErage|ENVelope}
+        - ACQuire:MODe {SAMple|PEAKdetect}
         - ACQuire:MODe?
         ```
 
     Info:
         - ``SAMple`` specifies that the displayed data point value is the first sampled value that
-          is taken during the acquisition interval. The CURVE query, depending on sample rate, will
+          is taken during the acquisition interval. The CURVe? query, depending on sample rate, will
           result in either 8 bit or 16 bit data. In case of 8 bit data, the precision is also 8 bit.
           However, in case of 16 bit data, 12 bit precision data is zero padded in lower 4 bits.
           SAMple is the default mode.
@@ -359,7 +357,7 @@ class AcquireMode(SCPICmdWrite, SCPICmdRead):
           SAMple data points from several separate waveform acquisitions. The instrument processes
           the number of waveforms you specify into the acquired waveform, creating a running
           exponential average of the input signal. The number of waveform acquisitions that go into
-          making up the average waveform is set or queried using the ``ACQUIRE:NUMAVG`` command.
+          making up the average waveform is set or queried using the ``ACQuire:NUMAVg`` command.
         - ``ENVelope`` specifies envelope mode, where the resulting waveform displays the range of
           PEAKdetect from continued waveform acquisitions.
     """
@@ -402,7 +400,7 @@ class AcquireFastacqState(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>`` = 0 disables FASTAcq; any other value turns this feature on.
+        - ``<NR1> = 0`` disables FASTAcq; any other value turns this feature on.
         - ``OFF`` disables the FASTAcq feature.
         - ``ON`` enables the FASTAcq feature.
     """
@@ -514,7 +512,7 @@ class AcquireFastacq(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR1>`` = 0 disables FASTAcq; any other value turns this feature on.
+            - ``<NR1> = 0`` disables FASTAcq; any other value turns this feature on.
             - ``OFF`` disables the FASTAcq feature.
             - ``ON`` enables the FASTAcq feature.
         """
@@ -567,7 +565,7 @@ class AcquireFastaverageState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ACQuire:FASTAVerage:STATE {0|1|OFF|ON}
+        - ACQuire:FASTAVerage:STATE {ON|OFF|1|0}
         - ACQuire:FASTAVerage:STATE?
         ```
 
@@ -673,7 +671,7 @@ class AcquireFastaverage(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ACQuire:FASTAVerage:STATE {0|1|OFF|ON}
+            - ACQuire:FASTAVerage:STATE {ON|OFF|1|0}
             - ACQuire:FASTAVerage:STATE?
             ```
 
@@ -823,13 +821,13 @@ class Acquire(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ACQuire:MODe {SAMple|PEAKdetect|HIRes|AVErage|ENVelope}
+            - ACQuire:MODe {SAMple|PEAKdetect}
             - ACQuire:MODe?
             ```
 
         Info:
             - ``SAMple`` specifies that the displayed data point value is the first sampled value
-              that is taken during the acquisition interval. The CURVE query, depending on sample
+              that is taken during the acquisition interval. The CURVe? query, depending on sample
               rate, will result in either 8 bit or 16 bit data. In case of 8 bit data, the precision
               is also 8 bit. However, in case of 16 bit data, 12 bit precision data is zero padded
               in lower 4 bits. SAMple is the default mode.
@@ -847,7 +845,7 @@ class Acquire(SCPICmdRead):
               processes the number of waveforms you specify into the acquired waveform, creating a
               running exponential average of the input signal. The number of waveform acquisitions
               that go into making up the average waveform is set or queried using the
-              ``ACQUIRE:NUMAVG`` command.
+              ``ACQuire:NUMAVg`` command.
             - ``ENVelope`` specifies envelope mode, where the resulting waveform displays the range
               of PEAKdetect from continued waveform acquisitions.
         """
@@ -946,9 +944,7 @@ class Acquire(SCPICmdRead):
               enveloping), the acquisition sequence is restarted, and any accumulated data is
               discarded. Also, the instrument resets the number of acquisitions. If the RUN argument
               is issued while in continuous mode, a reset occurs and acquired data continues to
-              acquire. If ``acquire:stopafter`` is SEQUENCE, this command leaves the instrument in
-              single sequence, unlike the run/stop button which takes the instrument out of single
-              sequence.
+              acquire. If ``acquire:stopafter``
 
         Usage:
             - Using the ``.query()`` method will send the ``ACQuire:STATE?`` query.
@@ -963,7 +959,7 @@ class Acquire(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR1>`` = 0 stops acquisitions; any other value starts acquisitions.
+            - ``<NR1> = 0`` stops acquisitions; any other value starts acquisitions.
             - ``OFF`` stops acquisitions.
             - ``ON`` starts acquisitions.
             - ``RUN`` starts acquisitions.
@@ -978,7 +974,7 @@ class Acquire(SCPICmdRead):
         Description:
             - This command sets or queries whether the instrument continually acquires acquisitions
               or acquires a single sequence. Pressing SINGLE on the front panel button is equivalent
-              to sending these commands: ``ACQUIRE:STOPAFTER SEQUENCE`` and ``ACQUIRE:STATE 1``.
+              to sending these commands: ``ACQUIRE:STOPAFTER SEQUENCE`` ``ACQUIRE:STATE 1``
 
         Usage:
             - Using the ``.query()`` method will send the ``ACQuire:STOPAfter?`` query.

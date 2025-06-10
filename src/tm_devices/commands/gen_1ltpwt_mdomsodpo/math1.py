@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - MATH1:AUTOSCale {0|1|OFF|ON}
+    - MATH1:AUTOSCale {ON|OFF|1|0}
     - MATH1:AUTOSCale?
     - MATH1:DEFine <QString>
     - MATH1:DEFine?
@@ -675,7 +675,7 @@ class Math1Autoscale(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MATH1:AUTOSCale {0|1|OFF|ON}
+        - MATH1:AUTOSCale {ON|OFF|1|0}
         - MATH1:AUTOSCale?
         ```
 
@@ -741,7 +741,7 @@ class Math1(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MATH1:AUTOSCale {0|1|OFF|ON}
+            - MATH1:AUTOSCale {ON|OFF|1|0}
             - MATH1:AUTOSCale?
             ```
 

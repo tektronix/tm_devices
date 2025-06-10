@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added support for new commands in the MSO4, MSO4B, MSO5, MSO5B, MSO5LP, MSO6, MSO6B, and LPD6 models.
+
 ### Changed
 
 - Updated the `PIControl.query_binary()` method to include PyVISA-compatible arguments, enabling users to fully utilize the complete functionality of the PyVISA method.

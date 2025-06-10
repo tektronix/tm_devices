@@ -24,7 +24,7 @@ Commands and Queries:
     - MMEMory:MSIS?
     - MMEMory:OPEN <filepath>
     - MMEMory:OPEN:PARameter:NORMalize <Type>
-    - MMEMory:OPEN:PARameter:SIQ {0|1|OFF|ON}
+    - MMEMory:OPEN:PARameter:SIQ {ON|OFF|1|0}
     - MMEMory:OPEN:PARameter:SIQ?
     - MMEMory:OPEN:SASSet:SEQuence <filepath>[,<desired_sequence>]
     - MMEMory:OPEN:SASSet:SEQuence:MROPened?
@@ -578,7 +578,7 @@ class MmemoryOpenParameterSiq(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MMEMory:OPEN:PARameter:SIQ {0|1|OFF|ON}
+        - MMEMory:OPEN:PARameter:SIQ {ON|OFF|1|0}
         - MMEMory:OPEN:PARameter:SIQ?
         ```
     """
@@ -676,7 +676,7 @@ class MmemoryOpenParameter(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MMEMory:OPEN:PARameter:SIQ {0|1|OFF|ON}
+            - MMEMory:OPEN:PARameter:SIQ {ON|OFF|1|0}
             - MMEMory:OPEN:PARameter:SIQ?
             ```
         """

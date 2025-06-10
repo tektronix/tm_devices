@@ -32,7 +32,7 @@ Commands and Queries:
     - SAVe:REPOrt:COMMents?
     - SAVe:SESsion <QString>
     - SAVe:SETUp <QString>
-    - SAVe:SETUp:INCLUDEREFs {OFF|ON|0|1}
+    - SAVe:SETUp:INCLUDEREFs {ON|OFF|1|0}
     - SAVe:SETUp:INCLUDEREFs?
     - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold| _SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME]|MATH<x>|REF<x>|ALL| },<QString>
     - SAVe:WAVEform:GATing {NONe|CURSors|SCREEN|RESAMPLE|SELected}
@@ -280,7 +280,7 @@ class SaveSetupIncluderefs(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVe:SETUp:INCLUDEREFs {OFF|ON|0|1}
+        - SAVe:SETUp:INCLUDEREFs {ON|OFF|1|0}
         - SAVe:SETUp:INCLUDEREFs?
         ```
 
@@ -339,7 +339,7 @@ class SaveSetup(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVe:SETUp:INCLUDEREFs {OFF|ON|0|1}
+            - SAVe:SETUp:INCLUDEREFs {ON|OFF|1|0}
             - SAVe:SETUp:INCLUDEREFs?
             ```
 
@@ -460,15 +460,7 @@ class SavePlotdata(SCPICmdWrite):
 
     Description:
         - Saves the plot data of the currently selected plot to a specified file. Supported file
-          format is CSV. When specifying the file name with this command, use the correct file
-          extension (.CSV). If a file name or path is specified, the file is expected to be located
-          in a directory relative to the current working directory (specified by ``FILESYSTEM:CWD``)
-          unless a complete path is specified. If the file argument begins with a drive designator
-          (such as C:), then the file name is interpreted as a full path. If the file argument
-          begins with '.' or '', or has a file path separator appearing anywhere other than the
-          first character position, then the file name is treated as a path that is relative to the
-          current working directory. To export an eye diagram plot data to a .csv file, the
-          prerequisite command is ``MEASUrement:ADDMEAS TIE``
+          format is CSV.
 
     Usage:
         - Using the ``.write(value)`` method will send the ``SAVe:PLOTData value`` command.
@@ -479,7 +471,11 @@ class SavePlotdata(SCPICmdWrite):
         ```
 
     Info:
-        - ``<Qstring>`` sets the file name and location used to store the plot data.
+        - ``Qstring`` sets the file name and location used to store the plot data. When specifying
+          the file name with this command, use the correct file extension (.CSV). If a file name or
+          path is specified, the file is expected to be located in a directory relative to the
+          current working directory (specified by ``FILESYSTEM:CWD``) unless a complete path is
+          specified.
     """
 
 
@@ -650,11 +646,6 @@ class SaveEventtablePeaks(SCPICmdWrite):
         ```
         - SAVe:EVENTtable:PEAKS <QString>
         ```
-
-    Info:
-        - ``<QString>`` is the specified file. If a file name or path is specified, the file is
-          expected to be located in a directory relative to the current working directory (specified
-          by ``FILESYSTEM:CWD``) unless a complete path is specified.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -777,11 +768,6 @@ class SaveEventtableCustom(SCPICmdWrite, SCPICmdRead):
         ```
         - SAVe:EVENTtable:CUSTom <QString>
         ```
-
-    Info:
-        - ``<QString>`` is the specified file. If a file name or path is specified, the file is
-          expected to be located in a directory relative to the current working directory (specified
-          by ``FILESYSTEM:CWD``) unless a complete path is specified.
 
     Properties:
         - ``.comments``: The ``SAVe:EVENTtable:CUSTom:COMMents`` command.
@@ -974,11 +960,6 @@ class SaveEventtable(SCPICmdRead):
             - SAVe:EVENTtable:CUSTom <QString>
             ```
 
-        Info:
-            - ``<QString>`` is the specified file. If a file name or path is specified, the file is
-              expected to be located in a directory relative to the current working directory
-              (specified by ``FILESYSTEM:CWD``) unless a complete path is specified.
-
         Sub-properties:
             - ``.comments``: The ``SAVe:EVENTtable:CUSTom:COMMents`` command.
             - ``.dataformat``: The ``SAVe:EVENTtable:CUSTom:DATAFormat`` command.
@@ -1024,11 +1005,6 @@ class SaveEventtable(SCPICmdRead):
             ```
             - SAVe:EVENTtable:PEAKS <QString>
             ```
-
-        Info:
-            - ``<QString>`` is the specified file. If a file name or path is specified, the file is
-              expected to be located in a directory relative to the current working directory
-              (specified by ``FILESYSTEM:CWD``) unless a complete path is specified.
         """
         return self._peaks
 
@@ -1133,16 +1109,7 @@ class Save(SCPICmdRead):
 
         Description:
             - Saves the plot data of the currently selected plot to a specified file. Supported file
-              format is CSV. When specifying the file name with this command, use the correct file
-              extension (.CSV). If a file name or path is specified, the file is expected to be
-              located in a directory relative to the current working directory (specified by
-              ``FILESYSTEM:CWD``) unless a complete path is specified. If the file argument begins
-              with a drive designator (such as C:), then the file name is interpreted as a full
-              path. If the file argument begins with '.' or '', or has a file path separator
-              appearing anywhere other than the first character position, then the file name is
-              treated as a path that is relative to the current working directory. To export an eye
-              diagram plot data to a .csv file, the prerequisite command is
-              ``MEASUrement:ADDMEAS TIE``
+              format is CSV.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``SAVe:PLOTData value`` command.
@@ -1153,7 +1120,11 @@ class Save(SCPICmdRead):
             ```
 
         Info:
-            - ``<Qstring>`` sets the file name and location used to store the plot data.
+            - ``Qstring`` sets the file name and location used to store the plot data. When
+              specifying the file name with this command, use the correct file extension (.CSV). If
+              a file name or path is specified, the file is expected to be located in a directory
+              relative to the current working directory (specified by ``FILESYSTEM:CWD``) unless a
+              complete path is specified.
         """
         return self._plotdata
 

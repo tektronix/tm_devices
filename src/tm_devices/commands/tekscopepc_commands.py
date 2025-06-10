@@ -14,14 +14,18 @@ from .gen_c3g61_tekscopepc.actonevent import Actonevent
 from .gen_c3g61_tekscopepc.bus import Bus
 from .gen_c3g61_tekscopepc.callouts import Callouts
 from .gen_c3g61_tekscopepc.ch import Channel
+from .gen_c3g61_tekscopepc.data import Data
 from .gen_c3g61_tekscopepc.display import Display
+from .gen_c3g61_tekscopepc.eyemask import Eyemask
 from .gen_c3g61_tekscopepc.filesys import Filesys
 from .gen_c3g61_tekscopepc.histogram import Histogram
 from .gen_c3g61_tekscopepc.horizontal import Horizontal
 from .gen_c3g61_tekscopepc.mask import Mask
 from .gen_c3g61_tekscopepc.math import Math
+from .gen_c3g61_tekscopepc.matharbflt import MatharbfltItem
 from .gen_c3g61_tekscopepc.measu import Measu
 from .gen_c3g61_tekscopepc.measurement import Measurement
+from .gen_c3g61_tekscopepc.peakstable import Peakstable
 from .gen_c3g61_tekscopepc.plot import Plot
 from .gen_c3g61_tekscopepc.power import Power
 from .gen_c3g61_tekscopepc.ref import Ref
@@ -33,60 +37,50 @@ from .gen_c3g61_tekscopepc.search import Search
 from .gen_c3g61_tekscopepc.searchtable import Searchtable
 from .gen_c3g61_tekscopepc.sv import Sv
 from .gen_c3g61_tekscopepc.trigger import Trigger
+from .gen_c3g61_tekscopepc.visual import Visual
+from .gen_c69az_msotekscopepc.autosavepitimeout import Autosavepitimeout
+from .gen_c69az_msotekscopepc.autosaveuitimeout import Autosaveuitimeout
+from .gen_c69az_msotekscopepc.curve import Curve
+from .gen_c69az_msotekscopepc.curvestream import Curvestream
+from .gen_c69az_msotekscopepc.customtable import Customtable
+from .gen_c69az_msotekscopepc.filesystem import Filesystem
 from .gen_c69az_msotekscopepc.lic import Lic
 from .gen_c69az_msotekscopepc.license import License
+from .gen_c69az_msotekscopepc.mainwindow import Mainwindow
+from .gen_c69az_msotekscopepc.recall import Recall
+from .gen_c69az_msotekscopepc.socketserver import Socketserver
+from .gen_c69az_msotekscopepc.time import Time
+from .gen_c69az_msotekscopepc.vertical import Vertical
+from .gen_c69az_msotekscopepc.wfmoutpre import Wfmoutpre
 from .gen_e6bmgw_lpdmsotekscopepcdpomdo.totaluptime import Totaluptime
 from .gen_e6wozn_lpdmsotekscopepcmdodpo.pause import Pause
-from .gen_e44yni_lpdmsotekscopepc.data import Data
-from .gen_e44yni_lpdmsotekscopepc.eyemask import Eyemask
-from .gen_e44yni_lpdmsotekscopepc.matharbflt import MatharbfltItem
-from .gen_e44yni_lpdmsotekscopepc.peakstable import Peakstable
 from .gen_e44yni_lpdmsotekscopepc.ref import RefItem
-from .gen_e44yni_lpdmsotekscopepc.visual import Visual
-from .gen_e47rsg_lpdmsotekscopepc.autosavepitimeout import Autosavepitimeout
-from .gen_e47rsg_lpdmsotekscopepc.autosaveuitimeout import Autosaveuitimeout
 from .gen_e47rsg_lpdmsotekscopepc.bustable import Bustable
 from .gen_e47rsg_lpdmsotekscopepc.configuration import Configuration
-from .gen_e47rsg_lpdmsotekscopepc.curve import Curve
-from .gen_e47rsg_lpdmsotekscopepc.curvestream import Curvestream
-from .gen_e47rsg_lpdmsotekscopepc.customtable import Customtable
 from .gen_e47rsg_lpdmsotekscopepc.date import Date
-from .gen_e47rsg_lpdmsotekscopepc.filesystem import Filesystem
-from .gen_e47rsg_lpdmsotekscopepc.mainwindow import Mainwindow
 from .gen_e47rsg_lpdmsotekscopepc.meastable import Meastable
-from .gen_e47rsg_lpdmsotekscopepc.recall import Recall
-from .gen_e47rsg_lpdmsotekscopepc.socketserver import Socketserver
-from .gen_e47rsg_lpdmsotekscopepc.time import Time
 from .gen_e47rsg_lpdmsotekscopepc.undo import Undo
-from .gen_e47rsg_lpdmsotekscopepc.vertical import Vertical
-from .gen_e47rsg_lpdmsotekscopepc.wfmoutpre import Wfmoutpre
+from .gen_fil6zt_msotekscopepcdpomdodsa.busy import Busy
+from .gen_fil6zt_msotekscopepcdpomdodsa.dese import Dese
+from .gen_fil6zt_msotekscopepcdpomdodsa.event import Event
+from .gen_fil6zt_msotekscopepcdpomdodsa.evmsg import Evmsg
+from .gen_fil6zt_msotekscopepcdpomdodsa.evqty import Evqty
+from .gen_fil6zt_msotekscopepcdpomdodsa.factory import Factory
+from .gen_fil6zt_msotekscopepcdpomdodsa.miscellaneous import Lrn
+from .gen_fil6zt_msotekscopepcdpomdodsa.set import Set
+from .gen_fil6zt_msotekscopepcdpomdodsa.verbose import Verbose
+from .gen_fj69if_msotekscopepcdpomdoafgawgdsa.status_and_error import Opc, Rst, Stb
+from .gen_fjwyaz_msotekscopepcdpodsa.alias import Alias
+from .gen_fk2kku_msotekscopepcdpomdodsa.header import Header
+from .gen_fkrusx_msotekscopepcdpomdoawgdsa.status_and_error import Ese, Sre
 from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
-from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import (
-    Cls,
-    Esr,
-    Opc,
-    Rst,
-    Stb,
-    Wai,
-)
+from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Wai
 from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
-from .gen_fu6dog_lpdmsotekscopepcdpomdoawgdsa.status_and_error import Ese, Sre
-from .gen_fuq1mi_lpdmsotekscopepcdpodsa.alias import Alias
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.allev import Allev
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.busy import Busy
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.dese import Dese
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.event import Event
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.evmsg import Evmsg
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.evqty import Evqty
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.factory import Factory
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.id import Id
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.miscellaneous import Lrn
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.rem import Rem
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.set import Set
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.status_and_error import Psc, Pud
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.verbose import Verbose
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.wavfrm import Wavfrm
-from .gen_fzd77z_lpdmsotekscopepcdpomdodsa.header import Header
 from .helpers import DefaultDictPassKeyToFactory
 
 
@@ -194,10 +188,6 @@ class TekScopePCCommandConstants:
     CHINDEPENDENT = "CHINDEPENDENT"  # CHINDependent
     CHIPSELECT = "CHIPSELECT"  # ChipSelect
     CIRCULATING = "CIRCULATING"  # CIRCulating
-    CLASSA = "CLASSA"
-    CLASSB = "CLASSB"
-    CLASSC = "CLASSC"
-    CLASSD = "CLASSD"
     CLEAR = "CLEAR"
     # CLEAR = "CLEar"
     CLOCK = "CLOCK"
@@ -226,8 +216,6 @@ class TekScopePCCommandConstants:
     CRC16 = "CRC16"
     CRC5 = "CRC5"
     CRCERROR = "CRCERROR"  # CRCERRor
-    CRCHEADER = "CRCHEADER"  # CRCHeader
-    CRCTRAILER = "CRCTRAILER"  # CRCTrailer
     CSI = "CSI"
     CSPLIT = "CSPLIT"
     CURRENT = "CURRENT"
@@ -237,7 +225,6 @@ class TekScopePCCommandConstants:
     CUSTOM = "CUSTOM"
     # CUSTOM = "CUSTom"
     CYCLE = "CYCLE"
-    CYCLECOUNT = "CYCLECOUNT"  # CYCLEcount
     CYCLETYPE = "CYCLETYPE"  # CYCLETYPe
     DADDR = "DADDR"  # DADDr
     DATA = "DATA"
@@ -317,8 +304,6 @@ class TekScopePCCommandConstants:
     ELLIPTICAL = "ELLIPTICAL"  # ELLiptical
     END = "END"
     ENDOFPACKET = "ENDOFPACKET"  # ENDOFPACKet
-    ENET100 = "ENET100"
-    ENET1000 = "ENET1000"
     ENGINEERING = "ENGINEERING"  # ENGineering
     ENSLAVE = "ENSLAVE"  # ENSLave
     ENTASX = "ENTASX"  # ENTasx
@@ -346,7 +331,6 @@ class TekScopePCCommandConstants:
     EVERY = "EVERY"
     EXECUTE = "EXECUTE"
     # EXECUTE = "EXECute"
-    # EXECUTE = "Execute"
     EXITSWINDOW = "EXITSWINDOW"  # EXITSWindow
     EXPLICITCLOCK = "EXPLICITCLOCK"
     EXTDLC = "EXTDLC"
@@ -367,16 +351,6 @@ class TekScopePCCommandConstants:
     # FAST = "FAst"
     FASTERTHAN = "FASTERTHAN"  # FASTERthan
     FATAL = "FATAL"  # FATal
-    FBD1 = "FBD1"
-    FBD2 = "FBD2"
-    FBD3 = "FBD3"
-    FC1063 = "FC1063"
-    FC133 = "FC133"
-    FC2125 = "FC2125"
-    FC266 = "FC266"
-    FC4250 = "FC4250"
-    FC531 = "FC531"
-    FC8500 = "FC8500"
     FCDATA = "FCDATA"  # FCData
     FCDFIRST = "FCDFIRST"  # FCDFirst
     FCDTWO = "FCDTWO"  # FCDTwo
@@ -432,8 +406,7 @@ class TekScopePCCommandConstants:
     FRAMELENGTH = "FRAMELENGTH"  # FRAMELENgth
     FRAMEREJ = "FRAMEREJ"
     FRAMES = "FRAMES"  # FRAMes
-    FRAMETYPE = "FRAMETYPE"  # FRAMEType
-    # FRAMETYPE = "FRAMEtype"
+    FRAMETYPE = "FRAMETYPE"  # FRAMEtype
     FREQUENCY = "FREQUENCY"  # FREQuency
     FRMW = "FRMW"
     FTLB = "FTLB"
@@ -441,9 +414,6 @@ class TekScopePCCommandConstants:
     FULLSCREEN = "FULLSCREEN"  # FULLScreen
     FULLSPEED = "FULLSPEED"
     FUNCTIONCODE = "FUNCTIONCODE"  # FUNCTIONCODe
-    FW1394BS1600B = "FW1394BS1600B"
-    FW1394BS400B = "FW1394BS400B"
-    FW1394BS800B = "FW1394BS800B"
     GAP = "GAP"
     GAUSSIAN = "GAUSSIAN"  # GAUSSian
     # GAUSSIAN = "GAUSsian"
@@ -479,12 +449,10 @@ class TekScopePCCommandConstants:
     HBARS = "HBARS"  # HBArs
     HDRCAPABILITY = "HDRCAPABILITY"  # HDRCapability
     HDREXIT = "HDREXIT"  # HDRExit
-    HDRRESTART = "HDRRESTART"  # HDRRestart
     HEADER = "HEADER"  # HEADer
     HEX = "HEX"
     HEXAGON = "HEXAGON"  # HEXAgon
     HFREJ = "HFREJ"  # HFRej
-    HI = "HI"
     HIGH = "HIGH"
     HIGHZ = "HIGHZ"
     HILBERT = "HILBERT"  # HILBert
@@ -503,8 +471,6 @@ class TekScopePCCommandConstants:
     I2C = "I2C"
     I2S = "I2S"
     I3C = "I3C"
-    IBA2500 = "IBA2500"
-    IBA_GEN2 = "IBA_GEN2"
     IBS = "IBS"
     IC = "IC"
     ID = "ID"
@@ -674,18 +640,12 @@ class TekScopePCCommandConstants:
     NOTEQUALS = "NOTEQUALS"  # NOTEQuals
     NULL = "NULL"
     # NULL = "NULl"
-    NULLFRDYNAMIC = "NULLFRDYNAMIC"  # NULLFRDynamic
-    NULLFRSTATIC = "NULLFRSTATIC"  # NULLFRStatic
     NUMERICORDER = "NUMERICORDER"  # NUMERICORDer
     NVDATA = "NVDATA"  # NVDATa
     NVHEADER = "NVHEADER"  # NVHEADer
     NVLEN = "NVLEN"
     NWVARIABLEDATA = "NWVARIABLEDATA"  # NWVariabledata
     NYET = "NYET"
-    OC1 = "OC1"
-    OC12 = "OC12"
-    OC3 = "OC3"
-    OC48 = "OC48"
     OCCURS = "OCCURS"
     ODD = "ODD"
     OFF = "OFF"
@@ -730,9 +690,6 @@ class TekScopePCCommandConstants:
     PAYLOAD = "PAYLOAD"  # PAYLoad
     # PAYLOAD = "PAYload"
     PCIEXPRESS = "PCIEXPRESS"  # PCIExpress
-    PCIE_GEN1 = "PCIE_GEN1"
-    PCIE_GEN2 = "PCIE_GEN2"
-    PCIE_GEN3 = "PCIE_GEN3"
     PDU = "PDU"
     PEC = "PEC"
     PERCENT = "PERCENT"  # PERCent
@@ -839,9 +796,6 @@ class TekScopePCCommandConstants:
     RI = "RI"
     RIBINARY = "RIBINARY"  # RIBinary
     RIGHT = "RIGHT"  # RIGht
-    RIO125 = "RIO125"
-    RIO250 = "RIO250"
-    RIO3125 = "RIO3125"
     RISE = "RISE"
     # RISE = "RISe"
     RISING = "RISING"
@@ -853,7 +807,6 @@ class TekScopePCCommandConstants:
     RPBINARY = "RPBINARY"  # RPBinary
     RPM = "RPM"
     RR = "RR"
-    RRC = "RRC"
     RS232C = "RS232C"
     RSTDYA = "RSTDYA"  # RSTDya
     RUN = "RUN"
@@ -863,17 +816,6 @@ class TekScopePCCommandConstants:
     RXDATA = "RXDATA"  # RXData
     SAME = "SAME"
     SAMEAS = "SAMEAS"  # SAMEas
-    SAS12_NOSSC = "SAS12_NOSSC"
-    SAS12_SSC = "SAS12_SSC"
-    SAS15_NOSSC = "SAS15_NOSSC"
-    SAS15_SSC = "SAS15_SSC"
-    SAS3_NOSSC = "SAS3_NOSSC"
-    SAS3_SSC = "SAS3_SSC"
-    SAS6_NOSSC = "SAS6_NOSSC"
-    SAS6_SSC = "SAS6_SSC"
-    SATA_GEN1 = "SATA_GEN1"
-    SATA_GEN2 = "SATA_GEN2"
-    SATA_GEN3 = "SATA_GEN3"
     SAVG = "SAVG"
     SCIENTIFIC = "SCIENTIFIC"  # SCIentific
     SCRAMBLING = "SCRAMBLING"  # SCRambling
@@ -972,7 +914,6 @@ class TekScopePCCommandConstants:
     STARTOFFRAME = "STARTOFFRAME"  # STARTofframe
     STARTPACKET = "STARTPACKET"  # STARTPACKet
     STARTUP = "STARTUP"  # STARTup
-    STARTUPNOSYNC = "STARTUPNOSYNC"  # STARTupnosync
     STATIC = "STATIC"
     STATIONADDR = "STATIONADDR"  # STATIONADDr
     STATUS = "STATUS"  # STATus
@@ -997,7 +938,6 @@ class TekScopePCCommandConstants:
     SYNC = "SYNC"
     SYNCBITS = "SYNCBITS"
     SYNCFIELD = "SYNCFIELD"  # SYNCfield
-    SYNCFRAME = "SYNCFRAME"  # SYNCFrame
     TBIT = "TBIT"
     TCI = "TCI"
     TCPHEADER = "TCPHEADER"  # TCPHeader
@@ -1059,7 +999,6 @@ class TekScopePCCommandConstants:
     UNSUCCESSNODATA = "UNSUCCESSNODATA"  # UNSUCCESSNODATa
     UP = "UP"
     USB = "USB"
-    USB3 = "USB3"
     V1X = "V1X"
     V2X = "V2X"
     VBARS = "VBARS"  # VBArs
@@ -1089,8 +1028,6 @@ class TekScopePCCommandConstants:
     WRITE = "WRITE"
     # WRITE = "WRITe"
     X = "X"
-    XAUI = "XAUI"
-    XAUI_GEN2 = "XAUI_GEN2"
     XFF = "XFF"
     XID = "XID"
     XN = "XN"
@@ -1552,38 +1489,8 @@ class TekScopePCCommands:
               transferred has an associated waveform preamble that contains information such as data
               format and scale. The ``CURVe?`` query transfers data from the instrument. The data
               source is specified by the ``DATA:SOURCE`` command. The first and last data points are
-              specified by the ``DATA:START`` and ``DATA:STOP`` commands. For digital sources,
-              ``CH<x>_D<x>`` or CH<x> _DALL, when the ``:DATa:WIDth`` is 1, the returned data is
-              state only. When the ``:DATa:WIDth`` is 2, the returned data is transition data with 2
-              bits per digital channel representing the transition information as follows: 0 0 low 0
-              1 high 1 1 multiple transitions in interval ending with high 1 0 multiple transitions
-              in interval ending with low For individual digital channels (such as ``CH<x>_D<x>`` ),
-              ``:DATa:WIDth 2`` provides the 2-bit transition data with the upper 14 bits zero.
-              ``:DATa:WIDth 1`` provides only the state in the LSB with the upper 7 bits all zero.
-              For ``CH<x>_DAll`` sources, ``:DATa:WIDth 2`` provides the 2-bit transition data for
-              each of the 8 constituent channels with the D7 bit represented in the 2 most
-              significant bits, D6 in the next 2, and so on. ``:DATa:WIDth 1`` provides the states
-              of each of the 8 constituent channels with D7 represented in the most significant bit
-              and D0 in the least significant bit. Depending on the sample rate, multi-transition
-              data may not be available and ``:CURVe?`` queries for digital channels with
-              ``:DATa:WIDth 2`` may result in a warning event 'Execution warning: Multi-transition
-              data not available'. In this case, the transition data returned will be 0 0 or 0 1.
-              For MATH sources, only 8-byte double precision floating point data is returned in
-              ``:CURVe?`` queries. A Fast Acquisition waveform Pixmap data is a 500 (vertical) by
-              1000 (horizontal) point bitmap. Each point represents display intensity for that
-              screen location. 500 (vertical) which is the row count in the bitmap, might vary based
-              on how many channels enabled from same FastAcq group. To query and get the Fast Acq
-              Pixel Map data, the following command set should be sent: ``ACQuire:FASTAcq:STATE ON``
-              ``DATA:MODe PIXmap`` When the FastAcq is on, Curve? on Ch<x> will return pixmap data
-              (if ``DATA:MODe`` is PIXmap). The number of rows in the pixmap will vary based on how
-              many ch<x> sources are turned on and how they are grouped in acquisition HW. The
-              grouping can vary from model to model. The number of columns in pixmap data is fixed
-              to 1000. For example, on a MSO58 instrument, Ch1 to Ch4 is 'group1' and Ch5 to Ch8 is
-              'group2'. If Ch1 is turned on (in group1) then Ch1 rows will be 500. If Ch2 and Ch3
-              are turned on (in group1) then Ch2 and Ch3 rows will be 250 each. When all Ch1/2/3/4
-              are turned on (in group1) then 125 rows per channel. If Ch1 (in group1) and Ch8 (in
-              group2) are turned on then 500 rows will be returned for each channel. To calculate
-              the number of rows, you can use- (number of bytes from curve header/``BYT_NR``)/1000.
+              specified by the ``DATA:START`` and ``DATA:STOP`` commands. For MATH sources, only
+              8-byte double precision floating point data is returned in ``:CURVe?`` queries.
 
         Usage:
             - Using the ``.query()`` method will send the ``CURVe?`` query.

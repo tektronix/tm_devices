@@ -11,7 +11,7 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - POWer:ADDNew 'POWER<x>'
-    - POWer:DELete 'POWER<x>'
+    - POWer:DELete POWER<x>
     - POWer:POWer<x>:AUTOSet EXECute
     - POWer:POWer<x>:CLRESPONSE:AMP<x>Val <NR3>
     - POWer:POWer<x>:CLRESPONSE:AMP<x>Val?
@@ -28,7 +28,7 @@ Commands and Queries:
     - POWer:POWer<x>:CLRESPONSE:FREQ<x>Val?
     - POWer:POWer<x>:CLRESPONSE:GENIPADDress <NR2>
     - POWer:POWer<x>:CLRESPONSE:GENIPADDress?
-    - POWer:POWer<x>:CLRESPONSE:GENerator {INTernal}
+    - POWer:POWer<x>:CLRESPONSE:GENerator {INTernal|EXTernal}
     - POWer:POWer<x>:CLRESPONSE:GENerator?
     - POWer:POWer<x>:CLRESPONSE:IMPEDance {FIFTy|HIGHZ}
     - POWer:POWer<x>:CLRESPONSE:IMPEDance?
@@ -117,7 +117,7 @@ Commands and Queries:
     - POWer:POWer<x>:HARMONICS:IPOWer?
     - POWer:POWer<x>:HARMONICS:ISOURce {CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:HARMONICS:ISOURce?
-    - POWer:POWer<x>:HARMONICS:LINEFREQUEncy {Auto|FIFTyhz|SIXTyhz |THREESIXTyhz|FOURHUNDREdhz|SIXFIFTyhz|EIGHTHUNDREdhz|CUSTom
+    - POWer:POWer<x>:HARMONICS:LINEFREQUEncy {Auto|FIFTyhz|SIXTyhz|THREESIXTyhz|FOURHUNDREdhz|SIXFIFTyhz|EIGHTHUNDREdhz|CUSTom}
     - POWer:POWer<x>:HARMONICS:LINEFREQUEncy?
     - POWer:POWer<x>:HARMONICS:ODDEVen {ALL|ODD|EVEN}
     - POWer:POWer<x>:HARMONICS:ODDEVen?
@@ -148,7 +148,7 @@ Commands and Queries:
     - POWer:POWer<x>:IMPEDANCE:CONSTAMPlitude?
     - POWer:POWer<x>:IMPEDANCE:FREQ<x>Val <NR3>
     - POWer:POWer<x>:IMPEDANCE:FREQ<x>Val?
-    - POWer:POWer<x>:IMPEDANCE:GENIPADDress <String>
+    - POWer:POWer<x>:IMPEDANCE:GENIPADDress <QString>
     - POWer:POWer<x>:IMPEDANCE:GENIPADDress?
     - POWer:POWer<x>:IMPEDANCE:GENerator {INTernal|EXTernal}
     - POWer:POWer<x>:IMPEDANCE:GENerator?
@@ -281,7 +281,7 @@ Commands and Queries:
     - POWer:POWer<x>:PSRR:CONSTAMPlitude?
     - POWer:POWer<x>:PSRR:FREQ<x>Val <NR3>
     - POWer:POWer<x>:PSRR:FREQ<x>Val?
-    - POWer:POWer<x>:PSRR:GENIPADDress <Qstring>
+    - POWer:POWer<x>:PSRR:GENIPADDress <QString>
     - POWer:POWer<x>:PSRR:GENIPADDress?
     - POWer:POWer<x>:PSRR:GENerator {INTernal|EXTernal}
     - POWer:POWer<x>:PSRR:GENerator?
@@ -340,31 +340,32 @@ Commands and Queries:
     - POWer:POWer<x>:REFLevels:PERCent:RISEMid?
     - POWer:POWer<x>:REFLevels:PERCent:TYPE {TENNinety|TWENtyeighty|CUSTom}
     - POWer:POWer<x>:REFLevels:PERCent:TYPE?
-    - POWer:POWer<x>:RESUlts:ALLAcqs:MAXimum? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak| Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability| RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE| PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG| TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT| LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL| PKPK|HIGH|LOW|MAX|MIN| INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
-    - POWer:POWer<x>:RESUlts:ALLAcqs:MEAN? {InputPwr|Output1Pwr|Output2Pwr| Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency| INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax| IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR| APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ| ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG| TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT| LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL| PKPK|HIGH|LOW|MAX|MIN| INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
-    - POWer:POWer<x>:RESUlts:ALLAcqs:MINimum? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS| Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH| Permeability|RDS|TRUEPWR|APPPWR|REPWR| PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR| IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG| TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG| DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK| SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY| NDUTY|PPULSE|NPULSE|AMPL|PKPK| HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
-    - POWer:POWer<x>:RESUlts:ALLAcqs:PK2PK? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak| Br|Hc|Hmax|IRipple|DeltaB|DeltaH| Permeability|RDS|TRUEPWR|APPPWR|REPWR| PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR| IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG| TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG| DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK| SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY| NDUTY|PPULSE|NPULSE|AMPL|PKPK| HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
-    - POWer:POWer<x>:RESUlts:ALLAcqs:POPUlation? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak| Br|Hc|Hmax|IRipple|DeltaB|DeltaH| Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR| PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS| TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT| LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE| AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
-    - POWer:POWer<x>:RESUlts:ALLAcqs:STDDev? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc| Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS| TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ| ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS| TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS| TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS| LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY| NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN| INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
-    - POWer:POWer<x>:RESUlts:CURRentacq:F1MAG? 'harmonics'
-    - POWer:POWer<x>:RESUlts:CURRentacq:F3MAG? 'harmonics'
-    - POWer:POWer<x>:RESUlts:CURRentacq:FREQUENCY? 'harmonics'
-    - POWer:POWer<x>:RESUlts:CURRentacq:IRMS? 'harmonics'
-    - POWer:POWer<x>:RESUlts:CURRentacq:MAXimum? {InputPwr| Output1Pwr|Output2Pwr|Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS| Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH| Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR| PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS| TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT| LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK| HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
-    - POWer:POWer<x>:RESUlts:CURRentacq:MEAN? {InputPwr| Output1Pwr|Output2Pwr|Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak| Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR| APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS| VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK| SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE| AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
-    - POWer:POWer<x>:RESUlts:CURRentacq:MINimum? {InputPwr| Output1Pwr|Output2Pwr|Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br| Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR| APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS| VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK| SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL| PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
-    - POWer:POWer<x>:RESUlts:CURRentacq:PK2PK? {InputPwr| Output1Pwr|Output2Pwr|Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br| Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR| REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS| TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS| TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS| SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK| HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
-    - POWer:POWer<x>:RESUlts:CURRentacq:POHCL? 'harmonics'
-    - POWer:POWer<x>:RESUlts:CURRentacq:POHCM? 'harmonics'
-    - POWer:POWer<x>:RESUlts:CURRentacq:POHCS? 'harmonics'
-    - POWer:POWer<x>:RESUlts:CURRentacq:POPUlation? {InputPwr| Output1Pwr|Output2Pwr|Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br| Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR| APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS| VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK| SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE| AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
-    - POWer:POWer<x>:RESUlts:CURRentacq:RMS? 'harmonics'
-    - POWer:POWer<x>:RESUlts:CURRentacq:STATUS? 'harmonics'
-    - POWer:POWer<x>:RESUlts:CURRentacq:STDDev? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple| DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR| PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS| TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT| DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN |INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
-    - POWer:POWer<x>:RESUlts:CURRentacq:THDF? 'harmonics'
-    - POWer:POWer<x>:RESUlts:CURRentacq:THDR? 'harmonics'
-    - POWer:POWer<x>:RESUlts:CURRentacq:TRPWR? 'harmonics'
-    - POWer:POWer<x>:RESUlts:CURRentacq:VRMS? 'harmonics'
+    - POWer:POWer<x>:RESUlts:ALLAcqs:MAXimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+    - POWer:POWer<x>:RESUlts:ALLAcqs:MEAN? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+    - POWer:POWer<x>:RESUlts:ALLAcqs:MINimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+    - POWer:POWer<x>:RESUlts:ALLAcqs:PK2PK? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+    - POWer:POWer<x>:RESUlts:ALLAcqs:POPUlation? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+    - POWer:POWer<x>:RESUlts:ALLAcqs:STDDev? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+    - POWer:POWer<x>:RESUlts:CURRentacq:F1MAG? harmonics
+    - POWer:POWer<x>:RESUlts:CURRentacq:F3MAG? harmonics
+    - POWer:POWer<x>:RESUlts:CURRentacq:FREQUENCY? harmonics
+    - POWer:POWer<x>:RESUlts:CURRentacq:IRMS? harmonics
+    - POWer:POWer<x>:RESUlts:CURRentacq:MAXimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+    - POWer:POWer<x>:RESUlts:CURRentacq:MEAN? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+    - POWer:POWer<x>:RESUlts:CURRentacq:MINimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+    - POWer:POWer<x>:RESUlts:CURRentacq:PK2PK ? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+    - POWer:POWer<x>:RESUlts:CURRentacq:PK2PK?
+    - POWer:POWer<x>:RESUlts:CURRentacq:POHCL? harmonics
+    - POWer:POWer<x>:RESUlts:CURRentacq:POHCM? harmonics
+    - POWer:POWer<x>:RESUlts:CURRentacq:POHCS? harmonics
+    - POWer:POWer<x>:RESUlts:CURRentacq:POPUlation? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+    - POWer:POWer<x>:RESUlts:CURRentacq:RMS? harmonics
+    - POWer:POWer<x>:RESUlts:CURRentacq:STATUS? harmonics
+    - POWer:POWer<x>:RESUlts:CURRentacq:STDDev? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+    - POWer:POWer<x>:RESUlts:CURRentacq:THDF? harmonics
+    - POWer:POWer<x>:RESUlts:CURRentacq:THDR? harmonics
+    - POWer:POWer<x>:RESUlts:CURRentacq:TRPWR? harmonics
+    - POWer:POWer<x>:RESUlts:CURRentacq:VRMS? harmonics
     - POWer:POWer<x>:SEQSETup Execute
     - POWer:POWer<x>:SEQuence {RUN|RERUN}
     - POWer:POWer<x>:SEQuence?
@@ -500,7 +501,7 @@ Commands and Queries:
     - POWer:POWer<x>:TURNONtime:OUTPUT7VOLTage?
     - POWer:POWer<x>:TURNONtime:TYPE {DCDC|ACDC}
     - POWer:POWer<x>:TURNONtime:TYPE?
-    - POWer:POWer<x>:TYPe <Measurement Type>
+    - POWer:POWer<x>:TYPe P <Measurement Type>
     - POWer:POWer<x>:TYPe?
     - POWer:POWer<x>:WRAP:DEGrees NR3
     - POWer:POWer<x>:WRAP:DEGrees?
@@ -544,7 +545,7 @@ class PowerPowerItemWrapState(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``ON`` specifies that phase wrap has been turned on for FRA measurements.
         - ``OFF`` specifies that phase wrap has been turned off for FRA measurements.
@@ -571,9 +572,9 @@ class PowerPowerItemWrapDegrees(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
-        - ``NR3`` specifies the phase wrap value for FRA measurements.
+        - ``<NR3>`` specifies the phase wrap value for FRA measurements.
     """
 
 
@@ -584,6 +585,10 @@ class PowerPowerItemWrap(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:WRAP?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:WRAP?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
 
     Properties:
         - ``.degrees``: The ``POWer:POWer<x>:WRAP:DEGrees`` command.
@@ -616,9 +621,9 @@ class PowerPowerItemWrap(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
-            - ``NR3`` specifies the phase wrap value for FRA measurements.
+            - ``<NR3>`` specifies the phase wrap value for FRA measurements.
         """
         return self._degrees
 
@@ -643,7 +648,7 @@ class PowerPowerItemWrap(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``ON`` specifies that phase wrap has been turned on for FRA measurements.
             - ``OFF`` specifies that phase wrap has been turned off for FRA measurements.
@@ -652,7 +657,7 @@ class PowerPowerItemWrap(SCPICmdRead):
 
 
 class PowerPowerItemType(SCPICmdWrite, SCPICmdRead):
-    r"""The ``POWer:POWer<x>:TYPe`` command.
+    """The ``POWer:POWer<x>:TYPe`` command.
 
     Description:
         - This command sets or queries the measurement type of the specified power measurement
@@ -668,19 +673,19 @@ class PowerPowerItemType(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:TYPe <Measurement Type>
+        - POWer:POWer<x>:TYPe P <Measurement Type>
         - POWer:POWer<x>:TYPe?
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
-        - ``<Measurement Type>`` = CYCLEAmp \| CYCLEBase \| CYCLEMAx \| CYCLEMIn \| CYCLEPKpk \|
-          CYCLETop \| DIDT \| DVDT \| EFFICIENCY \| FREQuency \| HARMonics \|IMPEDANCE\| INDUCTANCE
-          \| INPUTCAP \| INRUSHcurrent\| \| IVSINTEGRALV \| LINERIpple \| MAGNETICLOSS \|
-          MAGPROPERTY \| NDUTYCycle \| NPULSEWidth \| PDUTYCycle \| PERIod \| POWERQUALity \|
-          PPULSEWidth \| RDSON \| SOA \| SWITCHINGLOss \| SWITCHINGRIpple \| TURNOFFtime \|
-          TURNONtime\| CLRESPONSE \| PSRR.
+        - ``<Measurement Type> = CYCLEAmp
+          | CYCLEBase | CYCLEMAx |CYCLEMIn | CYCLEPKpk | CYCLETop | DIDT | DVDT | EFFICIENCY|
+          FREQuency | HARMonics |IMPEDANCE| INDUCTANCE | INPUTCAP| INRUSHcurrent| | IVSINTEGRALV |
+          LINERIpple | MAGNETICLOSS |MAGPROPERTY | NDUTYCycle | NPULSEWidth | PDUTYCycle | PERIod|
+          POWERQUALity | PPULSEWidth | RDSON | SOA | SWITCHINGLOss |SWITCHINGRIpple | TURNOFFtime |
+          TURNONtime| CLRESPONSE | PSRR``
     """
 
 
@@ -705,7 +710,7 @@ class PowerPowerItemTurnontimeType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``DCDC`` sets the measurement to use a DC to DC converter.
         - ``ACDC`` sets the measurement to use an AC to DC converter.
@@ -735,7 +740,7 @@ class PowerPowerItemTurnontimeOutput7voltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
@@ -764,7 +769,7 @@ class PowerPowerItemTurnontimeOutput7source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number of
           instrument input channels.
@@ -798,7 +803,7 @@ class PowerPowerItemTurnontimeOutput6voltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
@@ -827,13 +832,13 @@ class PowerPowerItemTurnontimeOutput6source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number of
           instrument input channels.
         - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number shown
           on a Reference waveform badge in the UI.
-        - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown on a
+        - ``MATH<x>`` AMath waveform specifier ≥1. This is the equivalent of the number shown on a
           Math waveform badge in the UI.
     """
 
@@ -861,7 +866,7 @@ class PowerPowerItemTurnontimeOutput5voltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
@@ -890,7 +895,7 @@ class PowerPowerItemTurnontimeOutput5source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number of
           instrument input channels.
@@ -924,7 +929,7 @@ class PowerPowerItemTurnontimeOutput4voltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
@@ -953,7 +958,7 @@ class PowerPowerItemTurnontimeOutput4source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number of
           instrument input channels.
@@ -987,7 +992,7 @@ class PowerPowerItemTurnontimeOutput3voltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
@@ -1016,13 +1021,13 @@ class PowerPowerItemTurnontimeOutput3source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number of
           instrument input channels.
         - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number shown
           on a Reference waveform badge in the UI.
-        - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown on a
+        - ``MATH<x>`` AMath waveform specifier ≥1. This is the equivalent of the number shown on a
           Math waveform badge in the UI.
     """
 
@@ -1050,7 +1055,7 @@ class PowerPowerItemTurnontimeOutput2voltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
@@ -1079,7 +1084,7 @@ class PowerPowerItemTurnontimeOutput2source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number of
           instrument input channels.
@@ -1113,7 +1118,7 @@ class PowerPowerItemTurnontimeOutput1voltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
@@ -1142,14 +1147,12 @@ class PowerPowerItemTurnontimeOutput1source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          on a power measurement badge in the UI.
-        - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number of
-          instrument input channels.
-        - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number shown
-          on a Reference waveform badge in the UI.
-        - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown on a
-          Math waveform badge in the UI.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
+          FlexChannels in your instrument.
+        - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+        - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
     """
 
 
@@ -1176,10 +1179,9 @@ class PowerPowerItemTurnontimeNumoutputs(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
-        - ``ONE`` through SEVEN sets the number of outputs for the specified Turn On Time power
-          measurement.
+        - ``ONE`` through.
     """
 
 
@@ -1206,7 +1208,7 @@ class PowerPowerItemTurnontimeMaxvoltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR3>`` is a floating point number that represents the maximum voltage in the range 1 V
           to 500 V.
@@ -1234,7 +1236,7 @@ class PowerPowerItemTurnontimeMaxtime(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR3>`` is a floating point number that represents the maximum time value, in seconds,
           in the range 1 second to 500 seconds.
@@ -1263,14 +1265,12 @@ class PowerPowerItemTurnontimeInputsource(SCPICmdWriteNoArguments, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          on a power measurement badge in the UI.
-        - ``CH<x>`` is the channel specifier in the range of 1 through 8 and is limited by the
-          number of instrument input channels.
-        - ``REF<x>`` is the Reference waveform specifier ≥1. This is the equivalent of the number
-          shown on a Reference waveform badge in the UI.
-        - ``MATH<x>`` is the Math waveform specifier ≥1. This is the equivalent of the number shown
-          on a Math waveform badge in the UI.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
+          FlexChannels in your instrument.
+        - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+        - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
     """
 
 
@@ -1295,12 +1295,6 @@ class PowerPowerItemTurnontimeInputlevel(SCPICmdWrite, SCPICmdRead):
         - POWer:POWer<x>:TURNONtime:INPUTLEVel <NR3>
         - POWer:POWer<x>:TURNONtime:INPUTLEVel?
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          on a power measurement badge in the UI.
-        - ``<NR3>`` is a floating point number that represents the voltage level, in volts, from
-          -500 V to 500 V.
     """
 
 
@@ -1326,7 +1320,7 @@ class PowerPowerItemTurnontimeFrequency(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR3>`` is a floating point number that represents the frequency, in Hertz, from 1 Hz to
           500 Hz.
@@ -1341,6 +1335,10 @@ class PowerPowerItemTurnontime(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:TURNONtime?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:TURNONtime?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.frequency``: The ``POWer:POWer<x>:TURNONtime:FREQuency`` command.
@@ -1450,7 +1448,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR3>`` is a floating point number that represents the frequency, in Hertz, from 1
               Hz to 500 Hz.
@@ -1479,12 +1477,6 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             - POWer:POWer<x>:TURNONtime:INPUTLEVel <NR3>
             - POWer:POWer<x>:TURNONtime:INPUTLEVel?
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown on a power measurement badge in the UI.
-            - ``<NR3>`` is a floating point number that represents the voltage level, in volts, from
-              -500 V to 500 V.
         """
         return self._inputlevel
 
@@ -1512,14 +1504,12 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown on a power measurement badge in the UI.
-            - ``CH<x>`` is the channel specifier in the range of 1 through 8 and is limited by the
-              number of instrument input channels.
-            - ``REF<x>`` is the Reference waveform specifier ≥1. This is the equivalent of the
-              number shown on a Reference waveform badge in the UI.
-            - ``MATH<x>`` is the Math waveform specifier ≥1. This is the equivalent of the number
-              shown on a Math waveform badge in the UI.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
+            - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+            - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
         return self._inputsource
 
@@ -1547,7 +1537,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR3>`` is a floating point number that represents the maximum time value, in
               seconds, in the range 1 second to 500 seconds.
@@ -1578,7 +1568,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR3>`` is a floating point number that represents the maximum voltage in the range
               1 V to 500 V.
@@ -1609,10 +1599,9 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
-            - ``ONE`` through SEVEN sets the number of outputs for the specified Turn On Time power
-              measurement.
+            - ``ONE`` through.
         """
         return self._numoutputs
 
@@ -1640,14 +1629,12 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown on a power measurement badge in the UI.
-            - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number
-              of instrument input channels.
-            - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number
-              shown on a Reference waveform badge in the UI.
-            - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown
-              on a Math waveform badge in the UI.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
+            - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+            - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
         return self._output1source
 
@@ -1675,7 +1662,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
@@ -1705,7 +1692,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number
               of instrument input channels.
@@ -1740,7 +1727,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
@@ -1770,14 +1757,14 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number
               of instrument input channels.
             - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number
               shown on a Reference waveform badge in the UI.
-            - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown
-              on a Math waveform badge in the UI.
+            - ``MATH<x>`` AMath waveform specifier ≥1. This is the equivalent of the number shown on
+              a Math waveform badge in the UI.
         """
         return self._output3source
 
@@ -1805,7 +1792,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
@@ -1835,7 +1822,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number
               of instrument input channels.
@@ -1870,7 +1857,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
@@ -1900,7 +1887,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number
               of instrument input channels.
@@ -1935,7 +1922,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
@@ -1965,14 +1952,14 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number
               of instrument input channels.
             - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number
               shown on a Reference waveform badge in the UI.
-            - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown
-              on a Math waveform badge in the UI.
+            - ``MATH<x>`` AMath waveform specifier ≥1. This is the equivalent of the number shown on
+              a Math waveform badge in the UI.
         """
         return self._output6source
 
@@ -2000,7 +1987,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
@@ -2030,7 +2017,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number
               of instrument input channels.
@@ -2065,7 +2052,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
@@ -2093,7 +2080,7 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``DCDC`` sets the measurement to use a DC to DC converter.
             - ``ACDC`` sets the measurement to use an AC to DC converter.
@@ -2122,7 +2109,7 @@ class PowerPowerItemTurnofftimeType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``DCDC`` sets the measurement to use a DC to DC converter.
         - ``ACDC`` sets the measurement to use an AC to DC converter.
@@ -2152,7 +2139,7 @@ class PowerPowerItemTurnofftimeOutput7voltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
@@ -2181,14 +2168,9 @@ class PowerPowerItemTurnofftimeOutput7source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
-        - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number of
-          instrument input channels.
-        - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number shown
-          on a Reference waveform badge in the UI.
-        - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown on a
-          Math waveform badge in the UI.
+        - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
 
 
@@ -2215,7 +2197,7 @@ class PowerPowerItemTurnofftimeOutput6voltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
@@ -2244,14 +2226,12 @@ class PowerPowerItemTurnofftimeOutput6source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          on a power measurement badge in the UI.
-        - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number of
-          instrument input channels.
-        - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number shown
-          on a Reference waveform badge in the UI.
-        - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown on a
-          Math waveform badge in the UI.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
+          FlexChannels in your instrument.
+        - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+        - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
     """
 
 
@@ -2278,7 +2258,7 @@ class PowerPowerItemTurnofftimeOutput5voltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
@@ -2307,14 +2287,12 @@ class PowerPowerItemTurnofftimeOutput5source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          on a power measurement badge in the UI.
-        - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number of
-          instrument input channels.
-        - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number shown
-          on a Reference waveform badge in the UI.
-        - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown on a
-          Math waveform badge in the UI.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
+          FlexChannels in your instrument.
+        - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+        - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
     """
 
 
@@ -2341,7 +2319,7 @@ class PowerPowerItemTurnofftimeOutput4voltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
@@ -2370,14 +2348,12 @@ class PowerPowerItemTurnofftimeOutput4source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          on a power measurement badge in the UI.
-        - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number of
-          instrument input channels.
-        - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number shown
-          on a Reference waveform badge in the UI.
-        - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown on a
-          Math waveform badge in the UI.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
+          FlexChannels in your instrument.
+        - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+        - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
     """
 
 
@@ -2404,7 +2380,7 @@ class PowerPowerItemTurnofftimeOutput3voltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
@@ -2433,7 +2409,7 @@ class PowerPowerItemTurnofftimeOutput3source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number of
           instrument input channels.
@@ -2465,11 +2441,6 @@ class PowerPowerItemTurnofftimeOutput2voltage(SCPICmdWrite, SCPICmdRead):
         - POWer:POWer<x>:TURNOFFtime:OUTPUT2VOLTage <NR2>
         - POWer:POWer<x>:TURNOFFtime:OUTPUT2VOLTage?
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          on a power measurement badge in the UI.
-        - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
 
 
@@ -2496,14 +2467,12 @@ class PowerPowerItemTurnofftimeOutput2source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          on a power measurement badge in the UI.
-        - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number of
-          instrument input channels.
-        - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number shown
-          on a Reference waveform badge in the UI.
-        - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown on a
-          Math waveform badge in the UI.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
+          FlexChannels in your instrument.
+        - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+        - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
     """
 
 
@@ -2530,7 +2499,7 @@ class PowerPowerItemTurnofftimeOutput1voltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
@@ -2559,14 +2528,12 @@ class PowerPowerItemTurnofftimeOutput1source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          on a power measurement badge in the UI.
-        - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number of
-          instrument input channels.
-        - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number shown
-          on a Reference waveform badge in the UI.
-        - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown on a
-          Math waveform badge in the UI.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
+          FlexChannels in your instrument.
+        - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+        - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
     """
 
 
@@ -2593,9 +2560,9 @@ class PowerPowerItemTurnofftimeNumoutputs(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
-        - ``ONE`` through SEVEN sets the number of outputs for the Turn Off Time measurement.
+        - ``ONE`` through.
     """
 
 
@@ -2622,7 +2589,7 @@ class PowerPowerItemTurnofftimeMaxvoltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR3>`` is a floating point number that represents the maximum voltage in the range 1 V
           to 500 V.
@@ -2650,7 +2617,7 @@ class PowerPowerItemTurnofftimeMaxtime(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR3>`` is a floating point number that represents the maximum time value, in seconds,
           in the range 1 second to 500 seconds.
@@ -2679,14 +2646,12 @@ class PowerPowerItemTurnofftimeInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          on a power measurement badge in the UI.
-        - ``CH<x>`` is the channel specifier in the range of 1 through 8 and is limited by the
-          number of instrument input channels.
-        - ``REF<x>`` is the Reference waveform specifier ≥1. This is the equivalent of the number
-          shown on a Reference waveform badge in the UI.
-        - ``MATH<x>`` is the Math waveform specifier ≥1. This is the equivalent of the number shown
-          on a Math waveform badge in the UI.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
+          FlexChannels in your instrument.
+        - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+        - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
     """
 
 
@@ -2713,7 +2678,7 @@ class PowerPowerItemTurnofftimeInputlevel(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR3>`` is a floating point number that represents the voltage level, in volts, from
           -500 V to 500 V.
@@ -2743,7 +2708,7 @@ class PowerPowerItemTurnofftimeFrequency(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR3>`` is a floating point number that represents the frequency, in Hertz, from 1 Hz to
           500 Hz.
@@ -2758,6 +2723,10 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:TURNOFFtime?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:TURNOFFtime?`` query
           and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.frequency``: The ``POWer:POWer<x>:TURNOFFtime:FREQuency`` command.
@@ -2869,7 +2838,7 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR3>`` is a floating point number that represents the frequency, in Hertz, from 1
               Hz to 500 Hz.
@@ -2900,7 +2869,7 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR3>`` is a floating point number that represents the voltage level, in volts, from
               -500 V to 500 V.
@@ -2931,14 +2900,12 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown on a power measurement badge in the UI.
-            - ``CH<x>`` is the channel specifier in the range of 1 through 8 and is limited by the
-              number of instrument input channels.
-            - ``REF<x>`` is the Reference waveform specifier ≥1. This is the equivalent of the
-              number shown on a Reference waveform badge in the UI.
-            - ``MATH<x>`` is the Math waveform specifier ≥1. This is the equivalent of the number
-              shown on a Math waveform badge in the UI.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
+            - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+            - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
         return self._inputsource
 
@@ -2966,7 +2933,7 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR3>`` is a floating point number that represents the maximum time value, in
               seconds, in the range 1 second to 500 seconds.
@@ -2997,7 +2964,7 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR3>`` is a floating point number that represents the maximum voltage in the range
               1 V to 500 V.
@@ -3028,9 +2995,9 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
-            - ``ONE`` through SEVEN sets the number of outputs for the Turn Off Time measurement.
+            - ``ONE`` through.
         """
         return self._numoutputs
 
@@ -3058,14 +3025,12 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown on a power measurement badge in the UI.
-            - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number
-              of instrument input channels.
-            - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number
-              shown on a Reference waveform badge in the UI.
-            - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown
-              on a Math waveform badge in the UI.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
+            - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+            - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
         return self._output1source
 
@@ -3093,7 +3058,7 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
@@ -3123,14 +3088,12 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown on a power measurement badge in the UI.
-            - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number
-              of instrument input channels.
-            - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number
-              shown on a Reference waveform badge in the UI.
-            - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown
-              on a Math waveform badge in the UI.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
+            - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+            - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
         return self._output2source
 
@@ -3156,11 +3119,6 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             - POWer:POWer<x>:TURNOFFtime:OUTPUT2VOLTage <NR2>
             - POWer:POWer<x>:TURNOFFtime:OUTPUT2VOLTage?
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown on a power measurement badge in the UI.
-            - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
         return self._output2voltage
 
@@ -3188,7 +3146,7 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number
               of instrument input channels.
@@ -3223,7 +3181,7 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
@@ -3253,14 +3211,12 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown on a power measurement badge in the UI.
-            - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number
-              of instrument input channels.
-            - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number
-              shown on a Reference waveform badge in the UI.
-            - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown
-              on a Math waveform badge in the UI.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
+            - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+            - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
         return self._output4source
 
@@ -3288,7 +3244,7 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
@@ -3318,14 +3274,12 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown on a power measurement badge in the UI.
-            - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number
-              of instrument input channels.
-            - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number
-              shown on a Reference waveform badge in the UI.
-            - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown
-              on a Math waveform badge in the UI.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
+            - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+            - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
         return self._output5source
 
@@ -3353,7 +3307,7 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
@@ -3383,14 +3337,12 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown on a power measurement badge in the UI.
-            - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number
-              of instrument input channels.
-            - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number
-              shown on a Reference waveform badge in the UI.
-            - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown
-              on a Math waveform badge in the UI.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
+            - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+            - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
         return self._output6source
 
@@ -3418,7 +3370,7 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
@@ -3448,14 +3400,9 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
-            - ``CH<x>`` A channel specifier in the range of 1 through 8 and is limited by the number
-              of instrument input channels.
-            - ``REF<x>`` A Reference waveform specifier ≥1. This is the equivalent of the number
-              shown on a Reference waveform badge in the UI.
-            - ``MATH<x>`` A Math waveform specifier ≥1. This is the equivalent of the number shown
-              on a Math waveform badge in the UI.
+            - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
         return self._output7source
 
@@ -3483,7 +3430,7 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
@@ -3512,7 +3459,7 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``DCDC`` sets the measurement to use a DC to DC converter.
             - ``ACDC`` sets the measurement to use an AC to DC converter.
@@ -3543,7 +3490,7 @@ class PowerPowerItemSwitchingrippleLfrequency(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from 50 to 1000000.
     """
@@ -3572,9 +3519,9 @@ class PowerPowerItemSwitchingrippleInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
         - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
         - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
@@ -3588,6 +3535,10 @@ class PowerPowerItemSwitchingripple(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:SWITCHINGRIPPLE?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:SWITCHINGRIPPLE?``
           query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
 
     Properties:
         - ``.inputsource``: The ``POWer:POWer<x>:SWITCHINGRIPPLE:INPUTSOurce`` command.
@@ -3627,10 +3578,10 @@ class PowerPowerItemSwitchingripple(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
-              FlexChannels in your instrument.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
             - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
             - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
@@ -3661,7 +3612,7 @@ class PowerPowerItemSwitchingripple(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from 50 to 1000000.
         """
@@ -3691,9 +3642,9 @@ class PowerPowerItemSwitchinglossVsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
         - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
         - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
@@ -3724,7 +3675,7 @@ class PowerPowerItemSwitchinglossVlevelpct(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from 0.0001 to 90.
     """
@@ -3754,7 +3705,7 @@ class PowerPowerItemSwitchinglossVlevelabs(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from -100 to 100.
     """
@@ -3764,9 +3715,7 @@ class PowerPowerItemSwitchinglossVglevel(SCPICmdWrite, SCPICmdRead):
     """The ``POWer:POWer<x>:SWITCHINGLOSS:VGLevel`` command.
 
     Description:
-        - This command sets or queries the gate voltage value (V g Level Ton-Start) for the
-          switching loss measurement in the specified power measurement number. The power
-          measurement number is specified by x.
+        - This command sets or queries the gate voltage value (V g
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:SWITCHINGLOSS:VGLevel?``
@@ -3784,7 +3733,7 @@ class PowerPowerItemSwitchinglossVglevel(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from -100 to 100.
     """
@@ -3813,7 +3762,7 @@ class PowerPowerItemSwitchinglossVcesat(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from 0.001 to 100.
     """
@@ -3842,14 +3791,13 @@ class PowerPowerItemSwitchinglossSwlconfigtype(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
-        - ``SMPS`` : Select this option in case of signals without noise and ringing. The Vg source
-          is not required. Select Vg souce (Source 3), in case of noisy signal.
+        - ``SMPS`` : Select this option in case of signals without noise and ringing. The V.
         - ``PFC`` : Select this option when input DUT signals are from Power Factor Correction
-          Circuit. For this case, Vg source is mandatory.
+          Circuit. For this case, V.
         - ``FLYBACK`` : Select this option when input signals are ringing. This option does not
-          require a Vg source.
+          require a V.
     """
 
 
@@ -3874,7 +3822,7 @@ class PowerPowerItemSwitchinglossRdson(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from 0 to 100.
     """
@@ -3903,7 +3851,7 @@ class PowerPowerItemSwitchinglossLevelunits(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``PERCent`` to set the High, Mid, and Low reference levels in percentage.
         - ``ABSolute`` to set the High, Mid, and Low reference levels to specific signal levels.
@@ -3933,9 +3881,9 @@ class PowerPowerItemSwitchinglossIsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
         - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
         - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
@@ -3966,9 +3914,8 @@ class PowerPowerItemSwitchinglossIlevelpct(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``<NR1>`` ranges from 0.0001 to 90.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge. <NR1> ranges from 0.0001 to 90.
     """
 
 
@@ -3996,7 +3943,7 @@ class PowerPowerItemSwitchinglossIlevelabs(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from -100 to 100.
     """
@@ -4006,7 +3953,7 @@ class PowerPowerItemSwitchinglossGatesource(SCPICmdWrite, SCPICmdRead):
     """The ``POWer:POWer<x>:SWITCHINGLOSS:GATESOurce`` command.
 
     Description:
-        - This command sets or queries the gate voltage (V g ) for the switching loss measurement in
+        - This command sets or queries the gate voltage (Vg) for the switching loss measurement in
           the specified power measurement number. The power measurement number is specified by x.
 
     Usage:
@@ -4025,9 +3972,9 @@ class PowerPowerItemSwitchinglossGatesource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
         - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
         - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
@@ -4147,9 +4094,9 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
         """Return the ``POWer:POWer<x>:SWITCHINGLOSS:GATESOurce`` command.
 
         Description:
-            - This command sets or queries the gate voltage (V g ) for the switching loss
-              measurement in the specified power measurement number. The power measurement number is
-              specified by x.
+            - This command sets or queries the gate voltage (Vg) for the switching loss measurement
+              in the specified power measurement number. The power measurement number is specified
+              by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -4167,10 +4114,10 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
-              FlexChannels in your instrument.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
             - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
             - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
@@ -4201,7 +4148,7 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from -100 to 100.
         """
@@ -4232,9 +4179,8 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``<NR1>`` ranges from 0.0001 to 90.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge. <NR1> ranges from 0.0001 to 90.
         """
         return self._ilevelpct
 
@@ -4263,10 +4209,10 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
-              FlexChannels in your instrument.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
             - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
             - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
@@ -4296,7 +4242,7 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``PERCent`` to set the High, Mid, and Low reference levels in percentage.
             - ``ABSolute`` to set the High, Mid, and Low reference levels to specific signal levels.
@@ -4327,7 +4273,7 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from 0 to 100.
         """
@@ -4358,14 +4304,13 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
-            - ``SMPS`` : Select this option in case of signals without noise and ringing. The Vg
-              source is not required. Select Vg souce (Source 3), in case of noisy signal.
+            - ``SMPS`` : Select this option in case of signals without noise and ringing. The V.
             - ``PFC`` : Select this option when input DUT signals are from Power Factor Correction
-              Circuit. For this case, Vg source is mandatory.
+              Circuit. For this case, V.
             - ``FLYBACK`` : Select this option when input signals are ringing. This option does not
-              require a Vg source.
+              require a V.
         """
         return self._swlconfigtype
 
@@ -4394,7 +4339,7 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from 0.001 to 100.
         """
@@ -4405,9 +4350,7 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
         """Return the ``POWer:POWer<x>:SWITCHINGLOSS:VGLevel`` command.
 
         Description:
-            - This command sets or queries the gate voltage value (V g Level Ton-Start) for the
-              switching loss measurement in the specified power measurement number. The power
-              measurement number is specified by x.
+            - This command sets or queries the gate voltage value (V g
 
         Usage:
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:SWITCHINGLOSS:VGLevel?``
@@ -4425,7 +4368,7 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from -100 to 100.
         """
@@ -4456,7 +4399,7 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from -100 to 100.
         """
@@ -4487,7 +4430,7 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from 0.0001 to 90.
         """
@@ -4518,10 +4461,10 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
-              FlexChannels in your instrument.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
             - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
             - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
@@ -4549,9 +4492,9 @@ class PowerPowerItemSoaVsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
         - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
         - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
@@ -4817,7 +4760,7 @@ class PowerPowerItemSoaRecallmask(SCPICmdWriteNoArguments, SCPICmdRead):
 
 
 class PowerPowerItemSoaPointItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
-    r"""The ``POWer:POWer<x>:SOA:POINT<x>`` command.
+    """The ``POWer:POWer<x>:SOA:POINT<x>`` command.
 
     Description:
         - This command sets or queries the X or Y coordinate value for an SOA mask of a specified
@@ -4837,13 +4780,11 @@ class PowerPowerItemSoaPointItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICm
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``POINT<x>`` = 1X \| 2X \| 3X \| 4X \| 5X \| 6X \| 7X \| 8X \| 9X \| 10X \| 11X \| 12X \|
-          13X \| 14X \| 15X \| 16X \| 17X \| 18X \| 19X \| 20X \| 21X \| 22X \| 23X \| 24X \| 25X \|
-          26X \| 27X \| 28X \| 29X \| 30X \| 31X \| 32X \| 1Y \| 2Y \| 3Y \| 4Y \| 5Y \| 6Y \| 7Y \|
-          8Y \| 9Y \| 10Y \| 11Y \| 12Y \| 13Y \| 14Y \| 15Y \| 16Y \| 17Y \| 18Y \| 19Y \| 20Y \|
-          21Y \| 22Y \| 23Y \| 24Y \| 25Y \| 26Y \| 27Y \| 28Y \| 29Y \| 30Y \| 31Y \| 32Y.
+        - ``POINT<x> = 1X | 2X | 3X | 4X | 5X | 6X | 7X | 8X | 9X |
+          10X | 11X | 12X | 13X |14X | 15X | 16X | 17X | 18X | 19X | 20X | 21X | 22X | 23X | 24X |
+          25X | 26X | 27X| 28X | 29X | 30X | 31X | 32X | 1Y | 2Y | 3Y | 4Y | 5Y | 6Y | 7Y | 8Y | 9Y
+          | 10Y |11Y | 12Y | 13Y | 14Y | 15Y | 16Y | 17Y | 18Y | 19Y | 20Y | 21Y | 22Y | 23Y |24Y |
+          25Y | 26Y | 27Y | 28Y | 29Y | 30Y | 31Y | 32Y``
         - ``<NR1>`` sets the specified SOA mask X or Y point value, as a floating number, in the
           range from -5000 to 5000.
     """
@@ -4870,10 +4811,10 @@ class PowerPowerItemSoaIsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
-          FlexChannels on your instrument.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
+          FlexChannels in your instrument.
         - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
         - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
     """
@@ -4886,6 +4827,10 @@ class PowerPowerItemSoa(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:SOA?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:SOA?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
 
     Properties:
         - ``.isource``: The ``POWer:POWer<x>:SOA:ISOURce`` command.
@@ -4927,10 +4872,10 @@ class PowerPowerItemSoa(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
-              FlexChannels on your instrument.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
             - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
             - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
@@ -4938,7 +4883,7 @@ class PowerPowerItemSoa(SCPICmdRead):
 
     @property
     def point(self) -> Dict[int, PowerPowerItemSoaPointItem]:
-        r"""Return the ``POWer:POWer<x>:SOA:POINT<x>`` command.
+        """Return the ``POWer:POWer<x>:SOA:POINT<x>`` command.
 
         Description:
             - This command sets or queries the X or Y coordinate value for an SOA mask of a
@@ -4958,14 +4903,11 @@ class PowerPowerItemSoa(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``POINT<x>`` = 1X \| 2X \| 3X \| 4X \| 5X \| 6X \| 7X \| 8X \| 9X \| 10X \| 11X \| 12X
-              \| 13X \| 14X \| 15X \| 16X \| 17X \| 18X \| 19X \| 20X \| 21X \| 22X \| 23X \| 24X \|
-              25X \| 26X \| 27X \| 28X \| 29X \| 30X \| 31X \| 32X \| 1Y \| 2Y \| 3Y \| 4Y \| 5Y \|
-              6Y \| 7Y \| 8Y \| 9Y \| 10Y \| 11Y \| 12Y \| 13Y \| 14Y \| 15Y \| 16Y \| 17Y \| 18Y \|
-              19Y \| 20Y \| 21Y \| 22Y \| 23Y \| 24Y \| 25Y \| 26Y \| 27Y \| 28Y \| 29Y \| 30Y \|
-              31Y \| 32Y.
+            - ``POINT<x> = 1X | 2X | 3X | 4X | 5X | 6X | 7X | 8X | 9X
+              | 10X | 11X | 12X | 13X |14X | 15X | 16X | 17X | 18X | 19X | 20X | 21X | 22X | 23X |
+              24X | 25X | 26X | 27X| 28X | 29X | 30X | 31X | 32X | 1Y | 2Y | 3Y | 4Y | 5Y | 6Y | 7Y
+              | 8Y | 9Y | 10Y |11Y | 12Y | 13Y | 14Y | 15Y | 16Y | 17Y | 18Y | 19Y | 20Y | 21Y | 22Y
+              | 23Y |24Y | 25Y | 26Y | 27Y | 28Y | 29Y | 30Y | 31Y | 32Y``
             - ``<NR1>`` sets the specified SOA mask X or Y point value, as a floating number, in the
               range from -5000 to 5000.
         """
@@ -5046,10 +4988,10 @@ class PowerPowerItemSoa(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
-              FlexChannels in your instrument.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
             - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
             - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
@@ -5125,11 +5067,11 @@ class PowerPowerItemResultsCurrentacqVrms(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:VRMS? 'harmonics'
+        - POWer:POWer<x>:RESUlts:CURRentacq:VRMS? harmonics
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
     """
 
@@ -5150,11 +5092,11 @@ class PowerPowerItemResultsCurrentacqTrpwr(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:TRPWR? 'harmonics'
+        - POWer:POWer<x>:RESUlts:CURRentacq:TRPWR? harmonics
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
     """
 
@@ -5175,11 +5117,11 @@ class PowerPowerItemResultsCurrentacqThdr(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:THDR? 'harmonics'
+        - POWer:POWer<x>:RESUlts:CURRentacq:THDR? harmonics
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
     """
 
@@ -5200,12 +5142,8 @@ class PowerPowerItemResultsCurrentacqThdf(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:THDF? 'harmonics'
+        - POWer:POWer<x>:RESUlts:CURRentacq:THDF? harmonics
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
     """
 
 
@@ -5215,7 +5153,8 @@ class PowerPowerItemResultsCurrentacqStddev(SCPICmdReadWithArguments):
     Description:
         - This command queries the standard deviation value of the current acquisition for the
           measurement parameter in the specified power measurement number. The power measurement
-          number is specified by x.
+          number is specified by x.Above entries are <QSTring> entries, and must be entered in
+          enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -5226,15 +5165,45 @@ class PowerPowerItemResultsCurrentacqStddev(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:STDDev? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple| DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR| PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS| TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT| DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN |INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+        - POWer:POWer<x>:RESUlts:CURRentacq:STDDev? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<QString>`` = the measurement result that you want to return from the specified power
           measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid <Qstring> arguments are.
+          specified measurement number. The valid <QString> arguments are.
+        - ``InputPwr`` ', '.
+        - ``INDUCT`` '.
+        - ``IVSINTV`` '.
+        - ``MAGLOSS`` '.
+        - ``Bpeak`` ', '.
+        - ``RDS`` '.
+        - ``TRUEPWR`` ', '.
+        - ``TONENRG`` ', '.
+        - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+        - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+        - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+        - ``LRIPRMS`` ' and '.
+        - ``SWRIPRMS`` ' and '.
+        - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+        - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+        - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+        - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+        - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+        - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+        - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+        - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+        - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+        - ``LOW`` ' is the parameter for the Cycle Base measurement.
+        - ``Max`` ' is the parameter for the Cycle Max measurement.
+        - ``MIN`` ' is the parameter for the Cycle Min measurement.
+        - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+        - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+        - ``OUTPUT1`` ' - '.
+        - ``GAINCROSSOVERFREQ`` ', '.
+        - ``MAXPSRR`` ', '.
     """  # noqa: E501
 
 
@@ -5254,11 +5223,11 @@ class PowerPowerItemResultsCurrentacqStatus(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:STATUS? 'harmonics'
+        - POWer:POWer<x>:RESUlts:CURRentacq:STATUS? harmonics
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
     """
 
@@ -5279,11 +5248,11 @@ class PowerPowerItemResultsCurrentacqRms(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:RMS? 'harmonics'
+        - POWer:POWer<x>:RESUlts:CURRentacq:RMS? harmonics
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
     """
 
@@ -5294,7 +5263,8 @@ class PowerPowerItemResultsCurrentacqPopulation(SCPICmdReadWithArguments):
     Description:
         - This command queries the population (number of complete cycles) of the current acquisition
           for the measurement parameter in the specified power measurement number. The power
-          measurement number is specified by x.
+          measurement number is specified by x.Above entries are <QSTring> entries, and must be
+          entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -5305,15 +5275,8 @@ class PowerPowerItemResultsCurrentacqPopulation(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:POPUlation? {InputPwr| Output1Pwr|Output2Pwr|Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br| Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR| APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS| VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK| SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE| AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+        - POWer:POWer<x>:RESUlts:CURRentacq:POPUlation? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``<QString>`` = the measurement result that you want to return from the specified power
-          measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid <Qstring> arguments are.
     """  # noqa: E501
 
 
@@ -5333,12 +5296,8 @@ class PowerPowerItemResultsCurrentacqPohcs(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:POHCS? 'harmonics'
+        - POWer:POWer<x>:RESUlts:CURRentacq:POHCS? harmonics
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
     """
 
 
@@ -5358,7 +5317,7 @@ class PowerPowerItemResultsCurrentacqPohcm(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:POHCM? 'harmonics'
+        - POWer:POWer<x>:RESUlts:CURRentacq:POHCM? harmonics
         ```
     """
 
@@ -5379,41 +5338,37 @@ class PowerPowerItemResultsCurrentacqPohcl(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:POHCL? 'harmonics'
+        - POWer:POWer<x>:RESUlts:CURRentacq:POHCL? harmonics
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
     """
 
 
-class PowerPowerItemResultsCurrentacqPk2pk(SCPICmdReadWithArguments):
+class PowerPowerItemResultsCurrentacqPk2pk(SCPICmdWrite, SCPICmdRead):
     """The ``POWer:POWer<x>:RESUlts:CURRentacq:PK2PK`` command.
 
     Description:
         - This command queries the peak-to-peak value of the current acquisition for the measurement
-          parameter in the specified power measurement number.
+          parameter in the specified power measurement number.Above entries are <QSTring> entries,
+          and must be entered in enclosing quotes.
 
     Usage:
-        - Using the ``.query(argument)`` method will send the
-          ``POWer:POWer<x>:RESUlts:CURRentacq:PK2PK? argument`` query.
-        - Using the ``.verify(argument, value)`` method will send the
-          ``POWer:POWer<x>:RESUlts:CURRentacq:PK2PK? argument`` query and raise an AssertionError if
-          the returned value does not match ``value``.
+        - Using the ``.query()`` method will send the ``POWer:POWer<x>:RESUlts:CURRentacq:PK2PK?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``POWer:POWer<x>:RESUlts:CURRentacq:PK2PK?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``POWer:POWer<x>:RESUlts:CURRentacq:PK2PK value`` command.
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:PK2PK? {InputPwr| Output1Pwr|Output2Pwr|Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br| Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR| REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS| TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS| TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS| SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK| HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+        - POWer:POWer<x>:RESUlts:CURRentacq:PK2PK ? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+        - POWer:POWer<x>:RESUlts:CURRentacq:PK2PK?
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``<QString>`` = the measurement result that you want to return from the specified power
-          measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid <Qstring> arguments are.
-        - ``'LRIPPKPK'`` are the parameters for the Line Ripple measurement.
     """  # noqa: E501
 
 
@@ -5422,7 +5377,8 @@ class PowerPowerItemResultsCurrentacqMinimum(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the minimum value of the current acquisition for the measurement
-          parameter in the specified power measurement number.
+          parameter in the specified power measurement number.Above entries are <QSTring> entries,
+          and must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -5433,16 +5389,8 @@ class PowerPowerItemResultsCurrentacqMinimum(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:MINimum? {InputPwr| Output1Pwr|Output2Pwr|Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br| Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR| APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS| VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK| SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL| PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+        - POWer:POWer<x>:RESUlts:CURRentacq:MINimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``<QString>`` = the measurement result that you want to return from the specified power
-          measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid <Qstring> arguments are.
-        - ``'SWRIPPKPK'`` are the parameters for the Switching Ripple measurement.
     """  # noqa: E501
 
 
@@ -5451,7 +5399,8 @@ class PowerPowerItemResultsCurrentacqMean(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the mean value of the current acquisition for the measurement
-          parameter of the specified power measurement <x>.
+          parameter of the specified power measurement <x>.Above entries are <QSTring> entries, and
+          must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -5462,15 +5411,8 @@ class PowerPowerItemResultsCurrentacqMean(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:MEAN? {InputPwr| Output1Pwr|Output2Pwr|Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak| Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR| APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS| VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK| SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE| AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+        - POWer:POWer<x>:RESUlts:CURRentacq:MEAN? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``<QString>`` = the measurement result that you want to return from the specified power
-          measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid <Qstring> arguments are.
     """  # noqa: E501
 
 
@@ -5479,7 +5421,8 @@ class PowerPowerItemResultsCurrentacqMaximum(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the maximum value of the current acquisition for the measurement
-          parameter in the specified power measurement number.
+          parameter in the specified power measurement number.Above entries are <QSTring> entries,
+          and must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -5490,15 +5433,8 @@ class PowerPowerItemResultsCurrentacqMaximum(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:MAXimum? {InputPwr| Output1Pwr|Output2Pwr|Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS| Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH| Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR| PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS| TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT| LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK| HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+        - POWer:POWer<x>:RESUlts:CURRentacq:MAXimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``<QString>`` = the measurement result that you want to return from the specified power
-          measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid <Qstring> arguments are.
     """  # noqa: E501
 
 
@@ -5517,11 +5453,11 @@ class PowerPowerItemResultsCurrentacqIrms(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:IRMS? 'harmonics'
+        - POWer:POWer<x>:RESUlts:CURRentacq:IRMS? harmonics
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
     """
 
@@ -5541,11 +5477,11 @@ class PowerPowerItemResultsCurrentacqFrequency(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:FREQUENCY? 'harmonics'
+        - POWer:POWer<x>:RESUlts:CURRentacq:FREQUENCY? harmonics
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
     """
 
@@ -5566,11 +5502,11 @@ class PowerPowerItemResultsCurrentacqF3mag(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:F3MAG? 'harmonics'
+        - POWer:POWer<x>:RESUlts:CURRentacq:F3MAG? harmonics
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
     """
 
@@ -5591,11 +5527,11 @@ class PowerPowerItemResultsCurrentacqF1mag(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:CURRentacq:F1MAG? 'harmonics'
+        - POWer:POWer<x>:RESUlts:CURRentacq:F1MAG? harmonics
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
     """
 
@@ -5608,6 +5544,10 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:RESUlts:CURRentacq?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:RESUlts:CURRentacq?``
           query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
 
     Properties:
         - ``.f1mag``: The ``POWer:POWer<x>:RESUlts:CURRentacq:F1MAG`` command.
@@ -5678,11 +5618,11 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:F1MAG? 'harmonics'
+            - POWer:POWer<x>:RESUlts:CURRentacq:F1MAG? harmonics
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
         """
         return self._f1mag
@@ -5704,11 +5644,11 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:F3MAG? 'harmonics'
+            - POWer:POWer<x>:RESUlts:CURRentacq:F3MAG? harmonics
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
         """
         return self._f3mag
@@ -5730,11 +5670,11 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:FREQUENCY? 'harmonics'
+            - POWer:POWer<x>:RESUlts:CURRentacq:FREQUENCY? harmonics
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
         """
         return self._frequency
@@ -5755,11 +5695,11 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:IRMS? 'harmonics'
+            - POWer:POWer<x>:RESUlts:CURRentacq:IRMS? harmonics
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
         """
         return self._irms
@@ -5770,7 +5710,8 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         Description:
             - This command queries the maximum value of the current acquisition for the measurement
-              parameter in the specified power measurement number.
+              parameter in the specified power measurement number.Above entries are <QSTring>
+              entries, and must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -5781,15 +5722,8 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:MAXimum? {InputPwr| Output1Pwr|Output2Pwr|Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS| Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH| Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR| PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS| TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT| LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK| HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+            - POWer:POWer<x>:RESUlts:CURRentacq:MAXimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``<QString>`` = the measurement result that you want to return from the specified
-              power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid <Qstring> arguments are.
         """  # noqa: E501
         return self._maximum
 
@@ -5799,7 +5733,8 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         Description:
             - This command queries the mean value of the current acquisition for the measurement
-              parameter of the specified power measurement <x>.
+              parameter of the specified power measurement <x>.Above entries are <QSTring> entries,
+              and must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -5810,15 +5745,8 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:MEAN? {InputPwr| Output1Pwr|Output2Pwr|Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak| Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR| APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS| VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK| SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE| AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+            - POWer:POWer<x>:RESUlts:CURRentacq:MEAN? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``<QString>`` = the measurement result that you want to return from the specified
-              power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid <Qstring> arguments are.
         """  # noqa: E501
         return self._mean
 
@@ -5828,7 +5756,8 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         Description:
             - This command queries the minimum value of the current acquisition for the measurement
-              parameter in the specified power measurement number.
+              parameter in the specified power measurement number.Above entries are <QSTring>
+              entries, and must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -5839,16 +5768,8 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:MINimum? {InputPwr| Output1Pwr|Output2Pwr|Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br| Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR| APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS| VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK| SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL| PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+            - POWer:POWer<x>:RESUlts:CURRentacq:MINimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``<QString>`` = the measurement result that you want to return from the specified
-              power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid <Qstring> arguments are.
-            - ``'SWRIPPKPK'`` are the parameters for the Switching Ripple measurement.
         """  # noqa: E501
         return self._minimum
 
@@ -5858,27 +5779,23 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         Description:
             - This command queries the peak-to-peak value of the current acquisition for the
-              measurement parameter in the specified power measurement number.
+              measurement parameter in the specified power measurement number.Above entries are
+              <QSTring> entries, and must be entered in enclosing quotes.
 
         Usage:
-            - Using the ``.query(argument)`` method will send the
-              ``POWer:POWer<x>:RESUlts:CURRentacq:PK2PK? argument`` query.
-            - Using the ``.verify(argument, value)`` method will send the
-              ``POWer:POWer<x>:RESUlts:CURRentacq:PK2PK? argument`` query and raise an
-              AssertionError if the returned value does not match ``value``.
+            - Using the ``.query()`` method will send the
+              ``POWer:POWer<x>:RESUlts:CURRentacq:PK2PK?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``POWer:POWer<x>:RESUlts:CURRentacq:PK2PK?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``POWer:POWer<x>:RESUlts:CURRentacq:PK2PK value`` command.
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:PK2PK? {InputPwr| Output1Pwr|Output2Pwr|Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br| Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR| REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS| TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS| TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS| SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK| HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+            - POWer:POWer<x>:RESUlts:CURRentacq:PK2PK ? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+            - POWer:POWer<x>:RESUlts:CURRentacq:PK2PK?
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``<QString>`` = the measurement result that you want to return from the specified
-              power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid <Qstring> arguments are.
-            - ``'LRIPPKPK'`` are the parameters for the Line Ripple measurement.
         """  # noqa: E501
         return self._pk2pk
 
@@ -5899,11 +5816,11 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:POHCL? 'harmonics'
+            - POWer:POWer<x>:RESUlts:CURRentacq:POHCL? harmonics
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
         """
         return self._pohcl
@@ -5925,7 +5842,7 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:POHCM? 'harmonics'
+            - POWer:POWer<x>:RESUlts:CURRentacq:POHCM? harmonics
             ```
         """
         return self._pohcm
@@ -5947,12 +5864,8 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:POHCS? 'harmonics'
+            - POWer:POWer<x>:RESUlts:CURRentacq:POHCS? harmonics
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
         """
         return self._pohcs
 
@@ -5963,7 +5876,8 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
         Description:
             - This command queries the population (number of complete cycles) of the current
               acquisition for the measurement parameter in the specified power measurement number.
-              The power measurement number is specified by x.
+              The power measurement number is specified by x.Above entries are <QSTring> entries,
+              and must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -5974,15 +5888,8 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:POPUlation? {InputPwr| Output1Pwr|Output2Pwr|Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br| Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR| APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS| VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK| SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE| AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+            - POWer:POWer<x>:RESUlts:CURRentacq:POPUlation? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``<QString>`` = the measurement result that you want to return from the specified
-              power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid <Qstring> arguments are.
         """  # noqa: E501
         return self._population
 
@@ -6003,11 +5910,11 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:RMS? 'harmonics'
+            - POWer:POWer<x>:RESUlts:CURRentacq:RMS? harmonics
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
         """
         return self._rms
@@ -6029,11 +5936,11 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:STATUS? 'harmonics'
+            - POWer:POWer<x>:RESUlts:CURRentacq:STATUS? harmonics
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
         """
         return self._status
@@ -6045,7 +5952,8 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
         Description:
             - This command queries the standard deviation value of the current acquisition for the
               measurement parameter in the specified power measurement number. The power measurement
-              number is specified by x.
+              number is specified by x.Above entries are <QSTring> entries, and must be entered in
+              enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -6056,15 +5964,45 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:STDDev? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple| DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR| PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS| TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT| DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN |INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+            - POWer:POWer<x>:RESUlts:CURRentacq:STDDev? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<QString>`` = the measurement result that you want to return from the specified
               power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid <Qstring> arguments are.
+              taken in the specified measurement number. The valid <QString> arguments are.
+            - ``InputPwr`` ', '.
+            - ``INDUCT`` '.
+            - ``IVSINTV`` '.
+            - ``MAGLOSS`` '.
+            - ``Bpeak`` ', '.
+            - ``RDS`` '.
+            - ``TRUEPWR`` ', '.
+            - ``TONENRG`` ', '.
+            - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+            - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+            - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+            - ``LRIPRMS`` ' and '.
+            - ``SWRIPRMS`` ' and '.
+            - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+            - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+            - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+            - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+            - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+            - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+            - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+            - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+            - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+            - ``LOW`` ' is the parameter for the Cycle Base measurement.
+            - ``Max`` ' is the parameter for the Cycle Max measurement.
+            - ``MIN`` ' is the parameter for the Cycle Min measurement.
+            - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+            - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+            - ``OUTPUT1`` ' - '.
+            - ``GAINCROSSOVERFREQ`` ', '.
+            - ``MAXPSRR`` ', '.
         """  # noqa: E501
         return self._stddev
 
@@ -6085,12 +6023,8 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:THDF? 'harmonics'
+            - POWer:POWer<x>:RESUlts:CURRentacq:THDF? harmonics
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
         """
         return self._thdf
 
@@ -6111,11 +6045,11 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:THDR? 'harmonics'
+            - POWer:POWer<x>:RESUlts:CURRentacq:THDR? harmonics
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
         """
         return self._thdr
@@ -6137,11 +6071,11 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:TRPWR? 'harmonics'
+            - POWer:POWer<x>:RESUlts:CURRentacq:TRPWR? harmonics
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
         """
         return self._trpwr
@@ -6163,11 +6097,11 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:CURRentacq:VRMS? 'harmonics'
+            - POWer:POWer<x>:RESUlts:CURRentacq:VRMS? harmonics
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
         """
         return self._vrms
@@ -6178,7 +6112,8 @@ class PowerPowerItemResultsAllacqsStddev(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the standard deviation value of all acquisitions for the measurement
-          parameter in the specified power measurement number.
+          parameter in the specified power measurement number.Above entries are <QSTring> entries,
+          and must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -6189,15 +6124,8 @@ class PowerPowerItemResultsAllacqsStddev(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:ALLAcqs:STDDev? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc| Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS| TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ| ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS| TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS| TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS| LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY| NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN| INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+        - POWer:POWer<x>:RESUlts:ALLAcqs:STDDev? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``<QString>`` = the measurement result that you want to return from the specified power
-          measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid <Qstring> arguments are.
     """  # noqa: E501
 
 
@@ -6206,7 +6134,8 @@ class PowerPowerItemResultsAllacqsPopulation(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the population (number of complete cycles) of all acquisitions for
-          the measurement parameter in the specified power measurement number.
+          the measurement parameter in the specified power measurement number.Above entries are
+          <QSTring> entries, and must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -6217,15 +6146,8 @@ class PowerPowerItemResultsAllacqsPopulation(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:ALLAcqs:POPUlation? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak| Br|Hc|Hmax|IRipple|DeltaB|DeltaH| Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR| PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS| TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT| LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE| AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+        - POWer:POWer<x>:RESUlts:ALLAcqs:POPUlation? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``<QString>`` = the measurement result that you want to return from the specified power
-          measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid <Qstring> arguments are.
     """  # noqa: E501
 
 
@@ -6234,7 +6156,8 @@ class PowerPowerItemResultsAllacqsPk2pk(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the peak-to-peak value of all acquisitions for the measurement
-          parameter in the specified power measurement number.
+          parameter in the specified power measurement number.Above entries are <QSTring> entries,
+          and must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -6245,16 +6168,8 @@ class PowerPowerItemResultsAllacqsPk2pk(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:ALLAcqs:PK2PK? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak| Br|Hc|Hmax|IRipple|DeltaB|DeltaH| Permeability|RDS|TRUEPWR|APPPWR|REPWR| PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR| IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG| TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG| DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK| SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY| NDUTY|PPULSE|NPULSE|AMPL|PKPK| HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+        - POWer:POWer<x>:RESUlts:ALLAcqs:PK2PK? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``<QString>`` = the measurement result that you want to return from the specified power
-          measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid <Qstring> arguments are.
-        - ``'SWRIPPKPK'`` are the parameters for the Switching Ripple measurement.
     """  # noqa: E501
 
 
@@ -6263,7 +6178,8 @@ class PowerPowerItemResultsAllacqsMinimum(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the minimum value of all acquisitions for the measurement parameter
-          of the specified power measurement <x>.
+          of the specified power measurement <x>.Above entries are <QSTring> entries, and must be
+          entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -6274,15 +6190,8 @@ class PowerPowerItemResultsAllacqsMinimum(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:ALLAcqs:MINimum? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS| Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH| Permeability|RDS|TRUEPWR|APPPWR|REPWR| PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR| IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG| TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG| DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK| SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY| NDUTY|PPULSE|NPULSE|AMPL|PKPK| HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+        - POWer:POWer<x>:RESUlts:ALLAcqs:MINimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``<QString>`` = the measurement result that you want to return from the specified power
-          measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid <Qstring> arguments are.
     """  # noqa: E501
 
 
@@ -6291,7 +6200,8 @@ class PowerPowerItemResultsAllacqsMean(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the mean value of all acquisitions for the measurement parameter in
-          the specified power measurement number <x>.
+          the specified power measurement number <x>.Above entries are <QSTring> entries, and must
+          be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -6302,15 +6212,8 @@ class PowerPowerItemResultsAllacqsMean(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:ALLAcqs:MEAN? {InputPwr|Output1Pwr|Output2Pwr| Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency| INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax| IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR| APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ| ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG| TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT| LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL| PKPK|HIGH|LOW|MAX|MIN| INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+        - POWer:POWer<x>:RESUlts:ALLAcqs:MEAN? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``<QString>`` = the measurement result that you want to return from the specified power
-          measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid <Qstring> arguments are.
     """  # noqa: E501
 
 
@@ -6319,7 +6222,8 @@ class PowerPowerItemResultsAllacqsMaximum(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the maximum value of all acquisitions for the measurement parameter
-          in the specified power measurement number. The power measurement number is specified by x.
+          in the specified power measurement number. The power measurement number is specified by
+          x.Above entries are <QSTring> entries, and must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -6330,15 +6234,8 @@ class PowerPowerItemResultsAllacqsMaximum(SCPICmdReadWithArguments):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:RESUlts:ALLAcqs:MAXimum? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak| Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability| RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE| PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG| TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT| LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL| PKPK|HIGH|LOW|MAX|MIN| INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+        - POWer:POWer<x>:RESUlts:ALLAcqs:MAXimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``<QString>`` = the measurement result that you want to return from the specified power
-          measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid <Qstring> arguments are.
     """  # noqa: E501
 
 
@@ -6377,7 +6274,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
         Description:
             - This command queries the maximum value of all acquisitions for the measurement
               parameter in the specified power measurement number. The power measurement number is
-              specified by x.
+              specified by x.Above entries are <QSTring> entries, and must be entered in enclosing
+              quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -6388,15 +6286,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:ALLAcqs:MAXimum? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak| Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability| RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE| PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG| TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT| LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL| PKPK|HIGH|LOW|MAX|MIN| INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+            - POWer:POWer<x>:RESUlts:ALLAcqs:MAXimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``<QString>`` = the measurement result that you want to return from the specified
-              power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid <Qstring> arguments are.
         """  # noqa: E501
         return self._maximum
 
@@ -6406,7 +6297,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         Description:
             - This command queries the mean value of all acquisitions for the measurement parameter
-              in the specified power measurement number <x>.
+              in the specified power measurement number <x>.Above entries are <QSTring> entries, and
+              must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -6417,15 +6309,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:ALLAcqs:MEAN? {InputPwr|Output1Pwr|Output2Pwr| Output3Pwr|Efficiency1|Efficiency2| Efficiency3|TotalEfficiency| INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax| IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR| APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ| ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG| TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT| LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL| PKPK|HIGH|LOW|MAX|MIN| INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+            - POWer:POWer<x>:RESUlts:ALLAcqs:MEAN? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``<QString>`` = the measurement result that you want to return from the specified
-              power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid <Qstring> arguments are.
         """  # noqa: E501
         return self._mean
 
@@ -6435,7 +6320,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         Description:
             - This command queries the minimum value of all acquisitions for the measurement
-              parameter of the specified power measurement <x>.
+              parameter of the specified power measurement <x>.Above entries are <QSTring> entries,
+              and must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -6446,15 +6332,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:ALLAcqs:MINimum? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS| Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH| Permeability|RDS|TRUEPWR|APPPWR|REPWR| PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR| IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG| TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG| DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK| SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY| NDUTY|PPULSE|NPULSE|AMPL|PKPK| HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+            - POWer:POWer<x>:RESUlts:ALLAcqs:MINimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``<QString>`` = the measurement result that you want to return from the specified
-              power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid <Qstring> arguments are.
         """  # noqa: E501
         return self._minimum
 
@@ -6464,7 +6343,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         Description:
             - This command queries the peak-to-peak value of all acquisitions for the measurement
-              parameter in the specified power measurement number.
+              parameter in the specified power measurement number.Above entries are <QSTring>
+              entries, and must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -6475,16 +6355,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:ALLAcqs:PK2PK? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak| Br|Hc|Hmax|IRipple|DeltaB|DeltaH| Permeability|RDS|TRUEPWR|APPPWR|REPWR| PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR| IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG| TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG| DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK| SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY| NDUTY|PPULSE|NPULSE|AMPL|PKPK| HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+            - POWer:POWer<x>:RESUlts:ALLAcqs:PK2PK? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``<QString>`` = the measurement result that you want to return from the specified
-              power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid <Qstring> arguments are.
-            - ``'SWRIPPKPK'`` are the parameters for the Switching Ripple measurement.
         """  # noqa: E501
         return self._pk2pk
 
@@ -6494,7 +6366,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         Description:
             - This command queries the population (number of complete cycles) of all acquisitions
-              for the measurement parameter in the specified power measurement number.
+              for the measurement parameter in the specified power measurement number.Above entries
+              are <QSTring> entries, and must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -6505,15 +6378,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:ALLAcqs:POPUlation? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak| Br|Hc|Hmax|IRipple|DeltaB|DeltaH| Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR| PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS| TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS| TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT| LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD| FREQ|PDUTY|NDUTY|PPULSE|NPULSE| AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+            - POWer:POWer<x>:RESUlts:ALLAcqs:POPUlation? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``<QString>`` = the measurement result that you want to return from the specified
-              power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid <Qstring> arguments are.
         """  # noqa: E501
         return self._population
 
@@ -6523,7 +6389,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         Description:
             - This command queries the standard deviation value of all acquisitions for the
-              measurement parameter in the specified power measurement number.
+              measurement parameter in the specified power measurement number.Above entries are
+              <QSTring> entries, and must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -6534,15 +6401,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:RESUlts:ALLAcqs:STDDev? {InputPwr|Output1Pwr| Output2Pwr|Output3Pwr|Efficiency1|Efficiency2|Efficiency3| TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc| Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS| TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ| ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS| TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS| TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS| LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY| NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN| INRUSH|CAPACITANCE|OUTPUT1| OUTPUT2|OUTPUT3|OUTPUT4|OUTPUT5|OUTPUT6|OUTPUT7| GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM| MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
+            - POWer:POWer<x>:RESUlts:ALLAcqs:STDDev? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``<QString>`` = the measurement result that you want to return from the specified
-              power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid <Qstring> arguments are.
         """  # noqa: E501
         return self._stddev
 
@@ -6595,6 +6455,10 @@ class PowerPowerItemResults(SCPICmdRead):
               ``POWer:POWer<x>:RESUlts:CURRentacq?`` query and raise an AssertionError if the
               returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+
         Sub-properties:
             - ``.f1mag``: The ``POWer:POWer<x>:RESUlts:CURRentacq:F1MAG`` command.
             - ``.f3mag``: The ``POWer:POWer<x>:RESUlts:CURRentacq:F3MAG`` command.
@@ -6642,7 +6506,7 @@ class PowerPowerItemReflevelsPercentType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``TENNinety`` to set the low reference levels as 10% and high reference levels as 90%.
         - ``TWENtyeighty`` to set the low reference levels as 20% and high reference levels as 80%.
@@ -6674,7 +6538,7 @@ class PowerPowerItemReflevelsPercentRisemid(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from 1 to 99.
     """
@@ -6703,7 +6567,7 @@ class PowerPowerItemReflevelsPercentRiselow(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from 1 to 99.
     """
@@ -6732,7 +6596,7 @@ class PowerPowerItemReflevelsPercentRisehigh(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from 1 to 99.
     """
@@ -6761,7 +6625,7 @@ class PowerPowerItemReflevelsPercentHysteresis(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from 1 to 99.
     """
@@ -6790,7 +6654,7 @@ class PowerPowerItemReflevelsPercentFallmid(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from 1 to 99.
     """
@@ -6819,7 +6683,7 @@ class PowerPowerItemReflevelsPercentFalllow(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from 1 to 99.
     """
@@ -6848,7 +6712,7 @@ class PowerPowerItemReflevelsPercentFallhigh(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from 1 to 99.
     """
@@ -6862,6 +6726,10 @@ class PowerPowerItemReflevelsPercent(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:REFLevels:PERCent?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:REFLevels:PERCent?``
           query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
 
     Properties:
         - ``.fallhigh``: The ``POWer:POWer<x>:REFLevels:PERCent:FALLHigh`` command.
@@ -6915,7 +6783,7 @@ class PowerPowerItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from 1 to 99.
         """
@@ -6945,7 +6813,7 @@ class PowerPowerItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from 1 to 99.
         """
@@ -6975,7 +6843,7 @@ class PowerPowerItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from 1 to 99.
         """
@@ -7005,7 +6873,7 @@ class PowerPowerItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from 1 to 99.
         """
@@ -7035,7 +6903,7 @@ class PowerPowerItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from 1 to 99.
         """
@@ -7065,7 +6933,7 @@ class PowerPowerItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from 1 to 99.
         """
@@ -7096,7 +6964,7 @@ class PowerPowerItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from 1 to 99.
         """
@@ -7126,7 +6994,7 @@ class PowerPowerItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``TENNinety`` to set the low reference levels as 10% and high reference levels as 90%.
             - ``TWENtyeighty`` to set the low reference levels as 20% and high reference levels as
@@ -7158,7 +7026,7 @@ class PowerPowerItemReflevelsMethod(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``PERCent`` sets the power measurement to use absolute values to configure reference level
           values.
@@ -7212,7 +7080,7 @@ class PowerPowerItemReflevelsAbsoluteType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``SAME`` : select when the rising edge and falling edge reference levels are same.
         - ``UNIQue`` : select when the rising edge and falling edge reference levels are different.
@@ -7242,7 +7110,7 @@ class PowerPowerItemReflevelsAbsoluteRisemid(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from -40000 to 40000.
     """
@@ -7271,7 +7139,7 @@ class PowerPowerItemReflevelsAbsoluteRiselow(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from -40000 to 40000.
     """
@@ -7300,7 +7168,7 @@ class PowerPowerItemReflevelsAbsoluteRisehigh(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from -40000 to 40000.
     """
@@ -7329,7 +7197,7 @@ class PowerPowerItemReflevelsAbsoluteHysteresis(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from 0.0000005 to 10.
     """
@@ -7356,11 +7224,6 @@ class PowerPowerItemReflevelsAbsoluteFallmid(SCPICmdWrite, SCPICmdRead):
         - POWer:POWer<x>:REFLevels:ABSolute:FALLMid <NR1>
         - POWer:POWer<x>:REFLevels:ABSolute:FALLMid?
         ```
-
-    Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``<NR1>`` ranges from -40000 to 40000.
     """
 
 
@@ -7387,7 +7250,7 @@ class PowerPowerItemReflevelsAbsoluteFalllow(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from -40000 to 40000.
     """
@@ -7416,7 +7279,7 @@ class PowerPowerItemReflevelsAbsoluteFallhigh(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR1>`` ranges from -40000 to 40000.
     """
@@ -7430,6 +7293,10 @@ class PowerPowerItemReflevelsAbsolute(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:REFLevels:ABSolute?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:REFLevels:ABSolute?``
           query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
 
     Properties:
         - ``.fallhigh``: The ``POWer:POWer<x>:REFLevels:ABSolute:FALLHigh`` command.
@@ -7491,7 +7358,7 @@ class PowerPowerItemReflevelsAbsolute(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from -40000 to 40000.
         """
@@ -7521,7 +7388,7 @@ class PowerPowerItemReflevelsAbsolute(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from -40000 to 40000.
         """
@@ -7549,11 +7416,6 @@ class PowerPowerItemReflevelsAbsolute(SCPICmdRead):
             - POWer:POWer<x>:REFLevels:ABSolute:FALLMid <NR1>
             - POWer:POWer<x>:REFLevels:ABSolute:FALLMid?
             ```
-
-        Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``<NR1>`` ranges from -40000 to 40000.
         """
         return self._fallmid
 
@@ -7581,7 +7443,7 @@ class PowerPowerItemReflevelsAbsolute(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from 0.0000005 to 10.
         """
@@ -7611,7 +7473,7 @@ class PowerPowerItemReflevelsAbsolute(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from -40000 to 40000.
         """
@@ -7641,7 +7503,7 @@ class PowerPowerItemReflevelsAbsolute(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from -40000 to 40000.
         """
@@ -7671,7 +7533,7 @@ class PowerPowerItemReflevelsAbsolute(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR1>`` ranges from -40000 to 40000.
         """
@@ -7701,7 +7563,7 @@ class PowerPowerItemReflevelsAbsolute(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``SAME`` : select when the rising edge and falling edge reference levels are same.
             - ``UNIQue`` : select when the rising edge and falling edge reference levels are
@@ -7717,6 +7579,10 @@ class PowerPowerItemReflevels(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:REFLevels?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:REFLevels?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
 
     Properties:
         - ``.absolute``: The ``POWer:POWer<x>:REFLevels:ABSolute`` command tree.
@@ -7742,6 +7608,10 @@ class PowerPowerItemReflevels(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``POWer:POWer<x>:REFLevels:ABSolute?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
 
         Sub-properties:
             - ``.fallhigh``: The ``POWer:POWer<x>:REFLevels:ABSolute:FALLHigh`` command.
@@ -7803,7 +7673,7 @@ class PowerPowerItemReflevels(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``PERCent`` sets the power measurement to use absolute values to configure reference
               level values.
@@ -7822,6 +7692,10 @@ class PowerPowerItemReflevels(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``POWer:POWer<x>:REFLevels:PERCent?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
 
         Sub-properties:
             - ``.fallhigh``: The ``POWer:POWer<x>:REFLevels:PERCent:FALLHigh`` command.
@@ -7857,7 +7731,7 @@ class PowerPowerItemRdsonVsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -7887,7 +7761,7 @@ class PowerPowerItemRdsonIsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -7917,7 +7791,7 @@ class PowerPowerItemRdsonDevicetype(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``SWITCHING`` sets the Device Type to a switching device (v/i).
         - ``PNJUNCTION`` sets the Device Type to a PN Junction device (dv/di).
@@ -7931,6 +7805,10 @@ class PowerPowerItemRdson(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:RDSON?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:RDSON?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
 
     Properties:
         - ``.devicetype``: The ``POWer:POWer<x>:RDSON:DEVICEType`` command.
@@ -7967,7 +7845,7 @@ class PowerPowerItemRdson(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``SWITCHING`` sets the Device Type to a switching device (v/i).
             - ``PNJUNCTION`` sets the Device Type to a PN Junction device (dv/di).
@@ -7996,7 +7874,7 @@ class PowerPowerItemRdson(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
               of FlexChannels in your instrument.
@@ -8027,7 +7905,7 @@ class PowerPowerItemRdson(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
               of FlexChannels in your instrument.
@@ -8080,7 +7958,7 @@ class PowerPowerItemPsrrStopfrequency(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR3>`` is the stop frequency for the measurement, in the range of 10 Hz to 50 MHz.
     """
@@ -8107,7 +7985,7 @@ class PowerPowerItemPsrrStartfrequency(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR3>`` is the starting frequency for the measurement, in the range of 10 Hz to 50 MHz.
     """
@@ -8134,7 +8012,7 @@ class PowerPowerItemPsrrPpd(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR3>`` is the PPD value for the measurement, in the range of 10 to 100 points.
     """
@@ -8161,7 +8039,7 @@ class PowerPowerItemPsrrOutputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``CH<x>`` sets the channel to use for the output source.
     """
@@ -8188,7 +8066,7 @@ class PowerPowerItemPsrrInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``CH<x>`` sets the channel to use for the input source.
     """
@@ -8215,7 +8093,7 @@ class PowerPowerItemPsrrImpedance(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``FIFTy`` sets the impedance to be 50 Ω.
         - ``HIGHZ`` sets the impedance to be 1 MΩ.
@@ -8267,14 +8145,16 @@ class PowerPowerItemPsrrGenipaddress(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:PSRR:GENIPADDress <Qstring>
+        - POWer:POWer<x>:PSRR:GENIPADDress <QString>
         - POWer:POWer<x>:PSRR:GENIPADDress?
         ```
 
     Info:
-        - ``POWer<x>`` is the number of the PSRR power measurement.<NR2> is the IP address of the
-          generator.
+        - ``POWer<x>`` is the number of the PSRR power measurement.
+        - ``<QString>`` is the IP address of the generator.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class PowerPowerItemPsrrFreqvalItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
@@ -8298,7 +8178,7 @@ class PowerPowerItemPsrrFreqvalItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCP
         ```
 
     Info:
-        - ``Power<x>`` sets the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``FREQ<x>`` sets the configuration step number, in the range of 1 to 11. Values outside
           this range will report an error.
@@ -8328,7 +8208,7 @@ class PowerPowerItemPsrrConstamplitude(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR3>`` is the constant amplitude voltage value for the measurement, in the range of
           -100 V to 100 V.
@@ -8351,9 +8231,6 @@ class PowerPowerItemPsrrConnectstatus(SCPICmdRead):
         ```
         - POWer:POWer<x>:PSRR:CONNECTSTATus?
         ```
-
-    Info:
-        - ``POWer<x>`` is the number of the PSRR power measurement.
     """
 
 
@@ -8377,7 +8254,7 @@ class PowerPowerItemPsrrAutorbw(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``True`` enables Auto RBW computation.
         - ``False`` disables Auto RBW computation.
@@ -8404,7 +8281,7 @@ class PowerPowerItemPsrrAnalysismethod(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``SV`` sets the Analysis Method as Spectrum View.
         - ``FFT`` sets the Analysis Method as FFT.
@@ -8432,7 +8309,7 @@ class PowerPowerItemPsrrAmpmode(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``CONSTant`` sets the amplitude mode to output a constant amplitude signal from the DUT
           stimulus generator for all frequency bands.
@@ -8462,12 +8339,12 @@ class PowerPowerItemPsrrAmpvalItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPI
         ```
 
     Info:
-        - ``Power<x>`` sets the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``AMP<x>`` sets the configuration step number, in the range of 1 to 10. Values outside
-          this range will report an error.
-        - ``<NR3>`` sets the generator amplitude for the specified configuration step, in the range
-          of -100 V to 100 V.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
+          FlexChannels in your instrument.
+        - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+        - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
     """
 
 
@@ -8479,6 +8356,10 @@ class PowerPowerItemPsrr(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:PSRR?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:PSRR?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
 
     Properties:
         - ``.ampval``: The ``POWer:POWer<x>:PSRR:AMP<x>Val`` command.
@@ -8560,12 +8441,12 @@ class PowerPowerItemPsrr(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` sets the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``AMP<x>`` sets the configuration step number, in the range of 1 to 10. Values outside
-              this range will report an error.
-            - ``<NR3>`` sets the generator amplitude for the specified configuration step, in the
-              range of -100 V to 100 V.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
+            - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
+            - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
         return self._ampval
 
@@ -8591,7 +8472,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``CONSTant`` sets the amplitude mode to output a constant amplitude signal from the
               DUT stimulus generator for all frequency bands.
@@ -8623,7 +8504,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``SV`` sets the Analysis Method as Spectrum View.
             - ``FFT`` sets the Analysis Method as FFT.
@@ -8651,7 +8532,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``True`` enables Auto RBW computation.
             - ``False`` disables Auto RBW computation.
@@ -8677,9 +8558,6 @@ class PowerPowerItemPsrr(SCPICmdRead):
             ```
             - POWer:POWer<x>:PSRR:CONNECTSTATus?
             ```
-
-        Info:
-            - ``POWer<x>`` is the number of the PSRR power measurement.
         """
         return self._connectstatus
 
@@ -8707,7 +8585,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR3>`` is the constant amplitude voltage value for the measurement, in the range of
               -100 V to 100 V.
@@ -8736,7 +8614,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` sets the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``FREQ<x>`` sets the configuration step number, in the range of 1 to 11. Values
               outside this range will report an error.
@@ -8764,13 +8642,13 @@ class PowerPowerItemPsrr(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:PSRR:GENIPADDress <Qstring>
+            - POWer:POWer<x>:PSRR:GENIPADDress <QString>
             - POWer:POWer<x>:PSRR:GENIPADDress?
             ```
 
         Info:
-            - ``POWer<x>`` is the number of the PSRR power measurement.<NR2> is the IP address of
-              the generator.
+            - ``POWer<x>`` is the number of the PSRR power measurement.
+            - ``<QString>`` is the IP address of the generator.
         """
         return self._genipaddress
 
@@ -8826,7 +8704,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``FIFTy`` sets the impedance to be 50 Ω.
             - ``HIGHZ`` sets the impedance to be 1 MΩ.
@@ -8856,7 +8734,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``CH<x>`` sets the channel to use for the input source.
         """
@@ -8886,7 +8764,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``CH<x>`` sets the channel to use for the output source.
         """
@@ -8914,7 +8792,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR3>`` is the PPD value for the measurement, in the range of 10 to 100 points.
         """
@@ -8944,7 +8822,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR3>`` is the starting frequency for the measurement, in the range of 10 Hz to 50
               MHz.
@@ -8975,7 +8853,7 @@ class PowerPowerItemPsrr(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR3>`` is the stop frequency for the measurement, in the range of 10 Hz to 50 MHz.
         """
@@ -9020,7 +8898,7 @@ class PowerPowerItemPreset(SCPICmdWrite):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``EXECute`` runs the power preset action.
     """
@@ -9049,9 +8927,9 @@ class PowerPowerItemPpulsewidthInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
         - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
         - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
@@ -9065,6 +8943,10 @@ class PowerPowerItemPpulsewidth(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:PPULSEWIDTH?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:PPULSEWIDTH?`` query
           and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
 
     Properties:
         - ``.inputsource``: The ``POWer:POWer<x>:PPULSEWIDTH:INPUTSOurce`` command.
@@ -9100,10 +8982,10 @@ class PowerPowerItemPpulsewidth(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
-              FlexChannels in your instrument.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
             - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
             - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
@@ -9132,9 +9014,9 @@ class PowerPowerItemPowerqualityVsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
         - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
         - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
@@ -9161,7 +9043,7 @@ class PowerPowerItemPowerqualityStype(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``AC`` sets the signal type as AC.
         - ``DC`` sets the signal type as DC.
@@ -9190,9 +9072,9 @@ class PowerPowerItemPowerqualityIsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
         - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
         - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
@@ -9245,7 +9127,7 @@ class PowerPowerItemPowerqualityCcycles(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``1`` selects the calculate cycles over full cycles.
         - ``ON`` selects the calculate cycles over full cycles.
@@ -9261,6 +9143,10 @@ class PowerPowerItemPowerquality(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:POWERQUALITY?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:POWERQUALITY?`` query
           and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
 
     Properties:
         - ``.ccycles``: The ``POWer:POWer<x>:POWERQUALITY:CCYCles`` command.
@@ -9304,7 +9190,7 @@ class PowerPowerItemPowerquality(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``1`` selects the calculate cycles over full cycles.
             - ``ON`` selects the calculate cycles over full cycles.
@@ -9363,10 +9249,10 @@ class PowerPowerItemPowerquality(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
-              FlexChannels in your instrument.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
             - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
             - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
@@ -9395,7 +9281,7 @@ class PowerPowerItemPowerquality(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``AC`` sets the signal type as AC.
             - ``DC`` sets the signal type as DC.
@@ -9426,10 +9312,10 @@ class PowerPowerItemPowerquality(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
-              FlexChannels in your instrument.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
             - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
             - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
@@ -9457,9 +9343,9 @@ class PowerPowerItemPeriodInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
         - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
         - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
@@ -9555,10 +9441,10 @@ class PowerPowerItemPeriod(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
-              FlexChannels in your instrument.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
             - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
             - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
@@ -9588,9 +9474,9 @@ class PowerPowerItemPdutycycleInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          on a power measurement badge in the UI.
-        - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
+        - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
         - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
         - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
@@ -9616,6 +9502,11 @@ class PowerPowerItemPdutycycleEdgetype(SCPICmdWrite, SCPICmdRead):
         - POWer:POWer<x>:PDUTYCYCLE:EDGEType {CH<x>|MATH<x>|REF<x>}
         - POWer:POWer<x>:PDUTYCYCLE:EDGEType?
         ```
+
+    Info:
+        - ``CH<x>`` specifies an analog channel to use source.
+        - ``MATH<x>`` specifies a math waveform to use as the source.
+        - ``REF<x>`` specifies a reference waveform to use as the source.
     """
 
 
@@ -9662,6 +9553,11 @@ class PowerPowerItemPdutycycle(SCPICmdRead):
             - POWer:POWer<x>:PDUTYCYCLE:EDGEType {CH<x>|MATH<x>|REF<x>}
             - POWer:POWer<x>:PDUTYCYCLE:EDGEType?
             ```
+
+        Info:
+            - ``CH<x>`` specifies an analog channel to use source.
+            - ``MATH<x>`` specifies a math waveform to use as the source.
+            - ``REF<x>`` specifies a reference waveform to use as the source.
         """
         return self._edgetype
 
@@ -9689,10 +9585,10 @@ class PowerPowerItemPdutycycle(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown on a power measurement badge in the UI.
-            - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
-              FlexChannels in your instrument.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+            - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
+              of FlexChannels in your instrument.
             - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
             - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
         """
@@ -9722,7 +9618,7 @@ class PowerPowerItemNpulsewidthInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -9738,6 +9634,10 @@ class PowerPowerItemNpulsewidth(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:NPULSEWIDTH?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:NPULSEWIDTH?`` query
           and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.inputsource``: The ``POWer:POWer<x>:NPULSEWIDTH:INPUTSOurce`` command.
@@ -9773,7 +9673,7 @@ class PowerPowerItemNpulsewidth(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -9806,7 +9706,7 @@ class PowerPowerItemNdutycycleInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -9907,7 +9807,7 @@ class PowerPowerItemNdutycycle(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -9938,7 +9838,7 @@ class PowerPowerItemMagpropertyVsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -9968,7 +9868,7 @@ class PowerPowerItemMagpropertyUnits(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``SI`` sets the measurement to International System of Units.
         - ``CGS`` sets the measurement to Gaussian units.
@@ -9998,10 +9898,9 @@ class PowerPowerItemMagpropertySecwindings(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the magnetic property power measurement number. This is the equivalent of
+        - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent of
           the number shown in the power measurement badge on the UI.
-        - ``None`` , ONE, TWO, THREE, FOUR, FIVE, SIX sets the number of secondary windings to the
-          specified value.
+        - ``None``
     """
 
 
@@ -10025,7 +9924,7 @@ class PowerPowerItemMagpropertySecvolt(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``True`` enables secondary voltage source.
         - ``False`` disables secondary voltage source.
@@ -10054,7 +9953,7 @@ class PowerPowerItemMagpropertySecphase(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR3>`` sets the value for the phase difference between secondary and primary voltage,
           in the range of -180 to 180 degrees.
@@ -10084,7 +9983,7 @@ class PowerPowerItemMagpropertySec6turns(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``<NR1>`` is the number of turns on the secondary winding, and ranges from 0 to 1,000,000.
     """
@@ -10113,7 +10012,7 @@ class PowerPowerItemMagpropertySec6source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -10145,7 +10044,7 @@ class PowerPowerItemMagpropertySec5turns(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``<NR1>`` is the number of turns on the secondary winding, and ranges from 0 to 1,000,000.
     """
@@ -10174,7 +10073,7 @@ class PowerPowerItemMagpropertySec5source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -10206,7 +10105,7 @@ class PowerPowerItemMagpropertySec4turns(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``<NR1>`` is the number of turns on the secondary winding, and ranges from 0 to 1,000,000.
     """
@@ -10235,7 +10134,7 @@ class PowerPowerItemMagpropertySec4source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -10267,7 +10166,7 @@ class PowerPowerItemMagpropertySec3turns(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``<NR1>`` is the number of turns on the secondary winding, and ranges from 0 to 1,000,000.
     """
@@ -10296,7 +10195,7 @@ class PowerPowerItemMagpropertySec3source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -10328,7 +10227,7 @@ class PowerPowerItemMagpropertySec2turns(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``<NR1>`` is the number of turns on the secondary winding, and ranges from 0 to 1,000,000.
     """
@@ -10357,7 +10256,7 @@ class PowerPowerItemMagpropertySec2source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -10389,7 +10288,7 @@ class PowerPowerItemMagpropertySec1turns(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``<NR1>`` is the number of turns on the secondary winding, and ranges from 0 to 1,000,000.
     """
@@ -10418,7 +10317,7 @@ class PowerPowerItemMagpropertySec1source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -10450,7 +10349,7 @@ class PowerPowerItemMagpropertyPrimaryturns(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the magnetic property power measurement number. This is the equivalent of
+        - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent of
           the number shown in the power measurement badge on the UI.
         - ``<NR1>`` is the integer number of turns in the primary winding, in the range of 1 to 1 M.
     """
@@ -10461,7 +10360,9 @@ class PowerPowerItemMagpropertyLength(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the conductor length of the primary winding for magnetic
-          measurement of the specified power measurement number.
+          measurement of the specified power measurement number.The Magnetic Length unit depends on
+          the setting of the Units value (``seePOWer:POWer<x>:MAGPROPERTY:UNITs``). The command
+          returns the same numeric value regardless of the units setting.
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:MAGPROPERTY:LENgth?`` query.
@@ -10477,7 +10378,7 @@ class PowerPowerItemMagpropertyLength(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the magnetic property power measurement number. This is the equivalent of
+        - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent of
           the number shown in the power measurement badge on the UI.
         - ``<NR2>`` is the magnetic length, in the range of 1.00E-09 through 1,000,000.
     """
@@ -10504,8 +10405,8 @@ class PowerPowerItemMagpropertyIsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the magnetic property power measurement number. This is the equivalent of
-          the number shown in the power measurement badge on the UI.
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
         - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
         - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
@@ -10536,7 +10437,7 @@ class PowerPowerItemMagpropertyEdgesource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the magnetic property power measurement number. This is the equivalent of
+        - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent of
           the number shown on a power measurement badge in the UI.
         - ``Current`` sets the measurement to use the primary voltage source as the signal edge for
           the magnetic property measurement.
@@ -10550,7 +10451,9 @@ class PowerPowerItemMagpropertyAreaofcrosssection(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the coil cross section area for magnetic measurement of the
-          specified power measurement number.
+          specified power measurement number.The coil Cross Section Area unit depends on the setting
+          of the Units value (``seePOWer:POWer<x>:MAGPROPERTY:UNITs``). The command returns the same
+          numeric value regardless of the units setting.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -10568,10 +10471,9 @@ class PowerPowerItemMagpropertyAreaofcrosssection(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the magnetic property power measurement number. This is the equivalent of
+        - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent of
           the number shown in the power measurement badge on the UI.
-        - ``<NR2>`` is the cross section area in square meters, in the range of 1 nanometer2 to 1
-          M2.
+        - ``<NR2>`` is the cross section area in square meters, in the range of 1 nanometer.
     """
 
 
@@ -10583,6 +10485,10 @@ class PowerPowerItemMagproperty(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:MAGPROPERTY?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:MAGPROPERTY?`` query
           and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent of
+          the number shown in the power measurement badge on the UI.
 
     Properties:
         - ``.areaofcrosssection``: The ``POWer:POWer<x>:MAGPROPERTY:AREAofcrosssection`` command.
@@ -10672,7 +10578,9 @@ class PowerPowerItemMagproperty(SCPICmdRead):
 
         Description:
             - This command sets or queries the coil cross section area for magnetic measurement of
-              the specified power measurement number.
+              the specified power measurement number.The coil Cross Section Area unit depends on the
+              setting of the Units value (``seePOWer:POWer<x>:MAGPROPERTY:UNITs``). The command
+              returns the same numeric value regardless of the units setting.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -10690,10 +10598,9 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the magnetic property power measurement number. This is the equivalent
+            - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent
               of the number shown in the power measurement badge on the UI.
-            - ``<NR2>`` is the cross section area in square meters, in the range of 1 nanometer2 to
-              1 M2.
+            - ``<NR2>`` is the cross section area in square meters, in the range of 1 nanometer.
         """
         return self._areaofcrosssection
 
@@ -10721,7 +10628,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the magnetic property power measurement number. This is the equivalent
+            - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent
               of the number shown on a power measurement badge in the UI.
             - ``Current`` sets the measurement to use the primary voltage source as the signal edge
               for the magnetic property measurement.
@@ -10754,8 +10661,8 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the magnetic property power measurement number. This is the equivalent
-              of the number shown in the power measurement badge on the UI.
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
             - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
               of FlexChannels in your instrument.
             - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
@@ -10769,7 +10676,9 @@ class PowerPowerItemMagproperty(SCPICmdRead):
 
         Description:
             - This command sets or queries the conductor length of the primary winding for magnetic
-              measurement of the specified power measurement number.
+              measurement of the specified power measurement number.The Magnetic Length unit depends
+              on the setting of the Units value (``seePOWer:POWer<x>:MAGPROPERTY:UNITs``). The
+              command returns the same numeric value regardless of the units setting.
 
         Usage:
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:MAGPROPERTY:LENgth?``
@@ -10787,7 +10696,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the magnetic property power measurement number. This is the equivalent
+            - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent
               of the number shown in the power measurement badge on the UI.
             - ``<NR2>`` is the magnetic length, in the range of 1.00E-09 through 1,000,000.
         """
@@ -10817,7 +10726,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the magnetic property power measurement number. This is the equivalent
+            - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent
               of the number shown in the power measurement badge on the UI.
             - ``<NR1>`` is the integer number of turns in the primary winding, in the range of 1 to
               1 M.
@@ -10848,7 +10757,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
               of FlexChannels in your instrument.
@@ -10881,7 +10790,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``<NR1>`` is the number of turns on the secondary winding, and ranges from 0 to
               1,000,000.
@@ -10912,7 +10821,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
               of FlexChannels in your instrument.
@@ -10945,7 +10854,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``<NR1>`` is the number of turns on the secondary winding, and ranges from 0 to
               1,000,000.
@@ -10976,7 +10885,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
               of FlexChannels in your instrument.
@@ -11009,7 +10918,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``<NR1>`` is the number of turns on the secondary winding, and ranges from 0 to
               1,000,000.
@@ -11040,7 +10949,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
               of FlexChannels in your instrument.
@@ -11073,7 +10982,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``<NR1>`` is the number of turns on the secondary winding, and ranges from 0 to
               1,000,000.
@@ -11104,7 +11013,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
               of FlexChannels in your instrument.
@@ -11137,7 +11046,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``<NR1>`` is the number of turns on the secondary winding, and ranges from 0 to
               1,000,000.
@@ -11168,7 +11077,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
               of FlexChannels in your instrument.
@@ -11201,7 +11110,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``<NR1>`` is the number of turns on the secondary winding, and ranges from 0 to
               1,000,000.
@@ -11232,7 +11141,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR3>`` sets the value for the phase difference between secondary and primary
               voltage, in the range of -180 to 180 degrees.
@@ -11262,7 +11171,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``True`` enables secondary voltage source.
             - ``False`` disables secondary voltage source.
@@ -11293,10 +11202,9 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the magnetic property power measurement number. This is the equivalent
+            - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent
               of the number shown in the power measurement badge on the UI.
-            - ``None`` , ONE, TWO, THREE, FOUR, FIVE, SIX sets the number of secondary windings to
-              the specified value.
+            - ``None``
         """
         return self._secwindings
 
@@ -11324,7 +11232,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``SI`` sets the measurement to International System of Units.
             - ``CGS`` sets the measurement to Gaussian units.
@@ -11355,7 +11263,7 @@ class PowerPowerItemMagproperty(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
               of FlexChannels in your instrument.
@@ -11387,7 +11295,7 @@ class PowerPowerItemMagneticlossVsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -11418,7 +11326,7 @@ class PowerPowerItemMagneticlossIsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -11434,6 +11342,10 @@ class PowerPowerItemMagneticloss(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:MAGNETICLOSS?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:MAGNETICLOSS?`` query
           and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
 
     Properties:
         - ``.isource``: The ``POWer:POWer<x>:MAGNETICLOSS:ISOURce`` command.
@@ -11469,7 +11381,7 @@ class PowerPowerItemMagneticloss(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
               of FlexChannels in your instrument.
@@ -11502,7 +11414,7 @@ class PowerPowerItemMagneticloss(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
               of FlexChannels in your instrument.
@@ -11559,7 +11471,7 @@ class PowerPowerItemLinerippleInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -11575,6 +11487,10 @@ class PowerPowerItemLineripple(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:LINERIPPLE?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:LINERIPPLE?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.inputsource``: The ``POWer:POWer<x>:LINERIPPLE:INPUTSOurce`` command.
@@ -11614,7 +11530,7 @@ class PowerPowerItemLineripple(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -11695,7 +11611,7 @@ class PowerPowerItemIvsintegralvVsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -11726,7 +11642,7 @@ class PowerPowerItemIvsintegralvIsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
         - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -11742,6 +11658,10 @@ class PowerPowerItemIvsintegralv(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:IVSINTEGRALV?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:IVSINTEGRALV?`` query
           and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
 
     Properties:
         - ``.isource``: The ``POWer:POWer<x>:IVSINTEGRALV:ISOURce`` command.
@@ -11777,7 +11697,7 @@ class PowerPowerItemIvsintegralv(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
               of FlexChannels in your instrument.
@@ -11810,7 +11730,7 @@ class PowerPowerItemIvsintegralv(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
             - ``CH<x>`` sets the channel specifier; <x> is 1 through 8 and is limited by the number
               of FlexChannels in your instrument.
@@ -11843,7 +11763,7 @@ class PowerPowerItemInrushcurrentPeakcurrent(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR3>`` is a floating point number that represents the peak current value, in amps, in
           the range -100 A to 100 A.
@@ -11872,7 +11792,7 @@ class PowerPowerItemInrushcurrentInputsource(SCPICmdWriteNoArguments, SCPICmdRea
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` is the channel specifier in the range of 1 through 8 and is limited by the
           number of instrument input channels.
@@ -11890,6 +11810,10 @@ class PowerPowerItemInrushcurrent(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:INRUSHcurrent?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:INRUSHcurrent?`` query
           and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.inputsource``: The ``POWer:POWer<x>:INRUSHcurrent:INPUTSOurce`` command.
@@ -11929,7 +11853,7 @@ class PowerPowerItemInrushcurrent(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` is the channel specifier in the range of 1 through 8 and is limited by the
               number of instrument input channels.
@@ -11964,7 +11888,7 @@ class PowerPowerItemInrushcurrent(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR3>`` is a floating point number that represents the peak current value, in amps,
               in the range -100 A to 100 A.
@@ -11993,7 +11917,7 @@ class PowerPowerItemInputcapVsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` is the channel specifier in the range of 1 through 8 and is limited by the
           number of instrument input channels.
@@ -12026,7 +11950,7 @@ class PowerPowerItemInputcapPeakvoltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR3>`` is a floating point number that represents the peak voltage value in the range
           -100 V to 100 V.
@@ -12055,7 +11979,7 @@ class PowerPowerItemInputcapPeakcurrent(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR3>`` is a floating point number that represents the peak current value, in amps, in
           the range -100 A to 100 A.
@@ -12083,7 +12007,7 @@ class PowerPowerItemInputcapIsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` is the channel specifier in the range of 1 through 8 and is limited by the
           number of instrument input channels.
@@ -12101,6 +12025,10 @@ class PowerPowerItemInputcap(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:INPUTCAP?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:INPUTCAP?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.isource``: The ``POWer:POWer<x>:INPUTCAP:ISOURce`` command.
@@ -12143,7 +12071,7 @@ class PowerPowerItemInputcap(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` is the channel specifier in the range of 1 through 8 and is limited by the
               number of instrument input channels.
@@ -12178,7 +12106,7 @@ class PowerPowerItemInputcap(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR3>`` is a floating point number that represents the peak current value, in amps,
               in the range -100 A to 100 A.
@@ -12209,7 +12137,7 @@ class PowerPowerItemInputcap(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR3>`` is a floating point number that represents the peak voltage value in the
               range -100 V to 100 V.
@@ -12239,7 +12167,7 @@ class PowerPowerItemInputcap(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` is the channel specifier in the range of 1 through 8 and is limited by the
               number of instrument input channels.
@@ -12271,7 +12199,7 @@ class PowerPowerItemInductanceVsource(SCPICmdWriteNoArguments, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -12300,7 +12228,7 @@ class PowerPowerItemInductanceIsource(SCPICmdWriteNoArguments, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -12332,7 +12260,7 @@ class PowerPowerItemInductanceEdgesource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -12348,6 +12276,10 @@ class PowerPowerItemInductance(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:INDUCTANCE?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:INDUCTANCE?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.edgesource``: The ``POWer:POWer<x>:INDUCTANCE:EDGESource`` command.
@@ -12387,7 +12319,7 @@ class PowerPowerItemInductance(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -12420,7 +12352,7 @@ class PowerPowerItemInductance(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -12453,7 +12385,7 @@ class PowerPowerItemInductance(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -12697,14 +12629,16 @@ class PowerPowerItemImpedanceGenipaddress(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:IMPEDANCE:GENIPADDress <String>
+        - POWer:POWer<x>:IMPEDANCE:GENIPADDress <QString>
         - POWer:POWer<x>:IMPEDANCE:GENIPADDress?
         ```
 
     Info:
-        - ``POWer<x>`` is the number of the Impedance power measurement.<string> is the IP address
-          of the generator.
+        - ``POWer<x>`` is the number of the Impedance power measurement.
+        - ``<QString>`` is the IP address of the generator.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class PowerPowerItemImpedanceFreqvalItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
@@ -12772,7 +12706,7 @@ class PowerPowerItemImpedanceConnectstatus(SCPICmdRead):
     Description:
         - Queries the instrument's connection status to the external generator, for the specified
           Impedance measurement. The Impedance measurement generator IP address (for external
-          generators) is set with ``POWER:POWERX:IMPEDANCE:GENIPADDRESS``.
+          generators) is set with ``POWer:POWer<x>:IMPEDANCE``: GENIPADDress.
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:IMPEDANCE:CONNECTSTATus?``
@@ -12811,7 +12745,7 @@ class PowerPowerItemImpedanceAutorbw(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``True`` enables Auto RBW computation.
         - ``False`` disables Auto RBW computation.
@@ -12840,7 +12774,7 @@ class PowerPowerItemImpedanceAnalysismethod(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``SV`` sets the Analysis Method as Spectrum View.
         - ``FFT`` sets the Analysis Method as FFT.
@@ -13058,7 +12992,7 @@ class PowerPowerItemImpedance(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``SV`` sets the Analysis Method as Spectrum View.
             - ``FFT`` sets the Analysis Method as FFT.
@@ -13088,7 +13022,7 @@ class PowerPowerItemImpedance(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``True`` enables Auto RBW computation.
             - ``False`` disables Auto RBW computation.
@@ -13102,7 +13036,7 @@ class PowerPowerItemImpedance(SCPICmdRead):
         Description:
             - Queries the instrument's connection status to the external generator, for the
               specified Impedance measurement. The Impedance measurement generator IP address (for
-              external generators) is set with ``POWER:POWERX:IMPEDANCE:GENIPADDRESS``.
+              external generators) is set with ``POWer:POWer<x>:IMPEDANCE``: GENIPADDress.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -13202,13 +13136,13 @@ class PowerPowerItemImpedance(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:IMPEDANCE:GENIPADDress <String>
+            - POWer:POWer<x>:IMPEDANCE:GENIPADDress <QString>
             - POWer:POWer<x>:IMPEDANCE:GENIPADDress?
             ```
 
         Info:
-            - ``POWer<x>`` is the number of the Impedance power measurement.<string> is the IP
-              address of the generator.
+            - ``POWer<x>`` is the number of the Impedance power measurement.
+            - ``<QString>`` is the IP address of the generator.
         """
         return self._genipaddress
 
@@ -13465,7 +13399,7 @@ class PowerPowerItemHarmonicsVsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -13545,7 +13479,7 @@ class PowerPowerItemHarmonicsStandard(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``NONe`` = No standard.
         - ``IEC`` = IEC 61000-3-2 standard.
@@ -13577,7 +13511,7 @@ class PowerPowerItemHarmonicsRcurrent(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR1>`` ranges from 0 to 100.
     """
@@ -13628,7 +13562,7 @@ class PowerPowerItemHarmonicsPfactor(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR1>`` ranges from 0 to 1.
     """
@@ -13655,7 +13589,7 @@ class PowerPowerItemHarmonicsOddeven(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``ALL`` to display all harmonics values.
         - ``ODD`` to display only the odd values of harmonics.
@@ -13681,7 +13615,7 @@ class PowerPowerItemHarmonicsLinefrequency(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:HARMONICS:LINEFREQUEncy {Auto|FIFTyhz|SIXTyhz |THREESIXTyhz|FOURHUNDREdhz|SIXFIFTyhz|EIGHTHUNDREdhz|CUSTom
+        - POWer:POWer<x>:HARMONICS:LINEFREQUEncy {Auto|FIFTyhz|SIXTyhz|THREESIXTyhz|FOURHUNDREdhz|SIXFIFTyhz|EIGHTHUNDREdhz|CUSTom}
         - POWer:POWer<x>:HARMONICS:LINEFREQUEncy?
         ```
 
@@ -13695,7 +13629,7 @@ class PowerPowerItemHarmonicsLinefrequency(SCPICmdWrite, SCPICmdRead):
         - ``SIXFIFTyhz`` sets the line frequency value to 650 Hz.
         - ``EIGHTHUNDREdhz`` sets the line frequency value to 800 Hz.
         - ``CUSTom`` sets the line frequency value to Custom. The default value for custom is 100
-          Hz. Use the ``POWER:POWERX:HARMONICS:LINEFREQUENCY`` command to set a custom line
+          Hz. Use the ``POWer:POWer<x>:HARMONICS:LINEFREQUEncy`` command to set a custom line
           frequency value.
     """  # noqa: E501
 
@@ -13721,7 +13655,7 @@ class PowerPowerItemHarmonicsIsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -13751,7 +13685,7 @@ class PowerPowerItemHarmonicsIpower(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR1>`` ranges from 0 to 600.
     """
@@ -13800,7 +13734,7 @@ class PowerPowerItemHarmonicsHorder(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR1>`` ranges from 40 to 100.
     """
@@ -13829,7 +13763,7 @@ class PowerPowerItemHarmonicsFundcurrent(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``<NR1>`` ranges from 0 to 16.
     """
@@ -13856,10 +13790,10 @@ class PowerPowerItemHarmonicsCmethod(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
-        - ``RATed`` : select to use the standard input current values in the measurement.
-        - ``MEASured`` : select to use the measured the input current values in the measurement.
+        - ``RATed:`` select to use the standard input current values in the measurement.
+        - ``MEASured:`` select to use the measured the input current values in the measurement.
     """
 
 
@@ -14045,10 +13979,10 @@ class PowerPowerItemHarmonics(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
-            - ``RATed`` : select to use the standard input current values in the measurement.
-            - ``MEASured`` : select to use the measured the input current values in the measurement.
+            - ``RATed:`` select to use the standard input current values in the measurement.
+            - ``MEASured:`` select to use the measured the input current values in the measurement.
         """
         return self._cmethod
 
@@ -14076,7 +14010,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR1>`` ranges from 0 to 16.
         """
@@ -14105,7 +14039,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR1>`` ranges from 40 to 100.
         """
@@ -14159,7 +14093,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR1>`` ranges from 0 to 600.
         """
@@ -14189,7 +14123,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -14217,7 +14151,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:HARMONICS:LINEFREQUEncy {Auto|FIFTyhz|SIXTyhz |THREESIXTyhz|FOURHUNDREdhz|SIXFIFTyhz|EIGHTHUNDREdhz|CUSTom
+            - POWer:POWer<x>:HARMONICS:LINEFREQUEncy {Auto|FIFTyhz|SIXTyhz|THREESIXTyhz|FOURHUNDREdhz|SIXFIFTyhz|EIGHTHUNDREdhz|CUSTom}
             - POWer:POWer<x>:HARMONICS:LINEFREQUEncy?
             ```
 
@@ -14231,8 +14165,8 @@ class PowerPowerItemHarmonics(SCPICmdRead):
             - ``SIXFIFTyhz`` sets the line frequency value to 650 Hz.
             - ``EIGHTHUNDREdhz`` sets the line frequency value to 800 Hz.
             - ``CUSTom`` sets the line frequency value to Custom. The default value for custom is
-              100 Hz. Use the ``POWER:POWERX:HARMONICS:LINEFREQUENCY`` command to set a custom line
-              frequency value.
+              100 Hz. Use the ``POWer:POWer<x>:HARMONICS:LINEFREQUEncy`` command to set a custom
+              line frequency value.
         """  # noqa: E501
         return self._linefrequency
 
@@ -14260,7 +14194,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``ALL`` to display all harmonics values.
             - ``ODD`` to display only the odd values of harmonics.
@@ -14292,7 +14226,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR1>`` ranges from 0 to 1.
         """
@@ -14347,7 +14281,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``<NR1>`` ranges from 0 to 100.
         """
@@ -14377,7 +14311,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``NONe`` = No standard.
             - ``IEC`` = IEC 61000-3-2 standard.
@@ -14464,7 +14398,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -14495,7 +14429,7 @@ class PowerPowerItemGatingGlobal(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``1`` selects the gating settings as Global.
         - ``ON`` selects the gating settings as Global.
@@ -14523,7 +14457,7 @@ class PowerPowerItemGating(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``NONE`` makes measurement across the entire waveform record.
         - ``CURSOR`` makes measurements on that portion of the waveform between the cursors.
@@ -14563,7 +14497,7 @@ class PowerPowerItemGating(SCPICmdWrite, SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``1`` selects the gating settings as Global.
             - ``ON`` selects the gating settings as Global.
@@ -14596,7 +14530,7 @@ class PowerPowerItemFrequencyInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -14626,7 +14560,7 @@ class PowerPowerItemFrequencyEdge(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the power measurement badge on the UI.
     """
 
@@ -14638,6 +14572,10 @@ class PowerPowerItemFrequency(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:FREQUENCY?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:FREQUENCY?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the power measurement badge on the UI.
 
     Properties:
         - ``.edge``: The ``POWer:POWer<x>:FREQUENCY:EDGe`` command.
@@ -14673,7 +14611,7 @@ class PowerPowerItemFrequency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the power measurement badge on the UI.
         """
         return self._edge
@@ -14702,7 +14640,7 @@ class PowerPowerItemFrequency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -14732,7 +14670,7 @@ class PowerPowerItemEfficiencyVsource(SCPICmdWriteNoArguments, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent of
+        - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
           the number shown in the power measurement badge on the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -14764,8 +14702,8 @@ class PowerPowerItemEfficiencyVout3source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent of
-          the number shown on the power measurement badge in the UI.
+        - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
+          the number shown in the power measurement badge on the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
         - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
@@ -14796,7 +14734,7 @@ class PowerPowerItemEfficiencyVout2source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent of
+        - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
           the number shown in the power measurement badge on the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -14828,7 +14766,7 @@ class PowerPowerItemEfficiencyVout1source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent of
+        - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
           the number shown in the power measurement badge on the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -14860,10 +14798,10 @@ class PowerPowerItemEfficiencyOutputtype(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent of
+        - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
           the number shown on the power measurement badge of the UI.
-        - ``AC`` sets the output voltage type to AC.
-        - ``DC`` sets the output voltage type to DC.
+        - ``AC`` sets the output3 voltage type to AC.
+        - ``DC`` sets the output3 voltage type to DC.
     """
 
 
@@ -14871,8 +14809,8 @@ class PowerPowerItemEfficiencyOutput3type(SCPICmdWrite, SCPICmdRead):
     """The ``POWer:POWer<x>:EFFICIENCY:OUTPUT3Type`` command.
 
     Description:
-        - ``POWer:POWer<x>:EFFICIENCY:OUTPUT3Type This`` command sets or queries the Output3 type
-          (AC or DC) for the power Efficiency measurement of the specified power measurement number.
+        - This command sets or queries the Output3 type (AC or DC) for the power Efficiency
+          measurement of the specified power measurement number.
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:EFFICIENCY:OUTPUT3Type?``
@@ -14890,10 +14828,10 @@ class PowerPowerItemEfficiencyOutput3type(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent of
+        - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
           the number shown on the power measurement badge of the UI.
-        - ``AC`` sets the Output3 voltage type to AC.
-        - ``DC`` sets the Output3 voltage type to DC.
+        - ``AC`` sets the output3 voltage type to AC.
+        - ``DC`` sets the output3 voltage type to DC.
     """
 
 
@@ -14901,8 +14839,8 @@ class PowerPowerItemEfficiencyOutput2type(SCPICmdWrite, SCPICmdRead):
     """The ``POWer:POWer<x>:EFFICIENCY:OUTPUT2Type`` command.
 
     Description:
-        - ``POWer:POWer<x>:EFFICIENCY:OUTPUT2Type This`` command sets or queries the Output2 type
-          (AC or DC) for the power Efficiency measurement of the specified power measurement number.
+        - This command sets or queries the Output2 type (AC or DC) for the power Efficiency
+          measurement of the specified power measurement number.
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:EFFICIENCY:OUTPUT2Type?``
@@ -14920,10 +14858,10 @@ class PowerPowerItemEfficiencyOutput2type(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent of
+        - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
           the number shown on the power measurement badge of the UI.
-        - ``AC`` sets the Output2 voltage type to AC.
-        - ``DC`` sets the Output2 voltage type to DC.
+        - ``AC`` sets the output2 voltage type to AC.
+        - ``DC`` sets the output2 voltage type to DC.
     """
 
 
@@ -14931,8 +14869,8 @@ class PowerPowerItemEfficiencyOutput1type(SCPICmdWrite, SCPICmdRead):
     """The ``POWer:POWer<x>:EFFICIENCY:OUTPUT1Type`` command.
 
     Description:
-        - ``POWer:POWer<x>:EFFICIENCY:OUTPUT1Type This`` command sets or queries the Output1 type
-          (AC or DC) for the power Efficiency measurement of the specified power measurement number.
+        - This command sets or queries the Output1 type (AC or DC) for the power Efficiency
+          measurement of the specified power measurement number.
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:EFFICIENCY:OUTPUT1Type?``
@@ -14950,7 +14888,7 @@ class PowerPowerItemEfficiencyOutput1type(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent of
+        - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
           the number shown on the power measurement badge of the UI.
         - ``AC`` sets the output1 voltage type to AC.
         - ``DC`` sets the output1 voltage type to DC.
@@ -14980,10 +14918,9 @@ class PowerPowerItemEfficiencyNumofoutputs(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent of
+        - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
           the number shown in the power measurement badge on the UI.
-        - ``ONE`` , TWO, THREE sets the number of outputs to test in the power efficiency
-          measurement.
+        - ``ONE``
     """
 
 
@@ -15007,7 +14944,7 @@ class PowerPowerItemEfficiencyIsource(SCPICmdWriteNoArguments, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent of
+        - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
           the number shown in the power measurement badge on the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -15039,8 +14976,8 @@ class PowerPowerItemEfficiencyIout3source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent of
-          the number shown on the power measurement badge in the UI.
+        - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
+          the number shown in the power measurement badge on the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
         - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
@@ -15071,7 +15008,7 @@ class PowerPowerItemEfficiencyIout2source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent of
+        - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
           the number shown in the power measurement badge on the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -15103,7 +15040,7 @@ class PowerPowerItemEfficiencyIout1source(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent of
+        - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
           the number shown in the power measurement badge on the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -15134,7 +15071,7 @@ class PowerPowerItemEfficiencyInputtype(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent of
+        - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
           the number shown on the power measurement badge of the UI.
         - ``AC`` sets the input voltage type to AC.
         - ``DC`` sets the input voltage type to DC.
@@ -15149,6 +15086,10 @@ class PowerPowerItemEfficiency(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:EFFICIENCY?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:EFFICIENCY?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
+          the number shown on the power measurement badge of the UI.
 
     Properties:
         - ``.inputtype``: The ``POWer:POWer<x>:EFFICIENCY:INPUTType`` command.
@@ -15230,7 +15171,7 @@ class PowerPowerItemEfficiency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent
+            - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
               of the number shown on the power measurement badge of the UI.
             - ``AC`` sets the input voltage type to AC.
             - ``DC`` sets the input voltage type to DC.
@@ -15261,7 +15202,7 @@ class PowerPowerItemEfficiency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent
+            - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
               of the number shown in the power measurement badge on the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -15294,7 +15235,7 @@ class PowerPowerItemEfficiency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent
+            - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
               of the number shown in the power measurement badge on the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -15327,8 +15268,8 @@ class PowerPowerItemEfficiency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent
-              of the number shown on the power measurement badge in the UI.
+            - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
+              of the number shown in the power measurement badge on the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
             - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
@@ -15360,7 +15301,7 @@ class PowerPowerItemEfficiency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent
+            - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
               of the number shown in the power measurement badge on the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -15393,10 +15334,9 @@ class PowerPowerItemEfficiency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent
+            - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
               of the number shown in the power measurement badge on the UI.
-            - ``ONE`` , TWO, THREE sets the number of outputs to test in the power efficiency
-              measurement.
+            - ``ONE``
         """
         return self._numofoutputs
 
@@ -15405,9 +15345,8 @@ class PowerPowerItemEfficiency(SCPICmdRead):
         """Return the ``POWer:POWer<x>:EFFICIENCY:OUTPUT1Type`` command.
 
         Description:
-            - ``POWer:POWer<x>:EFFICIENCY:OUTPUT1Type This`` command sets or queries the Output1
-              type (AC or DC) for the power Efficiency measurement of the specified power
-              measurement number.
+            - This command sets or queries the Output1 type (AC or DC) for the power Efficiency
+              measurement of the specified power measurement number.
 
         Usage:
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:EFFICIENCY:OUTPUT1Type?``
@@ -15425,7 +15364,7 @@ class PowerPowerItemEfficiency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent
+            - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
               of the number shown on the power measurement badge of the UI.
             - ``AC`` sets the output1 voltage type to AC.
             - ``DC`` sets the output1 voltage type to DC.
@@ -15437,9 +15376,8 @@ class PowerPowerItemEfficiency(SCPICmdRead):
         """Return the ``POWer:POWer<x>:EFFICIENCY:OUTPUT2Type`` command.
 
         Description:
-            - ``POWer:POWer<x>:EFFICIENCY:OUTPUT2Type This`` command sets or queries the Output2
-              type (AC or DC) for the power Efficiency measurement of the specified power
-              measurement number.
+            - This command sets or queries the Output2 type (AC or DC) for the power Efficiency
+              measurement of the specified power measurement number.
 
         Usage:
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:EFFICIENCY:OUTPUT2Type?``
@@ -15457,10 +15395,10 @@ class PowerPowerItemEfficiency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent
+            - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
               of the number shown on the power measurement badge of the UI.
-            - ``AC`` sets the Output2 voltage type to AC.
-            - ``DC`` sets the Output2 voltage type to DC.
+            - ``AC`` sets the output2 voltage type to AC.
+            - ``DC`` sets the output2 voltage type to DC.
         """
         return self._output2type
 
@@ -15469,9 +15407,8 @@ class PowerPowerItemEfficiency(SCPICmdRead):
         """Return the ``POWer:POWer<x>:EFFICIENCY:OUTPUT3Type`` command.
 
         Description:
-            - ``POWer:POWer<x>:EFFICIENCY:OUTPUT3Type This`` command sets or queries the Output3
-              type (AC or DC) for the power Efficiency measurement of the specified power
-              measurement number.
+            - This command sets or queries the Output3 type (AC or DC) for the power Efficiency
+              measurement of the specified power measurement number.
 
         Usage:
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:EFFICIENCY:OUTPUT3Type?``
@@ -15489,10 +15426,10 @@ class PowerPowerItemEfficiency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent
+            - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
               of the number shown on the power measurement badge of the UI.
-            - ``AC`` sets the Output3 voltage type to AC.
-            - ``DC`` sets the Output3 voltage type to DC.
+            - ``AC`` sets the output3 voltage type to AC.
+            - ``DC`` sets the output3 voltage type to DC.
         """
         return self._output3type
 
@@ -15520,10 +15457,10 @@ class PowerPowerItemEfficiency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent
+            - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
               of the number shown on the power measurement badge of the UI.
-            - ``AC`` sets the output voltage type to AC.
-            - ``DC`` sets the output voltage type to DC.
+            - ``AC`` sets the output3 voltage type to AC.
+            - ``DC`` sets the output3 voltage type to DC.
         """
         return self._outputtype
 
@@ -15551,7 +15488,7 @@ class PowerPowerItemEfficiency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent
+            - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
               of the number shown in the power measurement badge on the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -15584,7 +15521,7 @@ class PowerPowerItemEfficiency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent
+            - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
               of the number shown in the power measurement badge on the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -15617,8 +15554,8 @@ class PowerPowerItemEfficiency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent
-              of the number shown on the power measurement badge in the UI.
+            - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
+              of the number shown in the power measurement badge on the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
             - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
@@ -15650,7 +15587,7 @@ class PowerPowerItemEfficiency(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the number of a power efficiency measurement. This is the equivalent
+            - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
               of the number shown in the power measurement badge on the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -15703,7 +15640,7 @@ class PowerPowerItemDvdtInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -15719,6 +15656,10 @@ class PowerPowerItemDvdt(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:DVDT?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:DVDT?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.inputsource``: The ``POWer:POWer<x>:DVDT:INPUTSOurce`` command.
@@ -15755,7 +15696,7 @@ class PowerPowerItemDvdt(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -15833,7 +15774,7 @@ class PowerPowerItemDidtInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -15849,6 +15790,10 @@ class PowerPowerItemDidt(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:DIDT?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:DIDT?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.inputsource``: The ``POWer:POWer<x>:DIDT:INPUTSOurce`` command.
@@ -15885,7 +15830,7 @@ class PowerPowerItemDidt(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -15942,7 +15887,7 @@ class PowerPowerItemCycletopInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -15958,6 +15903,10 @@ class PowerPowerItemCycletop(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:CYCLETop?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CYCLETop?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.inputsource``: The ``POWer:POWer<x>:CYCLETop:INPUTSOurce`` command.
@@ -15993,7 +15942,7 @@ class PowerPowerItemCycletop(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -16026,7 +15975,7 @@ class PowerPowerItemCyclepkpkInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -16042,6 +15991,10 @@ class PowerPowerItemCyclepkpk(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:CYCLEPKPK?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CYCLEPKPK?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.inputsource``: The ``POWer:POWer<x>:CYCLEPKPK:INPUTSOurce`` command.
@@ -16077,7 +16030,7 @@ class PowerPowerItemCyclepkpk(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -16109,7 +16062,7 @@ class PowerPowerItemCycleminInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -16125,6 +16078,10 @@ class PowerPowerItemCyclemin(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:CYCLEMin?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CYCLEMin?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.inputsource``: The ``POWer:POWer<x>:CYCLEMin:INPUTSOurce`` command.
@@ -16160,7 +16117,7 @@ class PowerPowerItemCyclemin(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -16192,7 +16149,7 @@ class PowerPowerItemCyclemaxInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -16208,6 +16165,10 @@ class PowerPowerItemCyclemax(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:CYCLEMAX?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CYCLEMAX?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.inputsource``: The ``POWer:POWer<x>:CYCLEMAX:INPUTSOurce`` command.
@@ -16243,7 +16204,7 @@ class PowerPowerItemCyclemax(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -16276,7 +16237,7 @@ class PowerPowerItemCyclebaseInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
         - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
@@ -16292,6 +16253,10 @@ class PowerPowerItemCyclebase(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:CYCLEBase?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CYCLEBase?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.inputsource``: The ``POWer:POWer<x>:CYCLEBase:INPUTSOurce`` command.
@@ -16327,7 +16292,7 @@ class PowerPowerItemCyclebase(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
@@ -16359,12 +16324,12 @@ class PowerPowerItemCycleampInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
-        - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
+        - ``CH<x> = A`` channel specifier; <x> is 1 through 8 and is limited by the number of
           FlexChannels in your instrument.
-        - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
-        - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
+        - ``MATH<x> = A`` math waveform specifier; <x> is ≥1.
+        - ``REF<x> = A`` reference waveform specifier; <x> is ≥1.
     """
 
 
@@ -16375,6 +16340,10 @@ class PowerPowerItemCycleamp(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:CYCLEAmp?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CYCLEAmp?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.inputsource``: The ``POWer:POWer<x>:CYCLEAmp:INPUTSOurce`` command.
@@ -16410,12 +16379,12 @@ class PowerPowerItemCycleamp(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
-            - ``CH<x>`` = A channel specifier; <x> is 1 through 8 and is limited by the number of
+            - ``CH<x> = A`` channel specifier; <x> is 1 through 8 and is limited by the number of
               FlexChannels in your instrument.
-            - ``MATH<x>`` = A math waveform specifier; <x> is ≥1.
-            - ``REF<x>`` = A reference waveform specifier; <x> is ≥1.
+            - ``MATH<x> = A`` math waveform specifier; <x> is ≥1.
+            - ``REF<x> = A`` reference waveform specifier; <x> is ≥1.
         """
         return self._inputsource
 
@@ -16465,7 +16434,7 @@ class PowerPowerItemClresponseStopfrequency(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR3>`` is the stop frequency for the measurement, in the range of 10 Hz to 50 MHz.
     """
@@ -16494,7 +16463,7 @@ class PowerPowerItemClresponseStartfrequency(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR3>`` is the starting frequency for the measurement, in the range of 10 Hz to 50 MHz.
     """
@@ -16521,7 +16490,7 @@ class PowerPowerItemClresponsePpd(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR3>`` is the PPD value for the measurement, in the range of 10 to 100 points.
     """
@@ -16550,7 +16519,7 @@ class PowerPowerItemClresponseOutputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``CH<x>`` sets the channel to use for the output signal source.
     """
@@ -16577,7 +16546,7 @@ class PowerPowerItemClresponseMon(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``SAVG`` specifies the measure analysis method for the Control Loop Response/PSRR or
           Impedance measurement to SAVG.
@@ -16609,7 +16578,7 @@ class PowerPowerItemClresponseInputsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``CH<x>`` sets the channel to use for the output signal source.
     """
@@ -16637,7 +16606,7 @@ class PowerPowerItemClresponseImpedance(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``FIFTy`` sets the impedance to be 50 Ω.
         - ``HIGHZ`` sets the impedance to be 1 MΩ.
@@ -16648,8 +16617,8 @@ class PowerPowerItemClresponseGenerator(SCPICmdWrite, SCPICmdRead):
     """The ``POWer:POWer<x>:CLRESPONSE:GENerator`` command.
 
     Description:
-        - This command sets or queries the generator source used to send stimulus signals to the
-          DUT, for the Control Loop Response power measurement.
+        - Sets or queries the generator source for the specified Control Loop Response power
+          measurement.
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:CLRESPONSE:GENerator?``
@@ -16661,14 +16630,16 @@ class PowerPowerItemClresponseGenerator(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:CLRESPONSE:GENerator {INTernal}
+        - POWer:POWer<x>:CLRESPONSE:GENerator {INTernal|EXTernal}
         - POWer:POWer<x>:CLRESPONSE:GENerator?
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
-          in the UI for a power measurement badge.
-        - ``INTernal`` sets the generator to the instrument AFG. This is the only valid argument.
+        - ``POWer<x>`` is the number of the power measurement.
+        - ``INTernal`` sets the internal generator as the source for the Control Loop Response power
+          measurement.
+        - ``EXTernal`` sets the external generator as the source for the Control Loop Response power
+          measurement.
     """
 
 
@@ -16695,8 +16666,8 @@ class PowerPowerItemClresponseGenipaddress(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``POWer<x>`` is the number of the power measurement.<NR2> is the IP address of the
-          generator.
+        - ``POWer<x>`` is the number of the power measurement.
+        - ``<NR2>`` is the IP address of the generator.
     """
 
 
@@ -16723,7 +16694,7 @@ class PowerPowerItemClresponseFreqvalItem(ValidatedDynamicNumberCmd, SCPICmdWrit
         ```
 
     Info:
-        - ``Power<x>`` sets the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``FREQ<x>`` sets the configuration step number, in the range of 1 to 11. Values outside
           this range will report an error.
@@ -16755,7 +16726,7 @@ class PowerPowerItemClresponseConstamplitude(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``<NR3>`` is the constant amplitude voltage value for the measurement, in the range of
           -100 V to 100 V.
@@ -16780,9 +16751,6 @@ class PowerPowerItemClresponseConnectstatus(SCPICmdRead):
         ```
         - POWer:POWer<x>:CLRESPONSE:CONNECTSTATus?
         ```
-
-    Info:
-        - ``POWer<x>`` is the number of the power measurement.
     """
 
 
@@ -16806,7 +16774,7 @@ class PowerPowerItemClresponseAutorbw(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``True`` enables Auto RBW computation.
         - ``False`` disables Auto RBW computation.
@@ -16835,7 +16803,7 @@ class PowerPowerItemClresponseAnalysismethod(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``SV`` sets the Analysis Method as Spectrum View.
         - ``FFT`` sets the Analysis Method as FFT.
@@ -16863,7 +16831,7 @@ class PowerPowerItemClresponseAmpmode(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``CONSTant`` sets the amplitude mode to output a constant amplitude signal from the DUT
           stimulus generator for all frequency bands.
@@ -16894,7 +16862,7 @@ class PowerPowerItemClresponseAmpvalItem(ValidatedDynamicNumberCmd, SCPICmdWrite
         ```
 
     Info:
-        - ``Power<x>`` sets the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number shown
           in the UI for a power measurement badge.
         - ``AMP<x>`` sets the configuration step number, in the range of 1 to 10. Values outside
           this range will report an error.
@@ -16911,6 +16879,10 @@ class PowerPowerItemClresponse(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:CLRESPONSE?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CLRESPONSE?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
 
     Properties:
         - ``.ampval``: The ``POWer:POWer<x>:CLRESPONSE:AMP<x>Val`` command.
@@ -16998,7 +16970,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` sets the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``AMP<x>`` sets the configuration step number, in the range of 1 to 10. Values outside
               this range will report an error.
@@ -17031,7 +17003,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``CONSTant`` sets the amplitude mode to output a constant amplitude signal from the
               DUT stimulus generator for all frequency bands.
@@ -17064,7 +17036,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``SV`` sets the Analysis Method as Spectrum View.
             - ``FFT`` sets the Analysis Method as FFT.
@@ -17094,7 +17066,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``True`` enables Auto RBW computation.
             - ``False`` disables Auto RBW computation.
@@ -17120,9 +17092,6 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
             - POWer:POWer<x>:CLRESPONSE:CONNECTSTATus?
             ```
-
-        Info:
-            - ``POWer<x>`` is the number of the power measurement.
         """
         return self._connectstatus
 
@@ -17150,7 +17119,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR3>`` is the constant amplitude voltage value for the measurement, in the range of
               -100 V to 100 V.
@@ -17181,7 +17150,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` sets the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``FREQ<x>`` sets the configuration step number, in the range of 1 to 11. Values
               outside this range will report an error.
@@ -17214,8 +17183,8 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``POWer<x>`` is the number of the power measurement.<NR2> is the IP address of the
-              generator.
+            - ``POWer<x>`` is the number of the power measurement.
+            - ``<NR2>`` is the IP address of the generator.
         """
         return self._genipaddress
 
@@ -17224,8 +17193,8 @@ class PowerPowerItemClresponse(SCPICmdRead):
         """Return the ``POWer:POWer<x>:CLRESPONSE:GENerator`` command.
 
         Description:
-            - This command sets or queries the generator source used to send stimulus signals to the
-              DUT, for the Control Loop Response power measurement.
+            - Sets or queries the generator source for the specified Control Loop Response power
+              measurement.
 
         Usage:
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:CLRESPONSE:GENerator?``
@@ -17238,15 +17207,16 @@ class PowerPowerItemClresponse(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:CLRESPONSE:GENerator {INTernal}
+            - POWer:POWer<x>:CLRESPONSE:GENerator {INTernal|EXTernal}
             - POWer:POWer<x>:CLRESPONSE:GENerator?
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
-              shown in the UI for a power measurement badge.
-            - ``INTernal`` sets the generator to the instrument AFG. This is the only valid
-              argument.
+            - ``POWer<x>`` is the number of the power measurement.
+            - ``INTernal`` sets the internal generator as the source for the Control Loop Response
+              power measurement.
+            - ``EXTernal`` sets the external generator as the source for the Control Loop Response
+              power measurement.
         """
         return self._generator
 
@@ -17274,7 +17244,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``FIFTy`` sets the impedance to be 50 Ω.
             - ``HIGHZ`` sets the impedance to be 1 MΩ.
@@ -17305,7 +17275,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``CH<x>`` sets the channel to use for the output signal source.
         """
@@ -17333,7 +17303,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``SAVG`` specifies the measure analysis method for the Control Loop Response/PSRR or
               Impedance measurement to SAVG.
@@ -17366,7 +17336,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``CH<x>`` sets the channel to use for the output signal source.
         """
@@ -17394,7 +17364,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR3>`` is the PPD value for the measurement, in the range of 10 to 100 points.
         """
@@ -17424,7 +17394,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR3>`` is the starting frequency for the measurement, in the range of 10 Hz to 50
               MHz.
@@ -17455,7 +17425,7 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``<NR3>`` is the stop frequency for the measurement, in the range of 10 Hz to 50 MHz.
         """
@@ -17500,7 +17470,7 @@ class PowerPowerItemAutoset(SCPICmdWrite):
         ```
 
     Info:
-        - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
     """
 
@@ -17513,6 +17483,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
 
     Properties:
         - ``.autoset``: The ``POWer:POWer<x>:AUTOSet`` command.
@@ -17629,7 +17603,7 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
         """
         return self._autoset
@@ -17642,6 +17616,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:CLRESPONSE?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CLRESPONSE?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` sets the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
 
         Sub-properties:
             - ``.ampval``: The ``POWer:POWer<x>:CLRESPONSE:AMP<x>Val`` command.
@@ -17673,6 +17651,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CYCLEAmp?`` query
               and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
+
         Sub-properties:
             - ``.inputsource``: The ``POWer:POWer<x>:CYCLEAmp:INPUTSOurce`` command.
         """
@@ -17686,6 +17668,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:CYCLEBase?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CYCLEBase?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
 
         Sub-properties:
             - ``.inputsource``: The ``POWer:POWer<x>:CYCLEBase:INPUTSOurce`` command.
@@ -17701,6 +17687,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CYCLEMAX?`` query
               and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
+
         Sub-properties:
             - ``.inputsource``: The ``POWer:POWer<x>:CYCLEMAX:INPUTSOurce`` command.
         """
@@ -17714,6 +17704,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:CYCLEMin?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CYCLEMin?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
 
         Sub-properties:
             - ``.inputsource``: The ``POWer:POWer<x>:CYCLEMin:INPUTSOurce`` command.
@@ -17729,6 +17723,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CYCLEPKPK?`` query
               and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
+
         Sub-properties:
             - ``.inputsource``: The ``POWer:POWer<x>:CYCLEPKPK:INPUTSOurce`` command.
         """
@@ -17743,6 +17741,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:CYCLETop?`` query
               and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
+
         Sub-properties:
             - ``.inputsource``: The ``POWer:POWer<x>:CYCLETop:INPUTSOurce`` command.
         """
@@ -17756,6 +17758,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:DIDT?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:DIDT?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
 
         Sub-properties:
             - ``.inputsource``: The ``POWer:POWer<x>:DIDT:INPUTSOurce`` command.
@@ -17772,6 +17778,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:DVDT?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
+
         Sub-properties:
             - ``.inputsource``: The ``POWer:POWer<x>:DVDT:INPUTSOurce`` command.
             - ``.sourceedgetype``: The ``POWer:POWer<x>:DVDT:SOURCEEDGEType`` command.
@@ -17786,6 +17796,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:EFFICIENCY?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:EFFICIENCY?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
+              of the number shown on the power measurement badge of the UI.
 
         Sub-properties:
             - ``.inputtype``: The ``POWer:POWer<x>:EFFICIENCY:INPUTType`` command.
@@ -17813,6 +17827,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:FREQUENCY?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:FREQUENCY?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
 
         Sub-properties:
             - ``.edge``: The ``POWer:POWer<x>:FREQUENCY:EDGe`` command.
@@ -17842,7 +17860,7 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
             - ``NONE`` makes measurement across the entire waveform record.
             - ``CURSOR`` makes measurements on that portion of the waveform between the cursors.
@@ -17929,6 +17947,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:INDUCTANCE?`` query
               and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
+
         Sub-properties:
             - ``.edgesource``: The ``POWer:POWer<x>:INDUCTANCE:EDGESource`` command.
             - ``.isource``: The ``POWer:POWer<x>:INDUCTANCE:ISOUrce`` command.
@@ -17944,6 +17966,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:INPUTCAP?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:INPUTCAP?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
 
         Sub-properties:
             - ``.isource``: The ``POWer:POWer<x>:INPUTCAP:ISOURce`` command.
@@ -17962,6 +17988,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:INRUSHcurrent?``
               query and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
+
         Sub-properties:
             - ``.inputsource``: The ``POWer:POWer<x>:INRUSHcurrent:INPUTSOurce`` command.
             - ``.peakcurrent``: The ``POWer:POWer<x>:INRUSHcurrent:PEAKCURRent`` command.
@@ -17976,6 +18006,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:IVSINTEGRALV?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:IVSINTEGRALV?``
               query and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
 
         Sub-properties:
             - ``.isource``: The ``POWer:POWer<x>:IVSINTEGRALV:ISOURce`` command.
@@ -18016,6 +18050,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:LINERIPPLE?`` query
               and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
+
         Sub-properties:
             - ``.inputsource``: The ``POWer:POWer<x>:LINERIPPLE:INPUTSOurce`` command.
             - ``.lfrequency``: The ``POWer:POWer<x>:LINERIPPLE:LFREQuency`` command.
@@ -18031,6 +18069,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:MAGNETICLOSS?``
               query and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+
         Sub-properties:
             - ``.isource``: The ``POWer:POWer<x>:MAGNETICLOSS:ISOURce`` command.
             - ``.vsource``: The ``POWer:POWer<x>:MAGNETICLOSS:VSOURce`` command.
@@ -18045,6 +18087,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:MAGPROPERTY?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:MAGPROPERTY?``
               query and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent
+              of the number shown in the power measurement badge on the UI.
 
         Sub-properties:
             - ``.areaofcrosssection``: The ``POWer:POWer<x>:MAGPROPERTY:AREAofcrosssection``
@@ -18097,6 +18143,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:NPULSEWIDTH?``
               query and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
+
         Sub-properties:
             - ``.inputsource``: The ``POWer:POWer<x>:NPULSEWIDTH:INPUTSOurce`` command.
         """
@@ -18141,6 +18191,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:POWERQUALITY?``
               query and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+
         Sub-properties:
             - ``.ccycles``: The ``POWer:POWer<x>:POWERQUALITY:CCYCles`` command.
             - ``.freference``: The ``POWer:POWer<x>:POWERQUALITY:FREFerence`` command.
@@ -18158,6 +18212,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:PPULSEWIDTH?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:PPULSEWIDTH?``
               query and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
 
         Sub-properties:
             - ``.inputsource``: The ``POWer:POWer<x>:PPULSEWIDTH:INPUTSOurce`` command.
@@ -18181,7 +18239,7 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
             - ``EXECute`` runs the power preset action.
         """
@@ -18195,6 +18253,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:PSRR?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:PSRR?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
 
         Sub-properties:
             - ``.ampval``: The ``POWer:POWer<x>:PSRR:AMP<x>Val`` command.
@@ -18225,6 +18287,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:RDSON?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+
         Sub-properties:
             - ``.devicetype``: The ``POWer:POWer<x>:RDSON:DEVICEType`` command.
             - ``.isource``: The ``POWer:POWer<x>:RDSON:ISOURce`` command.
@@ -18240,6 +18306,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:REFLevels?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:REFLevels?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
 
         Sub-properties:
             - ``.absolute``: The ``POWer:POWer<x>:REFLevels:ABSolute`` command tree.
@@ -18328,6 +18398,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:SOA?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+
         Sub-properties:
             - ``.isource``: The ``POWer:POWer<x>:SOA:ISOURce`` command.
             - ``.point``: The ``POWer:POWer<x>:SOA:POINT<x>`` command.
@@ -18372,6 +18446,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:SWITCHINGRIPPLE?``
               query and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the power measurement badge on the UI.
+
         Sub-properties:
             - ``.inputsource``: The ``POWer:POWer<x>:SWITCHINGRIPPLE:INPUTSOurce`` command.
             - ``.lfrequency``: The ``POWer:POWer<x>:SWITCHINGRIPPLE:LFREQuency`` command.
@@ -18386,6 +18464,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:TURNOFFtime?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:TURNOFFtime?``
               query and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
 
         Sub-properties:
             - ``.frequency``: The ``POWer:POWer<x>:TURNOFFtime:FREQuency`` command.
@@ -18421,6 +18503,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:TURNONtime?`` query
               and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
+
         Sub-properties:
             - ``.frequency``: The ``POWer:POWer<x>:TURNONtime:FREQuency`` command.
             - ``.inputlevel``: The ``POWer:POWer<x>:TURNONtime:INPUTLEVel`` command.
@@ -18448,7 +18534,7 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
     @property
     def type(self) -> PowerPowerItemType:
-        r"""Return the ``POWer:POWer<x>:TYPe`` command.
+        """Return the ``POWer:POWer<x>:TYPe`` command.
 
         Description:
             - This command sets or queries the measurement type of the specified power measurement
@@ -18465,19 +18551,19 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:TYPe <Measurement Type>
+            - POWer:POWer<x>:TYPe P <Measurement Type>
             - POWer:POWer<x>:TYPe?
             ```
 
         Info:
-            - ``Power<x>`` is the power measurement number. This is the equivalent of the number
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown in the UI for a power measurement badge.
-            - ``<Measurement Type>`` = CYCLEAmp \| CYCLEBase \| CYCLEMAx \| CYCLEMIn \| CYCLEPKpk \|
-              CYCLETop \| DIDT \| DVDT \| EFFICIENCY \| FREQuency \| HARMonics \|IMPEDANCE\|
-              INDUCTANCE \| INPUTCAP \| INRUSHcurrent\| \| IVSINTEGRALV \| LINERIpple \|
-              MAGNETICLOSS \| MAGPROPERTY \| NDUTYCycle \| NPULSEWidth \| PDUTYCycle \| PERIod \|
-              POWERQUALity \| PPULSEWidth \| RDSON \| SOA \| SWITCHINGLOss \| SWITCHINGRIpple \|
-              TURNOFFtime \| TURNONtime\| CLRESPONSE \| PSRR.
+            - ``<Measurement Type>
+              = CYCLEAmp | CYCLEBase | CYCLEMAx |CYCLEMIn | CYCLEPKpk | CYCLETop | DIDT | DVDT |
+              EFFICIENCY| FREQuency | HARMonics |IMPEDANCE| INDUCTANCE | INPUTCAP| INRUSHcurrent| |
+              IVSINTEGRALV | LINERIpple | MAGNETICLOSS |MAGPROPERTY | NDUTYCycle | NPULSEWidth |
+              PDUTYCycle | PERIod| POWERQUALity | PPULSEWidth | RDSON | SOA | SWITCHINGLOss
+              |SWITCHINGRIpple | TURNOFFtime | TURNONtime| CLRESPONSE | PSRR``
         """
         return self._type
 
@@ -18489,6 +18575,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:WRAP?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:WRAP?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
 
         Sub-properties:
             - ``.degrees``: The ``POWer:POWer<x>:WRAP:DEGrees`` command.
@@ -18509,7 +18599,7 @@ class PowerDelete(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - POWer:DELete 'POWER<x>'
+        - POWer:DELete POWER<x>
         ```
     """
 
@@ -18584,7 +18674,7 @@ class Power(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:DELete 'POWER<x>'
+            - POWer:DELete POWER<x>
             ```
         """
         return self._delete
@@ -18597,6 +18687,10 @@ class Power(SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
 
         Sub-properties:
             - ``.autoset``: The ``POWer:POWer<x>:AUTOSet`` command.

@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - AWGControl:ARSettings {0|1|ON|OFF}
+    - AWGControl:ARSettings {ON|OFF|1|0}
     - AWGControl:ARSettings?
     - AWGControl:CLOCk:DRATe <NR1>
     - AWGControl:CLOCk:DRATe?
@@ -19,16 +19,16 @@ Commands and Queries:
     - AWGControl:CLOCk:SOURce?
     - AWGControl:COMPile <filename>
     - AWGControl:CONFigure:CNUMber?
-    - AWGControl:DLOading:ENABle {OFF|ON|0|1}
+    - AWGControl:DLOading:ENABle {ON|OFF|1|0}
     - AWGControl:DLOading:ENABle?
-    - AWGControl:DOUTput[n]:STATe {OFF|ON|0|1}
+    - AWGControl:DOUTput[n]:STATe {ON|OFF|1|0}
     - AWGControl:DOUTput[n]:STATe?
     - AWGControl:INTerleave:ADJustment:AMPLitude <NRf>
     - AWGControl:INTerleave:ADJustment:AMPLitude?
     - AWGControl:INTerleave:ADJustment:PHASe <NRf>
     - AWGControl:INTerleave:ADJustment:PHASe?
     - AWGControl:LSTate?
-    - AWGControl:PJUMp:JSTRobe {0|1|OFF|ON}
+    - AWGControl:PJUMp:JSTRobe {ON|OFF|1|0}
     - AWGControl:PJUMp:JSTRobe?
     - AWGControl:PJUMp:SEDGe {FALLing|RISing}
     - AWGControl:PJUMp:SEDGe?
@@ -40,7 +40,7 @@ Commands and Queries:
     - AWGControl:SREStore <filepath>[,<msus>]
     - AWGControl:SSAVe <filepath>[,<msus>]
     - AWGControl:STOP:IMMediate
-    - AWGControl:STReaming:ENABle {OFF|ON|0|1}
+    - AWGControl:STReaming:ENABle {ON|OFF|1|0}
     - AWGControl:STReaming:ENABle?
     - AWGControl:STReaming:JEVent {ATRigger|BTRigger|T1}
     - AWGControl:STReaming:JEVent?
@@ -50,7 +50,7 @@ Commands and Queries:
     - AWGControl:TIMer:INTerval:SEConds?
     - AWGControl:TIMer:RSTate?
     - AWGControl:TIMer:RUN
-    - AWGControl:TIMer:SOPLay {OFF|ON|0|1}
+    - AWGControl:TIMer:SOPLay {ON|OFF|1|0}
     - AWGControl:TIMer:SOPLay?
     - AWGControl:TIMer:STOP
     ```
@@ -102,7 +102,7 @@ class AwgcontrolTimerSoplay(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - AWGControl:TIMer:SOPLay {OFF|ON|0|1}
+        - AWGControl:TIMer:SOPLay {ON|OFF|1|0}
         - AWGControl:TIMer:SOPLay?
         ```
     """
@@ -349,7 +349,7 @@ class AwgcontrolTimer(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - AWGControl:TIMer:SOPLay {OFF|ON|0|1}
+            - AWGControl:TIMer:SOPLay {ON|OFF|1|0}
             - AWGControl:TIMer:SOPLay?
             ```
         """
@@ -409,7 +409,7 @@ class AwgcontrolStreamingEnable(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - AWGControl:STReaming:ENABle {OFF|ON|0|1}
+        - AWGControl:STReaming:ENABle {ON|OFF|1|0}
         - AWGControl:STReaming:ENABle?
         ```
     """
@@ -449,7 +449,7 @@ class AwgcontrolStreaming(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - AWGControl:STReaming:ENABle {OFF|ON|0|1}
+            - AWGControl:STReaming:ENABle {ON|OFF|1|0}
             - AWGControl:STReaming:ENABle?
             ```
         """
@@ -724,7 +724,7 @@ class AwgcontrolPjumpJstrobe(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - AWGControl:PJUMp:JSTRobe {0|1|OFF|ON}
+        - AWGControl:PJUMp:JSTRobe {ON|OFF|1|0}
         - AWGControl:PJUMp:JSTRobe?
         ```
     """
@@ -768,7 +768,7 @@ class AwgcontrolPjump(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - AWGControl:PJUMp:JSTRobe {0|1|OFF|ON}
+            - AWGControl:PJUMp:JSTRobe {ON|OFF|1|0}
             - AWGControl:PJUMp:JSTRobe?
             ```
         """
@@ -1008,7 +1008,7 @@ class AwgcontrolDoutputItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - AWGControl:DOUTput[n]:STATe {OFF|ON|0|1}
+        - AWGControl:DOUTput[n]:STATe {ON|OFF|1|0}
         - AWGControl:DOUTput[n]:STATe?
         ```
     """
@@ -1047,7 +1047,7 @@ class AwgcontrolDoutputItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - AWGControl:DOUTput[n]:STATe {OFF|ON|0|1}
+            - AWGControl:DOUTput[n]:STATe {ON|OFF|1|0}
             - AWGControl:DOUTput[n]:STATe?
             ```
         """
@@ -1070,7 +1070,7 @@ class AwgcontrolDloadingEnable(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - AWGControl:DLOading:ENABle {OFF|ON|0|1}
+        - AWGControl:DLOading:ENABle {ON|OFF|1|0}
         - AWGControl:DLOading:ENABle?
         ```
     """
@@ -1109,7 +1109,7 @@ class AwgcontrolDloading(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - AWGControl:DLOading:ENABle {OFF|ON|0|1}
+            - AWGControl:DLOading:ENABle {ON|OFF|1|0}
             - AWGControl:DLOading:ENABle?
             ```
         """
@@ -1412,7 +1412,7 @@ class AwgcontrolArsettings(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - AWGControl:ARSettings {0|1|ON|OFF}
+        - AWGControl:ARSettings {ON|OFF|1|0}
         - AWGControl:ARSettings?
         ```
     """
@@ -1494,7 +1494,7 @@ class Awgcontrol(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - AWGControl:ARSettings {0|1|ON|OFF}
+            - AWGControl:ARSettings {ON|OFF|1|0}
             - AWGControl:ARSettings?
             ```
         """

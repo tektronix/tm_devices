@@ -11,7 +11,7 @@ Commands and Queries:
     ```
     - SOURce:FREQuency <frequency>
     - SOURce:FREQuency?
-    - SOURce:RCCouple {0|1|ON|OFF}
+    - SOURce:RCCouple {ON|OFF|1|0}
     - SOURce:RCCouple?
     - SOURce:ROSCillator:MULTiplier <NR1>
     - SOURce:ROSCillator:MULTiplier?
@@ -1698,7 +1698,7 @@ class SourceRccouple(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SOURce:RCCouple {0|1|ON|OFF}
+        - SOURce:RCCouple {ON|OFF|1|0}
         - SOURce:RCCouple?
         ```
 
@@ -1796,7 +1796,7 @@ class Source(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SOURce:RCCouple {0|1|ON|OFF}
+            - SOURce:RCCouple {ON|OFF|1|0}
             - SOURce:RCCouple?
             ```
 

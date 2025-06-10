@@ -47,7 +47,7 @@ class DiagState(SCPICmdWrite):
         ```
 
     Info:
-        - ``EXECUTE`` starts execution of the diagnostics.
+        - ``EXECute`` starts execution of the diagnostics.
         - ``ABOrt`` disables diagnostics capabilities and returns the instrument to a normal
           operating state.
     """
@@ -267,11 +267,11 @@ class DiagLoopOption(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``Fail`` - run until a failure is found, then halt.
-        - ``Once`` - run through one loop.
-        - ``Always`` - run forever.
-        - ``Onfail`` - run until a failure is found, then loop on it.
-        - ``Ntimes`` - run n number of loops.
+        - ``FAIL`` - run until a failure is found, then halt.
+        - ``ONCE`` - run through one loop.
+        - ``ALWAYS`` - run forever.
+        - ``ONFAIL`` - run until a failure is found, then loop on it.
+        - ``NTIMES`` - run n number of loops.
 
     Properties:
         - ``.ntimes``: The ``DIAg:LOOP:OPTion:NTIMes`` command.
@@ -345,11 +345,11 @@ class DiagLoop(SCPICmdRead):
             ```
 
         Info:
-            - ``Fail`` - run until a failure is found, then halt.
-            - ``Once`` - run through one loop.
-            - ``Always`` - run forever.
-            - ``Onfail`` - run until a failure is found, then loop on it.
-            - ``Ntimes`` - run n number of loops.
+            - ``FAIL`` - run until a failure is found, then halt.
+            - ``ONCE`` - run through one loop.
+            - ``ALWAYS`` - run forever.
+            - ``ONFAIL`` - run until a failure is found, then loop on it.
+            - ``NTIMES`` - run n number of loops.
 
         Sub-properties:
             - ``.ntimes``: The ``DIAg:LOOP:OPTion:NTIMes`` command.
@@ -507,7 +507,7 @@ class Diag(SCPICmdRead):
             ```
 
         Info:
-            - ``EXECUTE`` starts execution of the diagnostics.
+            - ``EXECute`` starts execution of the diagnostics.
             - ``ABOrt`` disables diagnostics capabilities and returns the instrument to a normal
               operating state.
         """

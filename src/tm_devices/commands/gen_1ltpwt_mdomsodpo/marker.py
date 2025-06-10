@@ -16,13 +16,13 @@ Commands and Queries:
     - MARKER:M<x>:FREQuency:DELTa?
     - MARKER:M<x>:NOISEDensity?
     - MARKER:M<x>:PHASENoise?
-    - MARKER:MANual {OFF|ON|0|1}
+    - MARKER:MANual {ON|OFF|1|0}
     - MARKER:MANual?
     - MARKER:PEAK:EXCURsion <NR3>
     - MARKER:PEAK:EXCURsion?
     - MARKER:PEAK:MAXimum <NR1>
     - MARKER:PEAK:MAXimum?
-    - MARKER:PEAK:STATE {OFF|ON|0|1}
+    - MARKER:PEAK:STATE {ON|OFF|1|0}
     - MARKER:PEAK:STATE?
     - MARKER:PEAK:THReshold <NR3>
     - MARKER:PEAK:THReshold?
@@ -250,7 +250,7 @@ class MarkerPeakState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MARKER:PEAK:STATE {OFF|ON|0|1}
+        - MARKER:PEAK:STATE {ON|OFF|1|0}
         - MARKER:PEAK:STATE?
         ```
 
@@ -428,7 +428,7 @@ class MarkerPeak(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MARKER:PEAK:STATE {OFF|ON|0|1}
+            - MARKER:PEAK:STATE {ON|OFF|1|0}
             - MARKER:PEAK:STATE?
             ```
 
@@ -492,7 +492,7 @@ class MarkerManual(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MARKER:MANual {OFF|ON|0|1}
+        - MARKER:MANual {ON|OFF|1|0}
         - MARKER:MANual?
         ```
 
@@ -924,7 +924,7 @@ class Marker(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MARKER:MANual {OFF|ON|0|1}
+            - MARKER:MANual {ON|OFF|1|0}
             - MARKER:MANual?
             ```
 

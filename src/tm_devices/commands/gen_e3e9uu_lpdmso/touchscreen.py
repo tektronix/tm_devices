@@ -10,7 +10,7 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - TOUCHSCReen:CALibrate STARt
-    - TOUCHSCReen:STATe {0|1|OFF|ON}
+    - TOUCHSCReen:STATe {ON|OFF|1|0}
     - TOUCHSCReen:STATe?
     ```
 """
@@ -40,11 +40,12 @@ class TouchscreenState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TOUCHSCReen:STATe {0|1|OFF|ON}
+        - TOUCHSCReen:STATe {ON|OFF|1|0}
         - TOUCHSCReen:STATe?
         ```
 
     Info:
+        - ``1`` enables the touch screen.
         - ``0`` disables the touch screen.
         - ``ON`` enables the touch screen.
         - ``OFF`` disables the touch screen.
@@ -132,11 +133,12 @@ class Touchscreen(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TOUCHSCReen:STATe {0|1|OFF|ON}
+            - TOUCHSCReen:STATe {ON|OFF|1|0}
             - TOUCHSCReen:STATe?
             ```
 
         Info:
+            - ``1`` enables the touch screen.
             - ``0`` disables the touch screen.
             - ``ON`` enables the touch screen.
             - ``OFF`` disables the touch screen.

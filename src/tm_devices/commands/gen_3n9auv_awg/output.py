@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - OUTPut:OFF {0|1|OFF|ON}
+    - OUTPut:OFF {ON|OFF|1|0}
     - OUTPut:OFF?
     ```
 """
@@ -41,7 +41,7 @@ class OutputOff(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - OUTPut:OFF {0|1|OFF|ON}
+        - OUTPut:OFF {ON|OFF|1|0}
         - OUTPut:OFF?
         ```
 
@@ -89,7 +89,7 @@ class Output(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - OUTPut:OFF {0|1|OFF|ON}
+            - OUTPut:OFF {ON|OFF|1|0}
             - OUTPut:OFF?
             ```
 
