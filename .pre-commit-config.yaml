@@ -53,7 +53,7 @@ repos:
       - id: actionlint
         additional_dependencies: [pyflakes, shellcheck-py]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: a8094aebad266040ef07f118a96c88a93f4aecf8  # frozen: v4.8.2
+    rev: c710c9f541ae452547fdce5c360929f007ec4867  # frozen: v4.8.3
     hooks:
       - id: commitizen
         stages: [commit-msg]
