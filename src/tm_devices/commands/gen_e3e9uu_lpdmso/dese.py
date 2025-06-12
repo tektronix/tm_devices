@@ -44,6 +44,12 @@ class Dese(SCPICmdWrite, SCPICmdRead):
         - DESE <NR1>
         - DESE?
         ```
+
+    Info:
+        - ``<NR1>`` The binary bits of the DESER are set according to this value, which rangesfrom 1
+          through 255. For example, ``DESE 209`` sets the DESER to the binary value11010001 (that
+          is, the most significant bit in the register is set to 1, the next mostsignificant bit to
+          1, the next bit to 0, etc.).
     """
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DESE") -> None:

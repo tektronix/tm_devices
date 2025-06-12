@@ -20,7 +20,7 @@ Commands and Queries:
     - ACQuire:FASTAcq:STATE {ON|OFF|<NR1>}
     - ACQuire:FASTAcq:STATE?
     - ACQuire:MAXSamplerate?
-    - ACQuire:MODe {SAMple|PEAKdetect}
+    - ACQuire:MODe {SAMple|PEAKdetect|HIRes|AVErage|ENVelope}
     - ACQuire:MODe?
     - ACQuire:NUMACq?
     - ACQuire:NUMAVg <NR1>
@@ -52,7 +52,7 @@ class AcquireStopafter(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries whether the instrument continually acquires acquisitions or
           acquires a single sequence. Pressing SINGLE on the front panel button is equivalent to
-          sending these commands: ``ACQUIRE:STOPAFTER SEQUENCE`` ``ACQUIRE:STATE 1``
+          sending these commands: ``ACQUIRE:STOPAFTER SEQUENCE`` and ``ACQUIRE:STATE 1``.
 
     Usage:
         - Using the ``.query()`` method will send the ``ACQuire:STOPAfter?`` query.
@@ -84,7 +84,9 @@ class AcquireState(SCPICmdWrite, SCPICmdRead):
           single sequence acquisition (for example, averaging or enveloping), the acquisition
           sequence is restarted, and any accumulated data is discarded. Also, the instrument resets
           the number of acquisitions. If the RUN argument is issued while in continuous mode, a
-          reset occurs and acquired data continues to acquire. If ``acquire:stopafter``
+          reset occurs and acquired data continues to acquire. If ``acquire:stopafter`` is SEQUENCE,
+          this command leaves the instrument in single sequence, unlike the run/stop button which
+          takes the instrument out of single sequence.
 
     Usage:
         - Using the ``.query()`` method will send the ``ACQuire:STATE?`` query.
@@ -335,7 +337,7 @@ class AcquireMode(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ACQuire:MODe {SAMple|PEAKdetect}
+        - ACQuire:MODe {SAMple|PEAKdetect|HIRes|AVErage|ENVelope}
         - ACQuire:MODe?
         ```
 
@@ -821,7 +823,7 @@ class Acquire(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ACQuire:MODe {SAMple|PEAKdetect}
+            - ACQuire:MODe {SAMple|PEAKdetect|HIRes|AVErage|ENVelope}
             - ACQuire:MODe?
             ```
 
@@ -944,7 +946,9 @@ class Acquire(SCPICmdRead):
               enveloping), the acquisition sequence is restarted, and any accumulated data is
               discarded. Also, the instrument resets the number of acquisitions. If the RUN argument
               is issued while in continuous mode, a reset occurs and acquired data continues to
-              acquire. If ``acquire:stopafter``
+              acquire. If ``acquire:stopafter`` is SEQUENCE, this command leaves the instrument in
+              single sequence, unlike the run/stop button which takes the instrument out of single
+              sequence.
 
         Usage:
             - Using the ``.query()`` method will send the ``ACQuire:STATE?`` query.
@@ -974,7 +978,7 @@ class Acquire(SCPICmdRead):
         Description:
             - This command sets or queries whether the instrument continually acquires acquisitions
               or acquires a single sequence. Pressing SINGLE on the front panel button is equivalent
-              to sending these commands: ``ACQUIRE:STOPAFTER SEQUENCE`` ``ACQUIRE:STATE 1``
+              to sending these commands: ``ACQUIRE:STOPAFTER SEQUENCE`` and ``ACQUIRE:STATE 1``.
 
         Usage:
             - Using the ``.query()`` method will send the ``ACQuire:STOPAfter?`` query.

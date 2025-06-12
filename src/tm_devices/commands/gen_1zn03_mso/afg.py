@@ -76,7 +76,7 @@ class AfgSquareDuty(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NR3`` is a floating point number that represents the AFG duty cycle as a percentage.
+        - ``<NR3>`` is a floating point number that represents the AFG duty cycle as a percentage.
     """
 
 
@@ -117,7 +117,8 @@ class AfgSquare(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` is a floating point number that represents the AFG duty cycle as a percentage.
+            - ``<NR3>`` is a floating point number that represents the AFG duty cycle as a
+              percentage.
         """
         return self._duty
 

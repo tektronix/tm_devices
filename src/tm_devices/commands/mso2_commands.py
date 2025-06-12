@@ -44,7 +44,6 @@ from .gen_1zn03_mso.select import Select
 from .gen_1zn03_mso.touchscreen import Touchscreen
 from .gen_1zn03_mso.trigger import Trigger
 from .gen_1zn03_mso.vxi import Vxi
-from .gen_c69az_msotekscopepc.autosavepitimeout import Autosavepitimeout
 from .gen_c69az_msotekscopepc.autosaveuitimeout import Autosaveuitimeout
 from .gen_c69az_msotekscopepc.curve import Curve
 from .gen_c69az_msotekscopepc.curvestream import Curvestream
@@ -62,13 +61,13 @@ from .gen_e3h2zs_lpdmso.usbdevice import Usbdevice
 from .gen_e4de2d_lpdmsomdo.clear import Clear
 from .gen_e6bmgw_lpdmsotekscopepcdpomdo.totaluptime import Totaluptime
 from .gen_e6wozn_lpdmsotekscopepcmdodpo.pause import Pause
+from .gen_e47rsg_lpdmsotekscopepc.autosavepitimeout import Autosavepitimeout
 from .gen_e47rsg_lpdmsotekscopepc.bustable import Bustable
 from .gen_e47rsg_lpdmsotekscopepc.configuration import Configuration
 from .gen_e47rsg_lpdmsotekscopepc.date import Date
 from .gen_e47rsg_lpdmsotekscopepc.meastable import Meastable
 from .gen_e47rsg_lpdmsotekscopepc.undo import Undo
 from .gen_fhui75_msodpomdodsa.miscellaneous import Ddt
-from .gen_fhui75_msodpomdodsa.password import Password
 from .gen_fil6zt_msotekscopepcdpomdodsa.busy import Busy
 from .gen_fil6zt_msotekscopepcdpomdodsa.dese import Dese
 from .gen_fil6zt_msotekscopepcdpomdodsa.event import Event
@@ -90,6 +89,7 @@ from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Es
 from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
 from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
 from .gen_fx54ua_lpdmsodpomdodsa.newpass import Newpass
+from .gen_fx54ua_lpdmsodpomdodsa.password import Password
 from .gen_fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.allev import Allev
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.id import Id
@@ -815,7 +815,7 @@ class MSO2Commands:
             ```
 
         Info:
-            - ``<NR1>``
+            - ``<NR1>`` sets the timeout time.
         """
         return self._autosavepitimeout
 

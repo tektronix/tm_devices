@@ -712,6 +712,7 @@ class BusBItemUsbProbe(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``B<x>`` is the number of the bus waveform.
         - ``DIFFerential`` indicates the bus probe is a differential probe.
         - ``SINGleended`` indicates the bus probe is not a differential probe.
     """
@@ -736,6 +737,7 @@ class BusBItemUsbBitrate(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``B<x>`` is the number of the bus waveform.
         - ``FULL`` indicates the bit rate is 12 Mbps.
         - ``HIGH`` indicates the bit rate is 480 Mbps.
         - ``LOW`` indicates the bit rate is 1.5 Mbps.
@@ -749,6 +751,9 @@ class BusBItemUsb(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:USB?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:USB?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus waveform.
 
     Properties:
         - ``.bitrate``: The ``BUS:B<x>:USB:BITRate`` command.
@@ -783,6 +788,7 @@ class BusBItemUsb(SCPICmdRead):
             ```
 
         Info:
+            - ``B<x>`` is the number of the bus waveform.
             - ``FULL`` indicates the bit rate is 12 Mbps.
             - ``HIGH`` indicates the bit rate is 480 Mbps.
             - ``LOW`` indicates the bit rate is 1.5 Mbps.
@@ -809,6 +815,7 @@ class BusBItemUsb(SCPICmdRead):
             ```
 
         Info:
+            - ``B<x>`` is the number of the bus waveform.
             - ``DIFFerential`` indicates the bus probe is a differential probe.
             - ``SINGleended`` indicates the bus probe is not a differential probe.
         """
@@ -6494,6 +6501,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:USB?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:USB?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus waveform.
 
         Sub-properties:
             - ``.bitrate``: The ``BUS:B<x>:USB:BITRate`` command.

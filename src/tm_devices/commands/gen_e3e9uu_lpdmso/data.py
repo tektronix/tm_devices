@@ -412,6 +412,14 @@ class Data(SCPICmdWrite, SCPICmdRead):
         - DATa?
         ```
 
+    Info:
+        - ``INIT`` initializes the waveform data parameters to their factory defaults except for
+          ``DATa:STOP``, which isset to the current acquisition record length.
+        - ``SNAp`` Sets ``DATa:STARt`` and ``DATa:STOP`` to match the current waveform cursor
+          positions of WAVEVIEW1 CURSOR1 if these waveform cursors are currently on. If these
+          waveform cursors are not on when the ``DATa SNAp`` command is sent, it is silently ignored
+          and ``DATa:STARt`` and ``:STOP`` remain unchanged.
+
     Properties:
         - ``.encdg``: The ``DATa:ENCdg`` command.
         - ``.framestart``: The ``DATa:FRAMESTARt`` command.

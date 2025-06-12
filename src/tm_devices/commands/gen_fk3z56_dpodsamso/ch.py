@@ -963,6 +963,8 @@ class ChannelProbeForcedrange(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` specifies the probe dynamic range.
         - ``<dynamicRangeNR3>`` specifies the probe range.
     """
 
@@ -1358,6 +1360,8 @@ class ChannelProbe(SCPICmdRead):
             ```
 
         Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` specifies the probe dynamic range.
             - ``<dynamicRangeNR3>`` specifies the probe range.
         """
         return self._forcedrange

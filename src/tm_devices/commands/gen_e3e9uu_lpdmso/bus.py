@@ -7630,6 +7630,9 @@ class BusBItemParallelAllthresholdsApply(SCPICmdWriteNoArguments):
         ```
         - BUS:B<x>:PARallel:ALLTHResholds:APPly
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
     """
 
 
@@ -7674,6 +7677,9 @@ class BusBItemParallelAllthresholds(SCPICmdWrite, SCPICmdRead):
             ```
             - BUS:B<x>:PARallel:ALLTHResholds:APPly
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
         """
         return self._apply
 

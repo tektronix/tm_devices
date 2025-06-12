@@ -1,4 +1,3 @@
-# pylint: disable=line-too-long
 """The visual commands module.
 
 These commands are used in the following models:
@@ -25,7 +24,7 @@ Commands and Queries:
     - VISual:AREA<x>:SHAPE?
     - VISual:AREA<x>:SOUrce CH<x>
     - VISual:AREA<x>:SOUrce?
-    - VISual:AREA<x>:VERTICES '<NR3>, <NR3>, <NR3>, <NR3>, <NR3>, <NR3> [,<NR3>, <NR3>, ...]'
+    - VISual:AREA<x>:VERTICES <NR3>, <NR3>, <NR3>, <NR3>, <NR3>, <NR3> [,<NR3>, <NR3>, ...]
     - VISual:AREA<x>:VERTICES?
     - VISual:AREA<x>:WIDTH <NR3>
     - VISual:AREA<x>:WIDTH?
@@ -307,7 +306,7 @@ class VisualAreaItemVertices(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - VISual:AREA<x>:VERTICES '<NR3>, <NR3>, <NR3>, <NR3>, <NR3>, <NR3> [,<NR3>, <NR3>, ...]'
+        - VISual:AREA<x>:VERTICES <NR3>, <NR3>, <NR3>, <NR3>, <NR3>, <NR3> [,<NR3>, <NR3>, ...]
         - VISual:AREA<x>:VERTICES?
         ```
 
@@ -863,14 +862,14 @@ class VisualAreaItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - VISual:AREA<x>:VERTICES '<NR3>, <NR3>, <NR3>, <NR3>, <NR3>, <NR3> [,<NR3>, <NR3>, ...]'
+            - VISual:AREA<x>:VERTICES <NR3>, <NR3>, <NR3>, <NR3>, <NR3>, <NR3> [,<NR3>, <NR3>, ...]
             - VISual:AREA<x>:VERTICES?
             ```
 
         Info:
             - ``AREA<x>`` specifies the integer number of a Visual Trigger area.
             - ``<NR3>``
-        """  # noqa: E501
+        """
         return self._vertices
 
     @property

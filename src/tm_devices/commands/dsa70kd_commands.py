@@ -19,7 +19,6 @@ from .gen_fhrp27_msodpomdodsa.date import Date
 from .gen_fhrp27_msodpomdodsa.mathvar import Mathvar
 from .gen_fhrp27_msodpomdodsa.save_and_recall import Rcl, Sav
 from .gen_fhui75_msodpomdodsa.miscellaneous import Ddt
-from .gen_fhui75_msodpomdodsa.password import Password
 from .gen_fil6zt_msotekscopepcdpomdodsa.busy import Busy
 from .gen_fil6zt_msotekscopepcdpomdodsa.dese import Dese
 from .gen_fil6zt_msotekscopepcdpomdodsa.event import Event
@@ -104,6 +103,7 @@ from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Es
 from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
 from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
 from .gen_fx54ua_lpdmsodpomdodsa.newpass import Newpass
+from .gen_fx54ua_lpdmsodpomdodsa.password import Password
 from .gen_fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.allev import Allev
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.id import Id

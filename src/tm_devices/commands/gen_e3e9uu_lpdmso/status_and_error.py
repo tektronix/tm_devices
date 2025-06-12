@@ -14,6 +14,8 @@ Commands and Queries:
     - *OPC
     - *OPC?
     - *RST
+    - *SRE <NR1>
+    - *SRE?
     ```
 """
 
@@ -23,6 +25,34 @@ from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.pi_control import PIControl
+
+
+class Sre(SCPICmdWrite, SCPICmdRead):
+    """The ``*SRE`` command.
+
+    Description:
+        - The ``*SRE``
+
+    Usage:
+        - Using the ``.query()`` method will send the ``*SRE?`` query.
+        - Using the ``.verify(value)`` method will send the ``*SRE?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``*SRE value`` command.
+
+    SCPI Syntax:
+        ```
+        - *SRE <NR1>
+        - *SRE?
+        ```
+
+    Info:
+        - ``<NR1>`` is a value in the range from 0 through 255. The binary bits of the SRER are set
+          according to this value. Using an out-of-range value causes an execution error. The
+          power-on default for SRER is 0 if.
+    """
+
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*SRE") -> None:
+        super().__init__(device, cmd_syntax)
 
 
 class Rst(SCPICmdWriteNoArguments):

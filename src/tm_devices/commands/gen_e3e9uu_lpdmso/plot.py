@@ -2340,7 +2340,8 @@ class PlotDelete(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` is the specified plot. Argument is of the form '.
+        - ``<QString>`` is the specified plot. Argument is of the form 'PLOT<NR1>', where <NR1> is ≥
+          1).
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -2427,7 +2428,8 @@ class Plot(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the specified plot. Argument is of the form '.
+            - ``<QString>`` is the specified plot. Argument is of the form 'PLOT<NR1>', where <NR1>
+              is ≥ 1).
         """
         return self._delete
 

@@ -2378,6 +2378,8 @@ class ActoneventMaskfailActionSrqState(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``ON`` enables the generate an SRQ event when a mask fails feature.
+        - ``OFF`` disables the generate an SRQ event when a mask fails feature.
         - ``<NR1>`` is a number that enables or disables the generate an SRQ event when a mask fails
           feature. The number zero disables the feature, all other numbers enable the feature.
     """
@@ -2422,6 +2424,8 @@ class ActoneventMaskfailActionSrq(SCPICmdRead):
             ```
 
         Info:
+            - ``ON`` enables the generate an SRQ event when a mask fails feature.
+            - ``OFF`` disables the generate an SRQ event when a mask fails feature.
             - ``<NR1>`` is a number that enables or disables the generate an SRQ event when a mask
               fails feature. The number zero disables the feature, all other numbers enable the
               feature.
@@ -2739,7 +2743,8 @@ class ActoneventLimitcount(SCPICmdWrite, SCPICmdRead):
     """The ``ACTONEVent:LIMITCount`` command.
 
     Description:
-        - This command sets the limit of act on even saves. The ``ACTONEVent:LIMit``
+        - This command sets the limit of act on even saves. The ``ACTONEVent:LIMit`` command must be
+          enabled.
 
     Usage:
         - Using the ``.query()`` method will send the ``ACTONEVent:LIMITCount?`` query.
@@ -2850,7 +2855,8 @@ class Actonevent(SCPICmdRead):
         """Return the ``ACTONEVent:LIMITCount`` command.
 
         Description:
-            - This command sets the limit of act on even saves. The ``ACTONEVent:LIMit``
+            - This command sets the limit of act on even saves. The ``ACTONEVent:LIMit`` command
+              must be enabled.
 
         Usage:
             - Using the ``.query()`` method will send the ``ACTONEVent:LIMITCount?`` query.

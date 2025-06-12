@@ -42,7 +42,7 @@ class Busy(SCPICmdRead):
         - ``<NR1> = 0`` means that the instrument is not busy processing a command whose execution
           time is extensive.
         - ``<NR1> = 1`` means that the instrument is busy processing Commands that Generate an OPC
-          Message (.
+          Message.
     """
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "BUSY") -> None:

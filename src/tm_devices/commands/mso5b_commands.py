@@ -15,7 +15,6 @@ from .gen_e3e9uu_lpdmso.actonevent import Actonevent
 from .gen_e3e9uu_lpdmso.afg import Afg
 from .gen_e3e9uu_lpdmso.alias import Alias
 from .gen_e3e9uu_lpdmso.application import Application
-from .gen_e3e9uu_lpdmso.autosavepitimeout import Autosavepitimeout
 from .gen_e3e9uu_lpdmso.autosaveuitimeout import Autosaveuitimeout
 from .gen_e3e9uu_lpdmso.autoset import Autoset
 from .gen_e3e9uu_lpdmso.auxout import Auxout
@@ -56,7 +55,6 @@ from .gen_e3e9uu_lpdmso.math import Math
 from .gen_e3e9uu_lpdmso.matharbflt import MatharbfltItem
 from .gen_e3e9uu_lpdmso.measurement import Measurement
 from .gen_e3e9uu_lpdmso.miscellaneous import Ddt, Lrn
-from .gen_e3e9uu_lpdmso.password import Password
 from .gen_e3e9uu_lpdmso.peakstable import Peakstable
 from .gen_e3e9uu_lpdmso.pilogger import Pilogger
 from .gen_e3e9uu_lpdmso.plot import Plot
@@ -72,7 +70,7 @@ from .gen_e3e9uu_lpdmso.searchtable import Searchtable
 from .gen_e3e9uu_lpdmso.select import Select
 from .gen_e3e9uu_lpdmso.set import Set
 from .gen_e3e9uu_lpdmso.socketserver import Socketserver
-from .gen_e3e9uu_lpdmso.status_and_error import Ese, Opc, Rst
+from .gen_e3e9uu_lpdmso.status_and_error import Ese, Opc, Rst, Sre
 from .gen_e3e9uu_lpdmso.sv import Sv
 from .gen_e3e9uu_lpdmso.time import Time
 from .gen_e3e9uu_lpdmso.touchscreen import Touchscreen
@@ -89,6 +87,7 @@ from .gen_e4de2d_lpdmsomdo.clear import Clear
 from .gen_e6bmgw_lpdmsotekscopepcdpomdo.totaluptime import Totaluptime
 from .gen_e6wozn_lpdmsotekscopepcmdodpo.pause import Pause
 from .gen_e44yni_lpdmsotekscopepc.ref import RefItem
+from .gen_e47rsg_lpdmsotekscopepc.autosavepitimeout import Autosavepitimeout
 from .gen_e47rsg_lpdmsotekscopepc.bustable import Bustable
 from .gen_e47rsg_lpdmsotekscopepc.configuration import Configuration
 from .gen_e47rsg_lpdmsotekscopepc.date import Date
@@ -99,6 +98,7 @@ from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Es
 from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
 from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
 from .gen_fx54ua_lpdmsodpomdodsa.newpass import Newpass
+from .gen_fx54ua_lpdmsodpomdodsa.password import Password
 from .gen_fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.allev import Allev
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.id import Id
@@ -404,6 +404,7 @@ class MSO5BCommandConstants:
     ENTERSWINDOW = "ENTERSWINDOW"  # ENTERSWindow
     ENTRDYA = "ENTRDYA"  # ENTRDya
     ENTRTSTMODE = "ENTRTSTMODE"  # ENTRTSTMode
+    ENVELOPE = "ENVELOPE"  # ENVelope
     EOC = "EOC"
     EOF = "EOF"
     EOP = "EOP"
@@ -603,6 +604,7 @@ class MSO5BCommandConstants:
     HIGHRES = "HIGHRES"
     HIGHZ = "HIGHZ"
     HILBERT = "HILBERT"  # HILBert
+    HIRES = "HIRES"  # HIRes
     HISTOGRAM = "HISTOGRAM"  # HISTogram
     HLTA = "HLTA"  # HLTa
     HLTB = "HLTB"
@@ -642,6 +644,7 @@ class MSO5BCommandConstants:
     INFINITE = "INFINITE"  # INFInite
     INFORMATION = "INFORMATION"  # INFormation
     INFPERSIST = "INFPERSIST"  # INFPersist
+    INIT = "INIT"
     INPUT = "INPUT"
     INPWR = "INPWR"
     INPWRSUM = "INPWRSUM"
@@ -1153,6 +1156,7 @@ class MSO5BCommandConstants:
     SLOWER = "SLOWER"  # SLOWer
     SLOWERTHAN = "SLOWERTHAN"  # SLOWERthan
     SMPS = "SMPS"
+    SNAP = "SNAP"  # SNAp
     SNRM = "SNRM"
     SNRME = "SNRME"
     SOC = "SOC"
@@ -1444,6 +1448,7 @@ class MSO5BCommands:
         - ``.select``: The ``SELect`` command tree.
         - ``.set``: The ``SET`` command.
         - ``.socketserver``: The ``SOCKETServer`` command tree.
+        - ``.sre``: The ``*SRE`` command.
         - ``.sv``: The ``SV`` command tree.
         - ``.teksecure``: The ``TEKSecure`` command.
         - ``.time``: The ``TIMe`` command.
@@ -1558,6 +1563,7 @@ class MSO5BCommands:
         self._select = Select(device)
         self._set = Set(device)
         self._socketserver = Socketserver(device)
+        self._sre = Sre(device)
         self._sv = Sv(device)
         self._teksecure = Teksecure(device)
         self._time = Time(device)
@@ -1877,7 +1883,7 @@ class MSO5BCommands:
             - ``<NR1> = 0`` means that the instrument is not busy processing a command whose
               execution time is extensive.
             - ``<NR1> = 1`` means that the instrument is busy processing Commands that Generate an
-              OPC Message (.
+              OPC Message.
         """
         return self._busy
 
@@ -2143,7 +2149,7 @@ class MSO5BCommands:
               not sent out until each complete record is acquired. If the waveform records are being
               acquired rapidly (low resolution), and the controller is not reading the data off the
               bus fast enough, the trigger rate is slowed to allow each waveform to be sent
-              sequentially.Curve data is transferred from the instrument asynchronously
+              sequentially. Curve data is transferred from the instrument asynchronously
               and,depending upon the length of the curve record, such transfers can require
               severalseconds to complete. During this time, the instrument will not respond to
               usercontrols. You can interrupt these asynchronous data transfers by sending adevice
@@ -2197,6 +2203,14 @@ class MSO5BCommands:
             - DATa {INIT|SNAp}
             - DATa?
             ```
+
+        Info:
+            - ``INIT`` initializes the waveform data parameters to their factory defaults except for
+              ``DATa:STOP``, which isset to the current acquisition record length.
+            - ``SNAp`` Sets ``DATa:STARt`` and ``DATa:STOP`` to match the current waveform cursor
+              positions of WAVEVIEW1 CURSOR1 if these waveform cursors are currently on. If these
+              waveform cursors are not on when the ``DATa SNAp`` command is sent, it is silently
+              ignored and ``DATa:STARt`` and ``:STOP`` remain unchanged.
 
         Sub-properties:
             - ``.encdg``: The ``DATa:ENCdg`` command.
@@ -2277,6 +2291,12 @@ class MSO5BCommands:
             - DESE <NR1>
             - DESE?
             ```
+
+        Info:
+            - ``<NR1>`` The binary bits of the DESER are set according to this value, which
+              rangesfrom 1 through 255. For example, ``DESE 209`` sets the DESER to the binary
+              value11010001 (that is, the most significant bit in the register is set to 1, the next
+              mostsignificant bit to 1, the next bit to 0, etc.).
         """
         return self._dese
 
@@ -2615,8 +2635,8 @@ class MSO5BCommands:
             - This command sets or queries the Response Header Enable State that causes the
               instrument to either include or omit headers on query responses. Whether the long or
               short form of header keywords and enumerations are returned is dependent upon the
-              state of ``:VERBose``.This command does not affect IEEE Std 488.2-1987 Common Commands
-              (those starting with an asterisk); these commands never return headers.
+              state of ``:VERBose``. This command does not affect IEEE Std 488.2-1987 Common
+              Commands (those starting with an asterisk); these commands never return headers.
 
         Usage:
             - Using the ``.query()`` method will send the ``HEADer?`` query.
@@ -2816,7 +2836,8 @@ class MSO5BCommands:
 
         Info:
             - ``ALL`` disables all front panel controls and the touch screen.
-            - ``NONe`` enables all front panel controls and the touch screen. The.
+            - ``NONe`` enables all front panel controls and the touch screen. The UNLock ALL command
+              only unlocks the front panel controls.
             - ``LOCk NONe`` command has no effect. For more information, see the ANSI/IEEE Std
               488.1-1987 Standard Digital Interface for Programmable Instrumentation, section 2.8.3
               on RL State Descriptions.
@@ -3503,6 +3524,32 @@ class MSO5BCommands:
         return self._socketserver
 
     @property
+    def sre(self) -> Sre:
+        """Return the ``*SRE`` command.
+
+        Description:
+            - The ``*SRE``
+
+        Usage:
+            - Using the ``.query()`` method will send the ``*SRE?`` query.
+            - Using the ``.verify(value)`` method will send the ``*SRE?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``*SRE value`` command.
+
+        SCPI Syntax:
+            ```
+            - *SRE <NR1>
+            - *SRE?
+            ```
+
+        Info:
+            - ``<NR1>`` is a value in the range from 0 through 255. The binary bits of the SRER are
+              set according to this value. Using an out-of-range value causes an execution error.
+              The power-on default for SRER is 0 if.
+        """
+        return self._sre
+
+    @property
     def sv(self) -> Sv:
         """Return the ``SV`` command tree.
 
@@ -4023,6 +4070,7 @@ class MSO5BMixin:
             - ``.select``: The ``SELect`` command tree.
             - ``.set``: The ``SET`` command.
             - ``.socketserver``: The ``SOCKETServer`` command tree.
+            - ``.sre``: The ``*SRE`` command.
             - ``.sv``: The ``SV`` command tree.
             - ``.teksecure``: The ``TEKSecure`` command.
             - ``.time``: The ``TIMe`` command.

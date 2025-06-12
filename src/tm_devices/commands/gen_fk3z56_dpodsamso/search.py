@@ -27114,12 +27114,12 @@ class SearchSearchItemTriggerABusCanDataQualifier(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``EQUal`` Arguments are the following data qualifier types.
-        - ``LESSEQual`` Arguments are the following data qualifier types.
-        - ``MOREEQua`` Arguments are the following data qualifier types.
-        - ``UNEQual`` Arguments are the following data qualifier types.
-        - ``LESSthan`` Arguments are the following data qualifier types.
-        - ``MOREthan`` Arguments are the following data qualifier types.
+        - ``EQUal`` sets the data qualifier to equal.
+        - ``LESSEQual`` sets the data qualifier to less equal.
+        - ``MOREEQua`` sets the data qualifier to more equal.
+        - ``UNEQual`` sets the data qualifier to unequal.
+        - ``LESSthan`` sets the data qualifier to less than.
+        - ``MOREthan`` sets the data qualifier to more than.
     """  # noqa: E501
 
 
@@ -27232,12 +27232,12 @@ class SearchSearchItemTriggerABusCanData(SCPICmdRead):
             ```
 
         Info:
-            - ``EQUal`` Arguments are the following data qualifier types.
-            - ``LESSEQual`` Arguments are the following data qualifier types.
-            - ``MOREEQua`` Arguments are the following data qualifier types.
-            - ``UNEQual`` Arguments are the following data qualifier types.
-            - ``LESSthan`` Arguments are the following data qualifier types.
-            - ``MOREthan`` Arguments are the following data qualifier types.
+            - ``EQUal`` sets the data qualifier to equal.
+            - ``LESSEQual`` sets the data qualifier to less equal.
+            - ``MOREEQua`` sets the data qualifier to more equal.
+            - ``UNEQual`` sets the data qualifier to unequal.
+            - ``LESSthan`` sets the data qualifier to less than.
+            - ``MOREthan`` sets the data qualifier to more than.
         """  # noqa: E501
         return self._qualifier
 

@@ -976,6 +976,7 @@ class BusBItemUsbSourceDifferential(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``B<x>`` is the number of the bus waveform.
         - ``CH<x>`` specifies an analog waveform as the source. This channel should have an attached
           differential probe.
         - ``MATH`` specifies the math waveform as the source.
@@ -990,6 +991,9 @@ class BusBItemUsbSource(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:USB:SOUrce?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:USB:SOUrce?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus waveform.
 
     Properties:
         - ``.differential``: The ``BUS:B<x>:USB:SOUrce:DIFFerential`` command.
@@ -1029,6 +1033,7 @@ class BusBItemUsbSource(SCPICmdRead):
             ```
 
         Info:
+            - ``B<x>`` is the number of the bus waveform.
             - ``CH<x>`` specifies an analog waveform as the source. This channel should have an
               attached differential probe.
             - ``MATH`` specifies the math waveform as the source.
@@ -1112,6 +1117,7 @@ class BusBItemUsbProbe(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``B<x>`` is the number of the bus waveform.
         - ``DIFFerential`` indicates the bus probe is a differential probe.
         - ``SINGleended`` indicates the bus probe is not a differential probe.
     """
@@ -1136,6 +1142,7 @@ class BusBItemUsbBitrate(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``B<x>`` is the number of the bus waveform.
         - ``LOW`` indicates the bit rate is 1.5 Mbps.
         - ``FULL`` indicates the bit rate is 12 Mbps.
         - ``HIGH`` indicates the bit rate is 480 Mbps.
@@ -1149,6 +1156,9 @@ class BusBItemUsb(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:USB?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:USB?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus waveform.
 
     Properties:
         - ``.bitrate``: The ``BUS:B<x>:USB:BITRate`` command.
@@ -1183,6 +1193,7 @@ class BusBItemUsb(SCPICmdRead):
             ```
 
         Info:
+            - ``B<x>`` is the number of the bus waveform.
             - ``LOW`` indicates the bit rate is 1.5 Mbps.
             - ``FULL`` indicates the bit rate is 12 Mbps.
             - ``HIGH`` indicates the bit rate is 480 Mbps.
@@ -1209,6 +1220,7 @@ class BusBItemUsb(SCPICmdRead):
             ```
 
         Info:
+            - ``B<x>`` is the number of the bus waveform.
             - ``DIFFerential`` indicates the bus probe is a differential probe.
             - ``SINGleended`` indicates the bus probe is not a differential probe.
         """
@@ -1222,6 +1234,9 @@ class BusBItemUsb(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:USB:SOUrce?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:USB:SOUrce?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus waveform.
 
         Sub-properties:
             - ``.differential``: The ``BUS:B<x>:USB:SOUrce:DIFFerential`` command.
@@ -3766,6 +3781,7 @@ class BusBItemMil1553bPolarity(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``B<x>`` is the number of the bus.
         - ``NORMal`` - A high-low transition represents a 1 on the Data+ line.
         - ``INVERTed`` - A high-low transition represents a 0 on the Data+ line.
     """
@@ -3778,6 +3794,9 @@ class BusBItemMil1553b(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:MIL1553B:POLarity`` command.
@@ -3814,6 +3833,7 @@ class BusBItemMil1553b(SCPICmdRead):
             ```
 
         Info:
+            - ``B<x>`` is the number of the bus.
             - ``NORMal`` - A high-low transition represents a 1 on the Data+ line.
             - ``INVERTed`` - A high-low transition represents a 0 on the Data+ line.
         """
@@ -4766,6 +4786,7 @@ class BusBItemFlexraySignal(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``B<x>`` is the number of the bus.
         - ``BDIFFBP`` sets the FlexRay standard to BDIFFBP.
         - ``BM`` sets the FlexRay standard to BM.
         - ``TXRX`` sets the FlexRay standard to TXRX.
@@ -4917,6 +4938,7 @@ class BusBItemFlexray(SCPICmdRead):
             ```
 
         Info:
+            - ``B<x>`` is the number of the bus.
             - ``BDIFFBP`` sets the FlexRay standard to BDIFFBP.
             - ``BM`` sets the FlexRay standard to BM.
             - ``TXRX`` sets the FlexRay standard to TXRX.
@@ -7427,6 +7449,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:MIL1553B:POLarity`` command.
             - ``.responsetime``: The ``BUS:B<x>:MIL1553B:RESPonsetime`` command tree.
@@ -7592,6 +7617,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:USB?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:USB?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus waveform.
 
         Sub-properties:
             - ``.bitrate``: The ``BUS:B<x>:USB:BITRate`` command.

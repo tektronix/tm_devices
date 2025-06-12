@@ -769,6 +769,10 @@ class SaveEventtableCustom(SCPICmdWrite, SCPICmdRead):
         - SAVe:EVENTtable:CUSTom <QString>
         ```
 
+    Info:
+        - ``<QString>`` provides the information needed to mount the TekDrive and must have the
+          drive name, AutoDisconnectMode, RestrictToCurrentIP, and AutoDisconnectTime.
+
     Properties:
         - ``.comments``: The ``SAVe:EVENTtable:CUSTom:COMMents`` command.
         - ``.dataformat``: The ``SAVe:EVENTtable:CUSTom:DATAFormat`` command.
@@ -959,6 +963,10 @@ class SaveEventtable(SCPICmdRead):
             ```
             - SAVe:EVENTtable:CUSTom <QString>
             ```
+
+        Info:
+            - ``<QString>`` provides the information needed to mount the TekDrive and must have the
+              drive name, AutoDisconnectMode, RestrictToCurrentIP, and AutoDisconnectTime.
 
         Sub-properties:
             - ``.comments``: The ``SAVe:EVENTtable:CUSTom:COMMents`` command.

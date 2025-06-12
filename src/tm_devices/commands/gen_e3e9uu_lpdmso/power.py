@@ -10,7 +10,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - POWer:ADDNew 'POWER<x>'
+    - POWer:ADDNew POWER<x>
     - POWer:DELete POWER<x>
     - POWer:POWer<x>:AUTOSet EXECute
     - POWer:POWer<x>:CLRESPONSE:AMP<x>Val <NR3>
@@ -18616,7 +18616,7 @@ class PowerAddnew(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - POWer:ADDNew 'POWER<x>'
+        - POWer:ADDNew POWER<x>
         ```
     """
 
@@ -18656,7 +18656,7 @@ class Power(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:ADDNew 'POWER<x>'
+            - POWer:ADDNew POWER<x>
             ```
         """
         return self._addnew

@@ -47,7 +47,8 @@ class Lock(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``ALL`` disables all front panel controls and the touch screen.
-        - ``NONe`` enables all front panel controls and the touch screen. The.
+        - ``NONe`` enables all front panel controls and the touch screen. The UNLock ALL command
+          only unlocks the front panel controls.
         - ``LOCk NONe`` command has no effect. For more information, see the ANSI/IEEE Std
           488.1-1987 Standard Digital Interface for Programmable Instrumentation, section 2.8.3 on
           RL State Descriptions.

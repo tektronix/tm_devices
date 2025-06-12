@@ -3629,6 +3629,7 @@ class BusBItemFlexraySignal(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``B<x>`` is the number of the bus.
         - ``BDIFFBP`` sets the FlexRay standard to BDIFFBP.
         - ``BM`` sets the FlexRay standard to BM.
         - ``TXRX`` sets the FlexRay standard to TXRX.
@@ -3780,6 +3781,7 @@ class BusBItemFlexray(SCPICmdRead):
             ```
 
         Info:
+            - ``B<x>`` is the number of the bus.
             - ``BDIFFBP`` sets the FlexRay standard to BDIFFBP.
             - ``BM`` sets the FlexRay standard to BM.
             - ``TXRX`` sets the FlexRay standard to TXRX.

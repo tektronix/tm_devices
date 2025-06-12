@@ -221,7 +221,7 @@ class SaveonImageFileformat(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the file format to be used for saved image files when
-          ``:SAVEON:IMAGe``
+          ``:SAVEON:IMAGe`` is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``SAVEON:IMAGe:FILEFormat?`` query.
@@ -248,7 +248,7 @@ class SaveonImage(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries whether to save a screen capture when a trigger occurs and
-          ``SAVEON:TRIGer ON`` ``SAVEON:IMAGE ON``
+          ``SAVEON:TRIGer`` is ON and ``SAVEON:IMAGE`` is ON.
 
     Usage:
         - Using the ``.query()`` method will send the ``SAVEON:IMAGe?`` query.
@@ -261,6 +261,11 @@ class SaveonImage(SCPICmdWrite, SCPICmdRead):
         - SAVEON:IMAGe {ON|OFF|<NR1>}
         - SAVEON:IMAGe?
         ```
+
+    Info:
+        - ``<NR1> = 0`` disables Save On Image; any other value turns this feature on.
+        - ``OFF`` disables Save On Image.
+        - ``ON`` enables Save On Image.
 
     Properties:
         - ``.fileformat``: The ``SAVEON:IMAGe:FILEFormat`` command.
@@ -276,7 +281,7 @@ class SaveonImage(SCPICmdWrite, SCPICmdRead):
 
         Description:
             - This command sets or queries the file format to be used for saved image files when
-              ``:SAVEON:IMAGe``
+              ``:SAVEON:IMAGe`` is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the ``SAVEON:IMAGe:FILEFormat?`` query.
@@ -328,8 +333,10 @@ class SaveonFileDest(SCPICmdWrite, SCPICmdRead):
     """The ``SAVEON:FILE:DEST`` command.
 
     Description:
-        - This command sets or queries the location where files are saved when
-          ``SAVEON:TRIGGER SAVEON``:WAVEFORM <QString>
+        - This command sets or queries the location where files are saved when ``SAVEON:TRIGGER`` is
+          ON and ``SAVEON:WAVEFORM`` is ON. You can save the files to a local drive or network path
+          by entering the desired location in <QString>. You can also select to save the files to a
+          USB drive.
 
     Usage:
         - Using the ``.query()`` method will send the ``SAVEON:FILE:DEST?`` query.
@@ -342,6 +349,9 @@ class SaveonFileDest(SCPICmdWrite, SCPICmdRead):
         - SAVEON:FILE:DEST <QString>
         - SAVEON:FILE:DEST?
         ```
+
+    Info:
+        - ``<QString>`` specifies the location to store files.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -371,7 +381,9 @@ class SaveonFile(SCPICmdRead):
 
         Description:
             - This command sets or queries the location where files are saved when
-              ``SAVEON:TRIGGER SAVEON``:WAVEFORM <QString>
+              ``SAVEON:TRIGGER`` is ON and ``SAVEON:WAVEFORM`` is ON. You can save the files to a
+              local drive or network path by entering the desired location in <QString>. You can
+              also select to save the files to a USB drive.
 
         Usage:
             - Using the ``.query()`` method will send the ``SAVEON:FILE:DEST?`` query.
@@ -384,6 +396,9 @@ class SaveonFile(SCPICmdRead):
             - SAVEON:FILE:DEST <QString>
             - SAVEON:FILE:DEST?
             ```
+
+        Info:
+            - ``<QString>`` specifies the location to store files.
         """
         return self._dest
 
@@ -455,7 +470,7 @@ class Saveon(SCPICmdRead):
 
         Description:
             - This command sets or queries whether to save a screen capture when a trigger occurs
-              and ``SAVEON:TRIGer ON`` ``SAVEON:IMAGE ON``
+              and ``SAVEON:TRIGer`` is ON and ``SAVEON:IMAGE`` is ON.
 
         Usage:
             - Using the ``.query()`` method will send the ``SAVEON:IMAGe?`` query.
@@ -468,6 +483,11 @@ class Saveon(SCPICmdRead):
             - SAVEON:IMAGe {ON|OFF|<NR1>}
             - SAVEON:IMAGe?
             ```
+
+        Info:
+            - ``<NR1> = 0`` disables Save On Image; any other value turns this feature on.
+            - ``OFF`` disables Save On Image.
+            - ``ON`` enables Save On Image.
 
         Sub-properties:
             - ``.fileformat``: The ``SAVEON:IMAGe:FILEFormat`` command.

@@ -5825,9 +5825,7 @@ class DisplayReffftviewItemGridlines(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``HORizontal`` specifies horizontal grid lines.
-        - ``VERTical`` specifies vertical grid lines.
-        - ``BOTH`` specifies both horizontal and vertical grid lines.
+        - ``REFFFTView<x>`` is the Reference FFT plot number.
     """
 
 
@@ -6706,7 +6704,7 @@ class DisplayReffftviewItemCursorRolocation(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``PLOTView<x>`` is the Reference FFT plot number.
+        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``GRATICULE`` sets the Reference FFT plot cursor readouts to display as part of the
           cursors in the plot view.
         - ``BADGE`` removes the Reference FFT plot cursor readouts from the cursors in the graticule
@@ -7377,7 +7375,7 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
             ```
 
         Info:
-            - ``PLOTView<x>`` is the Reference FFT plot number.
+            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``GRATICULE`` sets the Reference FFT plot cursor readouts to display as part of the
               cursors in the plot view.
             - ``BADGE`` removes the Reference FFT plot cursor readouts from the cursors in the
@@ -7646,9 +7644,7 @@ class DisplayReffftviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``HORizontal`` specifies horizontal grid lines.
-            - ``VERTical`` specifies vertical grid lines.
-            - ``BOTH`` specifies both horizontal and vertical grid lines.
+            - ``REFFFTView<x>`` is the Reference FFT plot number.
         """
         return self._gridlines
 

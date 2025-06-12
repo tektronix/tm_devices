@@ -2017,6 +2017,10 @@ class ChannelProbeAutozero(SCPICmdWrite):
         ```
         - CH<x>:PRObe:AUTOZero EXECute
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``EXECute`` sets the probe attached to the specified channel to autozero.
     """
 
 
@@ -2085,6 +2089,10 @@ class ChannelProbe(SCPICmdRead):
             ```
             - CH<x>:PRObe:AUTOZero EXECute
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``EXECute`` sets the probe attached to the specified channel to autozero.
         """
         return self._autozero
 

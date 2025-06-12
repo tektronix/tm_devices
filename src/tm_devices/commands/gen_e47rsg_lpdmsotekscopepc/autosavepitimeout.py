@@ -1,7 +1,7 @@
 """The autosavepitimeout commands module.
 
 These commands are used in the following models:
-LPD6, MSO4, MSO4B, MSO5, MSO5B, MSO5LP, MSO6, MSO6B
+LPD6, MSO2, MSO4, MSO4B, MSO5, MSO5B, MSO5LP, MSO6, MSO6B, TekScopePC
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 

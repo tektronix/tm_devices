@@ -38,7 +38,6 @@ from .gen_c3g61_tekscopepc.searchtable import Searchtable
 from .gen_c3g61_tekscopepc.sv import Sv
 from .gen_c3g61_tekscopepc.trigger import Trigger
 from .gen_c3g61_tekscopepc.visual import Visual
-from .gen_c69az_msotekscopepc.autosavepitimeout import Autosavepitimeout
 from .gen_c69az_msotekscopepc.autosaveuitimeout import Autosaveuitimeout
 from .gen_c69az_msotekscopepc.curve import Curve
 from .gen_c69az_msotekscopepc.curvestream import Curvestream
@@ -55,6 +54,7 @@ from .gen_c69az_msotekscopepc.wfmoutpre import Wfmoutpre
 from .gen_e6bmgw_lpdmsotekscopepcdpomdo.totaluptime import Totaluptime
 from .gen_e6wozn_lpdmsotekscopepcmdodpo.pause import Pause
 from .gen_e44yni_lpdmsotekscopepc.ref import RefItem
+from .gen_e47rsg_lpdmsotekscopepc.autosavepitimeout import Autosavepitimeout
 from .gen_e47rsg_lpdmsotekscopepc.bustable import Bustable
 from .gen_e47rsg_lpdmsotekscopepc.configuration import Configuration
 from .gen_e47rsg_lpdmsotekscopepc.date import Date
@@ -1311,7 +1311,7 @@ class TekScopePCCommands:
             ```
 
         Info:
-            - ``<NR1>``
+            - ``<NR1>`` sets the timeout time.
         """
         return self._autosavepitimeout
 
