@@ -95,6 +95,17 @@ def disable_all_loggers(
 ) -> Generator[None, None, None]:
     """Temporarily disable all logging calls of severity 'level' and below within this context.
 
+    Examples:
+        >>> with disable_all_loggers():
+        ...     logging.info("This is inside the context and will not be logged")
+
+        >>> logging.info("This is outside the context and will be logged")
+
+        >>> with disable_all_loggers(level="WARNING"):
+        ...     logging.info("This will not be logged")
+        ...     logging.warning("This will not be logged")
+        ...     logging.error("This will be logged since its level is above WARNING")
+
     Args:
         level: The logging level under which all log messages will be suppressed.
     """

@@ -18,6 +18,10 @@ Valid subsections within a version are:
 
 Things to be included in the next release go here.
 
+### Added
+
+- Added a new utility context manager, `disable_all_loggers()` which can be used to temporarily disable all logging within the current context.
+
 ### Changed
 
 - Updated the `PIControl.query_binary()` method to include PyVISA-compatible arguments, enabling users to fully utilize the complete functionality of the PyVISA method.
