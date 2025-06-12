@@ -109,7 +109,7 @@ poetry-plugin-export = "^1.7.1"
 poetry-pre-commit-plugin = "^0.2.2"
 pre-commit = "^4.2"
 pylint = "3.3.7"
-pyright = {extras = ["nodejs"], version = "1.1.401"}
+pyright = {extras = ["nodejs"], version = "1.1.402"}
 pyroma = "^4.2"
 tox = "^4.0"
 tox-gh-actions = "^3.1.0"
