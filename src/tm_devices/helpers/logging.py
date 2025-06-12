@@ -90,9 +90,15 @@ class LoggingLevels(CustomStrEnum):
 
 
 @contextmanager
-def disable_all_loggers() -> Generator[None, None, None]:
-    """Temporarily disable all logging within this context manager block."""
-    logging.disable(logging.CRITICAL)
+def disable_all_loggers(
+    level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = "CRITICAL",
+) -> Generator[None, None, None]:
+    """Temporarily disable all logging calls of severity 'level' and below within this context.
+
+    Args:
+        level: The logging level under which all log messages will be suppressed.
+    """
+    logging.disable(getattr(logging, level))
     yield
     logging.disable(logging.NOTSET)
 
