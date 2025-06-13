@@ -547,7 +547,7 @@ class AfgNoiseaddPercent(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NR3`` is the floating point number that represents the AFG additive noise level as a
+        - ``<NR3>`` is the floating point number that represents the AFG additive noise level as a
           percentage.
     """
 
@@ -592,8 +592,8 @@ class AfgNoiseadd(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` is the floating point number that represents the AFG additive noise level as a
-              percentage.
+            - ``<NR3>`` is the floating point number that represents the AFG additive noise level as
+              a percentage.
         """
         return self._percent
 

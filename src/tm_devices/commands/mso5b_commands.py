@@ -94,7 +94,7 @@ from .gen_e47rsg_lpdmsotekscopepc.date import Date
 from .gen_e47rsg_lpdmsotekscopepc.meastable import Meastable
 from .gen_e47rsg_lpdmsotekscopepc.undo import Undo
 from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
-from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Wai
+from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Stb, Wai
 from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
 from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
 from .gen_fx54ua_lpdmsodpomdodsa.newpass import Newpass
@@ -1449,6 +1449,7 @@ class MSO5BCommands:
         - ``.set``: The ``SET`` command.
         - ``.socketserver``: The ``SOCKETServer`` command tree.
         - ``.sre``: The ``*SRE`` command.
+        - ``.stb``: The ``*STB`` command.
         - ``.sv``: The ``SV`` command tree.
         - ``.teksecure``: The ``TEKSecure`` command.
         - ``.time``: The ``TIMe`` command.
@@ -1564,6 +1565,7 @@ class MSO5BCommands:
         self._set = Set(device)
         self._socketserver = Socketserver(device)
         self._sre = Sre(device)
+        self._stb = Stb(device)
         self._sv = Sv(device)
         self._teksecure = Teksecure(device)
         self._time = Time(device)
@@ -3550,6 +3552,27 @@ class MSO5BCommands:
         return self._sre
 
     @property
+    def stb(self) -> Stb:
+        """Return the ``*STB`` command.
+
+        Description:
+            - The ``*STB?`` (Read Status Byte) query returns the contents of the Status Byte
+              Register (SBR) using the Master Summary Status (MSS) bit. For more information, refer
+              to Registers.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``*STB?`` query.
+            - Using the ``.verify(value)`` method will send the ``*STB?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+
+        SCPI Syntax:
+            ```
+            - *STB?
+            ```
+        """
+        return self._stb
+
+    @property
     def sv(self) -> Sv:
         """Return the ``SV`` command tree.
 
@@ -4071,6 +4094,7 @@ class MSO5BMixin:
             - ``.set``: The ``SET`` command.
             - ``.socketserver``: The ``SOCKETServer`` command tree.
             - ``.sre``: The ``*SRE`` command.
+            - ``.stb``: The ``*STB`` command.
             - ``.sv``: The ``SV`` command tree.
             - ``.teksecure``: The ``TEKSecure`` command.
             - ``.time``: The ``TIMe`` command.

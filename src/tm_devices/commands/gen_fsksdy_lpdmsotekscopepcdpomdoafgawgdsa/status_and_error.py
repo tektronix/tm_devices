@@ -14,6 +14,7 @@ Commands and Queries:
     ```
     - *CLS
     - *ESR?
+    - *STB?
     - *WAI
     ```
 """
@@ -45,6 +46,28 @@ class Wai(SCPICmdWriteNoArguments):
     """
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*WAI") -> None:
+        super().__init__(device, cmd_syntax)
+
+
+class Stb(SCPICmdRead):
+    """The ``*STB`` command.
+
+    Description:
+        - The ``*STB?`` (Read Status Byte) query returns the contents of the Status Byte Register
+          (SBR) using the Master Summary Status (MSS) bit. For more information, refer to Registers.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``*STB?`` query.
+        - Using the ``.verify(value)`` method will send the ``*STB?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+
+    SCPI Syntax:
+        ```
+        - *STB?
+        ```
+    """
+
+    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*STB") -> None:
         super().__init__(device, cmd_syntax)
 
 

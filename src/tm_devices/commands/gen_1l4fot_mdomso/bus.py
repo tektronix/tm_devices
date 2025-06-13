@@ -2969,8 +2969,10 @@ class BusBItemRs232cDatabits(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``7`` specifies seven bits in the RS-232 data frame.
-        - ``8`` specifies eight bits in the RS-232 data frame.
+        - ``B<x>`` is the number of the bus.
+        - ``7`` specifies the number of bits as 7 in the RS-232C data frame.
+        - ``8`` specifies the number of bits as 8 in the RS-232C data frame.
+        - ``9`` specifies the number of bits as 9 in the RS-232C data frame.
     """
 
 
@@ -3077,8 +3079,10 @@ class BusBItemRs232c(SCPICmdRead):
             ```
 
         Info:
-            - ``7`` specifies seven bits in the RS-232 data frame.
-            - ``8`` specifies eight bits in the RS-232 data frame.
+            - ``B<x>`` is the number of the bus.
+            - ``7`` specifies the number of bits as 7 in the RS-232C data frame.
+            - ``8`` specifies the number of bits as 8 in the RS-232C data frame.
+            - ``9`` specifies the number of bits as 9 in the RS-232C data frame.
         """
         return self._databits
 
@@ -4815,6 +4819,7 @@ class BusBItemFlexrayChannel(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``B<x>`` is the number of the bus.
         - ``A`` sets the FlexRay ID format to channel A.
         - ``B`` sets the FlexRay ID format to channel B.
     """
@@ -4914,6 +4919,7 @@ class BusBItemFlexray(SCPICmdRead):
             ```
 
         Info:
+            - ``B<x>`` is the number of the bus.
             - ``A`` sets the FlexRay ID format to channel A.
             - ``B`` sets the FlexRay ID format to channel B.
         """

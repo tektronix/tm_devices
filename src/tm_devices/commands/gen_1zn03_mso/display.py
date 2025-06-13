@@ -5826,6 +5826,9 @@ class DisplayReffftviewItemGridlines(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``REFFFTView<x>`` is the Reference FFT plot number.
+        - ``HORizontal`` specifies horizontal grid lines.
+        - ``VERTical`` specifies vertical grid lines.
+        - ``BOTH`` specifies both horizontal and vertical grid lines.
     """
 
 
@@ -7645,6 +7648,9 @@ class DisplayReffftviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``REFFFTView<x>`` is the Reference FFT plot number.
+            - ``HORizontal`` specifies horizontal grid lines.
+            - ``VERTical`` specifies vertical grid lines.
+            - ``BOTH`` specifies both horizontal and vertical grid lines.
         """
         return self._gridlines
 
