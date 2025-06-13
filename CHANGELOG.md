@@ -20,6 +20,8 @@ Things to be included in the next release go here.
 
 ### Added
 
+- Added a new utility context manager, `disable_all_loggers()` which can be used to temporarily disable all logging within the current context.
+
 - Added support for new commands in the MSO4, MSO4B, MSO5, MSO5B, MSO5LP, MSO6, MSO6B, and LPD6 models.
 
 ### Changed
