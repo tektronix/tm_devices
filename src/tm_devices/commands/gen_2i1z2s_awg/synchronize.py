@@ -13,7 +13,7 @@ Commands and Queries:
     - SYNChronize:DESKew:ABORt
     - SYNChronize:DESKew:STARt
     - SYNChronize:DESKew:STATe?
-    - SYNChronize:ENABle {0|1|OFF|ON}
+    - SYNChronize:ENABle {ON|OFF|1|0}
     - SYNChronize:ENABle?
     - SYNChronize:TYPE {MASTer|SLAVe}
     - SYNChronize:TYPE?
@@ -53,9 +53,7 @@ class SynchronizeEnable(SCPICmdWrite, SCPICmdRead):
     """The ``SYNChronize:ENABle`` command.
 
     Description:
-        - This command sets or returns the synchronization state (enabled or disabled). When
-          enabled, the instrument can be used as part of a synchronized system of other AWG5200
-          series instruments.
+        - This command enables or disables synchronization in the instrument.
 
     Usage:
         - Using the ``.query()`` method will send the ``SYNChronize:ENABle?`` query.
@@ -65,7 +63,7 @@ class SynchronizeEnable(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SYNChronize:ENABle {0|1|OFF|ON}
+        - SYNChronize:ENABle {ON|OFF|1|0}
         - SYNChronize:ENABle?
         ```
     """
@@ -306,9 +304,7 @@ class Synchronize(SCPICmdRead):
         """Return the ``SYNChronize:ENABle`` command.
 
         Description:
-            - This command sets or returns the synchronization state (enabled or disabled). When
-              enabled, the instrument can be used as part of a synchronized system of other AWG5200
-              series instruments.
+            - This command enables or disables synchronization in the instrument.
 
         Usage:
             - Using the ``.query()`` method will send the ``SYNChronize:ENABle?`` query.
@@ -318,7 +314,7 @@ class Synchronize(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SYNChronize:ENABle {0|1|OFF|ON}
+            - SYNChronize:ENABle {ON|OFF|1|0}
             - SYNChronize:ENABle?
             ```
         """

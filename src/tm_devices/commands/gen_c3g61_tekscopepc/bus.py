@@ -970,8 +970,7 @@ class BusBItemUsbBitrate(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:USB:BITRate`` command.
 
     Description:
-        - This command sets or queries the USB data rate for bus <x>, where the bus number is
-          specified by x.
+        - This command sets or queries the USB bit rate for bus <x>, where x is the bus number.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:USB:BITRate?`` query.
@@ -1033,8 +1032,7 @@ class BusBItemUsb(SCPICmdRead):
         """Return the ``BUS:B<x>:USB:BITRate`` command.
 
         Description:
-            - This command sets or queries the USB data rate for bus <x>, where the bus number is
-              specified by x.
+            - This command sets or queries the USB bit rate for bus <x>, where x is the bus number.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:USB:BITRate?`` query.
@@ -6076,8 +6074,7 @@ class BusBItemRs232cDatabits(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:RS232C:DATABits`` command.
 
     Description:
-        - This command sets or queries the RS-232C data width for bus<x>, where the bus number is
-          specified by x.
+        - This command specifies the number of bits in the data frame for the RS-232 bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:RS232C:DATABits?`` query.
@@ -6252,8 +6249,7 @@ class BusBItemRs232c(SCPICmdRead):
         """Return the ``BUS:B<x>:RS232C:DATABits`` command.
 
         Description:
-            - This command sets or queries the RS-232C data width for bus<x>, where the bus number
-              is specified by x.
+            - This command specifies the number of bits in the data frame for the RS-232 bus.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:RS232C:DATABits?`` query.
@@ -8218,7 +8214,8 @@ class BusBItemNrzBitrate(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the number of the bus.
-        - ``<NR1>`` sets the bit rate up to 1 G.
+        - ``<NR1>`` specifies the bit rate for the NRZ bus. Arguments are the available bit rates up
+          to 1 G.
     """
 
 
@@ -8333,7 +8330,8 @@ class BusBItemNrz(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the number of the bus.
-            - ``<NR1>`` sets the bit rate up to 1 G.
+            - ``<NR1>`` specifies the bit rate for the NRZ bus. Arguments are the available bit
+              rates up to 1 G.
         """
         return self._bitrate
 
@@ -8500,8 +8498,8 @@ class BusBItemMil1553bResponsetimeMinimum(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:MIL1553B:RESPonsetime:MINimum`` command.
 
     Description:
-        - This command sets or queries the minimum response time to a valid command issued for the
-          specified MIL-STD-1553 bus. The bus is specified by x.
+        - This command specifies the minimum response time to a valid command issued for the
+          MIL-STD-1553 bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime:MINimum?``
@@ -8528,8 +8526,8 @@ class BusBItemMil1553bResponsetimeMaximum(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum`` command.
 
     Description:
-        - This command sets or queries the maximum response time to a valid command issued for the
-          specified MIL-STD-1553 bus. The bus is specified by x.
+        - This command specifies the maximum response time to a valid command issued for the
+          MIL-STD-1553 bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum?``
@@ -8578,8 +8576,8 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
         """Return the ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum`` command.
 
         Description:
-            - This command sets or queries the maximum response time to a valid command issued for
-              the specified MIL-STD-1553 bus. The bus is specified by x.
+            - This command specifies the maximum response time to a valid command issued for the
+              MIL-STD-1553 bus.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -8608,8 +8606,8 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
         """Return the ``BUS:B<x>:MIL1553B:RESPonsetime:MINimum`` command.
 
         Description:
-            - This command sets or queries the minimum response time to a valid command issued for
-              the specified MIL-STD-1553 bus. The bus is specified by x.
+            - This command specifies the minimum response time to a valid command issued for the
+              MIL-STD-1553 bus.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -8638,8 +8636,7 @@ class BusBItemMil1553bPolarity(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:MIL1553B:POLarity`` command.
 
     Description:
-        - This command sets or queries the source polarity for the specified MIL-STD-1553 bus. The
-          bus is specified by x.
+        - This command sets the polarity of the MIL-STD-1553 bus (normal or inverted).
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:POLarity?`` query.
@@ -8656,8 +8653,8 @@ class BusBItemMil1553bPolarity(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the number of the bus.
-        - ``NORMal`` specifies normal polarity.
-        - ``INVERTed`` specifies inverted polarity.
+        - ``NORMal`` - A high-low transition represents a 1 on the Data+ line.
+        - ``INVERTed`` - A high-low transition represents a 0 on the Data+ line.
     """
 
 
@@ -8750,8 +8747,7 @@ class BusBItemMil1553b(SCPICmdRead):
         """Return the ``BUS:B<x>:MIL1553B:POLarity`` command.
 
         Description:
-            - This command sets or queries the source polarity for the specified MIL-STD-1553 bus.
-              The bus is specified by x.
+            - This command sets the polarity of the MIL-STD-1553 bus (normal or inverted).
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:POLarity?`` query.
@@ -8768,8 +8764,8 @@ class BusBItemMil1553b(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the number of the bus.
-            - ``NORMal`` specifies normal polarity.
-            - ``INVERTed`` specifies inverted polarity.
+            - ``NORMal`` - A high-low transition represents a 1 on the Data+ line.
+            - ``INVERTed`` - A high-low transition represents a 0 on the Data+ line.
         """
         return self._polarity
 
@@ -12249,8 +12245,7 @@ class BusBItemFlexraySignal(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:FLEXray:SIGnal`` command.
 
     Description:
-        - This command sets or queries the FlexRay signal type for the specified bus. The bus number
-          is specified by x.
+        - Specifies the FlexRay bus standard.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:FLEXray:SIGnal?`` query.
@@ -12267,9 +12262,9 @@ class BusBItemFlexraySignal(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the number of the bus.
-        - ``BDIFFBP`` sets the FlexRay signal type to BDIFFBP.
-        - ``BM`` sets the FlexRay signal type to BM.
-        - ``TXRX`` sets the FlexRay signal type to TXRX.
+        - ``BDIFFBP`` sets the FlexRay standard to BDIFFBP.
+        - ``BM`` sets the FlexRay standard to BM.
+        - ``TXRX`` sets the FlexRay standard to TXRX.
     """
 
 
@@ -12303,8 +12298,7 @@ class BusBItemFlexrayChannel(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:FLEXray:CHannel`` command.
 
     Description:
-        - This command sets or queries the FlexRay channel type for the specified bus. The bus
-          number is specified by x.
+        - Specifies the FlexRay bus ID format.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:FLEXray:CHannel?`` query.
@@ -12321,8 +12315,8 @@ class BusBItemFlexrayChannel(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the number of the bus.
-        - ``A`` specifies the A channel.
-        - ``B`` specifies the B channel.
+        - ``A`` sets the FlexRay ID format to channel A.
+        - ``B`` sets the FlexRay ID format to channel B.
     """
 
 
@@ -12479,8 +12473,7 @@ class BusBItemFlexray(SCPICmdRead):
         """Return the ``BUS:B<x>:FLEXray:CHannel`` command.
 
         Description:
-            - This command sets or queries the FlexRay channel type for the specified bus. The bus
-              number is specified by x.
+            - Specifies the FlexRay bus ID format.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:FLEXray:CHannel?`` query.
@@ -12497,8 +12490,8 @@ class BusBItemFlexray(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the number of the bus.
-            - ``A`` specifies the A channel.
-            - ``B`` specifies the B channel.
+            - ``A`` sets the FlexRay ID format to channel A.
+            - ``B`` sets the FlexRay ID format to channel B.
         """
         return self._channel
 
@@ -12534,8 +12527,7 @@ class BusBItemFlexray(SCPICmdRead):
         """Return the ``BUS:B<x>:FLEXray:SIGnal`` command.
 
         Description:
-            - This command sets or queries the FlexRay signal type for the specified bus. The bus
-              number is specified by x.
+            - Specifies the FlexRay bus standard.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:FLEXray:SIGnal?`` query.
@@ -12552,9 +12544,9 @@ class BusBItemFlexray(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the number of the bus.
-            - ``BDIFFBP`` sets the FlexRay signal type to BDIFFBP.
-            - ``BM`` sets the FlexRay signal type to BM.
-            - ``TXRX`` sets the FlexRay signal type to TXRX.
+            - ``BDIFFBP`` sets the FlexRay standard to BDIFFBP.
+            - ``BM`` sets the FlexRay standard to BM.
+            - ``TXRX`` sets the FlexRay standard to TXRX.
         """
         return self._signal
 
@@ -13935,7 +13927,6 @@ class BusBItemEthernetDataplusthreshold(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
         - ``<NR3>`` is the Ethernet D+ source threshold for the specified bus.
     """
 
@@ -14066,7 +14057,6 @@ class BusBItemEthernet(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
             - ``<NR3>`` is the Ethernet D+ source threshold for the specified bus.
         """
         return self._dataplusthreshold
@@ -14772,7 +14762,6 @@ class BusBItemEspiIomode(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
         - ``SINGle`` displays the command and response decode in two lanes.
         - ``DUAL`` displays the decode in a single data lane.
     """
@@ -14799,7 +14788,6 @@ class BusBItemEspiDatatwoThreshold(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
         - ``<NR3>`` sets the command/data threshold for the specified bus. The valid range is -8V to
           +8V.
     """
@@ -14854,7 +14842,6 @@ class BusBItemEspiDatatwoPolarity(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
         - ``HIGH`` sets the ESPI data polarity to active high.
         - ``LOW`` sets the ESPI data polarity to active low.
     """
@@ -14867,9 +14854,6 @@ class BusBItemEspiDatatwo(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:DATATWO?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:DATATWO?`` query and
           raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:ESPI:DATATWO:POLarity`` command.
@@ -14905,7 +14889,6 @@ class BusBItemEspiDatatwo(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
             - ``HIGH`` sets the ESPI data polarity to active high.
             - ``LOW`` sets the ESPI data polarity to active low.
         """
@@ -14963,7 +14946,6 @@ class BusBItemEspiDatatwo(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
             - ``<NR3>`` sets the command/data threshold for the specified bus. The valid range is
               -8V to +8V.
         """
@@ -14991,7 +14973,6 @@ class BusBItemEspiDataoneThreshold(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
         - ``<NR3>`` sets the command/data threshold for the specified bus. The valid range is -8V to
           +8V.
     """
@@ -15046,7 +15027,6 @@ class BusBItemEspiDataonePolarity(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
         - ``HIGH`` sets the ESPI data polarity to active high.
         - ``LOW`` sets the ESPI data polarity to active low.
     """
@@ -15059,9 +15039,6 @@ class BusBItemEspiDataone(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:DATAONE?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:DATAONE?`` query and
           raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:ESPI:DATAONE:POLarity`` command.
@@ -15097,7 +15074,6 @@ class BusBItemEspiDataone(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
             - ``HIGH`` sets the ESPI data polarity to active high.
             - ``LOW`` sets the ESPI data polarity to active low.
         """
@@ -15155,7 +15131,6 @@ class BusBItemEspiDataone(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
             - ``<NR3>`` sets the command/data threshold for the specified bus. The valid range is
               -8V to +8V.
         """
@@ -15183,7 +15158,6 @@ class BusBItemEspiClockThreshold(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
         - ``<NR3>`` sets the clock threshold for the specified bus. The valid range is -8V to +8V.
     """
 
@@ -15237,7 +15211,6 @@ class BusBItemEspiClockPolarity(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
         - ``FALL`` sets the ESPI clock polarity to fall.
         - ``RISE`` sets the ESPI clock polarity to rise.
     """
@@ -15250,9 +15223,6 @@ class BusBItemEspiClock(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:CLOCk?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:CLOCk?`` query and raise
           an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:ESPI:CLOCk:POLarity`` command.
@@ -15288,7 +15258,6 @@ class BusBItemEspiClock(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
             - ``FALL`` sets the ESPI clock polarity to fall.
             - ``RISE`` sets the ESPI clock polarity to rise.
         """
@@ -15345,7 +15314,6 @@ class BusBItemEspiClock(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
             - ``<NR3>`` sets the clock threshold for the specified bus. The valid range is -8V to
               +8V.
         """
@@ -15373,7 +15341,6 @@ class BusBItemEspiChipselectThreshold(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
         - ``<NR3>`` sets the chip select threshold for the specified bus. The valid range is -8V to
           +8V.
     """
@@ -15428,7 +15395,6 @@ class BusBItemEspiChipselectPolarity(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
         - ``HIGH`` sets the ESPI chip select polarity to active high.
         - ``LOW`` sets the ESPI chip select polarity to active low.
     """
@@ -15441,9 +15407,6 @@ class BusBItemEspiChipselect(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:CHIPSELect?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:CHIPSELect?`` query and
           raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:ESPI:CHIPSELect:POLarity`` command.
@@ -15481,7 +15444,6 @@ class BusBItemEspiChipselect(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
             - ``HIGH`` sets the ESPI chip select polarity to active high.
             - ``LOW`` sets the ESPI chip select polarity to active low.
         """
@@ -15541,7 +15503,6 @@ class BusBItemEspiChipselect(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
             - ``<NR3>`` sets the chip select threshold for the specified bus. The valid range is -8V
               to +8V.
         """
@@ -15569,7 +15530,6 @@ class BusBItemEspiAlertThreshold(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
         - ``<NR3>`` sets the alert threshold for the specified bus. The valid range is -8V to +8V.
     """
 
@@ -15623,7 +15583,6 @@ class BusBItemEspiAlertPolarity(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
         - ``HIGH`` sets the ESPI alert polarity to active high.
         - ``LOW`` sets the ESPI alert polarity to active low.
     """
@@ -15636,9 +15595,6 @@ class BusBItemEspiAlert(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:ALERt?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:ALERt?`` query and raise
           an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:ESPI:ALERt:POLarity`` command.
@@ -15674,7 +15630,6 @@ class BusBItemEspiAlert(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
             - ``HIGH`` sets the ESPI alert polarity to active high.
             - ``LOW`` sets the ESPI alert polarity to active low.
         """
@@ -15731,7 +15686,6 @@ class BusBItemEspiAlert(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
             - ``<NR3>`` sets the alert threshold for the specified bus. The valid range is -8V to
               +8V.
         """
@@ -15759,7 +15713,6 @@ class BusBItemEspiAlertview(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
         - ``ON`` turns the alert source on.
         - ``OFF`` turns the alert source on.
     """
@@ -15772,9 +15725,6 @@ class BusBItemEspi(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI?`` query and raise an
           AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.alertview``: The ``BUS:B<x>:ESPI:ALERTVIEW`` command.
@@ -15818,7 +15768,6 @@ class BusBItemEspi(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
             - ``ON`` turns the alert source on.
             - ``OFF`` turns the alert source on.
         """
@@ -15832,9 +15781,6 @@ class BusBItemEspi(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:ALERt?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:ALERt?`` query and
               raise an AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``B<x>`` is the Bus number.
 
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:ESPI:ALERt:POLarity`` command.
@@ -15852,9 +15798,6 @@ class BusBItemEspi(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:CHIPSELect?`` query
               and raise an AssertionError if the returned value does not match ``value``.
 
-        Info:
-            - ``B<x>`` is the Bus number.
-
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:ESPI:CHIPSELect:POLarity`` command.
             - ``.source``: The ``BUS:B<x>:ESPI:CHIPSELect:SOUrce`` command.
@@ -15870,9 +15813,6 @@ class BusBItemEspi(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:CLOCk?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:CLOCk?`` query and
               raise an AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``B<x>`` is the Bus number.
 
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:ESPI:CLOCk:POLarity`` command.
@@ -15890,9 +15830,6 @@ class BusBItemEspi(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:DATAONE?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
-        Info:
-            - ``B<x>`` is the Bus number.
-
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:ESPI:DATAONE:POLarity`` command.
             - ``.source``: The ``BUS:B<x>:ESPI:DATAONE:SOUrce`` command.
@@ -15908,9 +15845,6 @@ class BusBItemEspi(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:DATATWO?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:DATATWO?`` query and
               raise an AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``B<x>`` is the Bus number.
 
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:ESPI:DATATWO:POLarity`` command.
@@ -15941,7 +15875,6 @@ class BusBItemEspi(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
             - ``SINGle`` displays the command and response decode in two lanes.
             - ``DUAL`` displays the decode in a single data lane.
         """
@@ -15969,7 +15902,7 @@ class BusBItemDphySignalEncoding(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
+        - ``Bus<x>`` is the Bus number.
         - ``false`` specifies the 8b9b encoding disabled.
         - ``true`` specifies 8b9b encoding disabled.
     """
@@ -15982,9 +15915,6 @@ class BusBItemDphySignal(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:DPHY:SIGNal?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:SIGNal?`` query and
           raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.encoding``: The ``BUS:B<x>:DPHY:SIGNal:ENCoding`` command.
@@ -16016,7 +15946,7 @@ class BusBItemDphySignal(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
+            - ``Bus<x>`` is the Bus number.
             - ``false`` specifies the 8b9b encoding disabled.
             - ``true`` specifies 8b9b encoding disabled.
         """
@@ -16044,7 +15974,7 @@ class BusBItemDphyProtocolType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
+        - ``Bus<x>`` is the Bus number.
         - ``CSI`` specifies the protocol type as CSI.
         - ``DSI`` specifies the protocol type as DSI.
     """
@@ -16057,9 +15987,6 @@ class BusBItemDphyProtocol(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:DPHY:PROTocol?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:PROTocol?`` query and
           raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.type``: The ``BUS:B<x>:DPHY:PROTocol:TYPe`` command.
@@ -16091,7 +16018,7 @@ class BusBItemDphyProtocol(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
+            - ``Bus<x>`` is the Bus number.
             - ``CSI`` specifies the protocol type as CSI.
             - ``DSI`` specifies the protocol type as DSI.
         """
@@ -16119,7 +16046,7 @@ class BusBItemDphyLpDirection(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
+        - ``Bus<x>`` is the Bus number.
         - ``forward`` specifies the direction as forward.
         - ``reverse`` specifies the direction as reverse.
     """
@@ -16132,9 +16059,6 @@ class BusBItemDphyLp(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:DPHY:LP?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:LP?`` query and raise an
           AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.direction``: The ``BUS:B<x>:DPHY:LP:DIRection`` command.
@@ -16166,7 +16090,7 @@ class BusBItemDphyLp(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
+            - ``Bus<x>`` is the Bus number.
             - ``forward`` specifies the direction as forward.
             - ``reverse`` specifies the direction as reverse.
         """
@@ -16800,9 +16724,6 @@ class BusBItemDphy(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:LP?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
-        Info:
-            - ``B<x>`` is the Bus number.
-
         Sub-properties:
             - ``.direction``: The ``BUS:B<x>:DPHY:LP:DIRection`` command.
         """
@@ -16817,9 +16738,6 @@ class BusBItemDphy(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:PROTocol?`` query
               and raise an AssertionError if the returned value does not match ``value``.
 
-        Info:
-            - ``B<x>`` is the Bus number.
-
         Sub-properties:
             - ``.type``: The ``BUS:B<x>:DPHY:PROTocol:TYPe`` command.
         """
@@ -16833,9 +16751,6 @@ class BusBItemDphy(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:DPHY:SIGNal?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:SIGNal?`` query and
               raise an AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``B<x>`` is the Bus number.
 
         Sub-properties:
             - ``.encoding``: The ``BUS:B<x>:DPHY:SIGNal:ENCoding`` command.
@@ -19631,7 +19546,7 @@ class BusBItemAutoethernetType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
+        - ``Bus<x>`` is the Bus number.
         - ``HUNDREDBASET1`` specifies the AutoEthernet speed as 100Base-T1.
     """
 
@@ -19657,7 +19572,7 @@ class BusBItemAutoethernetThreshold(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
+        - ``Bus<x>`` is the Bus number.
         - ``NR3`` specifies the AutoEthernet DATA source High threshold level for the specified bus,
           in volts.
     """
@@ -19859,7 +19774,7 @@ class BusBItemAutoethernetSignaltype(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
+        - ``Bus<x>`` is the Bus number.
         - ``SINGLE`` specifies single-ended signals.
         - ``DIFF`` specifies differential signals.
     """
@@ -19887,7 +19802,7 @@ class BusBItemAutoethernetLowthreshold(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
+        - ``Bus<x>`` is the Bus number.
         - ``NR3`` specifies the AutoEthernet DATA source Low threshold level for the specified bus,
           in volts. This threshold only applies when the AutoEthernet signal type is differential.
     """
@@ -19915,7 +19830,7 @@ class BusBItemAutoethernetLowdataplus(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
+        - ``Bus<x>`` is the Bus number.
         - ``NR3`` specifies the AutoEthernet D+ source low threshold level for the specified bus, in
           volts. This threshold only applies when the AutoEthernet signal type is single ended.
     """
@@ -19943,7 +19858,7 @@ class BusBItemAutoethernetLowdataminus(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
+        - ``Bus<x>`` is the Bus number.
         - ``NR3`` specifies the AutoEthernet D- source low threshold level for the specified bus, in
           volts. This threshold only applies when the AutoEthernet signal type is single ended.
     """
@@ -19972,7 +19887,7 @@ class BusBItemAutoethernetDataplusthreshold(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
+        - ``Bus<x>`` is the Bus number.
         - ``NR3`` specifies the AutoEthernet D+ source threshold for the specified bus, in volts.
           This threshold only applies when the AutoEthernet signal type is single ended.
     """
@@ -20001,7 +19916,7 @@ class BusBItemAutoethernetDataminusthreshold(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the Bus number.
+        - ``Bus<x>`` is the Bus number.
         - ``NR3`` specifies the AutoEthernet D- source threshold level for the specified bus, in
           volts. This threshold only applies when the AutoEthernet signal type is single ended.
     """
@@ -20015,9 +19930,6 @@ class BusBItemAutoethernet(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUTOETHERnet?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUTOETHERnet?`` query and
           raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.dataminusthreshold``: The ``BUS:B<x>:AUTOETHERnet:DATAMINUSTHRESHOLD`` command.
@@ -20078,7 +19990,7 @@ class BusBItemAutoethernet(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
+            - ``Bus<x>`` is the Bus number.
             - ``NR3`` specifies the AutoEthernet D- source threshold level for the specified bus, in
               volts. This threshold only applies when the AutoEthernet signal type is single ended.
         """
@@ -20109,7 +20021,7 @@ class BusBItemAutoethernet(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
+            - ``Bus<x>`` is the Bus number.
             - ``NR3`` specifies the AutoEthernet D+ source threshold for the specified bus, in
               volts. This threshold only applies when the AutoEthernet signal type is single ended.
         """
@@ -20140,7 +20052,7 @@ class BusBItemAutoethernet(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
+            - ``Bus<x>`` is the Bus number.
             - ``NR3`` specifies the AutoEthernet D- source low threshold level for the specified
               bus, in volts. This threshold only applies when the AutoEthernet signal type is single
               ended.
@@ -20172,7 +20084,7 @@ class BusBItemAutoethernet(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
+            - ``Bus<x>`` is the Bus number.
             - ``NR3`` specifies the AutoEthernet D+ source low threshold level for the specified
               bus, in volts. This threshold only applies when the AutoEthernet signal type is single
               ended.
@@ -20204,7 +20116,7 @@ class BusBItemAutoethernet(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
+            - ``Bus<x>`` is the Bus number.
             - ``NR3`` specifies the AutoEthernet DATA source Low threshold level for the specified
               bus, in volts. This threshold only applies when the AutoEthernet signal type is
               differential.
@@ -20234,7 +20146,7 @@ class BusBItemAutoethernet(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
+            - ``Bus<x>`` is the Bus number.
             - ``SINGLE`` specifies single-ended signals.
             - ``DIFF`` specifies differential signals.
         """
@@ -20300,7 +20212,7 @@ class BusBItemAutoethernet(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
+            - ``Bus<x>`` is the Bus number.
             - ``NR3`` specifies the AutoEthernet DATA source High threshold level for the specified
               bus, in volts.
         """
@@ -20327,7 +20239,7 @@ class BusBItemAutoethernet(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the Bus number.
+            - ``Bus<x>`` is the Bus number.
             - ``HUNDREDBASET1`` specifies the AutoEthernet speed as 100Base-T1.
         """
         return self._type
@@ -20396,8 +20308,7 @@ class BusBItemAudioWordselPolarity(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:AUDio:WORDSel:POLarity`` command.
 
     Description:
-        - This command sets or queries the word select source polarity for the specified audio bus.
-          The bus is specified by x.
+        - Specifies the word select polarity for the AUDIO bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:WORDSel:POLarity?`` query.
@@ -20413,9 +20324,8 @@ class BusBItemAudioWordselPolarity(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
-        - ``NORMal`` specifies positive polarity.
-        - ``INVERTed`` specifies negative polarity.
+        - ``NORMal`` specifies positive WORDSel polarity.
+        - ``INVERTed`` specifies negative WORDSel polarity.
     """
 
 
@@ -20426,9 +20336,6 @@ class BusBItemAudioWordsel(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query and
           raise an AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:AUDio:WORDSel:POLarity`` command.
@@ -20447,8 +20354,7 @@ class BusBItemAudioWordsel(SCPICmdRead):
         """Return the ``BUS:B<x>:AUDio:WORDSel:POLarity`` command.
 
         Description:
-            - This command sets or queries the word select source polarity for the specified audio
-              bus. The bus is specified by x.
+            - Specifies the word select polarity for the AUDIO bus.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:WORDSel:POLarity?``
@@ -20465,9 +20371,8 @@ class BusBItemAudioWordsel(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
-            - ``NORMal`` specifies positive polarity.
-            - ``INVERTed`` specifies negative polarity.
+            - ``NORMal`` specifies positive WORDSel polarity.
+            - ``INVERTed`` specifies negative WORDSel polarity.
         """
         return self._polarity
 
@@ -20539,8 +20444,7 @@ class BusBItemAudioType(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:AUDio:TYPe`` command.
 
     Description:
-        - This command sets or queries the audio format (type) for the specified audio bus. The bus
-          is specified by x.
+        - Specifies the audio format (type) for the AUDIO bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:TYPe?`` query.
@@ -20555,10 +20459,9 @@ class BusBItemAudioType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
         - ``I2S`` specifies the I2S audio format.
         - ``LJ`` specifies the left-justified audio format.
-        - ``RJ`` specifies the right-justified audio format.
+        - ``RJ`` specifies the right justified audio format.
         - ``TDM`` specifies the time-division multiplexing audio format.
     """
 
@@ -20567,8 +20470,7 @@ class BusBItemAudioFrameSize(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:AUDio:FRAME:SIZe`` command.
 
     Description:
-        - This command sets or queries the number of audio channels in each frame for the specified
-          AUDIO bus. The bus is specified by x.
+        - Specifies the number of channels in each frame for the AUDIO bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:FRAME:SIZe?`` query.
@@ -20584,7 +20486,6 @@ class BusBItemAudioFrameSize(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
         - ``<NR1>`` specifies the number of channels in each frame.
     """
 
@@ -20674,8 +20575,7 @@ class BusBItemAudioFrame(SCPICmdRead):
         """Return the ``BUS:B<x>:AUDio:FRAME:SIZe`` command.
 
         Description:
-            - This command sets or queries the number of audio channels in each frame for the
-              specified AUDIO bus. The bus is specified by x.
+            - Specifies the number of channels in each frame for the AUDIO bus.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:FRAME:SIZe?`` query.
@@ -20691,7 +20591,6 @@ class BusBItemAudioFrame(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
             - ``<NR1>`` specifies the number of channels in each frame.
         """
         return self._size
@@ -20786,8 +20685,7 @@ class BusBItemAudioDataSize(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:AUDio:DATa:SIZe`` command.
 
     Description:
-        - This command sets or queries the number of bits per channel for the specified audio bus.
-          This command only applies to the TDM Audio type. The bus is specified by x.
+        - Specifies the number of bits per word for the AUDIO bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:DATa:SIZe?`` query.
@@ -20803,7 +20701,6 @@ class BusBItemAudioDataSize(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
         - ``NR1`` specifies the number of bits per word.
     """
 
@@ -20895,8 +20792,7 @@ class BusBItemAudioData(SCPICmdRead):
         """Return the ``BUS:B<x>:AUDio:DATa:SIZe`` command.
 
         Description:
-            - This command sets or queries the number of bits per channel for the specified audio
-              bus. This command only applies to the TDM Audio type. The bus is specified by x.
+            - Specifies the number of bits per word for the AUDIO bus.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:DATa:SIZe?`` query.
@@ -20912,7 +20808,6 @@ class BusBItemAudioData(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
             - ``NR1`` specifies the number of bits per word.
         """
         return self._size
@@ -21214,7 +21109,7 @@ class BusBItemAudioBitorder(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:AUDio:BITOrder`` command.
 
     Description:
-        - Specifies the bit order for the specified AUDIO bus. The bus is specified by x.
+        - Specifies the bit order for the AUDIO bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:BITOrder?`` query.
@@ -21230,7 +21125,6 @@ class BusBItemAudioBitorder(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
         - ``MSB`` specifies that the most significant bit will be expected first in the order.
         - ``LSB`` specifies that the least significant bit will be expected first in the order.
     """
@@ -21240,8 +21134,7 @@ class BusBItemAudioBitdelay(SCPICmdWrite, SCPICmdRead):
     """The ``BUS:B<x>:AUDio:BITDelay`` command.
 
     Description:
-        - This command sets or queries the number of delay bits for the specified AUDIO bus. The bus
-          is specified by x.
+        - Specifies the number of delay bits for the AUDIO bus.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:BITDelay?`` query.
@@ -21257,7 +21150,6 @@ class BusBItemAudioBitdelay(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
         - ``<NR1>`` specifies the number of delay bits.
     """
 
@@ -21269,9 +21161,6 @@ class BusBItemAudio(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio?`` query and raise an
           AssertionError if the returned value does not match ``value``.
-
-    Info:
-        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.bitdelay``: The ``BUS:B<x>:AUDio:BITDelay`` command.
@@ -21298,8 +21187,7 @@ class BusBItemAudio(SCPICmdRead):
         """Return the ``BUS:B<x>:AUDio:BITDelay`` command.
 
         Description:
-            - This command sets or queries the number of delay bits for the specified AUDIO bus. The
-              bus is specified by x.
+            - Specifies the number of delay bits for the AUDIO bus.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:BITDelay?`` query.
@@ -21315,7 +21203,6 @@ class BusBItemAudio(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
             - ``<NR1>`` specifies the number of delay bits.
         """
         return self._bitdelay
@@ -21325,7 +21212,7 @@ class BusBItemAudio(SCPICmdRead):
         """Return the ``BUS:B<x>:AUDio:BITOrder`` command.
 
         Description:
-            - Specifies the bit order for the specified AUDIO bus. The bus is specified by x.
+            - Specifies the bit order for the AUDIO bus.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:BITOrder?`` query.
@@ -21341,7 +21228,6 @@ class BusBItemAudio(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
             - ``MSB`` specifies that the most significant bit will be expected first in the order.
             - ``LSB`` specifies that the least significant bit will be expected first in the order.
         """
@@ -21410,8 +21296,7 @@ class BusBItemAudio(SCPICmdRead):
         """Return the ``BUS:B<x>:AUDio:TYPe`` command.
 
         Description:
-            - This command sets or queries the audio format (type) for the specified audio bus. The
-              bus is specified by x.
+            - Specifies the audio format (type) for the AUDIO bus.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:TYPe?`` query.
@@ -21427,10 +21312,9 @@ class BusBItemAudio(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
             - ``I2S`` specifies the I2S audio format.
             - ``LJ`` specifies the left-justified audio format.
-            - ``RJ`` specifies the right-justified audio format.
+            - ``RJ`` specifies the right justified audio format.
             - ``TDM`` specifies the time-division multiplexing audio format.
         """
         return self._type
@@ -21443,9 +21327,6 @@ class BusBItemAudio(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query
               and raise an AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:AUDio:WORDSel:POLarity`` command.
@@ -21614,12 +21495,6 @@ class BusBItemArinc429aBitrate(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ARINC429A:BITRate?
         ```
 
-    Info:
-        - ``B<x>`` is the number of the bus.
-        - ``LOW`` sets the bit rate to handle low speed signals.
-        - ``HI`` sets the bit rate to handle high speed signals.
-        - ``CUSTom`` uses the custom bit rate set by ``BUS:B<x>:ARINC429A:BITRate:CUSTom``.
-
     Properties:
         - ``.custom``: The ``BUS:B<x>:ARINC429A:BITRate:CUSTom`` command.
     """
@@ -21666,9 +21541,6 @@ class BusBItemArinc429a(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ARINC429A?`` query and raise
           an AssertionError if the returned value does not match ``value``.
 
-    Info:
-        - ``B<x>`` is the number of the bus.
-
     Properties:
         - ``.bitrate``: The ``BUS:B<x>:ARINC429A:BITRate`` command.
         - ``.dataformat``: The ``BUS:B<x>:ARINC429A:DATAFORmat`` command.
@@ -21706,12 +21578,6 @@ class BusBItemArinc429a(SCPICmdRead):
             - BUS:B<x>:ARINC429A:BITRate {LOW|HI|CUSTom}
             - BUS:B<x>:ARINC429A:BITRate?
             ```
-
-        Info:
-            - ``B<x>`` is the number of the bus.
-            - ``LOW`` sets the bit rate to handle low speed signals.
-            - ``HI`` sets the bit rate to handle high speed signals.
-            - ``CUSTom`` uses the custom bit rate set by ``BUS:B<x>:ARINC429A:BITRate:CUSTom``.
 
         Sub-properties:
             - ``.custom``: The ``BUS:B<x>:ARINC429A:BITRate:CUSTom`` command.
@@ -21844,9 +21710,6 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>?`` query and raise an
           AssertionError if the returned value does not match ``value``.
 
-    Info:
-        - ``B<x>`` is the number of the bus.
-
     Properties:
         - ``.arinc429a``: The ``BUS:B<x>:ARINC429A`` command tree.
         - ``.audio``: The ``BUS:B<x>:AUDio`` command tree.
@@ -21932,9 +21795,6 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ARINC429A?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
-        Info:
-            - ``B<x>`` is the number of the bus.
-
         Sub-properties:
             - ``.bitrate``: The ``BUS:B<x>:ARINC429A:BITRate`` command.
             - ``.dataformat``: The ``BUS:B<x>:ARINC429A:DATAFORmat`` command.
@@ -21952,9 +21812,6 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio?`` query and raise
               an AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.bitdelay``: The ``BUS:B<x>:AUDio:BITDelay`` command.
@@ -21975,9 +21832,6 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUTOETHERnet?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUTOETHERnet?`` query and
               raise an AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``B<x>`` is the Bus number.
 
         Sub-properties:
             - ``.dataminusthreshold``: The ``BUS:B<x>:AUTOETHERnet:DATAMINUSTHRESHOLD`` command.
@@ -22104,9 +21958,6 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI?`` query and raise
               an AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``B<x>`` is the Bus number.
 
         Sub-properties:
             - ``.alertview``: The ``BUS:B<x>:ESPI:ALERTVIEW`` command.
@@ -22789,9 +22640,6 @@ class Bus(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>?`` query and raise an
               AssertionError if the returned value does not match ``value``.
-
-        Info:
-            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.arinc429a``: The ``BUS:B<x>:ARINC429A`` command tree.

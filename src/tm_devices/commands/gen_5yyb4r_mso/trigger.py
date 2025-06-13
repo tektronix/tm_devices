@@ -310,7 +310,7 @@ Commands and Queries:
     - TRIGger:A:BUS:USB:PATtern:CHAR<x>?
     - TRIGger:A:BUS:USB:PATtern:NUMSymbols <NR1>
     - TRIGger:A:BUS:USB:PATtern:NUMSymbols?
-    - TRIGger:A:BUS:USB:PATtern:ORDERedset {OFF|ON|0|1}
+    - TRIGger:A:BUS:USB:PATtern:ORDERedset {ON|OFF|1|0}
     - TRIGger:A:BUS:USB:PATtern:ORDERedset?
     - TRIGger:A:BUS:USB:PATtern:SYMbol:MINus<x> <string>
     - TRIGger:A:BUS:USB:PATtern:SYMbol:MINus<x>?
@@ -2285,8 +2285,8 @@ class TriggerBTime(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B:TIMe`` command.
 
     Description:
-        - This command sets or queries B trigger delay time, in seconds. The B Trigger time applies
-          only if ``TRIGger:B:BY`` is set to TIMe.
+        - This command specifies B trigger delay time. The B Trigger time applies only if
+          ``TRIGger:B:BY`` is set to TIMe.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:TIMe?`` query.
@@ -2301,7 +2301,7 @@ class TriggerBTime(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` is the B trigger delay time in seconds.
+        - ``<NR3>`` is a floating point number that specifies the B trigger delay time in seconds.
     """
 
 
@@ -2309,9 +2309,9 @@ class TriggerBState(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B:STATE`` command.
 
     Description:
-        - This command sets or queries the state of B trigger activity. If the B trigger state is
-          on, the B trigger is part of the triggering sequence. If the B trigger state is off, then
-          only the A trigger causes the trigger event.
+        - This command specifies the state of B trigger activity. If the B trigger state is on, the
+          B trigger is part of the triggering sequence. If the B trigger state is off, then only the
+          A trigger causes the trigger event.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:STATE?`` query.
@@ -2326,11 +2326,10 @@ class TriggerBState(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``ON`` indicates that the B trigger is active and causes trigger events with the A
-          trigger.
-        - ``OFF`` indicates that only the A trigger causes trigger events.
-        - ``<NR1>`` is an integer number. 0 turns off the B trigger; any other value activates the B
-          trigger.
+        - ``ON`` specifies that the B trigger is active and in causes trigger events conjunction
+          with the A trigger.
+        - ``OFF`` specifies that only the A trigger causes trigger events.
+        - ``<NR1>`` a 0 turns off the B trigger; any other value activates the B trigger.
     """
 
 
@@ -9225,9 +9224,10 @@ class TriggerBLogicFunction(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B:LOGIc:FUNCtion`` command.
 
     Description:
-        - This command sets or queries the logical combination of the input channels for logic
-          triggers. This command is equivalent to selecting Logic for the Trigger Type, and setting
-          or viewing the Define Logic.
+        - This command sets or queries the logical combination of the input channels for the pattern
+          and state logic triggers. This command is equivalent to selecting Event Trigger Setup from
+          the Trig menu, selecting Pattern or State for the Trigger Type, and setting or viewing the
+          Pattern Type.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:LOGIc:FUNCtion?`` query.
@@ -9357,9 +9357,10 @@ class TriggerBLogic(SCPICmdRead):
         """Return the ``TRIGger:B:LOGIc:FUNCtion`` command.
 
         Description:
-            - This command sets or queries the logical combination of the input channels for logic
-              triggers. This command is equivalent to selecting Logic for the Trigger Type, and
-              setting or viewing the Define Logic.
+            - This command sets or queries the logical combination of the input channels for the
+              pattern and state logic triggers. This command is equivalent to selecting Event
+              Trigger Setup from the Trig menu, selecting Pattern or State for the Trigger Type, and
+              setting or viewing the Pattern Type.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:LOGIc:FUNCtion?`` query.
@@ -9612,8 +9613,8 @@ class TriggerBEventsCount(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B:EVENTS:COUNt`` command.
 
     Description:
-        - This command sets or queries the number of events that must occur before the B trigger.
-          The B trigger event count applies only if ``TRIGger:B:BY`` is set to EVENTS.
+        - This command specifies the number of events that must occur before the B trigger (when
+          ``TRIG:DELay:BY`` is set to EVENTS).
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:EVENTS:COUNt?`` query.
@@ -9628,7 +9629,7 @@ class TriggerBEventsCount(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>`` is the number of B trigger events, which can range from 1 to 65,471.
+        - ``<NR1>`` is the number of B trigger events, which can range from 1 to 10,000,000.
     """
 
 
@@ -9661,8 +9662,8 @@ class TriggerBEvents(SCPICmdRead):
         """Return the ``TRIGger:B:EVENTS:COUNt`` command.
 
         Description:
-            - This command sets or queries the number of events that must occur before the B
-              trigger. The B trigger event count applies only if ``TRIGger:B:BY`` is set to EVENTS.
+            - This command specifies the number of events that must occur before the B trigger (when
+              ``TRIG:DELay:BY`` is set to EVENTS).
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:EVENTS:COUNt?`` query.
@@ -9678,7 +9679,7 @@ class TriggerBEvents(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR1>`` is the number of B trigger events, which can range from 1 to 65,471.
+            - ``<NR1>`` is the number of B trigger events, which can range from 1 to 10,000,000.
         """
         return self._count
 
@@ -9782,9 +9783,7 @@ class TriggerBEdgeSlope(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the slope for the edge trigger. This command is equivalent to
-          selecting Edge from the Trigger Type drop-down in the Trigger setup context menu, and then
-          choosing the desired Slope. This command is also equivalent to pressing the front-panel
-          Slope button.
+          selecting Event Trigger Setup from the Trig menu and then choosing the desired Slope.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:EDGE:SLOpe?`` query.
@@ -10063,9 +10062,8 @@ class TriggerBEdge(SCPICmdRead):
 
         Description:
             - This command sets or queries the slope for the edge trigger. This command is
-              equivalent to selecting Edge from the Trigger Type drop-down in the Trigger setup
-              context menu, and then choosing the desired Slope. This command is also equivalent to
-              pressing the front-panel Slope button.
+              equivalent to selecting Event Trigger Setup from the Trig menu and then choosing the
+              desired Slope.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:EDGE:SLOpe?`` query.
@@ -10422,9 +10420,9 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
         """Return the ``TRIGger:B:STATE`` command.
 
         Description:
-            - This command sets or queries the state of B trigger activity. If the B trigger state
-              is on, the B trigger is part of the triggering sequence. If the B trigger state is
-              off, then only the A trigger causes the trigger event.
+            - This command specifies the state of B trigger activity. If the B trigger state is on,
+              the B trigger is part of the triggering sequence. If the B trigger state is off, then
+              only the A trigger causes the trigger event.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:STATE?`` query.
@@ -10439,11 +10437,10 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
             ```
 
         Info:
-            - ``ON`` indicates that the B trigger is active and causes trigger events with the A
-              trigger.
-            - ``OFF`` indicates that only the A trigger causes trigger events.
-            - ``<NR1>`` is an integer number. 0 turns off the B trigger; any other value activates
-              the B trigger.
+            - ``ON`` specifies that the B trigger is active and in causes trigger events conjunction
+              with the A trigger.
+            - ``OFF`` specifies that only the A trigger causes trigger events.
+            - ``<NR1>`` a 0 turns off the B trigger; any other value activates the B trigger.
         """
         return self._state
 
@@ -10452,8 +10449,8 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
         """Return the ``TRIGger:B:TIMe`` command.
 
         Description:
-            - This command sets or queries B trigger delay time, in seconds. The B Trigger time
-              applies only if ``TRIGger:B:BY`` is set to TIMe.
+            - This command specifies B trigger delay time. The B Trigger time applies only if
+              ``TRIGger:B:BY`` is set to TIMe.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:TIMe?`` query.
@@ -10468,7 +10465,8 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` is the B trigger delay time in seconds.
+            - ``<NR3>`` is a floating point number that specifies the B trigger delay time in
+              seconds.
         """
         return self._time
 
@@ -10688,8 +10686,7 @@ class TriggerAuxlevel(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:AUXLevel`` command.
 
     Description:
-        - For those instruments that have an Auxiliary Input (such as an MSO58LP), this command sets
-          or queries the Auxiliary Input voltage level to use for an edge trigger.
+        - This command sets or queries the Auxiliary Input voltage level to use for an edge trigger.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:AUXLevel?`` query.
@@ -20270,9 +20267,10 @@ class TriggerALogicFunction(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:A:LOGIc:FUNCtion`` command.
 
     Description:
-        - This command sets or queries the logical combination of the input channels for logic
-          triggers. This command is equivalent to selecting Logic for the Trigger Type, and setting
-          or viewing the Define Logic.
+        - This command sets or queries the logical combination of the input channels for the pattern
+          and state logic triggers. This command is equivalent to selecting Event Trigger Setup from
+          the Trig menu, selecting Pattern or State for the Trigger Type, and setting or viewing the
+          Pattern Type.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:LOGIc:FUNCtion?`` query.
@@ -20402,9 +20400,10 @@ class TriggerALogic(SCPICmdRead):
         """Return the ``TRIGger:A:LOGIc:FUNCtion`` command.
 
         Description:
-            - This command sets or queries the logical combination of the input channels for logic
-              triggers. This command is equivalent to selecting Logic for the Trigger Type, and
-              setting or viewing the Define Logic.
+            - This command sets or queries the logical combination of the input channels for the
+              pattern and state logic triggers. This command is equivalent to selecting Event
+              Trigger Setup from the Trig menu, selecting Pattern or State for the Trigger Type, and
+              setting or viewing the Pattern Type.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:LOGIc:FUNCtion?`` query.
@@ -21044,9 +21043,7 @@ class TriggerAEdgeSlope(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the slope for the edge trigger. This command is equivalent to
-          selecting Edge from the Trigger Type drop-down in the Trigger setup context menu, and then
-          choosing the desired Slope. This command is also equivalent to pressing the front-panel
-          Slope button.
+          selecting Event Trigger Setup from the Trig menu and then choosing the desired Slope.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:EDGE:SLOpe?`` query.
@@ -21325,9 +21322,8 @@ class TriggerAEdge(SCPICmdRead):
 
         Description:
             - This command sets or queries the slope for the edge trigger. This command is
-              equivalent to selecting Edge from the Trigger Type drop-down in the Trigger setup
-              context menu, and then choosing the desired Slope. This command is also equivalent to
-              pressing the front-panel Slope button.
+              equivalent to selecting Event Trigger Setup from the Trig menu and then choosing the
+              desired Slope.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:EDGE:SLOpe?`` query.
@@ -24770,7 +24766,7 @@ class TriggerABusUsbPatternOrderedset(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:A:BUS:USB:PATtern:ORDERedset {OFF|ON|0|1}
+        - TRIGger:A:BUS:USB:PATtern:ORDERedset {ON|OFF|1|0}
         - TRIGger:A:BUS:USB:PATtern:ORDERedset?
         ```
 
@@ -24924,7 +24920,7 @@ class TriggerABusUsbPattern(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:A:BUS:USB:PATtern:ORDERedset {OFF|ON|0|1}
+            - TRIGger:A:BUS:USB:PATtern:ORDERedset {ON|OFF|1|0}
             - TRIGger:A:BUS:USB:PATtern:ORDERedset?
             ```
 
@@ -35882,8 +35878,8 @@ class Trigger(SCPICmdWrite, SCPICmdRead):
         """Return the ``TRIGger:AUXLevel`` command.
 
         Description:
-            - For those instruments that have an Auxiliary Input (such as an MSO58LP), this command
-              sets or queries the Auxiliary Input voltage level to use for an edge trigger.
+            - This command sets or queries the Auxiliary Input voltage level to use for an edge
+              trigger.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:AUXLevel?`` query.

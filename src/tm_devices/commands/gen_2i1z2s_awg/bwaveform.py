@@ -13,15 +13,15 @@ Commands and Queries:
     - BWAVeform:AUTO {LEN|CYCLE|DUR|FREQ|SR}
     - BWAVeform:AUTO?
     - BWAVeform:COMPile
-    - BWAVeform:COMPile:CASSign {0|1|OFF|ON}
+    - BWAVeform:COMPile:CASSign {ON|OFF|1|0}
     - BWAVeform:COMPile:CASSign?
     - BWAVeform:COMPile:CHANnel {<channel_number>}
     - BWAVeform:COMPile:NAME <waveform_name>
     - BWAVeform:COMPile:NAME?
-    - BWAVeform:COMPile:PLAY {0|1|OFF|ON}
+    - BWAVeform:COMPile:PLAY {ON|OFF|1|0}
     - BWAVeform:COMPile:PLAY?
     - BWAVeform:CYCLe <cycle>
-    - BWAVeform:FDRange {0|1|OFF|ON}
+    - BWAVeform:FDRange {ON|OFF|1|0}
     - BWAVeform:FREQuency <frequency>
     - BWAVeform:FUNCtion {sine|square|triangle|ramp|noise|DC}
     - BWAVeform:FUNCtion?
@@ -208,7 +208,7 @@ class BwaveformFdrange(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - BWAVeform:FDRange {0|1|OFF|ON}
+        - BWAVeform:FDRange {ON|OFF|1|0}
         ```
     """
 
@@ -245,7 +245,7 @@ class BwaveformCompilePlay(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BWAVeform:COMPile:PLAY {0|1|OFF|ON}
+        - BWAVeform:COMPile:PLAY {ON|OFF|1|0}
         - BWAVeform:COMPile:PLAY?
         ```
     """
@@ -309,7 +309,7 @@ class BwaveformCompileCassign(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BWAVeform:COMPile:CASSign {0|1|OFF|ON}
+        - BWAVeform:COMPile:CASSign {ON|OFF|1|0}
         - BWAVeform:COMPile:CASSign?
         ```
     """
@@ -362,7 +362,7 @@ class BwaveformCompile(SCPICmdWriteNoArguments, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BWAVeform:COMPile:CASSign {0|1|OFF|ON}
+            - BWAVeform:COMPile:CASSign {ON|OFF|1|0}
             - BWAVeform:COMPile:CASSign?
             ```
         """
@@ -429,7 +429,7 @@ class BwaveformCompile(SCPICmdWriteNoArguments, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BWAVeform:COMPile:PLAY {0|1|OFF|ON}
+            - BWAVeform:COMPile:PLAY {ON|OFF|1|0}
             - BWAVeform:COMPile:PLAY?
             ```
         """
@@ -633,7 +633,7 @@ class Bwaveform(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BWAVeform:FDRange {0|1|OFF|ON}
+            - BWAVeform:FDRange {ON|OFF|1|0}
             ```
         """
         return self._fdrange

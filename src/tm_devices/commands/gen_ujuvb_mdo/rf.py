@@ -103,7 +103,7 @@ Commands and Queries:
     - RF:SPECTRogram:SLICESELect <NR1>
     - RF:SPECTRogram:SLICESELect?
     - RF:SPECTRogram:SLICETIMe?
-    - RF:SPECTRogram:STATE {OFF|ON|0|1}
+    - RF:SPECTRogram:STATE {ON|OFF|1|0}
     - RF:SPECTRogram:STATE?
     - RF:SPECTRogram:TIMe?
     - RF:STARt <NR3>
@@ -275,7 +275,7 @@ class RfSpectrogramState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - RF:SPECTRogram:STATE {OFF|ON|0|1}
+        - RF:SPECTRogram:STATE {ON|OFF|1|0}
         - RF:SPECTRogram:STATE?
         ```
     """
@@ -500,7 +500,7 @@ class RfSpectrogram(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - RF:SPECTRogram:STATE {OFF|ON|0|1}
+            - RF:SPECTRogram:STATE {ON|OFF|1|0}
             - RF:SPECTRogram:STATE?
             ```
         """

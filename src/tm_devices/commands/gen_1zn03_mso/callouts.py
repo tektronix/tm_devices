@@ -608,10 +608,7 @@ class CalloutsCalloutItemBookmarkSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH1`` specifies the bookmark callout source as Ch1.
-        - ``CH2`` specifies the bookmark callout source as Ch2.
-        - ``CH3`` specifies the bookmark callout source as Ch3.
-        - ``CH4`` specifies the bookmark callout source as Ch4.
+        - ``CH1, CH2, CH3, CH4`` specifies the bookmark callout source. Select one.
     """
 
 
@@ -656,10 +653,7 @@ class CalloutsCalloutItemBookmark(SCPICmdRead):
             ```
 
         Info:
-            - ``CH1`` specifies the bookmark callout source as Ch1.
-            - ``CH2`` specifies the bookmark callout source as Ch2.
-            - ``CH3`` specifies the bookmark callout source as Ch3.
-            - ``CH4`` specifies the bookmark callout source as Ch4.
+            - ``CH1, CH2, CH3, CH4`` specifies the bookmark callout source. Select one.
         """
         return self._source
 

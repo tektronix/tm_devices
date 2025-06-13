@@ -15,7 +15,7 @@ Commands and Queries:
     - SYNChronize:DESKew:ABORt
     - SYNChronize:DESKew:STARt
     - SYNChronize:DESKew:STATe?
-    - SYNChronize:ENABle {OFF|ON|0|1}
+    - SYNChronize:ENABle {ON|OFF|1|0}
     - SYNChronize:ENABle?
     - SYNChronize:TYPE?
     ```
@@ -61,7 +61,7 @@ class SynchronizeEnable(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SYNChronize:ENABle {OFF|ON|0|1}
+        - SYNChronize:ENABle {ON|OFF|1|0}
         - SYNChronize:ENABle?
         ```
     """
@@ -358,7 +358,7 @@ class Synchronize(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SYNChronize:ENABle {OFF|ON|0|1}
+            - SYNChronize:ENABle {ON|OFF|1|0}
             - SYNChronize:ENABle?
             ```
         """
