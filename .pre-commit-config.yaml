@@ -10,6 +10,7 @@ ci:
     - pyright
     - pyright-verifytypes
     - pyroma
+    - poetry-lock
     - poetry-audit
     - check-tm-devices-schema-file
 repos:
