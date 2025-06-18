@@ -6014,6 +6014,7 @@ class BusBItemAudioWordselPolarity(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``B<x>`` is the number of the bus.
         - ``NORMal`` specifies positive WORDSel polarity.
         - ``INVERTed`` specifies negative WORDSel polarity.
     """
@@ -6026,6 +6027,9 @@ class BusBItemAudioWordsel(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:AUDio:WORDSel:POLarity`` command.
@@ -6059,6 +6063,7 @@ class BusBItemAudioWordsel(SCPICmdRead):
             ```
 
         Info:
+            - ``B<x>`` is the number of the bus.
             - ``NORMal`` specifies positive WORDSel polarity.
             - ``INVERTed`` specifies negative WORDSel polarity.
         """
@@ -6111,6 +6116,7 @@ class BusBItemAudioType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``B<x>`` is the number of the bus.
         - ``I2S`` specifies the I2S audio format.
         - ``LJ`` specifies the left-justified audio format.
         - ``RJ`` specifies the right justified audio format.
@@ -6264,6 +6270,7 @@ class BusBItemAudioFrameSize(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``B<x>`` is the number of the bus.
         - ``<NR1>`` specifies the number of channels in each frame.
     """
 
@@ -6275,6 +6282,9 @@ class BusBItemAudioFrame(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:FRAME?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:FRAME?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.size``: The ``BUS:B<x>:AUDio:FRAME:SIZe`` command.
@@ -6305,6 +6315,7 @@ class BusBItemAudioFrame(SCPICmdRead):
             ```
 
         Info:
+            - ``B<x>`` is the number of the bus.
             - ``<NR1>`` specifies the number of channels in each frame.
         """
         return self._size
@@ -6948,6 +6959,9 @@ class BusBItemAudio(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:FRAME?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.size``: The ``BUS:B<x>:AUDio:FRAME:SIZe`` command.
         """
@@ -6989,6 +7003,7 @@ class BusBItemAudio(SCPICmdRead):
             ```
 
         Info:
+            - ``B<x>`` is the number of the bus.
             - ``I2S`` specifies the I2S audio format.
             - ``LJ`` specifies the left-justified audio format.
             - ``RJ`` specifies the right justified audio format.
@@ -7004,6 +7019,9 @@ class BusBItemAudio(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:AUDio:WORDSel:POLarity`` command.

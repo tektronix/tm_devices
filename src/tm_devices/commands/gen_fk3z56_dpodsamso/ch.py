@@ -654,6 +654,7 @@ class ChannelProbeInputmodeAoffset(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``CH<x>`` is the channel number.
         - ``<NR3>`` specifies the A mode offset control.
     """
 
@@ -720,6 +721,7 @@ class ChannelProbeInputmode(SCPICmdWrite, SCPICmdRead):
             ```
 
         Info:
+            - ``CH<x>`` is the channel number.
             - ``<NR3>`` specifies the A mode offset control.
         """
         return self._aoffset

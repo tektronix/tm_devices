@@ -159,7 +159,8 @@ class AfgRampSymmetry(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NR3`` is a floating point number that represents the AFG ramp symmetry as a percentage.
+        - ``<NR3>`` is a floating point number that represents the AFG ramp symmetry as a
+          percentage.
     """
 
 
@@ -200,7 +201,7 @@ class AfgRamp(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` is a floating point number that represents the AFG ramp symmetry as a
+            - ``<NR3>`` is a floating point number that represents the AFG ramp symmetry as a
               percentage.
         """
         return self._symmetry
@@ -628,7 +629,7 @@ class AfgLowlevel(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NR3`` is the floating point number that represents the AFG low level value, in volts.
+        - ``<NR3>`` is the floating point number that represents the AFG low level value, in volts.
     """
 
 
@@ -1605,7 +1606,7 @@ class Afg(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` is the floating point number that represents the AFG low level value, in
+            - ``<NR3>`` is the floating point number that represents the AFG low level value, in
               volts.
         """
         return self._lowlevel
