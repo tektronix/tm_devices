@@ -150,7 +150,7 @@ repos:
       - id: check-poetry
 #        args: [--strict]  # TODO: enable this when poetry can be updated to v2+
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 9aeda5d1f4bbd212c557da1ea78eca9e8c829e19  # frozen: v0.11.13
+    rev: 8a948e557ca98afa9489998ad0b85515964df9c4  # frozen: v0.12.0
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
