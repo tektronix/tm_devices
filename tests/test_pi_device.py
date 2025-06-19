@@ -126,11 +126,11 @@ def test_pi_control(  # noqa: PLR0915
             "pyvisa.resources.resource.Resource.close",
             mock.MagicMock(side_effect=visa.VisaIOError(123)),
         ),
-        pytest.warns(Warning),
+        pytest.warns(Warning, match="Error encountered while closing the visa resource:"),
     ):
         scope._close()  # noqa: SLF001
-        assert scope._visa_resource is None  # noqa: SLF001
-        assert not scope._is_open  # noqa: SLF001
+    assert scope._visa_resource is None  # noqa: SLF001
+    assert not scope._is_open  # noqa: SLF001
 
     # Re-open the device for device manager teardown
     with mock.patch.dict("os.environ", {"TM_DEVICES_UNIT_TESTS_REBOOT_ALLOW": "true"}, clear=True):

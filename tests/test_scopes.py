@@ -193,7 +193,7 @@ def test_tekscope(device_manager: DeviceManager) -> None:  # noqa: PLR0915
         scope.curve_query(1, wfm_type="InvalidWFM")
     # Test curve queries when there is no valid data source return empty list
     scope.write(":DATA:SOURCE:AVAIL None")
-    with pytest.warns(UserWarning):
+    with pytest.warns(UserWarning, match="source not available for curve query: CH1"):
         assert scope.curve_query(1, wfm_type="TimeDomain") == []
     # Assert there are no errors after testing curve query
     scope.expect_esr(0, ('0,"No events to report - queue empty"',))
@@ -452,7 +452,9 @@ def test_long_device_name(device_manager: DeviceManager) -> None:
             "LONGNAMEINSTRUMENT": TmDevicesUnitTestOnlyCustomMSO5
         }
 
-        with pytest.warns(UserWarning):
+        with pytest.warns(
+            UserWarning, match='The "LONGNAMEINSTRUMENT" model is not supported by tm_devices'
+        ):
             scope = device_manager.add_scope("LONGNAMEINSTRUMENT-NO_SERIAL", connection_type="USB")
 
         assert not scope.total_channels

@@ -1,4 +1,3 @@
-# ruff: noqa: D402,PLR0913
 # pyright: reportConstantRedefinition=none
 """The dmm commands module.
 

@@ -254,7 +254,13 @@ options:
                 mock.MagicMock(return_value="data"),
             ),
         ):
-            with pytest.warns(UserWarning), pytest.raises(SystemError) as error:
+            with (
+                pytest.warns(
+                    UserWarning,
+                    match="had data sitting in the VISA Output Buffer on first connection",
+                ),
+                pytest.raises(SystemError) as error,
+            ):
                 device_manager.add_afg("afg3252c-hostname")
             assert str(error.value) == (
                 "Unable to read *IDN? response.\n"
@@ -278,7 +284,12 @@ options:
             ),
         ):
             # patched the stb to return 16 (message available)
-            with pytest.warns(UserWarning), pytest.raises(SystemError) as error:
+            with (
+                pytest.warns(
+                    UserWarning, match="Detected data in the buffer via the Status Byte register"
+                ),
+                pytest.raises(SystemError) as error,
+            ):
                 device_manager.add_afg("afg3252c-hostname")
             assert str(error.value) == (
                 "VI_ERROR_TMO (-1073807339): Timeout expired before operation completed.\n"
@@ -305,7 +316,10 @@ options:
         with pytest.raises(LookupError):
             device_manager.get_afg(10)
 
-        with pytest.raises(NotImplementedError), pytest.warns(UserWarning):
+        with (
+            pytest.raises(NotImplementedError),
+            pytest.warns(UserWarning, match='The "UNKNOWN" model is not supported by tm_devices'),
+        ):
             device_manager.add_smu("UNKNOWN-SMU", connection_type="USB")
 
         with pytest.raises(
@@ -313,7 +327,10 @@ options:
         ):
             device_manager.get_device(device_number=1)
 
-        with pytest.raises(SystemError), pytest.warns(UserWarning):
+        with (
+            pytest.raises(SystemError),
+            pytest.warns(UserWarning, match='The "UNKNOWN" model is not supported by tm_devices'),
+        ):
             device_manager.add_afg("UNKNOWN")
 
         with pytest.raises(SystemError):
@@ -349,7 +366,16 @@ options:
             device_manager.open()
 
         device_manager.close()
-        with pytest.warns(UserWarning), DeviceManager() as dev_mgr:
+        with (  # noqa: PT031
+            pytest.warns(
+                UserWarning,
+                match=(
+                    "The DeviceManager has already been created and is "
+                    "not allowed to be instantiated twice"
+                ),
+            ),
+            DeviceManager() as dev_mgr,
+        ):
             assert dev_mgr.is_open
             dev_mgr.close()
         assert not device_manager.is_open

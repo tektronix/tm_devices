@@ -131,12 +131,19 @@ repos:
         files: ^(.*/)?(poetry\.lock|pyproject\.toml)$
       - id: poetry-audit
         name: poetry-audit
-        entry: poetry
+        entry: poetry audit
         language: system
-        types: [toml]
         pass_filenames: false
+        files: ^(.*/)?(poetry\.lock|pyproject\.toml)$
         always_run: true
-        args: [audit, --json, --ignore-code=CVE-2019-8341]
+        args: [--json, --ignore-code=CVE-2019-8341]
+      - id: poetry-check
+        name: poetry-check
+        entry: poetry check
+        language: system
+        pass_filenames: false
+        files: ^(.*/)?(poetry\.lock|pyproject\.toml)$
+#        args: [--strict]  # TODO: enable this when poetry can be updated to v2+
       - id: check-tm-devices-schema-file
         name: check-tm-devices-schema-file
         entry: python
@@ -144,11 +151,6 @@ repos:
         types: [python]
         pass_filenames: false
         args: [scripts/generate_schema.py]
-  - repo: https://gitlab.com/smop/pre-commit-hooks
-    rev: df034f88cf92b394e6f00a78fa97a2aa4e270e60  # frozen: v1.0.0
-    hooks:
-      - id: check-poetry
-#        args: [--strict]  # TODO: enable this when poetry can be updated to v2+
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: 8a948e557ca98afa9489998ad0b85515964df9c4  # frozen: v0.12.0
     hooks:

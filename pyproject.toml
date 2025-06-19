@@ -220,6 +220,7 @@ disable = [
   "duplicate-code",
   "fixme",  # caught by ruff
   "global-statement",  # caught by ruff
+  "import-outside-toplevel",  # caught by ruff
   "import-private-name",  # caught by pyright
   "invalid-name",  # caught by ruff
   "line-too-long",  # caught by ruff
@@ -338,6 +339,7 @@ ignore = [
   "UP024",  # Replace aliased errors with `OSError` (allowed in this package)
   "UP035",  # `X` is deprecated, use `Y` instead # TODO: Drop Python 3.9: enable this check
   "UP037",  # Remove quotes from type annotation # TODO: Drop Python 3.9: enable this check
+  "UP045",  # Use `X | None` for type annotations # TODO: Drop Python 3.9: enable this check
 ]
 pydocstyle = {convention = "google"}
 pylint = {max-args = 7}

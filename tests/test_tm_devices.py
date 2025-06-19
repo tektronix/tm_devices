@@ -199,7 +199,7 @@ def test_no_lru_cache_in_methods(driver: Type[object]) -> None:
 
 def test_supported_models_in_device_driver_mapping() -> None:
     """Verify that all supported models are in the device driver mapping and drivers init file."""
-    from tm_devices.drivers import _device_driver_mapping  # pylint: disable=import-outside-toplevel
+    from tm_devices.drivers import _device_driver_mapping  # noqa: PLC0415
 
     supported_models_list = sorted(x.value for x in tm_devices.SupportedModels)
     device_driver_list: List[str] = sorted(

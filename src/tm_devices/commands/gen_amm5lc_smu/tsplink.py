@@ -1,5 +1,4 @@
 # pylint: disable=line-too-long
-# ruff: noqa: D402,PLR0913
 # pyright: reportConstantRedefinition=none
 """The tsplink commands module.
 

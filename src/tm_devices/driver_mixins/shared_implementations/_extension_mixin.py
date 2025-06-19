@@ -44,8 +44,7 @@ class _ExtendableMixin:
         setattr(cls, method.__name__, method)
 
         # Helper code to modify stub (.pyi) files
-        # pylint: disable=import-outside-toplevel
-        from tm_devices.helpers.stubgen import add_info_to_stub
+        from tm_devices.helpers.stubgen import add_info_to_stub  # noqa: PLC0415
 
         add_info_to_stub(cls, method)
 
@@ -106,8 +105,7 @@ class _ExtendableMixin:
             setattr(cls, function.__name__, func)
 
             # Helper code to modify stub (.pyi) files
-            # pylint: disable=import-outside-toplevel
-            from tm_devices.helpers.stubgen import add_info_to_stub
+            from tm_devices.helpers.stubgen import add_info_to_stub  # noqa: PLC0415
 
             add_info_to_stub(cls, function, is_property=True)
 
