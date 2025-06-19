@@ -5,13 +5,13 @@ ci:
   autofix_prs: false
   autoupdate_schedule: quarterly
   skip:
-    - check-poetry
     - pylint
     - pyright
     - pyright-verifytypes
     - pyroma
     - poetry-lock
     - poetry-audit
+    - poetry-check
     - check-tm-devices-schema-file
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
