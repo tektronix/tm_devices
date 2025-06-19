@@ -10,6 +10,7 @@ ci:
     - pyright
     - pyright-verifytypes
     - pyroma
+    - poetry-lock
     - poetry-audit
     - check-tm-devices-schema-file
 repos:
@@ -86,10 +87,6 @@ repos:
           - mdformat-toc
           - mdformat-web
           - mdformat-wikilink
-  - repo: https://gitlab.com/smop/pre-commit-hooks
-    rev: df034f88cf92b394e6f00a78fa97a2aa4e270e60  # frozen: v1.0.0
-    hooks:
-      - id: check-poetry
   - repo: https://github.com/pappasam/toml-sort
     rev: 4ec24891e200ae663aa2a7cecd19516080777133  # frozen: v0.24.2
     hooks:
@@ -125,6 +122,13 @@ repos:
         pass_filenames: false
         always_run: true
         args: [., --min=10]
+      - id: poetry-lock
+        name: poetry-lock
+        entry: poetry lock
+        language: system
+        pass_filenames: false
+        always_run: true
+        files: ^(.*/)?(poetry\.lock|pyproject\.toml)$
       - id: poetry-audit
         name: poetry-audit
         entry: poetry
@@ -140,6 +144,11 @@ repos:
         types: [python]
         pass_filenames: false
         args: [scripts/generate_schema.py]
+  - repo: https://gitlab.com/smop/pre-commit-hooks
+    rev: df034f88cf92b394e6f00a78fa97a2aa4e270e60  # frozen: v1.0.0
+    hooks:
+      - id: check-poetry
+#        args: [--strict]  # TODO: enable this when poetry can be updated to v2+
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: 9aeda5d1f4bbd212c557da1ea78eca9e8c829e19  # frozen: v0.11.13
     hooks:
