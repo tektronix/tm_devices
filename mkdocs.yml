@@ -142,7 +142,7 @@ plugins:
               domains: [std, py]
             - url: https://packaging.pypa.io/en/stable/objects.inv
               domains: [std, py]
-            - url: https://docs.python-requests.org/en/stable/objects.inv
+            - url: https://requests.readthedocs.io/en/stable/objects.inv
               domains: [std, py]
   - spellcheck:
       known_words: known_words.txt

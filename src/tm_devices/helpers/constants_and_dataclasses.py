@@ -509,8 +509,8 @@ class DeviceConfigEntry(AsDictionaryUseEnumNameUseCustEnumStrValueMixin, _Config
         if self.connection_type == ConnectionTypes.USB:
             full_model, serial = self.address.split("-", 1)
             # local import here to avoid circular imports
-            # pylint: disable=import-outside-toplevel,cyclic-import
-            from tm_devices.helpers.functions import get_model_series
+            # pylint: disable=cyclic-import
+            from tm_devices.helpers.functions import get_model_series  # noqa: PLC0415
 
             model_series = get_model_series(full_model)
             model_id_lookup = {

@@ -254,7 +254,7 @@ def __exception_handler(
     exc_value.__cause__ = None
     # Update the message to include the log file location where the complete traceback is located.
     if exc_value.args:
-        exc_value.args = (updated_message,) + exc_value.args[1:]
+        exc_value.args = (updated_message, *exc_value.args[1:])
     _ORIGINAL_SYS_EXCEPTHOOK(exc_type, exc_value, exc_traceback)
 
 

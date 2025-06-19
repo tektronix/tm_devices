@@ -1,4 +1,4 @@
-# ruff: noqa: D402,PLR0913
+# ruff: noqa: PLR0913
 """The SMU2634B commands module.
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.

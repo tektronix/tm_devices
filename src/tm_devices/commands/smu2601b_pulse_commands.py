@@ -1,5 +1,4 @@
 # pylint: disable=line-too-long
-# ruff: noqa: D402,PLR0913
 """The SMU2601B_Pulse commands module.
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
