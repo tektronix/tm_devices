@@ -13,7 +13,7 @@ Commands and Queries:
     - DIAGnostic:CATalog? [{ALL|<subsystem>}[,{ALL|<area>}]]
     - DIAGnostic:CONTrol:COUNt <NR1>
     - DIAGnostic:CONTrol:COUNt?
-    - DIAGnostic:CONTrol:HALT {0|1|OFF|ON}
+    - DIAGnostic:CONTrol:HALT {ON|OFF|1|0}
     - DIAGnostic:CONTrol:HALT?
     - DIAGnostic:CONTrol:LOOP {ONCE|CONTinuous|COUNt}
     - DIAGnostic:CONTrol:LOOP?
@@ -21,7 +21,7 @@ Commands and Queries:
     - DIAGnostic:IMMediate
     - DIAGnostic:IMMediate?
     - DIAGnostic:LOG:CLEar
-    - DIAGnostic:LOG:FAILuresonly {0|1|OFF|ON}
+    - DIAGnostic:LOG:FAILuresonly {ON|OFF|1|0}
     - DIAGnostic:LOG:FAILuresonly?
     - DIAGnostic:LOG?
     - DIAGnostic:LOOPs?
@@ -498,7 +498,7 @@ class DiagnosticLogFailuresonly(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DIAGnostic:LOG:FAILuresonly {0|1|OFF|ON}
+        - DIAGnostic:LOG:FAILuresonly {ON|OFF|1|0}
         - DIAGnostic:LOG:FAILuresonly?
         ```
 
@@ -587,7 +587,7 @@ class DiagnosticLog(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DIAGnostic:LOG:FAILuresonly {0|1|OFF|ON}
+            - DIAGnostic:LOG:FAILuresonly {ON|OFF|1|0}
             - DIAGnostic:LOG:FAILuresonly?
             ```
 
@@ -692,7 +692,7 @@ class DiagnosticControlHalt(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DIAGnostic:CONTrol:HALT {0|1|OFF|ON}
+        - DIAGnostic:CONTrol:HALT {ON|OFF|1|0}
         - DIAGnostic:CONTrol:HALT?
         ```
 
@@ -790,7 +790,7 @@ class DiagnosticControl(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DIAGnostic:CONTrol:HALT {0|1|OFF|ON}
+            - DIAGnostic:CONTrol:HALT {ON|OFF|1|0}
             - DIAGnostic:CONTrol:HALT?
             ```
 

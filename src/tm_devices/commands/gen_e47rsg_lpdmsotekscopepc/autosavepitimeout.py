@@ -42,7 +42,7 @@ class Autosavepitimeout(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>``
+        - ``<NR1>`` sets the timeout time.
     """
 
     def __init__(

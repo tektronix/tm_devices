@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - ROSc:SOUrce {EXTernal|INTERnal|TRACking}
+    - ROSc:SOUrce {INTERnal|EXTernal|TRACking}
     - ROSc:SOUrce?
     - ROSc:STATE?
     ```
@@ -39,6 +39,10 @@ class RoscState(SCPICmdRead):
         ```
         - ROSc:STATE?
         ```
+
+    Info:
+        - ``LOCKED`` indicates the reference oscillator is locked.
+        - ``UNLOCKED`` indicates the reference oscillator is not locked.
     """
 
 
@@ -59,7 +63,7 @@ class RoscSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ROSc:SOUrce {EXTernal|INTERnal|TRACking}
+        - ROSc:SOUrce {INTERnal|EXTernal|TRACking}
         - ROSc:SOUrce?
         ```
 
@@ -108,7 +112,7 @@ class Rosc(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ROSc:SOUrce {EXTernal|INTERnal|TRACking}
+            - ROSc:SOUrce {INTERnal|EXTernal|TRACking}
             - ROSc:SOUrce?
             ```
 
@@ -139,5 +143,9 @@ class Rosc(SCPICmdRead):
             ```
             - ROSc:STATE?
             ```
+
+        Info:
+            - ``LOCKED`` indicates the reference oscillator is locked.
+            - ``UNLOCKED`` indicates the reference oscillator is not locked.
         """
         return self._state

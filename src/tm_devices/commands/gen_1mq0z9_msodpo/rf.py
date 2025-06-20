@@ -107,10 +107,10 @@ Commands and Queries:
     - RF:SPECTRogram:SLICESELect <NR1>
     - RF:SPECTRogram:SLICESELect?
     - RF:SPECTRogram:SLICETIMe?
-    - RF:SPECTRogram:STATE {OFF|ON|0|1}
+    - RF:SPECTRogram:STATE {ON|OFF|1|0}
     - RF:SPECTRogram:STATE?
     - RF:SPECTRogram:TIMe?
-    - RF:SQUELCH:STATE {OFF|ON|0|1}
+    - RF:SQUELCH:STATE {ON|OFF|1|0}
     - RF:SQUELCH:STATE?
     - RF:SQUELCH:THReshold <NR3>
     - RF:SQUELCH:THReshold?
@@ -284,7 +284,7 @@ class RfSquelchState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - RF:SQUELCH:STATE {OFF|ON|0|1}
+        - RF:SQUELCH:STATE {ON|OFF|1|0}
         - RF:SQUELCH:STATE?
         ```
     """
@@ -327,7 +327,7 @@ class RfSquelch(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - RF:SQUELCH:STATE {OFF|ON|0|1}
+            - RF:SQUELCH:STATE {ON|OFF|1|0}
             - RF:SQUELCH:STATE?
             ```
         """
@@ -401,7 +401,7 @@ class RfSpectrogramState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - RF:SPECTRogram:STATE {OFF|ON|0|1}
+        - RF:SPECTRogram:STATE {ON|OFF|1|0}
         - RF:SPECTRogram:STATE?
         ```
     """
@@ -626,7 +626,7 @@ class RfSpectrogram(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - RF:SPECTRogram:STATE {OFF|ON|0|1}
+            - RF:SPECTRogram:STATE {ON|OFF|1|0}
             - RF:SPECTRogram:STATE?
             ```
         """

@@ -9,8 +9,8 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - TSTamptable:ADDNew <Qstring>
-    - TSTamptable:DELETE <Qstring>
+    - TSTamptable:ADDNew <QString>
+    - TSTamptable:DELETE <QString>
     - TSTamptable:LIST?
     ```
 """
@@ -52,12 +52,14 @@ class TstamptableDelete(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - TSTamptable:DELETE <Qstring>
+        - TSTamptable:DELETE <QString>
         ```
 
     Info:
-        - ``<Qstring>`` specifies the History time stamp results table name.
+        - ``<QString>`` specifies the History time stamp results table name.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class TstamptableAddnew(SCPICmdWrite):
@@ -71,12 +73,14 @@ class TstamptableAddnew(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - TSTamptable:ADDNew <Qstring>
+        - TSTamptable:ADDNew <QString>
         ```
 
     Info:
-        - ``<Qstring>`` specifies the History time stamp results table name.
+        - ``<QString>`` specifies the History time stamp results table name.
     """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class Tstamptable(SCPICmdRead):
@@ -113,11 +117,11 @@ class Tstamptable(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TSTamptable:ADDNew <Qstring>
+            - TSTamptable:ADDNew <QString>
             ```
 
         Info:
-            - ``<Qstring>`` specifies the History time stamp results table name.
+            - ``<QString>`` specifies the History time stamp results table name.
         """
         return self._addnew
 
@@ -133,11 +137,11 @@ class Tstamptable(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TSTamptable:DELETE <Qstring>
+            - TSTamptable:DELETE <QString>
             ```
 
         Info:
-            - ``<Qstring>`` specifies the History time stamp results table name.
+            - ``<QString>`` specifies the History time stamp results table name.
         """
         return self._delete
 

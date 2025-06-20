@@ -390,8 +390,7 @@ class TriggerAuxlevel(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:AUXLevel`` command.
 
     Description:
-        - For those instruments that have an Auxiliary Input (such as an MSO58LP), this command sets
-          or queries the Auxiliary Input voltage level to use for an edge trigger.
+        - This command sets or queries the Auxiliary Input voltage level to use for an edge trigger.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:AUXLevel?`` query.
@@ -7357,8 +7356,8 @@ class Trigger(SCPICmdWrite, SCPICmdRead):
         """Return the ``TRIGger:AUXLevel`` command.
 
         Description:
-            - For those instruments that have an Auxiliary Input (such as an MSO58LP), this command
-              sets or queries the Auxiliary Input voltage level to use for an edge trigger.
+            - This command sets or queries the Auxiliary Input voltage level to use for an edge
+              trigger.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:AUXLevel?`` query.
