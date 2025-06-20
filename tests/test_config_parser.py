@@ -586,13 +586,13 @@ def test_get_visa_resource_expression(
 def test_get_visa_resource_expression_errors() -> None:
     """Test creating a resource expression throws the proper errors."""
     # Test trying to connect to a USB device that doesn't exist
-    with (
+    with (  # noqa: PT031
         mock.patch.dict(
             "os.environ",
             {"TM_DEVICES": "device_type=SCOPE,connection_type=USB,address=MSO123456-3000260000"},
             clear=True,
         ),
-        pytest.warns(UserWarning),
+        pytest.warns(UserWarning, match='The "MSO123456" model is not supported by tm_devices'),
     ):
         config = DMConfigParser()
         device = config.devices["SCOPE 1"]

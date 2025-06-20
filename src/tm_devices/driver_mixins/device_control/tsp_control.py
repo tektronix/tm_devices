@@ -67,13 +67,11 @@ class TSPControl(PIControl, ABC):
             buffer_data = self.get_buffers(*args)
             column_length = max(len(x) for x in buffer_data.values())
             file.write(sep.join(buffer_data) + "\n")
-            for index in range(column_length):
-                file.write(
-                    sep.join(
-                        [str(ls[index]) if index < len(ls) else "" for ls in buffer_data.values()]
-                    )
-                    + "\n"
-                )
+            file.writelines(
+                sep.join([str(ls[index]) if index < len(ls) else "" for ls in buffer_data.values()])
+                + "\n"
+                for index in range(column_length)
+            )
 
     def get_buffers(self, *args: str) -> Dict[str, List[float]]:
         """Get the contents of one or more buffers on the device.

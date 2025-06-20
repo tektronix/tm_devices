@@ -26,7 +26,10 @@ def test_singleton(capsys: pytest.CaptureFixture[str]) -> None:
     assert dummy.init_count == 1
 
     # Try to create a new instance
-    with pytest.warns(UserWarning):
+    with pytest.warns(
+        UserWarning,
+        match="The DummyClass has already been created and is not allowed to be instantiated twice",
+    ):
         new_dummy = DummyClass(value=True)
     assert dummy == new_dummy
     assert dummy is new_dummy

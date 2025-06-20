@@ -43,8 +43,8 @@ MODEL_SERIES_LIST = SupportedModels.list_values()
 
 def test_create_ping_command() -> None:
     """Test the creation of the ping command."""
-    # pylint: disable=import-outside-toplevel,import-private-name,useless-suppression
-    from tm_devices.helpers.functions import _create_ping_command
+    # pylint: disable=import-private-name,useless-suppression
+    from tm_devices.helpers.functions import _create_ping_command  # noqa: PLC0415
 
     with mock.patch("platform.system", mock.MagicMock(return_value="Windows")):
         assert _create_ping_command("127.0.0.1") == "ping 127.0.0.1 -n 1 -w 2000"
@@ -107,7 +107,9 @@ def test_get_model_series(input_string: str, expected_abbrev_model: str) -> None
         expected_abbrev_model: The expected output of the function being tested.
     """
     if expected_abbrev_model not in MODEL_SERIES_LIST:
-        with pytest.warns(UserWarning):
+        with pytest.warns(
+            UserWarning, match=f'The "{expected_abbrev_model}" model is not supported by tm_devices'
+        ):
             assert get_model_series(input_string) == expected_abbrev_model
     else:
         assert get_model_series(input_string) == expected_abbrev_model
@@ -268,10 +270,8 @@ def test_check_for_update(capsys: pytest.CaptureFixture[str]) -> None:
 
 def test_get_visa_backend() -> None:
     """Verify that the VISA backend can be determined properly."""
-    # pylint: disable=import-outside-toplevel,import-private-name,useless-suppression
-    from tm_devices.helpers.functions import (
-        _get_system_visa_info,
-    )
+    # pylint: disable=import-private-name,useless-suppression
+    from tm_devices.helpers.functions import _get_system_visa_info  # noqa: PLC0415
 
     testing_system_details: Dict[Any, Any] = {
         "pyvisa": "1.12.0",
