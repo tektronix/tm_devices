@@ -3948,6 +3948,7 @@ class MeasurementMeasItemRefvoltage(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MEAS<x>`` is the measurement number.
         - ``<NR3>`` is the reference voltage value for the selected configuration.
     """
 
@@ -7575,6 +7576,7 @@ class MeasurementMeasItemBurstedgtype(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MEAS<x>`` specifies the measurement number.
         - ``RISE`` specifies a burst with a rising edge.
         - ``FALL`` specifies a burst with a falling edge.
     """
@@ -7588,6 +7590,9 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>?`` query.
         - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``MEAS<x>`` specifies the measurement number.
 
     Properties:
         - ``.burstedgtype``: The ``MEASUrement:MEAS<x>:BURSTEDGTYPe`` command.
@@ -7721,6 +7726,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
+            - ``MEAS<x>`` specifies the measurement number.
             - ``RISE`` specifies a burst with a rising edge.
             - ``FALL`` specifies a burst with a falling edge.
         """
@@ -8442,6 +8448,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
+            - ``MEAS<x>`` is the measurement number.
             - ``<NR3>`` is the reference voltage value for the selected configuration.
         """
         return self._refvoltage
@@ -8814,6 +8821,7 @@ class MeasurementMathItemReflevelsPercentType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``TENNinety`` sets the values for Low, Mid and High Ref to 10%, 50% and 90% respectively.
         - ``TWENtyeighty`` sets the values for Low, Mid and High Ref are set to 20%, 50% and 80%
           respectively.
@@ -8845,6 +8853,7 @@ class MeasurementMathItemReflevelsPercentRisemid(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``<NR3>`` is the percentage (where 50% is equal to MID) used to calculate the mid
           reference level when the measurement Ref level method is set to Percent.
     """
@@ -8874,6 +8883,7 @@ class MeasurementMathItemReflevelsPercentRiselow(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``<NR3>`` is the percentage (where 100% is equal to TOP) used to calculate the mid
           reference level when the measurement Ref level method is set to Percent.
     """
@@ -8904,6 +8914,7 @@ class MeasurementMathItemReflevelsPercentRisehigh(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``<NR3>`` is the percentage (where 100% is equal to TOP) used to calculate the high
           reference level when the measurement's Ref level method is set to Percent.
     """
@@ -8933,6 +8944,7 @@ class MeasurementMathItemReflevelsPercentHysteresis(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``<NR3>`` is the hysteresis value used for the autoset.
     """
 
@@ -8961,6 +8973,7 @@ class MeasurementMathItemReflevelsPercentFallmid(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``<NR3>`` is the percentage (where 50% is equal to MID) used to calculate the mid
           reference level when the measurement Ref level method is set to Percent.
     """
@@ -8990,6 +9003,7 @@ class MeasurementMathItemReflevelsPercentFalllow(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``<NR3>`` is the percentage (where 100% is equal to HIGH) used to calculate the mid
           reference level when the measurement's Ref level method is set to Percent.
     """
@@ -9019,6 +9033,7 @@ class MeasurementMathItemReflevelsPercentFallhigh(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``<NR3>`` is the percentage (where 100% is equal to HIGH) used to calculate the high
           reference level when the measurement Ref level method is set to Percent.
     """
@@ -9034,6 +9049,9 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``MEASUrement:MATH<x>:REFLevels:PERCent?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``MATH<x>`` specifies the math number.
 
     Properties:
         - ``.fallhigh``: The ``MEASUrement:MATH<x>:REFLevels:PERCent:FALLHigh`` command.
@@ -9096,6 +9114,7 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``<NR3>`` is the percentage (where 100% is equal to HIGH) used to calculate the high
               reference level when the measurement Ref level method is set to Percent.
         """
@@ -9126,6 +9145,7 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``<NR3>`` is the percentage (where 100% is equal to HIGH) used to calculate the mid
               reference level when the measurement's Ref level method is set to Percent.
         """
@@ -9156,6 +9176,7 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``<NR3>`` is the percentage (where 50% is equal to MID) used to calculate the mid
               reference level when the measurement Ref level method is set to Percent.
         """
@@ -9186,6 +9207,7 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``<NR3>`` is the hysteresis value used for the autoset.
         """
         return self._hysteresis
@@ -9216,6 +9238,7 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``<NR3>`` is the percentage (where 100% is equal to TOP) used to calculate the high
               reference level when the measurement's Ref level method is set to Percent.
         """
@@ -9246,6 +9269,7 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``<NR3>`` is the percentage (where 100% is equal to TOP) used to calculate the mid
               reference level when the measurement Ref level method is set to Percent.
         """
@@ -9276,6 +9300,7 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``<NR3>`` is the percentage (where 50% is equal to MID) used to calculate the mid
               reference level when the measurement Ref level method is set to Percent.
         """
@@ -9305,6 +9330,7 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``TENNinety`` sets the values for Low, Mid and High Ref to 10%, 50% and 90%
               respectively.
             - ``TWENtyeighty`` sets the values for Low, Mid and High Ref are set to 20%, 50% and 80%
@@ -9337,6 +9363,7 @@ class MeasurementMathItemReflevelsMethod(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``PERCent`` specifies that the reference levels are calculated as a percent relative to
           HIGH and LOW. The percentages are defined using the
           ``MEASUrement:MATH<x>:REFLevel:PERCent`` commands.
@@ -9369,6 +9396,7 @@ class MeasurementMathItemReflevelsBasetop(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``AUTO`` automatically chooses a reference level method.
         - ``MINMax`` specifies that reference levels are relative to the measurement MIN and MAX.
         - ``MEANhistogram`` specifies that reference levels are relative to the histogram mean BASE
@@ -9403,6 +9431,7 @@ class MeasurementMathItemReflevelsAbsoluteType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``SAME`` specifies that the absolute levels are set the same.
         - ``UNIQue`` specifies that the absolute levels can be set independently.
     """
@@ -9432,6 +9461,7 @@ class MeasurementMathItemReflevelsAbsoluteRisemid(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``<NR3>`` is the mid reference level (where 50% is equal to MID) used to calculate the mid
           reference level when the measurement Ref level method is set to Absolute.
     """
@@ -9461,6 +9491,7 @@ class MeasurementMathItemReflevelsAbsoluteRiselow(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``<NR3>`` is the high reference level, and is the zero percent level when
           ``MEASUrement:IMMed:REFLevel:METHod`` is set to Absolute.
     """
@@ -9490,6 +9521,7 @@ class MeasurementMathItemReflevelsAbsoluteRisehigh(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``<NR3>`` is the high reference level, and is the zero percent level when
           ``MEASUrement:IMMed:REFLevel:METHod`` is set to Absolute.
     """
@@ -9518,6 +9550,7 @@ class MeasurementMathItemReflevelsAbsoluteHysteresis(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``<NR3>`` is the hysteresis value used for the autoset.
     """
 
@@ -9546,6 +9579,7 @@ class MeasurementMathItemReflevelsAbsoluteFallmid(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``<NR3>`` is the mid reference level (where 50% is equal to MID) used to calculate the mid
           reference level when the measurement's Ref level method is set to Absolute.
     """
@@ -9575,6 +9609,7 @@ class MeasurementMathItemReflevelsAbsoluteFalllow(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``<NR3>`` is the high reference level, and is the zero percent level when
           ``MEASUrement:IMMed:REFLevel:METHod`` is set to Absolute.
     """
@@ -9604,6 +9639,7 @@ class MeasurementMathItemReflevelsAbsoluteFallhigh(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MATH<x>`` specifies the math number.
         - ``<NR3>`` is the high reference level, and is the zero percent level when
           ``MEASUrement:IMMed:REFLevel:METHod`` is set to Absolute.
     """
@@ -9619,6 +9655,9 @@ class MeasurementMathItemReflevelsAbsolute(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``MEASUrement:MATH<x>:REFLevels:ABSolute?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``MATH<x>`` specifies the math number.
 
     Properties:
         - ``.fallhigh``: The ``MEASUrement:MATH<x>:REFLevels:ABSolute:FALLHigh`` command.
@@ -9681,6 +9720,7 @@ class MeasurementMathItemReflevelsAbsolute(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``<NR3>`` is the high reference level, and is the zero percent level when
               ``MEASUrement:IMMed:REFLevel:METHod`` is set to Absolute.
         """
@@ -9711,6 +9751,7 @@ class MeasurementMathItemReflevelsAbsolute(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``<NR3>`` is the high reference level, and is the zero percent level when
               ``MEASUrement:IMMed:REFLevel:METHod`` is set to Absolute.
         """
@@ -9741,6 +9782,7 @@ class MeasurementMathItemReflevelsAbsolute(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``<NR3>`` is the mid reference level (where 50% is equal to MID) used to calculate the
               mid reference level when the measurement's Ref level method is set to Absolute.
         """
@@ -9771,6 +9813,7 @@ class MeasurementMathItemReflevelsAbsolute(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``<NR3>`` is the hysteresis value used for the autoset.
         """
         return self._hysteresis
@@ -9800,6 +9843,7 @@ class MeasurementMathItemReflevelsAbsolute(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``<NR3>`` is the high reference level, and is the zero percent level when
               ``MEASUrement:IMMed:REFLevel:METHod`` is set to Absolute.
         """
@@ -9830,6 +9874,7 @@ class MeasurementMathItemReflevelsAbsolute(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``<NR3>`` is the high reference level, and is the zero percent level when
               ``MEASUrement:IMMed:REFLevel:METHod`` is set to Absolute.
         """
@@ -9860,6 +9905,7 @@ class MeasurementMathItemReflevelsAbsolute(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``<NR3>`` is the mid reference level (where 50% is equal to MID) used to calculate the
               mid reference level when the measurement Ref level method is set to Absolute.
         """
@@ -9889,6 +9935,7 @@ class MeasurementMathItemReflevelsAbsolute(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``SAME`` specifies that the absolute levels are set the same.
             - ``UNIQue`` specifies that the absolute levels can be set independently.
         """
@@ -9902,6 +9949,9 @@ class MeasurementMathItemReflevels(SCPICmdRead):
         - Using the ``.query()`` method will send the ``MEASUrement:MATH<x>:REFLevels?`` query.
         - Using the ``.verify(value)`` method will send the ``MEASUrement:MATH<x>:REFLevels?`` query
           and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``MATH<x>`` specifies the math number.
 
     Properties:
         - ``.absolute``: The ``MEASUrement:MATH<x>:REFLevels:ABSolute`` command tree.
@@ -9929,6 +9979,9 @@ class MeasurementMathItemReflevels(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``MEASUrement:MATH<x>:REFLevels:ABSolute?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+
+        Info:
+            - ``MATH<x>`` specifies the math number.
 
         Sub-properties:
             - ``.fallhigh``: The ``MEASUrement:MATH<x>:REFLevels:ABSolute:FALLHigh`` command.
@@ -9966,6 +10019,7 @@ class MeasurementMathItemReflevels(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``AUTO`` automatically chooses a reference level method.
             - ``MINMax`` specifies that reference levels are relative to the measurement MIN and
               MAX.
@@ -10002,6 +10056,7 @@ class MeasurementMathItemReflevels(SCPICmdRead):
             ```
 
         Info:
+            - ``MATH<x>`` specifies the math number.
             - ``PERCent`` specifies that the reference levels are calculated as a percent relative
               to HIGH and LOW. The percentages are defined using the
               ``MEASUrement:MATH<x>:REFLevel:PERCent`` commands.
@@ -10021,6 +10076,9 @@ class MeasurementMathItemReflevels(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``MEASUrement:MATH<x>:REFLevels:PERCent?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+
+        Info:
+            - ``MATH<x>`` specifies the math number.
 
         Sub-properties:
             - ``.fallhigh``: The ``MEASUrement:MATH<x>:REFLevels:PERCent:FALLHigh`` command.
@@ -10043,6 +10101,9 @@ class MeasurementMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - Using the ``.verify(value)`` method will send the ``MEASUrement:MATH<x>?`` query and raise
           an AssertionError if the returned value does not match ``value``.
 
+    Info:
+        - ``MATH<x>`` specifies the math number.
+
     Properties:
         - ``.reflevels``: The ``MEASUrement:MATH<x>:REFLevels`` command tree.
     """
@@ -10059,6 +10120,9 @@ class MeasurementMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``MEASUrement:MATH<x>:REFLevels?`` query.
             - Using the ``.verify(value)`` method will send the ``MEASUrement:MATH<x>:REFLevels?``
               query and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``MATH<x>`` specifies the math number.
 
         Sub-properties:
             - ``.absolute``: The ``MEASUrement:MATH<x>:REFLevels:ABSolute`` command tree.
@@ -10207,9 +10271,9 @@ class MeasurementGatingLogicsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>``
-        - ``MATH<x>``
-        - ``REF<x>``
+        - ``CH<x>`` specifies an analog channel as source.
+        - ``MATH<x>`` specifies a math channel as source.
+        - ``REF<x>`` specifies a reference waveform as the source.
     """
 
 
@@ -10436,9 +10500,9 @@ class MeasurementGating(SCPICmdWrite, SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>``
-            - ``MATH<x>``
-            - ``REF<x>``
+            - ``CH<x>`` specifies an analog channel as source.
+            - ``MATH<x>`` specifies a math channel as source.
+            - ``REF<x>`` specifies a reference waveform as the source.
         """
         return self._logicsource
 
@@ -12383,6 +12447,9 @@ class Measurement(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``MEASUrement:MATH<x>?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``MATH<x>`` specifies the math number.
+
         Sub-properties:
             - ``.reflevels``: The ``MEASUrement:MATH<x>:REFLevels`` command tree.
         """
@@ -12396,6 +12463,9 @@ class Measurement(SCPICmdRead):
             - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>?`` query.
             - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``MEAS<x>`` specifies the measurement number.
 
         Sub-properties:
             - ``.burstedgtype``: The ``MEASUrement:MEAS<x>:BURSTEDGTYPe`` command.

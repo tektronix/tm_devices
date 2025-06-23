@@ -210,7 +210,7 @@ class AfgPulseWidth(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NR3`` is the floating point number that represents the pulse width, in seconds.
+        - ``<NR3>`` is the floating point number that represents the pulse width, in seconds.
     """
 
 
@@ -250,7 +250,7 @@ class AfgPulse(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` is the floating point number that represents the pulse width, in seconds.
+            - ``<NR3>`` is the floating point number that represents the pulse width, in seconds.
         """
         return self._width
 

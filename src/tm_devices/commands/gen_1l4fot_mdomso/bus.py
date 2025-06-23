@@ -6119,7 +6119,7 @@ class BusBItemAudioType(SCPICmdWrite, SCPICmdRead):
         - ``B<x>`` is the number of the bus.
         - ``I2S`` specifies the I2S audio format.
         - ``LJ`` specifies the left-justified audio format.
-        - ``RJ`` specifies the right justified audio format.
+        - ``RJ`` specifies the right-justified audio format.
         - ``TDM`` specifies the time-division multiplexing audio format.
     """
 
@@ -6437,7 +6437,8 @@ class BusBItemAudioDataSize(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NR1`` specifies the number of bits per word.
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` specifies the number of bits per word.
     """
 
 
@@ -6533,7 +6534,8 @@ class BusBItemAudioData(SCPICmdRead):
             ```
 
         Info:
-            - ``NR1`` specifies the number of bits per word.
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` specifies the number of bits per word.
         """
         return self._size
 
@@ -6776,6 +6778,7 @@ class BusBItemAudioBitorder(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``B<x>`` is the number of the bus.
         - ``MSB`` specifies that the most significant bit will be expected first in the order.
         - ``LSB`` specifies that the least significant bit will be expected first in the order.
     """
@@ -6801,6 +6804,7 @@ class BusBItemAudioBitdelay(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``B<x>`` is the number of the bus.
         - ``<NR1>`` specifies the number of delay bits.
     """
 
@@ -6813,6 +6817,9 @@ class BusBItemAudio(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.bitdelay``: The ``BUS:B<x>:AUDio:BITDelay`` command.
@@ -6861,6 +6868,7 @@ class BusBItemAudio(SCPICmdRead):
             ```
 
         Info:
+            - ``B<x>`` is the number of the bus.
             - ``<NR1>`` specifies the number of delay bits.
         """
         return self._bitdelay
@@ -6886,6 +6894,7 @@ class BusBItemAudio(SCPICmdRead):
             ```
 
         Info:
+            - ``B<x>`` is the number of the bus.
             - ``MSB`` specifies that the most significant bit will be expected first in the order.
             - ``LSB`` specifies that the least significant bit will be expected first in the order.
         """
@@ -7006,7 +7015,7 @@ class BusBItemAudio(SCPICmdRead):
             - ``B<x>`` is the number of the bus.
             - ``I2S`` specifies the I2S audio format.
             - ``LJ`` specifies the left-justified audio format.
-            - ``RJ`` specifies the right justified audio format.
+            - ``RJ`` specifies the right-justified audio format.
             - ``TDM`` specifies the time-division multiplexing audio format.
         """
         return self._type
@@ -7383,6 +7392,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.bitdelay``: The ``BUS:B<x>:AUDio:BITDelay`` command.
