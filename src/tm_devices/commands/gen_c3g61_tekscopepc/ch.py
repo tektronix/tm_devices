@@ -1411,6 +1411,7 @@ class ChannelProbeSet(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``CH<x>`` is the channel number.
         - ``<QString>`` is a quoted string representing a settable aspect of the attached accessory.
           Example strings for some probes are shown as follows.
         - ``ATTENuation 5X`` sets the P7260 probe to ±0.75 V dynamic range with 6 GHz bandwidth and
@@ -1582,6 +1583,7 @@ class ChannelProbeInputmodeBoffset(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``CH<x>`` is the channel number.
         - ``<NR3>`` specifies the B mode offset control.
     """
 
@@ -1700,6 +1702,7 @@ class ChannelProbeInputmode(SCPICmdWrite, SCPICmdRead):
             ```
 
         Info:
+            - ``CH<x>`` is the channel number.
             - ``<NR3>`` specifies the B mode offset control.
         """
         return self._boffset
@@ -1948,6 +1951,7 @@ class ChannelProbeDegauss(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``CH<x>`` is the channel number.
         - ``EXECute`` starts the degauss cycle.
 
     Properties:
@@ -2123,6 +2127,7 @@ class ChannelProbe(SCPICmdRead):
             ```
 
         Info:
+            - ``CH<x>`` is the channel number.
             - ``EXECute`` starts the degauss cycle.
 
         Sub-properties:
@@ -2308,6 +2313,7 @@ class ChannelProbe(SCPICmdRead):
             ```
 
         Info:
+            - ``CH<x>`` is the channel number.
             - ``<QString>`` is a quoted string representing a settable aspect of the attached
               accessory. Example strings for some probes are shown as follows.
             - ``ATTENuation 5X`` sets the P7260 probe to ±0.75 V dynamic range with 6 GHz bandwidth
@@ -2662,6 +2668,7 @@ class ChannelProbecontrol(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``CH<x>`` is the channel number.
         - ``AUTO`` sets the values. The probe range is automatically calculated.
         - ``MANual`` allows you to select various valid values for the probe connected to a
           particular channel.
@@ -3013,6 +3020,7 @@ class Channel(ValidatedChannel, SCPICmdRead):
             ```
 
         Info:
+            - ``CH<x>`` is the channel number.
             - ``AUTO`` sets the values. The probe range is automatically calculated.
             - ``MANual`` allows you to select various valid values for the probe connected to a
               particular channel.

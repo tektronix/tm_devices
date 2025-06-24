@@ -155,7 +155,7 @@ Commands and Queries:
     - POWer:POWer<x>:HARMONICS:IPOWer?
     - POWer:POWer<x>:HARMONICS:ISOURce {S<x>_Ch<x>|CH<x>|MATH<x>|REF<x>}
     - POWer:POWer<x>:HARMONICS:ISOURce?
-    - POWer:POWer<x>:HARMONICS:LINEFREQUEncy {Auto|FIFTyhz|SIXTyhz |THREESIXTyhz|FOURHUNDREdhz|SIXFIFTyhz|EIGHTHUNDREdhz|CUSTom
+    - POWer:POWer<x>:HARMONICS:LINEFREQUEncy {Auto|FIFTyhz|SIXTyhz|THREESIXTyhz|FOURHUNDREdhz|SIXFIFTyhz|EIGHTHUNDREdhz|CUSTom}
     - POWer:POWer<x>:HARMONICS:LINEFREQUEncy?
     - POWer:POWer<x>:HARMONICS:ODDEVen {ALL|ODD|EVEN}
     - POWer:POWer<x>:HARMONICS:ODDEVen?
@@ -1280,6 +1280,8 @@ class PowerPowerItemTurnontimeInputlevel(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
+        - ``<NR3>`` is a floating point number that represents the voltage level, in volts, from
+          -500 V to 500 V.
     """
 
 
@@ -1307,6 +1309,8 @@ class PowerPowerItemTurnontimeFrequency(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
+        - ``<NR3>`` is a floating point number that represents the frequency, in Hertz, from 1 Hz to
+          500 Hz.
     """
 
 
@@ -1429,6 +1433,8 @@ class PowerPowerItemTurnontime(SCPICmdRead):
         Info:
             - ``Power<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
+            - ``<NR3>`` is a floating point number that represents the frequency, in Hertz, from 1
+              Hz to 500 Hz.
         """
         return self._frequency
 
@@ -1458,6 +1464,8 @@ class PowerPowerItemTurnontime(SCPICmdRead):
         Info:
             - ``Power<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
+            - ``<NR3>`` is a floating point number that represents the voltage level, in volts, from
+              -500 V to 500 V.
         """
         return self._inputlevel
 
@@ -2688,6 +2696,8 @@ class PowerPowerItemTurnofftimeInputlevel(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
+        - ``<NR3>`` is a floating point number that represents the voltage level, in volts, from
+          -500 V to 500 V.
     """
 
 
@@ -2716,6 +2726,8 @@ class PowerPowerItemTurnofftimeFrequency(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
+        - ``<NR3>`` is a floating point number that represents the frequency, in Hertz, from 1 Hz to
+          500 Hz.
     """
 
 
@@ -2840,6 +2852,8 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
         Info:
             - ``Power<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
+            - ``<NR3>`` is a floating point number that represents the frequency, in Hertz, from 1
+              Hz to 500 Hz.
         """
         return self._frequency
 
@@ -2869,6 +2883,8 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
         Info:
             - ``Power<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
+            - ``<NR3>`` is a floating point number that represents the voltage level, in volts, from
+              -500 V to 500 V.
         """
         return self._inputlevel
 
@@ -5069,7 +5085,7 @@ class PowerPowerItemSeqsetup(SCPICmdWrite):
     Info:
         - ``POWer<x>`` is the Power measurement identifier number. The number must be for a power
           measurement that requires a single sequence acquisition.
-        - ``RUN`` sets the measurement to run an acquisition and acquire data for the specified
+        - ``Execute`` sets the measurement to run an acquisition and acquire data for the specified
           single sequence power measurement.
     """
 
@@ -13057,6 +13073,8 @@ class PowerPowerItemInrushcurrentPeakcurrent(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
+        - ``<NR3>`` is a floating point number that represents the peak current value, in amps, in
+          the range -100 A to 100 A.
     """
 
 
@@ -13176,6 +13194,8 @@ class PowerPowerItemInrushcurrent(SCPICmdRead):
         Info:
             - ``Power<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
+            - ``<NR3>`` is a floating point number that represents the peak current value, in amps,
+              in the range -100 A to 100 A.
         """
         return self._peakcurrent
 
@@ -13236,6 +13256,8 @@ class PowerPowerItemInputcapPeakvoltage(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
+        - ``<NR3>`` is a floating point number that represents the peak voltage value in the range
+          -100 V to 100 V.
     """
 
 
@@ -13263,6 +13285,8 @@ class PowerPowerItemInputcapPeakcurrent(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``Power<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
+        - ``<NR3>`` is a floating point number that represents the peak current value, in amps, in
+          the range -100 A to 100 A.
     """
 
 
@@ -13384,6 +13408,8 @@ class PowerPowerItemInputcap(SCPICmdRead):
         Info:
             - ``Power<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
+            - ``<NR3>`` is a floating point number that represents the peak current value, in amps,
+              in the range -100 A to 100 A.
         """
         return self._peakcurrent
 
@@ -13413,6 +13439,8 @@ class PowerPowerItemInputcap(SCPICmdRead):
         Info:
             - ``Power<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
+            - ``<NR3>`` is a floating point number that represents the peak voltage value in the
+              range -100 V to 100 V.
         """
         return self._peakvoltage
 
@@ -16077,7 +16105,7 @@ class PowerPowerItemHarmonicsLinefrequency(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - POWer:POWer<x>:HARMONICS:LINEFREQUEncy {Auto|FIFTyhz|SIXTyhz |THREESIXTyhz|FOURHUNDREdhz|SIXFIFTyhz|EIGHTHUNDREdhz|CUSTom
+        - POWer:POWer<x>:HARMONICS:LINEFREQUEncy {Auto|FIFTyhz|SIXTyhz|THREESIXTyhz|FOURHUNDREdhz|SIXFIFTyhz|EIGHTHUNDREdhz|CUSTom}
         - POWer:POWer<x>:HARMONICS:LINEFREQUEncy?
         ```
 
@@ -16615,7 +16643,7 @@ class PowerPowerItemHarmonics(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - POWer:POWer<x>:HARMONICS:LINEFREQUEncy {Auto|FIFTyhz|SIXTyhz |THREESIXTyhz|FOURHUNDREdhz|SIXFIFTyhz|EIGHTHUNDREdhz|CUSTom
+            - POWer:POWer<x>:HARMONICS:LINEFREQUEncy {Auto|FIFTyhz|SIXTyhz|THREESIXTyhz|FOURHUNDREdhz|SIXFIFTyhz|EIGHTHUNDREdhz|CUSTom}
             - POWer:POWer<x>:HARMONICS:LINEFREQUEncy?
             ```
 
@@ -22007,8 +22035,8 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         Info:
             - ``POWer<x>`` is the Power measurement identifier number. The number must be for a
               power measurement that requires a single sequence acquisition.
-            - ``RUN`` sets the measurement to run an acquisition and acquire data for the specified
-              single sequence power measurement.
+            - ``Execute`` sets the measurement to run an acquisition and acquire data for the
+              specified single sequence power measurement.
         """
         return self._seqsetup
 

@@ -331,6 +331,7 @@ class TekScopePCCommandConstants:
     EVERY = "EVERY"
     EXECUTE = "EXECUTE"
     # EXECUTE = "EXECute"
+    # EXECUTE = "Execute"
     EXITSWINDOW = "EXITSWINDOW"  # EXITSWindow
     EXPLICITCLOCK = "EXPLICITCLOCK"
     EXTDLC = "EXTDLC"
@@ -453,6 +454,7 @@ class TekScopePCCommandConstants:
     HEX = "HEX"
     HEXAGON = "HEXAGON"  # HEXAgon
     HFREJ = "HFREJ"  # HFRej
+    HI = "HI"
     HIGH = "HIGH"
     HIGHZ = "HIGHZ"
     HILBERT = "HILBERT"  # HILBert

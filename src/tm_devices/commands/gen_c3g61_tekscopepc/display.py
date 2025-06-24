@@ -1192,7 +1192,7 @@ class DisplayWaveview1RfPhaseItemVerticalScale(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``1`` is always WAVEView1.
         - ``RF_MAGnitude<x>`` specifies the number of the Phase vs. Time Frequency waveform.
-        - ``NR3`` sets the vertical scale, in degrees per division.
+        - ``<NR3>`` sets the vertical scale, in degrees per division.
     """
 
 
@@ -1308,7 +1308,7 @@ class DisplayWaveview1RfPhaseItemVertical(SCPICmdRead):
         Info:
             - ``1`` is always WAVEView1.
             - ``RF_MAGnitude<x>`` specifies the number of the Phase vs. Time Frequency waveform.
-            - ``NR3`` sets the vertical scale, in degrees per division.
+            - ``<NR3>`` sets the vertical scale, in degrees per division.
         """
         return self._scale
 
@@ -4344,6 +4344,7 @@ class DisplayWaveview1CursorCursor1Asource(SCPICmdWrite, SCPICmdRead):
         - ``AUTO`` automatically specifies the source.
         - ``CH<x>`` specifies an analog channel as the source.
         - ``Math<x>`` specifies a math waveform as the source.
+        - ``BUS<x>`` specifies a bus as source.
         - ``REF<x>`` specifies a reference waveform as the source.
         - ``PLOT<x>`` specifies a plot as the source.
     """
@@ -4433,6 +4434,7 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
             - ``AUTO`` automatically specifies the source.
             - ``CH<x>`` specifies an analog channel as the source.
             - ``Math<x>`` specifies a math waveform as the source.
+            - ``BUS<x>`` specifies a bus as source.
             - ``REF<x>`` specifies a reference waveform as the source.
             - ``PLOT<x>`` specifies a plot as the source.
         """
@@ -9034,6 +9036,7 @@ class DisplayReffftviewItemCursorState(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``<NR1>`` = 0 specifies the cursor is not visible; any other value displays the cursor.
         - ``OFF`` specifies the cursor is not visible.
         - ``ON`` displays the cursor.
@@ -10167,6 +10170,7 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
             ```
 
         Info:
+            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``<NR1>`` = 0 specifies the cursor is not visible; any other value displays the
               cursor.
             - ``OFF`` specifies the cursor is not visible.

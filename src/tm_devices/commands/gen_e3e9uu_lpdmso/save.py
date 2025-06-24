@@ -33,7 +33,7 @@ Commands and Queries:
     - SAVe:SETUp <QString>
     - SAVe:SETUp:INCLUDEREFs {ON|OFF|1|0}
     - SAVe:SETUp:INCLUDEREFs?
-    - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|}
+    - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|
     - SAVe:WAVEform:GATing {NONe|CURSors|SCREEN|RESAMPLE|SELected}
     - SAVe:WAVEform:GATing:RESAMPLErate <NR1>
     - SAVe:WAVEform:GATing:RESAMPLErate?
@@ -150,7 +150,7 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|}
+        - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|
         - SAVe:WAVEform?
         ```
 
@@ -1165,7 +1165,7 @@ class Save(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|}
+            - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|
             - SAVe:WAVEform?
             ```
 
