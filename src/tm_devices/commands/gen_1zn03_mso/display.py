@@ -7652,9 +7652,7 @@ class DisplayReffftviewItemAutoscale(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the plot number.
-        - ``<NR1>`` = 0 disables auto-scale on the specified reffftview; any other value turns this
-          feature on.
+        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``OFF`` disables auto-scale on the specified reffftview.
         - ``0`` disables auto-scale on the specified reffftview.
         - ``ON`` enables the specified channel on the specified Waveform View.
@@ -7671,7 +7669,7 @@ class DisplayReffftviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
           raise an AssertionError if the returned value does not match ``value``.
 
     Info:
-        - ``REFFFTView<x>`` is the plot number.
+        - ``REFFFTView<x>`` is the Reference FFT plot number.
 
     Properties:
         - ``.autoscale``: The ``DISplay:REFFFTView<x>:AUTOScale`` command.
@@ -7713,9 +7711,7 @@ class DisplayReffftviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the plot number.
-            - ``<NR1>`` = 0 disables auto-scale on the specified reffftview; any other value turns
-              this feature on.
+            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``OFF`` disables auto-scale on the specified reffftview.
             - ``0`` disables auto-scale on the specified reffftview.
             - ``ON`` enables the specified channel on the specified Waveform View.
@@ -13821,7 +13817,7 @@ class Display(SCPICmdRead):
               raise an AssertionError if the returned value does not match ``value``.
 
         Info:
-            - ``REFFFTView<x>`` is the plot number.
+            - ``REFFFTView<x>`` is the Reference FFT plot number.
 
         Sub-properties:
             - ``.autoscale``: The ``DISplay:REFFFTView<x>:AUTOScale`` command.

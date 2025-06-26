@@ -195,6 +195,9 @@ class MathMathItemVunit(SCPICmdWrite, SCPICmdRead):
         - MATH:MATH<x>:VUNIT <QString>
         - MATH:MATH<x>:VUNIT?
         ```
+
+    Info:
+        - ``<QString>`` is the custom vertical units.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -5693,6 +5696,9 @@ class MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - MATH:MATH<x>:VUNIT <QString>
             - MATH:MATH<x>:VUNIT?
             ```
+
+        Info:
+            - ``<QString>`` is the custom vertical units.
         """
         return self._vunit
 

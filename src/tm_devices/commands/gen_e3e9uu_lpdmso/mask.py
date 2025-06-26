@@ -946,6 +946,9 @@ class MaskMaskItemCountHits(SCPICmdRead):
         ```
         - MASK:MASK<x>:COUNT:HITS?
         ```
+
+    Info:
+        - ``MASK<x>`` specifies the mask test.
     """
 
 
@@ -998,6 +1001,9 @@ class MaskMaskItemCount(SCPICmdRead):
             ```
             - MASK:MASK<x>:COUNT:HITS?
             ```
+
+        Info:
+            - ``MASK<x>`` specifies the mask test.
         """
         return self._hits
 

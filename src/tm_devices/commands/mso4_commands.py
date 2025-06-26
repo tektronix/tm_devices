@@ -116,6 +116,7 @@ class MSO4CommandConstants:
     commands.
     """
 
+    AACQS = "AACQS"  # AACQs
     ABC = "ABC"
     ABCB = "ABCB"
     ABORT = "ABORT"
@@ -608,6 +609,7 @@ class MSO4CommandConstants:
     HISTOGRAM = "HISTOGRAM"  # HISTogram
     HLTA = "HLTA"  # HLTa
     HLTB = "HLTB"
+    HONLY = "HONLY"  # HONLy
     HORIZONTAL = "HORIZONTAL"  # HORizontal
     HORZPOS = "HORZPOS"
     HORZSCALE = "HORZSCALE"  # HORZScale

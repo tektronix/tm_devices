@@ -21449,6 +21449,9 @@ class SearchSearchItemTriggerABusMil1553bCommandSubaddress(SCPICmdWrite, SCPICmd
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:SUBADdress?
         ```
 
+    Info:
+        - ``<QString>`` is the word count value.
+
     Properties:
         - ``.format``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:SUBADdress:FORMat``
           command.
@@ -21651,6 +21654,9 @@ class SearchSearchItemTriggerABusMil1553bCommandAddressValue(SCPICmdWrite, SCPIC
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:VALue?
         ```
+
+    Info:
+        - ``<QString>`` is the address value.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -21831,6 +21837,9 @@ class SearchSearchItemTriggerABusMil1553bCommandAddress(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:ADDRess:VALue?
             ```
+
+        Info:
+            - ``<QString>`` is the address value.
         """
         return self._value
 
@@ -21992,6 +22001,9 @@ class SearchSearchItemTriggerABusMil1553bCommand(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:SUBADdress <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:SUBADdress?
             ```
+
+        Info:
+            - ``<QString>`` is the word count value.
 
         Sub-properties:
             - ``.format``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:MIL1553B:COMMAND:SUBADdress:FORMat``
@@ -23976,6 +23988,14 @@ class SearchSearchItemTriggerABusFlexrayErrtype(SCPICmdWrite, SCPICmdRead):
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:ERRTYPE {CRCHEADer|CRCTRAILer|NULLFRSTATIC|NULLFRDYNAMIC|SYNCFRAME|STARTUPNOSYNC}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:ERRTYPE?
         ```
+
+    Info:
+        - ``CRCHeader`` sets the error type to CRCHeader.
+        - ``CRCTrailer`` sets the error type to CRCTrailer.
+        - ``NULLFRStatic`` sets the error type to NULLFRStatic.
+        - ``NULLFRDynamic`` sets the error type to NULLFRDynamic.
+        - ``SYNCFrame`` sets the error type to SYNCFrame.
+        - ``STARTupnosync`` sets the error type to STARTupnosync.
     """  # noqa: E501
 
 
@@ -24083,6 +24103,14 @@ class SearchSearchItemTriggerABusFlexrayDataQualifier(SCPICmdWrite, SCPICmdRead)
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:QUALifier {EQUal|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:QUALifier?
         ```
+
+    Info:
+        - ``EQUal`` specifies the qualifier as equal.
+        - ``LESSEQual`` specifies the qualifier as less equal.
+        - ``MOREEQual`` specifies the qualifier as more equal.
+        - ``UNEQual`` specifies the qualifier as unequal.
+        - ``LESSthan`` specifies the qualifier as less than.
+        - ``MOREthan`` specifies the qualifier as more than.
     """  # noqa: E501
 
 
@@ -24256,6 +24284,14 @@ class SearchSearchItemTriggerABusFlexrayData(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:QUALifier {EQUal|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:DATa:QUALifier?
             ```
+
+        Info:
+            - ``EQUal`` specifies the qualifier as equal.
+            - ``LESSEQual`` specifies the qualifier as less equal.
+            - ``MOREEQual`` specifies the qualifier as more equal.
+            - ``UNEQual`` specifies the qualifier as unequal.
+            - ``LESSthan`` specifies the qualifier as less than.
+            - ``MOREthan`` specifies the qualifier as more than.
         """  # noqa: E501
         return self._qualifier
 
@@ -24364,6 +24400,14 @@ class SearchSearchItemTriggerABusFlexrayCyclecountQualifier(SCPICmdWrite, SCPICm
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:QUALifier {EQUal|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:QUALifier?
         ```
+
+    Info:
+        - ``EQUal`` specifies the qualifier as equal.
+        - ``LESSEQual`` specifies the qualifier as less equal.
+        - ``MOREEQual`` specifies the qualifier as more equal.
+        - ``UNEQual`` specifies the qualifier as unequal.
+        - ``LESSthan`` specifies the qualifier as less than.
+        - ``MOREthan`` specifies the qualifier as more than.
     """  # noqa: E501
 
 
@@ -24475,6 +24519,14 @@ class SearchSearchItemTriggerABusFlexrayCyclecount(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:QUALifier {EQUal|LESSEQual|MOREEQual|UNEQual|LESSthan|MOREthan}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CYCLEcount:QUALifier?
             ```
+
+        Info:
+            - ``EQUal`` specifies the qualifier as equal.
+            - ``LESSEQual`` specifies the qualifier as less equal.
+            - ``MOREEQual`` specifies the qualifier as more equal.
+            - ``UNEQual`` specifies the qualifier as unequal.
+            - ``LESSthan`` specifies the qualifier as less than.
+            - ``MOREthan`` specifies the qualifier as more than.
         """  # noqa: E501
         return self._qualifier
 
@@ -24528,6 +24580,17 @@ class SearchSearchItemTriggerABusFlexrayCondition(SCPICmdWrite, SCPICmdRead):
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CONDition {SOF|FRAMEtype|IDentifier|CYCLEcount|HEADer|DATA|IDANDDATA|EOF|ERRor}
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CONDition?
         ```
+
+    Info:
+        - ``SOF`` sets the trigger condition to start of frame.
+        - ``FRAMEType`` sets the trigger condition to frame type.
+        - ``IDentifier`` sets the trigger condition to identifier.
+        - ``CYCLEcount`` sets the trigger condition to cycle count.
+        - ``HEADer`` sets the trigger condition to header.
+        - ``DATA`` sets the trigger condition to data.
+        - ``IDANDDATA`` sets the trigger condition to ID and data.
+        - ``EOF`` sets the trigger condition to end of frame.
+        - ``ERRor`` sets the trigger condition to error.
     """  # noqa: E501
 
 
@@ -24600,6 +24663,17 @@ class SearchSearchItemTriggerABusFlexray(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CONDition {SOF|FRAMEtype|IDentifier|CYCLEcount|HEADer|DATA|IDANDDATA|EOF|ERRor}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:CONDition?
             ```
+
+        Info:
+            - ``SOF`` sets the trigger condition to start of frame.
+            - ``FRAMEType`` sets the trigger condition to frame type.
+            - ``IDentifier`` sets the trigger condition to identifier.
+            - ``CYCLEcount`` sets the trigger condition to cycle count.
+            - ``HEADer`` sets the trigger condition to header.
+            - ``DATA`` sets the trigger condition to data.
+            - ``IDANDDATA`` sets the trigger condition to ID and data.
+            - ``EOF`` sets the trigger condition to end of frame.
+            - ``ERRor`` sets the trigger condition to error.
         """  # noqa: E501
         return self._condition
 
@@ -24694,6 +24768,14 @@ class SearchSearchItemTriggerABusFlexray(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:ERRTYPE {CRCHEADer|CRCTRAILer|NULLFRSTATIC|NULLFRDYNAMIC|SYNCFRAME|STARTUPNOSYNC}
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:FLEXRAY:ERRTYPE?
             ```
+
+        Info:
+            - ``CRCHeader`` sets the error type to CRCHeader.
+            - ``CRCTrailer`` sets the error type to CRCTrailer.
+            - ``NULLFRStatic`` sets the error type to NULLFRStatic.
+            - ``NULLFRDynamic`` sets the error type to NULLFRDynamic.
+            - ``SYNCFrame`` sets the error type to SYNCFrame.
+            - ``STARTupnosync`` sets the error type to STARTupnosync.
         """  # noqa: E501
         return self._errtype
 
@@ -24793,6 +24875,11 @@ class SearchSearchItemTriggerABusEthernetTcpheaderSourceportValue(SCPICmdWrite, 
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader:SOUrceport:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader:SOUrceport:VALue?
         ```
+
+    Info:
+        - ``<QString>`` is a quoted string of up to 16 characters where the allowable characters are
+          0, 1, and X. The bits specified in the quoted string replace the least significant bits,
+          leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -24908,6 +24995,11 @@ class SearchSearchItemTriggerABusEthernetTcpheaderSourceport(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader:SOUrceport:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader:SOUrceport:VALue?
             ```
+
+        Info:
+            - ``<QString>`` is a quoted string of up to 16 characters where the allowable characters
+              are 0, 1, and X. The bits specified in the quoted string replace the least significant
+              bits, leaving any unspecified upper bits unchanged.
         """
         return self._value
 
@@ -24934,6 +25026,11 @@ class SearchSearchItemTriggerABusEthernetTcpheaderSeqnumValue(SCPICmdWrite, SCPI
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader:SEQnum:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader:SEQnum:VALue?
         ```
+
+    Info:
+        - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters are
+          0, 1, and X. The bits specified in the quoted string replace the least significant bits,
+          leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -25049,6 +25146,11 @@ class SearchSearchItemTriggerABusEthernetTcpheaderSeqnum(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader:SEQnum:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader:SEQnum:VALue?
             ```
+
+        Info:
+            - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters
+              are 0, 1, and X. The bits specified in the quoted string replace the least significant
+              bits, leaving any unspecified upper bits unchanged.
         """
         return self._value
 
@@ -25075,6 +25177,11 @@ class SearchSearchItemTriggerABusEthernetTcpheaderAcknumValue(SCPICmdWrite, SCPI
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader:ACKnum:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader:ACKnum:VALue?
         ```
+
+    Info:
+        - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters are
+          0, 1, and X. The bits specified in the quoted string replace the least significant bits,
+          leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -25190,6 +25297,11 @@ class SearchSearchItemTriggerABusEthernetTcpheaderAcknum(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader:ACKnum:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:TCPHeader:ACKnum:VALue?
             ```
+
+        Info:
+            - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters
+              are 0, 1, and X. The bits specified in the quoted string replace the least significant
+              bits, leaving any unspecified upper bits unchanged.
         """
         return self._value
 
@@ -25336,6 +25448,11 @@ class SearchSearchItemTriggerABusEthernetQtagValue(SCPICmdWrite, SCPICmdRead):
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:QTAG:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:QTAG:VALue?
         ```
+
+    Info:
+        - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters are
+          0, 1, and X. The bits specified in the quoted string replace the least significant bits,
+          leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -25445,6 +25562,11 @@ class SearchSearchItemTriggerABusEthernetQtag(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:QTAG:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:QTAG:VALue?
             ```
+
+        Info:
+            - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters
+              are 0, 1, and X. The bits specified in the quoted string replace the least significant
+              bits, leaving any unspecified upper bits unchanged.
         """
         return self._value
 
@@ -25743,6 +25865,11 @@ class SearchSearchItemTriggerABusEthernetMacAddressSourceValue(SCPICmdWrite, SCP
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:MAC:ADDRess:SOUrce:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:MAC:ADDRess:SOUrce:VALue?
         ```
+
+    Info:
+        - ``<QString>`` is a quoted string of up to 48 characters where the allowable characters are
+          0, 1, and X. The bits specified in the quoted string replace the least significant bits,
+          leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -25856,6 +25983,11 @@ class SearchSearchItemTriggerABusEthernetMacAddressSource(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:MAC:ADDRess:SOUrce:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:MAC:ADDRess:SOUrce:VALue?
             ```
+
+        Info:
+            - ``<QString>`` is a quoted string of up to 48 characters where the allowable characters
+              are 0, 1, and X. The bits specified in the quoted string replace the least significant
+              bits, leaving any unspecified upper bits unchanged.
         """
         return self._value
 
@@ -26002,6 +26134,11 @@ class SearchSearchItemTriggerABusEthernetIpheaderSourceaddrValue(SCPICmdWrite, S
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:IPHeader:SOUrceaddr:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:IPHeader:SOUrceaddr:VALue?
         ```
+
+    Info:
+        - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters are
+          0, 1, and X. The bits specified in the quoted string replace the least significant bits,
+          leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -26051,6 +26188,11 @@ class SearchSearchItemTriggerABusEthernetIpheaderSourceaddr(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:IPHeader:SOUrceaddr:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:IPHeader:SOUrceaddr:VALue?
             ```
+
+        Info:
+            - ``<QString>`` is a quoted string of up to 32 characters where the allowable characters
+              are 0, 1, and X. The bits specified in the quoted string replace the least significant
+              bits, leaving any unspecified upper bits unchanged.
         """
         return self._value
 
@@ -26077,6 +26219,11 @@ class SearchSearchItemTriggerABusEthernetIpheaderProtocolValue(SCPICmdWrite, SCP
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:IPHeader:PROTOcol:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:IPHeader:PROTOcol:VALue?
         ```
+
+    Info:
+        - ``<QString>`` is a quoted string of up to 8 characters where the allowable characters are
+          0, 1, and X. The bits specified in the quoted string replace the least significant bits,
+          leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -26190,6 +26337,11 @@ class SearchSearchItemTriggerABusEthernetIpheaderProtocol(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:IPHeader:PROTOcol:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:IPHeader:PROTOcol:VALue?
             ```
+
+        Info:
+            - ``<QString>`` is a quoted string of up to 8 characters where the allowable characters
+              are 0, 1, and X. The bits specified in the quoted string replace the least significant
+              bits, leaving any unspecified upper bits unchanged.
         """
         return self._value
 
@@ -26278,6 +26430,12 @@ class SearchSearchItemTriggerABusEthernetDataValue(SCPICmdWrite, SCPICmdRead):
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:VALue?
         ```
+
+    Info:
+        - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
+          allowable number of characters depends on the setting for size (using
+          ``SEARCH:SEARCHX:TRIGGER:A:BUS:ETHERNET:DATA:SIZE``). The bits specified in the quoted
+          string replace the least significant bits, leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -26305,6 +26463,10 @@ class SearchSearchItemTriggerABusEthernetDataSize(SCPICmdWrite, SCPICmdRead):
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:SIZe <NR1>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:SIZe?
         ```
+
+    Info:
+        - ``<NR1>`` specifies the length of the data string, in bytes. The minimum and default
+          values are 1, and the maximum value is 16.
     """
 
 
@@ -26475,6 +26637,10 @@ class SearchSearchItemTriggerABusEthernetData(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:SIZe <NR1>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:SIZe?
             ```
+
+        Info:
+            - ``<NR1>`` specifies the length of the data string, in bytes. The minimum and default
+              values are 1, and the maximum value is 16.
         """
         return self._size
 
@@ -26501,6 +26667,13 @@ class SearchSearchItemTriggerABusEthernetData(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:VALue?
             ```
+
+        Info:
+            - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
+              allowable number of characters depends on the setting for size (using
+              ``SEARCH:SEARCHX:TRIGGER:A:BUS:ETHERNET:DATA:SIZE``). The bits specified in the quoted
+              string replace the least significant bits, leaving any unspecified upper bits
+              unchanged.
         """
         return self._value
 

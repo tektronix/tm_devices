@@ -12,10 +12,10 @@ Commands and Queries:
     ```
     - DPOJET:ACTIVATE
     - DPOJET:ADDMeas {PERIod|CCPeriod|FREQuency|NPERiod|PWIdth|NWIdth|PDUTy|NDUTy|PCCDuty|NCCDuty|DATARATE|TIE|RJ|RJDirac|TJber|DJ|DJDirac|PHASENoise|DCD|DDJ|PJ|J2|J9|SRJ|PJrms|SJFREQ|PKPKCLKTJ|PKPKCLKRJ|PKPKCLKDJ|PJRMS|FN|RJH|RJV|PJH|PJV|RN|RNV|RNH|DN|DDN|DDN_1|DDN_0|PN|PNV|PNH|NPN|TNBER|NOISESUMMARY|UNITAMPLITUDE|RISEtime|SETup|HIGHTime|FALLtime|HOLD|LOWTime|SKEW|GATEDSKEW|HEIght|WIDth|MASKHits|WIDTHBer|HEIGHTBer|CYCLEMIN|CYCLEMAX|ACRMS|ACCOMmonmode|COMmonmode|HIGH|TNTratio|HIGHLOW|LOW|VDIFFxovr|RISESLEWrate|FALLSLEWrate|OVERShoot|UNDERShoot|CYCLEPktopk|JITTERSummary|PCIETTXDiffpp|PCIEDEemph|PCIETTx|PCIETTXRise|PCIETTXFall|PCIEUI|PCIETMinpulse|PCIEMEdmxjitter|PCIETRfmismch|PCIESSCFReqdev|PCIEMAXMINratio|PCIESSCPROFile|PCIEVEye|PCIETTXUTJ|PCIETTXUDJDD|PCIETTXUPWTJ|PCIETTXUPWDJDD|PCIETTXDDJ|PCIEVTXBOOST|PCIEVTXNOEQ|PCIEVTXEIEOS|PCIEPS21TX|PCIEACCommonmode|VTXDiffpp|TMINPULSETJ|TCDRslewmax|USBUI|USBACCommonmode|TMINPULSEDJ|QFACTOR|EYELOW|EYEHIGH|TCMDTOCMD|TIMEOUTSIDELEVEL|SSCFREQDEVMAX|SSCFREQDEVMIN|SSCFREQDEV|SSCMODrate|SSCPROfile|USBSSCFREQDEVMAX|USBSSCFREQDEVMIN|USBSSCMODrate|USBSSCPROFile|AUTOFITMaskhits|AOP|EXRATIO|OMA|OPTHIGH|OPTLOW|EYECROSSLEVEL|EYECROSSTIME|EYECROSSPERCENT|DFEEW|DFEEH|DFEEYEDIAGRAM|VWOE|MASKMARGIN|MASKHITRATIO|RIN|RINXOMA|TDEC }
-    - DPOJET:ADDPlot {TIMEtrend | DATAarray | HISTOgram | SPECtrum | TRANSfer | PHASEnoise | EYE | WAVEform | BATHtub | QBathtub | QPulsewidth | COMPOSITEJitterhist | NOISEBAthtub | BERContour | CORRELATEDEye |PDFEye | BEREye | COMPOSITENoisehist}, MEAS<x>
+    - DPOJET:ADDPlot {TIMEtrend|DATAarray|HISTOgram|SPECtrum|TRANSfer|PHASEnoise|EYE|WAVEform|BATHtub|QBathtub|QPulsewidth|COMPOSITEJitterhist|NOISEBAthtub|BERContour|CORRELATEDEye|PDFEye|BEREye|COMPOSITENoisehist}, MEAS<x>
     - DPOJET:ANALYSISMETHOD { JITTEROnly|JITTERNoise }
     - DPOJET:ANALYSISMETHOD?
-    - DPOJET:APPLYAll {FILTers | CLOCKRecovery| RJDJ}, MEAS<x>
+    - DPOJET:APPLYAll {FILTers|CLOCKRecovery|RJDJ}, MEAS<x>
     - DPOJET:BITRatestate {0|1}
     - DPOJET:BITRatestate?
     - DPOJET:CLEARALLMeas
@@ -21537,7 +21537,7 @@ class DpojetApplyall(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - DPOJET:APPLYAll {FILTers | CLOCKRecovery| RJDJ}, MEAS<x>
+        - DPOJET:APPLYAll {FILTers|CLOCKRecovery|RJDJ}, MEAS<x>
         ```
     """
 
@@ -21574,7 +21574,7 @@ class DpojetAddplot(SCPICmdWrite):
 
     SCPI Syntax:
         ```
-        - DPOJET:ADDPlot {TIMEtrend | DATAarray | HISTOgram | SPECtrum | TRANSfer | PHASEnoise | EYE | WAVEform | BATHtub | QBathtub | QPulsewidth | COMPOSITEJitterhist | NOISEBAthtub | BERContour | CORRELATEDEye |PDFEye | BEREye | COMPOSITENoisehist}, MEAS<x>
+        - DPOJET:ADDPlot {TIMEtrend|DATAarray|HISTOgram|SPECtrum|TRANSfer|PHASEnoise|EYE|WAVEform|BATHtub|QBathtub|QPulsewidth|COMPOSITEJitterhist|NOISEBAthtub|BERContour|CORRELATEDEye|PDFEye|BEREye|COMPOSITENoisehist}, MEAS<x>
         ```
     """  # noqa: E501
 
@@ -21788,7 +21788,7 @@ class Dpojet(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:ADDPlot {TIMEtrend | DATAarray | HISTOgram | SPECtrum | TRANSfer | PHASEnoise | EYE | WAVEform | BATHtub | QBathtub | QPulsewidth | COMPOSITEJitterhist | NOISEBAthtub | BERContour | CORRELATEDEye |PDFEye | BEREye | COMPOSITENoisehist}, MEAS<x>
+            - DPOJET:ADDPlot {TIMEtrend|DATAarray|HISTOgram|SPECtrum|TRANSfer|PHASEnoise|EYE|WAVEform|BATHtub|QBathtub|QPulsewidth|COMPOSITEJitterhist|NOISEBAthtub|BERContour|CORRELATEDEye|PDFEye|BEREye|COMPOSITENoisehist}, MEAS<x>
             ```
         """  # noqa: E501
         return self._addplot
@@ -21828,7 +21828,7 @@ class Dpojet(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DPOJET:APPLYAll {FILTers | CLOCKRecovery| RJDJ}, MEAS<x>
+            - DPOJET:APPLYAll {FILTers|CLOCKRecovery|RJDJ}, MEAS<x>
             ```
         """
         return self._applyall

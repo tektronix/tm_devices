@@ -209,6 +209,7 @@ class MSO5KBCommandConstants:
     CTRLSKP = "CTRLSKP"
     CUSTOM = "CUSTOM"
     # CUSTOM = "CUSTom"
+    CYCLECOUNT = "CYCLECOUNT"  # CYCLEcount
     DASHED = "DASHED"  # DASHed
     DATA = "DATA"
     # DATA = "DATa"
@@ -364,6 +365,7 @@ class MSO5KBCommandConstants:
     HD720P60 = "HD720P60"
     HD875I60 = "HD875I60"
     HDB3 = "HDB3"
+    HEADER = "HEADER"  # HEADer
     HERTZ = "HERTZ"  # HERtz
     HEX = "HEX"
     HEXADECIMAL = "HEXADECIMAL"  # HEXadecimal
@@ -382,6 +384,7 @@ class MSO5KBCommandConstants:
     I2C = "I2C"
     IDANDDATA = "IDANDDATA"
     IDENTIFIER = "IDENTIFIER"  # IDENTifier
+    # IDENTIFIER = "IDentifier"
     IDLE = "IDLE"
     IN = "IN"
     INDEPENDENT = "INDEPENDENT"  # INDependent

@@ -153,7 +153,7 @@ Commands and Queries:
     - DISplay:REF<x>:INVERTColor?
     - DISplay:REF<x>:NORMALColor COLOR<y>
     - DISplay:REF<x>:NORMALColor?
-    - DISplay:REFFFTView<x>:AUTOScale {ON|OFF|1|0}
+    - DISplay:REFFFTView<x>:AUTOScale {OFF|ON|0|1|<NR1>}
     - DISplay:REFFFTView<x>:AUTOScale?
     - DISplay:REFFFTView<x>:CURSor:ASOUrce?
     - DISplay:REFFFTView<x>:CURSor:BSOUrce?
@@ -1191,7 +1191,7 @@ class DisplayWaveview1RfPhaseItemVerticalScale(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``1`` is always WAVEView1.
-        - ``RF_MAGnitude<x>`` specifies the number of the Phase vs. Time Frequency waveform.
+        - ``RF_PHASe<x>`` specifies the number of the Phase vs. Time Frequency waveform.
         - ``<NR3>`` sets the vertical scale, in degrees per division.
     """
 
@@ -1307,7 +1307,7 @@ class DisplayWaveview1RfPhaseItemVertical(SCPICmdRead):
 
         Info:
             - ``1`` is always WAVEView1.
-            - ``RF_MAGnitude<x>`` specifies the number of the Phase vs. Time Frequency waveform.
+            - ``RF_PHASe<x>`` specifies the number of the Phase vs. Time Frequency waveform.
             - ``<NR3>`` sets the vertical scale, in degrees per division.
         """
         return self._scale
@@ -4313,6 +4313,7 @@ class DisplayWaveview1CursorCursor1Bsource(SCPICmdWrite, SCPICmdRead):
         - ``S<x>_Ch<x>`` specifies the remote scope number and the analog channel as the source.
         - ``CH<x>`` specifies an analog channel as the source.
         - ``Math<x>`` specifies a math waveform as the source.
+        - ``BUS<x>`` specifies a bus as source.
         - ``REF<x>`` specifies a reference waveform as the source.
         - ``PLOT<x>`` specifies a plot as the source.
     """
@@ -4467,6 +4468,7 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
             - ``S<x>_Ch<x>`` specifies the remote scope number and the analog channel as the source.
             - ``CH<x>`` specifies an analog channel as the source.
             - ``Math<x>`` specifies a math waveform as the source.
+            - ``BUS<x>`` specifies a bus as source.
             - ``REF<x>`` specifies a reference waveform as the source.
             - ``PLOT<x>`` specifies a plot as the source.
         """
@@ -9037,9 +9039,10 @@ class DisplayReffftviewItemCursorState(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``REFFFTView<x>`` is the Reference FFT plot number.
-        - ``<NR1>`` = 0 specifies the cursor is not visible; any other value displays the cursor.
         - ``OFF`` specifies the cursor is not visible.
+        - ``0`` specifies the cursor is not visible.
         - ``ON`` displays the cursor.
+        - ``1`` displays the cursor.
     """
 
 
@@ -10171,10 +10174,10 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
 
         Info:
             - ``REFFFTView<x>`` is the Reference FFT plot number.
-            - ``<NR1>`` = 0 specifies the cursor is not visible; any other value displays the
-              cursor.
             - ``OFF`` specifies the cursor is not visible.
+            - ``0`` specifies the cursor is not visible.
             - ``ON`` displays the cursor.
+            - ``1`` displays the cursor.
         """
         return self._state
 
@@ -10240,16 +10243,16 @@ class DisplayReffftviewItemAutoscale(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:REFFFTView<x>:AUTOScale {ON|OFF|1|0}
+        - DISplay:REFFFTView<x>:AUTOScale {OFF|ON|0|1|<NR1>}
         - DISplay:REFFFTView<x>:AUTOScale?
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the plot number.
-        - ``<NR1>`` = 0 disables auto-scale on the specified reffftview; any other value turns this
-          feature on.
+        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``OFF`` disables auto-scale on the specified reffftview.
+        - ``0`` disables auto-scale on the specified reffftview.
         - ``ON`` enables the specified channel on the specified Waveform View.
+        - ``1`` enables the specified channel on the specified Waveform View.
     """
 
 
@@ -10262,7 +10265,7 @@ class DisplayReffftviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
           raise an AssertionError if the returned value does not match ``value``.
 
     Info:
-        - ``REFFFTView<x>`` is the plot number.
+        - ``REFFFTView<x>`` is the Reference FFT plot number.
 
     Properties:
         - ``.autoscale``: The ``DISplay:REFFFTView<x>:AUTOScale`` command.
@@ -10299,16 +10302,16 @@ class DisplayReffftviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:REFFFTView<x>:AUTOScale {ON|OFF|1|0}
+            - DISplay:REFFFTView<x>:AUTOScale {OFF|ON|0|1|<NR1>}
             - DISplay:REFFFTView<x>:AUTOScale?
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the plot number.
-            - ``<NR1>`` = 0 disables auto-scale on the specified reffftview; any other value turns
-              this feature on.
+            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``OFF`` disables auto-scale on the specified reffftview.
+            - ``0`` disables auto-scale on the specified reffftview.
             - ``ON`` enables the specified channel on the specified Waveform View.
+            - ``1`` enables the specified channel on the specified Waveform View.
         """
         return self._autoscale
 
@@ -16446,7 +16449,7 @@ class Display(SCPICmdRead):
               raise an AssertionError if the returned value does not match ``value``.
 
         Info:
-            - ``REFFFTView<x>`` is the plot number.
+            - ``REFFFTView<x>`` is the Reference FFT plot number.
 
         Sub-properties:
             - ``.autoscale``: The ``DISplay:REFFFTView<x>:AUTOScale`` command.

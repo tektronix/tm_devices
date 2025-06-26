@@ -646,6 +646,11 @@ class SaveEventtablePeaks(SCPICmdWrite):
         ```
         - SAVe:EVENTtable:PEAKS <QString>
         ```
+
+    Info:
+        - ``<QString>`` is the specified file. If a file name or path is specified, the file is
+          expected to be located in a directory relative to the current working directory (specified
+          by ``FILESYSTEM:CWD``) unless a complete path is specified.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -1013,6 +1018,11 @@ class SaveEventtable(SCPICmdRead):
             ```
             - SAVe:EVENTtable:PEAKS <QString>
             ```
+
+        Info:
+            - ``<QString>`` is the specified file. If a file name or path is specified, the file is
+              expected to be located in a directory relative to the current working directory
+              (specified by ``FILESYSTEM:CWD``) unless a complete path is specified.
         """
         return self._peaks
 

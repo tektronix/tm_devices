@@ -944,6 +944,12 @@ class SvMarkerPeakState(SCPICmdWrite, SCPICmdRead):
         - SV:MARKER:PEAK:STATE {ON|OFF|1|0}
         - SV:MARKER:PEAK:STATE?
         ```
+
+    Info:
+        - ``1`` enables showing peak marker icons on spectrum trace waveforms.
+        - ``ON`` enables showing peak marker icons on spectrum trace waveforms.
+        - ``0`` disables showing peak marker icons on spectrum trace waveforms.
+        - ``OFF`` disables showing peak marker icons on spectrum trace waveforms.
     """
 
 
@@ -1118,6 +1124,12 @@ class SvMarkerPeak(SCPICmdRead):
             - SV:MARKER:PEAK:STATE {ON|OFF|1|0}
             - SV:MARKER:PEAK:STATE?
             ```
+
+        Info:
+            - ``1`` enables showing peak marker icons on spectrum trace waveforms.
+            - ``ON`` enables showing peak marker icons on spectrum trace waveforms.
+            - ``0`` disables showing peak marker icons on spectrum trace waveforms.
+            - ``OFF`` disables showing peak marker icons on spectrum trace waveforms.
         """
         return self._state
 
@@ -1283,6 +1295,9 @@ class SvLockspectrum(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``ON`` sets all spectrum traces channels in the Spectrum View window to use the same
+          Spectrum Time value. When the Spectrum Time of any channel is changed, the Spectrum Time
+          of all other channels is automatically changed to match that value.
+        - ``1`` sets all spectrum traces channels in the Spectrum View window to use the same
           Spectrum Time value. When the Spectrum Time of any channel is changed, the Spectrum Time
           of all other channels is automatically changed to match that value.
         - ``0`` enables use of different Spectrum Time values for each spectrum trace channel. The
@@ -2902,6 +2917,9 @@ class Sv(SCPICmdRead):
 
         Info:
             - ``ON`` sets all spectrum traces channels in the Spectrum View window to use the same
+              Spectrum Time value. When the Spectrum Time of any channel is changed, the Spectrum
+              Time of all other channels is automatically changed to match that value.
+            - ``1`` sets all spectrum traces channels in the Spectrum View window to use the same
               Spectrum Time value. When the Spectrum Time of any channel is changed, the Spectrum
               Time of all other channels is automatically changed to match that value.
             - ``0`` enables use of different Spectrum Time values for each spectrum trace channel.

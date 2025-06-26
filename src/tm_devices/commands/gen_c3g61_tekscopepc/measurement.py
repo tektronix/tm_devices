@@ -13571,6 +13571,7 @@ class MeasurementMeasItemEequal(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MEAS<x>`` specifies the measurement number.
         - ``ON`` specifies the edge qualifier settings has been turned on.
         - ``OFF`` specifies the edge qualifier settings has been turned off.
     """
@@ -17587,6 +17588,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
+            - ``MEAS<x>`` specifies the measurement number.
             - ``ON`` specifies the edge qualifier settings has been turned on.
             - ``OFF`` specifies the edge qualifier settings has been turned off.
         """
@@ -23909,6 +23911,50 @@ class MeasurementClockrecoveryStandard(SCPICmdWrite, SCPICmdRead):
         - MEASUrement:CLOCKRecovery:STAndard {CUSTom|ENET100|FW1394BS400B|FW1394BS800B|FW1394BS1600B|FBD1|FBD2|FBD3|FC133|FC266|FC531|FC1063|FC2125|FC4250|FC8500|ENET1000|IBA2500|IBA_GEN2|OC1|OC3|OC12|OC48|PCIE_GEN1|PCIE_GEN2|PCIE_GEN3|RIO125|RIO250|RIO3125|SAS15_NOSSC|SAS3_NOSSC|SAS6_NOSSC|SAS12_NOSSC|SAS15_SSC|SAS3_SSC|SAS6_SSC|SAS12_SSC|SATA_GEN1|SATA_GEN2|SATA_GEN3|USB3|XAUI|XAUI_GEN2}
         - MEASUrement:CLOCKRecovery:STAndard?
         ```
+
+    Info:
+        - ``CUSTom`` sets a custom standard.
+        - ``ENET100`` sets the standard to ENET100.
+        - ``FW1394BS400B`` sets the standard to FW1394BS400B.
+        - ``FW1394BS800B`` sets the standard to FW1394BS800B.
+        - ``FW1394BS1600B`` sets the standard to FW1394BS1600B.
+        - ``FBD1`` sets the standard to FBD1.
+        - ``FBD2`` sets the standard to FBD2.
+        - ``FBD3`` sets the standard to FBD3.
+        - ``FC133`` sets the standard to FC133.
+        - ``FC266`` sets the standard to FC266.
+        - ``FC531`` sets the standard to FC531.
+        - ``FC1063`` sets the standard to FC1063.
+        - ``FC2125`` sets the standard to FC2125.
+        - ``FC4250`` sets the standard to FC4250.
+        - ``FC8500`` sets the standard to FC8500.
+        - ``ENET1000`` sets the standard to ENET1000.
+        - ``IBA2500`` sets the standard to IBA2500.
+        - ``IBA_GEN2`` sets the standard to ``IBA_GEN2``.
+        - ``OC1`` sets the standard to OC1.
+        - ``OC3`` sets the standard to OC3.
+        - ``OC12`` sets the standard to OC12.
+        - ``OC48`` sets the standard to OC48.
+        - ``PCIE_GEN1`` sets the standard to ``PCIE_GEN1``.
+        - ``PCIE_GEN2`` sets the standard to ``PCIE_GEN2``.
+        - ``PCIE_GEN3`` sets the standard to ``PCIE_GEN3``.
+        - ``RIO125`` sets the standard to RIO125.
+        - ``RIO250`` sets the standard to RIO250.
+        - ``RIO3125`` sets the standard to RIO3125.
+        - ``SAS15_NOSSC`` sets the standard to ``SAS15_NOSSC``.
+        - ``SAS3_NOSSC`` sets the standard to ``SAS3_NOSSC``.
+        - ``SAS6_NOSSC`` sets the standard to ``SAS6_NOSSC``.
+        - ``SAS12_NOSSC`` sets the standard to ``SAS12_NOSSC``.
+        - ``SAS15_SSC`` sets the standard to ``SAS15_SSC``.
+        - ``SAS3_SSC`` sets the standard to ``SAS3_SSC``.
+        - ``SAS6_SSC`` sets the standard to ``SAS6_SSC``.
+        - ``SAS12_SSC`` sets the standard to ``SAS12_SSC``.
+        - ``SATA_GEN1`` sets the standard to ``SATA_GEN1``.
+        - ``SATA_GEN2`` sets the standard to ``SATA_GEN2``.
+        - ``SATA_GEN3`` sets the standard to ``SATA_GEN3``.
+        - ``USB3`` sets the standard to USB3.
+        - ``XAUI`` sets the standard to XAUI.
+        - ``XAUI_GEN2`` sets the standard to ``XAUI_GEN2``.
     """  # noqa: E501
 
 
@@ -24911,6 +24957,50 @@ class MeasurementClockrecovery(SCPICmdRead):
             - MEASUrement:CLOCKRecovery:STAndard {CUSTom|ENET100|FW1394BS400B|FW1394BS800B|FW1394BS1600B|FBD1|FBD2|FBD3|FC133|FC266|FC531|FC1063|FC2125|FC4250|FC8500|ENET1000|IBA2500|IBA_GEN2|OC1|OC3|OC12|OC48|PCIE_GEN1|PCIE_GEN2|PCIE_GEN3|RIO125|RIO250|RIO3125|SAS15_NOSSC|SAS3_NOSSC|SAS6_NOSSC|SAS12_NOSSC|SAS15_SSC|SAS3_SSC|SAS6_SSC|SAS12_SSC|SATA_GEN1|SATA_GEN2|SATA_GEN3|USB3|XAUI|XAUI_GEN2}
             - MEASUrement:CLOCKRecovery:STAndard?
             ```
+
+        Info:
+            - ``CUSTom`` sets a custom standard.
+            - ``ENET100`` sets the standard to ENET100.
+            - ``FW1394BS400B`` sets the standard to FW1394BS400B.
+            - ``FW1394BS800B`` sets the standard to FW1394BS800B.
+            - ``FW1394BS1600B`` sets the standard to FW1394BS1600B.
+            - ``FBD1`` sets the standard to FBD1.
+            - ``FBD2`` sets the standard to FBD2.
+            - ``FBD3`` sets the standard to FBD3.
+            - ``FC133`` sets the standard to FC133.
+            - ``FC266`` sets the standard to FC266.
+            - ``FC531`` sets the standard to FC531.
+            - ``FC1063`` sets the standard to FC1063.
+            - ``FC2125`` sets the standard to FC2125.
+            - ``FC4250`` sets the standard to FC4250.
+            - ``FC8500`` sets the standard to FC8500.
+            - ``ENET1000`` sets the standard to ENET1000.
+            - ``IBA2500`` sets the standard to IBA2500.
+            - ``IBA_GEN2`` sets the standard to ``IBA_GEN2``.
+            - ``OC1`` sets the standard to OC1.
+            - ``OC3`` sets the standard to OC3.
+            - ``OC12`` sets the standard to OC12.
+            - ``OC48`` sets the standard to OC48.
+            - ``PCIE_GEN1`` sets the standard to ``PCIE_GEN1``.
+            - ``PCIE_GEN2`` sets the standard to ``PCIE_GEN2``.
+            - ``PCIE_GEN3`` sets the standard to ``PCIE_GEN3``.
+            - ``RIO125`` sets the standard to RIO125.
+            - ``RIO250`` sets the standard to RIO250.
+            - ``RIO3125`` sets the standard to RIO3125.
+            - ``SAS15_NOSSC`` sets the standard to ``SAS15_NOSSC``.
+            - ``SAS3_NOSSC`` sets the standard to ``SAS3_NOSSC``.
+            - ``SAS6_NOSSC`` sets the standard to ``SAS6_NOSSC``.
+            - ``SAS12_NOSSC`` sets the standard to ``SAS12_NOSSC``.
+            - ``SAS15_SSC`` sets the standard to ``SAS15_SSC``.
+            - ``SAS3_SSC`` sets the standard to ``SAS3_SSC``.
+            - ``SAS6_SSC`` sets the standard to ``SAS6_SSC``.
+            - ``SAS12_SSC`` sets the standard to ``SAS12_SSC``.
+            - ``SATA_GEN1`` sets the standard to ``SATA_GEN1``.
+            - ``SATA_GEN2`` sets the standard to ``SATA_GEN2``.
+            - ``SATA_GEN3`` sets the standard to ``SATA_GEN3``.
+            - ``USB3`` sets the standard to USB3.
+            - ``XAUI`` sets the standard to XAUI.
+            - ``XAUI_GEN2`` sets the standard to ``XAUI_GEN2``.
         """  # noqa: E501
         return self._standard
 

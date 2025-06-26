@@ -40,7 +40,7 @@ Commands and Queries:
     - HORizontal:FASTframe:XZEro:REF?
     - HORizontal:FASTframe:XZEro:SELECTED?
     - HORizontal:FASTframe?
-    - HORizontal:HISTory:CSTAts HORizontal:FASTframe:XZEro:ALL?
+    - HORizontal:HISTory:CSTAts {AACQs|HONLy}
     - HORizontal:HISTory:CSTAts?
     - HORizontal:HISTory:OVERlay {ON|OFF}
     - HORizontal:HISTory:OVERlay?
@@ -113,6 +113,9 @@ class HorizontalScale(SCPICmdWrite, SCPICmdRead):
         - HORizontal:SCAle <NR3>
         - HORizontal:SCAle?
         ```
+
+    Info:
+        - ``<NR3>`` is the horizontal scale in time per division.
     """
 
 
@@ -1287,9 +1290,13 @@ class HorizontalHistoryCstats(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HORizontal:HISTory:CSTAts HORizontal:FASTframe:XZEro:ALL?
+        - HORizontal:HISTory:CSTAts {AACQs|HONLy}
         - HORizontal:HISTory:CSTAts?
         ```
+
+    Info:
+        - ``AACQs`` sets the history cumulative statistics type to all acquisitions.
+        - ``HONLy`` sets the history cumulative statistics type to history only.
     """
 
 
@@ -1340,9 +1347,13 @@ class HorizontalHistory(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HORizontal:HISTory:CSTAts HORizontal:FASTframe:XZEro:ALL?
+            - HORizontal:HISTory:CSTAts {AACQs|HONLy}
             - HORizontal:HISTory:CSTAts?
             ```
+
+        Info:
+            - ``AACQs`` sets the history cumulative statistics type to all acquisitions.
+            - ``HONLy`` sets the history cumulative statistics type to history only.
         """
         return self._cstats
 
@@ -2828,5 +2839,8 @@ class Horizontal(SCPICmdRead):
             - HORizontal:SCAle <NR3>
             - HORizontal:SCAle?
             ```
+
+        Info:
+            - ``<NR3>`` is the horizontal scale in time per division.
         """
         return self._scale
