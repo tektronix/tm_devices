@@ -1,3 +1,4 @@
+# pylint: disable=line-too-long
 """The save commands module.
 
 These commands are used in the following models:
@@ -26,6 +27,7 @@ Commands and Queries:
     - SAVe:IMAGe:VIEWTYpe {FULLScreen}
     - SAVe:IMAGe:VIEWTYpe?
     - SAVe:MASK <QString>
+    - SAVe:PLOTData <QString>
     - SAVe:REPOrt <QString>
     - SAVe:REPOrt:COMMents <QString>
     - SAVe:REPOrt:COMMents?
@@ -33,14 +35,14 @@ Commands and Queries:
     - SAVe:SETUp <QString>
     - SAVe:SETUp:INCLUDEREFs {ON|OFF|1|0}
     - SAVe:SETUp:INCLUDEREFs?
-    - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|
+    - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|_SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME|_SV_BASEBAND_IQ]|MATH<x>|REF<x>|ALL| },<QString>
     - SAVe:WAVEform:GATing {NONe|CURSors|SCREEN|RESAMPLE|SELected}
     - SAVe:WAVEform:GATing:RESAMPLErate <NR1>
     - SAVe:WAVEform:GATing:RESAMPLErate?
     - SAVe:WAVEform:GATing?
-    - SAVe:WAVEform?
+    - SAVe:WAVEform:SOURCELIst?
     ```
-"""
+"""  # noqa: E501
 
 from typing import Optional, TYPE_CHECKING
 
@@ -48,6 +50,25 @@ from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.pi_control import PIControl
+
+
+class SaveWaveformSourcelist(SCPICmdRead):
+    """The ``SAVe:WAVEform:SOURCELIst`` command.
+
+    Description:
+        - This query returns a list of the available waveforms that can be specified as the source
+          for the ``SAVe:WAVEform``
+
+    Usage:
+        - Using the ``.query()`` method will send the ``SAVe:WAVEform:SOURCELIst?`` query.
+        - Using the ``.verify(value)`` method will send the ``SAVe:WAVEform:SOURCELIst?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+
+    SCPI Syntax:
+        ```
+        - SAVe:WAVEform:SOURCELIst?
+        ```
+    """
 
 
 class SaveWaveformGatingResamplerate(SCPICmdWrite, SCPICmdRead):
@@ -69,6 +90,9 @@ class SaveWaveformGatingResamplerate(SCPICmdWrite, SCPICmdRead):
         - SAVe:WAVEform:GATing:RESAMPLErate <NR1>
         - SAVe:WAVEform:GATing:RESAMPLErate?
         ```
+
+    Info:
+        - ``<NR1>`` specifies the resample interval.
     """
 
 
@@ -132,6 +156,9 @@ class SaveWaveformGating(SCPICmdWrite, SCPICmdRead):
             - SAVe:WAVEform:GATing:RESAMPLErate <NR1>
             - SAVe:WAVEform:GATing:RESAMPLErate?
             ```
+
+        Info:
+            - ``<NR1>`` specifies the resample interval.
         """
         return self._resamplerate
 
@@ -143,15 +170,11 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
         - This command saves the specified waveform(s) to the specified destination file.
 
     Usage:
-        - Using the ``.query()`` method will send the ``SAVe:WAVEform?`` query.
-        - Using the ``.verify(value)`` method will send the ``SAVe:WAVEform?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``SAVe:WAVEform value`` command.
 
     SCPI Syntax:
         ```
-        - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|
-        - SAVe:WAVEform?
+        - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|_SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME|_SV_BASEBAND_IQ]|MATH<x>|REF<x>|ALL| },<QString>
         ```
 
     Info:
@@ -168,16 +191,21 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
         - ``_FREQ_VS_TIME`` saves the Freuency vs.
         - ``_PHASE_VS_TIME`` saves the Phase vs.
         - ``_SV_BASEBAND_IQ`` saves the baseband I & Q data of the specified channel.
+        - ``ALL`` saves all displayed analog, math, and reference waveforms to individual files.
         - ``<QString>`` is a quoted string that defines the path and file name to use to save the
           specified file, in the format '[<path>]<filename.
+        - ``<path>`` uses the form '<drive>/<dir>.
+        - ``<filename>`` sets the file name to use to create the file.
 
     Properties:
         - ``.gating``: The ``SAVe:WAVEform:GATing`` command.
-    """
+        - ``.sourcelist``: The ``SAVe:WAVEform:SOURCELIst`` command.
+    """  # noqa: E501
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._gating = SaveWaveformGating(device, f"{self._cmd_syntax}:GATing")
+        self._sourcelist = SaveWaveformSourcelist(device, f"{self._cmd_syntax}:SOURCELIst")
 
     @property
     def gating(self) -> SaveWaveformGating:
@@ -215,6 +243,26 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
             - ``.resamplerate``: The ``SAVe:WAVEform:GATing:RESAMPLErate`` command.
         """
         return self._gating
+
+    @property
+    def sourcelist(self) -> SaveWaveformSourcelist:
+        """Return the ``SAVe:WAVEform:SOURCELIst`` command.
+
+        Description:
+            - This query returns a list of the available waveforms that can be specified as the
+              source for the ``SAVe:WAVEform``
+
+        Usage:
+            - Using the ``.query()`` method will send the ``SAVe:WAVEform:SOURCELIst?`` query.
+            - Using the ``.verify(value)`` method will send the ``SAVe:WAVEform:SOURCELIst?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+
+        SCPI Syntax:
+            ```
+            - SAVe:WAVEform:SOURCELIst?
+            ```
+        """
+        return self._sourcelist
 
 
 class SaveSetupIncluderefs(SCPICmdWrite, SCPICmdRead):
@@ -406,6 +454,36 @@ class SaveReport(SCPICmdWrite, SCPICmdRead):
             - ``<QString>`` is the comments to be included in saved report files.
         """
         return self._comments
+
+
+class SavePlotdata(SCPICmdWrite):
+    """The ``SAVe:PLOTData`` command.
+
+    Description:
+        - Saves the plot data of the currently selected plot to a specified file. Supported file
+          format is CSV. When specifying the file name with this command, use the correct file
+          extension (.CSV). If a file name or path is specified, the file is expected to be located
+          in a directory relative to the current working directory (specified by ``FILESystem:CWD``)
+          unless a complete path is specified. If the file argument begins with a drive designator
+          (such as C:), then the file name is interpreted as a full path. If the file argument
+          begins with '.' or '', or has a file path separator appearing anywhere other than the
+          first character position, then the file name is treated as a path that is relative to the
+          current working directory. To export an eye diagram plot data to a .csv file, the
+          prerequisite command is ``MEASUrement:ADDMEAS TIE``
+
+    Usage:
+        - Using the ``.write(value)`` method will send the ``SAVe:PLOTData value`` command.
+
+    SCPI Syntax:
+        ```
+        - SAVe:PLOTData <QString>
+        ```
+
+    Info:
+        - ``<QString>`` sets the file name and location used to store the plot data.
+    """
+
+    _WRAP_ARG_WITH_QUOTES = True
 
 
 class SaveMask(SCPICmdWrite):
@@ -664,6 +742,12 @@ class SaveEventtableCustomIncluderefs(SCPICmdWrite, SCPICmdRead):
         - SAVe:EVENTtable:CUSTom:INCLUDEREFs {1|0}
         - SAVe:EVENTtable:CUSTom:INCLUDEREFs?
         ```
+
+    Info:
+        - ``1`` sets the instrument to save all displayed reference waveforms as part of a saved
+          results table file.
+        - ``0`` sets the instrument to not save all displayed reference waveforms as part of a saved
+          results table file.
     """
 
 
@@ -685,6 +769,12 @@ class SaveEventtableCustomDataformat(SCPICmdWrite, SCPICmdRead):
         - SAVe:EVENTtable:CUSTom:DATAFormat [SCIentific|ENGineering]
         - SAVe:EVENTtable:CUSTom:DATAFormat?
         ```
+
+    Info:
+        - ``SCIentific`` sets the instrument to save results tables data in scientific notation (for
+          example, 5.0100E-12).
+        - ``ENGineering`` sets the instrument to save results tables data in engineering notation
+          (for example, 5.0100ps).
     """
 
 
@@ -706,6 +796,10 @@ class SaveEventtableCustomComments(SCPICmdWrite, SCPICmdRead):
         - SAVe:EVENTtable:CUSTom:COMMents <QString>
         - SAVe:EVENTtable:CUSTom:COMMents?
         ```
+
+    Info:
+        - ``<QString>`` sets the instrument to save the quoted string as a comment in the saved
+          results table file.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -724,6 +818,11 @@ class SaveEventtableCustom(SCPICmdWrite, SCPICmdRead):
         ```
         - SAVe:EVENTtable:CUSTom <QString>
         ```
+
+    Info:
+        - ``<QString>`` is the specified file. If a file name or path is specified, the file is
+          expected to be located in a directory relative to the current working directory (specified
+          by ``FILESystem:CWD``) unless a complete path is specified.
 
     Properties:
         - ``.comments``: The ``SAVe:EVENTtable:CUSTom:COMMents`` command.
@@ -761,6 +860,10 @@ class SaveEventtableCustom(SCPICmdWrite, SCPICmdRead):
             - SAVe:EVENTtable:CUSTom:COMMents <QString>
             - SAVe:EVENTtable:CUSTom:COMMents?
             ```
+
+        Info:
+            - ``<QString>`` sets the instrument to save the quoted string as a comment in the saved
+              results table file.
         """
         return self._comments
 
@@ -785,6 +888,12 @@ class SaveEventtableCustom(SCPICmdWrite, SCPICmdRead):
             - SAVe:EVENTtable:CUSTom:DATAFormat [SCIentific|ENGineering]
             - SAVe:EVENTtable:CUSTom:DATAFormat?
             ```
+
+        Info:
+            - ``SCIentific`` sets the instrument to save results tables data in scientific notation
+              (for example, 5.0100E-12).
+            - ``ENGineering`` sets the instrument to save results tables data in engineering
+              notation (for example, 5.0100ps).
         """
         return self._dataformat
 
@@ -810,6 +919,12 @@ class SaveEventtableCustom(SCPICmdWrite, SCPICmdRead):
             - SAVe:EVENTtable:CUSTom:INCLUDEREFs {1|0}
             - SAVe:EVENTtable:CUSTom:INCLUDEREFs?
             ```
+
+        Info:
+            - ``1`` sets the instrument to save all displayed reference waveforms as part of a saved
+              results table file.
+            - ``0`` sets the instrument to not save all displayed reference waveforms as part of a
+              saved results table file.
         """
         return self._includerefs
 
@@ -827,6 +942,11 @@ class SaveEventtableBus(SCPICmdWrite):
         ```
         - SAVe:EVENTtable:BUS <QString>
         ```
+
+    Info:
+        - ``<QString>`` is the specified file. If a file name or path is specified, the file is
+          expected to be located in a directory relative to the current working directory (specified
+          by ``FILESystem:CWD``) unless a complete path is specified.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -871,6 +991,11 @@ class SaveEventtable(SCPICmdRead):
             ```
             - SAVe:EVENTtable:BUS <QString>
             ```
+
+        Info:
+            - ``<QString>`` is the specified file. If a file name or path is specified, the file is
+              expected to be located in a directory relative to the current working directory
+              (specified by ``FILESystem:CWD``) unless a complete path is specified.
         """
         return self._bus
 
@@ -889,6 +1014,11 @@ class SaveEventtable(SCPICmdRead):
             ```
             - SAVe:EVENTtable:CUSTom <QString>
             ```
+
+        Info:
+            - ``<QString>`` is the specified file. If a file name or path is specified, the file is
+              expected to be located in a directory relative to the current working directory
+              (specified by ``FILESystem:CWD``) unless a complete path is specified.
 
         Sub-properties:
             - ``.comments``: The ``SAVe:EVENTtable:CUSTom:COMMents`` command.
@@ -967,6 +1097,7 @@ class SaveEventtable(SCPICmdRead):
         return self._searchtable
 
 
+#  pylint: disable=too-many-instance-attributes
 class Save(SCPICmdRead):
     """The ``SAVe`` command tree.
 
@@ -979,6 +1110,7 @@ class Save(SCPICmdRead):
         - ``.eventtable``: The ``SAVe:EVENTtable`` command tree.
         - ``.image``: The ``SAVe:IMAGe`` command.
         - ``.mask``: The ``SAVe:MASK`` command.
+        - ``.plotdata``: The ``SAVe:PLOTData`` command.
         - ``.report``: The ``SAVe:REPOrt`` command.
         - ``.session``: The ``SAVe:SESsion`` command.
         - ``.setup``: The ``SAVe:SETUp`` command.
@@ -990,6 +1122,7 @@ class Save(SCPICmdRead):
         self._eventtable = SaveEventtable(device, f"{self._cmd_syntax}:EVENTtable")
         self._image = SaveImage(device, f"{self._cmd_syntax}:IMAGe")
         self._mask = SaveMask(device, f"{self._cmd_syntax}:MASK")
+        self._plotdata = SavePlotdata(device, f"{self._cmd_syntax}:PLOTData")
         self._report = SaveReport(device, f"{self._cmd_syntax}:REPOrt")
         self._session = SaveSession(device, f"{self._cmd_syntax}:SESsion")
         self._setup = SaveSetup(device, f"{self._cmd_syntax}:SETUp")
@@ -1075,6 +1208,36 @@ class Save(SCPICmdRead):
         return self._mask
 
     @property
+    def plotdata(self) -> SavePlotdata:
+        """Return the ``SAVe:PLOTData`` command.
+
+        Description:
+            - Saves the plot data of the currently selected plot to a specified file. Supported file
+              format is CSV. When specifying the file name with this command, use the correct file
+              extension (.CSV). If a file name or path is specified, the file is expected to be
+              located in a directory relative to the current working directory (specified by
+              ``FILESystem:CWD``) unless a complete path is specified. If the file argument begins
+              with a drive designator (such as C:), then the file name is interpreted as a full
+              path. If the file argument begins with '.' or '', or has a file path separator
+              appearing anywhere other than the first character position, then the file name is
+              treated as a path that is relative to the current working directory. To export an eye
+              diagram plot data to a .csv file, the prerequisite command is
+              ``MEASUrement:ADDMEAS TIE``
+
+        Usage:
+            - Using the ``.write(value)`` method will send the ``SAVe:PLOTData value`` command.
+
+        SCPI Syntax:
+            ```
+            - SAVe:PLOTData <QString>
+            ```
+
+        Info:
+            - ``<QString>`` sets the file name and location used to store the plot data.
+        """
+        return self._plotdata
+
+    @property
     def report(self) -> SaveReport:
         """Return the ``SAVe:REPOrt`` command.
 
@@ -1158,15 +1321,11 @@ class Save(SCPICmdRead):
             - This command saves the specified waveform(s) to the specified destination file.
 
         Usage:
-            - Using the ``.query()`` method will send the ``SAVe:WAVEform?`` query.
-            - Using the ``.verify(value)`` method will send the ``SAVe:WAVEform?`` query and raise
-              an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``SAVe:WAVEform value`` command.
 
         SCPI Syntax:
             ```
-            - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|
-            - SAVe:WAVEform?
+            - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|_SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME|_SV_BASEBAND_IQ]|MATH<x>|REF<x>|ALL| },<QString>
             ```
 
         Info:
@@ -1186,10 +1345,14 @@ class Save(SCPICmdRead):
             - ``_FREQ_VS_TIME`` saves the Freuency vs.
             - ``_PHASE_VS_TIME`` saves the Phase vs.
             - ``_SV_BASEBAND_IQ`` saves the baseband I & Q data of the specified channel.
+            - ``ALL`` saves all displayed analog, math, and reference waveforms to individual files.
             - ``<QString>`` is a quoted string that defines the path and file name to use to save
               the specified file, in the format '[<path>]<filename.
+            - ``<path>`` uses the form '<drive>/<dir>.
+            - ``<filename>`` sets the file name to use to create the file.
 
         Sub-properties:
             - ``.gating``: The ``SAVe:WAVEform:GATing`` command.
-        """
+            - ``.sourcelist``: The ``SAVe:WAVEform:SOURCELIst`` command.
+        """  # noqa: E501
         return self._waveform

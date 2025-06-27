@@ -39,6 +39,9 @@ class Unlock(SCPICmdWrite):
         ```
         - UNLock ALL
         ```
+
+    Info:
+        - ``ALL`` specifies that all front panel buttons and knobs are unlocked.
     """
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "UNLock") -> None:

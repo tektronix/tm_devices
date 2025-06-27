@@ -70,7 +70,7 @@ from .gen_e3e9uu_lpdmso.searchtable import Searchtable
 from .gen_e3e9uu_lpdmso.select import Select
 from .gen_e3e9uu_lpdmso.set import Set
 from .gen_e3e9uu_lpdmso.socketserver import Socketserver
-from .gen_e3e9uu_lpdmso.status_and_error import Ese, Opc, Rst, Sre
+from .gen_e3e9uu_lpdmso.status_and_error import Ese, Rst, Sre
 from .gen_e3e9uu_lpdmso.sv import Sv
 from .gen_e3e9uu_lpdmso.time import Time
 from .gen_e3e9uu_lpdmso.touchscreen import Touchscreen
@@ -94,7 +94,7 @@ from .gen_e47rsg_lpdmsotekscopepc.date import Date
 from .gen_e47rsg_lpdmsotekscopepc.meastable import Meastable
 from .gen_e47rsg_lpdmsotekscopepc.undo import Undo
 from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
-from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Stb, Wai
+from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Stb, Wai
 from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
 from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
 from .gen_fx54ua_lpdmsodpomdodsa.newpass import Newpass
@@ -400,6 +400,7 @@ class MSO5BCommandConstants:
     ENEND = "ENEND"
     ENET100 = "ENET100"
     ENET1000 = "ENET1000"
+    ENGINEERING = "ENGINEERING"  # ENGineering
     ENSLAVE = "ENSLAVE"  # ENSLave
     ENTASX = "ENTASX"  # ENTasx
     ENTERSWINDOW = "ENTERSWINDOW"  # ENTERSWindow
@@ -611,6 +612,7 @@ class MSO5BCommandConstants:
     HLTB = "HLTB"
     HONLY = "HONLY"  # HONLy
     HORIZONTAL = "HORIZONTAL"  # HORizontal
+    HORIZONTALSCALE = "HORIZONTALSCALE"  # HORIZontalscale
     HORZPOS = "HORZPOS"
     HORZSCALE = "HORZSCALE"  # HORZScale
     HOSTADDR = "HOSTADDR"
@@ -852,7 +854,8 @@ class MSO5BCommandConstants:
     OUTSIDE = "OUTSIDE"  # OUTside
     OUTSIDEGREATER = "OUTSIDEGREATER"  # OUTSIDEGreater
     OUTSIDERANGE = "OUTSIDERANGE"  # OUTSIDErange
-    OVERLAY = "OVERLAY"  # OVErlay
+    OVERLAY = "OVERLAY"  # OVERlay
+    # OVERLAY = "OVErlay"
     OVERLOAD = "OVERLOAD"  # OVERLoad
     OZINCH = "OZINCH"
     P1W2V1I1 = "P1W2V1I1"
@@ -971,6 +974,7 @@ class MSO5BCommandConstants:
     READY = "READY"  # READy
     REAL = "REAL"
     RECORD = "RECORD"
+    RECORDLENGTH = "RECORDLENGTH"  # RECORDLength
     RECTANGLE = "RECTANGLE"
     # RECTANGLE = "RECTangle"
     RECTANGULAR = "RECTANGULAR"  # RECTANGular
@@ -1063,6 +1067,7 @@ class MSO5BCommandConstants:
     SATA_GEN3 = "SATA_GEN3"
     SAVG = "SAVG"
     SBC = "SBC"
+    SCIENTIFIC = "SCIENTIFIC"  # SCIentific
     SCRAMBLING = "SCRAMBLING"  # SCRambling
     SCREEN = "SCREEN"
     # SCREEN = "SCReen"
@@ -1353,10 +1358,6 @@ class MSO5BCommandConstants:
     ZERO = "ZERO"  # ZERo
     ZN = "ZN"
     ZOOM = "ZOOM"
-    _DALL = "_DALL"
-    _SV_AVERAGE = "_SV_AVERAGE"  # _SV_AVErage
-    _SV_MAXHOLD = "_SV_MAXHOLD"  # _SV_MAXHold
-    _SV_NORMAL = "_SV_NORMAL"  # _SV_NORMal
 
 
 #  pylint: disable=too-many-instance-attributes,too-many-public-methods
@@ -2268,6 +2269,15 @@ class MSO5BCommands:
             - *DDT {<Block>|<QString>}
             - *DDT?
             ```
+
+        Info:
+            - ``<Block>`` is a complete sequence of program messages. The messages can contain only
+              valid commands that must be separated by semicolons and must follow allrules for
+              concatenating commands. The sequence must be less than or equal to 80characters. The
+              format of this argument is always returned as a query.
+            - ``<QString>`` is a complete sequence of program messages. The messages can contain
+              only valid commands that must be separated by semicolons and mustfollow all rules for
+              concatenating commands. The sequence must be less than orequal to 80 characters.
         """
         return self._ddt
 
@@ -2653,6 +2663,15 @@ class MSO5BCommands:
             - HEADer {ON|OFF|<NR1>}
             - HEADer?
             ```
+
+        Info:
+            - ``<NR1>`` = 0 sets the Response Header Enable State to false; any other value sets
+              this state to true.
+            - ``OFF`` sets the Response Header Enable State to false. This causes the instrument to
+              omit headers on query responses, so that only the argument is returned.
+            - ``ON`` sets the Response Header Enable State to true. This causes the instrument to
+              include headers on applicable query responses. You can then use the query response as
+              a command.
         """
         return self._header
 
@@ -3039,7 +3058,7 @@ class MSO5BCommands:
               the output queue, see Registers and Queues. The ``*OPC`` command allows you to
               synchronize the operation of the instrument with your application program. For more
               information, see Synchronization Methods. Refer to the Oscilloscope operations that
-              can generate OPC
+              can generate OPC table for a list of commands that generate an OPC message.
 
         Usage:
             - Using the ``.query()`` method will send the ``*OPC?`` query.
@@ -3395,6 +3414,7 @@ class MSO5BCommands:
             - ``.eventtable``: The ``SAVe:EVENTtable`` command tree.
             - ``.image``: The ``SAVe:IMAGe`` command.
             - ``.mask``: The ``SAVe:MASK`` command.
+            - ``.plotdata``: The ``SAVe:PLOTData`` command.
             - ``.report``: The ``SAVe:REPOrt`` command.
             - ``.session``: The ``SAVe:SESsion`` command.
             - ``.setup``: The ``SAVe:SETUp`` command.
@@ -3804,6 +3824,9 @@ class MSO5BCommands:
             ```
             - UNLock ALL
             ```
+
+        Info:
+            - ``ALL`` specifies that all front panel buttons and knobs are unlocked.
         """
         return self._unlock
 

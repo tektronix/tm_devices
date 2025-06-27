@@ -43,6 +43,15 @@ class Header(SCPICmdWrite, SCPICmdRead):
         - HEADer {ON|OFF|<NR1>}
         - HEADer?
         ```
+
+    Info:
+        - ``<NR1>`` = 0 sets the Response Header Enable State to false; any other value sets this
+          state to true.
+        - ``OFF`` sets the Response Header Enable State to false. This causes the instrument to omit
+          headers on query responses, so that only the argument is returned.
+        - ``ON`` sets the Response Header Enable State to true. This causes the instrument to
+          include headers on applicable query responses. You can then use the query response as a
+          command.
     """
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "HEADer") -> None:
