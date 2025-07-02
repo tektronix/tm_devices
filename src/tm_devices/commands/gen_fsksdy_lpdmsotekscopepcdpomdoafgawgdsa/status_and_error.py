@@ -16,7 +16,6 @@ Commands and Queries:
     - *ESR?
     - *OPC
     - *OPC?
-    - *RST
     - *STB?
     - *WAI
     ```
@@ -71,46 +70,6 @@ class Stb(SCPICmdRead):
     """
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*STB") -> None:
-        super().__init__(device, cmd_syntax)
-
-
-class Rst(SCPICmdWriteNoArguments):
-    """The ``*RST`` command.
-
-    Description:
-        - This command (no query form) resets the instrument to the factory default settings. This
-          command does the following: Recalls the default instrument setup. Clears the current
-          ``*DDT`` command. Disables aliases (``:ALIAS:STATE 0``). Disables the user password (for
-          the ``*PUD`` command). The ``*RST`` command does not change the following: The current
-          working directory ( ``:FILESystem:CWD`` command). The state of command headers (
-          ``:HEADer`` command). The state of keyword and enumeration verbosity ( ``:VERBose``
-          command). The Power-on Status Clear Flag ( ``*PSC`` command). The Event Status Enable
-          Register ( ``*ESE`` command). The Service Request Enable Register ( ``*SRE`` command). The
-          Device Event Status Enable Register ( DESE command). The user password for protected user
-          data ( ``:PASSWord`` command). The content of protected user data ( ``*PUD`` command). The
-          enabled state of the socket server ( ``:SOCKETServer:ENAble`` command). The socket server
-          port number ( ``:SOCKETServer:PORT`` command). The socket server protocol (
-          ``:SOCKETServer:PROTOCol`` command). The USBTMC port configuration (
-          ``:USBDevice:CONFigure`` command). The destination reference waveform or file path for the
-          ``:CURVe`` command ( ``:DATa:DESTination`` command). The source waveform for the
-          ``:CURVe?`` or ``:WAVFrm?`` queries ( ``:DATa:SOUrce`` command). The waveform data
-          encoding for the ``:CURVe`` command or query or the ``:WAVFrm?`` query ( ``:DATa:ENCdg``
-          command). The starting point for ``:CURVe?`` queries ( ``:DATa:STARt`` command). The
-          ending point for ``:CURVe?`` queries ( ``:DATa:STOP`` command). All settings associated
-          the ``:WFMInpre`` commands. All user settable settings associated with the WFMOutpre
-          commands. ``*RST`` only resets the programmable interface settings, it does not change the
-          user interface settings.
-
-    Usage:
-        - Using the ``.write()`` method will send the ``*RST`` command.
-
-    SCPI Syntax:
-        ```
-        - *RST
-        ```
-    """
-
-    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*RST") -> None:
         super().__init__(device, cmd_syntax)
 
 

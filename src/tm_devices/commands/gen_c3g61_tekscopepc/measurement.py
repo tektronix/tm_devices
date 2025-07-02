@@ -240,7 +240,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:CLOCKRecovery:DATARate?
     - MEASUrement:MEAS<x>:CLOCKRecovery:EXPLICITCLOCKMODe {EDGE|PLL}
     - MEASUrement:MEAS<x>:CLOCKRecovery:EXPLICITCLOCKMODe?
-    - MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal {OFF|ON|0|1}
+    - MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal {ON|OFF|1|0}
     - MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal?
     - MEASUrement:MEAS<x>:CLOCKRecovery:JTFBandwidth <NR3>
     - MEASUrement:MEAS<x>:CLOCKRecovery:JTFBandwidth?
@@ -257,7 +257,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:CLOCKRecovery:NOMINALOFFset:SELECTIONtype?
     - MEASUrement:MEAS<x>:CLOCKRecovery:NOMINALOFFset?
     - MEASUrement:MEAS<x>:CLOCKRecovery:STAndard {CUSTom|ENET100|FW1394BS400B|FW1394BS800B|FW1394BS1600B|FBD1|FBD2|FBD3|FC133|FC266|FC531|FC1063|FC2125|FC4250|FC8500|ENET1000|IBA2500|IBA_GEN2|OC1|OC3|OC12|OC48|PCIE_GEN1|PCIE_GEN2|PCIE_GEN3|RIO125|RIO250|RIO3125|SAS15_NOSSC|SAS3_NOSSC|SAS6_NOSSC|SAS12_NOSSC|SAS15_SSC|SAS3_SSC|SAS6_SSC|SAS12_SSC|SATA_GEN1|SATA_GEN2|SATA_GEN3|USB3|XAUI|XAUI_GEN2}
-    - MEASUrement:MEAS<x>:COMMONMode:FILTers:STATE {OFF|ON|0|1}
+    - MEASUrement:MEAS<x>:COMMONMode:FILTers:STATE {ON|OFF|1|0}
     - MEASUrement:MEAS<x>:COMMONMode:FILTers:STATE?
     - MEASUrement:MEAS<x>:COMMONMode:SOURCEs {SINGLE|DOUBLE}
     - MEASUrement:MEAS<x>:COMMONMode:SOURCEs?
@@ -303,7 +303,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:FILTERRANGETO?
     - MEASUrement:MEAS<x>:FILTers:BLANKingtime <NR3>
     - MEASUrement:MEAS<x>:FILTers:BLANKingtime?
-    - MEASUrement:MEAS<x>:FILTers:GLOBal {OFF|ON|0|1}
+    - MEASUrement:MEAS<x>:FILTers:GLOBal {ON|OFF|1|0}
     - MEASUrement:MEAS<x>:FILTers:GLOBal?
     - MEASUrement:MEAS<x>:FILTers:HIGHPass:FREQ <NR3>
     - MEASUrement:MEAS<x>:FILTers:HIGHPass:FREQ?
@@ -338,7 +338,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:GATing:ACTive?
     - MEASUrement:MEAS<x>:GATing:ENDtime <NR3>
     - MEASUrement:MEAS<x>:GATing:ENDtime?
-    - MEASUrement:MEAS<x>:GATing:GLOBal {OFF|ON|0|1}
+    - MEASUrement:MEAS<x>:GATing:GLOBal {ON|OFF|1|0}
     - MEASUrement:MEAS<x>:GATing:GLOBal?
     - MEASUrement:MEAS<x>:GATing:HYSTeresis <NR3>
     - MEASUrement:MEAS<x>:GATing:HYSTeresis?
@@ -349,7 +349,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:GATing:STARTtime <NR3>
     - MEASUrement:MEAS<x>:GATing:STARTtime?
     - MEASUrement:MEAS<x>:GATing?
-    - MEASUrement:MEAS<x>:GLOBalref {OFF|ON|0|1}
+    - MEASUrement:MEAS<x>:GLOBalref {ON|OFF|1|0}
     - MEASUrement:MEAS<x>:GLOBalref?
     - MEASUrement:MEAS<x>:HARMONICSCLass {CLASSA|CLASSB|CLASSC|CLASSD}
     - MEASUrement:MEAS<x>:HARMONICSCLass?
@@ -371,7 +371,7 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:HIGHLEVel:OUTLINESelected?
     - MEASUrement:MEAS<x>:HIGHLEVel:OUTWIRing {P1W2V1I1|P1W3V2I2|P3W3V3I3|P3W4|DCP1W2}
     - MEASUrement:MEAS<x>:HIGHLEVel:OUTWIRing?
-    - MEASUrement:MEAS<x>:HIGHLEVel:USEGLOBAL {1|0|ON|OFF}
+    - MEASUrement:MEAS<x>:HIGHLEVel:USEGLOBAL {ON|OFF|1|0}
     - MEASUrement:MEAS<x>:HIGHLEVel:USEGLOBAL?
     - MEASUrement:MEAS<x>:HIGHLEVel:WIRing {P1W2V1I1|P1W3V2I2|P3W3V2I2|P3W3V3I3|P3W3|DCP1W2}
     - MEASUrement:MEAS<x>:HIGHLEVel:WIRing?
@@ -428,13 +428,13 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:MAXGVoltage?
     - MEASUrement:MEAS<x>:MAXVoltage <NR2>
     - MEASUrement:MEAS<x>:MAXVoltage?
-    - MEASUrement:MEAS<x>:MEASRange:GLOBal {OFF|ON|0|1}
+    - MEASUrement:MEAS<x>:MEASRange:GLOBal {ON|OFF|1|0}
     - MEASUrement:MEAS<x>:MEASRange:GLOBal?
     - MEASUrement:MEAS<x>:MEASRange:MAX <NR3>
     - MEASUrement:MEAS<x>:MEASRange:MAX?
     - MEASUrement:MEAS<x>:MEASRange:MIN <NR3>
     - MEASUrement:MEAS<x>:MEASRange:MIN?
-    - MEASUrement:MEAS<x>:MEASRange:STATE {OFF|ON|0|1}
+    - MEASUrement:MEAS<x>:MEASRange:STATE {ON|OFF|1|0}
     - MEASUrement:MEAS<x>:MEASRange:STATE?
     - MEASUrement:MEAS<x>:MECH:EINDexz {ON|OFF|1|0}
     - MEASUrement:MEAS<x>:MECH:EINDexz?
@@ -489,9 +489,9 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:PERFREQ:EDGE {FIRST|RISE|FALL}
     - MEASUrement:MEAS<x>:POLarity {NORMal|INVerted}
     - MEASUrement:MEAS<x>:POLarity?
-    - MEASUrement:MEAS<x>:POPUlation:GLOBal {OFF|ON|0|1}
+    - MEASUrement:MEAS<x>:POPUlation:GLOBal {ON|OFF|1|0}
     - MEASUrement:MEAS<x>:POPUlation:GLOBal?
-    - MEASUrement:MEAS<x>:POPUlation:LIMIT:STATE {OFF|ON|0|1}
+    - MEASUrement:MEAS<x>:POPUlation:LIMIT:STATE {ON|OFF|1|0}
     - MEASUrement:MEAS<x>:POPUlation:LIMIT:STATE?
     - MEASUrement:MEAS<x>:POPUlation:LIMIT:VALue <NR3>
     - MEASUrement:MEAS<x>:POPUlation:LIMIT:VALue?
@@ -632,7 +632,7 @@ Commands and Queries:
     - MEASUrement:MEASRange:MAX?
     - MEASUrement:MEASRange:MIN <NR3>
     - MEASUrement:MEASRange:MIN?
-    - MEASUrement:MEASRange:STATE {OFF|ON|0|1}
+    - MEASUrement:MEASRange:STATE {ON|OFF|1|0}
     - MEASUrement:MEASRange:STATE?
     - MEASUrement:MECH:EINDexz {ON|OFF|1|0}
     - MEASUrement:MECH:EINDexz?
@@ -735,7 +735,7 @@ Commands and Queries:
     - MEASUrement:RESUlts:HISTory:STARt?
     - MEASUrement:RESUlts:HISTory:STOP <NR1>
     - MEASUrement:RESUlts:HISTory:STOP?
-    - MEASUrement:STATIstics:CYCLEMode {OFF|ON|0|1}
+    - MEASUrement:STATIstics:CYCLEMode {ON|OFF|1|0}
     - MEASUrement:STATIstics:CYCLEMode?
     - MEASUrement:WBG:PDEVice {IGBT|MOSFET}
     - MEASUrement:WBG:PDEVice?
@@ -844,7 +844,7 @@ class MeasurementStatisticsCyclemode(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:STATIstics:CYCLEMode {OFF|ON|0|1}
+        - MEASUrement:STATIstics:CYCLEMode {ON|OFF|1|0}
         - MEASUrement:STATIstics:CYCLEMode?
         ```
 
@@ -893,7 +893,7 @@ class MeasurementStatistics(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:STATIstics:CYCLEMode {OFF|ON|0|1}
+            - MEASUrement:STATIstics:CYCLEMode {ON|OFF|1|0}
             - MEASUrement:STATIstics:CYCLEMode?
             ```
 
@@ -1130,7 +1130,7 @@ class MeasurementReflevelsPercentRisemid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevels:PERCent:RISEMid`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the mid reference level of the rising edge when the measurement's
           ref level method is set to percent.
 
@@ -1158,7 +1158,7 @@ class MeasurementReflevelsPercentRiselow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevels:PERCent:RISELow`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the low reference level of the rising edge when the measurement's
           ref level method is set to percent.
 
@@ -1186,7 +1186,7 @@ class MeasurementReflevelsPercentRisehigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevels:PERCent:RISEHigh`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the high reference level of the rising edge when the measurement's
           ref level method is set to percent.
 
@@ -1214,7 +1214,7 @@ class MeasurementReflevelsPercentHysteresis(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevels:PERCent:HYSTeresis`` command.
 
     Description:
-        - This command sets or queries the percentage (where 100% is equal to MAX and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to MAX and 0% is equal to
           MIN) used to calculate the hysteresis of the reference level when the measurement's ref
           level method is set to percent.
 
@@ -1242,7 +1242,7 @@ class MeasurementReflevelsPercentFallmid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevels:PERCent:FALLMid`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the mid reference level of the falling edge when the measurement's
           ref level method is set to percent.
 
@@ -1270,7 +1270,7 @@ class MeasurementReflevelsPercentFalllow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevels:PERCent:FALLLow`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the mid reference level of the falling edge when the measurement's
           ref level method is set to percent.
 
@@ -1298,7 +1298,7 @@ class MeasurementReflevelsPercentFallhigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REFLevels:PERCent:FALLHigh`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the high reference level of the falling edge when the
           measurement's ref level method is set to percent.
 
@@ -1361,8 +1361,8 @@ class MeasurementReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REFLevels:PERCent:FALLHigh`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the high reference level of the falling edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the high reference level of the falling edge when the
               measurement's ref level method is set to percent.
 
         Usage:
@@ -1391,8 +1391,8 @@ class MeasurementReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REFLevels:PERCent:FALLLow`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the mid reference level of the falling edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the mid reference level of the falling edge when the
               measurement's ref level method is set to percent.
 
         Usage:
@@ -1421,8 +1421,8 @@ class MeasurementReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REFLevels:PERCent:FALLMid`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the mid reference level of the falling edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the mid reference level of the falling edge when the
               measurement's ref level method is set to percent.
 
         Usage:
@@ -1451,7 +1451,7 @@ class MeasurementReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REFLevels:PERCent:HYSTeresis`` command.
 
         Description:
-            - This command sets or queries the percentage (where 100% is equal to MAX and 1% is
+            - This command sets or queries the percentage (where 100% is equal to MAX and 0% is
               equal to MIN) used to calculate the hysteresis of the reference level when the
               measurement's ref level method is set to percent.
 
@@ -1480,8 +1480,8 @@ class MeasurementReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REFLevels:PERCent:RISEHigh`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the high reference level of the rising edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the high reference level of the rising edge when the
               measurement's ref level method is set to percent.
 
         Usage:
@@ -1510,8 +1510,8 @@ class MeasurementReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REFLevels:PERCent:RISELow`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the low reference level of the rising edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the low reference level of the rising edge when the
               measurement's ref level method is set to percent.
 
         Usage:
@@ -1540,8 +1540,8 @@ class MeasurementReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REFLevels:PERCent:RISEMid`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the mid reference level of the rising edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the mid reference level of the rising edge when the
               measurement's ref level method is set to percent.
 
         Usage:
@@ -2441,7 +2441,7 @@ class MeasurementRefItemReflevelsPercentRisemid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REF<x>:REFLevels:PERCent:RISEMid`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the mid reference level of the rising edge when the measurement's
           ref level method is set to percent.
 
@@ -2469,7 +2469,7 @@ class MeasurementRefItemReflevelsPercentRiselow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REF<x>:REFLevels:PERCent:RISELow`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the low reference level of the rising edge when the measurement's
           ref level method is set to percent.
 
@@ -2497,7 +2497,7 @@ class MeasurementRefItemReflevelsPercentRisehigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REF<x>:REFLevels:PERCent:RISEHigh`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the high reference level of the rising edge when the measurement's
           ref level method is set to percent.
 
@@ -2525,7 +2525,7 @@ class MeasurementRefItemReflevelsPercentHysteresis(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REF<x>:REFLevels:PERCent:HYSTeresis`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to MAX and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to MAX and 0% is equal to
           MIN) used to calculate the hysteresis of the reference level when the measurement's ref
           level method is set to percent.
 
@@ -2553,7 +2553,7 @@ class MeasurementRefItemReflevelsPercentFallmid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REF<x>:REFLevels:PERCent:FALLMid`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the mid reference level of the falling edge when the measurement's
           ref level method is set to percent.
 
@@ -2581,7 +2581,7 @@ class MeasurementRefItemReflevelsPercentFalllow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REF<x>:REFLevels:PERCent:FALLLow`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the low reference level of the falling edge when the measurement's
           ref level method is set to percent.
 
@@ -2609,7 +2609,7 @@ class MeasurementRefItemReflevelsPercentFallhigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:REF<x>:REFLevels:PERCent:FALLHigh`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the high reference level of the falling edge when the
           measurement's ref level method is set to percent.
 
@@ -2686,8 +2686,8 @@ class MeasurementRefItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REF<x>:REFLevels:PERCent:FALLHigh`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the high reference level of the falling edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the high reference level of the falling edge when the
               measurement's ref level method is set to percent.
 
         Usage:
@@ -2716,8 +2716,8 @@ class MeasurementRefItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REF<x>:REFLevels:PERCent:FALLLow`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the low reference level of the falling edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the low reference level of the falling edge when the
               measurement's ref level method is set to percent.
 
         Usage:
@@ -2745,8 +2745,8 @@ class MeasurementRefItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REF<x>:REFLevels:PERCent:FALLMid`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the mid reference level of the falling edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the mid reference level of the falling edge when the
               measurement's ref level method is set to percent.
 
         Usage:
@@ -2775,9 +2775,9 @@ class MeasurementRefItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REF<x>:REFLevels:PERCent:HYSTeresis`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to MAX and 1% is equal
-              to MIN) used to calculate the hysteresis of the reference level when the measurement's
-              ref level method is set to percent.
+            - This command sets or queries the percentage (where 100% is equal to MAX and 0% is
+              equal to MIN) used to calculate the hysteresis of the reference level when the
+              measurement's ref level method is set to percent.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -2804,8 +2804,8 @@ class MeasurementRefItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REF<x>:REFLevels:PERCent:RISEHigh`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the high reference level of the rising edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the high reference level of the rising edge when the
               measurement's ref level method is set to percent.
 
         Usage:
@@ -2834,8 +2834,8 @@ class MeasurementRefItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REF<x>:REFLevels:PERCent:RISELow`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the low reference level of the rising edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the low reference level of the rising edge when the
               measurement's ref level method is set to percent.
 
         Usage:
@@ -2864,8 +2864,8 @@ class MeasurementRefItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:REF<x>:REFLevels:PERCent:RISEMid`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the mid reference level of the rising edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the mid reference level of the rising edge when the
               measurement's ref level method is set to percent.
 
         Usage:
@@ -4250,11 +4250,12 @@ class MeasurementMeasrangeState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEASRange:STATE {OFF|ON|0|1}
+        - MEASUrement:MEASRange:STATE {ON|OFF|1|0}
         - MEASUrement:MEASRange:STATE?
         ```
 
     Info:
+        - ``MEAS<x>`` specifies the measurement number.
         - ``OFF`` specifies that the measurement results are not limited.
         - ``ON`` specifies that the measurement results are limited to results with values between
           the range minimum and maximum.
@@ -4284,6 +4285,7 @@ class MeasurementMeasrangeMin(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MEAS<x>`` specifies the measurement number.
         - ``<NR3>`` is the minimum measurement range limit value.
     """
 
@@ -4308,6 +4310,7 @@ class MeasurementMeasrangeMax(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MEAS<x>`` specifies the measurement number.
         - ``<NR3>`` is the maximum measurement range limit value.
     """
 
@@ -4353,6 +4356,7 @@ class MeasurementMeasrange(SCPICmdRead):
             ```
 
         Info:
+            - ``MEAS<x>`` specifies the measurement number.
             - ``<NR3>`` is the maximum measurement range limit value.
         """
         return self._max
@@ -4378,6 +4382,7 @@ class MeasurementMeasrange(SCPICmdRead):
             ```
 
         Info:
+            - ``MEAS<x>`` specifies the measurement number.
             - ``<NR3>`` is the minimum measurement range limit value.
         """
         return self._min
@@ -4398,11 +4403,12 @@ class MeasurementMeasrange(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEASRange:STATE {OFF|ON|0|1}
+            - MEASUrement:MEASRange:STATE {ON|OFF|1|0}
             - MEASUrement:MEASRange:STATE?
             ```
 
         Info:
+            - ``MEAS<x>`` specifies the measurement number.
             - ``OFF`` specifies that the measurement results are not limited.
             - ``ON`` specifies that the measurement results are limited to results with values
               between the range minimum and maximum.
@@ -7112,7 +7118,7 @@ class MeasurementMeasItemReflevels1PercentRisemid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:REFLevels1:PERCent:RISEMid`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the mid reference level of the rising edge when the measurement's
           ref level method is set to percent. The measurement number is specified by x.
 
@@ -7142,7 +7148,7 @@ class MeasurementMeasItemReflevels1PercentRiselow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:REFLevels1:PERCent:RISELow`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the low reference level of the rising edge when the measurement's
           ref level method is set to percent. The measurement number is specified by x.
 
@@ -7163,7 +7169,7 @@ class MeasurementMeasItemReflevels1PercentRiselow(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``MEAS<x>`` specifies the measurement number.
-        - ``<NR3>`` is the percentage (where 99% is equal to TOP) used to calculate the mid
+        - ``<NR3>`` is the percentage (where 100% is equal to TOP) used to calculate the mid
           reference level when the measurement's Ref level method is set to Percent.
     """
 
@@ -7172,7 +7178,7 @@ class MeasurementMeasItemReflevels1PercentRisehigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:REFLevels1:PERCent:RISEHigh`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the high reference level of the rising edge when the measurement's
           ref level method is set to percent. The measurement number is specified by x.
 
@@ -7193,7 +7199,7 @@ class MeasurementMeasItemReflevels1PercentRisehigh(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``MEAS<x>`` specifies the measurement number.
-        - ``<NR3>`` is the percentage (where 99% is equal to TOP) used to calculate the high
+        - ``<NR3>`` is the percentage (where 100% is equal to TOP) used to calculate the high
           reference level when the measurement's Ref level method is set to Percent.
     """
 
@@ -7202,7 +7208,7 @@ class MeasurementMeasItemReflevels1PercentHysteresis(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:REFLevels1:PERCent:HYSTeresis`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to MAX and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to MAX and 0% is equal to
           MIN) used to calculate the hysteresis of the reference level when the measurement's ref
           level method is set to percent. The measurement number is specified by x.
 
@@ -7231,7 +7237,7 @@ class MeasurementMeasItemReflevels1PercentFallmid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLMid`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the mid reference level of the falling edge when the measurement's
           ref level method is set to percent. The measurement number is specified by x.
 
@@ -7261,7 +7267,7 @@ class MeasurementMeasItemReflevels1PercentFalllow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLLow`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the low reference level of the falling edge when the measurement's
           ref level method is set to percent. The measurement number is specified by x.
 
@@ -7291,7 +7297,7 @@ class MeasurementMeasItemReflevels1PercentFallhigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLHigh`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the high reference level of the falling edge when the
           measurement's ref level method is set to percent. The measurement number is specified by
           x.
@@ -7373,8 +7379,8 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLHigh`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the high reference level of the falling edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the high reference level of the falling edge when the
               measurement's ref level method is set to percent. The measurement number is specified
               by x.
 
@@ -7405,8 +7411,8 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLLow`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the low reference level of the falling edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the low reference level of the falling edge when the
               measurement's ref level method is set to percent. The measurement number is specified
               by x.
 
@@ -7437,8 +7443,8 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLMid`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the mid reference level of the falling edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the mid reference level of the falling edge when the
               measurement's ref level method is set to percent. The measurement number is specified
               by x.
 
@@ -7469,9 +7475,10 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:REFLevels1:PERCent:HYSTeresis`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to MAX and 1% is equal
-              to MIN) used to calculate the hysteresis of the reference level when the measurement's
-              ref level method is set to percent. The measurement number is specified by x.
+            - This command sets or queries the percentage (where 100% is equal to MAX and 0% is
+              equal to MIN) used to calculate the hysteresis of the reference level when the
+              measurement's ref level method is set to percent. The measurement number is specified
+              by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -7499,8 +7506,8 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:REFLevels1:PERCent:RISEHigh`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the high reference level of the rising edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the high reference level of the rising edge when the
               measurement's ref level method is set to percent. The measurement number is specified
               by x.
 
@@ -7521,7 +7528,7 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
 
         Info:
             - ``MEAS<x>`` specifies the measurement number.
-            - ``<NR3>`` is the percentage (where 99% is equal to TOP) used to calculate the high
+            - ``<NR3>`` is the percentage (where 100% is equal to TOP) used to calculate the high
               reference level when the measurement's Ref level method is set to Percent.
         """
         return self._risehigh
@@ -7531,8 +7538,8 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:REFLevels1:PERCent:RISELow`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the low reference level of the rising edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the low reference level of the rising edge when the
               measurement's ref level method is set to percent. The measurement number is specified
               by x.
 
@@ -7553,7 +7560,7 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
 
         Info:
             - ``MEAS<x>`` specifies the measurement number.
-            - ``<NR3>`` is the percentage (where 99% is equal to TOP) used to calculate the mid
+            - ``<NR3>`` is the percentage (where 100% is equal to TOP) used to calculate the mid
               reference level when the measurement's Ref level method is set to Percent.
         """
         return self._riselow
@@ -7563,8 +7570,8 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:REFLevels1:PERCent:RISEMid`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the mid reference level of the rising edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the mid reference level of the rising edge when the
               measurement's ref level method is set to percent. The measurement number is specified
               by x.
 
@@ -8498,7 +8505,7 @@ class MeasurementMeasItemPopulationLimitState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:POPUlation:LIMIT:STATE {OFF|ON|0|1}
+        - MEASUrement:MEAS<x>:POPUlation:LIMIT:STATE {ON|OFF|1|0}
         - MEASUrement:MEAS<x>:POPUlation:LIMIT:STATE?
         ```
 
@@ -8553,7 +8560,7 @@ class MeasurementMeasItemPopulationLimit(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:POPUlation:LIMIT:STATE {OFF|ON|0|1}
+            - MEASUrement:MEAS<x>:POPUlation:LIMIT:STATE {ON|OFF|1|0}
             - MEASUrement:MEAS<x>:POPUlation:LIMIT:STATE?
             ```
 
@@ -8614,7 +8621,7 @@ class MeasurementMeasItemPopulationGlobal(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:POPUlation:GLOBal {OFF|ON|0|1}
+        - MEASUrement:MEAS<x>:POPUlation:GLOBal {ON|OFF|1|0}
         - MEASUrement:MEAS<x>:POPUlation:GLOBal?
         ```
 
@@ -8670,7 +8677,7 @@ class MeasurementMeasItemPopulation(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:POPUlation:GLOBal {OFF|ON|0|1}
+            - MEASUrement:MEAS<x>:POPUlation:GLOBal {ON|OFF|1|0}
             - MEASUrement:MEAS<x>:POPUlation:GLOBal?
             ```
 
@@ -9976,7 +9983,7 @@ class MeasurementMeasItemMeasrangeState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:MEASRange:STATE {OFF|ON|0|1}
+        - MEASUrement:MEAS<x>:MEASRange:STATE {ON|OFF|1|0}
         - MEASUrement:MEAS<x>:MEASRange:STATE?
         ```
 
@@ -10059,7 +10066,7 @@ class MeasurementMeasItemMeasrangeGlobal(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:MEASRange:GLOBal {OFF|ON|0|1}
+        - MEASUrement:MEAS<x>:MEASRange:GLOBal {ON|OFF|1|0}
         - MEASUrement:MEAS<x>:MEASRange:GLOBal?
         ```
 
@@ -10118,7 +10125,7 @@ class MeasurementMeasItemMeasrange(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:MEASRange:GLOBal {OFF|ON|0|1}
+            - MEASUrement:MEAS<x>:MEASRange:GLOBal {ON|OFF|1|0}
             - MEASUrement:MEAS<x>:MEASRange:GLOBal?
             ```
 
@@ -10212,7 +10219,7 @@ class MeasurementMeasItemMeasrange(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:MEASRange:STATE {OFF|ON|0|1}
+            - MEASUrement:MEAS<x>:MEASRange:STATE {ON|OFF|1|0}
             - MEASUrement:MEAS<x>:MEASRange:STATE?
             ```
 
@@ -11384,7 +11391,7 @@ class MeasurementMeasItemHighlevelUseglobal(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:HIGHLEVel:USEGLOBAL {1|0|ON|OFF}
+        - MEASUrement:MEAS<x>:HIGHLEVel:USEGLOBAL {ON|OFF|1|0}
         - MEASUrement:MEAS<x>:HIGHLEVel:USEGLOBAL?
         ```
 
@@ -11421,7 +11428,7 @@ class MeasurementMeasItemHighlevelOutwiring(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``MEAS<x>`` specifies the measurement number.
         - ``P1W2V1I1`` specifies P1W2V1I1 as the local output wiring.
-        - ``P3W3V2I2`` specifies P3W3V2I2 as the local output wiring.
+        - ``P1W3V2I2`` specifies P1W3V2I2 as the local output wiring.
         - ``P3W3V3I3`` specifies P3W3V3I3 as the local output wiring.
         - ``P3W4`` specifies P3W4 as the local output wiring.
         - ``DCP1W2`` specifies DCP1W2 as the local output wiring.
@@ -11778,7 +11785,7 @@ class MeasurementMeasItemHighlevel(SCPICmdRead):
         Info:
             - ``MEAS<x>`` specifies the measurement number.
             - ``P1W2V1I1`` specifies P1W2V1I1 as the local output wiring.
-            - ``P3W3V2I2`` specifies P3W3V2I2 as the local output wiring.
+            - ``P1W3V2I2`` specifies P1W3V2I2 as the local output wiring.
             - ``P3W3V3I3`` specifies P3W3V3I3 as the local output wiring.
             - ``P3W4`` specifies P3W4 as the local output wiring.
             - ``DCP1W2`` specifies DCP1W2 as the local output wiring.
@@ -11803,7 +11810,7 @@ class MeasurementMeasItemHighlevel(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:HIGHLEVel:USEGLOBAL {1|0|ON|OFF}
+            - MEASUrement:MEAS<x>:HIGHLEVel:USEGLOBAL {ON|OFF|1|0}
             - MEASUrement:MEAS<x>:HIGHLEVel:USEGLOBAL?
             ```
 
@@ -11953,10 +11960,7 @@ class MeasurementMeasItemHarmonicsclass(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``MEAS<x>`` specifies the measurement number.
-        - ``CLASSA`` specifies the class type to A.
-        - ``CLASSB`` specifies the class type to B.
-        - ``CLASSC`` specifies the class type to C.
-        - ``CLASSD`` specifies the class type to D.
+        - ``CLASSA-D`` specifies the class type.
     """
 
 
@@ -11976,7 +11980,7 @@ class MeasurementMeasItemGlobalref(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:GLOBalref {OFF|ON|0|1}
+        - MEASUrement:MEAS<x>:GLOBalref {ON|OFF|1|0}
         - MEASUrement:MEAS<x>:GLOBalref?
         ```
 
@@ -12134,7 +12138,7 @@ class MeasurementMeasItemGatingGlobal(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:GATing:GLOBal {OFF|ON|0|1}
+        - MEASUrement:MEAS<x>:GATing:GLOBal {ON|OFF|1|0}
         - MEASUrement:MEAS<x>:GATing:GLOBal?
         ```
 
@@ -12344,7 +12348,7 @@ class MeasurementMeasItemGating(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:GATing:GLOBal {OFF|ON|0|1}
+            - MEASUrement:MEAS<x>:GATing:GLOBal {ON|OFF|1|0}
             - MEASUrement:MEAS<x>:GATing:GLOBal?
             ```
 
@@ -13272,7 +13276,7 @@ class MeasurementMeasItemFiltersGlobal(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:FILTers:GLOBal {OFF|ON|0|1}
+        - MEASUrement:MEAS<x>:FILTers:GLOBal {ON|OFF|1|0}
         - MEASUrement:MEAS<x>:FILTers:GLOBal?
         ```
 
@@ -13391,7 +13395,7 @@ class MeasurementMeasItemFilters(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:FILTers:GLOBal {OFF|ON|0|1}
+            - MEASUrement:MEAS<x>:FILTers:GLOBal {ON|OFF|1|0}
             - MEASUrement:MEAS<x>:FILTers:GLOBal?
             ```
 
@@ -14037,7 +14041,7 @@ class MeasurementMeasItemEdgequalifier(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``MEAS<x>`` is the measurement number.
-        - ``CH<x>`` is the edge qualifier source channel. x has a minimum of 1 and a maximum of 8.
+        - ``CH<x>`` is the edge qualifier source channel.
         - ``MATH<x>`` is the edge qualifier source math waveform; <x> is ≥1.
         - ``REF<x>`` is the edge qualifier source reference waveform; <x> is ≥1.
     """
@@ -14445,7 +14449,7 @@ class MeasurementMeasItemCommonmodeFiltersState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:COMMONMode:FILTers:STATE {OFF|ON|0|1}
+        - MEASUrement:MEAS<x>:COMMONMode:FILTers:STATE {ON|OFF|1|0}
         - MEASUrement:MEAS<x>:COMMONMode:FILTers:STATE?
         ```
 
@@ -14498,7 +14502,7 @@ class MeasurementMeasItemCommonmodeFilters(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:COMMONMode:FILTers:STATE {OFF|ON|0|1}
+            - MEASUrement:MEAS<x>:COMMONMode:FILTers:STATE {ON|OFF|1|0}
             - MEASUrement:MEAS<x>:COMMONMode:FILTers:STATE?
             ```
 
@@ -14861,7 +14865,7 @@ class MeasurementMeasItemClockrecoveryGlobal(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal {OFF|ON|0|1}
+        - MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal {ON|OFF|1|0}
         - MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal?
         ```
 
@@ -15480,7 +15484,7 @@ class MeasurementMeasItemClockrecovery(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal {OFF|ON|0|1}
+            - MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal {ON|OFF|1|0}
             - MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal?
             ```
 
@@ -17533,8 +17537,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``MEAS<x>`` is the measurement number.
-            - ``CH<x>`` is the edge qualifier source channel. x has a minimum of 1 and a maximum of
-              8.
+            - ``CH<x>`` is the edge qualifier source channel.
             - ``MATH<x>`` is the edge qualifier source math waveform; <x> is ≥1.
             - ``REF<x>`` is the edge qualifier source reference waveform; <x> is ≥1.
         """
@@ -17890,7 +17893,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - MEASUrement:MEAS<x>:GLOBalref {OFF|ON|0|1}
+            - MEASUrement:MEAS<x>:GLOBalref {ON|OFF|1|0}
             - MEASUrement:MEAS<x>:GLOBalref?
             ```
 
@@ -17928,10 +17931,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``MEAS<x>`` specifies the measurement number.
-            - ``CLASSA`` specifies the class type to A.
-            - ``CLASSB`` specifies the class type to B.
-            - ``CLASSC`` specifies the class type to C.
-            - ``CLASSD`` specifies the class type to D.
+            - ``CLASSA-D`` specifies the class type.
         """
         return self._harmonicsclass
 
@@ -20535,7 +20535,7 @@ class MeasurementMathItemReflevelsPercentRisemid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MATH<x>:REFLevels:PERCent:RISEMid`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the mid reference level of the rising edge when the measurement
           ref level method is set to percent. The math number is specified by x.
 
@@ -20565,7 +20565,7 @@ class MeasurementMathItemReflevelsPercentRiselow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MATH<x>:REFLevels:PERCent:RISELow`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the low reference level of the rising edge when the measurement
           ref level method is set to percent. The math number is specified by x.
 
@@ -20595,7 +20595,7 @@ class MeasurementMathItemReflevelsPercentRisehigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MATH<x>:REFLevels:PERCent:RISEHigh`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the high reference level of the rising edge when the measurement
           ref level method is set to percent. The math number is specified by x. The measurement
           number is specified by x.
@@ -20655,7 +20655,7 @@ class MeasurementMathItemReflevelsPercentFallmid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MATH<x>:REFLevels:PERCent:FALLMid`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the mid reference level of the falling edge when the measurement
           ref level method is set to percent. The math number is specified by x.
 
@@ -20685,7 +20685,7 @@ class MeasurementMathItemReflevelsPercentFalllow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MATH<x>:REFLevels:PERCent:FALLLow`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the low reference level of the falling edge when the measurement
           ref level method is set to percent. The math number is specified by x.
 
@@ -20715,7 +20715,7 @@ class MeasurementMathItemReflevelsPercentFallhigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MATH<x>:REFLevels:PERCent:FALLHigh`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the high reference level of the falling edge when the measurement
           ref level method is set to percent. The math number is specified by x.
 
@@ -20796,8 +20796,8 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:MATH<x>:REFLevels:PERCent:FALLHigh`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the high reference level of the falling edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the high reference level of the falling edge when the
               measurement ref level method is set to percent. The math number is specified by x.
 
         Usage:
@@ -20827,8 +20827,8 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:MATH<x>:REFLevels:PERCent:FALLLow`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the low reference level of the falling edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the low reference level of the falling edge when the
               measurement ref level method is set to percent. The math number is specified by x.
 
         Usage:
@@ -20858,8 +20858,8 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:MATH<x>:REFLevels:PERCent:FALLMid`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the mid reference level of the falling edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the mid reference level of the falling edge when the
               measurement ref level method is set to percent. The math number is specified by x.
 
         Usage:
@@ -20919,8 +20919,8 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:MATH<x>:REFLevels:PERCent:RISEHigh`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the high reference level of the rising edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the high reference level of the rising edge when the
               measurement ref level method is set to percent. The math number is specified by x. The
               measurement number is specified by x.
 
@@ -20951,8 +20951,8 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:MATH<x>:REFLevels:PERCent:RISELow`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the low reference level of the rising edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the low reference level of the rising edge when the
               measurement ref level method is set to percent. The math number is specified by x.
 
         Usage:
@@ -20982,8 +20982,8 @@ class MeasurementMathItemReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:MATH<x>:REFLevels:PERCent:RISEMid`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the mid reference level of the rising edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the mid reference level of the rising edge when the
               measurement ref level method is set to percent. The math number is specified by x.
 
         Usage:
@@ -21292,7 +21292,7 @@ class MeasurementMathItemReflevelsAbsoluteFalllow(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the value used as the low reference level of the falling edge
-          when the measuement ref level method is set to absolute. The math number is specified by
+          when the measurement ref level method is set to absolute. The math number is specified by
           x.
 
     Usage:
@@ -21434,7 +21434,7 @@ class MeasurementMathItemReflevelsAbsolute(SCPICmdRead):
 
         Description:
             - This command sets or queries the value used as the low reference level of the falling
-              edge when the measuement ref level method is set to absolute. The math number is
+              edge when the measurement ref level method is set to absolute. The math number is
               specified by x.
 
         Usage:
@@ -21855,6 +21855,7 @@ class MeasurementLockrjvalue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``MEAS<x>`` specifies the measurement number.
         - ``<NR3>`` default value = 1e-12; minimum value = 1e-15; maximum value = 1.
     """
 
@@ -25037,7 +25038,7 @@ class MeasurementChannelReflevelsPercentRisemid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:CH<x>:REFLevels:PERCent:RISEMid`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the mid reference level of the rising edge when the measurement
           ref level method is set to percent. The channel number is specified by x.
 
@@ -25066,7 +25067,7 @@ class MeasurementChannelReflevelsPercentRiselow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:CH<x>:REFLevels:PERCent:RISELow`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the low reference level of the rising edge when the measurement
           ref level method is set to percent. The channel number is specified by x.
 
@@ -25095,7 +25096,7 @@ class MeasurementChannelReflevelsPercentRisehigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:CH<x>:REFLevels:PERCent:RISEHigh`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the high reference level of the rising edge when the measurement
           ref level method is set to percent. The channel number is specified by x.
 
@@ -25152,7 +25153,7 @@ class MeasurementChannelReflevelsPercentFallmid(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:CH<x>:REFLevels:PERCent:FALLMid`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the mid reference level of the falling edge when the source ref
           level method is set to percent. The channel number is specified by x.
 
@@ -25181,7 +25182,7 @@ class MeasurementChannelReflevelsPercentFalllow(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:CH<x>:REFLevels:PERCent:FALLLow`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the low reference level of the falling edge when the source ref
           level method is set to percent. The channel number is specified by x.
 
@@ -25210,7 +25211,7 @@ class MeasurementChannelReflevelsPercentFallhigh(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:CH<x>:REFLevels:PERCent:FALLHigh`` command.
 
     Description:
-        - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal to
+        - This command sets or queries the percentage (where 100% is equal to TOP and 0% is equal to
           BASE) used to calculate the high reference level of the falling edge when the source ref
           level method is set to percent. The channel number is specified by x.
 
@@ -25286,8 +25287,8 @@ class MeasurementChannelReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:CH<x>:REFLevels:PERCent:FALLHigh`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the high reference level of the falling edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the high reference level of the falling edge when the
               source ref level method is set to percent. The channel number is specified by x.
 
         Usage:
@@ -25316,9 +25317,9 @@ class MeasurementChannelReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:CH<x>:REFLevels:PERCent:FALLLow`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the low reference level of the falling edge when the source
-              ref level method is set to percent. The channel number is specified by x.
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the low reference level of the falling edge when the
+              source ref level method is set to percent. The channel number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -25346,9 +25347,9 @@ class MeasurementChannelReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:CH<x>:REFLevels:PERCent:FALLMid`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the mid reference level of the falling edge when the source
-              ref level method is set to percent. The channel number is specified by x.
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the mid reference level of the falling edge when the
+              source ref level method is set to percent. The channel number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -25405,8 +25406,8 @@ class MeasurementChannelReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:CH<x>:REFLevels:PERCent:RISEHigh`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the high reference level of the rising edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the high reference level of the rising edge when the
               measurement ref level method is set to percent. The channel number is specified by x.
 
         Usage:
@@ -25435,8 +25436,8 @@ class MeasurementChannelReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:CH<x>:REFLevels:PERCent:RISELow`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the low reference level of the rising edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the low reference level of the rising edge when the
               measurement ref level method is set to percent. The channel number is specified by x.
 
         Usage:
@@ -25465,8 +25466,8 @@ class MeasurementChannelReflevelsPercent(SCPICmdRead):
         """Return the ``MEASUrement:CH<x>:REFLevels:PERCent:RISEMid`` command.
 
         Description:
-            - This command sets or queries the percentage (where 99% is equal to TOP and 1% is equal
-              to BASE) used to calculate the mid reference level of the rising edge when the
+            - This command sets or queries the percentage (where 100% is equal to TOP and 0% is
+              equal to BASE) used to calculate the mid reference level of the rising edge when the
               measurement ref level method is set to percent. The channel number is specified by x.
 
         Usage:
@@ -27572,6 +27573,7 @@ class Measurement(SCPICmdRead):
             ```
 
         Info:
+            - ``MEAS<x>`` specifies the measurement number.
             - ``<NR3>`` default value = 1e-12; minimum value = 1e-15; maximum value = 1.
         """
         return self._lockrjvalue

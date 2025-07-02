@@ -16,10 +16,10 @@ Commands and Queries:
     - WLISt:SIZE?
     - WLISt:SPARameter:APPLy <file_path>
     - WLISt:SPARameter:BANDwidth {FULL|<bandwidth>}
-    - WLISt:SPARameter:BANDwidth:AUTO {0|1|OFF|ON}
+    - WLISt:SPARameter:BANDwidth:AUTO {ON|OFF|1|0}
     - WLISt:SPARameter:BANDwidth:AUTO?
     - WLISt:SPARameter:BANDwidth?
-    - WLISt:SPARameter:CASCading:AGGRessor2:ENABle {0|1|ON|OFF}
+    - WLISt:SPARameter:CASCading:AGGRessor2:ENABle {ON|OFF|1|0}
     - WLISt:SPARameter:CASCading:AGGRessor2:ENABle?
     - WLISt:SPARameter:CASCading:AGGRessor[n]:AMPLitude <amplitude>
     - WLISt:SPARameter:CASCading:AGGRessor[n]:AMPLitude?
@@ -33,13 +33,13 @@ Commands and Queries:
     - WLISt:SPARameter:CASCading:AGGRessor[n]:SIGNal:PRBS {PRBS7|PRBS9|PRBS15|PRBS16|PRBS20|PRBS21|PRBS23|PRBS29|PRBS31}
     - WLISt:SPARameter:CASCading:AGGRessor[n]:SIGNal:PRBS?
     - WLISt:SPARameter:CASCading:AGGRessor[n]:SIGNal?
-    - WLISt:SPARameter:CASCading:DEEMbed {0|1|OFF|ON}
+    - WLISt:SPARameter:CASCading:DEEMbed {ON|OFF|1|0}
     - WLISt:SPARameter:CASCading:DEEMbed?
     - WLISt:SPARameter:CASCading:STAGe[m]:DRX[n] <port_number>
     - WLISt:SPARameter:CASCading:STAGe[m]:DRX[n]?
     - WLISt:SPARameter:CASCading:STAGe[m]:DTX[n] <port number>
     - WLISt:SPARameter:CASCading:STAGe[m]:DTX[n]?
-    - WLISt:SPARameter:CASCading:STAGe[m]:ENABle {0|1|OFF|ON}
+    - WLISt:SPARameter:CASCading:STAGe[m]:ENABle {ON|OFF|1|0}
     - WLISt:SPARameter:CASCading:STAGe[m]:ENABle?
     - WLISt:SPARameter:CASCading:STAGe[m]:FILE <filepath>
     - WLISt:SPARameter:CASCading:STAGe[m]:FILE?
@@ -55,7 +55,7 @@ Commands and Queries:
     - WLISt:SPARameter:CASCading:TYPE?
     - WLISt:SPARameter:MODE {CASC|NCAS}
     - WLISt:SPARameter:MODE?
-    - WLISt:SPARameter:NCAScading:AGGRessor2:ENABle {0|1|ON|OFF}
+    - WLISt:SPARameter:NCAScading:AGGRessor2:ENABle {ON|OFF|1|0}
     - WLISt:SPARameter:NCAScading:AGGRessor2:ENABle?
     - WLISt:SPARameter:NCAScading:AGGRessor[n]:AMPLitude <amplitude>
     - WLISt:SPARameter:NCAScading:AGGRessor[n]:AMPLitude?
@@ -69,7 +69,7 @@ Commands and Queries:
     - WLISt:SPARameter:NCAScading:AGGRessor[n]:SIGNal:PRBS {PRBS7|PRBS9|PRBS15|PRBS16|PRBS20|PRBS21|PRBS23|PRBS29|PRBS31}
     - WLISt:SPARameter:NCAScading:AGGRessor[n]:SIGNal:PRBS?
     - WLISt:SPARameter:NCAScading:AGGRessor[n]:SIGNal?
-    - WLISt:SPARameter:NCAScading:DEEMbed {0|1|OFF|ON}
+    - WLISt:SPARameter:NCAScading:DEEMbed {ON|OFF|1|0}
     - WLISt:SPARameter:NCAScading:DEEMbed?
     - WLISt:SPARameter:NCAScading:DRX[n] <port number>
     - WLISt:SPARameter:NCAScading:DRX[n]?
@@ -92,13 +92,13 @@ Commands and Queries:
     - WLISt:SPARameter:SFORmat {REAL|I|Q|IQ}
     - WLISt:SPARameter:SFORmat?
     - WLISt:WAVeform:ACFile <file_path>,<wfm_name>[,<Q_file_path>]
-    - WLISt:WAVeform:ACFile:GAUSsian {0|1|OFF|ON}
+    - WLISt:WAVeform:ACFile:GAUSsian {ON|OFF|1|0}
     - WLISt:WAVeform:ACFile:GAUSsian:BANDwidth <bandwidth>
     - WLISt:WAVeform:ACFile:GAUSsian:BANDwidth?
     - WLISt:WAVeform:ACFile:GAUSsian?
-    - WLISt:WAVeform:ACFile:RSINc {0|1|OFF|ON}
+    - WLISt:WAVeform:ACFile:RSINc {ON|OFF|1|0}
     - WLISt:WAVeform:ACFile:RSINc?
-    - WLISt:WAVeform:ACFile:SKEW {0|1|OFF|ON}
+    - WLISt:WAVeform:ACFile:SKEW {ON|OFF|1|0}
     - WLISt:WAVeform:ACFile:SKEW?
     - WLISt:WAVeform:AMPLitude <wfm_name>,<amplitude>
     - WLISt:WAVeform:AMPLitude? <wfm_name>
@@ -905,7 +905,7 @@ class WlistWaveformAcfileSkew(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - WLISt:WAVeform:ACFile:SKEW {0|1|OFF|ON}
+        - WLISt:WAVeform:ACFile:SKEW {ON|OFF|1|0}
         - WLISt:WAVeform:ACFile:SKEW?
         ```
     """
@@ -927,7 +927,7 @@ class WlistWaveformAcfileRsinc(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - WLISt:WAVeform:ACFile:RSINc {0|1|OFF|ON}
+        - WLISt:WAVeform:ACFile:RSINc {ON|OFF|1|0}
         - WLISt:WAVeform:ACFile:RSINc?
         ```
     """
@@ -973,7 +973,7 @@ class WlistWaveformAcfileGaussian(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - WLISt:WAVeform:ACFile:GAUSsian {0|1|OFF|ON}
+        - WLISt:WAVeform:ACFile:GAUSsian {ON|OFF|1|0}
         - WLISt:WAVeform:ACFile:GAUSsian?
         ```
 
@@ -1059,7 +1059,7 @@ class WlistWaveformAcfile(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - WLISt:WAVeform:ACFile:GAUSsian {0|1|OFF|ON}
+            - WLISt:WAVeform:ACFile:GAUSsian {ON|OFF|1|0}
             - WLISt:WAVeform:ACFile:GAUSsian?
             ```
 
@@ -1085,7 +1085,7 @@ class WlistWaveformAcfile(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - WLISt:WAVeform:ACFile:RSINc {0|1|OFF|ON}
+            - WLISt:WAVeform:ACFile:RSINc {ON|OFF|1|0}
             - WLISt:WAVeform:ACFile:RSINc?
             ```
         """
@@ -1108,7 +1108,7 @@ class WlistWaveformAcfile(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - WLISt:WAVeform:ACFile:SKEW {0|1|OFF|ON}
+            - WLISt:WAVeform:ACFile:SKEW {ON|OFF|1|0}
             - WLISt:WAVeform:ACFile:SKEW?
             ```
         """
@@ -1950,7 +1950,7 @@ class WlistSparameterNcascadingDeembed(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - WLISt:SPARameter:NCAScading:DEEMbed {0|1|OFF|ON}
+        - WLISt:SPARameter:NCAScading:DEEMbed {ON|OFF|1|0}
         - WLISt:SPARameter:NCAScading:DEEMbed?
         ```
     """
@@ -2315,7 +2315,7 @@ class WlistSparameterNcascadingAggressor2Enable(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - WLISt:SPARameter:NCAScading:AGGRessor2:ENABle {0|1|ON|OFF}
+        - WLISt:SPARameter:NCAScading:AGGRessor2:ENABle {ON|OFF|1|0}
         - WLISt:SPARameter:NCAScading:AGGRessor2:ENABle?
         ```
     """
@@ -2361,7 +2361,7 @@ class WlistSparameterNcascadingAggressor2(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - WLISt:SPARameter:NCAScading:AGGRessor2:ENABle {0|1|ON|OFF}
+            - WLISt:SPARameter:NCAScading:AGGRessor2:ENABle {ON|OFF|1|0}
             - WLISt:SPARameter:NCAScading:AGGRessor2:ENABle?
             ```
         """
@@ -2477,7 +2477,7 @@ class WlistSparameterNcascading(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - WLISt:SPARameter:NCAScading:DEEMbed {0|1|OFF|ON}
+            - WLISt:SPARameter:NCAScading:DEEMbed {ON|OFF|1|0}
             - WLISt:SPARameter:NCAScading:DEEMbed?
             ```
         """
@@ -2897,7 +2897,7 @@ class WlistSparameterCascadingStageItemEnable(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - WLISt:SPARameter:CASCading:STAGe[m]:ENABle {0|1|OFF|ON}
+        - WLISt:SPARameter:CASCading:STAGe[m]:ENABle {ON|OFF|1|0}
         - WLISt:SPARameter:CASCading:STAGe[m]:ENABle?
         ```
     """
@@ -3075,7 +3075,7 @@ class WlistSparameterCascadingStageItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - WLISt:SPARameter:CASCading:STAGe[m]:ENABle {0|1|OFF|ON}
+            - WLISt:SPARameter:CASCading:STAGe[m]:ENABle {ON|OFF|1|0}
             - WLISt:SPARameter:CASCading:STAGe[m]:ENABle?
             ```
         """
@@ -3200,7 +3200,7 @@ class WlistSparameterCascadingDeembed(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - WLISt:SPARameter:CASCading:DEEMbed {0|1|OFF|ON}
+        - WLISt:SPARameter:CASCading:DEEMbed {ON|OFF|1|0}
         - WLISt:SPARameter:CASCading:DEEMbed?
         ```
     """
@@ -3562,7 +3562,7 @@ class WlistSparameterCascadingAggressor2Enable(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - WLISt:SPARameter:CASCading:AGGRessor2:ENABle {0|1|ON|OFF}
+        - WLISt:SPARameter:CASCading:AGGRessor2:ENABle {ON|OFF|1|0}
         - WLISt:SPARameter:CASCading:AGGRessor2:ENABle?
         ```
     """
@@ -3608,7 +3608,7 @@ class WlistSparameterCascadingAggressor2(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - WLISt:SPARameter:CASCading:AGGRessor2:ENABle {0|1|ON|OFF}
+            - WLISt:SPARameter:CASCading:AGGRessor2:ENABle {ON|OFF|1|0}
             - WLISt:SPARameter:CASCading:AGGRessor2:ENABle?
             ```
         """
@@ -3705,7 +3705,7 @@ class WlistSparameterCascading(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - WLISt:SPARameter:CASCading:DEEMbed {0|1|OFF|ON}
+            - WLISt:SPARameter:CASCading:DEEMbed {ON|OFF|1|0}
             - WLISt:SPARameter:CASCading:DEEMbed?
             ```
         """
@@ -3800,7 +3800,7 @@ class WlistSparameterBandwidthAuto(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - WLISt:SPARameter:BANDwidth:AUTO {0|1|OFF|ON}
+        - WLISt:SPARameter:BANDwidth:AUTO {ON|OFF|1|0}
         - WLISt:SPARameter:BANDwidth:AUTO?
         ```
     """
@@ -3853,7 +3853,7 @@ class WlistSparameterBandwidth(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - WLISt:SPARameter:BANDwidth:AUTO {0|1|OFF|ON}
+            - WLISt:SPARameter:BANDwidth:AUTO {ON|OFF|1|0}
             - WLISt:SPARameter:BANDwidth:AUTO?
             ```
         """

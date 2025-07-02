@@ -31,6 +31,7 @@ Commands and Queries:
     - HORizontal:FASTframe:SUMFrame {NONe|AVErage|ENVelope}
     - HORizontal:FASTframe:SUMFrame:STATE {ON|OFF|<NR1>}
     - HORizontal:FASTframe:SUMFrame:STATE?
+    - HORizontal:FASTframe:SUMFrame?
     - HORizontal:FASTframe:TIMEStamp:ALL?
     - HORizontal:FASTframe:TIMEStamp:DELTa?
     - HORizontal:FASTframe:TIMEStamp:REFerence?
@@ -49,7 +50,7 @@ Commands and Queries:
     - HORizontal:HISTory:REF:INClude?
     - HORizontal:HISTory:SELected <NR1>
     - HORizontal:HISTory:SELected?
-    - HORizontal:HISTory:STATe {OFF|ON|1|0}
+    - HORizontal:HISTory:STATe {ON|OFF|1|0}
     - HORizontal:HISTory:STATe?
     - HORizontal:HISTory:TIMEStamp:DELTa?
     - HORizontal:HISTory:TIMEStamp:REFerence?
@@ -58,7 +59,7 @@ Commands and Queries:
     - HORizontal:MODe {AUTO|MANual}
     - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:VALue <NR1>
     - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:VALue?
-    - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride {OFF|ON|0|1}
+    - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride {ON|OFF|1|0}
     - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride?
     - HORizontal:MODe:MANual:CONFIGure {HORIZontalscale|RECORDLength}
     - HORizontal:MODe:MANual:CONFIGure?
@@ -76,7 +77,7 @@ Commands and Queries:
     - HORizontal:RECOrdlength?
     - HORizontal:ROLL?
     - HORizontal:SAMPLERate <NR3>
-    - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide {OFF|ON|0|1}
+    - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide {ON|OFF|1|0}
     - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide?
     - HORizontal:SAMPLERate:ANALYZemode:MINimum:VALue {AUTOmatic|<NR3>}
     - HORizontal:SAMPLERate:ANALYZemode:MINimum:VALue?
@@ -163,7 +164,7 @@ class HorizontalSamplerateAnalyzemodeMinimumOverride(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide {OFF|ON|0|1}
+        - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide {ON|OFF|1|0}
         - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide?
         ```
 
@@ -218,7 +219,7 @@ class HorizontalSamplerateAnalyzemodeMinimum(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide {OFF|ON|0|1}
+            - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide {ON|OFF|1|0}
             - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide?
             ```
 
@@ -597,7 +598,7 @@ class HorizontalModeAutomaticFastacqRecordlengthMaximumZoomoverride(SCPICmdWrite
 
     SCPI Syntax:
         ```
-        - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride {OFF|ON|0|1}
+        - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride {ON|OFF|1|0}
         - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride?
         ```
 
@@ -706,7 +707,7 @@ class HorizontalModeAutomaticFastacqRecordlengthMaximum(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride {OFF|ON|0|1}
+            - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride {ON|OFF|1|0}
             - HORizontal:MODe:AUTOmatic:FASTAcq:RECOrdlength:MAXimum:ZOOMOVERride?
             ```
 
@@ -851,7 +852,7 @@ class HorizontalMode(SCPICmdWrite, SCPICmdRead):
         - ``AUTO`` selects the automatic horizontal model. Auto mode automatically adjusts the
           sample rate and record length to provide a high acquisition rate in Fast Acq or signal
           fidelity in analysis. Record length is read only.
-        - ``MANUAL`` selects the manual horizontal model. Manual mode lets you change the sample
+        - ``MANual`` selects the manual horizontal model. Manual mode lets you change the sample
           rate, horizontal scale, and record length. These values interact. For example, when you
           change record length then the horizontal scale also changes.
 
@@ -1194,7 +1195,7 @@ class HorizontalHistoryState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HORizontal:HISTory:STATe {OFF|ON|1|0}
+        - HORizontal:HISTory:STATe {ON|OFF|1|0}
         - HORizontal:HISTory:STATe?
         ```
 
@@ -1559,7 +1560,7 @@ class HorizontalHistory(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HORizontal:HISTory:STATe {OFF|ON|1|0}
+            - HORizontal:HISTory:STATe {ON|OFF|1|0}
             - HORizontal:HISTory:STATe?
             ```
 
@@ -1975,12 +1976,16 @@ class HorizontalFastframeSumframe(SCPICmdWrite, SCPICmdRead):
           always the number of frames to acquire.
 
     Usage:
+        - Using the ``.query()`` method will send the ``HORizontal:FASTframe:SUMFrame?`` query.
+        - Using the ``.verify(value)`` method will send the ``HORizontal:FASTframe:SUMFrame?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``HORizontal:FASTframe:SUMFrame value``
           command.
 
     SCPI Syntax:
         ```
         - HORizontal:FASTframe:SUMFrame {NONe|AVErage|ENVelope}
+        - HORizontal:FASTframe:SUMFrame?
         ```
 
     Info:
@@ -2514,12 +2519,16 @@ class HorizontalFastframe(SCPICmdRead):
               value is always the number of frames to acquire.
 
         Usage:
+            - Using the ``.query()`` method will send the ``HORizontal:FASTframe:SUMFrame?`` query.
+            - Using the ``.verify(value)`` method will send the ``HORizontal:FASTframe:SUMFrame?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``HORizontal:FASTframe:SUMFrame value`` command.
 
         SCPI Syntax:
             ```
             - HORizontal:FASTframe:SUMFrame {NONe|AVErage|ENVelope}
+            - HORizontal:FASTframe:SUMFrame?
             ```
 
         Info:
@@ -2603,7 +2612,7 @@ class HorizontalDelayTime(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NR3`` is the delay in seconds.
+        - ``<NR3>`` is the delay in seconds.
     """
 
 
@@ -2704,7 +2713,7 @@ class HorizontalDelay(SCPICmdRead):
             ```
 
         Info:
-            - ``NR3`` is the delay in seconds.
+            - ``<NR3>`` is the delay in seconds.
         """
         return self._time
 
@@ -2917,7 +2926,7 @@ class Horizontal(SCPICmdRead):
             - ``AUTO`` selects the automatic horizontal model. Auto mode automatically adjusts the
               sample rate and record length to provide a high acquisition rate in Fast Acq or signal
               fidelity in analysis. Record length is read only.
-            - ``MANUAL`` selects the manual horizontal model. Manual mode lets you change the sample
+            - ``MANual`` selects the manual horizontal model. Manual mode lets you change the sample
               rate, horizontal scale, and record length. These values interact. For example, when
               you change record length then the horizontal scale also changes.
 

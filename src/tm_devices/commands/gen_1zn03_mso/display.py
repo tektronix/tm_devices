@@ -227,7 +227,7 @@ Commands and Queries:
     - DISplay:SELect:WAVEView1:SOUrce?
     - DISplay:VARpersist <NR3>
     - DISplay:VARpersist?
-    - DISplay:WAVEView1:BUS:B<x>:STATE {OFF|ON|0|1}
+    - DISplay:WAVEView1:BUS:B<x>:STATE {ON|OFF|1|0}
     - DISplay:WAVEView1:BUS:B<x>:STATE?
     - DISplay:WAVEView1:BUS:B<x>:VERTical:POSition <NR3>
     - DISplay:WAVEView1:BUS:B<x>:VERTical:POSition?
@@ -3532,7 +3532,7 @@ class DisplayWaveview1CursorCursor1Function(SCPICmdWrite, SCPICmdRead):
         - ``SCREEN`` specifies both horizontal and vertical bar cursors, which measure in horizontal
           and vertical units specified by the Cursor 1 and Cursor 2 Sources. Use these cursors to
           measure anywhere in the waveform display area.
-        - ``WAVEform`` specifies paired or split cursors in YT display format for measuring waveform
+        - ``WAVEFORM`` specifies paired or split cursors in YT display format for measuring waveform
           amplitude and time. In XY and XYZ format, these cursors indicate the amplitude positions
           of an XY pair (Ch1 vs Ch2 voltage, where Ch1 is the X axis and Ch2 is the Y axis) relative
           to the trigger.
@@ -3810,7 +3810,7 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
             - ``SCREEN`` specifies both horizontal and vertical bar cursors, which measure in
               horizontal and vertical units specified by the Cursor 1 and Cursor 2 Sources. Use
               these cursors to measure anywhere in the waveform display area.
-            - ``WAVEform`` specifies paired or split cursors in YT display format for measuring
+            - ``WAVEFORM`` specifies paired or split cursors in YT display format for measuring
               waveform amplitude and time. In XY and XYZ format, these cursors indicate the
               amplitude positions of an XY pair (Ch1 vs Ch2 voltage, where Ch1 is the X axis and Ch2
               is the Y axis) relative to the trigger.
@@ -4429,7 +4429,7 @@ class DisplayWaveview1BusBItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:WAVEView1:BUS:B<x>:STATE {OFF|ON|0|1}
+        - DISplay:WAVEView1:BUS:B<x>:STATE {ON|OFF|1|0}
         - DISplay:WAVEView1:BUS:B<x>:STATE?
         ```
 
@@ -4477,7 +4477,7 @@ class DisplayWaveview1BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:WAVEView1:BUS:B<x>:STATE {OFF|ON|0|1}
+            - DISplay:WAVEView1:BUS:B<x>:STATE {ON|OFF|1|0}
             - DISplay:WAVEView1:BUS:B<x>:STATE?
             ```
 
@@ -7652,9 +7652,7 @@ class DisplayReffftviewItemAutoscale(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``REFFFTView<x>`` is the plot number.
-        - ``<NR1>`` = 0 disables auto-scale on the specified reffftview; any other value turns this
-          feature on.
+        - ``REFFFTView<x>`` is the Reference FFT plot number.
         - ``OFF`` disables auto-scale on the specified reffftview.
         - ``0`` disables auto-scale on the specified reffftview.
         - ``ON`` enables the specified channel on the specified Waveform View.
@@ -7671,7 +7669,7 @@ class DisplayReffftviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
           raise an AssertionError if the returned value does not match ``value``.
 
     Info:
-        - ``REFFFTView<x>`` is the plot number.
+        - ``REFFFTView<x>`` is the Reference FFT plot number.
 
     Properties:
         - ``.autoscale``: The ``DISplay:REFFFTView<x>:AUTOScale`` command.
@@ -7713,9 +7711,7 @@ class DisplayReffftviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``REFFFTView<x>`` is the plot number.
-            - ``<NR1>`` = 0 disables auto-scale on the specified reffftview; any other value turns
-              this feature on.
+            - ``REFFFTView<x>`` is the Reference FFT plot number.
             - ``OFF`` disables auto-scale on the specified reffftview.
             - ``0`` disables auto-scale on the specified reffftview.
             - ``ON`` enables the specified channel on the specified Waveform View.
@@ -10230,6 +10226,8 @@ class DisplayMathItemNormalcolor(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``Math<x>`` specifies the math waveform for which you want to change the waveform color,
+          where <x> is the math waveform number.
         - ``COLOR<y>`` specifies the color to assign to the specified waveform, where <y> = 0 to 47.
     """
 
@@ -10257,6 +10255,8 @@ class DisplayMathItemInvertcolor(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``Math<x>`` specifies the math waveform for which you want to change the waveform color,
+          where <x> is the math waveform number.
         - ``COLOR<y>`` specifies the color to assign to the specified waveform, where <y> = 0 to 47.
     """
 
@@ -10268,6 +10268,10 @@ class DisplayMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - Using the ``.query()`` method will send the ``DISplay:Math<x>?`` query.
         - Using the ``.verify(value)`` method will send the ``DISplay:Math<x>?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``Math<x>`` specifies the math waveform for which you want to change the waveform color,
+          where <x> is the math waveform number.
 
     Properties:
         - ``.invertcolor``: The ``DISplay:Math<x>:INVERTColor`` command.
@@ -10303,6 +10307,8 @@ class DisplayMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
+            - ``Math<x>`` specifies the math waveform for which you want to change the waveform
+              color, where <x> is the math waveform number.
             - ``COLOR<y>`` specifies the color to assign to the specified waveform, where <y> = 0 to
               47.
         """
@@ -10332,6 +10338,8 @@ class DisplayMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
+            - ``Math<x>`` specifies the math waveform for which you want to change the waveform
+              color, where <x> is the math waveform number.
             - ``COLOR<y>`` specifies the color to assign to the specified waveform, where <y> = 0 to
               47.
         """
@@ -13809,7 +13817,7 @@ class Display(SCPICmdRead):
               raise an AssertionError if the returned value does not match ``value``.
 
         Info:
-            - ``REFFFTView<x>`` is the plot number.
+            - ``REFFFTView<x>`` is the Reference FFT plot number.
 
         Sub-properties:
             - ``.autoscale``: The ``DISplay:REFFFTView<x>:AUTOScale`` command.
@@ -13962,6 +13970,10 @@ class Display(SCPICmdRead):
             - Using the ``.query()`` method will send the ``DISplay:Math<x>?`` query.
             - Using the ``.verify(value)`` method will send the ``DISplay:Math<x>?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``Math<x>`` specifies the math waveform for which you want to change the waveform
+              color, where <x> is the math waveform number.
 
         Sub-properties:
             - ``.invertcolor``: The ``DISplay:Math<x>:INVERTColor`` command.

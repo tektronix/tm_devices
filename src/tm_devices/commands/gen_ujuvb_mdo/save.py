@@ -16,7 +16,7 @@ Commands and Queries:
     - SAVe:IMAGe <file path>
     - SAVe:IMAGe:FILEFormat {PNG|BMP|TIFf}
     - SAVe:IMAGe:FILEFormat?
-    - SAVe:IMAGe:INKSaver {OFF|ON|0|1}
+    - SAVe:IMAGe:INKSaver {ON|OFF|1|0}
     - SAVe:IMAGe:INKSaver?
     - SAVe:IMAGe:LAYout {LANdscape|PORTRait}
     - SAVe:IMAGe:LAYout?
@@ -378,7 +378,7 @@ class SaveImageInksaver(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SAVe:IMAGe:INKSaver {OFF|ON|0|1}
+        - SAVe:IMAGe:INKSaver {ON|OFF|1|0}
         - SAVe:IMAGe:INKSaver?
         ```
 
@@ -492,7 +492,7 @@ class SaveImage(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SAVe:IMAGe:INKSaver {OFF|ON|0|1}
+            - SAVe:IMAGe:INKSaver {ON|OFF|1|0}
             - SAVe:IMAGe:INKSaver?
             ```
 

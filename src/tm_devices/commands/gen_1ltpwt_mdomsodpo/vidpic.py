@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - VIDPic:AUTOContrast {0|1|OFF|ON}
+    - VIDPic:AUTOContrast {ON|OFF|1|0}
     - VIDPic:AUTOContrast:UPDATERate <NR1>
     - VIDPic:AUTOContrast:UPDATERate?
     - VIDPic:AUTOContrast?
@@ -17,7 +17,7 @@ Commands and Queries:
     - VIDPic:BRIGHTNess?
     - VIDPic:CONTRast <NR1>
     - VIDPic:CONTRast?
-    - VIDPic:DISplay {0|1|OFF|ON}
+    - VIDPic:DISplay {ON|OFF|1|0}
     - VIDPic:DISplay?
     - VIDPic:FRAMETYPe {ODD|EVEN|INTERLAced}
     - VIDPic:FRAMETYPe?
@@ -506,7 +506,7 @@ class VidpicDisplay(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - VIDPic:DISplay {0|1|OFF|ON}
+        - VIDPic:DISplay {ON|OFF|1|0}
         - VIDPic:DISplay?
         ```
 
@@ -593,7 +593,7 @@ class VidpicAutocontrast(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - VIDPic:AUTOContrast {0|1|OFF|ON}
+        - VIDPic:AUTOContrast {ON|OFF|1|0}
         - VIDPic:AUTOContrast?
         ```
 
@@ -681,7 +681,7 @@ class Vidpic(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - VIDPic:AUTOContrast {0|1|OFF|ON}
+            - VIDPic:AUTOContrast {ON|OFF|1|0}
             - VIDPic:AUTOContrast?
             ```
 
@@ -751,7 +751,7 @@ class Vidpic(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - VIDPic:DISplay {0|1|OFF|ON}
+            - VIDPic:DISplay {ON|OFF|1|0}
             - VIDPic:DISplay?
             ```
 

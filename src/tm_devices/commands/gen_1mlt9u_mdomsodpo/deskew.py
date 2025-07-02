@@ -10,7 +10,7 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - DESkew {SETALLtorec}
-    - DESkew:DISPlay {OFF|ON|0|1}
+    - DESkew:DISPlay {ON|OFF|1|0}
     - DESkew:DISPlay?
     ```
 """
@@ -37,7 +37,7 @@ class DeskewDisplay(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DESkew:DISPlay {OFF|ON|0|1}
+        - DESkew:DISPlay {ON|OFF|1|0}
         - DESkew:DISPlay?
         ```
 
@@ -88,7 +88,7 @@ class Deskew(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DESkew:DISPlay {OFF|ON|0|1}
+            - DESkew:DISPlay {ON|OFF|1|0}
             - DESkew:DISPlay?
             ```
 
