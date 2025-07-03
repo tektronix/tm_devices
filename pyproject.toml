@@ -50,6 +50,7 @@ classifiers = [
   "Intended Audience :: Developers",
   "Intended Audience :: Science/Research",
   "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3.9",  # manually add this classifier since Poetry won't add it automatically due to the mimimum Python version being 3.9.2  # TODO: Drop Python 3.9: Remove this classifier
   "Topic :: Scientific/Engineering :: Interface Engine/Protocol Translator",
   "Topic :: Scientific/Engineering",
   "Topic :: System :: Hardware :: Hardware Drivers",
