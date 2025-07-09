@@ -10,7 +10,7 @@ Please report an issue if one is found.
 Commands and Queries:
     ```
     - AUTOSet {EXECute|UNDo}
-    - AUTOSet:ENAble {OFF|ON|0|1}
+    - AUTOSet:ENAble {ON|OFF|1|0}
     - AUTOSet:ENAble?
     ```
 """
@@ -27,10 +27,9 @@ class AutosetEnable(SCPICmdWrite, SCPICmdRead):
     """The ``AUTOSet:ENAble`` command.
 
     Description:
-        - Enables or disables the autoset feature. This is useful for classroom purposes where the
-          instructor wants the students to achieve the desired instrument settings without the
-          benefit of the autoset feature. This setting is not saved in setup files or SET? or
-          ``*LRN?`` queries. The default state is 1 (autoset enabled).
+        - This command sets or queries the Autoset enable/disable feature. This is useful for
+          classroom purposes where the instructor wants the students to achieve the desired
+          instrument settings without the benefit of the Autoset feature.
 
     Usage:
         - Using the ``.query()`` method will send the ``AUTOSet:ENAble?`` query.
@@ -40,13 +39,13 @@ class AutosetEnable(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - AUTOSet:ENAble {OFF|ON|0|1}
+        - AUTOSet:ENAble {ON|OFF|1|0}
         - AUTOSet:ENAble?
         ```
 
     Info:
-        - ``OFF or 0`` disables autoset.
-        - ``ON or 1`` enables autoset.
+        - ``ON`` or 1 enables Autoset.
+        - ``OFF`` or 0 disables Autoset.
     """
 
 
@@ -83,10 +82,9 @@ class Autoset(SCPICmdWrite, SCPICmdRead):
         """Return the ``AUTOSet:ENAble`` command.
 
         Description:
-            - Enables or disables the autoset feature. This is useful for classroom purposes where
-              the instructor wants the students to achieve the desired instrument settings without
-              the benefit of the autoset feature. This setting is not saved in setup files or SET?
-              or ``*LRN?`` queries. The default state is 1 (autoset enabled).
+            - This command sets or queries the Autoset enable/disable feature. This is useful for
+              classroom purposes where the instructor wants the students to achieve the desired
+              instrument settings without the benefit of the Autoset feature.
 
         Usage:
             - Using the ``.query()`` method will send the ``AUTOSet:ENAble?`` query.
@@ -96,12 +94,12 @@ class Autoset(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - AUTOSet:ENAble {OFF|ON|0|1}
+            - AUTOSet:ENAble {ON|OFF|1|0}
             - AUTOSet:ENAble?
             ```
 
         Info:
-            - ``OFF or 0`` disables autoset.
-            - ``ON or 1`` enables autoset.
+            - ``ON`` or 1 enables Autoset.
+            - ``OFF`` or 0 disables Autoset.
         """
         return self._enable

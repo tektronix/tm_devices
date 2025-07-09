@@ -157,7 +157,7 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:LOGICPattern:REF<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:POLarity {POSitive|NEGative|EITher}
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:POLarity?
-    - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge {OFF|ON|0|1}
+    - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge {ON|OFF|1|0}
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge?
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:WHEn {TRUe|FALSe|MOREThan|LESSThan|EQual|UNEQual}
     - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:WHEn?
@@ -2676,7 +2676,7 @@ class SearchSearchItemTriggerALogicUseclockedge(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge {OFF|ON|0|1}
+        - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge {ON|OFF|1|0}
         - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge?
         ```
 
@@ -3767,7 +3767,7 @@ class SearchSearchItemTriggerALogic(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge {OFF|ON|0|1}
+            - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge {ON|OFF|1|0}
             - SEARCH:SEARCH<x>:TRIGger:A:LOGIc:USEClockedge?
             ```
 

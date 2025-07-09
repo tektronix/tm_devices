@@ -29,12 +29,12 @@ Commands and Queries:
     - CPLayback:COMPile
     - CPLayback:COMPile:CFRequency <carrier_frequency>
     - CPLayback:COMPile:CFRequency?
-    - CPLayback:COMPile:LSEQuence {OFF|ON|0|1}
+    - CPLayback:COMPile:LSEQuence {ON|OFF|1|0}
     - CPLayback:COMPile:LSEQuence?
     - CPLayback:COMPile:NORMalize {NONE|FSCale|ZREFerence}
     - CPLayback:COMPile:NORMalize?
     - CPLayback:COMPile:SRATe <NRf>
-    - CPLayback:COMPile:SRATe:AUTO {0|1|OFF|ON}
+    - CPLayback:COMPile:SRATe:AUTO {ON|OFF|1|0}
     - CPLayback:COMPile:SRATe:AUTO?
     - CPLayback:COMPile:SRATe?
     ```
@@ -64,7 +64,7 @@ class CplaybackCompileSrateAuto(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - CPLayback:COMPile:SRATe:AUTO {0|1|OFF|ON}
+        - CPLayback:COMPile:SRATe:AUTO {ON|OFF|1|0}
         - CPLayback:COMPile:SRATe:AUTO?
         ```
     """
@@ -117,7 +117,7 @@ class CplaybackCompileSrate(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CPLayback:COMPile:SRATe:AUTO {0|1|OFF|ON}
+            - CPLayback:COMPile:SRATe:AUTO {ON|OFF|1|0}
             - CPLayback:COMPile:SRATe:AUTO?
             ```
         """
@@ -161,7 +161,7 @@ class CplaybackCompileLsequence(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - CPLayback:COMPile:LSEQuence {OFF|ON|0|1}
+        - CPLayback:COMPile:LSEQuence {ON|OFF|1|0}
         - CPLayback:COMPile:LSEQuence?
         ```
     """
@@ -268,7 +268,7 @@ class CplaybackCompile(SCPICmdWriteNoArguments, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CPLayback:COMPile:LSEQuence {OFF|ON|0|1}
+            - CPLayback:COMPile:LSEQuence {ON|OFF|1|0}
             - CPLayback:COMPile:LSEQuence?
             ```
         """

@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - INSTrument:COUPle:SOURce {0|1|OFF|ON}
+    - INSTrument:COUPle:SOURce {ON|OFF|1|0}
     - INSTrument:COUPle:SOURce?
     - INSTrument:MODE {AWG|FGEN}
     - INSTrument:MODE?
@@ -68,7 +68,7 @@ class InstrumentCoupleSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - INSTrument:COUPle:SOURce {0|1|OFF|ON}
+        - INSTrument:COUPle:SOURce {ON|OFF|1|0}
         - INSTrument:COUPle:SOURce?
         ```
 
@@ -112,7 +112,7 @@ class InstrumentCouple(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - INSTrument:COUPle:SOURce {0|1|OFF|ON}
+            - INSTrument:COUPle:SOURce {ON|OFF|1|0}
             - INSTrument:COUPle:SOURce?
             ```
 

@@ -32,7 +32,7 @@ Commands and Queries:
     - HORizontal:RECOrdlength <NR1>
     - HORizontal:RECOrdlength?
     - HORizontal:SAMPLERate <NR3>
-    - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide {OFF|ON|0|1}
+    - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide {ON|OFF|1|0}
     - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide?
     - HORizontal:SAMPLERate:ANALYZemode:MINimum:VALue {AUTOmatic|<NR3>}
     - HORizontal:SAMPLERate:ANALYZemode:MINimum:VALue?
@@ -119,7 +119,7 @@ class HorizontalSamplerateAnalyzemodeMinimumOverride(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide {OFF|ON|0|1}
+        - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide {ON|OFF|1|0}
         - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide?
         ```
 
@@ -174,7 +174,7 @@ class HorizontalSamplerateAnalyzemodeMinimum(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide {OFF|ON|0|1}
+            - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide {ON|OFF|1|0}
             - HORizontal:SAMPLERate:ANALYZemode:MINimum:OVERRide?
             ```
 

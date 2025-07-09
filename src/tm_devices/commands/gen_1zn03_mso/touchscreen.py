@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - TOUCHSCReen:STATe {0|1|OFF|ON}
+    - TOUCHSCReen:STATe {ON|OFF|1|0}
     - TOUCHSCReen:STATe?
     ```
 """
@@ -39,7 +39,7 @@ class TouchscreenState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TOUCHSCReen:STATe {0|1|OFF|ON}
+        - TOUCHSCReen:STATe {ON|OFF|1|0}
         - TOUCHSCReen:STATe?
         ```
 
@@ -86,7 +86,7 @@ class Touchscreen(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TOUCHSCReen:STATe {0|1|OFF|ON}
+            - TOUCHSCReen:STATe {ON|OFF|1|0}
             - TOUCHSCReen:STATe?
             ```
 

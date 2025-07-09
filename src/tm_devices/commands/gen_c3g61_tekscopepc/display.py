@@ -153,7 +153,7 @@ Commands and Queries:
     - DISplay:REF<x>:INVERTColor?
     - DISplay:REF<x>:NORMALColor COLOR<y>
     - DISplay:REF<x>:NORMALColor?
-    - DISplay:REFFFTView<x>:AUTOScale {OFF|ON|0|1}
+    - DISplay:REFFFTView<x>:AUTOScale {OFF|ON|0|1|<NR1>}
     - DISplay:REFFFTView<x>:AUTOScale?
     - DISplay:REFFFTView<x>:CURSor:ASOUrce?
     - DISplay:REFFFTView<x>:CURSor:BSOUrce?
@@ -182,7 +182,7 @@ Commands and Queries:
     - DISplay:REFFFTView<x>:CURSor:SCREEN:BYPOSition?
     - DISplay:REFFFTView<x>:CURSor:SPLITMODE {SAME|SPLIT}
     - DISplay:REFFFTView<x>:CURSor:SPLITMODE?
-    - DISplay:REFFFTView<x>:CURSor:STATE {OFF|ON|0|1}
+    - DISplay:REFFFTView<x>:CURSor:STATE {ON|OFF|1|0}
     - DISplay:REFFFTView<x>:CURSor:STATE?
     - DISplay:REFFFTView<x>:CURSor:VBArs:APOSition <NR3>
     - DISplay:REFFFTView<x>:CURSor:VBArs:APOSition?
@@ -263,7 +263,7 @@ Commands and Queries:
     - DISplay:SPECView1:VIEWStyle?
     - DISplay:VARpersist <NR3>
     - DISplay:VARpersist?
-    - DISplay:WAVEView1:BUS:B<x>:STATE {OFF|ON|0|1}
+    - DISplay:WAVEView1:BUS:B<x>:STATE {ON|OFF|1|0}
     - DISplay:WAVEView1:BUS:B<x>:STATE?
     - DISplay:WAVEView1:BUS:B<x>:VERTical:POSition <NR3>
     - DISplay:WAVEView1:BUS:B<x>:VERTical:POSition?
@@ -1191,7 +1191,7 @@ class DisplayWaveview1RfPhaseItemVerticalScale(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``1`` is always WAVEView1.
-        - ``RF_PHAse<x>`` specifies the number of the Phase vs. Time Frequency waveform.
+        - ``RF_PHASe<x>`` specifies the number of the Phase vs. Time Frequency waveform.
         - ``<NR3>`` sets the vertical scale, in degrees per division.
     """
 
@@ -1307,7 +1307,7 @@ class DisplayWaveview1RfPhaseItemVertical(SCPICmdRead):
 
         Info:
             - ``1`` is always WAVEView1.
-            - ``RF_PHAse<x>`` specifies the number of the Phase vs. Time Frequency waveform.
+            - ``RF_PHASe<x>`` specifies the number of the Phase vs. Time Frequency waveform.
             - ``<NR3>`` sets the vertical scale, in degrees per division.
         """
         return self._scale
@@ -3058,7 +3058,7 @@ class DisplayWaveview1CursorCursorWaveformAllValues(SCPICmdRead):
 
     Description:
         - This query returns all values (Time, Voltage, Delta) associated with all the active
-          sources in the Waveform View.
+          sources in the Waveform View. 1 is the specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -3100,7 +3100,7 @@ class DisplayWaveview1CursorCursorWaveformAll(SCPICmdRead):
 
         Description:
             - This query returns all values (Time, Voltage, Delta) associated with all the active
-              sources in the Waveform View.
+              sources in the Waveform View. 1 is the specified Waveform View and must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -4259,7 +4259,7 @@ class DisplayWaveview1CursorCursor1Function(SCPICmdWrite, SCPICmdRead):
         - ``SCREEN`` specifies both horizontal and vertical bar cursors, which measure in horizontal
           and vertical units specified by the Cursor 1 and Cursor 2 Sources. Use these cursors to
           measure anywhere in the waveform display area.
-        - ``WAVEform`` specifies paired or split cursors in YT display format for measuring waveform
+        - ``WAVEFORM`` specifies paired or split cursors in YT display format for measuring waveform
           amplitude and time. In XY and XYZ format, these cursors indicate the amplitude positions
           of an XY pair (Ch1 vs Ch2 voltage, where Ch1 is the X axis and Ch2 is the Y axis) relative
           to the trigger.
@@ -4310,8 +4310,9 @@ class DisplayWaveview1CursorCursor1Bsource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>`` specifies an analog channel as source.
-        - ``MATH<x>`` specifies a math channel as source.
+        - ``S<x>_Ch<x>`` specifies the remote scope number and the analog channel as the source.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``Math<x>`` specifies a math waveform as the source.
         - ``BUS<x>`` specifies a bus as source.
         - ``REF<x>`` specifies a reference waveform as the source.
         - ``PLOT<x>`` specifies a plot as the source.
@@ -4341,9 +4342,9 @@ class DisplayWaveview1CursorCursor1Asource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``AUTO`` specifies to use the selected source.
-        - ``CH<x>`` specifies an analog channel as source.
-        - ``MATH<x>`` specifies a math channel as source.
+        - ``AUTO`` automatically specifies the source.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``Math<x>`` specifies a math waveform as the source.
         - ``BUS<x>`` specifies a bus as source.
         - ``REF<x>`` specifies a reference waveform as the source.
         - ``PLOT<x>`` specifies a plot as the source.
@@ -4431,9 +4432,9 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
             ```
 
         Info:
-            - ``AUTO`` specifies to use the selected source.
-            - ``CH<x>`` specifies an analog channel as source.
-            - ``MATH<x>`` specifies a math channel as source.
+            - ``AUTO`` automatically specifies the source.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``Math<x>`` specifies a math waveform as the source.
             - ``BUS<x>`` specifies a bus as source.
             - ``REF<x>`` specifies a reference waveform as the source.
             - ``PLOT<x>`` specifies a plot as the source.
@@ -4464,8 +4465,9 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>`` specifies an analog channel as source.
-            - ``MATH<x>`` specifies a math channel as source.
+            - ``S<x>_Ch<x>`` specifies the remote scope number and the analog channel as the source.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``Math<x>`` specifies a math waveform as the source.
             - ``BUS<x>`` specifies a bus as source.
             - ``REF<x>`` specifies a reference waveform as the source.
             - ``PLOT<x>`` specifies a plot as the source.
@@ -4523,7 +4525,7 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
             - ``SCREEN`` specifies both horizontal and vertical bar cursors, which measure in
               horizontal and vertical units specified by the Cursor 1 and Cursor 2 Sources. Use
               these cursors to measure anywhere in the waveform display area.
-            - ``WAVEform`` specifies paired or split cursors in YT display format for measuring
+            - ``WAVEFORM`` specifies paired or split cursors in YT display format for measuring
               waveform amplitude and time. In XY and XYZ format, these cursors indicate the
               amplitude positions of an XY pair (Ch1 vs Ch2 voltage, where Ch1 is the X axis and Ch2
               is the Y axis) relative to the trigger.
@@ -5427,7 +5429,7 @@ class DisplayWaveview1BusBItemState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:WAVEView1:BUS:B<x>:STATE {OFF|ON|0|1}
+        - DISplay:WAVEView1:BUS:B<x>:STATE {ON|OFF|1|0}
         - DISplay:WAVEView1:BUS:B<x>:STATE?
         ```
 
@@ -5475,7 +5477,7 @@ class DisplayWaveview1BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:WAVEView1:BUS:B<x>:STATE {OFF|ON|0|1}
+            - DISplay:WAVEView1:BUS:B<x>:STATE {ON|OFF|1|0}
             - DISplay:WAVEView1:BUS:B<x>:STATE?
             ```
 
@@ -9031,7 +9033,7 @@ class DisplayReffftviewItemCursorState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:REFFFTView<x>:CURSor:STATE {OFF|ON|0|1}
+        - DISplay:REFFFTView<x>:CURSor:STATE {ON|OFF|1|0}
         - DISplay:REFFFTView<x>:CURSor:STATE?
         ```
 
@@ -10166,7 +10168,7 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:REFFFTView<x>:CURSor:STATE {OFF|ON|0|1}
+            - DISplay:REFFFTView<x>:CURSor:STATE {ON|OFF|1|0}
             - DISplay:REFFFTView<x>:CURSor:STATE?
             ```
 
@@ -10241,7 +10243,7 @@ class DisplayReffftviewItemAutoscale(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - DISplay:REFFFTView<x>:AUTOScale {OFF|ON|0|1}
+        - DISplay:REFFFTView<x>:AUTOScale {OFF|ON|0|1|<NR1>}
         - DISplay:REFFFTView<x>:AUTOScale?
         ```
 
@@ -10300,7 +10302,7 @@ class DisplayReffftviewItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - DISplay:REFFFTView<x>:AUTOScale {OFF|ON|0|1}
+            - DISplay:REFFFTView<x>:AUTOScale {OFF|ON|0|1|<NR1>}
             - DISplay:REFFFTView<x>:AUTOScale?
             ```
 
@@ -12837,6 +12839,8 @@ class DisplayMathItemNormalcolor(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``Math<x>`` specifies the math waveform for which you want to change the waveform color,
+          where <x> is the math waveform number.
         - ``COLOR<y>`` specifies the color to assign to the specified waveform, where <y> = 0 to 47.
     """
 
@@ -12864,6 +12868,8 @@ class DisplayMathItemInvertcolor(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``Math<x>`` specifies the math waveform for which you want to change the waveform color,
+          where <x> is the math waveform number.
         - ``COLOR<y>`` specifies the color to assign to the specified waveform, where <y> = 0 to 47.
     """
 
@@ -12875,6 +12881,10 @@ class DisplayMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - Using the ``.query()`` method will send the ``DISplay:Math<x>?`` query.
         - Using the ``.verify(value)`` method will send the ``DISplay:Math<x>?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``Math<x>`` specifies the math waveform for which you want to change the waveform color,
+          where <x> is the math waveform number.
 
     Properties:
         - ``.invertcolor``: The ``DISplay:Math<x>:INVERTColor`` command.
@@ -12910,6 +12920,8 @@ class DisplayMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
+            - ``Math<x>`` specifies the math waveform for which you want to change the waveform
+              color, where <x> is the math waveform number.
             - ``COLOR<y>`` specifies the color to assign to the specified waveform, where <y> = 0 to
               47.
         """
@@ -12939,6 +12951,8 @@ class DisplayMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
+            - ``Math<x>`` specifies the math waveform for which you want to change the waveform
+              color, where <x> is the math waveform number.
             - ``COLOR<y>`` specifies the color to assign to the specified waveform, where <y> = 0 to
               47.
         """
@@ -16610,6 +16624,10 @@ class Display(SCPICmdRead):
             - Using the ``.query()`` method will send the ``DISplay:Math<x>?`` query.
             - Using the ``.verify(value)`` method will send the ``DISplay:Math<x>?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``Math<x>`` specifies the math waveform for which you want to change the waveform
+              color, where <x> is the math waveform number.
 
         Sub-properties:
             - ``.invertcolor``: The ``DISplay:Math<x>:INVERTColor`` command.

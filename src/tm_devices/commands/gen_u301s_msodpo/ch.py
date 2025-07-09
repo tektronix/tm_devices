@@ -173,8 +173,8 @@ class ChannelProbeUnits(SCPICmdRead):
     """The ``CH<x>:PRObe:UNIts`` command.
 
     Description:
-        - This query-only command returns a string describing the units of measure for the probe
-          attached to the specified channel. The channel is specified by x.
+        - Returns a string describing the units of measure for the probe attached to channel <x>,
+          where x is the channel number.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:UNIts?`` query.
@@ -218,8 +218,8 @@ class ChannelProbeResistance(SCPICmdRead):
     """The ``CH<x>:PRObe:RESistance`` command.
 
     Description:
-        - This query-only command returns the resistance of the probe that is attached to the
-          specified channel. The channel is specified by x.
+        - Returns the resistance factor of the probe attached to channel <x>, where x is the channel
+          number.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:RESistance?`` query.
@@ -257,8 +257,8 @@ class ChannelProbeIdSernumber(SCPICmdRead):
     """The ``CH<x>:PRObe:ID:SERnumber`` command.
 
     Description:
-        - This query-only command returns the serial number of the probe that is attached to the
-          specified channel. The channel is specified by x.
+        - Returns the serial number of the probe attached to channel <x>, where x is the channel
+          number.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:ID:SERnumber?`` query.
@@ -276,8 +276,8 @@ class ChannelProbeId(SCPICmdRead):
     """The ``CH<x>:PRObe:ID`` command.
 
     Description:
-        - This query-only command returns the type and serial number of the probe that is attached
-          to the specified channel. The channel is specified by x.
+        - Returns the type and serial number of the probe attached to channel <x>, where x is the
+          channel number.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:ID?`` query.
@@ -304,8 +304,8 @@ class ChannelProbeId(SCPICmdRead):
         """Return the ``CH<x>:PRObe:ID:SERnumber`` command.
 
         Description:
-            - This query-only command returns the serial number of the probe that is attached to the
-              specified channel. The channel is specified by x.
+            - Returns the serial number of the probe attached to channel <x>, where x is the channel
+              number.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:ID:SERnumber?`` query.
@@ -371,10 +371,8 @@ class ChannelProbeForcedrange(SCPICmdWrite, SCPICmdRead):
     """The ``CH<x>:PRObe:FORCEDRange`` command.
 
     Description:
-        - This command sets the attached TekVPI probe to the specified range, or it queries the
-          range of the probe attached to the specified channel. If the <NR3> argument does not match
-          one of the available ranges, the closest range will be selected. The channel is specified
-          by x.
+        - This command specifies the range of a TekVPI probe attached to the channel specified by
+          <x>, where x is the channel number.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:FORCEDRange?`` query.
@@ -391,7 +389,7 @@ class ChannelProbeForcedrange(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` is the channel number.
-        - ``<NR3>`` specifies the probe dynamic range.
+        - ``<NR3>`` is a floating point number that specifies the range, which is probe specific.
     """
 
 
@@ -492,8 +490,7 @@ class ChannelProbeAutozero(SCPICmdWrite):
 
     Description:
         - This command executes the attached probe's Auto Zero function, for probes that support
-          this feature. See your probe documentation for more details. The channel is specified by
-          x.
+          this feature. See your probe documentation for more details.
 
     Usage:
         - Using the ``.write(value)`` method will send the ``CH<x>:PRObe:AUTOZero value`` command.
@@ -514,8 +511,8 @@ class ChannelProbe(SCPICmdRead):
     """The ``CH<x>:PRObe`` command.
 
     Description:
-        - This query-only command returns all information concerning the probe that is attached to
-          the specified channel. The channel is specified by x.
+        - Returns the gain factor of the probe attached to channel <x>, where x is the channel
+          number.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe?`` query.
@@ -557,8 +554,7 @@ class ChannelProbe(SCPICmdRead):
 
         Description:
             - This command executes the attached probe's Auto Zero function, for probes that support
-              this feature. See your probe documentation for more details. The channel is specified
-              by x.
+              this feature. See your probe documentation for more details.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``CH<x>:PRObe:AUTOZero value``
@@ -633,10 +629,8 @@ class ChannelProbe(SCPICmdRead):
         """Return the ``CH<x>:PRObe:FORCEDRange`` command.
 
         Description:
-            - This command sets the attached TekVPI probe to the specified range, or it queries the
-              range of the probe attached to the specified channel. If the <NR3> argument does not
-              match one of the available ranges, the closest range will be selected. The channel is
-              specified by x.
+            - This command specifies the range of a TekVPI probe attached to the channel specified
+              by <x>, where x is the channel number.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:FORCEDRange?`` query.
@@ -653,7 +647,8 @@ class ChannelProbe(SCPICmdRead):
 
         Info:
             - ``CH<x>`` is the channel number.
-            - ``<NR3>`` specifies the probe dynamic range.
+            - ``<NR3>`` is a floating point number that specifies the range, which is probe
+              specific.
         """
         return self._forcedrange
 
@@ -689,8 +684,8 @@ class ChannelProbe(SCPICmdRead):
         """Return the ``CH<x>:PRObe:ID`` command.
 
         Description:
-            - This query-only command returns the type and serial number of the probe that is
-              attached to the specified channel. The channel is specified by x.
+            - Returns the type and serial number of the probe attached to channel <x>, where x is
+              the channel number.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:ID?`` query.
@@ -713,8 +708,8 @@ class ChannelProbe(SCPICmdRead):
         """Return the ``CH<x>:PRObe:RESistance`` command.
 
         Description:
-            - This query-only command returns the resistance of the probe that is attached to the
-              specified channel. The channel is specified by x.
+            - Returns the resistance factor of the probe attached to channel <x>, where x is the
+              channel number.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:RESistance?`` query.
@@ -760,8 +755,8 @@ class ChannelProbe(SCPICmdRead):
         """Return the ``CH<x>:PRObe:UNIts`` command.
 
         Description:
-            - This query-only command returns a string describing the units of measure for the probe
-              attached to the specified channel. The channel is specified by x.
+            - Returns a string describing the units of measure for the probe attached to channel
+              <x>, where x is the channel number.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:UNIts?`` query.
@@ -1257,8 +1252,8 @@ class Channel(ValidatedChannel, SCPICmdRead):
         """Return the ``CH<x>:PRObe`` command.
 
         Description:
-            - This query-only command returns all information concerning the probe that is attached
-              to the specified channel. The channel is specified by x.
+            - Returns the gain factor of the probe attached to channel <x>, where x is the channel
+              number.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe?`` query.

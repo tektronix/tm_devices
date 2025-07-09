@@ -11,9 +11,9 @@ Commands and Queries:
     ```
     - SV:CH<x>:SELect:SPECtrogram {ON|OFF}
     - SV:CH<x>:SELect:SPECtrogram?
-    - SV:LOCKCenter {ON|1|OFF|0}
+    - SV:LOCKCenter {ON|OFF|1|0}
     - SV:LOCKCenter?
-    - SV:LOCKSpectrum {ON|1|OFF|0}
+    - SV:LOCKSpectrum {ON|OFF|1|0}
     - SV:LOCKSpectrum?
     - SV:MARKER:PEAK:EXCURsion <NR3>
     - SV:MARKER:PEAK:EXCURsion?
@@ -48,17 +48,17 @@ Commands and Queries:
     - SV:S<x>_CH<x>:RF_PHASe:WRAP:STATE?
     - SV:S<x>_CH<x>:SELTrace {NORMal|MAXHold|MINHold|AVErage}
     - SV:S<x>_CH<x>:SELTrace?
-    - SV:S<x>_CH<x>:SELect:RF_AVErage {ON|1|OFF|0}
+    - SV:S<x>_CH<x>:SELect:RF_AVErage {ON|OFF|1|0}
     - SV:S<x>_CH<x>:SELect:RF_AVErage?
     - SV:S<x>_CH<x>:SELect:RF_FREQuency {ON|OFF}
     - SV:S<x>_CH<x>:SELect:RF_FREQuency?
     - SV:S<x>_CH<x>:SELect:RF_MAGnitude {ON|OFF}
     - SV:S<x>_CH<x>:SELect:RF_MAGnitude?
-    - SV:S<x>_CH<x>:SELect:RF_MAXHold {ON|1|OFF|0}
+    - SV:S<x>_CH<x>:SELect:RF_MAXHold {ON|OFF|1|0}
     - SV:S<x>_CH<x>:SELect:RF_MAXHold?
-    - SV:S<x>_CH<x>:SELect:RF_MINHold {ON|1|OFF|0}
+    - SV:S<x>_CH<x>:SELect:RF_MINHold {ON|OFF|1|0}
     - SV:S<x>_CH<x>:SELect:RF_MINHold?
-    - SV:S<x>_CH<x>:SELect:RF_NORMal {ON|1|OFF|0}
+    - SV:S<x>_CH<x>:SELect:RF_NORMal {ON|OFF|1|0}
     - SV:S<x>_CH<x>:SELect:RF_NORMal?
     - SV:S<x>_CH<x>:SELect:RF_PHASe {ON|OFF}
     - SV:S<x>_CH<x>:SELect:RF_PHASe?
@@ -74,9 +74,9 @@ Commands and Queries:
     - SV:SPECtrogram:CSCale:MAX?
     - SV:SPECtrogram:CSCale:MIN <NR3>
     - SV:SPECtrogram:CSCale:MIN?
-    - SV:SPECtrogram:CURSor:A {1|0|ON|OFF}
+    - SV:SPECtrogram:CURSor:A {ON|OFF|1|0}
     - SV:SPECtrogram:CURSor:A?
-    - SV:SPECtrogram:CURSor:B {1|0|ON|OFF}
+    - SV:SPECtrogram:CURSor:B {ON|OFF|1|0}
     - SV:SPECtrogram:CURSor:B?
     ```
 """
@@ -112,12 +112,12 @@ class SvSpectrogramCursorB(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SV:SPECtrogram:CURSor:B {1|0|ON|OFF}
+        - SV:SPECtrogram:CURSor:B {ON|OFF|1|0}
         - SV:SPECtrogram:CURSor:B?
         ```
 
     Info:
-        - ``1`` on the spectrum trace for cursor B position.
+        - ``1`` turns on the spectrum trace for cursor B position.
         - ``0`` turns off the spectrum trace for cursor B position. Off is the default.
         - ``ON`` turns on the spectrum trace for cursor B position.
         - ``OFF`` turns off the spectrum trace for cursor B position. Off is the default.
@@ -128,7 +128,7 @@ class SvSpectrogramCursorA(SCPICmdWrite, SCPICmdRead):
     """The ``SV:SPECtrogram:CURSor:A`` command.
 
     Description:
-        - This command sets or Queries whether the spectrum trace at cursor A position is selected
+        - This command sets or queries whether the spectrum trace at cursor A position is selected
           or not.
 
     Usage:
@@ -140,7 +140,7 @@ class SvSpectrogramCursorA(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SV:SPECtrogram:CURSor:A {1|0|ON|OFF}
+        - SV:SPECtrogram:CURSor:A {ON|OFF|1|0}
         - SV:SPECtrogram:CURSor:A?
         ```
 
@@ -175,7 +175,7 @@ class SvSpectrogramCursor(SCPICmdRead):
         """Return the ``SV:SPECtrogram:CURSor:A`` command.
 
         Description:
-            - This command sets or Queries whether the spectrum trace at cursor A position is
+            - This command sets or queries whether the spectrum trace at cursor A position is
               selected or not.
 
         Usage:
@@ -187,7 +187,7 @@ class SvSpectrogramCursor(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SV:SPECtrogram:CURSor:A {1|0|ON|OFF}
+            - SV:SPECtrogram:CURSor:A {ON|OFF|1|0}
             - SV:SPECtrogram:CURSor:A?
             ```
 
@@ -216,12 +216,12 @@ class SvSpectrogramCursor(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SV:SPECtrogram:CURSor:B {1|0|ON|OFF}
+            - SV:SPECtrogram:CURSor:B {ON|OFF|1|0}
             - SV:SPECtrogram:CURSor:B?
             ```
 
         Info:
-            - ``1`` on the spectrum trace for cursor B position.
+            - ``1`` turns on the spectrum trace for cursor B position.
             - ``0`` turns off the spectrum trace for cursor B position. Off is the default.
             - ``ON`` turns on the spectrum trace for cursor B position.
             - ``OFF`` turns off the spectrum trace for cursor B position. Off is the default.
@@ -233,9 +233,9 @@ class SvSpectrogramCscaleMin(SCPICmdWrite, SCPICmdRead):
     """The ``SV:SPECtrogram:CSCale:MIN`` command.
 
     Description:
-        - This command sets or queries the minimum color scale value. Minimum must be < Maximum.
-          Thus, if the user is adjusting Minimum up to the point where it would be the same as
-          Minimum, then Maximum begins incrementing as needed to stay 1 dB above minimum.
+        - This command sets or queries the minimum color scale value. Minimum must be < Maximum. If
+          the user is adjusting Minimum up to the point where it would be the same as Minimum, then
+          Maximum begins incrementing as needed to stay 1 dB above minimum.
 
     Usage:
         - Using the ``.query()`` method will send the ``SV:SPECtrogram:CSCale:MIN?`` query.
@@ -251,8 +251,8 @@ class SvSpectrogramCscaleMin(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` sets the minimum color scale value. The default value is -100.0 and the valid
-          range is -170.0 to 99.0.
+        - ``<NR3>`` sets the maximum color scale value. The default value is 0.0 and the valid range
+          is -169.0 to 100.0.
     """
 
 
@@ -260,9 +260,9 @@ class SvSpectrogramCscaleMax(SCPICmdWrite, SCPICmdRead):
     """The ``SV:SPECtrogram:CSCale:MAX`` command.
 
     Description:
-        - This command sets or queries the maximum color scale value. Maximum must be > Minimum.
-          Thus, if the user is adjusting Maximum down to the point where it would be the same as
-          Minimum, then Minimum begins decrementing as needed to stay 1 dB below Maximum.
+        - This command sets or queries the maximum color scale value. Maximum must be > Minimum. If
+          the user is adjusting Maximum down to the point where it would be the same as Minimum,
+          then Minimum begins decrementing as needed to stay 1 dB below Maximum.
 
     Usage:
         - Using the ``.query()`` method will send the ``SV:SPECtrogram:CSCale:MAX?`` query.
@@ -307,7 +307,7 @@ class SvSpectrogramCscale(SCPICmdRead):
 
         Description:
             - This command sets or queries the maximum color scale value. Maximum must be > Minimum.
-              Thus, if the user is adjusting Maximum down to the point where it would be the same as
+              If the user is adjusting Maximum down to the point where it would be the same as
               Minimum, then Minimum begins decrementing as needed to stay 1 dB below Maximum.
 
         Usage:
@@ -335,7 +335,7 @@ class SvSpectrogramCscale(SCPICmdRead):
 
         Description:
             - This command sets or queries the minimum color scale value. Minimum must be < Maximum.
-              Thus, if the user is adjusting Minimum up to the point where it would be the same as
+              If the user is adjusting Minimum up to the point where it would be the same as
               Minimum, then Maximum begins incrementing as needed to stay 1 dB above minimum.
 
         Usage:
@@ -352,8 +352,8 @@ class SvSpectrogramCscale(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` sets the minimum color scale value. The default value is -100.0 and the
-              valid range is -170.0 to 99.0.
+            - ``<NR3>`` sets the maximum color scale value. The default value is 0.0 and the valid
+              range is -169.0 to 100.0.
         """
         return self._min
 
@@ -652,7 +652,7 @@ class SvSItemChannelSelectRfNormal(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SV:S<x>_CH<x>:SELect:RF_NORMal {ON|1|OFF|0}
+        - SV:S<x>_CH<x>:SELect:RF_NORMal {ON|OFF|1|0}
         - SV:S<x>_CH<x>:SELect:RF_NORMal?
         ```
 
@@ -681,7 +681,7 @@ class SvSItemChannelSelectRfMinhold(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SV:S<x>_CH<x>:SELect:RF_MINHold {ON|1|OFF|0}
+        - SV:S<x>_CH<x>:SELect:RF_MINHold {ON|OFF|1|0}
         - SV:S<x>_CH<x>:SELect:RF_MINHold?
         ```
 
@@ -710,7 +710,7 @@ class SvSItemChannelSelectRfMaxhold(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SV:S<x>_CH<x>:SELect:RF_MAXHold {ON|1|OFF|0}
+        - SV:S<x>_CH<x>:SELect:RF_MAXHold {ON|OFF|1|0}
         - SV:S<x>_CH<x>:SELect:RF_MAXHold?
         ```
 
@@ -793,7 +793,7 @@ class SvSItemChannelSelectRfAverage(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SV:S<x>_CH<x>:SELect:RF_AVErage {ON|1|OFF|0}
+        - SV:S<x>_CH<x>:SELect:RF_AVErage {ON|OFF|1|0}
         - SV:S<x>_CH<x>:SELect:RF_AVErage?
         ```
 
@@ -852,7 +852,7 @@ class SvSItemChannelSelectRf(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SV:S<x>_CH<x>:SELect:RF_AVErage {ON|1|OFF|0}
+            - SV:S<x>_CH<x>:SELect:RF_AVErage {ON|OFF|1|0}
             - SV:S<x>_CH<x>:SELect:RF_AVErage?
             ```
 
@@ -943,7 +943,7 @@ class SvSItemChannelSelectRf(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SV:S<x>_CH<x>:SELect:RF_MAXHold {ON|1|OFF|0}
+            - SV:S<x>_CH<x>:SELect:RF_MAXHold {ON|OFF|1|0}
             - SV:S<x>_CH<x>:SELect:RF_MAXHold?
             ```
 
@@ -974,7 +974,7 @@ class SvSItemChannelSelectRf(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SV:S<x>_CH<x>:SELect:RF_MINHold {ON|1|OFF|0}
+            - SV:S<x>_CH<x>:SELect:RF_MINHold {ON|OFF|1|0}
             - SV:S<x>_CH<x>:SELect:RF_MINHold?
             ```
 
@@ -1004,7 +1004,7 @@ class SvSItemChannelSelectRf(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SV:S<x>_CH<x>:SELect:RF_NORMal {ON|1|OFF|0}
+            - SV:S<x>_CH<x>:SELect:RF_NORMal {ON|OFF|1|0}
             - SV:S<x>_CH<x>:SELect:RF_NORMal?
             ```
 
@@ -2686,21 +2686,16 @@ class SvLockspectrum(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SV:LOCKSpectrum {ON|1|OFF|0}
+        - SV:LOCKSpectrum {ON|OFF|1|0}
         - SV:LOCKSpectrum?
         ```
 
     Info:
-        - ``ON`` sets all spectrum traces channels in the Spectrum View window to use the same
+        - ``ON, 1`` sets all spectrum traces channels in the Spectrum View window to use the same
           Spectrum Time value. When the Spectrum Time of any channel is changed, the Spectrum Time
           of all other channels is automatically changed to match that value.
-        - ``1`` sets all spectrum traces channels in the Spectrum View window to use the same
-          Spectrum Time value. When the Spectrum Time of any channel is changed, the Spectrum Time
-          of all other channels is automatically changed to match that value.
-        - ``0`` enables use of different Spectrum Time values for each spectrum trace channel. The
-          Spectrum Time of all channels are independent.
-        - ``OFF`` enables use of different Spectrum Time values for each spectrum trace channel. The
-          Spectrum Time of all channels are independent.
+        - ``OFF, 0`` enables use of different Spectrum Time values for each spectrum trace channel.
+          The Spectrum Time of all channels are independent.
     """
 
 
@@ -2719,21 +2714,16 @@ class SvLockcenter(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - SV:LOCKCenter {ON|1|OFF|0}
+        - SV:LOCKCenter {ON|OFF|1|0}
         - SV:LOCKCenter?
         ```
 
     Info:
-        - ``ON`` sets all spectrum traces channels in the Spectrum View window to use the same
+        - ``ON, 1`` sets all spectrum traces channels in the Spectrum View window to use the same
           center frequency value. When the center frequency of any channel is changed, the center
           frequency of all other channels is automatically changed to match that value.
-        - ``1`` sets all spectrum traces channels in the Spectrum View window to use the same center
-          frequency value. When the center frequency of any channel is changed, the center frequency
-          of all other channels is automatically changed to match that value.
-        - ``0`` enables use of different center frequency values for each spectrum trace channel.
-          The center frequencies of all channels are independent.
-        - ``OFF`` enables use of different center frequency values for each spectrum trace channel.
-          The center frequencies of all channels are independent.
+        - ``OFF, 0`` enables use of different center frequency values for each spectrum trace
+          channel. The center frequencies of all channels are independent.
     """
 
 
@@ -2742,7 +2732,7 @@ class SvChannelSelectSpectrogram(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries whether the spectrogram plot for the specified channel is
-          displayed in the Spectrum View. The channel number is specified by x.
+          displayed in the Spectrum View.
 
     Usage:
         - Using the ``.query()`` method will send the ``SV:CH<x>:SELect:SPECtrogram?`` query.
@@ -2758,8 +2748,9 @@ class SvChannelSelectSpectrogram(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
+        - ``CH<x>`` specifies the channel number.
         - ``ON`` turns on spectrogram.
-        - ``OFF`` turns of spectrogram.
+        - ``OFF`` turns off spectrogram.
     """
 
 
@@ -2770,6 +2761,9 @@ class SvChannelSelect(SCPICmdRead):
         - Using the ``.query()`` method will send the ``SV:CH<x>:SELect?`` query.
         - Using the ``.verify(value)`` method will send the ``SV:CH<x>:SELect?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``CH<x>`` specifies the channel number.
 
     Properties:
         - ``.spectrogram``: The ``SV:CH<x>:SELect:SPECtrogram`` command.
@@ -2785,7 +2779,7 @@ class SvChannelSelect(SCPICmdRead):
 
         Description:
             - This command sets or queries whether the spectrogram plot for the specified channel is
-              displayed in the Spectrum View. The channel number is specified by x.
+              displayed in the Spectrum View.
 
         Usage:
             - Using the ``.query()`` method will send the ``SV:CH<x>:SELect:SPECtrogram?`` query.
@@ -2801,8 +2795,9 @@ class SvChannelSelect(SCPICmdRead):
             ```
 
         Info:
+            - ``CH<x>`` specifies the channel number.
             - ``ON`` turns on spectrogram.
-            - ``OFF`` turns of spectrogram.
+            - ``OFF`` turns off spectrogram.
         """
         return self._spectrogram
 
@@ -2814,6 +2809,9 @@ class SvChannel(ValidatedChannel, SCPICmdRead):
         - Using the ``.query()`` method will send the ``SV:CH<x>?`` query.
         - Using the ``.verify(value)`` method will send the ``SV:CH<x>?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``CH<x>`` specifies the channel number.
 
     Properties:
         - ``.select``: The ``SV:CH<x>:SELect`` command tree.
@@ -2831,6 +2829,9 @@ class SvChannel(ValidatedChannel, SCPICmdRead):
             - Using the ``.query()`` method will send the ``SV:CH<x>:SELect?`` query.
             - Using the ``.verify(value)`` method will send the ``SV:CH<x>:SELect?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``CH<x>`` specifies the channel number.
 
         Sub-properties:
             - ``.spectrogram``: The ``SV:CH<x>:SELect:SPECtrogram`` command.
@@ -2879,6 +2880,9 @@ class Sv(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``SV:CH<x>?`` query and raise an
               AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``CH<x>`` specifies the channel number.
+
         Sub-properties:
             - ``.select``: The ``SV:CH<x>:SELect`` command tree.
         """
@@ -2900,20 +2904,15 @@ class Sv(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SV:LOCKCenter {ON|1|OFF|0}
+            - SV:LOCKCenter {ON|OFF|1|0}
             - SV:LOCKCenter?
             ```
 
         Info:
-            - ``ON`` sets all spectrum traces channels in the Spectrum View window to use the same
-              center frequency value. When the center frequency of any channel is changed, the
+            - ``ON, 1`` sets all spectrum traces channels in the Spectrum View window to use the
+              same center frequency value. When the center frequency of any channel is changed, the
               center frequency of all other channels is automatically changed to match that value.
-            - ``1`` sets all spectrum traces channels in the Spectrum View window to use the same
-              center frequency value. When the center frequency of any channel is changed, the
-              center frequency of all other channels is automatically changed to match that value.
-            - ``0`` enables use of different center frequency values for each spectrum trace
-              channel. The center frequencies of all channels are independent.
-            - ``OFF`` enables use of different center frequency values for each spectrum trace
+            - ``OFF, 0`` enables use of different center frequency values for each spectrum trace
               channel. The center frequencies of all channels are independent.
         """
         return self._lockcenter
@@ -2934,21 +2933,16 @@ class Sv(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - SV:LOCKSpectrum {ON|1|OFF|0}
+            - SV:LOCKSpectrum {ON|OFF|1|0}
             - SV:LOCKSpectrum?
             ```
 
         Info:
-            - ``ON`` sets all spectrum traces channels in the Spectrum View window to use the same
-              Spectrum Time value. When the Spectrum Time of any channel is changed, the Spectrum
-              Time of all other channels is automatically changed to match that value.
-            - ``1`` sets all spectrum traces channels in the Spectrum View window to use the same
-              Spectrum Time value. When the Spectrum Time of any channel is changed, the Spectrum
-              Time of all other channels is automatically changed to match that value.
-            - ``0`` enables use of different Spectrum Time values for each spectrum trace channel.
-              The Spectrum Time of all channels are independent.
-            - ``OFF`` enables use of different Spectrum Time values for each spectrum trace channel.
-              The Spectrum Time of all channels are independent.
+            - ``ON, 1`` sets all spectrum traces channels in the Spectrum View window to use the
+              same Spectrum Time value. When the Spectrum Time of any channel is changed, the
+              Spectrum Time of all other channels is automatically changed to match that value.
+            - ``OFF, 0`` enables use of different Spectrum Time values for each spectrum trace
+              channel. The Spectrum Time of all channels are independent.
         """
         return self._lockspectrum
 
