@@ -135,7 +135,7 @@ class AFG(
                 if self.query(f"SOURCE{burst_channel}:BURST:STATE?") == "1":
                     burst_state = True
             if (
-                self.total_channels > 1  # pylint: disable=comparison-with-callable
+                self.total_channels > 1
                 and function.value != SignalGeneratorFunctionsAFG.DC.value
                 and not burst_state
             ):

@@ -105,7 +105,7 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
     def name_and_alias(self) -> str:
         """Return string for easy ID of device in console output prints."""
         retval = self.name
-        if self.alias:  # pylint: disable=using-constant-test
+        if self.alias:
             retval += f' "{self.alias}"'
         return retval.replace(" NotImplemented", "")
 
