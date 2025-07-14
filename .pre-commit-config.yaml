@@ -152,7 +152,7 @@ repos:
         pass_filenames: false
         args: [scripts/generate_schema.py]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 0b19ef1fd6ad680ed7752d6daba883ce1265a6de  # frozen: v0.12.2
+    rev: 3d44372123ca5e8617fdb65d9f11facd159b9e95  # frozen: v0.12.3
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
