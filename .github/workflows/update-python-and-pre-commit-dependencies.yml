@@ -6,14 +6,14 @@ on:
 jobs:
   update-python-and-pre-commit-dependencies:
     if: ${{ github.actor == 'dependabot[bot]' && contains(github.head_ref, '/pip/') }}
-    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-update-python-and-pre-commit-dependencies.yml@v1.7.5
+    uses: tektronix/python-package-ci-cd/.github/workflows/_reusable-update-python-and-pre-commit-dependencies.yml@v1.7.6
     with:
       commit-user-name: ${{ vars.TEK_OPENSOURCE_NAME }}
       commit-user-email: ${{ vars.TEK_OPENSOURCE_EMAIL }}
       dependency-dict: '{"tests": ["ruff"]}'
       update-pre-commit: true
       run-pre-commit: true
-      pre-commit-hook-skip-list: pylint,pyright,pyright-verifytypes,pyroma,poetry-audit
+      pre-commit-hook-skip-list: pylint,pyright,pyright-verifytypes,pyroma,poetry-lock,poetry-audit,poetry-check
       pre-commit-repo-update-skip-list: ''
       export-dependency-groups: docs,tests
     permissions:

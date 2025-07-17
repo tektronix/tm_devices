@@ -50,6 +50,7 @@ classifiers = [
   "Intended Audience :: Developers",
   "Intended Audience :: Science/Research",
   "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3.9",  # manually add this classifier since Poetry won't add it automatically due to the mimimum Python version being 3.9.2  # TODO: Drop Python 3.9: Remove this classifier
   "Topic :: Scientific/Engineering :: Interface Engine/Protocol Translator",
   "Topic :: Scientific/Engineering",
   "Topic :: System :: Hardware :: Hardware Drivers",
@@ -84,7 +85,7 @@ libusb-package = "^1.0.26.0,!=1.0.26.2"  # 1.0.26.2 doesn't work with Python 3.1
 packaging = ">=24.0"
 psutil = ">=6.0.0"
 pyserial = "^3.5"
-python = "^3.9.2"  # This is the main Python version requirement
+python = ">=3.9.2,<3.14"  # This is the main Python version requirement
 python-dateutil = "^2.8.2"
 pyusb = "^1.2.1"
 pyvicp = "^1.1.0"
@@ -109,7 +110,7 @@ poetry-plugin-export = "^1.7.1"
 poetry-pre-commit-plugin = "^0.2.2"
 pre-commit = "^4.2"
 pylint = "3.3.7"
-pyright = {extras = ["nodejs"], version = "1.1.402"}
+pyright = {extras = ["nodejs"], version = "1.1.403"}
 pyroma = "^4.2"
 tox = "^4.0"
 tox-gh-actions = "^3.1.0"
@@ -156,7 +157,7 @@ pytest-github-report = "^0.0.1"
 pytest-html = "^4.1.1"
 pytest-order = "^1.2.1"
 pytest-repeat = "^0.9.4"
-ruff = "0.12.1"
+ruff = "0.12.3"
 
 [tool.poetry.scripts]
 list-visa-resources = "tm_devices:print_available_visa_devices"

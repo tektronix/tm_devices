@@ -43,7 +43,7 @@ class SMU26xx(CommonTSPErrorCheckMixin, TSPControl, SourceMeasureUnit, ABC):
     @property
     def all_channel_names_list(self) -> Tuple[str, ...]:
         """Return a tuple containing all the channel names."""
-        return tuple(string.ascii_lowercase[: self.total_channels])  # pylint: disable=invalid-slice-index
+        return tuple(string.ascii_lowercase[: self.total_channels])
 
     @cached_property
     def total_channels(self) -> int:
