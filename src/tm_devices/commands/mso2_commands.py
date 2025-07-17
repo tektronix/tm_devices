@@ -21,7 +21,6 @@ from .gen_1zn03_mso.bus import Bus
 from .gen_1zn03_mso.calibrate import Calibrate
 from .gen_1zn03_mso.callouts import Callouts
 from .gen_1zn03_mso.ch import Channel
-from .gen_1zn03_mso.connected import Connected
 from .gen_1zn03_mso.data import Data
 from .gen_1zn03_mso.dch import DchItem
 from .gen_1zn03_mso.diag import Diag
@@ -43,7 +42,6 @@ from .gen_1zn03_mso.search import Search
 from .gen_1zn03_mso.select import Select
 from .gen_1zn03_mso.touchscreen import Touchscreen
 from .gen_1zn03_mso.trigger import Trigger
-from .gen_1zn03_mso.vxi import Vxi
 from .gen_c69az_msotekscopepc.autosaveuitimeout import Autosaveuitimeout
 from .gen_c69az_msotekscopepc.curve import Curve
 from .gen_c69az_msotekscopepc.curvestream import Curvestream
@@ -57,7 +55,9 @@ from .gen_c69az_msotekscopepc.socketserver import Socketserver
 from .gen_c69az_msotekscopepc.time import Time
 from .gen_c69az_msotekscopepc.vertical import Vertical
 from .gen_c69az_msotekscopepc.wfmoutpre import Wfmoutpre
+from .gen_e3h2zs_lpdmso.connected import Connected
 from .gen_e3h2zs_lpdmso.usbdevice import Usbdevice
+from .gen_e3h2zs_lpdmso.vxi import Vxi
 from .gen_e4de2d_lpdmsomdo.clear import Clear
 from .gen_e6bmgw_lpdmsotekscopepcdpomdo.totaluptime import Totaluptime
 from .gen_e6wozn_lpdmsotekscopepcmdodpo.pause import Pause
@@ -77,7 +77,7 @@ from .gen_fil6zt_msotekscopepcdpomdodsa.factory import Factory
 from .gen_fil6zt_msotekscopepcdpomdodsa.miscellaneous import Lrn
 from .gen_fil6zt_msotekscopepcdpomdodsa.set import Set
 from .gen_fil6zt_msotekscopepcdpomdodsa.verbose import Verbose
-from .gen_fj69if_msotekscopepcdpomdoafgawgdsa.status_and_error import Rst
+from .gen_fj69if_msotekscopepcdpomdoafgawgdsa.status_and_error import Opc, Rst
 from .gen_fjrc1d_msodpomdoafgawgdsa.calibration import Cal
 from .gen_fjwyaz_msotekscopepcdpodsa.alias import Alias
 from .gen_fk2kku_msotekscopepcdpomdodsa.header import Header
@@ -85,7 +85,7 @@ from .gen_fkcejz_msodpomdodsa.lock import Lock
 from .gen_fkcejz_msodpomdodsa.unlock import Unlock
 from .gen_fkrusx_msotekscopepcdpomdoawgdsa.status_and_error import Ese, Sre
 from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
-from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Stb, Wai
+from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Stb, Wai
 from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
 from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
 from .gen_fx54ua_lpdmsodpomdodsa.newpass import Newpass

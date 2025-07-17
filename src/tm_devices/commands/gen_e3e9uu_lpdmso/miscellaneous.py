@@ -72,12 +72,12 @@ class Ddt(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<Block>`` is a complete sequence of program messages. The messages can contain only
-          valid commands that must be separated by semicolons and must follow allrules for
+          valid commands that must be separated by semicolons and must follow all rules for
           concatenating commands. The sequence must be less than or equal to 80characters. The
           format of this argument is always returned as a query.
         - ``<QString>`` is a complete sequence of program messages. The messages can contain only
-          valid commands that must be separated by semicolons and mustfollow all rules for
-          concatenating commands. The sequence must be less than orequal to 80 characters.
+          valid commands that must be separated by semicolons and must follow all rules for
+          concatenating commands. The sequence must be less than or equal to 80 characters.
     """
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*DDT") -> None:

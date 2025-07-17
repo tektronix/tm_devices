@@ -64,6 +64,10 @@ class CalloutsDelete(SCPICmdWrite):
         ```
         - CALLOUTS:DELete <QString>
         ```
+
+    Info:
+        - ``<QString>`` specifies the callout. The argument is of the form 'CALLOUT<NR1>', where
+          <NR1> is a number value ≥ 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -114,6 +118,9 @@ class CalloutsCalloutItemText(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:TEXT <QString>
         - CALLOUTS:CALLOUT<x>:TEXT?
         ```
+
+    Info:
+        - ``<QString>`` specifies the callout text.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -137,6 +144,10 @@ class CalloutsCalloutItemFontUnderline(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:FONT:UNDERLine {1|0}
         - CALLOUTS:CALLOUT<x>:FONT:UNDERLine?
         ```
+
+    Info:
+        - ``1`` underlines the callout text.
+        - ``0`` does not underline the callout text.
     """
 
 
@@ -158,6 +169,11 @@ class CalloutsCalloutItemFontType(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:FONT:TYPE <QString>
         - CALLOUTS:CALLOUT<x>:FONT:TYPE?
         ```
+
+    Info:
+        - ``<QString>`` specifies the type of font for the callout text. The available font types
+          include: DejaVu Sans, DejaVu Sans Mono, DejaVu Serif, Frutiger LT Std, Monospace, Sans
+          Serif, Serif, Ubuntu, Ubuntu Condensed, and Ubuntu Mono.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -181,6 +197,9 @@ class CalloutsCalloutItemFontSize(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:FONT:SIZE <NR1>
         - CALLOUTS:CALLOUT<x>:FONT:SIZE?
         ```
+
+    Info:
+        - ``<NR1>`` specifies the font size in points.
     """
 
 
@@ -202,6 +221,10 @@ class CalloutsCalloutItemFontItalic(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:FONT:ITALIC {1|0}
         - CALLOUTS:CALLOUT<x>:FONT:ITALIC?
         ```
+
+    Info:
+        - ``1`` specifies the callout font style as italic.
+        - ``0`` does not specify the font style as italic.
     """
 
 
@@ -223,6 +246,10 @@ class CalloutsCalloutItemFontBold(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:FONT:BOLD {1|0}
         - CALLOUTS:CALLOUT<x>:FONT:BOLD?
         ```
+
+    Info:
+        - ``1`` specifies the callout font weight as bold.
+        - ``0`` specifies the callout font weight as normal.
     """
 
 
@@ -269,6 +296,10 @@ class CalloutsCalloutItemFont(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:FONT:BOLD {1|0}
             - CALLOUTS:CALLOUT<x>:FONT:BOLD?
             ```
+
+        Info:
+            - ``1`` specifies the callout font weight as bold.
+            - ``0`` specifies the callout font weight as normal.
         """
         return self._bold
 
@@ -292,6 +323,10 @@ class CalloutsCalloutItemFont(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:FONT:ITALIC {1|0}
             - CALLOUTS:CALLOUT<x>:FONT:ITALIC?
             ```
+
+        Info:
+            - ``1`` specifies the callout font style as italic.
+            - ``0`` does not specify the font style as italic.
         """
         return self._italic
 
@@ -314,6 +349,9 @@ class CalloutsCalloutItemFont(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:FONT:SIZE <NR1>
             - CALLOUTS:CALLOUT<x>:FONT:SIZE?
             ```
+
+        Info:
+            - ``<NR1>`` specifies the font size in points.
         """
         return self._size
 
@@ -336,6 +374,11 @@ class CalloutsCalloutItemFont(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:FONT:TYPE <QString>
             - CALLOUTS:CALLOUT<x>:FONT:TYPE?
             ```
+
+        Info:
+            - ``<QString>`` specifies the type of font for the callout text. The available font
+              types include: DejaVu Sans, DejaVu Sans Mono, DejaVu Serif, Frutiger LT Std,
+              Monospace, Sans Serif, Serif, Ubuntu, Ubuntu Condensed, and Ubuntu Mono.
         """
         return self._type
 
@@ -360,6 +403,10 @@ class CalloutsCalloutItemFont(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:FONT:UNDERLine {1|0}
             - CALLOUTS:CALLOUT<x>:FONT:UNDERLine?
             ```
+
+        Info:
+            - ``1`` underlines the callout text.
+            - ``0`` does not underline the callout text.
         """
         return self._underline
 
@@ -384,6 +431,9 @@ class CalloutsCalloutItemDisplaypositionY(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:Y <NR1>
         - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:Y?
         ```
+
+    Info:
+        - ``<NR1>`` specifies the callout vertical display position.
     """
 
 
@@ -407,6 +457,9 @@ class CalloutsCalloutItemDisplaypositionX(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:X <NR1>
         - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:X?
         ```
+
+    Info:
+        - ``<NR1>`` specifies the callout horizontal display position.
     """
 
 
@@ -450,6 +503,9 @@ class CalloutsCalloutItemDisplayposition(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:X <NR1>
             - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:X?
             ```
+
+        Info:
+            - ``<NR1>`` specifies the callout horizontal display position.
         """
         return self._x
 
@@ -474,6 +530,9 @@ class CalloutsCalloutItemDisplayposition(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:Y <NR1>
             - CALLOUTS:CALLOUT<x>:DISPLAYPOSition:Y?
             ```
+
+        Info:
+            - ``<NR1>`` specifies the callout vertical display position.
         """
         return self._y
 
@@ -496,6 +555,9 @@ class CalloutsCalloutItemColor(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:COLOR <QString>
         - CALLOUTS:CALLOUT<x>:COLOR?
         ```
+
+    Info:
+        - ``<QString>`` specifies the callout text color using hexadecimal color values.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -519,6 +581,9 @@ class CalloutsCalloutItemBookmarkXpos(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:BOOKMark:XPOS <NR1>
         - CALLOUTS:CALLOUT<x>:BOOKMark:XPOS?
         ```
+
+    Info:
+        - ``<NR1>`` specifies the location of the bookmark linked to the source waveform in X-axis.
     """
 
 
@@ -541,6 +606,9 @@ class CalloutsCalloutItemBookmarkSource(SCPICmdWrite, SCPICmdRead):
         - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE CH<x>
         - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE?
         ```
+
+    Info:
+        - ``CH1`` specifies the bookmark callout source as a analog channel.
     """
 
 
@@ -583,6 +651,9 @@ class CalloutsCalloutItemBookmark(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE CH<x>
             - CALLOUTS:CALLOUT<x>:BOOKMark:SOURCE?
             ```
+
+        Info:
+            - ``CH1`` specifies the bookmark callout source as a analog channel.
         """
         return self._source
 
@@ -607,6 +678,10 @@ class CalloutsCalloutItemBookmark(SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:BOOKMark:XPOS <NR1>
             - CALLOUTS:CALLOUT<x>:BOOKMark:XPOS?
             ```
+
+        Info:
+            - ``<NR1>`` specifies the location of the bookmark linked to the source waveform in
+              X-axis.
         """
         return self._xpos
 
@@ -673,6 +748,9 @@ class CalloutsCalloutItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:COLOR <QString>
             - CALLOUTS:CALLOUT<x>:COLOR?
             ```
+
+        Info:
+            - ``<QString>`` specifies the callout text color using hexadecimal color values.
         """
         return self._color
 
@@ -730,6 +808,9 @@ class CalloutsCalloutItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - CALLOUTS:CALLOUT<x>:TEXT <QString>
             - CALLOUTS:CALLOUT<x>:TEXT?
             ```
+
+        Info:
+            - ``<QString>`` specifies the callout text.
         """
         return self._text
 
@@ -775,6 +856,10 @@ class CalloutsAddnew(SCPICmdWrite):
         ```
         - CALLOUTS:ADDNew <QString>
         ```
+
+    Info:
+        - ``<QString>`` specifies the callout. The argument is of the form 'CALLOUT<NR1>', where
+          <NR1> is a number value ≥ 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -816,6 +901,10 @@ class Callouts(SCPICmdRead):
             ```
             - CALLOUTS:ADDNew <QString>
             ```
+
+        Info:
+            - ``<QString>`` specifies the callout. The argument is of the form 'CALLOUT<NR1>', where
+              <NR1> is a number value ≥ 1.
         """
         return self._addnew
 
@@ -852,5 +941,9 @@ class Callouts(SCPICmdRead):
             ```
             - CALLOUTS:DELete <QString>
             ```
+
+        Info:
+            - ``<QString>`` specifies the callout. The argument is of the form 'CALLOUT<NR1>', where
+              <NR1> is a number value ≥ 1.
         """
         return self._delete

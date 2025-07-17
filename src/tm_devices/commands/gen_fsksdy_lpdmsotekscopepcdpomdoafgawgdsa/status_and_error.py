@@ -14,8 +14,6 @@ Commands and Queries:
     ```
     - *CLS
     - *ESR?
-    - *OPC
-    - *OPC?
     - *STB?
     - *WAI
     ```
@@ -70,37 +68,6 @@ class Stb(SCPICmdRead):
     """
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*STB") -> None:
-        super().__init__(device, cmd_syntax)
-
-
-class Opc(SCPICmdWriteNoArguments, SCPICmdRead):
-    """The ``*OPC`` command.
-
-    Description:
-        - This command generates the operation complete message in the Standard Event Status
-          Register (SESR) when all pending commands that generate an OPC message are complete. The
-          ``*OPC?`` query places the ASCII character '1' into the output queue when all such OPC
-          commands are complete. The ``*OPC?`` response is not available to read until all pending
-          operations finish. For a complete discussion of the use of these registers and the output
-          queue, see Registers and Queues. The ``*OPC`` command allows you to synchronize the
-          operation of the instrument with your application program. For more information, see
-          Synchronization Methods. Refer to the Oscilloscope operations that can generate OPC table
-          for a list of commands that generate an OPC message.
-
-    Usage:
-        - Using the ``.query()`` method will send the ``*OPC?`` query.
-        - Using the ``.verify(value)`` method will send the ``*OPC?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write()`` method will send the ``*OPC`` command.
-
-    SCPI Syntax:
-        ```
-        - *OPC
-        - *OPC?
-        ```
-    """
-
-    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*OPC") -> None:
         super().__init__(device, cmd_syntax)
 
 

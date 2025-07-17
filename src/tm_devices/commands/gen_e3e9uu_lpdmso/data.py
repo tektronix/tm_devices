@@ -60,6 +60,10 @@ class DataWidth(SCPICmdWrite, SCPICmdRead):
         - DATa:WIDth <NR1>
         - DATa:WIDth?
         ```
+
+    Info:
+        - ``<NR1>`` is an integer that indicates the number of bytes per point for the outgoing
+          waveform data when queried using the.
     """
 
 
@@ -293,10 +297,10 @@ class DataFramestop(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<NR1>`` is the last acquisition that will be transferred, which ranges from 1 tothe
-          number of History or FastFrame acquisitions. Results will be transferredfrom acquisitions
-          ``DATa:FRAMESTARt`` to <NR1>. If <NR1> is greater than thenumber of acquisitions, then
-          data will be transferred up to the last acquisition.If ``DATa:FRAMESTOP`` is less than
-          ``DATa:FRAMESTARt``, then only a singleacquisition at ``DATa:FRAMESTARt`` is transferred.
+          number of History or FastFrame acquisitions. Results will be transferred from acquisitions
+          ``DATa:FRAMESTARt`` to <NR1>. If <NR1> is greater than the number of acquisitions, then
+          data will be transferred up to the last acquisition. If ``DATa:FRAMESTOP`` is less than
+          ``DATa:FRAMESTARt``, then only a single acquisition at ``DATa:FRAMESTARt`` is transferred.
         - ``MAX`` indicates that data is always transferred up to the last acquisition.
     """
 
@@ -322,12 +326,12 @@ class DataFramestart(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>`` is the first acquisition that will be transferred, which ranges from 1 tothe
-          number of History or FastFrame acquisitions. Results are transferred fromacquisition <NR1>
-          to ``DATa:FRAMESTOP`` or the total number of acquisitions,whichever is less. If <NR1> is
-          greater than the number of acquisitions, thenonly the last acquisition is transferred. If
-          ``DATa:FRAMESTARt`` is greater ``thanDATa:FRAMESTOP``, then only a single acquisition at
-          <NR1> is transferred.
+        - ``<NR1>`` is the first acquisition that will be transferred, which ranges from 1 to the
+          number of History or FastFrame acquisitions. Results are transferred from acquisition
+          <NR1> to ``DATa:FRAMESTOP`` or the total number of acquisitions, whichever is less. If
+          <NR1> is greater than the number of acquisitions, then only the last acquisition is
+          transferred. If ``DATa:FRAMESTARt`` is greater than ``DATa:FRAMESTOP``, then only a single
+          acquisition at <NR1> is transferred.
     """
 
 
@@ -354,40 +358,40 @@ class DataEncdg(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``ASCIi`` specifies the ASCII representation of signed INT, FLOAT. If ASCII is thevalue,
-          then ``:BN_Fmt`` and ``:BYT_Or`` are ignored. The following are the DATa andWFMOutpre
+        - ``ASCIi`` specifies the ASCII representation of signed INT, FLOAT. If ASCII is the value,
+          then ``:BN_Fmt`` and ``:BYT_Or`` are ignored. The following are the DATa and WFMOutpre
           parameter settings (separated by semicolons): ``:ENCdg`` = ASC ;``:BN_Fmt`` = N/A ;
           ``:BYT_Or`` = N/A ; ``:BYT_NR`` = 1,2,4.
-        - ``RIBinary`` specifies signed integer data-point representation, with the mostsignificant
-          byte transferred first. When ``:BYT_Nr`` is 1, the range from 0 through255. When
-          ``:BYT_Nr`` is 2,the range is from 0 to 65,535. When ``:BYT_Nr`` is 4, thenthe waveform
+        - ``RIBinary`` specifies signed integer data-point representation, with the most significant
+          byte transferred first. When ``:BYT_Nr`` is 1, the range from 0 through 255. When
+          ``:BYT_Nr`` is 2, the range is from 0 to 65,535. When ``:BYT_Nr`` is 4, then the waveform
           being queried would return Fast Acquisition Pixmap data (if fastacq is turned on and data
-          mode is set to pixmap). The following are the DATaand WFMOutpre parameter settings
+          mode is set to pixmap). The following are the DATa and WFMOutpre parameter settings
           (separated by semicolons): ``:ENCdg`` = BIN ;``:BN_Fmt`` = RI ; ``:BYT_Or`` = MSB ;
           ``:BYT_NR`` = 1,2.
-        - ``RPBinary`` specifies the positive integer data-point representation, with the
-          mostsignificant byte transferred first. When ``:BYT_Nr`` is 1, the range from 0
-          through255. When ``:BYT_Nr`` is 2, the range is from 0 to 65,535. The following are
-          theDATa and WFMOutpre parameter settings (separated by semicolons): ``:ENCdg`` =BIN ;
-          ``:BN_Fmt`` = RP ; ``:BYT_Or`` = MSB ; ``:BYT_NR`` = 1,2.
+        - ``RPBinary`` specifies the positive integer data-point representation, with the most
+          significant byte transferred first. When ``:BYT_Nr`` is 1, the range from 0 through 255.
+          When ``:BYT_Nr`` is 2, the range is from 0 to 65,535. The following are the DATa and
+          WFMOutpre parameter settings (separated by semicolons): ``:ENCdg`` =BIN ; ``:BN_Fmt`` = RP
+          ; ``:BYT_Or`` = MSB ; ``:BYT_NR`` = 1,2.
         - ``FPBinary`` specifies the floating point (width = 4) data. The range is from -3.4 ×1038
-          to 3.4 × 1038. The center of the screen is 0. The upper limit is the top of thescreen and
-          the lower limit is the bottom of the screen. The FPBinary argument isonly applicable to
-          math waveforms or ref waveforms saved from math waveforms.The following are the DATa and
+          to 3.4 × 1038. The center of the screen is 0. The upper limit is the top of the screen and
+          the lower limit is the bottom of the screen. The FPBinary argument is only applicable to
+          math waveforms or ref waveforms saved from math waveforms. The following are the DATa and
           WFMOutpre parameter settings (separated bysemicolons): ``:ENCdg`` = BIN ; ``:BN_Fmt`` = FP
           ; ``:BYT_Or`` = MSB ; ``:BYT_NR`` = 4.
-        - ``SRIbinary`` is the same as RIBinary except that the byte order is swapped,meaning that
-          the least significant byte is transferred first. This format is usefulwhen transferring
-          data to IBM compatible PCs. The following are the DATa andWFMOutpre parameter settings
+        - ``SRIbinary`` is the same as RIBinary except that the byte order is swapped, meaning that
+          the least significant byte is transferred first. This format is useful when transferring
+          data to IBM compatible PCs. The following are the DATa and WFMOutpre parameter settings
           (separated by semicolons): ``:ENCdg`` = BIN ;``:BN_Fmt`` = RI ; ``:BYT_Or`` = LSB ;
           ``:BYT_NR`` = 1,2.
-        - ``SRPbinary`` is the same as RPBinary except that the byte order is swapped,meaning that
-          the least significant byte is transferred first. This format is usefulwhen transferring
-          data to PCs. The following are the DATa and WFMOutpreparameter settings (separated by
+        - ``SRPbinary`` is the same as RPBinary except that the byte order is swapped, meaning that
+          the least significant byte is transferred first. This format is useful when transferring
+          data to PCs. The following are the DATa and WFMOutpre parameter settings (separated by
           semicolons): ``:ENCdg`` = BIN ; ``:BN_Fmt`` = RP; ``:BYT_Or`` = LSB ; ``:BYT_NR`` = 1,2.
-        - ``SFPbinary`` specifies floating point data in IBM PC format. The SFPbinaryargument only
-          works on math waveforms or ref waveforms saved from mathwaveforms. The following are the
-          DATa and WFMOutpre parameter settings(separated by semicolons): ``:ENCdg`` = BIN ;
+        - ``SFPbinary`` specifies floating point data in IBM PC format. The SFP binary argument only
+          works on math waveforms or ref waveforms saved from math waveforms. The following are the
+          DATa and WFMOutpre parameter settings (separated by semicolons): ``:ENCdg`` = BIN ;
           ``:BN_Fmt`` = FP ; ``:BYT_Or`` = LSB; ``:BYT_NR`` = 4.
     """
 
@@ -468,41 +472,41 @@ class Data(SCPICmdWrite, SCPICmdRead):
             ```
 
         Info:
-            - ``ASCIi`` specifies the ASCII representation of signed INT, FLOAT. If ASCII is
-              thevalue, then ``:BN_Fmt`` and ``:BYT_Or`` are ignored. The following are the DATa
-              andWFMOutpre parameter settings (separated by semicolons): ``:ENCdg`` = ASC
-              ;``:BN_Fmt`` = N/A ; ``:BYT_Or`` = N/A ; ``:BYT_NR`` = 1,2,4.
-            - ``RIBinary`` specifies signed integer data-point representation, with the
-              mostsignificant byte transferred first. When ``:BYT_Nr`` is 1, the range from 0
-              through255. When ``:BYT_Nr`` is 2,the range is from 0 to 65,535. When ``:BYT_Nr`` is
-              4, thenthe waveform being queried would return Fast Acquisition Pixmap data (if
-              fastacq is turned on and data mode is set to pixmap). The following are the DATaand
-              WFMOutpre parameter settings (separated by semicolons): ``:ENCdg`` = BIN ;``:BN_Fmt``
-              = RI ; ``:BYT_Or`` = MSB ; ``:BYT_NR`` = 1,2.
-            - ``RPBinary`` specifies the positive integer data-point representation, with the
-              mostsignificant byte transferred first. When ``:BYT_Nr`` is 1, the range from 0
-              through255. When ``:BYT_Nr`` is 2, the range is from 0 to 65,535. The following are
-              theDATa and WFMOutpre parameter settings (separated by semicolons): ``:ENCdg`` =BIN ;
+            - ``ASCIi`` specifies the ASCII representation of signed INT, FLOAT. If ASCII is the
+              value, then ``:BN_Fmt`` and ``:BYT_Or`` are ignored. The following are the DATa and
+              WFMOutpre parameter settings (separated by semicolons): ``:ENCdg`` = ASC ;``:BN_Fmt``
+              = N/A ; ``:BYT_Or`` = N/A ; ``:BYT_NR`` = 1,2,4.
+            - ``RIBinary`` specifies signed integer data-point representation, with the most
+              significant byte transferred first. When ``:BYT_Nr`` is 1, the range from 0 through
+              255. When ``:BYT_Nr`` is 2, the range is from 0 to 65,535. When ``:BYT_Nr`` is 4, then
+              the waveform being queried would return Fast Acquisition Pixmap data (if fastacq is
+              turned on and data mode is set to pixmap). The following are the DATa and WFMOutpre
+              parameter settings (separated by semicolons): ``:ENCdg`` = BIN ;``:BN_Fmt`` = RI ;
+              ``:BYT_Or`` = MSB ; ``:BYT_NR`` = 1,2.
+            - ``RPBinary`` specifies the positive integer data-point representation, with the most
+              significant byte transferred first. When ``:BYT_Nr`` is 1, the range from 0 through
+              255. When ``:BYT_Nr`` is 2, the range is from 0 to 65,535. The following are the DATa
+              and WFMOutpre parameter settings (separated by semicolons): ``:ENCdg`` =BIN ;
               ``:BN_Fmt`` = RP ; ``:BYT_Or`` = MSB ; ``:BYT_NR`` = 1,2.
             - ``FPBinary`` specifies the floating point (width = 4) data. The range is from -3.4
-              ×1038 to 3.4 × 1038. The center of the screen is 0. The upper limit is the top of
-              thescreen and the lower limit is the bottom of the screen. The FPBinary argument
-              isonly applicable to math waveforms or ref waveforms saved from math waveforms.The
-              following are the DATa and WFMOutpre parameter settings (separated bysemicolons):
-              ``:ENCdg`` = BIN ; ``:BN_Fmt`` = FP ; ``:BYT_Or`` = MSB ; ``:BYT_NR`` = 4.
-            - ``SRIbinary`` is the same as RIBinary except that the byte order is swapped,meaning
-              that the least significant byte is transferred first. This format is usefulwhen
-              transferring data to IBM compatible PCs. The following are the DATa andWFMOutpre
+              ×1038 to 3.4 × 1038. The center of the screen is 0. The upper limit is the top of the
+              screen and the lower limit is the bottom of the screen. The FPBinary argument is only
+              applicable to math waveforms or ref waveforms saved from math waveforms. The following
+              are the DATa and WFMOutpre parameter settings (separated bysemicolons): ``:ENCdg`` =
+              BIN ; ``:BN_Fmt`` = FP ; ``:BYT_Or`` = MSB ; ``:BYT_NR`` = 4.
+            - ``SRIbinary`` is the same as RIBinary except that the byte order is swapped, meaning
+              that the least significant byte is transferred first. This format is useful when
+              transferring data to IBM compatible PCs. The following are the DATa and WFMOutpre
               parameter settings (separated by semicolons): ``:ENCdg`` = BIN ;``:BN_Fmt`` = RI ;
               ``:BYT_Or`` = LSB ; ``:BYT_NR`` = 1,2.
-            - ``SRPbinary`` is the same as RPBinary except that the byte order is swapped,meaning
-              that the least significant byte is transferred first. This format is usefulwhen
-              transferring data to PCs. The following are the DATa and WFMOutpreparameter settings
+            - ``SRPbinary`` is the same as RPBinary except that the byte order is swapped, meaning
+              that the least significant byte is transferred first. This format is useful when
+              transferring data to PCs. The following are the DATa and WFMOutpre parameter settings
               (separated by semicolons): ``:ENCdg`` = BIN ; ``:BN_Fmt`` = RP; ``:BYT_Or`` = LSB ;
               ``:BYT_NR`` = 1,2.
-            - ``SFPbinary`` specifies floating point data in IBM PC format. The SFPbinaryargument
-              only works on math waveforms or ref waveforms saved from mathwaveforms. The following
-              are the DATa and WFMOutpre parameter settings(separated by semicolons): ``:ENCdg`` =
+            - ``SFPbinary`` specifies floating point data in IBM PC format. The SFP binary argument
+              only works on math waveforms or ref waveforms saved from math waveforms. The following
+              are the DATa and WFMOutpre parameter settings (separated by semicolons): ``:ENCdg`` =
               BIN ; ``:BN_Fmt`` = FP ; ``:BYT_Or`` = LSB; ``:BYT_NR`` = 4.
         """
         return self._encdg
@@ -529,12 +533,12 @@ class Data(SCPICmdWrite, SCPICmdRead):
             ```
 
         Info:
-            - ``<NR1>`` is the first acquisition that will be transferred, which ranges from 1 tothe
-              number of History or FastFrame acquisitions. Results are transferred fromacquisition
-              <NR1> to ``DATa:FRAMESTOP`` or the total number of acquisitions,whichever is less. If
-              <NR1> is greater than the number of acquisitions, thenonly the last acquisition is
-              transferred. If ``DATa:FRAMESTARt`` is greater ``thanDATa:FRAMESTOP``, then only a
-              single acquisition at <NR1> is transferred.
+            - ``<NR1>`` is the first acquisition that will be transferred, which ranges from 1 to
+              the number of History or FastFrame acquisitions. Results are transferred from
+              acquisition <NR1> to ``DATa:FRAMESTOP`` or the total number of acquisitions, whichever
+              is less. If <NR1> is greater than the number of acquisitions, then only the last
+              acquisition is transferred. If ``DATa:FRAMESTARt`` is greater than ``DATa:FRAMESTOP``,
+              then only a single acquisition at <NR1> is transferred.
         """
         return self._framestart
 
@@ -561,10 +565,10 @@ class Data(SCPICmdWrite, SCPICmdRead):
 
         Info:
             - ``<NR1>`` is the last acquisition that will be transferred, which ranges from 1 tothe
-              number of History or FastFrame acquisitions. Results will be transferredfrom
-              acquisitions ``DATa:FRAMESTARt`` to <NR1>. If <NR1> is greater than thenumber of
-              acquisitions, then data will be transferred up to the last acquisition.If
-              ``DATa:FRAMESTOP`` is less than ``DATa:FRAMESTARt``, then only a singleacquisition at
+              number of History or FastFrame acquisitions. Results will be transferred from
+              acquisitions ``DATa:FRAMESTARt`` to <NR1>. If <NR1> is greater than the number of
+              acquisitions, then data will be transferred up to the last acquisition. If
+              ``DATa:FRAMESTOP`` is less than ``DATa:FRAMESTARt``, then only a single acquisition at
               ``DATa:FRAMESTARt`` is transferred.
             - ``MAX`` indicates that data is always transferred up to the last acquisition.
         """
@@ -762,5 +766,9 @@ class Data(SCPICmdWrite, SCPICmdRead):
             - DATa:WIDth <NR1>
             - DATa:WIDth?
             ```
+
+        Info:
+            - ``<NR1>`` is an integer that indicates the number of bytes per point for the outgoing
+              waveform data when queried using the.
         """
         return self._width

@@ -110,6 +110,7 @@ class RecallMask(SCPICmdWrite):
         ```
 
     Info:
+        - ``MASK<x>`` is the destination mask.
         - ``<source file>`` is the source file. The file is expected to be located in a directory
           relative to the current working directory (specified by ``FILESystem:CWD``) unless a
           complete path is specified.
@@ -156,6 +157,7 @@ class Recall(SCPICmdRead):
             ```
 
         Info:
+            - ``MASK<x>`` is the destination mask.
             - ``<source file>`` is the source file. The file is expected to be located in a
               directory relative to the current working directory (specified by ``FILESystem:CWD``)
               unless a complete path is specified.

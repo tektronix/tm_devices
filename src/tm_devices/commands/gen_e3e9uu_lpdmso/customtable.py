@@ -38,6 +38,9 @@ class CustomtableList(SCPICmdReadWithArguments):
         ```
         - CUSTOMTABle:LIST? <QString>
         ```
+
+    Info:
+        - ``<QString>`` specifies the custom results table name.
     """
 
 
@@ -54,6 +57,9 @@ class CustomtableDelete(SCPICmdWrite):
         ```
         - CUSTOMTABle:DELete <QString>
         ```
+
+    Info:
+        - ``<QString>`` specifies the custom results table name.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -72,6 +78,9 @@ class CustomtableAddnew(SCPICmdWrite):
         ```
         - CUSTOMTABle:ADDNew <QString>
         ```
+
+    Info:
+        - ``<QString>`` specifies the custom results table name.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -113,6 +122,9 @@ class Customtable(SCPICmdRead):
             ```
             - CUSTOMTABle:ADDNew <QString>
             ```
+
+        Info:
+            - ``<QString>`` specifies the custom results table name.
         """
         return self._addnew
 
@@ -130,6 +142,9 @@ class Customtable(SCPICmdRead):
             ```
             - CUSTOMTABle:DELete <QString>
             ```
+
+        Info:
+            - ``<QString>`` specifies the custom results table name.
         """
         return self._delete
 
@@ -151,5 +166,8 @@ class Customtable(SCPICmdRead):
             ```
             - CUSTOMTABle:LIST? <QString>
             ```
+
+        Info:
+            - ``<QString>`` specifies the custom results table name.
         """
         return self._list

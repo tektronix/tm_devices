@@ -49,7 +49,7 @@ class VerticalDeskewToSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH<x>``
+        - ``CH<x>`` specifies an analog channel as the source.
     """
 
 
@@ -143,7 +143,7 @@ class VerticalDeskewTo(SCPICmdRead):
             ```
 
         Info:
-            - ``CH<x>``
+            - ``CH<x>`` specifies an analog channel as the source.
         """
         return self._source
 

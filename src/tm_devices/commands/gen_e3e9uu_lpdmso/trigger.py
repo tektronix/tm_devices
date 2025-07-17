@@ -835,7 +835,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:USB:TOKENType?
     - TRIGger:B:BUS:SOUrce B<x>
     - TRIGger:B:BUS:SOUrce?
-    - TRIGger:B:BY {EVENTS|TIMe}
+    - TRIGger:B:BY {EVENTS|TIMe
     - TRIGger:B:BY?
     - TRIGger:B:EDGE:COUPling {DC|HFRej|LFRej|NOISErej}
     - TRIGger:B:EDGE:COUPling?
@@ -4668,7 +4668,7 @@ class TriggerBEventsCount(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>`` is the number of B trigger events, which can range from 1 to 65,471.
+        - ``<NR1>`` is the number of B trigger events, which can range from.
     """
 
 
@@ -4710,7 +4710,7 @@ class TriggerBEvents(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR1>`` is the number of B trigger events, which can range from 1 to 65,471.
+            - ``<NR1>`` is the number of B trigger events, which can range from.
         """
         return self._count
 
@@ -4931,7 +4931,7 @@ class TriggerBBy(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BY {EVENTS|TIMe}
+        - TRIGger:B:BY {EVENTS|TIMe
         - TRIGger:B:BY?
         ```
 
@@ -4940,6 +4940,12 @@ class TriggerBBy(SCPICmdWrite, SCPICmdRead):
           the A trigger occurs. The number of events is specified by ``TRIGger:B:EVENTS:COUNt``.
         - ``TIMe`` sets the B trigger to occur a set time after the A trigger event. The time period
           is specified by ``TRIGger:B:TIMe``.
+        - ``ARMAtrigb`` arms the oscilloscope for triggering when the A-Event occurs (once) to
+          trigger on one or more B-Events.
+        - ``ACCepts`` sets the oscilloscope to trigger on the A Event if a B Event is found within
+          the specified timeout.
+        - ``REJects`` sets the oscilloscope to trigger on the A Event if a B Event is not found
+          within the specified timeout.
     """
 
 
@@ -18898,8 +18904,8 @@ class TriggerBBusBItemArinc429aLabelQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on label data for an
           ARINC429 bus signal. The bus number is specified by x. The trigger condition must be set
-          to LABel or LABELANDDATA.If the trigger condition is set to LABELANDDATA, the label
-          qualifier will be locked to Equal until the trigger condition is changed again.
+          to LABel LABELANDDATAIf the trigger condition is set to LABELANDDATA, the label qualifier
+          will be locked to Equal until the trigger condition is changed again.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -19016,9 +19022,8 @@ class TriggerBBusBItemArinc429aLabel(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on label data
               for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-              must be set to LABel or LABELANDDATA.If the trigger condition is set to LABELANDDATA,
-              the label qualifier will be locked to Equal until the trigger condition is changed
-              again.
+              must be set to LABel LABELANDDATAIf the trigger condition is set to LABELANDDATA, the
+              label qualifier will be locked to Equal until the trigger condition is changed again.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -19146,8 +19151,8 @@ class TriggerBBusBItemArinc429aDataQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on data in the DATA
           field for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-          must be set to DATa or LABELANDDATA.The trigger qualifier only applies to the bits defined
-          as the data field via the bus data field format specifier (using
+          must be set to DATa LABELANDDATAThe trigger qualifier only applies to the bits defined as
+          the data field via the bus data field format specifier (using
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -19266,8 +19271,8 @@ class TriggerBBusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on data in the
               DATA field for an ARINC429 bus signal. The bus number is specified by x. The trigger
-              condition must be set to DATa or LABELANDDATA.The trigger qualifier only applies to
-              the bits defined as the data field via the bus data field format specifier (using
+              condition must be set to DATa LABELANDDATAThe trigger qualifier only applies to the
+              bits defined as the data field via the bus data field format specifier (using
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -20043,7 +20048,7 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BY {EVENTS|TIMe}
+            - TRIGger:B:BY {EVENTS|TIMe
             - TRIGger:B:BY?
             ```
 
@@ -20053,6 +20058,12 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
               ``TRIGger:B:EVENTS:COUNt``.
             - ``TIMe`` sets the B trigger to occur a set time after the A trigger event. The time
               period is specified by ``TRIGger:B:TIMe``.
+            - ``ARMAtrigb`` arms the oscilloscope for triggering when the A-Event occurs (once) to
+              trigger on one or more B-Events.
+            - ``ACCepts`` sets the oscilloscope to trigger on the A Event if a B Event is found
+              within the specified timeout.
+            - ``REJects`` sets the oscilloscope to trigger on the A Event if a B Event is not found
+              within the specified timeout.
         """
         return self._by
 
@@ -23537,8 +23548,7 @@ class TriggerAHoldoffTime(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` specifies the holdoff time in seconds. The range is from 0 seconds through 10
-          seconds.
+        - ``<NR3>`` specifies the holdoff time in seconds. The range is from 0 s to.
     """
 
 
@@ -23640,8 +23650,7 @@ class TriggerAHoldoff(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` specifies the holdoff time in seconds. The range is from 0 seconds through
-              10 seconds.
+            - ``<NR3>`` specifies the holdoff time in seconds. The range is from 0 s to.
         """
         return self._time
 
@@ -37802,8 +37811,8 @@ class TriggerABusBItemArinc429aLabelQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on label data for an
           ARINC429 bus signal. The bus number is specified by x. The trigger condition must be set
-          to LABel or LABELANDDATA.If the trigger condition is set to LABELANDDATA, the label
-          qualifier will be locked to Equal until the trigger condition is changed again.
+          to LABel LABELANDDATAIf the trigger condition is set to LABELANDDATA, the label qualifier
+          will be locked to Equal until the trigger condition is changed again.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -37920,9 +37929,8 @@ class TriggerABusBItemArinc429aLabel(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on label data
               for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-              must be set to LABel or LABELANDDATA.If the trigger condition is set to LABELANDDATA,
-              the label qualifier will be locked to Equal until the trigger condition is changed
-              again.
+              must be set to LABel LABELANDDATAIf the trigger condition is set to LABELANDDATA, the
+              label qualifier will be locked to Equal until the trigger condition is changed again.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -38050,8 +38058,8 @@ class TriggerABusBItemArinc429aDataQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on data in the DATA
           field for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-          must be set to DATa or LABELANDDATA.The trigger qualifier only applies to the bits defined
-          as the data field via the bus data field format specifier (using
+          must be set to DATa LABELANDDATAThe trigger qualifier only applies to the bits defined as
+          the data field via the bus data field format specifier (using
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -38170,8 +38178,8 @@ class TriggerABusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on data in the
               DATA field for an ARINC429 bus signal. The bus number is specified by x. The trigger
-              condition must be set to DATa or LABELANDDATA.The trigger qualifier only applies to
-              the bits defined as the data field via the bus data field format specifier (using
+              condition must be set to DATa LABELANDDATAThe trigger qualifier only applies to the
+              bits defined as the data field via the bus data field format specifier (using
 
         Usage:
             - Using the ``.query()`` method will send the

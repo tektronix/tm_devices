@@ -4989,6 +4989,11 @@ class BusBItemSentPausepulse(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:SENT:PAUSEPULSe {NO|YES}
         - BUS:B<x>:SENT:PAUSEPULSe?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus waveform.
+        - ``NO`` specifies no pause pulse.
+        - ``YES`` specifies a pause pulse is used.
     """
 
 
@@ -5010,6 +5015,11 @@ class BusBItemSentNumchannel(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:SENT:NUMCHANnel {ONE|TWO}
         - BUS:B<x>:SENT:NUMCHANnel?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus waveform.
+        - ``ONE`` specifies a SENT bus with one fast channel.
+        - ``TWO`` specifies a SENT bus with two fast channels.
     """
 
 
@@ -5180,6 +5190,11 @@ class BusBItemSent(SCPICmdRead):
             - BUS:B<x>:SENT:NUMCHANnel {ONE|TWO}
             - BUS:B<x>:SENT:NUMCHANnel?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus waveform.
+            - ``ONE`` specifies a SENT bus with one fast channel.
+            - ``TWO`` specifies a SENT bus with two fast channels.
         """
         return self._numchannel
 
@@ -5202,6 +5217,11 @@ class BusBItemSent(SCPICmdRead):
             - BUS:B<x>:SENT:PAUSEPULSe {NO|YES}
             - BUS:B<x>:SENT:PAUSEPULSe?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus waveform.
+            - ``NO`` specifies no pause pulse.
+            - ``YES`` specifies a pause pulse is used.
         """
         return self._pausepulse
 
@@ -5783,7 +5803,7 @@ class BusBItemS8b10bBitrate(SCPICmdWriteNoArguments, SCPICmdRead):
         ```
 
     Info:
-        - ``B<x>`` is the number of the bus.
+        - ``B<x>`` is the number of the bus. Arguments are available at bit rates up to 1 Tbps.
     """
 
 
@@ -5796,7 +5816,7 @@ class BusBItemS8b10b(SCPICmdRead):
           AssertionError if the returned value does not match ``value``.
 
     Info:
-        - ``B<x>`` is the number of the bus.
+        - ``B<x>`` is the number of the bus. Arguments are available at bit rates up to 1 Tbps.
 
     Properties:
         - ``.bitrate``: The ``BUS:B<x>:S8B10B:BITRate`` command.
@@ -5831,7 +5851,7 @@ class BusBItemS8b10b(SCPICmdRead):
             ```
 
         Info:
-            - ``B<x>`` is the number of the bus.
+            - ``B<x>`` is the number of the bus. Arguments are available at bit rates up to 1 Tbps.
         """
         return self._bitrate
 
@@ -7384,6 +7404,12 @@ class BusBItemParallelClockIsclocked(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {ON|OFF|<NR1>}
         - BUS:B<x>:PARallel:CLOCk:ISCLOCKED?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``OFF`` argument specifies an asynchronous bus.
+        - ``ON`` argument specifies a clocked bus.
+        - ``<NR1>`` = 0 specifies an asynchronous bus; any other value specifies a clocked bus.
     """
 
 
@@ -7406,6 +7432,12 @@ class BusBItemParallelClockEdge(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:PARallel:CLOCk:EDGE {FALLING|RISING|EITHER}
         - BUS:B<x>:PARallel:CLOCk:EDGE?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``FALLING`` decodes on the falling edge of the clocked parallel bus signal.
+        - ``RISING`` decodes on the rising edge of the clocked parallel bus signal.
+        - ``EITHER`` decodes on the rising or falling edge of the clocked parallel bus signal.
     """
 
 
@@ -7416,6 +7448,9 @@ class BusBItemParallelClock(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel:CLOCk?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PARallel:CLOCk?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.edge``: The ``BUS:B<x>:PARallel:CLOCk:EDGE`` command.
@@ -7447,6 +7482,12 @@ class BusBItemParallelClock(SCPICmdRead):
             - BUS:B<x>:PARallel:CLOCk:EDGE {FALLING|RISING|EITHER}
             - BUS:B<x>:PARallel:CLOCk:EDGE?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``FALLING`` decodes on the falling edge of the clocked parallel bus signal.
+            - ``RISING`` decodes on the rising edge of the clocked parallel bus signal.
+            - ``EITHER`` decodes on the rising or falling edge of the clocked parallel bus signal.
         """
         return self._edge
 
@@ -7472,6 +7513,12 @@ class BusBItemParallelClock(SCPICmdRead):
             - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {ON|OFF|<NR1>}
             - BUS:B<x>:PARallel:CLOCk:ISCLOCKED?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``OFF`` argument specifies an asynchronous bus.
+            - ``ON`` argument specifies a clocked bus.
+            - ``<NR1>`` = 0 specifies an asynchronous bus; any other value specifies a clocked bus.
         """
         return self._isclocked
 
@@ -7497,6 +7544,10 @@ class BusBItemParallelClocksourceThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:PARallel:CLOCKSOUrce:THReshold <NR3>
         - BUS:B<x>:PARallel:CLOCKSOUrce:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``<NR3>`` is the clock bit source threshold for the parallel bus.
     """
 
 
@@ -7515,6 +7566,17 @@ class BusBItemParallelClocksource(SCPICmdWrite, SCPICmdRead):
         ```
         - BUS:B<x>:PARallel:CLOCKSOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>|NONE}
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog FlexChannel to use as the bus clock source.
+        - ``CH<x>_D<x>`` specifies a digital channel on a specified FlexChannel to use as the bus
+          clock source.
+        - ``MATH<x>`` specifies the math channel to use as the bus clock source.
+        - ``REF<x>`` specifies the reference channel to use as the bus clock source.
+        - ``REF<x>_D<x>`` specifies a digital reference waveform as the clock source waveform for
+          the specified parallel bus.
+        - ``NONE`` specifies the reference channel to use as the bus clock source.
 
     Properties:
         - ``.threshold``: The ``BUS:B<x>:PARallel:CLOCKSOUrce:THReshold`` command.
@@ -7548,6 +7610,10 @@ class BusBItemParallelClocksource(SCPICmdWrite, SCPICmdRead):
             - BUS:B<x>:PARallel:CLOCKSOUrce:THReshold <NR3>
             - BUS:B<x>:PARallel:CLOCKSOUrce:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``<NR3>`` is the clock bit source threshold for the parallel bus.
         """
         return self._threshold
 
@@ -7567,6 +7633,11 @@ class BusBItemParallelBitsourceItemThreshold(SCPICmdWrite):
         ```
         - BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold <NR3>
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``BIT<x>`` is the number of the bit and is an integer in the range of 1 to 64.
+        - ``<NR3>`` is the specified bit source threshold for the specified parallel bus.
     """
 
 
@@ -7584,6 +7655,17 @@ class BusBItemParallelBitsourceItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCP
         ```
         - BUS:B<x>:PARallel:BIT<x>SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>|NONE}
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``BIT<x>`` is the number of the bit and is an integer in the range of 1 to 64.
+        - ``CH<x>`` is the specified bit source.
+        - ``CH<x>_D<x>`` is the specified bit source.
+        - ``MATH<x>`` is the specified bit source.
+        - ``REF<x>`` is the specified bit source.
+        - ``REF<x>_D<x>`` specifies a digital reference waveform as the bit<x> source waveform for
+          the specified parallel bus.
+        - ``NONE`` disables the bit source.
 
     Properties:
         - ``.threshold``: The ``BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold`` command.
@@ -7611,6 +7693,11 @@ class BusBItemParallelBitsourceItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCP
             ```
             - BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold <NR3>
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``BIT<x>`` is the number of the bit and is an integer in the range of 1 to 64.
+            - ``<NR3>`` is the specified bit source threshold for the specified parallel bus.
         """
         return self._threshold
 
@@ -7653,6 +7740,10 @@ class BusBItemParallelAllthresholds(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:PARallel:ALLTHResholds <NR3>
         ```
 
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the source threshold.
+
     Properties:
         - ``.apply``: The ``BUS:B<x>:PARallel:ALLTHResholds:APPly`` command.
     """
@@ -7692,6 +7783,9 @@ class BusBItemParallel(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PARallel?`` query and raise
           an AssertionError if the returned value does not match ``value``.
 
+    Info:
+        - ``B<x>`` is the number of the bus.
+
     Properties:
         - ``.allthresholds``: The ``BUS:B<x>:PARallel:ALLTHResholds`` command.
         - ``.bitsource``: The ``BUS:B<x>:PARallel:BIT<x>SOUrce`` command.
@@ -7728,6 +7822,10 @@ class BusBItemParallel(SCPICmdRead):
             - BUS:B<x>:PARallel:ALLTHResholds <NR3>
             ```
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the source threshold.
+
         Sub-properties:
             - ``.apply``: The ``BUS:B<x>:PARallel:ALLTHResholds:APPly`` command.
         """
@@ -7748,6 +7846,17 @@ class BusBItemParallel(SCPICmdRead):
             ```
             - BUS:B<x>:PARallel:BIT<x>SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>|NONE}
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``BIT<x>`` is the number of the bit and is an integer in the range of 1 to 64.
+            - ``CH<x>`` is the specified bit source.
+            - ``CH<x>_D<x>`` is the specified bit source.
+            - ``MATH<x>`` is the specified bit source.
+            - ``REF<x>`` is the specified bit source.
+            - ``REF<x>_D<x>`` specifies a digital reference waveform as the bit<x> source waveform
+              for the specified parallel bus.
+            - ``NONE`` disables the bit source.
 
         Sub-properties:
             - ``.threshold``: The ``BUS:B<x>:PARallel:BIT<x>SOUrce:THReshold`` command.
@@ -7771,6 +7880,17 @@ class BusBItemParallel(SCPICmdRead):
             - BUS:B<x>:PARallel:CLOCKSOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>|NONE}
             ```
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog FlexChannel to use as the bus clock source.
+            - ``CH<x>_D<x>`` specifies a digital channel on a specified FlexChannel to use as the
+              bus clock source.
+            - ``MATH<x>`` specifies the math channel to use as the bus clock source.
+            - ``REF<x>`` specifies the reference channel to use as the bus clock source.
+            - ``REF<x>_D<x>`` specifies a digital reference waveform as the clock source waveform
+              for the specified parallel bus.
+            - ``NONE`` specifies the reference channel to use as the bus clock source.
+
         Sub-properties:
             - ``.threshold``: The ``BUS:B<x>:PARallel:CLOCKSOUrce:THReshold`` command.
         """
@@ -7784,6 +7904,9 @@ class BusBItemParallel(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel:CLOCk?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PARallel:CLOCk?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.edge``: The ``BUS:B<x>:PARallel:CLOCk:EDGE`` command.
@@ -7810,6 +7933,12 @@ class BusBItemOnewireMode(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ONEWIRe:MODe {STAndard|OVErdrive}
         - BUS:B<x>:ONEWIRe:MODe?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``STAndard`` specifies the mode as standard. Standard is the default mode whose value is
+          15.4 kbs.
+        - ``OVErdrive`` specifies the mode as overdrive.
     """
 
 
@@ -7832,6 +7961,11 @@ class BusBItemOnewireDataThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ONEWIRe:DATA:THReshold <NR3>
         - BUS:B<x>:ONEWIRe:DATA:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the ONEWIRe Strobe threshold for the specified bus in volts. The valid range
+          is -8 V to +8 V. The default value is 1.25 V.
     """
 
 
@@ -7854,6 +7988,12 @@ class BusBItemOnewireDataSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ONEWIRe:DATA:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:ONEWIRe:DATA:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``MATH<x>`` specifies a math waveform as the source.
+        - ``REF<x>`` specifies a digital reference waveform as the source.
     """
 
 
@@ -7864,6 +8004,9 @@ class BusBItemOnewireData(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ONEWIRe:DATA?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ONEWIRe:DATA?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.source``: The ``BUS:B<x>:ONEWIRe:DATA:SOUrce`` command.
@@ -7895,6 +8038,12 @@ class BusBItemOnewireData(SCPICmdRead):
             - BUS:B<x>:ONEWIRe:DATA:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:ONEWIRe:DATA:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``MATH<x>`` specifies a math waveform as the source.
+            - ``REF<x>`` specifies a digital reference waveform as the source.
         """
         return self._source
 
@@ -7919,6 +8068,11 @@ class BusBItemOnewireData(SCPICmdRead):
             - BUS:B<x>:ONEWIRe:DATA:THReshold <NR3>
             - BUS:B<x>:ONEWIRe:DATA:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the ONEWIRe Strobe threshold for the specified bus in volts. The valid
+              range is -8 V to +8 V. The default value is 1.25 V.
         """
         return self._threshold
 
@@ -7930,6 +8084,9 @@ class BusBItemOnewire(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ONEWIRe?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ONEWIRe?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.data``: The ``BUS:B<x>:ONEWIRe:DATA`` command tree.
@@ -7949,6 +8106,9 @@ class BusBItemOnewire(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:ONEWIRe:DATA?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ONEWIRe:DATA?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.source``: The ``BUS:B<x>:ONEWIRe:DATA:SOUrce`` command.
@@ -7976,6 +8136,12 @@ class BusBItemOnewire(SCPICmdRead):
             - BUS:B<x>:ONEWIRe:MODe {STAndard|OVErdrive}
             - BUS:B<x>:ONEWIRe:MODe?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``STAndard`` specifies the mode as standard. Standard is the default mode whose value
+              is 15.4 kbs.
+            - ``OVErdrive`` specifies the mode as overdrive.
         """
         return self._mode
 
@@ -7998,6 +8164,11 @@ class BusBItemNrzThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NRZ:THReshold <NR3>
         - BUS:B<x>:NRZ:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the NRZ Strobe threshold for the specified bus in volts. The valid range is
+          -8 V to +8 V.
     """
 
 
@@ -8020,6 +8191,10 @@ class BusBItemNrzSpmiVersion(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NRZ:SPMI:VERsion v<x>
         - BUS:B<x>:NRZ:SPMI:VERsion?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``v<x>`` specifies version the version number. Valid version are 1 or 2.
     """
 
 
@@ -8030,6 +8205,9 @@ class BusBItemNrzSpmi(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:NRZ:SPMI?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NRZ:SPMI?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.version``: The ``BUS:B<x>:NRZ:SPMI:VERsion`` command.
@@ -8059,6 +8237,10 @@ class BusBItemNrzSpmi(SCPICmdRead):
             - BUS:B<x>:NRZ:SPMI:VERsion v<x>
             - BUS:B<x>:NRZ:SPMI:VERsion?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``v<x>`` specifies version the version number. Valid version are 1 or 2.
         """
         return self._version
 
@@ -8102,6 +8284,11 @@ class BusBItemNrzPolarity(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NRZ:POLarity {INVerted|NORmal}
         - BUS:B<x>:NRZ:POLarity?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``INVerted`` specifies inverted polarity.
+        - ``NORmal`` specifies normal polarity.
     """
 
 
@@ -8122,6 +8309,10 @@ class BusBItemNrzBitrate(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NRZ:BITRate <NR1>
         - BUS:B<x>:NRZ:BITRate?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the bit rate up to 1 G.
     """
 
 
@@ -8143,6 +8334,14 @@ class BusBItemNrzBitorder(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NRZ:BITOrder {LSB|MSB}
         - BUS:B<x>:NRZ:BITOrder?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``LSB`` specifies that each bit becomes the recovered value's new LSB, after shifting
+          previously recovered bits one place to the left. The decoding happens right to left.
+        - ``MSB`` specifies that each successive bit from the bus's data line becomes the new MSB of
+          the recovered value, shifting any previously recovered bits one place to the right. The
+          decoding happens left to right.
     """
 
 
@@ -8153,6 +8352,9 @@ class BusBItemNrz(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:NRZ?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NRZ?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.bitorder``: The ``BUS:B<x>:NRZ:BITOrder`` command.
@@ -8192,6 +8394,14 @@ class BusBItemNrz(SCPICmdRead):
             - BUS:B<x>:NRZ:BITOrder {LSB|MSB}
             - BUS:B<x>:NRZ:BITOrder?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``LSB`` specifies that each bit becomes the recovered value's new LSB, after shifting
+              previously recovered bits one place to the left. The decoding happens right to left.
+            - ``MSB`` specifies that each successive bit from the bus's data line becomes the new
+              MSB of the recovered value, shifting any previously recovered bits one place to the
+              right. The decoding happens left to right.
         """
         return self._bitorder
 
@@ -8214,6 +8424,10 @@ class BusBItemNrz(SCPICmdRead):
             - BUS:B<x>:NRZ:BITRate <NR1>
             - BUS:B<x>:NRZ:BITRate?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the bit rate up to 1 G.
         """
         return self._bitrate
 
@@ -8237,6 +8451,11 @@ class BusBItemNrz(SCPICmdRead):
             - BUS:B<x>:NRZ:POLarity {INVerted|NORmal}
             - BUS:B<x>:NRZ:POLarity?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``INVerted`` specifies inverted polarity.
+            - ``NORmal`` specifies normal polarity.
         """
         return self._polarity
 
@@ -8272,6 +8491,9 @@ class BusBItemNrz(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NRZ:SPMI?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.version``: The ``BUS:B<x>:NRZ:SPMI:VERsion`` command.
         """
@@ -8297,6 +8519,11 @@ class BusBItemNrz(SCPICmdRead):
             - BUS:B<x>:NRZ:THReshold <NR3>
             - BUS:B<x>:NRZ:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the NRZ Strobe threshold for the specified bus in volts. The valid range
+              is -8 V to +8 V.
         """
         return self._threshold
 
@@ -8320,6 +8547,11 @@ class BusBItemNfcTransitionZero(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NFC:TRANsition:ZERo {ge|ieee}
         - BUS:B<x>:NFC:TRANsition:ZERo?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``ge`` sets the transition type to Manchester G.E thomas convention.
+        - ``ieee`` sets the transition type to Manchester IEEE convention.
     """
 
 
@@ -8330,6 +8562,9 @@ class BusBItemNfcTransition(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:TRANsition?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:TRANsition?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.zero``: The ``BUS:B<x>:NFC:TRANsition:ZERo`` command.
@@ -8359,6 +8594,11 @@ class BusBItemNfcTransition(SCPICmdRead):
             - BUS:B<x>:NFC:TRANsition:ZERo {ge|ieee}
             - BUS:B<x>:NFC:TRANsition:ZERo?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``ge`` sets the transition type to Manchester G.E thomas convention.
+            - ``ieee`` sets the transition type to Manchester IEEE convention.
         """
         return self._zero
 
@@ -8380,6 +8620,11 @@ class BusBItemNfcTolerance(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NFC:TOLerance <NR3>
         - BUS:B<x>:NFC:TOLerance?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` sets the tolerance. The default tolerance value is 10%. The minimum value is 1%
+          and the maximum is 50%.
     """
 
 
@@ -8400,6 +8645,13 @@ class BusBItemNfcStd(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NFC:STD {NFC15693|NFC14443A|NFC14443B|NFCFELica}
         - BUS:B<x>:NFC:STD?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``NFC15693`` sets the standard to 15693.
+        - ``NFC14443A`` sets the standard to 14443A.
+        - ``NFC14443B`` sets the standard to 14443B.
+        - ``NFCFELica`` sets the standard to Felica.
     """
 
 
@@ -8422,6 +8674,11 @@ class BusBItemNfcStartIndex(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NFC:START:INDex <NR1>
         - BUS:B<x>:NFC:START:INDex?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the index. The default value is 1. The minimum value is 1 and the maximum
+          is 8.
     """
 
 
@@ -8432,6 +8689,9 @@ class BusBItemNfcStart(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:START?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:START?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.index``: The ``BUS:B<x>:NFC:START:INDex`` command.
@@ -8461,6 +8721,11 @@ class BusBItemNfcStart(SCPICmdRead):
             - BUS:B<x>:NFC:START:INDex <NR1>
             - BUS:B<x>:NFC:START:INDex?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the index. The default value is 1. The minimum value is 1 and the
+              maximum is 8.
         """
         return self._index
 
@@ -8482,6 +8747,10 @@ class BusBItemNfcSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NFC:SOUrce {CH<x>}
         - BUS:B<x>:NFC:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the source.
     """
 
 
@@ -8503,6 +8772,11 @@ class BusBItemNfcRspThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NFC:RSP:THReshold <NR3>
         - BUS:B<x>:NFC:RSP:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` sets the threshold. The default value is 1.0 V. The minimum value is -8.0 V and
+          the maximum is 8.0 V.
     """
 
 
@@ -8513,6 +8787,9 @@ class BusBItemNfcRsp(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:RSP?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:RSP?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.threshold``: The ``BUS:B<x>:NFC:RSP:THReshold`` command.
@@ -8541,6 +8818,11 @@ class BusBItemNfcRsp(SCPICmdRead):
             - BUS:B<x>:NFC:RSP:THReshold <NR3>
             - BUS:B<x>:NFC:RSP:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` sets the threshold. The default value is 1.0 V. The minimum value is -8.0 V
+              and the maximum is 8.0 V.
         """
         return self._threshold
 
@@ -8564,6 +8846,11 @@ class BusBItemNfcResponsePolarity(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NFC:RESPonse:POLarity {NORMal|INVerted}
         - BUS:B<x>:NFC:RESPonse:POLarity?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``NORMal`` sets the polarity of command to Normal.
+        - ``INVerted`` sets the polarity of command to Inverted.
     """
 
 
@@ -8574,6 +8861,9 @@ class BusBItemNfcResponse(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:RESPonse?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:RESPonse?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:NFC:RESPonse:POLarity`` command.
@@ -8603,6 +8893,11 @@ class BusBItemNfcResponse(SCPICmdRead):
             - BUS:B<x>:NFC:RESPonse:POLarity {NORMal|INVerted}
             - BUS:B<x>:NFC:RESPonse:POLarity?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``NORMal`` sets the polarity of command to Normal.
+            - ``INVerted`` sets the polarity of command to Inverted.
         """
         return self._polarity
 
@@ -8626,6 +8921,11 @@ class BusBItemNfcCommandPolarity(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NFC:COMMand:POLarity {NORMal|INVerted}
         - BUS:B<x>:NFC:COMMand:POLarity?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``NORMal`` sets the polarity of command to Normal.
+        - ``INVerted`` sets the polarity of command to Inverted.
     """
 
 
@@ -8636,6 +8936,9 @@ class BusBItemNfcCommand(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:COMMand?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:COMMand?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:NFC:COMMand:POLarity`` command.
@@ -8665,6 +8968,11 @@ class BusBItemNfcCommand(SCPICmdRead):
             - BUS:B<x>:NFC:COMMand:POLarity {NORMal|INVerted}
             - BUS:B<x>:NFC:COMMand:POLarity?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``NORMal`` sets the polarity of command to Normal.
+            - ``INVerted`` sets the polarity of command to Inverted.
         """
         return self._polarity
 
@@ -8688,6 +8996,11 @@ class BusBItemNfcCmdTransitionZero(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NFC:CMD:TRANsition:ZERo {RISing|FALLing}
         - BUS:B<x>:NFC:CMD:TRANsition:ZERo?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``RISing`` sets the Manchester type to G.E thomas. This is the default value. FALLing sets
+          the Manchester type to IEEE.
     """
 
 
@@ -8698,6 +9011,9 @@ class BusBItemNfcCmdTransition(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:CMD:TRANsition?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:CMD:TRANsition?`` query
           and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.zero``: The ``BUS:B<x>:NFC:CMD:TRANsition:ZERo`` command.
@@ -8729,6 +9045,11 @@ class BusBItemNfcCmdTransition(SCPICmdRead):
             - BUS:B<x>:NFC:CMD:TRANsition:ZERo {RISing|FALLing}
             - BUS:B<x>:NFC:CMD:TRANsition:ZERo?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``RISing`` sets the Manchester type to G.E thomas. This is the default value. FALLing
+              sets the Manchester type to IEEE.
         """
         return self._zero
 
@@ -8751,6 +9072,11 @@ class BusBItemNfcCmdThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NFC:CMD:THReshold <NR3>
         - BUS:B<x>:NFC:CMD:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` sets the threshold. The default bit rate value is 1.0 V. The minimum value is
+          -8.0 V and the maximum is 8.0 V.
     """
 
 
@@ -8773,6 +9099,11 @@ class BusBItemNfcCmdStartindex(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NFC:CMD:STARTINDex <NR1>
         - BUS:B<x>:NFC:CMD:STARTINDex?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the Manchester start index. The default value is 1. The minimum value is 1
+          and the maximum is 8.
     """
 
 
@@ -8783,6 +9114,9 @@ class BusBItemNfcCmd(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:CMD?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:CMD?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.startindex``: The ``BUS:B<x>:NFC:CMD:STARTINDex`` command.
@@ -8816,6 +9150,11 @@ class BusBItemNfcCmd(SCPICmdRead):
             - BUS:B<x>:NFC:CMD:STARTINDex <NR1>
             - BUS:B<x>:NFC:CMD:STARTINDex?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the Manchester start index. The default value is 1. The minimum value
+              is 1 and the maximum is 8.
         """
         return self._startindex
 
@@ -8838,6 +9177,11 @@ class BusBItemNfcCmd(SCPICmdRead):
             - BUS:B<x>:NFC:CMD:THReshold <NR3>
             - BUS:B<x>:NFC:CMD:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` sets the threshold. The default bit rate value is 1.0 V. The minimum value
+              is -8.0 V and the maximum is 8.0 V.
         """
         return self._threshold
 
@@ -8849,6 +9193,9 @@ class BusBItemNfcCmd(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:CMD:TRANsition?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:CMD:TRANsition?``
               query and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.zero``: The ``BUS:B<x>:NFC:CMD:TRANsition:ZERo`` command.
@@ -8874,6 +9221,11 @@ class BusBItemNfcBitrate(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NFC:BITRate <NR1>
         - BUS:B<x>:NFC:BITRate?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the bit rate. The default bit rate value is 106000 bps. The minimum value
+          is 1 and the maximum is 1000000000.
     """
 
 
@@ -8896,6 +9248,10 @@ class BusBItemNfcApplydemod(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NFC:APPLYDEMod {1|0}
         - BUS:B<x>:NFC:APPLYDEMod?
         ```
+
+    Info:
+        - ``1`` sets the demodulation application as true. This is the default value.
+        - ``0`` sets the demodulation application as false.
     """
 
 
@@ -8956,6 +9312,10 @@ class BusBItemNfc(SCPICmdRead):
             - BUS:B<x>:NFC:APPLYDEMod {1|0}
             - BUS:B<x>:NFC:APPLYDEMod?
             ```
+
+        Info:
+            - ``1`` sets the demodulation application as true. This is the default value.
+            - ``0`` sets the demodulation application as false.
         """
         return self._applydemod
 
@@ -8979,6 +9339,11 @@ class BusBItemNfc(SCPICmdRead):
             - BUS:B<x>:NFC:BITRate <NR1>
             - BUS:B<x>:NFC:BITRate?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the bit rate. The default bit rate value is 106000 bps. The minimum
+              value is 1 and the maximum is 1000000000.
         """
         return self._bitrate
 
@@ -8990,6 +9355,9 @@ class BusBItemNfc(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:CMD?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:CMD?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.startindex``: The ``BUS:B<x>:NFC:CMD:STARTINDex`` command.
@@ -9007,6 +9375,9 @@ class BusBItemNfc(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:COMMand?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:NFC:COMMand:POLarity`` command.
         """
@@ -9021,6 +9392,9 @@ class BusBItemNfc(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:RESPonse?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:NFC:RESPonse:POLarity`` command.
         """
@@ -9034,6 +9408,9 @@ class BusBItemNfc(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:RSP?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:RSP?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.threshold``: The ``BUS:B<x>:NFC:RSP:THReshold`` command.
@@ -9059,6 +9436,10 @@ class BusBItemNfc(SCPICmdRead):
             - BUS:B<x>:NFC:SOUrce {CH<x>}
             - BUS:B<x>:NFC:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the source.
         """
         return self._source
 
@@ -9070,6 +9451,9 @@ class BusBItemNfc(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:START?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:START?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.index``: The ``BUS:B<x>:NFC:START:INDex`` command.
@@ -9094,6 +9478,13 @@ class BusBItemNfc(SCPICmdRead):
             - BUS:B<x>:NFC:STD {NFC15693|NFC14443A|NFC14443B|NFCFELica}
             - BUS:B<x>:NFC:STD?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``NFC15693`` sets the standard to 15693.
+            - ``NFC14443A`` sets the standard to 14443A.
+            - ``NFC14443B`` sets the standard to 14443B.
+            - ``NFCFELica`` sets the standard to Felica.
         """
         return self._std
 
@@ -9116,6 +9507,11 @@ class BusBItemNfc(SCPICmdRead):
             - BUS:B<x>:NFC:TOLerance <NR3>
             - BUS:B<x>:NFC:TOLerance?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` sets the tolerance. The default tolerance value is 10%. The minimum value is
+              1% and the maximum is 50%.
         """
         return self._tolerance
 
@@ -9127,6 +9523,9 @@ class BusBItemNfc(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:NFC:TRANsition?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NFC:TRANsition?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.zero``: The ``BUS:B<x>:NFC:TRANsition:ZERo`` command.
@@ -9153,6 +9552,10 @@ class BusBItemMil1553bThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MIL1553B:THRESHold <NR3>
         - BUS:B<x>:MIL1553B:THRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the MIL-STD-1553 upper threshold for the specified bus.
     """
 
 
@@ -9175,6 +9578,12 @@ class BusBItemMil1553bSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MIL1553B:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:MIL1553B:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the source waveform for the MIL-STD-1553 bus.
+        - ``MATH<x>`` specifies a math waveform as the source waveform for the MIL-STD-1553 bus.
+        - ``REF<x>`` specifies a reference waveform as the source waveform for the MIL-STD-1553 bus.
     """
 
 
@@ -9199,6 +9608,10 @@ class BusBItemMil1553bResponsetimeMinimum(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MIL1553B:RESPonsetime:MINimum <NR3>
         - BUS:B<x>:MIL1553B:RESPonsetime:MINimum?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``<NR3>`` is a floating point number that specifies the minimum response time, in seconds.
     """
 
 
@@ -9223,6 +9636,10 @@ class BusBItemMil1553bResponsetimeMaximum(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MIL1553B:RESPonsetime:MAXimum <NR3>
         - BUS:B<x>:MIL1553B:RESPonsetime:MAXimum?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is a floating point number that specifies the maximum response time, in seconds.
     """
 
 
@@ -9233,6 +9650,9 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime?``
           query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.maximum``: The ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum`` command.
@@ -9266,6 +9686,11 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
             - BUS:B<x>:MIL1553B:RESPonsetime:MAXimum <NR3>
             - BUS:B<x>:MIL1553B:RESPonsetime:MAXimum?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is a floating point number that specifies the maximum response time, in
+              seconds.
         """
         return self._maximum
 
@@ -9291,6 +9716,11 @@ class BusBItemMil1553bResponsetime(SCPICmdRead):
             - BUS:B<x>:MIL1553B:RESPonsetime:MINimum <NR3>
             - BUS:B<x>:MIL1553B:RESPonsetime:MINimum?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``<NR3>`` is a floating point number that specifies the minimum response time, in
+              seconds.
         """
         return self._minimum
 
@@ -9314,6 +9744,11 @@ class BusBItemMil1553bPolarity(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MIL1553B:POLarity {NORMal|INVERTed}
         - BUS:B<x>:MIL1553B:POLarity?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``NORMal`` specifies normal polarity.
+        - ``INVERTed`` specifies inverted polarity.
     """
 
 
@@ -9336,6 +9771,10 @@ class BusBItemMil1553bLowthreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MIL1553B:LOWTHRESHold <NR3>
         - BUS:B<x>:MIL1553B:LOWTHRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the MIL-STD-1553 lower threshold for the specified bus.
     """
 
 
@@ -9346,6 +9785,9 @@ class BusBItemMil1553b(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.lowthreshold``: The ``BUS:B<x>:MIL1553B:LOWTHRESHold`` command.
@@ -9387,6 +9829,10 @@ class BusBItemMil1553b(SCPICmdRead):
             - BUS:B<x>:MIL1553B:LOWTHRESHold <NR3>
             - BUS:B<x>:MIL1553B:LOWTHRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the MIL-STD-1553 lower threshold for the specified bus.
         """
         return self._lowthreshold
 
@@ -9410,6 +9856,11 @@ class BusBItemMil1553b(SCPICmdRead):
             - BUS:B<x>:MIL1553B:POLarity {NORMal|INVERTed}
             - BUS:B<x>:MIL1553B:POLarity?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``NORMal`` specifies normal polarity.
+            - ``INVERTed`` specifies inverted polarity.
         """
         return self._polarity
 
@@ -9421,6 +9872,9 @@ class BusBItemMil1553b(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B:RESPonsetime?``
               query and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.maximum``: The ``BUS:B<x>:MIL1553B:RESPonsetime:MAXimum`` command.
@@ -9448,6 +9902,13 @@ class BusBItemMil1553b(SCPICmdRead):
             - BUS:B<x>:MIL1553B:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:MIL1553B:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the source waveform for the MIL-STD-1553 bus.
+            - ``MATH<x>`` specifies a math waveform as the source waveform for the MIL-STD-1553 bus.
+            - ``REF<x>`` specifies a reference waveform as the source waveform for the MIL-STD-1553
+              bus.
         """
         return self._source
 
@@ -9471,6 +9932,10 @@ class BusBItemMil1553b(SCPICmdRead):
             - BUS:B<x>:MIL1553B:THRESHold <NR3>
             - BUS:B<x>:MIL1553B:THRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the MIL-STD-1553 upper threshold for the specified bus.
         """
         return self._threshold
 
@@ -9494,6 +9959,11 @@ class BusBItemMdioDataThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MDIO:DATA:THReshold <NR3>
         - BUS:B<x>:MDIO:DATA:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the data source threshold for the specified bus. The argument range is -8V to
+          +8V.
     """
 
 
@@ -9515,6 +9985,12 @@ class BusBItemMdioDataSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MDIO:DATA:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:MDIO:DATA:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the data source.
+        - ``MATH<x>`` specifies a math waveform as the data source.
+        - ``REF<x>`` specifies a reference waveform as the data source.
     """
 
 
@@ -9525,6 +10001,9 @@ class BusBItemMdioData(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MDIO:DATA?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MDIO:DATA?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.source``: The ``BUS:B<x>:MDIO:DATA:SOUrce`` command.
@@ -9556,6 +10035,12 @@ class BusBItemMdioData(SCPICmdRead):
             - BUS:B<x>:MDIO:DATA:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:MDIO:DATA:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the data source.
+            - ``MATH<x>`` specifies a math waveform as the data source.
+            - ``REF<x>`` specifies a reference waveform as the data source.
         """
         return self._source
 
@@ -9579,6 +10064,11 @@ class BusBItemMdioData(SCPICmdRead):
             - BUS:B<x>:MDIO:DATA:THReshold <NR3>
             - BUS:B<x>:MDIO:DATA:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the data source threshold for the specified bus. The argument range is
+              -8V to +8V.
         """
         return self._threshold
 
@@ -9602,6 +10092,11 @@ class BusBItemMdioClockThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MDIO:CLOCk:THReshold <NR3>
         - BUS:B<x>:MDIO:CLOCk:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the clock source threshold for the specified bus. The argument range is -8V
+          to +8V.
     """
 
 
@@ -9624,6 +10119,12 @@ class BusBItemMdioClockSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MDIO:CLOCk:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:MDIO:CLOCk:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the Clock source.
+        - ``MATH<x>`` specifies a math waveform as the Clock source.
+        - ``REF<x>`` specifies a reference waveform as the Clock source.
     """
 
 
@@ -9634,6 +10135,9 @@ class BusBItemMdioClock(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MDIO:CLOCk?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MDIO:CLOCk?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.source``: The ``BUS:B<x>:MDIO:CLOCk:SOUrce`` command.
@@ -9665,6 +10169,12 @@ class BusBItemMdioClock(SCPICmdRead):
             - BUS:B<x>:MDIO:CLOCk:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:MDIO:CLOCk:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the Clock source.
+            - ``MATH<x>`` specifies a math waveform as the Clock source.
+            - ``REF<x>`` specifies a reference waveform as the Clock source.
         """
         return self._source
 
@@ -9688,6 +10198,11 @@ class BusBItemMdioClock(SCPICmdRead):
             - BUS:B<x>:MDIO:CLOCk:THReshold <NR3>
             - BUS:B<x>:MDIO:CLOCk:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the clock source threshold for the specified bus. The argument range is
+              -8V to +8V.
         """
         return self._threshold
 
@@ -9699,6 +10214,9 @@ class BusBItemMdio(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MDIO?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MDIO?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.clock``: The ``BUS:B<x>:MDIO:CLOCk`` command tree.
@@ -9719,6 +10237,9 @@ class BusBItemMdio(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MDIO:CLOCk?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.source``: The ``BUS:B<x>:MDIO:CLOCk:SOUrce`` command.
             - ``.threshold``: The ``BUS:B<x>:MDIO:CLOCk:THReshold`` command.
@@ -9733,6 +10254,9 @@ class BusBItemMdio(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:MDIO:DATA?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MDIO:DATA?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.source``: The ``BUS:B<x>:MDIO:DATA:SOUrce`` command.
@@ -9759,6 +10283,11 @@ class BusBItemManchesterParity(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MANChester:parity {ODD|EVEN|NONE}
         - BUS:B<x>:MANChester:parity?
         ```
+
+    Info:
+        - ``ODD`` sets the number of 1's to odd.
+        - ``EVEN`` sets the number of 1's to even.
+        - ``NONE`` specifies that Parity is not considered.
     """
 
 
@@ -9780,6 +10309,10 @@ class BusBItemManchesterWordsize(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MANChester:WORDSIZe <NR1>
         - BUS:B<x>:MANChester:WORDSIZe?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the word size in bits.
     """
 
 
@@ -9801,6 +10334,10 @@ class BusBItemManchesterWordCount(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MANChester:WORD:COUNt <NR1>
         - BUS:B<x>:MANChester:WORD:COUNt?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the word count in bits.
     """
 
 
@@ -9811,6 +10348,9 @@ class BusBItemManchesterWord(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MANChester:WORD?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester:WORD?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.count``: The ``BUS:B<x>:MANChester:WORD:COUNt`` command.
@@ -9840,6 +10380,10 @@ class BusBItemManchesterWord(SCPICmdRead):
             - BUS:B<x>:MANChester:WORD:COUNt <NR1>
             - BUS:B<x>:MANChester:WORD:COUNt?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the word count in bits.
         """
         return self._count
 
@@ -9863,6 +10407,10 @@ class BusBItemManchesterTrailerLength(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MANChester:TRAiler:LENGth <NR1>
         - BUS:B<x>:MANChester:TRAiler:LENGth?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the trailer length in bits.
     """
 
 
@@ -9873,6 +10421,9 @@ class BusBItemManchesterTrailer(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MANChester:TRAiler?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester:TRAiler?`` query
           and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.length``: The ``BUS:B<x>:MANChester:TRAiler:LENGth`` command.
@@ -9904,6 +10455,10 @@ class BusBItemManchesterTrailer(SCPICmdRead):
             - BUS:B<x>:MANChester:TRAiler:LENGth <NR1>
             - BUS:B<x>:MANChester:TRAiler:LENGth?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the trailer length in bits.
         """
         return self._length
 
@@ -9928,6 +10483,11 @@ class BusBItemManchesterTranstionZero(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MANChester:TRANstion:ZERo {FALLing|RISing}
         - BUS:B<x>:MANChester:TRANstion:ZERo?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``FALLing`` sets Falling as 0.
+        - ``RISing`` sets Rising as 0.
     """
 
 
@@ -9938,6 +10498,9 @@ class BusBItemManchesterTranstion(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MANChester:TRANstion?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester:TRANstion?`` query
           and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.zero``: The ``BUS:B<x>:MANChester:TRANstion:ZERo`` command.
@@ -9970,6 +10533,11 @@ class BusBItemManchesterTranstion(SCPICmdRead):
             - BUS:B<x>:MANChester:TRANstion:ZERo {FALLing|RISing}
             - BUS:B<x>:MANChester:TRANstion:ZERo?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``FALLing`` sets Falling as 0.
+            - ``RISing`` sets Rising as 0.
         """
         return self._zero
 
@@ -9992,6 +10560,10 @@ class BusBItemManchesterTolerance(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MANChester:TOLerance <NR3>
         - BUS:B<x>:MANChester:TOLerance?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` sets the Tolerance bus parameter.
     """
 
 
@@ -10014,6 +10586,11 @@ class BusBItemManchesterThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MANChester:THReshold <NR3>
         - BUS:B<x>:MANChester:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` sets the Manchester Strobe threshold for the specified bus in Volts. The
+          argument range is -8V to +8V.
     """
 
 
@@ -10036,6 +10613,10 @@ class BusBItemManchesterSyncSize(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MANChester:SYNC:SIZe <NR1>
         - BUS:B<x>:MANChester:SYNC:SIZe?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the Bit Size in bits.
     """
 
 
@@ -10046,6 +10627,9 @@ class BusBItemManchesterSync(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MANChester:SYNC?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester:SYNC?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.size``: The ``BUS:B<x>:MANChester:SYNC:SIZe`` command.
@@ -10075,6 +10659,10 @@ class BusBItemManchesterSync(SCPICmdRead):
             - BUS:B<x>:MANChester:SYNC:SIZe <NR1>
             - BUS:B<x>:MANChester:SYNC:SIZe?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the Bit Size in bits.
         """
         return self._size
 
@@ -10098,6 +10686,10 @@ class BusBItemManchesterStartIndex(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MANChester:START:INDex <NR1>
         - BUS:B<x>:MANChester:START:INDex?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the start Index in bits.
     """
 
 
@@ -10108,6 +10700,9 @@ class BusBItemManchesterStart(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MANChester:START?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester:START?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.index``: The ``BUS:B<x>:MANChester:START:INDex`` command.
@@ -10138,6 +10733,10 @@ class BusBItemManchesterStart(SCPICmdRead):
             - BUS:B<x>:MANChester:START:INDex <NR1>
             - BUS:B<x>:MANChester:START:INDex?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the start Index in bits.
         """
         return self._index
 
@@ -10161,6 +10760,12 @@ class BusBItemManchesterSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MANChester:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:MANChester:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``MATH<x>`` specifies a math waveform as the source.
+        - ``REF<x>`` specifies a reference waveform as the source.
     """
 
 
@@ -10183,6 +10788,10 @@ class BusBItemManchesterIdleBits(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MANChester:IDLE:BITS <NR1>
         - BUS:B<x>:MANChester:IDLE:BITS?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the idle bit size.
     """
 
 
@@ -10193,6 +10802,9 @@ class BusBItemManchesterIdle(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MANChester:IDLE?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester:IDLE?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.bits``: The ``BUS:B<x>:MANChester:IDLE:BITS`` command.
@@ -10222,6 +10834,10 @@ class BusBItemManchesterIdle(SCPICmdRead):
             - BUS:B<x>:MANChester:IDLE:BITS <NR1>
             - BUS:B<x>:MANChester:IDLE:BITS?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the idle bit size.
         """
         return self._bits
 
@@ -10245,6 +10861,10 @@ class BusBItemManchesterHeaderLength(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MANChester:HEADer:LENGth <NR1>
         - BUS:B<x>:MANChester:HEADer:LENGth?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the header length in bits.
     """
 
 
@@ -10255,6 +10875,9 @@ class BusBItemManchesterHeader(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MANChester:HEADer?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester:HEADer?`` query
           and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.length``: The ``BUS:B<x>:MANChester:HEADer:LENGth`` command.
@@ -10286,6 +10909,10 @@ class BusBItemManchesterHeader(SCPICmdRead):
             - BUS:B<x>:MANChester:HEADer:LENGth <NR1>
             - BUS:B<x>:MANChester:HEADer:LENGth?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the header length in bits.
         """
         return self._length
 
@@ -10309,6 +10936,11 @@ class BusBItemManchesterDisplaymode(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MANChester:DISplaymode {BITS|PACKET}
         - BUS:B<x>:MANChester:DISplaymode?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``BITS`` sets the PacketView to off and the data to be seen as single bits formats.
+        - ``PACKET`` sets the PacketView to on and the data to be seen in the form of fields.
     """
 
 
@@ -10331,6 +10963,10 @@ class BusBItemManchesterBitrate(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MANChester:BITRate <NR1>
         - BUS:B<x>:MANChester:BITRate?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` sets the bit rate up to 1 Gbps.
     """
 
 
@@ -10352,6 +10988,11 @@ class BusBItemManchesterBitorder(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:MANChester:BITORDer {LSB|MSB}
         - BUS:B<x>:MANChester:BITORDer?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``LSB`` arranges the bits in LSB format, least significant bits first.
+        - ``MSB`` arranges the bits in MSB format, most significant bits first.
     """
 
 
@@ -10363,6 +11004,9 @@ class BusBItemManchester(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:MANChester?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.bitorder``: The ``BUS:B<x>:MANChester:BITORDer`` command.
@@ -10419,6 +11063,11 @@ class BusBItemManchester(SCPICmdRead):
             - BUS:B<x>:MANChester:BITORDer {LSB|MSB}
             - BUS:B<x>:MANChester:BITORDer?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``LSB`` arranges the bits in LSB format, least significant bits first.
+            - ``MSB`` arranges the bits in MSB format, most significant bits first.
         """
         return self._bitorder
 
@@ -10442,6 +11091,10 @@ class BusBItemManchester(SCPICmdRead):
             - BUS:B<x>:MANChester:BITRate <NR1>
             - BUS:B<x>:MANChester:BITRate?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the bit rate up to 1 Gbps.
         """
         return self._bitrate
 
@@ -10466,6 +11119,11 @@ class BusBItemManchester(SCPICmdRead):
             - BUS:B<x>:MANChester:DISplaymode {BITS|PACKET}
             - BUS:B<x>:MANChester:DISplaymode?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``BITS`` sets the PacketView to off and the data to be seen as single bits formats.
+            - ``PACKET`` sets the PacketView to on and the data to be seen in the form of fields.
         """
         return self._displaymode
 
@@ -10477,6 +11135,9 @@ class BusBItemManchester(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:MANChester:HEADer?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester:HEADer?``
               query and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.length``: The ``BUS:B<x>:MANChester:HEADer:LENGth`` command.
@@ -10491,6 +11152,9 @@ class BusBItemManchester(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:MANChester:IDLE?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester:IDLE?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.bits``: The ``BUS:B<x>:MANChester:IDLE:BITS`` command.
@@ -10517,6 +11181,12 @@ class BusBItemManchester(SCPICmdRead):
             - BUS:B<x>:MANChester:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:MANChester:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``MATH<x>`` specifies a math waveform as the source.
+            - ``REF<x>`` specifies a reference waveform as the source.
         """
         return self._source
 
@@ -10528,6 +11198,9 @@ class BusBItemManchester(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:MANChester:START?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester:START?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.index``: The ``BUS:B<x>:MANChester:START:INDex`` command.
@@ -10542,6 +11215,9 @@ class BusBItemManchester(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:MANChester:SYNC?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester:SYNC?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.size``: The ``BUS:B<x>:MANChester:SYNC:SIZe`` command.
@@ -10568,6 +11244,11 @@ class BusBItemManchester(SCPICmdRead):
             - BUS:B<x>:MANChester:THReshold <NR3>
             - BUS:B<x>:MANChester:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` sets the Manchester Strobe threshold for the specified bus in Volts. The
+              argument range is -8V to +8V.
         """
         return self._threshold
 
@@ -10590,6 +11271,10 @@ class BusBItemManchester(SCPICmdRead):
             - BUS:B<x>:MANChester:TOLerance <NR3>
             - BUS:B<x>:MANChester:TOLerance?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` sets the Tolerance bus parameter.
         """
         return self._tolerance
 
@@ -10601,6 +11286,9 @@ class BusBItemManchester(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:MANChester:TRANstion?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester:TRANstion?``
               query and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.zero``: The ``BUS:B<x>:MANChester:TRANstion:ZERo`` command.
@@ -10616,6 +11304,9 @@ class BusBItemManchester(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester:TRAiler?``
               query and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.length``: The ``BUS:B<x>:MANChester:TRAiler:LENGth`` command.
         """
@@ -10629,6 +11320,9 @@ class BusBItemManchester(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:MANChester:WORD?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester:WORD?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.count``: The ``BUS:B<x>:MANChester:WORD:COUNt`` command.
@@ -10655,6 +11349,10 @@ class BusBItemManchester(SCPICmdRead):
             - BUS:B<x>:MANChester:WORDSIZe <NR1>
             - BUS:B<x>:MANChester:WORDSIZe?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` sets the word size in bits.
         """
         return self._wordsize
 
@@ -10678,6 +11376,11 @@ class BusBItemManchester(SCPICmdRead):
             - BUS:B<x>:MANChester:parity {ODD|EVEN|NONE}
             - BUS:B<x>:MANChester:parity?
             ```
+
+        Info:
+            - ``ODD`` sets the number of 1's to odd.
+            - ``EVEN`` sets the number of 1's to even.
+            - ``NONE`` specifies that Parity is not considered.
         """
         return self._parity
 
@@ -10700,6 +11403,12 @@ class BusBItemLinStandard(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LIN:STANDard {MIXed|V1X|V2X}
         - BUS:B<x>:LIN:STANDard?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``MIXed`` specifies both versions 1.x and 2.x of the LIN standard.
+        - ``V1X`` specifies version 1.x of the LIN standard.
+        - ``V2X`` specifies version 2.x of the LIN standard.
     """
 
 
@@ -10722,6 +11431,10 @@ class BusBItemLinSourceThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LIN:SOUrce:THReshold <NR3>
         - BUS:B<x>:LIN:SOUrce:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` the LIN source threshold for the specified bus.
     """
 
 
@@ -10743,6 +11456,14 @@ class BusBItemLinSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LIN:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:LIN:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel to use source.
+        - ``CH<x>_D<x>`` specifies a digital channel to use as the source.
+        - ``MATH<x>`` specifies a math waveform to use as the source.
+        - ``REF<x>`` specifies a reference waveform to use as the source.
+        - ``REF<x>_D<x>`` specifies a digital reference waveform as the source.
 
     Properties:
         - ``.threshold``: The ``BUS:B<x>:LIN:SOUrce:THReshold`` command.
@@ -10772,6 +11493,10 @@ class BusBItemLinSource(SCPICmdWrite, SCPICmdRead):
             - BUS:B<x>:LIN:SOUrce:THReshold <NR3>
             - BUS:B<x>:LIN:SOUrce:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` the LIN source threshold for the specified bus.
         """
         return self._threshold
 
@@ -10794,6 +11519,11 @@ class BusBItemLinSamplepoint(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LIN:SAMPLEpoint <NR1>
         - BUS:B<x>:LIN:SAMPLEpoint?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` is a percentage that represents the point at which to sample during each bit
+          period.
     """
 
 
@@ -10815,6 +11545,11 @@ class BusBItemLinPolarity(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LIN:POLarity {INVerted|NORmal}
         - BUS:B<x>:LIN:POLarity?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``INVerted`` specifies inverted polarity.
+        - ``NORmal`` specifies normal polarity.
     """
 
 
@@ -10836,6 +11571,11 @@ class BusBItemLinIdformat(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LIN:IDFORmat {NOPARity|PARity}
         - BUS:B<x>:LIN:IDFORmat?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``NOPARity`` specifies an id format that includes parity.
+        - ``PARity`` specifies an id format that separates parity.
     """
 
 
@@ -10858,6 +11598,10 @@ class BusBItemLinBitrateCustom(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LIN:BITRate:CUSTom <NR1>
         - BUS:B<x>:LIN:BITRate:CUSTom?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` is the LIN custom bit rate for the specified bus.
     """
 
 
@@ -10879,6 +11623,16 @@ class BusBItemLinBitrate(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LIN:BITRate {RATE10K|RATE1K|RATE19K|RATE2K|RATE4K|RATE9K|CUSTom}
         - BUS:B<x>:LIN:BITRate?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``RATE10K`` sets the bit rate to 10 kb.
+        - ``RATE1K`` sets the bit rate to 1 kb.
+        - ``RATE19K`` sets the bit rate to 19 kb.
+        - ``RATE2K`` sets the bit rate to 2 kb.
+        - ``RATE4K`` sets the bit rate to 4 kb.
+        - ``RATE9K`` sets the bit rate to 9 kb.
+        - ``CUSTom`` sets a custom bit rate.
 
     Properties:
         - ``.custom``: The ``BUS:B<x>:LIN:BITRate:CUSTom`` command.
@@ -10908,6 +11662,10 @@ class BusBItemLinBitrate(SCPICmdWrite, SCPICmdRead):
             - BUS:B<x>:LIN:BITRate:CUSTom <NR1>
             - BUS:B<x>:LIN:BITRate:CUSTom?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` is the LIN custom bit rate for the specified bus.
         """
         return self._custom
 
@@ -10919,6 +11677,9 @@ class BusBItemLin(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:LIN?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:LIN?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.bitrate``: The ``BUS:B<x>:LIN:BITRate`` command.
@@ -10959,6 +11720,16 @@ class BusBItemLin(SCPICmdRead):
             - BUS:B<x>:LIN:BITRate?
             ```
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``RATE10K`` sets the bit rate to 10 kb.
+            - ``RATE1K`` sets the bit rate to 1 kb.
+            - ``RATE19K`` sets the bit rate to 19 kb.
+            - ``RATE2K`` sets the bit rate to 2 kb.
+            - ``RATE4K`` sets the bit rate to 4 kb.
+            - ``RATE9K`` sets the bit rate to 9 kb.
+            - ``CUSTom`` sets a custom bit rate.
+
         Sub-properties:
             - ``.custom``: The ``BUS:B<x>:LIN:BITRate:CUSTom`` command.
         """
@@ -10984,6 +11755,11 @@ class BusBItemLin(SCPICmdRead):
             - BUS:B<x>:LIN:IDFORmat {NOPARity|PARity}
             - BUS:B<x>:LIN:IDFORmat?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``NOPARity`` specifies an id format that includes parity.
+            - ``PARity`` specifies an id format that separates parity.
         """
         return self._idformat
 
@@ -11007,6 +11783,11 @@ class BusBItemLin(SCPICmdRead):
             - BUS:B<x>:LIN:POLarity {INVerted|NORmal}
             - BUS:B<x>:LIN:POLarity?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``INVerted`` specifies inverted polarity.
+            - ``NORmal`` specifies normal polarity.
         """
         return self._polarity
 
@@ -11029,6 +11810,11 @@ class BusBItemLin(SCPICmdRead):
             - BUS:B<x>:LIN:SAMPLEpoint <NR1>
             - BUS:B<x>:LIN:SAMPLEpoint?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` is a percentage that represents the point at which to sample during each bit
+              period.
         """
         return self._samplepoint
 
@@ -11052,6 +11838,14 @@ class BusBItemLin(SCPICmdRead):
             - BUS:B<x>:LIN:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:LIN:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel to use source.
+            - ``CH<x>_D<x>`` specifies a digital channel to use as the source.
+            - ``MATH<x>`` specifies a math waveform to use as the source.
+            - ``REF<x>`` specifies a reference waveform to use as the source.
+            - ``REF<x>_D<x>`` specifies a digital reference waveform as the source.
 
         Sub-properties:
             - ``.threshold``: The ``BUS:B<x>:LIN:SOUrce:THReshold`` command.
@@ -11078,6 +11872,12 @@ class BusBItemLin(SCPICmdRead):
             - BUS:B<x>:LIN:STANDard {MIXed|V1X|V2X}
             - BUS:B<x>:LIN:STANDard?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``MIXed`` specifies both versions 1.x and 2.x of the LIN standard.
+            - ``V1X`` specifies version 1.x of the LIN standard.
+            - ``V2X`` specifies version 2.x of the LIN standard.
         """
         return self._standard
 
@@ -11099,6 +11899,11 @@ class BusBItemLabelName(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LABel:name <QString>
         - BUS:B<x>:LABel:name?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<QString>`` is an alphanumeric string of text enclosed in quotes. The text string is
+          limited to 30 characters. It contains the text label information for the bus.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -11122,6 +11927,11 @@ class BusBItemLabelYpos(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LABel:YPOS <NR3>
         - BUS:B<x>:LABel:YPOS?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the y-position, in pixels relative to the left edge of the screen of the
+          specified bus label.
     """
 
 
@@ -11143,6 +11953,11 @@ class BusBItemLabelXpos(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LABel:XPOS <NR3>
         - BUS:B<x>:LABel:XPOS?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the x-position, in pixels relative to the left edge of the screen of the
+          specified bus label.
     """
 
 
@@ -11165,6 +11980,13 @@ class BusBItemLabelFontUnderline(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LABel:FONT:UNDERline {ON|OFF|1|0}
         - BUS:B<x>:LABel:FONT:UNDERline?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``ON`` displays the label in underlined font.
+        - ``OFF`` does not display the label in underlined font.
+        - ``1`` displays the label in underlined font.
+        - ``0`` does not display the label in underlined font.
     """
 
 
@@ -11187,6 +12009,12 @@ class BusBItemLabelFontType(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LABel:FONT:TYPE <QString>
         - BUS:B<x>:LABel:FONT:TYPE?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<QString>`` is the specified font type. Available fonts include: DejaVu Sans, DejaVu
+          Sans Mono, DejaVu Serif, Frutiger LT Std, Monospace, Sans Serif, Serif, Ubuntu, Ubuntu
+          Condensed, and Ubuntu Mono.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -11211,6 +12039,10 @@ class BusBItemLabelFontSize(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LABel:FONT:SIZE <NR1>
         - BUS:B<x>:LABel:FONT:SIZE?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` is the font size.
     """
 
 
@@ -11233,6 +12065,13 @@ class BusBItemLabelFontItalic(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LABel:FONT:ITALic {ON|OFF|1|0}
         - BUS:B<x>:LABel:FONT:ITALic?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``ON`` displays the label in italic font.
+        - ``OFF`` does not display the label in italic font.
+        - ``1`` displays the label in italic font.
+        - ``0`` does not display the label in italic font.
     """
 
 
@@ -11255,6 +12094,13 @@ class BusBItemLabelFontBold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LABel:FONT:BOLD {ON|OFF|1|0}
         - BUS:B<x>:LABel:FONT:BOLD?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``ON`` displays the label in bold font.
+        - ``OFF`` does not display the label in bold font.
+        - ``1`` displays the label in bold font.
+        - ``0`` does not display the label in bold font.
     """
 
 
@@ -11265,6 +12111,9 @@ class BusBItemLabelFont(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:LABel:FONT?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:LABel:FONT?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.bold``: The ``BUS:B<x>:LABel:FONT:BOLD`` command.
@@ -11302,6 +12151,13 @@ class BusBItemLabelFont(SCPICmdRead):
             - BUS:B<x>:LABel:FONT:BOLD {ON|OFF|1|0}
             - BUS:B<x>:LABel:FONT:BOLD?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``ON`` displays the label in bold font.
+            - ``OFF`` does not display the label in bold font.
+            - ``1`` displays the label in bold font.
+            - ``0`` does not display the label in bold font.
         """
         return self._bold
 
@@ -11325,6 +12181,13 @@ class BusBItemLabelFont(SCPICmdRead):
             - BUS:B<x>:LABel:FONT:ITALic {ON|OFF|1|0}
             - BUS:B<x>:LABel:FONT:ITALic?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``ON`` displays the label in italic font.
+            - ``OFF`` does not display the label in italic font.
+            - ``1`` displays the label in italic font.
+            - ``0`` does not display the label in italic font.
         """
         return self._italic
 
@@ -11348,6 +12211,10 @@ class BusBItemLabelFont(SCPICmdRead):
             - BUS:B<x>:LABel:FONT:SIZE <NR1>
             - BUS:B<x>:LABel:FONT:SIZE?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` is the font size.
         """
         return self._size
 
@@ -11371,6 +12238,12 @@ class BusBItemLabelFont(SCPICmdRead):
             - BUS:B<x>:LABel:FONT:TYPE <QString>
             - BUS:B<x>:LABel:FONT:TYPE?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<QString>`` is the specified font type. Available fonts include: DejaVu Sans, DejaVu
+              Sans Mono, DejaVu Serif, Frutiger LT Std, Monospace, Sans Serif, Serif, Ubuntu, Ubuntu
+              Condensed, and Ubuntu Mono.
         """
         return self._type
 
@@ -11394,6 +12267,13 @@ class BusBItemLabelFont(SCPICmdRead):
             - BUS:B<x>:LABel:FONT:UNDERline {ON|OFF|1|0}
             - BUS:B<x>:LABel:FONT:UNDERline?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``ON`` displays the label in underlined font.
+            - ``OFF`` does not display the label in underlined font.
+            - ``1`` displays the label in underlined font.
+            - ``0`` does not display the label in underlined font.
         """
         return self._underline
 
@@ -11416,6 +12296,11 @@ class BusBItemLabelColor(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:LABel:COLor <QString>
         - BUS:B<x>:LABel:COLor?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<QString>`` is the bus label color. To return the color to the default color, send an
+          empty string as in this example: ``:BUS:B1:LABEL:COLOR`` ''.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -11428,6 +12313,9 @@ class BusBItemLabel(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:LABel?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:LABel?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.color``: The ``BUS:B<x>:LABel:COLor`` command.
@@ -11465,6 +12353,11 @@ class BusBItemLabel(SCPICmdRead):
             - BUS:B<x>:LABel:COLor <QString>
             - BUS:B<x>:LABel:COLor?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<QString>`` is the bus label color. To return the color to the default color, send
+              an empty string as in this example: ``:BUS:B1:LABEL:COLOR`` ''.
         """
         return self._color
 
@@ -11476,6 +12369,9 @@ class BusBItemLabel(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:LABel:FONT?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:LABel:FONT?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.bold``: The ``BUS:B<x>:LABel:FONT:BOLD`` command.
@@ -11506,6 +12402,11 @@ class BusBItemLabel(SCPICmdRead):
             - BUS:B<x>:LABel:XPOS <NR3>
             - BUS:B<x>:LABel:XPOS?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the x-position, in pixels relative to the left edge of the screen of the
+              specified bus label.
         """
         return self._xpos
 
@@ -11529,6 +12430,11 @@ class BusBItemLabel(SCPICmdRead):
             - BUS:B<x>:LABel:YPOS <NR3>
             - BUS:B<x>:LABel:YPOS?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the y-position, in pixels relative to the left edge of the screen of the
+              specified bus label.
         """
         return self._ypos
 
@@ -11552,6 +12458,11 @@ class BusBItemLabel(SCPICmdRead):
             - BUS:B<x>:LABel:name <QString>
             - BUS:B<x>:LABel:name?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<QString>`` is an alphanumeric string of text enclosed in quotes. The text string is
+              limited to 30 characters. It contains the text label information for the bus.
         """
         return self._name
 
@@ -11573,6 +12484,11 @@ class BusBItemI3cVersion(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:I3C:VERSion {VR1<x>}
         - BUS:B<x>:I3C:VERSion?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``VR10`` sets the version to Version 1.0. This is the default version.
+        - ``VR11`` sets the version to Version 1.1.
     """
 
 
@@ -11595,6 +12511,10 @@ class BusBItemI3cDataThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:I3C:DATa:THReshold <NR3>
         - BUS:B<x>:I3C:DATa:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` specifies the bus number.
+        - ``<NR3>`` is the threshold value for I3C Data Clock (SDA) source of the specified bus.
     """
 
 
@@ -11617,6 +12537,14 @@ class BusBItemI3cDataSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:I3C:DATa:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:I3C:DATa:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` specifies the bus number.
+        - ``CH<x>`` specifies the analog channel to use as the I3C SDA source.
+        - ``CH<x>_D<x>`` specifies the digital channel to use as the I3C SDA source.
+        - ``MATH<x>`` specifies the math waveform to use as the I3C SDA source.
+        - ``REF<x>`` specifies the reference waveform to use as the I3C SDA source.
+        - ``REF<x>_D<x>`` specifies the digital reference waveform to use as the I3C SDA source.
     """
 
 
@@ -11627,6 +12555,9 @@ class BusBItemI3cData(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:I3C:DATa?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:I3C:DATa?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` specifies the bus number.
 
     Properties:
         - ``.source``: The ``BUS:B<x>:I3C:DATa:SOUrce`` command.
@@ -11658,6 +12589,14 @@ class BusBItemI3cData(SCPICmdRead):
             - BUS:B<x>:I3C:DATa:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:I3C:DATa:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` specifies the bus number.
+            - ``CH<x>`` specifies the analog channel to use as the I3C SDA source.
+            - ``CH<x>_D<x>`` specifies the digital channel to use as the I3C SDA source.
+            - ``MATH<x>`` specifies the math waveform to use as the I3C SDA source.
+            - ``REF<x>`` specifies the reference waveform to use as the I3C SDA source.
+            - ``REF<x>_D<x>`` specifies the digital reference waveform to use as the I3C SDA source.
         """
         return self._source
 
@@ -11681,6 +12620,10 @@ class BusBItemI3cData(SCPICmdRead):
             - BUS:B<x>:I3C:DATa:THReshold <NR3>
             - BUS:B<x>:I3C:DATa:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` specifies the bus number.
+            - ``<NR3>`` is the threshold value for I3C Data Clock (SDA) source of the specified bus.
         """
         return self._threshold
 
@@ -11704,6 +12647,10 @@ class BusBItemI3cClockThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:I3C:CLOCk:THReshold <NR3>
         - BUS:B<x>:I3C:CLOCk:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` specifies the bus number.
+        - ``<NR3>`` is the threshold value for I3C Clock (SCLK) source of the specified bus.
     """
 
 
@@ -11726,6 +12673,14 @@ class BusBItemI3cClockSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:I3C:CLOCk:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:I3C:CLOCk:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` specifies the bus number.
+        - ``CH<x>`` specifies the analog channel to use as the I3C SCLK source.
+        - ``CH<x>_D<x>`` specifies the digital channel to use as the I3C SCLK source.
+        - ``MATH<x>`` specifies the math waveform to use as the I3C SCLK source.
+        - ``REF<x>`` specifies the reference waveform to use as the I3C SCLK source.
+        - ``REF<x>_D<x>`` specifies the digital reference waveform to use as the I3C SCLK source.
     """
 
 
@@ -11736,6 +12691,9 @@ class BusBItemI3cClock(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:I3C:CLOCk?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:I3C:CLOCk?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` specifies the bus number.
 
     Properties:
         - ``.source``: The ``BUS:B<x>:I3C:CLOCk:SOUrce`` command.
@@ -11767,6 +12725,15 @@ class BusBItemI3cClock(SCPICmdRead):
             - BUS:B<x>:I3C:CLOCk:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:I3C:CLOCk:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` specifies the bus number.
+            - ``CH<x>`` specifies the analog channel to use as the I3C SCLK source.
+            - ``CH<x>_D<x>`` specifies the digital channel to use as the I3C SCLK source.
+            - ``MATH<x>`` specifies the math waveform to use as the I3C SCLK source.
+            - ``REF<x>`` specifies the reference waveform to use as the I3C SCLK source.
+            - ``REF<x>_D<x>`` specifies the digital reference waveform to use as the I3C SCLK
+              source.
         """
         return self._source
 
@@ -11790,6 +12757,10 @@ class BusBItemI3cClock(SCPICmdRead):
             - BUS:B<x>:I3C:CLOCk:THReshold <NR3>
             - BUS:B<x>:I3C:CLOCk:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` specifies the bus number.
+            - ``<NR3>`` is the threshold value for I3C Clock (SCLK) source of the specified bus.
         """
         return self._threshold
 
@@ -11801,6 +12772,9 @@ class BusBItemI3c(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:I3C?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:I3C?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` specifies the bus number.
 
     Properties:
         - ``.clock``: The ``BUS:B<x>:I3C:CLOCk`` command tree.
@@ -11823,6 +12797,9 @@ class BusBItemI3c(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:I3C:CLOCk?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` specifies the bus number.
+
         Sub-properties:
             - ``.source``: The ``BUS:B<x>:I3C:CLOCk:SOUrce`` command.
             - ``.threshold``: The ``BUS:B<x>:I3C:CLOCk:THReshold`` command.
@@ -11837,6 +12814,9 @@ class BusBItemI3c(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:I3C:DATa?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:I3C:DATa?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` specifies the bus number.
 
         Sub-properties:
             - ``.source``: The ``BUS:B<x>:I3C:DATa:SOUrce`` command.
@@ -11863,6 +12843,11 @@ class BusBItemI3c(SCPICmdRead):
             - BUS:B<x>:I3C:VERSion {VR1<x>}
             - BUS:B<x>:I3C:VERSion?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``VR10`` sets the version to Version 1.0. This is the default version.
+            - ``VR11`` sets the version to Version 1.1.
         """
         return self._version
 
@@ -11885,6 +12870,15 @@ class BusBItemI2cRwinaddr(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:I2C:RWINADDR {0|1}
         - BUS:B<x>:I2C:RWINADDR?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``0`` displays seven-bit slave addresses as integers in the range of 0 to 127, with the
+          state of the R/W* bit from the LSB of the slave address byte. For example, the slave
+          address byte of 0b10100101 is displayed as the value 0x52 R.
+        - ``1`` displays the entire slave address byte as a number, with the R/W* signal as its LSB
+          (bit 0) and the slave address in bits 7..1. For example, the slave address byte of
+          0b10100101 is displayed as the value 0xA5 R.
     """
 
 
@@ -11907,6 +12901,10 @@ class BusBItemI2cDataThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:I2C:DATa:THReshold <NR3>
         - BUS:B<x>:I2C:DATa:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the I2C Data (SDA) source threshold for the specified bus.
     """
 
 
@@ -11929,6 +12927,15 @@ class BusBItemI2cDataSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:I2C:DATa:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:I2C:DATa:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``CH<x>`` specifies an analog channel to use as the I2C SDA source.
+        - ``CH<x>_D<x>`` specifies a digital channel to use as the I2C SDA source.
+        - ``MATH<x>`` specifies a math waveform to use as the I2C SDA source.
+        - ``REF<x>`` specifies a reference waveform to use as the I2C SDA source.
+        - ``REF<x>_D<x>`` specifies a digital reference waveform as the data source waveform for the
+          specified I2C bus.
     """
 
 
@@ -11939,6 +12946,9 @@ class BusBItemI2cData(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:I2C:DATa?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:I2C:DATa?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.source``: The ``BUS:B<x>:I2C:DATa:SOUrce`` command.
@@ -11970,6 +12980,15 @@ class BusBItemI2cData(SCPICmdRead):
             - BUS:B<x>:I2C:DATa:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:I2C:DATa:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``CH<x>`` specifies an analog channel to use as the I2C SDA source.
+            - ``CH<x>_D<x>`` specifies a digital channel to use as the I2C SDA source.
+            - ``MATH<x>`` specifies a math waveform to use as the I2C SDA source.
+            - ``REF<x>`` specifies a reference waveform to use as the I2C SDA source.
+            - ``REF<x>_D<x>`` specifies a digital reference waveform as the data source waveform for
+              the specified I2C bus.
         """
         return self._source
 
@@ -11993,6 +13012,10 @@ class BusBItemI2cData(SCPICmdRead):
             - BUS:B<x>:I2C:DATa:THReshold <NR3>
             - BUS:B<x>:I2C:DATa:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the I2C Data (SDA) source threshold for the specified bus.
         """
         return self._threshold
 
@@ -12016,6 +13039,10 @@ class BusBItemI2cClockThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:I2C:CLOCk:THReshold <NR3>
         - BUS:B<x>:I2C:CLOCk:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the I2C Clock (SCLK) source threshold for the specified bus.
     """
 
 
@@ -12038,6 +13065,15 @@ class BusBItemI2cClockSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:I2C:CLOCk:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:I2C:CLOCk:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel to use as the I2C SCLK source.
+        - ``CH<x>_D<x>`` specifies a digital channel to use as the I2C SCLK source.
+        - ``MATH<x>`` specifies a math waveform to use as the I2C SCLK source.
+        - ``REF<x>`` specifies a reference waveform to use as the I2C SCLK source.
+        - ``REF<x>_D<x>`` specifies a digital reference waveform as the clock source waveform for
+          the specified I2C bus.
     """
 
 
@@ -12048,6 +13084,9 @@ class BusBItemI2cClock(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:I2C:CLOCk?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:I2C:CLOCk?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.source``: The ``BUS:B<x>:I2C:CLOCk:SOUrce`` command.
@@ -12079,6 +13118,15 @@ class BusBItemI2cClock(SCPICmdRead):
             - BUS:B<x>:I2C:CLOCk:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:I2C:CLOCk:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel to use as the I2C SCLK source.
+            - ``CH<x>_D<x>`` specifies a digital channel to use as the I2C SCLK source.
+            - ``MATH<x>`` specifies a math waveform to use as the I2C SCLK source.
+            - ``REF<x>`` specifies a reference waveform to use as the I2C SCLK source.
+            - ``REF<x>_D<x>`` specifies a digital reference waveform as the clock source waveform
+              for the specified I2C bus.
         """
         return self._source
 
@@ -12102,6 +13150,10 @@ class BusBItemI2cClock(SCPICmdRead):
             - BUS:B<x>:I2C:CLOCk:THReshold <NR3>
             - BUS:B<x>:I2C:CLOCk:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the I2C Clock (SCLK) source threshold for the specified bus.
         """
         return self._threshold
 
@@ -12113,6 +13165,9 @@ class BusBItemI2c(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:I2C?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:I2C?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.clock``: The ``BUS:B<x>:I2C:CLOCk`` command tree.
@@ -12135,6 +13190,9 @@ class BusBItemI2c(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:I2C:CLOCk?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.source``: The ``BUS:B<x>:I2C:CLOCk:SOUrce`` command.
             - ``.threshold``: The ``BUS:B<x>:I2C:CLOCk:THReshold`` command.
@@ -12149,6 +13207,9 @@ class BusBItemI2c(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:I2C:DATa?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:I2C:DATa?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the Bus number.
 
         Sub-properties:
             - ``.source``: The ``BUS:B<x>:I2C:DATa:SOUrce`` command.
@@ -12176,6 +13237,15 @@ class BusBItemI2c(SCPICmdRead):
             - BUS:B<x>:I2C:RWINADDR {0|1}
             - BUS:B<x>:I2C:RWINADDR?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``0`` displays seven-bit slave addresses as integers in the range of 0 to 127, with
+              the state of the R/W* bit from the LSB of the slave address byte. For example, the
+              slave address byte of 0b10100101 is displayed as the value 0x52 R.
+            - ``1`` displays the entire slave address byte as a number, with the R/W* signal as its
+              LSB (bit 0) and the slave address in bits 7..1. For example, the slave address byte of
+              0b10100101 is displayed as the value 0xA5 R.
         """
         return self._rwinaddr
 
@@ -12199,6 +13269,10 @@ class BusBItemFlexrayTxrxthreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:FLEXray:TXRXTHRESHold <NR3>
         - BUS:B<x>:FLEXray:TXRXTHRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the TxRx threshold.
     """
 
 
@@ -12221,6 +13295,10 @@ class BusBItemFlexrayThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:FLEXray:THRESHold <NR3>
         - BUS:B<x>:FLEXray:THRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the FlexRay data source high threshold for the specified bus.
     """
 
 
@@ -12243,6 +13321,14 @@ class BusBItemFlexraySourceTxrx(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:FLEXray:SOUrce:TXRX {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:FLEXray:SOUrce:TXRX?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel to use source.
+        - ``CH<x>_D<x>`` specifies a digital channel to use as the source.
+        - ``MATH<x>`` specifies a math waveform to use as the source.
+        - ``REF<x>`` specifies a reference waveform to use as the source.
+        - ``REF<x>_D<x>`` specifies a digital reference waveform as the source.
     """
 
 
@@ -12265,6 +13351,12 @@ class BusBItemFlexraySource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:FLEXray:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:FLEXray:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel to use source.
+        - ``MATH<x>`` specifies a math waveform to use as the source.
+        - ``REF<x>`` specifies a reference waveform to use as the source.
 
     Properties:
         - ``.txrx``: The ``BUS:B<x>:FLEXray:SOUrce:TXRX`` command.
@@ -12294,6 +13386,14 @@ class BusBItemFlexraySource(SCPICmdWrite, SCPICmdRead):
             - BUS:B<x>:FLEXray:SOUrce:TXRX {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:FLEXray:SOUrce:TXRX?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel to use source.
+            - ``CH<x>_D<x>`` specifies a digital channel to use as the source.
+            - ``MATH<x>`` specifies a math waveform to use as the source.
+            - ``REF<x>`` specifies a reference waveform to use as the source.
+            - ``REF<x>_D<x>`` specifies a digital reference waveform as the source.
         """
         return self._txrx
 
@@ -12317,6 +13417,12 @@ class BusBItemFlexraySignal(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:FLEXray:SIGnal {BDIFFBP|BM|TXRX}
         - BUS:B<x>:FLEXray:SIGnal?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``BDIFFBP`` sets the FlexRay signal type to BDIFFBP.
+        - ``BM`` sets the FlexRay signal type to BM.
+        - ``TXRX`` sets the FlexRay signal type to TXRX.
     """
 
 
@@ -12339,6 +13445,10 @@ class BusBItemFlexrayLowthreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:FLEXray:LOWTHRESHold <NR3>
         - BUS:B<x>:FLEXray:LOWTHRESHold?
         ```
+
+    Info:
+        - ``<NR3>`` is the FlexRay data source low threshold for the specified bus.
+        - ``B<x>`` is the number of the bus.
     """
 
 
@@ -12361,6 +13471,11 @@ class BusBItemFlexrayChannel(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:FLEXray:CHannel {A|B}
         - BUS:B<x>:FLEXray:CHannel?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``A`` specifies the A channel.
+        - ``B`` specifies the B channel.
     """
 
 
@@ -12383,6 +13498,10 @@ class BusBItemFlexrayBitrateCustom(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:FLEXray:BITRate:CUSTom <NR1>
         - BUS:B<x>:FLEXray:BITRate:CUSTom?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` is the FlexRay custom bit rate for the specified bus.
     """
 
 
@@ -12405,6 +13524,13 @@ class BusBItemFlexrayBitrate(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:FLEXray:BITRate {CUSTOM|RATE2M|RATE5M|RATE10M}
         - BUS:B<x>:FLEXray:BITRate?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CUSTOM`` sets a custom bit rate.
+        - ``RATE2M`` sets the bit rate to 2 Mb.
+        - ``RATE5M`` sets the bit rate to 5 Mb.
+        - ``RATE10M`` sets the bit rate to 10 Mb.
 
     Properties:
         - ``.custom``: The ``BUS:B<x>:FLEXray:BITRate:CUSTom`` command.
@@ -12435,6 +13561,10 @@ class BusBItemFlexrayBitrate(SCPICmdWrite, SCPICmdRead):
             - BUS:B<x>:FLEXray:BITRate:CUSTom <NR1>
             - BUS:B<x>:FLEXray:BITRate:CUSTom?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` is the FlexRay custom bit rate for the specified bus.
         """
         return self._custom
 
@@ -12446,6 +13576,9 @@ class BusBItemFlexray(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:FLEXray?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:FLEXray?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.bitrate``: The ``BUS:B<x>:FLEXray:BITRate`` command.
@@ -12490,6 +13623,13 @@ class BusBItemFlexray(SCPICmdRead):
             - BUS:B<x>:FLEXray:BITRate?
             ```
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CUSTOM`` sets a custom bit rate.
+            - ``RATE2M`` sets the bit rate to 2 Mb.
+            - ``RATE5M`` sets the bit rate to 5 Mb.
+            - ``RATE10M`` sets the bit rate to 10 Mb.
+
         Sub-properties:
             - ``.custom``: The ``BUS:B<x>:FLEXray:BITRate:CUSTom`` command.
         """
@@ -12515,6 +13655,11 @@ class BusBItemFlexray(SCPICmdRead):
             - BUS:B<x>:FLEXray:CHannel {A|B}
             - BUS:B<x>:FLEXray:CHannel?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``A`` specifies the A channel.
+            - ``B`` specifies the B channel.
         """
         return self._channel
 
@@ -12538,6 +13683,10 @@ class BusBItemFlexray(SCPICmdRead):
             - BUS:B<x>:FLEXray:LOWTHRESHold <NR3>
             - BUS:B<x>:FLEXray:LOWTHRESHold?
             ```
+
+        Info:
+            - ``<NR3>`` is the FlexRay data source low threshold for the specified bus.
+            - ``B<x>`` is the number of the bus.
         """
         return self._lowthreshold
 
@@ -12561,6 +13710,12 @@ class BusBItemFlexray(SCPICmdRead):
             - BUS:B<x>:FLEXray:SIGnal {BDIFFBP|BM|TXRX}
             - BUS:B<x>:FLEXray:SIGnal?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``BDIFFBP`` sets the FlexRay signal type to BDIFFBP.
+            - ``BM`` sets the FlexRay signal type to BM.
+            - ``TXRX`` sets the FlexRay signal type to TXRX.
         """
         return self._signal
 
@@ -12584,6 +13739,12 @@ class BusBItemFlexray(SCPICmdRead):
             - BUS:B<x>:FLEXray:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:FLEXray:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel to use source.
+            - ``MATH<x>`` specifies a math waveform to use as the source.
+            - ``REF<x>`` specifies a reference waveform to use as the source.
 
         Sub-properties:
             - ``.txrx``: The ``BUS:B<x>:FLEXray:SOUrce:TXRX`` command.
@@ -12610,6 +13771,10 @@ class BusBItemFlexray(SCPICmdRead):
             - BUS:B<x>:FLEXray:THRESHold <NR3>
             - BUS:B<x>:FLEXray:THRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the FlexRay data source high threshold for the specified bus.
         """
         return self._threshold
 
@@ -12633,6 +13798,10 @@ class BusBItemFlexray(SCPICmdRead):
             - BUS:B<x>:FLEXray:TXRXTHRESHold <NR3>
             - BUS:B<x>:FLEXray:TXRXTHRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the TxRx threshold.
         """
         return self._txrxthreshold
 
@@ -12656,6 +13825,11 @@ class BusBItemEusbThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:EUSB:THRESHold <NR3>
         - BUS:B<x>:EUSB:THRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the eUSB Strobe threshold for the specified bus. The argument range is -8 V
+          to +8 V.
     """
 
 
@@ -12677,6 +13851,12 @@ class BusBItemEusbSourceDplus(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:EUSB:SOUrce:DPLUs {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:EUSB:SOUrce:DPLUs?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel to use source.
+        - ``MATH<x>`` specifies a math waveform to use as the source.
+        - ``REF<x>`` specifies a reference waveform to use as the source.
     """
 
 
@@ -12698,6 +13878,12 @@ class BusBItemEusbSourceDminus(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:EUSB:SOUrce:DMINus {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:EUSB:SOUrce:DMINus?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel to use source.
+        - ``MATH<x>`` specifies a math waveform to use as the source.
+        - ``REF<x>`` specifies a reference waveform to use as the source.
     """
 
 
@@ -12720,6 +13906,12 @@ class BusBItemEusbSourceDiff(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:EUSB:SOUrce:DIFF {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:EUSB:SOUrce:DIFF?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel to use source.
+        - ``MATH<x>`` specifies a math waveform to use as the source.
+        - ``REF<x>`` specifies a reference waveform to use as the source.
     """
 
 
@@ -12730,6 +13922,9 @@ class BusBItemEusbSource(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:EUSB:SOUrce?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:EUSB:SOUrce?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.diff``: The ``BUS:B<x>:EUSB:SOUrce:DIFF`` command.
@@ -12763,6 +13958,12 @@ class BusBItemEusbSource(SCPICmdRead):
             - BUS:B<x>:EUSB:SOUrce:DIFF {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:EUSB:SOUrce:DIFF?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel to use source.
+            - ``MATH<x>`` specifies a math waveform to use as the source.
+            - ``REF<x>`` specifies a reference waveform to use as the source.
         """
         return self._diff
 
@@ -12786,6 +13987,12 @@ class BusBItemEusbSource(SCPICmdRead):
             - BUS:B<x>:EUSB:SOUrce:DMINus {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:EUSB:SOUrce:DMINus?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel to use source.
+            - ``MATH<x>`` specifies a math waveform to use as the source.
+            - ``REF<x>`` specifies a reference waveform to use as the source.
         """
         return self._dminus
 
@@ -12809,6 +14016,12 @@ class BusBItemEusbSource(SCPICmdRead):
             - BUS:B<x>:EUSB:SOUrce:DPLUs {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:EUSB:SOUrce:DPLUs?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel to use source.
+            - ``MATH<x>`` specifies a math waveform to use as the source.
+            - ``REF<x>`` specifies a reference waveform to use as the source.
         """
         return self._dplus
 
@@ -12831,6 +14044,11 @@ class BusBItemEusbSignaltype(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:EUSB:SIGNALTYpe {SINGLE|DIFF}
         - BUS:B<x>:EUSB:SIGNALTYpe?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``SINGLE`` sets the signal type to single.
+        - ``DIFF`` sets the signal type to differential.
     """
 
 
@@ -12852,6 +14070,12 @@ class BusBItemEusbOperatingMode(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:EUSB:OPERating:MODe {NATive|REPEATERHOSt|REPEATERPERIPHERAL}
         - BUS:B<x>:EUSB:OPERating:MODe?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``NATive`` sets the operating mode as native.
+        - ``REPEATERHOSt`` sets the operating mode as repeater host.
+        - ``REPEATERPERIPHERAL`` sets the operating mode as repeater peripheral.
     """
 
 
@@ -12862,6 +14086,9 @@ class BusBItemEusbOperating(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:EUSB:OPERating?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:EUSB:OPERating?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.mode``: The ``BUS:B<x>:EUSB:OPERating:MODe`` command.
@@ -12890,6 +14117,12 @@ class BusBItemEusbOperating(SCPICmdRead):
             - BUS:B<x>:EUSB:OPERating:MODe {NATive|REPEATERHOSt|REPEATERPERIPHERAL}
             - BUS:B<x>:EUSB:OPERating:MODe?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``NATive`` sets the operating mode as native.
+            - ``REPEATERHOSt`` sets the operating mode as repeater host.
+            - ``REPEATERPERIPHERAL`` sets the operating mode as repeater peripheral.
         """
         return self._mode
 
@@ -12913,6 +14146,11 @@ class BusBItemEusbLowthreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:EUSB:LOWTHRESHold <NR3>
         - BUS:B<x>:EUSB:LOWTHRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the eUSB Strobe threshold for the specified bus. The argument range is -8 V
+          to +8 V.
     """
 
 
@@ -12934,6 +14172,10 @@ class BusBItemEusbDataplusthreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:EUSB:DATAPLUSTHRESHold <NR3>
         - BUS:B<x>:EUSB:DATAPLUSTHRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the eUSB DATA Plus source threshold. The argument range is -8 V to +8 V.
     """
 
 
@@ -12958,6 +14200,11 @@ class BusBItemEusbDataplusDataThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:EUSB:DATAPLUS:DATA:THRESHold <NR3>
         - BUS:B<x>:EUSB:DATAPLUS:DATA:THRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the eUSB Strobe threshold for the specified bus. The argument range is -8 V
+          to +8 V.
     """
 
 
@@ -12968,6 +14215,9 @@ class BusBItemEusbDataplusData(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:EUSB:DATAPLUS:DATA?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:EUSB:DATAPLUS:DATA?`` query
           and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.threshold``: The ``BUS:B<x>:EUSB:DATAPLUS:DATA:THRESHold`` command.
@@ -12999,6 +14249,11 @@ class BusBItemEusbDataplusData(SCPICmdRead):
             - BUS:B<x>:EUSB:DATAPLUS:DATA:THRESHold <NR3>
             - BUS:B<x>:EUSB:DATAPLUS:DATA:THRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the eUSB Strobe threshold for the specified bus. The argument range is -8
+              V to +8 V.
         """
         return self._threshold
 
@@ -13010,6 +14265,9 @@ class BusBItemEusbDataplus(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:EUSB:DATAPLUS?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:EUSB:DATAPLUS?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.data``: The ``BUS:B<x>:EUSB:DATAPLUS:DATA`` command tree.
@@ -13027,6 +14285,9 @@ class BusBItemEusbDataplus(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:EUSB:DATAPLUS:DATA?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:EUSB:DATAPLUS:DATA?``
               query and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.threshold``: The ``BUS:B<x>:EUSB:DATAPLUS:DATA:THRESHold`` command.
@@ -13053,6 +14314,10 @@ class BusBItemEusbDataminusthreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:EUSB:DATAMINUSTHRESHold <NR3>
         - BUS:B<x>:EUSB:DATAMINUSTHRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the eUSB DATA Minus source threshold. The argument range is -8 V to +8 V.
     """
 
 
@@ -13077,6 +14342,11 @@ class BusBItemEusbDataminusDataThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:EUSB:DATAMINUS:DATA:THRESHold <NR3>
         - BUS:B<x>:EUSB:DATAMINUS:DATA:THRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the EUSB Strobe threshold for the specified bus. The argument range is -8 V
+          to +8 V.
     """
 
 
@@ -13087,6 +14357,9 @@ class BusBItemEusbDataminusData(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:EUSB:DATAMINUS:DATA?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:EUSB:DATAMINUS:DATA?`` query
           and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.threshold``: The ``BUS:B<x>:EUSB:DATAMINUS:DATA:THRESHold`` command.
@@ -13120,6 +14393,11 @@ class BusBItemEusbDataminusData(SCPICmdRead):
             - BUS:B<x>:EUSB:DATAMINUS:DATA:THRESHold <NR3>
             - BUS:B<x>:EUSB:DATAMINUS:DATA:THRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the EUSB Strobe threshold for the specified bus. The argument range is -8
+              V to +8 V.
         """
         return self._threshold
 
@@ -13131,6 +14409,9 @@ class BusBItemEusbDataminus(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:EUSB:DATAMINUS?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:EUSB:DATAMINUS?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.data``: The ``BUS:B<x>:EUSB:DATAMINUS:DATA`` command tree.
@@ -13148,6 +14429,9 @@ class BusBItemEusbDataminus(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:EUSB:DATAMINUS:DATA?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:EUSB:DATAMINUS:DATA?``
               query and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.threshold``: The ``BUS:B<x>:EUSB:DATAMINUS:DATA:THRESHold`` command.
@@ -13172,6 +14456,12 @@ class BusBItemEusbBitrate(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:EUSB:BITRate {HIGH|FULL|LOW}
         - BUS:B<x>:EUSB:BITRate?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``HIGH`` sets the bit rate to Bit Rate to 480 Mbps.
+        - ``FULL`` sets the bit rate to Bit Rate to 12 Mbps.
+        - ``LOW`` sets the bit rate to Bit Rate to 1.5 Mbps.
     """
 
 
@@ -13183,6 +14473,9 @@ class BusBItemEusb(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:EUSB?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:EUSB?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.bitrate``: The ``BUS:B<x>:EUSB:BITRate`` command.
@@ -13233,6 +14526,12 @@ class BusBItemEusb(SCPICmdRead):
             - BUS:B<x>:EUSB:BITRate {HIGH|FULL|LOW}
             - BUS:B<x>:EUSB:BITRate?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``HIGH`` sets the bit rate to Bit Rate to 480 Mbps.
+            - ``FULL`` sets the bit rate to Bit Rate to 12 Mbps.
+            - ``LOW`` sets the bit rate to Bit Rate to 1.5 Mbps.
         """
         return self._bitrate
 
@@ -13244,6 +14543,9 @@ class BusBItemEusb(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:EUSB:DATAMINUS?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:EUSB:DATAMINUS?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.data``: The ``BUS:B<x>:EUSB:DATAMINUS:DATA`` command tree.
@@ -13272,6 +14574,10 @@ class BusBItemEusb(SCPICmdRead):
             - BUS:B<x>:EUSB:DATAMINUSTHRESHold <NR3>
             - BUS:B<x>:EUSB:DATAMINUSTHRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the eUSB DATA Minus source threshold. The argument range is -8 V to +8 V.
         """
         return self._dataminusthreshold
 
@@ -13283,6 +14589,9 @@ class BusBItemEusb(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:EUSB:DATAPLUS?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:EUSB:DATAPLUS?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.data``: The ``BUS:B<x>:EUSB:DATAPLUS:DATA`` command tree.
@@ -13310,6 +14619,10 @@ class BusBItemEusb(SCPICmdRead):
             - BUS:B<x>:EUSB:DATAPLUSTHRESHold <NR3>
             - BUS:B<x>:EUSB:DATAPLUSTHRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the eUSB DATA Plus source threshold. The argument range is -8 V to +8 V.
         """
         return self._dataplusthreshold
 
@@ -13333,6 +14646,11 @@ class BusBItemEusb(SCPICmdRead):
             - BUS:B<x>:EUSB:LOWTHRESHold <NR3>
             - BUS:B<x>:EUSB:LOWTHRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the eUSB Strobe threshold for the specified bus. The argument range is -8
+              V to +8 V.
         """
         return self._lowthreshold
 
@@ -13344,6 +14662,9 @@ class BusBItemEusb(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:EUSB:OPERating?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:EUSB:OPERating?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.mode``: The ``BUS:B<x>:EUSB:OPERating:MODe`` command.
@@ -13369,6 +14690,11 @@ class BusBItemEusb(SCPICmdRead):
             - BUS:B<x>:EUSB:SIGNALTYpe {SINGLE|DIFF}
             - BUS:B<x>:EUSB:SIGNALTYpe?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``SINGLE`` sets the signal type to single.
+            - ``DIFF`` sets the signal type to differential.
         """
         return self._signaltype
 
@@ -13380,6 +14706,9 @@ class BusBItemEusb(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:EUSB:SOUrce?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:EUSB:SOUrce?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.diff``: The ``BUS:B<x>:EUSB:SOUrce:DIFF`` command.
@@ -13408,6 +14737,11 @@ class BusBItemEusb(SCPICmdRead):
             - BUS:B<x>:EUSB:THRESHold <NR3>
             - BUS:B<x>:EUSB:THRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the eUSB Strobe threshold for the specified bus. The argument range is -8
+              V to +8 V.
         """
         return self._threshold
 
@@ -13429,6 +14763,11 @@ class BusBItemEthernetType(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERnet:TYPe {TENBASET|HUNDREDBASETX}
         - BUS:B<x>:ETHERnet:TYPe?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``TENBASET`` specifies the Ethernet speed as 10Base-T.
+        - ``HUNDREDBASETX`` specifies the Ethernet speed as 100Base-T.
     """
 
 
@@ -13451,6 +14790,10 @@ class BusBItemEthernetThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERnet:THRESHold <NR3>
         - BUS:B<x>:ETHERnet:THRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the Ethernet DATA source High threshold for the specified bus.
     """
 
 
@@ -13474,6 +14817,12 @@ class BusBItemEthernetSourceDplus(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERnet:SOUrce:DPLUs {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:ETHERnet:SOUrce:DPLUs?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel to use source.
+        - ``MATH<x>`` specifies a math waveform to use as the source.
+        - ``REF<x>`` specifies a reference waveform to use as the source.
     """
 
 
@@ -13497,6 +14846,12 @@ class BusBItemEthernetSourceDminus(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERnet:SOUrce:DMINus {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:ETHERnet:SOUrce:DMINus?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel to use source.
+        - ``MATH<x>`` specifies a math waveform to use as the source.
+        - ``REF<x>`` specifies a reference waveform to use as the source.
     """
 
 
@@ -13520,6 +14875,15 @@ class BusBItemEthernetSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERnet:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:ETHERnet:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies to use one of the analog channels as the Ethernet data source for
+          differential input.
+        - ``MATH<x>`` specifies to use a math waveform as the source for Ethernet data differential
+          input.
+        - ``REF<x>`` specifies to use one of the reference waveforms as the Ethernet data source for
+          differential input.
 
     Properties:
         - ``.dminus``: The ``BUS:B<x>:ETHERnet:SOUrce:DMINus`` command.
@@ -13553,6 +14917,12 @@ class BusBItemEthernetSource(SCPICmdWrite, SCPICmdRead):
             - BUS:B<x>:ETHERnet:SOUrce:DMINus {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:ETHERnet:SOUrce:DMINus?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel to use source.
+            - ``MATH<x>`` specifies a math waveform to use as the source.
+            - ``REF<x>`` specifies a reference waveform to use as the source.
         """
         return self._dminus
 
@@ -13577,6 +14947,12 @@ class BusBItemEthernetSource(SCPICmdWrite, SCPICmdRead):
             - BUS:B<x>:ETHERnet:SOUrce:DPLUs {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:ETHERnet:SOUrce:DPLUs?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel to use source.
+            - ``MATH<x>`` specifies a math waveform to use as the source.
+            - ``REF<x>`` specifies a reference waveform to use as the source.
         """
         return self._dplus
 
@@ -13600,6 +14976,11 @@ class BusBItemEthernetSignaltype(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERnet:SIGNALTYpe {SINGLE|DIFF}
         - BUS:B<x>:ETHERnet:SIGNALTYpe?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``SINGLE`` specifies single-ended signals.
+        - ``DIFF`` specifies differential signals.
     """
 
 
@@ -13622,6 +15003,11 @@ class BusBItemEthernetQtagging(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERnet:QTAGGING {YES|NO}
         - BUS:B<x>:ETHERnet:QTAGGING?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``YES`` specifies that Q-Tagging packets are available.
+        - ``NO`` specifies that Q-Tagging packets are not available.
     """
 
 
@@ -13645,6 +15031,10 @@ class BusBItemEthernetLowthreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERnet:LOWTHRESHold <NR3>
         - BUS:B<x>:ETHERnet:LOWTHRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the Ethernet source Low threshold for the specified bus.
     """
 
 
@@ -13667,6 +15057,11 @@ class BusBItemEthernetIpvfour(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERnet:IPVFOUR {YES|NO}
         - BUS:B<x>:ETHERnet:IPVFOUR?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``YES`` specifies that IPV4 packets are available.
+        - ``NO`` specifies that IPV4 packets are not available.
     """
 
 
@@ -13691,6 +15086,10 @@ class BusBItemEthernetDataplusthreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERnet:DATAPLUSTHRESHold <NR3>
         - BUS:B<x>:ETHERnet:DATAPLUSTHRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the Ethernet D+ source threshold for the specified bus.
     """
 
 
@@ -13716,6 +15115,10 @@ class BusBItemEthernetDataminusthreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERnet:DATAMINUSTHRESHold <NR3>
         - BUS:B<x>:ETHERnet:DATAMINUSTHRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the Ethernet D- source threshold for the specified bus.
     """
 
 
@@ -13727,6 +15130,9 @@ class BusBItemEthernet(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ETHERnet?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ETHERnet?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.dataminusthreshold``: The ``BUS:B<x>:ETHERnet:DATAMINUSTHRESHold`` command.
@@ -13781,6 +15187,10 @@ class BusBItemEthernet(SCPICmdRead):
             - BUS:B<x>:ETHERnet:DATAMINUSTHRESHold <NR3>
             - BUS:B<x>:ETHERnet:DATAMINUSTHRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the Ethernet D- source threshold for the specified bus.
         """
         return self._dataminusthreshold
 
@@ -13807,6 +15217,10 @@ class BusBItemEthernet(SCPICmdRead):
             - BUS:B<x>:ETHERnet:DATAPLUSTHRESHold <NR3>
             - BUS:B<x>:ETHERnet:DATAPLUSTHRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the Ethernet D+ source threshold for the specified bus.
         """
         return self._dataplusthreshold
 
@@ -13830,6 +15244,11 @@ class BusBItemEthernet(SCPICmdRead):
             - BUS:B<x>:ETHERnet:IPVFOUR {YES|NO}
             - BUS:B<x>:ETHERnet:IPVFOUR?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``YES`` specifies that IPV4 packets are available.
+            - ``NO`` specifies that IPV4 packets are not available.
         """
         return self._ipvfour
 
@@ -13854,6 +15273,10 @@ class BusBItemEthernet(SCPICmdRead):
             - BUS:B<x>:ETHERnet:LOWTHRESHold <NR3>
             - BUS:B<x>:ETHERnet:LOWTHRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the Ethernet source Low threshold for the specified bus.
         """
         return self._lowthreshold
 
@@ -13877,6 +15300,11 @@ class BusBItemEthernet(SCPICmdRead):
             - BUS:B<x>:ETHERnet:QTAGGING {YES|NO}
             - BUS:B<x>:ETHERnet:QTAGGING?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``YES`` specifies that Q-Tagging packets are available.
+            - ``NO`` specifies that Q-Tagging packets are not available.
         """
         return self._qtagging
 
@@ -13900,6 +15328,11 @@ class BusBItemEthernet(SCPICmdRead):
             - BUS:B<x>:ETHERnet:SIGNALTYpe {SINGLE|DIFF}
             - BUS:B<x>:ETHERnet:SIGNALTYpe?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``SINGLE`` specifies single-ended signals.
+            - ``DIFF`` specifies differential signals.
         """
         return self._signaltype
 
@@ -13924,6 +15357,15 @@ class BusBItemEthernet(SCPICmdRead):
             - BUS:B<x>:ETHERnet:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:ETHERnet:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies to use one of the analog channels as the Ethernet data source for
+              differential input.
+            - ``MATH<x>`` specifies to use a math waveform as the source for Ethernet data
+              differential input.
+            - ``REF<x>`` specifies to use one of the reference waveforms as the Ethernet data source
+              for differential input.
 
         Sub-properties:
             - ``.dminus``: The ``BUS:B<x>:ETHERnet:SOUrce:DMINus`` command.
@@ -13951,6 +15393,10 @@ class BusBItemEthernet(SCPICmdRead):
             - BUS:B<x>:ETHERnet:THRESHold <NR3>
             - BUS:B<x>:ETHERnet:THRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the Ethernet DATA source High threshold for the specified bus.
         """
         return self._threshold
 
@@ -13973,6 +15419,11 @@ class BusBItemEthernet(SCPICmdRead):
             - BUS:B<x>:ETHERnet:TYPe {TENBASET|HUNDREDBASETX}
             - BUS:B<x>:ETHERnet:TYPe?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``TENBASET`` specifies the Ethernet speed as 10Base-T.
+            - ``HUNDREDBASETX`` specifies the Ethernet speed as 100Base-T.
         """
         return self._type
 
@@ -13996,6 +15447,11 @@ class BusBItemEthercatThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERCAT:THRESHold <NR3>
         - BUS:B<x>:ETHERCAT:THRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` specifies the EtherCAT differential Source threshold for the specified bus. The
+          default value is 0 V. The valid range is -8 V to +8 V.
     """
 
 
@@ -14018,6 +15474,12 @@ class BusBItemEthercatSourceDplus(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERCAT:SOUrce:DPLUs {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:ETHERCAT:SOUrce:DPLUs?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies to use one of the analog channels as the DataPlus source.
+        - ``MATH<x>`` specifies to use a math waveform as the DataPlus source.
+        - ``REF<x>`` specifies to use one of the reference waveforms as the DataPlus source.
     """
 
 
@@ -14040,6 +15502,12 @@ class BusBItemEthercatSourceDminus(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERCAT:SOUrce:DMINus {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:ETHERCAT:SOUrce:DMINus?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies to use one of the analog channels as the DataMinus source.
+        - ``MATH<x>`` specifies to use a math waveform as the DataMinus source.
+        - ``REF<x>`` specifies to use one of the reference waveforms as the DataMinus source.
     """
 
 
@@ -14061,6 +15529,12 @@ class BusBItemEthercatSourceDiff(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERCAT:SOUrce:DIFF {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:ETHERCAT:SOUrce:DIFF?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies to use one of the analog channels as the differential source.
+        - ``MATH<x>`` specifies to use a math waveform as the differential source.
+        - ``REF<x>`` specifies to use one of the reference waveforms as the differential source.
     """
 
 
@@ -14071,6 +15545,9 @@ class BusBItemEthercatSource(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ETHERCAT:SOUrce?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ETHERCAT:SOUrce?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.diff``: The ``BUS:B<x>:ETHERCAT:SOUrce:DIFF`` command.
@@ -14103,6 +15580,12 @@ class BusBItemEthercatSource(SCPICmdRead):
             - BUS:B<x>:ETHERCAT:SOUrce:DIFF {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:ETHERCAT:SOUrce:DIFF?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies to use one of the analog channels as the differential source.
+            - ``MATH<x>`` specifies to use a math waveform as the differential source.
+            - ``REF<x>`` specifies to use one of the reference waveforms as the differential source.
         """
         return self._diff
 
@@ -14127,6 +15610,12 @@ class BusBItemEthercatSource(SCPICmdRead):
             - BUS:B<x>:ETHERCAT:SOUrce:DMINus {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:ETHERCAT:SOUrce:DMINus?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies to use one of the analog channels as the DataMinus source.
+            - ``MATH<x>`` specifies to use a math waveform as the DataMinus source.
+            - ``REF<x>`` specifies to use one of the reference waveforms as the DataMinus source.
         """
         return self._dminus
 
@@ -14150,6 +15639,12 @@ class BusBItemEthercatSource(SCPICmdRead):
             - BUS:B<x>:ETHERCAT:SOUrce:DPLUs {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:ETHERCAT:SOUrce:DPLUs?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies to use one of the analog channels as the DataPlus source.
+            - ``MATH<x>`` specifies to use a math waveform as the DataPlus source.
+            - ``REF<x>`` specifies to use one of the reference waveforms as the DataPlus source.
         """
         return self._dplus
 
@@ -14172,6 +15667,11 @@ class BusBItemEthercatSignaltype(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERCAT:SIGNALTYpe {SINGLE|DIFF}
         - BUS:B<x>:ETHERCAT:SIGNALTYpe?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``SINGLE`` specifies single-ended signals.
+        - ``DIFF`` specifies differential signals.
     """
 
 
@@ -14195,6 +15695,11 @@ class BusBItemEthercatDataplusthreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERCAT:DATAPLUSTHRESHold <NR3>
         - BUS:B<x>:ETHERCAT:DATAPLUSTHRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the EtherCAT DataPinus source threshold for the specified bus. The valid
+          range is -8V to +8V. The default value is 0 V.
     """
 
 
@@ -14219,6 +15724,11 @@ class BusBItemEthercatDataminusthreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ETHERCAT:DATAMINUSTHRESHold <NR3>
         - BUS:B<x>:ETHERCAT:DATAMINUSTHRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the EtherCAT DataMinus source threshold for the specified bus. The valid
+          range is -8V to +8V. The default value is 0 V.
     """
 
 
@@ -14229,6 +15739,9 @@ class BusBItemEthercat(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ETHERCAT?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ETHERCAT?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.dataminusthreshold``: The ``BUS:B<x>:ETHERCAT:DATAMINUSTHRESHold`` command.
@@ -14272,6 +15785,11 @@ class BusBItemEthercat(SCPICmdRead):
             - BUS:B<x>:ETHERCAT:DATAMINUSTHRESHold <NR3>
             - BUS:B<x>:ETHERCAT:DATAMINUSTHRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the EtherCAT DataMinus source threshold for the specified bus. The valid
+              range is -8V to +8V. The default value is 0 V.
         """
         return self._dataminusthreshold
 
@@ -14297,6 +15815,11 @@ class BusBItemEthercat(SCPICmdRead):
             - BUS:B<x>:ETHERCAT:DATAPLUSTHRESHold <NR3>
             - BUS:B<x>:ETHERCAT:DATAPLUSTHRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the EtherCAT DataPinus source threshold for the specified bus. The valid
+              range is -8V to +8V. The default value is 0 V.
         """
         return self._dataplusthreshold
 
@@ -14319,6 +15842,11 @@ class BusBItemEthercat(SCPICmdRead):
             - BUS:B<x>:ETHERCAT:SIGNALTYpe {SINGLE|DIFF}
             - BUS:B<x>:ETHERCAT:SIGNALTYpe?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``SINGLE`` specifies single-ended signals.
+            - ``DIFF`` specifies differential signals.
         """
         return self._signaltype
 
@@ -14330,6 +15858,9 @@ class BusBItemEthercat(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:ETHERCAT:SOUrce?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ETHERCAT:SOUrce?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.diff``: The ``BUS:B<x>:ETHERCAT:SOUrce:DIFF`` command.
@@ -14358,6 +15889,11 @@ class BusBItemEthercat(SCPICmdRead):
             - BUS:B<x>:ETHERCAT:THRESHold <NR3>
             - BUS:B<x>:ETHERCAT:THRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` specifies the EtherCAT differential Source threshold for the specified bus.
+              The default value is 0 V. The valid range is -8 V to +8 V.
         """
         return self._threshold
 
@@ -14380,6 +15916,11 @@ class BusBItemEspiIomode(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:IOMODe {SINGle|DUAL}
         - BUS:B<x>:ESPI:IOMODe?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``SINGle`` displays the command and response decode in two lanes.
+        - ``DUAL`` displays the decode in a single data lane.
     """
 
 
@@ -14402,6 +15943,11 @@ class BusBItemEspiDatatwoThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:DATATWO:THReshold <NR3>
         - BUS:B<x>:ESPI:DATATWO:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``<NR3>`` sets the command/data threshold for the specified bus. The valid range is -8V to
+          +8V.
     """
 
 
@@ -14424,6 +15970,12 @@ class BusBItemEspiDatatwoSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:DATATWO:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:ESPI:DATATWO:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``MATH<x>`` specifies a math channel as the source.
+        - ``REF<x>`` specifies a reference waveform as the source.
     """
 
 
@@ -14446,6 +15998,11 @@ class BusBItemEspiDatatwoPolarity(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:DATATWO:POLarity {HIGH|LOW}
         - BUS:B<x>:ESPI:DATATWO:POLarity?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``HIGH`` sets the ESPI data polarity to active high.
+        - ``LOW`` sets the ESPI data polarity to active low.
     """
 
 
@@ -14456,6 +16013,9 @@ class BusBItemEspiDatatwo(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:DATATWO?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:DATATWO?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:ESPI:DATATWO:POLarity`` command.
@@ -14489,6 +16049,11 @@ class BusBItemEspiDatatwo(SCPICmdRead):
             - BUS:B<x>:ESPI:DATATWO:POLarity {HIGH|LOW}
             - BUS:B<x>:ESPI:DATATWO:POLarity?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``HIGH`` sets the ESPI data polarity to active high.
+            - ``LOW`` sets the ESPI data polarity to active low.
         """
         return self._polarity
 
@@ -14512,6 +16077,12 @@ class BusBItemEspiDatatwo(SCPICmdRead):
             - BUS:B<x>:ESPI:DATATWO:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:ESPI:DATATWO:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``MATH<x>`` specifies a math channel as the source.
+            - ``REF<x>`` specifies a reference waveform as the source.
         """
         return self._source
 
@@ -14536,6 +16107,11 @@ class BusBItemEspiDatatwo(SCPICmdRead):
             - BUS:B<x>:ESPI:DATATWO:THReshold <NR3>
             - BUS:B<x>:ESPI:DATATWO:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``<NR3>`` sets the command/data threshold for the specified bus. The valid range is
+              -8V to +8V.
         """
         return self._threshold
 
@@ -14559,6 +16135,11 @@ class BusBItemEspiDataoneThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:DATAONE:THReshold <NR3>
         - BUS:B<x>:ESPI:DATAONE:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``<NR3>`` sets the command/data threshold for the specified bus. The valid range is -8V to
+          +8V.
     """
 
 
@@ -14581,6 +16162,12 @@ class BusBItemEspiDataoneSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:DATAONE:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:ESPI:DATAONE:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``MATH<x>`` specifies a math channel as the source.
+        - ``REF<x>`` specifies a reference waveform as the source.
     """
 
 
@@ -14603,6 +16190,11 @@ class BusBItemEspiDataonePolarity(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:DATAONE:POLarity {HIGH|LOW}
         - BUS:B<x>:ESPI:DATAONE:POLarity?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``HIGH`` sets the ESPI data polarity to active high.
+        - ``LOW`` sets the ESPI data polarity to active low.
     """
 
 
@@ -14613,6 +16205,9 @@ class BusBItemEspiDataone(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:DATAONE?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:DATAONE?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:ESPI:DATAONE:POLarity`` command.
@@ -14646,6 +16241,11 @@ class BusBItemEspiDataone(SCPICmdRead):
             - BUS:B<x>:ESPI:DATAONE:POLarity {HIGH|LOW}
             - BUS:B<x>:ESPI:DATAONE:POLarity?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``HIGH`` sets the ESPI data polarity to active high.
+            - ``LOW`` sets the ESPI data polarity to active low.
         """
         return self._polarity
 
@@ -14669,6 +16269,12 @@ class BusBItemEspiDataone(SCPICmdRead):
             - BUS:B<x>:ESPI:DATAONE:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:ESPI:DATAONE:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``MATH<x>`` specifies a math channel as the source.
+            - ``REF<x>`` specifies a reference waveform as the source.
         """
         return self._source
 
@@ -14693,6 +16299,11 @@ class BusBItemEspiDataone(SCPICmdRead):
             - BUS:B<x>:ESPI:DATAONE:THReshold <NR3>
             - BUS:B<x>:ESPI:DATAONE:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``<NR3>`` sets the command/data threshold for the specified bus. The valid range is
+              -8V to +8V.
         """
         return self._threshold
 
@@ -14716,6 +16327,10 @@ class BusBItemEspiClockThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:CLOCk:THReshold <NR3>
         - BUS:B<x>:ESPI:CLOCk:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``<NR3>`` sets the clock threshold for the specified bus. The valid range is -8V to +8V.
     """
 
 
@@ -14738,6 +16353,12 @@ class BusBItemEspiClockSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:CLOCk:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:ESPI:CLOCk:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``MATH<x>`` specifies a math channel as the source.
+        - ``REF<x>`` specifies a reference waveform as the source.
     """
 
 
@@ -14760,6 +16381,11 @@ class BusBItemEspiClockPolarity(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:CLOCk:POLarity {FALL|RISE}
         - BUS:B<x>:ESPI:CLOCk:POLarity?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``FALL`` sets the ESPI clock polarity to fall.
+        - ``RISE`` sets the ESPI clock polarity to rise.
     """
 
 
@@ -14770,6 +16396,9 @@ class BusBItemEspiClock(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:CLOCk?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:CLOCk?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:ESPI:CLOCk:POLarity`` command.
@@ -14803,6 +16432,11 @@ class BusBItemEspiClock(SCPICmdRead):
             - BUS:B<x>:ESPI:CLOCk:POLarity {FALL|RISE}
             - BUS:B<x>:ESPI:CLOCk:POLarity?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``FALL`` sets the ESPI clock polarity to fall.
+            - ``RISE`` sets the ESPI clock polarity to rise.
         """
         return self._polarity
 
@@ -14826,6 +16460,12 @@ class BusBItemEspiClock(SCPICmdRead):
             - BUS:B<x>:ESPI:CLOCk:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:ESPI:CLOCk:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``MATH<x>`` specifies a math channel as the source.
+            - ``REF<x>`` specifies a reference waveform as the source.
         """
         return self._source
 
@@ -14849,6 +16489,11 @@ class BusBItemEspiClock(SCPICmdRead):
             - BUS:B<x>:ESPI:CLOCk:THReshold <NR3>
             - BUS:B<x>:ESPI:CLOCk:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``<NR3>`` sets the clock threshold for the specified bus. The valid range is -8V to
+              +8V.
         """
         return self._threshold
 
@@ -14872,6 +16517,11 @@ class BusBItemEspiChipselectThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:CHIPSELect:THReshold <NR3>
         - BUS:B<x>:ESPI:CHIPSELect:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``<NR3>`` sets the chip select threshold for the specified bus. The valid range is -8V to
+          +8V.
     """
 
 
@@ -14894,6 +16544,12 @@ class BusBItemEspiChipselectSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:CHIPSELect:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:ESPI:CHIPSELect:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``MATH<x>`` specifies a math channel as the source.
+        - ``REF<x>`` specifies a reference waveform as the source.
     """
 
 
@@ -14916,6 +16572,11 @@ class BusBItemEspiChipselectPolarity(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:CHIPSELect:POLarity {HIGH|LOW}
         - BUS:B<x>:ESPI:CHIPSELect:POLarity?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``HIGH`` sets the ESPI chip select polarity to active high.
+        - ``LOW`` sets the ESPI chip select polarity to active low.
     """
 
 
@@ -14926,6 +16587,9 @@ class BusBItemEspiChipselect(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:CHIPSELect?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:CHIPSELect?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:ESPI:CHIPSELect:POLarity`` command.
@@ -14961,6 +16625,11 @@ class BusBItemEspiChipselect(SCPICmdRead):
             - BUS:B<x>:ESPI:CHIPSELect:POLarity {HIGH|LOW}
             - BUS:B<x>:ESPI:CHIPSELect:POLarity?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``HIGH`` sets the ESPI chip select polarity to active high.
+            - ``LOW`` sets the ESPI chip select polarity to active low.
         """
         return self._polarity
 
@@ -14985,6 +16654,12 @@ class BusBItemEspiChipselect(SCPICmdRead):
             - BUS:B<x>:ESPI:CHIPSELect:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:ESPI:CHIPSELect:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``MATH<x>`` specifies a math channel as the source.
+            - ``REF<x>`` specifies a reference waveform as the source.
         """
         return self._source
 
@@ -15010,6 +16685,11 @@ class BusBItemEspiChipselect(SCPICmdRead):
             - BUS:B<x>:ESPI:CHIPSELect:THReshold <NR3>
             - BUS:B<x>:ESPI:CHIPSELect:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``<NR3>`` sets the chip select threshold for the specified bus. The valid range is -8V
+              to +8V.
         """
         return self._threshold
 
@@ -15033,6 +16713,10 @@ class BusBItemEspiAlertThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:ALERt:THReshold <NR3>
         - BUS:B<x>:ESPI:ALERt:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``<NR3>`` sets the alert threshold for the specified bus. The valid range is -8V to +8V.
     """
 
 
@@ -15055,6 +16739,12 @@ class BusBItemEspiAlertSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:ALERt:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:ESPI:ALERt:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``MATH<x>`` specifies a math channel as the source.
+        - ``REF<x>`` specifies a reference waveform as the source.
     """
 
 
@@ -15077,6 +16767,11 @@ class BusBItemEspiAlertPolarity(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:ALERt:POLarity {HIGH|LOW}
         - BUS:B<x>:ESPI:ALERt:POLarity?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``HIGH`` sets the ESPI alert polarity to active high.
+        - ``LOW`` sets the ESPI alert polarity to active low.
     """
 
 
@@ -15087,6 +16782,9 @@ class BusBItemEspiAlert(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:ALERt?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:ALERt?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:ESPI:ALERt:POLarity`` command.
@@ -15120,6 +16818,11 @@ class BusBItemEspiAlert(SCPICmdRead):
             - BUS:B<x>:ESPI:ALERt:POLarity {HIGH|LOW}
             - BUS:B<x>:ESPI:ALERt:POLarity?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``HIGH`` sets the ESPI alert polarity to active high.
+            - ``LOW`` sets the ESPI alert polarity to active low.
         """
         return self._polarity
 
@@ -15143,6 +16846,12 @@ class BusBItemEspiAlert(SCPICmdRead):
             - BUS:B<x>:ESPI:ALERt:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:ESPI:ALERt:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``MATH<x>`` specifies a math channel as the source.
+            - ``REF<x>`` specifies a reference waveform as the source.
         """
         return self._source
 
@@ -15166,6 +16875,11 @@ class BusBItemEspiAlert(SCPICmdRead):
             - BUS:B<x>:ESPI:ALERt:THReshold <NR3>
             - BUS:B<x>:ESPI:ALERt:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``<NR3>`` sets the alert threshold for the specified bus. The valid range is -8V to
+              +8V.
         """
         return self._threshold
 
@@ -15189,6 +16903,11 @@ class BusBItemEspiAlertview(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:ESPI:ALERTVIEW {ON|OFF}
         - BUS:B<x>:ESPI:ALERTVIEW?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``ON`` turns the alert source on.
+        - ``OFF`` turns the alert source on.
     """
 
 
@@ -15199,6 +16918,9 @@ class BusBItemEspi(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.alertview``: The ``BUS:B<x>:ESPI:ALERTVIEW`` command.
@@ -15240,6 +16962,11 @@ class BusBItemEspi(SCPICmdRead):
             - BUS:B<x>:ESPI:ALERTVIEW {ON|OFF}
             - BUS:B<x>:ESPI:ALERTVIEW?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``ON`` turns the alert source on.
+            - ``OFF`` turns the alert source on.
         """
         return self._alertview
 
@@ -15251,6 +16978,9 @@ class BusBItemEspi(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:ALERt?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:ALERt?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the Bus number.
 
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:ESPI:ALERt:POLarity`` command.
@@ -15268,6 +16998,9 @@ class BusBItemEspi(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:CHIPSELect?`` query
               and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the Bus number.
+
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:ESPI:CHIPSELect:POLarity`` command.
             - ``.source``: The ``BUS:B<x>:ESPI:CHIPSELect:SOUrce`` command.
@@ -15283,6 +17016,9 @@ class BusBItemEspi(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:CLOCk?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:CLOCk?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the Bus number.
 
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:ESPI:CLOCk:POLarity`` command.
@@ -15300,6 +17036,9 @@ class BusBItemEspi(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:DATAONE?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the Bus number.
+
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:ESPI:DATAONE:POLarity`` command.
             - ``.source``: The ``BUS:B<x>:ESPI:DATAONE:SOUrce`` command.
@@ -15315,6 +17054,9 @@ class BusBItemEspi(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI:DATATWO?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI:DATATWO?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the Bus number.
 
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:ESPI:DATATWO:POLarity`` command.
@@ -15343,6 +17085,11 @@ class BusBItemEspi(SCPICmdRead):
             - BUS:B<x>:ESPI:IOMODe {SINGle|DUAL}
             - BUS:B<x>:ESPI:IOMODe?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``SINGle`` displays the command and response decode in two lanes.
+            - ``DUAL`` displays the decode in a single data lane.
         """
         return self._iomode
 
@@ -15366,6 +17113,11 @@ class BusBItemDphySignalEncoding(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:DPHY:SIGNal:ENCoding {false|true}
         - BUS:B<x>:DPHY:SIGNal:ENCoding?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``false`` specifies the 8b9b encoding disabled.
+        - ``true`` specifies 8b9b encoding disabled.
     """
 
 
@@ -15376,6 +17128,9 @@ class BusBItemDphySignal(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:DPHY:SIGNal?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:SIGNal?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.encoding``: The ``BUS:B<x>:DPHY:SIGNal:ENCoding`` command.
@@ -15405,6 +17160,11 @@ class BusBItemDphySignal(SCPICmdRead):
             - BUS:B<x>:DPHY:SIGNal:ENCoding {false|true}
             - BUS:B<x>:DPHY:SIGNal:ENCoding?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``false`` specifies the 8b9b encoding disabled.
+            - ``true`` specifies 8b9b encoding disabled.
         """
         return self._encoding
 
@@ -15428,6 +17188,11 @@ class BusBItemDphyProtocolType(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:DPHY:PROTocol:TYPe {CSI|DSI}
         - BUS:B<x>:DPHY:PROTocol:TYPe?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``CSI`` specifies the protocol type as CSI.
+        - ``DSI`` specifies the protocol type as DSI.
     """
 
 
@@ -15438,6 +17203,9 @@ class BusBItemDphyProtocol(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:DPHY:PROTocol?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:PROTocol?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.type``: The ``BUS:B<x>:DPHY:PROTocol:TYPe`` command.
@@ -15467,6 +17235,11 @@ class BusBItemDphyProtocol(SCPICmdRead):
             - BUS:B<x>:DPHY:PROTocol:TYPe {CSI|DSI}
             - BUS:B<x>:DPHY:PROTocol:TYPe?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``CSI`` specifies the protocol type as CSI.
+            - ``DSI`` specifies the protocol type as DSI.
         """
         return self._type
 
@@ -15490,6 +17263,11 @@ class BusBItemDphyLpDirection(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:DPHY:LP:DIRection {forward|reverse}
         - BUS:B<x>:DPHY:LP:DIRection?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``forward`` specifies the direction as forward.
+        - ``reverse`` specifies the direction as reverse.
     """
 
 
@@ -15500,6 +17278,9 @@ class BusBItemDphyLp(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:DPHY:LP?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:LP?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.direction``: The ``BUS:B<x>:DPHY:LP:DIRection`` command.
@@ -15529,6 +17310,11 @@ class BusBItemDphyLp(SCPICmdRead):
             - BUS:B<x>:DPHY:LP:DIRection {forward|reverse}
             - BUS:B<x>:DPHY:LP:DIRection?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``forward`` specifies the direction as forward.
+            - ``reverse`` specifies the direction as reverse.
         """
         return self._direction
 
@@ -15552,6 +17338,13 @@ class BusBItemDphyDplusSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:DPHY:DPlus:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:DPHY:DPlus:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``CH<x>`` specifies an analog channel as the source, where <x> is the channel number.
+        - ``MATH<x>`` specifies a math channel as the source, where <x> is the math waveform number.
+        - ``REF<x>`` specifies a reference waveform as the source, where <x> is the reference
+          waveform number.
     """
 
 
@@ -15574,6 +17367,11 @@ class BusBItemDphyDplusLpthreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:DPHY:DPlus:LPTHRESHold <NR3>
         - BUS:B<x>:DPHY:DPlus:LPTHRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the DPHY D+ source low power threshold for the specified bus. The argument
+          range is -8V to +8V.
     """
 
 
@@ -15596,6 +17394,11 @@ class BusBItemDphyDplusDatathreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:DPHY:DPlus:DATATHRESHold <NR3>
         - BUS:B<x>:DPHY:DPlus:DATATHRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the DPHY D+ source data threshold for the specified bus. The argument range
+          is -8V to +8V.
     """
 
 
@@ -15606,6 +17409,9 @@ class BusBItemDphyDplus(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:DPHY:DPlus?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:DPlus?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.datathreshold``: The ``BUS:B<x>:DPHY:DPlus:DATATHRESHold`` command.
@@ -15643,6 +17449,11 @@ class BusBItemDphyDplus(SCPICmdRead):
             - BUS:B<x>:DPHY:DPlus:DATATHRESHold <NR3>
             - BUS:B<x>:DPHY:DPlus:DATATHRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the DPHY D+ source data threshold for the specified bus. The argument
+              range is -8V to +8V.
         """
         return self._datathreshold
 
@@ -15667,6 +17478,11 @@ class BusBItemDphyDplus(SCPICmdRead):
             - BUS:B<x>:DPHY:DPlus:LPTHRESHold <NR3>
             - BUS:B<x>:DPHY:DPlus:LPTHRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the DPHY D+ source low power threshold for the specified bus. The
+              argument range is -8V to +8V.
         """
         return self._lpthreshold
 
@@ -15690,6 +17506,14 @@ class BusBItemDphyDplus(SCPICmdRead):
             - BUS:B<x>:DPHY:DPlus:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:DPHY:DPlus:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``CH<x>`` specifies an analog channel as the source, where <x> is the channel number.
+            - ``MATH<x>`` specifies a math channel as the source, where <x> is the math waveform
+              number.
+            - ``REF<x>`` specifies a reference waveform as the source, where <x> is the reference
+              waveform number.
         """
         return self._source
 
@@ -15713,6 +17537,13 @@ class BusBItemDphyDminusSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:DPHY:DMINus:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:DPHY:DMINus:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``CH<x>`` specifies an analog channel as the source, where <x> is the channel number.
+        - ``MATH<x>`` specifies a math channel as the source, where <x> is the math waveform number.
+        - ``REF<x>`` specifies a reference waveform as the source, where <x> is the reference
+          waveform number.
     """
 
 
@@ -15735,6 +17566,11 @@ class BusBItemDphyDminusLpthreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:DPHY:DMINus:LPTHRESHold <NR3>
         - BUS:B<x>:DPHY:DMINus:LPTHRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the DPHY D- source low power threshold for the specified bus. The argument
+          range is -8V to +8V.
     """
 
 
@@ -15757,6 +17593,11 @@ class BusBItemDphyDminusDatathreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:DPHY:DMINus:DATATHRESHold <NR3>
         - BUS:B<x>:DPHY:DMINus:DATATHRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the DPHY D- source data threshold for the specified bus. The argument range
+          is -8V to +8V.
     """
 
 
@@ -15767,6 +17608,9 @@ class BusBItemDphyDminus(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:DPHY:DMINus?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:DMINus?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.datathreshold``: The ``BUS:B<x>:DPHY:DMINus:DATATHRESHold`` command.
@@ -15804,6 +17648,11 @@ class BusBItemDphyDminus(SCPICmdRead):
             - BUS:B<x>:DPHY:DMINus:DATATHRESHold <NR3>
             - BUS:B<x>:DPHY:DMINus:DATATHRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the DPHY D- source data threshold for the specified bus. The argument
+              range is -8V to +8V.
         """
         return self._datathreshold
 
@@ -15829,6 +17678,11 @@ class BusBItemDphyDminus(SCPICmdRead):
             - BUS:B<x>:DPHY:DMINus:LPTHRESHold <NR3>
             - BUS:B<x>:DPHY:DMINus:LPTHRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the DPHY D- source low power threshold for the specified bus. The
+              argument range is -8V to +8V.
         """
         return self._lpthreshold
 
@@ -15852,6 +17706,14 @@ class BusBItemDphyDminus(SCPICmdRead):
             - BUS:B<x>:DPHY:DMINus:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:DPHY:DMINus:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``CH<x>`` specifies an analog channel as the source, where <x> is the channel number.
+            - ``MATH<x>`` specifies a math channel as the source, where <x> is the math waveform
+              number.
+            - ``REF<x>`` specifies a reference waveform as the source, where <x> is the reference
+              waveform number.
         """
         return self._source
 
@@ -15875,6 +17737,11 @@ class BusBItemDphyClockThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:DPHY:CLOCk:THRESHold <NR3>
         - BUS:B<x>:DPHY:CLOCk:THRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the DPHY clock high threshold for the specified bus. The argument range is
+          -8V to +8V.
     """
 
 
@@ -15897,6 +17764,13 @@ class BusBItemDphyClockSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:DPHY:CLOCk:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:DPHY:CLOCk:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``CH<x>`` specifies an analog channel as the source, where <x> is the channel number.
+        - ``MATH<x>`` specifies a math channel as the source, where <x> is the math waveform number.
+        - ``REF<x>`` specifies a reference waveform as the source, where <x> is the reference
+          waveform number.
     """
 
 
@@ -15907,6 +17781,9 @@ class BusBItemDphyClock(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:DPHY:CLOCk?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:CLOCk?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.source``: The ``BUS:B<x>:DPHY:CLOCk:SOUrce`` command.
@@ -15938,6 +17815,14 @@ class BusBItemDphyClock(SCPICmdRead):
             - BUS:B<x>:DPHY:CLOCk:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:DPHY:CLOCk:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``CH<x>`` specifies an analog channel as the source, where <x> is the channel number.
+            - ``MATH<x>`` specifies a math channel as the source, where <x> is the math waveform
+              number.
+            - ``REF<x>`` specifies a reference waveform as the source, where <x> is the reference
+              waveform number.
         """
         return self._source
 
@@ -15961,6 +17846,11 @@ class BusBItemDphyClock(SCPICmdRead):
             - BUS:B<x>:DPHY:CLOCk:THRESHold <NR3>
             - BUS:B<x>:DPHY:CLOCk:THRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the DPHY clock high threshold for the specified bus. The argument range
+              is -8V to +8V.
         """
         return self._threshold
 
@@ -15972,6 +17862,9 @@ class BusBItemDphy(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:DPHY?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the Bus number.
 
     Properties:
         - ``.clock``: The ``BUS:B<x>:DPHY:CLOCk`` command tree.
@@ -16000,6 +17893,9 @@ class BusBItemDphy(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:CLOCk?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the Bus number.
+
         Sub-properties:
             - ``.source``: The ``BUS:B<x>:DPHY:CLOCk:SOUrce`` command.
             - ``.threshold``: The ``BUS:B<x>:DPHY:CLOCk:THRESHold`` command.
@@ -16014,6 +17910,9 @@ class BusBItemDphy(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:DPHY:DMINus?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:DMINus?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.datathreshold``: The ``BUS:B<x>:DPHY:DMINus:DATATHRESHold`` command.
@@ -16031,6 +17930,9 @@ class BusBItemDphy(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:DPlus?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.datathreshold``: The ``BUS:B<x>:DPHY:DPlus:DATATHRESHold`` command.
             - ``.lpthreshold``: The ``BUS:B<x>:DPHY:DPlus:LPTHRESHold`` command.
@@ -16047,6 +17949,9 @@ class BusBItemDphy(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:LP?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the Bus number.
+
         Sub-properties:
             - ``.direction``: The ``BUS:B<x>:DPHY:LP:DIRection`` command.
         """
@@ -16061,6 +17966,9 @@ class BusBItemDphy(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:PROTocol?`` query
               and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the Bus number.
+
         Sub-properties:
             - ``.type``: The ``BUS:B<x>:DPHY:PROTocol:TYPe`` command.
         """
@@ -16074,6 +17982,9 @@ class BusBItemDphy(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:DPHY:SIGNal?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY:SIGNal?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the Bus number.
 
         Sub-properties:
             - ``.encoding``: The ``BUS:B<x>:DPHY:SIGNal:ENCoding`` command.
@@ -16100,6 +18011,13 @@ class BusBItemDisplayLayout(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:DISplay:LAYout {BUS|BUSANDWAVEFORM}
         - BUS:B<x>:DISplay:LAYout?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``BUS`` specifies displaying the bus form only.
+        - ``BUSANDWAVEFORM`` specifies displaying the bus form and the constituent source
+          waveform(s). This argument is not available for some bus types and some bus
+          configurations.
     """
 
 
@@ -16123,6 +18041,16 @@ class BusBItemDisplayFormat(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:DISplay:FORMat {HEX|BINARY|MIXEDASCII|MIXEDHEX|ASCII|DECIMAL|MIXED}
         - BUS:B<x>:DISplay:FORMat?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``HEX`` specifies hexadecimal format.
+        - ``BINARY`` specifies binary format.
+        - ``MIXEDASCII`` specifies mixed ASCII format.
+        - ``MIXEDHEX`` specifies mixed hexadecimal format.
+        - ``ASCII`` specifies ASCII format.
+        - ``DECIMAL`` specifies decimal format.
+        - ``MIXED`` specifies mixed format.
     """
 
 
@@ -16133,6 +18061,9 @@ class BusBItemDisplay(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:DISplay?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DISplay?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.format``: The ``BUS:B<x>:DISplay:FORMat`` command.
@@ -16165,6 +18096,16 @@ class BusBItemDisplay(SCPICmdRead):
             - BUS:B<x>:DISplay:FORMat {HEX|BINARY|MIXEDASCII|MIXEDHEX|ASCII|DECIMAL|MIXED}
             - BUS:B<x>:DISplay:FORMat?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``HEX`` specifies hexadecimal format.
+            - ``BINARY`` specifies binary format.
+            - ``MIXEDASCII`` specifies mixed ASCII format.
+            - ``MIXEDHEX`` specifies mixed hexadecimal format.
+            - ``ASCII`` specifies ASCII format.
+            - ``DECIMAL`` specifies decimal format.
+            - ``MIXED`` specifies mixed format.
         """
         return self._format
 
@@ -16188,6 +18129,13 @@ class BusBItemDisplay(SCPICmdRead):
             - BUS:B<x>:DISplay:LAYout {BUS|BUSANDWAVEFORM}
             - BUS:B<x>:DISplay:LAYout?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``BUS`` specifies displaying the bus form only.
+            - ``BUSANDWAVEFORM`` specifies displaying the bus form and the constituent source
+              waveform(s). This argument is not available for some bus types and some bus
+              configurations.
         """
         return self._layout
 
@@ -16210,6 +18158,12 @@ class BusBItemCxpiSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CXPI:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:CXPI:SOUrce?
         ```
+
+    Info:
+        - ``CH<x>`` specifies an analog channel as the source, where <x> is the channel number.
+        - ``MATH<x>`` specifies a math channel as the source, where <x> is the math waveform number.
+        - ``REF<x>`` specifies a digital reference waveform as the source, where <x> is the
+          reference waveform number.
     """
 
 
@@ -16232,6 +18186,10 @@ class BusBItemCxpiRecThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CXPI:REC:THReshold <NR3>
         - BUS:B<x>:CXPI:REC:THReshold?
         ```
+
+    Info:
+        - ``<NR3>`` sets the CXPI Source recessive threshold for the specified bus. The default
+          value is 0 V and the valid range is -12 V to +12 V.
     """
 
 
@@ -16271,6 +18229,10 @@ class BusBItemCxpiRec(SCPICmdRead):
             - BUS:B<x>:CXPI:REC:THReshold <NR3>
             - BUS:B<x>:CXPI:REC:THReshold?
             ```
+
+        Info:
+            - ``<NR3>`` sets the CXPI Source recessive threshold for the specified bus. The default
+              value is 0 V and the valid range is -12 V to +12 V.
         """
         return self._threshold
 
@@ -16293,6 +18255,10 @@ class BusBItemCxpiBitrate(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CXPI:BITRate <NR1>
         - BUS:B<x>:CXPI:BITRate?
         ```
+
+    Info:
+        - ``<NR1>`` sets the CXPI Source bit rate for the specified bus. The default value is 19.2
+          kbps and the valid range is 1 bps to 20 kbps.
     """
 
 
@@ -16336,6 +18302,10 @@ class BusBItemCxpi(SCPICmdRead):
             - BUS:B<x>:CXPI:BITRate <NR1>
             - BUS:B<x>:CXPI:BITRate?
             ```
+
+        Info:
+            - ``<NR1>`` sets the CXPI Source bit rate for the specified bus. The default value is
+              19.2 kbps and the valid range is 1 bps to 20 kbps.
         """
         return self._bitrate
 
@@ -16373,6 +18343,13 @@ class BusBItemCxpi(SCPICmdRead):
             - BUS:B<x>:CXPI:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:CXPI:SOUrce?
             ```
+
+        Info:
+            - ``CH<x>`` specifies an analog channel as the source, where <x> is the channel number.
+            - ``MATH<x>`` specifies a math channel as the source, where <x> is the math waveform
+              number.
+            - ``REF<x>`` specifies a digital reference waveform as the source, where <x> is the
+              reference waveform number.
         """
         return self._source
 
@@ -16394,6 +18371,13 @@ class BusBItemCphySubtype(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:SUBTYPe {CSI|DSI|Word|Symbol}
         - BUS:B<x>:CPHY:SUBTYPe?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CSI`` specifies the protocol type to CSI. The default type is CSI.
+        - ``DSI`` specifies the protocol type to DSI.
+        - ``Word`` specifies the protocol type to word.
+        - ``Symbol`` specifies the protocol type to symbol.
     """
 
 
@@ -16416,6 +18400,11 @@ class BusBItemCphySignaltype(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:SIGNALTYpe {SINGLE|DIFF}
         - BUS:B<x>:CPHY:SIGNALTYpe?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``SINGLE`` specifies the signal type to single ended.
+        - ``DIFF`` specifies the signal type to differential. The default type is differential.
     """
 
 
@@ -16438,6 +18427,12 @@ class BusBItemCphyLpDirection(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:LP:DIRection {forward|reverse}
         - BUS:B<x>:CPHY:LP:DIRection?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``forward`` specifies the direction in low power to forward. The default direction is
+          forward.
+        - ``reverse`` specifies the direction in low power to reverse.
     """
 
 
@@ -16448,6 +18443,9 @@ class BusBItemCphyLp(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:LP?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:LP?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.direction``: The ``BUS:B<x>:CPHY:LP:DIRection`` command.
@@ -16477,6 +18475,12 @@ class BusBItemCphyLp(SCPICmdRead):
             - BUS:B<x>:CPHY:LP:DIRection {forward|reverse}
             - BUS:B<x>:CPHY:LP:DIRection?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``forward`` specifies the direction in low power to forward. The default direction is
+              forward.
+            - ``reverse`` specifies the direction in low power to reverse.
         """
         return self._direction
 
@@ -16500,6 +18504,11 @@ class BusBItemCphyCgndThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:CGND:THReshold <NR3>
         - BUS:B<x>:CPHY:CGND:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the CPHY Single Ended C GND threshold for the specified bus. The argument
+          range is -8 V to +8 V.
     """
 
 
@@ -16522,6 +18531,12 @@ class BusBItemCphyCgndSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:CGND:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:CPHY:CGND:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog/digital channel as the source.
+        - ``MATH<x>`` specifies a math channel as the source.
+        - ``REF<x>`` specifies an analog/digital reference waveform as the source.
     """
 
 
@@ -16532,6 +18547,9 @@ class BusBItemCphyCgnd(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:CGND?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:CGND?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.source``: The ``BUS:B<x>:CPHY:CGND:SOUrce`` command.
@@ -16563,6 +18581,12 @@ class BusBItemCphyCgnd(SCPICmdRead):
             - BUS:B<x>:CPHY:CGND:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:CPHY:CGND:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog/digital channel as the source.
+            - ``MATH<x>`` specifies a math channel as the source.
+            - ``REF<x>`` specifies an analog/digital reference waveform as the source.
         """
         return self._source
 
@@ -16586,6 +18610,11 @@ class BusBItemCphyCgnd(SCPICmdRead):
             - BUS:B<x>:CPHY:CGND:THReshold <NR3>
             - BUS:B<x>:CPHY:CGND:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the CPHY Single Ended C GND threshold for the specified bus. The argument
+              range is -8 V to +8 V.
         """
         return self._threshold
 
@@ -16609,6 +18638,11 @@ class BusBItemCphyCaThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:CA:THReshold <NR3>
         - BUS:B<x>:CPHY:CA:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the CPHY differential CA threshold for the specified bus. The argument range
+          is -8 V to +8 V.
     """
 
 
@@ -16631,6 +18665,12 @@ class BusBItemCphyCaSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:CA:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:CPHY:CA:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``MATH<x>`` specifies a math channel as the source.
+        - ``REF<x>`` specifies an analog reference waveform as the source.
     """
 
 
@@ -16641,6 +18681,9 @@ class BusBItemCphyCa(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:CA?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:CA?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.source``: The ``BUS:B<x>:CPHY:CA:SOUrce`` command.
@@ -16672,6 +18715,12 @@ class BusBItemCphyCa(SCPICmdRead):
             - BUS:B<x>:CPHY:CA:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:CPHY:CA:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``MATH<x>`` specifies a math channel as the source.
+            - ``REF<x>`` specifies an analog reference waveform as the source.
         """
         return self._source
 
@@ -16695,6 +18744,11 @@ class BusBItemCphyCa(SCPICmdRead):
             - BUS:B<x>:CPHY:CA:THReshold <NR3>
             - BUS:B<x>:CPHY:CA:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the CPHY differential CA threshold for the specified bus. The argument
+              range is -8 V to +8 V.
         """
         return self._threshold
 
@@ -16717,6 +18771,12 @@ class BusBItemCphyCSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:C:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:CPHY:C:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``MATH<x>`` specifies a math channel as the source.
+        - ``REF<x>`` specifies an analog reference waveform as the source.
     """
 
 
@@ -16739,6 +18799,11 @@ class BusBItemCphyCLpThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:C:LP:THRESHold <NR3>
         - BUS:B<x>:CPHY:C:LP:THRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the CPHY Single Ended C threshold for the specified bus. The argument range
+          is -8 V to +8 V.
     """
 
 
@@ -16749,6 +18814,9 @@ class BusBItemCphyCLp(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:C:LP?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:C:LP?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.threshold``: The ``BUS:B<x>:CPHY:C:LP:THRESHold`` command.
@@ -16778,6 +18846,11 @@ class BusBItemCphyCLp(SCPICmdRead):
             - BUS:B<x>:CPHY:C:LP:THRESHold <NR3>
             - BUS:B<x>:CPHY:C:LP:THRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the CPHY Single Ended C threshold for the specified bus. The argument
+              range is -8 V to +8 V.
         """
         return self._threshold
 
@@ -16801,6 +18874,11 @@ class BusBItemCphyCDataThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:C:DATA:THRESHold <NR3>
         - BUS:B<x>:CPHY:C:DATA:THRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the CPHY Single Ended C threshold for the specified bus. The argument range
+          is -8 V to +8 V.
     """
 
 
@@ -16811,6 +18889,9 @@ class BusBItemCphyCData(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:C:DATA?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:C:DATA?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.threshold``: The ``BUS:B<x>:CPHY:C:DATA:THRESHold`` command.
@@ -16840,6 +18921,11 @@ class BusBItemCphyCData(SCPICmdRead):
             - BUS:B<x>:CPHY:C:DATA:THRESHold <NR3>
             - BUS:B<x>:CPHY:C:DATA:THRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the CPHY Single Ended C threshold for the specified bus. The argument
+              range is -8 V to +8 V.
         """
         return self._threshold
 
@@ -16851,6 +18937,9 @@ class BusBItemCphyC(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:C?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:C?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.data``: The ``BUS:B<x>:CPHY:C:DATA`` command tree.
@@ -16873,6 +18962,9 @@ class BusBItemCphyC(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:C:DATA?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.threshold``: The ``BUS:B<x>:CPHY:C:DATA:THRESHold`` command.
         """
@@ -16886,6 +18978,9 @@ class BusBItemCphyC(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:C:LP?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:C:LP?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.threshold``: The ``BUS:B<x>:CPHY:C:LP:THRESHold`` command.
@@ -16912,6 +19007,12 @@ class BusBItemCphyC(SCPICmdRead):
             - BUS:B<x>:CPHY:C:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:CPHY:C:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``MATH<x>`` specifies a math channel as the source.
+            - ``REF<x>`` specifies an analog reference waveform as the source.
         """
         return self._source
 
@@ -16934,6 +19035,11 @@ class BusBItemCphyBitrate(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:BITRate <NR1>
         - BUS:B<x>:CPHY:BITRate?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` specifies the bit rate. The default bit rate is 1 Gbps and varies 4 Mbps ~
+          10Gps.
     """
 
 
@@ -16956,6 +19062,11 @@ class BusBItemCphyBcThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:BC:THReshold <NR3>
         - BUS:B<x>:CPHY:BC:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the CPHY differential BC threshold for the specified bus. The argument range
+          is -8 V to +8 V.
     """
 
 
@@ -16978,6 +19089,12 @@ class BusBItemCphyBcSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:BC:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:CPHY:BC:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog/digital channel as the source.
+        - ``MATH<x>`` specifies a math channel as the source.
+        - ``REF<x>`` specifies an analog/digital reference waveform as the source.
     """
 
 
@@ -16988,6 +19105,9 @@ class BusBItemCphyBc(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:BC?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:BC?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.source``: The ``BUS:B<x>:CPHY:BC:SOUrce`` command.
@@ -17019,6 +19139,12 @@ class BusBItemCphyBc(SCPICmdRead):
             - BUS:B<x>:CPHY:BC:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:CPHY:BC:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog/digital channel as the source.
+            - ``MATH<x>`` specifies a math channel as the source.
+            - ``REF<x>`` specifies an analog/digital reference waveform as the source.
         """
         return self._source
 
@@ -17042,6 +19168,11 @@ class BusBItemCphyBc(SCPICmdRead):
             - BUS:B<x>:CPHY:BC:THReshold <NR3>
             - BUS:B<x>:CPHY:BC:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the CPHY differential BC threshold for the specified bus. The argument
+              range is -8 V to +8 V.
         """
         return self._threshold
 
@@ -17064,6 +19195,12 @@ class BusBItemCphyBSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:B:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:CPHY:B:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``MATH<x>`` specifies a math channel as the source.
+        - ``REF<x>`` specifies an analog reference waveform as the source.
     """
 
 
@@ -17086,6 +19223,11 @@ class BusBItemCphyBDataThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:B:DATA:THRESHold <NR3>
         - BUS:B<x>:CPHY:B:DATA:THRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the CPHY Single Ended B threshold for the specified bus. The argument range
+          is -8 V to +8 V.
     """
 
 
@@ -17096,6 +19238,9 @@ class BusBItemCphyBData(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:B:DATA?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:B:DATA?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.threshold``: The ``BUS:B<x>:CPHY:B:DATA:THRESHold`` command.
@@ -17125,6 +19270,11 @@ class BusBItemCphyBData(SCPICmdRead):
             - BUS:B<x>:CPHY:B:DATA:THRESHold <NR3>
             - BUS:B<x>:CPHY:B:DATA:THRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the CPHY Single Ended B threshold for the specified bus. The argument
+              range is -8 V to +8 V.
         """
         return self._threshold
 
@@ -17136,6 +19286,9 @@ class BusBItemCphyB(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:B?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:B?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.data``: The ``BUS:B<x>:CPHY:B:DATA`` command tree.
@@ -17155,6 +19308,9 @@ class BusBItemCphyB(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:B:DATA?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:B:DATA?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.threshold``: The ``BUS:B<x>:CPHY:B:DATA:THRESHold`` command.
@@ -17181,6 +19337,12 @@ class BusBItemCphyB(SCPICmdRead):
             - BUS:B<x>:CPHY:B:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:CPHY:B:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``MATH<x>`` specifies a math channel as the source.
+            - ``REF<x>`` specifies an analog reference waveform as the source.
         """
         return self._source
 
@@ -17204,6 +19366,11 @@ class BusBItemCphyAgndThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:AGND:THReshold <NR3>
         - BUS:B<x>:CPHY:AGND:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the CPHY differential A GND threshold for the specified bus. The argument
+          range is -8 V to +8 V.
     """
 
 
@@ -17226,6 +19393,12 @@ class BusBItemCphyAgndSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:AGND:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:CPHY:AGND:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog/digital channel as the source.
+        - ``MATH<x>`` specifies a math channel as the source.
+        - ``REF<x>`` specifies an analog/digital reference waveform as the source.
     """
 
 
@@ -17236,6 +19409,9 @@ class BusBItemCphyAgnd(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:AGND?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:AGND?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.source``: The ``BUS:B<x>:CPHY:AGND:SOUrce`` command.
@@ -17267,6 +19443,12 @@ class BusBItemCphyAgnd(SCPICmdRead):
             - BUS:B<x>:CPHY:AGND:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:CPHY:AGND:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog/digital channel as the source.
+            - ``MATH<x>`` specifies a math channel as the source.
+            - ``REF<x>`` specifies an analog/digital reference waveform as the source.
         """
         return self._source
 
@@ -17290,6 +19472,11 @@ class BusBItemCphyAgnd(SCPICmdRead):
             - BUS:B<x>:CPHY:AGND:THReshold <NR3>
             - BUS:B<x>:CPHY:AGND:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the CPHY differential A GND threshold for the specified bus. The argument
+              range is -8 V to +8 V.
         """
         return self._threshold
 
@@ -17313,6 +19500,11 @@ class BusBItemCphyAbThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:AB:THReshold <NR3>
         - BUS:B<x>:CPHY:AB:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the CPHY differential AB threshold for the specified bus. The argument range
+          is -8 V to +8 V.
     """
 
 
@@ -17335,6 +19527,12 @@ class BusBItemCphyAbSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:AB:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:CPHY:AB:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog/digital channel as the source.
+        - ``MATH<x>`` specifies a math channel as the source.
+        - ``REF<x>`` specifies an analog/digital reference waveform as the source.
     """
 
 
@@ -17345,6 +19543,9 @@ class BusBItemCphyAb(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:AB?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:AB?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.source``: The ``BUS:B<x>:CPHY:AB:SOUrce`` command.
@@ -17376,6 +19577,12 @@ class BusBItemCphyAb(SCPICmdRead):
             - BUS:B<x>:CPHY:AB:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:CPHY:AB:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog/digital channel as the source.
+            - ``MATH<x>`` specifies a math channel as the source.
+            - ``REF<x>`` specifies an analog/digital reference waveform as the source.
         """
         return self._source
 
@@ -17399,6 +19606,11 @@ class BusBItemCphyAb(SCPICmdRead):
             - BUS:B<x>:CPHY:AB:THReshold <NR3>
             - BUS:B<x>:CPHY:AB:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the CPHY differential AB threshold for the specified bus. The argument
+              range is -8 V to +8 V.
         """
         return self._threshold
 
@@ -17421,6 +19633,12 @@ class BusBItemCphyASource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:A:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:CPHY:A:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``MATH<x>`` specifies a math channel as the source.
+        - ``REF<x>`` specifies an analog reference waveform as the source.
     """
 
 
@@ -17443,6 +19661,11 @@ class BusBItemCphyALpThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:A:LP:THRESHold <NR3>
         - BUS:B<x>:CPHY:A:LP:THRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the CPHY Single Ended A LP threshold in Volts for the specified bus. The
+          argument range is -8 V to +8 V.
     """
 
 
@@ -17453,6 +19676,9 @@ class BusBItemCphyALp(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:A:LP?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:A:LP?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.threshold``: The ``BUS:B<x>:CPHY:A:LP:THRESHold`` command.
@@ -17482,6 +19708,11 @@ class BusBItemCphyALp(SCPICmdRead):
             - BUS:B<x>:CPHY:A:LP:THRESHold <NR3>
             - BUS:B<x>:CPHY:A:LP:THRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the CPHY Single Ended A LP threshold in Volts for the specified bus. The
+              argument range is -8 V to +8 V.
         """
         return self._threshold
 
@@ -17505,6 +19736,11 @@ class BusBItemCphyADataThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CPHY:A:DATA:THRESHold <NR3>
         - BUS:B<x>:CPHY:A:DATA:THRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the CPHY Single Ended A threshold in Volts for the specified bus. The
+          argument range is -8 V to +8 V.
     """
 
 
@@ -17515,6 +19751,9 @@ class BusBItemCphyAData(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:A:DATA?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:A:DATA?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.threshold``: The ``BUS:B<x>:CPHY:A:DATA:THRESHold`` command.
@@ -17544,6 +19783,11 @@ class BusBItemCphyAData(SCPICmdRead):
             - BUS:B<x>:CPHY:A:DATA:THRESHold <NR3>
             - BUS:B<x>:CPHY:A:DATA:THRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the CPHY Single Ended A threshold in Volts for the specified bus. The
+              argument range is -8 V to +8 V.
         """
         return self._threshold
 
@@ -17555,6 +19799,9 @@ class BusBItemCphyA(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:A?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:A?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.data``: The ``BUS:B<x>:CPHY:A:DATA`` command tree.
@@ -17577,6 +19824,9 @@ class BusBItemCphyA(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:A:DATA?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.threshold``: The ``BUS:B<x>:CPHY:A:DATA:THRESHold`` command.
         """
@@ -17590,6 +19840,9 @@ class BusBItemCphyA(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:A:LP?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:A:LP?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.threshold``: The ``BUS:B<x>:CPHY:A:LP:THRESHold`` command.
@@ -17616,6 +19869,12 @@ class BusBItemCphyA(SCPICmdRead):
             - BUS:B<x>:CPHY:A:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:CPHY:A:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``MATH<x>`` specifies a math channel as the source.
+            - ``REF<x>`` specifies an analog reference waveform as the source.
         """
         return self._source
 
@@ -17628,6 +19887,9 @@ class BusBItemCphy(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.a``: The ``BUS:B<x>:CPHY:A`` command tree.
@@ -17668,6 +19930,9 @@ class BusBItemCphy(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:A?`` query and raise
               an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.data``: The ``BUS:B<x>:CPHY:A:DATA`` command tree.
             - ``.lp``: The ``BUS:B<x>:CPHY:A:LP`` command tree.
@@ -17684,6 +19949,9 @@ class BusBItemCphy(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:AB?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.source``: The ``BUS:B<x>:CPHY:AB:SOUrce`` command.
             - ``.threshold``: The ``BUS:B<x>:CPHY:AB:THReshold`` command.
@@ -17698,6 +19966,9 @@ class BusBItemCphy(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:AGND?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:AGND?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.source``: The ``BUS:B<x>:CPHY:AGND:SOUrce`` command.
@@ -17714,6 +19985,9 @@ class BusBItemCphy(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:B?`` query and raise
               an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.data``: The ``BUS:B<x>:CPHY:B:DATA`` command tree.
             - ``.source``: The ``BUS:B<x>:CPHY:B:SOUrce`` command.
@@ -17728,6 +20002,9 @@ class BusBItemCphy(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:BC?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:BC?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.source``: The ``BUS:B<x>:CPHY:BC:SOUrce`` command.
@@ -17755,6 +20032,11 @@ class BusBItemCphy(SCPICmdRead):
             - BUS:B<x>:CPHY:BITRate <NR1>
             - BUS:B<x>:CPHY:BITRate?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` specifies the bit rate. The default bit rate is 1 Gbps and varies 4 Mbps ~
+              10Gps.
         """
         return self._bitrate
 
@@ -17766,6 +20048,9 @@ class BusBItemCphy(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:C?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:C?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.data``: The ``BUS:B<x>:CPHY:C:DATA`` command tree.
@@ -17783,6 +20068,9 @@ class BusBItemCphy(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:CA?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.source``: The ``BUS:B<x>:CPHY:CA:SOUrce`` command.
             - ``.threshold``: The ``BUS:B<x>:CPHY:CA:THReshold`` command.
@@ -17798,6 +20086,9 @@ class BusBItemCphy(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:CGND?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.source``: The ``BUS:B<x>:CPHY:CGND:SOUrce`` command.
             - ``.threshold``: The ``BUS:B<x>:CPHY:CGND:THReshold`` command.
@@ -17812,6 +20103,9 @@ class BusBItemCphy(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY:LP?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY:LP?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.direction``: The ``BUS:B<x>:CPHY:LP:DIRection`` command.
@@ -17838,6 +20132,11 @@ class BusBItemCphy(SCPICmdRead):
             - BUS:B<x>:CPHY:SIGNALTYpe {SINGLE|DIFF}
             - BUS:B<x>:CPHY:SIGNALTYpe?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``SINGLE`` specifies the signal type to single ended.
+            - ``DIFF`` specifies the signal type to differential. The default type is differential.
         """
         return self._signaltype
 
@@ -17861,6 +20160,13 @@ class BusBItemCphy(SCPICmdRead):
             - BUS:B<x>:CPHY:SUBTYPe {CSI|DSI|Word|Symbol}
             - BUS:B<x>:CPHY:SUBTYPe?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CSI`` specifies the protocol type to CSI. The default type is CSI.
+            - ``DSI`` specifies the protocol type to DSI.
+            - ``Word`` specifies the protocol type to word.
+            - ``Symbol`` specifies the protocol type to symbol.
         """
         return self._subtype
 
@@ -17884,6 +20190,11 @@ class BusBItemCanXlBitrateCustom(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CAN:XL:BITRate:CUSTom <NR1>
         - BUS:B<x>:CAN:XL:BITRate:CUSTom?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` specifies the CAN XL data transfer custom bit rate. The valid range is from
+          500000 to 20000000. The default value is 4000000.
     """
 
 
@@ -17905,6 +20216,11 @@ class BusBItemCanXlBitrate(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CAN:XL:BITRate <NR1>
         - BUS:B<x>:CAN:XL:BITRate?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` specifies the CAN XL data transfer bit rate. The valid range is from 1000000 to
+          20000000. The default value is 4000000.
 
     Properties:
         - ``.custom``: The ``BUS:B<x>:CAN:XL:BITRate:CUSTom`` command.
@@ -17934,6 +20250,11 @@ class BusBItemCanXlBitrate(SCPICmdWrite, SCPICmdRead):
             - BUS:B<x>:CAN:XL:BITRate:CUSTom <NR1>
             - BUS:B<x>:CAN:XL:BITRate:CUSTom?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` specifies the CAN XL data transfer custom bit rate. The valid range is from
+              500000 to 20000000. The default value is 4000000.
         """
         return self._custom
 
@@ -17945,6 +20266,9 @@ class BusBItemCanXl(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CAN:XL?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CAN:XL?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.bitrate``: The ``BUS:B<x>:CAN:XL:BITRate`` command.
@@ -17975,6 +20299,11 @@ class BusBItemCanXl(SCPICmdRead):
             - BUS:B<x>:CAN:XL:BITRate?
             ```
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` specifies the CAN XL data transfer bit rate. The valid range is from 1000000
+              to 20000000. The default value is 4000000.
+
         Sub-properties:
             - ``.custom``: The ``BUS:B<x>:CAN:XL:BITRate:CUSTom`` command.
         """
@@ -17999,6 +20328,10 @@ class BusBItemCanThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CAN:THReshold <NR3>
         - BUS:B<x>:CAN:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the source channel threshold for the specified CAN bus.
     """
 
 
@@ -18020,6 +20353,15 @@ class BusBItemCanStandard(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CAN:STANDard {CAN2X|CAN2X_FDISO_XL|CAN_XL|FDISO|FDNONISO}
         - BUS:B<x>:CAN:STANDard?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CAN2X`` sets the CAN bus standard to CAN 2.0.
+        - ``CAN2X_FDISO_XL`` sets the CAN bus standard to a combination of BASE CAN, CAN FD and CAN
+          XL.
+        - ``CAN_XL`` sets the CAN bus standard to CAN XL.
+        - ``FDISO`` sets the CAN bus standard to ISO CAN FD (11898-``1:2015``).
+        - ``FDNONISO`` sets the CAN bus standard to non-ISO CAN FD (``Bosch:2012``).
     """
 
 
@@ -18041,6 +20383,14 @@ class BusBItemCanSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CAN:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:CAN:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel to use source.
+        - ``CH<x>_D<x>`` specifies a digital channel to use as the source.
+        - ``MATH<x>`` specifies a math waveform to use as the source.
+        - ``REF<x>`` specifies a reference waveform to use as the source.
+        - ``REF<x>_D<x>`` specifies a digital reference waveform as the source.
     """
 
 
@@ -18062,6 +20412,14 @@ class BusBItemCanSignal(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CAN:SIGNal {DIFFerential|CANH|CANL|RX|TX}
         - BUS:B<x>:CAN:SIGNal?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``DIFFerential`` sets the signal type to differential.
+        - ``CANH`` sets the signal type to CANH.
+        - ``CANL`` sets the signal type to CANL.
+        - ``RX`` sets the signal type to RX.
+        - ``TX`` sets the signal type to TX.
     """
 
 
@@ -18084,6 +20442,10 @@ class BusBItemCanSamplepoint(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CAN:SAMPLEpoint <NR1>
         - BUS:B<x>:CAN:SAMPLEpoint?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` is the sample point, in percent, for the specified CAN bus.
     """
 
 
@@ -18106,6 +20468,10 @@ class BusBItemCanFdBitrateCustom(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CAN:FD:BITRate:CUSTom <NR1>
         - BUS:B<x>:CAN:FD:BITRate:CUSTom?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` is the custom FD bit rate for the specified bus.
     """
 
 
@@ -18129,6 +20495,26 @@ class BusBItemCanFdBitrate(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CAN:FD:BITRate {RATE1M|RATE2M|RATE3M|RATE4M|RATE5M|RATE6M|RATE7M|RATE8M|RATE9M|RATE10M|RATE11M|RATE12M|RATE13M|RATE14M|RATE15M|RATE16M|CUSTom}
         - BUS:B<x>:CAN:FD:BITRate?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``RATE1M`` sets the CAN FD bit rate to 1 Mbps.
+        - ``RATE2M`` sets the CAN FD bit rate to 2 Mbps.
+        - ``RATE3M`` sets the CAN FD bit rate to 3 Mbps.
+        - ``RATE4M`` sets the CAN FD bit rate to 4 Mbps.
+        - ``RATE5M`` sets the CAN FD bit rate to 5 Mbps.
+        - ``RATE6M`` sets the CAN FD bit rate to 6 Mbps.
+        - ``RATE7M`` sets the CAN FD bit rate to 7 Mbps.
+        - ``RATE8M`` sets the CAN FD bit rate to 8 Mbps.
+        - ``RATE9M`` sets the CAN FD bit rate to 9 Mbps.
+        - ``RATE10M`` sets the CAN FD bit rate to 10 Mbps.
+        - ``RATE11M`` sets the CAN FD bit rate to 11 Mbps.
+        - ``RATE12M`` sets the CAN FD bit rate to 12 Mbps.
+        - ``RATE13M`` sets the CAN FD bit rate to 13 Mbps.
+        - ``RATE14M`` sets the CAN FD bit rate to 14 Mbps.
+        - ``RATE15M`` sets the CAN FD bit rate to 15 Mbps.
+        - ``RATE16M`` sets the CAN FD bit rate to 16 Mbps.
+        - ``CUSTom`` sets a custom CAN FD bit rate.
 
     Properties:
         - ``.custom``: The ``BUS:B<x>:CAN:FD:BITRate:CUSTom`` command.
@@ -18158,6 +20544,10 @@ class BusBItemCanFdBitrate(SCPICmdWrite, SCPICmdRead):
             - BUS:B<x>:CAN:FD:BITRate:CUSTom <NR1>
             - BUS:B<x>:CAN:FD:BITRate:CUSTom?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` is the custom FD bit rate for the specified bus.
         """
         return self._custom
 
@@ -18169,6 +20559,9 @@ class BusBItemCanFd(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CAN:FD?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CAN:FD?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.bitrate``: The ``BUS:B<x>:CAN:FD:BITRate`` command.
@@ -18200,6 +20593,26 @@ class BusBItemCanFd(SCPICmdRead):
             - BUS:B<x>:CAN:FD:BITRate?
             ```
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``RATE1M`` sets the CAN FD bit rate to 1 Mbps.
+            - ``RATE2M`` sets the CAN FD bit rate to 2 Mbps.
+            - ``RATE3M`` sets the CAN FD bit rate to 3 Mbps.
+            - ``RATE4M`` sets the CAN FD bit rate to 4 Mbps.
+            - ``RATE5M`` sets the CAN FD bit rate to 5 Mbps.
+            - ``RATE6M`` sets the CAN FD bit rate to 6 Mbps.
+            - ``RATE7M`` sets the CAN FD bit rate to 7 Mbps.
+            - ``RATE8M`` sets the CAN FD bit rate to 8 Mbps.
+            - ``RATE9M`` sets the CAN FD bit rate to 9 Mbps.
+            - ``RATE10M`` sets the CAN FD bit rate to 10 Mbps.
+            - ``RATE11M`` sets the CAN FD bit rate to 11 Mbps.
+            - ``RATE12M`` sets the CAN FD bit rate to 12 Mbps.
+            - ``RATE13M`` sets the CAN FD bit rate to 13 Mbps.
+            - ``RATE14M`` sets the CAN FD bit rate to 14 Mbps.
+            - ``RATE15M`` sets the CAN FD bit rate to 15 Mbps.
+            - ``RATE16M`` sets the CAN FD bit rate to 16 Mbps.
+            - ``CUSTom`` sets a custom CAN FD bit rate.
+
         Sub-properties:
             - ``.custom``: The ``BUS:B<x>:CAN:FD:BITRate:CUSTom`` command.
         """  # noqa: E501
@@ -18225,6 +20638,10 @@ class BusBItemCanBitrateValue(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CAN:BITRate:VALue <NR3>
         - BUS:B<x>:CAN:BITRate:VALue?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` specifies the CAN bit rate.
     """
 
 
@@ -18246,6 +20663,28 @@ class BusBItemCanBitrate(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:CAN:BITRate {RATE10K|RATE100K|RATE1M|RATE125K|RATE153K|RATE20K|RATE25K|RATE250K|RATE31K|RATE33K|RATE400K|RATE50K|RATE500K|RATE62K|RATE68K|RATE800K|RATE83K|RATE92K|CUSTom}
         - BUS:B<x>:CAN:BITRate?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``RATE10K`` sets the CAN bit rate to 10 k.
+        - ``RATE100K`` sets the CAN bit rate to 100 k.
+        - ``RATE1M`` sets the CAN bit rate to 1 Mb.
+        - ``RATE125K`` sets the CAN bit rate to 125 k.
+        - ``RATE153K`` sets the CAN bit rate to 153 k.
+        - ``RATE20K`` sets the CAN bit rate to 20 k.
+        - ``RATE25K`` sets the CAN bit rate to 25 k.
+        - ``RATE250K`` sets the CAN bit rate to 250 k.
+        - ``RATE31K`` sets the CAN bit rate to 31 k.
+        - ``RATE33K`` sets the CAN bit rate to 33 k.
+        - ``RATE400K`` sets the CAN bit rate to 400 k.
+        - ``RATE50K`` sets the CAN bit rate to 50 k.
+        - ``RATE500K`` sets the CAN bit rate to 500 k.
+        - ``RATE62K`` sets the CAN bit rate to 62 k.
+        - ``RATE68K`` sets the CAN bit rate to 68 k.
+        - ``RATE800K`` sets the CAN bit rate to 800 k.
+        - ``RATE83K`` sets the CAN bit rate to 83 k.
+        - ``RATE92K`` sets the CAN bit rate to 92 k.
+        - ``CUSTom`` sets a custom CAN bit rate.
 
     Properties:
         - ``.value``: The ``BUS:B<x>:CAN:BITRate:VALue`` command.
@@ -18275,6 +20714,10 @@ class BusBItemCanBitrate(SCPICmdWrite, SCPICmdRead):
             - BUS:B<x>:CAN:BITRate:VALue <NR3>
             - BUS:B<x>:CAN:BITRate:VALue?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` specifies the CAN bit rate.
         """
         return self._value
 
@@ -18287,6 +20730,9 @@ class BusBItemCan(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:CAN?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CAN?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.bitrate``: The ``BUS:B<x>:CAN:BITRate`` command.
@@ -18331,6 +20777,28 @@ class BusBItemCan(SCPICmdRead):
             - BUS:B<x>:CAN:BITRate?
             ```
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``RATE10K`` sets the CAN bit rate to 10 k.
+            - ``RATE100K`` sets the CAN bit rate to 100 k.
+            - ``RATE1M`` sets the CAN bit rate to 1 Mb.
+            - ``RATE125K`` sets the CAN bit rate to 125 k.
+            - ``RATE153K`` sets the CAN bit rate to 153 k.
+            - ``RATE20K`` sets the CAN bit rate to 20 k.
+            - ``RATE25K`` sets the CAN bit rate to 25 k.
+            - ``RATE250K`` sets the CAN bit rate to 250 k.
+            - ``RATE31K`` sets the CAN bit rate to 31 k.
+            - ``RATE33K`` sets the CAN bit rate to 33 k.
+            - ``RATE400K`` sets the CAN bit rate to 400 k.
+            - ``RATE50K`` sets the CAN bit rate to 50 k.
+            - ``RATE500K`` sets the CAN bit rate to 500 k.
+            - ``RATE62K`` sets the CAN bit rate to 62 k.
+            - ``RATE68K`` sets the CAN bit rate to 68 k.
+            - ``RATE800K`` sets the CAN bit rate to 800 k.
+            - ``RATE83K`` sets the CAN bit rate to 83 k.
+            - ``RATE92K`` sets the CAN bit rate to 92 k.
+            - ``CUSTom`` sets a custom CAN bit rate.
+
         Sub-properties:
             - ``.value``: The ``BUS:B<x>:CAN:BITRate:VALue`` command.
         """  # noqa: E501
@@ -18344,6 +20812,9 @@ class BusBItemCan(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:CAN:FD?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CAN:FD?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.bitrate``: The ``BUS:B<x>:CAN:FD:BITRate`` command.
@@ -18370,6 +20841,10 @@ class BusBItemCan(SCPICmdRead):
             - BUS:B<x>:CAN:SAMPLEpoint <NR1>
             - BUS:B<x>:CAN:SAMPLEpoint?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` is the sample point, in percent, for the specified CAN bus.
         """
         return self._samplepoint
 
@@ -18393,6 +20868,14 @@ class BusBItemCan(SCPICmdRead):
             - BUS:B<x>:CAN:SIGNal {DIFFerential|CANH|CANL|RX|TX}
             - BUS:B<x>:CAN:SIGNal?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``DIFFerential`` sets the signal type to differential.
+            - ``CANH`` sets the signal type to CANH.
+            - ``CANL`` sets the signal type to CANL.
+            - ``RX`` sets the signal type to RX.
+            - ``TX`` sets the signal type to TX.
         """
         return self._signal
 
@@ -18416,6 +20899,14 @@ class BusBItemCan(SCPICmdRead):
             - BUS:B<x>:CAN:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:CAN:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel to use source.
+            - ``CH<x>_D<x>`` specifies a digital channel to use as the source.
+            - ``MATH<x>`` specifies a math waveform to use as the source.
+            - ``REF<x>`` specifies a reference waveform to use as the source.
+            - ``REF<x>_D<x>`` specifies a digital reference waveform as the source.
         """
         return self._source
 
@@ -18439,6 +20930,15 @@ class BusBItemCan(SCPICmdRead):
             - BUS:B<x>:CAN:STANDard {CAN2X|CAN2X_FDISO_XL|CAN_XL|FDISO|FDNONISO}
             - BUS:B<x>:CAN:STANDard?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CAN2X`` sets the CAN bus standard to CAN 2.0.
+            - ``CAN2X_FDISO_XL`` sets the CAN bus standard to a combination of BASE CAN, CAN FD and
+              CAN XL.
+            - ``CAN_XL`` sets the CAN bus standard to CAN XL.
+            - ``FDISO`` sets the CAN bus standard to ISO CAN FD (11898-``1:2015``).
+            - ``FDNONISO`` sets the CAN bus standard to non-ISO CAN FD (``Bosch:2012``).
         """
         return self._standard
 
@@ -18462,6 +20962,10 @@ class BusBItemCan(SCPICmdRead):
             - BUS:B<x>:CAN:THReshold <NR3>
             - BUS:B<x>:CAN:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the source channel threshold for the specified CAN bus.
         """
         return self._threshold
 
@@ -18473,6 +20977,9 @@ class BusBItemCan(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:CAN:XL?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CAN:XL?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.bitrate``: The ``BUS:B<x>:CAN:XL:BITRate`` command.
@@ -18498,6 +21005,10 @@ class BusBItemAutoethernetType(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUTOETHERnet:TYPe {HUNDREDBASET1}
         - BUS:B<x>:AUTOETHERnet:TYPe?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``HUNDREDBASET1`` specifies the AutoEthernet speed as 100Base-T1.
     """
 
 
@@ -18520,6 +21031,11 @@ class BusBItemAutoethernetThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUTOETHERnet:THRESHold <NR3>
         - BUS:B<x>:AUTOETHERnet:THRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``<NR3>`` specifies the AutoEthernet DATA source High threshold level for the specified
+          bus, in volts.
     """
 
 
@@ -18621,6 +21137,15 @@ class BusBItemAutoethernetSourceDplus(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUTOETHERnet:SOUrce:DPLUs {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:AUTOETHERnet:SOUrce:DPLUs?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``CH<x>`` specifies an analog channel as the source for the D+ signal, where <x> is the
+          channel number.
+        - ``MATH<x>`` specifies a math channel as the source for the D+ signal, where <x> is the
+          math waveform number.
+        - ``REF<x>`` specifies a reference waveform as the source for the D+ signal, where <x> is
+          the reference waveform number.
     """
 
 
@@ -18644,6 +21169,15 @@ class BusBItemAutoethernetSourceDminus(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUTOETHERnet:SOUrce:DMINus {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:AUTOETHERnet:SOUrce:DMINus?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``CH<x>`` specifies an analog channel as the source for the D- signal, where <x> is the
+          channel number.
+        - ``MATH<x>`` specifies a math channel as the source for the D- signal, where <x> is the
+          math waveform number.
+        - ``REF<x>`` specifies a reference waveform as the source for the D- signal, where <x> is
+          the reference waveform number.
     """
 
 
@@ -18666,6 +21200,15 @@ class BusBItemAutoethernetSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUTOETHERnet:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:AUTOETHERnet:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``CH<x>`` specifies an analog channel as the AutoEthernet data source for differential
+          input, where <x> is the channel number.
+        - ``MATH<x>`` specifies a math channel as the AutoEthernet data source for differential
+          input, where <x> is the math waveform number.
+        - ``REF<x>`` specifies a reference waveform as the AutoEthernet data source for differential
+          input, where <x> is the reference waveform number.
 
     Properties:
         - ``.dminus``: The ``BUS:B<x>:AUTOETHERnet:SOUrce:DMINus`` command.
@@ -18699,6 +21242,15 @@ class BusBItemAutoethernetSource(SCPICmdWrite, SCPICmdRead):
             - BUS:B<x>:AUTOETHERnet:SOUrce:DMINus {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:AUTOETHERnet:SOUrce:DMINus?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``CH<x>`` specifies an analog channel as the source for the D- signal, where <x> is
+              the channel number.
+            - ``MATH<x>`` specifies a math channel as the source for the D- signal, where <x> is the
+              math waveform number.
+            - ``REF<x>`` specifies a reference waveform as the source for the D- signal, where <x>
+              is the reference waveform number.
         """
         return self._dminus
 
@@ -18724,6 +21276,15 @@ class BusBItemAutoethernetSource(SCPICmdWrite, SCPICmdRead):
             - BUS:B<x>:AUTOETHERnet:SOUrce:DPLUs {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:AUTOETHERnet:SOUrce:DPLUs?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``CH<x>`` specifies an analog channel as the source for the D+ signal, where <x> is
+              the channel number.
+            - ``MATH<x>`` specifies a math channel as the source for the D+ signal, where <x> is the
+              math waveform number.
+            - ``REF<x>`` specifies a reference waveform as the source for the D+ signal, where <x>
+              is the reference waveform number.
         """
         return self._dplus
 
@@ -18746,6 +21307,11 @@ class BusBItemAutoethernetSignaltype(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUTOETHERnet:SIGNALTYpe {SINGLE|DIFF}
         - BUS:B<x>:AUTOETHERnet:SIGNALTYpe?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``SINGLE`` specifies single-ended signals.
+        - ``DIFF`` specifies differential signals.
     """
 
 
@@ -18769,6 +21335,12 @@ class BusBItemAutoethernetLowthreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUTOETHERnet:LOWTHRESHold <NR3>
         - BUS:B<x>:AUTOETHERnet:LOWTHRESHold?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``<NR3>`` specifies the AutoEthernet DATA source low threshold level for the specified
+          bus, in volts. This threshold only applies when the AutoEthernet signal type is
+          differential.
     """
 
 
@@ -18792,6 +21364,11 @@ class BusBItemAutoethernetLowdataplus(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUTOETHERnet:LOWDATAPLUS <NR3>
         - BUS:B<x>:AUTOETHERnet:LOWDATAPLUS?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``<NR3>`` specifies the AutoEthernet D+ source low threshold level for the specified bus,
+          in volts. This threshold only applies when the AutoEthernet signal type is single ended.
     """
 
 
@@ -18815,6 +21392,11 @@ class BusBItemAutoethernetLowdataminus(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUTOETHERnet:LOWDATAMINus <NR3>
         - BUS:B<x>:AUTOETHERnet:LOWDATAMINus?
         ```
+
+    Info:
+        - ``B<x>`` is the Bus number.
+        - ``<NR3>`` specifies the AutoEthernet D- source low threshold level for the specified bus,
+          in volts. This threshold only applies when the AutoEthernet signal type is single ended.
     """
 
 
@@ -19066,6 +21648,12 @@ class BusBItemAutoethernet(SCPICmdRead):
             - BUS:B<x>:AUTOETHERnet:LOWDATAMINus <NR3>
             - BUS:B<x>:AUTOETHERnet:LOWDATAMINus?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``<NR3>`` specifies the AutoEthernet D- source low threshold level for the specified
+              bus, in volts. This threshold only applies when the AutoEthernet signal type is single
+              ended.
         """
         return self._lowdataminus
 
@@ -19092,6 +21680,12 @@ class BusBItemAutoethernet(SCPICmdRead):
             - BUS:B<x>:AUTOETHERnet:LOWDATAPLUS <NR3>
             - BUS:B<x>:AUTOETHERnet:LOWDATAPLUS?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``<NR3>`` specifies the AutoEthernet D+ source low threshold level for the specified
+              bus, in volts. This threshold only applies when the AutoEthernet signal type is single
+              ended.
         """
         return self._lowdataplus
 
@@ -19118,6 +21712,12 @@ class BusBItemAutoethernet(SCPICmdRead):
             - BUS:B<x>:AUTOETHERnet:LOWTHRESHold <NR3>
             - BUS:B<x>:AUTOETHERnet:LOWTHRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``<NR3>`` specifies the AutoEthernet DATA source low threshold level for the specified
+              bus, in volts. This threshold only applies when the AutoEthernet signal type is
+              differential.
         """
         return self._lowthreshold
 
@@ -19142,6 +21742,11 @@ class BusBItemAutoethernet(SCPICmdRead):
             - BUS:B<x>:AUTOETHERnet:SIGNALTYpe {SINGLE|DIFF}
             - BUS:B<x>:AUTOETHERnet:SIGNALTYpe?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``SINGLE`` specifies single-ended signals.
+            - ``DIFF`` specifies differential signals.
         """
         return self._signaltype
 
@@ -19165,6 +21770,15 @@ class BusBItemAutoethernet(SCPICmdRead):
             - BUS:B<x>:AUTOETHERnet:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:AUTOETHERnet:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``CH<x>`` specifies an analog channel as the AutoEthernet data source for differential
+              input, where <x> is the channel number.
+            - ``MATH<x>`` specifies a math channel as the AutoEthernet data source for differential
+              input, where <x> is the math waveform number.
+            - ``REF<x>`` specifies a reference waveform as the AutoEthernet data source for
+              differential input, where <x> is the reference waveform number.
 
         Sub-properties:
             - ``.dminus``: The ``BUS:B<x>:AUTOETHERnet:SOUrce:DMINus`` command.
@@ -19212,6 +21826,11 @@ class BusBItemAutoethernet(SCPICmdRead):
             - BUS:B<x>:AUTOETHERnet:THRESHold <NR3>
             - BUS:B<x>:AUTOETHERnet:THRESHold?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``<NR3>`` specifies the AutoEthernet DATA source High threshold level for the
+              specified bus, in volts.
         """
         return self._threshold
 
@@ -19234,6 +21853,10 @@ class BusBItemAutoethernet(SCPICmdRead):
             - BUS:B<x>:AUTOETHERnet:TYPe {HUNDREDBASET1}
             - BUS:B<x>:AUTOETHERnet:TYPe?
             ```
+
+        Info:
+            - ``B<x>`` is the Bus number.
+            - ``HUNDREDBASET1`` specifies the AutoEthernet speed as 100Base-T1.
         """
         return self._type
 
@@ -19257,6 +21880,10 @@ class BusBItemAudioWordselThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUDio:WORDSel:THReshold <NR3>
         - BUS:B<x>:AUDio:WORDSel:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the audio word select source threshold for the specified bus.
     """
 
 
@@ -19279,6 +21906,15 @@ class BusBItemAudioWordselSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUDio:WORDSel:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:AUDio:WORDSel:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the word select source waveform.
+        - ``CH<x>_D<x>`` specifies a digital channel as the word select source waveform.
+        - ``MATH<x>`` specifies an math waveform as the word select source waveform.
+        - ``REF<x>`` specifies an reference waveform as the word select source waveform.
+        - ``REF<x>_D<x>`` specifies a digital reference waveform as the word select source waveform
+          for the specified audio bus.
     """
 
 
@@ -19301,6 +21937,11 @@ class BusBItemAudioWordselPolarity(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUDio:WORDSel:POLarity {NORMal|INVERTed}
         - BUS:B<x>:AUDio:WORDSel:POLarity?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``NORMal`` specifies positive polarity.
+        - ``INVERTed`` specifies negative polarity.
     """
 
 
@@ -19311,6 +21952,9 @@ class BusBItemAudioWordsel(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:AUDio:WORDSel:POLarity`` command.
@@ -19345,6 +21989,11 @@ class BusBItemAudioWordsel(SCPICmdRead):
             - BUS:B<x>:AUDio:WORDSel:POLarity {NORMal|INVERTed}
             - BUS:B<x>:AUDio:WORDSel:POLarity?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``NORMal`` specifies positive polarity.
+            - ``INVERTed`` specifies negative polarity.
         """
         return self._polarity
 
@@ -19368,6 +22017,15 @@ class BusBItemAudioWordsel(SCPICmdRead):
             - BUS:B<x>:AUDio:WORDSel:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:AUDio:WORDSel:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the word select source waveform.
+            - ``CH<x>_D<x>`` specifies a digital channel as the word select source waveform.
+            - ``MATH<x>`` specifies an math waveform as the word select source waveform.
+            - ``REF<x>`` specifies an reference waveform as the word select source waveform.
+            - ``REF<x>_D<x>`` specifies a digital reference waveform as the word select source
+              waveform for the specified audio bus.
         """
         return self._source
 
@@ -19393,6 +22051,10 @@ class BusBItemAudioWordsel(SCPICmdRead):
             - BUS:B<x>:AUDio:WORDSel:THReshold <NR3>
             - BUS:B<x>:AUDio:WORDSel:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the audio word select source threshold for the specified bus.
         """
         return self._threshold
 
@@ -19415,6 +22077,13 @@ class BusBItemAudioType(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUDio:TYPe {I2S|LJ|RJ|TDM}
         - BUS:B<x>:AUDio:TYPe?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``I2S`` specifies the I.
+        - ``LJ`` specifies the left-justified audio format.
+        - ``RJ`` specifies the right-justified audio format.
+        - ``TDM`` specifies the time-division multiplexing audio format.
     """
 
 
@@ -19437,6 +22106,10 @@ class BusBItemAudioFrameSize(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUDio:FRAME:SIZe <NR1>
         - BUS:B<x>:AUDio:FRAME:SIZe?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` specifies the number of channels in each frame.
     """
 
 
@@ -19461,6 +22134,10 @@ class BusBItemAudioFrameClockbitsperchannel(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUDio:FRAME:CLOCKBITSPERCHANNEL <NR1>
         - BUS:B<x>:AUDio:FRAME:CLOCKBITSPERCHANNEL?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` is the audio bits of sync width for the specified bus.
     """
 
 
@@ -19471,6 +22148,9 @@ class BusBItemAudioFrame(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:FRAME?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:FRAME?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.clockbitsperchannel``: The ``BUS:B<x>:AUDio:FRAME:CLOCKBITSPERCHANNEL`` command.
@@ -19506,6 +22186,10 @@ class BusBItemAudioFrame(SCPICmdRead):
             - BUS:B<x>:AUDio:FRAME:CLOCKBITSPERCHANNEL <NR1>
             - BUS:B<x>:AUDio:FRAME:CLOCKBITSPERCHANNEL?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` is the audio bits of sync width for the specified bus.
         """
         return self._clockbitsperchannel
 
@@ -19530,6 +22214,10 @@ class BusBItemAudioFrame(SCPICmdRead):
             - BUS:B<x>:AUDio:FRAME:SIZe <NR1>
             - BUS:B<x>:AUDio:FRAME:SIZe?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` specifies the number of channels in each frame.
         """
         return self._size
 
@@ -19553,6 +22241,10 @@ class BusBItemAudioDataWordsize(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUDio:DATa:WORDSize <NR1>
         - BUS:B<x>:AUDio:DATa:WORDSize?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR1>`` is the audio bits per word for the specified bus.
     """
 
 
@@ -19575,6 +22267,10 @@ class BusBItemAudioDataThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUDio:DATa:THReshold <NR3>
         - BUS:B<x>:AUDio:DATa:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the audio data source threshold for the specified bus.
     """
 
 
@@ -19597,6 +22293,15 @@ class BusBItemAudioDataSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUDio:DATa:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:AUDio:DATa:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the data source waveform for the audio bus.
+        - ``CH<x>_D<x>`` specifies a digital channel as the data source waveform for the audio bus.
+        - ``MATH<x>`` specifies an math waveform as the data source waveform for the audio bus.
+        - ``REF<x>`` specifies an reference waveform as the data source waveform for the audio bus.
+        - ``REF<x>_D<x>`` specifies a digital reference waveform as the data source waveform for the
+          specified audio bus.
     """
 
 
@@ -19619,6 +22324,10 @@ class BusBItemAudioDataSize(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUDio:DATa:SIZe <NR1>
         - BUS:B<x>:AUDio:DATa:SIZe?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``NR1`` specifies the number of bits per word.
     """
 
 
@@ -19641,6 +22350,11 @@ class BusBItemAudioDataPolarity(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUDio:DATa:POLarity {HIGH|LOW}
         - BUS:B<x>:AUDio:DATa:POLarity?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``HIGH`` specifies positive data polarity for the audio bus.
+        - ``LOW`` specifies negative data polarity for the audio bus.
     """
 
 
@@ -19651,6 +22365,9 @@ class BusBItemAudioData(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:DATa?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:DATa?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:AUDio:DATa:POLarity`` command.
@@ -19688,6 +22405,11 @@ class BusBItemAudioData(SCPICmdRead):
             - BUS:B<x>:AUDio:DATa:POLarity {HIGH|LOW}
             - BUS:B<x>:AUDio:DATa:POLarity?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``HIGH`` specifies positive data polarity for the audio bus.
+            - ``LOW`` specifies negative data polarity for the audio bus.
         """
         return self._polarity
 
@@ -19711,6 +22433,10 @@ class BusBItemAudioData(SCPICmdRead):
             - BUS:B<x>:AUDio:DATa:SIZe <NR1>
             - BUS:B<x>:AUDio:DATa:SIZe?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``NR1`` specifies the number of bits per word.
         """
         return self._size
 
@@ -19734,6 +22460,17 @@ class BusBItemAudioData(SCPICmdRead):
             - BUS:B<x>:AUDio:DATa:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:AUDio:DATa:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the data source waveform for the audio bus.
+            - ``CH<x>_D<x>`` specifies a digital channel as the data source waveform for the audio
+              bus.
+            - ``MATH<x>`` specifies an math waveform as the data source waveform for the audio bus.
+            - ``REF<x>`` specifies an reference waveform as the data source waveform for the audio
+              bus.
+            - ``REF<x>_D<x>`` specifies a digital reference waveform as the data source waveform for
+              the specified audio bus.
         """
         return self._source
 
@@ -19757,6 +22494,10 @@ class BusBItemAudioData(SCPICmdRead):
             - BUS:B<x>:AUDio:DATa:THReshold <NR3>
             - BUS:B<x>:AUDio:DATa:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the audio data source threshold for the specified bus.
         """
         return self._threshold
 
@@ -19780,6 +22521,10 @@ class BusBItemAudioData(SCPICmdRead):
             - BUS:B<x>:AUDio:DATa:WORDSize <NR1>
             - BUS:B<x>:AUDio:DATa:WORDSize?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR1>`` is the audio bits per word for the specified bus.
         """
         return self._wordsize
 
@@ -19803,6 +22548,10 @@ class BusBItemAudioClockThreshold(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUDio:CLOCk:THReshold <NR3>
         - BUS:B<x>:AUDio:CLOCk:THReshold?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``<NR3>`` is the audio clock source threshold for the specified bus.
     """
 
 
@@ -19825,6 +22574,16 @@ class BusBItemAudioClockSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUDio:CLOCk:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
         - BUS:B<x>:AUDio:CLOCk:SOUrce?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the clock source waveform for the audio bus.
+        - ``CH<x>_D<x>`` specifies a digital channel as the clock source waveform for thespecified
+          audio bus.
+        - ``MATH<x>`` specifies a math waveform as the clock source waveform for the audiobus.
+        - ``REF<x>`` specifies a reference waveform as the clock source waveform for theaudio bus.
+        - ``REF<x>_D<x>`` specifies a digital reference waveform as the clock sourcewaveform for the
+          specified audio bus.
     """
 
 
@@ -19847,6 +22606,11 @@ class BusBItemAudioClockPolarity(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUDio:CLOCk:POLarity {FALL|RISE}
         - BUS:B<x>:AUDio:CLOCk:POLarity?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``FALL`` sets falling edge as the clock polarity.
+        - ``RISE`` sets rising edge as the clock polarity.
     """
 
 
@@ -19857,6 +22621,9 @@ class BusBItemAudioClock(SCPICmdRead):
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:CLOCk?`` query.
         - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:CLOCk?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``B<x>`` is the number of the bus.
 
     Properties:
         - ``.polarity``: The ``BUS:B<x>:AUDio:CLOCk:POLarity`` command.
@@ -19890,6 +22657,11 @@ class BusBItemAudioClock(SCPICmdRead):
             - BUS:B<x>:AUDio:CLOCk:POLarity {FALL|RISE}
             - BUS:B<x>:AUDio:CLOCk:POLarity?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``FALL`` sets falling edge as the clock polarity.
+            - ``RISE`` sets rising edge as the clock polarity.
         """
         return self._polarity
 
@@ -19913,6 +22685,17 @@ class BusBItemAudioClock(SCPICmdRead):
             - BUS:B<x>:AUDio:CLOCk:SOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>}
             - BUS:B<x>:AUDio:CLOCk:SOUrce?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the clock source waveform for the audio bus.
+            - ``CH<x>_D<x>`` specifies a digital channel as the clock source waveform for
+              thespecified audio bus.
+            - ``MATH<x>`` specifies a math waveform as the clock source waveform for the audiobus.
+            - ``REF<x>`` specifies a reference waveform as the clock source waveform for theaudio
+              bus.
+            - ``REF<x>_D<x>`` specifies a digital reference waveform as the clock sourcewaveform for
+              the specified audio bus.
         """
         return self._source
 
@@ -19936,6 +22719,10 @@ class BusBItemAudioClock(SCPICmdRead):
             - BUS:B<x>:AUDio:CLOCk:THReshold <NR3>
             - BUS:B<x>:AUDio:CLOCk:THReshold?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``<NR3>`` is the audio clock source threshold for the specified bus.
         """
         return self._threshold
 
@@ -19958,6 +22745,11 @@ class BusBItemAudioBitorder(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:AUDio:BITOrder {MSB|LSB}
         - BUS:B<x>:AUDio:BITOrder?
         ```
+
+    Info:
+        - ``B<x>`` is the number of the bus.
+        - ``MSB`` specifies that the most significant bit will be expected first in the order.
+        - ``LSB`` specifies that the least significant bit will be expected first in the order.
     """
 
 
@@ -20064,6 +22856,11 @@ class BusBItemAudio(SCPICmdRead):
             - BUS:B<x>:AUDio:BITOrder {MSB|LSB}
             - BUS:B<x>:AUDio:BITOrder?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``MSB`` specifies that the most significant bit will be expected first in the order.
+            - ``LSB`` specifies that the least significant bit will be expected first in the order.
         """
         return self._bitorder
 
@@ -20075,6 +22872,9 @@ class BusBItemAudio(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:CLOCk?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:CLOCk?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:AUDio:CLOCk:POLarity`` command.
@@ -20091,6 +22891,9 @@ class BusBItemAudio(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:DATa?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:DATa?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:AUDio:DATa:POLarity`` command.
@@ -20109,6 +22912,9 @@ class BusBItemAudio(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:FRAME?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:FRAME?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.clockbitsperchannel``: The ``BUS:B<x>:AUDio:FRAME:CLOCKBITSPERCHANNEL`` command.
@@ -20136,6 +22942,13 @@ class BusBItemAudio(SCPICmdRead):
             - BUS:B<x>:AUDio:TYPe {I2S|LJ|RJ|TDM}
             - BUS:B<x>:AUDio:TYPe?
             ```
+
+        Info:
+            - ``B<x>`` is the number of the bus.
+            - ``I2S`` specifies the I.
+            - ``LJ`` specifies the left-justified audio format.
+            - ``RJ`` specifies the right-justified audio format.
+            - ``TDM`` specifies the time-division multiplexing audio format.
         """
         return self._type
 
@@ -20147,6 +22960,9 @@ class BusBItemAudio(SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:AUDio:WORDSel?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.polarity``: The ``BUS:B<x>:AUDio:WORDSel:POLarity`` command.
@@ -20706,6 +23522,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CAN?`` query and raise an
               AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.bitrate``: The ``BUS:B<x>:CAN:BITRate`` command.
             - ``.fd``: The ``BUS:B<x>:CAN:FD`` command tree.
@@ -20726,6 +23545,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:CPHY?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:CPHY?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.a``: The ``BUS:B<x>:CPHY:A`` command tree.
@@ -20768,6 +23590,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DISplay?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.format``: The ``BUS:B<x>:DISplay:FORMat`` command.
             - ``.layout``: The ``BUS:B<x>:DISplay:LAYout`` command.
@@ -20782,6 +23607,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:DPHY?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:DPHY?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the Bus number.
 
         Sub-properties:
             - ``.clock``: The ``BUS:B<x>:DPHY:CLOCk`` command tree.
@@ -20801,6 +23629,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:ESPI?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ESPI?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the Bus number.
 
         Sub-properties:
             - ``.alertview``: The ``BUS:B<x>:ESPI:ALERTVIEW`` command.
@@ -20822,6 +23653,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ETHERCAT?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.dataminusthreshold``: The ``BUS:B<x>:ETHERCAT:DATAMINUSTHRESHold`` command.
             - ``.dataplusthreshold``: The ``BUS:B<x>:ETHERCAT:DATAPLUSTHRESHold`` command.
@@ -20839,6 +23673,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:ETHERnet?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ETHERnet?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.dataminusthreshold``: The ``BUS:B<x>:ETHERnet:DATAMINUSTHRESHold`` command.
@@ -20861,6 +23698,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:EUSB?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:EUSB?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.bitrate``: The ``BUS:B<x>:EUSB:BITRate`` command.
@@ -20885,6 +23725,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:FLEXray?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.bitrate``: The ``BUS:B<x>:FLEXray:BITRate`` command.
             - ``.channel``: The ``BUS:B<x>:FLEXray:CHannel`` command.
@@ -20905,6 +23748,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:I2C?`` query and raise an
               AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.clock``: The ``BUS:B<x>:I2C:CLOCk`` command tree.
             - ``.data``: The ``BUS:B<x>:I2C:DATa`` command tree.
@@ -20921,6 +23767,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:I3C?`` query and raise an
               AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` specifies the bus number.
+
         Sub-properties:
             - ``.clock``: The ``BUS:B<x>:I3C:CLOCk`` command tree.
             - ``.data``: The ``BUS:B<x>:I3C:DATa`` command tree.
@@ -20936,6 +23785,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:LABel?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:LABel?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.color``: The ``BUS:B<x>:LABel:COLor`` command.
@@ -20955,6 +23807,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:LIN?`` query and raise an
               AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.bitrate``: The ``BUS:B<x>:LIN:BITRate`` command.
             - ``.idformat``: The ``BUS:B<x>:LIN:IDFORmat`` command.
@@ -20973,6 +23828,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:MANChester?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MANChester?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.bitorder``: The ``BUS:B<x>:MANChester:BITORDer`` command.
@@ -21002,6 +23860,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MDIO?`` query and raise
               an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.clock``: The ``BUS:B<x>:MDIO:CLOCk`` command tree.
             - ``.data``: The ``BUS:B<x>:MDIO:DATA`` command tree.
@@ -21016,6 +23877,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:MIL1553B?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:MIL1553B?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.lowthreshold``: The ``BUS:B<x>:MIL1553B:LOWTHRESHold`` command.
@@ -21059,6 +23923,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:NRZ?`` query and raise an
               AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.bitorder``: The ``BUS:B<x>:NRZ:BITOrder`` command.
             - ``.bitrate``: The ``BUS:B<x>:NRZ:BITRate`` command.
@@ -21078,6 +23945,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:ONEWIRe?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``B<x>`` is the number of the bus.
+
         Sub-properties:
             - ``.data``: The ``BUS:B<x>:ONEWIRe:DATA`` command tree.
             - ``.mode``: The ``BUS:B<x>:ONEWIRe:MODe`` command.
@@ -21092,6 +23962,9 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel?`` query.
             - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PARallel?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``B<x>`` is the number of the bus.
 
         Sub-properties:
             - ``.allthresholds``: The ``BUS:B<x>:PARallel:ALLTHResholds`` command.
@@ -21165,7 +24038,7 @@ class BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               an AssertionError if the returned value does not match ``value``.
 
         Info:
-            - ``B<x>`` is the number of the bus.
+            - ``B<x>`` is the number of the bus. Arguments are available at bit rates up to 1 Tbps.
 
         Sub-properties:
             - ``.bitrate``: The ``BUS:B<x>:S8B10B:BITRate`` command.
@@ -21406,6 +24279,9 @@ class BusAddnew(SCPICmdWrite):
         ```
         - BUS:ADDNew <QString>
         ```
+
+    Info:
+        - ``<QString>`` is a quoted string of the form 'B<NR1>' where NR1 is ≥1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -21451,6 +24327,9 @@ class Bus(SCPICmdRead):
             ```
             - BUS:ADDNew <QString>
             ```
+
+        Info:
+            - ``<QString>`` is a quoted string of the form 'B<NR1>' where NR1 is ≥1.
         """
         return self._addnew
 

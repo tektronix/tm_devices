@@ -468,6 +468,10 @@ class VisualAreaItemHeight(SCPICmdWrite, SCPICmdRead):
         - VISual:AREA<x>:HEIGht <NR3>
         - VISual:AREA<x>:HEIGht?
         ```
+
+    Info:
+        - ``AREA<x>`` specifies the integer number of a Visual Trigger area.
+        - ``<NR3>`` specifies the height of the Visual Trigger area in amplitude. 4/.
     """
 
 
@@ -503,6 +507,9 @@ class VisualAreaItemFlipHorizontal(SCPICmdWriteNoArguments):
         ```
         - VISual:AREA<x>:FLIP:HORizontal
         ```
+
+    Info:
+        - ``AREA<x>`` specifies the integer number of a Visual Trigger area.
     """
 
 
@@ -513,6 +520,9 @@ class VisualAreaItemFlip(SCPICmdRead):
         - Using the ``.query()`` method will send the ``VISual:AREA<x>:FLIP?`` query.
         - Using the ``.verify(value)`` method will send the ``VISual:AREA<x>:FLIP?`` query and raise
           an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``AREA<x>`` specifies the integer number of a Visual Trigger area.
 
     Properties:
         - ``.horizontal``: The ``VISual:AREA<x>:FLIP:HORizontal`` command.
@@ -539,6 +549,9 @@ class VisualAreaItemFlip(SCPICmdRead):
             ```
             - VISual:AREA<x>:FLIP:HORizontal
             ```
+
+        Info:
+            - ``AREA<x>`` specifies the integer number of a Visual Trigger area.
         """
         return self._horizontal
 
@@ -672,6 +685,9 @@ class VisualAreaItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``VISual:AREA<x>:FLIP?`` query and
               raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``AREA<x>`` specifies the integer number of a Visual Trigger area.
+
         Sub-properties:
             - ``.horizontal``: The ``VISual:AREA<x>:FLIP:HORizontal`` command.
             - ``.vertical``: The ``VISual:AREA<x>:FLIP:VERTical`` command.
@@ -697,6 +713,10 @@ class VisualAreaItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - VISual:AREA<x>:HEIGht <NR3>
             - VISual:AREA<x>:HEIGht?
             ```
+
+        Info:
+            - ``AREA<x>`` specifies the integer number of a Visual Trigger area.
+            - ``<NR3>`` specifies the height of the Visual Trigger area in amplitude. 4/.
         """
         return self._height
 

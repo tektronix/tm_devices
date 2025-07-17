@@ -1395,8 +1395,8 @@ class DisplayWaveview1RfMagnitudeItemVerticalScale(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``1`` is always WAVEView1. ``RF_MAGnitude<x>`` specifies the number of the Magnitude vs.
-          Time Frequency waveform.
+        - ``1`` is always WAVEView1.
+        - ``RF_MAGnitude<x>`` specifies the number of the Magnitude vs. Time Frequency waveform.
         - ``<NR3>`` sets the vertical scale. The units for the vertical scale depend on the
           Magnitude Format setting. If the format is 'Amplitude (linear)', then the units are
           Volts/div. If the format is 'Power (linear)', then the units are Watts/div. If the format
@@ -1516,8 +1516,8 @@ class DisplayWaveview1RfMagnitudeItemVertical(SCPICmdRead):
             ```
 
         Info:
-            - ``1`` is always WAVEView1. ``RF_MAGnitude<x>`` specifies the number of the Magnitude
-              vs. Time Frequency waveform.
+            - ``1`` is always WAVEView1.
+            - ``RF_MAGnitude<x>`` specifies the number of the Magnitude vs. Time Frequency waveform.
             - ``<NR3>`` sets the vertical scale. The units for the vertical scale depend on the
               Magnitude Format setting. If the format is 'Amplitude (linear)', then the units are
               Volts/div. If the format is 'Power (linear)', then the units are Watts/div. If the
@@ -15900,6 +15900,13 @@ class DisplayGlobalRefItemState(SCPICmdWrite, SCPICmdRead):
         - DISplay:GLObal:REF<x>:STATE {ON|OFF|<NR1>}
         - DISplay:GLObal:REF<x>:STATE?
         ```
+
+    Info:
+        - ``REF<x>`` is the Reference waveform number.
+        - ``<NR1> = 0`` disables the display of the specified reference; any other value enables
+          display of the reference.
+        - ``ON`` enables display of the specified reference.
+        - ``OFF`` disables display of the specified reference.
     """
 
 
@@ -15910,6 +15917,9 @@ class DisplayGlobalRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - Using the ``.query()`` method will send the ``DISplay:GLObal:REF<x>?`` query.
         - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:REF<x>?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``REF<x>`` is the Reference waveform number.
 
     Properties:
         - ``.state``: The ``DISplay:GLObal:REF<x>:STATE`` command.
@@ -15942,6 +15952,13 @@ class DisplayGlobalRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - DISplay:GLObal:REF<x>:STATE {ON|OFF|<NR1>}
             - DISplay:GLObal:REF<x>:STATE?
             ```
+
+        Info:
+            - ``REF<x>`` is the Reference waveform number.
+            - ``<NR1> = 0`` disables the display of the specified reference; any other value enables
+              display of the reference.
+            - ``ON`` enables display of the specified reference.
+            - ``OFF`` disables display of the specified reference.
         """
         return self._state
 
@@ -15967,6 +15984,13 @@ class DisplayGlobalPlotItemState(SCPICmdWrite, SCPICmdRead):
         - DISplay:GLObal:PLOT<x>:STATE {ON|OFF|<NR1>}
         - DISplay:GLObal:PLOT<x>:STATE?
         ```
+
+    Info:
+        - ``PLOT<x>`` is the plot number.
+        - ``<NR1> = 0`` disables the display of the specified plot; any other value enables display
+          of the plot.
+        - ``ON`` enables display of the specified plot.
+        - ``OFF`` disables display of the specified plot.
     """
 
 
@@ -15977,6 +16001,9 @@ class DisplayGlobalPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - Using the ``.query()`` method will send the ``DISplay:GLObal:PLOT<x>?`` query.
         - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:PLOT<x>?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``PLOT<x>`` is the plot number.
 
     Properties:
         - ``.state``: The ``DISplay:GLObal:PLOT<x>:STATE`` command.
@@ -16008,6 +16035,13 @@ class DisplayGlobalPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - DISplay:GLObal:PLOT<x>:STATE {ON|OFF|<NR1>}
             - DISplay:GLObal:PLOT<x>:STATE?
             ```
+
+        Info:
+            - ``PLOT<x>`` is the plot number.
+            - ``<NR1> = 0`` disables the display of the specified plot; any other value enables
+              display of the plot.
+            - ``ON`` enables display of the specified plot.
+            - ``OFF`` disables display of the specified plot.
         """
         return self._state
 
@@ -16033,6 +16067,12 @@ class DisplayGlobalMathItemState(SCPICmdWrite, SCPICmdRead):
         - DISplay:GLObal:MATH<x>:STATE {ON|OFF|<NR1>}
         - DISplay:GLObal:MATH<x>:STATE?
         ```
+
+    Info:
+        - ``<NR1> = 0`` disables the display of the specified math; any other value enables display
+          of the math.
+        - ``ON`` enables display of the specified math.
+        - ``OFF`` disables display of the specified math.
     """
 
 
@@ -16075,6 +16115,12 @@ class DisplayGlobalMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - DISplay:GLObal:MATH<x>:STATE {ON|OFF|<NR1>}
             - DISplay:GLObal:MATH<x>:STATE?
             ```
+
+        Info:
+            - ``<NR1> = 0`` disables the display of the specified math; any other value enables
+              display of the math.
+            - ``ON`` enables display of the specified math.
+            - ``OFF`` disables display of the specified math.
         """
         return self._state
 
@@ -16322,6 +16368,9 @@ class DisplayGlobal(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:PLOT<x>?`` query
               and raise an AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``PLOT<x>`` is the plot number.
+
         Sub-properties:
             - ``.state``: The ``DISplay:GLObal:PLOT<x>:STATE`` command.
         """
@@ -16335,6 +16384,9 @@ class DisplayGlobal(SCPICmdRead):
             - Using the ``.query()`` method will send the ``DISplay:GLObal:REF<x>?`` query.
             - Using the ``.verify(value)`` method will send the ``DISplay:GLObal:REF<x>?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``REF<x>`` is the Reference waveform number.
 
         Sub-properties:
             - ``.state``: The ``DISplay:GLObal:REF<x>:STATE`` command.

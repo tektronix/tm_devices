@@ -1780,6 +1780,11 @@ class HorizontalFastframeTimestampReference(SCPICmdRead):
         ```
         - HORizontal:FASTframe:TIMEStamp:REFerence?
         ```
+
+    Info:
+        - ``ON`` indicates summary frame is active.
+        - ``OFF`` indicates that summary frame is off.
+        - ``<NR1>`` a 0 turns off summary frame; any other value activates the summary frame.
     """
 
 
@@ -1911,6 +1916,11 @@ class HorizontalFastframeTimestamp(SCPICmdRead):
             ```
             - HORizontal:FASTframe:TIMEStamp:REFerence?
             ```
+
+        Info:
+            - ``ON`` indicates summary frame is active.
+            - ``OFF`` indicates that summary frame is off.
+            - ``<NR1>`` a 0 turns off summary frame; any other value activates the summary frame.
         """
         return self._reference
 
@@ -2639,7 +2649,7 @@ class HorizontalDelayMode(SCPICmdWrite, SCPICmdRead):
           command to operate like the HORIZONTAL POSITION knob on the front panel.
         - ``ON`` sets the Horizontal Delay Mode to on. This causes the ``HORizontal:DELay:TIMe``
           command to operate like the HORIZONTAL POSITION knob on the front panel.
-        - ``<NR1>`` = 0 sets the Horizontal Delay Mode to off; any other value sets this mode to on.
+        - ``<NR1> = 0`` sets the Horizontal Delay Mode to off; any other value sets this mode to on.
     """
 
 
@@ -2686,7 +2696,7 @@ class HorizontalDelay(SCPICmdRead):
               command to operate like the HORIZONTAL POSITION knob on the front panel.
             - ``ON`` sets the Horizontal Delay Mode to on. This causes the ``HORizontal:DELay:TIMe``
               command to operate like the HORIZONTAL POSITION knob on the front panel.
-            - ``<NR1>`` = 0 sets the Horizontal Delay Mode to off; any other value sets this mode to
+            - ``<NR1> = 0`` sets the Horizontal Delay Mode to off; any other value sets this mode to
               on.
         """
         return self._mode

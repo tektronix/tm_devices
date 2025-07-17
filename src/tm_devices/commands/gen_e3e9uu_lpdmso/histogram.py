@@ -114,6 +114,11 @@ class HistogramHistogramItemTransparency(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:TRANsparency <NR3>
         - HISTogram:HISTogram<x>:TRANsparency?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``<NR3>`` specifies the transparency as a percentage, with a minimum of 0 and a maximum of
+          100.
     """
 
 
@@ -136,6 +141,11 @@ class HistogramHistogramItemState(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:STATE {ON|OFF}
         - HISTogram:HISTogram<x>:STATE?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``ON`` enables the histogram calculations.
+        - ``OFF`` disables the histogram calculations.
     """
 
 
@@ -158,6 +168,12 @@ class HistogramHistogramItemSource(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:SOUrce {CH<x>|MATH<x>|REF<x>}
         - HISTogram:HISTogram<x>:SOUrce?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``CH<x>`` specifies an analog channel as source.
+        - ``MATH<x>`` specifies a math channel as source.
+        - ``REF<x>`` specifies a reference waveform as the source.
     """
 
 
@@ -181,6 +197,11 @@ class HistogramHistogramItemSize(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:SIZe <NR3>
         - HISTogram:HISTogram<x>:SIZe?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``<NR3>`` specifies the number of divisions to set the height or width of the histogram
+          bins to.
     """
 
 
@@ -198,6 +219,10 @@ class HistogramHistogramItemSave(SCPICmdWrite):
         ```
         - HISTogram:HISTogram<x>:SAVe <QString>
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``<QString>`` is the file path to save the .csv file to.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -224,6 +249,11 @@ class HistogramHistogramItemMeasurementTwosigma(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:MEASurement:TWOSigma {ON|OFF}
         - HISTogram:HISTogram<x>:MEASurement:TWOSigma?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``ON`` enables the μ±2(sigma) measurement.
+        - ``OFF`` disables the μ±2(sigma) measurement.
     """
 
 
@@ -248,6 +278,11 @@ class HistogramHistogramItemMeasurementThrsigma(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:MEASurement:THRSigma {ON|OFF}
         - HISTogram:HISTogram<x>:MEASurement:THRSigma?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``ON`` enables the μ±3(sigma) measurement.
+        - ``OFF`` disables the μ±3(sigma) measurement.
     """
 
 
@@ -272,6 +307,11 @@ class HistogramHistogramItemMeasurementStddev(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:MEASurement:STDDev {ON|OFF}
         - HISTogram:HISTogram<x>:MEASurement:STDDev?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``ON`` enables the Standard Deviation measurement.
+        - ``OFF`` disables the Standard Deviation measurement.
     """
 
 
@@ -296,6 +336,32 @@ class HistogramHistogramItemMeasurementResults(SCPICmdReadWithArguments):
         ```
         - HISTogram:HISTogram<x>:MEASurement:RESUlts? {COUNt|HITS|MAX|MIN|PK2PK|MODE|MEAN|MEDian|PHITs|STDDev|ONESigma|TWOSigma|THRSigma,ALLAcqs|CURRentacq|HISTory,MAXimum|MEAN|MINimum|PK2PK|POPUlation|STDDev}
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``COUNt`` specifies the Count as the histogram measurement to return results for.
+        - ``HITS`` specifies the Hits as the histogram measurement to return results for.
+        - ``MAX`` specifies the Max as the histogram measurement to return results for.
+        - ``MIN`` specifies the Min as the histogram measurement to return results for.
+        - ``PK2PK`` specifies the Peak-to-peak as the histogram measurement or statistic to return
+          results for.
+        - ``MODE`` specifies the Mode as the histogrammeasurement to return results for.
+        - ``MEAN`` specifies the Mean as the histogram measurement or statistic to return results
+          for.
+        - ``MEDian`` specifies the Median as the histogram measurement to return results for.
+        - ``PHITs`` specifies the Peak Hits as the histogram measurement to return results for.
+        - ``STDDev`` specifies the Standard Deviation as the histogram measurement or statistic to
+          return results for.
+        - ``ONESigma`` specifies the μ±1(sigma) as the histogram measurement to return results for.
+        - ``TWOSigma`` specifies the μ±2(sigma) as the histogram measurement to return results for.
+        - ``THRSigma`` specifies the μ±3(sigma) as the histogram measurement to return results for.
+        - ``ALLAcqs`` specifies the All Acquisitions as the acquisitions to return results for.
+        - ``CURRentacq`` specifies the Current Acquisitions as the acquisitions to return results
+          for.
+        - ``HISTory`` specifies the History as the acquisitions to return results for.
+        - ``MAXimum`` specifies the Maximum as the statistic to return results for.
+        - ``MINimum`` specifies the Minimum as the statistic to return results for.
+        - ``POPUlation`` specifies the Population as the statistic to return results for.
     """  # noqa: E501
 
 
@@ -320,6 +386,11 @@ class HistogramHistogramItemMeasurementPk2pk(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:MEASurement:PK2PK {ON|OFF}
         - HISTogram:HISTogram<x>:MEASurement:PK2PK?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``ON`` enables the Peak-to-peak measurement.
+        - ``OFF`` disables the Peak-to-peak measurement.
     """
 
 
@@ -344,6 +415,11 @@ class HistogramHistogramItemMeasurementPhits(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:MEASurement:PHITs {ON|OFF}
         - HISTogram:HISTogram<x>:MEASurement:PHITs?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``ON`` enables the Median measurement.
+        - ``OFF`` disables the Median measurement.
     """
 
 
@@ -368,6 +444,11 @@ class HistogramHistogramItemMeasurementOnesigma(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:MEASurement:ONESigma {ON|OFF}
         - HISTogram:HISTogram<x>:MEASurement:ONESigma?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``ON`` enables the Median measurement.
+        - ``OFF`` disables the Median measurement.
     """
 
 
@@ -391,6 +472,11 @@ class HistogramHistogramItemMeasurementMode(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:MEASurement:MODE {ON|OFF}
         - HISTogram:HISTogram<x>:MEASurement:MODE?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``HORizontal`` sets the histogram mode to horizontal.
+        - ``VERTical`` sets the histogram mode to vertical.
     """
 
 
@@ -414,6 +500,11 @@ class HistogramHistogramItemMeasurementMin(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:MEASurement:MIN {ON|OFF}
         - HISTogram:HISTogram<x>:MEASurement:MIN?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``ON`` enables the Min measurement.
+        - ``OFF`` disables the Min measurement.
     """
 
 
@@ -437,6 +528,11 @@ class HistogramHistogramItemMeasurementMedian(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:MEASurement:MEDian {ON|OFF}
         - HISTogram:HISTogram<x>:MEASurement:MEDian?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``ON`` enables the Median measurement.
+        - ``OFF`` disables the Median measurement.
     """
 
 
@@ -460,6 +556,11 @@ class HistogramHistogramItemMeasurementMean(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:MEASurement:MEAN {ON|OFF}
         - HISTogram:HISTogram<x>:MEASurement:MEAN?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``ON`` enables the Mean measurement.
+        - ``OFF`` disables the Mean measurement.
     """
 
 
@@ -483,6 +584,11 @@ class HistogramHistogramItemMeasurementMax(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:MEASurement:MAX {ON|OFF}
         - HISTogram:HISTogram<x>:MEASurement:MAX?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``ON`` enables the Max measurement.
+        - ``OFF`` disables the Max measurement.
     """
 
 
@@ -507,6 +613,11 @@ class HistogramHistogramItemMeasurementHits(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:MEASurement:HITS {ON|OFF}
         - HISTogram:HISTogram<x>:MEASurement:HITS?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``ON`` enables the Hits in Box measurement.
+        - ``OFF`` disables the Hits in Box measurement.
     """
 
 
@@ -531,6 +642,11 @@ class HistogramHistogramItemMeasurementCount(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:MEASurement:COUNt {ON|OFF}
         - HISTogram:HISTogram<x>:MEASurement:COUNt?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``ON`` enables the waveform count measurement.
+        - ``OFF`` disables the waveform count measurement.
     """
 
 
@@ -542,6 +658,9 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
         - Using the ``.query()`` method will send the ``HISTogram:HISTogram<x>:MEASurement?`` query.
         - Using the ``.verify(value)`` method will send the ``HISTogram:HISTogram<x>:MEASurement?``
           query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
 
     Properties:
         - ``.count``: The ``HISTogram:HISTogram<x>:MEASurement:COUNt`` command.
@@ -607,6 +726,11 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
             - HISTogram:HISTogram<x>:MEASurement:COUNt {ON|OFF}
             - HISTogram:HISTogram<x>:MEASurement:COUNt?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``ON`` enables the waveform count measurement.
+            - ``OFF`` disables the waveform count measurement.
         """
         return self._count
 
@@ -632,6 +756,11 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
             - HISTogram:HISTogram<x>:MEASurement:HITS {ON|OFF}
             - HISTogram:HISTogram<x>:MEASurement:HITS?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``ON`` enables the Hits in Box measurement.
+            - ``OFF`` disables the Hits in Box measurement.
         """
         return self._hits
 
@@ -656,6 +785,11 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
             - HISTogram:HISTogram<x>:MEASurement:MAX {ON|OFF}
             - HISTogram:HISTogram<x>:MEASurement:MAX?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``ON`` enables the Max measurement.
+            - ``OFF`` disables the Max measurement.
         """
         return self._max
 
@@ -680,6 +814,11 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
             - HISTogram:HISTogram<x>:MEASurement:MEAN {ON|OFF}
             - HISTogram:HISTogram<x>:MEASurement:MEAN?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``ON`` enables the Mean measurement.
+            - ``OFF`` disables the Mean measurement.
         """
         return self._mean
 
@@ -705,6 +844,11 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
             - HISTogram:HISTogram<x>:MEASurement:MEDian {ON|OFF}
             - HISTogram:HISTogram<x>:MEASurement:MEDian?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``ON`` enables the Median measurement.
+            - ``OFF`` disables the Median measurement.
         """
         return self._median
 
@@ -729,6 +873,11 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
             - HISTogram:HISTogram<x>:MEASurement:MIN {ON|OFF}
             - HISTogram:HISTogram<x>:MEASurement:MIN?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``ON`` enables the Min measurement.
+            - ``OFF`` disables the Min measurement.
         """
         return self._min
 
@@ -753,6 +902,11 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
             - HISTogram:HISTogram<x>:MEASurement:MODE {ON|OFF}
             - HISTogram:HISTogram<x>:MEASurement:MODE?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``HORizontal`` sets the histogram mode to horizontal.
+            - ``VERTical`` sets the histogram mode to vertical.
         """
         return self._mode
 
@@ -778,6 +932,11 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
             - HISTogram:HISTogram<x>:MEASurement:ONESigma {ON|OFF}
             - HISTogram:HISTogram<x>:MEASurement:ONESigma?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``ON`` enables the Median measurement.
+            - ``OFF`` disables the Median measurement.
         """
         return self._onesigma
 
@@ -803,6 +962,11 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
             - HISTogram:HISTogram<x>:MEASurement:PHITs {ON|OFF}
             - HISTogram:HISTogram<x>:MEASurement:PHITs?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``ON`` enables the Median measurement.
+            - ``OFF`` disables the Median measurement.
         """
         return self._phits
 
@@ -828,6 +992,11 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
             - HISTogram:HISTogram<x>:MEASurement:PK2PK {ON|OFF}
             - HISTogram:HISTogram<x>:MEASurement:PK2PK?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``ON`` enables the Peak-to-peak measurement.
+            - ``OFF`` disables the Peak-to-peak measurement.
         """
         return self._pk2pk
 
@@ -853,6 +1022,35 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
             ```
             - HISTogram:HISTogram<x>:MEASurement:RESUlts? {COUNt|HITS|MAX|MIN|PK2PK|MODE|MEAN|MEDian|PHITs|STDDev|ONESigma|TWOSigma|THRSigma,ALLAcqs|CURRentacq|HISTory,MAXimum|MEAN|MINimum|PK2PK|POPUlation|STDDev}
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``COUNt`` specifies the Count as the histogram measurement to return results for.
+            - ``HITS`` specifies the Hits as the histogram measurement to return results for.
+            - ``MAX`` specifies the Max as the histogram measurement to return results for.
+            - ``MIN`` specifies the Min as the histogram measurement to return results for.
+            - ``PK2PK`` specifies the Peak-to-peak as the histogram measurement or statistic to
+              return results for.
+            - ``MODE`` specifies the Mode as the histogrammeasurement to return results for.
+            - ``MEAN`` specifies the Mean as the histogram measurement or statistic to return
+              results for.
+            - ``MEDian`` specifies the Median as the histogram measurement to return results for.
+            - ``PHITs`` specifies the Peak Hits as the histogram measurement to return results for.
+            - ``STDDev`` specifies the Standard Deviation as the histogram measurement or statistic
+              to return results for.
+            - ``ONESigma`` specifies the μ±1(sigma) as the histogram measurement to return results
+              for.
+            - ``TWOSigma`` specifies the μ±2(sigma) as the histogram measurement to return results
+              for.
+            - ``THRSigma`` specifies the μ±3(sigma) as the histogram measurement to return results
+              for.
+            - ``ALLAcqs`` specifies the All Acquisitions as the acquisitions to return results for.
+            - ``CURRentacq`` specifies the Current Acquisitions as the acquisitions to return
+              results for.
+            - ``HISTory`` specifies the History as the acquisitions to return results for.
+            - ``MAXimum`` specifies the Maximum as the statistic to return results for.
+            - ``MINimum`` specifies the Minimum as the statistic to return results for.
+            - ``POPUlation`` specifies the Population as the statistic to return results for.
         """  # noqa: E501
         return self._results
 
@@ -878,6 +1076,11 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
             - HISTogram:HISTogram<x>:MEASurement:STDDev {ON|OFF}
             - HISTogram:HISTogram<x>:MEASurement:STDDev?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``ON`` enables the Standard Deviation measurement.
+            - ``OFF`` disables the Standard Deviation measurement.
         """
         return self._stddev
 
@@ -903,6 +1106,11 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
             - HISTogram:HISTogram<x>:MEASurement:THRSigma {ON|OFF}
             - HISTogram:HISTogram<x>:MEASurement:THRSigma?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``ON`` enables the μ±3(sigma) measurement.
+            - ``OFF`` disables the μ±3(sigma) measurement.
         """
         return self._thrsigma
 
@@ -928,6 +1136,11 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
             - HISTogram:HISTogram<x>:MEASurement:TWOSigma {ON|OFF}
             - HISTogram:HISTogram<x>:MEASurement:TWOSigma?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``ON`` enables the μ±2(sigma) measurement.
+            - ``OFF`` disables the μ±2(sigma) measurement.
         """
         return self._twosigma
 
@@ -950,6 +1163,11 @@ class HistogramHistogramItemFunction(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:FUNCtion {HORizontal|VERTical}
         - HISTogram:HISTogram<x>:FUNCtion?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``HORizontal`` sets the histogram mode to horizontal.
+        - ``VERTical`` sets the histogram mode to vertical.
     """
 
 
@@ -971,6 +1189,11 @@ class HistogramHistogramItemDisplay(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:DISPlay {LINEAr|LOG}
         - HISTogram:HISTogram<x>:DISPlay?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``LINEAr`` sets the histogram scaling to linear mode.
+        - ``LOG`` sets the histogram scaling to logarithmic mode.
     """
 
 
@@ -1011,6 +1234,11 @@ class HistogramHistogramItemBstate(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:BSTate {ON|OFF}
         - HISTogram:HISTogram<x>:BSTate?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``ON`` enables the histogram badge display.
+        - ``OFF`` disables the histogram badge display.
     """
 
 
@@ -1034,6 +1262,11 @@ class HistogramHistogramItemBox(SCPICmdWrite, SCPICmdRead):
         - HISTogram:HISTogram<x>:BOX <NR3>,<NR3>,<NR3>,<NR3>
         - HISTogram:HISTogram<x>:BOX?
         ```
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
+        - ``<NR3>`` specifies four position values, separated by commas. The values are the top,
+          left, bottom, and right coordinates in that order.
     """
 
 
@@ -1045,6 +1278,9 @@ class HistogramHistogramItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - Using the ``.query()`` method will send the ``HISTogram:HISTogram<x>?`` query.
         - Using the ``.verify(value)`` method will send the ``HISTogram:HISTogram<x>?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``HISTogram<x>`` specifies the histogram number.
 
     Properties:
         - ``.box``: The ``HISTogram:HISTogram<x>:BOX`` command.
@@ -1099,6 +1335,11 @@ class HistogramHistogramItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - HISTogram:HISTogram<x>:BOX <NR3>,<NR3>,<NR3>,<NR3>
             - HISTogram:HISTogram<x>:BOX?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``<NR3>`` specifies four position values, separated by commas. The values are the top,
+              left, bottom, and right coordinates in that order.
         """
         return self._box
 
@@ -1121,6 +1362,11 @@ class HistogramHistogramItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - HISTogram:HISTogram<x>:BSTate {ON|OFF}
             - HISTogram:HISTogram<x>:BSTate?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``ON`` enables the histogram badge display.
+            - ``OFF`` disables the histogram badge display.
         """
         return self._bstate
 
@@ -1163,6 +1409,11 @@ class HistogramHistogramItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - HISTogram:HISTogram<x>:DISPlay {LINEAr|LOG}
             - HISTogram:HISTogram<x>:DISPlay?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``LINEAr`` sets the histogram scaling to linear mode.
+            - ``LOG`` sets the histogram scaling to logarithmic mode.
         """
         return self._display
 
@@ -1186,6 +1437,11 @@ class HistogramHistogramItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - HISTogram:HISTogram<x>:FUNCtion {HORizontal|VERTical}
             - HISTogram:HISTogram<x>:FUNCtion?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``HORizontal`` sets the histogram mode to horizontal.
+            - ``VERTical`` sets the histogram mode to vertical.
         """
         return self._function
 
@@ -1199,6 +1455,9 @@ class HistogramHistogramItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``HISTogram:HISTogram<x>:MEASurement?`` query and raise an AssertionError if the
               returned value does not match ``value``.
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
 
         Sub-properties:
             - ``.count``: The ``HISTogram:HISTogram<x>:MEASurement:COUNt`` command.
@@ -1233,6 +1492,10 @@ class HistogramHistogramItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
             - HISTogram:HISTogram<x>:SAVe <QString>
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``<QString>`` is the file path to save the .csv file to.
         """
         return self._save
 
@@ -1257,6 +1520,11 @@ class HistogramHistogramItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - HISTogram:HISTogram<x>:SIZe <NR3>
             - HISTogram:HISTogram<x>:SIZe?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``<NR3>`` specifies the number of divisions to set the height or width of the
+              histogram bins to.
         """
         return self._size
 
@@ -1280,6 +1548,12 @@ class HistogramHistogramItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - HISTogram:HISTogram<x>:SOUrce {CH<x>|MATH<x>|REF<x>}
             - HISTogram:HISTogram<x>:SOUrce?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``CH<x>`` specifies an analog channel as source.
+            - ``MATH<x>`` specifies a math channel as source.
+            - ``REF<x>`` specifies a reference waveform as the source.
         """
         return self._source
 
@@ -1303,6 +1577,11 @@ class HistogramHistogramItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - HISTogram:HISTogram<x>:STATE {ON|OFF}
             - HISTogram:HISTogram<x>:STATE?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``ON`` enables the histogram calculations.
+            - ``OFF`` disables the histogram calculations.
         """
         return self._state
 
@@ -1327,6 +1606,11 @@ class HistogramHistogramItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - HISTogram:HISTogram<x>:TRANsparency <NR3>
             - HISTogram:HISTogram<x>:TRANsparency?
             ```
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
+            - ``<NR3>`` specifies the transparency as a percentage, with a minimum of 0 and a
+              maximum of 100.
         """
         return self._transparency
 
@@ -1344,6 +1628,9 @@ class HistogramDelete(SCPICmdWrite):
         ```
         - HISTogram:DELete <QString>
         ```
+
+    Info:
+        - ``<QString>`` specifies the waveform histogram to delete. The argument is of the form '.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -1379,6 +1666,9 @@ class HistogramAddnew(SCPICmdWrite):
         ```
         - HISTogram:ADDNew <QString>
         ```
+
+    Info:
+        - ``<QString>`` specifies the waveform histogram to add. The argument is of the form '.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -1424,6 +1714,9 @@ class Histogram(SCPICmdRead):
             ```
             - HISTogram:ADDNew <QString>
             ```
+
+        Info:
+            - ``<QString>`` specifies the waveform histogram to add. The argument is of the form '.
         """
         return self._addnew
 
@@ -1459,6 +1752,10 @@ class Histogram(SCPICmdRead):
             ```
             - HISTogram:DELete <QString>
             ```
+
+        Info:
+            - ``<QString>`` specifies the waveform histogram to delete. The argument is of the form
+              '.
         """
         return self._delete
 
@@ -1470,6 +1767,9 @@ class Histogram(SCPICmdRead):
             - Using the ``.query()`` method will send the ``HISTogram:HISTogram<x>?`` query.
             - Using the ``.verify(value)`` method will send the ``HISTogram:HISTogram<x>?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``HISTogram<x>`` specifies the histogram number.
 
         Sub-properties:
             - ``.box``: The ``HISTogram:HISTogram<x>:BOX`` command.

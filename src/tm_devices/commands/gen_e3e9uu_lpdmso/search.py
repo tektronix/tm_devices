@@ -1381,6 +1381,8 @@ class SearchSearchItemTriggerAWindowWidth(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<NR3>`` specifies the minimum width in seconds.
+        - ``ECL`` specifies a preset high level of -1.3 V and TTL specifies a preset high level of
+          +1.4V.
     """
 
 
@@ -1922,6 +1924,8 @@ class SearchSearchItemTriggerAWindow(SCPICmdRead):
 
         Info:
             - ``<NR3>`` specifies the minimum width in seconds.
+            - ``ECL`` specifies a preset high level of -1.3 V and TTL specifies a preset high level
+              of +1.4V.
         """
         return self._width
 
@@ -7281,6 +7285,8 @@ class SearchSearchItemTriggerADdrwriteDatasource(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``CH<x>`` specifies channel <x> as the DDR write data source for the specified search <x>.
+        - ``CH<x>_D<x>`` specifies digital waveform <x> of channel <x> as the DDR write data source
+          for the specified search <x>.
         - ``MATH<x>`` specifies math waveform <x> as the DDR write data source for the specified
           search <x>.
         - ``REF<x>`` specifies reference waveform <x> as the DDR write data source for the specified
@@ -7907,6 +7913,8 @@ class SearchSearchItemTriggerADdrwrite(SCPICmdRead):
         Info:
             - ``CH<x>`` specifies channel <x> as the DDR write data source for the specified search
               <x>.
+            - ``CH<x>_D<x>`` specifies digital waveform <x> of channel <x> as the DDR write data
+              source for the specified search <x>.
             - ``MATH<x>`` specifies math waveform <x> as the DDR write data source for the specified
               search <x>.
             - ``REF<x>`` specifies reference waveform <x> as the DDR write data source for the
@@ -18133,6 +18141,11 @@ class SearchSearchItemTriggerABusSmbusCommandValue(SCPICmdWrite, SCPICmdRead):
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue?
         ```
+
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
+        - ``<QString>`` specifies the command value as the field within a SMBUS frame to search on.
+          The default value is XXXXXXX.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -18147,6 +18160,9 @@ class SearchSearchItemTriggerABusSmbusCommand(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand?`` query and raise an AssertionError if the
           returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the search identifier number.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue`` command.
@@ -18180,6 +18196,11 @@ class SearchSearchItemTriggerABusSmbusCommand(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue?
             ```
+
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
+            - ``<QString>`` specifies the command value as the field within a SMBUS frame to search
+              on. The default value is XXXXXXX.
         """
         return self._value
 
@@ -18346,6 +18367,9 @@ class SearchSearchItemTriggerABusSmbus(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand?`` query and raise an AssertionError if
               the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the search identifier number.
 
         Sub-properties:
             - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:SMBUS:COMMand:VALue`` command.
@@ -25749,6 +25773,7 @@ class SearchSearchItemTriggerABusOnewireMatchromFamilycode(SCPICmdWrite, SCPICmd
         ```
 
     Info:
+        - ``SEARCH<x>`` is the number of the search.
         - ``<QString>`` specifies the binary string used for Family Code triggering. The default
           size and value of family code for Match ROM is 8 bits and 'XXXXXXXX'.
     """
@@ -25765,6 +25790,9 @@ class SearchSearchItemTriggerABusOnewireMatchrom(SCPICmdRead):
         - Using the ``.verify(value)`` method will send the
           ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:MATCHROM?`` query and raise an AssertionError if
           the returned value does not match ``value``.
+
+    Info:
+        - ``SEARCH<x>`` is the number of the search.
 
     Properties:
         - ``.familycode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:MATCHROM:FAMILYCODe``
@@ -25806,6 +25834,7 @@ class SearchSearchItemTriggerABusOnewireMatchrom(SCPICmdRead):
             ```
 
         Info:
+            - ``SEARCH<x>`` is the number of the search.
             - ``<QString>`` specifies the binary string used for Family Code triggering. The default
               size and value of family code for Match ROM is 8 bits and 'XXXXXXXX'.
         """
@@ -26248,6 +26277,9 @@ class SearchSearchItemTriggerABusOnewire(SCPICmdRead):
             - Using the ``.verify(value)`` method will send the
               ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:MATCHROM?`` query and raise an AssertionError
               if the returned value does not match ``value``.
+
+        Info:
+            - ``SEARCH<x>`` is the number of the search.
 
         Sub-properties:
             - ``.familycode``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ONEWIRe:MATCHROM:FAMILYCODe``
@@ -45295,6 +45327,9 @@ class SearchSearchItemTriggerABusEspiVirtualwireStatusValue(SCPICmdWrite, SCPICm
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ESPI:VIRTUALWIRe:STATus:VALue <QString>
         - SEARCH:SEARCH<x>:TRIGger:A:BUS:ESPI:VIRTUALWIRe:STATus:VALue?
         ```
+
+    Info:
+        - ``<QString>`` is the identifier value. The default value is XXXXXXXXXXXXXXXX.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -45342,6 +45377,9 @@ class SearchSearchItemTriggerABusEspiVirtualwireStatus(SCPICmdRead):
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ESPI:VIRTUALWIRe:STATus:VALue <QString>
             - SEARCH:SEARCH<x>:TRIGger:A:BUS:ESPI:VIRTUALWIRe:STATus:VALue?
             ```
+
+        Info:
+            - ``<QString>`` is the identifier value. The default value is XXXXXXXXXXXXXXXX.
         """
         return self._value
 
@@ -55981,7 +56019,8 @@ class SearchSearchItemTriggerABusAudioDataWord(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the alignment of the data (left, right or either) to be used
           when searching on a non-TDM type audio bus signal. The search condition must be set to
-          DATA using ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:NONTdm:CONDition``
+          DATA using ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:NONTdm:CONDition``. The search number is
+          specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -56011,7 +56050,8 @@ class SearchSearchItemTriggerABusAudioDataValue(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the binary data string for the single or low data word to be
           used when searching on an audio bus signal. The search condition must be set to DATA using
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio``:{NONTdm|TDM}``:CONDition``
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio``:{NONTdm|TDM}``:CONDition``. The search number is
+          specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -56041,7 +56081,7 @@ class SearchSearchItemTriggerABusAudioDataTdmvalue(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the binary data string for the single or low data word to be
           used when searching on an TDM audio bus signal. The search condition must be set to DATA
-          using ``SEARCH:SEARCH``{x}``:TRIGger:A:BUS:AUDio:CONDition``
+          using ``SEARCH:SEARCH``{x}``:TRIGger:A:BUS:AUDio:CONDition``.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -56072,7 +56112,8 @@ class SearchSearchItemTriggerABusAudioDataQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when searching on an audio bus
           signal. The search condition must be set to DATa using
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio``:{NONTdm|TDM}``:CONDition``
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio``:{NONTdm|TDM}``:CONDition``. The search number is
+          specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -56165,7 +56206,7 @@ class SearchSearchItemTriggerABusAudioDataHitdmvalue(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the binary data string for the high data word to be used when
           searching on an TDM audio bus signal. The search condition must be set to DATa using
-          ``SEARCH:SEARCH``{x}``:TRIGger:A:BUS:AUDio:CONDition``
+          ``SEARCH:SEARCH``{x}``:TRIGger:A:BUS:AUDio:CONDition``.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -56237,7 +56278,7 @@ class SearchSearchItemTriggerABusAudioData(SCPICmdRead):
         Description:
             - This command sets or queries the binary data string for the high data word to be used
               when searching on an TDM audio bus signal. The search condition must be set to DATa
-              using ``SEARCH:SEARCH``{x}``:TRIGger:A:BUS:AUDio:CONDition``
+              using ``SEARCH:SEARCH``{x}``:TRIGger:A:BUS:AUDio:CONDition``.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -56325,7 +56366,8 @@ class SearchSearchItemTriggerABusAudioData(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when searching on an audio bus
               signal. The search condition must be set to DATa using
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio``:{NONTdm|TDM}``:CONDition``
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio``:{NONTdm|TDM}``:CONDition``. The search number
+              is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -56361,7 +56403,7 @@ class SearchSearchItemTriggerABusAudioData(SCPICmdRead):
         Description:
             - This command sets or queries the binary data string for the single or low data word to
               be used when searching on an TDM audio bus signal. The search condition must be set to
-              DATA using ``SEARCH:SEARCH``{x}``:TRIGger:A:BUS:AUDio:CONDition``
+              DATA using ``SEARCH:SEARCH``{x}``:TRIGger:A:BUS:AUDio:CONDition``.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -56391,7 +56433,8 @@ class SearchSearchItemTriggerABusAudioData(SCPICmdRead):
         Description:
             - This command sets or queries the binary data string for the single or low data word to
               be used when searching on an audio bus signal. The search condition must be set to
-              DATA using ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio``:{NONTdm|TDM}``:CONDition``
+              DATA using ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio``:{NONTdm|TDM}``:CONDition``. The
+              search number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -56420,7 +56463,8 @@ class SearchSearchItemTriggerABusAudioData(SCPICmdRead):
         Description:
             - This command sets or queries the alignment of the data (left, right or either) to be
               used when searching on a non-TDM type audio bus signal. The search condition must be
-              set to DATA using ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:NONTdm:CONDition``
+              set to DATA using ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:NONTdm:CONDition``. The
+              search number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the

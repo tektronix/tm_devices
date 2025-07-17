@@ -48,10 +48,10 @@ class CalibrateInternalStatus(SCPICmdRead):
 
     Description:
         - This query-only command returns the current status of the signal path calibration.When
-          running SPC through the remote interface, calibration status cannotbe obtained until after
-          the SPC completes. SPC takes approximately 15 minutesper channel which means a total of 2
-          hours on an 8-channel model. Any remotecommand that performs an action on the instrument
-          is also disabled until theSPC is complete.
+          running SPC through the remote interface, calibration status cannot be obtained until
+          after the SPC completes. SPC takes approximately 15 minutes per channel which means a
+          total of 2 hours on an 8-channel model. Any remote command that performs an action on the
+          instrument is also disabled until the SPC is complete.
 
     Usage:
         - Using the ``.query()`` method will send the ``CALibrate:INTERNal:STATus?`` query.
@@ -73,9 +73,10 @@ class CalibrateInternalStart(SCPICmdWriteNoArguments):
           channels. This command is the same as the ``CALibrate:INTERNal`` command. You can use the
           ``CALibrate:INTERNal:STATus?`` query to return the current status of the signal path
           calibration of the instrument.When running SPC through the remote interface, calibration
-          status cannotbe obtained until after the SPC completes. SPC takes approximately 15
-          minutesper channel which means a total of 2 hours on an 8-channel model. Any remotecommand
-          that performs an action on the instrument is also disabled until theSPC is complete.
+          status cannot be obtained until after the SPC completes. SPC takes approximately 15
+          minutes per channel which means a total of 2 hours on an 8-channel model. Any remote
+          command that performs an action on the instrument is also disabled until the SPC is
+          complete.
 
     Usage:
         - Using the ``.write()`` method will send the ``CALibrate:INTERNal:STARt`` command.
@@ -94,10 +95,10 @@ class CalibrateInternal(SCPICmdWriteNoArguments, SCPICmdRead):
         - This command (no query form) starts the signal path calibration (SPC) of the instrument.
           You can use the ``CALibrate:INTERNal:STATus?`` query to return the current status of the
           signal path calibration of the instrument.When running SPC through the remote interface,
-          calibration status cannotbe obtained until after the SPC completes. SPC takes
-          approximately 15 minutesper channel which means a total of 2 hours on an 8-channel model.
-          Any remotecommand that performs an action on the instrument is also disabled until theSPC
-          is complete.
+          calibration status cannot be obtained until after the SPC completes. SPC takes
+          approximately 15 minutes per channel which means a total of 2 hours on an 8-channel model.
+          Any remote command that performs an action on the instrument is also disabled until the
+          SPC is complete.
 
     Usage:
         - Using the ``.write()`` method will send the ``CALibrate:INTERNal`` command.
@@ -126,10 +127,10 @@ class CalibrateInternal(SCPICmdWriteNoArguments, SCPICmdRead):
               channels. This command is the same as the ``CALibrate:INTERNal`` command. You can use
               the ``CALibrate:INTERNal:STATus?`` query to return the current status of the signal
               path calibration of the instrument.When running SPC through the remote interface,
-              calibration status cannotbe obtained until after the SPC completes. SPC takes
-              approximately 15 minutesper channel which means a total of 2 hours on an 8-channel
-              model. Any remotecommand that performs an action on the instrument is also disabled
-              until theSPC is complete.
+              calibration status cannot be obtained until after the SPC completes. SPC takes
+              approximately 15 minutes per channel which means a total of 2 hours on an 8-channel
+              model. Any remote command that performs an action on the instrument is also disabled
+              until the SPC is complete.
 
         Usage:
             - Using the ``.write()`` method will send the ``CALibrate:INTERNal:STARt`` command.
@@ -147,10 +148,10 @@ class CalibrateInternal(SCPICmdWriteNoArguments, SCPICmdRead):
 
         Description:
             - This query-only command returns the current status of the signal path calibration.When
-              running SPC through the remote interface, calibration status cannotbe obtained until
-              after the SPC completes. SPC takes approximately 15 minutesper channel which means a
-              total of 2 hours on an 8-channel model. Any remotecommand that performs an action on
-              the instrument is also disabled until theSPC is complete.
+              running SPC through the remote interface, calibration status cannot be obtained until
+              after the SPC completes. SPC takes approximately 15 minutes per channel which means a
+              total of 2 hours on an 8-channel model. Any remote command that performs an action on
+              the instrument is also disabled until the SPC is complete.
 
         Usage:
             - Using the ``.query()`` method will send the ``CALibrate:INTERNal:STATus?`` query.
@@ -201,10 +202,10 @@ class Calibrate(SCPICmdRead):
             - This command (no query form) starts the signal path calibration (SPC) of the
               instrument. You can use the ``CALibrate:INTERNal:STATus?`` query to return the current
               status of the signal path calibration of the instrument.When running SPC through the
-              remote interface, calibration status cannotbe obtained until after the SPC completes.
-              SPC takes approximately 15 minutesper channel which means a total of 2 hours on an
-              8-channel model. Any remotecommand that performs an action on the instrument is also
-              disabled until theSPC is complete.
+              remote interface, calibration status cannot be obtained until after the SPC completes.
+              SPC takes approximately 15 minutes per channel which means a total of 2 hours on an
+              8-channel model. Any remote command that performs an action on the instrument is also
+              disabled until the SPC is complete.
 
         Usage:
             - Using the ``.write()`` method will send the ``CALibrate:INTERNal`` command.

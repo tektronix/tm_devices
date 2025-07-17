@@ -57,6 +57,11 @@ class FilesystemWritefile(SCPICmdWrite):
         ```
         - FILESystem:WRITEFile <file_path>,<data>
         ```
+
+    Info:
+        - ``<file_path>,<data>`` is a quoted string that defines the file name and path and the
+          block data to be written. If the file path is within the current working directory, you
+          need only specify the file name.
     """
 
 
@@ -1049,5 +1054,10 @@ class Filesystem(SCPICmdRead):
             ```
             - FILESystem:WRITEFile <file_path>,<data>
             ```
+
+        Info:
+            - ``<file_path>,<data>`` is a quoted string that defines the file name and path and the
+              block data to be written. If the file path is within the current working directory,
+              you need only specify the file name.
         """
         return self._writefile

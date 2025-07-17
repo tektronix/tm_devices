@@ -94,6 +94,8 @@ Commands and Queries:
     - MEASUrement:DISPLAYUnits?
     - MEASUrement:EDGE<x> {RISE|FALL|BOTH}
     - MEASUrement:EDGE<x>?
+    - MEASUrement:ENABLEPjitter {ON|OFF|1|0}
+    - MEASUrement:ENABLEPjitter?
     - MEASUrement:EYERENDER {ON|OFF|<NR1>}
     - MEASUrement:EYERENDER?
     - MEASUrement:FILTers:BLANKingtime <NR3>
@@ -227,6 +229,8 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:BITSTart?
     - MEASUrement:MEAS<x>:BITType {ALLBits|TRANSition|NONTRANsition}
     - MEASUrement:MEAS<x>:BITType?
+    - MEASUrement:MEAS<x>:BMTYPe {TIE|PERIOD|NUInterval}
+    - MEASUrement:MEAS<x>:BMTYPe?
     - MEASUrement:MEAS<x>:BURSTEDGTYPe {RISE|FALL}
     - MEASUrement:MEAS<x>:BURSTEDGTYPe?
     - MEASUrement:MEAS<x>:BVOLTage <NR3>
@@ -451,6 +455,8 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:JITTERSummary:DR?
     - MEASUrement:MEAS<x>:JITTERSummary:EYEWIDTHBER {0|1}
     - MEASUrement:MEAS<x>:JITTERSummary:EYEWIDTHBER?
+    - MEASUrement:MEAS<x>:JITTERSummary:ISI {0|1}
+    - MEASUrement:MEAS<x>:JITTERSummary:ISI?
     - MEASUrement:MEAS<x>:JITTERSummary:NPJ {0|1}
     - MEASUrement:MEAS<x>:JITTERSummary:NPJ?
     - MEASUrement:MEAS<x>:JITTERSummary:PJ {0|1}
@@ -511,6 +517,8 @@ Commands and Queries:
     - MEASUrement:MEAS<x>:MECH:STYPe?
     - MEASUrement:MEAS<x>:MINCycle <NR1>
     - MEASUrement:MEAS<x>:MINCycle?
+    - MEASUrement:MEAS<x>:NVALUe <N>
+    - MEASUrement:MEAS<x>:NVALUe?
     - MEASUrement:MEAS<x>:OBWMethod {percOfPwr|dBDown}
     - MEASUrement:MEAS<x>:OBWMethod?
     - MEASUrement:MEAS<x>:ODDEVen {ALL|EVEN|ODD}
@@ -3322,6 +3330,10 @@ class MeasurementRefItemReflevelsAbsoluteFallhigh(SCPICmdWrite, SCPICmdRead):
         - MEASUrement:REF<x>:REFLevels:ABSolute:FALLHigh <NR3>
         - MEASUrement:REF<x>:REFLevels:ABSolute:FALLHigh?
         ```
+
+    Info:
+        - ``<NR3>`` is the value used as the high reference level of the falling edge when the
+          measurement's ref level method is set to absolute.
     """
 
 
@@ -3394,6 +3406,10 @@ class MeasurementRefItemReflevelsAbsolute(SCPICmdRead):
             - MEASUrement:REF<x>:REFLevels:ABSolute:FALLHigh <NR3>
             - MEASUrement:REF<x>:REFLevels:ABSolute:FALLHigh?
             ```
+
+        Info:
+            - ``<NR3>`` is the value used as the high reference level of the falling edge when the
+              measurement's ref level method is set to absolute.
         """
         return self._fallhigh
 
@@ -4849,6 +4865,9 @@ class MeasurementMeasItemWbgCstatus(SCPICmdRead):
         ```
         - MEASUrement:MEAS<x>:WBG:CSTatus?
         ```
+
+    Info:
+        - ``MEAS<x>`` specifies the measurement number.
     """
 
 
@@ -5020,6 +5039,9 @@ class MeasurementMeasItemWbg(SCPICmdRead):
             ```
             - MEASUrement:MEAS<x>:WBG:CSTatus?
             ```
+
+        Info:
+            - ``MEAS<x>`` specifies the measurement number.
         """
         return self._cstatus
 
@@ -5465,6 +5487,9 @@ class MeasurementMeasItemType(SCPICmdWrite, SCPICmdRead):
         - ``F8`` is the peak-to-peak amplitude of the periodic jitter occurring at a rate of Fb
           (data rate) divided by 8. This measurement is made across the entire record. This
           measurement requires the DJA option and is not available on a 4 Series MSO instrument.
+        - ``HIGH`` (Eye High) is the amplitude of a high (1) bit measured at a user specified
+          location within the recovered unit interval. This measurement is made on each high bit in
+          the record.
         - ``HEIGHT`` (Eye Height) is the minimum vertical eye opening at the center of the recovered
           unit interval. This measurement is made across the entire record. This measurement
           requires the DJA option and is not available on a 4 Series MSO instrument.
@@ -7985,6 +8010,10 @@ class MeasurementMeasItemRrange(SCPICmdWrite, SCPICmdRead):
         - MEASUrement:MEAS<x>:RRANGE <NR3>
         - MEASUrement:MEAS<x>:RRANGE?
         ```
+
+    Info:
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR3>`` specifies the value of span for PSIJ measurement.
     """
 
 
@@ -9102,7 +9131,7 @@ class MeasurementMeasItemReflevelsAbsoluteFallhigh(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the value used as the high reference level of the falling
           edge when the measurement's ref level method is set to absolute. Measurements are
-          specified by x.This command affects the results of rise and fall measurements
+          specified by x.This command affects the results of rise and fall measurements.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -9155,7 +9184,7 @@ class MeasurementMeasItemReflevelsAbsolute(SCPICmdRead):
         Description:
             - This command sets or queries the value used as the high reference level of the falling
               edge when the measurement's ref level method is set to absolute. Measurements are
-              specified by x.This command affects the results of rise and fall measurements
+              specified by x.This command affects the results of rise and fall measurements.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -9351,6 +9380,11 @@ class MeasurementMeasItemReflevels1PercentFallmid(SCPICmdWrite, SCPICmdRead):
         - MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLMid <NR3>
         - MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLMid?
         ```
+
+    Info:
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR3>`` is the percentage (where 50% is equal to MID) used to calculate the mid
+          reference level.
     """
 
 
@@ -9553,6 +9587,11 @@ class MeasurementMeasItemReflevels1Percent(SCPICmdRead):
             - MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLMid <NR3>
             - MEASUrement:MEAS<x>:REFLevels1:PERCent:FALLMid?
             ```
+
+        Info:
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR3>`` is the percentage (where 50% is equal to MID) used to calculate the mid
+              reference level.
         """
         return self._fallmid
 
@@ -11791,6 +11830,32 @@ class MeasurementMeasItemObwmethod(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class MeasurementMeasItemNvalue(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:NVALUe`` command.
+
+    Description:
+        - Sets or queries the number of unit intervals used for the Base Measurement Type of
+          NUnitInterval.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:NVALUe?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:NVALUe?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:NVALUe value``
+          command.
+
+    SCPI Syntax:
+        ```
+        - MEASUrement:MEAS<x>:NVALUe <N>
+        - MEASUrement:MEAS<x>:NVALUe?
+        ```
+
+    Info:
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<N>`` specifies the number of unit intervals.
+    """
+
+
 class MeasurementMeasItemMincycle(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:MINCycle`` command.
 
@@ -11863,6 +11928,10 @@ class MeasurementMeasItemMechPprotation(SCPICmdWrite, SCPICmdRead):
         - MEASUrement:MEAS<x>:MECH:PPRotation <NR1>
         - MEASUrement:MEAS<x>:MECH:PPRotation?
         ```
+
+    Info:
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``<NR1>`` defines the pulses per rotation of the measurement in the range of 1 to 10000.
     """
 
 
@@ -12144,6 +12213,11 @@ class MeasurementMeasItemMech(SCPICmdRead):
             - MEASUrement:MEAS<x>:MECH:PPRotation <NR1>
             - MEASUrement:MEAS<x>:MECH:PPRotation?
             ```
+
+        Info:
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR1>`` defines the pulses per rotation of the measurement in the range of 1 to
+              10000.
         """
         return self._pprotation
 
@@ -12957,6 +13031,35 @@ class MeasurementMeasItemJittersummaryNpj(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class MeasurementMeasItemJittersummaryIsi(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:JITTERSummary:ISI`` command.
+
+    Description:
+        - This command Sets or queries whether ISI is included in the jitter summary for the
+          measurement. Measurements are specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:JITTERSummary:ISI?``
+          query.
+        - Using the ``.verify(value)`` method will send the
+          ``MEASUrement:MEAS<x>:JITTERSummary:ISI?`` query and raise an AssertionError if the
+          returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``MEASUrement:MEAS<x>:JITTERSummary:ISI value`` command.
+
+    SCPI Syntax:
+        ```
+        - MEASUrement:MEAS<x>:JITTERSummary:ISI {0|1}
+        - MEASUrement:MEAS<x>:JITTERSummary:ISI?
+        ```
+
+    Info:
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``1`` adds the ISI measurement as part of jitter summary.
+        - ``0`` do not add the ISI measurement as part of jitter summary.
+    """
+
+
 class MeasurementMeasItemJittersummaryEyewidthber(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:JITTERSummary:EYEWIDTHBER`` command.
 
@@ -13150,6 +13253,7 @@ class MeasurementMeasItemJittersummary(SCPICmdRead):
         - ``.djdd``: The ``MEASUrement:MEAS<x>:JITTERSummary:DJDD`` command.
         - ``.dr``: The ``MEASUrement:MEAS<x>:JITTERSummary:DR`` command.
         - ``.eyewidthber``: The ``MEASUrement:MEAS<x>:JITTERSummary:EYEWIDTHBER`` command.
+        - ``.isi``: The ``MEASUrement:MEAS<x>:JITTERSummary:ISI`` command.
         - ``.npj``: The ``MEASUrement:MEAS<x>:JITTERSummary:NPJ`` command.
         - ``.pj``: The ``MEASUrement:MEAS<x>:JITTERSummary:PJ`` command.
         - ``.pl``: The ``MEASUrement:MEAS<x>:JITTERSummary:PL`` command.
@@ -13169,6 +13273,7 @@ class MeasurementMeasItemJittersummary(SCPICmdRead):
         self._eyewidthber = MeasurementMeasItemJittersummaryEyewidthber(
             device, f"{self._cmd_syntax}:EYEWIDTHBER"
         )
+        self._isi = MeasurementMeasItemJittersummaryIsi(device, f"{self._cmd_syntax}:ISI")
         self._npj = MeasurementMeasItemJittersummaryNpj(device, f"{self._cmd_syntax}:NPJ")
         self._pj = MeasurementMeasItemJittersummaryPj(device, f"{self._cmd_syntax}:PJ")
         self._pl = MeasurementMeasItemJittersummaryPl(device, f"{self._cmd_syntax}:PL")
@@ -13356,6 +13461,36 @@ class MeasurementMeasItemJittersummary(SCPICmdRead):
             - ``0`` do not add the EyeWidth@BER measurement as part of jitter summary.
         """
         return self._eyewidthber
+
+    @property
+    def isi(self) -> MeasurementMeasItemJittersummaryIsi:
+        """Return the ``MEASUrement:MEAS<x>:JITTERSummary:ISI`` command.
+
+        Description:
+            - This command Sets or queries whether ISI is included in the jitter summary for the
+              measurement. Measurements are specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:JITTERSummary:ISI?``
+              query.
+            - Using the ``.verify(value)`` method will send the
+              ``MEASUrement:MEAS<x>:JITTERSummary:ISI?`` query and raise an AssertionError if the
+              returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``MEASUrement:MEAS<x>:JITTERSummary:ISI value`` command.
+
+        SCPI Syntax:
+            ```
+            - MEASUrement:MEAS<x>:JITTERSummary:ISI {0|1}
+            - MEASUrement:MEAS<x>:JITTERSummary:ISI?
+            ```
+
+        Info:
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``1`` adds the ISI measurement as part of jitter summary.
+            - ``0`` do not add the ISI measurement as part of jitter summary.
+        """
+        return self._isi
 
     @property
     def npj(self) -> MeasurementMeasItemJittersummaryNpj:
@@ -17128,6 +17263,10 @@ class MeasurementMeasItemDbdown(SCPICmdWrite, SCPICmdRead):
         - MEASUrement:MEAS<x>:DBDown <NR3>
         - MEASUrement:MEAS<x>:DBDown?
         ```
+
+    Info:
+        - ``<NR3>`` sets the dB down value. The default value is -26 and the valid range is -80 to
+          -1.
     """
 
 
@@ -19455,6 +19594,34 @@ class MeasurementMeasItemBurstedgtype(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class MeasurementMeasItemBmtype(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:MEAS<x>:BMTYPe`` command.
+
+    Description:
+        - Sets or queries the base measurement type for the measurement. Measurements are specified
+          by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:BMTYPe?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:BMTYPe?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:BMTYPe value``
+          command.
+
+    SCPI Syntax:
+        ```
+        - MEASUrement:MEAS<x>:BMTYPe {TIE|PERIOD|NUInterval}
+        - MEASUrement:MEAS<x>:BMTYPe?
+        ```
+
+    Info:
+        - ``MEAS<x>`` specifies the measurement number.
+        - ``TIE`` specifies the base measurement type as TIE.
+        - ``PERIOD`` specifies the base measurement type as PERIOD.
+        - ``NUInterval`` specifies the base measurement type as NUInterval.
+    """
+
+
 class MeasurementMeasItemBittype(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:BITType`` command.
 
@@ -19884,6 +20051,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.bitpcnt``: The ``MEASUrement:MEAS<x>:BITPcnt`` command.
         - ``.bitstart``: The ``MEASUrement:MEAS<x>:BITSTart`` command.
         - ``.bittype``: The ``MEASUrement:MEAS<x>:BITType`` command.
+        - ``.bmtype``: The ``MEASUrement:MEAS<x>:BMTYPe`` command.
         - ``.burstedgtype``: The ``MEASUrement:MEAS<x>:BURSTEDGTYPe`` command.
         - ``.bvoltage``: The ``MEASUrement:MEAS<x>:BVOLTage`` command.
         - ``.ccresults``: The ``MEASUrement:MEAS<x>:CCRESUlts`` command tree.
@@ -19954,6 +20122,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         - ``.measrange``: The ``MEASUrement:MEAS<x>:MEASRange`` command tree.
         - ``.mech``: The ``MEASUrement:MEAS<x>:MECH`` command tree.
         - ``.mincycle``: The ``MEASUrement:MEAS<x>:MINCycle`` command.
+        - ``.nvalue``: The ``MEASUrement:MEAS<x>:NVALUe`` command.
         - ``.obwmethod``: The ``MEASUrement:MEAS<x>:OBWMethod`` command.
         - ``.oddeven``: The ``MEASUrement:MEAS<x>:ODDEVen`` command.
         - ``.ofilters``: The ``MEASUrement:MEAS<x>:OFILters`` command tree.
@@ -20053,6 +20222,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._bitpcnt = MeasurementMeasItemBitpcnt(device, f"{self._cmd_syntax}:BITPcnt")
         self._bitstart = MeasurementMeasItemBitstart(device, f"{self._cmd_syntax}:BITSTart")
         self._bittype = MeasurementMeasItemBittype(device, f"{self._cmd_syntax}:BITType")
+        self._bmtype = MeasurementMeasItemBmtype(device, f"{self._cmd_syntax}:BMTYPe")
         self._burstedgtype = MeasurementMeasItemBurstedgtype(
             device, f"{self._cmd_syntax}:BURSTEDGTYPe"
         )
@@ -20171,6 +20341,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         self._measrange = MeasurementMeasItemMeasrange(device, f"{self._cmd_syntax}:MEASRange")
         self._mech = MeasurementMeasItemMech(device, f"{self._cmd_syntax}:MECH")
         self._mincycle = MeasurementMeasItemMincycle(device, f"{self._cmd_syntax}:MINCycle")
+        self._nvalue = MeasurementMeasItemNvalue(device, f"{self._cmd_syntax}:NVALUe")
         self._obwmethod = MeasurementMeasItemObwmethod(device, f"{self._cmd_syntax}:OBWMethod")
         self._oddeven = MeasurementMeasItemOddeven(device, f"{self._cmd_syntax}:ODDEVen")
         self._ofilters = MeasurementMeasItemOfilters(device, f"{self._cmd_syntax}:OFILters")
@@ -20666,6 +20837,35 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         return self._bittype
 
     @property
+    def bmtype(self) -> MeasurementMeasItemBmtype:
+        """Return the ``MEASUrement:MEAS<x>:BMTYPe`` command.
+
+        Description:
+            - Sets or queries the base measurement type for the measurement. Measurements are
+              specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:BMTYPe?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:BMTYPe?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:BMTYPe value``
+              command.
+
+        SCPI Syntax:
+            ```
+            - MEASUrement:MEAS<x>:BMTYPe {TIE|PERIOD|NUInterval}
+            - MEASUrement:MEAS<x>:BMTYPe?
+            ```
+
+        Info:
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``TIE`` specifies the base measurement type as TIE.
+            - ``PERIOD`` specifies the base measurement type as PERIOD.
+            - ``NUInterval`` specifies the base measurement type as NUInterval.
+        """
+        return self._bmtype
+
+    @property
     def burstedgtype(self) -> MeasurementMeasItemBurstedgtype:
         """Return the ``MEASUrement:MEAS<x>:BURSTEDGTYPe`` command.
 
@@ -20978,6 +21178,10 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - MEASUrement:MEAS<x>:DBDown <NR3>
             - MEASUrement:MEAS<x>:DBDown?
             ```
+
+        Info:
+            - ``<NR3>`` sets the dB down value. The default value is -26 and the valid range is -80
+              to -1.
         """
         return self._dbdown
 
@@ -22135,6 +22339,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``.djdd``: The ``MEASUrement:MEAS<x>:JITTERSummary:DJDD`` command.
             - ``.dr``: The ``MEASUrement:MEAS<x>:JITTERSummary:DR`` command.
             - ``.eyewidthber``: The ``MEASUrement:MEAS<x>:JITTERSummary:EYEWIDTHBER`` command.
+            - ``.isi``: The ``MEASUrement:MEAS<x>:JITTERSummary:ISI`` command.
             - ``.npj``: The ``MEASUrement:MEAS<x>:JITTERSummary:NPJ`` command.
             - ``.pj``: The ``MEASUrement:MEAS<x>:JITTERSummary:PJ`` command.
             - ``.pl``: The ``MEASUrement:MEAS<x>:JITTERSummary:PL`` command.
@@ -22539,6 +22744,33 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``<NR1>`` is the minimum cycle range limit value in the range or 2 to 50.
         """
         return self._mincycle
+
+    @property
+    def nvalue(self) -> MeasurementMeasItemNvalue:
+        """Return the ``MEASUrement:MEAS<x>:NVALUe`` command.
+
+        Description:
+            - Sets or queries the number of unit intervals used for the Base Measurement Type of
+              NUnitInterval.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:NVALUe?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:MEAS<x>:NVALUe?``
+              query and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``MEASUrement:MEAS<x>:NVALUe value``
+              command.
+
+        SCPI Syntax:
+            ```
+            - MEASUrement:MEAS<x>:NVALUe <N>
+            - MEASUrement:MEAS<x>:NVALUe?
+            ```
+
+        Info:
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<N>`` specifies the number of unit intervals.
+        """
+        return self._nvalue
 
     @property
     def obwmethod(self) -> MeasurementMeasItemObwmethod:
@@ -23505,6 +23737,10 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - MEASUrement:MEAS<x>:RRANGE <NR3>
             - MEASUrement:MEAS<x>:RRANGE?
             ```
+
+        Info:
+            - ``MEAS<x>`` specifies the measurement number.
+            - ``<NR3>`` specifies the value of span for PSIJ measurement.
         """
         return self._rrange
 
@@ -24531,6 +24767,9 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - ``F8`` is the peak-to-peak amplitude of the periodic jitter occurring at a rate of Fb
               (data rate) divided by 8. This measurement is made across the entire record. This
               measurement requires the DJA option and is not available on a 4 Series MSO instrument.
+            - ``HIGH`` (Eye High) is the amplitude of a high (1) bit measured at a user specified
+              location within the recovered unit interval. This measurement is made on each high bit
+              in the record.
             - ``HEIGHT`` (Eye Height) is the minimum vertical eye opening at the center of the
               recovered unit interval. This measurement is made across the entire record. This
               measurement requires the DJA option and is not available on a 4 Series MSO instrument.
@@ -28204,6 +28443,34 @@ class MeasurementEyerender(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class MeasurementEnablepjitter(SCPICmdWrite, SCPICmdRead):
+    """The ``MEASUrement:ENABLEPjitter`` command.
+
+    Description:
+        - This command sets or queries the state of period jitter analysis mode.
+
+    Usage:
+        - Using the ``.query()`` method will send the ``MEASUrement:ENABLEPjitter?`` query.
+        - Using the ``.verify(value)`` method will send the ``MEASUrement:ENABLEPjitter?`` query and
+          raise an AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the ``MEASUrement:ENABLEPjitter value``
+          command.
+
+    SCPI Syntax:
+        ```
+        - MEASUrement:ENABLEPjitter {ON|OFF|1|0}
+        - MEASUrement:ENABLEPjitter?
+        ```
+
+    Info:
+        - ``ON`` indicates that period jitter analysis mode is active.
+        - ``OFF`` indicates that period jitter analysis mode is off.
+        - ``1`` turns on period jitter analysis mode. Any number value other than 0 will turn period
+          jitter analysis mode on.
+        - ``0`` turns off period jitter analysis mode.
+    """
+
+
 class MeasurementEdgeItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:EDGE<x>`` command.
 
@@ -30980,6 +31247,9 @@ class MeasurementAddmeas(SCPICmdWrite):
         - ``F8`` is the peak-to-peak amplitude of the periodic jitter occurring at a rate of Fb
           (data rate) divided by 8. This measurement is made across the entire record. This
           measurement requires the DJA option and is not available on a 4 Series MSO instrument.
+        - ``HIGH`` (Eye High) is the amplitude of a high (1) bit measured at a user specified
+          location within the recovered unit interval. This measurement is made on each high bit in
+          the record.
         - ``HEIGHT`` (Eye Height) is the minimum vertical eye opening at the center of the recovered
           unit interval. This measurement is made across the entire record. This measurement
           requires the DJA option and is not available on a 4 Series MSO instrument.
@@ -31022,9 +31292,9 @@ class MeasurementAddmeas(SCPICmdWrite):
           maximum and minimum value) of DDJ-per-edge values appearing across all rising edges, or
           the range of DDJ-per-edge values across all falling edges, whichever is greater.
         - ``JITTERSUMMARY`` (Jitter Summary) is a group consisting of the following measurements:
-          Data Rate, Pattern Length, TIE, TJ@BER, RJ, DJ, DJ-δδ, PJ, DDJ, DCD, and Eye Width@BER and
-          RJ-δδ. This measurement requires the DJAoption and is not available on a 4 Series MSO
-          instrument.
+          Data Rate, Pattern Length, TIE, TJ@BER, RJ, DJ, DJ-δδ, PJ, DDJ, DCD, ISI, and Eye
+          Width@BER and RJ-δδ. This measurement requires the DJAoption and is not available on a 4
+          Series MSO instrument.
         - ``J2`` is the total jitter at a bit error rate of 2.5e-3 (TJ@2.5e-3). This measurement is
           made across the entire record. This measurement requires the DJA option and is not
           available on a 4 Series MSO instrument.
@@ -31228,6 +31498,7 @@ class Measurement(SCPICmdRead):
         - ``.diracmodel``: The ``MEASUrement:DIRacmodel`` command.
         - ``.displayunits``: The ``MEASUrement:DISPLAYUnits`` command.
         - ``.edge``: The ``MEASUrement:EDGE<x>`` command.
+        - ``.enablepjitter``: The ``MEASUrement:ENABLEPjitter`` command.
         - ``.eyerender``: The ``MEASUrement:EYERENDER`` command.
         - ``.filters``: The ``MEASUrement:FILTers`` command tree.
         - ``.gating``: The ``MEASUrement:GATing`` command.
@@ -31269,6 +31540,7 @@ class Measurement(SCPICmdRead):
         self._edge: Dict[int, MeasurementEdgeItem] = DefaultDictPassKeyToFactory(
             lambda x: MeasurementEdgeItem(device, f"{self._cmd_syntax}:EDGE{x}")
         )
+        self._enablepjitter = MeasurementEnablepjitter(device, f"{self._cmd_syntax}:ENABLEPjitter")
         self._eyerender = MeasurementEyerender(device, f"{self._cmd_syntax}:EYERENDER")
         self._filters = MeasurementFilters(device, f"{self._cmd_syntax}:FILTers")
         self._gating = MeasurementGating(device, f"{self._cmd_syntax}:GATing")
@@ -31470,6 +31742,9 @@ class Measurement(SCPICmdRead):
             - ``F8`` is the peak-to-peak amplitude of the periodic jitter occurring at a rate of Fb
               (data rate) divided by 8. This measurement is made across the entire record. This
               measurement requires the DJA option and is not available on a 4 Series MSO instrument.
+            - ``HIGH`` (Eye High) is the amplitude of a high (1) bit measured at a user specified
+              location within the recovered unit interval. This measurement is made on each high bit
+              in the record.
             - ``HEIGHT`` (Eye Height) is the minimum vertical eye opening at the center of the
               recovered unit interval. This measurement is made across the entire record. This
               measurement requires the DJA option and is not available on a 4 Series MSO instrument.
@@ -31513,9 +31788,9 @@ class Measurement(SCPICmdRead):
               maximum and minimum value) of DDJ-per-edge values appearing across all rising edges,
               or the range of DDJ-per-edge values across all falling edges, whichever is greater.
             - ``JITTERSUMMARY`` (Jitter Summary) is a group consisting of the following
-              measurements: Data Rate, Pattern Length, TIE, TJ@BER, RJ, DJ, DJ-δδ, PJ, DDJ, DCD, and
-              Eye Width@BER and RJ-δδ. This measurement requires the DJAoption and is not available
-              on a 4 Series MSO instrument.
+              measurements: Data Rate, Pattern Length, TIE, TJ@BER, RJ, DJ, DJ-δδ, PJ, DDJ, DCD,
+              ISI, and Eye Width@BER and RJ-δδ. This measurement requires the DJAoption and is not
+              available on a 4 Series MSO instrument.
             - ``J2`` is the total jitter at a bit error rate of 2.5e-3 (TJ@2.5e-3). This measurement
               is made across the entire record. This measurement requires the DJA option and is not
               available on a 4 Series MSO instrument.
@@ -31926,6 +32201,35 @@ class Measurement(SCPICmdRead):
         return self._edge
 
     @property
+    def enablepjitter(self) -> MeasurementEnablepjitter:
+        """Return the ``MEASUrement:ENABLEPjitter`` command.
+
+        Description:
+            - This command sets or queries the state of period jitter analysis mode.
+
+        Usage:
+            - Using the ``.query()`` method will send the ``MEASUrement:ENABLEPjitter?`` query.
+            - Using the ``.verify(value)`` method will send the ``MEASUrement:ENABLEPjitter?`` query
+              and raise an AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the ``MEASUrement:ENABLEPjitter value``
+              command.
+
+        SCPI Syntax:
+            ```
+            - MEASUrement:ENABLEPjitter {ON|OFF|1|0}
+            - MEASUrement:ENABLEPjitter?
+            ```
+
+        Info:
+            - ``ON`` indicates that period jitter analysis mode is active.
+            - ``OFF`` indicates that period jitter analysis mode is off.
+            - ``1`` turns on period jitter analysis mode. Any number value other than 0 will turn
+              period jitter analysis mode on.
+            - ``0`` turns off period jitter analysis mode.
+        """
+        return self._enablepjitter
+
+    @property
     def eyerender(self) -> MeasurementEyerender:
         """Return the ``MEASUrement:EYERENDER`` command.
 
@@ -32206,6 +32510,7 @@ class Measurement(SCPICmdRead):
             - ``.bitpcnt``: The ``MEASUrement:MEAS<x>:BITPcnt`` command.
             - ``.bitstart``: The ``MEASUrement:MEAS<x>:BITSTart`` command.
             - ``.bittype``: The ``MEASUrement:MEAS<x>:BITType`` command.
+            - ``.bmtype``: The ``MEASUrement:MEAS<x>:BMTYPe`` command.
             - ``.burstedgtype``: The ``MEASUrement:MEAS<x>:BURSTEDGTYPe`` command.
             - ``.bvoltage``: The ``MEASUrement:MEAS<x>:BVOLTage`` command.
             - ``.ccresults``: The ``MEASUrement:MEAS<x>:CCRESUlts`` command tree.
@@ -32276,6 +32581,7 @@ class Measurement(SCPICmdRead):
             - ``.measrange``: The ``MEASUrement:MEAS<x>:MEASRange`` command tree.
             - ``.mech``: The ``MEASUrement:MEAS<x>:MECH`` command tree.
             - ``.mincycle``: The ``MEASUrement:MEAS<x>:MINCycle`` command.
+            - ``.nvalue``: The ``MEASUrement:MEAS<x>:NVALUe`` command.
             - ``.obwmethod``: The ``MEASUrement:MEAS<x>:OBWMethod`` command.
             - ``.oddeven``: The ``MEASUrement:MEAS<x>:ODDEVen`` command.
             - ``.ofilters``: The ``MEASUrement:MEAS<x>:OFILters`` command tree.

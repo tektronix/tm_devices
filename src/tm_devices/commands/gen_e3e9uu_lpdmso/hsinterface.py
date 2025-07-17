@@ -45,6 +45,9 @@ class HsinterfaceTimeout(SCPICmdWrite, SCPICmdRead):
         - HSInterface:TIMeout <NR1>
         - HSInterface:TIMeout?
         ```
+
+    Info:
+        - ``<NR1>`` is the amount of time in seconds. The default value is 20 seconds.
     """
 
 
@@ -65,6 +68,10 @@ class HsinterfaceState(SCPICmdWrite, SCPICmdRead):
         - HSInterface:STATe {0|1}
         - HSInterface:STATe?
         ```
+
+    Info:
+        - ``0`` disables high speed interface. This is the default value.
+        - ``1`` enables high speed interface.
     """
 
 
@@ -85,6 +92,10 @@ class HsinterfacePort(SCPICmdWrite, SCPICmdRead):
         - HSInterface:PORT <NR1>
         - HSInterface:PORT?
         ```
+
+    Info:
+        - ``<NR1>`` is the port number that the high speed interface listens. The default value is
+          5000.
     """
 
 
@@ -128,6 +139,10 @@ class Hsinterface(SCPICmdRead):
             - HSInterface:PORT <NR1>
             - HSInterface:PORT?
             ```
+
+        Info:
+            - ``<NR1>`` is the port number that the high speed interface listens. The default value
+              is 5000.
         """
         return self._port
 
@@ -149,6 +164,10 @@ class Hsinterface(SCPICmdRead):
             - HSInterface:STATe {0|1}
             - HSInterface:STATe?
             ```
+
+        Info:
+            - ``0`` disables high speed interface. This is the default value.
+            - ``1`` enables high speed interface.
         """
         return self._state
 
@@ -173,5 +192,8 @@ class Hsinterface(SCPICmdRead):
             - HSInterface:TIMeout <NR1>
             - HSInterface:TIMeout?
             ```
+
+        Info:
+            - ``<NR1>`` is the amount of time in seconds. The default value is 20 seconds.
         """
         return self._timeout

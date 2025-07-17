@@ -1,4 +1,3 @@
-# pylint: disable=line-too-long
 """The save commands module.
 
 These commands are used in the following models:
@@ -35,14 +34,14 @@ Commands and Queries:
     - SAVe:SETUp <QString>
     - SAVe:SETUp:INCLUDEREFs {ON|OFF|1|0}
     - SAVe:SETUp:INCLUDEREFs?
-    - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|_SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME|_SV_BASEBAND_IQ]|MATH<x>|REF<x>|ALL| },<QString>
+    - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|
     - SAVe:WAVEform:GATing {NONe|CURSors|SCREEN|RESAMPLE|SELected}
     - SAVe:WAVEform:GATing:RESAMPLErate <NR1>
     - SAVe:WAVEform:GATing:RESAMPLErate?
     - SAVe:WAVEform:GATing?
-    - SAVe:WAVEform:SOURCELIst?
+    - SAVe:WAVEform?
     ```
-"""  # noqa: E501
+"""
 
 from typing import Optional, TYPE_CHECKING
 
@@ -50,25 +49,6 @@ from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.pi_control import PIControl
-
-
-class SaveWaveformSourcelist(SCPICmdRead):
-    """The ``SAVe:WAVEform:SOURCELIst`` command.
-
-    Description:
-        - This query returns a list of the available waveforms that can be specified as the source
-          for the ``SAVe:WAVEform``
-
-    Usage:
-        - Using the ``.query()`` method will send the ``SAVe:WAVEform:SOURCELIst?`` query.
-        - Using the ``.verify(value)`` method will send the ``SAVe:WAVEform:SOURCELIst?`` query and
-          raise an AssertionError if the returned value does not match ``value``.
-
-    SCPI Syntax:
-        ```
-        - SAVe:WAVEform:SOURCELIst?
-        ```
-    """
 
 
 class SaveWaveformGatingResamplerate(SCPICmdWrite, SCPICmdRead):
@@ -170,11 +150,15 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
         - This command saves the specified waveform(s) to the specified destination file.
 
     Usage:
+        - Using the ``.query()`` method will send the ``SAVe:WAVEform?`` query.
+        - Using the ``.verify(value)`` method will send the ``SAVe:WAVEform?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``SAVe:WAVEform value`` command.
 
     SCPI Syntax:
         ```
-        - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|_SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME|_SV_BASEBAND_IQ]|MATH<x>|REF<x>|ALL| },<QString>
+        - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|
+        - SAVe:WAVEform?
         ```
 
     Info:
@@ -191,21 +175,16 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
         - ``_FREQ_VS_TIME`` saves the Freuency vs.
         - ``_PHASE_VS_TIME`` saves the Phase vs.
         - ``_SV_BASEBAND_IQ`` saves the baseband I & Q data of the specified channel.
-        - ``ALL`` saves all displayed analog, math, and reference waveforms to individual files.
         - ``<QString>`` is a quoted string that defines the path and file name to use to save the
           specified file, in the format '[<path>]<filename.
-        - ``<path>`` uses the form '<drive>/<dir>.
-        - ``<filename>`` sets the file name to use to create the file.
 
     Properties:
         - ``.gating``: The ``SAVe:WAVEform:GATing`` command.
-        - ``.sourcelist``: The ``SAVe:WAVEform:SOURCELIst`` command.
-    """  # noqa: E501
+    """
 
     def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
         super().__init__(device, cmd_syntax)
         self._gating = SaveWaveformGating(device, f"{self._cmd_syntax}:GATing")
-        self._sourcelist = SaveWaveformSourcelist(device, f"{self._cmd_syntax}:SOURCELIst")
 
     @property
     def gating(self) -> SaveWaveformGating:
@@ -243,26 +222,6 @@ class SaveWaveform(SCPICmdWrite, SCPICmdRead):
             - ``.resamplerate``: The ``SAVe:WAVEform:GATing:RESAMPLErate`` command.
         """
         return self._gating
-
-    @property
-    def sourcelist(self) -> SaveWaveformSourcelist:
-        """Return the ``SAVe:WAVEform:SOURCELIst`` command.
-
-        Description:
-            - This query returns a list of the available waveforms that can be specified as the
-              source for the ``SAVe:WAVEform``
-
-        Usage:
-            - Using the ``.query()`` method will send the ``SAVe:WAVEform:SOURCELIst?`` query.
-            - Using the ``.verify(value)`` method will send the ``SAVe:WAVEform:SOURCELIst?`` query
-              and raise an AssertionError if the returned value does not match ``value``.
-
-        SCPI Syntax:
-            ```
-            - SAVe:WAVEform:SOURCELIst?
-            ```
-        """
-        return self._sourcelist
 
 
 class SaveSetupIncluderefs(SCPICmdWrite, SCPICmdRead):
@@ -1321,11 +1280,15 @@ class Save(SCPICmdRead):
             - This command saves the specified waveform(s) to the specified destination file.
 
         Usage:
+            - Using the ``.query()`` method will send the ``SAVe:WAVEform?`` query.
+            - Using the ``.verify(value)`` method will send the ``SAVe:WAVEform?`` query and raise
+              an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the ``SAVe:WAVEform value`` command.
 
         SCPI Syntax:
             ```
-            - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|_SV_MINHold|_MAG_VS_TIME|_FREQ_VS_TIME| _PHASE_VS_TIME|_SV_BASEBAND_IQ]|MATH<x>|REF<x>|ALL| },<QString>
+            - SAVe:WAVEform {CH<x>[_DALL|_SV_NORMal|_SV_AVErage|_SV_MAXHold|
+            - SAVe:WAVEform?
             ```
 
         Info:
@@ -1345,14 +1308,10 @@ class Save(SCPICmdRead):
             - ``_FREQ_VS_TIME`` saves the Freuency vs.
             - ``_PHASE_VS_TIME`` saves the Phase vs.
             - ``_SV_BASEBAND_IQ`` saves the baseband I & Q data of the specified channel.
-            - ``ALL`` saves all displayed analog, math, and reference waveforms to individual files.
             - ``<QString>`` is a quoted string that defines the path and file name to use to save
               the specified file, in the format '[<path>]<filename.
-            - ``<path>`` uses the form '<drive>/<dir>.
-            - ``<filename>`` sets the file name to use to create the file.
 
         Sub-properties:
             - ``.gating``: The ``SAVe:WAVEform:GATing`` command.
-            - ``.sourcelist``: The ``SAVe:WAVEform:SOURCELIst`` command.
-        """  # noqa: E501
+        """
         return self._waveform

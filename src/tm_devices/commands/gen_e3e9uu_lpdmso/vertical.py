@@ -48,6 +48,9 @@ class VerticalDeskewToSource(SCPICmdWrite, SCPICmdRead):
         - VERTical:DESKew:TO:SOUrce CH<x>
         - VERTical:DESKew:TO:SOUrce?
         ```
+
+    Info:
+        - ``CH<x>`` specifies an analog channel as the source.
     """
 
 
@@ -139,6 +142,9 @@ class VerticalDeskewTo(SCPICmdRead):
             - VERTical:DESKew:TO:SOUrce CH<x>
             - VERTical:DESKew:TO:SOUrce?
             ```
+
+        Info:
+            - ``CH<x>`` specifies an analog channel as the source.
         """
         return self._source
 

@@ -34,11 +34,11 @@ from .gen_3n9auv_awg.output import Output
 from .gen_3n9auv_awg.slist import Slist
 from .gen_3n9auv_awg.status import Status
 from .gen_3n9auv_awg.wplugin import Wplugin
-from .gen_fj69if_msotekscopepcdpomdoafgawgdsa.status_and_error import Rst
+from .gen_fj69if_msotekscopepcdpomdoafgawgdsa.status_and_error import Opc, Rst
 from .gen_fjrc1d_msodpomdoafgawgdsa.calibration import Cal
 from .gen_fkrusx_msotekscopepcdpomdoawgdsa.status_and_error import Ese, Sre
 from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
-from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Opc, Stb, Wai
+from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Stb, Wai
 from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
 from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
 from .helpers import DefaultDictPassKeyToFactory

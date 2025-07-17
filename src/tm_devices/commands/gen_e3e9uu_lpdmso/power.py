@@ -1295,6 +1295,12 @@ class PowerPowerItemTurnontimeInputlevel(SCPICmdWrite, SCPICmdRead):
         - POWer:POWer<x>:TURNONtime:INPUTLEVel <NR3>
         - POWer:POWer<x>:TURNONtime:INPUTLEVel?
         ```
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
+        - ``<NR3>`` is a floating point number that represents the voltage level, in volts, from
+          -500 V to 500 V.
     """
 
 
@@ -1477,6 +1483,12 @@ class PowerPowerItemTurnontime(SCPICmdRead):
             - POWer:POWer<x>:TURNONtime:INPUTLEVel <NR3>
             - POWer:POWer<x>:TURNONtime:INPUTLEVel?
             ```
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
+            - ``<NR3>`` is a floating point number that represents the voltage level, in volts, from
+              -500 V to 500 V.
         """
         return self._inputlevel
 
@@ -2441,6 +2453,11 @@ class PowerPowerItemTurnofftimeOutput2voltage(SCPICmdWrite, SCPICmdRead):
         - POWer:POWer<x>:TURNOFFtime:OUTPUT2VOLTage <NR2>
         - POWer:POWer<x>:TURNOFFtime:OUTPUT2VOLTage?
         ```
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          on a power measurement badge in the UI.
+        - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
     """
 
 
@@ -3119,6 +3136,11 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
             - POWer:POWer<x>:TURNOFFtime:OUTPUT2VOLTage <NR2>
             - POWer:POWer<x>:TURNOFFtime:OUTPUT2VOLTage?
             ```
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown on a power measurement badge in the UI.
+            - ``<NR2>`` sets the output voltage value, in the range of -6,000 volts to +6,000 volts.
         """
         return self._output2voltage
 
@@ -4780,6 +4802,8 @@ class PowerPowerItemSoaPointItem(ValidatedDynamicNumberCmd, SCPICmdWrite, SCPICm
         ```
 
     Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
         - ``POINT<x> = 1X | 2X | 3X | 4X | 5X | 6X | 7X | 8X | 9X |
           10X | 11X | 12X | 13X |14X | 15X | 16X | 17X | 18X | 19X | 20X | 21X | 22X | 23X | 24X |
           25X | 26X | 27X| 28X | 29X | 30X | 31X | 32X | 1Y | 2Y | 3Y | 4Y | 5Y | 6Y | 7Y | 8Y | 9Y
@@ -4903,6 +4927,8 @@ class PowerPowerItemSoa(SCPICmdRead):
             ```
 
         Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
             - ``POINT<x> = 1X | 2X | 3X | 4X | 5X | 6X | 7X | 8X | 9X
               | 10X | 11X | 12X | 13X |14X | 15X | 16X | 17X | 18X | 19X | 20X | 21X | 22X | 23X |
               24X | 25X | 26X | 27X| 28X | 29X | 30X | 31X | 32X | 1Y | 2Y | 3Y | 4Y | 5Y | 6Y | 7Y
@@ -5144,6 +5170,10 @@ class PowerPowerItemResultsCurrentacqThdf(SCPICmdReadWithArguments):
         ```
         - POWer:POWer<x>:RESUlts:CURRentacq:THDF? harmonics
         ```
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
     """
 
 
@@ -5277,6 +5307,43 @@ class PowerPowerItemResultsCurrentacqPopulation(SCPICmdReadWithArguments):
         ```
         - POWer:POWer<x>:RESUlts:CURRentacq:POPUlation? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
+        - ``<QString> =`` the measurement result that you want to return from the specified power
+          measurement number. Available results depend on the power measurement being taken in the
+          specified measurement number. The valid.
+        - ``InputPwr`` ', '.
+        - ``INDUCT`` '.
+        - ``IVSINTV`` '.
+        - ``MAGLOSS`` '.
+        - ``Bpeak`` ', '.
+        - ``RDS`` '.
+        - ``TRUEPWR`` ', '.
+        - ``TONENRG`` ', '.
+        - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+        - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+        - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+        - ``LRIPRMS`` ' and '.
+        - ``SWRIPRMS`` ' and '.
+        - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+        - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+        - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+        - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+        - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+        - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+        - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+        - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+        - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+        - ``LOW`` ' is the parameter for the Cycle Base measurement.
+        - ``Max`` ' is the parameter for the Cycle Max measurement.
+        - ``MIN`` ' is the parameter for the Cycle Min measurement.
+        - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+        - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+        - ``OUTPUT1`` ' - '.
+        - ``GAINCROSSOVERFREQ`` ', '.
+        - ``MAXPSRR`` ', '.
     """  # noqa: E501
 
 
@@ -5298,6 +5365,10 @@ class PowerPowerItemResultsCurrentacqPohcs(SCPICmdReadWithArguments):
         ```
         - POWer:POWer<x>:RESUlts:CURRentacq:POHCS? harmonics
         ```
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
     """
 
 
@@ -5391,6 +5462,43 @@ class PowerPowerItemResultsCurrentacqMinimum(SCPICmdReadWithArguments):
         ```
         - POWer:POWer<x>:RESUlts:CURRentacq:MINimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
+        - ``<QString> =`` the measurement result that you want to return from the specified power
+          measurement number. Available results depend on the power measurement being taken in the
+          specified measurement number. The valid.
+        - ``InputPwr`` ', '.
+        - ``INDUCT`` '.
+        - ``IVSINTV`` '.
+        - ``MAGLOSS`` '.
+        - ``Bpeak`` ', '.
+        - ``RDS`` '.
+        - ``TRUEPWR`` ', '.
+        - ``TONENRG`` ', '.
+        - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+        - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+        - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+        - ``LRIPRMS`` ' and '.
+        - ``SWRIPRMS`` ' and '.
+        - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+        - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+        - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+        - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+        - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+        - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+        - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+        - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+        - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+        - ``LOW`` ' is the parameter for the Cycle Base measurement.
+        - ``Max`` ' is the parameter for the Cycle Max measurement.
+        - ``MIN`` ' is the parameter for the Cycle Min measurement.
+        - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+        - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+        - ``OUTPUT1`` ' - '.
+        - ``GAINCROSSOVERFREQ`` ', '.
+        - ``MAXPSRR`` ', '.
     """  # noqa: E501
 
 
@@ -5413,6 +5521,43 @@ class PowerPowerItemResultsCurrentacqMean(SCPICmdReadWithArguments):
         ```
         - POWer:POWer<x>:RESUlts:CURRentacq:MEAN? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
+        - ``<QString> =`` the measurement result that you want to return from the specified power
+          measurement number. Available results depend on the power measurement being taken in the
+          specified measurement number. The valid.
+        - ``InputPwr`` ', '.
+        - ``INDUCT`` '.
+        - ``IVSINTV`` '.
+        - ``MAGLOSS`` '.
+        - ``Bpeak`` ', '.
+        - ``RDS`` '.
+        - ``TRUEPWR`` ', '.
+        - ``TONENRG`` ', '.
+        - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+        - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+        - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+        - ``LRIPRMS`` ' and '.
+        - ``SWRIPRMS`` ' and '.
+        - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+        - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+        - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+        - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+        - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+        - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+        - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+        - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+        - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+        - ``LOW`` ' is the parameter for the Cycle Base measurement.
+        - ``Max`` ' is the parameter for the Cycle Max measurement.
+        - ``MIN`` ' is the parameter for the Cycle Min measurement.
+        - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+        - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+        - ``OUTPUT1`` ' - '.
+        - ``GAINCROSSOVERFREQ`` ', '.
+        - ``MAXPSRR`` ', '.
     """  # noqa: E501
 
 
@@ -5435,6 +5580,43 @@ class PowerPowerItemResultsCurrentacqMaximum(SCPICmdReadWithArguments):
         ```
         - POWer:POWer<x>:RESUlts:CURRentacq:MAXimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
+        - ``<QString> =`` the measurement result that you want to return from the specified power
+          measurement number. Available results depend on the power measurement being taken in the
+          specified measurement number. The valid.
+        - ``InputPwr`` ', '.
+        - ``INDUCT`` '.
+        - ``IVSINTV`` '.
+        - ``MAGLOSS`` '.
+        - ``Bpeak`` ', '.
+        - ``RDS`` '.
+        - ``TRUEPWR`` ', '.
+        - ``TONENRG`` ', '.
+        - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+        - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+        - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+        - ``LRIPRMS`` ' and '.
+        - ``SWRIPRMS`` ' and '.
+        - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+        - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+        - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+        - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+        - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+        - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+        - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+        - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+        - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+        - ``LOW`` ' is the parameter for the Cycle Base measurement.
+        - ``Max`` ' is the parameter for the Cycle Max measurement.
+        - ``MIN`` ' is the parameter for the Cycle Min measurement.
+        - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+        - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+        - ``OUTPUT1`` ' - '.
+        - ``GAINCROSSOVERFREQ`` ', '.
+        - ``MAXPSRR`` ', '.
     """  # noqa: E501
 
 
@@ -5724,6 +5906,43 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
             ```
             - POWer:POWer<x>:RESUlts:CURRentacq:MAXimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+            - ``<QString> =`` the measurement result that you want to return from the specified
+              power measurement number. Available results depend on the power measurement being
+              taken in the specified measurement number. The valid.
+            - ``InputPwr`` ', '.
+            - ``INDUCT`` '.
+            - ``IVSINTV`` '.
+            - ``MAGLOSS`` '.
+            - ``Bpeak`` ', '.
+            - ``RDS`` '.
+            - ``TRUEPWR`` ', '.
+            - ``TONENRG`` ', '.
+            - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+            - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+            - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+            - ``LRIPRMS`` ' and '.
+            - ``SWRIPRMS`` ' and '.
+            - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+            - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+            - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+            - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+            - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+            - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+            - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+            - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+            - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+            - ``LOW`` ' is the parameter for the Cycle Base measurement.
+            - ``Max`` ' is the parameter for the Cycle Max measurement.
+            - ``MIN`` ' is the parameter for the Cycle Min measurement.
+            - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+            - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+            - ``OUTPUT1`` ' - '.
+            - ``GAINCROSSOVERFREQ`` ', '.
+            - ``MAXPSRR`` ', '.
         """  # noqa: E501
         return self._maximum
 
@@ -5747,6 +5966,43 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
             ```
             - POWer:POWer<x>:RESUlts:CURRentacq:MEAN? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+            - ``<QString> =`` the measurement result that you want to return from the specified
+              power measurement number. Available results depend on the power measurement being
+              taken in the specified measurement number. The valid.
+            - ``InputPwr`` ', '.
+            - ``INDUCT`` '.
+            - ``IVSINTV`` '.
+            - ``MAGLOSS`` '.
+            - ``Bpeak`` ', '.
+            - ``RDS`` '.
+            - ``TRUEPWR`` ', '.
+            - ``TONENRG`` ', '.
+            - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+            - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+            - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+            - ``LRIPRMS`` ' and '.
+            - ``SWRIPRMS`` ' and '.
+            - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+            - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+            - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+            - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+            - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+            - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+            - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+            - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+            - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+            - ``LOW`` ' is the parameter for the Cycle Base measurement.
+            - ``Max`` ' is the parameter for the Cycle Max measurement.
+            - ``MIN`` ' is the parameter for the Cycle Min measurement.
+            - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+            - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+            - ``OUTPUT1`` ' - '.
+            - ``GAINCROSSOVERFREQ`` ', '.
+            - ``MAXPSRR`` ', '.
         """  # noqa: E501
         return self._mean
 
@@ -5770,6 +6026,43 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
             ```
             - POWer:POWer<x>:RESUlts:CURRentacq:MINimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+            - ``<QString> =`` the measurement result that you want to return from the specified
+              power measurement number. Available results depend on the power measurement being
+              taken in the specified measurement number. The valid.
+            - ``InputPwr`` ', '.
+            - ``INDUCT`` '.
+            - ``IVSINTV`` '.
+            - ``MAGLOSS`` '.
+            - ``Bpeak`` ', '.
+            - ``RDS`` '.
+            - ``TRUEPWR`` ', '.
+            - ``TONENRG`` ', '.
+            - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+            - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+            - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+            - ``LRIPRMS`` ' and '.
+            - ``SWRIPRMS`` ' and '.
+            - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+            - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+            - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+            - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+            - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+            - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+            - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+            - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+            - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+            - ``LOW`` ' is the parameter for the Cycle Base measurement.
+            - ``Max`` ' is the parameter for the Cycle Max measurement.
+            - ``MIN`` ' is the parameter for the Cycle Min measurement.
+            - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+            - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+            - ``OUTPUT1`` ' - '.
+            - ``GAINCROSSOVERFREQ`` ', '.
+            - ``MAXPSRR`` ', '.
         """  # noqa: E501
         return self._minimum
 
@@ -5866,6 +6159,10 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
             ```
             - POWer:POWer<x>:RESUlts:CURRentacq:POHCS? harmonics
             ```
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
         """
         return self._pohcs
 
@@ -5890,6 +6187,43 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
             ```
             - POWer:POWer<x>:RESUlts:CURRentacq:POPUlation? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+            - ``<QString> =`` the measurement result that you want to return from the specified
+              power measurement number. Available results depend on the power measurement being
+              taken in the specified measurement number. The valid.
+            - ``InputPwr`` ', '.
+            - ``INDUCT`` '.
+            - ``IVSINTV`` '.
+            - ``MAGLOSS`` '.
+            - ``Bpeak`` ', '.
+            - ``RDS`` '.
+            - ``TRUEPWR`` ', '.
+            - ``TONENRG`` ', '.
+            - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+            - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+            - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+            - ``LRIPRMS`` ' and '.
+            - ``SWRIPRMS`` ' and '.
+            - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+            - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+            - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+            - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+            - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+            - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+            - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+            - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+            - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+            - ``LOW`` ' is the parameter for the Cycle Base measurement.
+            - ``Max`` ' is the parameter for the Cycle Max measurement.
+            - ``MIN`` ' is the parameter for the Cycle Min measurement.
+            - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+            - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+            - ``OUTPUT1`` ' - '.
+            - ``GAINCROSSOVERFREQ`` ', '.
+            - ``MAXPSRR`` ', '.
         """  # noqa: E501
         return self._population
 
@@ -6025,6 +6359,10 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
             ```
             - POWer:POWer<x>:RESUlts:CURRentacq:THDF? harmonics
             ```
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
         """
         return self._thdf
 
@@ -6126,6 +6464,43 @@ class PowerPowerItemResultsAllacqsStddev(SCPICmdReadWithArguments):
         ```
         - POWer:POWer<x>:RESUlts:ALLAcqs:STDDev? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
+        - ``<QString> =`` the measurement result that you want to return from the specified power
+          measurement number. Available results depend on the power measurement being taken in the
+          specified measurement number. The valid.
+        - ``InputPwr`` ', '.
+        - ``INDUCT`` '.
+        - ``IVSINTV`` '.
+        - ``MAGLOSS`` '.
+        - ``Bpeak`` ', '.
+        - ``RDS`` '.
+        - ``TRUEPWR`` ', '.
+        - ``TONENRG`` ', '.
+        - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+        - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+        - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+        - ``LRIPRMS`` ' and '.
+        - ``SWRIPRMS`` ' and '.
+        - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+        - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+        - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+        - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+        - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+        - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+        - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+        - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+        - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+        - ``LOW`` ' is the parameter for the Cycle Base measurement.
+        - ``Max`` ' is the parameter for the Cycle Max measurement.
+        - ``MIN`` ' is the parameter for the Cycle Min measurement.
+        - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+        - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+        - ``OUTPUT1`` ' - '.
+        - ``GAINCROSSOVERFREQ`` ', '.
+        - ``MAXPSRR`` ', '.
     """  # noqa: E501
 
 
@@ -6148,6 +6523,43 @@ class PowerPowerItemResultsAllacqsPopulation(SCPICmdReadWithArguments):
         ```
         - POWer:POWer<x>:RESUlts:ALLAcqs:POPUlation? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
+        - ``<QString> =`` the measurement result that you want to return from the specified power
+          measurement number. Available results depend on the power measurement being taken in the
+          specified measurement number. The valid <QString> arguments are.
+        - ``InputPwr`` ', '.
+        - ``INDUCT`` '.
+        - ``IVSINTV`` '.
+        - ``MAGLOSS`` '.
+        - ``Bpeak`` ', '.
+        - ``RDS`` '.
+        - ``TRUEPWR`` ', '.
+        - ``TONENRG`` ', '.
+        - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+        - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+        - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+        - ``LRIPRMS`` ' and '.
+        - ``SWRIPRMS`` ' and '.
+        - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+        - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+        - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+        - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+        - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+        - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+        - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+        - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+        - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+        - ``LOW`` ' is the parameter for the Cycle Base measurement.
+        - ``Max`` ' is the parameter for the Cycle Max measurement.
+        - ``MIN`` ' is the parameter for the Cycle Min measurement.
+        - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+        - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+        - ``OUTPUT1`` ' - '.
+        - ``GAINCROSSOVERFREQ`` ', '.
+        - ``MAXPSRR`` ', '.
     """  # noqa: E501
 
 
@@ -6170,6 +6582,43 @@ class PowerPowerItemResultsAllacqsPk2pk(SCPICmdReadWithArguments):
         ```
         - POWer:POWer<x>:RESUlts:ALLAcqs:PK2PK? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
+        - ``<QString> =`` the measurement result that you want to return from the specified power
+          measurement number. Available results depend on the power measurement being taken in the
+          specified measurement number. The valid <QString> arguments are.
+        - ``InputPwr`` ', '.
+        - ``INDUCT`` '.
+        - ``IVSINTV`` '.
+        - ``MAGLOSS`` '.
+        - ``Bpeak`` ', '.
+        - ``RDS`` '.
+        - ``TRUEPWR`` ', '.
+        - ``TONENRG`` ', '.
+        - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+        - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+        - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+        - ``LRIPRMS`` ' and '.
+        - ``SWRIPRMS`` ' and '.
+        - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+        - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+        - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+        - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+        - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+        - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+        - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+        - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+        - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+        - ``LOW`` ' is the parameter for the Cycle Base measurement.
+        - ``Max`` ' is the parameter for the Cycle Max measurement.
+        - ``MIN`` ' is the parameter for the Cycle Min measurement.
+        - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+        - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+        - ``OUTPUT1`` ' - '.
+        - ``GAINCROSSOVERFREQ`` ', '.
+        - ``MAXPSRR`` ', '.
     """  # noqa: E501
 
 
@@ -6192,6 +6641,43 @@ class PowerPowerItemResultsAllacqsMinimum(SCPICmdReadWithArguments):
         ```
         - POWer:POWer<x>:RESUlts:ALLAcqs:MINimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
+        - ``<QString> =`` the measurement result that you want to return from the specified power
+          measurement number. Available results depend on the power measurement being taken in the
+          specified measurement number. The valid <QString> arguments are.
+        - ``InputPwr`` ', '.
+        - ``INDUCT`` '.
+        - ``IVSINTV`` '.
+        - ``MAGLOSS`` '.
+        - ``Bpeak`` ', '.
+        - ``RDS`` '.
+        - ``TRUEPWR`` ', '.
+        - ``TONENRG`` ', '.
+        - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+        - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+        - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+        - ``LRIPRMS`` ' and '.
+        - ``SWRIPRMS`` ' and '.
+        - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+        - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+        - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+        - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+        - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+        - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+        - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+        - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+        - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+        - ``LOW`` ' is the parameter for the Cycle Base measurement.
+        - ``Max`` ' is the parameter for the Cycle Max measurement.
+        - ``MIN`` ' is the parameter for the Cycle Min measurement.
+        - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+        - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+        - ``OUTPUT1`` ' - '.
+        - ``GAINCROSSOVERFREQ`` ', '.
+        - ``MAXPSRR`` ', '.
     """  # noqa: E501
 
 
@@ -6214,6 +6700,43 @@ class PowerPowerItemResultsAllacqsMean(SCPICmdReadWithArguments):
         ```
         - POWer:POWer<x>:RESUlts:ALLAcqs:MEAN? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
+        - ``<QString> =`` the measurement result that you want to return from the specified power
+          measurement number. Available results depend on the power measurement being taken in the
+          specified measurement number. The valid <QString> arguments are.
+        - ``InputPwr`` ', '.
+        - ``INDUCT`` '.
+        - ``IVSINTV`` '.
+        - ``MAGLOSS`` '.
+        - ``Bpeak`` ', '.
+        - ``RDS`` '.
+        - ``TRUEPWR`` ', '.
+        - ``TONENRG`` ', '.
+        - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+        - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+        - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+        - ``LRIPRMS`` ' and '.
+        - ``SWRIPRMS`` ' and '.
+        - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+        - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+        - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+        - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+        - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+        - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+        - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+        - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+        - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+        - ``LOW`` ' is the parameter for the Cycle Base measurement.
+        - ``Max`` ' is the parameter for the Cycle Max measurement.
+        - ``MIN`` ' is the parameter for the Cycle Min measurement.
+        - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+        - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+        - ``OUTPUT1`` ' - '.
+        - ``GAINCROSSOVERFREQ`` ', '.
+        - ``MAXPSRR`` ', '.
     """  # noqa: E501
 
 
@@ -6236,6 +6759,43 @@ class PowerPowerItemResultsAllacqsMaximum(SCPICmdReadWithArguments):
         ```
         - POWer:POWer<x>:RESUlts:ALLAcqs:MAXimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
         ```
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
+        - ``<QString> =`` the measurement result that you want to return from the specified power
+          measurement number. Available results depend on the power measurement being taken in the
+          specified measurement number. The valid.
+        - ``InputPwr`` ', '.
+        - ``INDUCT`` '.
+        - ``IVSINTV`` '.
+        - ``MAGLOSS`` '.
+        - ``Bpeak`` ', '.
+        - ``RDS`` '.
+        - ``TRUEPWR`` ', '.
+        - ``TONENRG`` ', '.
+        - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+        - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+        - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+        - ``LRIPRMS`` ' and '.
+        - ``SWRIPRMS`` ' and '.
+        - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+        - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+        - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+        - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+        - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+        - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+        - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+        - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+        - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+        - ``LOW`` ' is the parameter for the Cycle Base measurement.
+        - ``Max`` ' is the parameter for the Cycle Max measurement.
+        - ``MIN`` ' is the parameter for the Cycle Min measurement.
+        - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+        - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+        - ``OUTPUT1`` ' - '.
+        - ``GAINCROSSOVERFREQ`` ', '.
+        - ``MAXPSRR`` ', '.
     """  # noqa: E501
 
 
@@ -6246,6 +6806,10 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:RESUlts:ALLAcqs?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:RESUlts:ALLAcqs?``
           query and raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
 
     Properties:
         - ``.maximum``: The ``POWer:POWer<x>:RESUlts:ALLAcqs:MAXimum`` command.
@@ -6288,6 +6852,43 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             ```
             - POWer:POWer<x>:RESUlts:ALLAcqs:MAXimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+            - ``<QString> =`` the measurement result that you want to return from the specified
+              power measurement number. Available results depend on the power measurement being
+              taken in the specified measurement number. The valid.
+            - ``InputPwr`` ', '.
+            - ``INDUCT`` '.
+            - ``IVSINTV`` '.
+            - ``MAGLOSS`` '.
+            - ``Bpeak`` ', '.
+            - ``RDS`` '.
+            - ``TRUEPWR`` ', '.
+            - ``TONENRG`` ', '.
+            - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+            - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+            - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+            - ``LRIPRMS`` ' and '.
+            - ``SWRIPRMS`` ' and '.
+            - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+            - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+            - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+            - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+            - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+            - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+            - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+            - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+            - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+            - ``LOW`` ' is the parameter for the Cycle Base measurement.
+            - ``Max`` ' is the parameter for the Cycle Max measurement.
+            - ``MIN`` ' is the parameter for the Cycle Min measurement.
+            - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+            - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+            - ``OUTPUT1`` ' - '.
+            - ``GAINCROSSOVERFREQ`` ', '.
+            - ``MAXPSRR`` ', '.
         """  # noqa: E501
         return self._maximum
 
@@ -6311,6 +6912,43 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             ```
             - POWer:POWer<x>:RESUlts:ALLAcqs:MEAN? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+            - ``<QString> =`` the measurement result that you want to return from the specified
+              power measurement number. Available results depend on the power measurement being
+              taken in the specified measurement number. The valid <QString> arguments are.
+            - ``InputPwr`` ', '.
+            - ``INDUCT`` '.
+            - ``IVSINTV`` '.
+            - ``MAGLOSS`` '.
+            - ``Bpeak`` ', '.
+            - ``RDS`` '.
+            - ``TRUEPWR`` ', '.
+            - ``TONENRG`` ', '.
+            - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+            - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+            - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+            - ``LRIPRMS`` ' and '.
+            - ``SWRIPRMS`` ' and '.
+            - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+            - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+            - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+            - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+            - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+            - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+            - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+            - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+            - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+            - ``LOW`` ' is the parameter for the Cycle Base measurement.
+            - ``Max`` ' is the parameter for the Cycle Max measurement.
+            - ``MIN`` ' is the parameter for the Cycle Min measurement.
+            - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+            - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+            - ``OUTPUT1`` ' - '.
+            - ``GAINCROSSOVERFREQ`` ', '.
+            - ``MAXPSRR`` ', '.
         """  # noqa: E501
         return self._mean
 
@@ -6334,6 +6972,43 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             ```
             - POWer:POWer<x>:RESUlts:ALLAcqs:MINimum? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+            - ``<QString> =`` the measurement result that you want to return from the specified
+              power measurement number. Available results depend on the power measurement being
+              taken in the specified measurement number. The valid <QString> arguments are.
+            - ``InputPwr`` ', '.
+            - ``INDUCT`` '.
+            - ``IVSINTV`` '.
+            - ``MAGLOSS`` '.
+            - ``Bpeak`` ', '.
+            - ``RDS`` '.
+            - ``TRUEPWR`` ', '.
+            - ``TONENRG`` ', '.
+            - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+            - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+            - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+            - ``LRIPRMS`` ' and '.
+            - ``SWRIPRMS`` ' and '.
+            - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+            - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+            - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+            - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+            - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+            - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+            - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+            - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+            - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+            - ``LOW`` ' is the parameter for the Cycle Base measurement.
+            - ``Max`` ' is the parameter for the Cycle Max measurement.
+            - ``MIN`` ' is the parameter for the Cycle Min measurement.
+            - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+            - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+            - ``OUTPUT1`` ' - '.
+            - ``GAINCROSSOVERFREQ`` ', '.
+            - ``MAXPSRR`` ', '.
         """  # noqa: E501
         return self._minimum
 
@@ -6357,6 +7032,43 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             ```
             - POWer:POWer<x>:RESUlts:ALLAcqs:PK2PK? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+            - ``<QString> =`` the measurement result that you want to return from the specified
+              power measurement number. Available results depend on the power measurement being
+              taken in the specified measurement number. The valid <QString> arguments are.
+            - ``InputPwr`` ', '.
+            - ``INDUCT`` '.
+            - ``IVSINTV`` '.
+            - ``MAGLOSS`` '.
+            - ``Bpeak`` ', '.
+            - ``RDS`` '.
+            - ``TRUEPWR`` ', '.
+            - ``TONENRG`` ', '.
+            - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+            - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+            - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+            - ``LRIPRMS`` ' and '.
+            - ``SWRIPRMS`` ' and '.
+            - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+            - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+            - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+            - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+            - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+            - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+            - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+            - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+            - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+            - ``LOW`` ' is the parameter for the Cycle Base measurement.
+            - ``Max`` ' is the parameter for the Cycle Max measurement.
+            - ``MIN`` ' is the parameter for the Cycle Min measurement.
+            - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+            - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+            - ``OUTPUT1`` ' - '.
+            - ``GAINCROSSOVERFREQ`` ', '.
+            - ``MAXPSRR`` ', '.
         """  # noqa: E501
         return self._pk2pk
 
@@ -6380,6 +7092,43 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             ```
             - POWer:POWer<x>:RESUlts:ALLAcqs:POPUlation? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+            - ``<QString> =`` the measurement result that you want to return from the specified
+              power measurement number. Available results depend on the power measurement being
+              taken in the specified measurement number. The valid <QString> arguments are.
+            - ``InputPwr`` ', '.
+            - ``INDUCT`` '.
+            - ``IVSINTV`` '.
+            - ``MAGLOSS`` '.
+            - ``Bpeak`` ', '.
+            - ``RDS`` '.
+            - ``TRUEPWR`` ', '.
+            - ``TONENRG`` ', '.
+            - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+            - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+            - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+            - ``LRIPRMS`` ' and '.
+            - ``SWRIPRMS`` ' and '.
+            - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+            - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+            - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+            - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+            - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+            - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+            - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+            - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+            - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+            - ``LOW`` ' is the parameter for the Cycle Base measurement.
+            - ``Max`` ' is the parameter for the Cycle Max measurement.
+            - ``MIN`` ' is the parameter for the Cycle Min measurement.
+            - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+            - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+            - ``OUTPUT1`` ' - '.
+            - ``GAINCROSSOVERFREQ`` ', '.
+            - ``MAXPSRR`` ', '.
         """  # noqa: E501
         return self._population
 
@@ -6403,6 +7152,43 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             ```
             - POWer:POWer<x>:RESUlts:ALLAcqs:STDDev? {InputPwr|Output1Pwr|Output2Pwr|Output3Pwr|Efficiency<x>|TotalEfficiency|INDUCT|IVSINTV|MAGLOSS|Bpeak|Br|Hc|Hmax|IRipple|DeltaB|DeltaH|Permeability|RDS|TRUEPWR|APPPWR|REPWR|PWRFACTOR|PHASE|PWRFREQ|ICFACTOR|VCFACTOR|IRMS|VRMS|TONENRG|TONLOSS|TOFFENRG|TOFFLOSS|CONDENRG|CONDLOSS|TTLLOSS|TTLENRG|DVBYDT|DIBYDT|SOAHITSCNT|LRIPRMS|LRIPPKPK|SWRIPRMS|SWRIPPKPK|PRIOD|FREQ|PDUTY|NDUTY|PPULSE|NPULSE|AMPL|PKPK|HIGH|LOW|MAX|MIN|INRUSH|CAPACITANCE|OUTPUT<x>|GAINCROSSOVERFREQ|PHASECROSSOVERFREQ|GM|PM|MAXPSRR|MAXPSRRFREQ|MINPSRR|MINPSRRFREQ}
             ```
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+            - ``<QString> =`` the measurement result that you want to return from the specified
+              power measurement number. Available results depend on the power measurement being
+              taken in the specified measurement number. The valid.
+            - ``InputPwr`` ', '.
+            - ``INDUCT`` '.
+            - ``IVSINTV`` '.
+            - ``MAGLOSS`` '.
+            - ``Bpeak`` ', '.
+            - ``RDS`` '.
+            - ``TRUEPWR`` ', '.
+            - ``TONENRG`` ', '.
+            - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
+            - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
+            - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
+            - ``LRIPRMS`` ' and '.
+            - ``SWRIPRMS`` ' and '.
+            - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
+            - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
+            - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
+            - ``NDUTY`` ' is the parameter for the Negative Duty Cycle measurement.
+            - ``PPULSE`` ' is the parameter for the Positive Pulse Width measurement.
+            - ``NPULSE`` ' is the parameter for the Negative Pulse Width measurement.
+            - ``AMPL`` ' is the parameter for the Cycle Amplitude measurement.
+            - ``PKPK`` ' is the parameter for the Cycle Peak-Peak measurement.
+            - ``HIGH`` ' is the parameter for the Cycle Top measurement.
+            - ``LOW`` ' is the parameter for the Cycle Base measurement.
+            - ``Max`` ' is the parameter for the Cycle Max measurement.
+            - ``MIN`` ' is the parameter for the Cycle Min measurement.
+            - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
+            - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
+            - ``OUTPUT1`` ' - '.
+            - ``GAINCROSSOVERFREQ`` ', '.
+            - ``MAXPSRR`` ', '.
         """  # noqa: E501
         return self._stddev
 
@@ -6414,6 +7200,10 @@ class PowerPowerItemResults(SCPICmdRead):
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:RESUlts?`` query.
         - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:RESUlts?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
 
     Properties:
         - ``.allacqs``: The ``POWer:POWer<x>:RESUlts:ALLAcqs`` command tree.
@@ -6433,6 +7223,10 @@ class PowerPowerItemResults(SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:RESUlts:ALLAcqs?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:RESUlts:ALLAcqs?``
               query and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
 
         Sub-properties:
             - ``.maximum``: The ``POWer:POWer<x>:RESUlts:ALLAcqs:MAXimum`` command.
@@ -7224,6 +8018,11 @@ class PowerPowerItemReflevelsAbsoluteFallmid(SCPICmdWrite, SCPICmdRead):
         - POWer:POWer<x>:REFLevels:ABSolute:FALLMid <NR1>
         - POWer:POWer<x>:REFLevels:ABSolute:FALLMid?
         ```
+
+    Info:
+        - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
+          in the UI for a power measurement badge.
+        - ``<NR1>`` ranges from -40000 to 40000.
     """
 
 
@@ -7416,6 +8215,11 @@ class PowerPowerItemReflevelsAbsolute(SCPICmdRead):
             - POWer:POWer<x>:REFLevels:ABSolute:FALLMid <NR1>
             - POWer:POWer<x>:REFLevels:ABSolute:FALLMid?
             ```
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
+            - ``<NR1>`` ranges from -40000 to 40000.
         """
         return self._fallmid
 
@@ -8231,6 +9035,9 @@ class PowerPowerItemPsrrConnectstatus(SCPICmdRead):
         ```
         - POWer:POWer<x>:PSRR:CONNECTSTATus?
         ```
+
+    Info:
+        - ``POWer<x>`` is the number of the PSRR power measurement.
     """
 
 
@@ -8558,6 +9365,9 @@ class PowerPowerItemPsrr(SCPICmdRead):
             ```
             - POWer:POWer<x>:PSRR:CONNECTSTATus?
             ```
+
+        Info:
+            - ``POWer<x>`` is the number of the PSRR power measurement.
         """
         return self._connectstatus
 
@@ -16751,6 +17561,9 @@ class PowerPowerItemClresponseConnectstatus(SCPICmdRead):
         ```
         - POWer:POWer<x>:CLRESPONSE:CONNECTSTATus?
         ```
+
+    Info:
+        - ``POWer<x>`` is the number of the power measurement.
     """
 
 
@@ -17092,6 +17905,9 @@ class PowerPowerItemClresponse(SCPICmdRead):
             ```
             - POWer:POWer<x>:CLRESPONSE:CONNECTSTATus?
             ```
+
+        Info:
+            - ``POWer<x>`` is the number of the power measurement.
         """
         return self._connectstatus
 
@@ -18327,6 +19143,10 @@ class PowerPowerItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:RESUlts?`` query.
             - Using the ``.verify(value)`` method will send the ``POWer:POWer<x>:RESUlts?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
+              shown in the UI for a power measurement badge.
 
         Sub-properties:
             - ``.allacqs``: The ``POWer:POWer<x>:RESUlts:ALLAcqs`` command tree.

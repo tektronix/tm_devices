@@ -158,6 +158,10 @@ class ChannelDallLabelName(SCPICmdWrite, SCPICmdRead):
         - CH<x>_DALL:LABel:NAMe <QString>
         - CH<x>_DALL:LABel:NAMe?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<QString>`` is the name of the group.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -182,6 +186,12 @@ class ChannelDallLabelFontUnderline(SCPICmdWrite, SCPICmdRead):
         - CH<x>_DALL:LABel:FONT:UNDERline {ON|OFF|<NR1>}
         - CH<x>_DALL:LABel:FONT:UNDERline?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``OFF`` argument turns off underline font.
+        - ``ON`` argument turns on underline font.
+        - ``<NR1> = 0`` turns off underline font; any other value turns on underline font.
     """
 
 
@@ -204,6 +214,10 @@ class ChannelDallLabelFontType(SCPICmdWrite, SCPICmdRead):
         - CH<x>_DALL:LABel:FONT:TYPE <QString>
         - CH<x>_DALL:LABel:FONT:TYPE?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<QString>`` is the font type.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -228,6 +242,10 @@ class ChannelDallLabelFontSize(SCPICmdWrite, SCPICmdRead):
         - CH<x>_DALL:LABel:FONT:SIZE <NR1>
         - CH<x>_DALL:LABel:FONT:SIZE?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR1>`` is the font size.
     """
 
 
@@ -250,6 +268,12 @@ class ChannelDallLabelFontItalic(SCPICmdWrite, SCPICmdRead):
         - CH<x>_DALL:LABel:FONT:ITALic {ON|OFF|<NR1>}
         - CH<x>_DALL:LABel:FONT:ITALic?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``OFF`` argument turns off italic font.
+        - ``ON`` argument turns on italic font.
+        - ``<NR1> = 0`` turns off italic font; any other value turns on italic font.
     """
 
 
@@ -272,6 +296,12 @@ class ChannelDallLabelFontBold(SCPICmdWrite, SCPICmdRead):
         - CH<x>_DALL:LABel:FONT:BOLD {ON|OFF|<NR1>}
         - CH<x>_DALL:LABel:FONT:BOLD?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``OFF`` argument turns off bold font.
+        - ``ON`` argument turns on bold font.
+        - ``<NR1> = 0`` turns off bold font; any other value turns on bold font.
     """
 
 
@@ -282,6 +312,9 @@ class ChannelDallLabelFont(SCPICmdRead):
         - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:FONT?`` query.
         - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:FONT?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``CH<x>`` is the channel number.
 
     Properties:
         - ``.bold``: The ``CH<x>_DALL:LABel:FONT:BOLD`` command.
@@ -319,6 +352,12 @@ class ChannelDallLabelFont(SCPICmdRead):
             - CH<x>_DALL:LABel:FONT:BOLD {ON|OFF|<NR1>}
             - CH<x>_DALL:LABel:FONT:BOLD?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``OFF`` argument turns off bold font.
+            - ``ON`` argument turns on bold font.
+            - ``<NR1> = 0`` turns off bold font; any other value turns on bold font.
         """
         return self._bold
 
@@ -342,6 +381,12 @@ class ChannelDallLabelFont(SCPICmdRead):
             - CH<x>_DALL:LABel:FONT:ITALic {ON|OFF|<NR1>}
             - CH<x>_DALL:LABel:FONT:ITALic?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``OFF`` argument turns off italic font.
+            - ``ON`` argument turns on italic font.
+            - ``<NR1> = 0`` turns off italic font; any other value turns on italic font.
         """
         return self._italic
 
@@ -365,6 +410,10 @@ class ChannelDallLabelFont(SCPICmdRead):
             - CH<x>_DALL:LABel:FONT:SIZE <NR1>
             - CH<x>_DALL:LABel:FONT:SIZE?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR1>`` is the font size.
         """
         return self._size
 
@@ -388,6 +437,10 @@ class ChannelDallLabelFont(SCPICmdRead):
             - CH<x>_DALL:LABel:FONT:TYPE <QString>
             - CH<x>_DALL:LABel:FONT:TYPE?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<QString>`` is the font type.
         """
         return self._type
 
@@ -412,6 +465,12 @@ class ChannelDallLabelFont(SCPICmdRead):
             - CH<x>_DALL:LABel:FONT:UNDERline {ON|OFF|<NR1>}
             - CH<x>_DALL:LABel:FONT:UNDERline?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``OFF`` argument turns off underline font.
+            - ``ON`` argument turns on underline font.
+            - ``<NR1> = 0`` turns off underline font; any other value turns on underline font.
         """
         return self._underline
 
@@ -434,6 +493,11 @@ class ChannelDallLabelColor(SCPICmdWrite, SCPICmdRead):
         - CH<x>_DALL:LABel:COLor <QString>
         - CH<x>_DALL:LABel:COLor?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<QString>`` is the color of the digital group label. To return the color to the default
+          color, send an empty string as in this example: .
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -446,6 +510,9 @@ class ChannelDallLabel(SCPICmdRead):
         - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel?`` query.
         - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``CH<x>`` is the channel number.
 
     Properties:
         - ``.color``: The ``CH<x>_DALL:LABel:COLor`` command.
@@ -479,6 +546,11 @@ class ChannelDallLabel(SCPICmdRead):
             - CH<x>_DALL:LABel:COLor <QString>
             - CH<x>_DALL:LABel:COLor?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<QString>`` is the color of the digital group label. To return the color to the
+              default color, send an empty string as in this example: .
         """
         return self._color
 
@@ -490,6 +562,9 @@ class ChannelDallLabel(SCPICmdRead):
             - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel:FONT?`` query.
             - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel:FONT?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``CH<x>`` is the channel number.
 
         Sub-properties:
             - ``.bold``: The ``CH<x>_DALL:LABel:FONT:BOLD`` command.
@@ -520,6 +595,10 @@ class ChannelDallLabel(SCPICmdRead):
             - CH<x>_DALL:LABel:NAMe <QString>
             - CH<x>_DALL:LABel:NAMe?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<QString>`` is the name of the group.
         """
         return self._name
 
@@ -531,6 +610,9 @@ class ChannelDall(SCPICmdRead):
         - Using the ``.query()`` method will send the ``CH<x>_DALL?`` query.
         - Using the ``.verify(value)`` method will send the ``CH<x>_DALL?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``CH<x>`` is the channel number.
 
     Properties:
         - ``.label``: The ``CH<x>_DALL:LABel`` command tree.
@@ -548,6 +630,9 @@ class ChannelDall(SCPICmdRead):
             - Using the ``.query()`` method will send the ``CH<x>_DALL:LABel?`` query.
             - Using the ``.verify(value)`` method will send the ``CH<x>_DALL:LABel?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``CH<x>`` is the channel number.
 
         Sub-properties:
             - ``.color``: The ``CH<x>_DALL:LABel:COLor`` command.
@@ -574,6 +659,10 @@ class ChannelDigitalBitLabelName(SCPICmdWrite, SCPICmdRead):
         - CH<x>_D<x>:LABel:NAMe <QString>
         - CH<x>_D<x>:LABel:NAMe?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<QString>`` is the label.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -598,6 +687,12 @@ class ChannelDigitalBitLabelFontUnderline(SCPICmdWrite, SCPICmdRead):
         - CH<x>_D<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
         - CH<x>_D<x>:LABel:FONT:UNDERline?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``OFF`` argument turns off underline font.
+        - ``ON`` argument turns on underline font.
+        - ``<NR1> = 0`` turns off underline font; any other value turns on underline font.
     """
 
 
@@ -620,6 +715,10 @@ class ChannelDigitalBitLabelFontType(SCPICmdWrite, SCPICmdRead):
         - CH<x>_D<x>:LABel:FONT:TYPE <QString>
         - CH<x>_D<x>:LABel:FONT:TYPE?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<QString>`` is the font type of the label.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -644,6 +743,10 @@ class ChannelDigitalBitLabelFontSize(SCPICmdWrite, SCPICmdRead):
         - CH<x>_D<x>:LABel:FONT:SIZE <NR1>
         - CH<x>_D<x>:LABel:FONT:SIZE?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR1>`` is the font size.
     """
 
 
@@ -666,6 +769,12 @@ class ChannelDigitalBitLabelFontItalic(SCPICmdWrite, SCPICmdRead):
         - CH<x>_D<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
         - CH<x>_D<x>:LABel:FONT:ITALic?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``OFF`` argument turns off italic font.
+        - ``ON`` argument turns on italic font.
+        - ``<NR1> = 0`` turns off italic font; any other value turns on italic font.
     """
 
 
@@ -688,6 +797,12 @@ class ChannelDigitalBitLabelFontBold(SCPICmdWrite, SCPICmdRead):
         - CH<x>_D<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
         - CH<x>_D<x>:LABel:FONT:BOLD?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``OFF`` argument turns off bold font.
+        - ``ON`` argument turns on bold font.
+        - ``<NR1> = 0`` turns off bold font; any other value turns on bold font.
     """
 
 
@@ -698,6 +813,9 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
         - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:FONT?`` query.
         - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:FONT?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``CH<x>`` is the channel number.
 
     Properties:
         - ``.bold``: The ``CH<x>_D<x>:LABel:FONT:BOLD`` command.
@@ -737,6 +855,12 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
             - CH<x>_D<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
             - CH<x>_D<x>:LABel:FONT:BOLD?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``OFF`` argument turns off bold font.
+            - ``ON`` argument turns on bold font.
+            - ``<NR1> = 0`` turns off bold font; any other value turns on bold font.
         """
         return self._bold
 
@@ -760,6 +884,12 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
             - CH<x>_D<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
             - CH<x>_D<x>:LABel:FONT:ITALic?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``OFF`` argument turns off italic font.
+            - ``ON`` argument turns on italic font.
+            - ``<NR1> = 0`` turns off italic font; any other value turns on italic font.
         """
         return self._italic
 
@@ -783,6 +913,10 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
             - CH<x>_D<x>:LABel:FONT:SIZE <NR1>
             - CH<x>_D<x>:LABel:FONT:SIZE?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR1>`` is the font size.
         """
         return self._size
 
@@ -806,6 +940,10 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
             - CH<x>_D<x>:LABel:FONT:TYPE <QString>
             - CH<x>_D<x>:LABel:FONT:TYPE?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<QString>`` is the font type of the label.
         """
         return self._type
 
@@ -830,6 +968,12 @@ class ChannelDigitalBitLabelFont(SCPICmdRead):
             - CH<x>_D<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
             - CH<x>_D<x>:LABel:FONT:UNDERline?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``OFF`` argument turns off underline font.
+            - ``ON`` argument turns on underline font.
+            - ``<NR1> = 0`` turns off underline font; any other value turns on underline font.
         """
         return self._underline
 
@@ -852,6 +996,11 @@ class ChannelDigitalBitLabelColor(SCPICmdWrite, SCPICmdRead):
         - CH<x>_D<x>:LABel:COLor <QString>
         - CH<x>_D<x>:LABel:COLor?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<QString>`` is the label color. To return the color to the default color, send an empty
+          string as in this example: ``:CH5_D1:LABEL:COLOR`` ''.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -864,6 +1013,9 @@ class ChannelDigitalBitLabel(SCPICmdRead):
         - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel?`` query.
         - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``CH<x>`` is the channel number.
 
     Properties:
         - ``.color``: The ``CH<x>_D<x>:LABel:COLor`` command.
@@ -897,6 +1049,11 @@ class ChannelDigitalBitLabel(SCPICmdRead):
             - CH<x>_D<x>:LABel:COLor <QString>
             - CH<x>_D<x>:LABel:COLor?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<QString>`` is the label color. To return the color to the default color, send an
+              empty string as in this example: ``:CH5_D1:LABEL:COLOR`` ''.
         """
         return self._color
 
@@ -908,6 +1065,9 @@ class ChannelDigitalBitLabel(SCPICmdRead):
             - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel:FONT?`` query.
             - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel:FONT?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``CH<x>`` is the channel number.
 
         Sub-properties:
             - ``.bold``: The ``CH<x>_D<x>:LABel:FONT:BOLD`` command.
@@ -937,6 +1097,10 @@ class ChannelDigitalBitLabel(SCPICmdRead):
             - CH<x>_D<x>:LABel:NAMe <QString>
             - CH<x>_D<x>:LABel:NAMe?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<QString>`` is the label.
         """
         return self._name
 
@@ -948,6 +1112,9 @@ class ChannelDigitalBit(ValidatedDigitalBit, SCPICmdRead):
         - Using the ``.query()`` method will send the ``CH<x>_D<x>?`` query.
         - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``CH<x>`` is the channel number.
 
     Properties:
         - ``.label``: The ``CH<x>_D<x>:LABel`` command tree.
@@ -965,6 +1132,9 @@ class ChannelDigitalBit(ValidatedDigitalBit, SCPICmdRead):
             - Using the ``.query()`` method will send the ``CH<x>_D<x>:LABel?`` query.
             - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>:LABel?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``CH<x>`` is the channel number.
 
         Sub-properties:
             - ``.color``: The ``CH<x>_D<x>:LABel:COLor`` command.
@@ -992,6 +1162,10 @@ class ChannelVtermBias(SCPICmdWrite, SCPICmdRead):
         - CH<x>:VTERm:BIAS <NR3>
         - CH<x>:VTERm:BIAS?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` is the termination voltage.
     """
 
 
@@ -1002,6 +1176,9 @@ class ChannelVterm(SCPICmdRead):
         - Using the ``.query()`` method will send the ``CH<x>:VTERm?`` query.
         - Using the ``.verify(value)`` method will send the ``CH<x>:VTERm?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``CH<x>`` is the channel number.
 
     Properties:
         - ``.bias``: The ``CH<x>:VTERm:BIAS`` command.
@@ -1030,6 +1207,10 @@ class ChannelVterm(SCPICmdRead):
             - CH<x>:VTERm:BIAS <NR3>
             - CH<x>:VTERm:BIAS?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` is the termination voltage.
         """
         return self._bias
 
@@ -1053,6 +1234,11 @@ class ChannelTermination(SCPICmdWrite, SCPICmdRead):
         - CH<x>:TERmination <NR3>
         - CH<x>:TERmination?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` specifies the channel input resistance, which can be specified as 50 Ω or
+          1,000,000 Ω.
     """
 
 
@@ -1072,6 +1258,9 @@ class ChannelSvStopfrequency(SCPICmdRead):
         ```
         - CH<x>:SV:STOPFrequency?
         ```
+
+    Info:
+        - ``CH<x>`` specifies the spectrum trace channel source.
     """
 
 
@@ -1093,6 +1282,12 @@ class ChannelSvState(SCPICmdWrite, SCPICmdRead):
         - CH<x>:SV:STATE {ON|OFF}
         - CH<x>:SV:STATE?
         ```
+
+    Info:
+        - ``CH<x>`` specifies the spectrum trace channel source.
+        - ``ON`` enables spectrum data acquisition for the specified spectrum trace channel source.
+        - ``OFF`` disables spectrum data acquisition for the specified spectrum trace channel
+          source.
     """
 
 
@@ -1112,6 +1307,9 @@ class ChannelSvStartfrequency(SCPICmdRead):
         ```
         - CH<x>:SV:STARTFrequency?
         ```
+
+    Info:
+        - ``CH<x>`` specifies the spectrum trace channel source.
     """
 
 
@@ -1131,6 +1329,9 @@ class ChannelSvSpanbelowdc(SCPICmdRead):
         ```
         - CH<x>:SV:SPANBELowdc?
         ```
+
+    Info:
+        - ``CH<x>`` specifies the spectrum trace channel source.
     """
 
 
@@ -1150,6 +1351,9 @@ class ChannelSvSpanabovebw(SCPICmdRead):
         ```
         - CH<x>:SV:SPANABovebw?
         ```
+
+    Info:
+        - ``CH<x>`` specifies the spectrum trace channel source.
     """
 
 
@@ -1171,6 +1375,11 @@ class ChannelSvPosition(SCPICmdWrite, SCPICmdRead):
         - CH<x>:SV:POSition <NR3>
         - CH<x>:SV:POSition?
         ```
+
+    Info:
+        - ``CH<x>`` specifies the spectrum trace channel source.
+        - ``<NR3>`` specifies the spectrum time location, as a percentage of the record length. The
+          range of values is 0.0% to 100%.
     """
 
 
@@ -1193,6 +1402,11 @@ class ChannelSvCenterfrequency(SCPICmdWrite, SCPICmdRead):
         - CH<x>:SV:CENTERFrequency <NR3>
         - CH<x>:SV:CENTERFrequency?
         ```
+
+    Info:
+        - ``CH<x>`` specifies the spectrum trace channel source.
+        - ``<NR3>`` specifies the spectrum trace center frequency for the specified channel, in
+          hertz. The range of values is 0.0 to the maximum licensed bandwidth of the instrument.
     """
 
 
@@ -1203,6 +1417,9 @@ class ChannelSv(SCPICmdRead):
         - Using the ``.query()`` method will send the ``CH<x>:SV?`` query.
         - Using the ``.verify(value)`` method will send the ``CH<x>:SV?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``CH<x>`` specifies the spectrum trace channel source.
 
     Properties:
         - ``.centerfrequency``: The ``CH<x>:SV:CENTERFrequency`` command.
@@ -1246,6 +1463,11 @@ class ChannelSv(SCPICmdRead):
             - CH<x>:SV:CENTERFrequency <NR3>
             - CH<x>:SV:CENTERFrequency?
             ```
+
+        Info:
+            - ``CH<x>`` specifies the spectrum trace channel source.
+            - ``<NR3>`` specifies the spectrum trace center frequency for the specified channel, in
+              hertz. The range of values is 0.0 to the maximum licensed bandwidth of the instrument.
         """
         return self._centerfrequency
 
@@ -1268,6 +1490,11 @@ class ChannelSv(SCPICmdRead):
             - CH<x>:SV:POSition <NR3>
             - CH<x>:SV:POSition?
             ```
+
+        Info:
+            - ``CH<x>`` specifies the spectrum trace channel source.
+            - ``<NR3>`` specifies the spectrum time location, as a percentage of the record length.
+              The range of values is 0.0% to 100%.
         """
         return self._position
 
@@ -1288,6 +1515,9 @@ class ChannelSv(SCPICmdRead):
             ```
             - CH<x>:SV:SPANABovebw?
             ```
+
+        Info:
+            - ``CH<x>`` specifies the spectrum trace channel source.
         """
         return self._spanabovebw
 
@@ -1308,6 +1538,9 @@ class ChannelSv(SCPICmdRead):
             ```
             - CH<x>:SV:SPANBELowdc?
             ```
+
+        Info:
+            - ``CH<x>`` specifies the spectrum trace channel source.
         """
         return self._spanbelowdc
 
@@ -1328,6 +1561,9 @@ class ChannelSv(SCPICmdRead):
             ```
             - CH<x>:SV:STARTFrequency?
             ```
+
+        Info:
+            - ``CH<x>`` specifies the spectrum trace channel source.
         """
         return self._startfrequency
 
@@ -1350,6 +1586,13 @@ class ChannelSv(SCPICmdRead):
             - CH<x>:SV:STATE {ON|OFF}
             - CH<x>:SV:STATE?
             ```
+
+        Info:
+            - ``CH<x>`` specifies the spectrum trace channel source.
+            - ``ON`` enables spectrum data acquisition for the specified spectrum trace channel
+              source.
+            - ``OFF`` disables spectrum data acquisition for the specified spectrum trace channel
+              source.
         """
         return self._state
 
@@ -1370,6 +1613,9 @@ class ChannelSv(SCPICmdRead):
             ```
             - CH<x>:SV:STOPFrequency?
             ```
+
+        Info:
+            - ``CH<x>`` specifies the spectrum trace channel source.
         """
         return self._stopfrequency
 
@@ -1388,6 +1634,10 @@ class ChannelScale(SCPICmdWrite):
         ```
         - CH<x>:SCAle <NR3>
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` is the vertical scale for the specified analog channel.
     """
 
 
@@ -1468,6 +1718,10 @@ class ChannelProbeSet(SCPICmdWrite, SCPICmdRead):
         - CH<x>:PRObe:SET <QString>
         - CH<x>:PRObe:SET?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<QString>`` is a quoted string representing a settable aspect of the attached accessory.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -1576,6 +1830,10 @@ class ChannelProbeInputmodeDoffset(SCPICmdWrite, SCPICmdRead):
         - CH<x>:PRObe:INPUTMode:DOFFSet <NR3>
         - CH<x>:PRObe:INPUTMode:DOFFSet?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` sets the D (differential) mode offset value, in vertical units (V or A).
     """
 
 
@@ -1598,6 +1856,10 @@ class ChannelProbeInputmodeCoffset(SCPICmdWrite, SCPICmdRead):
         - CH<x>:PRObe:INPUTMode:COFFSet <NR3>
         - CH<x>:PRObe:INPUTMode:COFFSet?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` sets the C (common) mode offset value, in vertical units (V or A).
     """
 
 
@@ -1620,6 +1882,10 @@ class ChannelProbeInputmodeBoffset(SCPICmdWrite, SCPICmdRead):
         - CH<x>:PRObe:INPUTMode:BOFFSet <NR3>
         - CH<x>:PRObe:INPUTMode:BOFFSet?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` sets the B mode offset value, in vertical units (V or A).
     """
 
 
@@ -1642,6 +1908,10 @@ class ChannelProbeInputmodeAoffset(SCPICmdWrite, SCPICmdRead):
         - CH<x>:PRObe:INPUTMode:AOFFSet <NR3>
         - CH<x>:PRObe:INPUTMode:AOFFSet?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` sets the A mode offset value, in vertical units (V or A).
     """
 
 
@@ -1662,6 +1932,13 @@ class ChannelProbeInputmode(SCPICmdWrite, SCPICmdRead):
         - CH<x>:PRObe:INPUTMode {A|B|COMMONMODE|DIFFERENTIAL}
         - CH<x>:PRObe:INPUTMode?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``A`` sets the probe to send single-ended A signals to the instrument.
+        - ``B`` sets the probe to send single-ended B signals to the instrument.
+        - ``COMMONMODE`` sets the probe to send common-mode signals to the instrument.
+        - ``DIFFERENTIAL`` sets the probe to send differential signals to the instrument.
 
     Properties:
         - ``.aoffset``: The ``CH<x>:PRObe:INPUTMode:AOFFSet`` command.
@@ -1697,6 +1974,10 @@ class ChannelProbeInputmode(SCPICmdWrite, SCPICmdRead):
             - CH<x>:PRObe:INPUTMode:AOFFSet <NR3>
             - CH<x>:PRObe:INPUTMode:AOFFSet?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` sets the A mode offset value, in vertical units (V or A).
         """
         return self._aoffset
 
@@ -1720,6 +2001,10 @@ class ChannelProbeInputmode(SCPICmdWrite, SCPICmdRead):
             - CH<x>:PRObe:INPUTMode:BOFFSet <NR3>
             - CH<x>:PRObe:INPUTMode:BOFFSet?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` sets the B mode offset value, in vertical units (V or A).
         """
         return self._boffset
 
@@ -1743,6 +2028,10 @@ class ChannelProbeInputmode(SCPICmdWrite, SCPICmdRead):
             - CH<x>:PRObe:INPUTMode:COFFSet <NR3>
             - CH<x>:PRObe:INPUTMode:COFFSet?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` sets the C (common) mode offset value, in vertical units (V or A).
         """
         return self._coffset
 
@@ -1766,6 +2055,10 @@ class ChannelProbeInputmode(SCPICmdWrite, SCPICmdRead):
             - CH<x>:PRObe:INPUTMode:DOFFSet <NR3>
             - CH<x>:PRObe:INPUTMode:DOFFSet?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` sets the D (differential) mode offset value, in vertical units (V or A).
         """
         return self._doffset
 
@@ -1919,6 +2212,10 @@ class ChannelProbeForcedrange(SCPICmdWrite, SCPICmdRead):
         - CH<x>:PRObe:FORCEDRange <NR3>
         - CH<x>:PRObe:FORCEDRange?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` specifies the probe dynamic range.
     """
 
 
@@ -1956,6 +2253,10 @@ class ChannelProbeDegauss(SCPICmdWrite, SCPICmdRead):
         - CH<x>:PRObe:DEGAUSS EXECute
         ```
 
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``EXECute`` starts the degauss cycle.
+
     Properties:
         - ``.state``: The ``CH<x>:PRObe:DEGAUSS:STATE`` command.
     """
@@ -1989,8 +2290,8 @@ class ChannelProbeCompensate(SCPICmdWriteNoArguments):
     """The ``CH<x>:PRObe:COMPensate`` command.
 
     Description:
-        - This command starts the probe compensation procedure for passive probes. The channel is
-          specified by x.
+        - This command starts the probe compensation (if available) for the specified channel.
+          procedure for passive probes.
 
     Usage:
         - Using the ``.write()`` method will send the ``CH<x>:PRObe:COMPensate`` command.
@@ -2101,8 +2402,8 @@ class ChannelProbe(SCPICmdRead):
         """Return the ``CH<x>:PRObe:COMPensate`` command.
 
         Description:
-            - This command starts the probe compensation procedure for passive probes. The channel
-              is specified by x.
+            - This command starts the probe compensation (if available) for the specified channel.
+              procedure for passive probes.
 
         Usage:
             - Using the ``.write()`` method will send the ``CH<x>:PRObe:COMPensate`` command.
@@ -2131,6 +2432,10 @@ class ChannelProbe(SCPICmdRead):
             - CH<x>:PRObe:DEGAUSS EXECute
             ```
 
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``EXECute`` starts the degauss cycle.
+
         Sub-properties:
             - ``.state``: The ``CH<x>:PRObe:DEGAUSS:STATE`` command.
         """
@@ -2158,6 +2463,10 @@ class ChannelProbe(SCPICmdRead):
             - CH<x>:PRObe:FORCEDRange <NR3>
             - CH<x>:PRObe:FORCEDRange?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` specifies the probe dynamic range.
         """
         return self._forcedrange
 
@@ -2226,6 +2535,13 @@ class ChannelProbe(SCPICmdRead):
             - CH<x>:PRObe:INPUTMode {A|B|COMMONMODE|DIFFERENTIAL}
             - CH<x>:PRObe:INPUTMode?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``A`` sets the probe to send single-ended A signals to the instrument.
+            - ``B`` sets the probe to send single-ended B signals to the instrument.
+            - ``COMMONMODE`` sets the probe to send common-mode signals to the instrument.
+            - ``DIFFERENTIAL`` sets the probe to send differential signals to the instrument.
 
         Sub-properties:
             - ``.aoffset``: The ``CH<x>:PRObe:INPUTMode:AOFFSet`` command.
@@ -2297,6 +2613,11 @@ class ChannelProbe(SCPICmdRead):
             - CH<x>:PRObe:SET <QString>
             - CH<x>:PRObe:SET?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<QString>`` is a quoted string representing a settable aspect of the attached
+              accessory.
         """
         return self._set
 
@@ -2374,6 +2695,12 @@ class ChannelProbefuncExtunitsState(SCPICmdWrite):
         ```
         - CH<x>:PROBEFunc:EXTUnits:STATE {ON|OFF|<NR1>}
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``OFF`` argument turns off external units.
+        - ``ON`` argument turns on external units.
+        - ``<NR1>`` = 0 turns off external units; any other value turns on external units.
     """
 
 
@@ -2398,6 +2725,10 @@ class ChannelProbefuncExtunits(SCPICmdWrite, SCPICmdRead):
         - CH<x>:PROBEFunc:EXTUnits <QString>
         - CH<x>:PROBEFunc:EXTUnits?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<QString>`` indicates the attenuation unit of measurement for the specified channel.
 
     Properties:
         - ``.state``: The ``CH<x>:PROBEFunc:EXTUnits:STATE`` command.
@@ -2425,6 +2756,12 @@ class ChannelProbefuncExtunits(SCPICmdWrite, SCPICmdRead):
             ```
             - CH<x>:PROBEFunc:EXTUnits:STATE {ON|OFF|<NR1>}
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``OFF`` argument turns off external units.
+            - ``ON`` argument turns on external units.
+            - ``<NR1>`` = 0 turns off external units; any other value turns on external units.
         """
         return self._state
 
@@ -2450,6 +2787,11 @@ class ChannelProbefuncExtdbatten(SCPICmdWrite, SCPICmdRead):
         - CH<x>:PROBEFunc:EXTDBatten <NR3>
         - CH<x>:PROBEFunc:EXTDBatten?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` is the attenuation value, which is specified in the range from -200.00 dB to
+          200.00 dB.
     """
 
 
@@ -2473,6 +2815,11 @@ class ChannelProbefuncExtatten(SCPICmdWrite, SCPICmdRead):
         - CH<x>:PROBEFunc:EXTAtten <NR3>
         - CH<x>:PROBEFunc:EXTAtten?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` is the attenuation value, which is specified as a multiplier in the range from
+          1.00E-10 to 1.00E+10.
     """
 
 
@@ -2483,6 +2830,9 @@ class ChannelProbefunc(SCPICmdRead):
         - Using the ``.query()`` method will send the ``CH<x>:PROBEFunc?`` query.
         - Using the ``.verify(value)`` method will send the ``CH<x>:PROBEFunc?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``CH<x>`` is the channel number.
 
     Properties:
         - ``.extatten``: The ``CH<x>:PROBEFunc:EXTAtten`` command.
@@ -2517,6 +2867,11 @@ class ChannelProbefunc(SCPICmdRead):
             - CH<x>:PROBEFunc:EXTAtten <NR3>
             - CH<x>:PROBEFunc:EXTAtten?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` is the attenuation value, which is specified as a multiplier in the range
+              from 1.00E-10 to 1.00E+10.
         """
         return self._extatten
 
@@ -2542,6 +2897,11 @@ class ChannelProbefunc(SCPICmdRead):
             - CH<x>:PROBEFunc:EXTDBatten <NR3>
             - CH<x>:PROBEFunc:EXTDBatten?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` is the attenuation value, which is specified in the range from -200.00 dB to
+              200.00 dB.
         """
         return self._extdbatten
 
@@ -2567,6 +2927,10 @@ class ChannelProbefunc(SCPICmdRead):
             - CH<x>:PROBEFunc:EXTUnits <QString>
             - CH<x>:PROBEFunc:EXTUnits?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<QString>`` indicates the attenuation unit of measurement for the specified channel.
 
         Sub-properties:
             - ``.state``: The ``CH<x>:PROBEFunc:EXTUnits:STATE`` command.
@@ -2611,6 +2975,12 @@ class ChannelProbecontrol(SCPICmdWrite, SCPICmdRead):
         - CH<x>:PROBECOntrol {AUTO|MANual}
         - CH<x>:PROBECOntrol?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``AUTO`` sets the values. The probe range is automatically calculated.
+        - ``MANual`` allows you to select various valid values for the probe connected to a
+          particular channel.
     """
 
 
@@ -2627,6 +2997,10 @@ class ChannelPosition(SCPICmdWrite):
         ```
         - CH<x>:POSition <NR1>
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR1>`` is the vertical position for the specified analog channel.
     """
 
 
@@ -2647,6 +3021,10 @@ class ChannelOffset(SCPICmdWrite, SCPICmdRead):
         - CH<x>:OFFSet <NR3>
         - CH<x>:OFFSet?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` is the offset value for the specified channel.
     """
 
 
@@ -2668,6 +3046,12 @@ class ChannelLabelYpos(SCPICmdWrite, SCPICmdRead):
         - CH<x>:LABel:YPOS <NR3>
         - CH<x>:LABel:YPOS?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` is the location (in pixels) where the waveform label for the selected channel is
+          displayed, relative to the baseline of the waveform. Positive values are above the
+          baseline and negative values are below.
     """
 
 
@@ -2689,6 +3073,11 @@ class ChannelLabelXpos(SCPICmdWrite, SCPICmdRead):
         - CH<x>:LABel:XPOS <NR3>
         - CH<x>:LABel:XPOS?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` is the location (in pixels) where the waveform label for the selected channel is
+          displayed, relative to the left edge of the screen.
     """
 
 
@@ -2710,6 +3099,11 @@ class ChannelLabelName(SCPICmdWrite, SCPICmdRead):
         - CH<x>:LABel:NAMe <QString>
         - CH<x>:LABel:NAMe?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<QString>`` is an alphanumeric character string, ranging from 1 through 32 characters in
+          length.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -2730,6 +3124,12 @@ class ChannelLabelFontUnderline(SCPICmdWrite):
         ```
         - CH<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``OFF`` argument turns off underlined font.
+        - ``ON`` argument turns on underlined font.
+        - ``<NR1>`` = 0 turns off underlined font; any other value turns on underlined font.
     """
 
 
@@ -2747,6 +3147,10 @@ class ChannelLabelFontType(SCPICmdWrite):
         ```
         - CH<x>:LABel:FONT:TYPE <QString>
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<QString>`` is the specified font type.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -2766,6 +3170,10 @@ class ChannelLabelFontSize(SCPICmdWrite):
         ```
         - CH<x>:LABel:FONT:SIZE <NR1>
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR1>`` is the font size.
     """
 
 
@@ -2784,6 +3192,12 @@ class ChannelLabelFontItalic(SCPICmdWrite):
         ```
         - CH<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``OFF`` argument turns off italic font.
+        - ``ON`` argument turns on italic font.
+        - ``<NR1>`` = 0 turns off italic font; any other value turns on italic font.
     """
 
 
@@ -2801,6 +3215,12 @@ class ChannelLabelFontBold(SCPICmdWrite):
         ```
         - CH<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``OFF`` argument turns off bold font.
+        - ``ON`` argument turns on bold font.
+        - ``<NR1>`` = 0 turns off bold font; any other value turns on bold font.
     """
 
 
@@ -2811,6 +3231,9 @@ class ChannelLabelFont(SCPICmdRead):
         - Using the ``.query()`` method will send the ``CH<x>:LABel:FONT?`` query.
         - Using the ``.verify(value)`` method will send the ``CH<x>:LABel:FONT?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``CH<x>`` is the channel number.
 
     Properties:
         - ``.bold``: The ``CH<x>:LABel:FONT:BOLD`` command.
@@ -2844,6 +3267,12 @@ class ChannelLabelFont(SCPICmdRead):
             ```
             - CH<x>:LABel:FONT:BOLD {ON|OFF|<NR1>}
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``OFF`` argument turns off bold font.
+            - ``ON`` argument turns on bold font.
+            - ``<NR1>`` = 0 turns off bold font; any other value turns on bold font.
         """
         return self._bold
 
@@ -2863,6 +3292,12 @@ class ChannelLabelFont(SCPICmdRead):
             ```
             - CH<x>:LABel:FONT:ITALic {ON|OFF|<NR1>}
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``OFF`` argument turns off italic font.
+            - ``ON`` argument turns on italic font.
+            - ``<NR1>`` = 0 turns off italic font; any other value turns on italic font.
         """
         return self._italic
 
@@ -2882,6 +3317,10 @@ class ChannelLabelFont(SCPICmdRead):
             ```
             - CH<x>:LABel:FONT:SIZE <NR1>
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR1>`` is the font size.
         """
         return self._size
 
@@ -2901,6 +3340,10 @@ class ChannelLabelFont(SCPICmdRead):
             ```
             - CH<x>:LABel:FONT:TYPE <QString>
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<QString>`` is the specified font type.
         """
         return self._type
 
@@ -2920,6 +3363,12 @@ class ChannelLabelFont(SCPICmdRead):
             ```
             - CH<x>:LABel:FONT:UNDERline {ON|OFF|<NR1>}
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``OFF`` argument turns off underlined font.
+            - ``ON`` argument turns on underlined font.
+            - ``<NR1>`` = 0 turns off underlined font; any other value turns on underlined font.
         """
         return self._underline
 
@@ -2938,6 +3387,11 @@ class ChannelLabelColor(SCPICmdWrite):
         ```
         - CH<x>:LABel:COLor <QString>
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<QString>`` is the label color. To return the color to the default color, send an empty
+          string as in this example: ``CH5:LABEL:COLOR`` ''.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -2950,6 +3404,9 @@ class ChannelLabel(SCPICmdRead):
         - Using the ``.query()`` method will send the ``CH<x>:LABel?`` query.
         - Using the ``.verify(value)`` method will send the ``CH<x>:LABel?`` query and raise an
           AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``CH<x>`` is the channel number.
 
     Properties:
         - ``.color``: The ``CH<x>:LABel:COLor`` command.
@@ -2982,6 +3439,11 @@ class ChannelLabel(SCPICmdRead):
             ```
             - CH<x>:LABel:COLor <QString>
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<QString>`` is the label color. To return the color to the default color, send an
+              empty string as in this example: ``CH5:LABEL:COLOR`` ''.
         """
         return self._color
 
@@ -2993,6 +3455,9 @@ class ChannelLabel(SCPICmdRead):
             - Using the ``.query()`` method will send the ``CH<x>:LABel:FONT?`` query.
             - Using the ``.verify(value)`` method will send the ``CH<x>:LABel:FONT?`` query and
               raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``CH<x>`` is the channel number.
 
         Sub-properties:
             - ``.bold``: The ``CH<x>:LABel:FONT:BOLD`` command.
@@ -3022,6 +3487,11 @@ class ChannelLabel(SCPICmdRead):
             - CH<x>:LABel:NAMe <QString>
             - CH<x>:LABel:NAMe?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<QString>`` is an alphanumeric character string, ranging from 1 through 32
+              characters in length.
         """
         return self._name
 
@@ -3044,6 +3514,11 @@ class ChannelLabel(SCPICmdRead):
             - CH<x>:LABel:XPOS <NR3>
             - CH<x>:LABel:XPOS?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` is the location (in pixels) where the waveform label for the selected
+              channel is displayed, relative to the left edge of the screen.
         """
         return self._xpos
 
@@ -3066,6 +3541,12 @@ class ChannelLabel(SCPICmdRead):
             - CH<x>:LABel:YPOS <NR3>
             - CH<x>:LABel:YPOS?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` is the location (in pixels) where the waveform label for the selected
+              channel is displayed, relative to the baseline of the waveform. Positive values are
+              above the baseline and negative values are below.
         """
         return self._ypos
 
@@ -3088,6 +3569,11 @@ class ChannelInvert(SCPICmdWrite, SCPICmdRead):
         - CH<x>:INVert {ON|OFF|<NR1>}
         - CH<x>:INVert?
         ```
+
+    Info:
+        - ``OFF`` turns off the channel invert.
+        - ``ON`` turns on the channel invert.
+        - ``<NR1>`` = 0 turns off the channel invert; any other value turns on the channel invert.
     """
 
 
@@ -3107,6 +3593,10 @@ class ChannelDitherrange(SCPICmdWrite):
         ```
         - CH<x>:DITHERrange <NR3>
         ```
+
+    Info:
+        - ``<NR3>`` is the amount of dithering as a percentage of full scale. Must be between 0.0
+          and 100.0 and 0.0 disables dithering.
     """
 
 
@@ -3128,6 +3618,11 @@ class ChannelDeskew(SCPICmdWrite, SCPICmdRead):
         - CH<x>:DESKew <NR3>
         - CH<x>:DESKew?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` is the deskew time for this channel, ranging from -125 ns to +125 ns with a
+          resolution of 40 ps. Out-of-range values are clipped.
     """
 
 
@@ -3149,6 +3644,12 @@ class ChannelCoupling(SCPICmdWrite, SCPICmdRead):
         - CH<x>:COUPling {AC|DC|DCR}
         - CH<x>:COUPling?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``AC`` sets the specified channel to AC coupling.
+        - ``DC`` sets the specified channel to DC coupling.
+        - ``DCR`` sets DC Reject coupling when probes are attached that support that feature.
     """
 
 
@@ -3190,6 +3691,14 @@ class ChannelBandwidthFilterOptimization(SCPICmdWrite, SCPICmdRead):
         - CH<x>:BANdwidth:FILTer:OPTIMIZation {STEPRESPONSE|FLATNESS}
         - CH<x>:BANdwidth:FILTer:OPTIMIZation?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``STEPRESPONSE`` sets a Bessel-Thompson filter that minimizes overshoot with a gradual
+          rollof.
+        - ``FLATNESS`` sets selects a brick-wall filter optimized for flatness within band with a
+          sharp rolloff. Flatness filtering is not compatible with Peak Detect and Envelope
+          acquisition modes.
     """
 
 
@@ -3200,6 +3709,9 @@ class ChannelBandwidthFilter(SCPICmdRead):
         - Using the ``.query()`` method will send the ``CH<x>:BANdwidth:FILTer?`` query.
         - Using the ``.verify(value)`` method will send the ``CH<x>:BANdwidth:FILTer?`` query and
           raise an AssertionError if the returned value does not match ``value``.
+
+    Info:
+        - ``CH<x>`` is the channel number.
 
     Properties:
         - ``.optimization``: The ``CH<x>:BANdwidth:FILTer:OPTIMIZation`` command.
@@ -3232,6 +3744,14 @@ class ChannelBandwidthFilter(SCPICmdRead):
             - CH<x>:BANdwidth:FILTer:OPTIMIZation {STEPRESPONSE|FLATNESS}
             - CH<x>:BANdwidth:FILTer:OPTIMIZation?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``STEPRESPONSE`` sets a Bessel-Thompson filter that minimizes overshoot with a gradual
+              rollof.
+            - ``FLATNESS`` sets selects a brick-wall filter optimized for flatness within band with
+              a sharp rolloff. Flatness filtering is not compatible with Peak Detect and Envelope
+              acquisition modes.
         """
         return self._optimization
 
@@ -3257,6 +3777,13 @@ class ChannelBandwidth(SCPICmdWrite, SCPICmdRead):
         - CH<x>:BANdwidth?
         ```
 
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR3>`` is the desired bandwidth. The instrument rounds this value to an available
+          bandwidth using geometric rounding and then uses this value to set the upper bandwidth.
+        - ``FULl`` disables any optional bandwidth limiting. The specified channel operates at its
+          maximum bandwidth.
+
     Properties:
         - ``.filter``: The ``CH<x>:BANdwidth:FILTer`` command tree.
     """
@@ -3273,6 +3800,9 @@ class ChannelBandwidth(SCPICmdWrite, SCPICmdRead):
             - Using the ``.query()`` method will send the ``CH<x>:BANdwidth:FILTer?`` query.
             - Using the ``.verify(value)`` method will send the ``CH<x>:BANdwidth:FILTer?`` query
               and raise an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``CH<x>`` is the channel number.
 
         Sub-properties:
             - ``.optimization``: The ``CH<x>:BANdwidth:FILTer:OPTIMIZation`` command.
@@ -3370,6 +3900,14 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - CH<x>:BANdwidth?
             ```
 
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` is the desired bandwidth. The instrument rounds this value to an available
+              bandwidth using geometric rounding and then uses this value to set the upper
+              bandwidth.
+            - ``FULl`` disables any optional bandwidth limiting. The specified channel operates at
+              its maximum bandwidth.
+
         Sub-properties:
             - ``.filter``: The ``CH<x>:BANdwidth:FILTer`` command tree.
         """
@@ -3415,6 +3953,12 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - CH<x>:COUPling {AC|DC|DCR}
             - CH<x>:COUPling?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``AC`` sets the specified channel to AC coupling.
+            - ``DC`` sets the specified channel to DC coupling.
+            - ``DCR`` sets DC Reject coupling when probes are attached that support that feature.
         """
         return self._coupling
 
@@ -3437,6 +3981,11 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - CH<x>:DESKew <NR3>
             - CH<x>:DESKew?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` is the deskew time for this channel, ranging from -125 ns to +125 ns with a
+              resolution of 40 ps. Out-of-range values are clipped.
         """
         return self._deskew
 
@@ -3457,6 +4006,10 @@ class Channel(ValidatedChannel, SCPICmdRead):
             ```
             - CH<x>:DITHERrange <NR3>
             ```
+
+        Info:
+            - ``<NR3>`` is the amount of dithering as a percentage of full scale. Must be between
+              0.0 and 100.0 and 0.0 disables dithering.
         """
         return self._ditherrange
 
@@ -3479,6 +4032,12 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - CH<x>:INVert {ON|OFF|<NR1>}
             - CH<x>:INVert?
             ```
+
+        Info:
+            - ``OFF`` turns off the channel invert.
+            - ``ON`` turns on the channel invert.
+            - ``<NR1>`` = 0 turns off the channel invert; any other value turns on the channel
+              invert.
         """
         return self._invert
 
@@ -3490,6 +4049,9 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - Using the ``.query()`` method will send the ``CH<x>:LABel?`` query.
             - Using the ``.verify(value)`` method will send the ``CH<x>:LABel?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``CH<x>`` is the channel number.
 
         Sub-properties:
             - ``.color``: The ``CH<x>:LABel:COLor`` command.
@@ -3518,6 +4080,10 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - CH<x>:OFFSet <NR3>
             - CH<x>:OFFSet?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` is the offset value for the specified channel.
         """
         return self._offset
 
@@ -3535,6 +4101,10 @@ class Channel(ValidatedChannel, SCPICmdRead):
             ```
             - CH<x>:POSition <NR1>
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR1>`` is the vertical position for the specified analog channel.
         """
         return self._position
 
@@ -3557,6 +4127,12 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - CH<x>:PROBECOntrol {AUTO|MANual}
             - CH<x>:PROBECOntrol?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``AUTO`` sets the values. The probe range is automatically calculated.
+            - ``MANual`` allows you to select various valid values for the probe connected to a
+              particular channel.
         """
         return self._probecontrol
 
@@ -3588,6 +4164,9 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - Using the ``.query()`` method will send the ``CH<x>:PROBEFunc?`` query.
             - Using the ``.verify(value)`` method will send the ``CH<x>:PROBEFunc?`` query and raise
               an AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``CH<x>`` is the channel number.
 
         Sub-properties:
             - ``.extatten``: The ``CH<x>:PROBEFunc:EXTAtten`` command.
@@ -3686,6 +4265,10 @@ class Channel(ValidatedChannel, SCPICmdRead):
             ```
             - CH<x>:SCAle <NR3>
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` is the vertical scale for the specified analog channel.
         """
         return self._scale
 
@@ -3697,6 +4280,9 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - Using the ``.query()`` method will send the ``CH<x>:SV?`` query.
             - Using the ``.verify(value)`` method will send the ``CH<x>:SV?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``CH<x>`` specifies the spectrum trace channel source.
 
         Sub-properties:
             - ``.centerfrequency``: The ``CH<x>:SV:CENTERFrequency`` command.
@@ -3729,6 +4315,11 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - CH<x>:TERmination <NR3>
             - CH<x>:TERmination?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR3>`` specifies the channel input resistance, which can be specified as 50 Ω or
+              1,000,000 Ω.
         """
         return self._termination
 
@@ -3740,6 +4331,9 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - Using the ``.query()`` method will send the ``CH<x>:VTERm?`` query.
             - Using the ``.verify(value)`` method will send the ``CH<x>:VTERm?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``CH<x>`` is the channel number.
 
         Sub-properties:
             - ``.bias``: The ``CH<x>:VTERm:BIAS`` command.
@@ -3755,6 +4349,9 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - Using the ``.verify(value)`` method will send the ``CH<x>_D<x>?`` query and raise an
               AssertionError if the returned value does not match ``value``.
 
+        Info:
+            - ``CH<x>`` is the channel number.
+
         Sub-properties:
             - ``.label``: The ``CH<x>_D<x>:LABel`` command tree.
         """
@@ -3768,6 +4365,9 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - Using the ``.query()`` method will send the ``CH<x>_DALL?`` query.
             - Using the ``.verify(value)`` method will send the ``CH<x>_DALL?`` query and raise an
               AssertionError if the returned value does not match ``value``.
+
+        Info:
+            - ``CH<x>`` is the channel number.
 
         Sub-properties:
             - ``.label``: The ``CH<x>_DALL:LABel`` command tree.

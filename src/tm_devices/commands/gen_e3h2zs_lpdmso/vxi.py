@@ -1,7 +1,7 @@
 """The vxi commands module.
 
 These commands are used in the following models:
-MSO2
+LPD6, MSO2, MSO4, MSO4B, MSO5, MSO5B, MSO5LP, MSO6, MSO6B
 
 THIS FILE IS AUTO-GENERATED, IT SHOULD NOT BE MANUALLY MODIFIED.
 
