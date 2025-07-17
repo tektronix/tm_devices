@@ -30,6 +30,7 @@ Things to be included in the next release go here.
 
 - Updated the `DeviceManager` to gracefully exit if the close method is not called in any scripts.
 - Updated the `DeviceManager.open()` method to behave in a more expected way (ensures existing Python objects get properly re-opened and pointers to objects don't get lost, replaced, or become stale) when called after previously closing the `DeviceManager`.
+- Updated the `Device.ip_address` property to remove the USB connection type exclusion.
 
 ### Removed
 
