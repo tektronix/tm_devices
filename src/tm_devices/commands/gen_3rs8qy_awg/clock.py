@@ -24,10 +24,10 @@ Commands and Queries:
     - CLOCk:EREFerence:FREQuency?
     - CLOCk:EREFerence:MULTiplier <NR1>
     - CLOCk:EREFerence:MULTiplier?
-    - CLOCk:JITTer {0|1|OFF|ON}
+    - CLOCk:JITTer {ON|OFF|1|0}
     - CLOCk:JITTer?
     - CLOCk:OUTPut:FREQuency?
-    - CLOCk:OUTPut:STATe {0|1|OFF|ON}
+    - CLOCk:OUTPut:STATe {ON|OFF|1|0}
     - CLOCk:OUTPut:STATe?
     - CLOCk:PHASe:ADJust:DEGRees <NR1>
     - CLOCk:PHASe:ADJust:DEGRees?
@@ -35,7 +35,7 @@ Commands and Queries:
     - CLOCk:PHASe:ADJust:TIMe?
     - CLOCk:SOURce {INTernal|EFIXed|EVARiable|EXTernal}
     - CLOCk:SOURce?
-    - CLOCk:SOUT:STATe {0|1|OFF|ON}
+    - CLOCk:SOUT:STATe {ON|OFF|1|0}
     - CLOCk:SOUT:STATe?
     - CLOCk:SRATe <NRf>
     - CLOCk:SRATe?
@@ -89,7 +89,7 @@ class ClockSoutState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - CLOCk:SOUT:STATe {0|1|OFF|ON}
+        - CLOCk:SOUT:STATe {ON|OFF|1|0}
         - CLOCk:SOUT:STATe?
         ```
 
@@ -129,7 +129,7 @@ class ClockSout(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CLOCk:SOUT:STATe {0|1|OFF|ON}
+            - CLOCk:SOUT:STATe {ON|OFF|1|0}
             - CLOCk:SOUT:STATe?
             ```
 
@@ -335,7 +335,7 @@ class ClockOutputState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - CLOCk:OUTPut:STATe {0|1|OFF|ON}
+        - CLOCk:OUTPut:STATe {ON|OFF|1|0}
         - CLOCk:OUTPut:STATe?
         ```
 
@@ -416,7 +416,7 @@ class ClockOutput(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CLOCk:OUTPut:STATe {0|1|OFF|ON}
+            - CLOCk:OUTPut:STATe {ON|OFF|1|0}
             - CLOCk:OUTPut:STATe?
             ```
 
@@ -442,7 +442,7 @@ class ClockJitter(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - CLOCk:JITTer {0|1|OFF|ON}
+        - CLOCk:JITTer {ON|OFF|1|0}
         - CLOCk:JITTer?
         ```
 
@@ -1018,7 +1018,7 @@ class Clock(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - CLOCk:JITTer {0|1|OFF|ON}
+            - CLOCk:JITTer {ON|OFF|1|0}
             - CLOCk:JITTer?
             ```
 

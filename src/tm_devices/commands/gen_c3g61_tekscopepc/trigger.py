@@ -183,9 +183,7 @@ class TriggerBEdgeSlope(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the slope for the edge trigger. This command is equivalent to
-          selecting Edge from the Trigger Type drop-down in the Trigger setup context menu, and then
-          choosing the desired Slope. This command is also equivalent to pressing the front-panel
-          Slope button.
+          selecting Event Trigger Setup from the Trig menu and then choosing the desired Slope.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:EDGE:SLOpe?`` query.
@@ -300,9 +298,8 @@ class TriggerBEdge(SCPICmdRead):
 
         Description:
             - This command sets or queries the slope for the edge trigger. This command is
-              equivalent to selecting Edge from the Trigger Type drop-down in the Trigger setup
-              context menu, and then choosing the desired Slope. This command is also equivalent to
-              pressing the front-panel Slope button.
+              equivalent to selecting Event Trigger Setup from the Trig menu and then choosing the
+              desired Slope.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:EDGE:SLOpe?`` query.
@@ -588,9 +585,7 @@ class TriggerAEdgeSlope(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the slope for the edge trigger. This command is equivalent to
-          selecting Edge from the Trigger Type drop-down in the Trigger setup context menu, and then
-          choosing the desired Slope. This command is also equivalent to pressing the front-panel
-          Slope button.
+          selecting Event Trigger Setup from the Trig menu and then choosing the desired Slope.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:EDGE:SLOpe?`` query.
@@ -705,9 +700,8 @@ class TriggerAEdge(SCPICmdRead):
 
         Description:
             - This command sets or queries the slope for the edge trigger. This command is
-              equivalent to selecting Edge from the Trigger Type drop-down in the Trigger setup
-              context menu, and then choosing the desired Slope. This command is also equivalent to
-              pressing the front-panel Slope button.
+              equivalent to selecting Event Trigger Setup from the Trig menu and then choosing the
+              desired Slope.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:EDGE:SLOpe?`` query.

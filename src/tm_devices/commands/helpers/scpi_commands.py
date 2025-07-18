@@ -7,9 +7,10 @@ Please report an issue if one is found.
 
 import re
 import string
+import sys
 
 from collections import defaultdict
-from typing import Any, cast, Optional, Set, Tuple, TYPE_CHECKING, Union
+from typing import Any, cast, DefaultDict, Optional, Set, Tuple, Type, TYPE_CHECKING, Union
 
 from .generic_commands import BaseCmd, END_OF_STRING_DIGITS, NoDeviceProvidedError
 
@@ -19,6 +20,12 @@ if TYPE_CHECKING:
 MAX_CHANNELS = 8
 MAX_DIGITAL_BITS = 16
 END_OF_STRING_NUMBER = re.compile(r"(\d+)$")
+# TODO: Drop Python 3.8: Once Python 3.8 is no longer supported,
+#  the dynamic parent class can be removed
+# pylint: disable=unsubscriptable-object,useless-suppression
+ParentDefaultDictClass: Type[DefaultDict[Any, Any]] = (
+    defaultdict if sys.version_info < (3, 9) else defaultdict[Any, Any]
+)
 
 
 ####################################################################################################
@@ -266,7 +273,7 @@ class ValidatedChannel(BaseCmd):  # pylint: disable=too-few-public-methods
             raise ValueError(msg)
 
 
-class DefaultDictDeviceCommunication(defaultdict[Any, Any]):
+class DefaultDictDeviceCommunication(ParentDefaultDictClass):
     """A custom default dictionary that can be used to send/receive commands to/from a device.
 
     The ``.query()`` method is used when ``__getitem__()`` is called and the result of the query is

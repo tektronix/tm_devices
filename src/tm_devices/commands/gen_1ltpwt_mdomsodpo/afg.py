@@ -38,13 +38,13 @@ Commands and Queries:
     - AFG:LOWLevel?
     - AFG:NOISEAdd:PERCent <NR3>
     - AFG:NOISEAdd:PERCent?
-    - AFG:NOISEAdd:STATE {0|1|OFF|ON}
+    - AFG:NOISEAdd:STATE {ON|OFF|1|0}
     - AFG:NOISEAdd:STATE?
     - AFG:OFFSet <NR3>
     - AFG:OFFSet?
     - AFG:OUTPut:LOAd:IMPEDance {FIFty|HIGHZ}
     - AFG:OUTPut:LOAd:IMPEDance?
-    - AFG:OUTPut:STATE {0|1|OFF|ON}
+    - AFG:OUTPut:STATE {ON|OFF|1|0}
     - AFG:OUTPut:STATE?
     - AFG:PERIod <NR3>
     - AFG:PERIod?
@@ -92,8 +92,7 @@ class AfgSquareDuty(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` is the floating point number that represents the AFG duty cycle, as a
-          percentage.
+        - ``<NR3>`` is a floating point number that represents the AFG duty cycle as a percentage.
     """
 
 
@@ -134,7 +133,7 @@ class AfgSquare(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` is the floating point number that represents the AFG duty cycle, as a
+            - ``<NR3>`` is a floating point number that represents the AFG duty cycle as a
               percentage.
         """
         return self._duty
@@ -160,7 +159,7 @@ class AfgRampSymmetry(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` is the floating point number that represents the AFG ramp symmetry, as a
+        - ``<NR3>`` is a floating point number that represents the AFG ramp symmetry as a
           percentage.
     """
 
@@ -202,7 +201,7 @@ class AfgRamp(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` is the floating point number that represents the AFG ramp symmetry, as a
+            - ``<NR3>`` is a floating point number that represents the AFG ramp symmetry as a
               percentage.
         """
         return self._symmetry
@@ -331,7 +330,7 @@ class AfgOutputState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - AFG:OUTPut:STATE {0|1|OFF|ON}
+        - AFG:OUTPut:STATE {ON|OFF|1|0}
         - AFG:OUTPut:STATE?
         ```
 
@@ -456,7 +455,7 @@ class AfgOutput(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - AFG:OUTPut:STATE {0|1|OFF|ON}
+            - AFG:OUTPut:STATE {ON|OFF|1|0}
             - AFG:OUTPut:STATE?
             ```
 
@@ -504,7 +503,7 @@ class AfgNoiseaddState(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - AFG:NOISEAdd:STATE {0|1|OFF|ON}
+        - AFG:NOISEAdd:STATE {ON|OFF|1|0}
         - AFG:NOISEAdd:STATE?
         ```
 
@@ -534,7 +533,7 @@ class AfgNoiseaddPercent(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` is the floating point number that represents the AFG additive noise level, as a
+        - ``<NR3>`` is the floating point number that represents the AFG additive noise level as a
           percentage.
     """
 
@@ -579,8 +578,8 @@ class AfgNoiseadd(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` is the floating point number that represents the AFG additive noise level,
-              as a percentage.
+            - ``<NR3>`` is the floating point number that represents the AFG additive noise level as
+              a percentage.
         """
         return self._percent
 
@@ -599,7 +598,7 @@ class AfgNoiseadd(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - AFG:NOISEAdd:STATE {0|1|OFF|ON}
+            - AFG:NOISEAdd:STATE {ON|OFF|1|0}
             - AFG:NOISEAdd:STATE?
             ```
 
@@ -719,7 +718,7 @@ class AfgFunction(SCPICmdWrite, SCPICmdRead):
         - ``PULSe``
         - ``RAMP``
         - ``NOISe``
-        - ``DC`` . The DC level is controlled by ``AFG:OFFSET``.
+        - ``DC`` - The DC level is controlled by ``AFG:OFFSET``.
         - ``SINC`` (Sin(x)/x).
         - ``GAUSsian``
         - ``LORENtz``
@@ -1509,7 +1508,7 @@ class Afg(SCPICmdRead):
             - ``PULSe``
             - ``RAMP``
             - ``NOISe``
-            - ``DC`` . The DC level is controlled by ``AFG:OFFSET``.
+            - ``DC`` - The DC level is controlled by ``AFG:OFFSET``.
             - ``SINC`` (Sin(x)/x).
             - ``GAUSsian``
             - ``LORENtz``
