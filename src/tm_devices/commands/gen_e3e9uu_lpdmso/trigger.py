@@ -7343,8 +7343,8 @@ class TriggerBBusBItemSpmiRegisteraddressValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the binary data string that identifies the register address
-          used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte REGREAd
-          REGWRIte EXTREGREAd EXTREGWRIte LONGEXTREGREAd LONGEXTREGWRIte
+          used in SPMI triggering if the trigger condition is MASTERREAd , MASTERWRIte , REGREAd ,
+          REGWRIte , EXTREGREAd , EXTREGWRIte , LONGEXTREGREAd , or LONGEXTREGWRIte .
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -7396,8 +7396,8 @@ class TriggerBBusBItemSpmiRegisteraddress(SCPICmdRead):
 
         Description:
             - This command sets or queries the binary data string that identifies the register
-              address used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte
-              REGREAd REGWRIte EXTREGREAd EXTREGWRIte LONGEXTREGREAd LONGEXTREGWRIte
+              address used in SPMI triggering if the trigger condition is MASTERREAd , MASTERWRIte ,
+              REGREAd , REGWRIte , EXTREGREAd , EXTREGWRIte , LONGEXTREGREAd , or LONGEXTREGWRIte .
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -7453,8 +7453,8 @@ class TriggerBBusBItemSpmiMasteraddressValue(SCPICmdRead):
 
     Description:
         - This command sets or queries the binary data string that identifies the master address
-          used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte
-          DEVICEDESCMASTERREAd
+          used in SPMI triggering if the trigger condition is MASTERREAd , MASTERWRIte , or
+          DEVICEDESCMASTERREAd .
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -7500,8 +7500,8 @@ class TriggerBBusBItemSpmiMasteraddress(SCPICmdRead):
 
         Description:
             - This command sets or queries the binary data string that identifies the master address
-              used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte
-              DEVICEDESCMASTERREAd
+              used in SPMI triggering if the trigger condition is MASTERREAd , MASTERWRIte , or
+              DEVICEDESCMASTERREAd .
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -7526,8 +7526,8 @@ class TriggerBBusBItemSpmiDataValue(SCPICmdRead):
 
     Description:
         - This command sets or queries the binary data string used for SPMI triggering if the
-          trigger condition is MASTERREAd MASTERWRIte REGREAd REGWRIte EXTREGREAd EXTREGWRIte
-          LONGEXTREGREAd LONGEXTREGWRIte REG0WRIte
+          trigger condition is MASTERREAd , MASTERWRIte , REGREAd , REGWRIte , EXTREGREAd ,
+          EXTREGWRIte , LONGEXTREGREAd , LONGEXTREGWRIte , or REG0WRIte .
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:SPMI:DATa:VALue?`` query.
@@ -7569,8 +7569,8 @@ class TriggerBBusBItemSpmiData(SCPICmdRead):
 
         Description:
             - This command sets or queries the binary data string used for SPMI triggering if the
-              trigger condition is MASTERREAd MASTERWRIte REGREAd REGWRIte EXTREGREAd EXTREGWRIte
-              LONGEXTREGREAd LONGEXTREGWRIte REG0WRIte
+              trigger condition is MASTERREAd , MASTERWRIte , REGREAd , REGWRIte , EXTREGREAd ,
+              EXTREGWRIte , LONGEXTREGREAd , LONGEXTREGWRIte , or REG0WRIte .
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:SPMI:DATa:VALue?``
@@ -18904,8 +18904,8 @@ class TriggerBBusBItemArinc429aLabelQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on label data for an
           ARINC429 bus signal. The bus number is specified by x. The trigger condition must be set
-          to LABel LABELANDDATAIf the trigger condition is set to LABELANDDATA, the label qualifier
-          will be locked to Equal until the trigger condition is changed again.
+          to LABel or LABELANDDATA .If the trigger condition is set to LABELANDDATA, the label
+          qualifier will be locked to Equal until the trigger condition is changed again.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -19022,8 +19022,9 @@ class TriggerBBusBItemArinc429aLabel(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on label data
               for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-              must be set to LABel LABELANDDATAIf the trigger condition is set to LABELANDDATA, the
-              label qualifier will be locked to Equal until the trigger condition is changed again.
+              must be set to LABel or LABELANDDATA .If the trigger condition is set to LABELANDDATA,
+              the label qualifier will be locked to Equal until the trigger condition is changed
+              again.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -19151,8 +19152,8 @@ class TriggerBBusBItemArinc429aDataQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on data in the DATA
           field for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-          must be set to DATa LABELANDDATAThe trigger qualifier only applies to the bits defined as
-          the data field via the bus data field format specifier (using
+          must be set to DATa or LABELANDDATA .The trigger qualifier only applies to the bits
+          defined as the data field via the bus data field format specifier (using
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -19271,8 +19272,8 @@ class TriggerBBusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on data in the
               DATA field for an ARINC429 bus signal. The bus number is specified by x. The trigger
-              condition must be set to DATa LABELANDDATAThe trigger qualifier only applies to the
-              bits defined as the data field via the bus data field format specifier (using
+              condition must be set to DATa or LABELANDDATA .The trigger qualifier only applies to
+              the bits defined as the data field via the bus data field format specifier (using
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -26250,8 +26251,8 @@ class TriggerABusBItemSpmiRegisteraddressValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the binary data string that identifies the register address
-          used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte REGREAd
-          REGWRIte EXTREGREAd EXTREGWRIte LONGEXTREGREAd LONGEXTREGWRIte
+          used in SPMI triggering if the trigger condition is MASTERREAd , MASTERWRIte , REGREAd ,
+          REGWRIte , EXTREGREAd , EXTREGWRIte , LONGEXTREGREAd , or LONGEXTREGWRIte .
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -26303,8 +26304,8 @@ class TriggerABusBItemSpmiRegisteraddress(SCPICmdRead):
 
         Description:
             - This command sets or queries the binary data string that identifies the register
-              address used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte
-              REGREAd REGWRIte EXTREGREAd EXTREGWRIte LONGEXTREGREAd LONGEXTREGWRIte
+              address used in SPMI triggering if the trigger condition is MASTERREAd , MASTERWRIte ,
+              REGREAd , REGWRIte , EXTREGREAd , EXTREGWRIte , LONGEXTREGREAd , or LONGEXTREGWRIte .
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -26360,8 +26361,8 @@ class TriggerABusBItemSpmiMasteraddressValue(SCPICmdRead):
 
     Description:
         - This command sets or queries the binary data string that identifies the master address
-          used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte
-          DEVICEDESCMASTERREAd
+          used in SPMI triggering if the trigger condition is MASTERREAd , MASTERWRIte , or
+          DEVICEDESCMASTERREAd .
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -26407,8 +26408,8 @@ class TriggerABusBItemSpmiMasteraddress(SCPICmdRead):
 
         Description:
             - This command sets or queries the binary data string that identifies the master address
-              used in SPMI triggering if the trigger condition is MASTERREAd MASTERWRIte
-              DEVICEDESCMASTERREAd
+              used in SPMI triggering if the trigger condition is MASTERREAd , MASTERWRIte , or
+              DEVICEDESCMASTERREAd .
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -26433,8 +26434,8 @@ class TriggerABusBItemSpmiDataValue(SCPICmdRead):
 
     Description:
         - This command sets or queries the binary data string used for SPMI triggering if the
-          trigger condition is MASTERREAd MASTERWRIte REGREAd REGWRIte EXTREGREAd EXTREGWRIte
-          LONGEXTREGREAd LONGEXTREGWRIte REG0WRIte
+          trigger condition is MASTERREAd , MASTERWRIte , REGREAd , REGWRIte , EXTREGREAd ,
+          EXTREGWRIte , LONGEXTREGREAd , LONGEXTREGWRIte , or REG0WRIte .
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:SPMI:DATa:VALue?`` query.
@@ -26476,8 +26477,8 @@ class TriggerABusBItemSpmiData(SCPICmdRead):
 
         Description:
             - This command sets or queries the binary data string used for SPMI triggering if the
-              trigger condition is MASTERREAd MASTERWRIte REGREAd REGWRIte EXTREGREAd EXTREGWRIte
-              LONGEXTREGREAd LONGEXTREGWRIte REG0WRIte
+              trigger condition is MASTERREAd , MASTERWRIte , REGREAd , REGWRIte , EXTREGREAd ,
+              EXTREGWRIte , LONGEXTREGREAd , LONGEXTREGWRIte , or REG0WRIte .
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:SPMI:DATa:VALue?``
@@ -37811,8 +37812,8 @@ class TriggerABusBItemArinc429aLabelQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on label data for an
           ARINC429 bus signal. The bus number is specified by x. The trigger condition must be set
-          to LABel LABELANDDATAIf the trigger condition is set to LABELANDDATA, the label qualifier
-          will be locked to Equal until the trigger condition is changed again.
+          to LABel or LABELANDDATA .If the trigger condition is set to LABELANDDATA, the label
+          qualifier will be locked to Equal until the trigger condition is changed again.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -37929,8 +37930,9 @@ class TriggerABusBItemArinc429aLabel(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on label data
               for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-              must be set to LABel LABELANDDATAIf the trigger condition is set to LABELANDDATA, the
-              label qualifier will be locked to Equal until the trigger condition is changed again.
+              must be set to LABel or LABELANDDATA .If the trigger condition is set to LABELANDDATA,
+              the label qualifier will be locked to Equal until the trigger condition is changed
+              again.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -38058,8 +38060,8 @@ class TriggerABusBItemArinc429aDataQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on data in the DATA
           field for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-          must be set to DATa LABELANDDATAThe trigger qualifier only applies to the bits defined as
-          the data field via the bus data field format specifier (using
+          must be set to DATa or LABELANDDATA .The trigger qualifier only applies to the bits
+          defined as the data field via the bus data field format specifier (using
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -38178,8 +38180,8 @@ class TriggerABusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on data in the
               DATA field for an ARINC429 bus signal. The bus number is specified by x. The trigger
-              condition must be set to DATa LABELANDDATAThe trigger qualifier only applies to the
-              bits defined as the data field via the bus data field format specifier (using
+              condition must be set to DATa or LABELANDDATA .The trigger qualifier only applies to
+              the bits defined as the data field via the bus data field format specifier (using
 
         Usage:
             - Using the ``.query()`` method will send the

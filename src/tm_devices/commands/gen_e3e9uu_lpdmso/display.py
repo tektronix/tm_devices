@@ -11312,7 +11312,10 @@ class DisplayPlotview1CursorWaveformBposition(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the waveform cursor B horizontal position of the specified
-          cursor in the specified view. NOTE
+          cursor in the specified view. NOTE : In case of XY plot, this command has no effect when
+          used to set the value. Incase of bathtub plot, this command has no effect. Query returns
+          invalid values. For all other plots, this command sets or returns the cursor B horizontal
+          position.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -11340,7 +11343,10 @@ class DisplayPlotview1CursorWaveformAposition(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the waveform cursor A horizontal position of the specified
-          cursor in the specified view. NOTE
+          cursor in the specified view. NOTE : In case of XY plot, this command has no effect when
+          used to set the value. Incase of bathtub plot, this command sets or returns the cursor A
+          vertical position. For all other plots, this command sets or returns the cursor A
+          horizontal position.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -11391,7 +11397,10 @@ class DisplayPlotview1CursorWaveform(SCPICmdRead):
 
         Description:
             - This command sets or queries the waveform cursor A horizontal position of the
-              specified cursor in the specified view. NOTE
+              specified cursor in the specified view. NOTE : In case of XY plot, this command has no
+              effect when used to set the value. Incase of bathtub plot, this command sets or
+              returns the cursor A vertical position. For all other plots, this command sets or
+              returns the cursor A horizontal position.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -11420,7 +11429,10 @@ class DisplayPlotview1CursorWaveform(SCPICmdRead):
 
         Description:
             - This command sets or queries the waveform cursor B horizontal position of the
-              specified cursor in the specified view. NOTE
+              specified cursor in the specified view. NOTE : In case of XY plot, this command has no
+              effect when used to set the value. Incase of bathtub plot, this command has no effect.
+              Query returns invalid values. For all other plots, this command sets or returns the
+              cursor B horizontal position.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -14893,7 +14905,8 @@ class DisplayMathfftview1CursorDdt(SCPICmdRead):
 
     Description:
         - This command queries the delta Y over delta X (ΔY/Δ X) cursor readout value of the
-          specified cursor in the specified Math-FFT view. NOTE
+          specified cursor in the specified Math-FFT view. NOTE : If the current cursor is set to
+          horizontal mode, this command will time out.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:MATHFFTView1:CURSor:DDT?`` query.
@@ -15051,7 +15064,8 @@ class DisplayMathfftview1Cursor(SCPICmdRead):
 
         Description:
             - This command queries the delta Y over delta X (ΔY/Δ X) cursor readout value of the
-              specified cursor in the specified Math-FFT view. NOTE
+              specified cursor in the specified Math-FFT view. NOTE : If the current cursor is set
+              to horizontal mode, this command will time out.
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:MATHFFTView1:CURSor:DDT?``
@@ -15670,7 +15684,7 @@ class DisplayIntensityBacklightAutodimEnable(SCPICmdWrite, SCPICmdRead):
     Description:
         - Sets or queries the state of the display auto-dim feature. By default it is enabled. Once
           the backlight has dimmed, any button push, knob turn or mouse movement returns the
-          backlight value to the value set by ``:DISplay:INTENSITy:BACKLight``
+          backlight value to the value set by ``:DISplay:INTENSITy:BACKLight`` .
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -15719,7 +15733,7 @@ class DisplayIntensityBacklightAutodim(SCPICmdRead):
         Description:
             - Sets or queries the state of the display auto-dim feature. By default it is enabled.
               Once the backlight has dimmed, any button push, knob turn or mouse movement returns
-              the backlight value to the value set by ``:DISplay:INTENSITy:BACKLight``
+              the backlight value to the value set by ``:DISplay:INTENSITy:BACKLight`` .
 
         Usage:
             - Using the ``.query()`` method will send the

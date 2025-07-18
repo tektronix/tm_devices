@@ -3159,7 +3159,8 @@ class MSO4BCommands:
               the output queue, see Registers and Queues. The ``*OPC`` command allows you to
               synchronize the operation of the instrument with your application program. For more
               information, see Synchronization Methods. Refer to the Oscilloscope operations that
-              can generate OPC
+              can generate OPC table for a list of commands that generate an OPC message. (See Table
+              3-3.)
 
         Usage:
             - Using the ``.query()`` method will send the ``*OPC?`` query.
@@ -3469,18 +3470,28 @@ class MSO4BCommands:
             - This command (no query form) resets the instrument to the factory default settings.
               This command does the following: Recalls the default instrument setup. Clears the
               current ``*DDT`` command. Disables aliases (``:ALIAS:STATE 0``). Disables the user
-              password (for the ``*PUD`` command). The ``*RST The`` current working directory (:
-              ``FILESystem:CWD HEADer`` The state of keyword and enumeration verbosity (: VERBose
-              ``*PSC The`` Event Status Enable Register ( ``*ESE`` ``*SRE The`` Event Status Enable
-              Register ( ``*ESE`` ``*SRE The`` Device Event Status Enable Register ( DESE The user
-              password for protected user data (: PASSWord ``*PUD The`` enabled state of the socket
-              server (: ``SOCKETServer:ENAble SOCKETServer``:PORT The socket server protocol (:
-              ``SOCKETServer:PROTOCol USBDevice``:CONFigure The destination reference waveform or
-              file path for the : CURVe ``DATa:DESTination The`` source waveform for the : CURVe?
-              WAVFrm? ``DATa:SOUrce The`` source waveform for the : CURVe? WAVFrm?
-              ``DATa:SOUrce The`` waveform data encoding for the : CURVe WAVFrm? ``DATa:ENCdg The``
-              starting point for : CURVe? ``DATa:STARt CURVe``? ``DATa:STOP WFMInpre`` All user
-              settable settings associated with the WFMOutpre ``*RST``
+              password (for the ``*PUD`` command). The ``*RST`` command does not change the
+              following: The current working directory (: ``FILESystem:CWD`` command). The state of
+              command headers (: HEADer command). The state of keyword and enumeration verbosity (:
+              VERBose command). The Power-on Status Clear Flag ( ``*PSC`` command). The Event Status
+              Enable Register ( ``*ESE`` command). The Service Request Enable Register ( ``*SRE``
+              command). The Event Status Enable Register ( ``*ESE`` command). The Service Request
+              Enable Register ( ``*SRE`` command). The Device Event Status Enable Register ( DESE
+              command). The user password for protected user data (: PASSWord command). The content
+              of protected user data ( ``*PUD`` command). The enabled state of the socket server (:
+              ``SOCKETServer:ENAble`` command). The socket server port number (:
+              ``SOCKETServer:PORT`` command). The socket server protocol (:
+              ``SOCKETServer:PROTOCol`` command). The USBTMC port configuration (:
+              ``USBDevice:CONFigure`` command). The destination reference waveform or file path for
+              the : CURVe command (: ``DATa:DESTination`` command). The source waveform for the :
+              CURVe? or : WAVFrm? queries (: ``DATa:SOUrce`` command). The source waveform for the :
+              CURVe? or : WAVFrm? queries (: ``DATa:SOUrce`` command). The waveform data encoding
+              for the : CURVe command or query or the : WAVFrm? query (: ``DATa:ENCdg`` command).
+              The starting point for : CURVe? queries (: ``DATa:STARt`` command). The ending point
+              for : CURVe? queries (: ``DATa:STOP`` command). All settings associated the : WFMInpre
+              commands. All user settable settings associated with the WFMOutpre commands. ``*RST``
+              only resets the programmable interface settings, it does not change the user interface
+              settings.
 
         Usage:
             - Using the ``.write()`` method will send the ``*RST`` command.
@@ -3643,7 +3654,8 @@ class MSO4BCommands:
         """Return the ``*SRE`` command.
 
         Description:
-            - The ``*SRE``
+            - The ``*SRE`` (Service Request Enable) command sets and queries the bits in the Service
+              Request Enable Register. For more information, refer to Registers.
 
         Usage:
             - Using the ``.query()`` method will send the ``*SRE?`` query.
@@ -3734,7 +3746,9 @@ class MSO4BCommands:
         """Return the ``TIMe`` command.
 
         Description:
-            - This command sets the time in the form ``hh:mm:ss``
+            - This command sets the time in the form ``hh:mm:ss`` where hh refers to a two-digit
+              hour number, mm refers to a two-digit minute number from 01 to 60, and ss refers to a
+              two-digit second number from 01 to 60.
 
         Usage:
             - Using the ``.query()`` method will send the ``TIMe?`` query.

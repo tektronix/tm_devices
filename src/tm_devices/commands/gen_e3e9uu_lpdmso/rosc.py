@@ -41,8 +41,10 @@ class RoscState(SCPICmdRead):
         ```
 
     Info:
-        - ``LOCKED`` indicates the.
-        - ``UNLOCKED`` indicates the.
+        - ``LOCKED`` indicates the timing reference phase-locked loop (PLL) is locked to the input
+          frequency. oscillator is locked.
+        - ``UNLOCKED`` indicates the timing reference phase-locked loop (PLL) is not locked to the
+          input frequency. oscillator is not locked.
     """
 
 
@@ -149,7 +151,9 @@ class Rosc(SCPICmdRead):
             ```
 
         Info:
-            - ``LOCKED`` indicates the.
-            - ``UNLOCKED`` indicates the.
+            - ``LOCKED`` indicates the timing reference phase-locked loop (PLL) is locked to the
+              input frequency. oscillator is locked.
+            - ``UNLOCKED`` indicates the timing reference phase-locked loop (PLL) is not locked to
+              the input frequency. oscillator is not locked.
         """
         return self._state

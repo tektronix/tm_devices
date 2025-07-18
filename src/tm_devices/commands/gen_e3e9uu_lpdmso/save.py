@@ -451,7 +451,7 @@ class SaveMask(SCPICmdWrite):
     Description:
         - Saves the given Waveview Mask to the specified file. Use the format
           [<path>]'<filename><.ext>' for the argument. Specifying a path is optional. If no path is
-          entered, the file is saved to the current working directory set by ``FILESystem:CWD``
+          entered, the file is saved to the current working directory set by ``FILESystem:CWD`` .
           <path> ues the form '<drive>/<dir>.../'. You can specify a relative path or a complete
           path: Relative path specification: If the file argument begins with '.' or '..' or has a
           file path separator appearing anywhere other than the first character position, then the
@@ -1140,17 +1140,17 @@ class Save(SCPICmdRead):
             - Saves the given Waveview Mask to the specified file. Use the format
               [<path>]'<filename><.ext>' for the argument. Specifying a path is optional. If no path
               is entered, the file is saved to the current working directory set by
-              ``FILESystem:CWD`` <path> ues the form '<drive>/<dir>.../'. You can specify a relative
-              path or a complete path: Relative path specification: If the file argument begins with
-              '.' or '..' or has a file path separator appearing anywhere other than the first
-              character position, then the file name is treated as a path that is relative to the
-              current working directory. Complete path specification: If the file argument begins
-              with a file path separator (forward slash character) or a drive designator (such as
-              C:), then the file name is interpreted as a full path from the specified drive.
-              <filename> sets the file name to use to create the file. A file can have up to 125
-              characters. <.ext> sets the file format for saving the mask data. Segment-based masks
-              must be saved with a .xml extension, while tolerance masks must be saved with a .tol
-              extension.
+              ``FILESystem:CWD`` . <path> ues the form '<drive>/<dir>.../'. You can specify a
+              relative path or a complete path: Relative path specification: If the file argument
+              begins with '.' or '..' or has a file path separator appearing anywhere other than the
+              first character position, then the file name is treated as a path that is relative to
+              the current working directory. Complete path specification: If the file argument
+              begins with a file path separator (forward slash character) or a drive designator
+              (such as C:), then the file name is interpreted as a full path from the specified
+              drive. <filename> sets the file name to use to create the file. A file can have up to
+              125 characters. <.ext> sets the file format for saving the mask data. Segment-based
+              masks must be saved with a .xml extension, while tolerance masks must be saved with a
+              .tol extension.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``SAVe:MASK value`` command.

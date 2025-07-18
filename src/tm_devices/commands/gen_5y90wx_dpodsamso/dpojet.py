@@ -1557,7 +1557,7 @@ class DpojetReportGetimagename(SCPICmdRead):
 
     Description:
         - This query only commands gets all the PNG format image names from this
-          directoryC:Users<userName>TektronixTekApplicationsDPOJETReportsResources
+          directoryC:Users<userName>TektronixTekApplicationsDPOJETReportsResources .
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:REPORT:GETIMAGEName?`` query.
@@ -1896,7 +1896,7 @@ class DpojetReport(SCPICmdWrite, SCPICmdRead):
 
         Description:
             - This query only commands gets all the PNG format image names from this
-              directoryC:Users<userName>TektronixTekApplicationsDPOJETReportsResources
+              directoryC:Users<userName>TektronixTekApplicationsDPOJETReportsResources .
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:REPORT:GETIMAGEName?`` query.
@@ -3134,7 +3134,7 @@ class DpojetReflevelsAutoset(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command performs a DPOJET ref level autoset on any sources selected using
-          ``DPOJET:REFLevels:CH<x>:AUTOSet``.All pieces of the reflevel branch have the ability to
+          ``DPOJET:REFLevels:CH<x>:AUTOSet``. All pieces of the reflevel branch have the ability to
           set ref levels for CH1-CH4, MATH1-MATH4, and REF1-Ref4. Only the CH<x> portion is shown in
           this OLH, but it exists and matches exactly for MATH (``DPOJET:REFLevels:MATH<x>`` and REF
           (``DPOJET:REFLevels:REF<x>``).
@@ -3202,7 +3202,7 @@ class DpojetReflevels(SCPICmdRead):
 
         Description:
             - This command performs a DPOJET ref level autoset on any sources selected using
-              ``DPOJET:REFLevels:CH<x>:AUTOSet``.All pieces of the reflevel branch have the ability
+              ``DPOJET:REFLevels:CH<x>:AUTOSet``. All pieces of the reflevel branch have the ability
               to set ref levels for CH1-CH4, MATH1-MATH4, and REF1-Ref4. Only the CH<x> portion is
               shown in this OLH, but it exists and matches exactly for MATH
               (``DPOJET:REFLevels:MATH<x>`` and REF (``DPOJET:REFLevels:REF<x>``).
@@ -14301,7 +14301,8 @@ class DpojetMeasItemOpticalTargetber(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:MEAS<x>:OPTIcal:TARGETBer`` command.
 
     Description:
-        - This command sets or queries the Target BER value display. The 1E-Value = 10 -Value
+        - This command sets or queries the Target BER value display. The 1E-Value = 10 -Value will
+          be considered as Target BER for the TDEC computation.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:MEAS<x>:OPTIcal:TARGETBer?`` query.
@@ -14525,6 +14526,7 @@ class DpojetMeasItemOptical(SCPICmdRead):
 
         Description:
             - This command sets or queries the Target BER value display. The 1E-Value = 10 -Value
+              will be considered as Target BER for the TDEC computation.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:MEAS<x>:OPTIcal:TARGETBer?``

@@ -14750,7 +14750,8 @@ class MeasurementMeasItemGatingHysteresis(SCPICmdWrite, SCPICmdRead):
         - This command sets or queries the gating hysteresis value when the gating type is logic.
           Measurements are specified by x. This command sets or queries the global file containing
           the data pattern used when known data pattern clock recovery is used for the measurement.
-          This will affect measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          This will affect measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is
+          set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:GATing:HYSTeresis?``
@@ -15023,7 +15024,7 @@ class MeasurementMeasItemGating(SCPICmdWrite, SCPICmdRead):
               logic. Measurements are specified by x. This command sets or queries the global file
               containing the data pattern used when known data pattern clock recovery is used for
               the measurement. This will affect measurements whose
-              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:GATing:HYSTeresis?``
@@ -17597,7 +17598,7 @@ class MeasurementMeasItemClockrecoveryTdcompensation(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets the PLL clock recovery loop feedback time-constants such that the actual
           transfer function matches closely to a mathematical filter polynomial. This will affect
-          measurements whose : ``MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          measurements whose : ``MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 0.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -18834,7 +18835,8 @@ class MeasurementMeasItemClockrecovery(SCPICmdRead):
         Description:
             - This command sets the PLL clock recovery loop feedback time-constants such that the
               actual transfer function matches closely to a mathematical filter polynomial. This
-              will affect measurements whose : ``MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              will affect measurements whose : ``MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is
+              set to 0.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -28611,7 +28613,7 @@ class MeasurementClockrecoveryTdcompensation(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets the PLL clock recovery loop feedback time-constants such that the actual
           transfer function matches closely to a mathematical filter polynomial. This will affect
-          measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:TDCOMPensation?``
@@ -28640,7 +28642,7 @@ class MeasurementClockrecoveryStandard(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the global communications standard used when PLL clock
           recovery is used for the measurement. This will affect measurements whose
-          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:STAndard?`` query.
@@ -28707,7 +28709,7 @@ class MeasurementClockrecoveryNominaloffsetSelectiontype(SCPICmdWrite, SCPICmdRe
     Description:
         - This command sets or queries the global offset type used when explicit clock recovery is
           used for the measurement. This will affect measurements whose
-          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -28736,7 +28738,7 @@ class MeasurementClockrecoveryNominaloffset(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the global offset value used when explicit clock recovery is
           used for the measurement. This will affect measurements whose
-          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:NOMINALOFFset?``
@@ -28773,7 +28775,7 @@ class MeasurementClockrecoveryNominaloffset(SCPICmdWrite, SCPICmdRead):
         Description:
             - This command sets or queries the global offset type used when explicit clock recovery
               is used for the measurement. This will affect measurements whose
-              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -28828,7 +28830,8 @@ class MeasurementClockrecoveryMethod(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the global clock recovery method for the measurement. This
-          will affect measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          will affect measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set
+          to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:METHod?`` query.
@@ -28856,7 +28859,7 @@ class MeasurementClockrecoveryMeanautocalculate(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries how often the clock is calculated when constant clock
           recovery is used for the measurement. This will affect measurements whose
-          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -28885,7 +28888,7 @@ class MeasurementClockrecoveryLoopbandwidth(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the global loop bandwidth used when PLL clock recovery is
           used for the measurement. This will affect measurements whose
-          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:LOOPBandwidth?``
@@ -28913,7 +28916,7 @@ class MeasurementClockrecoveryJtfbandwidth(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the global JTF bandwidth used when PLL clock recovery is used
           for the measurement. This will affect measurements whose
-          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:JTFBandwidth?``
@@ -28941,7 +28944,7 @@ class MeasurementClockrecoveryExplicitclockmode(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the global explicit clock mode used when explicit clock
           recovery is used for the measurement. This will affect measurements whose
-          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -28970,7 +28973,7 @@ class MeasurementClockrecoveryDatarate(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the global nominal data bit rate used when nominal data rate
           clock recovery is used for the measurement. This will affect measurements whose
-          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:DATARate?`` query.
@@ -28996,7 +28999,7 @@ class MeasurementClockrecoveryDatapath(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the global file containing the data pattern used when known
           data pattern clock recovery is used for the measurement. This will affect measurements
-          whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:DATAPath?`` query.
@@ -29025,7 +29028,7 @@ class MeasurementClockrecoveryDamping(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the global damping value used when PLL clock recovery is used
           for the measurement. This will affect measurements whose
-          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:DAMPing?`` query.
@@ -29051,7 +29054,7 @@ class MeasurementClockrecoveryConstclockmode(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the global constant clock mode used when constant clock
           recovery is used for the measurement. This will affect measurements whose
-          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:CONSTCLOCKMODe?``
@@ -29081,7 +29084,7 @@ class MeasurementClockrecoveryClockmultiplier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the global clock multiplier used when explicit clock recovery
           is used for the measurement. This will affect measurements whose
-          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:CLOCKMultiplier?``
@@ -29109,7 +29112,7 @@ class MeasurementClockrecoveryClockfrequency(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the global clock frequency used when fixed constant clock
           recovery is used for the measurement. This will affect measurements whose
-          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag
+          ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:CLOCKFrequency?``
@@ -29137,7 +29140,7 @@ class MeasurementClockrecoveryAdvancedMethod(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the global advanced clock recovery method. This will affect
-          measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+          measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:ADVanced:METHod?``
@@ -29183,7 +29186,8 @@ class MeasurementClockrecoveryAdvanced(SCPICmdRead):
 
         Description:
             - This command sets or queries the global advanced clock recovery method. This will
-              affect measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              affect measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to
+              1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -29296,7 +29300,7 @@ class MeasurementClockrecovery(SCPICmdRead):
         Description:
             - This command sets or queries the global clock frequency used when fixed constant clock
               recovery is used for the measurement. This will affect measurements whose
-              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag
+              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -29326,7 +29330,7 @@ class MeasurementClockrecovery(SCPICmdRead):
         Description:
             - This command sets or queries the global clock multiplier used when explicit clock
               recovery is used for the measurement. This will affect measurements whose
-              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -29355,7 +29359,7 @@ class MeasurementClockrecovery(SCPICmdRead):
         Description:
             - This command sets or queries the global constant clock mode used when constant clock
               recovery is used for the measurement. This will affect measurements whose
-              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -29386,7 +29390,7 @@ class MeasurementClockrecovery(SCPICmdRead):
         Description:
             - This command sets or queries the global damping value used when PLL clock recovery is
               used for the measurement. This will affect measurements whose
-              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:DAMPing?``
@@ -29415,7 +29419,7 @@ class MeasurementClockrecovery(SCPICmdRead):
         Description:
             - This command sets or queries the global file containing the data pattern used when
               known data pattern clock recovery is used for the measurement. This will affect
-              measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:DATAPath?``
@@ -29445,7 +29449,7 @@ class MeasurementClockrecovery(SCPICmdRead):
         Description:
             - This command sets or queries the global nominal data bit rate used when nominal data
               rate clock recovery is used for the measurement. This will affect measurements whose
-              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:DATARate?``
@@ -29474,7 +29478,7 @@ class MeasurementClockrecovery(SCPICmdRead):
         Description:
             - This command sets or queries the global explicit clock mode used when explicit clock
               recovery is used for the measurement. This will affect measurements whose
-              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -29504,7 +29508,7 @@ class MeasurementClockrecovery(SCPICmdRead):
         Description:
             - This command sets or queries the global JTF bandwidth used when PLL clock recovery is
               used for the measurement. This will affect measurements whose
-              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -29533,7 +29537,7 @@ class MeasurementClockrecovery(SCPICmdRead):
         Description:
             - This command sets or queries the global loop bandwidth used when PLL clock recovery is
               used for the measurement. This will affect measurements whose
-              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -29562,7 +29566,7 @@ class MeasurementClockrecovery(SCPICmdRead):
         Description:
             - This command sets or queries how often the clock is calculated when constant clock
               recovery is used for the measurement. This will affect measurements whose
-              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -29591,7 +29595,8 @@ class MeasurementClockrecovery(SCPICmdRead):
 
         Description:
             - This command sets or queries the global clock recovery method for the measurement.
-              This will affect measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              This will affect measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag
+              is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:METHod?``
@@ -29650,7 +29655,7 @@ class MeasurementClockrecovery(SCPICmdRead):
         Description:
             - This command sets or queries the global offset value used when explicit clock recovery
               is used for the measurement. This will affect measurements whose
-              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -29683,7 +29688,7 @@ class MeasurementClockrecovery(SCPICmdRead):
         Description:
             - This command sets or queries the global communications standard used when PLL clock
               recovery is used for the measurement. This will affect measurements whose
-              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the ``MEASUrement:CLOCKRecovery:STAndard?``
@@ -29753,7 +29758,8 @@ class MeasurementClockrecovery(SCPICmdRead):
         Description:
             - This command sets the PLL clock recovery loop feedback time-constants such that the
               actual transfer function matches closely to a mathematical filter polynomial. This
-              will affect measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal``
+              will affect measurements whose ``:MEASUrement:MEAS<x>:CLOCKRecovery:GLOBal`` flag is
+              set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the

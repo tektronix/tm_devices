@@ -117,7 +117,9 @@ class Time(SCPICmdWrite, SCPICmdRead):
     """The ``TIMe`` command.
 
     Description:
-        - This command sets the time in the form ``hh:mm:ss``
+        - This command sets the time in the form ``hh:mm:ss`` where hh refers to a two-digit hour
+          number, mm refers to a two-digit minute number from 01 to 60, and ss refers to a two-digit
+          second number from 01 to 60.
 
     Usage:
         - Using the ``.query()`` method will send the ``TIMe?`` query.

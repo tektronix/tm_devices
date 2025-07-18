@@ -3737,7 +3737,9 @@ class PowerPowerItemSwitchinglossVglevel(SCPICmdWrite, SCPICmdRead):
     """The ``POWer:POWer<x>:SWITCHINGLOSS:VGLevel`` command.
 
     Description:
-        - This command sets or queries the gate voltage value (V g
+        - This command sets or queries the gate voltage value (V g Level Ton-Start) for the
+          switching loss measurement in the specified power measurement number. The power
+          measurement number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:SWITCHINGLOSS:VGLevel?``
@@ -4372,7 +4374,9 @@ class PowerPowerItemSwitchingloss(SCPICmdRead):
         """Return the ``POWer:POWer<x>:SWITCHINGLOSS:VGLevel`` command.
 
         Description:
-            - This command sets or queries the gate voltage value (V g
+            - This command sets or queries the gate voltage value (V g Level Ton-Start) for the
+              switching loss measurement in the specified power measurement number. The power
+              measurement number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:SWITCHINGLOSS:VGLevel?``

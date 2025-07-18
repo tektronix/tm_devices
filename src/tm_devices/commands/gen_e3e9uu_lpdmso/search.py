@@ -2175,6 +2175,8 @@ class SearchSearchItemTriggerATransitionSource(SCPICmdWrite, SCPICmdRead):
           specified by x.
         - ``MATH<x>`` specifies the math waveform as the search source, where the math number is
           specified by x.
+        - ``REF<x>`` specifies the reference waveform as the search source, where the reference
+          number is specified by x.
     """
 
 
@@ -2414,6 +2416,8 @@ class SearchSearchItemTriggerATransition(SCPICmdRead):
               is specified by x.
             - ``MATH<x>`` specifies the math waveform as the search source, where the math number is
               specified by x.
+            - ``REF<x>`` specifies the reference waveform as the search source, where the reference
+              number is specified by x.
         """
         return self._source
 
@@ -4263,7 +4267,7 @@ class SearchSearchItemTriggerAPulsewidthWhen(SCPICmdWrite, SCPICmdRead):
         - This command specifies to search for a pulse with a width (duration) that is less than,
           greater than, equal to, or unequal to a specified value (set using
           ``SEARch:A:PULSEWidth:WIDth``, OR whose) ``SEARch:A:PULSEWidth:LOWLimit`` and
-          ``SEARch:A:PULSEWidth:HIGHLimit``
+          ``SEARch:A:PULSEWidth:HIGHLimit`` ). The search number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -4700,7 +4704,7 @@ class SearchSearchItemTriggerAPulsewidth(SCPICmdRead):
             - This command specifies to search for a pulse with a width (duration) that is less
               than, greater than, equal to, or unequal to a specified value (set using
               ``SEARch:A:PULSEWidth:WIDth``, OR whose) ``SEARch:A:PULSEWidth:LOWLimit`` and
-              ``SEARch:A:PULSEWidth:HIGHLimit``
+              ``SEARch:A:PULSEWidth:HIGHLimit`` ). The search number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -17186,7 +17190,7 @@ class SearchSearchItemTriggerABusSpacewireDataValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the binary data value to be used when searching on an
-          SpaceWire bus signal. The search condition must be set to Data (see Related Commands
+          SpaceWire bus signal. The search condition must be set to Data (see Related Commands ).
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -17217,7 +17221,7 @@ class SearchSearchItemTriggerABusSpacewireDataSize(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the length of the data string, in bytes, to use when
           searching on a SpaceWire bus signal. The search condition needs to be set to Data (see
-          Related Commands
+          Related Commands ).
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -17275,7 +17279,7 @@ class SearchSearchItemTriggerABusSpacewireData(SCPICmdRead):
         Description:
             - This command sets or queries the length of the data string, in bytes, to use when
               searching on a SpaceWire bus signal. The search condition needs to be set to Data (see
-              Related Commands
+              Related Commands ).
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -17306,6 +17310,7 @@ class SearchSearchItemTriggerABusSpacewireData(SCPICmdRead):
         Description:
             - This command sets or queries the binary data value to be used when searching on an
               SpaceWire bus signal. The search condition must be set to Data (see Related Commands
+              ).
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -30614,7 +30619,7 @@ class SearchSearchItemTriggerABusLinIdentifierValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the string used for a LIN bus identifier value. The search
-          number is specified by x. The search condition must be IDENTIFIER IDANDDATA
+          number is specified by x. The search condition must be IDENTIFIER or IDANDDATA .
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -30664,7 +30669,8 @@ class SearchSearchItemTriggerABusLinIdentifier(SCPICmdRead):
 
         Description:
             - This command sets or queries the string used for a LIN bus identifier value. The
-              search number is specified by x. The search condition must be IDENTIFIER IDANDDATA
+              search number is specified by x. The search condition must be IDENTIFIER or IDANDDATA
+              .
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -30721,7 +30727,7 @@ class SearchSearchItemTriggerABusLinDataValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the data string used for a LIN bus search. The search number
-          is specified by x. The search condition must be DATA IDANDDATA
+          is specified by x. The search condition must be DATA or IDANDDATA .
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -30777,8 +30783,8 @@ class SearchSearchItemTriggerABusLinDataHivalue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the high data value string used in a LIN bus search. The
-          search number is specified by x. The search condition must be DATA IDANDDATA INRANGE
-          OUTRANGE
+          search number is specified by x. The search condition must be DATA or IDANDDATA and the
+          data qualifier must be INRANGE or OUTRANGE .
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -30833,8 +30839,8 @@ class SearchSearchItemTriggerABusLinData(SCPICmdRead):
 
         Description:
             - This command sets or queries the high data value string used in a LIN bus search. The
-              search number is specified by x. The search condition must be DATA IDANDDATA INRANGE
-              OUTRANGE
+              search number is specified by x. The search condition must be DATA or IDANDDATA and
+              the data qualifier must be INRANGE or OUTRANGE .
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -30891,7 +30897,7 @@ class SearchSearchItemTriggerABusLinData(SCPICmdRead):
 
         Description:
             - This command sets or queries the data string used for a LIN bus search. The search
-              number is specified by x. The search condition must be DATA IDANDDATA
+              number is specified by x. The search condition must be DATA or IDANDDATA .
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -52737,7 +52743,7 @@ class SearchSearchItemTriggerABusCanDataOffset(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the data offset value, in bytes, to use when searching on the
           CAN data field. The search number is specified by x. The search condition must be set to
-          DATA IDANDDATA
+          DATA or IDANDDATA .
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -52867,7 +52873,7 @@ class SearchSearchItemTriggerABusCanData(SCPICmdRead):
         Description:
             - This command sets or queries the data offset value, in bytes, to use when searching on
               the CAN data field. The search number is specified by x. The search condition must be
-              set to DATA IDANDDATA
+              set to DATA or IDANDDATA .
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -56148,7 +56154,8 @@ class SearchSearchItemTriggerABusAudioDataOffset(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the data offset value (TDM channel) to be used when searching
           on a TDM type audio bus signal. The search condition must be set to DATa using S
-          ``EARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:TDM:CONDition``
+          ``EARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:TDM:CONDition`` . The search number is specified by
+          x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -56176,7 +56183,7 @@ class SearchSearchItemTriggerABusAudioDataHivalue(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the binary data string for the high data word to be used when
           searching on an audio bus signal. The search condition must be set to DATa using
-          ``:SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition``
+          ``:SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition`` . The search number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -56308,7 +56315,8 @@ class SearchSearchItemTriggerABusAudioData(SCPICmdRead):
         Description:
             - This command sets or queries the binary data string for the high data word to be used
               when searching on an audio bus signal. The search condition must be set to DATa using
-              ``:SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition``
+              ``:SEARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:CONDition`` . The search number is specified
+              by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -56337,7 +56345,8 @@ class SearchSearchItemTriggerABusAudioData(SCPICmdRead):
         Description:
             - This command sets or queries the data offset value (TDM channel) to be used when
               searching on a TDM type audio bus signal. The search condition must be set to DATa
-              using S ``EARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:TDM:CONDition``
+              using S ``EARCH:SEARCH<x>:TRIGger:A:BUS:AUDio:TDM:CONDition`` . The search number is
+              specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -56609,10 +56618,10 @@ class SearchSearchItemTriggerABusArinc429aSdiValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the label when searching on an ARINC429 SDI field. The search
-          number is specified by x. The search condition must be set to DATa LABELANDDATAThe SDI
-          field is only present when the selected data field format is DATA (using
-          ``BUS:B<x>:ARINC429A:DATAFORmat``). Also, the stored QString is reset to its default value
-          whenever the data field format is changed.
+          number is specified by x. The search condition must be set to DATa or LABELANDDATA , and
+          the data format must be set to DATA.The SDI field is only present when the selected data
+          field format is DATA (using ``BUS:B<x>:ARINC429A:DATAFORmat``). Also, the stored QString
+          is reset to its default value whenever the data field format is changed.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -56662,10 +56671,11 @@ class SearchSearchItemTriggerABusArinc429aSdi(SCPICmdRead):
 
         Description:
             - This command sets or queries the label when searching on an ARINC429 SDI field. The
-              search number is specified by x. The search condition must be set to DATa
-              LABELANDDATAThe SDI field is only present when the selected data field format is DATA
-              (using ``BUS:B<x>:ARINC429A:DATAFORmat``). Also, the stored QString is reset to its
-              default value whenever the data field format is changed.
+              search number is specified by x. The search condition must be set to DATa or
+              LABELANDDATA , and the data format must be set to DATA.The SDI field is only present
+              when the selected data field format is DATA (using ``BUS:B<x>:ARINC429A:DATAFORmat``).
+              Also, the stored QString is reset to its default value whenever the data field format
+              is changed.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -56760,7 +56770,7 @@ class SearchSearchItemTriggerABusArinc429aLabelHivalue(SCPICmdWrite, SCPICmdRead
     Description:
         - This command sets or queries the high value when searching on an ARINC429 label field. The
           search number is specified by x. The search condition must be set to LABel, and the label
-          qualifier must be INrange OUTrange
+          qualifier must be INrange or OUTrange .
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -56819,7 +56829,7 @@ class SearchSearchItemTriggerABusArinc429aLabel(SCPICmdRead):
         Description:
             - This command sets or queries the high value when searching on an ARINC429 label field.
               The search number is specified by x. The search condition must be set to LABel, and
-              the label qualifier must be INrange OUTrange
+              the label qualifier must be INrange or OUTrange .
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -56913,7 +56923,7 @@ class SearchSearchItemTriggerABusArinc429aErrtype(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the error type when searching on an ARINC429 bus signal. The
-          search number is specified by x. The search condition must be set to ERRor
+          search number is specified by x. The search condition must be set to ERRor .
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -56946,7 +56956,8 @@ class SearchSearchItemTriggerABusArinc429aDataValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the low value when searching on an ARINC429 data field. The
-          search number is specified by x. The search condition must be set to DATa LABELANDDATA
+          search number is specified by x. The search condition must be set to DATa or LABELANDDATA
+          .
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -57011,8 +57022,8 @@ class SearchSearchItemTriggerABusArinc429aDataHivalue(SCPICmdWrite, SCPICmdRead)
 
     Description:
         - This command sets or queries the high value when searching on an ARINC429 data field. The
-          search number is specified by x. The search condition must be set to DATa LABELANDDATA
-          INrange OUTrange
+          search number is specified by x. The search condition must be set to DATa or LABELANDDATA
+          , and the data qualifier must be INrange or OUTrange .
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -57070,8 +57081,8 @@ class SearchSearchItemTriggerABusArinc429aData(SCPICmdRead):
 
         Description:
             - This command sets or queries the high value when searching on an ARINC429 data field.
-              The search number is specified by x. The search condition must be set to DATa
-              LABELANDDATA INrange OUTrange
+              The search number is specified by x. The search condition must be set to DATa or
+              LABELANDDATA , and the data qualifier must be INrange or OUTrange .
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -57136,8 +57147,8 @@ class SearchSearchItemTriggerABusArinc429aData(SCPICmdRead):
 
         Description:
             - This command sets or queries the low value when searching on an ARINC429 data field.
-              The search number is specified by x. The search condition must be set to DATa
-              LABELANDDATA
+              The search number is specified by x. The search condition must be set to DATa or
+              LABELANDDATA .
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -57284,7 +57295,7 @@ class SearchSearchItemTriggerABusArinc429a(SCPICmdRead):
 
         Description:
             - This command sets or queries the error type when searching on an ARINC429 bus signal.
-              The search number is specified by x. The search condition must be set to ERRor
+              The search number is specified by x. The search condition must be set to ERRor .
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -59130,6 +59141,10 @@ class SearchDelete(SCPICmdWrite):
         ```
         - SEARCH:DELete <QString>
         ```
+
+    Info:
+        - ``<QString>`` is the specified search. The argument is of the form 'SEARCH<NR1>', where
+          <NR1> is ≥ 1).
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -59253,6 +59268,10 @@ class Search(SCPICmdRead):
             ```
             - SEARCH:DELete <QString>
             ```
+
+        Info:
+            - ``<QString>`` is the specified search. The argument is of the form 'SEARCH<NR1>',
+              where <NR1> is ≥ 1).
         """
         return self._delete
 

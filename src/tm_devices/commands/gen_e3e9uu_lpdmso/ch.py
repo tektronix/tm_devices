@@ -497,7 +497,7 @@ class ChannelDallLabelColor(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``CH<x>`` is the channel number.
         - ``<QString>`` is the color of the digital group label. To return the color to the default
-          color, send an empty string as in this example: .
+          color, send an empty string as in this example: ``:CH5_DALL:LABEL:COLOR`` ''.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -550,7 +550,7 @@ class ChannelDallLabel(SCPICmdRead):
         Info:
             - ``CH<x>`` is the channel number.
             - ``<QString>`` is the color of the digital group label. To return the color to the
-              default color, send an empty string as in this example: .
+              default color, send an empty string as in this example: ``:CH5_DALL:LABEL:COLOR`` ''.
         """
         return self._color
 
@@ -1658,6 +1658,10 @@ class ChannelScaleratio(SCPICmdWrite, SCPICmdRead):
         - CH<x>:SCALERATio <NR2>
         - CH<x>:SCALERATio?
         ```
+
+    Info:
+        - ``CH<x>`` is the channel number.
+        - ``<NR2>`` is the scale ratio for the specified analog channel.
     """
 
 
@@ -2291,7 +2295,7 @@ class ChannelProbeCompensate(SCPICmdWriteNoArguments):
 
     Description:
         - This command starts the probe compensation (if available) for the specified channel.
-          procedure for passive probes.
+          procedure for passive probes. The channel is specified by x.
 
     Usage:
         - Using the ``.write()`` method will send the ``CH<x>:PRObe:COMPensate`` command.
@@ -2403,7 +2407,7 @@ class ChannelProbe(SCPICmdRead):
 
         Description:
             - This command starts the probe compensation (if available) for the specified channel.
-              procedure for passive probes.
+              procedure for passive probes. The channel is specified by x.
 
         Usage:
             - Using the ``.write()`` method will send the ``CH<x>:PRObe:COMPensate`` command.
@@ -4247,6 +4251,10 @@ class Channel(ValidatedChannel, SCPICmdRead):
             - CH<x>:SCALERATio <NR2>
             - CH<x>:SCALERATio?
             ```
+
+        Info:
+            - ``CH<x>`` is the channel number.
+            - ``<NR2>`` is the scale ratio for the specified analog channel.
         """
         return self._scaleratio
 

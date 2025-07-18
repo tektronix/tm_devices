@@ -173,7 +173,8 @@ class SaveoneventImageFileformat(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or returns the image file extension (png, jpg, bmp). This command
-          replaces ``SAVEON:IMAGe:FILEFormat``
+          replaces ``SAVEON:IMAGe:FILEFormat`` (still valid command, but only an alias for this new
+          command).
 
     Usage:
         - Using the ``.query()`` method will send the ``SAVEONEVent:IMAGe:FILEFormat?`` query.
@@ -218,7 +219,8 @@ class SaveoneventImage(SCPICmdRead):
 
         Description:
             - This command sets or returns the image file extension (png, jpg, bmp). This command
-              replaces ``SAVEON:IMAGe:FILEFormat``
+              replaces ``SAVEON:IMAGe:FILEFormat`` (still valid command, but only an alias for this
+              new command).
 
         Usage:
             - Using the ``.query()`` method will send the ``SAVEONEVent:IMAGe:FILEFormat?`` query.

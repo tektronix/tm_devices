@@ -446,6 +446,7 @@ Commands and Queries:
     - BUS:B<x>:PARallel:CLOCKSOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>|NONE}
     - BUS:B<x>:PARallel:CLOCKSOUrce:THReshold <NR3>
     - BUS:B<x>:PARallel:CLOCKSOUrce:THReshold?
+    - BUS:B<x>:PARallel:CLOCKSOUrce?
     - BUS:B<x>:PARallel:CLOCk:EDGE {FALLING|RISING|EITHER}
     - BUS:B<x>:PARallel:CLOCk:EDGE?
     - BUS:B<x>:PARallel:CLOCk:ISCLOCKED {ON|OFF|<NR1>}
@@ -7559,12 +7560,16 @@ class BusBItemParallelClocksource(SCPICmdWrite, SCPICmdRead):
           is specified by x.
 
     Usage:
+        - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel:CLOCKSOUrce?`` query.
+        - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PARallel:CLOCKSOUrce?`` query
+          and raise an AssertionError if the returned value does not match ``value``.
         - Using the ``.write(value)`` method will send the ``BUS:B<x>:PARallel:CLOCKSOUrce value``
           command.
 
     SCPI Syntax:
         ```
         - BUS:B<x>:PARallel:CLOCKSOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>|NONE}
+        - BUS:B<x>:PARallel:CLOCKSOUrce?
         ```
 
     Info:
@@ -7872,12 +7877,16 @@ class BusBItemParallel(SCPICmdRead):
               bus is specified by x.
 
         Usage:
+            - Using the ``.query()`` method will send the ``BUS:B<x>:PARallel:CLOCKSOUrce?`` query.
+            - Using the ``.verify(value)`` method will send the ``BUS:B<x>:PARallel:CLOCKSOUrce?``
+              query and raise an AssertionError if the returned value does not match ``value``.
             - Using the ``.write(value)`` method will send the
               ``BUS:B<x>:PARallel:CLOCKSOUrce value`` command.
 
         SCPI Syntax:
             ```
             - BUS:B<x>:PARallel:CLOCKSOUrce {CH<x>|CH<x>_D<x>|MATH<x>|REF<x>|REF<x>_D<x>|NONE}
+            - BUS:B<x>:PARallel:CLOCKSOUrce?
             ```
 
         Info:
@@ -8263,6 +8272,12 @@ class BusBItemNrzSource(SCPICmdWrite, SCPICmdRead):
         - BUS:B<x>:NRZ:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:NRZ:SOUrce?
         ```
+
+    Info:
+        - ``B<x>A`` is the number of the bus.
+        - ``CH<x>`` specifies an analog channel as the source.
+        - ``AMATH<x>`` specifies a math waveform as the source.
+        - ``REF<x>`` specifies a digital reference waveform as the source.
     """
 
 
@@ -8479,6 +8494,12 @@ class BusBItemNrz(SCPICmdRead):
             - BUS:B<x>:NRZ:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:NRZ:SOUrce?
             ```
+
+        Info:
+            - ``B<x>A`` is the number of the bus.
+            - ``CH<x>`` specifies an analog channel as the source.
+            - ``AMATH<x>`` specifies a math waveform as the source.
+            - ``REF<x>`` specifies a digital reference waveform as the source.
         """
         return self._source
 
