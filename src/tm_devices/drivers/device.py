@@ -255,11 +255,10 @@ class Device(_AbstractDeviceControl, _ExtendableMixin, ABC):
     @cached_property
     def ip_address(self) -> str:
         """Return the IPv4 address of the device or an empty string if unable to fetch that."""
-        if self._config_entry.connection_type not in {ConnectionTypes.USB}:
-            try:
-                return socket.gethostbyname(self.address)
-            except (socket.gaierror, socket.herror):
-                pass
+        try:
+            return socket.gethostbyname(self.address)
+        except (socket.gaierror, socket.herror):
+            pass
         return ""
 
     ################################################################################################
