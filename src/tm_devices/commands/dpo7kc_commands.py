@@ -26,6 +26,7 @@ from .gen_fil6zt_msotekscopepcdpomdodsa.evmsg import Evmsg
 from .gen_fil6zt_msotekscopepcdpomdodsa.evqty import Evqty
 from .gen_fil6zt_msotekscopepcdpomdodsa.factory import Factory
 from .gen_fil6zt_msotekscopepcdpomdodsa.miscellaneous import Lrn
+from .gen_fil6zt_msotekscopepcdpomdodsa.rem import Rem
 from .gen_fil6zt_msotekscopepcdpomdodsa.set import Set
 from .gen_fil6zt_msotekscopepcdpomdodsa.verbose import Verbose
 from .gen_fj69if_msotekscopepcdpomdoafgawgdsa.status_and_error import Opc, Rst
@@ -107,7 +108,6 @@ from .gen_fx54ua_lpdmsodpomdodsa.password import Password
 from .gen_fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.allev import Allev
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.id import Id
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.rem import Rem
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.status_and_error import Psc, Pud
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.wavfrm import Wavfrm
 from .helpers import DefaultDictPassKeyToFactory

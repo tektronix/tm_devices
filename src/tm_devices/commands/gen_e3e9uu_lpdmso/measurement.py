@@ -14094,7 +14094,7 @@ class MeasurementMeasItemHighlevelOutl2ltol2n(SCPICmdWrite, SCPICmdRead):
     """The ``MEASUrement:MEAS<x>:HIGHLEVel:OUTL2LTOL2N`` command.
 
     Description:
-        - This command sets or queries local output Line-to-Line to Line-to-Neutral Conversion .
+        - This command sets or queries local output Line-to-Line to Line-to-Neutral Conversion.
 
     Usage:
         - Using the ``.query()`` method will send the ``MEASUrement:MEAS<x>:HIGHLEVel:OUTL2LTOL2N?``
@@ -14345,7 +14345,7 @@ class MeasurementMeasItemHighlevel(SCPICmdRead):
         """Return the ``MEASUrement:MEAS<x>:HIGHLEVel:OUTL2LTOL2N`` command.
 
         Description:
-            - This command sets or queries local output Line-to-Line to Line-to-Neutral Conversion .
+            - This command sets or queries local output Line-to-Line to Line-to-Neutral Conversion.
 
         Usage:
             - Using the ``.query()`` method will send the

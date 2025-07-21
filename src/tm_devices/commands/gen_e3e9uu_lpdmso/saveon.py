@@ -69,7 +69,7 @@ class SaveonWaveformFileformat(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the file format for saving waveforms when
-          ``:SAVEON:WAVEform`` is set to 1 .
+          ``:SAVEON:WAVEform`` is set to 1.
 
     Usage:
         - Using the ``.query()`` method will send the ``SAVEON:WAVEform:FILEFormat?`` query.
@@ -133,7 +133,7 @@ class SaveonWaveform(SCPICmdWrite, SCPICmdRead):
 
         Description:
             - This command sets or queries the file format for saving waveforms when
-              ``:SAVEON:WAVEform`` is set to 1 .
+              ``:SAVEON:WAVEform`` is set to 1.
 
         Usage:
             - Using the ``.query()`` method will send the ``SAVEON:WAVEform:FILEFormat?`` query.

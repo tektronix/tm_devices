@@ -15684,7 +15684,7 @@ class DisplayIntensityBacklightAutodimEnable(SCPICmdWrite, SCPICmdRead):
     Description:
         - Sets or queries the state of the display auto-dim feature. By default it is enabled. Once
           the backlight has dimmed, any button push, knob turn or mouse movement returns the
-          backlight value to the value set by ``:DISplay:INTENSITy:BACKLight`` .
+          backlight value to the value set by ``:DISplay:INTENSITy:BACKLight``.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -15733,7 +15733,7 @@ class DisplayIntensityBacklightAutodim(SCPICmdRead):
         Description:
             - Sets or queries the state of the display auto-dim feature. By default it is enabled.
               Once the backlight has dimmed, any button push, knob turn or mouse movement returns
-              the backlight value to the value set by ``:DISplay:INTENSITy:BACKLight`` .
+              the backlight value to the value set by ``:DISplay:INTENSITy:BACKLight``.
 
         Usage:
             - Using the ``.query()`` method will send the

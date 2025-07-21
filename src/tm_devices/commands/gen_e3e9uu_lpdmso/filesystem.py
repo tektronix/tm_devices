@@ -217,8 +217,8 @@ class FilesystemTekdriveCode(SCPICmdRead):
     """The ``FILESystem:TEKDrive:CODE`` command.
 
     Description:
-        - This command returns short code in string format. This code must be entered (or pasted) at
-          . After the code is entered click the Activate button to complete the mounting of the
+        - This command returns short code in string format. This code must be entered (or pasted)
+          at. After the code is entered click the Activate button to complete the mounting of the
           TekDrive.
 
     Usage:
@@ -309,7 +309,7 @@ class FilesystemTekdrive(SCPICmdRead):
 
         Description:
             - This command returns short code in string format. This code must be entered (or
-              pasted) at . After the code is entered click the Activate button to complete the
+              pasted) at. After the code is entered click the Activate button to complete the
               mounting of the TekDrive.
 
         Usage:

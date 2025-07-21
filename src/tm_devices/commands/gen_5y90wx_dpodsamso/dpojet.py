@@ -1557,7 +1557,7 @@ class DpojetReportGetimagename(SCPICmdRead):
 
     Description:
         - This query only commands gets all the PNG format image names from this
-          directoryC:Users<userName>TektronixTekApplicationsDPOJETReportsResources .
+          directoryC:Users<userName>TektronixTekApplicationsDPOJETReportsResources.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:REPORT:GETIMAGEName?`` query.
@@ -1896,7 +1896,7 @@ class DpojetReport(SCPICmdWrite, SCPICmdRead):
 
         Description:
             - This query only commands gets all the PNG format image names from this
-              directoryC:Users<userName>TektronixTekApplicationsDPOJETReportsResources .
+              directoryC:Users<userName>TektronixTekApplicationsDPOJETReportsResources.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:REPORT:GETIMAGEName?`` query.
@@ -2767,7 +2767,7 @@ class DpojetReflevelsChannelAbsolute(SCPICmdRead):
 
     Description:
         - This query only command provide the reference level parameters in absolute voltage values
-          such as set hysteresis , Rise High Level, Rise Mid-Level, Rise Low Level, Fall High Level,
+          such as set hysteresis, Rise High Level, Rise Mid-Level, Rise Low Level, Fall High Level,
           Fall Mid-Level, Fall Low Level, each separated by comma in NR3 values.
 
     Usage:
@@ -3009,7 +3009,7 @@ class DpojetReflevelsChannel(ValidatedChannel, SCPICmdRead):
 
         Description:
             - This query only command provide the reference level parameters in absolute voltage
-              values such as set hysteresis , Rise High Level, Rise Mid-Level, Rise Low Level, Fall
+              values such as set hysteresis, Rise High Level, Rise Mid-Level, Rise Low Level, Fall
               High Level, Fall Mid-Level, Fall Low Level, each separated by comma in NR3 values.
 
         Usage:
@@ -20970,9 +20970,9 @@ class DpojetExportraw(SCPICmdWrite):
 
     Description:
         - This set-only command saves the raw Eye diagram 2d histogram data to the specified file
-          path. The format is determined through the filename extension. Supported extension include
-          .csvEnsure that the Plot window is open while sending this PI command; else a file will be
-          not generated.
+          path. The format is determined through the filename extension. Supported extension
+          include.csvEnsure that the Plot window is open while sending this PI command; else a file
+          will be not generated.
 
     Usage:
         - Using the ``.write(value)`` method will send the ``DPOJET:EXPORTRaw value`` command.
@@ -20990,7 +20990,7 @@ class DpojetExport(SCPICmdWrite):
     Description:
         - This set-only command saves the specified DPOJET plot to the specified file path. The
           Format is determined through the filename extension, with a default of png if no extension
-          is specified. Supported extensions include jpeg, jpg, tif, tiff, bmp, emf, .mat, .csv and
+          is specified. Supported extensions include jpeg, jpg, tif, tiff, bmp, emf,.mat,.csv and
           png.
 
     Usage:
@@ -21975,8 +21975,8 @@ class Dpojet(SCPICmdRead):
         Description:
             - This set-only command saves the specified DPOJET plot to the specified file path. The
               Format is determined through the filename extension, with a default of png if no
-              extension is specified. Supported extensions include jpeg, jpg, tif, tiff, bmp, emf,
-              .mat, .csv and png.
+              extension is specified. Supported extensions include jpeg, jpg, tif, tiff, bmp,
+              emf,.mat,.csv and png.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``DPOJET:EXPORT value`` command.
@@ -21995,7 +21995,7 @@ class Dpojet(SCPICmdRead):
         Description:
             - This set-only command saves the raw Eye diagram 2d histogram data to the specified
               file path. The format is determined through the filename extension. Supported
-              extension include .csvEnsure that the Plot window is open while sending this PI
+              extension include.csvEnsure that the Plot window is open while sending this PI
               command; else a file will be not generated.
 
         Usage:

@@ -1640,7 +1640,7 @@ class PlotPlotItemExportraw(SCPICmdRead):
 
     Description:
         - This command returns a binary stream of double values containing the x,y and hits value.
-          Use this command along with ``MEASUREMENT:ADDMEAS TIE`` , ``PLOT:PLOT1:TYPE EYEDIAGRAM`` ,
+          Use this command along with ``MEASUREMENT:ADDMEAS TIE``, ``PLOT:PLOT1:TYPE EYEDIAGRAM``,
           ``DISplay:SELect:VIEW`` plotview1 to export the eye diagram plot data.
 
     Usage:
@@ -2031,8 +2031,8 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Description:
             - This command returns a binary stream of double values containing the x,y and hits
-              value. Use this command along with ``MEASUREMENT:ADDMEAS TIE`` ,
-              ``PLOT:PLOT1:TYPE EYEDIAGRAM`` , ``DISplay:SELect:VIEW`` plotview1 to export the eye
+              value. Use this command along with ``MEASUREMENT:ADDMEAS TIE``,
+              ``PLOT:PLOT1:TYPE EYEDIAGRAM``, ``DISplay:SELect:VIEW`` plotview1 to export the eye
               diagram plot data.
 
         Usage:

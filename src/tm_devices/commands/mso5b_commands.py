@@ -60,6 +60,7 @@ from .gen_e3e9uu_lpdmso.plot import Plot
 from .gen_e3e9uu_lpdmso.power import Power
 from .gen_e3e9uu_lpdmso.recall import Recall
 from .gen_e3e9uu_lpdmso.ref import Ref
+from .gen_e3e9uu_lpdmso.rem import Rem
 from .gen_e3e9uu_lpdmso.rosc import Rosc
 from .gen_e3e9uu_lpdmso.save import Save
 from .gen_e3e9uu_lpdmso.saveon import Saveon
@@ -102,7 +103,6 @@ from .gen_fx54ua_lpdmsodpomdodsa.password import Password
 from .gen_fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.allev import Allev
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.id import Id
-from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.rem import Rem
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.status_and_error import Psc, Pud
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.wavfrm import Wavfrm
 from .helpers import DefaultDictPassKeyToFactory
@@ -3431,7 +3431,7 @@ class MSO5BCommands:
 
         Description:
             - This command (no query form) embeds a comment within programs as a means of internally
-              documenting the programs. This is how to embed comments in a .set file. The instrument
+              documenting the programs. This is how to embed comments in a.set file. The instrument
               ignores these embedded comment lines.
 
         Usage:
