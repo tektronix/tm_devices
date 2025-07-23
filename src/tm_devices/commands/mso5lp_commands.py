@@ -38,7 +38,6 @@ from .gen_e3e9uu_lpdmso.event import Event
 from .gen_e3e9uu_lpdmso.evmsg import Evmsg
 from .gen_e3e9uu_lpdmso.evqty import Evqty
 from .gen_e3e9uu_lpdmso.eyemask import Eyemask
-from .gen_e3e9uu_lpdmso.factory import Factory
 from .gen_e3e9uu_lpdmso.filesystem import Filesystem
 from .gen_e3e9uu_lpdmso.fpanel import Fpanel
 from .gen_e3e9uu_lpdmso.header import Header
@@ -70,7 +69,7 @@ from .gen_e3e9uu_lpdmso.searchtable import Searchtable
 from .gen_e3e9uu_lpdmso.select import Select
 from .gen_e3e9uu_lpdmso.set import Set
 from .gen_e3e9uu_lpdmso.socketserver import Socketserver
-from .gen_e3e9uu_lpdmso.status_and_error import Ese, Opc, Rst, Sre
+from .gen_e3e9uu_lpdmso.status_and_error import Ese, Opc, Rst
 from .gen_e3e9uu_lpdmso.sv import Sv
 from .gen_e3e9uu_lpdmso.time import Time
 from .gen_e3e9uu_lpdmso.touchscreen import Touchscreen
@@ -98,10 +97,12 @@ from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.miscellaneous import Idn, Tst
 from .gen_fsksdy_lpdmsotekscopepcdpomdoafgawgdsa.status_and_error import Cls, Esr, Stb, Wai
 from .gen_fst7sp_lpdmsotekscopepcmdodpoafgawgdsa.status_and_error import Opt
 from .gen_ft5uww_lpdmsodpomdoafgawgdsa.miscellaneous import Trg
+from .gen_fu6dog_lpdmsotekscopepcdpomdoawgdsa.status_and_error import Sre
 from .gen_fx54ua_lpdmsodpomdodsa.newpass import Newpass
 from .gen_fx54ua_lpdmsodpomdodsa.password import Password
 from .gen_fx54ua_lpdmsodpomdodsa.teksecure import Teksecure
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.allev import Allev
+from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.factory import Factory
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.id import Id
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.status_and_error import Psc, Pud
 from .gen_fxvtmy_lpdmsotekscopepcdpomdodsa.wavfrm import Wavfrm
@@ -128,6 +129,7 @@ class MSO5LPCommandConstants:
     AC = "AC"
     ACB = "ACB"
     ACBC = "ACBC"
+    ACCEPTS = "ACCEPTS"  # ACCepts
     ACCM = "ACCM"
     ACDC = "ACDC"
     ACDCRMS = "ACDCRMS"
@@ -175,6 +177,7 @@ class MSO5LPCommandConstants:
     APWR = "APWR"
     ARBITRARY = "ARBITRARY"  # ARBitrary
     ARINC429 = "ARINC429"
+    ARMATRIGB = "ARMATRIGB"  # ARMAtrigb
     ARMW = "ARMW"
     ARROW = "ARROW"
     ASCII = "ASCII"
@@ -1068,6 +1071,7 @@ class MSO5LPCommandConstants:
     REGWRITE = "REGWRITE"  # REGWRIte
     REJ = "REJ"
     REJECT = "REJECT"  # REJect
+    REJECTS = "REJECTS"  # REJects
     REMOTE = "REMOTE"  # REMote
     REPEATERHOST = "REPEATERHOST"  # REPEATERHOSt
     REPEATERPERIPHERAL = "REPEATERPERIPHERAL"
@@ -1996,10 +2000,11 @@ class MSO5LPCommands:
 
         Description:
             - This query-only command starts signal path calibration (SPC) and returns the status
-              upon completion.When running SPC through the remote interface, calibration status
-              cannot be obtained until after the SPC completes. SPC takes approximately 15 minutes
-              per channel which means a total of 2 hours on an 8-channel model. Any remote command
-              that performs an action on the instrument is also disabled until the SPC is complete.
+              upon completion. Note: When running SPC through the remote interface, calibration
+              status cannot be obtained until after the SPC completes. SPC takes approximately 15
+              minutes per channel which means a total of 2 hours on an 8-channel model. Any remote
+              command that performs an action on the instrument is also disabled until the SPC is
+              complete.
 
         Usage:
             - Using the ``.query()`` method will send the ``*CAL?`` query.
@@ -2018,9 +2023,9 @@ class MSO5LPCommands:
         """Return the ``CALibrate`` command.
 
         Description:
-            - This query returns the status of signal path calibration.When running SPC through the
-              remote interface, calibration status cannot be obtained until after the SPC completes,
-              which can take several minutes.
+            - This query returns the status of signal path calibration. Note: When running SPC
+              through the remote interface, calibration status cannot be obtained until after the
+              SPC completes, which can take several minutes.
 
         Usage:
             - Using the ``.query()`` method will send the ``CALibrate?`` query.
@@ -2208,13 +2213,13 @@ class MSO5LPCommands:
               are turned on (in group1) then Ch2 and Ch3 rows will be 250 each. When all Ch1/2/3/4
               are turned on (in group1) then 125 rows per channel. If Ch1 (in group1) and Ch8 (in
               group2) are turned on then 500 rows will be returned for each channel. To calculate
-              the number of rows, you can use- (number of bytes from curve
-              header/``BYT_NR``)/1000.Curve data is transferred from the instrument asynchronously
-              and, depending upon the length of the curve record, such transfers can require several
-              seconds to complete. During this time, the instrument will not respond to
-              usercontrols. You can interrupt these asynchronous data transfers by sending adevice
-              clear message to the instrument or by interrupting the query with another command or
-              query. Verify that curve data is completely transferred.
+              the number of rows, you can use- (number of bytes from curve header/``BYT_NR``)/1000.
+              Note: Curve data is transferred from the instrument asynchronously and, depending upon
+              the length of the curve record, such transfers can require several seconds to
+              complete. During this time, the instrument will not respond to usercontrols. You can
+              interrupt these asynchronous data transfers by sending adevice clear message to the
+              instrument or by interrupting the query with another command or query. Verify that
+              curve data is completely transferred.
 
         Usage:
             - Using the ``.query()`` method will send the ``CURVe?`` query.
@@ -2252,7 +2257,7 @@ class MSO5LPCommands:
               not sent out until each complete record is acquired. If the waveform records are being
               acquired rapidly (low resolution), and the controller is not reading the data off the
               bus fast enough, the trigger rate is slowed to allow each waveform to be sent
-              sequentially. Curve data is transferred from the instrument asynchronously
+              sequentially Note:. Curve data is transferred from the instrument asynchronously
               and,depending upon the length of the curve record, such transfers can require
               severalseconds to complete. During this time, the instrument will not respond to
               usercontrols. You can interrupt these asynchronous data transfers by sending adevice
@@ -2387,10 +2392,10 @@ class MSO5LPCommands:
             - This command sets and queries the bits in the Device Event Status Enable Register
               (DESER). The DESER is the mask that determines whether events are reported to the
               Standard Event Status Register (SESR), and entered into the Event Queue. For a more
-              detailed discussion of the use of these registers, see Registers.Setting the DESER and
-              ESER to the same value allows only those codes to be entered into the Event Queue and
-              summarized on the ESB bit (bit 5) of the Status Byte Register. Use the ``*ESE``
-              command to set the ESER.
+              detailed discussion of the use of these registers, see Registers. Note: Setting the
+              DESER and ESER to the same value allows only those codes to be entered into the Event
+              Queue and summarized on the ESB bit (bit 5) of the Status Byte Register. Use the
+              ``*ESE`` command to set the ESER.
 
         Usage:
             - Using the ``.query()`` method will send the ``DESE?`` query.
@@ -2405,10 +2410,12 @@ class MSO5LPCommands:
             ```
 
         Info:
-            - ``<NR1>`` The binary bits of the DESER are set according to this value, which
-              rangesfrom 1 through 255. For example, ``DESE 209`` sets the DESER to the binary
-              value11010001 (that is, the most significant bit in the register is set to 1, the next
-              mostsignificant bit to 1, the next bit to 0, etc.).
+            - ``<NR1>`` The binary bits of the DESER are set according to this value, which ranges
+              from 1 through 255. For example, ``DESE 209`` sets the DESER to the binary value
+              11010001 (that is, the most significant bit in the register is set to 1, the next most
+              significant bit to 1, the next bit to 0, etc.).
+            - ``DESER`` is all bits set if ``*PSC`` is 1. If ``*PSC`` is 0, the DESER maintains the
+              previous power cycle value through the current power cycle.
         """
         return self._dese
 
@@ -2519,10 +2526,10 @@ class MSO5LPCommands:
         Description:
             - This command sets and queries the bits in the Event Status Enable Register (ESER). The
               ESER prevents events from being reported to the Status Byte Register (STB). For a more
-              detailed discussion of the use of these registers, see Registers.Setting the DESER and
-              the ESER to the same values allows only those codes to be entered into the Event Queue
-              and summarized on the ESB bit (bit 5) of the Status Byte Register. Use the DESE
-              command to set the DESER.
+              detailed discussion of the use of these registers, see Registers. Note: Setting the
+              DESER and the ESER to the same values allows only those codes to be entered into the
+              Event Queue and summarized on the ESB bit (bit 5) of the Status Byte Register. Use the
+              DESE command to set the DESER.
 
         Usage:
             - Using the ``.query()`` method will send the ``*ESE?`` query.
@@ -2675,10 +2682,10 @@ class MSO5LPCommands:
               This command is equivalent to pressing the DEFAULT SETUP button located on the
               instrument front panel or selecting Default Setup from the File menu. This command
               Performs the following in addition to what is done for the ``*RST`` command: Clears
-              any pending OPC operations. Resets the following IEEE488.2 registers: ``*ESE0`` (Event
-              Status Enable Register) ``*SRE 0`` (Service Request Enable Register) DESE255 (Device
-              Event Status Enable Register) ``*PSC1`` (Power-on Status Clear Flag) Deletes all
-              defined aliases. Enables command headers (``:HEADer 1``).
+              any pending OPC operations. Resets the following IEEE488.2 registers: ``*ESE 0``
+              (Event Status Enable Register) ``*SRE 0`` (Service Request Enable Register) DESE 255
+              (Device Event Status Enable Register) ``*PSC 1`` (Power-on Status Clear Flag) Deletes
+              all defined aliases. Enables command headers (``:HEADer 1``).
 
         Usage:
             - Using the ``.write()`` method will send the ``FACtory`` command.
@@ -2749,7 +2756,7 @@ class MSO5LPCommands:
             - This command sets or queries the Response Header Enable State that causes the
               instrument to either include or omit headers on query responses. Whether the long or
               short form of header keywords and enumerations are returned is dependent upon the
-              state of ``:VERBose``. This command does not affect IEEE Std 488.2-1987 Common
+              state of ``:VERBose Note``:. This command does not affect IEEE Std 488.2-1987 Common
               Commands (those starting with an asterisk); these commands never return headers.
 
         Usage:
@@ -3672,7 +3679,8 @@ class MSO5LPCommands:
         Info:
             - ``<NR1>`` is a value in the range from 0 through 255. The binary bits of the SRER are
               set according to this value. Using an out-of-range value causes an execution error.
-              The power-on default for SRER is 0 if.
+              The power-on default for SRER is 0 if ``*PSC`` is 1. If ``*PSC`` is 0, the SRER
+              maintains the previous power cycle value through the current power cycle.
         """
         return self._sre
 
@@ -3917,8 +3925,8 @@ class MSO5LPCommands:
         Description:
             - This command (no query form) unlocks the front panel controls only. To unlock the
               front panel controls and the touch screen use the LOCk NONe command. The command
-              ``TOUCHSCReen:STATE ON`` enables the touch screen only.If the instrument is in the
-              Remote With Lockout State (RWLS), the ``UNLock`` command has no effect. For more
+              ``TOUCHSCReen:STATE ON`` enables the touch screen only. Note: If the instrument is in
+              the Remote With Lockout State (RWLS), the ``UNLock`` command has no effect. For more
               information, see the ANSI-IEEE Std 488.1-1987Standard Digital Interface for
               Programmable Instrumentation, section 2.8.3 on RL State Descriptions.
 

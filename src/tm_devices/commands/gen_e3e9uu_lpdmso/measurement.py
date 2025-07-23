@@ -1779,8 +1779,11 @@ class MeasurementReflevelsMethod(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``PERCent`` specifies that the reference levels are calculated as a percent relative to
-          HIGH and LOW. The percentages are defined using the.
-        - ``ABSolute`` specifies that the reference levels are set explicitly using the.
+          HIGH and LOW. The percentages are defined using the
+          ``MEASUrement:REFLevels:REFLevel:PERCent`` commands.
+        - ``ABSolute`` specifies that the reference levels are set explicitly using the
+          ``MEASUrement:REFLevels:REFLevel:ABSolute`` commands. This method is useful when precise
+          values are required.
     """
 
 
@@ -2455,8 +2458,11 @@ class MeasurementReflevels(SCPICmdRead):
 
         Info:
             - ``PERCent`` specifies that the reference levels are calculated as a percent relative
-              to HIGH and LOW. The percentages are defined using the.
-            - ``ABSolute`` specifies that the reference levels are set explicitly using the.
+              to HIGH and LOW. The percentages are defined using the
+              ``MEASUrement:REFLevels:REFLevel:PERCent`` commands.
+            - ``ABSolute`` specifies that the reference levels are set explicitly using the
+              ``MEASUrement:REFLevels:REFLevel:ABSolute`` commands. This method is useful when
+              precise values are required.
         """
         return self._method
 
@@ -9131,7 +9137,7 @@ class MeasurementMeasItemReflevelsAbsoluteFallhigh(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the value used as the high reference level of the falling
           edge when the measurement's ref level method is set to absolute. Measurements are
-          specified by x.This command affects the results of rise and fall measurements.
+          specified by x. Note: This command affects the results of rise and fall measurements.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -9184,7 +9190,7 @@ class MeasurementMeasItemReflevelsAbsolute(SCPICmdRead):
         Description:
             - This command sets or queries the value used as the high reference level of the falling
               edge when the measurement's ref level method is set to absolute. Measurements are
-              specified by x.This command affects the results of rise and fall measurements.
+              specified by x. Note: This command affects the results of rise and fall measurements.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -9780,8 +9786,11 @@ class MeasurementMeasItemReflevels1Method(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``MEAS<x>`` specifies the measurement number.
         - ``PERCent`` specifies that the reference levels are calculated as a percent relative to
-          HIGH and LOW. The percentages are defined using the.
-        - ``ABSolute`` specifies that the reference levels are set explicitly using the.
+          HIGH and LOW. The percentages are defined using the
+          ``MEASUrement:MEAS<x>:REFLevel:PERCent`` commands.
+        - ``ABSolute`` specifies that the reference levels are set explicitly using the
+          ``MEASUrement:MEAS<x>:REFLevel:ABSolute`` commands. This method is useful when precise
+          values are required.
     """
 
 
@@ -9974,7 +9983,7 @@ class MeasurementMeasItemReflevels1AbsoluteFallmid(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the value used as the mid reference level of the falling edge
           when the measurement's ref level method is set to absolute. Measurements are specified by
-          x.This command affects the results of period, frequency, delay, and all cyclic
+          x. Note: This command affects the results of period, frequency, delay, and all cyclic
           measurements.
 
     Usage:
@@ -10004,7 +10013,7 @@ class MeasurementMeasItemReflevels1AbsoluteFalllow(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the value used as the low reference level of the falling edge
           when the measurement's ref level method is set to absolute. Measurements are specified by
-          x.This command affects the results of rise and fall measurements.
+          x. Note: This command affects the results of rise and fall measurements.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -10079,7 +10088,7 @@ class MeasurementMeasItemReflevels1Absolute(SCPICmdRead):
         Description:
             - This command sets or queries the value used as the low reference level of the falling
               edge when the measurement's ref level method is set to absolute. Measurements are
-              specified by x.This command affects the results of rise and fall measurements.
+              specified by x. Note: This command affects the results of rise and fall measurements.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -10109,8 +10118,8 @@ class MeasurementMeasItemReflevels1Absolute(SCPICmdRead):
         Description:
             - This command sets or queries the value used as the mid reference level of the falling
               edge when the measurement's ref level method is set to absolute. Measurements are
-              specified by x.This command affects the results of period, frequency, delay, and all
-              cyclic measurements.
+              specified by x. Note: This command affects the results of period, frequency, delay,
+              and all cyclic measurements.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -10403,8 +10412,11 @@ class MeasurementMeasItemReflevels1(SCPICmdRead):
         Info:
             - ``MEAS<x>`` specifies the measurement number.
             - ``PERCent`` specifies that the reference levels are calculated as a percent relative
-              to HIGH and LOW. The percentages are defined using the.
-            - ``ABSolute`` specifies that the reference levels are set explicitly using the.
+              to HIGH and LOW. The percentages are defined using the
+              ``MEASUrement:MEAS<x>:REFLevel:PERCent`` commands.
+            - ``ABSolute`` specifies that the reference levels are set explicitly using the
+              ``MEASUrement:MEAS<x>:REFLevel:ABSolute`` commands. This method is useful when precise
+              values are required.
         """
         return self._method
 
@@ -17069,7 +17081,7 @@ class MeasurementMeasItemDmethod(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``AUTO`` or.
+        - ``AUTO`` or MANual specifies the deskew method set for WBG measurement.
     """
 
 
@@ -21243,7 +21255,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
             ```
 
         Info:
-            - ``AUTO`` or.
+            - ``AUTO`` or MANual specifies the deskew method set for WBG measurement.
         """
         return self._dmethod
 
@@ -25746,8 +25758,11 @@ class MeasurementMathItemReflevelsMethod(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``MATH<x>`` specifies the math number.
         - ``PERCent`` specifies that the reference levels are calculated as a percent relative to
-          HIGH and LOW. The percentages are defined using the.
-        - ``ABSolute`` specifies that the reference levels are set explicitly using the.
+          HIGH and LOW. The percentages are defined using the
+          ``MEASUrement:MATH<x>:REFLevel:PERCent`` commands.
+        - ``ABSolute`` specifies that the reference levels are set explicitly using the
+          ``MEASUrement:MATH<x>:REFLevel:ABSolute`` commands. This method is useful when precise
+          values are required.
     """
 
 
@@ -26436,8 +26451,11 @@ class MeasurementMathItemReflevels(SCPICmdRead):
         Info:
             - ``MATH<x>`` specifies the math number.
             - ``PERCent`` specifies that the reference levels are calculated as a percent relative
-              to HIGH and LOW. The percentages are defined using the.
-            - ``ABSolute`` specifies that the reference levels are set explicitly using the.
+              to HIGH and LOW. The percentages are defined using the
+              ``MEASUrement:MATH<x>:REFLevel:PERCent`` commands.
+            - ``ABSolute`` specifies that the reference levels are set explicitly using the
+              ``MEASUrement:MATH<x>:REFLevel:ABSolute`` commands. This method is useful when precise
+              values are required.
         """
         return self._method
 

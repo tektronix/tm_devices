@@ -531,8 +531,8 @@ class DvmAutorange(SCPICmdWrite, SCPICmdRead):
     """The ``DVM:AUTORange`` command.
 
     Description:
-        - Sets (or queries) the autorange state for the Digital Voltmeter.The DVM will not autorange
-          as long as the DVM source is the same channel as the trigger source.
+        - Sets (or queries) the autorange state for the Digital Voltmeter. Note: The DVM will not
+          autorange as long as the DVM source is the same channel as the trigger source.
 
     Usage:
         - Using the ``.query()`` method will send the ``DVM:AUTORange?`` query.
@@ -592,8 +592,8 @@ class Dvm(SCPICmdWrite, SCPICmdRead):
         """Return the ``DVM:AUTORange`` command.
 
         Description:
-            - Sets (or queries) the autorange state for the Digital Voltmeter.The DVM will not
-              autorange as long as the DVM source is the same channel as the trigger source.
+            - Sets (or queries) the autorange state for the Digital Voltmeter. Note: The DVM will
+              not autorange as long as the DVM source is the same channel as the trigger source.
 
         Usage:
             - Using the ``.query()`` method will send the ``DVM:AUTORange?`` query.

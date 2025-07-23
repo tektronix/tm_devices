@@ -14,8 +14,6 @@ Commands and Queries:
     - *OPC
     - *OPC?
     - *RST
-    - *SRE <NR1>
-    - *SRE?
     ```
 """
 
@@ -25,35 +23,6 @@ from ..helpers import SCPICmdRead, SCPICmdWrite, SCPICmdWriteNoArguments
 
 if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.pi_control import PIControl
-
-
-class Sre(SCPICmdWrite, SCPICmdRead):
-    """The ``*SRE`` command.
-
-    Description:
-        - The ``*SRE`` (Service Request Enable) command sets and queries the bits in the Service
-          Request Enable Register. For more information, refer to Registers.
-
-    Usage:
-        - Using the ``.query()`` method will send the ``*SRE?`` query.
-        - Using the ``.verify(value)`` method will send the ``*SRE?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the ``*SRE value`` command.
-
-    SCPI Syntax:
-        ```
-        - *SRE <NR1>
-        - *SRE?
-        ```
-
-    Info:
-        - ``<NR1>`` is a value in the range from 0 through 255. The binary bits of the SRER are set
-          according to this value. Using an out-of-range value causes an execution error. The
-          power-on default for SRER is 0 if.
-    """
-
-    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*SRE") -> None:
-        super().__init__(device, cmd_syntax)
 
 
 class Rst(SCPICmdWriteNoArguments):
@@ -134,10 +103,10 @@ class Ese(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets and queries the bits in the Event Status Enable Register (ESER). The
           ESER prevents events from being reported to the Status Byte Register (STB). For a more
-          detailed discussion of the use of these registers, see Registers.Setting the DESER and the
-          ESER to the same values allows only those codes to be entered into the Event Queue and
-          summarized on the ESB bit (bit 5) of the Status Byte Register. Use the DESE command to set
-          the DESER.
+          detailed discussion of the use of these registers, see Registers. Note: Setting the DESER
+          and the ESER to the same values allows only those codes to be entered into the Event Queue
+          and summarized on the ESB bit (bit 5) of the Status Byte Register. Use the DESE command to
+          set the DESER.
 
     Usage:
         - Using the ``.query()`` method will send the ``*ESE?`` query.

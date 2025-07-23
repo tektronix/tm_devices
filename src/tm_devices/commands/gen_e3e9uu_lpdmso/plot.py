@@ -2601,7 +2601,8 @@ class PlotAddnew(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` is the specified plot. The argument is of the form '.
+        - ``<QString>`` is the specified plot. The argument is of the form ' PLOT<NR1> ', where
+          <NR1> ≥ 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -2647,7 +2648,8 @@ class Plot(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the specified plot. The argument is of the form '.
+            - ``<QString>`` is the specified plot. The argument is of the form ' PLOT<NR1> ', where
+              <NR1> ≥ 1.
         """
         return self._addnew
 

@@ -137,7 +137,7 @@ class PeakstableDelete(SCPICmdWrite):
 
     Info:
         - ``<QString>`` is a quoted string that is the name of the peak markers table to delete. The
-          argument is of the form '.
+          argument is of the form ' TABLE<NR1> ', where <NR1> ≥ 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -229,7 +229,7 @@ class Peakstable(SCPICmdRead):
 
         Info:
             - ``<QString>`` is a quoted string that is the name of the peak markers table to delete.
-              The argument is of the form '.
+              The argument is of the form ' TABLE<NR1> ', where <NR1> ≥ 1.
         """
         return self._delete
 

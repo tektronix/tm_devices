@@ -583,8 +583,8 @@ class DisplayWaveview1ZoomZoom1VerticalScale(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the vertical zoom factor of the specified zoom in the
-          specified Waveform View.1 is the specified Waveform View and must be WAVEView1. 1 is the
-          specified zoom and must be ZOOM1.
+          specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. 1
+          is the specified zoom and must be ZOOM1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -616,8 +616,8 @@ class DisplayWaveview1ZoomZoom1VerticalPosition(SCPICmdWrite, SCPICmdRead):
           Waveform View. It is freely movable within the confines of the acquired waveform. It is
           measured from the top to bottom of the acquisition window. The top of the zoom window is
           -5 \* vertical zoom factor. The bottom of the zoom window is +5 \* the vertical zoom
-          factor. For a zoom of 5x, the position ranges from -25 to 25.1 is the specified Waveform
-          View and must be WAVEView1. 1 is the specified zoom and must be ZOOM1.
+          factor. For a zoom of 5x, the position ranges from -25 to 25. Note: 1 is the specified
+          Waveform View and must be WAVEView1. 1 is the specified zoom and must be ZOOM1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -673,9 +673,9 @@ class DisplayWaveview1ZoomZoom1Vertical(SCPICmdRead):
               specified Waveform View. It is freely movable within the confines of the acquired
               waveform. It is measured from the top to bottom of the acquisition window. The top of
               the zoom window is -5 \* vertical zoom factor. The bottom of the zoom window is +5 \*
-              the vertical zoom factor. For a zoom of 5x, the position ranges from -25 to 25.1 is
-              the specified Waveform View and must be WAVEView1. 1 is the specified zoom and must be
-              ZOOM1.
+              the vertical zoom factor. For a zoom of 5x, the position ranges from -25 to 25. Note:
+              1 is the specified Waveform View and must be WAVEView1. 1 is the specified zoom and
+              must be ZOOM1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -707,8 +707,8 @@ class DisplayWaveview1ZoomZoom1Vertical(SCPICmdRead):
 
         Description:
             - This command sets or queries the vertical zoom factor of the specified zoom in the
-              specified Waveform View.1 is the specified Waveform View and must be WAVEView1. 1 is
-              the specified zoom and must be ZOOM1.
+              specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
+              1 is the specified zoom and must be ZOOM1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -738,9 +738,9 @@ class DisplayWaveview1ZoomZoom1State(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the zoom display state of the specified zoom in the specified
-          Waveform View. This command is equivalent to pushing the zoom button on the front panel.1
-          is the specified Waveform View and must be WAVEView1. 1 is the specified zoom and must be
-          ZOOM1.
+          Waveform View. This command is equivalent to pushing the zoom button on the front panel.
+          Note: 1 is the specified Waveform View and must be WAVEView1. 1 is the specified zoom and
+          must be ZOOM1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:ZOOM:ZOOM1:STATe?`` query.
@@ -767,8 +767,8 @@ class DisplayWaveview1ZoomZoom1HorizontalWinscale(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the overview window horizontal scale in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1. 1 is the specified
-          zoom and must be ZOOM1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. 1 is the
+          specified zoom and must be ZOOM1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -795,8 +795,8 @@ class DisplayWaveview1ZoomZoom1HorizontalScale(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the horizontal zoom factor of the specified zoom in the
-          specified Waveform View.1 is the specified Waveform View and must be WAVEView1. 1 is the
-          specified zoom and must be ZOOM1.
+          specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. 1
+          is the specified zoom and must be ZOOM1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -832,8 +832,8 @@ class DisplayWaveview1ZoomZoom1HorizontalPosition(SCPICmdWrite, SCPICmdRead):
           from -5 s to +5 s. Zoom window 0 will focus on -5 s and zoom area 100 will focus on +5 s.
           If the instrument is stopped and the scale changed to 0.5 s, there will be data off the
           ends of the display. However, 0% zoom will put the user focus on -2.5 s, the lower bound
-          of the acquisition span.1 is the specified Waveform View and must be WAVEView1. 1 is the
-          specified zoom and must be ZOOM1.
+          of the acquisition span. Note: 1 is the specified Waveform View and must be WAVEView1. 1
+          is the specified zoom and must be ZOOM1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -896,8 +896,9 @@ class DisplayWaveview1ZoomZoom1Horizontal(SCPICmdRead):
               the acquisition area will go from -5 s to +5 s. Zoom window 0 will focus on -5 s and
               zoom area 100 will focus on +5 s. If the instrument is stopped and the scale changed
               to 0.5 s, there will be data off the ends of the display. However, 0% zoom will put
-              the user focus on -2.5 s, the lower bound of the acquisition span.1 is the specified
-              Waveform View and must be WAVEView1. 1 is the specified zoom and must be ZOOM1.
+              the user focus on -2.5 s, the lower bound of the acquisition span. Note: 1 is the
+              specified Waveform View and must be WAVEView1. 1 is the specified zoom and must be
+              ZOOM1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -926,8 +927,8 @@ class DisplayWaveview1ZoomZoom1Horizontal(SCPICmdRead):
 
         Description:
             - This command sets or queries the horizontal zoom factor of the specified zoom in the
-              specified Waveform View.1 is the specified Waveform View and must be WAVEView1. 1 is
-              the specified zoom and must be ZOOM1.
+              specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
+              1 is the specified zoom and must be ZOOM1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -956,7 +957,7 @@ class DisplayWaveview1ZoomZoom1Horizontal(SCPICmdRead):
 
         Description:
             - This command sets or queries the overview window horizontal scale in the specified
-              Waveform View.1 is the specified Waveform View and must be WAVEView1. 1 is the
+              Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. 1 is the
               specified zoom and must be ZOOM1.
 
         Usage:
@@ -985,8 +986,8 @@ class DisplayWaveview1ZoomZoom1(SCPICmdRead):
 
     Description:
         - This query returns the zoom parameters of the specified zoom in the specified Waveform
-          View. <x> must be 1.1 is the specified Waveform View and must be WAVEView1. 1 is the
-          specified zoom and must be ZOOM1.
+          View. <x> must be 1. Note: 1 is the specified Waveform View and must be WAVEView1. 1 is
+          the specified zoom and must be ZOOM1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:ZOOM:ZOOM1?`` query.
@@ -1037,8 +1038,8 @@ class DisplayWaveview1ZoomZoom1(SCPICmdRead):
         Description:
             - This command sets or queries the zoom display state of the specified zoom in the
               specified Waveform View. This command is equivalent to pushing the zoom button on the
-              front panel.1 is the specified Waveform View and must be WAVEView1. 1 is the specified
-              zoom and must be ZOOM1.
+              front panel. Note: 1 is the specified Waveform View and must be WAVEView1. 1 is the
+              specified zoom and must be ZOOM1.
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:WAVEView1:ZOOM:ZOOM1:STATe?``
@@ -1084,8 +1085,8 @@ class DisplayWaveview1Zoom(SCPICmdRead):
     """The ``DISplay:WAVEView1:ZOOM`` command.
 
     Description:
-        - This query returns the zoom parameters of the specified Waveform View.1 is the specified
-          Waveform View and must be WAVEView1.
+        - This query returns the zoom parameters of the specified Waveform View. Note: 1 is the
+          specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:ZOOM?`` query.
@@ -1111,8 +1112,8 @@ class DisplayWaveview1Zoom(SCPICmdRead):
 
         Description:
             - This query returns the zoom parameters of the specified zoom in the specified Waveform
-              View. <x> must be 1.1 is the specified Waveform View and must be WAVEView1. 1 is the
-              specified zoom and must be ZOOM1.
+              View. <x> must be 1. Note: 1 is the specified Waveform View and must be WAVEView1. 1
+              is the specified zoom and must be ZOOM1.
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:WAVEView1:ZOOM:ZOOM1?`` query.
@@ -1136,7 +1137,7 @@ class DisplayWaveview1Viewstyle(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:WAVEView1:VIEWStyle`` command.
 
     Description:
-        - The command sets or queries the waveform layout style used by the display.1 is the
+        - The command sets or queries the waveform layout style used by the display. Note: 1 is the
           specified Waveform View and must be WAVEView1.
 
     Usage:
@@ -1164,8 +1165,8 @@ class DisplayWaveview1Style(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:WAVEView1:STYle`` command.
 
     Description:
-        - This command sets or queries how the waveforms are displayed for analysis mode.1 is the
-          specified Waveform View and must be WAVEView1.
+        - This command sets or queries how the waveforms are displayed for analysis mode. Note: 1 is
+          the specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:STYle?`` query.
@@ -1865,7 +1866,7 @@ class DisplayWaveview1RefRefItemVerticalScale(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the vertical scale of the specified reference in volts per
-          div within the specified Waveform View.1 is the specified Waveform View and must be
+          div within the specified Waveform View. Note: 1 is the specified Waveform View and must be
           WAVEView1.
 
     Usage:
@@ -1893,7 +1894,8 @@ class DisplayWaveview1RefRefItemVerticalPosition(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the vertical position in divisions of the specified reference
-          in the specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+          in the specified Waveform View. Note: 1 is the specified Waveform View and must be
+          WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -1943,8 +1945,8 @@ class DisplayWaveview1RefRefItemVertical(SCPICmdRead):
 
         Description:
             - This command sets or queries the vertical position in divisions of the specified
-              reference in the specified Waveform View.1 is the specified Waveform View and must be
-              WAVEView1.
+              reference in the specified Waveform View. Note: 1 is the specified Waveform View and
+              must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -1972,8 +1974,8 @@ class DisplayWaveview1RefRefItemVertical(SCPICmdRead):
 
         Description:
             - This command sets or queries the vertical scale of the specified reference in volts
-              per div within the specified Waveform View.1 is the specified Waveform View and must
-              be WAVEView1.
+              per div within the specified Waveform View. Note: 1 is the specified Waveform View and
+              must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -2001,7 +2003,7 @@ class DisplayWaveview1RefRefItemState(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the state of the specified reference waveform in the
-          specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+          specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:REF:REF<x>:STATE?`` query.
@@ -2075,7 +2077,7 @@ class DisplayWaveview1RefRefItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Description:
             - This command sets or queries the state of the specified reference waveform in the
-              specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+              specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:WAVEView1:REF:REF<x>:STATE?``
@@ -2518,7 +2520,7 @@ class DisplayWaveview1MathMathItemVerticalScale(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - Sets or queries the vertical scale of the specified math in volts per division within the
-          specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+          specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -2545,8 +2547,8 @@ class DisplayWaveview1MathMathItemVerticalPosition(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the vertical position in divisions of the specified math
-          waveform in the specified Waveform View.1 is the specified Waveform View and must be
-          WAVEView1.
+          waveform in the specified Waveform View. Note: 1 is the specified Waveform View and must
+          be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -2596,8 +2598,8 @@ class DisplayWaveview1MathMathItemVertical(SCPICmdRead):
 
         Description:
             - This command sets or queries the vertical position in divisions of the specified math
-              waveform in the specified Waveform View.1 is the specified Waveform View and must be
-              WAVEView1.
+              waveform in the specified Waveform View. Note: 1 is the specified Waveform View and
+              must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -2625,7 +2627,8 @@ class DisplayWaveview1MathMathItemVertical(SCPICmdRead):
 
         Description:
             - Sets or queries the vertical scale of the specified math in volts per division within
-              the specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+              the specified Waveform View. Note: 1 is the specified Waveform View and must be
+              WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -2653,7 +2656,7 @@ class DisplayWaveview1MathMathItemState(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the state of the specified math waveform in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:MATH:MATH<x>:STATE?``
@@ -2769,7 +2772,7 @@ class DisplayWaveview1MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Description:
             - This command sets or queries the state of the specified math waveform in the specified
-              Waveform View.1 is the specified Waveform View and must be WAVEView1.
+              Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:WAVEView1:MATH:MATH<x>:STATE?``
@@ -2851,8 +2854,8 @@ class DisplayWaveview1IntensityWaveform(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:WAVEView1:INTENSITy:WAVEform`` command.
 
     Description:
-        - This command sets or queries the waveform saturation level.1 is the specified Waveform
-          View and must be WAVEView1.
+        - This command sets or queries the waveform saturation level. Note: 1 is the specified
+          Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:INTENSITy:WAVEform?``
@@ -2878,8 +2881,8 @@ class DisplayWaveview1IntensityGraticule(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:WAVEView1:INTENSITy:GRATicule`` command.
 
     Description:
-        - This command sets or queries the graticule saturation level.1 is the specified Waveform
-          View and must be WAVEView1.
+        - This command sets or queries the graticule saturation level. Note: 1 is the specified
+          Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:INTENSITy:GRATicule?``
@@ -2926,7 +2929,7 @@ class DisplayWaveview1Intensity(SCPICmdRead):
         """Return the ``DISplay:WAVEView1:INTENSITy:GRATicule`` command.
 
         Description:
-            - This command sets or queries the graticule saturation level.1 is the specified
+            - This command sets or queries the graticule saturation level. Note: 1 is the specified
               Waveform View and must be WAVEView1.
 
         Usage:
@@ -2954,8 +2957,8 @@ class DisplayWaveview1Intensity(SCPICmdRead):
         """Return the ``DISplay:WAVEView1:INTENSITy:WAVEform`` command.
 
         Description:
-            - This command sets or queries the waveform saturation level.1 is the specified Waveform
-              View and must be WAVEView1.
+            - This command sets or queries the waveform saturation level. Note: 1 is the specified
+              Waveform View and must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:WAVEView1:INTENSITy:WAVEform?``
@@ -2982,8 +2985,8 @@ class DisplayWaveview1Graticule(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:WAVEView1:GRAticule`` command.
 
     Description:
-        - This command selects or queries the type of graticule that is displayed.1 is the specified
-          Waveform View and must be WAVEView1.
+        - This command selects or queries the type of graticule that is displayed. Note: 1 is the
+          specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:GRAticule?`` query.
@@ -3010,8 +3013,8 @@ class DisplayWaveview1Filter(SCPICmdWrite):
     """The ``DISplay:WAVEView1:FILTer`` command.
 
     Description:
-        - This command sets or queries the type of interpolation filter for the display.1 is the
-          specified Waveform View and must be WAVEView1.
+        - This command sets or queries the type of interpolation filter for the display. Note: 1 is
+          the specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.write(value)`` method will send the ``DISplay:WAVEView1:FILTer value``
@@ -3034,7 +3037,7 @@ class DisplayWaveview1CursorCursorWaveformBvposition(SCPICmdRead):
 
     Description:
         - This command queries the vertical waveform value at the cursor B position in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -3059,7 +3062,7 @@ class DisplayWaveview1CursorCursorWaveformAvposition(SCPICmdRead):
 
     Description:
         - This command queries the vertical waveform value at the cursor A position in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -3084,7 +3087,8 @@ class DisplayWaveview1CursorCursorWaveformAllValues(SCPICmdRead):
 
     Description:
         - This query returns all values (Time, Voltage, Delta) associated with all the active
-          sources in the Waveform View.1 is the specified Waveform View and must be WAVEView1.
+          sources in the Waveform View. Note: 1 is the specified Waveform View and must be
+          WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -3126,7 +3130,8 @@ class DisplayWaveview1CursorCursorWaveformAll(SCPICmdRead):
 
         Description:
             - This query returns all values (Time, Voltage, Delta) associated with all the active
-              sources in the Waveform View.1 is the specified Waveform View and must be WAVEView1.
+              sources in the Waveform View. Note: 1 is the specified Waveform View and must be
+              WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -3191,7 +3196,7 @@ class DisplayWaveview1CursorCursorWaveform(SCPICmdRead):
 
         Description:
             - This command queries the vertical waveform value at the cursor A position in the
-              specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+              specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -3217,7 +3222,7 @@ class DisplayWaveview1CursorCursorWaveform(SCPICmdRead):
 
         Description:
             - This command queries the vertical waveform value at the cursor B position in the
-              specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+              specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -3243,7 +3248,7 @@ class DisplayWaveview1CursorCursor1WaveformBposition(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the horizontal cursor B position of the specified cursor in
-          the specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+          the specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
           Cursor<x> is the specified cursor and must be CURSOR1.
 
     Usage:
@@ -3272,7 +3277,7 @@ class DisplayWaveview1CursorCursor1WaveformAposition(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the horizontal cursor A position of the specified cursor in
-          the specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+          the specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
           Cursor<x> is the specified cursor and must be CURSOR1.
 
     Usage:
@@ -3326,8 +3331,8 @@ class DisplayWaveview1CursorCursor1Waveform(SCPICmdRead):
 
         Description:
             - This command sets or queries the horizontal cursor A position of the specified cursor
-              in the specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
-              Cursor<x> is the specified cursor and must be CURSOR1.
+              in the specified Waveform View. Note: 1 is the specified Waveform View and must be
+              WAVEView1. Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -3356,8 +3361,8 @@ class DisplayWaveview1CursorCursor1Waveform(SCPICmdRead):
 
         Description:
             - This command sets or queries the horizontal cursor B position of the specified cursor
-              in the specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
-              Cursor<x> is the specified cursor and must be CURSOR1.
+              in the specified Waveform View. Note: 1 is the specified Waveform View and must be
+              WAVEView1. Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -3386,8 +3391,8 @@ class DisplayWaveview1CursorCursor1VbarsUnits(SCPICmdRead):
 
     Description:
         - This query returns cursor A vertical units of the specified cursor in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-          specified cursor and must be CURSOR1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x> is
+          the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -3408,8 +3413,8 @@ class DisplayWaveview1CursorCursor1VbarsDelta(SCPICmdRead):
 
     Description:
         - This query sets or returns the delta T cursor readout value of the specified cursor in the
-          specified Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x>
-          is the specified cursor and must be CURSOR1.
+          specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
+          Cursor<x> is the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -3430,7 +3435,7 @@ class DisplayWaveview1CursorCursor1VbarsBposition(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the cursor B horizontal position of the specified cursor in
-          the specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+          the specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
           Cursor<x> is the specified cursor and must be CURSOR1.
 
     Usage:
@@ -3459,7 +3464,7 @@ class DisplayWaveview1CursorCursor1VbarsAposition(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the cursor A horizontal position of the specified cursor in
-          the specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+          the specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
           Cursor<x> is the specified cursor and must be CURSOR1.
 
     Usage:
@@ -3517,8 +3522,8 @@ class DisplayWaveview1CursorCursor1Vbars(SCPICmdRead):
 
         Description:
             - This command sets or queries the cursor A horizontal position of the specified cursor
-              in the specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
-              Cursor<x> is the specified cursor and must be CURSOR1.
+              in the specified Waveform View. Note: 1 is the specified Waveform View and must be
+              WAVEView1. Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -3547,8 +3552,8 @@ class DisplayWaveview1CursorCursor1Vbars(SCPICmdRead):
 
         Description:
             - This command sets or queries the cursor B horizontal position of the specified cursor
-              in the specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
-              Cursor<x> is the specified cursor and must be CURSOR1.
+              in the specified Waveform View. Note: 1 is the specified Waveform View and must be
+              WAVEView1. Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -3577,8 +3582,8 @@ class DisplayWaveview1CursorCursor1Vbars(SCPICmdRead):
 
         Description:
             - This query sets or returns the delta T cursor readout value of the specified cursor in
-              the specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
-              Cursor<x> is the specified cursor and must be CURSOR1.
+              the specified Waveform View. Note: 1 is the specified Waveform View and must be
+              WAVEView1. Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -3600,8 +3605,8 @@ class DisplayWaveview1CursorCursor1Vbars(SCPICmdRead):
 
         Description:
             - This query returns cursor A vertical units of the specified cursor in the specified
-              Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-              specified cursor and must be CURSOR1.
+              Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x>
+              is the specified cursor and must be CURSOR1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -3623,8 +3628,8 @@ class DisplayWaveview1CursorCursor1State(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the visible state of the specified cursor in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-          specified cursor and must be CURSOR1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x> is
+          the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:CURSor:CURSOR1:STATE?``
@@ -3653,9 +3658,9 @@ class DisplayWaveview1CursorCursor1Splitmode(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:WAVEView1:CURSor:CURSOR1:SPLITMODE`` command.
 
     Description:
-        - This command sets or queries whether both cursors have the same or different sources.1 is
-          the specified Waveform View and must be WAVEView1. Cursor<x> is the specified cursor and
-          must be CURSOR1.
+        - This command sets or queries whether both cursors have the same or different sources.
+          Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the specified
+          cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -3683,8 +3688,8 @@ class DisplayWaveview1CursorCursor1ScreenByposition(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the vertical cursor B position of the specified cursor in the
-          specified Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x>
-          is the specified cursor and must be CURSOR1.
+          specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
+          Cursor<x> is the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -3712,8 +3717,8 @@ class DisplayWaveview1CursorCursor1ScreenBxposition(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - Sets or queries the horizontal cursor B position of the specified cursor in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-          specified cursor and must be CURSOR1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x> is
+          the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -3741,8 +3746,8 @@ class DisplayWaveview1CursorCursor1ScreenAyposition(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the vertical cursor A position of the specified cursor in the
-          specified Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x>
-          is the specified cursor and must be CURSOR1.
+          specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
+          Cursor<x> is the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -3770,8 +3775,8 @@ class DisplayWaveview1CursorCursor1ScreenAxposition(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - Sets or queries the horizontal cursor A position of the specified cursor in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-          specified cursor and must be CURSOR1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x> is
+          the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -3832,7 +3837,7 @@ class DisplayWaveview1CursorCursor1Screen(SCPICmdRead):
 
         Description:
             - Sets or queries the horizontal cursor A position of the specified cursor in the
-              specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+              specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
               Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
@@ -3862,8 +3867,8 @@ class DisplayWaveview1CursorCursor1Screen(SCPICmdRead):
 
         Description:
             - This command sets or queries the vertical cursor A position of the specified cursor in
-              the specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
-              Cursor<x> is the specified cursor and must be CURSOR1.
+              the specified Waveform View. Note: 1 is the specified Waveform View and must be
+              WAVEView1. Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -3892,7 +3897,7 @@ class DisplayWaveview1CursorCursor1Screen(SCPICmdRead):
 
         Description:
             - Sets or queries the horizontal cursor B position of the specified cursor in the
-              specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+              specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
               Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
@@ -3922,8 +3927,8 @@ class DisplayWaveview1CursorCursor1Screen(SCPICmdRead):
 
         Description:
             - This command sets or queries the vertical cursor B position of the specified cursor in
-              the specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
-              Cursor<x> is the specified cursor and must be CURSOR1.
+              the specified Waveform View. Note: 1 is the specified Waveform View and must be
+              WAVEView1. Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -3974,8 +3979,8 @@ class DisplayWaveview1CursorCursor1Mode(SCPICmdWrite):
 
     Description:
         - Sets or queries the cursor tracking mode of the specified cursor in the specified Waveform
-          View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the specified
-          cursor and must be CURSOR1.
+          View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
+          specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.write(value)`` method will send the
@@ -3999,8 +4004,8 @@ class DisplayWaveview1CursorCursor1HbarsDelta(SCPICmdRead):
 
     Description:
         - This command queries the delta V cursor readout value of the specified cursor in the
-          specified Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x>
-          is the specified cursor and must be CURSOR1.
+          specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
+          Cursor<x> is the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -4021,8 +4026,8 @@ class DisplayWaveview1CursorCursor1HbarsBunits(SCPICmdRead):
 
     Description:
         - This command queries the cursor B vertical units of the specified cursor in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-          specified cursor and must be CURSOR1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x> is
+          the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -4043,8 +4048,8 @@ class DisplayWaveview1CursorCursor1HbarsBposition(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - Sets or queries the HBARs vertical B position of the specified cursor in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-          specified cursor and must be CURSOR1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x> is
+          the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -4072,8 +4077,8 @@ class DisplayWaveview1CursorCursor1HbarsAunits(SCPICmdRead):
 
     Description:
         - This command queries the cursor A vertical units of the specified cursor in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-          specified cursor and must be CURSOR1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x> is
+          the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -4098,8 +4103,8 @@ class DisplayWaveview1CursorCursor1HbarsAposition(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - Sets or queries the HBARs vertical A position of the specified cursor in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-          specified cursor and must be CURSOR1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x> is
+          the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -4163,8 +4168,8 @@ class DisplayWaveview1CursorCursor1Hbars(SCPICmdRead):
 
         Description:
             - Sets or queries the HBARs vertical A position of the specified cursor in the specified
-              Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-              specified cursor and must be CURSOR1.
+              Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x>
+              is the specified cursor and must be CURSOR1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -4194,7 +4199,7 @@ class DisplayWaveview1CursorCursor1Hbars(SCPICmdRead):
 
         Description:
             - This command queries the cursor A vertical units of the specified cursor in the
-              specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+              specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
               Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
@@ -4221,8 +4226,8 @@ class DisplayWaveview1CursorCursor1Hbars(SCPICmdRead):
 
         Description:
             - Sets or queries the HBARs vertical B position of the specified cursor in the specified
-              Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-              specified cursor and must be CURSOR1.
+              Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x>
+              is the specified cursor and must be CURSOR1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -4251,7 +4256,7 @@ class DisplayWaveview1CursorCursor1Hbars(SCPICmdRead):
 
         Description:
             - This command queries the cursor B vertical units of the specified cursor in the
-              specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+              specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
               Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
@@ -4274,7 +4279,7 @@ class DisplayWaveview1CursorCursor1Hbars(SCPICmdRead):
 
         Description:
             - This command queries the delta V cursor readout value of the specified cursor in the
-              specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+              specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
               Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
@@ -4297,8 +4302,8 @@ class DisplayWaveview1CursorCursor1Function(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the cursor type of the specified cursor in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-          specified cursor and must be CURSOR1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x> is
+          the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:CURSor:CURSOR1:FUNCtion?``
@@ -4333,8 +4338,8 @@ class DisplayWaveview1CursorCursor1Ddt(SCPICmdRead):
 
     Description:
         - This query returns the delta V over delta T cursor readout value of the specified cursor
-          in the specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
-          Cursor<x> is the specified cursor and must be CURSOR1.
+          in the specified Waveform View. Note: 1 is the specified Waveform View and must be
+          WAVEView1. Cursor<x> is the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:CURSor:CURSOR1:DDT?``
@@ -4355,8 +4360,8 @@ class DisplayWaveview1CursorCursor1Bsource(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the cursor B source of the specified cursor in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-          specified cursor and must be CURSOR1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x> is
+          the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:CURSor:CURSOR1:BSOUrce?``
@@ -4387,8 +4392,8 @@ class DisplayWaveview1CursorCursor1Asource(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the cursor A source of the specified cursor in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-          specified cursor and must be CURSOR1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x> is
+          the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:CURSor:CURSOR1:ASOUrce?``
@@ -4421,8 +4426,8 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
 
     Description:
         - This query returns the cursor parameters for the specified cursor in the specified
-          Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-          specified cursor and must be CURSOR1.
+          Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x> is
+          the specified cursor and must be CURSOR1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:CURSor:CURSOR1?`` query.
@@ -4479,7 +4484,7 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
 
         Description:
             - This command sets or queries the cursor A source of the specified cursor in the
-              specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+              specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
               Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
@@ -4513,7 +4518,7 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
 
         Description:
             - This command sets or queries the cursor B source of the specified cursor in the
-              specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+              specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
               Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
@@ -4546,8 +4551,8 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
 
         Description:
             - This query returns the delta V over delta T cursor readout value of the specified
-              cursor in the specified Waveform View.1 is the specified Waveform View and must be
-              WAVEView1. Cursor<x> is the specified cursor and must be CURSOR1.
+              cursor in the specified Waveform View. Note: 1 is the specified Waveform View and must
+              be WAVEView1. Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:WAVEView1:CURSor:CURSOR1:DDT?``
@@ -4569,8 +4574,8 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
 
         Description:
             - This command sets or queries the cursor type of the specified cursor in the specified
-              Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-              specified cursor and must be CURSOR1.
+              Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x>
+              is the specified cursor and must be CURSOR1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -4626,8 +4631,8 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
 
         Description:
             - Sets or queries the cursor tracking mode of the specified cursor in the specified
-              Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-              specified cursor and must be CURSOR1.
+              Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x>
+              is the specified cursor and must be CURSOR1.
 
         Usage:
             - Using the ``.write(value)`` method will send the
@@ -4693,9 +4698,9 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
         """Return the ``DISplay:WAVEView1:CURSor:CURSOR1:SPLITMODE`` command.
 
         Description:
-            - This command sets or queries whether both cursors have the same or different sources.1
-              is the specified Waveform View and must be WAVEView1. Cursor<x> is the specified
-              cursor and must be CURSOR1.
+            - This command sets or queries whether both cursors have the same or different sources.
+              Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
+              specified cursor and must be CURSOR1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -4724,7 +4729,7 @@ class DisplayWaveview1CursorCursor1(SCPICmdRead):
 
         Description:
             - This command sets or queries the visible state of the specified cursor in the
-              specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+              specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
               Cursor<x> is the specified cursor and must be CURSOR1.
 
         Usage:
@@ -4828,7 +4833,7 @@ class DisplayWaveview1Cursor(SCPICmdRead):
     """The ``DISplay:WAVEView1:CURSor`` command.
 
     Description:
-        - This query returns the cursor parameters for the specified Waveform View.1 is the
+        - This query returns the cursor parameters for the specified Waveform View. Note: 1 is the
           specified Waveform View and must be WAVEView1.
 
     Usage:
@@ -4872,8 +4877,8 @@ class DisplayWaveview1Cursor(SCPICmdRead):
 
         Description:
             - This query returns the cursor parameters for the specified cursor in the specified
-              Waveform View.1 is the specified Waveform View and must be WAVEView1. Cursor<x> is the
-              specified cursor and must be CURSOR1.
+              Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1. Cursor<x>
+              is the specified cursor and must be CURSOR1.
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:WAVEView1:CURSor:CURSOR1?``
@@ -5159,7 +5164,7 @@ class DisplayWaveview1ChannelVerticalScale(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - Sets or queries the vertical scale of the specified channel in volts per division within
-          the specified Waveform View.1 is the specified Waveform View and must be WAVEView1.
+          the specified Waveform View. Note: 1 is the specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:CH<x>:VERTical:SCAle?``
@@ -5187,7 +5192,7 @@ class DisplayWaveview1ChannelVerticalPosition(SCPICmdWrite, SCPICmdRead):
     Description:
         - Sets or queries the vertical position of the specified channel in the specified Waveform
           View in divisions. 0.0 divisions is center, 5.0 top of the window, and -5.0 the bottom of
-          the window.1 is the specified Waveform View and must be WAVEView1.
+          the window. Note: 1 is the specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:CH<x>:VERTical:POSition?``
@@ -5237,7 +5242,8 @@ class DisplayWaveview1ChannelVertical(SCPICmdRead):
         Description:
             - Sets or queries the vertical position of the specified channel in the specified
               Waveform View in divisions. 0.0 divisions is center, 5.0 top of the window, and -5.0
-              the bottom of the window.1 is the specified Waveform View and must be WAVEView1.
+              the bottom of the window. Note: 1 is the specified Waveform View and must be
+              WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -5266,7 +5272,7 @@ class DisplayWaveview1ChannelVertical(SCPICmdRead):
 
         Description:
             - Sets or queries the vertical scale of the specified channel in volts per division
-              within the specified Waveform View.1 is the specified Waveform View and must be
+              within the specified Waveform View. Note: 1 is the specified Waveform View and must be
               WAVEView1.
 
         Usage:
@@ -5294,8 +5300,8 @@ class DisplayWaveview1ChannelState(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:WAVEView1:CH<x>:STATE`` command.
 
     Description:
-        - Sets or queries the state of the specified channel in the specified Waveform View.1 is the
-          specified Waveform View and must be WAVEView1.
+        - Sets or queries the state of the specified channel in the specified Waveform View. Note: 1
+          is the specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:CH<x>:STATE?`` query.
@@ -5347,8 +5353,8 @@ class DisplayWaveview1Channel(ValidatedChannel, SCPICmdRead):
         """Return the ``DISplay:WAVEView1:CH<x>:STATE`` command.
 
         Description:
-            - Sets or queries the state of the specified channel in the specified Waveform View.1 is
-              the specified Waveform View and must be WAVEView1.
+            - Sets or queries the state of the specified channel in the specified Waveform View.
+              Note: 1 is the specified Waveform View and must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:WAVEView1:CH<x>:STATE?`` query.
@@ -5422,8 +5428,8 @@ class DisplayWaveview1BusBItemVerticalPosition(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:WAVEView1:BUS:B<x>:VERTical:POSition`` command.
 
     Description:
-        - Sets or queries the vertical position of the specified bus in the specified Waveform
-          View.1 is the specified Waveform View and must be WAVEView1.
+        - Sets or queries the vertical position of the specified bus in the specified Waveform View.
+          Note: 1 is the specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -5470,7 +5476,7 @@ class DisplayWaveview1BusBItemVertical(SCPICmdRead):
 
         Description:
             - Sets or queries the vertical position of the specified bus in the specified Waveform
-              View.1 is the specified Waveform View and must be WAVEView1.
+              View. Note: 1 is the specified Waveform View and must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -5497,8 +5503,8 @@ class DisplayWaveview1BusBItemState(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:WAVEView1:BUS:B<x>:STATE`` command.
 
     Description:
-        - Sets or queries the state of the specified bus in the specified Waveform View.1 is the
-          specified Waveform View and must be WAVEView1.
+        - Sets or queries the state of the specified bus in the specified Waveform View. Note: 1 is
+          the specified Waveform View and must be WAVEView1.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:WAVEView1:BUS:B<x>:STATE?`` query.
@@ -5544,8 +5550,8 @@ class DisplayWaveview1BusBItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         """Return the ``DISplay:WAVEView1:BUS:B<x>:STATE`` command.
 
         Description:
-            - Sets or queries the state of the specified bus in the specified Waveform View.1 is the
-              specified Waveform View and must be WAVEView1.
+            - Sets or queries the state of the specified bus in the specified Waveform View. Note: 1
+              is the specified Waveform View and must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:WAVEView1:BUS:B<x>:STATE?``
@@ -5722,8 +5728,8 @@ class DisplayWaveview1(SCPICmdRead):
         """Return the ``DISplay:WAVEView1:CURSor`` command.
 
         Description:
-            - This query returns the cursor parameters for the specified Waveform View.1 is the
-              specified Waveform View and must be WAVEView1.
+            - This query returns the cursor parameters for the specified Waveform View. Note: 1 is
+              the specified Waveform View and must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:WAVEView1:CURSor?`` query.
@@ -5746,8 +5752,8 @@ class DisplayWaveview1(SCPICmdRead):
         """Return the ``DISplay:WAVEView1:FILTer`` command.
 
         Description:
-            - This command sets or queries the type of interpolation filter for the display.1 is the
-              specified Waveform View and must be WAVEView1.
+            - This command sets or queries the type of interpolation filter for the display. Note: 1
+              is the specified Waveform View and must be WAVEView1.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``DISplay:WAVEView1:FILTer value``
@@ -5770,8 +5776,8 @@ class DisplayWaveview1(SCPICmdRead):
         """Return the ``DISplay:WAVEView1:GRAticule`` command.
 
         Description:
-            - This command selects or queries the type of graticule that is displayed.1 is the
-              specified Waveform View and must be WAVEView1.
+            - This command selects or queries the type of graticule that is displayed. Note: 1 is
+              the specified Waveform View and must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:WAVEView1:GRAticule?`` query.
@@ -5911,8 +5917,8 @@ class DisplayWaveview1(SCPICmdRead):
         """Return the ``DISplay:WAVEView1:STYle`` command.
 
         Description:
-            - This command sets or queries how the waveforms are displayed for analysis mode.1 is
-              the specified Waveform View and must be WAVEView1.
+            - This command sets or queries how the waveforms are displayed for analysis mode. Note:
+              1 is the specified Waveform View and must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:WAVEView1:STYle?`` query.
@@ -5938,8 +5944,8 @@ class DisplayWaveview1(SCPICmdRead):
         """Return the ``DISplay:WAVEView1:VIEWStyle`` command.
 
         Description:
-            - The command sets or queries the waveform layout style used by the display.1 is the
-              specified Waveform View and must be WAVEView1.
+            - The command sets or queries the waveform layout style used by the display. Note: 1 is
+              the specified Waveform View and must be WAVEView1.
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:WAVEView1:VIEWStyle?`` query.
@@ -5967,7 +5973,7 @@ class DisplayWaveview1(SCPICmdRead):
         """Return the ``DISplay:WAVEView1:ZOOM`` command.
 
         Description:
-            - This query returns the zoom parameters of the specified Waveform View.1 is the
+            - This query returns the zoom parameters of the specified Waveform View. Note: 1 is the
               specified Waveform View and must be WAVEView1.
 
         Usage:
@@ -6147,8 +6153,8 @@ class DisplaySpecview1IntensityGraticule(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the graticule saturation (brightness) level in the Spectrum
-          View window.This command also changes the intensity of the vertical scale values on the
-          graticule.
+          View window. Note: This command also changes the intensity of the vertical scale values on
+          the graticule.
 
     Usage:
         - Using the ``.query()`` method will send the ``DISplay:SPECView1:INTENSITy:GRATicule?``
@@ -6198,8 +6204,8 @@ class DisplaySpecview1Intensity(SCPICmdRead):
 
         Description:
             - This command sets or queries the graticule saturation (brightness) level in the
-              Spectrum View window.This command also changes the intensity of the vertical scale
-              values on the graticule.
+              Spectrum View window. Note: This command also changes the intensity of the vertical
+              scale values on the graticule.
 
         Usage:
             - Using the ``.query()`` method will send the ``DISplay:SPECView1:INTENSITy:GRATicule?``
@@ -8726,10 +8732,10 @@ class DisplayReffftviewItemCursorWaveformBposition(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:REFFFTView<x>:CURSor:WAVEform:BPOSition`` command.
 
     Description:
-        - Sets or returns the waveform cursor B position in the specified plot view.In case of an XY
-          plot, this command has no effect when used to set the value. In the case of a bathtub
-          plot, this command has no effect. Queries return invalid values. For all other plots, this
-          command sets or queries the cursor B horizontal position.
+        - Sets or returns the waveform cursor B position in the specified plot view. Note: In case
+          of an XY plot, this command has no effect when used to set the value. In the case of a
+          bathtub plot, this command has no effect. Queries return invalid values. For all other
+          plots, this command sets or queries the cursor B horizontal position.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -8806,10 +8812,10 @@ class DisplayReffftviewItemCursorWaveformAposition(SCPICmdWrite, SCPICmdRead):
     """The ``DISplay:REFFFTView<x>:CURSor:WAVEform:APOSition`` command.
 
     Description:
-        - Sets or returns the waveform cursor A position in the specified plot view.In case of an XY
-          plot, this command has no effect when used to set the value. In the case of a bathtub
-          plot, this command sets or queries the cursor A vertical position. For all other plots,
-          this command sets or queries the cursor A horizontal position.
+        - Sets or returns the waveform cursor A position in the specified plot view. Note: In case
+          of an XY plot, this command has no effect when used to set the value. In the case of a
+          bathtub plot, this command sets or queries the cursor A vertical position. For all other
+          plots, this command sets or queries the cursor A horizontal position.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -8927,10 +8933,10 @@ class DisplayReffftviewItemCursorWaveform(SCPICmdRead):
         """Return the ``DISplay:REFFFTView<x>:CURSor:WAVEform:APOSition`` command.
 
         Description:
-            - Sets or returns the waveform cursor A position in the specified plot view.In case of
-              an XY plot, this command has no effect when used to set the value. In the case of a
-              bathtub plot, this command sets or queries the cursor A vertical position. For all
-              other plots, this command sets or queries the cursor A horizontal position.
+            - Sets or returns the waveform cursor A position in the specified plot view. Note: In
+              case of an XY plot, this command has no effect when used to set the value. In the case
+              of a bathtub plot, this command sets or queries the cursor A vertical position. For
+              all other plots, this command sets or queries the cursor A horizontal position.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -9010,10 +9016,10 @@ class DisplayReffftviewItemCursorWaveform(SCPICmdRead):
         """Return the ``DISplay:REFFFTView<x>:CURSor:WAVEform:BPOSition`` command.
 
         Description:
-            - Sets or returns the waveform cursor B position in the specified plot view.In case of
-              an XY plot, this command has no effect when used to set the value. In the case of a
-              bathtub plot, this command has no effect. Queries return invalid values. For all other
-              plots, this command sets or queries the cursor B horizontal position.
+            - Sets or returns the waveform cursor B position in the specified plot view. Note: In
+              case of an XY plot, this command has no effect when used to set the value. In the case
+              of a bathtub plot, this command has no effect. Queries return invalid values. For all
+              other plots, this command sets or queries the cursor B horizontal position.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -10042,7 +10048,9 @@ class DisplayReffftviewItemCursorFunction(SCPICmdWrite, SCPICmdRead):
           and vertical units specified by the cursor sources. Use these cursorsto measure anywhere
           in the waveform display area.
         - ``DISplay:REFFFTView5:CURSor:FUNCtion`` screen sets the cursor function to screen.
-        - ``DISplay:REFFFTView5:CURSor:FUNCtion?`` might return.
+        - ``DISplay:REFFFTView5:CURSor:FUNCtion?`` might return
+          ``DISPLAY:REFFFTVIEW5:CURSOR:FUNCTION WAVEFORM`` indicating the cursor function is set to
+          waveform.
     """
 
 
@@ -10268,7 +10276,9 @@ class DisplayReffftviewItemCursor(SCPICmdRead):
               inhorizontal and vertical units specified by the cursor sources. Use these cursorsto
               measure anywhere in the waveform display area.
             - ``DISplay:REFFFTView5:CURSor:FUNCtion`` screen sets the cursor function to screen.
-            - ``DISplay:REFFFTView5:CURSor:FUNCtion?`` might return.
+            - ``DISplay:REFFFTView5:CURSor:FUNCtion?`` might return
+              ``DISPLAY:REFFFTVIEW5:CURSOR:FUNCTION WAVEFORM`` indicating the cursor function is set
+              to waveform.
         """
         return self._function
 

@@ -608,7 +608,10 @@ class CalloutsCalloutItemBookmarkSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``CH1`` specifies the bookmark callout source as a analog channel.
+        - ``CH1`` specifies the bookmark callout source as Ch1.
+        - ``CH2`` specifies the bookmark callout source as Ch2.
+        - ``CH3`` specifies the bookmark callout source as Ch3.
+        - ``CH4`` specifies the bookmark callout source as Ch4.
     """
 
 
@@ -653,7 +656,10 @@ class CalloutsCalloutItemBookmark(SCPICmdRead):
             ```
 
         Info:
-            - ``CH1`` specifies the bookmark callout source as a analog channel.
+            - ``CH1`` specifies the bookmark callout source as Ch1.
+            - ``CH2`` specifies the bookmark callout source as Ch2.
+            - ``CH3`` specifies the bookmark callout source as Ch3.
+            - ``CH4`` specifies the bookmark callout source as Ch4.
         """
         return self._source
 

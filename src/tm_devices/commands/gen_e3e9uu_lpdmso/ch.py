@@ -497,7 +497,7 @@ class ChannelDallLabelColor(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``CH<x>`` is the channel number.
         - ``<QString>`` is the color of the digital group label. To return the color to the default
-          color, send an empty string as in this example: ``:CH5_DALL:LABEL:COLOR`` ''.
+          color, send an empty string as in this example: ``CH5_DALL:LABEL:COLOR`` .
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -550,7 +550,7 @@ class ChannelDallLabel(SCPICmdRead):
         Info:
             - ``CH<x>`` is the channel number.
             - ``<QString>`` is the color of the digital group label. To return the color to the
-              default color, send an empty string as in this example: ``:CH5_DALL:LABEL:COLOR`` ''.
+              default color, send an empty string as in this example: ``CH5_DALL:LABEL:COLOR`` .
         """
         return self._color
 
@@ -1220,8 +1220,8 @@ class ChannelTermination(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the vertical termination for the specified analog channel.
-          The channel is specified by x.The available arguments depend on the instrument model and
-          the attached accessories.
+          The channel is specified by x. Note: The available arguments depend on the instrument
+          model and the attached accessories.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:TERmination?`` query.
@@ -2091,8 +2091,8 @@ class ChannelProbeIdSernumber(SCPICmdRead):
 
     Description:
         - This query-only command returns the serial number of the probe that is attached to the
-          specified channel. The channel is specified by x.For Level 0 and 1 probes, the serial
-          number will be 'N/A'.
+          specified channel. The channel is specified by x. Note: For Level 0 and 1 probes, the
+          serial number will be 'N/A'.
 
     Usage:
         - Using the ``.query()`` method will send the ``CH<x>:PRObe:ID:SERnumber?`` query.
@@ -2139,8 +2139,8 @@ class ChannelProbeId(SCPICmdRead):
 
         Description:
             - This query-only command returns the serial number of the probe that is attached to the
-              specified channel. The channel is specified by x.For Level 0 and 1 probes, the serial
-              number will be 'N/A'.
+              specified channel. The channel is specified by x. Note: For Level 0 and 1 probes, the
+              serial number will be 'N/A'.
 
         Usage:
             - Using the ``.query()`` method will send the ``CH<x>:PRObe:ID:SERnumber?`` query.
@@ -4309,7 +4309,7 @@ class Channel(ValidatedChannel, SCPICmdRead):
 
         Description:
             - This command sets or queries the vertical termination for the specified analog
-              channel. The channel is specified by x.The available arguments depend on the
+              channel. The channel is specified by x. Note: The available arguments depend on the
               instrument model and the attached accessories.
 
         Usage:

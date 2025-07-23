@@ -144,9 +144,9 @@ class WfmoutpreXzero(SCPICmdRead):
         - This query-only command returns the sub-sample time between the trigger sample (designated
           by ``PT_OFF``) and the occurrence of the actual trigger for the waveform specified by the
           ``DATa:SOUrce`` command. This value is in units of ``WFMOutpre:XUNit``. An error is
-          reported if the ``DATa:SOUrce`` waveform does not exist.During steady state operation,
-          when all control changes have settled and triggers are arriving on a regular basis, this
-          is the only part of the preamble that changes on each acquisition.
+          reported if the ``DATa:SOUrce`` waveform does not exist. Note: During steady state
+          operation, when all control changes have settled and triggers are arriving on a regular
+          basis, this is the only part of the preamble that changes on each acquisition.
 
     Usage:
         - Using the ``.query()`` method will send the ``WFMOutpre:XZEro?`` query.
@@ -294,7 +294,7 @@ class WfmoutprePtOff(SCPICmdRead):
 
     Description:
         - This query-only command returns the trigger point relative to ``DATa:STARt`` for the
-          waveform specified by the ``DATa:SOUrce`` command.This returned value is the point
+          waveform specified by the ``DATa:SOUrce`` command. Note: This returned value is the point
           immediately following the actual trigger.
 
     Usage:
@@ -935,8 +935,8 @@ class Wfmoutpre(SCPICmdRead):
 
         Description:
             - This query-only command returns the trigger point relative to ``DATa:STARt`` for the
-              waveform specified by the ``DATa:SOUrce`` command.This returned value is the point
-              immediately following the actual trigger.
+              waveform specified by the ``DATa:SOUrce`` command. Note: This returned value is the
+              point immediately following the actual trigger.
 
         Usage:
             - Using the ``.query()`` method will send the ``WFMOutpre:PT_Off?`` query.
@@ -1094,7 +1094,7 @@ class Wfmoutpre(SCPICmdRead):
               (designated by ``PT_OFF``) and the occurrence of the actual trigger for the waveform
               specified by the ``DATa:SOUrce`` command. This value is in units of
               ``WFMOutpre:XUNit``. An error is reported if the ``DATa:SOUrce`` waveform does not
-              exist.During steady state operation, when all control changes have settled and
+              exist. Note: During steady state operation, when all control changes have settled and
               triggers are arriving on a regular basis, this is the only part of the preamble that
               changes on each acquisition.
 

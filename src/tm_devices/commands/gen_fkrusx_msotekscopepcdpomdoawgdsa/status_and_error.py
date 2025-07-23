@@ -13,8 +13,6 @@ Commands and Queries:
     ```
     - *ESE <NR1>
     - *ESE?
-    - *SRE <NR1>
-    - *SRE?
     ```
 """
 
@@ -24,36 +22,6 @@ from ..helpers import SCPICmdRead, SCPICmdWrite
 
 if TYPE_CHECKING:
     from tm_devices.driver_mixins.device_control.pi_control import PIControl
-
-
-class Sre(SCPICmdWrite, SCPICmdRead):
-    """The ``*SRE`` command.
-
-    Description:
-        - The ``*SRE`` (Service Request Enable) command sets and queries the bits in the Service
-          Request Enable Register. For more information, refer to Registers.
-
-    Usage:
-        - Using the ``.query()`` method will send the ``*SRE?`` query.
-        - Using the ``.verify(value)`` method will send the ``*SRE?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the ``*SRE value`` command.
-
-    SCPI Syntax:
-        ```
-        - *SRE <NR1>
-        - *SRE?
-        ```
-
-    Info:
-        - ``<NR1>`` is a value in the range from 0 through 255. The binary bits of the SRER are set
-          according to this value. Using an out-of-range value causes an execution error. The
-          power-on default for SRER is 0 if ``*PSC`` is 1. If ``*PSC`` is 0, the SRER maintains the
-          previous power cycle value through the current power cycle.
-    """
-
-    def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "*SRE") -> None:
-        super().__init__(device, cmd_syntax)
 
 
 class Ese(SCPICmdWrite, SCPICmdRead):

@@ -26,8 +26,8 @@ class Cal(SCPICmdRead):
 
     Description:
         - This query-only command starts signal path calibration (SPC) and returns the status upon
-          completion.When running SPC through the remote interface, calibration status cannot be
-          obtained until after the SPC completes. SPC takes approximately 15 minutes per channel
+          completion. Note: When running SPC through the remote interface, calibration status cannot
+          be obtained until after the SPC completes. SPC takes approximately 15 minutes per channel
           which means a total of 2 hours on an 8-channel model. Any remote command that performs an
           action on the instrument is also disabled until the SPC is complete.
 

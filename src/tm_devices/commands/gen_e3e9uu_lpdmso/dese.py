@@ -29,9 +29,9 @@ class Dese(SCPICmdWrite, SCPICmdRead):
         - This command sets and queries the bits in the Device Event Status Enable Register (DESER).
           The DESER is the mask that determines whether events are reported to the Standard Event
           Status Register (SESR), and entered into the Event Queue. For a more detailed discussion
-          of the use of these registers, see Registers.Setting the DESER and ESER to the same value
-          allows only those codes to be entered into the Event Queue and summarized on the ESB bit
-          (bit 5) of the Status Byte Register. Use the ``*ESE`` command to set the ESER.
+          of the use of these registers, see Registers. Note: Setting the DESER and ESER to the same
+          value allows only those codes to be entered into the Event Queue and summarized on the ESB
+          bit (bit 5) of the Status Byte Register. Use the ``*ESE`` command to set the ESER.
 
     Usage:
         - Using the ``.query()`` method will send the ``DESE?`` query.
@@ -46,10 +46,12 @@ class Dese(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>`` The binary bits of the DESER are set according to this value, which rangesfrom 1
-          through 255. For example, ``DESE 209`` sets the DESER to the binary value11010001 (that
-          is, the most significant bit in the register is set to 1, the next mostsignificant bit to
+        - ``<NR1>`` The binary bits of the DESER are set according to this value, which ranges from
+          1 through 255. For example, ``DESE 209`` sets the DESER to the binary value 11010001 (that
+          is, the most significant bit in the register is set to 1, the next most significant bit to
           1, the next bit to 0, etc.).
+        - ``DESER`` is all bits set if ``*PSC`` is 1. If ``*PSC`` is 0, the DESER maintains the
+          previous power cycle value through the current power cycle.
     """
 
     def __init__(self, device: Optional["PIControl"] = None, cmd_syntax: str = "DESE") -> None:

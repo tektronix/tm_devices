@@ -2821,8 +2821,8 @@ class MathMathItemFunction(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the basic math arithmetic function. The math waveform is
-          specified by x.This command does not affect the same Math equation in Advanced math (also
-          accessed via the command
+          specified by x. Note: This command does not affect the same Math equation in Advanced math
+          (also accessed via the command
 
     Usage:
         - Using the ``.query()`` method will send the ``MATH:MATH<x>:FUNCtion?`` query.
@@ -5231,8 +5231,8 @@ class MathMathItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Description:
             - This command sets or queries the basic math arithmetic function. The math waveform is
-              specified by x.This command does not affect the same Math equation in Advanced math
-              (also accessed via the command
+              specified by x. Note: This command does not affect the same Math equation in Advanced
+              math (also accessed via the command
 
         Usage:
             - Using the ``.query()`` method will send the ``MATH:MATH<x>:FUNCtion?`` query.

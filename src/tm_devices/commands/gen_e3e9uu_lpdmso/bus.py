@@ -427,7 +427,7 @@ Commands and Queries:
     - BUS:B<x>:NRZ:BITRate?
     - BUS:B<x>:NRZ:POLarity {INVerted|NORmal}
     - BUS:B<x>:NRZ:POLarity?
-    - BUS:B<x>:NRZ:SOUrce {CH<x>|MATH<x>|REF<x>}
+    - BUS:B<x>:NRZ:SOUrce {CH<x>|MATH<x>|REF<x>]
     - BUS:B<x>:NRZ:SOUrce?
     - BUS:B<x>:NRZ:SPMI:VERsion v<x>
     - BUS:B<x>:NRZ:SPMI:VERsion?
@@ -8269,14 +8269,14 @@ class BusBItemNrzSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:NRZ:SOUrce {CH<x>|MATH<x>|REF<x>}
+        - BUS:B<x>:NRZ:SOUrce {CH<x>|MATH<x>|REF<x>]
         - BUS:B<x>:NRZ:SOUrce?
         ```
 
     Info:
-        - ``B<x>A`` is the number of the bus.
+        - ``B<x>`` is the number of the bus.
         - ``CH<x>`` specifies an analog channel as the source.
-        - ``AMATH<x>`` specifies a math waveform as the source.
+        - ``MATH<x>`` specifies a math waveform as the source.
         - ``REF<x>`` specifies a digital reference waveform as the source.
     """
 
@@ -8491,14 +8491,14 @@ class BusBItemNrz(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:NRZ:SOUrce {CH<x>|MATH<x>|REF<x>}
+            - BUS:B<x>:NRZ:SOUrce {CH<x>|MATH<x>|REF<x>]
             - BUS:B<x>:NRZ:SOUrce?
             ```
 
         Info:
-            - ``B<x>A`` is the number of the bus.
+            - ``B<x>`` is the number of the bus.
             - ``CH<x>`` specifies an analog channel as the source.
-            - ``AMATH<x>`` specifies a math waveform as the source.
+            - ``MATH<x>`` specifies a math waveform as the source.
             - ``REF<x>`` specifies a digital reference waveform as the source.
         """
         return self._source
@@ -18047,7 +18047,7 @@ class BusBItemDisplayFormat(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries how the data is represented in the bus form for the specified
-          bus. The bus is specified by x.Different bus types support only a subset of these
+          bus. The bus is specified by x. Note: Different bus types support only a subset of these
           arguments.
 
     Usage:
@@ -18102,8 +18102,8 @@ class BusBItemDisplay(SCPICmdRead):
 
         Description:
             - This command sets or queries how the data is represented in the bus form for the
-              specified bus. The bus is specified by x.Different bus types support only a subset of
-              these arguments.
+              specified bus. The bus is specified by x. Note: Different bus types support only a
+              subset of these arguments.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:DISplay:FORMat?`` query.
@@ -22113,7 +22113,8 @@ class BusBItemAudioFrameSize(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the number of audio channels in each frame for the specified
-          AUDIO bus. The bus is specified by x.This command only applies to the TDM Audio type.
+          AUDIO bus. The bus is specified by x. Note: This command only applies to the TDM Audio
+          type.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:FRAME:SIZe?`` query.
@@ -22139,7 +22140,7 @@ class BusBItemAudioFrameClockbitsperchannel(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the audio bits of sync width for the specified bus. The bus
-          is specified by x.This command only applies to the TDM Audio type.
+          is specified by x. Note: This command only applies to the TDM Audio type.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:FRAME:CLOCKBITSPERCHANNEL?``
@@ -22191,7 +22192,7 @@ class BusBItemAudioFrame(SCPICmdRead):
 
         Description:
             - This command sets or queries the audio bits of sync width for the specified bus. The
-              bus is specified by x.This command only applies to the TDM Audio type.
+              bus is specified by x. Note: This command only applies to the TDM Audio type.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -22220,8 +22221,8 @@ class BusBItemAudioFrame(SCPICmdRead):
 
         Description:
             - This command sets or queries the number of audio channels in each frame for the
-              specified AUDIO bus. The bus is specified by x.This command only applies to the TDM
-              Audio type.
+              specified AUDIO bus. The bus is specified by x. Note: This command only applies to the
+              TDM Audio type.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:FRAME:SIZe?`` query.
@@ -22779,7 +22780,7 @@ class BusBItemAudioBitdelay(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the number of delay bits for the specified AUDIO bus. The bus
-          is specified by x.This command only applies to the TDM Audio type.
+          is specified by x. Note: This command only applies to the TDM Audio type.
 
     Usage:
         - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:BITDelay?`` query.
@@ -22837,7 +22838,7 @@ class BusBItemAudio(SCPICmdRead):
 
         Description:
             - This command sets or queries the number of delay bits for the specified AUDIO bus. The
-              bus is specified by x.This command only applies to the TDM Audio type.
+              bus is specified by x. Note: This command only applies to the TDM Audio type.
 
         Usage:
             - Using the ``.query()`` method will send the ``BUS:B<x>:AUDio:BITDelay?`` query.

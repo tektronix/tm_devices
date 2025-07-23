@@ -176,8 +176,9 @@ class AliasDefine(SCPICmdWrite, SCPICmdRead):
         - This command assigns a sequence of program messages to an alias label. These messages are
           then substituted for the alias whenever it is received as a command or query, provided
           that ``ALIas:STATE`` is turned on. The query form of this command returns the definitions
-          of a selected alias.Attempting to give two aliases the same name causes an error. To give
-          a new alias the name of an existing alias, the existing alias must first be deleted.
+          of a selected alias. Note: Attempting to give two aliases the same name causes an error.
+          To give a new alias the name of an existing alias, the existing alias must first be
+          deleted.
 
     Usage:
         - Using the ``.query()`` method will send the ``ALIas:DEFine?`` query.
@@ -291,9 +292,9 @@ class Alias(SCPICmdWrite, SCPICmdRead):
             - This command assigns a sequence of program messages to an alias label. These messages
               are then substituted for the alias whenever it is received as a command or query,
               provided that ``ALIas:STATE`` is turned on. The query form of this command returns the
-              definitions of a selected alias.Attempting to give two aliases the same name causes an
-              error. To give a new alias the name of an existing alias, the existing alias must
-              first be deleted.
+              definitions of a selected alias. Note: Attempting to give two aliases the same name
+              causes an error. To give a new alias the name of an existing alias, the existing alias
+              must first be deleted.
 
         Usage:
             - Using the ``.query()`` method will send the ``ALIas:DEFine?`` query.

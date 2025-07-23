@@ -835,7 +835,7 @@ Commands and Queries:
     - TRIGger:B:BUS:B<x>:USB:TOKENType?
     - TRIGger:B:BUS:SOUrce B<x>
     - TRIGger:B:BUS:SOUrce?
-    - TRIGger:B:BY {EVENTS|TIMe
+    - TRIGger:B:BY {EVENTS|TIMe|ARMAtrigb|ACCepts|REJects}
     - TRIGger:B:BY?
     - TRIGger:B:EDGE:COUPling {DC|HFRej|LFRej|NOISErej}
     - TRIGger:B:EDGE:COUPling?
@@ -1200,8 +1200,8 @@ class TriggerBWindowWhen(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the window trigger event. This command is equivalent to
-          selecting Window Setup from the Trig menu and selecting from the Window Trigger When
-          box.Digital channels are not supported as window trigger sources.
+          selecting Window Setup from the Trig menu and selecting from the Window Trigger When box.
+          Note: Digital channels are not supported as window trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:WINdow:WHEn?`` query.
@@ -1231,8 +1231,8 @@ class TriggerBWindowSource(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B:WINdow:SOUrce`` command.
 
     Description:
-        - This command sets or queries the source for a window trigger.Digital channels are not
-          supported as window trigger sources.
+        - This command sets or queries the source for a window trigger. Note: Digital channels are
+          not supported as window trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:WINdow:SOUrce?`` query.
@@ -1446,8 +1446,8 @@ class TriggerBWindow(SCPICmdRead):
         """Return the ``TRIGger:B:WINdow:SOUrce`` command.
 
         Description:
-            - This command sets or queries the source for a window trigger.Digital channels are not
-              supported as window trigger sources.
+            - This command sets or queries the source for a window trigger. Note: Digital channels
+              are not supported as window trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:WINdow:SOUrce?`` query.
@@ -1474,7 +1474,7 @@ class TriggerBWindow(SCPICmdRead):
         Description:
             - This command sets or queries the window trigger event. This command is equivalent to
               selecting Window Setup from the Trig menu and selecting from the Window Trigger When
-              box.Digital channels are not supported as window trigger sources.
+              box. Note: Digital channels are not supported as window trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:WINdow:WHEn?`` query.
@@ -1958,8 +1958,8 @@ class TriggerBTransitionSource(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:B:TRANsition:SOUrce`` command.
 
     Description:
-        - This command specifies the source waveform for a transition trigger.Digital channels are
-          not supported as transition trigger sources.
+        - This command specifies the source waveform for a transition trigger. Note: Digital
+          channels are not supported as transition trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:TRANsition:SOUrce?`` query.
@@ -2175,8 +2175,8 @@ class TriggerBTransition(SCPICmdRead):
         """Return the ``TRIGger:B:TRANsition:SOUrce`` command.
 
         Description:
-            - This command specifies the source waveform for a transition trigger.Digital channels
-              are not supported as transition trigger sources.
+            - This command specifies the source waveform for a transition trigger. Note: Digital
+              channels are not supported as transition trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:TRANsition:SOUrce?`` query.
@@ -2942,8 +2942,8 @@ class TriggerBRuntSource(SCPICmdWrite, SCPICmdRead):
     r"""The ``TRIGger:B:RUNT:SOUrce`` command.
 
     Description:
-        - This command specifies the source waveform for the runt trigger.Digital channels are not
-          supported as runt trigger sources.
+        - This command specifies the source waveform for the runt trigger. Note: Digital channels
+          are not supported as runt trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:RUNT:SOUrce?`` query.
@@ -3105,8 +3105,8 @@ class TriggerBRunt(SCPICmdRead):
         r"""Return the ``TRIGger:B:RUNT:SOUrce`` command.
 
         Description:
-            - This command specifies the source waveform for the runt trigger.Digital channels are
-              not supported as runt trigger sources.
+            - This command specifies the source waveform for the runt trigger. Note: Digital
+              channels are not supported as runt trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:RUNT:SOUrce?`` query.
@@ -3198,8 +3198,8 @@ class TriggerBResetType(SCPICmdWrite, SCPICmdRead):
           reset is active, the reset criteria are part of the B triggering sequence. If the reset
           conditions defined by the reset type are met, the instrument must start over searching for
           a new occurrence of the A event. You must identify a trigger Source and Threshold for each
-          reset type, except for the Timeout trigger type.If a reset condition occurs, the reset
-          criteria itself is reset and must start over.
+          reset type, except for the Timeout trigger type. Note: If a reset condition occurs, the
+          reset criteria itself is reset and must start over.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:RESET:TYPe?`` query.
@@ -3589,7 +3589,7 @@ class TriggerBReset(SCPICmdWrite, SCPICmdRead):
               trigger reset is active, the reset criteria are part of the B triggering sequence. If
               the reset conditions defined by the reset type are met, the instrument must start over
               searching for a new occurrence of the A event. You must identify a trigger Source and
-              Threshold for each reset type, except for the Timeout trigger type.If a reset
+              Threshold for each reset type, except for the Timeout trigger type. Note: If a reset
               condition occurs, the reset criteria itself is reset and must start over.
 
         Usage:
@@ -4668,7 +4668,7 @@ class TriggerBEventsCount(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>`` is the number of B trigger events, which can range from.
+        - ``<NR1>`` is the number of B trigger events, which can range from .
     """
 
 
@@ -4710,7 +4710,7 @@ class TriggerBEvents(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR1>`` is the number of B trigger events, which can range from.
+            - ``<NR1>`` is the number of B trigger events, which can range from .
         """
         return self._count
 
@@ -4931,7 +4931,7 @@ class TriggerBBy(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - TRIGger:B:BY {EVENTS|TIMe
+        - TRIGger:B:BY {EVENTS|TIMe|ARMAtrigb|ACCepts|REJects}
         - TRIGger:B:BY?
         ```
 
@@ -5006,8 +5006,8 @@ class TriggerBBusBItemUsbSplitSeValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - When triggering on a high-speed USB split transaction, this command specifies the split
-          transaction start/end bit value to trigger on. The bus number is specified by x.The start
-          and end bits are interpreted based on the type of split transaction:
+          transaction start/end bit value to trigger on. The bus number is specified by x. Note: The
+          start and end bits are interpreted based on the type of split transaction:
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:USB:SPLit:SE:VALue?``
@@ -5057,8 +5057,8 @@ class TriggerBBusBItemUsbSplitSe(SCPICmdRead):
 
         Description:
             - When triggering on a high-speed USB split transaction, this command specifies the
-              split transaction start/end bit value to trigger on. The bus number is specified by
-              x.The start and end bits are interpreted based on the type of split transaction:
+              split transaction start/end bit value to trigger on. The bus number is specified by x.
+              Note: The start and end bits are interpreted based on the type of split transaction:
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:USB:SPLit:SE:VALue?``
@@ -15955,7 +15955,7 @@ class TriggerBBusBItemEthernetMacAddressSourceValue(SCPICmdWrite, SCPICmdRead):
         - When the Ethernet trigger condition is set to MACADDress, this command specifies the
           48-bit MAC source address value that is to be used in the trigger (along with the
           destination address value). The default is all X's (don't care). The bus number is
-          specified by x.MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
+          specified by x. Note: MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -16009,7 +16009,8 @@ class TriggerBBusBItemEthernetMacAddressSource(SCPICmdRead):
             - When the Ethernet trigger condition is set to MACADDress, this command specifies the
               48-bit MAC source address value that is to be used in the trigger (along with the
               destination address value). The default is all X's (don't care). The bus number is
-              specified by x.MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
+              specified by x. Note: MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE``
+              hex.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -16040,8 +16041,8 @@ class TriggerBBusBItemEthernetMacAddressDestinationValue(SCPICmdWrite, SCPICmdRe
     Description:
         - When the Ethernet trigger condition is set to MACADDress, this command specifies the
           48-bit MAC destination address that is to be used in the trigger (along with the source
-          address value). The default is all X's (don't care). The bus number is specified by x.MAC
-          Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
+          address value). The default is all X's (don't care). The bus number is specified by x.
+          Note: MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -16095,7 +16096,8 @@ class TriggerBBusBItemEthernetMacAddressDestination(SCPICmdRead):
             - When the Ethernet trigger condition is set to MACADDress, this command specifies the
               48-bit MAC destination address that is to be used in the trigger (along with the
               source address value). The default is all X's (don't care). The bus number is
-              specified by x.MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
+              specified by x. Note: MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE``
+              hex.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -16326,7 +16328,7 @@ class TriggerBBusBItemEthernetIpheaderProtocolValue(SCPICmdWrite, SCPICmdRead):
         - When the Ethernet trigger condition is set to IPHeader, this command specifies the value
           of the 8-bit protocol field that is to be used in the trigger (along with the source and
           destination addresses). The default is all X's (don't care). The bus number is specified
-          by x.Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP) and 17 (UDP).
+          by x. Note: Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP) and 17 (UDP).
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -16380,8 +16382,8 @@ class TriggerBBusBItemEthernetIpheaderProtocol(SCPICmdRead):
             - When the Ethernet trigger condition is set to IPHeader, this command specifies the
               value of the 8-bit protocol field that is to be used in the trigger (along with the
               source and destination addresses). The default is all X's (don't care). The bus number
-              is specified by x.Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP) and 17
-              (UDP).
+              is specified by x. Note: Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP)
+              and 17 (UDP).
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -18904,7 +18906,7 @@ class TriggerBBusBItemArinc429aLabelQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on label data for an
           ARINC429 bus signal. The bus number is specified by x. The trigger condition must be set
-          to LABel or LABELANDDATA.If the trigger condition is set to LABELANDDATA, the label
+          to LABel or LABELANDDATA. Note: If the trigger condition is set to LABELANDDATA, the label
           qualifier will be locked to Equal until the trigger condition is changed again.
 
     Usage:
@@ -19022,9 +19024,9 @@ class TriggerBBusBItemArinc429aLabel(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on label data
               for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-              must be set to LABel or LABELANDDATA.If the trigger condition is set to LABELANDDATA,
-              the label qualifier will be locked to Equal until the trigger condition is changed
-              again.
+              must be set to LABel or LABELANDDATA. Note: If the trigger condition is set to
+              LABELANDDATA, the label qualifier will be locked to Equal until the trigger condition
+              is changed again.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -19121,8 +19123,8 @@ class TriggerBBusBItemArinc429aDataValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the low value when triggering on an ARINC429 data field. The
-          bus number is specified by x. The trigger condition must be set to DATa or
-          LABELANDDATA.The size of the QString is dependent on the data field format selected using
+          bus number is specified by x. The trigger condition must be set to DATa or LABELANDDATA.
+          Note: The size of the QString is dependent on the data field format selected using
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:ARINC429A:DATa:VALue?``
@@ -19152,8 +19154,8 @@ class TriggerBBusBItemArinc429aDataQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on data in the DATA
           field for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-          must be set to DATa or LABELANDDATA.The trigger qualifier only applies to the bits defined
-          as the data field via the bus data field format specifier (using
+          must be set to DATa or LABELANDDATA. Note: The trigger qualifier only applies to the bits
+          defined as the data field via the bus data field format specifier (using
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -19188,8 +19190,8 @@ class TriggerBBusBItemArinc429aDataHivalue(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the high value when trigger on an ARINC429 data field. The
           bus number is specified by x. The trigger condition must be set to DATa or LABELANDDATA,
-          and the data qualifier must be INrange or OUTrange.The size of the QString is dependent on
-          the data field format selected using
+          and the data qualifier must be INrange or OUTrange. Note: The size of the QString is
+          dependent on the data field format selected using
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:B:BUS:B<x>:ARINC429A:DATa:HIVALue?``
@@ -19242,8 +19244,8 @@ class TriggerBBusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the high value when trigger on an ARINC429 data field.
               The bus number is specified by x. The trigger condition must be set to DATa or
-              LABELANDDATA, and the data qualifier must be INrange or OUTrange.The size of the
-              QString is dependent on the data field format selected using
+              LABELANDDATA, and the data qualifier must be INrange or OUTrange. Note: The size of
+              the QString is dependent on the data field format selected using
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -19272,8 +19274,9 @@ class TriggerBBusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on data in the
               DATA field for an ARINC429 bus signal. The bus number is specified by x. The trigger
-              condition must be set to DATa or LABELANDDATA.The trigger qualifier only applies to
-              the bits defined as the data field via the bus data field format specifier (using
+              condition must be set to DATa or LABELANDDATA. Note: The trigger qualifier only
+              applies to the bits defined as the data field via the bus data field format specifier
+              (using
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -19309,8 +19312,8 @@ class TriggerBBusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the low value when triggering on an ARINC429 data field.
               The bus number is specified by x. The trigger condition must be set to DATa or
-              LABELANDDATA.The size of the QString is dependent on the data field format selected
-              using
+              LABELANDDATA. Note: The size of the QString is dependent on the data field format
+              selected using
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -20049,7 +20052,7 @@ class TriggerB(SCPICmdWrite, SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - TRIGger:B:BY {EVENTS|TIMe
+            - TRIGger:B:BY {EVENTS|TIMe|ARMAtrigb|ACCepts|REJects}
             - TRIGger:B:BY?
             ```
 
@@ -20505,8 +20508,8 @@ class TriggerAWindowWhen(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the window trigger event. This command is equivalent to
-          selecting Window Setup from the Trig menu and selecting from the Window Trigger When
-          box.Digital channels are not supported as window trigger sources.
+          selecting Window Setup from the Trig menu and selecting from the Window Trigger When box.
+          Note: Digital channels are not supported as window trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:WINdow:WHEn?`` query.
@@ -20536,8 +20539,8 @@ class TriggerAWindowSource(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:A:WINdow:SOUrce`` command.
 
     Description:
-        - This command sets or queries the source for a window trigger.Digital channels are not
-          supported as window trigger sources.
+        - This command sets or queries the source for a window trigger. Note: Digital channels are
+          not supported as window trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:WINdow:SOUrce?`` query.
@@ -20751,8 +20754,8 @@ class TriggerAWindow(SCPICmdRead):
         """Return the ``TRIGger:A:WINdow:SOUrce`` command.
 
         Description:
-            - This command sets or queries the source for a window trigger.Digital channels are not
-              supported as window trigger sources.
+            - This command sets or queries the source for a window trigger. Note: Digital channels
+              are not supported as window trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:WINdow:SOUrce?`` query.
@@ -20779,7 +20782,7 @@ class TriggerAWindow(SCPICmdRead):
         Description:
             - This command sets or queries the window trigger event. This command is equivalent to
               selecting Window Setup from the Trig menu and selecting from the Window Trigger When
-              box.Digital channels are not supported as window trigger sources.
+              box. Note: Digital channels are not supported as window trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:WINdow:WHEn?`` query.
@@ -21263,8 +21266,8 @@ class TriggerATransitionSource(SCPICmdWrite, SCPICmdRead):
     """The ``TRIGger:A:TRANsition:SOUrce`` command.
 
     Description:
-        - This command specifies the source waveform for a transition trigger.Digital channels are
-          not supported as transition trigger sources.
+        - This command specifies the source waveform for a transition trigger. Note: Digital
+          channels are not supported as transition trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:TRANsition:SOUrce?`` query.
@@ -21480,8 +21483,8 @@ class TriggerATransition(SCPICmdRead):
         """Return the ``TRIGger:A:TRANsition:SOUrce`` command.
 
         Description:
-            - This command specifies the source waveform for a transition trigger.Digital channels
-              are not supported as transition trigger sources.
+            - This command specifies the source waveform for a transition trigger. Note: Digital
+              channels are not supported as transition trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:TRANsition:SOUrce?`` query.
@@ -22194,8 +22197,8 @@ class TriggerARuntSource(SCPICmdWrite, SCPICmdRead):
     r"""The ``TRIGger:A:RUNT:SOUrce`` command.
 
     Description:
-        - This command specifies the source waveform for the runt trigger.Digital channels are not
-          supported as runt trigger sources.
+        - This command specifies the source waveform for the runt trigger. Note: Digital channels
+          are not supported as runt trigger sources.
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:RUNT:SOUrce?`` query.
@@ -22357,8 +22360,8 @@ class TriggerARunt(SCPICmdRead):
         r"""Return the ``TRIGger:A:RUNT:SOUrce`` command.
 
         Description:
-            - This command specifies the source waveform for the runt trigger.Digital channels are
-              not supported as runt trigger sources.
+            - This command specifies the source waveform for the runt trigger. Note: Digital
+              channels are not supported as runt trigger sources.
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:RUNT:SOUrce?`` query.
@@ -23549,7 +23552,7 @@ class TriggerAHoldoffTime(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` specifies the holdoff time in seconds. The range is from 0 s to.
+        - ``<NR3>`` specifies the holdoff time in seconds. The range is from 0 s to s.
     """
 
 
@@ -23651,7 +23654,7 @@ class TriggerAHoldoff(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` specifies the holdoff time in seconds. The range is from 0 s to.
+            - ``<NR3>`` specifies the holdoff time in seconds. The range is from 0 s to s.
         """
         return self._time
 
@@ -23914,8 +23917,8 @@ class TriggerABusBItemUsbSplitSeValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - When triggering on a high-speed USB split transaction, this command specifies the split
-          transaction start/end bit value to trigger on. The bus number is specified by x.The start
-          and end bits are interpreted based on the type of split transaction:
+          transaction start/end bit value to trigger on. The bus number is specified by x. Note: The
+          start and end bits are interpreted based on the type of split transaction:
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:USB:SPLit:SE:VALue?``
@@ -23965,8 +23968,8 @@ class TriggerABusBItemUsbSplitSe(SCPICmdRead):
 
         Description:
             - When triggering on a high-speed USB split transaction, this command specifies the
-              split transaction start/end bit value to trigger on. The bus number is specified by
-              x.The start and end bits are interpreted based on the type of split transaction:
+              split transaction start/end bit value to trigger on. The bus number is specified by x.
+              Note: The start and end bits are interpreted based on the type of split transaction:
 
         Usage:
             - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:USB:SPLit:SE:VALue?``
@@ -34863,7 +34866,7 @@ class TriggerABusBItemEthernetMacAddressSourceValue(SCPICmdWrite, SCPICmdRead):
         - When the Ethernet trigger condition is set to MACADDress, this command specifies the
           48-bit MAC source address value that is to be used in the trigger (along with the
           destination address value). The default is all X's (don't care). The bus number is
-          specified by x.MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
+          specified by x. Note: MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -34917,7 +34920,8 @@ class TriggerABusBItemEthernetMacAddressSource(SCPICmdRead):
             - When the Ethernet trigger condition is set to MACADDress, this command specifies the
               48-bit MAC source address value that is to be used in the trigger (along with the
               destination address value). The default is all X's (don't care). The bus number is
-              specified by x.MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
+              specified by x. Note: MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE``
+              hex.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -34948,8 +34952,8 @@ class TriggerABusBItemEthernetMacAddressDestinationValue(SCPICmdWrite, SCPICmdRe
     Description:
         - When the Ethernet trigger condition is set to MACADDress, this command specifies the
           48-bit MAC destination address that is to be used in the trigger (along with the source
-          address value). The default is all X's (don't care). The bus number is specified by x.MAC
-          Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
+          address value). The default is all X's (don't care). The bus number is specified by x.
+          Note: MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -35003,7 +35007,8 @@ class TriggerABusBItemEthernetMacAddressDestination(SCPICmdRead):
             - When the Ethernet trigger condition is set to MACADDress, this command specifies the
               48-bit MAC destination address that is to be used in the trigger (along with the
               source address value). The default is all X's (don't care). The bus number is
-              specified by x.MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
+              specified by x. Note: MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE``
+              hex.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -35234,7 +35239,7 @@ class TriggerABusBItemEthernetIpheaderProtocolValue(SCPICmdWrite, SCPICmdRead):
         - When the Ethernet trigger condition is set to IPHeader, this command specifies the value
           of the 8-bit protocol field that is to be used in the trigger (along with the source and
           destination addresses). The default is all X's (don't care). The bus number is specified
-          by x.Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP) and 17 (UDP).
+          by x. Note: Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP) and 17 (UDP).
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -35288,8 +35293,8 @@ class TriggerABusBItemEthernetIpheaderProtocol(SCPICmdRead):
             - When the Ethernet trigger condition is set to IPHeader, this command specifies the
               value of the 8-bit protocol field that is to be used in the trigger (along with the
               source and destination addresses). The default is all X's (don't care). The bus number
-              is specified by x.Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP) and 17
-              (UDP).
+              is specified by x. Note: Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP)
+              and 17 (UDP).
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -37812,7 +37817,7 @@ class TriggerABusBItemArinc429aLabelQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on label data for an
           ARINC429 bus signal. The bus number is specified by x. The trigger condition must be set
-          to LABel or LABELANDDATA.If the trigger condition is set to LABELANDDATA, the label
+          to LABel or LABELANDDATA. Note: If the trigger condition is set to LABELANDDATA, the label
           qualifier will be locked to Equal until the trigger condition is changed again.
 
     Usage:
@@ -37930,9 +37935,9 @@ class TriggerABusBItemArinc429aLabel(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on label data
               for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-              must be set to LABel or LABELANDDATA.If the trigger condition is set to LABELANDDATA,
-              the label qualifier will be locked to Equal until the trigger condition is changed
-              again.
+              must be set to LABel or LABELANDDATA. Note: If the trigger condition is set to
+              LABELANDDATA, the label qualifier will be locked to Equal until the trigger condition
+              is changed again.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -38029,8 +38034,8 @@ class TriggerABusBItemArinc429aDataValue(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the low value when triggering on an ARINC429 data field. The
-          bus number is specified by x. The trigger condition must be set to DATa or
-          LABELANDDATA.The size of the QString is dependent on the data field format selected using
+          bus number is specified by x. The trigger condition must be set to DATa or LABELANDDATA.
+          Note: The size of the QString is dependent on the data field format selected using
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:ARINC429A:DATa:VALue?``
@@ -38060,8 +38065,8 @@ class TriggerABusBItemArinc429aDataQualifier(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the qualifier to be used when triggering on data in the DATA
           field for an ARINC429 bus signal. The bus number is specified by x. The trigger condition
-          must be set to DATa or LABELANDDATA.The trigger qualifier only applies to the bits defined
-          as the data field via the bus data field format specifier (using
+          must be set to DATa or LABELANDDATA. Note: The trigger qualifier only applies to the bits
+          defined as the data field via the bus data field format specifier (using
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -38096,8 +38101,8 @@ class TriggerABusBItemArinc429aDataHivalue(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the high value when trigger on an ARINC429 data field. The
           bus number is specified by x. The trigger condition must be set to DATa or LABELANDDATA,
-          and the data qualifier must be INrange or OUTrange.The size of the QString is dependent on
-          the data field format selected using
+          and the data qualifier must be INrange or OUTrange. Note: The size of the QString is
+          dependent on the data field format selected using
 
     Usage:
         - Using the ``.query()`` method will send the ``TRIGger:A:BUS:B<x>:ARINC429A:DATa:HIVALue?``
@@ -38150,8 +38155,8 @@ class TriggerABusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the high value when trigger on an ARINC429 data field.
               The bus number is specified by x. The trigger condition must be set to DATa or
-              LABELANDDATA, and the data qualifier must be INrange or OUTrange.The size of the
-              QString is dependent on the data field format selected using
+              LABELANDDATA, and the data qualifier must be INrange or OUTrange. Note: The size of
+              the QString is dependent on the data field format selected using
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -38180,8 +38185,9 @@ class TriggerABusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when triggering on data in the
               DATA field for an ARINC429 bus signal. The bus number is specified by x. The trigger
-              condition must be set to DATa or LABELANDDATA.The trigger qualifier only applies to
-              the bits defined as the data field via the bus data field format specifier (using
+              condition must be set to DATa or LABELANDDATA. Note: The trigger qualifier only
+              applies to the bits defined as the data field via the bus data field format specifier
+              (using
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -38217,8 +38223,8 @@ class TriggerABusBItemArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the low value when triggering on an ARINC429 data field.
               The bus number is specified by x. The trigger condition must be set to DATa or
-              LABELANDDATA.The size of the QString is dependent on the data field format selected
-              using
+              LABELANDDATA. Note: The size of the QString is dependent on the data field format
+              selected using
 
         Usage:
             - Using the ``.query()`` method will send the

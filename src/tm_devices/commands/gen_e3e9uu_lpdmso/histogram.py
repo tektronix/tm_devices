@@ -418,8 +418,8 @@ class HistogramHistogramItemMeasurementPhits(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``HISTogram<x>`` specifies the histogram number.
-        - ``ON`` enables the Median measurement.
-        - ``OFF`` disables the Median measurement.
+        - ``ON`` enables the Peak Hits measurement.
+        - ``OFF`` disables the Peak Hits measurement.
     """
 
 
@@ -447,8 +447,8 @@ class HistogramHistogramItemMeasurementOnesigma(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``HISTogram<x>`` specifies the histogram number.
-        - ``ON`` enables the Median measurement.
-        - ``OFF`` disables the Median measurement.
+        - ``ON`` enables the μ±1(sigma) measurement.
+        - ``OFF`` disables the μ±1(sigma) measurement.
     """
 
 
@@ -935,8 +935,8 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
 
         Info:
             - ``HISTogram<x>`` specifies the histogram number.
-            - ``ON`` enables the Median measurement.
-            - ``OFF`` disables the Median measurement.
+            - ``ON`` enables the μ±1(sigma) measurement.
+            - ``OFF`` disables the μ±1(sigma) measurement.
         """
         return self._onesigma
 
@@ -965,8 +965,8 @@ class HistogramHistogramItemMeasurement(SCPICmdRead):
 
         Info:
             - ``HISTogram<x>`` specifies the histogram number.
-            - ``ON`` enables the Median measurement.
-            - ``OFF`` disables the Median measurement.
+            - ``ON`` enables the Peak Hits measurement.
+            - ``OFF`` disables the Peak Hits measurement.
         """
         return self._phits
 
@@ -1630,7 +1630,8 @@ class HistogramDelete(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` specifies the waveform histogram to delete. The argument is of the form '.
+        - ``<QString>`` specifies the waveform histogram to delete. The argument is of the form '
+          HIST<NR1> ', where NR1 is a number value ≥ 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -1668,7 +1669,8 @@ class HistogramAddnew(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` specifies the waveform histogram to add. The argument is of the form '.
+        - ``<QString>`` specifies the waveform histogram to add. The argument is of the form '
+          HIST<NR1> ', where NR1 is a number value ≥ 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -1716,7 +1718,8 @@ class Histogram(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` specifies the waveform histogram to add. The argument is of the form '.
+            - ``<QString>`` specifies the waveform histogram to add. The argument is of the form '
+              HIST<NR1> ', where NR1 is a number value ≥ 1.
         """
         return self._addnew
 
@@ -1755,7 +1758,7 @@ class Histogram(SCPICmdRead):
 
         Info:
             - ``<QString>`` specifies the waveform histogram to delete. The argument is of the form
-              '.
+              ' HIST<NR1> ', where NR1 is a number value ≥ 1.
         """
         return self._delete
 

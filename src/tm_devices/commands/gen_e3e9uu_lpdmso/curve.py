@@ -59,10 +59,10 @@ class Curve(SCPICmdRead):
           group1) then Ch2 and Ch3 rows will be 250 each. When all Ch1/2/3/4 are turned on (in
           group1) then 125 rows per channel. If Ch1 (in group1) and Ch8 (in group2) are turned on
           then 500 rows will be returned for each channel. To calculate the number of rows, you can
-          use- (number of bytes from curve header/``BYT_NR``)/1000.Curve data is transferred from
-          the instrument asynchronously and, depending upon the length of the curve record, such
-          transfers can require several seconds to complete. During this time, the instrument will
-          not respond to usercontrols. You can interrupt these asynchronous data transfers by
+          use- (number of bytes from curve header/``BYT_NR``)/1000. Note: Curve data is transferred
+          from the instrument asynchronously and, depending upon the length of the curve record,
+          such transfers can require several seconds to complete. During this time, the instrument
+          will not respond to usercontrols. You can interrupt these asynchronous data transfers by
           sending adevice clear message to the instrument or by interrupting the query with another
           command or query. Verify that curve data is completely transferred.
 

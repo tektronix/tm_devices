@@ -27,10 +27,10 @@ class Unlock(SCPICmdWrite):
     Description:
         - This command (no query form) unlocks the front panel controls only. To unlock the front
           panel controls and the touch screen use the LOCk NONe command. The command
-          ``TOUCHSCReen:STATE ON`` enables the touch screen only.If the instrument is in the Remote
-          With Lockout State (RWLS), the ``UNLock`` command has no effect. For more information, see
-          the ANSI-IEEE Std 488.1-1987Standard Digital Interface for Programmable Instrumentation,
-          section 2.8.3 on RL State Descriptions.
+          ``TOUCHSCReen:STATE ON`` enables the touch screen only. Note: If the instrument is in the
+          Remote With Lockout State (RWLS), the ``UNLock`` command has no effect. For more
+          information, see the ANSI-IEEE Std 488.1-1987Standard Digital Interface for Programmable
+          Instrumentation, section 2.8.3 on RL State Descriptions.
 
     Usage:
         - Using the ``.write(value)`` method will send the ``UNLock value`` command.

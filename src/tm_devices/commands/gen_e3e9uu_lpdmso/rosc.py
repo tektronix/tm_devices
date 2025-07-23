@@ -9,7 +9,7 @@ Please report an issue if one is found.
 
 Commands and Queries:
     ```
-    - ROSc:SOUrce {INTERnal|EXTernal|TRACking}
+    - ROSc:SOUrce {INTERnal|EXTernal|TRACking|SAMPle}
     - ROSc:SOUrce?
     - ROSc:STATE?
     ```
@@ -41,10 +41,8 @@ class RoscState(SCPICmdRead):
         ```
 
     Info:
-        - ``LOCKED`` indicates the timing reference phase-locked loop (PLL) is locked to the input
-          frequency. oscillator is locked.
-        - ``UNLOCKED`` indicates the timing reference phase-locked loop (PLL) is not locked to the
-          input frequency. oscillator is not locked.
+        - ``LOCKED`` indicates the reference oscillator is locked.
+        - ``UNLOCKED`` indicates the reference oscillator is not locked.
     """
 
 
@@ -69,14 +67,15 @@ class RoscSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - ROSc:SOUrce {INTERnal|EXTernal|TRACking}
+        - ROSc:SOUrce {INTERnal|EXTernal|TRACking|SAMPle}
         - ROSc:SOUrce?
         ```
 
     Info:
         - ``INTERnal`` specifies the internal 10 MHz crystal oscillator as the time base reference.
-        - ``EXTernal`` specifies the user-supplied external signal at.
-        - ``TRACking`` specifies the user-supplied external signal at.
+        - ``EXTernal`` specifies the user-supplied external signal at 1 ppm as the time base
+          reference.
+        - ``TRACking`` specifies the user-supplied external signal at as the time base reference.
     """
 
 
@@ -120,15 +119,17 @@ class Rosc(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - ROSc:SOUrce {INTERnal|EXTernal|TRACking}
+            - ROSc:SOUrce {INTERnal|EXTernal|TRACking|SAMPle}
             - ROSc:SOUrce?
             ```
 
         Info:
             - ``INTERnal`` specifies the internal 10 MHz crystal oscillator as the time base
               reference.
-            - ``EXTernal`` specifies the user-supplied external signal at.
-            - ``TRACking`` specifies the user-supplied external signal at.
+            - ``EXTernal`` specifies the user-supplied external signal at 1 ppm as the time base
+              reference.
+            - ``TRACking`` specifies the user-supplied external signal at as the time base
+              reference.
         """
         return self._source
 
@@ -151,9 +152,7 @@ class Rosc(SCPICmdRead):
             ```
 
         Info:
-            - ``LOCKED`` indicates the timing reference phase-locked loop (PLL) is locked to the
-              input frequency. oscillator is locked.
-            - ``UNLOCKED`` indicates the timing reference phase-locked loop (PLL) is not locked to
-              the input frequency. oscillator is not locked.
+            - ``LOCKED`` indicates the reference oscillator is locked.
+            - ``UNLOCKED`` indicates the reference oscillator is not locked.
         """
         return self._state

@@ -43,12 +43,12 @@ class Curvestream(SCPICmdRead):
           a long time-out threshold, as the data is not sent out until each complete record is
           acquired. If the waveform records are being acquired rapidly (low resolution), and the
           controller is not reading the data off the bus fast enough, the trigger rate is slowed to
-          allow each waveform to be sent sequentially. Curve data is transferred from the instrument
-          asynchronously and,depending upon the length of the curve record, such transfers can
-          require severalseconds to complete. During this time, the instrument will not respond to
-          usercontrols. You can interrupt these asynchronous data transfers by sending adevice clear
-          message to the instrument or by interrupting the query with anothercommand or query.
-          Verify that curve data is completely transferred.
+          allow each waveform to be sent sequentially Note:. Curve data is transferred from the
+          instrument asynchronously and,depending upon the length of the curve record, such
+          transfers can require severalseconds to complete. During this time, the instrument will
+          not respond to usercontrols. You can interrupt these asynchronous data transfers by
+          sending adevice clear message to the instrument or by interrupting the query with
+          anothercommand or query. Verify that curve data is completely transferred.
 
     Usage:
         - Using the ``.query()`` method will send the ``CURVEStream?`` query.

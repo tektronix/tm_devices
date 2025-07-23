@@ -1181,7 +1181,8 @@ class PowerPowerItemTurnontimeNumoutputs(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
-        - ``ONE`` through.
+        - ``ONE`` through SEVEN sets the number of outputs for the specified Turn On Time power
+          measurement.
     """
 
 
@@ -1613,7 +1614,8 @@ class PowerPowerItemTurnontime(SCPICmdRead):
         Info:
             - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
-            - ``ONE`` through.
+            - ``ONE`` through SEVEN sets the number of outputs for the specified Turn On Time power
+              measurement.
         """
         return self._numoutputs
 
@@ -2579,7 +2581,7 @@ class PowerPowerItemTurnofftimeNumoutputs(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``POWer<x>`` is the power measurement number. This is the equivalent of the number shown
           on a power measurement badge in the UI.
-        - ``ONE`` through.
+        - ``ONE`` through SEVEN sets the number of outputs for the Turn Off Time measurement.
     """
 
 
@@ -3014,7 +3016,7 @@ class PowerPowerItemTurnofftime(SCPICmdRead):
         Info:
             - ``POWer<x>`` is the power measurement number. This is the equivalent of the number
               shown on a power measurement badge in the UI.
-            - ``ONE`` through.
+            - ``ONE`` through SEVEN sets the number of outputs for the Turn Off Time measurement.
         """
         return self._numoutputs
 
@@ -5187,8 +5189,8 @@ class PowerPowerItemResultsCurrentacqStddev(SCPICmdReadWithArguments):
     Description:
         - This command queries the standard deviation value of the current acquisition for the
           measurement parameter in the specified power measurement number. The power measurement
-          number is specified by x.Above entries are <QSTring> entries, and must be entered in
-          enclosing quotes.
+          number is specified by x. Note: Above entries are <QSTring> entries, and must be entered
+          in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -5208,19 +5210,23 @@ class PowerPowerItemResultsCurrentacqStddev(SCPICmdReadWithArguments):
         - ``<QString>`` = the measurement result that you want to return from the specified power
           measurement number. Available results depend on the power measurement being taken in the
           specified measurement number. The valid <QString> arguments are.
-        - ``InputPwr`` ', '.
+        - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+          Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
         - ``INDUCT`` '.
         - ``IVSINTV`` '.
         - ``MAGLOSS`` '.
-        - ``Bpeak`` ', '.
+        - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', ' Permeability
+          '.
         - ``RDS`` '.
-        - ``TRUEPWR`` ', '.
-        - ``TONENRG`` ', '.
+        - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', ' ICFACTOR ',
+          ' VCFACTOR ', ' IRMS ', ' VRMS '.
+        - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+          TTLLOSS ', ' TTLENRG '.
         - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
         - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
         - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-        - ``LRIPRMS`` ' and '.
-        - ``SWRIPRMS`` ' and '.
+        - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+        - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple measurement.
         - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
         - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
         - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -5235,9 +5241,12 @@ class PowerPowerItemResultsCurrentacqStddev(SCPICmdReadWithArguments):
         - ``MIN`` ' is the parameter for the Cycle Min measurement.
         - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
         - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-        - ``OUTPUT1`` ' - '.
-        - ``GAINCROSSOVERFREQ`` ', '.
-        - ``MAXPSRR`` ', '.
+        - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+          measurements.
+        - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for the
+          Control Loop Response measurement.
+        - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for the
+          PSRR measurement.
     """  # noqa: E501
 
 
@@ -5297,8 +5306,8 @@ class PowerPowerItemResultsCurrentacqPopulation(SCPICmdReadWithArguments):
     Description:
         - This command queries the population (number of complete cycles) of the current acquisition
           for the measurement parameter in the specified power measurement number. The power
-          measurement number is specified by x.Above entries are <QSTring> entries, and must be
-          entered in enclosing quotes.
+          measurement number is specified by x. Note: Above entries are <QSTring> entries, and must
+          be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -5317,20 +5326,24 @@ class PowerPowerItemResultsCurrentacqPopulation(SCPICmdReadWithArguments):
           in the UI for a power measurement badge.
         - ``<QString> =`` the measurement result that you want to return from the specified power
           measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid.
-        - ``InputPwr`` ', '.
+          specified measurement number. The valid <QString> arguments are.
+        - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+          Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
         - ``INDUCT`` '.
         - ``IVSINTV`` '.
         - ``MAGLOSS`` '.
-        - ``Bpeak`` ', '.
+        - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', ' Permeability
+          '.
         - ``RDS`` '.
-        - ``TRUEPWR`` ', '.
-        - ``TONENRG`` ', '.
+        - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', ' ICFACTOR ',
+          ' VCFACTOR ', ' IRMS ', ' VRMS '.
+        - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+          TTLLOSS ', ' TTLENRG '.
         - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
         - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
         - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-        - ``LRIPRMS`` ' and '.
-        - ``SWRIPRMS`` ' and '.
+        - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+        - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple measurement.
         - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
         - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
         - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -5345,9 +5358,12 @@ class PowerPowerItemResultsCurrentacqPopulation(SCPICmdReadWithArguments):
         - ``MIN`` ' is the parameter for the Cycle Min measurement.
         - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
         - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-        - ``OUTPUT1`` ' - '.
-        - ``GAINCROSSOVERFREQ`` ', '.
-        - ``MAXPSRR`` ', '.
+        - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+          measurements.
+        - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for the
+          Control Loop Response measurement.
+        - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for the
+          PSRR measurement.
     """  # noqa: E501
 
 
@@ -5427,8 +5443,8 @@ class PowerPowerItemResultsCurrentacqPk2pk(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command queries the peak-to-peak value of the current acquisition for the measurement
-          parameter in the specified power measurement number.Above entries are <QSTring> entries,
-          and must be entered in enclosing quotes.
+          parameter in the specified power measurement number. Note: Above entries are <QSTring>
+          entries, and must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:RESUlts:CURRentacq:PK2PK?``
@@ -5452,8 +5468,8 @@ class PowerPowerItemResultsCurrentacqMinimum(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the minimum value of the current acquisition for the measurement
-          parameter in the specified power measurement number.Above entries are <QSTring> entries,
-          and must be entered in enclosing quotes.
+          parameter in the specified power measurement number. Note: Above entries are <QSTring>
+          entries, and must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -5472,20 +5488,24 @@ class PowerPowerItemResultsCurrentacqMinimum(SCPICmdReadWithArguments):
           in the UI for a power measurement badge.
         - ``<QString> =`` the measurement result that you want to return from the specified power
           measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid.
-        - ``InputPwr`` ', '.
+          specified measurement number. The valid <QString> arguments are.
+        - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+          Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
         - ``INDUCT`` '.
         - ``IVSINTV`` '.
         - ``MAGLOSS`` '.
-        - ``Bpeak`` ', '.
+        - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', ' Permeability
+          '.
         - ``RDS`` '.
-        - ``TRUEPWR`` ', '.
-        - ``TONENRG`` ', '.
+        - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', ' ICFACTOR ',
+          ' VCFACTOR ', ' IRMS ', ' VRMS '.
+        - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+          TTLLOSS ', ' TTLENRG '.
         - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
         - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
         - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-        - ``LRIPRMS`` ' and '.
-        - ``SWRIPRMS`` ' and '.
+        - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+        - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple measurement.
         - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
         - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
         - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -5500,9 +5520,12 @@ class PowerPowerItemResultsCurrentacqMinimum(SCPICmdReadWithArguments):
         - ``MIN`` ' is the parameter for the Cycle Min measurement.
         - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
         - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-        - ``OUTPUT1`` ' - '.
-        - ``GAINCROSSOVERFREQ`` ', '.
-        - ``MAXPSRR`` ', '.
+        - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+          measurements.
+        - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for the
+          Control Loop Response measurement.
+        - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for the
+          PSRR measurement.
     """  # noqa: E501
 
 
@@ -5511,8 +5534,8 @@ class PowerPowerItemResultsCurrentacqMean(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the mean value of the current acquisition for the measurement
-          parameter of the specified power measurement <x>.Above entries are <QSTring> entries, and
-          must be entered in enclosing quotes.
+          parameter of the specified power measurement <x>. Note: Above entries are <QSTring>
+          entries, and must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -5531,20 +5554,24 @@ class PowerPowerItemResultsCurrentacqMean(SCPICmdReadWithArguments):
           in the UI for a power measurement badge.
         - ``<QString> =`` the measurement result that you want to return from the specified power
           measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid.
-        - ``InputPwr`` ', '.
+          specified measurement number. The valid <QString> arguments are.
+        - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+          Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
         - ``INDUCT`` '.
         - ``IVSINTV`` '.
         - ``MAGLOSS`` '.
-        - ``Bpeak`` ', '.
+        - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', ' Permeability
+          '.
         - ``RDS`` '.
-        - ``TRUEPWR`` ', '.
-        - ``TONENRG`` ', '.
+        - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', ' ICFACTOR ',
+          ' VCFACTOR ', ' IRMS ', ' VRMS '.
+        - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+          TTLLOSS ', ' TTLENRG '.
         - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
         - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
         - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-        - ``LRIPRMS`` ' and '.
-        - ``SWRIPRMS`` ' and '.
+        - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+        - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple measurement.
         - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
         - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
         - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -5559,9 +5586,12 @@ class PowerPowerItemResultsCurrentacqMean(SCPICmdReadWithArguments):
         - ``MIN`` ' is the parameter for the Cycle Min measurement.
         - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
         - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-        - ``OUTPUT1`` ' - '.
-        - ``GAINCROSSOVERFREQ`` ', '.
-        - ``MAXPSRR`` ', '.
+        - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+          measurements.
+        - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for the
+          Control Loop Response measurement.
+        - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for the
+          PSRR measurement.
     """  # noqa: E501
 
 
@@ -5570,8 +5600,8 @@ class PowerPowerItemResultsCurrentacqMaximum(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the maximum value of the current acquisition for the measurement
-          parameter in the specified power measurement number.Above entries are <QSTring> entries,
-          and must be entered in enclosing quotes.
+          parameter in the specified power measurement number. Note: Above entries are <QSTring>
+          entries, and must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -5590,20 +5620,24 @@ class PowerPowerItemResultsCurrentacqMaximum(SCPICmdReadWithArguments):
           in the UI for a power measurement badge.
         - ``<QString> =`` the measurement result that you want to return from the specified power
           measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid.
-        - ``InputPwr`` ', '.
+          specified measurement number. The valid <QString> arguments are.
+        - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+          Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
         - ``INDUCT`` '.
         - ``IVSINTV`` '.
         - ``MAGLOSS`` '.
-        - ``Bpeak`` ', '.
+        - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', ' Permeability
+          '.
         - ``RDS`` '.
-        - ``TRUEPWR`` ', '.
-        - ``TONENRG`` ', '.
+        - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', ' ICFACTOR ',
+          ' VCFACTOR ', ' IRMS ', ' VRMS '.
+        - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+          TTLLOSS ', ' TTLENRG '.
         - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
         - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
         - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-        - ``LRIPRMS`` ' and '.
-        - ``SWRIPRMS`` ' and '.
+        - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+        - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple measurement.
         - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
         - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
         - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -5618,9 +5652,12 @@ class PowerPowerItemResultsCurrentacqMaximum(SCPICmdReadWithArguments):
         - ``MIN`` ' is the parameter for the Cycle Min measurement.
         - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
         - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-        - ``OUTPUT1`` ' - '.
-        - ``GAINCROSSOVERFREQ`` ', '.
-        - ``MAXPSRR`` ', '.
+        - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+          measurements.
+        - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for the
+          Control Loop Response measurement.
+        - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for the
+          PSRR measurement.
     """  # noqa: E501
 
 
@@ -5896,7 +5933,7 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         Description:
             - This command queries the maximum value of the current acquisition for the measurement
-              parameter in the specified power measurement number.Above entries are <QSTring>
+              parameter in the specified power measurement number. Note: Above entries are <QSTring>
               entries, and must be entered in enclosing quotes.
 
         Usage:
@@ -5916,20 +5953,25 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
               shown in the UI for a power measurement badge.
             - ``<QString> =`` the measurement result that you want to return from the specified
               power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid.
-            - ``InputPwr`` ', '.
+              taken in the specified measurement number. The valid <QString> arguments are.
+            - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+              Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
             - ``INDUCT`` '.
             - ``IVSINTV`` '.
             - ``MAGLOSS`` '.
-            - ``Bpeak`` ', '.
+            - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', '
+              Permeability '.
             - ``RDS`` '.
-            - ``TRUEPWR`` ', '.
-            - ``TONENRG`` ', '.
+            - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', '
+              ICFACTOR ', ' VCFACTOR ', ' IRMS ', ' VRMS '.
+            - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+              TTLLOSS ', ' TTLENRG '.
             - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
             - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
             - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-            - ``LRIPRMS`` ' and '.
-            - ``SWRIPRMS`` ' and '.
+            - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+            - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple
+              measurement.
             - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
             - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
             - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -5944,9 +5986,12 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
             - ``MIN`` ' is the parameter for the Cycle Min measurement.
             - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
             - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-            - ``OUTPUT1`` ' - '.
-            - ``GAINCROSSOVERFREQ`` ', '.
-            - ``MAXPSRR`` ', '.
+            - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+              measurements.
+            - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for
+              the Control Loop Response measurement.
+            - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for
+              the PSRR measurement.
         """  # noqa: E501
         return self._maximum
 
@@ -5956,8 +6001,8 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         Description:
             - This command queries the mean value of the current acquisition for the measurement
-              parameter of the specified power measurement <x>.Above entries are <QSTring> entries,
-              and must be entered in enclosing quotes.
+              parameter of the specified power measurement <x>. Note: Above entries are <QSTring>
+              entries, and must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -5976,20 +6021,25 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
               shown in the UI for a power measurement badge.
             - ``<QString> =`` the measurement result that you want to return from the specified
               power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid.
-            - ``InputPwr`` ', '.
+              taken in the specified measurement number. The valid <QString> arguments are.
+            - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+              Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
             - ``INDUCT`` '.
             - ``IVSINTV`` '.
             - ``MAGLOSS`` '.
-            - ``Bpeak`` ', '.
+            - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', '
+              Permeability '.
             - ``RDS`` '.
-            - ``TRUEPWR`` ', '.
-            - ``TONENRG`` ', '.
+            - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', '
+              ICFACTOR ', ' VCFACTOR ', ' IRMS ', ' VRMS '.
+            - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+              TTLLOSS ', ' TTLENRG '.
             - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
             - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
             - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-            - ``LRIPRMS`` ' and '.
-            - ``SWRIPRMS`` ' and '.
+            - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+            - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple
+              measurement.
             - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
             - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
             - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -6004,9 +6054,12 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
             - ``MIN`` ' is the parameter for the Cycle Min measurement.
             - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
             - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-            - ``OUTPUT1`` ' - '.
-            - ``GAINCROSSOVERFREQ`` ', '.
-            - ``MAXPSRR`` ', '.
+            - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+              measurements.
+            - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for
+              the Control Loop Response measurement.
+            - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for
+              the PSRR measurement.
         """  # noqa: E501
         return self._mean
 
@@ -6016,7 +6069,7 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         Description:
             - This command queries the minimum value of the current acquisition for the measurement
-              parameter in the specified power measurement number.Above entries are <QSTring>
+              parameter in the specified power measurement number. Note: Above entries are <QSTring>
               entries, and must be entered in enclosing quotes.
 
         Usage:
@@ -6036,20 +6089,25 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
               shown in the UI for a power measurement badge.
             - ``<QString> =`` the measurement result that you want to return from the specified
               power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid.
-            - ``InputPwr`` ', '.
+              taken in the specified measurement number. The valid <QString> arguments are.
+            - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+              Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
             - ``INDUCT`` '.
             - ``IVSINTV`` '.
             - ``MAGLOSS`` '.
-            - ``Bpeak`` ', '.
+            - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', '
+              Permeability '.
             - ``RDS`` '.
-            - ``TRUEPWR`` ', '.
-            - ``TONENRG`` ', '.
+            - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', '
+              ICFACTOR ', ' VCFACTOR ', ' IRMS ', ' VRMS '.
+            - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+              TTLLOSS ', ' TTLENRG '.
             - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
             - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
             - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-            - ``LRIPRMS`` ' and '.
-            - ``SWRIPRMS`` ' and '.
+            - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+            - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple
+              measurement.
             - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
             - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
             - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -6064,9 +6122,12 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
             - ``MIN`` ' is the parameter for the Cycle Min measurement.
             - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
             - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-            - ``OUTPUT1`` ' - '.
-            - ``GAINCROSSOVERFREQ`` ', '.
-            - ``MAXPSRR`` ', '.
+            - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+              measurements.
+            - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for
+              the Control Loop Response measurement.
+            - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for
+              the PSRR measurement.
         """  # noqa: E501
         return self._minimum
 
@@ -6076,8 +6137,8 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
 
         Description:
             - This command queries the peak-to-peak value of the current acquisition for the
-              measurement parameter in the specified power measurement number.Above entries are
-              <QSTring> entries, and must be entered in enclosing quotes.
+              measurement parameter in the specified power measurement number. Note: Above entries
+              are <QSTring> entries, and must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -6177,8 +6238,8 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
         Description:
             - This command queries the population (number of complete cycles) of the current
               acquisition for the measurement parameter in the specified power measurement number.
-              The power measurement number is specified by x.Above entries are <QSTring> entries,
-              and must be entered in enclosing quotes.
+              The power measurement number is specified by x. Note: Above entries are <QSTring>
+              entries, and must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -6197,20 +6258,25 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
               shown in the UI for a power measurement badge.
             - ``<QString> =`` the measurement result that you want to return from the specified
               power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid.
-            - ``InputPwr`` ', '.
+              taken in the specified measurement number. The valid <QString> arguments are.
+            - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+              Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
             - ``INDUCT`` '.
             - ``IVSINTV`` '.
             - ``MAGLOSS`` '.
-            - ``Bpeak`` ', '.
+            - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', '
+              Permeability '.
             - ``RDS`` '.
-            - ``TRUEPWR`` ', '.
-            - ``TONENRG`` ', '.
+            - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', '
+              ICFACTOR ', ' VCFACTOR ', ' IRMS ', ' VRMS '.
+            - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+              TTLLOSS ', ' TTLENRG '.
             - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
             - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
             - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-            - ``LRIPRMS`` ' and '.
-            - ``SWRIPRMS`` ' and '.
+            - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+            - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple
+              measurement.
             - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
             - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
             - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -6225,9 +6291,12 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
             - ``MIN`` ' is the parameter for the Cycle Min measurement.
             - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
             - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-            - ``OUTPUT1`` ' - '.
-            - ``GAINCROSSOVERFREQ`` ', '.
-            - ``MAXPSRR`` ', '.
+            - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+              measurements.
+            - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for
+              the Control Loop Response measurement.
+            - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for
+              the PSRR measurement.
         """  # noqa: E501
         return self._population
 
@@ -6290,8 +6359,8 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
         Description:
             - This command queries the standard deviation value of the current acquisition for the
               measurement parameter in the specified power measurement number. The power measurement
-              number is specified by x.Above entries are <QSTring> entries, and must be entered in
-              enclosing quotes.
+              number is specified by x. Note: Above entries are <QSTring> entries, and must be
+              entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -6311,19 +6380,24 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
             - ``<QString>`` = the measurement result that you want to return from the specified
               power measurement number. Available results depend on the power measurement being
               taken in the specified measurement number. The valid <QString> arguments are.
-            - ``InputPwr`` ', '.
+            - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+              Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
             - ``INDUCT`` '.
             - ``IVSINTV`` '.
             - ``MAGLOSS`` '.
-            - ``Bpeak`` ', '.
+            - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', '
+              Permeability '.
             - ``RDS`` '.
-            - ``TRUEPWR`` ', '.
-            - ``TONENRG`` ', '.
+            - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', '
+              ICFACTOR ', ' VCFACTOR ', ' IRMS ', ' VRMS '.
+            - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+              TTLLOSS ', ' TTLENRG '.
             - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
             - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
             - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-            - ``LRIPRMS`` ' and '.
-            - ``SWRIPRMS`` ' and '.
+            - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+            - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple
+              measurement.
             - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
             - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
             - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -6338,9 +6412,12 @@ class PowerPowerItemResultsCurrentacq(SCPICmdRead):
             - ``MIN`` ' is the parameter for the Cycle Min measurement.
             - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
             - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-            - ``OUTPUT1`` ' - '.
-            - ``GAINCROSSOVERFREQ`` ', '.
-            - ``MAXPSRR`` ', '.
+            - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+              measurements.
+            - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for
+              the Control Loop Response measurement.
+            - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for
+              the PSRR measurement.
         """  # noqa: E501
         return self._stddev
 
@@ -6454,8 +6531,8 @@ class PowerPowerItemResultsAllacqsStddev(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the standard deviation value of all acquisitions for the measurement
-          parameter in the specified power measurement number.Above entries are <QSTring> entries,
-          and must be entered in enclosing quotes.
+          parameter in the specified power measurement number. Note: Above entries are <QSTring>
+          entries, and must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -6474,20 +6551,24 @@ class PowerPowerItemResultsAllacqsStddev(SCPICmdReadWithArguments):
           in the UI for a power measurement badge.
         - ``<QString> =`` the measurement result that you want to return from the specified power
           measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid.
-        - ``InputPwr`` ', '.
+          specified measurement number. The valid <QString> arguments are.
+        - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+          Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
         - ``INDUCT`` '.
         - ``IVSINTV`` '.
         - ``MAGLOSS`` '.
-        - ``Bpeak`` ', '.
+        - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', ' Permeability
+          '.
         - ``RDS`` '.
-        - ``TRUEPWR`` ', '.
-        - ``TONENRG`` ', '.
+        - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', ' ICFACTOR ',
+          ' VCFACTOR ', ' IRMS ', ' VRMS '.
+        - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+          TTLLOSS ', ' TTLENRG '.
         - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
         - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
         - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-        - ``LRIPRMS`` ' and '.
-        - ``SWRIPRMS`` ' and '.
+        - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+        - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple measurement.
         - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
         - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
         - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -6502,9 +6583,12 @@ class PowerPowerItemResultsAllacqsStddev(SCPICmdReadWithArguments):
         - ``MIN`` ' is the parameter for the Cycle Min measurement.
         - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
         - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-        - ``OUTPUT1`` ' - '.
-        - ``GAINCROSSOVERFREQ`` ', '.
-        - ``MAXPSRR`` ', '.
+        - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+          measurements.
+        - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for the
+          Control Loop Response measurement.
+        - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for the
+          PSRR measurement.
     """  # noqa: E501
 
 
@@ -6513,8 +6597,8 @@ class PowerPowerItemResultsAllacqsPopulation(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the population (number of complete cycles) of all acquisitions for
-          the measurement parameter in the specified power measurement number.Above entries are
-          <QSTring> entries, and must be entered in enclosing quotes.
+          the measurement parameter in the specified power measurement number. Note: Above entries
+          are <QSTring> entries, and must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -6534,19 +6618,23 @@ class PowerPowerItemResultsAllacqsPopulation(SCPICmdReadWithArguments):
         - ``<QString> =`` the measurement result that you want to return from the specified power
           measurement number. Available results depend on the power measurement being taken in the
           specified measurement number. The valid <QString> arguments are.
-        - ``InputPwr`` ', '.
+        - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+          Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
         - ``INDUCT`` '.
         - ``IVSINTV`` '.
         - ``MAGLOSS`` '.
-        - ``Bpeak`` ', '.
+        - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', ' Permeability
+          '.
         - ``RDS`` '.
-        - ``TRUEPWR`` ', '.
-        - ``TONENRG`` ', '.
+        - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', ' ICFACTOR ',
+          ' VCFACTOR ', ' IRMS ', ' VRMS '.
+        - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+          TTLLOSS ', ' TTLENRG '.
         - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
         - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
         - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-        - ``LRIPRMS`` ' and '.
-        - ``SWRIPRMS`` ' and '.
+        - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+        - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple measurement.
         - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
         - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
         - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -6561,9 +6649,12 @@ class PowerPowerItemResultsAllacqsPopulation(SCPICmdReadWithArguments):
         - ``MIN`` ' is the parameter for the Cycle Min measurement.
         - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
         - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-        - ``OUTPUT1`` ' - '.
-        - ``GAINCROSSOVERFREQ`` ', '.
-        - ``MAXPSRR`` ', '.
+        - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+          measurements.
+        - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for the
+          Control Loop Response measurement.
+        - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for the
+          PSRR measurement.
     """  # noqa: E501
 
 
@@ -6572,8 +6663,8 @@ class PowerPowerItemResultsAllacqsPk2pk(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the peak-to-peak value of all acquisitions for the measurement
-          parameter in the specified power measurement number.Above entries are <QSTring> entries,
-          and must be entered in enclosing quotes.
+          parameter in the specified power measurement number. Note: Above entries are <QSTring>
+          entries, and must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -6593,19 +6684,23 @@ class PowerPowerItemResultsAllacqsPk2pk(SCPICmdReadWithArguments):
         - ``<QString> =`` the measurement result that you want to return from the specified power
           measurement number. Available results depend on the power measurement being taken in the
           specified measurement number. The valid <QString> arguments are.
-        - ``InputPwr`` ', '.
+        - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+          Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
         - ``INDUCT`` '.
         - ``IVSINTV`` '.
         - ``MAGLOSS`` '.
-        - ``Bpeak`` ', '.
+        - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', ' Permeability
+          '.
         - ``RDS`` '.
-        - ``TRUEPWR`` ', '.
-        - ``TONENRG`` ', '.
+        - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', ' ICFACTOR ',
+          ' VCFACTOR ', ' IRMS ', ' VRMS '.
+        - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+          TTLLOSS ', ' TTLENRG '.
         - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
         - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
         - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-        - ``LRIPRMS`` ' and '.
-        - ``SWRIPRMS`` ' and '.
+        - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+        - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple measurement.
         - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
         - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
         - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -6620,9 +6715,12 @@ class PowerPowerItemResultsAllacqsPk2pk(SCPICmdReadWithArguments):
         - ``MIN`` ' is the parameter for the Cycle Min measurement.
         - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
         - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-        - ``OUTPUT1`` ' - '.
-        - ``GAINCROSSOVERFREQ`` ', '.
-        - ``MAXPSRR`` ', '.
+        - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+          measurements.
+        - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for the
+          Control Loop Response measurement.
+        - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for the
+          PSRR measurement.
     """  # noqa: E501
 
 
@@ -6631,8 +6729,8 @@ class PowerPowerItemResultsAllacqsMinimum(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the minimum value of all acquisitions for the measurement parameter
-          of the specified power measurement <x>.Above entries are <QSTring> entries, and must be
-          entered in enclosing quotes.
+          of the specified power measurement <x>. Note: Above entries are <QSTring> entries, and
+          must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -6652,19 +6750,23 @@ class PowerPowerItemResultsAllacqsMinimum(SCPICmdReadWithArguments):
         - ``<QString> =`` the measurement result that you want to return from the specified power
           measurement number. Available results depend on the power measurement being taken in the
           specified measurement number. The valid <QString> arguments are.
-        - ``InputPwr`` ', '.
+        - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+          Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
         - ``INDUCT`` '.
         - ``IVSINTV`` '.
         - ``MAGLOSS`` '.
-        - ``Bpeak`` ', '.
+        - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', ' Permeability
+          '.
         - ``RDS`` '.
-        - ``TRUEPWR`` ', '.
-        - ``TONENRG`` ', '.
+        - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', ' ICFACTOR ',
+          ' VCFACTOR ', ' IRMS ', ' VRMS '.
+        - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+          TTLLOSS ', ' TTLENRG '.
         - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
         - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
         - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-        - ``LRIPRMS`` ' and '.
-        - ``SWRIPRMS`` ' and '.
+        - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+        - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple measurement.
         - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
         - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
         - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -6679,9 +6781,12 @@ class PowerPowerItemResultsAllacqsMinimum(SCPICmdReadWithArguments):
         - ``MIN`` ' is the parameter for the Cycle Min measurement.
         - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
         - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-        - ``OUTPUT1`` ' - '.
-        - ``GAINCROSSOVERFREQ`` ', '.
-        - ``MAXPSRR`` ', '.
+        - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+          measurements.
+        - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for the
+          Control Loop Response measurement.
+        - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for the
+          PSRR measurement.
     """  # noqa: E501
 
 
@@ -6690,8 +6795,8 @@ class PowerPowerItemResultsAllacqsMean(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the mean value of all acquisitions for the measurement parameter in
-          the specified power measurement number <x>.Above entries are <QSTring> entries, and must
-          be entered in enclosing quotes.
+          the specified power measurement number <x>. Note: Above entries are <QSTring> entries, and
+          must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -6711,19 +6816,23 @@ class PowerPowerItemResultsAllacqsMean(SCPICmdReadWithArguments):
         - ``<QString> =`` the measurement result that you want to return from the specified power
           measurement number. Available results depend on the power measurement being taken in the
           specified measurement number. The valid <QString> arguments are.
-        - ``InputPwr`` ', '.
+        - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+          Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
         - ``INDUCT`` '.
         - ``IVSINTV`` '.
         - ``MAGLOSS`` '.
-        - ``Bpeak`` ', '.
+        - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', ' Permeability
+          '.
         - ``RDS`` '.
-        - ``TRUEPWR`` ', '.
-        - ``TONENRG`` ', '.
+        - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', ' ICFACTOR ',
+          ' VCFACTOR ', ' IRMS ', ' VRMS '.
+        - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+          TTLLOSS ', ' TTLENRG '.
         - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
         - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
         - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-        - ``LRIPRMS`` ' and '.
-        - ``SWRIPRMS`` ' and '.
+        - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+        - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple measurement.
         - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
         - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
         - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -6738,9 +6847,12 @@ class PowerPowerItemResultsAllacqsMean(SCPICmdReadWithArguments):
         - ``MIN`` ' is the parameter for the Cycle Min measurement.
         - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
         - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-        - ``OUTPUT1`` ' - '.
-        - ``GAINCROSSOVERFREQ`` ', '.
-        - ``MAXPSRR`` ', '.
+        - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+          measurements.
+        - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for the
+          Control Loop Response measurement.
+        - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for the
+          PSRR measurement.
     """  # noqa: E501
 
 
@@ -6749,8 +6861,8 @@ class PowerPowerItemResultsAllacqsMaximum(SCPICmdReadWithArguments):
 
     Description:
         - This command queries the maximum value of all acquisitions for the measurement parameter
-          in the specified power measurement number. The power measurement number is specified by
-          x.Above entries are <QSTring> entries, and must be entered in enclosing quotes.
+          in the specified power measurement number. The power measurement number is specified by x.
+          Note: Above entries are <QSTring> entries, and must be entered in enclosing quotes.
 
     Usage:
         - Using the ``.query(argument)`` method will send the
@@ -6769,20 +6881,24 @@ class PowerPowerItemResultsAllacqsMaximum(SCPICmdReadWithArguments):
           in the UI for a power measurement badge.
         - ``<QString> =`` the measurement result that you want to return from the specified power
           measurement number. Available results depend on the power measurement being taken in the
-          specified measurement number. The valid.
-        - ``InputPwr`` ', '.
+          specified measurement number. The valid <QString> arguments are.
+        - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+          Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
         - ``INDUCT`` '.
         - ``IVSINTV`` '.
         - ``MAGLOSS`` '.
-        - ``Bpeak`` ', '.
+        - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', ' Permeability
+          '.
         - ``RDS`` '.
-        - ``TRUEPWR`` ', '.
-        - ``TONENRG`` ', '.
+        - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', ' ICFACTOR ',
+          ' VCFACTOR ', ' IRMS ', ' VRMS '.
+        - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+          TTLLOSS ', ' TTLENRG '.
         - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
         - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
         - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-        - ``LRIPRMS`` ' and '.
-        - ``SWRIPRMS`` ' and '.
+        - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+        - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple measurement.
         - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
         - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
         - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -6797,9 +6913,12 @@ class PowerPowerItemResultsAllacqsMaximum(SCPICmdReadWithArguments):
         - ``MIN`` ' is the parameter for the Cycle Min measurement.
         - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
         - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-        - ``OUTPUT1`` ' - '.
-        - ``GAINCROSSOVERFREQ`` ', '.
-        - ``MAXPSRR`` ', '.
+        - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+          measurements.
+        - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for the
+          Control Loop Response measurement.
+        - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for the
+          PSRR measurement.
     """  # noqa: E501
 
 
@@ -6842,8 +6961,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
         Description:
             - This command queries the maximum value of all acquisitions for the measurement
               parameter in the specified power measurement number. The power measurement number is
-              specified by x.Above entries are <QSTring> entries, and must be entered in enclosing
-              quotes.
+              specified by x. Note: Above entries are <QSTring> entries, and must be entered in
+              enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -6862,20 +6981,25 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
               shown in the UI for a power measurement badge.
             - ``<QString> =`` the measurement result that you want to return from the specified
               power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid.
-            - ``InputPwr`` ', '.
+              taken in the specified measurement number. The valid <QString> arguments are.
+            - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+              Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
             - ``INDUCT`` '.
             - ``IVSINTV`` '.
             - ``MAGLOSS`` '.
-            - ``Bpeak`` ', '.
+            - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', '
+              Permeability '.
             - ``RDS`` '.
-            - ``TRUEPWR`` ', '.
-            - ``TONENRG`` ', '.
+            - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', '
+              ICFACTOR ', ' VCFACTOR ', ' IRMS ', ' VRMS '.
+            - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+              TTLLOSS ', ' TTLENRG '.
             - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
             - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
             - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-            - ``LRIPRMS`` ' and '.
-            - ``SWRIPRMS`` ' and '.
+            - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+            - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple
+              measurement.
             - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
             - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
             - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -6890,9 +7014,12 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             - ``MIN`` ' is the parameter for the Cycle Min measurement.
             - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
             - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-            - ``OUTPUT1`` ' - '.
-            - ``GAINCROSSOVERFREQ`` ', '.
-            - ``MAXPSRR`` ', '.
+            - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+              measurements.
+            - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for
+              the Control Loop Response measurement.
+            - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for
+              the PSRR measurement.
         """  # noqa: E501
         return self._maximum
 
@@ -6902,8 +7029,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         Description:
             - This command queries the mean value of all acquisitions for the measurement parameter
-              in the specified power measurement number <x>.Above entries are <QSTring> entries, and
-              must be entered in enclosing quotes.
+              in the specified power measurement number <x>. Note: Above entries are <QSTring>
+              entries, and must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -6923,19 +7050,24 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             - ``<QString> =`` the measurement result that you want to return from the specified
               power measurement number. Available results depend on the power measurement being
               taken in the specified measurement number. The valid <QString> arguments are.
-            - ``InputPwr`` ', '.
+            - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+              Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
             - ``INDUCT`` '.
             - ``IVSINTV`` '.
             - ``MAGLOSS`` '.
-            - ``Bpeak`` ', '.
+            - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', '
+              Permeability '.
             - ``RDS`` '.
-            - ``TRUEPWR`` ', '.
-            - ``TONENRG`` ', '.
+            - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', '
+              ICFACTOR ', ' VCFACTOR ', ' IRMS ', ' VRMS '.
+            - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+              TTLLOSS ', ' TTLENRG '.
             - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
             - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
             - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-            - ``LRIPRMS`` ' and '.
-            - ``SWRIPRMS`` ' and '.
+            - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+            - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple
+              measurement.
             - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
             - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
             - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -6950,9 +7082,12 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             - ``MIN`` ' is the parameter for the Cycle Min measurement.
             - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
             - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-            - ``OUTPUT1`` ' - '.
-            - ``GAINCROSSOVERFREQ`` ', '.
-            - ``MAXPSRR`` ', '.
+            - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+              measurements.
+            - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for
+              the Control Loop Response measurement.
+            - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for
+              the PSRR measurement.
         """  # noqa: E501
         return self._mean
 
@@ -6962,8 +7097,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         Description:
             - This command queries the minimum value of all acquisitions for the measurement
-              parameter of the specified power measurement <x>.Above entries are <QSTring> entries,
-              and must be entered in enclosing quotes.
+              parameter of the specified power measurement <x>. Note: Above entries are <QSTring>
+              entries, and must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -6983,19 +7118,24 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             - ``<QString> =`` the measurement result that you want to return from the specified
               power measurement number. Available results depend on the power measurement being
               taken in the specified measurement number. The valid <QString> arguments are.
-            - ``InputPwr`` ', '.
+            - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+              Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
             - ``INDUCT`` '.
             - ``IVSINTV`` '.
             - ``MAGLOSS`` '.
-            - ``Bpeak`` ', '.
+            - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', '
+              Permeability '.
             - ``RDS`` '.
-            - ``TRUEPWR`` ', '.
-            - ``TONENRG`` ', '.
+            - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', '
+              ICFACTOR ', ' VCFACTOR ', ' IRMS ', ' VRMS '.
+            - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+              TTLLOSS ', ' TTLENRG '.
             - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
             - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
             - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-            - ``LRIPRMS`` ' and '.
-            - ``SWRIPRMS`` ' and '.
+            - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+            - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple
+              measurement.
             - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
             - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
             - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -7010,9 +7150,12 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             - ``MIN`` ' is the parameter for the Cycle Min measurement.
             - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
             - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-            - ``OUTPUT1`` ' - '.
-            - ``GAINCROSSOVERFREQ`` ', '.
-            - ``MAXPSRR`` ', '.
+            - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+              measurements.
+            - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for
+              the Control Loop Response measurement.
+            - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for
+              the PSRR measurement.
         """  # noqa: E501
         return self._minimum
 
@@ -7022,7 +7165,7 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         Description:
             - This command queries the peak-to-peak value of all acquisitions for the measurement
-              parameter in the specified power measurement number.Above entries are <QSTring>
+              parameter in the specified power measurement number. Note: Above entries are <QSTring>
               entries, and must be entered in enclosing quotes.
 
         Usage:
@@ -7043,19 +7186,24 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             - ``<QString> =`` the measurement result that you want to return from the specified
               power measurement number. Available results depend on the power measurement being
               taken in the specified measurement number. The valid <QString> arguments are.
-            - ``InputPwr`` ', '.
+            - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+              Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
             - ``INDUCT`` '.
             - ``IVSINTV`` '.
             - ``MAGLOSS`` '.
-            - ``Bpeak`` ', '.
+            - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', '
+              Permeability '.
             - ``RDS`` '.
-            - ``TRUEPWR`` ', '.
-            - ``TONENRG`` ', '.
+            - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', '
+              ICFACTOR ', ' VCFACTOR ', ' IRMS ', ' VRMS '.
+            - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+              TTLLOSS ', ' TTLENRG '.
             - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
             - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
             - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-            - ``LRIPRMS`` ' and '.
-            - ``SWRIPRMS`` ' and '.
+            - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+            - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple
+              measurement.
             - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
             - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
             - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -7070,9 +7218,12 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             - ``MIN`` ' is the parameter for the Cycle Min measurement.
             - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
             - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-            - ``OUTPUT1`` ' - '.
-            - ``GAINCROSSOVERFREQ`` ', '.
-            - ``MAXPSRR`` ', '.
+            - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+              measurements.
+            - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for
+              the Control Loop Response measurement.
+            - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for
+              the PSRR measurement.
         """  # noqa: E501
         return self._pk2pk
 
@@ -7082,8 +7233,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         Description:
             - This command queries the population (number of complete cycles) of all acquisitions
-              for the measurement parameter in the specified power measurement number.Above entries
-              are <QSTring> entries, and must be entered in enclosing quotes.
+              for the measurement parameter in the specified power measurement number. Note: Above
+              entries are <QSTring> entries, and must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -7103,19 +7254,24 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             - ``<QString> =`` the measurement result that you want to return from the specified
               power measurement number. Available results depend on the power measurement being
               taken in the specified measurement number. The valid <QString> arguments are.
-            - ``InputPwr`` ', '.
+            - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+              Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
             - ``INDUCT`` '.
             - ``IVSINTV`` '.
             - ``MAGLOSS`` '.
-            - ``Bpeak`` ', '.
+            - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', '
+              Permeability '.
             - ``RDS`` '.
-            - ``TRUEPWR`` ', '.
-            - ``TONENRG`` ', '.
+            - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', '
+              ICFACTOR ', ' VCFACTOR ', ' IRMS ', ' VRMS '.
+            - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+              TTLLOSS ', ' TTLENRG '.
             - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
             - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
             - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-            - ``LRIPRMS`` ' and '.
-            - ``SWRIPRMS`` ' and '.
+            - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+            - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple
+              measurement.
             - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
             - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
             - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -7130,9 +7286,12 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             - ``MIN`` ' is the parameter for the Cycle Min measurement.
             - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
             - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-            - ``OUTPUT1`` ' - '.
-            - ``GAINCROSSOVERFREQ`` ', '.
-            - ``MAXPSRR`` ', '.
+            - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+              measurements.
+            - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for
+              the Control Loop Response measurement.
+            - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for
+              the PSRR measurement.
         """  # noqa: E501
         return self._population
 
@@ -7142,8 +7301,8 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
 
         Description:
             - This command queries the standard deviation value of all acquisitions for the
-              measurement parameter in the specified power measurement number.Above entries are
-              <QSTring> entries, and must be entered in enclosing quotes.
+              measurement parameter in the specified power measurement number. Note: Above entries
+              are <QSTring> entries, and must be entered in enclosing quotes.
 
         Usage:
             - Using the ``.query(argument)`` method will send the
@@ -7162,20 +7321,25 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
               shown in the UI for a power measurement badge.
             - ``<QString> =`` the measurement result that you want to return from the specified
               power measurement number. Available results depend on the power measurement being
-              taken in the specified measurement number. The valid.
-            - ``InputPwr`` ', '.
+              taken in the specified measurement number. The valid <QString> arguments are.
+            - ``InputPwr`` ', ' Output1Pwr ', ' Output2Pwr ', ' Output3Pwr ', ' Efficiency1 ', '
+              Efficiency2 ', ' Efficiency3 ', ' TotalEfficiency '.
             - ``INDUCT`` '.
             - ``IVSINTV`` '.
             - ``MAGLOSS`` '.
-            - ``Bpeak`` ', '.
+            - ``Bpeak`` ', ' Br ', ' Hc ', ' Hmax ', ' IRipple ', ' DeltaB ', ' DeltaH ', '
+              Permeability '.
             - ``RDS`` '.
-            - ``TRUEPWR`` ', '.
-            - ``TONENRG`` ', '.
+            - ``TRUEPWR`` ', ' APPPWR ', ' REPWR ', ' PWRFACTOR ', ' PHASE ', ' PWRFREQ ', '
+              ICFACTOR ', ' VCFACTOR ', ' IRMS ', ' VRMS '.
+            - ``TONENRG`` ', ' TONLOSS ', ' TOFFENRG ', ' TOFFLOSS ', ' CONDENRG ', ' CONDLOSS ', '
+              TTLLOSS ', ' TTLENRG '.
             - ``DVBYDT`` ' is the parameter for the dV by dt measurement.
             - ``DIBYDT`` ' is the parameter for the dI by dt measurement.
             - ``SOAHITSCNT`` ' is the parameter for the SOA measurement.
-            - ``LRIPRMS`` ' and '.
-            - ``SWRIPRMS`` ' and '.
+            - ``LRIPRMS`` ' and ' LRIPPKPK ' are the parameters for the Line Ripple measurement.
+            - ``SWRIPRMS`` ' and ' SWRIPPKPK ' are the parameters for the Switching Ripple
+              measurement.
             - ``PRIOD`` ' is the parameter for the Cycle Period measurement.
             - ``FREQ`` ' is the parameter for the Cycle Frequency measurement.
             - ``PDUTY`` ' is the parameter for the Positive Duty Cycle measurement.
@@ -7190,9 +7354,12 @@ class PowerPowerItemResultsAllacqs(SCPICmdRead):
             - ``MIN`` ' is the parameter for the Cycle Min measurement.
             - ``INRUSH`` ' is the parameter for the Inrush Current measurement.
             - ``CAPACITANCE`` ' is the parameter for the Input Capacitance measurement.
-            - ``OUTPUT1`` ' - '.
-            - ``GAINCROSSOVERFREQ`` ', '.
-            - ``MAXPSRR`` ', '.
+            - ``OUTPUT1`` ' - ' OUTPUT7 ' are the parameters for the Turn On Time and Turn Off Time
+              measurements.
+            - ``GAINCROSSOVERFREQ`` ', ' PHASECROSSOVERFREQ ', ' GM ', ' PM ' are the parameters for
+              the Control Loop Response measurement.
+            - ``MAXPSRR`` ', ' MAXPSRRFREQ ', ' MINPSRR ', ' MINPSRRFREQ ' are the parameters for
+              the PSRR measurement.
         """  # noqa: E501
         return self._stddev
 
@@ -10714,7 +10881,8 @@ class PowerPowerItemMagpropertySecwindings(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent of
           the number shown in the power measurement badge on the UI.
-        - ``None``
+        - ``None`` , ONE , TWO , THREE , FOUR , FIVE , SIX sets the number of secondary windings to
+          the specified value.
     """
 
 
@@ -11174,9 +11342,9 @@ class PowerPowerItemMagpropertyLength(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the conductor length of the primary winding for magnetic
-          measurement of the specified power measurement number.The Magnetic Length unit depends on
-          the setting of the Units value (``seePOWer:POWer<x>:MAGPROPERTY:UNITs``). The command
-          returns the same numeric value regardless of the units setting.
+          measurement of the specified power measurement number. Note: The Magnetic Length unit
+          depends on the setting of the Units value (``seePOWer:POWer<x>:MAGPROPERTY:UNITs``). The
+          command returns the same numeric value regardless of the units setting.
 
     Usage:
         - Using the ``.query()`` method will send the ``POWer:POWer<x>:MAGPROPERTY:LENgth?`` query.
@@ -11265,9 +11433,9 @@ class PowerPowerItemMagpropertyAreaofcrosssection(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the coil cross section area for magnetic measurement of the
-          specified power measurement number.The coil Cross Section Area unit depends on the setting
-          of the Units value (``seePOWer:POWer<x>:MAGPROPERTY:UNITs``). The command returns the same
-          numeric value regardless of the units setting.
+          specified power measurement number. Note: The coil Cross Section Area unit depends on the
+          setting of the Units value (``seePOWer:POWer<x>:MAGPROPERTY:UNITs``). The command returns
+          the same numeric value regardless of the units setting.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -11392,9 +11560,9 @@ class PowerPowerItemMagproperty(SCPICmdRead):
 
         Description:
             - This command sets or queries the coil cross section area for magnetic measurement of
-              the specified power measurement number.The coil Cross Section Area unit depends on the
-              setting of the Units value (``seePOWer:POWer<x>:MAGPROPERTY:UNITs``). The command
-              returns the same numeric value regardless of the units setting.
+              the specified power measurement number. Note: The coil Cross Section Area unit depends
+              on the setting of the Units value (``seePOWer:POWer<x>:MAGPROPERTY:UNITs``). The
+              command returns the same numeric value regardless of the units setting.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -11490,9 +11658,9 @@ class PowerPowerItemMagproperty(SCPICmdRead):
 
         Description:
             - This command sets or queries the conductor length of the primary winding for magnetic
-              measurement of the specified power measurement number.The Magnetic Length unit depends
-              on the setting of the Units value (``seePOWer:POWer<x>:MAGPROPERTY:UNITs``). The
-              command returns the same numeric value regardless of the units setting.
+              measurement of the specified power measurement number. Note: The Magnetic Length unit
+              depends on the setting of the Units value (``seePOWer:POWer<x>:MAGPROPERTY:UNITs``).
+              The command returns the same numeric value regardless of the units setting.
 
         Usage:
             - Using the ``.query()`` method will send the ``POWer:POWer<x>:MAGPROPERTY:LENgth?``
@@ -12018,7 +12186,8 @@ class PowerPowerItemMagproperty(SCPICmdRead):
         Info:
             - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent
               of the number shown in the power measurement badge on the UI.
-            - ``None``
+            - ``None`` , ONE , TWO , THREE , FOUR , FIVE , SIX sets the number of secondary windings
+              to the specified value.
         """
         return self._secwindings
 
@@ -15734,7 +15903,8 @@ class PowerPowerItemEfficiencyNumofoutputs(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
           the number shown in the power measurement badge on the UI.
-        - ``ONE``
+        - ``ONE`` , TWO , THREE sets the number of outputs to test in the power efficiency
+          measurement.
     """
 
 
@@ -16150,7 +16320,8 @@ class PowerPowerItemEfficiency(SCPICmdRead):
         Info:
             - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
               of the number shown in the power measurement badge on the UI.
-            - ``ONE``
+            - ``ONE`` , TWO , THREE sets the number of outputs to test in the power efficiency
+              measurement.
         """
         return self._numofoutputs
 

@@ -217,9 +217,9 @@ class FilesystemTekdriveCode(SCPICmdRead):
     """The ``FILESystem:TEKDrive:CODE`` command.
 
     Description:
-        - This command returns short code in string format. This code must be entered (or pasted)
-          at. After the code is entered click the Activate button to complete the mounting of the
-          TekDrive.
+        - This command returns short code in string format. This code must be entered (or pasted) at
+          http://drive.tekcloud.com/activate. After the code is entered click the Activate button to
+          complete the mounting of the TekDrive.
 
     Usage:
         - Using the ``.query()`` method will send the ``FILESystem:TEKDrive:CODE?`` query.
@@ -309,8 +309,8 @@ class FilesystemTekdrive(SCPICmdRead):
 
         Description:
             - This command returns short code in string format. This code must be entered (or
-              pasted) at. After the code is entered click the Activate button to complete the
-              mounting of the TekDrive.
+              pasted) at http://drive.tekcloud.com/activate. After the code is entered click the
+              Activate button to complete the mounting of the TekDrive.
 
         Usage:
             - Using the ``.query()`` method will send the ``FILESystem:TEKDrive:CODE?`` query.
@@ -664,8 +664,8 @@ class FilesystemCwd(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the current working directory. CWD is short for Current
           Working Directory. It changes the directory (folder) that the other FILESystem commands
-          operate on.There are three host ports on the front panel (E:, F:, and G:), and two on the
-          back panel (H: and I:.
+          operate on. Note: There are three host ports on the front panel (E:, F:, and G:), and two
+          on the back panel (H: and I:.
 
     Usage:
         - Using the ``.query()`` method will send the ``FILESystem:CWD?`` query.
@@ -800,8 +800,8 @@ class Filesystem(SCPICmdRead):
         Description:
             - This command sets or queries the current working directory. CWD is short for Current
               Working Directory. It changes the directory (folder) that the other FILESystem
-              commands operate on.There are three host ports on the front panel (E:, F:, and G:),
-              and two on the back panel (H: and I:.
+              commands operate on. Note: There are three host ports on the front panel (E:, F:, and
+              G:), and two on the back panel (H: and I:.
 
         Usage:
             - Using the ``.query()`` method will send the ``FILESystem:CWD?`` query.

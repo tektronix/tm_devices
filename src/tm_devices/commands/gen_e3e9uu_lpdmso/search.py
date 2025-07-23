@@ -1264,8 +1264,6 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LEVel:REF<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x> {INCLude|DONTInclude}
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>?
-    - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x> {INCLude|DONTInclude}
-    - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:MATH<x> {INCLude|DONTInclude}
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:MATH<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:REF<x> {INCLude|DONTInclude}
@@ -1287,8 +1285,6 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:TIMe?
     - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:DELTATime <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:DELTATime?
-    - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification {ON|OFF}
-    - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification?
     - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:POLarity {POSitive|NEGative|EITher}
     - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:POLarity?
     - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:SOUrce {CH<x>|MATH<x>|REF<x>}
@@ -1671,10 +1667,31 @@ class SearchSearchItemTriggerAWindowCrossing(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``UPPer`` if.
-        - ``LOWer`` if.
-        - ``EITher`` if.
-        - ``NONe`` if.
+        - ``UPPer`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers when
+          the signal remains between the upper and lower thresholds for longer than the time limit (
+          ``:TRIGger:A:WINdow:WIDTH`` ) and then exits through the upper threshold. If
+          ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument triggers when the signal
+          remains above the upper threshold for longer than the time limit (
+          ``:TRIGger:A:WINdow:WIDTH`` ) and then crosses downward through the upper threshold.
+        - ``LOWer`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers when
+          the signal remains between the upper and lower thresholds for longer than the time limit (
+          ``:TRIGger:A:WINdow:WIDTH`` ) and then exits through the lower threshold. If
+          ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument triggers when the signal
+          remains below the lower threshold for longer than the time limit (
+          ``:TRIGger:A:WINdow:WIDTH`` ) and then crosses upwards through the lower threshold.
+        - ``EITher`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers when
+          the signal remains between the upper and lower thresholds for longer than the time limit (
+          ``:TRIGger:A:WINdow:WIDTH`` ) and then exits through either the upper or lower threshold.
+          If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument triggers when the signal
+          remains either above the upper threshold or below the lower threshold for longer than the
+          time limit ( ``:TRIGger:A:WINdow:WIDTH`` ) and then crosses a threshold.
+        - ``NONe`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers when the
+          signal remains between the upper and lower thresholds for longer than the time limit (
+          ``:TRIGger:A:WINdow:WIDTH`` ) without crossing through either the upper or lower
+          threshold. If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument triggers when
+          the signal remains outside the upper and lower thresholds for longer than the time limit (
+          ``:TRIGger:A:WINdow:WIDTH`` ) without crossing through either the upper or lower
+          threshold.
     """
 
 
@@ -1741,10 +1758,32 @@ class SearchSearchItemTriggerAWindow(SCPICmdRead):
             ```
 
         Info:
-            - ``UPPer`` if.
-            - ``LOWer`` if.
-            - ``EITher`` if.
-            - ``NONe`` if.
+            - ``UPPer`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers
+              when the signal remains between the upper and lower thresholds for longer than the
+              time limit ( ``:TRIGger:A:WINdow:WIDTH`` ) and then exits through the upper threshold.
+              If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument triggers when the
+              signal remains above the upper threshold for longer than the time limit (
+              ``:TRIGger:A:WINdow:WIDTH`` ) and then crosses downward through the upper threshold.
+            - ``LOWer`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers
+              when the signal remains between the upper and lower thresholds for longer than the
+              time limit ( ``:TRIGger:A:WINdow:WIDTH`` ) and then exits through the lower threshold.
+              If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument triggers when the
+              signal remains below the lower threshold for longer than the time limit (
+              ``:TRIGger:A:WINdow:WIDTH`` ) and then crosses upwards through the lower threshold.
+            - ``EITher`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers
+              when the signal remains between the upper and lower thresholds for longer than the
+              time limit ( ``:TRIGger:A:WINdow:WIDTH`` ) and then exits through either the upper or
+              lower threshold. If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument
+              triggers when the signal remains either above the upper threshold or below the lower
+              threshold for longer than the time limit ( ``:TRIGger:A:WINdow:WIDTH`` ) and then
+              crosses a threshold.
+            - ``NONe`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers when
+              the signal remains between the upper and lower thresholds for longer than the time
+              limit ( ``:TRIGger:A:WINdow:WIDTH`` ) without crossing through either the upper or
+              lower threshold. If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument
+              triggers when the signal remains outside the upper and lower thresholds for longer
+              than the time limit ( ``:TRIGger:A:WINdow:WIDTH`` ) without crossing through either
+              the upper or lower threshold.
         """
         return self._crossing
 
@@ -1935,7 +1974,7 @@ class SearchSearchItemTriggerAType(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the trigger type setting for a search to determine where to
-          place a mark. The search number is specified by x.Some trigger types are optional.
+          place a mark. The search number is specified by x. Note: Some trigger types are optional.
 
     Usage:
         - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:TYPe?`` query.
@@ -2209,33 +2248,6 @@ class SearchSearchItemTriggerATransitionPolarity(SCPICmdWrite, SCPICmdRead):
     """
 
 
-class SearchSearchItemTriggerATransitionLogicqualification(SCPICmdWrite, SCPICmdRead):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification`` command.
-
-    Description:
-        - This command specifies whether or not to use logic qualification for a transition search.
-          The search number is specified by x.
-
-    Usage:
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification value`` command.
-
-    SCPI Syntax:
-        ```
-        - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification {ON|OFF}
-        - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification?
-        ```
-
-    Info:
-        - ``ON`` specifies to use logic qualification for a transition search.
-    """
-
-
 class SearchSearchItemTriggerATransitionDeltatime(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:DELTATime`` command.
 
@@ -2275,8 +2287,6 @@ class SearchSearchItemTriggerATransition(SCPICmdRead):
 
     Properties:
         - ``.deltatime``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:DELTATime`` command.
-        - ``.logicqualification``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification``
-          command.
         - ``.polarity``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:POLarity`` command.
         - ``.source``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:SOUrce`` command.
         - ``.threshold``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:THReshold`` command tree.
@@ -2287,9 +2297,6 @@ class SearchSearchItemTriggerATransition(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._deltatime = SearchSearchItemTriggerATransitionDeltatime(
             device, f"{self._cmd_syntax}:DELTATime"
-        )
-        self._logicqualification = SearchSearchItemTriggerATransitionLogicqualification(
-            device, f"{self._cmd_syntax}:LOGICQUALification"
         )
         self._polarity = SearchSearchItemTriggerATransitionPolarity(
             device, f"{self._cmd_syntax}:POLarity"
@@ -2329,34 +2336,6 @@ class SearchSearchItemTriggerATransition(SCPICmdRead):
             - ``<NR3>`` specifies the transition time in seconds.
         """
         return self._deltatime
-
-    @property
-    def logicqualification(self) -> SearchSearchItemTriggerATransitionLogicqualification:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification`` command.
-
-        Description:
-            - This command specifies whether or not to use logic qualification for a transition
-              search. The search number is specified by x.
-
-        Usage:
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification value`` command.
-
-        SCPI Syntax:
-            ```
-            - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification {ON|OFF}
-            - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification?
-            ```
-
-        Info:
-            - ``ON`` specifies to use logic qualification for a transition search.
-        """
-        return self._logicqualification
 
     @property
     def polarity(self) -> SearchSearchItemTriggerATransitionPolarity:
@@ -2948,37 +2927,6 @@ class SearchSearchItemTriggerASetholdLogicpatternMathItem(
     """
 
 
-class SearchSearchItemTriggerASetholdLogicpatternChannelDigitalBit(
-    ValidatedDigitalBit, SCPICmdWrite, SCPICmdRead
-):
-    """The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>`` command.
-
-    Description:
-        - This command sets or queries the conditions used for generating an A logic pattern, with
-          respect to the defined input pattern, and identifies the time that the selected pattern
-          may be true and still generate the trigger. The search number is specified by x.
-
-    Usage:
-        - Using the ``.query()`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>?`` query.
-        - Using the ``.verify(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>?`` query and raise an
-          AssertionError if the returned value does not match ``value``.
-        - Using the ``.write(value)`` method will send the
-          ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x> value`` command.
-
-    SCPI Syntax:
-        ```
-        - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x> {INCLude|DONTInclude}
-        - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>?
-        ```
-
-    Info:
-        - ``INCLude`` specifies including the specified digital channel SETHOLD inputs in the
-          specified search.
-    """
-
-
 class SearchSearchItemTriggerASetholdLogicpatternChannel(
     ValidatedChannel, SCPICmdWrite, SCPICmdRead
 ):
@@ -3009,51 +2957,7 @@ class SearchSearchItemTriggerASetholdLogicpatternChannel(
           search.
         - ``DONTInclude`` specifies not including the specified channel SETHOLD inputs in the
           specified search.
-
-    Properties:
-        - ``.d``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>`` command.
     """
-
-    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
-        super().__init__(device, cmd_syntax)
-        self._d: Dict[int, SearchSearchItemTriggerASetholdLogicpatternChannelDigitalBit] = (
-            DefaultDictPassKeyToFactory(
-                lambda x: SearchSearchItemTriggerASetholdLogicpatternChannelDigitalBit(
-                    device, f"{self._cmd_syntax}_D{x}"
-                )
-            )
-        )
-
-    @property
-    def d(self) -> Dict[int, SearchSearchItemTriggerASetholdLogicpatternChannelDigitalBit]:
-        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>`` command.
-
-        Description:
-            - This command sets or queries the conditions used for generating an A logic pattern,
-              with respect to the defined input pattern, and identifies the time that the selected
-              pattern may be true and still generate the trigger. The search number is specified by
-              x.
-
-        Usage:
-            - Using the ``.query()`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>?`` query.
-            - Using the ``.verify(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>?`` query and raise an
-              AssertionError if the returned value does not match ``value``.
-            - Using the ``.write(value)`` method will send the
-              ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x> value`` command.
-
-        SCPI Syntax:
-            ```
-            - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x> {INCLude|DONTInclude}
-            - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>?
-            ```
-
-        Info:
-            - ``INCLude`` specifies including the specified digital channel SETHOLD inputs in the
-              specified search.
-        """
-        return self._d
 
 
 class SearchSearchItemTriggerASetholdLogicpattern(SCPICmdRead):
@@ -3126,9 +3030,6 @@ class SearchSearchItemTriggerASetholdLogicpattern(SCPICmdRead):
               search.
             - ``DONTInclude`` specifies not including the specified channel SETHOLD inputs in the
               specified search.
-
-        Sub-properties:
-            - ``.d``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>`` command.
         """
         return self._ch
 
@@ -3838,13 +3739,15 @@ class SearchSearchItemTriggerARuntWhen(SCPICmdWriteNoArguments, SCPICmdRead):
 
     Info:
         - ``LESSthan`` argument sets the instrument to search if the a runt pulse is detected with
-          width less than the time set by the.
+          width less than the time set by the ``SEARCH:SEARCH<x>:TRIGger:A:RUNT:WIDth`` command.
         - ``MOREthan`` argument sets the instrument to search if the a runt pulse is detected with
-          width more than the time set by the.
+          width more than the time set by the ``SEARCH:SEARCH<x>:TRIGger:A:RUNT:WIDth`` command.
         - ``EQual`` argument sets the instrument to search when the pattern is true for a time
-          period equal to the time period specified in.
+          period equal to the time period specified in ``SEARCH:SEARCH<x>:TRIGger:A:RUNT:WIDth``
+          within a ±5% tolerance.
         - ``NOTEQual`` argument sets the instrument to search when the pattern is true for atime
-          period greater than or less than (but not equal) the time period specified in.
+          period greater than or less than (but not equal) the time period specified in
+          ``SEARCH:SEARCH<x>:TRIGger:A:RUNT:WIDth`` within a ±5% tolerance.
         - ``OCCURS`` argument specifies a search event if a runt of any detectable width occurs.
     """
 
@@ -4220,13 +4123,17 @@ class SearchSearchItemTriggerARunt(SCPICmdRead):
 
         Info:
             - ``LESSthan`` argument sets the instrument to search if the a runt pulse is detected
-              with width less than the time set by the.
+              with width less than the time set by the ``SEARCH:SEARCH<x>:TRIGger:A:RUNT:WIDth``
+              command.
             - ``MOREthan`` argument sets the instrument to search if the a runt pulse is detected
-              with width more than the time set by the.
+              with width more than the time set by the ``SEARCH:SEARCH<x>:TRIGger:A:RUNT:WIDth``
+              command.
             - ``EQual`` argument sets the instrument to search when the pattern is true for a time
-              period equal to the time period specified in.
+              period equal to the time period specified in ``SEARCH:SEARCH<x>:TRIGger:A:RUNT:WIDth``
+              within a ±5% tolerance.
             - ``NOTEQual`` argument sets the instrument to search when the pattern is true for atime
-              period greater than or less than (but not equal) the time period specified in.
+              period greater than or less than (but not equal) the time period specified in
+              ``SEARCH:SEARCH<x>:TRIGger:A:RUNT:WIDth`` within a ±5% tolerance.
             - ``OCCURS`` argument specifies a search event if a runt of any detectable width occurs.
         """
         return self._when
@@ -4266,8 +4173,8 @@ class SearchSearchItemTriggerAPulsewidthWhen(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command specifies to search for a pulse with a width (duration) that is less than,
           greater than, equal to, or unequal to a specified value (set using
-          ``SEARch:A:PULSEWidth:WIDth``, OR whose) ``SEARch:A:PULSEWidth:LOWLimit`` and
-          ``SEARch:A:PULSEWidth:HIGHLimit`` ). The search number is specified by x.
+          ``SEARch:A:PULSEWidth:WIDth`` ), OR whose ``SEARch:A:PULSEWidth:LOWLimit`` and
+          ``SEARch:A:PULSEWidth:HIGHLimit``. The search number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -4703,8 +4610,8 @@ class SearchSearchItemTriggerAPulsewidth(SCPICmdRead):
         Description:
             - This command specifies to search for a pulse with a width (duration) that is less
               than, greater than, equal to, or unequal to a specified value (set using
-              ``SEARch:A:PULSEWidth:WIDth``, OR whose) ``SEARch:A:PULSEWidth:LOWLimit`` and
-              ``SEARch:A:PULSEWidth:HIGHLimit`` ). The search number is specified by x.
+              ``SEARch:A:PULSEWidth:WIDth`` ), OR whose ``SEARch:A:PULSEWidth:LOWLimit`` and
+              ``SEARch:A:PULSEWidth:HIGHLimit``. The search number is specified by x.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -30802,7 +30709,8 @@ class SearchSearchItemTriggerABusLinDataHivalue(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<QString>`` is a quoted string of 1s, 0s, or Xs representing the binary data string to
-          be used in a LIN search if the search condition is.
+          be used in a LIN search if the search condition is IDentifier or IDANDDATA (identifier and
+          data).
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -30858,7 +30766,8 @@ class SearchSearchItemTriggerABusLinData(SCPICmdRead):
 
         Info:
             - ``<QString>`` is a quoted string of 1s, 0s, or Xs representing the binary data string
-              to be used in a LIN search if the search condition is.
+              to be used in a LIN search if the search condition is IDentifier or IDANDDATA
+              (identifier and data).
         """
         return self._hivalue
 
@@ -39787,7 +39696,8 @@ class SearchSearchItemTriggerABusEthernetMacAddressSourceValue(SCPICmdWrite, SCP
     Description:
         - This command specifies the binary MAC address source value to use when searching on an
           Ethernet bus signal. The search condition needs to be set to MACADDRess. The search number
-          is specified by x.MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE`` hex.
+          is specified by x. Note: MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE``
+          hex.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -39841,8 +39751,8 @@ class SearchSearchItemTriggerABusEthernetMacAddressSource(SCPICmdRead):
         Description:
             - This command specifies the binary MAC address source value to use when searching on an
               Ethernet bus signal. The search condition needs to be set to MACADDRess. The search
-              number is specified by x.MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE``
-              hex.
+              number is specified by x. Note: MAC Addresses are 48-bit values such as
+              ``08:00:11:1E:C9:AE`` hex.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -39873,8 +39783,8 @@ class SearchSearchItemTriggerABusEthernetMacAddressDestinationValue(SCPICmdWrite
     Description:
         - This command specifies the binary MAC address destination value to use when searching on
           an Ethernet bus signal. The search condition needs to be set to MACADDRess. The search
-          number is specified by x.MAC Addresses are 48-bit values such as ``08:00:11:1E:C9:AE``
-          hex.
+          number is specified by x. Note: MAC Addresses are 48-bit values such as
+          ``08:00:11:1E:C9:AE`` hex.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -39928,7 +39838,7 @@ class SearchSearchItemTriggerABusEthernetMacAddressDestination(SCPICmdRead):
         Description:
             - This command specifies the binary MAC address destination value to use when searching
               on an Ethernet bus signal. The search condition needs to be set to MACADDRess. The
-              search number is specified by x.MAC Addresses are 48-bit values such as
+              search number is specified by x. Note: MAC Addresses are 48-bit values such as
               ``08:00:11:1E:C9:AE`` hex.
 
         Usage:
@@ -40169,7 +40079,7 @@ class SearchSearchItemTriggerABusEthernetIpheaderProtocolValue(SCPICmdWrite, SCP
     Description:
         - This command specifies the binary protocol value to use when searching on the Ethernet bus
           signal. The search condition needs to be set to IPHeader. The search number is specified
-          by x.Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP) and 17 (UDP).
+          by x. Note: Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP) and 17 (UDP).
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -40223,8 +40133,8 @@ class SearchSearchItemTriggerABusEthernetIpheaderProtocol(SCPICmdRead):
         Description:
             - This command specifies the binary protocol value to use when searching on the Ethernet
               bus signal. The search condition needs to be set to IPHeader. The search number is
-              specified by x.Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP) and 17
-              (UDP).
+              specified by x. Note: Commonly used protocol values are 1 (ICMP), 2 (IGMP), 6 (TCP)
+              and 17 (UDP).
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -40442,7 +40352,9 @@ class SearchSearchItemTriggerABusEthernetDataValue(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
-          allowable number of characters depends on the setting for size (using.
+          allowable number of characters depends on the setting for size (using
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:SIZe`` ). The bits specified in the quoted
+          string replace the least significant bits, leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -40754,7 +40666,10 @@ class SearchSearchItemTriggerABusEthernetData(SCPICmdRead):
 
         Info:
             - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
-              allowable number of characters depends on the setting for size (using.
+              allowable number of characters depends on the setting for size (using
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:SIZe`` ). The bits specified in the
+              quoted string replace the least significant bits, leaving any unspecified upper bits
+              unchanged.
         """
         return self._value
 
@@ -49117,11 +49032,12 @@ class SearchSearchItemTriggerABusCxpiFrameType(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NORMal`` specifies.
-        - ``SLEep`` specifies.
-        - ``LONG`` specifies.
-        - ``POLLINGNORMal`` specifies.
-        - ``POLLINGLONG`` specifies.
+        - ``NORMal`` specifies NORMal as the packet type CXPI frame to search on. The default frame
+          type is normal.
+        - ``SLEep`` specifies SLEep as the packet type CXPI frame to search on.
+        - ``LONG`` specifies LONG as the packet type CXPI frame to search on.
+        - ``POLLINGNORMal`` specifies POLLINGNORMal as the packet type CXPI frame to search on.
+        - ``POLLINGLONG`` specifies POLLINGLONG as the packet type CXPI frame to search on.
     """  # noqa: E501
 
 
@@ -49167,11 +49083,12 @@ class SearchSearchItemTriggerABusCxpiFrame(SCPICmdRead):
             ```
 
         Info:
-            - ``NORMal`` specifies.
-            - ``SLEep`` specifies.
-            - ``LONG`` specifies.
-            - ``POLLINGNORMal`` specifies.
-            - ``POLLINGLONG`` specifies.
+            - ``NORMal`` specifies NORMal as the packet type CXPI frame to search on. The default
+              frame type is normal.
+            - ``SLEep`` specifies SLEep as the packet type CXPI frame to search on.
+            - ``LONG`` specifies LONG as the packet type CXPI frame to search on.
+            - ``POLLINGNORMal`` specifies POLLINGNORMal as the packet type CXPI frame to search on.
+            - ``POLLINGLONG`` specifies POLLINGLONG as the packet type CXPI frame to search on.
         """  # noqa: E501
         return self._type
 
@@ -49738,16 +49655,17 @@ class SearchSearchItemTriggerABusCxpiCondition(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``STARt`` specifies.
-        - ``FRAMes`` specifies.
-        - ``FRAMEID`` specifies.
-        - ``PTYPe`` specifies.
-        - ``DLC`` specifies.
-        - ``EXTDLC`` specifies.
-        - ``NETMN`` specifies.
-        - ``COUNter`` specifies.
-        - ``DATa`` specifies.
-        - ``ERRors`` specifies.
+        - ``STARt`` specifies STARt as the event for a CXPI frame to search on. This is the default
+          value.
+        - ``FRAMes`` specifies FRAMes as the frame types for CXPI packets to search on.
+        - ``FRAMEID`` specifies FRAMEID as the field within a CXPI frame to search on.
+        - ``PTYPe`` specifies PTYPe as the field within a CXPI frame to search on.
+        - ``DLC`` specifies DLC as the field within a CXPI frame to search on.
+        - ``EXTDLC`` specifies EXTDLC as the field within a CXPI frame to search on.
+        - ``NETMN`` specifies NETMN as the field within a CXPI frame to search on.
+        - ``COUNter`` specifies COUNter as the field within a CXPI frame to search on.
+        - ``DATa`` specifies DATa as the field within a CXPI frame to search on.
+        - ``ERRors`` specifies ERRors as type of error within a CXPI frame to search on.
     """  # noqa: E501
 
 
@@ -49815,16 +49733,17 @@ class SearchSearchItemTriggerABusCxpi(SCPICmdRead):
             ```
 
         Info:
-            - ``STARt`` specifies.
-            - ``FRAMes`` specifies.
-            - ``FRAMEID`` specifies.
-            - ``PTYPe`` specifies.
-            - ``DLC`` specifies.
-            - ``EXTDLC`` specifies.
-            - ``NETMN`` specifies.
-            - ``COUNter`` specifies.
-            - ``DATa`` specifies.
-            - ``ERRors`` specifies.
+            - ``STARt`` specifies STARt as the event for a CXPI frame to search on. This is the
+              default value.
+            - ``FRAMes`` specifies FRAMes as the frame types for CXPI packets to search on.
+            - ``FRAMEID`` specifies FRAMEID as the field within a CXPI frame to search on.
+            - ``PTYPe`` specifies PTYPe as the field within a CXPI frame to search on.
+            - ``DLC`` specifies DLC as the field within a CXPI frame to search on.
+            - ``EXTDLC`` specifies EXTDLC as the field within a CXPI frame to search on.
+            - ``NETMN`` specifies NETMN as the field within a CXPI frame to search on.
+            - ``COUNter`` specifies COUNter as the field within a CXPI frame to search on.
+            - ``DATa`` specifies DATa as the field within a CXPI frame to search on.
+            - ``ERRors`` specifies ERRors as type of error within a CXPI frame to search on.
         """  # noqa: E501
         return self._condition
 
@@ -54050,7 +53969,10 @@ class SearchSearchItemTriggerABusAutoethernetTbt1sDataValue(SCPICmdWrite, SCPICm
     Info:
         - ``SEARCH<x>`` is the Search number.
         - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
-          allowable number of characters depends on the setting for size (using.
+          allowable number of characters depends on the setting for size (using
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth`` ). The bits specified in
+          the quoted string replace the least significant bits (LSB), leaving any unspecified upper
+          bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -54171,7 +54093,10 @@ class SearchSearchItemTriggerABusAutoethernetTbt1sData(SCPICmdRead):
         Info:
             - ``SEARCH<x>`` is the Search number.
             - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
-              allowable number of characters depends on the setting for size (using.
+              allowable number of characters depends on the setting for size (using
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth`` ). The bits
+              specified in the quoted string replace the least significant bits (LSB), leaving any
+              unspecified upper bits unchanged.
         """
         return self._value
 
@@ -54368,7 +54293,10 @@ class SearchSearchItemTriggerABusAutoethernetPayloadValue(SCPICmdWrite, SCPICmdR
 
     Info:
         - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
-          allowable number of characters depends on the setting for size (using.
+          allowable number of characters depends on the setting for size (using
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe`` ). The bits specified in the
+          quoted string replace the least significant bits (LSB), leaving any unspecified upper bits
+          unchanged. The default value is XXXXXXXX.
     """
 
 
@@ -54478,7 +54406,10 @@ class SearchSearchItemTriggerABusAutoethernetPayload(SCPICmdRead):
 
         Info:
             - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
-              allowable number of characters depends on the setting for size (using.
+              allowable number of characters depends on the setting for size (using
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe`` ). The bits specified in
+              the quoted string replace the least significant bits (LSB), leaving any unspecified
+              upper bits unchanged. The default value is XXXXXXXX.
         """
         return self._value
 
@@ -54538,7 +54469,9 @@ class SearchSearchItemTriggerABusAutoethernetMacLengthHivalue(SCPICmdWrite, SCPI
         ```
 
     Info:
-        - ``SEARCH<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 16 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -54555,7 +54488,9 @@ class SearchSearchItemTriggerABusAutoethernetMacLength(SCPICmdRead):
           AssertionError if the returned value does not match ``value``.
 
     Info:
-        - ``SEARCH<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 16 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
 
     Properties:
         - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:LENgth:HIVALue``
@@ -54596,7 +54531,10 @@ class SearchSearchItemTriggerABusAutoethernetMacLength(SCPICmdRead):
             ```
 
         Info:
-            - ``SEARCH<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 16
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
         """
         return self._hivalue
 
@@ -54655,7 +54593,9 @@ class SearchSearchItemTriggerABusAutoethernetMacAddressSourceValue(SCPICmdWrite,
         ```
 
     Info:
-        - ``SEARCH<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -54672,7 +54612,9 @@ class SearchSearchItemTriggerABusAutoethernetMacAddressSource(SCPICmdRead):
           AssertionError if the returned value does not match ``value``.
 
     Info:
-        - ``SEARCH<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:ADDRess:SOUrce:VALue``
@@ -54710,7 +54652,10 @@ class SearchSearchItemTriggerABusAutoethernetMacAddressSource(SCPICmdRead):
             ```
 
         Info:
-            - ``SEARCH<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
         """
         return self._value
 
@@ -54740,7 +54685,9 @@ class SearchSearchItemTriggerABusAutoethernetMacAddressDestinationValue(SCPICmdW
         ```
 
     Info:
-        - ``SEARCH<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -54757,7 +54704,9 @@ class SearchSearchItemTriggerABusAutoethernetMacAddressDestination(SCPICmdRead):
           an AssertionError if the returned value does not match ``value``.
 
     Info:
-        - ``SEARCH<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
 
     Properties:
         - ``.value``: The
@@ -54796,7 +54745,10 @@ class SearchSearchItemTriggerABusAutoethernetMacAddressDestination(SCPICmdRead):
             ```
 
         Info:
-            - ``SEARCH<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
         """
         return self._value
 
@@ -54812,7 +54764,9 @@ class SearchSearchItemTriggerABusAutoethernetMacAddress(SCPICmdRead):
           AssertionError if the returned value does not match ``value``.
 
     Info:
-        - ``SEARCH<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
 
     Properties:
         - ``.destination``: The
@@ -54842,7 +54796,10 @@ class SearchSearchItemTriggerABusAutoethernetMacAddress(SCPICmdRead):
               raise an AssertionError if the returned value does not match ``value``.
 
         Info:
-            - ``SEARCH<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
 
         Sub-properties:
             - ``.value``: The
@@ -54862,7 +54819,10 @@ class SearchSearchItemTriggerABusAutoethernetMacAddress(SCPICmdRead):
               AssertionError if the returned value does not match ``value``.
 
         Info:
-            - ``SEARCH<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
 
         Sub-properties:
             - ``.value``: The
@@ -54882,7 +54842,9 @@ class SearchSearchItemTriggerABusAutoethernetMac(SCPICmdRead):
           the returned value does not match ``value``.
 
     Info:
-        - ``SEARCH<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48 characters
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
 
     Properties:
         - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:ADDRess`` command
@@ -54911,7 +54873,10 @@ class SearchSearchItemTriggerABusAutoethernetMac(SCPICmdRead):
               AssertionError if the returned value does not match ``value``.
 
         Info:
-            - ``SEARCH<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
 
         Sub-properties:
             - ``.destination``: The
@@ -54933,7 +54898,10 @@ class SearchSearchItemTriggerABusAutoethernetMac(SCPICmdRead):
               AssertionError if the returned value does not match ``value``.
 
         Info:
-            - ``SEARCH<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 16
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
 
         Sub-properties:
             - ``.hivalue``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:LENgth:HIVALue``
@@ -54967,7 +54935,9 @@ class SearchSearchItemTriggerABusAutoethernetIpheaderSourceaddrValue(SCPICmdWrit
         ```
 
     Info:
-        - ``SEARCH<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32 characters,
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -54984,7 +54954,9 @@ class SearchSearchItemTriggerABusAutoethernetIpheaderSourceaddr(SCPICmdRead):
           AssertionError if the returned value does not match ``value``.
 
     Info:
-        - ``SEARCH<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32 characters,
+          where the allowable characters are 0, 1, and X. The bits specified in the quoted string
+          replace the least significant bits (LSB), leaving any unspecified upper bits unchanged.
 
     Properties:
         - ``.value``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:IPHeader:SOUrceaddr:VALue``
@@ -55022,7 +54994,10 @@ class SearchSearchItemTriggerABusAutoethernetIpheaderSourceaddr(SCPICmdRead):
             ```
 
         Info:
-            - ``SEARCH<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32
+              characters, where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
         """
         return self._value
 
@@ -55053,7 +55028,10 @@ class SearchSearchItemTriggerABusAutoethernetIpheaderDestinationaddrValue(
         ```
 
     Info:
-        - ``SEARCH<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32 characters
+          that sets the IP address, where the allowable characters are 0, 1, and X. The bits
+          specified in the quoted string replace the least significant bits (LSB), leaving any
+          unspecified upper bits unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -55070,7 +55048,10 @@ class SearchSearchItemTriggerABusAutoethernetIpheaderDestinationaddr(SCPICmdRead
           an AssertionError if the returned value does not match ``value``.
 
     Info:
-        - ``SEARCH<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32 characters
+          that sets the IP address, where the allowable characters are 0, 1, and X. The bits
+          specified in the quoted string replace the least significant bits (LSB), leaving any
+          unspecified upper bits unchanged.
 
     Properties:
         - ``.value``: The
@@ -55109,7 +55090,10 @@ class SearchSearchItemTriggerABusAutoethernetIpheaderDestinationaddr(SCPICmdRead
             ```
 
         Info:
-            - ``SEARCH<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32
+              characters that sets the IP address, where the allowable characters are 0, 1, and X.
+              The bits specified in the quoted string replace the least significant bits (LSB),
+              leaving any unspecified upper bits unchanged.
         """
         return self._value
 
@@ -55125,7 +55109,10 @@ class SearchSearchItemTriggerABusAutoethernetIpheader(SCPICmdRead):
           AssertionError if the returned value does not match ``value``.
 
     Info:
-        - ``SEARCH<x>`` is the Search number.
+        - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32 characters
+          that sets the IP address, where the allowable characters are 0, 1, and X. The bits
+          specified in the quoted string replace the least significant bits (LSB), leaving any
+          unspecified upper bits unchanged.
 
     Properties:
         - ``.destinationaddr``: The
@@ -55155,7 +55142,10 @@ class SearchSearchItemTriggerABusAutoethernetIpheader(SCPICmdRead):
               raise an AssertionError if the returned value does not match ``value``.
 
         Info:
-            - ``SEARCH<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32
+              characters that sets the IP address, where the allowable characters are 0, 1, and X.
+              The bits specified in the quoted string replace the least significant bits (LSB),
+              leaving any unspecified upper bits unchanged.
 
         Sub-properties:
             - ``.value``: The
@@ -55176,7 +55166,10 @@ class SearchSearchItemTriggerABusAutoethernetIpheader(SCPICmdRead):
               an AssertionError if the returned value does not match ``value``.
 
         Info:
-            - ``SEARCH<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32
+              characters, where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
 
         Sub-properties:
             - ``.value``: The
@@ -55390,7 +55383,10 @@ class SearchSearchItemTriggerABusAutoethernetDataValue(SCPICmdWrite, SCPICmdRead
     Info:
         - ``SEARCH<x>`` is the Search number.
         - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
-          allowable number of characters depends on the setting for size (using.
+          allowable number of characters depends on the setting for size (using
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa:SIZe`` ). The bits specified in the
+          quoted string replace the least significant bits (LSB), leaving any unspecified upper bits
+          unchanged.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -55639,7 +55635,10 @@ class SearchSearchItemTriggerABusAutoethernetData(SCPICmdRead):
         Info:
             - ``SEARCH<x>`` is the Search number.
             - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
-              allowable number of characters depends on the setting for size (using.
+              allowable number of characters depends on the setting for size (using
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa:SIZe`` ). The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
         """
         return self._value
 
@@ -55865,7 +55864,10 @@ class SearchSearchItemTriggerABusAutoethernet(SCPICmdRead):
               AssertionError if the returned value does not match ``value``.
 
         Info:
-            - ``SEARCH<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 32
+              characters that sets the IP address, where the allowable characters are 0, 1, and X.
+              The bits specified in the quoted string replace the least significant bits (LSB),
+              leaving any unspecified upper bits unchanged.
 
         Sub-properties:
             - ``.destinationaddr``: The
@@ -55887,7 +55889,10 @@ class SearchSearchItemTriggerABusAutoethernet(SCPICmdRead):
               if the returned value does not match ``value``.
 
         Info:
-            - ``SEARCH<x>`` is the Search number.
+            - ``SEARCH<x>`` is the Search number. <QString> is a quoted string of up to 48
+              characters where the allowable characters are 0, 1, and X. The bits specified in the
+              quoted string replace the least significant bits (LSB), leaving any unspecified upper
+              bits unchanged.
 
         Sub-properties:
             - ``.address``: The ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:MAC:ADDRess`` command
@@ -56618,9 +56623,9 @@ class SearchSearchItemTriggerABusArinc429aSdiValue(SCPICmdWrite, SCPICmdRead):
     Description:
         - This command sets or queries the label when searching on an ARINC429 SDI field. The search
           number is specified by x. The search condition must be set to DATa or LABELANDDATA, and
-          the data format must be set to DATA.The SDI field is only present when the selected data
-          field format is DATA (using ``BUS:B<x>:ARINC429A:DATAFORmat``). Also, the stored QString
-          is reset to its default value whenever the data field format is changed.
+          the data format must be set to DATA. Note: The SDI field is only present when the selected
+          data field format is DATA (using ``BUS:B<x>:ARINC429A:DATAFORmat``). Also, the stored
+          QString is reset to its default value whenever the data field format is changed.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -56671,10 +56676,10 @@ class SearchSearchItemTriggerABusArinc429aSdi(SCPICmdRead):
         Description:
             - This command sets or queries the label when searching on an ARINC429 SDI field. The
               search number is specified by x. The search condition must be set to DATa or
-              LABELANDDATA, and the data format must be set to DATA.The SDI field is only present
-              when the selected data field format is DATA (using ``BUS:B<x>:ARINC429A:DATAFORmat``).
-              Also, the stored QString is reset to its default value whenever the data field format
-              is changed.
+              LABELANDDATA, and the data format must be set to DATA. Note: The SDI field is only
+              present when the selected data field format is DATA (using
+              ``BUS:B<x>:ARINC429A:DATAFORmat``). Also, the stored QString is reset to its default
+              value whenever the data field format is changed.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -56733,7 +56738,7 @@ class SearchSearchItemTriggerABusArinc429aLabelQualifier(SCPICmdWrite, SCPICmdRe
     Description:
         - This command sets or queries the qualifier to be used when searching on label data for an
           ARINC429 bus signal. The search number is specified by x. The search condition must be set
-          to LABel or LABELANDDATA.If the search condition is set to LABELANDDATA, the label
+          to LABel or LABELANDDATA. Note: If the search condition is set to LABELANDDATA, the label
           qualifier will be locked to Equal until the search condition is changed again.
 
     Usage:
@@ -56857,8 +56862,9 @@ class SearchSearchItemTriggerABusArinc429aLabel(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when searching on label data for
               an ARINC429 bus signal. The search number is specified by x. The search condition must
-              be set to LABel or LABELANDDATA.If the search condition is set to LABELANDDATA, the
-              label qualifier will be locked to Equal until the search condition is changed again.
+              be set to LABel or LABELANDDATA. Note: If the search condition is set to LABELANDDATA,
+              the label qualifier will be locked to Equal until the search condition is changed
+              again.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -56985,8 +56991,8 @@ class SearchSearchItemTriggerABusArinc429aDataQualifier(SCPICmdWrite, SCPICmdRea
     Description:
         - This command sets or queries the qualifier to be used when searching on data in the DATA
           field for an ARINC429 bus signal. The search number is specified by x. The search
-          condition must be set to DATa or LABELANDDATA.The search qualifier only applies to the
-          bits defined as the data field via the bus data field format specifier (using
+          condition must be set to DATa or LABELANDDATA. Note: The search qualifier only applies to
+          the bits defined as the data field via the bus data field format specifier (using
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -57109,8 +57115,8 @@ class SearchSearchItemTriggerABusArinc429aData(SCPICmdRead):
         Description:
             - This command sets or queries the qualifier to be used when searching on data in the
               DATA field for an ARINC429 bus signal. The search number is specified by x. The search
-              condition must be set to DATa or LABELANDDATA.The search qualifier only applies to the
-              bits defined as the data field via the bus data field format specifier (using
+              condition must be set to DATa or LABELANDDATA. Note: The search qualifier only applies
+              to the bits defined as the data field via the bus data field format specifier (using
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -57174,7 +57180,7 @@ class SearchSearchItemTriggerABusArinc429aCondition(SCPICmdWriteNoArguments, SCP
 
     Description:
         - This command specifies a field or condition for an ARINC429 bus to search on. The search
-          number is specified by x.``SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:ERRTYPe``
+          number is specified by x. Note: ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:ERRTYPe``
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -57240,7 +57246,8 @@ class SearchSearchItemTriggerABusArinc429a(SCPICmdRead):
 
         Description:
             - This command specifies a field or condition for an ARINC429 bus to search on. The
-              search number is specified by x.``SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:ERRTYPe``
+              search number is specified by x. Note:
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ARINC429A:ERRTYPe``
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -58799,8 +58806,6 @@ class SearchSearchItemTriggerA(SCPICmdRead):
 
         Sub-properties:
             - ``.deltatime``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:DELTATime`` command.
-            - ``.logicqualification``: The
-              ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification`` command.
             - ``.polarity``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:POLarity`` command.
             - ``.source``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:SOUrce`` command.
             - ``.threshold``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:THReshold`` command tree.
@@ -58814,7 +58819,8 @@ class SearchSearchItemTriggerA(SCPICmdRead):
 
         Description:
             - This command sets or queries the trigger type setting for a search to determine where
-              to place a mark. The search number is specified by x.Some trigger types are optional.
+              to place a mark. The search number is specified by x. Note: Some trigger types are
+              optional.
 
         Usage:
             - Using the ``.query()`` method will send the ``SEARCH:SEARCH<x>:TRIGger:A:TYPe?``
@@ -59139,10 +59145,6 @@ class SearchDelete(SCPICmdWrite):
         ```
         - SEARCH:DELete <QString>
         ```
-
-    Info:
-        - ``<QString>`` is the specified search. The argument is of the form 'SEARCH<NR1>', where
-          <NR1> is ≥ 1).
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -59180,7 +59182,8 @@ class SearchAddnew(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` is the specified search. The argument is of the form.
+        - ``<QString>`` is the specified search. The argument is of the form 'SEARCH<NR1>' , where
+          <NR1> is ≥ 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -59230,7 +59233,8 @@ class Search(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the specified search. The argument is of the form.
+            - ``<QString>`` is the specified search. The argument is of the form 'SEARCH<NR1>' ,
+              where <NR1> is ≥ 1.
         """
         return self._addnew
 
@@ -59266,10 +59270,6 @@ class Search(SCPICmdRead):
             ```
             - SEARCH:DELete <QString>
             ```
-
-        Info:
-            - ``<QString>`` is the specified search. The argument is of the form 'SEARCH<NR1>',
-              where <NR1> is ≥ 1).
         """
         return self._delete
 

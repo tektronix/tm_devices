@@ -173,10 +173,10 @@ class DataSource(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<wfm>`` is the location of the waveform data that will be transferred from theinstrument
-          to the controller. It can consist of CH<x>, MATH<x>, REF<x>,DIGITALALL. Note that digital
-          data is transferred as 16-bit data, with theleast-significant bit representing D0, and the
-          most-significant bit representing D15.
+        - ``<wfm>`` is the location of the waveform data that will be transferred from the
+          instrument to the controller. It can consist of CH<x>, MATH<x>, REF<x>,DIGITALALL. Note
+          that digital data is transferred as 16-bit data, with the least-significant bit
+          representing D0, and the most-significant bit representing D15.
         - ``<wfm>`` can consist of the following.
         - ``CH<x>`` selects the specified analog channel as the source.
         - ``MATH<x>`` selects the specified reference waveform as the source. The reference number
@@ -186,11 +186,11 @@ class DataSource(SCPICmdWrite, SCPICmdRead):
         - ``CH<x>_D<x>`` selects the specified digital channel.
         - ``CH<x>_DAll`` selects the specified channel group of digital channels.
         - ``DIGITALALL`` selects digital waveforms as the source. The Digital data istransferred as
-          16-bit data, with the least-significant bit representing D0, and themost-significant bit
-          representing D15. The LSB always contains D0-D7 andMSB always contains D8-D15 data.
-        - ``CH<x>_SV_NORMal`` , ``CH<x>_SV_AVErage``, ``CH<x>_SV_MAX_Hold``, ``CH<x>_SV_MIN_Hold``
+          16-bit data, with the least-significant bit representing D0, and the most-significant bit
+          representing D15. The LSB always contains D0-D7 and MSB always contains D8-D15 data.
+        - ``CH<x>_SV_NORMal`` , ``CH<x>_SV_AVErage`` , ``CH<x>_SV_MAX_Hold`` , ``CH<x>_SV_MIN_Hold``
           selects the specified Spectrum View waveform.
-        - ``CH<x>_MAG_VS_TIME`` , ``CH<x>_FREQ_VS_TIME``, ``CH<x>_PHASE_VS_TIME`` selects the
+        - ``CH<x>_MAG_VS_TIME`` , ``CH<x>_FREQ_VS_TIME`` , ``CH<x>_PHASE_VS_TIME`` selects the
           specified RF vs. Time waveform.
         - ``CH<x>_SV_BASEBAND_IQ`` selects the specified RF baseband IQ data.
 
@@ -344,7 +344,7 @@ class DataEncdg(SCPICmdWrite, SCPICmdRead):
         - This command sets or queries the format of outgoing waveform data. This command is
           equivalent to setting ``WFMOutpre:ENCdg``, ``WFMOutpre:BN_Fmt``, and ``WFMOutpre:BYT_Or``.
           Setting the ``DATa:ENGdg`` value causes the corresponding WFMOutpre values to be updated
-          and vice versa.Values are constrained (for outbound data) to the format of the data
+          and vice versa. Note: Values are constrained (for outbound data) to the format of the data
           specified by ``DATa:SOUrce``.
 
     Usage:
@@ -380,8 +380,8 @@ class DataEncdg(SCPICmdWrite, SCPICmdRead):
           to 3.4 × 1038. The center of the screen is 0. The upper limit is the top of the screen and
           the lower limit is the bottom of the screen. The FPBinary argument is only applicable to
           math waveforms or ref waveforms saved from math waveforms. The following are the DATa and
-          WFMOutpre parameter settings (separated bysemicolons): ``:ENCdg`` = BIN ; ``:BN_Fmt`` = FP
-          ; ``:BYT_Or`` = MSB ; ``:BYT_NR`` = 4.
+          WFMOutpre parameter settings (separated by semicolons): ``:ENCdg`` = BIN ; ``:BN_Fmt`` =
+          FP ; ``:BYT_Or`` = MSB ; ``:BYT_NR`` = 4.
         - ``SRIbinary`` is the same as RIBinary except that the byte order is swapped, meaning that
           the least significant byte is transferred first. This format is useful when transferring
           data to IBM compatible PCs. The following are the DATa and WFMOutpre parameter settings
@@ -458,8 +458,8 @@ class Data(SCPICmdWrite, SCPICmdRead):
             - This command sets or queries the format of outgoing waveform data. This command is
               equivalent to setting ``WFMOutpre:ENCdg``, ``WFMOutpre:BN_Fmt``, and
               ``WFMOutpre:BYT_Or``. Setting the ``DATa:ENGdg`` value causes the corresponding
-              WFMOutpre values to be updated and vice versa.Values are constrained (for outbound
-              data) to the format of the data specified by ``DATa:SOUrce``.
+              WFMOutpre values to be updated and vice versa. Note: Values are constrained (for
+              outbound data) to the format of the data specified by ``DATa:SOUrce``.
 
         Usage:
             - Using the ``.query()`` method will send the ``DATa:ENCdg?`` query.
@@ -494,7 +494,7 @@ class Data(SCPICmdWrite, SCPICmdRead):
               ×1038 to 3.4 × 1038. The center of the screen is 0. The upper limit is the top of the
               screen and the lower limit is the bottom of the screen. The FPBinary argument is only
               applicable to math waveforms or ref waveforms saved from math waveforms. The following
-              are the DATa and WFMOutpre parameter settings (separated bysemicolons): ``:ENCdg`` =
+              are the DATa and WFMOutpre parameter settings (separated by semicolons): ``:ENCdg`` =
               BIN ; ``:BN_Fmt`` = FP ; ``:BYT_Or`` = MSB ; ``:BYT_NR`` = 4.
             - ``SRIbinary`` is the same as RIBinary except that the byte order is swapped, meaning
               that the least significant byte is transferred first. This format is useful when
@@ -653,9 +653,9 @@ class Data(SCPICmdWrite, SCPICmdRead):
             ```
 
         Info:
-            - ``<wfm>`` is the location of the waveform data that will be transferred from
-              theinstrument to the controller. It can consist of CH<x>, MATH<x>, REF<x>,DIGITALALL.
-              Note that digital data is transferred as 16-bit data, with theleast-significant bit
+            - ``<wfm>`` is the location of the waveform data that will be transferred from the
+              instrument to the controller. It can consist of CH<x>, MATH<x>, REF<x>,DIGITALALL.
+              Note that digital data is transferred as 16-bit data, with the least-significant bit
               representing D0, and the most-significant bit representing D15.
             - ``<wfm>`` can consist of the following.
             - ``CH<x>`` selects the specified analog channel as the source.
@@ -666,12 +666,12 @@ class Data(SCPICmdWrite, SCPICmdRead):
             - ``CH<x>_D<x>`` selects the specified digital channel.
             - ``CH<x>_DAll`` selects the specified channel group of digital channels.
             - ``DIGITALALL`` selects digital waveforms as the source. The Digital data istransferred
-              as 16-bit data, with the least-significant bit representing D0, and
-              themost-significant bit representing D15. The LSB always contains D0-D7 andMSB always
+              as 16-bit data, with the least-significant bit representing D0, and the
+              most-significant bit representing D15. The LSB always contains D0-D7 and MSB always
               contains D8-D15 data.
-            - ``CH<x>_SV_NORMal`` , ``CH<x>_SV_AVErage``, ``CH<x>_SV_MAX_Hold``,
+            - ``CH<x>_SV_NORMal`` , ``CH<x>_SV_AVErage`` , ``CH<x>_SV_MAX_Hold`` ,
               ``CH<x>_SV_MIN_Hold`` selects the specified Spectrum View waveform.
-            - ``CH<x>_MAG_VS_TIME`` , ``CH<x>_FREQ_VS_TIME``, ``CH<x>_PHASE_VS_TIME`` selects the
+            - ``CH<x>_MAG_VS_TIME`` , ``CH<x>_FREQ_VS_TIME`` , ``CH<x>_PHASE_VS_TIME`` selects the
               specified RF vs. Time waveform.
             - ``CH<x>_SV_BASEBAND_IQ`` selects the specified RF baseband IQ data.
 

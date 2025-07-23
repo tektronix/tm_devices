@@ -1015,8 +1015,8 @@ class DpojetSncClose(SCPICmdWriteNoArguments):
     """The ``DPOJET:SNC:CLOse`` command.
 
     Description:
-        - This set only command closes Scope Noise Characterization application.When the Scope Noise
-          Characterization application is launched using the
+        - This set only command closes Scope Noise Characterization application. Note: When the
+          Scope Noise Characterization application is launched using the
 
     Usage:
         - Using the ``.write()`` method will send the ``DPOJET:SNC:CLOse`` command.
@@ -1084,8 +1084,8 @@ class DpojetSnc(SCPICmdRead):
         """Return the ``DPOJET:SNC:CLOse`` command.
 
         Description:
-            - This set only command closes Scope Noise Characterization application.When the Scope
-              Noise Characterization application is launched using the
+            - This set only command closes Scope Noise Characterization application. Note: When the
+              Scope Noise Characterization application is launched using the
 
         Usage:
             - Using the ``.write()`` method will send the ``DPOJET:SNC:CLOse`` command.
@@ -1556,8 +1556,8 @@ class DpojetReportGetimagename(SCPICmdRead):
     """The ``DPOJET:REPORT:GETIMAGEName`` command.
 
     Description:
-        - This query only commands gets all the PNG format image names from this
-          directoryC:Users<userName>TektronixTekApplicationsDPOJETReportsResources.
+        - This query only commands gets all the PNG format image names from this directory
+          C:Users<userName>TektronixTekApplicationsDPOJETReportsResources.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:REPORT:GETIMAGEName?`` query.
@@ -1700,8 +1700,8 @@ class DpojetReport(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - These are set-only commands. EXECute executes a DPOJET report save operation for the
-          currently defined report configuration. APPEnd appends new data to the selected
-          report.Ensure to close the PDF report before append.
+          currently defined report configuration. APPEnd appends new data to the selected report.
+          Note: Ensure to close the PDF report before append.
 
     Usage:
         - Using the ``.write(value)`` method will send the ``DPOJET:REPORT value`` command.
@@ -1895,8 +1895,8 @@ class DpojetReport(SCPICmdWrite, SCPICmdRead):
         """Return the ``DPOJET:REPORT:GETIMAGEName`` command.
 
         Description:
-            - This query only commands gets all the PNG format image names from this
-              directoryC:Users<userName>TektronixTekApplicationsDPOJETReportsResources.
+            - This query only commands gets all the PNG format image names from this directory
+              C:Users<userName>TektronixTekApplicationsDPOJETReportsResources.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:REPORT:GETIMAGEName?`` query.
@@ -2194,10 +2194,10 @@ class DpojetReflevelsChannelPercentPercentreflevel(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:REFLevels:CH<x>:PERcent:PERCENTReflevel`` command.
 
     Description:
-        - This command sets or gets the Reference Levels to Percentage or Absolute.The reflevel
-          commands can be used to set ref levels for CH1-CH4, MATH1-MATH4, and REF1-REF4. The
-          command syntax in OLH is shown only for CH<x>. Use MATH<x> and REF<x> for MATH1-MATH4, and
-          REF1-REF4 (``DPOJET:REFLevels:MATH<x>`` and REF (``DPOJET:REFLevels:REF<x>``).
+        - This command sets or gets the Reference Levels to Percentage or Absolute. Note: The
+          reflevel commands can be used to set ref levels for CH1-CH4, MATH1-MATH4, and REF1-REF4.
+          The command syntax in OLH is shown only for CH<x>. Use MATH<x> and REF<x> for MATH1-MATH4,
+          and REF1-REF4 (``DPOJET:REFLevels:MATH<x>`` and REF (``DPOJET:REFLevels:REF<x>``).
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -2459,10 +2459,11 @@ class DpojetReflevelsChannelPercent(SCPICmdRead):
         """Return the ``DPOJET:REFLevels:CH<x>:PERcent:PERCENTReflevel`` command.
 
         Description:
-            - This command sets or gets the Reference Levels to Percentage or Absolute.The reflevel
-              commands can be used to set ref levels for CH1-CH4, MATH1-MATH4, and REF1-REF4. The
-              command syntax in OLH is shown only for CH<x>. Use MATH<x> and REF<x> for MATH1-MATH4,
-              and REF1-REF4 (``DPOJET:REFLevels:MATH<x>`` and REF (``DPOJET:REFLevels:REF<x>``).
+            - This command sets or gets the Reference Levels to Percentage or Absolute. Note: The
+              reflevel commands can be used to set ref levels for CH1-CH4, MATH1-MATH4, and
+              REF1-REF4. The command syntax in OLH is shown only for CH<x>. Use MATH<x> and REF<x>
+              for MATH1-MATH4, and REF1-REF4 (``DPOJET:REFLevels:MATH<x>`` and REF
+              (``DPOJET:REFLevels:REF<x>``).
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -2580,9 +2581,10 @@ class DpojetReflevelsChannelAutoset(SCPICmdWrite):
 
     Description:
         - This command sets or clears the reflevel autoset state of the given source. When set to 1,
-          the given source will have a ref level autoset acted on it during the next acquisition.The
-          Ref Level Autoset state is shown only for Ch1-Ch4 sources. It is the same for MATH and Ref
-          waveforms. For example: ``DPOJET:REFLevels``: MATH<x>, ``DPOJET:REFLevels:REF<x>``.
+          the given source will have a ref level autoset acted on it during the next acquisition.
+          Note: The Ref Level Autoset state is shown only for Ch1-Ch4 sources. It is the same for
+          MATH and Ref waveforms. For example: ``DPOJET:REFLevels``: MATH<x>,
+          ``DPOJET:REFLevels:REF<x>``.
 
     Usage:
         - Using the ``.write(value)`` method will send the ``DPOJET:REFLevels:CH<x>:AUTOSet value``
@@ -3041,8 +3043,8 @@ class DpojetReflevelsChannel(ValidatedChannel, SCPICmdRead):
         Description:
             - This command sets or clears the reflevel autoset state of the given source. When set
               to 1, the given source will have a ref level autoset acted on it during the next
-              acquisition.The Ref Level Autoset state is shown only for Ch1-Ch4 sources. It is the
-              same for MATH and Ref waveforms. For example: ``DPOJET:REFLevels``: MATH<x>,
+              acquisition. Note: The Ref Level Autoset state is shown only for Ch1-Ch4 sources. It
+              is the same for MATH and Ref waveforms. For example: ``DPOJET:REFLevels``: MATH<x>,
               ``DPOJET:REFLevels:REF<x>``.
 
         Usage:
@@ -3134,10 +3136,10 @@ class DpojetReflevelsAutoset(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command performs a DPOJET ref level autoset on any sources selected using
-          ``DPOJET:REFLevels:CH<x>:AUTOSet``. All pieces of the reflevel branch have the ability to
-          set ref levels for CH1-CH4, MATH1-MATH4, and REF1-Ref4. Only the CH<x> portion is shown in
-          this OLH, but it exists and matches exactly for MATH (``DPOJET:REFLevels:MATH<x>`` and REF
-          (``DPOJET:REFLevels:REF<x>``).
+          ``DPOJET:REFLevels:CH<x>:AUTOSet``. Note: All pieces of the reflevel branch have the
+          ability to set ref levels for CH1-CH4, MATH1-MATH4, and REF1-Ref4. Only the CH<x> portion
+          is shown in this OLH, but it exists and matches exactly for MATH
+          (``DPOJET:REFLevels:MATH<x>`` and REF (``DPOJET:REFLevels:REF<x>``).
 
     Usage:
         - Using the ``.write(value)`` method will send the ``DPOJET:REFLevels:AUTOset value``
@@ -3202,9 +3204,9 @@ class DpojetReflevels(SCPICmdRead):
 
         Description:
             - This command performs a DPOJET ref level autoset on any sources selected using
-              ``DPOJET:REFLevels:CH<x>:AUTOSet``. All pieces of the reflevel branch have the ability
-              to set ref levels for CH1-CH4, MATH1-MATH4, and REF1-Ref4. Only the CH<x> portion is
-              shown in this OLH, but it exists and matches exactly for MATH
+              ``DPOJET:REFLevels:CH<x>:AUTOSet``. Note: All pieces of the reflevel branch have the
+              ability to set ref levels for CH1-CH4, MATH1-MATH4, and REF1-Ref4. Only the CH<x>
+              portion is shown in this OLH, but it exists and matches exactly for MATH
               (``DPOJET:REFLevels:MATH<x>`` and REF (``DPOJET:REFLevels:REF<x>``).
 
         Usage:
@@ -3679,8 +3681,8 @@ class DpojetPlotItemYunits(SCPICmdRead):
     """The ``DPOJET:PLOT<x>:YUnits`` command.
 
     Description:
-        - This query-only command returns Y units of the plot as a string.Plot units depends on the
-          measurement type.Click here to see the possible
+        - This query-only command returns Y units of the plot as a string. Note: Plot units depends
+          on the measurement type.Click here to see the possible
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:YUnits?`` query.
@@ -3698,8 +3700,8 @@ class DpojetPlotItemXunits(SCPICmdRead):
     """The ``DPOJET:PLOT<x>:XUnits`` command.
 
     Description:
-        - This query-only command returns X units of the plot as a string.Plot units depends on the
-          measurement type.Click here to see the possible
+        - This query-only command returns X units of the plot as a string. Note: Plot units depends
+          on the measurement type.Click here to see the possible
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:XUnits?`` query.
@@ -4060,7 +4062,8 @@ class DpojetPlotItemTransferNumerator(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:TRANSfer:NUMerator`` command.
 
     Description:
-        - This command sets or queries the transfer plot numerator.Undefined for nontransfer plots.
+        - This command sets or queries the transfer plot numerator. Note: Undefined for nontransfer
+          plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:TRANSfer:NUMerator?`` query.
@@ -4168,8 +4171,8 @@ class DpojetPlotItemTransferDenominator(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:TRANSfer:DENominator`` command.
 
     Description:
-        - This command sets or queries the transfer plot denominator.Undefined for non-transfer
-          plots.
+        - This command sets or queries the transfer plot denominator. Note: Undefined for
+          non-transfer plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:TRANSfer:DENominator?``
@@ -4220,8 +4223,8 @@ class DpojetPlotItemTransfer(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:TRANSfer:DENominator`` command.
 
         Description:
-            - This command sets or queries the transfer plot denominator.Undefined for non-transfer
-              plots.
+            - This command sets or queries the transfer plot denominator. Note: Undefined for
+              non-transfer plots.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:TRANSfer:DENominator?``
@@ -4283,8 +4286,8 @@ class DpojetPlotItemTransfer(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:TRANSfer:NUMerator`` command.
 
         Description:
-            - This command sets or queries the transfer plot numerator.Undefined for nontransfer
-              plots.
+            - This command sets or queries the transfer plot numerator. Note: Undefined for
+              nontransfer plots.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:TRANSfer:NUMerator?``
@@ -4361,7 +4364,7 @@ class DpojetPlotItemSpectrumVerticalScale(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the vertical scale setting for applicable plots, either
-          Linear or Log.Undefined for nonspectrum plots.
+          Linear or Log. Note: Undefined for nonspectrum plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:SPECtrum:VERTical:SCALE?``
@@ -4402,7 +4405,7 @@ class DpojetPlotItemSpectrumVertical(SCPICmdRead):
 
         Description:
             - This command sets or queries the vertical scale setting for applicable plots, either
-              Linear or Log.Undefined for nonspectrum plots.
+              Linear or Log. Note: Undefined for nonspectrum plots.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -4448,7 +4451,7 @@ class DpojetPlotItemSpectrumHorizontalScale(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the horizontal scale setting for applicable plots, either
-          Linear or Log.Undefined for nonspectrum plots.
+          Linear or Log. Note: Undefined for nonspectrum plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:SPECtrum:HORizontal:SCALE?``
@@ -4489,7 +4492,7 @@ class DpojetPlotItemSpectrumHorizontal(SCPICmdRead):
 
         Description:
             - This command sets or queries the horizontal scale setting for applicable plots, either
-              Linear or Log.Undefined for nonspectrum plots.
+              Linear or Log. Note: Undefined for nonspectrum plots.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -4676,7 +4679,8 @@ class DpojetPlotItemPhasenoiseBaseline(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:PHASEnoise:BASEline`` command.
 
     Description:
-        - This command sets or queries the phase noise baseline.Undefined for nonphase-noise plots.
+        - This command sets or queries the phase noise baseline. Note: Undefined for nonphase-noise
+          plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:PHASEnoise:BASEline?`` query.
@@ -4718,8 +4722,8 @@ class DpojetPlotItemPhasenoise(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:PHASEnoise:BASEline`` command.
 
         Description:
-            - This command sets or queries the phase noise baseline.Undefined for nonphase-noise
-              plots.
+            - This command sets or queries the phase noise baseline. Note: Undefined for
+              nonphase-noise plots.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:PHASEnoise:BASEline?``
@@ -5120,7 +5124,7 @@ class DpojetPlotItemHistogramVerticalScale(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the vertical scale setting for applicable plots, either
-          Linear or Log.Undefined for nonhistogram plots.
+          Linear or Log. Note: Undefined for nonhistogram plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:HISTOgram:VERTical:SCALE?``
@@ -5161,7 +5165,7 @@ class DpojetPlotItemHistogramVertical(SCPICmdRead):
 
         Description:
             - This command sets or queries the vertical scale setting for applicable plots, either
-              Linear or Log.Undefined for nonhistogram plots.
+              Linear or Log. Note: Undefined for nonhistogram plots.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -5185,8 +5189,8 @@ class DpojetPlotItemHistogramNumbins(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:HISTOgram:NUMBins`` command.
 
     Description:
-        - This command sets or queries the current histogram resolution.Undefined for nonhistogram
-          plots.
+        - This command sets or queries the current histogram resolution. Note: Undefined for
+          nonhistogram plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:HISTOgram:NUMBins?`` query.
@@ -5207,7 +5211,7 @@ class DpojetPlotItemHistogramHorizontalSpan(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:HISTOgram:HORizontal:SPAN`` command.
 
     Description:
-        - This command sets or queries the histogram span.Undefined for nonhistogram plots.
+        - This command sets or queries the histogram span. Note: Undefined for nonhistogram plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:HISTOgram:HORizontal:SPAN?``
@@ -5230,7 +5234,7 @@ class DpojetPlotItemHistogramHorizontalCenter(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:HISTOgram:HORizontal:CENter`` command.
 
     Description:
-        - This command sets or queries the histogram center.Undefined for nonhistogram plots.
+        - This command sets or queries the histogram center. Note: Undefined for nonhistogram plots.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -5253,8 +5257,8 @@ class DpojetPlotItemHistogramHorizontalAutoscale(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:HISTOgram:HORizontal:AUTOscale`` command.
 
     Description:
-        - This command sets or queries the horizontal auto scale settings.Undefined for nonhistogram
-          plots.
+        - This command sets or queries the horizontal auto scale settings. Note: Undefined for
+          nonhistogram plots.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -5301,7 +5305,7 @@ class DpojetPlotItemHistogramHorizontal(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:HISTOgram:HORizontal:AUTOscale`` command.
 
         Description:
-            - This command sets or queries the horizontal auto scale settings.Undefined for
+            - This command sets or queries the horizontal auto scale settings. Note: Undefined for
               nonhistogram plots.
 
         Usage:
@@ -5326,7 +5330,8 @@ class DpojetPlotItemHistogramHorizontal(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:HISTOgram:HORizontal:CENter`` command.
 
         Description:
-            - This command sets or queries the histogram center.Undefined for nonhistogram plots.
+            - This command sets or queries the histogram center. Note: Undefined for nonhistogram
+              plots.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -5350,7 +5355,8 @@ class DpojetPlotItemHistogramHorizontal(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:HISTOgram:HORizontal:SPAN`` command.
 
         Description:
-            - This command sets or queries the histogram span.Undefined for nonhistogram plots.
+            - This command sets or queries the histogram span. Note: Undefined for nonhistogram
+              plots.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -5374,8 +5380,8 @@ class DpojetPlotItemHistogramAutoset(SCPICmdWrite):
     """The ``DPOJET:PLOT<x>:HISTOgram:AUTOset`` command.
 
     Description:
-        - This command runs a histogram autoset for the specified slot.Undefined for nonhistogram
-          plots.
+        - This command runs a histogram autoset for the specified slot. Note: Undefined for
+          nonhistogram plots.
 
     Usage:
         - Using the ``.write(value)`` method will send the
@@ -5417,7 +5423,7 @@ class DpojetPlotItemHistogram(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:HISTOgram:AUTOset`` command.
 
         Description:
-            - This command runs a histogram autoset for the specified slot.Undefined for
+            - This command runs a histogram autoset for the specified slot. Note: Undefined for
               nonhistogram plots.
 
         Usage:
@@ -5454,7 +5460,7 @@ class DpojetPlotItemHistogram(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:HISTOgram:NUMBins`` command.
 
         Description:
-            - This command sets or queries the current histogram resolution.Undefined for
+            - This command sets or queries the current histogram resolution. Note: Undefined for
               nonhistogram plots.
 
         Usage:
@@ -5652,8 +5658,8 @@ class DpojetPlotItemEyeSuperimpose(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:EYE:SUPERImpose`` command.
 
     Description:
-        - This command sets or queries whether superimposed eyes are generated in eye
-          diagrams.Undefined for noneye plots.
+        - This command sets or queries whether superimposed eyes are generated in eye diagrams.
+          Note: Undefined for noneye plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:EYE:SUPERImpose?`` query.
@@ -5674,7 +5680,8 @@ class DpojetPlotItemEyeState(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:EYE:STATE`` command.
 
     Description:
-        - This command sets or queries the eye state, either on or off.Undefined for noneye plots.
+        - This command sets or queries the eye state, either on or off. Note: Undefined for noneye
+          plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:EYE:STATE?`` query.
@@ -5695,7 +5702,7 @@ class DpojetPlotItemEyeMaskfile(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:EYE:MASKfile`` command.
 
     Description:
-        - This command sets or queries the mask file.Undefined for noneye plots.
+        - This command sets or queries the mask file. Note: Undefined for noneye plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:EYE:MASKfile?`` query.
@@ -5808,7 +5815,8 @@ class DpojetPlotItemEyeHorizontalResolution(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:EYE:HORizontal:RESolution`` command.
 
     Description:
-        - This command sets or queries the Horizontal Eye resolution.Undefined for noneye plots.
+        - This command sets or queries the Horizontal Eye resolution. Note: Undefined for noneye
+          plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:EYE:HORizontal:RESolution?``
@@ -5831,7 +5839,8 @@ class DpojetPlotItemEyeHorizontalAutoscale(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:EYE:HORizontal:AUTOscale`` command.
 
     Description:
-        - This command sets or queries the horizontal auto scale setting.Undefined for noneye plots.
+        - This command sets or queries the horizontal auto scale setting. Note: Undefined for noneye
+          plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:EYE:HORizontal:AUTOscale?``
@@ -5881,8 +5890,8 @@ class DpojetPlotItemEyeHorizontal(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:EYE:HORizontal:AUTOscale`` command.
 
         Description:
-            - This command sets or queries the horizontal auto scale setting.Undefined for noneye
-              plots.
+            - This command sets or queries the horizontal auto scale setting. Note: Undefined for
+              noneye plots.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -5906,7 +5915,8 @@ class DpojetPlotItemEyeHorizontal(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:EYE:HORizontal:RESolution`` command.
 
         Description:
-            - This command sets or queries the Horizontal Eye resolution.Undefined for noneye plots.
+            - This command sets or queries the Horizontal Eye resolution. Note: Undefined for noneye
+              plots.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -6022,7 +6032,8 @@ class DpojetPlotItemEyeAlignment(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:EYE:ALIGNment`` command.
 
     Description:
-        - This command sets or queries eye alignment state for eye plots.Undefined for noneye plots.
+        - This command sets or queries eye alignment state for eye plots. Note: Undefined for noneye
+          plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:EYE:ALIGNment?`` query.
@@ -6091,8 +6102,8 @@ class DpojetPlotItemEye(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:EYE:ALIGNment`` command.
 
         Description:
-            - This command sets or queries eye alignment state for eye plots.Undefined for noneye
-              plots.
+            - This command sets or queries eye alignment state for eye plots. Note: Undefined for
+              noneye plots.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:EYE:ALIGNment?`` query.
@@ -6226,7 +6237,7 @@ class DpojetPlotItemEye(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:EYE:MASKfile`` command.
 
         Description:
-            - This command sets or queries the mask file.Undefined for noneye plots.
+            - This command sets or queries the mask file. Note: Undefined for noneye plots.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:EYE:MASKfile?`` query.
@@ -6248,8 +6259,8 @@ class DpojetPlotItemEye(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:EYE:STATE`` command.
 
         Description:
-            - This command sets or queries the eye state, either on or off.Undefined for noneye
-              plots.
+            - This command sets or queries the eye state, either on or off. Note: Undefined for
+              noneye plots.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:EYE:STATE?`` query.
@@ -6271,8 +6282,8 @@ class DpojetPlotItemEye(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:EYE:SUPERImpose`` command.
 
         Description:
-            - This command sets or queries whether superimposed eyes are generated in eye
-              diagrams.Undefined for noneye plots.
+            - This command sets or queries whether superimposed eyes are generated in eye diagrams.
+              Note: Undefined for noneye plots.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:EYE:SUPERImpose?`` query.
@@ -6587,8 +6598,8 @@ class DpojetPlotItemDataYdata(SCPICmdRead):
           bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F denote
           the number of y bytes between 10 and 15 digits. <yyy> is the number of bytes to transfer.
           <data> is curve data. <newline> is a single-byte new line character at the end of the
-          data.This command does not support plots such as the Eye Diagram Height plot, Waveform
-          Plot and Eye diagram with mask hits.
+          data. Note: This command does not support plots such as the Eye Diagram Height plot,
+          Waveform Plot and Eye diagram with mask hits.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:YDATa?`` query.
@@ -7060,8 +7071,8 @@ class DpojetPlotItemDataXdata(SCPICmdRead):
           bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F denote
           the number of y bytes between 10 and 15 digits. <yyy> is the number of bytes to transfer.
           <data> is curve data. <newline> is a single-byte new line character at the end of the
-          data.This command does not support plots such as the Eye Diagram Height plot, Waveform
-          Plot and Eye diagram with mask hits.
+          data. Note: This command does not support plots such as the Eye Diagram Height plot,
+          Waveform Plot and Eye diagram with mask hits.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa?`` query.
@@ -7344,8 +7355,8 @@ class DpojetPlotItemData(SCPICmdRead):
               number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The
               letters A-F denote the number of y bytes between 10 and 15 digits. <yyy> is the number
               of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
-              character at the end of the data.This command does not support plots such as the Eye
-              Diagram Height plot, Waveform Plot and Eye diagram with mask hits.
+              character at the end of the data. Note: This command does not support plots such as
+              the Eye Diagram Height plot, Waveform Plot and Eye diagram with mask hits.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:XDATa?`` query.
@@ -7380,8 +7391,8 @@ class DpojetPlotItemData(SCPICmdRead):
               number of <y> bytes. For example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The
               letters A-F denote the number of y bytes between 10 and 15 digits. <yyy> is the number
               of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
-              character at the end of the data.This command does not support plots such as the Eye
-              Diagram Height plot, Waveform Plot and Eye diagram with mask hits.
+              character at the end of the data. Note: This command does not support plots such as
+              the Eye Diagram Height plot, Waveform Plot and Eye diagram with mask hits.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:DATA:YDATa?`` query.
@@ -8263,7 +8274,7 @@ class DpojetPlotItemCompositejitterhistVerticalScale(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the vertical scale setting for applicable plots, either
-          Linear or Log.Undefined for non-composite jitter histogram plots.
+          Linear or Log. Note: Undefined for non-composite jitter histogram plots.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -8308,7 +8319,7 @@ class DpojetPlotItemCompositejitterhistVertical(SCPICmdRead):
 
         Description:
             - This command sets or queries the vertical scale setting for applicable plots, either
-              Linear or Log.Undefined for non-composite jitter histogram plots.
+              Linear or Log. Note: Undefined for non-composite jitter histogram plots.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -8332,8 +8343,8 @@ class DpojetPlotItemCompositejitterhistTj(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:COMPOSITEJitterhist:TJ`` command.
 
     Description:
-        - This command sets or queries the TJ Jitter component settings.Undefined for non-composite
-          jitter histogram plots.
+        - This command sets or queries the TJ Jitter component settings. Note: Undefined for
+          non-composite jitter histogram plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:COMPOSITEJitterhist:TJ?``
@@ -8356,7 +8367,7 @@ class DpojetPlotItemCompositejitterhistRjnpj(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:COMPOSITEJitterhist:RJNPJ`` command.
 
     Description:
-        - This command sets or queries the RJ+NPJ Jitter component settings.Undefined for
+        - This command sets or queries the RJ+NPJ Jitter component settings. Note: Undefined for
           non-composite jitter histogram plots.
 
     Usage:
@@ -8380,8 +8391,8 @@ class DpojetPlotItemCompositejitterhistPj(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:COMPOSITEJitterhist:PJ`` command.
 
     Description:
-        - This command sets or queries the PJ Jitter component settings.Undefined for non-composite
-          jitter histogram plots.
+        - This command sets or queries the PJ Jitter component settings. Note: Undefined for
+          non-composite jitter histogram plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:COMPOSITEJitterhist:PJ?``
@@ -8404,8 +8415,8 @@ class DpojetPlotItemCompositejitterhistNumbins(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:COMPOSITEJitterhist:NUMBins`` command.
 
     Description:
-        - This command sets or queries the current composite jitter histogram resolution.Undefined
-          for non-composite jitter histogram plots.
+        - This command sets or queries the current composite jitter histogram resolution. Note:
+          Undefined for non-composite jitter histogram plots.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -8428,7 +8439,7 @@ class DpojetPlotItemCompositejitterhistDdjdcd(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:COMPOSITEJitterhist:DDJDCD`` command.
 
     Description:
-        - This command sets or queries the DDJ+DCD Jitter component settings.Undefined for
+        - This command sets or queries the DDJ+DCD Jitter component settings. Note: Undefined for
           non-composite jitter histogram plots.
 
     Usage:
@@ -8483,8 +8494,8 @@ class DpojetPlotItemCompositejitterhist(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:COMPOSITEJitterhist:DDJDCD`` command.
 
         Description:
-            - This command sets or queries the DDJ+DCD Jitter component settings.Undefined for
-              non-composite jitter histogram plots.
+            - This command sets or queries the DDJ+DCD Jitter component settings. Note: Undefined
+              for non-composite jitter histogram plots.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -8508,8 +8519,8 @@ class DpojetPlotItemCompositejitterhist(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:COMPOSITEJitterhist:NUMBins`` command.
 
         Description:
-            - This command sets or queries the current composite jitter histogram
-              resolution.Undefined for non-composite jitter histogram plots.
+            - This command sets or queries the current composite jitter histogram resolution. Note:
+              Undefined for non-composite jitter histogram plots.
 
         Usage:
             - Using the ``.query()`` method will send the
@@ -8533,7 +8544,7 @@ class DpojetPlotItemCompositejitterhist(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:COMPOSITEJitterhist:PJ`` command.
 
         Description:
-            - This command sets or queries the PJ Jitter component settings.Undefined for
+            - This command sets or queries the PJ Jitter component settings. Note: Undefined for
               non-composite jitter histogram plots.
 
         Usage:
@@ -8558,7 +8569,7 @@ class DpojetPlotItemCompositejitterhist(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:COMPOSITEJitterhist:RJNPJ`` command.
 
         Description:
-            - This command sets or queries the RJ+NPJ Jitter component settings.Undefined for
+            - This command sets or queries the RJ+NPJ Jitter component settings. Note: Undefined for
               non-composite jitter histogram plots.
 
         Usage:
@@ -8583,7 +8594,7 @@ class DpojetPlotItemCompositejitterhist(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:COMPOSITEJitterhist:TJ`` command.
 
         Description:
-            - This command sets or queries the TJ Jitter component settings.Undefined for
+            - This command sets or queries the TJ Jitter component settings. Note: Undefined for
               non-composite jitter histogram plots.
 
         Usage:
@@ -9562,7 +9573,7 @@ class DpojetPlotItemBathtubVerticalScale(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the vertical scale setting for applicable plots, either
-          Linear or Log.Undefined for nonbathtub plots.
+          Linear or Log. Note: Undefined for nonbathtub plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:BATHtub:VERTical:SCALE?``
@@ -9603,7 +9614,7 @@ class DpojetPlotItemBathtubVertical(SCPICmdRead):
 
         Description:
             - This command sets or queries the vertical scale setting for applicable plots, either
-              Linear or Log.Undefined for nonbathtub plots.
+              Linear or Log. Note: Undefined for nonbathtub plots.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:BATHtub:VERTical:SCALE?``
@@ -9627,7 +9638,7 @@ class DpojetPlotItemBathtubBer(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:PLOT<x>:BATHtub:BER`` command.
 
     Description:
-        - This command sets or queries the bathtub BER value.Undefined for nonbathtub plots.
+        - This command sets or queries the bathtub BER value. Note: Undefined for nonbathtub plots.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:BATHtub:BER?`` query.
@@ -9669,7 +9680,8 @@ class DpojetPlotItemBathtub(SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:BATHtub:BER`` command.
 
         Description:
-            - This command sets or queries the bathtub BER value.Undefined for nonbathtub plots.
+            - This command sets or queries the bathtub BER value. Note: Undefined for nonbathtub
+              plots.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:BATHtub:BER?`` query.
@@ -10243,8 +10255,8 @@ class DpojetPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:XUnits`` command.
 
         Description:
-            - This query-only command returns X units of the plot as a string.Plot units depends on
-              the measurement type.Click here to see the possible
+            - This query-only command returns X units of the plot as a string. Note: Plot units
+              depends on the measurement type.Click here to see the possible
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:XUnits?`` query.
@@ -10263,8 +10275,8 @@ class DpojetPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         """Return the ``DPOJET:PLOT<x>:YUnits`` command.
 
         Description:
-            - This query-only command returns Y units of the plot as a string.Plot units depends on
-              the measurement type.Click here to see the possible
+            - This query-only command returns Y units of the plot as a string. Note: Plot units
+              depends on the measurement type.Click here to see the possible
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:PLOT<x>:YUnits?`` query.
@@ -10341,7 +10353,7 @@ class DpojetNoiseenabled(SCPICmdWrite):
     """The ``DPOJET:NOISEENABLED`` command.
 
     Description:
-        - This set-only command turns on or off the Noise measurements.Configure
+        - This set-only command turns on or off the Noise measurements. Note: Configure
 
     Usage:
         - Using the ``.write(value)`` method will send the ``DPOJET:NOISEENABLED value`` command.
@@ -10419,7 +10431,7 @@ class DpojetMeasItemTimedata(SCPICmdRead):
           of <y> bytes. For Example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The letters A-F
           denote the number of y bytes between 10 and 15 digits. <yyy> is the number of bytes to
           transfer. <data> is curve data. <newline> is a single-byte new line character at the end
-          of the data.Time data is not available for all measurements. For Example: Scalar
+          of the data. Note: Time data is not available for all measurements. For Example: Scalar
           measurements.
 
     Usage:
@@ -16551,8 +16563,8 @@ class DpojetMeasItemDisplayname(SCPICmdRead):
     """The ``DPOJET:MEAS<x>:DISPLAYNAME`` command.
 
     Description:
-        - This command queries the UI name of the measurement x in the measurement table.If the
-          measurement UI name has special character δ, then it is displayed as d.
+        - This command queries the UI name of the measurement x in the measurement table. Note: If
+          the measurement UI name has special character δ, then it is displayed as d.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:MEAS<x>:DISPLAYNAME?`` query.
@@ -17077,8 +17089,9 @@ class DpojetMeasItemData(SCPICmdRead):
         - This query-only command returns the measurement data. This is similar to the curve query,
           where the output is in the format #<x><yyy><data><newline>, where <x> is the number of <y>
           bytes. For Example: If <yyy>=500, <x>=3 <yyy> is the number of bytes to transfer. <data>
-          is curve data. <newline> is a single-byte new line character at the end of the data.<x> is
-          hexadecimal format. The letters A-F denote the number of y bytes between 10 and 15 digits.
+          is curve data. <newline> is a single-byte new line character at the end of the data. Note:
+          <x> is hexadecimal format. The letters A-F denote the number of y bytes between 10 and 15
+          digits.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:MEAS<x>:DATA?`` query.
@@ -19155,7 +19168,7 @@ class DpojetMeasItemBerTargetber(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:MEAS<x>:BER:TARGETBER`` command.
 
     Description:
-        - This command sets or queries the BER value.This command is different from
+        - This command sets or queries the BER value. Note: This command is different from
           ``DPOJET:MEAS:RJDJ:BER`` whose configuration parameter exist in RJDJ tab.This command is
           different from ``DPOJET:MEAS:RNDN:BER`` whose configuration parameter exist in RNDN tab.
 
@@ -19195,7 +19208,7 @@ class DpojetMeasItemBer(SCPICmdRead):
         """Return the ``DPOJET:MEAS<x>:BER:TARGETBER`` command.
 
         Description:
-            - This command sets or queries the BER value.This command is different from
+            - This command sets or queries the BER value. Note: This command is different from
               ``DPOJET:MEAS:RJDJ:BER`` whose configuration parameter exist in RJDJ tab.This command
               is different from ``DPOJET:MEAS:RNDN:BER`` whose configuration parameter exist in RNDN
               tab.
@@ -19535,8 +19548,8 @@ class DpojetMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               query, where the output is in the format #<x><yyy><data><newline>, where <x> is the
               number of <y> bytes. For Example: If <yyy>=500, <x>=3 <yyy> is the number of bytes to
               transfer. <data> is curve data. <newline> is a single-byte new line character at the
-              end of the data.<x> is hexadecimal format. The letters A-F denote the number of y
-              bytes between 10 and 15 digits.
+              end of the data. Note: <x> is hexadecimal format. The letters A-F denote the number of
+              y bytes between 10 and 15 digits.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:MEAS<x>:DATA?`` query.
@@ -19578,8 +19591,8 @@ class DpojetMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         """Return the ``DPOJET:MEAS<x>:DISPLAYNAME`` command.
 
         Description:
-            - This command queries the UI name of the measurement x in the measurement table.If the
-              measurement UI name has special character δ, then it is displayed as d.
+            - This command queries the UI name of the measurement x in the measurement table. Note:
+              If the measurement UI name has special character δ, then it is displayed as d.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:MEAS<x>:DISPLAYNAME?`` query.
@@ -20154,8 +20167,8 @@ class DpojetMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               number of <y> bytes. For Example: If <yyy>=500, <x>=3 <x> is hexadecimal format. The
               letters A-F denote the number of y bytes between 10 and 15 digits. <yyy> is the number
               of bytes to transfer. <data> is curve data. <newline> is a single-byte new line
-              character at the end of the data.Time data is not available for all measurements. For
-              Example: Scalar measurements.
+              character at the end of the data. Note: Time data is not available for all
+              measurements. For Example: Scalar measurements.
 
         Usage:
             - Using the ``.query()`` method will send the ``DPOJET:MEAS<x>:TIMEDATa?`` query.
@@ -20237,11 +20250,11 @@ class DpojetLoggingWorstcaseFolder(SCPICmdWrite, SCPICmdRead):
     """The ``DPOJET:LOGging:WORSTcase:FOLDer`` command.
 
     Description:
-        - This command sets or queries the current folder used for worst case logging.Waveform
-          filenames generated while worst case logging is on will follow the syntax of 'Measurement
-          Name'-'Source'_Min1.wfm and 'Measurement Name'-'Source'_Max1.wfm, For example:
-          Period1-``Ch1_Max1``.wfm, Period1-``Ch1_Min1``.wfm, Rise Time1-``Ch1_Max1``.wfm, Rise
-          Time1-``Ch1_Min1``.wfm.
+        - This command sets or queries the current folder used for worst case logging. Note:
+          Waveform filenames generated while worst case logging is on will follow the syntax of
+          'Measurement Name'-'Source'_Min1.wfm and 'Measurement Name'-'Source'_Max1.wfm, For
+          example: Period1-``Ch1_Max1``.wfm, Period1-``Ch1_Min1``.wfm, Rise Time1-``Ch1_Max1``.wfm,
+          Rise Time1-``Ch1_Min1``.wfm.
 
     Usage:
         - Using the ``.query()`` method will send the ``DPOJET:LOGging:WORSTcase:FOLDer?`` query.
@@ -20281,8 +20294,8 @@ class DpojetLoggingWorstcase(SCPICmdRead):
         """Return the ``DPOJET:LOGging:WORSTcase:FOLDer`` command.
 
         Description:
-            - This command sets or queries the current folder used for worst case logging.Waveform
-              filenames generated while worst case logging is on will follow the syntax of
+            - This command sets or queries the current folder used for worst case logging. Note:
+              Waveform filenames generated while worst case logging is on will follow the syntax of
               'Measurement Name'-'Source'_Min1.wfm and 'Measurement Name'-'Source'_Max1.wfm, For
               example: Period1-``Ch1_Max1``.wfm, Period1-``Ch1_Min1``.wfm, Rise
               Time1-``Ch1_Max1``.wfm, Rise Time1-``Ch1_Min1``.wfm.
@@ -20971,8 +20984,8 @@ class DpojetExportraw(SCPICmdWrite):
     Description:
         - This set-only command saves the raw Eye diagram 2d histogram data to the specified file
           path. The format is determined through the filename extension. Supported extension
-          include.csvEnsure that the Plot window is open while sending this PI command; else a file
-          will be not generated.
+          include.csv Note: Ensure that the Plot window is open while sending this PI command; else
+          a file will be not generated.
 
     Usage:
         - Using the ``.write(value)`` method will send the ``DPOJET:EXPORTRaw value`` command.
@@ -21995,7 +22008,7 @@ class Dpojet(SCPICmdRead):
         Description:
             - This set-only command saves the raw Eye diagram 2d histogram data to the specified
               file path. The format is determined through the filename extension. Supported
-              extension include.csvEnsure that the Plot window is open while sending this PI
+              extension include.csv Note: Ensure that the Plot window is open while sending this PI
               command; else a file will be not generated.
 
         Usage:
@@ -22334,7 +22347,7 @@ class Dpojet(SCPICmdRead):
         """Return the ``DPOJET:NOISEENABLED`` command.
 
         Description:
-            - This set-only command turns on or off the Noise measurements.Configure
+            - This set-only command turns on or off the Noise measurements. Note: Configure
 
         Usage:
             - Using the ``.write(value)`` method will send the ``DPOJET:NOISEENABLED value``
@@ -22517,7 +22530,7 @@ class Dpojet(SCPICmdRead):
         Description:
             - These are set-only commands. EXECute executes a DPOJET report save operation for the
               currently defined report configuration. APPEnd appends new data to the selected
-              report.Ensure to close the PDF report before append.
+              report. Note: Ensure to close the PDF report before append.
 
         Usage:
             - Using the ``.write(value)`` method will send the ``DPOJET:REPORT value`` command.
