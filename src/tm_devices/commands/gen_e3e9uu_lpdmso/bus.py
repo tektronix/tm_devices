@@ -427,7 +427,7 @@ Commands and Queries:
     - BUS:B<x>:NRZ:BITRate?
     - BUS:B<x>:NRZ:POLarity {INVerted|NORmal}
     - BUS:B<x>:NRZ:POLarity?
-    - BUS:B<x>:NRZ:SOUrce {CH<x>|MATH<x>|REF<x>]
+    - BUS:B<x>:NRZ:SOUrce {CH<x>|MATH<x>|REF<x>}
     - BUS:B<x>:NRZ:SOUrce?
     - BUS:B<x>:NRZ:SPMI:VERsion v<x>
     - BUS:B<x>:NRZ:SPMI:VERsion?
@@ -8269,7 +8269,7 @@ class BusBItemNrzSource(SCPICmdWrite, SCPICmdRead):
 
     SCPI Syntax:
         ```
-        - BUS:B<x>:NRZ:SOUrce {CH<x>|MATH<x>|REF<x>]
+        - BUS:B<x>:NRZ:SOUrce {CH<x>|MATH<x>|REF<x>}
         - BUS:B<x>:NRZ:SOUrce?
         ```
 
@@ -8491,7 +8491,7 @@ class BusBItemNrz(SCPICmdRead):
 
         SCPI Syntax:
             ```
-            - BUS:B<x>:NRZ:SOUrce {CH<x>|MATH<x>|REF<x>]
+            - BUS:B<x>:NRZ:SOUrce {CH<x>|MATH<x>|REF<x>}
             - BUS:B<x>:NRZ:SOUrce?
             ```
 

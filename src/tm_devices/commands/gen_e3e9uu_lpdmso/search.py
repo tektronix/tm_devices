@@ -1264,6 +1264,8 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LEVel:REF<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x> {INCLude|DONTInclude}
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>?
+    - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x> {INCLude|DONTInclude}
+    - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:MATH<x> {INCLude|DONTInclude}
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:MATH<x>?
     - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:REF<x> {INCLude|DONTInclude}
@@ -1285,6 +1287,8 @@ Commands and Queries:
     - SEARCH:SEARCH<x>:TRIGger:A:TIMEOut:TIMe?
     - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:DELTATime <NR3>
     - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:DELTATime?
+    - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification {ON|OFF}
+    - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification?
     - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:POLarity {POSitive|NEGative|EITher}
     - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:POLarity?
     - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:SOUrce {CH<x>|MATH<x>|REF<x>}
@@ -2248,6 +2252,34 @@ class SearchSearchItemTriggerATransitionPolarity(SCPICmdWrite, SCPICmdRead):
     """
 
 
+class SearchSearchItemTriggerATransitionLogicqualification(SCPICmdWrite, SCPICmdRead):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification`` command.
+
+    Description:
+        - This command specifies whether or not to use logic qualification for a transition search.
+          The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification {ON|OFF}
+        - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification?
+        ```
+
+    Info:
+        - ``ON`` specifies to use logic qualification for a transition search.
+        - ``OFF`` specifies not to use logic qualification for a transition search.
+    """
+
+
 class SearchSearchItemTriggerATransitionDeltatime(SCPICmdWrite, SCPICmdRead):
     """The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:DELTATime`` command.
 
@@ -2287,6 +2319,8 @@ class SearchSearchItemTriggerATransition(SCPICmdRead):
 
     Properties:
         - ``.deltatime``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:DELTATime`` command.
+        - ``.logicqualification``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification``
+          command.
         - ``.polarity``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:POLarity`` command.
         - ``.source``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:SOUrce`` command.
         - ``.threshold``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:THReshold`` command tree.
@@ -2297,6 +2331,9 @@ class SearchSearchItemTriggerATransition(SCPICmdRead):
         super().__init__(device, cmd_syntax)
         self._deltatime = SearchSearchItemTriggerATransitionDeltatime(
             device, f"{self._cmd_syntax}:DELTATime"
+        )
+        self._logicqualification = SearchSearchItemTriggerATransitionLogicqualification(
+            device, f"{self._cmd_syntax}:LOGICQUALification"
         )
         self._polarity = SearchSearchItemTriggerATransitionPolarity(
             device, f"{self._cmd_syntax}:POLarity"
@@ -2336,6 +2373,35 @@ class SearchSearchItemTriggerATransition(SCPICmdRead):
             - ``<NR3>`` specifies the transition time in seconds.
         """
         return self._deltatime
+
+    @property
+    def logicqualification(self) -> SearchSearchItemTriggerATransitionLogicqualification:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification`` command.
+
+        Description:
+            - This command specifies whether or not to use logic qualification for a transition
+              search. The search number is specified by x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification {ON|OFF}
+            - SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification?
+            ```
+
+        Info:
+            - ``ON`` specifies to use logic qualification for a transition search.
+            - ``OFF`` specifies not to use logic qualification for a transition search.
+        """
+        return self._logicqualification
 
     @property
     def polarity(self) -> SearchSearchItemTriggerATransitionPolarity:
@@ -2927,6 +2993,39 @@ class SearchSearchItemTriggerASetholdLogicpatternMathItem(
     """
 
 
+class SearchSearchItemTriggerASetholdLogicpatternChannelDigitalBit(
+    ValidatedDigitalBit, SCPICmdWrite, SCPICmdRead
+):
+    """The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>`` command.
+
+    Description:
+        - This command sets or queries the conditions used for generating an A logic pattern, with
+          respect to the defined input pattern, and identifies the time that the selected pattern
+          may be true and still generate the trigger. The search number is specified by x.
+
+    Usage:
+        - Using the ``.query()`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>?`` query.
+        - Using the ``.verify(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>?`` query and raise an
+          AssertionError if the returned value does not match ``value``.
+        - Using the ``.write(value)`` method will send the
+          ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x> value`` command.
+
+    SCPI Syntax:
+        ```
+        - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x> {INCLude|DONTInclude}
+        - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>?
+        ```
+
+    Info:
+        - ``INCLude`` specifies including the specified digital channel SETHOLD inputs in the
+          specified search.
+        - ``DONTInclude`` specifies not including the specified digital channel SETHOLD inputs in
+          the specified search.
+    """
+
+
 class SearchSearchItemTriggerASetholdLogicpatternChannel(
     ValidatedChannel, SCPICmdWrite, SCPICmdRead
 ):
@@ -2957,7 +3056,53 @@ class SearchSearchItemTriggerASetholdLogicpatternChannel(
           search.
         - ``DONTInclude`` specifies not including the specified channel SETHOLD inputs in the
           specified search.
+
+    Properties:
+        - ``.d``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>`` command.
     """
+
+    def __init__(self, device: Optional["PIControl"], cmd_syntax: str) -> None:
+        super().__init__(device, cmd_syntax)
+        self._d: Dict[int, SearchSearchItemTriggerASetholdLogicpatternChannelDigitalBit] = (
+            DefaultDictPassKeyToFactory(
+                lambda x: SearchSearchItemTriggerASetholdLogicpatternChannelDigitalBit(
+                    device, f"{self._cmd_syntax}_D{x}"
+                )
+            )
+        )
+
+    @property
+    def d(self) -> Dict[int, SearchSearchItemTriggerASetholdLogicpatternChannelDigitalBit]:
+        """Return the ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>`` command.
+
+        Description:
+            - This command sets or queries the conditions used for generating an A logic pattern,
+              with respect to the defined input pattern, and identifies the time that the selected
+              pattern may be true and still generate the trigger. The search number is specified by
+              x.
+
+        Usage:
+            - Using the ``.query()`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>?`` query.
+            - Using the ``.verify(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>?`` query and raise an
+              AssertionError if the returned value does not match ``value``.
+            - Using the ``.write(value)`` method will send the
+              ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x> value`` command.
+
+        SCPI Syntax:
+            ```
+            - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x> {INCLude|DONTInclude}
+            - SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>?
+            ```
+
+        Info:
+            - ``INCLude`` specifies including the specified digital channel SETHOLD inputs in the
+              specified search.
+            - ``DONTInclude`` specifies not including the specified digital channel SETHOLD inputs
+              in the specified search.
+        """
+        return self._d
 
 
 class SearchSearchItemTriggerASetholdLogicpattern(SCPICmdRead):
@@ -3030,6 +3175,9 @@ class SearchSearchItemTriggerASetholdLogicpattern(SCPICmdRead):
               search.
             - ``DONTInclude`` specifies not including the specified channel SETHOLD inputs in the
               specified search.
+
+        Sub-properties:
+            - ``.d``: The ``SEARCH:SEARCH<x>:TRIGger:A:SETHold:LOGICPattern:CH<x>_D<x>`` command.
         """
         return self._ch
 
@@ -58806,6 +58954,8 @@ class SearchSearchItemTriggerA(SCPICmdRead):
 
         Sub-properties:
             - ``.deltatime``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:DELTATime`` command.
+            - ``.logicqualification``: The
+              ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:LOGICQUALification`` command.
             - ``.polarity``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:POLarity`` command.
             - ``.source``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:SOUrce`` command.
             - ``.threshold``: The ``SEARCH:SEARCH<x>:TRIGger:A:TRANsition:THReshold`` command tree.
