@@ -2756,7 +2756,7 @@ class MSO6BCommands:
             - This command sets or queries the Response Header Enable State that causes the
               instrument to either include or omit headers on query responses. Whether the long or
               short form of header keywords and enumerations are returned is dependent upon the
-              state of ``:VERBose Note``:. This command does not affect IEEE Std 488.2-1987 Common
+              state of ``:VERBose``. Note: This command does not affect IEEE Std 488.2-1987 Common
               Commands (those starting with an asterisk); these commands never return headers.
 
         Usage:

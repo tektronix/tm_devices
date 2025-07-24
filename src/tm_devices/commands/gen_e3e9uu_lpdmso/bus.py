@@ -6111,7 +6111,7 @@ class BusBItemRs232cDelimiter(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``B<x>`` is the number of the bus.
-        - ``NULl`` specifies NULL (0x00 ) delimiting value for a packet.
+        - ``NULl`` specifies NULL (0x00) delimiting value for a packet.
         - ``CR`` specifies CR (0x0D) delimiting value for a packet.
         - ``LF`` specifies LF (0x0A) delimiting value for a packet.
         - ``XFF`` specifies XFF (0xFF) delimiting value for a packet.
@@ -6420,7 +6420,7 @@ class BusBItemRs232c(SCPICmdRead):
 
         Info:
             - ``B<x>`` is the number of the bus.
-            - ``NULl`` specifies NULL (0x00 ) delimiting value for a packet.
+            - ``NULl`` specifies NULL (0x00) delimiting value for a packet.
             - ``CR`` specifies CR (0x0D) delimiting value for a packet.
             - ``LF`` specifies LF (0x0A) delimiting value for a packet.
             - ``XFF`` specifies XFF (0xFF) delimiting value for a packet.

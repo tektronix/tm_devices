@@ -45,7 +45,7 @@ class SocketserverProtocol(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``TERMinal`` specifies terminal protocol for the socket server. When set to TERMinal , a
+        - ``TERMinal`` specifies terminal protocol for the socket server. When set to TERMinal, a
           session startup message is sent to the socket and a command prompt is provided.
         - ``NONe`` disables the terminal features, allowing the server to be used for raw socket
           transactions, such as with a VISA socket server. The default setting is NONe.
@@ -210,7 +210,7 @@ class Socketserver(SCPICmdRead):
             ```
 
         Info:
-            - ``TERMinal`` specifies terminal protocol for the socket server. When set to TERMinal ,
+            - ``TERMinal`` specifies terminal protocol for the socket server. When set to TERMinal,
               a session startup message is sent to the socket and a command prompt is provided.
             - ``NONe`` disables the terminal features, allowing the server to be used for raw socket
               transactions, such as with a VISA socket server. The default setting is NONe.

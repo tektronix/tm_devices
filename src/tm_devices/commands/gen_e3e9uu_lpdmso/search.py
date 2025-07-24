@@ -1651,9 +1651,8 @@ class SearchSearchItemTriggerAWindowCrossing(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the window trigger threshold crossing of the selected trigger
-          Source. The threshold crossing selection is only effective when
-          ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater or OUTSIDEGreater. The search number is
-          specified by x.
+          Source. The threshold crossing selection is only effective when ``:TRIGger:A:WINdow:WHEn``
+          is INSIDEGreater or OUTSIDEGreater. The search number is specified by x.
 
     Usage:
         - Using the ``.query()`` method will send the
@@ -1671,30 +1670,30 @@ class SearchSearchItemTriggerAWindowCrossing(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``UPPer`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers when
-          the signal remains between the upper and lower thresholds for longer than the time limit (
-          ``:TRIGger:A:WINdow:WIDTH`` ) and then exits through the upper threshold. If
-          ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument triggers when the signal
-          remains above the upper threshold for longer than the time limit (
-          ``:TRIGger:A:WINdow:WIDTH`` ) and then crosses downward through the upper threshold.
-        - ``LOWer`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers when
-          the signal remains between the upper and lower thresholds for longer than the time limit (
-          ``:TRIGger:A:WINdow:WIDTH`` ) and then exits through the lower threshold. If
-          ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument triggers when the signal
-          remains below the lower threshold for longer than the time limit (
-          ``:TRIGger:A:WINdow:WIDTH`` ) and then crosses upwards through the lower threshold.
-        - ``EITher`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers when
-          the signal remains between the upper and lower thresholds for longer than the time limit (
-          ``:TRIGger:A:WINdow:WIDTH`` ) and then exits through either the upper or lower threshold.
-          If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument triggers when the signal
+        - ``UPPer`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater, the instrument triggers when the
+          signal remains between the upper and lower thresholds for longer than the time limit
+          (``:TRIGger:A:WINdow:WIDTH``) and then exits through the upper threshold. If
+          ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater, the instrument triggers when the signal
+          remains above the upper threshold for longer than the time limit
+          (``:TRIGger:A:WINdow:WIDTH``) and then crosses downward through the upper threshold.
+        - ``LOWer`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater, the instrument triggers when the
+          signal remains between the upper and lower thresholds for longer than the time limit
+          (``:TRIGger:A:WINdow:WIDTH``) and then exits through the lower threshold. If
+          ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater, the instrument triggers when the signal
+          remains below the lower threshold for longer than the time limit
+          (``:TRIGger:A:WINdow:WIDTH``) and then crosses upwards through the lower threshold.
+        - ``EITher`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater, the instrument triggers when
+          the signal remains between the upper and lower thresholds for longer than the time limit
+          (``:TRIGger:A:WINdow:WIDTH``) and then exits through either the upper or lower threshold.
+          If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater, the instrument triggers when the signal
           remains either above the upper threshold or below the lower threshold for longer than the
-          time limit ( ``:TRIGger:A:WINdow:WIDTH`` ) and then crosses a threshold.
-        - ``NONe`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers when the
-          signal remains between the upper and lower thresholds for longer than the time limit (
-          ``:TRIGger:A:WINdow:WIDTH`` ) without crossing through either the upper or lower
-          threshold. If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument triggers when
-          the signal remains outside the upper and lower thresholds for longer than the time limit (
-          ``:TRIGger:A:WINdow:WIDTH`` ) without crossing through either the upper or lower
+          time limit (``:TRIGger:A:WINdow:WIDTH``) and then crosses a threshold.
+        - ``NONe`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater, the instrument triggers when the
+          signal remains between the upper and lower thresholds for longer than the time limit
+          (``:TRIGger:A:WINdow:WIDTH``) without crossing through either the upper or lower
+          threshold. If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater, the instrument triggers when
+          the signal remains outside the upper and lower thresholds for longer than the time limit
+          (``:TRIGger:A:WINdow:WIDTH``) without crossing through either the upper or lower
           threshold.
     """
 
@@ -1762,32 +1761,32 @@ class SearchSearchItemTriggerAWindow(SCPICmdRead):
             ```
 
         Info:
-            - ``UPPer`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers
-              when the signal remains between the upper and lower thresholds for longer than the
-              time limit ( ``:TRIGger:A:WINdow:WIDTH`` ) and then exits through the upper threshold.
-              If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument triggers when the
-              signal remains above the upper threshold for longer than the time limit (
-              ``:TRIGger:A:WINdow:WIDTH`` ) and then crosses downward through the upper threshold.
-            - ``LOWer`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers
-              when the signal remains between the upper and lower thresholds for longer than the
-              time limit ( ``:TRIGger:A:WINdow:WIDTH`` ) and then exits through the lower threshold.
-              If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument triggers when the
-              signal remains below the lower threshold for longer than the time limit (
-              ``:TRIGger:A:WINdow:WIDTH`` ) and then crosses upwards through the lower threshold.
-            - ``EITher`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers
-              when the signal remains between the upper and lower thresholds for longer than the
-              time limit ( ``:TRIGger:A:WINdow:WIDTH`` ) and then exits through either the upper or
-              lower threshold. If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument
-              triggers when the signal remains either above the upper threshold or below the lower
-              threshold for longer than the time limit ( ``:TRIGger:A:WINdow:WIDTH`` ) and then
-              crosses a threshold.
-            - ``NONe`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater , the instrument triggers when
+            - ``UPPer`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater, the instrument triggers when
               the signal remains between the upper and lower thresholds for longer than the time
-              limit ( ``:TRIGger:A:WINdow:WIDTH`` ) without crossing through either the upper or
-              lower threshold. If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater , the instrument
-              triggers when the signal remains outside the upper and lower thresholds for longer
-              than the time limit ( ``:TRIGger:A:WINdow:WIDTH`` ) without crossing through either
-              the upper or lower threshold.
+              limit (``:TRIGger:A:WINdow:WIDTH``) and then exits through the upper threshold. If
+              ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater, the instrument triggers when the signal
+              remains above the upper threshold for longer than the time limit
+              (``:TRIGger:A:WINdow:WIDTH``) and then crosses downward through the upper threshold.
+            - ``LOWer`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater, the instrument triggers when
+              the signal remains between the upper and lower thresholds for longer than the time
+              limit (``:TRIGger:A:WINdow:WIDTH``) and then exits through the lower threshold. If
+              ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater, the instrument triggers when the signal
+              remains below the lower threshold for longer than the time limit
+              (``:TRIGger:A:WINdow:WIDTH``) and then crosses upwards through the lower threshold.
+            - ``EITher`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater, the instrument triggers
+              when the signal remains between the upper and lower thresholds for longer than the
+              time limit (``:TRIGger:A:WINdow:WIDTH``) and then exits through either the upper or
+              lower threshold. If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater, the instrument
+              triggers when the signal remains either above the upper threshold or below the lower
+              threshold for longer than the time limit (``:TRIGger:A:WINdow:WIDTH``) and then
+              crosses a threshold.
+            - ``NONe`` if ``:TRIGger:A:WINdow:WHEn`` is INSIDEGreater, the instrument triggers when
+              the signal remains between the upper and lower thresholds for longer than the time
+              limit (``:TRIGger:A:WINdow:WIDTH``) without crossing through either the upper or lower
+              threshold. If ``:TRIGger:A:WINdow:WHEn`` is OUTSIDEGreater, the instrument triggers
+              when the signal remains outside the upper and lower thresholds for longer than the
+              time limit (``:TRIGger:A:WINdow:WIDTH``) without crossing through either the upper or
+              lower threshold.
         """
         return self._crossing
 
@@ -13057,7 +13056,7 @@ class SearchSearchItemTriggerABusUsbSplitHubValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<QString>`` specifies the hub address. The valid characters are .
+        - ``<QString>`` specifies the hub address. The valid characters are.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -13108,7 +13107,7 @@ class SearchSearchItemTriggerABusUsbSplitHub(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` specifies the hub address. The valid characters are .
+            - ``<QString>`` specifies the hub address. The valid characters are.
         """
         return self._value
 
@@ -20927,7 +20926,7 @@ class SearchSearchItemTriggerABusSdlcDataValue(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<QString>`` specifies the value of the data string. The default value is XXXXXXXX .
+        - ``<QString>`` specifies the value of the data string. The default value is XXXXXXXX.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -21034,7 +21033,7 @@ class SearchSearchItemTriggerABusSdlcData(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` specifies the value of the data string. The default value is XXXXXXXX .
+            - ``<QString>`` specifies the value of the data string. The default value is XXXXXXXX.
         """
         return self._value
 
@@ -40501,7 +40500,7 @@ class SearchSearchItemTriggerABusEthernetDataValue(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
           allowable number of characters depends on the setting for size (using
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:SIZe`` ). The bits specified in the quoted
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:SIZe``). The bits specified in the quoted
           string replace the least significant bits, leaving any unspecified upper bits unchanged.
     """
 
@@ -40815,7 +40814,7 @@ class SearchSearchItemTriggerABusEthernetData(SCPICmdRead):
         Info:
             - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
               allowable number of characters depends on the setting for size (using
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:SIZe`` ). The bits specified in the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:ETHERnet:DATa:SIZe``). The bits specified in the
               quoted string replace the least significant bits, leaving any unspecified upper bits
               unchanged.
         """
@@ -54118,7 +54117,7 @@ class SearchSearchItemTriggerABusAutoethernetTbt1sDataValue(SCPICmdWrite, SCPICm
         - ``SEARCH<x>`` is the Search number.
         - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
           allowable number of characters depends on the setting for size (using
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth`` ). The bits specified in
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth``). The bits specified in
           the quoted string replace the least significant bits (LSB), leaving any unspecified upper
           bits unchanged.
     """
@@ -54242,9 +54241,9 @@ class SearchSearchItemTriggerABusAutoethernetTbt1sData(SCPICmdRead):
             - ``SEARCH<x>`` is the Search number.
             - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
               allowable number of characters depends on the setting for size (using
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth`` ). The bits
-              specified in the quoted string replace the least significant bits (LSB), leaving any
-              unspecified upper bits unchanged.
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:TBT1s:DATa:LENgth``). The bits specified
+              in the quoted string replace the least significant bits (LSB), leaving any unspecified
+              upper bits unchanged.
         """
         return self._value
 
@@ -54442,7 +54441,7 @@ class SearchSearchItemTriggerABusAutoethernetPayloadValue(SCPICmdWrite, SCPICmdR
     Info:
         - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
           allowable number of characters depends on the setting for size (using
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe`` ). The bits specified in the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe``). The bits specified in the
           quoted string replace the least significant bits (LSB), leaving any unspecified upper bits
           unchanged. The default value is XXXXXXXX.
     """
@@ -54555,7 +54554,7 @@ class SearchSearchItemTriggerABusAutoethernetPayload(SCPICmdRead):
         Info:
             - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
               allowable number of characters depends on the setting for size (using
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe`` ). The bits specified in
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:PAYLoad:SIZe``). The bits specified in
               the quoted string replace the least significant bits (LSB), leaving any unspecified
               upper bits unchanged. The default value is XXXXXXXX.
         """
@@ -55532,7 +55531,7 @@ class SearchSearchItemTriggerABusAutoethernetDataValue(SCPICmdWrite, SCPICmdRead
         - ``SEARCH<x>`` is the Search number.
         - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
           allowable number of characters depends on the setting for size (using
-          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa:SIZe`` ). The bits specified in the
+          ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa:SIZe``). The bits specified in the
           quoted string replace the least significant bits (LSB), leaving any unspecified upper bits
           unchanged.
     """
@@ -55784,7 +55783,7 @@ class SearchSearchItemTriggerABusAutoethernetData(SCPICmdRead):
             - ``SEARCH<x>`` is the Search number.
             - ``<QString>`` is a quoted string where the allowable characters are 0, 1, and X. The
               allowable number of characters depends on the setting for size (using
-              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa:SIZe`` ). The bits specified in the
+              ``SEARCH:SEARCH<x>:TRIGger:A:BUS:AUTOETHERnet:DATa:SIZe``). The bits specified in the
               quoted string replace the least significant bits (LSB), leaving any unspecified upper
               bits unchanged.
         """
@@ -59295,6 +59294,10 @@ class SearchDelete(SCPICmdWrite):
         ```
         - SEARCH:DELete <QString>
         ```
+
+    Info:
+        - ``<QString>`` is the specified search. The argument is of the form 'SEARCH<NR1>', where
+          <NR1> is ≥ 1.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -59332,7 +59335,7 @@ class SearchAddnew(SCPICmdWrite):
         ```
 
     Info:
-        - ``<QString>`` is the specified search. The argument is of the form 'SEARCH<NR1>' , where
+        - ``<QString>`` is the specified search. The argument is of the form 'SEARCH<NR1>', where
           <NR1> is ≥ 1.
     """
 
@@ -59383,7 +59386,7 @@ class Search(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` is the specified search. The argument is of the form 'SEARCH<NR1>' ,
+            - ``<QString>`` is the specified search. The argument is of the form 'SEARCH<NR1>',
               where <NR1> is ≥ 1.
         """
         return self._addnew
@@ -59420,6 +59423,10 @@ class Search(SCPICmdRead):
             ```
             - SEARCH:DELete <QString>
             ```
+
+        Info:
+            - ``<QString>`` is the specified search. The argument is of the form 'SEARCH<NR1>',
+              where <NR1> is ≥ 1.
         """
         return self._delete
 

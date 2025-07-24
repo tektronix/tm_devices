@@ -497,7 +497,7 @@ class ChannelDallLabelColor(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``CH<x>`` is the channel number.
         - ``<QString>`` is the color of the digital group label. To return the color to the default
-          color, send an empty string as in this example: ``CH5_DALL:LABEL:COLOR`` .
+          color, send an empty string as in this example: ``CH5_DALL:LABEL:COLOR``.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -550,7 +550,7 @@ class ChannelDallLabel(SCPICmdRead):
         Info:
             - ``CH<x>`` is the channel number.
             - ``<QString>`` is the color of the digital group label. To return the color to the
-              default color, send an empty string as in this example: ``CH5_DALL:LABEL:COLOR`` .
+              default color, send an empty string as in this example: ``CH5_DALL:LABEL:COLOR``.
         """
         return self._color
 

@@ -4024,7 +4024,7 @@ class MeasurementMechSource1(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``CH<x>`` specifies an analog channel as the source waveform.
         - ``MATH<x>`` specifies a math waveform as the source waveform.
-        - ``REF<x>`` specifies an reference waveform as the source waveform .
+        - ``REF<x>`` specifies an reference waveform as the source waveform.
         - ``CH<x>_D<x>`` specifies a digital channel as the source waveform.
     """
 
@@ -4348,7 +4348,7 @@ class MeasurementMech(SCPICmdRead):
         Info:
             - ``CH<x>`` specifies an analog channel as the source waveform.
             - ``MATH<x>`` specifies a math waveform as the source waveform.
-            - ``REF<x>`` specifies an reference waveform as the source waveform .
+            - ``REF<x>`` specifies an reference waveform as the source waveform.
             - ``CH<x>_D<x>`` specifies a digital channel as the source waveform.
         """
         return self._source1
@@ -7966,7 +7966,7 @@ class MeasurementMeasItemSignalfrequency(SCPICmdWrite, SCPICmdRead):
           frequency.
         - ``FIFTYHZ`` specifies the line frequency as 50 Hz.
         - ``SIXTYHZ`` specifies the line frequency as 60 Hz.
-        - ``FOURHUNDREDHZ`` specifies the line frequency as 400 Hz. .
+        - ``FOURHUNDREDHZ`` specifies the line frequency as 400 Hz.
         - ``CUSTOM`` specifies the line frequency as custom.
     """
 
@@ -23815,7 +23815,7 @@ class MeasurementMeasItem(ValidatedDynamicNumberCmd, SCPICmdRead):
               frequency.
             - ``FIFTYHZ`` specifies the line frequency as 50 Hz.
             - ``SIXTYHZ`` specifies the line frequency as 60 Hz.
-            - ``FOURHUNDREDHZ`` specifies the line frequency as 400 Hz. .
+            - ``FOURHUNDREDHZ`` specifies the line frequency as 400 Hz.
             - ``CUSTOM`` specifies the line frequency as custom.
         """
         return self._signalfrequency

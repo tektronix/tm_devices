@@ -188,9 +188,9 @@ class DataSource(SCPICmdWrite, SCPICmdRead):
         - ``DIGITALALL`` selects digital waveforms as the source. The Digital data istransferred as
           16-bit data, with the least-significant bit representing D0, and the most-significant bit
           representing D15. The LSB always contains D0-D7 and MSB always contains D8-D15 data.
-        - ``CH<x>_SV_NORMal`` , ``CH<x>_SV_AVErage`` , ``CH<x>_SV_MAX_Hold`` , ``CH<x>_SV_MIN_Hold``
+        - ``CH<x>_SV_NORMal`` , ``CH<x>_SV_AVErage``, ``CH<x>_SV_MAX_Hold``, ``CH<x>_SV_MIN_Hold``
           selects the specified Spectrum View waveform.
-        - ``CH<x>_MAG_VS_TIME`` , ``CH<x>_FREQ_VS_TIME`` , ``CH<x>_PHASE_VS_TIME`` selects the
+        - ``CH<x>_MAG_VS_TIME`` , ``CH<x>_FREQ_VS_TIME``, ``CH<x>_PHASE_VS_TIME`` selects the
           specified RF vs. Time waveform.
         - ``CH<x>_SV_BASEBAND_IQ`` selects the specified RF baseband IQ data.
 
@@ -669,9 +669,9 @@ class Data(SCPICmdWrite, SCPICmdRead):
               as 16-bit data, with the least-significant bit representing D0, and the
               most-significant bit representing D15. The LSB always contains D0-D7 and MSB always
               contains D8-D15 data.
-            - ``CH<x>_SV_NORMal`` , ``CH<x>_SV_AVErage`` , ``CH<x>_SV_MAX_Hold`` ,
+            - ``CH<x>_SV_NORMal`` , ``CH<x>_SV_AVErage``, ``CH<x>_SV_MAX_Hold``,
               ``CH<x>_SV_MIN_Hold`` selects the specified Spectrum View waveform.
-            - ``CH<x>_MAG_VS_TIME`` , ``CH<x>_FREQ_VS_TIME`` , ``CH<x>_PHASE_VS_TIME`` selects the
+            - ``CH<x>_MAG_VS_TIME`` , ``CH<x>_FREQ_VS_TIME``, ``CH<x>_PHASE_VS_TIME`` selects the
               specified RF vs. Time waveform.
             - ``CH<x>_SV_BASEBAND_IQ`` selects the specified RF baseband IQ data.
 

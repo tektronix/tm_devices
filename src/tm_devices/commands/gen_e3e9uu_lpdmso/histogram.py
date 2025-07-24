@@ -222,7 +222,7 @@ class HistogramHistogramItemSave(SCPICmdWrite):
 
     Info:
         - ``HISTogram<x>`` specifies the histogram number.
-        - ``<QString>`` is the file path to save the .csv file to.
+        - ``<QString>`` is the file path to save the.csv file to.
     """
 
     _WRAP_ARG_WITH_QUOTES = True
@@ -1495,7 +1495,7 @@ class HistogramHistogramItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``HISTogram<x>`` specifies the histogram number.
-            - ``<QString>`` is the file path to save the .csv file to.
+            - ``<QString>`` is the file path to save the.csv file to.
         """
         return self._save
 

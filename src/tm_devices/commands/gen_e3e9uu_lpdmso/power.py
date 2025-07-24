@@ -10881,8 +10881,8 @@ class PowerPowerItemMagpropertySecwindings(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent of
           the number shown in the power measurement badge on the UI.
-        - ``None`` , ONE , TWO , THREE , FOUR , FIVE , SIX sets the number of secondary windings to
-          the specified value.
+        - ``None`` , ONE, TWO, THREE, FOUR, FIVE, SIX sets the number of secondary windings to the
+          specified value.
     """
 
 
@@ -12186,8 +12186,8 @@ class PowerPowerItemMagproperty(SCPICmdRead):
         Info:
             - ``POWer<x>`` is the magnetic property power measurement number. This is the equivalent
               of the number shown in the power measurement badge on the UI.
-            - ``None`` , ONE , TWO , THREE , FOUR , FIVE , SIX sets the number of secondary windings
-              to the specified value.
+            - ``None`` , ONE, TWO, THREE, FOUR, FIVE, SIX sets the number of secondary windings to
+              the specified value.
         """
         return self._secwindings
 
@@ -15903,7 +15903,7 @@ class PowerPowerItemEfficiencyNumofoutputs(SCPICmdWrite, SCPICmdRead):
     Info:
         - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent of
           the number shown in the power measurement badge on the UI.
-        - ``ONE`` , TWO , THREE sets the number of outputs to test in the power efficiency
+        - ``ONE`` , TWO, THREE sets the number of outputs to test in the power efficiency
           measurement.
     """
 
@@ -16320,7 +16320,7 @@ class PowerPowerItemEfficiency(SCPICmdRead):
         Info:
             - ``POWer<x>`` is the number of a power efficiency measurement. This is the equivalent
               of the number shown in the power measurement badge on the UI.
-            - ``ONE`` , TWO , THREE sets the number of outputs to test in the power efficiency
+            - ``ONE`` , TWO, THREE sets the number of outputs to test in the power efficiency
               measurement.
         """
         return self._numofoutputs

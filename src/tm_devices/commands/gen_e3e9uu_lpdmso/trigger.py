@@ -4668,7 +4668,7 @@ class TriggerBEventsCount(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR1>`` is the number of B trigger events, which can range from .
+        - ``<NR1>`` is the number of B trigger events, which can range from 1 to 65,471.
     """
 
 
@@ -4710,7 +4710,7 @@ class TriggerBEvents(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR1>`` is the number of B trigger events, which can range from .
+            - ``<NR1>`` is the number of B trigger events, which can range from 1 to 65,471.
         """
         return self._count
 
@@ -12820,7 +12820,7 @@ class TriggerBBusBItemI3cErrortype(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NACK`` sets the trigger condition to Missing ACK error . This is the default value.
+        - ``NACK`` sets the trigger condition to Missing ACK error. This is the default value.
         - ``TBIT`` sets the trigger condition to Slave/Parity Error shown by Transition bit.
         - ``BADDr`` sets the trigger condition to BroadCast Error.
     """
@@ -13304,7 +13304,7 @@ class TriggerBBusBItemI3c(SCPICmdRead):
             ```
 
         Info:
-            - ``NACK`` sets the trigger condition to Missing ACK error . This is the default value.
+            - ``NACK`` sets the trigger condition to Missing ACK error. This is the default value.
             - ``TBIT`` sets the trigger condition to Slave/Parity Error shown by Transition bit.
             - ``BADDr`` sets the trigger condition to BroadCast Error.
         """
@@ -16967,7 +16967,7 @@ class TriggerBBusBItemEthernetCondition(SCPICmdWrite, SCPICmdRead):
         - ``IDLe`` — Idle field.
         - ``FCSError`` — Frame Check Sequence Error (CRC) field.
         - ``QTAG`` — IEEE 802.1Q (VLAN) control information field. In order to use QTAG as a trigger
-          condition, the frame type must be set to QTAG ).
+          condition, the frame type must be set to QTAG).
     """  # noqa: E501
 
 
@@ -17033,7 +17033,7 @@ class TriggerBBusBItemEthernet(SCPICmdRead):
             - ``IDLe`` — Idle field.
             - ``FCSError`` — Frame Check Sequence Error (CRC) field.
             - ``QTAG`` — IEEE 802.1Q (VLAN) control information field. In order to use QTAG as a
-              trigger condition, the frame type must be set to QTAG ).
+              trigger condition, the frame type must be set to QTAG).
         """  # noqa: E501
         return self._condition
 
@@ -23552,7 +23552,7 @@ class TriggerAHoldoffTime(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<NR3>`` specifies the holdoff time in seconds. The range is from 0 s to s.
+        - ``<NR3>`` specifies the holdoff time in seconds. The range is from 0 s to 10 s.
     """
 
 
@@ -23654,7 +23654,7 @@ class TriggerAHoldoff(SCPICmdRead):
             ```
 
         Info:
-            - ``<NR3>`` specifies the holdoff time in seconds. The range is from 0 s to s.
+            - ``<NR3>`` specifies the holdoff time in seconds. The range is from 0 s to 10 s.
         """
         return self._time
 
@@ -31731,7 +31731,7 @@ class TriggerABusBItemI3cErrortype(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``NACK`` sets the trigger condition to Missing ACK error . This is the default value.
+        - ``NACK`` sets the trigger condition to Missing ACK error. This is the default value.
         - ``TBIT`` sets the trigger condition to Slave/Parity Error shown by Transition bit.
         - ``BADDr`` sets the trigger condition to BroadCast Error.
     """
@@ -32215,7 +32215,7 @@ class TriggerABusBItemI3c(SCPICmdRead):
             ```
 
         Info:
-            - ``NACK`` sets the trigger condition to Missing ACK error . This is the default value.
+            - ``NACK`` sets the trigger condition to Missing ACK error. This is the default value.
             - ``TBIT`` sets the trigger condition to Slave/Parity Error shown by Transition bit.
             - ``BADDr`` sets the trigger condition to BroadCast Error.
         """
@@ -35878,7 +35878,7 @@ class TriggerABusBItemEthernetCondition(SCPICmdWrite, SCPICmdRead):
         - ``IDLe`` — Idle field.
         - ``FCSError`` — Frame Check Sequence Error (CRC) field.
         - ``QTAG`` — IEEE 802.1Q (VLAN) control information field. In order to use QTAG as a trigger
-          condition, the frame type must be set to QTAG ).
+          condition, the frame type must be set to QTAG).
     """  # noqa: E501
 
 
@@ -35944,7 +35944,7 @@ class TriggerABusBItemEthernet(SCPICmdRead):
             - ``IDLe`` — Idle field.
             - ``FCSError`` — Frame Check Sequence Error (CRC) field.
             - ``QTAG`` — IEEE 802.1Q (VLAN) control information field. In order to use QTAG as a
-              trigger condition, the frame type must be set to QTAG ).
+              trigger condition, the frame type must be set to QTAG).
         """  # noqa: E501
         return self._condition
 

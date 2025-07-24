@@ -377,7 +377,7 @@ class SaveReport(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``<QString>`` is the complete path specification. When specifying the file name with this
-          command, use the correct file extension (.pdf for PDF format, or .mht for MHT format).
+          command, use the correct file extension (.pdf for PDF format, or.mht for MHT format).
 
     Properties:
         - ``.comments``: The ``SAVe:REPOrt:COMMents`` command.
@@ -1214,7 +1214,7 @@ class Save(SCPICmdRead):
 
         Info:
             - ``<QString>`` is the complete path specification. When specifying the file name with
-              this command, use the correct file extension (.pdf for PDF format, or .mht for MHT
+              this command, use the correct file extension (.pdf for PDF format, or.mht for MHT
               format).
 
         Sub-properties:

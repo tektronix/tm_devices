@@ -1676,8 +1676,8 @@ class PlotPlotItemEinterpolation(SCPICmdWrite, SCPICmdRead):
 
     Info:
         - ``PLOT<x>`` is the plot number.
-        - ``ON`` enables interpolation between samples .
-        - ``OFF`` disables interpolation between samples .
+        - ``ON`` enables interpolation between samples.
+        - ``OFF`` disables interpolation between samples.
     """
 
 
@@ -1685,7 +1685,7 @@ class PlotPlotItemDdjhistogram(SCPICmdWrite, SCPICmdRead):
     """The ``PLOT:PLOT<x>:DDJHistogram`` command.
 
     Description:
-        - Sets or queries the status of  DDJ Histogram in composite histogram plot.
+        - Sets or queries the status of DDJ Histogram in composite histogram plot.
 
     Usage:
         - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:DDJHistogram?`` query.
@@ -1974,7 +1974,7 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
         """Return the ``PLOT:PLOT<x>:DDJHistogram`` command.
 
         Description:
-            - Sets or queries the status of  DDJ Histogram in composite histogram plot.
+            - Sets or queries the status of DDJ Histogram in composite histogram plot.
 
         Usage:
             - Using the ``.query()`` method will send the ``PLOT:PLOT<x>:DDJHistogram?`` query.
@@ -2020,8 +2020,8 @@ class PlotPlotItem(ValidatedDynamicNumberCmd, SCPICmdRead):
 
         Info:
             - ``PLOT<x>`` is the plot number.
-            - ``ON`` enables interpolation between samples .
-            - ``OFF`` disables interpolation between samples .
+            - ``ON`` enables interpolation between samples.
+            - ``OFF`` disables interpolation between samples.
         """
         return self._einterpolation
 

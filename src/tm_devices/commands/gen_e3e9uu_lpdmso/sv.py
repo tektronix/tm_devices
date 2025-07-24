@@ -2026,7 +2026,7 @@ class SvChannelSeltrace(SCPICmdWrite, SCPICmdRead):
 
     Description:
         - This command sets or queries the spectrum trace type to show for the specified channel in
-          the Spectrum View. Each channel's spectrum trace can display up to  four traces; a Normal
+          the Spectrum View. Each channel's spectrum trace can display up to four traces; a Normal
           trace (default), a Max Hold trace, a Min Hold trace and an Average trace.
 
     Usage:
@@ -2213,8 +2213,8 @@ class SvChannelRfPhaseReferenceTime(SCPICmdWrite, SCPICmdRead):
         - ``CH<x>`` is the channel number of the Phase vs. Time trace.
         - ``NR3`` is the Phase Reference time, in seconds. This indicates the time at which the
           phase value set by ``SV:CH<x>:RF_PHASe:REFerence:DEGrees`` is applied. If the phase
-          position set by ``SV:CH<x>:RF_PHASe:REFerence:POSition`` is TRIGger , then the phase time
-          is fixed at 0 seconds and cannot be changed. If the phase position is CURSor , then the
+          position set by ``SV:CH<x>:RF_PHASe:REFerence:POSition`` is TRIGger, then the phase time
+          is fixed at 0 seconds and cannot be changed. If the phase position is CURSor, then the
           phase time may be set to any value, and is initialized to the position of Cursor A. If
           CH<x> is the master phase reference, then the time is used to calculate the phase values
           of all other channels.
@@ -2247,7 +2247,7 @@ class SvChannelRfPhaseReferencePosition(SCPICmdWrite, SCPICmdRead):
         - ``CH<x>`` is the channel number of the Phase vs. Time trace.
         - ``TRIGger`` sets the Phase Reference location to the Trigger position.
         - ``CURSor`` sets the channel Phase Reference location to the phase time set by
-          ``SV:CH<x>:RF_PHASe:REFerence:TIMe`` , which defaults to the Cursor A position.
+          ``SV:CH<x>:RF_PHASe:REFerence:TIMe``, which defaults to the Cursor A position.
     """
 
 
@@ -2357,7 +2357,7 @@ class SvChannelRfPhaseReference(SCPICmdRead):
             - ``CH<x>`` is the channel number of the Phase vs. Time trace.
             - ``TRIGger`` sets the Phase Reference location to the Trigger position.
             - ``CURSor`` sets the channel Phase Reference location to the phase time set by
-              ``SV:CH<x>:RF_PHASe:REFerence:TIMe`` , which defaults to the Cursor A position.
+              ``SV:CH<x>:RF_PHASe:REFerence:TIMe``, which defaults to the Cursor A position.
         """
         return self._position
 
@@ -2387,8 +2387,8 @@ class SvChannelRfPhaseReference(SCPICmdRead):
             - ``CH<x>`` is the channel number of the Phase vs. Time trace.
             - ``NR3`` is the Phase Reference time, in seconds. This indicates the time at which the
               phase value set by ``SV:CH<x>:RF_PHASe:REFerence:DEGrees`` is applied. If the phase
-              position set by ``SV:CH<x>:RF_PHASe:REFerence:POSition`` is TRIGger , then the phase
-              time is fixed at 0 seconds and cannot be changed. If the phase position is CURSor ,
+              position set by ``SV:CH<x>:RF_PHASe:REFerence:POSition`` is TRIGger, then the phase
+              time is fixed at 0 seconds and cannot be changed. If the phase position is CURSor,
               then the phase time may be set to any value, and is initialized to the position of
               Cursor A. If CH<x> is the master phase reference, then the time is used to calculate
               the phase values of all other channels.
@@ -2705,7 +2705,7 @@ class SvChannel(ValidatedChannel, SCPICmdRead):
 
         Description:
             - This command sets or queries the spectrum trace type to show for the specified channel
-              in the Spectrum View. Each channel's spectrum trace can display up to  four traces; a
+              in the Spectrum View. Each channel's spectrum trace can display up to four traces; a
               Normal trace (default), a Max Hold trace, a Min Hold trace and an Average trace.
 
         Usage:

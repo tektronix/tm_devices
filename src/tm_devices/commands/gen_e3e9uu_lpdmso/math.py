@@ -3120,7 +3120,7 @@ class MathMathItemFilterSave(SCPICmdWrite, SCPICmdRead):
         ```
 
     Info:
-        - ``<QString>`` saves the created filter in .flt format to the specified save location.
+        - ``<QString>`` saves the created filter in.flt format to the specified save location.
 
     Properties:
         - ``.response``: The ``MATH:MATH<x>:FILTer:SAVe:RESPonse`` command.
@@ -3899,7 +3899,7 @@ class MathMathItemFilter(SCPICmdRead):
             ```
 
         Info:
-            - ``<QString>`` saves the created filter in .flt format to the specified save location.
+            - ``<QString>`` saves the created filter in.flt format to the specified save location.
 
         Sub-properties:
             - ``.response``: The ``MATH:MATH<x>:FILTer:SAVe:RESPonse`` command.

@@ -75,7 +75,8 @@ class RoscSource(SCPICmdWrite, SCPICmdRead):
         - ``INTERnal`` specifies the internal 10 MHz crystal oscillator as the time base reference.
         - ``EXTernal`` specifies the user-supplied external signal at 1 ppm as the time base
           reference.
-        - ``TRACking`` specifies the user-supplied external signal at as the time base reference.
+        - ``TRACking`` specifies the user-supplied external signal at ±1000 ppm as the time base
+          reference.
     """
 
 
@@ -128,7 +129,7 @@ class Rosc(SCPICmdRead):
               reference.
             - ``EXTernal`` specifies the user-supplied external signal at 1 ppm as the time base
               reference.
-            - ``TRACking`` specifies the user-supplied external signal at as the time base
+            - ``TRACking`` specifies the user-supplied external signal at ±1000 ppm as the time base
               reference.
         """
         return self._source
